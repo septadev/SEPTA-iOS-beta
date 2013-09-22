@@ -7,7 +7,6 @@
 *.log
 
 build/
-iSEPTA.xcodeproj/*
 iSEPTAv2/projectX.xcarchive/
 images/projectX.xcarchive/*
 
