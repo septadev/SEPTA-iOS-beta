@@ -1,0 +1,17 @@
+#Can ignore specific files
+*.sqlite
+*.txt
+*.csv
+*.DS_Store
+*.pid
+*.log
+
+build/
+iSEPTA.xcodeproj/*
+iSEPTAv2/projectX.xcarchive/
+images/projectX.xcarchive/*
+
+gtfs/gitraw
+database/
+imagesBAK/
+topLevelImages/

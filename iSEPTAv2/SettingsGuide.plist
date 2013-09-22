@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>Next To Arrive</string>
+		<key># of scenes</key>
+		<string>2</string>
+		<key>Images</key>
+		<array>
+			<string>imageName1.png</string>
+			<string>imageName2.png</string>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>TrainView</string>
+		<key># of scenes</key>
+		<string>1</string>
+		<key>Images</key>
+		<array>
+			<string>imageName1.png</string>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>System Status</string>
+		<key># of scenes</key>
+		<string>3</string>
+		<key>Images</key>
+		<array>
+			<string>imageName1.png</string>
+			<string>imageName2.png</string>
+			<string>imageNames3.png</string>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Plan My Trip</string>
+		<key># of scenes</key>
+		<string>1</string>
+		<key>Images</key>
+		<array>
+			<string>imageName1.png</string>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>TransitView</string>
+		<key># of scenes</key>
+		<string>1</string>
+		<key>Images</key>
+		<array>
+			<string>imageName1.png</string>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Schedules</string>
+		<key># of scenes</key>
+		<string>1</string>
+		<key>Images</key>
+		<array>
+			<string>imageName1.png</string>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Push Notifications</string>
+		<key># of scenes</key>
+		<string>1</string>
+		<key>Images</key>
+		<array>
+			<string>imageName1.png</string>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Alarms</string>
+		<key># of scenes</key>
+		<string>1</string>
+		<key>Images</key>
+		<array>
+			<string>imageName1.png</string>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>SEPTAVision</string>
+		<key># of scenes</key>
+		<string>1</string>
+		<key>Images</key>
+		<array>
+			<string>imageName1.png</string>
+		</array>
+	</dict>
+</array>
+</plist>

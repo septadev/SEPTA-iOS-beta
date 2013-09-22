@@ -1,0 +1,9 @@
+#Can ignore specific files
+*.sqlite
+*.txt
+*.csv
+gitraw/
+Feb2013/
+Jan2013/
+Mar2013/
+*.kml

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12A269" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Routes" syncable="YES">
+        <attribute name="route_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="route_long_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="route_short_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="route_type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="routeID" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trips" inverseName="routeID" inverseEntity="Trips" syncable="YES"/>
+    </entity>
+    <entity name="StopNames" syncable="YES">
+        <attribute name="stop_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="stop_lat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stop_lon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stop_name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="stopID" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StopTimes" inverseName="stopID" inverseEntity="StopTimes" syncable="YES"/>
+    </entity>
+    <entity name="StopTimes" syncable="YES">
+        <attribute name="arrival_time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="departure_time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="direction_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="service_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="stop_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="stop_sequence" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="trip_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="stopID" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StopNames" inverseName="stopID" inverseEntity="StopNames" syncable="YES"/>
+        <relationship name="tripID" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trips" inverseName="tripID" inverseEntity="Trips" syncable="YES"/>
+    </entity>
+    <entity name="Trips" syncable="YES">
+        <attribute name="direction_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="route_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="service_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="trip_headsign" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trip_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="routeID" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routes" inverseName="routeID" inverseEntity="Routes" syncable="YES"/>
+        <relationship name="tripID" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StopTimes" inverseName="tripID" inverseEntity="StopTimes" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Routes" positionX="-333" positionY="3" width="128" height="118"/>
+        <element name="StopNames" positionX="214" positionY="-0" width="128" height="118"/>
+        <element name="StopTimes" positionX="43" positionY="137" width="128" height="178"/>
+        <element name="Trips" positionX="-144" positionY="-0" width="128" height="148"/>
+    </elements>
+</model>
