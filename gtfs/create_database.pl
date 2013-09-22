@@ -24,10 +24,9 @@ use POSIX;
 
 use GIS::Distance;
 
-use Data::Dumper;
-use feature 'say';
+#use Data::Dumper;
+#use feature 'say';
 
-use Getopt::Long;
 # --==  USE STATEMENTS  ==--
 
 
@@ -58,17 +57,6 @@ my $optTimeFix;
 # CREATE INDEX stopIDX  on stop_times (stop_id);
 
 
-
-
-# --==  COMMAND LINE OPTIONS  ==--
-GetOptions(
-    'rt' => \$optRailTestOnly,
-    'bt' => \$optBusTestOnly,
-    'o=s' => \$optOutputName,
-    'noComrpress' => \$optNoCompress,
-    'TimeFix'   => \$optTimeFix,
-);
-# --==  COMMAND LINE OPTIONS  ==--
 
 
 # --==  BEGIN HERE 644  ==--
