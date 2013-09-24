@@ -9,7 +9,7 @@ Quick Starter Guide:
 
  * Fast method) Get a copy of the latest database from: http://www3.septa.org/hackathon/iOS/SEPTA.sqlite.gz
  
-Then copy SEPTA.sqlite into the database/ directory in the repository
+Then copy SEPTA.sqlite into the database/ directory in the repository.  (Note: you might need to create the database directory first.)
 
  
 -OR-
@@ -54,9 +54,15 @@ Finally, copy the generated database into the database directory:
   cp SEPTA.sqlite ../database
   
 
+There's only one more step to go.
+
 
 About the Images:
 ================
 
-  * While the source code is licensed under the GPL, the images used by the app are not.  As such, replacements images have been used to ensure the app can be compiled and run 
+  * While the source code is licensed under the GPL, the images used by the app are not.  Replacements images have been made available to ensure the app can be compiled and run without issue.  When time permits, I can make less eye-piercing and happy replacements available.
+
+The images can be found in this repository: https://github.com/septadev/SEPTA-iOS-beta-images.  Once downloaded, create an images directory in the SEPTA-iOS-beta repository and copy the files from SEPTA-iOS-beta-images into there.
+
+Then launch iSEPTA.xcworkspace and enjoy.
 
