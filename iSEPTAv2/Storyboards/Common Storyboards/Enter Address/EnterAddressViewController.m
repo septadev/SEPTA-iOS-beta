@@ -157,7 +157,7 @@ NSString * const kSearchTextKey = @"Search Text"; /*< NSDictionary key for enter
     
     NSLog(@"%@", placemarks);
     
-    [self savePlacemark: [placemarks objectAtIndex:0] ];
+//    [self savePlacemark: [placemarks objectAtIndex:0] ];
     
     [self.searchDisplayController.searchResultsTableView reloadData];
     
@@ -305,6 +305,7 @@ NSString * const kSearchTextKey = @"Search Text"; /*< NSDictionary key for enter
     [_mapView removeAnnotations:_mapView.annotations];
     
     CLPlacemark * selectedPlacemark = [_geocodingResults objectAtIndex:indexPath.row];
+    [self.navigationItem.rightBarButtonItem setEnabled:YES];
     
     [self addPinAnnotationForPlacemark:selectedPlacemark];
     

@@ -1,23 +1,12 @@
 PODS:
   - AFNetworking (1.3.1)
+  - ECSlidingViewController (0.10.0)
   - FMDB (2.1):
     - FMDB/standard
   - FMDB/common (2.1)
   - FMDB/standard (2.1):
     - FMDB/common
   - hpple (0.2.0)
-  - MMDrawerController (0.4.0):
-    - MMDrawerController/Core
-    - MMDrawerController/MMDrawerBarButtonItem
-    - MMDrawerController/MMDrawerVisualStates
-    - MMDrawerController/Subclass
-  - MMDrawerController/Core (0.4.0)
-  - MMDrawerController/MMDrawerBarButtonItem (0.4.0):
-    - MMDrawerController/Core
-  - MMDrawerController/MMDrawerVisualStates (0.4.0):
-    - MMDrawerController/Core
-  - MMDrawerController/Subclass (0.4.0):
-    - MMDrawerController/Core
   - QuickDialog (0.8)
   - Reachability (3.1.0)
   - REMenu (1.3.5)
@@ -27,9 +16,9 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 1.0)
+  - ECSlidingViewController (~> 0.10.0)
   - FMDB (~> 2.1)
   - hpple (~> 0.2.0)
-  - MMDrawerController (~> 0.4.0)
   - QuickDialog (~> 0.8)
   - Reachability (~> 3.1.0)
   - REMenu (~> 1.3.5)
@@ -39,9 +28,9 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 9ec8aafb9269236a7630bd8d9838ce2ba30fa2a0
+  ECSlidingViewController: fc9a9a6564d4a64c0d8c7cf5583d2b9a469ecd04
   FMDB: 2769004a271eae0bbd8bd4f45a3f2acfd0d3df0e
   hpple: dde62f905f482bbec50186280d1a1be2c881241b
-  MMDrawerController: 44baaee6b79487b4681eb61597fb790586909c0c
   QuickDialog: 465692c7c599ad41a0c46022c55779dd61a4d4fe
   Reachability: ba94ecd4eaa037be3d0588b38956672588530c5b
   REMenu: 097c09787102e30f17f344386d12dbb3d723a43d

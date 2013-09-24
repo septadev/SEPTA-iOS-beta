@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2702B37F1790714700153F72 /* septaIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2702B37E1790714700153F72 /* septaIcon.png */; };
-		2702B3811790714C00153F72 /* septaIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2702B3801790714C00153F72 /* septaIcon@2x.png */; };
 		2702B3851790734C00153F72 /* MapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702B3841790734C00153F72 /* MapsViewController.m */; };
 		2708113F17A9877400B62FBD /* OldTrainViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DBA60417A980D400118225 /* OldTrainViewViewController.m */; };
 		2708114417A988D200B62FBD /* RealtimeVehicleInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2708114317A988D200B62FBD /* RealtimeVehicleInformationCell.xib */; };
@@ -68,7 +66,6 @@
 		27488D92171355D200A20195 /* StopObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 27488D91171355D200A20195 /* StopObject.m */; };
 		27488D981714775700A20195 /* NewTrainViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27488D971714775700A20195 /* NewTrainViewViewController.m */; };
 		27488D9D17147FB100A20195 /* TransitMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27488D9C17147FB100A20195 /* TransitMapViewController.m */; };
-		274A8011174A7C4A0072FAC7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 274A8010174A7C4A0072FAC7 /* Default@2x.png */; };
 		274A8016174A85CB0072FAC7 /* CustomerServiceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A8015174A85CB0072FAC7 /* CustomerServiceTableViewController.m */; };
 		274B2F13173AA9CF00A04BF4 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 274B2F12173AA9CF00A04BF4 /* CoreText.framework */; };
 		274B2F15173AA9E000A04BF4 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 274B2F14173AA9E000A04BF4 /* GLKit.framework */; };
@@ -372,6 +369,15 @@
 		27CDAAD416E649FC00F9CF4D /* TripCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CDAAD316E649FB00F9CF4D /* TripCell.m */; };
 		27CE31DD1678E61C007688AC /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CE31DC1678E61C007688AC /* Event.m */; };
 		27CFA30516E7EDD70070AA55 /* SEPTA.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 27CFA30416E7EDD70070AA55 /* SEPTA.sqlite */; };
+		27D91F3017F0A5AE00627ECD /* TrainSlidingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D91F2F17F0A5AE00627ECD /* TrainSlidingStoryboard.storyboard */; };
+		27D91F3617F0A60100627ECD /* TrainSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D91F3517F0A60100627ECD /* TrainSlidingViewController.m */; };
+		27D91F3917F0A63F00627ECD /* TrainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D91F3817F0A63F00627ECD /* TrainMapViewController.m */; };
+		27D91F3C17F0A65700627ECD /* TrainRealtimeDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D91F3B17F0A65700627ECD /* TrainRealtimeDataViewController.m */; };
+		27D91F4217F1C0B800627ECD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D91F3F17F1C0B800627ECD /* Default-568h@2x.png */; };
+		27D91F4317F1C0B800627ECD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D91F4017F1C0B800627ECD /* Default.png */; };
+		27D91F4417F1C0B800627ECD /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D91F4117F1C0B800627ECD /* Default@2x.png */; };
+		27D91F4717F1C0C400627ECD /* septaIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D91F4517F1C0C400627ECD /* septaIcon.png */; };
+		27D91F4817F1C0C400627ECD /* septaIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D91F4617F1C0C400627ECD /* septaIcon@2x.png */; };
 		27DB2FF31636D6B600153E4C /* 1.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2F671636D6B600153E4C /* 1.kml */; };
 		27DB2FF41636D6B600153E4C /* 2.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2F681636D6B600153E4C /* 2.kml */; };
 		27DB2FF51636D6B600153E4C /* 3.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2F691636D6B600153E4C /* 3.kml */; };
@@ -587,7 +593,6 @@
 		41E22F3716FF4EE800126DC2 /* NSArray+Indices.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E22F3616FF4EE800126DC2 /* NSArray+Indices.m */; };
 		41E22F3A16FF541300126DC2 /* NSMutableArray+Indices.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E22F3916FF541200126DC2 /* NSMutableArray+Indices.m */; };
 		41E22F4016FF5F3C00126DC2 /* StopSequenceCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E22F3F16FF5F3B00126DC2 /* StopSequenceCellData.m */; };
-		41F7A98B16DEACB3001C36DA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 41F7A98A16DEACB3001C36DA /* Default-568h@2x.png */; };
 		4799E7DF3F49438EA2936380 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0D1C7FB3FB402E8733DC76 /* libPods.a */; };
 		56061B621535D0C500B272B0 /* mapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 56061B441535D0C500B272B0 /* mapAnnotation.m */; };
 		56061B661535D0C500B272B0 /* TableViewReload.m in Sources */ = {isa = PBXBuildFile; fileRef = 56061B4C1535D0C500B272B0 /* TableViewReload.m */; };
@@ -612,7 +617,6 @@
 		568FA4CF1535C189009345F5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568FA4C61535C189009345F5 /* QuartzCore.framework */; };
 		568FA4F21535C6CF009345F5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568FA4F01535C6CF009345F5 /* MapKit.framework */; };
 		568FA4F31535C6CF009345F5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568FA4F11535C6CF009345F5 /* SystemConfiguration.framework */; };
-		569AC680153E1B9C00FEB7E6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 569AC67F153E1B9C00FEB7E6 /* Default.png */; };
 		840D10E417C2B9E400AD26BB /* Cash-Fare-BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D10B817C2B9E300AD26BB /* Cash-Fare-BG@2x.png */; };
 		840D10E517C2B9E400AD26BB /* Cash-Fare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D10B917C2B9E300AD26BB /* Cash-Fare@2x.png */; };
 		840D10E617C2B9E400AD26BB /* cross-county-BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840D10BA17C2B9E300AD26BB /* cross-county-BG@2x.png */; };
@@ -664,11 +668,6 @@
 		84CC993E17B87F430087477E /* TransitServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CC993D17B87F430087477E /* TransitServiceCell.m */; };
 		84D12B4D17E0A3E50079A8D7 /* NearestTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D12B4C17E0A3E30079A8D7 /* NearestTimeCell.m */; };
 		84D12B5117E1F0B90079A8D7 /* MobileSiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D12B5017E1F0B90079A8D7 /* MobileSiteViewController.m */; };
-		84ED08EA17EF47DB00CA9EC6 /* TrainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ED08E917EF47DB00CA9EC6 /* TrainMapViewController.m */; };
-		84ED08EE17EF481100CA9EC6 /* TrainMapStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84ED08ED17EF481100CA9EC6 /* TrainMapStoryboard.storyboard */; };
-		84ED08F017EF486700CA9EC6 /* TransitDataStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84ED08EF17EF486700CA9EC6 /* TransitDataStoryboard.storyboard */; };
-		84ED08F617EF48A300CA9EC6 /* TransitDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ED08F517EF48A300CA9EC6 /* TransitDataViewController.m */; };
-		84ED08F917EF494500CA9EC6 /* TransitDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ED08F817EF494500CA9EC6 /* TransitDrawerViewController.m */; };
 		84F6AFDC17B18B0600680007 /* BSL_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F6AFB717B18B0600680007 /* BSL_white@2x.png */; };
 		84F6AFDD17B18B0600680007 /* BSL_Orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F6AFB817B18B0600680007 /* BSL_Orange@2x.png */; };
 		84F6AFDE17B18B0600680007 /* BSL_Owl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F6AFB917B18B0600680007 /* BSL_Owl@2x.png */; };
@@ -714,8 +713,6 @@
 
 /* Begin PBXFileReference section */
 		137D6A82B0C1449D8E396B86 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		2702B37E1790714700153F72 /* septaIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = septaIcon.png; sourceTree = "<group>"; };
-		2702B3801790714C00153F72 /* septaIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "septaIcon@2x.png"; sourceTree = "<group>"; };
 		2702B3831790734C00153F72 /* MapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapsViewController.h; path = Maps/MapsViewController.h; sourceTree = "<group>"; };
 		2702B3841790734C00153F72 /* MapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapsViewController.m; path = Maps/MapsViewController.m; sourceTree = "<group>"; };
 		27073F37169F08E4008F3E52 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GuideViewController.h; path = Settings/Guide/GuideViewController.h; sourceTree = "<group>"; };
@@ -818,7 +815,6 @@
 		27488D9B17147FB000A20195 /* TransitMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransitMapViewController.h; path = Realtime/TransitMapViewController.h; sourceTree = "<group>"; };
 		27488D9C17147FB100A20195 /* TransitMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransitMapViewController.m; path = Realtime/TransitMapViewController.m; sourceTree = "<group>"; };
 		274A800E174A7C300072FAC7 /* bkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bkg@2x.png"; sourceTree = "<group>"; };
-		274A8010174A7C4A0072FAC7 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		274A8012174A7CB70072FAC7 /* bkg-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bkg-568h@2x.png"; sourceTree = "<group>"; };
 		274A8014174A85CB0072FAC7 /* CustomerServiceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomerServiceTableViewController.h; path = CustomerService/CustomerServiceTableViewController.h; sourceTree = "<group>"; };
 		274A8015174A85CB0072FAC7 /* CustomerServiceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomerServiceTableViewController.m; path = CustomerService/CustomerServiceTableViewController.m; sourceTree = "<group>"; };
@@ -840,7 +836,6 @@
 		274A8064174AB7250072FAC7 /* planIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "planIcon@2x.png"; path = "images/icons/Realtime/planIcon@2x.png"; sourceTree = SOURCE_ROOT; };
 		274A8065174AB7250072FAC7 /* statusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = statusIcon.png; path = images/icons/Realtime/statusIcon.png; sourceTree = SOURCE_ROOT; };
 		274A8066174AB7250072FAC7 /* statusIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "statusIcon@2x.png"; path = "images/icons/Realtime/statusIcon@2x.png"; sourceTree = SOURCE_ROOT; };
-		274A8071174ABF910072FAC7 /* splashblank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splashblank@2x.png"; sourceTree = "<group>"; };
 		274A8074174AC0180072FAC7 /* alarmsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarmsIcon.png; sourceTree = "<group>"; };
 		274A8075174AC0180072FAC7 /* alarmsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alarmsIcon@2x.png"; sourceTree = "<group>"; };
 		274A8078174AC06C0072FAC7 /* pushIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pushIcon.png; sourceTree = "<group>"; };
@@ -1216,8 +1211,6 @@
 		27C0AD0817DE3A39005FDB80 /* NearestTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NearestTimeCell.xib; path = Storyboards/Realtime/NearestLocation/Xibs/NearestTimeCell.xib; sourceTree = "<group>"; };
 		27C6AB8D174BEE6C00D48049 /* ConstructionTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConstructionTab.png; sourceTree = "<group>"; };
 		27C6AB8E174BEE6C00D48049 /* ConstructionTab@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ConstructionTab@2x.png"; sourceTree = "<group>"; };
-		27C8DC84167F70D90030BAA8 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsTableViewController.h; path = Settings/SettingsTableViewController.h; sourceTree = "<group>"; };
-		27C8DC85167F70D90030BAA8 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsTableViewController.m; path = Settings/SettingsTableViewController.m; sourceTree = "<group>"; };
 		27C8DC87167F727B0030BAA8 /* RoutePushNotificationsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RoutePushNotificationsCell.h; path = Settings/RoutePushNotificationsCell.h; sourceTree = "<group>"; };
 		27C8DC88167F727B0030BAA8 /* RoutePushNotificationsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RoutePushNotificationsCell.m; path = Settings/RoutePushNotificationsCell.m; sourceTree = "<group>"; };
 		27C8DC8E167FAD8C0030BAA8 /* SettingsGuide.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SettingsGuide.plist; sourceTree = "<group>"; };
@@ -1232,6 +1225,18 @@
 		27CE31DB1678E61C007688AC /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		27CE31DC1678E61C007688AC /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		27CFA30416E7EDD70070AA55 /* SEPTA.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = SEPTA.sqlite; path = database/SEPTA.sqlite; sourceTree = SOURCE_ROOT; };
+		27D91F2F17F0A5AE00627ECD /* TrainSlidingStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrainSlidingStoryboard.storyboard; sourceTree = "<group>"; };
+		27D91F3417F0A60100627ECD /* TrainSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrainSlidingViewController.h; path = Storyboards/Realtime/TrainView/TrainSlidingViewController.h; sourceTree = "<group>"; };
+		27D91F3517F0A60100627ECD /* TrainSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrainSlidingViewController.m; path = Storyboards/Realtime/TrainView/TrainSlidingViewController.m; sourceTree = "<group>"; };
+		27D91F3717F0A63F00627ECD /* TrainMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrainMapViewController.h; path = Storyboards/Realtime/TrainView/TrainMapViewController.h; sourceTree = "<group>"; };
+		27D91F3817F0A63F00627ECD /* TrainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrainMapViewController.m; path = Storyboards/Realtime/TrainView/TrainMapViewController.m; sourceTree = "<group>"; };
+		27D91F3A17F0A65700627ECD /* TrainRealtimeDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrainRealtimeDataViewController.h; path = Storyboards/Realtime/TrainView/TrainRealtimeDataViewController.h; sourceTree = "<group>"; };
+		27D91F3B17F0A65700627ECD /* TrainRealtimeDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrainRealtimeDataViewController.m; path = Storyboards/Realtime/TrainView/TrainRealtimeDataViewController.m; sourceTree = "<group>"; };
+		27D91F3F17F1C0B800627ECD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "images/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		27D91F4017F1C0B800627ECD /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = images/Default.png; sourceTree = SOURCE_ROOT; };
+		27D91F4117F1C0B800627ECD /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "images/Default@2x.png"; sourceTree = SOURCE_ROOT; };
+		27D91F4517F1C0C400627ECD /* septaIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = septaIcon.png; path = images/septaIcon.png; sourceTree = SOURCE_ROOT; };
+		27D91F4617F1C0C400627ECD /* septaIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "septaIcon@2x.png"; path = "images/septaIcon@2x.png"; sourceTree = SOURCE_ROOT; };
 		27DB2F671636D6B600153E4C /* 1.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 1.kml; path = kml/1.kml; sourceTree = "<group>"; };
 		27DB2F681636D6B600153E4C /* 2.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 2.kml; path = kml/2.kml; sourceTree = "<group>"; };
 		27DB2F691636D6B600153E4C /* 3.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 3.kml; path = kml/3.kml; sourceTree = "<group>"; };
@@ -1393,8 +1398,6 @@
 		27DE90F2172EE784003E11F3 /* smallUpArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallUpArrow.png; sourceTree = "<group>"; };
 		27DE90F3172EE784003E11F3 /* smallUpArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smallUpArrow@2x.png"; sourceTree = "<group>"; };
 		27DE90F4172EE784003E11F3 /* switchStops.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switchStops.png; sourceTree = "<group>"; };
-		27DE90F6172EE784003E11F3 /* iphone background view.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone background view.png"; sourceTree = "<group>"; };
-		27DE90F7172EE784003E11F3 /* splashblank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashblank.png; sourceTree = "<group>"; };
 		27DE90F9172EE784003E11F3 /* BroadStreetLineButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BroadStreetLineButton.png; sourceTree = "<group>"; };
 		27DE90FA172EE784003E11F3 /* BusRoutesButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BusRoutesButton.png; sourceTree = "<group>"; };
 		27DE90FB172EE784003E11F3 /* CommentsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CommentsButton.png; sourceTree = "<group>"; };
@@ -1579,7 +1582,6 @@
 		41E22F3916FF541200126DC2 /* NSMutableArray+Indices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+Indices.m"; path = "Categories/NSMutableArray+Indices.m"; sourceTree = "<group>"; };
 		41E22F3E16FF5F3B00126DC2 /* StopSequenceCellData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StopSequenceCellData.h; path = ScheduleTab/StopSequenceCellData.h; sourceTree = "<group>"; };
 		41E22F3F16FF5F3B00126DC2 /* StopSequenceCellData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StopSequenceCellData.m; path = ScheduleTab/StopSequenceCellData.m; sourceTree = "<group>"; };
-		41F7A98A16DEACB3001C36DA /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		56061B411535D0C500B272B0 /* KMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMLParser.h; sourceTree = "<group>"; };
 		56061B421535D0C500B272B0 /* KMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KMLParser.m; sourceTree = "<group>"; };
 		56061B431535D0C500B272B0 /* mapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mapAnnotation.h; sourceTree = "<group>"; };
@@ -1612,7 +1614,6 @@
 		568FA4EE1535C6B2009345F5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		568FA4F01535C6CF009345F5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		568FA4F11535C6CF009345F5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		569AC67F153E1B9C00FEB7E6 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		5D0D1C7FB3FB402E8733DC76 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		840D10B817C2B9E300AD26BB /* Cash-Fare-BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cash-Fare-BG@2x.png"; sourceTree = "<group>"; };
 		840D10B917C2B9E300AD26BB /* Cash-Fare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cash-Fare@2x.png"; sourceTree = "<group>"; };
@@ -1675,14 +1676,6 @@
 		84D12B4C17E0A3E30079A8D7 /* NearestTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NearestTimeCell.m; path = Storyboards/Realtime/NearestLocation/Code/NearestTimeCell.m; sourceTree = "<group>"; };
 		84D12B4F17E1F0B90079A8D7 /* MobileSiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MobileSiteViewController.h; path = Storyboards/Realtime/Mobile/MobileSiteViewController.h; sourceTree = "<group>"; };
 		84D12B5017E1F0B90079A8D7 /* MobileSiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MobileSiteViewController.m; path = Storyboards/Realtime/Mobile/MobileSiteViewController.m; sourceTree = "<group>"; };
-		84ED08E817EF47DB00CA9EC6 /* TrainMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrainMapViewController.h; path = Storyboards/Realtime/TrainView/TrainMapViewController.h; sourceTree = "<group>"; };
-		84ED08E917EF47DB00CA9EC6 /* TrainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrainMapViewController.m; path = Storyboards/Realtime/TrainView/TrainMapViewController.m; sourceTree = "<group>"; };
-		84ED08ED17EF481100CA9EC6 /* TrainMapStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TrainMapStoryboard.storyboard; path = "Storyboards/Realtime/TrainView/Custom Cells/TrainMapStoryboard.storyboard"; sourceTree = "<group>"; };
-		84ED08EF17EF486700CA9EC6 /* TransitDataStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TransitDataStoryboard.storyboard; path = Storyboards/Realtime/TrainView/TransitDataStoryboard.storyboard; sourceTree = "<group>"; };
-		84ED08F417EF48A300CA9EC6 /* TransitDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransitDataViewController.h; path = Storyboards/Realtime/TrainView/TransitDataViewController.h; sourceTree = "<group>"; };
-		84ED08F517EF48A300CA9EC6 /* TransitDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransitDataViewController.m; path = Storyboards/Realtime/TrainView/TransitDataViewController.m; sourceTree = "<group>"; };
-		84ED08F717EF494500CA9EC6 /* TransitDrawerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransitDrawerViewController.h; path = Storyboards/Realtime/TrainView/TransitDrawerViewController.h; sourceTree = "<group>"; };
-		84ED08F817EF494500CA9EC6 /* TransitDrawerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransitDrawerViewController.m; path = Storyboards/Realtime/TrainView/TransitDrawerViewController.m; sourceTree = "<group>"; };
 		84F6AFB717B18B0600680007 /* BSL_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BSL_white@2x.png"; sourceTree = "<group>"; };
 		84F6AFB817B18B0600680007 /* BSL_Orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BSL_Orange@2x.png"; sourceTree = "<group>"; };
 		84F6AFB917B18B0600680007 /* BSL_Owl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BSL_Owl@2x.png"; sourceTree = "<group>"; };
@@ -3324,11 +3317,53 @@
 			name = Construction;
 			sourceTree = "<group>";
 		};
-		27C8DC8A167F728E0030BAA8 /* Custom Controls */ = {
+		27D91F3117F0A5B300627ECD /* Sliding */ = {
 			isa = PBXGroup;
 			children = (
+				27D91F2F17F0A5AE00627ECD /* TrainSlidingStoryboard.storyboard */,
+				27D91F3417F0A60100627ECD /* TrainSlidingViewController.h */,
+				27D91F3517F0A60100627ECD /* TrainSlidingViewController.m */,
+				27D91F3317F0A5DF00627ECD /* Data */,
+				27D91F3217F0A5DA00627ECD /* Maps */,
 			);
-			name = "Custom Controls";
+			name = Sliding;
+			sourceTree = "<group>";
+		};
+		27D91F3217F0A5DA00627ECD /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				27D91F3717F0A63F00627ECD /* TrainMapViewController.h */,
+				27D91F3817F0A63F00627ECD /* TrainMapViewController.m */,
+			);
+			name = Maps;
+			sourceTree = "<group>";
+		};
+		27D91F3317F0A5DF00627ECD /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				27D91F3A17F0A65700627ECD /* TrainRealtimeDataViewController.h */,
+				27D91F3B17F0A65700627ECD /* TrainRealtimeDataViewController.m */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		27D91F3D17F1C09A00627ECD /* App Icon */ = {
+			isa = PBXGroup;
+			children = (
+				27D91F4517F1C0C400627ECD /* septaIcon.png */,
+				27D91F4617F1C0C400627ECD /* septaIcon@2x.png */,
+			);
+			name = "App Icon";
+			sourceTree = "<group>";
+		};
+		27D91F3E17F1C0A200627ECD /* SlashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				27D91F3F17F1C0B800627ECD /* Default-568h@2x.png */,
+				27D91F4017F1C0B800627ECD /* Default.png */,
+				27D91F4117F1C0B800627ECD /* Default@2x.png */,
+			);
+			name = SlashScreen;
 			sourceTree = "<group>";
 		};
 		27DB2F661636D6A300153E4C /* kmls */ = {
@@ -3481,10 +3516,7 @@
 		27DBA5FB17A97F2600118225 /* TrainView */ = {
 			isa = PBXGroup;
 			children = (
-				84ED08F717EF494500CA9EC6 /* TransitDrawerViewController.h */,
-				84ED08F817EF494500CA9EC6 /* TransitDrawerViewController.m */,
-				84ED08EC17EF47E600CA9EC6 /* Transit */,
-				84ED08EB17EF47E000CA9EC6 /* Map */,
+				27D91F3117F0A5B300627ECD /* Sliding */,
 				2708114017A9883C00B62FBD /* Custom Cells */,
 				27DBA60017A97FC400118225 /* TrainViewStoryboard.storyboard */,
 				27DBA60317A980D400118225 /* OldTrainViewViewController.h */,
@@ -3591,9 +3623,6 @@
 				2769D29D178F0CFA003BF840 /* mainBackground.png */,
 				2769D29E178F0CFA003BF840 /* mainBackground@2x.png */,
 				2769D29B178F0BDF003BF840 /* mainBackground-568h@2x.png */,
-				274A8071174ABF910072FAC7 /* splashblank@2x.png */,
-				27DE90F6172EE784003E11F3 /* iphone background view.png */,
-				27DE90F7172EE784003E11F3 /* splashblank.png */,
 			);
 			path = backgrounds;
 			sourceTree = "<group>";
@@ -3872,9 +3901,6 @@
 				27A73DE0169EFF9B0058EE29 /* Alarms */,
 				4182B7341680DAFA004F9D33 /* Managed Object */,
 				4182B7331680DAE0004F9D33 /* Models */,
-				27C8DC8A167F728E0030BAA8 /* Custom Controls */,
-				27C8DC84167F70D90030BAA8 /* SettingsTableViewController.h */,
-				27C8DC85167F70D90030BAA8 /* SettingsTableViewController.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -3997,6 +4023,8 @@
 		56061B081535CC6600B272B0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				27D91F3E17F1C0A200627ECD /* SlashScreen */,
+				27D91F3D17F1C09A00627ECD /* App Icon */,
 				27C0AD0A17DE3CF7005FDB80 /* Settings */,
 				27C0ACE817CD3765005FDB80 /* Map */,
 				2765AAE617B13B5500F93FBE /* RouteIcons */,
@@ -4022,11 +4050,6 @@
 		568FA46F1535C0E0009345F5 = {
 			isa = PBXGroup;
 			children = (
-				2702B3801790714C00153F72 /* septaIcon@2x.png */,
-				2702B37E1790714700153F72 /* septaIcon.png */,
-				274A8010174A7C4A0072FAC7 /* Default@2x.png */,
-				41F7A98A16DEACB3001C36DA /* Default-568h@2x.png */,
-				569AC67F153E1B9C00FEB7E6 /* Default.png */,
 				568FA48D1535C0E0009345F5 /* AppDelegate.h */,
 				568FA48E1535C0E0009345F5 /* AppDelegate.m */,
 				568FA4841535C0E0009345F5 /* iSEPTAv2 */,
@@ -4324,26 +4347,6 @@
 			name = Mobile;
 			sourceTree = "<group>";
 		};
-		84ED08EB17EF47E000CA9EC6 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				84ED08ED17EF481100CA9EC6 /* TrainMapStoryboard.storyboard */,
-				84ED08E817EF47DB00CA9EC6 /* TrainMapViewController.h */,
-				84ED08E917EF47DB00CA9EC6 /* TrainMapViewController.m */,
-			);
-			name = Map;
-			sourceTree = "<group>";
-		};
-		84ED08EC17EF47E600CA9EC6 /* Transit */ = {
-			isa = PBXGroup;
-			children = (
-				84ED08EF17EF486700CA9EC6 /* TransitDataStoryboard.storyboard */,
-				84ED08F417EF48A300CA9EC6 /* TransitDataViewController.h */,
-				84ED08F517EF48A300CA9EC6 /* TransitDataViewController.m */,
-			);
-			name = Transit;
-			sourceTree = "<group>";
-		};
 		84F6AFB517B18B0600680007 /*  MFL BSL NHSL */ = {
 			isa = PBXGroup;
 			children = (
@@ -4520,7 +4523,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				568FA4891535C0E0009345F5 /* InfoPlist.strings in Resources */,
-				569AC680153E1B9C00FEB7E6 /* Default.png in Resources */,
 				27A434B516302BAE00D9724A /* BusRouteSorter.xib in Resources */,
 				27DB2FF31636D6B600153E4C /* 1.kml in Resources */,
 				27DB2FF41636D6B600153E4C /* 2.kml in Resources */,
@@ -4580,9 +4582,9 @@
 				27DB302A1636D6B600153E4C /* 59.kml in Resources */,
 				27DB302B1636D6B600153E4C /* 60.kml in Resources */,
 				27DB302C1636D6B600153E4C /* 61.kml in Resources */,
-				84ED08F017EF486700CA9EC6 /* TransitDataStoryboard.storyboard in Resources */,
 				27DB302D1636D6B600153E4C /* 62.kml in Resources */,
 				27DB302E1636D6B600153E4C /* 64.kml in Resources */,
+				27D91F4717F1C0C400627ECD /* septaIcon.png in Resources */,
 				27DB302F1636D6B600153E4C /* 65.kml in Resources */,
 				27DB30301636D6B600153E4C /* 66.kml in Resources */,
 				27DB30311636D6B600153E4C /* 67.kml in Resources */,
@@ -4641,7 +4643,6 @@
 				27DB30651636D6B600153E4C /* 132.kml in Resources */,
 				27DB30661636D6B600153E4C /* 133.kml in Resources */,
 				27DB30671636D6B600153E4C /* 134.kml in Resources */,
-				84ED08EE17EF481100CA9EC6 /* TrainMapStoryboard.storyboard in Resources */,
 				27DB30681636D6B600153E4C /* 139.kml in Resources */,
 				27DB30691636D6B600153E4C /* 150.kml in Resources */,
 				27DB306A1636D6B600153E4C /* 201.kml in Resources */,
@@ -4677,12 +4678,10 @@
 				27A5EABE1697411C004C9467 /* digitOverlay@2x.png in Resources */,
 				27B7F7B516A9B2F0003DF486 /* BSO.kml in Resources */,
 				27B7F7B616A9B2F0003DF486 /* MFO.kml in Resources */,
-				41F7A98B16DEACB3001C36DA /* Default-568h@2x.png in Resources */,
 				27CDAACC16E6485F00F9CF4D /* ItineraryCell.xib in Resources */,
 				27CDAACE16E6488E00F9CF4D /* TripCell.xib in Resources */,
 				27CFA30516E7EDD70070AA55 /* SEPTA.sqlite in Resources */,
 				272FCD6C16F234A800A646C7 /* ActiveTrainCell.xib in Resources */,
-				274A8011174A7C4A0072FAC7 /* Default@2x.png in Resources */,
 				27364689177B2CE100511A2F /* BusRouteIndicatorCell.xib in Resources */,
 				278EE4FD177C829B002993C4 /* FindSchedulesCell.xib in Resources */,
 				8438D834178E05E5009461B5 /* RT_Find Loc@2x.png in Resources */,
@@ -4697,6 +4696,7 @@
 				27660F63178ED73B0012B667 /* tabConnectIconSelected@2x.png in Resources */,
 				27660F65178ED73B0012B667 /* tabMapIcon@2x.png in Resources */,
 				27660F66178ED73B0012B667 /* tabMapIconSelected.png in Resources */,
+				27D91F4217F1C0B800627ECD /* Default-568h@2x.png in Resources */,
 				27660F67178ED73B0012B667 /* tabMapIconSelected@2x.png in Resources */,
 				27660F69178ED73B0012B667 /* tabRealtimeIcon@2x.png in Resources */,
 				27660F6B178ED73B0012B667 /* tabSchedulesIcon@2x.png in Resources */,
@@ -4724,8 +4724,6 @@
 				2769D2A0178F0CFA003BF840 /* mainBackground@2x.png in Resources */,
 				2769D2A5178F18ED003BF840 /* splash.png in Resources */,
 				2769D2A6178F18ED003BF840 /* splash@2x.png in Resources */,
-				2702B37F1790714700153F72 /* septaIcon.png in Resources */,
-				2702B3811790714C00153F72 /* septaIcon@2x.png in Resources */,
 				2777A2E81796C62000367EC6 /* gradient_line@2x.png in Resources */,
 				2777A2EA1796C62000367EC6 /* gradient_line.png in Resources */,
 				27E0688E17998B3300BA7A92 /* MainStoryboard.storyboard in Resources */,
@@ -4741,6 +4739,7 @@
 				27A972FA17AA9134001A4395 /* KMLMapsStoryboard.storyboard in Resources */,
 				27A972FF17AAA0F2001A4395 /* TransitViewStoryboard.storyboard in Resources */,
 				27A9730717AAA188001A4395 /* TransitRouteListCell.xib in Resources */,
+				27D91F4417F1C0B800627ECD /* Default@2x.png in Resources */,
 				27FE7C0017AABBC700B7F2F2 /* SystemStatusStoryboard.storyboard in Resources */,
 				27FE7C0517AABD3400B7F2F2 /* SystemStatusCell.xib in Resources */,
 				27167CE317AACCC9009774A4 /* NearestLocationStoryboard.storyboard in Resources */,
@@ -4956,6 +4955,7 @@
 				840D10F517C2B9E400AD26BB /* cross-county-BG.png in Resources */,
 				840D10F617C2B9E400AD26BB /* cross-county.png in Resources */,
 				840D10F717C2B9E400AD26BB /* Independence-Pass-BG.png in Resources */,
+				27D91F4817F1C0C400627ECD /* septaIcon@2x.png in Resources */,
 				840D10F817C2B9E400AD26BB /* Independence-Pass.png in Resources */,
 				840D10F917C2B9E400AD26BB /* One-day-Convenience-BG.png in Resources */,
 				840D10FA17C2B9E400AD26BB /* One-day-Convenience.png in Resources */,
@@ -4996,10 +4996,12 @@
 				27EBAD7B17E243E200189970 /* attributionsIcon@2x.png in Resources */,
 				27EBAD7E17E243ED00189970 /* 24HoursIcon.png in Resources */,
 				27EBAD7F17E243ED00189970 /* attributionsIcon.png in Resources */,
+				27D91F3017F0A5AE00627ECD /* TrainSlidingStoryboard.storyboard in Resources */,
 				27EBAD8817E36D9D00189970 /* AttributionCell.xib in Resources */,
 				27EBAD9017E36F5000189970 /* Attributions.plist in Resources */,
 				27EBAD9D17E7881900189970 /* transitView_system-status@2x.png in Resources */,
 				27EBAD9E17E7881900189970 /* transitView-In-service_lines@2x.png in Resources */,
+				27D91F4317F1C0B800627ECD /* Default.png in Resources */,
 				27EBAD9F17E7881900189970 /* transitView-NHSL@2x.png in Resources */,
 				27EBADA017E7881900189970 /* transitView-Out-of-service_lines@2x.png in Resources */,
 				27EBADA117E7881900189970 /* transitView-Trolley-Blue@2x.png in Resources */,
@@ -5139,6 +5141,7 @@
 				27A5EAB916974106004C9467 /* CHDigitInput.m in Sources */,
 				2718486516A5947F00423F9D /* SaveController.m in Sources */,
 				2718486816A59A3C00423F9D /* FindNearestRouteSaveObject.m in Sources */,
+				27D91F3C17F0A65700627ECD /* TrainRealtimeDataViewController.m in Sources */,
 				27B7F7B916A9E6DF003DF486 /* MKMultiPolyLine.m in Sources */,
 				27504D2416DD19E7001B762A /* CommentQuickViewController.m in Sources */,
 				271AFD5C16E52B7E00A11B8E /* ItineraryObject.m in Sources */,
@@ -5159,10 +5162,8 @@
 				41E22F4016FF5F3C00126DC2 /* StopSequenceCellData.m in Sources */,
 				27488D92171355D200A20195 /* StopObject.m in Sources */,
 				27488D981714775700A20195 /* NewTrainViewViewController.m in Sources */,
-				84ED08F617EF48A300CA9EC6 /* TransitDataViewController.m in Sources */,
 				27488D9D17147FB100A20195 /* TransitMapViewController.m in Sources */,
 				411C343717170B3200A694F0 /* NewFindNearestViewController.m in Sources */,
-				84ED08F917EF494500CA9EC6 /* TransitDrawerViewController.m in Sources */,
 				411C343C17170B4200A694F0 /* FindNearestMapViewController.m in Sources */,
 				273E59E117340FC100E9B11B /* CCTConnectViewController.m in Sources */,
 				273E59E517340FDF00E9B11B /* CCTParser.m in Sources */,
@@ -5235,7 +5236,8 @@
 				27EBAD8B17E36DCB00189970 /* AttributionCell.m in Sources */,
 				27EBAD8E17E36EE900189970 /* AttributionData.m in Sources */,
 				27EBAD9617E7518700189970 /* GetAlertDataAPI.m in Sources */,
-				84ED08EA17EF47DB00CA9EC6 /* TrainMapViewController.m in Sources */,
+				27D91F3617F0A60100627ECD /* TrainSlidingViewController.m in Sources */,
+				27D91F3917F0A63F00627ECD /* TrainMapViewController.m in Sources */,
 				2731189417EB55D40046757B /* EnterAddressViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

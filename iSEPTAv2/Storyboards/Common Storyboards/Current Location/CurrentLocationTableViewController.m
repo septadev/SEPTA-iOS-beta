@@ -302,6 +302,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
+    BasicRouteObject *rObj;
+    rObj = [_tableData objectAtIndex: indexPath.row];
+    NSLog(@"CLTVC - BRO: %@", rObj);
+    
     [self.navigationItem.rightBarButtonItem setEnabled:YES];
 //    [self btnDismissPressed:nil];
     
@@ -349,7 +353,8 @@
         
     }
     
-//    [self.navigationController popViewControllerAnimated:YES];
+    
+    [self.navigationController popViewControllerAnimated:YES];
     NSLog(@"CLTVC - dismissed!");
     
 }

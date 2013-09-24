@@ -129,6 +129,8 @@
     [ut run];
     [ut cleanup];
     
+    ut = nil;
+    
     NSLog(@"Unit Testing Finished");
     
     

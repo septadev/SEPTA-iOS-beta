@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking 3
 #define COCOAPODS_VERSION_PATCH_AFNetworking 1
 
+// ECSlidingViewController
+#define COCOAPODS_POD_AVAILABLE_ECSlidingViewController
+#define COCOAPODS_VERSION_MAJOR_ECSlidingViewController 0
+#define COCOAPODS_VERSION_MINOR_ECSlidingViewController 10
+#define COCOAPODS_VERSION_PATCH_ECSlidingViewController 0
+
 // FMDB
 #define COCOAPODS_POD_AVAILABLE_FMDB
 #define COCOAPODS_VERSION_MAJOR_FMDB 2
@@ -29,36 +35,6 @@
 #define COCOAPODS_VERSION_MAJOR_FMDB_standard 2
 #define COCOAPODS_VERSION_MINOR_FMDB_standard 1
 #define COCOAPODS_VERSION_PATCH_FMDB_standard 0
-
-// MMDrawerController
-#define COCOAPODS_POD_AVAILABLE_MMDrawerController
-#define COCOAPODS_VERSION_MAJOR_MMDrawerController 0
-#define COCOAPODS_VERSION_MINOR_MMDrawerController 4
-#define COCOAPODS_VERSION_PATCH_MMDrawerController 0
-
-// MMDrawerController/Core
-#define COCOAPODS_POD_AVAILABLE_MMDrawerController_Core
-#define COCOAPODS_VERSION_MAJOR_MMDrawerController_Core 0
-#define COCOAPODS_VERSION_MINOR_MMDrawerController_Core 4
-#define COCOAPODS_VERSION_PATCH_MMDrawerController_Core 0
-
-// MMDrawerController/MMDrawerBarButtonItem
-#define COCOAPODS_POD_AVAILABLE_MMDrawerController_MMDrawerBarButtonItem
-#define COCOAPODS_VERSION_MAJOR_MMDrawerController_MMDrawerBarButtonItem 0
-#define COCOAPODS_VERSION_MINOR_MMDrawerController_MMDrawerBarButtonItem 4
-#define COCOAPODS_VERSION_PATCH_MMDrawerController_MMDrawerBarButtonItem 0
-
-// MMDrawerController/MMDrawerVisualStates
-#define COCOAPODS_POD_AVAILABLE_MMDrawerController_MMDrawerVisualStates
-#define COCOAPODS_VERSION_MAJOR_MMDrawerController_MMDrawerVisualStates 0
-#define COCOAPODS_VERSION_MINOR_MMDrawerController_MMDrawerVisualStates 4
-#define COCOAPODS_VERSION_PATCH_MMDrawerController_MMDrawerVisualStates 0
-
-// MMDrawerController/Subclass
-#define COCOAPODS_POD_AVAILABLE_MMDrawerController_Subclass
-#define COCOAPODS_VERSION_MAJOR_MMDrawerController_Subclass 0
-#define COCOAPODS_VERSION_MINOR_MMDrawerController_Subclass 4
-#define COCOAPODS_VERSION_PATCH_MMDrawerController_Subclass 0
 
 // QuickDialog
 #define COCOAPODS_POD_AVAILABLE_QuickDialog

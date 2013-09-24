@@ -919,18 +919,46 @@
     [trip setStart_stop_name: routeObj.stop_name];
     [trip setStart_stop_id  : [NSNumber numberWithInt: [routeObj.stop_id intValue] ] ];
     
-    NSArray *tempArr = [_tableData objectForSectionWithTitle:@"Data"];
-    NSUInteger index = [tempArr indexOfObjectWithOptions:NSEnumerationConcurrent
-                                             passingTest:^(id obj, NSUInteger idx, BOOL *stop)
-                                            {
-                                                TripData *myTrip = (TripData *)obj;
-                                                if ( [myTrip.start_stop_name isEqualToString:trip.start_stop_name])
-                                                {
-                                                    *stop = YES;
-                                                    return YES;
-                                                }
-                                                return NO;
-                                            }];
+    
+    //NSArray *tempArr = [_tableData objectForSectionWithTitle:@"Data"];
+
+    NSUInteger index = 0;
+    for ( int LCV=0; LCV < [_tableData numOfSections]; LCV++ )
+    {
+        
+        NSArray *dataArr = [_tableData objectForSection: LCV];
+        if ( dataArr == nil || [dataArr count] == 0 )
+        {
+            continue;
+        }
+        
+        
+
+        if ( [[dataArr objectAtIndex:0] isKindOfClass:[TripData class] ] )
+        {
+        
+            index = [dataArr indexOfObjectWithOptions:NSEnumerationConcurrent
+                                                 passingTest:^(id obj, NSUInteger idx, BOOL *stop)
+                            {
+                                TripData *myTrip = (TripData *)obj;
+//                                if ( [myTrip.start_stop_name isEqualToString:trip.start_stop_name])
+                                if ( [myTrip.start_stop_id intValue] == [trip.start_stop_id intValue] )
+                                {
+                                    *stop = YES;
+                                    return YES;
+                                }
+                                return NO;
+                            }];
+            
+        }
+        
+        if ( index != NSNotFound )
+        {
+            break;
+        }
+        
+    }
+    
     
 //    NSUInteger index = [tempArr indexOfObject:trip];
     

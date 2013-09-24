@@ -710,7 +710,7 @@ sub populateBusStopDirections
         return;  # This table is only meant for Buses, Trollys, NHSL, BSS/BSO, and MFL/MFO
     }
     
-    my $filename = "direction.php";
+    my $filename = "direction.txt";
 #    unless ( -e $filename )
 #    {
 #        return;
@@ -720,11 +720,11 @@ sub populateBusStopDirections
     my $data;
     if ( -e $filename )
     {
-        $data = `php53 direction.php`;
+        $data = `php53 direction.txt`;
     }
-    elsif ( -e "busStopDirections.txt" )
+    elsif ( -e "busStopDirections.csv" )
     {
-        open DATA, "busStopDirections.txt" or die "Unable to open busStopDirections.txt";
+        open DATA, "busStopDirections.csv" or die "Unable to open busStopDirections.csv";
         while (<DATA>)
         {
             $data .= $_;
@@ -737,10 +737,10 @@ sub populateBusStopDirections
     }
     
     
-#    my $data = `php53 direction.php`;
+#    my $data = `php53 direction.txt`;
     if ( !$data )
     {
-        print " *** WARNING: Unable to create php53 direction.php\n";
+        print " *** WARNING: Unable to create php53 direction.txt\n";
         return;  # Might be better to create the table and leave it empty.
     }
     
@@ -848,7 +848,7 @@ sub populateServiceHours
     my $baseSelect;
     my $selectCreate;
     
-    if ( ( -e 'direction.php' )  ||  ( -e "busStopDirections.txt" ) )
+    if ( ( -e 'direction.txt' )  ||  ( -e "busStopDirections.csv" ) )
     {
 #        $baseSelect = "SELECT trips_bus.route_id as route_id, route_short_name, service_id, direction_id, Direction, MIN(arrival_time) as min, MAX(arrival_time) as max FROM stop_times_bus NATURAL JOIN trips_bus NATURAL JOIN routes_bus JOIN bus_stop_directions ON bus_stop_directions.Route=route_short_name  GROUP BY trips_bus.route_id, service_id, direction_id;";
     
