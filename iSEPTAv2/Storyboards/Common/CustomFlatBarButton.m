@@ -17,42 +17,30 @@
 {
 
     // I feel that this is a horrible idea, but meh.
-    
-    button = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    if ( self == [super initWithCustomView: button] )
-    {
 
+    self = [super initWithCustomView: [UIButton buttonWithType:UIButtonTypeCustom] ];
+    if ( self != nil )
+    {
+    
+        UIButton *myButton = (UIButton*)[self customView];
         UIImage *backButtonImage = [UIImage imageNamed: imageName];
 
-        [button setImage:backButtonImage
-                forState:UIControlStateNormal];
+        [myButton setImage: backButtonImage forState:UIControlStateNormal];
         
-        button.frame = CGRectMake(0, 0, backButtonImage.size.width, backButtonImage.size.height);
-        button.bounds = CGRectOffset(button.bounds, -20, -20);
-        
-//        UIView *buttonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, backButtonImage.size.width, backButtonImage.size.height)];
-//        [button setBounds: CGRectOffset(button.bounds, -20, -20)];
-//        [buttonView addSubview:button];
-        
-        
+        myButton.frame = CGRectMake(0, 0, backButtonImage.size.width, backButtonImage.size.height);
+        myButton.bounds = CGRectOffset(myButton.bounds, -20, -20);
+
         if ( ![delegate respondsToSelector:sel] )
         {
             NSAssert([delegate respondsToSelector:sel], @"Calling method does not implement the selector");
             return nil;
         }
         
-        [button addTarget:delegate
-                   action:sel
-         forControlEvents:UIControlEventTouchUpInside];
+        [myButton addTarget:delegate action:sel forControlEvents:UIControlEventTouchUpInside];
         
     }
-    else
-    {
-        button = nil;
-    }
-    
     return self;
+    
 }
 
 

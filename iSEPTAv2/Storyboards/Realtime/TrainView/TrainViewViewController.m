@@ -140,6 +140,16 @@
 //    [self.imgVerticalDivider setFrame: CGRectMake(100, 100, 268, 4)];
     
     
+    NSString *imageName;
+    
+    if ( self.routeName == nil )
+    {
+        imageName = @"RRL_white.png";
+    }
+    else
+    {
+        imageName = @"RRL_white.png";
+    }
     
     CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed:@"RRL_white.png" withTarget:self andWithAction:@selector(backButtonPressed:)];
     self.navigationItem.leftBarButtonItem = backBarButtonItem;
@@ -1329,7 +1339,7 @@
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view
 {
     
-    mapAnnotation *pin = (mapAnnotation*)view.annotation;
+//    mapAnnotation *pin = (mapAnnotation*)view.annotation;
     [self.tableView deselectRowAtIndexPath: self.tableView.indexPathForSelectedRow animated:YES];
     
 //    int row = 0;

@@ -123,15 +123,14 @@
     [NSThread sleepForTimeInterval:.5];
     // Override point for customization after application launch.
  
-    UnitTest_TableViewStore *ut = [[UnitTest_TableViewStore alloc] init];
-    
-    [ut setup];
-    [ut run];
-    [ut cleanup];
-    
-    ut = nil;
-    
-    NSLog(@"Unit Testing Finished");
+//    UnitTest_TableViewStore *ut = [[UnitTest_TableViewStore alloc] init];
+//    
+//    [ut setup];
+//    [ut run];
+//    [ut cleanup];
+//    
+//    
+//    NSLog(@"Unit Testing Finished");
     
     
 #ifdef ENABLE_PUSH_NOTIFICATIONS
@@ -225,10 +224,10 @@
 {
 //    NSLog(@"AppDelegate - Received Notification: %@", notification);
     
-    NotificationInfo *infoObject = [[NotificationInfo alloc] initWithNotification:notification];
-    
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert!" message:[NSString stringWithFormat:@"Local notification for %@", infoObject.stopName] delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
-    [alertView show];
+//    NotificationInfo *infoObject = [[NotificationInfo alloc] initWithNotification:notification];
+//    
+//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Alert!" message:[NSString stringWithFormat:@"Local notification for %@", infoObject.stopName] delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+//    [alertView show];
     
 }
 

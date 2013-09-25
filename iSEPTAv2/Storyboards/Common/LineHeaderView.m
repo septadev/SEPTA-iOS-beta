@@ -147,7 +147,7 @@
         
     // UIView will contain two elements, a line and a UILabel
     _label = [[UILabel alloc] initWithFrame:CGRectOffset(frame, 0, 0)];
-    [_label setTextAlignment: UITextAlignmentLeft];
+    [_label setTextAlignment: NSTextAlignmentLeft];
     
     [_label setMinimumFontSize: 10.0f];
     [_label setAdjustsFontSizeToFitWidth:YES];

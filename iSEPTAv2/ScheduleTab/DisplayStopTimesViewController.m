@@ -2325,11 +2325,11 @@
         FindLocationsViewController *findVC = (FindLocationsViewController*)[navController topViewController];
         _findLocationsSegue = YES;
         
-        NSIndexPath *thisPath;
-        if ( leftButtonType == kLeftButtonIsStart )
-            thisPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        else if ( leftButtonType == kLeftButtonIsEnd )
-            thisPath = [NSIndexPath indexPathForRow:1 inSection:0];
+//        NSIndexPath *thisPath;
+//        if ( leftButtonType == kLeftButtonIsStart )
+//            thisPath = [NSIndexPath indexPathForRow:0 inSection:0];
+//        else if ( leftButtonType == kLeftButtonIsEnd )
+//            thisPath = [NSIndexPath indexPathForRow:1 inSection:0];
         
         [findVC setTravelMode: self.travelMode];
         
@@ -2362,7 +2362,7 @@
     if ( leftButtonType == kLeftButtonIsStart )
     {
         thisPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        thatPath = [NSIndexPath indexPathForRow:1 inSection:0];
+//        thatPath = [NSIndexPath indexPathForRow:1 inSection:0];
         [routeData.current setStart_stop_name: selectedStopName];
         [routeData.current setStart_stop_id  :   selectedStopID];
         
@@ -2374,7 +2374,7 @@
     else if ( leftButtonType == kLeftButtonIsEnd )
     {
         thisPath = [NSIndexPath indexPathForRow:1 inSection:0];
-        thatPath = [NSIndexPath indexPathForRow:0 inSection:0];
+//        thatPath = [NSIndexPath indexPathForRow:0 inSection:0];
         [routeData.current setEnd_stop_name: selectedStopName];
         [routeData.current setEnd_stop_id  :   selectedStopID];
         

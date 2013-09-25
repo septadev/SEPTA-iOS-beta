@@ -85,6 +85,24 @@
 }
 
 
+-(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    [cell setBackgroundColor: [UIColor colorWithWhite:1.0f alpha:.8] ];
+    
+    UIImageView *separator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gradient_line.png"]];
+    //    [separator setAutoresizesSubviews:YES];
+    //    [separator setAutoresizingMask: (UIViewAutoresizingFlexibleWidth) ];
+    //    [separator setContentMode: UIViewContentModeScaleAspectFit];
+    
+    UITableViewCell *newCell = (UITableViewCell*)cell;
+    
+    [separator setFrame: CGRectOffset(separator.frame, 0, newCell.frame.size.height-separator.frame.size.height)];
+    [newCell.contentView addSubview: separator];
+    
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)thisTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -94,7 +112,7 @@
     RealtimeVehicleInformationCell *cell;
     
     cell = (RealtimeVehicleInformationCell*)[thisTableView dequeueReusableCellWithIdentifier: vehicleCell];
-    
+    [cell setBackgroundColor: [UIColor redColor] ];
     
     id object = [_tableData objectAtIndex: indexPath.row];
     if ( [object isKindOfClass:[TransitViewObject class] ] )

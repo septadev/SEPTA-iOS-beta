@@ -461,6 +461,12 @@
 }
 
 
+-(void) addAnnotationsUsingJSONBusLocations:(NSData*) returnedData
+{
+    
+}
+
+
 -(void) addAnnotationsUsingJSONRailLocations:(NSData*) returnedData
 {
     

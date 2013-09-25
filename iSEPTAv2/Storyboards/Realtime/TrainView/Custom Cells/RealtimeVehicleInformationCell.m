@@ -44,6 +44,8 @@
     if ( [object isKindOfClass:[TrainViewObject class] ] )
     {
         
+        [self setBackgroundColor:[UIColor purpleColor] ];
+        
         UIColor *lblColor;
         if ( [[object trainNo] intValue] % 2 == 0 )
         {

@@ -48,8 +48,6 @@
 {
     
     [super viewDidLoad];
-
-    return;
     
     _tableData = [[NSMutableArray alloc] init];
     _annotationLookup = [[NSMutableDictionary alloc] init];
@@ -78,8 +76,10 @@
     }
     
     
+    
+    
     LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0, 500, 32) withTitle: title];
-    [self.navigationItem setTitleView:titleView];
+    [self.slidingViewController.navigationItem setTitleView:titleView];
     
     
     // --==
@@ -87,6 +87,7 @@
     // --==
     if ( [CLLocationManager locationServicesEnabled] )
     {
+        
         _locationManager = [[CLLocationManager alloc] init];
         [_locationManager setDelegate:self];
         [_locationManager startUpdatingLocation];
@@ -128,9 +129,9 @@
     if ( _locationEnabled )
     {
         // If the network is not reachable, try again in another 20 seconds
-//        [self getLatestJSONData];       // Grabs the last updated data on the vehciles of the requested route
+        [self getLatestJSONData];       // Grabs the last updated data on the vehciles of the requested route
         
-//        [self loadKMLInTheBackground];  // Loads the KML for the requested route in the background
+        [self loadKMLInTheBackground];  // Loads the KML for the requested route in the background
     }
     
 }
@@ -140,6 +141,7 @@
 -(void) viewWillDisappear:(BOOL)animated
 {
     
+    NSLog(@"TMVC - viewWillDisappear");
     [super viewDidDisappear:animated];
     
     [_jsonQueue cancelAllOperations];
@@ -147,8 +149,7 @@
     
     // Dismiss any running HUDs.  If no HUDs are running, nothing happens.
     [SVProgressHUD dismiss];
-    
-    
+
     if ( updateTimer == nil )
     return;
     
@@ -182,6 +183,9 @@
     CustomFlatBarButton *rightButton = [[CustomFlatBarButton alloc] initWithImageNamed:@"second-menu.png" withTarget:self andWithAction:@selector(slide:)];
     [self.slidingViewController.navigationItem setRightBarButtonItem: rightButton];
     
+    CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed:@"RRL_white.png" withTarget:self andWithAction:@selector(backButtonPressed:)];
+    self.slidingViewController.navigationItem.leftBarButtonItem = backBarButtonItem;
+    
 //    self.slidingViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(slide:)];
     
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
@@ -198,9 +202,16 @@
     // Dispose of any resources that can be recreated.
     NSLog(@"TMVC - didReceiveMemoryWarning");
     
-    _trainDataVC = nil;
+    [_locationManager setDelegate:nil];
+    [_locationManager stopUpdatingLocation];
+    _locationManager = nil;
+    
+    [self.mapView setDelegate:nil];
     [self setMapView:nil];
     
+    _trainDataVC = nil;
+    kmlParser = nil;
+
 }
 
 
@@ -223,6 +234,12 @@
     else
         [self.slidingViewController resetTopView];
     
+}
+
+
+-(void) backButtonPressed:(id) sender
+{
+    [self.slidingViewController.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -486,7 +503,7 @@
     _tableData = readData;
     if ( _trainDataVC != nil )
     {
-//        [_trainDataVC updateTableData: _tableData];
+        [_trainDataVC updateTableData: _tableData];
     }
     
     [self kickOffAnotherJSONRequest];
@@ -770,12 +787,14 @@
     }
     
     //    NSLog(@"TVVC -(void) kickOffAnotherMapKitJSONRequest");
-    updateTimer =[NSTimer scheduledTimerWithTimeInterval:JSON_REFRESH_RATE
-                                                  target:self
-                                                selector:@selector(getLatestRouteLocations)
-                                                userInfo:nil
-                                                 repeats:NO];
+//    updateTimer =[NSTimer scheduledTimerWithTimeInterval:JSON_REFRESH_RATE
+//                                                  target:self
+//                                                selector:@selector(getLatestRouteLocations)
+//                                                userInfo:nil
+//                                                 repeats:NO];
+    
 }
+
 
 
 
@@ -806,7 +825,7 @@
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view
 {
     
-    mapAnnotation *pin = (mapAnnotation*)view.annotation;
+//    mapAnnotation *pin = (mapAnnotation*)view.annotation;
 //    [self.tableView deselectRowAtIndexPath: self.tableView.indexPathForSelectedRow animated:YES];
     
     //    int row = 0;

@@ -288,7 +288,7 @@
     }
     else
     {
-        [cell.textLabel setTextAlignment: UITextAlignmentLeft];
+        [cell.textLabel setTextAlignment: NSTextAlignmentLeft];
         [cell setAccessoryType: UITableViewCellAccessoryNone];
     }
     

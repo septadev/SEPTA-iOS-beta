@@ -199,7 +199,7 @@
     
     
     NSString *title;
-    CGFloat fontSize = 45.0f/2.0f;
+//    CGFloat fontSize = 45.0f/2.0f;
     if ( [self.travelMode isEqualToString:@"Rail"] )
     {
         title = @"Regional Rail Lines";
@@ -223,7 +223,7 @@
         title = @"Market-Frankford Line";
         _backButtonImage = @"MFL_white.png";
         _routeType = kSEPTATypeMFL;
-        fontSize = 20.0f;
+//        fontSize = 20.0f;
     }
     else if ( [self.travelMode isEqualToString:@"BSS"] )
     {
@@ -2959,7 +2959,7 @@
                 
                 // These three values are the criteria used to filter _masterTrainArr into _currentTrainArr
                 // We'll use the same criteria.  So if the user switches to Sat or Sun, the active trains for the weekday will not be displayed
-                [atObject setStartTime: trip.startTime];     // ordered by this
+                [atObject setStartTime: [NSString stringWithFormat:@"%d", [trip.startTime intValue] ] ];     // ordered by this
                 [atObject setServiceID: trip.serviceID ];     // sorted by this
                 [atObject setDirectionID:trip.directionID];  // and sorted by this
                 [atObject setTripID: trip.tripID];

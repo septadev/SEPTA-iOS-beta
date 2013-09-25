@@ -14,9 +14,9 @@
 
 @implementation TrainSlidingViewController
 {
-    TrainMapViewController *_tmvc;
-    TrainRealtimeDataViewController *_trdvc;
+
 }
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,7 +36,13 @@
     UIStoryboard *storyboard;
 
     storyboard = [UIStoryboard storyboardWithName:@"TrainSlidingStoryboard" bundle:nil];
-    [self setTopViewController: [storyboard instantiateViewControllerWithIdentifier:@"Map"] ];
+    
+    TrainMapViewController *tmvc = [storyboard instantiateViewControllerWithIdentifier:@"Map"];
+    
+    [tmvc setRouteName: self.routeName];
+    [tmvc setTravelMode:self.travelMode];
+    
+    [self setTopViewController: tmvc ];
     
 }
 
@@ -45,6 +51,8 @@
 {
     [super viewDidDisappear:animated];
     NSLog(@"TSVC:vDD - view Did Disappear");
+    
+//    [self setTopViewController:nil];
 }
 
 
@@ -58,6 +66,9 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+    [self setTopViewController: nil];
+    
 }
 
 @end

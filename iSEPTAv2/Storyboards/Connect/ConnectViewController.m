@@ -421,7 +421,7 @@
             
             if ( [detailsMulti textValue] != nil )
             {
-                filteredComments = [filteredComments stringByAppendingFormat:@"\nSent from iPhone/iPad"];
+//                filteredComments = [filteredComments stringByAppendingFormat:@"\nSent from iPhone/iPad"];
                 filteredComments = [[detailsMulti textValue] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             }
             else

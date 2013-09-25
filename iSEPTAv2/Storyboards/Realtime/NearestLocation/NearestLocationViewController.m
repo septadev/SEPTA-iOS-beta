@@ -1284,6 +1284,22 @@
     
 }
 
+
+-(void)didBeginEditing:(id)sender
+{
+    
+}
+
+-(void)didEndEditing:(id)sender
+{
+    
+}
+
+-(void)valueChanged:(id)sender
+{
+    
+}
+
 //-(void) showRadiusView
 //{
 //    CGRect frame = radiusView.frame;

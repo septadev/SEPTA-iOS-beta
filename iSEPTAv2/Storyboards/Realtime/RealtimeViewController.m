@@ -165,54 +165,17 @@
 - (IBAction)btnTrainViewPressed:(id)sender
 {
 
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TrainViewStoryboard" bundle:nil];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TrainViewStoryboard" bundle:nil];
+//    TrainViewViewController *tvVC = (TrainViewViewController*)[storyboard instantiateInitialViewController];
+//    [self.navigationController pushViewController:tvVC animated:YES];
+//    
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TrainSlidingStoryboard" bundle:nil];
     TrainViewViewController *tvVC = (TrainViewViewController*)[storyboard instantiateInitialViewController];
     [self.navigationController pushViewController:tvVC animated:YES];
     
-    
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TrainSlidingStoryboard" bundle:nil];
-//    TrainViewViewController *tvVC = (TrainViewViewController*)[storyboard instantiateInitialViewController];
-//    [self.navigationController pushViewController:tvVC animated:YES];
-    
-    
-//    TransitDrawerViewController *tdvc = [[TransitDrawerViewController alloc] init];
-//    [self.navigationController pushViewController: tdvc animated:YES];
-    
-    
-    
-//    UIStoryboard *tdStoryboard = [UIStoryboard storyboardWithName:@"TransitDataStoryboard" bundle:nil];
-//    TransitDataViewController *tvVC = (TransitDataViewController*)[tdStoryboard instantiateInitialViewController];
-//    
-//    UIStoryboard *tmStoryboard = [UIStoryboard storyboardWithName:@"TrainMapStoryboard" bundle:nil];
-//    TrainMapViewController *tmVC = (TrainMapViewController*)[tmStoryboard instantiateInitialViewController];
-//    
-////    UIViewController *leftDrawer = [[UIViewController alloc] init];
-//
-//
-//    _drawerController = [[MMDrawerController alloc]
-//                                            initWithCenterViewController:tvVC
-//                                            leftDrawerViewController:nil
-//                                            rightDrawerViewController:tmVC];
-//
-//    
-//
-//    [_drawerController setMaximumRightDrawerWidth:self.view.frame.size.width - 40.0f];
-//    [_drawerController setOpenDrawerGestureModeMask: MMOpenDrawerGestureModeAll];
-//    [_drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-//    
-////    MMDrawerBarButtonItem *rightDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(rightDrawerViewController:)];
-////    [self.navigationItem setRightBarButtonItem:rightDrawerButton animated:YES];
-//
-//    
-//    
-//    [self.navigationController pushViewController:_drawerController animated:YES];
 
 }
-
-//-(void)rightDrawerButtonPress:(id)sender
-//{
-//    [_drawerController toggleDrawerSide: MMDrawerSideRight animated:YES completion:nil];
-//}
 
 
 - (IBAction)btnTransitViewPress:(id)sender

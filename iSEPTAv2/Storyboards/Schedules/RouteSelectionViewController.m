@@ -1101,20 +1101,20 @@
     [iVC setTravelMode: self.travelMode];
     
     
-    NSString *routeName;
-    RouteData *currentRoute = [_routeData objectWithIndexPath: path];
-    if ( [self.travelMode isEqualToString:@"Rail"] )
-    {
-        routeName = [NSString stringWithFormat:@"Route %@",[currentRoute route_id] ];
-    }
-    else if ( [self.travelMode isEqualToString:@"Bus"] )
-    {
-        routeName = [NSString stringWithFormat:@"Route %@", [currentRoute route_short_name] ];
-    }
-    else
-    {
-        routeName = self.travelMode;
-    }
+//    NSString *routeName;
+//    RouteData *currentRoute = [_routeData objectWithIndexPath: path];
+//    if ( [self.travelMode isEqualToString:@"Rail"] )
+//    {
+//        routeName = [NSString stringWithFormat:@"Route %@",[currentRoute route_id] ];
+//    }
+//    else if ( [self.travelMode isEqualToString:@"Bus"] )
+//    {
+//        routeName = [NSString stringWithFormat:@"Route %@", [currentRoute route_short_name] ];
+//    }
+//    else
+//    {
+//        routeName = self.travelMode;
+//    }
     
     
     

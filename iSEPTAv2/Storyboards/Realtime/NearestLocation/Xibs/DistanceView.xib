@@ -1,579 +1,115 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
-	<data>
-		<int key="IBDocument.SystemTarget">1552</int>
-		<string key="IBDocument.SystemVersion">12E55</string>
-		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1187.39</string>
-		<string key="IBDocument.HIToolboxVersion">626.00</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">2083</string>
-		</object>
-		<array key="IBDocument.IntegratedClassDependencies">
-			<string>IBProxyObject</string>
-			<string>IBUIImageView</string>
-			<string>IBUILabel</string>
-			<string>IBUIView</string>
-		</array>
-		<array key="IBDocument.PluginDependencies">
-			<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-		</array>
-		<object class="NSMutableDictionary" key="IBDocument.Metadata">
-			<string key="NS.key.0">PluginDependencyRecalculationVersion</string>
-			<integer value="1" key="NS.object.0"/>
-		</object>
-		<array class="NSMutableArray" key="IBDocument.RootObjects" id="1000">
-			<object class="IBProxyObject" id="841351856">
-				<string key="IBProxiedObjectIdentifier">IBFilesOwner</string>
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-			</object>
-			<object class="IBProxyObject" id="371349661">
-				<string key="IBProxiedObjectIdentifier">IBFirstResponder</string>
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-			</object>
-			<object class="IBUIView" id="337164872">
-				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">292</int>
-				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIImageView" id="733366391">
-						<reference key="NSNextResponder" ref="337164872"/>
-						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{8, 0}, {304, 107}}</string>
-						<reference key="NSSuperview" ref="337164872"/>
-						<reference key="NSNextKeyView" ref="204401356"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<object class="NSCustomResource" key="IBUIImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">Find_Loc_Distance.png</string>
-						</object>
-					</object>
-					<object class="IBUIImageView" id="411403581">
-						<reference key="NSNextResponder" ref="337164872"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{28, 34}, {46, 46}}</string>
-						<reference key="NSSuperview" ref="337164872"/>
-						<reference key="NSNextKeyView" ref="380693440"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">2</int>
-							<bytes key="NSRGB">MC40NTQ5MDE5OTMzIDAuNDU0OTAxOTkzMyAwLjQ0NzA1ODg1NjUAA</bytes>
-						</object>
-						<float key="IBUIAlpha">0.80000001192092896</float>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-					</object>
-					<object class="IBUIImageView" id="365588244">
-						<reference key="NSNextResponder" ref="337164872"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{83, 34}, {46, 46}}</string>
-						<reference key="NSSuperview" ref="337164872"/>
-						<reference key="NSNextKeyView" ref="601090676"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">2</int>
-							<bytes key="NSRGB">MC40NTQ5MDE5OTMzIDAuNDU0OTAxOTkzMyAwLjQ0NzA1ODg1NjUAA</bytes>
-						</object>
-						<float key="IBUIAlpha">0.80000001192092896</float>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-					</object>
-					<object class="IBUIImageView" id="317763683">
-						<reference key="NSNextResponder" ref="337164872"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{138, 34}, {46, 46}}</string>
-						<reference key="NSSuperview" ref="337164872"/>
-						<reference key="NSNextKeyView" ref="265681174"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">2</int>
-							<bytes key="NSRGB">MC40NTQ5MDE5OTMzIDAuNDU0OTAxOTkzMyAwLjQ0NzA1ODg1NjUAA</bytes>
-						</object>
-						<float key="IBUIAlpha">0.80000001192092896</float>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-					</object>
-					<object class="IBUIImageView" id="108899052">
-						<reference key="NSNextResponder" ref="337164872"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{193, 34}, {46, 46}}</string>
-						<reference key="NSSuperview" ref="337164872"/>
-						<reference key="NSNextKeyView" ref="12771081"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">2</int>
-							<bytes key="NSRGB">MC40NTQ5MDE5OTMzIDAuNDU0OTAxOTkzMyAwLjQ0NzA1ODg1NjUAA</bytes>
-						</object>
-						<float key="IBUIAlpha">0.80000001192092896</float>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-					</object>
-					<object class="IBUIImageView" id="866844789">
-						<reference key="NSNextResponder" ref="337164872"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{248, 34}, {46, 46}}</string>
-						<reference key="NSSuperview" ref="337164872"/>
-						<reference key="NSNextKeyView" ref="687888745"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">2</int>
-							<bytes key="NSRGB">MC40NTQ5MDE5OTMzIDAuNDU0OTAxOTkzMyAwLjQ0NzA1ODg1NjUAA</bytes>
-						</object>
-						<float key="IBUIAlpha">0.80000001192092896</float>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-					</object>
-					<object class="IBUILabel" id="204401356">
-						<reference key="NSNextResponder" ref="337164872"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{28, 12}, {266, 21}}</string>
-						<reference key="NSSuperview" ref="337164872"/>
-						<reference key="NSNextKeyView" ref="411403581"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">7</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Distance from your current location to search:</string>
-						<object class="NSColor" key="IBUITextColor" id="234628541">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MQA</bytes>
-						</object>
-						<nil key="IBUIHighlightedColor"/>
-						<int key="IBUIBaselineAdjustment">0</int>
-						<float key="IBUIMinimumScaleFactor">0.5</float>
-						<object class="IBUIFontDescription" key="IBUIFontDescription">
-							<string key="name">TrebuchetMS-Bold</string>
-							<string key="family">Trebuchet MS</string>
-							<int key="traits">2</int>
-							<double key="pointSize">19</double>
-						</object>
-						<object class="NSFont" key="IBUIFont">
-							<string key="NSName">TrebuchetMS-Bold</string>
-							<double key="NSSize">19</double>
-							<int key="NSfFlags">16</int>
-						</object>
-					</object>
-					<object class="IBUILabel" id="613035970">
-						<reference key="NSNextResponder" ref="337164872"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{252, 80}, {42, 21}}</string>
-						<reference key="NSSuperview" ref="337164872"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">7</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">miles</string>
-						<reference key="IBUITextColor" ref="234628541"/>
-						<nil key="IBUIHighlightedColor"/>
-						<int key="IBUIBaselineAdjustment">0</int>
-						<object class="IBUIFontDescription" key="IBUIFontDescription">
-							<string key="name">TrebuchetMS-Bold</string>
-							<string key="family">Trebuchet MS</string>
-							<int key="traits">2</int>
-							<double key="pointSize">17</double>
-						</object>
-						<object class="NSFont" key="IBUIFont">
-							<string key="NSName">TrebuchetMS-Bold</string>
-							<double key="NSSize">17</double>
-							<int key="NSfFlags">16</int>
-						</object>
-						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-					</object>
-					<object class="IBUILabel" id="380693440">
-						<reference key="NSNextResponder" ref="337164872"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{28, 44}, {46, 25}}</string>
-						<reference key="NSSuperview" ref="337164872"/>
-						<reference key="NSNextKeyView" ref="365588244"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">7</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">0</string>
-						<reference key="IBUITextColor" ref="234628541"/>
-						<nil key="IBUIHighlightedColor"/>
-						<int key="IBUIBaselineAdjustment">0</int>
-						<int key="IBUITextAlignment">1</int>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="317828028">
-							<string key="name">TrebuchetMS-Bold</string>
-							<string key="family">Trebuchet MS</string>
-							<int key="traits">2</int>
-							<double key="pointSize">30</double>
-						</object>
-						<object class="NSFont" key="IBUIFont" id="342222210">
-							<string key="NSName">TrebuchetMS-Bold</string>
-							<double key="NSSize">30</double>
-							<int key="NSfFlags">16</int>
-						</object>
-						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-					</object>
-					<object class="IBUILabel" id="601090676">
-						<reference key="NSNextResponder" ref="337164872"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{83, 44}, {46, 25}}</string>
-						<reference key="NSSuperview" ref="337164872"/>
-						<reference key="NSNextKeyView" ref="317763683"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">7</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">.</string>
-						<reference key="IBUITextColor" ref="234628541"/>
-						<nil key="IBUIHighlightedColor"/>
-						<int key="IBUIBaselineAdjustment">0</int>
-						<int key="IBUITextAlignment">1</int>
-						<reference key="IBUIFontDescription" ref="317828028"/>
-						<reference key="IBUIFont" ref="342222210"/>
-						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-					</object>
-					<object class="IBUILabel" id="265681174">
-						<reference key="NSNextResponder" ref="337164872"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{138, 44}, {46, 25}}</string>
-						<reference key="NSSuperview" ref="337164872"/>
-						<reference key="NSNextKeyView" ref="108899052"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">7</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">1</string>
-						<reference key="IBUITextColor" ref="234628541"/>
-						<nil key="IBUIHighlightedColor"/>
-						<int key="IBUIBaselineAdjustment">0</int>
-						<int key="IBUITextAlignment">1</int>
-						<reference key="IBUIFontDescription" ref="317828028"/>
-						<reference key="IBUIFont" ref="342222210"/>
-						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-					</object>
-					<object class="IBUILabel" id="12771081">
-						<reference key="NSNextResponder" ref="337164872"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{193, 44}, {46, 25}}</string>
-						<reference key="NSSuperview" ref="337164872"/>
-						<reference key="NSNextKeyView" ref="866844789"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">7</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">2</string>
-						<reference key="IBUITextColor" ref="234628541"/>
-						<nil key="IBUIHighlightedColor"/>
-						<int key="IBUIBaselineAdjustment">0</int>
-						<int key="IBUITextAlignment">1</int>
-						<reference key="IBUIFontDescription" ref="317828028"/>
-						<reference key="IBUIFont" ref="342222210"/>
-						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-					</object>
-					<object class="IBUILabel" id="687888745">
-						<reference key="NSNextResponder" ref="337164872"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{248, 44}, {46, 25}}</string>
-						<reference key="NSSuperview" ref="337164872"/>
-						<reference key="NSNextKeyView" ref="613035970"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">7</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">5</string>
-						<reference key="IBUITextColor" ref="234628541"/>
-						<nil key="IBUIHighlightedColor"/>
-						<int key="IBUIBaselineAdjustment">0</int>
-						<int key="IBUITextAlignment">1</int>
-						<reference key="IBUIFontDescription" ref="317828028"/>
-						<reference key="IBUIFont" ref="342222210"/>
-						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-					</object>
-				</array>
-				<string key="NSFrameSize">{320, 107}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSNextKeyView" ref="733366391"/>
-				<string key="NSReuseIdentifierKey">_NS:9</string>
-				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MCAwAA</bytes>
-				</object>
-				<object class="IBUISimulatedSizeMetrics" key="IBUISimulatedDestinationMetrics">
-					<string key="IBUISimulatedSizeMetricsClass">IBUISimulatedFreeformSizeMetricsSentinel</string>
-					<string key="IBUIDisplayName">Freeform</string>
-				</object>
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-			</object>
-		</array>
-		<object class="IBObjectContainer" key="IBDocument.Objects">
-			<array class="NSMutableArray" key="connectionRecords">
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">imgBackground</string>
-						<reference key="source" ref="337164872"/>
-						<reference key="destination" ref="733366391"/>
-					</object>
-					<int key="connectionID">29</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">imgOnes</string>
-						<reference key="source" ref="337164872"/>
-						<reference key="destination" ref="411403581"/>
-					</object>
-					<int key="connectionID">30</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">imgDecimal</string>
-						<reference key="source" ref="337164872"/>
-						<reference key="destination" ref="365588244"/>
-					</object>
-					<int key="connectionID">31</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">imgTenths</string>
-						<reference key="source" ref="337164872"/>
-						<reference key="destination" ref="317763683"/>
-					</object>
-					<int key="connectionID">32</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">lblTitle</string>
-						<reference key="source" ref="337164872"/>
-						<reference key="destination" ref="204401356"/>
-					</object>
-					<int key="connectionID">35</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">lblMiles</string>
-						<reference key="source" ref="337164872"/>
-						<reference key="destination" ref="613035970"/>
-					</object>
-					<int key="connectionID">36</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">lblOnes</string>
-						<reference key="source" ref="337164872"/>
-						<reference key="destination" ref="380693440"/>
-					</object>
-					<int key="connectionID">37</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">lblDecimal</string>
-						<reference key="source" ref="337164872"/>
-						<reference key="destination" ref="601090676"/>
-					</object>
-					<int key="connectionID">38</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">lblTenths</string>
-						<reference key="source" ref="337164872"/>
-						<reference key="destination" ref="265681174"/>
-					</object>
-					<int key="connectionID">39</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">lblHundredths</string>
-						<reference key="source" ref="337164872"/>
-						<reference key="destination" ref="12771081"/>
-					</object>
-					<int key="connectionID">40</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">lblThousandths</string>
-						<reference key="source" ref="337164872"/>
-						<reference key="destination" ref="687888745"/>
-					</object>
-					<int key="connectionID">41</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">imgHundredths</string>
-						<reference key="source" ref="337164872"/>
-						<reference key="destination" ref="108899052"/>
-					</object>
-					<int key="connectionID">42</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">imgThousandths</string>
-						<reference key="source" ref="337164872"/>
-						<reference key="destination" ref="866844789"/>
-					</object>
-					<int key="connectionID">43</int>
-				</object>
-			</array>
-			<object class="IBMutableOrderedSet" key="objectRecords">
-				<array key="orderedObjects">
-					<object class="IBObjectRecord">
-						<int key="objectID">0</int>
-						<array key="object" id="0"/>
-						<reference key="children" ref="1000"/>
-						<nil key="parent"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">-1</int>
-						<reference key="object" ref="841351856"/>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">File's Owner</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">-2</int>
-						<reference key="object" ref="371349661"/>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">2</int>
-						<reference key="object" ref="337164872"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="733366391"/>
-							<reference ref="411403581"/>
-							<reference ref="365588244"/>
-							<reference ref="317763683"/>
-							<reference ref="108899052"/>
-							<reference ref="866844789"/>
-							<reference ref="204401356"/>
-							<reference ref="613035970"/>
-							<reference ref="380693440"/>
-							<reference ref="601090676"/>
-							<reference ref="265681174"/>
-							<reference ref="12771081"/>
-							<reference ref="687888745"/>
-						</array>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">3</int>
-						<reference key="object" ref="733366391"/>
-						<array class="NSMutableArray" key="children"/>
-						<reference key="parent" ref="337164872"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">17</int>
-						<reference key="object" ref="411403581"/>
-						<reference key="parent" ref="337164872"/>
-						<string key="objectName">Image View - Ones Place</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">18</int>
-						<reference key="object" ref="365588244"/>
-						<reference key="parent" ref="337164872"/>
-						<string key="objectName">Image View - Decimal</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">19</int>
-						<reference key="object" ref="317763683"/>
-						<reference key="parent" ref="337164872"/>
-						<string key="objectName">Image View - Tenths</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">20</int>
-						<reference key="object" ref="108899052"/>
-						<reference key="parent" ref="337164872"/>
-						<string key="objectName">Image View - Hundredths</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">21</int>
-						<reference key="object" ref="866844789"/>
-						<reference key="parent" ref="337164872"/>
-						<string key="objectName">Image View - Thousandths</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">22</int>
-						<reference key="object" ref="204401356"/>
-						<reference key="parent" ref="337164872"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">23</int>
-						<reference key="object" ref="613035970"/>
-						<reference key="parent" ref="337164872"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">24</int>
-						<reference key="object" ref="380693440"/>
-						<reference key="parent" ref="337164872"/>
-						<string key="objectName">Label - Ones Label</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">25</int>
-						<reference key="object" ref="601090676"/>
-						<reference key="parent" ref="337164872"/>
-						<string key="objectName">Label - Decimal Label</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">26</int>
-						<reference key="object" ref="265681174"/>
-						<reference key="parent" ref="337164872"/>
-						<string key="objectName">Label - Tenths Label</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">27</int>
-						<reference key="object" ref="12771081"/>
-						<reference key="parent" ref="337164872"/>
-						<string key="objectName">Label - Hundredths Label</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">28</int>
-						<reference key="object" ref="687888745"/>
-						<reference key="parent" ref="337164872"/>
-						<string key="objectName">Label - Thousandths Label</string>
-					</object>
-				</array>
-			</object>
-			<dictionary class="NSMutableDictionary" key="flattenedProperties">
-				<string key="-1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="-2.CustomClassName">UIResponder</string>
-				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="17.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="18.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="19.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="2.CustomClassName">DistanceView</string>
-				<string key="2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="20.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="21.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="22.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="23.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="24.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="25.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="26.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="27.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="28.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="3.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			</dictionary>
-			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
-			<nil key="activeLocalization"/>
-			<dictionary class="NSMutableDictionary" key="localizations"/>
-			<nil key="sourceID"/>
-			<int key="maxID">43</int>
-		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
-		<int key="IBDocument.localizationMode">0</int>
-		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
-		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
-		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">Find_Loc_Distance.png</string>
-			<string key="NS.object.0">{304, 107}</string>
-		</object>
-		<string key="IBCocoaTouchPluginVersion">2083</string>
-	</data>
-</archive>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+    <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2" customClass="DistanceView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="107"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Find_Loc_Distance.png" id="3">
+                    <rect key="frame" x="8" y="0.0" width="304" height="107"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" id="17" userLabel="Image View - Ones Place">
+                    <rect key="frame" x="28" y="34" width="46" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.45490199329999997" green="0.45490199329999997" blue="0.44705885649999999" alpha="1" colorSpace="deviceRGB"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" id="18" userLabel="Image View - Decimal">
+                    <rect key="frame" x="83" y="34" width="46" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.45490199329999997" green="0.45490199329999997" blue="0.44705885649999999" alpha="1" colorSpace="deviceRGB"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" id="19" userLabel="Image View - Tenths">
+                    <rect key="frame" x="138" y="34" width="46" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.45490199329999997" green="0.45490199329999997" blue="0.44705885649999999" alpha="1" colorSpace="deviceRGB"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" id="20" userLabel="Image View - Hundredths">
+                    <rect key="frame" x="193" y="34" width="46" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.45490199329999997" green="0.45490199329999997" blue="0.44705885649999999" alpha="1" colorSpace="deviceRGB"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" alpha="0.80000001192092896" contentMode="scaleToFill" id="21" userLabel="Image View - Thousandths">
+                    <rect key="frame" x="248" y="34" width="46" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.45490199329999997" green="0.45490199329999997" blue="0.44705885649999999" alpha="1" colorSpace="deviceRGB"/>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Distance from your current location to search:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="22">
+                    <rect key="frame" x="28" y="12" width="266" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="19"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="miles" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="23">
+                    <rect key="frame" x="252" y="80" width="42" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="24" userLabel="Label - Ones Label">
+                    <rect key="frame" x="28" y="44" width="46" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="30"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="25" userLabel="Label - Decimal Label">
+                    <rect key="frame" x="83" y="44" width="46" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="30"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="26" userLabel="Label - Tenths Label">
+                    <rect key="frame" x="138" y="44" width="46" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="30"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="27" userLabel="Label - Hundredths Label">
+                    <rect key="frame" x="193" y="44" width="46" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="30"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="28" userLabel="Label - Thousandths Label">
+                    <rect key="frame" x="248" y="44" width="46" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="30"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imgBackground" destination="3" id="29"/>
+                <outlet property="imgDecimal" destination="18" id="31"/>
+                <outlet property="imgHundredths" destination="20" id="42"/>
+                <outlet property="imgOnes" destination="17" id="30"/>
+                <outlet property="imgTenths" destination="19" id="32"/>
+                <outlet property="imgThousandths" destination="21" id="43"/>
+                <outlet property="lblDecimal" destination="25" id="38"/>
+                <outlet property="lblHundredths" destination="27" id="40"/>
+                <outlet property="lblMiles" destination="23" id="36"/>
+                <outlet property="lblOnes" destination="24" id="37"/>
+                <outlet property="lblTenths" destination="26" id="39"/>
+                <outlet property="lblThousandths" destination="28" id="41"/>
+                <outlet property="lblTitle" destination="22" id="35"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="Find_Loc_Distance.png" width="304" height="107"/>
+    </resources>
+</document>

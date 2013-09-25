@@ -344,20 +344,32 @@
 static inline int timeDiff(int a, int b)
 {
     
+    // Why did I change this again?  What was I on?
     int nowHr = a / 100;
     int arrHr = b / 100;
+
+    int nowMn = a % 100;
+    int arrMn = b % 100;
     
-    int timeBefore = b - a;
+    int temp = (arrHr*60 + arrMn) - (nowHr*60 + nowMn);
+//    int temp = 60 * ((b - a)/100) + ( (b - a) % 100);
     
-    if ( nowHr != arrHr )
-    {
-        timeBefore -= 40 * (arrHr - nowHr);
-    }
+    return (temp/60)*100 + (temp%60);
+    
+//    return tempB;
+    
+    
+//    int timeBefore = b - a;
+//    
+//    if ( nowHr != arrHr )
+//    {
+//        timeBefore -= 40 * (arrHr - nowHr);
+//    }
     
 //    int hour = timeBefore / 100;
 //    int min  = timeBefore % 100;
     
-    return timeBefore;
+//    return timeBefore;
     
 }
 

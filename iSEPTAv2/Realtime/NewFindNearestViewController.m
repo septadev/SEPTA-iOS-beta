@@ -797,7 +797,7 @@
     {
 //        NSLog(@"NFNVC - FindSchedulesSegue");
         
-        BasicRouteObject *rObj = [[BasicRouteObject alloc] init];
+        BasicRouteObject *rObj;  // = [[BasicRouteObject alloc] init];
         
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         rObj = [_tableData objectAtIndex: indexPath.row];

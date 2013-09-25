@@ -204,7 +204,8 @@
 -(void) loadTrainViewVCWithIndexPath: (NSIndexPath*) indexPath
 {
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TrainViewStoryboard" bundle:nil];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TrainViewStoryboard" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TrainSlidingStoryboard" bundle:nil];
     TrainViewViewController *tvVC = (TrainViewViewController*)[storyboard instantiateInitialViewController];
     
     RouteInfo *rInfo = [_tableData objectAtIndex: indexPath.row];
@@ -299,15 +300,15 @@
     // Get current service ID
     int currentServiceID;
     
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
-    int weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
+//    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+//    NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
+//    int weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
     
-    currentServiceID = pow(2,(7-weekday));
+//    currentServiceID = pow(2,(7-weekday));
 
     
     
-    NSString *queryStr = [NSString stringWithFormat: @"SELECT route_id,service_id, MIN(min) as min, MAX(max) as max FROM serviceHours WHERE (service_id & %d) GROUP BY route_id, service_id", currentServiceID];
+    NSString *queryStr; // = [NSString stringWithFormat: @"SELECT route_id,service_id, MIN(min) as min, MAX(max) as max FROM serviceHours WHERE (service_id & %d) GROUP BY route_id, service_id", currentServiceID];
     
     queryStr = @"SELECT s.route_id, r.route_type, s.service_id, MIN(min) as min, MAX(max) as max FROM serviceHours s JOIN routes_bus r ON r.route_short_name = s.route_short_name GROUP BY s.route_id, service_id ORDER BY s.route_id";
     

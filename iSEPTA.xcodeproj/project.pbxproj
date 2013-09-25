@@ -596,7 +596,6 @@
 		4799E7DF3F49438EA2936380 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0D1C7FB3FB402E8733DC76 /* libPods.a */; };
 		56061B621535D0C500B272B0 /* mapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 56061B441535D0C500B272B0 /* mapAnnotation.m */; };
 		56061B661535D0C500B272B0 /* TableViewReload.m in Sources */ = {isa = PBXBuildFile; fileRef = 56061B4C1535D0C500B272B0 /* TableViewReload.m */; };
-		5626FCE91539D00500D77DFB /* CommentForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 5626FCE81539D00500D77DFB /* CommentForm.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		568FA47F1535C0E0009345F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568FA47E1535C0E0009345F5 /* UIKit.framework */; };
 		568FA4811535C0E0009345F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568FA4801535C0E0009345F5 /* Foundation.framework */; };
 		568FA4831535C0E0009345F5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568FA4821535C0E0009345F5 /* CoreGraphics.framework */; };
@@ -822,8 +821,6 @@
 		274A801B174A96630072FAC7 /* twitter-bird-light-bgs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-bird-light-bgs@2x.png"; sourceTree = "<group>"; };
 		274A801E174A96D10072FAC7 /* fbLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fbLogo.png; sourceTree = "<group>"; };
 		274A801F174A96D10072FAC7 /* fbLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fbLogo@2x.png"; sourceTree = "<group>"; };
-		274A8028174A97CA0072FAC7 /* commentsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commentsIcon.png; sourceTree = "<group>"; };
-		274A8029174A97CA0072FAC7 /* commentsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commentsIcon@2x.png"; sourceTree = "<group>"; };
 		274A8030174A998C0072FAC7 /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
 		274A8031174A998C0072FAC7 /* phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone@2x.png"; sourceTree = "<group>"; };
 		274A8049174AB25E0072FAC7 /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email.png; sourceTree = "<group>"; };
@@ -1155,6 +1152,7 @@
 		27A6939817A175F3008712FB /* StopNamesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StopNamesTableViewController.m; path = "Storyboards/Common Storyboards/StopNames/StopNamesTableViewController.m"; sourceTree = "<group>"; };
 		27A73DE1169EFFC20058EE29 /* ActiveAlarmsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActiveAlarmsViewController.h; path = Settings/Alarms/ActiveAlarmsViewController.h; sourceTree = "<group>"; };
 		27A73DE2169EFFC20058EE29 /* ActiveAlarmsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActiveAlarmsViewController.m; path = Settings/Alarms/ActiveAlarmsViewController.m; sourceTree = "<group>"; };
+		27A95A9E17F2120C009C9804 /* CurrentLocationProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CurrentLocationProtocol.h; path = "Storyboards/Common Storyboards/Current Location/Protocol/CurrentLocationProtocol.h"; sourceTree = "<group>"; };
 		27A972F917AA9134001A4395 /* KMLMapsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = KMLMapsStoryboard.storyboard; path = "Storyboards/Common Storyboards/Maps/KMLMapsStoryboard.storyboard"; sourceTree = "<group>"; };
 		27A972FB17AA9148001A4395 /* KMLMapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KMLMapsViewController.h; path = "Storyboards/Common Storyboards/Maps/KMLMapsViewController.h"; sourceTree = "<group>"; };
 		27A972FC17AA9148001A4395 /* KMLMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KMLMapsViewController.m; path = "Storyboards/Common Storyboards/Maps/KMLMapsViewController.m"; sourceTree = "<group>"; };
@@ -1400,7 +1398,6 @@
 		27DE90F4172EE784003E11F3 /* switchStops.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switchStops.png; sourceTree = "<group>"; };
 		27DE90F9172EE784003E11F3 /* BroadStreetLineButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BroadStreetLineButton.png; sourceTree = "<group>"; };
 		27DE90FA172EE784003E11F3 /* BusRoutesButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BusRoutesButton.png; sourceTree = "<group>"; };
-		27DE90FB172EE784003E11F3 /* CommentsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CommentsButton.png; sourceTree = "<group>"; };
 		27DE90FC172EE784003E11F3 /* CustomerSerivceButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CustomerSerivceButton.png; sourceTree = "<group>"; };
 		27DE90FD172EE784003E11F3 /* FacebookButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FacebookButton.png; sourceTree = "<group>"; };
 		27DE90FE172EE784003E11F3 /* FindLocationButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindLocationButton.png; sourceTree = "<group>"; };
@@ -1588,8 +1585,6 @@
 		56061B441535D0C500B272B0 /* mapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mapAnnotation.m; sourceTree = "<group>"; };
 		56061B4B1535D0C500B272B0 /* TableViewReload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewReload.h; sourceTree = "<group>"; };
 		56061B4C1535D0C500B272B0 /* TableViewReload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewReload.m; sourceTree = "<group>"; };
-		5626FCE71539D00500D77DFB /* CommentForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentForm.h; sourceTree = "<group>"; };
-		5626FCE81539D00500D77DFB /* CommentForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentForm.m; sourceTree = "<group>"; };
 		568FA47A1535C0E0009345F5 /* SEPTA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SEPTA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		568FA47E1535C0E0009345F5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		568FA4801535C0E0009345F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1715,13 +1710,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				568FA4F31535C6CF009345F5 /* SystemConfiguration.framework in Frameworks */,
 				273763AD178EE9C6006EE244 /* AddressBook.framework in Frameworks */,
 				273763AE178EE9C6006EE244 /* AddressBookUI.framework in Frameworks */,
 				274B8C7C17733A5D00CBE260 /* MobileCoreServices.framework in Frameworks */,
 				568FA4C91535C189009345F5 /* CFNetwork.framework in Frameworks */,
 				274B8C7A177339E500CBE260 /* Security.framework in Frameworks */,
 				270ABC501771EF5000F631B6 /* MessageUI.framework in Frameworks */,
-				568FA4F31535C6CF009345F5 /* SystemConfiguration.framework in Frameworks */,
 				568FA4CF1535C189009345F5 /* QuartzCore.framework in Frameworks */,
 				568FA4CE1535C189009345F5 /* OpenGLES.framework in Frameworks */,
 				274B2F1D173AAA0A00A04BF4 /* libz.dylib in Frameworks */,
@@ -2265,8 +2260,6 @@
 		274A8023174A97220072FAC7 /* comments */ = {
 			isa = PBXGroup;
 			children = (
-				274A8028174A97CA0072FAC7 /* commentsIcon.png */,
-				274A8029174A97CA0072FAC7 /* commentsIcon@2x.png */,
 				274A8049174AB25E0072FAC7 /* email.png */,
 				274A804A174AB25E0072FAC7 /* email@2x.png */,
 			);
@@ -3087,6 +3080,14 @@
 			name = "Managed Object";
 			sourceTree = "<group>";
 		};
+		27A95A9D17F211F1009C9804 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				27A95A9E17F2120C009C9804 /* CurrentLocationProtocol.h */,
+			);
+			name = Protocol;
+			sourceTree = "<group>";
+		};
 		27A972F817AA90EB001A4395 /* KMLMaps */ = {
 			isa = PBXGroup;
 			children = (
@@ -3632,7 +3633,6 @@
 			children = (
 				27DE90F9172EE784003E11F3 /* BroadStreetLineButton.png */,
 				27DE90FA172EE784003E11F3 /* BusRoutesButton.png */,
-				27DE90FB172EE784003E11F3 /* CommentsButton.png */,
 				27DE90FC172EE784003E11F3 /* CustomerSerivceButton.png */,
 				27DE90FD172EE784003E11F3 /* FacebookButton.png */,
 				27DE90FE172EE784003E11F3 /* FindLocationButton.png */,
@@ -3784,6 +3784,7 @@
 		27E79ADB178C8D9700AAD79C /* Current Location */ = {
 			isa = PBXGroup;
 			children = (
+				27A95A9D17F211F1009C9804 /* Protocol */,
 				27A2142717C2724D0036A0C7 /* Code */,
 				27A2142817C272530036A0C7 /* Xibs */,
 				27A2143317C273AC0036A0C7 /* CurrentLocationStoryboard.storyboard */,
@@ -3913,8 +3914,6 @@
 				27F85D2F16231FEF0055A439 /* CustomerServiceViewController.m */,
 				274A8014174A85CB0072FAC7 /* CustomerServiceTableViewController.h */,
 				274A8015174A85CB0072FAC7 /* CustomerServiceTableViewController.m */,
-				5626FCE71539D00500D77DFB /* CommentForm.h */,
-				5626FCE81539D00500D77DFB /* CommentForm.m */,
 			);
 			name = "Customer Service";
 			sourceTree = "<group>";
@@ -4496,7 +4495,7 @@
 		568FA4711535C0E0009345F5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = SEPTA;
 			};
 			buildConfigurationList = 568FA4741535C0E0009345F5 /* Build configuration list for PBXProject "iSEPTA" */;
@@ -5085,7 +5084,6 @@
 				568FA48F1535C0E0009345F5 /* AppDelegate.m in Sources */,
 				56061B621535D0C500B272B0 /* mapAnnotation.m in Sources */,
 				56061B661535D0C500B272B0 /* TableViewReload.m in Sources */,
-				5626FCE91539D00500D77DFB /* CommentForm.m in Sources */,
 				27F85D3016231FEF0055A439 /* CustomerServiceViewController.m in Sources */,
 				276B1694162CA13700A71D57 /* CustomSearchResultsCell.m in Sources */,
 				27A434B816302DFD00D9724A /* BusRouteSorterView.m in Sources */,
@@ -5281,9 +5279,10 @@
 			baseConfigurationReference = 137D6A82B0C1449D8E396B86 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -5298,14 +5297,18 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = SDK/lib/Release$EFFECTIVE_PLATFORM_NAME;
 				"HEADER_SEARCH_PATHS[arch=*]" = SDK/lib/Release$EFFECTIVE_PLATFORM_NAME;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = SDK/lib/Release$EFFECTIVE_PLATFORM_NAME;
 				"LIBRARY_SEARCH_PATHS[arch=*]" = SDK/lib/Release$EFFECTIVE_PLATFORM_NAME;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = SEPTA;
 				SDKROOT = iphoneos;
 			};
@@ -5316,9 +5319,10 @@
 			baseConfigurationReference = 137D6A82B0C1449D8E396B86 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -5326,8 +5330,11 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = SDK/lib/Release$EFFECTIVE_PLATFORM_NAME;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -5362,9 +5369,6 @@
 				INFOPLIST_FILE = "iSEPTAv2/iSEPTA-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
-					SDK/lib/Release$EFFECTIVE_PLATFORM_NAME,
-					"\"$(SRCROOT)/SDK/lib/Release-iphoneos\"",
-					"\"$(SRCROOT)/SDK/lib/Release-iphonesimulator\"",
 					"\"$(SRCROOT)/iSEPTAv2\"",
 					"\"$(SDKROOT)/usr/lib/system\"",
 				);
@@ -5401,9 +5405,6 @@
 				INFOPLIST_FILE = "iSEPTAv2/iSEPTA-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
-					SDK/lib/Release$EFFECTIVE_PLATFORM_NAME,
-					"\"$(SRCROOT)/SDK/lib/Release-iphoneos\"",
-					"\"$(SRCROOT)/SDK/lib/Release-iphonesimulator\"",
 					"\"$(SRCROOT)/iSEPTAv2\"",
 					"\"$(SDKROOT)/usr/lib/system\"",
 				);

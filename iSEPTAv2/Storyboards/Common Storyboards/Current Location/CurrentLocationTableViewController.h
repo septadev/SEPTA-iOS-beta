@@ -31,17 +31,14 @@
 
 
 //  --==  ViewControllers  ==--
-@protocol CurrentLocationProtocol;  // Forward Declaration of CurrentLocationProtocol.  Or move the EnterAddressVC import below the protocol definition.
+#import <CurrentLocationProtocol.h>
+
 #import "EnterAddressViewController.h"
 #import "StopNamesTableViewController.h"
 
 
 
-@protocol CurrentLocationProtocol <NSObject>
 
--(void) currentLocationSelectionMade:(BasicRouteObject*) routeObj;
-
-@end
 
 
 typedef NS_ENUM(NSInteger, CurrentLocationRouteType)

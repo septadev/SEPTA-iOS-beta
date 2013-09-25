@@ -28,6 +28,8 @@
 
 
 // --==  Connected VCs  ==--
+#import <CurrentLocationProtocol.h>
+
 #import "CurrentLocationTableViewController.h"
 #import "SavedAddressesViewController.h"
 

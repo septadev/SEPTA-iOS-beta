@@ -11,7 +11,8 @@
 
 // --==  View Controllers  ==--
 #import "TrainViewViewController.h"
-#import "OldTrainViewViewController.h"
+//#import "OldTrainViewViewController.h"
+#import "TrainSlidingViewController.h"
 
 
 // --==  Helper Classes  ==--

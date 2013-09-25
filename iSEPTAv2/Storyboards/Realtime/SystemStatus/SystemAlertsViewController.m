@@ -234,32 +234,32 @@
 -(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     
-    float w = self.view.frame.size.width;
-    float pad = 4.0f;
-    float tw; // = (w - pad) / 2.0f;
+//    float w = self.view.frame.size.width;
+//    float pad = 4.0f;
+//    float tw; // = (w - pad) / 2.0f;
     
-    switch ( [_buttonsArr count] )
-    {
-        case 1:
-            tw = w;
-            break;
-            
-        case 2:
-            tw = (w - pad) / 2.0f;
-            break;
-            
-        case 3:
-            tw = (w - (2*pad) ) / 3.0f;
-            break;
-            
-        case 4:
-            tw = (w - (3*pad) ) / 4.0f;
-            break;
-            
-        default:
-            tw = w;
-            break;
-    }
+//    switch ( [_buttonsArr count] )
+//    {
+//        case 1:
+//            tw = w;
+//            break;
+//            
+//        case 2:
+//            tw = (w - pad) / 2.0f;
+//            break;
+//            
+//        case 3:
+//            tw = (w - (2*pad) ) / 3.0f;
+//            break;
+//            
+//        case 4:
+//            tw = (w - (3*pad) ) / 4.0f;
+//            break;
+//            
+//        default:
+//            tw = w;
+//            break;
+//    }
 
     
     LineHeaderView *titleView = (LineHeaderView*)self.navigationItem.titleView;

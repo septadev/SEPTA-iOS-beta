@@ -437,11 +437,11 @@
     }
     
     //    NSLog(@"NTVVC - kickOffAnotherJSONRequest");
-    updateTimer =[NSTimer scheduledTimerWithTimeInterval:JSON_REFRESH_RATE
-                                                  target:self
-                                                selector:@selector(getLatestJSONData)
-                                                userInfo:nil
-                                                 repeats:NO];
+//    updateTimer =[NSTimer scheduledTimerWithTimeInterval:JSON_REFRESH_RATE
+//                                                  target:self
+//                                                selector:@selector(getLatestJSONData)
+//                                                userInfo:nil
+//                                                 repeats:NO];
 }
 
 

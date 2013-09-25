@@ -100,7 +100,7 @@ typedef NS_ENUM(NSInteger, ItineraryDropDownMenuOrder)
 };
 
 
-@interface ItineraryViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, ItineraryCellProtocol, StopNamesTableViewControllerProtocol, TabbedButtonProtocol, NextToArriveItineraryCellProtocol>
+@interface ItineraryViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, ItineraryCellProtocol, StopNamesTableViewControllerProtocol, StopNamesForRouteDelegate, TabbedButtonProtocol, NextToArriveItineraryCellProtocol>
 
 @property (weak, nonatomic) IBOutlet UILabel *lblTabbedLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imgTabbedLabel;

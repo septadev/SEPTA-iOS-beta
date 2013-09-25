@@ -142,7 +142,7 @@
     [self setFrame: frame];
     
     [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
+//    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
     
     [UIView commitAnimations];
     

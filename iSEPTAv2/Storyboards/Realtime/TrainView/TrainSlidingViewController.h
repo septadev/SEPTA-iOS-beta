@@ -25,4 +25,7 @@
 
 @interface TrainSlidingViewController : ECSlidingViewController
 
+@property (strong, nonatomic) NSNumber *travelMode;
+@property (strong, nonatomic) NSString *routeName;
+
 @end

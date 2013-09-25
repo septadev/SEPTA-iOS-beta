@@ -203,7 +203,7 @@
     NSAssert([(NSString*)[dataStore objectForIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] ] isEqualToString:@"Hello"], @"dataStore : Could not find 'Hello'");
     
     
-    NSArray *sectionArr = [dataStore objectForSection:0];
+//    NSArray *sectionArr; // = [dataStore objectForSection:0];
     // TODO: Being lazy, add NSAssert section here
     
 //    NSArray *newArr = [dataStore objectForSectionWithTitle:@"New Section"];
@@ -220,7 +220,7 @@
     NSAssert([testArr containsObject:@"Old Section"], @"dataStore: Section Name Mismatch");
     
     [dataStore removeObjectWithIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] ];
-    sectionArr = [dataStore objectForSection:0];  // Should be one row lighter
+//    sectionArr = [dataStore objectForSection:0];  // Should be one row lighter
     
     [dataStore removeAllObjects];
 

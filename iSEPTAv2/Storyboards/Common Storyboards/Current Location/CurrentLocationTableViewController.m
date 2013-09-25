@@ -580,21 +580,21 @@
         
 
         // --==  Determine what stops are associated with
-        NSString *routeStr = [NSString stringWithFormat:@"SELECT CASE route_short_name WHEN \"LUCYGO\" THEN \"LGO\" WHEN \"LUCYGR\" THEN \"LGR\" ELSE route_short_name END as route_short_name, stop_id, route_type FROM stopIDRouteLookup WHERE stop_id=%@", rObj.stop_id ];
+//        NSString *routeStr = [NSString stringWithFormat:@"SELECT CASE route_short_name WHEN \"LUCYGO\" THEN \"LGO\" WHEN \"LUCYGR\" THEN \"LGR\" ELSE route_short_name END as route_short_name, stop_id, route_type FROM stopIDRouteLookup WHERE stop_id=%@", rObj.stop_id ];
         
-        FMResultSet *routeResults = [database executeQuery: routeStr];
-        if ( [database hadError] )  // Check for errors
-        {
-            
-            int errorCode = [database lastErrorCode];
-            NSString *errorMsg = [database lastErrorMessage];
-            
-            NSLog(@"FNRVC - query failure, code: %d, %@", errorCode, errorMsg);
-            NSLog(@"FNRVC - query str: %@", queryStr);
-            
-            return nil;  // If an error occurred, there's nothing else to do but exit
-            
-        } // if ( [database hadError] )
+//        FMResultSet *routeResults = [database executeQuery: routeStr];
+//        if ( [database hadError] )  // Check for errors
+//        {
+//            
+//            int errorCode = [database lastErrorCode];
+//            NSString *errorMsg = [database lastErrorMessage];
+//            
+//            NSLog(@"FNRVC - query failure, code: %d, %@", errorCode, errorMsg);
+//            NSLog(@"FNRVC - query str: %@", queryStr);
+//            
+//            return nil;  // If an error occurred, there's nothing else to do but exit
+//            
+//        } // if ( [database hadError] )
         
 //        while ( [routeResults next] )
 //        {

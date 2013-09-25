@@ -89,14 +89,14 @@
      
      */
     
-    int kWeekday = 62;
-
-    int kSunday  = 64;
-    int kSaturday = 1;
+//    int kWeekday = 62;
+//
+//    int kSunday  = 64;
+//    int kSaturday = 1;
     
 //    int kWeekend = kSaturday + kSunday;
-    int kWeekdaySun = kWeekday + kSunday;
-    int kWeekdaySat = kWeekday + kSaturday;
+//    int kWeekdaySun = kWeekday + kSunday;
+//    int kWeekdaySat = kWeekday + kSaturday;
     
 //    int kAllWeek  = kWeekday + kSunday + kSaturday;
     
@@ -185,43 +185,43 @@
             return _status;
 
             
-            NSMutableString *text = [[NSMutableString alloc] init];
-            if ( service & kWeekday )
-            {
-                [text appendString: @"Week"];
-                
-                if ( service & kSaturday )
-                {
-                    [text appendString: @",Sat"];
-                }
-                else if ( service & kSunday )
-                {
-                    [text appendString: @",Sun"];
-                }
-                else
-                {
-                    [text appendString: @"day"];
-                }
-
-                [text appendString: @" Service"];
-                _status = text;
-                return _status;
-            }
-            
-            if ( ( service & kWeekdaySat ) && ( service & kWeekdaySun ) )
-            {
-                [text appendString: @"Weekend Service"];
-            }
-            else if ( service & kWeekdaySat )
-            {
-                [text appendString: @"Saturday Service"];
-            }
-            else if ( service & kWeekdaySun )
-            {
-                [text appendString: @"Sunday Service"];
-            }
-            _status = text;
-            return _status;
+//            NSMutableString *text = [[NSMutableString alloc] init];
+//            if ( service & kWeekday )
+//            {
+//                [text appendString: @"Week"];
+//                
+//                if ( service & kSaturday )
+//                {
+//                    [text appendString: @",Sat"];
+//                }
+//                else if ( service & kSunday )
+//                {
+//                    [text appendString: @",Sun"];
+//                }
+//                else
+//                {
+//                    [text appendString: @"day"];
+//                }
+//
+//                [text appendString: @" Service"];
+//                _status = text;
+//                return _status;
+//            }
+//            
+//            if ( ( service & kWeekdaySat ) && ( service & kWeekdaySun ) )
+//            {
+//                [text appendString: @"Weekend Service"];
+//            }
+//            else if ( service & kWeekdaySat )
+//            {
+//                [text appendString: @"Saturday Service"];
+//            }
+//            else if ( service & kWeekdaySun )
+//            {
+//                [text appendString: @"Sunday Service"];
+//            }
+//            _status = text;
+//            return _status;
             
         }
     }
