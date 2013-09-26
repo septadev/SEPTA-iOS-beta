@@ -969,7 +969,12 @@
 //    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
 //    [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
 
+    
+    
+    // Uncomment out this one!
     [self performSelector:@selector(highlightTheDamnRow:) withObject:[NSNumber numberWithInt:index] afterDelay:0.001f];  // Adding a delay works
+    
+    
 //    [self highlightTheDamnRow: index];  // Not having a delay makes the highlight go away as the old VC is brought back
     
     NSLog(@"index: %d", index);
@@ -979,6 +984,7 @@
 {
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:[index intValue] inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
     [self.navigationItem.rightBarButtonItem setEnabled:YES];
+    [self selectionMade];
 }
 
 

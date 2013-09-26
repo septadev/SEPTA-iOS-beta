@@ -91,7 +91,8 @@
     // Configure the cell...
     
     CLPlacemark *pMark = [_tableData objectAtIndex: indexPath.row];
-    [[cell textLabel] setText: [pMark.addressDictionary objectForKey: @"Street"] ];
+    NSString *address = [NSString stringWithFormat:@"%@ %@, %@", [pMark.addressDictionary objectForKey: @"Street"], [pMark.addressDictionary objectForKey: @"City"], [pMark.addressDictionary objectForKey: @"State"] ];
+    [[cell textLabel] setText: address ];
     
     return cell;
 }

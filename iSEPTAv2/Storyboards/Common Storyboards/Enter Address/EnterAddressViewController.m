@@ -127,6 +127,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
 #pragma mark - Geocoding Methods
 NSString * const kSearchTextKey = @"Search Text"; /*< NSDictionary key for entered search text. Used by NSTimer userInfo.*/
 
@@ -316,6 +317,7 @@ NSString * const kSearchTextKey = @"Search Text"; /*< NSDictionary key for enter
     [self zoomMapToPlacemark:selectedPlacemark];
     [self savePlacemark: selectedPlacemark];
     
+    _placemark = selectedPlacemark;
     
 }
 
