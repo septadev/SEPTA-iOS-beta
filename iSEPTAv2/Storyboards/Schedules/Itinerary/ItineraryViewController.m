@@ -1889,7 +1889,10 @@
     // Section 1 - In Service Trains
     // Section 2 - Trips
 
-    UILabel *headerLabel = [[UILabel alloc] init];
+//    [headerLabel setFrame:CGRectMake(0, 0, self.view.frame.size.width - 5, 22)];
+
+    
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width - 5, 22)];
     [headerLabel setFont: [UIFont fontWithName:@"TrebuchetMS-Bold" size:17.0f] ];
     [headerLabel setTextColor: [UIColor whiteColor] ];
     
@@ -1907,7 +1910,7 @@
     
             if ( [activeTrainsArr count] > 0 )
             {
-                [headerLabel setText: @" IN SERVICE TRAINS"];
+                [headerLabel setText: @"IN SERVICE TRAINS"];
                 [headerLabel setBackgroundColor: [UIColor colorWithRed:13.0f/255.0f green:164.0f/255.0f blue:74.0f/255.0f alpha:0.6f]];
             }
             else
@@ -1930,19 +1933,19 @@
                 switch ( _currentFilter )
                 {
                     case kItineraryFilterTypeNow:
-                        title = @" REMAINING TRIPS FOR TODAY";
+                        title = @"REMAINING TRIPS FOR TODAY";
                         break;
                     case kItineraryFilterTypeWeekday:
-                        title = @" WEEKDAY";
+                        title = @"WEEKDAY";
                         break;
                     case kItineraryFilterTypeSat:
-                        title = @" SATURDAY";
+                        title = @"SATURDAY";
                         break;
                     case kItineraryFilterTypeSun:
-                        title = @" SUNDAY";
+                        title = @"SUNDAY";
                         break;
                     default:
-                        title = @" Trips";
+                        title = @"Trips";
                         break;
                 }
                 
@@ -1973,7 +1976,12 @@
 //    [headerLabel setAutoresizingMask: UIViewAutoresizingFlexibleWidth ];
     
     [headerView addSubview: headerLabel];
-    [headerLabel setFrame:CGRectMake(0, 0, self.view.frame.size.width - 5, 22)];
+//    [headerLabel setFrame:CGRectMake(0, 0, self.view.frame.size.width - 5, 22)];
+    
+    CGRect bounds = headerLabel.frame;
+    bounds.origin.x = 100;
+    [headerLabel setBounds: bounds];
+    
     [headerView setBackgroundColor: [UIColor clearColor]];
     
     float x = 4.0;
