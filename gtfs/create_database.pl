@@ -73,38 +73,6 @@ mainLoop();
 sub mainLoop
 {
     
-#    my $test = "000";
-#    incrementUniqueValue($test);
-#    
-#    my $test = "009";
-#    incrementUniqueValue($test);
-#
-#    my $test = "099";
-#    incrementUniqueValue($test);
-#
-#    my $test = "00Z";
-#    incrementUniqueValue($test);
-#
-#    my $test = "0AZ";
-#    incrementUniqueValue($test);
-#
-#    my $test = "0ZZ";
-#    incrementUniqueValue($test);
-#
-#    my $test = "ZZZ";
-#    incrementUniqueValue($test);
-
-    # --==  First loop is for removing all files stored in @dbfile.  If any of the files repeat, unlinking twice shouldn't do anything.  OR IT'LL DESTROY EVERYTHING!!!!1!!
-#    foreach my $dbName (@dbfile)
-#    {
-#        # --==   Remove old database and start anew!  ==--
-#        unlink($dbname);
-#    }
-    
-    
-#    populateClosestStopMatch();
-#    exit(1);
-    
     unlink($dbFileName);
 
     foreach my $dbName (@dbfile)
@@ -113,7 +81,6 @@ sub mainLoop
         createIndex($dbName);
     }
 
-    
     populateBusStopDirections();
     populateServiceHours();  # Uses the created stop_times_bus/rail and trips_bus/rail tables to create new table
     populateClosestStopMatch();
@@ -144,13 +111,9 @@ sub createIndex
     ) or die "DBIerr: " . $DBI::err . "\nDBIerrstr: " . $DBI::errstr . "\nGTFS - DBName: $dbFileName\n\n";
     
     my $tripIDX  = "CREATE INDEX trip"  . $middlex . "IDX  on stop_times_$middlex (trip_id)";
-#    my $routeIDX = "CREATE INDEX route" . $middlex . "IDX on trips_$middlex (route_id)";
-#    my $stopIDX  = "CREATE INDEX stop"  . $middlex . "IDX  on stop_times_$middlex (stop_id)";
     
     $dbh->do($tripIDX);
-#    $dbh->do($routeIDX);
-#    $dbh->do($stopIDX);
-
+    
     $dbh->disconnect();
     
 }
@@ -855,8 +818,10 @@ sub populateServiceHours
 #        $baseSelect = "SELECT t.route_id as route_id, route_short_name, service_id, direction_id, CASE WHEN Direction='Westbound' THEN 'West' WHEN Direction='Eastbound' THEN 'East' WHEN Direction='Northbound' THEN 'North' WHEN Direction='Southbound' THEN 'South' ELSE Direction END AS Direction, CASE WHEN dircode=\"NULL\" THEN NULL ELSE dircode END AS dircode, MIN(arrival_time) as min, MAX(arrival_time) as max FROM stop_times_bus s NATURAL JOIN trips_bus t NATURAL JOIN routes_bus r JOIN bus_stop_directions b ON b.Route=r.route_short_name AND b.dircode=t.direction_id GROUP BY t.route_id, t.service_id, t.direction_id, b.dircode;";
 
         # New, as of, 8/29.  Resolves idiotic issue where sometimes 24+ time is used for a few trips.  Because, you know!
-        $baseSelect = "SELECT rid as route_id, route_short_name, service_id, direction_id, CASE WHEN Direction='Westbound' THEN 'West' WHEN Direction='Eastbound' THEN 'East' WHEN Direction='Northbound' THEN 'North' WHEN Direction='Southbound' THEN 'South' ELSE Direction END AS Direction, CASE WHEN dircode=\"NULL\" THEN NULL ELSE dircode END AS dircode, MIN(a) as min, MAX(a) as max FROM (SELECT route_short_name, t.route_id as rid, service_id, direction_id, CASE WHEN arrival_time > 2359 AND (route_short_name=\"BSO\" OR route_short_name=\"MFO\") THEN arrival_time-2400 ELSE arrival_time END as a FROM stop_times_bus NATURAL JOIN trips_bus t JOIN routes_bus r ON r.route_short_name=t.route_id) JOIN bus_stop_directions b ON b.Route=route_short_name AND b.dircode=direction_id GROUP BY route_id, service_id, direction_id;";
+        $baseSelect = "SELECT rid as route_id, route_short_name, service_id, direction_id, CASE WHEN Direction='Westbound' THEN 'West' WHEN Direction='Eastbound' THEN 'East' WHEN Direction='Northbound' THEN 'North' WHEN Direction='Southbound' THEN 'South' ELSE Direction END AS Direction, CASE WHEN dircode=\"NULL\" THEN NULL ELSE dircode END AS dircode, MIN(a) as min, MAX(a) as max FROM (SELECT route_short_name, t.route_id as rid, service_id, direction_id, CASE WHEN arrival_time > 2359 AND (route_short_name=\"BSO\" OR route_short_name=\"MFO\") THEN arrival_time-2400 ELSE arrival_time END as a FROM stop_times_bus NATURAL JOIN trips_bus t JOIN routes_bus r ON r.route_short_name=t.route_id) JOIN bus_stop_directions b ON b.Route=route_short_name GROUP BY route_id, service_id, direction_id;";
 
+        # AND b.dircode=direction_id
+        
 #        SELECT route_short_name, t.route_id as rid, service_id, direction_id, CASE WHEN arrival_time > 2359 AND (route_short_name="BSO" OR route_short_name="MFO") THEN arrival_time-2400 ELSE arrival_time END as a FROM stop_times_bus NATURAL JOIN trips_bus t JOIN routes_bus r ON r.route_short_name=t.route_id
         
         $selectCreate = "CREATE TABLE serviceHours AS $baseSelect";
@@ -875,6 +840,10 @@ sub populateServiceHours
     
     my $selectInsert = "INSERT INTO serviceHours SELECT trips_rail.route_id as route_id, route_short_name, service_id, direction_id, NULL as Direction, NULL as dircode, MIN(arrival_time) min, MAX(arrival_time) max FROM stop_times_rail JOIN trips_rail ON trips_rail.trip_id=stop_times_rail.trip_id JOIN routes_rail ON routes_rail.route_id=trips_rail.route_id GROUP BY trips_rail.route_id,service_id,direction_id;";
 
+    
+    print "pSH - selectCreate:\n\n$selectCreate\n\n";
+    print "pSH - selectInsert:\n\n$selectInsert\n\n";
+    
     
     my $message = "(this might take a few minutes)";
     print "pSH - Creating the table serviceHours with a CREATE TABLE $message";

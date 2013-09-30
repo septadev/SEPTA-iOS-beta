@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" initialViewController="PfG-4g-auN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" initialViewController="PfG-4g-auN">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -14,6 +14,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </scrollView>
                     <navigationItem key="navigationItem" id="euU-ix-wkY"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="scrollView" destination="Kzk-NL-HGB" id="y4E-FS-0CE"/>
                     </connections>
@@ -191,6 +192,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="fcI-lo-C4y"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="swt24Hour" destination="bw4-ee-M4v" id="P7w-gz-iCj"/>
                     </connections>
@@ -679,6 +681,7 @@ High Speed Line</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="0mI-UB-dn0"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XVi-zc-Q6U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -920,6 +923,7 @@ High Speed Line</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="50w-Do-Mhe"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IWJ-Ry-AsP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

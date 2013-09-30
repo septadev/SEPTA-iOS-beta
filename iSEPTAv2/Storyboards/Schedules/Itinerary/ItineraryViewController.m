@@ -1451,6 +1451,10 @@
 // Allow editing of only the Itinerary Cell
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    if ( editingStyle != UITableViewCellEditingStyleDelete )
+        return;
+    
     [itinerary clearStops];  // Clear out the stop information for itinerary
     
     [itinerary setStartStopName: DEFAULT_MESSAGE];  // Put the default messages back
@@ -1471,7 +1475,7 @@
     // Remove all JSON (Active Trains) now
     [activeTrainsArr removeAllObjects];
     [_masterJSONTrainArr removeAllObjects];
-    
+    [_masterTrainLookUpDict removeAllObjects];
     
     [self.tableTrips reloadData];
     
@@ -2884,6 +2888,12 @@
         NSLog(@"ITVC - processJSONData, returnedData is nil.  Returning");
         return;
     }
+    
+    if (_masterTrainLookUpDict == nil )  // If the Itinerar is swipe deleted just prior to a JSON pull, there's nothing to compare to
+        return;
+    
+    if ( [itinerary isComplete] == NO )
+        return;
     
     // This method is called once the realtime positioning data has been returned via the API is stored in data
     NSError *error;
