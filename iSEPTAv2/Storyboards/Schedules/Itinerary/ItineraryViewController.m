@@ -1601,12 +1601,12 @@
             corner |= UIRectCornerBottomRight;
         }
         
-        if ( corner == 0 )
-        {
-            atCell.layer.mask = nil;
-        }
-        else
-        {
+//        if ( corner == 0 )
+//        {
+//            atCell.layer.mask = nil;
+//        }
+//        else
+//        {
             float x = 4.0;
             float y = 4.0;
             CGRect bound = atCell.bounds;
@@ -1619,7 +1619,7 @@
             maskLayer.path= maskPath.CGPath;
             
             atCell.layer.mask = maskLayer;
-        }
+//        }
 
         return cell;
         
@@ -1627,29 +1627,27 @@
     else
     {
         
-        cell = (TripCell*)[self.tableTrips dequeueReusableCellWithIdentifier: tripStr];
-        
+        TripCell *tCell = (TripCell*)[self.tableTrips dequeueReusableCellWithIdentifier: tripStr];
         
         TripObject *thisTrip = [currentTripsArr objectAtIndex:indexPath.row];
         
-        [[cell lblTrainNo] setText: [NSString stringWithFormat:@"%d", [thisTrip.trainNo intValue] ] ];
+        [[tCell lblTrainNo] setText: [NSString stringWithFormat:@"%d", [thisTrip.trainNo intValue] ] ];
 
         
-        [cell setUse24HourTime: _use24HourTime];
-        [cell setDisplayCountdown:YES];
+        [tCell setUse24HourTime: _use24HourTime];
+        [tCell setDisplayCountdown:YES];
         
 //        [cell addArrivalTimeStr: thisTrip.startTime];
 //        [cell addDepartureTimeStr: thisTrip.endTime];
 
-        [cell addArrivalTime: [thisTrip.startTime intValue] ];
-        [cell addDepartureTime: [thisTrip.endTime intValue] ];
+        [tCell addArrivalTime: [thisTrip.startTime intValue] ];
+        [tCell addDepartureTime: [thisTrip.endTime intValue] ];
         
-        [cell updateCell];
+        [tCell updateCell];
      
 
         
         // TODO: Note, if the first and last cell are the same, only the top corner will be rounded
-        TripCell *tCell = (TripCell*)cell;
         UIRectCorner corner = 0;
         
         if ( indexPath.row == 0 )
@@ -1661,17 +1659,18 @@
         {
             corner |= UIRectCornerBottomRight;
         }
-            
-        if ( corner == 0 )
-        {
-           tCell.layer.mask = nil;
-        }
-        else
-        {
+
+        CGRect bound = tCell.bounds;
+        bound.size.width = self.view.frame.size.width - 5;
+
+//        if ( corner == 0 )
+//        {
+//            tCell.layer.mask = nil;
+//        }
+//        else
+//        {
             float x = 4.0;
             float y = 4.0;
-            CGRect bound = tCell.bounds;
-            bound.size.width = self.view.frame.size.width - 5;
             UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect: bound
                                                            byRoundingCorners: corner
                                                                  cornerRadii: CGSizeMake(x, y)];
@@ -1680,9 +1679,13 @@
             maskLayer.path= maskPath.CGPath;
             
             tCell.layer.mask = maskLayer;
-        }
+//        }
+        
+        cell = tCell;
         
     }
+    
+    
     
     return cell;
     
@@ -1714,7 +1717,7 @@
         float x = 4.0;
         float y = 4.0;
         CGRect bound = tCell.bounds;
-        bound.size.width = self.view.frame.size.width - 5;
+//        bound.size.width = self.view.frame.size.width - 5;
         UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect: bound
                                                        byRoundingCorners: corner
                                                              cornerRadii: CGSizeMake(x, y)];
@@ -2892,8 +2895,8 @@
     if (_masterTrainLookUpDict == nil )  // If the Itinerar is swipe deleted just prior to a JSON pull, there's nothing to compare to
         return;
     
-    if ( [itinerary isComplete] == NO )
-        return;
+//    if ( [itinerary isComplete] == NO )
+//        return;
     
     // This method is called once the realtime positioning data has been returned via the API is stored in data
     NSError *error;

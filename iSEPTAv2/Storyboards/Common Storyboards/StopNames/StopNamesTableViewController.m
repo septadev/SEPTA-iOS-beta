@@ -47,6 +47,7 @@
     [titleView updateFrame: CGRectMake(0, 0, w - (navW*2) -8, 32)];
 }
 
+
 - (void)viewDidLoad
 {
     
@@ -62,7 +63,6 @@
     // Register your Xibs!
     [self.tableView registerNib:[UINib nibWithNibName:@"StopNamesCLEACell" bundle:nil] forCellReuseIdentifier:@"StopNamesCLEACell"];
 
-    
     
     // Initialize Data Object
     _tableData = [[TableViewStore alloc] init];
@@ -861,6 +861,7 @@
         
     }
     
+    
     // Don't close the StopNames VC if selectionType was set to Start and End and _startStart is TRUE
     if ( _startState && selectionType == kNextToArriveSelectionTypeStartAndEnd )
     {
@@ -879,6 +880,7 @@
         }
         
         [self.tableView deselectRowAtIndexPath: [self.tableView indexPathForSelectedRow] animated:YES];
+        
         [self.navigationItem.rightBarButtonItem setEnabled:NO];
         
         [self.tableView scrollsToTop];
@@ -893,6 +895,7 @@
     {
         [self.navigationController popViewControllerAnimated:YES];
     }
+    
     
 }
 
@@ -974,11 +977,11 @@
     // Uncomment out this one!
     [self performSelector:@selector(highlightTheDamnRow:) withObject:[NSNumber numberWithInt:index] afterDelay:0.001f];  // Adding a delay works
     
-    
 //    [self highlightTheDamnRow: index];  // Not having a delay makes the highlight go away as the old VC is brought back
     
     NSLog(@"index: %d", index);
 }
+
 
 -(void) highlightTheDamnRow:(NSNumber*) index
 {
