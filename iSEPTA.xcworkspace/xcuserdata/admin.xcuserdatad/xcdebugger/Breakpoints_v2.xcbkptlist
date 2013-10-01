@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iSEPTAv2/Storyboards/Schedules/Itinerary/ItineraryViewController.m"
-            timestampString = "402249704.944243"
+            timestampString = "402328982.69689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2431"
-            endingLineNumber = "2431"
-            landmarkName = "-cancelButtonPressed:"
+            startingLineNumber = "2419"
+            endingLineNumber = "2419"
+            landmarkName = "-doneButtonPressed:WithStopName:andStopID:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iSEPTAv2/Storyboards/Schedules/Itinerary/ItineraryViewController.m"
-            timestampString = "402249704.944243"
+            timestampString = "402328982.69689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2935"
-            endingLineNumber = "2935"
+            startingLineNumber = "2923"
+            endingLineNumber = "2923"
             landmarkName = "-processJSONData:"
             landmarkType = "5">
          </BreakpointContent>
@@ -256,6 +256,22 @@
             startingLineNumber = "861"
             endingLineNumber = "861"
             landmarkName = "-createMasterJSONLookUpTable"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iSEPTAv2/Storyboards/Realtime/NextToArrive/NextToArriveTableViewController.m"
+            timestampString = "402342318.884272"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1181"
+            endingLineNumber = "1181"
+            landmarkName = "-refreshJSONData"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

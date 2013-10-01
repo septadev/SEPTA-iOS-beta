@@ -461,91 +461,37 @@
 -(UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
 
-    UILabel *headerLabel = [[UILabel alloc] init];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 22)];
+    
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(6, 0, self.view.frame.size.width, 22)];
     [headerLabel setFont: [UIFont fontWithName:@"TrebuchetMS-Bold" size:17.0f] ];
     [headerLabel setTextColor: [UIColor whiteColor] ];
-
+    [headerLabel setBackgroundColor: [UIColor clearColor] ];
     
-    // TODO: Prettify this so it doesn't make me want to bash my head against the desk.  Repeatedly.
+    [headerView addSubview: headerLabel];
+    
+    
+    // TODO: Prettify this so it doesn't make me want to bash my head against the desk.  Repeatedly.  -- DONE  You can thank me later!
     if ( [[_tableData titleForSection:section] isEqualToString:@"Favorites"] )
     {
-        
-//        UITableViewStandardHeaderLabel *label = [[UITableViewStandardHeaderLabel alloc] init];
-//        
-//        UIColor *gradient1 = [UIColor colorWithRed:13.0f/255.0f green:74.0f/255.0f  blue:26.0f/255.0f alpha:1.0f];
-//        UIColor *gradient2 = [UIColor colorWithRed:26.0f/255.0f green:120.0f/255.0f blue:37.0f/255.0f alpha:0.8f];
-//
-//        NSArray *gradientArr = [NSArray arrayWithObjects:gradient2, gradient1, nil];
-
         [headerLabel setText:@"Favorites"];
-        [headerLabel setBackgroundColor: [UIColor colorWithRed:13.0f/255.0f green:164.0f/255.0f blue:74.0f/255.0f alpha:0.6f]];
-
-        return headerLabel;
-        
-//        [label setText:@"Favorites"];
-//        [label setFont:[UIFont fontWithName:@"TrebuchetMS" size:20.0f] ];
-//        [label setTextColor: [UIColor whiteColor] ];
-//        
-//        [label setLeftInset:3.0f];
-//        [label addArrayOfColors: gradientArr];
-//        
-//        [label setBackgroundColor: [UIColor colorWithRed:13.0f/255.0f green:164.0f/255.0f blue:74.0f/255.0f alpha:1.0f] ];
-//        
-//        return label;
+        [headerView setBackgroundColor: [UIColor colorWithRed:13.0f/255.0f green:164.0f/255.0f blue:74.0f/255.0f alpha:0.6f]];
     }
     else if ( [[_tableData titleForSection:section] isEqualToString:@"Recent"] )
     {
-//        UITableViewStandardHeaderLabel *label = [[UITableViewStandardHeaderLabel alloc] init];
-//        
-//        UIColor *gradient1 = [UIColor colorWithRed:13.0f/255.0f green:74.0f/255.0f  blue:26.0f/255.0f alpha:1.0f];
-//        UIColor *gradient2 = [UIColor colorWithRed:26.0f/255.0f green:120.0f/255.0f blue:37.0f/255.0f alpha:0.8f];
-//        
-//        NSArray *gradientArr = [NSArray arrayWithObjects:gradient2, gradient1, nil];
-//        
-//        [label setText:@"Recent"];
-//        [label setFont:[UIFont fontWithName:@"TrebuchetMS" size:20.0f] ];
-//        [label setTextColor: [UIColor whiteColor] ];
-//        
-//        [label setLeftInset:3.0f];
-//        [label addArrayOfColors: gradientArr];
-//        
-//        //        [label setBackgroundColor: [UIColor colorWithRed:13.0f/255.0f green:164.0f/255.0f blue:74.0f/255.0f alpha:1.0f] ];
-//        
-//        return label;
-        
         [headerLabel setText:@"Recent"];
-        [headerLabel setBackgroundColor: [UIColor colorWithRed:13.0f/255.0f green:164.0f/255.0f blue:74.0f/255.0f alpha:0.6f]];
-        
-        return headerLabel;
-        
+        [headerView setBackgroundColor: [UIColor colorWithRed:13.0f/255.0f green:164.0f/255.0f blue:74.0f/255.0f alpha:0.6f]];
     }
     else if ( [[_tableData titleForSection:section] isEqualToString:@"Data"] )
     {
-//        UITableViewStandardHeaderLabel *label = [[UITableViewStandardHeaderLabel alloc] init];
-//        
-//        UIColor *gradient3 = [UIColor colorWithRed:253.0f/255.0f green:78.0f/255.0f  blue:67.0f/255.0f alpha:1.0f];
-//        UIColor *gradient4 = [UIColor colorWithRed:120.0f/255.0f green:39.0f/255.0f blue:34.0f/255.0f alpha:0.8f];
-//        
-//        NSArray *gradientArr = [NSArray arrayWithObjects:gradient3, gradient4, nil];
-//
-//        
-//        [label setText:@"Next to Arrive Trains"];
-//        [label setFont:[UIFont fontWithName:@"TrebuchetMS" size:20.0f] ];
-//        [label setTextColor: [UIColor whiteColor] ];
-//        
-//        [label setLeftInset:3.0f];
-//        [label addArrayOfColors: gradientArr];
-//        
-//        return label;
-
         [headerLabel setText:@"Next to Arrive Trains"];
-        [headerLabel setBackgroundColor: [UIColor colorWithRed:13.0f/255.0f green:164.0f/255.0f blue:74.0f/255.0f alpha:0.6f]];
-        
-        return headerLabel;
-        
+        [headerView setBackgroundColor: [UIColor colorWithRed:240.0f/255.0f green:78.0f/255.0f blue:67.0f/255.0f alpha:0.6f]];
     }
     else
         return nil;
+    
+//    [headerLabel setText: [_tableData titleForSection:section] ];
+    return headerView;
     
 }
 
@@ -1228,9 +1174,28 @@
 //    [recentlyViewedSection sortUsingComparator:sortNTASaveObjectByDate];
     
     if ( ![[_tableData getSectionTitles] containsObject:@"Recent"] )
+    {
         [_tableData addSectionWithTitle:@"Recent"];
+        
+     
+        NSArray *sectionNames = [_tableData returnAllSections];
+        
+        int dataIndex = [sectionNames indexOfObject:@"Data"];
+        int recentIndex = [sectionNames indexOfObject:@"Recent"];
+        int favIndex = [sectionNames indexOfObject:@"Favorites"];
+        int itinIndex = [sectionNames indexOfObject:@"Itinerary"];
+
+        if ( recentIndex > dataIndex )
+        {
+//            [_tableData moveSection:recentIndex afterSection:favIndex];
+        }
+
+        NSLog(@"Done");
+        
+    }
+//    [[_tableData objectForSectionWithTitle:@"Recent"] sortUsingComparator: sortNextToArriveSaveObjectByDate];
     
-    [[_tableData objectForSectionWithTitle:@"Recent"] sortUsingComparator: sortNextToArriveSaveObjectByDate];
+    
 //    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex: [_tableData indexForSectionTitle:@"Recent"] ] withRowAnimation:UITableViewRowAnimationAutomatic];
     
     [self.tableView reloadData];

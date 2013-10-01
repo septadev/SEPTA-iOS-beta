@@ -83,6 +83,7 @@
 
 //-(void) insertObject:(id) object atIndex:(NSUInteger)index;
 -(void) moveSection:(NSUInteger) fromIndex afterSection:(NSUInteger) newIndex;
+-(void) moveSection:(NSUInteger) fromIndex toSection:(NSInteger)newSection;
 
 
 // Returns the current accessPath for the internal data store

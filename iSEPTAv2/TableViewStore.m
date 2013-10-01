@@ -37,8 +37,6 @@
         
 //        [_topStore addObject: [[NSMutableArray alloc] init] ];  // Add the first element in _topStore
         
-
-        
     }
     
     return self;
@@ -480,6 +478,47 @@
 
 
 #pragma mark - Insert Object
+-(void) moveSection:(NSUInteger) fromIndex toSection:(NSInteger)newSection
+{
+
+    // Need to find the key for the index we're moving
+    NSString *fromKey;
+    for (NSString *key in _sectionTracker)
+    {
+        if ( [[_sectionTracker objectForKey:key] intValue] == fromIndex )
+        {
+            fromKey = key;  // Found the key!
+            break;
+        }
+    }
+    
+    if ( fromKey == nil )
+        return;  // Something was wrong with the fromIndex, exit out before any changes are made to the data
+    
+    [_topStore moveObjectFromIndex:fromIndex toIndex: newSection];
+    
+    
+    NSMutableDictionary *newTracker = [[NSMutableDictionary alloc] init];
+    for (NSString *key in _sectionTracker)
+    {
+        int val = [[_sectionTracker objectForKey:key] intValue];
+        if ( val > newSection )
+            [newTracker setValue:[NSNumber numberWithInt:val+1] forKey:key];
+        else
+            [newTracker setValue:[NSNumber numberWithInt:val] forKey:key];
+        
+    }
+    
+    [newTracker setValue:[NSNumber numberWithInt:newSection+1] forKey:fromKey];
+    
+    _sectionTracker = newTracker;
+    
+//    [self rebuildSectionTracker];
+    
+}
+
+
+
 -(void) moveSection:(NSUInteger) fromIndex afterSection:(NSUInteger) afterIndex
 {
     

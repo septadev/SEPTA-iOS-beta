@@ -1882,6 +1882,7 @@
     
 }
 
+
 -(UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     
@@ -1892,9 +1893,12 @@
 //    [headerLabel setFrame:CGRectMake(0, 0, self.view.frame.size.width - 5, 22)];
 
     
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width - 5, 22)];
-    [headerLabel setFont: [UIFont fontWithName:@"TrebuchetMS-Bold" size:17.0f] ];
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame: CGRectMake(6, 0, self.view.frame.size.width - 5, 22)];
+    [headerLabel setFont:    [UIFont fontWithName:@"TrebuchetMS-Bold" size:17.0f] ];
     [headerLabel setTextColor: [UIColor whiteColor] ];
+    [headerLabel setBackgroundColor: [UIColor clearColor] ];
+
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.height -5, 22)];
     
     switch (section)
     {
@@ -1911,7 +1915,8 @@
             if ( [activeTrainsArr count] > 0 )
             {
                 [headerLabel setText: @"IN SERVICE TRAINS"];
-                [headerLabel setBackgroundColor: [UIColor colorWithRed:13.0f/255.0f green:164.0f/255.0f blue:74.0f/255.0f alpha:0.6f]];
+                [headerView setBackgroundColor: [UIColor colorWithRed:13.0f/255.0f green:164.0f/255.0f blue:74.0f/255.0f alpha:0.6f]];
+//                [headerLabel2 setBackgroundColor: [UIColor colorWithRed:13.0f/255.0f green:164.0f/255.0f blue:74.0f/255.0f alpha:0.6f]];
             }
             else
                 return nil;
@@ -1952,8 +1957,7 @@
             }
             
             [headerLabel setText: title];
-            [headerLabel setBackgroundColor: [UIColor colorWithRed:240.0f/255.0f green:78.0f/255.0f blue:67.0f/255.0f alpha:0.6f]];
-
+            [headerView setBackgroundColor: [UIColor colorWithRed:240.0f/255.0f green:78.0f/255.0f blue:67.0f/255.0f alpha:0.6f]];
 //            headerLabel.layer.cornerRadius = 5;
             
         }
@@ -1966,23 +1970,7 @@
     }  // switch (section)
     
     
-    UIView *headerView = [[UIView alloc] init];
-    
-    // Stretch
-//    [headerView setAutoresizesSubviews:YES];
-//    [headerView setAutoresizingMask: UIViewAutoresizingFlexibleWidth ];
-//    
-//    [headerLabel setAutoresizesSubviews:YES];
-//    [headerLabel setAutoresizingMask: UIViewAutoresizingFlexibleWidth ];
-    
     [headerView addSubview: headerLabel];
-//    [headerLabel setFrame:CGRectMake(0, 0, self.view.frame.size.width - 5, 22)];
-    
-    CGRect bounds = headerLabel.frame;
-    bounds.origin.x = 100;
-    [headerLabel setBounds: bounds];
-    
-    [headerView setBackgroundColor: [UIColor clearColor]];
     
     float x = 4.0;
     float y = 4.0;
