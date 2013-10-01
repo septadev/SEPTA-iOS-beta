@@ -8,6 +8,35 @@
 
 #import "TableViewStore.h"
 
+@implementation TVStoreObject
+
+@synthesize data;
+@synthesize section;
+@synthesize tag;
+
+-(id) init
+{
+    
+    self = [super init];
+    if ( self )
+    {
+        data = [[NSMutableArray alloc] init];
+        section = @"Unnamed Section";
+        tag = [NSNumber numberWithInt:-1];
+    }
+    return self;
+    
+}
+
+-(NSString*) description
+{
+    return [NSString stringWithFormat:@"section: %@, tag: %@ \n data: %@", section, tag, data];
+}
+
+@end
+
+
+
 @implementation TableViewStore
 {
     
@@ -52,16 +81,53 @@
 
 
 #pragma mark - Adding Objects to DataStore
-// Adding data to store
--(void) addObject:(id) object
+-(void) addObject:(id) object  // Modified
 {
+
+    if ( [_topStore count] == 0 )
+    {
+        TVStoreObject *store = [[TVStoreObject alloc] init];
+        [store.data addObject: object];
+        [_topStore addObject: store];
+    }
+    else
+    {
+        TVStoreObject *store = [_topStore objectAtIndex: _lastAccessPath.section];
+        [store.data addObject: object];
+    }
+    [self incrementLastAccessPath];
+    return;
+    
+    
     [self addObject:object forSection:_lastAccessPath.section];
+    
 }
 
 
-//-(void) addObject:(id) object forIndexPath:(NSIndexPath*) indexPath
--(void) addObject:(id) object forSection:(int) section
+-(void) addObject:(id) object forSection:(int) section  // Modified
 {
+    
+    if ( section < 0 )
+        section = [_topStore count] -1;
+    
+    if ( [_topStore count] > section )
+    {
+        // Do something
+    }
+    else if ( [_topStore count] == section )
+    {
+        TVStoreObject *tvsObject = [[TVStoreObject alloc] init];
+        [tvsObject.data addObject: object];
+        [_topStore addObject: tvsObject];
+    }
+    
+    TVStoreObject *tvsObject = [_topStore objectAtIndex: section];
+    [tvsObject.data addObject: object];
+    
+    _lastAccessPath = [NSIndexPath indexPathForRow:[[(TVStoreObject*)[_topStore objectAtIndex:section] data] count]-1 inSection:section];
+
+    return;
+    
     
     // section = 0
     // [_topStore count] always starts at 1
@@ -103,8 +169,49 @@
 }
 
 
--(void) addObject:(id) object forTitle:(NSString*) title
+
+-(void) addObject:(id)object forTitle:(NSString *)title withTag: (int) tag
 {
+    
+    //    int count = 0;
+    BOOL matchFound = NO;
+    for (TVStoreObject *sObject in _topStore)
+    {
+        
+        if ([sObject.section isEqualToString:title] )
+        {
+            [sObject.data addObject: object];
+            matchFound = YES;
+            break;
+        }
+        else
+        {
+            //            count++;
+        }
+        
+    }
+    
+    if ( !matchFound )
+    {
+        TVStoreObject *sObject = [[TVStoreObject alloc] init];
+        [sObject.data addObject: object];
+        [sObject setSection: title];
+        [sObject setTag: [NSNumber numberWithInt:tag] ];
+        [_topStore addObject: sObject];
+    }
+    
+    [self incrementLastAccessPath];
+    return;
+    
+}
+
+
+-(void) addObject:(id) object forTitle:(NSString*) title  // Modified
+{
+
+    [self addObject:object forTitle:title withTag:-1];
+    return;
+    
     
     NSNumber *secNum = [_sectionTracker objectForKey:title];
     if ( secNum == nil )
@@ -121,7 +228,7 @@
 }
 
 
--(void) addSection
+-(void) addSection  // Modified
 {
     
     int section = [_topStore count];
@@ -129,9 +236,20 @@
     
 }
 
--(void) addSectionWithTitle:(NSString*) title
+-(void) addSectionWithTitle:(NSString*) title  // Modified
 {
 
+    int section = [_topStore count] - 1;
+    _lastAccessPath = [NSIndexPath indexPathForRow:0 inSection: section];
+
+    TVStoreObject *sObject = [[TVStoreObject alloc] init];
+    [sObject setSection: title];
+    
+    [_topStore addObject: sObject];
+    
+    return;
+    
+    
     // Check if title already exists
     if ( [_sectionTracker objectForKey:title] != nil)
         return;
@@ -139,7 +257,7 @@
     // Create a new NSMutableArray and add it to the section
     [_topStore addObject:[[NSMutableArray alloc] init] ];
     
-    int section = [_topStore count] - 1;
+    
     
     // Update the _sectionTracker
 //    [_sectionTracker setValue:[_topStore objectAtIndex:section] forKey:title ];
@@ -157,14 +275,38 @@
 // --==  Arrays
 // --==
 
--(void) addArray:(NSArray*) array
+-(void) addArray:(NSMutableArray*) array
 {
     [self addArray:array forSection:_lastAccessPath.section];
 }
 
--(void) addArray:(NSArray*) array forSection:(int) section
+
+-(void) addArray:(NSMutableArray*) array forSection:(int) section  // Modified
 {
 
+    // Check if the object is nil
+    if ( array == nil || [array count] == 0 )
+        return;
+
+    
+    if ( section > [_topStore count] )
+        return;
+    else if ( section < 0 )
+        return;
+    else if ( section == [_topStore count] )
+    {
+        TVStoreObject *sObject = [[TVStoreObject alloc] init];
+        [sObject setData: array];
+        [_topStore addObject: sObject];
+    }
+    else
+    {
+        TVStoreObject *sObject = [_topStore objectAtIndex: section];
+        [sObject setData: array];
+    }
+    
+    return;
+    
     for (NSArray *object in array)
     {
         [self addObject:array forSection:section];
@@ -172,8 +314,39 @@
     
 }
 
--(void) addArray:(NSArray*) array forTitle:(NSString*) title
+-(void) addArray:(NSMutableArray*) array forTitle:(NSString*) title  // Modified
 {
+ 
+    // Check if the object is nil
+    if ( array == nil || [array count] == 0 )
+        return;
+
+    
+    int count = 0;
+    BOOL matchFound = NO;
+    for (TVStoreObject *sObject in _topStore)
+    {
+        if ( [sObject.section isEqualToString:title] )
+        {
+            [sObject setData: array];
+            _lastAccessPath = [NSIndexPath indexPathForRow:0 inSection:count];
+            matchFound = YES;
+            break;
+        }
+        count++;
+    }
+    
+    
+    if ( !matchFound )
+    {
+        TVStoreObject *sObject = [[TVStoreObject alloc] init];
+        [sObject setData: array ];
+        [sObject setSection: title];
+        [_topStore addObject: sObject];
+    }
+    
+    return;
+    
     NSNumber *sectionNum = [_sectionTracker objectForKey: title];
     if ( sectionNum == nil )
         return;
@@ -183,13 +356,13 @@
 
 
 
--(void) replaceArrayWith:(NSArray*) array
+-(void) replaceArrayWith:(NSMutableArray*) array
 {
     [self replaceArrayWith:array forSection:_lastAccessPath.section];
 }
 
 
--(void) replaceArrayWith:(NSArray*) array forSection:(int) section
+-(void) replaceArrayWith:(NSMutableArray*) array forSection:(int) section  // Modified
 {
     
     // Check if the object is nil
@@ -208,17 +381,40 @@
     }
     
     
+    TVStoreObject *sObject = [_topStore objectAtIndex: section];
+    [sObject setData: array];
+    _lastAccessPath = [NSIndexPath indexPathForRow:[array count] -1 inSection:section];
+    
+    return;
     [_topStore replaceObjectAtIndex:section withObject: array];
     
 }
 
 
--(void) replaceArrayWith:(NSArray*) array forTitle:(NSString*) title
+-(void) replaceArrayWith:(NSMutableArray*) array forTitle:(NSString*) title  // Modified
 {
 
     // Check if object is nil before attempting to make any modifications to internal data store
     if ( array == nil | [array count] == 0 )
         return;
+
+    int count = 0;
+    for (TVStoreObject *sObject in _topStore)
+    {
+        if ( [sObject.section isEqualToString:title] )
+        {
+            [sObject setData: array];
+            _lastAccessPath = [NSIndexPath indexPathForRow:0 inSection:count];
+            return;
+        }
+        count++;
+    }
+    
+    // If we're at this point, title wasn't found in _topStore
+    
+    [self addArray:array forTitle:title];
+    
+    return;
 
     
     NSNumber *sectionNum = [_sectionTracker objectForKey: title];
@@ -239,9 +435,20 @@
 
 // Modify store title
 #pragma mark - Modify Existing Section Title
--(BOOL) modifySectionTitle:(NSString*) newTitle forSectionIndex:(int) sectionIndex
+-(BOOL) modifySectionTitle:(NSString*) newTitle forSectionIndex:(int) sectionIndex  // Modified
 {
 
+    if ( sectionIndex < 0 )
+        return NO;
+    else if ( sectionIndex >= [_topStore count] )
+        return NO;
+    
+    
+    TVStoreObject *sObject = [_topStore objectAtIndex: sectionIndex];
+    [sObject setSection: newTitle];
+    return YES;
+    
+    
     // First check that the key exists
     if ( [_sectionTracker objectForKey:newTitle] != nil )
         return NO;
@@ -285,21 +492,44 @@
 }
 
 
--(void) removeObject:(id) object fromSection:(int) section
+-(void) removeObject:(id) object fromSection:(int) section  // Modified
 {
+    
+    [[(TVStoreObject*)[_topStore objectAtIndex:section] data] removeObject: object];
+    return;
     [[_topStore objectAtIndex:section] removeObject: object];
 }
 
--(void) removeObjectWithIndexPath:(NSIndexPath*) indexPath
+-(void) removeObjectWithIndexPath:(NSIndexPath*) indexPath  // Modified
 {
     // TODO: Perform some sane check that this is valid
+    
+    if ( indexPath.section >= [_topStore count] )
+        return;
+    else if ( indexPath.section < 0 )
+        return;
+    
+    [[(TVStoreObject*)[_topStore objectAtIndex:indexPath.section] data] removeObjectAtIndex: indexPath.row];
+    return;
     
     [[_topStore objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
 }
 
 
--(void) removeSection:(int) section
+-(void) removeSection:(int) section  // Modified
 {
+    
+    if ( section >= [_topStore count] )
+        return;
+    else if ( section < 0 )
+        return;
+    
+    [_topStore removeObjectAtIndex:section];
+    
+    if ( _lastAccessPath.section == section )
+        _lastAccessPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    
+    return;
     
     // How to properly remove a section:
     //   Let _sectionTracker be: "Itinerary" => 0, "Favorites" => 1, "Recent" => 2, "Data" => 3
@@ -347,8 +577,22 @@
 }
 
 
--(void) clearSectionWithTitle:(NSString*) title
+-(void) clearSectionWithTitle:(NSString*) title  // Modified
 {
+    
+    int count = 0;
+    for (TVStoreObject *sObject in _topStore)
+    {
+        if ( [sObject.section isEqualToString:title] )
+        {
+            [sObject.data removeAllObjects];
+            break;
+        }
+        count++;
+    }
+    _lastAccessPath = [NSIndexPath indexPathForItem:0 inSection:count];
+    return;
+    
     
     if ( [_sectionTracker objectForKey:title] == nil )  // Title is bad, just return
         return;
@@ -364,6 +608,19 @@
 
 -(void) removeSectionWithTitle:(NSString*) title
 {
+    
+    int count = 0;
+    for (TVStoreObject *sObject in _topStore)
+    {
+        if ( [sObject.section isEqualToString:title] )
+        {
+            [_topStore removeObjectAtIndex: count];
+            break;
+        }
+        count++;
+    }
+    return;
+    
 //    NSMutableArray *ref = [_sectionTracker objectForKey:title];
 //    int section = [_topStore indexOfObject:ref];
     if ( [_sectionTracker objectForKey:title] == nil )  // Title is bad, just return
@@ -384,32 +641,47 @@
 
 #pragma mark - Retrieve Objects in DataStore
 // Access data in store
--(id) objectForIndexPath:(NSIndexPath*) indexPath
+-(id) objectForIndexPath:(NSIndexPath*) indexPath  // Modified
 {
+    return [[(TVStoreObject*)[_topStore objectAtIndex:indexPath.section] data] objectAtIndex:indexPath.row];
+    
     return [[_topStore objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 }
 
--(id) objectForSectionWithTitle:(NSString*) title
+-(id) objectForSectionWithTitle:(NSString*) title  // Modified
 {
+    
+    for (TVStoreObject *sObject in _topStore)
+    {
+        if ( [sObject.section isEqualToString:title] )
+        {
+            return sObject.data;
+        }
+    }
+    return nil;
+
     
     if ( [_sectionTracker objectForKey:title] == nil )
         return nil;
-    
     
     return [_topStore objectAtIndex: [(NSNumber*)[_sectionTracker objectForKey:title] intValue] ];
 //    return [_sectionTracker objectForKey:title];
 }
 
--(id) objectForSection:(NSInteger) sectionIndex
+
+-(id) objectForSection:(NSInteger) sectionIndex  // Modified
 {
     if ( [_topStore count] > sectionIndex )
-        return [_topStore objectAtIndex:sectionIndex];
+        return [(TVStoreObject*)[_topStore objectAtIndex:sectionIndex] data];
     else
         return nil;
+    
+//            return [_topStore objectAtIndex:sectionIndex];  // Was
 }
 
 
--(NSString*) titleForSection:(NSInteger) sectionIndex
+
+-(NSString*) titleForSection:(NSInteger) sectionIndex  // Modified
 {
 
     // Since _sectionTracker contains just the index for a particular object, cycle through all entries until
@@ -421,6 +693,16 @@
     //   [2] => "Recent"
     
     // What is the title for sectionIndex 2?  (Recent, obviously)
+    
+    if ( sectionIndex >= [_topStore count] )
+    {
+        return nil;
+    }
+    
+    TVStoreObject *sObject = [_topStore objectAtIndex: sectionIndex];
+    return sObject.section;
+    
+    
     
     for (NSString *key in _sectionTracker)
     {
@@ -437,8 +719,20 @@
 }
 
 
--(NSInteger) indexForSectionTitle:(NSString*) title
+-(NSInteger) indexForSectionTitle:(NSString*) title  // Modified
 {
+    
+    
+    int count = 0;
+    for (TVStoreObject *sObject in _topStore)
+    {
+        if ( [sObject.section isEqualToString:title] )
+            return count;
+        count++;
+    }
+    return NSNotFound;
+    
+    
     
     id index = [_sectionTracker objectForKey:title];
     if ( index == nil )
@@ -453,17 +747,18 @@
 
 #pragma mark - Properties of DataStore
 // Access properties of store
--(NSInteger) numOfSections
+-(NSInteger) numOfSections  // Unchanged
 {
     return [_topStore count];
 }
 
--(NSInteger) numOfRowsForSection: (int) section
+-(NSInteger) numOfRowsForSection: (int) section  // Modified
 {
     if ( section >= [_topStore count] )
         return 0;
     
-    return [[_topStore objectAtIndex:section] count];
+    return [[(TVStoreObject*)[_topStore objectAtIndex:section] data] count];
+    // return [ [_topStore objectAtIndex:section] count];
 }
 
 -(NSInteger) lastSection
@@ -612,8 +907,17 @@
 //}
 
 
--(NSArray*) returnAllSections
+-(NSArray*) returnAllSections  // Modified
 {
+
+    NSMutableArray *listObject = [[NSMutableArray alloc] init];
+    for ( TVStoreObject *sObject in _topStore )
+    {
+        [listObject addObject: sObject.section];
+    }
+    return listObject;
+    
+
     NSMutableArray *listArr = [[NSMutableArray alloc] init];
     for (NSString *keys in _sectionTracker)
     {
@@ -624,25 +928,26 @@
 }
 
 
--(NSString*) description
+-(NSString*) description  // Modified
 {
     
     NSMutableString *outputStr = [[NSMutableString alloc] init];
     
-//    NSLog(@"# of elements in topStore: %d", [_topStore count]);
-//    NSLog(@"Last Path (s/r): %d/%d", _lastAccessPath.section, _lastAccessPath.row);
-    
     for (int LCV = 0; LCV < [_topStore count]; LCV++)
     {
-//        NSLog(@"Data in index %d: %@", LCV, [_topStore objectAtIndex:LCV]);
         [outputStr appendFormat:@"Data in index %d (%@): %@\n", LCV, [self titleForSection:LCV], [_topStore objectAtIndex:LCV] ];
     }
 
     [outputStr appendFormat:@"\n With sections:\n"];
-    for (NSString *key in _sectionTracker)
+    for (TVStoreObject *sObject in _topStore)
     {
-        [outputStr appendFormat:@"\t%@\n", key];
+        [outputStr appendFormat:@"\t%@\n", sObject.section];
     }
+    
+//    for (NSString *key in _sectionTracker)
+//    {
+//        [outputStr appendFormat:@"\t%@\n", key];
+//    }
     
     [outputStr appendFormat:@"\n# of elements in topStore: %d\n", [_topStore count] ];
     [outputStr appendFormat:@"Last Path (s/r): %d/%d\n\n", _lastAccessPath.section, _lastAccessPath.row];
@@ -751,9 +1056,84 @@
 }
 
 
+#pragma mark - Validation
+-(BOOL) isSectionGood:(int) section
+{
+    
+    if ( section < 0 )
+        return NO;
+    if ( section >= [_topStore count] )
+        return NO;
+    else
+        return YES;
+}
+
+#pragma mark - Setting
+
+-(void) setTag:(int) tag forSection:(int) section
+{
+
+    if ( ![self isSectionGood:section] )
+        return;
+    
+    TVStoreObject *sObject = [_topStore objectAtIndex:section];
+    [sObject setTag: [NSNumber numberWithInt: tag] ];
+    
+}
+
+
+-(void) setTag:(int) tag forTitle:(NSString*) title
+{
+    
+    for (TVStoreObject *sObject in _topStore)
+    {
+        if ( [sObject.section isEqualToString:title] )
+        {
+            [sObject setTag: [NSNumber numberWithInt:tag] ];
+        }
+    }
+    
+}
+
+
+
 #pragma mark - Sorting
+-(void) sortByTags
+{
+    
+    if ( [_topStore count] <= 1 )
+        return;
+    
+    [_topStore sortUsingComparator:^NSComparisonResult(TVStoreObject *a, TVStoreObject *b) {
+        
+        if ([a.tag intValue] < [b.tag intValue])
+            return NSOrderedAscending;
+        else if ( [a.tag intValue] > [b.tag intValue] )
+            return NSOrderedDescending;
+        else
+            return NSOrderedSame;
+        
+    }];
+    return;
+    
+}
+
+
+
 -(void) sortBySectionTitles
 {
+    
+    
+    if ( [_topStore count] <= 1 )
+        return;
+    
+    [_topStore sortUsingComparator:^NSComparisonResult(TVStoreObject *a, TVStoreObject *b) {
+        
+        return [a.section compare: b.section];
+        
+    }];
+    return;
+    
     
     // Data store structure:
     //   _topStore -- NSMutableArray that contains all the data

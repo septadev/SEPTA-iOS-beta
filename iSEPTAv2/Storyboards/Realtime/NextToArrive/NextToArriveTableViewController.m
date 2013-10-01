@@ -149,7 +149,6 @@
     [_tableData addObject: [[NextToArrivaJSONObject alloc] init] forTitle:@"Data"];
     [_tableData addObject: [[NextToArrivaJSONObject alloc] init] forTitle:@"Data"];
     
-        
     _launchUpdateTimer = NO;
     _killAllTimers     = NO;
 
@@ -712,10 +711,12 @@
     if ( [[_tableData titleForSection:indexPath.section] isEqualToString:@"Favorites"] )
     {
         [saveData makeSectionDirty: kNTASectionFavorites];
+        [[saveData favorites] removeObjectAtIndex: indexPath.row];
     }
     else if ( [[_tableData titleForSection:indexPath.section] isEqualToString:@"Recent"] )
     {
         [saveData makeSectionDirty: kNTASectionRecentlyViewed];
+        [[saveData recent] removeObjectAtIndex: indexPath.row];
     }
     
     
@@ -1182,8 +1183,8 @@
         
         int dataIndex = [sectionNames indexOfObject:@"Data"];
         int recentIndex = [sectionNames indexOfObject:@"Recent"];
-        int favIndex = [sectionNames indexOfObject:@"Favorites"];
-        int itinIndex = [sectionNames indexOfObject:@"Itinerary"];
+//        int favIndex = [sectionNames indexOfObject:@"Favorites"];
+//        int itinIndex = [sectionNames indexOfObject:@"Itinerary"];
 
         if ( recentIndex > dataIndex )
         {

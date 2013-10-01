@@ -123,14 +123,14 @@
     [NSThread sleepForTimeInterval:.5];
     // Override point for customization after application launch.
  
-//    UnitTest_TableViewStore *ut = [[UnitTest_TableViewStore alloc] init];
-//    
-//    [ut setup];
-//    [ut run];
-//    [ut cleanup];
-//    
-//    
-//    NSLog(@"Unit Testing Finished");
+    UnitTest_TableViewStore *ut = [[UnitTest_TableViewStore alloc] init];
+    
+    [ut setup];
+    [ut run];
+    [ut cleanup];
+    
+    
+    NSLog(@"Unit Testing Finished");
     
     
 #ifdef ENABLE_PUSH_NOTIFICATIONS

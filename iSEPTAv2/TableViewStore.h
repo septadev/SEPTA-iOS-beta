@@ -10,6 +10,17 @@
 #import "NSMutableArray+Indices.h"
 #import "NSMutableArray+MoveObject.h"
 
+
+@interface TVStoreObject : NSObject
+
+@property (nonatomic, strong) NSMutableArray *data;
+@property (nonatomic, strong) NSString *section;
+@property (nonatomic, strong) NSNumber *tag;
+
+@end
+
+
+
 @interface TableViewStore : NSObject
 
 
@@ -19,24 +30,27 @@
 //-(void) addObject:(id) object forIndexPath:(NSIndexPath*) indexPath;
 -(void) addObject:(id) object forSection:(int) section;
 -(void) addObject:(id) object forTitle:(NSString*) title;
+-(void) addObject:(id)object forTitle:(NSString *)title withTag: (int) tag;
 
 -(void) addSection;
 -(void) addSectionWithTitle:(NSString*) title;
 
 
--(void) addArray:(NSArray*) array;
--(void) addArray:(NSArray*) array forSection:(int) section;
--(void) addArray:(NSArray*) array forTitle:(NSString*) title;
+-(void) addArray:(NSMutableArray*) array;
+-(void) addArray:(NSMutableArray*) array forSection:(int) section;
+-(void) addArray:(NSMutableArray*) array forTitle:(NSString*) title;
 
--(void) replaceArrayWith:(NSArray*) array;
+-(void) replaceArrayWith:(NSMutableArray*) array;
 
--(void) replaceArrayWith:(NSArray*) array forSection:(int) section;
--(void) replaceArrayWith:(NSArray*) array forTitle:(NSString*) title;
+-(void) replaceArrayWith:(NSMutableArray*) array forSection:(int) section;
+-(void) replaceArrayWith:(NSMutableArray*) array forTitle:(NSString*) title;
 
 
 //-(void) addSectionWithTitle:(NSString*) title forSectionIndex:(int) index;
 //-(void) addSectionWithTitle:(NSString*) title forIndexPath:(NSIndexPath*) indexPath;
 
+-(void) setTag:(int) tag forSection:(int) section;
+-(void) setTag:(int) tag forTitle:(NSString*) title;
 
 
 // Modify store title
@@ -98,6 +112,7 @@
 -(NSIndexPath*) getIndexPathForIndex:(NSInteger) index;
 -(NSInteger) getSectionWithIndex:(NSInteger) index;
 
+-(void) sortByTags;
 -(void) sortBySectionTitles;
 
 @end

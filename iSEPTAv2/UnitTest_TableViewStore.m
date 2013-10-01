@@ -233,6 +233,32 @@
     
     NSAssert([[dataStore titleForSection:0] isEqualToString:@"17"], @"dataStore: 17 is not the first section title");
     
+    [dataStore removeAllObjects];
+    
+    [dataStore addObject:@"Itinerary" forTitle:@"Itinerary" withTag:1];
+    [dataStore addObject:@"Data"      forTitle:@"Data"      withTag:10];
+    [dataStore addObject:@"Recent"    forTitle:@"Recent"    withTag:5];
+    
+    NSAssert([[dataStore titleForSection:0] isEqualToString:@"Itinerary"], @"dataStore: Itinerary is not the first section title");
+    NSAssert([[dataStore titleForSection:1] isEqualToString:@"Data"]     , @"dataStore: Itinerary is not the second section title");
+    NSAssert([[dataStore titleForSection:2] isEqualToString:@"Recent"]   , @"dataStore: Itinerary is not the third section title");
+    
+    [dataStore sortByTags];
+
+    NSAssert([[dataStore titleForSection:0] isEqualToString:@"Itinerary"], @"dataStore: Itinerary is not the first section title");
+    NSAssert([[dataStore titleForSection:1] isEqualToString:@"Recent"]   , @"dataStore: Itinerary is not the third section title");
+    NSAssert([[dataStore titleForSection:2] isEqualToString:@"Data"]     , @"dataStore: Itinerary is not the second section title");
+
+    [dataStore addObject:@"Favorites" forTitle:@"Favorites" withTag:2];
+    [dataStore sortByTags];
+    
+    NSAssert([[dataStore titleForSection:0] isEqualToString:@"Itinerary"], @"dataStore: Itinerary is not the first section title");
+    NSAssert([[dataStore titleForSection:1] isEqualToString:@"Favorites"], @"dataStore: Itinerary is not the third section title");
+    NSAssert([[dataStore titleForSection:2] isEqualToString:@"Recent"]   , @"dataStore: Itinerary is not the second section title");
+    NSAssert([[dataStore titleForSection:3] isEqualToString:@"Data"]     , @"dataStore: Itinerary is not the second section title");
+    
+    [dataStore removeAllObjects];
+    
     NSLog(@"Test has finished! Yay!");
     
 }
