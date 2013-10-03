@@ -13,4 +13,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblStartName;
 @property (weak, nonatomic) IBOutlet UILabel *lblEndName;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgProgressBar;
+
+
+//-(void) setProgressBar:(CGFloat) percent;
+
 @end

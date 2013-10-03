@@ -80,7 +80,7 @@
         
         _ssObject = [[SystemStatusObject alloc] init];
         
-        SystemAlertObject *saObject = [self.alertArr objectAtIndex:0];
+        SystemAlertObject *saObject = [self.alertArr objectAtIndex:0];  // <-- WTF?!
         
         if ( [saObject.current_message length] > 1 )
         {

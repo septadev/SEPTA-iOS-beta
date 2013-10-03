@@ -90,7 +90,7 @@
     // Is it On-time, 1 min (late) or 2 or more mins (late)
     int late = [[data orig_delay] intValue];
     if ( late == 0 )
-        [[self lblStartStatus] setText: @"On-time"];
+        [[self lblStartStatus] setText: @"On time"];
     else if ( late == 1 )
         [[self lblStartStatus] setText: [NSString stringWithFormat:@"%d min", late]];
     else
@@ -99,9 +99,9 @@
     
     // The above condition took care of the wording, now let's color coordinate
     if ( late == 0 )
-        [[self lblStartStatus] setTextColor: [UIColor blackColor] ];
+        [[self lblStartStatus] setTextColor: [UIColor colorWithRed:12.0f/255.0f green:174.0f/255.0f blue:64.0/255.0f alpha:1.0f] ];
     else if ( ( late > 0 ) && ( late <= 4) )
-        [[self lblStartStatus] setTextColor: [UIColor orangeColor] ];
+        [[self lblStartStatus] setTextColor: [UIColor redColor] ];
     else if ( late > 4)
         [[self lblStartStatus] setTextColor: [UIColor redColor] ];
     
@@ -164,7 +164,7 @@
     
     late = [[data orig_delay] intValue];
     if ( late == 0 )
-        [[self lblEndStatus] setText: @"On-time"];
+        [[self lblEndStatus] setText: @"On time"];
     else if ( late == 1 )
         [[self lblEndStatus] setText: [NSString stringWithFormat:@"%d min", late]];
     else
@@ -172,9 +172,9 @@
     
     
     if ( late == 0 )
-        [[self lblEndStatus] setTextColor: [UIColor blackColor] ];
+        [[self lblEndStatus] setTextColor: [UIColor colorWithRed:12.0f/255.0f green:174.0f/255.0f blue:64.0/255.0f alpha:1.0f] ];
     else if ( ( late > 0 ) && ( late <= 4) )
-        [[self lblEndStatus] setTextColor: [UIColor orangeColor] ];
+        [[self lblEndStatus] setTextColor: [UIColor redColor] ];
     else if ( late > 4)
         [[self lblEndStatus] setTextColor: [UIColor redColor] ];
     

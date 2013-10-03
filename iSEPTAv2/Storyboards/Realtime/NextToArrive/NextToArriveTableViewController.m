@@ -8,6 +8,67 @@
 
 #import "NextToArriveTableViewController.h"
 
+//@implementation NTAProgressObject
+//{
+//    int _max;
+//}
+//
+//@synthesize count = _count;
+//@synthesize cell = _cell;
+//@synthesize timer = _timer;
+//
+//-(id) init
+//{
+//    self = [super init];
+//    if ( self )
+//    {
+//        self.cell = nil;
+//        self.count = 0;
+//        [self.timer invalidate];
+//    }
+//    return self;
+//}
+//
+//
+//-(void) setMax:(int) max
+//{
+//    _max = max;
+//}
+//
+//-(void) startWithCell:(NextToArriveTripHistoryCell*)cell
+//{
+//    self.cell = cell;
+//    self.count = 0;
+//    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(incrementCounter) userInfo:nil repeats:YES];
+//
+//}
+//
+//-(void) clear
+//{
+//    self.cell = nil;
+//    self.count = 0;
+//    [self.timer invalidate];
+//}
+//
+//-(void) incrementCounter
+//{
+//    self.count++;
+//    [self.cell setProgressBar: (float)self.count/_max];
+//}
+//
+//-(void) incrementCell:(NextToArriveTripHistoryCell*)cell
+//{
+//    if ( self.cell == nil )
+//        return;
+//    
+//    if (cell == self.cell )
+//        self.count++;
+//    else
+//        [self clear];
+//}
+//
+//@end
+
 @interface NextToArriveTableViewController ()
 
 @end
@@ -15,6 +76,8 @@
 @implementation NextToArriveTableViewController
 {
 
+//    NTAProgressObject *_ntaProgress;
+    
     // Favorites, Recently Viewed, Data, etc. are stored here for easy access
     TableViewStore *_tableData;
     
@@ -100,7 +163,8 @@
     [_itinerary setEndStopName: DEFAULT_MESSAGE];
     
     
-    [_tableData addObject:_itinerary forTitle:@"Itinerary"];
+    [_tableData addObject:_itinerary forTitle:@"Itinerary" withTag:kNextToArriveSectionStartEndCells];
+//    [_tableData setTag:kNextToArriveSectionStartEndCells forTitle:@"Itinerary"];
     
     
     
@@ -142,12 +206,16 @@
 //        [saveData setRecent: [_tableData objectForSectionWithTitle:@"Recent"] ];
 
     [_tableData replaceArrayWith: [saveData favorites] forTitle:@"Favorites"];
-    [_tableData replaceArrayWith: [saveData recent]    forTitle:@"Recent"];
+    [_tableData replaceArrayWith: [saveData recent]    forTitle:@"Recent"   ];
     
     [_tableData addObject: [[NextToArrivaJSONObject alloc] init] forTitle:@"Data"];
     [_tableData addObject: [[NextToArrivaJSONObject alloc] init] forTitle:@"Data"];
     [_tableData addObject: [[NextToArrivaJSONObject alloc] init] forTitle:@"Data"];
     [_tableData addObject: [[NextToArrivaJSONObject alloc] init] forTitle:@"Data"];
+    
+    [_tableData setTag:kNextToArriveSectionFavorites forTitle: @"Favorites"];
+    [_tableData setTag:kNextToArriveSectionRecent    forTitle: @"Recent"   ];
+    [_tableData setTag:kNextToArriveSectionData      forTitle: @"Data"     ];
     
     _launchUpdateTimer = NO;
     _killAllTimers     = NO;
@@ -166,8 +234,13 @@
     
         
     // Now create an imageView with the background image you want to use
-    UIImageView *bgImageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"mainBackground.png"] ];
-    [self.tableView setBackgroundView: bgImageView];
+//    UIImageView *bgImageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"mainBackground.png"] ];
+//    [self.tableView setBackgroundView: bgImageView];
+
+    
+    UIColor *backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"newBG_pattern.png"] ];
+    [self.tableView setBackgroundColor: backgroundColor];
+
     
     
     // Used in [self fixMismatchedStopName].  Key: GTFS-compliant station name, value: NTA recognized equivalent station name.
@@ -251,7 +324,7 @@
 //    _menu.textAlignment = UITextAlignmentLeft;
  
     
-    [[UITableView appearance] setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+//    [[UITableView appearance] setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
 }
 
@@ -368,6 +441,8 @@
 -(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    return
+    
     [cell setBackgroundColor: [UIColor colorWithWhite:1.0f alpha:.8] ];
     
     UIImageView *separator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gradient_line.png"]];
@@ -430,17 +505,17 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    switch (indexPath.section)
-    {
-        case 0:
-            return 62.0f;
-            break;
-            
-        default:
-    
+//    switch (indexPath.section)
+//    {
+//        case 0:
+//            return 62.0f;
+//            break;
+//            
+//        default:
+//    
             return [self heightForSection: indexPath];
-            break;
-    }
+//            break;
+//    }
     
 }
 
@@ -489,7 +564,20 @@
     else
         return nil;
     
-//    [headerLabel setText: [_tableData titleForSection:section] ];
+    
+    float x = 4.0;
+    float y = 4.0;
+    CGRect bound = CGRectMake(0, 0, self.view.frame.size.width - 5, 22);
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect: bound
+                                                   byRoundingCorners: UIRectCornerBottomRight | UIRectCornerTopRight
+                                                         cornerRadii: CGSizeMake(x, y)];
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.frame = bound;
+    maskLayer.path= maskPath.CGPath;
+    
+    headerView.layer.mask = maskLayer;
+
+    
     return headerView;
     
 }
@@ -531,33 +619,80 @@
         [[myCell lblStartName] setText: [saveObject startStopName] ];
         [[myCell lblEndName]   setText: [saveObject endStopName]   ];
         
+        CAShapeLayer *maskLayer = [self formatCell: myCell forIndexPath:indexPath];
+        ((UITableViewCell*)myCell).layer.mask = maskLayer;
+        
         return myCell;
     }
     else
     {
+        CAShapeLayer *maskLayer;
         NextToArrivaJSONObject *ntaObject = [_tableData objectForIndexPath: indexPath];
         
-        if ( [ntaObject Connection] == nil )
+        
+        if ( [ntaObject Connection] == nil )  // If connection is nil then it's a single trip
         {
             myCell = (NextToArriveSingleTripCell*)[self.tableView dequeueReusableCellWithIdentifier: singleTripCell];
             [myCell updateCellUsingJsonData: ntaObject];
 
+//            NextToArriveSingleTripCell *testCell = (NextToArriveSingleTripCell*)[self.tableView dequeueReusableCellWithIdentifier:singleTripCell];
+            
+//            myCell height is the generic 44 pixels.  A workaround is needed here.
+            maskLayer = [self formatCell: (NextToArriveSingleTripCell*)myCell forIndexPath:indexPath];
+            
             //            NextToArrivaJSONObject *ntaObject = [_tableData objectForIndexPath:indexPath];
 
             // This is nice and all, but myCell objects are all UILabels, ntaObject objects are all strings.  Problem?  You bet!
 //            [myCell setValuesForKeysWithDictionary: [ntaObject dictionaryWithValuesForKeys: [NSArray arrayWithObjects:@"orig_train", @"orig_arrival_time", @"orig_line", @"orig_departure_time", @"orig_delay", nil]] ];
             
         }
-        else
+        else  // Otherwise a connection is required
         {
-            myCell = (NextToArriveSingleTripCell*)[self.tableView dequeueReusableCellWithIdentifier: connectionTripCell];
+            myCell = (NextToArriveConnectionTripCell*)[self.tableView dequeueReusableCellWithIdentifier: connectionTripCell];
             [myCell updateCellUsingJsonData: ntaObject];
+            
+            maskLayer = [self formatCell: (NextToArriveConnectionTripCell*)myCell forIndexPath:indexPath];
         }
         
         
+
+        ((UITableViewCell*)myCell).layer.mask = maskLayer;
+
         return myCell;
     }
 
+    
+}
+
+
+-(CAShapeLayer*) formatCell:(UITableViewCell*) cell forIndexPath:(NSIndexPath*) indexPath
+{
+
+    UIRectCorner corner = 0;
+    
+    if ( indexPath.row == 0 )
+    {
+        corner |= UIRectCornerTopRight;
+    }
+    
+    if ( indexPath.row == [_tableData numOfRowsForSection: indexPath.section] - 1 )
+    {
+        corner |= UIRectCornerBottomRight;
+    }
+    
+    float x = 4.0;
+    float y = 4.0;
+    CGRect bound = cell.bounds;
+    bound.size.height = [self heightForSection: indexPath];
+    bound.size.width = self.view.frame.size.width - 5;
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect: bound
+                                                   byRoundingCorners: corner
+                                                         cornerRadii: CGSizeMake(x, y)];
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.frame = bound;
+    maskLayer.path= maskPath.CGPath;
+    
+    return maskLayer;
     
 }
 
@@ -568,11 +703,11 @@
     // TODO: Find a better way to do this, this happens very often
     if ( [[_tableData titleForSection:indexPath.section] isEqualToString:@"Favorites"] )
     {
-        return 34.0f;
+        return 38.0f;
     }
     else if ( [[_tableData titleForSection:indexPath.section] isEqualToString:@"Recent"] )
     {
-        return 34.0f;
+        return 38.0f;
     }
     else if ( [[_tableData titleForSection:indexPath.section] isEqualToString:@"Data"] )
     {
@@ -643,6 +778,7 @@
         {
             NSLog(@"Clear the Itinerary Cells");
             [self clearItineraryCells];
+            _favoriteStatus = kNextToArriveFavoriteSubtitleStatusUnknown;
         }
         else if ( [[_tableData titleForSection:indexPath.section] isEqualToString:@"Favorites"] )
         {
@@ -711,12 +847,12 @@
     if ( [[_tableData titleForSection:indexPath.section] isEqualToString:@"Favorites"] )
     {
         [saveData makeSectionDirty: kNTASectionFavorites];
-        [[saveData favorites] removeObjectAtIndex: indexPath.row];
+//        [[saveData favorites] removeObjectAtIndex: indexPath.row];
     }
     else if ( [[_tableData titleForSection:indexPath.section] isEqualToString:@"Recent"] )
     {
         [saveData makeSectionDirty: kNTASectionRecentlyViewed];
-        [[saveData recent] removeObjectAtIndex: indexPath.row];
+//        [[saveData recent] removeObjectAtIndex: indexPath.row];
     }
     
     
@@ -738,6 +874,7 @@
     
     [self.tableView endUpdates];
     
+//    [self.tableView reloadData];
     
 }
 
@@ -881,16 +1018,30 @@
     }
     
     
-    for (NTASaveObject *sObject in [_tableData objectForSectionWithTitle:@"Favorites"] )
+    NTASaveObject *sObject = [[NTASaveObject alloc] init];
+    [sObject setStartStopName: _itinerary.startStopName];
+    [sObject setEndStopName  : _itinerary.endStopName];
+    
+    if ( [self doesObject: sObject existInSection:@"Favorites"] != NSNotFound )
     {
-        
-        if ( [_itinerary.startStopName isEqualToString: [sObject startStopName] ] && [_itinerary.endStopName isEqualToString: [sObject endStopName] ] )
-        {
-            _favoriteStatus = kNextToArriveFavoriteSubtitleAdded;
-            break;  // Once a match is found, no reason to continue searching
-        }
-        
+        _favoriteStatus = kNextToArriveFavoriteSubtitleAdded;
     }
+    else if ( [self doesObject: sObject existInSection:@"Recent"] != NSNotFound )
+    {
+        _favoriteStatus = kNextToArriveFavoriteSubtitleNotAdded;
+    }
+    
+    
+//    for (NTASaveObject *sObject in [_tableData objectForSectionWithTitle:@"Favorites"] )
+//    {
+//        
+//        if ( [_itinerary.startStopName isEqualToString: [sObject startStopName] ] && [_itinerary.endStopName isEqualToString: [sObject endStopName] ] )
+//        {
+//            _favoriteStatus = kNextToArriveFavoriteSubtitleAdded;
+//            break;  // Once a match is found, no reason to continue searching
+//        }
+//        
+//    }
     
 
     // --==  Update Favorites subtitle
@@ -1150,12 +1301,6 @@
 -(void) refreshJSONData
 {
     
-//    if ( (_buttonPressed & 0x03) != 3 )
-//    {
-//        // Both buttons have been pressed
-//        return;
-//    }
-    
     if ( !( (_itineraryCompletion & kNextToArriveEndButtonPressed ) && ( _itineraryCompletion & kNextToArriveStartButtonPressed ) ) )
     {
         // Either the Start or End itinerary fields were not set
@@ -1164,45 +1309,155 @@
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
+
     NTASaveObject *sObject = [[NTASaveObject alloc] init];
     [sObject setStartStopName: _itinerary.startStopName];
     [sObject setEndStopName  : _itinerary.endStopName  ];
+    [sObject setAddedDate:[NSDate date] ];
+
     
-    NSInteger locatedAt;
-    locatedAt = [saveData addObject: sObject intoSection: kNTASectionRecentlyViewed];
-    NSLog(@"NTAVC - saveData, locatedAt: %d", locatedAt);  // if locatedAt == NSNotFound, it wasn't found in the recentlyViewed
-    
-//    [recentlyViewedSection sortUsingComparator:sortNTASaveObjectByDate];
-    
-    if ( ![[_tableData getSectionTitles] containsObject:@"Recent"] )
+    int row;
+    if ( (row = [self doesObject:sObject existInSection:@"Favorites"]) != NSNotFound )
     {
-        [_tableData addSectionWithTitle:@"Recent"];
-        
-     
-        NSArray *sectionNames = [_tableData returnAllSections];
-        
-        int dataIndex = [sectionNames indexOfObject:@"Data"];
-        int recentIndex = [sectionNames indexOfObject:@"Recent"];
-//        int favIndex = [sectionNames indexOfObject:@"Favorites"];
-//        int itinIndex = [sectionNames indexOfObject:@"Itinerary"];
-
-        if ( recentIndex > dataIndex )
-        {
-//            [_tableData moveSection:recentIndex afterSection:favIndex];
-        }
-
-        NSLog(@"Done");
-        
+        // If the current start/end names already exists in Favorites, nothing to do but update the timestamp
+        NTASaveObject *sObject = [_tableData objectForIndexPath: [NSIndexPath indexPathForRow:row inSection:[_tableData indexForSectionTitle:@"Favorites"] ] ];
+        [sObject setAddedDate: [NSDate date] ];
     }
-//    [[_tableData objectForSectionWithTitle:@"Recent"] sortUsingComparator: sortNextToArriveSaveObjectByDate];
+    else if ( (row = [self doesObject:sObject existInSection:@"Recent"]) != NSNotFound )
+    {
+        // If the current start/end names already exists in Favorites, nothing to do but update the timestamp
+        NTASaveObject *sObject = [_tableData objectForIndexPath: [NSIndexPath indexPathForRow:row inSection:[_tableData indexForSectionTitle:@"Recent"] ] ];
+        [sObject setAddedDate: [NSDate date] ];
+    }
+    else
+    {
+    // Since the object doesn't exist in the Favorites or Recent section, add it to Recent
+        [self addObject: sObject toSection: kNTASectionRecentlyViewed];        
+    }
     
-    
-//    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex: [_tableData indexForSectionTitle:@"Recent"] ] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    if ( ![[_tableData returnAllSections] containsObject:@"Recent"] )  // Is there even a Recent section
+
     
     [self.tableView reloadData];
+
     
     [self invalidateTimer]; // Invalidate any timer that is already active.  If no timer is active, nothing happens
     [self getLatestJSONData];
+    
+}
+
+
+-(void) addObject: (NTASaveObject*) sObject toSection: (NTASaveSection) section
+{
+    
+    NSMutableArray *genericArr;
+    NSString *title;
+    int tag;
+    
+    if ( section == kNTASectionFavorites )
+    {
+        tag = kNextToArriveSectionFavorites;
+        title = @"Favorites";
+        genericArr = [saveData favorites];
+    }
+    else if ( section == kNTASectionRecentlyViewed )
+    {
+        tag = kNextToArriveSectionRecent;
+        title = @"Recent";
+        genericArr = [saveData recent];
+    }
+    else
+        return;
+    
+    
+    if ( [_tableData indexForSectionTitle: title] == NSNotFound )
+    {
+        [_tableData addSectionWithTitle: title];
+        [_tableData setTag:tag forTitle: title];
+        [_tableData sortByTags];
+    }
+    
+    [sObject setAddedDate: [NSDate date] ];
+    
+    [saveData addObject: sObject intoSection:section];
+    [_tableData replaceArrayWith: genericArr forTitle:title];
+    
+}
+
+
+-(int) doesObject:(NTASaveObject*) sObject existInSection:(NSString*) title
+{
+    
+    if ( title == nil )
+        return NSNotFound;
+    
+    if ( [_tableData objectForSectionWithTitle:title] == nil )
+        return NSNotFound;
+    
+    
+    int count = 0;
+    for (NTASaveObject *sObject in [_tableData objectForSectionWithTitle:title] )
+    {
+        if ( [[sObject startStopName] isEqualToString:_itinerary.startStopName] && [[sObject endStopName] isEqualToString: _itinerary.endStopName] )
+            return count;
+        count++;
+    }
+    
+    return NSNotFound;
+    
+}
+
+//-(void) removeObject:(NTASaveObject*) sObject ifItExistsInSection:(NSString*) title
+-(void) removeObject:(NTASaveObject*) sObject ifItExistsInSection:(NTASaveSection) section
+{
+    
+    NSString *title;
+    
+    if ( section == kNTASectionFavorites )
+        title = @"Favorites";
+    else if ( section == kNTASectionRecentlyViewed )
+        title = @"Recent";
+    
+    
+    if ( title == nil )
+        return;
+    
+    if ( [_tableData objectForSectionWithTitle:title] == nil )
+        return;
+        
+
+    
+    // Remove object from saveData recent/favorites
+    int row;
+    NSIndexPath *indexPath;
+    if ( ( row = [self doesObject:sObject existInSection:title] ) != NSNotFound )
+    {
+        indexPath = [NSIndexPath indexPathForRow:row inSection: [_tableData indexForSectionTitle: title] ];
+        [self removeObjectAtIndexPath: indexPath];
+    }
+    return;
+    
+    
+//    int count = 0;  // Reading NSArray in sequential order
+//    NSIndexPath *indexPath;
+//    
+//    for (NTASaveObject *sObject in [_tableData objectForSectionWithTitle:title] )
+//    {
+//        if ( [[sObject startStopName] isEqualToString:_itinerary.startStopName] && [[sObject endStopName] isEqualToString: _itinerary.endStopName] )
+//        {
+//            indexPath = [NSIndexPath indexPathForRow:count inSection: [_tableData indexForSectionTitle: title] ];
+//            
+//            break;
+//        }
+//        count++;
+//    }
+//    
+//    if ( indexPath != nil )
+//    {
+//        
+//        
+////        [self removeObjectAtIndexPath:indexPath];
+//    }
     
 }
 
@@ -1214,42 +1469,26 @@
     if ( _favoriteStatus == kNextToArriveFavoriteSubtitleStatusUnknown )
         return;
     
+
+    NTASaveObject *sObject = [[NTASaveObject alloc] init];
+    [sObject setStartStopName: _itinerary.startStopName];
+    [sObject setEndStopName  : _itinerary.endStopName  ];
+    [sObject setAddedDate: [NSDate date] ];
     
     // The currente itinerary has been added to Favorites.  Click on it again will remove it
     if ( _favoriteStatus == kNextToArriveFavoriteSubtitleAdded )
     {
-        
-        NSIndexPath *indexPath;
-        
-        // Determine what indexPath the current favorites is at
-//        if ( [_tableData numOfRowsForSection: [_tableData indexForSectionTitle:@"Favorites"] ] == 1 )
-//            indexPath = [NSIndexPath indexPathForRow:0 inSection: [_tableData indexForSectionTitle:@"Favorites"] ];  // Well, that was easy
-        
-        
-        int count = 0;  // Reading NSArray in sequential order
-        for (NTASaveObject *sObject in [_tableData objectForSectionWithTitle:@"Favorites"] )
-        {
-            if ( [[sObject startStopName] isEqualToString:_itinerary.startStopName] && [[sObject endStopName] isEqualToString: _itinerary.endStopName] )
-                indexPath = [NSIndexPath indexPathForRow:count inSection: [_tableData indexForSectionTitle:@"Favorites"] ];
-            
-            count++;
-        }
-        
-        if ( indexPath != nil )
-            [self removeObjectAtIndexPath:indexPath];
-        
+        [self removeObject: sObject ifItExistsInSection: kNTASectionFavorites];
+        [self addObject: sObject toSection: kNTASectionRecentlyViewed];
+
+        [self.tableView reloadData];
         return;
     }
-    
-    
-    
-    NTASaveObject *sObject = [[NTASaveObject alloc] init];
-    [sObject setStartStopName: _itinerary.startStopName];
-    [sObject setEndStopName  : _itinerary.endStopName  ];
 
-    NSInteger locatedAt;
-    locatedAt = [saveData addObject: sObject intoSection: kNTASectionFavorites];
-    NSLog(@"NTAVC - saveData, locatedAt: %d", locatedAt);  // if locatedAt == NSNotFound, it wasn't found in the Favorites
+
+//    NSInteger locatedAt;
+//    locatedAt = [saveData addObject: sObject intoSection: kNTASectionFavorites];
+//    NSLog(@"NTAVC - saveData, locatedAt: %d", locatedAt);  // if locatedAt == NSNotFound, it wasn't found in the Favorites
 
 //    NSLog(@"%@", _tableData);
     
@@ -1257,12 +1496,30 @@
     if ( [_tableData objectForSectionWithTitle:@"Favorites"] == nil )
     {
         newSection = YES;
+//        [_tableData addSectionWithTitle:@"Favorites"];
+//        [_tableData setTag:kNextToArriveSectionFavorites forTitle:@"Favorites"];
+//        [_tableData sortByTags];
+//        [self.tableView reloadData];
     }
         
     
-    [_tableData addObject:sObject forTitle:@"Favorites"];
+    // Check if trip exists in Recent and, if so, remove it.
+    [self removeObject: sObject ifItExistsInSection: kNTASectionRecentlyViewed];
+    [self addObject: sObject toSection:kNTASectionFavorites];
+    
+//    [saveData addObject: sObject intoSection: kNTASectionFavorites];
+//    [_tableData replaceArrayWith: [saveData favorites] forTitle: @"Favorites"];
+    
+//    [_tableData addObject:sObject forTitle:@"Favorites" withTag: kNextToArriveSectionFavorites];
     
     [ [_tableData objectForSectionWithTitle:@"Favorites" ] sortUsingComparator:sortNextToArriveSaveObjectByDate];
+    
+//    [self.tableView reloadData];
+//    return;
+    
+    
+    
+    
     
     if ( newSection )
     {
@@ -1277,6 +1534,8 @@
     
 //    [self.tableView reloadData];
     
+    
+    NSLog(@"Done");
 }
 
 
@@ -1505,6 +1764,7 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     if ( [_tableData indexForSectionTitle:@"Data"] < 0 )
     {
         [_tableData addSectionWithTitle:@"Data"];
+        [_tableData setTag:kNextToArriveSectionData forTitle:@"Data"];
     }
     
     [_tableData clearSectionWithTitle:@"Data"];
@@ -1529,7 +1789,8 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
 {
     // Since a long press is triggered before a tap, a LP on a favorite or recent will not actually load any data into the start/end fields
     // Do that now
-    //    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+
+//    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     
     UILongPressGestureRecognizer *gesture = (UILongPressGestureRecognizer*) sender;
     
@@ -1537,9 +1798,17 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     {
 //        NSLog(@"NtATVC - Began");
         CGPoint touchPoint = [sender locationInView: self.view];
-        NSIndexPath *row = [self.tableView indexPathForRowAtPoint:touchPoint];
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:touchPoint];
+
+//        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+//        if ( [cell isKindOfClass: [NextToArriveTripHistoryCell class] ] )
+//        {
+//            _ntaProgress = [[NTAProgressObject alloc] init];
+//            [_ntaProgress startWithCell:(NextToArriveTripHistoryCell*)cell];
+//            [_ntaProgress setMax:60];
+//        }
         
-        [self tableView:self.tableView didSelectRowAtIndexPath:row];
+        [self tableView:self.tableView didSelectRowAtIndexPath: indexPath];
         [self refreshJSONData];
         
 //        NSLog(@"NtATVC - loading data in indexPath: %@", row);
@@ -1547,12 +1816,39 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     else if ( gesture.state == UIGestureRecognizerStateRecognized )
     {
 //        NSLog(@"NtATVC - Recognized");
+//        NSLog(@"count: %d", [_ntaProgress count]);
+//        [_ntaProgress clear];
+//        _ntaProgress = nil;
         
     }
-    else if ( gesture.state == UIGestureRecognizerStateEnded )
-    {
+//    else if ( gesture.state == UIGestureRecognizerStateEnded )
+//    {
 //        NSLog(@"NtATVC - Ended");
+//    }
+    else if ( gesture.state == UIGestureRecognizerStateChanged )
+    {
+//        NSLog(@"NtATVC - Changed");
+        
+//        CGPoint touchPoint = [sender locationInView: self.view];
+//        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:touchPoint];
+//        
+//        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+//        if ( [cell isKindOfClass: [NextToArriveTripHistoryCell class] ] )
+//        {
+//            if ( _ntaProgress.cell == cell )
+//                [_ntaProgress clear];
+//        }
+        
     }
+//    else if ( gesture.state == UIGestureRecognizerStateFailed )
+//    {
+//        NSLog(@"NtATVC - Failed");
+//    }
+//    else if ( gesture.state == UIGestureRecognizerStatePossible )
+//    {
+//        NSLog(@"NtATVC - Possible");
+//    }
+
 
 }
 

@@ -43,20 +43,14 @@
 
 
     
-    UIImageView *bgImageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"mainBackground.png"] ];
-    [self.tableView setBackgroundView: bgImageView];
+//    UIImageView *bgImageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"mainBackground.png"] ];
+//    [self.tableView setBackgroundView: bgImageView];
 
-    NSLog(@"%@", bgImageView);
+    UIColor *backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"newBG_pattern.png"] ];
+    [self.tableView setBackgroundColor: backgroundColor];
     
     
     [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
-    
-
-    
-    
-
-    
-    
     
 }
 

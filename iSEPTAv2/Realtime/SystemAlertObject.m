@@ -26,6 +26,11 @@
 @synthesize last_updated;
 
 
+-(BOOL) isAlert
+{
+    return [current_message length] + [advisory_message length] + [detour_message length];
+}
+
 -(NSString*) description
 {
     return [NSString stringWithFormat:@"route: %@ (%@) - update: %@ \n current: %@ --- advisory: %@ --- detour: %@ --- startLoc: %@ --- startTime: %@ --- endTime: %@ --- reason: %@", route_id, route_name, last_updated, current_message, advisory_message, detour_message, detour_start_location, detour_start_date_time, detour_end_date_time, detour_reason];

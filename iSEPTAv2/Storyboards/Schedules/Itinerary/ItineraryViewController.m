@@ -22,6 +22,9 @@
      trips - holds the start/end time, train #, route_id, direction_id, service_id, start/end sequence
      */
     
+    SystemAlertObject *_currentAlert;
+    GetAlertDataAPI *_alertsAPI;
+    
     ItineraryFavoriteSubtitleState _favoriteStatus;
     
     ItineraryObject *itinerary;
@@ -389,6 +392,17 @@
                                                       }];
     
     
+    REMenuItem *advisoryItem = [[REMenuItem alloc] initWithTitle:@"Advisory"
+                                                        subtitle:@""
+                                                           image:[UIImage imageNamed:@"Advisory.png"]
+                                                highlightedImage:nil
+                                                          action:^(REMenuItem *item) {
+                                                              [self loadAdvisories];
+                                                          }];
+    
+    
+    
+    
     _menu = [[REMenu alloc] initWithItems:@[favoritesItem, fareItem] ];
     _menu.cornerRadius = 4;
     _menu.shadowRadius = 4;
@@ -413,13 +427,16 @@
 {
     
     // Load background image
-    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mainBackground.png"] ];
-    [backgroundImage setContentMode: UIViewContentModeScaleAspectFill];
-    backgroundImage.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    [self.view addSubview:backgroundImage];
-    [self.view sendSubviewToBack:backgroundImage];
+//    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mainBackground.png"] ];
+//    [backgroundImage setContentMode: UIViewContentModeScaleAspectFill];
+//    backgroundImage.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//    
+//    [self.view addSubview:backgroundImage];
+//    [self.view sendSubviewToBack:backgroundImage];
 
+    UIColor *bgColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"newBG_pattern.png"] ];
+    [self.view setBackgroundColor: bgColor];
+    
     
     //  --==  Tabbed Button Configuration  ==--
     UIColor *selectedBGColor;
@@ -550,7 +567,7 @@
 
     
     [self.view addSubview: _tBtnTransit];
-    [self.view insertSubview:_tBtnTransit aboveSubview: backgroundImage];
+//    [self.view insertSubview:_tBtnTransit aboveSubview: backgroundImage];
 
 
     // Select which button should be initially selected
@@ -3320,12 +3337,64 @@
 //};
 
 
+-(void) loadAdvisories
+{
+    
+    NSString *storyboardName = @"SystemStatusStoryboard";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    SystemAlertsViewController *saVC = (SystemAlertsViewController*)[storyboard instantiateViewControllerWithIdentifier:@"SystemAlertsStoryboard"];
+    
+    [saVC setAlertArr: [NSMutableArray arrayWithObject: _currentAlert] ];
+    [saVC setBackImageName: _backButtonImage];
+    
+    [self.navigationController pushViewController:saVC animated:YES];
+
+    
+}
+
+
+-(void) getAdvisories
+{
+    
+    _alertsAPI = [[GetAlertDataAPI alloc] init];
+    [_alertsAPI setDelegate:self];
+
+    [_alertsAPI addRoute:self.routeData.route_short_name];
+    [_alertsAPI fetchAlert];
+    
+}
+
+
 -(void) loadFareVC
 {
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FareStoryboard" bundle:nil];
     FareViewController *fVC = (FareViewController*)[storyboard instantiateInitialViewController];
     [self.navigationController pushViewController: fVC animated: YES];
+    
+}
+
+
+#pragma mark - GetAlertsAPIProtocol
+-(void) alertFetched:(NSMutableArray *)alert
+{
+    if ( [alert count] == 0 )
+        return;
+    
+    _currentAlert = (SystemAlertObject*)[alert objectAtIndex:0];
+//    NSString *key;
+
+    
+    
+    if ( [_currentAlert isAlert] )
+    {
+        // Update REMenu item with Advisory
+    }
+    else
+    {
+        // Clear REMenu item
+    }
+
     
 }
 

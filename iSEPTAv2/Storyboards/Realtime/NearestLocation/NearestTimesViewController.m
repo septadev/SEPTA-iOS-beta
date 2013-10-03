@@ -271,7 +271,7 @@
         //   vehicles (start/end of the line, rail stops, etc.) the JSON produced by the API is in-fucking-valid.  Invalid JSON gets crapped on by the parse,
         //   no data is available and everyone is unhappy!
         
-        // Until the API starts returning valid JSON output, we can't reliably offer this feature.  
+        // Until the API starts returning valid JSON output for all routes, we can't reliably offer this feature.
         [_alertsAPI addRoute: rdObj.route_short_name];
         
         // For every route in each rdObj, make a call to both BusSchedules and Alerts

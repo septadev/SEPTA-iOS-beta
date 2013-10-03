@@ -25,4 +25,6 @@
 
 @property (nonatomic, strong) NSString *last_updated;
 
+-(BOOL) isAlert;
+
 @end

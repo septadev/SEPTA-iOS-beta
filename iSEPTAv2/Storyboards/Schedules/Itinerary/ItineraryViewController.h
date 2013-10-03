@@ -25,6 +25,7 @@
 #import "TapableSegmentControl.h"
 #import "TabbedButton.h"
 #import "CustomFlatBarButton.h"
+#import "GetAlertDataAPI.h"
 // --==  Handy Helper Classes
 
 
@@ -51,6 +52,8 @@
 #import "StopNamesForRouteTableController.h"
 #import "StopNamesTableViewController.h"
 #import "FareViewController.h"
+#import "SystemAlertsViewController.h"
+// --==  Connected VCs  ==--
 
 
 // --==  Categories  ==--
@@ -100,7 +103,7 @@ typedef NS_ENUM(NSInteger, ItineraryDropDownMenuOrder)
 };
 
 
-@interface ItineraryViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, ItineraryCellProtocol, StopNamesTableViewControllerProtocol, StopNamesForRouteDelegate, TabbedButtonProtocol, NextToArriveItineraryCellProtocol>
+@interface ItineraryViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, ItineraryCellProtocol, StopNamesTableViewControllerProtocol, StopNamesForRouteDelegate, TabbedButtonProtocol, NextToArriveItineraryCellProtocol, GetAlertDataAPIProtocol>
 
 @property (weak, nonatomic) IBOutlet UILabel *lblTabbedLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imgTabbedLabel;

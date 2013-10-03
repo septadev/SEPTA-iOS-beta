@@ -35,6 +35,27 @@
 //    
 //}
 
+//-(void) setProgressBar:(CGFloat) percent
+//{
+//    CGRect progressFrame = self.imgProgressBar.frame;
+//    if ( percent < 0.01 )
+//    {
+////        [self.imgProgressBar setBackgroundColor: [UIColor clearColor] ];
+////        [self.imgProgressBar setHidden:YES];
+//    }
+//    else
+//    {
+//        [self.imgProgressBar setBackgroundColor: [UIColor blueColor] ];
+//        [self.imgProgressBar setHidden:NO];
+//    }
+//    
+//    progressFrame.size.width = self.frame.size.width * percent;
+////    NSLog(@"progressBar: %6.3f, width: %6.3f", percent, progressFrame.size.width);
+//
+//    [self.imgProgressBar setFrame: progressFrame];
+//    
+//}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {

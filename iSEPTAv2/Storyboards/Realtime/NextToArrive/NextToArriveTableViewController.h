@@ -105,6 +105,21 @@ typedef NS_ENUM(NSInteger, NextToArriveFavoriteSubtitleState)
 };
 
 
+//@interface NTAProgressObject : NSObject
+//
+//@property (nonatomic, assign) int count;
+//@property (nonatomic, assign) NextToArriveTripHistoryCell  *cell;
+//@property (nonatomic, strong) NSTimer *timer;
+//
+//
+//-(void) setMax:(int) max;
+//-(void) startWithCell:(NextToArriveTripHistoryCell*) cell;
+//-(void) clear;
+//-(void) incrementCell:(NextToArriveTripHistoryCell*)cell;
+//
+//@end
+
+
 
 @interface NextToArriveTableViewController : UITableViewController <NextToArriveItineraryCellProtocol, StopNamesTableViewControllerProtocol, UIGestureRecognizerDelegate>
 

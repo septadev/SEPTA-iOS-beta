@@ -240,6 +240,8 @@
 {
 
     int section = [_topStore count] - 1;
+    if ( section < 0 )
+        section = 0;
     _lastAccessPath = [NSIndexPath indexPathForRow:0 inSection: section];
 
     TVStoreObject *sObject = [[TVStoreObject alloc] init];
@@ -524,6 +526,7 @@
     else if ( section < 0 )
         return;
     
+    [[(TVStoreObject*)[_topStore objectAtIndex:section] data] removeAllObjects];
     [_topStore removeObjectAtIndex:section];
     
     if ( _lastAccessPath.section == section )
