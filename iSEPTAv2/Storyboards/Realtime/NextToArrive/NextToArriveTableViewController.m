@@ -395,6 +395,8 @@
     [titleView updateWidth: w];
 //    [titleView updateFrame: CGRectMake(0, 0, w - (navW*2) -8, 32)];
     
+    [self.tableView reloadData];
+    
 }
 
 
@@ -1307,7 +1309,7 @@
         return;
     }
     
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+//    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
 
     NTASaveObject *sObject = [[NTASaveObject alloc] init];
