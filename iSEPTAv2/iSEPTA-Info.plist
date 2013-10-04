@@ -3,26 +3,24 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>en_US</string>
 	<key>CFBundleDisplayName</key>
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIcons</key>
-	<dict>
-		<key>CFBundlePrimaryIcon</key>
-		<dict>
-			<key>CFBundleIconFiles</key>
-			<array>
-				<string>septaIcon~ios7</string>
-				<string>septaIcon</string>
-				<string>icon.png</string>
-				<string>Default.png</string>
-				<string>septaIcon.png</string>
-				<string>septaIcon@2x.png</string>
-			</array>
-		</dict>
-	</dict>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>septaIcon.png</string>
+		<string>septaIcon@2x.png</string>
+		<string>septaIcon~ios7@2x.png</string>
+		<string>septaSpotlight~ios7@2x.png</string>
+		<string>septaSpotlight@2x.png</string>
+		<string>septaSpotlight.png</string>
+		<string>septaIcon-72.png</string>
+		<string>septaIcon-72@2x.png</string>
+	</array>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
 	<key>CFBundleIdentifier</key>
 	<string>org.septa.iSEPTA</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -45,6 +43,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDefault</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

@@ -593,7 +593,8 @@
         }
         count++;
     }
-    _lastAccessPath = [NSIndexPath indexPathForItem:0 inSection:count];
+    
+    _lastAccessPath = [NSIndexPath indexPathForRow:0 inSection:count];
     return;
     
     

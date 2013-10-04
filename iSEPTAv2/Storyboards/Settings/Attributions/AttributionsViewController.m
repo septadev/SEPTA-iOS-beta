@@ -36,9 +36,12 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    UIImageView *bgImageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"mainBackground.png"] ];
-    [self.tableView setBackgroundView: bgImageView];
-    
+//    UIImageView *bgImageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"mainBackground.png"] ];
+//    [self.tableView setBackgroundView: bgImageView];
+
+    UIColor *backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"newBG_pattern.png"] ];
+    [self.tableView setBackgroundColor: backgroundColor];
+
 
     // --==  Register All the Xibs!  ==--
     [self.tableView registerNib:[UINib nibWithNibName:@"AttributionCell" bundle:nil] forCellReuseIdentifier:@"AttributionCell"];

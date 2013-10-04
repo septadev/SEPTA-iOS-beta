@@ -8,6 +8,7 @@
 
 #import "RealtimeViewController.h"
 
+
 @interface RealtimeViewController ()
 
 @end
@@ -96,6 +97,9 @@
 
 //    [self.view addSubview:_backgroundImage];
 //    [self.view sendSubviewToBack:_backgroundImage];
+    
+//    [[UINavigationBar appearance] setTintColor: [UIColor blackColor] ];
+    
     
     
     UIColor *backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"newBG_pattern.png"] ];

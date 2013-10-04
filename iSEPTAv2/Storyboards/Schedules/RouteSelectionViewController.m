@@ -161,7 +161,6 @@
     LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0, 500, 32) withTitle: title withFontSize: fontSize];
     [self.navigationItem setTitleView:titleView];
     
-//    NSLog(@"titleView frame: %@", NSStringFromCGRect(titleView.frame));
     
     [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
     

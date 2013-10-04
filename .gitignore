@@ -1,4 +1,4 @@
-#Can ignore specific files
+v#Can ignore specific files
 *.sqlite
 *.txt
 *.csv
@@ -24,3 +24,4 @@ DerivedData
 
 gtfs/gitraw
 images/
+iSEPTA/*

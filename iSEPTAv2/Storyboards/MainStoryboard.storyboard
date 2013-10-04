@@ -350,7 +350,7 @@ THE SOFTWARE.</string>
                                 <rect key="frame" x="112" y="112" width="96" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Button" image="RT_Find Loc.png">
+                                <state key="normal" title="Button" image="RT_Find-Loc.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -375,7 +375,7 @@ THE SOFTWARE.</string>
                                 <rect key="frame" x="216" y="112" width="96" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Button" image="RT_Guide.png">
+                                <state key="normal" title="Button" image="RT_Tips.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -383,7 +383,7 @@ THE SOFTWARE.</string>
                                     <segue destination="uIi-WG-ZZu" kind="push" id="cSs-4p-bpa"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Guide" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1dp-2P-tcp">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tips" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1dp-2P-tcp">
                                 <rect key="frame" x="216" y="178" width="96" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="13"/>
@@ -468,6 +468,10 @@ THE SOFTWARE.</string>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="IeV-Tt-JOR">
+                        <rect key="frame" x="0.0" y="416" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="S6n-vT-jtX" kind="relationship" relationship="rootViewController" id="nST-8r-fQo"/>
                     </connections>
@@ -766,7 +770,7 @@ High Speed Line</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blankGrey-BG.png" id="d3Q-gL-F1s">
-                                                    <rect key="frame" x="0.0" y="2" width="315" height="51"/>
+                                                    <rect key="frame" x="0.0" y="2" width="335" height="51"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Fare Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UCn-T4-ApB">
@@ -792,7 +796,7 @@ High Speed Line</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blankGrey-BG.png" id="o8K-lU-9KO">
-                                                    <rect key="frame" x="0.0" y="2" width="315" height="51"/>
+                                                    <rect key="frame" x="0.0" y="2" width="335" height="51"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Customer Service" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pxg-Gb-zQ6">
@@ -818,7 +822,7 @@ High Speed Line</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blankGrey-BG.png" id="oIk-2y-ytb">
-                                                    <rect key="frame" x="0.0" y="2" width="315" height="51"/>
+                                                    <rect key="frame" x="0.0" y="2" width="335" height="51"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Facebook" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xgd-T7-Gtr">
@@ -844,7 +848,7 @@ High Speed Line</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blankGrey-BG.png" id="XV3-vg-9cM">
-                                                    <rect key="frame" x="0.0" y="2" width="315" height="51"/>
+                                                    <rect key="frame" x="0.0" y="2" width="335" height="51"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Twitter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LBB-YN-P8T">
@@ -870,7 +874,7 @@ High Speed Line</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blankGrey-BG.png" id="4nH-H7-0bp">
-                                                    <rect key="frame" x="0.0" y="2" width="315" height="51"/>
+                                                    <rect key="frame" x="0.0" y="2" width="335" height="51"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="commentsIcon.png" id="Nog-sh-bkP">
@@ -896,7 +900,7 @@ High Speed Line</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="blankGrey-BG.png" id="hnv-z1-MBz">
-                                                    <rect key="frame" x="0.0" y="2" width="315" height="51"/>
+                                                    <rect key="frame" x="0.0" y="2" width="335" height="51"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="feedbackIcon.png" id="yxI-Nb-XJq">
@@ -932,12 +936,12 @@ High Speed Line</string>
     </scenes>
     <resources>
         <image name="24HoursIcon.png" width="41" height="43"/>
-        <image name="RT_Find Loc.png" width="96" height="96"/>
-        <image name="RT_Guide.png" width="96" height="96"/>
+        <image name="RT_Find-Loc.png" width="96" height="96"/>
         <image name="RT_NTA.png" width="96" height="96"/>
         <image name="RT_NTA_disabled.png" width="96" height="96"/>
         <image name="RT_System-Status.png" width="96" height="96"/>
         <image name="RT_System-Status_disabled.png" width="96" height="96"/>
+        <image name="RT_Tips.png" width="96" height="96"/>
         <image name="RT_TrainView.png" width="96" height="96"/>
         <image name="RT_TransitView.png" width="96" height="96"/>
         <image name="Schedule_BSL-BG.png" width="251" height="51"/>
