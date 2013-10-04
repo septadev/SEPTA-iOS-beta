@@ -16,6 +16,8 @@
 @implementation RealtimeViewController
 {
     UIImageView *_backgroundImage;
+    BOOL _startTest;
+    int _counter;
 //    MMDrawerController *_drawerController;
 }
 
@@ -45,8 +47,23 @@
         
     }
 
+    if ( _startTest )
+    {
+        [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(popTheVC) userInfo:nil repeats:NO];
+    }
+    
 }
 
+
+-(void) popTheVC
+{
+    _counter++;
+    NSLog(@"Transition: %d", _counter);
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MemoryTestStoryboard" bundle:nil];
+    MapMemoryTestViewController *tvVC = (MapMemoryTestViewController*)[storyboard instantiateInitialViewController];
+    [tvVC setCounter: _counter];
+    [self.navigationController pushViewController:tvVC animated:YES];
+}
 
 //-(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 //{
@@ -84,6 +101,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _startTest = NO;
+    _counter = 0;
     
     // Do any additional setup after loading the view.
 
@@ -100,6 +119,16 @@
     
 //    [[UINavigationBar appearance] setTintColor: [UIColor blackColor] ];
     
+    
+    // TabBar BS
+//    UITabBarItem *tbi = self.tabBarController.tabBarItem;
+//    [tbi setFinishedSelectedImage:[UIImage imageNamed:@"tabRealtimeIcon.png"] withFinishedUnselectedImage: [UIImage imageNamed:@"tabRealtimeIconSelected.png"] ];
+    
+    
+//    [[[self tabBarController] tabBar] setSelectionIndicatorImage: [UIImage imageNamed:@"tabRealtimeIconSelected.png"] ];
+
+    
+//    [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"tabMapIconSelected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabMapIcon.png"] ];
     
     
     UIColor *backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"newBG_pattern.png"] ];
@@ -173,6 +202,11 @@
 //    TrainViewViewController *tvVC = (TrainViewViewController*)[storyboard instantiateInitialViewController];
 //    [self.navigationController pushViewController:tvVC animated:YES];
 //    
+    
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MemoryTestStoryboard" bundle:nil];
+//    MapMemoryTestViewController *tvVC = (MapMemoryTestViewController*)[storyboard instantiateInitialViewController];
+//    _startTest = YES;
+//    [tvVC setCounter: _counter];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TrainSlidingStoryboard" bundle:nil];
     TrainViewViewController *tvVC = (TrainViewViewController*)[storyboard instantiateInitialViewController];

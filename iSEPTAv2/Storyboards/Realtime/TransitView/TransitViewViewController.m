@@ -60,7 +60,7 @@
 //    CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed:@"transitView-white.png" withTarget:self andWithAction:@selector(backButtonPressed:)];
 //    self.navigationItem.leftBarButtonItem = backBarButtonItem;
 
-    CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed:@"Find_loc-white.png" withTarget:self andWithAction:@selector(backButtonPressed:)];
+    CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed:@"transitViewBack.png" withTarget:self andWithAction:@selector(backButtonPressed:)];
     self.navigationItem.leftBarButtonItem = backBarButtonItem;
 
     

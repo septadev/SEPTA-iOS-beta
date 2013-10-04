@@ -69,8 +69,12 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     // --== Background Image  ==--
-    UIImageView *bgImageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"mainBackground.png"] ];
-    [self.tableView setBackgroundView: bgImageView];
+//    UIImageView *bgImageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"mainBackground.png"] ];
+//    [self.tableView setBackgroundView: bgImageView];
+
+    UIColor *backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"newBG_pattern.png"] ];
+    [self.tableView setBackgroundColor: backgroundColor];
+
     
     UIImage *logo = [UIImage imageNamed:@"SEPTA_logo.png"];
     

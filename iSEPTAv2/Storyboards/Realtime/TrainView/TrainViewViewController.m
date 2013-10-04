@@ -88,6 +88,7 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
@@ -97,47 +98,10 @@
     _mainQueue = [[NSOperationQueue alloc] init];
     
     
-//    TrainViewObject *tvObject = [[TrainViewObject alloc] init];
-//    [tvObject setStartName:@"30th St"];
-//    [tvObject setEndName:  @"Norristown, More Like Borestown"];
-////    [tvObject setEndName:  @"Norristown"];
-//    
-//    [tvObject setTrainNo: @"6232"];
-//    [tvObject setLate: [NSNumber numberWithInt:0]];
-//    
-//    [_tableData addObject: tvObject];
-//    [_tableData addObject: tvObject];
-//    [_tableData addObject: tvObject];
-//    [_tableData addObject: tvObject];
-//    [_tableData addObject: tvObject];
-//    [_tableData addObject: tvObject];
-//    [_tableData addObject: tvObject];
-//    [_tableData addObject: tvObject];
-
     
     // --==  Register Your Nibs!
     [self.tableView registerNib: [UINib nibWithNibName:@"RealtimeVehicleInformationCell" bundle:nil] forCellReuseIdentifier: @"RealtimeVehicleInformationCell"];
 
-    
-//    float x = 30.0f;
-//    float y = 30.0f;
-//    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect: self.tableView.bounds
-//                                                   byRoundingCorners: UIRectCornerTopLeft | UIRectCornerTopRight
-//                                                         cornerRadii: CGSizeMake(x,y)];
-//    
-//    CAShapeLayer *maskLayer = [CAShapeLayer layer];
-//    maskLayer.frame = self.tableView.bounds;
-//    maskLayer.path = maskPath.CGPath;
-//    
-//    self.tableView.layer.mask = maskLayer;  // This only seems to effect the topmost cells
-    
-    
-    
-    
-//    CGAffineTransform rotate90Transform = CGAffineTransformRotate(CGAffineTransformIdentity, RADIANS(90.0f));
-//    [self.imgVerticalDivider setTransform: rotate90Transform];
-//    
-//    [self.imgVerticalDivider setFrame: CGRectMake(100, 100, 268, 4)];
     
     
     NSString *imageName;
@@ -174,21 +138,16 @@
     }
     
     
-//    float navW = [(UIView*)[self.navigationItem.leftBarButtonItem  valueForKey:@"view"] frame].size.width;
-//    float w    = self.view.frame.size.width;
-//    LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0, w + (navW*2) -8, 32) withTitle: title];
-//    [self.navigationItem setTitleView:titleView];
-    
     
     LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0, 500, 32) withTitle: title];
     [self.navigationItem setTitleView:titleView];
 
     
     [self.imgTableViewBG setBackgroundColor: [UIColor blackColor] ];
-//    [self.imgTableViewBG setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+
     
     CAGradientLayer *l = [CAGradientLayer layer];
-//    l.frame = self.imgTableViewBG.bounds;
+
     l.frame = CGRectMake(0, 0, 320, 480);
     l.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7] CGColor], (id)[[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0] CGColor], nil];
 
@@ -246,9 +205,9 @@
     if ( _locationEnabled )
     {
         // If the network is not reachable, try again in another 20 seconds
-        [self getLatestJSONData];       // Grabs the last updated data on the vehciles of the requested route
+//        [self getLatestJSONData];       // Grabs the last updated data on the vehciles of the requested route
     
-        [self loadKMLInTheBackground];  // Loads the KML for the requested route in the background
+//        [self loadKMLInTheBackground];  // Loads the KML for the requested route in the background
     }
     
 }

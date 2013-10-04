@@ -51,6 +51,8 @@
 		273763AE178EE9C6006EE244 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 273763AC178EE9C6006EE244 /* AddressBookUI.framework */; };
 		273836C7177DC9F400F223FF /* TableViewStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 273836C6177DC9F400F223FF /* TableViewStore.m */; };
 		273836CA177E110B00F223FF /* UnitTest_TableViewStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 273836C9177E110B00F223FF /* UnitTest_TableViewStore.m */; };
+		273A0B6817FF29720064B0FB /* MapMemoryTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273A0B6717FF29720064B0FB /* MapMemoryTestViewController.m */; };
+		273A0B6A17FF29880064B0FB /* MemoryTestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 273A0B6917FF29880064B0FB /* MemoryTestStoryboard.storyboard */; };
 		273CDF0B17BC0F1D00B0CBF0 /* DistanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 273CDF0A17BC0F1D00B0CBF0 /* DistanceView.xib */; };
 		273CDF0E17BC138800B0CBF0 /* DistanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 273CDF0D17BC138800B0CBF0 /* DistanceView.m */; };
 		273E59E117340FC100E9B11B /* CCTConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273E59E017340FC100E9B11B /* CCTConnectViewController.m */; };
@@ -802,6 +804,9 @@
 		273836C6177DC9F400F223FF /* TableViewStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewStore.m; sourceTree = "<group>"; };
 		273836C8177E110B00F223FF /* UnitTest_TableViewStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitTest_TableViewStore.h; sourceTree = "<group>"; };
 		273836C9177E110B00F223FF /* UnitTest_TableViewStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitTest_TableViewStore.m; sourceTree = "<group>"; };
+		273A0B6617FF29720064B0FB /* MapMemoryTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapMemoryTestViewController.h; path = Storyboards/Realtime/TrainView/MemoryTest/MapMemoryTestViewController.h; sourceTree = "<group>"; };
+		273A0B6717FF29720064B0FB /* MapMemoryTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapMemoryTestViewController.m; path = Storyboards/Realtime/TrainView/MemoryTest/MapMemoryTestViewController.m; sourceTree = "<group>"; };
+		273A0B6917FF29880064B0FB /* MemoryTestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MemoryTestStoryboard.storyboard; path = Storyboards/Realtime/TrainView/MemoryTest/MemoryTestStoryboard.storyboard; sourceTree = "<group>"; };
 		273CDF0A17BC0F1D00B0CBF0 /* DistanceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DistanceView.xib; path = Storyboards/Realtime/NearestLocation/Xibs/DistanceView.xib; sourceTree = "<group>"; };
 		273CDF0C17BC138800B0CBF0 /* DistanceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DistanceView.h; path = Storyboards/Realtime/NearestLocation/Code/DistanceView.h; sourceTree = "<group>"; };
 		273CDF0D17BC138800B0CBF0 /* DistanceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DistanceView.m; path = Storyboards/Realtime/NearestLocation/Code/DistanceView.m; sourceTree = "<group>"; };
@@ -2091,6 +2096,16 @@
 			name = "Custom Objects";
 			sourceTree = "<group>";
 		};
+		273A0B6B17FF2A870064B0FB /* Memory */ = {
+			isa = PBXGroup;
+			children = (
+				273A0B6917FF29880064B0FB /* MemoryTestStoryboard.storyboard */,
+				273A0B6617FF29720064B0FB /* MapMemoryTestViewController.h */,
+				273A0B6717FF29720064B0FB /* MapMemoryTestViewController.m */,
+			);
+			name = Memory;
+			sourceTree = "<group>";
+		};
 		273E59DE17340F9200E9B11B /* CCT Connect */ = {
 			isa = PBXGroup;
 			children = (
@@ -2869,6 +2884,7 @@
 		27DBA5FB17A97F2600118225 /* TrainView */ = {
 			isa = PBXGroup;
 			children = (
+				273A0B6B17FF2A870064B0FB /* Memory */,
 				27D91F3117F0A5B300627ECD /* Sliding */,
 				2708114017A9883C00B62FBD /* Custom Cells */,
 				27DBA60017A97FC400118225 /* TrainViewStoryboard.storyboard */,
@@ -4757,6 +4773,7 @@
 				8418EE9C17FEF6BD003607D1 /* gradient_vertical_line@2x.png in Resources */,
 				8418ED8317FEF6BD003607D1 /* Cash-Fare-BG@2x.png in Resources */,
 				27A2143017C273260036A0C7 /* CurrentLocationCell.xib in Resources */,
+				273A0B6A17FF29880064B0FB /* MemoryTestStoryboard.storyboard in Resources */,
 				27A2143717C273AD0036A0C7 /* CurrentLocationStoryboard.storyboard in Resources */,
 				840D112817C2BC3B00AD26BB /* FareStoryboard.storyboard in Resources */,
 				27C0ACE017C69D1B005FDB80 /* StopNamesCLEACell.xib in Resources */,
@@ -4899,6 +4916,7 @@
 				27D91F3C17F0A65700627ECD /* TrainRealtimeDataViewController.m in Sources */,
 				27B7F7B916A9E6DF003DF486 /* MKMultiPolyLine.m in Sources */,
 				27504D2416DD19E7001B762A /* CommentQuickViewController.m in Sources */,
+				273A0B6817FF29720064B0FB /* MapMemoryTestViewController.m in Sources */,
 				271AFD5C16E52B7E00A11B8E /* ItineraryObject.m in Sources */,
 				271AFD5F16E52B8E00A11B8E /* TripObject.m in Sources */,
 				27CDAAC816E63D2500F9CF4D /* ItineraryTripViewController.m in Sources */,

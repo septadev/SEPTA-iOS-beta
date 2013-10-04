@@ -703,6 +703,10 @@ High Speed Line</string>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="YlW-iw-dTr">
+                        <rect key="frame" x="0.0" y="416" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="saV-o1-GZe" kind="relationship" relationship="rootViewController" id="LNC-ar-Gd0"/>
                     </connections>

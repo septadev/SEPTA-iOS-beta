@@ -92,8 +92,8 @@
     _didJustLoad = YES;
     
     
-    if ( [self.tableView respondsToSelector:@selector(setSectionIndexColor:)] )
-        [self.tableView setSectionIndexColor: [UIColor whiteColor]];
+//    if ( [self.tableView respondsToSelector:@selector(setSectionIndexColor:)] )
+//        [self.tableView setSectionIndexColor: [UIColor whiteColor]];
     
     
     // Register NIBs with Table View
@@ -157,6 +157,7 @@
                                                                                andWithAction:@selector(backButtonPressed:)];
     self.navigationItem.leftBarButtonItem = backBarButtonItem;
 
+    
     
     LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0, 500, 32) withTitle: title withFontSize: fontSize];
     [self.navigationItem setTitleView:titleView];

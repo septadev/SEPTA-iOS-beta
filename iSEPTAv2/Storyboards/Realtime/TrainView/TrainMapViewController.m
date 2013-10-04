@@ -129,9 +129,9 @@
     if ( _locationEnabled )
     {
         // If the network is not reachable, try again in another 20 seconds
-        [self getLatestJSONData];       // Grabs the last updated data on the vehciles of the requested route
+//        [self getLatestJSONData];       // Grabs the last updated data on the vehciles of the requested route
         
-        [self loadKMLInTheBackground];  // Loads the KML for the requested route in the background
+//        [self loadKMLInTheBackground];  // Loads the KML for the requested route in the background
     }
     
 }
@@ -147,18 +147,36 @@
     [_jsonQueue cancelAllOperations];
     _killAllTimers = YES;
     
-    // Dismiss any running HUDs.  If no HUDs are running, nothing happens.
+    [updateTimer invalidate];
+    
     [SVProgressHUD dismiss];
-
-    if ( updateTimer == nil )
+    
+    
+    [self.mapView setDelegate:nil];
+    
+    _jsonQueue = nil;
+    _jsonOp = nil;
+    
+    [super viewDidDisappear:animated];
+    
     return;
     
-    if ( [updateTimer isValid]  )
-    {
-        [updateTimer invalidate];
-        updateTimer = nil;
-        NSLog(@"NTVVC - Killing updateTimer");
-    }
+    
+//    [_jsonQueue cancelAllOperations];
+//    _killAllTimers = YES;
+//    
+//    // Dismiss any running HUDs.  If no HUDs are running, nothing happens.
+//    [SVProgressHUD dismiss];
+//
+//    if ( updateTimer == nil )
+//        return;
+//    
+//    if ( [updateTimer isValid]  )
+//    {
+//        [updateTimer invalidate];
+//        updateTimer = nil;
+//        NSLog(@"NTVVC - Killing updateTimer");
+//    }
     
 }
 
@@ -166,7 +184,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     
-    [super viewWillAppear:animated];
 
     _killAllTimers = NO;
     
@@ -190,24 +207,68 @@
     
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
     
-    
+    [self.mapView setDelegate:self];
+    [super viewWillAppear:animated];
+
     NSLog(@"TMVC:vWA - Done!");
     
 }
 
 
+- (void)applyMapViewMemoryHotFix
+{
+    
+    _jsonOp = nil;
+    _jsonQueue = nil;
+    
+    return;
+    
+    switch (self.mapView.mapType)
+    {
+        case MKMapTypeHybrid:
+        {
+            self.mapView.mapType = MKMapTypeStandard;
+        }
+            
+            break;
+        case MKMapTypeStandard:
+        {
+            self.mapView.mapType = MKMapTypeHybrid;
+        }
+            
+            break;
+        default:
+            break;
+    }
+    
+    self.mapView.showsUserLocation = NO;
+    self.mapView.delegate = nil;
+    [self.mapView removeFromSuperview];
+    self.mapView = nil;
+    
+}
+
+
+
 - (void)didReceiveMemoryWarning
 {
+    
     [super didReceiveMemoryWarning];
+    
+    return;
+    
+    
     // Dispose of any resources that can be recreated.
-    NSLog(@"TMVC - didReceiveMemoryWarning");
+    NSLog(@"TMVC - ***  didReceiveMemoryWarning  ***");
+
+    [self applyMapViewMemoryHotFix];
     
     [_locationManager setDelegate:nil];
     [_locationManager stopUpdatingLocation];
     _locationManager = nil;
     
-    [self.mapView setDelegate:nil];
-    [self setMapView:nil];
+//    [self.mapView setDelegate:nil];
+//    [self setMapView:nil];
     
     _trainDataVC = nil;
     kmlParser = nil;
