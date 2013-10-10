@@ -36,6 +36,12 @@
     [self.tableView setBackgroundColor: backgroundColor];
 
     
+    CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed:@"faresBack.png" withTarget:self andWithAction:@selector(backButtonPressed:)];
+    self.navigationItem.leftBarButtonItem = backBarButtonItem;
+    
+    LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0,500, 32) withTitle:@"Fares"];
+    [self.navigationItem setTitleView:titleView];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -138,6 +144,12 @@
 - (IBAction)btnDetailsPressed:(id)sender
 {
     
+}
+
+
+-(void) backButtonPressed:(id) sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

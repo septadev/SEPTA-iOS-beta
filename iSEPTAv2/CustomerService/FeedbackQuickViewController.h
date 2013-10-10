@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "QuickDialogController.h"
 
+#import "CustomFlatBarButton.h"
+#import "LineHeaderView.h"
+
+
 @interface FeedbackQuickViewController : QuickDialogController
+
+@property (nonatomic, strong) NSString *backButtonName;
+@property (nonatomic, strong) NSString *viewTitle;
 
 @end

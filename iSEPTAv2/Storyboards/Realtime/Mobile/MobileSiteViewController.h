@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "CustomFlatBarButton.h"
+#import "LineHeaderView.h"
+
+
 @interface MobileSiteViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;

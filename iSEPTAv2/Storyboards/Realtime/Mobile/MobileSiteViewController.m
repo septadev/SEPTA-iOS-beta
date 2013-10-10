@@ -28,9 +28,17 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    // @"http://septa.org/service/septa-app.html"
     NSURL *url = [[NSURL alloc] initWithString:@"http://www.septa.org/m/"];
     [self.webView loadRequest: [NSURLRequest requestWithURL: url] ];
     [self.webView setHidden:NO];
+    
+    
+    CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed:@"tipsBack.png" withTarget:self andWithAction:@selector(backButtonPressed:)];
+    self.navigationItem.leftBarButtonItem = backBarButtonItem;
+    
+    LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0,500, 32) withTitle:@"Tips"];
+    [self.navigationItem setTitleView:titleView];
     
 }
 
@@ -40,8 +48,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidUnload {
+- (void)viewDidUnload
+{
     [self setWebView:nil];
     [super viewDidUnload];
 }
+
+
+-(void) backButtonPressed:(id) sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 @end

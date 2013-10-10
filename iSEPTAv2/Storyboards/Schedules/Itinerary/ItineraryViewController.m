@@ -392,13 +392,13 @@
                                                       }];
     
     
-    REMenuItem *advisoryItem = [[REMenuItem alloc] initWithTitle:@"Advisory"
-                                                        subtitle:@""
-                                                           image:[UIImage imageNamed:@"Advisory.png"]
-                                                highlightedImage:nil
-                                                          action:^(REMenuItem *item) {
-                                                              [self loadAdvisories];
-                                                          }];
+//    REMenuItem *advisoryItem = [[REMenuItem alloc] initWithTitle:@"Advisory"
+//                                                        subtitle:@""
+//                                                           image:[UIImage imageNamed:@"Advisory.png"]
+//                                                highlightedImage:nil
+//                                                          action:^(REMenuItem *item) {
+//                                                              [self loadAdvisories];
+//                                                          }];
     
     
     
@@ -1446,6 +1446,17 @@
 
 
 #pragma mark - UITableViewDataSource
+
+//-(void) scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    
+//    if (_menu.isOpen)
+//    {
+//        return [_menu close];
+//    }
+//    
+//}
+
 
 -(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -3410,6 +3421,8 @@
     else
     {
         
+//        [self.tableTrips setContentOffset:self.tableTrips.contentOffset animated:NO];
+        
         DisplayedRouteData *routeData = [self convertItineraryObjectToDisplayedRouteData];
         
         
@@ -3423,6 +3436,8 @@
         
         CGRect rect = CGRectInset(CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height), 5, 0 );
         [_menu showFromRect:rect inView:self.view ];
+//        [_menu showInView: self.view];
+
     }
     
     

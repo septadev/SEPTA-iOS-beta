@@ -492,14 +492,6 @@
 		8418EDCD17FEF6BD003607D1 /* Find_loc-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC7517FEF6BB003607D1 /* Find_loc-white.png */; };
 		8418EDCE17FEF6BD003607D1 /* Find_Loc_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC7617FEF6BB003607D1 /* Find_Loc_BG.png */; };
 		8418EDCF17FEF6BD003607D1 /* Find_Loc_Distance.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC7717FEF6BB003607D1 /* Find_Loc_Distance.png */; };
-		8418EDD017FEF6BD003607D1 /* Connects at.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC7917FEF6BB003607D1 /* Connects at.png */; };
-		8418EDD117FEF6BD003607D1 /* interchange.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC7A17FEF6BB003607D1 /* interchange.png */; };
-		8418EDD217FEF6BD003607D1 /* NTA-end.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC7B17FEF6BB003607D1 /* NTA-end.png */; };
-		8418EDD317FEF6BD003607D1 /* NTA-menu_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC7C17FEF6BB003607D1 /* NTA-menu_BG.png */; };
-		8418EDD417FEF6BD003607D1 /* NTA-reverse.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC7D17FEF6BB003607D1 /* NTA-reverse.png */; };
-		8418EDD517FEF6BD003607D1 /* NTA-start.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC7E17FEF6BB003607D1 /* NTA-start.png */; };
-		8418EDD617FEF6BD003607D1 /* NTA-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC7F17FEF6BB003607D1 /* NTA-white.png */; };
-		8418EDD717FEF6BD003607D1 /* NTA.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC8017FEF6BB003607D1 /* NTA.png */; };
 		8418EDD817FEF6BD003607D1 /* SEPTA_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC8117FEF6BB003607D1 /* SEPTA_logo.png */; };
 		8418EDD917FEF6BD003607D1 /* SEPTA_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC8217FEF6BB003607D1 /* SEPTA_logo@2x.png */; };
 		8418EDDA17FEF6BD003607D1 /* Advisory.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC8417FEF6BB003607D1 /* Advisory.png */; };
@@ -703,6 +695,22 @@
 		8418EEA217FEFA42003607D1 /* second-menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEA117FEFA42003607D1 /* second-menu@2x.png */; };
 		8418EEA417FEFA52003607D1 /* second-menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEA317FEFA52003607D1 /* second-menu.png */; };
 		8418EEA617FEFFDA003607D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEA517FEFFDA003607D1 /* Images.xcassets */; };
+		8418EEBE18058D67003607D1 /* Connects at@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEA918058D67003607D1 /* Connects at@2x.png */; };
+		8418EEBF18058D67003607D1 /* interchange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEAA18058D67003607D1 /* interchange@2x.png */; };
+		8418EEC018058D67003607D1 /* NTA-end@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEAB18058D67003607D1 /* NTA-end@2x.png */; };
+		8418EEC118058D67003607D1 /* NTA-menu_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEAC18058D67003607D1 /* NTA-menu_BG@2x.png */; };
+		8418EEC218058D67003607D1 /* NTA-reverse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEAD18058D67003607D1 /* NTA-reverse@2x.png */; };
+		8418EEC318058D67003607D1 /* NTA-start@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEAE18058D67003607D1 /* NTA-start@2x.png */; };
+		8418EEC418058D67003607D1 /* NTA-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEAF18058D67003607D1 /* NTA-white@2x.png */; };
+		8418EEC518058D67003607D1 /* NTA@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEB018058D67003607D1 /* NTA@2x.png */; };
+		8418EEC818058D67003607D1 /* Connects at.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEB418058D67003607D1 /* Connects at.png */; };
+		8418EEC918058D67003607D1 /* interchange.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEB518058D67003607D1 /* interchange.png */; };
+		8418EECA18058D67003607D1 /* NTA-end.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEB618058D67003607D1 /* NTA-end.png */; };
+		8418EECB18058D67003607D1 /* NTA-menu_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEB718058D67003607D1 /* NTA-menu_BG.png */; };
+		8418EECC18058D67003607D1 /* NTA-reverse.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEB818058D67003607D1 /* NTA-reverse.png */; };
+		8418EECD18058D67003607D1 /* NTA-start.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEB918058D67003607D1 /* NTA-start.png */; };
+		8418EECE18058D67003607D1 /* NTA-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEBA18058D67003607D1 /* NTA-white.png */; };
+		8418EECF18058D67003607D1 /* NTA.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEBB18058D67003607D1 /* NTA.png */; };
 		84CA6E5A17D7B7F6002C2F3C /* ServiceHours.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CA6E5917D7B7F6002C2F3C /* ServiceHours.m */; };
 		84CC992F17B874A10087477E /* TripListStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CC992E17B874A10087477E /* TripListStoryboard.storyboard */; };
 		84CC993217B874C00087477E /* TripListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CC993117B874C00087477E /* TripListViewController.m */; };
@@ -712,6 +720,8 @@
 		84CC993E17B87F430087477E /* TransitServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CC993D17B87F430087477E /* TransitServiceCell.m */; };
 		84D12B4D17E0A3E50079A8D7 /* NearestTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D12B4C17E0A3E30079A8D7 /* NearestTimeCell.m */; };
 		84D12B5117E1F0B90079A8D7 /* MobileSiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D12B5017E1F0B90079A8D7 /* MobileSiteViewController.m */; };
+		84DEDE271806F81000061ABC /* commentsBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DEDE261806F81000061ABC /* commentsBack@2x.png */; };
+		84DEDE291806F81900061ABC /* commentsBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DEDE281806F81900061ABC /* commentsBack.png */; };
 		84F6AFFC17B18F5300680007 /* TabbedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6AFFB17B18F5300680007 /* TabbedButton.m */; };
 /* End PBXBuildFile section */
 
@@ -1389,14 +1399,6 @@
 		8418EC7517FEF6BB003607D1 /* Find_loc-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Find_loc-white.png"; sourceTree = "<group>"; };
 		8418EC7617FEF6BB003607D1 /* Find_Loc_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Find_Loc_BG.png; sourceTree = "<group>"; };
 		8418EC7717FEF6BB003607D1 /* Find_Loc_Distance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Find_Loc_Distance.png; sourceTree = "<group>"; };
-		8418EC7917FEF6BB003607D1 /* Connects at.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Connects at.png"; sourceTree = "<group>"; };
-		8418EC7A17FEF6BB003607D1 /* interchange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interchange.png; sourceTree = "<group>"; };
-		8418EC7B17FEF6BB003607D1 /* NTA-end.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTA-end.png"; sourceTree = "<group>"; };
-		8418EC7C17FEF6BB003607D1 /* NTA-menu_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTA-menu_BG.png"; sourceTree = "<group>"; };
-		8418EC7D17FEF6BB003607D1 /* NTA-reverse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTA-reverse.png"; sourceTree = "<group>"; };
-		8418EC7E17FEF6BB003607D1 /* NTA-start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTA-start.png"; sourceTree = "<group>"; };
-		8418EC7F17FEF6BB003607D1 /* NTA-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTA-white.png"; sourceTree = "<group>"; };
-		8418EC8017FEF6BB003607D1 /* NTA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NTA.png; sourceTree = "<group>"; };
 		8418EC8117FEF6BB003607D1 /* SEPTA_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SEPTA_logo.png; sourceTree = "<group>"; };
 		8418EC8217FEF6BB003607D1 /* SEPTA_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SEPTA_logo@2x.png"; sourceTree = "<group>"; };
 		8418EC8417FEF6BB003607D1 /* Advisory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Advisory.png; sourceTree = "<group>"; };
@@ -1600,6 +1602,22 @@
 		8418EEA117FEFA42003607D1 /* second-menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second-menu@2x.png"; sourceTree = "<group>"; };
 		8418EEA317FEFA52003607D1 /* second-menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second-menu.png"; sourceTree = "<group>"; };
 		8418EEA517FEFFDA003607D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = images/Images.xcassets; sourceTree = "<group>"; };
+		8418EEA918058D67003607D1 /* Connects at@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Connects at@2x.png"; sourceTree = "<group>"; };
+		8418EEAA18058D67003607D1 /* interchange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "interchange@2x.png"; sourceTree = "<group>"; };
+		8418EEAB18058D67003607D1 /* NTA-end@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTA-end@2x.png"; sourceTree = "<group>"; };
+		8418EEAC18058D67003607D1 /* NTA-menu_BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTA-menu_BG@2x.png"; sourceTree = "<group>"; };
+		8418EEAD18058D67003607D1 /* NTA-reverse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTA-reverse@2x.png"; sourceTree = "<group>"; };
+		8418EEAE18058D67003607D1 /* NTA-start@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTA-start@2x.png"; sourceTree = "<group>"; };
+		8418EEAF18058D67003607D1 /* NTA-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTA-white@2x.png"; sourceTree = "<group>"; };
+		8418EEB018058D67003607D1 /* NTA@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTA@2x.png"; sourceTree = "<group>"; };
+		8418EEB418058D67003607D1 /* Connects at.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Connects at.png"; sourceTree = "<group>"; };
+		8418EEB518058D67003607D1 /* interchange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interchange.png; sourceTree = "<group>"; };
+		8418EEB618058D67003607D1 /* NTA-end.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTA-end.png"; sourceTree = "<group>"; };
+		8418EEB718058D67003607D1 /* NTA-menu_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTA-menu_BG.png"; sourceTree = "<group>"; };
+		8418EEB818058D67003607D1 /* NTA-reverse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTA-reverse.png"; sourceTree = "<group>"; };
+		8418EEB918058D67003607D1 /* NTA-start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTA-start.png"; sourceTree = "<group>"; };
+		8418EEBA18058D67003607D1 /* NTA-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTA-white.png"; sourceTree = "<group>"; };
+		8418EEBB18058D67003607D1 /* NTA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NTA.png; sourceTree = "<group>"; };
 		84CA6E5817D7B7F6002C2F3C /* ServiceHours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceHours.h; path = Storyboards/Realtime/TransitView/Code/ServiceHours.h; sourceTree = "<group>"; };
 		84CA6E5917D7B7F6002C2F3C /* ServiceHours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceHours.m; path = Storyboards/Realtime/TransitView/Code/ServiceHours.m; sourceTree = "<group>"; };
 		84CC992E17B874A10087477E /* TripListStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TripListStoryboard.storyboard; path = "Storyboards/Common Storyboards/TripList/TripListStoryboard.storyboard"; sourceTree = "<group>"; };
@@ -1615,6 +1633,8 @@
 		84D12B4C17E0A3E30079A8D7 /* NearestTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NearestTimeCell.m; path = Storyboards/Realtime/NearestLocation/Code/NearestTimeCell.m; sourceTree = "<group>"; };
 		84D12B4F17E1F0B90079A8D7 /* MobileSiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MobileSiteViewController.h; path = Storyboards/Realtime/Mobile/MobileSiteViewController.h; sourceTree = "<group>"; };
 		84D12B5017E1F0B90079A8D7 /* MobileSiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MobileSiteViewController.m; path = Storyboards/Realtime/Mobile/MobileSiteViewController.m; sourceTree = "<group>"; };
+		84DEDE261806F81000061ABC /* commentsBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commentsBack@2x.png"; sourceTree = "<group>"; };
+		84DEDE281806F81900061ABC /* commentsBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commentsBack.png; sourceTree = "<group>"; };
 		84F6AFFA17B18F5300680007 /* TabbedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabbedButton.h; path = Storyboards/Common/TabbedButton.h; sourceTree = "<group>"; };
 		84F6AFFB17B18F5300680007 /* TabbedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabbedButton.m; path = Storyboards/Common/TabbedButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -3395,6 +3415,7 @@
 		8418EC0517FEF6BB003607D1 /* HD */ = {
 			isa = PBXGroup;
 			children = (
+				84DEDE261806F81000061ABC /* commentsBack@2x.png */,
 				8418EC0617FEF6BB003607D1 /* faresBack@2x.png */,
 				8418EC0717FEF6BB003607D1 /* tipsBack@2x.png */,
 				8418EC0817FEF6BB003607D1 /* transitViewBack@2x.png */,
@@ -3405,6 +3426,7 @@
 		8418EC0917FEF6BB003607D1 /* SD */ = {
 			isa = PBXGroup;
 			children = (
+				84DEDE281806F81900061ABC /* commentsBack.png */,
 				8418EC0A17FEF6BB003607D1 /* faresBack.png */,
 				8418EC0B17FEF6BB003607D1 /* tipsBack.png */,
 				8418EC0C17FEF6BB003607D1 /* transitViewBack.png */,
@@ -3591,9 +3613,9 @@
 		8418EC5B17FEF6BB003607D1 /* Realtime */ = {
 			isa = PBXGroup;
 			children = (
+				8418EEA718058D67003607D1 /* NextToArrive */,
 				8418EC5C17FEF6BB003607D1 /* Buttons */,
 				8418EC6B17FEF6BB003607D1 /* Find locations */,
-				8418EC7817FEF6BB003607D1 /* NTA */,
 				8418EC8117FEF6BB003607D1 /* SEPTA_logo.png */,
 				8418EC8217FEF6BB003607D1 /* SEPTA_logo@2x.png */,
 				8418EC8317FEF6BB003607D1 /* System Status */,
@@ -3671,21 +3693,6 @@
 				8418EC7717FEF6BB003607D1 /* Find_Loc_Distance.png */,
 			);
 			path = SD;
-			sourceTree = "<group>";
-		};
-		8418EC7817FEF6BB003607D1 /* NTA */ = {
-			isa = PBXGroup;
-			children = (
-				8418EC7917FEF6BB003607D1 /* Connects at.png */,
-				8418EC7A17FEF6BB003607D1 /* interchange.png */,
-				8418EC7B17FEF6BB003607D1 /* NTA-end.png */,
-				8418EC7C17FEF6BB003607D1 /* NTA-menu_BG.png */,
-				8418EC7D17FEF6BB003607D1 /* NTA-reverse.png */,
-				8418EC7E17FEF6BB003607D1 /* NTA-start.png */,
-				8418EC7F17FEF6BB003607D1 /* NTA-white.png */,
-				8418EC8017FEF6BB003607D1 /* NTA.png */,
-			);
-			path = NTA;
 			sourceTree = "<group>";
 		};
 		8418EC8317FEF6BB003607D1 /* System Status */ = {
@@ -4156,6 +4163,45 @@
 			path = SD;
 			sourceTree = "<group>";
 		};
+		8418EEA718058D67003607D1 /* NextToArrive */ = {
+			isa = PBXGroup;
+			children = (
+				8418EEA818058D67003607D1 /* HD */,
+				8418EEB318058D67003607D1 /* SD */,
+			);
+			path = NextToArrive;
+			sourceTree = "<group>";
+		};
+		8418EEA818058D67003607D1 /* HD */ = {
+			isa = PBXGroup;
+			children = (
+				8418EEA918058D67003607D1 /* Connects at@2x.png */,
+				8418EEAA18058D67003607D1 /* interchange@2x.png */,
+				8418EEAB18058D67003607D1 /* NTA-end@2x.png */,
+				8418EEAC18058D67003607D1 /* NTA-menu_BG@2x.png */,
+				8418EEAD18058D67003607D1 /* NTA-reverse@2x.png */,
+				8418EEAE18058D67003607D1 /* NTA-start@2x.png */,
+				8418EEAF18058D67003607D1 /* NTA-white@2x.png */,
+				8418EEB018058D67003607D1 /* NTA@2x.png */,
+			);
+			path = HD;
+			sourceTree = "<group>";
+		};
+		8418EEB318058D67003607D1 /* SD */ = {
+			isa = PBXGroup;
+			children = (
+				8418EEB418058D67003607D1 /* Connects at.png */,
+				8418EEB518058D67003607D1 /* interchange.png */,
+				8418EEB618058D67003607D1 /* NTA-end.png */,
+				8418EEB718058D67003607D1 /* NTA-menu_BG.png */,
+				8418EEB818058D67003607D1 /* NTA-reverse.png */,
+				8418EEB918058D67003607D1 /* NTA-start.png */,
+				8418EEBA18058D67003607D1 /* NTA-white.png */,
+				8418EEBB18058D67003607D1 /* NTA.png */,
+			);
+			path = SD;
+			sourceTree = "<group>";
+		};
 		84B1F30E178EC90100286B15 /* Enter Address */ = {
 			isa = PBXGroup;
 			children = (
@@ -4304,11 +4350,11 @@
 				8418EDE217FEF6BD003607D1 /* Sys-Status-RRL-Click.png in Resources */,
 				8418EDCD17FEF6BD003607D1 /* Find_loc-white.png in Resources */,
 				8418EE7717FEF6BD003607D1 /* Station_alarm_white.png in Resources */,
+				8418EECF18058D67003607D1 /* NTA.png in Resources */,
 				8418ED8617FEF6BD003607D1 /* cross-county@2x.png in Resources */,
 				8418EDB717FEF6BD003607D1 /* Refresh.png in Resources */,
 				27DB2FF91636D6B600153E4C /* 7.kml in Resources */,
 				8418EE8A17FEF6BD003607D1 /* btnTransit_clicked@2x.png in Resources */,
-				8418EDD117FEF6BD003607D1 /* interchange.png in Resources */,
 				8418EE5217FEF6BD003607D1 /* Schedule_NHSL_small@2x.png in Resources */,
 				8418EDDA17FEF6BD003607D1 /* Advisory.png in Resources */,
 				27DB2FFA1636D6B600153E4C /* 8.kml in Resources */,
@@ -4352,7 +4398,6 @@
 				8418EDA117FEF6BD003607D1 /* blankGrey-BG@2x.png in Resources */,
 				8418ED6E17FEF6BD003607D1 /* septaIcon-152@2x.png in Resources */,
 				8418EDD917FEF6BD003607D1 /* SEPTA_logo@2x.png in Resources */,
-				8418EDD317FEF6BD003607D1 /* NTA-menu_BG.png in Resources */,
 				8418EDE317FEF6BD003607D1 /* Sys-Status-RRL.png in Resources */,
 				27DB300D1636D6B600153E4C /* 27.kml in Resources */,
 				27DB300E1636D6B600153E4C /* 28.kml in Resources */,
@@ -4375,6 +4420,7 @@
 				8418EDEB17FEF6BD003607D1 /* tabConnectIconSelected.png in Resources */,
 				8418EE5017FEF6BD003607D1 /* Schedule_NHSL-BG@2x.png in Resources */,
 				8418EDCA17FEF6BD003607D1 /* Find_Loc_Distance@2x.png in Resources */,
+				8418EEBE18058D67003607D1 /* Connects at@2x.png in Resources */,
 				8418EE3017FEF6BD003607D1 /* NHSL_white.png in Resources */,
 				27DB30151636D6B600153E4C /* 35.kml in Resources */,
 				8418EE7817FEF6BD003607D1 /* 24HoursIcon@2x.png in Resources */,
@@ -4406,12 +4452,15 @@
 				8418EE5317FEF6BD003607D1 /* Schedule_RRL-BG@2x.png in Resources */,
 				8418ED9717FEF6BD003607D1 /* Independence-Pass.png in Resources */,
 				27DB301F1636D6B600153E4C /* 47.kml in Resources */,
+				8418EEC118058D67003607D1 /* NTA-menu_BG@2x.png in Resources */,
 				8418EE6B17FEF6BD003607D1 /* Schedule_MFL.png in Resources */,
 				8418EE3A17FEF6BD003607D1 /* Bus_black.png in Resources */,
+				8418EECB18058D67003607D1 /* NTA-menu_BG.png in Resources */,
 				8418EE2B17FEF6BD003607D1 /* BSL_white.png in Resources */,
 				27DB30201636D6B600153E4C /* 47M.kml in Resources */,
 				8418EE1A17FEF6BD003607D1 /* transitView-Out-of-service.png in Resources */,
 				8418EDE617FEF6BD003607D1 /* System-Status-white.png in Resources */,
+				8418EECC18058D67003607D1 /* NTA-reverse.png in Resources */,
 				8418ED7017FEF6BD003607D1 /* septaIcon-72px.png in Resources */,
 				27DB30211636D6B600153E4C /* 48.kml in Resources */,
 				27DB30221636D6B600153E4C /* 50.kml in Resources */,
@@ -4427,11 +4476,13 @@
 				8418EE8E17FEF6BD003607D1 /* system_status_detour@2x.png in Resources */,
 				27DB30261636D6B600153E4C /* 55.kml in Resources */,
 				8418EE3C17FEF6BD003607D1 /* LUCY.png in Resources */,
+				8418EECE18058D67003607D1 /* NTA-white.png in Resources */,
 				27DB30271636D6B600153E4C /* 56.kml in Resources */,
 				8418EE0C17FEF6BD003607D1 /* transitView-Trolley-Blue@2x.png in Resources */,
 				8418EE1017FEF6BD003607D1 /* transitView_system-status@2x.png in Resources */,
 				8418EE4E17FEF6BD003607D1 /* Schedule_MFL@2x.png in Resources */,
 				27DB30281636D6B600153E4C /* 57.kml in Resources */,
+				84DEDE271806F81000061ABC /* commentsBack@2x.png in Resources */,
 				8418EDEF17FEF6BD003607D1 /* tabMapIconSelected.png in Resources */,
 				8418EDDC17FEF6BD003607D1 /* BSL-Orange.png in Resources */,
 				8418EE8817FEF6BD003607D1 /* btnRRL_clicked@2x.png in Resources */,
@@ -4443,9 +4494,9 @@
 				8418EE5517FEF6BD003607D1 /* Schedule_RRL_small@2x.png in Resources */,
 				27DB302B1636D6B600153E4C /* 60.kml in Resources */,
 				8418EDC117FEF6BD003607D1 /* RT_NTA.png in Resources */,
+				8418EEBF18058D67003607D1 /* interchange@2x.png in Resources */,
 				8418EE9817FEF6BD003607D1 /* system_status_detour.png in Resources */,
 				8418EE1217FEF6BD003607D1 /* transitView-Bus-Blue.png in Resources */,
-				8418EDD517FEF6BD003607D1 /* NTA-start.png in Resources */,
 				27DB302C1636D6B600153E4C /* 61.kml in Resources */,
 				8418EE5717FEF6BD003607D1 /* Schedule_Trolley@2x.png in Resources */,
 				8418EE4717FEF6BD003607D1 /* Schedule_Bus_Owl@2x.png in Resources */,
@@ -4460,7 +4511,6 @@
 				27DB30301636D6B600153E4C /* 66.kml in Resources */,
 				8418EE9717FEF6BD003607D1 /* system_status_alert.png in Resources */,
 				27DB30311636D6B600153E4C /* 67.kml in Resources */,
-				8418EDD217FEF6BD003607D1 /* NTA-end.png in Resources */,
 				8418EDB317FEF6BD003607D1 /* Refresh@2x.png in Resources */,
 				8418EE2E17FEF6BD003607D1 /* MFL_white.png in Resources */,
 				8418EE9217FEF6BD003607D1 /* btnRRL_clicked.png in Resources */,
@@ -4468,6 +4518,7 @@
 				8418EE1517FEF6BD003607D1 /* transitView-In-service.png in Resources */,
 				8418EE1E17FEF6BD003607D1 /* transitView-Trolley.png in Resources */,
 				8418EE6217FEF6BD003607D1 /* Schedule_Bus-BG.png in Resources */,
+				8418EECA18058D67003607D1 /* NTA-end.png in Resources */,
 				27DB30331636D6B600153E4C /* 70.kml in Resources */,
 				8418EDAE17FEF6BD003607D1 /* twitterIcon.png in Resources */,
 				27DB30341636D6B600153E4C /* 71.kml in Resources */,
@@ -4486,6 +4537,7 @@
 				8418EE0A17FEF6BD003607D1 /* transitView-Out-of-service@2x.png in Resources */,
 				8418EDC517FEF6BD003607D1 /* RT_TransitView.png in Resources */,
 				8418ED8B17FEF6BD003607D1 /* One-day-Convenience@2x.png in Resources */,
+				84DEDE291806F81900061ABC /* commentsBack.png in Resources */,
 				8418ED7A17FEF6BD003607D1 /* BG_pattern-white.png in Resources */,
 				8418EE4317FEF6BD003607D1 /* Schedule_BSL@2x.png in Resources */,
 				8418EE4817FEF6BD003607D1 /* Schedule_Bus_Owl_BG@2x.png in Resources */,
@@ -4513,14 +4565,13 @@
 				8418EDF017FEF6BD003607D1 /* tabMapIconSelected@2x.png in Resources */,
 				27DB30431636D6B600153E4C /* 95.kml in Resources */,
 				8418EDED17FEF6BD003607D1 /* tabMapIcon.png in Resources */,
-				8418EDD017FEF6BD003607D1 /* Connects at.png in Resources */,
 				27DB30441636D6B600153E4C /* 96.kml in Resources */,
 				27DB30451636D6B600153E4C /* 97.kml in Resources */,
-				8418EDD617FEF6BD003607D1 /* NTA-white.png in Resources */,
 				27DB30461636D6B600153E4C /* 98.kml in Resources */,
 				8418EE9F17FEF6BD003607D1 /* gradient_vertical_line.png in Resources */,
 				27DB30471636D6B600153E4C /* 99.kml in Resources */,
 				27DB30481636D6B600153E4C /* 101.kml in Resources */,
+				8418EEC218058D67003607D1 /* NTA-reverse@2x.png in Resources */,
 				27DB30491636D6B600153E4C /* 102.kml in Resources */,
 				27DB304A1636D6B600153E4C /* 103.kml in Resources */,
 				8418EDB017FEF6BD003607D1 /* Fare@2x.png in Resources */,
@@ -4548,6 +4599,7 @@
 				8418ED8C17FEF6BD003607D1 /* token-BG@2x.png in Resources */,
 				8418ED8117FEF6BD003607D1 /* newBG_pattern@2x.png in Resources */,
 				27DB30541636D6B600153E4C /* 113.kml in Resources */,
+				8418EEC918058D67003607D1 /* interchange.png in Resources */,
 				8418EE4217FEF6BD003607D1 /* Schedule_BSL-BG@2x.png in Resources */,
 				8418EDF217FEF6BD003607D1 /* tabRealtimeIcon@2x.png in Resources */,
 				8418ED6D17FEF6BD003607D1 /* septaIcon-144px@2x.png in Resources */,
@@ -4585,7 +4637,7 @@
 				27DB30631636D6B600153E4C /* 130.kml in Resources */,
 				27DB30641636D6B600153E4C /* 131.kml in Resources */,
 				27DB30651636D6B600153E4C /* 132.kml in Resources */,
-				8418EDD717FEF6BD003607D1 /* NTA.png in Resources */,
+				8418EEC518058D67003607D1 /* NTA@2x.png in Resources */,
 				27DB30661636D6B600153E4C /* 133.kml in Resources */,
 				27DB30671636D6B600153E4C /* 134.kml in Resources */,
 				27DB30681636D6B600153E4C /* 139.kml in Resources */,
@@ -4616,6 +4668,7 @@
 				8418ED7C17FEF6BD003607D1 /* BG_pattern@2x.png in Resources */,
 				27DB30741636D6B600153E4C /* G.kml in Resources */,
 				8418EE5D17FEF6BD003607D1 /* BSL-white.png in Resources */,
+				8418EECD18058D67003607D1 /* NTA-start.png in Resources */,
 				8418EE3117FEF6BD003607D1 /* RRL@2x.png in Resources */,
 				8418ED7417FEF6BD003607D1 /* faresBack@2x.png in Resources */,
 				8418ED9C17FEF6BD003607D1 /* trailpass-BG.png in Resources */,
@@ -4623,6 +4676,7 @@
 				27DB30751636D6B600153E4C /* H.kml in Resources */,
 				8418ED8E17FEF6BD003607D1 /* trailpass-BG@2x.png in Resources */,
 				27DB30761636D6B600153E4C /* HXH.kml in Resources */,
+				8418EEC318058D67003607D1 /* NTA-start@2x.png in Resources */,
 				8418ED9017FEF6BD003607D1 /* transpass-BG@2x.png in Resources */,
 				8418EDA317FEF6BD003607D1 /* customerServiceIcon@2x.png in Resources */,
 				27DB30771636D6B600153E4C /* J.kml in Resources */,
@@ -4685,6 +4739,7 @@
 				8418EDAF17FEF6BD003607D1 /* Advisory@2x.png in Resources */,
 				8418ED9117FEF6BD003607D1 /* transpass@2x.png in Resources */,
 				8418EDCC17FEF6BD003607D1 /* Done.png in Resources */,
+				8418EEC018058D67003607D1 /* NTA-end@2x.png in Resources */,
 				8418EE7217FEF6BD003607D1 /* Schedule_RRL_small.png in Resources */,
 				8418ED9F17FEF6BD003607D1 /* transpass.png in Resources */,
 				27A5EABD1697411C004C9467 /* digitControlBG@2x.png in Resources */,
@@ -4733,6 +4788,7 @@
 				8418EDFA17FEF6BD003607D1 /* tabSettingsIcon@2x.png in Resources */,
 				27DBA60117A97FC400118225 /* TrainViewStoryboard.storyboard in Resources */,
 				8418EE1317FEF6BD003607D1 /* transitView-Bus-Red.png in Resources */,
+				8418EEC418058D67003607D1 /* NTA-white@2x.png in Resources */,
 				2708114417A988D200B62FBD /* RealtimeVehicleInformationCell.xib in Resources */,
 				2708114917A9906300B62FBD /* SimpleMapStoryboard.storyboard in Resources */,
 				8418EE3F17FEF6BD003607D1 /* BSL-white@2x.png in Resources */,
@@ -4742,12 +4798,12 @@
 				8418EE0117FEF6BD003607D1 /* transitView-BSL_owl@2x.png in Resources */,
 				27A9730717AAA188001A4395 /* TransitRouteListCell.xib in Resources */,
 				27FE7C0017AABBC700B7F2F2 /* SystemStatusStoryboard.storyboard in Resources */,
+				8418EEC818058D67003607D1 /* Connects at.png in Resources */,
 				8418EE2517FEF6BD003607D1 /* MFL_Owl@2x.png in Resources */,
 				27FE7C0517AABD3400B7F2F2 /* SystemStatusCell.xib in Resources */,
 				27167CE317AACCC9009774A4 /* NearestLocationStoryboard.storyboard in Resources */,
 				8418EE8317FEF6BD003607D1 /* splash.png in Resources */,
 				8418EE5C17FEF6BD003607D1 /* Station_alarm_white@2x.png in Resources */,
-				8418EDD417FEF6BD003607D1 /* NTA-reverse.png in Resources */,
 				2774644517AADFC800A36A7D /* NearestRoutesScheduleStoryboard.storyboard in Resources */,
 				2765AA6C17AC12AC00F93FBE /* LineSelectionStoryboard.storyboard in Resources */,
 				2765AA6D17AC12AC00F93FBE /* RouteSelectionStoryboard.storyboard in Resources */,
@@ -5158,7 +5214,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/**";
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -5196,7 +5252,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/**";
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

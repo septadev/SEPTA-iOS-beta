@@ -33,8 +33,30 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
+    if ( self.backButtonName != nil )
+    {
+        CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed:self.backButtonName withTarget:self andWithAction:@selector(backButtonPressed:)];
+        self.navigationItem.leftBarButtonItem = backBarButtonItem;
+    }
+    
+    
+    if ( self.viewTitle != nil )
+    {
+        LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0,500, 32) withTitle: self.viewTitle];
+        [self.navigationItem setTitleView:titleView];
+    }
+    
     
 }
+
+
+-(void) backButtonPressed:(id) sender
+{
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {

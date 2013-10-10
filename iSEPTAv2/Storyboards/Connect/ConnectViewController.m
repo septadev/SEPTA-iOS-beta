@@ -497,6 +497,8 @@
     
     
     FeedbackQuickViewController *quickController = (FeedbackQuickViewController*) [[FeedbackQuickViewController alloc] initWithRoot:root];
+    [quickController setBackButtonName:@"commentsBack.png"];
+    [quickController setViewTitle:@"Comments"];
     [[self navigationController] pushViewController:quickController animated:YES];
     
     

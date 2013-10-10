@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#import "CustomFlatBarButton.h"
+#import "LineHeaderView.h"
+
 @interface FareViewController : UITableViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *btnDetails;

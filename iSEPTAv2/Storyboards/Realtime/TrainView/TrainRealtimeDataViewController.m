@@ -38,7 +38,6 @@
     [self.slidingViewController setAnchorLeftPeekAmount:self.peekLeftAmount];
     self.slidingViewController.underRightWidthLayout = ECVariableRevealWidth;
     
-    
     // --==  Register Your Nibs!
     [self.tableView registerNib: [UINib nibWithNibName:@"RealtimeVehicleInformationCell" bundle:nil] forCellReuseIdentifier: @"RealtimeVehicleInformationCell"];
 
@@ -60,6 +59,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+//    NSLog(@"tableView frame: %@", NSStringFromCGRect(self.tableView.frame) );
+//    NSLog(@" view     frame: %@", NSStringFromCGRect(self.view.frame) );
+//    NSLog(@"tabBar   height: %@", NSStringFromCGRect( self.tabBarController.view.frame) );
+    
+    [self.tableView setFrame: CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height - 44)];
+}
 
 -(void) viewDidDisappear:(BOOL)animated
 {

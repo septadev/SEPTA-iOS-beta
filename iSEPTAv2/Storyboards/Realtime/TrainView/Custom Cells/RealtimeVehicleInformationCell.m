@@ -112,7 +112,7 @@
     if ( late == 0 )
         [[self lblLate] setTextColor: [UIColor colorWithRed:13.0/255.0 green:164.0/255.0 blue:74.0/255.0 alpha:1.0] ];
     else if ( ( late > 0 ) && ( late <= 4) )
-        [[self lblLate] setTextColor: [UIColor orangeColor] ];
+        [[self lblLate] setTextColor: [UIColor redColor] ];  // Was orangeColor
     else if ( late > 4)
         [[self lblLate] setTextColor: [UIColor redColor] ];
     

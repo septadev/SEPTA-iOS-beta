@@ -25,6 +25,8 @@
 - (id)initWithURL:(NSURL *)url;
 - (void)parseKML;
 
+- (void) clear;
+
 @property (unsafe_unretained, nonatomic, readonly) NSArray *overlays;
 @property (unsafe_unretained, nonatomic, readonly) NSArray *points;
 

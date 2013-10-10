@@ -205,19 +205,19 @@
     if ( _locationEnabled )
     {
         // If the network is not reachable, try again in another 20 seconds
-//        [self getLatestJSONData];       // Grabs the last updated data on the vehciles of the requested route
+        [self getLatestJSONData];       // Grabs the last updated data on the vehciles of the requested route
     
-//        [self loadKMLInTheBackground];  // Loads the KML for the requested route in the background
+        [self loadKMLInTheBackground];  // Loads the KML for the requested route in the background
     }
     
 }
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 
 -(void) viewWillDisappear:(BOOL)animated
@@ -242,6 +242,11 @@
         NSLog(@"NTVVC - Killing updateTimer");
     }
     
+}
+
+-(void) viewDidUnload
+{
+    NSLog(@"TVVC - viewDidUnoad");
 }
 
 

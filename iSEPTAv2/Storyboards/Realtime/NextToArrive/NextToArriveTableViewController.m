@@ -982,6 +982,9 @@
     }
     else
     {
+
+//        [self.tableView setContentOffset:self.tableView.contentOffset animated:NO];
+        
         if ( ![menuRefreshTimer isValid] && [updateTimer isValid] )
             menuRefreshTimer = [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(menuRefreshUpdate:) userInfo:nil repeats:YES];
         
@@ -994,13 +997,40 @@
         [self updateFavoritesStatus];
         
 //        CGRect rect = CGRectInset(self.view.frame, 5, 0);
-        CGRect rect = CGRectInset(CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height), 5, 0 );
-        [_menu showFromRect:rect inView:self.view ];
+//        CGRect rect = CGRectInset(CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height), 5, 0 );
+//        [_menu showFromRect:rect inView:self.tableView ];
+//        [_menu showInView: self.tableView];
+        
+        
+        CGRect rect = CGRectInset(CGRectMake(0, self.tableView.contentOffset.y, self.view.frame.size.width, self.view.frame.size.height), 5, 0);
+        [_menu showFromRect: rect inView: self.tableView];
         
     }
         
     
 }
+
+-(void) scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+//    NSLog(@"begin dragging");
+    if (_menu.isOpen)
+    {
+        return [_menu close];
+    }
+    
+}
+
+//-(void) scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//
+//    NSLog(@"scrolling");
+//    if (_menu.isOpen)
+//    {
+//        return [_menu close];
+//    }
+//
+//    
+//}
 
 
 -(void) updateFavoritesStatus
@@ -1183,6 +1213,7 @@
             break;
     }
     
+    [self invalidateTimer];
     
     _lastSelectedType = selType;
     
@@ -1200,6 +1231,8 @@
     [sntvc setStopData: rData];          // Contains: start/end stop names and id, along with routeType -- the data
     [sntvc setSelectionType: selType];   // Determines its behavior, whether to show only the start, end or both start/end stops information
     [sntvc setDelegate:self];
+    
+    NSLog(@"NtATVC - itineraryButtonPressed, selectionType: %d", selType);
     
     [self.navigationController pushViewController:sntvc animated:YES];
     

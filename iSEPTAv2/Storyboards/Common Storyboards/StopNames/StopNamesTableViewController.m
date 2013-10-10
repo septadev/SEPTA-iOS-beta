@@ -408,9 +408,11 @@
         
         [clVC setRouteData: stopData];
         [clVC setDelegate:self];
-        
-        [self.navigationController pushViewController:clVC animated:YES];
+
         [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+
+        [self.navigationController pushViewController:clVC animated:YES];
+        
     }
     else if ( indexPath.row == 1 )
     {
@@ -987,7 +989,7 @@
 {
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:[index intValue] inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
     [self.navigationItem.rightBarButtonItem setEnabled:YES];
-    [self selectionMade];
+//    [self selectionMade];
 }
 
 

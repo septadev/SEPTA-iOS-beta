@@ -86,13 +86,9 @@
     
     [super viewWillAppear:animated];
 
-    
-    
     LineHeaderView *titleView = (LineHeaderView*)self.navigationItem.titleView;
-//    float navW = [(UIView*)[self.navigationItem.leftBarButtonItem  valueForKey:@"view"] frame].size.width;
     float w    = self.view.frame.size.width;
     [titleView updateWidth: w];
-//    [titleView updateFrame: CGRectMake(0, 0, w - (navW*2) -8, 32)];
     
     [self updateViewsWithOrientation: [[UIApplication sharedApplication] statusBarOrientation] ];
     
@@ -167,7 +163,7 @@
     
     NSLog(@"NFNVC - FindNearestRoute:Saves - %@", savedInfo);
     
-    radiusInMiles = 0.500;  // Default to 1/8th of a mile; but set to one half of a mile
+    radiusInMiles = 0.250;  // Default to 1/4 of a mile
     if ( [userSave object] == nil )
     {
         savedInfo = [[FindNearestRouteSaveObject alloc] init];
@@ -300,7 +296,9 @@
     l.endPoint = CGPointMake(0.35f, 0.35f);
     
     //you can change the direction, obviously, this would be top to bottom fade
-    self.imgTableViewBG.layer.mask = l;
+//    self.imgTableViewBG.layer.mask = l;
+    
+    [self.imgTableViewBG setBackgroundColor: [UIColor blackColor] ];
     
     [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
     
@@ -416,7 +414,7 @@
     static NSString *cellName = @"BusRouteIndicatorCell";
     
     BusRouteIndicatorCell *thisCell = [thisTableView dequeueReusableCellWithIdentifier: cellName];
-    
+    [thisCell setBackgroundColor:[UIColor clearColor] ];
     if ( thisCell == nil )
     {
         thisCell = [[BusRouteIndicatorCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];

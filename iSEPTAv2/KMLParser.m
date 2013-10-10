@@ -437,6 +437,29 @@ static void strToCoords(NSString *str, CLLocationCoordinate2D **coordsOut, NSUIn
 
 @implementation KMLParser
 
+
+-(void) clear
+{
+    
+    _styles = nil;
+    
+    for (KMLPlacemark *pMark in _placemarksArray)
+    {
+        [pMark clearString];
+    }
+    
+    [_placemarksArray removeAllObjects];
+    _placemarksArray = nil;
+    
+    _placemark = nil;
+    _style = nil;
+    
+    _xmlParser = nil;
+    
+}
+
+
+
 // After parsing has completed, this method loops over all placemarks that have
 // been parsed and looks up their corresponding KMLStyle objects according to
 // the placemark's styleUrl property and the global KMLStyle object's identifier.
