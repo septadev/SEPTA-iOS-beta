@@ -209,7 +209,7 @@
             }
     
     
-    [NSTimer scheduledTimerWithTimeInterval:2.5f target:self selector:@selector(popTheVC) userInfo:Nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(popTheVC) userInfo:Nil repeats:NO];
 
     
 //    NSSortDescriptor *lowestToHighest = [NSSortDescriptor sortDescriptorWithKey:@"distance" ascending:YES];

@@ -202,9 +202,6 @@
     
     query = [query copy]; // in case we got handed in a mutable string...
     
-//    if ( query == nil )  // Added by gga on 9/24/13 because Analyzer came back with "Key argument to setObject:forKey' cannot be nil
-//        return;
-    
     [statement setQuery:query];
     
     [_cachedStatements setObject:statement forKey:query];

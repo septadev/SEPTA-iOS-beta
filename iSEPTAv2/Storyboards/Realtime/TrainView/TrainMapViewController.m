@@ -49,6 +49,9 @@
     
     [super viewDidLoad];
     
+    [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(popTheVC) userInfo:Nil repeats:NO];
+    return;
+    
     _tableData = [[NSMutableArray alloc] init];
     _annotationLookup = [[NSMutableDictionary alloc] init];
     
@@ -74,8 +77,6 @@
     {
         self.travelMode = [NSNumber numberWithInt: kGTFSRouteTypeRail];
     }
-    
-    
     
     
     LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0, 500, 32) withTitle: title];
@@ -129,20 +130,28 @@
     if ( _locationEnabled )
     {
         // If the network is not reachable, try again in another 20 seconds
-        [self getLatestJSONData];       // Grabs the last updated data on the vehciles of the requested route
+//        [self getLatestJSONData];       // Grabs the last updated data on the vehciles of the requested route
         
-        [self loadKMLInTheBackground];  // Loads the KML for the requested route in the background
+//        [self loadKMLInTheBackground];  // Loads the KML for the requested route in the background
     }
+    
+    
+    [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(popTheVC) userInfo:Nil repeats:NO];
+
     
 }
 
+-(void) popTheVC
+{
+//    self.counter++;
+    [self.slidingViewController.navigationController popViewControllerAnimated:YES];
+}
 
 
 -(void) viewWillDisappear:(BOOL)animated
 {
     
     NSLog(@"TMVC - viewWillDisappear");
-    [super viewDidDisappear:animated];
     
     [_jsonQueue cancelAllOperations];
     _killAllTimers = YES;
@@ -151,7 +160,7 @@
     
     [SVProgressHUD dismiss];
     
-    
+
     [self.mapView setDelegate:nil];
     
     

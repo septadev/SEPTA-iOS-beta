@@ -105,6 +105,7 @@
 		277CF6D1167781160030DEAB /* ScrollingTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277CF6D0167781160030DEAB /* ScrollingTestViewController.m */; };
 		2782CEEB17BE8D62005939DB /* RouteSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2782CEEA17BE8D62005939DB /* RouteSelectionCell.xib */; };
 		2782CEEE17BE8D7A005939DB /* RouteSelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2782CEED17BE8D7A005939DB /* RouteSelectionCell.m */; };
+		278D8DB71807147600E80645 /* MMDrawerTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278D8DB61807147600E80645 /* MMDrawerTestViewController.m */; };
 		278EE4FD177C829B002993C4 /* FindSchedulesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 278EE4FC177C829B002993C4 /* FindSchedulesCell.xib */; };
 		278EE503177C85EC002993C4 /* FindSchedulesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 278EE502177C85EC002993C4 /* FindSchedulesCell.m */; };
 		278EE509177C880E002993C4 /* FindSchedulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278EE508177C880E002993C4 /* FindSchedulesViewController.m */; };
@@ -899,6 +900,8 @@
 		2782CEEC17BE8D7A005939DB /* RouteSelectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RouteSelectionCell.h; path = Storyboards/Schedules/RouteSelection/RouteSelectionCell.h; sourceTree = "<group>"; };
 		2782CEED17BE8D7A005939DB /* RouteSelectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RouteSelectionCell.m; path = Storyboards/Schedules/RouteSelection/RouteSelectionCell.m; sourceTree = "<group>"; };
 		2783088716568FD30059F37F /* StandardDefinitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StandardDefinitions.h; path = ScheduleTab/StandardDefinitions.h; sourceTree = "<group>"; };
+		278D8DB51807147600E80645 /* MMDrawerTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMDrawerTestViewController.h; path = Storyboards/Realtime/TrainView/MMDrawerTest/MMDrawerTestViewController.h; sourceTree = "<group>"; };
+		278D8DB61807147600E80645 /* MMDrawerTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMDrawerTestViewController.m; path = Storyboards/Realtime/TrainView/MMDrawerTest/MMDrawerTestViewController.m; sourceTree = "<group>"; };
 		278EE4FC177C829B002993C4 /* FindSchedulesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FindSchedulesCell.xib; path = Realtime/FindSchedulesCell.xib; sourceTree = "<group>"; };
 		278EE501177C85EC002993C4 /* FindSchedulesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FindSchedulesCell.h; path = Realtime/FindSchedulesCell.h; sourceTree = "<group>"; };
 		278EE502177C85EC002993C4 /* FindSchedulesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FindSchedulesCell.m; path = Realtime/FindSchedulesCell.m; sourceTree = "<group>"; };
@@ -2297,6 +2300,15 @@
 			name = Common;
 			sourceTree = "<group>";
 		};
+		278D8DB41807144F00E80645 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				278D8DB51807147600E80645 /* MMDrawerTestViewController.h */,
+				278D8DB61807147600E80645 /* MMDrawerTestViewController.m */,
+			);
+			name = Test;
+			sourceTree = "<group>";
+		};
 		2795691516DBC17C004B925A /* CommentForm */ = {
 			isa = PBXGroup;
 			children = (
@@ -2904,6 +2916,7 @@
 		27DBA5FB17A97F2600118225 /* TrainView */ = {
 			isa = PBXGroup;
 			children = (
+				278D8DB41807144F00E80645 /* Test */,
 				273A0B6B17FF2A870064B0FB /* Memory */,
 				27D91F3117F0A5B300627ECD /* Sliding */,
 				2708114017A9883C00B62FBD /* Custom Cells */,
@@ -4994,6 +5007,7 @@
 				27488D9D17147FB100A20195 /* TransitMapViewController.m in Sources */,
 				411C343717170B3200A694F0 /* NewFindNearestViewController.m in Sources */,
 				411C343C17170B4200A694F0 /* FindNearestMapViewController.m in Sources */,
+				278D8DB71807147600E80645 /* MMDrawerTestViewController.m in Sources */,
 				273E59E117340FC100E9B11B /* CCTConnectViewController.m in Sources */,
 				273E59E517340FDF00E9B11B /* CCTParser.m in Sources */,
 				274A8016174A85CB0072FAC7 /* CustomerServiceTableViewController.m in Sources */,

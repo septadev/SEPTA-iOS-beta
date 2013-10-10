@@ -49,7 +49,7 @@
 
     if ( _startTest )
     {
-        [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(popTheVC) userInfo:nil repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(popTheVC) userInfo:nil repeats:NO];
     }
     
 }
@@ -59,10 +59,14 @@
 {
     _counter++;
     NSLog(@"Transition: %d", _counter);
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MemoryTestStoryboard" bundle:nil];
-    MapMemoryTestViewController *tvVC = (MapMemoryTestViewController*)[storyboard instantiateInitialViewController];
-    [tvVC setCounter: _counter];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MemoryTestStoryboard" bundle:nil];
+//    MapMemoryTestViewController *tvVC = (MapMemoryTestViewController*)[storyboard instantiateInitialViewController];
+//    [tvVC setCounter: _counter];
+//    [self.navigationController pushViewController:tvVC animated:YES];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TrainSlidingStoryboard" bundle:nil];
+    TrainViewViewController *tvVC = (TrainViewViewController*)[storyboard instantiateInitialViewController];
     [self.navigationController pushViewController:tvVC animated:YES];
+
 }
 
 //-(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
@@ -198,6 +202,12 @@
 - (IBAction)btnTrainViewPressed:(id)sender
 {
 
+    
+//    MMDrawerTestViewController *testVC = [[MMDrawerTestViewController alloc] init];
+//    [self.navigationController pushViewController:testVC animated:YES];
+    
+    
+    
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TrainViewStoryboard" bundle:nil];
 //    TrainViewViewController *tvVC = (TrainViewViewController*)[storyboard instantiateInitialViewController];
 //    [self.navigationController pushViewController:tvVC animated:YES];
@@ -205,8 +215,9 @@
     
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MemoryTestStoryboard" bundle:nil];
 //    MapMemoryTestViewController *tvVC = (MapMemoryTestViewController*)[storyboard instantiateInitialViewController];
-//    _startTest = YES;
+    _startTest = YES;
 //    [tvVC setCounter: _counter];
+    
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TrainSlidingStoryboard" bundle:nil];
     TrainViewViewController *tvVC = (TrainViewViewController*)[storyboard instantiateInitialViewController];

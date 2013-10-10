@@ -33,8 +33,13 @@
     
     [super viewDidLoad];
     
-    UIStoryboard *storyboard;
+}
 
+-(void)viewWillAppear:(BOOL)animated
+{
+
+    UIStoryboard *storyboard;
+    
     storyboard = [UIStoryboard storyboardWithName:@"TrainSlidingStoryboard" bundle:nil];
     
     TrainMapViewController *tmvc = [storyboard instantiateViewControllerWithIdentifier:@"Map"];
@@ -43,12 +48,14 @@
     [tmvc setTravelMode:self.travelMode];
     
     [self setTopViewController: tmvc ];
-    
+
 }
 
 
 -(void)viewDidDisappear:(BOOL)animated
 {
+
+    
     [super viewDidDisappear:animated];
     NSLog(@"TSVC:vDD - view Did Disappear");
     
@@ -67,7 +74,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     
-    [self setTopViewController: nil];
+//    [self setTopViewController: nil];
     
 }
 

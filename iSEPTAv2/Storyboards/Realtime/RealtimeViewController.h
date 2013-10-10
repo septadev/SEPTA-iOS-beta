@@ -17,6 +17,7 @@
 #import "NearestLocationViewController.h"
 
 #import "MapMemoryTestViewController.h"
+#import "MMDrawerTestViewController.h"
 
 // -- Testing
 //#import "TransitDrawerViewController.h"
