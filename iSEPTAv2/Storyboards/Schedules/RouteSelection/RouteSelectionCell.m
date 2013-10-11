@@ -69,7 +69,7 @@
                 [self.imgIcon setImage: [UIImage imageNamed:@"Schedule_MFL_small.png"] ];
                 [self.imgCell setImage: [UIImage imageNamed:@"Schedule_MFL-BG.png"] ];
             }
-            else if ( [_routeData.route_short_name isEqualToString:@"BSS"] )
+            else if ( [_routeData.route_short_name isEqualToString:@"BSL"] || [_routeData.route_short_name isEqualToString:@"BSL"] )
             {
                 [self.imgIcon setImage: [UIImage imageNamed:@"Schedule_BSL_small.png"] ];
                 [self.imgCell setImage: [UIImage imageNamed:@"Schedule_BSL-BG.png"] ];

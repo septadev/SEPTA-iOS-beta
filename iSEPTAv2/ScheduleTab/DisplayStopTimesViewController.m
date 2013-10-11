@@ -2358,7 +2358,7 @@
     
     
     // Update Start or End
-    NSIndexPath *thisPath, *thatPath;
+    NSIndexPath *thisPath; //, *thatPath;
     if ( leftButtonType == kLeftButtonIsStart )
     {
         thisPath = [NSIndexPath indexPathForRow:0 inSection:0];

@@ -49,8 +49,8 @@
     
     [super viewDidLoad];
     
-    [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(popTheVC) userInfo:Nil repeats:NO];
-    return;
+//    [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(popTheVC) userInfo:Nil repeats:NO];
+//    return;
     
     _tableData = [[NSMutableArray alloc] init];
     _annotationLookup = [[NSMutableDictionary alloc] init];
@@ -130,13 +130,13 @@
     if ( _locationEnabled )
     {
         // If the network is not reachable, try again in another 20 seconds
-//        [self getLatestJSONData];       // Grabs the last updated data on the vehciles of the requested route
+        [self getLatestJSONData];       // Grabs the last updated data on the vehciles of the requested route
         
-//        [self loadKMLInTheBackground];  // Loads the KML for the requested route in the background
+        [self loadKMLInTheBackground];  // Loads the KML for the requested route in the background
     }
     
     
-    [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(popTheVC) userInfo:Nil repeats:NO];
+//    [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(popTheVC) userInfo:Nil repeats:NO];
 
     
 }

@@ -49,7 +49,7 @@
 
     if ( _startTest )
     {
-        [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(popTheVC) userInfo:nil repeats:NO];
+//        [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(popTheVC) userInfo:nil repeats:NO];
     }
     
 }
@@ -215,7 +215,7 @@
     
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MemoryTestStoryboard" bundle:nil];
 //    MapMemoryTestViewController *tvVC = (MapMemoryTestViewController*)[storyboard instantiateInitialViewController];
-    _startTest = YES;
+//    _startTest = YES;
 //    [tvVC setCounter: _counter];
     
     
