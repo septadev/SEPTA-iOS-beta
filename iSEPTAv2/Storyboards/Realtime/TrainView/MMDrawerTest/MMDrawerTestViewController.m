@@ -46,15 +46,15 @@
         [rightDrawer setTitle:@"Right"];
         [rightDrawer.view setBackgroundColor: [UIColor redColor] ];
         
-        [self setCenterViewController:center];
-        [self setRightDrawerViewController: rightDrawer];
-        
-        
-        [self setGestureShouldRecognizeTouchBlock:^BOOL(MMDrawerController *drawerController, UIGestureRecognizer *gesture, UITouch *touch) {
-            BOOL shouldRecognizeTouch = NO;
-            
-            return shouldRecognizeTouch;
-        }];
+//        [self setCenterViewController:center];
+//        [self setRightDrawerViewController: rightDrawer];
+//        
+//        
+//        [self setGestureShouldRecognizeTouchBlock:^BOOL(MMDrawerController *drawerController, UIGestureRecognizer *gesture, UITouch *touch) {
+//            BOOL shouldRecognizeTouch = NO;
+//            
+//            return shouldRecognizeTouch;
+//        }];
         
     }
     return self;
@@ -97,14 +97,14 @@
 -(void)setupRightMenuButton
 {
     
-    MMDrawerBarButtonItem * rightDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(rightDrawerButtonPress:)];
-    [self.navigationItem setRightBarButtonItem:rightDrawerButton animated:YES];
+//    MMDrawerBarButtonItem * rightDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(rightDrawerButtonPress:)];
+//    [self.navigationItem setRightBarButtonItem:rightDrawerButton animated:YES];
     
 }
 
 -(void)rightDrawerButtonPress:(id)sender
 {
-    [self toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
+//    [self toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 }
 
 

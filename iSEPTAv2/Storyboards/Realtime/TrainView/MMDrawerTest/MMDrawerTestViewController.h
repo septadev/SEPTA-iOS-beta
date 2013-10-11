@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#import <MMDrawerController.h>
-#import <MMDrawerBarButtonItem.h>
+//#import <MMDrawerController.h>
+//#import <MMDrawerBarButtonItem.h>
 
-@interface MMDrawerTestViewController : MMDrawerController
+//@interface MMDrawerTestViewController : MMDrawerController
+
+@interface MMDrawerTestViewController : UIViewController
 
 @end

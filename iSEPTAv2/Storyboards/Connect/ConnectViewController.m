@@ -500,7 +500,7 @@
     [quickController setBackButtonName:@"commentsBack.png"];
     [quickController setViewTitle:@"Comments"];
     [[self navigationController] pushViewController:quickController animated:YES];
-    
+
     
 }
 
