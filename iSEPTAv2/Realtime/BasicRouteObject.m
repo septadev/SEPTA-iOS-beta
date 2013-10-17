@@ -64,7 +64,41 @@
 
 -(void) addRouteInfo:(RouteDetailsObject*) detailedInfo
 {
+    // Let's do some checks!
+    
+    // Does route_short_name already exist?
+    for (RouteDetailsObject *rdObj in routeData)
+    {
+        if ( [rdObj.route_short_name isEqualToString: detailedInfo.route_short_name] )
+        {
+            // It does!  Now, does it have the same dircode
+            
+            if ( [rdObj.directionDict objectForKey: [[detailedInfo.directionDict allValues] objectAtIndex:0]] == nil )
+            {
+                return;
+            }
+            else
+            {
+                [rdObj.directionDict addEntriesFromDictionary: detailedInfo.directionDict];
+                return;
+            }
+            
+            
+//            if ( [rdObj.dircode isEqualToString: detailedInfo.dircode] )
+//                return;  // No need to add it as it already exists
+//            else
+//            {
+//                return;
+//            }
+        }
+    }
+    
+    // 10W, 10E, 13W, 13E
+    // Do we store these are 4 different elements or as 2 different elements?
+    
+    
     [routeData addObject: detailedInfo];
+    
 }
 
 

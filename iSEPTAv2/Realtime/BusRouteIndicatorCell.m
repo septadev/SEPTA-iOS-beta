@@ -108,7 +108,7 @@
     int x = 50;
     int y = 22;
     
-    int width = 30;
+    int width = 40;
     int height = 18;
     
     int padding = 1;
@@ -119,7 +119,9 @@
     for ( RouteDetailsObject* dObj in routeInfo.routeData )
     {
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(x, y, width, height)];
-        [button setTitle:dObj.route_short_name forState:UIControlStateNormal];
+        
+//        [button setTitle:[NSString stringWithFormat:@"%@%@", dObj.route_short_name, dObj.Direction] forState:UIControlStateNormal];
+        [button setTitle: dObj.route_short_name forState:UIControlStateNormal];
         [button setUserInteractionEnabled:NO];  // Disable button clicking
  
         [button setBackgroundColor: [self colorFor:dObj] ];

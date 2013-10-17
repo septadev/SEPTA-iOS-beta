@@ -2,8 +2,12 @@
 *.sqlite
 *.txt
 *.csv
+*.sql
 gitraw/
 Feb2013/
 Jan2013/
 Mar2013/
 *.kml
+direction.php
+google_bus/
+google_rail/

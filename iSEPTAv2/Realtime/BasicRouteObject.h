@@ -41,6 +41,9 @@
 
 @property (nonatomic, strong) NSString *route_short_name;
 @property (nonatomic, strong) NSNumber *route_type;
+//@property (nonatomic, strong) NSString *Direction;
+//@property (nonatomic, strong) NSString *dircode;
+@property (nonatomic, strong) NSMutableDictionary *directionDict;
 
 
 //-(NSComparisonResult) compareWithAnotherRoute:(RouteDetailsObject*) rdObject;

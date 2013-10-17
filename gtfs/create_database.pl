@@ -1415,12 +1415,14 @@ sub populateStopIDRouteLookup
     
     
 #    my $baseSelect = "SELECT route_short_name, stop_id, route_type  FROM stop_times_bus NATURAL JOIN trips_bus JOIN routes_bus r ON r.route_short_name=trips_bus.route_id GROUP BY route_id, stop_id ORDER BY stop_id";
-    my $baseSelect = "SELECT route_short_name, stop_id, route_type  FROM stop_times_bus NATURAL JOIN trips_bus t JOIN routes_bus r ON r.route_short_name=t.route_id GROUP BY t.route_id, stop_id ORDER BY stop_id;";
+    #my $baseSelect = "SELECT r.route_short_name, s.stop_id, r.route_type  FROM stop_times_bus s NATURAL JOIN trips_bus t JOIN routes_bus r ON r.route_short_name=t.route_id GROUP BY t.route_id, stop_id ORDER BY stop_id;";
+    
+    my $baseSelect = "SELECT t.route_id as route_short_name, stop_id, route_type, CASE Direction WHEN \"Eastbound\" THEN \"E\" WHEN \"Westbound\" THEN \"W\" WHEN \"Northbound\" THEN \"N\" WHEN \"Southbound\" THEN \"S\" ELSE Direction END as Direction, dircode FROM stop_times_bus s NATURAL JOIN trips_bus t JOIN routes_bus r ON r.route_short_name=t.route_id JOIN bus_stop_directions b ON t.route_id=b.Route WHERE t.direction_id=b.dircode GROUP BY route_short_name, stop_id, direction_id;";
     
     my $selectCreate = "CREATE TABLE stopIDRouteLookup AS $baseSelect;";
     $dbh->do($selectCreate);
     
-    my $baseInsert = "SELECT route_id AS route_short_name, stop_id, route_type FROM stop_times_rail NATURAL JOIN trips_rail NATURAL JOIN routes_rail GROUP BY route_id, stop_id ORDER BY stop_id";
+    my $baseInsert = "SELECT route_id AS route_short_name, stop_id, route_type, \"X\" as Direction, \"2\" as dircode FROM stop_times_rail NATURAL JOIN trips_rail NATURAL JOIN routes_rail GROUP BY route_id, stop_id ORDER BY stop_id";
     my $selectInto = "INSERT INTO stopIDRouteLookup $baseInsert;";
     $dbh->do($selectInto);
     

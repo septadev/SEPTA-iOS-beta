@@ -28,6 +28,14 @@
 		271AFD5C16E52B7E00A11B8E /* ItineraryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 271AFD5B16E52B7E00A11B8E /* ItineraryObject.m */; };
 		271AFD5F16E52B8E00A11B8E /* TripObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 271AFD5E16E52B8E00A11B8E /* TripObject.m */; };
 		271B5C4E165C0EE500D61EA0 /* DisplayStopTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271B5C4D165C0EE400D61EA0 /* DisplayStopTimesViewController.m */; };
+		271DA85F1808A0B4009ED7D6 /* septaIcon-29px.png in Resources */ = {isa = PBXBuildFile; fileRef = 271DA8571808A0B4009ED7D6 /* septaIcon-29px.png */; };
+		271DA8601808A0B4009ED7D6 /* septaIcon-40px.png in Resources */ = {isa = PBXBuildFile; fileRef = 271DA8581808A0B4009ED7D6 /* septaIcon-40px.png */; };
+		271DA8611808A0B4009ED7D6 /* septaIcon-50px.png in Resources */ = {isa = PBXBuildFile; fileRef = 271DA8591808A0B4009ED7D6 /* septaIcon-50px.png */; };
+		271DA8621808A0B4009ED7D6 /* septaIcon-57px.png in Resources */ = {isa = PBXBuildFile; fileRef = 271DA85A1808A0B4009ED7D6 /* septaIcon-57px.png */; };
+		271DA8631808A0B4009ED7D6 /* septaIcon-58px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 271DA85B1808A0B4009ED7D6 /* septaIcon-58px@2x.png */; };
+		271DA8641808A0B4009ED7D6 /* septaIcon-80px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 271DA85C1808A0B4009ED7D6 /* septaIcon-80px@2x.png */; };
+		271DA8651808A0B4009ED7D6 /* septaIcon-100px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 271DA85D1808A0B4009ED7D6 /* septaIcon-100px@2x.png */; };
+		271DA8661808A0B4009ED7D6 /* septaIcon-114px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 271DA85E1808A0B4009ED7D6 /* septaIcon-114px@2x.png */; };
 		2722CDF7168371F30074821B /* NTAResultsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2722CDF6168371F30074821B /* NTAResultsCell.m */; };
 		2722CDF91683990D0074821B /* NTAConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2722CDF81683990D0074821B /* NTAConnectionCell.xib */; };
 		2722D4A91683A69F0074821B /* NTASingleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2722D4A81683A69F0074821B /* NTASingleCell.xib */; };
@@ -774,6 +782,14 @@
 		271AFD5E16E52B8E00A11B8E /* TripObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TripObject.m; path = ScheduleTab/TripObject.m; sourceTree = "<group>"; };
 		271B5C4C165C0EE400D61EA0 /* DisplayStopTimesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DisplayStopTimesViewController.h; path = ScheduleTab/DisplayStopTimesViewController.h; sourceTree = "<group>"; };
 		271B5C4D165C0EE400D61EA0 /* DisplayStopTimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DisplayStopTimesViewController.m; path = ScheduleTab/DisplayStopTimesViewController.m; sourceTree = "<group>"; };
+		271DA8571808A0B4009ED7D6 /* septaIcon-29px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "septaIcon-29px.png"; sourceTree = "<group>"; };
+		271DA8581808A0B4009ED7D6 /* septaIcon-40px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "septaIcon-40px.png"; sourceTree = "<group>"; };
+		271DA8591808A0B4009ED7D6 /* septaIcon-50px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "septaIcon-50px.png"; sourceTree = "<group>"; };
+		271DA85A1808A0B4009ED7D6 /* septaIcon-57px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "septaIcon-57px.png"; sourceTree = "<group>"; };
+		271DA85B1808A0B4009ED7D6 /* septaIcon-58px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "septaIcon-58px@2x.png"; sourceTree = "<group>"; };
+		271DA85C1808A0B4009ED7D6 /* septaIcon-80px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "septaIcon-80px@2x.png"; sourceTree = "<group>"; };
+		271DA85D1808A0B4009ED7D6 /* septaIcon-100px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "septaIcon-100px@2x.png"; sourceTree = "<group>"; };
+		271DA85E1808A0B4009ED7D6 /* septaIcon-114px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "septaIcon-114px@2x.png"; sourceTree = "<group>"; };
 		2722CDF5168371F30074821B /* NTAResultsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NTAResultsCell.h; path = Realtime/NTAResultsCell.h; sourceTree = "<group>"; };
 		2722CDF6168371F30074821B /* NTAResultsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NTAResultsCell.m; path = Realtime/NTAResultsCell.m; sourceTree = "<group>"; };
 		2722CDF81683990D0074821B /* NTAConnectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NTAConnectionCell.xib; path = Realtime/NTAConnectionCell.xib; sourceTree = "<group>"; };
@@ -3402,6 +3418,14 @@
 		8418EBFB17FEF6BB003607D1 /* appIcon */ = {
 			isa = PBXGroup;
 			children = (
+				271DA8571808A0B4009ED7D6 /* septaIcon-29px.png */,
+				271DA8581808A0B4009ED7D6 /* septaIcon-40px.png */,
+				271DA8591808A0B4009ED7D6 /* septaIcon-50px.png */,
+				271DA85A1808A0B4009ED7D6 /* septaIcon-57px.png */,
+				271DA85B1808A0B4009ED7D6 /* septaIcon-58px@2x.png */,
+				271DA85C1808A0B4009ED7D6 /* septaIcon-80px@2x.png */,
+				271DA85D1808A0B4009ED7D6 /* septaIcon-100px@2x.png */,
+				271DA85E1808A0B4009ED7D6 /* septaIcon-114px@2x.png */,
 				8418EBFC17FEF6BB003607D1 /* septaIcon-120px@2x.png */,
 				8418EBFD17FEF6BB003607D1 /* septaIcon-144px@2x.png */,
 				8418EBFE17FEF6BB003607D1 /* septaIcon-152@2x.png */,
@@ -4357,6 +4381,7 @@
 				27DB2FF61636D6B600153E4C /* 4.kml in Resources */,
 				27DB2FF71636D6B600153E4C /* 5.kml in Resources */,
 				27DB2FF81636D6B600153E4C /* 6.kml in Resources */,
+				271DA8651808A0B4009ED7D6 /* septaIcon-100px@2x.png in Resources */,
 				8418EE7517FEF6BD003607D1 /* Schedule_Trolley_small.png in Resources */,
 				8418EE2317FEF6BD003607D1 /* BSL_white@2x.png in Resources */,
 				8418ED9D17FEF6BD003607D1 /* trailpass.png in Resources */,
@@ -4439,6 +4464,7 @@
 				8418EE7817FEF6BD003607D1 /* 24HoursIcon@2x.png in Resources */,
 				8418ED9517FEF6BD003607D1 /* cross-county.png in Resources */,
 				8418EEA417FEFA52003607D1 /* second-menu.png in Resources */,
+				271DA8661808A0B4009ED7D6 /* septaIcon-114px@2x.png in Resources */,
 				8418EE7417FEF6BD003607D1 /* Schedule_Trolley.png in Resources */,
 				8418EE1D17FEF6BD003607D1 /* transitView-Trolley-Red.png in Resources */,
 				27DB30161636D6B600153E4C /* 36.kml in Resources */,
@@ -4518,12 +4544,14 @@
 				27DB302E1636D6B600153E4C /* 64.kml in Resources */,
 				27DB302F1636D6B600153E4C /* 65.kml in Resources */,
 				8418EDBB17FEF6BD003607D1 /* RT_NTA@2x.png in Resources */,
+				271DA8621808A0B4009ED7D6 /* septaIcon-57px.png in Resources */,
 				8418ED7817FEF6BD003607D1 /* tipsBack.png in Resources */,
 				8418EE7317FEF6BD003607D1 /* Schedule_Trolley-BG.png in Resources */,
 				8418EE9017FEF6BD003607D1 /* btnMFLBSLNHSL_clicked.png in Resources */,
 				27DB30301636D6B600153E4C /* 66.kml in Resources */,
 				8418EE9717FEF6BD003607D1 /* system_status_alert.png in Resources */,
 				27DB30311636D6B600153E4C /* 67.kml in Resources */,
+				271DA8641808A0B4009ED7D6 /* septaIcon-80px@2x.png in Resources */,
 				8418EDB317FEF6BD003607D1 /* Refresh@2x.png in Resources */,
 				8418EE2E17FEF6BD003607D1 /* MFL_white.png in Resources */,
 				8418EE9217FEF6BD003607D1 /* btnRRL_clicked.png in Resources */,
@@ -4665,6 +4693,7 @@
 				27DB306C1636D6B600153E4C /* 205.kml in Resources */,
 				8418EDA417FEF6BD003607D1 /* facebookIcon@2x.png in Resources */,
 				27DB306D1636D6B600153E4C /* 206.kml in Resources */,
+				271DA8611808A0B4009ED7D6 /* septaIcon-50px.png in Resources */,
 				8418EDBA17FEF6BD003607D1 /* RT_Find-Loc@2x.png in Resources */,
 				8418EE9D17FEF6BD003607D1 /* gradient_line.png in Resources */,
 				27DB306E1636D6B600153E4C /* 304.kml in Resources */,
@@ -4705,6 +4734,7 @@
 				8418EEA617FEFFDA003607D1 /* Images.xcassets in Resources */,
 				8418EE7617FEF6BD003607D1 /* Station_alarm.png in Resources */,
 				8418EE9317FEF6BD003607D1 /* btnTransit.png in Resources */,
+				271DA8631808A0B4009ED7D6 /* septaIcon-58px@2x.png in Resources */,
 				8418EE6E17FEF6BD003607D1 /* Schedule_NHSL.png in Resources */,
 				27DB307C1636D6B600153E4C /* R.kml in Resources */,
 				8418EE3E17FEF6BD003607D1 /* Trolley_white.png in Resources */,
@@ -4760,6 +4790,7 @@
 				8418EE2417FEF6BD003607D1 /* MFL_Blue@2x.png in Resources */,
 				8418ED8A17FEF6BD003607D1 /* One-day-Convenience-BG@2x.png in Resources */,
 				8418ED9A17FEF6BD003607D1 /* token-BG.png in Resources */,
+				271DA8601808A0B4009ED7D6 /* septaIcon-40px.png in Resources */,
 				8418EE3517FEF6BD003607D1 /* Bus_black@2x.png in Resources */,
 				27A5EABE1697411C004C9467 /* digitOverlay@2x.png in Resources */,
 				27B7F7B516A9B2F0003DF486 /* BSO.kml in Resources */,
@@ -4822,6 +4853,7 @@
 				2765AA6D17AC12AC00F93FBE /* RouteSelectionStoryboard.storyboard in Resources */,
 				2765AA7417AC18F700F93FBE /* ItineraryStoryboard.storyboard in Resources */,
 				8418EE0017FEF6BD003607D1 /* trainView-RRL-Red.png in Resources */,
+				271DA85F1808A0B4009ED7D6 /* septaIcon-29px.png in Resources */,
 				8418EE8417FEF6BD003607D1 /* splash@2x.png in Resources */,
 				8418EE9B17FEF6BD003607D1 /* gradient_vertical_line2@2x.png in Resources */,
 				84CC992F17B874A10087477E /* TripListStoryboard.storyboard in Resources */,
@@ -5197,8 +5229,8 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bruce Vermeychuk (P5YSAXG749)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -5224,8 +5256,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = SEPTA;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "49B56EEA-06F8-44B1-A236-8691388E4045";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "49B56EEA-06F8-44B1-A236-8691388E4045";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/**";
 				VALID_ARCHS = "armv7 armv7s";
@@ -5239,7 +5271,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Southeastern Pennsylvania Transportation Authority (SEPTA) (L636S9JLLY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5263,7 +5295,7 @@
 				);
 				PRODUCT_NAME = SEPTA;
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5AD8061C-60F0-40CA-9911-46E43BF71F03";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/**";
 				VALID_ARCHS = "armv7 armv7s";

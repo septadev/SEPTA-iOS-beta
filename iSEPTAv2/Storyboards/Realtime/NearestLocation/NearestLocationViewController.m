@@ -879,7 +879,7 @@
         //            NSLog(@"ARGH!");
         //        }
         
-        queryStr = [NSString stringWithFormat:@"SELECT CASE route_short_name WHEN \"LUCYGO\" THEN \"LGO\" WHEN \"LUCYGR\" THEN \"LGR\" ELSE route_short_name END as route_short_name, stop_id, route_type FROM stopIDRouteLookup WHERE stop_id=%d", [glObject.location_id intValue] ];
+        queryStr = [NSString stringWithFormat:@"SELECT CASE route_short_name WHEN \"LUCYGO\" THEN \"LGO\" WHEN \"LUCYGR\" THEN \"LGR\" ELSE route_short_name END as route_short_name, stop_id, route_type, Direction, dircode FROM stopIDRouteLookup WHERE stop_id=%d", [glObject.location_id intValue] ];
         results = [database executeQuery: queryStr];
         if ( [database hadError] )  // Check for errors
         {
@@ -924,6 +924,12 @@
             RouteDetailsObject *dObj = [[RouteDetailsObject alloc] init];
             [dObj setRoute_short_name: [results stringForColumn:@"route_short_name"] ];
             [dObj setRoute_type: [NSNumber numberWithInt: [results intForColumn:@"route_type"] ] ];
+            
+            NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:[results stringForColumn:@"Direction"] forKey:[results stringForColumn:@"dircode"] ];
+            [dObj setDirectionDict: dict];
+            
+//            [dObj setDirection: [results stringForColumn:@"Direction"] ];
+//            [dObj setDircode: [results stringForColumn:@"dircode"] ];
             
             [rObj addRouteInfo: dObj ];
             
