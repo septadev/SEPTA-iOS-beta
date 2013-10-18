@@ -118,10 +118,27 @@
     
     for ( RouteDetailsObject* dObj in routeInfo.routeData )
     {
+        
+        NSString *routeName;
+        if ( [dObj.directionDict count] > 1 )
+        {
+            routeName = dObj.route_short_name;
+        }
+        else
+        {
+            NSString *val = [[dObj.directionDict allValues] objectAtIndex:0];
+            if ( ![val isEqualToString:@"X"])
+                routeName = [NSString stringWithFormat:@"%@%@", dObj.route_short_name, [[dObj.directionDict allValues] objectAtIndex:0] ];
+            else
+                routeName = dObj.route_short_name;
+        }
+        
+//        NSLog(@"routeName: %@", routeName);
+        
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(x, y, width, height)];
         
 //        [button setTitle:[NSString stringWithFormat:@"%@%@", dObj.route_short_name, dObj.Direction] forState:UIControlStateNormal];
-        [button setTitle: dObj.route_short_name forState:UIControlStateNormal];
+        [button setTitle: routeName forState:UIControlStateNormal];
         [button setUserInteractionEnabled:NO];  // Disable button clicking
  
         [button setBackgroundColor: [self colorFor:dObj] ];

@@ -73,13 +73,13 @@
         {
             // It does!  Now, does it have the same dircode
             
-            if ( [rdObj.directionDict objectForKey: [[detailedInfo.directionDict allValues] objectAtIndex:0]] == nil )
+            if ( [rdObj.directionDict objectForKey: [[detailedInfo.directionDict allKeys] objectAtIndex:0]] == nil )
             {
+                [rdObj.directionDict addEntriesFromDictionary: detailedInfo.directionDict];
                 return;
             }
             else
             {
-                [rdObj.directionDict addEntriesFromDictionary: detailedInfo.directionDict];
                 return;
             }
             

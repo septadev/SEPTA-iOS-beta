@@ -19,7 +19,7 @@
 
 @property (nonatomic, strong) NSString *date;
 @property (nonatomic, strong) NSString *day;
-
+@property (nonatomic, strong) NSString *dayOfWeek;
 
 // Addditional fields
 @property (nonatomic, strong) NSDate *dateTime;

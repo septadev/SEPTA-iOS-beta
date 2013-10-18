@@ -26,7 +26,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lblRouteName;
 @property (weak, nonatomic) IBOutlet UILabel *lblRouteTime;
-@property (weak, nonatomic) IBOutlet UILabel *lblTimeRemaining;
+@property (weak, nonatomic) IBOutlet UILabel *lblDayOfTheWeek;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgRouteIcon;
 

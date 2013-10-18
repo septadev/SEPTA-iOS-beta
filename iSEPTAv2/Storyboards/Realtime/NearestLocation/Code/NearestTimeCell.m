@@ -94,8 +94,8 @@
     [self.lblRouteName setText: schedule.Route];
     [self.lblRouteTime setText: schedule.date];
     
-    [self.lblTimeRemaining setText:@""];
-    
+//    [self.lblTimeRemaining setText:@""];
+    [self.lblDayOfTheWeek setText: schedule.dayOfWeek];
     
     UIImage *imageIcon;
     

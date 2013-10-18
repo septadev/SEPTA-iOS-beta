@@ -925,6 +925,11 @@
             [dObj setRoute_short_name: [results stringForColumn:@"route_short_name"] ];
             [dObj setRoute_type: [NSNumber numberWithInt: [results intForColumn:@"route_type"] ] ];
             
+//            if ( [dObj.route_short_name isEqualToString:@"124"] || [dObj.route_short_name isEqualToString:@"125"] )
+//            {
+////                NSLog(@"Whatever");
+//            }
+            
             NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject:[results stringForColumn:@"Direction"] forKey:[results stringForColumn:@"dircode"] ];
             [dObj setDirectionDict: dict];
             
