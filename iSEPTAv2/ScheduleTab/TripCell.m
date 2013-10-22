@@ -354,7 +354,8 @@ static inline int timeDiff(int a, int b)
     int temp = (arrHr*60 + arrMn) - (nowHr*60 + nowMn);
 //    int temp = 60 * ((b - a)/100) + ( (b - a) % 100);
     
-    return (temp/60)*100 + (temp%60);
+    return temp;
+//    return (temp/60)*100 + (temp%60);
     
 //    return tempB;
     
