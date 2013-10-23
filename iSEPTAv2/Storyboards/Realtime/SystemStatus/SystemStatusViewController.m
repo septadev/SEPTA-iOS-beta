@@ -694,9 +694,13 @@
         NSString *routeName = [data objectForKey:@"route_name"];
         if ( [routeName isEqualToString:@"CCT"] || [routeName isEqualToString:@"Generic"] )
             continue;
+        else if ( [routeName isEqualToString:@"Market/ Frankford Line"] )
+            routeName = @"Market-Frankford Line";
+        else if ( [routeName isEqualToString:@"Market Frankford Owl"] )
+            routeName = @"Market-Frankford Owl";
         
         [ssObject setRoute_id:  [data objectForKey:@"route_id"] ];
-        [ssObject setRoute_name:[data objectForKey:@"route_name"] ];
+        [ssObject setRoute_name:routeName];
         
         [ssObject setMode:      [data objectForKey:@"mode"] ];
         
@@ -710,6 +714,9 @@
         [_tableData addObject:ssObject];
         
     }
+    
+    
+    
     
 //    [self filterTableDataSource];
     [self filterTableDataSourceBy: _filterType];

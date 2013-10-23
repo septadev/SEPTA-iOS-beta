@@ -303,7 +303,7 @@ THE SOFTWARE.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="TrainView" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="j7K-OT-3PR">
-                                <rect key="frame" x="108" y="76" width="96" height="21"/>
+                                <rect key="frame" x="112" y="76" width="96" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -533,7 +533,7 @@ THE SOFTWARE.</string>
                                                     <rect key="frame" x="60" y="2" width="280" height="48"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Market Frankford Line" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IY9-6i-5j0">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Market-Frankford Line" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IY9-6i-5j0">
                                                     <rect key="frame" x="79" y="17" width="212" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="20"/>
@@ -963,16 +963,6 @@ High Speed Line</string>
         <image name="Schedule_Trolley-BG.png" width="251" height="51"/>
         <image name="Schedule_Trolley.png" width="57" height="51"/>
         <image name="attributionsIcon.png" width="41" height="43"/>
-        <image name="blankGrey-BG.png" width="310" height="51"/>
-        <image name="blankGrey-BG.png" width="310" height="51"/>
-        <image name="blankGrey-BG.png" width="310" height="51"/>
-        <image name="blankGrey-BG.png" width="310" height="51"/>
-        <image name="blankGrey-BG.png" width="310" height="51"/>
-        <image name="blankGrey-BG.png" width="310" height="51"/>
-        <image name="blankGrey-BG.png" width="310" height="51"/>
-        <image name="blankGrey-BG.png" width="310" height="51"/>
-        <image name="blankGrey-BG.png" width="310" height="51"/>
-        <image name="blankGrey-BG.png" width="310" height="51"/>
         <image name="blankGrey-BG.png" width="310" height="51"/>
         <image name="commentsIcon.png" width="41" height="43"/>
         <image name="customerServiceIcon.png" width="41" height="43"/>
