@@ -115,7 +115,10 @@
         imageName = @"RRL_white.png";
     }
     
-    CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed:@"RRL_white.png" withTarget:self andWithAction:@selector(backButtonPressed:)];
+//    if ( self.backImageName == nil )
+//        [self setBackImageName: @"RRL_white.png"];
+    
+    CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed: @"RRL_white.png" withTarget:self andWithAction:@selector(backButtonPressed:)];
     self.navigationItem.leftBarButtonItem = backBarButtonItem;
 
     

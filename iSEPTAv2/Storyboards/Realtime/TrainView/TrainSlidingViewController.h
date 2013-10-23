@@ -28,4 +28,6 @@
 @property (strong, nonatomic) NSNumber *travelMode;
 @property (strong, nonatomic) NSString *routeName;
 
+@property (strong, nonatomic) NSString *backImageName;
+
 @end

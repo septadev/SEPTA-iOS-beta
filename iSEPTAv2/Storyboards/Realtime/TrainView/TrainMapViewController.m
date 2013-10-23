@@ -221,7 +221,11 @@
     CustomFlatBarButton *rightButton = [[CustomFlatBarButton alloc] initWithImageNamed:@"second-menu.png" withTarget:self andWithAction:@selector(slide:)];
     [self.slidingViewController.navigationItem setRightBarButtonItem: rightButton];
     
-    CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed:@"RRL_white.png" withTarget:self andWithAction:@selector(backButtonPressed:)];
+    
+    if ( self.backImageName == nil )
+        [self setBackImageName:@"RRL_white.png"];
+    
+    CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed: self.backImageName withTarget:self andWithAction:@selector(backButtonPressed:)];
     self.slidingViewController.navigationItem.leftBarButtonItem = backBarButtonItem;
     
 //    self.slidingViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(slide:)];

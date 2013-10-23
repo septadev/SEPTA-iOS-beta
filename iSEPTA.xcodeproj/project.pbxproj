@@ -158,6 +158,8 @@
 		27A9730217AAA107001A4395 /* TransitViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A9730117AAA107001A4395 /* TransitViewViewController.m */; };
 		27A9730717AAA188001A4395 /* TransitRouteListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27A9730617AAA188001A4395 /* TransitRouteListCell.xib */; };
 		27A9730A17AAA1AC001A4395 /* TransitRouteListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A9730917AAA1AC001A4395 /* TransitRouteListCell.m */; };
+		27B285A618181FE400BD8825 /* LUCYGO.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27B285A418181FE400BD8825 /* LUCYGO.kml */; };
+		27B285A718181FE400BD8825 /* LUCYGR.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27B285A518181FE400BD8825 /* LUCYGR.kml */; };
 		27B285E71655326F002400F4 /* UserPreferenceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27B285E61655326F002400F4 /* UserPreferenceCell.xib */; };
 		27B285EA165533E4002400F4 /* UserPreferenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B285E9165533E3002400F4 /* UserPreferenceCell.m */; };
 		27B285EC16553725002400F4 /* BusRoutesDefaultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27B285EB16553725002400F4 /* BusRoutesDefaultCell.xib */; };
@@ -992,6 +994,8 @@
 		27A9730617AAA188001A4395 /* TransitRouteListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TransitRouteListCell.xib; path = "Storyboards/Realtime/TransitView/Custom Cells/TransitRouteListCell.xib"; sourceTree = "<group>"; };
 		27A9730817AAA1AC001A4395 /* TransitRouteListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransitRouteListCell.h; path = "Storyboards/Realtime/TransitView/Custom Cells/TransitRouteListCell.h"; sourceTree = "<group>"; };
 		27A9730917AAA1AC001A4395 /* TransitRouteListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransitRouteListCell.m; path = "Storyboards/Realtime/TransitView/Custom Cells/TransitRouteListCell.m"; sourceTree = "<group>"; };
+		27B285A418181FE400BD8825 /* LUCYGO.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = LUCYGO.kml; path = kml/LUCYGO.kml; sourceTree = "<group>"; };
+		27B285A518181FE400BD8825 /* LUCYGR.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = LUCYGR.kml; path = kml/LUCYGR.kml; sourceTree = "<group>"; };
 		27B285E61655326F002400F4 /* UserPreferenceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserPreferenceCell.xib; path = ScheduleTab/UserPreferenceCell.xib; sourceTree = "<group>"; };
 		27B285E8165533E3002400F4 /* UserPreferenceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserPreferenceCell.h; path = ScheduleTab/UserPreferenceCell.h; sourceTree = "<group>"; };
 		27B285E9165533E3002400F4 /* UserPreferenceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserPreferenceCell.m; path = ScheduleTab/UserPreferenceCell.m; sourceTree = "<group>"; };
@@ -2785,6 +2789,8 @@
 		27DB2F661636D6A300153E4C /* kmls */ = {
 			isa = PBXGroup;
 			children = (
+				27B285A418181FE400BD8825 /* LUCYGO.kml */,
+				27B285A518181FE400BD8825 /* LUCYGR.kml */,
 				27B7F7B316A9B2F0003DF486 /* BSO.kml */,
 				27B7F7B416A9B2F0003DF486 /* MFO.kml */,
 				27DB2F671636D6B600153E4C /* 1.kml */,
@@ -4459,6 +4465,7 @@
 				8418EE5017FEF6BD003607D1 /* Schedule_NHSL-BG@2x.png in Resources */,
 				8418EDCA17FEF6BD003607D1 /* Find_Loc_Distance@2x.png in Resources */,
 				8418EEBE18058D67003607D1 /* Connects at@2x.png in Resources */,
+				27B285A618181FE400BD8825 /* LUCYGO.kml in Resources */,
 				8418EE3017FEF6BD003607D1 /* NHSL_white.png in Resources */,
 				27DB30151636D6B600153E4C /* 35.kml in Resources */,
 				8418EE7817FEF6BD003607D1 /* 24HoursIcon@2x.png in Resources */,
@@ -4589,6 +4596,7 @@
 				8418EE1917FEF6BD003607D1 /* transitView-NHSL.png in Resources */,
 				8418EE6617FEF6BD003607D1 /* Schedule_Bus_small.png in Resources */,
 				8418EDC717FEF6BD003607D1 /* Done@2x.png in Resources */,
+				27B285A718181FE400BD8825 /* LUCYGR.kml in Resources */,
 				8418EE7017FEF6BD003607D1 /* Schedule_RRL-BG.png in Resources */,
 				8418EE0E17FEF6BD003607D1 /* transitView-Trolley@2x.png in Resources */,
 				27DB303D1636D6B600153E4C /* 89.kml in Resources */,

@@ -46,6 +46,7 @@
     
     [tmvc setRouteName: self.routeName];
     [tmvc setTravelMode:self.travelMode];
+    [tmvc setBackImageName: self.backImageName];
     
     [self setTopViewController: tmvc ];
 

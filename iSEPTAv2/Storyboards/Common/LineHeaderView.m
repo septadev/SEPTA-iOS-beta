@@ -104,7 +104,7 @@
 -(void) createLineWithTitle
 {
     
-    int lineStart = 0;
+    int lineStart = 5;
     _textStart = 17;
     
     // Title is used in this case to size the line and nothing else

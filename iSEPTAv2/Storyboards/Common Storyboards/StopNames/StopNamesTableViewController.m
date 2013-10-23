@@ -555,11 +555,11 @@
             
             if ( stopData.start_stop_name == nil && stopData.end_stop_name == nil )
             {
-                queryStr = [NSString stringWithFormat:@"SELECT * FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=%@ ORDER BY stop_name", stopData.route_short_name];
+                queryStr = [NSString stringWithFormat:@"SELECT * FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=\"%@\" ORDER BY stop_name", stopData.route_short_name];
             }
             else
             {
-                queryStr = [NSString stringWithFormat:@"SELECT * FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=%@ AND direction_id=%d ORDER BY stop_name", stopData.route_short_name, stopData.direction_id];
+                queryStr = [NSString stringWithFormat:@"SELECT * FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=\"%@\" AND direction_id=%d ORDER BY stop_name", stopData.route_short_name, stopData.direction_id];
             }
             
             break;

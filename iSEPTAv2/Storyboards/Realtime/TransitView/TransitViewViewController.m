@@ -210,11 +210,13 @@
     
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TrainViewStoryboard" bundle:nil];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TrainSlidingStoryboard" bundle:nil];
-    TrainViewViewController *tvVC = (TrainViewViewController*)[storyboard instantiateInitialViewController];
+    TrainSlidingViewController *tvVC = (TrainSlidingViewController*)[storyboard instantiateInitialViewController];
     
     RouteInfo *rInfo = [_tableData objectAtIndex: indexPath.row];
     [tvVC setRouteName: rInfo.route_short_name];
     [tvVC setTravelMode: rInfo.route_type ];
+    
+    [tvVC setBackImageName: @"transitViewBack.png"];
     
 //    [tvVC setRouteName: rInfo.route_short_name];
 //    [tvVC setRouteType: rInfo.route_type];

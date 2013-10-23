@@ -140,7 +140,7 @@
         backButtonImage = @"MFL_white.png";
         fontSize = 20.0f;
     }
-    else if ( [travelMode isEqualToString:@"BSS"] )
+    else if ( [travelMode isEqualToString:@"BSS"] || [travelMode isEqualToString:@"BSL"]  )
     {
         title = @"Broad Street Line";
         backButtonImage = @"BSL_white.png";
@@ -238,7 +238,7 @@
         //        [_routeData setDatabaseType:kDisplayedRouteDataUsingDBBus];
         
     }
-    else if ( [[self travelMode] isEqualToString:@"BSS"] )
+    else if ( [[self travelMode] isEqualToString:@"BSS"] || [travelMode isEqualToString:@"BSL"]  )
     {
         _routeData = [[DisplayedRouteData alloc] initWithDatabaseType:kDisplayedRouteDataUsingBSS];
     }
@@ -513,7 +513,7 @@
             title = @"Market Frankford Line";
         else if ( [self.travelMode isEqualToString:@"NHSL"] )
             title = @"Norristown High Speed Line";
-        else if ( [self.travelMode isEqualToString:@"BSS"] )
+        else if ( [self.travelMode isEqualToString:@"BSS"] || [travelMode isEqualToString:@"BSL"]  )
             title = @"Broad Street Line";
         
         
@@ -655,7 +655,7 @@
                     routeType = kSEPTATypeTrolley;
                 else if ( [travelMode isEqualToString:@"MFL"] )
                     routeType = kSEPTATypeMFL;
-                else if ( [travelMode isEqualToString:@"BSS"] )
+                else if ( [travelMode isEqualToString:@"BSS"] || [travelMode isEqualToString:@"BSL"]  )
                     routeType = kSEPTATypeBSL;
                 else if ( [travelMode isEqualToString:@"NHSL"] )
                     routeType = kSEPTATypeNHSL;
@@ -896,7 +896,7 @@
                 [[defaultCell lblRouteLongName ] setText: [row route_long_name ] ];
                 
                 
-                if ( [self.travelMode isEqualToString:@"BSS"] && [[row route_type] intValue] == kBusRoutesDefaultCellImageSubway)
+                if ( ([self.travelMode isEqualToString:@"BSS"] || [travelMode isEqualToString:@"BSL"]  ) && [[row route_type] intValue] == kBusRoutesDefaultCellImageSubway)
                     [defaultCell changeImageTo: kBusRoutesDefaultCellImageBSS];
                 else if ( [self.travelMode isEqualToString:@"NHSL"] )
                     [defaultCell changeImageTo: kBusRoutesDefaultCellImageNHSL];
@@ -1210,7 +1210,7 @@
         [self setTitle:@"Regional Rail Lines"];
     else if ( [travelMode isEqualToString:@"MFL"] )
         [self setTitle:@"Market Frankford Line"];
-    else if ( [travelMode isEqualToString:@"BSS"] )
+    else if ( [travelMode isEqualToString:@"BSS"] || [travelMode isEqualToString:@"BSL"]  )
         [self setTitle:@"Broad Street Line"];
     else if ( [travelMode isEqualToString:@"NHSL"] )
         [self setTitle:@"NHSL"];
@@ -1292,7 +1292,7 @@
     {
         queryStr = @"SELECT route_short_name, route_id, route_type, route_long_name FROM routesDB WHERE route_short_name LIKE \"MF_\" ORDER BY route_short_name";
     }
-    else if ( [[self travelMode] isEqualToString:@"BSS"] )
+    else if ( [[self travelMode] isEqualToString:@"BSS"] || [travelMode isEqualToString:@"BSL"]  )
     {
         queryStr = @"SELECT route_short_name, route_id, route_type, route_long_name FROM routesDB WHERE route_short_name LIKE \"BS_\" ORDER BY route_short_name";
     }
@@ -1366,7 +1366,7 @@
     }
     
     
-    if ( [self.travelMode isEqualToString:@"BSS"] )
+    if ( [self.travelMode isEqualToString:@"BSS"] || [travelMode isEqualToString:@"BSL"]  )
     {
         [_routeData reverseSortWithSection:kDisplayedRouteDataRoutes];
     }

@@ -99,6 +99,7 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
@@ -205,25 +206,28 @@
 //    CGFloat fontSize = 45.0f/2.0f;
     if ( [self.travelMode isEqualToString:@"Rail"] )
     {
-        title = @"Regional Rail Lines";
+//        title = @"Regional Rail Lines";
+        title = [NSString stringWithFormat:@"%@", self.routeData.route_short_name];
         _backButtonImage = @"RRL_white.png";
         _routeType = kSEPTATypeRail;
     }
     else if ( [self.travelMode isEqualToString:@"Bus"] )
     {
-        title = @"Bus";
+//        title = @"Bus";
+        title = [NSString stringWithFormat:@"Route %@", self.routeData.route_short_name];
         _backButtonImage = @"Bus_white.png";
         _routeType = kSEPTATypeBus;
     }
     else if ( [self.travelMode isEqualToString:@"Trolley"] )
     {
-        title = @"Trolley";
+//        title = @"Trolley";
+        title = [NSString stringWithFormat:@"Route %@", self.routeData.route_short_name];
         _backButtonImage = @"Trolley_white.png";
         _routeType = kSEPTATypeTrolley;
     }
     else if ( [self.travelMode isEqualToString:@"MFL"] )
     {
-        title = @"Market-Frankford Line";
+        title = @"MFL";
         _backButtonImage = @"MFL_white.png";
         _routeType = kSEPTATypeMFL;
 //        fontSize = 20.0f;
