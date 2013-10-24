@@ -143,7 +143,7 @@
             break;
             
         case 2:
-            [rsVC setTravelMode:@"BSS"];
+            [rsVC setTravelMode:@"BSL"];
             break;
         
         case 3:

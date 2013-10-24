@@ -232,7 +232,7 @@
         _routeType = kSEPTATypeMFL;
 //        fontSize = 20.0f;
     }
-    else if ( [self.travelMode isEqualToString:@"BSS"] )
+    else if ( [self.travelMode isEqualToString:@"BSL"] )
     {
         title = @"Broad Street Line";
         _backButtonImage = @"BSL_white.png";
@@ -472,7 +472,7 @@
             {
                 selectedBGColor = [UIColor colorForRouteType: kSEPTATypeMFL];
             }
-            else if ( [_routeData.route_short_name isEqualToString:@"BSS"] )
+            else if ( [_routeData.route_short_name isEqualToString:@"BSL"] )
             {
                 selectedBGColor = [UIColor colorForRouteType: kSEPTATypeBSL];
             }
@@ -643,7 +643,7 @@
     {
         dbType = kDisplayedRouteDataUsingMFL;
     }
-    else if ( [self.travelMode isEqualToString:@"BSS"] )
+    else if ( [self.travelMode isEqualToString:@"BSL"] )
     {
         dbType = kDisplayedRouteDataUsingBSS;
     }
@@ -1002,7 +1002,7 @@
         
         queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_rail"];
     }
-    else if ( [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSS"] || [self.travelMode isEqualToString:@"NHSL"] )
+    else if ( [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSL"] || [self.travelMode isEqualToString:@"NHSL"] )
     {
         queryStr = [NSString stringWithFormat:@"SELECT route_id, block_id, stop_sequence, arrival_time, direction_id, service_id, stop_timesDB.trip_id trip_id FROM stop_timesDB JOIN tripsDB ON tripsDB.trip_id=stop_timesDB.trip_id WHERE tripsDB.trip_id IN (SELECT trip_id FROM tripsDB WHERE route_id=\"%@\" ) AND stop_id=%d ORDER BY arrival_time", itinerary.routeShortName, [itinerary.endStopID intValue] ];
 
@@ -1412,7 +1412,7 @@
     {
         queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_rail"];
     }
-    else if ( [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSS"] || [self.travelMode isEqualToString:@"NHSL"] )
+    else if ( [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSL"] || [self.travelMode isEqualToString:@"NHSL"] )
     {
         //        queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_MFL"];
         queryStr = @"SELECT stops_bus.stop_name, stop_times_DB.stop_id FROM trips_DB JOIN stop_times_DB ON trips_DB.trip_id=stop_times_DB.trip_id NATURAL JOIN stops_bus GROUP BY stop_times_DB.stop_id ORDER BY stops_bus.stop_name;";
@@ -2820,7 +2820,7 @@
     }
     
         
-    if ( [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSS"] || [self.travelMode isEqualToString:@"NHSL"] || [self.travelMode isEqualToString:@"Bus"] )  // Bus is only temporary; I'll add that in later.
+    if ( [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSL"] || [self.travelMode isEqualToString:@"NHSL"] || [self.travelMode isEqualToString:@"Bus"] )  // Bus is only temporary; I'll add that in later.
     {
         NSLog(@"ITVC - loadJSONDataInTheBackground - Current Route Does Not Support RealTime Data");
         return;

@@ -81,6 +81,8 @@ sub mainLoop
         createIndex($dbName);
     }
 
+    fixBSSNamingIssue();
+    
     populateBusStopDirections();
     populateServiceHours();  # Uses the created stop_times_bus/rail and trips_bus/rail tables to create new table
     populateClosestStopMatch();
@@ -90,6 +92,7 @@ sub mainLoop
     
 }
 # --==  MAIN LOOP ==--
+
 
 
 # --==  SUBROUTINES  ==--
@@ -859,7 +862,7 @@ sub populateServiceHours
     
 #    my $createStopLUT = "CREATE TABLE stopNameLookUpTable AS SELECT route_short_name, stop_id, direction_id FROM stop_times_bus NATURAL JOIN trips_bus t NATURAL JOIN routes_bus r WHERE r.route_short_name NOT IN ('MFL','BSS','NHSL') GROUP BY route_short_name, stop_id, direction_id;";
 
-    my $createStopLUT = "CREATE TABLE stopNameLookUpTable AS SELECT route_short_name, stop_id, direction_id FROM stop_times_bus NATURAL JOIN trips_bus t JOIN routes_bus r ON r.route_short_name=t.route_id WHERE r.route_short_name NOT IN ('MFL','BSS','NHSL') GROUP BY route_short_name, stop_id, direction_id;";
+    my $createStopLUT = "CREATE TABLE stopNameLookUpTable AS SELECT route_short_name, stop_id, direction_id FROM stop_times_bus NATURAL JOIN trips_bus t JOIN routes_bus r ON r.route_short_name=t.route_id WHERE r.route_short_name NOT IN ('MFL','BSS','BSL','NHSL') GROUP BY route_short_name, stop_id, direction_id;";
 
     
     # 5/15/13 -- Added direction_id to the GROUP BY portion say stops like OTC (382) will show both directions instead of just one
@@ -876,7 +879,7 @@ sub populateServiceHours
     # stop_times_bus(trip_id INT, arrival_time TEXT, stop_id INT, stop_sequence INT)
     
     my $create;
-    my @specialRoutes = ("MFL","NHSL","BSS");
+    my @specialRoutes = ("MFL","NHSL","BSL");
     
     foreach my $rte (@specialRoutes)
     {
@@ -1386,8 +1389,6 @@ sub fullPathFor
 sub populateStopIDRouteLookup
 {
  
-    my $dbname = $_[0];
-
     print "pSRL - Creating stopIDRouteLookup.  This may take a few moments.\n";
     
     # --==  Connect to DB  ==--
@@ -1396,7 +1397,7 @@ sub populateStopIDRouteLookup
     "",
     "",
     { RaiseError => 1 },
-    ) or die "DBIerr: " . $DBI::err . "\nDBIerrstr: " . $DBI::errstr . "\nGTFS - DBName: $dbname.\n\n";
+    ) or die "DBIerr: " . $DBI::err . "\nDBIerrstr: " . $DBI::errstr . "\nGTFS - DBName: $dbFileName.\n\n";
     
     
 #    Without Cardinal Directions
@@ -1434,6 +1435,29 @@ sub populateStopIDRouteLookup
 }
 
 
+sub fixBSSNamingIssue
+{
+    
+    print "pSRL - Change references of BSS to BSL.  This may take a few moments.\n";
+    
+    # --==  Connect to DB  ==--
+    my $dbh = DBI->connect(
+    "dbi:SQLite:dbname=$dbFileName",
+    "",
+    "",
+    { RaiseError => 1 },
+    ) or die "DBIerr: " . $DBI::err . "\nDBIerrstr: " . $DBI::errstr . "\nGTFS - DBName: $dbFileName.\n\n";
+    
+    
+    my $baseRouteUpdate = "UPDATE routes_bus SET route_short_name=\"BSL\" WHERE route_short_name=\"BSS\"";
+    my $baseTripsUpdate = "UPDATE trips_bus SET route_id=\"BSL\" WHERE route_id=\"BSS\"";
+    
+    $dbh->do($baseRouteUpdate);
+    $dbh->do($baseTripsUpdate);
+    
+    $dbh->disconnect();
+    
+}
 
 
 
