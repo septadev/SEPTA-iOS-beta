@@ -35,13 +35,28 @@
 @interface RealtimeViewController : UIViewController
 
 
+// Top row buttons
 @property (weak, nonatomic) IBOutlet UIButton *btnNextToArrive;
 @property (weak, nonatomic) IBOutlet UIButton *btnTrainView;
 @property (weak, nonatomic) IBOutlet UIButton *btnTransitView;
 
+@property (weak, nonatomic) IBOutlet UILabel *lblNextToArrive;
+@property (weak, nonatomic) IBOutlet UILabel *lblTrainView;
+@property (weak, nonatomic) IBOutlet UILabel *lblTransitView;
+
+
+
+// Botton row buttons
 @property (weak, nonatomic) IBOutlet UIButton *btnSystemStatus;
 @property (weak, nonatomic) IBOutlet UIButton *btnFindNearestLocation;
 @property (weak, nonatomic) IBOutlet UIButton *btnGuide;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblSystemStatus;
+@property (weak, nonatomic) IBOutlet UILabel *lblFindNeareset;
+@property (weak, nonatomic) IBOutlet UILabel *lblLocations;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblGuide;
+
 
 
 @end

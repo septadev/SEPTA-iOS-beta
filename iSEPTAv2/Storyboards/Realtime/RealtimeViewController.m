@@ -188,6 +188,108 @@
 }
 
 
+-(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+
+//    [self changeOrientation:fromInterfaceOrientation];
+    
+}
+
+
+-(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+
+    [self changeOrientation:toInterfaceOrientation];
+    
+//    if ( UIInterfaceOrientationIsLandscape( toInterfaceOrientation ) )
+//    {
+//        // Add more padding to the buttons
+//    }
+//    else
+//    {
+//        // Squish the buttons together
+//    }
+    
+}
+
+
+-(void) changeOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+
+    CGFloat width;
+    
+    if ( UIInterfaceOrientationIsLandscape(toInterfaceOrientation) )
+    {
+        width = [[UIScreen mainScreen] bounds].size.height;
+    }
+    else
+    {
+        width = [[UIScreen mainScreen] bounds].size.width;
+    }
+    
+
+    int buttonWidth = 96;
+    
+    int padding = (width - buttonWidth*3)/4;
+    
+    // p = (w - 3*96) / 4
+    
+    CGRect btnNextToArriveRect = self.btnNextToArrive.frame;
+    CGRect lblNextToArriveRect = self.lblNextToArrive.frame;
+    
+    btnNextToArriveRect.origin.x = padding;
+    lblNextToArriveRect.origin.x = btnNextToArriveRect.origin.x;
+    [self.btnNextToArrive setFrame: btnNextToArriveRect];
+    [self.lblNextToArrive setFrame: lblNextToArriveRect];
+    
+    CGRect btnTrainViewRect = self.btnTrainView.frame;
+    CGRect lblTrainViewRect = self.lblTrainView.frame;
+    
+    btnTrainViewRect.origin.x = 2*padding+buttonWidth;
+    lblTrainViewRect.origin.x = btnTrainViewRect.origin.x;
+    [self.btnTrainView setFrame: btnTrainViewRect];
+    [self.lblTrainView setFrame: lblTrainViewRect];
+    
+    CGRect btnTransitViewRect = self.btnTransitView.frame;
+    CGRect lblTransitViewRect = self.lblTransitView.frame;
+    
+    btnTransitViewRect.origin.x = 3*padding + 2*buttonWidth;
+    lblTransitViewRect.origin.x = btnTransitViewRect.origin.x;
+    [self.btnTransitView setFrame: btnTransitViewRect];
+    [self.lblTransitView setFrame: lblTransitViewRect];
+    
+    
+    CGRect btnSystemStatusRect = self.btnSystemStatus.frame;
+    CGRect lblSystemStatusRect = self.lblSystemStatus.frame;
+    btnSystemStatusRect.origin.x = padding;
+    lblSystemStatusRect.origin.x = btnSystemStatusRect.origin.x;
+    
+    [self.btnSystemStatus setFrame: btnSystemStatusRect];
+    [self.lblSystemStatus setFrame: lblSystemStatusRect];
+    
+    CGRect btnNearestLocationRect = self.btnFindNearestLocation.frame;
+    CGRect lblFindNearestRect     = self.lblFindNeareset.frame;
+    CGRect lblLocationRect        = self.lblLocations.frame;
+    btnNearestLocationRect.origin.x = 2*padding+buttonWidth;
+    lblFindNearestRect.origin.x = btnNearestLocationRect.origin.x;
+    lblLocationRect.origin.x = btnNearestLocationRect.origin.x;
+    
+    [self.btnFindNearestLocation setFrame: btnNearestLocationRect];
+    [self.lblFindNeareset setFrame: lblFindNearestRect];
+    [self.lblLocations setFrame: lblLocationRect];
+    
+    
+    CGRect btnGuideRect = self.btnGuide.frame;
+    CGRect lblGuideRect = self.lblGuide.frame;
+    
+    btnGuideRect.origin.x = 3*padding+2*buttonWidth;
+    lblGuideRect.origin.x = btnGuideRect.origin.x;
+    [self.btnGuide setFrame: btnGuideRect];
+    [self.lblGuide setFrame: lblGuideRect];
+}
+
+
+
 #pragma mark -= Button Presses
 - (IBAction)btnNextToArrivePressed:(id)sender
 {

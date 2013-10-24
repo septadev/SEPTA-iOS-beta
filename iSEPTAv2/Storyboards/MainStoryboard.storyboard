@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" initialViewController="PfG-4g-auN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" initialViewController="PfG-4g-auN">
     <dependencies>
         <deployment defaultVersion="1280" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -402,6 +402,13 @@ THE SOFTWARE.</string>
                         <outlet property="btnSystemStatus" destination="3c7-oE-IkY" id="a8z-oy-99u"/>
                         <outlet property="btnTrainView" destination="sjm-Xm-jkc" id="dTt-Re-yRc"/>
                         <outlet property="btnTransitView" destination="1B8-dL-w4u" id="cSm-pT-dQT"/>
+                        <outlet property="lblFindNeareset" destination="ybY-5d-OoS" id="SqP-45-Ol3"/>
+                        <outlet property="lblGuide" destination="1dp-2P-tcp" id="qby-ic-jKn"/>
+                        <outlet property="lblLocations" destination="hTI-4g-YGj" id="4z2-gf-N5s"/>
+                        <outlet property="lblNextToArrive" destination="Ve1-hx-ZKj" id="Ajd-AY-7CH"/>
+                        <outlet property="lblSystemStatus" destination="fVW-w3-aep" id="sMI-zR-M9h"/>
+                        <outlet property="lblTrainView" destination="j7K-OT-3PR" id="J65-vz-IBx"/>
+                        <outlet property="lblTransitView" destination="YAS-a8-qEn" id="Pfh-hu-469"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hs3-GO-f4U" userLabel="First Responder" sceneMemberID="firstResponder"/>
