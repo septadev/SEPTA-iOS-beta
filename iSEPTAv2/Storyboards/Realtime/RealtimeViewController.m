@@ -47,10 +47,13 @@
         
     }
 
-    if ( _startTest )
-    {
+    UIInterfaceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    [self changeOrientation:currentOrientation];
+    
+//    if ( _startTest )
+//    {
 //        [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(popTheVC) userInfo:nil repeats:NO];
-    }
+//    }
     
 }
 
