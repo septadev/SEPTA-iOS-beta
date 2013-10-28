@@ -583,7 +583,7 @@
             MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
             mailViewController.mailComposeDelegate = self;
             [mailViewController setSubject:[NSString stringWithFormat:@"SEPTA iPhone Feedback: %@", [radioArray objectAtIndex:[radioElement selected] ] ] ];
-            [mailViewController setToRecipients:[NSArray arrayWithObject:@"domain.admin@septa.org"] ];
+            [mailViewController setToRecipients:[NSArray arrayWithObject:@"iosapp@septa.org"] ];
             
             [mailViewController setMessageBody:[detailsMulti textValue] isHTML:NO];
             
