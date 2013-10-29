@@ -163,11 +163,15 @@
         if ( hour < 12 )
         {
             unit = @"am";
+            if ( hour == 0 )
+                hour = 12;
         }
         else
         {
             unit = @"pm";
-            hour = hour % 12;
+
+            if (hour != 12)
+                hour = hour % 12;
         }
         
         [ label setText: [NSString stringWithFormat:@"%02d:%02d%@",hour, min, unit] ];

@@ -74,7 +74,7 @@ sub mainLoop
 {
     
     unlink($dbFileName);
-
+    
     foreach my $dbName (@dbfile)
     {
         populateGTFSTables($dbName);
@@ -417,6 +417,8 @@ sub populateGTFSTables
         
         my $sth = $dbh->prepare("INSERT INTO $tables[$LCV]_$suffix VALUES ($questStr)");
 
+        # GLN Glenside Combined Glenside Combined  SEPTA 2 91456C FFFFFF http://www.septa.org/schedules/rail/index.html
+        
         my @valueArr;
         while (<FILE>)
         {
@@ -543,6 +545,21 @@ sub populateGTFSTables
             }
             
         } # while (<FILE>) -- read all the lines from each text files listed in @tables.
+        
+        
+        if ( $dbname =~ /rail/ && $filename =~ /routes.txt/ )
+        {
+            my @arr = split(/,/, "GLN,Glenside Combined,Glenside Combined,,SEPTA,2,91456C,FFFFFF,http://www.septa.org/schedules/rail/index.html");
+            
+            @valueArr = ();
+            foreach my $key (@unfilteredFields)
+            {
+                push(@valueArr, $arr[ $columns->{$key} ]);
+            }
+            
+            $sth->execute( @valueArr )
+        }
+        
         
         close FILE;
         $dbh->do("COMMIT");

@@ -19,6 +19,8 @@
     BOOL _startState;
     BOOL _doubleSectionMode;
     
+    NSMutableDictionary *_replacement;
+    
 //    NSInteger _selectionType;
 }
 
@@ -53,6 +55,10 @@
     
     [super viewDidLoad];
 
+    _replacement = [[NSMutableDictionary alloc] init];
+    [_replacement setObject:@"Main St (Norristown)" forKey:@"Main Street"];
+    [_replacement setObject:@"Elm St (Norristown)" forKey:@"Norristown"];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -769,6 +775,13 @@
         NSString *stop_name = [results stringForColumn:@"stop_name"];
         NSInteger stop_id  = [results intForColumn:@"stop_id"];
         
+        if ( [stop_name isEqualToString:@"Main Street"] || [stop_name isEqualToString:@"Norristown"] )
+        {
+            NSLog(@"Break");
+        }
+        
+        stop_name = [self fixMismatchedStopName:stop_name];
+        
         //        StopNamesObject *snObject = [[StopNamesObject alloc] init];
         //        [snObject setStop_id: [NSNumber numberWithInt:stop_id] ];
         //        [snObject setStop_name: stop_name];
@@ -812,6 +825,29 @@
     
     
     [_tableData generateIndexWithKey:@"start_stop_name"];
+    
+}
+
+
+-(NSString *) fixMismatchedStopName: (NSString*) stopName;
+{
+    
+    // Unfortunately, at the time of writing this method, there are a few stop names in the GTFS file
+    // that do not match up with the stop name of an internal SEPTA database.  As such, this method
+    // looks for one of those stop names and replaces it with one that matches the internal name.
+    
+    // P.S. This is horrible code, if anyone asks, I'll deny ever writing in.
+    //   Ran php jarowinkler | egrep -v 100% to find the gasps between the GTFS and internal naming.
+    
+    NSString *temp = [_replacement objectForKey:stopName];
+    
+    if ( temp != nil )
+    {
+        NSLog(@"NTAVC - fixMismatchedStopName: replacing %@ with %@", stopName, temp);
+        return temp;
+    }
+    else
+        return stopName;
     
 }
 

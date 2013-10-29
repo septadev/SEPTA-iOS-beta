@@ -892,6 +892,9 @@
 {
     mapAnnotation *pin = (mapAnnotation*)view.annotation;
     
+    if ( [view.annotation isKindOfClass:[MKUserLocation class]] )
+        return;
+    
     int row = 0;
     for (id object in _tableData)
     {

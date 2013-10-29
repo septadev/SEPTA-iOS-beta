@@ -8,66 +8,6 @@
 
 #import "NextToArriveTableViewController.h"
 
-//@implementation NTAProgressObject
-//{
-//    int _max;
-//}
-//
-//@synthesize count = _count;
-//@synthesize cell = _cell;
-//@synthesize timer = _timer;
-//
-//-(id) init
-//{
-//    self = [super init];
-//    if ( self )
-//    {
-//        self.cell = nil;
-//        self.count = 0;
-//        [self.timer invalidate];
-//    }
-//    return self;
-//}
-//
-//
-//-(void) setMax:(int) max
-//{
-//    _max = max;
-//}
-//
-//-(void) startWithCell:(NextToArriveTripHistoryCell*)cell
-//{
-//    self.cell = cell;
-//    self.count = 0;
-//    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(incrementCounter) userInfo:nil repeats:YES];
-//
-//}
-//
-//-(void) clear
-//{
-//    self.cell = nil;
-//    self.count = 0;
-//    [self.timer invalidate];
-//}
-//
-//-(void) incrementCounter
-//{
-//    self.count++;
-//    [self.cell setProgressBar: (float)self.count/_max];
-//}
-//
-//-(void) incrementCell:(NextToArriveTripHistoryCell*)cell
-//{
-//    if ( self.cell == nil )
-//        return;
-//    
-//    if (cell == self.cell )
-//        self.count++;
-//    else
-//        [self clear];
-//}
-//
-//@end
 
 @interface NextToArriveTableViewController ()
 
