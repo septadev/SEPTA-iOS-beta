@@ -2052,9 +2052,9 @@
 		272976071799A8DA00DB2580 /* Realtime */ = {
 			isa = PBXGroup;
 			children = (
-				84D12B4E17E1F0850079A8D7 /* Mobile */,
 				27E0688F1799A41800BA7A92 /* RealtimeViewController.h */,
 				27E068901799A41800BA7A92 /* RealtimeViewController.m */,
+				84D12B4E17E1F0850079A8D7 /* Mobile */,
 				272976061799A8D100DB2580 /* NextToArrive */,
 				27DBA5FB17A97F2600118225 /* TrainView */,
 				27DBA60217A97FEE00118225 /* TransitView */,

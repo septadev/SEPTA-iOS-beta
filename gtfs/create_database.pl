@@ -87,6 +87,7 @@ sub mainLoop
     populateServiceHours();  # Uses the created stop_times_bus/rail and trips_bus/rail tables to create new table
     populateClosestStopMatch();
     populateStopIDRouteLookup();  # Used for Find Nearest Route
+    populateGlensideCombined();
     
 #    createIndex();
     
@@ -1476,6 +1477,28 @@ sub fixBSSNamingIssue
     
 }
 
+
+sub populateGlensideCombined
+{
+
+    print "pGC  - Create trips associated with the Glenside Combined\n";
+    
+    # --==  Connect to DB  ==--
+    my $dbh = DBI->connect(
+    "dbi:SQLite:dbname=$dbFileName",
+    "",
+    "",
+    { RaiseError => 1 },
+    ) or die "DBIerr: " . $DBI::err . "\nDBIerrstr: " . $DBI::errstr . "\nGTFS - DBName: $dbFileName.\n\n";
+    
+
+    my $baseInsert = "INSERT INTO trips_rail SELECT \"GLN\" as route_id, service_id, trip_id, direction_id, block_id FROM trips_rail WHERE route_id IN (\"WAR\", \"WTR\", \"LAN\")";
+    $dbh->do($baseInsert);
+    
+    $dbh->disconnect();
+
+    
+}
 
 
 

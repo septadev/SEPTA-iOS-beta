@@ -1255,7 +1255,7 @@
     
     [replacement setObject:@"Fernwood"              forKey:@"Fernwood-Yeadon"];
     [replacement setObject:@"Fern Rock TC"          forKey:@"Fern Rock T C"];
-    [replacement setObject:@"Elwyn Station"         forKey:@"Elywn"];
+    [replacement setObject:@"Elwyn Station"         forKey:@"Elwyn"];
     [replacement setObject:@"Eastwick Station"      forKey:@"Eastwick"];
     
     [replacement setObject:@"Churchmans Crossing"   forKey:@"Churchman's Crossing"];

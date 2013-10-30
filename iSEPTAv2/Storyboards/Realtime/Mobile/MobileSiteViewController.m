@@ -30,7 +30,7 @@
     
     // @"http://septa.org/service/septa-app.html"
 //    NSURL *url = [[NSURL alloc] initWithString:@"http://www.septa.org/m/"];
-    NSURL *url = [[NSURL alloc] initWithString:@"http://septa.org/service/septa-app.html"];
+    NSURL *url = [[NSURL alloc] initWithString:@"http://www.septa.org/service/septa-app-mobile.html"];
     [self.webView loadRequest: [NSURLRequest requestWithURL: url] ];
     [self.webView setHidden:NO];
     

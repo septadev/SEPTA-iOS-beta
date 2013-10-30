@@ -355,7 +355,7 @@
         // Reposition views to Landscape layout
 //        orientation = @"L";
         [self.mapView setFrame: CGRectMake(0, 0, self.view.frame.size.width/2, self.view.frame.size.height)];
-        [self.imgTableViewBG setFrame: CGRectMake(self.view.frame.size.width/2 - 10, 0, self.view.frame.size.width/2 + 10, self.view.frame.size.height)];
+        [self.imgTableViewBG setFrame: CGRectMake(self.view.frame.size.width/2 - 10, 0, self.view.frame.size.width/2 + 10, self.view.frame.size.height - 46)];
         [self.tableView setFrame: self.imgTableViewBG.frame];
         [self.imgVerticalDivider setFrame: CGRectMake(self.tableView.frame.origin.x + 45, 0, 2, self.tableView.frame.size.height)];
     }
@@ -365,7 +365,7 @@
         
 //        orientation = @"P";
         [self.mapView setFrame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height/2)];
-        [self.imgTableViewBG setFrame: CGRectMake(0, self.view.frame.size.height/2 - 10, self.view.frame.size.width, self.view.frame.size.height/2 + 10)];
+        [self.imgTableViewBG setFrame: CGRectMake(0, self.view.frame.size.height/2 - 10, self.view.frame.size.width, self.view.frame.size.height/2 + 10 - 46)];
         [self.tableView setFrame: self.imgTableViewBG.frame];
         [self.imgVerticalDivider setFrame: CGRectMake(45, self.tableView.frame.origin.y, 2, self.tableView.frame.size.height)];
     }
