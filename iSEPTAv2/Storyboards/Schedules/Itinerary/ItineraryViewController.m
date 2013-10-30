@@ -2614,6 +2614,57 @@
     
 }
 
+-(NSInteger) isHoliday
+{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYYMMdd"];  // Format is YYYYMMDD, e.g. 20131029
+    NSString *now = [dateFormatter stringFromDate: [NSDate date]];
+//    now = @"20131128";
+    
+    NSLog(@"filePath: %@", [self filePath]);
+    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    
+    if ( ![database open] )
+    {
+        [database close];
+        return 0;
+    }
+    
+    NSString *queryStr = [NSString stringWithFormat:@"SELECT service_id, date FROM holidaysDB WHERE date=%@", now];
+    
+    if ( [self.travelMode isEqualToString:@"Rail"] )
+        queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_rail"];
+    else
+        queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
+    
+    FMResultSet *results = [database executeQuery: queryStr];
+    if ( [database hadError] )  // Check for errors
+    {
+        
+        int errorCode = [database lastErrorCode];
+        NSString *errorMsg = [database lastErrorMessage];
+        
+        NSLog(@"ITVC - query failure, code: %d, %@", errorCode, errorMsg);
+        NSLog(@"ITVC - query str: %@", queryStr);
+        
+        return 0;  // If an error occurred, there's nothing else to do but exit
+        
+    } // if ( [database hadError] )
+    
+    
+    NSInteger service_id = 0;
+    while ( [results next] )
+    {
+        service_id = [results intForColumn:@"service_id"];
+    }
+    
+    return service_id;
+    
+    
+}
+
+
 -(void) updateServiceID
 {
     
@@ -2622,13 +2673,23 @@
         case kItineraryFilterTypeNow: // Now
             
         {
-            NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-            NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
-            int weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
             
-            
-            _currentServiceID = pow(2,(7-weekday));
-            NSLog(@"weekday: %d, currentServiceID: %d", weekday, _currentServiceID);
+            if ( (_currentServiceID = [self isHoliday]) )
+            {
+                
+            }
+            else
+            {
+
+                NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+                NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
+                int weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
+                
+                
+                _currentServiceID = pow(2,(7-weekday));
+                NSLog(@"weekday: %d, currentServiceID: %d", weekday, _currentServiceID);
+                
+            }
             
         }
             break;

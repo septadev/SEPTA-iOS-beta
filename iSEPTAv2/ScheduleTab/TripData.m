@@ -13,6 +13,8 @@
     
 }
 
+@synthesize vanity_start_stop_name;
+
 @synthesize start_arrival_time;
 @synthesize end_arrival_time;
 

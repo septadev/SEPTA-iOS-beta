@@ -13,6 +13,8 @@
     
 }
 
+@property (nonatomic, strong) NSString *vanity_start_stop_name;
+
 @property (nonatomic, strong) NSString *start_stop_name;
 @property (nonatomic, strong) NSString *end_stop_name;
 

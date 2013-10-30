@@ -57,6 +57,7 @@
 
     _replacement = [[NSMutableDictionary alloc] init];
     [_replacement setObject:@"Main St (Norristown)" forKey:@"Main Street"];
+//    [_replacement setObject:@"Norristown (Main St)" forKey:@"Main Street"];
     [_replacement setObject:@"Elm St (Norristown)" forKey:@"Norristown"];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -298,7 +299,7 @@
         [cell setAccessoryType: UITableViewCellAccessoryNone];
     }
     
-    [[cell textLabel] setText: trip.start_stop_name];
+    [[cell textLabel] setText: trip.vanity_start_stop_name];
     
     return cell;
     
@@ -780,7 +781,7 @@
             NSLog(@"Break");
         }
         
-        stop_name = [self fixMismatchedStopName:stop_name];
+        NSString *vanity_stop_name = [self fixMismatchedStopName:stop_name];
         
         //        StopNamesObject *snObject = [[StopNamesObject alloc] init];
         //        [snObject setStop_id: [NSNumber numberWithInt:stop_id] ];
@@ -790,6 +791,7 @@
         
         TripData *trip = [[TripData alloc] init];
         [trip setStart_stop_name: stop_name];
+        [trip setVanity_start_stop_name:vanity_stop_name];
         [trip setStart_stop_id:   [NSNumber numberWithInt:stop_id] ];
 //        [_stopNames addTimes:trip];
         
@@ -802,7 +804,7 @@
     NSMutableArray *myArray = (NSMutableArray*)[_tableData objectForSectionWithTitle:@"Data"];
     [myArray sortUsingComparator:^NSComparisonResult(TripData *a, TripData *b)
     {
-        return [a.start_stop_name compare:b.start_stop_name options:NSNumericSearch];
+        return [a.vanity_start_stop_name compare:b.vanity_start_stop_name options:NSNumericSearch];
     }];
     
     
