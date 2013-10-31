@@ -127,7 +127,7 @@
             
             break;
         case kNTASectionRecentlyViewed:
-            [favorites sortUsingComparator:^NSComparisonResult(NTASaveObject *a, NTASaveObject *b)
+            [recent sortUsingComparator:^NSComparisonResult(NTASaveObject *a, NTASaveObject *b)
              {
 //                 return [[a startStopName] compare: [b startStopName] ];
                  return [a addedDate] > [b addedDate];
@@ -204,6 +204,9 @@
             
             break;
     }
+    
+//    if ( _isRecentDirty || _isFavoritesDirty )
+//        [self sortSection: section];
     
     return foundAt;
     

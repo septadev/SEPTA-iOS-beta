@@ -214,14 +214,26 @@
     }
     else if ( [self.travelMode isEqualToString:@"Bus"] )
     {
-//        title = @"Bus";
+
+        if ( [self.routeData.route_short_name isEqualToString:@"MFO"] )
+        {
+            _routeType = kSEPTATypeMFL;
+        }
+        else if ( [self.routeData.route_short_name isEqualToString:@"BSO"] )
+        {
+            _routeType = kSEPTATypeBSL;
+        }
+        else
+        {
+            _routeType = kSEPTATypeBus;
+        }
+        
         title = [NSString stringWithFormat:@"Route %@", self.routeData.route_short_name];
         _backButtonImage = @"Bus_white.png";
-        _routeType = kSEPTATypeBus;
+
     }
     else if ( [self.travelMode isEqualToString:@"Trolley"] )
     {
-//        title = @"Trolley";
         title = [NSString stringWithFormat:@"Route %@", self.routeData.route_short_name];
         _backButtonImage = @"Trolley_white.png";
         _routeType = kSEPTATypeTrolley;
@@ -231,7 +243,6 @@
         title = @"MFL";
         _backButtonImage = @"MFL_white.png";
         _routeType = kSEPTATypeMFL;
-//        fontSize = 20.0f;
     }
     else if ( [self.travelMode isEqualToString:@"BSL"] )
     {
@@ -660,11 +671,32 @@
 //    }
 //    else
 //        return nil;
+
     
-    if ( [self.travelMode isEqualToString:@"Trolley"] )
-        dbType = kDisplayedRouteDataUsingTrolley;
-    else
-        dbType = self.routeData.database_type;
+    switch (_routeType)
+    {
+        case kSEPTATypeRail:
+            dbType = kDisplayedRouteDataUsingDBRail;
+            break;
+        case kSEPTATypeTrolley:
+            dbType = kDisplayedRouteDataUsingTrolley;
+            break;
+        case kSEPTATypeMFL:
+            dbType = kDisplayedRouteDataUsingMFL;
+            break;
+        case kSEPTATypeBSL:
+            dbType = kDisplayedRouteDataUsingBSS;
+            break;
+        case kSEPTATypeNHSL:
+            dbType = kDisplayedRouteDataUsingNHSL;
+            break;
+        default:
+            dbType = kDisplayedRouteDataUsingDBBus;
+            break;
+
+    }
+    
+    // dbType = self.routeData.database_type  // Can't use this because, for some reason, clicking on the BSO from the BSL selection has database_type set to 0
     
     DisplayedRouteData *routeData = [[DisplayedRouteData alloc] initWithDatabaseType:dbType];
     
@@ -763,10 +795,11 @@
             // Post update processing
             
             // TODO: This needs to be put back
-//            if ( ( [ [tripCell lblTimeBeforeArrival] text] == nil ) && ([self.segmentService selectedSegmentIndex] == 0) )  // Only remove empty TimeBeforeArrival cells when "Now" has been selected
-//            {
-//                _removeTopMostCell = YES;
-//            }
+//            NSLog(@"FFS: timeBeforeArrival: %@", [[tripCell lblTimeBeforeArrival] text]);
+            if ( ( [ [tripCell lblTimeBeforeArrival] text] == nil || [[ [tripCell lblTimeBeforeArrival] text] length] < 1 ) && ( _currentFilter == kItineraryFilterTypeNow ) )  // Only remove empty TimeBeforeArrival cells when "Now" has been selected
+            {
+                _removeTopMostCell = YES;
+            }
             
         }  // if ( path.section != 2 )
         
@@ -834,6 +867,7 @@
                 
                 if ( [self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"Rail"] )  // MFL, BSS and NHSL do not have realtime data
                     [self loadJSONDataIntheBackground];  // This should only be called once loadTrips has been loaded
+                
                 
             }];
             
@@ -2519,7 +2553,7 @@
     
     
     // Look up the reverse stop ID for the active stop
-    NSString *queryStr = [NSString stringWithFormat:@"SELECT reverseStopSearch.stop_id,reverse_stop_id,distance,stop_name FROM reverseStopSearch JOIN stops_bus ON reverseStopSearch.reverse_stop_id=stops_bus.stop_id WHERE reverseStopSearch.stop_id=%d AND route_short_name=%@", numID, itinerary.routeShortName];
+    NSString *queryStr = [NSString stringWithFormat:@"SELECT reverseStopSearch.stop_id,reverse_stop_id,distance,stop_name FROM reverseStopSearch JOIN stops_bus ON reverseStopSearch.reverse_stop_id=stops_bus.stop_id WHERE reverseStopSearch.stop_id=%d AND route_short_name=\"%@\"", numID, itinerary.routeShortName];
     
     FMResultSet *results = [database executeQuery: queryStr];
     if ( [database hadError] )  // Basic DB error checking

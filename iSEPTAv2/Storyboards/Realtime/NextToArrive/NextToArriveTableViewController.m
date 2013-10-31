@@ -1292,25 +1292,31 @@
 
     
     int row;
+    NSString *title;
     if ( (row = [self doesObject:sObject existInSection:@"Favorites"]) != NSNotFound )
     {
         // If the current start/end names already exists in Favorites, nothing to do but update the timestamp
         NTASaveObject *sObject = [_tableData objectForIndexPath: [NSIndexPath indexPathForRow:row inSection:[_tableData indexForSectionTitle:@"Favorites"] ] ];
         [sObject setAddedDate: [NSDate date] ];
+        title = @"Favorites";
     }
     else if ( (row = [self doesObject:sObject existInSection:@"Recent"]) != NSNotFound )
     {
         // If the current start/end names already exists in Favorites, nothing to do but update the timestamp
         NTASaveObject *sObject = [_tableData objectForIndexPath: [NSIndexPath indexPathForRow:row inSection:[_tableData indexForSectionTitle:@"Recent"] ] ];
         [sObject setAddedDate: [NSDate date] ];
+        title = @"Recent";
     }
     else
     {
     // Since the object doesn't exist in the Favorites or Recent section, add it to Recent
-        [self addObject: sObject toSection: kNTASectionRecentlyViewed];        
+        [self addObject: sObject toSection: kNTASectionRecentlyViewed];
     }
     
 //    if ( ![[_tableData returnAllSections] containsObject:@"Recent"] )  // Is there even a Recent section
+
+    if ( title != nil )
+        [[_tableData objectForSectionWithTitle:title] sortUsingComparator: sortNextToArriveSaveObjectByDate];
 
     
     [self.tableView reloadData];

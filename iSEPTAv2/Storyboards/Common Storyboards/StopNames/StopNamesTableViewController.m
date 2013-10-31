@@ -56,9 +56,11 @@
     [super viewDidLoad];
 
     _replacement = [[NSMutableDictionary alloc] init];
-    [_replacement setObject:@"Main St (Norristown)" forKey:@"Main Street"];
+//    [_replacement setObject:@"Main St (Norristown)" forKey:@"Main Street"];
 //    [_replacement setObject:@"Norristown (Main St)" forKey:@"Main Street"];
-    [_replacement setObject:@"Elm St (Norristown)" forKey:@"Norristown"];
+    [_replacement setObject:@"Highland Avenue (WIL)" forKey:@"Highland Avenue"];
+    [_replacement setObject:@"Highland (CHW)" forKey:@"Highland"];
+    [_replacement setObject:@"Norristown (Elm Street)" forKey:@"Norristown"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

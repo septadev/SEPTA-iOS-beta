@@ -88,6 +88,7 @@ sub mainLoop
     populateClosestStopMatch();
     populateStopIDRouteLookup();  # Used for Find Nearest Route
     populateGlensideCombined();
+    repairBSOMFOArrivalTime();  # Fix issue where BSO and MFO have times over 2400.  This makes sense to service planning, but not in the context of the app
     
 #    createIndex();
     
@@ -418,7 +419,7 @@ sub populateGTFSTables
         
         my $sth = $dbh->prepare("INSERT INTO $tables[$LCV]_$suffix VALUES ($questStr)");
 
-        # GLN Glenside Combined Glenside Combined  SEPTA 2 91456C FFFFFF http://www.septa.org/schedules/rail/index.html
+        # GC Glenside Combined Glenside Combined  SEPTA 2 91456C FFFFFF http://www.septa.org/schedules/rail/index.html
         
         my @valueArr;
         while (<FILE>)
@@ -479,6 +480,7 @@ sub populateGTFSTables
                 #   way to differentiate between a timing screwup (e.g. 01:00:00 is used when 25:00:00 should have been to indicate
                 #   still part of the same day schedule) and a legitimate midnight, next day, time.
                 repairArrivalTime( \$arrivalTime ) if ( $dbname =~ /rail/ );
+#                repairBSOMFOArrivalTime( \$arrivalTime ) if ( $dbname =~ /bus/ );
                 
                 #Convert 25:01:00 to 2501
                 $arrivalTime =~ /^\s*(\d+):(\d+)/;
@@ -550,7 +552,7 @@ sub populateGTFSTables
         
         if ( $dbname =~ /rail/ && $filename =~ /routes.txt/ )
         {
-            my @arr = split(/,/, "GLN,Glenside Combined,Glenside Combined,,SEPTA,2,91456C,FFFFFF,http://www.septa.org/schedules/rail/index.html");
+            my @arr = split(/,/, "GC,Glenside Combined,Glenside Combined,,SEPTA,2,91456C,FFFFFF,http://www.septa.org/schedules/rail/index.html");
             
             @valueArr = ();
             foreach my $key (@unfilteredFields)
@@ -628,6 +630,28 @@ sub incrementStringValue
     
     $_[0] = join('', @arr);
 }
+
+
+
+
+#sub repairBSOMFOArrivalTime
+#{
+#
+#    my $time = ${$_[0]};
+#    my $mins = 0;
+#    my @values = split(/:/, $time);
+#    
+#    $mins = $values[0] * 60 + $values[1];
+#
+#    if ( $mins > (10 * 60) )  # If $mins is greater than 10 hrs
+#    {
+#        $values[0] -= 24;
+#        ${$_[0]} = join(":", @values);
+#        print "GTFS - Time was: $time, now is: ${$_[0]}\n";
+#    }
+#    
+#}
+
 
 sub repairArrivalTime
 {
@@ -1492,7 +1516,7 @@ sub populateGlensideCombined
     ) or die "DBIerr: " . $DBI::err . "\nDBIerrstr: " . $DBI::errstr . "\nGTFS - DBName: $dbFileName.\n\n";
     
 
-    my $baseInsert = "INSERT INTO trips_rail SELECT \"GLN\" as route_id, service_id, trip_id, direction_id, block_id FROM trips_rail WHERE route_id IN (\"WAR\", \"WTR\", \"LAN\")";
+    my $baseInsert = "INSERT INTO trips_rail SELECT \"GC\" as route_id, service_id, trip_id, direction_id, block_id FROM trips_rail WHERE route_id IN (\"WAR\", \"WTR\", \"LAN\")";
     $dbh->do($baseInsert);
     
     $dbh->disconnect();
@@ -1501,4 +1525,26 @@ sub populateGlensideCombined
 }
 
 
+
+sub repairBSOMFOArrivalTime
+{
+    
+    print "rBMAT  - Repairs issues where BSO and MFO arrival times are over 9000!  Er... I mean, 2400.\n";
+
+    
+    # --==  Connect to DB  ==--
+    my $dbh = DBI->connect(
+    "dbi:SQLite:dbname=$dbFileName",
+    "",
+    "",
+    { RaiseError => 1 },
+    ) or die "DBIerr: " . $DBI::err . "\nDBIerrstr: " . $DBI::errstr . "\nGTFS - DBName: $dbFileName.\n\n";
+    
+    my $baseUpdate = "UPDATE stop_times_bus SET arrival_time = arrival_time-2400 WHERE arrival_time > 2400 AND trip_id IN (SELECT trip_id FROM trips_bus WHERE route_id IN (\"MFO\", \"BSO\") );";
+    $dbh->do($baseUpdate);
+    
+    $dbh->disconnect();
+    
+    
+}
 

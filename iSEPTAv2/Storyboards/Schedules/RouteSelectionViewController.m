@@ -1270,7 +1270,7 @@
     if ( [[self travelMode] isEqualToString:@"Bus"] )
     {
         if ( busFilterStr == nil )
-            queryStr = @"SELECT route_short_name, route_id, route_type, route_long_name FROM routesDB WHERE route_type=3 ORDER BY route_short_name ASC";
+            queryStr = @"SELECT route_short_name, route_id, route_type, route_long_name FROM routesDB WHERE route_type=3 AND route_short_name NOT IN (\"MFO\",\"BSO\") ORDER BY route_short_name ASC";
         else
             queryStr = [NSString stringWithFormat:@"SELECT route_short_name, route_id, route_type, route_long_name FROM routesDB WHERE %@ AND route_type=3 ORDER BY route_short_name ASC", busFilterStr];
     }
