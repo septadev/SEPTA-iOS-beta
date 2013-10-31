@@ -33,7 +33,7 @@
     id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:24HourTime"];
     if ( object == nil )
     {
-        _use24HourTime = YES;  // If nil, no data is in @"Settings:24HourTime" so default to YES
+        _use24HourTime = NO;  // If nil, no data is in @"Settings:24HourTime" so default to NO
     }
     else
     {

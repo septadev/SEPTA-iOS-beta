@@ -37,7 +37,7 @@ typedef NS_ENUM(NSInteger, DisplayedRouteDatabaseType)
     kDisplayedRouteDataUsingMFL,  // Uses SEPTAbus
     kDisplayedRouteDataUsingNHSL, // Uses SEPTAbus
     kDisplayedRouteDataUsingBSS,  // Uses SEPTAbus
-    kDispplayedRouteDataUsingTrolley,
+    kDisplayedRouteDataUsingTrolley,
     KDisplayedRouteDataUndefined,
 };
 

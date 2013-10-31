@@ -127,13 +127,13 @@
     
     
     
-    if ( _locationEnabled )
-    {
+//    if ( _locationEnabled )
+//    {
         // If the network is not reachable, try again in another 20 seconds
         [self getLatestJSONData];       // Grabs the last updated data on the vehciles of the requested route
         
         [self loadKMLInTheBackground];  // Loads the KML for the requested route in the background
-    }
+//    }
     
     
 //    [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(popTheVC) userInfo:Nil repeats:NO];

@@ -217,7 +217,7 @@
 
 -(void) loadRouteData
 {
-    
+
     if ( [[self travelMode] isEqualToString:@"Bus"] )
     {
         _routeData = [[DisplayedRouteData alloc] initWithDatabaseType:kDisplayedRouteDataUsingDBBus];
@@ -225,7 +225,7 @@
     }
     else if ( [[self travelMode] isEqualToString:@"Trolley"] )
     {
-        _routeData = [[DisplayedRouteData alloc] initWithDatabaseType:kDispplayedRouteDataUsingTrolley];
+        _routeData = [[DisplayedRouteData alloc] initWithDatabaseType:kDisplayedRouteDataUsingTrolley];
     }
     else if ( [[self travelMode] isEqualToString:@"Rail"] )
     {

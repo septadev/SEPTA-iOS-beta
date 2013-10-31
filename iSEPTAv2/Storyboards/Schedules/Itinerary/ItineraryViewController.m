@@ -65,6 +65,7 @@
     NSMutableArray *toFromDirection;
     NSString *_headerDirection;
     
+    
     // Used to store the header titles for the current bus direction
     NSMutableArray *_nameForSection;
 
@@ -107,7 +108,7 @@
     id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:24HourTime"];
     if ( object == nil )
     {
-        _use24HourTime = YES;  // If nil, no data is in @"Settings:24HourTime" so default to YES
+        _use24HourTime = NO;  // If nil, no data is in @"Settings:24HourTime" so default to NO
     }
     else
     {
@@ -627,32 +628,43 @@
     
     NSInteger dbType;
     
-    if ( [self.travelMode isEqualToString:@"Bus"] )
-    {
-        dbType = kDisplayedRouteDataUsingDBBus;
-    }
-    else if ( [self.travelMode isEqualToString:@"Rail"] )
-    {
-        dbType = kDisplayedRouteDataUsingDBRail;
-    }
-    else if ( [self.travelMode isEqualToString:@"Trolley"] )
-    {
-        dbType = kDispplayedRouteDataUsingTrolley;
-    }
-    else if ( [self.travelMode isEqualToString:@"MFL"] )
-    {
-        dbType = kDisplayedRouteDataUsingMFL;
-    }
-    else if ( [self.travelMode isEqualToString:@"BSL"] )
-    {
-        dbType = kDisplayedRouteDataUsingBSS;
-    }
-    else if ( [self.travelMode isEqualToString:@"NHSL"] )
-    {
-        dbType = kDisplayedRouteDataUsingNHSL;
-    }
+////    if ( [self.travelMode isEqualToString:@"Bus"] )
+//    if ( [self.routeData database_type] == kDisplayedRouteDataUsingDBBus)
+//    {
+//        dbType = kDisplayedRouteDataUsingDBBus;
+//    }
+////    else if ( [self.travelMode isEqualToString:@"Rail"] )
+//    else if ( [self.routeData database_type] == kDisplayedRouteDataUsingDBRail)
+//    {
+//        dbType = kDisplayedRouteDataUsingDBRail;
+//    }
+////    else if ( [self.travelMode isEqualToString:@"Trolley"] )
+//    else if ( [self.routeData database_type] == kDisplayedRouteDataUsingTrolley)
+//    {
+//        dbType = kDisplayedRouteDataUsingTrolley;
+//    }
+////    else if ( [self.travelMode isEqualToString:@"MFL"] )
+//    else if ( [self.routeData database_type] == kDisplayedRouteDataUsingMFL)
+//    {
+//        dbType = kDisplayedRouteDataUsingMFL;
+//    }
+////    else if ( [self.travelMode isEqualToString:@"BSL"] )
+//    else if ( [self.routeData database_type] == kDisplayedRouteDataUsingBSS)
+//    {
+//        dbType = kDisplayedRouteDataUsingBSS;
+//    }
+////    else if ( [self.travelMode isEqualToString:@"NHSL"] )
+//    else if ( [self.routeData database_type] == kDisplayedRouteDataUsingNHSL)
+//    {
+//        dbType = kDisplayedRouteDataUsingNHSL;
+//    }
+//    else
+//        return nil;
+    
+    if ( [self.travelMode isEqualToString:@"Trolley"] )
+        dbType = kDisplayedRouteDataUsingTrolley;
     else
-        return nil;
+        dbType = self.routeData.database_type;
     
     DisplayedRouteData *routeData = [[DisplayedRouteData alloc] initWithDatabaseType:dbType];
     

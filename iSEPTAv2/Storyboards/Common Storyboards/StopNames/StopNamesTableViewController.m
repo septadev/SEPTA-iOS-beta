@@ -614,7 +614,7 @@
         [trip setStart_stop_name: stop_name];
         [trip setStart_stop_id  : stop_id  ];
         [trip setDirection_id: direction_id];
-        
+        [trip setVanity_start_stop_name: stop_name];
         
         NSString *header = [headerToDirection objectForKey:[NSString stringWithFormat:@"%d", [direction_id intValue] ] ];
         if ( header != nil )

@@ -158,7 +158,7 @@
     }
     else if ( [[self travelMode] isEqualToString:@"Trolley"] )
     {
-        _routeData = [[DisplayedRouteData alloc] initWithDatabaseType:kDispplayedRouteDataUsingTrolley];
+        _routeData = [[DisplayedRouteData alloc] initWithDatabaseType:kDisplayedRouteDataUsingTrolley];
     }
     else if ( [[self travelMode] isEqualToString:@"Rail"] )
     {

@@ -367,7 +367,7 @@
     }
     else if ( [self.travelMode isEqualToString:@"Trolley"] )
     {
-        dbType = kDispplayedRouteDataUsingTrolley;
+        dbType = kDisplayedRouteDataUsingTrolley;
     }
     else if ( [self.travelMode isEqualToString:@"MFL"] )
     {
