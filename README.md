@@ -18,14 +18,14 @@ Issues:
 
   * If install.sh has failed, there could be a couple of issues.  
 
-  It runs the following scripts:
+  It runs the following bare-bones scripts:
     - getImages.sh
     - getGTFS.sh
     - buildDB.sh
 
-  getImages.sh pulls the images down from the SEPTA-iOS-beta-images github repository that this iOS project needs to work.  If you don't have an internet connection or git installed on your computer, this isn't going to work.
+  getImages.sh pulls the sanitized images from the SEPTA-iOS-beta-images repository that this iOS project needs to work.
 
-  getGTFS.sh uses wget to download the latest GTFS file from SEPTA.  Then the files are uncompressed and moved to the gtfs/ directory.
+  getGTFS.sh uses wget to download the latest GTFS file from SEPTA.  The files are then uncompressed and moved to the gtfs/ directory.
 
   buildDB.sh runs a perl script that takes the GTFS, throws out the data that isn't necessary and builds a sqlite database that the app needs to run.  Once the database, SEPTA.sqlite, has been generated, it is moved into the database/ directory.
 
@@ -46,9 +46,9 @@ If you don't have them (or are not sure if you do), type the following:
 
 Then install each one individually be typing:
 
-  install DBI
-  install POSIX
-  install GIS::Distance
+  - install DBI
+  - install POSIX
+  - install GIS::Distance
   
   
 
