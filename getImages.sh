@@ -1,3 +1,3 @@
 #!/bin/bash
 
-git clone https://github.com/septadev/SEPTA-iOS-beta-images.git images
+git clone https://github.com/septadev/SEPTA-iOS-images.git images
