@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" initialViewController="PfG-4g-auN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" initialViewController="PfG-4g-auN">
     <dependencies>
         <deployment defaultVersion="1280" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <scenes>
         <!--Septa Map View Controller-->
@@ -295,7 +295,7 @@ THE SOFTWARE.</string>
                                 <rect key="frame" x="112" y="8" width="96" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Button" image="RT_TrainView.png">
+                                <state key="normal" title="TrainView" image="RT_TrainView.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -313,7 +313,7 @@ THE SOFTWARE.</string>
                                 <rect key="frame" x="216" y="8" width="96" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Button" image="RT_TransitView.png">
+                                <state key="normal" title="TransitView" image="RT_TransitView.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -331,7 +331,7 @@ THE SOFTWARE.</string>
                                 <rect key="frame" x="8" y="112" width="96" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Button" image="RT_System-Status.png">
+                                <state key="normal" title="System Status" image="RT_System-Status.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="disabled" image="RT_System-Status_disabled.png"/>
@@ -350,7 +350,7 @@ THE SOFTWARE.</string>
                                 <rect key="frame" x="112" y="112" width="96" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Button" image="RT_Find-Loc.png">
+                                <state key="normal" title="Find Nearest Location" image="RT_Find-Loc.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -375,7 +375,7 @@ THE SOFTWARE.</string>
                                 <rect key="frame" x="216" y="112" width="96" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Button" image="RT_Tips.png">
+                                <state key="normal" title="Tips" image="RT_Tips.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -970,16 +970,6 @@ High Speed Line</string>
         <image name="Schedule_Trolley-BG.png" width="251" height="51"/>
         <image name="Schedule_Trolley.png" width="57" height="51"/>
         <image name="attributionsIcon.png" width="41" height="43"/>
-        <image name="blankGrey-BG.png" width="310" height="51"/>
-        <image name="blankGrey-BG.png" width="310" height="51"/>
-        <image name="blankGrey-BG.png" width="310" height="51"/>
-        <image name="blankGrey-BG.png" width="310" height="51"/>
-        <image name="blankGrey-BG.png" width="310" height="51"/>
-        <image name="blankGrey-BG.png" width="310" height="51"/>
-        <image name="blankGrey-BG.png" width="310" height="51"/>
-        <image name="blankGrey-BG.png" width="310" height="51"/>
-        <image name="blankGrey-BG.png" width="310" height="51"/>
-        <image name="blankGrey-BG.png" width="310" height="51"/>
         <image name="blankGrey-BG.png" width="310" height="51"/>
         <image name="commentsIcon.png" width="41" height="43"/>
         <image name="customerServiceIcon.png" width="41" height="43"/>
