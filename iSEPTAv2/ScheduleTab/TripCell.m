@@ -423,9 +423,11 @@ static inline int timeDiff(int a, int b)
         if ( timeBefore > 0 )
         {
             
-            int hour = timeBefore / 100;
-            int min  = timeBefore % 100;
+//            int hour = timeBefore / 100;
+//            int min  = timeBefore % 100;
             
+            int hour = (timeBefore/60);
+            int min  = (timeBefore%60);
             
             //        int timeBefore = _arrivalTime - now;
             //        timeBefore -= (timeBefore / 60) * 40;

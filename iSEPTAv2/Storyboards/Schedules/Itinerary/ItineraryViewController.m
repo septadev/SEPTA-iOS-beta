@@ -818,7 +818,7 @@
     id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:24HourTime"];
     if ( object == nil )
     {
-        _use24HourTime = YES;  // Defaults to YES.  boolForKey defaults to NO.
+        _use24HourTime = NO;  // Defaults to NO.
     }
     else
     {
