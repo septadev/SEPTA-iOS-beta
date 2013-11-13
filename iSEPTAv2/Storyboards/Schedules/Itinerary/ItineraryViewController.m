@@ -59,6 +59,7 @@
     
     BOOL _viewIsClosing;
     
+    NSString *_message;
     
     ItineraryFilterType _currentFilter;
     NSInteger _currentServiceID;
@@ -114,6 +115,9 @@
     {
         _use24HourTime = [object boolValue];
     }
+    
+    
+    _message = nil;
     
     
     // Registering xib
@@ -1195,8 +1199,16 @@
         
     }  // while ( [results next] )
     
+    
     diff = [ [NSDate date] timeIntervalSinceDate: startTime];
     NSLog(@"ITVC - %6.3f seconds have passed.", diff);
+    
+    
+//    if ( [tripDict count] < 1 )
+//    {
+//        NSLog(@"ITVC - No results");
+//    }
+    
     
 }
 
@@ -1283,10 +1295,19 @@
     
 //    currentTripsArr = (NSMutableArray*)[masterTripsArr filteredArrayUsingPredicate:predicateFilter];
 
-    
-    
+    int sectionToLoad = 2;
+    _message = nil;
+    if ( [currentTripsArr count] == 0 )
+    {
+        // Now filter that data...
+        _message = @"No remaining service for today";
+        sectionToLoad = 3;
+    }
+
     // Now filter that data...
-    [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+    //[self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex: sectionToLoad] withRowAnimation:UITableViewRowAnimationAutomatic];  // This will cause a crash going from Now to Weekday
+    [self.tableTrips reloadData];
+   
     
     
     // User Preferences
@@ -1702,7 +1723,7 @@
         return cell;
         
     }
-    else
+    else if (indexPath.section == 2 )
     {
         
         TripCell *tCell = (TripCell*)[self.tableTrips dequeueReusableCellWithIdentifier: tripStr];
@@ -1762,7 +1783,18 @@
         cell = tCell;
         
     }
-    
+    else if ( indexPath.section == 3 )
+    {
+        
+        cell = [self.tableTrips dequeueReusableCellWithIdentifier:@"Message"];
+        
+        if ( cell == nil )
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Message"];
+        
+        [[cell textLabel] setText: _message];
+        [[cell textLabel] setFont: [UIFont fontWithName:@"TrebuchetMS-Bold" size:17.0f] ];
+        
+    }
     
     
     return cell;
@@ -1836,6 +1868,11 @@
         case 2:  // Third section is for all trips based on the selected criteria
             return [currentTripsArr count];
             break;
+        case 3:
+            if ( _message == nil )
+                return 0;
+            else
+                return 1;
         default:
             return 0;
             break;
@@ -1848,7 +1885,10 @@
     
     if ( tableView == self.tableTrips )
     {
-        return 3;  // This stays hardcoded.  It should never change unless a major redesign is happening
+        if ( _message == nil )
+            return 3;  // This stays hardcoded.  It should never change unless a major redesign is happening
+        else
+            return 4;
     }
 //    else if ( tableView == self.tableSequence )
 //    {
@@ -1873,6 +1913,9 @@
         case 0:
             return 62.0f;
             break;
+//        case 3:
+//            if ( _message == nil )
+//                return 0.0f;
         default:
             return 44.0f;
             break;
@@ -1899,6 +1942,9 @@
             if ( [currentTripsArr count] == 0 )
                 return 0.0f;
             break;
+//        case 3:
+//            if ( _message != nil )
+//                return 10.0f;
         default:
             break;
     }
@@ -1951,6 +1997,9 @@
             if ( [currentTripsArr count] > 0 )
                 return 22.0f;
             break;
+        case 3:
+            if ( _message == nil )
+                return 22.0f;
         default:
 //            return 0.0f;
             break;
@@ -2946,14 +2995,17 @@
                 //                [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];  // Forced update of To/From Header
                 
                 // Load Active Train
+                NSLog(@"ITVC - Crash #1");
                 [self filterActiveTrains];
                 
                 // TODO:  Build in a fail safe, if a minute passes without a refresh, Reload JSON data (in the background, if you would please).
                 if ( !_viewIsClosing )
                 {
+                    NSLog(@"ITVC - Crash #2");
                     [self kickOffAnotherJSONRequest];
                 }  // if ( !_viewIsClosing )
                 
+                NSLog(@"ITVC - Crash #3");
             }];
         }
         else

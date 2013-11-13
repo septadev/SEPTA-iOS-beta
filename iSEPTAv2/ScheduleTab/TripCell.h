@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblTrainNo;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnAlarm;
+@property (weak, nonatomic) IBOutlet UILabel *lblNextDay;
 
 
 //@property (weak, nonatomic) IBOutlet UIImageView *imgActiveAlarm;

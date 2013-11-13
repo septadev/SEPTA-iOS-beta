@@ -48,6 +48,9 @@
         _hasStart = NO;
         _hasEnd   = NO;
         _use24HourTime = YES;
+        
+        [self.lblNextDay setHidden:YES];
+        
     }
     return self;
 }
@@ -386,7 +389,7 @@ static inline int timeDiff(int a, int b)
     
     int timeLeft = timeDiff(_arrivalTime, _departureTime);
     
-    if ( timeLeft > 0 )
+    if ( timeLeft >= 0 )
         [[self lblTimeUntilEnd] setText: [NSString stringWithFormat:@"%d", timeLeft] ];
     else
         [[self lblTimeUntilEnd] setText: @""];

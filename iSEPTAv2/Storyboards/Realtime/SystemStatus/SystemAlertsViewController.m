@@ -620,7 +620,7 @@
     NSMutableString *html;
 
     
-    html = [NSMutableString stringWithString:@"<html><style>body { font-family:\"Trebuchet MS\"; }</style><head><title>TITLE</title></head>"];
+    html = [NSMutableString stringWithString:@"<html><style>body { font-family:\"Trebuchet MS\"; } tr:nth-child(2n+1) {background-color: #ddd;} </style><head><title>TITLE</title></head>"];
 
 //    SystemAlertObject *saObject = [_alertData objectAtIndex:0];
 
@@ -640,7 +640,11 @@
                 break;
                 
             case kSystemAlertTypeDetour:
-                [html appendFormat:@"<p>%@</p>", [saObject detour_message] ];
+            {
+                NSString *htmlTable = [NSString stringWithFormat:@"<div><br><font face=\"verdana\"><table><tbody><tr><td><b>Start Location:</b> </td><td>%@</td></tr><tr><td><b>Start Date:</b> </td><td>%@</td></tr><tr><td><b>End Date:</b> </td><td>%@</td></tr><tr><td><b>Reason for Detour:</b> </td><td>%@</td></tr><tr><td><b>Details:</b> </td><td>%@</td></tr></tbody></table><br></font></div>", [saObject detour_start_location], [saObject detour_start_date_time], [saObject detour_end_date_time], [saObject detour_reason], [saObject detour_message] ];
+                
+                [html appendFormat:@"<body>%@</body>", htmlTable ];
+            }
                 break;
                 
             case kSystemAlertTypeSuspend:
@@ -653,6 +657,16 @@
         }
         
     }
+    
+    /*
+     [saObject setDetour_message:        [data objectForKey:@"detour_message"] ];
+     [saObject setDetour_start_location: [data objectForKey:@"detour_start_location"] ];
+     
+     [saObject setDetour_start_date_time: [data objectForKey:@"detour_start_date_time"] ];
+     [saObject setDetour_end_date_time:   [data objectForKey:@"detour_end_date_time"] ];
+     
+     [saObject setDetour_reason: [data objectForKey:@"detour_reason"] ];
+     */
     
 
     [html appendFormat:@"</body>"];
