@@ -1,0 +1,66 @@
+Stop_ID	Station_Name
+90001	Cynwyd
+90002	Bala
+90004	30th Street Station
+90005	Suburban Station
+90006	Market East
+90007	Temple University
+90008	North Broad
+90201	Newark
+90202	Churchmans Crossing
+90203	Wilmington
+90204	Claymont
+90207	Chester TC
+90224	Spring Mill
+90228	Elm Street
+90301	Elwyn
+90302	Media
+90305	Swarthmore
+90306	Morton
+90308	Primos
+90314	49th Street
+90318	Bethayres
+90319	Philmont
+90320	Forest Hills
+90321	Somerton
+90322	Trevose
+90323	Neshaminy Falls
+90401	Airport Terminals E&F
+90402	Airport Terminals C&D
+90403	Airport Terminal B
+90404	Airport Terminal A
+90405	Eastwick
+90406	University City
+90407	Fern Rock TC
+90408	Melrose Park
+90412	Ardsley
+90413	Roslyn
+90414	Crestmont
+90417	Warminster
+90501	Thorndale
+90504	Exton
+90508	Berwyn
+90511	Wayne
+90513	Radnor
+90525	Fort Washington
+90526	Ambler
+90529	North Wales
+90530	Pennbrook
+90531	Lansdale
+90533	Colmar
+90534	Link Belt
+90535	Chalfont
+90536	New Britain
+90537	Del Val College
+90538	Doylestown
+90701	Trenton
+90704	Croydon
+90706	Cornwells Heights
+90801	Chestnut Hill West
+90804	Allen Lane
+90809	Queen Lane
+90811	Olney
+90812	Lawndale
+90813	Cheltenham
+90814	Ryers
+90815	Fox Chase

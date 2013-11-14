@@ -1297,7 +1297,8 @@
 
     int sectionToLoad = 2;
     _message = nil;
-    if ( [currentTripsArr count] == 0 )
+    
+    if ( ( [currentTripsArr count] == 0 ) && !( [itinerary.startStopName isEqualToString: DEFAULT_START_MESSAGE] && [itinerary.endStopName isEqualToString:DEFAULT_END_MESSAGE] ) )
     {
         // Now filter that data...
         _message = @"No remaining service for today";
@@ -1732,6 +1733,7 @@
         
         [[tCell lblTrainNo] setText: [NSString stringWithFormat:@"%d", [thisTrip.trainNo intValue] ] ];
 
+        [[tCell lblNextDay] setHidden:YES];
         
         [tCell setUse24HourTime: _use24HourTime];
         [tCell setDisplayCountdown:YES];

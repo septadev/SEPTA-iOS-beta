@@ -66,6 +66,9 @@
 #import "TripDetailsTableController.h"
 
 
+#define DEFAULT_START_MESSAGE @"Click to enter destination"
+#define DEFAULT_END_MESSAGE   @"Click to enter destination"
+
 #define DEFAULT_MESSAGE @"Click to enter destination"
 #define CELL_REFRESH_RATE 60.0f/6.0f   // 6 times a minute, 10 seconds refresh rate
 #define JSON_REFRESH_RATE 60.0f/4.0f   // 4 times a minute, 15 seconds refresh rate

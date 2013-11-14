@@ -98,6 +98,9 @@
     [self.swt24Hour setOn: _use24HourTime];
     
     
+    [self.lblVersionNumber setText: [NSString stringWithFormat:@"Version %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]]];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

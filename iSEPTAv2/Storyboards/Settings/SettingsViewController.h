@@ -33,6 +33,7 @@ typedef NS_ENUM(NSInteger, SettingsCellOrder)  // According to the GTFS guidelin
 @interface SettingsViewController : UITableViewController
 
 @property (weak, nonatomic) IBOutlet UISwitch *swt24Hour;
+@property (weak, nonatomic) IBOutlet UILabel *lblVersionNumber;
 
 
 @end
