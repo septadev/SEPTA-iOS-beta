@@ -71,6 +71,7 @@
     
     // Register your Xibs!
     [self.tableView registerNib:[UINib nibWithNibName:@"StopNamesCLEACell" bundle:nil] forCellReuseIdentifier:@"StopNamesCLEACell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"PlainNamesCell" bundle:nil]    forCellReuseIdentifier:@"PlainNamesCell"];
 
     
     // Initialize Data Object
@@ -268,11 +269,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    
     static NSString *CellIdentifier = @"Cell";
     static NSString *cellCLEA = @"StopNamesCLEACell";  // CurrentLocation and EnterAddress
-
+    static NSString *cellPlainNames = @"PlainNamesCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CellIdentifier];
+    
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CellIdentifier];
     
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
@@ -297,13 +300,17 @@
     }
     else
     {
-        [cell.textLabel setTextAlignment: NSTextAlignmentLeft];
-        [cell setAccessoryType: UITableViewCellAccessoryNone];
+        PlainNamesCell *pnCell = (PlainNamesCell*)[tableView dequeueReusableCellWithIdentifier: cellPlainNames];
+
+        [pnCell.textLabel setTextAlignment: NSTextAlignmentLeft];
+        [pnCell setAccessoryType: UITableViewCellAccessoryNone];
+//        [[pnCell textLabel] setText: trip.vanity_start_stop_name];
+        
+        [[pnCell lblStopName] setText: trip.vanity_start_stop_name];
+        
+        return pnCell;
     }
     
-    [[cell textLabel] setText: trip.vanity_start_stop_name];
-    
-    return cell;
     
 }
 
@@ -795,6 +802,7 @@
         [trip setStart_stop_name: stop_name];
         [trip setVanity_start_stop_name:vanity_stop_name];
         [trip setStart_stop_id:   [NSNumber numberWithInt:stop_id] ];
+        [trip setWheelboard_boarding: [NSNumber numberWithBool: [results intForColumn:@"wheelchair_boarding"] ] ];
 //        [_stopNames addTimes:trip];
         
         [_tableData addObject: trip];

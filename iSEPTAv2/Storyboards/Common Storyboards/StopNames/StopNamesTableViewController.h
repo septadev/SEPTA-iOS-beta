@@ -29,6 +29,7 @@
 
 // --==  Custom Xibs  ==--
 #import "StopNamesCLEACell.h"
+#import "PlainNamesCell.h"
 
 
 // Subclasses

@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iSEPTAv2/Storyboards/Common Storyboards/StopNames/StopNamesTableViewController.m"
-            timestampString = "404831620.39777"
+            timestampString = "406224800.620848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "840"
-            endingLineNumber = "840"
+            startingLineNumber = "848"
+            endingLineNumber = "848"
             landmarkName = "-fixMismatchedStopName:"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iSEPTAv2/Storyboards/Common Storyboards/StopNames/StopNamesTableViewController.m"
-            timestampString = "404831620.39777"
+            timestampString = "406224800.620848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "900"
-            endingLineNumber = "900"
+            startingLineNumber = "908"
+            endingLineNumber = "908"
             landmarkName = "-selectionMade"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iSEPTAv2/Storyboards/Common Storyboards/StopNames/StopNamesTableViewController.m"
-            timestampString = "404831620.39777"
+            timestampString = "406224800.620848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "397"
-            endingLineNumber = "397"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>

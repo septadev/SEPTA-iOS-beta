@@ -35,8 +35,8 @@ my $busDir  = "google_bus";  #Dependent on @dbfile name containing 'bus'
 my $railDir = "google_rail"; #Dependent on @dbfile name containing 'rail'
 
 my @tables = ("routes", "trips", "stops", "stop_times");  #createQuery needs to match up with this order and size
-my @dbfile = ("SEPTAbus.sqlite", "SEPTArail.sqlite");   # The DBs to create
-#my @dbfile = ("SEPTArail.sqlite", "SEPTAbus.sqlite");   # The DBs to create
+#my @dbfile = ("SEPTAbus.sqlite", "SEPTArail.sqlite");   # The DBs to create
+my @dbfile = ("SEPTArail.sqlite", "SEPTAbus.sqlite");   # The DBs to create
 my $dbFileName = "SEPTA.sqlite";
 # --==  CONSTANTS  ==--
 
@@ -89,6 +89,8 @@ sub mainLoop
     populateStopIDRouteLookup();  # Used for Find Nearest Route
     populateGlensideCombined();
     repairBSOMFOArrivalTime();  # Fix issue where BSO and MFO have times over 2400.  This makes sense to service planning, but not in the context of the app
+
+    
     
 #    createIndex();
     
@@ -196,13 +198,13 @@ sub populateGTFSTables
     'SEPTAbus.sqlite' =>    [
     "CREATE TABLE REPLACEME(route_id INT, route_short_name TEXT, route_long_name TEXT, route_type INT)",
     "CREATE TABLE REPLACEME(route_id INT, service_id INT, trip_id INT PRIMARY KEY, direction_id INT, block_id TEXT)",
-    "CREATE TABLE REPLACEME(stop_id INT PRIMARY KEY, stop_name TEXT, stop_lat TEXT, stop_lon TEXT)",
+    "CREATE TABLE REPLACEME(stop_id INT PRIMARY KEY, stop_name TEXT, stop_lat TEXT, stop_lon TEXT, wheelchair_boarding INT)",
     "CREATE TABLE REPLACEME(trip_id INT, arrival_time INT, stop_id INT, stop_sequence INT)",
     ],
     'SEPTArail.sqlite' =>   [
     "CREATE TABLE REPLACEME(route_id TEXT, route_short_name TEXT, route_long_name TEXT, route_type INT)",
     "CREATE TABLE REPLACEME(route_id TEXT, service_id INTEGER, trip_id TEXT, direction_id INT, block_id TEXT)",
-    "CREATE TABLE REPLACEME(stop_id INT PRIMARY KEY, stop_name TEXT, stop_lat TEXT, stop_lon TEXT)",
+    "CREATE TABLE REPLACEME(stop_id INT PRIMARY KEY, stop_name TEXT, stop_lat TEXT, stop_lon TEXT, wheelchair_boarding INT)",
     "CREATE TABLE REPLACEME(trip_id TEXT, arrival_time INT, stop_id INT, stop_sequence INT)",
 #    "CREATE TABLE REPLACEME(route_id INTEGER, route_short_name TEXT, route_long_name TEXT, route_type INTEGER)",
 #    "CREATE TABLE REPLACEME(route_id INTEGER, service_id INTEGER, trip_id INTEGER, trip_short_name INTEGER, direction_id INTEGER, block_id TEXT)",
@@ -217,9 +219,6 @@ sub populateGTFSTables
     # --==    arrival_time = 12:01:00       =>  12:01
     # --==    trip_id      = WAR_4331_V5    =>  _4331_  (WAR is not needed; neither is V5);  Rail Only!  (Need to ensure trips.txt gets updated as well.)
     # --==    departure_time is not even being added
-    # --==    stop_ids are 5 digits, that's 3 digits too long.  (Only stops.txt would need to be updated.)
-    # --==       00 to FF can handle 256 unique values; there are less 154 unique stops for rail.  13350 stops for bus (0xFFFF, or 65535 unique values)
-    # --==
     # --======
     
     # --======
@@ -232,7 +231,7 @@ sub populateGTFSTables
     
     
     #
-    # --==    Database will contain just 4*2 tables: routes, trips, stops and stop_times.  Shapes won't do what we need it too.  Lots of redundant points in a memory
+    # --==    Database will contain just 4*2 tables: routes, trips, stops and stop_times.  Shapes won't do what we need it too.  Plenty of redundant points
     # --==  limited enviroment.  Need to minimize the number of coordinates to map.
     #
 
@@ -346,9 +345,35 @@ sub populateGTFSTables
     }
     
     
+    
+    # Rewrite Attempt 1
+    #   Load routes, trips, stop_times, stops once.  Use them throughout the life of this script.
+    
+    
+    
     # --==  Build the tables  ==--
+    # --==  my @tables = ("routes", "trips", "stops", "stop_times");  #createQuery needs to match up with this order and size  ==--
     for ($LCV = 0; $LCV <= $#tables; $LCV++)
     {
+        
+        # Should only be temporary.  Until this data makes its way into the rail GTFS
+        # If the Rail_ADA.csv does not exist, $adaStopNames should be blank and all the rail wheelchair_boarding fields should be 0
+        my %adaStopNames;
+        if ( ( $tables[$LCV] =~ "stops" ) && ( $dbname =~ /rail/ ) && ( -e "Rail_ADA.csv" ) )
+        {
+            # Open Rail_ADA.csv
+            open ADA, "Rail_ADA.csv" or die "GTFS - Unable to open Rail_ADA.csv, err: $!\n";
+            
+            
+            while (<ADA>)
+            {
+                my @array = split(/,/);
+                $adaStopNames{$array[0]} = $array[1];
+            }
+            
+            close ADA;
+        }
+        
 
         # suffix will either be "rail" or "bus"
         $dbname =~ /SEPTA(.*?).sqlite/;
@@ -396,6 +421,14 @@ sub populateGTFSTables
         $createQuery{$dbname}[$LCV] =~ /\((.*)\)/;
         my @unfilteredFields = split(/,/, $1);  # $1 = "route_type INTEGER, route_id INTEGER, etc."
         
+        
+        # Hacky way of fitting wheelchair_boarding information into the GTFS data
+        if ( ( $tables[$LCV] =~ "stops" ) && ( $dbname =~ /rail/ ) )
+        {
+            push(@headerArrayFromFile,"wheelchair_boarding");
+        }
+        
+        
         foreach my $field (@unfilteredFields)
         {
             trim($field);
@@ -409,7 +442,7 @@ sub populateGTFSTables
         
         
         # These two lines are for displaying the data being writting into the SQLite database
-        my $numberOfLines = `wc -l $filename`;
+        my $numberOfLines = `wc -l $filename`;  # Isn't there a native Perl variable to get the number of lines in a file?
         my $printAgain = ceil($numberOfLines / 100);
         
         $dbh->do("BEGIN"); #The final stage of the SQLite database, BEGIN before the loop, COMMIT after it
@@ -436,7 +469,17 @@ sub populateGTFSTables
             # Do special formatting for the specific files in here, in needed.
             if ( $filename =~ /stops.txt/ )
             {
-
+                # wheelchair_boarding
+                # if ( $dbname =~ /bus/ );
+                if ( $adaStopNames{ $arr[$columns->{stop_id}] } )
+                {
+                    push(@arr,"1");
+                }
+                else
+                {
+                    push(@arr,"0");
+                }
+                
             }
             elsif ( $filename =~ /trips.txt/ )
             {
@@ -1364,7 +1407,7 @@ sub populateStopsHash
     
     my $headersFromFile = <STOPS>;
     my @headerArrayFromFile = split(/,/, $headersFromFile);
-    my @headersWeCareAbout = ("stop_id", "stop_name", "stop_lon", "stop_lat");
+    my @headersWeCareAbout = ("stop_id", "stop_name", "stop_lon", "stop_lat", "wheelchair_boarding");
     my $columns = {};
     
     returnColumnsWeCareAbout(\@headersWeCareAbout, \@headerArrayFromFile, $columns);

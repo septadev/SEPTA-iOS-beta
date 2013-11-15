@@ -722,6 +722,8 @@
 		8418EECD18058D67003607D1 /* NTA-start.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEB918058D67003607D1 /* NTA-start.png */; };
 		8418EECE18058D67003607D1 /* NTA-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEBA18058D67003607D1 /* NTA-white.png */; };
 		8418EECF18058D67003607D1 /* NTA.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEBB18058D67003607D1 /* NTA.png */; };
+		843445B018367D1D00BA7A73 /* PlainNamesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 843445AF18367D1D00BA7A73 /* PlainNamesCell.m */; };
+		843445B218367D4400BA7A73 /* PlainNamesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843445B118367D4400BA7A73 /* PlainNamesCell.xib */; };
 		84CA6E5A17D7B7F6002C2F3C /* ServiceHours.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CA6E5917D7B7F6002C2F3C /* ServiceHours.m */; };
 		84CC992F17B874A10087477E /* TripListStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CC992E17B874A10087477E /* TripListStoryboard.storyboard */; };
 		84CC993217B874C00087477E /* TripListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CC993117B874C00087477E /* TripListViewController.m */; };
@@ -1641,6 +1643,9 @@
 		8418EEB918058D67003607D1 /* NTA-start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTA-start.png"; sourceTree = "<group>"; };
 		8418EEBA18058D67003607D1 /* NTA-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTA-white.png"; sourceTree = "<group>"; };
 		8418EEBB18058D67003607D1 /* NTA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NTA.png; sourceTree = "<group>"; };
+		843445AE18367D1D00BA7A73 /* PlainNamesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlainNamesCell.h; path = "Storyboards/Common Storyboards/StopNames/Code/PlainNamesCell.h"; sourceTree = "<group>"; };
+		843445AF18367D1D00BA7A73 /* PlainNamesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlainNamesCell.m; path = "Storyboards/Common Storyboards/StopNames/Code/PlainNamesCell.m"; sourceTree = "<group>"; };
+		843445B118367D4400BA7A73 /* PlainNamesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlainNamesCell.xib; path = "Storyboards/Common Storyboards/StopNames/Xibs/PlainNamesCell.xib"; sourceTree = "<group>"; };
 		84CA6E5817D7B7F6002C2F3C /* ServiceHours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceHours.h; path = Storyboards/Realtime/TransitView/Code/ServiceHours.h; sourceTree = "<group>"; };
 		84CA6E5917D7B7F6002C2F3C /* ServiceHours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceHours.m; path = Storyboards/Realtime/TransitView/Code/ServiceHours.m; sourceTree = "<group>"; };
 		84CC992E17B874A10087477E /* TripListStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TripListStoryboard.storyboard; path = "Storyboards/Common Storyboards/TripList/TripListStoryboard.storyboard"; sourceTree = "<group>"; };
@@ -2677,6 +2682,8 @@
 			children = (
 				27C0ACE117C69D84005FDB80 /* StopNamesCLEACell.h */,
 				27C0ACE217C69D84005FDB80 /* StopNamesCLEACell.m */,
+				843445AE18367D1D00BA7A73 /* PlainNamesCell.h */,
+				843445AF18367D1D00BA7A73 /* PlainNamesCell.m */,
 			);
 			name = Code;
 			sourceTree = "<group>";
@@ -2685,6 +2692,7 @@
 			isa = PBXGroup;
 			children = (
 				27C0ACDF17C69D1B005FDB80 /* StopNamesCLEACell.xib */,
+				843445B118367D4400BA7A73 /* PlainNamesCell.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -4609,6 +4617,7 @@
 				27DB30401636D6B600153E4C /* 92.kml in Resources */,
 				27DB30411636D6B600153E4C /* 93.kml in Resources */,
 				8418EE0417FEF6BD003607D1 /* transitView-Bus@2x.png in Resources */,
+				843445B218367D4400BA7A73 /* PlainNamesCell.xib in Resources */,
 				27DB30421636D6B600153E4C /* 94.kml in Resources */,
 				8418EE6F17FEF6BD003607D1 /* Schedule_NHSL_small.png in Resources */,
 				8418EDF017FEF6BD003607D1 /* tabMapIconSelected@2x.png in Resources */,
@@ -5086,6 +5095,7 @@
 				27A9730A17AAA1AC001A4395 /* TransitRouteListCell.m in Sources */,
 				27FE7C0317AABBDA00B7F2F2 /* SystemStatusViewController.m in Sources */,
 				27FE7C0817AABD4800B7F2F2 /* SystemStatusCell.m in Sources */,
+				843445B018367D1D00BA7A73 /* PlainNamesCell.m in Sources */,
 				27FE7C0B17AAC07A00B7F2F2 /* SystemAlertsViewController.m in Sources */,
 				27167CE617AACCEC009774A4 /* NearestLocationViewController.m in Sources */,
 				2765AA6617AC122000F93FBE /* RouteSelectionViewController.m in Sources */,

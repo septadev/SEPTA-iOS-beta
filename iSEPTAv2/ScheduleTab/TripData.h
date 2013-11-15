@@ -31,6 +31,8 @@
 @property (nonatomic, strong) NSNumber *direction_id;
 @property (nonatomic, strong) NSString *train_no;
 
+@property (nonatomic, strong) NSNumber *wheelboard_boarding;
+
 -(void) switchStartEnd;
 +(NSArray*) returnKeyValues;
 
