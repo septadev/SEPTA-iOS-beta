@@ -177,6 +177,10 @@
 		27BB75BC1651799C00AFC9ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279AD02F164869350079715E /* CoreData.framework */; };
 		27BB75C71652991D00AFC9ED /* TestDisplayedRouteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BB75C61652991D00AFC9ED /* TestDisplayedRouteData.m */; };
 		27BD7514179EC486005A990F /* LineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BD7513179EC486005A990F /* LineHeaderView.m */; };
+		27BE51CA1836852700507EAD /* handicap_blk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BE51C61836852700507EAD /* handicap_blk@2x.png */; };
+		27BE51CB1836852700507EAD /* handicap_blu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BE51C71836852700507EAD /* handicap_blu@2x.png */; };
+		27BE51CC1836852700507EAD /* handicap_blu.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BE51C81836852700507EAD /* handicap_blu.png */; };
+		27BE51CD1836852700507EAD /* handicap_blk.png in Resources */ = {isa = PBXBuildFile; fileRef = 27BE51C91836852700507EAD /* handicap_blk.png */; };
 		27C0ACE017C69D1B005FDB80 /* StopNamesCLEACell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C0ACDF17C69D1B005FDB80 /* StopNamesCLEACell.xib */; };
 		27C0ACE317C69D84005FDB80 /* StopNamesCLEACell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C0ACE217C69D84005FDB80 /* StopNamesCLEACell.m */; };
 		27C0ACE717CD36AD005FDB80 /* SeptaMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C0ACE617CD36AD005FDB80 /* SeptaMapViewController.m */; };
@@ -1025,6 +1029,10 @@
 		27BB75C61652991D00AFC9ED /* TestDisplayedRouteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestDisplayedRouteData.m; path = Tests/TestDisplayedRouteData.m; sourceTree = "<group>"; };
 		27BD7512179EC486005A990F /* LineHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineHeaderView.h; path = Storyboards/Common/LineHeaderView.h; sourceTree = "<group>"; };
 		27BD7513179EC486005A990F /* LineHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LineHeaderView.m; path = Storyboards/Common/LineHeaderView.m; sourceTree = "<group>"; };
+		27BE51C61836852700507EAD /* handicap_blk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "handicap_blk@2x.png"; path = "images/handicap/handicap_blk@2x.png"; sourceTree = SOURCE_ROOT; };
+		27BE51C71836852700507EAD /* handicap_blu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "handicap_blu@2x.png"; path = "images/handicap/handicap_blu@2x.png"; sourceTree = SOURCE_ROOT; };
+		27BE51C81836852700507EAD /* handicap_blu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = handicap_blu.png; path = images/handicap/handicap_blu.png; sourceTree = SOURCE_ROOT; };
+		27BE51C91836852700507EAD /* handicap_blk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = handicap_blk.png; path = images/handicap/handicap_blk.png; sourceTree = SOURCE_ROOT; };
 		27C0ACDF17C69D1B005FDB80 /* StopNamesCLEACell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StopNamesCLEACell.xib; path = "Storyboards/Common Storyboards/StopNames/Xibs/StopNamesCLEACell.xib"; sourceTree = "<group>"; };
 		27C0ACE117C69D84005FDB80 /* StopNamesCLEACell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StopNamesCLEACell.h; path = "Storyboards/Common Storyboards/StopNames/Code/StopNamesCLEACell.h"; sourceTree = "<group>"; };
 		27C0ACE217C69D84005FDB80 /* StopNamesCLEACell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StopNamesCLEACell.m; path = "Storyboards/Common Storyboards/StopNames/Code/StopNamesCLEACell.m"; sourceTree = "<group>"; };
@@ -2677,6 +2685,17 @@
 			name = Tests;
 			sourceTree = "<group>";
 		};
+		27BE51BD183681CC00507EAD /* handicap */ = {
+			isa = PBXGroup;
+			children = (
+				27BE51C61836852700507EAD /* handicap_blk@2x.png */,
+				27BE51C71836852700507EAD /* handicap_blu@2x.png */,
+				27BE51C81836852700507EAD /* handicap_blu.png */,
+				27BE51C91836852700507EAD /* handicap_blk.png */,
+			);
+			name = handicap;
+			sourceTree = "<group>";
+		};
 		27C0ACDD17C69CEB005FDB80 /* Code */ = {
 			isa = PBXGroup;
 			children = (
@@ -3296,6 +3315,7 @@
 		56061B081535CC6600B272B0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				27BE51BD183681CC00507EAD /* handicap */,
 				8418EBFB17FEF6BB003607D1 /* appIcon */,
 				8418EC0417FEF6BB003607D1 /* BackButton */,
 				8418EC0D17FEF6BB003607D1 /* backgrounds */,
@@ -4447,6 +4467,7 @@
 				27DB300A1636D6B600153E4C /* 24.kml in Resources */,
 				27DB300B1636D6B600153E4C /* 25.kml in Resources */,
 				27DB300C1636D6B600153E4C /* 26.kml in Resources */,
+				27BE51CC1836852700507EAD /* handicap_blu.png in Resources */,
 				8418EDA117FEF6BD003607D1 /* blankGrey-BG@2x.png in Resources */,
 				8418ED6E17FEF6BD003607D1 /* septaIcon-152@2x.png in Resources */,
 				8418EDD917FEF6BD003607D1 /* SEPTA_logo@2x.png in Resources */,
@@ -4514,6 +4535,7 @@
 				27DB30201636D6B600153E4C /* 47M.kml in Resources */,
 				8418EE1A17FEF6BD003607D1 /* transitView-Out-of-service.png in Resources */,
 				8418EDE617FEF6BD003607D1 /* System-Status-white.png in Resources */,
+				27BE51CB1836852700507EAD /* handicap_blu@2x.png in Resources */,
 				8418EECC18058D67003607D1 /* NTA-reverse.png in Resources */,
 				8418ED7017FEF6BD003607D1 /* septaIcon-72px.png in Resources */,
 				27DB30211636D6B600153E4C /* 48.kml in Resources */,
@@ -4573,6 +4595,7 @@
 				27DB30321636D6B600153E4C /* 68.kml in Resources */,
 				8418EE1517FEF6BD003607D1 /* transitView-In-service.png in Resources */,
 				8418EE1E17FEF6BD003607D1 /* transitView-Trolley.png in Resources */,
+				27BE51CD1836852700507EAD /* handicap_blk.png in Resources */,
 				8418EE6217FEF6BD003607D1 /* Schedule_Bus-BG.png in Resources */,
 				8418EECA18058D67003607D1 /* NTA-end.png in Resources */,
 				27DB30331636D6B600153E4C /* 70.kml in Resources */,
@@ -4772,6 +4795,7 @@
 				8418EE6517FEF6BD003607D1 /* Schedule_Bus_Owl_BG.png in Resources */,
 				8418EDAB17FEF6BD003607D1 /* facebookIcon.png in Resources */,
 				8418EE8517FEF6BD003607D1 /* btnMFLBSLNHSL@2x.png in Resources */,
+				27BE51CA1836852700507EAD /* handicap_blk@2x.png in Resources */,
 				27B285EC16553725002400F4 /* BusRoutesDefaultCell.xib in Resources */,
 				8418EDC217FEF6BD003607D1 /* RT_System-Status.png in Resources */,
 				8418EDDB17FEF6BD003607D1 /* detour.png in Resources */,

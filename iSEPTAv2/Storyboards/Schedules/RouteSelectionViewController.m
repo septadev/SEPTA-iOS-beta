@@ -375,7 +375,7 @@
 
 -(void) viewDidDisappear:(BOOL)animated
 {
-//    NSLog(@"BSRVC -(void) viewDidDisappear");
+    NSLog(@"BSRVC -(void) viewDidDisappear");
 }
 
 - (void)viewDidUnload
@@ -386,11 +386,11 @@
     //    [sorterBar removeFromSuperview];
     //    sorterBar = nil;
     
-    [self setNavbarSearchButton:nil];
-    [self setTravelMode:nil];
-    
-    [self setTableView:nil];
-    [self setSegmentBusSorter:nil];
+//    [self setNavbarSearchButton:nil];
+//    [self setTravelMode:nil];
+//    
+//    [self setTableView:nil];
+//    [self setSegmentBusSorter:nil];
     
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -930,24 +930,27 @@
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
+
+//    if (editingStyle == UITableViewCellEditingStyleDelete)
+//    {
+
+//        NSInteger numberOfRows = [_routeData numberOfRowsInSection:indexPath.section];
         
-        NSInteger numberOfRows = [_routeData numberOfRowsInSection:indexPath.section];
-        
-        [tableView beginUpdates];
-        [_routeData removeObjectWithIndexPath: indexPath];
+//        [tableView beginUpdates];
+//        [_routeData removeObjectWithIndexPath: indexPath];
         //        [_routeData.recentlyViewed removeObjectAtIndex: indexPath.row];
         
-        if ( numberOfRows != 1 )
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        else
-            [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+//        if ( numberOfRows != 1 )
+//            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//        else
+//            [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
         
-        [tableView endUpdates];
-        [_routeData updateSectionCountForSection:kDisplayedRouteDataRecentlyViewed];
-        [tableView reloadData];
-    }
+//        [tableView endUpdates];
+        
+//        [_routeData updateSectionCountForSection:kDisplayedRouteDataRecentlyViewed];
+//        [tableView reloadData];
+//    }
+    
 }
 
 
@@ -2015,7 +2018,7 @@
     {
         [self getFilteredBusRoutes];
         [self.searchDisplayController.searchBar setText: self.searchDisplayController.searchBar.text];  // Forces the searchDisplayController to refresh the data
-        NSLog(@"BSRVC - filterHasChanged:  filteredBusRoutes size: %d", [filteredList count]);
+        NSLog(@"RSVC - filterHasChanged:  filteredBusRoutes size: %d", [filteredList count]);
     }
     
     //    NSLog(@"reloading data");
@@ -2034,6 +2037,7 @@
 #pragma mark - Buttons Pressed
 -(void) backButtonPressed:(id) sender
 {
+    NSLog(@"RSVC -- %@", sender);
     [self.navigationController popViewControllerAnimated:YES];
 }
 

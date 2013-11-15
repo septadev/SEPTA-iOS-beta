@@ -26,4 +26,9 @@
     // Configure the view for the selected state
 }
 
+-(void) setWheelchairAccessiblity:(BOOL) yesNO
+{
+    [self.imgWheelchair setHidden: !yesNO];
+}
+
 @end

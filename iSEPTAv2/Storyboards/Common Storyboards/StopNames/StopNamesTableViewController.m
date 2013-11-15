@@ -60,7 +60,8 @@
 //    [_replacement setObject:@"Norristown (Main St)" forKey:@"Main Street"];
     [_replacement setObject:@"Highland Avenue (WIL)" forKey:@"Highland Avenue"];
     [_replacement setObject:@"Highland (CHW)" forKey:@"Highland"];
-    [_replacement setObject:@"Norristown (Elm Street)" forKey:@"Norristown"];
+    [_replacement setObject:@"Elm Street (NOR)" forKey:@"Norristown"];
+    [_replacement setObject:@"Main Street (NOR)" forKey:@"Main Street"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -71,7 +72,7 @@
     
     // Register your Xibs!
     [self.tableView registerNib:[UINib nibWithNibName:@"StopNamesCLEACell" bundle:nil] forCellReuseIdentifier:@"StopNamesCLEACell"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"PlainNamesCell" bundle:nil]    forCellReuseIdentifier:@"PlainNamesCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"PlainNamesCell" bundle:nil   ] forCellReuseIdentifier:@"PlainNamesCell"   ];
 
     
     // Initialize Data Object
@@ -306,6 +307,7 @@
         [pnCell setAccessoryType: UITableViewCellAccessoryNone];
 //        [[pnCell textLabel] setText: trip.vanity_start_stop_name];
         
+        [pnCell setWheelchairAccessiblity: [trip.wheelboard_boarding boolValue] ];
         [[pnCell lblStopName] setText: trip.vanity_start_stop_name];
         
         return pnCell;
@@ -571,18 +573,18 @@
             
             if ( stopData.start_stop_name == nil && stopData.end_stop_name == nil )
             {
-                queryStr = [NSString stringWithFormat:@"SELECT * FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=\"%@\" ORDER BY stop_name", stopData.route_short_name];
+                queryStr = [NSString stringWithFormat:@"SELECT stop_name, stop_id, wheelchair_boarding FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=\"%@\" ORDER BY stop_name", stopData.route_short_name];
             }
             else
             {
-                queryStr = [NSString stringWithFormat:@"SELECT * FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=\"%@\" AND direction_id=%d ORDER BY stop_name", stopData.route_short_name, stopData.direction_id];
+                queryStr = [NSString stringWithFormat:@"SELECT stop_name, stop_id, wheelchair_boarding FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=\"%@\" AND direction_id=%d ORDER BY stop_name", stopData.route_short_name, stopData.direction_id];
             }
             
             break;
                         
         case kGTFSRouteTypeSubway:
             
-            queryStr = @"SELECT stops_bus.stop_name, stop_times_DB.stop_id FROM trips_DB JOIN stop_times_DB ON trips_DB.trip_id=stop_times_DB.trip_id NATURAL JOIN stops_bus GROUP BY stop_times_DB.stop_id ORDER BY stops_bus.stop_name;";
+            queryStr = @"SELECT stops_bus.stop_name, stop_times_DB.stop_id, stops_bus.wheelchair_boarding FROM trips_DB JOIN stop_times_DB ON trips_DB.trip_id=stop_times_DB.trip_id NATURAL JOIN stops_bus GROUP BY stop_times_DB.stop_id ORDER BY stops_bus.stop_name;";
             
             queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString: stopData.route_short_name];
             
@@ -624,6 +626,7 @@
         [trip setStart_stop_id  : stop_id  ];
         [trip setDirection_id: direction_id];
         [trip setVanity_start_stop_name: stop_name];
+        [trip setWheelboard_boarding: [NSNumber numberWithBool: [results intForColumn:@"wheelchair_boarding"] ] ];
         
         NSString *header = [headerToDirection objectForKey:[NSString stringWithFormat:@"%d", [direction_id intValue] ] ];
         if ( header != nil )
@@ -750,10 +753,10 @@
     switch (routeType)
     {
         case kGTFSRouteTypeRail:
-            queryStr = @"SELECT * FROM stops_rail ORDER BY stop_name";
+            queryStr = @"SELECT stop_name, stop_id, wheelchair_boarding FROM stops_rail ORDER BY stop_name";
             break;
         default:
-            queryStr = @"SELECT stops_bus.stop_name, stop_times_DB.stop_id FROM trips_DB JOIN stop_times_DB ON trips_DB.trip_id=stop_times_DB.trip_id NATURAL JOIN stops_bus GROUP BY stop_times_DB.stop_id ORDER BY stops_bus.stop_name;";
+            queryStr = @"SELECT stops_bus.stop_name, stop_times_DB.stop_id, stops_bus.wheelchair_boarding FROM trips_DB JOIN stop_times_DB ON trips_DB.trip_id=stop_times_DB.trip_id NATURAL JOIN stops_bus GROUP BY stop_times_DB.stop_id ORDER BY stops_bus.stop_name;";
             
             queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString: stopData.route_short_name];
             break;

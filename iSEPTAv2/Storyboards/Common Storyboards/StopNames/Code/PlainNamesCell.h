@@ -12,4 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lblStopName;
 @property (weak, nonatomic) IBOutlet UIImageView *imgWheelchair;
+
+
+-(void) setWheelchairAccessiblity:(BOOL) yesNO;
+
 @end
