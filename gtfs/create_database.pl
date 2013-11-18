@@ -947,7 +947,7 @@ sub populateServiceHours
     
 #    my $createStopLUT = "CREATE TABLE stopNameLookUpTable AS SELECT route_short_name, stop_id, direction_id FROM stop_times_bus NATURAL JOIN trips_bus t NATURAL JOIN routes_bus r WHERE r.route_short_name NOT IN ('MFL','BSS','NHSL') GROUP BY route_short_name, stop_id, direction_id;";
 
-    my $createStopLUT = "CREATE TABLE stopNameLookUpTable AS SELECT route_short_name, stop_id, direction_id FROM stop_times_bus NATURAL JOIN trips_bus t JOIN routes_bus r ON r.route_short_name=t.route_id WHERE r.route_short_name NOT IN ('MFL','BSS','BSL','NHSL') GROUP BY route_short_name, stop_id, direction_id;";
+    my $createStopLUT = "CREATE TABLE stopNameLookUpTable AS SELECT route_short_name, stop_id, direction_id, stop_sequence FROM stop_times_bus NATURAL JOIN trips_bus t JOIN routes_bus r ON r.route_short_name=t.route_id WHERE r.route_short_name NOT IN ('MFL','BSS','BSL','NHSL') GROUP BY route_short_name, stop_id, direction_id;";
 
     
     # 5/15/13 -- Added direction_id to the GROUP BY portion say stops like OTC (382) will show both directions instead of just one

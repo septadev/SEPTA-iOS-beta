@@ -328,6 +328,7 @@
 {
     NSLog(@"SNTC -(IBAction) doneButtonPressed");
     
+    
     TripData *trip;
     
     NSIndexPath *path = [self.tableView indexPathForSelectedRow];

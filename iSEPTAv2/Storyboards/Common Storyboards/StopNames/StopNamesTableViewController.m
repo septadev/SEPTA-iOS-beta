@@ -18,6 +18,7 @@
     
     BOOL _startState;
     BOOL _doubleSectionMode;
+    BOOL _filterEnabled;
     
     NSMutableDictionary *_replacement;
     
@@ -55,6 +56,8 @@
     
     [super viewDidLoad];
 
+    _filterEnabled = NO;
+    
     _replacement = [[NSMutableDictionary alloc] init];
 //    [_replacement setObject:@"Main St (Norristown)" forKey:@"Main Street"];
 //    [_replacement setObject:@"Norristown (Main St)" forKey:@"Main Street"];
@@ -70,6 +73,8 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     
+    [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
+    
     // Register your Xibs!
     [self.tableView registerNib:[UINib nibWithNibName:@"StopNamesCLEACell" bundle:nil] forCellReuseIdentifier:@"StopNamesCLEACell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"PlainNamesCell" bundle:nil   ] forCellReuseIdentifier:@"PlainNamesCell"   ];
@@ -80,8 +85,13 @@
     
     
     // Add a DONE button
-    [self.navigationItem setRightBarButtonItem: [ [UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonPressed:)] ];
-    [self.navigationItem.rightBarButtonItem setEnabled:NO];
+//    [self.navigationItem setRightBarButtonItem: [ [UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonPressed:)] ];
+//    [self.navigationItem.rightBarButtonItem setEnabled:NO];
+    
+
+    CustomFlatBarButton *rightButton = [[CustomFlatBarButton alloc] initWithImageNamed:@"filter.png" withTarget:self andWithAction:@selector(doneButtonPressed:) ];
+    [self.navigationItem setRightBarButtonItem: rightButton];
+
     
     
     if ( self.backImageName == nil )
@@ -309,6 +319,7 @@
         
         [pnCell setWheelchairAccessiblity: [trip.wheelboard_boarding boolValue] ];
         [[pnCell lblStopName] setText: trip.vanity_start_stop_name];
+        [pnCell setDirection: [trip.direction_id intValue] ];
         
         return pnCell;
     }
@@ -573,18 +584,18 @@
             
             if ( stopData.start_stop_name == nil && stopData.end_stop_name == nil )
             {
-                queryStr = [NSString stringWithFormat:@"SELECT stop_name, stop_id, wheelchair_boarding FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=\"%@\" ORDER BY stop_name", stopData.route_short_name];
+                queryStr = [NSString stringWithFormat:@"SELECT stop_name, stop_id, direction_id, wheelchair_boarding FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=\"%@\" ORDER BY stop_name", stopData.route_short_name];
             }
             else
             {
-                queryStr = [NSString stringWithFormat:@"SELECT stop_name, stop_id, wheelchair_boarding FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=\"%@\" AND direction_id=%d ORDER BY stop_name", stopData.route_short_name, stopData.direction_id];
+                queryStr = [NSString stringWithFormat:@"SELECT stop_name, stop_id, direction_id, wheelchair_boarding FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=\"%@\" AND direction_id=%d ORDER BY stop_name", stopData.route_short_name, stopData.direction_id];
             }
             
             break;
                         
         case kGTFSRouteTypeSubway:
             
-            queryStr = @"SELECT stops_bus.stop_name, stop_times_DB.stop_id, stops_bus.wheelchair_boarding FROM trips_DB JOIN stop_times_DB ON trips_DB.trip_id=stop_times_DB.trip_id NATURAL JOIN stops_bus GROUP BY stop_times_DB.stop_id ORDER BY stops_bus.stop_name;";
+            queryStr = @"SELECT s.stop_name, st.stop_id, t.direction_id, s.wheelchair_boarding FROM trips_DB t JOIN stop_times_DB st ON t.trip_id=st.trip_id NATURAL JOIN stops_bus s GROUP BY st.stop_id ORDER BY s.stop_name;";
             
             queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString: stopData.route_short_name];
             
@@ -627,6 +638,8 @@
         [trip setDirection_id: direction_id];
         [trip setVanity_start_stop_name: stop_name];
         [trip setWheelboard_boarding: [NSNumber numberWithBool: [results intForColumn:@"wheelchair_boarding"] ] ];
+        
+        NSLog(@"%@ - %@", trip.start_stop_name, trip.direction_id);
         
         NSString *header = [headerToDirection objectForKey:[NSString stringWithFormat:@"%d", [direction_id intValue] ] ];
         if ( header != nil )
@@ -886,6 +899,7 @@
 -(void) selectionMade
 {
     
+    return;
     if ( [self.delegate respondsToSelector:@selector(buttonPressed:withData:)] )
     {
         
@@ -1104,5 +1118,10 @@
     [self selectionMade];
 }
 
+
+-(void) enabledFilter:(BOOL) yesNO
+{
+    _filterEnabled = yesNO;
+}
 
 @end

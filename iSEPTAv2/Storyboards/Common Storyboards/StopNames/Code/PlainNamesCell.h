@@ -15,5 +15,6 @@
 
 
 -(void) setWheelchairAccessiblity:(BOOL) yesNO;
+-(void) setDirection:(int) direction_id;
 
 @end

@@ -31,4 +31,17 @@
     [self.imgWheelchair setHidden: !yesNO];
 }
 
+
+-(void) setDirection:(int) direction_id
+{
+    if ( !direction_id )
+    {
+        [self setBackgroundColor: [UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:0.6f] ];
+    }
+    else
+    {
+        [self setBackgroundColor: [UIColor colorWithRed:0.8f green:0.8f blue:0.8f alpha:0.6f] ];
+    }
+}
+
 @end
