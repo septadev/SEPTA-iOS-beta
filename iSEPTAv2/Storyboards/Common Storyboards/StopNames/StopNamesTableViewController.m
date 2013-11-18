@@ -271,7 +271,7 @@
 {
     
     
-    static NSString *CellIdentifier = @"Cell";
+//    static NSString *CellIdentifier = @"Cell";
     static NSString *cellCLEA = @"StopNamesCLEACell";  // CurrentLocation and EnterAddress
     static NSString *cellPlainNames = @"PlainNamesCell";
     

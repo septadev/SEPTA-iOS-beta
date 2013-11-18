@@ -34,6 +34,9 @@
 -(void)viewWillAppear:(BOOL)animated
 {
 
+    [self.lblNextToArrive setAccessibilityElementsHidden:YES];
+    [self.lblTrainView setAccessibilityElementsHidden:YES];
+    
     Reachability *network = [Reachability reachabilityForInternetConnection];
     if ( ![network isReachable] )
     {
