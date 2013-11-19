@@ -1161,6 +1161,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
     StopNamesTableViewController *sntvc = (StopNamesTableViewController*)[storyboard instantiateInitialViewController];
     
+    [sntvc enableFilter:NO];
     
     // Determine which route type
     RouteData *rData = [[RouteData alloc] init];

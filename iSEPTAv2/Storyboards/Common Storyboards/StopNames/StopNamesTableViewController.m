@@ -18,9 +18,16 @@
     
     BOOL _startState;
     BOOL _doubleSectionMode;
+    
     BOOL _filterEnabled;
+    BOOL _toggledFilter;
+    
+    BOOL _isRail;  // Don't allow filtered for Rail as a WAR train end on any number of lines.  Sorting will suffer!
     
     NSMutableDictionary *_replacement;
+    
+    TripData *_currentLocation;
+    TripData *_enterAddress;
     
 //    NSInteger _selectionType;
 }
@@ -56,7 +63,25 @@
     
     [super viewDidLoad];
 
+    
+    // These two are special cases.  Declare once and be done with it.  Sorting uses them.
+    _currentLocation = [[TripData alloc] init];
+    [_currentLocation setStart_stop_name: @"Current Location"];
+    [_currentLocation setStart_stop_id: [NSNumber numberWithInt: kStopNamesSpecialCurrentLocation] ];
+    [_currentLocation setDirection_id:  [NSNumber numberWithInt:0] ];
+    [_currentLocation setStart_stop_sequence: [NSNumber numberWithInt:-2] ];
+    
+    _enterAddress = [[TripData alloc] init];
+    [_enterAddress setStart_stop_name: @"Enter Address"];
+    [_enterAddress setStart_stop_id: [NSNumber numberWithInt: kStopNamesSpecialEnterAddress] ];
+    [_enterAddress setDirection_id:  [NSNumber numberWithInt:0] ];
+    [_enterAddress setStart_stop_sequence: [NSNumber numberWithInt:-1] ];
+
+    
+    
     _filterEnabled = NO;
+    _toggledFilter = NO;
+    _isRail = YES;  // YES will display the filter button from being visible
     
     _replacement = [[NSMutableDictionary alloc] init];
 //    [_replacement setObject:@"Main St (Norristown)" forKey:@"Main Street"];
@@ -88,10 +113,6 @@
 //    [self.navigationItem setRightBarButtonItem: [ [UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonPressed:)] ];
 //    [self.navigationItem.rightBarButtonItem setEnabled:NO];
     
-
-    CustomFlatBarButton *rightButton = [[CustomFlatBarButton alloc] initWithImageNamed:@"filter.png" withTarget:self andWithAction:@selector(doneButtonPressed:) ];
-    [self.navigationItem setRightBarButtonItem: rightButton];
-
     
     
     if ( self.backImageName == nil )
@@ -213,6 +234,23 @@
 }
 
 
+
+-(void) addFilterButton
+{
+    
+    if ( _filterEnabled )
+    {
+        CustomFlatBarButton *rightButton = [[CustomFlatBarButton alloc] initWithImageNamed:@"filter.png" withTarget:self andWithAction:@selector(doneButtonPressed:) ];
+        [self.navigationItem setRightBarButtonItem: rightButton];
+    }
+    else
+    {
+        [self.navigationItem setRightBarButtonItem: nil ];
+    }
+    
+}
+
+
 #pragma mark - Table view data source
 -(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -314,7 +352,8 @@
         PlainNamesCell *pnCell = (PlainNamesCell*)[tableView dequeueReusableCellWithIdentifier: cellPlainNames];
 
         [pnCell.textLabel setTextAlignment: NSTextAlignmentLeft];
-        [pnCell setAccessoryType: UITableViewCellAccessoryNone];
+//        [pnCell setAccessoryType: UITableViewCellAccessoryNone];
+        [pnCell setAccessoryType: UITableViewCellAccessoryDisclosureIndicator];
 //        [[pnCell textLabel] setText: trip.vanity_start_stop_name];
         
         [pnCell setWheelchairAccessiblity: [trip.wheelboard_boarding boolValue] ];
@@ -405,24 +444,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    // For now, we're avoiding currect location for Bus and Trolleys
-//    if ( [stopData.route_type intValue] == kGTFSRouteTypeBus)
-//    {
-//        [self.navigationItem.rightBarButtonItem setEnabled:YES];
-//        return;
-//    }
-//    else if ( [stopData.route_type intValue] == kGTFSRouteTypeTrolley && ![stopData.route_short_name isEqualToString:@"NHSL"] )
-//    {
-//        [self.navigationItem.rightBarButtonItem setEnabled:YES];
-//        return;
-//    }
-    
-    
     if ( indexPath.row == 0 )
     {
         NSLog(@"Selected Current Location");
         
-        [self.navigationItem.rightBarButtonItem setEnabled:NO];  // Disable button if Current Location was selected
+//        [self.navigationItem.rightBarButtonItem setEnabled:NO];  // Disable button if Current Location was selected
         
         NSString * storyboardName = @"CurrentLocationStoryboard";
         UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
@@ -459,23 +485,14 @@
         [self.navigationController pushViewController:mdsGVC animated:YES];
         [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
         
-        //        EnterAddressTableViewController *eaVC = [[navController viewControllers] objectAtIndex:0];
-        ////        [eaVC setRouteType: [NSNumber numberWithInt:kCurrentLocationRouteTypeRailOnly] ];
-        //        [eaVC setDelegate:self];
-        //
-        //        [self presentViewController:navController animated:YES completion:nil];
-        //        [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
-        
-        //        ForwardViewController *fvc = [[ForwardViewController alloc] initWithNibName:@"ForwardViewController" bundle:nil];
-        //        [fvc setTitle:@"Forward"];
-        
-        //        [self presentModalViewController:fvc animated:YES];
-        
     }
     else
     {
-        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+//        [self.navigationItem.rightBarButtonItem setEnabled:YES];
     }
+    
+    
+    [self selectionMade];
 
     
 }
@@ -493,7 +510,10 @@
 -(void) loadBusStopNames
 {
 
+    _isRail = NO;
+    
     BOOL addedHeader = NO;
+    
     NSDate *startTime = [NSDate date];
     NSLog(@"SNFRTC - Starting at %@", startTime);
     
@@ -584,18 +604,18 @@
             
             if ( stopData.start_stop_name == nil && stopData.end_stop_name == nil )
             {
-                queryStr = [NSString stringWithFormat:@"SELECT stop_name, stop_id, direction_id, wheelchair_boarding FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=\"%@\" ORDER BY stop_name", stopData.route_short_name];
+                queryStr = [NSString stringWithFormat:@"SELECT stop_name, stop_id, direction_id, wheelchair_boarding, stop_sequence FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=\"%@\" ORDER BY stop_name", stopData.route_short_name];
             }
             else
             {
-                queryStr = [NSString stringWithFormat:@"SELECT stop_name, stop_id, direction_id, wheelchair_boarding FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=\"%@\" AND direction_id=%d ORDER BY stop_name", stopData.route_short_name, stopData.direction_id];
+                queryStr = [NSString stringWithFormat:@"SELECT stop_name, stop_id, direction_id, wheelchair_boarding, stop_sequence FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=\"%@\" AND direction_id=%d ORDER BY stop_name", stopData.route_short_name, stopData.direction_id];
             }
             
             break;
                         
         case kGTFSRouteTypeSubway:
             
-            queryStr = @"SELECT s.stop_name, st.stop_id, t.direction_id, s.wheelchair_boarding FROM trips_DB t JOIN stop_times_DB st ON t.trip_id=st.trip_id NATURAL JOIN stops_bus s GROUP BY st.stop_id ORDER BY s.stop_name;";
+            queryStr = @"SELECT s.stop_name, st.stop_id, t.direction_id, s.wheelchair_boarding, stop_sequence FROM trips_DB t JOIN stop_times_DB st ON t.trip_id=st.trip_id NATURAL JOIN stops_bus s GROUP BY st.stop_id ORDER BY s.stop_name;";
             
             queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString: stopData.route_short_name];
             
@@ -638,6 +658,7 @@
         [trip setDirection_id: direction_id];
         [trip setVanity_start_stop_name: stop_name];
         [trip setWheelboard_boarding: [NSNumber numberWithBool: [results intForColumn:@"wheelchair_boarding"] ] ];
+        [trip setStart_stop_sequence: [NSNumber numberWithInt: [results intForColumn:@"stop_sequence"] ] ];
         
         NSLog(@"%@ - %@", trip.start_stop_name, trip.direction_id);
         
@@ -683,24 +704,13 @@
 
     
     // Add Current Location and Enter Address at the start of the arrary
-    TripData *currentLocation = [[TripData alloc] init];
-    [currentLocation setStart_stop_name: @"Current Location"];
-    [currentLocation setStart_stop_id: [NSNumber numberWithInt: kStopNamesSpecialCurrentLocation] ];
-    [currentLocation setDirection_id:  [NSNumber numberWithInt:0] ];
     
-    TripData *enterAddress = [[TripData alloc] init];
-    [enterAddress setStart_stop_name: @"Enter Address"];
-    [enterAddress setStart_stop_id: [NSNumber numberWithInt: kStopNamesSpecialEnterAddress] ];
-    [enterAddress setDirection_id:  [NSNumber numberWithInt:0] ];
     
-    //    [_tableData addObject:currentLocation forTitle:@"Data"];
-    //    [_tableData addObject:enterAddress];
+    [dir0Arr insertObject:_enterAddress atIndex:0];
+    [dir0Arr insertObject:_currentLocation atIndex:0];
     
-    [dir0Arr insertObject:enterAddress atIndex:0];
-    [dir0Arr insertObject:currentLocation atIndex:0];
-    
-    [dir1Arr insertObject:enterAddress atIndex:0];
-    [dir1Arr insertObject:currentLocation atIndex:0];
+    [dir1Arr insertObject:_enterAddress atIndex:0];
+    [dir1Arr insertObject:_currentLocation atIndex:0];
     
 
     [_tableData generateIndexWithKey:@"start_stop_name" forSectionTitles:[NSArray arrayWithArray: headers] ];
@@ -746,6 +756,8 @@
     //    [stopNames removeAllObjects];
     
 //    [_stopNames clearData];
+
+    _isRail = YES;
     
     [_tableData removeAllObjects];
     
@@ -766,10 +778,13 @@
     switch (routeType)
     {
         case kGTFSRouteTypeRail:
-            queryStr = @"SELECT stop_name, stop_id, wheelchair_boarding FROM stops_rail ORDER BY stop_name";
+            queryStr = @"SELECT stop_name, stop_id, wheelchair_boarding, stop_sequence FROM stops_rail ORDER BY stop_name";
+//            queryStr = [NSString stringWithFormat:@"SELECT stop_name, stop_id, direction_id, wheelchair_boarding, stop_sequence FROM stopNameLookUpTable NATURAL JOIN stops_rail WHERE route_short_name=\"%@\" ORDER BY stop_name", stopData.route_short_name];
+
             break;
         default:
             queryStr = @"SELECT stops_bus.stop_name, stop_times_DB.stop_id, stops_bus.wheelchair_boarding FROM trips_DB JOIN stop_times_DB ON trips_DB.trip_id=stop_times_DB.trip_id NATURAL JOIN stops_bus GROUP BY stop_times_DB.stop_id ORDER BY stops_bus.stop_name;";
+//            queryStr = @"SELECT stops_bus.stop_name, stop_times_DB.stop_id, direction_id, stops_bus.wheelchair_boarding, stop_sequence FROM trips_DB JOIN stop_times_DB ON trips_DB.trip_id=stop_times_DB.trip_id NATURAL JOIN stops_bus GROUP BY stop_times_DB.stop_id ORDER BY stops_bus.stop_name;";
             
             queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString: stopData.route_short_name];
             break;
@@ -819,6 +834,9 @@
         [trip setVanity_start_stop_name:vanity_stop_name];
         [trip setStart_stop_id:   [NSNumber numberWithInt:stop_id] ];
         [trip setWheelboard_boarding: [NSNumber numberWithBool: [results intForColumn:@"wheelchair_boarding"] ] ];
+//        [trip setDirection_id: [NSNumber numberWithInt: [results intForColumn:@"direction_id"] ] ];
+//        [trip setStart_stop_sequence: [NSNumber numberWithInt: [results intForColumn:@"stop_sequence"] ] ];
+
 //        [_stopNames addTimes:trip];
         
         [_tableData addObject: trip];
@@ -833,23 +851,9 @@
         return [a.vanity_start_stop_name compare:b.vanity_start_stop_name options:NSNumericSearch];
     }];
     
-    
-    // Add Current Location and Enter Address at the start of the arrary
-    TripData *currentLocation = [[TripData alloc] init];
-    [currentLocation setStart_stop_name: @"Current Location"];
-    [currentLocation setStart_stop_id: [NSNumber numberWithInt: kStopNamesSpecialCurrentLocation] ];
-    [currentLocation setDirection_id:  [NSNumber numberWithInt:0] ];
-    
-    TripData *enterAddress = [[TripData alloc] init];
-    [enterAddress setStart_stop_name: @"Enter Address"];
-    [enterAddress setStart_stop_id: [NSNumber numberWithInt: kStopNamesSpecialEnterAddress] ];
-    [enterAddress setDirection_id:  [NSNumber numberWithInt:0] ];
-    
-//    [_tableData addObject:currentLocation forTitle:@"Data"];
-//    [_tableData addObject:enterAddress];
 
-    [myArray insertObject:enterAddress atIndex:0];
-    [myArray insertObject:currentLocation atIndex:0];
+    [myArray insertObject:_enterAddress atIndex:0];
+    [myArray insertObject:_currentLocation atIndex:0];
     
     
     [_tableData generateIndexWithKey:@"start_stop_name"];
@@ -892,14 +896,69 @@
 
 -(void) doneButtonPressed:(id) sender
 {
-    [self selectionMade];
+//    [self selectionMade];
+    
+    // Filter results
+    _toggledFilter = !_toggledFilter;
+    
+    int numSection = [_tableData numOfSections];
+    NSMutableArray *headers = [[NSMutableArray alloc] init];
+
+    if ( _toggledFilter )
+    {
+    
+        for (int LCV = 0; LCV < numSection; LCV++)
+        {
+            NSMutableArray *tempArr = (NSMutableArray*)[_tableData objectForSection:LCV ];
+            [headers addObject: [_tableData titleForSection:LCV] ];
+            
+            [tempArr sortUsingComparator:^NSComparisonResult(TripData *a, TripData *b)
+             {
+    //             return [a.start_stop_sequence compare:b.start_stop_sequence options:NSNumericSearch];
+                 return [a.start_stop_sequence intValue] > [b.start_stop_sequence intValue];
+             }];
+
+        }
+    
+    }
+    else
+    {
+        
+        // Since we are sorting by name, Current Location and Enter Address will not stay at the top.
+        
+        
+        for (int LCV = 0; LCV < numSection; LCV++)
+        {
+            NSMutableArray *tempArr = (NSMutableArray*)[_tableData objectForSection:LCV ];
+
+            [tempArr removeObject:_currentLocation];
+            [tempArr removeObject:_enterAddress];
+            
+            [headers addObject: [_tableData titleForSection:LCV] ];
+            
+            [tempArr sortUsingComparator:^NSComparisonResult(TripData *a, TripData *b)
+             {
+                 return [a.start_stop_name compare:b.start_stop_name options:NSNumericSearch];
+             }];
+            
+            [tempArr insertObject:_enterAddress atIndex:0];
+            [tempArr insertObject:_currentLocation atIndex:0];
+            
+        }
+        
+    }
+    
+    [_tableData generateIndexWithKey:@"start_stop_name" forSectionTitles:[NSArray arrayWithArray: headers] ];
+
+    [self.tableView reloadData];
+    
+    
 }
 
 
 -(void) selectionMade
 {
     
-    return;
     if ( [self.delegate respondsToSelector:@selector(buttonPressed:withData:)] )
     {
         
@@ -1119,9 +1178,13 @@
 }
 
 
--(void) enabledFilter:(BOOL) yesNO
+-(void) enableFilter:(BOOL) yesNO
 {
     _filterEnabled = yesNO;
+    
+    if ( !_isRail )  // Don't allow filtered for Rail as a WAR train end on any number of lines.  Sorting will suffer!
+        [self addFilterButton];
+    
 }
 
 @end

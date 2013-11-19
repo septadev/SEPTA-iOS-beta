@@ -953,6 +953,8 @@ sub populateServiceHours
     # 5/15/13 -- Added direction_id to the GROUP BY portion say stops like OTC (382) will show both directions instead of just one
     $dbh->do($createStopLUT);
     
+    my $InsertStopLUT = "INSERT INTO stopNameLookUptable SELECT route_id, stop_id, direction_id, stop_sequence FROM stop_times_rail NATURAL JOIN trips_rail t NATURAL JOIN routes_rail r GROUP BY route_id, stop_id, direction_id;"
+    
     
 #    $dbh->do("update serviceHours set Direction=replace(Direction,'Westbound','West')");
 #    $dbh->do("update serviceHours set Direction=replace(Direction,'Eastbound','East')");

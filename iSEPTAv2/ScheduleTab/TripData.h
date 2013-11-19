@@ -25,8 +25,8 @@
 @property (nonatomic, strong) NSString *end_arrival_time;
 
 @property (nonatomic, strong) NSString *trip_id;
-@property (nonatomic, strong) NSString *start_stop_sequence;
-@property (nonatomic, strong) NSString *end_stop_sequence;
+@property (nonatomic, strong) NSNumber *start_stop_sequence;
+@property (nonatomic, strong) NSNumber *end_stop_sequence;
 
 @property (nonatomic, strong) NSNumber *direction_id;
 @property (nonatomic, strong) NSString *train_no;

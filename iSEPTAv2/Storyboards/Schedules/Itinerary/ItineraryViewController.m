@@ -2355,6 +2355,8 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StopNamesStoryboard" bundle:nil];
     StopNamesTableViewController *sntvc = (StopNamesTableViewController*)[storyboard instantiateInitialViewController];
     
+    [sntvc enableFilter:YES];
+    
     [sntvc setStopData: _routeData];
     [sntvc setSelectionType: selType];
     [sntvc setDelegate: self];
@@ -3387,7 +3389,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
     StopNamesTableViewController *sntvc = (StopNamesTableViewController*)[storyboard instantiateInitialViewController];
     
-    
+    [sntvc enableFilter:YES];
     // Pass information to the stopNames VC
     [sntvc setStopData: _routeData];          // Contains: start/end stop names and id, along with routeType -- the data
     [sntvc setSelectionType: selType];   // Determines its behavior, whether to show only the start, end or both start/end stops information
