@@ -421,8 +421,10 @@
     
     
 //    NSString *qStr = [NSString stringWithFormat:@"SELECT route_id, route_short_name, route_type, direction_id, Direction, min, max FROM routes_bus NATURAL JOIN serviceHours WHERE (service_id & %d) AND route_short_name NOT IN (\"MFL\", \"NHSL\", \"BSS\")", currentServiceID];
-    NSString *qStr = [NSString stringWithFormat:@"SELECT r.route_id, r.route_short_name, route_type, direction_id, Direction, min, max FROM routes_bus r JOIN serviceHours s ON s.route_short_name=r.route_short_name WHERE (service_id & %d) AND r.route_short_name NOT IN (\"MFL\", \"NHSL\", \"BSS\")", currentServiceID];
-        
+//    NSString *qStr = [NSString stringWithFormat:@"SELECT r.route_id, r.route_short_name, route_type, direction_id, Direction, min, max FROM routes_bus r JOIN serviceHours s ON s.route_short_name=r.route_short_name WHERE (service_id & %d) AND r.route_short_name NOT IN (\"MFL\", \"NHSL\", \"BSL\")", currentServiceID];
+    NSString *qStr = [NSString stringWithFormat:@"SELECT r.route_id, r.route_short_name, route_type, direction_id, Direction, min, max FROM routes_bus r JOIN serviceHours s ON s.route_short_name=r.route_short_name WHERE (service_id & %d)", currentServiceID];
+
+    
     NSLog(@"TVTC - queryStr: %@", qStr);
     FMResultSet *r = [database executeQuery: qStr];
     if ( [database hadError] )  // Check for errors

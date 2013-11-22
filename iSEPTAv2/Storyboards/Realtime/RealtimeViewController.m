@@ -149,13 +149,13 @@
     [self.view setBackgroundColor: backgroundColor];
     
     
-    UIImage *logo = [UIImage imageNamed:@"SEPTA_logo.png"];
-
-    SEPTATitle *newView = [[SEPTATitle alloc] initWithFrame:CGRectMake(0, 0, logo.size.width, logo.size.height) andWithTitle:@"Realtime"];
-    [newView setImage: logo];
-    
-    [self.navigationItem setTitleView: newView];
-    [self.navigationItem.titleView setNeedsDisplay];
+//    UIImage *logo = [UIImage imageNamed:@"SEPTA_logo.png"];
+//
+//    SEPTATitle *newView = [[SEPTATitle alloc] initWithFrame:CGRectMake(0, 0, logo.size.width, logo.size.height) andWithTitle:@"Realtime"];
+//    [newView setImage: logo];
+//    
+//    [self.navigationItem setTitleView: newView];
+//    [self.navigationItem.titleView setNeedsDisplay];
     
 //    [self.view bringSubviewToFront:newView];
         
@@ -173,6 +173,76 @@
     
 //    [self setTitle:@"Realtime"];
 
+    
+    [self testImage];
+    
+}
+
+-(void) testImage
+{
+    
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"second-menu.png"] ];
+//
+////    [imageView setFrame:CGRectMake(0, self.view.frame.size.height - 60, imageView.frame.size.width, imageView.frame.size.height)];
+//    
+//    [self.view addSubview: imageView];
+//    [self.view bringSubviewToFront: imageView];
+
+//    [self.navigationItem.rightBarButtonItem setImage: [UIImage imageNamed:@"second-menu.png"] ];
+    
+    UIView *newView = [[UIView alloc] initWithFrame:CGRectMake(10, 260, 50, 37.5)];
+//    [newView setBackgroundColor:[UIColor purpleColor] ];
+    
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 5, 40, 30)];
+    imgView.image = [UIImage imageNamed:@"second-menu.png"];
+    imgView.contentMode = UIViewContentModeCenter;
+    
+    UIImageView *alertImg = [[UIImageView alloc] initWithFrame:CGRectMake(23, 0, 40/2.0f, 30/2.0f)];
+    [alertImg setImage: [UIImage imageNamed:@"system_status_alert.png"] ];
+    
+    UIImageView *advisoryImg = [[UIImageView alloc] initWithFrame:CGRectMake(23, 0, 40/2.0f, 30/2.0f)];
+    [advisoryImg setImage: [UIImage imageNamed:@"system_status_advisory.png"] ];
+    [advisoryImg setAlpha:0.0f];
+    
+    UIImageView *detourImg = [[UIImageView alloc] initWithFrame:CGRectMake(23, 0, 40/2.0f, 30/2.0f)];
+    [detourImg setImage: [UIImage imageNamed:@"system_status_detour.png"] ];
+    [detourImg setAlpha:0.0f];
+
+    
+    [UIView animateWithDuration:1.5f
+                          delay:1.5f
+                        options:UIViewAnimationCurveEaseInOut
+                     animations:^{
+                         [alertImg setAlpha:0.0f];
+                         [advisoryImg setAlpha:1.0f];
+                     }
+                     completion:^(BOOL finished) {
+
+                         
+                         [UIView animateWithDuration:1.5f
+                                               delay:0.0f
+                                             options: UIViewAnimationOptionOverrideInheritedCurve | UIViewAnimationOptionOverrideInheritedDuration | UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat
+                                          animations:^{
+                                              [UIView setAnimationRepeatCount:2.5];
+                                              [advisoryImg setAlpha:0.0f];
+                                              [detourImg setAlpha:1.0f];
+                                          }
+                                          completion:^(BOOL finished) {
+                                              NSLog(@"Animation complete");
+                                          }];
+                     }];
+    
+//    [self.view addSubview: imgView];
+    
+    [newView addSubview:imgView];
+    
+    [newView addSubview:alertImg];
+    [newView addSubview:advisoryImg];
+    [newView addSubview:detourImg];
+    
+    [self.view addSubview: newView];
+    
+    NSLog(@"RVC - Added Image");
     
 }
 
