@@ -728,6 +728,10 @@
 		8418EECF18058D67003607D1 /* NTA.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEBB18058D67003607D1 /* NTA.png */; };
 		843445B018367D1D00BA7A73 /* PlainNamesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 843445AF18367D1D00BA7A73 /* PlainNamesCell.m */; };
 		843445B218367D4400BA7A73 /* PlainNamesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843445B118367D4400BA7A73 /* PlainNamesCell.xib */; };
+		843445B8183E6A5500BA7A73 /* Filter-123.png in Resources */ = {isa = PBXBuildFile; fileRef = 843445B4183E6A5500BA7A73 /* Filter-123.png */; };
+		843445B9183E6A5500BA7A73 /* Filter-123@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 843445B5183E6A5500BA7A73 /* Filter-123@2x.png */; };
+		843445BA183E6A5500BA7A73 /* Filter-abc.png in Resources */ = {isa = PBXBuildFile; fileRef = 843445B6183E6A5500BA7A73 /* Filter-abc.png */; };
+		843445BB183E6A5500BA7A73 /* Filter-abc@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 843445B7183E6A5500BA7A73 /* Filter-abc@2x.png */; };
 		84CA6E5A17D7B7F6002C2F3C /* ServiceHours.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CA6E5917D7B7F6002C2F3C /* ServiceHours.m */; };
 		84CC992F17B874A10087477E /* TripListStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CC992E17B874A10087477E /* TripListStoryboard.storyboard */; };
 		84CC993217B874C00087477E /* TripListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CC993117B874C00087477E /* TripListViewController.m */; };
@@ -1654,6 +1658,10 @@
 		843445AE18367D1D00BA7A73 /* PlainNamesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlainNamesCell.h; path = "Storyboards/Common Storyboards/StopNames/Code/PlainNamesCell.h"; sourceTree = "<group>"; };
 		843445AF18367D1D00BA7A73 /* PlainNamesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlainNamesCell.m; path = "Storyboards/Common Storyboards/StopNames/Code/PlainNamesCell.m"; sourceTree = "<group>"; };
 		843445B118367D4400BA7A73 /* PlainNamesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlainNamesCell.xib; path = "Storyboards/Common Storyboards/StopNames/Xibs/PlainNamesCell.xib"; sourceTree = "<group>"; };
+		843445B4183E6A5500BA7A73 /* Filter-123.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Filter-123.png"; path = "images/filters/Filter-123.png"; sourceTree = SOURCE_ROOT; };
+		843445B5183E6A5500BA7A73 /* Filter-123@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Filter-123@2x.png"; path = "images/filters/Filter-123@2x.png"; sourceTree = SOURCE_ROOT; };
+		843445B6183E6A5500BA7A73 /* Filter-abc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Filter-abc.png"; path = "images/filters/Filter-abc.png"; sourceTree = SOURCE_ROOT; };
+		843445B7183E6A5500BA7A73 /* Filter-abc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Filter-abc@2x.png"; path = "images/filters/Filter-abc@2x.png"; sourceTree = SOURCE_ROOT; };
 		84CA6E5817D7B7F6002C2F3C /* ServiceHours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceHours.h; path = Storyboards/Realtime/TransitView/Code/ServiceHours.h; sourceTree = "<group>"; };
 		84CA6E5917D7B7F6002C2F3C /* ServiceHours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceHours.m; path = Storyboards/Realtime/TransitView/Code/ServiceHours.m; sourceTree = "<group>"; };
 		84CC992E17B874A10087477E /* TripListStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TripListStoryboard.storyboard; path = "Storyboards/Common Storyboards/TripList/TripListStoryboard.storyboard"; sourceTree = "<group>"; };
@@ -3315,6 +3323,7 @@
 		56061B081535CC6600B272B0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				843445B3183E6A3700BA7A73 /* filters */,
 				27BE51BD183681CC00507EAD /* handicap */,
 				8418EBFB17FEF6BB003607D1 /* appIcon */,
 				8418EC0417FEF6BB003607D1 /* BackButton */,
@@ -4273,6 +4282,17 @@
 			path = SD;
 			sourceTree = "<group>";
 		};
+		843445B3183E6A3700BA7A73 /* filters */ = {
+			isa = PBXGroup;
+			children = (
+				843445B4183E6A5500BA7A73 /* Filter-123.png */,
+				843445B5183E6A5500BA7A73 /* Filter-123@2x.png */,
+				843445B6183E6A5500BA7A73 /* Filter-abc.png */,
+				843445B7183E6A5500BA7A73 /* Filter-abc@2x.png */,
+			);
+			name = filters;
+			sourceTree = "<group>";
+		};
 		84B1F30E178EC90100286B15 /* Enter Address */ = {
 			isa = PBXGroup;
 			children = (
@@ -4440,6 +4460,7 @@
 				8418EDE717FEF6BD003607D1 /* Bus-black.png in Resources */,
 				8418EE2217FEF6BD003607D1 /* BSL_Owl@2x.png in Resources */,
 				27DB30001636D6B600153E4C /* 14.kml in Resources */,
+				843445B8183E6A5500BA7A73 /* Filter-123.png in Resources */,
 				27DB30011636D6B600153E4C /* 15.kml in Resources */,
 				27DB30021636D6B600153E4C /* 16.kml in Resources */,
 				8418EE2F17FEF6BD003607D1 /* NHSL_Purple.png in Resources */,
@@ -4532,6 +4553,7 @@
 				8418EE3A17FEF6BD003607D1 /* Bus_black.png in Resources */,
 				8418EECB18058D67003607D1 /* NTA-menu_BG.png in Resources */,
 				8418EE2B17FEF6BD003607D1 /* BSL_white.png in Resources */,
+				843445BB183E6A5500BA7A73 /* Filter-abc@2x.png in Resources */,
 				27DB30201636D6B600153E4C /* 47M.kml in Resources */,
 				8418EE1A17FEF6BD003607D1 /* transitView-Out-of-service.png in Resources */,
 				8418EDE617FEF6BD003607D1 /* System-Status-white.png in Resources */,
@@ -4714,6 +4736,7 @@
 				8418EE4417FEF6BD003607D1 /* Schedule_BSL_small@2x.png in Resources */,
 				27DB30621636D6B600153E4C /* 129.kml in Resources */,
 				8418EE3617FEF6BD003607D1 /* Bus_white@2x.png in Resources */,
+				843445B9183E6A5500BA7A73 /* Filter-123@2x.png in Resources */,
 				8418ED9617FEF6BD003607D1 /* Independence-Pass-BG.png in Resources */,
 				27DB30631636D6B600153E4C /* 130.kml in Resources */,
 				27DB30641636D6B600153E4C /* 131.kml in Resources */,
@@ -4878,6 +4901,7 @@
 				2708114917A9906300B62FBD /* SimpleMapStoryboard.storyboard in Resources */,
 				8418EE3F17FEF6BD003607D1 /* BSL-white@2x.png in Resources */,
 				27A972FA17AA9134001A4395 /* KMLMapsStoryboard.storyboard in Resources */,
+				843445BA183E6A5500BA7A73 /* Filter-abc.png in Resources */,
 				27A972FF17AAA0F2001A4395 /* TransitViewStoryboard.storyboard in Resources */,
 				8418EE6817FEF6BD003607D1 /* Schedule_CCT.png in Resources */,
 				8418EE0117FEF6BD003607D1 /* transitView-BSL_owl@2x.png in Resources */,

@@ -20,7 +20,7 @@
     BOOL _doubleSectionMode;
     
     BOOL _filterEnabled;
-    BOOL _toggledFilter;
+    BOOL _sortByStops;
     
 //    BOOL _hideButton;  // Don't allow filtered for Rail as a WAR train end on any number of lines.  Sorting will suffer!
     
@@ -80,16 +80,16 @@
     
     
     _filterEnabled = NO;
-    _toggledFilter = NO;
-//    _isRail = YES;  // YES will display the filter button from being visible
+    
+    
     
     _replacement = [[NSMutableDictionary alloc] init];
 //    [_replacement setObject:@"Main St (Norristown)" forKey:@"Main Street"];
 //    [_replacement setObject:@"Norristown (Main St)" forKey:@"Main Street"];
     [_replacement setObject:@"Highland Avenue (WIL)" forKey:@"Highland Avenue"];
-    [_replacement setObject:@"Highland (CHW)" forKey:@"Highland"];
-    [_replacement setObject:@"Elm Street (NOR)" forKey:@"Norristown"];
-    [_replacement setObject:@"Main Street (NOR)" forKey:@"Main Street"];
+    [_replacement setObject:@"Highland (CHW)"        forKey:@"Highland"];
+    [_replacement setObject:@"Elm Street (NOR)"      forKey:@"Norristown"];
+    [_replacement setObject:@"Main Street (NOR)"     forKey:@"Main Street"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -215,12 +215,13 @@
         case kGTFSRouteTypeTrolley:  // Note: NHSL is considered a trolley according to the GTFS data.
             if ( [stopData.route_short_name isEqualToString:@"NHSL"] )
                 [stopData setRoute_type: [NSNumber numberWithInt: kGTFSRouteTypeSubway] ];
-                
-            [self loadBusStopNames];
-        
-            break;
         case kGTFSRouteTypeSubway:
-            [self loadBusStopNames];
+        
+//            if ( _sortByStops )
+                [self loadBusStopNames];
+//            else
+//                [self loadRailStopNames];
+            
             break;
             
         case kGTFSRouteTypeRail:
@@ -263,13 +264,42 @@
 -(void) addFilterButton
 {
     
+    id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"StopNamesTVC:FilterOption"];
+    
+    if ( object == nil )
+    {
+        _sortByStops   = 0;  // Default to alphabetical order
+    }
+    else  // Since object is not nill, store it in _sortByStops
+    {
+        _sortByStops   = [object boolValue];
+    }
+
+    
     if ( _filterEnabled )
     {
         
         if ( self.navigationItem.rightBarButtonItem == nil )
         {
-            CustomFlatBarButton *rightButton = [[CustomFlatBarButton alloc] initWithImageNamed:@"filter.png" withTarget:self andWithAction:@selector(doneButtonPressed:) ];
+            
+            CustomFlatBarButton *rightButton = [[CustomFlatBarButton alloc] initWithImageNamed:@"Filter-abc.png" withTarget:self andWithAction:@selector(doneButtonPressed:) ];
+            [rightButton addImage: [UIImage imageNamed:@"Filter-123.png"] forState:UIControlStateSelected];
+//            [rightButton addImage: [UIImage imageNamed:@"Filter-123.png"] forState:UIControlStateHighlighted];
+
+            
             [self.navigationItem setRightBarButtonItem: rightButton];
+            
+            if ( _sortByStops )
+            {
+//                [rightButton.button setEnabled:YES];
+//                [rightButton.button setHighlighted:YES];
+                [rightButton.button setSelected:YES];
+            }
+            else
+            {
+                [rightButton.button setSelected:NO];
+            }
+            
         }
     }
     else
@@ -396,17 +426,78 @@
 }
 
 
--(NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+-(UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    
+    if ( self.headerColorArray == nil && [self.headerColorArray count] != [_tableData numOfSections] )
+        return nil;
+    
+    NSString *headerTitle = [NSString stringWithFormat:@"To %@", [_tableData titleForSection: section] ];
+    if ( [headerTitle isEqualToString:@"To Data"] )
+        return nil;
+
+    
+    // Section 0 - Itinerary Cell
+    // Section 1 - In Service Trains
+    // Section 2 - Trips
+    
+    //    [headerLabel setFrame:CGRectMake(0, 0, self.view.frame.size.width - 5, 22)];
+    
+    
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame: CGRectMake(6, 0, self.view.frame.size.width - 5, 22)];
+    [headerLabel setFont:    [UIFont fontWithName:@"TrebuchetMS-Bold" size:17.0f] ];
+    [headerLabel setTextColor: [UIColor whiteColor] ];
+    [headerLabel setBackgroundColor: [UIColor clearColor] ];
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.height -5, 22)];
+    
+    
+    [headerLabel setText: headerTitle];
+    [headerView setBackgroundColor: [self.headerColorArray objectAtIndex: section] ];
+    
+    
+    [headerView addSubview: headerLabel];
+    
+//    float x = 4.0;
+//    float y = 4.0;
+//    CGRect bound = CGRectMake(0, 0, self.view.frame.size.width - 5, 22);
+//    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect: bound
+//                                                   byRoundingCorners: UIRectCornerBottomRight | UIRectCornerTopRight
+//                                                         cornerRadii: CGSizeMake(x, y)];
+//    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+//    maskLayer.frame = bound;
+//    maskLayer.path= maskPath.CGPath;
+//    
+//    headerView.layer.mask = maskLayer;
+    
+    return headerView;
+    
+}
+
+
+-(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     
     NSString *header = [NSString stringWithFormat:@"To %@", [_tableData titleForSection: section] ];
-    
+
     if ( [header isEqualToString:@"To Data"] )
-        return nil;
+        return 0.0f;
     else
-        return header;
-    
+        return 22.0f;
+
 }
+
+//-(NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    
+//    NSString *header = [NSString stringWithFormat:@"To %@", [_tableData titleForSection: section] ];
+//    
+//    if ( [header isEqualToString:@"To Data"] )
+//        return nil;
+//    else
+//        return header;
+//    
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
 {
@@ -478,8 +569,6 @@
     {
         NSLog(@"Selected Current Location");
         
-//        [self.navigationItem.rightBarButtonItem setEnabled:NO];  // Disable button if Current Location was selected
-        
         NSString * storyboardName = @"CurrentLocationStoryboard";
         UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
         CurrentLocationTableViewController *clVC = (CurrentLocationTableViewController*)[storyboard instantiateInitialViewController];
@@ -497,7 +586,6 @@
         [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 
         [self.navigationController pushViewController:clVC animated:YES];
-        
     }
     else if ( indexPath.row == 1 )
     {
@@ -514,7 +602,6 @@
         
         [self.navigationController pushViewController:mdsGVC animated:YES];
         [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
-        
     }
     else
     {
@@ -575,6 +662,9 @@
         {
             
             NSString *queryStr = [NSString stringWithFormat:@"SELECT dircode, Route, DirectionDescription FROM bus_stop_directions WHERE Route=\"%@\" ORDER BY dircode", stopData.route_short_name];
+            
+            NSLog(@"direciton queryStr: %@", queryStr);
+            
             FMResultSet *results = [database executeQuery: queryStr];
             if ( [database hadError] )  // Check for errors
             {
@@ -699,7 +789,7 @@
         [trip setWheelboard_boarding: [NSNumber numberWithBool: [results intForColumn:@"wheelchair_boarding"] ] ];
         [trip setStart_stop_sequence: [NSNumber numberWithInt: [results intForColumn:@"stop_sequence"] ] ];
         
-        NSLog(@"%@ - %@", trip.start_stop_name, trip.direction_id);
+//        NSLog(@"%@ - %@", trip.start_stop_name, trip.direction_id);
         
         NSString *header = [headerToDirection objectForKey:[NSString stringWithFormat:@"%d", [direction_id intValue] ] ];
         if ( header != nil )
@@ -753,166 +843,14 @@
     
 
     [_tableData generateIndexWithKey:@"start_stop_name" forSectionTitles:[NSArray arrayWithArray: headers] ];
-//    [self.tableView reloadData];
-    
-//    if ( _doubleSectionMode )
-//    {
-//        NSDictionary *indices0 = [_stopsSection0 dictionaryOfIndicesandTitlesForKey:@"start_stop_name" forSection: [NSNumber numberWithInt:0] ];
-//        NSDictionary *indices1 = [_stopsSection1 dictionaryOfIndicesandTitlesForKey:@"start_stop_name" forSection: [NSNumber numberWithInt:1] ];
-//        
-//        //        NSDictionaactivry *indices1 = [_stopsSection1 dictionaryOfIndicesandTitlesForKey:@"start_stop_name"];
-//        
-//        _sectionIndex = [indices0 objectForKey:@"index"];
-//        [_sectionIndex addObject:[NSIndexPath indexPathForRow:0 inSection:1] ];  // Divider
-//        [_sectionIndex addObjectsFromArray: [indices1 objectForKey:@"index"] ];
-//        
-//        _sectionTitle = [indices0 objectForKey:@"title"];
-//        [_sectionTitle addObject:@"—"];
-//        [_sectionTitle addObjectsFromArray: [indices1 objectForKey:@"title"] ];
-//        
-//    }
-//    else
-//    {
-//        //        [_stopNames sort];
-//        NSDictionary *indices0 = [_stopsSection0 dictionaryOfIndicesandTitlesForKey:@"start_stop_name" forSection: [NSNumber numberWithInt:0] ];
-//        
-//        _sectionIndex = [indices0 objectForKey:@"index"];
-//        _sectionTitle = [indices0 objectForKey:@"title"];
-//    }
-//    
-//    
-//    //    [_stopNames generateIndex];
-//    NSTimeInterval diff = [ [NSDate date] timeIntervalSinceDate: startTime];
-//    NSLog(@"SNFRTC - %6.3f seconds have passed.", diff);
-//    
     
 }
 
-
--(void) loadSubwayStopNames
-{
-    // Should only be called for BSL, MFL and NHSL routes
-    
-    
-    // Read stop data from database
-    // Populate _tableData
-    // Add _currentLocation and _enterAddress to the top of each header
-    // Generate index
-    
-    
-    [_tableData removeAllObjects];
-    
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
-    
-    if ( ![database open] )
-    {
-        [database close];
-        return;
-    }
-    
-    
-    
-    // First, get the name for each header (the direction the route is heading in)
-    
-    BOOL addedHeader = NO;
-    
-    NSMutableDictionary *headerToDirection = [[NSMutableDictionary alloc] initWithCapacity:2];
-    NSMutableArray *headers = [[NSMutableArray alloc] initWithCapacity:2];
-    
-    if ( ([stopData.route_type intValue] == kGTFSRouteTypeBus) || ([stopData.route_type intValue] == kGTFSRouteTypeTrolley) )
-    {
-        
-        NSString *queryStr = [NSString stringWithFormat:@"SELECT dircode, Route, DirectionDescription FROM bus_stop_directions WHERE Route=\"%@\" ORDER BY dircode", stopData.route_short_name];
-        
-        FMResultSet *results = [database executeQuery: queryStr];
-        if ( [database hadError] )  // Check for errors
-        {
-            
-            int errorCode = [database lastErrorCode];
-            NSString *errorMsg = [database lastErrorMessage];
-            
-            NSLog(@"SNFRTC - query failure, code: %d, %@", errorCode, errorMsg);
-            NSLog(@"SNFRTC - query str: %@", queryStr);
-            
-            return;  // If an error occurred, there's nothing else to do but exit
-            
-        } // if ( [database hadError] )
-        
-        //        [_nameForSection removeAllObjects];
-        while ( [results next] )
-        {
-            NSString *header  = [results stringForColumn:@"DirectionDescription"];
-            NSString *dircode = [results stringForColumn:@"dircode"];
-            
-            if ( [dircode isEqualToString:@"NULL"] )
-                continue;
-            
-            //            [_nameForSection addObject:header];
-            //            [directionToHeaderArr addObject: header];
-            
-            [_tableData addSectionWithTitle: header];
-            [headerToDirection setObject:header forKey: dircode ];
-            [headers addObject:header];
-            addedHeader = YES;
-        }  // while ( [results next] )
-        
-        
-        // If no headers were added, put in some default ones
-        if ( !addedHeader )
-        {
-            // TODO: What if Route is a Loop and has one direction?
-            [headerToDirection setObject:@"Dir0" forKey:@"0"];
-            [headerToDirection setObject:@"Dir1" forKey:@"1"];
-            
-            [headers addObject:@"Dir0"];
-            [headers addObject:@"Dir1"];
-            
-            [_tableData addSectionWithTitle:@"Dir0"];
-            [_tableData addSectionWithTitle:@"Dir1"];
-        }
-        
-    }  // if ( ([stopData.route_type intValue] == kGTFSRouteTypeBus ) || ( ... ) )
-    
-    
-    
-    
-    NSString *queryStr;
-    queryStr = @"SELECT stops_bus.stop_name, stop_times_DB.stop_id, stops_bus.wheelchair_boarding, stop_sequence FROM trips_DB JOIN stop_times_DB ON trips_DB.trip_id=stop_times_DB.trip_id NATURAL JOIN stops_bus GROUP BY stop_times_DB.stop_id ORDER BY stops_bus.stop_name;";
-    
-    queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString: stopData.route_short_name];
-    
-    
-    FMResultSet *results = [database executeQuery: queryStr];
-    if ( [database hadError] )  // Check for errors
-    {
-        
-        int errorCode = [database lastErrorCode];
-        NSString *errorMsg = [database lastErrorMessage];
-        
-        NSLog(@"SNTC - query failure, code: %d, %@", errorCode, errorMsg);
-        NSLog(@"SNTC - query str: %@", queryStr);
-        
-        return;  // If an error occurred, there's nothing else to do but exit
-        
-    }
-    
-    while ([results next])
-    {
-        
-    }
-    
-}
 
 
 -(void) loadRailStopNames
 {
     
-    //    [stopNames removeAllObjects];
-    
-//    [_stopNames clearData];
-
-//    _isRail = YES;
-    
     [_tableData removeAllObjects];
     
     
@@ -927,30 +865,31 @@
     
     NSString *queryStr;
 
-    GTFSRouteType routeType = [stopData.route_type intValue];
     
+    GTFSRouteType routeType = [stopData.route_type intValue];
     switch (routeType)
     {
         case kGTFSRouteTypeRail:
-            queryStr = @"SELECT stop_name, stop_id, wheelchair_boarding FROM stops_rail ORDER BY stop_name";
-//            queryStr = [NSString stringWithFormat:@"SELECT stop_name, stop_id, direction_id, wheelchair_boarding, stop_sequence FROM stopNameLookUpTable NATURAL JOIN stops_rail WHERE route_short_name=\"%@\" ORDER BY stop_name", stopData.route_short_name];
-
-//            _isRail = YES;
+            queryStr = @"SELECT stop_name, stop_id, wheelchair_boarding, null as stop_sequence FROM stops_rail ORDER BY stop_name";
             [self.navigationItem setRightBarButtonItem:nil];
+            
+            break;
+            
+        case kGTFSRouteTypeSubway:
+            
+            queryStr = @"SELECT s.stop_name, st.stop_id, t.direction_id, s.wheelchair_boarding, stop_sequence FROM trips_DB t JOIN stop_times_DB st ON t.trip_id=st.trip_id NATURAL JOIN stops_bus s GROUP BY st.stop_id ORDER BY s.stop_name;";
+            
+            queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString: stopData.route_short_name];
             
             break;
         default:
             queryStr = @"SELECT stops_bus.stop_name, stop_times_DB.stop_id, stops_bus.wheelchair_boarding, stop_sequence FROM trips_DB JOIN stop_times_DB ON trips_DB.trip_id=stop_times_DB.trip_id NATURAL JOIN stops_bus GROUP BY stop_times_DB.stop_id ORDER BY stops_bus.stop_name;";
-//            queryStr = @"SELECT stops_bus.stop_name, stop_times_DB.stop_id, direction_id, stops_bus.wheelchair_boarding, stop_sequence FROM trips_DB JOIN stop_times_DB ON trips_DB.trip_id=stop_times_DB.trip_id NATURAL JOIN stops_bus GROUP BY stop_times_DB.stop_id ORDER BY stops_bus.stop_name;";
             
             queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString: stopData.route_short_name];
-            
-//            _isRail = NO;
 
             break;
-    }
+    } // switch (routeType)
 
-    
     
     
     FMResultSet *results = [database executeQuery: queryStr];
@@ -1059,12 +998,30 @@
 //    [self selectionMade];
     
     // Filter results
-    _toggledFilter = !_toggledFilter;
+    _sortByStops   = !_sortByStops;
+
+    CustomFlatBarButton *rightButton = (CustomFlatBarButton*)self.navigationItem.rightBarButtonItem;
+    if ( _sortByStops )
+    {
+        //                [rightButton.button setEnabled:YES];
+        //                [rightButton.button setHighlighted:YES];
+        [rightButton.button setSelected:YES];
+    }
+    else
+    {
+        [rightButton.button setSelected:NO];
+    }
+
+    
+    // Save changes to toggle option to user preferences
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:_sortByStops] forKey:@"StopNamesTVC:FilterOption"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
     
     int numSection = [_tableData numOfSections];
     NSMutableArray *headers = [[NSMutableArray alloc] init];
 
-    if ( _toggledFilter )
+    if ( _sortByStops )
     {
     
         for (int LCV = 0; LCV < numSection; LCV++)
@@ -1089,8 +1046,6 @@
     {
         
         // Since we are sorting by name, Current Location and Enter Address will not stay at the top.
-        
-        
         for (int LCV = 0; LCV < numSection; LCV++)
         {
             NSMutableArray *tempArr = (NSMutableArray*)[_tableData objectForSection:LCV ];

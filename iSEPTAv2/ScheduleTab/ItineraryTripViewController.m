@@ -2315,7 +2315,9 @@
     [weakOp addExecutionBlock:^{
         
         if ( !_viewIsClosing )
+        {
             [self loadLatestJSONData];
+        }
         
         if ( ![weakOp isCancelled] )
         {

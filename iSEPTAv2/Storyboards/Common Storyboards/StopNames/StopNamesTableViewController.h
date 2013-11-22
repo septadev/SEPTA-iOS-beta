@@ -88,6 +88,8 @@ typedef NS_ENUM(NSInteger, StopNamesTableViewControllerButtonPressed)
 @property (nonatomic, assign) SEPTARouteTypes routeType;
 @property (nonatomic, strong) NSString *backImageName;
 
+@property (nonatomic, strong) NSArray *headerColorArray;
+
 -(void) enableFilter:(BOOL) yesNO;
 -(void) setSelectionType: (NSInteger) selectionType;
 -(NSInteger) selectionType;

@@ -17,8 +17,8 @@
 {
 
     // I feel that this is a horrible idea, but meh.
-
     self = [super initWithCustomView: [UIButton buttonWithType:UIButtonTypeCustom] ];
+    
     if ( self != nil )
     {
     
@@ -37,10 +37,18 @@
         }
         
         [myButton addTarget:delegate action:sel forControlEvents:UIControlEventTouchUpInside];
+        [self setButton: myButton];
         
     }
     return self;
     
+}
+
+
+
+-(void) addImage:(UIImage*) image forState:(UIControlState) state
+{
+    [self.button setImage: image forState: state];
 }
 
 

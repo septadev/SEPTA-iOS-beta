@@ -32,6 +32,10 @@
 
 -(void) fetchAlert;
 -(void) addRoute:(NSString*) routeName;
+-(void) removeRoute:(NSString*) routeName;
+
+-(void) clearAllRoutes;
+
 -(NSDictionary*) getAlert;
 
 @end

@@ -89,6 +89,9 @@ sub mainLoop
     populateStopIDRouteLookup();  # Used for Find Nearest Route
     populateGlensideCombined();
     repairBSOMFOArrivalTime();  # Fix issue where BSO and MFO have times over 2400.  This makes sense to service planning, but not in the context of the app
+    removeBadMFLStops();
+    removeEmployeeOnlyStops();
+    
 
     
     
@@ -1588,6 +1591,67 @@ sub repairBSOMFOArrivalTime
     
     my $baseUpdate = "UPDATE stop_times_bus SET arrival_time = arrival_time-2400 WHERE arrival_time > 2400 AND trip_id IN (SELECT trip_id FROM trips_bus WHERE route_id IN (\"MFO\", \"BSO\") );";
     $dbh->do($baseUpdate);
+    
+    $dbh->disconnect();
+    
+    
+}
+
+
+sub removeBadMFLStops
+{
+    
+    print "rBMFLS  - Remove 69th St Transportation Center MFL East stop from Westbound trains\n";  # Passengers are unable to stay on the train as it loops around from the West to East stop.
+    
+    # E.g. (from prettifyStops.pl)
+    # 3775411   18:43:00   18:43:00   27    7     1     12026   1      Millbourne Station (2446)
+    # 3775411   18:44:00   18:44:00   28    7     1     12026   2      69th St Transportation Center MFL West (20845)
+    # 3775411   18:47:00   18:47:00   29    7     1     12026   1      69th St Transportation Center MFL East (416)
+    
+    # The last stop (416) shouldn't be there as passengers cannot travel from 20845 -> 416.
+    
+    
+    # --==  Connect to DB  ==--
+    my $dbh = DBI->connect(
+    "dbi:SQLite:dbname=$dbFileName",
+    "",
+    "",
+    { RaiseError => 1 },
+    ) or die "DBIerr: " . $DBI::err . "\nDBIerrstr: " . $DBI::errstr . "\nGTFS - DBName: $dbFileName.\n\n";
+    
+    my $baseDelete = "DELETE FROM stop_times_MFL WHERE trip_id IN (SELECT trip_id FROM trips_MFL NATURAL JOIN stop_times_MFL NATURAL JOIN stops_bus WHERE stop_id IN (SELECT stop_id FROM stops_bus WHERE stop_id IN (416, 20845) ) GROUP BY trip_id HAVING count(trip_id) > 1) AND stop_id=416;";
+    $dbh->do($baseDelete);
+    
+    $dbh->disconnect();
+    
+    
+}
+
+
+
+sub removeEmployeeOnlyStops
+{
+    
+    print "rEOS  - Remove all stop_times where the stop_name is Employees Only\n";
+    
+    # E.g.
+    #   SELECT * FROM stops_bus WHERE stop_name LIKE '%employees only%';  returns
+    #
+    # 30855|Employee Platform - Employees Only|39.964486|-75.262625|
+    # 30856|Employee Platform - Employees Only|39.964513|-75.263262|
+    
+    # These are not valid stops.  At the time these comments were written, only 30855 is found in stop_times_bus
+    
+    # --==  Connect to DB  ==--
+    my $dbh = DBI->connect(
+    "dbi:SQLite:dbname=$dbFileName",
+    "",
+    "",
+    { RaiseError => 1 },
+    ) or die "DBIerr: " . $DBI::err . "\nDBIerrstr: " . $DBI::errstr . "\nGTFS - DBName: $dbFileName.\n\n";
+    
+    my $baseDelete = "DELETE FROM stop_times_bus WHERE stop_id IN (SELECT stop_id FROM stops_bus WHERE stop_name LIKE '%employees only%');";
+    $dbh->do($baseDelete);
     
     $dbh->disconnect();
     

@@ -66,8 +66,26 @@
 #import "TripDetailsTableController.h"
 
 
-#define DEFAULT_START_MESSAGE @"Click to enter destination"
-#define DEFAULT_END_MESSAGE   @"Click to enter destination"
+#define DEFAULT_START_MESSAGE @"Enter start stop"
+#define DEFAULT_END_MESSAGE   @"Enter end stop"
+
+
+// --==
+// --==  Alerts  ==--
+// --==
+//#define REFRESH_NO_STOPS      @"select trips before refreshing"
+//#define REFRESH_READY         @"click to refresh data"
+//#define REFRESH_IN_UNKNOWN    @"refreshing in..."
+//#define REFRESH_IN_X_SECS     @"refreshing in X seconds"
+//
+//#define REFRESH_NOW           @"refreshing now"
+//#define REFRESH_NO_CONNECTION @"no Internet connection detected"
+
+#define ALERTS_STARTUP    @"Fetching latest alerts..."
+#define ALERTS_EMPTY      @"No alerts available for this route"
+#define ALERTS_FOUND      @"Click to view alerts"
+
+
 
 #define DEFAULT_MESSAGE @"Click to enter destination"
 #define CELL_REFRESH_RATE 60.0f/6.0f   // 6 times a minute, 10 seconds refresh rate

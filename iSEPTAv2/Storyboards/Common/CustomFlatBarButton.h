@@ -20,7 +20,10 @@
 @property (nonatomic, strong) UIButton *button;
 //@property (nonatomic, weak) id <CustomBackBarButtonProtocol> delegate;
 
+
 //-(id) initWithImageNamed:(NSString*) imageName withDelegate:(id) delegate;
 -(id) initWithImageNamed:(NSString*) imageName withTarget:(id) delegate andWithAction:(SEL) sel;
+-(void) addImage:(UIImage*) image forState:(UIControlState) state;
+
 
 @end

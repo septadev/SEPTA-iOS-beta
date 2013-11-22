@@ -72,7 +72,6 @@
 
     TabbedButton *_tBtnTransit;
     
-    
     // --==  CustomBarButton
     NSString *_backButtonImage;
     
@@ -281,6 +280,11 @@
     else
         [self setFavoriteHighlight:NO];
 
+    
+    _alertsAPI = [[GetAlertDataAPI alloc] init];
+    [_alertsAPI setDelegate:self];
+
+    
     [self configureDropDownMenu];
 
     [self configureTabs];
@@ -288,6 +292,7 @@
     [self updateServiceID];
     
     [self loadTripsInTheBackground];
+//    [self getAdvisories];
     
     
 }
@@ -412,18 +417,19 @@
                                                       }];
     
     
-//    REMenuItem *advisoryItem = [[REMenuItem alloc] initWithTitle:@"Advisory"
-//                                                        subtitle:@""
-//                                                           image:[UIImage imageNamed:@"Advisory.png"]
-//                                                highlightedImage:nil
-//                                                          action:^(REMenuItem *item) {
-//                                                              [self loadAdvisories];
-//                                                          }];
+    // Can init with CustomView, display the icon for which alerts are available
+    REMenuItem *advisoryItem = [[REMenuItem alloc] initWithTitle:@"Advisory"
+                                            subtitle:ALERTS_STARTUP
+                                               image:[UIImage imageNamed:@"Advisory.png"]
+                                    highlightedImage:nil
+                                              action:^(REMenuItem *item) {
+                                                  [self loadAdvisories];
+                                                  }];
     
     
     
     
-    _menu = [[REMenu alloc] initWithItems:@[favoritesItem, fareItem] ];
+    _menu = [[REMenu alloc] initWithItems:@[favoritesItem, fareItem, advisoryItem] ];
     _menu.cornerRadius = 4;
     _menu.shadowRadius = 4;
     _menu.shadowColor = [UIColor blackColor];
@@ -438,6 +444,7 @@
     
     _menu.textColor = [UIColor whiteColor];
     _menu.subtitleTextColor = [UIColor whiteColor];
+    
     
 }
 
@@ -502,6 +509,7 @@
             break;
     }
     
+
     [self.imgTabbedLabel setBackgroundColor: selectedBGColor];
 //    [self.lblTabbedLabel setText: @"Test - aAmMtT"];
 
@@ -760,6 +768,8 @@
 //    
 //    [self setSegmentMapFavorite:nil];
 
+    [_alertsAPI setDelegate:nil];
+    _alertsAPI = nil;
     
     [self setTableTrips:nil];
     [self setImgTabbedLabel:nil];
@@ -1796,6 +1806,8 @@
         [[cell textLabel] setText: _message];
         [[cell textLabel] setFont: [UIFont fontWithName:@"TrebuchetMS-Bold" size:17.0f] ];
         
+        [cell setBackgroundColor:[UIColor clearColor] ];
+        
     }
     
     
@@ -2355,7 +2367,6 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"StopNamesStoryboard" bundle:nil];
     StopNamesTableViewController *sntvc = (StopNamesTableViewController*)[storyboard instantiateInitialViewController];
     
-    [sntvc enableFilter:YES];
     
     [sntvc setStopData: _routeData];
     [sntvc setSelectionType: selType];
@@ -2990,7 +3001,10 @@
     [weakOp addExecutionBlock:^{
         
         if ( !_viewIsClosing )
+        {
             [self loadLatestJSONData];
+            [self getAdvisories];
+        }
         
         if ( ![weakOp isCancelled] )
         {
@@ -3390,6 +3404,13 @@
     StopNamesTableViewController *sntvc = (StopNamesTableViewController*)[storyboard instantiateInitialViewController];
     
     [sntvc enableFilter:YES];
+    
+    NSMutableArray *colorArray = [[NSMutableArray alloc] init];
+    [colorArray addObject: self.imgTabbedLabel.backgroundColor];
+    [colorArray addObject: self.imgTabbedLabel.backgroundColor];
+    [sntvc setHeaderColorArray: colorArray];
+
+    
     // Pass information to the stopNames VC
     [sntvc setStopData: _routeData];          // Contains: start/end stop names and id, along with routeType -- the data
     [sntvc setSelectionType: selType];   // Determines its behavior, whether to show only the start, end or both start/end stops information
@@ -3517,16 +3538,20 @@
 
 -(void) loadAdvisories
 {
-    
-    NSString *storyboardName = @"SystemStatusStoryboard";
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
-    SystemAlertsViewController *saVC = (SystemAlertsViewController*)[storyboard instantiateViewControllerWithIdentifier:@"SystemAlertsStoryboard"];
-    
-    [saVC setAlertArr: [NSMutableArray arrayWithObject: _currentAlert] ];
-    [saVC setBackImageName: _backButtonImage];
-    
-    [self.navigationController pushViewController:saVC animated:YES];
+  
 
+    if  ( _currentAlert != nil )
+    {
+        NSString *storyboardName = @"SystemStatusStoryboard";
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+        SystemAlertsViewController *saVC = (SystemAlertsViewController*)[storyboard instantiateViewControllerWithIdentifier:@"SystemAlertsStoryboard"];
+        
+        [saVC setAlertArr: [NSMutableArray arrayWithObject: _currentAlert] ];
+        [saVC setBackImageName: _backButtonImage];
+        
+        [self.navigationController pushViewController:saVC animated:YES];
+    }
+    
     
 }
 
@@ -3534,11 +3559,48 @@
 -(void) getAdvisories
 {
     
-    _alertsAPI = [[GetAlertDataAPI alloc] init];
-    [_alertsAPI setDelegate:self];
+    [_alertsAPI clearAllRoutes];
+    
+    NSMutableDictionary *shortToAlertNameLookUp = [[NSMutableDictionary alloc] init];
+    
+//    [shortToAlertNameLookUp setObject:@"AlertName" forKey:@"ShortName"];
+    [shortToAlertNameLookUp setObject:@"che" forKey:@"CHE"];
+    [shortToAlertNameLookUp setObject:@"chw" forKey:@"CHW"];
+    [shortToAlertNameLookUp setObject:@"cyn" forKey:@"CYN"];
 
-    [_alertsAPI addRoute:self.routeData.route_short_name];
-    [_alertsAPI fetchAlert];
+    [shortToAlertNameLookUp setObject:@"fxc" forKey:@"FOX"];
+    [shortToAlertNameLookUp setObject:@"landdoy" forKey:@"LAN"];
+    [shortToAlertNameLookUp setObject:@"landdoy" forKey:@"DOY"];
+    [shortToAlertNameLookUp setObject:@"med" forKey:@"MED"];
+    
+    [shortToAlertNameLookUp setObject:@"nor" forKey:@"NOR"];
+    [shortToAlertNameLookUp setObject:@"pao" forKey:@"PAO"];
+    [shortToAlertNameLookUp setObject:@"trent" forKey:@"TRE"];
+
+    [shortToAlertNameLookUp setObject:@"warm" forKey:@"WAR"];
+    [shortToAlertNameLookUp setObject:@"wilm" forKey:@"WIL"];
+    [shortToAlertNameLookUp setObject:@"wtren" forKey:@"WTR"];
+    
+    [shortToAlertNameLookUp setObject:@"gc" forKey:@"GC"];
+
+    NSString *alertName = [shortToAlertNameLookUp objectForKey: self.routeData.route_short_name];
+    
+//    if ( alertName == nil  && [self.routeData.route_short_name isEqualToString:@"GC"] )
+//    {
+//        [_alertsAPI addRoute: [shortToAlertNameLookUp objectForKey:@"WAR"] ];
+//        [_alertsAPI addRoute: [shortToAlertNameLookUp objectForKey:@"LAN"] ];
+//        [_alertsAPI addRoute: [shortToAlertNameLookUp objectForKey:@"WTR"] ];
+//    }
+//    else
+//        [_alertsAPI addRoute: alertName];
+
+    if ( alertName != nil )
+    {
+        [_alertsAPI addRoute: alertName];
+        [_alertsAPI fetchAlert];
+    }
+    
+
     
 }
 
@@ -3556,21 +3618,33 @@
 #pragma mark - GetAlertsAPIProtocol
 -(void) alertFetched:(NSMutableArray *)alert
 {
+    
+    // TODO: Set badge (or remove if alerts went away)
+    
     if ( [alert count] == 0 )
+    {
+        REMenuItem *alertsItem = [[_menu items] objectAtIndex:2];
+        [alertsItem setSubtitle: ALERTS_EMPTY];
+        _currentAlert = nil;
+        
         return;
+    }
     
     _currentAlert = (SystemAlertObject*)[alert objectAtIndex:0];
-//    NSString *key;
-
     
     
     if ( [_currentAlert isAlert] )
     {
         // Update REMenu item with Advisory
+        REMenuItem *alertsItem = [[_menu items] objectAtIndex:2];
+        // Detour, alert, advisory, (suspension?)
+        [alertsItem setSubtitle: ALERTS_FOUND];
     }
     else
     {
         // Clear REMenu item
+        REMenuItem *alertsItem = [[_menu items] objectAtIndex:2];
+        [alertsItem setSubtitle: ALERTS_EMPTY];
     }
 
     
@@ -3580,7 +3654,8 @@
 -(void) dropDownMenuPressed:(id) sender
 {
     
-    
+    // TODO: Clear badges
+
     if (_menu.isOpen)
     {
         return [_menu close];

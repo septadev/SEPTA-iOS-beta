@@ -914,7 +914,6 @@
 -(void) dropDownMenuPressed:(id) sender
 {
     
-    
     if (_menu.isOpen)
     {
         [menuRefreshTimer invalidate];

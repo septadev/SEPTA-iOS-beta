@@ -33,6 +33,11 @@
     
 }
 
+-(void) clearAllRoutes
+{
+    [_routeNamesArr removeAllObjects];
+}
+
 -(void) addRoute:(NSString*) routeName
 {
     
@@ -105,6 +110,7 @@
                              } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,
                                          NSError *error, id JSON) {
                                  NSLog(@"Request Failure Because %@",[error userInfo]);
+                                 // TODO:  Set error flag, call delegate's alertFetched
                              }
                           ];
         
@@ -152,6 +158,7 @@
 
         }
         
+        // TODO: Always call alertFeteched, even if empty
         if ( [self.delegate respondsToSelector:@selector(alertFetched:)] )
         {
             [self.delegate alertFetched:alertsArr];
