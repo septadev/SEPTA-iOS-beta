@@ -17,6 +17,11 @@
 // Helper Classes
 #import "CustomFlatBarButton.h"
 #import "LineHeaderView.h"
+#import "ElevatorStatusObject.h"
+
+
+// PODs
+#import <Reachability/Reachability.h>
 
 
 //  --==
@@ -28,6 +33,7 @@ typedef NS_ENUM(NSInteger, SystemAlertType)
     kSystemAlertTypeSuspend,
     kSystemAlertTypeDetour,
     kSystemAlertTypeAdvisory,
+    kSystemAlertTypeElevator,
 };
 
 

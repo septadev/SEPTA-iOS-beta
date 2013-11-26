@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1280" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -16,10 +16,6 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="system_status_advisory.png" id="7">
                         <rect key="frame" x="244" y="7" width="40" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                    </imageView>
-                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="system_staus_suspended.png" id="6">
-                        <rect key="frame" x="199" y="-10" width="24" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="system_status_detour.png" id="5">
@@ -48,7 +44,6 @@
                 <outlet property="imgAlert" destination="4" id="9"/>
                 <outlet property="imgDetour" destination="5" id="10"/>
                 <outlet property="imgRouteIcon" destination="37" id="38"/>
-                <outlet property="imgSuspended" destination="6" id="11"/>
                 <outlet property="lblRouteName" destination="3" id="12"/>
             </connections>
         </tableViewCell>
@@ -57,6 +52,5 @@
         <image name="system_status_advisory.png" width="40" height="30"/>
         <image name="system_status_alert.png" width="40" height="30"/>
         <image name="system_status_detour.png" width="40" height="30"/>
-        <image name="system_staus_suspended.png" width="33" height="32"/>
     </resources>
 </document>

@@ -17,6 +17,8 @@
     NSMutableArray *_alertData;
     NSMutableArray *_buttonsArr;
     
+    ElevatorStatusObject *_esObject;
+    
 //    SystemStatusObject *_ssObject;
 }
 
@@ -220,7 +222,11 @@
 
 -(void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    [self displayHTML];
+    
+    if ( [[_ssObject mode] isEqualToString:@"Elevator"] )
+        [self displayElevatorHTML];
+    else
+        [self displayHTML];
     
     LineHeaderView *titleView = (LineHeaderView*)self.navigationItem.titleView;
 //    float navW = [(UIView*)[self.navigationItem.leftBarButtonItem  valueForKey:@"view"] frame].size.width;
@@ -531,11 +537,37 @@
 
 
 #pragma mark - Realtime Data Handling
+-(void) getElevatorData
+{
+ 
+    NSString *elevatorURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/elevator/"];
+    NSString *elevatorWebURL = [elevatorURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
+        
+        NSData *realTimeTrainInfo = [NSData dataWithContentsOfURL:[NSURL URLWithString: elevatorWebURL] ];
+        [self performSelectorOnMainThread:@selector(processElevatorStatusJSONData:) withObject: realTimeTrainInfo waitUntilDone:YES];
+        
+    });
+    
+}
+
 -(void) getAlertData
 {
     
+    Reachability *network = [Reachability reachabilityForInternetConnection];
+    if ( ![network isReachable] )
+        return;  // Don't bother continuing if no internet connection is available
+    
+    
     if ( [_ssObject route_id] == nil )
         return;
+    
+    if ( [[_ssObject mode] isEqualToString:@"Elevator"] )
+    {
+        [self getElevatorData];
+        return;
+    }
     
     NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/Alerts/get_alert_data.php?req1=%@", [_ssObject route_id] ];
     
@@ -549,6 +581,35 @@
         [self performSelectorOnMainThread:@selector(processSystemAlertJSONData:) withObject: realTimeTrainInfo waitUntilDone:YES];
         
     });
+    
+}
+
+
+-(void) processElevatorStatusJSONData:(NSData*) returnedData
+{
+ 
+    [SVProgressHUD dismiss];
+    
+    if ( returnedData == nil )  // No data returned.  This will cause NSJSONSerialization to return an error.
+        return;
+    
+    // This method is called once the realtime positioning data has been returned via the API is stored in data
+    
+    _esObject = [[ElevatorStatusObject alloc] init];
+    [_esObject setJSON: returnedData];
+    
+    
+    NSError *error;
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData: returnedData options:kNilOptions error:&error];
+    
+    if ( json == nil )
+        return;
+    
+    if ( error != nil )
+        return;  // Something bad happened, so just return.
+
+    
+    [self displayElevatorHTML];
     
 }
 
@@ -609,6 +670,30 @@
             
         }
     }
+    
+}
+
+
+-(void) displayElevatorHTML
+{
+    
+    NSMutableString *html;
+    html = [NSMutableString stringWithString:@"<html><style>body { font-family:\"Trebuchet MS\"; word-wrap:break-word;} tr:nth-child(2n+1) {background-color: #ddd;} </style><head><title>TITLE</title></head>"];
+    
+    
+    for (ElevatorResultsObject *erObj in _esObject.results)
+    {
+        
+        NSString *htmlTable = [NSString stringWithFormat:@"<div><br><font face=\"verdana\"><table><tbody><tr><td><b>Line:</b> </td><td>%@</td></tr><tr><td><b>Station:</b> </td><td>%@</td></tr><tr><td><b>Elevator:</b> </td><td>%@</td></tr><tr><td><b>Message:</b> </td><td>%@</td></tr></tbody></table><br></font></div>", [erObj line], [erObj station], [erObj elevator], [erObj message] ];
+        
+          [html appendFormat:@"<body>%@</body>", htmlTable];
+        
+    }
+    
+    [html appendFormat:@"</body>"];
+    [html appendString:@"</html>"];
+    
+    [webView loadHTMLString:html baseURL:nil];
     
 }
 

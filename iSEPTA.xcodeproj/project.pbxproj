@@ -199,6 +199,7 @@
 		27CDAAD416E649FC00F9CF4D /* TripCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CDAAD316E649FB00F9CF4D /* TripCell.m */; };
 		27CE31DD1678E61C007688AC /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CE31DC1678E61C007688AC /* Event.m */; };
 		27CFA30516E7EDD70070AA55 /* SEPTA.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 27CFA30416E7EDD70070AA55 /* SEPTA.sqlite */; };
+		27D4783B1845472B00854F2D /* ElevatorStatusObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D4783A1845472B00854F2D /* ElevatorStatusObject.m */; };
 		27D91F3017F0A5AE00627ECD /* TrainSlidingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D91F2F17F0A5AE00627ECD /* TrainSlidingStoryboard.storyboard */; };
 		27D91F3617F0A60100627ECD /* TrainSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D91F3517F0A60100627ECD /* TrainSlidingViewController.m */; };
 		27D91F3917F0A63F00627ECD /* TrainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D91F3817F0A63F00627ECD /* TrainMapViewController.m */; };
@@ -1068,6 +1069,8 @@
 		27CE31DB1678E61C007688AC /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		27CE31DC1678E61C007688AC /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		27CFA30416E7EDD70070AA55 /* SEPTA.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = SEPTA.sqlite; path = database/SEPTA.sqlite; sourceTree = SOURCE_ROOT; };
+		27D478391845472B00854F2D /* ElevatorStatusObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElevatorStatusObject.h; path = Storyboards/Realtime/SystemStatus/ElevatorStatusObject.h; sourceTree = "<group>"; };
+		27D4783A1845472B00854F2D /* ElevatorStatusObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElevatorStatusObject.m; path = Storyboards/Realtime/SystemStatus/ElevatorStatusObject.m; sourceTree = "<group>"; };
 		27D91F2F17F0A5AE00627ECD /* TrainSlidingStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrainSlidingStoryboard.storyboard; sourceTree = "<group>"; };
 		27D91F3417F0A60100627ECD /* TrainSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrainSlidingViewController.h; path = Storyboards/Realtime/TrainView/TrainSlidingViewController.h; sourceTree = "<group>"; };
 		27D91F3517F0A60100627ECD /* TrainSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrainSlidingViewController.m; path = Storyboards/Realtime/TrainView/TrainSlidingViewController.m; sourceTree = "<group>"; };
@@ -3147,6 +3150,8 @@
 				41D0ABBC168BFF1800345027 /* SystemStatusObject.m */,
 				41D0ABBE168C050700345027 /* SystemAlertObject.h */,
 				41D0ABBF168C050700345027 /* SystemAlertObject.m */,
+				27D478391845472B00854F2D /* ElevatorStatusObject.h */,
+				27D4783A1845472B00854F2D /* ElevatorStatusObject.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -5097,6 +5102,7 @@
 				27B7F7B916A9E6DF003DF486 /* MKMultiPolyLine.m in Sources */,
 				27504D2416DD19E7001B762A /* CommentQuickViewController.m in Sources */,
 				273A0B6817FF29720064B0FB /* MapMemoryTestViewController.m in Sources */,
+				27D4783B1845472B00854F2D /* ElevatorStatusObject.m in Sources */,
 				271AFD5C16E52B7E00A11B8E /* ItineraryObject.m in Sources */,
 				271AFD5F16E52B8E00A11B8E /* TripObject.m in Sources */,
 				27CDAAC816E63D2500F9CF4D /* ItineraryTripViewController.m in Sources */,

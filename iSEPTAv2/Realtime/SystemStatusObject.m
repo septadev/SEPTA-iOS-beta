@@ -22,6 +22,21 @@
 @synthesize mode;
 
 
+-(id) init
+{
+    
+    self = [super init];
+    if ( self )
+    {
+        self.isadvisory = @"No";
+        self.isalert    = @"N";
+        self.isdetour   = @"N";
+        self.issuspend  = @"N";
+    }
+    return self;
+    
+}
+
 -(NSInteger) numOfAlerts
 {
 //    return [isalert intValue] + [isadvisory intValue] + [isdetour intValue] + [issuspend intValue];

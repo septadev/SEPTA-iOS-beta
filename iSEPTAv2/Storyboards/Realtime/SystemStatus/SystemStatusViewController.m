@@ -15,9 +15,13 @@
 @implementation SystemStatusViewController
 {
     
-    NSMutableArray *_tableData;
+    SystemStatusObject *_elevatorStatus;
+    
+    NSMutableArray *_masterData;
+    TableViewStore *_tableData;
+    
     NSMutableArray *_alertData;
-    NSArray *_filteredData;
+    NSMutableArray *_filteredData;
     
     NSString *_filterMode;
     SystemStatusFilterType _filterType;
@@ -61,6 +65,9 @@
 	// Do any additional setup after loading the view.
     
     
+    _tableData = [[TableViewStore alloc] init];
+    
+    
     // --==  Register Your Nibs!  ==--
     [self.tableView registerNib: [UINib nibWithNibName:@"SystemStatusCell" bundle:nil] forCellReuseIdentifier:@"SystemStatusCell"];
     
@@ -75,7 +82,7 @@
     [self.view sendSubviewToBack:backgroundImage];
     
     
-    _tableData = [[NSMutableArray alloc] init];
+    _masterData = [[NSMutableArray alloc] init];
     
     _filterType = kSystemStatusFilterByBusTrolley;
     
@@ -90,6 +97,9 @@
     LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0, 500, 32) withTitle:@"System Status"];
     [self.navigationItem setTitleView:titleView];
 
+
+    CustomFlatBarButton *rightButton = [[CustomFlatBarButton alloc] initWithImageNamed:@"Filter.png" withTarget:self andWithAction:@selector(filterButtonPressed:) ];
+    [self.navigationItem setRightBarButtonItem: rightButton];
 
     /*
      
@@ -223,7 +233,7 @@
     [super didReceiveMemoryWarning];
     
     // Dispose of any resources that can be recreated.
-    _tableData = nil;
+    _masterData = nil;
     _filteredData = nil;
     
     _busSectionIndex = nil;
@@ -414,7 +424,7 @@
 //    else
 //    {
 //
-//        //        NextToArrivaJSONObject *ntaObject = [_tableData objectAtIndex:indexPath.row-2];
+//        //        NextToArrivaJSONObject *ntaObject = [_masterData objectAtIndex:indexPath.row-2];
 //        NextToArrivaJSONObject *ntaObject = [_tData returnObjectAtIndexPath:indexPath];
 //
 //        if ( [ntaObject Connection] == nil )
@@ -601,6 +611,19 @@
         
     });
     
+    
+    NSString *elevatorURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/elevator/"];
+    NSString *elevatorWebURL = [elevatorURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
+        
+        NSData *realTimeTrainInfo = [NSData dataWithContentsOfURL:[NSURL URLWithString: elevatorWebURL] ];
+        [self performSelectorOnMainThread:@selector(processElevatorStatusJSONData:) withObject: realTimeTrainInfo waitUntilDone:YES];
+        
+    });
+
+    
+    
 }
 
 
@@ -664,6 +687,47 @@
 //}
 
 
+-(void) processElevatorStatusJSONData:(NSData*) returnedData
+{
+    
+    NSError *error;
+
+    if ( returnedData == nil )  // Trying to serialize a nil object will generate an error
+        return;
+    
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData: returnedData options:kNilOptions error:&error];
+    
+    if ( json == nil || [json count] == 0 )
+        return;
+    
+    if ( error != nil )
+        return;  // Something bad happened, so just return.
+    
+//    _elevatorStatus = [json mutableCopy];
+    
+    _elevatorStatus = [[SystemStatusObject alloc] init];
+    
+//    NSString *jsonStr = @"{\"meta\":{\"elevators_out\":2,\"updated\":\"2013-11-2611:38:02\"},\"results\":[{\"line\":\"MarketFrankfordLine\",\"station\":\"Berks\",\"elevator\":\"Westbound\",\"message\":\"Noaccessto/fromstation\",\"alternate_url\":\"http://www.septa.org/access/alternate/mfl.html#berks\"},{\"line\":\"BroadStreetLine\",\"station\":\"CityHall\",\"elevator\":\"EastBound\",\"message\":\"Noaccessto/fromstation\",\"alternate_url\":\"http://www.septa.org/access/alternate/mfl.html#berks\"}]}";
+//    
+//    NSError *errorr;
+//    NSJSONSerialization *test = [NSJSONSerialization JSONObjectWithData:[jsonStr dataUsingEncoding:NSStringEncodingConversionAllowLossy] options:0 error:&errorr];
+    
+    NSMutableDictionary *meta = [json objectForKey:@"meta"];  // keys: elevators_out, updated
+    NSMutableArray   *results = [json objectForKey:@"results"];  // keys:  line, station, evelator, message, alternate_url
+    
+    [_elevatorStatus setMode      : @"Elevator"];
+    [_elevatorStatus setRoute_name: @"Elevator Outage"];
+    [_elevatorStatus setRoute_id  : @"Elevator" ];
+    [_elevatorStatus setLast_updated: [meta objectForKey:@"updated"] ];
+    
+    if ( [meta objectForKey:@"elevators_out"] > 0 )
+        [_elevatorStatus setIsalert:@"Y"];
+    
+    json = nil;
+    [self filterTableDataSourceBy: _filterType];
+
+}
+
 -(void) processSystemStatusJSONData:(NSData*) returnedData
 {
     
@@ -685,7 +749,7 @@
         return;  // Something bad happened, so just return.
     
     
-    [_tableData removeAllObjects];
+    [_masterData removeAllObjects];
     for (NSDictionary *data in json)
     {
         SystemStatusObject *ssObject = [[SystemStatusObject alloc] init];
@@ -711,7 +775,7 @@
         
         [ssObject setLast_updated:[data objectForKey:@"last_updated"] ];
         
-        [_tableData addObject:ssObject];
+        [_masterData addObject:ssObject];
         
     }
     
@@ -724,13 +788,13 @@
     
 }
 
-#pragma mark - UISegementedControl
-- (IBAction)segmentRouteTypeChanged:(id)sender
-{
-    
-    [self filterTableDataSource];
-    
-}
+//#pragma mark - UISegementedControl
+//- (IBAction)segmentRouteTypeChanged:(id)sender
+//{
+//    
+//    [self filterTableDataSource];
+//    
+//}
 
 
 -(void) filterTableDataSourceBy: (SystemStatusFilterType) filterType
@@ -768,9 +832,12 @@
     }  // switch (filterType)
     
     
-    _filteredData = [ [_tableData filteredArrayUsingPredicate:currentPredicate] sortedArrayUsingComparator: sortBy];
+    _filteredData = [[ [_masterData filteredArrayUsingPredicate:currentPredicate] sortedArrayUsingComparator: sortBy] mutableCopy];
     
-    [self generateIndex];
+    if ( _elevatorStatus != nil )
+        [_filteredData insertObject:_elevatorStatus atIndex:0];
+    
+//    [self generateIndex];
     
     [self.tableView reloadData];
     
@@ -782,62 +849,63 @@
 }
 
 
--(void) filterTableDataSource
-{
-    
-    NSPredicate *currentPredicate;
-    NSInteger index = [self.segmentRouteType selectedSegmentIndex];
-    id sortBy;
-    
-    switch (index) {
-        case 0:  // Bus
-            _filterMode = @"(Bus|Trolley)";
-            currentPredicate = [NSPredicate predicateWithFormat:@"mode MATCHES %@", _filterMode];
-            sortBy = sortStatusByNumberString;
-            
-            break;
-        case 1:  // Rail
-            _filterMode = @"Regional Rail";
-            currentPredicate = [NSPredicate predicateWithFormat:@"mode == %@", _filterMode];
-            sortBy = sortStatusName;
-            
-            break;
-        case 2:  // MFL/MFO
-            _filterMode = @"Market/ Frankford";
-            currentPredicate = [NSPredicate predicateWithFormat:@"mode == %@", _filterMode];
-            sortBy = sortStatusName;
-            
-            break;
-        case 3:  // BSS/BSO
-            _filterMode = @"Broad Street Line";
-            currentPredicate = [NSPredicate predicateWithFormat:@"mode == %@", _filterMode];
-            sortBy = sortStatusName;
-            
-            break;
-        case 4:  // NHSL
-            _filterMode = @"Norristown High Speed Line";
-            currentPredicate = [NSPredicate predicateWithFormat:@"mode == %@", _filterMode];
-            sortBy = sortStatusName;
-            
-            break;
-            
-        default:
-            break;
-    }
-    
-    //    currentPredicate = [NSPredicate predicateWithFormat:@"mode == %@", _filterMode];
-    _filteredData = [ [_tableData filteredArrayUsingPredicate:currentPredicate] sortedArrayUsingComparator: sortBy];
-    
-    [self generateIndex];
-    
-    [self.tableView reloadData];
-    
-    if ( [_filteredData count] > 0 )
-    {
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    }
-    
-}
+//-(void) filterTableDataSource
+//{
+//    
+//    NSPredicate *currentPredicate;
+//    NSInteger index = [self.segmentRouteType selectedSegmentIndex];
+//    id sortBy;
+//    
+//    switch (index) {
+//        case 0:  // Bus
+//            _filterMode = @"(Bus|Trolley)";
+//            currentPredicate = [NSPredicate predicateWithFormat:@"mode MATCHES %@", _filterMode];
+//            sortBy = sortStatusByNumberString;
+//            
+//            break;
+//        case 1:  // Rail
+//            _filterMode = @"Regional Rail";
+//            currentPredicate = [NSPredicate predicateWithFormat:@"mode == %@", _filterMode];
+//            sortBy = sortStatusName;
+//            
+//            break;
+//        case 2:  // MFL/MFO
+//            _filterMode = @"Market/ Frankford";
+//            currentPredicate = [NSPredicate predicateWithFormat:@"mode == %@", _filterMode];
+//            sortBy = sortStatusName;
+//            
+//            break;
+//        case 3:  // BSS/BSO
+//            _filterMode = @"Broad Street Line";
+//            currentPredicate = [NSPredicate predicateWithFormat:@"mode == %@", _filterMode];
+//            sortBy = sortStatusName;
+//            
+//            break;
+//        case 4:  // NHSL
+//            _filterMode = @"Norristown High Speed Line";
+//            currentPredicate = [NSPredicate predicateWithFormat:@"mode == %@", _filterMode];
+//            sortBy = sortStatusName;
+//            
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//    
+//    //    currentPredicate = [NSPredicate predicateWithFormat:@"mode == %@", _filterMode];
+//    _filteredData = [ [_masterData filteredArrayUsingPredicate:currentPredicate] sortedArrayUsingComparator: sortBy];
+//    
+//    
+//    [self generateIndex];
+//    
+//    [self.tableView reloadData];
+//    
+//    if ( [_filteredData count] > 0 )
+//    {
+//        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+//    }
+//    
+//}
 
 #pragma mark - Generating UITableView Index
 -(void) generateIndex
@@ -969,7 +1037,7 @@ NSComparisonResult (^sortStatusName)(SystemStatusObject*,SystemStatusObject*) = 
 //{
 //    [self.lblHeader setText:@"TRANSIT"];
 //    [self filterTableDataSourceBy: kSystemStatusFilterByBusTrolley];
-//    // Filter _tableData for only Bus and Trolley
+//    // Filter _masterData for only Bus and Trolley
 //    
 //    [self.btnTransit    setSelected:YES];
 //    [self.btnRail       setSelected:NO];
@@ -981,7 +1049,7 @@ NSComparisonResult (^sortStatusName)(SystemStatusObject*,SystemStatusObject*) = 
 //{
 //    [self.lblHeader setText:@"MFL, BSL, NHSL"];
 //    [self filterTableDataSourceBy: kSystemStatusFilterByMFLBSLNHSL];
-//    // Filter _tableData for only MFL, BSL, NHSL
+//    // Filter _masterData for only MFL, BSL, NHSL
 //    
 //    [self.btnTransit    setSelected:NO];
 //    [self.btnRail       setSelected:NO];
@@ -993,7 +1061,7 @@ NSComparisonResult (^sortStatusName)(SystemStatusObject*,SystemStatusObject*) = 
 //{
 //    [self.lblHeader setText:@"REGIONAL RAIL LINE"];
 //    [self filterTableDataSourceBy: kSystemStatusFilterByRail];
-//    // Filter _tableData for only Regional Rail
+//    // Filter _masterData for only Regional Rail
 //    
 //    [self.btnTransit    setSelected:NO];
 //    [self.btnRail       setSelected:YES];
@@ -1071,5 +1139,11 @@ NSComparisonResult (^sortStatusName)(SystemStatusObject*,SystemStatusObject*) = 
     [self filterTableDataSourceBy: _filterType];
     
 }
+
+-(void) filterButtonPressed:(id) sender
+{
+    NSLog(@"Filter Button Pressed");
+}
+
 
 @end

@@ -67,6 +67,10 @@
     {
         [self.imgRouteIcon setImage: [UIImage imageNamed:@"BSL_Owl.png"]];
     }
+    else if ( [[ssObject route_id] isEqualToString:@"Elevator"] )
+    {
+        // Add Elevator icon here
+    }
     
     
 }

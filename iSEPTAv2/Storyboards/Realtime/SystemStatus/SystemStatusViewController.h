@@ -30,6 +30,7 @@
 #import "CustomFlatBarButton.h"
 #import "LineHeaderView.h"
 #import "TabbedButton.h"
+#import "TableViewStore.h"
 
 
 // --==  Categories  ==--
@@ -47,6 +48,8 @@ typedef NS_ENUM(NSInteger, SystemStatusFilterType)
     kSystemStatusFilterByRail,
     kSystemStatusFilterByMFLBSLNHSL,
 };
+
+
 
 
 @interface SystemStatusViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, TabbedButtonProtocol>
