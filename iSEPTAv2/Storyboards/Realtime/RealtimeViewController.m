@@ -18,6 +18,10 @@
     UIImageView *_backgroundImage;
     BOOL _startTest;
     int _counter;
+    
+    SecondMenuAlertImageCycle _loopState;
+    UIView *_testView;
+    
 //    MMDrawerController *_drawerController;
 }
 
@@ -57,6 +61,11 @@
 //    {
 //        [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(popTheVC) userInfo:nil repeats:NO];
 //    }
+
+    
+    // Hold for 1 sec, transition for 1 sec.
+    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(loopImages) userInfo:nil repeats:YES];
+
     
 }
 
@@ -114,6 +123,8 @@
     _startTest = NO;
     _counter = 0;
     
+    _loopState = kSecondMenuAlertImageNone;
+    
     // Do any additional setup after loading the view.
 
 //    [self.view setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mainBackground.png"] ] ];  // Does not work
@@ -149,16 +160,16 @@
     [self.view setBackgroundColor: backgroundColor];
     
     
-//    UIImage *logo = [UIImage imageNamed:@"SEPTA_logo.png"];
-//
-//    SEPTATitle *newView = [[SEPTATitle alloc] initWithFrame:CGRectMake(0, 0, logo.size.width, logo.size.height) andWithTitle:@"Realtime"];
-//    [newView setImage: logo];
-//    
-//    [self.navigationItem setTitleView: newView];
-//    [self.navigationItem.titleView setNeedsDisplay];
+    UIImage *logo = [UIImage imageNamed:@"SEPTA_logo.png"];
+
+    SEPTATitle *newView = [[SEPTATitle alloc] initWithFrame:CGRectMake(0, 0, logo.size.width, logo.size.height) andWithTitle:@"Realtime"];
+    [newView setImage: logo];
+    
+    [self.navigationItem setTitleView: newView];
+    [self.navigationItem.titleView setNeedsDisplay];
     
 //    [self.view bringSubviewToFront:newView];
-        
+    
     
 //    [[UITabBarItem appearance] setTitleTextAttributes:@{
 //                                 UITextAttributeFont : [UIFont fontWithName:@"TrebuchetMS" size:40.0f],
@@ -178,6 +189,55 @@
     
 }
 
+-(void) loopImages
+{
+    
+    
+    
+    switch (_loopState)
+    {
+        case kSecondMenuAlertImageAlert:
+
+            break;
+            
+        case kSecondMenuAlertImageAdvisory:
+            
+            break;
+            
+        case kSecondMenuAlertImageDetour:
+            
+            break;
+            
+        default:
+            break;
+    }
+    
+    //    [UIView animateWithDuration:1.5f
+    //                          delay:0.5f
+    //                        options:UIViewAnimationCurveEaseInOut
+    //                     animations:^{
+    //                         [alertImg setAlpha:0.0f];
+    //                         [advisoryImg setAlpha:1.0f];
+    //                     }
+    //                     completion:^(BOOL finished) {
+    //
+    //
+    //                         [UIView animateWithDuration:1.5f
+    //                                               delay:0.5f
+    //                                             options: UIViewAnimationOptionOverrideInheritedCurve | UIViewAnimationOptionOverrideInheritedDuration | UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat
+    //                                          animations:^{
+    //                                              [UIView setAnimationRepeatCount:2.5];
+    //                                              [advisoryImg setAlpha:0.0f];
+    //                                              [detourImg setAlpha:1.0f];
+    //                                          }
+    //                                          completion:^(BOOL finished) {
+    //                                              NSLog(@"Animation complete");
+    //                                          }];
+    //                     }];
+
+    
+}
+
 -(void) testImage
 {
     
@@ -190,57 +250,106 @@
 
 //    [self.navigationItem.rightBarButtonItem setImage: [UIImage imageNamed:@"second-menu.png"] ];
     
-    UIView *newView = [[UIView alloc] initWithFrame:CGRectMake(10, 260, 50, 37.5)];
-//    [newView setBackgroundColor:[UIColor purpleColor] ];
     
-    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 5, 40, 30)];
-    imgView.image = [UIImage imageNamed:@"second-menu.png"];
-    imgView.contentMode = UIViewContentModeCenter;
     
-    UIImageView *alertImg = [[UIImageView alloc] initWithFrame:CGRectMake(23, 0, 40/2.0f, 30/2.0f)];
-    [alertImg setImage: [UIImage imageNamed:@"system_status_alert.png"] ];
-    
-    UIImageView *advisoryImg = [[UIImageView alloc] initWithFrame:CGRectMake(23, 0, 40/2.0f, 30/2.0f)];
-    [advisoryImg setImage: [UIImage imageNamed:@"system_status_advisory.png"] ];
-    [advisoryImg setAlpha:0.0f];
-    
-    UIImageView *detourImg = [[UIImageView alloc] initWithFrame:CGRectMake(23, 0, 40/2.0f, 30/2.0f)];
-    [detourImg setImage: [UIImage imageNamed:@"system_status_detour.png"] ];
-    [detourImg setAlpha:0.0f];
+//    _testView = [[UIView alloc] initWithFrame:CGRectMake(10, 260, 50, 37.5)];
+//    
+//    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 5, 40, 30)];
+//    imgView.image = [UIImage imageNamed:@"second-menu.png"];
+//    imgView.contentMode = UIViewContentModeCenter;
+//    
+//    UIImageView *alertImg = [[UIImageView alloc] initWithFrame:CGRectMake(23, 0, 40/2.0f, 30/2.0f)];
+//    [alertImg setImage: [UIImage imageNamed:@"system_status_alert.png"] ];
+//    
+//    UIImageView *advisoryImg = [[UIImageView alloc] initWithFrame:CGRectMake(23, 0, 40/2.0f, 30/2.0f)];
+//    [advisoryImg setImage: [UIImage imageNamed:@"system_status_advisory.png"] ];
+//    [advisoryImg setAlpha:0.0f];
+//    
+//    UIImageView *detourImg = [[UIImageView alloc] initWithFrame:CGRectMake(23, 0, 40/2.0f, 30/2.0f)];
+//    [detourImg setImage: [UIImage imageNamed:@"system_status_detour.png"] ];
+//    [detourImg setAlpha:0.0f];
+
 
     
-    [UIView animateWithDuration:1.5f
-                          delay:1.5f
-                        options:UIViewAnimationCurveEaseInOut
-                     animations:^{
-                         [alertImg setAlpha:0.0f];
-                         [advisoryImg setAlpha:1.0f];
-                     }
-                     completion:^(BOOL finished) {
+//    MenuAlertsImageView *mView = [[MenuAlertsImageView alloc] initWithFrame: CGRectMake(10, 260, 50, 37.5)];
+//    
+//    [mView setBaseImage: [UIImage imageNamed:@"second-menu.png"] ];
+//    
+//    [mView addAlert: kMenuAlertsImageAlerts];
+//    [mView addAlert: kMenuAlertsImageDetours];
+//    [mView addAlert: kMenuAlertsImageAdvisories];
+//    
+//    [self.view addSubview: mView];
+//    
+//    [mView startLoop];
 
-                         
-                         [UIView animateWithDuration:1.5f
-                                               delay:0.0f
-                                             options: UIViewAnimationOptionOverrideInheritedCurve | UIViewAnimationOptionOverrideInheritedDuration | UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat
-                                          animations:^{
-                                              [UIView setAnimationRepeatCount:2.5];
-                                              [advisoryImg setAlpha:0.0f];
-                                              [detourImg setAlpha:1.0f];
-                                          }
-                                          completion:^(BOOL finished) {
-                                              NSLog(@"Animation complete");
-                                          }];
-                     }];
+    
+    
+    /*
+     
+     ObjectView: UIImageView
+     
+     [object addAlert: kSecondMenuAlert];
+     [object addAlert: kSecondMenuAdvisory];
+     [object addAlert: kSecondMenuDetour];
+     
+     [object removeAllAlerts];
+     [object removeAlert: kSecondMenuAlert];
+     
+     [object nextLoop];  // duration + delay, starts state machine
+     [object stopLoop];  <-- cancel running animation block?, ends state machine
+     
+     [object setDuration: 1.5f];
+     [object setDelay:    0.5f];
+     
+     [object setBaseImageView: (UIImageView*) image];
+     [object setOverlayImageView: (UIImageView*) image];
+     
+     // One alert   - always on
+     // Two+ alerts - cycle through
+     
+     // Circular linked list
+     
+     [p][data][n]
+     
+     data
+       - image
+       - ???
+     
+     */
+    
+//    [UIView animateWithDuration:1.5f
+//                          delay:0.5f
+//                        options: UIViewAnimationCurveEaseInOut
+//                     animations:^{
+//                         [alertImg setAlpha:0.0f];
+//                         [advisoryImg setAlpha:1.0f];
+//                     }
+//                     completion:^(BOOL finished) {
+//
+//                         
+//                         [UIView animateWithDuration:1.5f
+//                                               delay:0.5f
+//                                             options: UIViewAnimationOptionOverrideInheritedCurve | UIViewAnimationOptionOverrideInheritedDuration | UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat
+//                                          animations:^{
+//                                              [UIView setAnimationRepeatCount:2.5];
+//                                              [advisoryImg setAlpha:0.0f];
+//                                              [detourImg setAlpha:1.0f];
+//                                          }
+//                                          completion:^(BOOL finished) {
+//                                              NSLog(@"Animation complete");
+//                                          }];
+//                     }];
     
 //    [self.view addSubview: imgView];
     
-    [newView addSubview:imgView];
-    
-    [newView addSubview:alertImg];
-    [newView addSubview:advisoryImg];
-    [newView addSubview:detourImg];
-    
-    [self.view addSubview: newView];
+//    [_testView addSubview:imgView];
+//    
+//    [_testView addSubview:alertImg];
+//    [_testView addSubview:advisoryImg];
+//    [_testView addSubview:detourImg];
+//    
+//    [self.view addSubview: _testView];
     
     NSLog(@"RVC - Added Image");
     

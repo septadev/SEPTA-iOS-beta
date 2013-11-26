@@ -11,6 +11,7 @@
 // Subclasses
 #import "LineHeaderView.h"
 #import "CustomFlatBarButton.h"
+#import "MenuAlertsImageView.h"
 
 #import "UITableViewStandardHeaderLabel.h"
 

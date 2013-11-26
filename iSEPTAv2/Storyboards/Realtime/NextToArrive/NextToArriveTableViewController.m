@@ -188,7 +188,6 @@
     // to the names stored in the legacy database that the API uses.
     // TODO:  Change the *#@!ing NTA API to recognize these translations!
     replacement = [[NSMutableDictionary alloc] init];
-    
     [self populateGTFSLookUp];
     
     
@@ -197,9 +196,31 @@
 //    [rightButton setImage: [UIImage imageNamed:@"second-menu.png"] ];
 //    [rightButton setStyle: UIBarButtonItemStylePlain];
     
-    CustomFlatBarButton *rightButton = [[CustomFlatBarButton alloc] initWithImageNamed:@"second-menu.png" withTarget:self andWithAction:@selector(dropDownMenuPressed:)];
+//    CustomFlatBarButton *rightButton = [[CustomFlatBarButton alloc] initWithImageNamed:@"second-menu.png" withTarget:self andWithAction:@selector(dropDownMenuPressed:)];
+//    [self.navigationItem setRightBarButtonItem: rightButton];
+
+    MenuAlertsImageView *mView = [[MenuAlertsImageView alloc] initWithFrame: CGRectMake(0, 0, 50, 37.5)];
+    
+    [mView setBaseImage: [UIImage imageNamed:@"second-menu.png"] ];
+    [mView addTarget:self action:@selector(dropDownMenuPressed:) forControlEvents:UIControlEventTouchDown];
+    
+    [mView addAlert: kMenuAlertsImageAlerts];
+    [mView addAlert: kMenuAlertsImageDetours];
+//    [mView addAlert: kMenuAlertsImageAdvisories];
+
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView: mView];
     [self.navigationItem setRightBarButtonItem: rightButton];
 
+//    [mView startLoop];
+    
+    
+//    NSTimer *onceAndDone = [NSTimer scheduledTimerWithTimeInterval:2.0f
+//                                                     target:self
+//                                                   selector:@selector(removeAlert)
+//                                                   userInfo:nil
+//                                                    repeats:NO];
+
+    
  
     REMenuItem *refreshItem = [[REMenuItem alloc] initWithTitle:@"Refresh"
                                                        subtitle:@"select trip before refreshing"
@@ -265,6 +286,17 @@
  
     
 //    [[UITableView appearance] setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+}
+
+-(void) removeAlert
+{
+    MenuAlertsImageView *mView;
+    UIBarButtonItem *rightButton = self.navigationItem.rightBarButtonItem;
+    
+    mView = (MenuAlertsImageView*)[rightButton customView];
+    
+    [mView removeAlert: kMenuAlertsImageAlerts];
     
 }
 

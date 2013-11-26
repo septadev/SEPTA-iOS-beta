@@ -726,6 +726,7 @@
 		8418EECD18058D67003607D1 /* NTA-start.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEB918058D67003607D1 /* NTA-start.png */; };
 		8418EECE18058D67003607D1 /* NTA-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEBA18058D67003607D1 /* NTA-white.png */; };
 		8418EECF18058D67003607D1 /* NTA.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EEBB18058D67003607D1 /* NTA.png */; };
+		84221961183FF6B30099B69F /* MenuAlertsImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84221960183FF6B30099B69F /* MenuAlertsImageView.m */; };
 		843445B018367D1D00BA7A73 /* PlainNamesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 843445AF18367D1D00BA7A73 /* PlainNamesCell.m */; };
 		843445B218367D4400BA7A73 /* PlainNamesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843445B118367D4400BA7A73 /* PlainNamesCell.xib */; };
 		843445B8183E6A5500BA7A73 /* Filter-123.png in Resources */ = {isa = PBXBuildFile; fileRef = 843445B4183E6A5500BA7A73 /* Filter-123.png */; };
@@ -1655,6 +1656,8 @@
 		8418EEB918058D67003607D1 /* NTA-start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTA-start.png"; sourceTree = "<group>"; };
 		8418EEBA18058D67003607D1 /* NTA-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NTA-white.png"; sourceTree = "<group>"; };
 		8418EEBB18058D67003607D1 /* NTA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NTA.png; sourceTree = "<group>"; };
+		8422195F183FF6B30099B69F /* MenuAlertsImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuAlertsImageView.h; path = Storyboards/Common/Class/MenuAlertsImageView.h; sourceTree = "<group>"; };
+		84221960183FF6B30099B69F /* MenuAlertsImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuAlertsImageView.m; path = Storyboards/Common/Class/MenuAlertsImageView.m; sourceTree = "<group>"; };
 		843445AE18367D1D00BA7A73 /* PlainNamesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlainNamesCell.h; path = "Storyboards/Common Storyboards/StopNames/Code/PlainNamesCell.h"; sourceTree = "<group>"; };
 		843445AF18367D1D00BA7A73 /* PlainNamesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlainNamesCell.m; path = "Storyboards/Common Storyboards/StopNames/Code/PlainNamesCell.m"; sourceTree = "<group>"; };
 		843445B118367D4400BA7A73 /* PlainNamesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlainNamesCell.xib; path = "Storyboards/Common Storyboards/StopNames/Xibs/PlainNamesCell.xib"; sourceTree = "<group>"; };
@@ -3054,6 +3057,7 @@
 		27E0688C17998AE400BA7A92 /* Main Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				8422195E183FF62A0099B69F /* Subclasses */,
 				27E0688D17998B3300BA7A92 /* MainStoryboard.storyboard */,
 				27A6933917A04920008712FB /* Common Storyboards */,
 				27297645179D9F4800DB2580 /* Subclasses */,
@@ -4282,6 +4286,15 @@
 			path = SD;
 			sourceTree = "<group>";
 		};
+		8422195E183FF62A0099B69F /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				8422195F183FF6B30099B69F /* MenuAlertsImageView.h */,
+				84221960183FF6B30099B69F /* MenuAlertsImageView.m */,
+			);
+			name = Subclasses;
+			sourceTree = "<group>";
+		};
 		843445B3183E6A3700BA7A73 /* filters */ = {
 			isa = PBXGroup;
 			children = (
@@ -5058,6 +5071,7 @@
 				277612731682333500AC3ACB /* TrainViewObject.m in Sources */,
 				27761276168233E300AC3ACB /* TrainViewCell.m in Sources */,
 				27761279168244EA00AC3ACB /* TransitViewTableController.m in Sources */,
+				84221961183FF6B30099B69F /* MenuAlertsImageView.m in Sources */,
 				410793D61682B91700CBED88 /* StopNamesObject.m in Sources */,
 				410793DA1682CCD600CBED88 /* NextToArrivaJSONObject.m in Sources */,
 				275BE98916835938007AF394 /* RouteInfo.m in Sources */,
@@ -5322,8 +5336,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = SEPTA;
-				PROVISIONING_PROFILE = "9B24FE70-A6BE-4253-BDDF-9372185BBDEE";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9B24FE70-A6BE-4253-BDDF-9372185BBDEE";
+				PROVISIONING_PROFILE = "20DABBFC-72EB-481F-9FAA-1372D0D2410D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "20DABBFC-72EB-481F-9FAA-1372D0D2410D";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/**";
 				VALID_ARCHS = "armv7 armv7s";
@@ -5360,8 +5374,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = SEPTA;
-				PROVISIONING_PROFILE = "9B24FE70-A6BE-4253-BDDF-9372185BBDEE";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9B24FE70-A6BE-4253-BDDF-9372185BBDEE";
+				PROVISIONING_PROFILE = "20DABBFC-72EB-481F-9FAA-1372D0D2410D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "20DABBFC-72EB-481F-9FAA-1372D0D2410D";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/**";
 				VALID_ARCHS = "armv7 armv7s";

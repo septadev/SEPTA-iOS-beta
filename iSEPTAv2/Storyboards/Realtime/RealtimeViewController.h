@@ -19,6 +19,8 @@
 #import "MapMemoryTestViewController.h"
 #import "MMDrawerTestViewController.h"
 
+#import "MenuAlertsImageView.h"
+
 // -- Testing
 //#import "TransitDrawerViewController.h"
 
@@ -30,6 +32,15 @@
 // --==  PODs  ==--
 #import <Reachability.h>
 #import <SVProgressHUD.h>
+
+
+typedef NS_ENUM(NSInteger, SecondMenuAlertImageCycle)
+{
+    kSecondMenuAlertImageNone,
+    kSecondMenuAlertImageAdvisory,
+    kSecondMenuAlertImageAlert,
+    kSecondMenuAlertImageDetour,
+};
 
 
 @interface RealtimeViewController : UIViewController
