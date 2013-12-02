@@ -37,9 +37,6 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-
-    [self.lblNextToArrive setAccessibilityElementsHidden:YES];
-    [self.lblTrainView setAccessibilityElementsHidden:YES];
     
     Reachability *network = [Reachability reachabilityForInternetConnection];
     if ( ![network isReachable] )
@@ -185,9 +182,127 @@
 //    [self setTitle:@"Realtime"];
 
     
-    [self testImage];
+//    [self testImage];
+    
+    
+    NSDate *start = [NSDate date];
+    
+    // Create byte array of unsigned chars
+    unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
+    
+    NSData *fileData = [NSData dataWithContentsOfFile: [self filePath] ];
+    
+    // Create 16 byte MD5 hash value, store in buffer
+    CC_MD5(fileData.bytes, fileData.length, md5Buffer);
+    
+    // Convert unsigned char buffer to NSString of hex values
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x",md5Buffer[i]];
+    
+    NSTimeInterval secondsRan = [[NSDate date] timeIntervalSinceDate: start ];
+    
+    NSLog(@"output (%6.2f sec): %@", secondsRan, output);
+    
+    
+    start = [NSDate date];
+    
+    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    
+    if ( ![database open] )
+    {
+        [database close];
+        return;
+    }
+    
+    NSString *tableQuery = @"SELECT tbl_name FROM sqlite_master WHERE type='table';";  // type, name, tbl_name, rootpage, sql (where sql is CREATE TABLE x (y INT, z TEXT, etc.)
+    FMResultSet *tableResults = [database executeQuery: tableQuery];
+    NSMutableArray *tableArray = [[NSMutableArray alloc] init];
+    
+    while ( [tableResults next] )
+    {
+        [tableArray addObject: [tableResults stringForColumnIndex:0] ];
+    }
+    
+    for (NSString *tableName in tableArray)
+    {
+        
+        NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@", tableName];
+        FMResultSet *results = [database executeQuery:query];
+        
+        [results next];
+        NSLog(@"%@: %@", tableName, [[results resultDictionary] allKeys]);
+        
+    }
+    
+    
+    unsigned char buff[CC_MD5_DIGEST_LENGTH];
+    
+    CC_MD5_CTX md5;
+    CC_MD5_Init(&md5);
+    
+    NSString *string1 = @"Gr";
+    NSString *string2 = @"eg";
+    
+    NSData *data1 = [string1 dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *data2 = [string2 dataUsingEncoding:NSUTF8StringEncoding];
+    
+    CC_MD5_Update(&md5, [data1 bytes], [data1 length]);
+    CC_MD5_Update(&md5, [data2 bytes], [data2 length]);
+    
+    CC_MD5_Final(buff, &md5);
+    
+//    NSLog(@"%@", [NSString stringWithCString:buff encoding:NSUTF8StringEncoding]);
+    
+    output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x",buff[i]];
+    
+    NSLog(@"Greg: %@", output);
+    
+    NSLog(@"Greg: %@", [self md5FromString:@"Greg"] );
+    
+
+    
+    // Accessibility
+    [self.btnNextToArrive setAccessibilityLabel:@"Next to Arrive"];
+    [self.btnTrainView setAccessibilityLabel:@"TrainView"];
+    [self.btnTransitView setAccessibilityLabel:@"TransitView"];
+    [self.btnSystemStatus setAccessibilityLabel:@"System Status"];
+    [self.btnFindNearestLocation setAccessibilityLabel:@"Fine Nearest Location"];
+    [self.btnGuide setAccessibilityLabel:@"Guide"];
+
+    
+    [self.lblNextToArrive setAccessibilityElementsHidden:YES];
+    [self.lblTrainView setAccessibilityElementsHidden:YES];
+    [self.lblTransitView setAccessibilityElementsHidden:YES];
+    [self.lblSystemStatus setAccessibilityElementsHidden:YES];
+    [self.lblFindNeareset setAccessibilityElementsHidden:YES];
+    [self.lblGuide setAccessibilityElementsHidden:YES];
     
 }
+
+
+-(NSString*) md5FromString: (NSString *) baseString
+{
+    
+    const char *ptr = [baseString UTF8String];
+    
+    // Create byte array of unsigned chars
+    unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
+    
+    // Create 16 byte MD5 hash value, store in buffer
+    CC_MD5(ptr, strlen(ptr), md5Buffer);
+    
+    // Convert MD5 value in the buffer to NSString of hex values
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+    [output appendFormat:@"%02x",md5Buffer[i]];
+    
+    return output;
+    
+}
+
 
 -(void) loopImages
 {
@@ -212,31 +327,17 @@
             break;
     }
     
-    //    [UIView animateWithDuration:1.5f
-    //                          delay:0.5f
-    //                        options:UIViewAnimationCurveEaseInOut
-    //                     animations:^{
-    //                         [alertImg setAlpha:0.0f];
-    //                         [advisoryImg setAlpha:1.0f];
-    //                     }
-    //                     completion:^(BOOL finished) {
-    //
-    //
-    //                         [UIView animateWithDuration:1.5f
-    //                                               delay:0.5f
-    //                                             options: UIViewAnimationOptionOverrideInheritedCurve | UIViewAnimationOptionOverrideInheritedDuration | UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat
-    //                                          animations:^{
-    //                                              [UIView setAnimationRepeatCount:2.5];
-    //                                              [advisoryImg setAlpha:0.0f];
-    //                                              [detourImg setAlpha:1.0f];
-    //                                          }
-    //                                          completion:^(BOOL finished) {
-    //                                              NSLog(@"Animation complete");
-    //                                          }];
-    //                     }];
+
 
     
 }
+
+
+-(NSString*) filePath
+{
+    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+}
+
 
 -(void) testImage
 {

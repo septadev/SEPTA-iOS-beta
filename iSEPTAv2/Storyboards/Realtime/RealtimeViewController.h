@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+// Crypto Testing
+#import <CommonCrypto/CommonDigest.h>
+
 
 // Subclassed ViewControllers
 #import "NextToArriveTableViewController.h"
@@ -32,6 +35,7 @@
 // --==  PODs  ==--
 #import <Reachability.h>
 #import <SVProgressHUD.h>
+#import <FMDatabase.h>
 
 
 typedef NS_ENUM(NSInteger, SecondMenuAlertImageCycle)
