@@ -25,6 +25,11 @@
 
 @property (nonatomic, strong) NSString *last_updated;
 
+
+-(int) numOfAlerts;
+
 -(BOOL) isAlert;
+-(BOOL) isDetour;
+-(BOOL) isAdvisory;
 
 @end

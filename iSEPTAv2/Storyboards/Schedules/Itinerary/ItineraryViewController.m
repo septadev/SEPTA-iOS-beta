@@ -22,7 +22,7 @@
      trips - holds the start/end time, train #, route_id, direction_id, service_id, start/end sequence
      */
     
-    SystemAlertObject *_currentAlert;
+    NSMutableArray *_currentAlert;
     GetAlertDataAPI *_alertsAPI;
     
     ItineraryFavoriteSubtitleState _favoriteStatus;
@@ -394,11 +394,24 @@
 -(void) configureDropDownMenu
 {
 
-    CustomFlatBarButton *rightButton = [[CustomFlatBarButton alloc] initWithImageNamed:@"second-menu.png"
-                                                                            withTarget:self
-                                                                         andWithAction:@selector(dropDownMenuPressed:)];
-    [self.navigationItem setRightBarButtonItem: rightButton];
+//    CustomFlatBarButton *rightButton = [[CustomFlatBarButton alloc] initWithImageNamed:@"second-menu.png"
+//                                                                            withTarget:self
+//                                                                         andWithAction:@selector(dropDownMenuPressed:)];
+//    [self.navigationItem setRightBarButtonItem: rightButton];
     
+    
+    MenuAlertsImageView *mView = [[MenuAlertsImageView alloc] initWithFrame: CGRectMake(0, 0, 50, 37.5)];
+    
+    [mView setBaseImage: [UIImage imageNamed:@"second-menu.png"] ];
+    [mView addTarget:self action:@selector(dropDownMenuPressed:) forControlEvents:UIControlEventTouchDown];
+    
+//    [mView addAlert: kMenuAlertsImageAlerts];
+//    [mView addAlert: kMenuAlertsImageDetours];
+    //    [mView addAlert: kMenuAlertsImageAdvisories];
+    
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView: mView];
+    [self.navigationItem setRightBarButtonItem: rightButton];
+
     
     REMenuItem *favoritesItem = [[REMenuItem alloc] initWithTitle:@"Favorite"
                                                          subtitle:FAVORITE_SUBTITLE_NONE
@@ -2990,12 +3003,14 @@
         return;  // Nothing to do, just return
     }
     
-        
+    [self getAdvisories];
+    
     if ( [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSL"] || [self.travelMode isEqualToString:@"NHSL"] || [self.travelMode isEqualToString:@"Bus"] )  // Bus is only temporary; I'll add that in later.
     {
         NSLog(@"ITVC - loadJSONDataInTheBackground - Current Route Does Not Support RealTime Data");
         return;
     }
+    
     _jsonOp = [[NSBlockOperation alloc] init];
     __weak NSBlockOperation *weakOp = _jsonOp;
     [weakOp addExecutionBlock:^{
@@ -3003,7 +3018,6 @@
         if ( !_viewIsClosing )
         {
             [self loadLatestJSONData];
-            [self getAdvisories];
         }
         
         if ( ![weakOp isCancelled] )
@@ -3546,7 +3560,7 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
         SystemAlertsViewController *saVC = (SystemAlertsViewController*)[storyboard instantiateViewControllerWithIdentifier:@"SystemAlertsStoryboard"];
         
-        [saVC setAlertArr: [NSMutableArray arrayWithObject: _currentAlert] ];
+        [saVC setAlertArr: _currentAlert ];
         [saVC setBackImageName: _backButtonImage];
         
         [self.navigationController pushViewController:saVC animated:YES];
@@ -3595,11 +3609,11 @@
 //        [_alertsAPI addRoute: alertName];
 
     if ( alertName != nil )
-    {
         [_alertsAPI addRoute: alertName];
-        [_alertsAPI fetchAlert];
-    }
+    else
+        [_alertsAPI addRoute: _routeData.route_short_name];
     
+    [_alertsAPI fetchAlert];
 
     
 }
@@ -3619,7 +3633,7 @@
 -(void) alertFetched:(NSMutableArray *)alert
 {
     
-    // TODO: Set badge (or remove if alerts went away)
+    // Done -- TODO: Set badge (or remove if alerts went away)
     
     if ( [alert count] == 0 )
     {
@@ -3630,10 +3644,51 @@
         return;
     }
     
-    _currentAlert = (SystemAlertObject*)[alert objectAtIndex:0];
+    
+    BOOL isAlert = NO;
+    BOOL isDetour = NO;
+    BOOL isAdvisory = NO;
+    
+    for (SystemAlertObject *saObject in alert)
+    {
+        
+        if ( [saObject isAlert] )
+            isAlert = YES;
+        
+        if ( [saObject isAdvisory] )
+            isAdvisory = YES;
+        
+        if ( [saObject isDetour] )
+            isDetour = YES;
+        
+    }
+    
+    _currentAlert = alert;
+    
+//    _currentAlert = (SystemAlertObject*)[alert objectAtIndex:0];
+    
+    UIBarButtonItem *rightButton = self.navigationItem.rightBarButtonItem;
+    MenuAlertsImageView *mView = (MenuAlertsImageView*)rightButton.customView;
     
     
-    if ( [_currentAlert isAlert] )
+    if ( isAlert )
+        [mView addAlert: kMenuAlertsImageAlerts];
+    else
+        [mView removeAlert: kMenuAlertsImageAlerts];
+
+    if ( isAdvisory )
+        [mView addAlert: kMenuAlertsImageAdvisories];
+    else
+        [mView removeAlert: kMenuAlertsImageAdvisories];
+    
+    if ( isDetour )
+        [mView addAlert: kMenuAlertsImageDetours];
+    else
+        [mView removeAlert: kMenuAlertsImageDetours];
+    
+    
+//    if ( [_currentAlert numOfAlerts] )
+    if ( isAlert + isAdvisory + isDetour )
     {
         // Update REMenu item with Advisory
         REMenuItem *alertsItem = [[_menu items] objectAtIndex:2];

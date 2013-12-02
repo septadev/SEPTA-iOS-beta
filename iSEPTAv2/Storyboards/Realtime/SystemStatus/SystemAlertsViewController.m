@@ -632,6 +632,7 @@
         return;  // Something bad happened, so just return.
     
     [_alertData removeAllObjects];
+    
     for (NSDictionary *data in json)
     {
         SystemAlertObject *saObject = [[SystemAlertObject alloc] init];
@@ -653,6 +654,7 @@
         
         [_alertData addObject: saObject];
     }
+
     
     [self displayHTML];
     
@@ -711,6 +713,8 @@
 
     [html appendFormat:@"<body>"];
     
+    NSString *previoudAdvisoryMessage;
+    
     for (SystemAlertObject *saObject in _alertData)
     {
         
@@ -721,7 +725,14 @@
                 break;
                 
             case kSystemAlertTypeAdvisory:
-                [html appendFormat:@"<body>%@</body>", [saObject advisory_message] ];
+
+                // If there are 4 detours listed, there's a good chance the same damn advisory is listed all four times.
+                // This filters out the message only if the one immediately proceeding it is the same.
+
+                if ( ![previoudAdvisoryMessage isEqualToString: [saObject advisory_message] ] )
+                    [html appendFormat:@"<body>%@</body>", [saObject advisory_message] ];
+                previoudAdvisoryMessage = [saObject advisory_message];
+                
                 break;
                 
             case kSystemAlertTypeDetour:

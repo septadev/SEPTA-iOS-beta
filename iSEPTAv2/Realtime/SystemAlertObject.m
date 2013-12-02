@@ -26,10 +26,26 @@
 @synthesize last_updated;
 
 
--(BOOL) isAlert
+-(int) numOfAlerts;
 {
     return [current_message length] + [advisory_message length] + [detour_message length];
 }
+
+-(BOOL) isAlert
+{
+    return [current_message length];
+}
+
+-(BOOL) isAdvisory
+{
+    return [advisory_message length];
+}
+
+-(BOOL) isDetour
+{
+    return [detour_message length];
+}
+
 
 -(NSString*) description
 {

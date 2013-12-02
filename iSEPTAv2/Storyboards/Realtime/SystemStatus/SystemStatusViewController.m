@@ -24,6 +24,9 @@
     NSMutableArray *_filteredData;
     
     NSString *_filterMode;
+    
+    BOOL _showAllRoutes;
+
     SystemStatusFilterType _filterType;
     
     NSMutableArray *_busSectionIndex;
@@ -108,8 +111,20 @@
      */
     
     
+    id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"SystemStatus:ShowAllRoutes"];
     
+    if ( object == nil )
+    {
+        _showAllRoutes = NO;
+    }
+    else
+    {
+        _showAllRoutes = [object boolValue];
+    }
+            
     
+    // This is arguably the ugliest code that I have ever written
+    // TODO: Fix this.  Now.  Now!  NOW!!
     // First set of buttons
     UIButton *buttonBus = [[UIButton alloc] init];
     UIButton *buttonTrolley = [[UIButton alloc] init];
@@ -713,7 +728,7 @@
 //    NSJSONSerialization *test = [NSJSONSerialization JSONObjectWithData:[jsonStr dataUsingEncoding:NSStringEncodingConversionAllowLossy] options:0 error:&errorr];
     
     NSMutableDictionary *meta = [json objectForKey:@"meta"];  // keys: elevators_out, updated
-    NSMutableArray   *results = [json objectForKey:@"results"];  // keys:  line, station, evelator, message, alternate_url
+//    NSMutableArray   *results = [json objectForKey:@"results"];  // keys:  line, station, evelator, message, alternate_url
     
     [_elevatorStatus setMode      : @"Elevator"];
     [_elevatorStatus setRoute_name: @"Elevator Outage"];
@@ -828,16 +843,34 @@
         default:
             currentPredicate = [NSPredicate predicateWithValue:YES];
             sortBy = sortStatusByNumberString;
+            
             break;
     }  // switch (filterType)
     
     
     _filteredData = [[ [_masterData filteredArrayUsingPredicate:currentPredicate] sortedArrayUsingComparator: sortBy] mutableCopy];
     
+    // Check if routes without any alerts, advisories or detours should be removed
+    if ( !_showAllRoutes )
+    {
+
+        NSMutableArray *objectsToRemove = [[NSMutableArray alloc] init];
+        for (SystemStatusObject *ssObject in _filteredData)
+        {
+            if ( [ssObject numOfAlerts] == 0 )
+                [objectsToRemove addObject: ssObject];
+        }
+        [_filteredData removeObjectsInArray: objectsToRemove];
+        
+    }
+
+
+    // If there is an elevator outage, add it to _filteredData
     if ( _elevatorStatus != nil )
         [_filteredData insertObject:_elevatorStatus atIndex:0];
+
     
-//    [self generateIndex];
+    [self generateIndex];
     
     [self.tableView reloadData];
     
@@ -1143,6 +1176,15 @@ NSComparisonResult (^sortStatusName)(SystemStatusObject*,SystemStatusObject*) = 
 -(void) filterButtonPressed:(id) sender
 {
     NSLog(@"Filter Button Pressed");
+    
+    _showAllRoutes = !_showAllRoutes;
+    
+    // Save changes to toggle option to user preferences
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:_showAllRoutes] forKey:@"SystemStatus:ShowAllRoutes"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    [self filterTableDataSourceBy: _filterType];
+    
 }
 
 

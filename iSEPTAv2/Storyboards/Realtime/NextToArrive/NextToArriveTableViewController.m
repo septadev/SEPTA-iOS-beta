@@ -296,7 +296,8 @@
     
     mView = (MenuAlertsImageView*)[rightButton customView];
     
-    [mView removeAlert: kMenuAlertsImageAlerts];
+//    [mView removeAlert: kMenuAlertsImageAlerts];
+//    [mView removeAlert: kMenuAlertsImageDetours];
     
 }
 

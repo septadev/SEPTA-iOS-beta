@@ -44,6 +44,8 @@
     
     BOOL _isRunning;
     
+    NSMutableArray *_alertsToRemove;
+    
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -156,8 +158,8 @@
 
 -(void) removeAlert: (MenuAlertsImageType) alertType
 {
-    [self stopLoop];
     
+
     UIImageView *viewToRemove;
     NSInteger count = 0;
     for (UIImageView *iView in _imageViewArray)
@@ -169,6 +171,33 @@
         }
         count++;
     }
+
+    if ( viewToRemove == nil )
+        return;  // Nothing to remove
+    
+    // If the array is nil, initialize it
+    if ( _alertsToRemove == nil )
+        _alertsToRemove = [[NSMutableArray alloc] init];
+    
+    // Ensure the view isn't already slated to be removed
+    if ( ![_alertsToRemove containsObject: viewToRemove] )
+        [_alertsToRemove addObject: viewToRemove];
+    
+    return;
+    
+//    [self stopLoop];
+//    
+//    UIImageView *viewToRemove;
+//    NSInteger count = 0;
+//    for (UIImageView *iView in _imageViewArray)
+//    {
+//        if (iView.tag == alertType)
+//        {
+//            viewToRemove = iView;
+//            break;
+//        }
+//        count++;
+//    }
     
     
     // If an alert is being removed that is currently being animated, there is a slight visual glitch where both alerts are visible briefly
@@ -197,10 +226,10 @@
 //                     }];
 
     
-    [viewToRemove setAlpha:0.0f];
-    [_imageViewArray removeObject: viewToRemove];
-    
-    [self startLoop];
+//    [viewToRemove setAlpha:0.0f];
+//    [_imageViewArray removeObject: viewToRemove];
+//    
+//    [self startLoop];
     
 }
 
@@ -236,8 +265,20 @@
     UIImageView *imageA;
     UIImageView *imageB;
     
-    NSInteger arraySize = [_imageViewArray count];
+    // Any alerts to be removed?
+    if ( _alertsToRemove )
+    {
+        // Yes!
+        
+        for (UIImageView *alertView in _alertsToRemove)
+        {
+            [alertView setAlpha:0.0f];  // Make the alert invisible
+        }
+        [_imageViewArray removeObjectsInArray:_alertsToRemove];
+    }
     
+    NSInteger arraySize = [_imageViewArray count];
+
     // Checks
     if ( arraySize == 0 )
         return;  // There's nothing to loop through
@@ -278,6 +319,9 @@
                       completion:^(BOOL finished) {
 //                          NSLog(@"Animation complete");
                       }];
+    
+    // Any alerts to be removed?
+    
     
     
 }
