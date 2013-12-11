@@ -97,10 +97,10 @@
     _itinerary = [[ItineraryObject alloc] init];
     
     [_itinerary setStartStopID:[NSNumber numberWithInt:0] ];
-    [_itinerary setStartStopName: DEFAULT_MESSAGE];
+    [_itinerary setStartStopName: DEFAULT_START_MESSAGE];
     
     [_itinerary setEndStopID:[NSNumber numberWithInt:0] ];
-    [_itinerary setEndStopName: DEFAULT_MESSAGE];
+    [_itinerary setEndStopName: DEFAULT_END_MESSAGE];
     
     
     [_tableData addObject:_itinerary forTitle:@"Itinerary" withTag:kNextToArriveSectionStartEndCells];
@@ -204,8 +204,8 @@
     [mView setBaseImage: [UIImage imageNamed:@"second-menu.png"] ];
     [mView addTarget:self action:@selector(dropDownMenuPressed:) forControlEvents:UIControlEventTouchDown];
     
-    [mView addAlert: kMenuAlertsImageAlerts];
-    [mView addAlert: kMenuAlertsImageDetours];
+//    [mView addAlert: kMenuAlertsImageAlerts];
+//    [mView addAlert: kMenuAlertsImageDetours];
 //    [mView addAlert: kMenuAlertsImageAdvisories];
 
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView: mView];
@@ -803,8 +803,8 @@
     _itineraryCompletion = kNextToArriveNoButtonPressed;
     
     [_itinerary clearStops];
-    [_itinerary setStartStopName: DEFAULT_MESSAGE];
-    [_itinerary setEndStopName  : DEFAULT_MESSAGE];
+    [_itinerary setStartStopName: DEFAULT_START_MESSAGE];
+    [_itinerary setEndStopName  : DEFAULT_END_MESSAGE];
     
     [self updateRefreshStatusWith: kNextToArriveRefreshStatusNoStops];
     
@@ -1014,7 +1014,7 @@
     if (tempArr == nil)
     {
         
-        if ( [_itinerary.startStopName isEqualToString:DEFAULT_MESSAGE] && [_itinerary.endStopName isEqualToString:DEFAULT_MESSAGE] )
+        if ( [_itinerary.startStopName isEqualToString:DEFAULT_START_MESSAGE] && [_itinerary.endStopName isEqualToString:DEFAULT_END_MESSAGE] )
             _favoriteStatus = kNextToArriveFavoriteSubtitleStatusUnknown;  // If either are not set, set status to unknown
         else
             _favoriteStatus = kNextToArriveFavoriteSubtitleNotAdded;  // If both have data, set not added for now.  We'll be checked for Added below.
@@ -1147,7 +1147,7 @@
             
             // If the start label was pressed but the end is empty, then let's get the user to complete both of them.
 //            if ( [_itinerary.endStopID intValue] <= 0 )
-            if ( [_itinerary.startStopName isEqualToString: DEFAULT_MESSAGE] )
+            if ( [_itinerary.startStopName isEqualToString: DEFAULT_START_MESSAGE] )
                 selType = kNextToArriveSelectionTypeStartAndEnd;
             else
                 selType = kNextToArriveSelectionTypeStart;
@@ -1575,7 +1575,7 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     }
     else
     {
-        NSLog(@"NTAVC - Trying to send messages to updateTimer which no longer exists.");
+//        NSLog(@"NTAVC - Trying to send messages to updateTimer which no longer exists.");
     }
     
 }
@@ -1584,7 +1584,7 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
 -(void) getLatestJSONData
 {
     
-    NSLog(@"DSTVC - getLatestBusJSONData");
+//    NSLog(@"DSTVC - getLatestBusJSONData");
     
     // Check for Internet connection
     Reachability *network = [Reachability reachabilityForInternetConnection];
@@ -1672,7 +1672,7 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     
     if ( temp != nil )
     {
-        NSLog(@"NTAVC - fixMismatchedStopName: replacing %@ with %@", stopName, temp);
+//        NSLog(@"NTAVC - fixMismatchedStopName: replacing %@ with %@", stopName, temp);
         return temp;
     }
     else

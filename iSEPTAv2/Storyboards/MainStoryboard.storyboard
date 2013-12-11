@@ -303,19 +303,17 @@ THE SOFTWARE.</string>
                                 <rect key="frame" x="8" y="8" width="96" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <state key="normal" title="Next to Arrive" image="RT_NTA.png">
+                                <state key="normal" image="RT_NTA.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="btnNextToArrivePressed:" destination="c6u-Zd-Atb" eventType="touchUpInside" id="CS7-1k-S5D"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="lI6-IP-jw2" userLabel="Button - TrainView">
-                                <rect key="frame" x="105" y="8" width="110" height="96"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lI6-IP-jw2" userLabel="Button - TrainView">
+                                <rect key="frame" x="112" y="8" width="96" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="RT_TrainView.png">
-                                    <attributedString key="attributedTitle"/>
-                                </state>
+                                <state key="normal" title="" image="RT_TrainView.png"/>
                                 <connections>
                                     <action selector="btnTrainViewPressed:" destination="c6u-Zd-Atb" eventType="touchUpInside" id="WQ1-FD-HzI"/>
                                 </connections>
@@ -324,7 +322,7 @@ THE SOFTWARE.</string>
                                 <rect key="frame" x="216" y="8" width="96" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <state key="normal" title="TransitView" image="RT_TransitView.png">
+                                <state key="normal" image="RT_TransitView.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -335,7 +333,7 @@ THE SOFTWARE.</string>
                                 <rect key="frame" x="8" y="110" width="96" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <state key="normal" title="System Status" image="RT_System-Status.png">
+                                <state key="normal" image="RT_System-Status.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -346,9 +344,12 @@ THE SOFTWARE.</string>
                                 <rect key="frame" x="216" y="110" width="96" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <state key="normal" title="Tips" image="RT_Tips.png">
+                                <state key="normal" image="RT_Tips.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="uIi-WG-ZZu" kind="push" id="T4u-Qn-HRh"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Next to Arrive" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ve1-hx-ZKj">
                                 <rect key="frame" x="8" y="76" width="96" height="21"/>
@@ -382,7 +383,7 @@ THE SOFTWARE.</string>
                                 <rect key="frame" x="112" y="110" width="96" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Find Nearest Location" image="RT_Find-Loc.png">
+                                <state key="normal" image="RT_Find-Loc.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -440,11 +441,11 @@ THE SOFTWARE.</string>
             <objects>
                 <viewController id="uIi-WG-ZZu" customClass="MobileSiteViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6nu-Ea-62d">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" id="ntA-ZG-6GJ">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>

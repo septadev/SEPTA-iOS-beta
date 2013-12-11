@@ -41,24 +41,15 @@ install_resource()
       ;;
   esac
 }
+install_resource "ALAlertBanner/ALAlertBanner/Images/bannerAlert.png"
+install_resource "ALAlertBanner/ALAlertBanner/Images/bannerAlert@2x.png"
+install_resource "ALAlertBanner/ALAlertBanner/Images/bannerFailure.png"
+install_resource "ALAlertBanner/ALAlertBanner/Images/bannerFailure@2x.png"
+install_resource "ALAlertBanner/ALAlertBanner/Images/bannerNotify.png"
+install_resource "ALAlertBanner/ALAlertBanner/Images/bannerNotify@2x.png"
+install_resource "ALAlertBanner/ALAlertBanner/Images/bannerSuccess.png"
+install_resource "ALAlertBanner/ALAlertBanner/Images/bannerSuccess@2x.png"
 install_resource "SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
-install_resource "TSMessages/Resources/design.json"
-install_resource "TSMessages/Resources/Images/NotificationBackgroundError.png"
-install_resource "TSMessages/Resources/Images/NotificationBackgroundError@2x.png"
-install_resource "TSMessages/Resources/Images/NotificationBackgroundErrorIcon.png"
-install_resource "TSMessages/Resources/Images/NotificationBackgroundErrorIcon@2x.png"
-install_resource "TSMessages/Resources/Images/NotificationBackgroundMessage.png"
-install_resource "TSMessages/Resources/Images/NotificationBackgroundMessage@2x.png"
-install_resource "TSMessages/Resources/Images/NotificationBackgroundSuccess.png"
-install_resource "TSMessages/Resources/Images/NotificationBackgroundSuccess@2x.png"
-install_resource "TSMessages/Resources/Images/NotificationBackgroundSuccessIcon.png"
-install_resource "TSMessages/Resources/Images/NotificationBackgroundSuccessIcon@2x.png"
-install_resource "TSMessages/Resources/Images/NotificationBackgroundWarning.png"
-install_resource "TSMessages/Resources/Images/NotificationBackgroundWarning@2x.png"
-install_resource "TSMessages/Resources/Images/NotificationBackgroundWarningIcon.png"
-install_resource "TSMessages/Resources/Images/NotificationBackgroundWarningIcon@2x.png"
-install_resource "TSMessages/Resources/Images/NotificationButtonBackground.png"
-install_resource "TSMessages/Resources/Images/NotificationButtonBackground@2x.png"
 
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 if [[ "${ACTION}" == "install" ]]; then

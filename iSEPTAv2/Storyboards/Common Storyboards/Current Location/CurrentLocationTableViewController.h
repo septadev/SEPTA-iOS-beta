@@ -57,7 +57,7 @@ typedef NS_ENUM(NSInteger, CurrentLocationRouteType)
 
 @property (nonatomic, strong) LocationObject *coordinates;
 
-@property (nonatomic, assign) id <CurrentLocationProtocol> delegate;
+@property (nonatomic, weak) id <CurrentLocationProtocol> delegate;
 
 @property (nonatomic, strong) NSString *backImageName;
 

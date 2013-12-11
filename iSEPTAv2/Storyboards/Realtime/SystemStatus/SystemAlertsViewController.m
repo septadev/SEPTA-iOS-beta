@@ -494,8 +494,13 @@
             [thisButton setSelected:NO];
         }
     }
-    
-    [self displayHTML];
+
+    if ( [[_ssObject mode] isEqualToString:@"Elevator"] )
+        [self displayElevatorHTML];
+    else
+        [self displayHTML];
+
+//    [self displayHTML];
     
 //    NSLog(@" ");
     

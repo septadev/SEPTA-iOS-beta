@@ -1,5 +1,6 @@
 PODS:
   - AFNetworking (1.3.1)
+  - ALAlertBanner (0.3.1)
   - ECSlidingViewController (1.0.1)
   - FMDB (2.1):
     - FMDB/standard
@@ -24,10 +25,10 @@ PODS:
   - REMenu (1.3.5)
   - SVProgressHUD (0.9)
   - SVPullToRefresh (0.4.1)
-  - TSMessages (0.9.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 1.0)
+  - ALAlertBanner (~> 0.3.1)
   - ECSlidingViewController (~> 1.0.1)
   - FMDB (~> 2.1)
   - hpple (~> 0.2.0)
@@ -37,10 +38,10 @@ DEPENDENCIES:
   - REMenu (~> 1.3.5)
   - SVProgressHUD (~> 0.9)
   - SVPullToRefresh (~> 0.4)
-  - TSMessages (~> 0.9.3)
 
 SPEC CHECKSUMS:
   AFNetworking: 9ec8aafb9269236a7630bd8d9838ce2ba30fa2a0
+  ALAlertBanner: 16235298226059cd876a9de0a5d7f9bac6a79459
   ECSlidingViewController: 631de399ca3c5a4dc0839a1917b2291f62c2bc76
   FMDB: 3fd5aaf632ca4ed39e3f101e0398504e6d5b0918
   hpple: dde62f905f482bbec50186280d1a1be2c881241b
@@ -50,6 +51,5 @@ SPEC CHECKSUMS:
   REMenu: 097c09787102e30f17f344386d12dbb3d723a43d
   SVProgressHUD: 03d4845ec8e64591726428a08236c6a5489d45f8
   SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2
-  TSMessages: e741d102e8291074b4ee7545b53c90ed5f220dd5
 
 COCOAPODS: 0.28.0

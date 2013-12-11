@@ -84,8 +84,6 @@
     
     
     _replacement = [[NSMutableDictionary alloc] init];
-//    [_replacement setObject:@"Main St (Norristown)" forKey:@"Main Street"];
-//    [_replacement setObject:@"Norristown (Main St)" forKey:@"Main Street"];
     [_replacement setObject:@"Highland Avenue (WIL)" forKey:@"Highland Avenue"];
     [_replacement setObject:@"Highland (CHW)"        forKey:@"Highland"];
     [_replacement setObject:@"Elm Street (NOR)"      forKey:@"Norristown"];
@@ -163,9 +161,9 @@
 //    }
 
     if ( selectionType == kNextToArriveSelectionTypeStart || selectionType == kNextToArriveSelectionTypeStartAndEnd )
-        title = @"Select Start Stop";
+        title = @"Select Start";
     else if ( selectionType == kNextToArriveSelectionTypeEnd )
-        title = @"Select End Stop";
+        title = @"Select Destination";
     
     LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0, 500, 32) withTitle: title];
     [self.navigationItem setTitleView:titleView];
@@ -567,7 +565,7 @@
     
     if ( indexPath.row == 0 )
     {
-        NSLog(@"Selected Current Location");
+//        NSLog(@"Selected Current Location");
         
         NSString * storyboardName = @"CurrentLocationStoryboard";
         UIStoryboard * storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
@@ -585,6 +583,7 @@
 
         [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 
+        NSLog(@"SNTVC:didSelectRowAtIndexPath:0 - pushViewController: %@", clVC);
         [self.navigationController pushViewController:clVC animated:YES];
     }
     else if ( indexPath.row == 1 )
@@ -600,16 +599,18 @@
         [mdsGVC setStopData: self.stopData];
         [mdsGVC setRouteType: self.routeType];
         
+        NSLog(@"SNTVC:didSelectRowAtIndex:1 - pushViewController: %@", mdsGVC);
         [self.navigationController pushViewController:mdsGVC animated:YES];
         [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     }
     else
     {
 //        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+        [self selectionMade];
     }
     
     
-    [self selectionMade];
+
 
     
 }
@@ -917,7 +918,7 @@
         
         if ( [stop_name isEqualToString:@"Main Street"] || [stop_name isEqualToString:@"Norristown"] )
         {
-            NSLog(@"Break");
+//            NSLog(@"Break");
         }
         
         NSString *vanity_stop_name = [self fixMismatchedStopName:stop_name];
@@ -987,7 +988,7 @@
 #pragma mark - Buttons Pressed
 -(void) backButtonPressed:(id) sender
 {
-
+    NSLog(@"SNTVC:backButtonPressed - popViewController");
     [self.navigationController popViewControllerAnimated:YES];
     
 }
@@ -1078,6 +1079,12 @@
 -(void) selectionMade
 {
     
+    // Here's the logic:
+    //   If the start/end button on the left was pressed, the user wants to enter both start and end destinations
+    //   If the "Enter Start Stop" was entered, the user wants to only enter one location and then return
+    //   If the "End Start Stop" was entered, the user wants to only enter one locatio and then return
+    
+    // If the delegate has the -(void)buttonPressed:withData: method, then continue
     if ( [self.delegate respondsToSelector:@selector(buttonPressed:withData:)] )
     {
         
@@ -1131,13 +1138,14 @@
         [self.tableView scrollsToTop];
         
         LineHeaderView *header = (LineHeaderView*)[self.navigationItem titleView];
-        [header setTitle:@"Select End Stop"];
+        [header setTitle:@"Select Destination"];
         
         _startState = NO;
         
     }
     else
     {
+        NSLog(@"SNTVC:selectionMade - popViewControllerAnimated");
         [self.navigationController popViewControllerAnimated:YES];
     }
     
@@ -1232,7 +1240,6 @@
 {
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:[index intValue] inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
     [self.navigationItem.rightBarButtonItem setEnabled:YES];
-//    [self selectionMade];
 }
 
 

@@ -17,10 +17,19 @@
 #import "SystemAlertObject.h"
 
 
+#import "SEPTACommon.h"
+
 @protocol GetAlertDataAPIProtocol <NSObject>
 
 @optional
 -(void) alertFetched:(NSMutableArray*) alert;
+
+@end
+
+@interface GetAlertDataObject : NSObject
+
+@property (nonatomic, strong) NSString *alertName;
+@property (nonatomic, strong) NSNumber *alertType;
 
 @end
 
@@ -32,9 +41,11 @@
 
 -(void) fetchAlert;
 -(void) addRoute:(NSString*) routeName;
+-(void) addRoute:(NSString*) routeName ofModeType:(SEPTARouteTypes) type;
 -(void) removeRoute:(NSString*) routeName;
 
 -(void) clearAllRoutes;
+
 
 -(NSDictionary*) getAlert;
 

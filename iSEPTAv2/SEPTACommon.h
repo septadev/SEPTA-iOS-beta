@@ -18,6 +18,7 @@ typedef NS_ENUM(NSInteger, SEPTARouteTypes)  // According to the GTFS guidelines
     kSEPTATypeNHSL      = 4,
     kSEPTATypeBSL       = 5,
     kSEPTATypeTracklessTrolley,
+    kSEPTATypeNone,
 };
 
 

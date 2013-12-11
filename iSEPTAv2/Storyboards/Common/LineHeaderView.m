@@ -212,7 +212,7 @@
     [_label setFrame: CGRectOffset(_label.frame, 10, 0)];
     
     
-    NSLog(@"LHV - label size: %@", NSStringFromCGRect( _label.frame ) );
+//    NSLog(@"LHV - label size: %@", NSStringFromCGRect( _label.frame ) );
     
     [self addSubview: _label];
     

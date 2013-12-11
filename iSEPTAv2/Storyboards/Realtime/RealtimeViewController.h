@@ -24,19 +24,26 @@
 
 #import "MenuAlertsImageView.h"
 
+#import "GetAlertDataAPI.h"
+
+
 // -- Testing
 //#import "TransitDrawerViewController.h"
 
 
 // Subclassed, Others
 #import "SEPTATitle.h"
+#import "AppDelegate.h"
 
 
 // --==  PODs  ==--
 #import <Reachability.h>
 #import <SVProgressHUD.h>
 #import <FMDatabase.h>
+#import <ALAlertBanner/ALAlertBanner.h>
 
+
+#define ALALERTBANNER_TIMER 10.0f
 
 typedef NS_ENUM(NSInteger, SecondMenuAlertImageCycle)
 {
@@ -47,7 +54,7 @@ typedef NS_ENUM(NSInteger, SecondMenuAlertImageCycle)
 };
 
 
-@interface RealtimeViewController : UIViewController
+@interface RealtimeViewController : UIViewController <GetAlertDataAPIProtocol, UIApplicationDelegate>
 
 
 // Top row buttons

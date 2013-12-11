@@ -8,6 +8,13 @@
 
 #import "GetAlertDataAPI.h"
 
+@implementation GetAlertDataObject
+
+
+
+@end
+
+
 
 @implementation GetAlertDataAPI
 {
@@ -38,12 +45,84 @@
     [_routeNamesArr removeAllObjects];
 }
 
--(void) addRoute:(NSString*) routeName
+
+-(void) addRoute:(NSString*) routeName ofModeType:(SEPTARouteTypes) type
 {
     
     if ( routeName == nil )
         return;
     
+    NSString *alertName;
+    
+    switch (type)
+    {
+            
+        case kSEPTATypeBus:
+            alertName = [NSString stringWithFormat:@"bus_route_%@", routeName];
+            break;
+        case kSEPTATypeRail:
+        {
+            NSMutableDictionary *shortToAlertNameLookUp = [[NSMutableDictionary alloc] init];
+            
+            //    [shortToAlertNameLookUp setObject:@"AlertName" forKey:@"ShortName"];
+            [shortToAlertNameLookUp setObject:@"che" forKey:@"CHE"];
+            [shortToAlertNameLookUp setObject:@"chw" forKey:@"CHW"];
+            [shortToAlertNameLookUp setObject:@"cyn" forKey:@"CYN"];
+            
+            [shortToAlertNameLookUp setObject:@"fxc" forKey:@"FOX"];
+            [shortToAlertNameLookUp setObject:@"landdoy" forKey:@"LAN"];
+            [shortToAlertNameLookUp setObject:@"landdoy" forKey:@"DOY"];
+            [shortToAlertNameLookUp setObject:@"med" forKey:@"MED"];
+            
+            [shortToAlertNameLookUp setObject:@"nor" forKey:@"NOR"];
+            [shortToAlertNameLookUp setObject:@"pao" forKey:@"PAO"];
+            [shortToAlertNameLookUp setObject:@"trent" forKey:@"TRE"];
+            
+            [shortToAlertNameLookUp setObject:@"warm" forKey:@"WAR"];
+            [shortToAlertNameLookUp setObject:@"wilm" forKey:@"WIL"];
+            [shortToAlertNameLookUp setObject:@"wtren" forKey:@"WTR"];
+            
+            [shortToAlertNameLookUp setObject:@"gc" forKey:@"GC"];
+            
+            alertName = [NSString stringWithFormat:@"rr_route_%@", [shortToAlertNameLookUp objectForKey: alertName] ];
+            
+        }
+            break;
+        case kSEPTATypeTrolley:
+            alertName = [NSString stringWithFormat:@"trolley_route_%@", routeName];
+            break;
+        case kSEPTATypeTracklessTrolley:
+            alertName = [NSString stringWithFormat:@"trolley_route_%@", routeName];
+            break;
+        case kSEPTATypeBSL:
+            
+            break;
+        case kSEPTATypeMFL:
+            
+            break;
+        case kSEPTATypeNHSL:
+            
+            break;
+        default:
+            alertName = routeName;
+            break;
+            
+    } // switch (type)
+    
+    
+    if ( ![_routeNamesArr containsObject: alertName] )
+    {
+        [_routeNamesArr addObject: alertName];
+    }
+    
+}
+
+
+-(void) addRoute:(NSString*) routeName
+{
+    
+    if ( routeName == nil )
+        return;
     
     if ( ![_routeNamesArr containsObject: routeName] )
         [_routeNamesArr addObject: routeName];
@@ -82,23 +161,35 @@
     {
 
         NSString *alertRouteName;
-        if ( [routeName intValue] > 0 )
+
+        
+        // This is a crappy way of handling this, but if the routeName contains a '_' it was properly formatted using addRoute:ofModeType:
+        //   instead of addRoute: which the condition statement inside is built to handle
+        if ( [routeName rangeOfString:@"_"].location == NSNotFound && ![routeName isEqualToString:@"generic"] )
         {
-            alertRouteName = [NSString stringWithFormat:@"bus_route_%@", routeName];
+
+            if ( [routeName intValue] > 0 )
+            {
+                alertRouteName = [NSString stringWithFormat:@"bus_route_%@", routeName];
+            }
+            else
+            {
+                
+                if ( [routeName isEqualToString:@"MFL"] || [routeName isEqualToString:@"MFO"] || [routeName isEqualToString:@"BSO"] || [routeName isEqualToString:@"BSL"] )
+                    alertRouteName = [NSString stringWithFormat:@"rr_route_%@", [routeName lowercaseString] ];
+                else
+                    alertRouteName = [NSString stringWithFormat:@"rr_route_%@", routeName];
+                
+            }
+            
         }
         else
-        {
-            
-            if ( [routeName isEqualToString:@"MFL"] || [routeName isEqualToString:@"MFO"] || [routeName isEqualToString:@"BSO"] || [routeName isEqualToString:@"BSL"] )
-                alertRouteName = [NSString stringWithFormat:@"rr_route_%@", [routeName lowercaseString] ];
-            else
-                alertRouteName = [NSString stringWithFormat:@"rr_route_%@", routeName];
-            
-        }
+            alertRouteName = routeName;  // Since '_' was found, routeName is already good
+        
 
         
         NSString *url = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/Alerts/get_alert_data.php?req1=%@", alertRouteName];
-        NSLog(@"url: %@", url);
+        NSLog(@"GetAlertDataAPI - url: %@", url);
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] ];
         
         _jsonOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request

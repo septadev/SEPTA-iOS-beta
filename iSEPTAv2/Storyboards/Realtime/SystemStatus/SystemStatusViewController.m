@@ -17,6 +17,8 @@
     
     SystemStatusObject *_elevatorStatus;
     
+    NSMutableDictionary *_additionalStatus;
+    
     NSMutableArray *_masterData;
     TableViewStore *_tableData;
     
@@ -69,7 +71,7 @@
     
     
     _tableData = [[TableViewStore alloc] init];
-    
+    _additionalStatus = [[NSMutableDictionary alloc] init];
     
     // --==  Register Your Nibs!  ==--
     [self.tableView registerNib: [UINib nibWithNibName:@"SystemStatusCell" bundle:nil] forCellReuseIdentifier:@"SystemStatusCell"];
@@ -712,6 +714,7 @@
     
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData: returnedData options:kNilOptions error:&error];
     
+    
     if ( json == nil || [json count] == 0 )
         return;
     
@@ -720,27 +723,29 @@
     
 //    _elevatorStatus = [json mutableCopy];
     
-    _elevatorStatus = [[SystemStatusObject alloc] init];
+    SystemStatusObject *elevatorStatus = [[SystemStatusObject alloc] init];
     
 //    NSString *jsonStr = @"{\"meta\":{\"elevators_out\":2,\"updated\":\"2013-11-2611:38:02\"},\"results\":[{\"line\":\"MarketFrankfordLine\",\"station\":\"Berks\",\"elevator\":\"Westbound\",\"message\":\"Noaccessto/fromstation\",\"alternate_url\":\"http://www.septa.org/access/alternate/mfl.html#berks\"},{\"line\":\"BroadStreetLine\",\"station\":\"CityHall\",\"elevator\":\"EastBound\",\"message\":\"Noaccessto/fromstation\",\"alternate_url\":\"http://www.septa.org/access/alternate/mfl.html#berks\"}]}";
-//    
-//    NSError *errorr;
-//    NSJSONSerialization *test = [NSJSONSerialization JSONObjectWithData:[jsonStr dataUsingEncoding:NSStringEncodingConversionAllowLossy] options:0 error:&errorr];
+
     
     NSMutableDictionary *meta = [json objectForKey:@"meta"];  // keys: elevators_out, updated
 //    NSMutableArray   *results = [json objectForKey:@"results"];  // keys:  line, station, evelator, message, alternate_url
     
-    [_elevatorStatus setMode      : @"Elevator"];
-    [_elevatorStatus setRoute_name: @"Elevator Outage"];
-    [_elevatorStatus setRoute_id  : @"Elevator" ];
-    [_elevatorStatus setLast_updated: [meta objectForKey:@"updated"] ];
+    [elevatorStatus setMode      : @"Elevator" ];
+    [elevatorStatus setRoute_name: @"Elevators"];
+    [elevatorStatus setRoute_id  : @"Elevator" ];
+    [elevatorStatus setLast_updated: [meta objectForKey:@"updated"] ];
     
     if ( [meta objectForKey:@"elevators_out"] > 0 )
-        [_elevatorStatus setIsalert:@"Y"];
+        [elevatorStatus setIsalert:@"Y"];
     
     json = nil;
+    
+    [_additionalStatus setObject: elevatorStatus forKey:@"Elevator"];
+
     [self filterTableDataSourceBy: _filterType];
 
+    
 }
 
 -(void) processSystemStatusJSONData:(NSData*) returnedData
@@ -758,21 +763,40 @@
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData: returnedData options:kNilOptions error:&error];
     
     if ( json == nil || [json count] == 0 )
+    {
         return;
-    
+    }
+        
     if ( error != nil )
         return;  // Something bad happened, so just return.
-    
     
     [_masterData removeAllObjects];
     for (NSDictionary *data in json)
     {
         SystemStatusObject *ssObject = [[SystemStatusObject alloc] init];
-        
-
+    
         NSString *routeName = [data objectForKey:@"route_name"];
-        if ( [routeName isEqualToString:@"CCT"] || [routeName isEqualToString:@"Generic"] )
+        if ( [routeName isEqualToString:@"CCT"] )  // || [routeName isEqualToString:@"Generic"]
             continue;
+        else if ( [routeName isEqualToString:@"Generic"] )
+        {
+
+            [ssObject setRoute_id:  [data objectForKey:@"route_id"] ];
+            [ssObject setRoute_name:@"General"];
+            
+            [ssObject setMode:      @"Generic"];
+            
+            [ssObject setIsadvisory:[data objectForKey:@"isadvisory"] ];
+            [ssObject setIsalert:   [data objectForKey:@"isalert"   ] ];
+            [ssObject setIssuspend: [data objectForKey:@"issuppend" ] ];
+            [ssObject setIsdetour:  [data objectForKey:@"isdetour"  ] ];
+            
+            [ssObject setLast_updated:[data objectForKey:@"last_updated"] ];
+
+            [_additionalStatus setObject:ssObject forKey:@"Generic"];
+            continue;
+            
+        }
         else if ( [routeName isEqualToString:@"Market/ Frankford Line"] )
             routeName = @"Market-Frankford Line";
         else if ( [routeName isEqualToString:@"Market Frankford Owl"] )
@@ -866,9 +890,15 @@
 
 
     // If there is an elevator outage, add it to _filteredData
-    if ( _elevatorStatus != nil )
-        [_filteredData insertObject:_elevatorStatus atIndex:0];
+//    if ( _elevatorStatus != nil )
+//        [_filteredData insertObject:_elevatorStatus atIndex:0];
 
+//    for (SystemStatusObject *ssObject in _additionalStatus)
+    for (NSString *key in _additionalStatus)
+    {
+        [_filteredData insertObject: [_additionalStatus objectForKey:key] atIndex:0];
+    }
+    
     
     [self generateIndex];
     

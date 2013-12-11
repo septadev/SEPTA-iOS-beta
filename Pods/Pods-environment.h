@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking 3
 #define COCOAPODS_VERSION_PATCH_AFNetworking 1
 
+// ALAlertBanner
+#define COCOAPODS_POD_AVAILABLE_ALAlertBanner
+#define COCOAPODS_VERSION_MAJOR_ALAlertBanner 0
+#define COCOAPODS_VERSION_MINOR_ALAlertBanner 3
+#define COCOAPODS_VERSION_PATCH_ALAlertBanner 1
+
 // ECSlidingViewController
 #define COCOAPODS_POD_AVAILABLE_ECSlidingViewController
 #define COCOAPODS_VERSION_MAJOR_ECSlidingViewController 1
@@ -95,12 +101,6 @@
 #define COCOAPODS_VERSION_MAJOR_SVPullToRefresh 0
 #define COCOAPODS_VERSION_MINOR_SVPullToRefresh 4
 #define COCOAPODS_VERSION_PATCH_SVPullToRefresh 1
-
-// TSMessages
-#define COCOAPODS_POD_AVAILABLE_TSMessages
-#define COCOAPODS_VERSION_MAJOR_TSMessages 0
-#define COCOAPODS_VERSION_MINOR_TSMessages 9
-#define COCOAPODS_VERSION_PATCH_TSMessages 3
 
 // hpple
 #define COCOAPODS_POD_AVAILABLE_hpple

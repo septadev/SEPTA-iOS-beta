@@ -170,8 +170,8 @@
     // --== Only the following fields will be filled if Favorites or Recently were touched
     if ( self.routeData.start_stop_name == nil )
     {
-        [itinerary setStartStopName: DEFAULT_MESSAGE];
-        [itinerary setEndStopName  : DEFAULT_MESSAGE];
+        [itinerary setStartStopName: DEFAULT_START_MESSAGE];
+        [itinerary setEndStopName  : DEFAULT_END_MESSAGE];
         
         [itinerary setStartStopID :[NSNumber numberWithInt:0] ];
         [itinerary setEndStopID   :[NSNumber numberWithInt:0] ];
@@ -892,7 +892,7 @@
 
                 [self createMasterJSONLookUpTable];  // Do I even use this anymore (why is this even here?)
                 
-                if ( [self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"Rail"] )  // MFL, BSS and NHSL do not have realtime data
+                if ( [self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"Rail"] || [self.travelMode isEqualToString:@"Trolley"] )  // MFL, BSS and NHSL do not have realtime data
                     [self loadJSONDataIntheBackground];  // This should only be called once loadTrips has been loaded
                 
                 
@@ -971,15 +971,13 @@
     if ( !_forceLoad )
     {
         // As long as _forceLoad is not true, check if startStopName and endStopName are nil.  If they're nil, don't load
-        if ( [itinerary.startStopID intValue] == 0 || [itinerary.endStopID intValue] == 0 || itinerary.routeID == nil )
+        if ( ([itinerary.startStopID intValue] == 0 && [itinerary.endStopID intValue] == 0) || itinerary.routeID == nil )
         {
             return;  // If either is nil, there's nothing to do.
         }
         
     }
     
-    NSDate *startTime = [NSDate date];
-    NSLog(@"ITVC - Starting at %@", startTime);
     
     [masterTripsArr removeAllObjects];
     [_masterTrainLookUpDict removeAllObjects];  // This will trigger _masterTrainLookUpDict to repopulate itself during the next JSON request
@@ -993,244 +991,242 @@
     }
     
     
-    NSString *queryStr = [NSString stringWithFormat:@"SELECT route_id, block_id, stop_sequence, arrival_time, direction_id, service_id, stop_timesDB.trip_id trip_id FROM stop_timesDB JOIN tripsDB ON tripsDB.trip_id=stop_timesDB.trip_id WHERE tripsDB.trip_id IN (SELECT trip_id FROM tripsDB WHERE route_id=\"%@\" ) AND stop_id=%d ORDER BY arrival_time", itinerary.routeShortName, [itinerary.startStopID intValue] ];
+    // loadTrips will now be broken up into two parts: when start stop is valid and when end stop is valid.
+    // If neither are valid, nothing happens.  If one is valid, load just that data
     
-    if ( [self.travelMode isEqualToString:@"Rail"] )
-        queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_rail"];
-    else if ( [self.travelMode isEqualToString:@"MFL"] )
-        queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_MFL"];
-    else
-        queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
-    
-    NSLog(@"ITVC - queryStr: %@", queryStr);
-    FMResultSet *results = [database executeQuery: queryStr];
-    if ( [database hadError] )  // Check for errors
-    {
-        
-        int errorCode = [database lastErrorCode];
-        NSString *errorMsg = [database lastErrorMessage];
-        
-        NSLog(@"ITVC - query failure, code: %d, %@", errorCode, errorMsg);
-        NSLog(@"ITVC - query str: %@", queryStr);
-        
-        return;  // If an error occurred, there's nothing else to do but exit
-        
-    } // if ( [database hadError] )
-    
-    
-    
-    // Process the first query
+    // --== Common Variables between the Parts  ==--
+    NSString *queryStr;
     NSMutableDictionary *tripDict = [[NSMutableDictionary alloc] init];
+    FMResultSet *results;
+    NSDate *startTime = [NSDate date];
+
     
-    
-    //
-    //  The first pull from [results next] takes the longest amount of time.  If the user cancelled the operation
-    //
-    //    BOOL successfulResults = [results next];
-    //    if ( [_sqlOp isCancelled] )
-    //        return;
-    
-    while ( [results next] )
+    //  --==  Part 1: Is start stop id valid?  ==--
+    if ( [itinerary.startStopID intValue] != 0 )
     {
         
-        if ( [_sqlOp isCancelled] )  // If the operation has been cancelled, no need to continue reading from the database
-            return;
+        NSLog(@"ITVC - Starting at %@", startTime);
         
-        NSString *tripID       = [results stringForColumnIndex:6];
+        queryStr = [NSString stringWithFormat:@"SELECT route_id, block_id, stop_sequence, arrival_time, direction_id, service_id, stop_timesDB.trip_id trip_id FROM stop_timesDB JOIN tripsDB ON tripsDB.trip_id=stop_timesDB.trip_id WHERE tripsDB.trip_id IN (SELECT trip_id FROM tripsDB WHERE route_id=\"%@\" ) AND route_id=\"%@\" AND stop_id=%d ORDER BY arrival_time", itinerary.routeShortName, itinerary.routeShortName, [itinerary.startStopID intValue] ];
         
-        if ( [tripDict objectForKey:tripID] == nil )
+        if ( [self.travelMode isEqualToString:@"Rail"] )
+            queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_rail"];
+        else if ( [self.travelMode isEqualToString:@"MFL"] )
+            queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_MFL"];
+        else
+            queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
+        
+        NSLog(@"ITVC - queryStr: %@", queryStr);
+        results = [database executeQuery: queryStr];
+        if ( [database hadError] )  // Check for errors
         {
-            TripObject *trip = [[TripObject alloc] init];
             
-            [trip setRouteName: [results stringForColumnIndex:0] ];
+            int errorCode = [database lastErrorCode];
+            NSString *errorMsg = [database lastErrorMessage];
             
-            [trip setTrainNo: [NSNumber numberWithInt: [results intForColumnIndex:1] ] ];
-            [trip setStartSeq: [NSNumber numberWithInt: [results intForColumnIndex:2] ] ];
-
-            //            [trip setStartTime: [results stringForColumnIndex:3] ];
-            [trip setStartTime: [NSNumber numberWithInt: [results intForColumnIndex:3] ] ];
+            NSLog(@"ITVC - query failure, code: %d, %@", errorCode, errorMsg);
+            NSLog(@"ITVC - query str: %@", queryStr);
             
-            [trip setServiceID: [NSNumber numberWithInt:[results intForColumnIndex:5] ] ];
-            [trip setTripID: tripID];
+            return;  // If an error occurred, there's nothing else to do but exit
             
-            [tripDict setObject:trip forKey:tripID];
-        }
+        } // if ( [database hadError] )
         
-    }  // while ( [results next] )
+        
+        
+        while ( [results next] )
+        {
+            
+            if ( [_sqlOp isCancelled] )  // If the operation has been cancelled, no need to continue reading from the database
+                return;
+            
+            NSString *tripID       = [results stringForColumnIndex:6];
+            
+            if ( [tripDict objectForKey:tripID] == nil )
+            {
+                TripObject *trip = [[TripObject alloc] init];
+                
+                [trip setRouteName: [results stringForColumnIndex:0] ];
+                
+                [trip setTrainNo: [NSNumber numberWithInt: [results intForColumnIndex:1] ] ];
+                [trip setStartSeq: [NSNumber numberWithInt: [results intForColumnIndex:2] ] ];
+                
+                //            [trip setStartTime: [results stringForColumnIndex:3] ];
+                [trip setStartTime: [NSNumber numberWithInt: [results intForColumnIndex:3] ] ];
+                
+                [trip setDirectionID:[NSNumber numberWithInt:[results intForColumnIndex:4] ] ];
+                [trip setServiceID: [NSNumber numberWithInt:[results intForColumnIndex:5] ] ];
+                [trip setTripID: tripID];
+                
+                [tripDict setObject:trip forKey:tripID];
+            }
+            
+        }  // while ( [results next] )
+        
+        NSTimeInterval diff = [ [NSDate date] timeIntervalSinceDate: startTime];
+        NSLog(@"ITVC - %6.3f seconds have passed.", diff);
+        NSLog(@"ITVC - Loaded and stored");
+        
+    }
     
-    NSTimeInterval diff = [ [NSDate date] timeIntervalSinceDate: startTime];
-    NSLog(@"ITVC - %6.3f seconds have passed.", diff);
-    NSLog(@"ITVC - Loaded and stored");
+    
     
     
     //    queryStr = @"SELECT route_id, block_id, stop_sequence, arrival_time, direction_id, service_id, stop_times_rail.trip_id trip_id FROM stop_times_rail JOIN trips_rail ON trips_rail.trip_id=stop_times_rail.trip_id WHERE trips_rail.trip_id IN (SELECT trip_id FROM trips_rail WHERE route_id=\"WAR\" ) AND stop_id=90413 ORDER BY arrival_time";
     
 //    queryStr = [NSString stringWithFormat:@"SELECT route_id, block_id, stop_sequence, arrival_time, direction_id, service_id, stop_timesDB.trip_id trip_id FROM stop_timesDB JOIN tripsDB ON tripsDB.trip_id=stop_timesDB.trip_id WHERE tripsDB.trip_id IN (SELECT trip_id FROM tripsDB WHERE route_id=\"%@\" AND direction_id=%d ) AND stop_id=%d ORDER BY arrival_time", itinerary.routeID, _currentDisplayDirection, [itinerary.endStopID intValue] ];
 
+    if ( [itinerary.endStopID intValue] != 0 )
+    {
 
-    
-    if ( [self.travelMode isEqualToString:@"Rail"] )
-    {
-        queryStr = [NSString stringWithFormat:@"SELECT route_id, block_id, stop_sequence, arrival_time, direction_id, service_id, stop_timesDB.trip_id trip_id FROM stop_timesDB JOIN tripsDB ON tripsDB.trip_id=stop_timesDB.trip_id WHERE tripsDB.trip_id IN (SELECT trip_id FROM tripsDB WHERE route_id=\"%@\" ) AND stop_id=%d ORDER BY arrival_time", itinerary.routeID, [itinerary.endStopID intValue] ];
+        if ( [self.travelMode isEqualToString:@"Rail"] )
+        {
+            queryStr = [NSString stringWithFormat:@"SELECT route_id, block_id, stop_sequence, arrival_time, direction_id, service_id, stop_timesDB.trip_id trip_id FROM stop_timesDB JOIN tripsDB ON tripsDB.trip_id=stop_timesDB.trip_id WHERE tripsDB.trip_id IN (SELECT trip_id FROM tripsDB WHERE route_id=\"%@\" ) AND route_id=\"%@\" AND stop_id=%d ORDER BY arrival_time", itinerary.routeID, itinerary.routeID, [itinerary.endStopID intValue] ];
+            
+            queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_rail"];
+        }
+        else if ( [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSL"] || [self.travelMode isEqualToString:@"NHSL"] )
+        {
+            queryStr = [NSString stringWithFormat:@"SELECT route_id, block_id, stop_sequence, arrival_time, direction_id, service_id, stop_timesDB.trip_id trip_id FROM stop_timesDB JOIN tripsDB ON tripsDB.trip_id=stop_timesDB.trip_id WHERE tripsDB.trip_id IN (SELECT trip_id FROM tripsDB WHERE route_id=\"%@\" ) AND route_id=\"%@\" AND stop_id=%d ORDER BY arrival_time", itinerary.routeShortName, itinerary.routeShortName, [itinerary.endStopID intValue] ];
+            
+            queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:[NSString stringWithFormat:@"_%@", self.travelMode] ];
+        }
+        else
+        {
+            queryStr = [NSString stringWithFormat:@"SELECT route_id, block_id, stop_sequence, arrival_time, direction_id, service_id, stop_timesDB.trip_id trip_id FROM stop_timesDB JOIN tripsDB ON tripsDB.trip_id=stop_timesDB.trip_id WHERE tripsDB.trip_id IN (SELECT trip_id FROM tripsDB WHERE route_id=\"%@\" AND direction_id=%d ) AND route_id=\"%@\" AND stop_id=%d ORDER BY arrival_time", itinerary.routeShortName, _currentDisplayDirection, itinerary.routeShortName, [itinerary.endStopID intValue] ];
+            
+            queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
+        }
         
-        queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_rail"];
-    }
-    else if ( [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSL"] || [self.travelMode isEqualToString:@"NHSL"] )
-    {
-        queryStr = [NSString stringWithFormat:@"SELECT route_id, block_id, stop_sequence, arrival_time, direction_id, service_id, stop_timesDB.trip_id trip_id FROM stop_timesDB JOIN tripsDB ON tripsDB.trip_id=stop_timesDB.trip_id WHERE tripsDB.trip_id IN (SELECT trip_id FROM tripsDB WHERE route_id=\"%@\" ) AND stop_id=%d ORDER BY arrival_time", itinerary.routeShortName, [itinerary.endStopID intValue] ];
-
-        queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:[NSString stringWithFormat:@"_%@", self.travelMode] ];
-    }
-    else
-    {
-        queryStr = [NSString stringWithFormat:@"SELECT route_id, block_id, stop_sequence, arrival_time, direction_id, service_id, stop_timesDB.trip_id trip_id FROM stop_timesDB JOIN tripsDB ON tripsDB.trip_id=stop_timesDB.trip_id WHERE tripsDB.trip_id IN (SELECT trip_id FROM tripsDB WHERE route_id=\"%@\" AND direction_id=%d ) AND stop_id=%d ORDER BY arrival_time", itinerary.routeShortName, _currentDisplayDirection, [itinerary.endStopID intValue] ];
-
-        queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
-    }
-    
-    
-    
-    NSLog(@"ITVC - queryStr: %@", queryStr);
-    results = [database executeQuery: queryStr];
-    if ( [database hadError] )  // Check for errors
-    {
         
-        int errorCode = [database lastErrorCode];
-        NSString *errorMsg = [database lastErrorMessage];
         
-        NSLog(@"ITVC - query failure, code: %d, %@", errorCode, errorMsg);
-        NSLog(@"ITVC - query str: %@", queryStr);
-        
-        return;  // If an error occurred, there's nothing else to do but exit
-        
-    } // if ( [database hadError] )
-    
-    
-    // Process the first query
-    //    int count = 0;
-    BOOL flippedOnce = 0;
-    while ( [results next] )
-    {
-        
-        if ( [_sqlOp isCancelled] )
-            return;
-        
-        NSString *tripID = [results stringForColumnIndex:6];
-
-        if ( [tripDict objectForKey:tripID] != nil )
+        NSLog(@"ITVC - queryStr: %@", queryStr);
+        results = [database executeQuery: queryStr];
+        if ( [database hadError] )  // Check for errors
         {
             
-            TripObject *trip = [tripDict objectForKey:tripID];
-            [trip setDirectionID:[NSNumber numberWithInt:[results intForColumnIndex:4] ] ];
+            int errorCode = [database lastErrorCode];
+            NSString *errorMsg = [database lastErrorMessage];
             
-            int startSeq = [[trip startSeq] intValue];
-            int endSeq   = [results intForColumnIndex:2];
-            //            NSString *endRoute = [results stringForColumnIndex:0];
+            NSLog(@"ITVC - query failure, code: %d, %@", errorCode, errorMsg);
+            NSLog(@"ITVC - query str: %@", queryStr);
             
-            if ( startSeq < endSeq )
+            return;  // If an error occurred, there's nothing else to do but exit
+            
+        } // if ( [database hadError] )
+        
+        
+        // Process the first query
+        //    int count = 0;
+        BOOL flippedOnce = 0;
+        while ( [results next] )
+        {
+            
+            if ( [_sqlOp isCancelled] )
+                return;
+            
+            NSString *tripID = [results stringForColumnIndex:6];
+            
+            if ( [tripDict objectForKey:tripID] != nil )
             {
-                // Sequences are in the proper order, fill in the endSeq/Time and be done with it
-                [trip setEndSeq: [NSNumber numberWithInt: [results intForColumnIndex:2] ] ];
-                [trip setEndTime: [NSNumber numberWithInt: [results intForColumnIndex:3] ] ];
-//                [trip setEndTime: [results stringForColumnIndex:3] ];
                 
+                TripObject *trip = [tripDict objectForKey:tripID];
+                [trip setDirectionID:[NSNumber numberWithInt:[results intForColumnIndex:4] ] ];
                 
+                int startSeq = [[trip startSeq] intValue];
+                int endSeq   = [results intForColumnIndex:2];
+                //            NSString *endRoute = [results stringForColumnIndex:0];
                 
-                // The first time we find a complete trip with the start and end sequence in the right
-                // order, we need to determine if this is To/From some point.  What that point is differs
-                // for different travel types.
-                
-                if ( _firstTime )
+                if ( startSeq < endSeq )
                 {
+                    // Sequences are in the proper order, fill in the endSeq/Time and be done with it
+                    [trip setEndSeq: [NSNumber numberWithInt: [results intForColumnIndex:2] ] ];
+                    [trip setEndTime: [NSNumber numberWithInt: [results intForColumnIndex:3] ] ];
+                    //                [trip setEndTime: [results stringForColumnIndex:3] ];
                     
-                    if ( [self.travelMode isEqualToString:@"Rail"] )  // Determine Rail To/From points
+                    
+                    
+                    // The first time we find a complete trip with the start and end sequence in the right
+                    // order, we need to determine if this is To/From some point.  What that point is differs
+                    // for different travel types.
+                    
+                    if ( _firstTime )
                     {
                         
+                        if ( [self.travelMode isEqualToString:@"Rail"] )  // Determine Rail To/From points
+                        {
+                            // I don't know what this is supposed to do anymore
+                        }
                         
-//                        if ( [trip.routeName isEqualToString:_routeData.route_id] )
-//                        {
-//                            if ( [trip.directionID intValue] == 0 )
-//                                _headerDirection = @"To";
-//                            else
-//                                _headerDirection = @"From";
-//                        }
-//                        else
-//                        {
-//                            if ( [trip.directionID intValue] == 0 )
-//                                _headerDirection = @"From";
-//                            else
-//                                _headerDirection = @"To";
-//                        }
-                        
+                        _firstTime = 0;
                     }
+                    _currentDisplayDirection = [trip.directionID intValue];
                     
-                    _firstTime = 0;
-                }
-                _currentDisplayDirection = [trip.directionID intValue];
-                
-                
-                
-                
-            }
-            else
-            {
-                //                // Sequences are not in the proper order, assign startSeq/Time to endSeq/Time then populate startSeq/Time
-                [trip setEndSeq: trip.startSeq];
-                [trip setEndTime:trip.startTime];
-                
-                [trip setStartSeq : [NSNumber numberWithInt: [results intForColumnIndex:2] ] ];
-                [trip setStartTime: [NSNumber numberWithInt: [results intForColumnIndex:3] ] ];
-                
-                
-                // Please explain the logic behind this, so when I change this, I know if I'm $@!%ing something up!
-                
-                // The problem here, is the user selected 19th Street as the start then 22nd Street as the end stop.
-                // Unfortunately, the default direction 0, goes in the opposite direction 22nd->19th street.
-                
-                if ( [self.travelMode isEqualToString:@"Trolley"] || [self.travelMode isEqualToString:@"Bus"] )
-                {
-                    if ( !flippedOnce )
-                    {
-                        NSLog(@"ITVC - flipped trips!");
-                        flippedOnce = 1;
-                        [itinerary flipStops];
-                        //                        [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
-                    }
-                }
-                else if ( [self.travelMode isEqualToString:@"Rail"] )
-                {
-                    // Do nothing
+                    
+                    
+                    
                 }
                 else
                 {
-                    if ( [trip.directionID intValue] == 0 )
-                        _currentDisplayDirection = 1;
+                    //                // Sequences are not in the proper order, assign startSeq/Time to endSeq/Time then populate startSeq/Time
+                    [trip setEndSeq: trip.startSeq];
+                    [trip setEndTime:trip.startTime];
+                    
+                    [trip setStartSeq : [NSNumber numberWithInt: [results intForColumnIndex:2] ] ];
+                    [trip setStartTime: [NSNumber numberWithInt: [results intForColumnIndex:3] ] ];
+                    
+                    
+                    // Please explain the logic behind this, so when I change this, I know if I'm $@!%ing something up!
+                    
+                    // The problem here, is the user selected 19th Street as the start then 22nd Street as the end stop.
+                    // Unfortunately, the default direction 0, goes in the opposite direction 22nd->19th street.
+                    
+                    if ( [self.travelMode isEqualToString:@"Trolley"] || [self.travelMode isEqualToString:@"Bus"] )
+                    {
+                        if ( !flippedOnce )
+                        {
+                            NSLog(@"ITVC - flipped trips!");
+                            flippedOnce = 1;
+                            [itinerary flipStops];
+                            //                        [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+                        }
+                    }
+                    else if ( [self.travelMode isEqualToString:@"Rail"] )
+                    {
+                        // Do nothing
+                    }
                     else
-                        _currentDisplayDirection = 0;
+                    {
+                        if ( [trip.directionID intValue] == 0 )
+                            _currentDisplayDirection = 1;
+                        else
+                            _currentDisplayDirection = 0;
+                    }
+                    
                 }
+                
+                
+                //            if ( count++ < 10 )
+                //                NSLog(@"%@", trip);
+                
+                
+//                [masterTripsArr addObject:trip];
+//                [tripDict removeObjectForKey:tripID];
                 
             }
             
-            
-            //            if ( count++ < 10 )
-            //                NSLog(@"%@", trip);
-            
-            
-            [masterTripsArr addObject:trip];
-            [tripDict removeObjectForKey:tripID];
-        }
+        }  // while ( [results next] )
         
-    }  // while ( [results next] )
+        NSTimeInterval diff = [ [NSDate date] timeIntervalSinceDate: startTime];
+        NSLog(@"ITVC - %6.3f seconds have passed.", diff);
+        
+    }
+
+    for (NSString *tripKey in tripDict)
+    {
+        [masterTripsArr addObject: [tripDict objectForKey:tripKey] ];
+    }
     
-    
-    diff = [ [NSDate date] timeIntervalSinceDate: startTime];
-    NSLog(@"ITVC - %6.3f seconds have passed.", diff);
-    
-    
-//    if ( [tripDict count] < 1 )
-//    {
-//        NSLog(@"ITVC - No results");
-//    }
+    [tripDict removeAllObjects];
     
     
 }
@@ -1311,13 +1307,16 @@
         now = [[dateFormatter stringFromDate: [NSDate date] ] intValue];
     }
     
-    
+    _currentDisplayDirection = 0;
+    NSNumber *displayDirection = [NSNumber numberWithInt:0];
     NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"( (serviceID & %d) > 0 )  AND (directionID == %d) AND (startTime > %d)", _currentServiceID, _currentDisplayDirection, now] ];
     
-    currentTripsArr = [[masterTripsArr filteredArrayUsingPredicate:predicateFilter] mutableCopy];  // Need a mutable copy of the filtered dataset
+    NSSortDescriptor *timeSort = [NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES];
     
-//    currentTripsArr = (NSMutableArray*)[masterTripsArr filteredArrayUsingPredicate:predicateFilter];
-
+    // Need a mutable copy of the filtered dataset
+    
+    currentTripsArr = [ [ [masterTripsArr filteredArrayUsingPredicate:predicateFilter] sortedArrayUsingDescriptors:[NSArray arrayWithObject:timeSort] ] mutableCopy];
+    
     int sectionToLoad = 2;
     _message = nil;
     
@@ -1515,7 +1514,7 @@
         //        queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
         
         // If both start and end stop names are set to the default message, do not filter by direction
-        if ( [itinerary.startStopName isEqualToString:DEFAULT_MESSAGE] && [itinerary.endStopName isEqualToString: DEFAULT_MESSAGE] )
+        if ( [itinerary.startStopName isEqualToString:DEFAULT_START_MESSAGE] && [itinerary.endStopName isEqualToString: DEFAULT_END_MESSAGE] )
         {
             
 //            queryStr = [NSString stringWithFormat:@"SELECT * FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_id=%@ ORDER BY stop_name", self.routeData.route_id];  // Was
@@ -1580,8 +1579,8 @@
     
     [itinerary clearStops];  // Clear out the stop information for itinerary
     
-    [itinerary setStartStopName: DEFAULT_MESSAGE];  // Put the default messages back
-    [itinerary setEndStopName  : DEFAULT_MESSAGE];
+    [itinerary setStartStopName: DEFAULT_START_MESSAGE];  // Put the default messages back
+    [itinerary setEndStopName  : DEFAULT_END_MESSAGE];
     
     [itinerary setStartStopID :[NSNumber numberWithInt:0] ];
     [itinerary setEndStopID   :[NSNumber numberWithInt:0] ];
@@ -3373,7 +3372,7 @@
             
             // If the start label was pressed but the end is empty, then let's get the user to complete both of them.
             //            if ( [_itinerary.endStopID intValue] <= 0 )
-            if ( [itinerary.startStopName isEqualToString: DEFAULT_MESSAGE] )
+            if ( [itinerary.startStopName isEqualToString: DEFAULT_START_MESSAGE] )
                 selType = kNextToArriveSelectionTypeStartAndEnd;
             else
                 selType = kNextToArriveSelectionTypeStart;
@@ -3575,29 +3574,29 @@
     
     [_alertsAPI clearAllRoutes];
     
-    NSMutableDictionary *shortToAlertNameLookUp = [[NSMutableDictionary alloc] init];
-    
-//    [shortToAlertNameLookUp setObject:@"AlertName" forKey:@"ShortName"];
-    [shortToAlertNameLookUp setObject:@"che" forKey:@"CHE"];
-    [shortToAlertNameLookUp setObject:@"chw" forKey:@"CHW"];
-    [shortToAlertNameLookUp setObject:@"cyn" forKey:@"CYN"];
-
-    [shortToAlertNameLookUp setObject:@"fxc" forKey:@"FOX"];
-    [shortToAlertNameLookUp setObject:@"landdoy" forKey:@"LAN"];
-    [shortToAlertNameLookUp setObject:@"landdoy" forKey:@"DOY"];
-    [shortToAlertNameLookUp setObject:@"med" forKey:@"MED"];
-    
-    [shortToAlertNameLookUp setObject:@"nor" forKey:@"NOR"];
-    [shortToAlertNameLookUp setObject:@"pao" forKey:@"PAO"];
-    [shortToAlertNameLookUp setObject:@"trent" forKey:@"TRE"];
-
-    [shortToAlertNameLookUp setObject:@"warm" forKey:@"WAR"];
-    [shortToAlertNameLookUp setObject:@"wilm" forKey:@"WIL"];
-    [shortToAlertNameLookUp setObject:@"wtren" forKey:@"WTR"];
-    
-    [shortToAlertNameLookUp setObject:@"gc" forKey:@"GC"];
-
-    NSString *alertName = [shortToAlertNameLookUp objectForKey: self.routeData.route_short_name];
+//    NSMutableDictionary *shortToAlertNameLookUp = [[NSMutableDictionary alloc] init];
+//    
+////    [shortToAlertNameLookUp setObject:@"AlertName" forKey:@"ShortName"];
+//    [shortToAlertNameLookUp setObject:@"che" forKey:@"CHE"];
+//    [shortToAlertNameLookUp setObject:@"chw" forKey:@"CHW"];
+//    [shortToAlertNameLookUp setObject:@"cyn" forKey:@"CYN"];
+//
+//    [shortToAlertNameLookUp setObject:@"fxc" forKey:@"FOX"];
+//    [shortToAlertNameLookUp setObject:@"landdoy" forKey:@"LAN"];
+//    [shortToAlertNameLookUp setObject:@"landdoy" forKey:@"DOY"];
+//    [shortToAlertNameLookUp setObject:@"med" forKey:@"MED"];
+//    
+//    [shortToAlertNameLookUp setObject:@"nor" forKey:@"NOR"];
+//    [shortToAlertNameLookUp setObject:@"pao" forKey:@"PAO"];
+//    [shortToAlertNameLookUp setObject:@"trent" forKey:@"TRE"];
+//
+//    [shortToAlertNameLookUp setObject:@"warm" forKey:@"WAR"];
+//    [shortToAlertNameLookUp setObject:@"wilm" forKey:@"WIL"];
+//    [shortToAlertNameLookUp setObject:@"wtren" forKey:@"WTR"];
+//    
+//    [shortToAlertNameLookUp setObject:@"gc" forKey:@"GC"];
+//
+//    NSString *alertName = [shortToAlertNameLookUp objectForKey: self.routeData.route_short_name];
     
 //    if ( alertName == nil  && [self.routeData.route_short_name isEqualToString:@"GC"] )
 //    {
@@ -3608,11 +3607,12 @@
 //    else
 //        [_alertsAPI addRoute: alertName];
 
-    if ( alertName != nil )
-        [_alertsAPI addRoute: alertName];
-    else
-        [_alertsAPI addRoute: _routeData.route_short_name];
+//    if ( alertName != nil )
+//        [_alertsAPI addRoute: alertName];
+//    else
+//        [_alertsAPI addRoute: _routeData.route_short_name];
     
+    [_alertsAPI addRoute: _routeData.route_short_name ofModeType:[_routeData.route_type intValue] ];
     [_alertsAPI fetchAlert];
 
     

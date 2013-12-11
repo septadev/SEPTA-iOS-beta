@@ -348,6 +348,7 @@
         
         [(StopNamesTableViewController*)previousVC currentLocationSelectionMade: rObj];
         
+        NSLog(@"CLTVC:btnDismissPressed - popToViewController");
         [self.navigationController popToViewController: previousVC animated:NO];
 //        [self.navigationController popToViewController: currentVC animated:NO];
         
@@ -727,6 +728,7 @@ static void distanceFunc(sqlite3_context *context, int argc, sqlite3_value **arg
 #pragma mark - CustomBackBarButtonProtocol
 -(void) backButtonPressed:(id) sender
 {
+    NSLog(@"CLTVC:backButtonPressed - popViewControllerAnimated");
     [self.navigationController popViewControllerAnimated:YES];
 }
 

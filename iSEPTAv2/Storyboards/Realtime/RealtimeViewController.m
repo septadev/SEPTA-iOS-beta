@@ -22,6 +22,11 @@
     SecondMenuAlertImageCycle _loopState;
     UIView *_testView;
     
+    NSMutableArray *_alertMessage;
+    NSTimer *_alertTimer;
+    GetAlertDataAPI *_alertAPI;
+    ALAlertBanner *_alertBanner;
+    
 //    MMDrawerController *_drawerController;
 }
 
@@ -35,22 +40,29 @@
 }
 
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    
+    NSLog(@"RVC - viewWillDisappear");
+    
+    if ( _alertTimer != nil )
+        [_alertTimer invalidate];
+    
+    [ALAlertBanner forceHideAllAlertBannersInView:self.view];
+    
+    [_alertAPI setDelegate:nil];
+    _alertAPI = nil;
+    [_alertMessage removeAllObjects];
+    
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     
-    Reachability *network = [Reachability reachabilityForInternetConnection];
-    if ( ![network isReachable] )
-    {
-        // Disable realtime buttons if no internet connection is available
-        
-//        [self.btnNextToArrive setEnabled:NO];
-//        [self.btnSystemStatus setEnabled:NO];
-//        [self.btnTrainView setEnabled:NO];
-//        [self.btnTransitView setEnabled:NO];
-//        [self.btnFindNearestLocation setEnabled:NO];
-        
-    }
+    _alertTimer = [NSTimer scheduledTimerWithTimeInterval:ALALERTBANNER_TIMER target:self selector:@selector(getGenericAlert) userInfo:nil repeats:YES];
+    [self getGenericAlert];
 
+    
     UIInterfaceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     [self changeOrientation:currentOrientation];
     
@@ -61,7 +73,7 @@
 
     
     // Hold for 1 sec, transition for 1 sec.
-    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(loopImages) userInfo:nil repeats:YES];
+//    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(loopImages) userInfo:nil repeats:YES];
 
     
 }
@@ -148,6 +160,7 @@
     
 //    [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"tabMapIconSelected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabMapIcon.png"] ];
     
+    _alertMessage = [[NSMutableArray alloc] init];
     
     NSString *version = [NSString stringWithFormat:@"Version %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
     NSLog(@"Version #: %@", version);
@@ -165,25 +178,60 @@
     [self.navigationItem setTitleView: newView];
     [self.navigationItem.titleView setNeedsDisplay];
     
-//    [self.view bringSubviewToFront:newView];
+    
+//    [self md5check];
+
     
     
-//    [[UITabBarItem appearance] setTitleTextAttributes:@{
-//                                 UITextAttributeFont : [UIFont fontWithName:@"TrebuchetMS" size:40.0f],
-//                            UITextAttributeTextColor : [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0],}
-//                                             forState:UIControlStateNormal];
+    
+//    unsigned char buff[CC_MD5_DIGEST_LENGTH];
+//    CC_MD5_CTX md5;
+//    CC_MD5_Init(&md5);
 //    
-//    [[UINavigationBar appearance] setTitleTextAttributes:@{
-//                                    UITextAttributeFont : [UIFont fontWithName:@"TrebuchetMS" size:20.0f],
-//                               UITextAttributeTextColor : [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]}];
+//    NSString *string1 = @"Gr";
+//    NSString *string2 = @"eg";
+//    
+//    NSData *data1 = [string1 dataUsingEncoding:NSUTF8StringEncoding];
+//    NSData *data2 = [string2 dataUsingEncoding:NSUTF8StringEncoding];
+//    
+//    CC_MD5_Update(&md5, [data1 bytes], [data1 length]);
+//    CC_MD5_Update(&md5, [data2 bytes], [data2 length]);
+//    
+//    CC_MD5_Final(buff, &md5);
+//    
+//    output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+//    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+//        [output appendFormat:@"%02x",buff[i]];
+//    
+//    NSLog(@"Greg: %@", output);
+//    NSLog(@"Greg: %@", [self md5FromString:@"Greg"] );
+    
 
-//    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:107.0/256.0 green:145.0/256.0 blue:35.0/256.0 alpha:1.0]];
     
-//    [self setTitle:@"Realtime"];
+    // Accessibility
+    [self.btnNextToArrive setAccessibilityLabel:@"Next to Arrive"];
+    [self.btnTrainView setAccessibilityLabel:@"TrainView"];
+    [self.btnTransitView setAccessibilityLabel:@"TransitView"];
+    [self.btnSystemStatus setAccessibilityLabel:@"System Status"];
+    [self.btnFindNearestLocation setAccessibilityLabel:@"Fine Nearest Location"];
+    [self.btnGuide setAccessibilityLabel:@"Guide"];
 
     
-//    [self testImage];
+    [self.lblNextToArrive setAccessibilityElementsHidden:YES];
+    [self.lblTrainView setAccessibilityElementsHidden:YES];
+    [self.lblTransitView setAccessibilityElementsHidden:YES];
+    [self.lblSystemStatus setAccessibilityElementsHidden:YES];
+    [self.lblFindNeareset setAccessibilityElementsHidden:YES];
+    [self.lblLocations setAccessibilityElementsHidden:YES];
+    [self.lblGuide setAccessibilityElementsHidden:YES];
     
+    
+    
+}
+
+
+-(void) md5check
+{
     
     NSDate *start = [NSDate date];
     
@@ -224,61 +272,148 @@
         [tableArray addObject: [tableResults stringForColumnIndex:0] ];
     }
     
+    NSMutableString *string = [[NSMutableString alloc] init];
+    NSString *finalStr;
     for (NSString *tableName in tableArray)
     {
+        
+        unsigned char buff[CC_MD5_DIGEST_LENGTH];
+        CC_MD5_CTX md5;
+        CC_MD5_Init(&md5);
         
         NSString *query = [NSString stringWithFormat:@"SELECT * FROM %@", tableName];
         FMResultSet *results = [database executeQuery:query];
         
-        [results next];
+        [string setString:@""];
+        
+        while ( [results next] )
+        {
+            for (int LCV = 0; LCV < [results columnCount]; LCV++ )
+            {
+                [string appendFormat:@"%@,", [results stringForColumnIndex:LCV] ];
+            }
+        }
+        
+        finalStr = [string substringToIndex: [string length] -1 ];
+        NSData *rowData = [finalStr dataUsingEncoding:NSUTF8StringEncoding];
         NSLog(@"%@: %@", tableName, [[results resultDictionary] allKeys]);
         
     }
     
     
-    unsigned char buff[CC_MD5_DIGEST_LENGTH];
+    // CREATE TABLE routes_rail(route_id TEXT, route_short_name TEXT, route_long_name TEXT, route_type INT);
+    NSString *query = @"SELECT * FROM routes_rail";
+    FMResultSet *results = [database executeQuery:query];
     
+    unsigned char buff[CC_MD5_DIGEST_LENGTH];
     CC_MD5_CTX md5;
     CC_MD5_Init(&md5);
     
-    NSString *string1 = @"Gr";
-    NSString *string2 = @"eg";
-    
-    NSData *data1 = [string1 dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *data2 = [string2 dataUsingEncoding:NSUTF8StringEncoding];
-    
-    CC_MD5_Update(&md5, [data1 bytes], [data1 length]);
-    CC_MD5_Update(&md5, [data2 bytes], [data2 length]);
+    while ( [results next] )
+    {
+        NSString *rowStr = [NSString stringWithFormat:@"%@,%@,%@,%d", [results stringForColumnIndex:0], [results stringForColumnIndex:1], [results stringForColumnIndex:2], [results intForColumnIndex:3] ];
+        NSData *rowData = [rowStr dataUsingEncoding:NSUTF8StringEncoding];
+        CC_MD5_Update(&md5, [rowData bytes], [rowData length]);
+    }
     
     CC_MD5_Final(buff, &md5);
-    
-//    NSLog(@"%@", [NSString stringWithCString:buff encoding:NSUTF8StringEncoding]);
     
     output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
     for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
         [output appendFormat:@"%02x",buff[i]];
     
-    NSLog(@"Greg: %@", output);
+    NSLog(@"routes_rail: %@", output);
     
-    NSLog(@"Greg: %@", [self md5FromString:@"Greg"] );
+    [database close];
     
+}
+
+-(void) getGenericAlert
+{
+
+    Reachability *network = [Reachability reachabilityForInternetConnection];
+    if ( ![network isReachable] )
+    {
+        return;
+    }
+    
+    // Run every minute
+    if ( _alertAPI == nil )
+    {
+        _alertAPI = [[GetAlertDataAPI alloc] init];
+        [_alertAPI setDelegate:self];
+        
+        [_alertAPI addRoute:@"generic" ofModeType:kSEPTATypeNone];
+    }
+    
+    [_alertAPI fetchAlert];
 
     
-    // Accessibility
-    [self.btnNextToArrive setAccessibilityLabel:@"Next to Arrive"];
-    [self.btnTrainView setAccessibilityLabel:@"TrainView"];
-    [self.btnTransitView setAccessibilityLabel:@"TransitView"];
-    [self.btnSystemStatus setAccessibilityLabel:@"System Status"];
-    [self.btnFindNearestLocation setAccessibilityLabel:@"Fine Nearest Location"];
-    [self.btnGuide setAccessibilityLabel:@"Guide"];
+}
 
+
+-(void) alertFetched:(NSMutableArray*) alert
+{
     
-    [self.lblNextToArrive setAccessibilityElementsHidden:YES];
-    [self.lblTrainView setAccessibilityElementsHidden:YES];
-    [self.lblTransitView setAccessibilityElementsHidden:YES];
-    [self.lblSystemStatus setAccessibilityElementsHidden:YES];
-    [self.lblFindNeareset setAccessibilityElementsHidden:YES];
-    [self.lblGuide setAccessibilityElementsHidden:YES];
+//    SystemAlertObject *saObject = [alert objectAtIndex:0];
+
+    if ( [alert count] == 0 )
+        _alertMessage = nil;
+    
+//    SystemAlertObject *newAlert = [alert objectAtIndex:0];
+//    [alert addObject: newAlert];
+    
+    BOOL duplicateFound = 0;
+    for (SystemAlertObject *saObject in alert)
+    {
+     
+        if ( [saObject numOfAlerts] < 1 )
+            break;
+        
+        for (NSString *message in _alertMessage)
+        {
+            NSLog(@"Checking for message: %@", message);
+            if ( [message isEqualToString: saObject.current_message] )
+            {
+                duplicateFound = 1;
+                break;
+                NSLog(@"Duplicate message found");
+            }
+            else
+                NSLog(@"No duplicate message found");
+        }
+        
+        
+        if ( saObject.current_message == nil )
+            return;
+        
+        //    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        //    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        // appDelegate.window
+        
+//        _alertMessage = saObject.current_message;
+        
+        // No good mechanism for removing an alertMessage
+        if ( !duplicateFound )
+        {
+            [_alertMessage addObject: saObject.current_message];
+        
+        
+            _alertBanner = [ALAlertBanner alertBannerForView:self.view
+                                                   style:ALAlertBannerStyleFailure
+                                                position:ALAlertBannerPositionTop
+                                                   title:@"Alert"
+                                                subtitle:saObject.current_message
+                                             tappedBlock:^(ALAlertBanner *alertBanner)
+                        {
+                            NSLog(@"Generic Message: %@!", saObject.current_message);
+                            [_alertBanner hide];
+                        }];
+        
+            [_alertBanner show];
+        }
+        
+    }
     
 }
 
@@ -308,7 +443,6 @@
 {
     
     
-    
     switch (_loopState)
     {
         case kSecondMenuAlertImageAlert:
@@ -326,8 +460,6 @@
         default:
             break;
     }
-    
-
 
     
 }

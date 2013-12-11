@@ -45,6 +45,8 @@
 
 
 #define DEFAULT_MESSAGE @"Touch to enter location"
+#define DEFAULT_START_MESSAGE @"Enter Start"
+#define DEFAULT_END_MESSAGE   @"Enter Destination"
 #define JSON_REFRESH_RATE 20.0f
 
 

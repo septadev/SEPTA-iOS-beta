@@ -79,6 +79,8 @@
     }
     
     
+    
+    
     LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0, 500, 32) withTitle: title];
     [self.slidingViewController.navigationItem setTitleView:titleView];
     
@@ -138,6 +140,25 @@
     
 //    [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(popTheVC) userInfo:Nil repeats:NO];
 
+    
+}
+
+
+-(void) loadBanner
+{
+    
+    ALAlertBanner *_alertBanner = [ALAlertBanner alertBannerForView:self.view
+                                               style:ALAlertBannerStyleFailure
+                                            position:ALAlertBannerPositionTop
+                                               title:@"Alert"
+                                            subtitle:@"No realtime data"
+                                         tappedBlock:^(ALAlertBanner *alertBanner)
+                    {
+                        NSLog(@"No realtime data");
+                        [_alertBanner hide];
+                    }];
+    
+    [_alertBanner show];
     
 }
 
