@@ -258,6 +258,7 @@ sub populateGTFSTables
 
     
     my %serviceConverter = ();
+    my %serviceDays = ();
     my %holidays = ();
     
     my %tripsUniqueIDs = {};
@@ -292,6 +293,8 @@ sub populateGTFSTables
         
         returnColumnsWeCareAbout(\@headersWeCareAbout, \@headerArrayFromFile, $columns);
         
+        my $uniqueID = 1;
+        
         while (<SERVICE>)
         {
             my @serviceArr = split(/,/);
@@ -308,7 +311,10 @@ sub populateGTFSTables
             my $sunday   = $serviceArr[ $columns->{sunday} ];
             
 #            $serviceConverter{ $service_id } = $monday*(2**6) + $tuesday*(2**5) + $wednesday*(2**4) + $thursday*(2**3) + $friday*(2**2) + $saturday*2 + $sunday;
-            $serviceConverter{ $service_id } = $sunday*(2**6) + $monday*(2**5) + $tuesday*(2**4) + $wednesday*(2**3) + $thursday*(2**2) + $friday*2 + $saturday;
+#            $serviceConverter{ $service_id } = $sunday*(2**6) + $monday*(2**5) + $tuesday*(2**4) + $wednesday*(2**3) + $thursday*(2**2) + $friday*2 + $saturday;
+
+            $serviceDays{ $service_id } = $sunday*(2**6) + $monday*(2**5) + $tuesday*(2**4) + $wednesday*(2**3) + $thursday*(2**2) + $friday*2 + $saturday;
+            $serviceConverter{ $service_id } = $uniqueID++;
             
         }
         
@@ -341,6 +347,12 @@ sub populateGTFSTables
                 $dbh->do("INSERT INTO holidays_$suffix VALUES ($holidays{$date}, $date)");
             }
             
+        }
+        
+        $dbh->do("CREATE TABLE service_$suffix (service_id INT, days INT)");
+        foreach my $key (keys %serviceConverter)
+        {
+            $dbh->do("INSERT INTO service_$suffix VALUES ($serviceConverter{ $key }, $serviceDays{ $key })");
         }
         
         close HOLIDAY;
