@@ -414,8 +414,10 @@ THE SOFTWARE.</string>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="PbO-cP-rtn"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black" translucent="NO"/>
                     <connections>
                         <outlet property="btnFindNearestLocation" destination="QTv-f1-lDO" id="qLI-H0-hFg"/>
                         <outlet property="btnGuide" destination="7Mw-OW-EHp" id="PZU-2F-yWD"/>

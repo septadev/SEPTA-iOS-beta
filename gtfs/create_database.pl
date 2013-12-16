@@ -288,12 +288,13 @@ sub populateGTFSTables
         
         my $headersFromFile = <SERVICE>;
         my @headerArrayFromFile = split(/,/, $headersFromFile);
-        my @headersWeCareAbout = ("service_id","monday","tuesday","wednesday","thursday","friday","saturday","sunday");
+        my @headersWeCareAbout = ("service_id","monday","tuesday","wednesday","thursday","friday","saturday","sunday","start_date","end_date");
         my $columns = {};
         
         returnColumnsWeCareAbout(\@headersWeCareAbout, \@headerArrayFromFile, $columns);
         
         my $uniqueID = 1;
+        my @dateArr;
         
         while (<SERVICE>)
         {
@@ -310,15 +311,39 @@ sub populateGTFSTables
             my $saturday = $serviceArr[ $columns->{saturday} ];
             my $sunday   = $serviceArr[ $columns->{sunday} ];
             
-#            $serviceConverter{ $service_id } = $monday*(2**6) + $tuesday*(2**5) + $wednesday*(2**4) + $thursday*(2**3) + $friday*(2**2) + $saturday*2 + $sunday;
-#            $serviceConverter{ $service_id } = $sunday*(2**6) + $monday*(2**5) + $tuesday*(2**4) + $wednesday*(2**3) + $thursday*(2**2) + $friday*2 + $saturday;
+            $serviceConverter{ $service_id } = $sunday*(2**6) + $monday*(2**5) + $tuesday*(2**4) + $wednesday*(2**3) + $thursday*(2**2) + $friday*2 + $saturday;
 
-            $serviceDays{ $service_id } = $sunday*(2**6) + $monday*(2**5) + $tuesday*(2**4) + $wednesday*(2**3) + $thursday*(2**2) + $friday*2 + $saturday;
-            $serviceConverter{ $service_id } = $uniqueID++;
+            my $dateHash = {"start" => $serviceArr[ $columns->{start_date} ], "end" => $serviceArr[ $columns->{end_date} ], "service" => service_id  };
+            push(@dateArr, $dateHash);
+            
+#            $serviceDays{ $service_id } = $sunday*(2**6) + $monday*(2**5) + $tuesday*(2**4) + $wednesday*(2**3) + $thursday*(2**2) + $friday*2 + $saturday;
+#            $serviceConverter{ $service_id } = $uniqueID++;
             
         }
         
         close SERVICE;
+
+#        service_id,monday,tuesday,wednesday,thursday,friday,saturday,sunday,start_date,end_date
+#        S1,1,1,1,1,1,0,0,20131215,20140406
+#        S2,0,0,0,0,0,1,0,20131215,20140406
+#        S3,0,0,0,0,0,0,1,20131215,20140406
+#        S4,0,0,0,0,1,0,0,20131215,20140406
+#        S5,0,0,1,0,0,0,0,20131225,20131225
+
+#        S1,1,1,1,1,1,0,0,20131215,20131224
+#        S1,1,1,1,1,1,0,0,20131226,20140406
+        
+
+#        S5,0,0,1,0,0,0,0,20131225,20131225
+#        S1,1,1,1,1,1,0,0,20131215,20140406
+#        S2,0,0,0,0,0,1,0,20131215,20140406
+#        S3,0,0,0,0,0,0,1,20131215,20140406
+#        S4,0,0,0,0,1,0,0,20131215,20140406
+
+        
+        
+        
+        
         
         $filename = "$busDir/calendar_dates.txt" if ( $dbname =~ /bus/ );
         $filename = "$railDir/calendar_dates.txt" if ( $dbname =~ /rail/ );
@@ -359,7 +384,7 @@ sub populateGTFSTables
         
     }
     
-    
+    exit(1);
     
     # Rewrite Attempt 1
     #   Load routes, trips, stop_times, stops once.  Use them throughout the life of this script.

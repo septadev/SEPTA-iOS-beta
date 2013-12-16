@@ -79,6 +79,22 @@
     }
     
     
+    if ( [self.routeName isEqualToString:@"BSL"] )
+    {
+        [self loadBannerWithTitle:@"BSL" andSubtitle:@"Realtime telemetry along the Broad Street Line is not available."];
+    }
+    else if ( [self.routeName isEqualToString:@"MFL"] )
+    {
+        [self loadBannerWithTitle:@"MFL" andSubtitle:@"Realtime telemetry along the Market-Frankford Line is not available."];
+    }
+    else if ( [self.routeName isEqualToString:@"NHSL"] )
+    {
+        [self loadBannerWithTitle:@"NHSL" andSubtitle:@"Realtime telemetry along the Norristown High Speed Line is not available."];
+    }
+    else if ( (GTFSRouteType)[self.travelMode intValue] == kGTFSRouteTypeTrolley )
+    {
+        [self loadBannerWithTitle:@"Trolley" andSubtitle:@"Realtime telemetry for Trolleys is limited when vehicle is underground."];
+    }
     
     
     LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0, 500, 32) withTitle: title];
@@ -144,18 +160,18 @@
 }
 
 
--(void) loadBanner
+-(void) loadBannerWithTitle:(NSString*)title andSubtitle:(NSString*) subtitle
 {
     
     ALAlertBanner *_alertBanner = [ALAlertBanner alertBannerForView:self.view
                                                style:ALAlertBannerStyleFailure
-                                            position:ALAlertBannerPositionTop
-                                               title:@"Alert"
-                                            subtitle:@"No realtime data"
+                                            position:ALAlertBannerPositionBottom
+                                               title: title
+                                            subtitle: subtitle
                                          tappedBlock:^(ALAlertBanner *alertBanner)
                     {
                         NSLog(@"No realtime data");
-                        [_alertBanner hide];
+                        [alertBanner hide];
                     }];
     
     [_alertBanner show];
@@ -182,6 +198,9 @@
     [SVProgressHUD dismiss];
     
 
+    [ALAlertBanner forceHideAllAlertBannersInView:self.view];
+    
+    
     [self.mapView setDelegate:nil];
     
     

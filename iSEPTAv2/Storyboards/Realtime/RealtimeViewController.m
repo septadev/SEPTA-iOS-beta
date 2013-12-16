@@ -49,9 +49,10 @@
         [_alertTimer invalidate];
     
     [ALAlertBanner forceHideAllAlertBannersInView:self.view];
+    _alertBanner = nil;
     
-    [_alertAPI setDelegate:nil];
-    _alertAPI = nil;
+//    [_alertAPI setDelegate:nil];
+//    _alertAPI = nil;
     [_alertMessage removeAllObjects];
     
 }
@@ -181,6 +182,15 @@
     
 //    [self md5check];
 
+    
+     ALAlertBanner *aab = [ALAlertBanner alertBannerForView:self.view
+                                               style:ALAlertBannerStyleFailure
+                                            position:ALAlertBannerPositionBottom
+                                               title:@"Alert"
+                                                   subtitle:@"This is a test of the Emergency Alert System"];
+                        
+
+    [aab show];
     
     
     
@@ -401,7 +411,7 @@
         
             _alertBanner = [ALAlertBanner alertBannerForView:self.view
                                                    style:ALAlertBannerStyleFailure
-                                                position:ALAlertBannerPositionTop
+                                                position:ALAlertBannerPositionBottom
                                                    title:@"Alert"
                                                 subtitle:saObject.current_message
                                              tappedBlock:^(ALAlertBanner *alertBanner)

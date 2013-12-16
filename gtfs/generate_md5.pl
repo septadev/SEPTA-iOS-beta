@@ -194,6 +194,8 @@ $sqlQuery = "SELECT tid, trip_id FROM trips_bus t NATURAL JOIN stop_times_bus st
 $sth = $dbh->prepare($sqlQuery) or die "Can't prepare statement: \n$sqlQuery\n$DBI::errstr\n";
 $sth->execute() or die "Can't execute statement: $DBI::errstr\n";
 
+print "Query: $sqlQuery\n";
+
 $results = $sth->fetchall_arrayref();
 
 my %tidsHash;
@@ -415,12 +417,14 @@ sub makeMD5
     my $route_id;
     my @tidsArr;
     my $newRoute = 0;
+    my $trip_id;
     
     foreach my $row (@$results)
     {
         
         $tid = @$row[0];
         $route_id = @$row[1];
+#        $trip_id = @$row[2];
         
 #        print $route_id . "\n";
         
@@ -442,7 +446,8 @@ sub makeMD5
         {
             
             # Get all stop_times values for this one
-            $sqlQuery = "SELECT * FROM stop_times_bus WHERE trip_id=?";
+            $sqlQuery = "SELECT trip_id, arrival_time, stop_id, stop_sequence FROM stop_times_bus WHERE trip_id=?";
+            $sqlQuery = "SELECT st.trip_id, st.arrival_time, st.stop_id, st.stop_sequence, ot.trip_id FROM stop_times_bus st JOIN orderedTrips ot ON st.trip_id=ot.tid WHERE st.trip_id=?";
             $sth = $dbh->prepare($sqlQuery);
             
             my $string = "";
@@ -459,24 +464,26 @@ sub makeMD5
                 foreach my $eachRow (@$tripResults)
                 {
 #                    print $eachRow . "\n";
+                    $trip_id = pop(@$eachRow);
                     for (my $LCV=0; $LCV < scalar @$eachRow; $LCV++)
                     {
                         $singleStr .= @$eachRow[$LCV] . ",";
                     }
+
                 }  # foreach my $eachRow (@$tripResults)
 
                 
                 $string .= $singleStr;
                 
                 chop($singleStr);
-                printf("Rte: %-10s -- %s\n", $thistid, md5_hex($singleStr) );
+                printf("Rte: %-10s (%10s) -- %s\n", $thistid, $trip_id, md5_hex($singleStr) );
                 
             } # foreach my $thistid (@tidsArr)
             
             chop($string);
             $md5String = md5_hex($string);
             
-            printf("Rte: %-7s -- %s\n", $currentRoute, $md5String);  # MD5 of all the stop_times for a Rte
+            printf("Rte: %-10s -- %s\n", $currentRoute, $md5String);  # MD5 of all the stop_times for a Rte
             
             $newRoute = 0;
             @tidsArr = ();
