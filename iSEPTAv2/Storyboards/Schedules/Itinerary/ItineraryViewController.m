@@ -1209,8 +1209,8 @@
                 //                NSLog(@"%@", trip);
                 
                 
-//                [masterTripsArr addObject:trip];
-//                [tripDict removeObjectForKey:tripID];
+                [masterTripsArr addObject:trip];
+                [tripDict removeObjectForKey:tripID];
                 
             }
             
@@ -1221,12 +1221,12 @@
         
     }
 
-    for (NSString *tripKey in tripDict)
-    {
-        [masterTripsArr addObject: [tripDict objectForKey:tripKey] ];
-    }
+//    for (NSString *tripKey in tripDict)
+//    {
+//        [masterTripsArr addObject: [tripDict objectForKey:tripKey] ];
+//    }
     
-    [tripDict removeAllObjects];
+//    [tripDict removeAllObjects];
     
     
 }
@@ -1269,7 +1269,7 @@
     if ( [_masterJSONTrainArr count] == 0 )  // If it has no active vehiciles, nothing below will have any effect
         return;
     
-    NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"( (serviceID & %d) > 0 ) AND (directionID == %d)", _currentServiceID, _currentDisplayDirection] ];
+    NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"(serviceID == %d) AND (directionID == %d)", _currentServiceID, _currentDisplayDirection] ];
     
     NSLog(@"ITVC - filter active trains: %@", predicateFilter);
     activeTrainsArr = nil;
@@ -1307,9 +1307,9 @@
         now = [[dateFormatter stringFromDate: [NSDate date] ] intValue];
     }
     
-    _currentDisplayDirection = 0;
+//    _currentDisplayDirection = 0;
     NSNumber *displayDirection = [NSNumber numberWithInt:0];
-    NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"( (serviceID & %d) > 0 )  AND (directionID == %d) AND (startTime > %d)", _currentServiceID, _currentDisplayDirection, now] ];
+    NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"(serviceID == %d)  AND (directionID == %d) AND (startTime > %d)", _currentServiceID, _currentDisplayDirection, now] ];
     
     NSSortDescriptor *timeSort = [NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES];
     
@@ -1331,6 +1331,7 @@
     //[self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex: sectionToLoad] withRowAnimation:UITableViewRowAnimationAutomatic];  // This will cause a crash going from Now to Weekday
     [self.tableTrips reloadData];
    
+    NSLog(@"%@", currentTripsArr);
     
     
     // User Preferences
@@ -2736,6 +2737,83 @@
     
 }
 
+
+    
+    
+-(NSInteger) getServiceIDFor:(ItineraryFilterType) type
+{
+
+    NSLog(@"filePath: %@", [self filePath]);
+    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    
+    if ( ![database open] )
+    {
+        [database close];
+        return 32;
+    }
+    
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
+    int weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
+    
+    int dayOfWeek;
+    
+    switch (type) {
+        case kItineraryFilterTypeNow:
+            dayOfWeek = pow(2,(7-weekday) );
+        break;
+        
+        case kItineraryFilterTypeSat:
+        dayOfWeek = pow(2,0); // 000 0001 (SuMoTu WeThFrSa), Saturday
+        break;
+        
+        case kItineraryFilterTypeSun:
+        dayOfWeek = pow(2,6); // 100 0000 (SuMoTu WeThFrSa), Sunday
+        break;
+        
+        case kItineraryFilterTypeWeekday:
+        dayOfWeek = pow(2,5); // 010 0000 (SuMoTu WeThFrSa), Monday
+        break;
+        
+        default:
+        break;
+    }
+    
+//    int dayOfWeek = pow(2,(7-weekday) );
+    
+    
+    
+    NSString *queryStr = [NSString stringWithFormat:@"SELECT service_id, days FROM calendarDB WHERE (days & %d)", dayOfWeek];
+    
+    if ( [self.travelMode isEqualToString:@"Rail"] )
+    queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_rail"];
+    else
+    queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
+    
+    FMResultSet *results = [database executeQuery: queryStr];
+    if ( [database hadError] )  // Check for errors
+    {
+        
+        int errorCode = [database lastErrorCode];
+        NSString *errorMsg = [database lastErrorMessage];
+        
+        NSLog(@"ITVC - query failure, code: %d, %@", errorCode, errorMsg);
+        NSLog(@"ITVC - query str: %@", queryStr);
+        
+        return 32;  // If an error occurred, there's nothing else to do but exit
+        
+    } // if ( [database hadError] )
+    
+    
+    NSInteger service_id = 0;
+    [results next];
+
+    service_id = [results intForColumn:@"service_id"];
+
+    return (NSInteger)service_id;
+    
+}
+    
 -(NSInteger) isHoliday
 {
     
@@ -2753,7 +2831,7 @@
         return 0;
     }
     
-    NSString *queryStr = [NSString stringWithFormat:@"SELECT service_id, date FROM holidaysDB WHERE date=%@", now];
+    NSString *queryStr = [NSString stringWithFormat:@"SELECT service_id, date FROM calendarDateDB WHERE date=%@", now];
     
     if ( [self.travelMode isEqualToString:@"Rail"] )
         queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_rail"];
@@ -2780,9 +2858,12 @@
     {
         service_id = [results intForColumn:@"service_id"];
     }
+
+    [database close];
     
     return service_id;
     
+
     
 }
 
@@ -2790,6 +2871,10 @@
 -(void) updateServiceID
 {
     
+    _currentServiceID = [self getServiceIDFor:_currentFilter];
+    
+    return;
+
     switch ( _currentFilter )
     {
         case kItineraryFilterTypeNow: // Now
@@ -2806,10 +2891,13 @@
                 NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
                 NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
                 int weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
+//
+//                int dayOfWeek = pow(2,(7-weekday) );
                 
-                
-                _currentServiceID = pow(2,(7-weekday));
-                NSLog(@"weekday: %d, currentServiceID: %d", weekday, _currentServiceID);
+//                _currentServiceID = [self getServiceID];
+//                
+////                _currentServiceID = pow(2,(7-weekday));
+//                NSLog(@"weekday: %d, currentServiceID: %d", weekday, _currentServiceID);
                 
             }
             

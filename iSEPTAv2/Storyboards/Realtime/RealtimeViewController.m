@@ -183,14 +183,14 @@
 //    [self md5check];
 
     
-     ALAlertBanner *aab = [ALAlertBanner alertBannerForView:self.view
-                                               style:ALAlertBannerStyleFailure
-                                            position:ALAlertBannerPositionBottom
-                                               title:@"Alert"
-                                                   subtitle:@"This is a test of the Emergency Alert System"];
-                        
-
-    [aab show];
+//     ALAlertBanner *aab = [ALAlertBanner alertBannerForView:self.view
+//                                               style:ALAlertBannerStyleFailure
+//                                            position:ALAlertBannerPositionBottom
+//                                               title:@"Alert"
+//                                                   subtitle:@"This is a test of the Emergency Alert System"];
+//                        
+//
+//    [aab show];
     
     
     

@@ -58,7 +58,12 @@
     {
             
         case kSEPTATypeBus:
-            alertName = [NSString stringWithFormat:@"bus_route_%@", routeName];
+        
+            if ( [routeName isEqualToString:@"BSO"] || [routeName isEqualToString:@"MFO"] )
+                alertName = [NSString stringWithFormat:@"rr_route_%@", [routeName lowercaseString] ];
+            else
+                alertName = [NSString stringWithFormat:@"bus_route_%@", routeName];
+        
             break;
         case kSEPTATypeRail:
         {
@@ -84,7 +89,7 @@
             
             [shortToAlertNameLookUp setObject:@"gc" forKey:@"GC"];
             
-            alertName = [NSString stringWithFormat:@"rr_route_%@", [shortToAlertNameLookUp objectForKey: alertName] ];
+            alertName = [NSString stringWithFormat:@"rr_route_%@", [shortToAlertNameLookUp objectForKey: routeName] ];
             
         }
             break;

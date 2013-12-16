@@ -292,9 +292,12 @@ sub populateGTFSTables
         my $columns = {};
         
         returnColumnsWeCareAbout(\@headersWeCareAbout, \@headerArrayFromFile, $columns);
-        
+
+
         my $uniqueID = 1;
         my @dateArr;
+
+        $dbh->do("CREATE TABLE calendar_$suffix (service_id INT, days TEXT, start TEXT, end TEXT)");
         
         while (<SERVICE>)
         {
@@ -311,14 +314,20 @@ sub populateGTFSTables
             my $saturday = $serviceArr[ $columns->{saturday} ];
             my $sunday   = $serviceArr[ $columns->{sunday} ];
             
-            $serviceConverter{ $service_id } = $sunday*(2**6) + $monday*(2**5) + $tuesday*(2**4) + $wednesday*(2**3) + $thursday*(2**2) + $friday*2 + $saturday;
+            my $start    = $serviceArr[ $columns->{start_date} ];
+            my $end      = trim($serviceArr[ $columns->{end_date} ]);
+#            $serviceConverter{ $service_id } = $sunday*(2**6) + $monday*(2**5) + $tuesday*(2**4) + $wednesday*(2**3) + $thursday*(2**2) + $friday*2 + $saturday;
+            
+            $serviceDays{ $service_id } = $sunday*(2**6) + $monday*(2**5) + $tuesday*(2**4) + $wednesday*(2**3) + $thursday*(2**2) + $friday*2 + $saturday;
+            $serviceConverter{ $service_id } = $uniqueID++;  # Used to modify the service_id value in trips
+#            $serviceConverter{ $service_id } = $service_id;
+            
+            print "INSERT INTO calendar_$suffix VALUES ($serviceConverter{ $service_id }, $serviceDays{ $service_id }, $start, $end)\n";
+            $dbh->do("INSERT INTO calendar_$suffix VALUES ($serviceConverter{ $service_id }, $serviceDays{ $service_id }, $start, $end)");
+            
+#            my $dateHash = {"start" => $serviceArr[ $columns->{start_date} ], "end" => $serviceArr[ $columns->{end_date} ], "service" => service_id, "days" => $serviceConverter{ $service_id } };
+#            push(@dateArr, $dateHash);
 
-            my $dateHash = {"start" => $serviceArr[ $columns->{start_date} ], "end" => $serviceArr[ $columns->{end_date} ], "service" => service_id  };
-            push(@dateArr, $dateHash);
-            
-#            $serviceDays{ $service_id } = $sunday*(2**6) + $monday*(2**5) + $tuesday*(2**4) + $wednesday*(2**3) + $thursday*(2**2) + $friday*2 + $saturday;
-#            $serviceConverter{ $service_id } = $uniqueID++;
-            
         }
         
         close SERVICE;
@@ -357,7 +366,7 @@ sub populateGTFSTables
         $columns = {};
         
         returnColumnsWeCareAbout(\@headersWeCareAbout, \@headerArrayFromFile, $columns);
-        $dbh->do("CREATE TABLE holidays_$suffix (service_id INT, date TEXT)");
+        $dbh->do("CREATE TABLE calendarDate_$suffix (service_id INT, date TEXT)");
         while (<HOLIDAY>)
         {
             my @holidayArr = split(/,/);
@@ -369,22 +378,22 @@ sub populateGTFSTables
             if ( $exception_type == 1 )
             {
                 $holidays{$date} = $serviceConverter{ $service_id };
-                $dbh->do("INSERT INTO holidays_$suffix VALUES ($holidays{$date}, $date)");
+                print "INSERT INTO calendarDate_$suffix VALUES ($holidays{$date}, $date)\n";
+                $dbh->do("INSERT INTO calendarDate_$suffix VALUES ($holidays{$date}, $date)");
             }
             
         }
         
-        $dbh->do("CREATE TABLE service_$suffix (service_id INT, days INT)");
-        foreach my $key (keys %serviceConverter)
-        {
-            $dbh->do("INSERT INTO service_$suffix VALUES ($serviceConverter{ $key }, $serviceDays{ $key })");
-        }
+#        $dbh->do("CREATE TABLE service_$suffix (service_id INT, days INT)");
+#        foreach my $key (keys %serviceConverter)
+#        {
+#            $dbh->do("INSERT INTO service_$suffix VALUES ($serviceConverter{ $key }, $serviceDays{ $key })");
+#        }
         
         close HOLIDAY;
         
     }
     
-    exit(1);
     
     # Rewrite Attempt 1
     #   Load routes, trips, stop_times, stops once.  Use them throughout the life of this script.
