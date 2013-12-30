@@ -905,6 +905,7 @@
         
     }
 
+    [self refreshJSONData];
 
 
 }

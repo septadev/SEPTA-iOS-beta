@@ -104,6 +104,7 @@
 
 
     CustomFlatBarButton *rightButton = [[CustomFlatBarButton alloc] initWithImageNamed:@"Filter.png" withTarget:self andWithAction:@selector(filterButtonPressed:) ];
+    [rightButton addImage: [UIImage imageNamed:@"Filter_close.png"] forState:UIControlStateSelected];
     [self.navigationItem setRightBarButtonItem: rightButton];
 
     /*
@@ -118,10 +119,12 @@
     if ( object == nil )
     {
         _showAllRoutes = NO;
+        [rightButton.button setSelected:NO];
     }
     else
     {
         _showAllRoutes = [object boolValue];
+        [rightButton.button setSelected:!_showAllRoutes];
     }
             
     
@@ -525,13 +528,14 @@
     
     SystemStatusCell *cell = (SystemStatusCell*)[thisTableView dequeueReusableCellWithIdentifier:cellName];
     
-    
-    if ( ( indexPath.row == 7 ) || ( indexPath.row == 8 ) )
-    {
-        NSLog(@"section");
-    }
+//    if ( ( indexPath.row == 7 ) || ( indexPath.row == 8 ) )  // What in the hell is this actually doing?
+//    {
+//        NSLog(@"section");
+//    }
     
     SystemStatusObject *ssObject = [_filteredData objectAtIndex:indexPath.row];
+
+    
     [cell addSystemStatusObject: ssObject];
     
     
@@ -621,23 +625,56 @@
     NSLog(@"NTAVC - getSystemStatus -- api url: %@", webStringURL);
     
     [SVProgressHUD showWithStatus:@"Loading..."];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
-        
-        NSData *realTimeTrainInfo = [NSData dataWithContentsOfURL:[NSURL URLWithString:webStringURL] ];
-        [self performSelectorOnMainThread:@selector(processSystemStatusJSONData:) withObject: realTimeTrainInfo waitUntilDone:YES];
-        
-    });
+    
+    // Old code, use AFNetworking instead
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
+//        
+//        NSData *realTimeTrainInfo = [NSData dataWithContentsOfURL:[NSURL URLWithString:webStringURL] ];
+//        [self performSelectorOnMainThread:@selector(processSystemStatusJSONData:) withObject: realTimeTrainInfo waitUntilDone:YES];
+//        
+//    });
+    
+    NSURLRequest *systemRequest = [NSURLRequest requestWithURL: [NSURL URLWithString: stringURL] ];
+    
+    AFJSONRequestOperation *jsonSystemOp;
+    jsonSystemOp = [AFJSONRequestOperation JSONRequestOperationWithRequest: systemRequest
+                                                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                       NSDictionary *jsonDict = (NSDictionary*) JSON;
+                                                                       [self processSystemStatusJSONData:jsonDict];
+                                                                   }
+                                                                   failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                       NSLog(@"System Status Failure Because %@", [error userInfo] );
+                                                                   }];
+    
+    [jsonSystemOp start];
     
     
     NSString *elevatorURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/elevator/"];
-    NSString *elevatorWebURL = [elevatorURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURLRequest *request = [NSURLRequest requestWithURL: [NSURL URLWithString: elevatorURL] ];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
-        
-        NSData *realTimeTrainInfo = [NSData dataWithContentsOfURL:[NSURL URLWithString: elevatorWebURL] ];
-        [self performSelectorOnMainThread:@selector(processElevatorStatusJSONData:) withObject: realTimeTrainInfo waitUntilDone:YES];
-        
-    });
+    AFJSONRequestOperation *jsonElevatorOp;
+    jsonElevatorOp = [AFJSONRequestOperation JSONRequestOperationWithRequest: request
+                                                                     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                         
+                                                                         NSDictionary *jsonDict = (NSDictionary*) JSON;
+                                                                         [self processElevatorStatusJSONData: jsonDict];
+                                                                         
+                                                                     }
+                                                                     failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                         NSLog(@"Elevator Request Failure Because %@", [error userInfo] );
+                                                                     }];
+    
+    
+    [jsonElevatorOp start];
+
+//    NSString *elevatorWebURL = [elevatorURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//    
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
+//        
+//        NSData *realTimeTrainInfo = [NSData dataWithContentsOfURL:[NSURL URLWithString: elevatorWebURL] ];
+//        [self performSelectorOnMainThread:@selector(processElevatorStatusJSONData:) withObject: realTimeTrainInfo waitUntilDone:YES];
+//        
+//    });
 
     
     
@@ -704,16 +741,16 @@
 //}
 
 
--(void) processElevatorStatusJSONData:(NSData*) returnedData
+//-(void) processElevatorStatusJSONData:(NSData*) returnedData
+-(void) processElevatorStatusJSONData:(NSDictionary*) json
 {
     
     NSError *error;
 
-    if ( returnedData == nil )  // Trying to serialize a nil object will generate an error
+    if ( json == nil )  // Trying to serialize a nil object will generate an error
         return;
     
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData: returnedData options:kNilOptions error:&error];
-    
+//    NSDictionary *json = [NSJSONSerialization JSONObjectWithData: returnedData options:kNilOptions error:&error];
     
     if ( json == nil || [json count] == 0 )
         return;
@@ -728,7 +765,7 @@
 //    NSString *jsonStr = @"{\"meta\":{\"elevators_out\":2,\"updated\":\"2013-11-2611:38:02\"},\"results\":[{\"line\":\"MarketFrankfordLine\",\"station\":\"Berks\",\"elevator\":\"Westbound\",\"message\":\"Noaccessto/fromstation\",\"alternate_url\":\"http://www.septa.org/access/alternate/mfl.html#berks\"},{\"line\":\"BroadStreetLine\",\"station\":\"CityHall\",\"elevator\":\"EastBound\",\"message\":\"Noaccessto/fromstation\",\"alternate_url\":\"http://www.septa.org/access/alternate/mfl.html#berks\"}]}";
 
     
-    NSMutableDictionary *meta = [json objectForKey:@"meta"];  // keys: elevators_out, updated
+    NSDictionary *meta = [json objectForKey:@"meta"];  // keys: elevators_out, updated
 //    NSMutableArray   *results = [json objectForKey:@"results"];  // keys:  line, station, evelator, message, alternate_url
     
     [elevatorStatus setMode      : @"Elevator" ];
@@ -736,19 +773,21 @@
     [elevatorStatus setRoute_id  : @"Elevator" ];
     [elevatorStatus setLast_updated: [meta objectForKey:@"updated"] ];
     
-    if ( [meta objectForKey:@"elevators_out"] > 0 )
+//    [meta setObject:[NSNumber numberWithInt:2] forKey:@"elevators_out"];
+    
+    if ( [[meta objectForKey:@"elevators_out"] integerValue] > 0 )
+    {
         [elevatorStatus setIsalert:@"Y"];
-    
-    json = nil;
-    
-    [_additionalStatus setObject: elevatorStatus forKey:@"Elevator"];
+    }
 
+    [_additionalStatus setObject: elevatorStatus forKey:@"Elevator"];
+    
     [self filterTableDataSourceBy: _filterType];
 
     
 }
 
--(void) processSystemStatusJSONData:(NSData*) returnedData
+-(void) processSystemStatusJSONData:(NSDictionary*) json
 {
     
     [SVProgressHUD dismiss];
@@ -757,10 +796,10 @@
     // This method is called once the realtime positioning data has been returned via the API is stored in data
     NSError *error;
     
-    if ( returnedData == nil )  // Trying to serialize a nil object will generate an error
-        return;
-    
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData: returnedData options:kNilOptions error:&error];
+//    if ( returnedData == nil )  // Trying to serialize a nil object will generate an error
+//        return;
+//    
+//    NSDictionary *json = [NSJSONSerialization JSONObjectWithData: returnedData options:kNilOptions error:&error];
     
     if ( json == nil || [json count] == 0 )
     {
@@ -874,6 +913,7 @@
     
     _filteredData = [[ [_masterData filteredArrayUsingPredicate:currentPredicate] sortedArrayUsingComparator: sortBy] mutableCopy];
     
+    
     // Check if routes without any alerts, advisories or detours should be removed
     if ( !_showAllRoutes )
     {
@@ -896,7 +936,8 @@
 //    for (SystemStatusObject *ssObject in _additionalStatus)
     for (NSString *key in _additionalStatus)
     {
-        [_filteredData insertObject: [_additionalStatus objectForKey:key] atIndex:0];
+        if ( [(SystemStatusObject*)[_additionalStatus objectForKey:key] numOfAlerts] || _showAllRoutes )
+            [_filteredData insertObject: [_additionalStatus objectForKey:key] atIndex:0];
     }
     
     
@@ -1208,6 +1249,13 @@ NSComparisonResult (^sortStatusName)(SystemStatusObject*,SystemStatusObject*) = 
     NSLog(@"Filter Button Pressed");
     
     _showAllRoutes = !_showAllRoutes;
+
+    CustomFlatBarButton *rightButton = (CustomFlatBarButton*)self.navigationItem.rightBarButtonItem;
+    if ( _showAllRoutes )
+        [rightButton.button setSelected:NO];
+    else
+        [rightButton.button setSelected:YES];
+
     
     // Save changes to toggle option to user preferences
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:_showAllRoutes] forKey:@"SystemStatus:ShowAllRoutes"];

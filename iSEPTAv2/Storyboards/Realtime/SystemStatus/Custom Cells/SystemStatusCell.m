@@ -70,7 +70,10 @@
     else if ( [[ssObject route_id] isEqualToString:@"Elevator"] )
     {
         // Add Elevator icon here
+        [self.imgRouteIcon setImage:nil];
     }
+    else
+        [self.imgRouteIcon setImage:nil];
     
     
 }

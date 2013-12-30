@@ -843,7 +843,8 @@
     [dir1Arr insertObject:_currentLocation atIndex:0];
     
 
-    [_tableData generateIndexWithKey:@"start_stop_name" forSectionTitles:[NSArray arrayWithArray: headers] ];
+//    [_tableData generateIndexWithKey:@"start_stop_name" forSectionTitles:[NSArray arrayWithArray: headers] ];
+    [self sortStops];
     
 }
 
@@ -1013,35 +1014,44 @@
         [rightButton.button setSelected:NO];
     }
 
+    [self sortStops];
+    
+    [self.tableView reloadData];
+    
+    
+}
+
+-(void) sortStops
+{
     
     // Save changes to toggle option to user preferences
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:_sortByStops] forKey:@"StopNamesTVC:FilterOption"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-
+    
     
     int numSection = [_tableData numOfSections];
     NSMutableArray *headers = [[NSMutableArray alloc] init];
-
+    
     if ( _sortByStops )
     {
-    
+        
         for (int LCV = 0; LCV < numSection; LCV++)
         {
             NSMutableArray *tempArr = (NSMutableArray*)[_tableData objectForSection:LCV ];
             [headers addObject: [_tableData titleForSection:LCV] ];
-
+            
             NSSortDescriptor *sortSequence = [[NSSortDescriptor alloc] initWithKey:@"start_stop_sequence" ascending:YES];
             NSSortDescriptor *sortDirection = [[NSSortDescriptor alloc] initWithKey:@"direction_id" ascending:YES];
             
             [tempArr sortUsingDescriptors:[NSArray arrayWithObjects:sortSequence, sortDirection, nil] ];
             
-//            [tempArr sortUsingComparator:^NSComparisonResult(TripData *a, TripData *b)
-//             {
-//                 return [a.start_stop_sequence intValue] > [b.start_stop_sequence intValue];
-//             }];
-
+            //            [tempArr sortUsingComparator:^NSComparisonResult(TripData *a, TripData *b)
+            //             {
+            //                 return [a.start_stop_sequence intValue] > [b.start_stop_sequence intValue];
+            //             }];
+            
         }
-    
+        
     }
     else
     {
@@ -1050,7 +1060,7 @@
         for (int LCV = 0; LCV < numSection; LCV++)
         {
             NSMutableArray *tempArr = (NSMutableArray*)[_tableData objectForSection:LCV ];
-
+            
             [tempArr removeObject:_currentLocation];
             [tempArr removeObject:_enterAddress];
             
@@ -1070,11 +1080,9 @@
     
     [_tableData generateIndexWithKey:@"start_stop_name" forSectionTitles:[NSArray arrayWithArray: headers] ];
 
-    [self.tableView reloadData];
     
     
 }
-
 
 -(void) selectionMade
 {
@@ -1099,8 +1107,10 @@
         if ( indexPath != nil )
         {
             TripData *trip = [_tableData objectForIndexPath:indexPath];
-            [sObj setStop_name: [trip start_stop_name] ];
-            [sObj setStop_id  : [trip start_stop_id  ] ];
+            [sObj setStop_name    : [trip start_stop_name] ];
+            [sObj setStop_id      : [trip start_stop_id  ] ];
+            [sObj setDirection_id : [trip direction_id] ];
+            [sObj setDestination  : [_tableData titleForSection: indexPath.section] ];
         }
         
         
@@ -1139,6 +1149,35 @@
         
         LineHeaderView *header = (LineHeaderView*)[self.navigationItem titleView];
         [header setTitle:@"Select Destination"];
+
+
+//        CGRect tFrame = self.navigationItem.titleView.frame;
+//        NSLog(@"%@", NSStringFromCGRect(tFrame));
+//
+//        UILabel *label = [[UILabel alloc] initWithFrame: tFrame];
+//        label.textColor = [UIColor colorWithRed:13.0/255.0 green:164.0/255.0 blue:74.0/255.0 alpha:1.0f]; // change this color
+//        self.navigationItem.titleView = label;
+//        [label setFont: [UIFont fontWithName:@"TrebuchetMS-Bold" size: 30.0f] ];
+//        [label setText: @"Select Destination"];
+        
+
+
+//        [label sizeToFit];  // This doesn't resize
+//        [self.navigationItem.titleView sizeToFit];  // Nor does this resize
+
+//        CGSize size = [label.text sizeWithFont:label.font
+//                             constrainedToSize:CGSizeMake(tFrame.size.width, tFrame.size.height)
+//                                 lineBreakMode:UILineBreakModeWordWrap];
+//        CGRect labelFrame = label.frame;
+//        labelFrame.size.height = size.height;
+//        label.frame = labelFrame;
+//        [label setFrame: CGRectMake(label.frame.origin.x, label.frame.origin.y, size.width, size.height)];
+//
+//        [label setAdjustsFontSizeToFitWidth:YES];
+//        [self.navigationItem setTitleView: label];
+        
+//        NSLog(@"%@", NSStringFromCGRect(label.frame));
+
         
         _startState = NO;
         

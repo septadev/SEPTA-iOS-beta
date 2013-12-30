@@ -12,5 +12,7 @@
 
 @property (nonatomic, strong) NSString *stop_name;
 @property (nonatomic, strong) NSNumber *stop_id;
+@property (nonatomic, strong) NSNumber *direction_id;
+@property (nonatomic, strong) NSString *destination;
 
 @end

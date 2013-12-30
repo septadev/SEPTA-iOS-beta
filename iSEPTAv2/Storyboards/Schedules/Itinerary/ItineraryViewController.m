@@ -431,7 +431,7 @@
     
     
     // Can init with CustomView, display the icon for which alerts are available
-    REMenuItem *advisoryItem = [[REMenuItem alloc] initWithTitle:@"Advisory"
+    REMenuItem *advisoryItem = [[REMenuItem alloc] initWithTitle:@"Service Advisory"
                                             subtitle:ALERTS_STARTUP
                                                image:[UIImage imageNamed:@"Advisory.png"]
                                     highlightedImage:nil
@@ -654,6 +654,7 @@
     {
         NSString *header = [results stringForColumn:@"DirectionDescription"];
         [_nameForSection addObject:[NSString stringWithFormat:@"To %@", header] ];
+        NSLog(@"IVC: loadHeaderNames: %@", header);
     }
     
 }
@@ -1220,7 +1221,8 @@
         NSLog(@"ITVC - %6.3f seconds have passed.", diff);
         
     }
-
+    
+    
 //    for (NSString *tripKey in tripDict)
 //    {
 //        [masterTripsArr addObject: [tripDict objectForKey:tripKey] ];
@@ -1249,8 +1251,8 @@
 //    }
     
 
-    [self.lblTabbedLabel setText: [NSString stringWithFormat:@"To %@", itinerary.endStopName] ];
-    
+//    [self.lblTabbedLabel setText: [NSString stringWithFormat:@"To %@", itinerary.endStopName] ];
+    [self.lblTabbedLabel setText: [NSString stringWithFormat:@"%@", [_nameForSection objectAtIndex: [itinerary.directionID intValue] ] ] ];
 }
 
 
@@ -1306,9 +1308,13 @@
         [dateFormatter setDateFormat:@"HHmm"];
         now = [[dateFormatter stringFromDate: [NSDate date] ] intValue];
     }
+    else
+    {
+        now = 0;
+    }
     
 //    _currentDisplayDirection = 0;
-    NSNumber *displayDirection = [NSNumber numberWithInt:0];
+//    NSNumber *displayDirection = [NSNumber numberWithInt:0];
     NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"(serviceID == %d)  AND (directionID == %d) AND (startTime > %d)", _currentServiceID, _currentDisplayDirection, now] ];
     
     NSSortDescriptor *timeSort = [NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES];
@@ -2408,6 +2414,7 @@
 #pragma mark - StopNameTableViewControllerProtocol
 -(void) buttonPressed:(StopNamesTableViewControllerButtonPressed) buttonType withData:(StopNamesObject*) stopData
 {
+    
     NSLog(@"iVC: buttonPressed - stopData: %@, buttonType: %d", stopData, buttonType);
     
     switch (buttonType & kNextToArriveButtonMask)
@@ -2420,12 +2427,15 @@
             {
                 [itinerary setStartStopID  : stopData.stop_id  ];
                 [itinerary setStartStopName: stopData.stop_name];
+                [itinerary setDirectionID  : stopData.direction_id];
+                
                 [self reverseStopLookUpForStart:YES];  // Now that the start name has changed, we need to find its reverse lookup (Bus ONLY)
             }
             else if ( buttonType & kNextToArriveButtonTypeEndField )
             {
                 [itinerary setEndStopID  : stopData.stop_id  ];
                 [itinerary setEndStopName: stopData.stop_name];
+                [itinerary setDirectionID: stopData.direction_id];
                 [self reverseStopLookUpForStart:NO];  // Now that the end name has changed, we need to find its reverse lookup (Bus ONLY)
                 
                 [self.lblTabbedLabel setText: [NSString stringWithFormat:@"To %@", itinerary.endStopName] ];
@@ -2749,7 +2759,7 @@
     if ( ![database open] )
     {
         [database close];
-        return 32;
+        return 0;
     }
     
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -2800,7 +2810,7 @@
         NSLog(@"ITVC - query failure, code: %d, %@", errorCode, errorMsg);
         NSLog(@"ITVC - query str: %@", queryStr);
         
-        return 32;  // If an error occurred, there's nothing else to do but exit
+        return 0;  // If an error occurred, there's nothing else to do but exit
         
     } // if ( [database hadError] )
     

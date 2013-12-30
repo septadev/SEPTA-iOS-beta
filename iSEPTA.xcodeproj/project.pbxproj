@@ -734,6 +734,8 @@
 		843445B9183E6A5500BA7A73 /* Filter-123@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 843445B5183E6A5500BA7A73 /* Filter-123@2x.png */; };
 		843445BA183E6A5500BA7A73 /* Filter-abc.png in Resources */ = {isa = PBXBuildFile; fileRef = 843445B6183E6A5500BA7A73 /* Filter-abc.png */; };
 		843445BB183E6A5500BA7A73 /* Filter-abc@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 843445B7183E6A5500BA7A73 /* Filter-abc@2x.png */; };
+		84C3864C1861070000B06BFA /* Filter_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C3864B1861070000B06BFA /* Filter_close@2x.png */; };
+		84C3864E1861071600B06BFA /* Filter_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C3864D1861071600B06BFA /* Filter_close.png */; };
 		84CA6E5A17D7B7F6002C2F3C /* ServiceHours.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CA6E5917D7B7F6002C2F3C /* ServiceHours.m */; };
 		84CC992F17B874A10087477E /* TripListStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CC992E17B874A10087477E /* TripListStoryboard.storyboard */; };
 		84CC993217B874C00087477E /* TripListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CC993117B874C00087477E /* TripListViewController.m */; };
@@ -1668,6 +1670,8 @@
 		843445B5183E6A5500BA7A73 /* Filter-123@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Filter-123@2x.png"; path = "images/filters/Filter-123@2x.png"; sourceTree = SOURCE_ROOT; };
 		843445B6183E6A5500BA7A73 /* Filter-abc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Filter-abc.png"; path = "images/filters/Filter-abc.png"; sourceTree = SOURCE_ROOT; };
 		843445B7183E6A5500BA7A73 /* Filter-abc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Filter-abc@2x.png"; path = "images/filters/Filter-abc@2x.png"; sourceTree = SOURCE_ROOT; };
+		84C3864B1861070000B06BFA /* Filter_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Filter_close@2x.png"; sourceTree = "<group>"; };
+		84C3864D1861071600B06BFA /* Filter_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Filter_close.png; sourceTree = "<group>"; };
 		84CA6E5817D7B7F6002C2F3C /* ServiceHours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceHours.h; path = Storyboards/Realtime/TransitView/Code/ServiceHours.h; sourceTree = "<group>"; };
 		84CA6E5917D7B7F6002C2F3C /* ServiceHours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceHours.m; path = Storyboards/Realtime/TransitView/Code/ServiceHours.m; sourceTree = "<group>"; };
 		84CC992E17B874A10087477E /* TripListStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TripListStoryboard.storyboard; path = "Storyboards/Common Storyboards/TripList/TripListStoryboard.storyboard"; sourceTree = "<group>"; };
@@ -3653,6 +3657,7 @@
 		8418EC4B17FEF6BB003607D1 /* HD */ = {
 			isa = PBXGroup;
 			children = (
+				84C3864B1861070000B06BFA /* Filter_close@2x.png */,
 				8418EC4C17FEF6BB003607D1 /* Advisory@2x.png */,
 				8418EC4D17FEF6BB003607D1 /* Fare@2x.png */,
 				8418EC4E17FEF6BB003607D1 /* Favorite@2x.png */,
@@ -3665,9 +3670,10 @@
 		8418EC5117FEF6BB003607D1 /* SD */ = {
 			isa = PBXGroup;
 			children = (
+				84C3864D1861071600B06BFA /* Filter_close.png */,
+				8418EC5417FEF6BB003607D1 /* Filter.png */,
 				8418EC5217FEF6BB003607D1 /* Fare.png */,
 				8418EC5317FEF6BB003607D1 /* Favorite.png */,
-				8418EC5417FEF6BB003607D1 /* Filter.png */,
 				8418EC5517FEF6BB003607D1 /* Refresh.png */,
 			);
 			path = SD;
@@ -4545,6 +4551,7 @@
 				27DB30161636D6B600153E4C /* 36.kml in Resources */,
 				8418EDC817FEF6BD003607D1 /* Find_loc-white@2x.png in Resources */,
 				8418EDB117FEF6BD003607D1 /* Favorite@2x.png in Resources */,
+				84C3864C1861070000B06BFA /* Filter_close@2x.png in Resources */,
 				8418EE4A17FEF6BD003607D1 /* Schedule_CCT-BG@2x.png in Resources */,
 				27DB30171636D6B600153E4C /* 37.kml in Resources */,
 				8418ED8717FEF6BD003607D1 /* Fare Information.doc in Resources */,
@@ -4698,6 +4705,7 @@
 				8418EDB017FEF6BD003607D1 /* Fare@2x.png in Resources */,
 				8418EE3B17FEF6BD003607D1 /* Bus_white.png in Resources */,
 				8418EE6C17FEF6BD003607D1 /* Schedule_MFL_small.png in Resources */,
+				84C3864E1861071600B06BFA /* Filter_close.png in Resources */,
 				8418EE5417FEF6BD003607D1 /* Schedule_RRL@2x.png in Resources */,
 				27DB304B1636D6B600153E4C /* 104.kml in Resources */,
 				27DB304C1636D6B600153E4C /* 105.kml in Resources */,
