@@ -36,6 +36,9 @@
 		271DA8641808A0B4009ED7D6 /* septaIcon-80px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 271DA85C1808A0B4009ED7D6 /* septaIcon-80px@2x.png */; };
 		271DA8651808A0B4009ED7D6 /* septaIcon-100px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 271DA85D1808A0B4009ED7D6 /* septaIcon-100px@2x.png */; };
 		271DA8661808A0B4009ED7D6 /* septaIcon-114px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 271DA85E1808A0B4009ED7D6 /* septaIcon-114px@2x.png */; };
+		271F03001871C56700CDFB16 /* BSL.kml in Resources */ = {isa = PBXBuildFile; fileRef = 271F02FD1871C56700CDFB16 /* BSL.kml */; };
+		271F03011871C56700CDFB16 /* MFL.kml in Resources */ = {isa = PBXBuildFile; fileRef = 271F02FE1871C56700CDFB16 /* MFL.kml */; };
+		271F03021871C56700CDFB16 /* NHSL.kml in Resources */ = {isa = PBXBuildFile; fileRef = 271F02FF1871C56700CDFB16 /* NHSL.kml */; };
 		2722CDF7168371F30074821B /* NTAResultsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2722CDF6168371F30074821B /* NTAResultsCell.m */; };
 		2722CDF91683990D0074821B /* NTAConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2722CDF81683990D0074821B /* NTAConnectionCell.xib */; };
 		2722D4A91683A69F0074821B /* NTASingleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2722D4A81683A69F0074821B /* NTASingleCell.xib */; };
@@ -806,6 +809,9 @@
 		271DA85C1808A0B4009ED7D6 /* septaIcon-80px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "septaIcon-80px@2x.png"; sourceTree = "<group>"; };
 		271DA85D1808A0B4009ED7D6 /* septaIcon-100px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "septaIcon-100px@2x.png"; sourceTree = "<group>"; };
 		271DA85E1808A0B4009ED7D6 /* septaIcon-114px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "septaIcon-114px@2x.png"; sourceTree = "<group>"; };
+		271F02FD1871C56700CDFB16 /* BSL.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = BSL.kml; path = kml/BSL.kml; sourceTree = "<group>"; };
+		271F02FE1871C56700CDFB16 /* MFL.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = MFL.kml; path = kml/MFL.kml; sourceTree = "<group>"; };
+		271F02FF1871C56700CDFB16 /* NHSL.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = NHSL.kml; path = kml/NHSL.kml; sourceTree = "<group>"; };
 		2722CDF5168371F30074821B /* NTAResultsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NTAResultsCell.h; path = Realtime/NTAResultsCell.h; sourceTree = "<group>"; };
 		2722CDF6168371F30074821B /* NTAResultsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NTAResultsCell.m; path = Realtime/NTAResultsCell.m; sourceTree = "<group>"; };
 		2722CDF81683990D0074821B /* NTAConnectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NTAConnectionCell.xib; path = Realtime/NTAConnectionCell.xib; sourceTree = "<group>"; };
@@ -2834,6 +2840,9 @@
 		27DB2F661636D6A300153E4C /* kmls */ = {
 			isa = PBXGroup;
 			children = (
+				271F02FD1871C56700CDFB16 /* BSL.kml */,
+				271F02FE1871C56700CDFB16 /* MFL.kml */,
+				271F02FF1871C56700CDFB16 /* NHSL.kml */,
 				27B285A418181FE400BD8825 /* LUCYGO.kml */,
 				27B285A518181FE400BD8825 /* LUCYGR.kml */,
 				27B7F7B316A9B2F0003DF486 /* BSO.kml */,
@@ -4484,6 +4493,7 @@
 				8418EDE717FEF6BD003607D1 /* Bus-black.png in Resources */,
 				8418EE2217FEF6BD003607D1 /* BSL_Owl@2x.png in Resources */,
 				27DB30001636D6B600153E4C /* 14.kml in Resources */,
+				271F03001871C56700CDFB16 /* BSL.kml in Resources */,
 				843445B8183E6A5500BA7A73 /* Filter-123.png in Resources */,
 				27DB30011636D6B600153E4C /* 15.kml in Resources */,
 				27DB30021636D6B600153E4C /* 16.kml in Resources */,
@@ -4800,6 +4810,7 @@
 				27DB30741636D6B600153E4C /* G.kml in Resources */,
 				8418EE5D17FEF6BD003607D1 /* BSL-white.png in Resources */,
 				8418EECD18058D67003607D1 /* NTA-start.png in Resources */,
+				271F03011871C56700CDFB16 /* MFL.kml in Resources */,
 				8418EE3117FEF6BD003607D1 /* RRL@2x.png in Resources */,
 				8418ED7417FEF6BD003607D1 /* faresBack@2x.png in Resources */,
 				8418ED9C17FEF6BD003607D1 /* trailpass-BG.png in Resources */,
@@ -4877,6 +4888,7 @@
 				8418ED9F17FEF6BD003607D1 /* transpass.png in Resources */,
 				27A5EABD1697411C004C9467 /* digitControlBG@2x.png in Resources */,
 				8418EDC317FEF6BD003607D1 /* RT_Tips.png in Resources */,
+				271F03021871C56700CDFB16 /* NHSL.kml in Resources */,
 				8418EE2417FEF6BD003607D1 /* MFL_Blue@2x.png in Resources */,
 				8418ED8A17FEF6BD003607D1 /* One-day-Convenience-BG@2x.png in Resources */,
 				8418ED9A17FEF6BD003607D1 /* token-BG.png in Resources */,
@@ -5331,6 +5343,11 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iSEPTAv2/iSEPTA-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"FUNCTION_NAMES_ON=1",
+				);
 				HEADER_SEARCH_PATHS = (
 					"${PODS_HEADERS_SEARCH_PATHS}",
 					"$(SDKROOT)/usr/include/libxml2",

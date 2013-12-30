@@ -97,7 +97,7 @@
 
 +(NSArray*) returnKeyValues
 {
-    return [NSArray arrayWithObjects:@"start_stop_name", @"end_stop_name", @"start_arrival_time", @"end_arrival_time", @"start_stop_id", @"end_stop_id", @"trip_id", @"train_no", @"direction_id", @"start_stop_sequence", @"end_stop_sequence", nil];
+    return [NSArray arrayWithObjects:@"vanity_start_stop_name", @"start_stop_name", @"end_stop_name", @"start_arrival_time", @"end_arrival_time", @"start_stop_id", @"end_stop_id", @"trip_id", @"train_no", @"direction_id", @"start_stop_sequence", @"end_stop_sequence", nil];
 }
 
 -(NSString*) description

@@ -89,7 +89,8 @@ sub mainLoop
     populateStopIDRouteLookup();  # Used for Find Nearest Route
     populateGlensideCombined();
     repairBSOMFOArrivalTime();  # Fix issue where BSO and MFO have times over 2400.  This makes sense to service planning, but not in the context of the app
-    removeBadMFLStops();
+#    removeBadMFLStops();
+    combineMFLStops();
     removeEmployeeOnlyStops();
     
 
@@ -1643,6 +1644,64 @@ sub repairBSOMFOArrivalTime
     
 }
 
+sub combineMFLStops
+{
+    
+    print "cMFLS - Combine 69th St Transportation Center MFL West/East into just 69th St Transportation Center\n\n";
+    
+    # --==  Connect to DB  ==--
+    my $dbh = DBI->connect(
+    "dbi:SQLite:dbname=$dbFileName",
+    "",
+    "",
+    { RaiseError => 1 },
+    ) or die "DBIerr: " . $DBI::err . "\nDBIerrstr: " . $DBI::errstr . "\nGTFS - DBName: $dbFileName.\n\n";
+    
+    
+    my $east_stopID;
+    my $west_stopID;
+    
+    my $sth = $dbh->prepare("SELECT stop_id FROM stops_bus WHERE stop_name = '69th St Transportation Center MFL West';");
+    $sth->execute();
+    
+    my $row;
+    $row = $sth->fetchrow_arrayref();
+    $west_stopID = @$row[0];
+    
+    $sth = $dbh->prepare("SELECT stop_id FROM stops_bus WHERE stop_name = '69th St Transportation Center MFL East';");
+    $sth->execute();
+    
+    $row = $sth->fetchrow_arrayref();
+    $east_stopID = @$row[0];
+    
+    print "East: $east_stopID, West: $west_stopID\n";
+    
+    if ( !$east_stopID || !$west_stopID )
+    {
+        print "Could not find either East or West (or both)\n";
+        exit;
+    }
+    
+    $sth->finish();
+    
+    my $updateQuery = "UPDATE stop_times_bus SET stop_id = $west_stopID WHERE stop_id = $east_stopID";
+    $dbh->do($updateQuery);
+
+    $updateQuery = "UPDATE stop_times_MFL SET stop_id = $west_stopID WHERE stop_id = $east_stopID";
+    $dbh->do($updateQuery);
+
+    
+    my $deleteQuery = "DELETE FROM stops_bus WHERE stop_id = $east_stopID";
+    $dbh->do($deleteQuery);
+    
+    
+    $updateQuery = "UPDATE stops_bus SET stop_name = '69th St Transportation Center' WHERE stop_id = $west_stopID";
+    $dbh->do($updateQuery);
+    
+    $dbh->disconnect();
+    
+}
+
 
 sub removeBadMFLStops
 {
@@ -1696,8 +1755,14 @@ sub removeEmployeeOnlyStops
     { RaiseError => 1 },
     ) or die "DBIerr: " . $DBI::err . "\nDBIerrstr: " . $DBI::errstr . "\nGTFS - DBName: $dbFileName.\n\n";
     
-    my $baseDelete = "DELETE FROM stop_times_bus WHERE stop_id IN (SELECT stop_id FROM stops_bus WHERE stop_name LIKE '%employees only%');";
-    $dbh->do($baseDelete);
+    my @tableNames = ("stop_times_bus", "stop_times_NHSL", "stop_times_BSL", "stop_times_MFL");
+    
+    foreach my $tableName (@tableNames)
+    {
+        my $baseDelete = "DELETE FROM $tableName WHERE stop_id IN (SELECT stop_id FROM stops_bus WHERE stop_name LIKE '%employees only%');";
+        print "$baseDelete \n";
+        $dbh->do($baseDelete);
+    }
     
     $dbh->disconnect();
     

@@ -118,7 +118,7 @@
     
     if ( object == nil )
     {
-        _showAllRoutes = NO;
+        _showAllRoutes = YES;  // If it's nil, then the value hasn't been set and we'll use the initial condition
         [rightButton.button setSelected:NO];
     }
     else
@@ -1246,7 +1246,7 @@ NSComparisonResult (^sortStatusName)(SystemStatusObject*,SystemStatusObject*) = 
 
 -(void) filterButtonPressed:(id) sender
 {
-    NSLog(@"Filter Button Pressed");
+//    NSLog(@"Filter Button Pressed");
     
     _showAllRoutes = !_showAllRoutes;
 

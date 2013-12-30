@@ -101,6 +101,10 @@
 - (void)viewDidLoad
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"ITVC - viewDidLoad");
+#endif
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
@@ -133,7 +137,7 @@
     _startENDButtonPressed = 0;
     
 
-    _currentDisplayDirection    = 0;  // Default current direction to 0
+    _currentDisplayDirection    = -1;  // Default current direction to a non-zero number
     _stillWaitingOnWebRequest = NO;
     _viewIsClosing = NO;
     
@@ -275,10 +279,10 @@
     //    NSLog(@"RouteData: %@", routeData.current);
     
     // Check if flipped stop names are a favorite location
-    if ( [routeData isObject:routeData.current inSection:kDisplayedRouteDataFavorites] )
-        [self setFavoriteHighlight:YES];
-    else
-        [self setFavoriteHighlight:NO];
+//    if ( [routeData isObject:routeData.current inSection:kDisplayedRouteDataFavorites] )
+//        [self setFavoriteHighlight:YES];
+//    else
+//        [self setFavoriteHighlight:NO];
 
     
     _alertsAPI = [[GetAlertDataAPI alloc] init];
@@ -301,6 +305,11 @@
 -(void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"ITVC - willAnimateRotationToInterfaceOrientation");
+#endif
+
+    
     [_tBtnTransit changeFrameWidth: self.view.frame.size.width];
     
     LineHeaderView *titleView = (LineHeaderView*)self.navigationItem.titleView;
@@ -315,8 +324,11 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    
+
+#if FUNCTION_NAMES_ON
     NSLog(@"ITVC - viewWillAppear");
+#endif
+
 
     [_tBtnTransit changeFrameWidth: self.view.frame.size.width];
 
@@ -350,6 +362,10 @@
 
 -(void) viewWillDisappear:(BOOL)animated
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC viewWilLDisappear");
+#endif
     
     _viewIsClosing = YES;
     
@@ -393,6 +409,10 @@
 
 -(void) configureDropDownMenu
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC configureDropDownMenu");
+#endif
 
 //    CustomFlatBarButton *rightButton = [[CustomFlatBarButton alloc] initWithImageNamed:@"second-menu.png"
 //                                                                            withTarget:self
@@ -465,6 +485,10 @@
 
 -(void) configureTabs
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC configureTabs");
+#endif
     
     // Load background image
 //    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mainBackground.png"] ];
@@ -623,6 +647,10 @@
 -(void) loadHeaderNamesWith: (ItineraryObject*) itin
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC loadHeaderNamesWith:");
+#endif
+    
     if ( !([self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"Trolley"] ) )
         return;
     
@@ -662,6 +690,10 @@
 
 -(DisplayedRouteData*) convertItineraryObjectToDisplayedRouteData
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC convertItineraryObjectToDisplayedRouteData");
+#endif
     
     NSInteger dbType;
     
@@ -747,6 +779,11 @@
 
 - (void)didReceiveMemoryWarning
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC didReceiveMemoryWarning");
+#endif
+    
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     
@@ -760,6 +797,10 @@
 
 - (void)viewDidUnload
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC viewDidUnload");
+#endif
     
 //    [self setBtnFavorite:nil];
     
@@ -797,6 +838,10 @@
 #pragma mark - Refresh Time in Cells
 -(void) refreshCellsTime
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC refreshCellsTime");
+#endif
     
     //    NSLog(@"ITVC - refreshCellsTime");
     
@@ -842,6 +887,11 @@
 #pragma mark - Check Settings
 -(void) updateTimeSettings
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC updateTimeSettings");
+#endif
+    
     // Get 24HourTime setting
     id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:24HourTime"];
     if ( object == nil )
@@ -868,7 +918,11 @@
 -(void) loadTripsInTheBackground
 {
     
+#if FUNCTION_NAMES_ON
     NSLog(@"ITVC - loadTripsInTheBackground");
+#endif
+    
+    
     [_jsonQueue cancelAllOperations];  // Since _jsonQueue depends on loadTrips, if we're about to reload loadTrips, all JSON operations needs to be cancelled
     [jsonRefreshTimer invalidate];
     
@@ -884,18 +938,22 @@
             // --==  Main Queue Time  ==--
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 
-                [self filterCurrentTrains];  // Updates currentTrainsArr and reloaded self.tableTrips
-                [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];  // Forced update of To/From Header
-                
-                [self changeTitleBar];
-                
                 [SVProgressHUD dismiss];     // Dismisses any active loading HUD
+                
+                if ( !( ([itinerary.startStopID intValue] == 0 && [itinerary.endStopID intValue] == 0) || itinerary.routeID == nil ) )
+                {
+                    
+                    [self filterCurrentTrains];  // Updates currentTrainsArr and reloaded self.tableTrips
+                    [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];  // Forced update of To/From Header
+                    
+                    [self changeTitleBar];
 
-                [self createMasterJSONLookUpTable];  // Do I even use this anymore (why is this even here?)
-                
-                if ( [self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"Rail"] || [self.travelMode isEqualToString:@"Trolley"] )  // MFL, BSS and NHSL do not have realtime data
-                    [self loadJSONDataIntheBackground];  // This should only be called once loadTrips has been loaded
-                
+                    [self createMasterJSONLookUpTable];  // Do I even use this anymore (why is this even here?)
+                    
+                    if ( [self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"Rail"] || [self.travelMode isEqualToString:@"Trolley"] )  // MFL, BSS and NHSL do not have realtime data
+                        [self loadJSONDataIntheBackground];  // This should only be called once loadTrips has been loaded
+                        
+                }
                 
             }];
             
@@ -908,7 +966,9 @@
     }];
     
     
-    [SVProgressHUD showWithStatus:@"Loading..."];
+    if ( !( ([itinerary.startStopID intValue] == 0 && [itinerary.endStopID intValue] == 0) || itinerary.routeID == nil ) )
+        [SVProgressHUD showWithStatus:@"Loading..."];
+    
     [_sqlQueue addOperation: _sqlOp];
     
 }
@@ -916,6 +976,11 @@
 
 -(void) createMasterJSONLookUpTable
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC createMasterJSONLookUpTable");
+#endif
+    
 
     // This creates a simple LUT for every trips throughout the week that matches the Itinerary
     // _masterTrainLookUp stores a reference to the pointer of a trip
@@ -965,6 +1030,10 @@
 
 -(void) loadTrips
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC loadTrips");
+#endif
     
     BOOL _forceLoad = 0;
     BOOL _firstTime = 1;
@@ -1236,22 +1305,14 @@
 
 -(void) changeTitleBar
 {
-    NSLog(@"IVC:cTB - changeTitleBar");
-//    NSString *toFrom = @"From";
-//    if ( [self.travelMode isEqualToString:@"Rail"] )
-//        [self.lblTabbedLabel setText: [NSString stringWithFormat:@"%@ %@", _headerDirection, itinerary.routeID] ];
-//    //                return _headerDirection;
-//    else
-//    {
-//
-//        if ( _currentDisplayDirection >= [_nameForSection count] )
-//            [self.lblTabbedLabel setText: [NSString stringWithFormat:@"%@ %@", toFrom, itinerary.routeShortName] ];
-//        else
-//            [self.lblTabbedLabel setText: [_nameForSection objectAtIndex:_currentDisplayDirection] ];
-//    }
     
-
-//    [self.lblTabbedLabel setText: [NSString stringWithFormat:@"To %@", itinerary.endStopName] ];
+#if FUNCTION_NAMES_ON
+    NSLog(@"iVC:cTB - changeTitleBar");
+#endif
+    
+    if ( [_nameForSection count] == 0 )
+        return;
+    
     [self.lblTabbedLabel setText: [NSString stringWithFormat:@"%@", [_nameForSection objectAtIndex: [itinerary.directionID intValue] ] ] ];
 }
 
@@ -1259,6 +1320,10 @@
 
 -(NSString*) filePath
 {
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC filePath");
+#endif
+    
     return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
 }
 
@@ -1266,10 +1331,21 @@
 -(void) filterActiveTrains
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC filterActiveTrains");
+#endif
+    
     //    NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"(serviceID LIKE '%@') AND (directionID == %d)", _currentServiceID, _currentDisplayDirection] ];
     
     if ( [_masterJSONTrainArr count] == 0 )  // If it has no active vehiciles, nothing below will have any effect
         return;
+    
+    if ( [self getServiceIDFor:kItineraryFilterTypeNow] != _currentServiceID )
+    {
+        activeTrainsArr = nil;
+        [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+        return;
+    }
     
     NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"(serviceID == %d) AND (directionID == %d)", _currentServiceID, _currentDisplayDirection] ];
     
@@ -1299,6 +1375,10 @@
 -(void) filterCurrentTrains
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC filterCurrentTrains");
+#endif
+    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 //    NSString *now = @"00:00";
     int now = 0;  // Always show times greater than 00:00 unless a new time has been added.
@@ -1326,7 +1406,7 @@
     int sectionToLoad = 2;
     _message = nil;
     
-    if ( ( [currentTripsArr count] == 0 ) && !( [itinerary.startStopName isEqualToString: DEFAULT_START_MESSAGE] && [itinerary.endStopName isEqualToString:DEFAULT_END_MESSAGE] ) )
+    if ( ( [currentTripsArr count] == 0 ) && !( [itinerary.startStopName isEqualToString: DEFAULT_START_MESSAGE] || [itinerary.endStopName isEqualToString:DEFAULT_END_MESSAGE] ) )
     {
         // Now filter that data...
         _message = @"No remaining service for today";
@@ -1341,9 +1421,9 @@
     
     
     // User Preferences
-    if ( itinerary.routeID != nil && itinerary.startStopName != nil && itinerary.endStopName != nil )
-    {
-        
+//    if ( itinerary.routeID != nil && itinerary.startStopName != nil && itinerary.endStopName != nil )
+//    {
+    
         //        NSString *newKey = [NSString stringWithFormat:@"%@%@%@",itinerary.routeID,itinerary.startStopName,itinerary.endStopName];
         //        NSDictionary *saves = [[NSUserDefaults standardUserDefaults] objectForKey: @"CachedItinerary"];
         //
@@ -1364,8 +1444,10 @@
         //        [[NSUserDefaults standardUserDefaults] setObject:saveDict forKey: @"CachedItinerary"];
         //        [[NSUserDefaults standardUserDefaults] synchronize];
         
-    }
+//    }
     
+    
+    // Why, why, why are we changing the direciton!?  NO!  Bad Greg!  Bad!
     [itinerary setDirectionID: [NSNumber numberWithInt:_currentDisplayDirection] ];
     
     //    DisplayedRouteData *routeData = [self convertItineraryObjectToDisplayedRouteData];
@@ -1377,6 +1459,10 @@
 #pragma mark Segue
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC prepareForSegue");
+#endif
     
     return;
     
@@ -1500,6 +1586,10 @@
 -(NSString*) returnQueryStringForTravelMode
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC returnQueryStringForTravelMode");
+#endif
+    
     NSString *queryStr;
     
     
@@ -1561,6 +1651,11 @@
 
 -(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC tV:willDisplayCell");
+#endif
+    
     [cell setBackgroundColor: [UIColor colorWithWhite:1.0f alpha:.8] ];
     return;
     
@@ -1580,6 +1675,10 @@
 // Allow editing of only the Itinerary Cell
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC tV:commitEditingStyle");
+#endif
     
     if ( editingStyle != UITableViewCellEditingStyleDelete )
         return;
@@ -1615,6 +1714,10 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC tv:caneditRowAtIndexPath");
+#endif
+    
     // Return NO if you do not want the specified item to be editable.
     //    NSInteger section = indexPath.section;
     
@@ -1628,6 +1731,11 @@
 
 -(void) tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC tV:accessoryButtonTappedForRowWithIndexPath");
+#endif
+    
     NSLog(@"ITVC - accessoryButtonTappedForSection/Row: %d/%d", indexPath.section, indexPath.row);
 }
 
@@ -1635,6 +1743,9 @@
 - (void)tableView:(UITableView *)thisTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC tv:didSelectRowAtIndexPath");
+#endif
     return;
     
     if ( ( indexPath.section == 1 ) || ( indexPath.section == 2 ) )
@@ -1654,6 +1765,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC tV:cellForRowAtIndexPath");
+#endif
     
     static NSString *tripStr      = @"TripCell";
     static NSString *ntaItineraryStr = @"NextToArriveItineraryCell";
@@ -1838,6 +1953,10 @@
 -(id) roundCell:(UITableViewCell*) cell withIndexPath:(NSIndexPath*) indexPath
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC roundCell:withIndexPath");
+#endif
+    
     UITableViewCell *tCell = (UITableViewCell*)cell;
     UIRectCorner corner = 0;
     
@@ -1879,6 +1998,11 @@
 //-(void) removeCellAtIndexPath: (NSTimer*) theTimer
 -(void) removeTopMostCell
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC removeTopMostCell");
+#endif
+    
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
     NSLog(@"ITVC - removing cell at %d/%d", indexPath.section, indexPath.row);
     [currentTripsArr removeObjectAtIndex: [indexPath row] ];
@@ -1889,6 +2013,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC tV:numberOfRowsInSection");
+#endif
     
     switch (section)
     {
@@ -1916,6 +2044,10 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC numberOfSectionsInTableView");
+#endif
+    
     if ( tableView == self.tableTrips )
     {
         if ( _message == nil )
@@ -1941,6 +2073,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC tv:heightForRowAtIndexPath");
+#endif
+    
     switch (indexPath.section)
     {
         case 0:
@@ -1962,6 +2098,10 @@
 -(CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
 
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC tV:heightForFooterInSection");
+#endif
+    
     switch (section)
     {
         case 0:
@@ -1990,6 +2130,10 @@
 -(UIView*) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC tV:viewForFooterInSection");
+#endif
+    
     switch (section)
     {
         case 0:
@@ -2016,6 +2160,10 @@
 #pragma mark - UITableView Header
 -(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC tV:heightForHeaderInSection");
+#endif
  
     switch (section)
     {
@@ -2045,6 +2193,10 @@
 
 -(UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC tV:viewForHeaderInSection");
+#endif
     
     // Section 0 - Itinerary Cell
     // Section 1 - In Service Trains
@@ -2238,7 +2390,12 @@
 
 -(void) switchDirectionButtonTapped
 {
-    NSLog(@"ITVC - switch to/from direction");
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC switchDirectionButtonTapped (doesn't do anything)");
+#endif
+    
+//    NSLog(@"ITVC - switch to/from direction");
     //    if ( [itinerary.directionID  intValue] == 0 )
     //        [itinerary setDirectionID:[NSNumber numberWithInt:1] ];
     //    else
@@ -2251,8 +2408,11 @@
 
 -(void) flipStopNamesButtonTapped
 {
-    
-    NSLog(@"ITVC - flip start and end stop names");
+
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC - flip start and end stop names");
+#endif
+
     
     [SVProgressHUD setStatus:@"Loading"];
     
@@ -2349,7 +2509,7 @@
         [self setFavoriteHighlight:NO];
     
     
-    [self.lblTabbedLabel setText: [NSString stringWithFormat:@"To %@", itinerary.endStopName] ];
+//    [self.lblTabbedLabel setText: [NSString stringWithFormat:@"To %@", itinerary.endStopName] ];
     
     if ( itinerary.startStopName == NULL )
     {
@@ -2362,6 +2522,11 @@
 
 -(void) getStopNamesButtonTapped:(NSInteger) startEND  // start = 1, END = 0
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC - getStopNamesButtonTapped:%d",startEND);
+#endif
+
     
     // Stop JSON reloading and cancel any pending/ongoing Operations
     [_jsonQueue cancelAllOperations];
@@ -2415,27 +2580,82 @@
 -(void) buttonPressed:(StopNamesTableViewControllerButtonPressed) buttonType withData:(StopNamesObject*) stopData
 {
     
+#if FUNCTION_NAMES_ON
     NSLog(@"iVC: buttonPressed - stopData: %@, buttonType: %d", stopData, buttonType);
+#endif
+
     
     switch (buttonType & kNextToArriveButtonMask)
     {
         case kNextToArriveButtonTypeDone:
         case kNextToArriveButtonTypeDoubleTap:
         case kNextToArriveButtonTypeLongPress:
-            
+        
+        
+            // TODO: Consider the case when the end stop is entered first, followed by the start stop
+            // Code is setup only to reverse the last stop.  Should make it universal.
+
+        
+            if ( _currentDisplayDirection == -1 )
+            {
+                _currentDisplayDirection = [stopData.direction_id intValue];  // If the default value is still loaded, assign it the current selected direction
+                [itinerary setDirectionID: stopData.direction_id];
+            }
+        
+        
             if ( buttonType & kNextToArriveButtonTypeStartField )
             {
-                [itinerary setStartStopID  : stopData.stop_id  ];
-                [itinerary setStartStopName: stopData.stop_name];
-                [itinerary setDirectionID  : stopData.direction_id];
+                
+                // First stop selection the direction_id's will always match; Second stop selection they might not
+                if ( [itinerary.directionID intValue] != [stopData.direction_id intValue] && ( ![itinerary.endStopName isEqualToString:DEFAULT_END_MESSAGE] ) )
+                {
+                    // The user selected a stop for a bus going in the opposite direction of their initial selection
+                    
+                    StopNamesObject *sObject = [self reverseStopLookUpForStopID: [stopData.stop_id intValue] ];
+                    
+                    if ( sObject == nil )
+                    sObject = stopData;  // This is horrible!  It fixes a special case (FTC to Logan (in the other direction) but might break more things!
+
+                    [itinerary setEndStopID   : sObject.stop_id];
+                    [itinerary setEndStopName : sObject.stop_name];
+                    
+                }
+                else
+                {
+                
+                    [itinerary setStartStopID  : stopData.stop_id  ];
+                    [itinerary setStartStopName: stopData.stop_name];
+                    [itinerary setDirectionID  : stopData.direction_id];
+                    _currentDisplayDirection = [stopData.direction_id intValue];
+                }
                 
                 [self reverseStopLookUpForStart:YES];  // Now that the start name has changed, we need to find its reverse lookup (Bus ONLY)
+                
             }
             else if ( buttonType & kNextToArriveButtonTypeEndField )
             {
-                [itinerary setEndStopID  : stopData.stop_id  ];
-                [itinerary setEndStopName: stopData.stop_name];
-                [itinerary setDirectionID: stopData.direction_id];
+                
+                if ( [itinerary.directionID intValue] != [stopData.direction_id intValue] && ( ![itinerary.startStopName isEqualToString:DEFAULT_START_MESSAGE] ) )
+                {
+                    // The user selected a stop for a bus going in the opposite direction of their initial selection
+                    
+                    StopNamesObject *sObject = [self reverseStopLookUpForStopID: [stopData.stop_id intValue] ];
+
+                    if ( sObject == nil )
+                        sObject = stopData;  // This is horrible!  It fixes a special case (FTC to Logan (in the other direction) but might break more things!
+                    
+                    [itinerary setEndStopID   : sObject.stop_id];
+                    [itinerary setEndStopName : sObject.stop_name];
+
+                }
+                else
+                {
+                    [itinerary setEndStopID  : stopData.stop_id  ];
+                    [itinerary setEndStopName: stopData.stop_name];
+                    [itinerary setDirectionID: stopData.direction_id];
+                    _currentDisplayDirection = [stopData.direction_id intValue];
+                }
+                
                 [self reverseStopLookUpForStart:NO];  // Now that the end name has changed, we need to find its reverse lookup (Bus ONLY)
                 
                 [self.lblTabbedLabel setText: [NSString stringWithFormat:@"To %@", itinerary.endStopName] ];
@@ -2499,6 +2719,12 @@
 #pragma mark - StopNamesForRoute Protocol
 -(void) doneButtonPressed:(StopNamesForRouteTableController *)view WithStopName:(NSString *)selectedStopName andStopID:(NSInteger)selectedStopID withDirectionID:(NSNumber*)directionID
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"iVC: doneButtonPressed:WithStopName:%@ andStopID:%d withDirectionID:%d", selectedStopName, selectedStopID, [directionID intValue]);
+#endif
+
+    
     
     // StopNamesForRoutesVC triggers this when the Done button is pressed
     
@@ -2582,13 +2808,21 @@
 
 -(void) doneButtonPressed:(StopNamesForRouteTableController *)view WithStopName:(NSString *)selectedStopName andStopID:(NSInteger)selectedStopID
 {
-    
+#if FUNCTION_NAMES_ON
+    NSLog(@"iVC: doneButtonPressedWithStopName:%@ andStopID:%d", selectedStopName, selectedStopID);
+#endif
+
     [self doneButtonPressed:view WithStopName:selectedStopName andStopID:selectedStopID withDirectionID:NULL];
     
 }
 
 -(void) cancelButtonPressed:(StopNamesForRouteTableController *)view
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"iVC: cancelButtonPressed");
+#endif
+
     
     if ( [[self modalViewController] isBeingDismissed] )
         return;
@@ -2600,13 +2834,77 @@
 }
 
 
+-(StopNamesObject*) reverseStopLookUpForStopID:(int) stopID
+{
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"iVC: reverseStopLookUpForStopID:%d", stopID);
+#endif
+    
+    
+    StopNamesObject *sObject = [[StopNamesObject alloc] init];
+    
+    if ( !([self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"Trolley"]) )
+        return nil;
+    
+    // Perform a bus stop reverse lookup to find the closest stop_id in the opposite direction
+    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    
+    if ( ![database open] )
+    {
+        [database close];
+        return nil;
+    }
+    
+
+    // Look up the reverse stop ID for the active stop
+    NSString *queryStr = [NSString stringWithFormat:@"SELECT reverseStopSearch.stop_id,reverse_stop_id,distance,stop_name FROM reverseStopSearch JOIN stops_bus ON reverseStopSearch.reverse_stop_id=stops_bus.stop_id WHERE reverseStopSearch.stop_id=%d AND route_short_name=\"%@\"", stopID, itinerary.routeShortName];
+
+    
+    FMResultSet *results = [database executeQuery: queryStr];
+    if ( [database hadError] )  // Basic DB error checking
+    {
+        
+        int errorCode = [database lastErrorCode];
+        NSString *errorMsg = [database lastErrorMessage];
+        
+        NSLog(@"SNFRTC - query failure, code: %d, %@", errorCode, errorMsg);
+        NSLog(@"SNFRTC - query str: %@", queryStr);
+        
+        return nil;  // If an error occurred, there's nothing else to do but exit
+        
+    } // if ( [database hadError] )
+    
+    
+    while ( [results next] )  // Only one row should have been returned
+    {
+        
+//        int stopID         = [results intForColumn   :@"stop_id"];
+        NSString *stopName = [results stringForColumn:@"stop_name"];
+        
+        int reverseID      = [results intForColumn   :@"reverse_stop_id"];
+        
+        [sObject setStop_name: stopName];
+        [sObject setStop_id: [NSNumber numberWithInt:reverseID] ];
+        
+    }  // while ( [results next] )
+    
+    [database close];
+    
+    return sObject;
+}
+    
 // --==
 // --==  Find the Reverse Stop for the Start (yesNo == YES) or End (yesNo == NO)
 // --==
 -(void) reverseStopLookUpForStart:(BOOL) yesNO;
 {
     
-    if ( !([self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"Trolley"]) )
+#if FUNCTION_NAMES_ON
+    NSLog(@"iVC: reverseStopLookUpForStart");
+#endif
+    
+    if ( !([self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"Trolley"] ) )
         return;
     
     
@@ -2696,6 +2994,8 @@
 - (IBAction)segmentMapFavoritePressed:(id)sender
 {
     
+    
+    
     return;
     
 //    switch ([self.segmentMapFavorite selectedSegmentIndex])
@@ -2716,7 +3016,12 @@
 
 -(void) favoriteButtonSelected
 {
-    NSLog(@"Favorites Button Pressed");
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"iVC: favoriteButtonSelected");
+#endif
+    
+    
     DisplayedRouteData *routeData = [self convertItineraryObjectToDisplayedRouteData];
     
     if ( [routeData isObject:routeData.current inSection:kDisplayedRouteDataFavorites] )
@@ -2753,7 +3058,11 @@
 -(NSInteger) getServiceIDFor:(ItineraryFilterType) type
 {
 
-    NSLog(@"filePath: %@", [self filePath]);
+#if FUNCTION_NAMES_ON
+    NSLog(@"iVC: getServiceIDFor:%d", type);
+#endif
+    
+//    NSLog(@"filePath: %@", [self filePath]);
     FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
     
     if ( ![database open] )
@@ -2796,9 +3105,9 @@
     NSString *queryStr = [NSString stringWithFormat:@"SELECT service_id, days FROM calendarDB WHERE (days & %d)", dayOfWeek];
     
     if ( [self.travelMode isEqualToString:@"Rail"] )
-    queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_rail"];
+        queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_rail"];
     else
-    queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
+        queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
     
     FMResultSet *results = [database executeQuery: queryStr];
     if ( [database hadError] )  // Check for errors
@@ -2822,10 +3131,18 @@
 
     return (NSInteger)service_id;
     
+    [database close];
+    
 }
+    
     
 -(NSInteger) isHoliday
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"iVC: isHoliday");
+#endif
+    
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"YYYYMMdd"];  // Format is YYYYMMDD, e.g. 20131029
@@ -2881,9 +3198,17 @@
 -(void) updateServiceID
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"iVC: updateServiceID");
+#endif
+    
     _currentServiceID = [self getServiceIDFor:_currentFilter];
     
     return;
+    
+    
+    
+    // --  This is no longer in production  --
 
     switch ( _currentFilter )
     {
@@ -3040,7 +3365,10 @@
 - (IBAction)btnFavoritesPressed:(id)sender
 {
     
-    NSLog(@"Favorites Button Pressed");
+#if FUNCTION_NAMES_ON
+    NSLog(@"iVC: btnFavoritesPressed");
+#endif
+    
     DisplayedRouteData *routeData = [self convertItineraryObjectToDisplayedRouteData];
     
     if ( [routeData isObject:routeData.current inSection:kDisplayedRouteDataFavorites] )
@@ -3059,6 +3387,10 @@
 
 -(void) setFavoriteHighlight: (BOOL) yesNO
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"iVC: setFavoriteHighlight");
+#endif
     
     //    if ( [self.segmentMapFavorite set ])
     
@@ -3079,7 +3411,10 @@
 -(void) kickOffAnotherJSONRequest
 {
     
-    NSLog(@"ITVC - kickOffAnotherJSONRequest");
+#if FUNCTION_NAMES_ON
+    NSLog(@"iVC: kickOffAnotherJSONRequest");
+#endif
+    
     jsonRefreshTimer =[NSTimer scheduledTimerWithTimeInterval:JSON_REFRESH_RATE
                                                        target:self
                                                      selector:@selector(loadJSONDataIntheBackground)
@@ -3091,7 +3426,11 @@
 -(void) loadJSONDataIntheBackground
 {
     
-    NSLog(@"ITVC - loadJSONDataInTheBackground");
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"iVC - loadJSONDataInTheBackground");
+#endif
+    
 
     Reachability *network = [Reachability reachabilityForInternetConnection];
     if ( ![network isReachable] )
@@ -3152,7 +3491,12 @@
 -(void) loadLatestJSONData
 {
     
-    NSLog(@"ITVC - loadLatestJSONData");
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"iVC - loadLatestJSONData");
+#endif
+
+
     
     if ( _stillWaitingOnWebRequest )  // The attempt here is to avoid asking the web server for data if it hasn't returned anything from the previous request
         return;
@@ -3196,6 +3540,10 @@
 
 -(void) processJSONData:(NSData*) returnedData
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"iVC - processJSONData");
+#endif
     
     _stillWaitingOnWebRequest = NO;  // We're no longer waiting on the web request
     
@@ -3310,6 +3658,10 @@
 -(void) loadToFromDirections
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"iVC - loadToFromDirections");
+#endif
+    
     return;
     
     // Only proceed if travelMode has been set to Bus or Trolley
@@ -3364,7 +3716,11 @@
 -(void) addAnnotationsUsingJSONRailData:(NSData*) returnedData
 {
     
+#if FUNCTION_NAMES_ON
     NSLog(@"ITVC - addAnnotationsUsingJSONRailData");
+#endif
+    
+    
     _stillWaitingOnWebRequest = NO;  // We're no longer waiting on the web request
     
     
@@ -3428,17 +3784,11 @@
 #pragma mark -= Tabbed Button
 -(void) tabbedButtonPressed:(NSInteger) tab
 {
-//    NSLog(@"Tabbed Button was pressed: %d", tab);
     
-    //    if ( _currentSegmentIndex != [self.segmentService selectedSegmentIndex] )
-    //    {
-    //        _currentSegmentIndex = [self.segmentService selectedSegmentIndex];
-    //
-    //        [self updateServiceID];
-    //        [self filterCurrentTrains];
-    //        [self filterActiveTrains];
-    //    }
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"ITVC - tabbedButtonPressed:%d", tab);
+#endif
     
     _currentFilter = tab;
     
@@ -3453,6 +3803,10 @@
 #pragma mark - Buttons Pressed
 -(void) backButtonPressed:(id) sender
 {
+#if FUNCTION_NAMES_ON
+    NSLog(@"ITVC - backButtonPressed");
+#endif
+
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -3460,6 +3814,11 @@
 #pragma mark - NextToArriveItinerary Protocol
 -(void) itineraryButtonPressed:(NSInteger) buttonType
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"ITVC - itineraryButtonPressed:%d", buttonType);
+#endif
+
     
     StopNamesTableViewControllerSelectionType selType;
     switch (buttonType)
@@ -3539,6 +3898,10 @@
 -(void) updateItinerary
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"ITVC - updateItinerary");
+#endif
+
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     
     NextToArriveItineraryCell *myCell = (NextToArriveItineraryCell*)[self.tableTrips cellForRowAtIndexPath:indexPath];
@@ -3552,6 +3915,11 @@
 #pragma mark - REMenu Selection
 -(void) updateFavoritesStatus
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"ITVC - updateFavoriteStatus");
+#endif
+
     
     // Compare the list of Favorites to that of _itinerary
     
@@ -3612,6 +3980,10 @@
 -(void) selectedFavorites
 {
 
+#if FUNCTION_NAMES_ON
+    NSLog(@"ITVC - selectedFavorites");
+#endif
+
     
     // This code is a mess!
     // Here we convert from one data model to another, for fun!
@@ -3650,6 +4022,11 @@
 -(void) loadAdvisories
 {
   
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"ITVC - loadAdvisories");
+#endif
+
 
     if  ( _currentAlert != nil )
     {
@@ -3669,6 +4046,11 @@
 
 -(void) getAdvisories
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"ITVC - getAdvisories");
+#endif
+
     
     [_alertsAPI clearAllRoutes];
     
@@ -3719,6 +4101,11 @@
 
 -(void) loadFareVC
 {
+ 
+#if FUNCTION_NAMES_ON
+    NSLog(@"ITVC - loadFareVC");
+#endif
+
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"FareStoryboard" bundle:nil];
     FareViewController *fVC = (FareViewController*)[storyboard instantiateInitialViewController];
@@ -3730,6 +4117,11 @@
 #pragma mark - GetAlertsAPIProtocol
 -(void) alertFetched:(NSMutableArray *)alert
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"ITVC - alertFetched");
+#endif
+
     
     // Done -- TODO: Set badge (or remove if alerts went away)
     
@@ -3806,6 +4198,11 @@
 
 -(void) dropDownMenuPressed:(id) sender
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"ITVC - dropDownMenuPressed");
+#endif
+
     
     // TODO: Clear badges
 

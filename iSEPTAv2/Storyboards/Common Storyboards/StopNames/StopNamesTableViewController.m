@@ -67,12 +67,14 @@
     // These two are special cases.  Declare once and be done with it.  Sorting uses them.
     _currentLocation = [[TripData alloc] init];
     [_currentLocation setStart_stop_name: @"Current Location"];
+    [_currentLocation setVanity_start_stop_name:@"Current Location"];
     [_currentLocation setStart_stop_id: [NSNumber numberWithInt: kStopNamesSpecialCurrentLocation] ];
     [_currentLocation setDirection_id:  [NSNumber numberWithInt:0] ];
     [_currentLocation setStart_stop_sequence: [NSNumber numberWithInt:-2] ];
     
     _enterAddress = [[TripData alloc] init];
     [_enterAddress setStart_stop_name: @"Enter Address"];
+    [_enterAddress setVanity_start_stop_name:@"Enter Address"];
     [_enterAddress setStart_stop_id: [NSNumber numberWithInt: kStopNamesSpecialEnterAddress] ];
     [_enterAddress setDirection_id:  [NSNumber numberWithInt:0] ];
     [_enterAddress setStart_stop_sequence: [NSNumber numberWithInt:-1] ];
@@ -957,7 +959,7 @@
     [myArray insertObject:_currentLocation atIndex:0];
     
     
-    [_tableData generateIndexWithKey:@"start_stop_name"];
+    [_tableData generateIndexWithKey:@"vanity_start_stop_name"];
     
 }
 
@@ -1078,7 +1080,7 @@
         
     }
     
-    [_tableData generateIndexWithKey:@"start_stop_name" forSectionTitles:[NSArray arrayWithArray: headers] ];
+    [_tableData generateIndexWithKey:@"vanity_start_stop_name" forSectionTitles:[NSArray arrayWithArray: headers] ];
 
     
     
@@ -1143,41 +1145,12 @@
         
         [self.tableView deselectRowAtIndexPath: [self.tableView indexPathForSelectedRow] animated:YES];
         
-        [self.navigationItem.rightBarButtonItem setEnabled:NO];
+        [self.navigationItem.rightBarButtonItem setEnabled:_sortByStops];
         
         [self.tableView scrollsToTop];
         
         LineHeaderView *header = (LineHeaderView*)[self.navigationItem titleView];
         [header setTitle:@"Select Destination"];
-
-
-//        CGRect tFrame = self.navigationItem.titleView.frame;
-//        NSLog(@"%@", NSStringFromCGRect(tFrame));
-//
-//        UILabel *label = [[UILabel alloc] initWithFrame: tFrame];
-//        label.textColor = [UIColor colorWithRed:13.0/255.0 green:164.0/255.0 blue:74.0/255.0 alpha:1.0f]; // change this color
-//        self.navigationItem.titleView = label;
-//        [label setFont: [UIFont fontWithName:@"TrebuchetMS-Bold" size: 30.0f] ];
-//        [label setText: @"Select Destination"];
-        
-
-
-//        [label sizeToFit];  // This doesn't resize
-//        [self.navigationItem.titleView sizeToFit];  // Nor does this resize
-
-//        CGSize size = [label.text sizeWithFont:label.font
-//                             constrainedToSize:CGSizeMake(tFrame.size.width, tFrame.size.height)
-//                                 lineBreakMode:UILineBreakModeWordWrap];
-//        CGRect labelFrame = label.frame;
-//        labelFrame.size.height = size.height;
-//        label.frame = labelFrame;
-//        [label setFrame: CGRectMake(label.frame.origin.x, label.frame.origin.y, size.width, size.height)];
-//
-//        [label setAdjustsFontSizeToFitWidth:YES];
-//        [self.navigationItem setTitleView: label];
-        
-//        NSLog(@"%@", NSStringFromCGRect(label.frame));
-
         
         _startState = NO;
         

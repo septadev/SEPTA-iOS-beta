@@ -478,14 +478,20 @@
     switch ( retrievedSection )
     {
         case kDisplayedRouteDataFavorites:
-            
+        
+            if ( [self.favorites count] < path.row )
+                return nil;
+        
             dict = [ [self.favorites objectAtIndex:path.row ] dictionaryWithValuesForKeys:[RouteData returnAllKeyValues] ];
             [route setValuesForKeysWithDictionary:dict];
             return route;
             break;
             
         case kDisplayedRouteDataRecentlyViewed:
-            
+        
+            if ( [self.recentlyViewed count] < path.row )
+                return nil;
+        
             dict = [ [self.recentlyViewed objectAtIndex:path.row ] dictionaryWithValuesForKeys:[RouteData returnAllKeyValues] ];
             [route setValuesForKeysWithDictionary:dict];
             return route;

@@ -81,19 +81,19 @@
     
     if ( [self.routeName isEqualToString:@"BSL"] )
     {
-        [self loadBannerWithTitle:@"BSL" andSubtitle:@"Realtime telemetry along the Broad Street Line is not available."];
+        [self loadBannerWithTitle:@"BSL" andSubtitle:@"Vehicle locations along the Broad Street Line is not available."];
     }
     else if ( [self.routeName isEqualToString:@"MFL"] )
     {
-        [self loadBannerWithTitle:@"MFL" andSubtitle:@"Realtime telemetry along the Market-Frankford Line is not available."];
+        [self loadBannerWithTitle:@"MFL" andSubtitle:@"Vehicle locations along the Market-Frankford Line is not available."];
     }
     else if ( [self.routeName isEqualToString:@"NHSL"] )
     {
-        [self loadBannerWithTitle:@"NHSL" andSubtitle:@"Realtime telemetry along the Norristown High Speed Line is not available."];
+        [self loadBannerWithTitle:@"NHSL" andSubtitle:@"Vehicle locations along the Norristown High Speed Line is not available."];
     }
     else if ( (GTFSRouteType)[self.travelMode intValue] == kGTFSRouteTypeTrolley )
     {
-        [self loadBannerWithTitle:@"Trolley" andSubtitle:@"Realtime telemetry for Trolleys is limited when vehicle is underground."];
+        [self loadBannerWithTitle:@"Trolley" andSubtitle:@"Vehicle locations for trolleys are limited while underground."];
     }
     
     
@@ -792,6 +792,8 @@
     if ( routeType == kGTFSRouteTypeRail )
         path = [[NSBundle mainBundle] pathForResource:@"regionalrail" ofType:@"kml"];
     else if ( routeType == kGTFSRouteTypeTrolley || routeType == kGTFSRouteTypeBus )
+        path = [[NSBundle mainBundle] pathForResource:self.routeName ofType:@"kml"];  // Hardcoded for now
+    else if ( routeType == kGTFSRouteTypeSubway )
         path = [[NSBundle mainBundle] pathForResource:self.routeName ofType:@"kml"];  // Hardcoded for now
     else
         path = nil;

@@ -280,7 +280,56 @@
 //     */
 //}
 
-
+    
+-(NSInteger) getServiceID
+{
+    
+    NSLog(@"filePath: %@", [self filePath]);
+    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    
+    if ( ![database open] )
+    {
+        [database close];
+        return 0;
+    }
+    
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
+    int weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
+    
+    int dayOfWeek;
+    dayOfWeek = pow(2,(7-weekday) );
+    
+    NSString *queryStr = [NSString stringWithFormat:@"SELECT service_id, days FROM calendarDB WHERE (days & %d)", dayOfWeek];
+    
+    queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
+    
+    FMResultSet *results = [database executeQuery: queryStr];
+    if ( [database hadError] )  // Check for errors
+    {
+        
+        int errorCode = [database lastErrorCode];
+        NSString *errorMsg = [database lastErrorMessage];
+        
+        NSLog(@"ITVC - query failure, code: %d, %@", errorCode, errorMsg);
+        NSLog(@"ITVC - query str: %@", queryStr);
+        
+        return 0;  // If an error occurred, there's nothing else to do but exit
+        
+    } // if ( [database hadError] )
+    
+    
+    NSInteger service_id = 0;
+    [results next];
+    
+    service_id = [results intForColumn:@"service_id"];
+    
+    return (NSInteger)service_id;
+    
+}
+    
+    
+    
 -(NSString*) filePath
 {
     return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
@@ -383,25 +432,12 @@
     NSLog(@"Done!");
     
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"e"];
-    int day = [[dateFormatter stringFromDate: [NSDate date] ] intValue];
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setDateFormat:@"e"];
+//    int day = [[dateFormatter stringFromDate: [NSDate date] ] intValue];
     
     // What if, some time in the future, a bus only has service on Friday?
-    switch (day)
-    {
-        case 1:
-            _currentServiceID = 64;
-            break;
-            
-        case 7:
-            _currentServiceID = 1;
-            break;
-            
-        default:
-            _currentServiceID = 62;
-            break;
-    }
+    _currentServiceID = [self getServiceID];
 
     // _currenteServiceID is used in tableView cellRowPath
     

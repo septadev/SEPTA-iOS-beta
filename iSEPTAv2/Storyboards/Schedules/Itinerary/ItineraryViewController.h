@@ -84,7 +84,7 @@
 
 #define ALERTS_STARTUP    @"Fetching latest alerts..."
 #define ALERTS_EMPTY      @"No alerts available for this route"
-#define ALERTS_FOUND      @"Click to view alerts"
+#define ALERTS_FOUND      @"Click to view details"
 
 
 
