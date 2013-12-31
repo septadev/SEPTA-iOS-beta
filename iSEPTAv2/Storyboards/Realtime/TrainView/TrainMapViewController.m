@@ -81,15 +81,15 @@
     
     if ( [self.routeName isEqualToString:@"BSL"] )
     {
-        [self loadBannerWithTitle:@"BSL" andSubtitle:@"Vehicle locations along the Broad Street Line is not available."];
+        [self loadBannerWithTitle:@"BSL" andSubtitle:@"Vehicle locations along the Broad Street Line are not available."];
     }
     else if ( [self.routeName isEqualToString:@"MFL"] )
     {
-        [self loadBannerWithTitle:@"MFL" andSubtitle:@"Vehicle locations along the Market-Frankford Line is not available."];
+        [self loadBannerWithTitle:@"MFL" andSubtitle:@"Vehicle locations along the Market-Frankford Line are not available."];
     }
     else if ( [self.routeName isEqualToString:@"NHSL"] )
     {
-        [self loadBannerWithTitle:@"NHSL" andSubtitle:@"Vehicle locations along the Norristown High Speed Line is not available."];
+        [self loadBannerWithTitle:@"NHSL" andSubtitle:@"Vehicle locations along the Norristown High Speed Line are not available."];
     }
     else if ( (GTFSRouteType)[self.travelMode intValue] == kGTFSRouteTypeTrolley )
     {

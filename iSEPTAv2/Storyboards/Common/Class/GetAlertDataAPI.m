@@ -117,7 +117,8 @@
     
     if ( ![_routeNamesArr containsObject: alertName] )
     {
-        [_routeNamesArr addObject: alertName];
+        if ( alertName != nil )
+            [_routeNamesArr addObject: alertName];
     }
     
 }

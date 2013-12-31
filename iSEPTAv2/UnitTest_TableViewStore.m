@@ -212,8 +212,8 @@
     
     
     // Change the name of the Generic section
-    BOOL success = [dataStore modifySectionTitle:@"Old Section" forSectionIndex:0];
-    NSAssert(success, @"dataStore: Was able to modify section title");
+//    BOOL success = [dataStore modifySectionTitle:@"Old Section" forSectionIndex:0];
+//    NSAssert(success, @"dataStore: Was able to modify section title");
     
     testArr = [dataStore returnAllSections];
     NSAssert(![testArr containsObject:@"Generic Section 0"], @"dataStore: Section Name Mismatch");

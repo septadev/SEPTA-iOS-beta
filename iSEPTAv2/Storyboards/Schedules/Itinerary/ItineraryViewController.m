@@ -102,7 +102,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"ITVC - viewDidLoad");
+    NSLog(@"IVC - viewDidLoad");
 #endif
     
     [super viewDidLoad];
@@ -306,7 +306,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"ITVC - willAnimateRotationToInterfaceOrientation");
+    NSLog(@"IVC - willAnimateRotationToInterfaceOrientation");
 #endif
 
     
@@ -326,7 +326,7 @@
 {
 
 #if FUNCTION_NAMES_ON
-    NSLog(@"ITVC - viewWillAppear");
+    NSLog(@"IVC - viewWillAppear");
 #endif
 
 
@@ -349,9 +349,9 @@
     
     
     if ( _viewIsClosing == YES )
-        NSLog(@"ITVC - It's nil man!  NIL!!");
+        NSLog(@"IVC - It's nil man!  NIL!!");
     else
-        NSLog(@"ITVC - It's active, baby!");
+        NSLog(@"IVC - It's active, baby!");
     
 //    [self loadJSONDataIntheBackground];
     
@@ -369,7 +369,7 @@
     
     _viewIsClosing = YES;
     
-    NSLog(@"ITVC - viewWilLDisappear");
+    NSLog(@"IVC - viewWilLDisappear");
     if ( cellRefreshTimer != nil )  // Might not be necessary but for now, better safe than CRASH!
     {
         
@@ -377,7 +377,7 @@
         {
             [cellRefreshTimer invalidate];
             cellRefreshTimer = nil;
-            NSLog(@"ITVC - Killing updateTimer");
+            NSLog(@"IVC - Killing updateTimer");
         }
         
     }
@@ -651,7 +651,8 @@
     NSLog(@"IVC loadHeaderNamesWith:");
 #endif
     
-    if ( !([self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"Trolley"] ) )
+//    if ( !([self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"Trolley"] ) )
+    if ( [self.travelMode isEqualToString:@"Rail"] )
         return;
     
     FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
@@ -662,7 +663,7 @@
         return;
     }
     
-    NSString *queryStr = [NSString stringWithFormat:@"SELECT * FROM bus_stop_directions WHERE Route=%@ ORDER BY dircode", itinerary.routeShortName];
+    NSString *queryStr = [NSString stringWithFormat:@"SELECT * FROM bus_stop_directions WHERE Route='%@' ORDER BY dircode", itinerary.routeShortName];
     FMResultSet *results = [database executeQuery: queryStr];
     if ( [database hadError] )  // Check for errors
     {
@@ -843,7 +844,7 @@
     NSLog(@"IVC refreshCellsTime");
 #endif
     
-    //    NSLog(@"ITVC - refreshCellsTime");
+    //    NSLog(@"IVC - refreshCellsTime");
     
     BOOL _removeTopMostCell = NO;
     // Only update the visibleCells from section 2!
@@ -919,7 +920,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"ITVC - loadTripsInTheBackground");
+    NSLog(@"IVC - loadTripsInTheBackground");
 #endif
     
     
@@ -960,7 +961,7 @@
         }
         else
         {
-            NSLog(@"ITVC - running SQL Query: _sqlOp cancelled");
+            NSLog(@"IVC - running SQL Query: _sqlOp cancelled");
         }
         
     }];
@@ -989,7 +990,7 @@
     if ( ![self.travelMode isEqualToString:@"Rail"] )
         return;
     
-    NSLog(@"ITVC - createMasterJSONLookUpTable");  // This table only needs to be run when masterTripsArr gets populated or repopulated
+    NSLog(@"IVC - createMasterJSONLookUpTable");  // This table only needs to be run when masterTripsArr gets populated or repopulated
     
     // Load all TripObjects
     for (TripObject *trip in masterTripsArr )
@@ -1023,7 +1024,7 @@
         }  // else if ( [_masterTrainLookUpDict objectForKey:tripKey] == nil )
         
     } // for (TripObject *trip in masterTripsArr)
-    NSLog(@"ITVC - createMasterJSONLookUpTable (end)");
+    NSLog(@"IVC - createMasterJSONLookUpTable (end)");
     
 }
 
@@ -1075,7 +1076,7 @@
     if ( [itinerary.startStopID intValue] != 0 )
     {
         
-        NSLog(@"ITVC - Starting at %@", startTime);
+        NSLog(@"IVC - Starting at %@", startTime);
         
         queryStr = [NSString stringWithFormat:@"SELECT route_id, block_id, stop_sequence, arrival_time, direction_id, service_id, stop_timesDB.trip_id trip_id FROM stop_timesDB JOIN tripsDB ON tripsDB.trip_id=stop_timesDB.trip_id WHERE tripsDB.trip_id IN (SELECT trip_id FROM tripsDB WHERE route_id=\"%@\" ) AND route_id=\"%@\" AND stop_id=%d ORDER BY arrival_time", itinerary.routeShortName, itinerary.routeShortName, [itinerary.startStopID intValue] ];
         
@@ -1086,7 +1087,7 @@
         else
             queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
         
-        NSLog(@"ITVC - queryStr: %@", queryStr);
+        NSLog(@"IVC - queryStr: %@", queryStr);
         results = [database executeQuery: queryStr];
         if ( [database hadError] )  // Check for errors
         {
@@ -1094,8 +1095,8 @@
             int errorCode = [database lastErrorCode];
             NSString *errorMsg = [database lastErrorMessage];
             
-            NSLog(@"ITVC - query failure, code: %d, %@", errorCode, errorMsg);
-            NSLog(@"ITVC - query str: %@", queryStr);
+            NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
+            NSLog(@"IVC - query str: %@", queryStr);
             
             return;  // If an error occurred, there's nothing else to do but exit
             
@@ -1133,8 +1134,8 @@
         }  // while ( [results next] )
         
         NSTimeInterval diff = [ [NSDate date] timeIntervalSinceDate: startTime];
-        NSLog(@"ITVC - %6.3f seconds have passed.", diff);
-        NSLog(@"ITVC - Loaded and stored");
+        NSLog(@"IVC - %6.3f seconds have passed.", diff);
+        NSLog(@"IVC - Loaded and stored");
         
     }
     
@@ -1169,7 +1170,7 @@
         
         
         
-        NSLog(@"ITVC - queryStr: %@", queryStr);
+        NSLog(@"IVC - queryStr: %@", queryStr);
         results = [database executeQuery: queryStr];
         if ( [database hadError] )  // Check for errors
         {
@@ -1177,8 +1178,8 @@
             int errorCode = [database lastErrorCode];
             NSString *errorMsg = [database lastErrorMessage];
             
-            NSLog(@"ITVC - query failure, code: %d, %@", errorCode, errorMsg);
-            NSLog(@"ITVC - query str: %@", queryStr);
+            NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
+            NSLog(@"IVC - query str: %@", queryStr);
             
             return;  // If an error occurred, there's nothing else to do but exit
             
@@ -1254,7 +1255,7 @@
                     {
                         if ( !flippedOnce )
                         {
-                            NSLog(@"ITVC - flipped trips!");
+                            NSLog(@"IVC - flipped trips!");
                             flippedOnce = 1;
                             [itinerary flipStops];
                             //                        [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -1287,7 +1288,7 @@
         }  // while ( [results next] )
         
         NSTimeInterval diff = [ [NSDate date] timeIntervalSinceDate: startTime];
-        NSLog(@"ITVC - %6.3f seconds have passed.", diff);
+        NSLog(@"IVC - %6.3f seconds have passed.", diff);
         
     }
     
@@ -1310,10 +1311,24 @@
     NSLog(@"iVC:cTB - changeTitleBar");
 #endif
     
+
     if ( [_nameForSection count] == 0 )
+    {
+        [self loadHeaderNamesWith:itinerary];
+        
+        if ( [_nameForSection count] == 0 && ![itinerary.endStopName isEqualToString:DEFAULT_END_MESSAGE] )
+        {
+            [self.lblTabbedLabel setText: [NSString stringWithFormat:@"To %@", itinerary.endStopName] ];
+        }
+        
         return;
+        
+    }
     
-    [self.lblTabbedLabel setText: [NSString stringWithFormat:@"%@", [_nameForSection objectAtIndex: [itinerary.directionID intValue] ] ] ];
+    if ( [_nameForSection count] > [itinerary.directionID intValue] )
+        [self.lblTabbedLabel setText: [NSString stringWithFormat:@"%@", [_nameForSection objectAtIndex: [itinerary.directionID intValue] ] ] ];
+    // else/otherwise no change
+    
 }
 
 
@@ -1349,7 +1364,7 @@
     
     NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"(serviceID == %d) AND (directionID == %d)", _currentServiceID, _currentDisplayDirection] ];
     
-    NSLog(@"ITVC - filter active trains: %@", predicateFilter);
+    NSLog(@"IVC - filter active trains: %@", predicateFilter);
     activeTrainsArr = nil;
     activeTrainsArr = [[_masterJSONTrainArr filteredArrayUsingPredicate:predicateFilter] mutableCopy];
     
@@ -1469,7 +1484,7 @@
     if ( [[segue identifier] isEqualToString:@"StopTimesSegue"] || [[segue identifier] isEqualToString:@"StopTimesSegue"] )
     {
         
-        NSLog(@"ITVC - Seguing to %@", [segue identifier] );
+        NSLog(@"IVC - Seguing to %@", [segue identifier] );
         
         //        UINavigationController *navController = [segue destinationViewController];
         //        StopNamesForRouteTableController *snarfvc = (StopNamesForRouteTableController*)[navController topViewController];
@@ -1490,7 +1505,7 @@
         _findLocationsSegue = YES;
         
         NSString *queryStr = [self returnQueryStringForTravelMode];
-        NSLog(@"ITVC - queryStr: %@", queryStr);
+        NSLog(@"IVC - queryStr: %@", queryStr);
         
         //        [SVProgressHUD showWithStatus:@"Disabled due to 3 minute long query ;_;"];
         
@@ -1736,7 +1751,7 @@
     NSLog(@"IVC tV:accessoryButtonTappedForRowWithIndexPath");
 #endif
     
-    NSLog(@"ITVC - accessoryButtonTappedForSection/Row: %d/%d", indexPath.section, indexPath.row);
+    NSLog(@"IVC - accessoryButtonTappedForSection/Row: %d/%d", indexPath.section, indexPath.row);
 }
 
 
@@ -1750,14 +1765,14 @@
     
     if ( ( indexPath.section == 1 ) || ( indexPath.section == 2 ) )
     {
-        NSLog(@"ITVC - section 1, row %d selected", indexPath.row);
+        NSLog(@"IVC - section 1, row %d selected", indexPath.row);
         [self performSegueWithIdentifier:@"TripDetailsSegue" sender:self];
     }
     
     //    if ( indexPath.section == 2 )
     //    {
     //        TripObject *trip = [currentTripsArr objectAtIndex:indexPath.row];
-    ////        NSLog(@"ITVC - selected %d.%d : %@", indexPath.section, indexPath.row, trip);
+    ////        NSLog(@"IVC - selected %d.%d : %@", indexPath.section, indexPath.row, trip);
     //    }
     
 }
@@ -1816,7 +1831,7 @@
         [[cell lblTrainNo]    setText: [NSString stringWithFormat:@"%d", [atObject.trainNo intValue] ] ];
         
         int delay = [atObject.trainDelay intValue];
-        //        NSLog(@"ITVC - ActiveTrain delay: %d", delay);
+        //        NSLog(@"IVC - ActiveTrain delay: %d", delay);
         if ( delay == 0 )
         {
             [[cell lblTrainDelay] setTextColor:[UIColor colorWithRed:29.0f/255.0f green:138.0f/255.0f blue:36.0f/255.0f alpha:1.0f] ];
@@ -2004,7 +2019,7 @@
 #endif
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
-    NSLog(@"ITVC - removing cell at %d/%d", indexPath.section, indexPath.row);
+    NSLog(@"IVC - removing cell at %d/%d", indexPath.section, indexPath.row);
     [currentTripsArr removeObjectAtIndex: [indexPath row] ];
     [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex: [indexPath section] ] withRowAnimation:UITableViewRowAnimationAutomatic];
     //    [cellRemoverTimer invalidate];
@@ -2395,7 +2410,7 @@
     NSLog(@"IVC switchDirectionButtonTapped (doesn't do anything)");
 #endif
     
-//    NSLog(@"ITVC - switch to/from direction");
+//    NSLog(@"IVC - switch to/from direction");
     //    if ( [itinerary.directionID  intValue] == 0 )
     //        [itinerary setDirectionID:[NSNumber numberWithInt:1] ];
     //    else
@@ -2465,7 +2480,6 @@
         _headerDirection = @"To";
     }
     
-    
     // Switch we're flipping, switch directions as well
     if ( _currentDisplayDirection == 0 )
     {
@@ -2478,6 +2492,7 @@
     
     [itinerary setDirectionID:[NSNumber numberWithInt: _currentDisplayDirection] ];
     
+    [self changeTitleBar];
     
     if ( [self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"Trolley"] )
     {
@@ -2497,7 +2512,7 @@
     }
     
     
-    NSLog(@"ITVC - Flipped (Itinerary): %@", itinerary);
+    NSLog(@"IVC - Flipped (Itinerary): %@", itinerary);
     
     
     DisplayedRouteData *routeData = [self convertItineraryObjectToDisplayedRouteData];
@@ -2559,13 +2574,13 @@
     
 //    if ( startEND )
 //    {
-//        NSLog(@"ITVC - load start stop names");
+//        NSLog(@"IVC - load start stop names");
 //        _startENDButtonPressed = 1;
 //        [self performSegueWithIdentifier:@"StopTimesSegue" sender:self];
 //    }
 //    else
 //    {
-//        NSLog(@"ITVC - load end stop names");
+//        NSLog(@"IVC - load end stop names");
 //        _startENDButtonPressed = 0;
 //        [self performSegueWithIdentifier:@"StopTimesSegue" sender:self];
 //    }
@@ -3001,11 +3016,11 @@
 //    switch ([self.segmentMapFavorite selectedSegmentIndex])
 //    {
 //        case 0:
-//            NSLog(@"ITVC - Map Button Pressed");
+//            NSLog(@"IVC - Map Button Pressed");
 //            [self performSegueWithIdentifier:@"MapViewSegue" sender:self];
 //            break;
 //        case 1:
-//            NSLog(@"ITVC - Favorite Button Pressed");
+//            NSLog(@"IVC - Favorite Button Pressed");
 //            [self favoriteButtonSelected];
 //            break;
 //        default:
@@ -3116,8 +3131,8 @@
         int errorCode = [database lastErrorCode];
         NSString *errorMsg = [database lastErrorMessage];
         
-        NSLog(@"ITVC - query failure, code: %d, %@", errorCode, errorMsg);
-        NSLog(@"ITVC - query str: %@", queryStr);
+        NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
+        NSLog(@"IVC - query str: %@", queryStr);
         
         return 0;  // If an error occurred, there's nothing else to do but exit
         
@@ -3172,8 +3187,8 @@
         int errorCode = [database lastErrorCode];
         NSString *errorMsg = [database lastErrorMessage];
         
-        NSLog(@"ITVC - query failure, code: %d, %@", errorCode, errorMsg);
-        NSLog(@"ITVC - query str: %@", queryStr);
+        NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
+        NSLog(@"IVC - query str: %@", queryStr);
         
         return 0;  // If an error occurred, there's nothing else to do but exit
         
@@ -3443,7 +3458,7 @@
     
     if ( [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSL"] || [self.travelMode isEqualToString:@"NHSL"] || [self.travelMode isEqualToString:@"Bus"] )  // Bus is only temporary; I'll add that in later.
     {
-        NSLog(@"ITVC - loadJSONDataInTheBackground - Current Route Does Not Support RealTime Data");
+        NSLog(@"IVC - loadJSONDataInTheBackground - Current Route Does Not Support RealTime Data");
         return;
     }
     
@@ -3463,22 +3478,22 @@
                 //                [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];  // Forced update of To/From Header
                 
                 // Load Active Train
-                NSLog(@"ITVC - Crash #1");
+                NSLog(@"IVC - Crash #1");
                 [self filterActiveTrains];
                 
                 // TODO:  Build in a fail safe, if a minute passes without a refresh, Reload JSON data (in the background, if you would please).
                 if ( !_viewIsClosing )
                 {
-                    NSLog(@"ITVC - Crash #2");
+                    NSLog(@"IVC - Crash #2");
                     [self kickOffAnotherJSONRequest];
                 }  // if ( !_viewIsClosing )
                 
-                NSLog(@"ITVC - Crash #3");
+                NSLog(@"IVC - Crash #3");
             }];
         }
         else
         {
-            NSLog(@"ITVC - running SQL Query: _sqlOp cancelled");
+            NSLog(@"IVC - running SQL Query: _sqlOp cancelled");
         }
         
     }];
@@ -3528,7 +3543,7 @@
     {
         NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TrainView/"];
         NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSLog(@"ITVC - loadLatestRailJSONData -- api url: %@", webStringURL);
+        NSLog(@"IVC - loadLatestRailJSONData -- api url: %@", webStringURL);
         
         NSData *realtimeData = [NSData dataWithContentsOfURL:[NSURL URLWithString:webStringURL] ];
         [self processJSONData:realtimeData];
@@ -3552,7 +3567,7 @@
     
     if ( returnedData == nil )  // If returnedData is nil, don't even continue.
     {
-        NSLog(@"ITVC - processJSONData, returnedData is nil.  Returning");
+        NSLog(@"IVC - processJSONData, returnedData is nil.  Returning");
         return;
     }
     
@@ -3642,7 +3657,7 @@
                 [atObject setTripID: trip.tripID];
                 
                 [_masterJSONTrainArr addObject: atObject];
-                //                NSLog(@"ITVC - processJSONData, added trip: %@", atObject);
+                //                NSLog(@"IVC - processJSONData, added trip: %@", atObject);
             }
             
         }
@@ -3688,8 +3703,8 @@
         int errorCode = [database lastErrorCode];
         NSString *errorMsg = [database lastErrorMessage];
         
-        NSLog(@"ITVC - query failure, code: %d, %@", errorCode, errorMsg);
-        NSLog(@"ITVC - query str: %@", queryStr);
+        NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
+        NSLog(@"IVC - query str: %@", queryStr);
         
         return;  // If an error occurred, there's nothing else to do but exit
         
@@ -3717,7 +3732,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"ITVC - addAnnotationsUsingJSONRailData");
+    NSLog(@"IVC - addAnnotationsUsingJSONRailData");
 #endif
     
     
@@ -3787,7 +3802,7 @@
     
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"ITVC - tabbedButtonPressed:%d", tab);
+    NSLog(@"IVC - tabbedButtonPressed:%d", tab);
 #endif
     
     _currentFilter = tab;
@@ -3804,7 +3819,7 @@
 -(void) backButtonPressed:(id) sender
 {
 #if FUNCTION_NAMES_ON
-    NSLog(@"ITVC - backButtonPressed");
+    NSLog(@"IVC - backButtonPressed");
 #endif
 
     [self.navigationController popViewControllerAnimated:YES];
@@ -3816,7 +3831,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"ITVC - itineraryButtonPressed:%d", buttonType);
+    NSLog(@"IVC - itineraryButtonPressed:%d", buttonType);
 #endif
 
     
@@ -3899,7 +3914,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"ITVC - updateItinerary");
+    NSLog(@"IVC - updateItinerary");
 #endif
 
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -3917,7 +3932,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"ITVC - updateFavoriteStatus");
+    NSLog(@"IVC - updateFavoriteStatus");
 #endif
 
     
@@ -3981,7 +3996,7 @@
 {
 
 #if FUNCTION_NAMES_ON
-    NSLog(@"ITVC - selectedFavorites");
+    NSLog(@"IVC - selectedFavorites");
 #endif
 
     
@@ -4024,7 +4039,7 @@
   
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"ITVC - loadAdvisories");
+    NSLog(@"IVC - loadAdvisories");
 #endif
 
 
@@ -4048,7 +4063,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"ITVC - getAdvisories");
+    NSLog(@"IVC - getAdvisories");
 #endif
 
     
@@ -4103,7 +4118,7 @@
 {
  
 #if FUNCTION_NAMES_ON
-    NSLog(@"ITVC - loadFareVC");
+    NSLog(@"IVC - loadFareVC");
 #endif
 
     
@@ -4119,7 +4134,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"ITVC - alertFetched");
+    NSLog(@"IVC - alertFetched");
 #endif
 
     
@@ -4200,7 +4215,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"ITVC - dropDownMenuPressed");
+    NSLog(@"IVC - dropDownMenuPressed");
 #endif
 
     

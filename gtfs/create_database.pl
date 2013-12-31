@@ -1143,6 +1143,11 @@ sub populateClosestStopMatch
         $routeShortName = $routeHashRef->{$routeID}{route_short_name};
         print "pClosest: route - $routeID ($routeShortName)\n";
         
+        if ( $routeShortName eq "LUCYGO" )
+        {
+            print "STOP";
+        }
+        
         if ( $stopTimesHashRef->{$routeID}{0} && $stopTimesHashRef->{$routeID}{1} )
         {
             # Stops exist in both directions!  Otherwise it's a loop and this isn't needed.
