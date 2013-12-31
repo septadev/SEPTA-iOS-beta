@@ -287,7 +287,7 @@
     for (NSString *tableName in tableArray)
     {
         
-        unsigned char buff[CC_MD5_DIGEST_LENGTH];
+//        unsigned char buff[CC_MD5_DIGEST_LENGTH];
         CC_MD5_CTX md5;
         CC_MD5_Init(&md5);
         
@@ -305,7 +305,7 @@
         }
         
         finalStr = [string substringToIndex: [string length] -1 ];
-        NSData *rowData = [finalStr dataUsingEncoding:NSUTF8StringEncoding];
+//        NSData *rowData = [finalStr dataUsingEncoding:NSUTF8StringEncoding];
         NSLog(@"%@: %@", tableName, [[results resultDictionary] allKeys]);
         
     }

@@ -25,6 +25,11 @@
 
 - (void)viewDidLoad
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"SVC - viewDidLoad");
+#endif
+    
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -54,8 +59,43 @@
     
 }
 
+-(void) viewDidUnload
+{
+#if FUNCTION_NAMES_ON
+    NSLog(@"SVC - viewDidUnload");
+#endif
+
+    [super viewDidUnload];
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"SVC - viewDidAppear:%d", animated);
+#endif
+    
+    [super viewDidAppear:animated];
+}
+
+-(void) viewDidDisappear:(BOOL)animated
+{
+#if FUNCTION_NAMES_ON
+    NSLog(@"SVC - viewDidDisappear:%d", animated);
+#endif
+
+    
+    [super viewDidDisappear: animated];
+}
+
 - (void)didReceiveMemoryWarning
 {
+
+#if FUNCTION_NAMES_ON
+    NSLog(@"SVC - didReceiveMemoryWarning");
+#endif
+
+    
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -128,6 +168,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
+#if FUNCTION_NAMES_ON
+    NSLog(@"SVC - didSelectRowAtIndexPath: %@", indexPath);
+#endif
+
+    
 //    NSLog(@"s/r : %d/%d", indexPath.section, indexPath.row);
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"RouteSelectionStoryboard" bundle:nil];

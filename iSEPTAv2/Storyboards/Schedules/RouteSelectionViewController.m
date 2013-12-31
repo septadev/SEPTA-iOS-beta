@@ -65,6 +65,10 @@
 -(void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - willAnimateRotationToInterfaceOrientation");
+#endif
+    
     LineHeaderView *titleView = (LineHeaderView*)self.navigationItem.titleView;
 //    float navW = [(UIView*)[self.navigationItem.leftBarButtonItem  valueForKey:@"view"] frame].size.width;
     float w    = self.view.frame.size.width;
@@ -83,6 +87,12 @@
 
 - (void)viewDidLoad
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - viewDidLoad");
+#endif
+
+    
     //    NSLog(@"BSVC -(void) viewDidLoad");
     [super viewDidLoad];
     
@@ -218,6 +228,11 @@
 -(void) loadRouteData
 {
 
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - loadRouteData");
+#endif
+
+    
     if ( [[self travelMode] isEqualToString:@"Bus"] )
     {
         _routeData = [[DisplayedRouteData alloc] initWithDatabaseType:kDisplayedRouteDataUsingDBBus];
@@ -251,7 +266,14 @@
     
 }
 
-- (NSArray *)recursivePathsForResourcesOfType:(NSString *)type inDirectory:(NSString *)directoryPath{
+
+- (NSArray *)recursivePathsForResourcesOfType:(NSString *)type inDirectory:(NSString *)directoryPath
+{
+
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - recursivePathsForResourcesOfType:%@ inDirectory:%@", type, directoryPath);
+#endif
+    
     
     NSMutableArray *filePaths = [[NSMutableArray alloc] init];
     
@@ -273,7 +295,13 @@
     
 }
 
--(NSArray *)findFiles:(NSString *)extension{
+-(NSArray *)findFiles:(NSString *)extension
+{
+
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - findFiles:%@", extension);
+#endif
+
     
     NSMutableArray *matches = [[NSMutableArray alloc]init];
     NSFileManager *fManager = [NSFileManager defaultManager];
@@ -292,6 +320,12 @@
 
 -(NSArray *)listFileAtPath:(NSString *)path
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - listFileAtPath: %@", path);
+#endif
+
+    
     //-----> LIST ALL FILES <-----//
     //    NSLog(@"LISTING ALL FILES FOUND");
     
@@ -308,6 +342,11 @@
 
 -(void) didMoveToParentViewController:(UIViewController *)parent
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - didMoveToParentViewController");
+#endif
+
     
 //    NSLog(@"BSRVC -(void) didMoveToParentViewController");
     
@@ -329,6 +368,11 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - viewWillAppear: %d", animated);
+#endif
+
+    
     [super viewWillAppear:animated];
     
     LineHeaderView *titleView = (LineHeaderView*)self.navigationItem.titleView;
@@ -349,6 +393,11 @@
 -(void) viewDidAppear:(BOOL)animated
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - viewDidAppear: %d", animated);
+#endif
+
+    
     [super viewDidAppear:animated];
     
     [_routeData refreshSettings];  // Updates Settings:RecentlyDisplayLimit if it has changed
@@ -361,6 +410,11 @@
 
 -(void) viewWillDisappear:(BOOL)animated
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - viewWillDisappear");
+#endif
+
     
 //    NSLog(@"BSRVC -(void) viewWillDisappear Start");
     
@@ -375,11 +429,19 @@
 
 -(void) viewDidDisappear:(BOOL)animated
 {
-    NSLog(@"BSRVC -(void) viewDidDisappear");
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - viewDidDisappear: %d", animated);
+#endif
+
 }
 
 - (void)viewDidUnload
 {
+ 
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - viewDidUnload");
+#endif
+
     
 //    NSLog(@"BSRVC -(void) viewDidUnload");
     
@@ -400,12 +462,22 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - shouldAutorotateToInterfaceOrientation");
+#endif
+    
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 #pragma mark - Segue
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - prepareForSegue (does nothing)");
+#endif
+
     
     return;
     
@@ -553,39 +625,26 @@
     
 }
 
--(void) animatedBarToTheLeft:(BOOL) yes
-{
-    
-    //    float direction;
-    //    if ( yes )
-    //        direction = 320;
-    //    else
-    //        direction = -320;
-    
-    //    [UIView animateWithDuration:0.3f animations:^
-    //     {
-    //         [sorterBar setFrame:CGRectMake(direction, sorterBar.frame.origin.y, sorterBar.frame.size.width, sorterBar.frame.size.height)];
-    //     }
-    //                     completion:^(BOOL finished)
-    //     {
-    //
-    //     }];
-    
-}
-
-
-
-
 
 #pragma mark - UITableView Footer
 -(CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
+
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - tV:heightForFooterInSection: %d", section);
+#endif
+
     return 4.0f;
 }
 
 
 -(UIView*) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - tV:viewForFooterInSection: %d", section);
+#endif
+
     
     UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 5.0f)];
     [footer setBackgroundColor: [UIColor clearColor] ];
@@ -598,6 +657,12 @@
 #pragma mark - UITableView Header
 -(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - tV:heightForHeaderInSection: %d", section);
+#endif
+
+    
     if ( [_routeData numberOfSections] == 1 )  // If there are no Favorites or Recently Viewed, ensure no space for a header is added
         return 0.0f;
     else
@@ -609,6 +674,11 @@
 
 -(UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - tV:viewForHeaderInSection: %d", section);
+#endif
+
     
     if ( [_routeData numberOfSections] == 1 )  // If there are no Favorites or Recently Viewed, ensure no space for a header is added
     {
@@ -699,6 +769,12 @@
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - tV:heightForRowAtIndexPath: %@", indexPath);
+#endif
+
+    
     if ( [_routeData sectionForIndexPath: indexPath] == kDisplayedRouteDataRoutes )
         return 38.0f;
     else
@@ -708,13 +784,22 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    //    NSLog(@"BSRVC - Number of Sections: %d", [_routeData numberOfSections]);
+
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - numberOfSectionsInTableView");
+#endif
+    
     return [_routeData numberOfSections];
     //    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - tV:numberOfRowsInSections: %d", section);
+#endif
+    
     
     //    NSLog(@"BSRVC - Number of Rows For Sections: %d -> %d", section, [_routeData numberOfRowsInSection:section]);
     return [_routeData numberOfRowsInSection:section];
@@ -732,6 +817,11 @@
 -(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - tV:wilLDisplayCell:forRowAtIndexPath: %@", indexPath);
+#endif
+
+    
     DisplayedRouteDataSections section = [_routeData sectionForIndexPath: indexPath];
     
     switch (section)
@@ -787,6 +877,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - tV:cellForRowAtIndexPath: %@", indexPath);
+#endif
+
     static NSString *defaultCellID        = @"BusRoutesDefaultCell";
     static NSString *userPreferenceCellID = @"UserPreferenceCell";
     static NSString *routeSelectionCellID = @"RouteSelectionCell";
@@ -931,6 +1026,11 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - tV:commitEditingStyle:forRowAtIndexPath: %@", indexPath);
+#endif
+
+    
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
 
@@ -958,6 +1058,11 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - tV:canEditRowAtIndexPath: %@", indexPath);
+#endif
+
+    
     // Return NO if you do not want the specified item to be editable.
     //    NSInteger section = indexPath.section;
     
@@ -973,6 +1078,11 @@
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - sectionIndexTitlesForTableView");
+#endif
+
+    
     if ( [self.travelMode isEqualToString:@"Bus"] )
         return sectionTitle;
     else
@@ -984,6 +1094,11 @@
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
 {
     
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - tV:sectionForSectionIndexTitle:%@ atIndex:%d", title, index);
+#endif
+
     
     if ( [self.travelMode isEqualToString:@"Bus"] )
     {
@@ -1076,6 +1191,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - tV:didSelectRowAtIndexPath: %@", indexPath);
+#endif
+
+    
     
     NSLog(@"BSRVC - s/r: %d/%d", indexPath.section, indexPath.row);
     
@@ -1200,6 +1321,11 @@
 -(void) configureTableView
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - configureTableView");
+#endif
+
+    
     _segueInAction = NO;
     busFilterStr = nil;
     queryType = kQueryNotYet;
@@ -1255,6 +1381,12 @@
 
 -(void) getUnfilteredBusRoutes
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - getUnfilteredBusRoutes");
+#endif
+
+    
     // holds routes
     // Array of Dictionaries to hold routes and route ids
     //    unfilteredList = [[NSMutableArray alloc] init];
@@ -1513,6 +1645,12 @@
 -(void) sort
 {
     
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - sort");
+#endif
+
+    
     sectionIndex = [[NSMutableArray alloc] init];
     sectionTitle = [[NSMutableArray alloc] init];
     
@@ -1564,6 +1702,11 @@
 
 -(void) getFilteredBusRoutes
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - getFilteredBusRoutes");
+#endif
+
     
     filteredList = [[NSMutableArray alloc] init];
     
@@ -1673,6 +1816,11 @@
 // Database path Declaration
 -(NSString *) filePath
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - filePath");
+#endif
+
     //    NSString *databaseName;
     
     //    if ( [self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSS"] || [self.travelMode isEqualToString:@"NHSL"] )
@@ -1879,8 +2027,13 @@
 - (IBAction)segmentChanged:(id)sender
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - segmentChanged");
+#endif
+
+    
     NSInteger index = [(UISegmentedControl*)sender selectedSegmentIndex];
-    NSLog(@"BSRVC - filter has changed to: %d", index);
+    NSLog(@"RSVC - filter has changed to: %d", index);
     
     
     //    BOOL showOnlyRoutes = YES;
@@ -1983,7 +2136,13 @@
 #pragma mark - BusRouteSorter Protocol
 -(void) filterHasChanged:(int)index
 {
-    NSLog(@"BSRVC - filter has changed to: %d", index);
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - filterHasChanged: %d", index);
+#endif
+
+    
+//    NSLog(@"BSRVC - filter has changed to: %d", index);
     //    busRouteFilter = index;
     
     //    return;
@@ -2030,6 +2189,11 @@
 #pragma mark - Tap Gesture Recognizer
 -(void) scrollToTop:(UITapGestureRecognizer*) recognizer
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - scrollToTop:");
+#endif
+
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
@@ -2037,7 +2201,11 @@
 #pragma mark - Buttons Pressed
 -(void) backButtonPressed:(id) sender
 {
-    NSLog(@"RSVC -- %@", sender);
+
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - backButtonPressed");
+#endif
+
     [self.navigationController popViewControllerAnimated:YES];
 }
 

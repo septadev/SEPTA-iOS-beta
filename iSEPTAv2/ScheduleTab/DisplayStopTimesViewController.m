@@ -1445,7 +1445,8 @@
         
         NSNumber *stop_id       = [NSNumber numberWithInt: [results intForColumn:@"stop_id"] ];
         NSString *trip_id       = [results stringForColumn:@"trip_id"];
-        NSString *stop_sequence = [results stringForColumn:@"stop_sequence"];
+//        NSString *stop_sequence = [results stringForColumn:@"stop_sequence"];
+        NSNumber *stop_sequence = [NSNumber numberWithInt: [results intForColumn:@"stop_sequence"] ];
         NSNumber *direction_id  = [NSNumber numberWithInt: [results intForColumn:@"direction_id"] ];
 //        NSNumber *service_id    = [NSNumber numberWithInt: [results intForColumn:@"service_id"] ];
         
@@ -1503,7 +1504,7 @@
         [_stopSequence clearIndex];
         TripData *newTrip = [[TripData alloc] init];
         [newTrip setStart_stop_name:@"No scheduled stops"];
-        [newTrip setStart_stop_sequence:@"-1"];
+        [newTrip setStart_stop_sequence: [NSNumber numberWithInt:-1] ];
         [newTrip setStart_arrival_time:@"23:59"];
         [_stopSequence addTimes: newTrip];
         
@@ -1533,8 +1534,8 @@
      
      [trip setTrip_id           : @"" ];
      [trip setDirection_id      : [NSNumber numberWithInt:0] ];
-     [trip setStart_stop_sequence : @"-1"];
-     [trip setEnd_stop_sequence   : @"-2"];
+     [trip setStart_stop_sequence : [NSNumber numberWithInt:-1] ];
+     [trip setEnd_stop_sequence   : [NSNumber numberWithInt:-2]];
      
 //     [_showTimes addTimes: trip];
      NSUInteger insertPoint = 2;
@@ -1780,8 +1781,8 @@
         [trip setStart_stop_id     : [NSNumber numberWithInt:0] ];
         [trip setTrip_id           : @"" ];
         [trip setDirection_id      : [NSNumber numberWithInt:0] ];
-        [trip setStart_stop_sequence : @"-1"];
-        [trip setEnd_stop_sequence   : @"-2"];
+        [trip setStart_stop_sequence : [NSNumber numberWithInt:-1] ];
+        [trip setEnd_stop_sequence   : [NSNumber numberWithInt:-2]];
         
         [_showTimes addTimes: trip];
     }

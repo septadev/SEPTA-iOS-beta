@@ -1145,7 +1145,7 @@
         
         [self.tableView deselectRowAtIndexPath: [self.tableView indexPathForSelectedRow] animated:YES];
         
-        [self.navigationItem.rightBarButtonItem setEnabled:_sortByStops];
+        [self.navigationItem.rightBarButtonItem setEnabled:YES];
         
         [self.tableView scrollsToTop];
         

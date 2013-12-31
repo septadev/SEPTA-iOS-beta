@@ -275,7 +275,7 @@
     [self.navigationItem setTitleView:titleView];
     
     
-    DisplayedRouteData *routeData = [self convertItineraryObjectToDisplayedRouteData];
+//    DisplayedRouteData *routeData = [self convertItineraryObjectToDisplayedRouteData];
     //    NSLog(@"RouteData: %@", routeData.current);
     
     // Check if flipped stop names are a favorite location
@@ -3223,9 +3223,9 @@
             else
             {
 
-                NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-                NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
-                int weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
+//                NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+//                NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
+//                int weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
 //
 //                int dayOfWeek = pow(2,(7-weekday) );
                 
