@@ -48,6 +48,9 @@
 }
 
 -(NSObject *)selectedValue {
+    if (_selected<0 || _selected>=_values.count)
+        return nil;
+
     return [_values objectAtIndex:(NSUInteger) _selected];
 }
 
@@ -87,7 +90,7 @@
 
 
 -(void)setSelectedItem:(id)item {
-    if (self.items==nil)
+    if (self.items==nil || item==nil)
         return;
     self.selected = [self.items indexOfObject:item];
 }
@@ -139,10 +142,13 @@
         cell.textField.text = [selectedValue description];
         cell.detailTextLabel.text = nil;
         cell.textField.textAlignment = self.appearance.labelAlignment;
+        cell.textField.textColor = self.enabled ? self.appearance.labelColorEnabled : self.appearance.labelColorDisabled;
     } else {
         cell.textLabel.text = _title;
         cell.textField.text = [selectedValue description];
         cell.textField.textAlignment = self.appearance.valueAlignment;
+        cell.textField.textColor = self.enabled ? self.appearance.labelColorEnabled : self.appearance.labelColorDisabled;
+        cell.detailTextLabel.textColor = self.enabled ? self.appearance.entryTextColorEnabled : self.appearance.entryTextColorDisabled;
     }
     cell.imageView.image = _image;
 }
@@ -152,7 +158,8 @@
 
     self.preselectedElementIndex = [NSIndexPath indexPathForRow:_selected inSection:0];
     self.image = [UIImage imageNamed:[_itemsImageNames objectAtIndex:(NSUInteger) self.selected]];
-
+    
+    [self handleEditingChanged];
 }
 
 - (void)fetchValueIntoObject:(id)obj {

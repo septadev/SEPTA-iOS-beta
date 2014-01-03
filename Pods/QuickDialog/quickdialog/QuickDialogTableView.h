@@ -12,7 +12,6 @@
 // permissions and limitations under the License.
 //
 
-#import "QuickDialogStyleProvider.h"
 #import "QuickDialogDataSource.h"
 #import "QuickDialogTableDelegate.h"
 #import <Foundation/Foundation.h>
@@ -26,17 +25,16 @@
 
 
 @private
-    __unsafe_unretained QuickDialogController *_controller;
+    __weak QuickDialogController *_controller;
     QRootElement *_root;
-    id <UITableViewDataSource> quickformDataSource;
-    id <UITableViewDelegate> quickformDelegate;
+    id <UITableViewDataSource> quickDialogDataSource;
+    id <UITableViewDelegate> quickDialogDelegate;
 }
 
 @property(nonatomic, strong) QRootElement *root;
 
-@property(nonatomic, readonly) QuickDialogController *controller;
+@property(weak, nonatomic, readonly) QuickDialogController *controller;
 
-@property(nonatomic, assign) NSObject<QuickDialogStyleProvider> *styleProvider;
 @property(nonatomic) BOOL deselectRowWhenViewAppears;
 
 
@@ -44,7 +42,7 @@
 
 - (UITableViewCell *)cellForElement:(QElement *)element;
 
-- (void)viewWillAppear;
+- (void)deselectRows;
 
 - (void)reloadCellForElements:(QElement *)element, ... NS_REQUIRES_NIL_TERMINATION;
 

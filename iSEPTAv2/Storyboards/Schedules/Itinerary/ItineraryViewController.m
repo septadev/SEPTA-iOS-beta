@@ -3628,6 +3628,14 @@
         
         
         NSMutableArray *trainNoArray = [_masterTrainLookUpDict objectForKey:trainNo];
+        
+        if ( trainNoArray == nil )  // If trainNoArray, perhaps trainNo contains a P
+        {
+            // Make a second pass through, first by converting the trainNo to an integer, then by using that integer as a key against _masterTrainLookUpDict
+            int tNum = [trainNo intValue];
+            trainNoArray = [_masterTrainLookUpDict objectForKey:[NSString stringWithFormat:@"%d", tNum] ];
+        }
+        
         for (NSValue *newTrip in trainNoArray)
         {
             

@@ -20,7 +20,6 @@
 }
 
 @synthesize root = _root;
-@synthesize styleProvider = _styleProvider;
 @synthesize deselectRowWhenViewAppears = _deselectRowWhenViewAppears;
 
 - (QuickDialogController *)controller {
@@ -34,11 +33,11 @@
         self.root = _controller.root;
         self.deselectRowWhenViewAppears = YES;
 
-        quickformDataSource = [[QuickDialogDataSource alloc] initForTableView:self];
-        self.dataSource = quickformDataSource;
+        quickDialogDataSource = [[QuickDialogDataSource alloc] initForTableView:self];
+        self.dataSource = quickDialogDataSource;
 
-        quickformDelegate = [[QuickDialogTableDelegate alloc] initForTableView:self];
-        self.delegate = quickformDelegate;
+        quickDialogDelegate = [[QuickDialogTableDelegate alloc] initForTableView:self];
+        self.delegate = quickDialogDelegate;
 
         self.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     }
@@ -56,19 +55,30 @@
     [self reloadData];
 }
 
+- (void)reloadData
+{
+    [self applyAppearanceForRoot:self.root];
+    [super reloadData];
+}
+
+
 - (void)applyAppearanceForRoot:(QRootElement *)element {
     if (element.appearance.tableGroupedBackgroundColor !=nil){
         
         self.backgroundColor = element.grouped 
-                ? element.appearance.tableGroupedBackgroundColor 
+                ? element.appearance.tableGroupedBackgroundColor
                 : element.appearance.tableBackgroundColor;
 
         self.backgroundView = element.appearance.tableBackgroundView;
     }
-    if (element.appearance.tableBackgroundView!=nil)
+    if (element.appearance.tableBackgroundView!=nil && !element.grouped)
         self.backgroundView = element.appearance.tableBackgroundView;
 
-    self.separatorColor = element.appearance.tableSeparatorColor;
+    if (element.appearance.tableGroupedBackgroundView!=nil && element.grouped)
+        self.backgroundView = element.appearance.tableGroupedBackgroundView;
+
+    if (element.appearance.tableSeparatorColor!=nil)
+        self.separatorColor = element.appearance.tableSeparatorColor;
 
 }
 
@@ -86,15 +96,21 @@
     return NULL;
 }
 
+- (void)setContentInset:(UIEdgeInsets)contentInset
+{
+    super.contentInset = contentInset;
+    self.scrollIndicatorInsets = contentInset;
+}
+
+
 - (UITableViewCell *)cellForElement:(QElement *)element {
     if (element.hidden)
         return nil;
     return [self cellForRowAtIndexPath:[element getIndexPath]];
 }
 
-- (void)viewWillAppear {
-
-    [self applyAppearanceForRoot:self.root];
+- (void)deselectRows
+{
     NSArray *selected = nil;
     if ([self indexPathForSelectedRow]!=nil && _deselectRowWhenViewAppears){
         NSIndexPath *selectedRowIndex = [self indexPathForSelectedRow];
@@ -119,5 +135,6 @@
 
     va_end(args);
 }
+
 
 @end

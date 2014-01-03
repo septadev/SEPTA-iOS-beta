@@ -52,7 +52,8 @@
             [self bindSection:(QSection *)object toCollection:[data valueForKeyPath:valueName]];
 
         } else if ([propName isEqualToString:@"iterate"] && [object isKindOfClass:[QRootElement class]]) {
-            [self bindRootElement:(QRootElement *)object toCollection:[data valueForKeyPath:valueName]];
+            NSArray *itemsToIterate = [valueName isEqualToString:@"self"]? data : [data valueForKeyPath:valueName];
+            [self bindRootElement:(QRootElement *) object toCollection:itemsToIterate];
 
         } else if ([propName isEqualToString:@"iterateproperties"] && [object isKindOfClass:[QSection class]]) {
             [self bindSection:(QSection *)object toProperties:[data valueForKeyPath:valueName]];
@@ -115,6 +116,9 @@
 }
 
 - (void)bindSection:(QSection *)section toProperties:(NSDictionary *)object {
+    if ([object isKindOfClass:[NSNull class]]) {
+        return;
+    }
     [section.elements removeAllObjects];
     for (id item in [object allKeys]){
         QElement *element = [_builder buildElementWithObject:section.elementTemplate];
@@ -124,7 +128,7 @@
 }
 
 - (void)fetchValueFromObject:(QElement *)element toData:(id)data {
-    if (element.bind == nil || ([element.bind length] == 0)) {
+     if (element.bind == nil || ([element.bind length] == 0)) {
         return;
     }
 
@@ -134,8 +138,16 @@
         NSString *propName = [((NSString *) [bindingParams objectAtIndex:0]) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         NSString *valueName = [((NSString *) [bindingParams objectAtIndex:1]) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-        if (![propName isEqualToString:@"iterate"] && ![valueName isEqualToString:@"self"])
-            [data setValue:[element valueForKey:propName] forKeyPath:valueName];
+        if (![propName isEqualToString:@"iterate"] && ![valueName isEqualToString:@"self"]) {
+            @try {
+                id value = [element valueForKeyPath:propName];
+                if (propName!= nil && value!=nil)
+                    [data setValue:value forKeyPath:valueName];
+                }
+            @catch (NSException *exception) {
+                NSLog(@"Couldn't set property %@ on object %@", valueName, data);
+            }
+        }
     }
 
 }

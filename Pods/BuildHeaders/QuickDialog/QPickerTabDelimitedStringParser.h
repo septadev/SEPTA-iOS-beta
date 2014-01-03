@@ -1,1 +1,1 @@
-../../QuickDialog/quickdialog/QPickerTabDelimitedStringParser.h
+../../QuickDialog/extras/QPickerTabDelimitedStringParser.h

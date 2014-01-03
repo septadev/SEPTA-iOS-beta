@@ -1,1 +1,1 @@
-../../QuickDialog/quickdialog/QMapAnnotation.h
+../../QuickDialog/extras/QMapAnnotation.h

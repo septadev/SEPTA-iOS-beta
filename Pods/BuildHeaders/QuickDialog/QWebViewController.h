@@ -1,1 +1,1 @@
-../../QuickDialog/quickdialog/QWebViewController.h
+../../QuickDialog/extras/QWebViewController.h

@@ -6,6 +6,9 @@
 //  Copyright (c) 2012 Quickfire Software. All rights reserved.
 //
 
+#import "QColorPickerElement.h"
+#import "UIColor+ColorUtilities.h"
+
 @implementation QColorPickerElement {
     QSection *_internalRadioItemsSection;
 }
@@ -17,8 +20,9 @@
         self.items = @[
                 @[@"Black", [UIColor blackColor]],
                 @[@"White", [UIColor whiteColor]],
-                @[@"Blue", [UIColor grayColor]],
-                @[@"Red",  [UIColor blueColor]],
+                @[@"Gray", [UIColor grayColor]],
+                @[@"Blue",  [UIColor blueColor]],
+                @[@"Red",  [UIColor redColor]],
                 @[@"Green", [UIColor greenColor]],
                 @[@"Yellow", [UIColor yellowColor]],
                 @[@"Purple", [UIColor purpleColor]],
@@ -44,7 +48,7 @@
 }
 
 - (UIImage *)getImageFromItem:(NSArray *)selectedValue {
-    id color = [[selectedValue objectAtIndex:1] description];
+    id color = [selectedValue objectAtIndex:1];
     if ([color isKindOfClass:[UIColor class]])
         return [color imageByDrawingCircleOfColor];
     if ([color isKindOfClass:[NSString class]])
@@ -86,7 +90,7 @@
     }
     self.selected = 0;
 
-
+    [self handleEditingChanged];
 }
 
 

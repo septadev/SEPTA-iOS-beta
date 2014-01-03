@@ -44,7 +44,6 @@ UIDatePicker *QDATEENTRY_GLOBAL_PICKER;
     self.selected = NO;
     [_pickerView removeTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
     _pickerView = nil;
-
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -53,18 +52,18 @@ UIDatePicker *QDATEENTRY_GLOBAL_PICKER;
     _pickerView = [QDateEntryTableViewCell getPickerForDate];
     _pickerView.timeZone = [NSTimeZone localTimeZone];
     [_pickerView sizeToFit];
-    _textField.inputView = _pickerView;
     [_pickerView addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
     _pickerView.datePickerMode = element.mode;
     _pickerView.maximumDate = element.maximumDate;
     _pickerView.minimumDate = element.minimumDate;
     _pickerView.minuteInterval = element.minuteInterval;
-    
+
     if (element.mode != UIDatePickerModeCountDownTimer && element.dateValue != nil)
         _pickerView.date = element.dateValue;
     else if (element.mode == UIDatePickerModeCountDownTimer && element.ticksValue != nil)
         _pickerView.countDownDuration = [element.ticksValue doubleValue];
 
+    _textField.inputView = _pickerView;
     [super textFieldDidBeginEditing:textField];
     self.selected = YES;
 }
@@ -74,7 +73,6 @@ UIDatePicker *QDATEENTRY_GLOBAL_PICKER;
     _textField.hidden = YES;
 
     self.centeredLabel = [[UILabel alloc] init];
-    self.centeredLabel.textColor = [UIColor colorWithRed:0.243 green:0.306 blue:0.435 alpha:1.0];
     self.centeredLabel.highlightedTextColor = [UIColor whiteColor];
     self.centeredLabel.font = [UIFont systemFontOfSize:17];
     self.centeredLabel.textAlignment = NSTextAlignmentCenter;
@@ -91,9 +89,8 @@ UIDatePicker *QDATEENTRY_GLOBAL_PICKER;
         element.dateValue = _pickerView.date;
     }
     [self prepareForElement:_entryElement inTableView:_quickformTableView];
-    if (element.onValueChanged!=nil)
-        element.onValueChanged(_entryElement);
-
+    
+    [element handleEditingChanged:self];
 }
 
 - (void)prepareForElement:(QEntryElement *)element inTableView:(QuickDialogTableView *)tableView {
@@ -141,6 +138,8 @@ UIDatePicker *QDATEENTRY_GLOBAL_PICKER;
     _textField.placeholder = dateElement.placeholder;
 
     _textField.inputAccessoryView.hidden = dateElement.hiddenToolbar;
+
+    self.centeredLabel.textColor = dateElement.appearance.entryTextColorEnabled;
 }
 
 - (NSString *) formatInterval: (NSTimeInterval) interval

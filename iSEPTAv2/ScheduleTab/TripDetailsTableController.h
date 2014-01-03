@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CLLocationManagerDelegate.h>
 
 // --==  Objects  ==--
 #import "TripObject.h"

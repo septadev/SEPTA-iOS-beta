@@ -69,19 +69,19 @@ foreach my $table (@tableNames)
 #    $results = $sth->fetchall_arrayref();
 #    print @$results . "\n";
     
-#    $sqlQuery = "SELECT * FROM $table;";
-#    $sth = $dbh->prepare($sqlQuery);
-#    $sth->execute() or die "Can't execute statement: $DBI::errstr\n";
-#    
-#    $results = $sth->fetchall_arrayref();
-#    
-#    $string = "";
-#    foreach $row (@$results)
-#    {
-#        $string .= join(',', @$row);
-#    }
-#    
-#    printf("%-20s: %s\n", $table, md5_hex($string) );
+    $sqlQuery = "SELECT * FROM $table;";
+    $sth = $dbh->prepare($sqlQuery);
+    $sth->execute() or die "Can't execute statement: $DBI::errstr\n";
+
+    $results = $sth->fetchall_arrayref();
+    
+    $string = "";
+    foreach $row (@$results)
+    {
+        $string .= join(',', @$row);
+    }
+    
+    printf("%-20s: %s\n", $table, md5_hex($string) );
     
 }
 
@@ -93,7 +93,7 @@ foreach $row (@sorted)
 }
 
 
-
+exit(1);
 
 # Get all routes
 # SELECT route_id FROM routes_bus

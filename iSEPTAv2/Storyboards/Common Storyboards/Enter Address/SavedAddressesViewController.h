@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CLPlacemark.h>
 
 @protocol SavedAddressesProtocol <NSObject>
 

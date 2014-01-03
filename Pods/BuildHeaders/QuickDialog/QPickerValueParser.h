@@ -1,1 +1,1 @@
-../../QuickDialog/quickdialog/QPickerValueParser.h
+../../QuickDialog/extras/QPickerValueParser.h

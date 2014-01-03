@@ -1,1 +1,1 @@
-../../QuickDialog/quickdialog/QMapViewController.h
+../../QuickDialog/extras/QMapViewController.h

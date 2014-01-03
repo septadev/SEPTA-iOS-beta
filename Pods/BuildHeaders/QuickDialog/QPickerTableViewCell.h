@@ -1,1 +1,1 @@
-../../QuickDialog/quickdialog/QPickerTableViewCell.h
+../../QuickDialog/extras/QPickerTableViewCell.h

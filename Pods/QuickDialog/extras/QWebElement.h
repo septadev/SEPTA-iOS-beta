@@ -13,24 +13,26 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
+#import "QLabelElement.h"
 
-#import "QRootElement.h"
+/**
+  QWebElement: pushes a simple browser that opens the URL defined in the element
+*/
 
-
-@interface QMapElement : QRootElement {
+@interface QWebElement : QLabelElement {
 
 @protected
-    CLLocationCoordinate2D _coordinate;
+    NSString *_url;
+	NSString *_html;
 }
 
-@property(nonatomic) CLLocationCoordinate2D coordinate;
+@property(nonatomic, strong) NSString *url;
+@property(nonatomic, strong) NSString *html;
+@property(nonatomic, readonly) NSString *file;
 
-- (QMapElement *)initWithTitle:(NSString *)string coordinate:(CLLocationCoordinate2D)param;
+- (QWebElement *)initWithTitle:(NSString *)title url:(NSString *)url;
+- (QWebElement *)initWithTitle:(NSString *)title HTML:(NSString *)html;
 
-- (void)setLat:(double)lat;
-
-- (void)setLng:(double)lng;
-
+- (void)selected:(QuickDialogTableView *)tableView controller:(QuickDialogController *)controller indexPath:(NSIndexPath *)path;
 
 @end

@@ -1,1 +1,1 @@
-../../QuickDialog/quickdialog/QWebElement.h
+../../QuickDialog/extras/QWebElement.h

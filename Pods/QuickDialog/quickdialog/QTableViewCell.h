@@ -17,9 +17,10 @@
 
 
 typedef enum {
-    QLabelingPolicyTrimTitle,
-    QLabelingPolicyTrimValue
+    QLabelingPolicyTrimValue,
+    QLabelingPolicyTrimTitle
 } QLabelingPolicy;
+
 
 @interface QTableViewCell : UITableViewCell
 

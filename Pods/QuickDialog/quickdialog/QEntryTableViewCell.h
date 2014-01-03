@@ -46,14 +46,8 @@
 - (CGRect)calculateFrameForEntryElement;
 
 
-- (QEntryElement *)findNextElementToFocusOn;
-
 - (BOOL)handleActionBarDone:(UIBarButtonItem *)doneButton;
 
-- (QEntryElement *)findPreviousElementToFocusOn;
-
 - (void)recalculateEntryFieldPosition;
-
-- (void)handleEditingChanged;
 
 @end

@@ -9,6 +9,12 @@
 #ifndef iSEPTA_GTFSCommon_h
 #define iSEPTA_GTFSCommon_h
 
+
+// --==  Pods  ==--
+#import <FMDatabase.h>
+// --==  Pods  ==--
+
+
 typedef NS_ENUM(NSInteger, RoutesRouteType)  // According to the GTFS guidelines
 {
     kRouteTypeTrolley   = 0,
@@ -34,6 +40,23 @@ typedef NS_ENUM(NSInteger, GTFSRouteType)  // According to the GTFS guidelines
     kGTFSRouteTypeFunicular = 7,
 };
 
+typedef NS_ENUM(NSInteger, GTFSCalendarOffset)
+{
+    kGTFSCalendarOffsetToday,
+    kGTFSCalendarOffsetTomorrow,
+    kGTFSCalendarOffsetWeekday,
+    kGTFSCalendarOffsetSat,
+    kGTFSCalendarOffsetSun,
+};
 
+@interface GTFSCommon : NSObject
+{
+    
+}
+
++(NSString*) filePath;
++(NSInteger) isHoliday:(GTFSRouteType) routeType withOffset:(GTFSCalendarOffset) offset;
+
+@end
 
 #endif

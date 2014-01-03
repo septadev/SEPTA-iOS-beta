@@ -15,6 +15,8 @@
 #import "QElement.h"
 #import "QSection.h"
 
+@class QEntryElement;
+
 
 typedef enum  {
     QPresentationModeNormal = 0,
@@ -24,6 +26,11 @@ typedef enum  {
     QPresentationModeModalFullScreen,
     QPresentationModeModalPage
 } QPresentationMode;
+
+/**
+
+  Think of a root element as a dialog: a collection of sections and cells that can be used to display some useful data to the user. Every QuickDialogController can only display one RootElement at a time, although that RootElement can contain other root elements inside, which causes a new controller to automatically be displayed. Elements are always grouped in sections in the root element, as you can see below.
+*/
 
 @interface QRootElement : QElement {
 
@@ -39,6 +46,7 @@ typedef enum  {
 @property(nonatomic, strong) NSMutableArray *sections;
 @property(nonatomic, strong) NSDictionary *sectionTemplate;
 @property(assign) BOOL grouped;
+@property(assign) BOOL showKeyboardOnAppear;
 
 @property(nonatomic, retain) NSString *controllerName;
 
@@ -48,6 +56,7 @@ typedef enum  {
 @property(nonatomic, strong) NSIndexPath *preselectedElementIndex;
 
 @property(nonatomic, copy) void (^onValueChanged)(QRootElement *);
+
 
 - (QRootElement *)init;
 
@@ -70,4 +79,11 @@ typedef enum  {
 - (QElement *)elementWithKey:(NSString *)string;
 
 - (QRootElement *)rootWithKey:(NSString *)string;
+
+- (QEntryElement *)findElementToFocusOnBefore:(QElement *)previous;
+
+- (QEntryElement *)findElementToFocusOnAfter:(QElement *)element;
+
+- (void)handleEditingChanged;
+
 @end

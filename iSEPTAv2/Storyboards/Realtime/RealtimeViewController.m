@@ -180,6 +180,8 @@
     [self.navigationItem.titleView setNeedsDisplay];
     
     
+    [self automaticDownloading];
+    
 //    [self md5check];
 
     
@@ -236,6 +238,105 @@
     [self.lblGuide setAccessibilityElementsHidden:YES];
     
     
+    
+}
+
+-(void) automaticDownloading
+{
+    
+    // Automatic Downloading needs to be broken into a few parts:
+    //   - check that the device has space for the new database
+    //      - check the space taken up by downloading, deleting the old database, uncompressing the zip and replacing the new database
+    //   - downloading
+    //      - how to do it, where to put the file
+    //      - background processing
+    //      - autorecovery due to connectivity issues
+    //   - allow downloading without regard of how many other people are downloading the app, or allow downloading at certain intervals
+    //
+    
+    unsigned long long space = 0;
+    
+    space = [self getFreeSpace];
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    
+    NSString *formatted = [formatter stringFromNumber:[NSNumber numberWithLongLong:space] ];
+    
+    NSLog(@"free space: %@", formatted);
+    
+    
+    NSString *dbPath = [self filePath];
+    NSFileManager *man = [NSFileManager defaultManager];
+    NSDictionary *attrs = [man attributesOfItemAtPath: dbPath error: NULL];
+    UInt64 result = [attrs fileSize];
+    
+    formatted = [formatter stringFromNumber: [NSNumber numberWithLongLong: result] ];
+    NSLog(@"db Size:    %@", formatted);
+    
+    [self downloadTest];
+    
+}
+
+-(void) downloadTest
+{
+    
+//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+//    
+//    NSURL *URL = [NSURL URLWithString:@"http://example.com/download.zip"];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+//    
+//    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+//        NSURL *documentsDirectoryPath = [NSURL fileURLWithPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]];
+//        return [documentsDirectoryPath URLByAppendingPathComponent:[response suggestedFilename]];
+//    } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+//        NSLog(@"File downloaded to: %@", filePath);
+//    }];
+//    [downloadTask resume];
+    
+}
+
+
+-(unsigned long long)getFreeSpace
+{
+
+    unsigned long long freeSpace = 0;
+    NSError *error = nil;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSDictionary *dictionary = [[NSFileManager defaultManager] attributesOfFileSystemForPath:[paths lastObject] error: &error];
+    
+    if (dictionary)
+    {
+        NSNumber *fileSystemFreeSizeInBytes = [dictionary objectForKey: NSFileSystemFreeSize];
+        freeSpace = [fileSystemFreeSizeInBytes longLongValue];
+    } else {
+        //Handle error
+    }
+    
+    return freeSpace;
+
+}
+
+
+-(void) dateCheck
+{
+    
+    NSDate *today = [[NSDate alloc] init];
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    // Get the weekday component of the current date
+    NSDateComponents *weekdayComponents = [gregorian components:NSWeekdayCalendarUnit
+                                                       fromDate:today];
+    
+    NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
+    [componentsToSubtract setDay: 0 - ([weekdayComponents weekday] - 1)];
+    
+    NSDate *beginningOfWeek = [gregorian dateByAddingComponents:componentsToSubtract
+                                                         toDate:today options:0];
+    
+    NSLog(@"Done");
     
 }
 
@@ -419,7 +520,10 @@
                             NSLog(@"Generic Message: %@!", saObject.current_message);
                             [_alertBanner hide];
                         }];
-        
+
+            NSTimeInterval showTime = 5.0f;
+            [_alertBanner setSecondsToShow: showTime];
+
             [_alertBanner show];
         }
         

@@ -25,26 +25,33 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "RECommonFunctions.h"
 #import "REMenuItem.h"
 #import "REMenuContainerView.h"
 
-
 @class REMenuItem;
 
-@interface REMenu : NSObject {
-    UIView *_menuView;
-    UIView *_menuWrapperView;
-    REMenuContainerView *_containerView;
-    NSMutableArray *_itemViews;
-    UIButton *_backgroundButton;
-}
+typedef NS_ENUM(NSInteger, REMenuImageAlignment) {
+    REMenuImageAlignmentLeft,
+    REMenuImageAlignmentRight
+};
+
+typedef NS_ENUM(NSInteger, REMenuLiveBackgroundStyle) {
+    REMenuLiveBackgroundStyleLight,
+    REMenuLiveBackgroundStyleDark
+};
+
+@interface REMenu : NSObject 
 
 // Data
 //
 @property (strong, readwrite, nonatomic) NSArray *items;
+@property (strong, readwrite, nonatomic) UIView *backgroundView;
 @property (assign, readonly, nonatomic) BOOL isOpen;
+@property (assign, readonly, nonatomic) BOOL isAnimating;
 @property (assign, readwrite, nonatomic) BOOL waitUntilAnimationIsComplete;
 @property (copy, readwrite, nonatomic) void (^closeCompletionHandler)(void);
+@property (assign, readwrite, nonatomic) BOOL closeOnSelection;
 
 // Style
 //
@@ -82,7 +89,13 @@
 @property (assign, readwrite, nonatomic) NSTextAlignment subtitleTextAlignment;
 @property (assign, readwrite, nonatomic) NSTimeInterval animationDuration;
 @property (assign, readwrite, nonatomic) NSTimeInterval bounceAnimationDuration;
+@property (assign, readwrite, nonatomic) REMenuImageAlignment imageAlignment;
+@property (assign, readwrite, nonatomic) BOOL appearsBehindNavigationBar;
 @property (assign, readwrite, nonatomic) BOOL bounce;
+@property (assign, readwrite, nonatomic) BOOL liveBlur; // Available only in iOS 7
+@property (strong, readwrite, nonatomic) UIColor *liveBlurTintColor; // Available only in iOS 7
+@property (assign, readwrite, nonatomic) REMenuLiveBackgroundStyle liveBlurBackgroundStyle; // Available only in iOS 7
+@property (copy, readwrite, nonatomic) void (^badgeLabelConfigurationBlock)(UILabel *badgeLabel, REMenuItem *item);
 
 - (id)initWithItems:(NSArray *)items;
 - (void)showFromRect:(CGRect)rect inView:(UIView *)view;

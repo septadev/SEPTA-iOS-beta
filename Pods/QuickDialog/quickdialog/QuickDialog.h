@@ -15,16 +15,18 @@
 
 #import "QuickDialogController.h"
 #import "QuickDialogController+Navigation.h"
-#import "QuickDialogWebController.h"
 #import "QuickDialogController+Loading.h"
 #import "QuickDialogController+Helpers.h"
+
 #import "NSMutableArray+MoveObject.h"
 #import "QuickDialogTableView.h"
 #import "QuickDialogTableDelegate.h"
 
 #import "QElement.h"
+#import "QAppearance.h"
 
 #import "QAppearance.h"
+#import "QFlatAppearance.h"
 #import "QElement+Appearance.h"
 
 #import "QTableViewCell.h"
@@ -35,19 +37,16 @@
 #import "QBadgeElement.h"
 #import "QBooleanElement.h"
 #import "QButtonElement.h"
+#import "QuickDialogEntryElementDelegate.h"
 #import "QEntryElement.h"
 #import "QEntryTableViewCell.h"
 #import "QDateTimeInlineElement.h"
 #import "QCountdownElement.h"
 #import "QFloatElement.h"
-#import "QPickerElement.h"
-#import "QMapElement.h"
 #import "QRadioElement.h"
 #import "QRadioItemElement.h"
-#import "QPickerElement.h"
 #import "QSelectItemElement.h"
 #import "QTextElement.h"
-#import "QWebElement.h"
 #import "QDecimalElement.h"
 #import "QSortingSection.h"
 #import "QDateTimeElement.h"
@@ -57,15 +56,11 @@
 #import "QMultilineTextViewController.h"
 #import "QMultilineElement.h"
 #import "QImageElement.h"
+#import "QProgressElement.h"
 #import "QColorPickerElement.h"
 #import "UIColor+ColorUtilities.h"
-
-
-#import "QuickDialogStyleProvider.h"
-#import "QuickDialogEntryElementDelegate.h"
-
+#import "QProgressElement.h"
 #import "QuickDialogController+Loading.h"
-
 #import "QAutoEntryElement.h"
 #import "QAutoEntryTableViewCell.h"
 #import "QDateEntryTableViewCell.h"

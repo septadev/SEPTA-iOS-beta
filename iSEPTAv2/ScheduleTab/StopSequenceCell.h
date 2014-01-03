@@ -10,6 +10,8 @@
 #import "StopSequenceCellData.h"
 #import "StopSequenceObject.h"
 
+#import <CoreLocation/CLLocation.h>
+
 typedef NS_ENUM(NSInteger, StopSequenceDefaultCellImageType)  // According to the GTFS guidelines
 {
     kStopSequenceTopBubble = 0,

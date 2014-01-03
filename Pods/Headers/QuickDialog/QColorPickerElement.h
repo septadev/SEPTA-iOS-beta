@@ -1,1 +1,1 @@
-../../QuickDialog/quickdialog/QColorPickerElement.h
+../../QuickDialog/extras/QColorPickerElement.h

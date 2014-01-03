@@ -12,8 +12,13 @@
 // permissions and limitations under the License.
 //
 #import "QLabelElement.h"
+#import "QEntryTableViewCell.h"
 
 @protocol QuickDialogEntryElementDelegate;
+
+/**
+  QEntryElement: input field to allow you to collect values from the user. Automatically resizes so that all entries in the same sections look alike.
+*/
 
 @interface QEntryElement : QLabelElement <UITextInputTraits> {
 
@@ -49,5 +54,7 @@
 - (BOOL)canTakeFocus;
 
 - (void) fieldDidEndEditing;
+
+- (void)handleEditingChanged:(QEntryTableViewCell *)cell;
 
 @end

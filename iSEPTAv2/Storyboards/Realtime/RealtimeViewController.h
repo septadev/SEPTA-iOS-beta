@@ -41,6 +41,8 @@
 #import <SVProgressHUD.h>
 #import <FMDatabase.h>
 #import <ALAlertBanner/ALAlertBanner.h>
+#import <AFNetworking.h>
+
 
 
 #define ALALERTBANNER_TIMER 10.0f

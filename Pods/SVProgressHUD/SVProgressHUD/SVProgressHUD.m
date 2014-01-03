@@ -417,12 +417,11 @@ CGFloat SVProgressHUDRingThickness = 6;
     } 
     
     if(notification) {
-        SVProgressHUD *__weak weakSelf=self;
-        [UIView animateWithDuration:animationDuration 
+        [UIView animateWithDuration:animationDuration
                               delay:0 
                             options:UIViewAnimationOptionAllowUserInteraction 
                          animations:^{
-                             [weakSelf moveToPoint:newCenter rotateAngle:rotateAngle];
+                             [self moveToPoint:newCenter rotateAngle:rotateAngle];
                          } completion:NULL];
     } 
     
@@ -600,7 +599,7 @@ CGFloat SVProgressHUDRingThickness = 6;
                              
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
                              // Tell the rootViewController to update the StatusBar appearance
-                             UIViewController *rootController = UIApplication.sharedApplication.delegate.window.rootViewController;
+                             UIViewController *rootController = [[UIApplication sharedApplication] keyWindow].rootViewController;
                              if ([rootController respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
                                [rootController setNeedsStatusBarAppearanceUpdate];
                              }

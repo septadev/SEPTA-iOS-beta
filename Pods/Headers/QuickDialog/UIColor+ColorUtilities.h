@@ -1,1 +1,1 @@
-../../QuickDialog/quickdialog/UIColor+ColorUtilities.h
+../../QuickDialog/extras/UIColor+ColorUtilities.h

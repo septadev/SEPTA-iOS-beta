@@ -12,18 +12,28 @@
 // permissions and limitations under the License.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
-@class QElement;
-@class QSection;
+#import "QRootElement.h"
 
-@protocol QuickDialogStyleProvider
+/**
+  QMapElement: when selected, shows a fullscreen map with the location selected. Requires a lat/long value.
+*/
 
--(void) cell:(UITableViewCell *)cell willAppearForElement:(QElement *)element atIndexPath:(NSIndexPath *)indexPath; 
+@interface QMapElement : QRootElement {
 
-@optional
+@protected
+    CLLocationCoordinate2D _coordinate;
+}
 
--(void) sectionHeaderWillAppearForSection:(QSection *)section atIndex:(NSInteger)indexPath;
--(void) sectionFooterWillAppearForSection:(QSection *)section atIndex:(NSInteger)indexPath;
+@property(nonatomic) CLLocationCoordinate2D coordinate;
+
+- (QMapElement *)initWithTitle:(NSString *)string coordinate:(CLLocationCoordinate2D)param;
+
+- (void)setLat:(double)lat;
+
+- (void)setLng:(double)lng;
+
 
 @end
