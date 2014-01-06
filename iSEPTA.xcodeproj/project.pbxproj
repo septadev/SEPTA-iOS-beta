@@ -122,6 +122,7 @@
 		278EE509177C880E002993C4 /* FindSchedulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278EE508177C880E002993C4 /* FindSchedulesViewController.m */; };
 		278EE50C177C9048002993C4 /* BusScheduleData.m in Sources */ = {isa = PBXBuildFile; fileRef = 278EE50B177C9048002993C4 /* BusScheduleData.m */; };
 		2792BFF41875BE4800626D8B /* GTFSCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 2792BFF31875BE4800626D8B /* GTFSCommon.m */; };
+		2792BFFD187B10F800626D8B /* GetDBVersionAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 2792BFFC187B10F800626D8B /* GetDBVersionAPI.m */; };
 		279AD015164829A70079715E /* TapableSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 279AD014164829A70079715E /* TapableSegmentControl.m */; };
 		279AD02116484BFA0079715E /* ShowTimesStartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279AD02016484BF90079715E /* ShowTimesStartCell.xib */; };
 		279AD02716484CE10079715E /* ShowTimesStartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 279AD02616484CDF0079715E /* ShowTimesStartCell.m */; };
@@ -949,6 +950,8 @@
 		278EE50A177C9048002993C4 /* BusScheduleData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusScheduleData.h; path = Realtime/BusScheduleData.h; sourceTree = "<group>"; };
 		278EE50B177C9048002993C4 /* BusScheduleData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusScheduleData.m; path = Realtime/BusScheduleData.m; sourceTree = "<group>"; };
 		2792BFF31875BE4800626D8B /* GTFSCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTFSCommon.m; path = CommonHeaders/GTFSCommon.m; sourceTree = "<group>"; };
+		2792BFFB187B10F800626D8B /* GetDBVersionAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetDBVersionAPI.h; path = Subclasses/GetDBVersionAPI.h; sourceTree = "<group>"; };
+		2792BFFC187B10F800626D8B /* GetDBVersionAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetDBVersionAPI.m; path = Subclasses/GetDBVersionAPI.m; sourceTree = "<group>"; };
 		279AD013164829A70079715E /* TapableSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TapableSegmentControl.h; path = ScheduleTab/TapableSegmentControl.h; sourceTree = "<group>"; };
 		279AD014164829A70079715E /* TapableSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TapableSegmentControl.m; path = ScheduleTab/TapableSegmentControl.m; sourceTree = "<group>"; };
 		279AD02016484BF90079715E /* ShowTimesStartCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowTimesStartCell.xib; sourceTree = "<group>"; };
@@ -4314,6 +4317,8 @@
 			children = (
 				8422195F183FF6B30099B69F /* MenuAlertsImageView.h */,
 				84221960183FF6B30099B69F /* MenuAlertsImageView.m */,
+				2792BFFB187B10F800626D8B /* GetDBVersionAPI.h */,
+				2792BFFC187B10F800626D8B /* GetDBVersionAPI.m */,
 			);
 			name = Subclasses;
 			sourceTree = "<group>";
@@ -5155,6 +5160,7 @@
 				270ABC4E1771EB0B00F631B6 /* FeedbackQuickViewController.m in Sources */,
 				276986AB1779D4AA00EA76DF /* WalkingTourViewController.m in Sources */,
 				276986AE1779DD0C00EA76DF /* WalkingTourStops.m in Sources */,
+				2792BFFD187B10F800626D8B /* GetDBVersionAPI.m in Sources */,
 				27364686177B13ED00511A2F /* NotificationInfo.m in Sources */,
 				2736468C177B2CFA00511A2F /* BusRouteIndicatorCell.m in Sources */,
 				2736468F177B481700511A2F /* BasicRouteObject.m in Sources */,

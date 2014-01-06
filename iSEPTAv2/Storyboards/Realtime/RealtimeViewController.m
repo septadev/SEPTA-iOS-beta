@@ -24,8 +24,12 @@
     
     NSMutableArray *_alertMessage;
     NSTimer *_alertTimer;
+    
     GetAlertDataAPI *_alertAPI;
     ALAlertBanner *_alertBanner;
+    
+    NSTimer *_dbVersionTimer;
+    GetDBVersionAPI *_dbVersionAPI;
     
 //    MMDrawerController *_drawerController;
 }
@@ -44,9 +48,14 @@
 {
     
     NSLog(@"RVC - viewWillDisappear");
-    
+
+    // Remove all timers from the main loop
     if ( _alertTimer != nil )
         [_alertTimer invalidate];
+
+    if ( _dbVersionTimer != nil )
+        [_dbVersionTimer invalidate];
+
     
     [ALAlertBanner forceHideAllAlertBannersInView:self.view];
     _alertBanner = nil;
@@ -55,14 +64,19 @@
 //    _alertAPI = nil;
     [_alertMessage removeAllObjects];
     
+    
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     
+    // Start timers back up
     _alertTimer = [NSTimer scheduledTimerWithTimeInterval:ALALERTBANNER_TIMER target:self selector:@selector(getGenericAlert) userInfo:nil repeats:YES];
     [self getGenericAlert];
 
+    _dbVersionTimer = [NSTimer scheduledTimerWithTimeInterval:DBVERSION_REFRESH target:self selector:@selector(checkDBVersion) userInfo:nil repeats:YES];
+    [self checkDBVersion];
     
     UIInterfaceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     [self changeOrientation:currentOrientation];
@@ -221,21 +235,21 @@
 
     
     // Accessibility
-    [self.btnNextToArrive setAccessibilityLabel:@"Next to Arrive"];
-    [self.btnTrainView setAccessibilityLabel:@"TrainView"];
-    [self.btnTransitView setAccessibilityLabel:@"TransitView"];
-    [self.btnSystemStatus setAccessibilityLabel:@"System Status"];
+    [self.btnNextToArrive        setAccessibilityLabel:@"Next to Arrive"];
+    [self.btnTrainView           setAccessibilityLabel:@"TrainView"];
+    [self.btnTransitView         setAccessibilityLabel:@"TransitView"];
+    [self.btnSystemStatus        setAccessibilityLabel:@"System Status"];
     [self.btnFindNearestLocation setAccessibilityLabel:@"Fine Nearest Location"];
-    [self.btnGuide setAccessibilityLabel:@"Guide"];
+    [self.btnGuide               setAccessibilityLabel:@"Guide"];
 
     
     [self.lblNextToArrive setAccessibilityElementsHidden:YES];
-    [self.lblTrainView setAccessibilityElementsHidden:YES];
-    [self.lblTransitView setAccessibilityElementsHidden:YES];
+    [self.lblTrainView    setAccessibilityElementsHidden:YES];
+    [self.lblTransitView  setAccessibilityElementsHidden:YES];
     [self.lblSystemStatus setAccessibilityElementsHidden:YES];
     [self.lblFindNeareset setAccessibilityElementsHidden:YES];
-    [self.lblLocations setAccessibilityElementsHidden:YES];
-    [self.lblGuide setAccessibilityElementsHidden:YES];
+    [self.lblLocations    setAccessibilityElementsHidden:YES];
+    [self.lblGuide        setAccessibilityElementsHidden:YES];
     
     
     
@@ -273,13 +287,35 @@
     
     formatted = [formatter stringFromNumber: [NSNumber numberWithLongLong: result] ];
     NSLog(@"db Size:    %@", formatted);
+
     
     [self downloadTest];
     
 }
 
+-(void) checkDBVersion
+{
+    
+    if ( _dbVersionAPI == nil )
+    {
+        _dbVersionAPI = [[GetDBVersionAPI alloc] init];
+        [_dbVersionAPI setDelegate:self];
+    }
+    
+    [_dbVersionAPI fetchData];
+    
+}
+
+-(void) dbVersionFetched:(DBVersionDataObject*) obj
+{
+    NSLog(@"version: %@", obj);
+}
+
+
 -(void) downloadTest
 {
+
+    
     
 //    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
 //    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];

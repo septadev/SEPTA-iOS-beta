@@ -256,6 +256,7 @@
         }
         
         // TODO: Always call alertFeteched, even if empty
+        // PLEASEEXPLAIN: Why?!
         if ( [self.delegate respondsToSelector:@selector(alertFetched:)] )
         {
             [self.delegate alertFetched:alertsArr];

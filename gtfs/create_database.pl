@@ -73,6 +73,9 @@ mainLoop();
 sub mainLoop
 {
     
+    createMD5File();
+    exit(1);
+    
     unlink($dbFileName);
     
     foreach my $dbName (@dbfile)
@@ -92,8 +95,6 @@ sub mainLoop
 #    removeBadMFLStops();
     combineMFLStops();
     removeEmployeeOnlyStops();
-    
-
     
     
 #    createIndex();
@@ -1774,3 +1775,19 @@ sub removeEmployeeOnlyStops
     
 }
 
+
+sub createMD5File
+{
+    
+#    system("md5 SEPTA.sqlite > SEPTA.md5");
+    
+    my $md5hash = `md5 SEPTA.sqlite`;
+    
+    $md5hash =~ /([a-zA-Z\d]+$)/;
+    
+    system("echo $1 > SEPTA.md5");
+    
+#    print "md5: $1, length: " . length($1) . "\n";
+    
+    
+}

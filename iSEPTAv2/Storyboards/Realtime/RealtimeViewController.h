@@ -25,7 +25,7 @@
 #import "MenuAlertsImageView.h"
 
 #import "GetAlertDataAPI.h"
-
+#import "GetDBVersionAPI.h"
 
 // -- Testing
 //#import "TransitDrawerViewController.h"
@@ -45,7 +45,8 @@
 
 
 
-#define ALALERTBANNER_TIMER 10.0f
+#define ALALERTBANNER_TIMER 30.0f
+#define DBVERSION_REFRESH   60.0f * 60   // The number of minutes to wait before rechecking
 
 typedef NS_ENUM(NSInteger, SecondMenuAlertImageCycle)
 {
@@ -56,7 +57,7 @@ typedef NS_ENUM(NSInteger, SecondMenuAlertImageCycle)
 };
 
 
-@interface RealtimeViewController : UIViewController <GetAlertDataAPIProtocol, UIApplicationDelegate>
+@interface RealtimeViewController : UIViewController <GetAlertDataAPIProtocol, GetDBVersionDataAPIProtocol, UIApplicationDelegate>
 
 
 // Top row buttons
