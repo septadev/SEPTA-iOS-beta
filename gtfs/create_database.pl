@@ -1784,8 +1784,15 @@ sub createMD5File
     my $md5hash = `md5 SEPTA.sqlite`;
     
     $md5hash =~ /([a-zA-Z\d]+$)/;
+    my $keyValue = '[{"md5": "' . $1 . '"}]' . "\n";
     
-    system("echo $1 > SEPTA.md5");
+    print $keyValue;
+    
+    open(my $md5file, ">", "SEPTA.md5") or die "Cannont open > SEPTA.md5: $!";
+    print $md5file $keyValue;
+    close($md5file);
+    
+#    system("echo $keyValue > SEPTA.md5");
     
 #    print "md5: $1, length: " . length($1) . "\n";
     

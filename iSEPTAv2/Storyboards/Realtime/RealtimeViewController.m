@@ -296,6 +296,21 @@
 -(void) checkDBVersion
 {
     
+    NSString *localMD5;
+    
+    NSString *md5Path = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"md5"];
+    NSString *md5JSON = [[NSString alloc] initWithContentsOfFile:md5Path encoding:NSUTF8StringEncoding error:NULL];
+    
+    NSError *error = nil;
+    NSDictionary *md5dict = [NSJSONSerialization JSONObjectWithData: [md5JSON dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+    NSArray *md5Arr = [md5dict valueForKeyPath:@"md5"];
+    
+    localMD5 = [md5Arr firstObject];
+    
+    NSLog(@"localMD5: %@", localMD5);
+    
+//    NSDictionary *md5dict = [md5JSON JSONValue];
+    
     if ( _dbVersionAPI == nil )
     {
         _dbVersionAPI = [[GetDBVersionAPI alloc] init];
