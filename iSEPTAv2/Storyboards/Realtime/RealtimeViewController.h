@@ -42,6 +42,7 @@
 #import <FMDatabase.h>
 #import <ALAlertBanner/ALAlertBanner.h>
 #import <AFNetworking.h>
+#import <AFDownloadRequestOperation.h>
 
 
 

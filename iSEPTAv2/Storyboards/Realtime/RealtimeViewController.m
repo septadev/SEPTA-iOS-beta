@@ -281,6 +281,8 @@
     
     
     NSString *dbPath = [self filePath];
+    NSLog(@"dbPath: %@", dbPath);
+    NSLog(@"dbPath: %@", [dbPath stringByDeletingLastPathComponent] );
     NSFileManager *man = [NSFileManager defaultManager];
     NSDictionary *attrs = [man attributesOfItemAtPath: dbPath error: NULL];
     UInt64 result = [attrs fileSize];
@@ -289,7 +291,7 @@
     NSLog(@"db Size:    %@", formatted);
 
     
-    [self downloadTest];
+//    [self downloadTest];
     
 }
 
@@ -324,27 +326,137 @@
 -(void) dbVersionFetched:(DBVersionDataObject*) obj
 {
     NSLog(@"version: %@", obj);
+    
+    [self downloadTest];
 }
 
 
 -(void) downloadTest
 {
 
+    NSURL *downloadURL = [[NSURL alloc] initWithString: @"http://www3.septa.org/hackathon/dbVersion/download.php"];
+    NSURLRequest *request = [NSURLRequest requestWithURL: downloadURL];
+    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
+    
+    AFDownloadRequestOperation *dOp = [[AFDownloadRequestOperation alloc] initWithRequest:request targetPath:zipPath shouldResume:YES];
+    dOp.outputStream = [NSOutputStream outputStreamToFileAtPath: zipPath append:NO];
+    
+    [dOp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         NSLog(@"Successfully downloaded file to %@", zipPath);
+     }
+                                      failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"Error: %@", error);
+     }];
+    
+    [dOp setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead)
+     {
+         //        NSLog(@"Operation%i: bytesRead: %d", i, bytesRead);
+         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesRead);
+         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesExpectedToRead);
+         
+         float percentDone = ((float)((int)totalBytesRead) / (float)((int)totalBytesExpectedToRead));
+         
+         NSLog(@"Sent %lld of %lld bytes, percent: %6.3f", totalBytesRead, totalBytesExpectedToRead, percentDone);
+         
+         
+     }];
+    
+    [dOp start];
+    
+    return;
     
     
-//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-//    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    AFHTTPRequestOperation *downloadOp = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"filename"];
+
+
+
+    downloadOp.outputStream = [NSOutputStream outputStreamToFileAtPath:zipPath append:NO];
+    
+    [downloadOp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        NSLog(@"Successfully downloaded file to %@", zipPath);
+    }
+                                      failure:^(AFHTTPRequestOperation *operation, NSError *error)
+    {
+        NSLog(@"Error: %@", error);
+    }];
+    
+    [downloadOp setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead)
+     {
+         //        NSLog(@"Operation%i: bytesRead: %d", i, bytesRead);
+         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesRead);
+         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesExpectedToRead);
+         
+         float percentDone = ((float)((int)totalBytesRead) / (float)((int)totalBytesExpectedToRead));
+         
+         NSLog(@"Sent %lld of %lld bytes, percent: %6.3f", totalBytesRead, totalBytesExpectedToRead, percentDone);
+         
+         
+     }];
+
+    
+    
+    [downloadOp start];
+    
+    return;
+    
+//    NSURLRequest *downloadReq = [[NSURLRequest alloc] initWithURL: downloadURL];
+//    AFHTTPRequestOperation *downloadOp = [[AFHTTPRequestOperation alloc] initWithRequest: downloadReq];
 //    
-//    NSURL *URL = [NSURL URLWithString:@"http://example.com/download.zip"];
-//    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+//    [downloadOp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+//     {
+//         //        NSLog(@"Response: %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+//         
+//         NSString *dbPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
+//         
+//         //        NSLog(@"dbPath: %@", dbPath);
+//         
+//         NSData *data = [[NSData alloc] initWithData:responseObject];
+//         [data writeToFile:dbPath atomically:YES];
+//         
+//         
+//         
+//         NSLog(@"Finished");
+//     }
+//                                      failure:^(AFHTTPRequestOperation *operation, NSError *error)
+//     {
+//         NSLog(@"Error: %@", error);
+//     }
+//     
+//     ];
 //    
-//    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
-//        NSURL *documentsDirectoryPath = [NSURL fileURLWithPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]];
-//        return [documentsDirectoryPath URLByAppendingPathComponent:[response suggestedFilename]];
-//    } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-//        NSLog(@"File downloaded to: %@", filePath);
-//    }];
-//    [downloadTask resume];
+//    //    int i = 0;
+//    [downloadOp setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead)
+//     {
+//         //        NSLog(@"Operation%i: bytesRead: %d", i, bytesRead);
+//         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesRead);
+//         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesExpectedToRead);
+//         
+//         float percentDone = ((float)((int)totalBytesRead) / (float)((int)totalBytesExpectedToRead));
+//         
+//         NSLog(@"Sent %lld of %lld bytes, percent: %6.3f", totalBytesRead, totalBytesExpectedToRead, percentDone);
+//         
+//         
+//     }];
+//    
+//    //    [downloadOp start];
+//    
+//    NSArray *opArr = [[NSArray alloc] initWithObjects:downloadOp, nil];
+//    AFHTTPClient *requestHandler = [[AFHTTPClient alloc] initWithBaseURL:downloadURL];
+//    [requestHandler enqueueBatchOfHTTPRequestOperations:opArr progressBlock:^(NSUInteger numberOfCompletedOperations, NSUInteger totalNumberOfOperations)
+//     {
+//         NSLog(@"Number of Completed Operations: %d, Total Number of Operations: %d", numberOfCompletedOperations, totalNumberOfOperations);
+//     }
+//     
+//                                        completionBlock:^(NSArray *operations)
+//     {
+//         NSLog(@"Completion Block");
+//     }];
     
 }
 

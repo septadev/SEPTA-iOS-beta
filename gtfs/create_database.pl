@@ -73,9 +73,6 @@ mainLoop();
 sub mainLoop
 {
     
-    createMD5File();
-    exit(1);
-    
     unlink($dbFileName);
     
     foreach my $dbName (@dbfile)
@@ -96,6 +93,7 @@ sub mainLoop
     combineMFLStops();
     removeEmployeeOnlyStops();
     
+    ls createMD5File();
     
 #    createIndex();
     
