@@ -36,6 +36,7 @@
     BOOL _startENDButtonPressed;
     
     NSInteger _currentDisplayDirection;
+    NSMutableString *_servicePredicate;
 //    NSInteger _currentSegmentIndex;
     
     // --==  Runs SQL queries in a background thread  ==--
@@ -1412,8 +1413,12 @@
 //    NSNumber *displayDirection = [NSNumber numberWithInt:0];
     
     
+    NSLog(@"IVC:fCT - %@", _servicePredicate);
     
-    NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"(serviceID == %d)  AND (directionID == %d) AND (startTime > %d)", _currentServiceID, _currentDisplayDirection, now] ];
+//    NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"(serviceID == %d)  AND (directionID == %d) AND (startTime > %d)", _currentServiceID, _currentDisplayDirection, now] ];
+
+    NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"%@  AND (directionID == %d) AND (startTime > %d)", _servicePredicate, _currentDisplayDirection, now] ];
+
     
     NSSortDescriptor *timeSort = [NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES];
     
@@ -1892,6 +1897,12 @@
         TripCell *tCell = (TripCell*)[self.tableTrips dequeueReusableCellWithIdentifier: tripStr];
         
         TripObject *thisTrip = [currentTripsArr objectAtIndex:indexPath.row];
+        
+//        if ( [thisTrip.serviceID intValue] == 4 )
+        if ( 0 )
+        {
+            NSLog(@"Holy shit, McGee!");
+        }
         
         [[tCell lblTrainNo] setText: [NSString stringWithFormat:@"%d", [thisTrip.trainNo intValue] ] ];
 
@@ -3109,7 +3120,7 @@
         break;
         
         case kItineraryFilterTypeWeekday:
-        dayOfWeek = pow(2,5); // 010 0000 (SuMoTu WeThFrSa), Monday
+        dayOfWeek = pow(2,5) + pow(2,4) + pow(2,3) + pow(2,2) + pow(2,1); // 010 0000 (SuMoTu WeThFrSa), Monday
         break;
         
         default:
@@ -3119,8 +3130,20 @@
 //    int dayOfWeek = pow(2,(7-weekday) );
     
     
+    /*
+     
+     Now:
+      Mon-Thu uses one service_id
+      Fri     uses two service_ids
+     
+     Weekday
+      Mon-Fri uses two service_ids, second service_id must indicate Friday only times
+     
+     */
     
-    NSString *queryStr = [NSString stringWithFormat:@"SELECT service_id, days FROM calendarDB WHERE (days & %d)", dayOfWeek];
+    
+    NSString *queryStr = [NSString stringWithFormat:@"SELECT service_id, days FROM calendar_rail WHERE (days & %d) AND (start <= strftime('%%Y%%m%%d') AND (end >= strftime('%%Y%%m%%d') ));", dayOfWeek];
+//    NSString *queryStr = [NSString stringWithFormat:@"SELECT service_id, days FROM calendarDB WHERE (days & %d)", dayOfWeek];
     
     if ( [self.travelMode isEqualToString:@"Rail"] )
         queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_rail"];
@@ -3144,9 +3167,23 @@
     
     // Friday only train 
     NSInteger service_id = 0;
-    [results next];
+//    [results next];
+    
+    
+    _servicePredicate = [[NSMutableString alloc] initWithString:@"("];
+    // (service_id == 62 or service_id == 2)
+    while ( [results next] )
+    {
+        service_id = [results intForColumn:@"service_id"];
+        [_servicePredicate appendFormat:@"serviceID == %d or ", service_id];
+    }
 
-    service_id = [results intForColumn:@"service_id"];
+    // Remove the last four characters, the ' or '
+    [_servicePredicate deleteCharactersInRange:NSMakeRange([_servicePredicate length]-4, 4)];
+    
+    [_servicePredicate appendString:@")"];
+
+//    NSLog(@"%@", _servicePredicate);
 
     return (NSInteger)service_id;
     
@@ -3177,7 +3214,7 @@
         return 0;
     }
     
-    NSString *queryStr = [NSString stringWithFormat:@"SELECT service_id, date FROM calendarDateDB WHERE date=%@", now];
+    NSString *queryStr = [NSString stringWithFormat:@"SELECT service_id, date FROM holidayDB WHERE date=%@", now];
     
     if ( [self.travelMode isEqualToString:@"Rail"] )
         queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_rail"];

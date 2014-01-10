@@ -93,7 +93,7 @@ sub mainLoop
     combineMFLStops();
     removeEmployeeOnlyStops();
     
-    ls createMD5File();
+    createMD5File();
     
 #    createIndex();
     
@@ -366,7 +366,7 @@ sub populateGTFSTables
         $columns = {};
         
         returnColumnsWeCareAbout(\@headersWeCareAbout, \@headerArrayFromFile, $columns);
-        $dbh->do("CREATE TABLE calendarDate_$suffix (service_id INT, date TEXT)");
+        $dbh->do("CREATE TABLE holiday_$suffix (service_id INT, date TEXT)");
         while (<HOLIDAY>)
         {
             my @holidayArr = split(/,/);
@@ -378,8 +378,8 @@ sub populateGTFSTables
             if ( $exception_type == 1 )
             {
                 $holidays{$date} = $serviceConverter{ $service_id };
-                print "INSERT INTO calendarDate_$suffix VALUES ($holidays{$date}, $date)\n";
-                $dbh->do("INSERT INTO calendarDate_$suffix VALUES ($holidays{$date}, $date)");
+                print "INSERT INTO holiday_$suffix VALUES ($holidays{$date}, $date)\n";
+                $dbh->do("INSERT INTO holiday_$suffix VALUES ($holidays{$date}, $date)");
             }
             
         }

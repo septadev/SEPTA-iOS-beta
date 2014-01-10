@@ -147,7 +147,7 @@
         return 0;
     }
     
-    NSString *queryStr = [NSString stringWithFormat:@"SELECT service_id, date FROM calendarDateDB WHERE date=%@", now];
+    NSString *queryStr = [NSString stringWithFormat:@"SELECT service_id, date FROM holidayDB WHERE date=%@", now];
     
     if ( routeType == kGTFSRouteTypeRail )
         queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_rail"];

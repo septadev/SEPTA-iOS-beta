@@ -178,7 +178,7 @@
                         [alertBanner hide];
                     }];
     
-//    NSLog(@"TMVC - _alertBanner show!");
+    NSLog(@"TMVC - _alertBanner show!");
     
     NSTimeInterval showTime = 10.0f;
     [_alertBanner setSecondsToShow: showTime];
