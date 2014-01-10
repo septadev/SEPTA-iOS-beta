@@ -327,7 +327,7 @@
 {
     NSLog(@"version: %@", obj);
     
-    [self downloadTest];
+//    [self downloadTest];
 }
 
 
@@ -350,20 +350,43 @@
          NSLog(@"Error: %@", error);
      }];
     
-    [dOp setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead)
-     {
-         //        NSLog(@"Operation%i: bytesRead: %d", i, bytesRead);
-         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesRead);
-         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesExpectedToRead);
-         
-         float percentDone = ((float)((int)totalBytesRead) / (float)((int)totalBytesExpectedToRead));
-         
-         NSLog(@"Sent %lld of %lld bytes, percent: %6.3f", totalBytesRead, totalBytesExpectedToRead, percentDone);
-         
-         
-     }];
+    
+    [dOp setProgressiveDownloadProgressBlock:^(AFDownloadRequestOperation *operation, NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
+//        NSLog(@"Operation%i: bytesRead: %d", 1, bytesRead);
+//        NSLog(@"Operation%i: totalBytesRead: %lld", 1, totalBytesRead);
+//        NSLog(@"Operation%i: totalBytesExpected: %lld", 1, totalBytesExpected);
+//        NSLog(@"Operation%i: totalBytesReadForFile: %lld", 1, totalBytesReadForFile);
+//        NSLog(@"Operation%i: totalBytesExpectedToReadForFile: %lld", 1, totalBytesExpectedToReadForFile);
+
+         float percentDone = ((float)((int)totalBytesRead) / (float)((int)totalBytesExpectedToReadForFile));
+         NSLog(@"Sent %lld of %lld bytes, percent: %6.3f", totalBytesRead, totalBytesExpectedToReadForFile, percentDone);
+
+        
+    }];
+
+
+//    [dOp setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead)
+//     {
+//         //        NSLog(@"Operation%i: bytesRead: %d", i, bytesRead);
+//         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesRead);
+//         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesExpectedToRead);
+//         
+////         float percentDone = ((float)((int)totalBytesRead) / (float)((int)totalBytesExpectedToRead));
+////         NSLog(@"Sent %lld of %lld bytes, percent: %6.3f", totalBytesRead, totalBytesExpectedToRead, percentDone);
+//         
+//         NSLog(@"bytesRead: %d, totalBytesRead: %lld, totalBytesExpectedToRead: %lld", bytesRead, totalBytesRead, totalBytesExpectedToRead);
+//         
+//         
+//     }];
+    
+    
+    [dOp setShouldExecuteAsBackgroundTaskWithExpirationHandler:^{
+        NSLog(@"Download expired!");
+    }];
+    
     
     [dOp start];
+//    [dOp waitUntilFinished];
     
     return;
     
