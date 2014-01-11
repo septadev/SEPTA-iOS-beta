@@ -366,7 +366,7 @@
         
         selectedAnnotation = (mapAnnotation*)[annotationArr objectAtIndex:0];
         
-        if ( newAnnotation.id != selectedAnnotation.id )
+        if ( newAnnotation.vehicle_id != selectedAnnotation.vehicle_id )
         {
             // Nothing to do here
         }
@@ -772,7 +772,7 @@
         [annotation setCurrentTitle   : annotationTitle];
         [annotation setDirection      : direction];
         
-        [annotation setId: [NSNumber numberWithInt: [tvObject.VehicleID intValue] ] ];
+        [annotation setVehicle_id: [NSNumber numberWithInt: [tvObject.VehicleID intValue] ] ];
         
         [_annotationLookup setObject: [NSValue valueWithNonretainedObject: annotation] forKey: tvObject.VehicleID];
         
@@ -1289,7 +1289,7 @@
     {
         if ( [object isKindOfClass:[TransitViewObject class] ] )
         {
-            if ( [((TransitViewObject*)object).VehicleID intValue] == [pin.id intValue] )
+            if ( [((TransitViewObject*)object).VehicleID intValue] == [pin.vehicle_id intValue] )
             {
 //                NSLog(@"Found!");
                 [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];

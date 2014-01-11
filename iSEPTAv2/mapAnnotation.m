@@ -19,7 +19,9 @@
 @synthesize currentSubTitle;
 
 @synthesize direction;
-@synthesize id;
+@synthesize vehicle_id;
+
+@synthesize seconds;
 
 - (NSString *)subtitle
 {

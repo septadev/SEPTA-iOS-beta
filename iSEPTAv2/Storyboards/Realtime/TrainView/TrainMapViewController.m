@@ -29,6 +29,7 @@
     BOOL _locationEnabled;
     
     NSTimer *updateTimer;
+    NSTimer *annotationTimer;
     
     
     // -- for KML Parsing
@@ -163,9 +164,12 @@
 -(void) loadBannerWithTitle:(NSString*)title andSubtitle:(NSString*) subtitle
 {
     
-    ALAlertBanner *_alertBanner = [ALAlertBanner alertBannerForView:self.view
+//    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+//    appDelegate.window
+    
+    ALAlertBanner *_alertBanner = [ALAlertBanner alertBannerForView:self.mapView
                                                style:ALAlertBannerStyleFailure
-                                            position:ALAlertBannerPositionBottom
+                                            position:ALAlertBannerPositionTop
                                                title: title
                                             subtitle: subtitle
                                          tappedBlock:^(ALAlertBanner *alertBanner)
@@ -174,6 +178,11 @@
                         [alertBanner hide];
                     }];
     
+//    NSLog(@"TMVC - _alertBanner show!");
+    
+    NSTimeInterval showTime = 10.0f;
+    [_alertBanner setSecondsToShow: showTime];
+
     [_alertBanner show];
     
 }
@@ -415,7 +424,7 @@
         case kGTFSRouteTypeTrolley:
             stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TransitView/%@", self.routeName];
             webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            NSLog(@"NTVVC - getLatestJSONData (bus) -- api url: %@", webStringURL);
+            NSLog(@"TMVC - getLatestJSONData (bus) -- api url: %@", webStringURL);
             
             break;
             
@@ -423,7 +432,7 @@
             
             stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TrainView/"];
             webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            NSLog(@"NTVVC - getLatestJSONData (rail) -- api url: %@", webStringURL);
+            NSLog(@"TMVC - getLatestJSONData (rail) -- api url: %@", webStringURL);
             
             break;
             
@@ -450,7 +459,7 @@
         }
         else
         {
-            NSLog(@"NTVVC - getLatestJSONData: _jsonOp cancelled");
+            NSLog(@"TMVC - getLatestJSONData: _jsonOp cancelled");
         }
         
     }];
@@ -481,6 +490,7 @@
     GTFSRouteType routeType = (GTFSRouteType)[self.travelMode intValue];
     
     
+    // TODO: Only remove annotations where the data has changed
     NSMutableArray *annotationsToRemove = [[self.mapView annotations] mutableCopy];  // We want to remove all the annotations minus one
     [annotationsToRemove removeObject: [self.mapView userLocation] ];                // Keep the userLocation annotation on the map
     [self.mapView removeAnnotations: annotationsToRemove];                           // All annotations remaining in the array get removed
@@ -664,13 +674,13 @@
         NSString *direction = tvObject.Direction;
         
         mapAnnotation *annotation  = [[mapAnnotation alloc] initWithCoordinate: newCoord];
-        NSString *annotationTitle  = [NSString stringWithFormat: @"Vehicle: %@ (%@ min)", tvObject.VehicleID, tvObject.Offset];
+        NSString *annotationTitle  = [NSString stringWithFormat: @"Vehicle: %@ (updated: %@ min)", tvObject.VehicleID, tvObject.Offset];
         
         [annotation setCurrentSubTitle: [NSString stringWithFormat: @"Destination: %@", tvObject.destination ] ];
         [annotation setCurrentTitle   : annotationTitle];
         [annotation setDirection      : direction];
         
-        [annotation setId: [NSNumber numberWithInt: [tvObject.VehicleID intValue] ] ];
+        [annotation setVehicle_id: [NSNumber numberWithInt: [tvObject.VehicleID intValue] ] ];
         
         [_annotationLookup setObject: [NSValue valueWithNonretainedObject: annotation] forKey: tvObject.VehicleID];
         
@@ -743,7 +753,7 @@
         {
             [updateTimer invalidate];
             updateTimer = nil;
-            NSLog(@"NTVVC - Killing updateTimer");
+            NSLog(@"TMVC - Killing updateTimer");
         }
         
     }  // if ( updateTimer != nil )
@@ -932,33 +942,43 @@
 #pragma mark - MKMapViewDelegate Methods
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-    mapAnnotation *pin = (mapAnnotation*)view.annotation;
     
-    if ( [view.annotation isKindOfClass:[MKUserLocation class]] )
-        return;
+//    mapAnnotation *pin = (mapAnnotation*)view.annotation;
+// 
+//    annotationTimer =[NSTimer scheduledTimerWithTimeInterval:1.25f
+//                                                      target:self
+//                                                    selector:@selector(updateAnnotation:)
+//                                                    userInfo:pin
+//                                                     repeats:NO];
+
     
-    int row = 0;
-    for (id object in _tableData)
-    {
-        if ( [object isKindOfClass:[TransitViewObject class] ] )
-        {
-            if ( [((TransitViewObject*)object).VehicleID intValue] == [pin.id intValue] )
-            {
-                //                NSLog(@"Found!");
-//                [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
-                break;
-            }
-        }
-        row++;
-    }
-    
-    //    NSLog(@"view selected: %@", pin.title );
 }
+//
+//    if ( [view.annotation isKindOfClass:[MKUserLocation class]] )
+//        return;
+//    
+//    int row = 0;
+//    for (id object in _tableData)
+//    {
+//        if ( [object isKindOfClass:[TransitViewObject class] ] )
+//        {
+//            if ( [((TransitViewObject*)object).VehicleID intValue] == [pin.vehicle_id intValue] )
+//            {
+//                //                NSLog(@"Found!");
+////                [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
+//                break;
+//            }
+//        }
+//        row++;
+//    }
+//    
+//    //    NSLog(@"view selected: %@", pin.title );
+//}
 
 
-- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view
-{
-    
+//- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view
+//{
+
 //    mapAnnotation *pin = (mapAnnotation*)view.annotation;
 //    [self.tableView deselectRowAtIndexPath: self.tableView.indexPathForSelectedRow animated:YES];
     
@@ -979,7 +999,7 @@
     
     //    NSLog(@"view deselected: %@", pin.title );
     
-}
+//}
 
 
 
@@ -1040,9 +1060,9 @@
     else
     {
         if ( routeType == kGTFSRouteTypeTrolley )
-        image = [UIImage imageNamed:@"trolley_yellow.png"];
+        image = [UIImage imageNamed:@"transitView-Trolley-Blue.png"];
         else
-        image = [UIImage imageNamed:@"bus_yellow.png"];
+        image = [UIImage imageNamed:@"transitView-Bus-Blue.png"];
     }
     
     
@@ -1052,6 +1072,19 @@
     //    NSLog(@"image size: %@", NSStringFromCGSize( image.size));
     
     return annotationView;
+    
+}
+
+-(void) updateAnnotation:(NSTimer*) timerObj
+{
+    
+//    MKPinAnnotationView *anoView = (MKPinAnnotationView*)[timerObj userInfo];
+    
+    NSLog(@"TMVC: updateAnnotation");
+    mapAnnotation *ano = (mapAnnotation*)[timerObj userInfo];
+    
+    [ano setCurrentTitle:@"Greg"];
+    NSLog(@"%@", ano);
     
 }
 

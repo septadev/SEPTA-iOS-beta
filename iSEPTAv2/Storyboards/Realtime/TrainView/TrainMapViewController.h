@@ -44,6 +44,8 @@
 // --==  Common  ==--
 #import "GTFSCommon.h"
 
+#import "AppDelegate.h"
+
 #define JSON_REFRESH_RATE 20.0f
 
 
