@@ -75,8 +75,9 @@
     _alertTimer = [NSTimer scheduledTimerWithTimeInterval:ALALERTBANNER_TIMER target:self selector:@selector(getGenericAlert) userInfo:nil repeats:YES];
     [self getGenericAlert];
 
-    _dbVersionTimer = [NSTimer scheduledTimerWithTimeInterval:DBVERSION_REFRESH target:self selector:@selector(checkDBVersion) userInfo:nil repeats:YES];
-    [self checkDBVersion];
+    // This does not fail reachability safely
+//    _dbVersionTimer = [NSTimer scheduledTimerWithTimeInterval:DBVERSION_REFRESH target:self selector:@selector(checkDBVersion) userInfo:nil repeats:YES];
+//    [self checkDBVersion];
     
     UIInterfaceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     [self changeOrientation:currentOrientation];
@@ -194,7 +195,7 @@
     [self.navigationItem.titleView setNeedsDisplay];
     
     
-    [self automaticDownloading];
+//    [self automaticDownloading];
     
 //    [self md5check];
 

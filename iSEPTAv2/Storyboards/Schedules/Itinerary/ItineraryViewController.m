@@ -1410,6 +1410,9 @@
     
 //    _currentDisplayDirection = 0;
 //    NSNumber *displayDirection = [NSNumber numberWithInt:0];
+    
+    
+    
     NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"(serviceID == %d)  AND (directionID == %d) AND (startTime > %d)", _currentServiceID, _currentDisplayDirection, now] ];
     
     NSSortDescriptor *timeSort = [NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES];
@@ -3139,6 +3142,7 @@
     } // if ( [database hadError] )
     
     
+    // Friday only train 
     NSInteger service_id = 0;
     [results next];
 
