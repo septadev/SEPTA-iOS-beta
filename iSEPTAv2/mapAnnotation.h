@@ -19,7 +19,10 @@
 @property (nonatomic, strong) NSString *currentTitle;
 @property (nonatomic, strong) NSString *currentSubTitle;
 @property (nonatomic, strong) NSString *direction;
-@property (nonatomic, strong) NSNumber *id;
+@property (nonatomic, strong) NSNumber *vehicle_id;
+//@property (nonatomic, strong, setter = setVehicleID:) NSNumber *vehicle_id;
+
+@property (nonatomic, strong) NSNumber *seconds;
 
 - (NSString *) title;
 - (NSString *) subtitle;
