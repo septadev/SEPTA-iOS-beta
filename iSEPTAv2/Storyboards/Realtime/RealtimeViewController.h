@@ -19,7 +19,7 @@
 #import "SystemStatusViewController.h"
 #import "NearestLocationViewController.h"
 
-#import "MapMemoryTestViewController.h"
+//#import "MapMemoryTestViewController.h"
 #import "MMDrawerTestViewController.h"
 
 #import "MenuAlertsImageView.h"

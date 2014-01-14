@@ -10,6 +10,7 @@
 
 // --==  PODs  ==--
 #import <AFNetworking.h>
+#import <Reachability.h>
 
 @interface DBVersionDataObject : NSObject
 

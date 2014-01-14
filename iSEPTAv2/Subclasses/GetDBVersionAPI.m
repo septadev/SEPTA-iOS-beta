@@ -40,6 +40,10 @@
 -(void) fetchData
 {
     
+    if ( ![[Reachability reachabilityForInternetConnection] isReachable] )
+        return;
+
+    
     NSString *url = @"http://www3.septa.org/hackathon/dbVersion/";
     NSURLRequest *request = [NSURLRequest requestWithURL: [NSURL URLWithString:url] ];
     

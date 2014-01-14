@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1397"
             endingLineNumber = "1397"
-            landmarkName = "-filterCurrentTrains"
+            landmarkName = "-filterActiveTrains"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

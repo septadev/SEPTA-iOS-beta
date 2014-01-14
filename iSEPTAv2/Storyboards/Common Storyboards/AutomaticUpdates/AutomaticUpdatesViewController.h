@@ -14,7 +14,13 @@
 #import "CustomFlatBarButton.h"
 #import "GetDBVersionAPI.h"
 
+
 // --==  PODs  ==--
+#import <Reachability.h>
+#import <SVProgressHUD.h>
+#import <ALAlertBanner/ALAlertBanner.h>
+#import <AFNetworking.h>
+#import <AFDownloadRequestOperation.h>
 
 
 #define VERSION_CHECKING  @"Checking for new schedules"
@@ -34,6 +40,8 @@ typedef NS_ENUM(NSInteger, AutomaticUpdateState)
     kAutomaticUpdateInstalling,
     kAutomaticUpdateFinishedInstall,
     kAutomaticUpdateDoNothing,
+    
+    kAutomaticUpdateNoInternet,
     
 };
 

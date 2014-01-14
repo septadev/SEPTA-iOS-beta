@@ -41,7 +41,7 @@
     [super viewDidLoad];
     
 //    _updateSM = kAutomaticUpdateStartState;
-    [self updateStateTo: kAutomaticUpdateStartState];
+    [self updateStateTo: kAutomaticUpdateChecking];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -69,9 +69,7 @@
     //    float w    = self.view.frame.size.width;
 //    LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0,500, 32) withTitle:@"Update"];
 //    [self.navigationItem setTitleView:titleView];
-    
-    [self checkAppVersion];
-    
+
     
     id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:Update:AutoUpdate"];
     if ( object == nil )
@@ -156,13 +154,8 @@
             [self.lblVersionStatus setText: VERSION_CHECKING];
             [self.progressBar setProgress:0.0f];
             
-//        {
-//            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath: [NSIndexPath indexPathForRow:0 inSection:5] ];
-//            [cell setHidden:YES];
-//            NSLog(@"");
-//        }
-            
             [self.btnMulti setHidden:YES];
+            [self checkAppVersion];
             
             break;
             
@@ -179,11 +172,13 @@
         case kAutomaticUpdateDownloading:
             [self.lblVersionStatus setText: @"Downloading..."];
             [self.btnMulti setTitle:@"Cancel" forState:UIControlStateNormal];
+            [self downloadSchedule];
             break;
             
         case kAutomaticUpdateCancelledDownload:
             [self.lblVersionStatus setText: @"Cancelled Download..."];
             [self.btnMulti setTitle:@"Download" forState:UIControlStateNormal];
+            [self cleanUpDownload];
             break;
             
         case kAutomaticUpdateFinishedDownload:
@@ -193,6 +188,7 @@
             
         case kAutomaticUpdateInstalling:
             [self.lblVersionStatus setText: @"Installing"];
+            [self installNewSchedule];
             break;
             
         case kAutomaticUpdateFinishedInstall:
@@ -202,6 +198,13 @@
             break;
             
         case kAutomaticUpdateDoNothing:
+            break;
+            
+        case kAutomaticUpdateNoInternet:
+            [self.lblVersionStatus setText:@"No Internet Connection Available"];
+            [self.btnMulti setHidden:NO];
+            [self.btnMulti setTitle:@"Retry" forState:UIControlStateNormal];
+            
             break;
             
         default:
@@ -216,7 +219,14 @@
 {
     
 //    _updateSM = kAutomaticUpdateChecking;
-    [self updateStateTo: kAutomaticUpdateChecking];
+//    [self updateStateTo: kAutomaticUpdateChecking];
+    
+    if ( ![[Reachability reachabilityForInternetConnection] isReachable] )
+    {
+        [self updateStateTo:kAutomaticUpdateNoInternet];
+        return;
+    }
+
     
     if ( _dbVersionAPI == nil )
     {
@@ -254,6 +264,126 @@
 
     
     //    [self downloadTest];
+}
+
+
+
+-(NSString*) filePath
+{
+    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+}
+
+
+-(void) downloadSchedule
+{
+    
+    // Install!
+ 
+    NSURL *downloadURL = [[NSURL alloc] initWithString: @"http://www3.septa.org/hackathon/dbVersion/download.php"];
+    NSURLRequest *request = [NSURLRequest requestWithURL: downloadURL];
+    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
+    
+    
+    if ( ![[Reachability reachabilityForInternetConnection] isReachable] )
+        return;
+
+    
+    AFDownloadRequestOperation *dOp = [[AFDownloadRequestOperation alloc] initWithRequest:request targetPath:zipPath shouldResume:YES];
+    dOp.outputStream = [NSOutputStream outputStreamToFileAtPath: zipPath append:NO];
+    
+    [dOp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         NSLog(@"Successfully downloaded file to %@", zipPath);
+     }
+                               failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"Error: %@", error);
+     }];
+    
+    
+    [dOp setProgressiveDownloadProgressBlock:^(AFDownloadRequestOperation *operation, NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
+        //        NSLog(@"Operation%i: bytesRead: %d", 1, bytesRead);
+        //        NSLog(@"Operation%i: totalBytesRead: %lld", 1, totalBytesRead);
+        //        NSLog(@"Operation%i: totalBytesExpected: %lld", 1, totalBytesExpected);
+        //        NSLog(@"Operation%i: totalBytesReadForFile: %lld", 1, totalBytesReadForFile);
+        //        NSLog(@"Operation%i: totalBytesExpectedToReadForFile: %lld", 1, totalBytesExpectedToReadForFile);
+        
+        float percentDone = ((float)((int)totalBytesRead) / (float)((int)totalBytesExpectedToReadForFile));
+        NSLog(@"Sent %lld of %lld bytes, percent: %6.3f", totalBytesRead, totalBytesExpectedToReadForFile, percentDone);
+        
+        [self.progressBar setProgress: percentDone];
+        
+    }];
+    
+    
+    //    [dOp setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead)
+    //     {
+    //         //        NSLog(@"Operation%i: bytesRead: %d", i, bytesRead);
+    //         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesRead);
+    //         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesExpectedToRead);
+    //
+    ////         float percentDone = ((float)((int)totalBytesRead) / (float)((int)totalBytesExpectedToRead));
+    ////         NSLog(@"Sent %lld of %lld bytes, percent: %6.3f", totalBytesRead, totalBytesExpectedToRead, percentDone);
+    //
+    //         NSLog(@"bytesRead: %d, totalBytesRead: %lld, totalBytesExpectedToRead: %lld", bytesRead, totalBytesRead, totalBytesExpectedToRead);
+    //
+    //
+    //     }];
+    
+    
+    [dOp setShouldExecuteAsBackgroundTaskWithExpirationHandler:^{
+        NSLog(@"Download expired!");
+    }];
+    
+    
+    [dOp setCompletionBlock:^{
+        NSLog(@"Download completed!");
+    }];
+    
+    [dOp start];
+    //    [dOp waitUntilFinished];
+    
+
+    
+    
+}
+
+
+-(void) cleanUpDownload
+{
+    
+    // Remove any partial file downloaded
+    NSURL *downloadURL = [[NSURL alloc] initWithString: @"http://www3.septa.org/hackathon/dbVersion/download.php"];
+    NSURLRequest *request = [NSURLRequest requestWithURL: downloadURL];
+    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
+
+    if ( zipPath == nil )
+        return;  // Nothing to delete
+    
+    NSError *error;
+    [[NSFileManager defaultManager] removeItemAtPath: zipPath error:&error];
+    
+    if ( error )
+    {
+        NSLog(@"Unable to delete zip file");
+    }
+    else
+    {
+        zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
+        NSLog(@"Deleted zip file! zipPath: %@", zipPath);
+    }
+    
+    
+}
+
+-(void) installNewSchedule
+{
+    
+    // Check current date versus the effective date in the API call / NSUserPreferences
+    // Is current date before the effective date?
+    //    YES - Put up alert, warn user the new schedule won't be active for X days (Y hours)
+    //    NO  - Start install
+    
 }
 
 
@@ -370,7 +500,11 @@
     switch (_updateSM)
     {
         case kAutomaticUpdateLatestAvailable:
-            // Start downloading
+            
+            // Ensure that the internet is reachabilty before moving into the next state
+            if ( ![[Reachability reachabilityForInternetConnection] isReachable] )
+                return;
+            
             [self updateStateTo: kAutomaticUpdateDownloading];
             break;
         
@@ -378,6 +512,12 @@
             // Cancel button has been pressed
             
             [self updateStateTo:kAutomaticUpdateCancelledDownload];
+            
+            break;
+            
+        case kAutomaticUpdateNoInternet:
+            
+            // Retry what tho?  Check API or Download?
             
             break;
             
