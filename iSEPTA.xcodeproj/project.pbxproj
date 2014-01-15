@@ -82,6 +82,8 @@
 		274B2F1D173AAA0A00A04BF4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 274B2F1C173AAA0A00A04BF4 /* libz.dylib */; };
 		274B8C7A177339E500CBE260 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 274B8C79177339E500CBE260 /* Security.framework */; };
 		274B8C7C17733A5D00CBE260 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 274B8C7B17733A5D00CBE260 /* MobileCoreServices.framework */; };
+		274B924D188738D700C7A297 /* AutomaticUpdates.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 274B924C188738D700C7A297 /* AutomaticUpdates.storyboard */; };
+		274B92531887392300C7A297 /* AutomaticUpdatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274B92521887392300C7A297 /* AutomaticUpdatesViewController.m */; };
 		274DD6301688BED0006BEC97 /* NTASaveObjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274DD62F1688BED0006BEC97 /* NTASaveObjectCell.xib */; };
 		274DD6331688BF95006BEC97 /* NTASaveObjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 274DD6321688BF94006BEC97 /* NTASaveObjectCell.m */; };
 		274E02521663C80000BCE8A2 /* GTFSDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 274E02501663C80000BCE8A2 /* GTFSDataModel.xcdatamodeld */; };
@@ -123,6 +125,8 @@
 		278EE50C177C9048002993C4 /* BusScheduleData.m in Sources */ = {isa = PBXBuildFile; fileRef = 278EE50B177C9048002993C4 /* BusScheduleData.m */; };
 		2792BFF41875BE4800626D8B /* GTFSCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 2792BFF31875BE4800626D8B /* GTFSCommon.m */; };
 		2792BFFD187B10F800626D8B /* GetDBVersionAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 2792BFFC187B10F800626D8B /* GetDBVersionAPI.m */; };
+		2792C00218818B7D00626D8B /* CommonWebViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2792C00118818B7D00626D8B /* CommonWebViewStoryboard.storyboard */; };
+		2792C00B18818C1600626D8B /* CommonWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2792C00A18818C1600626D8B /* CommonWebViewController.m */; };
 		279AD015164829A70079715E /* TapableSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 279AD014164829A70079715E /* TapableSegmentControl.m */; };
 		279AD02116484BFA0079715E /* ShowTimesStartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 279AD02016484BF90079715E /* ShowTimesStartCell.xib */; };
 		279AD02716484CE10079715E /* ShowTimesStartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 279AD02616484CDF0079715E /* ShowTimesStartCell.m */; };
@@ -884,6 +888,9 @@
 		274B2F1C173AAA0A00A04BF4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		274B8C79177339E500CBE260 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		274B8C7B17733A5D00CBE260 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		274B924C188738D700C7A297 /* AutomaticUpdates.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AutomaticUpdates.storyboard; path = "Storyboards/Common Storyboards/AutomaticUpdates/AutomaticUpdates.storyboard"; sourceTree = "<group>"; };
+		274B92511887392300C7A297 /* AutomaticUpdatesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutomaticUpdatesViewController.h; path = "Storyboards/Common Storyboards/AutomaticUpdates/AutomaticUpdatesViewController.h"; sourceTree = "<group>"; };
+		274B92521887392300C7A297 /* AutomaticUpdatesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AutomaticUpdatesViewController.m; path = "Storyboards/Common Storyboards/AutomaticUpdates/AutomaticUpdatesViewController.m"; sourceTree = "<group>"; };
 		274DD62F1688BED0006BEC97 /* NTASaveObjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTASaveObjectCell.xib; sourceTree = "<group>"; };
 		274DD6311688BF94006BEC97 /* NTASaveObjectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NTASaveObjectCell.h; path = Realtime/NTASaveObjectCell.h; sourceTree = "<group>"; };
 		274DD6321688BF94006BEC97 /* NTASaveObjectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NTASaveObjectCell.m; path = Realtime/NTASaveObjectCell.m; sourceTree = "<group>"; };
@@ -952,6 +959,9 @@
 		2792BFF31875BE4800626D8B /* GTFSCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTFSCommon.m; path = CommonHeaders/GTFSCommon.m; sourceTree = "<group>"; };
 		2792BFFB187B10F800626D8B /* GetDBVersionAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetDBVersionAPI.h; path = Subclasses/GetDBVersionAPI.h; sourceTree = "<group>"; };
 		2792BFFC187B10F800626D8B /* GetDBVersionAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetDBVersionAPI.m; path = Subclasses/GetDBVersionAPI.m; sourceTree = "<group>"; };
+		2792C00118818B7D00626D8B /* CommonWebViewStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CommonWebViewStoryboard.storyboard; path = "Storyboards/Common Storyboards/WebView/CommonWebViewStoryboard.storyboard"; sourceTree = "<group>"; };
+		2792C00918818C1600626D8B /* CommonWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonWebViewController.h; path = "Storyboards/Common Storyboards/WebView/CommonWebViewController.h"; sourceTree = "<group>"; };
+		2792C00A18818C1600626D8B /* CommonWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommonWebViewController.m; path = "Storyboards/Common Storyboards/WebView/CommonWebViewController.m"; sourceTree = "<group>"; };
 		279AD013164829A70079715E /* TapableSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TapableSegmentControl.h; path = ScheduleTab/TapableSegmentControl.h; sourceTree = "<group>"; };
 		279AD014164829A70079715E /* TapableSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TapableSegmentControl.m; path = ScheduleTab/TapableSegmentControl.m; sourceTree = "<group>"; };
 		279AD02016484BF90079715E /* ShowTimesStartCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowTimesStartCell.xib; sourceTree = "<group>"; };
@@ -1007,8 +1017,6 @@
 		27A6939417A172C1008712FB /* NextToArriveTripHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NextToArriveTripHistoryCell.m; path = "Storyboards/Realtime/NextToArrive/Custom Cells/Code/NextToArriveTripHistoryCell.m"; sourceTree = "<group>"; };
 		27A6939717A175F3008712FB /* StopNamesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StopNamesTableViewController.h; path = "Storyboards/Common Storyboards/StopNames/StopNamesTableViewController.h"; sourceTree = "<group>"; };
 		27A6939817A175F3008712FB /* StopNamesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StopNamesTableViewController.m; path = "Storyboards/Common Storyboards/StopNames/StopNamesTableViewController.m"; sourceTree = "<group>"; };
-		27A73DE1169EFFC20058EE29 /* ActiveAlarmsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActiveAlarmsViewController.h; path = Settings/Alarms/ActiveAlarmsViewController.h; sourceTree = "<group>"; };
-		27A73DE2169EFFC20058EE29 /* ActiveAlarmsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActiveAlarmsViewController.m; path = Settings/Alarms/ActiveAlarmsViewController.m; sourceTree = "<group>"; };
 		27A95A9E17F2120C009C9804 /* CurrentLocationProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CurrentLocationProtocol.h; path = "Storyboards/Common Storyboards/Current Location/Protocol/CurrentLocationProtocol.h"; sourceTree = "<group>"; };
 		27A972F917AA9134001A4395 /* KMLMapsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = KMLMapsStoryboard.storyboard; path = "Storyboards/Common Storyboards/Maps/KMLMapsStoryboard.storyboard"; sourceTree = "<group>"; };
 		27A972FB17AA9148001A4395 /* KMLMapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KMLMapsViewController.h; path = "Storyboards/Common Storyboards/Maps/KMLMapsViewController.h"; sourceTree = "<group>"; };
@@ -2226,6 +2234,16 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		274B924B188738B000C7A297 /* Automatic Updates */ = {
+			isa = PBXGroup;
+			children = (
+				274B924C188738D700C7A297 /* AutomaticUpdates.storyboard */,
+				274B92511887392300C7A297 /* AutomaticUpdatesViewController.h */,
+				274B92521887392300C7A297 /* AutomaticUpdatesViewController.m */,
+			);
+			name = "Automatic Updates";
+			sourceTree = "<group>";
+		};
 		2751039116679C2900377169 /* MapAnnotations */ = {
 			isa = PBXGroup;
 			children = (
@@ -2370,6 +2388,16 @@
 				278D8DB61807147600E80645 /* MMDrawerTestViewController.m */,
 			);
 			name = Test;
+			sourceTree = "<group>";
+		};
+		2792C00018818B4B00626D8B /* CommonWebView */ = {
+			isa = PBXGroup;
+			children = (
+				2792C00118818B7D00626D8B /* CommonWebViewStoryboard.storyboard */,
+				2792C00918818C1600626D8B /* CommonWebViewController.h */,
+				2792C00A18818C1600626D8B /* CommonWebViewController.m */,
+			);
+			name = CommonWebView;
 			sourceTree = "<group>";
 		};
 		2795691516DBC17C004B925A /* CommentForm */ = {
@@ -2523,6 +2551,8 @@
 		27A6933917A04920008712FB /* Common Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				274B924B188738B000C7A297 /* Automatic Updates */,
+				2792C00018818B4B00626D8B /* CommonWebView */,
 				27A972F817AA90EB001A4395 /* KMLMaps */,
 				2796F48917A84AC400837012 /* SimpleMaps */,
 				2796F48817A84AB500837012 /* TripList */,
@@ -2583,8 +2613,6 @@
 		27A73DE0169EFF9B0058EE29 /* Alarms */ = {
 			isa = PBXGroup;
 			children = (
-				27A73DE1169EFFC20058EE29 /* ActiveAlarmsViewController.h */,
-				27A73DE2169EFFC20058EE29 /* ActiveAlarmsViewController.m */,
 			);
 			name = Alarms;
 			sourceTree = "<group>";
@@ -4738,6 +4766,7 @@
 				27DB304D1636D6B600153E4C /* 106.kml in Resources */,
 				8418EDC417FEF6BD003607D1 /* RT_TrainView.png in Resources */,
 				8418EE6D17FEF6BD003607D1 /* Schedule_NHSL-BG.png in Resources */,
+				274B924D188738D700C7A297 /* AutomaticUpdates.storyboard in Resources */,
 				27DB304E1636D6B600153E4C /* 107.kml in Resources */,
 				8418EE8717FEF6BD003607D1 /* btnRRL@2x.png in Resources */,
 				8418ED7B17FEF6BD003607D1 /* BG_pattern.png in Resources */,
@@ -4913,6 +4942,7 @@
 				27A5EABE1697411C004C9467 /* digitOverlay@2x.png in Resources */,
 				27B7F7B516A9B2F0003DF486 /* BSO.kml in Resources */,
 				27B7F7B616A9B2F0003DF486 /* MFO.kml in Resources */,
+				2792C00218818B7D00626D8B /* CommonWebViewStoryboard.storyboard in Resources */,
 				8418EE5617FEF6BD003607D1 /* Schedule_Trolley-BG@2x.png in Resources */,
 				8418ED8917FEF6BD003607D1 /* Independence-Pass@2x.png in Resources */,
 				27CDAACC16E6485F00F9CF4D /* ItineraryCell.xib in Resources */,
@@ -5191,6 +5221,7 @@
 				27A6938817A154FC008712FB /* NextToArriveItineraryCell.m in Sources */,
 				27A6938C17A15849008712FB /* SplitButton.m in Sources */,
 				27A6938F17A1728A008712FB /* NextToArriveSingleTripCell.m in Sources */,
+				2792C00B18818C1600626D8B /* CommonWebViewController.m in Sources */,
 				27A6939217A172A9008712FB /* NextToArriveConnectionTripCell.m in Sources */,
 				27A6939517A172C1008712FB /* NextToArriveTripHistoryCell.m in Sources */,
 				27A6939917A175F3008712FB /* StopNamesTableViewController.m in Sources */,
@@ -5207,6 +5238,7 @@
 				2765AA6617AC122000F93FBE /* RouteSelectionViewController.m in Sources */,
 				2765AA6917AC122E00F93FBE /* SchedulesViewController.m in Sources */,
 				2765AA7217AC18D600F93FBE /* ItineraryViewController.m in Sources */,
+				274B92531887392300C7A297 /* AutomaticUpdatesViewController.m in Sources */,
 				84F6AFFC17B18F5300680007 /* TabbedButton.m in Sources */,
 				2765AB7E17B42EB700F93FBE /* TrainViewViewController.m in Sources */,
 				84CC993217B874C00087477E /* TripListViewController.m in Sources */,

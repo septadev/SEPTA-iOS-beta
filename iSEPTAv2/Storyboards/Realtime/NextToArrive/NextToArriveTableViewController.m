@@ -67,6 +67,15 @@
     return self;
 }
 
+-(void) viewWillDisappear:(BOOL)animated
+{
+    
+    [super viewWillDisappear:animated];
+    
+    [ALAlertBanner forceHideAllAlertBannersInView:self.tableView];
+    
+}
+
 -(void) viewWillAppear:(BOOL)animated
 {
 
@@ -106,7 +115,7 @@
     [_tableData addObject:_itinerary forTitle:@"Itinerary" withTag:kNextToArriveSectionStartEndCells];
 //    [_tableData setTag:kNextToArriveSectionStartEndCells forTitle:@"Itinerary"];
     
-    
+    [[self.tabBarController tabBar] setTranslucent:NO]; // FUCK NO!
     
     // Registering xib
     [self.tableView registerNib:[UINib nibWithNibName:@"NextToArriveTripHistoryCell"    bundle:nil] forCellReuseIdentifier:@"NextToArriveTripHistoryCell"];
@@ -262,10 +271,18 @@
                                                           action:^(REMenuItem *item) {
                                                               [self loadFareVC];
                                                           }];
+    
+    REMenuItem *disclaimerItem = [[REMenuItem alloc] initWithTitle:@"Real Time Information"
+                                                          subtitle: @"Regional Rail Service"
+                                                             image:[UIImage imageNamed:@"tipsBack.png"]
+                                                  highlightedImage:nil
+                                                            action:^(REMenuItem *item) {
+                                                                [self loadDisclaimer];
+                                                            }];
 
     
 //    _menu = [[REMenu alloc] initWithItems:@[refreshItem, favoritesItem, filterItem, advisoryItem, fareItem] ];
-    _menu = [[REMenu alloc] initWithItems:@[refreshItem, favoritesItem, fareItem] ];
+    _menu = [[REMenu alloc] initWithItems:@[refreshItem, favoritesItem, fareItem, disclaimerItem] ];
     _menu.cornerRadius = 4;
     _menu.shadowRadius = 4;
     _menu.shadowColor = [UIColor blackColor];
@@ -881,6 +898,8 @@
         
         [_itinerary setStartStopName: [sObject startStopName] ];
         [_itinerary setEndStopName  : [sObject endStopName]   ];
+        [_itinerary setStartStopID  : [sObject startStopID]   ];
+        [_itinerary setEndStopID    : [sObject endStopID]     ];
         
         // A selection was made, whether it be in Favorites or Recent; update date
         [sObject setAddedDate:[NSDate date] ];
@@ -1026,6 +1045,8 @@
     NTASaveObject *sObject = [[NTASaveObject alloc] init];
     [sObject setStartStopName: _itinerary.startStopName];
     [sObject setEndStopName  : _itinerary.endStopName];
+    [sObject setEndStopID    : _itinerary.endStopID];
+    [sObject setStartStopID  : _itinerary.startStopID];
     
     if ( [self doesObject: sObject existInSection:@"Favorites"] != NSNotFound )
     {
@@ -1317,13 +1338,84 @@
         return;
     }
     
+    [ALAlertBanner hideAllAlertBanners];
+
+    
 //    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-
     NTASaveObject *sObject = [[NTASaveObject alloc] init];
     [sObject setStartStopName: _itinerary.startStopName];
     [sObject setEndStopName  : _itinerary.endStopName  ];
+    
+    if ( _itinerary.startStopID == nil  || [_itinerary.startStopID intValue] == 0 )  // ['30th Street Station' intValue] = 30
+    {
+        [self loadStopIDstartEND:1];
+    }
+    
+    if ( _itinerary.endStopID == nil || [_itinerary.endStopID intValue] == 0 )
+    {
+        [self loadStopIDstartEND:0];
+    }
+    
+    [sObject setStartStopID: _itinerary.startStopID];
+    [sObject setEndStopID  : _itinerary.endStopID];
     [sObject setAddedDate:[NSDate date] ];
+    
+    
+    // --==  WARNING!!  ==--
+    
+    // All the stop ids from Thorndale to Overbrook, Newark to Darby and Trenton to North Philadelphia
+    NSString *darkTerritoryStopIDs = @"90501,90502,90503,90504,90505,90506,90507,90508,90509,90510,90511,90512,90513,90514,90515,90516,90517,90518,90519,90520,90521,90522,90201,90202,90203,90204,90205,90206,90207,90209,90210,90211,90212,90213,90214,90215,90216,90217,90701,90702,90703,90704,90706,90707,90708,90709,90710,90711";
+
+    NSArray *darkTerritoryStopIDArray = [darkTerritoryStopIDs componentsSeparatedByString:@","];
+
+    
+    NSString *startID;
+    NSString *endID;
+    
+    @try
+    {
+        startID = [_itinerary.startStopID stringValue];
+        endID   = [_itinerary.endStopID stringValue];
+    }
+    @catch (NSException *e)
+    {
+        NSLog(@"Exception: %@", e);
+        startID = @"NA";
+        endID = @"NA";
+    }
+    @finally
+    {
+        // Cleanup code; executes whether or not an exception was found
+    }
+    
+    if ( [darkTerritoryStopIDArray containsObject: startID ] || [darkTerritoryStopIDArray containsObject: endID ] )
+    {
+        NSLog(@"***  DARK TERRITORY!!!  DARK TERRITORY!!  ***");
+        
+        NSLog(@"rect: %@", NSStringFromCGRect(self.tableView.frame));
+        
+        ALAlertBanner *_alertBanner = [ALAlertBanner alertBannerForView:self.tableView
+                                                   style:ALAlertBannerStyleFailure
+                                                position:ALAlertBannerPositionBottom
+                                                   title:@"Dark Territory"
+                                                subtitle:@"One or more stops are in dark territory.  Tap for more details."
+                                             tappedBlock:^(ALAlertBanner *alertBanner)
+                        {
+
+                            [alertBanner hide];
+                            [self loadDisclaimer];
+                            
+                        }];
+        
+//        NSTimeInterval showTime = 4.0f;
+//        [_alertBanner setSecondsToShow: showTime];
+        
+        [_alertBanner show];
+        NSLog(@"Banner show!");
+    }
+    
+
 
     
     int row;
@@ -1359,6 +1451,64 @@
     
     [self invalidateTimer]; // Invalidate any timer that is already active.  If no timer is active, nothing happens
     [self getLatestJSONData];
+    
+}
+
+
+-(NSString*) filePath
+{
+#if FUNCTION_NAMES_ON
+    NSLog(@"NtATVC filePath");
+#endif
+    
+    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+}
+
+
+// There are cases where the Saved Object might not have certain information, such as the stop_id for each stop_name.  This function
+// updates _itinerary.startStopID and endStopID fields as needed.
+-(void) loadStopIDstartEND:(int) startEND
+{
+    
+    // startEND ->  start (1, true) END (0, false)
+    
+    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    
+    if ( ![database open] )
+    {
+        [database close];
+        return;
+    }
+    
+    NSString *stopName;
+    if ( startEND )
+        stopName = [self fixMismatchedStopName: _itinerary.startStopName];
+    else
+        stopName = [self fixMismatchedStopName: _itinerary.endStopName];
+    
+    
+    NSString *queryStr = [NSString stringWithFormat:@"SELECT stop_id FROM stops_rail WHERE stop_name = '%@'", stopName];
+    FMResultSet *results = [database executeQuery: queryStr];
+    if ( [database hadError] )  // Check for errors
+    {
+        
+        int errorCode = [database lastErrorCode];
+        NSString *errorMsg = [database lastErrorMessage];
+        
+        NSLog(@"SNFRTC - query failure, code: %d, %@", errorCode, errorMsg);
+        NSLog(@"SNFRTC - query str: %@", queryStr);
+        
+        return;  // If an error occurred, there's nothing else to do but exit
+        
+    } // if ( [database hadError] )
+    
+    
+    [results next];
+    
+    if ( startEND )
+        [_itinerary setStartStopID: [NSNumber numberWithInt: [results intForColumnIndex:0] ] ];
+    else
+        [_itinerary setEndStopID  : [NSNumber numberWithInt: [results intForColumnIndex:0] ] ];
     
 }
 
@@ -1489,13 +1639,15 @@
     NTASaveObject *sObject = [[NTASaveObject alloc] init];
     [sObject setStartStopName: _itinerary.startStopName];
     [sObject setEndStopName  : _itinerary.endStopName  ];
+    [sObject setStartStopID  : _itinerary.startStopID  ];
+    [sObject setEndStopID    : _itinerary.endStopID    ];
     [sObject setAddedDate: [NSDate date] ];
     
     // The currente itinerary has been added to Favorites.  Click on it again will remove it
     if ( _favoriteStatus == kNextToArriveFavoriteSubtitleAdded )
     {
         [self removeObject: sObject ifItExistsInSection: kNTASectionFavorites];
-        [self addObject: sObject toSection: kNTASectionRecentlyViewed];
+        [self addObject   : sObject toSection: kNTASectionRecentlyViewed];
 
         [self.tableView reloadData];
         return;
@@ -1521,7 +1673,7 @@
     
     // Check if trip exists in Recent and, if so, remove it.
     [self removeObject: sObject ifItExistsInSection: kNTASectionRecentlyViewed];
-    [self addObject: sObject toSection:kNTASectionFavorites];
+    [self addObject   : sObject toSection:kNTASectionFavorites];
     
 //    [saveData addObject: sObject intoSection: kNTASectionFavorites];
 //    [_tableData replaceArrayWith: [saveData favorites] forTitle: @"Favorites"];
@@ -1876,6 +2028,37 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
 //    NSLog(@"Double Tab");
 //    
 //}
+
+
+-(void) loadDisclaimer
+{
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC - loadDisclaimer");
+#endif
+    
+    
+    NSString *storyboardName = @"CommonWebViewStoryboard";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    CommonWebViewController *cwVC = (CommonWebViewController*)[storyboard instantiateViewControllerWithIdentifier:@"CommonWebViewStoryboard"];
+    
+    //    [cwVC setAlertArr: _currentAlert ];
+    [cwVC setBackImageName: @"NTA-white.png"];
+    [cwVC setTitle:@"Real Time Information"];
+    
+    NSString *p1 = @"<p class='indent'>In the event of a significant delay on a regularly scheduled train you may see the word 'SUSPEND' in the status column. This may mean the train is temporarily canceled while we work on a problem or it may mean the train will not continue operation. In that case, you may see a listing for another train with a different origination point and the same train number with a 'P' after it, i.e., 6353P. The 'P' means that SEPTA has sent another train to pick up customers to complete the original train's journey. If a train has been 'suspended' it will not appear as the second train of a connecting trip</p>";
+    
+    NSString *p2 = @"<p class='indent'>SEPTA operates 13 rail lines that travel to destinations across the region. Some of these trains operate on SEPTA controlled track and some on Amtrak territory. Our Regional Rail Control Center can 'see' all of the trains traveling on SEPTA territory in real time, so the status information posted on TrainView is also in real time. Train status for service originating from Amtrak territory - Newark, DE (WIL), Trenton , NJ, (TRE) and Thorndale (PAO) - is estimated times, since the Control Center cannot 'see' the actual movement of these trains. The Control Center receives updated reports about these trains and that information is published on TrainView.</p>";
+    
+    NSString *html = [NSString stringWithFormat:@"<html><head><title>Next To Arrive</title></head><body><div><ul> <li>%@</li> <li>%@</li> </ul> </div>", p2, p1];
+    
+    [cwVC setHTML: html];
+    
+    [self.navigationController pushViewController:cwVC animated:YES];
+    
+    
+}
+
 
 #pragma mark - Fare ViewController
 -(void) loadFareVC

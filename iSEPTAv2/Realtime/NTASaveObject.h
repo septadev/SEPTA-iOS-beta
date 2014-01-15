@@ -13,6 +13,9 @@
 @property (nonatomic, strong) NSString *startStopName;
 @property (nonatomic, strong) NSString *endStopName;
 
+@property (nonatomic, strong) NSNumber *startStopID;
+@property (nonatomic, strong) NSNumber *endStopID;
+
 @property (nonatomic, strong) NSDate *addedDate;  // Used for sorting
 
 +(NSArray*) returnAllKeys;

@@ -58,7 +58,7 @@
 
     
     [ALAlertBanner forceHideAllAlertBannersInView:self.view];
-    _alertBanner = nil;
+//    _alertBanner = nil;
     
 //    [_alertAPI setDelegate:nil];
 //    _alertAPI = nil;

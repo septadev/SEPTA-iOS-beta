@@ -16,8 +16,8 @@
 @synthesize lblNextStop;
 @synthesize lblTrainDelay;
 
-@synthesize imgAlarm;
-@synthesize imgMyTrain;
+//@synthesize imgAlarm;
+//@synthesize imgMyTrain;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -34,5 +34,11 @@
 
     // Configure the view for the selected state
 }
+
+- (IBAction)btnDisclaimerTouched:(id)sender
+{
+    NSLog(@"Button pressed");
+}
+
 
 @end

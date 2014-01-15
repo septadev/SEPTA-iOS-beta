@@ -34,6 +34,7 @@
     NSMutableArray *currentTripsArr;  // Filtered from master list based on direction_id and service_id
     
     BOOL _startENDButtonPressed;
+    BOOL _inDarkTerritory;
     
     NSInteger _currentDisplayDirection;
     NSMutableString *_servicePredicate;
@@ -120,6 +121,7 @@
         _use24HourTime = [object boolValue];
     }
     
+    _inDarkTerritory = NO;  // Default to this
     
     _message = nil;
     
@@ -296,6 +298,7 @@
     
     [self updateServiceID];
     
+    [self checkIfInDarkTerritory];
     [self loadTripsInTheBackground];
 //    [self getAdvisories];
     
@@ -461,9 +464,17 @@
                                                   }];
     
     
+    REMenuItem *disclaimerItem = [[REMenuItem alloc] initWithTitle:@"Real Time Information"
+                                                        subtitle: @"Regional Rail Service"
+                                                           image:[UIImage imageNamed:@"tipsBack.png"]
+                                                highlightedImage:nil
+                                                          action:^(REMenuItem *item) {
+                                                              [self loadDisclaimer];
+                                                          }];
     
     
-    _menu = [[REMenu alloc] initWithItems:@[favoritesItem, fareItem, advisoryItem] ];
+    
+    _menu = [[REMenu alloc] initWithItems:@[favoritesItem, fareItem, advisoryItem, disclaimerItem] ];
     _menu.cornerRadius = 4;
     _menu.shadowRadius = 4;
     _menu.shadowColor = [UIColor blackColor];
@@ -1785,6 +1796,18 @@
     
 }
 
+-(void) disclaimerButtonPressed: (id) sender
+{
+    
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableTrips];
+    NSIndexPath *indexPath = [self.tableTrips indexPathForRowAtPoint:buttonPosition];
+    if (indexPath != nil)
+    {
+        [self loadDisclaimer];
+    }
+    
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -1837,6 +1860,17 @@
         
         ActiveTrainObject *atObject = [activeTrainsArr objectAtIndex: indexPath.row];
         [[cell lblTrainNo]    setText: [NSString stringWithFormat:@"%d", [atObject.trainNo intValue] ] ];
+        
+        if ( _inDarkTerritory )
+        {
+            [[cell btnDisclaimer] addTarget:self action:@selector(disclaimerButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+            [[cell btnDisclaimer] setHidden:NO];
+        }
+        else
+        {
+            [[cell btnDisclaimer] addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+            [[cell btnDisclaimer] setHidden:YES];
+        }
         
         int delay = [atObject.trainDelay intValue];
         //        NSLog(@"IVC - ActiveTrain delay: %d", delay);
@@ -2702,6 +2736,9 @@
     }
     
     
+    [self checkIfInDarkTerritory];
+    
+    
     if ( ( itinerary.startStopID != nil ) && ( itinerary.endStopID !=  nil ) )
     {
         [self loadTripsInTheBackground];
@@ -2744,6 +2781,42 @@
     
 }
 
+
+-(void) checkIfInDarkTerritory
+{
+    
+    // All the stop ids from Thorndale to Overbrook, Newark to Darby and Trenton to North Philadelphia
+    NSString *darkTerritoryStopIDs = @"90501,90502,90503,90504,90505,90506,90507,90508,90509,90510,90511,90512,90513,90514,90515,90516,90517,90518,90519,90520,90521,90522,90201,90202,90203,90204,90205,90206,90207,90209,90210,90211,90212,90213,90214,90215,90216,90217,90701,90702,90703,90704,90706,90707,90708,90709,90710,90711";
+    
+    NSArray *darkTerritoryStopIDArray = [darkTerritoryStopIDs componentsSeparatedByString:@","];
+    
+    
+    NSString *startID;
+    NSString *endID;
+    
+    @try
+    {
+        startID = [itinerary.startStopID stringValue];
+        endID   = [itinerary.endStopID stringValue];
+    }
+    @catch (NSException *e)
+    {
+        NSLog(@"Exception: %@", e);
+        startID = @"NA";
+        endID = @"NA";
+    }
+    @finally
+    {
+        // Cleanup code; executes whether or not an exception was found
+    }
+    
+    
+    if ( [darkTerritoryStopIDArray containsObject: startID ] || [darkTerritoryStopIDArray containsObject: endID ] )
+        _inDarkTerritory = YES;
+    else
+        _inDarkTerritory = NO;
+    
+}
 
 #pragma mark - StopNamesForRoute Protocol
 -(void) doneButtonPressed:(StopNamesForRouteTableController *)view WithStopName:(NSString *)selectedStopName andStopID:(NSInteger)selectedStopID withDirectionID:(NSNumber*)directionID
@@ -4083,6 +4156,37 @@
 //};
 
 
+-(void) loadDisclaimer
+{
+
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC - loadDisclaimer");
+#endif
+
+    
+    NSString *storyboardName = @"CommonWebViewStoryboard";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    CommonWebViewController *cwVC = (CommonWebViewController*)[storyboard instantiateViewControllerWithIdentifier:@"CommonWebViewStoryboard"];
+    
+//    [cwVC setAlertArr: _currentAlert ];
+    [cwVC setBackImageName: _backButtonImage];
+    [cwVC setTitle:@"Real Time Information"];
+    
+    NSString *p1 = @"<p class='indent'>In the event of a significant delay on a regularly scheduled train you may see the word 'SUSPEND' in the status column. This may mean the train is temporarily canceled while we work on a problem or it may mean the train will not continue operation. In that case, you may see a listing for another train with a different origination point and the same train number with a 'P' after it, i.e., 6353P. The 'P' means that SEPTA has sent another train to pick up customers to complete the original train's journey. If a train has been 'suspended' it will not appear as the second train of a connecting trip</p>";
+    
+    NSString *p2 = @"<p class='indent'>SEPTA operates 13 rail lines that travel to destinations across the region. Some of these trains operate on SEPTA controlled track and some on Amtrak territory. Our Regional Rail Control Center can 'see' all of the trains traveling on SEPTA territory in real time, so the status information posted on TrainView is also in real time. Train status for service originating from Amtrak territory - Newark, DE (WIL), Trenton , NJ, (TRE) and Thorndale (PAO) - is estimated times, since the Control Center cannot 'see' the actual movement of these trains. The Control Center receives updated reports about these trains and that information is published on TrainView.</p>";
+    
+    NSString *html = [NSString stringWithFormat:@"<html><head><title>Next To Arrive</title></head><body><div><ul> <li>%@</li> <li>%@</li> </ul> </div>", p2, p1];
+    
+    [cwVC setHTML: html];
+    
+    [self.navigationController pushViewController:cwVC animated:YES];
+    
+    
+}
+
+
+
 -(void) loadAdvisories
 {
   
@@ -4256,7 +4360,6 @@
         [alertsItem setSubtitle: ALERTS_EMPTY];
     }
 
-    
 }
 
 

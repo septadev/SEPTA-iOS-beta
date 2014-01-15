@@ -166,6 +166,7 @@
     
 //    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
 //    appDelegate.window
+    return;  // Temporarily disabled while the map issue with Maps is worked out
     
     ALAlertBanner *_alertBanner = [ALAlertBanner alertBannerForView:self.mapView
                                                style:ALAlertBannerStyleFailure

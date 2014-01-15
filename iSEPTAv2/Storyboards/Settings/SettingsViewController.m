@@ -185,6 +185,60 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath: indexPath];
+    
+    
+    if ( cell.tag == 300 ) // Source Code
+    {
+        
+        [self loadBlurb];
+        
+    }
+    else if ( cell.tag == 150 )  // Update
+    {
+        [self loadUpdatesVC];
+    }
+    
+}
+
+-(void) loadUpdatesVC
+{
+    
+    NSString *storyboardName = @"AutomaticUpdates";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    AutomaticUpdatesViewController *cwVC = (AutomaticUpdatesViewController*)[storyboard instantiateViewControllerWithIdentifier:@"AutomaticUpdates"];
+    
+    [self.navigationController pushViewController:cwVC animated:YES];
+
+}
+
+-(void) loadBlurb
+{
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"SVC - loadBlurb");
+#endif
+    
+    
+    NSString *storyboardName = @"CommonWebViewStoryboard";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+    CommonWebViewController *cwVC = (CommonWebViewController*)[storyboard instantiateViewControllerWithIdentifier:@"CommonWebViewStoryboard"];
+    
+    //    [cwVC setAlertArr: _currentAlert ];
+    
+    [cwVC setBackImageName: @"attributionsIcon.png"];
+    [cwVC setTitle:@"Source Code"];
+    
+    NSString *p1 = @"<p class='indent'>Source code to the beta version of SEPTA's iOS application, which will be released to the public at the end of October. The source code is available under an open source licence, but the graphics are not. Since we can not release the graphics at this time, they have been modified so that the application can function with the source provided: <a href='https://github.com/septadev/SEPTA-iOS-beta'>https://github.com/septadev/SEPTA-iOS-beta</a>.</p>";
+    
+    NSString *html = [NSString stringWithFormat:@"<html><head><title>Next To Arrive</title></head><body><div>%@ </ul> </div>", p1];
+    
+    [cwVC setHTML: html];
+    
+    [self.navigationController pushViewController:cwVC animated:YES];
+    
+    
 }
 
 - (void)viewDidUnload

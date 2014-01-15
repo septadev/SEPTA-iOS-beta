@@ -16,7 +16,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblNextStop;
 @property (weak, nonatomic) IBOutlet UILabel *lblDestination;
 
-@property (weak, nonatomic) IBOutlet UIImageView *imgAlarm;
-@property (weak, nonatomic) IBOutlet UIImageView *imgMyTrain;
+//@property (weak, nonatomic) IBOutlet UIImageView *imgAlarm;
+//@property (weak, nonatomic) IBOutlet UIImageView *imgMyTrain;
+
+//@property (weak, nonatomic) IBOutlet UIImageView *imgDisclaimer;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnDisclaimer;
+
 
 @end

@@ -14,12 +14,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
+                        <inset key="insetFor6xAndEarlier" minX="-20" minY="-20" maxX="40" maxY="40"/>
                         <connections>
                             <outlet property="dataSource" destination="iqf-Lp-mSw" id="Hc2-y8-qmW"/>
                             <outlet property="delegate" destination="iqf-Lp-mSw" id="RVy-dl-Wcg"/>
                             <outletCollection property="gestureRecognizers" destination="Bec-Ik-7B6" appends="YES" id="PhF-qM-Nmd"/>
                         </connections>
                     </tableView>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="gestureLongPress" destination="Bec-Ik-7B6" id="NNv-mh-9ON"/>
                     </connections>
