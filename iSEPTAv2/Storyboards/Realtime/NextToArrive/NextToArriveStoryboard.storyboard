@@ -21,9 +21,7 @@
                             <outletCollection property="gestureRecognizers" destination="Bec-Ik-7B6" appends="YES" id="PhF-qM-Nmd"/>
                         </connections>
                     </tableView>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <connections>
                         <outlet property="gestureLongPress" destination="Bec-Ik-7B6" id="NNv-mh-9ON"/>
                     </connections>

@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSString *message;
 @property (nonatomic, strong) NSString *effective_date;
 @property (nonatomic, strong) NSString *version;
+@property (nonatomic, strong) NSString *change_log;
 
 @end
 
@@ -32,8 +33,10 @@
 @interface GetDBVersionAPI : NSObject
 
 @property (nonatomic, weak) id <GetDBVersionDataAPIProtocol> delegate;
+@property (nonatomic, strong, readonly) NSString *localMD5;
 
 -(void) fetchData;
 -(NSDictionary*) getData;
+-(NSString*) loadLocalMD5;
 
 @end

@@ -72,7 +72,7 @@
     
     [super viewWillDisappear:animated];
     
-    [ALAlertBanner forceHideAllAlertBannersInView:self.tableView];
+    [ALAlertBanner forceHideAllAlertBannersInView:self.view];
     
 }
 
@@ -113,9 +113,7 @@
     
     
     [_tableData addObject:_itinerary forTitle:@"Itinerary" withTag:kNextToArriveSectionStartEndCells];
-//    [_tableData setTag:kNextToArriveSectionStartEndCells forTitle:@"Itinerary"];
     
-    [[self.tabBarController tabBar] setTranslucent:NO]; // FUCK NO!
     
     // Registering xib
     [self.tableView registerNib:[UINib nibWithNibName:@"NextToArriveTripHistoryCell"    bundle:nil] forCellReuseIdentifier:@"NextToArriveTripHistoryCell"];
@@ -272,7 +270,7 @@
                                                               [self loadFareVC];
                                                           }];
     
-    REMenuItem *disclaimerItem = [[REMenuItem alloc] initWithTitle:@"Real Time Information"
+    REMenuItem *disclaimerItem = [[REMenuItem alloc] initWithTitle:@"Real Time"
                                                           subtitle: @"Regional Rail Service"
                                                              image:[UIImage imageNamed:@"tipsBack.png"]
                                                   highlightedImage:nil
@@ -411,6 +409,17 @@
 
 
 #pragma mark - UITableView data source
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    NSLog(@"scrollViewDidScroll");
+//}
+//
+//
+//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+//{
+//    NSLog(@"scrollViewWillBeginDragging");
+//}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -1010,6 +1019,8 @@
         return [_menu close];
     }
     
+    [ALAlertBanner forceHideAllAlertBannersInView:self.view];
+    
 }
 
 //-(void) scrollViewDidScroll:(UIScrollView *)scrollView
@@ -1391,15 +1402,14 @@
     
     if ( [darkTerritoryStopIDArray containsObject: startID ] || [darkTerritoryStopIDArray containsObject: endID ] )
     {
-        NSLog(@"***  DARK TERRITORY!!!  DARK TERRITORY!!  ***");
+//        NSLog(@"***  DARK TERRITORY!!!  DARK TERRITORY!!  ***");
+//        NSLog(@"rect: %@", NSStringFromCGRect(self.tableView.frame));
         
-        NSLog(@"rect: %@", NSStringFromCGRect(self.tableView.frame));
-        
-        ALAlertBanner *_alertBanner = [ALAlertBanner alertBannerForView:self.tableView
+        ALAlertBanner *aBanner = [ALAlertBanner alertBannerForView:self.view
                                                    style:ALAlertBannerStyleFailure
                                                 position:ALAlertBannerPositionBottom
-                                                   title:@"Dark Territory"
-                                                subtitle:@"One or more stops are in dark territory.  Tap for more details."
+                                                   title:@"Non-SEPTA Territory"
+                                                subtitle:@"One or more selected stops are in Non-SEPTA territory.  Tap for more details."
                                              tappedBlock:^(ALAlertBanner *alertBanner)
                         {
 
@@ -1408,11 +1418,11 @@
                             
                         }];
         
-//        NSTimeInterval showTime = 4.0f;
-//        [_alertBanner setSecondsToShow: showTime];
+        NSTimeInterval showTime = 4.0f;
+        [aBanner setSecondsToShow: showTime];
         
-        [_alertBanner show];
-        NSLog(@"Banner show!");
+        [aBanner show];
+//        NSLog(@"Banner show!");
     }
     
 
@@ -2044,7 +2054,7 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     
     //    [cwVC setAlertArr: _currentAlert ];
     [cwVC setBackImageName: @"NTA-white.png"];
-    [cwVC setTitle:@"Real Time Information"];
+    [cwVC setTitle:@"Real Time"];
     
     NSString *p1 = @"<p class='indent'>In the event of a significant delay on a regularly scheduled train you may see the word 'SUSPEND' in the status column. This may mean the train is temporarily canceled while we work on a problem or it may mean the train will not continue operation. In that case, you may see a listing for another train with a different origination point and the same train number with a 'P' after it, i.e., 6353P. The 'P' means that SEPTA has sent another train to pick up customers to complete the original train's journey. If a train has been 'suspended' it will not appear as the second train of a connecting trip</p>";
     

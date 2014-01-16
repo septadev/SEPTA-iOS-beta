@@ -15,6 +15,7 @@
 @synthesize message;
 @synthesize title;
 @synthesize version;
+@synthesize change_log;
 
 -(NSString*) description
 {
@@ -30,9 +31,11 @@
     AFJSONRequestOperation *_jsonOperation;
 
     DBVersionDataObject *_dbObject;
+//    NSString *_localMD5;
     
 }
 
+@synthesize localMD5 = _localMD5;
 
 -(void) fetchData
 {
@@ -68,7 +71,16 @@
 
     [jsonDict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
     {
-        [dbObject setValue:obj forKey:key];
+        
+        @try
+        {
+            [dbObject setValue:obj forKey:key];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"GetDBVersionAPI processDBVersionJSON exception: %@", exception);
+//            NSLog(@"Looking for %@ in the JSON", key);
+        }
+
     }];
     
     _dbObject = dbObject;
@@ -86,5 +98,36 @@
     
     return _dbObject;
 }
+
+
+-(NSString*) loadLocalMD5
+{
+    
+    //    NSString *localMD5;
+    
+    NSString *md5Path = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"md5"];
+    if ( md5Path == nil )
+        return nil;
+    
+    NSString *md5JSON = [[NSString alloc] initWithContentsOfFile:md5Path encoding:NSUTF8StringEncoding error:NULL];
+    if ( md5JSON == nil )
+        return nil;
+    
+    NSError *error = nil;
+    NSDictionary *md5dict = [NSJSONSerialization JSONObjectWithData: [md5JSON dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+    
+    if ( error != nil )
+        return nil;
+    
+    NSArray *md5Arr = [md5dict valueForKeyPath:@"md5"];
+    
+    _localMD5 = [md5Arr firstObject];
+    
+//    NSLog(@"localMD5: %@", _localMD5);
+    
+    return _localMD5;
+}
+
+
 
 @end

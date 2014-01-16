@@ -23,10 +23,11 @@
     UIView *_testView;
     
     NSMutableArray *_alertMessage;
+//    NSMutableArray *_alertBannerArr;
     NSTimer *_alertTimer;
     
     GetAlertDataAPI *_alertAPI;
-    ALAlertBanner *_alertBanner;
+//    ALAlertBanner *_alertBanner;
     
     NSTimer *_dbVersionTimer;
     GetDBVersionAPI *_dbVersionAPI;
@@ -48,7 +49,9 @@
 {
     
     NSLog(@"RVC - viewWillDisappear");
-
+    [ALAlertBanner forceHideAllAlertBannersInView:self.view];
+//    [_alertBannerArr removeAllObjects];
+    
     // Remove all timers from the main loop
     if ( _alertTimer != nil )
         [_alertTimer invalidate];
@@ -56,9 +59,6 @@
     if ( _dbVersionTimer != nil )
         [_dbVersionTimer invalidate];
 
-    
-    [ALAlertBanner forceHideAllAlertBannersInView:self.view];
-//    _alertBanner = nil;
     
 //    [_alertAPI setDelegate:nil];
 //    _alertAPI = nil;
@@ -76,8 +76,8 @@
     [self getGenericAlert];
 
     // This does not fail reachability safely
-//    _dbVersionTimer = [NSTimer scheduledTimerWithTimeInterval:DBVERSION_REFRESH target:self selector:@selector(checkDBVersion) userInfo:nil repeats:YES];
-//    [self checkDBVersion];
+    _dbVersionTimer = [NSTimer scheduledTimerWithTimeInterval:DBVERSION_REFRESH target:self selector:@selector(checkDBVersion) userInfo:nil repeats:YES];
+    [self checkDBVersion];
     
     UIInterfaceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     [self changeOrientation:currentOrientation];
@@ -196,7 +196,7 @@
     
     
 //    [self automaticDownloading];
-    
+//    [self checkDBVersion];
 //    [self md5check];
 
     
@@ -299,20 +299,29 @@
 -(void) checkDBVersion
 {
     
-    NSString *localMD5;
-    
-    NSString *md5Path = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"md5"];
-    NSString *md5JSON = [[NSString alloc] initWithContentsOfFile:md5Path encoding:NSUTF8StringEncoding error:NULL];
-    
-    NSError *error = nil;
-    NSDictionary *md5dict = [NSJSONSerialization JSONObjectWithData: [md5JSON dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-    NSArray *md5Arr = [md5dict valueForKeyPath:@"md5"];
-    
-    localMD5 = [md5Arr firstObject];
-    
-    NSLog(@"localMD5: %@", localMD5);
+//    NSString *localMD5;
+//    
+//    NSString *md5Path = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"md5"];
+//    NSString *md5JSON = [[NSString alloc] initWithContentsOfFile:md5Path encoding:NSUTF8StringEncoding error:NULL];
+//    
+//    NSError *error = nil;
+//    NSDictionary *md5dict = [NSJSONSerialization JSONObjectWithData: [md5JSON dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+//    NSArray *md5Arr = [md5dict valueForKeyPath:@"md5"];
+//    
+//    localMD5 = [md5Arr firstObject];
+//    
+//    NSLog(@"localMD5: %@", localMD5);
     
 //    NSDictionary *md5dict = [md5JSON JSONValue];
+
+    
+    Reachability *network = [Reachability reachabilityForInternetConnection];
+    if ( ![network isReachable] )
+    {
+        return;
+    }
+
+    
     
     if ( _dbVersionAPI == nil )
     {
@@ -326,7 +335,31 @@
 
 -(void) dbVersionFetched:(DBVersionDataObject*) obj
 {
-    NSLog(@"version: %@", obj);
+//    NSLog(@"version: %@", obj);
+    
+    // TODO: Minimize the time this message is played; once a day
+    
+    return;
+    if ( obj.message != nil )
+    {
+        
+        ALAlertBanner *alertBanner = [ALAlertBanner alertBannerForView:self.view
+                                                                 style:ALAlertBannerStyleFailure
+                                                              position:ALAlertBannerPositionBottom
+                                                                 title:@"Alert"
+                                                              subtitle:obj.message
+                                                           tappedBlock:^(ALAlertBanner *alertBanner)
+                                      {
+                                          NSLog(@"Generic Message: %@!", obj.message);
+                                          [alertBanner hide];
+                                      }];
+        
+        NSTimeInterval showTime = 5.0f;
+        [alertBanner setSecondsToShow: showTime];
+        
+        [alertBanner show];
+        
+    }
     
 //    [self downloadTest];
 }
@@ -655,6 +688,17 @@
     
 //    SystemAlertObject *saObject = [alert objectAtIndex:0];
 
+    // --==  How to test alerts  ==--
+//    SystemAlertObject *saObject = [[SystemAlertObject alloc] init];
+//    [saObject setCurrent_message:@"Greg was here!"];
+//    [alert addObject: saObject];
+//
+//    SystemAlertObject *saObject1 = [[SystemAlertObject alloc] init];
+//    [saObject1 setCurrent_message:@"And now the whole place stinks!"];
+//    [alert addObject: saObject1];
+   
+    
+    
     if ( [alert count] == 0 )
         _alertMessage = nil;
     
@@ -666,7 +710,7 @@
     {
      
         if ( [saObject numOfAlerts] < 1 )
-            break;
+            continue;
         
         for (NSString *message in _alertMessage)
         {
@@ -697,7 +741,7 @@
             [_alertMessage addObject: saObject.current_message];
         
         
-            _alertBanner = [ALAlertBanner alertBannerForView:self.view
+            ALAlertBanner *alertBanner = [ALAlertBanner alertBannerForView:self.view
                                                    style:ALAlertBannerStyleFailure
                                                 position:ALAlertBannerPositionBottom
                                                    title:@"Alert"
@@ -705,13 +749,13 @@
                                              tappedBlock:^(ALAlertBanner *alertBanner)
                         {
                             NSLog(@"Generic Message: %@!", saObject.current_message);
-                            [_alertBanner hide];
+                            [alertBanner hide];
                         }];
 
             NSTimeInterval showTime = 5.0f;
-            [_alertBanner setSecondsToShow: showTime];
+            [alertBanner setSecondsToShow: showTime];
 
-            [_alertBanner show];
+            [alertBanner show];
         }
         
     }
