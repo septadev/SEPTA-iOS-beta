@@ -21,6 +21,10 @@
 #import <ALAlertBanner/ALAlertBanner.h>
 #import <AFNetworking.h>
 #import <AFDownloadRequestOperation.h>
+#import <ZipArchive.h>
+#import <FMDatabase.h>
+
+#import "UpdateStateMachineObject.h"
 
 
 #define VERSION_CHECKING  @"Checking for new schedules"

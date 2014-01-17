@@ -85,6 +85,7 @@
 		274B924D188738D700C7A297 /* AutomaticUpdates.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 274B924C188738D700C7A297 /* AutomaticUpdates.storyboard */; };
 		274B92531887392300C7A297 /* AutomaticUpdatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274B92521887392300C7A297 /* AutomaticUpdatesViewController.m */; };
 		274B9258188853C900C7A297 /* SEPTA.md5 in Resources */ = {isa = PBXBuildFile; fileRef = 274B9257188853C900C7A297 /* SEPTA.md5 */; };
+		274B925B188985D300C7A297 /* UpdateStateMachineObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 274B925A188985D300C7A297 /* UpdateStateMachineObject.m */; };
 		274DD6301688BED0006BEC97 /* NTASaveObjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274DD62F1688BED0006BEC97 /* NTASaveObjectCell.xib */; };
 		274DD6331688BF95006BEC97 /* NTASaveObjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 274DD6321688BF94006BEC97 /* NTASaveObjectCell.m */; };
 		274E02521663C80000BCE8A2 /* GTFSDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 274E02501663C80000BCE8A2 /* GTFSDataModel.xcdatamodeld */; };
@@ -893,6 +894,8 @@
 		274B92511887392300C7A297 /* AutomaticUpdatesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutomaticUpdatesViewController.h; path = "Storyboards/Common Storyboards/AutomaticUpdates/AutomaticUpdatesViewController.h"; sourceTree = "<group>"; };
 		274B92521887392300C7A297 /* AutomaticUpdatesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AutomaticUpdatesViewController.m; path = "Storyboards/Common Storyboards/AutomaticUpdates/AutomaticUpdatesViewController.m"; sourceTree = "<group>"; };
 		274B9257188853C900C7A297 /* SEPTA.md5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SEPTA.md5; path = database/SEPTA.md5; sourceTree = SOURCE_ROOT; };
+		274B9259188985D300C7A297 /* UpdateStateMachineObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UpdateStateMachineObject.h; path = "Storyboards/Common Storyboards/AutomaticUpdates/UpdateStateMachineObject.h"; sourceTree = "<group>"; };
+		274B925A188985D300C7A297 /* UpdateStateMachineObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdateStateMachineObject.m; path = "Storyboards/Common Storyboards/AutomaticUpdates/UpdateStateMachineObject.m"; sourceTree = "<group>"; };
 		274DD62F1688BED0006BEC97 /* NTASaveObjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTASaveObjectCell.xib; sourceTree = "<group>"; };
 		274DD6311688BF94006BEC97 /* NTASaveObjectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NTASaveObjectCell.h; path = Realtime/NTASaveObjectCell.h; sourceTree = "<group>"; };
 		274DD6321688BF94006BEC97 /* NTASaveObjectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NTASaveObjectCell.m; path = Realtime/NTASaveObjectCell.m; sourceTree = "<group>"; };
@@ -2242,6 +2245,8 @@
 				274B924C188738D700C7A297 /* AutomaticUpdates.storyboard */,
 				274B92511887392300C7A297 /* AutomaticUpdatesViewController.h */,
 				274B92521887392300C7A297 /* AutomaticUpdatesViewController.m */,
+				274B9259188985D300C7A297 /* UpdateStateMachineObject.h */,
+				274B925A188985D300C7A297 /* UpdateStateMachineObject.m */,
 			);
 			name = "Automatic Updates";
 			sourceTree = "<group>";
@@ -5238,6 +5243,7 @@
 				27A6939517A172C1008712FB /* NextToArriveTripHistoryCell.m in Sources */,
 				27A6939917A175F3008712FB /* StopNamesTableViewController.m in Sources */,
 				2708114717A988EB00B62FBD /* RealtimeVehicleInformationCell.m in Sources */,
+				274B925B188985D300C7A297 /* UpdateStateMachineObject.m in Sources */,
 				2708114C17A990A500B62FBD /* SimpleMapViewController.m in Sources */,
 				27A972FD17AA9148001A4395 /* KMLMapsViewController.m in Sources */,
 				27A9730217AAA107001A4395 /* TransitViewViewController.m in Sources */,

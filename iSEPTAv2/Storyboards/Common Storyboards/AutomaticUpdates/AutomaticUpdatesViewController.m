@@ -57,19 +57,21 @@
     
     CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed:@"update-white.png" withTarget:self andWithAction:@selector(backButtonPressed:)];
     self.navigationItem.leftBarButtonItem = backBarButtonItem;
+
     
-    CustomFlatBarButton *btnUpdate = [[CustomFlatBarButton alloc] initWithTitle:@"Update" style: UIBarButtonItemStylePlain target:self action:@selector(update:)];
-    [self.navigationItem setRightBarButtonItem: btnUpdate];
-    [btnUpdate setEnabled:NO];
+//    CustomFlatBarButton *btnUpdate = [[CustomFlatBarButton alloc] initWithTitle:@"Update" style: UIBarButtonItemStylePlain target:self action:@selector(update:)];
+//    [self.navigationItem setRightBarButtonItem: btnUpdate];
+//    [btnUpdate setEnabled:NO];
+    
     
 //    UIBarButtonItem *btnUpdate = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(update:)];
 //    [self.navigationItem setRightBarButtonItem:btnUpdate];
     
     //    float navW = [(UIView*)[self.navigationItem.leftBarButtonItem  valueForKey:@"view"] frame].size.width;
     //    float w    = self.view.frame.size.width;
-//    LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0,500, 32) withTitle:@"Update"];
-//    [self.navigationItem setTitleView:titleView];
-
+    LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0,500, 32) withTitle:@"Update"];
+    [self.navigationItem setTitleView:titleView];
+    
     
     id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:Update:AutoUpdate"];
     if ( object == nil )
@@ -182,8 +184,28 @@
             break;
             
         case kAutomaticUpdateFinishedDownload:
+            // TODO: When file was successfully downloaded, save state
+            
             [self.lblVersionStatus setText: @"Finished Download"];
+            [self.btnMulti setHidden:NO];
             [self.btnMulti setTitle:@"Install" forState:UIControlStateNormal];
+
+            
+            
+//        {
+//            UpdateStateMachineObject *currentState = [[UpdateStateMachineObject alloc] init];
+//            DBVersionDataObject *dbObj = [_dbVersionAPI getData];
+//            
+//            [currentState setEffective_date: dbObj.effective_date];
+//            [currentState setSaved_state: [NSNumber numberWithInt: _updateSM] ];
+//            [currentState setMd5: dbObj.md5];
+//            
+//            NSData *currentObj = [NSKeyedArchiver archivedDataWithRootObject: currentState];
+//            
+//            [[NSUserDefaults standardUserDefaults] setObject: currentObj forKey:@"Settings:Update:StateMachineStatus"];
+//            [[NSUserDefaults standardUserDefaults] synchronize];
+//        }
+            
             break;
             
         case kAutomaticUpdateInstalling:
@@ -241,6 +263,31 @@
 -(void) dbVersionFetched:(DBVersionDataObject*) obj
 {
 
+    
+    // Check if the state has already been saved, then compare the saved effective date with the current effective date
+    // If they are the same, load the saved state of the FSM, otherwise delete the saved state and continue as normal.
+    
+    UpdateStateMachineObject *savedSMStatus;
+    
+    NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:Update:StateMachineStatus"];
+    savedSMStatus = (UpdateStateMachineObject*)[NSKeyedUnarchiver unarchiveObjectWithData: userData];
+    
+    if ( [savedSMStatus.effective_date isEqualToString: obj.effective_date] && [savedSMStatus.md5 isEqualToString:obj.md5] )
+    {
+        [self updateStateTo: (AutomaticUpdateState)[savedSMStatus.saved_state intValue] ];
+        return;
+    }
+    else
+    {
+        UpdateStateMachineObject *blankObj = [[UpdateStateMachineObject alloc] init];
+        NSData *dataObj = [NSKeyedArchiver archivedDataWithRootObject: blankObj];
+
+        [self cleanUpDownload];
+        
+        [[NSUserDefaults standardUserDefaults] setObject: dataObj forKey:@"Settings:Update:StateMachineStatus"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
     
     if ( [_dbVersionAPI loadLocalMD5] )
     {
@@ -313,6 +360,17 @@
         
         [self.progressBar setProgress: percentDone];
         
+        if ( totalBytesRead == totalBytesExpectedToReadForFile )
+        {
+//            [self updateStateTo: kAutomaticUpdateFinishedDownload];
+            
+            // This should be its own state
+            [self.lblVersionStatus setText: @"Finished Download"];
+            [self.btnMulti setHidden:NO];
+            [self.btnMulti setTitle:@"Install" forState:UIControlStateNormal];
+            // Change the text of the button but don't update the state until the completion block executes
+        }
+        
     }];
     
     
@@ -338,6 +396,7 @@
     
     [dOp setCompletionBlock:^{
         NSLog(@"Download completed!");
+        [self updateStateTo: kAutomaticUpdateFinishedDownload];
     }];
     
     [dOp start];
@@ -353,8 +412,6 @@
 {
     
     // Remove any partial file downloaded
-    NSURL *downloadURL = [[NSURL alloc] initWithString: @"http://www3.septa.org/hackathon/dbVersion/download.php"];
-    NSURLRequest *request = [NSURLRequest requestWithURL: downloadURL];
     NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
 
     if ( zipPath == nil )
@@ -365,7 +422,7 @@
     
     if ( error )
     {
-        NSLog(@"Unable to delete zip file");
+        NSLog(@"Unable to delete %@", zipPath);
     }
     else
     {
@@ -383,6 +440,69 @@
     // Is current date before the effective date?
     //    YES - Put up alert, warn user the new schedule won't be active for X days (Y hours)
     //    NO  - Start install
+    
+    ZipArchive *zip = [[ZipArchive alloc] init];
+    
+    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
+    
+    if ( [zip UnzipOpenFile: zipPath] )
+    {
+        
+        NSArray *contents = [zip getZipFileContents];
+        NSLog(@"Contents: %@", contents);
+        
+        BOOL ret = [zip UnzipFileTo:[[self filePath] stringByDeletingLastPathComponent] overWrite:YES];
+        if ( NO == ret )
+        {
+            NSLog(@"Unable to unzip");
+        }
+        
+        
+        NSDirectoryEnumerator* dirEnum = [[NSFileManager defaultManager] enumeratorAtPath: zipPath];
+        NSString* file;
+        NSError* error = nil;
+        NSUInteger count = 0;
+        while ((file = [dirEnum nextObject]))
+        {
+            count += 1;
+            NSString* fullPath = [zipPath stringByAppendingPathComponent:file];
+            NSDictionary* attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:fullPath error:&error];
+            NSLog(@"file is not zero length: %@", attrs);
+        }
+
+        NSLog(@"%d == %d, files extracted successfully", count, [contents count]);
+        
+    }
+    [zip UnzipCloseFile];
+    
+    // The test!
+    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    [database open];
+    
+    FMResultSet *results = [database executeQuery:@"SELECT * FROM SECRETTABLE"];
+    
+    if ( [database hadError] )  // Basic DB error checking
+    {
+        
+        int errorCode = [database lastErrorCode];
+        NSString *errorMsg = [database lastErrorMessage];
+        
+        NSLog(@"SNFRTC - query failure, code: %d, %@", errorCode, errorMsg);
+        NSLog(@"SNFRTC - query str: %@", @"SELECT * FROM SECRETTABLE");
+        
+        return;  // If an error occurred, there's nothing else to do but exit
+        
+    } // if ( [database hadError] )
+
+    while ( [results next] )
+    {
+        NSString *message = [results stringForColumn:@"message"];
+        NSLog(@"The secret message is: %@", message);
+    }
+    
+    [database close];
+    
+    [self updateStateTo:kAutomaticUpdateFinishedInstall];
     
 }
 
@@ -512,6 +632,13 @@
             // Cancel button has been pressed
             
             [self updateStateTo:kAutomaticUpdateCancelledDownload];
+            
+            break;
+            
+        case kAutomaticUpdateFinishedDownload:
+            
+            [self updateStateTo:kAutomaticUpdateInstalling];
+            
             
             break;
             

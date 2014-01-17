@@ -230,7 +230,7 @@
     [cwVC setBackImageName: @"attributionsIcon.png"];
     [cwVC setTitle:@"Source Code"];
     
-    NSString *p1 = @"<p class='indent'>Source code to the beta version of SEPTA's iOS application, which will be released to the public at the end of October. The source code is available under an open source licence, but the graphics are not. Since we can not release the graphics at this time, they have been modified so that the application can function with the source provided: <a href='https://github.com/septadev/SEPTA-iOS-beta'>https://github.com/septadev/SEPTA-iOS-beta</a>.</p>";
+    NSString *p1 = @"<p class='indent'>Source code to the SEPTA iOS application is available under an open source license, but the graphics are not. Since we cannot release the graphics at this time, they have been modified so that the application can function with the source provided.  The source code and alternate images are available at: <a href='https://github.com/septadev/SEPTA-iOS-beta'>https://github.com/septadev/SEPTA-iOS-beta</a>.</p>";
     
     NSString *html = [NSString stringWithFormat:@"<html><head><title>Next To Arrive</title></head><body><div>%@ </ul> </div>", p1];
     

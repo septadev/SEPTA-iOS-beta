@@ -37,7 +37,7 @@
 @property (nonatomic, strong, readonly) NSString *localMD5;
 
 -(void) fetchData;
--(NSDictionary*) getData;
+-(DBVersionDataObject*) getData;
 -(NSString*) loadLocalMD5;
 
 @end

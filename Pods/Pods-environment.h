@@ -108,6 +108,12 @@
 #define COCOAPODS_VERSION_MINOR_SVPullToRefresh 4
 #define COCOAPODS_VERSION_PATCH_SVPullToRefresh 1
 
+// ZipArchive
+#define COCOAPODS_POD_AVAILABLE_ZipArchive
+#define COCOAPODS_VERSION_MAJOR_ZipArchive 1
+#define COCOAPODS_VERSION_MINOR_ZipArchive 2
+#define COCOAPODS_VERSION_PATCH_ZipArchive 0
+
 // hpple
 #define COCOAPODS_POD_AVAILABLE_hpple
 #define COCOAPODS_VERSION_MAJOR_hpple 0

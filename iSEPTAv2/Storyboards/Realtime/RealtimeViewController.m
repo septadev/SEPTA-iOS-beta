@@ -339,25 +339,57 @@
     
     // TODO: Minimize the time this message is played; once a day
     
-    return;
+
     if ( obj.message != nil )
     {
+
         
-        ALAlertBanner *alertBanner = [ALAlertBanner alertBannerForView:self.view
-                                                                 style:ALAlertBannerStyleFailure
-                                                              position:ALAlertBannerPositionBottom
-                                                                 title:@"Alert"
-                                                              subtitle:obj.message
-                                                           tappedBlock:^(ALAlertBanner *alertBanner)
-                                      {
-                                          NSLog(@"Generic Message: %@!", obj.message);
-                                          [alertBanner hide];
-                                      }];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"MM/d/yy";
         
-        NSTimeInterval showTime = 5.0f;
-        [alertBanner setSecondsToShow: showTime];
+        NSDate *date = [dateFormatter dateFromString: obj.effective_date];
         
-        [alertBanner show];
+        NSTimeInterval effectiveDiff = [date timeIntervalSinceNow];
+        NSTimeInterval lastDateDiff;
+        
+        NSDate *lastDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:Update:DateOfLastNotification"];
+        
+        if ( lastDate == nil )
+            lastDateDiff = 60*60*24*365;
+        else
+            lastDateDiff = [[NSDate date] timeIntervalSinceDate: lastDate];
+        
+        
+        // Two checks are performed to determine if an alert message goes up
+        //   Does the new schedule go into effect within the next 7 days?
+        //                          AND
+        //   Has it been 24 hours since the last time this message was displayed?
+        //   Has the latest schedule been downloaded?
+        
+        if ( effectiveDiff < (60*60*24*7) && (lastDateDiff >= 60*60*24) )
+        {
+
+            ALAlertBanner *alertBanner = [ALAlertBanner alertBannerForView:self.view
+                                                                     style:ALAlertBannerStyleFailure
+                                                                  position:ALAlertBannerPositionBottom
+                                                                     title:obj.title
+                                                                  subtitle:obj.message
+                                                               tappedBlock:^(ALAlertBanner *alertBanner)
+                                          {
+                                              NSLog(@"Generic Message: %@!", obj.message);
+                                              [alertBanner hide];
+                                          }];
+            
+            NSTimeInterval showTime = 5.0f;
+            [alertBanner setSecondsToShow: showTime];
+            
+            [alertBanner show];
+        
+            [[NSUserDefaults standardUserDefaults] setObject: [NSDate date] forKey:@"Settings:Update:DateOfLastNotification"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+
+            
+        }
         
     }
     

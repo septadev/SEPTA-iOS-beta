@@ -27,6 +27,7 @@ PODS:
   - REMenu (1.7.1)
   - SVProgressHUD (1.0)
   - SVPullToRefresh (0.4.1)
+  - ZipArchive (1.2.0)
 
 DEPENDENCIES:
   - AFDownloadRequestOperation (~> 1.0.0)
@@ -41,6 +42,7 @@ DEPENDENCIES:
   - REMenu (~> 1.7.1)
   - SVProgressHUD (~> 1.0)
   - SVPullToRefresh (~> 0.4)
+  - ZipArchive (~> 1.2.0)
 
 SPEC CHECKSUMS:
   AFDownloadRequestOperation: fc0fca41410035278cad73a81a47ed0f3d35bb65
@@ -55,5 +57,6 @@ SPEC CHECKSUMS:
   REMenu: 4c85fa951c74b41b1eb7f9a31ebed2da8ae3f7d7
   SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
   SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2
+  ZipArchive: 93bff5d8b435767ccfac976ed08ca611d950d3d0
 
 COCOAPODS: 0.29.0
