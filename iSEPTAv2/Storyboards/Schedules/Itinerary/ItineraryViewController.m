@@ -464,9 +464,8 @@
                                                   }];
     
     
-    REMenuItem *disclaimerItem = [[REMenuItem alloc] initWithTitle:@"Real Time Information"
-                                                        subtitle: @"Regional Rail Service"
-                                                           image:[UIImage imageNamed:@"tipsBack.png"]
+    REMenuItem *disclaimerItem = [[REMenuItem alloc] initWithTitle:@"Real Time"
+                                                          subtitle: @"Regional Rail Service"                                                           image:[UIImage imageNamed:@"tipsBack.png"]
                                                 highlightedImage:nil
                                                           action:^(REMenuItem *item) {
                                                               [self loadDisclaimer];
@@ -1690,7 +1689,7 @@
     NSLog(@"IVC tV:willDisplayCell");
 #endif
     
-    [cell setBackgroundColor: [UIColor colorWithWhite:1.0f alpha:.8] ];
+    [cell setBackgroundColor: [UIColor colorWithWhite:1.0f alpha:0.8f] ];
     return;
     
     UIImageView *separator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gradient_line.png"]];
@@ -1861,6 +1860,8 @@
         ActiveTrainObject *atObject = [activeTrainsArr objectAtIndex: indexPath.row];
         [[cell lblTrainNo]    setText: [NSString stringWithFormat:@"%d", [atObject.trainNo intValue] ] ];
         
+        NSLog(@"_inDarkTerritory: %d, %d/%d", _inDarkTerritory, indexPath.section, indexPath.row);
+        
         if ( _inDarkTerritory )
         {
             [[cell btnDisclaimer] addTarget:self action:@selector(disclaimerButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -1933,10 +1934,10 @@
         TripObject *thisTrip = [currentTripsArr objectAtIndex:indexPath.row];
         
 //        if ( [thisTrip.serviceID intValue] == 4 )
-        if ( 0 )
-        {
-            NSLog(@"Holy shit, McGee!");
-        }
+//        if ( 0 )
+//        {
+//            NSLog(@"Holy shit, McGee!");
+//        }
         
         [[tCell lblTrainNo] setText: [NSString stringWithFormat:@"%d", [thisTrip.trainNo intValue] ] ];
 

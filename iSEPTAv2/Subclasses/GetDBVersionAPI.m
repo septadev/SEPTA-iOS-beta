@@ -108,6 +108,7 @@
 {
     
     //    NSString *localMD5;
+    _localMD5 = nil;
     
     NSString *md5Path = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"md5"];
     if ( md5Path == nil )

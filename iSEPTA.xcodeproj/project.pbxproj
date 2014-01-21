@@ -169,6 +169,16 @@
 		27A9730217AAA107001A4395 /* TransitViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A9730117AAA107001A4395 /* TransitViewViewController.m */; };
 		27A9730717AAA188001A4395 /* TransitRouteListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27A9730617AAA188001A4395 /* TransitRouteListCell.xib */; };
 		27A9730A17AAA1AC001A4395 /* TransitRouteListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A9730917AAA1AC001A4395 /* TransitRouteListCell.m */; };
+		27AEF7B1188EC6C0004EC5E0 /* commentsBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AEF7A6188EC6C0004EC5E0 /* commentsBack@2x.png */; };
+		27AEF7B2188EC6C0004EC5E0 /* faresBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AEF7A7188EC6C0004EC5E0 /* faresBack@2x.png */; };
+		27AEF7B3188EC6C0004EC5E0 /* tipsBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AEF7A8188EC6C0004EC5E0 /* tipsBack@2x.png */; };
+		27AEF7B4188EC6C0004EC5E0 /* tipsBackActive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AEF7A9188EC6C0004EC5E0 /* tipsBackActive@2x.png */; };
+		27AEF7B5188EC6C0004EC5E0 /* transitViewBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AEF7AA188EC6C0004EC5E0 /* transitViewBack@2x.png */; };
+		27AEF7B6188EC6C0004EC5E0 /* commentsBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AEF7AC188EC6C0004EC5E0 /* commentsBack.png */; };
+		27AEF7B7188EC6C0004EC5E0 /* faresBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AEF7AD188EC6C0004EC5E0 /* faresBack.png */; };
+		27AEF7B8188EC6C0004EC5E0 /* tipsBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AEF7AE188EC6C0004EC5E0 /* tipsBack.png */; };
+		27AEF7B9188EC6C0004EC5E0 /* tipsBackActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AEF7AF188EC6C0004EC5E0 /* tipsBackActive.png */; };
+		27AEF7BA188EC6C0004EC5E0 /* transitViewBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 27AEF7B0188EC6C0004EC5E0 /* transitViewBack.png */; };
 		27B285A618181FE400BD8825 /* LUCYGO.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27B285A418181FE400BD8825 /* LUCYGO.kml */; };
 		27B285A718181FE400BD8825 /* LUCYGR.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27B285A518181FE400BD8825 /* LUCYGR.kml */; };
 		27B285E71655326F002400F4 /* UserPreferenceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27B285E61655326F002400F4 /* UserPreferenceCell.xib */; };
@@ -427,12 +437,6 @@
 		8418ED7117FEF6BD003607D1 /* septaIcon-76px.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC0117FEF6BB003607D1 /* septaIcon-76px.png */; };
 		8418ED7217FEF6BD003607D1 /* septaIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC0217FEF6BB003607D1 /* septaIcon.png */; };
 		8418ED7317FEF6BD003607D1 /* septaIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC0317FEF6BB003607D1 /* septaIcon@2x.png */; };
-		8418ED7417FEF6BD003607D1 /* faresBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC0617FEF6BB003607D1 /* faresBack@2x.png */; };
-		8418ED7517FEF6BD003607D1 /* tipsBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC0717FEF6BB003607D1 /* tipsBack@2x.png */; };
-		8418ED7617FEF6BD003607D1 /* transitViewBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC0817FEF6BB003607D1 /* transitViewBack@2x.png */; };
-		8418ED7717FEF6BD003607D1 /* faresBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC0A17FEF6BB003607D1 /* faresBack.png */; };
-		8418ED7817FEF6BD003607D1 /* tipsBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC0B17FEF6BB003607D1 /* tipsBack.png */; };
-		8418ED7917FEF6BD003607D1 /* transitViewBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC0C17FEF6BB003607D1 /* transitViewBack.png */; };
 		8418ED7A17FEF6BD003607D1 /* BG_pattern-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC0E17FEF6BB003607D1 /* BG_pattern-white.png */; };
 		8418ED7B17FEF6BD003607D1 /* BG_pattern.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC0F17FEF6BB003607D1 /* BG_pattern.png */; };
 		8418ED7C17FEF6BD003607D1 /* BG_pattern@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8418EC1017FEF6BB003607D1 /* BG_pattern@2x.png */; };
@@ -756,8 +760,6 @@
 		84CC993E17B87F430087477E /* TransitServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CC993D17B87F430087477E /* TransitServiceCell.m */; };
 		84D12B4D17E0A3E50079A8D7 /* NearestTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D12B4C17E0A3E30079A8D7 /* NearestTimeCell.m */; };
 		84D12B5117E1F0B90079A8D7 /* MobileSiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D12B5017E1F0B90079A8D7 /* MobileSiteViewController.m */; };
-		84DEDE271806F81000061ABC /* commentsBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DEDE261806F81000061ABC /* commentsBack@2x.png */; };
-		84DEDE291806F81900061ABC /* commentsBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 84DEDE281806F81900061ABC /* commentsBack.png */; };
 		84F6AFFC17B18F5300680007 /* TabbedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6AFFB17B18F5300680007 /* TabbedButton.m */; };
 /* End PBXBuildFile section */
 
@@ -1032,6 +1034,16 @@
 		27A9730617AAA188001A4395 /* TransitRouteListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TransitRouteListCell.xib; path = "Storyboards/Realtime/TransitView/Custom Cells/TransitRouteListCell.xib"; sourceTree = "<group>"; };
 		27A9730817AAA1AC001A4395 /* TransitRouteListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransitRouteListCell.h; path = "Storyboards/Realtime/TransitView/Custom Cells/TransitRouteListCell.h"; sourceTree = "<group>"; };
 		27A9730917AAA1AC001A4395 /* TransitRouteListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransitRouteListCell.m; path = "Storyboards/Realtime/TransitView/Custom Cells/TransitRouteListCell.m"; sourceTree = "<group>"; };
+		27AEF7A6188EC6C0004EC5E0 /* commentsBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commentsBack@2x.png"; sourceTree = "<group>"; };
+		27AEF7A7188EC6C0004EC5E0 /* faresBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "faresBack@2x.png"; sourceTree = "<group>"; };
+		27AEF7A8188EC6C0004EC5E0 /* tipsBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tipsBack@2x.png"; sourceTree = "<group>"; };
+		27AEF7A9188EC6C0004EC5E0 /* tipsBackActive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tipsBackActive@2x.png"; sourceTree = "<group>"; };
+		27AEF7AA188EC6C0004EC5E0 /* transitViewBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "transitViewBack@2x.png"; sourceTree = "<group>"; };
+		27AEF7AC188EC6C0004EC5E0 /* commentsBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commentsBack.png; sourceTree = "<group>"; };
+		27AEF7AD188EC6C0004EC5E0 /* faresBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faresBack.png; sourceTree = "<group>"; };
+		27AEF7AE188EC6C0004EC5E0 /* tipsBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tipsBack.png; sourceTree = "<group>"; };
+		27AEF7AF188EC6C0004EC5E0 /* tipsBackActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tipsBackActive.png; sourceTree = "<group>"; };
+		27AEF7B0188EC6C0004EC5E0 /* transitViewBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transitViewBack.png; sourceTree = "<group>"; };
 		27B285A418181FE400BD8825 /* LUCYGO.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = LUCYGO.kml; path = kml/LUCYGO.kml; sourceTree = "<group>"; };
 		27B285A518181FE400BD8825 /* LUCYGR.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = LUCYGR.kml; path = kml/LUCYGR.kml; sourceTree = "<group>"; };
 		27B285E61655326F002400F4 /* UserPreferenceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserPreferenceCell.xib; path = ScheduleTab/UserPreferenceCell.xib; sourceTree = "<group>"; };
@@ -1374,12 +1386,6 @@
 		8418EC0117FEF6BB003607D1 /* septaIcon-76px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "septaIcon-76px.png"; sourceTree = "<group>"; };
 		8418EC0217FEF6BB003607D1 /* septaIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = septaIcon.png; sourceTree = "<group>"; };
 		8418EC0317FEF6BB003607D1 /* septaIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "septaIcon@2x.png"; sourceTree = "<group>"; };
-		8418EC0617FEF6BB003607D1 /* faresBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "faresBack@2x.png"; sourceTree = "<group>"; };
-		8418EC0717FEF6BB003607D1 /* tipsBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tipsBack@2x.png"; sourceTree = "<group>"; };
-		8418EC0817FEF6BB003607D1 /* transitViewBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "transitViewBack@2x.png"; sourceTree = "<group>"; };
-		8418EC0A17FEF6BB003607D1 /* faresBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = faresBack.png; sourceTree = "<group>"; };
-		8418EC0B17FEF6BB003607D1 /* tipsBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tipsBack.png; sourceTree = "<group>"; };
-		8418EC0C17FEF6BB003607D1 /* transitViewBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transitViewBack.png; sourceTree = "<group>"; };
 		8418EC0E17FEF6BB003607D1 /* BG_pattern-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BG_pattern-white.png"; sourceTree = "<group>"; };
 		8418EC0F17FEF6BB003607D1 /* BG_pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BG_pattern.png; sourceTree = "<group>"; };
 		8418EC1017FEF6BB003607D1 /* BG_pattern@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BG_pattern@2x.png"; sourceTree = "<group>"; };
@@ -1711,8 +1717,6 @@
 		84D12B4C17E0A3E30079A8D7 /* NearestTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NearestTimeCell.m; path = Storyboards/Realtime/NearestLocation/Code/NearestTimeCell.m; sourceTree = "<group>"; };
 		84D12B4F17E1F0B90079A8D7 /* MobileSiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MobileSiteViewController.h; path = Storyboards/Realtime/Mobile/MobileSiteViewController.h; sourceTree = "<group>"; };
 		84D12B5017E1F0B90079A8D7 /* MobileSiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MobileSiteViewController.m; path = Storyboards/Realtime/Mobile/MobileSiteViewController.m; sourceTree = "<group>"; };
-		84DEDE261806F81000061ABC /* commentsBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commentsBack@2x.png"; sourceTree = "<group>"; };
-		84DEDE281806F81900061ABC /* commentsBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commentsBack.png; sourceTree = "<group>"; };
 		84F6AFFA17B18F5300680007 /* TabbedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabbedButton.h; path = Storyboards/Common/TabbedButton.h; sourceTree = "<group>"; };
 		84F6AFFB17B18F5300680007 /* TabbedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabbedButton.m; path = Storyboards/Common/TabbedButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2728,6 +2732,30 @@
 			name = Xibs;
 			sourceTree = "<group>";
 		};
+		27AEF7A5188EC6C0004EC5E0 /* HD */ = {
+			isa = PBXGroup;
+			children = (
+				27AEF7A6188EC6C0004EC5E0 /* commentsBack@2x.png */,
+				27AEF7A7188EC6C0004EC5E0 /* faresBack@2x.png */,
+				27AEF7A8188EC6C0004EC5E0 /* tipsBack@2x.png */,
+				27AEF7A9188EC6C0004EC5E0 /* tipsBackActive@2x.png */,
+				27AEF7AA188EC6C0004EC5E0 /* transitViewBack@2x.png */,
+			);
+			path = HD;
+			sourceTree = "<group>";
+		};
+		27AEF7AB188EC6C0004EC5E0 /* SD */ = {
+			isa = PBXGroup;
+			children = (
+				27AEF7AC188EC6C0004EC5E0 /* commentsBack.png */,
+				27AEF7AD188EC6C0004EC5E0 /* faresBack.png */,
+				27AEF7AE188EC6C0004EC5E0 /* tipsBack.png */,
+				27AEF7AF188EC6C0004EC5E0 /* tipsBackActive.png */,
+				27AEF7B0188EC6C0004EC5E0 /* transitViewBack.png */,
+			);
+			path = SD;
+			sourceTree = "<group>";
+		};
 		27B285E5165531D3002400F4 /* XIB Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -3559,34 +3587,12 @@
 		8418EC0417FEF6BB003607D1 /* BackButton */ = {
 			isa = PBXGroup;
 			children = (
-				8418EC0517FEF6BB003607D1 /* HD */,
-				8418EC0917FEF6BB003607D1 /* SD */,
+				27AEF7A5188EC6C0004EC5E0 /* HD */,
+				27AEF7AB188EC6C0004EC5E0 /* SD */,
 			);
 			name = BackButton;
 			path = images/BackButton;
 			sourceTree = SOURCE_ROOT;
-		};
-		8418EC0517FEF6BB003607D1 /* HD */ = {
-			isa = PBXGroup;
-			children = (
-				84DEDE261806F81000061ABC /* commentsBack@2x.png */,
-				8418EC0617FEF6BB003607D1 /* faresBack@2x.png */,
-				8418EC0717FEF6BB003607D1 /* tipsBack@2x.png */,
-				8418EC0817FEF6BB003607D1 /* transitViewBack@2x.png */,
-			);
-			path = HD;
-			sourceTree = "<group>";
-		};
-		8418EC0917FEF6BB003607D1 /* SD */ = {
-			isa = PBXGroup;
-			children = (
-				84DEDE281806F81900061ABC /* commentsBack.png */,
-				8418EC0A17FEF6BB003607D1 /* faresBack.png */,
-				8418EC0B17FEF6BB003607D1 /* tipsBack.png */,
-				8418EC0C17FEF6BB003607D1 /* transitViewBack.png */,
-			);
-			path = SD;
-			sourceTree = "<group>";
 		};
 		8418EC0D17FEF6BB003607D1 /* backgrounds */ = {
 			isa = PBXGroup;
@@ -4520,6 +4526,7 @@
 				8418EDF317FEF6BD003607D1 /* tabRealtimeIconSelected.png in Resources */,
 				27DB2FF31636D6B600153E4C /* 1.kml in Resources */,
 				8418EE4617FEF6BD003607D1 /* Schedule_Bus@2x.png in Resources */,
+				27AEF7B2188EC6C0004EC5E0 /* faresBack@2x.png in Resources */,
 				8418ED8817FEF6BD003607D1 /* Independence-Pass-BG@2x.png in Resources */,
 				8418EE3D17FEF6BD003607D1 /* Trolley_green.png in Resources */,
 				8418EE0517FEF6BD003607D1 /* transitView-In-service@2x.png in Resources */,
@@ -4547,6 +4554,7 @@
 				27DB2FFB1636D6B600153E4C /* 9.kml in Resources */,
 				27DB2FFC1636D6B600153E4C /* 10.kml in Resources */,
 				8418ED9E17FEF6BD003607D1 /* transpass-BG.png in Resources */,
+				27AEF7BA188EC6C0004EC5E0 /* transitViewBack.png in Resources */,
 				27DB2FFD1636D6B600153E4C /* 11.kml in Resources */,
 				27DB2FFE1636D6B600153E4C /* 12.kml in Resources */,
 				27DB2FFF1636D6B600153E4C /* 13.kml in Resources */,
@@ -4593,7 +4601,6 @@
 				8418ED8D17FEF6BD003607D1 /* token@2x.png in Resources */,
 				27DB300F1636D6B600153E4C /* 29.kml in Resources */,
 				8418EDF517FEF6BD003607D1 /* tabSchedulesIcon.png in Resources */,
-				8418ED7517FEF6BD003607D1 /* tipsBack@2x.png in Resources */,
 				27DB30101636D6B600153E4C /* 30.kml in Resources */,
 				27DB30111636D6B600153E4C /* 31.kml in Resources */,
 				8418EE8D17FEF6BD003607D1 /* system_status_alert@2x.png in Resources */,
@@ -4672,10 +4679,10 @@
 				8418EECE18058D67003607D1 /* NTA-white.png in Resources */,
 				27DB30271636D6B600153E4C /* 56.kml in Resources */,
 				8418EE0C17FEF6BD003607D1 /* transitView-Trolley-Blue@2x.png in Resources */,
+				27AEF7B7188EC6C0004EC5E0 /* faresBack.png in Resources */,
 				8418EE1017FEF6BD003607D1 /* transitView_system-status@2x.png in Resources */,
 				8418EE4E17FEF6BD003607D1 /* Schedule_MFL@2x.png in Resources */,
 				27DB30281636D6B600153E4C /* 57.kml in Resources */,
-				84DEDE271806F81000061ABC /* commentsBack@2x.png in Resources */,
 				8418EDEF17FEF6BD003607D1 /* tabMapIconSelected.png in Resources */,
 				8418EDDC17FEF6BD003607D1 /* BSL-Orange.png in Resources */,
 				8418EE8817FEF6BD003607D1 /* btnRRL_clicked@2x.png in Resources */,
@@ -4699,7 +4706,6 @@
 				27DB302F1636D6B600153E4C /* 65.kml in Resources */,
 				8418EDBB17FEF6BD003607D1 /* RT_NTA@2x.png in Resources */,
 				271DA8621808A0B4009ED7D6 /* septaIcon-57px.png in Resources */,
-				8418ED7817FEF6BD003607D1 /* tipsBack.png in Resources */,
 				8418EE7317FEF6BD003607D1 /* Schedule_Trolley-BG.png in Resources */,
 				8418EE9017FEF6BD003607D1 /* btnMFLBSLNHSL_clicked.png in Resources */,
 				27DB30301636D6B600153E4C /* 66.kml in Resources */,
@@ -4733,7 +4739,6 @@
 				8418EE0A17FEF6BD003607D1 /* transitView-Out-of-service@2x.png in Resources */,
 				8418EDC517FEF6BD003607D1 /* RT_TransitView.png in Resources */,
 				8418ED8B17FEF6BD003607D1 /* One-day-Convenience@2x.png in Resources */,
-				84DEDE291806F81900061ABC /* commentsBack.png in Resources */,
 				8418ED7A17FEF6BD003607D1 /* BG_pattern-white.png in Resources */,
 				8418EE4317FEF6BD003607D1 /* Schedule_BSL@2x.png in Resources */,
 				8418EE4817FEF6BD003607D1 /* Schedule_Bus_Owl_BG@2x.png in Resources */,
@@ -4793,7 +4798,6 @@
 				8418EE3417FEF6BD003607D1 /* RRL_white.png in Resources */,
 				27DB30501636D6B600153E4C /* 109.kml in Resources */,
 				27DB30511636D6B600153E4C /* 110.kml in Resources */,
-				8418ED7617FEF6BD003607D1 /* transitViewBack@2x.png in Resources */,
 				27DB30521636D6B600153E4C /* 111.kml in Resources */,
 				27DB30531636D6B600153E4C /* 112.kml in Resources */,
 				8418ED8C17FEF6BD003607D1 /* token-BG@2x.png in Resources */,
@@ -4806,7 +4810,6 @@
 				27DB30551636D6B600153E4C /* 114.kml in Resources */,
 				27DB30561636D6B600153E4C /* 115.kml in Resources */,
 				27DB30571636D6B600153E4C /* 116.kml in Resources */,
-				8418ED7717FEF6BD003607D1 /* faresBack.png in Resources */,
 				8418EE2617FEF6BD003607D1 /* MFL_white@2x.png in Resources */,
 				27DB30581636D6B600153E4C /* 117.kml in Resources */,
 				8418EE5117FEF6BD003607D1 /* Schedule_NHSL@2x.png in Resources */,
@@ -4820,6 +4823,7 @@
 				27DB305C1636D6B600153E4C /* 123.kml in Resources */,
 				8418EDBC17FEF6BD003607D1 /* RT_System-Status@2x.png in Resources */,
 				27DB305D1636D6B600153E4C /* 124.kml in Resources */,
+				27AEF7B8188EC6C0004EC5E0 /* tipsBack.png in Resources */,
 				27DB305E1636D6B600153E4C /* 125.kml in Resources */,
 				8418EDB617FEF6BD003607D1 /* Filter.png in Resources */,
 				27DB305F1636D6B600153E4C /* 126.kml in Resources */,
@@ -4828,6 +4832,7 @@
 				8418EDF717FEF6BD003607D1 /* tabSchedulesIconSelected.png in Resources */,
 				27DB30611636D6B600153E4C /* 128.kml in Resources */,
 				8418EE6417FEF6BD003607D1 /* Schedule_Bus_Owl.png in Resources */,
+				27AEF7B5188EC6C0004EC5E0 /* transitViewBack@2x.png in Resources */,
 				8418EE8017FEF6BD003607D1 /* attributionsIcon.png in Resources */,
 				8418EDDF17FEF6BD003607D1 /* Service-Alerts.png in Resources */,
 				8418EE4417FEF6BD003607D1 /* Schedule_BSL_small@2x.png in Resources */,
@@ -4855,6 +4860,7 @@
 				27DB306D1636D6B600153E4C /* 206.kml in Resources */,
 				271DA8611808A0B4009ED7D6 /* septaIcon-50px.png in Resources */,
 				8418EDBA17FEF6BD003607D1 /* RT_Find-Loc@2x.png in Resources */,
+				27AEF7B3188EC6C0004EC5E0 /* tipsBack@2x.png in Resources */,
 				8418EE9D17FEF6BD003607D1 /* gradient_line.png in Resources */,
 				27DB306E1636D6B600153E4C /* 304.kml in Resources */,
 				27DB306F1636D6B600153E4C /* 306.kml in Resources */,
@@ -4873,7 +4879,6 @@
 				8418EECD18058D67003607D1 /* NTA-start.png in Resources */,
 				271F03011871C56700CDFB16 /* MFL.kml in Resources */,
 				8418EE3117FEF6BD003607D1 /* RRL@2x.png in Resources */,
-				8418ED7417FEF6BD003607D1 /* faresBack@2x.png in Resources */,
 				8418ED9C17FEF6BD003607D1 /* trailpass-BG.png in Resources */,
 				8418EDBE17FEF6BD003607D1 /* RT_TrainView@2x.png in Resources */,
 				27DB30751636D6B600153E4C /* H.kml in Resources */,
@@ -4901,6 +4906,7 @@
 				8418EE3E17FEF6BD003607D1 /* Trolley_white.png in Resources */,
 				8418EE1C17FEF6BD003607D1 /* transitView-Trolley-Blue.png in Resources */,
 				8418ED8217FEF6BD003607D1 /* Back.png in Resources */,
+				27AEF7B4188EC6C0004EC5E0 /* tipsBackActive@2x.png in Resources */,
 				27DB307D1636D6B600153E4C /* regionalrail.kml in Resources */,
 				27DB307E1636D6B600153E4C /* XH.kml in Resources */,
 				8418EE5F17FEF6BD003607D1 /* Schedule_BSL-BG.png in Resources */,
@@ -4914,6 +4920,7 @@
 				8418ED6F17FEF6BD003607D1 /* septaIcon-60px.png in Resources */,
 				8418EDB917FEF6BD003607D1 /* System-Map.png in Resources */,
 				8418EE6517FEF6BD003607D1 /* Schedule_Bus_Owl_BG.png in Resources */,
+				27AEF7B6188EC6C0004EC5E0 /* commentsBack.png in Resources */,
 				8418EDAB17FEF6BD003607D1 /* facebookIcon.png in Resources */,
 				8418EE8517FEF6BD003607D1 /* btnMFLBSLNHSL@2x.png in Resources */,
 				27BE51CA1836852700507EAD /* handicap_blk@2x.png in Resources */,
@@ -4928,13 +4935,13 @@
 				8418EE2017FEF6BD003607D1 /* transitView_system-status.png in Resources */,
 				8418EDCF17FEF6BD003607D1 /* Find_Loc_Distance.png in Resources */,
 				8418EE2917FEF6BD003607D1 /* BSL_Orange.png in Resources */,
+				27AEF7B9188EC6C0004EC5E0 /* tipsBackActive.png in Resources */,
 				275D73821677951200A23F30 /* StopTimesEndCell.xib in Resources */,
 				8418ED9417FEF6BD003607D1 /* cross-county-BG.png in Resources */,
 				8418EDAD17FEF6BD003607D1 /* feedbackIcon.png in Resources */,
 				27C8DC8F167FAD8C0030BAA8 /* SettingsGuide.plist in Resources */,
 				8418EE3917FEF6BD003607D1 /* Trolley_white@2x.png in Resources */,
 				2722CDF91683990D0074821B /* NTAConnectionCell.xib in Resources */,
-				8418ED7917FEF6BD003607D1 /* transitViewBack.png in Resources */,
 				2722D4A91683A69F0074821B /* NTASingleCell.xib in Resources */,
 				8418ED9917FEF6BD003607D1 /* One-day-Convenience.png in Resources */,
 				274DD6301688BED0006BEC97 /* NTASaveObjectCell.xib in Resources */,
@@ -4956,6 +4963,7 @@
 				271DA8601808A0B4009ED7D6 /* septaIcon-40px.png in Resources */,
 				8418EE3517FEF6BD003607D1 /* Bus_black@2x.png in Resources */,
 				27A5EABE1697411C004C9467 /* digitOverlay@2x.png in Resources */,
+				27AEF7B1188EC6C0004EC5E0 /* commentsBack@2x.png in Resources */,
 				27B7F7B516A9B2F0003DF486 /* BSO.kml in Resources */,
 				27B7F7B616A9B2F0003DF486 /* MFO.kml in Resources */,
 				2792C00218818B7D00626D8B /* CommonWebViewStoryboard.storyboard in Resources */,

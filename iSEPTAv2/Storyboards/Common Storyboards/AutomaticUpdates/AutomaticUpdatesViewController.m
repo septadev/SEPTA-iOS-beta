@@ -502,6 +502,53 @@
     
     [database close];
     
+    
+    
+    // Create byte array of unsigned chars
+    unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
+    
+    NSData *fileData = [NSData dataWithContentsOfFile: [self filePath] ];
+    
+    // Create 16 byte MD5 hash value, store in buffer
+    CC_MD5(fileData.bytes, fileData.length, md5Buffer);
+    
+    // Convert unsigned char buffer to NSString of hex values
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x",md5Buffer[i]];
+
+    NSLog(@"Old MD5: %@", _localMD5);
+    
+    DBVersionDataObject *dbObj = [_dbVersionAPI getData];
+
+    NSLog(@"Dwn MD5: %@", dbObj.md5);
+    
+    NSLog(@"New MD5: %@", output);
+
+    
+    NSString *md5Path = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"md5"];
+
+    NSMutableDictionary *md5Dict = [[NSMutableDictionary alloc] init];
+    [md5Dict setValue: output forKey:@"md5"];
+    
+    NSArray *md5Array = [[NSArray alloc] initWithObjects:md5Dict, nil];
+    
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:md5Array
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    
+    NSError *jsonParsingError;
+    [jsonData writeToFile:md5Path options:NSDataWritingAtomic error:&jsonParsingError];
+    
+    
+    
+//    BOOL retValue = [md5Dict writeToFile:md5Path atomically:YES];
+    
+    [_dbVersionAPI loadLocalMD5];
+    
+    NSLog(@"Lcl MD5: %@", [_dbVersionAPI localMD5]);
+    
     [self updateStateTo:kAutomaticUpdateFinishedInstall];
     
 }

@@ -14,6 +14,7 @@
 #import "CustomFlatBarButton.h"
 #import "GetDBVersionAPI.h"
 
+#import <CommonCrypto/CommonCrypto.h>
 
 // --==  PODs  ==--
 #import <Reachability.h>
