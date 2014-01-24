@@ -36,8 +36,11 @@
 @property (nonatomic, weak) id <GetDBVersionDataAPIProtocol> delegate;
 @property (nonatomic, strong, readonly) NSString *localMD5;
 
+-(id) initWithTestMode:(BOOL) yesNO;
+
 -(void) fetchData;
 -(DBVersionDataObject*) getData;
 -(NSString*) loadLocalMD5;
+-(void) setTestMode:(BOOL) yesNO;
 
 @end

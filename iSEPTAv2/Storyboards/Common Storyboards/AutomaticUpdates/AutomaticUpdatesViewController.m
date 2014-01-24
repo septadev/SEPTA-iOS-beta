@@ -189,22 +189,90 @@
             [self.lblVersionStatus setText: @"Finished Download"];
             [self.btnMulti setHidden:NO];
             [self.btnMulti setTitle:@"Install" forState:UIControlStateNormal];
+            
+            {
+                UpdateStateMachineObject *currentState = [[UpdateStateMachineObject alloc] init];
+                DBVersionDataObject *dbObj = [_dbVersionAPI getData];
+                
+                [currentState setEffective_date: dbObj.effective_date];
+                [currentState setSaved_state: [NSNumber numberWithInt: _updateSM] ];
+                [currentState setMd5: dbObj.md5];
+                
+                NSData *currentObj = [NSKeyedArchiver archivedDataWithRootObject: currentState];
+                
+                [[NSUserDefaults standardUserDefaults] setObject: currentObj forKey:@"Settings:Update:StateMachineStatus"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
+            
+            // Either popup a message to install now or wait until effective_date before installing
+            
+        {
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            dateFormatter.dateFormat = @"MM/d/yy";
+            
+            DBVersionDataObject *obj = [_dbVersionAPI getData];
+            NSDate *date = [dateFormatter dateFromString: obj.effective_date];
+            
+            NSTimeInterval effectiveDiff = [date timeIntervalSinceNow];
+//            NSTimeInterval lastDateDiff;
+            
+            
+            // Two checks are performed to determine if an alert message goes up
+            //   Does the new schedule go into effect within the next 7 days?
+            //                          AND
+            //   Has it been 24 hours since the last time this message was displayed?
+            //   Has the latest schedule been downloaded?
 
+
+//            NSString *title = @"New schedule";
+//            NSString *message = @"";
+            
+            if ( effectiveDiff < 0 )
+            {
+                // Install now
+                
+            }
+            else
+            {
+                // Install in the future
+                int numOfWeeks = (int)(effectiveDiff / (60*60*24*7) );
+                int numOfDays  = (int)(effectiveDiff / (60*60*24) ) % 7;
+                int numOfHrs   = (int)(effectiveDiff / (60*60) ) % 24;
+                int numOfMins  = (int)(effectiveDiff / 60) % 60;
+                int numOfSec   = ((int)effectiveDiff % 60);
+                
+                
+                NSLog(@"wks: %d, days: %d, hrs: %d, min: %d, sec: %d", numOfWeeks, numOfDays, numOfHrs, numOfMins, numOfSec);
+                
+            }
             
             
-//        {
-//            UpdateStateMachineObject *currentState = [[UpdateStateMachineObject alloc] init];
-//            DBVersionDataObject *dbObj = [_dbVersionAPI getData];
-//            
-//            [currentState setEffective_date: dbObj.effective_date];
-//            [currentState setSaved_state: [NSNumber numberWithInt: _updateSM] ];
-//            [currentState setMd5: dbObj.md5];
-//            
-//            NSData *currentObj = [NSKeyedArchiver archivedDataWithRootObject: currentState];
-//            
-//            [[NSUserDefaults standardUserDefaults] setObject: currentObj forKey:@"Settings:Update:StateMachineStatus"];
-//            [[NSUserDefaults standardUserDefaults] synchronize];
-//        }
+            
+//            if ( effectiveDiff < (60*60*24*7) )
+//            {
+//                
+//                
+//                ALAlertBanner *alertBanner = [ALAlertBanner alertBannerForView:self.view
+//                                                                         style:ALAlertBannerStyleFailure
+//                                                                      position:ALAlertBannerPositionBottom
+//                                                                         title:@""
+//                                                                      subtitle:@""
+//                                                                   tappedBlock:^(ALAlertBanner *alertBanner)
+//                                              {
+//                                                  NSLog(@"Generic Message: %@!", obj.message);
+//                                                  [alertBanner hide];
+//                                              }];
+//                
+//                NSTimeInterval showTime = 5.0f;
+//                [alertBanner setSecondsToShow: showTime];
+//                
+//                [alertBanner show];
+//
+//            }
+            
+        }
+            
+            
             
             break;
             
@@ -214,7 +282,7 @@
             break;
             
         case kAutomaticUpdateFinishedInstall:
-            [self.lblVersionStatus setText: @"Finished Installing"];
+            [self.lblVersionStatus setText: @"New Schedule Installed"];
             [self.btnMulti setHidden:YES];
             [self updateStateTo: kAutomaticUpdateDoNothing];
             break;
@@ -272,7 +340,7 @@
     NSData *userData = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:Update:StateMachineStatus"];
     savedSMStatus = (UpdateStateMachineObject*)[NSKeyedUnarchiver unarchiveObjectWithData: userData];
     
-    if ( [savedSMStatus.effective_date isEqualToString: obj.effective_date] && [savedSMStatus.md5 isEqualToString:obj.md5] )
+    if ( [savedSMStatus.effective_date isEqualToString: obj.effective_date] && ![savedSMStatus.md5 isEqualToString:obj.md5] )
     {
         [self updateStateTo: (AutomaticUpdateState)[savedSMStatus.saved_state intValue] ];
         return;
@@ -476,31 +544,32 @@
     [zip UnzipCloseFile];
     
     // The test!
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
-    [database open];
-    
-    FMResultSet *results = [database executeQuery:@"SELECT * FROM SECRETTABLE"];
-    
-    if ( [database hadError] )  // Basic DB error checking
-    {
-        
-        int errorCode = [database lastErrorCode];
-        NSString *errorMsg = [database lastErrorMessage];
-        
-        NSLog(@"SNFRTC - query failure, code: %d, %@", errorCode, errorMsg);
-        NSLog(@"SNFRTC - query str: %@", @"SELECT * FROM SECRETTABLE");
-        
-        return;  // If an error occurred, there's nothing else to do but exit
-        
-    } // if ( [database hadError] )
-
-    while ( [results next] )
-    {
-        NSString *message = [results stringForColumn:@"message"];
-        NSLog(@"The secret message is: %@", message);
-    }
-    
-    [database close];
+//    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+//    [database open];
+//    
+//    FMResultSet *results = [database executeQuery:@"SELECT * FROM SECRETTABLE"];
+//    
+//    if ( [database hadError] )  // Basic DB error checking
+//    {
+//        
+//        int errorCode = [database lastErrorCode];
+//        NSString *errorMsg = [database lastErrorMessage];
+//        
+//        NSLog(@"SNFRTC - query failure, code: %d, %@", errorCode, errorMsg);
+//        NSLog(@"SNFRTC - query str: %@", @"SELECT * FROM SECRETTABLE");
+//        
+//        return;  // If an error occurred, there's nothing else to do but exit
+//        
+//    } // if ( [database hadError] )
+//
+//    while ( [results next] )
+//    {
+//        NSString *message = [results stringForColumn:@"message"];
+//        NSLog(@"The secret message is: %@", message);
+////        [self displayAlertWithTitle: @"Secret Message" andMessage: message];
+//    }
+//    
+//    [database close];
     
     
     
@@ -550,6 +619,29 @@
     NSLog(@"Lcl MD5: %@", [_dbVersionAPI localMD5]);
     
     [self updateStateTo:kAutomaticUpdateFinishedInstall];
+    
+}
+
+
+
+-(void) displayAlertWithTitle:(NSString*) title andMessage:(NSString*) message
+{
+    
+                ALAlertBanner *alertBanner = [ALAlertBanner alertBannerForView:self.view
+                                                                         style:ALAlertBannerStyleFailure
+                                                                      position:ALAlertBannerPositionBottom
+                                                                         title: title
+                                                                      subtitle: message
+                                                                   tappedBlock:^(ALAlertBanner *alertBanner)
+                                              {
+                                                  NSLog(@"Generic Message: %@!", message);
+                                                  [alertBanner hide];
+                                              }];
+
+                NSTimeInterval showTime = 5.0f;
+                [alertBanner setSecondsToShow: showTime];
+
+                [alertBanner show];
     
 }
 

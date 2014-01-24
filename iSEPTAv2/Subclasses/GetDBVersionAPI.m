@@ -33,9 +33,40 @@
     DBVersionDataObject *_dbObject;
 //    NSString *_localMD5;
     
+    BOOL _testMode;
+    
 }
 
 @synthesize localMD5 = _localMD5;
+
+-(id) init
+{
+    
+
+    if ( (  self = [super init] ) )
+    {
+        _testMode = NO;  // Defaults to NO
+    }
+    return self;
+    
+}
+
+
+-(id) initWithTestMode:(BOOL) yesNO
+{
+    
+    if ( (  self = [super init] ) )
+    {
+        _testMode = yesNO;
+    }
+    return self;
+
+}
+
+-(void) setTestMode:(BOOL) yesNO
+{
+    _testMode = yesNO;
+}
 
 -(void) fetchData
 {
@@ -43,8 +74,20 @@
     if ( ![[Reachability reachabilityForInternetConnection] isReachable] )
         return;
 
+
+    NSString *url;
     
-    NSString *url = @"http://www3.septa.org/hackathon/dbVersion/";
+    if ( _testMode )
+    {
+        url = @"http://www3.septa.org/hackathon/dbVersion/";
+    }
+    else
+    {
+        url = @"http://www3.septa.org/gga8893/dbVersion/";
+    }
+
+
+    
     NSURLRequest *request = [NSURLRequest requestWithURL: [NSURL URLWithString:url] ];
     
     _jsonOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request

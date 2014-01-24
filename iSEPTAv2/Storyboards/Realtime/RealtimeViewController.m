@@ -327,6 +327,7 @@
     {
         _dbVersionAPI = [[GetDBVersionAPI alloc] init];
         [_dbVersionAPI setDelegate:self];
+        [_dbVersionAPI loadLocalMD5];
     }
     
     [_dbVersionAPI fetchData];
@@ -340,7 +341,7 @@
     // TODO: Minimize the time this message is played; once a day
     
 
-    if ( obj.message != nil )
+    if ( ( obj.message != nil ) && ( [[_dbVersionAPI localMD5] isEqualToString: obj.md5] ) )
     {
 
         
@@ -776,7 +777,7 @@
             ALAlertBanner *alertBanner = [ALAlertBanner alertBannerForView:self.view
                                                    style:ALAlertBannerStyleFailure
                                                 position:ALAlertBannerPositionBottom
-                                                   title:@"Alert"
+                                                   title:@"General Alert"
                                                 subtitle:saObject.current_message
                                              tappedBlock:^(ALAlertBanner *alertBanner)
                         {
