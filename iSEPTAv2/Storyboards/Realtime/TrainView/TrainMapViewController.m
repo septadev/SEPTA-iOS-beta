@@ -514,7 +514,7 @@
         //        NSString *direction        = [results stringForColumn:@"Direction"];
         //        NSString *description      = [results stringForColumn:@"DirectionDescription"];
 
-        NSLog(@"%@ - (%@, %@)", [results stringForColumnIndex:0], [results stringForColumnIndex:1], [results stringForColumnIndex:2]);
+//        NSLog(@"%@ - (%@, %@)", [results stringForColumnIndex:0], [results stringForColumnIndex:1], [results stringForColumnIndex:2]);
         
         CLLocationCoordinate2D newCoord = CLLocationCoordinate2DMake([[results stringForColumnIndex:1] doubleValue], [[results stringForColumnIndex:2] doubleValue]);
         mapAnnotation *annotation = [[mapAnnotation alloc] initWithCoordinate:newCoord];
@@ -1089,7 +1089,11 @@
     static NSString *identifier = @"mapAnnotation";
     
     MKPinAnnotationView *annotationView = (MKPinAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier: identifier];
-    if (annotationView == nil) {
+    
+    // How often is something dequeued?
+    // Should buses/trains be removed or just updated?
+    if (annotationView == nil)
+    {
         annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
     } else {
         annotationView.annotation = annotation;
