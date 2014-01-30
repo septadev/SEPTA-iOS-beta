@@ -118,6 +118,7 @@
         // --==
         // ==--  Display Current Location On MapView Thumbnail  ==--
         // --==
+        
         // A little background on span, thanks to http://stackoverflow.com/questions/7381783/mkcoordinatespan-in-meters
         float radiusInMiles = 2.0;
         [self.mapView setRegion: MKCoordinateRegionMakeWithDistance(_locationManager.location.coordinate, [self milesToMetersFor:radiusInMiles*2], [self milesToMetersFor:radiusInMiles*2] ) animated:YES];
@@ -470,6 +471,66 @@
 }
 
 
+-(NSString*) filePath
+{
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC filePath");
+#endif
+    
+    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+}
+
+-(void) addStopAnnotationsForRouteType:(GTFSRouteType) routeType
+{
+    
+    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    
+    if ( ![database open] )
+    {
+        [database close];
+        return;
+    }
+    
+    NSString *queryStr = [NSString stringWithFormat:@"SELECT sb.stop_id, sb.stop_lat, sb.stop_lon, sb.stop_name FROM reverseStopSearch rss JOIN stops_bus sb ON sb.stop_id=rss.stop_id  WHERE route_short_name=\"%@\"", self.routeName];
+    
+    FMResultSet *results = [database executeQuery: queryStr];
+    if ( [database hadError] )  // Check for errors
+    {
+        
+        int errorCode = [database lastErrorCode];
+        NSString *errorMsg = [database lastErrorMessage];
+        
+        NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
+        NSLog(@"IVC - query str: %@", queryStr);
+        
+        return;  // If an error occurred, there's nothing else to do but exit
+        
+    } // if ( [database hadError] )
+    
+    
+    while ( [results next] )
+    {
+        //        NSString *route_short_name = [results stringForColumn:@"Route"];
+        //        NSString *direction        = [results stringForColumn:@"Direction"];
+        //        NSString *description      = [results stringForColumn:@"DirectionDescription"];
+
+        NSLog(@"%@ - (%@, %@)", [results stringForColumnIndex:0], [results stringForColumnIndex:1], [results stringForColumnIndex:2]);
+        
+        CLLocationCoordinate2D newCoord = CLLocationCoordinate2DMake([[results stringForColumnIndex:1] doubleValue], [[results stringForColumnIndex:2] doubleValue]);
+        mapAnnotation *annotation = [[mapAnnotation alloc] initWithCoordinate:newCoord];
+        [annotation setDirection:@"Stop"];
+        
+        [self.mapView addAnnotation: annotation];
+        
+    }
+    
+    [database close];
+    
+    
+}
+
+
+
 -(void) processJSONData:(NSData*) returnedData
 {
     
@@ -533,6 +594,8 @@
             [readData addObject: tvObject];
             [self addAnnotationUsingwithObject: tvObject];
             
+            [self addStopAnnotationsForRouteType: routeType];
+            
         }
             
             break;
@@ -572,6 +635,9 @@
             return;
             break;
     }
+    
+    
+    
     
     
     NSSortDescriptor *lowestToHighest = [NSSortDescriptor sortDescriptorWithKey:@"distance" ascending:YES];
@@ -1035,6 +1101,7 @@
     
     GTFSRouteType routeType = [self.travelMode intValue];
     UIImage *image;
+    
     if ( ( [[(mapAnnotation*)annotation direction] isEqualToString:@"EastBound"] ) || ( [[(mapAnnotation*)annotation direction] isEqualToString:@"SouthBound"] ) )
     {
         //        if ( [self.routeType intValue] == 0)
@@ -1057,6 +1124,10 @@
     else if ( [[(mapAnnotation*)annotation direction] isEqualToString: @"TrainNorth"] )
     {
         image = [UIImage imageNamed:@"trainView-RRL-Red.png"];
+    }
+    else if ( [[(mapAnnotation*)annotation direction] isEqualToString: @"Stop"] )
+    {
+        image = nil;
     }
     else
     {
