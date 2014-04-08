@@ -1350,7 +1350,27 @@
     NSLog(@"IVC filePath");
 #endif
     
-    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString  *documentsDirectory = [paths objectAtIndex:0];
+    
+//    NSString  *dbZip  = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"SEPTA.zip"];
+    NSString  *dbPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"SEPTA.sqlite"];
+    
+//    bool z = [[NSFileManager defaultManager] fileExistsAtPath:dbZip];
+    bool b = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
+    
+//    NSDictionary *attrsZ = [[NSFileManager defaultManager] attributesOfItemAtPath:dbZip error:NULL];
+//    NSLog(@"dbZip: %lld", [attrsZ fileSize]);
+
+//    NSDictionary *attrsP = [[NSFileManager defaultManager] attributesOfItemAtPath:dbPath error:NULL];
+//    NSLog(@"dbPath: %lld", [attrsP fileSize]);
+
+    
+    if ( b )
+        return dbPath;
+    else
+        return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+    
 }
 
 
@@ -3246,13 +3266,23 @@
     
     _servicePredicate = [[NSMutableString alloc] initWithString:@"("];
     // (service_id == 62 or service_id == 2)
+    
+    BOOL hasResults = NO;
     while ( [results next] )
     {
         service_id = [results intForColumn:@"service_id"];
         [_servicePredicate appendFormat:@"serviceID == %d or ", service_id];
+        hasResults = YES;
     }
 
     // Remove the last four characters, the ' or '
+    
+    if ( !hasResults )  // Fixes the crashing issue when using an older GTFS; quick and dirty fix
+    {
+        [_servicePredicate appendFormat:@"1 == 1) "];
+        return 9000;
+    }
+    
     [_servicePredicate deleteCharactersInRange:NSMakeRange([_servicePredicate length]-4, 4)];
     
     [_servicePredicate appendString:@")"];
@@ -3335,157 +3365,6 @@
     _currentServiceID = [self getServiceIDFor:_currentFilter];
     
     return;
-    
-    
-    
-    // --  This is no longer in production  --
-
-    switch ( _currentFilter )
-    {
-        case kItineraryFilterTypeNow: // Now
-            
-        {
-            
-            if ( (_currentServiceID = [self isHoliday]) )
-            {
-                
-            }
-            else
-            {
-
-//                NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-//                NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
-//                int weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
-//
-//                int dayOfWeek = pow(2,(7-weekday) );
-                
-//                _currentServiceID = [self getServiceID];
-//                
-////                _currentServiceID = pow(2,(7-weekday));
-//                NSLog(@"weekday: %d, currentServiceID: %d", weekday, _currentServiceID);
-                
-            }
-            
-        }
-            break;
-            
-        case kItineraryFilterTypeWeekday: // Week
-            _currentServiceID = 62;  // 011 1110
-            
-            break;
-            
-        case kItineraryFilterTypeSat: // Sat
-            _currentServiceID = 1;   // 000 0001 (SuMoTu WeThFrSa)
-            
-            break;
-            
-        case kItineraryFilterTypeSun: // Sun
-            _currentServiceID = 64;  // 100 0000 (Sunday,Monday,Tuesday  Wednesday,Thursday,Friday,Saturday)
-            
-            break;
-            
-        default:
-            break;
-    }
-    
-    
-//    NSLog(@"serviceID: %d", _currentServiceID);
-    
-    return;
-    
-    
-    if ( [self.travelMode isEqualToString:@"Rail"] )
-    {
-        
-        
-        //        switch (_currentSegmentIndex) {
-        //            case 0:
-        //
-        //            {
-        //                // Need to determine what day it is to select the appropriate S1 value
-        ////                _currentServiceID = @"S1";
-        //
-        //                NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-        //                NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
-        //                int weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
-        //
-        //                switch (weekday) {
-        //                    case 7:  // Saturday
-        //                        _currentServiceID = @"S2";
-        //                        break;
-        //                    case 1:  // Sunday
-        //                        _currentServiceID = @"S3";
-        //                        break;
-        //                    default: // Every other day
-        //                        _currentServiceID = @"S1";
-        //                        break;
-        //                }
-        //
-        //
-        //            }
-        //
-        //                break;
-        //            case 1:
-        //                _currentServiceID = @"S1";
-        //                break;
-        //            case 2:
-        //                _currentServiceID = @"S2";
-        //                break;
-        //            case 3:
-        //                _currentServiceID = @"S3";
-        //                break;
-        //
-        //            default:
-        //                break;
-        //        }  // switch (_currentSegmentIndex) {
-        
-        
-    }  // if ( [self.travelMode isEqualToString:@"Rail"] )
-    else
-    {
-        
-        
-        //        switch (_currentSegmentIndex) {
-        //            case 0:  // Now Segment Selected
-        //            {
-        //
-        //                // Need to determine what day it is to select the appropriate serviceID value
-        //
-        //                NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-        //                NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
-        //                int weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
-        //
-        //                switch (weekday) {
-        //                    case 7:  // Saturday
-        //                        _currentServiceID = @"5";
-        //                        break;
-        //                    case 1:  // Sunday
-        //                        _currentServiceID = @"7";
-        //                        break;
-        //                    default: // Every other day
-        //                        _currentServiceID = @"1";
-        //                        break;
-        //                }
-        //
-        //
-        //            }
-        //                break;
-        //            case 1:
-        //                _currentServiceID = @"1";
-        //                break;
-        //            case 2:
-        //                _currentServiceID = @"5";
-        //                break;
-        //            case 3:
-        //                _currentServiceID = @"7";
-        //                break;
-        //
-        //            default:
-        //                break;
-        //        }  // switch (_currentSegmentIndex) {
-        
-        
-    }  // if ( [self.travelMode isEqualToString:@"Rail"] )
     
 }
 

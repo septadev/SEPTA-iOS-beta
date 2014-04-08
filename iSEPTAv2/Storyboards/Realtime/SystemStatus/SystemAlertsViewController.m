@@ -712,7 +712,7 @@
     NSMutableString *html;
 
     
-    html = [NSMutableString stringWithString:@"<html><style>body { font-family:\"Trebuchet MS\"; } tr:nth-child(2n+1) {background-color: #ddd;} </style><head><title>TITLE</title></head>"];
+    html = [NSMutableString stringWithString:@"<html><style>body { font-family:\"Trebuchet MS\"; } tr:nth-child(2n+1) {background-color: #ddd;} </style><head><base href='http://www.septa.org/'><title>TITLE</title></head>"];
 
 //    SystemAlertObject *saObject = [_alertData objectAtIndex:0];
 

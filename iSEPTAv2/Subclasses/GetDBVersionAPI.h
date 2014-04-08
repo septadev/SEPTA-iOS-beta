@@ -12,6 +12,9 @@
 #import <AFNetworking.h>
 #import <Reachability.h>
 
+#import <CommonCrypto/CommonCrypto.h>
+
+
 @interface DBVersionDataObject : NSObject
 
 @property (nonatomic, strong) NSString *md5;

@@ -4,23 +4,23 @@ PODS:
   - AFNetworking (1.3.3)
   - ALAlertBanner (0.3.1)
   - ECSlidingViewController (1.3.3)
-  - FMDB (2.1):
+  - FMDB (2.2):
     - FMDB/standard
-  - FMDB/common (2.1)
-  - FMDB/standard (2.1):
+  - FMDB/common (2.2)
+  - FMDB/standard (2.2):
     - FMDB/common
   - hpple (0.2.0)
-  - MMDrawerController (0.5.1):
+  - MMDrawerController (0.5.3):
     - MMDrawerController/Core
     - MMDrawerController/MMDrawerBarButtonItem
     - MMDrawerController/MMDrawerVisualStates
     - MMDrawerController/Subclass
-  - MMDrawerController/Core (0.5.1)
-  - MMDrawerController/MMDrawerBarButtonItem (0.5.1):
+  - MMDrawerController/Core (0.5.3)
+  - MMDrawerController/MMDrawerBarButtonItem (0.5.3):
     - MMDrawerController/Core
-  - MMDrawerController/MMDrawerVisualStates (0.5.1):
+  - MMDrawerController/MMDrawerVisualStates (0.5.3):
     - MMDrawerController/Core
-  - MMDrawerController/Subclass (0.5.1):
+  - MMDrawerController/Subclass (0.5.3):
     - MMDrawerController/Core
   - QuickDialog (0.9.1)
   - Reachability (3.1.1)
@@ -49,9 +49,9 @@ SPEC CHECKSUMS:
   AFNetworking: 61fdd49e2ffe6380378df37b3b6e70630bb9dd66
   ALAlertBanner: 16235298226059cd876a9de0a5d7f9bac6a79459
   ECSlidingViewController: 3ca3141b843b5425b57c054db09d7dfd04a7ff85
-  FMDB: 3fd5aaf632ca4ed39e3f101e0398504e6d5b0918
+  FMDB: 97472cfacf0d9e445e915704fb43b4b142799c36
   hpple: dde62f905f482bbec50186280d1a1be2c881241b
-  MMDrawerController: 3e22aec684dbee5307ff9d1e76523003a3303a2d
+  MMDrawerController: 4445e1927e8947b7e2382136c9b7109840efbfb9
   QuickDialog: fa9f2641b1c2028667e115add0005530c77193a3
   Reachability: be4883bb93f31e38266ae3365e5600a317aae735
   REMenu: 4c85fa951c74b41b1eb7f9a31ebed2da8ae3f7d7
@@ -59,4 +59,4 @@ SPEC CHECKSUMS:
   SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2
   ZipArchive: 93bff5d8b435767ccfac976ed08ca611d950d3d0
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.31.1

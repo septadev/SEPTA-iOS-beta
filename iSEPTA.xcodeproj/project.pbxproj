@@ -90,6 +90,7 @@
 		274DD6331688BF95006BEC97 /* NTASaveObjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 274DD6321688BF94006BEC97 /* NTASaveObjectCell.m */; };
 		274E02521663C80000BCE8A2 /* GTFSDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 274E02501663C80000BCE8A2 /* GTFSDataModel.xcdatamodeld */; };
 		27504D2416DD19E7001B762A /* CommentQuickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27504D2316DD19E7001B762A /* CommentQuickViewController.m */; };
+		27568B9318F32F4300422E37 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27568B9218F32F4300422E37 /* libPods.a */; };
 		275BE98916835938007AF394 /* RouteInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 275BE98816835938007AF394 /* RouteInfo.m */; };
 		275BE98C16835E82007AF394 /* TransitViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 275BE98B16835E82007AF394 /* TransitViewObject.m */; };
 		275CA62316EF990F006E6D2B /* CachedItineraryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 275CA62216EF990E006E6D2B /* CachedItineraryManager.m */; };
@@ -402,7 +403,6 @@
 		41E22F3716FF4EE800126DC2 /* NSArray+Indices.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E22F3616FF4EE800126DC2 /* NSArray+Indices.m */; };
 		41E22F3A16FF541300126DC2 /* NSMutableArray+Indices.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E22F3916FF541200126DC2 /* NSMutableArray+Indices.m */; };
 		41E22F4016FF5F3C00126DC2 /* StopSequenceCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E22F3F16FF5F3B00126DC2 /* StopSequenceCellData.m */; };
-		4799E7DF3F49438EA2936380 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0D1C7FB3FB402E8733DC76 /* libPods.a */; };
 		56061B621535D0C500B272B0 /* mapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 56061B441535D0C500B272B0 /* mapAnnotation.m */; };
 		56061B661535D0C500B272B0 /* TableViewReload.m in Sources */ = {isa = PBXBuildFile; fileRef = 56061B4C1535D0C500B272B0 /* TableViewReload.m */; };
 		568FA47F1535C0E0009345F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568FA47E1535C0E0009345F5 /* UIKit.framework */; };
@@ -774,7 +774,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		137D6A82B0C1449D8E396B86 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		2702B3831790734C00153F72 /* MapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapsViewController.h; path = Maps/MapsViewController.h; sourceTree = "<group>"; };
 		2702B3841790734C00153F72 /* MapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapsViewController.m; path = Maps/MapsViewController.m; sourceTree = "<group>"; };
 		27073F37169F08E4008F3E52 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GuideViewController.h; path = Settings/Guide/GuideViewController.h; sourceTree = "<group>"; };
@@ -904,6 +903,20 @@
 		274E02511663C80000BCE8A2 /* GTFSDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GTFSDataModel.xcdatamodel; sourceTree = "<group>"; };
 		27504D2216DD19E7001B762A /* CommentQuickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentQuickViewController.h; path = CustomerService/CommentQuickViewController.h; sourceTree = "<group>"; };
 		27504D2316DD19E7001B762A /* CommentQuickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentQuickViewController.m; path = CustomerService/CommentQuickViewController.m; sourceTree = "<group>"; };
+		27568B7818F32F3500422E37 /* libPods-AFDownloadRequestOperation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AFDownloadRequestOperation.a"; path = "Pods/build/Debug-iphoneos/libPods-AFDownloadRequestOperation.a"; sourceTree = "<group>"; };
+		27568B7918F32F3500422E37 /* libPods-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AFNetworking.a"; path = "Pods/build/Debug-iphoneos/libPods-AFNetworking.a"; sourceTree = "<group>"; };
+		27568B7A18F32F3500422E37 /* libPods-ALAlertBanner.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ALAlertBanner.a"; path = "Pods/build/Debug-iphoneos/libPods-ALAlertBanner.a"; sourceTree = "<group>"; };
+		27568B7B18F32F3500422E37 /* libPods-ECSlidingViewController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ECSlidingViewController.a"; path = "Pods/build/Debug-iphoneos/libPods-ECSlidingViewController.a"; sourceTree = "<group>"; };
+		27568B7C18F32F3500422E37 /* libPods-FMDB.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-FMDB.a"; path = "Pods/build/Debug-iphoneos/libPods-FMDB.a"; sourceTree = "<group>"; };
+		27568B7D18F32F3500422E37 /* libPods-hpple.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-hpple.a"; path = "Pods/build/Debug-iphoneos/libPods-hpple.a"; sourceTree = "<group>"; };
+		27568B7E18F32F3500422E37 /* libPods-MMDrawerController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-MMDrawerController.a"; path = "Pods/build/Debug-iphoneos/libPods-MMDrawerController.a"; sourceTree = "<group>"; };
+		27568B7F18F32F3500422E37 /* libPods-QuickDialog.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-QuickDialog.a"; path = "Pods/build/Debug-iphoneos/libPods-QuickDialog.a"; sourceTree = "<group>"; };
+		27568B8018F32F3500422E37 /* libPods-Reachability.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Reachability.a"; path = "Pods/build/Debug-iphoneos/libPods-Reachability.a"; sourceTree = "<group>"; };
+		27568B8118F32F3500422E37 /* libPods-REMenu.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-REMenu.a"; path = "Pods/build/Debug-iphoneos/libPods-REMenu.a"; sourceTree = "<group>"; };
+		27568B8218F32F3500422E37 /* libPods-SVProgressHUD.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-SVProgressHUD.a"; path = "Pods/build/Debug-iphoneos/libPods-SVProgressHUD.a"; sourceTree = "<group>"; };
+		27568B8318F32F3500422E37 /* libPods-SVPullToRefresh.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-SVPullToRefresh.a"; path = "Pods/build/Debug-iphoneos/libPods-SVPullToRefresh.a"; sourceTree = "<group>"; };
+		27568B8418F32F3500422E37 /* libPods-ZipArchive.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ZipArchive.a"; path = "Pods/build/Debug-iphoneos/libPods-ZipArchive.a"; sourceTree = "<group>"; };
+		27568B9218F32F4300422E37 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		275BE98716835938007AF394 /* RouteInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RouteInfo.h; path = Realtime/RouteInfo.h; sourceTree = "<group>"; };
 		275BE98816835938007AF394 /* RouteInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RouteInfo.m; path = Realtime/RouteInfo.m; sourceTree = "<group>"; };
 		275BE98A16835E82007AF394 /* TransitViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransitViewObject.h; path = Realtime/TransitViewObject.h; sourceTree = "<group>"; };
@@ -1719,6 +1732,7 @@
 		84D12B5017E1F0B90079A8D7 /* MobileSiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MobileSiteViewController.m; path = Storyboards/Realtime/Mobile/MobileSiteViewController.m; sourceTree = "<group>"; };
 		84F6AFFA17B18F5300680007 /* TabbedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabbedButton.h; path = Storyboards/Common/TabbedButton.h; sourceTree = "<group>"; };
 		84F6AFFB17B18F5300680007 /* TabbedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabbedButton.m; path = Storyboards/Common/TabbedButton.m; sourceTree = "<group>"; };
+		CBB86BAE5720471FA6B03AEF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1726,6 +1740,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27568B9318F32F4300422E37 /* libPods.a in Frameworks */,
 				568FA4F31535C6CF009345F5 /* SystemConfiguration.framework in Frameworks */,
 				273763AD178EE9C6006EE244 /* AddressBook.framework in Frameworks */,
 				273763AE178EE9C6006EE244 /* AddressBookUI.framework in Frameworks */,
@@ -1753,7 +1768,6 @@
 				568FA47F1535C0E0009345F5 /* UIKit.framework in Frameworks */,
 				568FA4811535C0E0009345F5 /* Foundation.framework in Frameworks */,
 				568FA4831535C0E0009345F5 /* CoreGraphics.framework in Frameworks */,
-				4799E7DF3F49438EA2936380 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3454,7 +3468,7 @@
 				568FA4841535C0E0009345F5 /* iSEPTAv2 */,
 				568FA47D1535C0E0009345F5 /* Frameworks */,
 				568FA47B1535C0E0009345F5 /* Products */,
-				137D6A82B0C1449D8E396B86 /* Pods.xcconfig */,
+				CBB86BAE5720471FA6B03AEF /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3470,6 +3484,20 @@
 		568FA47D1535C0E0009345F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27568B9218F32F4300422E37 /* libPods.a */,
+				27568B7818F32F3500422E37 /* libPods-AFDownloadRequestOperation.a */,
+				27568B7918F32F3500422E37 /* libPods-AFNetworking.a */,
+				27568B7A18F32F3500422E37 /* libPods-ALAlertBanner.a */,
+				27568B7B18F32F3500422E37 /* libPods-ECSlidingViewController.a */,
+				27568B7C18F32F3500422E37 /* libPods-FMDB.a */,
+				27568B7D18F32F3500422E37 /* libPods-hpple.a */,
+				27568B7E18F32F3500422E37 /* libPods-MMDrawerController.a */,
+				27568B7F18F32F3500422E37 /* libPods-QuickDialog.a */,
+				27568B8018F32F3500422E37 /* libPods-Reachability.a */,
+				27568B8118F32F3500422E37 /* libPods-REMenu.a */,
+				27568B8218F32F3500422E37 /* libPods-SVProgressHUD.a */,
+				27568B8318F32F3500422E37 /* libPods-SVPullToRefresh.a */,
+				27568B8418F32F3500422E37 /* libPods-ZipArchive.a */,
 				273763AB178EE9C6006EE244 /* AddressBook.framework */,
 				273763AC178EE9C6006EE244 /* AddressBookUI.framework */,
 				274B8C7B17733A5D00CBE260 /* MobileCoreServices.framework */,
@@ -4486,6 +4514,7 @@
 		568FA4711535C0E0009345F5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = SEPTA;
 				TargetAttributes = {
@@ -5103,6 +5132,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		B1C08DA0DE96484BAE0ADAC3 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -5335,7 +5365,6 @@
 /* Begin XCBuildConfiguration section */
 		568FA4B61535C0E0009345F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 137D6A82B0C1449D8E396B86 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -5375,7 +5404,6 @@
 		};
 		568FA4B71535C0E0009345F5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 137D6A82B0C1449D8E396B86 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -5398,6 +5426,7 @@
 				HEADER_SEARCH_PATHS = SDK/lib/Release$EFFECTIVE_PLATFORM_NAME;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = SDK/lib/Release$EFFECTIVE_PLATFORM_NAME;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = SEPTA;
 				SDKROOT = iphoneos;
@@ -5407,6 +5436,7 @@
 		};
 		568FA4B91535C0E0009345F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBB86BAE5720471FA6B03AEF /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -5424,27 +5454,16 @@
 					"$(inherited)",
 					"FUNCTION_NAMES_ON=1",
 				);
-				HEADER_SEARCH_PATHS = (
-					"${PODS_HEADERS_SEARCH_PATHS}",
-					"$(SDKROOT)/usr/include/libxml2",
-				);
-				"HEADER_SEARCH_PATHS[arch=*]" = (
-					"${PODS_HEADERS_SEARCH_PATHS}",
-					"$(SDKROOT)/usr/include/libxml2",
-				);
+				HEADER_SEARCH_PATHS = "";
+				"HEADER_SEARCH_PATHS[arch=*]" = "";
 				INFOPLIST_FILE = "iSEPTAv2/iSEPTA-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/iSEPTAv2\"",
-					"\"$(SDKROOT)/usr/lib/system\"",
-				);
-				OTHER_LDFLAGS = (
-					"-lstdc++",
-					"-ObjC",
-				);
+				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = SEPTA;
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "20DABBFC-72EB-481F-9FAA-1372D0D2410D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A0358490-9F0D-483A-B690-80FE20CAE082";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/**";
 				VALID_ARCHS = "armv7 armv7s";
@@ -5454,6 +5473,7 @@
 		};
 		568FA4BA1535C0E0009345F5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBB86BAE5720471FA6B03AEF /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -5466,23 +5486,14 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iSEPTAv2/iSEPTA-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"${PODS_HEADERS_SEARCH_PATHS}",
-					"$(SDKROOT)/usr/include/libxml2",
-				);
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "iSEPTAv2/iSEPTA-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/iSEPTAv2\"",
-					"\"$(SDKROOT)/usr/lib/system\"",
-				);
-				OTHER_LDFLAGS = (
-					"-lstdc++",
-					"-ObjC",
-				);
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = SEPTA;
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "20DABBFC-72EB-481F-9FAA-1372D0D2410D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A0358490-9F0D-483A-B690-80FE20CAE082";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/**";
 				VALID_ARCHS = "armv7 armv7s";

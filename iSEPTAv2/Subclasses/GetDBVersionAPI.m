@@ -79,11 +79,11 @@
     
     if ( _testMode )
     {
-        url = @"http://www3.septa.org/hackathon/dbVersion/";
+        url = @"http://api0.septa.org/gga8893/dbVersion/";
     }
     else
     {
-        url = @"http://www3.septa.org/gga8893/dbVersion/";
+        url = @"http://www3.septa.org/hackathon/dbVersion/";        
     }
 
 
@@ -150,30 +150,60 @@
 -(NSString*) loadLocalMD5
 {
     
-    //    NSString *localMD5;
+
     _localMD5 = nil;
     
-    NSString *md5Path = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"md5"];
-    if ( md5Path == nil )
-        return nil;
+
+    // Create byte array of unsigned chars
+    unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
     
-    NSString *md5JSON = [[NSString alloc] initWithContentsOfFile:md5Path encoding:NSUTF8StringEncoding error:NULL];
-    if ( md5JSON == nil )
-        return nil;
+    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *dbPath = [NSString stringWithFormat:@"%@/SEPTA.sqlite", [paths objectAtIndex:0] ];
     
-    NSError *error = nil;
-    NSDictionary *md5dict = [NSJSONSerialization JSONObjectWithData: [md5JSON dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+    bool b = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
+
+    if ( !b )  // If the file does not exist
+        dbPath = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
     
-    if ( error != nil )
-        return nil;
     
-    NSArray *md5Arr = [md5dict valueForKeyPath:@"md5"];
+    //    NSData *fileData = [NSData dataWithContentsOfFile: [self filePath] ];
+    NSData *fileData = [NSData dataWithContentsOfFile: dbPath ];
     
-    _localMD5 = [md5Arr firstObject];
+    // Create 16 byte MD5 hash value, store in buffer
+    CC_MD5(fileData.bytes, fileData.length, md5Buffer);
+    
+    // Convert unsigned char buffer to NSString of hex values
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x",md5Buffer[i]];
+    
+    _localMD5 = output;
+    
+    
+//    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *md5Path = [NSString stringWithFormat:@"%@/SEPTA.md5", [paths objectAtIndex:0] ];
+//    
+//    if ( md5Path == nil )
+//        return nil;
+//    
+//    NSString *md5JSON = [[NSString alloc] initWithContentsOfFile:md5Path encoding:NSUTF8StringEncoding error:NULL];
+//    if ( md5JSON == nil )
+//        return nil;
+//    
+//    NSError *error = nil;
+//    NSDictionary *md5dict = [NSJSONSerialization JSONObjectWithData: [md5JSON dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+//    
+//    if ( error != nil )
+//        return nil;
+//    
+//    NSArray *md5Arr = [md5dict valueForKeyPath:@"md5"];
+    
+//    _localMD5 = [md5Arr firstObject];
     
 //    NSLog(@"localMD5: %@", _localMD5);
     
     return _localMD5;
+    
 }
 
 

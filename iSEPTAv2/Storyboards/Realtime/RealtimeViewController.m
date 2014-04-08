@@ -322,14 +322,20 @@
     }
 
     
+//    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *dbPath = [NSString stringWithFormat:@"%@/SEPTA.sqlite", [paths objectAtIndex:0] ];
+//    NSError *error;
+//    
+//    [[NSFileManager defaultManager] removeItemAtPath: dbPath error:&error];
     
     if ( _dbVersionAPI == nil )
     {
         _dbVersionAPI = [[GetDBVersionAPI alloc] init];
         [_dbVersionAPI setDelegate:self];
-        [_dbVersionAPI loadLocalMD5];
+//        [_dbVersionAPI loadLocalMD5];
     }
     
+//    [_dbVersionAPI setTestMode:YES];
     [_dbVersionAPI fetchData];
     
 }
@@ -340,10 +346,9 @@
     
     // TODO: Minimize the time this message is played; once a day
     
-
-    if ( ( obj.message != nil ) && ( [[_dbVersionAPI localMD5] isEqualToString: obj.md5] ) )
+    [_dbVersionAPI loadLocalMD5];
+    if ( ( obj.message != nil ) && ( ![[_dbVersionAPI localMD5] isEqualToString: obj.md5] ) )
     {
-
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = @"MM/d/yy";
@@ -354,6 +359,7 @@
         NSTimeInterval lastDateDiff;
         
         NSDate *lastDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:Update:DateOfLastNotification"];
+        lastDate = 0;
         
         if ( lastDate == nil )
             lastDateDiff = 60*60*24*365;
@@ -381,7 +387,7 @@
                                               [alertBanner hide];
                                           }];
             
-            NSTimeInterval showTime = 5.0f;
+            NSTimeInterval showTime = 10.0f;
             [alertBanner setSecondsToShow: showTime];
             
             [alertBanner show];

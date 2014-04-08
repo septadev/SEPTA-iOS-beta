@@ -21,6 +21,8 @@
     
     AutomaticUpdateState _updateSM;
     
+    NSString *_path;
+    
 }
 
 
@@ -71,6 +73,10 @@
     //    float w    = self.view.frame.size.width;
     LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0,500, 32) withTitle:@"Update"];
     [self.navigationItem setTitleView:titleView];
+    
+    
+    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    _path = [paths objectAtIndex:0];
     
     
     id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:Update:AutoUpdate"];
@@ -324,6 +330,7 @@
         [_dbVersionAPI setDelegate:self];
     }
     
+//    [_dbVersionAPI setTestMode:YES];
     [_dbVersionAPI fetchData];
     
 }
@@ -389,18 +396,102 @@
 }
 
 
+- (NSString *)documentsDirectory {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    return (paths.count)? paths[0] : nil;
+}
+
+
 -(void) downloadSchedule
 {
     
     // Install!
- 
-    NSURL *downloadURL = [[NSURL alloc] initWithString: @"http://www3.septa.org/hackathon/dbVersion/download.php"];
-    NSURLRequest *request = [NSURLRequest requestWithURL: downloadURL];
-    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
     
+    
+    
+    
+//    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString  *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSString  *zipPath = [NSString stringWithFormat:@"%@/%@", _path, @"SEPTA.zip"];
+    
+    
+    
+//    NSString *zipPath = [[self documentsDirectory] stringByAppendingPathComponent:@"SEPTA.zip"];
+//    NSString *thumbnailsPath = [namePath stringByAppendingPathComponent:@"Thumbnails"];
+//    NSURL *thumbnailsURL = [NSURL fileURLWithPath:thumbnailsPath];
+//    
+//    NSError *error;
+//    
+//    if ([[NSFileManager defaultManager] fileExistsAtPath:thumbnailsPath] == NO) {
+//        [[NSFileManager defaultManager] createDirectoryAtURL:thumbnailsURL withIntermediateDirectories:NO attributes:nil error:&error];
+//        
+//        if (error) {
+//            NSLog(@"[Thumbnail Directory] %@", [error description]);
+//        }
+//    }
+    
+
+    NSError *error;
+    [[NSFileManager defaultManager] removeItemAtPath: zipPath error:&error];
+    
+    if ( error )
+    {
+        NSLog(@"Unable to delete %@", zipPath);
+    }
+    else
+    {
+        //zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
+        NSLog(@"Deleted zip file! zipPath: %@", zipPath);
+    }
+
+    
+    
+    
+    
+ 
+    NSURL *downloadURL = [[NSURL alloc] initWithString: @"http://api0.septa.org/gga8893/dbVersion/download.php"];
+    NSURLRequest *request = [NSURLRequest requestWithURL: downloadURL];
+    //NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
+    
+    NSLog(@"filePath: %@", [self filePath]);
+//    NSLog(@"zipPath: %@", zipPath);
+    NSLog(@"url    : %@", downloadURL);
+    
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDownloadsDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//
+//    NSArray *paths2 = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory2 = [paths2 objectAtIndex:0];
+//    
+//    NSLog(@"DL: %@", documentsDirectory);
+//    NSLog(@"Doc: %@", documentsDirectory2);
+
+//    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", documentsDirectory];
+//    NSString *zipPath = namePath;
+//    NSLog(@"zipPath: %@", zipPath);
+
     
     if ( ![[Reachability reachabilityForInternetConnection] isReachable] )
         return;
+
+//    AFDownloadRequestOperation *operation = [[AFDownloadRequestOperation alloc] initWithRequest:request targetPath:zipPath shouldResume:YES];
+//
+//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+//    {
+//        NSLog(@"Done downloading %@", zipPath);
+//        
+//        NSFileManager *man = [NSFileManager defaultManager];
+//        NSDictionary *attrs = [man attributesOfItemAtPath:zipPath error:NULL];
+//        UInt32 result = [attrs fileSize];
+//        
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"Error: %ld", (long)[error code]);
+//        NSLog(@"%@", error);
+//    }];
+//    
+//    [operation start];
+
 
     
     AFDownloadRequestOperation *dOp = [[AFDownloadRequestOperation alloc] initWithRequest:request targetPath:zipPath shouldResume:YES];
@@ -415,6 +506,7 @@
          NSLog(@"Error: %@", error);
      }];
     
+//    dOp.response.statusCode
     
     [dOp setProgressiveDownloadProgressBlock:^(AFDownloadRequestOperation *operation, NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
         //        NSLog(@"Operation%i: bytesRead: %d", 1, bytesRead);
@@ -465,7 +557,13 @@
     [dOp setCompletionBlock:^{
         NSLog(@"Download completed!");
         [self updateStateTo: kAutomaticUpdateFinishedDownload];
+        
+//        NSFileManager *man = [NSFileManager defaultManager];
+//        NSDictionary *attrs = [man attributesOfItemAtPath:zipPath error:NULL];
+//        UInt32 result = [attrs fileSize];
+        
     }];
+    
     
     [dOp start];
     //    [dOp waitUntilFinished];
@@ -480,7 +578,8 @@
 {
     
     // Remove any partial file downloaded
-    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
+//    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
+    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", _path];
 
     if ( zipPath == nil )
         return;  // Nothing to delete
@@ -494,7 +593,7 @@
     }
     else
     {
-        zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
+//        zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
         NSLog(@"Deleted zip file! zipPath: %@", zipPath);
     }
     
@@ -511,15 +610,17 @@
     
     ZipArchive *zip = [[ZipArchive alloc] init];
     
-    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
-    
+//    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
+    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", _path];
+
     if ( [zip UnzipOpenFile: zipPath] )
     {
         
         NSArray *contents = [zip getZipFileContents];
         NSLog(@"Contents: %@", contents);
         
-        BOOL ret = [zip UnzipFileTo:[[self filePath] stringByDeletingLastPathComponent] overWrite:YES];
+//        BOOL ret = [zip UnzipFileTo:[[self filePath] stringByDeletingLastPathComponent] overWrite:YES];
+        BOOL ret = [zip UnzipFileTo:_path overWrite:YES];
         if ( NO == ret )
         {
             NSLog(@"Unable to unzip");
@@ -576,7 +677,9 @@
     // Create byte array of unsigned chars
     unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
     
-    NSData *fileData = [NSData dataWithContentsOfFile: [self filePath] ];
+    NSString *dbPath = [NSString stringWithFormat:@"%@/SEPTA.sqlite", _path];
+//    NSData *fileData = [NSData dataWithContentsOfFile: [self filePath] ];
+    NSData *fileData = [NSData dataWithContentsOfFile: dbPath ];
     
     // Create 16 byte MD5 hash value, store in buffer
     CC_MD5(fileData.bytes, fileData.length, md5Buffer);
@@ -595,7 +698,9 @@
     NSLog(@"New MD5: %@", output);
 
     
-    NSString *md5Path = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"md5"];
+//    NSString *md5Path = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"md5"];
+//    NSString *md5Path = [NSString stringWithFormat:@"%@/SEPTA.md5", _path];
+    NSString *md5Path = _path;
 
     NSMutableDictionary *md5Dict = [[NSMutableDictionary alloc] init];
     [md5Dict setValue: output forKey:@"md5"];
