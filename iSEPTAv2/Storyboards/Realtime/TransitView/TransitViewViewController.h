@@ -28,6 +28,7 @@
 #import "RouteInfo.h"
 #import "ServiceHours.h"
 
+#import "SystemStatusObject.h"
 
 // --==  Xib Models  ==--
 #import "TransitRouteListCell.h"

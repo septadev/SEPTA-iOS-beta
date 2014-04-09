@@ -23,6 +23,7 @@
 
 
 -(void) addSystemStatusObject:(SystemStatusObject*) ssObject;
+//-(void) isSuspended:(BOOL) yesNO;
 
 @end
 

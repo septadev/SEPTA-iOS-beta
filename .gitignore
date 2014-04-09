@@ -5,6 +5,7 @@ v#Can ignore specific files
 *.DS_Store
 *.pid
 *.log
+*.zip
 
 build/
 *.pbxuser

@@ -545,55 +545,46 @@
     
     //[ssObject setIssuspend: [NSNull null] ];
     
+    
     @try
     {
-        
-        if ( [[ssObject isadvisory] isEqualToString:@"Yes"] )
-        {
-            [[cell imgAdvisory] setHidden:NO];
-        }
-        else
-        {
-            [[cell imgAdvisory] setHidden:YES];
-        }
-        
-        
-        if ( [[ssObject isalert] isEqualToString:@"Y"] )
-        {
-            [[cell imgAlert] setHidden:NO];
-        }
-        else
-        {
-            [[cell imgAlert] setHidden:YES];
-        }
-        
-        
-        if ( [[ssObject isdetour] isEqualToString:@"Y"] )
-        {
-            [[cell imgDetour] setHidden:NO];
-        }
-        else
-        {
-            [[cell imgDetour] setHidden:YES];
-        }
-        
-        
+        // If route is suspended, hide everything but the Suspended icon
         if ( [[ssObject issuspend] isEqualToString:@"Y"] )
         {
             [[cell imgSuspended] setHidden:NO];
+            [[cell imgAdvisory]  setHidden:YES];
+            [[cell imgAlert]     setHidden:YES];
+            [[cell imgDetour]    setHidden:YES];
         }
         else
         {
             [[cell imgSuspended] setHidden:YES];
-        }
         
+            if ( [[ssObject isadvisory] isEqualToString:@"Yes"] )
+                [[cell imgAdvisory] setHidden:NO];
+            else
+                [[cell imgAdvisory] setHidden:YES];
+        
+        
+            if ( [[ssObject isalert] isEqualToString:@"Y"] )
+                [[cell imgAlert] setHidden:NO];
+            else
+                [[cell imgAlert] setHidden:YES];
+        
+        
+            if ( [[ssObject isdetour] isEqualToString:@"Y"] )
+                [[cell imgDetour] setHidden:NO];
+            else
+                [[cell imgDetour] setHidden:YES];
+            
+        }  // else if ( isSuspended )
         
     }
     @catch (NSException *exception)
     {
-        [[cell imgAdvisory] setHidden:YES];
-        [[cell imgAlert] setHidden:YES];
-        [[cell imgDetour] setHidden:YES];
+        [[cell imgAdvisory]  setHidden:YES];
+        [[cell imgAlert]     setHidden:YES];
+        [[cell imgDetour]    setHidden:YES];
         [[cell imgSuspended] setHidden:YES];
     }
     @finally

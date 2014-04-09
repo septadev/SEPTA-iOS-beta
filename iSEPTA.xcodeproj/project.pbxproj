@@ -7,13 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2700AE6D18F456D100933C2E /* Service-Interruption.png in Resources */ = {isa = PBXBuildFile; fileRef = 2700AE6B18F456D100933C2E /* Service-Interruption.png */; };
+		2700AE6E18F456D100933C2E /* Service-Interruption@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2700AE6C18F456D100933C2E /* Service-Interruption@2x.png */; };
+		2700AE7018F456E900933C2E /* system_status_suspended@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2700AE6F18F456E900933C2E /* system_status_suspended@2x.png */; };
+		2700AE7218F456F200933C2E /* system_status_suspended.png in Resources */ = {isa = PBXBuildFile; fileRef = 2700AE7118F456F200933C2E /* system_status_suspended.png */; };
+		2700AE7618F4964C00933C2E /* DashboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2700AE7518F4964C00933C2E /* DashboardView.m */; };
+		2700AE7818F4966D00933C2E /* DashboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2700AE7718F4966D00933C2E /* DashboardView.xib */; };
 		2702B3851790734C00153F72 /* MapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702B3841790734C00153F72 /* MapsViewController.m */; };
 		2708113F17A9877400B62FBD /* OldTrainViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DBA60417A980D400118225 /* OldTrainViewViewController.m */; };
 		2708114417A988D200B62FBD /* RealtimeVehicleInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2708114317A988D200B62FBD /* RealtimeVehicleInformationCell.xib */; };
 		2708114717A988EB00B62FBD /* RealtimeVehicleInformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708114617A988EB00B62FBD /* RealtimeVehicleInformationCell.m */; };
 		2708114917A9906300B62FBD /* SimpleMapStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2708114817A9906300B62FBD /* SimpleMapStoryboard.storyboard */; };
 		2708114C17A990A500B62FBD /* SimpleMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708114B17A990A500B62FBD /* SimpleMapViewController.m */; };
-		270ABC4E1771EB0B00F631B6 /* FeedbackQuickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270ABC4D1771EB0B00F631B6 /* FeedbackQuickViewController.m */; };
 		270ABC501771EF5000F631B6 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270ABC4F1771EF5000F631B6 /* MessageUI.framework */; };
 		270BB8CB16FCF4DE0039EF8D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270BB8CA16FCF4DE0039EF8D /* MapViewController.m */; };
 		270E484A17903F61009D325D /* CustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 270E484917903F61009D325D /* CustomView.m */; };
@@ -89,7 +94,6 @@
 		274DD6301688BED0006BEC97 /* NTASaveObjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274DD62F1688BED0006BEC97 /* NTASaveObjectCell.xib */; };
 		274DD6331688BF95006BEC97 /* NTASaveObjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 274DD6321688BF94006BEC97 /* NTASaveObjectCell.m */; };
 		274E02521663C80000BCE8A2 /* GTFSDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 274E02501663C80000BCE8A2 /* GTFSDataModel.xcdatamodeld */; };
-		27504D2416DD19E7001B762A /* CommentQuickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27504D2316DD19E7001B762A /* CommentQuickViewController.m */; };
 		27568B9318F32F4300422E37 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27568B9218F32F4300422E37 /* libPods.a */; };
 		275BE98916835938007AF394 /* RouteInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 275BE98816835938007AF394 /* RouteInfo.m */; };
 		275BE98C16835E82007AF394 /* TransitViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 275BE98B16835E82007AF394 /* TransitViewObject.m */; };
@@ -149,6 +153,11 @@
 		27A3750216EF90C0001422A8 /* CachedItinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A3750116EF90C0001422A8 /* CachedItinerary.m */; };
 		27A434B516302BAE00D9724A /* BusRouteSorter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27A434B416302BAE00D9724A /* BusRouteSorter.xib */; };
 		27A434B816302DFD00D9724A /* BusRouteSorterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A434B716302DFD00D9724A /* BusRouteSorterView.m */; };
+		27A4CE2C18F5A7F400340B2A /* CommentsForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A4CE2B18F5A7F400340B2A /* CommentsForm.m */; };
+		27A4CE2F18F5A80300340B2A /* FeedbackForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A4CE2E18F5A80300340B2A /* FeedbackForm.m */; };
+		27A4CE3218F5AA4E00340B2A /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A4CE3118F5AA4E00340B2A /* CommentsViewController.m */; };
+		27A4CE3518F5AA5B00340B2A /* LeaveFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A4CE3418F5AA5B00340B2A /* LeaveFeedbackViewController.m */; };
+		27A4CE3B18F5ACE100340B2A /* NSMutableArray+MoveObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A4CE3A18F5ACE100340B2A /* NSMutableArray+MoveObject.m */; };
 		27A5EAB916974106004C9467 /* CHDigitInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5EAB816974106004C9467 /* CHDigitInput.m */; };
 		27A5EABD1697411C004C9467 /* digitControlBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A5EABB1697411C004C9467 /* digitControlBG@2x.png */; };
 		27A5EABE1697411C004C9467 /* digitOverlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27A5EABC1697411C004C9467 /* digitOverlay@2x.png */; };
@@ -774,6 +783,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2700AE6B18F456D100933C2E /* Service-Interruption.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Service-Interruption.png"; sourceTree = "<group>"; };
+		2700AE6C18F456D100933C2E /* Service-Interruption@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Service-Interruption@2x.png"; sourceTree = "<group>"; };
+		2700AE6F18F456E900933C2E /* system_status_suspended@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "system_status_suspended@2x.png"; sourceTree = "<group>"; };
+		2700AE7118F456F200933C2E /* system_status_suspended.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = system_status_suspended.png; sourceTree = "<group>"; };
+		2700AE7418F4964C00933C2E /* DashboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashboardView.h; path = Realtime/Dashboard/DashboardView.h; sourceTree = "<group>"; };
+		2700AE7518F4964C00933C2E /* DashboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashboardView.m; path = Realtime/Dashboard/DashboardView.m; sourceTree = "<group>"; };
+		2700AE7718F4966D00933C2E /* DashboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DashboardView.xib; path = Realtime/Dashboard/DashboardView.xib; sourceTree = "<group>"; };
 		2702B3831790734C00153F72 /* MapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapsViewController.h; path = Maps/MapsViewController.h; sourceTree = "<group>"; };
 		2702B3841790734C00153F72 /* MapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapsViewController.m; path = Maps/MapsViewController.m; sourceTree = "<group>"; };
 		27073F37169F08E4008F3E52 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GuideViewController.h; path = Settings/Guide/GuideViewController.h; sourceTree = "<group>"; };
@@ -784,8 +800,6 @@
 		2708114817A9906300B62FBD /* SimpleMapStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SimpleMapStoryboard.storyboard; path = "Storyboards/Common Storyboards/Maps/SimpleMapStoryboard.storyboard"; sourceTree = "<group>"; };
 		2708114A17A990A500B62FBD /* SimpleMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleMapViewController.h; path = "Storyboards/Common Storyboards/Maps/SimpleMapViewController.h"; sourceTree = "<group>"; };
 		2708114B17A990A500B62FBD /* SimpleMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleMapViewController.m; path = "Storyboards/Common Storyboards/Maps/SimpleMapViewController.m"; sourceTree = "<group>"; };
-		270ABC4C1771EB0B00F631B6 /* FeedbackQuickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedbackQuickViewController.h; path = CustomerService/FeedbackQuickViewController.h; sourceTree = "<group>"; };
-		270ABC4D1771EB0B00F631B6 /* FeedbackQuickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedbackQuickViewController.m; path = CustomerService/FeedbackQuickViewController.m; sourceTree = "<group>"; };
 		270ABC4F1771EF5000F631B6 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		270BB8C916FCF4DE0039EF8D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = ScheduleTab/MapViewController.h; sourceTree = "<group>"; };
 		270BB8CA16FCF4DE0039EF8D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = ScheduleTab/MapViewController.m; sourceTree = "<group>"; };
@@ -901,8 +915,6 @@
 		274DD6311688BF94006BEC97 /* NTASaveObjectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NTASaveObjectCell.h; path = Realtime/NTASaveObjectCell.h; sourceTree = "<group>"; };
 		274DD6321688BF94006BEC97 /* NTASaveObjectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NTASaveObjectCell.m; path = Realtime/NTASaveObjectCell.m; sourceTree = "<group>"; };
 		274E02511663C80000BCE8A2 /* GTFSDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GTFSDataModel.xcdatamodel; sourceTree = "<group>"; };
-		27504D2216DD19E7001B762A /* CommentQuickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentQuickViewController.h; path = CustomerService/CommentQuickViewController.h; sourceTree = "<group>"; };
-		27504D2316DD19E7001B762A /* CommentQuickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentQuickViewController.m; path = CustomerService/CommentQuickViewController.m; sourceTree = "<group>"; };
 		27568B7818F32F3500422E37 /* libPods-AFDownloadRequestOperation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AFDownloadRequestOperation.a"; path = "Pods/build/Debug-iphoneos/libPods-AFDownloadRequestOperation.a"; sourceTree = "<group>"; };
 		27568B7918F32F3500422E37 /* libPods-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AFNetworking.a"; path = "Pods/build/Debug-iphoneos/libPods-AFNetworking.a"; sourceTree = "<group>"; };
 		27568B7A18F32F3500422E37 /* libPods-ALAlertBanner.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ALAlertBanner.a"; path = "Pods/build/Debug-iphoneos/libPods-ALAlertBanner.a"; sourceTree = "<group>"; };
@@ -1014,6 +1026,16 @@
 		27A434B416302BAE00D9724A /* BusRouteSorter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusRouteSorter.xib; sourceTree = "<group>"; };
 		27A434B616302DFC00D9724A /* BusRouteSorterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusRouteSorterView.h; path = ScheduleTab/BusRouteSorterView.h; sourceTree = "<group>"; };
 		27A434B716302DFD00D9724A /* BusRouteSorterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusRouteSorterView.m; path = ScheduleTab/BusRouteSorterView.m; sourceTree = "<group>"; };
+		27A4CE2A18F5A7F400340B2A /* CommentsForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsForm.h; path = CustomerService/CommentsForm.h; sourceTree = "<group>"; };
+		27A4CE2B18F5A7F400340B2A /* CommentsForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsForm.m; path = CustomerService/CommentsForm.m; sourceTree = "<group>"; };
+		27A4CE2D18F5A80300340B2A /* FeedbackForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedbackForm.h; path = CustomerService/FeedbackForm.h; sourceTree = "<group>"; };
+		27A4CE2E18F5A80300340B2A /* FeedbackForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedbackForm.m; path = CustomerService/FeedbackForm.m; sourceTree = "<group>"; };
+		27A4CE3018F5AA4E00340B2A /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsViewController.h; path = CustomerService/CommentsViewController.h; sourceTree = "<group>"; };
+		27A4CE3118F5AA4E00340B2A /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsViewController.m; path = CustomerService/CommentsViewController.m; sourceTree = "<group>"; };
+		27A4CE3318F5AA5B00340B2A /* LeaveFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeaveFeedbackViewController.h; path = CustomerService/LeaveFeedbackViewController.h; sourceTree = "<group>"; };
+		27A4CE3418F5AA5B00340B2A /* LeaveFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeaveFeedbackViewController.m; path = CustomerService/LeaveFeedbackViewController.m; sourceTree = "<group>"; };
+		27A4CE3918F5ACE100340B2A /* NSMutableArray+MoveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+MoveObject.h"; path = "Categories/NSMutableArray+MoveObject.h"; sourceTree = "<group>"; };
+		27A4CE3A18F5ACE100340B2A /* NSMutableArray+MoveObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+MoveObject.m"; path = "Categories/NSMutableArray+MoveObject.m"; sourceTree = "<group>"; };
 		27A5EAB716974106004C9467 /* CHDigitInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHDigitInput.h; sourceTree = "<group>"; };
 		27A5EAB816974106004C9467 /* CHDigitInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHDigitInput.m; sourceTree = "<group>"; };
 		27A5EABB1697411C004C9467 /* digitControlBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "digitControlBG@2x.png"; sourceTree = "<group>"; };
@@ -1784,6 +1806,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2700AE7318F4961000933C2E /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				2700AE7418F4964C00933C2E /* DashboardView.h */,
+				2700AE7518F4964C00933C2E /* DashboardView.m */,
+				2700AE7718F4966D00933C2E /* DashboardView.xib */,
+			);
+			name = Dashboard;
+			sourceTree = "<group>";
+		};
 		2702B3821790733800153F72 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
@@ -1838,8 +1870,6 @@
 		270ABC491771EACF00F631B6 /* FeedbackForm */ = {
 			isa = PBXGroup;
 			children = (
-				270ABC4C1771EB0B00F631B6 /* FeedbackQuickViewController.h */,
-				270ABC4D1771EB0B00F631B6 /* FeedbackQuickViewController.m */,
 			);
 			name = FeedbackForm;
 			sourceTree = "<group>";
@@ -2102,6 +2132,13 @@
 			name = CustomCell;
 			sourceTree = "<group>";
 		};
+		27239C3818F59B6400060228 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Test;
+			sourceTree = "<group>";
+		};
 		27240F441784851F00BF4A2A /* DMRNotificationView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2125,6 +2162,7 @@
 		272976071799A8DA00DB2580 /* Realtime */ = {
 			isa = PBXGroup;
 			children = (
+				2700AE7318F4961000933C2E /* Dashboard */,
 				27E0688F1799A41800BA7A92 /* RealtimeViewController.h */,
 				27E068901799A41800BA7A92 /* RealtimeViewController.m */,
 				84D12B4E17E1F0850079A8D7 /* Mobile */,
@@ -2253,6 +2291,8 @@
 				41E22F3616FF4EE800126DC2 /* NSArray+Indices.m */,
 				41E22F3816FF541200126DC2 /* NSMutableArray+Indices.h */,
 				41E22F3916FF541200126DC2 /* NSMutableArray+Indices.m */,
+				27A4CE3918F5ACE100340B2A /* NSMutableArray+MoveObject.h */,
+				27A4CE3A18F5ACE100340B2A /* NSMutableArray+MoveObject.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -2439,8 +2479,6 @@
 		2795691516DBC17C004B925A /* CommentForm */ = {
 			isa = PBXGroup;
 			children = (
-				27504D2216DD19E7001B762A /* CommentQuickViewController.h */,
-				27504D2316DD19E7001B762A /* CommentQuickViewController.m */,
 			);
 			name = CommentForm;
 			sourceTree = "<group>";
@@ -2564,6 +2602,17 @@
 				27CFA30416E7EDD70070AA55 /* SEPTA.sqlite */,
 			);
 			name = Database;
+			sourceTree = "<group>";
+		};
+		27A4CE2918F5A7DB00340B2A /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				27A4CE2A18F5A7F400340B2A /* CommentsForm.h */,
+				27A4CE2B18F5A7F400340B2A /* CommentsForm.m */,
+				27A4CE2D18F5A80300340B2A /* FeedbackForm.h */,
+				27A4CE2E18F5A80300340B2A /* FeedbackForm.m */,
+			);
+			name = Forms;
 			sourceTree = "<group>";
 		};
 		27A5EAB6169740F5004C9467 /* DigitalInputControl */ = {
@@ -2891,6 +2940,8 @@
 		27C0ACF717DE295A005FDB80 /* Comments */ = {
 			isa = PBXGroup;
 			children = (
+				27A4CE3018F5AA4E00340B2A /* CommentsViewController.h */,
+				27A4CE3118F5AA4E00340B2A /* CommentsViewController.m */,
 			);
 			name = Comments;
 			sourceTree = "<group>";
@@ -2899,6 +2950,8 @@
 			isa = PBXGroup;
 			children = (
 				270ABC491771EACF00F631B6 /* FeedbackForm */,
+				27A4CE3318F5AA5B00340B2A /* LeaveFeedbackViewController.h */,
+				27A4CE3418F5AA5B00340B2A /* LeaveFeedbackViewController.m */,
 			);
 			name = "Leave Feedback";
 			sourceTree = "<group>";
@@ -3564,6 +3617,8 @@
 		840D10B417C2B98400AD26BB /* Connect */ = {
 			isa = PBXGroup;
 			children = (
+				27A4CE2918F5A7DB00340B2A /* Forms */,
+				27239C3818F59B6400060228 /* Test */,
 				27C0ACEF17D8F89C005FDB80 /* Code */,
 				27C0ACF017D8F8A1005FDB80 /* Xibs */,
 				840D112D17C2BE2700AD26BB /* ConnectViewController.h */,
@@ -3803,6 +3858,8 @@
 		8418EC5B17FEF6BB003607D1 /* Realtime */ = {
 			isa = PBXGroup;
 			children = (
+				2700AE6B18F456D100933C2E /* Service-Interruption.png */,
+				2700AE6C18F456D100933C2E /* Service-Interruption@2x.png */,
 				8418EEA718058D67003607D1 /* NextToArrive */,
 				8418EC5C17FEF6BB003607D1 /* Buttons */,
 				8418EC6B17FEF6BB003607D1 /* Find locations */,
@@ -4290,6 +4347,7 @@
 		8418ED4B17FEF6BC003607D1 /* HD */ = {
 			isa = PBXGroup;
 			children = (
+				2700AE6F18F456E900933C2E /* system_status_suspended@2x.png */,
 				8418ED4C17FEF6BC003607D1 /* btnMFLBSLNHSL@2x.png */,
 				8418ED4D17FEF6BC003607D1 /* btnMFLBSLNHSL_clicked@2x.png */,
 				8418ED4E17FEF6BC003607D1 /* btnRRL@2x.png */,
@@ -4307,6 +4365,7 @@
 		8418ED5617FEF6BC003607D1 /* SD */ = {
 			isa = PBXGroup;
 			children = (
+				2700AE7118F456F200933C2E /* system_status_suspended.png */,
 				8418ED5717FEF6BC003607D1 /* btnMFLBSLNHSL.png */,
 				8418ED5817FEF6BC003607D1 /* btnMFLBSLNHSL_clicked.png */,
 				8418ED5917FEF6BC003607D1 /* btnRRL.png */,
@@ -4575,6 +4634,7 @@
 				8418ED8617FEF6BD003607D1 /* cross-county@2x.png in Resources */,
 				8418EDB717FEF6BD003607D1 /* Refresh.png in Resources */,
 				27DB2FF91636D6B600153E4C /* 7.kml in Resources */,
+				2700AE7818F4966D00933C2E /* DashboardView.xib in Resources */,
 				8418EE8A17FEF6BD003607D1 /* btnTransit_clicked@2x.png in Resources */,
 				8418EE5217FEF6BD003607D1 /* Schedule_NHSL_small@2x.png in Resources */,
 				8418EDDA17FEF6BD003607D1 /* Advisory.png in Resources */,
@@ -4654,6 +4714,7 @@
 				271DA8661808A0B4009ED7D6 /* septaIcon-114px@2x.png in Resources */,
 				8418EE7417FEF6BD003607D1 /* Schedule_Trolley.png in Resources */,
 				8418EE1D17FEF6BD003607D1 /* transitView-Trolley-Red.png in Resources */,
+				2700AE6D18F456D100933C2E /* Service-Interruption.png in Resources */,
 				27DB30161636D6B600153E4C /* 36.kml in Resources */,
 				8418EDC817FEF6BD003607D1 /* Find_loc-white@2x.png in Resources */,
 				8418EDB117FEF6BD003607D1 /* Favorite@2x.png in Resources */,
@@ -4826,6 +4887,7 @@
 				8418EE8217FEF6BD003607D1 /* splash-568h@2x.png in Resources */,
 				8418EE3417FEF6BD003607D1 /* RRL_white.png in Resources */,
 				27DB30501636D6B600153E4C /* 109.kml in Resources */,
+				2700AE6E18F456D100933C2E /* Service-Interruption@2x.png in Resources */,
 				27DB30511636D6B600153E4C /* 110.kml in Resources */,
 				27DB30521636D6B600153E4C /* 111.kml in Resources */,
 				27DB30531636D6B600153E4C /* 112.kml in Resources */,
@@ -4836,6 +4898,7 @@
 				8418EE4217FEF6BD003607D1 /* Schedule_BSL-BG@2x.png in Resources */,
 				8418EDF217FEF6BD003607D1 /* tabRealtimeIcon@2x.png in Resources */,
 				8418ED6D17FEF6BD003607D1 /* septaIcon-144px@2x.png in Resources */,
+				2700AE7218F456F200933C2E /* system_status_suspended.png in Resources */,
 				27DB30551636D6B600153E4C /* 114.kml in Resources */,
 				27DB30561636D6B600153E4C /* 115.kml in Resources */,
 				27DB30571636D6B600153E4C /* 116.kml in Resources */,
@@ -4903,6 +4966,7 @@
 				8418EDF917FEF6BD003607D1 /* tabSettingsIcon.png in Resources */,
 				27DB30731636D6B600153E4C /* C.kml in Resources */,
 				8418ED7C17FEF6BD003607D1 /* BG_pattern@2x.png in Resources */,
+				2700AE7018F456E900933C2E /* system_status_suspended@2x.png in Resources */,
 				27DB30741636D6B600153E4C /* G.kml in Resources */,
 				8418EE5D17FEF6BD003607D1 /* BSL-white.png in Resources */,
 				8418EECD18058D67003607D1 /* NTA-start.png in Resources */,
@@ -5157,6 +5221,7 @@
 			files = (
 				2708113F17A9877400B62FBD /* OldTrainViewViewController.m in Sources */,
 				27A374F916EF7822001422A8 /* NSString+Hashes.m in Sources */,
+				27A4CE2F18F5A80300340B2A /* FeedbackForm.m in Sources */,
 				2777E2BC169F30200016095C /* KMLParser.m in Sources */,
 				276B16A9162DA0AC00A71D57 /* sqlite3.c in Sources */,
 				568FA48B1535C0E0009345F5 /* main.m in Sources */,
@@ -5222,11 +5287,11 @@
 				2718486816A59A3C00423F9D /* FindNearestRouteSaveObject.m in Sources */,
 				27D91F3C17F0A65700627ECD /* TrainRealtimeDataViewController.m in Sources */,
 				27B7F7B916A9E6DF003DF486 /* MKMultiPolyLine.m in Sources */,
-				27504D2416DD19E7001B762A /* CommentQuickViewController.m in Sources */,
 				273A0B6817FF29720064B0FB /* MapMemoryTestViewController.m in Sources */,
 				27D4783B1845472B00854F2D /* ElevatorStatusObject.m in Sources */,
 				271AFD5C16E52B7E00A11B8E /* ItineraryObject.m in Sources */,
 				271AFD5F16E52B8E00A11B8E /* TripObject.m in Sources */,
+				27A4CE3518F5AA5B00340B2A /* LeaveFeedbackViewController.m in Sources */,
 				27CDAAC816E63D2500F9CF4D /* ItineraryTripViewController.m in Sources */,
 				27CDAAD116E649EA00F9CF4D /* ItineraryCell.m in Sources */,
 				27CDAAD416E649FC00F9CF4D /* TripCell.m in Sources */,
@@ -5239,6 +5304,7 @@
 				41E22F2C16FE3F2D00126DC2 /* TripDetailsTableController.m in Sources */,
 				41E22F3116FF4B2E00126DC2 /* StopSequenceObject.m in Sources */,
 				41E22F3716FF4EE800126DC2 /* NSArray+Indices.m in Sources */,
+				27A4CE2C18F5A7F400340B2A /* CommentsForm.m in Sources */,
 				41E22F3A16FF541300126DC2 /* NSMutableArray+Indices.m in Sources */,
 				41E22F4016FF5F3C00126DC2 /* StopSequenceCellData.m in Sources */,
 				27488D92171355D200A20195 /* StopObject.m in Sources */,
@@ -5250,7 +5316,6 @@
 				273E59E117340FC100E9B11B /* CCTConnectViewController.m in Sources */,
 				273E59E517340FDF00E9B11B /* CCTParser.m in Sources */,
 				274A8016174A85CB0072FAC7 /* CustomerServiceTableViewController.m in Sources */,
-				270ABC4E1771EB0B00F631B6 /* FeedbackQuickViewController.m in Sources */,
 				276986AB1779D4AA00EA76DF /* WalkingTourViewController.m in Sources */,
 				276986AE1779DD0C00EA76DF /* WalkingTourStops.m in Sources */,
 				2792BFFD187B10F800626D8B /* GetDBVersionAPI.m in Sources */,
@@ -5291,6 +5356,7 @@
 				843445B018367D1D00BA7A73 /* PlainNamesCell.m in Sources */,
 				27FE7C0B17AAC07A00B7F2F2 /* SystemAlertsViewController.m in Sources */,
 				27167CE617AACCEC009774A4 /* NearestLocationViewController.m in Sources */,
+				27A4CE3218F5AA4E00340B2A /* CommentsViewController.m in Sources */,
 				2765AA6617AC122000F93FBE /* RouteSelectionViewController.m in Sources */,
 				2765AA6917AC122E00F93FBE /* SchedulesViewController.m in Sources */,
 				2765AA7217AC18D600F93FBE /* ItineraryViewController.m in Sources */,
@@ -5302,8 +5368,10 @@
 				84CC993E17B87F430087477E /* TransitServiceCell.m in Sources */,
 				273CDF0E17BC138800B0CBF0 /* DistanceView.m in Sources */,
 				2782CEEE17BE8D7A005939DB /* RouteSelectionCell.m in Sources */,
+				27A4CE3B18F5ACE100340B2A /* NSMutableArray+MoveObject.m in Sources */,
 				27A2142E17C2730A0036A0C7 /* CurrentLocationCell.m in Sources */,
 				27A2143617C273AD0036A0C7 /* CurrentLocationMapViewController.m in Sources */,
+				2700AE7618F4964C00933C2E /* DashboardView.m in Sources */,
 				27A2143817C273AD0036A0C7 /* CurrentLocationTableViewController.m in Sources */,
 				840D112B17C2BC5600AD26BB /* FareViewController.m in Sources */,
 				840D112F17C2BE2700AD26BB /* ConnectViewController.m in Sources */,
@@ -5442,7 +5510,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bruce Vermeychuk (P5YSAXG749)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -5462,7 +5530,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = SEPTA;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "A0358490-9F0D-483A-B690-80FE20CAE082";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A0358490-9F0D-483A-B690-80FE20CAE082";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/**";
@@ -5479,7 +5547,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bruce Vermeychuk (P5YSAXG749)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -5492,7 +5560,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = SEPTA;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "A0358490-9F0D-483A-B690-80FE20CAE082";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A0358490-9F0D-483A-B690-80FE20CAE082";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/**";

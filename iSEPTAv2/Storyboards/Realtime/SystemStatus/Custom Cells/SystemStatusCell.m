@@ -27,6 +27,29 @@
 }
 
 
+//-(void) isSuspended:(BOOL) yesNO
+//{
+//
+//    if ( yesNO )
+//    {
+//        [self.imgAdvisory setHidden:YES];
+//        [self.imgAlert    setHidden:YES];
+//        [self.imgDetour   setHidden:YES];
+//        
+//        [self.imgSuspended setHidden:NO];
+//    }
+//    else
+//    {
+//        [self.imgAdvisory setHidden:NO];
+//        [self.imgAlert    setHidden:NO];
+//        [self.imgDetour   setHidden:NO];
+//        
+//        [self.imgSuspended setHidden:YES];
+//    }
+//    
+//}
+
+
 -(void) addSystemStatusObject:(SystemStatusObject*) ssObject
 {
     

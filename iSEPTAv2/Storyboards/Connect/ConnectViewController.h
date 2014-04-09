@@ -17,7 +17,6 @@
 #import "TwitterViewController.h"
 #import "FacebookViewController.h"
 
-#import "FeedbackQuickViewController.h"
 
 
 // --==  Helper Classes  ==--

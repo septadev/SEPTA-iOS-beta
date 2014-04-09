@@ -19,6 +19,7 @@
     {
 //        NSLog(@"Found %@ (%@) and %@ (%@)", [self valueForKey:indexKey], indexKey, [self valueForKey:titleKey], titleKey);
         NSLog(@"Found %@ from key %@", [self valueForKey:titleKey], titleKey);
+        // gga - was [self valueForKey:titleKey], titleKey]; replaced self with object
     }
     
     return nil;

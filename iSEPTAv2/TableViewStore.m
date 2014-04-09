@@ -309,10 +309,10 @@
     
     return;
     
-    for (NSArray *object in array)
-    {
-        [self addObject:array forSection:section];
-    }
+//    for (NSArray *object in array)
+//    {
+//        [self addObject:object forSection:section];
+//    }
     
 }
 

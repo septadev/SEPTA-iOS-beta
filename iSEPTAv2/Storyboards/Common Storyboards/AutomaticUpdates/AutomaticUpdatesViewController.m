@@ -446,17 +446,14 @@
     }
 
     
-    
-    
-    
- 
-    NSURL *downloadURL = [[NSURL alloc] initWithString: @"http://api0.septa.org/gga8893/dbVersion/download.php"];
+    // Note: v1.0.4 of the app used api0.septa.org/gga8893/dbVersion/download.php as the downloadURL
+    NSURL *downloadURL = [[NSURL alloc] initWithString: @"http://www3.septa.org/api/dbVersion/download.php"];
     NSURLRequest *request = [NSURLRequest requestWithURL: downloadURL];
     //NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
     
-    NSLog(@"filePath: %@", [self filePath]);
+//    NSLog(@"filePath: %@", [self filePath]);
 //    NSLog(@"zipPath: %@", zipPath);
-    NSLog(@"url    : %@", downloadURL);
+//    NSLog(@"url    : %@", downloadURL);
     
 //    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDownloadsDirectory, NSUserDomainMask, YES);
 //    NSString *documentsDirectory = [paths objectAtIndex:0];

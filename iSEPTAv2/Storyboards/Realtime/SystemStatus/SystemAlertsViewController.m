@@ -84,6 +84,7 @@
         
         SystemAlertObject *saObject = [self.alertArr objectAtIndex:0];  // <-- WTF?!
         
+        
         if ( [saObject.current_message length] > 1 )
         {
             [_ssObject setIsalert:@"Y"];
@@ -121,30 +122,37 @@
     
     int count = 1;
     int numOfAlerts = [_ssObject numOfAlerts];
-    
-    if ( [[_ssObject isadvisory] isEqualToString:@"Yes"] )
-    {
-        UIButton *button = [self configureButtonX:count++ outOfY:numOfAlerts forAlertType:kSystemAlertTypeAdvisory];
-        [_buttonsArr addObject: button];
-    }
-    
-    if ( [[_ssObject isalert] isEqualToString:@"Y"] )
-    {
-        UIButton *button = [self configureButtonX:count++ outOfY:numOfAlerts forAlertType:kSystemAlertTypeAlert];
-        [_buttonsArr addObject: button];
-    }
-    
-    if ( [[_ssObject isdetour] isEqualToString:@"Y"] )
-    {
-        UIButton *button = [self configureButtonX:count++ outOfY:numOfAlerts forAlertType:kSystemAlertTypeDetour];
-        [_buttonsArr addObject: button];
-    }
+
+//    [_ssObject setIssuspend:@"Y"];
     
     if ( [[_ssObject issuspend] isEqualToString:@"Y"] )
     {
-        UIButton *button = [self configureButtonX:count++ outOfY:numOfAlerts forAlertType:kSystemAlertTypeSuspend];
+        UIButton *button = [self configureButtonX:1 outOfY:1 forAlertType:kSystemAlertTypeSuspend];
         [_buttonsArr addObject: button];
     }
+    else
+    {
+        
+        if ( [[_ssObject isadvisory] isEqualToString:@"Yes"] )
+        {
+            UIButton *button = [self configureButtonX:count++ outOfY:numOfAlerts forAlertType:kSystemAlertTypeAdvisory];
+            [_buttonsArr addObject: button];
+        }
+        
+        if ( [[_ssObject isalert] isEqualToString:@"Y"] )
+        {
+            UIButton *button = [self configureButtonX:count++ outOfY:numOfAlerts forAlertType:kSystemAlertTypeAlert];
+            [_buttonsArr addObject: button];
+        }
+        
+        if ( [[_ssObject isdetour] isEqualToString:@"Y"] )
+        {
+            UIButton *button = [self configureButtonX:count++ outOfY:numOfAlerts forAlertType:kSystemAlertTypeDetour];
+            [_buttonsArr addObject: button];
+        }
+            
+    }
+
     
     for (UIButton *button in _buttonsArr)
     {

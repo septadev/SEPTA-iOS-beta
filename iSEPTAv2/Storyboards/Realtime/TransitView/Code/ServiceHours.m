@@ -231,6 +231,12 @@
 }
 
 
+-(void) changeServiceStatus:(TransitServiceStatus) newStatus
+{
+    transitServiceStatus = [NSNumber numberWithInt:newStatus];
+}
+
+
 
 -(NSString*) description
 {

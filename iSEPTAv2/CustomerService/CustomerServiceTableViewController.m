@@ -7,7 +7,7 @@
 //
 
 #import "CustomerServiceTableViewController.h"
-#import "FeedbackQuickViewController.h"
+//#import "FeedbackQuickViewController.h"
 
 @interface CustomerServiceTableViewController ()
 
@@ -169,105 +169,105 @@
 -(void) createForm
 {
     
-    QRootElement *root = [[QRootElement alloc] init];
-    [root setTitle:@"Comment Form"];
-    [root setControllerName:@"FeedbackQuickViewController"];
-    [root setGrouped:YES];
-    
-    
-    // --==  Comment Section  ==--
-    NSArray *radioArray = [[NSArray alloc] initWithObjects:@"Bug", @"Crash", @"Suggestion", @"Bad Data", @"Other", nil];
-    
-    QSection *commentSection = [[QSection alloc] initWithTitle:@"Type of Feedback"];
-    QRadioElement *radioElement = [[QRadioElement alloc] initWithItems:radioArray selected:0 title:nil];
-    
-    [commentSection addElement: radioElement];
-    
-    [root addSection: commentSection];
-    
-    
-    // --==  Image Section  ==--
-    
-    // This didn't work out well.  Unable to tell if an image has been selected or not.  What crap!
-    
-//    QSection *imageSection = [[QSection alloc] initWithTitle:@"Image:"];
-//    UIImage *image = [[UIImage alloc] init];
-//    QImageElement *imageElement = [[QImageElement alloc] initWithTitle:@"Tap to select" detailImage:image];
-////    [imageElement setTitle:@"Tap to select image"];
+//    QRootElement *root = [[QRootElement alloc] init];
+//    [root setTitle:@"Comment Form"];
+//    [root setControllerName:@"FeedbackQuickViewController"];
+//    [root setGrouped:YES];
 //    
-//    [imageSection addElement: imageElement];
-//    [root addSection: imageSection];
-    QSection *imageButtonSection = [[QSection alloc] initWithTitle:@"Image:"];
-    QButtonElement *imageButtonElement = [[QButtonElement alloc] initWithTitle:@"Tap to select"];
-    
-    [imageButtonSection addElement: imageButtonElement];
-    [root addSection: imageButtonSection];
-    
-    imageButtonElement.onSelected = ^{
-    
-        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-        [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
-    
-        [imagePicker setDelegate:self];
-        
-        [self presentModalViewController:imagePicker animated:YES];
-        
-    };
-    
-    
-    
-    // --==  Details Section  ==--
-    QSection *detailsSection = [[QSection alloc] initWithTitle:@"Details:"];
-    QMultilineElement *detailsMulti = [QMultilineElement new];
-    [detailsMulti setTitle:@"Details"];
-    
-    [detailsSection addElement: detailsMulti];
-    [root addSection: detailsSection];
-    
-    
-    // --==  Button Section  ==--
-    QSection *btnSection = [[QSection alloc] init];
-    QButtonElement *button = [[QButtonElement alloc] initWithTitle:@"Submit"];
-    
-    [btnSection addElement:button];
-    [root addSection:btnSection];
-    
-    
-    button.onSelected = ^{
-      
-        NSLog(@"Button Selection");
-        
-        if ( [MFMailComposeViewController canSendMail] )
-        {
-            
-            MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
-            mailViewController.mailComposeDelegate = self;
-            [mailViewController setSubject:[NSString stringWithFormat:@"SEPTA iPhone Feedback: %@", [radioArray objectAtIndex:[radioElement selected] ] ] ];
-            [mailViewController setToRecipients:[NSArray arrayWithObject:@"iosapp@septa.org"] ];
-            
-            [mailViewController setMessageBody:[detailsMulti textValue] isHTML:NO];
-
-            if ( attachmentImage != nil )
-            {
-                NSData *myData = UIImagePNGRepresentation( attachmentImage );
-                
-                NSString *name = @"Untitled.png";
-//                if ( [imageElement imageNamed] != nil )
-//                    name = [imageElement imageValueNamed];
+//    
+//    // --==  Comment Section  ==--
+//    NSArray *radioArray = [[NSArray alloc] initWithObjects:@"Bug", @"Crash", @"Suggestion", @"Bad Data", @"Other", nil];
+//    
+//    QSection *commentSection = [[QSection alloc] initWithTitle:@"Type of Feedback"];
+//    QRadioElement *radioElement = [[QRadioElement alloc] initWithItems:radioArray selected:0 title:nil];
+//    
+//    [commentSection addElement: radioElement];
+//    
+//    [root addSection: commentSection];
+//    
+//    
+//    // --==  Image Section  ==--
+//    
+//    // This didn't work out well.  Unable to tell if an image has been selected or not.  What crap!
+//    
+////    QSection *imageSection = [[QSection alloc] initWithTitle:@"Image:"];
+////    UIImage *image = [[UIImage alloc] init];
+////    QImageElement *imageElement = [[QImageElement alloc] initWithTitle:@"Tap to select" detailImage:image];
+//////    [imageElement setTitle:@"Tap to select image"];
+////    
+////    [imageSection addElement: imageElement];
+////    [root addSection: imageSection];
+//    QSection *imageButtonSection = [[QSection alloc] initWithTitle:@"Image:"];
+//    QButtonElement *imageButtonElement = [[QButtonElement alloc] initWithTitle:@"Tap to select"];
+//    
+//    [imageButtonSection addElement: imageButtonElement];
+//    [root addSection: imageButtonSection];
+//    
+//    imageButtonElement.onSelected = ^{
+//    
+//        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+//        [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+//    
+//        [imagePicker setDelegate:self];
+//        
+//        [self presentModalViewController:imagePicker animated:YES];
+//        
+//    };
+//    
+//    
+//    
+//    // --==  Details Section  ==--
+//    QSection *detailsSection = [[QSection alloc] initWithTitle:@"Details:"];
+//    QMultilineElement *detailsMulti = [QMultilineElement new];
+//    [detailsMulti setTitle:@"Details"];
+//    
+//    [detailsSection addElement: detailsMulti];
+//    [root addSection: detailsSection];
+//    
+//    
+//    // --==  Button Section  ==--
+//    QSection *btnSection = [[QSection alloc] init];
+//    QButtonElement *button = [[QButtonElement alloc] initWithTitle:@"Submit"];
+//    
+//    [btnSection addElement:button];
+//    [root addSection:btnSection];
+//    
+//    
+//    button.onSelected = ^{
+//      
+//        NSLog(@"Button Selection");
+//        
+//        if ( [MFMailComposeViewController canSendMail] )
+//        {
+//            
+//            MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+//            mailViewController.mailComposeDelegate = self;
+//            [mailViewController setSubject:[NSString stringWithFormat:@"SEPTA iPhone Feedback: %@", [radioArray objectAtIndex:[radioElement selected] ] ] ];
+//            [mailViewController setToRecipients:[NSArray arrayWithObject:@"iosapp@septa.org"] ];
+//            
+//            [mailViewController setMessageBody:[detailsMulti textValue] isHTML:NO];
+//
+//            if ( attachmentImage != nil )
+//            {
+//                NSData *myData = UIImagePNGRepresentation( attachmentImage );
 //                
-                [mailViewController addAttachmentData:myData mimeType:@"image/png" fileName: name ];
-            }
-            
-            [self presentModalViewController:mailViewController animated:YES];
-            
-        }
-        
-        
-    };
-    
-    
-    FeedbackQuickViewController *quickController = (FeedbackQuickViewController*) [[FeedbackQuickViewController alloc] initWithRoot:root];
-    [[self navigationController] pushViewController:quickController animated:YES];
+//                NSString *name = @"Untitled.png";
+////                if ( [imageElement imageNamed] != nil )
+////                    name = [imageElement imageValueNamed];
+////                
+//                [mailViewController addAttachmentData:myData mimeType:@"image/png" fileName: name ];
+//            }
+//            
+//            [self presentModalViewController:mailViewController animated:YES];
+//            
+//        }
+//        
+//        
+//    };
+//    
+//    
+//    FeedbackQuickViewController *quickController = (FeedbackQuickViewController*) [[FeedbackQuickViewController alloc] initWithRoot:root];
+//    [[self navigationController] pushViewController:quickController animated:YES];
     
 }
 

@@ -19,6 +19,8 @@
     NSMutableArray *_busSectionTitle;
     NSMutableArray *_busSectionIndex;
     
+    NSMutableDictionary *_statusLookup;
+    
     int _currentServiceID;
 }
 
@@ -60,6 +62,14 @@
 //    CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed:@"transitView-white.png" withTarget:self andWithAction:@selector(backButtonPressed:)];
 //    self.navigationItem.leftBarButtonItem = backBarButtonItem;
 
+    
+    // --===
+    // ==--  Declaration Section
+    // --===
+    
+    _statusLookup = [[NSMutableDictionary alloc] init];
+    
+    
     CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed:@"transitViewBack.png" withTarget:self andWithAction:@selector(backButtonPressed:)];
     self.navigationItem.leftBarButtonItem = backBarButtonItem;
 
@@ -83,6 +93,7 @@
     [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
     
     _tableData = [[NSMutableArray alloc] init];
+    [self getSystemStatus];
     [self getBusRouteInfo];
     
 }
@@ -168,15 +179,23 @@
     
 //    _currentServiceID = 64;  // For testing purposes, makes app think that it's Sunday
     
-    [sHours statusForTime:now andServiceID: _currentServiceID];
+    
+    RouteInfo *route = [_tableData objectAtIndex: indexPath.row];
 
-//    [serviceCell setBackgroundColor: [UIColor purpleColor] ];
-    [serviceCell setServiceHours: sHours];
-
+    if ( [[(SystemStatusObject*)[_statusLookup objectForKey:route.route_short_name] issuspend] isEqualToString:@"Y"] )
+    {
+        [sHours changeServiceStatus: kTransitServiceSuspended];
+        [serviceCell setServiceHours:sHours];
+    }
+    else
+    {
+        [sHours statusForTime:now andServiceID: _currentServiceID];
+        [serviceCell setServiceHours: sHours];
+    }
 
     return serviceCell;
     
-    RouteInfo *route = [_tableData objectAtIndex: indexPath.row];
+//    RouteInfo *route = [_tableData objectAtIndex: indexPath.row];
     
     [serviceCell setBackgroundColor: [UIColor purpleColor] ];
     [serviceCell setRouteInfo: route];
@@ -187,7 +206,12 @@
 //        
 //    }
     
-    if ( ( [route inServiceForDirectionID:0] ) || ( [route inServiceForDirectionID:1] ) )
+    
+    if ( [(SystemStatusObject*)[_statusLookup objectForKey:route.route_short_name] issuspend] )
+    {
+        [serviceCell setService: kTransitServiceSuspended];
+    }
+    else if ( ( [route inServiceForDirectionID:0] ) || ( [route inServiceForDirectionID:1] ) )
         [serviceCell setService: kTransitServiceIn];
     else
         [serviceCell setService: kTransitServiceOut];
@@ -727,6 +751,142 @@
     }
     
 }
+
+
+
+
+-(void) getSystemStatus
+{
+    
+    Reachability *network = [Reachability reachabilityForInternetConnection];
+    if ( ![network isReachable] )
+        return;  // Don't bother continuing if no internet connection is available
+    
+    
+    NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/Alerts/"];
+    
+    NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"TVVC - getSystemStatus -- api url: %@", webStringURL);
+    
+    [SVProgressHUD showWithStatus:@"Loading..."];
+    
+    // Old code, use AFNetworking instead
+    //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
+    //
+    //        NSData *realTimeTrainInfo = [NSData dataWithContentsOfURL:[NSURL URLWithString:webStringURL] ];
+    //        [self performSelectorOnMainThread:@selector(processSystemStatusJSONData:) withObject: realTimeTrainInfo waitUntilDone:YES];
+    //
+    //    });
+    
+    NSURLRequest *systemRequest = [NSURLRequest requestWithURL: [NSURL URLWithString: stringURL] ];
+    
+    AFJSONRequestOperation *jsonSystemOp;
+    jsonSystemOp = [AFJSONRequestOperation JSONRequestOperationWithRequest: systemRequest
+                                                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                       NSDictionary *jsonDict = (NSDictionary*) JSON;
+                                                                       [self processSystemStatusJSONData:jsonDict];
+                                                                       [self.tableView reloadData];  // Reload the table data when completed
+                                                                   }
+                                                                   failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                       NSLog(@"System Status Failure Because %@", [error userInfo] );
+                                                                   }];
+    
+    [jsonSystemOp start];
+    
+}
+
+
+-(void) processSystemStatusJSONData:(NSDictionary*) json
+{
+    
+    [SVProgressHUD dismiss];
+    //    _stillWaitingOnWebRequest = NO;
+    
+    // This method is called once the realtime positioning data has been returned via the API is stored in data
+    NSError *error;
+    
+    //    if ( returnedData == nil )  // Trying to serialize a nil object will generate an error
+    //        return;
+    //
+    //    NSDictionary *json = [NSJSONSerialization JSONObjectWithData: returnedData options:kNilOptions error:&error];
+    
+    if ( json == nil || [json count] == 0 )
+    {
+        return;
+    }
+    
+    if ( error != nil )
+        return;  // Something bad happened, so just return.
+    
+    [_statusLookup removeAllObjects];
+    for (NSDictionary *data in json)
+    {
+        SystemStatusObject *ssObject = [[SystemStatusObject alloc] init];
+        
+        NSString *routeName = [data objectForKey:@"route_name"];
+        
+        if ( [routeName isEqualToString:@"CCT"] )  // || [routeName isEqualToString:@"Generic"]
+            continue;
+        else if ( [routeName isEqualToString:@"Generic"] )
+        {
+            
+//            [ssObject setRoute_id:  [data objectForKey:@"route_id"] ];
+//            [ssObject setRoute_name:@"General"];
+//            
+//            [ssObject setMode:      @"Generic"];
+//            
+//            [ssObject setIsadvisory:[data objectForKey:@"isadvisory"] ];
+//            [ssObject setIsalert:   [data objectForKey:@"isalert"   ] ];
+//            [ssObject setIssuspend: [data objectForKey:@"issuppend" ] ];
+//            [ssObject setIsdetour:  [data objectForKey:@"isdetour"  ] ];
+//            
+//            [ssObject setLast_updated:[data objectForKey:@"last_updated"] ];
+//            
+//            [_additionalStatus setObject:ssObject forKey:@"Generic"];
+            continue;
+            
+        }
+        else if ( [routeName isEqualToString:@"Market/ Frankford Line"] )
+            routeName = @"MFL";
+        else if ( [routeName isEqualToString:@"Market Frankford Owl"] )
+            routeName = @"MFO";
+        else if ( [routeName isEqualToString:@"Broad Street Line"] )
+            routeName = @"BSL";
+        else if ( [routeName isEqualToString:@"Broad Street Line Owl"] )
+            routeName = @"BSO";
+        else if ( [routeName isEqualToString:@"Norristown High Speed Line"] )
+            routeName = @"NHSL";
+        else if ( [routeName isEqualToString:@"LUCY"] )
+        {
+            // Lucy only has one entry in Alerts, but it's two different routes.  Here's a quick and dirty way to ensure
+            //   both are added to the lookup table (_statusLookup)
+            routeName = @"LUCYGO";
+            [ssObject setRoute_name:routeName];
+            [ssObject setIssuspend: [data objectForKey:@"issuppend"] ];
+            [_statusLookup setObject: ssObject forKey:routeName];
+            
+            routeName = @"LUCYGR";
+        }
+        
+//        [ssObject setRoute_id:  [data objectForKey:@"route_id"] ];
+        [ssObject setRoute_name:routeName];
+        
+//        [ssObject setMode:      [data objectForKey:@"mode"] ];
+        
+//        [ssObject setIsadvisory:[data objectForKey:@"isadvisory"] ];
+//        [ssObject setIsalert:   [data objectForKey:@"isalert"] ];
+        [ssObject setIssuspend: [data objectForKey:@"issuppend"] ];
+//        [ssObject setIsdetour:  [data objectForKey:@"isdetour"] ];
+        
+//        [ssObject setLast_updated:[data objectForKey:@"last_updated"] ];
+        
+        [_statusLookup setObject: ssObject forKey:routeName];
+        
+    }
+    
+    
+}
+
 
 
 - (void)viewDidUnload

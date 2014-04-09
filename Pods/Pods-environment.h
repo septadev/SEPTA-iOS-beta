@@ -48,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_FMDB_standard 2
 #define COCOAPODS_VERSION_PATCH_FMDB_standard 0
 
+// FXForms
+#define COCOAPODS_POD_AVAILABLE_FXForms
+#define COCOAPODS_VERSION_MAJOR_FXForms 1
+#define COCOAPODS_VERSION_MINOR_FXForms 1
+#define COCOAPODS_VERSION_PATCH_FXForms 2
+
 // MMDrawerController
 #define COCOAPODS_POD_AVAILABLE_MMDrawerController
 #define COCOAPODS_VERSION_MAJOR_MMDrawerController 0
@@ -77,12 +83,6 @@
 #define COCOAPODS_VERSION_MAJOR_MMDrawerController_Subclass 0
 #define COCOAPODS_VERSION_MINOR_MMDrawerController_Subclass 5
 #define COCOAPODS_VERSION_PATCH_MMDrawerController_Subclass 3
-
-// QuickDialog
-#define COCOAPODS_POD_AVAILABLE_QuickDialog
-#define COCOAPODS_VERSION_MAJOR_QuickDialog 0
-#define COCOAPODS_VERSION_MINOR_QuickDialog 9
-#define COCOAPODS_VERSION_PATCH_QuickDialog 1
 
 // REMenu
 #define COCOAPODS_POD_AVAILABLE_REMenu

@@ -26,6 +26,7 @@ typedef NS_ENUM(NSInteger, TransitServiceStatus)
 {
     kTransitServiceIn,
     kTransitServiceOut,
+    kTransitServiceSuspended,
 };
 
 #endif

@@ -359,7 +359,6 @@
         NSTimeInterval lastDateDiff;
         
         NSDate *lastDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:Update:DateOfLastNotification"];
-        lastDate = 0;
         
         if ( lastDate == nil )
             lastDateDiff = 60*60*24*365;

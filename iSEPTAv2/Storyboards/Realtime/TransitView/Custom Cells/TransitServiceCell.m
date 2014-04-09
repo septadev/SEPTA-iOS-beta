@@ -206,6 +206,15 @@
 //            [self.lblServiceStatus setText:@"Out of Service"];
             [self.lblServiceStatus setText: _serviceHours.status];
             break;
+            
+        case kTransitServiceSuspended:
+            [self.imgServiceStatus setImage: [UIImage imageNamed:@"transitView-Out-of-service.png"] ];
+            [self.imgServiceLines  setImage: [UIImage imageNamed:@"transitView-Out-of-service_lines.png"] ];
+            [self.lblServiceStatus setText: @"Suspended"];
+            break;
+        
+        default:
+            break;
     }
     
 }

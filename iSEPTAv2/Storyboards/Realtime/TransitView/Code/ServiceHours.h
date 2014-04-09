@@ -25,6 +25,8 @@
 -(NSArray*) hoursForServiceID:(int) service_id;
 -(NSString*) statusForTime:(int) time andServiceID: (int) service_id;
 
+-(void) changeServiceStatus:(TransitServiceStatus) newStatus;
+
 @end
 
 
