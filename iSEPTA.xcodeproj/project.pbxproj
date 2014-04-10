@@ -44,6 +44,7 @@
 		271F03001871C56700CDFB16 /* BSL.kml in Resources */ = {isa = PBXBuildFile; fileRef = 271F02FD1871C56700CDFB16 /* BSL.kml */; };
 		271F03011871C56700CDFB16 /* MFL.kml in Resources */ = {isa = PBXBuildFile; fileRef = 271F02FE1871C56700CDFB16 /* MFL.kml */; };
 		271F03021871C56700CDFB16 /* NHSL.kml in Resources */ = {isa = PBXBuildFile; fileRef = 271F02FF1871C56700CDFB16 /* NHSL.kml */; };
+		272037D718F6FE6800730370 /* GTFSFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 272037D618F6FE6800730370 /* GTFSFunctions.m */; };
 		2722CDF7168371F30074821B /* NTAResultsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2722CDF6168371F30074821B /* NTAResultsCell.m */; };
 		2722CDF91683990D0074821B /* NTAConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2722CDF81683990D0074821B /* NTAConnectionCell.xib */; };
 		2722D4A91683A69F0074821B /* NTASingleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2722D4A81683A69F0074821B /* NTASingleCell.xib */; };
@@ -835,6 +836,8 @@
 		271F02FD1871C56700CDFB16 /* BSL.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = BSL.kml; path = kml/BSL.kml; sourceTree = "<group>"; };
 		271F02FE1871C56700CDFB16 /* MFL.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = MFL.kml; path = kml/MFL.kml; sourceTree = "<group>"; };
 		271F02FF1871C56700CDFB16 /* NHSL.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = NHSL.kml; path = kml/NHSL.kml; sourceTree = "<group>"; };
+		272037D518F6FE6800730370 /* GTFSFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTFSFunctions.h; path = Subclasses/GTFS/GTFSFunctions.h; sourceTree = "<group>"; };
+		272037D618F6FE6800730370 /* GTFSFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTFSFunctions.m; path = Subclasses/GTFS/GTFSFunctions.m; sourceTree = "<group>"; };
 		2722CDF5168371F30074821B /* NTAResultsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NTAResultsCell.h; path = Realtime/NTAResultsCell.h; sourceTree = "<group>"; };
 		2722CDF6168371F30074821B /* NTAResultsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NTAResultsCell.m; path = Realtime/NTAResultsCell.m; sourceTree = "<group>"; };
 		2722CDF81683990D0074821B /* NTAConnectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NTAConnectionCell.xib; path = Realtime/NTAConnectionCell.xib; sourceTree = "<group>"; };
@@ -2095,6 +2098,15 @@
 				271AFD6016E5406100A11B8E /* StopSequence */,
 			);
 			name = CustomCells;
+			sourceTree = "<group>";
+		};
+		272037D418F6FE4900730370 /* GTFS */ = {
+			isa = PBXGroup;
+			children = (
+				272037D518F6FE6800730370 /* GTFSFunctions.h */,
+				272037D618F6FE6800730370 /* GTFSFunctions.m */,
+			);
+			name = GTFS;
 			sourceTree = "<group>";
 		};
 		2722CDF31683719D0074821B /* Model */ = {
@@ -4454,6 +4466,7 @@
 		8422195E183FF62A0099B69F /* Subclasses */ = {
 			isa = PBXGroup;
 			children = (
+				272037D418F6FE4900730370 /* GTFS */,
 				274B925618883FAC00C7A297 /* APIs */,
 				8422195F183FF6B30099B69F /* MenuAlertsImageView.h */,
 				84221960183FF6B30099B69F /* MenuAlertsImageView.m */,
@@ -5386,6 +5399,7 @@
 				279E3C1D17DE4EAD008CC7F8 /* LocationObject.m in Sources */,
 				84D12B4D17E0A3E50079A8D7 /* NearestTimeCell.m in Sources */,
 				279E3C2517E0F16B008CC7F8 /* AttributionsViewController.m in Sources */,
+				272037D718F6FE6800730370 /* GTFSFunctions.m in Sources */,
 				84D12B5117E1F0B90079A8D7 /* MobileSiteViewController.m in Sources */,
 				27EBAD8217E3693800189970 /* AttributionsTextViewController.m in Sources */,
 				27EBAD8B17E36DCB00189970 /* AttributionCell.m in Sources */,
