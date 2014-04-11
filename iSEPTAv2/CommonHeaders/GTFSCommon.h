@@ -44,6 +44,7 @@ typedef NS_ENUM(NSInteger, GTFSCalendarOffset)
 {
     kGTFSCalendarOffsetToday,
     kGTFSCalendarOffsetTomorrow,
+    kGTFSCalendarOffsetYesterday,
     kGTFSCalendarOffsetWeekday,
     kGTFSCalendarOffsetSat,
     kGTFSCalendarOffsetSun,
@@ -55,7 +56,12 @@ typedef NS_ENUM(NSInteger, GTFSCalendarOffset)
 }
 
 +(NSString*) filePath;
+
 +(NSInteger) isHoliday:(GTFSRouteType) routeType withOffset:(GTFSCalendarOffset) offset;
++(NSString *) nextHoliday;
+
+
++(NSArray*) getServiceIDFor:(GTFSRouteType) route  withOffset:(GTFSCalendarOffset) offset;
 
 @end
 

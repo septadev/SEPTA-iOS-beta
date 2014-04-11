@@ -2103,6 +2103,9 @@
 		272037D418F6FE4900730370 /* GTFS */ = {
 			isa = PBXGroup;
 			children = (
+				27364691177B5E3F00511A2F /* GTFSCommon.h */,
+				2792BFF31875BE4800626D8B /* GTFSCommon.m */,
+				27364692177B5EAE00511A2F /* SEPTACommon.h */,
 				272037D518F6FE6800730370 /* GTFSFunctions.h */,
 				272037D618F6FE6800730370 /* GTFSFunctions.m */,
 			);
@@ -2234,9 +2237,6 @@
 		27364690177B5DDA00511A2F /* CommonHeaders */ = {
 			isa = PBXGroup;
 			children = (
-				27364691177B5E3F00511A2F /* GTFSCommon.h */,
-				2792BFF31875BE4800626D8B /* GTFSCommon.m */,
-				27364692177B5EAE00511A2F /* SEPTACommon.h */,
 			);
 			name = CommonHeaders;
 			sourceTree = "<group>";

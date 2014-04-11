@@ -254,6 +254,44 @@
     
     
     
+    
+    
+    //GTFSCommon *common = [[GTFSCommon alloc] init];
+    
+
+//    int serviceID_today = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetToday];
+//    int serviceID_sat   = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetSat];
+//    int serviceID_sun   = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetSun];
+//    int serviceID_week  = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetWeekday];
+//    
+//    int serviceID_tom = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetTomorrow];
+//    
+//    NSLog(@"Today: %d", serviceID_today);
+//    
+//    NSLog(@"Sat  : %d", serviceID_sat);
+//    NSLog(@"Sun  : %d", serviceID_sun);
+//    NSLog(@"Week : %d", serviceID_week);
+//    
+//    NSLog(@"Tom  : %d", serviceID_tom);
+
+    NSArray *sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetToday];
+    NSLog(@"today: %@", sids);
+    
+    sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetTomorrow];
+    NSLog(@"tom: %@", sids);
+    
+    sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetSat];
+    NSLog(@"sat: %@", sids);
+    
+    sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetSun];
+    NSLog(@"sun: %@", sids);
+    
+    sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetYesterday];
+    NSLog(@"yes: %@", sids);
+    
+    
+    NSLog(@"End of test");
+    
 }
 
 -(void) automaticDownloading

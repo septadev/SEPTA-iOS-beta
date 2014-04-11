@@ -27,6 +27,8 @@
 #import "GetAlertDataAPI.h"
 #import "GetDBVersionAPI.h"
 
+#import "GTFSCommon.h"
+
 // -- Testing
 //#import "TransitDrawerViewController.h"
 

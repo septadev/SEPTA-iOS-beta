@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+#import "GTFSCommon.h"
+
+// --==  PODs  ==--
+#import <ZipArchive.h>
+#import <FMDatabase.h>
+
+
 @interface GTFSFunctions : NSObject
 
 // Read DB
@@ -15,7 +22,9 @@
 
 //
 
--(UInt32) getServiceID;
+//-(UInt32) getServiceID;
+//-(UInt32) getServiceIDForRouteType:
+
 -(UInt32) getServiceIDFor:(NSString*) date;
 
 

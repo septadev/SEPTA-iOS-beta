@@ -24,11 +24,27 @@
     NSLog(@"GTFSCommon: filePath");
 #endif
     
-    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+//    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+    
+    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *dbPath = [NSString stringWithFormat:@"%@/SEPTA.sqlite", [paths objectAtIndex:0] ];
+    
+    bool b = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
+    
+    if ( !b )  // If the file does not exist
+    {
+        dbPath = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+//        dbPath = nil;
+        
+        // Or uncompress the zip file to get SEPTA.sqlite
+    }
+    
+    return dbPath;
+    
 }
 
 
-+(NSInteger) getServiceIDFor:(GTFSRouteType) route  withOffset:(GTFSCalendarOffset) offset
++(NSArray*) getServiceIDFor:(GTFSRouteType) route  withOffset:(GTFSCalendarOffset) offset
 {
     
 #if FUNCTION_NAMES_ON
@@ -44,32 +60,58 @@
         return 0;
     }
     
+    
+    
+    // What is the current day of the week.
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
     int weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
     
-    int dayOfWeek = 0;
+
+    int dayOfWeek = 0;  // Sun: 64, Mon: 32, Tue: 16, Wed: 8, Thu: 4, Fri: 2, Sat: 1
     
-//    switch (type) {
-//        case kItineraryFilterTypeNow:
-//            dayOfWeek = pow(2,(7-weekday) );
-//            break;
-//            
-//        case kItineraryFilterTypeSat:
-//            dayOfWeek = pow(2,0); // 000 0001 (SuMoTu WeThFrSa), Saturday
-//            break;
-//            
-//        case kItineraryFilterTypeSun:
-//            dayOfWeek = pow(2,6); // 100 0000 (SuMoTu WeThFrSa), Sunday
-//            break;
-//            
-//        case kItineraryFilterTypeWeekday:
-//            dayOfWeek = pow(2,5); // 010 0000 (SuMoTu WeThFrSa), Monday
-//            break;
-//            
-//        default:
-//            break;
-//    }
+    
+    switch (offset) {
+        case kGTFSCalendarOffsetToday:
+            dayOfWeek = pow(2,(7-weekday) );
+            break;
+            
+        case kGTFSCalendarOffsetSat:
+            dayOfWeek = pow(2,0); // 000 0001 (SuMoTu WeThFrSa), Saturday
+            break;
+            
+        case kGTFSCalendarOffsetSun:
+            dayOfWeek = pow(2,6); // 100 0000 (SuMoTu WeThFrSa), Sunday
+            break;
+            
+        case kGTFSCalendarOffsetWeekday:
+            dayOfWeek = pow(2,5); // 010 0000 (SuMoTu WeThFrSa), Monday
+            break;
+            
+        case kGTFSCalendarOffsetTomorrow:
+
+            dayOfWeek = pow(2,(7-weekday) );  // Get the current day
+            
+            if ( dayOfWeek & 1 )  // If day of the week is Sat (1), move it to Sunday
+                dayOfWeek = 64;
+            else
+                dayOfWeek = dayOfWeek >> 1;  // If not Sat, shift right by 1 (or divide by 2^1)
+            
+            break;
+            
+        case kGTFSCalendarOffsetYesterday:
+            
+            dayOfWeek = pow(2,(7-weekday) );
+            if ( dayOfWeek & 64 )
+                dayOfWeek = 1;
+            else
+                dayOfWeek = dayOfWeek << 1;
+            
+            break;
+            
+        default:
+            break;
+    }
     
     //    int dayOfWeek = pow(2,(7-weekday) );
     
@@ -98,17 +140,28 @@
     
     
     NSInteger service_id = 0;
-    [results next];
     
-    service_id = [results intForColumn:@"service_id"];
+    NSMutableArray *serviceArr = [[NSMutableArray alloc] init];
     
-    return (NSInteger)service_id;
+    while ( [results next] )
+    {
+        service_id = [results intForColumn:@"service_id"];
+        [serviceArr addObject: [NSNumber numberWithInt:service_id] ];
+    }
+    
+//    return (NSInteger)service_id;
     
     [database close];
+
+    return serviceArr;
     
 }
 
 
++(NSString *) nextHoliday
+{
+    // Returns the date of the next holiday, or how many days until?
+}
 
 
 
