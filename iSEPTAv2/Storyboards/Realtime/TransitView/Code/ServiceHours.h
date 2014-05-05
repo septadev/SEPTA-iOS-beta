@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "SEPTACommon.h"
-
+#import "GTFSCommon.h"
 
 @interface ServiceHours : NSObject
 
@@ -26,6 +26,9 @@
 -(NSString*) statusForTime:(int) time andServiceID: (int) service_id;
 
 -(void) changeServiceStatus:(TransitServiceStatus) newStatus;
+
+//-(int) getMinWithServiceID:(int) service_id;
+//-(int) getMaxWithServiceID:(int) service_id;
 
 @end
 

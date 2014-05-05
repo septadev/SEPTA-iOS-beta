@@ -32,6 +32,26 @@
     
 }
 
+
+//-(int) getMinWithServiceID:(int) service_id
+//{
+//    NSString *serviceID = [NSString stringWithFormat:@"%d", service_id];
+//    NSMutableArray *hourArr = [_hours objectForKey:serviceID];
+//    
+//    return 0;
+//}
+//
+//-(int) getMaxWithServiceID:(int) service_id
+//{
+//
+//    NSString *serviceID = [NSString stringWithFormat:@"%d", service_id];
+//    NSMutableArray *hourArr = [_hours objectForKey:serviceID];
+//
+//    
+//    return 0;
+//}
+
+
 -(void) addMin:(int) min andMax:(int) max withServiceID:(int) service_id
 {
     
@@ -101,132 +121,195 @@
 //    int kAllWeek  = kWeekday + kSunday + kSaturday;
     
     
-    int service = 0;
-    for (NSString *key in _hours)
+//    int service = 0;
+//    for (NSString *key in _hours)
+//    {
+//        service += [key intValue];
+//    }
+    
+//    int totalTime = 0;
+//    int min = 0;
+//    int max = 0;
+//    
+//    BOOL firstTime = YES;
+//    BOOL found = NO;
+    
+    
+    // Does the current service_id exist in _hours
+//    time = 100;
+//    service_id = 3;
+    
+    @try
     {
-        service += [key intValue];
-    }
     
-    int totalTime = 0;
-    int min = 0;
-    int max = 0;
-    
-    BOOL firstTime = YES;
-    BOOL found = NO;
-    
-    for (MinMax *mmObject in [_hours objectForKey: [NSString stringWithFormat:@"%d", service_id] ] )
-    {
+        MinMax *mmToday = [[_hours objectForKey: [NSString stringWithFormat:@"%d", service_id] ] objectAtIndex:0];
         
-
-        min = [[mmObject min] intValue];
-        
-        // --==  Gap Hunting!  ==--
-        if ( !firstTime )  // Need to find the gap between MinMax objects, as such, don't execute on the first time in the loop
+        if ( mmToday == nil )
+        {
+            // No service today!
+            transitServiceStatus = [NSNumber numberWithInt:kTransitServiceOut];
+            _status = @"Not In Service";
+            return _status;
+        }
+        else
         {
             
-            // As we're gap hunting, max is now the lower value and min is the higher value
-            if ( ( max < time ) && ( time < min ) )
+    //        NSArray *sidToday = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetToday];
+    //        NSArray *sidYest = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetYesterday];
+            
+            NSString *sidToday = [GTFSCommon getServiceIDStrFor:kGTFSRouteTypeBus withOffset:kGTFSCalendarOffsetToday];
+            NSString *sidYest  = [GTFSCommon getServiceIDStrFor:kGTFSRouteTypeBus withOffset:kGTFSCalendarOffsetYesterday];
+            
+            int x, y, yPrime;
+
+            x = [[mmToday min] intValue];
+            y = [[mmToday max] intValue];
+            
+            if ( [sidToday isEqualToString: sidYest] )
             {
-                // Current time is between service on this route; we're in a gap!
-                return [NSString stringWithFormat:@"Resume Service @%d:%02d", min/100, min%100];
+                
+                // If the service IDs for today and yesterday match, then letting:
+                //   x be today's min, y be today's max and a time being the current time,
+                //   The route is in service if the following is true:
+                //      ( (x < a) && (a < y) ) || ( (a + 2400) < y )
+                
+                // If the service IDs for today and yesterday do not match, then letting:
+                //   x be today's min, y be today's max, a time being the current time and y' be yesterday's max
+                //   The route is in service if the following is true:
+                //      ( (x < a) && (a < y) ) || ( (a + 2400) < y' )
+                
+
+                yPrime = y;
+                
+            }
+            else
+            {
+                
+                    NSArray *yestArr = [GTFSCommon getServiceIDFor:kGTFSRouteTypeBus withOffset:kGTFSCalendarOffsetYesterday];
+                    if ( yestArr != nil )
+                    {
+                        int yest_service_id = [(NSNumber*)[yestArr objectAtIndex:0] intValue];
+                        MinMax *mmYest = [[_hours objectForKey: [NSString stringWithFormat:@"%d", yest_service_id] ] objectAtIndex:0];
+                        
+                        if ( mmYest == nil )
+                        {
+                            // Then this route didn't offer service yesterday
+                            yPrime = 0;  // Set yPrime to 0
+                        }
+                        else
+                        {
+                            yPrime = [[mmYest max] intValue];
+                        }
+                        
+                        
+                    }
+
+                
+                
             }
             
-        }
-        else
-        {
-            firstTime = NO;
-        }
-        
-        max = [[mmObject max] intValue];
-        
-
-        
-        
-        totalTime += (max - min);
-        
-        if ( ( min < time ) && ( time < max ) )
-        {
-            found = YES;
-        }
-        
-    }
-    
-    
-//    TransitServiceStatus tStatus = kTransitServiceOut;
-    if ( found )
-    {
-        transitServiceStatus = [NSNumber numberWithInt:kTransitServiceIn];
-        if ( totalTime < 12 )
-        {
-//            _status = @"Limited Service";
-            _status = @"Not In Service";
-            return _status;
-        }
-        else
-        {
-            _status = @"In Service";
-            return _status;
-        }
-
-    }
-    else  // Not found
-    {
-        
-//        tStatus = kTransitServiceOut;  // Out by default
-        transitServiceStatus = [NSNumber numberWithInt: kTransitServiceOut];
-        if ( firstTime == NO )  // Hours exist for service_id, but time was not between them
-        {
-            _status = @"Not In Service";
-            return _status;
-        }
-        else
-        {
-            _status = @"Not In Service";
-            return _status;
-
             
-//            NSMutableString *text = [[NSMutableString alloc] init];
-//            if ( service & kWeekday )
-//            {
-//                [text appendString: @"Week"];
-//                
-//                if ( service & kSaturday )
-//                {
-//                    [text appendString: @",Sat"];
-//                }
-//                else if ( service & kSunday )
-//                {
-//                    [text appendString: @",Sun"];
-//                }
-//                else
-//                {
-//                    [text appendString: @"day"];
-//                }
+            if ( ( (x <= time) && (time < y) ) || ( (time + 2400) < yPrime ) )
+            {
+                transitServiceStatus = [NSNumber numberWithInt:kTransitServiceIn];
+                _status = @"In Service";
+                return _status;
+            }
+            else
+            {
+                transitServiceStatus = [NSNumber numberWithInt:kTransitServiceOut];
+                _status = @"Not In Service";
+                return _status;
+            }
+            
+            
+        }
+    
+        
+    }
+    @catch (NSException *exception)
+    {
+        NSLog(@"Exception thrown");
+    }
+    @finally
+    {
+        // <#Code that gets executed whether or not an exception is thrown#
+    }
+    
+    return @"N/A";
+    
+    
+//    for (MinMax *mmObject in [_hours objectForKey: [NSString stringWithFormat:@"%d", service_id] ] )
+//    {
+//        
 //
-//                [text appendString: @" Service"];
-//                _status = text;
-//                return _status;
+//        min = [[mmObject min] intValue];
+//        
+//        // --==  Gap Hunting!  ==--
+//        if ( !firstTime )  // Need to find the gap between MinMax objects, as such, don't execute on the first time in the loop
+//        {
+//            
+//            // As we're gap hunting, max is now the lower value and min is the higher value
+//            if ( ( max < time ) && ( time < min ) )
+//            {
+//                // Current time is between service on this route; we're in a gap!
+//                return [NSString stringWithFormat:@"Resume Service @%d:%02d", min/100, min%100];
 //            }
 //            
-//            if ( ( service & kWeekdaySat ) && ( service & kWeekdaySun ) )
-//            {
-//                [text appendString: @"Weekend Service"];
-//            }
-//            else if ( service & kWeekdaySat )
-//            {
-//                [text appendString: @"Saturday Service"];
-//            }
-//            else if ( service & kWeekdaySun )
-//            {
-//                [text appendString: @"Sunday Service"];
-//            }
-//            _status = text;
+//        }
+//        else
+//        {
+//            firstTime = NO;
+//        }
+//        
+//        max = [[mmObject max] intValue];
+// 
+//        
+//        totalTime += (max - min);
+//        
+//        if ( ( min < time ) && ( time < max ) )
+//        {
+//            found = YES;
+//        }
+//        
+//    }
+//    
+//    
+////    TransitServiceStatus tStatus = kTransitServiceOut;
+//    if ( found )
+//    {
+//        transitServiceStatus = [NSNumber numberWithInt:kTransitServiceIn];
+//        if ( totalTime < 12 )
+//        {
+////            _status = @"Limited Service";
+//            _status = @"Not In Service";
 //            return _status;
-            
-        }
-    }
-    
-    return @"Mistake";
+//        }
+//        else
+//        {
+//            _status = @"In Service";
+//            return _status;
+//        }
+//
+//    }
+//    else  // Not found
+//    {
+//        
+////        tStatus = kTransitServiceOut;  // Out by default
+//        transitServiceStatus = [NSNumber numberWithInt: kTransitServiceOut];
+//        if ( firstTime == NO )  // Hours exist for service_id, but time was not between them
+//        {
+//            _status = @"Not In Service";
+//            return _status;
+//        }
+//        else
+//        {
+//            _status = @"Not In Service";
+//            return _status;
+//        }
+//    }
+//    
+//    return @"Mistake";
     
 }
 

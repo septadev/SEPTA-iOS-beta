@@ -44,6 +44,51 @@
 }
 
 
++(BOOL) checkService:(int) serviceID withArray:(NSArray *)serviceIDArray
+{
+    
+    for (NSNumber *sid in serviceIDArray)
+    {
+        if ( [sid intValue] == serviceID )
+            return YES;
+    }
+    
+    return NO;
+}
+
++(BOOL) checkService:(int) serviceID withService:(int) otherID
+{
+    
+    if ( otherID == serviceID )
+        return YES;
+    else
+        return NO;
+    
+}
+
+
+
+
++(NSString*) getServiceIDStrFor:(GTFSRouteType) route  withOffset:(GTFSCalendarOffset) offset
+{
+    
+    NSArray *sArr = [GTFSCommon getServiceIDFor:route withOffset:offset];
+    
+    NSMutableString *string = [[NSMutableString alloc] init];
+    int count = 0;
+    for (NSNumber *sid in sArr)
+    {
+        if ( count++ > 0 )
+            [string appendString:@", "];
+        
+        [string appendString:[NSString stringWithFormat:@"%d",[sid intValue] ] ];
+    }
+    
+    return string;
+
+}
+
+
 +(NSArray*) getServiceIDFor:(GTFSRouteType) route  withOffset:(GTFSCalendarOffset) offset
 {
     
@@ -161,6 +206,7 @@
 +(NSString *) nextHoliday
 {
     // Returns the date of the next holiday, or how many days until?
+    return nil;
 }
 
 

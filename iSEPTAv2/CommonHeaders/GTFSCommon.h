@@ -62,6 +62,11 @@ typedef NS_ENUM(NSInteger, GTFSCalendarOffset)
 
 
 +(NSArray*) getServiceIDFor:(GTFSRouteType) route  withOffset:(GTFSCalendarOffset) offset;
++(NSString*) getServiceIDStrFor:(GTFSRouteType) route  withOffset:(GTFSCalendarOffset) offset;
+
++(BOOL) checkService:(int) serviceID withArray:(NSArray *)serviceIDArray;
++(BOOL) checkService:(int) serviceID withService:(int) otherID;
+
 
 @end
 

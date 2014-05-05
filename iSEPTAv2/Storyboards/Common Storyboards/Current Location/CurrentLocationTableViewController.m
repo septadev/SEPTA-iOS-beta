@@ -748,7 +748,7 @@ static void distanceFunc(sqlite3_context *context, int argc, sqlite3_value **arg
      }];
 
     NSLog(@"CLTVC - findNearestLocation:trains, stopAnimating");
-    [self.tableView.pullToRefreshView stopAnimating];
+//    [self.tableView.pullToRefreshView stopAnimating];
     
 }
 

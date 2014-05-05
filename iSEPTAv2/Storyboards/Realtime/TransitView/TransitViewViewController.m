@@ -93,7 +93,9 @@
     [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
     
     _tableData = [[NSMutableArray alloc] init];
+    
     [self getSystemStatus];
+    
     [self getBusRouteInfo];
     
 }
@@ -176,12 +178,18 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"HHmm"];
     int now = [[dateFormatter stringFromDate: [NSDate date] ] intValue];
+
     
 //    _currentServiceID = 64;  // For testing purposes, makes app think that it's Sunday
     
     
     RouteInfo *route = [_tableData objectAtIndex: indexPath.row];
 
+//    if ( [route.route_short_name isEqualToString:@"91"] )
+//    {
+//        NSLog(@"Break!");
+//    }
+    
     if ( [[(SystemStatusObject*)[_statusLookup objectForKey:route.route_short_name] issuspend] isEqualToString:@"Y"] )
     {
         [sHours changeServiceStatus: kTransitServiceSuspended];
@@ -319,7 +327,7 @@
     
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
-    int weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
+    int weekday = [comps weekday];  // Sunday is (1), Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
     
     int dayOfWeek;
     dayOfWeek = pow(2,(7-weekday) );
@@ -453,7 +461,7 @@
         
     }
     
-    NSLog(@"Done!");
+//    NSLog(@"Done!");
     
     
 //    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -469,139 +477,6 @@
    [self generateIndex];
     
     return;
-    
-    // --==  Load Service Hours  ==--
-//    int currentServiceID;
-//    
-//    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-//    NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
-//    int weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
-//    
-//    currentServiceID = pow(2,(7-weekday));
-    
-    
-//    NSString *qStr = [NSString stringWithFormat:@"SELECT route_id, route_short_name, route_type, direction_id, Direction, min, max FROM routes_bus NATURAL JOIN serviceHours WHERE (service_id & %d) AND route_short_name NOT IN (\"MFL\", \"NHSL\", \"BSS\")", currentServiceID];
-//    NSString *qStr = [NSString stringWithFormat:@"SELECT r.route_id, r.route_short_name, route_type, direction_id, Direction, min, max FROM routes_bus r JOIN serviceHours s ON s.route_short_name=r.route_short_name WHERE (service_id & %d) AND r.route_short_name NOT IN (\"MFL\", \"NHSL\", \"BSL\")", currentServiceID];
-    NSString *qStr = [NSString stringWithFormat:@"SELECT r.route_id, r.route_short_name, route_type, direction_id, Direction, min, max FROM routes_bus r JOIN serviceHours s ON s.route_short_name=r.route_short_name WHERE (service_id & %d)", currentServiceID];
-
-    
-    NSLog(@"TVTC - queryStr: %@", qStr);
-    FMResultSet *r = [database executeQuery: qStr];
-    if ( [database hadError] )  // Check for errors
-    {
-        
-        int errorCode = [database lastErrorCode];
-        NSString *errorMsg = [database lastErrorMessage];
-        
-        NSLog(@"TVTC - query failure, code: %d, %@", errorCode, errorMsg);
-        NSLog(@"TVTC - query str: %@", qStr);
-        
-        return;  // If an error occurred, there's nothing else to do but exit
-        
-    }
-    
-    
-    /*
-     *  The following results will be returned from the above query:
-     *     11219|124|3|0|Westbound|04:33|23:27
-     *     11219|124|3|1|Eastbound|05:40|24:50
-     *  Two results per route_id, one for each direction.  But the UITableView uses one cell that
-     *  contains both pieces of information.  Because I can't get them into the same line with a
-     *  simple select, we'll need another method.
-     *
-     *  quickLook will be a fast lookup dictionary for the individual RouteInfo objects stored in
-     *  _tableData.  _tableData is what is used to populate the table.  We check if the key is
-     *  in quickLookup.  If it isn't, we created and keep a link with quickLookup.
-     */
-    
-    NSMutableDictionary *quickLookup = [[NSMutableDictionary alloc] init];
-    BOOL foundInQuick = NO;
-    
-    while ( [r next] )
-    {
-        
-        int route_id = [r intForColumn:@"route_id"];
-        NSString *route_short_name = [r stringForColumn:@"route_short_name"];
-        //        NSString *route_long_name = [r stringForColumn:@"route_long_name"];
-        int route_type = [r intForColumn:@"route_type"];
-        
-        int direction_id = [r intForColumn:@"direction_id"];
-        
-        NSString *direction = [r stringForColumn:@"Direction"];
-        NSString *minTime   = [r stringForColumn:@"min"];
-        NSString *maxTime   = [r stringForColumn:@"max"];
-        
-        
-        //        NSLog(@"TVTC - Route #%@", route_short_name);
-        
-        RouteInfo *routeInfo;
-        if ( [quickLookup objectForKey: route_short_name] == nil )
-        {
-            
-            //            if ( [route_short_name isEqualToString:@"4"] )
-            //            {
-            //                NSLog(@"Break here also!");
-            //            }
-            
-            routeInfo = [[RouteInfo alloc] init];
-            [quickLookup setObject:routeInfo forKey:route_short_name];
-        }
-        else
-        {
-            routeInfo = [quickLookup objectForKey: route_short_name];
-            foundInQuick = YES;
-        }
-        
-        
-        [routeInfo setRoute_id:[NSNumber numberWithInt:route_id] ];
-        [routeInfo setRoute_short_name: route_short_name];
-        [routeInfo setRoute_type:[NSNumber numberWithInt:route_type] ];
-        
-        [routeInfo setCardinalDirection:direction withID:direction_id forHoursMin:minTime andMax:maxTime];
-        
-        //        if ([routeInfo.route_short_name isEqualToString:@"4"] )
-        //        {
-        //            NSLog(@"Break here!");
-        //        }
-        
-        if ( !foundInQuick )  // If it was found, we don't need to add the object into _tableData as it's already there
-            [_tableData addObject:routeInfo];  // This object was just created, add it to _tableData
-        foundInQuick = NO;
-        
-        
-        
-    }  // while ( [results next] )
-    
-    quickLookup = nil;  // We don't need this anymore
-    
-    
-    [_tableData sortUsingComparator:^(id a, id b)
-     {
-         
-         return [[a route_short_name] compare: [b route_short_name] options:NSNumericSearch];
-         
-         //
-         //        int aInt = [[a route_short_name] intValue];  // Returns 0 if the a does not begin with a valid number
-         //        int bInt = [[b route_short_name] intValue];  // Returns 0 if the b does not being with a valid numbe
-         //
-         //        //    NSLog(@"a: %@, b: %@", a, b);
-         //
-         //        if ( aInt && bInt )             // As long as both aInt and bInt aren't 0, they're integers and we want to do a simple numeric comparsion
-         //            return (NSComparisonResult)(aInt > bInt);         // Straight up, dead simple numeric comparsion here
-         //        else if ( aInt && !bInt )       // If aInt is an integer and b isn't make sure that a comes first;  steadyfast rule: Integers Before Strings
-         //            return (NSComparisonResult)-1;                  // This means, a in relationship to b should be above b, or they need to be layed out in ascending order (-1)
-         //        else if ( bInt && !aInt )       // But if bInt is the integer and a isn't, make sure that b comes first
-         //            return (NSComparisonResult)1;                   // This means, a in relationship to b should be below b, or they need to be layed out in descending order (1)
-         //        else
-         //            return [[a route_short_name] compare: [b route_short_name] ];  // If we got to this point, both a and b are strings and we just want a simple string comparison
-     }];
-    
-    
-    //    [_tableData sortUsingComparator:sortBusNames];  // XCode doesn't like NSComparisonResult sharing block names, even if said block is in an unrelated .m
-    
-    [self generateIndex];
-    
-    [self.tableView reloadData];
     
 }
 

@@ -150,33 +150,8 @@
     
     _loopState = kSecondMenuAlertImageNone;
     
-    // Do any additional setup after loading the view.
-
-//    [self.view setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mainBackground.png"] ] ];  // Does not work
-    
-//    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mainBackground.png"] ];
-//    _backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BG_pattern.png"] ];
-//    backgroundImage.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//    [backgroundImage setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-//    [backgroundImage setFrame:CGRectMake(0, 0, 320, 460)];
-
-//    [self.view addSubview:_backgroundImage];
-//    [self.view sendSubviewToBack:_backgroundImage];
-    
-//    [[UINavigationBar appearance] setTintColor: [UIColor blackColor] ];
-    
-    
-    // TabBar BS
-//    UITabBarItem *tbi = self.tabBarController.tabBarItem;
-//    [tbi setFinishedSelectedImage:[UIImage imageNamed:@"tabRealtimeIcon.png"] withFinishedUnselectedImage: [UIImage imageNamed:@"tabRealtimeIconSelected.png"] ];
-    
-    
-//    [[[self tabBarController] tabBar] setSelectionIndicatorImage: [UIImage imageNamed:@"tabRealtimeIconSelected.png"] ];
-
-    
-//    [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"tabMapIconSelected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"tabMapIcon.png"] ];
-    
     _alertMessage = [[NSMutableArray alloc] init];
+    
     
     NSString *version = [NSString stringWithFormat:@"Version %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
     NSLog(@"Version #: %@", version);
@@ -274,11 +249,17 @@
 //    
 //    NSLog(@"Tom  : %d", serviceID_tom);
 
+    
     NSArray *sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetToday];
-    NSLog(@"today: %@", sids);
+    NSLog(@"today: %@ - is it service_id 1? %d", sids, [GTFSCommon checkService:1 withArray:sids]);
     
     sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetTomorrow];
     NSLog(@"tom: %@", sids);
+    NSLog(@"Does it match service_id 1? %@", [GTFSCommon checkService:1 withArray:sids] ? @"Yes" : @"No" );
+    NSLog(@"Does it match service_id 2? %@", [GTFSCommon checkService:2 withArray:sids] ? @"Yes" : @"No" );
+    NSLog(@"Does it match service_id 3? %@", [GTFSCommon checkService:3 withArray:sids] ? @"Yes" : @"No" );
+    NSLog(@"Does it match service_id 4? %@", [GTFSCommon checkService:4 withArray:sids] ? @"Yes" : @"No" );
+    NSLog(@"Does it match service_id 5? %@", [GTFSCommon checkService:5 withArray:sids] ? @"Yes" : @"No" );
     
     sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetSat];
     NSLog(@"sat: %@", sids);
@@ -289,8 +270,12 @@
     sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetYesterday];
     NSLog(@"yes: %@", sids);
     
+    NSString *sStr = [GTFSCommon getServiceIDStrFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetTomorrow];
+    NSLog(@"tomStr: %@", sStr);
+    
     
     NSLog(@"End of test");
+    
     
 }
 
