@@ -1465,14 +1465,14 @@
 }
 
 
--(NSString*) filePath
-{
-#if FUNCTION_NAMES_ON
-    NSLog(@"NtATVC filePath");
-#endif
-    
-    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
-}
+//-(NSString*) filePath
+//{
+//#if FUNCTION_NAMES_ON
+//    NSLog(@"NtATVC filePath");
+//#endif
+//    
+//    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+//}
 
 
 // There are cases where the Saved Object might not have certain information, such as the stop_id for each stop_name.  This function
@@ -1482,7 +1482,7 @@
     
     // startEND ->  start (1, true) END (0, false)
     
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {

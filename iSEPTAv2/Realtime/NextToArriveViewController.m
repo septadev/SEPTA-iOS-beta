@@ -982,7 +982,7 @@
     
 //    [_showTimes clearData];
 //    
-//    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+//    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
 //    
 //    if ( ![database open] )
 //    {
@@ -1025,21 +1025,21 @@
     
 }
 
--(NSString*) filePath
-{
-    NSString *databaseName;
-
-    // Only supporting rails for now
-    
-//    if ( [self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSS"] || [self.travelMode isEqualToString:@"NHSL"] )
-//        databaseName = @"SEPTAbus";
-//    else if ( [self.travelMode isEqualToString:@"Rail"] )
-        databaseName = @"SEPTArail";
-//    else
-//        return nil;
-    
-    return [[NSBundle mainBundle] pathForResource:databaseName ofType:@"sqlite"];
-}
+//-(NSString*) filePath
+//{
+//    NSString *databaseName;
+//
+//    // Only supporting rails for now
+//    
+////    if ( [self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSS"] || [self.travelMode isEqualToString:@"NHSL"] )
+////        databaseName = @"SEPTAbus";
+////    else if ( [self.travelMode isEqualToString:@"Rail"] )
+//        databaseName = @"SEPTArail";
+////    else
+////        return nil;
+//    
+//    return [[NSBundle mainBundle] pathForResource:databaseName ofType:@"sqlite"];
+//}
 
 
 #pragma mark -

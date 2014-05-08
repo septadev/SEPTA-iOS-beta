@@ -530,7 +530,7 @@
 //    NSString *queryStr = [NSString stringWithFormat:@"SELECT *, ABS(%10.7f - stop_lat) + ABS(%10.7f - stop_lon) as dist FROM stops_rail ORDER BY dist ASC LIMIT 10 OFFSET %d", _currentLocation.coordinate.latitude, _currentLocation.coordinate.longitude, _rowLimit];
 
 //    NSLog(@"query: %@", queryStr);
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {
@@ -652,7 +652,7 @@ static void distanceFunc(sqlite3_context *context, int argc, sqlite3_value **arg
 
 //    NSString *queryStr = [NSString stringWithFormat:@"SELECT *, ABS(%10.7f - stop_lat) + ABS(%10.7f - stop_lon) as dist FROM stops_bus ORDER BY dist ASC LIMIT 10", _currentLocation.coordinate.latitude, _currentLocation.coordinate.longitude];
 
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     if ( ![database open] )
     {
         [database close];
@@ -712,10 +712,10 @@ static void distanceFunc(sqlite3_context *context, int argc, sqlite3_value **arg
     
 }
 
--(NSString*) filePath
-{
-    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
-}
+//-(NSString*) filePath
+//{
+//    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+//}
 
 
 

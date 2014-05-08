@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "GTFSCommon.h"
+
 @interface TransitViewTableController : UITableViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *lblRouteName;

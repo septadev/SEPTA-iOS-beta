@@ -14,6 +14,7 @@
 #import "DisplayedRouteData.h"
 
 #import "StandardDefinitions.h"
+#import "GTFSCommon.h"
 
 @class FindLocationsViewController;
 

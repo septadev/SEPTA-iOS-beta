@@ -11,6 +11,7 @@
 #import "TapableSegmentControl.h"
 
 #import "RouteData.h"
+#import "GTFSCommon.h"
 
 // --==  Header Files With Protocols  ==--
 //#import "FindLocationsViewController.h"

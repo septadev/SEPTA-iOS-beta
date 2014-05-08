@@ -12,6 +12,7 @@
 
 //#import "PassedRouteData.h"
 #import "DisplayedRouteData.h"
+#import "GTFSCommon.h"
 
 @interface BusDisplayStopsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate> //, UISearchDisplayDelegate>
 {

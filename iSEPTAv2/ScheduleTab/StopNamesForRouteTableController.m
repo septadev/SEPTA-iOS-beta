@@ -385,7 +385,7 @@
     NSLog(@"SNFRTC - Starting at %@", startTime);
  
     [_stopNames clearData];
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {
@@ -532,10 +532,10 @@
     
 }
 
--(NSString*) filePath
-{
-    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];    
-}
+//-(NSString*) filePath
+//{
+//    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];    
+//}
 
 
 @end

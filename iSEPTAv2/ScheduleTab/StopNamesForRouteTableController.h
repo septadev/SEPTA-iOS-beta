@@ -11,6 +11,9 @@
 #import "NSMutableArray+Indices.h"
 #import "ItineraryObject.h"
 
+#import "GTFSCommon.h"
+
+
 @class StopNamesForRouteTableController;
 
 @protocol StopNamesForRouteDelegate <NSObject>

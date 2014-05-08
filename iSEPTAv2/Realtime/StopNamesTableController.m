@@ -90,21 +90,21 @@
 }
 
 
--(NSString*) filePath
-{
-//    NSString *databaseName;
-    
-    // Only supporting rails for now
-    
-    //    if ( [self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSS"] || [self.travelMode isEqualToString:@"NHSL"] )
-    //        databaseName = @"SEPTAbus";
-    //    else if ( [self.travelMode isEqualToString:@"Rail"] )
-//    databaseName = @"SEPTA";
-    //    else
-    //        return nil;
-    
-    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
-}
+//-(NSString*) filePath
+//{
+////    NSString *databaseName;
+//    
+//    // Only supporting rails for now
+//    
+//    //    if ( [self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSS"] || [self.travelMode isEqualToString:@"NHSL"] )
+//    //        databaseName = @"SEPTAbus";
+//    //    else if ( [self.travelMode isEqualToString:@"Rail"] )
+////    databaseName = @"SEPTA";
+//    //    else
+//    //        return nil;
+//    
+//    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+//}
 
 
 -(void) getRailStopNames
@@ -113,7 +113,7 @@
 //    [stopNames removeAllObjects];
     
     [_stopNames clearData];
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {

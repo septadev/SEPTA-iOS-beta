@@ -245,7 +245,7 @@
     
     [stopData clear];  // Clears data in inbound and outbound arrays
     
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     if ( ![database open] )
     {
         [database close];
@@ -395,32 +395,32 @@
 }
 
 
--(NSString *) filePath
-{
-
-    NSString *databaseName;
-    
-    if ( [self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSS"] || [self.travelMode isEqualToString:@"NHSL"] )
-        databaseName = @"SEPTAbus";
-    else if ( [self.travelMode isEqualToString:@"Rail"] )
-        databaseName = @"SEPTArail";
-    else
-        return nil;
-    
-    return [[NSBundle mainBundle] pathForResource:databaseName ofType:@"sqlite"];
-    
+//-(NSString *) filePath
+//{
+//
 //    NSString *databaseName;
 //    
-//    if ( [[routeData current] database_type] == kDisplayedRouteDataUsingDBBus )
+//    if ( [self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSS"] || [self.travelMode isEqualToString:@"NHSL"] )
 //        databaseName = @"SEPTAbus";
-//    else if ( [[routeData current] database_type] == kDisplayedRouteDataUsingDBRail )
+//    else if ( [self.travelMode isEqualToString:@"Rail"] )
 //        databaseName = @"SEPTArail";
 //    else
 //        return nil;
 //    
 //    return [[NSBundle mainBundle] pathForResource:databaseName ofType:@"sqlite"];
-    
-}
+//    
+////    NSString *databaseName;
+////    
+////    if ( [[routeData current] database_type] == kDisplayedRouteDataUsingDBBus )
+////        databaseName = @"SEPTAbus";
+////    else if ( [[routeData current] database_type] == kDisplayedRouteDataUsingDBRail )
+////        databaseName = @"SEPTArail";
+////    else
+////        return nil;
+////    
+////    return [[NSBundle mainBundle] pathForResource:databaseName ofType:@"sqlite"];
+//    
+//}
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

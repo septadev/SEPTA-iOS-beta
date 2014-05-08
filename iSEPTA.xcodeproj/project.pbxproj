@@ -14,6 +14,7 @@
 		2700AE7618F4964C00933C2E /* DashboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2700AE7518F4964C00933C2E /* DashboardView.m */; };
 		2700AE7818F4966D00933C2E /* DashboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2700AE7718F4966D00933C2E /* DashboardView.xib */; };
 		2702B3851790734C00153F72 /* MapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702B3841790734C00153F72 /* MapsViewController.m */; };
+		27078245191A9949004EBCE1 /* BackgroundDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27078244191A9949004EBCE1 /* BackgroundDownloader.m */; };
 		2708113F17A9877400B62FBD /* OldTrainViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DBA60417A980D400118225 /* OldTrainViewViewController.m */; };
 		2708114417A988D200B62FBD /* RealtimeVehicleInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2708114317A988D200B62FBD /* RealtimeVehicleInformationCell.xib */; };
 		2708114717A988EB00B62FBD /* RealtimeVehicleInformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708114617A988EB00B62FBD /* RealtimeVehicleInformationCell.m */; };
@@ -90,11 +91,11 @@
 		274B8C7C17733A5D00CBE260 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 274B8C7B17733A5D00CBE260 /* MobileCoreServices.framework */; };
 		274B924D188738D700C7A297 /* AutomaticUpdates.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 274B924C188738D700C7A297 /* AutomaticUpdates.storyboard */; };
 		274B92531887392300C7A297 /* AutomaticUpdatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274B92521887392300C7A297 /* AutomaticUpdatesViewController.m */; };
-		274B9258188853C900C7A297 /* SEPTA.md5 in Resources */ = {isa = PBXBuildFile; fileRef = 274B9257188853C900C7A297 /* SEPTA.md5 */; };
 		274B925B188985D300C7A297 /* UpdateStateMachineObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 274B925A188985D300C7A297 /* UpdateStateMachineObject.m */; };
 		274DD6301688BED0006BEC97 /* NTASaveObjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 274DD62F1688BED0006BEC97 /* NTASaveObjectCell.xib */; };
 		274DD6331688BF95006BEC97 /* NTASaveObjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 274DD6321688BF94006BEC97 /* NTASaveObjectCell.m */; };
 		274E02521663C80000BCE8A2 /* GTFSDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 274E02501663C80000BCE8A2 /* GTFSDataModel.xcdatamodeld */; };
+		2750C57B19193BF300113BD3 /* SEPTA.zip in Resources */ = {isa = PBXBuildFile; fileRef = 2750C57A19193BF300113BD3 /* SEPTA.zip */; };
 		27568B9318F32F4300422E37 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27568B9218F32F4300422E37 /* libPods.a */; };
 		275BE98916835938007AF394 /* RouteInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 275BE98816835938007AF394 /* RouteInfo.m */; };
 		275BE98C16835E82007AF394 /* TransitViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 275BE98B16835E82007AF394 /* TransitViewObject.m */; };
@@ -230,7 +231,6 @@
 		27CDAAD116E649EA00F9CF4D /* ItineraryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CDAAD016E649EA00F9CF4D /* ItineraryCell.m */; };
 		27CDAAD416E649FC00F9CF4D /* TripCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CDAAD316E649FB00F9CF4D /* TripCell.m */; };
 		27CE31DD1678E61C007688AC /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CE31DC1678E61C007688AC /* Event.m */; };
-		27CFA30516E7EDD70070AA55 /* SEPTA.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 27CFA30416E7EDD70070AA55 /* SEPTA.sqlite */; };
 		27D4783B1845472B00854F2D /* ElevatorStatusObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D4783A1845472B00854F2D /* ElevatorStatusObject.m */; };
 		27D91F3017F0A5AE00627ECD /* TrainSlidingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D91F2F17F0A5AE00627ECD /* TrainSlidingStoryboard.storyboard */; };
 		27D91F3617F0A60100627ECD /* TrainSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D91F3517F0A60100627ECD /* TrainSlidingViewController.m */; };
@@ -795,6 +795,8 @@
 		2702B3841790734C00153F72 /* MapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapsViewController.m; path = Maps/MapsViewController.m; sourceTree = "<group>"; };
 		27073F37169F08E4008F3E52 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GuideViewController.h; path = Settings/Guide/GuideViewController.h; sourceTree = "<group>"; };
 		27073F38169F08E4008F3E52 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GuideViewController.m; path = Settings/Guide/GuideViewController.m; sourceTree = "<group>"; };
+		27078243191A9949004EBCE1 /* BackgroundDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BackgroundDownloader.h; path = Subclasses/BackgroundDownloader/BackgroundDownloader.h; sourceTree = "<group>"; };
+		27078244191A9949004EBCE1 /* BackgroundDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BackgroundDownloader.m; path = Subclasses/BackgroundDownloader/BackgroundDownloader.m; sourceTree = "<group>"; };
 		2708114317A988D200B62FBD /* RealtimeVehicleInformationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RealtimeVehicleInformationCell.xib; path = "Storyboards/Realtime/TrainView/Custom Cells/RealtimeVehicleInformationCell.xib"; sourceTree = "<group>"; };
 		2708114517A988EB00B62FBD /* RealtimeVehicleInformationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RealtimeVehicleInformationCell.h; path = "Storyboards/Realtime/TrainView/Custom Cells/RealtimeVehicleInformationCell.h"; sourceTree = "<group>"; };
 		2708114617A988EB00B62FBD /* RealtimeVehicleInformationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RealtimeVehicleInformationCell.m; path = "Storyboards/Realtime/TrainView/Custom Cells/RealtimeVehicleInformationCell.m"; sourceTree = "<group>"; };
@@ -911,13 +913,13 @@
 		274B924C188738D700C7A297 /* AutomaticUpdates.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AutomaticUpdates.storyboard; path = "Storyboards/Common Storyboards/AutomaticUpdates/AutomaticUpdates.storyboard"; sourceTree = "<group>"; };
 		274B92511887392300C7A297 /* AutomaticUpdatesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutomaticUpdatesViewController.h; path = "Storyboards/Common Storyboards/AutomaticUpdates/AutomaticUpdatesViewController.h"; sourceTree = "<group>"; };
 		274B92521887392300C7A297 /* AutomaticUpdatesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AutomaticUpdatesViewController.m; path = "Storyboards/Common Storyboards/AutomaticUpdates/AutomaticUpdatesViewController.m"; sourceTree = "<group>"; };
-		274B9257188853C900C7A297 /* SEPTA.md5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SEPTA.md5; path = database/SEPTA.md5; sourceTree = SOURCE_ROOT; };
 		274B9259188985D300C7A297 /* UpdateStateMachineObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UpdateStateMachineObject.h; path = "Storyboards/Common Storyboards/AutomaticUpdates/UpdateStateMachineObject.h"; sourceTree = "<group>"; };
 		274B925A188985D300C7A297 /* UpdateStateMachineObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdateStateMachineObject.m; path = "Storyboards/Common Storyboards/AutomaticUpdates/UpdateStateMachineObject.m"; sourceTree = "<group>"; };
 		274DD62F1688BED0006BEC97 /* NTASaveObjectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NTASaveObjectCell.xib; sourceTree = "<group>"; };
 		274DD6311688BF94006BEC97 /* NTASaveObjectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NTASaveObjectCell.h; path = Realtime/NTASaveObjectCell.h; sourceTree = "<group>"; };
 		274DD6321688BF94006BEC97 /* NTASaveObjectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NTASaveObjectCell.m; path = Realtime/NTASaveObjectCell.m; sourceTree = "<group>"; };
 		274E02511663C80000BCE8A2 /* GTFSDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GTFSDataModel.xcdatamodel; sourceTree = "<group>"; };
+		2750C57A19193BF300113BD3 /* SEPTA.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = SEPTA.zip; path = database/SEPTA.zip; sourceTree = SOURCE_ROOT; };
 		27568B7818F32F3500422E37 /* libPods-AFDownloadRequestOperation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AFDownloadRequestOperation.a"; path = "Pods/build/Debug-iphoneos/libPods-AFDownloadRequestOperation.a"; sourceTree = "<group>"; };
 		27568B7918F32F3500422E37 /* libPods-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AFNetworking.a"; path = "Pods/build/Debug-iphoneos/libPods-AFNetworking.a"; sourceTree = "<group>"; };
 		27568B7A18F32F3500422E37 /* libPods-ALAlertBanner.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ALAlertBanner.a"; path = "Pods/build/Debug-iphoneos/libPods-ALAlertBanner.a"; sourceTree = "<group>"; };
@@ -1144,7 +1146,6 @@
 		27CDAAD316E649FB00F9CF4D /* TripCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TripCell.m; path = ScheduleTab/TripCell.m; sourceTree = "<group>"; };
 		27CE31DB1678E61C007688AC /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		27CE31DC1678E61C007688AC /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
-		27CFA30416E7EDD70070AA55 /* SEPTA.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = SEPTA.sqlite; path = database/SEPTA.sqlite; sourceTree = SOURCE_ROOT; };
 		27D478391845472B00854F2D /* ElevatorStatusObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElevatorStatusObject.h; path = Storyboards/Realtime/SystemStatus/ElevatorStatusObject.h; sourceTree = "<group>"; };
 		27D4783A1845472B00854F2D /* ElevatorStatusObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElevatorStatusObject.m; path = Storyboards/Realtime/SystemStatus/ElevatorStatusObject.m; sourceTree = "<group>"; };
 		27D91F2F17F0A5AE00627ECD /* TrainSlidingStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrainSlidingStoryboard.storyboard; sourceTree = "<group>"; };
@@ -1842,6 +1843,15 @@
 				27073F38169F08E4008F3E52 /* GuideViewController.m */,
 			);
 			name = Guide;
+			sourceTree = "<group>";
+		};
+		27078242191A991E004EBCE1 /* BackgroundDownloader */ = {
+			isa = PBXGroup;
+			children = (
+				27078243191A9949004EBCE1 /* BackgroundDownloader.h */,
+				27078244191A9949004EBCE1 /* BackgroundDownloader.m */,
+			);
+			name = BackgroundDownloader;
 			sourceTree = "<group>";
 		};
 		2708114017A9883C00B62FBD /* Custom Cells */ = {
@@ -2610,8 +2620,7 @@
 		27A4349F162DAA4200D9724A /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				274B9257188853C900C7A297 /* SEPTA.md5 */,
-				27CFA30416E7EDD70070AA55 /* SEPTA.sqlite */,
+				2750C57A19193BF300113BD3 /* SEPTA.zip */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -4466,6 +4475,7 @@
 		8422195E183FF62A0099B69F /* Subclasses */ = {
 			isa = PBXGroup;
 			children = (
+				27078242191A991E004EBCE1 /* BackgroundDownloader */,
 				272037D418F6FE4900730370 /* GTFS */,
 				274B925618883FAC00C7A297 /* APIs */,
 				8422195F183FF6B30099B69F /* MenuAlertsImageView.h */,
@@ -4877,6 +4887,7 @@
 				8418EE9F17FEF6BD003607D1 /* gradient_vertical_line.png in Resources */,
 				27DB30471636D6B600153E4C /* 99.kml in Resources */,
 				27DB30481636D6B600153E4C /* 101.kml in Resources */,
+				2750C57B19193BF300113BD3 /* SEPTA.zip in Resources */,
 				8418EEC218058D67003607D1 /* NTA-reverse@2x.png in Resources */,
 				27DB30491636D6B600153E4C /* 102.kml in Resources */,
 				27DB304A1636D6B600153E4C /* 103.kml in Resources */,
@@ -5080,7 +5091,6 @@
 				8418EE9117FEF6BD003607D1 /* btnRRL.png in Resources */,
 				8418EE4117FEF6BD003607D1 /* Schedule_Arrow@2x.png in Resources */,
 				27CDAACE16E6488E00F9CF4D /* TripCell.xib in Resources */,
-				27CFA30516E7EDD70070AA55 /* SEPTA.sqlite in Resources */,
 				8418EDFF17FEF6BD003607D1 /* trainView-RRL-Blue.png in Resources */,
 				8418EE6917FEF6BD003607D1 /* Schedule_CCT_small.png in Resources */,
 				8418EE0317FEF6BD003607D1 /* transitView-Bus-Red@2x.png in Resources */,
@@ -5106,7 +5116,6 @@
 				8418EE9617FEF6BD003607D1 /* system_status_advisory.png in Resources */,
 				8418ED6C17FEF6BD003607D1 /* septaIcon-120px@2x.png in Resources */,
 				27A6938017A05B17008712FB /* NextToArriveTripHistoryCell.xib in Resources */,
-				274B9258188853C900C7A297 /* SEPTA.md5 in Resources */,
 				8418EDEA17FEF6BD003607D1 /* tabConnectIcon@2x.png in Resources */,
 				8418EDFA17FEF6BD003607D1 /* tabSettingsIcon@2x.png in Resources */,
 				27DBA60117A97FC400118225 /* TrainViewStoryboard.storyboard in Resources */,
@@ -5400,6 +5409,7 @@
 				84D12B4D17E0A3E50079A8D7 /* NearestTimeCell.m in Sources */,
 				279E3C2517E0F16B008CC7F8 /* AttributionsViewController.m in Sources */,
 				272037D718F6FE6800730370 /* GTFSFunctions.m in Sources */,
+				27078245191A9949004EBCE1 /* BackgroundDownloader.m in Sources */,
 				84D12B5117E1F0B90079A8D7 /* MobileSiteViewController.m in Sources */,
 				27EBAD8217E3693800189970 /* AttributionsTextViewController.m in Sources */,
 				27EBAD8B17E36DCB00189970 /* AttributionCell.m in Sources */,

@@ -92,8 +92,12 @@
     
     _jsonOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                      success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+
+                                                                          NSDictionary *jsonDict = (NSDictionary*) JSON;
+//                                                                         NSMutableDictionary *jsonDict = [(NSDictionary *) JSON mutableCopy];
+//                                                                         [jsonDict setValue:@"high" forKey:@"severity"];
+//                                                                         [jsonDict setValue:@"This is a test message that I am going to display. Sometimes there is a lot to say and it requires a longer time for the reader to get through the entire things.  Hopefully this will cap out the message at the 15 sec mark." forKey:@"message"];
                                                                          
-                                                                         NSDictionary *jsonDict = (NSDictionary *) JSON;
                                                                          [self processDBVersionJSON: jsonDict];
                                                                          
                                                                      } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,
@@ -124,13 +128,14 @@
             [dbObject setValue:obj forKey:key];
         }
         @catch (NSException *exception) {
-            NSLog(@"GetDBVersionAPI processDBVersionJSON exception: %@", exception);
+            NSLog(@"GetDBVersionAPI processDBVersionJSON exception for key %@: %@", key, exception);
 //            NSLog(@"Looking for %@ in the JSON", key);
         }
 
     }];
     
     _dbObject = dbObject;
+    NSLog(@"%@", dbObject);
     
     
     if ( [self.delegate respondsToSelector: @selector(dbVersionFetched:)] )
@@ -150,9 +155,7 @@
 -(NSString*) loadLocalMD5
 {
     
-
     _localMD5 = nil;
-    
 
     // Create byte array of unsigned chars
     unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
@@ -166,7 +169,7 @@
         dbPath = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
     
     
-    //    NSData *fileData = [NSData dataWithContentsOfFile: [self filePath] ];
+    //    NSData *fileData = [NSData dataWithContentsOfFile: [GTFSCommon filePath] ];
     NSData *fileData = [NSData dataWithContentsOfFile: dbPath ];
     
     // Create 16 byte MD5 hash value, store in buffer

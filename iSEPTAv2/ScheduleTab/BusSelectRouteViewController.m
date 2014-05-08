@@ -995,7 +995,7 @@
     [_routeData removeAllObjectsWithSection:kDisplayedRouteDataRoutes];
     
 
-    database = [FMDatabase databaseWithPath: [self filePath] ];
+    database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     if (![database open])
     {
         [database close];
@@ -1124,7 +1124,7 @@
     
     
     // Begin SQL3 db process
-    if(sqlite3_open( [[self filePath] UTF8String], &dbh) == SQLITE_OK)
+    if(sqlite3_open( [[GTFSCommon filePath] UTF8String], &dbh) == SQLITE_OK)
     {
         
         NSString *queryStr;
@@ -1234,7 +1234,7 @@
         
         //        NSLog(@"BSRVC - arr: %@", arr);
         
-    } // if(sqlite3_open([[self filepath] UTF8String], &db) == SQLITE_OK)
+    } // if(sqlite3_open([[GTFSCommon filepath] UTF8String], &db) == SQLITE_OK)
     
 //    NSLog(@"BSRVC -(void) getUnfilteredBusRoutes: unFiltered results: %d", [unfilteredList count]);
 //    NSLog(@"BSRVC -(void) getUnfilteredBusRoutes: unFiltered results: %d", [_routeData.routes count]);
@@ -1304,7 +1304,7 @@
     NSLog(@"BSRVC -(void) getFilteredRoutesWithString");
     
     // Begin SQL3 db process
-    if( sqlite3_open( [[self filePath] UTF8String], &dbh) == SQLITE_OK )
+    if( sqlite3_open( [[GTFSCommon filePath] UTF8String], &dbh) == SQLITE_OK )
     {
         
         NSString *queryStr;
@@ -1384,7 +1384,7 @@
         }];
         
         
-    } // if( sqlite3_open( [[self filePath] UTF8String], &db) == SQLITE_OK )
+    } // if( sqlite3_open( [[GTFSCommon filePath] UTF8String], &db) == SQLITE_OK )
 
     sqlite3_close(dbh);
     
@@ -1405,20 +1405,20 @@
 }
 
 // Database path Declaration
--(NSString *) filePath
-{
-//    NSString *databaseName;
-    
-//    if ( [self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSS"] || [self.travelMode isEqualToString:@"NHSL"] )
-//        databaseName = @"SEPTAbus";
-//    else if ( [self.travelMode isEqualToString:@"Rail"] )
-//        databaseName = @"SEPTArail";
-//    else
-//        return nil;
-    
-    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
-    
-}
+//-(NSString *) filePath
+//{
+////    NSString *databaseName;
+//    
+////    if ( [self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSS"] || [self.travelMode isEqualToString:@"NHSL"] )
+////        databaseName = @"SEPTAbus";
+////    else if ( [self.travelMode isEqualToString:@"Rail"] )
+////        databaseName = @"SEPTArail";
+////    else
+////        return nil;
+//    
+//    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+//    
+//}
 
 
 #pragma mark - UISearchDisplayController Delegate Methods

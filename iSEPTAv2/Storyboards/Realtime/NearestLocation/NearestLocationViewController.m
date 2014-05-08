@@ -785,10 +785,10 @@
 }
 
 
--(NSString*) filePath
-{
-    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
-}
+//-(NSString*) filePath
+//{
+//    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+//}
 
 
 -(void) processJSONData:(NSData*) returnedData
@@ -814,7 +814,7 @@
         return;  // Something bad happened, so just return.
     
     
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {

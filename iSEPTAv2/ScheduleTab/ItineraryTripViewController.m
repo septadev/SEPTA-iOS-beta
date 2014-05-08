@@ -319,7 +319,7 @@
     if ( !([self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"Trolley"] ) )
         return;
     
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {
@@ -609,7 +609,7 @@
     [masterTripsArr removeAllObjects];
     [_masterTrainLookUpDict removeAllObjects];  // This will trigger _masterTrainLookUpDict to repopulate itself during the next JSON request
     
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {
@@ -917,7 +917,7 @@
 //        
 //    }
 //    
-//    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+//    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
 //
 //    if ( ![database open] )
 //    {
@@ -1049,10 +1049,10 @@
 //}
 
 
--(NSString*) filePath
-{
-    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
-}
+//-(NSString*) filePath
+//{
+//    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+//}
 
 
 -(void) filterActiveTrains
@@ -1988,7 +1988,7 @@
     
     
     // Perform a bus stop reverse lookup to find the closest stop_id in the opposite direction
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {
@@ -2543,7 +2543,7 @@
     }
     
     
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {

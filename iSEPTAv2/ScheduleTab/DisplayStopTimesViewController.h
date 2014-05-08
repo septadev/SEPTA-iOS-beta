@@ -37,6 +37,7 @@
 #import "ShowTimesModel.h"
 #import "TripData.h"
 
+#import "GTFSCommon.h"
 
 // For MapKit
 #import "mapAnnotation.h"

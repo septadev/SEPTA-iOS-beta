@@ -451,7 +451,7 @@
 -(void) loadStopSequence
 {
 
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {
@@ -526,12 +526,15 @@
     
 }
 
--(NSString*) filePath
-{
-    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
-}
 
-- (void)viewDidUnload {
+//-(NSString*) filePath
+//{
+//    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+//}
+
+
+- (void)viewDidUnload
+{
     [self setBtnEdit:nil];
     [super viewDidUnload];
 }

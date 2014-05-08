@@ -19,9 +19,15 @@
     NSString *_localMD5;
     BOOL _autoUpdate;
     
+    BOOL _testMode;
+    
     AutomaticUpdateState _updateSM;
     
     NSString *_path;
+    NSTimer *_progressTimer;
+    
+    
+    AFDownloadRequestOperation *_dOp;
     
 }
 
@@ -41,6 +47,16 @@
     // "Settings:Update
     
     [super viewDidLoad];
+    
+    
+    // ---===
+    // ---===   TEST MODE; SET TO NO BEFORE SUBMITTING!!!
+    // ---===
+    
+    _testMode = NO;
+    
+    
+    
     
 //    _updateSM = kAutomaticUpdateStartState;
     [self updateStateTo: kAutomaticUpdateChecking];
@@ -112,36 +128,11 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     
+    if ( _progressTimer != nil )
+        [_progressTimer invalidate];
+    
 }
 
-
-//-(BOOL) getLocalMD5
-//{
-//    
-////    NSString *localMD5;
-//    
-//    NSString *md5Path = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"md5"];
-//    if ( md5Path == nil )
-//        return NO;
-//    
-//    NSString *md5JSON = [[NSString alloc] initWithContentsOfFile:md5Path encoding:NSUTF8StringEncoding error:NULL];
-//    if ( md5JSON == nil )
-//        return NO;
-//    
-//    NSError *error = nil;
-//    NSDictionary *md5dict = [NSJSONSerialization JSONObjectWithData: [md5JSON dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-//    
-//    if ( error != nil )
-//        return NO;
-//    
-//    NSArray *md5Arr = [md5dict valueForKeyPath:@"md5"];
-//    
-//    _localMD5 = [md5Arr firstObject];
-//    
-//    NSLog(@"localMD5: %@", _localMD5);
-//    
-//    return YES;
-//}
 
 
 -(void) updateStateTo:(AutomaticUpdateState) newState
@@ -180,12 +171,25 @@
         case kAutomaticUpdateDownloading:
             [self.lblVersionStatus setText: @"Downloading..."];
             [self.btnMulti setTitle:@"Cancel" forState:UIControlStateNormal];
+            
+#ifdef BACKGROUND_DOWNLOAD
+        {
+            BackgroundDownloader *bDown = [BackgroundDownloader sharedInstance];
+            if ( ![bDown isDownloading] )
+                [bDown downloadSchedule];
+        }
+            
+            _progressTimer = [NSTimer scheduledTimerWithTimeInterval:1/10.0f target:self selector:@selector(downloadProgress) userInfo:nil repeats:YES];
+#else
             [self downloadSchedule];
+#endif
+            
             break;
             
         case kAutomaticUpdateCancelledDownload:
             [self.lblVersionStatus setText: @"Cancelled Download..."];
             [self.btnMulti setTitle:@"Download" forState:UIControlStateNormal];
+            [self cancelDownload];
             [self cleanUpDownload];
             break;
             
@@ -220,6 +224,7 @@
             NSDate *date = [dateFormatter dateFromString: obj.effective_date];
             
             NSTimeInterval effectiveDiff = [date timeIntervalSinceNow];
+            
 //            NSTimeInterval lastDateDiff;
             
             
@@ -236,7 +241,6 @@
             if ( effectiveDiff < 0 )
             {
                 // Install now
-                
             }
             else
             {
@@ -247,34 +251,35 @@
                 int numOfMins  = (int)(effectiveDiff / 60) % 60;
                 int numOfSec   = ((int)effectiveDiff % 60);
                 
-                
                 NSLog(@"wks: %d, days: %d, hrs: %d, min: %d, sec: %d", numOfWeeks, numOfDays, numOfHrs, numOfMins, numOfSec);
+                
+                NSString *title = @"Install";
+                NSString *dayStr;
+                
+                if ( numOfDays > 1 )
+                    dayStr = @"days";
+                else
+                    dayStr = @"day";
+                NSString *subtitle = [NSString stringWithFormat:@"The latest schedule has been downloaded to the device but does not go into effect for another %d %@.  To continue anyway, click the install button.", numOfDays, dayStr];
+                
+                ALAlertBanner *alertBanner = [ALAlertBanner alertBannerForView: self.view
+                                                                         style: ALAlertBannerStyleNotify
+                                                                      position: ALAlertBannerPositionBottom
+                                                                         title: title
+                                                                      subtitle: subtitle
+                                                                   tappedBlock: ^(ALAlertBanner *alertBanner)
+                                              {
+                                                  [alertBanner hide];
+                                              }];
+
+                NSTimeInterval showTime = 25.0f;
+                [alertBanner setSecondsToShow: showTime];
+                
+                [alertBanner show];
+
                 
             }
             
-            
-            
-//            if ( effectiveDiff < (60*60*24*7) )
-//            {
-//                
-//                
-//                ALAlertBanner *alertBanner = [ALAlertBanner alertBannerForView:self.view
-//                                                                         style:ALAlertBannerStyleFailure
-//                                                                      position:ALAlertBannerPositionBottom
-//                                                                         title:@""
-//                                                                      subtitle:@""
-//                                                                   tappedBlock:^(ALAlertBanner *alertBanner)
-//                                              {
-//                                                  NSLog(@"Generic Message: %@!", obj.message);
-//                                                  [alertBanner hide];
-//                                              }];
-//                
-//                NSTimeInterval showTime = 5.0f;
-//                [alertBanner setSecondsToShow: showTime];
-//                
-//                [alertBanner show];
-//
-//            }
             
         }
             
@@ -330,7 +335,7 @@
         [_dbVersionAPI setDelegate:self];
     }
     
-//    [_dbVersionAPI setTestMode:YES];
+    [_dbVersionAPI setTestMode: _testMode];
     [_dbVersionAPI fetchData];
     
 }
@@ -381,26 +386,67 @@
     {
         NSLog(@"The MD5s didn't match, I figured as much");
 //        _updateSM = kAutomaticUpdateLatestAvailable;
-        [self updateStateTo: kAutomaticUpdateLatestAvailable];
-    }
+        
+#ifdef BACKGROUND_DOWNLOAD
+        BackgroundDownloader *bdDown = [BackgroundDownloader sharedInstance];
+        if ( [bdDown isDownloading] )
+            [self updateStateTo: kAutomaticUpdateDownloading];
+        else
+#endif
+            [self updateStateTo: kAutomaticUpdateLatestAvailable];
 
     
-    //    [self downloadTest];
+    }
+
 }
 
 
 
--(NSString*) filePath
+//-(NSString*) filePath
+//{
+//    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+//}
+
+
+- (NSString *)documentsDirectory
 {
-    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
-}
-
-
-- (NSString *)documentsDirectory {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     return (paths.count)? paths[0] : nil;
 }
 
+
+-(void) downloadProgress
+{
+    
+#ifdef BACKGROUND_DOWNLOAD
+    BackgroundDownloader *bDown = [BackgroundDownloader sharedInstance];
+    long long bytesRead;
+    float percent;
+
+    [bDown downloadStatusForBytes: &bytesRead andPercentDone: &percent];
+
+    [self.progressBar setProgress: percent];
+    
+    if ( percent > .9999 )
+    {
+        [self.progressBar setProgress:1.0f];
+        if ( _progressTimer != nil )
+            [_progressTimer invalidate];
+        
+        [self updateStateTo: kAutomaticUpdateFinishedDownload];
+        [self.lblVersionStatus setText: @"Finished Download"];
+        [self.btnMulti setHidden:NO];
+        [self.btnMulti setTitle:@"Install" forState:UIControlStateNormal];
+    }
+#endif
+    
+    
+}
+
+-(void) cancelDownload
+{
+    
+}
 
 -(void) downloadSchedule
 {
@@ -447,7 +493,13 @@
 
     
     // Note: v1.0.4 of the app used api0.septa.org/gga8893/dbVersion/download.php as the downloadURL
-    NSURL *downloadURL = [[NSURL alloc] initWithString: @"http://www3.septa.org/api/dbVersion/download.php"];
+    NSURL *downloadURL;
+    
+    if ( _testMode )
+        downloadURL = [[NSURL alloc] initWithString: @"http://api0.septa.org/gga8893/dbVersion/download.php"];
+    else
+        downloadURL = [[NSURL alloc] initWithString: @"http://www3.septa.org/api/dbVersion/download.php"];
+    
     NSURLRequest *request = [NSURLRequest requestWithURL: downloadURL];
     //NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
     
@@ -491,10 +543,12 @@
 
 
     
-    AFDownloadRequestOperation *dOp = [[AFDownloadRequestOperation alloc] initWithRequest:request targetPath:zipPath shouldResume:YES];
-    dOp.outputStream = [NSOutputStream outputStreamToFileAtPath: zipPath append:NO];
+    _dOp = [[AFDownloadRequestOperation alloc] initWithRequest:request targetPath:zipPath shouldResume:YES];
+
+    _dOp.outputStream = [NSOutputStream outputStreamToFileAtPath: zipPath append:NO];
+
     
-    [dOp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+    [_dOp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
      {
          NSLog(@"Successfully downloaded file to %@", zipPath);
      }
@@ -505,7 +559,8 @@
     
 //    dOp.response.statusCode
     
-    [dOp setProgressiveDownloadProgressBlock:^(AFDownloadRequestOperation *operation, NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
+    __weak AutomaticUpdatesViewController *weakSelf = self;
+    [_dOp setProgressiveDownloadProgressBlock:^(AFDownloadRequestOperation *operation, NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
         //        NSLog(@"Operation%i: bytesRead: %d", 1, bytesRead);
         //        NSLog(@"Operation%i: totalBytesRead: %lld", 1, totalBytesRead);
         //        NSLog(@"Operation%i: totalBytesExpected: %lld", 1, totalBytesExpected);
@@ -513,18 +568,18 @@
         //        NSLog(@"Operation%i: totalBytesExpectedToReadForFile: %lld", 1, totalBytesExpectedToReadForFile);
         
         float percentDone = ((float)((int)totalBytesRead) / (float)((int)totalBytesExpectedToReadForFile));
-        NSLog(@"Sent %lld of %lld bytes, percent: %6.3f", totalBytesRead, totalBytesExpectedToReadForFile, percentDone);
+//        NSLog(@"Sent %lld of %lld bytes, percent: %6.3f", totalBytesRead, totalBytesExpectedToReadForFile, percentDone);
         
-        [self.progressBar setProgress: percentDone];
+        [weakSelf.progressBar setProgress: percentDone];
         
         if ( totalBytesRead == totalBytesExpectedToReadForFile )
         {
 //            [self updateStateTo: kAutomaticUpdateFinishedDownload];
             
             // This should be its own state
-            [self.lblVersionStatus setText: @"Finished Download"];
-            [self.btnMulti setHidden:NO];
-            [self.btnMulti setTitle:@"Install" forState:UIControlStateNormal];
+            [weakSelf.lblVersionStatus setText: @"Finished Download"];
+            [weakSelf.btnMulti setHidden:NO];
+            [weakSelf.btnMulti setTitle:@"Install" forState:UIControlStateNormal];
             // Change the text of the button but don't update the state until the completion block executes
         }
         
@@ -546,14 +601,15 @@
     //     }];
     
     
-    [dOp setShouldExecuteAsBackgroundTaskWithExpirationHandler:^{
+    [_dOp setShouldExecuteAsBackgroundTaskWithExpirationHandler:^{
         NSLog(@"Download expired!");
     }];
     
     
-    [dOp setCompletionBlock:^{
-        NSLog(@"Download completed!");
-        [self updateStateTo: kAutomaticUpdateFinishedDownload];
+    [_dOp setCompletionBlock:^{
+//        NSLog(@"Download completed!");
+        NSLog(@"Successfully downloaded file to %@", zipPath);
+        [weakSelf updateStateTo: kAutomaticUpdateFinishedDownload];
         
 //        NSFileManager *man = [NSFileManager defaultManager];
 //        NSDictionary *attrs = [man attributesOfItemAtPath:zipPath error:NULL];
@@ -562,7 +618,7 @@
     }];
     
     
-    [dOp start];
+    [_dOp start];
     //    [dOp waitUntilFinished];
     
 
@@ -609,12 +665,14 @@
     
 //    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
     NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", _path];
-
-    if ( [zip UnzipOpenFile: zipPath] )
+    NSString *dataPath = [NSString stringWithFormat:@"%@/SEPTA.sqlite", _path];
+    
+    if ( [zip UnzipOpenFile: zipPath ] )
     {
         
         NSArray *contents = [zip getZipFileContents];
-        NSLog(@"Contents: %@", contents);
+//        NSLog(@"Contents: %@", contents);
+        NSLog(@"Unzipped DB to: %@", _path);
         
 //        BOOL ret = [zip UnzipFileTo:[[self filePath] stringByDeletingLastPathComponent] overWrite:YES];
         BOOL ret = [zip UnzipFileTo:_path overWrite:YES];
@@ -675,7 +733,10 @@
     unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
     
     NSString *dbPath = [NSString stringWithFormat:@"%@/SEPTA.sqlite", _path];
-//    NSData *fileData = [NSData dataWithContentsOfFile: [self filePath] ];
+    
+    if ( dbPath == nil )
+        return;
+    
     NSData *fileData = [NSData dataWithContentsOfFile: dbPath ];
     
     // Create 16 byte MD5 hash value, store in buffer
@@ -686,6 +747,7 @@
     for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
         [output appendFormat:@"%02x",md5Buffer[i]];
 
+    _localMD5 = [_dbVersionAPI loadLocalMD5];
     NSLog(@"Old MD5: %@", _localMD5);
     
     DBVersionDataObject *dbObj = [_dbVersionAPI getData];

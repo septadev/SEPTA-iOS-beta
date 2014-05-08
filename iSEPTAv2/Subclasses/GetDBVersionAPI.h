@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSString *effective_date;
 @property (nonatomic, strong) NSString *version;
 @property (nonatomic, strong) NSString *change_log;
+@property (nonatomic, strong) NSString *severity;
 
 @end
 

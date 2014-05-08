@@ -1347,23 +1347,12 @@
 
 #pragma mark - SQLite Functions
 
--(NSString *) filePath
-{
-
-    NSString *databaseName;
-    
-    if ( [self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSS"] || [self.travelMode isEqualToString:@"NHSL"] )
-        databaseName = @"SEPTAbus";
-    else if ( [self.travelMode isEqualToString:@"Rail"] )
-        databaseName = @"SEPTArail";
-    else
-        return nil;
-    
-    return [[NSBundle mainBundle] pathForResource:databaseName ofType:@"sqlite"];
-    
+//-(NSString *) filePath
+//{
+//
 //    NSString *databaseName;
 //    
-//    if ( [self.travelMode isEqualToString:@"Bus"] )
+//    if ( [self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSS"] || [self.travelMode isEqualToString:@"NHSL"] )
 //        databaseName = @"SEPTAbus";
 //    else if ( [self.travelMode isEqualToString:@"Rail"] )
 //        databaseName = @"SEPTArail";
@@ -1371,8 +1360,19 @@
 //        return nil;
 //    
 //    return [[NSBundle mainBundle] pathForResource:databaseName ofType:@"sqlite"];
-    
-}
+//    
+////    NSString *databaseName;
+////    
+////    if ( [self.travelMode isEqualToString:@"Bus"] )
+////        databaseName = @"SEPTAbus";
+////    else if ( [self.travelMode isEqualToString:@"Rail"] )
+////        databaseName = @"SEPTArail";
+////    else
+////        return nil;
+////    
+////    return [[NSBundle mainBundle] pathForResource:databaseName ofType:@"sqlite"];
+//    
+//}
 
 -(void) getStopSequence
 {
@@ -1385,13 +1385,13 @@
  
     [_stopSequence clearData];
     
-//    if (sqlite3_open( [[self filePath] UTF8String], &db) == SQLITE_OK)
+//    if (sqlite3_open( [[GTFSCommon filePath] UTF8String], &db) == SQLITE_OK)
 //    {
   
     _startSequence = 0;
     _endSequence   = 0;
     
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {
@@ -1490,7 +1490,7 @@
         
         
         
-//    } // if (sqlite3_open( [[self filePath] UTF8String], &db) == SQLITE_OK)
+//    } // if (sqlite3_open( [[GTFSCommon filePath] UTF8String], &db) == SQLITE_OK)
 
     if  ( ( [_stopSequence numberOfRows] >= _stopSequenceRow ) && ( [_stopSequence numberOfRows] != 0 ) )
     {
@@ -1568,9 +1568,9 @@
     }
     
     // Begin SQL3 db process
-//    NSLog(@"filename: %@", [self filePath]);
+//    NSLog(@"filename: %@", [GTFSCommon filePath]);
     
-    if (sqlite3_open( [[self filePath] UTF8String], &db) == SQLITE_OK)
+    if (sqlite3_open( [[GTFSCommon filePath] UTF8String], &db) == SQLITE_OK)
     {
         
         sqlite3_stmt * statement;
@@ -1759,7 +1759,7 @@
             NSLog(@"query str: %@", queryStr);
         } // if ( sqlite3_prepare_v2(db, [queryStr UTF8String], -1, &statement, nil) == SQLITE_OK )
         
-    } // if(sqlite3_open([[self filepath] UTF8String], &db) == SQLITE_OK)
+    } // if(sqlite3_open([[GTFSCommon filepath] UTF8String], &db) == SQLITE_OK)
     
     //    [stops sort];
     //    [self configureSegmentedControl];

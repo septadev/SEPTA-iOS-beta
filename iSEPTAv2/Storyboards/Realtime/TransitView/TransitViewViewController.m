@@ -316,8 +316,8 @@
 -(NSInteger) getServiceID
 {
     
-    NSLog(@"filePath: %@", [self filePath]);
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    NSLog(@"filePath: %@", [GTFSCommon filePath]);
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {
@@ -362,10 +362,11 @@
     
     
     
--(NSString*) filePath
-{
-    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
-}
+//-(NSString*) filePath
+//{
+//    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+//}
+
 
 -(void) getBusRouteInfo
 {
@@ -375,7 +376,7 @@
     
     
     // Open the database
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {

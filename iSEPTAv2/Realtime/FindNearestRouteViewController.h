@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "CoreLocation/CoreLocation.h"
 
+#import "GTFSCommon.h"
 
 @interface FindNearestRouteViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
 

@@ -313,32 +313,32 @@
 
 
 #pragma mark - SQLite (and related) Functions
--(NSString *) filePath
-{
-
-    NSString *databaseName;
-    
-    if ( [self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSS"] || [self.travelMode isEqualToString:@"NHSL"] )
-        databaseName = @"SEPTAbus";
-    else if ( [self.travelMode isEqualToString:@"Rail"] )
-        databaseName = @"SEPTArail";
-    else
-        return nil;
-    
-    return [[NSBundle mainBundle] pathForResource:databaseName ofType:@"sqlite"];
-    
+//-(NSString *) filePath
+//{
+//
 //    NSString *databaseName;
 //    
-//    if ( [[routeData current] database_type] == kDisplayedRouteDataUsingDBBus )
+//    if ( [self.travelMode isEqualToString:@"Bus"] || [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSS"] || [self.travelMode isEqualToString:@"NHSL"] )
 //        databaseName = @"SEPTAbus";
-//    else if ( [[routeData current] database_type] == kDisplayedRouteDataUsingDBRail )
+//    else if ( [self.travelMode isEqualToString:@"Rail"] )
 //        databaseName = @"SEPTArail";
 //    else
 //        return nil;
 //    
 //    return [[NSBundle mainBundle] pathForResource:databaseName ofType:@"sqlite"];
-    
-}
+//    
+////    NSString *databaseName;
+////    
+////    if ( [[routeData current] database_type] == kDisplayedRouteDataUsingDBBus )
+////        databaseName = @"SEPTAbus";
+////    else if ( [[routeData current] database_type] == kDisplayedRouteDataUsingDBRail )
+////        databaseName = @"SEPTArail";
+////    else
+////        return nil;
+////    
+////    return [[NSBundle mainBundle] pathForResource:databaseName ofType:@"sqlite"];
+//    
+//}
 
 
 -(void) getStopTimes
@@ -350,10 +350,10 @@
     //    NSLog(@"BRTVC -(void) getBusRoutes");
     
     // Begin SQL3 db process
-    if(sqlite3_open( [[self filePath] UTF8String], &db) == SQLITE_OK)
+    if(sqlite3_open( [[GTFSCommon filePath] UTF8String], &db) == SQLITE_OK)
     {
         
-//        NSLog(@"FLVC - filePath: %@", [self filePath]);
+//        NSLog(@"FLVC - filePath: %@", [GTFSCommon filePath]);
         sqlite3_stmt * statement;
         NSString *queryStr;
         
@@ -480,7 +480,7 @@
             NSLog(@"FLVC - query str: %@", queryStr);
         } // if ( sqlite3_prepare_v2(db, [queryStr UTF8String], -1, &statement, nil) == SQLITE_OK )
         
-    } // if(sqlite3_open([[self filepath] UTF8String], &db) == SQLITE_OK)
+    } // if(sqlite3_open([[GTFSCommon filepath] UTF8String], &db) == SQLITE_OK)
     
     //    [stops sort];
     //    [self configureSegmentedControl];

@@ -29,6 +29,8 @@
 
 #import "GTFSCommon.h"
 
+#import "BackgroundDownloader.h"
+
 // -- Testing
 //#import "TransitDrawerViewController.h"
 

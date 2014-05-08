@@ -14,6 +14,9 @@
 #import "CustomFlatBarButton.h"
 #import "GetDBVersionAPI.h"
 
+// --==  Data Models  ==--
+//#import "UpdateStatus.h"
+
 #import <CommonCrypto/CommonCrypto.h>
 
 // --==  PODs  ==--
@@ -26,6 +29,7 @@
 #import <FMDatabase.h>
 
 #import "UpdateStateMachineObject.h"
+#import "BackgroundDownloader.h"
 
 
 #define VERSION_CHECKING  @"Checking for new schedules"

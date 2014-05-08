@@ -666,7 +666,7 @@
     if ( [self.travelMode isEqualToString:@"Rail"] )
         return;
     
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {
@@ -1064,7 +1064,7 @@
     [masterTripsArr removeAllObjects];
     [_masterTrainLookUpDict removeAllObjects];  // This will trigger _masterTrainLookUpDict to repopulate itself during the next JSON request
     
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {
@@ -1344,34 +1344,34 @@
 
 
 
--(NSString*) filePath
-{
-#if FUNCTION_NAMES_ON
-    NSLog(@"IVC filePath");
-#endif
-    
-    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString  *documentsDirectory = [paths objectAtIndex:0];
-    
-//    NSString  *dbZip  = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"SEPTA.zip"];
-    NSString  *dbPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"SEPTA.sqlite"];
-    
-//    bool z = [[NSFileManager defaultManager] fileExistsAtPath:dbZip];
-    bool b = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
-    
-//    NSDictionary *attrsZ = [[NSFileManager defaultManager] attributesOfItemAtPath:dbZip error:NULL];
-//    NSLog(@"dbZip: %lld", [attrsZ fileSize]);
-
-//    NSDictionary *attrsP = [[NSFileManager defaultManager] attributesOfItemAtPath:dbPath error:NULL];
-//    NSLog(@"dbPath: %lld", [attrsP fileSize]);
-
-    
-    if ( b )
-        return dbPath;
-    else
-        return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
-    
-}
+//-(NSString*) filePath
+//{
+//#if FUNCTION_NAMES_ON
+//    NSLog(@"IVC filePath");
+//#endif
+//    
+//    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString  *documentsDirectory = [paths objectAtIndex:0];
+//    
+////    NSString  *dbZip  = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"SEPTA.zip"];
+//    NSString  *dbPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"SEPTA.sqlite"];
+//    
+////    bool z = [[NSFileManager defaultManager] fileExistsAtPath:dbZip];
+//    bool b = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
+//    
+////    NSDictionary *attrsZ = [[NSFileManager defaultManager] attributesOfItemAtPath:dbZip error:NULL];
+////    NSLog(@"dbZip: %lld", [attrsZ fileSize]);
+//
+////    NSDictionary *attrsP = [[NSFileManager defaultManager] attributesOfItemAtPath:dbPath error:NULL];
+////    NSLog(@"dbPath: %lld", [attrsP fileSize]);
+//
+//    
+//    if ( b )
+//        return dbPath;
+//    else
+//        return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+//    
+//}
 
 
 -(void) filterActiveTrains
@@ -2971,7 +2971,7 @@
         return nil;
     
     // Perform a bus stop reverse lookup to find the closest stop_id in the opposite direction
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {
@@ -3032,7 +3032,7 @@
     
     
     // Perform a bus stop reverse lookup to find the closest stop_id in the opposite direction
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {
@@ -3185,8 +3185,8 @@
     NSLog(@"iVC: getServiceIDFor:%d", type);
 #endif
     
-//    NSLog(@"filePath: %@", [self filePath]);
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+//    NSLog(@"filePath: %@", [GTFSCommon filePath]);
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {
@@ -3309,8 +3309,8 @@
     NSString *now = [dateFormatter stringFromDate: [NSDate date]];
 //    now = @"20131128";
     
-    NSLog(@"filePath: %@", [self filePath]);
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    NSLog(@"filePath: %@", [GTFSCommon filePath]);
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {
@@ -3688,7 +3688,7 @@
     }
     
     
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {

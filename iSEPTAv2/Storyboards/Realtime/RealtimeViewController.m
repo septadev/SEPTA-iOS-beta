@@ -8,6 +8,7 @@
 
 #import "RealtimeViewController.h"
 
+//#define BACKGROUND_DOWNLOAD 1
 
 @interface RealtimeViewController ()
 
@@ -17,6 +18,9 @@
 {
     UIImageView *_backgroundImage;
     BOOL _startTest;
+    
+    BOOL _testMode;
+    
     int _counter;
     
     SecondMenuAlertImageCycle _loopState;
@@ -30,7 +34,14 @@
 //    ALAlertBanner *_alertBanner;
     
     NSTimer *_dbVersionTimer;
+//    NSTimer *_testTimer;
     GetDBVersionAPI *_dbVersionAPI;
+    
+    
+    // Background Process for Schedule Automatic Refresh
+    NSOperationQueue *_autoUpdateQueue;
+    NSBlockOperation *_autoUpdateOp;
+    
     
 //    MMDrawerController *_drawerController;
 }
@@ -71,6 +82,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     
+    [self checkDBExists];
+    
     // Start timers back up
     _alertTimer = [NSTimer scheduledTimerWithTimeInterval:ALALERTBANNER_TIMER target:self selector:@selector(getGenericAlert) userInfo:nil repeats:YES];
     [self getGenericAlert];
@@ -95,19 +108,19 @@
 }
 
 
--(void) popTheVC
-{
-    _counter++;
-    NSLog(@"Transition: %d", _counter);
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MemoryTestStoryboard" bundle:nil];
-//    MapMemoryTestViewController *tvVC = (MapMemoryTestViewController*)[storyboard instantiateInitialViewController];
-//    [tvVC setCounter: _counter];
+//-(void) popTheVC
+//{
+//    _counter++;
+//    NSLog(@"Transition: %d", _counter);
+////    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MemoryTestStoryboard" bundle:nil];
+////    MapMemoryTestViewController *tvVC = (MapMemoryTestViewController*)[storyboard instantiateInitialViewController];
+////    [tvVC setCounter: _counter];
+////    [self.navigationController pushViewController:tvVC animated:YES];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TrainSlidingStoryboard" bundle:nil];
+//    TrainViewViewController *tvVC = (TrainViewViewController*)[storyboard instantiateInitialViewController];
 //    [self.navigationController pushViewController:tvVC animated:YES];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TrainSlidingStoryboard" bundle:nil];
-    TrainViewViewController *tvVC = (TrainViewViewController*)[storyboard instantiateInitialViewController];
-    [self.navigationController pushViewController:tvVC animated:YES];
-
-}
+//
+//}
 
 //-(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 //{
@@ -144,8 +157,10 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     _startTest = NO;
+    _testMode  = NO;
     _counter = 0;
     
     _loopState = kSecondMenuAlertImageNone;
@@ -250,31 +265,31 @@
 //    NSLog(@"Tom  : %d", serviceID_tom);
 
     
-    NSArray *sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetToday];
-    NSLog(@"today: %@ - is it service_id 1? %d", sids, [GTFSCommon checkService:1 withArray:sids]);
-    
-    sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetTomorrow];
-    NSLog(@"tom: %@", sids);
-    NSLog(@"Does it match service_id 1? %@", [GTFSCommon checkService:1 withArray:sids] ? @"Yes" : @"No" );
-    NSLog(@"Does it match service_id 2? %@", [GTFSCommon checkService:2 withArray:sids] ? @"Yes" : @"No" );
-    NSLog(@"Does it match service_id 3? %@", [GTFSCommon checkService:3 withArray:sids] ? @"Yes" : @"No" );
-    NSLog(@"Does it match service_id 4? %@", [GTFSCommon checkService:4 withArray:sids] ? @"Yes" : @"No" );
-    NSLog(@"Does it match service_id 5? %@", [GTFSCommon checkService:5 withArray:sids] ? @"Yes" : @"No" );
-    
-    sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetSat];
-    NSLog(@"sat: %@", sids);
-    
-    sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetSun];
-    NSLog(@"sun: %@", sids);
-    
-    sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetYesterday];
-    NSLog(@"yes: %@", sids);
-    
-    NSString *sStr = [GTFSCommon getServiceIDStrFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetTomorrow];
-    NSLog(@"tomStr: %@", sStr);
-    
-    
-    NSLog(@"End of test");
+//    NSArray *sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetToday];
+//    NSLog(@"today: %@ - is it service_id 1? %d", sids, [GTFSCommon checkService:1 withArray:sids]);
+//    
+//    sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetTomorrow];
+//    NSLog(@"tom: %@", sids);
+//    NSLog(@"Does it match service_id 1? %@", [GTFSCommon checkService:1 withArray:sids] ? @"Yes" : @"No" );
+//    NSLog(@"Does it match service_id 2? %@", [GTFSCommon checkService:2 withArray:sids] ? @"Yes" : @"No" );
+//    NSLog(@"Does it match service_id 3? %@", [GTFSCommon checkService:3 withArray:sids] ? @"Yes" : @"No" );
+//    NSLog(@"Does it match service_id 4? %@", [GTFSCommon checkService:4 withArray:sids] ? @"Yes" : @"No" );
+//    NSLog(@"Does it match service_id 5? %@", [GTFSCommon checkService:5 withArray:sids] ? @"Yes" : @"No" );
+//    
+//    sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetSat];
+//    NSLog(@"sat: %@", sids);
+//    
+//    sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetSun];
+//    NSLog(@"sun: %@", sids);
+//    
+//    sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetYesterday];
+//    NSLog(@"yes: %@", sids);
+//    
+//    NSString *sStr = [GTFSCommon getServiceIDStrFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetTomorrow];
+//    NSLog(@"tomStr: %@", sStr);
+//    
+//    
+//    NSLog(@"End of test");
     
     
 }
@@ -304,7 +319,7 @@
     NSLog(@"free space: %@", formatted);
     
     
-    NSString *dbPath = [self filePath];
+    NSString *dbPath = [GTFSCommon filePath];
     NSLog(@"dbPath: %@", dbPath);
     NSLog(@"dbPath: %@", [dbPath stringByDeletingLastPathComponent] );
     NSFileManager *man = [NSFileManager defaultManager];
@@ -316,6 +331,15 @@
 
     
 //    [self downloadTest];
+    
+}
+
+-(void) checkDBExists
+{
+    
+    [GTFSCommon filePath];
+    
+//    NSLog(@"Break point");
     
 }
 
@@ -358,17 +382,54 @@
 //        [_dbVersionAPI loadLocalMD5];
     }
     
-//    [_dbVersionAPI setTestMode:YES];
+    [_dbVersionAPI setTestMode: _testMode];
     [_dbVersionAPI fetchData];
     
 }
 
+//-(void) downloadProgress
+//{
+//    
+//    BackgroundDownloader *bDown = [BackgroundDownloader sharedInstance];
+//    long long bytesRead;
+//    float percent;
+//    
+//    [bDown downloadStatusForBytes: &bytesRead andPercentDone: &percent];
+//    
+//    NSLog(@"bytes: %lld, percent: %6.3f", bytesRead, percent);
+//    
+//    
+//}
+
 -(void) dbVersionFetched:(DBVersionDataObject*) obj
 {
-//    NSLog(@"version: %@", obj);
     
-    // TODO: Minimize the time this message is played; once a day
     
+#ifdef BACKGROUND_DOWNLOAD
+    // Check if Auto-Update has been turned on
+    id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:Update:AutoUpdate"];
+    if ( object != nil )
+    {
+        if ( [object boolValue] )
+        {
+            BackgroundDownloader *bDown = [BackgroundDownloader sharedInstance];
+            [bDown setDbObject:obj];
+            [bDown downloadSchedule];
+        }
+    }
+    
+    //    _testTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(downloadProgress) userInfo:nil repeats:YES];
+    
+#endif
+    
+
+    if ( [obj.severity isEqualToString:@"high"] )
+    {
+        [self displayAlert:obj];
+        return;
+    }
+    
+
     [_dbVersionAPI loadLocalMD5];
     if ( ( obj.message != nil ) && ( ![[_dbVersionAPI localMD5] isEqualToString: obj.md5] ) )
     {
@@ -397,32 +458,57 @@
         
         if ( effectiveDiff < (60*60*24*7) && (lastDateDiff >= 60*60*24) )
         {
-
-            ALAlertBanner *alertBanner = [ALAlertBanner alertBannerForView:self.view
-                                                                     style:ALAlertBannerStyleFailure
-                                                                  position:ALAlertBannerPositionBottom
-                                                                     title:obj.title
-                                                                  subtitle:obj.message
-                                                               tappedBlock:^(ALAlertBanner *alertBanner)
-                                          {
-                                              NSLog(@"Generic Message: %@!", obj.message);
-                                              [alertBanner hide];
-                                          }];
-            
-            NSTimeInterval showTime = 10.0f;
-            [alertBanner setSecondsToShow: showTime];
-            
-            [alertBanner show];
-        
-            [[NSUserDefaults standardUserDefaults] setObject: [NSDate date] forKey:@"Settings:Update:DateOfLastNotification"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-
-            
+            [self displayAlert: obj];
         }
         
     }
     
 //    [self downloadTest];
+}
+
+-(void) displayAlert: (DBVersionDataObject*) obj
+{
+    
+    if ( obj.message == nil )  // Don't bother if there is no message
+        return;
+    
+    
+    ALAlertBanner *alertBanner = [ALAlertBanner alertBannerForView:self.view
+                                                             style:ALAlertBannerStyleFailure
+                                                          position:ALAlertBannerPositionBottom
+                                                             title:obj.title
+                                                          subtitle:obj.message
+                                                       tappedBlock:^(ALAlertBanner *alertBanner)
+                                  {
+                                      NSLog(@"Generic Message: %@!", obj.message);
+                                      [alertBanner hide];
+                                  }];
+    
+    NSCharacterSet *separators = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    NSArray *words = [obj.message componentsSeparatedByCharactersInSet:separators];
+    
+    NSIndexSet *separatorIndexes = [words indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        return [obj isEqualToString:@""];
+    }];
+    
+    int numOfSeconds = (int)( ([words count] - [separatorIndexes count])/3.0 );  // Assume, on average, a person reads 3 words per second
+    
+    // Maintain a minimum and maximum time
+    if ( numOfSeconds < 5 )
+        numOfSeconds = 5;
+    else if ( numOfSeconds > 15 )
+        numOfSeconds = 15;
+    
+    NSLog(@"numOfSeconds: %d", numOfSeconds);
+    
+//    NSTimeInterval showTime = 10.0f;
+    [alertBanner setSecondsToShow: numOfSeconds];
+    
+    [alertBanner show];
+    
+    [[NSUserDefaults standardUserDefaults] setObject: [NSDate date] forKey:@"Settings:Update:DateOfLastNotification"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
 }
 
 
@@ -431,7 +517,7 @@
 
     NSURL *downloadURL = [[NSURL alloc] initWithString: @"http://www3.septa.org/hackathon/dbVersion/download.php"];
     NSURLRequest *request = [NSURLRequest requestWithURL: downloadURL];
-    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
+    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[GTFSCommon filePath] stringByDeletingLastPathComponent] ];
     
     AFDownloadRequestOperation *dOp = [[AFDownloadRequestOperation alloc] initWithRequest:request targetPath:zipPath shouldResume:YES];
     dOp.outputStream = [NSOutputStream outputStreamToFileAtPath: zipPath append:NO];
@@ -530,7 +616,7 @@
 //     {
 //         //        NSLog(@"Response: %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
 //         
-//         NSString *dbPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
+//         NSString *dbPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[GTFSCommon filePath] stringByDeletingLastPathComponent] ];
 //         
 //         //        NSLog(@"dbPath: %@", dbPath);
 //         
@@ -600,26 +686,26 @@
 }
 
 
--(void) dateCheck
-{
-    
-    NSDate *today = [[NSDate alloc] init];
-    NSCalendar *gregorian = [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSGregorianCalendar];
-    
-    // Get the weekday component of the current date
-    NSDateComponents *weekdayComponents = [gregorian components:NSWeekdayCalendarUnit
-                                                       fromDate:today];
-    
-    NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
-    [componentsToSubtract setDay: 0 - ([weekdayComponents weekday] - 1)];
-    
-    NSDate *beginningOfWeek = [gregorian dateByAddingComponents:componentsToSubtract
-                                                         toDate:today options:0];
-    
-    NSLog(@"Done");
-    
-}
+//-(void) dateCheck
+//{
+//    
+//    NSDate *today = [[NSDate alloc] init];
+//    NSCalendar *gregorian = [[NSCalendar alloc]
+//                             initWithCalendarIdentifier:NSGregorianCalendar];
+//    
+//    // Get the weekday component of the current date
+//    NSDateComponents *weekdayComponents = [gregorian components:NSWeekdayCalendarUnit
+//                                                       fromDate:today];
+//    
+//    NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
+//    [componentsToSubtract setDay: 0 - ([weekdayComponents weekday] - 1)];
+//    
+//    NSDate *beginningOfWeek = [gregorian dateByAddingComponents:componentsToSubtract
+//                                                         toDate:today options:0];
+//    
+//    NSLog(@"Done");
+//    
+//}
 
 
 -(void) md5check
@@ -630,7 +716,7 @@
     // Create byte array of unsigned chars
     unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
     
-    NSData *fileData = [NSData dataWithContentsOfFile: [self filePath] ];
+    NSData *fileData = [NSData dataWithContentsOfFile: [GTFSCommon filePath] ];
     
     // Create 16 byte MD5 hash value, store in buffer
     CC_MD5(fileData.bytes, fileData.length, md5Buffer);
@@ -647,7 +733,7 @@
     
     start = [NSDate date];
     
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {
@@ -871,10 +957,10 @@
 }
 
 
--(NSString*) filePath
-{
-    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
-}
+//-(NSString*) filePath
+//{
+//    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+//}
 
 
 -(void) testImage

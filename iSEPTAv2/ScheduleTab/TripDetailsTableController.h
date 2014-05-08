@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CLLocationManagerDelegate.h>
 
+#import "GTFSCommon.h"
+
 // --==  Objects  ==--
 #import "TripObject.h"
 

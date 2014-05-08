@@ -33,10 +33,51 @@
     
     if ( !b )  // If the file does not exist
     {
-        dbPath = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
-//        dbPath = nil;
         
-        // Or uncompress the zip file to get SEPTA.sqlite
+        NSString *zipPath = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"zip"];
+
+        // Uncompress the zip file to get SEPTA.sqlite
+        if ( zipPath != nil )
+        {
+            
+            NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString  *uncompressPath = [paths objectAtIndex:0];
+            
+            ZipArchive *zip = [[ZipArchive alloc] init];
+            if ( [zip UnzipOpenFile: zipPath] )
+            {
+                
+                NSArray *contents = [zip getZipFileContents];
+                NSLog(@"Contents: %@", contents);
+                
+                //        BOOL ret = [zip UnzipFileTo:[[self filePath] stringByDeletingLastPathComponent] overWrite:YES];
+                BOOL ret = [zip UnzipFileTo:uncompressPath overWrite:YES];
+                if ( NO == ret )
+                {
+                    NSLog(@"Unable to unzip");
+                }
+                
+                
+                NSDirectoryEnumerator* dirEnum = [[NSFileManager defaultManager] enumeratorAtPath: zipPath];
+                NSString* file;
+                NSError* error = nil;
+                NSUInteger count = 1;
+                while ((file = [dirEnum nextObject]))
+                {
+                    count += 1;
+                    NSString* fullPath = [zipPath stringByAppendingPathComponent:file];
+                    NSDictionary* attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:fullPath error:&error];
+                    NSLog(@"file is not zero length: %@", attrs);
+                }
+                
+                NSLog(@"%d == %d, files extracted successfully", count, [contents count]);
+                
+            }
+            [zip UnzipCloseFile];
+            
+        }
+        
+
     }
     
     return dbPath;
@@ -55,6 +96,7 @@
     
     return NO;
 }
+
 
 +(BOOL) checkService:(int) serviceID withService:(int) otherID
 {
@@ -205,7 +247,7 @@
 
 +(NSString *) nextHoliday
 {
-    // Returns the date of the next holiday, or how many days until?
+    // Returns the date of the next holiday, or how many days until, or the number of ponies I'm thinking about?  Hint: 0!
     return nil;
 }
 

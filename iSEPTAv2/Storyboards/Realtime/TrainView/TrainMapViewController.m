@@ -471,19 +471,19 @@
 }
 
 
--(NSString*) filePath
-{
-#if FUNCTION_NAMES_ON
-    NSLog(@"IVC filePath");
-#endif
-    
-    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
-}
+//-(NSString*) filePath
+//{
+//#if FUNCTION_NAMES_ON
+//    NSLog(@"IVC filePath");
+//#endif
+//    
+//    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
+//}
 
 -(void) addStopAnnotationsForRouteType:(GTFSRouteType) routeType
 {
     
-    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
     {
