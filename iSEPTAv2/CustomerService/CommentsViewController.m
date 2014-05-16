@@ -24,6 +24,7 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     
@@ -35,17 +36,26 @@
     self.formController.tableView = self.tableView;
     
     self.formController.delegate = self;
-    self.formController.form = [[CommentsForm alloc] init];
-    
-
+    self.formController.form = [[CommentsFormTemp alloc] init];
     
 }
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
+//    NSDate *today = [NSDate date];
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    
+//    // display in 12HR/24HR (i.e. 11:25PM or 23:25) format according to User Settings
+//    [dateFormatter setDateFormat:@"M/d/yy hh:mm a"];
+//    NSString *currentTime = [dateFormatter stringFromDate:today];
+//
+//    [(CommentsForm*)self.formController.form setDateTime: currentTime];
+    
     [self.tableView reloadData];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,6 +86,9 @@
     if ( ( [form.where length] > 0 ) && ( [form.comment length] > 0 ) && ( [form.firstName length] > 0 ) && ( [form.lastName length] > 0 )  && ( [form.emailAddress length] > 0 ) )
     {
         NSLog(@"Submit Data");
+        if ( form.dateTime == nil )
+            [form setDateTime:form.startingDateTime];
+        
         [self submitData:form];
     }
     else
@@ -92,6 +105,28 @@
 
 -(void) submitData:(CommentsForm *) form
 {
+    
+    NSDictionary *dict;
+
+    if ( [form validateForm] )	
+    {
+        
+        dict = [form dictionaryWithValuesForKeys: [CommentsForm returnAllKeyValues] ];
+        NSError *error = nil;
+        
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+        if ( jsonData )
+        {
+            // process the data
+        }
+        else
+        {
+            NSLog(@"Unable to serialize the data %@: %@", dict, error);
+        }
+        
+    }
+
+    return;
     
     NSString *filteredName;
     NSString *filteredPhone;
@@ -167,6 +202,22 @@
     [self dismissViewControllerAnimated:YES completion:^{ NSLog(@"CSVC - Dismissed Customer Form"); }];
     
     
+}
+
+-(void) action
+{
+    NSLog(@"action!");
+    
+    //refresh the form
+    self.formController.form = self.formController.form;
+    [self.tableView reloadData];
+}
+
+- (void)updateFields
+{
+    //refresh the form
+    self.formController.form = self.formController.form;
+    [self.tableView reloadData];
 }
 
 

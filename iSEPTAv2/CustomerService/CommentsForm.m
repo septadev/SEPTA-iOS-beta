@@ -9,6 +9,21 @@
 #import "CommentsForm.h"
 
 @implementation CommentsForm
+{
+    NSArray *_modes;
+}
+
+
+-(id) init
+{
+    self = [super init];
+    if ( self )
+    {
+        _modes = @[@"MFL",@"BSL",@"NHSL",@"Trolley",@"Bus",@"Regional Rail",@"CCT Connect"];
+    }
+    return self;
+}
+
 
 -(NSDictionary*) dateTimeField
 {
@@ -22,6 +37,9 @@
     NSString *currentTime = [dateFormatter stringFromDate:today];
 
     //NSLog(@"User's current time in their preference format:%@",currentTime);
+
+//    self.dateTime = currentTime;
+    self.startingDateTime = currentTime;
     
     return @{@"textLabel.color": [UIColor redColor], @"detailTextLabel.text": currentTime};
 }
@@ -52,17 +70,90 @@
     return @{@"textLabel.color": [UIColor redColor]};
 }
 
+//-(NSDictionary*) modeField
+//{
+//
+//    NSArray *modes = @[@"MFL",@"BSL",@"NHSL",@"Trolley",@"Bus",@"Regional Rail",@"CCT Connect"];
+//    
+//    return @{FXFormFieldOptions: modes, FXFormFieldPlaceholder: @"-", FXFormFieldAction: @"updateFields"};
+//
+//}
 
+
+
+-(BOOL) validateForm
+{
+
+    // These are required fields
+    if ( ( self.where == nil ) || (self.dateTime == nil ) || ( self.comment == nil ) || (self.firstName == nil ) || ( self.lastName == nil ) || (self.emailAddress == nil ) )
+    {
+        return NO;
+    }
+    
+    return YES;
+}
+
+-(void) filterData
+{
+    
+}
+
+
+//-(NSDictionary*) modeField
+//{
+//    
+//    NSLog(@"modeFiled called!");
+//    NSArray *modes = @[@"MFL",@"BSL",@"NHSL",@"Trolley",@"Bus",@"Regional Rail",@"CCT Connect"];
+//    return @{FXFormFieldOptions: modes, FXFormFieldPlaceholder:@"-", FXFormFieldAction: @"updateFields"};
+//}
+
+
+//-(NSDictionary*) routeField
+//{
+//
+//    NSLog(@"routeField");
+//
+//    NSArray *routes;
+//    
+//    if ( [self.mode isEqualToString:@"Bus"] )
+//    {
+//        routes = @[@"1",@"2",@"3"];
+//    }
+//    else if ( [self.mode isEqualToString:@"Trolley"] )
+//    {
+//        routes = @[@"10",@"11",@"13",@"15"];
+//    }
+//    
+////    return @{FXFormFieldOptions: routes, FXFormFieldPlaceholder:@"-"};
+//
+//    if ( self.mode != nil )
+//    {
+//        return @{FXFormFieldOptions: routes, FXFormFieldPlaceholder:@"-"};
+//    }
+//    else
+//    {
+//        return @{FXFormFieldType: FXFormFieldTypeLabel, FXFormFieldValueTransformer: ^(__unused id value)
+//        {
+//            return @"-";
+//        }};
+//    }
+//    
+//}
 
 
 - (NSArray *)fields
 {
+    
+    
+//    return @{FXFormFieldOptions: months, FXFormFieldPlaceholder: @"-", FXFormFieldAction: @"updateFields"};
+    
     return @[
     
              @{FXFormFieldKey:@"dateTime", FXFormFieldHeader: @"Incident Date Time", FXFormFieldType: FXFormFieldTypeDateTime, FXFormFieldTitle: @"When?"},
              
              @{FXFormFieldKey:@"where", FXFormFieldHeader: @"Details", FXFormFieldType: FXFormFieldTypeLongText, FXFormFieldTitle: @"Where?"},
-             @{FXFormFieldKey:@"mode", FXFormFieldOptions: @[@"Regional Rail",@"Market-Frankford Line",@"Broad Street Line", @"Trolley Lines", @"Norristown High Speed Line", @"Buses", @"CCT Connect"], FXFormFieldCell: [FXFormOptionPickerCell class]},
+             //@{FXFormFieldKey:@"mode", FXFormFieldOptions: @[@"Regional Rail",@"Market-Frankford Line",@"Broad Street Line", @"Trolley Lines", @"Norristown High Speed Line", @"Buses", @"CCT Connect"], FXFormFieldCell: [FXFormOptionPickerCell class]},
+             @{FXFormFieldKey:@"mode", FXFormFieldOptions: _modes}, // FXFormFieldAction:@"action"},
              @"route",
              @"destination",
              @{FXFormFieldKey:@"blockTrain", FXFormFieldTitle: @"Block or Train"},
@@ -80,5 +171,19 @@
              ];
     
 }
+
+
+
++(NSArray*) returnAllKeyValues
+{
+    return [NSArray arrayWithObjects:@"dateTime",@"where",@"mode",@"route",@"destination",@"blockTrain",@"vehicle",@"comment",@"employee_description",@"firstName",@"lastName",@"phoneNumber",@"emailAddress",nil];
+}
+
+
++(NSArray*) returnAllRequiredValues
+{
+    return [NSArray arrayWithObjects:@"dateTime",@"where",@"comment",@"firstName",@"lastName",@"emailAddress",nil];
+}
+
 
 @end

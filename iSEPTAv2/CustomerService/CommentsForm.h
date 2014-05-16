@@ -15,6 +15,8 @@
 @property (nonatomic, copy) NSString *dateTime;
 //@property (nonatomic, copy) NSString *time;
 
+@property (nonatomic, strong) NSString *startingDateTime;
+
 @property (nonatomic, copy) NSString *where;
 @property (nonatomic, copy) NSString *mode;
 
@@ -32,5 +34,10 @@
 
 @property (nonatomic, copy) NSString *phoneNumber;
 @property (nonatomic, copy) NSString *emailAddress;
+
+-(BOOL) validateForm;
+
++(NSArray*) returnAllKeyValues;
++(NSArray*) returnAllRequiredValues;
 
 @end

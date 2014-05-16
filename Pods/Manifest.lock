@@ -4,24 +4,24 @@ PODS:
   - AFNetworking (1.3.3)
   - ALAlertBanner (0.3.1)
   - ECSlidingViewController (1.3.3)
-  - FMDB (2.2):
+  - FMDB (2.3):
     - FMDB/standard
-  - FMDB/common (2.2)
-  - FMDB/standard (2.2):
+  - FMDB/common (2.3)
+  - FMDB/standard (2.3):
     - FMDB/common
-  - FXForms (1.1.2)
+  - FXForms (1.1.6)
   - hpple (0.2.0)
-  - MMDrawerController (0.5.3):
+  - MMDrawerController (0.5.5):
     - MMDrawerController/Core
     - MMDrawerController/MMDrawerBarButtonItem
     - MMDrawerController/MMDrawerVisualStates
     - MMDrawerController/Subclass
-  - MMDrawerController/Core (0.5.3)
-  - MMDrawerController/MMDrawerBarButtonItem (0.5.3):
+  - MMDrawerController/Core (0.5.5)
+  - MMDrawerController/MMDrawerBarButtonItem (0.5.5):
     - MMDrawerController/Core
-  - MMDrawerController/MMDrawerVisualStates (0.5.3):
+  - MMDrawerController/MMDrawerVisualStates (0.5.5):
     - MMDrawerController/Core
-  - MMDrawerController/Subclass (0.5.3):
+  - MMDrawerController/Subclass (0.5.5):
     - MMDrawerController/Core
   - Reachability (3.1.1)
   - REMenu (1.7.1)
@@ -33,11 +33,11 @@ DEPENDENCIES:
   - AFDownloadRequestOperation (~> 1.0.0)
   - AFNetworking (~> 1.3.3)
   - ALAlertBanner (~> 0.3.1)
-  - ECSlidingViewController (~> 1.3)
-  - FMDB (~> 2.1)
-  - FXForms (~> 1.1.2)
+  - ECSlidingViewController (~> 1.3.3)
+  - FMDB (~> 2.3)
+  - FXForms (~> 1.1.6)
   - hpple (~> 0.2.0)
-  - MMDrawerController (~> 0.5.1)
+  - MMDrawerController (~> 0.5.5)
   - Reachability (~> 3.1.1)
   - REMenu (~> 1.7.1)
   - SVProgressHUD (~> 1.0)
@@ -49,14 +49,14 @@ SPEC CHECKSUMS:
   AFNetworking: 61fdd49e2ffe6380378df37b3b6e70630bb9dd66
   ALAlertBanner: 16235298226059cd876a9de0a5d7f9bac6a79459
   ECSlidingViewController: 3ca3141b843b5425b57c054db09d7dfd04a7ff85
-  FMDB: e0dd09464b4e1a1cd7fa51ea835ae821b5656865
-  FXForms: 15b46415d8900eb1a7afb7f6ce6549178c7c8068
+  FMDB: 8b6b69b1164e3007d7f4b3b3719e667602ec247e
+  FXForms: d1c3fccab32a6702430b14808f7b46061008a4a9
   hpple: dde62f905f482bbec50186280d1a1be2c881241b
-  MMDrawerController: 4445e1927e8947b7e2382136c9b7109840efbfb9
+  MMDrawerController: fb6a17a3e2d1cb4f5f4a411915703b3569cdb227
   Reachability: be4883bb93f31e38266ae3365e5600a317aae735
   REMenu: 4c85fa951c74b41b1eb7f9a31ebed2da8ae3f7d7
   SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
   SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2
   ZipArchive: 93bff5d8b435767ccfac976ed08ca611d950d3d0
 
-COCOAPODS: 0.31.1
+COCOAPODS: 0.32.1

@@ -10,6 +10,7 @@
 #import "FXForms.h"
 
 #import "CommentsForm.h"
+#import "CommentsFormTemp.h"
 
 @interface CommentsViewController : UIViewController <FXFormControllerDelegate>
 

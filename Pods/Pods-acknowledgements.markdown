@@ -113,7 +113,7 @@ THE SOFTWARE.
 
 FXForms
 
-version 1.1.2, April 7th, 2014
+version 1.1.6, April 18th, 2014
 
 Copyright (C) 2014 Charcoal Design
 

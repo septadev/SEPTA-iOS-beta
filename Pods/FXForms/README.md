@@ -352,12 +352,18 @@ static NSString *const FXFormFieldTypeNumber = @"number";
 ```
     
 Like `FXFormFieldTypeText`, but with a numeric keyboard, and input restricted to a valid number.
-    
+
 ```objc
 static NSString *const FXFormFieldTypeInteger = @"integer";
 ```
     
 Like `FXFormFieldTypeNumber`, but restricted to integer input.
+
+```objc
+static NSString *const FXFormFieldTypeFloat = @"float";
+```
+    
+Like `FXFormFieldTypeNumber`, but indicates value is primitive (not-nillable)
     
 ```objc
 static NSString *const FXFormFieldTypeBoolean = @"boolean";
@@ -405,7 +411,28 @@ If the field type matches the values in the options array, selecting the option 
 
 If the field is a collection type (such as NSArray, NSSet, etc.), the form will allow the user to select multiple options instead of one. Collections are handled as followed, depending on the class of the property: If you use `NSArray`, `NSSet` and `NSOrderedSet`, the selected values will be stored directly in the collection; If you use an `NSIndexSet`, the indexes of the values will be stored; If you use `NSDictionary`, both the values *and* their indexes will be stored. For ordered collection types, the order of the selected values is guaranteed to match the order in the options array.
 
-Multi-select fields can also be used with `NS_OPTIONS`-style bitfield enum values. Just use an integer as your property type, and then specify a field type of `FXFormFieldTypeBitfield`. You can then either specify explicit bit values in your options by using `NSNumber` values, or let FXForms infer the bit value from the index.
+Multi-select fields can also be used with `NS_OPTIONS`-style bitfield enum values. Just use an integer or enum as your property type, and then specify a field type of `FXFormFieldTypeBitfield`. You can then either specify explicit bit values in your options by using `NSNumber` values, or let FXForms infer the bit value from the option index.
+
+*NOTE:* the actual values defined in your enum are not available to FXForms at runtime, so the selected values will be purely determined by the index of value of the options in the `FXFormFieldOptions` value. If your enum values are non-sequential, or do not begin at zero, the indices won't match the options indexes. To define enum options with non-sequential values, you can specify explicit numeric option values and use `FXFormFieldValueTransformer` to display human readable labels, like this:
+
+```objc
+typedef NS_ENUM(NSInteger, Gender)
+{
+    GenderMale = 10,
+    GenderFemale = 15,
+    GenderOther = -1
+};
+
+- (NSDictionary *)genderField
+{
+    return @{FXFormFieldOptions: @[@(GenderMale), @(GenderFemale), @(GenderOther)],
+             FXFormFieldValueTransformer: ^(id input) {
+             return @{@(GenderMale): @"Male",
+                      @(GenderFemale): @"Female",
+                      @(GenderOther): @"Other"}[input];
+    }};
+}
+```
 
 
 Cell configuration
@@ -452,6 +479,32 @@ Once you have created your custom cell, you can use it as follows:
 
 Release notes
 --------------
+
+Version 1.1.6
+
+- Options fields with numeric values are now correctly displayed
+- Action block will now be called when an options field is updated
+- Action blocks are no longer called when tapping subform field cells
+- Fixed crash when using placeholder values with options fields
+- Added FXFormFieldTypeFloat
+- Added dependent fields example
+
+Version 1.1.5
+
+- Virtual fields without keys no longer crash when the form object is an NSManagedObject subclass
+
+Version 1.1.4
+
+- FXForms now nils out all control delegates & datasources correctly to prevent crashes when form is dismissed
+- The FXFormImagePickerCell image is no longer drawn with incorrect alignment
+- FXFormTextViewCell can now display placeholder text when empty
+
+Version 1.1.3
+
+- Using <propertyName>Field method to set form properties is no longer overridden by defaults
+- Only mess with the content inset/offset when the view controller is not a UITableViewController
+- It should now be easier to use nibs to lay out cell subclasses without losing standard functionality
+- Using FXFormFieldTypeLabel now works more consistently
 
 Version 1.1.2
 
