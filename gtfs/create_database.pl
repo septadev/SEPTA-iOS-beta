@@ -1683,24 +1683,26 @@ sub combineMFLStops
     if ( !$east_stopID || !$west_stopID )
     {
         print "Could not find either East or West (or both)\n";
-        exit;
+        
     }
-    
-    $sth->finish();
-    
-    my $updateQuery = "UPDATE stop_times_bus SET stop_id = $west_stopID WHERE stop_id = $east_stopID";
-    $dbh->do($updateQuery);
-
-    $updateQuery = "UPDATE stop_times_MFL SET stop_id = $west_stopID WHERE stop_id = $east_stopID";
-    $dbh->do($updateQuery);
-
-    
-    my $deleteQuery = "DELETE FROM stops_bus WHERE stop_id = $east_stopID";
-    $dbh->do($deleteQuery);
-    
-    
-    $updateQuery = "UPDATE stops_bus SET stop_name = '69th St Transportation Center' WHERE stop_id = $west_stopID";
-    $dbh->do($updateQuery);
+    else
+    {
+        $sth->finish();
+        
+        my $updateQuery = "UPDATE stop_times_bus SET stop_id = $west_stopID WHERE stop_id = $east_stopID";
+        $dbh->do($updateQuery);
+        
+        $updateQuery = "UPDATE stop_times_MFL SET stop_id = $west_stopID WHERE stop_id = $east_stopID";
+        $dbh->do($updateQuery);
+        
+        
+        my $deleteQuery = "DELETE FROM stops_bus WHERE stop_id = $east_stopID";
+        $dbh->do($deleteQuery);
+        
+        
+        $updateQuery = "UPDATE stops_bus SET stop_name = '69th St Transportation Center' WHERE stop_id = $west_stopID";
+        $dbh->do($updateQuery);
+    }
     
     $dbh->disconnect();
     

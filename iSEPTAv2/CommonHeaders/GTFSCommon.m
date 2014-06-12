@@ -138,6 +138,8 @@
     NSLog(@"GTFSCommon: getServiceIDFor:%d", route);
 #endif
     
+    NSInteger service_id = 0;
+    
     //    NSLog(@"filePath: %@", [self filePath]);
     FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
@@ -156,6 +158,15 @@
     
 
     int dayOfWeek = 0;  // Sun: 64, Mon: 32, Tue: 16, Wed: 8, Thu: 4, Fri: 2, Sat: 1
+    
+
+    // We're assuming here that a holiday can only have ONE valid service_id and none of this "I'm Friday, I'm a 1 and 4" nonsense
+    if ( ( service_id = [GTFSCommon isHoliday:route withOffset:offset] ) )
+    {
+        NSMutableArray *serviceArr = [[NSMutableArray alloc] init];
+        [serviceArr addObject: [NSNumber numberWithInt:service_id] ];
+        return serviceArr;  // Since it is a holiday, skip everything else and just return this
+    }
     
     
     switch (offset) {
@@ -224,9 +235,7 @@
         return 0;  // If an error occurred, there's nothing else to do but exit
         
     } // if ( [database hadError] )
-    
-    
-    NSInteger service_id = 0;
+
     
     NSMutableArray *serviceArr = [[NSMutableArray alloc] init];
     
@@ -321,6 +330,14 @@
     return service_id;
     
     
+    
+}
+
+
++(BOOL) isServiceGood:(int) serviceID forRouteType:(GTFSRouteType) routeType withOffset:(GTFSCalendarOffset) offset
+{
+    
+    return [GTFSCommon checkService:serviceID withArray: [GTFSCommon getServiceIDFor:routeType withOffset:offset] ];
     
 }
 

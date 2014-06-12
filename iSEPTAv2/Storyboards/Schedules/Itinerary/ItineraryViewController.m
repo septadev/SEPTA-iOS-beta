@@ -35,6 +35,7 @@
     
     BOOL _startENDButtonPressed;
     BOOL _inDarkTerritory;
+    BOOL _isHoliday;
     
     NSInteger _currentDisplayDirection;
     NSMutableString *_servicePredicate;
@@ -109,6 +110,8 @@
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    _isHoliday = NO;
     
     // Check if we should use military time or AM/PM
     id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:24HourTime"];
@@ -1386,14 +1389,15 @@
     if ( [_masterJSONTrainArr count] == 0 )  // If it has no active vehiciles, nothing below will have any effect
         return;
     
-    if ( [self getServiceIDFor:kItineraryFilterTypeNow] != _currentServiceID )
+    
+    if ( !([self getServiceIDFor:kItineraryFilterTypeNow] & _currentServiceID) )
     {
         activeTrainsArr = nil;
         [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
         return;
     }
     
-    NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"(serviceID == %d) AND (directionID == %d)", _currentServiceID, _currentDisplayDirection] ];
+    NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"%@ AND (directionID == %d)", _servicePredicate, _currentDisplayDirection] ];
     
     NSLog(@"IVC - filter active trains: %@", predicateFilter);
     activeTrainsArr = nil;
@@ -1439,14 +1443,10 @@
         now = 0;
     }
     
-//    _currentDisplayDirection = 0;
-//    NSNumber *displayDirection = [NSNumber numberWithInt:0];
+    
+//    NSLog(@"IVC:fCT - %@", _servicePredicate);
     
     
-    NSLog(@"IVC:fCT - %@", _servicePredicate);
-    
-//    NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"(serviceID == %d)  AND (directionID == %d) AND (startTime > %d)", _currentServiceID, _currentDisplayDirection, now] ];
-
     NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"%@  AND (directionID == %d) AND (startTime > %d)", _servicePredicate, _currentDisplayDirection, now] ];
 
     
@@ -1959,7 +1959,10 @@
 //            NSLog(@"Holy shit, McGee!");
 //        }
         
-        [[tCell lblTrainNo] setText: [NSString stringWithFormat:@"%d", [thisTrip.trainNo intValue] ] ];
+        if ( [thisTrip.trainNo intValue] > 0 )
+            [[tCell lblTrainNo] setText: [NSString stringWithFormat:@"%d", [thisTrip.trainNo intValue] ] ];
+        else
+            [[tCell lblTrainNo] setText: @""];
 
         [[tCell lblNextDay] setHidden:YES];
         
@@ -2334,7 +2337,10 @@
                 switch ( _currentFilter )
                 {
                     case kItineraryFilterTypeNow:
-                        title = @"REMAINING TRIPS FOR TODAY";
+                        if ( _isHoliday )
+                            title = @"REMAINING TRIPS FOR THE HOLIDAY";
+                        else
+                            title = @"REMAINING TRIPS FOR TODAY";
                         break;
                     case kItineraryFilterTypeWeekday:
                         title = @"WEEKDAY";
@@ -3185,6 +3191,107 @@
     NSLog(@"iVC: getServiceIDFor:%d", type);
 #endif
     
+    
+    
+    //  How it works.  Bare with me here, because things are going to get crazy.  If each day had one and only one service_id
+    //  everything would be peachy.  99% of the time that's true.  Mon thru Thur, all those trains share one common service_id
+    //  and life is grand.  Friday, however, is special.  Most of the trains that run on Friday use the same service_id as those
+    //  that run from Monday to Thursday.  Makes sense as Friday is part of the weekday.  The wrinkle is Friday also has a few
+    //  trains that run late night service.  There trains have a different service_id.
+    
+    //  This means, in order to display all the trains that are scheduled to run on Friday, two service_id are needed.
+    
+    //  There are a few ways to handle these cases and my preference is bitwise operations.
+    
+    //  Valid service ids for a given day are returned from GTFSCommon getServiceIDFor.  It, unsurprisingly, returns an NSArray.
+    //  Most of the time, this array will contain only one value.  On Friday's, it'll return two: 1 and 4.
+    
+    //  To keep things simple, we'll represent these numbers a litle differently:  1 << 0 and 1 << 3 or 1001 (9).
+    //  The reason to do this is, when querying the database for which trips are valid for today, we can perform a simple
+    //  bitwise operations:  dbServiceID & currentServiceID.  If it returns a 0, the dbServiceID does not match the current
+    //  service ID and we can skip it.  If it returns a non-zero, that trip is valid for the currentServiceID.
+    
+    //  The benefit is if the schedule suddenly becomes much more complicated --  I'm looking at you Christmas -- this method
+    //  will handle it.
+    
+    GTFSCalendarOffset cal;
+    
+    switch (type)
+    {
+        case kItineraryFilterTypeNow:
+            cal = kGTFSCalendarOffsetToday;
+            break;
+
+        case kItineraryFilterTypeSat:
+            cal = kGTFSCalendarOffsetSat;
+            break;
+
+        case kItineraryFilterTypeSun:
+            cal = kGTFSCalendarOffsetSun;
+            break;
+
+        case kItineraryFilterTypeWeekday:
+            cal = kGTFSCalendarOffsetWeekday;
+            break;
+
+        default:
+            cal = kGTFSCalendarOffsetToday;
+            break;
+    }
+    
+    
+    NSInteger currentServiceID = 0;
+    NSArray *sIDs = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:cal];
+    
+    if ( [GTFSCommon isHoliday:kGTFSRouteTypeRail withOffset:cal] )
+        _isHoliday = YES;
+    else
+        _isHoliday = NO;
+    
+        
+//    sIDs = [NSArray arrayWithObjects:[NSNumber numberWithInt:1], [NSNumber numberWithInt:4], nil];
+    
+    for (NSNumber *sNum in sIDs)
+    {
+        currentServiceID |= 1 << ([sNum integerValue]-1);
+    }
+    
+    
+    
+    // Friday only train
+    NSInteger service_id = 0;
+    //    [results next];
+    
+    
+    _servicePredicate = [[NSMutableString alloc] initWithString:@"("];
+    // (service_id == 62 or service_id == 2)
+    
+    BOOL hasResults = NO;
+    for (NSNumber *sNums in sIDs)
+    {
+        [_servicePredicate appendFormat:@"serviceID == %d or ", [sNums integerValue] ];
+        hasResults = YES;
+    }
+    
+    // Remove the last four characters, the ' or '
+    
+    if ( !hasResults )  // Fixes the crashing issue when using an older GTFS; quick and dirty fix
+    {
+        [_servicePredicate appendFormat:@"1 == 1) "];
+        return 9000;
+    }
+    
+    [_servicePredicate deleteCharactersInRange:NSMakeRange([_servicePredicate length]-4, 4)];
+    
+    [_servicePredicate appendString:@")"];
+    
+    
+    
+    // Return the bitwise shifted serviceID
+    return currentServiceID;
+    
+    
+    
 //    NSLog(@"filePath: %@", [GTFSCommon filePath]);
     FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
@@ -3260,14 +3367,14 @@
     
     
     // Friday only train 
-    NSInteger service_id = 0;
+    service_id = 0;
 //    [results next];
     
     
     _servicePredicate = [[NSMutableString alloc] initWithString:@"("];
     // (service_id == 62 or service_id == 2)
     
-    BOOL hasResults = NO;
+    hasResults = NO;
     while ( [results next] )
     {
         service_id = [results intForColumn:@"service_id"];
@@ -3362,6 +3469,33 @@
     NSLog(@"iVC: updateServiceID");
 #endif
     
+    
+//    switch (_currentFilter)
+//    {
+//        case kItineraryFilterTypeNow:
+//            break;
+//            
+//        case kItineraryFilterTypeSat:
+//            break;
+//            
+//        case kItineraryFilterTypeSun:
+//            break;
+//            
+//        case kItineraryFilterTypeWeekday:
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//    
+//
+//    // The trouble with serviceID.  It can be both 62 (Mon-Frid) and 4 (Fri only).
+//
+//    
+//    
+//    return;
+    
+    // What is was originally
     _currentServiceID = [self getServiceIDFor:_currentFilter];
     
     return;
@@ -3567,9 +3701,7 @@
     
     if (_masterTrainLookUpDict == nil )  // If the Itinerar is swipe deleted just prior to a JSON pull, there's nothing to compare to
         return;
-    
-//    if ( [itinerary isComplete] == NO )
-//        return;
+
     
     // This method is called once the realtime positioning data has been returned via the API is stored in data
     NSError *error;
@@ -3581,6 +3713,7 @@
     // Clear out old _masterJSONTrainArr cause we're about to fill it back up with more recent data!
     [_masterJSONTrainArr removeAllObjects];
     
+    
     for (NSDictionary *railData in json)
     {
         
@@ -3588,37 +3721,6 @@
             return;
         
         NSString *trainNo = [railData objectForKey:@"trainno"];
-        //        NSString *tripKey = [NSString stringWithFormat:@"%@%d", trainNo, _currentServiceID];
-        //
-        //        NSLog(@"Looking for %@ in _masterTrainLookUpDict", tripKey);
-        //        if ( [_masterTrainLookUpDict objectForKey:tripKey ] != nil )
-        //        {
-        //
-        //            NSString *delay   = [railData objectForKey:@"late"];
-        //            NSString *service = [railData objectForKey:@"service"];
-        //            NSString *nextStop = [railData objectForKey:@"nextstop"];
-        //            NSString *destination = [railData objectForKey:@"dest"];
-        //
-        //            TripObject *trip = [[_masterTrainLookUpDict objectForKey:tripKey] nonretainedObjectValue];
-        //
-        //
-        //            ActiveTrainObject *atObject = [[ActiveTrainObject alloc] init];
-        //            // TrainView JSON related fields
-        //            [atObject setTrainDelay : [NSNumber numberWithInt:[delay intValue] ] ];
-        //            [atObject setTrainNo    : [NSNumber numberWithInt:[trainNo intValue] ] ];
-        //            [atObject setServiceType: service];
-        //            [atObject setNextStop   : nextStop];
-        //            [atObject setDestination: destination];
-        //
-        //            // These three values are the criteria used to filter _masterTrainArr into _currentTrainArr
-        //            // We'll use the same criteria.  So if the user switches to Sat or Sun, the active trains for the weekday will not be displayed
-        //            [atObject setStartTime: trip.startTime];     // ordered by this
-        //            [atObject setServiceID: [NSNumber numberWithInt: trip.serviceID] ];     // sorted by this
-        //            [atObject setDirectionID:trip.directionID];  // and sorted by this
-        //
-        //            [_masterJSONTrainArr addObject: atObject];
-        //
-        //        }  // if ( [_masterTrainLookUpDict objectForKey:[NSNumber numberWithInt:[trainNo intValue] ] ] == nil )
         
         
         NSMutableArray *trainNoArray = [_masterTrainLookUpDict objectForKey:trainNo];
@@ -3636,7 +3738,7 @@
             TripObject *trip = [newTrip nonretainedObjectValue];
             
             // Find the trip that matches the trainNo AND the currentServiceID
-            if ( [trip.serviceID intValue] & _currentServiceID )
+            if ( (1 << ([trip.serviceID intValue]-1)) & _currentServiceID )
             {
                 NSString *delay   = [railData objectForKey:@"late"];
                 NSString *service = [railData objectForKey:@"service"];

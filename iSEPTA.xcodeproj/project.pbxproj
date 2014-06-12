@@ -22,6 +22,8 @@
 		2708114C17A990A500B62FBD /* SimpleMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708114B17A990A500B62FBD /* SimpleMapViewController.m */; };
 		270ABC501771EF5000F631B6 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270ABC4F1771EF5000F631B6 /* MessageUI.framework */; };
 		270BB8CB16FCF4DE0039EF8D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270BB8CA16FCF4DE0039EF8D /* MapViewController.m */; };
+		270C8F64194A33A300AE208E /* SlidingAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 270C8F63194A33A300AE208E /* SlidingAlertView.m */; };
+		270C8F68194A33DB00AE208E /* SlidingAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270C8F67194A33DB00AE208E /* SlidingAlertViewController.m */; };
 		270E484A17903F61009D325D /* CustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 270E484917903F61009D325D /* CustomView.m */; };
 		2712DE6C17EB943C0047343F /* EnterAddressStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2712DE6B17EB943C0047343F /* EnterAddressStoryboard.storyboard */; };
 		2712DE7B17ECE5920047343F /* SavedAddressesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712DE7A17ECE5920047343F /* SavedAddressesViewController.m */; };
@@ -807,6 +809,10 @@
 		270ABC4F1771EF5000F631B6 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		270BB8C916FCF4DE0039EF8D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = ScheduleTab/MapViewController.h; sourceTree = "<group>"; };
 		270BB8CA16FCF4DE0039EF8D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = ScheduleTab/MapViewController.m; sourceTree = "<group>"; };
+		270C8F62194A33A300AE208E /* SlidingAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlidingAlertView.h; path = SlidingAlertView/SlidingAlertView.h; sourceTree = "<group>"; };
+		270C8F63194A33A300AE208E /* SlidingAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlidingAlertView.m; path = SlidingAlertView/SlidingAlertView.m; sourceTree = "<group>"; };
+		270C8F66194A33DB00AE208E /* SlidingAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlidingAlertViewController.h; path = SlidingViewTest/SlidingAlertViewController.h; sourceTree = "<group>"; };
+		270C8F67194A33DB00AE208E /* SlidingAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlidingAlertViewController.m; path = SlidingViewTest/SlidingAlertViewController.m; sourceTree = "<group>"; };
 		270E484817903F61009D325D /* CustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomView.h; path = "Custom Drawing/CustomView.h"; sourceTree = "<group>"; };
 		270E484917903F61009D325D /* CustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomView.m; path = "Custom Drawing/CustomView.m"; sourceTree = "<group>"; };
 		2712DE6B17EB943C0047343F /* EnterAddressStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EnterAddressStoryboard.storyboard; path = "Storyboards/Common Storyboards/Enter Address/EnterAddressStoryboard.storyboard"; sourceTree = "<group>"; };
@@ -1890,6 +1896,15 @@
 			name = FeedbackForm;
 			sourceTree = "<group>";
 		};
+		270C8F65194A33BC00AE208E /* SlidingViewTest */ = {
+			isa = PBXGroup;
+			children = (
+				270C8F66194A33DB00AE208E /* SlidingAlertViewController.h */,
+				270C8F67194A33DB00AE208E /* SlidingAlertViewController.m */,
+			);
+			name = SlidingViewTest;
+			sourceTree = "<group>";
+		};
 		270E484717903F1E009D325D /* Custom Drawing */ = {
 			isa = PBXGroup;
 			children = (
@@ -2216,6 +2231,8 @@
 				27A6938B17A15849008712FB /* SplitButton.m */,
 				84F6AFFA17B18F5300680007 /* TabbedButton.h */,
 				84F6AFFB17B18F5300680007 /* TabbedButton.m */,
+				270C8F62194A33A300AE208E /* SlidingAlertView.h */,
+				270C8F63194A33A300AE208E /* SlidingAlertView.m */,
 			);
 			name = Subclasses;
 			sourceTree = "<group>";
@@ -2663,6 +2680,7 @@
 		27A6933917A04920008712FB /* Common Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				270C8F65194A33BC00AE208E /* SlidingViewTest */,
 				274B924B188738B000C7A297 /* Automatic Updates */,
 				2792C00018818B4B00626D8B /* CommonWebView */,
 				27A972F817AA90EB001A4395 /* KMLMaps */,
@@ -5326,6 +5344,7 @@
 				275CA62316EF990F006E6D2B /* CachedItineraryManager.m in Sources */,
 				272FCD6516F20D5600A646C7 /* ActiveTrainObject.m in Sources */,
 				272FCD6A16F227F400A646C7 /* ActiveTrainCell.m in Sources */,
+				270C8F68194A33DB00AE208E /* SlidingAlertViewController.m in Sources */,
 				27E4262B16FA10C800997C19 /* VehicleDetailsCell.m in Sources */,
 				270BB8CB16FCF4DE0039EF8D /* MapViewController.m in Sources */,
 				41E22F2C16FE3F2D00126DC2 /* TripDetailsTableController.m in Sources */,
@@ -5347,6 +5366,7 @@
 				276986AB1779D4AA00EA76DF /* WalkingTourViewController.m in Sources */,
 				276986AE1779DD0C00EA76DF /* WalkingTourStops.m in Sources */,
 				2792BFFD187B10F800626D8B /* GetDBVersionAPI.m in Sources */,
+				270C8F64194A33A300AE208E /* SlidingAlertView.m in Sources */,
 				27364686177B13ED00511A2F /* NotificationInfo.m in Sources */,
 				2736468C177B2CFA00511A2F /* BusRouteIndicatorCell.m in Sources */,
 				2736468F177B481700511A2F /* BasicRouteObject.m in Sources */,

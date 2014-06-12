@@ -582,7 +582,7 @@ sub loadShapesWithTimeStamps
     }
     else
     {
-        generateKMLHeaderFooterPlacemark();  # Creates a new KML file ading $shapeKey to the filename
+        generateKMLHeaderFooterPlacemark();  # Creates a new KML file adding $shapeKey to the filename
     }
     
     close OUTPUT;
