@@ -29,60 +29,68 @@
 {
     NSLog(@"Rotate All the Views!");
 
-    CGFloat sWidth  = [UIScreen mainScreen].bounds.size.width;
-    CGFloat sHeight = [UIScreen mainScreen].bounds.size.height;
+//    CGFloat sWidth  = [UIScreen mainScreen].bounds.size.width;
+//    CGFloat sHeight = [UIScreen mainScreen].bounds.size.height;
     
-    int padding = 8;
-    int iconWidth = 96;
-    
-    int aWidth = 0;
-    int aHeight = 0;
-    
-    if ( UIInterfaceOrientationIsLandscape(toInterfaceOrientation) )
-    {
-//        [self.slidingAlert rotate:toInterfaceOrientation];
-
-        // Height is now the Width; Width is now the Height
-        
-        int wastedSpace = 44 + 40 + 12;
-        
-        int x = padding * 4 + iconWidth * 3;
-        int aWidth = sHeight - x - 8;
-        int aHeight = sWidth - wastedSpace - padding*2;
-        
-        [self.slidingAlert setFrame:CGRectMake(x, 8, aWidth, aHeight)];
-        [self.slidingAlert setNeedsDisplay];
-    }
-    else if ( toInterfaceOrientation == UIInterfaceOrientationPortrait )
-    {
-//        [self.slidingAlert rotate:toInterfaceOrientation];
-        [self.slidingAlert setFrame:CGRectMake(8, 212, 304, 149)];
-        [self.slidingAlert setNeedsDisplay];
-    }
-    
-    
+//    float sWidth  = self.view.frame.size.width;
+//    float sHeight = self.view.frame.size.height;
+//    
+//    int padding = 8;
+//    int iconWidth = 96;
+//    
+//    int aWidth = 0;
+//    int aHeight = 0;
+//    
+//    if ( UIInterfaceOrientationIsLandscape(toInterfaceOrientation) )
+//    {
+////        [self.slidingAlert rotate:toInterfaceOrientation];
+//
+//        // Height is now the Width; Width is now the Height
+//        
+//        int wastedSpace = 44 + 40 + 12;
+//        
+//        int x = padding * 4 + iconWidth * 3;
+//        int aWidth = sHeight - x - 8;
+//        int aHeight = sWidth - wastedSpace - padding*2;
+//        
+//        [self.slidingAlert setFrame:CGRectMake(x, 8, aWidth, aHeight)];
+//        [self.slidingAlert setNeedsDisplay];
+//    }
+//    else if ( toInterfaceOrientation == UIInterfaceOrientationPortrait )
+//    {
+////        [self.slidingAlert rotate:toInterfaceOrientation];
+//        [self.slidingAlert setFrame:CGRectMake(8, 212, 304, 149)];
+//        [self.slidingAlert setNeedsDisplay];
+//    }
     
 }
 
--(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+
+-(BOOL) shouldAutorotate
 {
-    
-    if ( UIInterfaceOrientationIsLandscape(toInterfaceOrientation) )
-    {
-        NSLog(@"Landscape");
-    }
-    else if ( toInterfaceOrientation == UIInterfaceOrientationMaskPortrait )
-    {
-        NSLog(@"Portrait");
-    }
-    else
-    {
-        NSLog(@"No change");
-    }
-    
     return YES;
-    
 }
+
+
+//-(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+//{
+//    
+//    if ( UIInterfaceOrientationIsLandscape(toInterfaceOrientation) )
+//    {
+//        NSLog(@"Landscape");
+//    }
+//    else if ( toInterfaceOrientation == UIInterfaceOrientationMaskPortrait )
+//    {
+//        NSLog(@"Portrait");
+//    }
+//    else
+//    {
+//        NSLog(@"No change");
+//    }
+//    
+//    return YES;
+//    
+//}
 
 - (void)viewDidLoad
 {

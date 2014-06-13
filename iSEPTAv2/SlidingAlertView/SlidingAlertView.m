@@ -31,21 +31,23 @@
 // An empty implementation adversely affects performance during animation.
  */
 
+
+
 -(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
     
-    if ( UIInterfaceOrientationIsLandscape(toInterfaceOrientation) )
-    {
-        NSLog(@"Landscape");
-    }
-    else if ( toInterfaceOrientation == UIInterfaceOrientationMaskPortrait )
-    {
-        NSLog(@"Portrait");
-    }
-    else
-    {
-        NSLog(@"No change");
-    }
+//    if ( UIInterfaceOrientationIsLandscape(toInterfaceOrientation) )
+//    {
+//        NSLog(@"Landscape");
+//    }
+//    else if ( toInterfaceOrientation == UIInterfaceOrientationMaskPortrait )
+//    {
+//        NSLog(@"Portrait");
+//    }
+//    else
+//    {
+//        NSLog(@"No change");
+//    }
     
     return YES;
     
