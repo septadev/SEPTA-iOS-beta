@@ -39,7 +39,7 @@ Note: the Perl script (create_database.pl) uses the following libraries:
 
 If you don't have them (or are not sure if you do), type the following:
 
-  perl -eshell -MCPAN   
+    perl -eshell -MCPAN   
 
 (This might need to be run as sudo)
 
