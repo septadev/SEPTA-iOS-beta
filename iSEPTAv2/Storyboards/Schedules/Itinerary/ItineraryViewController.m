@@ -1446,7 +1446,7 @@
     
 //    NSLog(@"IVC:fCT - %@", _servicePredicate);
     
-    
+    [self getServiceIDFor:_currentFilter];  // Updates _servicePredicate
     NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"%@  AND (directionID == %d) AND (startTime > %d)", _servicePredicate, _currentDisplayDirection, now] ];
 
     

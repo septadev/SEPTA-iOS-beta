@@ -310,11 +310,12 @@ my @sorted = sort { $a->{stop_sequence} <=> $b->{stop_sequence} } @array;
 
 my $text;
 
+
 if ( $optFirstLength ne "" )
 {
 #    print "\n\n";
-#    print "TRIP_ID \tARRIVAL \t DEPART \tSEQ\tDAY\tDIR\tROUTE\tLOCATION (stop_id)\r\n";
-#    print "------- \t------- \t--------\t---\t---\t---\t-----\t------------------\r\n";
+#    print "  TRIP_ID  \t ARRIVAL \t DEPART \tSEQ\tDAY\tDIR\tROUTE\tLOCATION (stop_id)\r\n";
+#    print "-----------\t---------\t--------\t---\t---\t---\t-----\t------------------\r\n";
 
     my $string = $sorted[0];
 
@@ -351,6 +352,8 @@ my @headerTitles = ("TRIP_ID", "ARRIVAL ", "DEPART  ", "SEQ", "DAY", "DIR", "ROU
 
 foreach my $string (@sorted)
 {
+
+    
     if ( ($printCount++ % ($screenHeight-2) ) == 0 )  # Minus 2 because the header is 2 lines tall
     {
         print "\n\n";
@@ -363,6 +366,16 @@ foreach my $string (@sorted)
         # print out the header names
         foreach my $header (@headerTitles)
         {
+            
+            if ( $header eq "TRIP_ID" )
+            {
+                $padding = 7;
+            }
+            else
+            {
+                $padding = 3;
+            }
+            
             $format = "%-" . (length($header) + $padding) . "s";
             $text = sprintf($format, $header);
             $headerString .= $text;
@@ -374,6 +387,16 @@ foreach my $string (@sorted)
         # print out the header divider (the dashes)
         foreach my $header (@headerTitles)
         {
+            
+            if ( $header eq "TRIP_ID" )
+            {
+                $padding = 7;
+            }
+            else
+            {
+                $padding = 3;
+            }
+            
             $format = "%-" . (length($header) + $padding) . "s";
             $text = sprintf( $format, "-" x length($header) );
             $headerString .= $text;
@@ -395,6 +418,16 @@ foreach my $string (@sorted)
     my $count = 0;
     foreach my $key (@keyValues)
     {
+        
+        if ( $key eq "trip_id" )
+        {
+            $padding = 7;
+        }
+        else
+        {
+            $padding = 3;
+        }
+        
         $format = "%-" . (length($headerTitles[$count++]) + $padding) . "s";
         $text .= sprintf( $format, $string->{$key} );
     }
