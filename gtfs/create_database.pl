@@ -197,17 +197,18 @@ sub populateGTFSTables
     
     #Field names should (better!) match up with that in the GTFS data files or the script will just crash
     #Note: there is one for each database because the header files between the two are different for the same file name
+
     my %createQuery = (
     'SEPTAbus.sqlite' =>    [
     "CREATE TABLE REPLACEME(route_id INT, route_short_name TEXT, route_long_name TEXT, route_type INT)",
     "CREATE TABLE REPLACEME(route_id INT, service_id INT, trip_id INT PRIMARY KEY, direction_id INT, block_id TEXT)",
-    "CREATE TABLE REPLACEME(stop_id INT PRIMARY KEY, stop_name TEXT, stop_lat TEXT, stop_lon TEXT, wheelchair_boarding INT)",
+    "CREATE TABLE REPLACEME(stop_id INT PRIMARY KEY , stop_name TEXT, stop_lat TEXT, stop_lon TEXT, wheelchair_boarding INT)",
     "CREATE TABLE REPLACEME(trip_id INT, arrival_time INT, stop_id INT, stop_sequence INT)",
     ],
     'SEPTArail.sqlite' =>   [
     "CREATE TABLE REPLACEME(route_id TEXT, route_short_name TEXT, route_long_name TEXT, route_type INT)",
     "CREATE TABLE REPLACEME(route_id TEXT, service_id INTEGER, trip_id TEXT, direction_id INT, block_id TEXT)",
-    "CREATE TABLE REPLACEME(stop_id INT PRIMARY KEY, stop_name TEXT, stop_lat TEXT, stop_lon TEXT, wheelchair_boarding INT)",
+    "CREATE TABLE REPLACEME(stop_id INT PRIMARY KEY , stop_name TEXT, stop_lat TEXT, stop_lon TEXT, wheelchair_boarding INT)",
     "CREATE TABLE REPLACEME(trip_id TEXT, arrival_time INT, stop_id INT, stop_sequence INT)",
 #    "CREATE TABLE REPLACEME(route_id INTEGER, route_short_name TEXT, route_long_name TEXT, route_type INTEGER)",
 #    "CREATE TABLE REPLACEME(route_id INTEGER, service_id INTEGER, trip_id INTEGER, trip_short_name INTEGER, direction_id INTEGER, block_id TEXT)",

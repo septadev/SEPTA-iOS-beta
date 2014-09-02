@@ -90,6 +90,7 @@
     [_replacement setObject:@"Highland (CHW)"        forKey:@"Highland"];
     [_replacement setObject:@"Elm Street (NOR)"      forKey:@"Norristown"];
     [_replacement setObject:@"Main Street (NOR)"     forKey:@"Main Street"];
+
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -919,10 +920,20 @@
         NSString *stop_name = [results stringForColumn:@"stop_name"];
         NSInteger stop_id  = [results intForColumn:@"stop_id"];
         
-        if ( [stop_name isEqualToString:@"Main Street"] || [stop_name isEqualToString:@"Norristown"] )
+//        if ( [stop_name isEqualToString:@"Main Street"] || [stop_name isEqualToString:@"Norristown"] )
+//        {
+////            NSLog(@"Break");
+//        }
+
+        if ( [stop_name isEqualToString:@"Market East"] )
         {
-//            NSLog(@"Break");
+            stop_id = 90006;
         }
+
+//        if ( [stop_name isEqualToString:@"Jefferson Station"] )
+//        {
+//            NSLog(@"Break");
+//        }
         
         NSString *vanity_stop_name = [self fixMismatchedStopName:stop_name];
         
@@ -971,7 +982,7 @@
     // that do not match up with the stop name of an internal SEPTA database.  As such, this method
     // looks for one of those stop names and replaces it with one that matches the internal name.
     
-    // P.S. This is horrible code, if anyone asks, I'll deny ever writing in.
+    // P.S. This is horrible code, if anyone asks, I'll deny ever writing it.
     //   Ran php jarowinkler | egrep -v 100% to find the gasps between the GTFS and internal naming.
     
     NSString *temp = [_replacement objectForKey:stopName];

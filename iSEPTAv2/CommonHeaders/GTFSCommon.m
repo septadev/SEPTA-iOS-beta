@@ -283,10 +283,36 @@
 //                                                        toDate:today options:0];
  
     
+    
+    // The curse of the holiday
+    //   Need to determine the current day of the week
+    //   Need to determine what the offset is: Now, Weekday, Sat, Sun
+    
+    // If Now Tab, nothing changes
+    // If today is a Mon-Fri and Weekday Tab, check if today is a holiday
+    // If today is a Mon-Fri and Sat Tab, get the date for Sat and check if that's a holiday
+    // If today is a Mon-Fri and Sun Tab, get the date for Sun and check if that's a holiday
+    
+    // If today is a Sat and Weekday Tab, get date for Mon and check if that's a holiday
+    // If today is a Sat and Sat Tab, check if today is a holiday
+    // If today is a Sat and Sun Tab, add a day to the add and check if that's a holiday
+    
+    // If today is a Sun and Weekday Tab, get tomorrow's date and check if that's a holiday
+    // If today is a Sun and Sat Tab, get the date for the next Sat and check if that's a holiday
+    // If today is a Sun and Sun Tab, check if today is a holiday
+
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"YYYYMMdd"];  // Format is YYYYMMDD, e.g. 20131029
+
+//    if ( offset == kGTFSCalendarOffsetToday )
+//    {
+//        
+//    }
+    
     NSString *now = [dateFormatter stringFromDate: [NSDate date]];
     //    now = @"20131128";
+    
+    // Now needs to factor in the offset.
     
     NSLog(@"filePath: %@", [GTFSCommon filePath]);
     FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
@@ -301,22 +327,22 @@
     
     if ( routeType == kGTFSRouteTypeRail )
         queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_rail"];
-        else
-            queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
+    else
+        queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
             
-            FMResultSet *results = [database executeQuery: queryStr];
-            if ( [database hadError] )  // Check for errors
-            {
-                
-                int errorCode = [database lastErrorCode];
-                NSString *errorMsg = [database lastErrorMessage];
-                
-                NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
-                NSLog(@"IVC - query str: %@", queryStr);
-                
-                return 0;  // If an error occurred, there's nothing else to do but exit
-                
-            } // if ( [database hadError] )
+    FMResultSet *results = [database executeQuery: queryStr];
+    if ( [database hadError] )  // Check for errors
+    {
+            
+        int errorCode = [database lastErrorCode];
+        NSString *errorMsg = [database lastErrorMessage];
+            
+        NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
+        NSLog(@"IVC - query str: %@", queryStr);
+            
+        return 0;  // If an error occurred, there's nothing else to do but exit
+            
+    } // if ( [database hadError] )
     
     
     NSInteger service_id = 0;
