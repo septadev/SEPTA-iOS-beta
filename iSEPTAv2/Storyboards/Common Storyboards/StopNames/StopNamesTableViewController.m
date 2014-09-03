@@ -1121,6 +1121,13 @@
         {
             TripData *trip = [_tableData objectForIndexPath:indexPath];
             [sObj setStop_name    : [trip start_stop_name] ];
+            
+            // Change the stop_id for station 91006 to 90006.
+            if ( [[trip start_stop_id] intValue] == 91006 )
+            {
+                [trip setStart_stop_id:[NSNumber numberWithInt:90006] ];
+            }
+            
             [sObj setStop_id      : [trip start_stop_id  ] ];
             [sObj setDirection_id : [trip direction_id] ];
             [sObj setDestination  : [_tableData titleForSection: indexPath.section] ];
@@ -1196,8 +1203,17 @@
     
     TripData *trip = [[TripData alloc] init];
     [trip setStart_stop_name: routeObj.stop_name];
-    [trip setStart_stop_id  : [NSNumber numberWithInt: [routeObj.stop_id intValue] ] ];
+
     
+    // Change the stop_id for station 91006 to 90006.
+    if ( [routeObj.stop_id intValue] == 91006 )
+    {
+        [trip setStart_stop_id: [NSNumber numberWithInt:90006] ];
+    }
+    else
+    {
+        [trip setStart_stop_id  : [NSNumber numberWithInt: [routeObj.stop_id intValue] ] ];
+    }
     
     //NSArray *tempArr = [_tableData objectForSectionWithTitle:@"Data"];
 

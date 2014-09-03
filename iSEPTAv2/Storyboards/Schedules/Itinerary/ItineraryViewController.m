@@ -1090,6 +1090,11 @@
     if ( [itinerary.startStopID intValue] != 0 )
     {
         
+        if ( [itinerary.startStopID intValue] == 91006 )
+        {
+            itinerary.startStopID = [NSNumber numberWithInt:90006];
+        }
+        
         NSLog(@"IVC - Starting at %@", startTime);
         
         queryStr = [NSString stringWithFormat:@"SELECT route_id, block_id, stop_sequence, arrival_time, direction_id, service_id, stop_timesDB.trip_id trip_id FROM stop_timesDB JOIN tripsDB ON tripsDB.trip_id=stop_timesDB.trip_id WHERE tripsDB.trip_id IN (SELECT trip_id FROM tripsDB WHERE route_id=\"%@\" ) AND route_id=\"%@\" AND stop_id=%d ORDER BY arrival_time", itinerary.routeShortName, itinerary.routeShortName, [itinerary.startStopID intValue] ];
@@ -1162,7 +1167,14 @@
 
     if ( [itinerary.endStopID intValue] != 0 )
     {
+        
+        // Temporary fix to rename station 91006 to 90006 for querying.
+        if ( [itinerary.endStopID intValue] == 91006 )
+        {
+            itinerary.endStopID = [NSNumber numberWithInt:90006];
+        }
 
+        
         if ( [self.travelMode isEqualToString:@"Rail"] )
         {
             queryStr = [NSString stringWithFormat:@"SELECT route_id, block_id, stop_sequence, arrival_time, direction_id, service_id, stop_timesDB.trip_id trip_id FROM stop_timesDB JOIN tripsDB ON tripsDB.trip_id=stop_timesDB.trip_id WHERE tripsDB.trip_id IN (SELECT trip_id FROM tripsDB WHERE route_id=\"%@\" ) AND route_id=\"%@\" AND stop_id=%d ORDER BY arrival_time", itinerary.routeID, itinerary.routeID, [itinerary.endStopID intValue] ];
