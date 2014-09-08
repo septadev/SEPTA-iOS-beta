@@ -924,16 +924,6 @@
 //        {
 ////            NSLog(@"Break");
 //        }
-
-        if ( [stop_name isEqualToString:@"Market East"] )
-        {
-            stop_id = 90006;
-        }
-
-//        if ( [stop_name isEqualToString:@"Jefferson Station"] )
-//        {
-//            NSLog(@"Break");
-//        }
         
         NSString *vanity_stop_name = [self fixMismatchedStopName:stop_name];
         
@@ -957,6 +947,16 @@
         
         
     }
+    
+    // Add Market East
+    TripData *trip = [[TripData alloc] init];
+    [trip setStart_stop_name: @"Market East"];
+    [trip setStart_stop_id: [NSNumber numberWithInt:90006] ];
+    [trip setVanity_start_stop_name: @"Market East"];
+    [trip setStart_stop_sequence: [NSNumber numberWithInt:0] ];
+    [trip setWheelboard_boarding: [NSNumber numberWithBool:YES] ];
+    
+    [_tableData addObject:trip];
     
 
     NSMutableArray *myArray = (NSMutableArray*)[_tableData objectForSectionWithTitle:@"Data"];
@@ -1123,10 +1123,10 @@
             [sObj setStop_name    : [trip start_stop_name] ];
             
             // Change the stop_id for station 91006 to 90006.
-            if ( [[trip start_stop_id] intValue] == 91006 )
-            {
-                [trip setStart_stop_id:[NSNumber numberWithInt:90006] ];
-            }
+//            if ( [[trip start_stop_id] intValue] == 91006 )
+//            {
+//                [trip setStart_stop_id:[NSNumber numberWithInt:90006] ];
+//            }
             
             [sObj setStop_id      : [trip start_stop_id  ] ];
             [sObj setDirection_id : [trip direction_id] ];
@@ -1206,14 +1206,14 @@
 
     
     // Change the stop_id for station 91006 to 90006.
-    if ( [routeObj.stop_id intValue] == 91006 )
-    {
-        [trip setStart_stop_id: [NSNumber numberWithInt:90006] ];
-    }
-    else
-    {
+//    if ( [routeObj.stop_id intValue] == 91006 )
+//    {
+//        [trip setStart_stop_id: [NSNumber numberWithInt:90006] ];
+//    }
+//    else
+//    {
         [trip setStart_stop_id  : [NSNumber numberWithInt: [routeObj.stop_id intValue] ] ];
-    }
+//    }
     
     //NSArray *tempArr = [_tableData objectForSectionWithTitle:@"Data"];
 

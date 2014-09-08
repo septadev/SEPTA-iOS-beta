@@ -22,6 +22,7 @@
 #import "CommonWebViewController.h"
 #import "AutomaticUpdatesViewController.h"
 
+#import "GetDBVersionAPI.h"
 
 
 // --==  PODs  ==--
@@ -43,5 +44,6 @@ typedef NS_ENUM(NSInteger, SettingsCellOrder)  // According to the GTFS guidelin
 @property (weak, nonatomic) IBOutlet UISwitch *swt24Hour;
 @property (weak, nonatomic) IBOutlet UILabel *lblVersionNumber;
 
+@property (weak, nonatomic) IBOutlet UILabel *lblDBVersionNumber;
 
 @end

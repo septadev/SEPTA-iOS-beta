@@ -1090,10 +1090,10 @@
     if ( [itinerary.startStopID intValue] != 0 )
     {
         
-        if ( [itinerary.startStopID intValue] == 91006 )
-        {
-            itinerary.startStopID = [NSNumber numberWithInt:90006];
-        }
+//        if ( [itinerary.startStopID intValue] == 91006 )
+//        {
+//            itinerary.startStopID = [NSNumber numberWithInt:90006];
+//        }
         
         NSLog(@"IVC - Starting at %@", startTime);
         
@@ -1169,10 +1169,10 @@
     {
         
         // Temporary fix to rename station 91006 to 90006 for querying.
-        if ( [itinerary.endStopID intValue] == 91006 )
-        {
-            itinerary.endStopID = [NSNumber numberWithInt:90006];
-        }
+//        if ( [itinerary.endStopID intValue] == 91006 )
+//        {
+//            itinerary.endStopID = [NSNumber numberWithInt:90006];
+//        }
 
         
         if ( [self.travelMode isEqualToString:@"Rail"] )
