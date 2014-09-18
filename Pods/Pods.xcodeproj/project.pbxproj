@@ -11,7 +11,6 @@
 		063F877411F743FD9323778E /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FAB7ED5BC674CE397A43635 /* mztools.c */; };
 		0672B26164DA4DBA8803EE8B /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 414B92D86D074912A4AFE530 /* crypt.h */; };
 		06853DF4BF8A4ABDAD6448E8 /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 196D306CFF6F44178DD48A73 /* MMDrawerBarButtonItem.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		0693988001EB4AF7967A88D5 /* MMDrawerController+Subclass.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FF7631F3182409E8B02B896 /* MMDrawerController+Subclass.h */; };
 		072BFF2ADD2242ACBF821C5F /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = C308E8602A9E4712B219D5EA /* XPathQuery.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
 		07B3F2E883174179A5CB7ECB /* AFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B5FEACA2D984CAABB68006E /* AFImageRequestOperation.h */; };
 		0987ED4293D94619817B0D75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9C46FBA8C734F82ABFF7DED /* Foundation.framework */; };
@@ -1160,7 +1159,6 @@
 			files = (
 				144A15132CC64E10AB6B34BD /* MMDrawerBarButtonItem.h in Headers */,
 				C02FDD52840841429C563F6B /* MMDrawerController+Subclass.h in Headers */,
-				0693988001EB4AF7967A88D5 /* MMDrawerController+Subclass.h in Headers */,
 				FC87A11A9DDF4E18B473918B /* MMDrawerController.h in Headers */,
 				24A4CCA315B3459EBD926B3E /* MMDrawerVisualState.h in Headers */,
 				FFA850AAF9AC45E4BAE26644 /* UIViewController+MMDrawerController.h in Headers */,
@@ -2128,6 +2126,7 @@
 				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -2537,6 +2536,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};

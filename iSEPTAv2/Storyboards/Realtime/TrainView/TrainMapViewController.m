@@ -741,7 +741,19 @@
         NSString *direction = tvObject.Direction;
         
         mapAnnotation *annotation  = [[mapAnnotation alloc] initWithCoordinate: newCoord];
-        NSString *annotationTitle  = [NSString stringWithFormat: @"Vehicle: %@ (updated: %@ min)", tvObject.VehicleID, tvObject.Offset];
+
+        NSString *annotationTitle;
+        if ( [tvObject.Offset intValue] == 1 )
+            annotationTitle  = [NSString stringWithFormat: @"Vehicle: %@ (position %@ min ago)", tvObject.VehicleID, tvObject.Offset];
+        else
+            annotationTitle  = [NSString stringWithFormat: @"Vehicle: %@ (position %@ mins ago)", tvObject.VehicleID, tvObject.Offset];
+        
+//        if ( [tvObject.Offset intValue] > 1 )
+//        {
+//            annotationTitle  = [NSString stringWithFormat: @"Vehicle: %@ (position as of: %@ min ago)", tvObject.VehicleID, tvObject.Offset];
+//        }
+//        else
+//            annotationTitle  = [NSString stringWithFormat: @"Vehicle: %@ (position as of: %@ mins ago)", tvObject.VehicleID, tvObject.Offset];
         
         [annotation setCurrentSubTitle: [NSString stringWithFormat: @"Destination: %@", tvObject.destination ] ];
         [annotation setCurrentTitle   : annotationTitle];

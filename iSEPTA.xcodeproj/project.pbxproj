@@ -5485,6 +5485,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv7,
+					armv7s,
+				);
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -5517,6 +5521,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = SEPTA;
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -5524,6 +5529,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv7,
+					armv7s,
+				);
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -5549,6 +5558,7 @@
 				PRODUCT_NAME = SEPTA;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -5581,7 +5591,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = SEPTA;
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A0358490-9F0D-483A-B690-80FE20CAE082";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5AD8061C-60F0-40CA-9911-46E43BF71F03";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/**";
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -5612,7 +5622,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = SEPTA;
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A0358490-9F0D-483A-B690-80FE20CAE082";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5AD8061C-60F0-40CA-9911-46E43BF71F03";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/**";
 				VALID_ARCHS = "armv7 armv7s arm64";
