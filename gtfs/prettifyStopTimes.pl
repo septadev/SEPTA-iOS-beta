@@ -225,7 +225,8 @@ $columns = {};
 
 returnColumnsWeCareAbout(\@headersWeCareAbout, \@headerArrayFromFile, $columns);  #columns is a hash reference containing the information we want
 
-
+my $maxTripLen = 0;
+my $maxStopLen = 0;
 
 while (<TIMES>)
 {
@@ -283,6 +284,16 @@ while (<TIMES>)
         my $hash_ref;
         $hash_ref = { trip_id => $trip, arrival_time => $arr, departure_time => $dep, stop_sequence => $seq, service_id => $service_id, direction_id => $dir_id, route_id => $route_id, stop_name => $stopNameId, zone_id => $zone_id };
         
+        if ( length($trip) > $maxTripLen )
+        {
+            $maxTripLen = length($trip);
+        }
+        
+        if ( length($stopNameId) > $maxStopLen )
+        {
+            $maxStopLen = length($stopNameId);
+        }
+        
         push(@array, $hash_ref);
         
 #        say Dumper($hash_ref);
@@ -310,40 +321,45 @@ my @sorted = sort { $a->{stop_sequence} <=> $b->{stop_sequence} } @array;
 
 my $text;
 
-if ( $optFirstLength ne "" )
-{
-#    print "\n\n";
-#    print "TRIP_ID \tARRIVAL \t DEPART \tSEQ\tDAY\tDIR\tROUTE\tLOCATION (stop_id)\r\n";
-#    print "------- \t------- \t--------\t---\t---\t---\t-----\t------------------\r\n";
+# I should probably re-enable this at some point.  The formatting logic is horrible (why do the same thing 3 times!) but meh, I'll
+#   change it 'sometime' in the future.  Read: probably never.
+#if ( $optFirstLength ne "" )
+#{
+##    print "\n\n";
+##    print "TRIP_ID \tARRIVAL \t DEPART \tSEQ\tDAY\tDIR\tROUTE\tLOCATION (stop_id)\r\n";
+##    print "------- \t------- \t--------\t---\t---\t---\t-----\t------------------\r\n";
+#
+#    my $string = $sorted[0];
+#
+#    $text = sprintf("%-10%s %-11s %-11s, %-5s %-5s %-5s %-7s %-40s", $string->{trip_id}, $string->{arrival_time}, $string->{departure_time}, $string->{stop_sequence}, $string->{service_id}, $string->{direction_id}, $string->{route_id}, $string->{stop_name} );
+#    print "$text";
+#    
+##    print $string->{trip_id} . " \t" . $string->{arrival_time} . " \t" . $string->{departure_time} . " \t" . $string->{stop_sequence} . " \t" . $string->{service_id} . " \t" . $string->{direction_id} . " \t" . $string->{route_id} . " \t" . $string->{stop_name};
+#
+##    print "\r\n\r\n";
+#    exit;
+#    
+#}
+#elsif ( $optLastLength ne "" )
+#{
+##    print "\n\n";
+##    print "TRIP_ID \tARRIVAL \t DEPART \tSEQ\tDAY\tDIR\tROUTE\tLOCATION (stop_id)\r\n";
+##    print "------- \t------- \t--------\t---\t---\t---\t-----\t------------------\r\n";
+#    
+#    my $string = $sorted[-1];
+#    
+##    print $string->{trip_id} . " \t" . $string->{arrival_time} . " \t" . $string->{departure_time} . " \t" . $string->{stop_sequence} . " \t" . $string->{service_id} . " \t" . $string->{direction_id} . " \t" . $string->{route_id} . " \t" . $string->{stop_name};
+#    
+#    $text = sprintf("%-10%s %-11s %-11s, %-5s %-5s %-5s %-7s %-40s", $string->{trip_id}, $string->{arrival_time}, $string->{departure_time}, $string->{stop_sequence}, $string->{service_id}, $string->{direction_id}, $string->{route_id}, $string->{stop_name} );
+#    print "$text";
+#
+##    print "\r\n\r\n";
+#    exit;
+#    
+#}
 
-    my $string = $sorted[0];
-
-    $text = sprintf("%-10%s %-11s %-11s, %-5s %-5s %-5s %-7s %-40s", $string->{trip_id}, $string->{arrival_time}, $string->{departure_time}, $string->{stop_sequence}, $string->{service_id}, $string->{direction_id}, $string->{route_id}, $string->{stop_name} );
-    print "$text";
-    
-#    print $string->{trip_id} . " \t" . $string->{arrival_time} . " \t" . $string->{departure_time} . " \t" . $string->{stop_sequence} . " \t" . $string->{service_id} . " \t" . $string->{direction_id} . " \t" . $string->{route_id} . " \t" . $string->{stop_name};
-
-#    print "\r\n\r\n";
-    exit;
-    
-}
-elsif ( $optLastLength ne "" )
-{
-#    print "\n\n";
-#    print "TRIP_ID \tARRIVAL \t DEPART \tSEQ\tDAY\tDIR\tROUTE\tLOCATION (stop_id)\r\n";
-#    print "------- \t------- \t--------\t---\t---\t---\t-----\t------------------\r\n";
-    
-    my $string = $sorted[-1];
-    
-#    print $string->{trip_id} . " \t" . $string->{arrival_time} . " \t" . $string->{departure_time} . " \t" . $string->{stop_sequence} . " \t" . $string->{service_id} . " \t" . $string->{direction_id} . " \t" . $string->{route_id} . " \t" . $string->{stop_name};
-    
-    $text = sprintf("%-10%s %-11s %-11s, %-5s %-5s %-5s %-7s %-40s", $string->{trip_id}, $string->{arrival_time}, $string->{departure_time}, $string->{stop_sequence}, $string->{service_id}, $string->{direction_id}, $string->{route_id}, $string->{stop_name} );
-    print "$text";
-
-#    print "\r\n\r\n";
-    exit;
-    
-}
+my $tripLength = length($sorted[0]->{trip_id}) + 1;
+my $tripLength = $maxTripLen + 1;
 
 
 my $padding = 3;
@@ -363,7 +379,16 @@ foreach my $string (@sorted)
         # print out the header names
         foreach my $header (@headerTitles)
         {
-            $format = "%-" . (length($header) + $padding) . "s";
+            
+            if ( $header eq "TRIP_ID" )
+            {
+                $format = "%-" . ($tripLength + $padding) . "s";
+            }
+            else
+            {
+                $format = "%-" . (length($header) + $padding) . "s";
+            }
+
             $text = sprintf($format, $header);
             $headerString .= $text;
         }
@@ -372,12 +397,31 @@ foreach my $string (@sorted)
         $headerString = "";
         
         # print out the header divider (the dashes)
+#        my $allFormats;
         foreach my $header (@headerTitles)
         {
-            $format = "%-" . (length($header) + $padding) . "s";
-            $text = sprintf( $format, "-" x length($header) );
+            
+            if ( $header eq "TRIP_ID" )
+            {
+                $format = "%-" . ($tripLength + $padding) . "s";
+                $text = sprintf( $format, "-" x $maxTripLen );
+            }
+            elsif ( $header eq "LOCATION (stop_id)" )
+            {
+                $format = "%-" . ($maxStopLen + $padding) . "s";
+                $text = sprintf( $format, "-" x $maxStopLen );
+            }
+            else
+            {
+                $format = "%-" . (length($header) + $padding) . "s";
+                $text = sprintf( $format, "-" x length($header) );
+            }
+            
+#            $allFormats .= $format . ", ";
             $headerString .= $text;
         }
+        
+#        print $allFormats . "\n";
         
         print $headerString . "\n";
         $headerString = "";
@@ -395,7 +439,17 @@ foreach my $string (@sorted)
     my $count = 0;
     foreach my $key (@keyValues)
     {
-        $format = "%-" . (length($headerTitles[$count++]) + $padding) . "s";
+        
+        if ( $key eq "trip_id" )
+        {
+            $format = "%-" . ($tripLength + $padding) . "s";
+            $count++;
+        }
+        else
+        {
+            $format = "%-" . (length($headerTitles[$count++]) + $padding) . "s";
+        }
+        
         $text .= sprintf( $format, $string->{$key} );
     }
     

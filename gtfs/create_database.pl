@@ -460,6 +460,11 @@ sub populateGTFSTables
 #            $tripUniqueValue = "0" x 3;
 #        }
         
+        if ( $tables[$LCV] eq "stop_times" )
+        {
+            print "Break";
+        }
+        
         
         # Open FILE specified in $filename and immediately store the first line.  This will contain the column data for that file
         open FILE, $filename or die "GTFS - Unable to open $tables[$LCV], err: $!\n";
@@ -469,7 +474,14 @@ sub populateGTFSTables
         
         # The fields we're interested in just so happen to be in the createQuery hash, grab 'em.
         $createQuery{$dbname}[$LCV] =~ /\((.*)\)/;
-        my @unfilteredFields = split(/,/, $1);  # $1 = "route_type INTEGER, route_id INTEGER, etc."
+        my $matches = $1;
+        
+        #Uncomment the conditional statement below to swap departure_times with arrival_times
+        #if ( $tables[$LCV] eq "stop_times" )
+        #{
+        #    $matches =~ s/arrival_time/departure_time/;
+        #}
+        my @unfilteredFields = split(/,/, $matches);  # $1 = "route_type INTEGER, route_id INTEGER, etc."
         
         
         # Hacky way of fitting wheelchair_boarding information into the GTFS data
