@@ -386,7 +386,7 @@
     
     
     // Get current service ID
-    int currentServiceID;
+//    int currentServiceID;
     
 //    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 //    NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];

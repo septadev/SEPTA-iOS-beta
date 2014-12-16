@@ -1,4 +1,4 @@
- te#!/usr/bin/perl
+#!/usr/bin/perl
 
 
 # --==  USE Section  ==--

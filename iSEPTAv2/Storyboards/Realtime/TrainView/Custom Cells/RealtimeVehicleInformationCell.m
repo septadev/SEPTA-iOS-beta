@@ -60,6 +60,7 @@
         [[self lblEndName  ] setText: [object endName  ] ];
         
         late = [[object late] intValue];
+        [[self lblLate] setHidden:NO];
         
         //    [[self lblLate] setText: [NSString stringWithFormat:@"%d", [[object late] intValue] ] ];
         [[self lblTrainNo] setTextColor: lblColor];
@@ -71,6 +72,7 @@
         [[self lblTrainNo] setText: [object VehicleID] ];
         
         late = [[object Offset] intValue];
+        [[self lblLate] setHidden:YES];
         
         //        if ( [[object Offset] intValue] > 0 )
         //            [[self lblLate] setTextColor:[UIColor orangeColor] ];

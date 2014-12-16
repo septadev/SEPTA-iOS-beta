@@ -1216,6 +1216,14 @@
     
 }
 
+- (IBAction)btnTest:(id)sender
+{
+    
+    self.lblTest.hidden = NO;
+    
+}
+
+
 - (IBAction)btnTrainViewPressed:(id)sender
 {
 

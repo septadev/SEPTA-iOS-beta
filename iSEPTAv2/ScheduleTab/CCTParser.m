@@ -34,23 +34,23 @@
     
     
     
-    NSURL *webURL = [NSURL URLWithString:@"http://www.septa.org/service/cct/"];
-    NSData *webData  = [NSData dataWithContentsOfURL: webURL];
-    
-    TFHpple *htmlParser = [TFHpple hppleWithHTMLData: webData];
-    
-    NSString *XPathQueryString = @"//div[@id='septa_main_content']";
-    NSArray *nodes = [htmlParser searchWithXPathQuery: XPathQueryString];
-    
-//    for (TFHppleElement *el in nodes)
-//    {
-//        NSLog(@"el: %@", el);
-//    }
-    
-    TFHppleElement *el = (TFHppleElement*)[nodes objectAtIndex:0];
-    html = el.raw;
-    
-    NSLog(@"CP: %@", html);
+//    NSURL *webURL = [NSURL URLWithString:@"http://www.septa.org/service/cct/"];
+//    NSData *webData  = [NSData dataWithContentsOfURL: webURL];
+//    
+//    TFHpple *htmlParser = [TFHpple hppleWithHTMLData: webData];
+//    
+//    NSString *XPathQueryString = @"//div[@id='septa_main_content']";
+//    NSArray *nodes = [htmlParser searchWithXPathQuery: XPathQueryString];
+//    
+////    for (TFHppleElement *el in nodes)
+////    {
+////        NSLog(@"el: %@", el);
+////    }
+//    
+//    TFHppleElement *el = (TFHppleElement*)[nodes objectAtIndex:0];
+//    html = el.raw;
+//    
+//    NSLog(@"CP: %@", html);
     
 //    NSLog(@"CP: %@", [nodes objectAtIndex:0]);
 

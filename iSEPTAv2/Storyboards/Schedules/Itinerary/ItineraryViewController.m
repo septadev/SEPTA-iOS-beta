@@ -678,6 +678,11 @@
     }
     
     NSString *queryStr = [NSString stringWithFormat:@"SELECT * FROM bus_stop_directions WHERE Route='%@' ORDER BY dircode", itinerary.routeShortName];
+    
+#if PRINT_SQL_CALLS
+    NSLog(@"IVC - loadHeaderNamesWith: %@",queryStr);
+#endif
+    
     FMResultSet *results = [database executeQuery: queryStr];
     if ( [database hadError] )  // Check for errors
     {
@@ -1106,7 +1111,11 @@
         else
             queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
         
+        
+#if PRINT_SQL_CALLS
         NSLog(@"IVC - queryStr: %@", queryStr);
+#endif
+        
         results = [database executeQuery: queryStr];
         if ( [database hadError] )  // Check for errors
         {
@@ -1195,8 +1204,10 @@
         }
         
         
-        
+#if PRINT_SQL_CALLS
         NSLog(@"IVC - queryStr: %@", queryStr);
+#endif
+        
         results = [database executeQuery: queryStr];
         if ( [database hadError] )  // Check for errors
         {
@@ -3001,6 +3012,9 @@
     // Look up the reverse stop ID for the active stop
     NSString *queryStr = [NSString stringWithFormat:@"SELECT reverseStopSearch.stop_id,reverse_stop_id,distance,stop_name FROM reverseStopSearch JOIN stops_bus ON reverseStopSearch.reverse_stop_id=stops_bus.stop_id WHERE reverseStopSearch.stop_id=%d AND route_short_name=\"%@\"", stopID, itinerary.routeShortName];
 
+#if PRINT_SQL_CALLS
+    NSLog(@"ITV - reverseStopLookUpForStopID: %@", queryStr);
+#endif
     
     FMResultSet *results = [database executeQuery: queryStr];
     if ( [database hadError] )  // Basic DB error checking
@@ -3080,6 +3094,10 @@
     
     // Look up the reverse stop ID for the active stop
     NSString *queryStr = [NSString stringWithFormat:@"SELECT reverseStopSearch.stop_id,reverse_stop_id,distance,stop_name FROM reverseStopSearch JOIN stops_bus ON reverseStopSearch.reverse_stop_id=stops_bus.stop_id WHERE reverseStopSearch.stop_id=%d AND route_short_name=\"%@\"", numID, itinerary.routeShortName];
+    
+#if PRINT_SQL_CALLS
+    NSLog(@"IVC - reverseStopLookUpForStart: %@", queryStr);
+#endif
     
     FMResultSet *results = [database executeQuery: queryStr];
     if ( [database hadError] )  // Basic DB error checking
@@ -3363,6 +3381,11 @@
     else
         queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
     
+    
+#if PRINT_SQL_CALLS
+    NSLog(@"IVC - getServiceIDFor: %@", queryStr);
+#endif
+    
     FMResultSet *results = [database executeQuery: queryStr];
     if ( [database hadError] )  // Check for errors
     {
@@ -3443,6 +3466,10 @@
         queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_rail"];
     else
         queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
+
+#if PRINT_SQL_CALLS
+    NSLog(@"IVC - isHoliday: %@", queryStr);
+#endif
     
     FMResultSet *results = [database executeQuery: queryStr];
     if ( [database hadError] )  // Check for errors
@@ -3811,6 +3838,10 @@
     }
     
     NSString *queryStr = [NSString stringWithFormat:@"SELECT Route, Direction, DirectionDescription FROM bus_stop_directions WHERE Route=%@ ORDER BY dircode", itinerary.routeShortName];
+    
+#if PRINT_SQL_CALLS
+    NSLog(@"IVC - loadToFromDirections: %@", queryStr);
+#endif
     
     FMResultSet *results = [database executeQuery: queryStr];
     if ( [database hadError] )  // Check for errors

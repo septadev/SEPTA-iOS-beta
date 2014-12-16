@@ -74,6 +74,9 @@ typedef NS_ENUM(NSInteger, SecondMenuAlertImageCycle)
 @property (weak, nonatomic) IBOutlet UILabel *lblTrainView;
 @property (weak, nonatomic) IBOutlet UILabel *lblTransitView;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnTest;
+@property (weak, nonatomic) IBOutlet UITextField *lblTest;
+
 
 
 // Botton row buttons

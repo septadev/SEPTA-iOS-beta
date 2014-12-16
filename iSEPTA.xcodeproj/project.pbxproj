@@ -4611,7 +4611,7 @@
 			name = iSEPTATests;
 			productName = iSEPTAv2Tests;
 			productReference = 568FA4A61535C0E0009345F5 /* iSEPTATests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -5496,7 +5496,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Southeastern Pennsylvania Transportation Authority (SEPTA) (L636S9JLLY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Southeastern Pennsylvania Transportation Authority (SEPTA) (L636S9JLLY)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -5515,7 +5516,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = SDK/lib/Release$EFFECTIVE_PLATFORM_NAME;
 				"HEADER_SEARCH_PATHS[arch=*]" = SDK/lib/Release$EFFECTIVE_PLATFORM_NAME;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = SDK/lib/Release$EFFECTIVE_PLATFORM_NAME;
 				"LIBRARY_SEARCH_PATHS[arch=*]" = SDK/lib/Release$EFFECTIVE_PLATFORM_NAME;
 				ONLY_ACTIVE_ARCH = YES;
@@ -5540,7 +5541,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Southeastern Pennsylvania Transportation Authority (SEPTA) (L636S9JLLY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Southeastern Pennsylvania Transportation Authority (SEPTA) (L636S9JLLY)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -5551,7 +5553,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = SDK/lib/Release$EFFECTIVE_PLATFORM_NAME;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = SDK/lib/Release$EFFECTIVE_PLATFORM_NAME;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
@@ -5580,21 +5582,22 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
-					"FUNCTION_NAMES_ON=1",
+					"FUNCTION_NAMES_ON=0",
+					"PRINT_SQL_CALLS=1",
 				);
 				HEADER_SEARCH_PATHS = "";
 				"HEADER_SEARCH_PATHS[arch=*]" = "";
 				INFOPLIST_FILE = "iSEPTAv2/iSEPTA-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = SEPTA;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5AD8061C-60F0-40CA-9911-46E43BF71F03";
+				PROVISIONING_PROFILE = "2b0b1288-41c6-437a-b6ff-0da69ab6e5fe";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2b0b1288-41c6-437a-b6ff-0da69ab6e5fe";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/**";
-				VALID_ARCHS = "armv7 armv7s arm64";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -5616,16 +5619,16 @@
 				GCC_PREFIX_HEADER = "iSEPTAv2/iSEPTA-Prefix.pch";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "iSEPTAv2/iSEPTA-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = SEPTA;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5AD8061C-60F0-40CA-9911-46E43BF71F03";
+				PROVISIONING_PROFILE = "2b0b1288-41c6-437a-b6ff-0da69ab6e5fe";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2b0b1288-41c6-437a-b6ff-0da69ab6e5fe";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/**";
-				VALID_ARCHS = "armv7 armv7s arm64";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

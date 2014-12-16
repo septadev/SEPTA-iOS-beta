@@ -10,7 +10,7 @@ pod 'SVPullToRefresh', '~> 0.4'
 pod 'FXForms', '~> 1.1.6'
 pod 'Reachability', '~> 3.1.1'
 pod 'FMDB', '~> 2.3'
-pod 'hpple', '~> 0.2.0'
+#pod 'hpple', '~> 0.2.0'
 
 pod 'REMenu', '~> 1.7.1'
 ##pod 'TSMessages', '~> 0.9.4'

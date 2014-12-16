@@ -378,7 +378,32 @@ sub populateGTFSTables
             
             if ( $exception_type == 1 )
             {
+                
+                # Special service_ids (for holiday, special trips, etc.) do not need to be listed in calendar.txt
+                if ( !$serviceConverter{ $service_id } )
+                {
+                    # This service_id never appears in calendar.txt
+                    # Add an entire into $serviceConverter using the next highest value
+                    
+                    # The issue here is rail, with it's M1,M2,M3 and M4 service ids.  Now adding 1 no longer works.
+                    # 'Why?' you ask.  @keys = ('M1','M4','M3','M2') -> sort(@keys) = 'M1','M2','M3','M4'
+                    # Now, sort(@keys)[-1] is 'M4', 'M4'+1 is 1.  Now, sort(@keys) = 1,'M1','M2','M3','M4' and sort(@keys)[-1] is still 'M4'
+                    # Problem?  I think so!
+                    print "Could not find service_id $service_id in calendar.txt.  Please add it before re-running the script.\n";
+                    exit(99);
+                    
+#                    my @keys = keys %serviceConverter;
+#                    
+#                    my $highest;
+#                    
+#                    $highest = 1 if ( $#keys <= 0 );
+#                    $highest = (sort @keys)[-1] + 1 if ( $#keys > 0);
+#                    
+#                    $serviceConverter{ $service_id } = $highest;
+                }
+
                 $holidays{$date} = $serviceConverter{ $service_id };
+                
                 print "INSERT INTO holiday_$suffix VALUES ($holidays{$date}, $date)\n";
                 $dbh->do("INSERT INTO holiday_$suffix VALUES ($holidays{$date}, $date)");
             }

@@ -369,20 +369,20 @@
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     
-    for (CLLocation *location in locations)
-    {
-//        NSLog(@"Location (iOS6):%@", location);
+//    for (CLLocation *location in locations)
+//    {
+////        NSLog(@"Location (iOS6):%@", location);
+////        
+////        [_tableData replaceObjectAtIndex:0 withObject: [NSString stringWithFormat:@"(lat,lon) = (%10.7f, %10.7f)", location.coordinate.latitude, location.coordinate.longitude] ];
+//////        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+////
+////        CLLocation *loc = [[CLLocation alloc] initWithLatitude:_loc.latitude longitude:_loc.longitude];
+////        [_tableData replaceObjectAtIndex:2 withObject: [NSString stringWithFormat:@"Distance: %6.3fm", [location distanceFromLocation:loc] ] ];
+////
+////        [self.tableView reloadData];
 //        
-//        [_tableData replaceObjectAtIndex:0 withObject: [NSString stringWithFormat:@"(lat,lon) = (%10.7f, %10.7f)", location.coordinate.latitude, location.coordinate.longitude] ];
-////        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
-//
-//        CLLocation *loc = [[CLLocation alloc] initWithLatitude:_loc.latitude longitude:_loc.longitude];
-//        [_tableData replaceObjectAtIndex:2 withObject: [NSString stringWithFormat:@"Distance: %6.3fm", [location distanceFromLocation:loc] ] ];
-//
-//        [self.tableView reloadData];
-        
-        
-    }
+//        
+//    }
     
 //    [manager stopUpdatingLocation];
     
