@@ -431,7 +431,7 @@
         
         ServiceHours *sHours;
         NSString *route_id  = [results stringForColumn:@"route_id"];
-        
+        NSLog(@"TVVC - route_id: %@", route_id);
         
         if ( [sPtr.route_id isEqualToString:route_id] )
         {

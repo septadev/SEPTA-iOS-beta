@@ -6,7 +6,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iSEPTAv2/Storyboards/Realtime/NextToArrive/NextToArriveTableViewController.m"
@@ -22,7 +22,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iSEPTAv2/Storyboards/Realtime/NextToArrive/NextToArriveTableViewController.m"
@@ -32,6 +32,22 @@
             startingLineNumber = "1569"
             endingLineNumber = "1569"
             landmarkName = "-doesObject:existInSection:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iSEPTAv2/Storyboards/Schedules/Itinerary/ItineraryViewController.m"
+            timestampString = "439157622.981448"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1403"
+            endingLineNumber = "1403"
+            landmarkName = "-filterActiveTrains"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

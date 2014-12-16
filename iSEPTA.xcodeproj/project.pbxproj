@@ -4611,7 +4611,7 @@
 			name = iSEPTATests;
 			productName = iSEPTAv2Tests;
 			productReference = 568FA4A61535C0E0009345F5 /* iSEPTATests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
