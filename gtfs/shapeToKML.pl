@@ -623,12 +623,13 @@ sub loadShapes
         my $shape_id = @arr[ $columns->{shape_id} ];
         trim($shape_id);
 
-        if ( ( $count % 100 ) == 0 )
-        {
+        
+#        if ( ( $count % 100 ) == 0 )
+#        {
 #            print "\b" x length($output);
 #            $output = sprintf("Reading line... %7s out of %7s", $., $fileLength);
 #            print $output;
-        }
+#        }
         
         if ( grep(/$shape_id/, @shapes) )
         {
@@ -1018,6 +1019,10 @@ sub loadTrips
         trim($shape_id);
         trim($trip_id);
 
+        if ( $shape_id == 164007 )
+        {
+            print "Break\n";
+        }
         
         if ( !grep( /$shape_id/, @shapes) )
         {

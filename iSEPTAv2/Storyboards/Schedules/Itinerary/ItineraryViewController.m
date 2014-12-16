@@ -964,7 +964,9 @@
                 {
                     
                     [self filterCurrentTrains];  // Updates currentTrainsArr and reloaded self.tableTrips
-                    [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];  // Forced update of To/From Header
+                    
+                    if ( [self.tableTrips numberOfRowsInSection:0] != 0 )  // Forced update of To/From Header
+                        [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
                     
                     [self changeTitleBar];
 
@@ -1257,16 +1259,16 @@
                     // order, we need to determine if this is To/From some point.  What that point is differs
                     // for different travel types.
                     
-                    if ( _firstTime )
-                    {
-                        
-                        if ( [self.travelMode isEqualToString:@"Rail"] )  // Determine Rail To/From points
-                        {
-                            // I don't know what this is supposed to do anymore
-                        }
-                        
-                        _firstTime = 0;
-                    }
+//                    if ( _firstTime )
+//                    {
+//                        
+//                        if ( [self.travelMode isEqualToString:@"Rail"] )  // Determine Rail To/From points
+//                        {
+//                            // I don't know what this is supposed to do anymore
+//                        }
+//                        
+//                        _firstTime = 0;
+//                    }
                     _currentDisplayDirection = [trip.directionID intValue];
                     
                     
@@ -1416,7 +1418,8 @@
     if ( !([self getServiceIDFor:kItineraryFilterTypeNow] & _currentServiceID) )
     {
         activeTrainsArr = nil;
-        [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+        if ( [self.tableTrips numberOfRowsInSection:1] != 0)
+            [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
         return;
     }
     
@@ -1440,7 +1443,8 @@
     NSLog(@"activeTrains: %@", activeTrainsArr);
     
     // Now display that filtered data...
-    [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+    if ( [self.tableTrips numberOfRowsInSection:1] != 0)
+        [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
     
 }
 
@@ -2605,7 +2609,9 @@
         [self filterActiveTrains];  // Filters and reloads section
         
         // Reload the top section
-        [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+        if ( [self.tableTrips numberOfRowsInSection:0] != 0 )
+            [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+        
         [SVProgressHUD dismiss];
     }
     
@@ -2774,7 +2780,8 @@
                 [self.lblTabbedLabel setText: [NSString stringWithFormat:@"To %@", itinerary.endStopName] ];
             }
             
-            [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+            if ( [self.tableTrips numberOfRowsInSection:0] != 0 )
+                [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
             
             break;
         case kNextToArriveButtonTypeCancel:
@@ -2954,7 +2961,8 @@
     }
     
     // Reload just the first section, with it's one giant cell.
-    [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    if ( [self.tableTrips numberOfRowsInSection:0] != 0 )
+        [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
     
 }
 
