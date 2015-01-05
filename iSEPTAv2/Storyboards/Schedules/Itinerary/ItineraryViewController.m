@@ -1,4 +1,4 @@
-//
+    //
 //  ItineraryViewController.m
 //  iSEPTA
 //
@@ -1157,6 +1157,8 @@
                 [trip setDirectionID:[NSNumber numberWithInt:[results intForColumnIndex:4] ] ];
                 [trip setServiceID: [NSNumber numberWithInt:[results intForColumnIndex:5] ] ];
                 [trip setTripID: tripID];
+                
+//                NSLog(@"%@",trip);
                 
                 [tripDict setObject:trip forKey:tripID];
             }
@@ -2632,7 +2634,7 @@
     
     if ( itinerary.startStopName == NULL )
     {
-        NSLog(@"We have a fucking problem!");
+        NSLog(@"We have a friggin' problem!");
     }
     
     
@@ -3277,24 +3279,26 @@
             break;
     }
     
+    GTFSRouteType routeType = [_routeData.route_type intValue];
+
+    // error in Version 1.0.7
+//    routeType = kGTFSRouteTypeRail;
     
     NSInteger currentServiceID = 0;
-    NSArray *sIDs = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:cal];
+    NSArray *sIDs = [GTFSCommon getServiceIDFor:routeType withOffset:cal];
     
-    if ( [GTFSCommon isHoliday:kGTFSRouteTypeRail withOffset:cal] )
+    if ( [GTFSCommon isHoliday:routeType withOffset:cal] )
         _isHoliday = YES;
     else
         _isHoliday = NO;
     
-        
+// For testing...
 //    sIDs = [NSArray arrayWithObjects:[NSNumber numberWithInt:1], [NSNumber numberWithInt:4], nil];
-    
     for (NSNumber *sNum in sIDs)
     {
         currentServiceID |= 1 << ([sNum integerValue]-1);
     }
-    
-    
+
     
     // Friday only train
     NSInteger service_id = 0;

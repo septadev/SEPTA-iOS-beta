@@ -41,13 +41,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iSEPTAv2/Storyboards/Schedules/Itinerary/ItineraryViewController.m"
-            timestampString = "439157622.981448"
+            filePath = "iSEPTAv2/Storyboards/Realtime/TransitView/TransitViewViewController.m"
+            timestampString = "441064667.235855"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1403"
-            endingLineNumber = "1403"
-            landmarkName = "-filterActiveTrains"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
+            landmarkName = "-getServiceID"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iSEPTAv2/Storyboards/Realtime/TransitView/TransitViewViewController.m"
+            timestampString = "441064961.466655"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "390"
+            endingLineNumber = "390"
+            landmarkName = "-getBusRouteInfo"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

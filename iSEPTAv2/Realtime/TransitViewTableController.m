@@ -102,39 +102,12 @@
     VehicleDetailsCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
-    
     RouteInfo *route = [_tableData objectAtIndex:indexPath.row];
 
     [[cell lblRouteName] setText: route.route_short_name];
     [cell setRouteType: [route.route_type intValue] ];
     
-//    if ([route.route_short_name isEqualToString:@"35"] )
-//    {
-//        NSLog(@"Break ehre!");
-//    }
-    
     [cell setRouteInfo: route];
-    
-//    [[cell lblTitleServiceHours] setText:@""];
-    
-    
-//    if ( route.route_service_hours == nil )
-//    {
-////        [[cell lblTitleServiceHours] setText:@"No Remaining Service Today"];
-//        [cell setDirectionTitle:@"" andHours:@"" forDirectionID:0];
-//        
-////        [[cell lblTitleServiceHours] setText:@""];
-////        [[cell lblServiceHours] setText: @""];
-//    }
-//    else
-//    {
-////        [[cell lblServiceHours] setText: route.route_service_hours];
-////        [[cell lblTitleServiceHours] setText:@"Hours:"];
-//        [cell setDirectionTitle:@"Dir0" andHours:route.route_service_hours forDirectionID:0];
-//    }
-
-    
-    
     
     return cell;
 }
@@ -222,6 +195,7 @@
     currentServiceID = pow(2,(7-weekday));
     
     
+    // TODO: Make this holiday aware
     NSString *qStr = [NSString stringWithFormat:@"SELECT route_id, route_short_name, route_type, direction_id, Direction, min, max FROM routes_bus NATURAL JOIN serviceHours WHERE (service_id & %d) AND route_short_name NOT IN (\"MFL\", \"NHSL\", \"BSS\")", currentServiceID];
     NSLog(@"TVTC - queryStr: %@", qStr);
     FMResultSet *r = [database executeQuery: qStr];
@@ -275,12 +249,6 @@
         RouteInfo *routeInfo;
         if ( [quickLookup objectForKey: route_short_name] == nil )
         {
-            
-//            if ( [route_short_name isEqualToString:@"4"] )
-//            {
-//                NSLog(@"Break here also!");
-//            }
-            
             routeInfo = [[RouteInfo alloc] init];
             [quickLookup setObject:routeInfo forKey:route_short_name];
         }
@@ -296,147 +264,23 @@
         [routeInfo setRoute_type:[NSNumber numberWithInt:route_type] ];
         
         [routeInfo setCardinalDirection:direction withID:direction_id forHoursMin:minTime andMax:maxTime];
-   
-//        if ([routeInfo.route_short_name isEqualToString:@"4"] )
-//        {
-//            NSLog(@"Break here!");
-//        }
         
         if ( !foundInQuick )  // If it was found, we don't need to add the object into _tableData as it's already there
             [_tableData addObject:routeInfo];  // This object was just created, add it to _tableData
         foundInQuick = NO;
-        
-
         
     }  // while ( [results next] )
     
     quickLookup = nil;  // We don't need this anymore
     
     
-//    NSMutableDictionary *hoursDict = [[NSMutableDictionary alloc] init];
-//    NSString *queryStr = @"SELECT * FROM serviceHours WHERE route_short_name NOT IN (\"MFL\", \"NHSL\", \"BSS\") ORDER BY route_short_name";
-//    FMResultSet *results = [database executeQuery: queryStr];
-//    if ( [database hadError] )  // Check for errors
-//    {
-//        
-//        int errorCode = [database lastErrorCode];
-//        NSString *errorMsg = [database lastErrorMessage];
-//        
-//        NSLog(@"TVTC - query failure, code: %d, %@", errorCode, errorMsg);
-//        NSLog(@"TVTC - query str: %@", queryStr);
-//        
-//        return;  // If an error occurred, there's nothing else to do but exit
-//        
-//    }
-//    
-//    
-//    while ( [results next] )
-//    {
-//        
-//        int serviceID = [results intForColumn:@"service_id"];
-//        
-//        if ( serviceID & currentServiceID )
-//        {
-//            NSString *min = [results stringForColumn:@"min"];
-//            NSString *max = [results stringForColumn:@"max"];
-//            
-//            NSString *routeShortName = [results stringForColumn:@"route_short_name"];
-//            
-//            NSString *hours = [NSString stringWithFormat:@"%@ to %@", min, max];
-//            
-//            [hoursDict setObject:hours forKey:routeShortName];
-//        }
-//        
-//    }  // while ( [results next] )
-//    
-//    
-//    queryStr = @"SELECT * FROM routes_bus WHERE route_short_name NOT IN (\"MFL\", \"NHSL\", \"BSS\") ORDER BY route_short_name";
-//    results = [database executeQuery: queryStr];
-//    if ( [database hadError] )  // Check for errors
-//    {
-//        
-//        int errorCode = [database lastErrorCode];
-//        NSString *errorMsg = [database lastErrorMessage];
-//        
-//        NSLog(@"TVTC - query failure, code: %d, %@", errorCode, errorMsg);
-//        NSLog(@"TVTC - query str: %@", queryStr);
-//        
-//        return;  // If an error occurred, there's nothing else to do but exit
-//        
-//    }
-//    
-//    
-//    while ( [results next] )
-//    {
-//        
-//        NSString *short_name = [results stringForColumn:@"route_short_name"];
-//        NSString *long_name  = [results stringForColumn:@"route_long_name"];
-//        
-//        NSInteger id   = [results intForColumn:@"route_id"  ];
-//        NSInteger type = [results intForColumn:@"route_type"];
-//        
-//        RouteInfo *routeInfo = [[RouteInfo alloc] init];
-//        [routeInfo setRoute_id: [NSNumber numberWithInt:id] ];
-//        [routeInfo setRoute_type: [NSNumber numberWithInt:type] ];
-//        
-//        [routeInfo setRoute_long_name : long_name ];
-//        [routeInfo setRoute_short_name: short_name];
-//        
-////        [routeInfo setRoute_service_hours: [hoursDict objectForKey: short_name] ];
-//        
-////        if ( [short_name isEqualToString:@"LUCYGO"] )
-////        {
-////            short_name = @"LUCY";
-////        }
-////        else if ( [short_name isEqualToString:@"LUCYGR"] )
-////        {
-////            // Just ignore it.
-////        }
-//        
-//        [_tableData addObject: routeInfo];
-//
-//        
-//    }  // while ( [results next] )
-    
-    
-//    queryStr = @"SELECT * FROM serviceHours";
-//    results = [database executeQuery: queryStr];
-//    
-//    NSMutableDictionary *hours = [[NSMutableDictionary alloc] init];
-//    while ( [results next] )
-//    {
-//        NSString *hours = [NSString stringWithFormat:@"Available %@ to %@"];
-//    }
-    
-    
-    
-    
     [_tableData sortUsingComparator:^(id a, id b)
      {
-         
          return [[a route_short_name] compare: [b route_short_name] options:NSNumericSearch];
-         
-//
-//        int aInt = [[a route_short_name] intValue];  // Returns 0 if the a does not begin with a valid number
-//        int bInt = [[b route_short_name] intValue];  // Returns 0 if the b does not being with a valid numbe
-//
-//        //    NSLog(@"a: %@, b: %@", a, b);
-//
-//        if ( aInt && bInt )             // As long as both aInt and bInt aren't 0, they're integers and we want to do a simple numeric comparsion
-//            return (NSComparisonResult)(aInt > bInt);         // Straight up, dead simple numeric comparsion here
-//        else if ( aInt && !bInt )       // If aInt is an integer and b isn't make sure that a comes first;  steadyfast rule: Integers Before Strings
-//            return (NSComparisonResult)-1;                  // This means, a in relationship to b should be above b, or they need to be layed out in ascending order (-1)
-//        else if ( bInt && !aInt )       // But if bInt is the integer and a isn't, make sure that b comes first
-//            return (NSComparisonResult)1;                   // This means, a in relationship to b should be below b, or they need to be layed out in descending order (1)
-//        else
-//            return [[a route_short_name] compare: [b route_short_name] ];  // If we got to this point, both a and b are strings and we just want a simple string comparison
      }];
     
-
-//    [_tableData sortUsingComparator:sortBusNames];  // XCode doesn't like NSComparisonResult sharing block names, even if said block is in an unrelated .m
     
     [self generateIndex];
-    
     [self.tableView reloadData];
     
 }
@@ -478,15 +322,6 @@
     NSString *newChar;
     NSInteger index = 0;
     NSInteger len = 1;
-    
-    //    NSLog(@"PNVC - sequence length: %d", [[masterList objectAtIndex:0] count]);
-    
-    // Uncomment these two blocks of code to reduce the index size by half once the stop sequences exceed a certain length.  Avoids the solid circle between inserted inbetween letters
-    //    BOOL everyOther = NO;
-    //    if ( [_times count] > 26 )
-    //    {
-    //        everyOther = YES;
-    //    }
     
     for (RouteInfo *route in _tableData)
     {

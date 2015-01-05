@@ -26,6 +26,9 @@
     return self;
 }
 
+
+
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -72,6 +75,9 @@
 //    UIImageView *bgImageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"mainBackground.png"] ];
 //    [self.tableView setBackgroundView: bgImageView];
 
+    
+//    [self.tabBarController tabBarItem]
+    
     UIColor *backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"newBG_pattern.png"] ];
     [self.tableView setBackgroundColor: backgroundColor];
 
@@ -113,6 +119,9 @@
 
     
 }
+
+
+
 
 - (void)didReceiveMemoryWarning
 {

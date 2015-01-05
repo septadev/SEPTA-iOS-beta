@@ -149,17 +149,13 @@
         return 0;
     }
     
-    
-    
     // What is the current day of the week.
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
     int weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
-    
 
     int dayOfWeek = 0;  // Sun: 64, Mon: 32, Tue: 16, Wed: 8, Thu: 4, Fri: 2, Sat: 1
     
-
     // We're assuming here that a holiday can only have ONE valid service_id and none of this "I'm Friday, I'm a 1 and 4" nonsense
     if ( ( service_id = [GTFSCommon isHoliday:route withOffset:offset] ) )
     {
@@ -168,8 +164,8 @@
         return serviceArr;  // Since it is a holiday, skip everything else and just return this
     }
     
-    
     switch (offset) {
+            
         case kGTFSCalendarOffsetToday:
             dayOfWeek = pow(2,(7-weekday) );
             break;
@@ -212,8 +208,6 @@
     }
     
     //    int dayOfWeek = pow(2,(7-weekday) );
-    
-    
     
     NSString *queryStr = [NSString stringWithFormat:@"SELECT service_id, days FROM calendarDB WHERE (days & %d)", dayOfWeek];
     
@@ -303,14 +297,51 @@
 
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"YYYYMMdd"];  // Format is YYYYMMDD, e.g. 20131029
-
-//    if ( offset == kGTFSCalendarOffsetToday )
-//    {
-//        
-//    }
     
-    NSString *now = [dateFormatter stringFromDate: [NSDate date]];
-    //    now = @"20131128";
+    NSString *nowStr;
+    NSDate *now = [NSDate date];
+    if ( offset == kGTFSCalendarOffsetToday )
+    {
+        nowStr = [dateFormatter stringFromDate: now];
+    }
+    else if ( offset == kGTFSCalendarOffsetWeekday )
+    {
+        return 0;  // Right now, this is problematic because Weekday covers Mon-Fri, but a holiday would only be one of those days
+        // Do you return a value if 1 day out of 5 is a holiday.  2 out of 5?
+    }
+    else
+    {
+        
+        // What is the current day of the week.
+        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
+        int today = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
+        
+        int daysToAdd = 0;
+        
+        if ( offset == kGTFSCalendarOffsetSat )
+        {
+            if ( today != 7 )  // If today is not Saturday (7)
+            {
+                daysToAdd = (7-today);
+            }
+        }
+        else if ( offset == kGTFSCalendarOffsetSun )
+        {
+            if ( today != 1 ) // If today is not Sunday (1)
+            {
+                daysToAdd = (8-today);
+            }
+        }
+        
+        NSDate *newDate = [now dateByAddingTimeInterval:60*60*24*daysToAdd];
+        nowStr = [dateFormatter stringFromDate: newDate];
+        
+    }
+    
+    
+    // For testing...
+//    now = @"20141225";
     
     // Now needs to factor in the offset.
     
@@ -323,7 +354,7 @@
         return 0;
     }
     
-    NSString *queryStr = [NSString stringWithFormat:@"SELECT service_id, date FROM holidayDB WHERE date=%@", now];
+    NSString *queryStr = [NSString stringWithFormat:@"SELECT service_id, date FROM holidayDB WHERE date=%@", nowStr];
     
     if ( routeType == kGTFSRouteTypeRail )
         queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_rail"];

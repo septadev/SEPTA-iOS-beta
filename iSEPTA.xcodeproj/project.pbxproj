@@ -1419,6 +1419,7 @@
 		568FA4F01535C6CF009345F5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		568FA4F11535C6CF009345F5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5D0D1C7FB3FB402E8733DC76 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		60B3BFD7FD9E633588B1167A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		840D112717C2BC3B00AD26BB /* FareStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FareStoryboard.storyboard; path = Storyboards/Connect/Fare/FareStoryboard.storyboard; sourceTree = "<group>"; };
 		840D112917C2BC5600AD26BB /* FareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FareViewController.h; path = Storyboards/Connect/Fare/FareViewController.h; sourceTree = "<group>"; };
 		840D112A17C2BC5600AD26BB /* FareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FareViewController.m; path = Storyboards/Connect/Fare/FareViewController.m; sourceTree = "<group>"; };
@@ -1767,7 +1768,7 @@
 		84D12B5017E1F0B90079A8D7 /* MobileSiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MobileSiteViewController.m; path = Storyboards/Realtime/Mobile/MobileSiteViewController.m; sourceTree = "<group>"; };
 		84F6AFFA17B18F5300680007 /* TabbedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabbedButton.h; path = Storyboards/Common/TabbedButton.h; sourceTree = "<group>"; };
 		84F6AFFB17B18F5300680007 /* TabbedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabbedButton.m; path = Storyboards/Common/TabbedButton.m; sourceTree = "<group>"; };
-		CBB86BAE5720471FA6B03AEF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		F1428D496BE92BF63CF0F60E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3505,6 +3506,15 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		417984B5D3188F75E9399AC8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				60B3BFD7FD9E633588B1167A /* Pods.debug.xcconfig */,
+				F1428D496BE92BF63CF0F60E /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		4182B7331680DAE0004F9D33 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -3565,7 +3575,7 @@
 				568FA4841535C0E0009345F5 /* iSEPTAv2 */,
 				568FA47D1535C0E0009345F5 /* Frameworks */,
 				568FA47B1535C0E0009345F5 /* Products */,
-				CBB86BAE5720471FA6B03AEF /* Pods.xcconfig */,
+				417984B5D3188F75E9399AC8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -5240,7 +5250,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B1C08DA0DE96484BAE0ADAC3 /* Check Pods Manifest.lock */ = {
@@ -5566,7 +5576,7 @@
 		};
 		568FA4B91535C0E0009345F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CBB86BAE5720471FA6B03AEF /* Pods.xcconfig */;
+			baseConfigurationReference = 60B3BFD7FD9E633588B1167A /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -5585,15 +5595,15 @@
 					"FUNCTION_NAMES_ON=0",
 					"PRINT_SQL_CALLS=1",
 				);
-				HEADER_SEARCH_PATHS = "";
-				"HEADER_SEARCH_PATHS[arch=*]" = "";
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				"HEADER_SEARCH_PATHS[arch=*]" = "$(inherited)";
 				INFOPLIST_FILE = "iSEPTAv2/iSEPTA-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = SEPTA;
-				PROVISIONING_PROFILE = "2b0b1288-41c6-437a-b6ff-0da69ab6e5fe";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2b0b1288-41c6-437a-b6ff-0da69ab6e5fe";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/**";
@@ -5604,7 +5614,7 @@
 		};
 		568FA4BA1535C0E0009345F5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CBB86BAE5720471FA6B03AEF /* Pods.xcconfig */;
+			baseConfigurationReference = F1428D496BE92BF63CF0F60E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -5617,14 +5627,14 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iSEPTAv2/iSEPTA-Prefix.pch";
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "iSEPTAv2/iSEPTA-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = SEPTA;
-				PROVISIONING_PROFILE = "2b0b1288-41c6-437a-b6ff-0da69ab6e5fe";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2b0b1288-41c6-437a-b6ff-0da69ab6e5fe";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/**";
