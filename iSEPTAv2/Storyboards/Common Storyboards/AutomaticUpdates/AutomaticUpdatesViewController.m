@@ -665,7 +665,7 @@
     
 //    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
     NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", _path];
-    NSString *dataPath = [NSString stringWithFormat:@"%@/SEPTA.sqlite", _path];
+//    NSString *dataPath = [NSString stringWithFormat:@"%@/SEPTA.sqlite", _path];
     
     if ( [zip UnzipOpenFile: zipPath ] )
     {

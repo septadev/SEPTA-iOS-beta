@@ -441,7 +441,9 @@
     GetLocationsObject *glObject;
     glObject = [_tableData objectAtIndex:indexPath.row];
     
-    [[cell textLabel] setMinimumFontSize:5.0f];
+//    [[cell textLabel] setMinimumFontSize:5.0f];
+    [[cell textLabel] setMinimumScaleFactor:5.0f/[UIFont labelFontSize] ];
+    
     [[cell textLabel] setAdjustsFontSizeToFitWidth:YES];
     
     // [glObject location_id]
@@ -556,20 +558,20 @@
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     
-    for (CLLocation *location in locations)
-    {
-        //        NSLog(@"Location (iOS6):%@", location);
-        //
-        //        [_tableData replaceObjectAtIndex:0 withObject: [NSString stringWithFormat:@"(lat,lon) = (%10.7f, %10.7f)", location.coordinate.latitude, location.coordinate.longitude] ];
-        ////        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
-        //
-        //        CLLocation *loc = [[CLLocation alloc] initWithLatitude:_loc.latitude longitude:_loc.longitude];
-        //        [_tableData replaceObjectAtIndex:2 withObject: [NSString stringWithFormat:@"Distance: %6.3fm", [location distanceFromLocation:loc] ] ];
-        //
-        //        [self.tableView reloadData];
-        
-        
-    }
+//    for (CLLocation *location in locations)
+//    {
+//        //        NSLog(@"Location (iOS6):%@", location);
+//        //
+//        //        [_tableData replaceObjectAtIndex:0 withObject: [NSString stringWithFormat:@"(lat,lon) = (%10.7f, %10.7f)", location.coordinate.latitude, location.coordinate.longitude] ];
+//        ////        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+//        //
+//        //        CLLocation *loc = [[CLLocation alloc] initWithLatitude:_loc.latitude longitude:_loc.longitude];
+//        //        [_tableData replaceObjectAtIndex:2 withObject: [NSString stringWithFormat:@"Distance: %6.3fm", [location distanceFromLocation:loc] ] ];
+//        //
+//        //        [self.tableView reloadData];
+//        
+//        
+//    }
     
     //    [manager stopUpdatingLocation];
     
@@ -1281,7 +1283,10 @@
     
     [lblDescription setFont: [UIFont fontWithName:@"TrebuchetMS" size:16.0f] ];
     [lblDescription setTextColor:[UIColor whiteColor] ];
-    [lblDescription setMinimumFontSize:5.0f];
+
+//    [lblDescription setMinimumFontSize:5.0f];
+    [lblDescription setMinimumScaleFactor:5.0f/[UIFont labelFontSize] ];
+    
     [lblDescription setAdjustsFontSizeToFitWidth:YES];
     
     [lblDescription setText:@"Distance from your current location to search:"];

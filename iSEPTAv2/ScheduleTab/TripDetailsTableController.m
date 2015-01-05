@@ -419,18 +419,18 @@
 -(void) startMonitoringRegionFor:(CLLocationCoordinate2D) loc
 {
     
-    loc.latitude = 39.95192f;
-    loc.longitude = -75.16022f;
-    
-    _clRegion = [[CLRegion alloc] initCircularRegionWithCenter:loc radius:10.0f identifier:@"Train"];  // Radius is measured in meters
-    [_ccManager startMonitoringForRegion:_clRegion desiredAccuracy: kCLLocationAccuracyBest];
-    [_ccManager startMonitoringSignificantLocationChanges];
+//    loc.latitude = 39.95192f;
+//    loc.longitude = -75.16022f;
+//    
+//    _clRegion = [[CLRegion alloc] initCircularRegionWithCenter:loc radius:10.0f identifier:@"Train"];  // Radius is measured in meters
+//    [_ccManager startMonitoringForRegion:_clRegion desiredAccuracy: kCLLocationAccuracyBest];
+//    [_ccManager startMonitoringSignificantLocationChanges];
 }
 
 -(void) stopMonitoringRegion
 {
-    [_ccManager stopMonitoringForRegion:_clRegion];
-    [_ccManager stopMonitoringSignificantLocationChanges];
+//    [_ccManager stopMonitoringForRegion:_clRegion];
+//    [_ccManager stopMonitoringSignificantLocationChanges];
 }
 
 

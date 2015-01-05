@@ -14,13 +14,14 @@
 {
     
 //    NSDictionary *selfDict = [data   dictionaryWithValuesForKeys: keys];
-    
-    for (id object in self)
-    {
-//        NSLog(@"Found %@ (%@) and %@ (%@)", [self valueForKey:indexKey], indexKey, [self valueForKey:titleKey], titleKey);
-        NSLog(@"Found %@ from key %@", [self valueForKey:titleKey], titleKey);
-        // gga - was [self valueForKey:titleKey], titleKey]; replaced self with object
-    }
+
+    // gga, 01/05/15, apparently this little loop did nothing.  Perhaps the loop was a precursor to some functionality I wanted to add once upon a time
+//    for (id object in self)
+//    {
+////        NSLog(@"Found %@ (%@) and %@ (%@)", [self valueForKey:indexKey], indexKey, [self valueForKey:titleKey], titleKey);
+//        NSLog(@"Found %@ from key %@", [self valueForKey:titleKey], titleKey);
+//        // gga - was [self valueForKey:titleKey], titleKey]; replaced self with object
+//    }
     
     return nil;
     

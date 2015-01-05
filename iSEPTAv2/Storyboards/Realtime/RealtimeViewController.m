@@ -168,8 +168,8 @@
     _alertMessage = [[NSMutableArray alloc] init];
     
     
-    NSString *version = [NSString stringWithFormat:@"Version %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
-    NSLog(@"Version #: %@", version);
+//    NSString *version = [NSString stringWithFormat:@"Version %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+//    NSLog(@"Version #: %@", version);
     
     
     UIColor *backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"newBG_pattern.png"] ];
@@ -180,6 +180,7 @@
 
     SEPTATitle *newView = [[SEPTATitle alloc] initWithFrame:CGRectMake(0, 0, logo.size.width, logo.size.height) andWithTitle:@"Realtime"];
     [newView setImage: logo];
+    
     
     [self.navigationItem setTitleView: newView];
     [self.navigationItem.titleView setNeedsDisplay];
@@ -382,7 +383,7 @@
 //        [_dbVersionAPI loadLocalMD5];
     }
     
-    [_dbVersionAPI setTestMode: _testMode];
+//    [_dbVersionAPI setTestMode: _testMode];
     [_dbVersionAPI fetchData];
     
 }

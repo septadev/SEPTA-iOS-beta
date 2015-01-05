@@ -51,7 +51,7 @@
 
 
 #define ALALERTBANNER_TIMER 30.0f
-#define DBVERSION_REFRESH   60.0f * 60   // The number of minutes to wait before rechecking
+#define DBVERSION_REFRESH   60.0f * 2  // Recheck every other minute
 
 typedef NS_ENUM(NSInteger, SecondMenuAlertImageCycle)
 {

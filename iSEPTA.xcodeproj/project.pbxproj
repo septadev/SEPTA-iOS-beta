@@ -35,7 +35,6 @@
 		2718486816A59A3C00423F9D /* FindNearestRouteSaveObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718486716A59A3C00423F9D /* FindNearestRouteSaveObject.m */; };
 		271AFD5C16E52B7E00A11B8E /* ItineraryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 271AFD5B16E52B7E00A11B8E /* ItineraryObject.m */; };
 		271AFD5F16E52B8E00A11B8E /* TripObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 271AFD5E16E52B8E00A11B8E /* TripObject.m */; };
-		271B5C4E165C0EE500D61EA0 /* DisplayStopTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271B5C4D165C0EE400D61EA0 /* DisplayStopTimesViewController.m */; };
 		271DA85F1808A0B4009ED7D6 /* septaIcon-29px.png in Resources */ = {isa = PBXBuildFile; fileRef = 271DA8571808A0B4009ED7D6 /* septaIcon-29px.png */; };
 		271DA8601808A0B4009ED7D6 /* septaIcon-40px.png in Resources */ = {isa = PBXBuildFile; fileRef = 271DA8581808A0B4009ED7D6 /* septaIcon-40px.png */; };
 		271DA8611808A0B4009ED7D6 /* septaIcon-50px.png in Resources */ = {isa = PBXBuildFile; fileRef = 271DA8591808A0B4009ED7D6 /* septaIcon-50px.png */; };
@@ -61,7 +60,6 @@
 		272FCD6A16F227F400A646C7 /* ActiveTrainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 272FCD6916F227F400A646C7 /* ActiveTrainCell.m */; };
 		272FCD6C16F234A800A646C7 /* ActiveTrainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 272FCD6B16F234A800A646C7 /* ActiveTrainCell.xib */; };
 		2731189417EB55D40046757B /* EnterAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2731189317EB55D40046757B /* EnterAddressViewController.m */; };
-		27328EA516DB854E00551B92 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 27328EA416DB854E00551B92 /* NSString+HTML.m */; };
 		27364686177B13ED00511A2F /* NotificationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 27364685177B13ED00511A2F /* NotificationInfo.m */; };
 		27364689177B2CE100511A2F /* BusRouteIndicatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27364688177B2CE100511A2F /* BusRouteIndicatorCell.xib */; };
 		2736468C177B2CFA00511A2F /* BusRouteIndicatorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2736468B177B2CFA00511A2F /* BusRouteIndicatorCell.m */; };
@@ -116,11 +114,9 @@
 		276986AB1779D4AA00EA76DF /* WalkingTourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276986AA1779D4AA00EA76DF /* WalkingTourViewController.m */; };
 		276986AE1779DD0C00EA76DF /* WalkingTourStops.m in Sources */ = {isa = PBXBuildFile; fileRef = 276986AD1779DD0C00EA76DF /* WalkingTourStops.m */; };
 		276B1694162CA13700A71D57 /* CustomSearchResultsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 276B1693162CA13700A71D57 /* CustomSearchResultsCell.m */; };
-		276B16A8162DA05900A71D57 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 276B16A6162DA05900A71D57 /* sqlite3.c */; };
 		276B16A9162DA0AC00A71D57 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 276B16A6162DA05900A71D57 /* sqlite3.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2774644517AADFC800A36A7D /* NearestRoutesScheduleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2774644417AADFC800A36A7D /* NearestRoutesScheduleStoryboard.storyboard */; };
 		27757E7217970EF5005D8450 /* UIImage+WithText.m in Sources */ = {isa = PBXBuildFile; fileRef = 27757E7117970EF5005D8450 /* UIImage+WithText.m */; };
-		2776126516822DFD00AC3ACB /* NextToArriveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2776126416822DFD00AC3ACB /* NextToArriveViewController.m */; };
 		2776126816822E2B00AC3ACB /* StopNamesTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2776126716822E2B00AC3ACB /* StopNamesTableController.m */; };
 		277612731682333500AC3ACB /* TrainViewObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 277612721682333500AC3ACB /* TrainViewObject.m */; };
 		27761276168233E300AC3ACB /* TrainViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27761275168233E300AC3ACB /* TrainViewCell.m */; };
@@ -151,10 +147,7 @@
 		27A2143617C273AD0036A0C7 /* CurrentLocationMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A2143217C273AC0036A0C7 /* CurrentLocationMapViewController.m */; };
 		27A2143717C273AD0036A0C7 /* CurrentLocationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A2143317C273AC0036A0C7 /* CurrentLocationStoryboard.storyboard */; };
 		27A2143817C273AD0036A0C7 /* CurrentLocationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A2143517C273AD0036A0C7 /* CurrentLocationTableViewController.m */; };
-		27A374F416EF6E0D001422A8 /* NSString+Hashes.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A374F316EF6E0D001422A8 /* NSString+Hashes.m */; };
 		27A374F916EF7822001422A8 /* NSString+Hashes.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A374F316EF6E0D001422A8 /* NSString+Hashes.m */; };
-		27A374FC16EF8938001422A8 /* CachedItinerary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27A374FA16EF8938001422A8 /* CachedItinerary.xcdatamodeld */; };
-		27A3750216EF90C0001422A8 /* CachedItinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A3750116EF90C0001422A8 /* CachedItinerary.m */; };
 		27A434B516302BAE00D9724A /* BusRouteSorter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27A434B416302BAE00D9724A /* BusRouteSorter.xib */; };
 		27A434B816302DFD00D9724A /* BusRouteSorterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A434B716302DFD00D9724A /* BusRouteSorterView.m */; };
 		27A4CE2C18F5A7F400340B2A /* CommentsForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A4CE2B18F5A7F400340B2A /* CommentsForm.m */; };
@@ -207,7 +200,6 @@
 		27BB75A3164D542D00AFC9ED /* PassedRouteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BB75A2164D542D00AFC9ED /* PassedRouteData.m */; };
 		27BB75A61651379200AFC9ED /* RouteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BB75A51651379100AFC9ED /* RouteData.m */; };
 		27BB75A9165137DB00AFC9ED /* DisplayedRouteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BB75A8165137DA00AFC9ED /* DisplayedRouteData.m */; };
-		27BB75AC1651497D00AFC9ED /* BusSelectRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BB75AB1651497C00AFC9ED /* BusSelectRouteViewController.m */; };
 		27BB75B016515D4000AFC9ED /* RouteDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27BB75AE16515D4000AFC9ED /* RouteDataModel.xcdatamodeld */; };
 		27BB75BC1651799C00AFC9ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 279AD02F164869350079715E /* CoreData.framework */; };
 		27BB75C71652991D00AFC9ED /* TestDisplayedRouteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BB75C61652991D00AFC9ED /* TestDisplayedRouteData.m */; };
@@ -379,7 +371,6 @@
 		27DB307E1636D6B600153E4C /* XH.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FF21636D6B600153E4C /* XH.kml */; };
 		27DBA60117A97FC400118225 /* TrainViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27DBA60017A97FC400118225 /* TrainViewStoryboard.storyboard */; };
 		27DE5A4116431D21007BB72C /* UITableViewStandardHeaderLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DE5A4016431D21007BB72C /* UITableViewStandardHeaderLabel.m */; };
-		27DE5A441643EF25007BB72C /* BusDisplayStopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DE5A431643EF25007BB72C /* BusDisplayStopsViewController.m */; };
 		27DE5A471643FE32007BB72C /* DisplayRouteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DE5A461643FE31007BB72C /* DisplayRouteModel.m */; };
 		27E0688E17998B3300BA7A92 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27E0688D17998B3300BA7A92 /* MainStoryboard.storyboard */; };
 		27E068911799A41800BA7A92 /* RealtimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E068901799A41800BA7A92 /* RealtimeViewController.m */; };
@@ -424,9 +415,6 @@
 		568FA4891535C0E0009345F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 568FA4871535C0E0009345F5 /* InfoPlist.strings */; };
 		568FA48B1535C0E0009345F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 568FA48A1535C0E0009345F5 /* main.m */; };
 		568FA48F1535C0E0009345F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 568FA48E1535C0E0009345F5 /* AppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		568FA4A81535C0E0009345F5 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568FA4A71535C0E0009345F5 /* SenTestingKit.framework */; };
-		568FA4A91535C0E0009345F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568FA47E1535C0E0009345F5 /* UIKit.framework */; };
-		568FA4AA1535C0E0009345F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568FA4801535C0E0009345F5 /* Foundation.framework */; };
 		568FA4C71535C189009345F5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568FA4BE1535C189009345F5 /* AudioToolbox.framework */; };
 		568FA4C81535C189009345F5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568FA4BF1535C189009345F5 /* AVFoundation.framework */; };
 		568FA4C91535C189009345F5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568FA4C01535C189009345F5 /* CFNetwork.framework */; };
@@ -776,16 +764,6 @@
 		84F6AFFC17B18F5300680007 /* TabbedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6AFFB17B18F5300680007 /* TabbedButton.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		568FA4AB1535C0E0009345F5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 568FA4711535C0E0009345F5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 568FA4791535C0E0009345F5;
-			remoteInfo = iSEPTAv2;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		2700AE6B18F456D100933C2E /* Service-Interruption.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Service-Interruption.png"; sourceTree = "<group>"; };
 		2700AE6C18F456D100933C2E /* Service-Interruption@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Service-Interruption@2x.png"; sourceTree = "<group>"; };
@@ -832,8 +810,6 @@
 		271AFD5B16E52B7E00A11B8E /* ItineraryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItineraryObject.m; path = ScheduleTab/ItineraryObject.m; sourceTree = "<group>"; };
 		271AFD5D16E52B8E00A11B8E /* TripObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TripObject.h; path = ScheduleTab/TripObject.h; sourceTree = "<group>"; };
 		271AFD5E16E52B8E00A11B8E /* TripObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TripObject.m; path = ScheduleTab/TripObject.m; sourceTree = "<group>"; };
-		271B5C4C165C0EE400D61EA0 /* DisplayStopTimesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DisplayStopTimesViewController.h; path = ScheduleTab/DisplayStopTimesViewController.h; sourceTree = "<group>"; };
-		271B5C4D165C0EE400D61EA0 /* DisplayStopTimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DisplayStopTimesViewController.m; path = ScheduleTab/DisplayStopTimesViewController.m; sourceTree = "<group>"; };
 		271DA8571808A0B4009ED7D6 /* septaIcon-29px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "septaIcon-29px.png"; sourceTree = "<group>"; };
 		271DA8581808A0B4009ED7D6 /* septaIcon-40px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "septaIcon-40px.png"; sourceTree = "<group>"; };
 		271DA8591808A0B4009ED7D6 /* septaIcon-50px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "septaIcon-50px.png"; sourceTree = "<group>"; };
@@ -975,8 +951,6 @@
 		2774644417AADFC800A36A7D /* NearestRoutesScheduleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = NearestRoutesScheduleStoryboard.storyboard; path = Storyboards/Realtime/NearestLocation/NearestRoutesScheduleStoryboard.storyboard; sourceTree = "<group>"; };
 		27757E7017970EF5005D8450 /* UIImage+WithText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+WithText.h"; path = "Categories/UIImage+WithText.h"; sourceTree = "<group>"; };
 		27757E7117970EF5005D8450 /* UIImage+WithText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+WithText.m"; path = "Categories/UIImage+WithText.m"; sourceTree = "<group>"; };
-		2776126316822DFD00AC3ACB /* NextToArriveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NextToArriveViewController.h; path = Realtime/NextToArriveViewController.h; sourceTree = "<group>"; };
-		2776126416822DFD00AC3ACB /* NextToArriveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NextToArriveViewController.m; path = Realtime/NextToArriveViewController.m; sourceTree = "<group>"; };
 		2776126616822E2B00AC3ACB /* StopNamesTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StopNamesTableController.h; path = Realtime/StopNamesTableController.h; sourceTree = "<group>"; };
 		2776126716822E2B00AC3ACB /* StopNamesTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StopNamesTableController.m; path = Realtime/StopNamesTableController.m; sourceTree = "<group>"; };
 		277612711682333500AC3ACB /* TrainViewObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrainViewObject.h; path = Realtime/TrainViewObject.h; sourceTree = "<group>"; };
@@ -1113,8 +1087,6 @@
 		27BB75A51651379100AFC9ED /* RouteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteData.m; sourceTree = "<group>"; };
 		27BB75A7165137DA00AFC9ED /* DisplayedRouteData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayedRouteData.h; sourceTree = "<group>"; };
 		27BB75A8165137DA00AFC9ED /* DisplayedRouteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayedRouteData.m; sourceTree = "<group>"; };
-		27BB75AA1651497C00AFC9ED /* BusSelectRouteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusSelectRouteViewController.h; path = ScheduleTab/BusSelectRouteViewController.h; sourceTree = "<group>"; };
-		27BB75AB1651497C00AFC9ED /* BusSelectRouteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusSelectRouteViewController.m; path = ScheduleTab/BusSelectRouteViewController.m; sourceTree = "<group>"; };
 		27BB75AF16515D4000AFC9ED /* RouteDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RouteDataModel.xcdatamodel; sourceTree = "<group>"; };
 		27BB75C51652991D00AFC9ED /* TestDisplayedRouteData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestDisplayedRouteData.h; path = Tests/TestDisplayedRouteData.h; sourceTree = "<group>"; };
 		27BB75C61652991D00AFC9ED /* TestDisplayedRouteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestDisplayedRouteData.m; path = Tests/TestDisplayedRouteData.m; sourceTree = "<group>"; };
@@ -1307,8 +1279,6 @@
 		27DBA60417A980D400118225 /* OldTrainViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OldTrainViewViewController.m; path = Storyboards/Realtime/TrainView/OldTrainViewViewController.m; sourceTree = "<group>"; };
 		27DE5A3F16431D20007BB72C /* UITableViewStandardHeaderLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UITableViewStandardHeaderLabel.h; path = ScheduleTab/UITableViewStandardHeaderLabel.h; sourceTree = "<group>"; };
 		27DE5A4016431D21007BB72C /* UITableViewStandardHeaderLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UITableViewStandardHeaderLabel.m; path = ScheduleTab/UITableViewStandardHeaderLabel.m; sourceTree = "<group>"; };
-		27DE5A421643EF25007BB72C /* BusDisplayStopsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BusDisplayStopsViewController.h; path = ScheduleTab/BusDisplayStopsViewController.h; sourceTree = "<group>"; };
-		27DE5A431643EF25007BB72C /* BusDisplayStopsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BusDisplayStopsViewController.m; path = ScheduleTab/BusDisplayStopsViewController.m; sourceTree = "<group>"; };
 		27DE5A451643FE31007BB72C /* DisplayRouteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DisplayRouteModel.h; path = ScheduleTab/DisplayRouteModel.h; sourceTree = "<group>"; };
 		27DE5A461643FE31007BB72C /* DisplayRouteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DisplayRouteModel.m; path = ScheduleTab/DisplayRouteModel.m; sourceTree = "<group>"; };
 		27E0688D17998B3300BA7A92 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainStoryboard.storyboard; path = Storyboards/MainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -1404,7 +1374,6 @@
 		568FA48C1535C0E0009345F5 /* iSEPTA-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSEPTA-Prefix.pch"; sourceTree = "<group>"; };
 		568FA48D1535C0E0009345F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = iSEPTAv2/AppDelegate.h; sourceTree = "<group>"; };
 		568FA48E1535C0E0009345F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = iSEPTAv2/AppDelegate.m; sourceTree = "<group>"; };
-		568FA4A61535C0E0009345F5 /* iSEPTATests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iSEPTATests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		568FA4A71535C0E0009345F5 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		568FA4BE1535C189009345F5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		568FA4BF1535C189009345F5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -1807,16 +1776,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		568FA4A21535C0E0009345F5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				568FA4A81535C0E0009345F5 /* SenTestingKit.framework in Frameworks */,
-				568FA4A91535C0E0009345F5 /* UIKit.framework in Frameworks */,
-				568FA4AA1535C0E0009345F5 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -1955,8 +1914,6 @@
 			children = (
 				2722CDF4168371AF0074821B /* CustomCell */,
 				2722CDF31683719D0074821B /* Model */,
-				2776126316822DFD00AC3ACB /* NextToArriveViewController.h */,
-				2776126416822DFD00AC3ACB /* NextToArriveViewController.m */,
 				2776126616822E2B00AC3ACB /* StopNamesTableController.h */,
 				2776126716822E2B00AC3ACB /* StopNamesTableController.m */,
 			);
@@ -2012,10 +1969,6 @@
 				27BB75AD165158E500AFC9ED /* Managed Objects */,
 				279AD016164829FB0079715E /* CustomCells */,
 				27DE5A481643FE3B007BB72C /* Models */,
-				27DE5A421643EF25007BB72C /* BusDisplayStopsViewController.h */,
-				27DE5A431643EF25007BB72C /* BusDisplayStopsViewController.m */,
-				27BB75AA1651497C00AFC9ED /* BusSelectRouteViewController.h */,
-				27BB75AB1651497C00AFC9ED /* BusSelectRouteViewController.m */,
 				271AFD5616E52B5000A11B8E /* DisplayStopTimes */,
 				2751039116679C2900377169 /* MapAnnotations */,
 				27BB759916499A0D00AFC9ED /* FindLocationsViewController.h */,
@@ -2060,8 +2013,6 @@
 			children = (
 				271AFD6216E5406D00A11B8E /* CustomCells */,
 				271AFD5916E52B6300A11B8E /* Objects */,
-				271B5C4C165C0EE400D61EA0 /* DisplayStopTimesViewController.h */,
-				271B5C4D165C0EE400D61EA0 /* DisplayStopTimesViewController.m */,
 				27CDAAC616E63D2500F9CF4D /* ItineraryTripViewController.h */,
 				27CDAAC716E63D2500F9CF4D /* ItineraryTripViewController.m */,
 				4190B9DC16E6671B00CD1436 /* StopNamesForRouteTableController.h */,
@@ -3583,7 +3534,6 @@
 			isa = PBXGroup;
 			children = (
 				568FA47A1535C0E0009345F5 /* SEPTA.app */,
-				568FA4A61535C0E0009345F5 /* iSEPTATests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4604,25 +4554,6 @@
 			productReference = 568FA47A1535C0E0009345F5 /* SEPTA.app */;
 			productType = "com.apple.product-type.application";
 		};
-		568FA4A51535C0E0009345F5 /* iSEPTATests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 568FA4BB1535C0E0009345F5 /* Build configuration list for PBXNativeTarget "iSEPTATests" */;
-			buildPhases = (
-				568FA4A11535C0E0009345F5 /* Sources */,
-				568FA4A21535C0E0009345F5 /* Frameworks */,
-				568FA4A31535C0E0009345F5 /* Resources */,
-				568FA4A41535C0E0009345F5 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				568FA4AC1535C0E0009345F5 /* PBXTargetDependency */,
-			);
-			name = iSEPTATests;
-			productName = iSEPTAv2Tests;
-			productReference = 568FA4A61535C0E0009345F5 /* iSEPTATests.octest */;
-			productType = "com.apple.product-type.bundle.ocunit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -4651,7 +4582,6 @@
 			projectRoot = "";
 			targets = (
 				568FA4791535C0E0009345F5 /* iSEPTA */,
-				568FA4A51535C0E0009345F5 /* iSEPTATests */,
 			);
 		};
 /* End PBXProject section */
@@ -5215,29 +5145,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		568FA4A31535C0E0009345F5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		568FA4A41535C0E0009345F5 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
 		9977320E255646AEBE73FB25 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -5287,7 +5197,6 @@
 				276B1694162CA13700A71D57 /* CustomSearchResultsCell.m in Sources */,
 				27A434B816302DFD00D9724A /* BusRouteSorterView.m in Sources */,
 				27DE5A4116431D21007BB72C /* UITableViewStandardHeaderLabel.m in Sources */,
-				27DE5A441643EF25007BB72C /* BusDisplayStopsViewController.m in Sources */,
 				27DE5A471643FE32007BB72C /* DisplayRouteModel.m in Sources */,
 				279AD015164829A70079715E /* TapableSegmentControl.m in Sources */,
 				279AD02716484CE10079715E /* ShowTimesStartCell.m in Sources */,
@@ -5296,7 +5205,6 @@
 				27BB75A3164D542D00AFC9ED /* PassedRouteData.m in Sources */,
 				27BB75A61651379200AFC9ED /* RouteData.m in Sources */,
 				27BB75A9165137DB00AFC9ED /* DisplayedRouteData.m in Sources */,
-				27BB75AC1651497D00AFC9ED /* BusSelectRouteViewController.m in Sources */,
 				27BB75B016515D4000AFC9ED /* RouteDataModel.xcdatamodeld in Sources */,
 				27BB75C71652991D00AFC9ED /* TestDisplayedRouteData.m in Sources */,
 				274364141652DBC400D9C13D /* NSMutableArray+ManagedObjects.m in Sources */,
@@ -5304,7 +5212,6 @@
 				27B285EF16553794002400F4 /* BusRoutesDefaultCell.m in Sources */,
 				27B2860116555580002400F4 /* TripData.m in Sources */,
 				27A16371165AA66B005AE076 /* StopNameData.m in Sources */,
-				271B5C4E165C0EE500D61EA0 /* DisplayStopTimesViewController.m in Sources */,
 				274E02521663C80000BCE8A2 /* GTFSDataModel.xcdatamodeld in Sources */,
 				2717EC661667FB8100FBA47B /* StopSequenceCell.m in Sources */,
 				277CF6D1167781160030DEAB /* ScrollingTestViewController.m in Sources */,
@@ -5312,7 +5219,6 @@
 				275D73881677953B00A23F30 /* StopTimesEndCell.m in Sources */,
 				419657771677EB0C00ADD46A /* StopTimesCell.m in Sources */,
 				27CE31DD1678E61C007688AC /* Event.m in Sources */,
-				2776126516822DFD00AC3ACB /* NextToArriveViewController.m in Sources */,
 				2776126816822E2B00AC3ACB /* StopNamesTableController.m in Sources */,
 				277612731682333500AC3ACB /* TrainViewObject.m in Sources */,
 				27761276168233E300AC3ACB /* TrainViewCell.m in Sources */,
@@ -5457,27 +5363,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		568FA4A11535C0E0009345F5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				276B16A8162DA05900A71D57 /* sqlite3.c in Sources */,
-				27328EA516DB854E00551B92 /* NSString+HTML.m in Sources */,
-				27A374F416EF6E0D001422A8 /* NSString+Hashes.m in Sources */,
-				27A374FC16EF8938001422A8 /* CachedItinerary.xcdatamodeld in Sources */,
-				27A3750216EF90C0001422A8 /* CachedItinerary.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		568FA4AC1535C0E0009345F5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 568FA4791535C0E0009345F5 /* iSEPTA */;
-			targetProxy = 568FA4AB1535C0E0009345F5 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		568FA4871535C0E0009345F5 /* InfoPlist.strings */ = {
@@ -5506,8 +5392,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Southeastern Pennsylvania Transportation Authority (SEPTA) (L636S9JLLY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Southeastern Pennsylvania Transportation Authority (SEPTA) (L636S9JLLY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Southeastern Pennsylvania Transportation Authority (SEPTA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -5551,8 +5437,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Southeastern Pennsylvania Transportation Authority (SEPTA) (L636S9JLLY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Southeastern Pennsylvania Transportation Authority (SEPTA) (L636S9JLLY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Southeastern Pennsylvania Transportation Authority (SEPTA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -5592,7 +5478,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
-					"FUNCTION_NAMES_ON=0",
+					"FUNCTION_NAMES_ON=1",
 					"PRINT_SQL_CALLS=1",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
@@ -5604,7 +5490,6 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = SEPTA;
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2b0b1288-41c6-437a-b6ff-0da69ab6e5fe";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/**";
 				VALID_ARCHS = "armv7 armv7s";
@@ -5635,55 +5520,10 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = SEPTA;
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2b0b1288-41c6-437a-b6ff-0da69ab6e5fe";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/**";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		568FA4BC1535C0E0009345F5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iSEPTAv2.app/iSEPTAv2";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iSEPTAv2/iSEPTAv2-Prefix.pch";
-				INFOPLIST_FILE = "iSEPTAv2Tests/iSEPTATests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/iSEPTAv2\"",
-				);
-				PRODUCT_NAME = iSEPTATests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		568FA4BD1535C0E0009345F5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iSEPTAv2.app/iSEPTAv2";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iSEPTAv2/iSEPTAv2-Prefix.pch";
-				INFOPLIST_FILE = "iSEPTAv2Tests/iSEPTATests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/iSEPTAv2\"",
-				);
-				PRODUCT_NAME = iSEPTATests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -5704,15 +5544,6 @@
 			buildConfigurations = (
 				568FA4B91535C0E0009345F5 /* Debug */,
 				568FA4BA1535C0E0009345F5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		568FA4BB1535C0E0009345F5 /* Build configuration list for PBXNativeTarget "iSEPTATests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				568FA4BC1535C0E0009345F5 /* Debug */,
-				568FA4BD1535C0E0009345F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

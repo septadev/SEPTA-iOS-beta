@@ -311,7 +311,7 @@
     
      [UIView animateWithDuration: _duration
                            delay: _delay
-                         options: UIViewAnimationCurveEaseInOut
+                         options: UIViewAnimationOptionCurveEaseInOut
                       animations:^{
                           [imageA setAlpha:0.0f];
                           [imageB setAlpha:1.0f];

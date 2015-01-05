@@ -21,6 +21,8 @@
     
     NSMutableDictionary *_statusLookup;
     
+    AFJSONRequestOperation *_jsonSystemOp;
+    
     int _currentServiceID;
 }
 
@@ -32,6 +34,16 @@
         // Custom initialization
     }
     return self;
+}
+
+
+-(void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [_jsonSystemOp cancel];
+    [SVProgressHUD dismiss];     // Dismisses any active loading HUD
+    
 }
 
 
@@ -644,8 +656,8 @@
     
     NSURLRequest *systemRequest = [NSURLRequest requestWithURL: [NSURL URLWithString: stringURL] ];
     
-    AFJSONRequestOperation *jsonSystemOp;
-    jsonSystemOp = [AFJSONRequestOperation JSONRequestOperationWithRequest: systemRequest
+
+    _jsonSystemOp = [AFJSONRequestOperation JSONRequestOperationWithRequest: systemRequest
                                                                    success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                        NSDictionary *jsonDict = (NSDictionary*) JSON;
                                                                        [self processSystemStatusJSONData:jsonDict];
@@ -655,7 +667,7 @@
                                                                        NSLog(@"System Status Failure Because %@", [error userInfo] );
                                                                    }];
     
-    [jsonSystemOp start];
+    [_jsonSystemOp start];
     
 }
 

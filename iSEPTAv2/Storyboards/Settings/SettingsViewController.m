@@ -45,6 +45,16 @@
     
     [self.swt24Hour setOn: _use24HourTime];
     
+    GetDBVersionAPI *dbVersionAPI;
+    dbVersionAPI = [[GetDBVersionAPI alloc] init];
+    
+    // Read MD5,
+    if ( [dbVersionAPI loadLocalMD5] )
+    {
+        NSString *endValues = [dbVersionAPI localMD5];
+        [self.lblDBVersionNumber setText: [NSString stringWithFormat:@"DB Version: %@.%@",[endValues substringToIndex:4], [endValues substringFromIndex:[endValues length] - 4] ] ];
+    }
+    
 }
 
 -(void) viewDidDisappear:(BOOL)animated
@@ -105,18 +115,6 @@
     
     
     [self.lblVersionNumber setText: [NSString stringWithFormat:@"Version %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]]];
-    
-    
-    GetDBVersionAPI *dbVersionAPI;
-    dbVersionAPI = [[GetDBVersionAPI alloc] init];
-
-    // Read MD5,
-    if ( [dbVersionAPI loadLocalMD5] )
-    {
-        NSString *endValues = [dbVersionAPI localMD5];
-        [self.lblDBVersionNumber setText: [NSString stringWithFormat:@"DB Version: %@.%@",[endValues substringToIndex:4], [endValues substringFromIndex:[endValues length] - 4] ] ];
-    }
-
     
 }
 

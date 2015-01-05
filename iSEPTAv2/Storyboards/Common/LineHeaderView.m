@@ -149,7 +149,9 @@
     _label = [[UILabel alloc] initWithFrame:CGRectOffset(frame, 0, 0)];
     [_label setTextAlignment: NSTextAlignmentLeft];
     
-    [_label setMinimumFontSize: 10.0f];
+//    [_label setMinimumFontSize: 10.0f];
+    [_label setMinimumScaleFactor:10.0f/[UIFont labelFontSize] ];
+    
     [_label setAdjustsFontSizeToFitWidth:YES];
     
     //[label setTextAlignment: NSTextAlignmentLeft];

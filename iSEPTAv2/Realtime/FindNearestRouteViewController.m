@@ -240,7 +240,9 @@ float MilesToMeters(float miles)
     GetLocationsObject *glObject;
     glObject = [_tableData objectAtIndex:indexPath.row];
     
-    [[cell textLabel] setMinimumFontSize:5.0f];
+//    [[cell textLabel] setMinimumFontSize:5.0f];
+    [[cell textLabel] setMinimumScaleFactor:5.0f/[UIFont labelFontSize] ];
+    
     [[cell textLabel] setAdjustsFontSizeToFitWidth:YES];
     
     // [glObject location_id]
@@ -747,7 +749,10 @@ NSComparisonResult (^sortGetLocationObjectByLocationName)(GetLocationsObject*,Ge
     
     [lblDescription setFont: [UIFont boldSystemFontOfSize:16] ];
     [lblDescription setTextColor:[UIColor whiteColor] ];
-    [lblDescription setMinimumFontSize:5.0f];
+
+//    [lblDescription setMinimumFontSize:5.0f];  // Deprecated in iOS 6.0
+    [lblDescription setMinimumScaleFactor:5.0f/[UIFont labelFontSize] ];
+    
     [lblDescription setAdjustsFontSizeToFitWidth:YES];
 
     [lblDescription setText:@"Distance from your current location to search:"];

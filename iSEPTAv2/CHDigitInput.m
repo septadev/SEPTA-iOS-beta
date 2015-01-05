@@ -266,7 +266,7 @@
         
         // configuring the label
         
-        newDigitView.textAlignment = UITextAlignmentCenter;
+        newDigitView.textAlignment = NSTextAlignmentCenter;
         newDigitView.textColor = _digitViewTextColor;
         newDigitView.highlightedTextColor = _digitViewHighlightedTextColor;
         newDigitView.shadowColor = _digitViewShadowColor;
