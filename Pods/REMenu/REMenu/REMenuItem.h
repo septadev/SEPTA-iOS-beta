@@ -27,18 +27,42 @@
 
 @interface REMenuItem : NSObject
 
+@property (strong, readwrite, nonatomic) UIColor *backgroundColor;
+@property (strong, readwrite, nonatomic) UIColor *separatorColor;
+@property (strong, readwrite, nonatomic) UIFont *font;
+@property (strong, readwrite, nonatomic) UIColor *textColor;
+@property (strong, readwrite, nonatomic) UIColor *textShadowColor;
+@property (assign, readwrite, nonatomic) CGSize textOffset;
+@property (assign, readwrite, nonatomic) CGSize textShadowOffset;
+@property (strong, readwrite, nonatomic) UIColor *highlightedBackgroundColor;
+@property (strong, readwrite, nonatomic) UIColor *highlightedSeparatorColor;
+@property (strong, readwrite, nonatomic) UIColor *highlightedTextColor;
+@property (strong, readwrite, nonatomic) UIColor *highlightedTextShadowColor;
+@property (assign, readwrite, nonatomic) CGSize highlightedTextShadowOffset;
+@property (assign, readwrite, nonatomic) NSTextAlignment textAlignment;
+@property (strong, readwrite, nonatomic) UIFont *subtitleFont;
+@property (strong, readwrite, nonatomic) UIColor *subtitleTextColor;
+@property (strong, readwrite, nonatomic) UIColor *subtitleTextShadowColor;
+@property (assign, readwrite, nonatomic) CGSize subtitleTextOffset;
+@property (assign, readwrite, nonatomic) CGSize subtitleTextShadowOffset;
+@property (strong, readwrite, nonatomic) UIColor *subtitleHighlightedTextColor;
+@property (strong, readwrite, nonatomic) UIColor *subtitleHighlightedTextShadowColor;
+@property (assign, readwrite, nonatomic) CGSize subtitleHighlightedTextShadowOffset;
+@property (assign, readwrite, nonatomic) NSTextAlignment subtitleTextAlignment;
+
 @property (copy, readwrite, nonatomic) NSString *title;
 @property (copy, readwrite, nonatomic) NSString *subtitle;
 @property (copy, readwrite, nonatomic) NSString *badge;
 @property (strong, readwrite, nonatomic) UIImage *image;
-@property (strong, readwrite, nonatomic) UIImage *higlightedImage;
+@property (strong, readwrite, nonatomic) UIImage *highlightedImage;
 @property (copy, readwrite, nonatomic) void (^action)(REMenuItem *item);
 @property (assign, readwrite, nonatomic) NSInteger tag;
 @property (strong, readwrite, nonatomic) UIView *customView;
 
-- (id)initWithTitle:(NSString *)title image:(UIImage *)image highlightedImage:(UIImage *)higlightedImage action:(void (^)(REMenuItem *item))action;
-- (id)initWithTitle:(NSString *)title subtitle:(NSString *)subtitle image:(UIImage *)image highlightedImage:(UIImage *)higlightedImage action:(void (^)(REMenuItem *item))action;
+- (id)initWithTitle:(NSString *)title image:(UIImage *)image highlightedImage:(UIImage *)highlightedImage action:(void (^)(REMenuItem *item))action;
+- (id)initWithTitle:(NSString *)title subtitle:(NSString *)subtitle image:(UIImage *)image highlightedImage:(UIImage *)highlightedImage action:(void (^)(REMenuItem *item))action;
 - (id)initWithCustomView:(UIView *)customView action:(void (^)(REMenuItem *item))action;
 - (id)initWithCustomView:(UIView *)customView;
+- (void)setNeedsLayout;
 
 @end

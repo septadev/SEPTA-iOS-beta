@@ -968,7 +968,7 @@ High Speed Line</string>
                                             <segue destination="TPZ-Kk-0Rn" kind="push" identifier="CommentsPush" id="h9R-nl-Kxa"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="55" id="UK8-26-Amd" userLabel="Table View Cell - Leave">
+                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="55" id="UK8-26-Amd" userLabel="Table View Cell - Leave">
                                         <rect key="frame" x="0.0" y="275" width="320" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UK8-26-Amd" id="3E3-J4-i7Z">

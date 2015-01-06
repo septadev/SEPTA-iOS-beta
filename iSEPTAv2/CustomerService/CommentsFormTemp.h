@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+
+
+// --==  Pods  ==--
 #import "FXForms.h"
+#import <FMDatabase.h>
+
+
+#import "GTFSCommon.h"
+
 
 @interface CommentsFormTemp : NSObject <FXForm>
 
@@ -18,6 +26,17 @@
 @property (nonatomic, copy) NSString *mode;
 
 @property (nonatomic, copy) NSString *routes;
+
+@property (nonatomic, copy) NSString *destination;
+
+@property (nonatomic, copy) NSString *comment;
+
+@property (nonatomic, copy) NSString *firstName;
+@property (nonatomic, copy) NSString *lastName;
+
+@property (nonatomic, copy) NSString *phoneNumber;
+@property (nonatomic, copy) NSString *emailAddress;
+
 
 //@property (nonatomic, assign) NSUInteger field1;
 //@property (nonatomic, assign) NSUInteger field2;

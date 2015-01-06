@@ -103,9 +103,57 @@
     
     if ( _mode != nil )
     {
-        NSLog(@"Do stuff");
-        NSArray *routes = @[@"1",@"2",@"3"];
-        return @{FXFormFieldOptions: routes, FXFormFieldPlaceholder: @"-"};
+        
+        NSMutableArray *routes = [[NSMutableArray alloc] init];;
+        if (    [_mode isEqualToString: @"MFL"] ||
+                [_mode isEqualToString:@"BSL"]  ||
+                [_mode isEqualToString:@"NHSL"] ||
+                [_mode isEqualToString:@"CCT Connect"] )
+        {
+            [routes addObject:@"-"];
+        }
+        else
+        {
+            FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
+            if ( ![database open] )
+            {
+                [database close];
+                return @{FXFormFieldType: FXFormFieldTypeLabel, FXFormFieldValueTransformer: ^(__unused id value){
+                    return @"-";
+                }};
+                
+            }
+            
+            FMResultSet *results;
+            NSString *queryStr;
+            
+            if ( [_mode isEqualToString:@"Regional Rail"] )
+                queryStr = @"SELECT route_id FROM routes_rail ORDER BY route_id;";
+            else if ( [_mode isEqualToString:@"Bus"] )
+                queryStr = @"SELECT route_short_name FROM routes_bus WHERE route_type=3 ORDER BY route_short_name;";
+            else if ( [_mode isEqualToString:@"Trolley"] )
+                queryStr = @"SELECT route_short_name FROM routes_bus WHERE route_type=0 AND route_short_name != 'NHSL' ORDER BY route_short_name;";
+            
+            results = [database executeQuery: queryStr];
+            if ( [database hadError] )  // Check for errors
+            {
+                return @{FXFormFieldType: FXFormFieldTypeLabel, FXFormFieldValueTransformer: ^(__unused id value){
+                    return @"-";
+                }};
+            }
+            
+            while ( [results next] )
+            {
+                [routes addObject: [results stringForColumnIndex:0] ];
+            }
+            
+            [results  close];
+            [database close];
+            
+            //routes = @[@"AIR",@"CHE",@"CHW",@"CYN",@"FOX",@"GC",@"LAN",@"MED",@"NOR",@"PAO",@"TRE",@"WAR",@"WIL",@"WTR"];
+        }
+        
+        return @{FXFormFieldOptions: routes, FXFormFieldPlaceholder: @"-", FXFormFieldAction: @"updateFields"};
     }
     else
     {
@@ -114,6 +162,113 @@
         }};
     }
 
+}
+
+
+
+-(NSDictionary*) destinationField
+{
+    
+    if ( ( _mode != nil ) && (_routes != nil ) )
+    {
+        
+        NSMutableArray *destArr = [[NSMutableArray alloc] init];
+        
+        if ( [_mode isEqualToString:@"Regional Rail"] )
+        {
+
+            [destArr addObject:@"Center City"];
+            FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
+            if ( [database open] )
+            {
+                
+                FMResultSet *results;
+                NSString *queryStr;
+                
+                queryStr = [NSString stringWithFormat:@"SELECT route_short_name FROM routes_rail WHERE route_id='%@';",_routes];
+                
+                results = [database executeQuery: queryStr];
+                if ( ![database hadError] )  // Check for errors
+                {
+                    
+                    while ( [results next] )
+                    {
+                        [destArr addObject: [results stringForColumnIndex:0] ];
+                    }
+                    
+                }  // if ( ![database hadError] )
+                [results close];
+                
+            }  // if ( [database open] )
+            
+            [database close];
+            return @{FXFormFieldOptions: destArr, FXFormFieldPlaceholder: @"-", FXFormFieldAction: @"updateFields"};
+            
+        }
+        else
+        {
+            
+            FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
+            if ( [database open] )
+            {
+            
+                FMResultSet *results;
+                NSString *queryStr;
+                
+                queryStr = [NSString stringWithFormat:@"SELECT DirectionDescription FROM bus_stop_directions WHERE Route='%@';",_routes];
+                
+                results = [database executeQuery: queryStr];
+                if ( ![database hadError] )  // Check for errors
+                {
+                    
+                    while ( [results next] )
+                    {
+                        [destArr addObject: [results stringForColumnIndex:0] ];
+                    }
+                    
+                }  // if ( ![database hadError] )
+                [results close];
+                
+            }  // if ( [database open] )
+        
+            [database close];
+            return @{FXFormFieldOptions: destArr, FXFormFieldPlaceholder: @"-", FXFormFieldAction: @"updateFields"};
+        
+        }
+        
+    }  // if ( _mode != nil )
+    
+    
+    return @{FXFormFieldType: FXFormFieldTypeLabel, FXFormFieldValueTransformer: ^(__unused id value){
+        return @"-";
+    }};
+    
+    
+}
+
+-(NSDictionary*) commentField
+{
+    return @{FXFormFieldTitle: @"Comment"};
+}
+
+-(NSDictionary*) firstNameField
+{
+    return @{FXFormFieldTitle: @"First Name"};
+}
+
+-(NSDictionary*) lastNameField
+{
+    return @{FXFormFieldTitle: @"Last Name"};
+}
+
+-(NSDictionary*) phoneNumberField
+{
+    return @{FXFormFieldTitle: @"Phone Number"};
+}
+
+-(NSDictionary*) emailAddressField
+{
+    return @{FXFormFieldTitle: @"Email Address"};
 }
 
 

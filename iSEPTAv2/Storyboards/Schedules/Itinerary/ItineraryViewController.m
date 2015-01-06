@@ -56,6 +56,8 @@
     NSTimer *cellRefreshTimer;  // Refreshes time for each cell
     NSTimer *jsonRefreshTimer;  // Refreshes JSON data
     
+    NSTimer *_operationFinishedTimer;  // Checks whether or not both operations have been completed
+    
     BOOL _findLocationsSegue;
     BOOL _use24HourTime;
     BOOL _stillWaitingOnWebRequest;
@@ -90,6 +92,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
+    
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self)
@@ -395,6 +398,10 @@
     
     [_jsonQueue cancelAllOperations];
     [jsonRefreshTimer invalidate];
+    
+    [_operationFinishedTimer invalidate];
+    
+    
     
     if ( !_findLocationsSegue )  // Only true if the segue goes to FindLocationsVC, otherwise we're leaving this VC.  Later punks!
     {
@@ -932,6 +939,25 @@
     
 }
 
+-(void) areOperationsFinished
+{
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC - areOperationsFinished");
+#endif
+ 
+    if ( [_sqlOp isFinished] && [_jsonOp isFinished] )
+    {
+        
+        // There are certain tasks that should only be executed once both _sqlOp and _jsonOp are finished
+        [self filterActiveTrains];
+        
+        [_operationFinishedTimer invalidate];
+        
+    }
+    
+}
+
 
 #pragma mark -
 #pragma mark Load Data
@@ -945,75 +971,64 @@
     
     [_jsonQueue cancelAllOperations];  // Since _jsonQueue depends on loadTrips, if we're about to reload loadTrips, all JSON operations needs to be cancelled
     [jsonRefreshTimer invalidate];
+    [_operationFinishedTimer invalidate];
     
-    
-    // Order of operations
-    // loadTrips populates the masterTripArr array object with all the trips for the start/end selections
-    // loadJSON  uses masterTripArr array object to tell determine what trains to display from TrainView
-    
-    // loadTrips first, loadJSON after
-    
-    
-//    _sqlOp = [[NSBlockOperation alloc] init];
-//    __weak NSBlockOperation *weakOp = _sqlOp;
-//    [weakOp addExecutionBlock:^{
-//
-//        
-        [SVProgressHUD dismiss];     // Dismisses any active loading HUD
-        [self loadTrips];  // Load all trips first
 
-        [self filterCurrentTrains];  // Updates currentTrainsArr and reloaded self.tableTrips based on what Tab was selected
-////        [self createMasterJSONLookUpTable];  // Do I even use this anymore (why is this even here?)
-//
-//        [self refreshCellsTime];
-//        
-        NSLog(@"Number of sections: %d", [self.tableTrips numberOfSections] );
-//
-//        
-//        // Since loadTrips could take quite a bit of time to complete, check if ensure that the NSBlockOperation hasn't been cancelled
-////        if ( ![weakOp isCancelled] )
-//        if ( 0 )
-//        {
-//
-//            // As long as a start/end and routeID are valid, we can continue
-//            if ( !( ([itinerary.startStopID intValue] == 0 && [itinerary.endStopID intValue] == 0) || itinerary.routeID == nil ) )
-//            {
-//                
-//                [self filterCurrentTrains];  // Updates currentTrainsArr and reloaded self.tableTrips based on what Tab was selected
-//                
-//                if ( [self.tableTrips numberOfRowsInSection:0] != 0 )  // Forced update of To/From Header
-//                    [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
-//                
-//                [self changeTitleBar];
-//                
-//                [self createMasterJSONLookUpTable];  // Do I even use this anymore (why is this even here?)
-//                
-//                // Only load JSON data for the following routes
-//                if ( [self.travelMode isEqualToString:@"Rail"] || [self.travelMode isEqualToString:@"Trolley"] )
-//                {
-//                    // [self.travelMode isEqualToString:@"Bus"] ||
-//                    // MFL, BSS and NHSL do not have realtime data
-//                    [self loadJSONDataIntheBackground];
-//                }
-//                
-//                NSLog(@"Fucking done");
-//                
-//            }  // if ( !( ([itinerary.startStopID intValue] == 0 && [itinerary.endStopID intValue] == 0) || itinerary.routeID == nil ) )
-//
-//        }  // if ( ![weakOp isCancelled] )
-//        else
-//        {
-//            NSLog(@"IVC - running SQL Query: _sqlOp cancelled");
-//        }
-//        
-//        
-//    }];
-//    
-//    
-//    if ( !( ([itinerary.startStopID intValue] == 0 && [itinerary.endStopID intValue] == 0) || itinerary.routeID == nil ) )
-//        [SVProgressHUD showWithStatus:@"Loading..."];
-//    
-//    [_sqlQueue addOperation: _sqlOp];
+    _operationFinishedTimer =[NSTimer scheduledTimerWithTimeInterval:0.33333f
+                                                              target:self
+                                                            selector:@selector(areOperationsFinished)
+                                                            userInfo:nil
+                                                             repeats:YES];
+
+    
+    _sqlOp = [[NSBlockOperation alloc] init];
+    __weak NSBlockOperation *weakOp = _sqlOp;
+    
+    [weakOp addExecutionBlock:^{
+        
+        [self loadTrips]; // This executes first, then the UI gets updates from the main queue (see below)
+        
+        if ( ![weakOp isCancelled] )
+        {
+        
+            // --== Main Queue Time ==--
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{  // Ensures the following gets run in the main thread
+                
+                [SVProgressHUD dismiss]; // Dismisses any active loading HUD
+                
+                if ( !( ([itinerary.startStopID intValue] == 0 && [itinerary.endStopID intValue] == 0) || itinerary.routeID == nil ) )
+                {
+                    
+                    [self filterCurrentTrains]; // Updates currentTrainsArr and reloaded self.tableTrips
+                    
+                    if ( [self.tableTrips numberOfRowsInSection:0] != 0 ) // Forced update of To/From Header
+                        [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    
+                    [self changeTitleBar];
+                    
+                    [self createMasterJSONLookUpTable];
+
+                    if ( [self.travelMode isEqualToString:@"Rail"] ) // MFL, BSS and NHSL do not have realtime data
+                        [self loadJSONDataIntheBackground]; // This should only be called once loadTrips has been loaded; processJSONData depends on the results of createMasterJSONLookUpTable
+                    
+                }  // if ( !( ([itinerary.startStopID intValue] == 0 && [itinerary.endStopID intValue] == 0) || itinerary.routeID == nil ) )
+                
+            }];
+            
+        }  // if ( ![weakOp isCancelled] )
+        else
+        {
+            NSLog(@"IVC - running SQL Query: _sqlOp cancelled");
+        }
+    
+
+    }];
+
+    
+    if ( !( ([itinerary.startStopID intValue] == 0 && [itinerary.endStopID intValue] == 0) || itinerary.routeID == nil ) )
+        [SVProgressHUD showWithStatus:@"Loading..."];
+    
+    [_sqlQueue addOperation: _sqlOp];
     
 }
 
@@ -1033,7 +1048,7 @@
     if ( ![self.travelMode isEqualToString:@"Rail"] )
         return;
     
-    NSLog(@"IVC - createMasterJSONLookUpTable");  // This table only needs to be run when masterTripsArr gets populated or repopulated
+    NSLog(@"IVC - createMasterJSONLookUpTable (start)");  // This table only needs to be run when masterTripsArr gets populated or repopulated
     
     // Load all TripObjects
     for (TripObject *trip in masterTripsArr )
@@ -1096,6 +1111,7 @@
     [masterTripsArr removeAllObjects];
     [_masterTrainLookUpDict removeAllObjects];  // This will trigger _masterTrainLookUpDict to repopulate itself during the next JSON request
     
+    
     FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
@@ -1124,7 +1140,7 @@
 //            itinerary.startStopID = [NSNumber numberWithInt:90006];
 //        }
         
-        NSLog(@"IVC - Starting at %@", startTime);
+//        NSLog(@"IVC - Starting at %@", startTime);
         
         queryStr = [NSString stringWithFormat:@"SELECT route_id, block_id, stop_sequence, arrival_time, direction_id, service_id, stop_timesDB.trip_id trip_id FROM stop_timesDB JOIN tripsDB ON tripsDB.trip_id=stop_timesDB.trip_id WHERE tripsDB.trip_id IN (SELECT trip_id FROM tripsDB WHERE route_id=\"%@\" ) AND route_id=\"%@\" AND stop_id=%d ORDER BY arrival_time", itinerary.routeShortName, itinerary.routeShortName, [itinerary.startStopID intValue] ];
         
@@ -1354,16 +1370,7 @@
         NSLog(@"IVC - %6.3f seconds have passed.", diff);
         
     }
-    
-    
-//    for (NSString *tripKey in tripDict)
-//    {
-//        [masterTripsArr addObject: [tripDict objectForKey:tripKey] ];
-//    }
-    
-//    [tripDict removeAllObjects];
-    
-    
+
 }
 
 
@@ -1371,7 +1378,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"iVC:cTB - changeTitleBar");
+    NSLog(@"iVC cTB - changeTitleBar");
 #endif
     
 
@@ -1466,9 +1473,13 @@
     
     NSLog(@"activeTrains: %@", activeTrainsArr);
     
+    // Whether activeTrainsArr is empty or not, update tableTrips
+    [self.tableTrips reloadSections: [NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    
     // Now display that filtered data...
-    if ( [self.tableTrips numberOfRowsInSection:1] != 0)
-        [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    if ( [self.tableTrips numberOfRowsInSection:1] != 0)
+//        [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
     
 }
 
@@ -1868,6 +1879,9 @@
 
 -(void) disclaimerButtonPressed: (id) sender
 {
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC - disclaimerButtonPressed");
+#endif
     
     CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableTrips];
     NSIndexPath *indexPath = [self.tableTrips indexPathForRowAtPoint:buttonPosition];
@@ -1883,7 +1897,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"IVC tV:cellForRowAtIndexPath");
+    NSLog(@"IVC tV:cellForRowAtIndexPath r/s: %d/%d", indexPath.row, indexPath.section);
 #endif
     
     static NSString *tripStr      = @"TripCell";
@@ -2865,6 +2879,10 @@
 
 -(void) checkIfInDarkTerritory
 {
+
+#if FUNCTION_NAMES_ON
+    NSLog(@"IVC - checkIfInDarkTerritory");
+#endif
     
     // All the stop ids from Thorndale to Overbrook, Newark to Darby and Trenton to North Philadelphia
     NSString *darkTerritoryStopIDs = @"90501,90502,90503,90504,90505,90506,90507,90508,90509,90510,90511,90512,90513,90514,90515,90516,90517,90518,90519,90520,90521,90522,90201,90202,90203,90204,90205,90206,90207,90209,90210,90211,90212,90213,90214,90215,90216,90217,90701,90702,90703,90704,90706,90707,90708,90709,90710,90711";
@@ -3679,19 +3697,20 @@
                 //                [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];  // Forced update of To/From Header
                 
                 // Load Active Train
-                NSLog(@"IVC - Crash #1");
-                [self filterActiveTrains];
+//                NSLog(@"IVC - Crash #1");
+//                [self filterActiveTrains];
                 
                 // TODO:  Build in a fail safe, if a minute passes without a refresh, Reload JSON data (in the background, if you would please).
                 if ( !_viewIsClosing )
                 {
-                    NSLog(@"IVC - Crash #2");
+//                    NSLog(@"IVC - Crash #2");
                     [self kickOffAnotherJSONRequest];
                 }  // if ( !_viewIsClosing )
                 
-                NSLog(@"IVC - Crash #3");
+//                NSLog(@"IVC - Crash #3");
             }];
-        }
+            
+        }  // if ( ![weakOp isCancelled] )
         else
         {
             NSLog(@"IVC - running SQL Query: _sqlOp cancelled");
@@ -3758,7 +3777,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"iVC - processJSONData");
+    NSLog(@"IVC processJSONData");
 #endif
     
     _stillWaitingOnWebRequest = NO;  // We're no longer waiting on the web request
@@ -3768,7 +3787,7 @@
     
     if ( returnedData == nil )  // If returnedData is nil, don't even continue.
     {
-        NSLog(@"IVC - processJSONData, returnedData is nil.  Returning");
+        NSLog(@"IVC processJSONData, returnedData is nil.  Returning");
         return;
     }
     
@@ -3805,13 +3824,17 @@
             trainNoArray = [_masterTrainLookUpDict objectForKey:[NSString stringWithFormat:@"%d", tNum] ];
         }
         
+
+        NSInteger _todayServiceID = [self getServiceIDFor:kItineraryFilterTypeNow];
+
         for (NSValue *newTrip in trainNoArray)
         {
             
             TripObject *trip = [newTrip nonretainedObjectValue];
             
             // Find the trip that matches the trainNo AND the currentServiceID
-            if ( (1 << ([trip.serviceID intValue]-1)) & _currentServiceID )
+            
+            if ( (1 << ([trip.serviceID intValue]-1)) & _todayServiceID )
             {
                 NSString *delay   = [railData objectForKey:@"late"];
                 NSString *service = [railData objectForKey:@"service"];
@@ -3990,7 +4013,9 @@
     
     [self updateServiceID];
     [self filterCurrentTrains];
-//    [self filterActiveTrains];
+    
+    if ( [_sqlOp isFinished] && [_jsonOp isFinished] )
+        [self filterActiveTrains];
     
     
 }

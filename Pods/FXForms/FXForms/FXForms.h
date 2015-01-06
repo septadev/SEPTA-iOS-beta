@@ -1,7 +1,7 @@
 //
 //  FXForms.h
 //
-//  Version 1.1.6
+//  Version 1.2.10
 //
 //  Created by Nick Lockwood on 13/02/2014.
 //  Copyright (c) 2014 Charcoal Design. All rights reserved.
@@ -30,46 +30,51 @@
 //  3. This notice may not be removed or altered from any source distribution.
 //
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wobjc-missing-property-synthesis"
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-missing-property-synthesis"
+#pragma clang diagnostic ignored "-Wmissing-variable-declarations"
+
+
 #import <UIKit/UIKit.h>
 
 
-#ifndef FXForms
+UIKIT_EXTERN NSString *const FXFormFieldKey; //key
+UIKIT_EXTERN NSString *const FXFormFieldType; //type
+UIKIT_EXTERN NSString *const FXFormFieldClass; //class
+UIKIT_EXTERN NSString *const FXFormFieldCell; //cell
+UIKIT_EXTERN NSString *const FXFormFieldTitle; //title
+UIKIT_EXTERN NSString *const FXFormFieldPlaceholder; //placeholder
+UIKIT_EXTERN NSString *const FXFormFieldDefaultValue; //default
+UIKIT_EXTERN NSString *const FXFormFieldOptions; //options
+UIKIT_EXTERN NSString *const FXFormFieldTemplate; //template
+UIKIT_EXTERN NSString *const FXFormFieldValueTransformer; //valueTransformer
+UIKIT_EXTERN NSString *const FXFormFieldAction; //action
+UIKIT_EXTERN NSString *const FXFormFieldSegue; //segue
+UIKIT_EXTERN NSString *const FXFormFieldHeader; //header
+UIKIT_EXTERN NSString *const FXFormFieldFooter; //footer
+UIKIT_EXTERN NSString *const FXFormFieldInline; //inline
+UIKIT_EXTERN NSString *const FXFormFieldSortable; //sortable
+UIKIT_EXTERN NSString *const FXFormFieldViewController; //viewController
 
-static NSString *const FXFormFieldKey = @"key";
-static NSString *const FXFormFieldType = @"type";
-static NSString *const FXFormFieldClass = @"class";
-static NSString *const FXFormFieldCell = @"cell";
-static NSString *const FXFormFieldTitle = @"title";
-static NSString *const FXFormFieldPlaceholder = @"placeholder";
-static NSString *const FXFormFieldOptions = @"options";
-static NSString *const FXFormFieldValueTransformer = @"valueTransformer";
-static NSString *const FXFormFieldAction = @"action";
-static NSString *const FXFormFieldHeader = @"header";
-static NSString *const FXFormFieldFooter = @"footer";
-static NSString *const FXFormFieldInline = @"inline";
-static NSString *const FXFormFieldViewController = @"viewController";
-
-static NSString *const FXFormFieldTypeDefault = @"default";
-static NSString *const FXFormFieldTypeLabel = @"label";
-static NSString *const FXFormFieldTypeText = @"text";
-static NSString *const FXFormFieldTypeLongText = @"longtext";
-static NSString *const FXFormFieldTypeURL = @"url";
-static NSString *const FXFormFieldTypeEmail = @"email";
-static NSString *const FXFormFieldTypePassword = @"password";
-static NSString *const FXFormFieldTypeNumber = @"number";
-static NSString *const FXFormFieldTypeInteger = @"integer";
-static NSString *const FXFormFieldTypeFloat = @"float";
-static NSString *const FXFormFieldTypeBitfield = @"bitfield";
-static NSString *const FXFormFieldTypeBoolean = @"boolean";
-static NSString *const FXFormFieldTypeOption = @"option";
-static NSString *const FXFormFieldTypeDate = @"date";
-static NSString *const FXFormFieldTypeTime = @"time";
-static NSString *const FXFormFieldTypeDateTime = @"datetime";
-static NSString *const FXFormFieldTypeImage = @"image";
-
-#endif
+UIKIT_EXTERN NSString *const FXFormFieldTypeDefault; //default
+UIKIT_EXTERN NSString *const FXFormFieldTypeLabel; //label
+UIKIT_EXTERN NSString *const FXFormFieldTypeText; //text
+UIKIT_EXTERN NSString *const FXFormFieldTypeLongText; //longtext
+UIKIT_EXTERN NSString *const FXFormFieldTypeURL; //url
+UIKIT_EXTERN NSString *const FXFormFieldTypeEmail; //email
+UIKIT_EXTERN NSString *const FXFormFieldTypePhone; //phone
+UIKIT_EXTERN NSString *const FXFormFieldTypePassword; //password
+UIKIT_EXTERN NSString *const FXFormFieldTypeNumber; //number
+UIKIT_EXTERN NSString *const FXFormFieldTypeInteger; //integer
+UIKIT_EXTERN NSString *const FXFormFieldTypeUnsigned; //unsigned
+UIKIT_EXTERN NSString *const FXFormFieldTypeFloat; //float
+UIKIT_EXTERN NSString *const FXFormFieldTypeBitfield; //bitfield
+UIKIT_EXTERN NSString *const FXFormFieldTypeBoolean; //boolean
+UIKIT_EXTERN NSString *const FXFormFieldTypeOption; //option
+UIKIT_EXTERN NSString *const FXFormFieldTypeDate; //date
+UIKIT_EXTERN NSString *const FXFormFieldTypeTime; //time
+UIKIT_EXTERN NSString *const FXFormFieldTypeDateTime; //datetime
+UIKIT_EXTERN NSString *const FXFormFieldTypeImage; //image
 
 
 #pragma mark -
@@ -88,6 +93,7 @@ static NSString *const FXFormFieldTypeImage = @"image";
 
 - (NSArray *)fields;
 - (NSArray *)extraFields;
+- (NSArray *)excludedFields;
 
 // informal protocol:
 
@@ -104,10 +110,21 @@ static NSString *const FXFormFieldTypeImage = @"image";
 @property (nonatomic, readonly) NSString *type;
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) id placeholder;
-@property (nonatomic, readonly) NSArray *options;
-@property (nonatomic, readonly) Class viewController;
+@property (nonatomic, readonly) NSDictionary *fieldTemplate;
+@property (nonatomic, readonly) BOOL isSortable;
+@property (nonatomic, readonly) BOOL isInline;
+@property (nonatomic, readonly) Class valueClass;
+@property (nonatomic, readonly) id viewController;
 @property (nonatomic, readonly) void (^action)(id sender);
+@property (nonatomic, readonly) id segue;
 @property (nonatomic, strong) id value;
+
+- (NSUInteger)optionCount;
+- (id)optionAtIndex:(NSUInteger)index;
+- (NSUInteger)indexOfOption:(id)option;
+- (NSString *)optionDescriptionAtIndex:(NSUInteger)index;
+- (void)setOptionSelected:(BOOL)selected atIndex:(NSUInteger)index;
+- (BOOL)isOptionSelectedAtIndex:(NSUInteger)index;
 
 @end
 
@@ -131,15 +148,19 @@ static NSString *const FXFormFieldTypeImage = @"image";
 - (NSUInteger)numberOfSections;
 - (NSUInteger)numberOfFieldsInSection:(NSUInteger)section;
 - (FXFormField *)fieldForIndexPath:(NSIndexPath *)indexPath;
+- (NSIndexPath *)indexPathForField:(FXFormField *)field;
 - (void)enumerateFieldsWithBlock:(void (^)(FXFormField *field, NSIndexPath *indexPath))block;
 
-- (Class)cellClassForFieldType:(NSString *)fieldType;
+- (Class)cellClassForField:(FXFormField *)field;
 - (void)registerDefaultFieldCellClass:(Class)cellClass;
 - (void)registerCellClass:(Class)cellClass forFieldType:(NSString *)fieldType;
+- (void)registerCellClass:(Class)cellClass forFieldClass:(Class)fieldClass;
 
-- (Class)viewControllerClassForFieldType:(NSString *)fieldType;
+- (Class)viewControllerClassForField:(FXFormField *)field;
 - (void)registerDefaultViewControllerClass:(Class)controllerClass;
 - (void)registerViewControllerClass:(Class)controllerClass forFieldType:(NSString *)fieldType;
+- (void)registerViewControllerClass:(Class)controllerClass forFieldClass:(Class)fieldClass;
+
 
 @end
 
@@ -170,13 +191,21 @@ static NSString *const FXFormFieldTypeImage = @"image";
 @optional
 
 + (CGFloat)heightForField:(FXFormField *)field width:(CGFloat)width;
-+ (CGFloat)heightForField:(FXFormField *)field;
-- (void)didSelectWithTableView:(UITableView *)tableView controller:(UIViewController *)controller;
-
+- (void)didSelectWithTableView:(UITableView *)tableView
+                    controller:(UIViewController *)controller;
 @end
 
 
 @interface FXFormBaseCell : UITableViewCell <FXFormFieldCell>
+
+- (void)setUp;
+- (void)update;
+- (void)didSelectWithTableView:(UITableView *)tableView
+                    controller:(UIViewController *)controller;
+@end
+
+
+@interface FXFormDefaultCell : FXFormBaseCell
 
 @end
 
@@ -238,5 +267,12 @@ static NSString *const FXFormFieldTypeImage = @"image";
 @end
 
 
-#pragma GCC diagnostic pop
+@interface FXFormOptionSegmentsCell : FXFormBaseCell
+
+@property (nonatomic, readonly) UISegmentedControl *segmentedControl;
+
+@end
+
+
+#pragma clang diagnostic pop
 
