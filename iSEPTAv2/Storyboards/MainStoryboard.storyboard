@@ -1012,27 +1012,17 @@ High Speed Line</string>
             </objects>
             <point key="canvasLocation" x="945" y="1070"/>
         </scene>
-        <!--Comments View Controller-->
+        <!--Comment Form View Controller-->
         <scene sceneID="AOs-VY-xqP">
             <objects>
-                <viewController id="TPZ-Kk-0Rn" customClass="CommentsViewController" sceneMemberID="viewController">
+                <viewController id="TPZ-Kk-0Rn" customClass="CommentFormViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="exW-Cr-NIn">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="wed-qT-Lcu">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="gYo-ty-8Ug"/>
-                    <connections>
-                        <outlet property="tableView" destination="wed-qT-Lcu" id="Rub-xA-i53"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="geB-Hi-NCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
