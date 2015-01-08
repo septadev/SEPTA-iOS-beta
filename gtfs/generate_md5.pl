@@ -93,7 +93,8 @@ foreach $row (@sorted)
 }
 
 
-exit(1);
+#exit(1);
+
 
 # Get all routes
 # SELECT route_id FROM routes_bus
