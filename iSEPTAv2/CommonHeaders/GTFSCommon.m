@@ -263,7 +263,6 @@
     NSLog(@"GTFSCommon: isHoliday");
 #endif
     
-
  
 //    NSDate *today = [[NSDate alloc] init];
 //    NSCalendar *gregorian = [[NSCalendar alloc]
@@ -275,8 +274,7 @@
 //    // Calculate when, according to Tom Lehrer, World War III will end
 //    NSDate *endOfWorldWar3 = [gregorian dateByAddingComponents:offsetComponents
 //                                                        toDate:today options:0];
- 
-    
+
     
     // The curse of the holiday
     //   Need to determine the current day of the week
@@ -377,12 +375,20 @@
     
     
     NSInteger service_id = 0;
+    NSMutableArray *serviceArr = [[NSMutableArray alloc] init];
     while ( [results next] )
     {
         service_id = [results intForColumn:@"service_id"];
+        [serviceArr addObject: [NSNumber numberWithInt:service_id] ];
     }
     
     [database close];
+    
+    // TODO: Return array instead of integer
+    // Use case: add additional service on a specific day, e.g. Christmas Eve.
+    // service_id, date
+    // 1, xx/yy/zz  -- Normal weekday service
+    // 8, xx/yy/zz  -- Additional service on that day
     
     return service_id;
     

@@ -3322,7 +3322,7 @@
     GTFSRouteType routeType = [_routeData.route_type intValue];
 
     // error in Version 1.0.7
-    routeType = kGTFSRouteTypeRail;
+//    routeType = kGTFSRouteTypeRail;
     
     NSInteger currentServiceID = 0;
     NSArray *sIDs = [GTFSCommon getServiceIDFor:routeType withOffset:cal];
