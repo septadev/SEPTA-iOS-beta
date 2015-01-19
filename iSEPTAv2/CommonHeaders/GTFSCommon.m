@@ -70,7 +70,7 @@
                     NSLog(@"file is not zero length: %@", attrs);
                 }
                 
-                NSLog(@"%d == %d, files extracted successfully", count, [contents count]);
+                NSLog(@"%ld == %ld, files extracted successfully", count, [contents count]);
                 
             }
             [zip UnzipCloseFile];
@@ -135,7 +135,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"GTFSCommon: getServiceIDFor:%d", route);
+    NSLog(@"GTFSCommon: getServiceIDFor:%ld", route);
 #endif
     
     NSInteger service_id = 0;
@@ -152,7 +152,7 @@
     // What is the current day of the week.
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
-    int weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
+    NSInteger weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
 
     int dayOfWeek = 0;  // Sun: 64, Mon: 32, Tue: 16, Wed: 8, Thu: 4, Fri: 2, Sat: 1
     
@@ -160,7 +160,7 @@
     if ( ( service_id = [GTFSCommon isHoliday:route withOffset:offset] ) )
     {
         NSMutableArray *serviceArr = [[NSMutableArray alloc] init];
-        [serviceArr addObject: [NSNumber numberWithInt:service_id] ];
+        [serviceArr addObject: [NSNumber numberWithLong:service_id] ];
         return serviceArr;  // Since it is a holiday, skip everything else and just return this
     }
     
