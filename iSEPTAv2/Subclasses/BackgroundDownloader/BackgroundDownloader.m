@@ -207,7 +207,7 @@
             NSLog(@"file is not zero length: %@", attrs);
         }
         
-        NSLog(@"%d == %d, files extracted successfully", count, [contents count]);
+        NSLog(@"%lu == %lu, files extracted successfully", (unsigned long)count, (unsigned long)[contents count]);
         
     }
     _installInProgress = NO;

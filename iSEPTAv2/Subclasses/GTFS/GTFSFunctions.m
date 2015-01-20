@@ -32,7 +32,7 @@
 
 //
 
--(UInt32) getServiceID
+-(NSInteger) getServiceID
 {
     
     NSLog(@"filePath: %@", [self getDBPath]);
@@ -46,7 +46,7 @@
     
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
-    int weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
+    int weekday = (int)[comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
     
     int dayOfWeek;
     dayOfWeek = pow(2,(7-weekday) );
@@ -73,7 +73,7 @@
     NSInteger service_id = 0;
     [results next];
     
-    service_id = [results intForColumn:@"service_id"];
+    service_id = [results longForColumn:@"service_id"];
     
     return (NSInteger)service_id;
     

@@ -138,8 +138,8 @@
 -(void) updateStateTo:(AutomaticUpdateState) newState
 {
     
-    NSLog(@"Current State: %d", _updateSM);
-    NSLog(@"New State    : %d", newState);
+    NSLog(@"Current State: %ld", _updateSM);
+    NSLog(@"New State    : %ld", newState);
     
     _updateSM = newState;
     
@@ -694,7 +694,7 @@
             NSLog(@"file is not zero length: %@", attrs);
         }
 
-        NSLog(@"%d == %d, files extracted successfully", count, [contents count]);
+        NSLog(@"%lu == %lu, files extracted successfully", (unsigned long)count, (unsigned long)[contents count]);
         
     }
     [zip UnzipCloseFile];
@@ -740,7 +740,7 @@
     NSData *fileData = [NSData dataWithContentsOfFile: dbPath ];
     
     // Create 16 byte MD5 hash value, store in buffer
-    CC_MD5(fileData.bytes, fileData.length, md5Buffer);
+    CC_MD5(fileData.bytes, (unsigned int)fileData.length, md5Buffer);
     
     // Convert unsigned char buffer to NSString of hex values
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];

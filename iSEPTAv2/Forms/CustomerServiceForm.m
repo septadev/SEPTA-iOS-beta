@@ -14,19 +14,19 @@
 {
     
     return @[
+             @{@"textLabel.color": [UIColor redColor], FXFormFieldKey: @"date", FXFormFieldType: FXFormFieldTypeDateTime, FXFormFieldHeader: @"When", FXFormFieldTitle: @"Date"},             
              
-             @{@"textLabel.color": [UIColor redColor], FXFormFieldKey: @"date", FXFormFieldType: FXFormFieldTypeDateTime, FXFormFieldHeader: @"When", FXFormFieldTitle: @"Date"},
-             
-            @{@"textLabel.color": [UIColor redColor], FXFormFieldKey: @"where", FXFormFieldTitle: @"Where",FXFormFieldHeader:@"Details"},
-             @{FXFormFieldKey: @"mode", FXFormFieldTitle: @"Mode"},
-             @{FXFormFieldKey: @"route", FXFormFieldTitle: @"Route"},
-             @{FXFormFieldKey: @"destination", FXFormFieldTitle: @"Destination"},
+             @{@"textLabel.color": [UIColor redColor], FXFormFieldKey: @"where", FXFormFieldType: FXFormFieldTypeText, FXFormFieldTitle: @"Where",FXFormFieldHeader:@"Details"},
+
+             @{FXFormFieldKey: @"mode", FXFormFieldTitle: @"Mode", FXFormFieldType: FXFormFieldTypeText},
+             @{FXFormFieldKey: @"route", FXFormFieldTitle: @"Route", FXFormFieldType: FXFormFieldTypeText},
+             @{FXFormFieldKey: @"destination", FXFormFieldTitle: @"Destination", FXFormFieldType: FXFormFieldTypeText},
              
              @{@"textLabel.color": [UIColor redColor], FXFormFieldKey: @"comment", FXFormFieldHeader: @"Comment", FXFormFieldTitle: @"Comment", FXFormFieldType: FXFormFieldTypeLongText},
             
-             @{@"textLabel.color": [UIColor redColor], FXFormFieldKey: @"firstName", FXFormFieldHeader: @"Contact Information", FXFormFieldTitle: @"First Name"},
-             @{@"textLabel.color": [UIColor redColor], FXFormFieldKey: @"lastName", FXFormFieldTitle: @"Last Name"},
-             @{@"textLabel.color": [UIColor redColor], FXFormFieldKey: @"emailAddress", FXFormFieldTitle: @"Email Address"},
+             @{@"textLabel.color": [UIColor redColor], FXFormFieldKey: @"firstName", FXFormFieldType: FXFormFieldTypeText, FXFormFieldHeader: @"Contact Information", FXFormFieldTitle: @"First Name"},
+             @{@"textLabel.color": [UIColor redColor], FXFormFieldKey: @"lastName", FXFormFieldType: FXFormFieldTypeText, FXFormFieldTitle: @"Last Name"},
+             @{@"textLabel.color": [UIColor redColor], FXFormFieldKey: @"emailAddress", FXFormFieldType: FXFormFieldTypeEmail, FXFormFieldTitle: @"Email Address"},
              @{FXFormFieldKey: @"phoneNumber", FXFormFieldTitle: @"Phone Number"},
              
              @{FXFormFieldTitle: @"Submit", FXFormFieldHeader: @"", FXFormFieldAction: @"submitRegistrationForm:"},
@@ -39,7 +39,7 @@
 
 -(NSDictionary*) modeField
 {
-    
+    NSLog(@"CSF - modeField");
     NSArray *modes = @[@"MFL",@"BSL",@"NHSL",@"Trolley",@"Bus",@"Regional Rail",@"CCT Connect"];
     
     return @{FXFormFieldOptions: modes, FXFormFieldPlaceholder: @"-", FXFormFieldAction: @"updateFields"};
@@ -49,7 +49,8 @@
 
 -(NSDictionary*) routeField
 {
-    
+
+    NSLog(@"CSF - routeField");
     if ( _mode != nil )
     {
         
@@ -118,6 +119,7 @@
 -(NSDictionary*) destinationField
 {
     
+    NSLog(@"CSF - destinationField");
     if ( ( _mode != nil ) && (_route != nil ) )
     {
         
@@ -211,7 +213,7 @@
 
 +(NSArray*) returnAllKeyValues
 {
-    return [NSArray arrayWithObjects:@"date",@"where",@"mode",@"route",@"destination",@"comment",@"firstName",@"lastName",@"phoneNumber",@"emailAddress",nil];
+    return [NSArray arrayWithObjects:@"where",@"mode",@"route",@"destination",@"comment",@"firstName",@"lastName",@"phoneNumber",@"emailAddress",nil];
 }
 
 

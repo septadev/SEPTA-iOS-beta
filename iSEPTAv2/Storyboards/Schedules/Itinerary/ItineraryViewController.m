@@ -974,12 +974,16 @@
     [_operationFinishedTimer invalidate];
     
 
-    _operationFinishedTimer =[NSTimer scheduledTimerWithTimeInterval:0.33333f
-                                                              target:self
-                                                            selector:@selector(areOperationsFinished)
-                                                            userInfo:nil
-                                                             repeats:YES];
+    if ( [self.travelMode isEqualToString:@"Rail"] )  // We only pull realtime JSON data for rail
+    {
+        _operationFinishedTimer =[NSTimer scheduledTimerWithTimeInterval:0.33333f
+                                                                  target:self
+                                                                selector:@selector(areOperationsFinished)
+                                                                userInfo:nil
+                                                                 repeats:YES];
 
+    }
+    
     
     _sqlOp = [[NSBlockOperation alloc] init];
     __weak NSBlockOperation *weakOp = _sqlOp;

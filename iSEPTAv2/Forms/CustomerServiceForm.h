@@ -18,7 +18,7 @@
 
 @interface CustomerServiceForm : NSObject <FXForm>
 
-@property (nonatomic, copy) NSString *date;
+@property (nonatomic, copy) NSDate *date;
 
 @property (nonatomic, copy) NSString *where;
 @property (nonatomic, copy) NSString *mode;

@@ -236,13 +236,16 @@
     // --======
     // A little background on span, thanks to http://stackoverflow.com/questions/7381783/mkcoordinatespan-in-meters
     
-//    float displayRadius = 2.0;
-
+    float displayRadius = 2.0f;
+    
     [mapView setZoomEnabled:YES];
     [mapView setScrollEnabled:YES];
     
     [mapView setShowsUserLocation:YES];
-    [mapView setDelegate:self];
+    
+    [mapView setRegion: MKCoordinateRegionMakeWithDistance(_locationManager.location.coordinate, [self milesToMetersFor: displayRadius*2], [self milesToMetersFor: displayRadius*2] ) animated:YES];
+    
+    [mapView setCenterCoordinate:_locationManager.location.coordinate animated:YES];
     
     
     

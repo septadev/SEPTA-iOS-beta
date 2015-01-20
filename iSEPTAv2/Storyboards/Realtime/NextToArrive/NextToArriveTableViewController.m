@@ -473,19 +473,37 @@
         case 0:
             
 //            NextToArriveItineraryCell *cell = [thisTableView dequeueReusableCellWithIdentifier:itineraryCell forIndexPath:indexPath];
-
+        {
             myCell = (NextToArriveItineraryCell*)[thisTableView dequeueReusableCellWithIdentifier: itineraryCell];
             [myCell setSelectionStyle:UITableViewCellSelectionStyleNone];
             [myCell setDelegate:self];
             
             [[myCell btnStartDestination] setTitle:_itinerary.startStopName forState:UIControlStateNormal];
+            [[myCell btnStartDestination] setBackgroundColor:[UIColor lightGrayColor]];
+            
             [[myCell btnEndDestination  ] setTitle:_itinerary.endStopName   forState:UIControlStateNormal];
+            [[myCell btnEndDestination] setBackgroundColor:[UIColor lightGrayColor]];
 //            [myCell setEnd_stop_name  : _itinerary.endStopName  ];
             
+            float x = 4.0;
+            float y = 4.0;
+            
+            NextToArriveItineraryCell *nCell = (NextToArriveItineraryCell*)myCell;
+            CGRect bound = nCell.bounds;
+            bound.size.width = self.view.frame.size.width - 5;
+            UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect: bound
+                                                           byRoundingCorners: UIRectCornerTopRight | UIRectCornerBottomRight
+                                                                 cornerRadii: CGSizeMake(x, y)];
+            CAShapeLayer *maskLayer = [CAShapeLayer layer];
+            maskLayer.frame = bound;
+            maskLayer.path= maskPath.CGPath;
+            
+            nCell.layer.mask = maskLayer;
+            
             return myCell;
+        }
             
             break;
-            
         default:
             
             return [self cellForSection: indexPath];
@@ -1206,7 +1224,7 @@
             
             // If the start/end have been reversed, immediately get the JSON data, but invalidate the current timer first
             [self invalidateTimer];
-            [self getLatestJSONData];
+            [self refreshJSONData];
             
             
 //            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];

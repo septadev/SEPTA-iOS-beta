@@ -67,7 +67,11 @@
             filteredPhone = [form.phoneNumber stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             
             filteredEmail = [form.emailAddress stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            filteredDate  = [form.date stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            
+            NSString *dateString = [NSDateFormatter localizedStringFromDate: form.date
+                                                                  dateStyle:NSDateFormatterShortStyle
+                                                                  timeStyle:NSDateFormatterFullStyle];
+            filteredDate  = [dateString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             
             filteredLocation = [form.where stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             filteredMode     = [form.mode stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -76,7 +80,9 @@
 //            filteredVehicle = [form.vehicle stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 //            filteredBlock   = [form.blockTrain stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             
-            NSString *addedComment = [NSString stringWithFormat:@"%@.\n\nThis was sent from the iOS app.", form.comment];
+            
+            NSString *version = [NSString stringWithFormat:@"Version %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+            NSString *addedComment = [NSString stringWithFormat:@"%@.\n\nThis was sent from the iOS App, version %@", form.comment, version];
             
             filteredComments = [addedComment stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             filteredDestination = [form.destination stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];

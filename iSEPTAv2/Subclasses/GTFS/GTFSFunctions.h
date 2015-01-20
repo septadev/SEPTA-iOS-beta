@@ -25,7 +25,7 @@
 //-(UInt32) getServiceID;
 //-(UInt32) getServiceIDForRouteType:
 
--(UInt32) getServiceIDFor:(NSString*) date;
+-(NSInteger) getServiceIDFor:(NSString*) date;
 
 
 @end
