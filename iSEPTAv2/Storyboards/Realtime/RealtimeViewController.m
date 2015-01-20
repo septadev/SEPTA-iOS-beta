@@ -571,99 +571,6 @@
     [dOp start];
 //    [dOp waitUntilFinished];
     
-    return;
-    
-    
-    AFHTTPRequestOperation *downloadOp = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"filename"];
-
-
-
-    downloadOp.outputStream = [NSOutputStream outputStreamToFileAtPath:zipPath append:NO];
-    
-    [downloadOp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
-    {
-        NSLog(@"Successfully downloaded file to %@", zipPath);
-    }
-                                      failure:^(AFHTTPRequestOperation *operation, NSError *error)
-    {
-        NSLog(@"Error: %@", error);
-    }];
-    
-    [downloadOp setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead)
-     {
-         //        NSLog(@"Operation%i: bytesRead: %d", i, bytesRead);
-         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesRead);
-         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesExpectedToRead);
-         
-         float percentDone = ((float)((int)totalBytesRead) / (float)((int)totalBytesExpectedToRead));
-         
-         NSLog(@"Sent %lld of %lld bytes, percent: %6.3f", totalBytesRead, totalBytesExpectedToRead, percentDone);
-         
-         
-     }];
-
-    
-    
-    [downloadOp start];
-    
-    return;
-    
-//    NSURLRequest *downloadReq = [[NSURLRequest alloc] initWithURL: downloadURL];
-//    AFHTTPRequestOperation *downloadOp = [[AFHTTPRequestOperation alloc] initWithRequest: downloadReq];
-//    
-//    [downloadOp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
-//     {
-//         //        NSLog(@"Response: %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
-//         
-//         NSString *dbPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[GTFSCommon filePath] stringByDeletingLastPathComponent] ];
-//         
-//         //        NSLog(@"dbPath: %@", dbPath);
-//         
-//         NSData *data = [[NSData alloc] initWithData:responseObject];
-//         [data writeToFile:dbPath atomically:YES];
-//         
-//         
-//         
-//         NSLog(@"Finished");
-//     }
-//                                      failure:^(AFHTTPRequestOperation *operation, NSError *error)
-//     {
-//         NSLog(@"Error: %@", error);
-//     }
-//     
-//     ];
-//    
-//    //    int i = 0;
-//    [downloadOp setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead)
-//     {
-//         //        NSLog(@"Operation%i: bytesRead: %d", i, bytesRead);
-//         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesRead);
-//         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesExpectedToRead);
-//         
-//         float percentDone = ((float)((int)totalBytesRead) / (float)((int)totalBytesExpectedToRead));
-//         
-//         NSLog(@"Sent %lld of %lld bytes, percent: %6.3f", totalBytesRead, totalBytesExpectedToRead, percentDone);
-//         
-//         
-//     }];
-//    
-//    //    [downloadOp start];
-//    
-//    NSArray *opArr = [[NSArray alloc] initWithObjects:downloadOp, nil];
-//    AFHTTPClient *requestHandler = [[AFHTTPClient alloc] initWithBaseURL:downloadURL];
-//    [requestHandler enqueueBatchOfHTTPRequestOperations:opArr progressBlock:^(NSUInteger numberOfCompletedOperations, NSUInteger totalNumberOfOperations)
-//     {
-//         NSLog(@"Number of Completed Operations: %d, Total Number of Operations: %d", numberOfCompletedOperations, totalNumberOfOperations);
-//     }
-//     
-//                                        completionBlock:^(NSArray *operations)
-//     {
-//         NSLog(@"Completion Block");
-//     }];
-    
 }
 
 
@@ -721,7 +628,7 @@
     NSData *fileData = [NSData dataWithContentsOfFile: [GTFSCommon filePath] ];
     
     // Create 16 byte MD5 hash value, store in buffer
-    CC_MD5(fileData.bytes, fileData.length, md5Buffer);
+    CC_MD5(fileData.bytes, (unsigned int)fileData.length, md5Buffer);
     
     // Convert unsigned char buffer to NSString of hex values
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
@@ -793,7 +700,7 @@
     {
         NSString *rowStr = [NSString stringWithFormat:@"%@,%@,%@,%d", [results stringForColumnIndex:0], [results stringForColumnIndex:1], [results stringForColumnIndex:2], [results intForColumnIndex:3] ];
         NSData *rowData = [rowStr dataUsingEncoding:NSUTF8StringEncoding];
-        CC_MD5_Update(&md5, [rowData bytes], [rowData length]);
+        CC_MD5_Update(&md5, [rowData bytes], (unsigned int)[rowData length]);
     }
     
     CC_MD5_Final(buff, &md5);
@@ -867,8 +774,8 @@
             if ( [message isEqualToString: saObject.current_message] )
             {
                 duplicateFound = 1;
-                break;
                 NSLog(@"Duplicate message found");
+                break;
             }
             else
                 NSLog(@"No duplicate message found");
@@ -921,7 +828,7 @@
     unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
     
     // Create 16 byte MD5 hash value, store in buffer
-    CC_MD5(ptr, strlen(ptr), md5Buffer);
+    CC_MD5(ptr, (unsigned int)strlen(ptr), md5Buffer);
     
     // Convert MD5 value in the buffer to NSString of hex values
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];

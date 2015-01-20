@@ -165,7 +165,7 @@
         
         TripData *trip = [[TripData alloc] init];
         [trip setStart_stop_name: stop_name];
-        [trip setStart_stop_id:   [NSNumber numberWithInt:stop_id] ];
+        [trip setStart_stop_id:   [NSNumber numberWithInt:(int)stop_id] ];
         [_stopNames addTimes:trip];
         
     }

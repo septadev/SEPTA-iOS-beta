@@ -53,7 +53,7 @@
 // Update the counter in case data as been written directly or indirectly into _data
 -(void) updateSection:(int) section
 {
-    [_counter replaceObjectAtIndex:section withObject: [NSNumber numberWithInt:[[_data objectAtIndex:section] count] ] ];
+    [_counter replaceObjectAtIndex:section withObject: [NSNumber numberWithInt:(int)[[_data objectAtIndex:section] count] ] ];
 }
 
 -(void) addNilPlaceholder
@@ -105,7 +105,7 @@
     if ( _numberOfSections == section )  // When this is true, we need to create a new object
     {
         [_data addObject:object];
-        [_counter addObject: [NSNumber numberWithInt:[[_data objectAtIndex:section] count] ] ];
+        [_counter addObject: [NSNumber numberWithInt:(int)[[_data objectAtIndex:section] count] ] ];
         _numberOfSections++;
         
         [self checkHideSections];
@@ -119,9 +119,9 @@
             [_counter addObject:[NSNumber numberWithInt:0] ];
         }
         
-        _numberOfSections = [_data count];
+        _numberOfSections = (int)[_data count];
         [_data addObject: object];
-        [_counter addObject: [NSNumber numberWithInt:[[_data objectAtIndex:section] count] ] ];
+        [_counter addObject: [NSNumber numberWithInt:(int)[[_data objectAtIndex:section] count] ] ];
         
         [self checkHideSections];
     }
@@ -132,7 +132,7 @@
 //        [self removeObjectsInSection:section];
         
         [[_data objectAtIndex:section] addObject: object];
-        [_counter replaceObjectAtIndex:section withObject: [NSNumber numberWithInt:[[_data objectAtIndex:section] count] ] ];
+        [_counter replaceObjectAtIndex:section withObject: [NSNumber numberWithInt:(int)[[_data objectAtIndex:section] count] ] ];
     }
     
     
@@ -143,13 +143,13 @@
 -(void) removeObjectWithIndexPath:(NSIndexPath*) indexPath
 {
 
-    NSLog(@"TDC - removeObjectWithIndexPath, s/r: %d/%d", indexPath.section, indexPath.row);
+    NSLog(@"TDC - removeObjectWithIndexPath, s/r: %ld/%ld", (long)indexPath.section, (long)indexPath.row);
     if ( indexPath.section < _numberOfSections )
     {
         if ( indexPath.row < [[_data objectAtIndex: indexPath.section] count] )
         {
             [(NSMutableArray*)[_data objectAtIndex: indexPath.section] removeObjectAtIndex:indexPath.row];
-            [_counter replaceObjectAtIndex:indexPath.section withObject: [NSNumber numberWithInt:[[_data objectAtIndex:indexPath.section] count] ] ];
+            [_counter replaceObjectAtIndex:indexPath.section withObject: [NSNumber numberWithInt:(int)[[_data objectAtIndex:indexPath.section] count] ] ];
             
 //            if ( [[_counter objectAtIndex:indexPath.section] intValue] == 0 )
 //            {
@@ -165,7 +165,7 @@
 
 -(void) removeObjectsInSection:(int) section
 {
-    NSLog(@"TDC - removeObjects _data size: %d, section: %d", [_data count], section);
+    NSLog(@"TDC - removeObjects _data size: %lu, section: %d", (unsigned long)[_data count], section);
     if ( section < [_data count] )
     {
 //        [[_data objectAtIndex:section] removeAllObjects];

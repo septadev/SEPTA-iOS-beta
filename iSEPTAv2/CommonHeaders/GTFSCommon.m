@@ -70,7 +70,7 @@
                     NSLog(@"file is not zero length: %@", attrs);
                 }
                 
-                NSLog(@"%ld == %ld, files extracted successfully", count, [contents count]);
+                NSLog(@"%ld == %ld, files extracted successfully", (unsigned long)count, [contents count]);
                 
             }
             [zip UnzipCloseFile];
@@ -135,7 +135,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"GTFSCommon: getServiceIDFor:%ld", route);
+    NSLog(@"GTFSCommon: getServiceIDFor: %ld", route);
 #endif
     
     NSInteger service_id = 0;
@@ -236,7 +236,7 @@
     while ( [results next] )
     {
         service_id = [results intForColumn:@"service_id"];
-        [serviceArr addObject: [NSNumber numberWithInt:service_id] ];
+        [serviceArr addObject: [NSNumber numberWithLong:service_id] ];
     }
     
 //    return (NSInteger)service_id;
@@ -313,9 +313,9 @@
         // What is the current day of the week.
         NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
         NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
-        int today = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
-        
-        int daysToAdd = 0;
+        NSInteger today = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
+
+        NSInteger daysToAdd = 0;
         
         if ( offset == kGTFSCalendarOffsetSat )
         {
@@ -379,7 +379,7 @@
     while ( [results next] )
     {
         service_id = [results intForColumn:@"service_id"];
-        [serviceArr addObject: [NSNumber numberWithInt:service_id] ];
+        [serviceArr addObject: [NSNumber numberWithLong:service_id] ];
     }
     
     [database close];

@@ -110,6 +110,8 @@
         
         _locationManager = [[CLLocationManager alloc] init];
         [_locationManager setDelegate:self];
+        
+        [_locationManager requestWhenInUseAuthorization];
         [_locationManager startUpdatingLocation];
         
         _locationEnabled = YES;
@@ -169,23 +171,23 @@
 //    appDelegate.window
     return;  // Temporarily disabled while the map issue with Maps is worked out
     
-    ALAlertBanner *_alertBanner = [ALAlertBanner alertBannerForView:self.mapView
-                                               style:ALAlertBannerStyleFailure
-                                            position:ALAlertBannerPositionTop
-                                               title: title
-                                            subtitle: subtitle
-                                         tappedBlock:^(ALAlertBanner *alertBanner)
-                    {
-                        NSLog(@"No realtime data");
-                        [alertBanner hide];
-                    }];
-    
-    NSLog(@"TMVC - _alertBanner show!");
-    
-    NSTimeInterval showTime = 10.0f;
-    [_alertBanner setSecondsToShow: showTime];
-
-    [_alertBanner show];
+//    ALAlertBanner *_alertBanner = [ALAlertBanner alertBannerForView:self.mapView
+//                                               style:ALAlertBannerStyleFailure
+//                                            position:ALAlertBannerPositionTop
+//                                               title: title
+//                                            subtitle: subtitle
+//                                         tappedBlock:^(ALAlertBanner *alertBanner)
+//                    {
+//                        NSLog(@"No realtime data");
+//                        [alertBanner hide];
+//                    }];
+//    
+//    NSLog(@"TMVC - _alertBanner show!");
+//    
+//    NSTimeInterval showTime = 10.0f;
+//    [_alertBanner setSecondsToShow: showTime];
+//
+//    [_alertBanner show];
     
 }
 
@@ -300,30 +302,30 @@
     _jsonOp = nil;
     _jsonQueue = nil;
     
-    return;
-    
-    switch (self.mapView.mapType)
-    {
-        case MKMapTypeHybrid:
-        {
-            self.mapView.mapType = MKMapTypeStandard;
-        }
-            
-            break;
-        case MKMapTypeStandard:
-        {
-            self.mapView.mapType = MKMapTypeHybrid;
-        }
-            
-            break;
-        default:
-            break;
-    }
-    
-    self.mapView.showsUserLocation = NO;
-    self.mapView.delegate = nil;
-    [self.mapView removeFromSuperview];
-    self.mapView = nil;
+//    return;
+//    
+//    switch (self.mapView.mapType)
+//    {
+//        case MKMapTypeHybrid:
+//        {
+//            self.mapView.mapType = MKMapTypeStandard;
+//        }
+//            
+//            break;
+//        case MKMapTypeStandard:
+//        {
+//            self.mapView.mapType = MKMapTypeHybrid;
+//        }
+//            
+//            break;
+//        default:
+//            break;
+//    }
+//    
+//    self.mapView.showsUserLocation = NO;
+//    self.mapView.delegate = nil;
+//    [self.mapView removeFromSuperview];
+//    self.mapView = nil;
     
 }
 
@@ -337,20 +339,20 @@
     return;
     
     
-    // Dispose of any resources that can be recreated.
-    NSLog(@"TMVC - ***  didReceiveMemoryWarning  ***");
-
-    [self applyMapViewMemoryHotFix];
-    
-    [_locationManager stopUpdatingLocation];
-    [_locationManager setDelegate:nil];
-    _locationManager = nil;
-    
-//    [self.mapView setDelegate:nil];
-//    [self setMapView:nil];
-    
-    _trainDataVC = nil;
-    kmlParser = nil;
+//    // Dispose of any resources that can be recreated.
+//    NSLog(@"TMVC - ***  didReceiveMemoryWarning  ***");
+//
+//    [self applyMapViewMemoryHotFix];
+//    
+//    [_locationManager stopUpdatingLocation];
+//    [_locationManager setDelegate:nil];
+//    _locationManager = nil;
+//    
+////    [self.mapView setDelegate:nil];
+////    [self setMapView:nil];
+//    
+//    _trainDataVC = nil;
+//    kmlParser = nil;
 
 }
 
@@ -904,7 +906,7 @@
     
     // Add all of the MKAnnotation objects parsed from the KML file to the map.
     NSArray *annotations = [kmlParser points];
-    NSLog(@"TVVC: annotations - %d",[annotations count]);
+    NSLog(@"TVVC: annotations - %lu",(unsigned long)[annotations count]);
     [self.mapView addAnnotations:annotations];
     
     // Walk the list of overlays and annotations and create a MKMapRect that

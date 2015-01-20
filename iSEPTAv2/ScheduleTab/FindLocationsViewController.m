@@ -387,7 +387,7 @@
 //            queryStr = [NSString stringWithFormat:@"SELECT stops.stop_name, stops.stop_id FROM stops, %@ where stops.stop_id=iselect.stop_id", innerSelect];
             
             // The old query was taking way too long to run whereas the rail one was running lickity split.  Updating queryStr to make it a little simplier.
-            queryStr = [NSString stringWithFormat:@"SELECT stops.stop_name, stops.stop_id FROM route_ROUTE JOIN stops ON route_ROUTE.stop_id=stops.stop_id WHERE direction_id=%d GROUP BY route_ROUTE.stop_id ORDER BY stops.stop_name", routeData.current.direction_id];
+            queryStr = [NSString stringWithFormat:@"SELECT stops.stop_name, stops.stop_id FROM route_ROUTE JOIN stops ON route_ROUTE.stop_id=stops.stop_id WHERE direction_id=%ld GROUP BY route_ROUTE.stop_id ORDER BY stops.stop_name", (long)routeData.current.direction_id];
             queryStr = [queryStr stringByReplacingOccurrencesOfString:@"ROUTE" withString:routeData.current.route_short_name];
             
             
@@ -397,9 +397,9 @@
             
             NSString *fields = @"stops.stop_name, stops.stop_id, stop_sequence";
             NSString *joins  = [NSString stringWithFormat:@"JOIN stops ON stop_times.stop_id=stops.stop_id JOIN route_%@ ON route_%@.stop_times_uid=stop_times.uid", routeData.current.route_short_name, routeData.current.route_short_name];
-            NSString *innerSQL = [NSString stringWithFormat:@"(SELECT trip_id FROM stop_times WHERE stop_id=%d)", routeData.current.start_stop_id];
+            NSString *innerSQL = [NSString stringWithFormat:@"(SELECT trip_id FROM stop_times WHERE stop_id=%ld)", (long)routeData.current.start_stop_id];
             
-            NSString *where = [NSString stringWithFormat:@"trip_id IN %@ AND direction_id=%d", innerSQL, routeData.current.direction_id];
+            NSString *where = [NSString stringWithFormat:@"trip_id IN %@ AND direction_id=%ld", innerSQL, (long)routeData.current.direction_id];
             NSString *groupBy = @"stop_times.stop_id";
             NSString *orderBy = @"stop_name";
             
@@ -485,7 +485,7 @@
     //    [stops sort];
     //    [self configureSegmentedControl];
     
-    NSLog(@"FLVC - Number of rows: %d", [_showTimes numberOfRows]);
+    NSLog(@"FLVC - Number of rows: %ld", (long)[_showTimes numberOfRows]);
     [_showTimes sort];
     sqlite3_close(db);  // Should probably open and close the database once, not multiple times.
     

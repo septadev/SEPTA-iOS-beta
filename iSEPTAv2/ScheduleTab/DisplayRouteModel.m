@@ -455,7 +455,7 @@
         if ( ![newChar isEqualToString:lastChar] )
         {
             [_inboundSectionTitle addObject: newChar];
-            [_inboundSectionIndex addObject: [NSNumber numberWithInt:index] ];
+            [_inboundSectionIndex addObject: [NSNumber numberWithInt:(int)index] ];
             
             lastChar = newChar;
         }
@@ -470,7 +470,7 @@
         if ( ![newChar isEqualToString:lastChar] )
         {
             [_outboundSectionTitle addObject: newChar];
-            [_outboundSectionIndex addObject: [NSNumber numberWithInt:index] ];
+            [_outboundSectionIndex addObject: [NSNumber numberWithInt:(int)index] ];
             
             lastChar = newChar;
         }
@@ -546,7 +546,7 @@ NSComparisonResult (^sortBlock)(id,id) = ^(id a, id b)
 -(NSString*) description
 {
     
-    NSString *descriptionString = [NSString stringWithFormat:@"DisplayRouteModel - # of sections: %d, outbound: %d, inbound: %d, favs: %d, recent: %d, directions: %d", [self numberOfSections], [self numberOfOutboundRows], [self numberOfInboundRows], [self.favorites count], [self.recentlyViewed count], [self numberOfDirections] ];
+    NSString *descriptionString = [NSString stringWithFormat:@"DisplayRouteModel - # of sections: %ld, outbound: %ld, inbound: %ld, favs: %lu, recent: %lu, directions: %ld", (long)[self numberOfSections], (long)[self numberOfOutboundRows], (long)[self numberOfInboundRows], (unsigned long)[self.favorites count], (unsigned long)[self.recentlyViewed count], (long)[self numberOfDirections] ];
     return descriptionString;
     
 }

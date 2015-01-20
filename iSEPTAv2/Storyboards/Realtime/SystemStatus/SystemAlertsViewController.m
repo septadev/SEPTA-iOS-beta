@@ -121,7 +121,7 @@
     
     
     int count = 1;
-    int numOfAlerts = [_ssObject numOfAlerts];
+    int numOfAlerts = (int)[_ssObject numOfAlerts];
 
 //    [_ssObject setIssuspend:@"Y"];
     
@@ -542,7 +542,7 @@
 {
     
     // Display data for selected segment
-    NSLog(@"SAVC - Segment selected: %d) %@", self.segmentAlertType.selectedSegmentIndex, [self.segmentAlertType titleForSegmentAtIndex:self.segmentAlertType.selectedSegmentIndex]);
+    NSLog(@"SAVC - Segment selected: %ld) %@", (long)self.segmentAlertType.selectedSegmentIndex, [self.segmentAlertType titleForSegmentAtIndex:self.segmentAlertType.selectedSegmentIndex]);
     
     [self displayHTML];
     

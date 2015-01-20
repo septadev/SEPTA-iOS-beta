@@ -193,7 +193,7 @@
 //    NSString *valueString = [NSString stringWithFormat:@"%f",value];
     
     activeString = valueString;
-    int valueStringLength = valueString.length;
+    int valueStringLength = (int)valueString.length;
     
     // if lenght of value is bigger than
     // the number of digit view we set up
@@ -203,7 +203,7 @@
         self.numberOfDigits = valueStringLength;
     }
     
-    int padding = _numberOfDigits-valueStringLength;
+    int padding = (int)_numberOfDigits-valueStringLength;
 
     if (padding < 0) {
         padding = 0;

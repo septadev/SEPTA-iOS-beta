@@ -740,7 +740,7 @@
             }
             else
             {
-                queryStr = [NSString stringWithFormat:@"SELECT stop_name, stop_id, direction_id, wheelchair_boarding, stop_sequence FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=\"%@\" AND direction_id=%d ORDER BY stop_name", stopData.route_short_name, stopData.direction_id];
+                queryStr = [NSString stringWithFormat:@"SELECT stop_name, stop_id, direction_id, wheelchair_boarding, stop_sequence FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=\"%@\" AND direction_id=%ld ORDER BY stop_name", stopData.route_short_name, (long)stopData.direction_id];
             }
             
             break;
@@ -936,7 +936,7 @@
         TripData *trip = [[TripData alloc] init];
         [trip setStart_stop_name: stop_name];
         [trip setVanity_start_stop_name:vanity_stop_name];
-        [trip setStart_stop_id:   [NSNumber numberWithInt:stop_id] ];
+        [trip setStart_stop_id:   [NSNumber numberWithInt:(int)stop_id] ];
         [trip setWheelboard_boarding: [NSNumber numberWithBool: [results intForColumn:@"wheelchair_boarding"] ] ];
 //        [trip setDirection_id: [NSNumber numberWithInt: [results intForColumn:@"direction_id"] ] ];
         [trip setStart_stop_sequence: [NSNumber numberWithInt: [results intForColumn:@"stop_sequence"] ] ];
@@ -1042,7 +1042,7 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     
-    int numSection = [_tableData numOfSections];
+    int numSection = (int)[_tableData numOfSections];
     NSMutableArray *headers = [[NSMutableArray alloc] init];
     
     if ( _sortByStops )
@@ -1267,11 +1267,11 @@
     
     
     // Uncomment out this one!
-    [self performSelector:@selector(highlightTheDamnRow:) withObject:[NSNumber numberWithInt:index] afterDelay:0.001f];  // Adding a delay works
+    [self performSelector:@selector(highlightTheDamnRow:) withObject:[NSNumber numberWithInt:(int)index] afterDelay:0.001f];  // Adding a delay works
     
 //    [self highlightTheDamnRow: index];  // Not having a delay makes the highlight go away as the old VC is brought back
     
-    NSLog(@"index: %d", index);
+    NSLog(@"index: %lu", (unsigned long)index);
 }
 
 
@@ -1286,7 +1286,7 @@
 #pragma mark - Gesture Recognizers
 -(void) gestureLongPress:(UILongPressGestureRecognizer*) gesture
 {
-    NSLog(@"Long press: %d", gesture.state);
+    NSLog(@"Long press: %ld", gesture.state);
     
     
     

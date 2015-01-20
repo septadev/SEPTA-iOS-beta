@@ -96,12 +96,12 @@
     
     // Add all of the MKOverlay objects parsed from the KML file to the map.
     NSArray *overlays = [kmlParser overlays];
-    NSLog(@"overlays - %d",[overlays count]);
+    NSLog(@"overlays - %lu",(unsigned long)[overlays count]);
     [_mapView addOverlays:overlays];
     
     // Add all of the MKAnnotation objects parsed from the KML file to the map.
     NSArray *annotations = [kmlParser points];
-    NSLog(@"annotations - %d",[annotations count]);
+    NSLog(@"annotations - %lu",(unsigned long)[annotations count]);
     [_mapView addAnnotations:annotations];
     
     // Walk the list of overlays and annotations and create a MKMapRect that
@@ -247,7 +247,7 @@
         
     }
     
-    NSLog(@"DSTVC - addAnntoationsUsingJSONRailData -- added %d annotations", [json count]);
+    NSLog(@"DSTVC - addAnntoationsUsingJSONRailData -- added %lu annotations", (unsigned long)[json count]);
     
     
 }
@@ -306,7 +306,7 @@
         
     }
     
-    NSLog(@"DSTVC - addAnntoationsUsingJSONBusData -- added %d annotations", [[json objectForKey:@"bus"] count]);
+    NSLog(@"DSTVC - addAnntoationsUsingJSONBusData -- added %lu annotations", (unsigned long)[[json objectForKey:@"bus"] count]);
     
     //    [SVProgressHUD dismiss];  // We got data, even if it's nothing.  Dismiss the Loading screen...
     

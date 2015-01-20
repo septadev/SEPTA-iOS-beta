@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iSEPTAv2/Storyboards/Realtime/NextToArrive/NextToArriveTableViewController.m"
-            timestampString = "433108052.059005"
+            timestampString = "443460700.340686"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1577"
-            endingLineNumber = "1577"
+            startingLineNumber = "1579"
+            endingLineNumber = "1579"
             landmarkName = "-doesObject:existInSection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iSEPTAv2/Storyboards/Realtime/NextToArrive/NextToArriveTableViewController.m"
-            timestampString = "433108283.589079"
+            timestampString = "443460700.340686"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1569"
-            endingLineNumber = "1569"
+            startingLineNumber = "1571"
+            endingLineNumber = "1571"
             landmarkName = "-doesObject:existInSection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iSEPTAv2/Storyboards/Realtime/TransitView/TransitViewViewController.m"
-            timestampString = "441064667.235855"
+            timestampString = "443458047.972528"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
             landmarkName = "-getServiceID"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iSEPTAv2/Storyboards/Realtime/TransitView/TransitViewViewController.m"
-            timestampString = "441064961.466655"
+            timestampString = "443458047.972528"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "390"
-            endingLineNumber = "390"
+            startingLineNumber = "367"
+            endingLineNumber = "367"
             landmarkName = "-getBusRouteInfo"
             landmarkType = "5">
          </BreakpointContent>

@@ -101,8 +101,8 @@
             NSError *error;
             NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
             
-            int statusCode = [urlResponse statusCode];
-            int errorCode = error.code;
+            int statusCode = (int)[urlResponse statusCode];
+            int errorCode = (int)error.code;
             
             NSLog(@"urlString : %@", urlString);
             NSLog(@"postString: %@", postString);

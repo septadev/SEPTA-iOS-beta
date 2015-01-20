@@ -23,7 +23,7 @@
     
     AFJSONRequestOperation *_jsonSystemOp;
     
-    int _currentServiceID;
+    NSInteger _currentServiceID;
 }
 
 
@@ -209,33 +209,10 @@
     }
     else
     {
-        [sHours statusForTime:now andServiceID: _currentServiceID];
+        [sHours statusForTime:now andServiceID: (int)_currentServiceID];
         [serviceCell setServiceHours: sHours];
     }
 
-    return serviceCell;
-    
-//    RouteInfo *route = [_tableData objectAtIndex: indexPath.row];
-    
-    [serviceCell setBackgroundColor: [UIColor purpleColor] ];
-    [serviceCell setRouteInfo: route];
-        
-    
-//    if ( [route inService] )
-//    {
-//        
-//    }
-    
-    
-    if ( [(SystemStatusObject*)[_statusLookup objectForKey:route.route_short_name] issuspend] )
-    {
-        [serviceCell setService: kTransitServiceSuspended];
-    }
-    else if ( ( [route inServiceForDirectionID:0] ) || ( [route inServiceForDirectionID:1] ) )
-        [serviceCell setService: kTransitServiceIn];
-    else
-        [serviceCell setService: kTransitServiceOut];
-        
     return serviceCell;
     
 }
@@ -339,7 +316,7 @@
     
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
-    int weekday = [comps weekday];  // Sunday is (1), Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
+    NSInteger weekday = [comps weekday];  // Sunday is (1), Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
     
     int dayOfWeek;
     dayOfWeek = pow(2,(7-weekday) );
@@ -554,7 +531,7 @@
         if ( ![newChar isEqualToString:lastChar] )
         {
             [_busSectionTitle addObject: newChar];
-            [_busSectionIndex addObject: [NSNumber numberWithInt:index] ];
+            [_busSectionIndex addObject: [NSNumber numberWithLong:index] ];
             
             //            NSLog(@"PNVC - title: %@, index: %d", newChar, index);
             

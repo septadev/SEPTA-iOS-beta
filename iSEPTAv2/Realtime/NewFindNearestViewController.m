@@ -238,36 +238,8 @@
     //BasicRouteObject *rObj = [_tableData objectAtIndex:indexPath.row];
 
     [thisCell addRouteInfo: [_tableData objectAtIndex:indexPath.row] ];
-    
-    
+        
     return thisCell;
-    
-    
-    
-    static NSString *cellIdentifier = @"FindNearestRouteCell";
-    
-    id cell = [thisTableView dequeueReusableCellWithIdentifier: cellIdentifier];
-    
-    if ( cell == nil )
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    
-    GetLocationsObject *glObject;
-    glObject = [_tableData objectAtIndex:indexPath.row];
-    
-//    [[cell textLabel] setMinimumFontSize:5.0f];
-    [[cell textLabel] setMinimumScaleFactor:5.0f/[UIFont labelFontSize] ];
-    
-    [[cell textLabel] setAdjustsFontSizeToFitWidth:YES];
-    
-    // [glObject location_id]
-    if ( [glObject routeStr] != NULL )
-        [[cell textLabel] setText: [NSString stringWithFormat:@"%@ - %@",[glObject location_name], [glObject routeStr] ] ];
-    else
-        [[cell textLabel] setText: [NSString stringWithFormat:@"%@",[glObject location_name] ] ];
-    
-    return cell;
     
 }
 
@@ -728,7 +700,7 @@
 
 -(void) filterData
 {
-    int index = [self.segmentTypes selectedSegmentIndex];
+    NSInteger index = [self.segmentTypes selectedSegmentIndex];
     if ( index == -1 )
         index = 0;
     
@@ -787,7 +759,7 @@
         
         [fnmvc setMasterList:_masterList];
         
-        int index = [self.segmentTypes selectedSegmentIndex];
+        int index = (int)[self.segmentTypes selectedSegmentIndex];
         if ( index == -1 )
             index = 0;
         

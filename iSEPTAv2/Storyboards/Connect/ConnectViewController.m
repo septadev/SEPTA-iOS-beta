@@ -679,7 +679,7 @@
 
 -(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"Button pressed - %d", buttonIndex);
+    NSLog(@"Button pressed - %ld", (long)buttonIndex);
     
     switch (buttonIndex)
     {

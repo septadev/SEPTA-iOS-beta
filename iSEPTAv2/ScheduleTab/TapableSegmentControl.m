@@ -25,7 +25,7 @@
     // Checks if oldIndex is the same as the newIndex.  If so, send the UIControlEventValueChanged action to the parent UISegmentedControl
     
 //    NSLog(@"TSC -(void) touchesBegan");
-    int oldIndex = self.selectedSegmentIndex;
+    int oldIndex = (int)self.selectedSegmentIndex;
     
     [super touchesBegan:touches withEvent:event];
     

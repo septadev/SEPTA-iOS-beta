@@ -53,7 +53,7 @@
 {
     NSLog(@"changeFilterSelection");
     if ( [self.delegate respondsToSelector:@selector(filterHasChanged:)] )
-        [[self delegate] filterHasChanged: btnRouteFilter.selectedSegmentIndex];
+        [[self delegate] filterHasChanged: (int)btnRouteFilter.selectedSegmentIndex];
 }
 
 

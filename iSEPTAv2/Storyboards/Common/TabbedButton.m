@@ -222,7 +222,7 @@
     int index = 0;
     for (NSArray *array in _buttonArr)  // buttonArr is a 2D array, containing an array of UIButton objects
     {
-        s = [array count];
+        s = (int)[array count];
         if ( s == 0 )
             continue;  // If s is 0, there's nothing to do here, move on.
         
@@ -320,69 +320,33 @@
 }
 
 
-- (void)drawRect:(CGRect)rect
-{
-    
-    return;
-    
-    // Drawing code
-//    NSLog(@"TABBTN: drawRect");
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-//    CGContextSetLineWidth(context, 2.0);
-//    CGContextSetStrokeColorWithColor(context, [UIColor blueColor].CGColor);
-    
-    
-    for (NSValue *value in _frameArr)
-    {
-        CGRect rectangle = [value CGRectValue];
-        CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor);
-        CGContextFillRect(context, rectangle);
-    }
-    
-    
-    return;
-
-    
-    
-    // Create rectangle
-    float padding = 4.0f;
-    
-    float x = self.frame.origin.x;
-    float y = self.frame.origin.y;
-    
-    float w = (self.frame.size.width - ([_tabScaling count]+1) * padding);
-    float h = self.frame.size.height;
-    
-    float newX = x + padding;
-    
-    
-//    int count = 1;
-    for (NSNumber *scale in _tabScaling)
-    {
-        CGFloat scaleFactor = [scale floatValue];
-        CGRect rectangle;
-        
-        rectangle = CGRectMake(newX, y, w * scaleFactor, h);
-        
-        newX += (w * scaleFactor) + padding;
-
-//        CGContextAddRect(context, rectangle);
-//        CGContextStrokePath(context);
-        CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor);
-        CGContextFillRect(context, rectangle);
-
-        [_frameArr addObject: [NSValue valueWithCGRect: rectangle] ];
-//        count++;
-    }
-    
-}
+//- (void)drawRect:(CGRect)rect
+//{
+//    
+//    return;
+//    
+//    // Drawing code
+////    NSLog(@"TABBTN: drawRect");
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    
+////    CGContextSetLineWidth(context, 2.0);
+////    CGContextSetStrokeColorWithColor(context, [UIColor blueColor].CGColor);
+//    
+//    
+//    for (NSValue *value in _frameArr)
+//    {
+//        CGRect rectangle = [value CGRectValue];
+//        CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor);
+//        CGContextFillRect(context, rectangle);
+//    }
+//    
+//}
 
 
 -(void) buttonTouchUp: (UIButton*) button
 {
 //    NSLog(@"TABBTN - buttonTouchUp");
-    int index = button.tag;
+    int index = (int)button.tag;
     
     int count = 0;
     for (id object in _buttonArr)
@@ -424,7 +388,7 @@
 -(void) buttonTouchDown: (UIButton*) button
 {
 //    NSLog(@"TABBTN - buttonTouchDown");
-    int index = button.tag;
+    int index = (int)button.tag;
     
     if ([self.delegate respondsToSelector:@selector(tabbedButtonPressed:)])
     {

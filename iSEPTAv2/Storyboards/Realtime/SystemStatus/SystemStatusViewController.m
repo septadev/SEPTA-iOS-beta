@@ -1049,7 +1049,7 @@
         if ( ![newChar isEqualToString:lastChar] )
         {
             [_busSectionTitle addObject: newChar];
-            [_busSectionIndex addObject: [NSNumber numberWithInt:index] ];
+            [_busSectionIndex addObject: [NSNumber numberWithInt:(int)index] ];
             
             //            NSLog(@"PNVC - title: %@, index: %d", newChar, index);
             
@@ -1208,7 +1208,7 @@ NSComparisonResult (^sortStatusName)(SystemStatusObject*,SystemStatusObject*) = 
 -(void) tabbedButtonPressed:(NSInteger) tab
 {
     
-    NSLog(@"tab pressed: %d", tab);
+    NSLog(@"tab pressed: %ld", (long)tab);
     switch (tab) {
         case 0:
             [self.lblHeader setText:@"TRANSIT"];

@@ -576,7 +576,7 @@
         
 
         [rObj setStop_name:     [results stringForColumn:@"stop_name"] ];
-        [rObj setLocation_type: [NSString stringWithFormat:@"%d", kRouteTypeRail] ];
+        [rObj setLocation_type: [NSString stringWithFormat:@"%ld", (long)kRouteTypeRail] ];
         
         
 
@@ -700,7 +700,7 @@ static void distanceFunc(sqlite3_context *context, int argc, sqlite3_value **arg
         
         
         [rObj setStop_name:     [results stringForColumn:@"stop_name"] ];
-        [rObj setLocation_type: [NSString stringWithFormat:@"%d", kRouteTypeRail] ];
+        [rObj setLocation_type: [NSString stringWithFormat:@"%ld", (long)kRouteTypeRail] ];
         
         [tempArr addObject: rObj];
         
@@ -840,7 +840,7 @@ static void distanceFunc(sqlite3_context *context, int argc, sqlite3_value **arg
 
 -(void) gestureLongPress:(UILongPressGestureRecognizer*) gesture
 {
-    NSLog(@"Long press: %d", gesture.state);
+    NSLog(@"Long press: %ld", gesture.state);
     
     
     

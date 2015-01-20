@@ -190,7 +190,7 @@
     
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
-    int weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
+    int weekday = (int)[comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
     
     currentServiceID = pow(2,(7-weekday));
     
@@ -349,7 +349,7 @@
         if ( ![newChar isEqualToString:lastChar] )
         {
             [_busSectionTitle addObject: newChar];
-            [_busSectionIndex addObject: [NSNumber numberWithInt:index] ];
+            [_busSectionIndex addObject: [NSNumber numberWithInt:(int)index] ];
             
             //            NSLog(@"PNVC - title: %@, index: %d", newChar, index);
             

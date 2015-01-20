@@ -184,7 +184,7 @@
             {
                 
                 // Check if recent count has reached or exceeded the _recentLimit
-                int count = [recent count];
+                int count = (int)[recent count];
                 for (int LCV = [_recentLimit intValue]; LCV <= count; LCV++ )
                 {
                     [recent removeObjectAtIndex:LCV-1];
@@ -263,7 +263,7 @@
 
 -(NSString*) description
 {
-    return [NSString stringWithFormat:@"# of favorites: %d, # of recent: %d", [favorites count], [recent count] ];
+    return [NSString stringWithFormat:@"# of favorites: %lu, # of recent: %lu", (unsigned long)[favorites count], (unsigned long)[recent count] ];
 }
 
 

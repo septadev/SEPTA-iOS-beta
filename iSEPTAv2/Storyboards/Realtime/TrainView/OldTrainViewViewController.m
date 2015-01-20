@@ -285,7 +285,7 @@
 - (IBAction)segmentSortChanged:(id)sender
 {
     
-    int index = [(TapableSegmentControl*)self.segmentFilter selectedSegmentIndex];
+    int index = (int)[(TapableSegmentControl*)self.segmentFilter selectedSegmentIndex];
     if ( index == _previousIndex )
         _reverseSort = !_reverseSort;
     else

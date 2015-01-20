@@ -28,43 +28,43 @@
 // Adding data to store
 -(void) addObject:(id) object;
 //-(void) addObject:(id) object forIndexPath:(NSIndexPath*) indexPath;
--(void) addObject:(id) object forSection:(int) section;
+-(void) addObject:(id) object forSection:(NSInteger) section;
 -(void) addObject:(id) object forTitle:(NSString*) title;
--(void) addObject:(id)object forTitle:(NSString *)title withTag: (int) tag;
+-(void) addObject:(id)object forTitle:(NSString *)title withTag: (NSInteger) tag;
 
 -(void) addSection;
 -(void) addSectionWithTitle:(NSString*) title;
 
 
 -(void) addArray:(NSMutableArray*) array;
--(void) addArray:(NSMutableArray*) array forSection:(int) section;
+-(void) addArray:(NSMutableArray*) array forSection:(NSInteger) section;
 -(void) addArray:(NSMutableArray*) array forTitle:(NSString*) title;
 
 -(void) replaceArrayWith:(NSMutableArray*) array;
 
--(void) replaceArrayWith:(NSMutableArray*) array forSection:(int) section;
+-(void) replaceArrayWith:(NSMutableArray*) array forSection:(NSInteger) section;
 -(void) replaceArrayWith:(NSMutableArray*) array forTitle:(NSString*) title;
 
 
 //-(void) addSectionWithTitle:(NSString*) title forSectionIndex:(int) index;
 //-(void) addSectionWithTitle:(NSString*) title forIndexPath:(NSIndexPath*) indexPath;
 
--(void) setTag:(int) tag forSection:(int) section;
--(void) setTag:(int) tag forTitle:(NSString*) title;
+-(void) setTag:(NSInteger) tag forSection:(NSInteger) section;
+-(void) setTag:(NSInteger) tag forTitle:(NSString*) title;
 
 
 // Modify store title
 //-(void) modifySectionTitle:(NSString*) newTitle forIndexPath:(NSIndexPath*) indexPath;
--(BOOL) modifySectionTitle:(NSString*) newTitle forSectionIndex:(int) sectionIndex;
+-(BOOL) modifySectionTitle:(NSString*) newTitle forSectionIndex:(NSInteger) sectionIndex;
 
 
 // Remove data from store
 -(void) removeAllObjects;
 
--(void) removeObject:(id) object fromSection:(int) section;
+-(void) removeObject:(id) object fromSection:(NSInteger) section;
 -(void) removeObjectWithIndexPath:(NSIndexPath*) indexPath;
 
--(void) removeSection:(int) section;
+-(void) removeSection:(NSInteger) section;
 //-(void) removeSectionWithIndexPath:(NSIndexPath*) indexPath;
 -(void) removeSectionWithTitle:(NSString*) title;
 
@@ -80,7 +80,7 @@
 
 // Access properties of store
 -(NSInteger) numOfSections;
--(NSInteger) numOfRowsForSection: (int) section;
+-(NSInteger) numOfRowsForSection: (NSInteger) section;
 
 -(NSInteger) lastSection;
 -(NSInteger) lastRow;

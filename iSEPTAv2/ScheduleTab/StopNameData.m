@@ -195,7 +195,7 @@
         if ( ![newChar isEqualToString:lastChar] )
         {
             [_inboundSectionTitle addObject: newChar];
-            [_inboundSectionIndex addObject: [NSNumber numberWithInt:index] ];
+            [_inboundSectionIndex addObject: [NSNumber numberWithInt:(int)index] ];
             
             lastChar = newChar;
         }
@@ -226,7 +226,7 @@
         if ( ![newChar isEqualToString:lastChar] )
         {
             [_outboundSectionTitle addObject: newChar];
-            [_outboundSectionIndex addObject: [NSNumber numberWithInt:index] ];
+            [_outboundSectionIndex addObject: [NSNumber numberWithInt:(int)index] ];
             
             lastChar = newChar;
         }
@@ -405,7 +405,7 @@ NSComparisonResult (^stopSortBlock)(id,id) = ^(id a, id b)
 {
 //    return [NSString stringWithFormat:@"# of favorites: %d, recently viewied: %d, inbound: %d, outbound: %d, sections: %d", [displayDataRef.favorites count], [displayDataRef.recentlyViewed count], [self.inbound count], [self.outbound count], [self numberOfSections] ];
 
-    return [NSString stringWithFormat:@"# of favorites: %d, recently viewied: %d, inbound: %d, outbound: %d, sections: %d", [self.favorites count], [self.recentlyViewed count], [self.inbound count], [self.outbound count], [self numberOfSections] ];
+    return [NSString stringWithFormat:@"# of favorites: %lu, recently viewied: %lu, inbound: %lu, outbound: %lu, sections: %ld", (unsigned long)[self.favorites count], (unsigned long)[self.recentlyViewed count], (unsigned long)[self.inbound count], (unsigned long)[self.outbound count], (long)[self numberOfSections] ];
 }
 
 

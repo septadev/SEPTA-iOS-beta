@@ -169,6 +169,7 @@
     {
         _locationManager = [[CLLocationManager alloc] init];
         [_locationManager setDelegate:self];
+        [_locationManager requestWhenInUseAuthorization];
         [_locationManager startUpdatingLocation];
         
         _locationEnabled = YES;
@@ -1066,7 +1067,7 @@
     
     // Add all of the MKAnnotation objects parsed from the KML file to the map.
     NSArray *annotations = [kmlParser points];
-    NSLog(@"TVVC: annotations - %d",[annotations count]);
+    NSLog(@"TVVC: annotations - %lu",(unsigned long)[annotations count]);
     [self.mapView addAnnotations:annotations];
     
     // Walk the list of overlays and annotations and create a MKMapRect that

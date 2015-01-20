@@ -278,11 +278,11 @@
     if ( diff > 59 )
     {
         // Was "leaves in over %d hrs"
-        return [NSString stringWithFormat:@"%d hrs %02d mins", (int)diff/60, diff % 60];
+        return [NSString stringWithFormat:@"%d hrs %02ld mins", (int)diff/60, diff % 60];
     }
     else
     {
-        return [NSString stringWithFormat:@"%02d mins", diff];
+        return [NSString stringWithFormat:@"%02ld mins", (long)diff];
     }
 
 }
@@ -333,7 +333,7 @@
     }
     else
     {
-        return [NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", diff], @"mins", nil];
+        return [NSArray arrayWithObjects:[NSString stringWithFormat:@"%ld", (long)diff], @"mins", nil];
     }
     
 }
@@ -462,99 +462,7 @@ static inline int timeDiff(int a, int b)
         [[self lblTimeBeforeArrival] setText: @""];
     }
     
-    
-    
     return;
-    // Each cell is given only the necessary bits of information: train #, start time, end time and that's it!
-    // Your job, as the newest employee of updateCell method, is to ensure everything else in the cell is updated!  Good luck!
-    // May the Bit Be With You.
-        
-    // First things first, let's verify that both lblStartTime and lblEndTime contain values
-    if ( ( [arrivalTimeStr length] > 0 ) && ( [departureTimeStr length] > 0) )
-    {
-        
-        // Great!  Both labels contain data.  What that data is, we don't care.  That's for calculateTimeDifferenceFromTimeString to handle.
-        NSArray *timeArray = [self calculateTimeDifferenceFromTimeString:arrivalTimeStr ToTimeString:departureTimeStr];
-        
-        // We're supposed to have gotten an array back, let's see if we did!  (calculateTimeDifferenceFromTimeString is sorta shady...)
-        if ( timeArray != nil )
-        {
-            //  Yay!  We got some data.
-            [[self lblTimeUntilEnd] setText:[timeArray objectAtIndex:0] ];
-            [[self lblUnitsUntilEnd] setText:[timeArray objectAtIndex:1] ];
-        }
-        else
-        {
-            // Awwww, we didn't get anything.
-        }
-        
-        // Hey, make sure that the imageRightArrow isn't hidden now!
-        [[self imageRightArrow] setHidden:NO];
-        
-        
-        // Now, should we display a countdown?
-        if ( _displayCountdown )
-        {
-            // Yes!  I knew I liked you.
-            NSString *remainingTimeStr = [self calculateTimeDifferenceFromNowToTimeString:arrivalTimeStr];
-            [[self lblTimeBeforeArrival] setText: remainingTimeStr ];
-        }
-        else
-        {
-            // Awww, you're a doody head
-            [[self lblTimeBeforeArrival] setText: @""];
-        }
-        
-    }  // if ( ( [arrivalTimeStr length] > 0 ) && ( [departureTimeStr length] > 0) )
-    
-    
-//    if ( ([self.lblStartTime.text length] > 0) && ([self.lblEndTime.text length] > 0) )
-//    {
-//        [[self imageRightArrow] setHidden:NO];
-////        NSLog(@"DisplayTimesCell - start: %@, end: %@", self.lblStartTime.text, self.lblEndTime.text);
-////        NSArray *timeArray = [self calculateTimeDifferenceFromTimeString:self.lblStartTime.text ToTimeString:self.lblEndTime.text];
-//        NSArray *timeArray = [self calculateTimeDifferenceFromTimeString:arrivalTimeStr ToTimeString:departureTimeStr];
-//        if ( [[timeArray objectAtIndex:0] length] == 0 )
-//        {
-//            NSLog(@"timeArray[0] is \"%@\" and timeArray[1] is \"%@\"", [timeArray objectAtIndex:0], [timeArray objectAtIndex:1] );
-////            timeArray = [self calculateTimeDifferenceFromTimeString:self.lblStartTime.text ToTimeString:self.lblEndTime.text];
-//            timeArray = [self calculateTimeDifferenceFromTimeString:arrivalTimeStr ToTimeString: departureTimeStr];
-//        }
-//        
-//        [[self lblTimeUntilEnd] setText: [timeArray objectAtIndex:0] ];
-//        [[self lblUnitsUntilEnd] setText: [timeArray objectAtIndex:1] ];
-//        
-//        if ( ( [self.lblStartTime.text length] > 0 ) && ( _displayCountdown ) )
-////            [ [self lblTimeBeforeArrival] setText: [self calculateTimeDifferenceFromNowToTimeString: self.lblStartTime.text] ];
-//            [ [self lblTimeBeforeArrival] setText: [self calculateTimeDifferenceFromNowToTimeString: arrivalTimeStr] ];
-//        else
-//            [ [self lblTimeBeforeArrival] setText: @""];
-//        
-//    }
-//    else
-//    {
-//        [[self imageRightArrow] setHidden:YES];
-//        [[self lblTimeUntilEnd] setText:@""];
-//        [[self lblUnitsUntilEnd] setText:@""];
-//        
-////        if ( _hasStart )
-//        if ( [self.lblStartTime.text length] > 0 )
-//        {
-//            // Nothing to do here yet
-//            if ( _displayCountdown )
-////                [ [self lblTimeBeforeArrival] setText: [self calculateTimeDifferenceFromNowToTimeString: self.lblStartTime.text] ];
-//                [ [self lblTimeBeforeArrival] setText: [self calculateTimeDifferenceFromNowToTimeString: arrivalTimeStr] ];
-//            else
-//                [[self lblTimeBeforeArrival] setText:@""];                
-//        }
-////        else if ( _hasEnd )
-//        else if ( [self.lblEndTime.text length] > 0 )
-//        {
-//            [[self lblTimeBeforeArrival] setText:@""];
-//        }
-//        
-//    }
-    
     
 }
 

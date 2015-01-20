@@ -173,7 +173,7 @@
     NSData *fileData = [NSData dataWithContentsOfFile: dbPath ];
     
     // Create 16 byte MD5 hash value, store in buffer
-    CC_MD5(fileData.bytes, fileData.length, md5Buffer);
+    CC_MD5(fileData.bytes, (unsigned int)fileData.length, md5Buffer);
     
     // Convert unsigned char buffer to NSString of hex values
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];

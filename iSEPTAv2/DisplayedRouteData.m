@@ -130,7 +130,7 @@
     
     [fetchRequest setEntity: entity];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"(preference == %d) AND (database_type == %d)", section, _databaseType] ];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"(preference == %ld) AND (database_type == %ld)", section, _databaseType] ];
     [fetchRequest setPredicate: predicate];
     
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"added_date" ascending:NO];
@@ -730,7 +730,7 @@
     
     [fetchRequest setEntity: entity];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"(preference == %d) AND (database_type == %d)", section, _databaseType] ];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"(preference == %ld) AND (database_type == %ld)", section, _databaseType] ];
     NSSortDescriptor *sortDescrip  = [NSSortDescriptor sortDescriptorWithKey:@"added_date" ascending:NO];
     
     NSArray *fetchedObjects; // = [_managedObjectContext executeFetchRequest:fetchRequest error:&error]; // An array of Event objects.  Nice, but not altogether useful
@@ -1103,7 +1103,7 @@
 
 -(NSString*) description
 {
-    return [NSString stringWithFormat:@"# of favorites: %d, recently viewied: %d, routes: %d, sections: %d", [self.favorites count], [self.recentlyViewed count], [self.routes count], [self numberOfSections] ];
+    return [NSString stringWithFormat:@"# of favorites: %lu, recently viewied: %lu, routes: %lu, sections: %ld", (unsigned long)[self.favorites count], (unsigned long)[self.recentlyViewed count], (unsigned long)[self.routes count], (long)[self numberOfSections] ];
 }
 
 

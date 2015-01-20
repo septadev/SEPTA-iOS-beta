@@ -477,150 +477,7 @@
     NSLog(@"RSVC - prepareForSegue (does nothing)");
 #endif
 
-    
     return;
-    
-    
-    // DisplayStopTimesSegueIdentifier
-    //    DisplayStopTimesViewController *vc = [segue destinationViewController];
-    //
-    //    return;
-    
-    if ( [[segue identifier] isEqualToString:@"ItinerarySegue"] )
-    {
-        
-        // Passing Data to the ItineraryTripViewController
-        //   At minimum, it needs to know the routeID
-        //   If a Recently Viewed or Favorited Itinerary was selected, pass a completed ItineraryObject
-        //      * startStop, startID, endStop, endID, routeID, routeShortName, routeLongName and directionID
-        
-        ItineraryTripViewController *itvc = [segue destinationViewController];
-        int row = [[[self tableView] indexPathForSelectedRow] row];
-        int section = [[[self tableView] indexPathForSelectedRow] section];
-        
-        NSIndexPath *path = [NSIndexPath indexPathForRow:row inSection:section];
-        
-        //        RouteData *route = [_routeData objectWithIndexPath: path];
-        [itvc setRouteData: [_routeData objectWithIndexPath: path] ];
-        
-        
-        // Initially selecting MFL/BSS sets travelMode to MFL/BSS respectively.  This translates into a routeType of 1.
-        // However, there's a NightOwl Service which is a Bus with routeType of 3.  The routeType will always be passed
-        // correctly, but travelMode needs to be adjusted if that's the case.
-        // TODO:  Stop using travelMode and use route_type instead.
-        //        if ( [[[_routeData objectWithIndexPath:path] route_type] intValue] == 3 )
-        //            self.travelMode = @"Bus";
-        
-        [itvc setTravelMode: self.travelMode];
-        
-        
-        NSString *routeName;
-        RouteData *currentRoute = [_routeData objectWithIndexPath: path];
-        if ( [self.travelMode isEqualToString:@"Rail"] )
-        {
-            routeName = [NSString stringWithFormat:@"Route %@",[currentRoute route_id] ];
-        }
-        else if ( [self.travelMode isEqualToString:@"Bus"] )
-        {
-            routeName = [NSString stringWithFormat:@"Route %@", [currentRoute route_short_name] ];
-        }
-        else
-        {
-            routeName = self.travelMode;
-        }
-        
-        NSLog(@"BSRVC -(void) prepareForSegue setting BackBarButton to %@", routeName);
-        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle: routeName style:UIBarButtonItemStyleBordered target:nil action:nil];
-        
-    }
-    
-    return;
-    
-    _segueInAction = YES;
-    NSLog(@"BSRVC -(void) prepareForSegue -");
-    
-    if ( [[segue identifier] isEqualToString:@"BusRoutesSegueIdentifier"] )
-    {
-        
-        BusDisplayStopsViewController *bdsvc = [segue destinationViewController];
-        
-        int index = [[[self tableView] indexPathForSelectedRow] row];
-        
-        NSArray *ref = nil;
-        if ( queryType == kQueryNormalBus)
-        {
-            //            ref = unfilteredList;
-            ref = [_routeData routes];
-        }
-        else if ( queryType == kQuerySearchBus )
-        {
-            ref = filteredList;
-        }
-        
-        // Only data that is available right now is the id and name
-        [_routeData.current setRoute_id        : [[ref objectAtIndex:index] route_id] ];
-        [_routeData.current setRoute_short_name: [[ref objectAtIndex:index] route_short_name] ];
-        [_routeData.current setRoute_type:       [[ref objectAtIndex:index] route_type] ];
-        
-        // TODO:  Replace this with an automatic assignment when copying routeData into CoreData Event and vice versa.
-        [_routeData.current setDatabase_type:    _routeData.databaseType];  // We do this seemingly redundant assigment this nugget of data is passed into the CoreData structure, which needs this.
-        
-        
-        [bdsvc setTravelMode: self.travelMode];
-        
-        [bdsvc setRouteData: _routeData];
-        
-        // As the bus route we're interested in has already been placed in _routeData§, it should be added to the recently viewed array
-        //        [_routeData addCurrentToSection: kDisplayedRouteDataRecentlyViewed ];
-        
-        NSString *title;
-        if ( [self.travelMode isEqualToString:@"Rail"] )
-            title = @"Regional Rail Lines";
-        else if ( [self.travelMode isEqualToString:@"Bus"] )
-            title = @"Bus Routes";
-        else if ( [self.travelMode isEqualToString:@"Trolley"] )
-            title = @"Trolley Lines";
-        else if ( [self.travelMode isEqualToString:@"MFL"] )
-            title = @"Market Frankford Line";
-        else if ( [self.travelMode isEqualToString:@"NHSL"] )
-            title = @"Norristown High Speed Line";
-        else if ( [self.travelMode isEqualToString:@"BSS"] || [travelMode isEqualToString:@"BSL"]  )
-            title = @"Broad Street Line";
-        
-        
-        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleBordered target:nil action:nil];
-        
-    }
-    else if ( [[segue identifier] isEqualToString:@"ShowTimesSegueIdentifier"] )
-    {
-        
-        //        ItineraryTripViewController *itvc = [segue destinationViewController];
-        //        [itvc setRouteName: _routeData.routesName];
-        
-        //        DisplayStopTimesViewController *dstvc = [segue destinationViewController];
-        //
-        //        [_routeData addSelectionToCurrent: [self.tableView indexPathForSelectedRow] ];
-        //        [dstvc setTravelMode: self.travelMode];
-        //        [dstvc setRouteData: _routeData];
-        //
-        //        // Determine if a favorite or recently viewed was clicked
-        //
-        //
-        //        NSString *direction;
-        //        if ( _routeData.current.direction_id == 0 )
-        //        {
-        //            direction = @"To";
-        //        }
-        //        else
-        //            direction = @"From";
-        //
-        //        NSString *title;
-        //        title = [NSString stringWithFormat:@"%@ %@", direction, _routeData.current.route_short_name];
-        //
-        //        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleBordered target:nil action:nil];
-        
-    }
-    
     
 }
 
@@ -630,7 +487,7 @@
 {
 
 #if FUNCTION_NAMES_ON
-    NSLog(@"RSVC - tV:heightForFooterInSection: %d", section);
+    NSLog(@"RSVC - tV:heightForFooterInSection: %ld", (long)section);
 #endif
 
     return 4.0f;
@@ -641,7 +498,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"RSVC - tV:viewForFooterInSection: %d", section);
+    NSLog(@"RSVC - tV:viewForFooterInSection: %ld", (long)section);
 #endif
 
     
@@ -658,7 +515,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"RSVC - tV:heightForHeaderInSection: %d", section);
+    NSLog(@"RSVC - tV:heightForHeaderInSection: %ld", (long)section);
 #endif
 
     
@@ -675,7 +532,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"RSVC - tV:viewForHeaderInSection: %d", section);
+    NSLog(@"RSVC - tV:viewForHeaderInSection: %ld", (long)section);
 #endif
 
     
@@ -796,7 +653,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"RSVC - tV:numberOfRowsInSections: %d", section);
+    NSLog(@"RSVC - tV:numberOfRowsInSections: %ld", (long)section);
 #endif
     
     
@@ -972,34 +829,7 @@
                 [routeSelectionCell setRouteData: row];
                 
                 return routeSelectionCell;
-                
-                
-                
-                // Get a reusable cell identifier.  If it returns a nil, create it this time
-                defaultCell = [self.tableView dequeueReusableCellWithIdentifier:defaultCellID];
-                if ( ( defaultCell == nil ) || ( ![defaultCell isKindOfClass:[BusRoutesDefaultCell class]] ) )
-                {
-                    defaultCell = [self.tableView dequeueReusableCellWithIdentifier:defaultCellID forIndexPath:indexPath];
-                }
-                
-                row = [_routeData objectWithIndexPath: indexPath];
-                //                NSLog(@"Cell: %@", [row route_short_name] );
-                
-                // Populate the default cell with just the route_short_name
-                [[defaultCell lblRouteShortName] setText: [row route_short_name] ];
-                [[defaultCell lblRouteLongName ] setText: [row route_long_name ] ];
-                
-                
-                if ( ([self.travelMode isEqualToString:@"BSS"] || [travelMode isEqualToString:@"BSL"]  ) && [[row route_type] intValue] == kBusRoutesDefaultCellImageSubway)
-                    [defaultCell changeImageTo: kBusRoutesDefaultCellImageBSS];
-                else if ( [self.travelMode isEqualToString:@"NHSL"] )
-                    [defaultCell changeImageTo: kBusRoutesDefaultCellImageNHSL];
-                else
-                    [defaultCell changeImageTo: [[row route_type] intValue] ];
-                
-                
-                return defaultCell;
-                
+
                 break;
             default:
                 
@@ -1095,7 +925,7 @@
     
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"RSVC - tV:sectionForSectionIndexTitle:%@ atIndex:%d", title, index);
+    NSLog(@"RSVC - tV:sectionForSectionIndexTitle:%@ atIndex:%ld", title, (long)index);
 #endif
 
     
@@ -1197,7 +1027,7 @@
 
     
     
-    NSLog(@"BSRVC - s/r: %d/%d", indexPath.section, indexPath.row);
+    NSLog(@"BSRVC - s/r: %ld/%ld", (long)indexPath.section, (long)indexPath.row);
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"ItineraryStoryboard" bundle:nil];
     ItineraryViewController *iVC = (ItineraryViewController*)[storyboard instantiateInitialViewController];
@@ -1208,8 +1038,8 @@
     //   If a Recently Viewed or Favorited Itinerary was selected, pass a completed ItineraryObject
     //      * startStop, startID, endStop, endID, routeID, routeShortName, routeLongName and directionID
     
-    int row = [[[self tableView] indexPathForSelectedRow] row];
-    int section = [[[self tableView] indexPathForSelectedRow] section];
+    NSInteger row = [[[self tableView] indexPathForSelectedRow] row];
+    NSInteger section = [[[self tableView] indexPathForSelectedRow] section];
     
     NSIndexPath *path = [NSIndexPath indexPathForRow:row inSection:section];
     
@@ -1246,16 +1076,7 @@
     
     [self.navigationController pushViewController:iVC animated:YES];
     
-    
     return;
-
-    
-    if ( !_segueInAction )
-    {
-        [SVProgressHUD showWithStatus:@"Loading..."];
-        [self performSegueWithIdentifier:@"ItinerarySegue" sender:self];
-    }
-    
     
 }
 
@@ -1493,7 +1314,7 @@
         else
             [newData setRoute_short_name: route_short_name];
         
-        [newData setRoute_type: [NSNumber numberWithInt: route_type] ];
+        [newData setRoute_type: [NSNumber numberWithLong: route_type] ];
         
         [_routeData addObject: newData toSection:kDisplayedRouteDataRoutes];
         
@@ -1513,130 +1334,6 @@
     [self sort];
     
     [database close];
-    
-    return;
-    
-    
-    
-    
-    
-    // Begin SQL3 db process
-    if(sqlite3_open( [[GTFSCommon filePath] UTF8String], &dbh) == SQLITE_OK)
-    {
-        
-        NSString *queryStr;
-        
-        if ( [[self travelMode] isEqualToString:@"Market/Frankford"] )
-        {
-            queryStr = [NSString stringWithFormat:@"select route_short_name,route_id from routes where route_short_name='MFL' "];
-        }
-        else  if ([[self travelMode] isEqualToString:@"Bus"] )
-        {
-            if ( busFilterStr == nil )
-                queryStr = @"SELECT route_short_name, route_id, route_type FROM routes ORDER BY route_short_name ASC";
-            //queryStr = @"SELECT DISTINCT route_short_name, route_id, route_type FROM unique_stops ORDER BY route_short_name ASC";
-            else
-                queryStr = [NSString stringWithFormat:@"SELECT route_short_name, route_id, route_type FROM routes WHERE %@ ORDER BY route_short_name ASC", busFilterStr];
-            
-            //                queryStr = [NSString stringWithFormat:@"SELECT DISTINCT route_short_name, route_id, route_type FROM unique_stops WHERE %@ ORDER BY route_short_name ASC", busFilterStr];
-            //            NSLog(@"BSRVC -(void) getUnfilteredBusRoutes queryStr: %@", queryStr);
-            
-        }
-        else if ( [[self travelMode] isEqualToString:@"Regional Rail"])
-        {
-            queryStr = [NSString stringWithFormat:@"SELECT route_short_name, route_id, route_type FROM routes WHERE route_type=%d ",2];
-        }
-        
-        queryType = kQueryNormalBus;
-        sqlite3_stmt * statement;
-        
-        if(sqlite3_prepare_v2(dbh, [queryStr UTF8String], -1, &statement, nil)==SQLITE_OK)
-        {
-            
-            while (sqlite3_step(statement)==SQLITE_ROW)
-            {
-                
-                char *routes    = (char *)  sqlite3_column_text(statement, 0);
-                char *route_id  = (char *)  sqlite3_column_text(statement, 1);
-                int  route_type = (int)     sqlite3_column_int (statement, 2);
-                
-                NSString *routesstr   = [[NSString alloc] initWithUTF8String: routes];
-                NSString *routesstrid = [[NSString alloc] initWithUTF8String: route_id];
-                NSNumber *routeType   = [[NSNumber alloc] initWithInt       : route_type];
-                
-                // Easier to friggin' read!  An array of dictionary values, easy to pull the data that you need from them.  Don't have to remember what's in objectAtIndex: 2
-                RouteData *newData = [[RouteData alloc] init];
-                [newData setRoute_id: routesstrid];
-                [newData setRoute_short_name: routesstr];
-                [newData setRoute_type: routeType];
-                
-                [_routeData addObject: newData toSection:kDisplayedRouteDataRoutes];
-                
-                //                [unfilteredList addObject:
-                //                 [NSDictionary dictionaryWithObjects: [NSArray arrayWithObjects:routesstr, routesstrid, nil]
-                //                                             forKeys: [NSArray arrayWithObjects:@"route_short_name", @"route_id", nil] ] ];
-                
-            } // while (sqlite3_step(statement)==SQLITE_ROW)
-            
-            sqlite3_finalize(statement);
-            
-        }
-        else
-        {
-            int errorCode = sqlite3_step( statement );
-            char *errMsg = (char *)sqlite3_errmsg(dbh);
-            NSString *errStr = [[NSString alloc] initWithUTF8String:errMsg];
-            NSLog(@"BSRVC - query failure, code: %d, %@", errorCode, errStr);
-            NSLog(@"BSRVC - query str: %@", queryStr);
-            queryType = kQueryFailure;
-        }
-        
-        
-        // Basic sorting algorithm.  If one string is larger than another, it's safe to assume it's a larger number.
-        // otherwise if the lengths are the same, sort normally.
-        // E.g.
-        //   "10" > "1"  - since "10" is longer it's larger  return 1
-        //   "2"  > "10" - since "2" is not longer than "10" return -1
-        
-        // A more complicated algorithm.  The bus route ID is mostly a number stored in a string.  But there are
-        //   a handful of cases where it's an alphanumeric character.  In which case the above example does not work
-        //   out so well.  In order to address this we do a simple check to determine if the number in the string is
-        //   actually a number.  [string intValue] returns 0 for non-numbers and the actual number for everything else.
-        //   Hopefully no Bus Route will ever be 0.
-        
-        // The logic:  Check both values to see if they're alphanumerics.  If they are, just compare one against the other.  Easy Peasy.
-        // If they're not both 0, check if one of them is.  If it's the first value return 1 (advancing the second value in the array.)
-        // If it's the second value return -1 (advancing the first value in the array.)
-        
-        [_routeData sortWithSection:kDisplayedRouteDataRoutes];
-        
-        //        [unfilteredList sortUsingComparator:^NSComparisonResult(id a, id b) {
-        ////        [_routeData.routes sortUsingComparator:^NSComparisonResult(id a, id b) {
-        //            //            int first = [[a objectAtIndex:0]  intValue];
-        //            //            int second = [[b objectAtIndex:0] intValue];
-        //
-        //            int first  = [[a objectForKey:@"route_short_name"] intValue];
-        //            int second = [[b objectForKey:@"route_short_name"] intValue];
-        //
-        //            if ( !first && !second )
-        //                return first > second;
-        //            else if (first == 0)
-        //                return 1;
-        //            else if (second == 0)
-        //                return -1;
-        //            else
-        //                return first > second;
-        //
-        //        }];
-        
-        //        NSLog(@"BSRVC - arr: %@", arr);
-        
-    } // if(sqlite3_open([[GTFSCommon filepath] UTF8String], &db) == SQLITE_OK)
-    
-    //    NSLog(@"BSRVC -(void) getUnfilteredBusRoutes: unFiltered results: %d", [unfilteredList count]);
-    //    NSLog(@"BSRVC -(void) getUnfilteredBusRoutes: unFiltered results: %d", [_routeData.routes count]);
-    // TODO:  Pull the open/close sqlite commands out of these routes.  One it once at the beginning of the views life and close it at the end
-    sqlite3_close(dbh);  // Should probably open and close the database once, not multiple times.
     
 }
 
@@ -1682,7 +1379,7 @@
         if ( ![newChar isEqualToString:lastChar] )
         {
             [sectionTitle addObject: newChar];
-            [sectionIndex addObject: [NSNumber numberWithInt:index] ];
+            [sectionIndex addObject: [NSNumber numberWithInt:(int)index] ];
             
             lastChar = newChar;
         }  // if ( ![newChar isEqualToString:lastChar] )
@@ -2032,7 +1729,7 @@
 
     
     NSInteger index = [(UISegmentedControl*)sender selectedSegmentIndex];
-    NSLog(@"RSVC - filter has changed to: %d", index);
+    NSLog(@"RSVC - filter has changed to: %ld", (long)index);
     
     
     //    BOOL showOnlyRoutes = YES;
@@ -2127,7 +1824,7 @@
     {
         [self getFilteredBusRoutes];
         [self.searchDisplayController.searchBar setText: self.searchDisplayController.searchBar.text];  // Forces the searchDisplayController to refresh the data
-        NSLog(@"BSRVC - filterHasChanged:  filteredBusRoutes size: %d", [filteredList count]);
+        NSLog(@"BSRVC - filterHasChanged:  filteredBusRoutes size: %lu", (unsigned long)[filteredList count]);
     }
     
 }
@@ -2176,7 +1873,7 @@
     {
         [self getFilteredBusRoutes];
         [self.searchDisplayController.searchBar setText: self.searchDisplayController.searchBar.text];  // Forces the searchDisplayController to refresh the data
-        NSLog(@"RSVC - filterHasChanged:  filteredBusRoutes size: %d", [filteredList count]);
+        NSLog(@"RSVC - filterHasChanged:  filteredBusRoutes size: %lu", (unsigned long)[filteredList count]);
     }
     
     //    NSLog(@"reloading data");

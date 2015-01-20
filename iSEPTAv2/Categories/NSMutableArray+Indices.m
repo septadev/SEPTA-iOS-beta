@@ -58,7 +58,7 @@
             [sectionTitle addObject: newChar];
             
             if ( useSection == NO )
-                [sectionIndex addObject: [NSNumber numberWithInt:index] ];
+                [sectionIndex addObject: [NSNumber numberWithInt:(int)index] ];
             else
                 [sectionIndex addObject: [NSIndexPath indexPathForRow:index inSection:[section intValue] ] ];
             

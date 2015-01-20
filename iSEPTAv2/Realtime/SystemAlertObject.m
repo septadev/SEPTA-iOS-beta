@@ -28,7 +28,7 @@
 
 -(int) numOfAlerts;
 {
-    return [current_message length] + [advisory_message length] + [detour_message length];
+    return (int)([current_message length] + [advisory_message length] + [detour_message length]);
 }
 
 -(BOOL) isAlert

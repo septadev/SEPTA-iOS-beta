@@ -442,19 +442,19 @@
 -(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    return
+    return;
     
-    [cell setBackgroundColor: [UIColor colorWithWhite:1.0f alpha:.8] ];
-    
-    UIImageView *separator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gradient_line.png"]];
-//    [separator setAutoresizesSubviews:YES];
-//    [separator setAutoresizingMask: (UIViewAutoresizingFlexibleWidth) ];
-//    [separator setContentMode: UIViewContentModeScaleAspectFit];
-    
-    UITableViewCell *newCell = (UITableViewCell*)cell;
-    
-    [separator setFrame: CGRectOffset(separator.frame, 0, newCell.frame.size.height-separator.frame.size.height)];
-    [newCell.contentView addSubview: separator];
+//    [cell setBackgroundColor: [UIColor colorWithWhite:1.0f alpha:.8] ];
+//    
+//    UIImageView *separator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gradient_line.png"]];
+////    [separator setAutoresizesSubviews:YES];
+////    [separator setAutoresizingMask: (UIViewAutoresizingFlexibleWidth) ];
+////    [separator setContentMode: UIViewContentModeScaleAspectFit];
+//    
+//    UITableViewCell *newCell = (UITableViewCell*)cell;
+//    
+//    [separator setFrame: CGRectOffset(separator.frame, 0, newCell.frame.size.height-separator.frame.size.height)];
+//    [newCell.contentView addSubview: separator];
     
 }
 
@@ -606,6 +606,8 @@
 -(id) cellForSection: (NSIndexPath*) indexPath
 {
 
+//    NSLog(@"indexPath: %ld/%ld, # of rows in section 2: %ld", (long)indexPath.section, (long)indexPath.row, (long)[_tableData numOfRowsForSection:2]);
+    
     static NSString *singleTripCell     = @"NextToArriveSingleTripCell";
     static NSString *connectionTripCell = @"NextToArriveConnectionTripCell";
     static NSString *tripHistoryCell    = @"NextToArriveTripHistoryCell";
@@ -623,7 +625,7 @@
         CAShapeLayer *maskLayer = [self formatCell: myCell forIndexPath:indexPath];
         ((UITableViewCell*)myCell).layer.mask = maskLayer;
         
-        return myCell;
+//        return myCell;
     }
     else
     {
@@ -635,16 +637,9 @@
         {
             myCell = (NextToArriveSingleTripCell*)[self.tableView dequeueReusableCellWithIdentifier: singleTripCell];
             [myCell updateCellUsingJsonData: ntaObject];
-
-//            NextToArriveSingleTripCell *testCell = (NextToArriveSingleTripCell*)[self.tableView dequeueReusableCellWithIdentifier:singleTripCell];
             
 //            myCell height is the generic 44 pixels.  A workaround is needed here.
             maskLayer = [self formatCell: (NextToArriveSingleTripCell*)myCell forIndexPath:indexPath];
-            
-            //            NextToArrivaJSONObject *ntaObject = [_tableData objectForIndexPath:indexPath];
-
-            // This is nice and all, but myCell objects are all UILabels, ntaObject objects are all strings.  Problem?  You bet!
-//            [myCell setValuesForKeysWithDictionary: [ntaObject dictionaryWithValuesForKeys: [NSArray arrayWithObjects:@"orig_train", @"orig_arrival_time", @"orig_line", @"orig_departure_time", @"orig_delay", nil]] ];
             
         }
         else  // Otherwise a connection is required
@@ -658,10 +653,11 @@
         
 
         ((UITableViewCell*)myCell).layer.mask = maskLayer;
-
-        return myCell;
+        
     }
-
+    
+//    NSLog(@"%@",myCell);
+    return myCell;
     
 }
 
@@ -1059,15 +1055,16 @@
     [sObject setEndStopID    : _itinerary.endStopID];
     [sObject setStartStopID  : _itinerary.startStopID];
     
-    if ( [self doesObject: sObject existInSection:@"Favorites"] != NSNotFound )
+    if ( [self doesObject: sObject existInSection:@"Favorites"] != -1 )
     {
         _favoriteStatus = kNextToArriveFavoriteSubtitleAdded;
     }
-    else if ( [self doesObject: sObject existInSection:@"Recent"] != NSNotFound )
+    else if ( [self doesObject: sObject existInSection:@"Recent"] != -1 )
     {
         _favoriteStatus = kNextToArriveFavoriteSubtitleNotAdded;
     }
-    
+   
+
     
 //    for (NTASaveObject *sObject in [_tableData objectForSectionWithTitle:@"Favorites"] )
 //    {
@@ -1207,6 +1204,11 @@
             
             [self updateItinerary];
             
+            // If the start/end have been reversed, immediately get the JSON data, but invalidate the current timer first
+            [self invalidateTimer];
+            [self getLatestJSONData];
+            
+            
 //            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
             
             return;
@@ -1238,7 +1240,7 @@
     [sntvc setSelectionType: selType];   // Determines its behavior, whether to show only the start, end or both start/end stops information
     [sntvc setDelegate:self];
     
-    NSLog(@"NtATVC - itineraryButtonPressed, selectionType: %d", selType);
+    NSLog(@"NtATVC - itineraryButtonPressed, selectionType: %ld", selType);
     
     [self.navigationController pushViewController:sntvc animated:YES];
     
@@ -1430,16 +1432,16 @@
 
 
     
-    int row;
+    NSInteger row;
     NSString *title;
-    if ( (row = [self doesObject:sObject existInSection:@"Favorites"]) != NSNotFound )
+    if ( (row = [self doesObject:sObject existInSection:@"Favorites"]) != -1 )
     {
         // If the current start/end names already exists in Favorites, nothing to do but update the timestamp
         NTASaveObject *sObject = [_tableData objectForIndexPath: [NSIndexPath indexPathForRow:row inSection:[_tableData indexForSectionTitle:@"Favorites"] ] ];
         [sObject setAddedDate: [NSDate date] ];
         title = @"Favorites";
     }
-    else if ( (row = [self doesObject:sObject existInSection:@"Recent"]) != NSNotFound )
+    else if ( (row = [self doesObject:sObject existInSection:@"Recent"]) != -1 )
     {
         // If the current start/end names already exists in Favorites, nothing to do but update the timestamp
         NTASaveObject *sObject = [_tableData objectForIndexPath: [NSIndexPath indexPathForRow:row inSection:[_tableData indexForSectionTitle:@"Recent"] ] ];
@@ -1479,7 +1481,7 @@
 
 // There are cases where the Saved Object might not have certain information, such as the stop_id for each stop_name.  This function
 // updates _itinerary.startStopID and endStopID fields as needed.
--(void) loadStopIDstartEND:(int) startEND
+-(void) loadStopIDstartEND:(NSInteger) startEND
 {
     
     // startEND ->  start (1, true) END (0, false)
@@ -1563,14 +1565,14 @@
 }
 
 
--(int) doesObject:(NTASaveObject*) sObject existInSection:(NSString*) title
+-(NSInteger) doesObject:(NTASaveObject*) sObject existInSection:(NSString*) title
 {
     
     if ( title == nil )
-        return NSNotFound;
+        return -1;
     
     if ( [_tableData objectForSectionWithTitle:title] == nil )
-        return NSNotFound;
+        return -1;
     
     
     int count = 0;
@@ -1581,7 +1583,7 @@
         count++;
     }
     
-    return NSNotFound;
+    return -1;
     
 }
 
@@ -1606,9 +1608,9 @@
 
     
     // Remove object from saveData recent/favorites
-    int row;
+    NSInteger row;
     NSIndexPath *indexPath;
-    if ( ( row = [self doesObject:sObject existInSection:title] ) != NSNotFound )
+    if ( ( row = [self doesObject:sObject existInSection:title] ) != -1 )
     {
         indexPath = [NSIndexPath indexPathForRow:row inSection: [_tableData indexForSectionTitle: title] ];
         [self removeObjectAtIndexPath: indexPath];
@@ -1750,6 +1752,8 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
 -(void) getLatestJSONData
 {
     
+    NSLog(@"NTAVC - getLatestJSONData");
+    
 //    NSLog(@"DSTVC - getLatestBusJSONData");
     
     // Check for Internet connection
@@ -1780,16 +1784,13 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     NSString *_newStartStop = [self fixMismatchedStopName: startStopName];
     NSString *_newEndStop   = [self fixMismatchedStopName: endStopName];
     
-    //        NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/NextToArrive/%@/%@/10", _startStopName, _endStopName];
-    
     NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/NextToArrive/%@/%@/50", _newStartStop, _newEndStop];
     
     
     NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"NTAVC - getLatestRailJSONData -- api url: %@", webStringURL);
     
-    [SVProgressHUD showWithStatus:@"Loading..."]
-    ;
+    [SVProgressHUD showWithStatus:@"Loading..."];
     
     _jsonOp = [[NSBlockOperation alloc] init];
     
@@ -1875,6 +1876,7 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     
     if ( returnedData == nil )  // If we didn't even receive data, try again in another JSON_REFRESH_RATE seconds
     {
+        NSLog(@"NTAVC - processJSON - kicking off another JSON request - 1");
         [self kickOffAnotherJSONRequest];
         return;
     }
@@ -1896,6 +1898,7 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     
     if ( json == nil || error != nil )  // Something bad happened, so just return
     {
+        NSLog(@"NTAVC - processJSON - kicking off another JSON request - 2");
         [self kickOffAnotherJSONRequest];  // And before we return, let's try again in JSON_REFRESH_RATE seconds
         return;
     }
@@ -1952,7 +1955,8 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     [_tableData replaceArrayWith: myData forTitle:@"Data"];
     _launchUpdateTimer = YES;
     
-    // Only start the timer for the next JSON request after 
+    // Only start the timer for the next JSON request after
+    NSLog(@"NTAVC - processJSON - kicking off another JSON request - 3");
     [self kickOffAnotherJSONRequest];
     
     

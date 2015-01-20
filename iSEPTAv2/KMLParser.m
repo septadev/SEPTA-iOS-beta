@@ -420,7 +420,7 @@ static void strToCoords(NSString *str, CLLocationCoordinate2D **coordsOut, NSUIn
     }
     
     
-    NSLog(@"KML - strToCoords -- read: %d, space: %d, str length: %d", read, space, [str length]);
+    NSLog(@"KML - strToCoords -- read: %lu, space: %lu, str length: %lu", (unsigned long)read, (unsigned long)space, (unsigned long)[str length]);
 
     
     *coordsOut = coords;
@@ -514,13 +514,13 @@ static void strToCoords(NSString *str, CLLocationCoordinate2D **coordsOut, NSUIn
         {
             CLLocationCoordinate2D *pts = ((KMLLineString*)singleGeometry).points;
             NSUInteger length = ((KMLLineString*)singleGeometry).length;
-            NSLog(@"length: %04d, first point: (%6.4f, %6.4f), last point: (%6.4f, %6.4f)\t\t%@", length, (pts+0)->longitude, (pts+0)->latitude, (pts+length-1)->longitude, (pts+length-1)->latitude, placemark.name);
+            NSLog(@"length: %04lu, first point: (%6.4f, %6.4f), last point: (%6.4f, %6.4f)\t\t%@", (unsigned long)length, (pts+0)->longitude, (pts+0)->latitude, (pts+length-1)->longitude, (pts+length-1)->latitude, placemark.name);
         }
 #endif
         
         CLLocationCoordinate2D *pts = ((KMLLineString*)placemark.geometry).points;
         NSUInteger length = ((KMLLineString*)placemark.geometry).length;
-        NSLog(@"length: %04d, first point: (%6.4f, %6.4f), last point: (%6.4f, %6.4f)\t\t%@", length, (pts+0)->longitude, (pts+0)->latitude, (pts+length-1)->longitude, (pts+length-1)->latitude, placemark.name);
+        NSLog(@"length: %04lu, first point: (%6.4f, %6.4f), last point: (%6.4f, %6.4f)\t\t%@", (unsigned long)length, (pts+0)->longitude, (pts+0)->latitude, (pts+length-1)->longitude, (pts+length-1)->latitude, placemark.name);
         
     }
     

@@ -202,8 +202,11 @@
         locationEnabled = YES;
         
         _locationManager = [[CLLocationManager alloc] init];
+        [_locationManager setDistanceFilter: kCLDistanceFilterNone];
+        [_locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
         
         [_locationManager setDelegate:self];
+        [_locationManager requestWhenInUseAuthorization];
         [_locationManager startUpdatingLocation];
         
         
@@ -233,10 +236,8 @@
     // --======
     // A little background on span, thanks to http://stackoverflow.com/questions/7381783/mkcoordinatespan-in-meters
     
-    float displayRadius = 2.0;
-    [mapView setRegion: MKCoordinateRegionMakeWithDistance(_locationManager.location.coordinate, [self milesToMetersFor: displayRadius*2], [self milesToMetersFor: displayRadius*2] ) animated:YES];
-    
-    [mapView setCenterCoordinate:_locationManager.location.coordinate animated:YES];
+//    float displayRadius = 2.0;
+
     [mapView setZoomEnabled:YES];
     [mapView setScrollEnabled:YES];
     
@@ -545,7 +546,7 @@
            fromLocation:(CLLocation *)oldLocation
 {
     
-    //    NSLog(@"Location (iOS5): %@", [newLocation description]);
+//        NSLog(@"Location (iOS5): %@", [newLocation description]);
     ////    [manager stopUpdatingLocation];
     //
     //    [_tableData replaceObjectAtIndex:0 withObject: [NSString stringWithFormat:@"(lat,lon) = (%8.5f, %8.5f)", newLocation.coordinate.latitude, newLocation.coordinate.longitude] ];
@@ -557,10 +558,29 @@
 // Use for iOS6
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
+
+    if ( [locations count] > 0 )
+    {
+        CLLocation *location = [[CLLocation alloc] init];
+        location = [locations firstObject];
+
+        float displayRadius = 2.0;
+        
+        [mapView setZoomEnabled:YES];
+        [mapView setScrollEnabled:YES];
+        
+        [mapView setShowsUserLocation:YES];
+        
+        [mapView setRegion: MKCoordinateRegionMakeWithDistance(location.coordinate, [self milesToMetersFor: displayRadius*2], [self milesToMetersFor: displayRadius*2] ) animated:YES];
+        
+        [mapView setCenterCoordinate:location.coordinate animated:YES];
+
+    }
+    
     
 //    for (CLLocation *location in locations)
 //    {
-//        //        NSLog(@"Location (iOS6):%@", location);
+//                NSLog(@"Location (iOS6):%@", location);
 //        //
 //        //        [_tableData replaceObjectAtIndex:0 withObject: [NSString stringWithFormat:@"(lat,lon) = (%10.7f, %10.7f)", location.coordinate.latitude, location.coordinate.longitude] ];
 //        ////        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -658,7 +678,8 @@
     
     
     CLLocation *location = [_locationManager location];
-    
+    if ( location == nil )
+        NSLog(@"CLLocation is nil");
     
     //    if ( radiusInMiles < 1 )
     //        [mapView setRegion: MKCoordinateRegionMakeWithDistance(_locationManager.location.coordinate, [self milesToMetersFor:radiusInMiles*2], [self milesToMetersFor:radiusInMiles*2] ) animated:YES];
@@ -684,6 +705,7 @@
         NSURL *url = [NSURL URLWithString: webStringURL];
         NSURLRequest *request = [NSURLRequest requestWithURL: url];
         
+        NSLog(@"webStringURL: %@", webStringURL);
         
         AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                             success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)

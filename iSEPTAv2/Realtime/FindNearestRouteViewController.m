@@ -256,7 +256,7 @@ float MilesToMeters(float miles)
 - (IBAction)pageControlChanged:(id)sender
 {
     
-    int page = [self.pageControl currentPage];
+    int page = (int)[self.pageControl currentPage];
     
     // update the scroll view to the appropriate page
     CGRect frame = self.scrollView.frame;
@@ -524,7 +524,7 @@ NSComparisonResult (^sortGetLocationObjectByLocationName)(GetLocationsObject*,Ge
 
 -(void) filterData
 {
-    int index = [self.segmentTypes selectedSegmentIndex];
+    int index = (int)[self.segmentTypes selectedSegmentIndex];
     if ( index == -1 )
         index = 0;
     

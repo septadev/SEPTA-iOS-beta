@@ -192,12 +192,12 @@
     else
     {
         [itinerary setStartStopName: self.routeData.start_stop_name];
-        [itinerary setStartStopID:[NSNumber numberWithInt: self.routeData.start_stop_id] ];
+        [itinerary setStartStopID:[NSNumber numberWithInt: (int) self.routeData.start_stop_id] ];
         
         [itinerary setEndStopName: self.routeData.end_stop_name];
-        [itinerary setEndStopID:[NSNumber numberWithInt:self.routeData.end_stop_id] ];
+        [itinerary setEndStopID:[NSNumber numberWithInt:(int)self.routeData.end_stop_id] ];
         
-        [itinerary setDirectionID:[NSNumber numberWithInt:self.routeData.direction_id] ];
+        [itinerary setDirectionID:[NSNumber numberWithInt:(int)self.routeData.direction_id] ];
         
         _currentDisplayDirection = self.routeData.direction_id;
         
@@ -1240,7 +1240,7 @@
         }
         else
         {
-            queryStr = [NSString stringWithFormat:@"SELECT route_id, block_id, stop_sequence, arrival_time, direction_id, service_id, stop_timesDB.trip_id trip_id FROM stop_timesDB JOIN tripsDB ON tripsDB.trip_id=stop_timesDB.trip_id WHERE tripsDB.trip_id IN (SELECT trip_id FROM tripsDB WHERE route_id=\"%@\" AND direction_id=%d ) AND route_id=\"%@\" AND stop_id=%d ORDER BY arrival_time", itinerary.routeShortName, _currentDisplayDirection, itinerary.routeShortName, [itinerary.endStopID intValue] ];
+            queryStr = [NSString stringWithFormat:@"SELECT route_id, block_id, stop_sequence, arrival_time, direction_id, service_id, stop_timesDB.trip_id trip_id FROM stop_timesDB JOIN tripsDB ON tripsDB.trip_id=stop_timesDB.trip_id WHERE tripsDB.trip_id IN (SELECT trip_id FROM tripsDB WHERE route_id=\"%@\" AND direction_id=%ld ) AND route_id=\"%@\" AND stop_id=%d ORDER BY arrival_time", itinerary.routeShortName, (long)_currentDisplayDirection, itinerary.routeShortName, [itinerary.endStopID intValue] ];
             
             queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
         }
@@ -1454,7 +1454,7 @@
         return;
     }
     
-    NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"%@ AND (directionID == %d)", _servicePredicate, _currentDisplayDirection] ];
+    NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"%@ AND (directionID == %ld)", _servicePredicate, (long)_currentDisplayDirection] ];
     
     NSLog(@"IVC - filter active trains: %@", predicateFilter);
     activeTrainsArr = nil;
@@ -1509,7 +1509,7 @@
 //    NSLog(@"IVC:fCT - %@", _servicePredicate);
     
     [self getServiceIDFor:_currentFilter];  // Updates _servicePredicate
-    NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"%@  AND (directionID == %d) AND (startTime > %d)", _servicePredicate, _currentDisplayDirection, now] ];
+    NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"%@  AND (directionID == %ld) AND (startTime > %d)", _servicePredicate, (long)_currentDisplayDirection, now] ];
 
     
     NSSortDescriptor *timeSort = [NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES];
@@ -1563,7 +1563,7 @@
     
     
     // Why, why, why are we changing the direciton!?  NO!  Bad Greg!  Bad!
-    [itinerary setDirectionID: [NSNumber numberWithInt:_currentDisplayDirection] ];
+    [itinerary setDirectionID: [NSNumber numberWithInt:(int)_currentDisplayDirection] ];
     
     //    DisplayedRouteData *routeData = [self convertItineraryObjectToDisplayedRouteData];
     //    NSLog(@"RouteData: %@", routeData.current);
@@ -1580,120 +1580,6 @@
 #endif
     
     return;
-    
-    if ( [[segue identifier] isEqualToString:@"StopTimesSegue"] || [[segue identifier] isEqualToString:@"StopTimesSegue"] )
-    {
-        
-        NSLog(@"IVC - Seguing to %@", [segue identifier] );
-        
-        //        UINavigationController *navController = [segue destinationViewController];
-        //        StopNamesForRouteTableController *snarfvc = (StopNamesForRouteTableController*)[navController topViewController];
-        
-        StopNamesForRouteTableController *snarfvc = [segue destinationViewController];
-        
-        if ( [[segue identifier] isEqualToString:@"StopTimesSegue"] )
-        {
-            [snarfvc setTitle:@"Select Start"];
-        }
-        else if ( [[segue identifier] isEqualToString:@"StopTimesSegue"] )
-        {
-            [snarfvc setTitle:@"Select End"];
-        }
-        
-        
-        [snarfvc setDelegate:self];
-        _findLocationsSegue = YES;
-        
-        NSString *queryStr = [self returnQueryStringForTravelMode];
-        NSLog(@"IVC - queryStr: %@", queryStr);
-        
-        //        [SVProgressHUD showWithStatus:@"Disabled due to 3 minute long query ;_;"];
-        
-        [snarfvc setQueryStr: queryStr ];
-        [snarfvc setTravelMode: self.travelMode];
-        [snarfvc setItinerary: itinerary];
-        
-        //        if ( [itinerary.startStopName isEqualToString: DEFAULT_MESSAGE] && [itinerary.endStopName isEqualToString:DEFAULT_MESSAGE] )
-        if ( [itinerary.startStopID intValue] == 0 && [itinerary.endStopID intValue] == 0 )
-        {
-            // Stop names undefined, don't set direction
-            [snarfvc setDirection:nil];
-        }
-        else
-        {
-            // One or both fields have something other then the DEFAULT_MESSAGE, pass it the current direction
-            [snarfvc setDirection:[NSNumber numberWithInt:_currentDisplayDirection] ];
-        }
-        
-        
-    }
-    else if ( [[segue identifier] isEqualToString:@"TripDetailsSegue"] )
-    {
-        
-        TripDetailsTableController *tdtc = [segue destinationViewController];
-        
-        NSIndexPath *indexPath = [self.tableTrips indexPathForSelectedRow];
-        
-        TripObject *thisTrip;
-        ActiveTrainObject *activeTrain;
-        
-        NSString *tripID;
-        
-        switch (indexPath.section)
-        {
-            case 1:
-                activeTrain = [activeTrainsArr objectAtIndex:indexPath.row];
-                
-                for (NSValue *object in [_masterTrainLookUpDict objectForKey: [NSString stringWithFormat:@"%d",[activeTrain.trainNo intValue] ] ])
-                {
-                    TripObject *trip = [object nonretainedObjectValue];
-                    if ( activeTrain.tripID == trip.tripID )
-                    {
-                        thisTrip = trip;
-                        break;
-                    }
-                }
-                
-                //                for (TripObject *trip in currentTripsArr)
-                //                {
-                //
-                //                    if ( activeTrain.tripID == trip.tripID )
-                //                    {
-                //                        thisTrip = trip;
-                //                        break;
-                //                    }
-                //
-                //                }
-                
-                tripID = [activeTrain tripID];
-                break;
-                
-            case 2:
-                thisTrip = [currentTripsArr objectAtIndex:indexPath.row];
-                tripID = [thisTrip tripID];
-                break;
-                
-            default:
-                thisTrip = nil;
-                break;
-        }
-        
-        [tdtc setTripID: tripID];
-        [tdtc setTrip: thisTrip];
-        [tdtc setTravelMode: self.travelMode];
-        
-    }
-    else if ( [[segue identifier] isEqualToString:@"MapViewSegue"] )
-    {
-        
-        MapViewController *mvc = [segue destinationViewController];
-        
-        [mvc setItinerary : itinerary];
-        [mvc setTravelMode: self.travelMode];
-        
-    }
-    
-    
     
 }
 
@@ -1739,7 +1625,7 @@
             // Since either one or two of the stop names have been filled in, the direction is now known
 //            queryStr = [NSString stringWithFormat:@"SELECT * FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_id=%@ AND direction_id=%d ORDER BY stop_name", self.routeData.route_id, _currentDisplayDirection];  // Was self.routeData.direction_id instead of _currentDisplayDirection
             
-            queryStr = [NSString stringWithFormat:@"SELECT * FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=%@ AND direction_id=%d ORDER BY stop_name", self.routeData.route_short_name, _currentDisplayDirection];  // Was self.routeData.direction_id instead of _currentDisplayDirection
+            queryStr = [NSString stringWithFormat:@"SELECT * FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=%@ AND direction_id=%ld ORDER BY stop_name", self.routeData.route_short_name, (long)_currentDisplayDirection];  // Was self.routeData.direction_id instead of _currentDisplayDirection
 
             
         }
@@ -1772,18 +1658,7 @@
 #endif
     
     [cell setBackgroundColor: [UIColor colorWithWhite:1.0f alpha:0.8f] ];
-    return;
-    
-    UIImageView *separator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"gradient_line.png"]];
-//    [separator setAutoresizesSubviews:YES];
-//    [separator setAutoresizingMask: (UIViewAutoresizingFlexibleWidth) ];
-//    [separator setContentMode: UIViewContentModeScaleAspectFit];
 
-    UITableViewCell *newCell = (UITableViewCell*)cell;
-    
-    [separator setFrame: CGRectOffset(separator.frame, 0, newCell.frame.size.height-separator.frame.size.height)];
-    [newCell.contentView addSubview: separator];
-    
 }
 
 
@@ -1851,7 +1726,7 @@
     NSLog(@"IVC tV:accessoryButtonTappedForRowWithIndexPath");
 #endif
     
-    NSLog(@"IVC - accessoryButtonTappedForSection/Row: %d/%d", indexPath.section, indexPath.row);
+    NSLog(@"IVC - accessoryButtonTappedForSection/Row: %ld/%ld", (long)indexPath.section, (long)indexPath.row);
 }
 
 
@@ -1863,17 +1738,17 @@
 #endif
     return;
     
-    if ( ( indexPath.section == 1 ) || ( indexPath.section == 2 ) )
-    {
-        NSLog(@"IVC - section 1, row %d selected", indexPath.row);
-        [self performSegueWithIdentifier:@"TripDetailsSegue" sender:self];
-    }
-    
-    //    if ( indexPath.section == 2 )
-    //    {
-    //        TripObject *trip = [currentTripsArr objectAtIndex:indexPath.row];
-    ////        NSLog(@"IVC - selected %d.%d : %@", indexPath.section, indexPath.row, trip);
-    //    }
+//    if ( ( indexPath.section == 1 ) || ( indexPath.section == 2 ) )
+//    {
+//        NSLog(@"IVC - section 1, row %ld selected", (long)indexPath.row);
+//        [self performSegueWithIdentifier:@"TripDetailsSegue" sender:self];
+//    }
+//    
+//    //    if ( indexPath.section == 2 )
+//    //    {
+//    //        TripObject *trip = [currentTripsArr objectAtIndex:indexPath.row];
+//    ////        NSLog(@"IVC - selected %d.%d : %@", indexPath.section, indexPath.row, trip);
+//    //    }
     
 }
 
@@ -1897,7 +1772,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"IVC tV:cellForRowAtIndexPath r/s: %d/%d", indexPath.row, indexPath.section);
+    NSLog(@"IVC tV:cellForRowAtIndexPath r/s: %ld/%ld", (long)indexPath.row, (long)indexPath.section);
 #endif
     
     static NSString *tripStr      = @"TripCell";
@@ -1945,7 +1820,7 @@
         ActiveTrainObject *atObject = [activeTrainsArr objectAtIndex: indexPath.row];
         [[cell lblTrainNo]    setText: [NSString stringWithFormat:@"%d", [atObject.trainNo intValue] ] ];
         
-        NSLog(@"_inDarkTerritory: %d, %d/%d", _inDarkTerritory, indexPath.section, indexPath.row);
+        NSLog(@"_inDarkTerritory: %d, %ld/%ld", _inDarkTerritory, (long)indexPath.section, (long)indexPath.row);
         
         if ( _inDarkTerritory )
         {
@@ -2156,7 +2031,7 @@
 #endif
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
-    NSLog(@"IVC - removing cell at %d/%d", indexPath.section, indexPath.row);
+    NSLog(@"IVC - removing cell at %ld/%ld", (long)indexPath.section, (long)indexPath.row);
     [currentTripsArr removeObjectAtIndex: [indexPath row] ];
     [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex: [indexPath section] ] withRowAnimation:UITableViewRowAnimationAutomatic];
     //    [cellRemoverTimer invalidate];
@@ -2630,7 +2505,7 @@
         _currentDisplayDirection = 0;
     }
     
-    [itinerary setDirectionID:[NSNumber numberWithInt: _currentDisplayDirection] ];
+    [itinerary setDirectionID:[NSNumber numberWithInt: (int)_currentDisplayDirection] ];
     
     [self changeTitleBar];
     
@@ -2681,7 +2556,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"IVC - getStopNamesButtonTapped:%d",startEND);
+    NSLog(@"IVC - getStopNamesButtonTapped:%ld",(long)startEND);
 #endif
 
     
@@ -2738,7 +2613,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"iVC: buttonPressed - stopData: %@, buttonType: %d", stopData, buttonType);
+    NSLog(@"iVC: buttonPressed - stopData: %@, buttonType: %ld", stopData, buttonType);
 #endif
 
     
@@ -2922,7 +2797,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"iVC: doneButtonPressed:WithStopName:%@ andStopID:%d withDirectionID:%d", selectedStopName, selectedStopID, [directionID intValue]);
+    NSLog(@"iVC: doneButtonPressed:WithStopName:%@ andStopID:%ld withDirectionID:%d", selectedStopName, (long)selectedStopID, [directionID intValue]);
 #endif
 
     
@@ -2938,14 +2813,14 @@
         //        [itinerary setReverse:NO];  //  Explicitly ensure the current object gets updated; 5/16/13 not needed anymore
         
         itinerary.startStopName = selectedStopName;
-        itinerary.startStopID   = [NSNumber numberWithInt:selectedStopID];
+        itinerary.startStopID   = [NSNumber numberWithInt:(int)selectedStopID];
         [self reverseStopLookUpForStart:YES];  // Now that the start name has changed, we need to find its reverse lookup (Bus ONLY)
     }
     else  // Oh, so you pressed the end button.  How... quaint.
     {
         //        [itinerary setReverse:NO]; // Explicitly ensure the current object gets updated; 5/16/13 not needed anymore
         itinerary.endStopName = selectedStopName;
-        itinerary.endStopID   = [NSNumber numberWithInt:selectedStopID];
+        itinerary.endStopID   = [NSNumber numberWithInt:(int)selectedStopID];
         [self reverseStopLookUpForStart:NO];  // Now that the end name has changed, we need to find its reverse lookup (Bus ONLY)
     }
     
@@ -3011,7 +2886,7 @@
 -(void) doneButtonPressed:(StopNamesForRouteTableController *)view WithStopName:(NSString *)selectedStopName andStopID:(NSInteger)selectedStopID
 {
 #if FUNCTION_NAMES_ON
-    NSLog(@"iVC: doneButtonPressedWithStopName:%@ andStopID:%d", selectedStopName, selectedStopID);
+    NSLog(@"iVC: doneButtonPressedWithStopName:%@ andStopID:%ld", selectedStopName, (long)selectedStopID);
 #endif
 
     [self doneButtonPressed:view WithStopName:selectedStopName andStopID:selectedStopID withDirectionID:NULL];
@@ -3268,7 +3143,7 @@
 {
 
 #if FUNCTION_NAMES_ON
-    NSLog(@"iVC: getServiceIDFor:%d", type);
+    NSLog(@"iVC: getServiceIDFor:%ld", type);
 #endif
     
     
@@ -3341,7 +3216,7 @@
 
     
     // Friday only train
-    NSInteger service_id = 0;
+//    NSInteger service_id = 0;
     //    [results next];
     
     
@@ -3351,7 +3226,7 @@
     BOOL hasResults = NO;
     for (NSNumber *sNums in sIDs)
     {
-        [_servicePredicate appendFormat:@"serviceID == %d or ", [sNums integerValue] ];
+        [_servicePredicate appendFormat:@"serviceID == %ld or ", (long)[sNums integerValue] ];
         hasResults = YES;
     }
     
@@ -3371,121 +3246,6 @@
     
     // Return the bitwise shifted serviceID
     return currentServiceID;
-    
-    
-    
-//    NSLog(@"filePath: %@", [GTFSCommon filePath]);
-    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
-    
-    if ( ![database open] )
-    {
-        [database close];
-        return 0;
-    }
-    
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
-    int weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
-    
-    int dayOfWeek;
-    
-    switch (type) {
-        case kItineraryFilterTypeNow:
-            dayOfWeek = pow(2,(7-weekday) );
-        break;
-        
-        case kItineraryFilterTypeSat:
-        dayOfWeek = pow(2,0); // 000 0001 (SuMoTu WeThFrSa), Saturday
-        break;
-        
-        case kItineraryFilterTypeSun:
-        dayOfWeek = pow(2,6); // 100 0000 (SuMoTu WeThFrSa), Sunday
-        break;
-        
-        case kItineraryFilterTypeWeekday:
-        dayOfWeek = pow(2,5) + pow(2,4) + pow(2,3) + pow(2,2) + pow(2,1); // 010 0000 (SuMoTu WeThFrSa), Monday
-        break;
-        
-        default:
-        break;
-    }
-    
-//    int dayOfWeek = pow(2,(7-weekday) );
-    
-    
-    /*
-     
-     Now:
-      Mon-Thu uses one service_id
-      Fri     uses two service_ids
-     
-     Weekday
-      Mon-Fri uses two service_ids, second service_id must indicate Friday only times
-     
-     */
-    
-    
-    NSString *queryStr = [NSString stringWithFormat:@"SELECT service_id, days FROM calendar_rail WHERE (days & %d) AND (start <= strftime('%%Y%%m%%d') AND (end >= strftime('%%Y%%m%%d') ));", dayOfWeek];
-//    NSString *queryStr = [NSString stringWithFormat:@"SELECT service_id, days FROM calendarDB WHERE (days & %d)", dayOfWeek];
-    
-    if ( [self.travelMode isEqualToString:@"Rail"] )
-        queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_rail"];
-    else
-        queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
-    
-    
-#if PRINT_SQL_CALLS
-    NSLog(@"IVC - getServiceIDFor: %@", queryStr);
-#endif
-    
-    FMResultSet *results = [database executeQuery: queryStr];
-    if ( [database hadError] )  // Check for errors
-    {
-        
-        int errorCode = [database lastErrorCode];
-        NSString *errorMsg = [database lastErrorMessage];
-        
-        NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
-        NSLog(@"IVC - query str: %@", queryStr);
-        
-        return 0;  // If an error occurred, there's nothing else to do but exit
-        
-    } // if ( [database hadError] )
-    
-    
-    // Friday only train 
-    service_id = 0;
-//    [results next];
-    
-    
-    _servicePredicate = [[NSMutableString alloc] initWithString:@"("];
-    // (service_id == 62 or service_id == 2)
-    
-    hasResults = NO;
-    while ( [results next] )
-    {
-        service_id = [results intForColumn:@"service_id"];
-        [_servicePredicate appendFormat:@"serviceID == %d or ", service_id];
-        hasResults = YES;
-    }
-
-    // Remove the last four characters, the ' or '
-    
-    if ( !hasResults )  // Fixes the crashing issue when using an older GTFS; quick and dirty fix
-    {
-        [_servicePredicate appendFormat:@"1 == 1) "];
-        return 9000;
-    }
-    
-    [_servicePredicate deleteCharactersInRange:NSMakeRange([_servicePredicate length]-4, 4)];
-    
-    [_servicePredicate appendString:@")"];
-
-//    NSLog(@"%@", _servicePredicate);
-
-    return (NSInteger)service_id;
-    
-    [database close];
     
 }
     
@@ -3877,58 +3637,6 @@
     NSLog(@"iVC - loadToFromDirections");
 #endif
     
-    return;
-    
-    // Only proceed if travelMode has been set to Bus or Trolley
-    if ( ![self.travelMode isEqualToString:@"Bus"] || ![self.travelMode isEqualToString:@"Trolley"] )
-    {
-        return;
-    }
-    
-    
-    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
-    
-    if ( ![database open] )
-    {
-        [database close];
-        return;
-    }
-    
-    NSString *queryStr = [NSString stringWithFormat:@"SELECT Route, Direction, DirectionDescription FROM bus_stop_directions WHERE Route=%@ ORDER BY dircode", itinerary.routeShortName];
-    
-#if PRINT_SQL_CALLS
-    NSLog(@"IVC - loadToFromDirections: %@", queryStr);
-#endif
-    
-    FMResultSet *results = [database executeQuery: queryStr];
-    if ( [database hadError] )  // Check for errors
-    {
-        
-        int errorCode = [database lastErrorCode];
-        NSString *errorMsg = [database lastErrorMessage];
-        
-        NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
-        NSLog(@"IVC - query str: %@", queryStr);
-        
-        return;  // If an error occurred, there's nothing else to do but exit
-        
-    } // if ( [database hadError] )
-    
-    
-    while ( [results next] )
-    {
-        //        NSString *route_short_name = [results stringForColumn:@"Route"];
-        //        NSString *direction        = [results stringForColumn:@"Direction"];
-        //        NSString *description      = [results stringForColumn:@"DirectionDescription"];
-        
-        [toFromDirection addObject:@"To Dir"];
-        [toFromDirection addObject:@"From Dir"];
-        
-    }
-    
-    
-    [database close];
-    
 }
 
 
@@ -4006,7 +3714,7 @@
     
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"IVC - tabbedButtonPressed:%d", tab);
+    NSLog(@"IVC - tabbedButtonPressed:%ld", (long)tab);
 #endif
     
     _currentFilter = tab;
@@ -4037,7 +3745,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"IVC - itineraryButtonPressed:%d", buttonType);
+    NSLog(@"IVC - itineraryButtonPressed:%ld", (long)buttonType);
 #endif
 
     

@@ -198,7 +198,7 @@
     {
                 
         AttributionsTextViewController *atVC = [segue destinationViewController];
-        int row = [[[self tableView] indexPathForSelectedRow] row];
+        int row = (int)[[[self tableView] indexPathForSelectedRow] row];
         
         AttributionData *attData = [_tableData objectAtIndex: row];
         [atVC setData: attData];

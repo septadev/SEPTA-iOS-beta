@@ -145,7 +145,7 @@
         if ( ![newChar isEqualToString:lastChar] )
         {
             [_timesSectionTitle addObject: newChar];
-            [_timesSectionIndex addObject: [NSNumber numberWithInt:index] ];
+            [_timesSectionIndex addObject: [NSNumber numberWithInt:(int)index] ];
             
 //            NSLog(@"STM - title: %@, index: %d", newChar, index);
             

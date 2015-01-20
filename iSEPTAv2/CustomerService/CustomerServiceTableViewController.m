@@ -156,7 +156,7 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 
-    NSLog(@"s/r - %d/%d", indexPath.section, indexPath.row);
+    NSLog(@"s/r - %ld/%ld", (long)indexPath.section, (long)indexPath.row);
 
     if ( indexPath.section == 1 && indexPath.row == 0 )
     {

@@ -321,59 +321,8 @@
 {
     
     return;
-    [SVProgressHUD showWithStatus:@"Loading..."];
 
-    NSIndexPath *path = _selectedIndexPath;
-//    StopNamesObject *stopNames = [_stopNamesArr objectAtIndex:path.row];
-    
-    TripData *trip;
-    if ( path.section == 0 )
-    {
-        trip = [_stopsSection0 objectAtIndex: path.row];
-    }
-    else if ( path.section == 1 )
-    {
-        trip = [_stopsSection1 objectAtIndex: path.row];
-    }
-    
-//    TripData *trip = [_stopNames objectForIndexPath:path];
-    
-    NSString *selectedStopName = [trip start_stop_name];
-    NSInteger selectedStopID  = [[trip start_stop_id] intValue];
-    NSNumber *selectedDirID   = [trip direction_id];
-    
-   NSLog(@"SNFRTC -(IBAction) doneButtonPressed.  Name: %@, Stop ID: %d, direction ID: %d", selectedStopName, selectedStopID, [selectedDirID intValue] );
-    
-    [self.tableView deselectRowAtIndexPath:_selectedIndexPath animated:NO];
-    
-    if ( [self.delegate respondsToSelector:@selector(doneButtonPressed:WithStopName:andStopID:withDirectionID:)] )
-        [[self delegate] doneButtonPressed:self WithStopName:selectedStopName andStopID:selectedStopID withDirectionID:selectedDirID];
-    
-//    [self.navigationController popViewControllerAnimated:YES];
-    
 }
-
-//- (IBAction)gestureDoubleTapTriggered:(id)sender
-//{
-//    
-//    [self.btnDone.target performSelector: @selector(doneButtonPressed:)];
-//
-////    UITapGestureRecognizer *gesture = (UITapGestureRecognizer*)sender;
-////    if ( [gesture state] == UIGestureRecognizerStateBegan )
-////    {
-////        [self.btnDone.target performSelector: @selector(doneButtonPressed:)];
-////    }
-//    
-//}
-//
-//- (IBAction)gestureLongPressTriggered:(id)sender
-//{
-//    UILongPressGestureRecognizer *gesture = (UILongPressGestureRecognizer*)sender;
-//    if ( [gesture state] == UIGestureRecognizerStateBegan )
-//    {
-//        [self.btnDone.target performSelector: @selector(doneButtonPressed:)];
-//    }
-//}
 
 
 #pragma -

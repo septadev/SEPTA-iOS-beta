@@ -240,7 +240,7 @@
         NSLog(@"FSVC - err : %@", error);
         NSLog(@"FSVC - url : %@", request);
         NSLog(@"FSVC - dict: %@", JSON);
-        NSLog(@"FSVC - response statusCode: %d", response.statusCode);
+        NSLog(@"FSVC - response statusCode: %ld", (long)response.statusCode);
     }];
     
     [_jsonOperation start];
