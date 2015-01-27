@@ -53,7 +53,7 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    
+    [super viewWillAppear:animated];
     [_tBtnTransit changeFrameWidth: self.view.frame.size.width];
     
     LineHeaderView *titleView = (LineHeaderView*)self.navigationItem.titleView;

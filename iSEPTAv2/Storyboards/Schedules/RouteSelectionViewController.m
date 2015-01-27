@@ -14,7 +14,7 @@
 
 #import "UITableViewStandardHeaderLabel.h"
 
-#import "TestDisplayedRouteData.h"
+//#import "TestDisplayedRouteData.h"
 
 // Custom UITableViewCell
 #import "UserPreferenceCell.h"
@@ -426,38 +426,39 @@
     
 }
 
--(void) viewDidDisappear:(BOOL)animated
-{
-#if FUNCTION_NAMES_ON
-    NSLog(@"RSVC - viewDidDisappear: %d", animated);
-#endif
+//-(void) viewDidDisappear:(BOOL)animated
+//{
+//#if FUNCTION_NAMES_ON
+//    NSLog(@"RSVC - viewDidDisappear: %d", animated);
+//#endif
+//
+//}
 
-}
 
-- (void)viewDidUnload
-{
- 
-#if FUNCTION_NAMES_ON
-    NSLog(@"RSVC - viewDidUnload");
-#endif
-
-    
-//    NSLog(@"BSRVC -(void) viewDidUnload");
-    
-    //    [sorterBar removeFromSuperview];
-    //    sorterBar = nil;
-    
-//    [self setNavbarSearchButton:nil];
-//    [self setTravelMode:nil];
+//- (void)viewDidUnload
+//{
+// 
+//#if FUNCTION_NAMES_ON
+//    NSLog(@"RSVC - viewDidUnload");
+//#endif
+//
 //    
-//    [self setTableView:nil];
-//    [self setSegmentBusSorter:nil];
-    
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-    
-}
+////    NSLog(@"BSRVC -(void) viewDidUnload");
+//    
+//    //    [sorterBar removeFromSuperview];
+//    //    sorterBar = nil;
+//    
+////    [self setNavbarSearchButton:nil];
+////    [self setTravelMode:nil];
+////    
+////    [self setTableView:nil];
+////    [self setSegmentBusSorter:nil];
+//    
+//    [super viewDidUnload];
+//    // Release any retained subviews of the main view.
+//    // e.g. self.myOutlet = nil;
+//    
+//}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

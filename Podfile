@@ -8,7 +8,7 @@ pod 'SVPullToRefresh', '~> 0.4'
 
 #pod 'QuickDialog', '~> 1.0'
 pod 'FXForms', '> 1.1'
-pod 'Reachability', '~> 3.1.1'
+pod 'Reachability', '~> 3.2'
 pod 'FMDB', '~> 2.4'
 #pod 'hpple', '~> 0.2.0'
 

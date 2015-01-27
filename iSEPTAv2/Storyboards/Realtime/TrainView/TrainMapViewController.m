@@ -111,7 +111,13 @@
         _locationManager = [[CLLocationManager alloc] init];
         [_locationManager setDelegate:self];
         
-        [_locationManager requestWhenInUseAuthorization];
+        if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
+        {
+            [_locationManager requestWhenInUseAuthorization];
+        }
+        
+        [_locationManager setDistanceFilter: kCLDistanceFilterNone];
+        [_locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
         [_locationManager startUpdatingLocation];
         
         _locationEnabled = YES;
@@ -201,6 +207,8 @@
 -(void) viewWillDisappear:(BOOL)animated
 {
     
+    [super viewWillDisappear:animated];
+    
     NSLog(@"TMVC - viewWillDisappear");
     
     [_jsonQueue cancelAllOperations];
@@ -231,26 +239,7 @@
     
     [super viewDidDisappear:animated];
     
-    NSLog(@"TMVC - viewWillDisappearFinished");
-
-    return;
-    
-    
-//    [_jsonQueue cancelAllOperations];
-//    _killAllTimers = YES;
-//    
-//    // Dismiss any running HUDs.  If no HUDs are running, nothing happens.
-//    [SVProgressHUD dismiss];
-//
-//    if ( updateTimer == nil )
-//        return;
-//    
-//    if ( [updateTimer isValid]  )
-//    {
-//        [updateTimer invalidate];
-//        updateTimer = nil;
-//        NSLog(@"NTVVC - Killing updateTimer");
-//    }
+    NSLog(@"TMVC - viewWillDisappear isFinished");
     
 }
 

@@ -59,8 +59,25 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     
+    [super viewWillDisappear:animated];
+    
     NSLog(@"RVC - viewWillDisappear");
+    
+    NSLog(@"RVC - Alert Banners In View:%@", [ALAlertBanner alertBannersInView:self.view]);
     [ALAlertBanner forceHideAllAlertBannersInView:self.view];
+    
+//    for (ALAlertBanner *alertBanner in [ALAlertBanner alertBannersInView:self.view])
+//    {
+//        [ALAlertBanner hideAllAlertBanners];
+//        [ALAlertBanner hideAlertBanner:alertBanner forced:YES];
+//    }
+    
+//    for (ALAlertBanner *alertBanner in [ALAlertBanner alertBannersInView:self.view])
+//    {
+//        [ALAlertBanner hideAllAlertBanners];
+//    }
+    
+    
 //    [_alertBannerArr removeAllObjects];
     
     // Remove all timers from the main loop
@@ -75,14 +92,19 @@
 //    _alertAPI = nil;
     [_alertMessage removeAllObjects];
     
-    
+    [SVProgressHUD dismiss];
     
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     
+    [super viewWillAppear:animated];
+    
     [self checkDBExists];
+    
+    [SVProgressHUD dismiss];
+    [ALAlertBanner forceHideAllAlertBannersInView:self.view];
     
     // Start timers back up
     _alertTimer = [NSTimer scheduledTimerWithTimeInterval:ALALERTBANNER_TIMER target:self selector:@selector(getGenericAlert) userInfo:nil repeats:YES];
@@ -170,7 +192,6 @@
     
 //    NSString *version = [NSString stringWithFormat:@"Version %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
 //    NSLog(@"Version #: %@", version);
-    
     
     UIColor *backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"newBG_pattern.png"] ];
     [self.view setBackgroundColor: backgroundColor];
@@ -293,6 +314,47 @@
 //    NSLog(@"End of test");
     
     
+//    [[Crashlytics sharedInstance] crash];
+
+    
+    /*  send a request for file modification date  */
+//    NSURLRequest *modReq = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.septa.org/service/septa-app-mobile.html"]
+//                                            cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:15.0f];
+//    
+//    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:modReq delegate:self];
+//    
+//    if ( !theConnection )
+//    {
+//        // Connect failed
+//    }
+    
+}
+
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    /*  convert response into an NSHTTPURLResponse,
+     call the allHeaderFields property, then get the
+     Last-Modified key.
+     */
+    
+    // Get last stored modified date, if one exists.
+    // If not, set to nil
+
+    
+    NSString * last_modified = [NSString stringWithFormat:@"%@",
+                                [[(NSHTTPURLResponse *)response allHeaderFields] objectForKey:@"Last-Modified"]];
+    
+    // Last-Modified = "Mon, 26 Jan 2015 19:14:05 GMT"
+    // Convert to NSDate
+    
+    // If stored_date is nil, just store the new last_modified
+    // If stored_date equals last_modified, do nothing
+    // If last_modified is newer, add badge to Tips until tapped on
+    
+    
+    NSLog(@"Last-Modified: %@", last_modified );
+                                
 }
 
 -(void) automaticDownloading
@@ -347,44 +409,35 @@
 -(void) checkDBVersion
 {
     
-//    NSString *localMD5;
-//    
-//    NSString *md5Path = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"md5"];
-//    NSString *md5JSON = [[NSString alloc] initWithContentsOfFile:md5Path encoding:NSUTF8StringEncoding error:NULL];
-//    
-//    NSError *error = nil;
-//    NSDictionary *md5dict = [NSJSONSerialization JSONObjectWithData: [md5JSON dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-//    NSArray *md5Arr = [md5dict valueForKeyPath:@"md5"];
-//    
-//    localMD5 = [md5Arr firstObject];
-//    
-//    NSLog(@"localMD5: %@", localMD5);
-    
-//    NSDictionary *md5dict = [md5JSON JSONValue];
-
-    
     Reachability *network = [Reachability reachabilityForInternetConnection];
     if ( ![network isReachable] )
     {
         return;
     }
-
-    
-//    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *dbPath = [NSString stringWithFormat:@"%@/SEPTA.sqlite", [paths objectAtIndex:0] ];
-//    NSError *error;
-//    
-//    [[NSFileManager defaultManager] removeItemAtPath: dbPath error:&error];
     
     if ( _dbVersionAPI == nil )
     {
         _dbVersionAPI = [[GetDBVersionAPI alloc] init];
         [_dbVersionAPI setDelegate:self];
-//        [_dbVersionAPI loadLocalMD5];
     }
+
     
 //    [_dbVersionAPI setTestMode: _testMode];
+
     [_dbVersionAPI fetchData];
+    
+    if ( _alertAPI == nil )
+    {
+        _alertAPI = [[GetAlertDataAPI alloc] init];
+        [_alertAPI setDelegate:self];
+        
+        [_alertAPI addRoute:@"generic" ofModeType:kSEPTATypeNone];
+    }
+    
+   
+    [_alertAPI fetchAlert];
+    
+    
     
 }
 
@@ -409,16 +462,16 @@
     
 #ifdef BACKGROUND_DOWNLOAD
     // Check if Auto-Update has been turned on
-    id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:Update:AutoUpdate"];
-    if ( object != nil )
-    {
-        if ( [object boolValue] )
-        {
-            BackgroundDownloader *bDown = [BackgroundDownloader sharedInstance];
-            [bDown setDbObject:obj];
-            [bDown downloadSchedule];
-        }
-    }
+//    id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:Update:AutoUpdate"];
+//    if ( object != nil )
+//    {
+//        if ( [object boolValue] )
+//        {
+//            BackgroundDownloader *bDown = [BackgroundDownloader sharedInstance];
+//            [bDown setDbObject:obj];
+//            [bDown downloadSchedule];
+//        }
+//    }
     
     //    _testTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(downloadProgress) userInfo:nil repeats:YES];
     
@@ -458,7 +511,7 @@
         //   Has it been 24 hours since the last time this message was displayed?
         //   Has the latest schedule been downloaded?
         
-        if ( effectiveDiff < (60*60*24*7) && (lastDateDiff >= 60*60*24) )
+        if ( effectiveDiff < (60*60*24*7) && (lastDateDiff >= 60*2) )  // lastDateDiff was 60*60*24 (24 hours)
         {
             [self displayAlert: obj];
         }
@@ -496,16 +549,14 @@
     int numOfSeconds = (int)( ([words count] - [separatorIndexes count])/3.0 );  // Assume, on average, a person reads 3 words per second
     
     // Maintain a minimum and maximum time
-    if ( numOfSeconds < 5 )
-        numOfSeconds = 5;
-    else if ( numOfSeconds > 15 )
-        numOfSeconds = 15;
+    if ( numOfSeconds < 10 )
+        numOfSeconds = 10;
+    else if ( numOfSeconds > 20 )
+        numOfSeconds = 20;
     
     NSLog(@"numOfSeconds: %d", numOfSeconds);
     
-//    NSTimeInterval showTime = 10.0f;
     [alertBanner setSecondsToShow: numOfSeconds];
-    
     [alertBanner show];
     
     [[NSUserDefaults standardUserDefaults] setObject: [NSDate date] forKey:@"Settings:Update:DateOfLastNotification"];
@@ -517,59 +568,60 @@
 -(void) downloadTest
 {
 
-    NSURL *downloadURL = [[NSURL alloc] initWithString: @"http://www3.septa.org/hackathon/dbVersion/download.php"];
-    NSURLRequest *request = [NSURLRequest requestWithURL: downloadURL];
-    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[GTFSCommon filePath] stringByDeletingLastPathComponent] ];
-    
-    AFDownloadRequestOperation *dOp = [[AFDownloadRequestOperation alloc] initWithRequest:request targetPath:zipPath shouldResume:YES];
-    dOp.outputStream = [NSOutputStream outputStreamToFileAtPath: zipPath append:NO];
-    
-    [dOp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
-     {
-         NSLog(@"Successfully downloaded file to %@", zipPath);
-     }
-                                      failure:^(AFHTTPRequestOperation *operation, NSError *error)
-     {
-         NSLog(@"Error: %@", error);
-     }];
-    
-    
-    [dOp setProgressiveDownloadProgressBlock:^(AFDownloadRequestOperation *operation, NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
-//        NSLog(@"Operation%i: bytesRead: %d", 1, bytesRead);
-//        NSLog(@"Operation%i: totalBytesRead: %lld", 1, totalBytesRead);
-//        NSLog(@"Operation%i: totalBytesExpected: %lld", 1, totalBytesExpected);
-//        NSLog(@"Operation%i: totalBytesReadForFile: %lld", 1, totalBytesReadForFile);
-//        NSLog(@"Operation%i: totalBytesExpectedToReadForFile: %lld", 1, totalBytesExpectedToReadForFile);
-
-         float percentDone = ((float)((int)totalBytesRead) / (float)((int)totalBytesExpectedToReadForFile));
-         NSLog(@"Sent %lld of %lld bytes, percent: %6.3f", totalBytesRead, totalBytesExpectedToReadForFile, percentDone);
-
-        
-    }];
-
-
-//    [dOp setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead)
+//    NSURL *downloadURL = [[NSURL alloc] initWithString: @"http://www3.septa.org/hackathon/dbVersion/download.php"];
+//    NSURLRequest *request = [NSURLRequest requestWithURL: downloadURL];
+//    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[GTFSCommon filePath] stringByDeletingLastPathComponent] ];
+//    
+//    AFDownloadRequestOperation *dOp = [[AFDownloadRequestOperation alloc] initWithRequest:request targetPath:zipPath shouldResume:YES];
+//    dOp.outputStream = [NSOutputStream outputStreamToFileAtPath: zipPath append:NO];
+//    
+//    [dOp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
 //     {
-//         //        NSLog(@"Operation%i: bytesRead: %d", i, bytesRead);
-//         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesRead);
-//         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesExpectedToRead);
-//         
-////         float percentDone = ((float)((int)totalBytesRead) / (float)((int)totalBytesExpectedToRead));
-////         NSLog(@"Sent %lld of %lld bytes, percent: %6.3f", totalBytesRead, totalBytesExpectedToRead, percentDone);
-//         
-//         NSLog(@"bytesRead: %d, totalBytesRead: %lld, totalBytesExpectedToRead: %lld", bytesRead, totalBytesRead, totalBytesExpectedToRead);
-//         
-//         
+//         NSLog(@"Successfully downloaded file to %@", zipPath);
+//     }
+//                                      failure:^(AFHTTPRequestOperation *operation, NSError *error)
+//     {
+//         NSLog(@"Error: %@", error);
 //     }];
+//    
+//    
+//    [dOp setProgressiveDownloadProgressBlock:^(AFDownloadRequestOperation *operation, NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
+////        NSLog(@"Operation%i: bytesRead: %d", 1, bytesRead);
+////        NSLog(@"Operation%i: totalBytesRead: %lld", 1, totalBytesRead);
+////        NSLog(@"Operation%i: totalBytesExpected: %lld", 1, totalBytesExpected);
+////        NSLog(@"Operation%i: totalBytesReadForFile: %lld", 1, totalBytesReadForFile);
+////        NSLog(@"Operation%i: totalBytesExpectedToReadForFile: %lld", 1, totalBytesExpectedToReadForFile);
+//
+//         float percentDone = ((float)((int)totalBytesRead) / (float)((int)totalBytesExpectedToReadForFile));
+//         NSLog(@"Sent %lld of %lld bytes, percent: %6.3f", totalBytesRead, totalBytesExpectedToReadForFile, percentDone);
+//
+//        
+//    }];
+//
+//
+////    [dOp setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead)
+////     {
+////         //        NSLog(@"Operation%i: bytesRead: %d", i, bytesRead);
+////         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesRead);
+////         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesExpectedToRead);
+////         
+//////         float percentDone = ((float)((int)totalBytesRead) / (float)((int)totalBytesExpectedToRead));
+//////         NSLog(@"Sent %lld of %lld bytes, percent: %6.3f", totalBytesRead, totalBytesExpectedToRead, percentDone);
+////         
+////         NSLog(@"bytesRead: %d, totalBytesRead: %lld, totalBytesExpectedToRead: %lld", bytesRead, totalBytesRead, totalBytesExpectedToRead);
+////         
+////         
+////     }];
+//    
+//    
+//    [dOp setShouldExecuteAsBackgroundTaskWithExpirationHandler:^{
+//        NSLog(@"Download expired!");
+//    }];
+//    
+//    
+//    [dOp start];
+////    [dOp waitUntilFinished];
     
-    
-    [dOp setShouldExecuteAsBackgroundTaskWithExpirationHandler:^{
-        NSLog(@"Download expired!");
-    }];
-    
-    
-    [dOp start];
-//    [dOp waitUntilFinished];
     
 }
 
@@ -640,7 +692,7 @@
     NSLog(@"output (%6.2f sec): %@", secondsRan, output);
     
     
-    start = [NSDate date];
+//    start = [NSDate date];
     
     FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
@@ -660,7 +712,7 @@
     }
     
     NSMutableString *string = [[NSMutableString alloc] init];
-    NSString *finalStr;
+//    NSString *finalStr;
     for (NSString *tableName in tableArray)
     {
         
@@ -681,7 +733,7 @@
             }
         }
         
-        finalStr = [string substringToIndex: [string length] -1 ];
+//        finalStr = [string substringToIndex: [string length] -1 ];
 //        NSData *rowData = [finalStr dataUsingEncoding:NSUTF8StringEncoding];
         NSLog(@"%@: %@", tableName, [[results resultDictionary] allKeys]);
         
@@ -807,9 +859,30 @@
                             NSLog(@"Generic Message: %@!", saObject.current_message);
                             [alertBanner hide];
                         }];
+            
+            
+            
+            NSCharacterSet *separators = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+            NSArray *words = [saObject.current_message componentsSeparatedByCharactersInSet:separators];
+            
+            NSIndexSet *separatorIndexes = [words indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+                return [obj isEqualToString:@""];
+            }];
+            
+            int numOfSeconds = (int)( ([words count] - [separatorIndexes count])/2.5 );  // Assume, on average, a person reads 2.5 words per second
+            
+            // Maintain a minimum and maximum time
+            if ( numOfSeconds < 10 )
+                numOfSeconds = 10;
+            else if ( numOfSeconds > 20 )
+                numOfSeconds = 20;
+            
+            NSLog(@"numOfSeconds: %d", numOfSeconds);
+            
+            [alertBanner setSecondsToShow: numOfSeconds];
 
-            NSTimeInterval showTime = 5.0f;
-            [alertBanner setSecondsToShow: showTime];
+//            NSTimeInterval showTime = 5.0f;
+//            [alertBanner setSecondsToShow: showTime];
 
             [alertBanner show];
         }

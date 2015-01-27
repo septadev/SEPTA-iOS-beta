@@ -51,6 +51,7 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     LineHeaderView *titleView = (LineHeaderView*)self.navigationItem.titleView;
     float navW = [(UIView*)[self.navigationItem.leftBarButtonItem  valueForKey:@"view"] frame].size.width;
     float w    = self.view.frame.size.width;

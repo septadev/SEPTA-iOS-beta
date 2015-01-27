@@ -83,7 +83,7 @@
     }
     else
     {
-        url = @"http://www3.septa.org/hackathon/dbVersion/";        
+        url = @"http://www3.septa.org/hackathon/dbVersion/";
     }
 
 
@@ -99,6 +99,51 @@
 //                                                                         [jsonDict setValue:@"This is a test message that I am going to display. Sometimes there is a lot to say and it requires a longer time for the reader to get through the entire things.  Hopefully this will cap out the message at the 15 sec mark." forKey:@"message"];
                                                                          
                                                                          [self processDBVersionJSON: jsonDict];
+                                                                         
+                                                                     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,
+                                                                                 NSError *error, id JSON) {
+                                                                         NSLog(@"Request Failure Because %@",[error userInfo]);
+                                                                         // TODO:  Set error flag, call delegate's alertFetched
+                                                                     }
+                      ];
+    
+    [_jsonOperation start];
+    
+    
+}
+
+-(void) fetchData2
+{
+    
+    if ( ![[Reachability reachabilityForInternetConnection] isReachable] )
+        return;
+    
+    
+    NSString *url;
+    
+    if ( _testMode )
+    {
+        url = @"http://api0.septa.org/gga8893/dbVersion/";
+    }
+    else
+    {
+        url = @"http://www3.septa.org/hackathon/dbVersion/";
+    }
+    
+    
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL: [NSURL URLWithString:url] ];
+    
+    _jsonOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+                                                                     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                         
+                                                                         NSDictionary *jsonDict = (NSDictionary*) JSON;
+                                                                         //                                                                         NSMutableDictionary *jsonDict = [(NSDictionary *) JSON mutableCopy];
+                                                                         //                                                                         [jsonDict setValue:@"high" forKey:@"severity"];
+                                                                         //                                                                         [jsonDict setValue:@"This is a test message that I am going to display. Sometimes there is a lot to say and it requires a longer time for the reader to get through the entire things.  Hopefully this will cap out the message at the 15 sec mark." forKey:@"message"];
+                                                                         
+//                                                                         [self processDBVersionJSON: jsonDict];
+                                                                         NSLog(@"%@", jsonDict);
                                                                          
                                                                      } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,
                                                                                  NSError *error, id JSON) {

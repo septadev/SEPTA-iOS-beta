@@ -10,6 +10,8 @@
 #import "internetReachability.h"
 #import <CoreLocation/CoreLocation.h>
 
+#import <Crashlytics/Crashlytics.h>
+
 #import "NotificationInfo.h"
 
 #import "UnitTest_TableViewStore.h"

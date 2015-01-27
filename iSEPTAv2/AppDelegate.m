@@ -75,6 +75,7 @@
 
 - (void) updateInterfaceWithReachability: (Reachability*) curReach
 {
+    
     if(curReach == hostReach)
 	{
 		[self checkReachability:  curReach];
@@ -120,7 +121,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    [NSThread sleepForTimeInterval:.5];
+//    [NSThread sleepForTimeInterval:.5];  // gga, remove 01/22/15, this might have been added to make the splash screen stay up longer.  Is it really needed?
+    
+    [Crashlytics startWithAPIKey:@"bc2dd85ee4bc4580ad7a7e2819d8402ff8595c61"];
     // Override point for customization after application launch.
  
 //    UnitTest_TableViewStore *ut = [[UnitTest_TableViewStore alloc] init];
@@ -135,25 +138,23 @@
     
     
 #ifdef ENABLE_PUSH_NOTIFICATIONS
-    NSLog(@"AppDelegate - didFinishLaunchingWithOptions: Registering for push notifications");
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound) ];
-    if ( [[UIApplication sharedApplication] enabledRemoteNotificationTypes] != (UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound) )
-    {
-        NSLog(@"AppDelegate - didFinishLaunchingWithOptions: Push notificatiosn were not enabled");
-    }
+//    NSLog(@"AppDelegate - didFinishLaunchingWithOptions: Registering for push notifications");
+//    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: (UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound) ];
+//    if ( [[UIApplication sharedApplication] enabledRemoteNotificationTypes] != (UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound) )
+//    {
+//        NSLog(@"AppDelegate - didFinishLaunchingWithOptions: Push notificatiosn were not enabled");
+//    }
 #endif
     
+    
     data=[[NSMutableString alloc] init];
-//    busdata=[[BusSchedules alloc] init];
-//    CanConnect=[[internetReachability alloc] init];
-   
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if ( userInfo == nil )
     {
         NSLog(@"AppDelegate - didFinishLaunchingWithOptions: No notifications information stored in launchOptions");
     }
 
-    [self transferDb];
+//    [self transferDb];
    
     
     NSDictionary *regionInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey];
@@ -169,15 +170,22 @@
     //Change the host name here to change the server your monitoring
     //remoteHostLabel.text = [NSString stringWithFormat: @"Remote Host: %@", @"www.apple.com"];
 //	hostReach = [[Reachability reachabilityWithHostName: @"www.apple.com"] retain];
+    
     hostReach = [Reachability reachabilityWithHostname: @"www.apple.com"];
+    
+    // Start the notifier, which will cause the reachability object to retain itself!
 	[hostReach startNotifier];
 	[self updateInterfaceWithReachability: hostReach];
 	
-    internetReach = [[Reachability reachabilityForInternetConnection] retain];
+    internetReach = [Reachability reachabilityForInternetConnection];
+    
+    // Start the notifier, which will cause the reachability object to retain itself!
 	[internetReach startNotifier];
 	[self updateInterfaceWithReachability: internetReach];
     
-    wifiReach = [[Reachability reachabilityForLocalWiFi] retain];
+    wifiReach = [Reachability reachabilityForLocalWiFi];
+
+    // Start the notifier, which will cause the reachability object to retain itself!
 	[wifiReach startNotifier];
 	[self updateInterfaceWithReachability: wifiReach];
     

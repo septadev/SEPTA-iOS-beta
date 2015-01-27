@@ -68,7 +68,7 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     
     // self.view.frame will display the actual width and height based on the orientation here.
     // viewDidLoad will only show the portriat width and height, regardless of orientation.
@@ -104,16 +104,16 @@
 
     
     
-    NSString *imageName;
-    
-    if ( self.routeName == nil )
-    {
-        imageName = @"RRL_white.png";
-    }
-    else
-    {
-        imageName = @"RRL_white.png";
-    }
+//    NSString *imageName;
+//    
+//    if ( self.routeName == nil )
+//    {
+//        imageName = @"RRL_white.png";
+//    }
+//    else
+//    {
+//        imageName = @"RRL_white.png";
+//    }
     
 //    if ( self.backImageName == nil )
 //        [self setBackImageName: @"RRL_white.png"];
@@ -165,11 +165,21 @@
     // --==
     // ==--  Setting up CLLocation Manager
     // --==
+    
     if ( [CLLocationManager locationServicesEnabled] )
     {
         _locationManager = [[CLLocationManager alloc] init];
         [_locationManager setDelegate:self];
-        [_locationManager requestWhenInUseAuthorization];
+        
+        
+        if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
+        {
+            [_locationManager requestWhenInUseAuthorization];
+        }
+        
+        [_locationManager setDistanceFilter: kCLDistanceFilterNone];
+        [_locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+        
         [_locationManager startUpdatingLocation];
         
         _locationEnabled = YES;
@@ -227,7 +237,7 @@
 -(void) viewWillDisappear:(BOOL)animated
 {
     
-    [super viewDidDisappear:animated];
+    [super viewWillDisappear:animated];
     
     [_jsonQueue cancelAllOperations];
     _killAllTimers = YES;
@@ -248,10 +258,11 @@
     
 }
 
--(void) viewDidUnload
-{
-    NSLog(@"TVVC - viewDidUnoad");
-}
+//-(void) viewDidUnload
+//{
+//    [super viewDidUnload]
+//    NSLog(@"TVVC - viewDidUnoad");
+//}
 
 
 -(void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration

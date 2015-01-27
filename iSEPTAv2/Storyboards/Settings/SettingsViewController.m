@@ -15,6 +15,9 @@
 @implementation SettingsViewController
 {
     BOOL _use24HourTime;
+    
+    NSOperationQueue *_md5Op;
+    
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -44,17 +47,31 @@
     }
     
     [self.swt24Hour setOn: _use24HourTime];
-    
-    GetDBVersionAPI *dbVersionAPI;
-    dbVersionAPI = [[GetDBVersionAPI alloc] init];
-    
-    // Read MD5,
-    if ( [dbVersionAPI loadLocalMD5] )
-    {
-        NSString *endValues = [dbVersionAPI localMD5];
-        [self.lblDBVersionNumber setText: [NSString stringWithFormat:@"DB Version: %@.%@",[endValues substringToIndex:4], [endValues substringFromIndex:[endValues length] - 4] ] ];
-    }
-    
+
+
+    NSBlockOperation *loadMD5op = [NSBlockOperation blockOperationWithBlock:^{
+       
+            GetDBVersionAPI *dbVersionAPI;
+            dbVersionAPI = [[GetDBVersionAPI alloc] init];
+        
+            // Read MD5,
+            if ( [dbVersionAPI loadLocalMD5] )
+            {
+                NSString *endValues = [dbVersionAPI localMD5];
+                
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{  // Ensures the following gets run in the main thread
+
+                [self.lblDBVersionNumber setText: [NSString stringWithFormat:@"DB Version: %@.%@",[endValues substringToIndex:4], [endValues substringFromIndex:[endValues length] - 4] ] ];
+                    
+                }];
+                
+            }
+        
+    }];
+
+    [self.lblDBVersionNumber setText:@"DB Version: loading..."];
+    [_md5Op addOperation: loadMD5op];
+
 }
 
 -(void) viewDidDisappear:(BOOL)animated
@@ -85,6 +102,7 @@
 //    UIImageView *bgImageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"mainBackground.png"] ];
 //    [self.tableView setBackgroundView: bgImageView];
 
+    _md5Op = [[NSOperationQueue alloc] init];
     
 //    [self.tabBarController tabBarItem]
     
@@ -99,19 +117,6 @@
     
     [self.navigationItem setTitleView: newView];
     [self.navigationItem.titleView setNeedsDisplay];
-
-    
-    id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:24HourTime"];
-    if ( object == nil )
-    {
-        _use24HourTime = NO;  // If nil, no data is in @"Settings:24HourTime" so default to NO
-    }
-    else
-    {
-        _use24HourTime = [object boolValue];
-    }
-    
-    [self.swt24Hour setOn: _use24HourTime];
     
     
     [self.lblVersionNumber setText: [NSString stringWithFormat:@"Version %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]]];

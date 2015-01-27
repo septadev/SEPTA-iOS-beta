@@ -95,6 +95,14 @@
         _locationManager = [[CLLocationManager alloc] init];
         
         [_locationManager setDelegate:self];
+        
+        if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
+        {
+            [_locationManager requestWhenInUseAuthorization];
+        }
+
+        [_locationManager setDistanceFilter: kCLDistanceFilterNone];
+        [_locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
         [_locationManager startUpdatingLocation];
         
     }

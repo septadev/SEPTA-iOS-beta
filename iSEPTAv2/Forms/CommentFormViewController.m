@@ -81,8 +81,11 @@
 //            filteredBlock   = [form.blockTrain stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             
             
-            NSString *version = [NSString stringWithFormat:@"Version %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
-            NSString *addedComment = [NSString stringWithFormat:@"%@.\n\nThis was sent from the iOS App, version %@", form.comment, version];
+//            NSString *version = [NSString stringWithFormat:@"Version %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+            NSString *appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+            NSString *iosVersion = [UIDevice currentDevice].systemVersion;
+            
+            NSString *addedComment = [NSString stringWithFormat:@"%@.\n\nThis was sent from the SEPTA App, version: %@, iOS version: %@", form.comment, appVersion, iosVersion];
             
             filteredComments = [addedComment stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             filteredDestination = [form.destination stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];

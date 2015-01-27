@@ -147,8 +147,152 @@
     
 }
 
+-(NSArray*) fetchOperations
+{
+    
+    if ( _routeNamesArr == nil )
+        return nil;  // Need a route to fetch first
+    
+    // Lettered bus routes will fall into rr_route_ category.  =\
+    
+    
+    // --==================--
+    // --==  Get Alerts  ==--
+    // --==================--
+    
+    for (NSString *routeName in _routeNamesArr)
+    {
+        
+        NSString *alertRouteName;
+        
+        
+        // This is a crappy way of handling this, but if the routeName contains a '_' it was properly formatted using addRoute:ofModeType:
+        //   instead of addRoute: which the condition statement inside is built to handle
+        if ( [routeName rangeOfString:@"_"].location == NSNotFound && ![routeName isEqualToString:@"generic"] )
+        {
+            
+            if ( [routeName intValue] > 0 )
+            {
+                alertRouteName = [NSString stringWithFormat:@"bus_route_%@", routeName];
+            }
+            else
+            {
+                
+                if ( [routeName isEqualToString:@"MFL"] || [routeName isEqualToString:@"MFO"] || [routeName isEqualToString:@"BSO"] || [routeName isEqualToString:@"BSL"] )
+                    alertRouteName = [NSString stringWithFormat:@"rr_route_%@", [routeName lowercaseString] ];
+                else
+                    alertRouteName = [NSString stringWithFormat:@"rr_route_%@", routeName];
+                
+            }
+            
+        }
+        else
+            alertRouteName = routeName;  // Since '_' was found, routeName is already good
+        
+        
+        
+        NSString *url = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/Alerts/get_alert_data.php?req1=%@", alertRouteName];
+        NSLog(@"GetAlertDataAPI - url: %@", url);
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] ];
+        
+        _jsonOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                             
+                                                                             NSDictionary *jsonDict = (NSDictionary *) JSON;
+                                                                             [self loadIndividualAlertData: jsonDict forRoute: routeName];
+                                                                             
+                                                                         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,
+                                                                                     NSError *error, id JSON) {
+                                                                             NSLog(@"Request Failure Because %@",[error userInfo]);
+                                                                             // TODO:  Set error flag, call delegate's alertFetched
+                                                                         }
+                          ];
+        
+//        [_jsonOperation start];
+        [_operationArr addObject:_jsonOperation];
+        
+    }  // for (NSString *routeName in _routeNamesArr)
+
+    return [NSArray arrayWithArray: _operationArr];
+    
+}
+
 
 -(void) fetchAlert
+{
+    
+    
+    
+    if ( _routeNamesArr == nil )
+        return;  // Need a route to fetch first
+    
+    // Lettered bus routes will fall into rr_route_ category.  =\
+    
+    
+    // --==================--
+    // --==  Get Alerts  ==--
+    // --==================--
+    
+    for (NSString *routeName in _routeNamesArr)
+    {
+        
+        NSString *alertRouteName;
+        
+        
+        // This is a crappy way of handling this, but if the routeName contains a '_' it was properly formatted using addRoute:ofModeType:
+        //   instead of addRoute: which the condition statement inside is built to handle
+        if ( [routeName rangeOfString:@"_"].location == NSNotFound && ![routeName isEqualToString:@"generic"] )
+        {
+            
+            if ( [routeName intValue] > 0 )
+            {
+                alertRouteName = [NSString stringWithFormat:@"bus_route_%@", routeName];
+            }
+            else
+            {
+                
+                if ( [routeName isEqualToString:@"MFL"] || [routeName isEqualToString:@"MFO"] || [routeName isEqualToString:@"BSO"] || [routeName isEqualToString:@"BSL"] )
+                    alertRouteName = [NSString stringWithFormat:@"rr_route_%@", [routeName lowercaseString] ];
+                else
+                    alertRouteName = [NSString stringWithFormat:@"rr_route_%@", routeName];
+                
+            }
+            
+        }
+        else
+            alertRouteName = routeName;  // Since '_' was found, routeName is already good
+        
+        
+        
+        NSString *url = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/Alerts/get_alert_data.php?req1=%@", alertRouteName];
+        NSLog(@"GetAlertDataAPI - url: %@", url);
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] ];
+        
+        _jsonOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                             
+                                                                             NSDictionary *jsonDict = (NSDictionary *) JSON;
+                                                                             [self loadIndividualAlertData: jsonDict forRoute: routeName];
+                                                                             
+                                                                         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,
+                                                                                     NSError *error, id JSON) {
+                                                                             NSLog(@"Request Failure Because %@",[error userInfo]);
+                                                                             // TODO:  Set error flag, call delegate's alertFetched
+                                                                         }
+                          ];
+        
+        [_jsonOperation start];
+    
+        
+        [_operationArr addObject:_jsonOperation];
+        
+    }  // for (NSString *routeName in _routeNamesArr)
+    
+    
+}
+
+
+-(void) fetchAlert2
 {
 
     
@@ -195,14 +339,15 @@
 
         
         NSString *url = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/Alerts/get_alert_data.php?req1=%@", alertRouteName];
-//        NSLog(@"GetAlertDataAPI - url: %@", url);
+        NSLog(@"GetAlertDataAPI - url: %@", url);
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] ];
         
         _jsonOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                              success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                  
                                  NSDictionary *jsonDict = (NSDictionary *) JSON;
-                                 [self loadIndividualAlertData: jsonDict forRoute: routeName];
+//                                 [self loadIndividualAlertData: jsonDict forRoute: routeName];
+                                 NSLog(@"%@",jsonDict);
                                  
                              } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,
                                          NSError *error, id JSON) {
