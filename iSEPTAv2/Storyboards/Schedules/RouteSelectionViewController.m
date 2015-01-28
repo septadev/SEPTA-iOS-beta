@@ -414,6 +414,7 @@
     NSLog(@"RSVC - viewWillDisappear");
 #endif
 
+    [super viewWillDisappear:animated];
     
 //    NSLog(@"BSRVC -(void) viewWillDisappear Start");
     

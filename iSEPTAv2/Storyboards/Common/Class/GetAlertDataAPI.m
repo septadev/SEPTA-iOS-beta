@@ -147,7 +147,7 @@
     
 }
 
--(NSArray*) fetchOperations
+-(NSArray*) getOperations
 {
     
     if ( _routeNamesArr == nil )
@@ -281,6 +281,7 @@
                                                                          }
                           ];
         
+        [_jsonOperation setName:@"get_alert_data"];
         [_jsonOperation start];
     
         
@@ -290,6 +291,18 @@
     
     
 }
+
+
+-(void) cancelAllOperations
+{
+    
+    for (AFJSONRequestOperation *jOps in _operationArr)
+    {
+        [jOps cancel];
+    }
+    
+}
+
 
 
 -(void) fetchAlert2

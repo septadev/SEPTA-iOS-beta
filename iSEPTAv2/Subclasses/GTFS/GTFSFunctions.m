@@ -82,7 +82,7 @@
 }
 
 
--(UInt32) getServiceIDFor:(NSString*) date
+-(NSInteger) getServiceIDFor:(NSString*) date
 {
     return 0;
 }

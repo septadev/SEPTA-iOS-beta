@@ -39,7 +39,7 @@
 //@property (nonatomic, strong) NSString *route_short_name;
 @property (nonatomic, weak) id <GetAlertDataAPIProtocol>delegate;
 
--(NSArray*) fetchOperations;
+-(NSArray*) getOperations;
 -(void) fetchAlert;
 -(void) fetchAlert2;
 -(void) addRoute:(NSString*) routeName;

@@ -79,6 +79,8 @@
 -(void) viewWillAppear:(BOOL)animated
 {
 
+    [super viewWillAppear:animated];
+    
     // self.view.frame will display the actual width and height based on the orientation here.
     // viewDidLoad will only show the portriat width and height, regardless of orientation.
         
@@ -304,17 +306,17 @@
     
 }
 
--(void) removeAlert
-{
-    MenuAlertsImageView *mView;
-    UIBarButtonItem *rightButton = self.navigationItem.rightBarButtonItem;
-    
-    mView = (MenuAlertsImageView*)[rightButton customView];
-    
-//    [mView removeAlert: kMenuAlertsImageAlerts];
-//    [mView removeAlert: kMenuAlertsImageDetours];
-    
-}
+
+//-(void) removeAlert
+//{
+//    MenuAlertsImageView *mView;
+//    UIBarButtonItem *rightButton = self.navigationItem.rightBarButtonItem;
+//    
+//    mView = (MenuAlertsImageView*)[rightButton customView];
+////    [mView removeAlert: kMenuAlertsImageAlerts];
+////    [mView removeAlert: kMenuAlertsImageDetours];
+//    
+//}
 
 
 - (void)viewDidUnload

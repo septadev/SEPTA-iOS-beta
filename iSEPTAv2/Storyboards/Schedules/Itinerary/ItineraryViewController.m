@@ -339,7 +339,8 @@
     NSLog(@"IVC - viewWillAppear");
 #endif
 
-
+    [super viewWillAppear:animated];
+    
     [_tBtnTransit changeFrameWidth: self.view.frame.size.width];
 
     LineHeaderView *titleView = (LineHeaderView*)self.navigationItem.titleView;
@@ -376,6 +377,8 @@
 #if FUNCTION_NAMES_ON
     NSLog(@"IVC viewWilLDisappear");
 #endif
+    
+    [super viewWillDisappear:animated];
     
     _viewIsClosing = YES;
     
@@ -1522,14 +1525,14 @@
     
     currentTripsArr = [ [ [masterTripsArr filteredArrayUsingPredicate:predicateFilter] sortedArrayUsingDescriptors:[NSArray arrayWithObject:timeSort] ] mutableCopy];
     
-    int sectionToLoad = 2;
+//    int sectionToLoad = 2;
     _message = nil;
     
     if ( ( [currentTripsArr count] == 0 ) && !( [itinerary.startStopName isEqualToString: DEFAULT_START_MESSAGE] || [itinerary.endStopName isEqualToString:DEFAULT_END_MESSAGE] ) )
     {
         // Now filter that data...
         _message = @"No remaining service for today";
-        sectionToLoad = 3;
+//        sectionToLoad = 3;
     }
 
     // Now filter that data...

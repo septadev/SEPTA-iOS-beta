@@ -34,6 +34,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    
     [super viewWillAppear:animated];
     
     id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:24HourTime"];
@@ -77,6 +78,9 @@
 -(void) viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+ 
+    [_md5Op cancelAllOperations];
+    [SVProgressHUD dismiss];
     
     BOOL onOff = self.swt24Hour.isOn;
     

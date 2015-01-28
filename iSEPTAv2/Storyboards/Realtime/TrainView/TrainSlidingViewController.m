@@ -38,6 +38,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
 
+    [super viewWillAppear:animated];
+    
     UIStoryboard *storyboard;
     
     storyboard = [UIStoryboard storyboardWithName:@"TrainSlidingStoryboard" bundle:nil];

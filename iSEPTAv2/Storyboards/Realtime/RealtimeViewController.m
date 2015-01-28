@@ -42,6 +42,7 @@
     NSOperationQueue *_autoUpdateQueue;
     NSBlockOperation *_autoUpdateOp;
     
+    NSOperationQueue *_networkQueue;
     
 //    MMDrawerController *_drawerController;
 }
@@ -63,7 +64,7 @@
     
     NSLog(@"RVC - viewWillDisappear");
     
-    NSLog(@"RVC - Alert Banners In View:%@", [ALAlertBanner alertBannersInView:self.view]);
+//    NSLog(@"RVC - Alert Banners In View:%@", [ALAlertBanner alertBannersInView:self.view]);
     [ALAlertBanner forceHideAllAlertBannersInView:self.view];
     
 //    for (ALAlertBanner *alertBanner in [ALAlertBanner alertBannersInView:self.view])
@@ -92,6 +93,8 @@
 //    _alertAPI = nil;
     [_alertMessage removeAllObjects];
     
+    [_networkQueue cancelAllOperations];
+    
     [SVProgressHUD dismiss];
     
 }
@@ -109,10 +112,6 @@
     // Start timers back up
     _alertTimer = [NSTimer scheduledTimerWithTimeInterval:ALALERTBANNER_TIMER target:self selector:@selector(getGenericAlert) userInfo:nil repeats:YES];
     [self getGenericAlert];
-
-    // This does not fail reachability safely
-    _dbVersionTimer = [NSTimer scheduledTimerWithTimeInterval:DBVERSION_REFRESH target:self selector:@selector(checkDBVersion) userInfo:nil repeats:YES];
-    [self checkDBVersion];
     
     UIInterfaceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     [self changeOrientation:currentOrientation];
@@ -181,6 +180,7 @@
 {
     
     [super viewDidLoad];
+    
     _startTest = NO;
     _testMode  = NO;
     _counter = 0;
@@ -189,9 +189,8 @@
     
     _alertMessage = [[NSMutableArray alloc] init];
     
-    
-//    NSString *version = [NSString stringWithFormat:@"Version %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
-//    NSLog(@"Version #: %@", version);
+    _networkQueue = [[NSOperationQueue alloc] init];  // Used to call the Alert and DB Version APIs
+
     
     UIColor *backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"newBG_pattern.png"] ];
     [self.view setBackgroundColor: backgroundColor];
@@ -205,45 +204,6 @@
     
     [self.navigationItem setTitleView: newView];
     [self.navigationItem.titleView setNeedsDisplay];
-    
-    
-//    [self automaticDownloading];
-//    [self checkDBVersion];
-//    [self md5check];
-
-    
-//     ALAlertBanner *aab = [ALAlertBanner alertBannerForView:self.view
-//                                               style:ALAlertBannerStyleFailure
-//                                            position:ALAlertBannerPositionBottom
-//                                               title:@"Alert"
-//                                                   subtitle:@"This is a test of the Emergency Alert System"];
-//                        
-//
-//    [aab show];
-    
-    
-    
-//    unsigned char buff[CC_MD5_DIGEST_LENGTH];
-//    CC_MD5_CTX md5;
-//    CC_MD5_Init(&md5);
-//    
-//    NSString *string1 = @"Gr";
-//    NSString *string2 = @"eg";
-//    
-//    NSData *data1 = [string1 dataUsingEncoding:NSUTF8StringEncoding];
-//    NSData *data2 = [string2 dataUsingEncoding:NSUTF8StringEncoding];
-//    
-//    CC_MD5_Update(&md5, [data1 bytes], [data1 length]);
-//    CC_MD5_Update(&md5, [data2 bytes], [data2 length]);
-//    
-//    CC_MD5_Final(buff, &md5);
-//    
-//    output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
-//    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
-//        [output appendFormat:@"%02x",buff[i]];
-//    
-//    NSLog(@"Greg: %@", output);
-//    NSLog(@"Greg: %@", [self md5FromString:@"Greg"] );
     
 
     
@@ -266,6 +226,45 @@
     
     
     
+    //    [self automaticDownloading];
+    //    [self checkDBVersion];
+    //    [self md5check];
+    
+    
+    //     ALAlertBanner *aab = [ALAlertBanner alertBannerForView:self.view
+    //                                               style:ALAlertBannerStyleFailure
+    //                                            position:ALAlertBannerPositionBottom
+    //                                               title:@"Alert"
+    //                                                   subtitle:@"This is a test of the Emergency Alert System"];
+    //
+    //
+    //    [aab show];
+    
+    
+    
+    //    unsigned char buff[CC_MD5_DIGEST_LENGTH];
+    //    CC_MD5_CTX md5;
+    //    CC_MD5_Init(&md5);
+    //
+    //    NSString *string1 = @"Gr";
+    //    NSString *string2 = @"eg";
+    //
+    //    NSData *data1 = [string1 dataUsingEncoding:NSUTF8StringEncoding];
+    //    NSData *data2 = [string2 dataUsingEncoding:NSUTF8StringEncoding];
+    //
+    //    CC_MD5_Update(&md5, [data1 bytes], [data1 length]);
+    //    CC_MD5_Update(&md5, [data2 bytes], [data2 length]);
+    //
+    //    CC_MD5_Final(buff, &md5);
+    //
+    //    output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    //    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+    //        [output appendFormat:@"%02x",buff[i]];
+    //    
+    //    NSLog(@"Greg: %@", output);
+    //    NSLog(@"Greg: %@", [self md5FromString:@"Greg"] );
+    
+
     
     
     //GTFSCommon *common = [[GTFSCommon alloc] init];
@@ -409,6 +408,8 @@
 -(void) checkDBVersion
 {
     
+    NSLog(@"RVC - checkDBVersion");
+    
     Reachability *network = [Reachability reachabilityForInternetConnection];
     if ( ![network isReachable] )
     {
@@ -459,6 +460,7 @@
 -(void) dbVersionFetched:(DBVersionDataObject*) obj
 {
     
+    NSLog(@"RVC - dbVersionFetched");
     
 #ifdef BACKGROUND_DOWNLOAD
     // Check if Auto-Update has been turned on
@@ -770,11 +772,14 @@
 -(void) getGenericAlert
 {
 
+    NSLog(@"RVC - getGenericAlert");
+    
     Reachability *network = [Reachability reachabilityForInternetConnection];
     if ( ![network isReachable] )
     {
         return;
     }
+    
     
     // Run every minute
     if ( _alertAPI == nil )
@@ -787,12 +792,20 @@
     
     [_alertAPI fetchAlert];
 
+//    NSArray *operations = [_alertAPI getOperations];
+//    for (AFJSONRequestOperation *jOp in operations)
+//    {
+//        // Add all operations to the operation queue
+//
+//    }
     
 }
 
 
 -(void) alertFetched:(NSMutableArray*) alert
 {
+    
+    NSLog(@"RVC - alertFeteched: %@", alert);
     
 //    SystemAlertObject *saObject = [alert objectAtIndex:0];
 
@@ -805,6 +818,13 @@
 //    [saObject1 setCurrent_message:@"And now the whole place stinks!"];
 //    [alert addObject: saObject1];
    
+    
+    // At this point, the Networking call for Alerts has already gone out, we can schedule the next one to kick off.
+    if ( _dbVersionTimer == nil )
+    {
+        _dbVersionTimer = [NSTimer scheduledTimerWithTimeInterval:DBVERSION_REFRESH target:self selector:@selector(checkDBVersion) userInfo:nil repeats:YES];
+        [self checkDBVersion];
+    }
     
     
     if ( [alert count] == 0 )

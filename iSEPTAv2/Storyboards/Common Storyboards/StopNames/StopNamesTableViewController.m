@@ -215,8 +215,11 @@
             [self loadBusStopNames];
             break;
         case kGTFSRouteTypeTrolley:  // Note: NHSL is considered a trolley according to the GTFS data.
-            if ( [stopData.route_short_name isEqualToString:@"NHSL"] )
-                [stopData setRoute_type: [NSNumber numberWithInt: kGTFSRouteTypeSubway] ];
+            
+            // gga, commented the below two lines on 1/28/15
+//            if ( [stopData.route_short_name isEqualToString:@"NHSL"] )
+//                [stopData setRoute_type: [NSNumber numberWithInt: kGTFSRouteTypeSubway] ];
+            
         case kGTFSRouteTypeSubway:
         
 //            if ( _sortByStops )
@@ -730,12 +733,21 @@
     GTFSRouteType routeType = [stopData.route_type intValue];
     NSString *queryStr;
     
-    switch ( routeType )
+
+        switch ( routeType )
     {
         case kGTFSRouteTypeBus:
         case kGTFSRouteTypeTrolley:
             
-            if ( stopData.start_stop_name == nil && stopData.end_stop_name == nil )
+            
+            // gga, added this NHSL condition on 1/28/15 to fix to a stupid fix I probably added ages ago.  If I ever find a time machine...
+            if ( [stopData.route_short_name isEqualToString:@"NHSL"] )
+            {  // Same cast as the kGTFSRouteTypeSubway case
+                queryStr = @"SELECT s.stop_name, st.stop_id, t.direction_id, s.wheelchair_boarding, stop_sequence FROM trips_DB t JOIN stop_times_DB st ON t.trip_id=st.trip_id NATURAL JOIN stops_bus s GROUP BY st.stop_id, direction_id ORDER BY s.stop_name;";
+                
+                queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString: stopData.route_short_name];
+            }
+            else if ( stopData.start_stop_name == nil && stopData.end_stop_name == nil )
             {
                 queryStr = [NSString stringWithFormat:@"SELECT stop_name, stop_id, direction_id, wheelchair_boarding, stop_sequence FROM stopNameLookUpTable NATURAL JOIN stops_bus WHERE route_short_name=\"%@\" ORDER BY stop_name", stopData.route_short_name];
             }

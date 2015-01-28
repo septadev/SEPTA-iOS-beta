@@ -70,7 +70,7 @@
                     NSLog(@"file is not zero length: %@", attrs);
                 }
                 
-                NSLog(@"%ld == %ld, files extracted successfully", (unsigned long)count, [contents count]);
+                NSLog(@"%ld == %ld, files extracted successfully", (unsigned long)count, (unsigned long)[contents count]);
                 
             }
             [zip UnzipCloseFile];

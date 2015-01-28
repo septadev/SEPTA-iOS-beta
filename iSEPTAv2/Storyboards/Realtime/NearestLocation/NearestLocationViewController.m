@@ -436,33 +436,6 @@
     
     return thisCell;
     
-    
-    
-    static NSString *cellIdentifier = @"FindNearestRouteCell";
-    
-    id cell = [thisTableView dequeueReusableCellWithIdentifier: cellIdentifier];
-    
-    if ( cell == nil )
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    
-    GetLocationsObject *glObject;
-    glObject = [_tableData objectAtIndex:indexPath.row];
-    
-//    [[cell textLabel] setMinimumFontSize:5.0f];
-    [[cell textLabel] setMinimumScaleFactor:5.0f/[UIFont labelFontSize] ];
-    
-    [[cell textLabel] setAdjustsFontSizeToFitWidth:YES];
-    
-    // [glObject location_id]
-    if ( [glObject routeStr] != NULL )
-        [[cell textLabel] setText: [NSString stringWithFormat:@"%@ - %@",[glObject location_name], [glObject routeStr] ] ];
-    else
-        [[cell textLabel] setText: [NSString stringWithFormat:@"%@",[glObject location_name] ] ];
-    
-    return cell;
-    
 }
 
 
@@ -569,7 +542,7 @@
 
     if ( [locations count] > 0 )
     {
-        CLLocation *location = [[CLLocation alloc] init];
+        CLLocation *location; // = [[CLLocation alloc] init];
         location = [locations firstObject];
 
         float displayRadius = 2.0;
@@ -738,81 +711,6 @@
         
     }
 
-    
-    return;
-    
-    NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/locations/get_locations.php?lon=%9.6f&lat=%9.6f&radius=%6.3f&number_of_results=400", location.coordinate.longitude, location.coordinate.latitude, radiusInMiles];
-    
-    NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"NLVC - getLatestJSONData -- api url: %@", webStringURL);
-
-    
-    [SVProgressHUD showWithStatus:@"Loading..."];
-    
-    
-    _jsonOp     = [[NSBlockOperation alloc] init];
-    
-    __weak NSBlockOperation *weakOp = _jsonOp;
-    [weakOp addExecutionBlock:^{
-        
-        NSError *error;
-        NSData *realTimeTrainInfo = [NSData dataWithContentsOfURL:[NSURL URLWithString:webStringURL] options:NSDataReadingUncached error:&error];
-        
-        if ( error )
-        {
-            NSLog(@"NLVC - Could not get data");
-            return;
-        }
-        
-        if ( ![weakOp isCancelled] )
-        {
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                [self processJSONData:realTimeTrainInfo];
-            }];
-        }
-        else
-        {
-            NSLog(@"NLVC - getLatestJSONData: _jsonOp cancelled");
-        }
-        
-    }];
-    
-    [_jsonQueue addOperation: _jsonOp];
-    
-    
-    
-    
-    //        [_jsonQueue addOperationWithBlock:^{
-    //
-    //            //            NSLog(@"Getting JSON data");
-    //            NSData *realTimeTrainInfo = [NSData dataWithContentsOfURL:[NSURL URLWithString:webStringURL] ];
-    //            //            NSLog(@"Got JSON data!  %@", realTimeTrainInfo);
-    //
-    //            //            if ( _jsonQueue is)
-    //
-    //
-    //            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-    //                [self processJSONData:realTimeTrainInfo];
-    //            }];
-    //
-    //        }];
-    
-    
-    
-    
-    //        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
-    //
-    //            NSData *realTimeTrainInfo = [NSData dataWithContentsOfURL:[NSURL URLWithString:webStringURL] ];
-    ////            [self performSelectorOnMainThread:@selector(processJSONData:) withObject: realTimeTrainInfo waitUntilDone:YES];
-    //
-    //            dispatch_async(dispatch_get_main_queue(), ^{
-    //
-    //                [self processJSONData: realTimeTrainInfo];
-    //
-    //            });
-    //
-    //
-    //        });
     
 }
 
@@ -1137,18 +1035,18 @@
     
     return;  // Don't uncomment this... _masterList contains BasicRouteObjects but SimpleMapController is expecting GetLocationsObject
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SimpleMapStoryboard" bundle:nil];
-    SimpleMapViewController *smVC = (SimpleMapViewController*)[storyboard instantiateInitialViewController];
-    
-//    [smVC setMasterList: _masterList];  // Use _tableData now
-//    int index = [self.segmentTypes selectedSegmentIndex];
-//    if ( index < 0 )  // Was index == -1
-        int index = 0;
-    
-    [smVC setFilterType: [_locationType objectAtIndex:index] ];
-    [smVC setRadius: [NSNumber numberWithFloat:radiusInMiles] ];
-    
-    [self.navigationController pushViewController:smVC animated:YES];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SimpleMapStoryboard" bundle:nil];
+//    SimpleMapViewController *smVC = (SimpleMapViewController*)[storyboard instantiateInitialViewController];
+//    
+////    [smVC setMasterList: _masterList];  // Use _tableData now
+////    int index = [self.segmentTypes selectedSegmentIndex];
+////    if ( index < 0 )  // Was index == -1
+//        int index = 0;
+//    
+//    [smVC setFilterType: [_locationType objectAtIndex:index] ];
+//    [smVC setRadius: [NSNumber numberWithFloat:radiusInMiles] ];
+//    
+//    [self.navigationController pushViewController:smVC animated:YES];
     
 }
 
