@@ -109,7 +109,10 @@
     
     // Title is used in this case to size the line and nothing else
     NSString *title = @"Blah";
-    CGSize size = [title sizeWithFont: [UIFont fontWithName: @"TrebuchetMS-Bold" size: _fontSize] ];
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"TrebuchetMS-Bold" size:_fontSize]};
+//    CGSize size = [title sizeWithFont: [UIFont fontWithName: @"TrebuchetMS-Bold" size: _fontSize] ];
+    CGSize size = [title sizeWithAttributes:attributes];  // iOS 7.0
     
     int barHeight = 32;
     _padding = (barHeight - (size.height) ) / 2;

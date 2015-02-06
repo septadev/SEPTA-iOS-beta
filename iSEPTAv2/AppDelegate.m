@@ -154,8 +154,6 @@
         NSLog(@"AppDelegate - didFinishLaunchingWithOptions: No notifications information stored in launchOptions");
     }
 
-//    [self transferDb];
-   
     
     NSDictionary *regionInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey];
     if ( regionInfo == nil )
@@ -285,64 +283,7 @@
     
 }
 
-- (BOOL)transferDb {
-    
-    /* NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDirectory, YES);
-     NSString *documentDir = [paths objectAtIndex:0];
-     NSString *path = [documentDir stringByAppendingPathComponent:@"SEPTADB.sqlite3"];
-     NSLog(@"%@",path);
-     
-     // NSFileManager *fileManager = [NSFileManager defaultManager];
-     NSFileManager *fileManager = [[NSFileManager alloc] init];
-     if (![fileManager fileExistsAtPath: path])
-     {
-     NSString *bundle =  [[ NSBundle mainBundle] pathForResource:@"SEPTADB" ofType:@"sqlite3"];
-     
-     [fileManager copyItemAtPath:bundle toPath:path error:nil];
-     return YES;
-     }*/
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    NSString *bundleRoot = [[NSBundle mainBundle] bundlePath];
-    
-    NSArray *dirContents = [fileManager contentsOfDirectoryAtPath: bundleRoot error: nil];
-    NSArray *onlyPdf = [dirContents filteredArrayUsingPredicate: [NSPredicate predicateWithFormat: @"self ENDSWITH '.sqlite3'"]];
-    
-    //debugLog(@"Sample PDF %@", onlyPdf);
-    
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDir = [paths objectAtIndex: 0];
-    
-    for (int i = 0; i < onlyPdf.count; i++) {
-        NSString *pdfName = [onlyPdf objectAtIndex: i];
-        
-        NSString *docPdfFilePath = [documentsDir stringByAppendingPathComponent: pdfName];
-        
-        //Using NSFileManager we can perform many file system operations.
-        BOOL success = [fileManager fileExistsAtPath: docPdfFilePath];
-        
-        if (!success) {
-            NSString *samplePdfFile  = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: pdfName];
-            
-            success = [fileManager copyItemAtPath: samplePdfFile toPath: docPdfFilePath error:nil];
-            
-            if (!success)
-                //              NSAssert1(0, @"Failed to copy file '%@'.", [error localizedDescription]);
-                //debugLog(@"Failed to copy %@ file, error %@", pdfName, [error localizedDescription]);
-                NSLog(@"AppDelegate - transferDb: db transfer Failure");
-            else {
-                //debugLog(@"File copied %@ OK", pdfName);
-                NSLog(@"AppDelegate - transferDb: db transfer success");
-            }
-        }
-        else {
-            //debugLog(@"File exits %@, skip copy", pdfName);
-            NSLog(@"AppDelgate - transferDb: Skip copy");
-        }
-    }
-    return NO;
-}
+
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {

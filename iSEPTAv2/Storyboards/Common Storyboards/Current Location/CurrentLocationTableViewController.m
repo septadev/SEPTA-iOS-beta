@@ -54,6 +54,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
 
+    [super viewWillAppear:animated];
+    
     // self.view.frame will display the actual width and height based on the orientation here.
     // viewDidLoad will only show the portriat width and height, regardless of orientation.
     
@@ -730,7 +732,7 @@ static void distanceFunc(sqlite3_context *context, int argc, sqlite3_value **arg
 
 -(void) goBack
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -849,7 +851,7 @@ static void distanceFunc(sqlite3_context *context, int argc, sqlite3_value **arg
 
 -(void) gestureLongPress:(UILongPressGestureRecognizer*) gesture
 {
-    NSLog(@"Long press: %ld", gesture.state);
+    NSLog(@"Long press: %ld", (long)gesture.state);
     
     
     

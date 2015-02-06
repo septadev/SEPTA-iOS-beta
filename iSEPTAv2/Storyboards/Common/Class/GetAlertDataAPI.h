@@ -41,7 +41,6 @@
 
 -(NSArray*) getOperations;
 -(void) fetchAlert;
--(void) fetchAlert2;
 -(void) addRoute:(NSString*) routeName;
 -(void) addRoute:(NSString*) routeName ofModeType:(SEPTARouteTypes) type;
 -(void) removeRoute:(NSString*) routeName;

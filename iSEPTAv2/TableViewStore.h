@@ -10,6 +10,8 @@
 #import "NSMutableArray+Indices.h"
 #import "NSMutableArray+MoveObject.h"
 
+#import <UIKit/UIKit.h>
+
 
 @interface TVStoreObject : NSObject
 

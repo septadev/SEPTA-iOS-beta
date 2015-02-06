@@ -26,7 +26,7 @@
     
 //    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
     
-    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *dbPath = [NSString stringWithFormat:@"%@/SEPTA.sqlite", [paths objectAtIndex:0] ];
     
     bool b = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
@@ -40,7 +40,7 @@
         if ( zipPath != nil )
         {
             
-            NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
             NSString  *uncompressPath = [paths objectAtIndex:0];
             
             ZipArchive *zip = [[ZipArchive alloc] init];
@@ -71,6 +71,15 @@
                 }
                 
                 NSLog(@"%ld == %ld, files extracted successfully", (unsigned long)count, (unsigned long)[contents count]);
+                
+                NSURL *dbPathURL = [NSURL fileURLWithPath:dbPath];
+                
+                NSError *pathError = nil;
+                BOOL success = [dbPathURL setResourceValue:[NSNumber numberWithBool: YES] forKey:NSURLIsExcludedFromBackupKey error:&pathError];
+                if ( !success )
+                    NSLog(@"Error excluding %@ from backup %@", [dbPathURL lastPathComponent], error);
+                else
+                    NSLog(@"Excluded %@ from backup", [dbPathURL lastPathComponent]);
                 
             }
             [zip UnzipCloseFile];
@@ -135,7 +144,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"GTFSCommon: getServiceIDFor: %ld", route);
+    NSLog(@"GTFSCommon: getServiceIDFor: %ld", (long)route);
 #endif
     
     NSInteger service_id = 0;
@@ -343,7 +352,7 @@
     
     // Now needs to factor in the offset.
     
-    NSLog(@"filePath: %@", [GTFSCommon filePath]);
+//    NSLog(@"filePath: %@", [GTFSCommon filePath]);
     FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
     
     if ( ![database open] )

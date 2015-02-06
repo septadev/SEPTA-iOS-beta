@@ -240,8 +240,10 @@ NSString * const kSearchTextKey = @"Search Text"; /*< NSDictionary key for enter
 - (void) zoomMapToPlacemark:(CLPlacemark *)selectedPlacemark
 {
     
+
     CLLocationCoordinate2D coordinate = selectedPlacemark.location.coordinate;
     MKMapPoint mapPoint = MKMapPointForCoordinate(coordinate);
+//    double radius = (MKMapPointsPerMeterAtLatitude(coordinate.latitude) * [(CLCircularRegion*)selectedPlacemark.region radius])*10;
     double radius = (MKMapPointsPerMeterAtLatitude(coordinate.latitude) * selectedPlacemark.region.radius)*10;
     MKMapSize size = {radius, radius};
     MKMapRect mapRect = {mapPoint, size};

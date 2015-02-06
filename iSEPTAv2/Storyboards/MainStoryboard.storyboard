@@ -23,10 +23,10 @@
             </objects>
             <point key="canvasLocation" x="945" y="-246"/>
         </scene>
-        <!--Main Tab Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="VIc-UD-ABo">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="PfG-4g-auN" customClass="MainTabBarController" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" id="PfG-4g-auN" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>

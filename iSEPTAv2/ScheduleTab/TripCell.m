@@ -278,7 +278,7 @@
     if ( diff > 59 )
     {
         // Was "leaves in over %d hrs"
-        return [NSString stringWithFormat:@"%d hrs %02ld mins", (int)diff/60, diff % 60];
+        return [NSString stringWithFormat:@"%d hrs %02ld mins", (int)diff/60, (long)diff % 60];
     }
     else
     {

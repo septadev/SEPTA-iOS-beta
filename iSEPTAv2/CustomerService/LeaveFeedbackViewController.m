@@ -92,7 +92,7 @@
 //                [mailViewController addAttachmentData:myData mimeType:@"image/png" fileName: name ];
 //            }
 
-            [self presentModalViewController:mailViewController animated:YES];
+            [self presentViewController:mailViewController animated:YES completion:nil];
             
         }
     
@@ -128,7 +128,7 @@
             break;
     }
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

@@ -371,7 +371,8 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    
+ 
+    NSLog(@"NtATVC - didReceiveMemoryWarning");
 }
 
 
@@ -1262,7 +1263,7 @@
     [sntvc setSelectionType: selType];   // Determines its behavior, whether to show only the start, end or both start/end stops information
     [sntvc setDelegate:self];
     
-    NSLog(@"NtATVC - itineraryButtonPressed, selectionType: %ld", selType);
+    NSLog(@"NtATVC - itineraryButtonPressed, selectionType: %ld", (long)selType);
     
     [self.navigationController pushViewController:sntvc animated:YES];
     
@@ -1426,29 +1427,36 @@
         // Cleanup code; executes whether or not an exception was found
     }
     
+    
     if ( [darkTerritoryStopIDArray containsObject: startID ] || [darkTerritoryStopIDArray containsObject: endID ] )
     {
+        
+        // Removed on 02/02/15 due to strange crashing issues that cannot be recreated in a test environment
+        
 //        NSLog(@"***  DARK TERRITORY!!!  DARK TERRITORY!!  ***");
 //        NSLog(@"rect: %@", NSStringFromCGRect(self.tableView.frame));
-        
-        ALAlertBanner *aBanner = [ALAlertBanner alertBannerForView:self.view
-                                                   style:ALAlertBannerStyleFailure
-                                                position:ALAlertBannerPositionBottom
-                                                   title:@"Non-SEPTA Territory"
-                                                subtitle:@"One or more selected stops are in Non-SEPTA territory.  Tap for more details."
-                                             tappedBlock:^(ALAlertBanner *alertBanner)
-                        {
-
-                            [alertBanner hide];
-                            [self loadDisclaimer];
-                            
-                        }];
-        
-        NSTimeInterval showTime = 4.0f;
-        [aBanner setSecondsToShow: showTime];
-        
-        [aBanner show];
+//
+//        __weak typeof(self) weakSelf = self;
+//        ALAlertBanner *aBanner = [ALAlertBanner alertBannerForView:self.view
+//                                                   style:ALAlertBannerStyleFailure
+//                                                position:ALAlertBannerPositionBottom
+//                                                   title:@"Non-SEPTA Territory"
+//                                                subtitle:@"One or more selected stops are in Non-SEPTA territory.  Tap for more details."
+//                                             tappedBlock:^(ALAlertBanner *alertBanner)
+//                        {
+//
+//                            [alertBanner hide];
+//                            [weakSelf loadDisclaimer];
+//                            
+//                        }];
+//        
+//        NSTimeInterval showTime = 4.0f;
+//        [aBanner setSecondsToShow: showTime];
+//        
+//        [aBanner show];
+//        
 //        NSLog(@"Banner show!");
+        
     }
     
 

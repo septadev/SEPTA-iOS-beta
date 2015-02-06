@@ -174,53 +174,12 @@
     
     [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
     
-    //    TestDisplayedRouteData *testData = [[TestDisplayedRouteData alloc] init];
-    //
-    //    [testData testCopy];
-    //    [testData testDataStore];
-    //    [testData testReturnDataWithFavorites:YES withViewed:YES andWithRoutes:YES];
-    //    [testData testReturnDataWithFavorites:YES withViewed:YES andWithRoutes:NO ];
-    //    [testData testReturnDataWithFavorites:YES withViewed:NO  andWithRoutes:YES];
-    //    [testData testReturnDataWithFavorites:YES withViewed:NO  andWithRoutes:NO ];
-    //
-    //    [testData testReturnDataWithFavorites:NO  withViewed:YES andWithRoutes:YES];
-    //    [testData testReturnDataWithFavorites:NO  withViewed:YES andWithRoutes:NO ];
-    //    [testData testReturnDataWithFavorites:NO  withViewed:NO  andWithRoutes:YES];
-    //    [testData testReturnDataWithFavorites:NO  withViewed:NO  andWithRoutes:NO ];
-    
-    
     [self configureTableView];
-    
-    //    [self.tableView setFrame:CGRectMake(0, -15, 320, 367)];
-    //    [self.tableView setContentInset:UIEdgeInsetsMake(-15, 0, 0, 0)];
-    //    [self.tableView setBackgroundColor:[UIColor cyanColor]];
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    //    self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    //    _routeData = [[PassedRouteData alloc] init];
+
     
     [self.searchDisplayController.searchBar setHidden:YES];
     [self getUnfilteredBusRoutes];
     
-    //    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    //    NSString *documentsDirectory = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"iSEPTA.app"];
-    //    NSLog(@"Looking for files in: %@", documentsDirectory);
-    //    [self listFileAtPath: documentsDirectory];
-    //
-    ////    NSArray *files = [self findFiles:@"kml"];
-    //    NSArray *files = [self recursivePathsForResourcesOfType:@"sqlite" inDirectory:documentsDirectory];
-    //    NSInteger count = 1;
-    //    for (NSString *filename in files)
-    //    {
-    //        NSLog(@"%d: %@", count++, filename);
-    //    }
-    //
-    //    NSLog(@"kml: %@",[[NSBundle mainBundle] pathForResource:@"92" ofType:@"kml"]);
     
 }
 

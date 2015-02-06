@@ -28,7 +28,7 @@
 @implementation GetDBVersionAPI
 {
 
-    AFJSONRequestOperation *_jsonOperation;
+    AFHTTPRequestOperation *_jsonOperation;
 
     DBVersionDataObject *_dbObject;
 //    NSString *_localMD5;
@@ -90,72 +90,31 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL: [NSURL URLWithString:url] ];
     
-    _jsonOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                                     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+    _jsonOperation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [_jsonOperation setResponseSerializer: [AFJSONResponseSerializer serializer] ];
 
-                                                                          NSDictionary *jsonDict = (NSDictionary*) JSON;
-//                                                                         NSMutableDictionary *jsonDict = [(NSDictionary *) JSON mutableCopy];
-//                                                                         [jsonDict setValue:@"high" forKey:@"severity"];
-//                                                                         [jsonDict setValue:@"This is a test message that I am going to display. Sometimes there is a lot to say and it requires a longer time for the reader to get through the entire things.  Hopefully this will cap out the message at the 15 sec mark." forKey:@"message"];
-                                                                         
-                                                                         [self processDBVersionJSON: jsonDict];
-                                                                         
-                                                                     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,
-                                                                                 NSError *error, id JSON) {
-                                                                         NSLog(@"Request Failure Because %@",[error userInfo]);
-                                                                         // TODO:  Set error flag, call delegate's alertFetched
-                                                                     }
-                      ];
+    __weak typeof(self) weakSelf = self;
+    [_jsonOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         NSDictionary *jsonDict = (NSDictionary*) responseObject;
+         //                                                                         NSMutableDictionary *jsonDict = [(NSDictionary *) JSON mutableCopy];
+         //                                                                         [jsonDict setValue:@"high" forKey:@"severity"];
+         //                                                                         [jsonDict setValue:@"This is a test message that I am going to display. Sometimes there is a lot to say and it requires a longer time for the reader to get through the entire things.  Hopefully this will cap out the message at the 15 sec mark." forKey:@"message"];
+         
+         [weakSelf processDBVersionJSON: jsonDict];
+         
+     }failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"GDBVA - fetchAlert, Request Failure Because %@",[error userInfo]);
+     }
+     ];
     
     [_jsonOperation start];
     
     
 }
 
--(void) fetchData2
-{
-    
-    if ( ![[Reachability reachabilityForInternetConnection] isReachable] )
-        return;
-    
-    
-    NSString *url;
-    
-    if ( _testMode )
-    {
-        url = @"http://api0.septa.org/gga8893/dbVersion/";
-    }
-    else
-    {
-        url = @"http://www3.septa.org/hackathon/dbVersion/";
-    }
-    
-    
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL: [NSURL URLWithString:url] ];
-    
-    _jsonOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                                     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                                                         
-                                                                         NSDictionary *jsonDict = (NSDictionary*) JSON;
-                                                                         //                                                                         NSMutableDictionary *jsonDict = [(NSDictionary *) JSON mutableCopy];
-                                                                         //                                                                         [jsonDict setValue:@"high" forKey:@"severity"];
-                                                                         //                                                                         [jsonDict setValue:@"This is a test message that I am going to display. Sometimes there is a lot to say and it requires a longer time for the reader to get through the entire things.  Hopefully this will cap out the message at the 15 sec mark." forKey:@"message"];
-                                                                         
-//                                                                         [self processDBVersionJSON: jsonDict];
-                                                                         NSLog(@"%@", jsonDict);
-                                                                         
-                                                                     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,
-                                                                                 NSError *error, id JSON) {
-                                                                         NSLog(@"Request Failure Because %@",[error userInfo]);
-                                                                         // TODO:  Set error flag, call delegate's alertFetched
-                                                                     }
-                      ];
-    
-    [_jsonOperation start];
-    
-    
-}
+
 
 -(void) processDBVersionJSON: (NSDictionary*) jsonDict
 {
@@ -205,7 +164,7 @@
     // Create byte array of unsigned chars
     unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
     
-    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *dbPath = [NSString stringWithFormat:@"%@/SEPTA.sqlite", [paths objectAtIndex:0] ];
     
     bool b = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
@@ -226,29 +185,6 @@
         [output appendFormat:@"%02x",md5Buffer[i]];
     
     _localMD5 = output;
-    
-    
-//    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *md5Path = [NSString stringWithFormat:@"%@/SEPTA.md5", [paths objectAtIndex:0] ];
-//    
-//    if ( md5Path == nil )
-//        return nil;
-//    
-//    NSString *md5JSON = [[NSString alloc] initWithContentsOfFile:md5Path encoding:NSUTF8StringEncoding error:NULL];
-//    if ( md5JSON == nil )
-//        return nil;
-//    
-//    NSError *error = nil;
-//    NSDictionary *md5dict = [NSJSONSerialization JSONObjectWithData: [md5JSON dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-//    
-//    if ( error != nil )
-//        return nil;
-//    
-//    NSArray *md5Arr = [md5dict valueForKeyPath:@"md5"];
-    
-//    _localMD5 = [md5Arr firstObject];
-    
-//    NSLog(@"localMD5: %@", _localMD5);
     
     return _localMD5;
     

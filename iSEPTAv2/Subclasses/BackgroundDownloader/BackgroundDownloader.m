@@ -69,7 +69,7 @@
     
     _downloadInProgress = YES;
     
-    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString  *path  = [paths objectAtIndex:0];
     
     NSString  *zipPath = [NSString stringWithFormat:@"%@/%@", path, @"SEPTA.zip"];
@@ -173,7 +173,7 @@
     
     _installInProgress = YES;
     _installComplete   = NO;
-    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString  *path  = [paths objectAtIndex:0];
     
     
@@ -225,7 +225,7 @@
 -(void) cleanup
 {
 
-    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString  *path  = [paths objectAtIndex:0];
     
     NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", path];

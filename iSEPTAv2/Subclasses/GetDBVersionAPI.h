@@ -43,7 +43,6 @@
 -(id) initWithTestMode:(BOOL) yesNO;
 
 -(void) fetchData;
--(void) fetchData2;
 
 -(DBVersionDataObject*) getData;
 -(NSString*) loadLocalMD5;

@@ -13,7 +13,7 @@
 -(NSString*) getDBPath
 {
     
-    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *dbPath = [NSString stringWithFormat:@"%@/SEPTA.sqlite", [paths objectAtIndex:0] ];
     
     bool b = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];

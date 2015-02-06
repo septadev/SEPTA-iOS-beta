@@ -740,7 +740,8 @@
             break;
     }
     
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 
@@ -749,7 +750,7 @@
 {
     
     attachmentImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 

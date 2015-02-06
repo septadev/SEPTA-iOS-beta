@@ -627,15 +627,19 @@
     
     NSURLRequest *systemRequest = [NSURLRequest requestWithURL: [NSURL URLWithString: stringURL] ];
     
-    AFJSONRequestOperation *jsonSystemOp;
-    jsonSystemOp = [AFJSONRequestOperation JSONRequestOperationWithRequest: systemRequest
-                                                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                                                       NSDictionary *jsonDict = (NSDictionary*) JSON;
-                                                                       [self processSystemStatusJSONData:jsonDict];
-                                                                   }
-                                                                   failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                                                                       NSLog(@"System Status Failure Because %@", [error userInfo] );
-                                                                   }];
+    AFHTTPRequestOperation *jsonSystemOp = [[AFHTTPRequestOperation alloc] initWithRequest:systemRequest];
+    [jsonSystemOp setResponseSerializer: [AFJSONResponseSerializer serializer] ];
+    
+    __weak typeof(self) weakASelf = self;
+    [jsonSystemOp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         NSDictionary *jsonDict = (NSDictionary*) responseObject;
+         [weakASelf processSystemStatusJSONData:jsonDict];
+     }failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"SSVC - getSystemStatus, Alert Request Failure Because %@",[error userInfo]);
+     }
+     ];
     
     [jsonSystemOp start];
     
@@ -643,96 +647,26 @@
     NSString *elevatorURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/elevator/"];
     NSURLRequest *request = [NSURLRequest requestWithURL: [NSURL URLWithString: elevatorURL] ];
     
-    AFJSONRequestOperation *jsonElevatorOp;
-    jsonElevatorOp = [AFJSONRequestOperation JSONRequestOperationWithRequest: request
-                                                                     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                                                         
-                                                                         NSDictionary *jsonDict = (NSDictionary*) JSON;
-                                                                         [self processElevatorStatusJSONData: jsonDict];
-                                                                         
-                                                                     }
-                                                                     failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                                                                         NSLog(@"Elevator Request Failure Because %@", [error userInfo] );
-                                                                     }];
+    AFHTTPRequestOperation *jsonElevatorOp = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [jsonElevatorOp setResponseSerializer: [AFJSONResponseSerializer serializer] ];
     
+    __weak typeof(self) weakESelf = self;
+    [jsonElevatorOp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         NSDictionary *jsonDict = (NSDictionary*) responseObject;
+         [weakESelf processElevatorStatusJSONData: jsonDict];
+     }failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"SSVC - getSystemStatus, Elevator Request Failure Because %@",[error userInfo]);
+     }
+     ];
     
     [jsonElevatorOp start];
-
-//    NSString *elevatorWebURL = [elevatorURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
-//        
-//        NSData *realTimeTrainInfo = [NSData dataWithContentsOfURL:[NSURL URLWithString: elevatorWebURL] ];
-//        [self performSelectorOnMainThread:@selector(processElevatorStatusJSONData:) withObject: realTimeTrainInfo waitUntilDone:YES];
-//        
-//    });
-
     
     
 }
 
 
-//-(void) getAlertData
-//{
-//    
-//    NSString *busRoute = @"bus_route_1";
-//    NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/Alerts/get_alert_data.php?req1=%@", busRoute];
-//    
-//    NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    NSLog(@"NTAVC - getAlertData -- api url: %@", webStringURL);
-//    
-//    [SVProgressHUD showWithStatus:@"Loading..."];
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
-//        
-//        NSData *realTimeTrainInfo = [NSData dataWithContentsOfURL:[NSURL URLWithString:webStringURL] ];
-//        [self performSelectorOnMainThread:@selector(processSystemAlertJSONData:) withObject: realTimeTrainInfo waitUntilDone:YES];
-//        
-//    });
-//    
-//}
-
-
-//-(void) processSystemAlertJSONData:(NSData*) returnedData
-//{
-//    [SVProgressHUD dismiss];
-//    
-//    // This method is called once the realtime positioning data has been returned via the API is stored in data
-//    NSError *error;
-//    NSDictionary *json = [NSJSONSerialization JSONObjectWithData: returnedData options:kNilOptions error:&error];
-//    
-//    if ( json == nil )
-//        return;
-//    
-//    if ( error != nil )
-//        return;  // Something bad happened, so just return.
-//    
-//    [_alertData removeAllObjects];
-//    for (NSDictionary *data in json)
-//    {
-//        SystemAlertObject *saObject = [[SystemAlertObject alloc] init];
-//        
-//        [saObject setRoute_id:   [data objectForKey:@"route_id"] ];
-//        [saObject setRoute_name: [data objectForKey:@"route_name"] ];
-//        
-//        [saObject setCurrent_message:  [data objectForKey:@"current_message"] ];
-//        [saObject setAdvisory_message: [data objectForKey:@"advisory_message"] ];
-//        
-//        [saObject setDetour_message:        [data objectForKey:@"detour_message"] ];
-//        [saObject setDetour_start_location: [data objectForKey:@"detour_start_location"] ];
-//        
-//        [saObject setDetour_start_date_time: [data objectForKey:@"detour_start_date_time"] ];
-//        [saObject setDetour_end_date_time:   [data objectForKey:@"detour_end_date_time"] ];
-//        
-//        [saObject setDetour_reason: [data objectForKey:@"detour_reason"] ];
-//        [saObject setLast_updated:  [data objectForKey:@"last_updated"] ];
-//        
-//        [_alertData addObject: saObject];
-//    }
-//    
-//}
-
-
-//-(void) processElevatorStatusJSONData:(NSData*) returnedData
 -(void) processElevatorStatusJSONData:(NSDictionary*) json
 {
     
@@ -848,22 +782,9 @@
         
     }
     
-    
-    
-    
-//    [self filterTableDataSource];
     [self filterTableDataSourceBy: _filterType];
     
-    
 }
-
-//#pragma mark - UISegementedControl
-//- (IBAction)segmentRouteTypeChanged:(id)sender
-//{
-//    
-//    [self filterTableDataSource];
-//    
-//}
 
 
 -(void) filterTableDataSourceBy: (SystemStatusFilterType) filterType
@@ -943,64 +864,6 @@
     
 }
 
-
-//-(void) filterTableDataSource
-//{
-//    
-//    NSPredicate *currentPredicate;
-//    NSInteger index = [self.segmentRouteType selectedSegmentIndex];
-//    id sortBy;
-//    
-//    switch (index) {
-//        case 0:  // Bus
-//            _filterMode = @"(Bus|Trolley)";
-//            currentPredicate = [NSPredicate predicateWithFormat:@"mode MATCHES %@", _filterMode];
-//            sortBy = sortStatusByNumberString;
-//            
-//            break;
-//        case 1:  // Rail
-//            _filterMode = @"Regional Rail";
-//            currentPredicate = [NSPredicate predicateWithFormat:@"mode == %@", _filterMode];
-//            sortBy = sortStatusName;
-//            
-//            break;
-//        case 2:  // MFL/MFO
-//            _filterMode = @"Market/ Frankford";
-//            currentPredicate = [NSPredicate predicateWithFormat:@"mode == %@", _filterMode];
-//            sortBy = sortStatusName;
-//            
-//            break;
-//        case 3:  // BSS/BSO
-//            _filterMode = @"Broad Street Line";
-//            currentPredicate = [NSPredicate predicateWithFormat:@"mode == %@", _filterMode];
-//            sortBy = sortStatusName;
-//            
-//            break;
-//        case 4:  // NHSL
-//            _filterMode = @"Norristown High Speed Line";
-//            currentPredicate = [NSPredicate predicateWithFormat:@"mode == %@", _filterMode];
-//            sortBy = sortStatusName;
-//            
-//            break;
-//            
-//        default:
-//            break;
-//    }
-//    
-//    //    currentPredicate = [NSPredicate predicateWithFormat:@"mode == %@", _filterMode];
-//    _filteredData = [ [_masterData filteredArrayUsingPredicate:currentPredicate] sortedArrayUsingComparator: sortBy];
-//    
-//    
-//    [self generateIndex];
-//    
-//    [self.tableView reloadData];
-//    
-//    if ( [_filteredData count] > 0 )
-//    {
-//        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-//    }
-//    
-//}
 
 #pragma mark - Generating UITableView Index
 -(void) generateIndex

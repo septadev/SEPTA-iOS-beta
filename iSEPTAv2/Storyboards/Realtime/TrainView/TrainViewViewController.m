@@ -54,18 +54,6 @@
 }
 
 
-//-(id) initWithCoder:(NSCoder *)aDecoder
-//{
-//    
-//    self = [super initWithCoder:aDecoder];
-//    if ( self )
-//    {
-//        
-//    }
-//    return self;
-//    
-//}
-
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -102,22 +90,7 @@
     // --==  Register Your Nibs!
     [self.tableView registerNib: [UINib nibWithNibName:@"RealtimeVehicleInformationCell" bundle:nil] forCellReuseIdentifier: @"RealtimeVehicleInformationCell"];
 
-    
-    
-//    NSString *imageName;
-//    
-//    if ( self.routeName == nil )
-//    {
-//        imageName = @"RRL_white.png";
-//    }
-//    else
-//    {
-//        imageName = @"RRL_white.png";
-//    }
-    
-//    if ( self.backImageName == nil )
-//        [self setBackImageName: @"RRL_white.png"];
-    
+        
     CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed: @"RRL_white.png" withTarget:self andWithAction:@selector(backButtonPressed:)];
     self.navigationItem.leftBarButtonItem = backBarButtonItem;
 
@@ -684,83 +657,11 @@
     NSSortDescriptor *lowestToHighest = [NSSortDescriptor sortDescriptorWithKey:@"distance" ascending:YES];
     [readData sortUsingDescriptors:[NSArray arrayWithObject:lowestToHighest]];
     
-//    [readData sortUsingComparator:^NSComparisonResult(id a, id b)
-//     {
-//         if ( _reverseSort )
-//             return [[b distance] compare: [a distance] ];  
-//         else
-//             return [[a distance] compare: [b distance] ];
-//     }];
-
-    
-    
-//    if ( [self.travelMode isEqualToString:@"Bus"] )
-//    {
-//        
-//        for (NSDictionary *data in [json objectForKey:@"bus"] )
-//        {
-//            
-//            if ( [_jsonOp isCancelled] )
-//                return;
-//            
-//            
-//            if ( [[data objectForKey:@"Direction"] isEqualToString:@" "] )
-//                continue;
-//            
-//            TransitViewObject *tvObject = [[TransitViewObject alloc] init];
-//            
-//            [tvObject setLat: [data objectForKey:@"lat"] ];
-//            [tvObject setLng: [data objectForKey:@"lng"] ];
-//            [tvObject setLabel: [data objectForKey:@"label"] ];
-//            [tvObject setVehicleID: [data objectForKey:@"VehicleID"] ];
-//            
-//            [tvObject setBlockID: [data objectForKey:@"BlockID"] ];
-//            [tvObject setDirection: [data objectForKey:@"Direction"] ];
-//            [tvObject setDestination: [data objectForKey:@"destination"] ];
-//            [tvObject setOffset: [data objectForKey:@"Offset"] ];
-//            
-//            [readData addObject: tvObject];
-//            
-//        }
-//    }
-//    else if ( [self.travelMode isEqualToString:@"Rail"] )
-//    {
-//        
-//        for (NSDictionary *data in json)
-//        {
-//            
-//            if ( [_jsonOp isCancelled] )
-//                return;
-//            
-//            TrainViewObject *tvObject = [[TrainViewObject alloc] init];
-//            // These keys need to be exactly as they appear in the returned JSON data
-//            [tvObject setStartName:[data objectForKey:@"SOURCE"] ];
-//            [tvObject setEndName  :[data objectForKey:@"dest"] ];
-//            
-//            [tvObject setLate     :[data objectForKey:@"late"] ];
-//            [tvObject setTrainNo  :[data objectForKey:@"trainno"] ];
-//            
-//            [readData addObject: tvObject];
-//            
-//        }
-//        
-//    }
-
 
     _tableData = readData;
     
     [self kickOffAnotherJSONRequest];
 
-    
-//    masterList = [readData copy];
-//    readData = nil;
-//    
-//    trains = masterList;
-//    
-//    [self kickOffAnotherJSONRequest];
-//    
-//    [self sortDataWithIndex: _previousIndex];
-    
     [self.tableView reloadData];
  
 }
@@ -1235,60 +1136,23 @@
     NSURL *url = [NSURL URLWithString: webStringURL];
     NSURLRequest *request = [NSURLRequest requestWithURL: url];
     
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
-    {
-        // Success Block
-        NSLog(@"IP Address: %@", [JSON valueForKeyPath:@"origin"]);
-    }
-                                                                                        failure:nil];
     
-    [operation start];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setResponseSerializer: [AFJSONResponseSerializer serializer] ];
     
+//    __weak typeof(self) weakSelf = self;
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         // Success Block
+         NSLog(@"IP Address: %@", [responseObject valueForKeyPath:@"origin"]);
+     }failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"TVVC - getLatestRouteLocations, Request Failure Because %@",[error userInfo]);
+     }
+     ];
     
+    [operation start];  // Retained by the operation queue
     
-//    if ( [self.travelMode isEqualToString:@"Bus"] )  // Add MFL to this?  Need to investigate this further
-//    {
-//        
-//        NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TransitView/%@", routeName];
-//        NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//        NSLog(@"TMVC - getLatestRouteLocations (bus) -- api url: %@", webStringURL);
-//        
-//        [SVProgressHUD showWithStatus:@"Loading..."];
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
-//            
-//            NSData *realtimeBusInfo = [NSData dataWithContentsOfURL:[NSURL URLWithString:webStringURL] ];
-//            [self performSelectorOnMainThread:@selector(addAnnotationsUsingJSONBusLocations:) withObject: realtimeBusInfo waitUntilDone:YES];
-//            
-//        });
-//        
-//    }
-//    else if ( [self.travelMode isEqualToString:@"Rail"] )
-//    {
-//        
-//        NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TrainView/"];
-//        NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//        NSLog(@"TMVC - getLatestRouteLocations (rail) -- api url: %@", webStringURL);
-//        
-//        [SVProgressHUD showWithStatus:@"Loading..."];
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
-//            
-//            NSError *error = nil;
-//            NSData *realtimeBusInfo = [NSData dataWithContentsOfURL:[NSURL URLWithString:webStringURL] options:NSDataReadingUncached error:&error ];
-//            
-//            if ( error )
-//            {
-//                NSLog(@"TMVC - getLatestRouteLocations (rail) Error: %@", [error localizedDescription]);
-//            }
-//            else
-//            {
-//                //                NSLog(@"NTVVC - getLatestRouteLocations (rail) Loaded data");
-//                [self performSelectorOnMainThread:@selector(addAnnotationsUsingJSONRailLocations:) withObject: realtimeBusInfo waitUntilDone:YES];
-//            }
-//            
-//        });
-//        
-//    }
 }
 
 #pragma mark - MKMapViewDelegate Methods

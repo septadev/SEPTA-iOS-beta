@@ -24,6 +24,7 @@
 		270C8F68194A33DB00AE208E /* SlidingAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270C8F67194A33DB00AE208E /* SlidingAlertViewController.m */; };
 		2712DE6C17EB943C0047343F /* EnterAddressStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2712DE6B17EB943C0047343F /* EnterAddressStoryboard.storyboard */; };
 		2712DE7B17ECE5920047343F /* SavedAddressesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712DE7A17ECE5920047343F /* SavedAddressesViewController.m */; };
+		27157FFF1A82C21F009F2FA0 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 27157FFE1A82C21F009F2FA0 /* Event.m */; };
 		27167CE317AACCC9009774A4 /* NearestLocationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27167CE217AACCC9009774A4 /* NearestLocationStoryboard.storyboard */; };
 		27167CE617AACCEC009774A4 /* NearestLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27167CE517AACCEC009774A4 /* NearestLocationViewController.m */; };
 		271A00A61A71584800EBD6C8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 271A00A51A71584800EBD6C8 /* Crashlytics.framework */; };
@@ -726,6 +727,8 @@
 		2712DE6B17EB943C0047343F /* EnterAddressStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EnterAddressStoryboard.storyboard; path = "Storyboards/Common Storyboards/Enter Address/EnterAddressStoryboard.storyboard"; sourceTree = "<group>"; };
 		2712DE7917ECE5920047343F /* SavedAddressesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SavedAddressesViewController.h; path = "Storyboards/Common Storyboards/Enter Address/SavedAddressesViewController.h"; sourceTree = "<group>"; };
 		2712DE7A17ECE5920047343F /* SavedAddressesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SavedAddressesViewController.m; path = "Storyboards/Common Storyboards/Enter Address/SavedAddressesViewController.m"; sourceTree = "<group>"; };
+		27157FFD1A82C21F009F2FA0 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		27157FFE1A82C21F009F2FA0 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		27167CE217AACCC9009774A4 /* NearestLocationStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = NearestLocationStoryboard.storyboard; path = Storyboards/Realtime/NearestLocation/NearestLocationStoryboard.storyboard; sourceTree = "<group>"; };
 		27167CE417AACCEC009774A4 /* NearestLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NearestLocationViewController.h; path = Storyboards/Realtime/NearestLocation/NearestLocationViewController.h; sourceTree = "<group>"; };
 		27167CE517AACCEC009774A4 /* NearestLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NearestLocationViewController.m; path = Storyboards/Realtime/NearestLocation/NearestLocationViewController.m; sourceTree = "<group>"; };
@@ -1731,6 +1734,8 @@
 		27297645179D9F4800DB2580 /* Subclasses */ = {
 			isa = PBXGroup;
 			children = (
+				27157FFD1A82C21F009F2FA0 /* Event.h */,
+				27157FFE1A82C21F009F2FA0 /* Event.m */,
 				278F5E771A783536004D6716 /* MKMultiPolyLine.h */,
 				278F5E781A783536004D6716 /* MKMultiPolyLine.m */,
 				278F5E741A7834F1004D6716 /* mapAnnotation.h */,
@@ -4478,6 +4483,7 @@
 				278F5E3E1A783202004D6716 /* ItineraryCell.m in Sources */,
 				278F5E661A783460004D6716 /* TransitViewObject.m in Sources */,
 				2765AA7217AC18D600F93FBE /* ItineraryViewController.m in Sources */,
+				27157FFF1A82C21F009F2FA0 /* Event.m in Sources */,
 				274B92531887392300C7A297 /* AutomaticUpdatesViewController.m in Sources */,
 				278F5E891A7836DA004D6716 /* NSMutableArray+Indices.m in Sources */,
 				84F6AFFC17B18F5300680007 /* TabbedButton.m in Sources */,
@@ -4630,26 +4636,29 @@
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iSEPTAv2/iSEPTA-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
-					"FUNCTION_NAMES_ON=1",
+					"FUNCTION_NAMES_ON=0",
 					"PRINT_SQL_CALLS=1",
 				);
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				"HEADER_SEARCH_PATHS[arch=*]" = "$(inherited)";
 				INFOPLIST_FILE = "iSEPTAv2/iSEPTA-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = "";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = SEPTA;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/**";
-				VALID_ARCHS = "$(ARCHS_STANDARD)";
+				VALID_ARCHS = "armv7s arm64 armv7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4668,11 +4677,14 @@
 					"$(SRCROOT)",
 					"$(PROJECT_DIR)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iSEPTAv2/iSEPTA-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "iSEPTAv2/iSEPTA-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "$(inherited)";
@@ -4680,7 +4692,7 @@
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Pods/Headers/**";
-				VALID_ARCHS = "$(ARCHS_STANDARD)";
+				VALID_ARCHS = "armv7s arm64 armv7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

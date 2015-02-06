@@ -21,7 +21,7 @@
     
     NSMutableDictionary *_statusLookup;
     
-    AFJSONRequestOperation *_jsonSystemOp;
+    AFHTTPRequestOperation *_jsonSystemOp;
     
     NSInteger _currentServiceID;
 }
@@ -634,16 +634,21 @@
     
     NSURLRequest *systemRequest = [NSURLRequest requestWithURL: [NSURL URLWithString: stringURL] ];
     
-
-    _jsonSystemOp = [AFJSONRequestOperation JSONRequestOperationWithRequest: systemRequest
-                                                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                                                       NSDictionary *jsonDict = (NSDictionary*) JSON;
-                                                                       [self processSystemStatusJSONData:jsonDict];
-                                                                       [self.tableView reloadData];  // Reload the table data when completed
-                                                                   }
-                                                                   failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                                                                       NSLog(@"System Status Failure Because %@", [error userInfo] );
-                                                                   }];
+    _jsonSystemOp = [[AFHTTPRequestOperation alloc] initWithRequest:systemRequest];
+    [_jsonSystemOp setResponseSerializer: [AFJSONResponseSerializer serializer] ];
+    
+    __weak typeof(self) weakSelf = self;
+    [_jsonSystemOp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         NSDictionary *jsonDict = (NSDictionary*) responseObject;
+         [weakSelf processSystemStatusJSONData:jsonDict];
+         [weakSelf.tableView reloadData];  // Reload the table data when completed
+         
+     }failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"TVVC - System Status Failure Because %@", [error userInfo] );
+     }
+     ];
     
     [_jsonSystemOp start];
     

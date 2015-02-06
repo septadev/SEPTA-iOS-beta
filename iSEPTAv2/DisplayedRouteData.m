@@ -130,7 +130,7 @@
     
     [fetchRequest setEntity: entity];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"(preference == %ld) AND (database_type == %ld)", section, _databaseType] ];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"(preference == %ld) AND (database_type == %ld)", (long)section, (long)_databaseType] ];
     [fetchRequest setPredicate: predicate];
     
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"added_date" ascending:NO];
@@ -730,7 +730,7 @@
     
     [fetchRequest setEntity: entity];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"(preference == %ld) AND (database_type == %ld)", section, _databaseType] ];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"(preference == %ld) AND (database_type == %ld)", (long)section, (long)_databaseType] ];
     NSSortDescriptor *sortDescrip  = [NSSortDescriptor sortDescriptorWithKey:@"added_date" ascending:NO];
     
     NSArray *fetchedObjects; // = [_managedObjectContext executeFetchRequest:fetchRequest error:&error]; // An array of Event objects.  Nice, but not altogether useful

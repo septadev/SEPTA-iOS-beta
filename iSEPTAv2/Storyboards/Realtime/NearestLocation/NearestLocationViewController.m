@@ -429,8 +429,6 @@
         thisCell = [[BusRouteIndicatorCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
     }
     
-    //BasicRouteObject *rObj = [_tableData objectAtIndex:indexPath.row];
-    
     [thisCell addRouteInfo: [_tableData objectAtIndex:indexPath.row] ];
     
     
@@ -559,23 +557,6 @@
     }
     
     
-//    for (CLLocation *location in locations)
-//    {
-//                NSLog(@"Location (iOS6):%@", location);
-//        //
-//        //        [_tableData replaceObjectAtIndex:0 withObject: [NSString stringWithFormat:@"(lat,lon) = (%10.7f, %10.7f)", location.coordinate.latitude, location.coordinate.longitude] ];
-//        ////        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
-//        //
-//        //        CLLocation *loc = [[CLLocation alloc] initWithLatitude:_loc.latitude longitude:_loc.longitude];
-//        //        [_tableData replaceObjectAtIndex:2 withObject: [NSString stringWithFormat:@"Distance: %6.3fm", [location distanceFromLocation:loc] ] ];
-//        //
-//        //        [self.tableView reloadData];
-//        
-//        
-//    }
-    
-    //    [manager stopUpdatingLocation];
-    
 }
 
 
@@ -686,39 +667,33 @@
         NSURL *url = [NSURL URLWithString: webStringURL];
         NSURLRequest *request = [NSURLRequest requestWithURL: url];
         
-        NSLog(@"webStringURL: %@", webStringURL);
+//        NSLog(@"webStringURL: %@", webStringURL);
         
-        AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                                                            success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
-        {
-            // Success Block
-//            NSLog(@"NLVC:gLJS - JSON Success for URL: %@", webStringURL);
-            [self processJSONData: JSON];
-        }
-                                                                                            failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
-        {
-            // Failure Block, this should be quite familiar to you...
-            NSLog(@"NLVC:gLJS - JSON Failure for URL: %@ -- %@", webStringURL, [error userInfo]);
-            _dismissCounter--;
-            
-            if ( _dismissCounter == 0 )
-                [SVProgressHUD dismiss];
-        }];
+        
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        [operation setResponseSerializer: [AFJSONResponseSerializer serializer] ];
+        
+        __weak typeof(self) weakSelf = self;
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+         {
+             [weakSelf processJSONData: responseObject];
+         }failure:^(AFHTTPRequestOperation *operation, NSError *error)
+         {
+             NSLog(@"NLVC - getLatestJSONData, Request Failure Because %@",[error userInfo]);
+             
+             _dismissCounter--;
+             
+             if ( _dismissCounter == 0 )
+                 [SVProgressHUD dismiss];
+         }
+         ];
         
         _dismissCounter++;
-//        [operation start];
-        [_jsonQueue addOperation: operation];
+        [_jsonQueue addOperation: operation];  // Adding the operation automatically starts it, if nothing else is already in the queue
         
     }
 
-    
 }
-
-
-//-(NSString*) filePath
-//{
-//    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
-//}
 
 
 -(void) processJSONData:(NSData*) returnedData
@@ -984,48 +959,6 @@
 
 -(void) filterData
 {
-    
-//    int index = [self.segmentTypes selectedSegmentIndex];
-//    if ( index == -1 )
-//        index = 0;
-    
-//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"location_type == %@", [_locationType objectAtIndex:index ] ];
-//    _tableData = [[_masterList filteredArrayUsingPredicate:predicate] mutableCopy];
-
-//    _tableData = _masterList;
-    
-//    if ( [_tableData count] == 0)
-//    {
-//                
-//        BasicRouteObject *rObj = [[BasicRouteObject alloc] init];
-//        
-//        // Give it the main information
-//        [rObj setDistance: @"0.00"];
-//        //        [rObj setStop_name: [NSString stringWithFormat:@"There is no stop within %5.3f mile radius of your current location",radiusInMiles] ];
-//        [rObj setStop_name:@"No stops were found near you."];
-//        
-//        [_tableData addObject: rObj];
-//        
-//        //GetLocationsObject *glObject = [[GetLocationsObject alloc] init];
-//        //[glObject setLocation_name:[NSString stringWithFormat:@"Nothing found within a %5.3f mile radius of your current location",radiusInMiles] ];
-//        //[_tableData addObject:glObject];
-//        
-//        //        [_tableData]
-//    }
-    
-    
-    //    for (GetLocationsObject *glObject in _tableData)
-    //    {
-    //        NSLog(@"%@", glObject);
-    //    }
-    
-    //    [_tableData sortUsingComparator:sortGetLocationObjectByLocationName];
-    
-    //    NSSortDescriptor *desc = [[NSSortDescriptor alloc] initWithKey:@"distance" ascending:YES];  // But this won't do an NSNumericSearch sort
-    //    [_tableData sortUsingDescriptors:[NSArray arrayWithObject:desc] ];
-    
-    
-    //    [self updateAnnotations];
     [self.tableView reloadData];
 }
 
@@ -1034,19 +967,6 @@
 {
     
     return;  // Don't uncomment this... _masterList contains BasicRouteObjects but SimpleMapController is expecting GetLocationsObject
-    
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SimpleMapStoryboard" bundle:nil];
-//    SimpleMapViewController *smVC = (SimpleMapViewController*)[storyboard instantiateInitialViewController];
-//    
-////    [smVC setMasterList: _masterList];  // Use _tableData now
-////    int index = [self.segmentTypes selectedSegmentIndex];
-////    if ( index < 0 )  // Was index == -1
-//        int index = 0;
-//    
-//    [smVC setFilterType: [_locationType objectAtIndex:index] ];
-//    [smVC setRadius: [NSNumber numberWithFloat:radiusInMiles] ];
-//    
-//    [self.navigationController pushViewController:smVC animated:YES];
     
 }
 
@@ -1067,39 +987,7 @@
         [ntVC setRouteData: routeObj];
         
     }
-    
-    
-//    if ( [[segue identifier] isEqualToString:@"MapSegue"] )
-//    {
-//        
-//        FindNearestMapViewController *fnmvc = [segue destinationViewController];
-//        
-//        [fnmvc setMasterList:_masterList];
-//        
-//        int index = [self.segmentTypes selectedSegmentIndex];
-//        if ( index == -1 )
-//            index = 0;
-//        
-//        [fnmvc setFilterType: [_locationType objectAtIndex:index] ];
-//        [fnmvc setRadius: [NSNumber numberWithFloat:radiusInMiles] ];
-//        
-//    }
-//    else if ( [[segue identifier] isEqualToString:@"FindSchedulesSegue"] )
-//    {
-//        //        NSLog(@"NFNVC - FindSchedulesSegue");
-//        
-//        BasicRouteObject *rObj = [[BasicRouteObject alloc] init];
-//        
-//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-//        rObj = [_tableData objectAtIndex: indexPath.row];
-//        
-//        FindSchedulesViewController *fsvc = [segue destinationViewController];
-//        [fsvc setBasicRoute: rObj];
-//        
-//    }
-//    
-//    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-    
+
 }
 
 

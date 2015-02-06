@@ -1,8 +1,8 @@
-platform :ios, '6.1'
+platform :ios, '7.1'
 
 
-pod 'AFNetworking', '~> 1.3.3'
-pod 'AFDownloadRequestOperation', '~> 1.0.0'
+pod 'AFNetworking', '~> 2.5'
+pod 'AFDownloadRequestOperation', '~> 2.0'
 pod 'SVProgressHUD', '~> 1.1.2'
 pod 'SVPullToRefresh', '~> 0.4'
 

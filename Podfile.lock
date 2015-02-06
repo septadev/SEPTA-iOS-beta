@@ -1,7 +1,27 @@
 PODS:
-  - AFDownloadRequestOperation (1.0.0):
-    - AFNetworking (~> 1.1)
-  - AFNetworking (1.3.4)
+  - AFDownloadRequestOperation (2.0.1):
+    - AFNetworking (~> 2.0)
+  - AFNetworking (2.5.0):
+    - AFNetworking/NSURLConnection (= 2.5.0)
+    - AFNetworking/NSURLSession (= 2.5.0)
+    - AFNetworking/Reachability (= 2.5.0)
+    - AFNetworking/Security (= 2.5.0)
+    - AFNetworking/Serialization (= 2.5.0)
+    - AFNetworking/UIKit (= 2.5.0)
+  - AFNetworking/NSURLConnection (2.5.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.5.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.5.0)
+  - AFNetworking/Security (2.5.0)
+  - AFNetworking/Serialization (2.5.0)
+  - AFNetworking/UIKit (2.5.0):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
   - ALAlertBanner (0.3.1)
   - ECSlidingViewController (1.3.3)
   - FMDB (2.5):
@@ -29,8 +49,8 @@ PODS:
   - ZipArchive (1.2.0)
 
 DEPENDENCIES:
-  - AFDownloadRequestOperation (~> 1.0.0)
-  - AFNetworking (~> 1.3.3)
+  - AFDownloadRequestOperation (~> 2.0)
+  - AFNetworking (~> 2.5)
   - ALAlertBanner (~> 0.3.1)
   - ECSlidingViewController (~> 1.3.3)
   - FMDB (~> 2.4)
@@ -43,8 +63,8 @@ DEPENDENCIES:
   - ZipArchive (~> 1.2.0)
 
 SPEC CHECKSUMS:
-  AFDownloadRequestOperation: fca90fa15e8502343bc8b610081d7ad088a3e466
-  AFNetworking: 80c4e0652b08eb34e25b9c0ff3c82556fe5967b4
+  AFDownloadRequestOperation: e223a65bc56fb8e6ae5d289b649c7bcc6b307f0d
+  AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
   ALAlertBanner: 1ed69e07649c04b3c8f8eab66628ba02d7ff1853
   ECSlidingViewController: d69dbb4b70571310672f1ef508a8c8b7c26147c2
   FMDB: 0efa188cf0dd1ce82c27a478cd5f5fa245308677

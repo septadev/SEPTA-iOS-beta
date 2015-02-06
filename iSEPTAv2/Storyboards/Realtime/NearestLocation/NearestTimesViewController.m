@@ -19,7 +19,7 @@
     TableViewStore *_dataStore;
     NSMutableDictionary *_alertsByRoute;
     
-    AFJSONRequestOperation *_jsonOperation;
+    AFHTTPRequestOperation *_jsonOperation;
     
     GetAlertDataAPI *_alertsAPI;
     NSDictionary *_alertNameLookUp;
@@ -58,13 +58,16 @@
     
     
     // --==  Background  ==--
-    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mainBackground.png"] ];
-    [backgroundImage setContentMode: UIViewContentModeScaleAspectFill];
-    backgroundImage.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    [self.view addSubview:backgroundImage];
-    [self.view sendSubviewToBack:backgroundImage];
+//    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mainBackground.png"] ];
+//    [backgroundImage setContentMode: UIViewContentModeScaleAspectFill];
+//    backgroundImage.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//    
+//    [self.view addSubview:backgroundImage];
+//    [self.view sendSubviewToBack:backgroundImage];
     // --==  Background  ==--
+    
+    UIColor *backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"newBG_pattern.png"] ];
+    [self.tableView setBackgroundColor: backgroundColor];
     
     
     CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed:@"Find_loc-white.png" withTarget:self andWithAction:@selector(backButtonPressed:)];
@@ -285,25 +288,24 @@
             NSLog(@"NTVC:lJP - |%@|", url);
             [SVProgressHUD showWithStatus: @"Loading..."];
             
-            _jsonOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                                             success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                                                                 
-                                                                                 NSLog(@"url: %@", url);
-                                                                                 //                                 [SVProgressHUD dismiss];
-                                                                                 NSDictionary *jsonDict = (NSDictionary *) JSON;
-                                                                                 
-                                                                                 [self loadIndividualScheduleData: jsonDict forRouteType: rdObj.route_type ];
-                                                                                 [SVProgressHUD popActivity];
-                                                                                 
-                                                                             } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,
-                                                                                         NSError *error, id JSON) {
-                                                                                 
-                                                                                 [SVProgressHUD popActivity];
-                                                                                 NSLog(@"Request Failure Because %@",[error userInfo]);
-                                                                                 // TODO: Retry upon failure
-                                                                                 
-                                                                             }
-                              ];
+            
+            _jsonOperation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+            [_jsonOperation setResponseSerializer: [AFJSONResponseSerializer serializer] ];
+            
+            __weak typeof(self) weakSelf = self;
+            [_jsonOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+             {
+                 NSLog(@"url: %@", url);
+                 NSDictionary *jsonDict = (NSDictionary *) responseObject;
+                 
+                 [weakSelf loadIndividualScheduleData: jsonDict forRouteType: rdObj.route_type ];
+                 [SVProgressHUD popActivity];
+                 
+             }failure:^(AFHTTPRequestOperation *operation, NSError *error)
+             {
+                 NSLog(@"NTVC - loadJSONParallel: System Status Failure Because %@", [error userInfo] );
+             }
+             ];
             
             [_jsonOperation start];
             [_operationArr addObject:_jsonOperation];
@@ -317,40 +319,29 @@
         //   no data is available and everyone is unhappy!
         
         // Until the API starts returning valid JSON output for all routes, we can't reliably offer this feature.
-        [_alertsAPI addRoute: rdObj.route_short_name];
+        
+        NSString *routeName;
+        if ( [rdObj.route_type intValue] == 0 )
+        {
+            
+            if ([rdObj.route_short_name isEqualToString:@"NHSL"])
+            {
+                routeName = [NSString stringWithFormat:@"rr_route_nhsl"];
+            }
+            else
+            {
+                routeName = [NSString stringWithFormat:@"trolley_route_%@",rdObj.route_short_name];
+            }
+        }
+        else
+        {
+            routeName = rdObj.route_short_name;
+        }
+        
+        [_alertsAPI addRoute: routeName];
         
         // For every route in each rdObj, make a call to both BusSchedules and Alerts
         
-//        // --==================--
-//        // --==  Get Alerts  ==--
-//        // --==================--
-//        url = [NSString stringWithFormat:@""];
-//        request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] ];
-//        
-//        _jsonOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-//                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-//                             
-//                             NSLog(@"url: %@", url);
-//                             [SVProgressHUD dismiss];
-//                             NSDictionary *jsonDict = (NSDictionary *) JSON;
-//                             
-//                             [self loadIndividualAlertData: jsonDict];
-//                             
-////                             [self loadIndividualScheduleData: jsonDict forRouteType: rdObj.route_type ];
-//                             // Add alerts to jsonData
-//                             
-//                         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response,
-//                                     NSError *error, id JSON) {
-//                             
-//                             [SVProgressHUD dismiss];
-//                             NSLog(@"Request Failure Because %@",[error userInfo]);
-//                             
-//                         }
-//                      ];
-//        
-//        [_jsonOperation start];
-//        [_operationArr addObject:_jsonOperation];
-     
     }
     
     [_alertsAPI fetchAlert];
@@ -493,6 +484,7 @@
 #pragma mark - GetAlertsAPIProtocol
 -(void) alertFetched:(NSMutableArray *)alert
 {
+    
     if ( [alert count] == 0 )
         return;
     

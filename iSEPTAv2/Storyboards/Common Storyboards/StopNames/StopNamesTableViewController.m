@@ -1299,7 +1299,7 @@
 #pragma mark - Gesture Recognizers
 -(void) gestureLongPress:(UILongPressGestureRecognizer*) gesture
 {
-    NSLog(@"Long press: %ld", gesture.state);
+    NSLog(@"Long press: %ld", (long)gesture.state);
     
     
     

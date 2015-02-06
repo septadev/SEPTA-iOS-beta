@@ -42,7 +42,7 @@
     NSOperationQueue *_autoUpdateQueue;
     NSBlockOperation *_autoUpdateOp;
     
-    NSOperationQueue *_networkQueue;
+//    NSOperationQueue *_networkQueue;
     
 //    MMDrawerController *_drawerController;
 }
@@ -93,7 +93,7 @@
 //    _alertAPI = nil;
     [_alertMessage removeAllObjects];
     
-    [_networkQueue cancelAllOperations];
+//    [_networkQueue cancelAllOperations];
     
     [SVProgressHUD dismiss];
     
@@ -189,7 +189,7 @@
     
     _alertMessage = [[NSMutableArray alloc] init];
     
-    _networkQueue = [[NSOperationQueue alloc] init];  // Used to call the Alert and DB Version APIs
+//    _networkQueue = [[NSOperationQueue alloc] init];  // Used to call the Alert and DB Version APIs
 
     
     UIColor *backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"newBG_pattern.png"] ];
@@ -426,19 +426,7 @@
 //    [_dbVersionAPI setTestMode: _testMode];
 
     [_dbVersionAPI fetchData];
-    
-    if ( _alertAPI == nil )
-    {
-        _alertAPI = [[GetAlertDataAPI alloc] init];
-        [_alertAPI setDelegate:self];
-        
-        [_alertAPI addRoute:@"generic" ofModeType:kSEPTATypeNone];
-    }
-    
-   
-    [_alertAPI fetchAlert];
-    
-    
+
     
 }
 

@@ -1410,36 +1410,6 @@
 
 
 
-//-(NSString*) filePath
-//{
-//#if FUNCTION_NAMES_ON
-//    NSLog(@"IVC filePath");
-//#endif
-//    
-//    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString  *documentsDirectory = [paths objectAtIndex:0];
-//    
-////    NSString  *dbZip  = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"SEPTA.zip"];
-//    NSString  *dbPath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"SEPTA.sqlite"];
-//    
-////    bool z = [[NSFileManager defaultManager] fileExistsAtPath:dbZip];
-//    bool b = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
-//    
-////    NSDictionary *attrsZ = [[NSFileManager defaultManager] attributesOfItemAtPath:dbZip error:NULL];
-////    NSLog(@"dbZip: %lld", [attrsZ fileSize]);
-//
-////    NSDictionary *attrsP = [[NSFileManager defaultManager] attributesOfItemAtPath:dbPath error:NULL];
-////    NSLog(@"dbPath: %lld", [attrsP fileSize]);
-//
-//    
-//    if ( b )
-//        return dbPath;
-//    else
-//        return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
-//    
-//}
-
-
 -(void) filterActiveTrains
 {
     
@@ -2620,7 +2590,7 @@
 {
     
 #if FUNCTION_NAMES_ON
-    NSLog(@"iVC: buttonPressed - stopData: %@, buttonType: %ld", stopData, buttonType);
+    NSLog(@"iVC: buttonPressed - stopData: %@, buttonType: %ld", stopData, (long)buttonType);
 #endif
 
     
@@ -2833,7 +2803,7 @@
     
     
     // Ensure that the VC only gets dismissed once.  (I.e. When the user taps Done repeatedly if the app ever runs sluggishly.)
-    if ( [[self modalViewController] isBeingDismissed] )
+    if ( [[self presentedViewController] isBeingDismissed] )
     {
         return;  // VC is being dismissed, ignore additionally requests
     }
@@ -2908,10 +2878,10 @@
 #endif
 
     
-    if ( [[self modalViewController] isBeingDismissed] )
+    if ( [[self presentedViewController] isBeingDismissed] )
         return;
     else
-        [view dismissModalViewControllerAnimated:YES];
+        [view dismissViewControllerAnimated:YES completion:nil];
     
     _startENDButtonPressed = 0;
     
@@ -3150,7 +3120,7 @@
 {
 
 #if FUNCTION_NAMES_ON
-    NSLog(@"iVC: getServiceIDFor:%ld", type);
+    NSLog(@"iVC: getServiceIDFor:%ld", (long)type);
 #endif
     
     

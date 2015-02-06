@@ -91,7 +91,7 @@
     [self.navigationItem setTitleView:titleView];
     
     
-    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     _path = [paths objectAtIndex:0];
     
     
@@ -138,8 +138,8 @@
 -(void) updateStateTo:(AutomaticUpdateState) newState
 {
     
-    NSLog(@"Current State: %ld", _updateSM);
-    NSLog(@"New State    : %ld", newState);
+    NSLog(@"Current State: %ld", (long)_updateSM);
+    NSLog(@"New State    : %ld", (long)newState);
     
     _updateSM = newState;
     
@@ -401,20 +401,6 @@
 }
 
 
-
-//-(NSString*) filePath
-//{
-//    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
-//}
-
-
-- (NSString *)documentsDirectory
-{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    return (paths.count)? paths[0] : nil;
-}
-
-
 -(void) downloadProgress
 {
     
@@ -453,30 +439,8 @@
     
     // Install!
     
-    
-    
-    
-//    NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString  *documentsDirectory = [paths objectAtIndex:0];
-    
     NSString  *zipPath = [NSString stringWithFormat:@"%@/%@", _path, @"SEPTA.zip"];
-    
-    
-    
-//    NSString *zipPath = [[self documentsDirectory] stringByAppendingPathComponent:@"SEPTA.zip"];
-//    NSString *thumbnailsPath = [namePath stringByAppendingPathComponent:@"Thumbnails"];
-//    NSURL *thumbnailsURL = [NSURL fileURLWithPath:thumbnailsPath];
-//    
-//    NSError *error;
-//    
-//    if ([[NSFileManager defaultManager] fileExistsAtPath:thumbnailsPath] == NO) {
-//        [[NSFileManager defaultManager] createDirectoryAtURL:thumbnailsURL withIntermediateDirectories:NO attributes:nil error:&error];
-//        
-//        if (error) {
-//            NSLog(@"[Thumbnail Directory] %@", [error description]);
-//        }
-//    }
-    
+
 
     NSError *error;
     [[NSFileManager defaultManager] removeItemAtPath: zipPath error:&error];
@@ -501,48 +465,12 @@
         downloadURL = [[NSURL alloc] initWithString: @"http://www3.septa.org/api/dbVersion/download.php"];
     
     NSURLRequest *request = [NSURLRequest requestWithURL: downloadURL];
-    //NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
-    
-//    NSLog(@"filePath: %@", [self filePath]);
-//    NSLog(@"zipPath: %@", zipPath);
-//    NSLog(@"url    : %@", downloadURL);
-    
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDownloadsDirectory, NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths objectAtIndex:0];
-//
-//    NSArray *paths2 = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentsDirectory2 = [paths2 objectAtIndex:0];
-//    
-//    NSLog(@"DL: %@", documentsDirectory);
-//    NSLog(@"Doc: %@", documentsDirectory2);
-
-//    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", documentsDirectory];
-//    NSString *zipPath = namePath;
-//    NSLog(@"zipPath: %@", zipPath);
 
     
     if ( ![[Reachability reachabilityForInternetConnection] isReachable] )
         return;
 
-//    AFDownloadRequestOperation *operation = [[AFDownloadRequestOperation alloc] initWithRequest:request targetPath:zipPath shouldResume:YES];
-//
-//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
-//    {
-//        NSLog(@"Done downloading %@", zipPath);
-//        
-//        NSFileManager *man = [NSFileManager defaultManager];
-//        NSDictionary *attrs = [man attributesOfItemAtPath:zipPath error:NULL];
-//        UInt32 result = [attrs fileSize];
-//        
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"Error: %ld", (long)[error code]);
-//        NSLog(@"%@", error);
-//    }];
-//    
-//    [operation start];
 
-
-    
     _dOp = [[AFDownloadRequestOperation alloc] initWithRequest:request targetPath:zipPath shouldResume:YES];
 
     _dOp.outputStream = [NSOutputStream outputStreamToFileAtPath: zipPath append:NO];
@@ -661,6 +589,8 @@
     //    YES - Put up alert, warn user the new schedule won't be active for X days (Y hours)
     //    NO  - Start install
     
+    [SVProgressHUD showWithStatus:@"Installing..."];
+    
     ZipArchive *zip = [[ZipArchive alloc] init];
     
 //    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
@@ -698,6 +628,8 @@
         
     }
     [zip UnzipCloseFile];
+    
+    [SVProgressHUD dismiss];
     
     // The test!
 //    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];

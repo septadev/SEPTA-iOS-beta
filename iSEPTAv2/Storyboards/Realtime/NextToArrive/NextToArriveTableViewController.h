@@ -128,7 +128,7 @@ typedef NS_ENUM(NSInteger, NextToArriveFavoriteSubtitleState)
 
 
 
-@interface NextToArriveTableViewController : UITableViewController <NextToArriveItineraryCellProtocol, StopNamesTableViewControllerProtocol, UIGestureRecognizerDelegate, UIScrollViewDelegate>
+@interface NextToArriveTableViewController : UITableViewController <NextToArriveItineraryCellProtocol, StopNamesTableViewControllerProtocol, UIGestureRecognizerDelegate, UIScrollViewDelegate, NSFileManagerDelegate>
 
 
 //@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *gestureDoubleTap;

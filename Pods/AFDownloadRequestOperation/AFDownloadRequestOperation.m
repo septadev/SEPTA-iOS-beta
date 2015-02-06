@@ -39,6 +39,7 @@ typedef void (^AFURLConnectionProgressiveOperationProgressBlock)(AFDownloadReque
 
 @interface AFDownloadRequestOperation() {
     NSError *_fileError;
+    id _responseObject;
 }
 @property (nonatomic, strong) NSString *tempPath;
 @property (assign) long long totalContentLength;
@@ -198,26 +199,22 @@ typedef void (^AFURLConnectionProgressiveOperationProgressBlock)(AFDownloadReque
     [self updateByteStartRangeForRequest];
 }
 
-- (void)setCompletionBlockWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                              failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
-{
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-retain-cycles"
-    self.completionBlock = ^ {
-        NSError *localError = nil;
-        if([self isCancelled]) {
-            // should we clean up? most likely we don't.
-            if (self.isDeletingTempFileOnCancel) {
-                [self deleteTempFileWithError:&localError];
-                if (localError) {
-                    _fileError = localError;
+- (id)responseObject {
+    @synchronized(self) {
+        if (!_responseObject && [self isFinished] && !self.error) {
+            NSError *localError = nil;
+            if ([self isCancelled]) {
+                // should we clean up? most likely we don't.
+                if (self.isDeletingTempFileOnCancel) {
+                    [self deleteTempFileWithError:&localError];
+                    if (localError) {
+                        _fileError = localError;
+                    }
                 }
-            }
-
-        // loss of network connections = error set, but not cancel
-        }else if(!self.error) {
-            // move file to final position and capture error
-            @synchronized(self) {
+                
+                // loss of network connections = error set, but not cancel
+            }else if(!self.error) {
+                // move file to final position and capture error
                 NSFileManager *fileManager = [NSFileManager new];
                 if (self.shouldOverwrite) {
                     [fileManager removeItemAtPath:_targetPath error:NULL]; // avoid "File exists" error
@@ -225,25 +222,14 @@ typedef void (^AFURLConnectionProgressiveOperationProgressBlock)(AFDownloadReque
                 [fileManager moveItemAtPath:[self tempPath] toPath:_targetPath error:&localError];
                 if (localError) {
                     _fileError = localError;
+                } else {
+                    _responseObject = _targetPath;
                 }
             }
         }
-
-        if (self.error) {
-            if (failure) {
-                dispatch_async(self.failureCallbackQueue ?: dispatch_get_main_queue(), ^{
-                    failure(self, self.error);
-                });
-            }
-        } else {
-            if (success) {
-                dispatch_async(self.successCallbackQueue ?: dispatch_get_main_queue(), ^{
-                    success(self, _targetPath);
-                });
-            }
-        }
-    };
-#pragma clang diagnostic pop
+    }
+    
+    return _responseObject;
 }
 
 - (NSError *)error {
@@ -276,11 +262,25 @@ typedef void (^AFURLConnectionProgressiveOperationProgressBlock)(AFDownloadReque
     self.totalBytesReadPerDownload = 0;
     self.offsetContentLength = MAX(fileOffset, 0);
     self.totalContentLength = totalContentLength;
-    [self.outputStream setProperty:@(_offsetContentLength) forKey:NSStreamFileCurrentOffsetKey];
+    
+    // Truncate cache file to offset provided by server.
+    // Using self.outputStream setProperty:@(_offsetContentLength) forKey:NSStreamFileCurrentOffsetKey]; will not work (in contrary to the documentation)
+    NSString *tempPath = [self tempPath];
+    if ([self fileSizeForPath:tempPath] != _offsetContentLength) {
+        [self.outputStream close];
+        BOOL isResuming = _offsetContentLength > 0;
+        if (isResuming) {
+            NSFileHandle *file = [NSFileHandle fileHandleForWritingAtPath:tempPath];
+            [file truncateFileAtOffset:_offsetContentLength];
+            [file closeFile];
+        }
+        self.outputStream = [NSOutputStream outputStreamToFileAtPath:tempPath append:isResuming];
+        [self.outputStream open];
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data  {
-    if (![self hasAcceptableStatusCode] || ![self hasAcceptableContentType])
+    if (![self.responseSerializer validateResponse:self.response data:nil error:NULL])
         return; // don't write to output stream if any error occurs
 
     [super connection:connection didReceiveData:data];
@@ -290,7 +290,7 @@ typedef void (^AFURLConnectionProgressiveOperationProgressBlock)(AFDownloadReque
 
     if (self.progressiveDownloadProgress) {
         dispatch_async(self.progressiveDownloadCallbackQueue ?: dispatch_get_main_queue(), ^{
-            self.progressiveDownloadProgress(self,(long long)[data length], self.totalBytesRead, self.response.expectedContentLength,self.totalBytesReadPerDownload + self.offsetContentLength, self.totalContentLength);
+            self.progressiveDownloadProgress(self,(NSInteger)[data length], self.totalBytesRead, self.response.expectedContentLength,self.totalBytesReadPerDownload + self.offsetContentLength, self.totalContentLength);
         });
     }
 }
@@ -298,18 +298,20 @@ typedef void (^AFURLConnectionProgressiveOperationProgressBlock)(AFDownloadReque
 #pragma mark - Static
 
 + (NSString *)cacheFolder {
+    NSFileManager *filemgr = [NSFileManager new];
     static NSString *cacheFolder;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+
+    if (!cacheFolder) {
         NSString *cacheDir = NSTemporaryDirectory();
         cacheFolder = [cacheDir stringByAppendingPathComponent:kAFNetworkingIncompleteDownloadFolderName];
+    }
 
-        // ensure all cache directories are there (needed only once)
-        NSError *error = nil;
-        if(![[NSFileManager new] createDirectoryAtPath:cacheFolder withIntermediateDirectories:YES attributes:nil error:&error]) {
-            NSLog(@"Failed to create cache directory at %@", cacheFolder);
-        }
-    });
+    // ensure all cache directories are there
+    NSError *error = nil;
+    if(![filemgr createDirectoryAtPath:cacheFolder withIntermediateDirectories:YES attributes:nil error:&error]) {
+        NSLog(@"Failed to create cache directory at %@", cacheFolder);
+        cacheFolder = nil;
+    }
     return cacheFolder;
 }
 
@@ -317,7 +319,7 @@ typedef void (^AFURLConnectionProgressiveOperationProgressBlock)(AFDownloadReque
 + (NSString *)md5StringForString:(NSString *)string {
     const char *str = [string UTF8String];
     unsigned char r[CC_MD5_DIGEST_LENGTH];
-    CC_MD5(str, strlen(str), r);
+    CC_MD5(str, (uint32_t)strlen(str), r);
     return [NSString stringWithFormat:@"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
             r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[7], r[8], r[9], r[10], r[11], r[12], r[13], r[14], r[15]];
 }
