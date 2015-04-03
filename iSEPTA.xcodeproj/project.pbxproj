@@ -13,6 +13,8 @@
 		2700AE7218F456F200933C2E /* system_status_suspended.png in Resources */ = {isa = PBXBuildFile; fileRef = 2700AE7118F456F200933C2E /* system_status_suspended.png */; };
 		2700AE7618F4964C00933C2E /* DashboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2700AE7518F4964C00933C2E /* DashboardView.m */; };
 		2700AE7818F4966D00933C2E /* DashboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2700AE7718F4966D00933C2E /* DashboardView.xib */; };
+		2704CECB1ACF0F6B0027ECA7 /* NextToArriveAlerts.m in Sources */ = {isa = PBXBuildFile; fileRef = 2704CECA1ACF0F6B0027ECA7 /* NextToArriveAlerts.m */; };
+		2704CECD1ACF14EB0027ECA7 /* NextToArriveAlerts.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2704CECC1ACF14EB0027ECA7 /* NextToArriveAlerts.xib */; };
 		27078245191A9949004EBCE1 /* BackgroundDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27078244191A9949004EBCE1 /* BackgroundDownloader.m */; };
 		2708113F17A9877400B62FBD /* OldTrainViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DBA60417A980D400118225 /* OldTrainViewViewController.m */; };
 		2708114417A988D200B62FBD /* RealtimeVehicleInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2708114317A988D200B62FBD /* RealtimeVehicleInformationCell.xib */; };
@@ -711,6 +713,9 @@
 		2700AE7418F4964C00933C2E /* DashboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashboardView.h; path = Realtime/Dashboard/DashboardView.h; sourceTree = "<group>"; };
 		2700AE7518F4964C00933C2E /* DashboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DashboardView.m; path = Realtime/Dashboard/DashboardView.m; sourceTree = "<group>"; };
 		2700AE7718F4966D00933C2E /* DashboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DashboardView.xib; path = Realtime/Dashboard/DashboardView.xib; sourceTree = "<group>"; };
+		2704CEC91ACF0F6B0027ECA7 /* NextToArriveAlerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NextToArriveAlerts.h; path = "Storyboards/Realtime/NextToArrive/Custom Cells/Code/NextToArriveAlerts.h"; sourceTree = "<group>"; };
+		2704CECA1ACF0F6B0027ECA7 /* NextToArriveAlerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NextToArriveAlerts.m; path = "Storyboards/Realtime/NextToArrive/Custom Cells/Code/NextToArriveAlerts.m"; sourceTree = "<group>"; };
+		2704CECC1ACF14EB0027ECA7 /* NextToArriveAlerts.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NextToArriveAlerts.xib; path = "Storyboards/Realtime/NextToArrive/Custom Cells/NextToArriveAlerts.xib"; sourceTree = "<group>"; };
 		27078243191A9949004EBCE1 /* BackgroundDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BackgroundDownloader.h; path = Subclasses/BackgroundDownloader/BackgroundDownloader.h; sourceTree = "<group>"; };
 		27078244191A9949004EBCE1 /* BackgroundDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BackgroundDownloader.m; path = Subclasses/BackgroundDownloader/BackgroundDownloader.m; sourceTree = "<group>"; };
 		2708114317A988D200B62FBD /* RealtimeVehicleInformationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RealtimeVehicleInformationCell.xib; path = "Storyboards/Realtime/TrainView/Custom Cells/RealtimeVehicleInformationCell.xib"; sourceTree = "<group>"; };
@@ -2121,6 +2126,7 @@
 				27A6937B17A0540F008712FB /* NextToArriveSingleTripCell.xib */,
 				27A6937D17A05811008712FB /* NextToArriveConnectionTripCell.xib */,
 				27A6937F17A05B17008712FB /* NextToArriveTripHistoryCell.xib */,
+				2704CECC1ACF14EB0027ECA7 /* NextToArriveAlerts.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -2136,6 +2142,8 @@
 				27A6939117A172A9008712FB /* NextToArriveConnectionTripCell.m */,
 				27A6939317A172C1008712FB /* NextToArriveTripHistoryCell.h */,
 				27A6939417A172C1008712FB /* NextToArriveTripHistoryCell.m */,
+				2704CEC91ACF0F6B0027ECA7 /* NextToArriveAlerts.h */,
+				2704CECA1ACF0F6B0027ECA7 /* NextToArriveAlerts.m */,
 			);
 			name = Code;
 			sourceTree = "<group>";
@@ -4019,6 +4027,7 @@
 				27DB30351636D6B600153E4C /* 73.kml in Resources */,
 				27DB30361636D6B600153E4C /* 75.kml in Resources */,
 				8418EE0617FEF6BD003607D1 /* transitView-In-service_lines@2x.png in Resources */,
+				2704CECD1ACF14EB0027ECA7 /* NextToArriveAlerts.xib in Resources */,
 				8418EE0F17FEF6BD003607D1 /* transitView-white@2x.png in Resources */,
 				27DB30371636D6B600153E4C /* 77.kml in Resources */,
 				27DB30381636D6B600153E4C /* 78.kml in Resources */,
@@ -4436,6 +4445,7 @@
 				278F5E221A7830B8004D6716 /* SaveController.m in Sources */,
 				2792BFFD187B10F800626D8B /* GetDBVersionAPI.m in Sources */,
 				270C8F64194A33A300AE208E /* SlidingAlertView.m in Sources */,
+				2704CECB1ACF0F6B0027ECA7 /* NextToArriveAlerts.m in Sources */,
 				2736468C177B2CFA00511A2F /* BusRouteIndicatorCell.m in Sources */,
 				2736468F177B481700511A2F /* BasicRouteObject.m in Sources */,
 				278EE503177C85EC002993C4 /* FindSchedulesCell.m in Sources */,

@@ -566,26 +566,40 @@
             continue;
             
             TransitViewObject *tvObject = [[TransitViewObject alloc] init];
+//            NSLog(@"%@", data);
             
-            [tvObject setLat: [data objectForKey:@"lat"] ];
-            [tvObject setLng: [data objectForKey:@"lng"] ];
-            [tvObject setLabel: [data objectForKey:@"label"] ];
-            [tvObject setVehicleID: [data objectForKey:@"VehicleID"] ];
+//            @try {
             
-            [tvObject setBlockID: [data objectForKey:@"BlockID"] ];
-            [tvObject setDirection: [data objectForKey:@"Direction"] ];
-            [tvObject setDestination: [data objectForKey:@"destination"] ];
-            [tvObject setOffset: [data objectForKey:@"Offset"] ];
+                [tvObject setLat: [data objectForKey:@"lat"] ];
+                [tvObject setLng: [data objectForKey:@"lng"] ];
+                [tvObject setLabel: [data objectForKey:@"label"] ];
+                [tvObject setVehicleID: [data objectForKey:@"VehicleID"] ];
+                
+                [tvObject setBlockID: [data objectForKey:@"BlockID"] ];
+                [tvObject setDirection: [data objectForKey:@"Direction"] ];
+                [tvObject setDestination: [data objectForKey:@"destination"] ];
+                [tvObject setOffset: [data objectForKey:@"Offset"] ];
+                
+                CLLocation *stopLocation = [[CLLocation alloc] initWithLatitude:[[data objectForKey:@"lat"] doubleValue] longitude: [[data objectForKey:@"lng"] doubleValue] ];
+                CLLocationDistance dist = [_locationManager.location distanceFromLocation: stopLocation] / 1609.34f;
+                
+                [tvObject setDistance: [NSNumber numberWithDouble: dist] ];
+
+                [readData addObject: tvObject];
+                [self addAnnotationUsingwithObject: tvObject];
+                
+                [self addStopAnnotationsForRouteType: routeType];
+
+//            }
+//            @catch (NSException *exception)
+//            {
+//                NSLog(@"TMVC - %@", exception.reason);
+//            }
+//            @finally
+//            {
+//                NSLog(@"TMVC - Unable to add object: %@", data);
+//            }
             
-            CLLocation *stopLocation = [[CLLocation alloc] initWithLatitude:[[data objectForKey:@"lat"] doubleValue] longitude: [[data objectForKey:@"lng"] doubleValue] ];
-            CLLocationDistance dist = [_locationManager.location distanceFromLocation: stopLocation] / 1609.34f;
-            
-            [tvObject setDistance: [NSNumber numberWithDouble: dist] ];
-            
-            [readData addObject: tvObject];
-            [self addAnnotationUsingwithObject: tvObject];
-            
-            [self addStopAnnotationsForRouteType: routeType];
             
         }
             
@@ -614,6 +628,8 @@
             CLLocationDistance dist = [_locationManager.location distanceFromLocation: stopLocation] / 1609.34f;
             
             [tvObject setDistance: [NSNumber numberWithDouble: dist] ];
+            
+            NSLog(@"%@",tvObject);
             
             [readData addObject: tvObject];
             [self addAnnotationUsingwithObject: tvObject];

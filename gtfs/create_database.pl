@@ -491,10 +491,10 @@ sub populateGTFSTables
 #            $tripUniqueValue = "0" x 3;
 #        }
         
-        if ( $tables[$LCV] eq "stop_times" )
-        {
-            print "Break";
-        }
+#        if ( $tables[$LCV] eq "stop_times" )
+#        {
+#            print "Break";
+#        }
         
         
         # Open FILE specified in $filename and immediately store the first line.  This will contain the column data for that file
@@ -936,6 +936,8 @@ sub populateBusStopDirections
     chop($questionMarks);
     $insert .= ") VALUES ($questionMarks)";
     
+    print "$query\n";
+    
     $dbh->do($query);
     my $sth = $dbh->prepare($insert);
     
@@ -944,6 +946,7 @@ sub populateBusStopDirections
     {
         my @fields = split(/,/, $line);
         #        print "@fields";
+        print join(", ", @fields) . "\n";
         $sth->execute(@fields);
     }
     
@@ -1498,6 +1501,98 @@ sub populateStopTimesHash
 }
 
 
+sub stopIDLookUp
+{
+    
+    my $stopID = $_[0];
+    
+    my $lut = {};
+    
+    $lut->{32173} = 2456;
+    $lut->{32174} = 2455;
+    $lut->{32175} = 1392;
+    $lut->{32170} = 428;
+    $lut->{32176} = 21532;
+    $lut->{32177} = 2453;
+    $lut->{32178} = 2452;
+    $lut->{32179} = 2451;
+    $lut->{32180} = 2450;
+    $lut->{32181} = 2449;
+    $lut->{32171} = 2458;
+    $lut->{32182} = 2448;
+    $lut->{32183} = 2447;
+    $lut->{32206} = 31790;
+    $lut->{32144} = 21531;
+    $lut->{32172} = 2457;
+    $lut->{32134} = 152;
+    $lut->{32151} = 142;
+    $lut->{32163} = 60;
+    $lut->{32199} = 1923;
+    $lut->{32200} = 30519;
+    $lut->{32159} = 217;
+    $lut->{32202} = 1908;
+    $lut->{32167} = 2460;
+    $lut->{32186} = 1892;
+    $lut->{32197} = 1925;
+    $lut->{32148} = 1277;
+    $lut->{32145} = 2440;
+    $lut->{32160} = 2464;
+    $lut->{32141} = 1281;
+    $lut->{32191} = 1931;
+    $lut->{32187} = 1935;
+    $lut->{32138} = 1284;
+    $lut->{32152} = 140;
+    $lut->{32161} = 838;
+    $lut->{32146} = 1278;
+    $lut->{32158} = 61;
+    $lut->{32195} = 1927;
+    $lut->{32147} = 20966;
+    $lut->{32168} = 353;
+    $lut->{32189} = 1895;
+    $lut->{32198} = 1924;
+    $lut->{32188} = 1934;
+    $lut->{32153} = 1274;
+    $lut->{32165} = 2462;
+    $lut->{32155} = 1272;
+    $lut->{32139} = 1283;
+    $lut->{32190} = 1932;
+    $lut->{32184} = 2446;
+    $lut->{32185} = 30520;
+    $lut->{32150} = 2439;
+    $lut->{32156} = 82;
+    $lut->{32135} = 20967;
+    $lut->{32207} = 1917;
+    $lut->{32203} = 1919;
+    $lut->{32142} = 1280;
+    $lut->{32192} = 1930;
+    $lut->{32196} = 1902;
+    $lut->{32136} = 1286;
+    $lut->{32164} = 797;
+    $lut->{32143} = 1279;
+    $lut->{32169} = 2459;
+    $lut->{32194} = 1900;
+    $lut->{32149} = 1276;
+    $lut->{32137} = 1285;
+    $lut->{32162} = 2463;
+    $lut->{32204} = 1918;
+    $lut->{32193} = 1929;
+    $lut->{32140} = 1282;
+    $lut->{32201} = 1921;
+    $lut->{32154} = 1273;
+    $lut->{32166} = 2461;
+    
+    if ( !$lut->{$stopID} )
+    {
+        return $stopID;
+    }
+    else
+    {
+        return $lut->{$stopID};
+    }
+    
+}
+
+
 sub populateStopsHash
 {
     
@@ -1517,7 +1612,7 @@ sub populateStopsHash
     {
         my @line = split(/,/);
         
-        my $stopID   = $line[ $columns->{stop_id}   ];
+        my $stopID   = $line[ $columns->{stop_id} ];
         my $stopName = $line[ $columns->{stop_name} ];
         my $stopLon  = $line[ $columns->{stop_lon}  ];
         my $stopLat  = $line[ $columns->{stop_lat}  ];
