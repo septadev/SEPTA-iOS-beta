@@ -112,6 +112,8 @@ typedef NS_ENUM(NSInteger, NextToArriveFavoriteSubtitleState)
 };
 
 
+
+
 //@interface NTAProgressObject : NSObject
 //
 //@property (nonatomic, assign) int count;

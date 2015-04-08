@@ -9,6 +9,8 @@
 #import "NextToArriveTableViewController.h"
 
 
+
+
 @interface NextToArriveTableViewController ()
 
 @end
@@ -40,7 +42,7 @@
     // Used for retrieving the latest JSON data on the Trains
     NSOperationQueue *_jsonQueue;
     NSBlockOperation *_jsonOp;
-
+    NSBlockOperation *_alertOp;
     
     NSTimer *menuRefreshTimer;
     NSTimer *updateTimer;
@@ -51,6 +53,7 @@
     // --==  This dictionary is the quick lookup hash for replacing one the correct, GTFS approved, station name with one that SEPTA's internal DBs will recognize.  *Insert face palm here*
     NSMutableDictionary *replacement;
     
+    NSMutableDictionary *alertLineDict;
     
     NextToArriveLeftButtonPressed _itineraryCompletion;
     
@@ -123,6 +126,8 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"NextToArriveSingleTripCell"     bundle:nil] forCellReuseIdentifier:@"NextToArriveSingleTripCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"NextToArriveConnectionTripCell" bundle:nil] forCellReuseIdentifier:@"NextToArriveConnectionTripCell"];
 
+    // Alerts - For displaying RRD generic and line-specific alerts
+    [self.tableView registerNib:[UINib nibWithNibName:@"NextToArriveAlerts" bundle:nil] forCellReuseIdentifier:@"NextToArriveAlerts"];
     
     
     // --==  Create the NSOperationQueue to allow for cancelling
@@ -303,6 +308,27 @@
  
     
 //    [[UITableView appearance] setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    alertLineDict = [[NSMutableDictionary alloc] init];
+    
+    [alertLineDict setObject:@"rr_route_che"  forKey:@"Chestnut Hill East"];
+    [alertLineDict setObject:@"rr_route_apt"  forKey:@"Airport"];
+    [alertLineDict setObject:@"rr_route_wilm" forKey:@"Wilmington/Newark"];
+    [alertLineDict setObject:@"rr_route_fxc"  forKey:@"Fox Chase"];
+    
+    [alertLineDict setObject:@"rr_route_nor"   forKey:@"Manayunk/Norristown"];
+    [alertLineDict setObject:@"rr_route_wtren" forKey:@"West Trenton"];
+    [alertLineDict setObject:@"rr_route_med"   forKey:@"Media/Elwyn"];
+    [alertLineDict setObject:@"rr_route_pao"   forKey:@"Paoli/Thorndale"];
+    
+    [alertLineDict setObject:@"rr_route_chw"     forKey:@"Chestnut Hill West"];
+    [alertLineDict setObject:@"rr_route_trent"   forKey:@"Trenton"];
+    [alertLineDict setObject:@"rr_route_cyn" forKey:@"Cynwyd"];
+    
+    [alertLineDict setObject:[NSArray arrayWithObjects:@"rr_route_gc",@"rr_route_landdoy", nil] forKey:@"Lansdale/Doylestown"];
+    [alertLineDict setObject:[NSArray arrayWithObjects:@"rr_route_gc",@"rr_route_warm"   , nil] forKey:@"Warminster"];
+
+    [alertLineDict setObject:@"generic" forKey:@"Generic"];
     
 }
 
@@ -1492,9 +1518,12 @@
     
     [self.tableView reloadData];
 
+
+    [self getAlertsForLines: @[ @"Generic",@"Warminster" ] ];
     
-    [self invalidateTimer]; // Invalidate any timer that is already active.  If no timer is active, nothing happens
-    [self getLatestJSONData];
+//    [self invalidateTimer]; // Invalidate any timer that is already active.  If no timer is active, nothing happens
+//    [self getLatestJSONData];
+
     
 }
 
@@ -1779,6 +1808,77 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
 }
 
 
+-(void) getAlertsForLines: (NSArray*) lines
+{
+ 
+    
+    // Check for Internet connection
+    Reachability *network = [Reachability reachabilityForInternetConnection];
+    if ( ![network isReachable] )
+        return;  // Don't bother continuing if no internet connection is available
+    
+    
+//    [alertLineDict setObject:@"rr_route_cyn" forKey:@"Cynwyd"];
+//    [alertLineDict setObject:[NSArray arrayWithObjects:@"rr_route_gc",@"rr_route_landdoy", nil] forKey:@"Lansdale/Doylestown"];
+    
+    if ( [lines count] == 0 )
+        return;  // Nothing to process
+    
+    NSMutableArray *lineArr = [[NSMutableArray alloc ] init];
+    for (id line in lines)
+    {
+
+        id result = [alertLineDict objectForKey:line];  // The results of alertLineDict can either be a string or an NSArray, nothing else
+        
+        if ( [result isKindOfClass:[NSArray class] ] )
+        {
+            for (NSString *l in result )
+            {
+                [lineArr addObject: l];
+            }
+        }
+        else
+        {
+            [lineArr addObject: [alertLineDict objectForKey:line] ];
+        }
+        
+    }
+    
+    NSString *lineStr = [lineArr componentsJoinedByString:@","];
+    
+    
+    NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/beta/Alerts/get_alert_data.php?route_id=%@", lineStr];
+    
+    NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"NTAVC - getAlertsForLines -- api url: %@", webStringURL);
+
+    _alertOp = [[NSBlockOperation alloc] init];
+    
+    __weak NSBlockOperation *weakOp = _alertOp;
+    [weakOp addExecutionBlock:^{
+        
+        NSData *alertData = [NSData dataWithContentsOfURL:[NSURL URLWithString:webStringURL] ];
+        
+        if ( ![weakOp isCancelled] )
+        {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [self processAlertData:alertData];
+            }];
+        }
+        else
+        {
+            NSLog(@"FNRVC - getAlertsForLines: _jsonOp cancelled");
+        }
+        
+    }];
+    
+    [_jsonQueue addOperation: _alertOp];
+    
+    
+}
+
+
+
 -(void) getLatestJSONData
 {
     
@@ -1894,6 +1994,38 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
                                                 selector:@selector(getLatestJSONData)
                                                 userInfo:nil
                                                  repeats:NO];
+}
+
+
+-(void) processAlertData:(NSData*) returnedData
+{
+    
+    if ( returnedData == nil )  // If we didn't even receive data, try again in another JSON_REFRESH_RATE seconds
+    {
+        NSLog(@"NTAVC - processAlertData - kicking off another Alert request - 1");
+        [self kickOffAnotherJSONRequest];
+        return;
+    }
+ 
+    
+    NSMutableArray *myData;
+    myData = [[NSMutableArray alloc] init];
+    
+    
+    // This method is called once the realtime positioning data has been returned via the API is stored in data
+    NSError *error;
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData: returnedData options:kNilOptions error:&error];
+    
+    
+    if ( json == nil || error != nil )  // Something bad happened, so just return
+    {
+        NSLog(@"NTAVC - processJSON - kicking off another Alert request - 2");
+        [self kickOffAnotherJSONRequest];  // And before we return, let's try again in JSON_REFRESH_RATE seconds
+        return;
+    }
+    
+    NSLog(@"JSON: %@", json);
+    
 }
 
 
