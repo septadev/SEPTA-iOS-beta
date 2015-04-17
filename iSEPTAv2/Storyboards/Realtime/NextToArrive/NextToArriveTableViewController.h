@@ -29,11 +29,13 @@
 #import "NextToArriveSingleTripCell.h"
 #import "NextToArriveConnectionTripCell.h"
 #import "NextToArriveTripHistoryCell.h"
-
+#import "NextToArriveAlerts.h"
 
 // Data Models
 #import "ItineraryObject.h"
 #import "TableViewStore.h"
+#import "SystemAlertObject.h"
+#import "AlertMessage.h"
 
 
 #import "NTASaveObject.h"
@@ -69,6 +71,7 @@ typedef NS_ENUM(NSInteger, NextToArriveLeftButtonPressed)
 typedef NS_ENUM(NSInteger, NextToArriveSection)
 {
     kNextToArriveSectionStartEndCells,
+    kNextToArriveSectionAlerts,
     kNextToArriveSectionFavorites,
     kNextToArriveSectionRecent,
     kNextToArriveSectionData,

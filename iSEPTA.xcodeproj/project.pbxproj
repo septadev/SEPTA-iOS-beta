@@ -80,6 +80,8 @@
 		2765AA7417AC18F700F93FBE /* ItineraryStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2765AA7317AC18F700F93FBE /* ItineraryStoryboard.storyboard */; };
 		2765AB7E17B42EB700F93FBE /* TrainViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AB7D17B42EB700F93FBE /* TrainViewViewController.m */; };
 		276B16A9162DA0AC00A71D57 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 276B16A6162DA05900A71D57 /* sqlite3.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		276D3EA31AD71960008D5EF2 /* AlertMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 276D3EA21AD71960008D5EF2 /* AlertMessage.m */; };
+		276D3EA91AE119C9008D5EF2 /* TableCellAlertsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 276D3EA81AE119C9008D5EF2 /* TableCellAlertsView.m */; };
 		2774644517AADFC800A36A7D /* NearestRoutesScheduleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2774644417AADFC800A36A7D /* NearestRoutesScheduleStoryboard.storyboard */; };
 		2782CEEB17BE8D62005939DB /* RouteSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2782CEEA17BE8D62005939DB /* RouteSelectionCell.xib */; };
 		2782CEEE17BE8D7A005939DB /* RouteSelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2782CEED17BE8D7A005939DB /* RouteSelectionCell.m */; };
@@ -823,6 +825,10 @@
 		2765AB7D17B42EB700F93FBE /* TrainViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrainViewViewController.m; path = Storyboards/Realtime/TrainView/TrainViewViewController.m; sourceTree = "<group>"; };
 		276B16A6162DA05900A71D57 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
 		276B16A7162DA05900A71D57 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
+		276D3EA11AD71960008D5EF2 /* AlertMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertMessage.h; path = Storyboards/Realtime/NextToArrive/Objects/AlertMessage.h; sourceTree = "<group>"; };
+		276D3EA21AD71960008D5EF2 /* AlertMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertMessage.m; path = Storyboards/Realtime/NextToArrive/Objects/AlertMessage.m; sourceTree = "<group>"; };
+		276D3EA71AE119C9008D5EF2 /* TableCellAlertsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableCellAlertsView.h; path = Storyboards/Schedules/RouteSelection/TableCellAlertsView.h; sourceTree = "<group>"; };
+		276D3EA81AE119C9008D5EF2 /* TableCellAlertsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableCellAlertsView.m; path = Storyboards/Schedules/RouteSelection/TableCellAlertsView.m; sourceTree = "<group>"; };
 		2774644417AADFC800A36A7D /* NearestRoutesScheduleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = NearestRoutesScheduleStoryboard.storyboard; path = Storyboards/Realtime/NearestLocation/NearestRoutesScheduleStoryboard.storyboard; sourceTree = "<group>"; };
 		2782CEEA17BE8D62005939DB /* RouteSelectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RouteSelectionCell.xib; path = Storyboards/Schedules/RouteSelection/RouteSelectionCell.xib; sourceTree = "<group>"; };
 		2782CEEC17BE8D7A005939DB /* RouteSelectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RouteSelectionCell.h; path = Storyboards/Schedules/RouteSelection/RouteSelectionCell.h; sourceTree = "<group>"; };
@@ -1711,6 +1717,7 @@
 		272976061799A8D100DB2580 /* NextToArrive */ = {
 			isa = PBXGroup;
 			children = (
+				276D3EA01AD71915008D5EF2 /* Object */,
 				278F5E441A783244004D6716 /* NTASave */,
 				27A6937617A04D24008712FB /* Custom Cells */,
 				2729760A1799A95000DB2580 /* NextToArriveStoryboard.storyboard */,
@@ -1859,6 +1866,15 @@
 			name = sqlite;
 			sourceTree = "<group>";
 		};
+		276D3EA01AD71915008D5EF2 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				276D3EA11AD71960008D5EF2 /* AlertMessage.h */,
+				276D3EA21AD71960008D5EF2 /* AlertMessage.m */,
+			);
+			name = Object;
+			sourceTree = "<group>";
+		};
 		2774644617AAE70200A36A7D /* Schedules */ = {
 			isa = PBXGroup;
 			children = (
@@ -1877,6 +1893,8 @@
 			children = (
 				2782CEEC17BE8D7A005939DB /* RouteSelectionCell.h */,
 				2782CEED17BE8D7A005939DB /* RouteSelectionCell.m */,
+				276D3EA71AE119C9008D5EF2 /* TableCellAlertsView.h */,
+				276D3EA81AE119C9008D5EF2 /* TableCellAlertsView.m */,
 			);
 			name = Code;
 			sourceTree = "<group>";
@@ -4432,6 +4450,7 @@
 				27D4783B1845472B00854F2D /* ElevatorStatusObject.m in Sources */,
 				27A4CE3518F5AA5B00340B2A /* LeaveFeedbackViewController.m in Sources */,
 				270C8F68194A33DB00AE208E /* SlidingAlertViewController.m in Sources */,
+				276D3EA91AE119C9008D5EF2 /* TableCellAlertsView.m in Sources */,
 				2732B2A91A5D8828005C280A /* CustomerServiceForm.m in Sources */,
 				278F5E551A783368004D6716 /* RouteData.m in Sources */,
 				278F5E901A783861004D6716 /* TripCell.m in Sources */,
@@ -4491,6 +4510,7 @@
 				2765AA6917AC122E00F93FBE /* SchedulesViewController.m in Sources */,
 				278F5E881A7836DA004D6716 /* NSArray+Indices.m in Sources */,
 				278F5E3E1A783202004D6716 /* ItineraryCell.m in Sources */,
+				276D3EA31AD71960008D5EF2 /* AlertMessage.m in Sources */,
 				278F5E661A783460004D6716 /* TransitViewObject.m in Sources */,
 				2765AA7217AC18D600F93FBE /* ItineraryViewController.m in Sources */,
 				27157FFF1A82C21F009F2FA0 /* Event.m in Sources */,

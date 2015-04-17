@@ -36,6 +36,8 @@
 
 @synthesize favorites      = _favorites;
 @synthesize recentlyViewed = _recentlyViewed;
+
+@synthesize alerts         = _alerts;
 @synthesize routes         = _routes;
 @synthesize routesName     = _routesName;
 
@@ -70,10 +72,13 @@
             // Initialization here
             self.favorites      = [[NSMutableArray alloc] init];
             self.recentlyViewed = [[NSMutableArray alloc] init];
+            
+            self.alerts         = [[NSMutableArray alloc] init];
             self.routes         = [[NSMutableArray alloc] init];
             
             self.current        = [[RouteData alloc] init];
             _order              = [[NSMutableArray alloc] init];
+            
             _isDirty            = NO;
             _isShowOnlyRoutes   = NO;
             
@@ -375,6 +380,11 @@
         case kDisplayedRouteDataRecentlyViewed:
             return @"Recently Viewed";
             break;
+            
+        case kDisplayedRouteDataAlerts:
+            return @"Alerts";
+            break;
+            
         case kDisplayedRouteDataRoutes:
             return _routesName;
             break;
@@ -431,9 +441,15 @@
                 else
                     return [self.recentlyViewed count];
                 break;
+
+            case kDisplayedRouteDataAlerts:
+                return [self.alerts count];
+                break;
+                
             case kDisplayedRouteDataRoutes:
                 return [self.routes count];
                 break;
+                
             default:
                 return 0;
                 break;
@@ -497,9 +513,15 @@
             return route;
             
             break;
+            
+        case kDisplayedRouteDataAlerts:
+            return [self.alerts objectAtIndex: path.row];
+            break;
+            
         case kDisplayedRouteDataRoutes:
             return [self.routes objectAtIndex: path.row];
             break;
+            
         default:
             return nil;
             break;
@@ -538,6 +560,12 @@
 //                [_order removeObjectAtIndex: [_order indexOfObject:[NSNumber numberWithInt:kDisplayedRouteDataRecentlyViewed] ] ];
 
             break;
+            
+        case kDisplayedRouteDataAlerts:
+            
+            [self.alerts removeObjectAtIndex: path.row];
+            break;
+            
         case kDisplayedRouteDataRoutes:
             
             [self.routes removeObjectAtIndex: path.row];
@@ -636,10 +664,16 @@
             [self.recentlyViewed removeAllObjects];
             
             break;
+            
+        case kDisplayedRouteDataAlerts:
+            [self.alerts removeAllObjects];
+            break;
+            
         case kDisplayedRouteDataRoutes:  // 2
             // Remove object from current
             [self.routes removeAllObjects];
             break;
+            
         default:
             return;  // Default, nothing happened, just return and skip the section update.
             break;
@@ -711,10 +745,17 @@
             }
         }
             break;
+            
+        case kDisplayedRouteDataAlerts:
+            [self.alerts addObject: object];
+            [self updateSectionCountForSection:section];
+            break;
+            
         case kDisplayedRouteDataRoutes:
             [self.routes addObject: object];
             [self updateSectionCountForSection:section];
             return;
+            
         default:
             break;
     }
@@ -882,11 +923,15 @@
             self.current = myRoute;
             
             break;
-        case kDisplayedRouteDataRoutes:
             
-            self.current = [self.routes objectAtIndex: path.row];
-            
+        case kDisplayedRouteDataAlerts:
+            self.current = [self.alerts objectAtIndex: path.row];
             break;
+            
+        case kDisplayedRouteDataRoutes:
+            self.current = [self.routes objectAtIndex: path.row];
+            break;
+            
         default:
             // Do nothing
             break;
@@ -1080,11 +1125,14 @@
             
             if ( [_recentlyViewed count] )
                 [newOrder addObject:[NSNumber numberWithInt: kDisplayedRouteDataRecentlyViewed] ];
-            
+        
+            if ( [_alerts count] )
+                [newOrder addObject:[NSNumber numberWithInt: kDisplayedRouteDataAlerts] ];
+        
             if ( [_routes count] )
                 [newOrder addObject:[NSNumber numberWithInt: kDisplayedRouteDataRoutes] ];
             
-            numOfSections = ([_routes count] ? 1 : 0) + ([_favorites count] ? 1 : 0) + ([_recentlyViewed count] ? 1 : 0);
+            numOfSections = ([_routes count] ? 1 : 0) + ([_alerts count] ? 1 : 0) + ([_favorites count] ? 1 : 0) + ([_recentlyViewed count] ? 1 : 0);
             [_order setArray: newOrder];
             
 //        }
@@ -1103,7 +1151,7 @@
 
 -(NSString*) description
 {
-    return [NSString stringWithFormat:@"# of favorites: %lu, recently viewied: %lu, routes: %lu, sections: %ld", (unsigned long)[self.favorites count], (unsigned long)[self.recentlyViewed count], (unsigned long)[self.routes count], (long)[self numberOfSections] ];
+    return [NSString stringWithFormat:@"# of favorites: %lu, recently viewied: %lu, routes: %lu, alerts: %lu, sections: %ld", (unsigned long)[self.favorites count], (unsigned long)[self.recentlyViewed count], (unsigned long)[self.routes count], (unsigned long)[self.alerts count], (long)[self numberOfSections] ];
 }
 
 

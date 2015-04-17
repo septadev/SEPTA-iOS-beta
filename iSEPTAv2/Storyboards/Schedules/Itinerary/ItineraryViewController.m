@@ -450,6 +450,8 @@
     [self.navigationItem setRightBarButtonItem: rightButton];
 
     
+    
+    
     REMenuItem *favoritesItem = [[REMenuItem alloc] initWithTitle:@"Favorite"
                                                          subtitle:FAVORITE_SUBTITLE_NONE
                                                             image:[UIImage imageNamed:@"Favorite.png"]

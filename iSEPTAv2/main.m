@@ -2,8 +2,8 @@
 //  main.m
 //  iSEPTAv2
 //
-//  Created by Justin Brathwaite on 4/11/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by SEPTA.
+//  Copyright (c) 2012 SEPTA. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

@@ -79,6 +79,7 @@
 
     // Refresh visible cells
 //    [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationAutomatic];
+    NSLog(@"RSVC - willAnimateRotationToInterfaceOrientation; reload");
     [self.tableView reloadData];
     
 }
@@ -112,6 +113,9 @@
     // New Xibs, BusRoutesDefaultCell replacement
     [self.tableView registerNib:[UINib nibWithNibName:@"RouteSelectionCell" bundle:nil] forCellReuseIdentifier:@"RouteSelectionCell"];
     
+    // Alerts - For displaying RRD generic and line-specific alerts
+    [self.tableView registerNib:[UINib nibWithNibName:@"NextToArriveAlerts" bundle:nil] forCellReuseIdentifier:@"NextToArriveAlertsCell"];
+
     
     UIColor *backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"newBG_pattern.png"] ];
     [self.view setBackgroundColor: backgroundColor];
@@ -179,7 +183,6 @@
     
     [self.searchDisplayController.searchBar setHidden:YES];
     [self getUnfilteredBusRoutes];
-    
     
 }
 
@@ -359,7 +362,9 @@
     [super viewDidAppear:animated];
     
     [_routeData refreshSettings];  // Updates Settings:RecentlyDisplayLimit if it has changed
-    [self.tableView reloadData];   // Reload data in case of changes
+    
+//    NSLog(@"RSVC - viewDidAppear: %d; reload", animated);
+//    [self.tableView reloadData];   // Reload data in case of changes, commented out by gga on 4/15/15; on view startup, this causes the cells to be loaded twice; once for the inital read from the data source and then the second time when viewDidAppear loads
     
     _segueInAction = NO;
     
@@ -374,6 +379,18 @@
 #endif
 
     [super viewWillDisappear:animated];
+    
+    NSArray *cellArray = [self.tableView visibleCells];
+    
+    for (id cell in cellArray)
+    {
+        if ( [cell isKindOfClass:[RouteSelectionCell class] ] )
+        {
+//            [(TableCellAlertsView*)cell removeAllAlerts];
+            [(TableCellAlertsView*)[cell alertView] removeAllAlerts];
+        }
+    }
+    
     
 //    NSLog(@"BSRVC -(void) viewWillDisappear Start");
     
@@ -756,6 +773,7 @@
                 [[userPrefCell lblStartStopName]  setText: [row start_stop_name] ];
                 [[userPrefCell lblEndStopName]    setText: [row end_stop_name  ] ];
                 
+
                 
                 if ( [travelMode isEqualToString:@"Rail"] )
                 {
@@ -780,18 +798,70 @@
                 return userPrefCell;
                 
                 break;
-            case kDisplayedRouteDataRoutes:
                 
+//            case kDisplayedRouteDataAlerts:
+//                // Insert code here!
+//                
+//                break;
+                
+            case kDisplayedRouteDataRoutes:
+            {
                 
                 routeSelectionCell = [self.tableView dequeueReusableCellWithIdentifier:routeSelectionCellID];
+                
+                BOOL isBus = NO;
+                if ( [self.travelMode isEqualToString:@"Bus"] )
+                    isBus = YES;
+                
+                if ( indexPath.row == 0 )
+                {
+//                    TableCellAlertsView *alertView = [[TableCellAlertsView alloc] init];
+//                    [alertView addAlert:kTableCellAlertsImageAlerts];
+                    
+                    TableCellAlertsView *alertView = (TableCellAlertsView*)routeSelectionCell.alertView;
+                    
+                    if ( isBus )
+                    {
+                        [alertView setFrame:CGRectMake(alertView.frame.origin.x - 10, alertView.frame.origin.y, 20, 15)];
+                        [alertView setContentMode: UIViewContentModeScaleAspectFit];
+                        //                        [alertView hasSideIndex:YES];
+                    }
+
+                    [alertView addAlert:kTableCellAlertsImageAlerts];
+                    [alertView addAlert:kTableCellAlertsImageDetours];
+                    [alertView setHidden:NO];
+
+                }
+                else if ( indexPath.row == 1 )
+                {
+                    TableCellAlertsView *alertView = (TableCellAlertsView*)routeSelectionCell.alertView;
+
+//                        [alertView setFrame:CGRectMake(alertView.frame.origin.x - 10, alertView.frame.origin.y, 40, 30)];
+                    
+//                    [alertView addAlert:kTableCellAlertsImageAdvisories];
+                    if ( isBus )
+                    {
+                        [alertView hasSideIndex:YES];
+//                        [alertView setFrame:CGRectMake(alertView.frame.origin.x - 10, alertView.frame.origin.y, 10, 7.5f)];
+//                        [alertView.imageView setFrame:CGRectMake(alertView.frame.origin.x - 10, alertView.frame.origin.y, 10, 7.5f)];
+                    }
+                    
+                    [alertView addAlert:kTableCellAlertsImageSuspend];
+//                    [alertView setContentMode:UIViewContentModeScaleAspectFit];
+//                    [alertView.imageView setContentMode: UIViewContentModeScaleAspectFit];
+                    [alertView setHidden:NO];
+
+
+                }
                 
                 row = [_routeData objectWithIndexPath: indexPath];
                 
                 [routeSelectionCell setRouteData: row];
                 
                 return routeSelectionCell;
-
+            
                 break;
+            }
             default:
                 
                 defaultCell = [tableView dequeueReusableCellWithIdentifier:defaultCellID];
@@ -800,15 +870,27 @@
                 break;
         }
         
-        //        row = [_routeData objectWithIndexPath: indexPath];
-        //        [[cell textLabel] setText: [row route_short_name] ];
-        
-        //        NSDictionary *row = [unfilteredList objectAtIndex: indexPath.row];
-        //        [[cell textLabel] setText: [row objectForKey:@"route_short_name"] ];
-        
     }
     
-    //    return cell;
+}
+
+
+-(void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+ 
+    switch ( (NSInteger)[_routeData sectionForIndexPath:indexPath] )
+    {
+        case kDisplayedRouteDataRoutes:
+        {
+            RouteSelectionCell *routeSelectionCell = [self.tableView dequeueReusableCellWithIdentifier:@"RouteSelectionCell"];
+            TableCellAlertsView *alertView = (TableCellAlertsView*)[routeSelectionCell alertView];
+            [alertView removeAllAlerts];
+            
+            break;
+        }
+        default:
+            break;
+    }
+    
 }
 
 
@@ -838,6 +920,7 @@
         [tableView endUpdates];
         
         [_routeData updateSectionCountForSection:kDisplayedRouteDataRecentlyViewed];
+        NSLog(@"RSVC - tV:commitEditingStyle:forRowAtIndexPath: %@; reload", indexPath);
         [tableView reloadData];
     }
     
@@ -1635,49 +1718,6 @@
     
     [self getFilteredBusRoutes];
     
-    //    if ( searchStr != searchText)
-    //        searchStr = [searchText copy];
-    //
-    //    //searchString = [NSString stringWithFormat:@"%@", searchText];
-    //    if ( [searchText length] >= 2)
-    //    {
-    //        [halfView removeFromSuperview];
-    //        [self.searchDisplayController.searchResultsTableView setAlpha:1.0f];
-    //        [self getFilteredRoutesWithString: searchText];
-    //        //        [self.searchDisplayController.searchResultsTableView scrollsToTop];
-    //    }
-    //    else
-    //    {
-    //
-    //        if ( halfView == nil )  // If the halfView doesn't exist, create it!
-    //            halfView = [[UIView alloc] initWithFrame: CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height-44)];
-    //
-    //        if ( ( [searchText length] == 0 ) || ( searchText == nil ) )
-    //        {
-    //            // Happens if a letter is pressed and then immediately deleted.  We don't need halfView at 0.75 alpha
-    //            [halfView setAlpha:0.00f];
-    //        }
-    //        else  // Should only be valid when one letter has been entered
-    //        {
-    //            [halfView setBackgroundColor: [UIColor blackColor] ];
-    //            [halfView setAlpha: 0.80f];
-    //            [self.view addSubview: halfView];
-    //        }
-    //
-    //        [self.searchDisplayController.searchResultsTableView setAlpha:0.0f];
-    //
-    //    }
-    
-    
-    // Update the filtered array based on the search text and scope.
-    // Remove all objects from the filtered search array
-    //    [[self filteredItemList] removeAllObjects];
-    //
-    //    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name contains[c] %@", searchText];
-    //    filteredItemList = [NSMutableArray arrayWithArray:[originalList filteredArrayUsingPredicate:predicate]];
-    //
-    //    [self convertToSectionData];
-    
 }
 
 #pragma mark - UISegementControl, Bus Route Sorter
@@ -1718,67 +1758,10 @@
     }
     
     
-    //    if ( showOnlyRoutes )  // Remove Favorites and Recently Viewed
-    //    {
-    //
-    //        [self.tableView beginUpdates];
-    //        NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
-    //
-    //
-    //        NSInteger numberOfSections = [_routeData numberOfSections];
-    //
-    //        if ( numberOfSections >= 2 )
-    //        {
-    //            numberOfSections--;
-    //        }
-    //
-    //        NSInteger numInThisSection;
-    //        for (int sectionLCV = 0; sectionLCV < numberOfSections; sectionLCV++)
-    //        {
-    //            numInThisSection = [_routeData numberOfRowsInSection: sectionLCV];
-    //
-    //            for (int rowLCV = 0; rowLCV < numInThisSection; rowLCV++)
-    //            {
-    //                [indexPaths addObject:[NSIndexPath indexPathForRow:rowLCV inSection:sectionLCV] ];
-    //                [_routeData removeObjectWithIndexPath: [indexPaths objectAtIndex:rowLCV] ];
-    //            }
-    //
-    //        }
-    //
-    ////        NSInteger numFavs = [_routeData numberOfRowsInSection:kDisplayedRouteDataFavorites];
-    ////        NSInteger numRecs = [_routeData numberOfRowsInSection:kDisplayedRouteDataRecentlyViewed];
-    ////        NSInteger section;
-    ////
-    ////        section = [_routeData sectionNumberForSection:kDisplayedRouteDataFavorites];
-    ////        for (int rowLCV = 0; rowLCV < numFavs; rowLCV++)
-    ////        {
-    ////            [indexPaths addObject: [NSIndexPath indexPathForRow:rowLCV inSection:section] ];
-    ////        }
-    ////
-    ////        section = [_routeData sectionNumberForSection:kDisplayedRouteDataRecentlyViewed];
-    ////        for (int rowLCV = 0; rowLCV < numRecs; rowLCV++)
-    ////        {
-    ////            [indexPaths addObject: [NSIndexPath indexPathForRow:rowLCV inSection:section] ];
-    ////        }
-    //
-    //        if ( [indexPaths count] > 0 )
-    //            [self.tableView deleteRowsAtIndexPaths: indexPaths withRowAnimation:UITableViewRowAnimationBottom];
-    //        [self.tableView endUpdates];
-    //
-    //    }
-    //    else
-    //    {
-    //        [_routeData reloadSection:kDisplayedRouteDataFavorites];
-    //        [_routeData reloadSection:kDisplayedRouteDataRecentlyViewed];
-    //    }
-    //
-    //    [_routeData showOnlyRoutes: showOnlyRoutes];
-    
-    
-    
     if ( queryType == kQueryNormalBus )
     {
         [self getUnfilteredBusRoutes];
+        NSLog(@"RSVC - segmentChanged; reload");
         [self.tableView reloadData];
     }
     else if ( queryType == kQuerySearchBus )
@@ -1828,6 +1811,7 @@
     if ( queryType == kQueryNormalBus )
     {
         [self getUnfilteredBusRoutes];
+        NSLog(@"RSVC - filterHasChanged: %d; reload", index);
         [self.tableView reloadData];
     }
     else if ( queryType == kQuerySearchBus )
@@ -1864,6 +1848,13 @@
 #endif
 
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+#pragma mark - Alert Button Pressed
+-(void) dropDownMenuPressed:(id) sender
+{
+    NSLog(@"RSVC - Alert Button Pressed!");
 }
 
 

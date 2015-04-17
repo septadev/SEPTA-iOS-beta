@@ -12,9 +12,20 @@
 // --==  Data Models  ==--
 #import "RouteData.h"
 
+#import "TableCellAlertsView.h"
+
 
 // --==  Common  ==--
 #import "GTFSCommon.h"
+
+
+typedef NS_ENUM(NSInteger, RouteAlertsImageType)
+{
+    kRouteAlertsImageNone,
+    kRouteAlertsImageAlerts,
+    kRouteAlertsImageDetours,
+    kRouteAlertsImageAdvisories,
+};
 
 
 @interface RouteSelectionCell : UITableViewCell
@@ -25,7 +36,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lblShortName;
 
+//@property (weak, nonatomic) IBOutlet UIImageView *imgAlert;
+@property (weak, nonatomic) IBOutlet UIView *alertView;
+
 
 -(void) setRouteData: (RouteData*) routeData;
+
+// -- Side Alert Notification
+-(void) removeAlert: (RouteAlertsImageType) alertType;
+-(void) addAlert: (RouteAlertsImageType) alertType;
+-(void) next;
+-(void) start;
 
 @end

@@ -11,6 +11,9 @@
 @implementation RouteSelectionCell
 {
     RouteData *_routeData;
+    
+    NSMutableArray *_imageArr;
+    int _imageIndex;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -28,6 +31,8 @@
 
     // Configure the view for the selected state
 }
+
+
 
 -(void) setRouteData: (RouteData*) routeData
 {

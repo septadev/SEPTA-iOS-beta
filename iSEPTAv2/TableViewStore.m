@@ -608,42 +608,49 @@
     //   _topStore has 4 sections, "Itinerary", "Recent", "Data", "Favorites"
     //   section "Favorites" needs to be reorder to appear after "Itinerary"
     //   [_dataStore moveSection: 3 afterSection: 0]
-    //   [_dataStore moveSectionTitle: @"Favorites" afterSection: @"Itinerary"]
+    //   In other words:
+    //       [_dataStore moveSectionTitle: @"Favorites" afterSection: @"Itinerary"]
     
-    
-    // Need to find the key for the index we're moving
-    NSString *fromKey;
-    for (NSString *key in _sectionTracker)
-    {
-        if ( [[_sectionTracker objectForKey:key] intValue] == fromIndex )
-        {
-            fromKey = key;  // Found the key!
-            break;
-        }
-    }
-    
-    
-    if ( fromKey == nil )
-        return;  // Something was wrong with the fromIndex, exit out before any changes are made to the data
-    
-    
-    [_topStore moveObjectFromIndex:fromIndex toIndex: afterIndex+1];  // Method from NSMutableArray+MoveObject
-    
-    
-    NSMutableDictionary *newTracker = [[NSMutableDictionary alloc] init];
-    for (NSString *key in _sectionTracker)
-    {
-        int val = [[_sectionTracker objectForKey:key] intValue];
-        if ( val > afterIndex )
-            [newTracker setValue:[NSNumber numberWithInt:val+1] forKey:key];
-        else
-            [newTracker setValue:[NSNumber numberWithInt:val] forKey:key];
 
-    }
+    NSUInteger size = [_topStore count];
+    if ( size > fromIndex && size > afterIndex )
+        [_topStore exchangeObjectAtIndex:fromIndex withObjectAtIndex:afterIndex];
     
-    [newTracker setValue:[NSNumber numberWithLong:afterIndex+1] forKey:fromKey];
-
-    _sectionTracker = newTracker;
+    return;
+    
+//    // Need to find the key for the index we're moving
+//    NSString *fromKey;
+//    for (NSString *key in _sectionTracker)
+//    {
+//        if ( [[_sectionTracker objectForKey:key] intValue] == fromIndex )
+//        {
+//            fromKey = key;  // Found the key!
+//            break;
+//        }
+//    }
+//    
+//    
+//    if ( fromKey == nil )
+//        return;  // Something was wrong with the fromIndex, exit out before any changes are made to the data
+//    
+//    
+//    [_topStore moveObjectFromIndex:fromIndex toIndex: afterIndex+1];  // Method from NSMutableArray+MoveObject
+//    
+//    
+//    NSMutableDictionary *newTracker = [[NSMutableDictionary alloc] init];
+//    for (NSString *key in _sectionTracker)
+//    {
+//        int val = [[_sectionTracker objectForKey:key] intValue];
+//        if ( val > afterIndex )
+//            [newTracker setValue:[NSNumber numberWithInt:val+1] forKey:key];
+//        else
+//            [newTracker setValue:[NSNumber numberWithInt:val] forKey:key];
+//
+//    }
+//    
+//    [newTracker setValue:[NSNumber numberWithLong:afterIndex+1] forKey:fromKey];
+//
+//    _sectionTracker = newTracker;
     
 }
 

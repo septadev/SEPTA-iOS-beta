@@ -26,6 +26,7 @@
 // --==  Helper Classes  ==--
 #import "CustomFlatBarButton.h"
 #import "LineHeaderView.h"
+#import "TableCellAlertsView.h"
 // --==  Helper Classes  ==--
 
 

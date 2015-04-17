@@ -13,9 +13,12 @@
     
 }
 
-@property (strong, nonatomic) NSNumber *numLines;
+//@property (strong, nonatomic) NSNumber *numLines;
 @property (weak, nonatomic) IBOutlet UILabel *lblAlertText;
 
 -(void) updateAlertTitle:(NSString*) title andText: (NSString*) text;
+-(void) updateAlertText: (NSString*) text;
+
+-(CGFloat) getHeight;
 
 @end

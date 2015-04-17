@@ -46,14 +46,18 @@
     
     NSTimer *menuRefreshTimer;
     NSTimer *updateTimer;
+    
     BOOL _stillWaitingOnWebRequest;
+    BOOL _stillWaitingOnAlertRequest;
+    
     BOOL _launchUpdateTimer;
     BOOL _killAllTimers;
     
     // --==  This dictionary is the quick lookup hash for replacing one the correct, GTFS approved, station name with one that SEPTA's internal DBs will recognize.  *Insert face palm here*
     NSMutableDictionary *replacement;
     
-    NSMutableDictionary *alertLineDict;
+    NSMutableDictionary *alertLineDict;  // Converts NTA returned line with parameter used in Alerts API
+    NSArray *_ntaUniqueLines;
     
     NextToArriveLeftButtonPressed _itineraryCompletion;
     
@@ -93,6 +97,11 @@
     [titleView updateWidth: w];
 //    [titleView updateFrame: CGRectMake(0, 0, w - (navW*2) -8, 32)];
 
+    
+    // If start and end are nil, just pull the generic.  Otherwise, leave it up to the refreshJSONData method to get the latest
+    if ( ( [[_itinerary startStopName] isEqualToString: DEFAULT_START_MESSAGE] ) || ( [[_itinerary endStopName] isEqualToString: DEFAULT_END_MESSAGE] ) )
+        [self getAlertsForLines: @[ @"Generic" ] ];  // Get the latest Alerts
+    
 }
 
 - (void)viewDidLoad
@@ -127,7 +136,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"NextToArriveConnectionTripCell" bundle:nil] forCellReuseIdentifier:@"NextToArriveConnectionTripCell"];
 
     // Alerts - For displaying RRD generic and line-specific alerts
-    [self.tableView registerNib:[UINib nibWithNibName:@"NextToArriveAlerts" bundle:nil] forCellReuseIdentifier:@"NextToArriveAlerts"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"NextToArriveAlerts" bundle:nil] forCellReuseIdentifier:@"NextToArriveAlertsCell"];
     
     
     // --==  Create the NSOperationQueue to allow for cancelling
@@ -162,6 +171,7 @@
     [_tableData replaceArrayWith: [saveData favorites] forTitle:@"Favorites"];
     [_tableData replaceArrayWith: [saveData recent]    forTitle:@"Recent"   ];
     
+    // For aesethic purposes, display four blank cells when the view initially loads
     [_tableData addObject: [[NextToArrivaJSONObject alloc] init] forTitle:@"Data"];
     [_tableData addObject: [[NextToArrivaJSONObject alloc] init] forTitle:@"Data"];
     [_tableData addObject: [[NextToArrivaJSONObject alloc] init] forTitle:@"Data"];
@@ -169,6 +179,7 @@
     
     [_tableData setTag:kNextToArriveSectionFavorites forTitle: @"Favorites"];
     [_tableData setTag:kNextToArriveSectionRecent    forTitle: @"Recent"   ];
+    [_tableData setTag:kNextToArriveSectionAlerts    forTitle: @"Alerts"   ];
     [_tableData setTag:kNextToArriveSectionData      forTitle: @"Data"     ];
     
     _launchUpdateTimer = NO;
@@ -405,12 +416,28 @@
 
 -(void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
+  
+//    CGFloat width = [UIScreen mainScreen].bounds.size.width - 10;  // Take the same space off as the formatCell method
+
+//    NSLog(@"NtATVC - willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)%ld duration:(NSTimeInterval)%6.4f withWidth: %6.4f",toInterfaceOrientation,duration,width);
     
     LineHeaderView *titleView = (LineHeaderView*)self.navigationItem.titleView;
 //    float navW = [(UIView*)[self.navigationItem.leftBarButtonItem  valueForKey:@"view"] frame].size.width;
     float w    = self.view.frame.size.width;
     [titleView updateWidth: w];
 //    [titleView updateFrame: CGRectMake(0, 0, w - (navW*2) -8, 32)];
+    
+    
+    if ( [_tableData indexForSectionTitle:@"Alerts"] != NSNotFound )
+    {
+        // Alerts has data
+        NSMutableArray *alertArr = [_tableData objectForSectionWithTitle:@"Alerts"];
+        for (AlertMessage *aMsg in alertArr)
+        {
+            [aMsg updateAttrText];
+        }
+    }
+    
     
     [self.tableView reloadData];
     
@@ -587,7 +614,7 @@
 
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 22)];
     
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(6, 0, self.view.frame.size.width, 22)];
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(6, 0, self.view.frame.size.width-10, 22)];  // gga, 4/10/15: add -10 to better center Alerts
     [headerLabel setFont: [UIFont fontWithName:@"TrebuchetMS-Bold" size:17.0f] ];
     [headerLabel setTextColor: [UIColor whiteColor] ];
     [headerLabel setBackgroundColor: [UIColor clearColor] ];
@@ -605,6 +632,13 @@
     {
         [headerLabel setText:@"Recent"];
         [headerView setBackgroundColor: [UIColor colorWithRed:13.0f/255.0f green:164.0f/255.0f blue:74.0f/255.0f alpha:0.6f]];
+    }
+    else if ( [[_tableData titleForSection:section] isEqualToString:@"Alerts"] )
+    {
+        
+        [headerLabel setText:@"Alerts"];
+        [headerLabel setTextAlignment:NSTextAlignmentCenter];
+        [headerView setBackgroundColor: [UIColor colorWithRed:181.0/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:0.8f]];
     }
     else if ( [[_tableData titleForSection:section] isEqualToString:@"Data"] )
     {
@@ -660,6 +694,7 @@
     static NSString *singleTripCell     = @"NextToArriveSingleTripCell";
     static NSString *connectionTripCell = @"NextToArriveConnectionTripCell";
     static NSString *tripHistoryCell    = @"NextToArriveTripHistoryCell";
+    static NSString *tripAlertCell      = @"NextToArriveAlertsCell";
     
     id myCell;
     if ( [[_tableData titleForSection:indexPath.section] isEqualToString:@"Favorites"] || [[_tableData titleForSection:indexPath.section] isEqualToString:@"Recent"] )
@@ -675,6 +710,50 @@
         ((UITableViewCell*)myCell).layer.mask = maskLayer;
         
 //        return myCell;
+    }
+    else if ( [[_tableData titleForSection:indexPath.section] isEqualToString:@"Alerts"] )
+    {
+        NSLog(@"Alerts section!");
+        myCell = (NextToArriveAlerts*)[self.tableView dequeueReusableCellWithIdentifier: tripAlertCell];
+        
+//        SystemAlertObject *saObj = [_tableData objectForIndexPath:indexPath];
+        AlertMessage *aMsg = [_tableData objectForIndexPath:indexPath];
+        
+//        [myCell updateAlertTitle:@"RRD" andText: saObj.current_message];
+//        [myCell updateAlertText:saObj.current_message];
+        [[myCell lblAlertText] setAttributedText: aMsg.attrText ];
+
+        [myCell setSelectionStyle: UITableViewCellSelectionStyleNone];
+        
+//        [[myCell lblAlertText] setNumberOfLines:0];
+        
+        CGRect rect = CGRectFromString(aMsg.rect);
+
+        CGRect frame = [myCell lblAlertText].frame;
+        
+//        frame.origin.y = (rect.size.height/10.0f/2.0);
+        frame.origin.y = 0.0f + 6.0f;
+        frame.size.height = (rect.size.height);
+        frame.size.width = rect.size.width;
+        
+//        rect.origin.y = (rect.size.height/10.0f/2.0);  // Pad it with a tenth of its own height
+        [[myCell lblAlertText] setFrame: frame];
+  
+        
+//        [[myCell lblAlertText] setBounds: CGRectFromString( aMsg.rect ) ];
+
+//        [[myCell lblAlertText] sizeToFit];
+
+        // This is nice to help visualize where the boundaries are.
+//        [myCell lblAlertText].layer.borderWidth = 1.0f;
+//        [myCell lblAlertText].layer.borderColor = [UIColor redColor].CGColor;
+        
+        
+        CAShapeLayer *maskLayer = [self formatCell: myCell forIndexPath:indexPath];
+        ((UITableViewCell*)myCell).layer.mask = maskLayer;
+        
+        ((UITableViewCell*)myCell).layer.borderColor = [[UIColor colorWithRed:0.6 green:0.7 blue:0.2 alpha:1.0] CGColor];
+        
     }
     else
     {
@@ -754,6 +833,12 @@
     else if ( [[_tableData titleForSection:indexPath.section] isEqualToString:@"Recent"] )
     {
         return 38.0f;
+    }
+    else if ( [[_tableData titleForSection:indexPath.section] isEqualToString:@"Alerts"] )
+    {
+//        return 38.0f;
+        AlertMessage *aMsg = (AlertMessage*)[_tableData objectForIndexPath:indexPath];
+        return CGRectFromString( aMsg.rect ).size.height+12;
     }
     else if ( [[_tableData titleForSection:indexPath.section] isEqualToString:@"Data"] )
     {
@@ -933,7 +1018,14 @@
     NSString *title = [_tableData titleForSection:indexPath.section];
 
     NTASaveSection selection = kNTASectionNone;
-     
+
+    if ( [title isEqualToString:@"Alerts"] )
+    {
+        return;
+    }
+
+    
+    
     if ( [title isEqualToString:@"Favorites"] )
     {
         selection = kNTASectionFavorites;
@@ -942,6 +1034,7 @@
     {
         selection = kNTASectionRecentlyViewed;
     }
+    
     
     
     
@@ -1357,7 +1450,7 @@
 {
     [replacement setObject:@"Norristown TC"         forKey:@"Norristown T.C."];
     [replacement setObject:@"Temple U"              forKey:@"Temple University"];
-    [replacement setObject:@"Elm St"                forKey:@"Norristown"];
+    [replacement setObject:@"Elm St"                forKey:@"Norristown Elm Street"];
     [replacement setObject:@"Neshaminy Falls"       forKey:@"Neshaminy"];
     
     [replacement setObject:@"Mt Airy"               forKey:@"Mount Airy"];
@@ -1517,12 +1610,9 @@
 
     
     [self.tableView reloadData];
-
-
-    [self getAlertsForLines: @[ @"Generic",@"Warminster" ] ];
     
-//    [self invalidateTimer]; // Invalidate any timer that is already active.  If no timer is active, nothing happens
-//    [self getLatestJSONData];
+    [self invalidateTimer]; // Invalidate any timer that is already active.  If no timer is active, nothing happens
+    [self getLatestJSONData];
 
     
 }
@@ -1818,13 +1908,21 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
         return;  // Don't bother continuing if no internet connection is available
     
     
+    if ( _stillWaitingOnAlertRequest )  // Avoid asking the server for data if it hasn't returned anything from the previous request
+        return;
+    else
+        _stillWaitingOnAlertRequest = YES;
+
+
 //    [alertLineDict setObject:@"rr_route_cyn" forKey:@"Cynwyd"];
 //    [alertLineDict setObject:[NSArray arrayWithObjects:@"rr_route_gc",@"rr_route_landdoy", nil] forKey:@"Lansdale/Doylestown"];
     
     if ( [lines count] == 0 )
         return;  // Nothing to process
     
-    NSMutableArray *lineArr = [[NSMutableArray alloc ] init];
+//    NSMutableArray *lineArr = [[NSMutableArray alloc ] init];
+    NSMutableDictionary *lineDict = [[NSMutableDictionary alloc] init];
+    
     for (id line in lines)
     {
 
@@ -1834,17 +1932,17 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
         {
             for (NSString *l in result )
             {
-                [lineArr addObject: l];
+                [lineDict setObject:@"1" forKey:l];
             }
         }
         else
         {
-            [lineArr addObject: [alertLineDict objectForKey:line] ];
+            [lineDict setObject:@"1" forKey:[alertLineDict objectForKey:line]];
         }
         
     }
     
-    NSString *lineStr = [lineArr componentsJoinedByString:@","];
+    NSString *lineStr = [[lineDict allKeys] componentsJoinedByString:@","];
     
     
     NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/beta/Alerts/get_alert_data.php?route_id=%@", lineStr];
@@ -1867,7 +1965,7 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
         }
         else
         {
-            NSLog(@"FNRVC - getAlertsForLines: _jsonOp cancelled");
+            NSLog(@"NTAVC - getAlertsForLines: _jsonOp cancelled");
         }
         
     }];
@@ -1999,6 +2097,9 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
 
 -(void) processAlertData:(NSData*) returnedData
 {
+
+    _stillWaitingOnAlertRequest = NO;
+    
     
     if ( returnedData == nil )  // If we didn't even receive data, try again in another JSON_REFRESH_RATE seconds
     {
@@ -2014,7 +2115,7 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     
     // This method is called once the realtime positioning data has been returned via the API is stored in data
     NSError *error;
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData: returnedData options:kNilOptions error:&error];
+    id json = [NSJSONSerialization JSONObjectWithData: returnedData options:kNilOptions error:&error];
     
     
     if ( json == nil || error != nil )  // Something bad happened, so just return
@@ -2024,7 +2125,170 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
         return;
     }
     
-    NSLog(@"JSON: %@", json);
+    
+//    NSMutableDictionary *jsonTest = [[NSMutableDictionary alloc] init];
+    
+    if ( 0 )  // Set to 1 when testing, 0 when um... the opposite.
+    {
+        NSMutableArray *jsonTest = [[NSMutableArray alloc] init];
+        
+        NSMutableDictionary *route = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"rr_route_warm",@"route_id",@"Warminster",@"route_name",@"Warminster Train #426 will now fly directly from Glenside to Jefferson Station.  Please be aware of the change in trip.  Frequent flyer miles can be redeemed at the SEPTA store at 1234 Market Street.",@"current_message", nil];
+        
+        [jsonTest addObject: route];
+        
+        route = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"generic",@"route_id",@"Generic",@"route_name",@"RRD: Warminster Train #4331 is canceled from Warmisnter to Glenside. Service will begin at Glenside to depart the scheduled time of 9:08AM",@"current_message", nil];
+        
+        [jsonTest addObject: route];
+
+        route = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"rr_route_gc",@"route_id",@"Glenside Combined",@"route_name",@"Glenside will be combined with Anti-Glenside and used to power the entire Eastern coast.  Please be advised that any anomalies should be avoided and promptly reported to the Department of Time and Space (DTS).",@"current_message", nil];
+
+        [jsonTest addObject: route];
+        
+        json = jsonTest;
+        
+    }
+    
+    for (NSDictionary *data in json)
+    {
+        
+        if ( [_alertOp isCancelled] )
+            return;
+
+        SystemAlertObject *saObj = [[SystemAlertObject alloc] init];
+        
+        [saObj setRoute_id: [data objectForKey:@"route_id"] ];
+        [saObj setRoute_name: [data objectForKey:@"route_name"] ];
+        [saObj setCurrent_message: [data objectForKey:@"current_message"] ];
+
+//        if ( [saObj.route_name isEqualToString:@"Generic"] )  // Generic requires a specific check
+//            [saObj setCurrent_message:@"RRD: Warminster Train #4331 is canceled from Warmisnter to Glenside. Service will begin at Glenside to depart the scheduled time of 9:08AM"];  // Test
+        
+        
+        if ( [saObj.current_message length] > 1 )  // Is there any data in the current_message?
+        {
+            
+            if ( [saObj.route_name isEqualToString:@"Generic"] )  // Generic requires a specific check
+            {
+                
+                // If Current_message contains RRD, add it to myData, otherwise ignore it.
+                if ( [saObj.current_message rangeOfString:@"RRD"].location != NSNotFound )
+                {
+//                    [myData addObject: [self formatCurrentMessage: saObj.current_message] ];
+                    AlertMessage *alertMsg = [[AlertMessage alloc] init];
+                    [alertMsg setText: saObj.current_message];
+                    [alertMsg updateAttrText];
+                    
+                    [myData addObject: alertMsg];
+                }
+            }
+            else
+            {
+//                [myData addObject: [self formatCurrentMessage: [NSString stringWithFormat:@"%@: %@",saObj.route_name, saObj.current_message] ] ];
+                AlertMessage *alertMsg = [[AlertMessage alloc] init];
+                [alertMsg setText: [NSString stringWithFormat:@"%@: %@",saObj.route_name, saObj.current_message] ];
+                [alertMsg updateAttrText];
+                
+                [myData addObject: alertMsg];
+            }
+
+            
+        }
+        else
+        {
+            
+        }
+        
+        
+        
+    }
+    
+//    [self.tableView beginUpdates];
+    
+    if ( [myData count] == 0 )  // If the data is empty, remove the Alerts section
+    {
+        [_tableData removeSectionWithTitle:@"Alerts"];
+    }
+    else if ( [_tableData indexForSectionTitle:@"Alerts"] == NSNotFound )  // If Alerts is not found in _tableData, add it.
+    {
+        [_tableData addSectionWithTitle:@"Alerts"];
+        [_tableData setTag:kNextToArriveSectionAlerts forTitle:@"Alerts"];
+        [_tableData addArray:myData forTitle:@"Alerts"];
+        [_tableData sortByTags];
+
+//        [_tableData moveSection:[_tableData indexForSectionTitle:@"Data"] afterSection:[_tableData indexForSectionTitle:@"Alerts"] ];
+    }
+    else  // Otherwise, just update the Alerts section with the new data
+    {
+        [_tableData clearSectionWithTitle:@"Alerts"];
+        [_tableData replaceArrayWith: myData forTitle:@"Alerts"];
+    }
+    
+    
+    [self.tableView reloadData];
+//    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:[_tableData indexForSectionTitle:@"Alerts"] ] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+//    [self.tableView endUpdates];
+    
+//    NSLog(@"JSON: %@", json);
+    
+}
+
+
+-(AlertMessage*) formatCurrentMessage: (NSString*) message
+{
+    
+    NSRange endRange = [message rangeOfString:@":"];
+    
+    NSString *title = @"";
+    NSString *text  = @"";
+    
+    if (endRange.length != NSNotFound )
+    {
+        title = [message substringToIndex:endRange.location+1];
+        text = [message substringFromIndex:endRange.location+2];
+    }
+    
+    
+    UIFont *boldFont    = [UIFont fontWithName:@"TrebuchetMS-Bold" size:14.0];
+    UIFont *defaultFont = [UIFont fontWithName:@"Trebuchet MS"      size:14.0];
+
+    NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
+//    [paraStyle setLineSpacing:24.0f];
+//    [paraStyle setLineHeightMultiple:0.85f];
+    
+//    NSDictionary *titleDict = [NSDictionary dictionaryWithObject: boldFont forKey:NSFontAttributeName];
+    NSDictionary *titleDict = [NSDictionary dictionaryWithObjectsAndKeys:boldFont, NSFontAttributeName, paraStyle, NSParagraphStyleAttributeName, nil];
+    
+    NSMutableAttributedString *titleAttrString = [[NSMutableAttributedString alloc] initWithString:title attributes: titleDict];
+
+    
+    NSDictionary *textDict = [NSDictionary dictionaryWithObject:defaultFont forKey:NSFontAttributeName];
+    NSMutableAttributedString *textAttrString = [[NSMutableAttributedString alloc]initWithString: text attributes:textDict];
+    [textAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:(NSMakeRange(0, 15))];
+    
+    
+    [titleAttrString appendAttributedString:textAttrString];
+//    [titleAttrString addAttribute:NSParagraphStyleAttributeName value:paraStyle range:NSMakeRange(0, [message length])];
+    
+    
+    CGFloat width = [UIScreen mainScreen].bounds.size.width - 10;  // Take the same space off as the formatCell method
+    CGRect rect = [titleAttrString boundingRectWithSize:CGSizeMake(width,9999) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading  context:nil];
+    
+    //    CGSize sizeNew = [titleAttrString size];
+    //    NSLog(@"width: %6.4f",[UIScreen mainScreen].bounds.size.width);
+    
+//    CGFloat height = rect.size.height;
+    
+//    return [NSDictionary dictionaryWithObjectsAndKeys:@"text",titleAttrString,@"height",[NSNumber numberWithFloat:height], nil];
+    
+    AlertMessage *aMsg = [[AlertMessage alloc] init];
+    
+//    [aMsg setHeight: [NSNumber numberWithFloat:height] ];
+    [aMsg setRect: NSStringFromCGRect(rect)];
+    NSLog(@"Rect: %@ with Message: %@",aMsg.rect, message);
+    [aMsg setAttrText: titleAttrString];
+    
+    return aMsg;
     
 }
 
@@ -2047,6 +2311,10 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     //    tableData = [[NSMutableArray alloc] init];
     
 //    [ntaDataSection removeAllObjects];
+    
+
+    NSMutableDictionary *dataLines = [[NSMutableDictionary alloc] init];
+    [dataLines setObject:@"1" forKey:@"Generic"];  // Always add Generic upon JSON refresh
     
     
     NSMutableArray *myData;
@@ -2089,6 +2357,8 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
         [ntaObject setOrig_line: [data objectForKey:@"orig_line"] ];
         [ntaObject setOrig_train: [data objectForKey:@"orig_train"] ];
         
+        [dataLines setObject:@"1" forKey:ntaObject.orig_line];
+        
         time = [data objectForKey:@"term_arrival_time"];
         [ntaObject setTerm_arrival_time: [time stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet] ] ];
         
@@ -2105,8 +2375,9 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
         
     }
     
-
-    if ( [_tableData indexForSectionTitle:@"Data"] < 0 )
+    _ntaUniqueLines = [dataLines allKeys];  // Take all the keys and put them into the _ntaUniqueLines array
+    
+    if ( [_tableData indexForSectionTitle:@"Data"] == NSNotFound )
     {
         [_tableData addSectionWithTitle:@"Data"];
         [_tableData setTag:kNextToArriveSectionData forTitle:@"Data"];
@@ -2121,6 +2392,7 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     NSLog(@"NTAVC - processJSON - kicking off another JSON request - 3");
     [self kickOffAnotherJSONRequest];
     
+    [self getAlertsForLines:_ntaUniqueLines];
     
     //    [self sortDataWithIndex: _previousIndex];
     [self.tableView reloadData];

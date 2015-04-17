@@ -28,6 +28,7 @@ typedef NS_ENUM(NSInteger, DisplayedRouteDataSections)
     kDisplayedRouteDataFavorites      = 0,
     kDisplayedRouteDataRecentlyViewed = 1,
     kDisplayedRouteDataRoutes         = 2,
+    kDisplayedRouteDataAlerts         = 3,
     kDisplayedRouteDataOther,
 };
 
@@ -47,6 +48,7 @@ typedef NS_ENUM(NSInteger, DisplayedRouteDatabaseType)
 {
     NSMutableArray *_favorites;
     NSMutableArray *_recentlyViewed;
+    NSMutableArray *_alerts;
     NSMutableArray *_routes;
     RouteData      *_current;
     
@@ -60,6 +62,8 @@ typedef NS_ENUM(NSInteger, DisplayedRouteDatabaseType)
 // Public Properties
 @property (nonatomic, strong) NSMutableArray *favorites;
 @property (nonatomic, strong) NSMutableArray *recentlyViewed;
+
+@property (nonatomic, strong) NSMutableArray *alerts;
 @property (nonatomic, strong) NSMutableArray *routes;
 @property (nonatomic, strong) RouteData      *current;
 
