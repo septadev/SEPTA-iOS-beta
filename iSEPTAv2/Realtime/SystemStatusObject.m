@@ -37,6 +37,31 @@
     
 }
 
+-(BOOL) isAlert
+{
+    return ([self.isalert    isEqualToString:@"N"]  ? NO : YES );
+}
+
+
+-(BOOL) isAdvisory
+{
+    return ([self.isadvisory isEqualToString:@"No"] ? NO : YES );
+}
+
+
+-(BOOL) isDetour
+{
+    return ([self.isdetour   isEqualToString:@"N"]  ? NO : YES );
+}
+
+
+-(BOOL) isSuspend
+{
+    return ([self.issuspend  isEqualToString:@"N"]  ? NO : YES );
+}
+
+
+
 -(NSInteger) numOfAlerts
 {
 //    return [isalert intValue] + [isadvisory intValue] + [isdetour intValue] + [issuspend intValue];

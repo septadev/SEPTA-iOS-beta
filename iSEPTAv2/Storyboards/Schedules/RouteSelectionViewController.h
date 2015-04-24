@@ -23,6 +23,11 @@
 #import "ItineraryViewController.h"
 
 
+// --==  Objects  ==--
+#import "SystemStatusObject.h"
+// --==  Objects  ==--
+
+
 // --==  Helper Classes  ==--
 #import "CustomFlatBarButton.h"
 #import "LineHeaderView.h"

@@ -23,4 +23,9 @@
 
 -(NSInteger) numOfAlerts;
 
+-(BOOL) isAlert;
+-(BOOL) isAdvisory;
+-(BOOL) isDetour;
+-(BOOL) isSuspend;
+
 @end

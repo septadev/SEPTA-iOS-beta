@@ -192,7 +192,7 @@
         {
             
             if ( _hasSideIndex )
-                [_imageView setFrame:CGRectMake(0, 7.5, 20, 15)];
+                [_imageView setFrame:CGRectMake(10, 4, 28, 21)];
             else
                 [_imageView setFrame:CGRectMake(0, 0, 40, 30)];
             

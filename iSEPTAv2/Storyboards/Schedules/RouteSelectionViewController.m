@@ -44,6 +44,21 @@
     
     NSMutableArray *sectionIndex;
     NSMutableArray *sectionTitle;
+
+    
+    // --== For Alerts
+    NSMutableArray *_systemStatusArray;
+    NSMutableDictionary *_ssDict;  // Key: GTFS route name, Value: SystemStatusObject
+    NSString *_genericAlert;
+    
+    BOOL _stillWaitingOnAlertRequest;
+    
+    NSOperationQueue *_jsonQueue;
+    NSBlockOperation *_alertMainOp;
+    NSBlockOperation *_alertDetailsOp;
+    
+    NSString *_alertMode;
+
     
 }
 
@@ -105,6 +120,8 @@
 //    if ( [self.tableView respondsToSelector:@selector(setSectionIndexColor:)] )
 //        [self.tableView setSectionIndexColor: [UIColor whiteColor]];
     
+    _jsonQueue = [[NSOperationQueue alloc] init];
+    
     
     // Register NIBs with Table View
     [self.tableView registerNib:[UINib nibWithNibName:@"UserPreferenceCell" bundle:nil] forCellReuseIdentifier:@"UserPreferenceCell"];
@@ -128,6 +145,8 @@
 //    [self.view addSubview:backgroundImage];
 //    [self.view sendSubviewToBack:backgroundImage];
 
+    
+    _systemStatusArray = [[NSMutableArray alloc] init];
     
     NSString *title;
     NSString *backButtonImage = @"";
@@ -197,30 +216,36 @@
     if ( [[self travelMode] isEqualToString:@"Bus"] )
     {
         _routeData = [[DisplayedRouteData alloc] initWithDatabaseType:kDisplayedRouteDataUsingDBBus];
+        _alertMode = @"Bus";
         //        [_routeData setDatabaseType:kDisplayedRouteDataUsingDBBus];
     }
     else if ( [[self travelMode] isEqualToString:@"Trolley"] )
     {
         _routeData = [[DisplayedRouteData alloc] initWithDatabaseType:kDisplayedRouteDataUsingTrolley];
+        _alertMode = @"Trolley";
     }
     else if ( [[self travelMode] isEqualToString:@"Rail"] )
     {
         _routeData = [[DisplayedRouteData alloc] initWithDatabaseType:kDisplayedRouteDataUsingDBRail];
+        _alertMode = @"Regional Rail";
         //        [_routeData setDatabaseType:kDisplayedRouteDataUsingDBRail];
     }
     else if ( [[self travelMode] isEqualToString:@"MFL"] )
     {
         _routeData = [[DisplayedRouteData alloc] initWithDatabaseType:kDisplayedRouteDataUsingMFL];
+        _alertMode = @"Market/ Frankford";
         //        [_routeData setDatabaseType:kDisplayedRouteDataUsingDBBus];
         
     }
     else if ( [[self travelMode] isEqualToString:@"BSS"] || [travelMode isEqualToString:@"BSL"]  )
     {
         _routeData = [[DisplayedRouteData alloc] initWithDatabaseType:kDisplayedRouteDataUsingBSS];
+        _alertMode = @"Broad Street Line";
     }
     else if ( [[self travelMode] isEqualToString:@"NHSL"])
     {
         _routeData = [[DisplayedRouteData alloc] initWithDatabaseType:kDisplayedRouteDataUsingNHSL];
+        _alertMode = @"Norristown High Speed Line";
     }
     else
         return;  // travelMode needs to be a recognized type otherwise nothing is going to work
@@ -380,6 +405,8 @@
 
     [super viewWillDisappear:animated];
     
+    [_jsonQueue cancelAllOperations];
+    
     NSArray *cellArray = [self.tableView visibleCells];
     
     for (id cell in cellArray)
@@ -391,51 +418,9 @@
         }
     }
     
-    
-//    NSLog(@"BSRVC -(void) viewWillDisappear Start");
-    
-    //    if ( !_segueInAction )
-    //        [self animatedBarToTheLeft:YES];
-    //    else
-    //        [self animatedBarToTheLeft:NO];
-    
-//    NSLog(@"BSRVC -(void) viewWillDisappear Finished");
-    
 }
 
-//-(void) viewDidDisappear:(BOOL)animated
-//{
-//#if FUNCTION_NAMES_ON
-//    NSLog(@"RSVC - viewDidDisappear: %d", animated);
-//#endif
-//
-//}
 
-
-//- (void)viewDidUnload
-//{
-// 
-//#if FUNCTION_NAMES_ON
-//    NSLog(@"RSVC - viewDidUnload");
-//#endif
-//
-//    
-////    NSLog(@"BSRVC -(void) viewDidUnload");
-//    
-//    //    [sorterBar removeFromSuperview];
-//    //    sorterBar = nil;
-//    
-////    [self setNavbarSearchButton:nil];
-////    [self setTravelMode:nil];
-////    
-////    [self setTableView:nil];
-////    [self setSegmentBusSorter:nil];
-//    
-//    [super viewDidUnload];
-//    // Release any retained subviews of the main view.
-//    // e.g. self.myOutlet = nil;
-//    
-//}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -822,8 +807,9 @@
                     
                     if ( isBus )
                     {
-                        [alertView setFrame:CGRectMake(alertView.frame.origin.x - 10, alertView.frame.origin.y, 20, 15)];
-                        [alertView setContentMode: UIViewContentModeScaleAspectFit];
+//                        [alertView setFrame:CGRectMake(alertView.frame.origin.x - 10, alertView.frame.origin.y, 20, 15)];
+//                        [alertView setContentMode: UIViewContentModeScaleAspectFit];
+                        [alertView hasSideIndex:YES];
                         //                        [alertView hasSideIndex:YES];
                     }
 
@@ -1855,6 +1841,219 @@
 -(void) dropDownMenuPressed:(id) sender
 {
     NSLog(@"RSVC - Alert Button Pressed!");
+}
+
+
+#pragma mark - Fetching Alerts
+-(void) getGenericAlertDetails
+{
+    
+    
+    // Check for Internet connection
+    Reachability *network = [Reachability reachabilityForInternetConnection];
+    if ( ![network isReachable] )
+        return;  // Don't bother continuing if no internet connection is available
+    
+    
+    if ( _stillWaitingOnAlertRequest )  // Avoid asking the server for data if it hasn't returned anything from the previous request
+        return;
+    else
+        _stillWaitingOnAlertRequest = YES;
+    
+    
+
+    NSString *stringURL = @"http://www3.septa.org/beta/Alerts/get_alert_data.php?req1=generic";
+    
+    NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"RSVC - getGenericAlertDetails -- api url: %@", webStringURL);
+    
+    _alertMainOp = [[NSBlockOperation alloc] init];
+    
+    __weak NSBlockOperation *weakOp = _alertMainOp;
+    [weakOp addExecutionBlock:^{
+        
+        NSData *alertData = [NSData dataWithContentsOfURL:[NSURL URLWithString:webStringURL] ];
+        
+        if ( ![weakOp isCancelled] )
+        {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [self processAlertData:alertData];
+            }];
+        }
+        else
+        {
+            NSLog(@"NTAVC - getAlertsForLines: _jsonOp cancelled");
+        }
+        
+    }];
+    
+    [_jsonQueue addOperation: _alertMainOp];
+    
+}
+
+
+-(void) getMainAlerts
+{
+    
+    
+    // Check for Internet connection
+    Reachability *network = [Reachability reachabilityForInternetConnection];
+    if ( ![network isReachable] )
+        return;  // Don't bother continuing if no internet connection is available
+    
+    
+    if ( _stillWaitingOnAlertRequest )  // Avoid asking the server for data if it hasn't returned anything from the previous request
+        return;
+    else
+        _stillWaitingOnAlertRequest = YES;
+    
+    
+    //    [alertLineDict setObject:@"rr_route_cyn" forKey:@"Cynwyd"];
+    //    [alertLineDict setObject:[NSArray arrayWithObjects:@"rr_route_gc",@"rr_route_landdoy", nil] forKey:@"Lansdale/Doylestown"];
+    
+    
+    NSString* stringURL = @"http://www3.septa.org/beta/Alerts/";
+    
+    NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"RSVC - getAlerts -- api url: %@", webStringURL);
+    
+    _alertMainOp = [[NSBlockOperation alloc] init];
+    
+    __weak NSBlockOperation *weakOp = _alertMainOp;
+    [weakOp addExecutionBlock:^{
+        
+        NSData *alertData = [NSData dataWithContentsOfURL:[NSURL URLWithString:webStringURL] ];
+        
+        if ( ![weakOp isCancelled] )
+        {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [self processAlertData:alertData];
+            }];
+        }
+        else
+        {
+            NSLog(@"NTAVC - getAlertsForLines: _jsonOp cancelled");
+        }
+        
+    }];
+    
+    [_jsonQueue addOperation: _alertMainOp];
+    
+    
+}
+
+
+
+-(void) processAlertData:(NSData*) returnedData
+{
+    
+    _stillWaitingOnAlertRequest = NO;
+    
+    
+    if ( returnedData == nil )  // If we didn't even receive data, try again in another JSON_REFRESH_RATE seconds
+    {
+//        NSLog(@"NTAVC - processAlertData - kicking off another Alert request - 1");
+//        [self kickOffAnotherJSONRequest];
+        return;
+    }
+    
+    
+    NSMutableArray *myData;
+    myData = [[NSMutableArray alloc] init];
+    
+    
+    // This method is called once the realtime positioning data has been returned via the API is stored in data
+    NSError *error;
+    id json = [NSJSONSerialization JSONObjectWithData: returnedData options:kNilOptions error:&error];
+    
+    
+    if ( json == nil || error != nil )  // Something bad happened, so just return
+    {
+//        NSLog(@"NTAVC - processJSON - kicking off another Alert request - 2");
+//        [self kickOffAnotherJSONRequest];  // And before we return, let's try again in JSON_REFRESH_RATE seconds
+        return;
+    }
+    
+    
+    //    NSMutableDictionary *jsonTest = [[NSMutableDictionary alloc] init];
+    
+    if ( /* DISABLES CODE */ (1) )  // Set to 1 when testing, 0 when um... the opposite.
+    {
+        NSMutableArray *jsonTest = [[NSMutableArray alloc] init];
+        
+        NSMutableDictionary *route = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"generic",@"route_id",@"Generic",@"route_name",@"RRD: Warminster Train #4331 is canceled from Warmisnter to Glenside. Service will begin at Glenside to depart the scheduled time of 9:08AM",@"current_message", nil];
+        
+        [jsonTest addObject: route];
+        json = jsonTest;
+        
+    }
+    
+
+    for (NSDictionary *data in json)
+    {
+        
+        if ( [_alertMainOp isCancelled] )
+            return;
+        
+        SystemStatusObject *ssObj = [[SystemStatusObject alloc] init];
+        
+        if ( [[data objectForKey:@"mode"] isEqualToString:_alertMode] )
+        {
+        
+            [ssObj setRoute_id: [data objectForKey:@"route_id"] ];
+            [ssObj setRoute_name: [data objectForKey:@"route_name"] ];
+            
+            [ssObj setMode: [data objectForKey:@"mode"] ];
+            [ssObj setIsadvisory: [data objectForKey:@"isadvisory"] ];
+            
+            [ssObj setIsalert: [data objectForKey:@"isalert"] ];
+            [ssObj setIsdetour: [data objectForKey:@"isdetour"] ];
+            
+            [ssObj setIssuspend:[data objectForKey:@"issuppend"] ];
+            
+            [_systemStatusArray addObject: ssObj];
+            
+//            [_routeData addObject:_systemStatusArray toSection:kDisplayedRouteDataAlerts];
+//            [_routeData addObject:<#(RouteData *)#> toSection:<#(DisplayedRouteDataSections)#>]
+            
+            
+        }
+        
+    }
+    
+    [self.tableView reloadData];
+    
+    //    [self.tableView beginUpdates];
+    
+//    if ( [_systemStatusArray count] == 0 )  // If the data is empty, remove the Alerts section
+//    {
+//        [_tableData removeSectionWithTitle:@"Alerts"];
+//    }
+//    else if ( [_tableData indexForSectionTitle:@"Alerts"] == NSNotFound )  // If Alerts is not found in _tableData, add it.
+//    {
+//        [_tableData addSectionWithTitle:@"Alerts"];
+//        [_tableData setTag:kNextToArriveSectionAlerts forTitle:@"Alerts"];
+//        [_tableData addArray:myData forTitle:@"Alerts"];
+//        [_tableData sortByTags];
+//        
+//        //        [_tableData moveSection:[_tableData indexForSectionTitle:@"Data"] afterSection:[_tableData indexForSectionTitle:@"Alerts"] ];
+//    }
+//    else  // Otherwise, just update the Alerts section with the new data
+//    {
+//        [_tableData clearSectionWithTitle:@"Alerts"];
+//        [_tableData replaceArrayWith: myData forTitle:@"Alerts"];
+//    }
+//    
+//    
+//    [self.tableView reloadData];
+    
+    
+    //    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:[_tableData indexForSectionTitle:@"Alerts"] ] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    //    [self.tableView endUpdates];
+    
+    //    NSLog(@"JSON: %@", json);
+    
 }
 
 

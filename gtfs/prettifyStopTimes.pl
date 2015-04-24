@@ -181,7 +181,7 @@ open TRIPS, $tripsFile or die "Could not open $tripsFile, error: $!\n\n";
 $headersFromFile = <TRIPS>;
 s/,[ ]+/,/g;
 
-@headersWeCareAbout  = ("route_id","service_id", "trip_id","direction_id","route_id");
+@headersWeCareAbout  = ("route_id","service_id", "trip_id","direction_id","route_id","trip_headsign");
 @headerArrayFromFile = split(/,/, $headersFromFile);
 $columns = {};
 
@@ -195,7 +195,7 @@ while (<TRIPS>)
     $trip_id =~ s/^\s+//;
     $trip_id =~ s/\s+$//;
     
-    $trip_ids{ trim($details[$columns->{trip_id}]) } = { "service_id" => $details[ $columns->{service_id}], "direction_id" => trim($details[ $columns->{direction_id}]) , "route_id" => $details[ $columns->{route_id}] };
+    $trip_ids{ trim($details[$columns->{trip_id}]) } = { "service_id" => $details[ $columns->{service_id}], "direction_id" => trim($details[ $columns->{direction_id}]) , "route_id" => $details[ $columns->{route_id}], "trip_headsign" => $details[ $columns->{trip_headsign}] };
 }
 
 close TRIPS;
@@ -227,6 +227,7 @@ returnColumnsWeCareAbout(\@headersWeCareAbout, \@headerArrayFromFile, $columns);
 
 my $maxTripLen = 0;
 my $maxStopLen = 0;
+my $maxHeadLen = 8;
 
 while (<TIMES>)
 {
@@ -268,7 +269,8 @@ while (<TIMES>)
         
         my $service_id = $trip_ids{$trip}->{service_id};
         my $dir_id     = $trip_ids{$trip}->{direction_id};
-        
+        my $head       = $trip_ids{$trip}->{trip_headsign};
+
         $dir_id =~ s/^\s*//;
         $dir_id =~ s/\s*$//;
         
@@ -282,7 +284,7 @@ while (<TIMES>)
 #        $string = $details[0] . " \t" . $details[1] . "\t" . $details[2] . "\t" . $details[3] . "\t " . $service_id . "\t " . $dir_id . "\t" . $route_id . "\t" . $details[4];
         
         my $hash_ref;
-        $hash_ref = { trip_id => $trip, arrival_time => $arr, departure_time => $dep, stop_sequence => $seq, service_id => $service_id, direction_id => $dir_id, route_id => $route_id, stop_name => $stopNameId, zone_id => $zone_id };
+        $hash_ref = { trip_id => $trip, arrival_time => $arr, departure_time => $dep, stop_sequence => $seq, service_id => $service_id, direction_id => $dir_id, route_id => $route_id, stop_name => $stopNameId, zone_id => $zone_id, trip_headsign => $head };
         
         if ( length($trip) > $maxTripLen )
         {
@@ -292,6 +294,11 @@ while (<TIMES>)
         if ( length($stopNameId) > $maxStopLen )
         {
             $maxStopLen = length($stopNameId);
+        }
+        
+        if ( length($head) > $maxHeadLen )
+        {
+            $maxHeadLen = length($head);
         }
         
         push(@array, $hash_ref);
@@ -363,7 +370,7 @@ my $tripLength = $maxTripLen + 1;
 
 
 my $padding = 3;
-my @headerTitles = ("TRIP_ID", "ARRIVAL ", "DEPART  ", "SEQ", "DAY", "DIR", "ROUTE", "ZONE", "LOCATION (stop_id)");
+my @headerTitles = ("TRIP_ID", "ARRIVAL ", "DEPART  ", "SEQ", "DAY", "DIR", "ROUTE", "ZONE", "HEADSIGN", "LOCATION (stop_id)");
 
 foreach my $string (@sorted)
 {
@@ -383,6 +390,10 @@ foreach my $string (@sorted)
             if ( $header eq "TRIP_ID" )
             {
                 $format = "%-" . ($tripLength + $padding) . "s";
+            }
+            elsif ( $header eq 'HEADSIGN' )
+            {
+                $format = '%-' . ($maxHeadLen + $padding) . 's';
             }
             else
             {
@@ -411,6 +422,11 @@ foreach my $string (@sorted)
                 $format = "%-" . ($maxStopLen + $padding) . "s";
                 $text = sprintf( $format, "-" x $maxStopLen );
             }
+            elsif ( $header eq "HEADSIGN" )
+            {
+                $format = "%-" . ($maxHeadLen + $padding) . "s";
+                $text = sprintf( $format, "-" x $maxHeadLen );
+            }
             else
             {
                 $format = "%-" . (length($header) + $padding) . "s";
@@ -432,7 +448,7 @@ foreach my $string (@sorted)
 #    print $string->{trip_id} . " \t" . $string->{arrival_time} . " \t" . $string->{departure_time} . " \t" . $string->{stop_sequence} . " \t" . $string->{service_id} . " \t" . $string->{direction_id} . " \t" . $string->{route_id} . " \t" . $string->{stop_name};
     
     
-    my @keyValues = ("trip_id", "arrival_time", "departure_time", "stop_sequence", "service_id", "direction_id", "route_id", "zone_id", "stop_name");
+    my @keyValues = ("trip_id", "arrival_time", "departure_time", "stop_sequence", "service_id", "direction_id", "route_id", "zone_id", "trip_headsign", "stop_name");
     my $format;
     $text = "";
     
@@ -444,6 +460,10 @@ foreach my $string (@sorted)
         {
             $format = "%-" . ($tripLength + $padding) . "s";
             $count++;
+        }
+        elsif ( $key eq "trip_headsign" )
+        {
+            $format = '%-' . ($maxHeadLen + $padding) . 's';
         }
         else
         {

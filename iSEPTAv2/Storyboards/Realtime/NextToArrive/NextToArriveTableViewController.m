@@ -2128,7 +2128,7 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     
 //    NSMutableDictionary *jsonTest = [[NSMutableDictionary alloc] init];
     
-    if ( 0 )  // Set to 1 when testing, 0 when um... the opposite.
+    if ( /* DISABLES CODE */ (0) )  // Set to 1 when testing, 0 when um... the opposite.
     {
         NSMutableArray *jsonTest = [[NSMutableArray alloc] init];
         
@@ -2156,9 +2156,12 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
 
         SystemAlertObject *saObj = [[SystemAlertObject alloc] init];
         
+        NSString *cMessage = [(NSString*)[data objectForKey:@"current_message"] stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@""];
+        
         [saObj setRoute_id: [data objectForKey:@"route_id"] ];
         [saObj setRoute_name: [data objectForKey:@"route_name"] ];
-        [saObj setCurrent_message: [data objectForKey:@"current_message"] ];
+        [saObj setCurrent_message: cMessage];
+//        [saObj setCurrent_message: [data objectForKey:@"current_message"] ];
 
 //        if ( [saObj.route_name isEqualToString:@"Generic"] )  // Generic requires a specific check
 //            [saObj setCurrent_message:@"RRD: Warminster Train #4331 is canceled from Warmisnter to Glenside. Service will begin at Glenside to depart the scheduled time of 9:08AM"];  // Test
