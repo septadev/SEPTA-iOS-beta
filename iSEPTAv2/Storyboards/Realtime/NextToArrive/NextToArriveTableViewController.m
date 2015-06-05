@@ -1945,7 +1945,7 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     NSString *lineStr = [[lineDict allKeys] componentsJoinedByString:@","];
     
     
-    NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/beta/Alerts/get_alert_data.php?route_id=%@", lineStr];
+    NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/api/Alerts/get_alert_data.php?route_id=%@", lineStr];
     
     NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"NTAVC - getAlertsForLines -- api url: %@", webStringURL);

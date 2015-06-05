@@ -807,15 +807,12 @@
                     
                     if ( isBus )
                     {
-//                        [alertView setFrame:CGRectMake(alertView.frame.origin.x - 10, alertView.frame.origin.y, 20, 15)];
-//                        [alertView setContentMode: UIViewContentModeScaleAspectFit];
                         [alertView hasSideIndex:YES];
-                        //                        [alertView hasSideIndex:YES];
                     }
 
-                    [alertView addAlert:kTableCellAlertsImageAlerts];
-                    [alertView addAlert:kTableCellAlertsImageDetours];
-                    [alertView setHidden:NO];
+//                    [alertView addAlert:kTableCellAlertsImageAlerts];
+//                    [alertView addAlert:kTableCellAlertsImageDetours];
+//                    [alertView setHidden:NO];
 
                 }
                 else if ( indexPath.row == 1 )
@@ -828,14 +825,13 @@
                     if ( isBus )
                     {
                         [alertView hasSideIndex:YES];
-//                        [alertView setFrame:CGRectMake(alertView.frame.origin.x - 10, alertView.frame.origin.y, 10, 7.5f)];
-//                        [alertView.imageView setFrame:CGRectMake(alertView.frame.origin.x - 10, alertView.frame.origin.y, 10, 7.5f)];
                     }
                     
-                    [alertView addAlert:kTableCellAlertsImageSuspend];
-//                    [alertView setContentMode:UIViewContentModeScaleAspectFit];
-//                    [alertView.imageView setContentMode: UIViewContentModeScaleAspectFit];
-                    [alertView setHidden:NO];
+//                    [alertView addAlert:kTableCellAlertsImageSuspend];
+//                    [alertView setHidden:NO];
+
+                    //                    [alertView setContentMode:UIViewContentModeScaleAspectFit];
+                    //                    [alertView.imageView setContentMode: UIViewContentModeScaleAspectFit];
 
 
                 }
