@@ -306,7 +306,8 @@
     
     [self checkIfInDarkTerritory];
     [self loadTripsInTheBackground];
-//    [self getAdvisories];
+    
+    [self getAdvisories];
     
     
 }
@@ -3412,7 +3413,7 @@
         return;  // Nothing to do, just return
     }
     
-    [self getAdvisories];
+//    [self getAdvisories];
     
     if ( [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSL"] || [self.travelMode isEqualToString:@"NHSL"] || [self.travelMode isEqualToString:@"Bus"] )  // Bus is only temporary; I'll add that in later.
     {

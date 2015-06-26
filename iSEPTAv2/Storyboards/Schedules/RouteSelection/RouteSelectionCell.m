@@ -25,6 +25,14 @@
     return self;
 }
 
+- (IBAction)alertTapped:(id)sender
+{
+
+    if ( [self.delegate respondsToSelector:@selector(alertTapped)] )
+        [[self delegate] alertTapped];
+    
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
@@ -130,5 +138,7 @@
 
 
 }
+
+
 
 @end

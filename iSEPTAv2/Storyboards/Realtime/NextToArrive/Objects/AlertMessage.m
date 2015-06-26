@@ -18,18 +18,21 @@
 -(void) updateAttrText
 {
     
-    
+    // Check if message was "RRD: Trains experencing", vs.  "Bus experiencing"
     NSRange endRange = [self.text rangeOfString:@":"];
     
     NSString *title = @"";
     NSString *message  = @"";
     
-    if (endRange.length != NSNotFound )
-    {
+    if (endRange.location != NSNotFound && endRange.location < 5)
+    {  // Highlight everything up to the ':' and hope the alert is never "Things not to bold: this message, things already bolded, your momma"
         title = [self.text substringToIndex:endRange.location+1];
         message = [self.text substringFromIndex:endRange.location+2];
     }
-    
+    else
+    {
+        message = self.text;
+    }
     
     UIFont *boldFont    = [UIFont fontWithName:@"TrebuchetMS-Bold" size:14.0];
     UIFont *defaultFont = [UIFont fontWithName:@"Trebuchet MS"      size:14.0];
@@ -39,14 +42,15 @@
     //    [paraStyle setLineHeightMultiple:0.85f];
     
     //    NSDictionary *titleDict = [NSDictionary dictionaryWithObject: boldFont forKey:NSFontAttributeName];
-    NSDictionary *titleDict = [NSDictionary dictionaryWithObjectsAndKeys:boldFont, NSFontAttributeName, paraStyle, NSParagraphStyleAttributeName, nil];
     
+    // Bold the title, if ony exists.
+    NSDictionary *titleDict = [NSDictionary dictionaryWithObjectsAndKeys:boldFont, NSFontAttributeName, paraStyle, NSParagraphStyleAttributeName, nil];
     NSMutableAttributedString *titleAttrString = [[NSMutableAttributedString alloc] initWithString:title attributes: titleDict];
     
-    
+    //
     NSDictionary *textDict = [NSDictionary dictionaryWithObject:defaultFont forKey:NSFontAttributeName];
     NSMutableAttributedString *textAttrString = [[NSMutableAttributedString alloc]initWithString: message attributes:textDict];
-    [textAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:(NSMakeRange(0, 15))];
+    [textAttrString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:(NSMakeRange(0, endRange.length))];
     
     [titleAttrString appendAttributedString:textAttrString];
     

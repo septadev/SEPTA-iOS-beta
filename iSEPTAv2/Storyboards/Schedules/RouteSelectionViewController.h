@@ -21,7 +21,7 @@
 
 
 #import "ItineraryViewController.h"
-
+#import "NextToArriveAlerts.h"
 
 // --==  Objects  ==--
 #import "SystemStatusObject.h"
@@ -32,6 +32,8 @@
 #import "CustomFlatBarButton.h"
 #import "LineHeaderView.h"
 #import "TableCellAlertsView.h"
+
+#import "AlertMessage.h"
 // --==  Helper Classes  ==--
 
 
@@ -47,7 +49,7 @@ enum
 } QueryTypeUsed;
 
 
-@interface RouteSelectionViewController : UIViewController
+@interface RouteSelectionViewController : UIViewController <RouteSelectionCellProtocol>
 {
     NSMutableArray *unfilteredList;
     NSMutableArray *filteredList;
@@ -68,5 +70,7 @@ enum
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *navbarSearchButton;
 
 @property (nonatomic, strong) NSString *travelMode;
+
+-(CAShapeLayer*) formatCell:(UITableViewCell*) cell forIndexPath:(NSIndexPath*) indexPath;
 
 @end

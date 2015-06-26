@@ -89,6 +89,8 @@ sub mainLoop
     populateStopIDRouteLookup();  # Used for Find Nearest Route
     populateGlensideCombined();
     repairBSOMFOArrivalTime();  # Fix issue where BSO and MFO have times over 2400.  This makes sense to service planning, but not in the context of the app
+    
+    
 #    removeBadMFLStops();
     combineMFLStops();
     removeEmployeeOnlyStops();
@@ -312,17 +314,17 @@ sub populateGTFSTables
         
             my $service_id = trim($serviceArr[ $columns->{service_id} ]);
             
-            my $monday = $serviceArr[ $columns->{monday} ];
-            my $tuesday = $serviceArr[ $columns->{tuesday} ];
+            my $monday    = $serviceArr[ $columns->{monday} ];
+            my $tuesday   = $serviceArr[ $columns->{tuesday} ];
             my $wednesday = $serviceArr[ $columns->{wednesday} ];
-            my $thursday = $serviceArr[ $columns->{thursday} ];
+            my $thursday  = $serviceArr[ $columns->{thursday} ];
             
-            my $friday   = $serviceArr[ $columns->{friday} ];
-            my $saturday = $serviceArr[ $columns->{saturday} ];
-            my $sunday   = $serviceArr[ $columns->{sunday} ];
+            my $friday    = $serviceArr[ $columns->{friday} ];
+            my $saturday  = $serviceArr[ $columns->{saturday} ];
+            my $sunday    = $serviceArr[ $columns->{sunday} ];
             
-            my $start    = $serviceArr[ $columns->{start_date} ];
-            my $end      = trim($serviceArr[ $columns->{end_date} ]);
+            my $start     = $serviceArr[ $columns->{start_date} ];
+            my $end       = trim($serviceArr[ $columns->{end_date} ]);
 #            $serviceConverter{ $service_id } = $sunday*(2**6) + $monday*(2**5) + $tuesday*(2**4) + $wednesday*(2**3) + $thursday*(2**2) + $friday*2 + $saturday;
             
             $serviceDays{ $service_id } = $sunday*(2**6) + $monday*(2**5) + $tuesday*(2**4) + $wednesday*(2**3) + $thursday*(2**2) + $friday*2 + $saturday;
@@ -547,6 +549,21 @@ sub populateGTFSTables
 
         # GC Glenside Combined Glenside Combined  SEPTA 2 91456C FFFFFF http://www.septa.org/schedules/rail/index.html
         
+        my $rawStopIDs = "32173,2456;32174,2455;32175,1392;32170,428;32176,21532;32177,2453;32178,2452;32179,2451;32180,2450;32181,2449;32171,2458;32182,2448;32183,2447;32206,31790;32144,21531;32172,2457;32134,152;32151,142;32163,60;32199,1923;32200,30519;32159,217;32202,1908;32167,2460;32186,1892;32197,1925;32148,1277;32145,2440;32160,2464;32141,1281;32191,1931;32187,1935;32138,1284;32152,140;32161,838;32146,1278;32158,61;32195,1927;32147,20966;32168,353;32189,1895;32198,1924;32188,1934;32153,1274;32165,2462;32155,1272;32139,1283;32190,1932;32184,2446;32185,30520;32150,2439;32156,82;32135,20967;32207,1917;32203,1919;32142,1280;32192,1930;32196,1902;32136,1286;32164,797;32143,1279;32169,2459;32194,1900;32149,1276;32137,1285;32162,2463;32204,1918;32193,1929;32140,1282;32201,1921;32154,1273;32166,2461";
+        
+        # 'a,b;' In stops.txt, delete all lines that match a.  In stop_times.txt, replace every instance of a with b.
+        # This handles the cases where stops like 13th Station Station have two stop ids, one in each direction.  Reverse lookups and
+        # stored favorites/recents will be affected otherwise.
+        my %replaceStopHash = {};
+        
+        foreach my $stopPair (split(';',$rawStopIDs) )
+        {
+            
+            my @stopArr = split(',', $stopPair);
+            $replaceStopHash{$stopArr[0]} = $stopArr[1];
+            
+        }
+        
         my @valueArr;
         while (<FILE>)
         {
@@ -572,6 +589,8 @@ sub populateGTFSTables
                 {
                     push(@arr,"0");
                 }
+                
+                next if ( $replaceStopHash{ $arr[$columns->{stop_id}] } );
                 
             }
             elsif ( $filename =~ /trips.txt/ )
@@ -627,10 +646,18 @@ sub populateGTFSTables
                 
                 # --==  trip_id processing  ==--
                 my $tripID = $arr[ $columns->{trip_id} ];
-                if ( $tripID =~ /(_\w+.*)/ )
+                if ( $tripID =~ /(_\w+.*)/ )  # Remove the first 3 letters from the trip
                 {
                     $tripID = $1;
                     $arr[ $columns->{trip_id} ] = $tripID;
+                }
+                
+                # Replace stop_ids
+                if ( $replaceStopHash{ $arr[$columns->{stop_id}] } )
+                {
+                    
+                    $arr[$columns->{stop_id}] =  $replaceStopHash{ $arr[$columns->{stop_id}] };
+                    
                 }
                 
 
@@ -1441,19 +1468,39 @@ sub populateStopTimesHash
     
     returnColumnsWeCareAbout(\@headersWeCareAbout, \@headerArrayFromFile, $columns);
     
+    
+    my $rawStopIDs = "32173,2456;32174,2455;32175,1392;32170,428;32176,21532;32177,2453;32178,2452;32179,2451;32180,2450;32181,2449;32171,2458;32182,2448;32183,2447;32206,31790;32144,21531;32172,2457;32134,152;32151,142;32163,60;32199,1923;32200,30519;32159,217;32202,1908;32167,2460;32186,1892;32197,1925;32148,1277;32145,2440;32160,2464;32141,1281;32191,1931;32187,1935;32138,1284;32152,140;32161,838;32146,1278;32158,61;32195,1927;32147,20966;32168,353;32189,1895;32198,1924;32188,1934;32153,1274;32165,2462;32155,1272;32139,1283;32190,1932;32184,2446;32185,30520;32150,2439;32156,82;32135,20967;32207,1917;32203,1919;32142,1280;32192,1930;32196,1902;32136,1286;32164,797;32143,1279;32169,2459;32194,1900;32149,1276;32137,1285;32162,2463;32204,1918;32193,1929;32140,1282;32201,1921;32154,1273;32166,2461";
+    
+    # 'a,b;' In stops.txt, delete all lines that match a.  In stop_times.txt, replace every instance of a with b.
+    # This handles the cases where stops like 13th Station Station have two stop ids, one in each direction.  Reverse lookups and
+    # stored favorites/recents will be affected otherwise.
+    my %replaceStopHash = {};
+    
+    foreach my $stopPair (split(';',$rawStopIDs) )
+    {
+        
+        my @stopArr = split(',', $stopPair);
+        $replaceStopHash{$stopArr[0]} = $stopArr[1];
+        
+    }
+    
+    
     my $count = 0;
     while (<STOPTIMES>)
     {
         my @line = split(/,/);
-        
+    
         my $tripID   = $line[ $columns->{trip_id} ];
         if ( !$tripsHash{$tripID} )  # If tripsHash doesn't contain information for this tripID, skip to the next line
         {
             next;
         }
         
-        
         my $stopID   = $line[ $columns->{stop_id}   ];
+        if ( $replaceStopHash{ $line[$columns->{stop_id}] } )
+        {
+            $stopID = $replaceStopHash{ $line[$columns->{stop_id}] };
+        }
         
         my $stopName = $stopsHash{$stopID}->{stop_name};
         my $stopLat  = $stopsHash{$stopID}->{stop_lat};
@@ -1608,9 +1655,27 @@ sub populateStopsHash
     
     returnColumnsWeCareAbout(\@headersWeCareAbout, \@headerArrayFromFile, $columns);
     
+    my $rawStopIDs = "32173,2456;32174,2455;32175,1392;32170,428;32176,21532;32177,2453;32178,2452;32179,2451;32180,2450;32181,2449;32171,2458;32182,2448;32183,2447;32206,31790;32144,21531;32172,2457;32134,152;32151,142;32163,60;32199,1923;32200,30519;32159,217;32202,1908;32167,2460;32186,1892;32197,1925;32148,1277;32145,2440;32160,2464;32141,1281;32191,1931;32187,1935;32138,1284;32152,140;32161,838;32146,1278;32158,61;32195,1927;32147,20966;32168,353;32189,1895;32198,1924;32188,1934;32153,1274;32165,2462;32155,1272;32139,1283;32190,1932;32184,2446;32185,30520;32150,2439;32156,82;32135,20967;32207,1917;32203,1919;32142,1280;32192,1930;32196,1902;32136,1286;32164,797;32143,1279;32169,2459;32194,1900;32149,1276;32137,1285;32162,2463;32204,1918;32193,1929;32140,1282;32201,1921;32154,1273;32166,2461";
+    
+    # 'a,b;' In stops.txt, delete all lines that match a.  In stop_times.txt, replace every instance of a with b.
+    # This handles the cases where stops like 13th Station Station have two stop ids, one in each direction.  Reverse lookups and
+    # stored favorites/recents will be affected otherwise.
+    my %replaceStopHash = {};
+    
+    foreach my $stopPair (split(';',$rawStopIDs) )
+    {
+        
+        my @stopArr = split(',', $stopPair);
+        $replaceStopHash{$stopArr[0]} = $stopArr[1];
+        
+    }
+    
+    
     while (<STOPS>)
     {
         my @line = split(/,/);
+        
+        next if ( $replaceStopHash{ $line[$columns->{stop_id}] } );
         
         my $stopID   = $line[ $columns->{stop_id} ];
         my $stopName = $line[ $columns->{stop_name} ];
@@ -1786,6 +1851,10 @@ sub repairBSOMFOArrivalTime
     
     
 }
+
+
+
+
 
 sub combineMFLStops
 {

@@ -61,6 +61,13 @@
 }
 
 
+-(NSInteger) numOfNonCriticalAlerts
+{
+    return ([isalert    isEqualToString:@"N"]  ? 0 : 1 ) +
+    ([isadvisory isEqualToString:@"No"] ? 0 : 1 ) +
+    ([isdetour   isEqualToString:@"Y"]  ? 1 : 0 );
+}
+
 
 -(NSInteger) numOfAlerts
 {

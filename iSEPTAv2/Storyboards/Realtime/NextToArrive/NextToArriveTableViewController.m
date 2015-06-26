@@ -635,7 +635,6 @@
     }
     else if ( [[_tableData titleForSection:section] isEqualToString:@"Alerts"] )
     {
-        
         [headerLabel setText:@"Alerts"];
         [headerLabel setTextAlignment:NSTextAlignmentCenter];
         [headerView setBackgroundColor: [UIColor colorWithRed:181.0/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:0.8f]];
@@ -1943,9 +1942,11 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     }
     
     NSString *lineStr = [[lineDict allKeys] componentsJoinedByString:@","];
-    
-    
     NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/api/Alerts/get_alert_data.php?route_id=%@", lineStr];
+    
+    // Test code: allows the enabling and disabling of Alerts
+//    NSString *stringURL = @"http://www3.septa.org/beta/agga/Alerts/gga.php";
+
     
     NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"NTAVC - getAlertsForLines -- api url: %@", webStringURL);
@@ -2141,9 +2142,13 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
         [jsonTest addObject: route];
 
         route = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"rr_route_gc",@"route_id",@"Glenside Combined",@"route_name",@"Glenside will be combined with Anti-Glenside and used to power the entire Eastern coast.  Please be advised that any anomalies should be avoided and promptly reported to the Department of Time and Space (DTS).",@"current_message", nil];
-
-        [jsonTest addObject: route];
         
+        [jsonTest addObject: route];
+
+        route = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"rr_route_pao",@"route_id",@"Paoli",@"route_name",@"Dinosaurs spotted along the Paoli line.  Delays possible.  SEPTA advises passengers not to cover themselves in ketchup, for safety reasons.",@"current_message", nil];
+        
+        [jsonTest addObject: route];
+
         json = jsonTest;
         
     }

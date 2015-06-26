@@ -585,7 +585,15 @@
 //-(void) removeAllObjectsWithIndexPath:(NSIndexPath *)path
 -(void) removeAllObjects
 {
+    NSMutableArray *objectsToRemove = [[NSMutableArray alloc] init];
     for (NSNumber *number in _order)
+    {
+//        DisplayedRouteDataSections section = [number intValue];
+//        [self removeAllObjectsWithSection: section];
+        [objectsToRemove addObject:number];
+    }
+    
+    for (NSNumber *number in objectsToRemove)
     {
         DisplayedRouteDataSections section = [number intValue];
         [self removeAllObjectsWithSection: section];
@@ -720,7 +728,7 @@
 }
 
 #pragma mark - Adding Objects to the Class
--(void) addObject:(RouteData*)object toSection:(DisplayedRouteDataSections)section
+-(void) addObject:(id)object toSection:(DisplayedRouteDataSections)section
 {
     
     NSMutableArray *genericArray = nil;
@@ -728,21 +736,28 @@
     switch ( section )
     {
         case kDisplayedRouteDataFavorites:
-            genericArray = self.favorites;
+            
+            if ( [object isKindOfClass:[RouteData class] ] )  // If object isn't a RouteData class, don't even continue
+                genericArray = self.favorites;
             break;
         case kDisplayedRouteDataRecentlyViewed:
         {
-            genericArray = self.recentlyViewed;
             
-            NSMutableArray *array = [[RouteData returnImportantKeyValues] mutableCopy];
-//            [array removeObject:@"added_date"];
-            
-            if ( [self.favorites containsObject: object withKeys: array ] )
+            if ( [object isKindOfClass:[RouteData class] ] )  // If object isn't a RouteData class, don't even continue
             {
-                NSLog(@"DRD - object is in favorites, update added date");
-                [self addObject:object toSection:kDisplayedRouteDataFavorites];
-                return;
-            }
+                genericArray = self.recentlyViewed;
+                
+                NSMutableArray *array = [[RouteData returnImportantKeyValues] mutableCopy];
+    //            [array removeObject:@"added_date"];
+                
+                if ( [self.favorites containsObject: object withKeys: array ] )
+                {
+                    NSLog(@"DRD - object is in favorites, update added date");
+                    [self addObject:object toSection:kDisplayedRouteDataFavorites];
+                    return;
+                }
+                
+            }  // if ( [object isKindOfClass:[RouteData class] ] )
         }
             break;
             
@@ -761,8 +776,9 @@
     }
     
     if ( genericArray == nil )
-        return;  // If the genericArray is nil, the section parameter was bad.  Otherwise continue on.
+        return;  // If the genericArray is nil, the section parameter was bad or object is not a RouteData class.  Otherwise continue on.
 
+    RouteData *rdObject = (RouteData*)object;
         
     NSMutableArray *keys;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -780,19 +796,19 @@
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject: sortDescrip] ];
   
     Event *event;
-    [object setPreference: section];  // Set preference so the favorites and recently viewed can be easily sorted
-    [object setDatabase_type: _databaseType];
-    [object setAdded_date: [NSDate date] ];
+    [rdObject setPreference: section];  // Set preference so the favorites and recently viewed can be easily sorted
+    [rdObject setDatabase_type: _databaseType];
+    [rdObject setAdded_date: [NSDate date] ];
 
     keys = [[RouteData returnImportantKeyValues] mutableCopy];
 //    [keys removeObject:@"added_date"];  // Date makes it easier to sort but adds an additional layer of complexity.  When comparing objects, we want to exclude the data field
     
     
     fetchedObjects = [_managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    if (![fetchedObjects containsObject:object withKeys: keys ])  // If object is not found in fetchedObjects, we need to add it
+    if (![fetchedObjects containsObject:rdObject withKeys: keys ])  // If object is not found in fetchedObjects, we need to add it
     {
         event = (Event*)[NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:_managedObjectContext];
-        [event setValuesForKeysWithDictionary: [object dictionaryWithValuesForKeys:[RouteData returnAllKeyValues] ] ];
+        [event setValuesForKeysWithDictionary: [rdObject dictionaryWithValuesForKeys:[RouteData returnAllKeyValues] ] ];
      
         
 //        if ( ( section == kDisplayedRouteDataRecentlyViewed ) && ([genericArray count] >= RECENTLY_VIEWED_MAX_DISPLAYED ) ) // Check if we've hit the recentlyViewed display limit
@@ -820,7 +836,7 @@
     {
         
         // One of the routes already in recentlyViewed was selected, move it to the top.
-        NSInteger index = [genericArray indexOfObject:object withKeys: keys];
+        NSInteger index = [genericArray indexOfObject:rdObject withKeys: keys];
         if ( ( index != NSNotFound ) && ( index != 0 ) )  // if index is 0, it's at the top, can't move the event object any higher.
         {
             [[genericArray objectAtIndex:index] setAdded_date:[NSDate date] ];  // Update the event object stored in the array
@@ -1120,20 +1136,20 @@
             
             NSMutableArray *newOrder = [[NSMutableArray alloc] init];
 
-            if ( [_favorites count] )
-                [newOrder addObject:[NSNumber numberWithInt: kDisplayedRouteDataFavorites] ];
-            
-            if ( [_recentlyViewed count] )
-                [newOrder addObject:[NSNumber numberWithInt: kDisplayedRouteDataRecentlyViewed] ];
+        if ( [_alerts count] )
+            [newOrder addObject:[NSNumber numberWithInt: kDisplayedRouteDataAlerts] ];
         
-            if ( [_alerts count] )
-                [newOrder addObject:[NSNumber numberWithInt: kDisplayedRouteDataAlerts] ];
+        if ( [_favorites count] )
+            [newOrder addObject:[NSNumber numberWithInt: kDisplayedRouteDataFavorites] ];
         
-            if ( [_routes count] )
-                [newOrder addObject:[NSNumber numberWithInt: kDisplayedRouteDataRoutes] ];
-            
-            numOfSections = ([_routes count] ? 1 : 0) + ([_alerts count] ? 1 : 0) + ([_favorites count] ? 1 : 0) + ([_recentlyViewed count] ? 1 : 0);
-            [_order setArray: newOrder];
+        if ( [_recentlyViewed count] )
+            [newOrder addObject:[NSNumber numberWithInt: kDisplayedRouteDataRecentlyViewed] ];
+    
+        if ( [_routes count] )
+            [newOrder addObject:[NSNumber numberWithInt: kDisplayedRouteDataRoutes] ];
+        
+        numOfSections = ([_routes count] ? 1 : 0) + ([_alerts count] ? 1 : 0) + ([_favorites count] ? 1 : 0) + ([_recentlyViewed count] ? 1 : 0);
+        [_order setArray: newOrder];
             
 //        }
     }  // if (!_isShowOnlyRoutes)

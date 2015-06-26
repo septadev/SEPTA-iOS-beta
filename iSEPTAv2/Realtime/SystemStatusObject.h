@@ -21,6 +21,7 @@
 
 @property (nonatomic, strong) NSString *last_updated;
 
+-(NSInteger) numOfNonCriticalAlerts;
 -(NSInteger) numOfAlerts;
 
 -(BOOL) isAlert;

@@ -47,11 +47,12 @@
 
     
     // --== For Alerts
-    NSMutableArray *_systemStatusArray;
+//    NSMutableArray *_systemStatusArray;
     NSMutableDictionary *_ssDict;  // Key: GTFS route name, Value: SystemStatusObject
     NSString *_genericAlert;
     
     BOOL _stillWaitingOnAlertRequest;
+    BOOL _stillWaitingOnGenericAlertRequest;
     
     NSOperationQueue *_jsonQueue;
     NSBlockOperation *_alertMainOp;
@@ -100,6 +101,7 @@
 }
 
 
+
 - (void)viewDidLoad
 {
     
@@ -107,6 +109,9 @@
     NSLog(@"RSVC - viewDidLoad");
 #endif
 
+#if DEBUG
+  // Debug code goes here
+#endif
     
     //    NSLog(@"BSVC -(void) viewDidLoad");
     [super viewDidLoad];
@@ -125,7 +130,7 @@
     
     // Register NIBs with Table View
     [self.tableView registerNib:[UINib nibWithNibName:@"UserPreferenceCell" bundle:nil] forCellReuseIdentifier:@"UserPreferenceCell"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"BusRoutesDefaultCell" bundle:nil] forCellReuseIdentifier:@"BusRoutesDefaultCell"];
+//    [self.tableView registerNib:[UINib nibWithNibName:@"BusRoutesDefaultCell" bundle:nil] forCellReuseIdentifier:@"BusRoutesDefaultCell"];
     
     // New Xibs, BusRoutesDefaultCell replacement
     [self.tableView registerNib:[UINib nibWithNibName:@"RouteSelectionCell" bundle:nil] forCellReuseIdentifier:@"RouteSelectionCell"];
@@ -146,7 +151,8 @@
 //    [self.view sendSubviewToBack:backgroundImage];
 
     
-    _systemStatusArray = [[NSMutableArray alloc] init];
+//    _systemStatusArray = [[NSMutableArray alloc] init];
+    _ssDict = [[NSMutableDictionary alloc] init];
     
     NSString *title;
     NSString *backButtonImage = @"";
@@ -199,9 +205,63 @@
     
     [self configureTableView];
 
-    
     [self.searchDisplayController.searchBar setHidden:YES];
+
     [self getUnfilteredBusRoutes];
+    
+    [self getMainAlerts];
+    [self getGenericAlertDetails];
+    
+}
+
+-(void) updateRouteData
+{
+
+    DisplayedRouteData *newData;
+    if ( [[self travelMode] isEqualToString:@"Bus"] )
+    {
+        newData = [[DisplayedRouteData alloc] initWithDatabaseType:kDisplayedRouteDataUsingDBBus];
+        _alertMode = @"Bus";
+        //        [_routeData setDatabaseType:kDisplayedRouteDataUsingDBBus];
+    }
+    else if ( [[self travelMode] isEqualToString:@"Trolley"] )
+    {
+        newData = [[DisplayedRouteData alloc] initWithDatabaseType:kDisplayedRouteDataUsingTrolley];
+        _alertMode = @"Trolley";
+    }
+    else if ( [[self travelMode] isEqualToString:@"Rail"] )
+    {
+        newData = [[DisplayedRouteData alloc] initWithDatabaseType:kDisplayedRouteDataUsingDBRail];
+        _alertMode = @"Regional Rail";
+        //        [_routeData setDatabaseType:kDisplayedRouteDataUsingDBRail];
+    }
+    else if ( [[self travelMode] isEqualToString:@"MFL"] )
+    {
+        newData = [[DisplayedRouteData alloc] initWithDatabaseType:kDisplayedRouteDataUsingMFL];
+        _alertMode = @"Market/ Frankford";
+        //        [_routeData setDatabaseType:kDisplayedRouteDataUsingDBBus];
+        
+    }
+    else if ( [[self travelMode] isEqualToString:@"BSS"] || [travelMode isEqualToString:@"BSL"]  )
+    {
+        newData = [[DisplayedRouteData alloc] initWithDatabaseType:kDisplayedRouteDataUsingBSS];
+        _alertMode = @"Broad Street Line";
+    }
+    else if ( [[self travelMode] isEqualToString:@"NHSL"])
+    {
+        newData = [[DisplayedRouteData alloc] initWithDatabaseType:kDisplayedRouteDataUsingNHSL];
+        _alertMode = @"Norristown High Speed Line";
+    }
+    else
+        return;  // travelMode needs to be a recognized type otherwise nothing is going to work
+    
+    for (NSArray *favorite in newData.favorites)
+    {
+        NSLog(@"%@",favorite);
+    }
+    
+    [_routeData setFavorites     : newData.favorites];
+    [_routeData setRecentlyViewed: newData.recentlyViewed];
     
 }
 
@@ -365,11 +425,26 @@
     float w    = self.view.frame.size.width;
     [titleView updateWidth: w];
     
+    
+    // viewDidLoad
+    
+    
+    // _didJustLoad was put in because these
+    
+    
     if ( !_didJustLoad )
     {
+        
+//        [self updateRouteData];
         [self loadRouteData];
         [self getUnfilteredBusRoutes];
+        
+//        [self getMainAlerts];
+        [self getGenericAlertDetails];
+        
     }
+
+//    [self.tableView reloadData];  // This causes a crash
     
     _didJustLoad = NO;
     
@@ -417,6 +492,12 @@
             [(TableCellAlertsView*)[cell alertView] removeAllAlerts];
         }
     }
+    
+    // Deselect selected row
+    NSIndexPath *selected = [self.tableView indexPathForSelectedRow];
+    if ( selected != nil )
+        [self.tableView deselectRowAtIndexPath:selected animated:YES];
+
     
 }
 
@@ -526,6 +607,38 @@
             }
                 break;
         
+            case kDisplayedRouteDataAlerts:
+            {
+                
+                UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 22)];
+                
+                UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(6, 0, self.view.frame.size.width-10, 22)];  // gga, 4/10/15: add -10 to better center Alerts
+                [headerLabel setFont: [UIFont fontWithName:@"TrebuchetMS-Bold" size:17.0f] ];
+                [headerLabel setTextColor: [UIColor whiteColor] ];
+                [headerLabel setBackgroundColor: [UIColor clearColor] ];
+                
+                [headerView addSubview: headerLabel];
+
+                [headerLabel setText:@"Alerts"];
+                [headerLabel setTextAlignment:NSTextAlignmentCenter];
+                [headerView setBackgroundColor: [UIColor colorWithRed:181.0/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:0.8f]];
+                
+//                float x = 4.0;
+//                float y = 4.0;
+//                CGRect bound = CGRectMake(0, 0, self.view.frame.size.width - 5, 22);
+//                UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect: bound
+//                                                               byRoundingCorners: UIRectCornerBottomRight | UIRectCornerTopRight
+//                                                                     cornerRadii: CGSizeMake(x, y)];
+//                CAShapeLayer *maskLayer = [CAShapeLayer layer];
+//                maskLayer.frame = bound;
+//                maskLayer.path= maskPath.CGPath;
+//                
+//                headerView.layer.mask = maskLayer;
+                
+                return headerView;
+            }
+                break;
+                
             case kDisplayedRouteDataRoutes:
             case kDisplayedRouteDataOther:
             {
@@ -596,6 +709,11 @@
     
     if ( [_routeData sectionForIndexPath: indexPath] == kDisplayedRouteDataRoutes )
         return 38.0f;
+    if ( [_routeData sectionForIndexPath: indexPath] == kDisplayedRouteDataAlerts )
+    {
+        AlertMessage *aMsg = (AlertMessage*)[_routeData objectWithIndexPath:indexPath];
+        return CGRectFromString( aMsg.rect ).size.height+12;
+    }
     else
         return 44.0f;
 }
@@ -654,11 +772,11 @@
 //            NSLog(@"rsCell frame: %@, img: %@", NSStringFromCGRect(rsCell.frame), NSStringFromCGRect(rsCell.imgCell.frame));
             
             // Modify the label width depending on the orientation
-            CGRect labelFrame = rsCell.lblTitle.frame;
-            labelFrame.size.width = self.view.frame.size.width - 36.0f - labelFrame.origin.x;
-            [rsCell.lblTitle setFrame: labelFrame];
-            
-            [rsCell.imgCell setFrame:CGRectMake(rsCell.imgCell.frame.origin.x, rsCell.imgCell.frame.origin.y, self.view.frame.size.width, rsCell.imgCell.frame.size.height)];
+//            CGRect labelFrame = rsCell.lblTitle.frame;
+//            labelFrame.size.width = self.view.frame.size.width - 36.0f - labelFrame.origin.x;
+//            [rsCell.lblTitle setFrame: labelFrame];
+//            
+//            [rsCell.imgCell setFrame:CGRectMake(rsCell.imgCell.frame.origin.x, rsCell.imgCell.frame.origin.y, self.view.frame.size.width, rsCell.imgCell.frame.size.height)];
             
         }
             break;
@@ -701,40 +819,42 @@
     NSLog(@"RSVC - tV:cellForRowAtIndexPath: %@", indexPath);
 #endif
 
-    static NSString *defaultCellID        = @"BusRoutesDefaultCell";
+//    static NSString *defaultCellID        = @"BusRoutesDefaultCell";
     static NSString *userPreferenceCellID = @"UserPreferenceCell";
     static NSString *routeSelectionCellID = @"RouteSelectionCell";
     
+    static NSString *alertCellID          = @"NextToArriveAlertsCell";
     
-    if ( tableView == self.searchDisplayController.searchResultsTableView )
+    
+//    if ( tableView == self.searchDisplayController.searchResultsTableView )
+//    {
+//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:defaultCellID];
+//        if ( cell ==  nil )
+//        {
+//            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:defaultCellID];
+//        }
+//        
+//        //        RouteData *row = [_routeData objectWithIndexPath:indexPath];
+//        //        [[cell textLabel] setText: [row start_stop_name] ];
+//        
+//        NSDictionary *row = [filteredList objectAtIndex:indexPath.row];
+//        [[cell textLabel] setText: [row objectForKey:@"stop_name"]];
+//        return cell;
+//        
+//    }
+//    else
     {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:defaultCellID];
-        if ( cell ==  nil )
-        {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:defaultCellID];
-        }
         
-        //        RouteData *row = [_routeData objectWithIndexPath:indexPath];
-        //        [[cell textLabel] setText: [row start_stop_name] ];
-        
-        NSDictionary *row = [filteredList objectAtIndex:indexPath.row];
-        [[cell textLabel] setText: [row objectForKey:@"stop_name"]];
-        return cell;
-        
-    }
-    else
-    {
         // Configure the cell...
-        
-        BusRoutesDefaultCell *defaultCell;// = [tableView dequeueReusableCellWithIdentifier:defaultCellID];
+//        BusRoutesDefaultCell *defaultCell;// = [tableView dequeueReusableCellWithIdentifier:defaultCellID];
         UserPreferenceCell   *userPrefCell;
-        //NSArray *nib;
         
         RouteSelectionCell *routeSelectionCell;
         
         RouteData *row;
         switch ( (NSInteger)[_routeData sectionForIndexPath:indexPath] )
         {
+            
             case kDisplayedRouteDataFavorites:
             case kDisplayedRouteDataRecentlyViewed:
                 
@@ -744,21 +864,18 @@
                 {
                     userPrefCell = [self.tableView dequeueReusableCellWithIdentifier:userPreferenceCellID forIndexPath:indexPath];
                     
-                    //                    userPrefCell = [[UserPreferenceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:userPreferenceCellID];
+                    //userPrefCell = [[UserPreferenceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:userPreferenceCellID];
                     //nib = [[NSBundle mainBundle] loadNibNamed:@"UserPreferenceCell" owner:self options:nil];
                     //userPrefCell = (UserPreferenceCell*)[nib objectAtIndex:0];
                 }
                 
-                //                userPrefCell = [tableView dequeueReusableCellWithIdentifier:defaultCellID];
                 row = [_routeData objectWithIndexPath: indexPath];
-                
                 //                NSLog(@"row: %@", row);
                 
                 // Populate User Preferecne Cell with data from _routeData
                 [[userPrefCell lblStartStopName]  setText: [row start_stop_name] ];
                 [[userPrefCell lblEndStopName]    setText: [row end_stop_name  ] ];
                 
-
                 
                 if ( [travelMode isEqualToString:@"Rail"] )
                 {
@@ -784,72 +901,182 @@
                 
                 break;
                 
-//            case kDisplayedRouteDataAlerts:
-//                // Insert code here!
+            case kDisplayedRouteDataAlerts:
+                // Insert code here!
+            {
+                NextToArriveAlerts *alertSelectionCell = (NextToArriveAlerts*)[self.tableView dequeueReusableCellWithIdentifier: alertCellID];
+                
+                AlertMessage *aMsg = (AlertMessage*)[_routeData objectWithIndexPath:indexPath];
+                
+                [[alertSelectionCell lblAlertText] setAttributedText: aMsg.attrText ];
+                [alertSelectionCell setSelectionStyle: UITableViewCellSelectionStyleNone];
+                
+                CGRect rect = CGRectFromString(aMsg.rect);
+                CGRect frame = [alertSelectionCell lblAlertText].frame;
+                
+                frame.origin.y = 0.0f + 6.0f;
+                frame.size.height = (rect.size.height);
+                frame.size.width = rect.size.width;
+                
+                [[alertSelectionCell lblAlertText] setFrame: frame];
+                
+                // This is nice to help visualize where the boundaries are.
+                //        [myCell lblAlertText].layer.borderWidth = 1.0f;
+                //        [myCell lblAlertText].layer.borderColor = [UIColor redColor].CGColor;
+                
+                
+//                CAShapeLayer *maskLayer = [self formatCell: alertSelectionCell forIndexPath:indexPath];
+//                ((UITableViewCell*)alertSelectionCell).layer.mask = maskLayer;
 //                
-//                break;
+//                ((UITableViewCell*)alertSelectionCell).layer.borderColor = [[UIColor colorWithRed:0.6 green:0.7 blue:0.2 alpha:1.0] CGColor];
+                
+                return alertSelectionCell;
+            }
+                
+                break;
                 
             case kDisplayedRouteDataRoutes:
             {
                 
+//                NSLog(@"%ld.%ld", indexPath.section, (long)indexPath.row);
                 routeSelectionCell = [self.tableView dequeueReusableCellWithIdentifier:routeSelectionCellID];
+                [routeSelectionCell setDelegate:self];
                 
-                BOOL isBus = NO;
+                RouteData *currentRoute = [_routeData objectWithIndexPath: indexPath];
+
+                BOOL hasIndex = NO;
                 if ( [self.travelMode isEqualToString:@"Bus"] )
-                    isBus = YES;
+                    hasIndex = YES;
                 
-                if ( indexPath.row == 0 )
+                
+//                if ( indexPath.row == 1 )
+                if ( [(SystemStatusObject*)[_ssDict objectForKey: [currentRoute route_short_name] ] numOfAlerts] > 0 )
                 {
-//                    TableCellAlertsView *alertView = [[TableCellAlertsView alloc] init];
-//                    [alertView addAlert:kTableCellAlertsImageAlerts];
+                
                     
-                    TableCellAlertsView *alertView = (TableCellAlertsView*)routeSelectionCell.alertView;
+                    NSInteger indexWidth = 0;
+                    if ( hasIndex )
+                        indexWidth = 20;
                     
-                    if ( isBus )
+                    // system_status_alert.png
+                    // system_status_advisory.png
+                    // system_status_detour.png
+                    
+                    // system_status_suspended.png
+
+                    
+                    // Spacing --> nw + (n-1)p + 2e
+                    // Where n is the number of alert icons to display
+                    // And p is the padding space in
+                    NSInteger padding = 0;
+                    NSInteger width   = 20;
+                    NSInteger endPadding = 0;
+                    NSInteger n = [[_ssDict objectForKey: [currentRoute route_short_name] ] numOfNonCriticalAlerts];
+                    
+                    NSMutableArray *imageArray = [[NSMutableArray alloc] init];
+                    
+                    // Determine which Alerts are active
+                    if ( [[_ssDict objectForKey: [currentRoute route_short_name] ] isSuspend] )  // Suspend trumps all
                     {
-                        [alertView hasSideIndex:YES];
+                        [imageArray addObject:@"system_status_alert.png"];
+                        n = 1;
+                    }
+                    else
+                    {
+                        if ( [[_ssDict objectForKey: [currentRoute route_short_name] ] isAlert] )
+                            [imageArray addObject:@"system_status_alert.png"];
+                        
+                        if ( [[_ssDict objectForKey: [currentRoute route_short_name] ] isDetour] )
+                            [imageArray addObject:@"system_status_detour.png"];
+                        
+                        if ( [[_ssDict objectForKey: [currentRoute route_short_name] ] isAdvisory] )
+                            [imageArray addObject:@"system_status_advisory.png"];
                     }
 
-//                    [alertView addAlert:kTableCellAlertsImageAlerts];
-//                    [alertView addAlert:kTableCellAlertsImageDetours];
-//                    [alertView setHidden:NO];
+                    
+                    // Calculate the widths to position the buttons and images
+                    CGFloat buttonWidth = n * width + ( (n-1) * padding) + (2 * endPadding);
+                    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width - indexWidth;
+                    
+                    
+                    UIImageView *cell  = routeSelectionCell.imgCell;
+                    CGRect btnFrame = CGRectMake(screenWidth - buttonWidth, cell.frame.origin.y+3, buttonWidth, 30.0f);
+                    
+//                    UIButton *alertBtn = [[UIButton alloc] initWithFrame:btnFrame];
+                    UIButton *alertBtn = routeSelectionCell.btnAlert;
+//                    [alertBtn setUserInteractionEnabled:YES];
+                    [alertBtn setFrame: btnFrame];
+                    [alertBtn setHidden:NO];
 
+                
+                    for (NSInteger LCV = 0; LCV < n; LCV++)
+                    {
+                        
+                        UIImageView *image = [[UIImageView alloc] initWithImage: [UIImage imageNamed: [imageArray objectAtIndex:LCV] ] ];
+                        NSInteger x = endPadding + (LCV)*(padding+width);
+                        CGRect bound = CGRectMake(x, 7.5f, 20.0f, 15.0f);
+                        [image setFrame: bound];
+                        
+//                        [image.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+//                        [image.layer setBorderWidth:1.0f];
+                        
+                        [alertBtn addSubview: image];
+                        
+                        if ( LCV == 0 )
+                        {
+                            CGRect lblFrame = [routeSelectionCell.lblTitle frame];
+                            lblFrame.size.width =  btnFrame.origin.x - lblFrame.origin.x;
+                            [routeSelectionCell.lblTitle setFrame: lblFrame];
+                        }
+                        
+                    }
+                    
+//                    [routeSelectionCell addSubview:alertBtn];
+                    
                 }
-                else if ( indexPath.row == 1 )
+                else
                 {
-                    TableCellAlertsView *alertView = (TableCellAlertsView*)routeSelectionCell.alertView;
 
-//                        [alertView setFrame:CGRectMake(alertView.frame.origin.x - 10, alertView.frame.origin.y, 40, 30)];
-                    
-//                    [alertView addAlert:kTableCellAlertsImageAdvisories];
-                    if ( isBus )
+                    if ( hasIndex )
                     {
-                        [alertView hasSideIndex:YES];
+                        UILabel *lblTitle = routeSelectionCell.lblTitle;
+                        CGRect frame = [lblTitle frame];
+                        
+                        frame.size.width -= 20;
+                        
+                        [lblTitle setFrame: frame];
                     }
                     
-//                    [alertView addAlert:kTableCellAlertsImageSuspend];
-//                    [alertView setHidden:NO];
-
-                    //                    [alertView setContentMode:UIViewContentModeScaleAspectFit];
-                    //                    [alertView.imageView setContentMode: UIViewContentModeScaleAspectFit];
-
-
+                    UIButton *alertBtn = routeSelectionCell.btnAlert;
+                    [alertBtn setHidden:YES];
+                    
+                    for (UIView *subview in [alertBtn subviews])
+                    {
+                        NSLog(@"%@", subview);
+                    }
+                    
                 }
                 
                 row = [_routeData objectWithIndexPath: indexPath];
                 
                 [routeSelectionCell setRouteData: row];
+//                [routeSelectionCell.lblTitle sizeToFit];
+                
+//                CGRect f = routeSelectionCell.lblTitle.frame;
+//                f.size.width = 40.0f;
+//                [routeSelectionCell.lblTitle setFrame:f];
+                
                 
                 return routeSelectionCell;
             
                 break;
             }
-            default:
-                
-                defaultCell = [tableView dequeueReusableCellWithIdentifier:defaultCellID];
-                return defaultCell;
-                
-                break;
+//            default:
+//            {
+//                UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//                return cell;
+//            }
+//                break;
         }
         
     }
@@ -857,23 +1084,27 @@
 }
 
 
--(void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
- 
-    switch ( (NSInteger)[_routeData sectionForIndexPath:indexPath] )
-    {
-        case kDisplayedRouteDataRoutes:
-        {
-            RouteSelectionCell *routeSelectionCell = [self.tableView dequeueReusableCellWithIdentifier:@"RouteSelectionCell"];
-            TableCellAlertsView *alertView = (TableCellAlertsView*)[routeSelectionCell alertView];
-            [alertView removeAllAlerts];
-            
-            break;
-        }
-        default:
-            break;
-    }
-    
-}
+//-(void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+// 
+//#if FUNCTION_NAMES_ON
+//    NSLog(@"RSVC - tV,dEDC,fRAIP: %@", indexPath);
+//#endif
+//    
+//    switch ( (NSInteger)[_routeData sectionForIndexPath:indexPath] )
+//    {
+//        case kDisplayedRouteDataRoutes:
+//        {
+//            RouteSelectionCell *routeSelectionCell = [self.tableView dequeueReusableCellWithIdentifier:@"RouteSelectionCell"];
+//            TableCellAlertsView *alertView = (TableCellAlertsView*)[routeSelectionCell alertView];
+//            [alertView removeAllAlerts];
+//            
+//            break;
+//        }
+//        default:
+//            break;
+//    }
+//    
+//}
 
 
 // Override to support editing the table view.
@@ -1009,6 +1240,10 @@
 #pragma mark - Fun With Notifications
 -(void) notificationTest
 {
+
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - notificationTest");
+#endif
     
     //    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
     
@@ -1052,6 +1287,10 @@
 #endif
 
     
+    if ( ! [[_routeData objectWithIndexPath:indexPath] isKindOfClass:[RouteData class] ] )
+    {
+        return;
+    }
     
     NSLog(@"BSRVC - s/r: %ld/%ld", (long)indexPath.section, (long)indexPath.row);
     
@@ -1125,6 +1364,10 @@
 
 -(void) hideShowSearchBar
 {
+
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - hideShowSearchBar");
+#endif
     
     NSLog(@"BSRVC -(void) hideShowSearchBar");
     float shiftBy = 0;
@@ -1293,7 +1536,7 @@
         queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
     }
     
-    NSLog(@"BSRVC - getUnfilteredBusRoutes, queryStr: %@", queryStr);
+//    NSLog(@"BSRVC - getUnfilteredBusRoutes, queryStr: %@", queryStr);
     
     //    NSDate *startTime = [NSDate date];
     //    NSDate *endTime;
@@ -1324,7 +1567,6 @@
         //        NSTimeInterval diff = [endTime timeIntervalSinceDate: startTime];
         //        NSLog(@"BSRVC - %6.3f seconds have passed.", diff);
         
-        
         NSString *route_short_name = [results stringForColumn:@"route_short_name"];
         NSString *route_long_name  = [results stringForColumn:@"route_long_name"];
         NSString *route_id         = [results stringForColumn:@"route_id"];
@@ -1346,8 +1588,10 @@
         
     }
     
+    [database close];
     
-    if ( [self.travelMode isEqualToString:@"BSS"] || [travelMode isEqualToString:@"BSL"]  )
+    
+    if ( [self.travelMode isEqualToString:@"BSS"] || [travelMode isEqualToString:@"BSL"]  )  // OMG, reverseSort for just BSS and BSL.  *face palm*
     {
         [_routeData reverseSortWithSection:kDisplayedRouteDataRoutes];
     }
@@ -1357,16 +1601,14 @@
     }
     
     
-    [self sort];
+    [self createIndexAndTitle];
     
-    [database close];
     
 }
 
 
--(void) sort
+-(void) createIndexAndTitle
 {
-    
     
 #if FUNCTION_NAMES_ON
     NSLog(@"RSVC - sort");
@@ -1694,6 +1936,10 @@
 #pragma mark - Content Filtering
 -(void) filterContentForSearchText:(NSString*) searchText scope: (NSString*) scope
 {
+
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - filterContentForSearchText: %@ scope: %@", searchText, scope);
+#endif
     
     if ( searchStr != searchText )
         searchStr = [searchText copy];
@@ -1836,6 +2082,11 @@
 #pragma mark - Alert Button Pressed
 -(void) dropDownMenuPressed:(id) sender
 {
+
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - dropDownMenuPressed");
+#endif
+    
     NSLog(@"RSVC - Alert Button Pressed!");
 }
 
@@ -1844,6 +2095,9 @@
 -(void) getGenericAlertDetails
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - getGenericAlertDetails");
+#endif
     
     // Check for Internet connection
     Reachability *network = [Reachability reachabilityForInternetConnection];
@@ -1851,14 +2105,15 @@
         return;  // Don't bother continuing if no internet connection is available
     
     
-    if ( _stillWaitingOnAlertRequest )  // Avoid asking the server for data if it hasn't returned anything from the previous request
+    if ( _stillWaitingOnGenericAlertRequest )  // Avoid asking the server for data if it hasn't returned anything from the previous request
         return;
     else
-        _stillWaitingOnAlertRequest = YES;
+        _stillWaitingOnGenericAlertRequest = YES;
     
     
 
-    NSString *stringURL = @"http://www3.septa.org/beta/Alerts/get_alert_data.php?req1=generic";
+    NSString *stringURL = @"http://www3.septa.org/api/Alerts/get_alert_data.php?req1=generic";
+//    NSString *stringURL = @"http://www3.septa.org/beta/agga/Alerts/gga.php";
     
     NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"RSVC - getGenericAlertDetails -- api url: %@", webStringURL);
@@ -1873,12 +2128,12 @@
         if ( ![weakOp isCancelled] )
         {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                [self processAlertData:alertData];
+                [self processGenericAlertData:alertData];
             }];
         }
         else
         {
-            NSLog(@"NTAVC - getAlertsForLines: _jsonOp cancelled");
+            NSLog(@"NTAVC - getGenericAlertDetails: _jsonOp cancelled");
         }
         
     }];
@@ -1890,7 +2145,10 @@
 
 -(void) getMainAlerts
 {
-    
+
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - getMainAlerts");
+#endif
     
     // Check for Internet connection
     Reachability *network = [Reachability reachabilityForInternetConnection];
@@ -1908,10 +2166,10 @@
     //    [alertLineDict setObject:[NSArray arrayWithObjects:@"rr_route_gc",@"rr_route_landdoy", nil] forKey:@"Lansdale/Doylestown"];
     
     
-    NSString* stringURL = @"http://www3.septa.org/beta/Alerts/";
+    NSString* stringURL = @"http://www3.septa.org/api/Alerts/";
     
     NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"RSVC - getAlerts -- api url: %@", webStringURL);
+    NSLog(@"RSVC - getMainAlerts -- api url: %@", webStringURL);
     
     _alertMainOp = [[NSBlockOperation alloc] init];
     
@@ -1923,7 +2181,7 @@
         if ( ![weakOp isCancelled] )
         {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                [self processAlertData:alertData];
+                [self processMainAlerts:alertData];
             }];
         }
         else
@@ -1939,11 +2197,154 @@
 }
 
 
-
--(void) processAlertData:(NSData*) returnedData
+-(void) processMainAlerts:(NSData*) returnedData
 {
+
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - processMainAlerts");
+#endif
     
     _stillWaitingOnAlertRequest = NO;
+    
+    
+    if ( returnedData == nil )  // If we didn't even receive data, try again in another JSON_REFRESH_RATE seconds
+    {
+        //        NSLog(@"NTAVC - processAlertData - kicking off another Alert request - 1");
+        //        [self kickOffAnotherJSONRequest];
+        return;
+    }
+    
+    
+    NSMutableArray *myData;
+    myData = [[NSMutableArray alloc] init];
+    
+    
+    // This method is called once the realtime positioning data has been returned via the API is stored in data
+    NSError *error;
+    id json = [NSJSONSerialization JSONObjectWithData: returnedData options:kNilOptions error:&error];
+    
+    
+    if ( json == nil || error != nil )  // Something bad happened, so just return
+    {
+        //        NSLog(@"NTAVC - processJSON - kicking off another Alert request - 2");
+        //        [self kickOffAnotherJSONRequest];  // And before we return, let's try again in JSON_REFRESH_RATE seconds
+        return;
+    }
+    
+    
+    
+    
+    
+    //    NSMutableDictionary *jsonTest = [[NSMutableDictionary alloc] init];
+    
+//    if ( /* DISABLES CODE */ (0) )  // Set to 1 when testing, 0 when um... the opposite.
+//    {
+//        NSMutableArray *jsonTest = [[NSMutableArray alloc] init];
+//        
+//        NSMutableDictionary *route = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"generic",@"route_id",@"Generic",@"route_name",@"RRD: Warminster Train #4331 is canceled from Warmisnter to Glenside. Service will begin at Glenside to depart the scheduled time of 9:08AM",@"current_message", nil];
+//        
+//        [jsonTest addObject: route];
+//        json = jsonTest;
+//        
+//    }
+    
+    
+    NSDictionary *alertRouteNameLookup = @{
+                                           @"Market/ Frankford Line" : @"MFL",
+                                           @"Market Frankford Owl"   : @"MFO",
+                                           @"Broad Street Line"      : @"BSL",
+                                           @"Broad Street Line Owl"  : @"BSO",
+                                           @"Norristown High Speed Line" : @"NHSL",
+                                           @"LUCY"                   : @"LUCY",
+                                           @"Airport"                : @"AIR",
+                                           @"Chestnut Hill East"     : @"CHE",
+                                           @"Chestnut Hill West"     : @"CHW",
+                                           @"Cynwyd"                 : @"CYN",
+                                           @"Fox Chase"              : @"FOX",
+                                           @"Glenside Combined"      : @"GC",
+                                           @"Lansdale/Doylestown"    : @"LAN",
+                                           @"Manayunk/Norristown"    : @"NOR",
+                                           @"Media/Elywn"            : @"MED",
+                                           @"Paoli/Thorndale"        : @"PAO",
+                                           @"Trenton"                : @"TRE",
+                                           @"Warminster"             : @"WAR",
+                                           @"Wilmington/Newark"      : @"WIL",
+                                           @"West Trenton"           : @"WTR",
+                                           };
+    
+    
+    for (NSDictionary *data in json)
+    {
+        
+        if ( [_alertMainOp isCancelled] )
+            return;
+        
+        SystemStatusObject *ssObj = [[SystemStatusObject alloc] init];
+        
+        if ( [[data objectForKey:@"mode"] isEqualToString:_alertMode] )
+        {
+            
+            [ssObj setRoute_id  : [data objectForKey:@"route_id"] ];
+            
+            if ( [alertRouteNameLookup objectForKey: [data objectForKey:@"route_name"] ] == nil )
+            {
+                 [ssObj setRoute_name: [data objectForKey:@"route_name"] ];
+            }
+            else if ( [[data objectForKey:@"route_name"] isEqualToString:@"LUCY"] )
+            {
+                
+                // The Alerts contains one LUCY, whereas the GTFS splits them by Gold and Green.
+                // In order to easily handle this, first create an entry for LUCYGO and populate it
+                // inside the else if, then setup LUCYGR to be updated outside of the if statement.
+
+                SystemStatusObject *tempObj = [[SystemStatusObject alloc] init];
+                [tempObj setRoute_id  : [data objectForKey:@"route_id"] ];
+
+                [tempObj setRoute_name:@"LUCYGO"];
+                [tempObj setMode      : [data objectForKey:@"mode"] ];
+                [tempObj setIsadvisory: [data objectForKey:@"isadvisory"] ];
+                
+                [tempObj setIsalert   : [data objectForKey:@"isalert"] ];
+                [tempObj setIsdetour  : [data objectForKey:@"isdetour"] ];
+                
+                [tempObj setIssuspend :[data objectForKey:@"issuppend"] ];
+                
+                [_ssDict setObject: tempObj forKey: [tempObj route_name] ];
+                
+                [ssObj setRoute_name:@"LUCYGR"];
+            }
+            else
+            {
+                [ssObj setRoute_name: [alertRouteNameLookup objectForKey: [data objectForKey:@"route_name"] ] ];
+            }
+            
+            [ssObj setMode      : [data objectForKey:@"mode"] ];
+            [ssObj setIsadvisory: [data objectForKey:@"isadvisory"] ];
+            
+            [ssObj setIsalert   : [data objectForKey:@"isalert"] ];
+            [ssObj setIsdetour  : [data objectForKey:@"isdetour"] ];
+            
+            [ssObj setIssuspend :[data objectForKey:@"issuppend"] ];
+            
+            [_ssDict setObject: ssObj forKey: [ssObj route_name] ];
+            
+        }
+        
+    }
+    
+    [self.tableView reloadData];
+    
+}
+
+
+-(void) processGenericAlertData:(NSData*) returnedData
+{
+
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - processGenericAlertData");
+#endif
+    
+    _stillWaitingOnGenericAlertRequest = NO;
     
     
     if ( returnedData == nil )  // If we didn't even receive data, try again in another JSON_REFRESH_RATE seconds
@@ -1973,11 +2374,14 @@
     
     //    NSMutableDictionary *jsonTest = [[NSMutableDictionary alloc] init];
     
-    if ( /* DISABLES CODE */ (1) )  // Set to 1 when testing, 0 when um... the opposite.
+    if ( /* DISABLES CODE */ (0) )  // Set to 1 when testing, 0 when um... the opposite.
     {
         NSMutableArray *jsonTest = [[NSMutableArray alloc] init];
         
         NSMutableDictionary *route = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"generic",@"route_id",@"Generic",@"route_name",@"RRD: Warminster Train #4331 is canceled from Warmisnter to Glenside. Service will begin at Glenside to depart the scheduled time of 9:08AM",@"current_message", nil];
+
+//        NSMutableDictionary *route = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"generic",@"route_id",@"Generic",@"route_name",@"Warminster Train #4331 is canceled from Warminster to Glenside. Service will begin at Glenside to depart the scheduled time of 9:08AM",@"current_message", nil];
+
         
         [jsonTest addObject: route];
         json = jsonTest;
@@ -1991,28 +2395,32 @@
         if ( [_alertMainOp isCancelled] )
             return;
         
-        SystemStatusObject *ssObj = [[SystemStatusObject alloc] init];
+        SystemAlertObject *saObj = [[SystemAlertObject alloc] init];
+        [saObj setCurrent_message: [data objectForKey:@"current_message" ] ];
         
-        if ( [[data objectForKey:@"mode"] isEqualToString:_alertMode] )
+        // Does you even contain data, bro?
+        if ( [saObj.current_message length] < 2 )  // In case current_message ever gets a space or two
+            continue;
+        
+        [saObj setRoute_name: [data objectForKey:@"route_name"] ];
+        [saObj setRoute_id  : [data objectForKey:@"route_id"  ] ];
+
+        
+        AlertMessage *alertMsg = [[AlertMessage alloc] init];
+        [alertMsg setText: saObj.current_message];
+        [alertMsg updateAttrText];
+        
+        if ( [_alertMode isEqualToString:@"Regional Rail"] )
         {
-        
-            [ssObj setRoute_id: [data objectForKey:@"route_id"] ];
-            [ssObj setRoute_name: [data objectForKey:@"route_name"] ];
+         
+            if ( [ saObj.current_message rangeOfString:@"RRD"].location != NSNotFound )  // If the message contains RRD, it's a generic RR alert
+            [_routeData addObject:alertMsg toSection:kDisplayedRouteDataAlerts];
             
-            [ssObj setMode: [data objectForKey:@"mode"] ];
-            [ssObj setIsadvisory: [data objectForKey:@"isadvisory"] ];
-            
-            [ssObj setIsalert: [data objectForKey:@"isalert"] ];
-            [ssObj setIsdetour: [data objectForKey:@"isdetour"] ];
-            
-            [ssObj setIssuspend:[data objectForKey:@"issuppend"] ];
-            
-            [_systemStatusArray addObject: ssObj];
-            
-//            [_routeData addObject:_systemStatusArray toSection:kDisplayedRouteDataAlerts];
-//            [_routeData addObject:<#(RouteData *)#> toSection:<#(DisplayedRouteDataSections)#>]
-            
-            
+        }  // if ( [_alertMode isEqualToString:@"Regional Rail"] )
+        else
+        {
+            if ( [ saObj.current_message rangeOfString:@"RRD"].location == NSNotFound )  // If the message does not contain RRD, it's a generic Bus/Trolley/MFL/BSL/NHSL alert
+                [_routeData addObject:alertMsg toSection:kDisplayedRouteDataAlerts];
         }
         
     }
@@ -2039,9 +2447,9 @@
 //        [_tableData clearSectionWithTitle:@"Alerts"];
 //        [_tableData replaceArrayWith: myData forTitle:@"Alerts"];
 //    }
-//    
-//    
-//    [self.tableView reloadData];
+    
+    
+    [self.tableView reloadData];
     
     
     //    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:[_tableData indexForSectionTitle:@"Alerts"] ] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -2049,6 +2457,54 @@
     //    [self.tableView endUpdates];
     
     //    NSLog(@"JSON: %@", json);
+    
+}
+
+
+#pragma mark - RouteSelectionCell Protocol
+-(void) alertTapped
+{
+
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - alertTapped");
+#endif
+    
+    NSLog(@"Alert Tapped");
+    
+}
+
+
+-(CAShapeLayer*) formatCell:(UITableViewCell*) cell forIndexPath:(NSIndexPath*) indexPath
+{
+
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - formatCell: forIndexPath: %@", indexPath);
+#endif
+    
+    UIRectCorner corner = 0;
+    
+    // First Cell
+//    corner |= UIRectCornerTopRight;
+    
+    // Last Cell
+//    corner |= UIRectCornerBottomRight;
+    
+    AlertMessage *aMsg = (AlertMessage*)[_routeData objectWithIndexPath:indexPath];
+    CGFloat msgHeight = CGRectFromString( aMsg.rect ).size.height+12;
+    
+    float x = 4.0;
+    float y = 4.0;
+    CGRect bound = cell.bounds;
+    bound.size.height = msgHeight;
+    bound.size.width = self.view.frame.size.width - 5;
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect: bound
+                                                   byRoundingCorners: corner
+                                                         cornerRadii: CGSizeMake(x, y)];
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.frame = bound;
+    maskLayer.path= maskPath.CGPath;
+    
+    return maskLayer;
     
 }
 

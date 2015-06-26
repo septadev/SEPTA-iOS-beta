@@ -411,6 +411,11 @@
         NSString *route_id  = [results stringForColumn:@"route_id"];
         NSLog(@"TVVC - route_id: %@", route_id);
         
+        if ( [route_id isEqualToString:@"101B"] )
+        {
+            NSLog(@"Done");
+        }
+        
         if ( [sPtr.route_id isEqualToString:route_id] )
         {
              // Add to exiting object in array   

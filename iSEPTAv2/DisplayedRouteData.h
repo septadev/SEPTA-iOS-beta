@@ -25,10 +25,10 @@
 
 typedef NS_ENUM(NSInteger, DisplayedRouteDataSections)
 {
-    kDisplayedRouteDataFavorites      = 0,
-    kDisplayedRouteDataRecentlyViewed = 1,
-    kDisplayedRouteDataRoutes         = 2,
-    kDisplayedRouteDataAlerts         = 3,
+    kDisplayedRouteDataAlerts         = 0,
+    kDisplayedRouteDataFavorites      = 1,
+    kDisplayedRouteDataRecentlyViewed = 2,
+    kDisplayedRouteDataRoutes         = 3,
     kDisplayedRouteDataOther,
 };
 
@@ -88,7 +88,7 @@ typedef NS_ENUM(NSInteger, DisplayedRouteDatabaseType)
 
 -(DisplayedRouteDataSections) sectionForIndexPath: (NSIndexPath*) path;
 
--(void) addObject:(RouteData*) object toSection: (DisplayedRouteDataSections) section;
+-(void) addObject:(id) object toSection: (DisplayedRouteDataSections) section;
 -(void) addCurrentToSection: (DisplayedRouteDataSections) section;
 -(void) addSelectionToCurrent:(NSIndexPath*) path;
 

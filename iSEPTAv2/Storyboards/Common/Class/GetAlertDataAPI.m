@@ -87,10 +87,12 @@
             [shortToAlertNameLookUp setObject:@"wilm" forKey:@"WIL"];
             [shortToAlertNameLookUp setObject:@"wtren" forKey:@"WTR"];
             
+            [shortToAlertNameLookUp setObject:@"apt" forKey:@"AIR"];
+            
             [shortToAlertNameLookUp setObject:@"gc" forKey:@"GC"];
             
             alertName = [NSString stringWithFormat:@"rr_route_%@", [shortToAlertNameLookUp objectForKey: routeName] ];
-            
+
         }
             break;
         case kSEPTATypeTrolley:
@@ -113,7 +115,9 @@
             break;
             
     } // switch (type)
-    
+
+    if ( alertName == nil ) // If alertName is null, then don't add it to the _routeNamesArr object.
+        return;
     
     if ( ![_routeNamesArr containsObject: alertName] )
     {
