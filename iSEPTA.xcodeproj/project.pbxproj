@@ -263,7 +263,6 @@
 		27DB30311636D6B600153E4C /* 67.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FA51636D6B600153E4C /* 67.kml */; };
 		27DB30321636D6B600153E4C /* 68.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FA61636D6B600153E4C /* 68.kml */; };
 		27DB30331636D6B600153E4C /* 70.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FA71636D6B600153E4C /* 70.kml */; };
-		27DB30341636D6B600153E4C /* 71.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FA81636D6B600153E4C /* 71.kml */; };
 		27DB30351636D6B600153E4C /* 73.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FA91636D6B600153E4C /* 73.kml */; };
 		27DB30361636D6B600153E4C /* 75.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FAA1636D6B600153E4C /* 75.kml */; };
 		27DB30371636D6B600153E4C /* 77.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FAB1636D6B600153E4C /* 77.kml */; };
@@ -298,7 +297,6 @@
 		27DB30541636D6B600153E4C /* 113.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FC81636D6B600153E4C /* 113.kml */; };
 		27DB30551636D6B600153E4C /* 114.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FC91636D6B600153E4C /* 114.kml */; };
 		27DB30561636D6B600153E4C /* 115.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FCA1636D6B600153E4C /* 115.kml */; };
-		27DB30571636D6B600153E4C /* 116.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FCB1636D6B600153E4C /* 116.kml */; };
 		27DB30581636D6B600153E4C /* 117.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FCC1636D6B600153E4C /* 117.kml */; };
 		27DB30591636D6B600153E4C /* 118.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FCD1636D6B600153E4C /* 118.kml */; };
 		27DB305A1636D6B600153E4C /* 119.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FCE1636D6B600153E4C /* 119.kml */; };
@@ -314,25 +312,18 @@
 		27DB30641636D6B600153E4C /* 131.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FD81636D6B600153E4C /* 131.kml */; };
 		27DB30651636D6B600153E4C /* 132.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FD91636D6B600153E4C /* 132.kml */; };
 		27DB30661636D6B600153E4C /* 133.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FDA1636D6B600153E4C /* 133.kml */; };
-		27DB30671636D6B600153E4C /* 134.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FDB1636D6B600153E4C /* 134.kml */; };
 		27DB30681636D6B600153E4C /* 139.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FDC1636D6B600153E4C /* 139.kml */; };
 		27DB30691636D6B600153E4C /* 150.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FDD1636D6B600153E4C /* 150.kml */; };
 		27DB306A1636D6B600153E4C /* 201.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FDE1636D6B600153E4C /* 201.kml */; };
 		27DB306B1636D6B600153E4C /* 204.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FDF1636D6B600153E4C /* 204.kml */; };
 		27DB306C1636D6B600153E4C /* 205.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FE01636D6B600153E4C /* 205.kml */; };
 		27DB306D1636D6B600153E4C /* 206.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FE11636D6B600153E4C /* 206.kml */; };
-		27DB306E1636D6B600153E4C /* 304.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FE21636D6B600153E4C /* 304.kml */; };
-		27DB306F1636D6B600153E4C /* 306.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FE31636D6B600153E4C /* 306.kml */; };
 		27DB30701636D6B600153E4C /* 310.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FE41636D6B600153E4C /* 310.kml */; };
-		27DB30711636D6B600153E4C /* 314.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FE51636D6B600153E4C /* 314.kml */; };
-		27DB30731636D6B600153E4C /* C.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FE71636D6B600153E4C /* C.kml */; };
 		27DB30741636D6B600153E4C /* G.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FE81636D6B600153E4C /* G.kml */; };
 		27DB30751636D6B600153E4C /* H.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FE91636D6B600153E4C /* H.kml */; };
-		27DB30761636D6B600153E4C /* HXH.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FEA1636D6B600153E4C /* HXH.kml */; };
 		27DB30771636D6B600153E4C /* J.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FEB1636D6B600153E4C /* J.kml */; };
 		27DB30781636D6B600153E4C /* K.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FEC1636D6B600153E4C /* K.kml */; };
 		27DB30791636D6B600153E4C /* L.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FED1636D6B600153E4C /* L.kml */; };
-		27DB307A1636D6B600153E4C /* LUCY.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FEE1636D6B600153E4C /* LUCY.kml */; };
 		27DB307C1636D6B600153E4C /* R.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FF01636D6B600153E4C /* R.kml */; };
 		27DB307D1636D6B600153E4C /* regionalrail.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FF11636D6B600153E4C /* regionalrail.kml */; };
 		27DB307E1636D6B600153E4C /* XH.kml in Resources */ = {isa = PBXBuildFile; fileRef = 27DB2FF21636D6B600153E4C /* XH.kml */; };
@@ -1082,7 +1073,6 @@
 		27DB2FA51636D6B600153E4C /* 67.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 67.kml; path = kml/67.kml; sourceTree = "<group>"; };
 		27DB2FA61636D6B600153E4C /* 68.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 68.kml; path = kml/68.kml; sourceTree = "<group>"; };
 		27DB2FA71636D6B600153E4C /* 70.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 70.kml; path = kml/70.kml; sourceTree = "<group>"; };
-		27DB2FA81636D6B600153E4C /* 71.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 71.kml; path = kml/71.kml; sourceTree = "<group>"; };
 		27DB2FA91636D6B600153E4C /* 73.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 73.kml; path = kml/73.kml; sourceTree = "<group>"; };
 		27DB2FAA1636D6B600153E4C /* 75.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 75.kml; path = kml/75.kml; sourceTree = "<group>"; };
 		27DB2FAB1636D6B600153E4C /* 77.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 77.kml; path = kml/77.kml; sourceTree = "<group>"; };
@@ -1117,7 +1107,6 @@
 		27DB2FC81636D6B600153E4C /* 113.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 113.kml; path = kml/113.kml; sourceTree = "<group>"; };
 		27DB2FC91636D6B600153E4C /* 114.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 114.kml; path = kml/114.kml; sourceTree = "<group>"; };
 		27DB2FCA1636D6B600153E4C /* 115.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 115.kml; path = kml/115.kml; sourceTree = "<group>"; };
-		27DB2FCB1636D6B600153E4C /* 116.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 116.kml; path = kml/116.kml; sourceTree = "<group>"; };
 		27DB2FCC1636D6B600153E4C /* 117.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 117.kml; path = kml/117.kml; sourceTree = "<group>"; };
 		27DB2FCD1636D6B600153E4C /* 118.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 118.kml; path = kml/118.kml; sourceTree = "<group>"; };
 		27DB2FCE1636D6B600153E4C /* 119.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 119.kml; path = kml/119.kml; sourceTree = "<group>"; };
@@ -1133,25 +1122,18 @@
 		27DB2FD81636D6B600153E4C /* 131.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 131.kml; path = kml/131.kml; sourceTree = "<group>"; };
 		27DB2FD91636D6B600153E4C /* 132.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 132.kml; path = kml/132.kml; sourceTree = "<group>"; };
 		27DB2FDA1636D6B600153E4C /* 133.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 133.kml; path = kml/133.kml; sourceTree = "<group>"; };
-		27DB2FDB1636D6B600153E4C /* 134.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 134.kml; path = kml/134.kml; sourceTree = "<group>"; };
 		27DB2FDC1636D6B600153E4C /* 139.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 139.kml; path = kml/139.kml; sourceTree = "<group>"; };
 		27DB2FDD1636D6B600153E4C /* 150.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 150.kml; path = kml/150.kml; sourceTree = "<group>"; };
 		27DB2FDE1636D6B600153E4C /* 201.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 201.kml; path = kml/201.kml; sourceTree = "<group>"; };
 		27DB2FDF1636D6B600153E4C /* 204.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 204.kml; path = kml/204.kml; sourceTree = "<group>"; };
 		27DB2FE01636D6B600153E4C /* 205.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 205.kml; path = kml/205.kml; sourceTree = "<group>"; };
 		27DB2FE11636D6B600153E4C /* 206.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 206.kml; path = kml/206.kml; sourceTree = "<group>"; };
-		27DB2FE21636D6B600153E4C /* 304.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 304.kml; path = kml/304.kml; sourceTree = "<group>"; };
-		27DB2FE31636D6B600153E4C /* 306.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 306.kml; path = kml/306.kml; sourceTree = "<group>"; };
 		27DB2FE41636D6B600153E4C /* 310.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 310.kml; path = kml/310.kml; sourceTree = "<group>"; };
-		27DB2FE51636D6B600153E4C /* 314.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 314.kml; path = kml/314.kml; sourceTree = "<group>"; };
-		27DB2FE71636D6B600153E4C /* C.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = C.kml; path = kml/C.kml; sourceTree = "<group>"; };
 		27DB2FE81636D6B600153E4C /* G.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = G.kml; path = kml/G.kml; sourceTree = "<group>"; };
 		27DB2FE91636D6B600153E4C /* H.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = H.kml; path = kml/H.kml; sourceTree = "<group>"; };
-		27DB2FEA1636D6B600153E4C /* HXH.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = HXH.kml; path = kml/HXH.kml; sourceTree = "<group>"; };
 		27DB2FEB1636D6B600153E4C /* J.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = J.kml; path = kml/J.kml; sourceTree = "<group>"; };
 		27DB2FEC1636D6B600153E4C /* K.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = K.kml; path = kml/K.kml; sourceTree = "<group>"; };
 		27DB2FED1636D6B600153E4C /* L.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = L.kml; path = kml/L.kml; sourceTree = "<group>"; };
-		27DB2FEE1636D6B600153E4C /* LUCY.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = LUCY.kml; path = kml/LUCY.kml; sourceTree = "<group>"; };
 		27DB2FF01636D6B600153E4C /* R.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = R.kml; path = kml/R.kml; sourceTree = "<group>"; };
 		27DB2FF11636D6B600153E4C /* regionalrail.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = regionalrail.kml; path = kml/regionalrail.kml; sourceTree = "<group>"; };
 		27DB2FF21636D6B600153E4C /* XH.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = XH.kml; path = kml/XH.kml; sourceTree = "<group>"; };
@@ -2459,7 +2441,6 @@
 				27DB2FA51636D6B600153E4C /* 67.kml */,
 				27DB2FA61636D6B600153E4C /* 68.kml */,
 				27DB2FA71636D6B600153E4C /* 70.kml */,
-				27DB2FA81636D6B600153E4C /* 71.kml */,
 				27DB2FA91636D6B600153E4C /* 73.kml */,
 				27DB2FAA1636D6B600153E4C /* 75.kml */,
 				27DB2FAB1636D6B600153E4C /* 77.kml */,
@@ -2494,7 +2475,6 @@
 				27DB2FC81636D6B600153E4C /* 113.kml */,
 				27DB2FC91636D6B600153E4C /* 114.kml */,
 				27DB2FCA1636D6B600153E4C /* 115.kml */,
-				27DB2FCB1636D6B600153E4C /* 116.kml */,
 				27DB2FCC1636D6B600153E4C /* 117.kml */,
 				27DB2FCD1636D6B600153E4C /* 118.kml */,
 				27DB2FCE1636D6B600153E4C /* 119.kml */,
@@ -2510,25 +2490,18 @@
 				27DB2FD81636D6B600153E4C /* 131.kml */,
 				27DB2FD91636D6B600153E4C /* 132.kml */,
 				27DB2FDA1636D6B600153E4C /* 133.kml */,
-				27DB2FDB1636D6B600153E4C /* 134.kml */,
 				27DB2FDC1636D6B600153E4C /* 139.kml */,
 				27DB2FDD1636D6B600153E4C /* 150.kml */,
 				27DB2FDE1636D6B600153E4C /* 201.kml */,
 				27DB2FDF1636D6B600153E4C /* 204.kml */,
 				27DB2FE01636D6B600153E4C /* 205.kml */,
 				27DB2FE11636D6B600153E4C /* 206.kml */,
-				27DB2FE21636D6B600153E4C /* 304.kml */,
-				27DB2FE31636D6B600153E4C /* 306.kml */,
 				27DB2FE41636D6B600153E4C /* 310.kml */,
-				27DB2FE51636D6B600153E4C /* 314.kml */,
-				27DB2FE71636D6B600153E4C /* C.kml */,
 				27DB2FE81636D6B600153E4C /* G.kml */,
 				27DB2FE91636D6B600153E4C /* H.kml */,
-				27DB2FEA1636D6B600153E4C /* HXH.kml */,
 				27DB2FEB1636D6B600153E4C /* J.kml */,
 				27DB2FEC1636D6B600153E4C /* K.kml */,
 				27DB2FED1636D6B600153E4C /* L.kml */,
-				27DB2FEE1636D6B600153E4C /* LUCY.kml */,
 				27DB2FF01636D6B600153E4C /* R.kml */,
 				27DB2FF11636D6B600153E4C /* regionalrail.kml */,
 				27DB2FF21636D6B600153E4C /* XH.kml */,
@@ -4040,7 +4013,6 @@
 				8418EECA18058D67003607D1 /* NTA-end.png in Resources */,
 				27DB30331636D6B600153E4C /* 70.kml in Resources */,
 				8418EDAE17FEF6BD003607D1 /* twitterIcon.png in Resources */,
-				27DB30341636D6B600153E4C /* 71.kml in Resources */,
 				8418EE7F17FEF6BD003607D1 /* Alarm_Add.png in Resources */,
 				27DB30351636D6B600153E4C /* 73.kml in Resources */,
 				27DB30361636D6B600153E4C /* 75.kml in Resources */,
@@ -4130,7 +4102,6 @@
 				2700AE7218F456F200933C2E /* system_status_suspended.png in Resources */,
 				27DB30551636D6B600153E4C /* 114.kml in Resources */,
 				27DB30561636D6B600153E4C /* 115.kml in Resources */,
-				27DB30571636D6B600153E4C /* 116.kml in Resources */,
 				8418EE2617FEF6BD003607D1 /* MFL_white@2x.png in Resources */,
 				27DB30581636D6B600153E4C /* 117.kml in Resources */,
 				8418EE5117FEF6BD003607D1 /* Schedule_NHSL@2x.png in Resources */,
@@ -4167,7 +4138,6 @@
 				27DB30651636D6B600153E4C /* 132.kml in Resources */,
 				8418EEC518058D67003607D1 /* NTA@2x.png in Resources */,
 				27DB30661636D6B600153E4C /* 133.kml in Resources */,
-				27DB30671636D6B600153E4C /* 134.kml in Resources */,
 				27DB30681636D6B600153E4C /* 139.kml in Resources */,
 				27DB30691636D6B600153E4C /* 150.kml in Resources */,
 				8418EDFC17FEF6BD003607D1 /* tabSettingsIconSelected@2x.png in Resources */,
@@ -4184,17 +4154,13 @@
 				8418EDBA17FEF6BD003607D1 /* RT_Find-Loc@2x.png in Resources */,
 				27AEF7B3188EC6C0004EC5E0 /* tipsBack@2x.png in Resources */,
 				8418EE9D17FEF6BD003607D1 /* gradient_line.png in Resources */,
-				27DB306E1636D6B600153E4C /* 304.kml in Resources */,
-				27DB306F1636D6B600153E4C /* 306.kml in Resources */,
 				8418EDA517FEF6BD003607D1 /* fareIcon@2x.png in Resources */,
 				8418EE0717FEF6BD003607D1 /* transitView-LUCY@2x.png in Resources */,
 				8418EDF617FEF6BD003607D1 /* tabSchedulesIcon@2x.png in Resources */,
 				27DB30701636D6B600153E4C /* 310.kml in Resources */,
 				8418EDE517FEF6BD003607D1 /* Sys-Status-Transit.png in Resources */,
 				8418EE9A17FEF6BD003607D1 /* gradient_tab@2x.png in Resources */,
-				27DB30711636D6B600153E4C /* 314.kml in Resources */,
 				8418EDF917FEF6BD003607D1 /* tabSettingsIcon.png in Resources */,
-				27DB30731636D6B600153E4C /* C.kml in Resources */,
 				8418ED7C17FEF6BD003607D1 /* BG_pattern@2x.png in Resources */,
 				2700AE7018F456E900933C2E /* system_status_suspended@2x.png in Resources */,
 				27DB30741636D6B600153E4C /* G.kml in Resources */,
@@ -4206,7 +4172,6 @@
 				8418EDBE17FEF6BD003607D1 /* RT_TrainView@2x.png in Resources */,
 				27DB30751636D6B600153E4C /* H.kml in Resources */,
 				8418ED8E17FEF6BD003607D1 /* trailpass-BG@2x.png in Resources */,
-				27DB30761636D6B600153E4C /* HXH.kml in Resources */,
 				8418EEC318058D67003607D1 /* NTA-start@2x.png in Resources */,
 				8418ED9017FEF6BD003607D1 /* transpass-BG@2x.png in Resources */,
 				8418EDA317FEF6BD003607D1 /* customerServiceIcon@2x.png in Resources */,
@@ -4219,7 +4184,6 @@
 				8418EDA917FEF6BD003607D1 /* commentsIcon.png in Resources */,
 				8418EDEC17FEF6BD003607D1 /* tabConnectIconSelected@2x.png in Resources */,
 				27DB30791636D6B600153E4C /* L.kml in Resources */,
-				27DB307A1636D6B600153E4C /* LUCY.kml in Resources */,
 				8418EEA617FEFFDA003607D1 /* Images.xcassets in Resources */,
 				8418EE7617FEF6BD003607D1 /* Station_alarm.png in Resources */,
 				8418EE9317FEF6BD003607D1 /* btnTransit.png in Resources */,

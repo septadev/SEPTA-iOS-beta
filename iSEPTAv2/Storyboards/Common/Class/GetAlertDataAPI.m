@@ -196,7 +196,7 @@
         
         
         NSString *url = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/Alerts/get_alert_data.php?req1=%@", alertRouteName];
-        NSLog(@"GetAlertDataAPI - url: %@", url);
+//        NSLog(@"GetAlertDataAPI - url: %@", url);
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] ];
         
         _jsonOperation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -271,7 +271,7 @@
         
         
         NSString *url = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/Alerts/get_alert_data.php?req1=%@", alertRouteName];
-        NSLog(@"GetAlertDataAPI - url: %@", url);
+//        NSLog(@"GetAlertDataAPI - url: %@", url);
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] ];
         
         _jsonOperation = [[AFHTTPRequestOperation alloc] initWithRequest:request];

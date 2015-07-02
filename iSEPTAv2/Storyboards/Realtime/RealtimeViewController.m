@@ -59,10 +59,12 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - viewWillDisappear: %d", animated);
+#endif
     
     [super viewWillDisappear:animated];
     
-    NSLog(@"RVC - viewWillDisappear");
     
 //    NSLog(@"RVC - Alert Banners In View:%@", [ALAlertBanner alertBannersInView:self.view]);
     [ALAlertBanner forceHideAllAlertBannersInView:self.view];
@@ -101,6 +103,10 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - viewWillAppear: %d", animated);
+#endif
     
     [super viewWillAppear:animated];
     
@@ -178,6 +184,10 @@
 
 - (void)viewDidLoad
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - viewDidLoad");
+#endif
     
     [super viewDidLoad];
     
@@ -332,6 +342,11 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - connection: didReceivveResponse:");
+#endif
+    
     /*  convert response into an NSHTTPURLResponse,
      call the allHeaderFields property, then get the
      Last-Modified key.
@@ -358,6 +373,10 @@
 
 -(void) automaticDownloading
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - automaticDownloading");
+#endif
     
     // Automatic Downloading needs to be broken into a few parts:
     //   - check that the device has space for the new database
@@ -398,17 +417,20 @@
 
 -(void) checkDBExists
 {
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - checkDBExists");
+#endif
     
     [GTFSCommon filePath];
-    
-//    NSLog(@"Break point");
     
 }
 
 -(void) checkDBVersion
 {
     
+#if FUNCTION_NAMES_ON
     NSLog(@"RVC - checkDBVersion");
+#endif
     
     Reachability *network = [Reachability reachabilityForInternetConnection];
     if ( ![network isReachable] )
@@ -448,7 +470,10 @@
 -(void) dbVersionFetched:(DBVersionDataObject*) obj
 {
     
+#if FUNCTION_NAMES_ON
     NSLog(@"RVC - dbVersionFetched");
+#endif
+    
     
 #ifdef BACKGROUND_DOWNLOAD
     // Check if Auto-Update has been turned on
@@ -513,6 +538,10 @@
 
 -(void) displayAlert: (DBVersionDataObject*) obj
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - displayAlert: %@", obj);
+#endif
     
     if ( obj.message == nil )  // Don't bother if there is no message
         return;
@@ -619,6 +648,10 @@
 -(unsigned long long)getFreeSpace
 {
 
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - getFreeSpace");
+#endif
+    
     unsigned long long freeSpace = 0;
     NSError *error = nil;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -661,6 +694,10 @@
 
 -(void) md5check
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - md5check");
+#endif
     
     NSDate *start = [NSDate date];
     
@@ -760,7 +797,10 @@
 -(void) getGenericAlert
 {
 
+#if FUNCTION_NAMES_ON
     NSLog(@"RVC - getGenericAlert");
+#endif
+
     
     Reachability *network = [Reachability reachabilityForInternetConnection];
     if ( ![network isReachable] )
@@ -792,8 +832,13 @@
 
 -(void) alertFetched:(NSMutableArray*) alert
 {
+   
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - alertFetched: %@", alert);
+#endif
     
-    NSLog(@"RVC - alertFeteched: %@", alert);
+//    NSLog(@"RVC - alertFeteched: %@", alert);
+    
     
 //    SystemAlertObject *saObject = [alert objectAtIndex:0];
 
@@ -903,6 +948,10 @@
 -(NSString*) md5FromString: (NSString *) baseString
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - md5FromString");
+#endif
+    
     const char *ptr = [baseString UTF8String];
     
     // Create byte array of unsigned chars
@@ -924,6 +973,9 @@
 -(void) loopImages
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - loopImages");
+#endif
     
     switch (_loopState)
     {
@@ -1072,12 +1124,21 @@
 
 - (void)didReceiveMemoryWarning
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - didReceiveMemoryWarning");
+#endif
+    
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 - (void)viewDidUnload
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - viewDidUnload");
+#endif
     
     [self setBtnNextToArrive:nil];
     [self setBtnTrainView:nil];
@@ -1120,6 +1181,10 @@
 -(void) changeOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
 
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - changeOrientation: %@", toInterfaceOrientation);
+#endif
+    
     CGFloat width;
     
     if ( UIInterfaceOrientationIsLandscape(toInterfaceOrientation) )
@@ -1198,6 +1263,10 @@
 - (IBAction)btnNextToArrivePressed:(id)sender
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - btnNextToArrivePressed");
+#endif
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"NextToArriveStoryboard" bundle:nil];
     NextToArriveTableViewController *ntaVC = (NextToArriveTableViewController*)[storyboard instantiateInitialViewController];
     
@@ -1216,7 +1285,9 @@
 - (IBAction)btnTrainViewPressed:(id)sender
 {
 
-    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - btnTrainViewPressed");
+#endif
 //    MMDrawerTestViewController *testVC = [[MMDrawerTestViewController alloc] init];
 //    [self.navigationController pushViewController:testVC animated:YES];
     
@@ -1244,6 +1315,10 @@
 - (IBAction)btnTransitViewPress:(id)sender
 {
 
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - btnTransitViewPressed");
+#endif
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TransitViewStoryboard" bundle:nil];
     TransitViewViewController *tvVC = (TransitViewViewController*)[storyboard instantiateInitialViewController];
     
@@ -1256,6 +1331,11 @@
 
 - (IBAction)btnSystemStatusPressed:(id)sender
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - btnSystemStatusPressed");
+#endif
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SystemStatusStoryboard" bundle:nil];
     SystemStatusViewController *ssVC = (SystemStatusViewController*)[storyboard instantiateInitialViewController];
     
@@ -1266,6 +1346,11 @@
 
 - (IBAction)btnFindNearestLocationPressed:(id)sender
 {
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - btnFindNearestLocationPressed");
+#endif
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"NearestLocationStoryboard" bundle:nil];
     NearestLocationViewController *nlVC = (NearestLocationViewController*)[storyboard instantiateInitialViewController];
     

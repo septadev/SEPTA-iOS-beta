@@ -949,11 +949,21 @@
                     hasIndex = YES;
                 
                 
+                UIButton *alertBtn = routeSelectionCell.btnAlert;
+                [alertBtn setHidden:YES];
+                
+//                for (UIView *subview in [alertBtn subviews])
+//                {
+//                    NSLog(@"%ld/%ld, %@", indexPath.section, indexPath.row, subview);
+//                    if ( [subview isKindOfClass:[UIImageView class] ] )
+//                        [subview removeFromSuperview];
+//                }
+                
+                
 //                if ( indexPath.row == 1 )
                 if ( [(SystemStatusObject*)[_ssDict objectForKey: [currentRoute route_short_name] ] numOfAlerts] > 0 )
                 {
                 
-                    
                     NSInteger indexWidth = 0;
                     if ( hasIndex )
                         indexWidth = 20;
@@ -968,7 +978,7 @@
                     // Spacing --> nw + (n-1)p + 2e
                     // Where n is the number of alert icons to display
                     // And p is the padding space in
-                    NSInteger padding = 0;
+                    NSInteger padding = -3;
                     NSInteger width   = 20;
                     NSInteger endPadding = 0;
                     NSInteger n = [[_ssDict objectForKey: [currentRoute route_short_name] ] numOfNonCriticalAlerts];
@@ -1008,7 +1018,11 @@
                     [alertBtn setFrame: btnFrame];
                     [alertBtn setHidden:NO];
 
+                    CGRect lblFrame = [routeSelectionCell.lblTitle frame];
+                    lblFrame.size.width =  btnFrame.origin.x - lblFrame.origin.x;
+                    [routeSelectionCell.lblTitle setFrame: lblFrame];
                 
+                    
                     for (NSInteger LCV = 0; LCV < n; LCV++)
                     {
                         
@@ -1022,12 +1036,12 @@
                         
                         [alertBtn addSubview: image];
                         
-                        if ( LCV == 0 )
-                        {
-                            CGRect lblFrame = [routeSelectionCell.lblTitle frame];
-                            lblFrame.size.width =  btnFrame.origin.x - lblFrame.origin.x;
-                            [routeSelectionCell.lblTitle setFrame: lblFrame];
-                        }
+//                        if ( LCV == 0 )  // Moved before the for loop because logic
+//                        {
+//                            CGRect lblFrame = [routeSelectionCell.lblTitle frame];
+//                            lblFrame.size.width =  btnFrame.origin.x - lblFrame.origin.x;
+//                            [routeSelectionCell.lblTitle setFrame: lblFrame];
+//                        }
                         
                     }
                     
@@ -1039,21 +1053,41 @@
 
                     if ( hasIndex )
                     {
-                        UILabel *lblTitle = routeSelectionCell.lblTitle;
-                        CGRect frame = [lblTitle frame];
+//                        UILabel *lblTitle = routeSelectionCell.lblTitle;
+//                        CGRect frame = [lblTitle frame];
+//                        
+//                        frame.size.width -= 20;
+//                        
+//                        [lblTitle setFrame: frame];
                         
-                        frame.size.width -= 20;
+                        // -20 to account for the index running down the side
+                        CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width - 20;
                         
-                        [lblTitle setFrame: frame];
+                        CGRect lblTitleFrame = [routeSelectionCell.lblTitle frame];
+                        lblTitleFrame.size.width =  screenWidth - lblTitleFrame.origin.x;
+                        [routeSelectionCell.lblTitle setFrame: lblTitleFrame];
+
                     }
-                    
-                    UIButton *alertBtn = routeSelectionCell.btnAlert;
-                    [alertBtn setHidden:YES];
-                    
-                    for (UIView *subview in [alertBtn subviews])
+                    else
                     {
-                        NSLog(@"%@", subview);
+                        CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+
+                        CGRect lblTitleFrame = [routeSelectionCell.lblTitle frame];
+                        lblTitleFrame.size.width =  screenWidth - lblTitleFrame.origin.x;
+                        [routeSelectionCell.lblTitle setFrame: lblTitleFrame];
+                        
                     }
+                    
+                    
+                    
+                    
+//                    UIButton *alertBtn = routeSelectionCell.btnAlert;
+//                    [alertBtn setHidden:YES];
+//                    
+//                    for (UIView *subview in [alertBtn subviews])
+//                    {
+//                        NSLog(@"%@", subview);
+//                    }
                     
                 }
                 
@@ -1084,27 +1118,44 @@
 }
 
 
-//-(void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-// 
-//#if FUNCTION_NAMES_ON
-//    NSLog(@"RSVC - tV,dEDC,fRAIP: %@", indexPath);
-//#endif
-//    
-//    switch ( (NSInteger)[_routeData sectionForIndexPath:indexPath] )
-//    {
-//        case kDisplayedRouteDataRoutes:
-//        {
+-(void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+ 
+#if FUNCTION_NAMES_ON
+    NSLog(@"RSVC - tV,dEDC,fRAIP: %@", indexPath);
+#endif
+    
+    switch ( (NSInteger)[_routeData sectionForIndexPath:indexPath] )
+    {
+        case kDisplayedRouteDataRoutes:
+        {
 //            RouteSelectionCell *routeSelectionCell = [self.tableView dequeueReusableCellWithIdentifier:@"RouteSelectionCell"];
 //            TableCellAlertsView *alertView = (TableCellAlertsView*)[routeSelectionCell alertView];
 //            [alertView removeAllAlerts];
-//            
-//            break;
-//        }
-//        default:
-//            break;
-//    }
-//    
-//}
+
+
+            if ( [cell isKindOfClass:[RouteSelectionCell class] ] )
+            {
+
+                UIButton *alertBtn = [(RouteSelectionCell*)cell btnAlert];
+                [alertBtn setHidden:YES];
+                
+                for (UIView *subview in [alertBtn subviews])
+                {
+//                    NSLog(@"%ld/%ld, %@", indexPath.section, indexPath.row, subview);
+                    if ( [subview isKindOfClass:[UIImageView class] ] )
+                        [subview removeFromSuperview];
+                }
+                
+            }
+            
+            
+            break;
+        }
+        default:
+            break;
+    }
+    
+}
 
 
 // Override to support editing the table view.
@@ -1133,7 +1184,7 @@
         [tableView endUpdates];
         
         [_routeData updateSectionCountForSection:kDisplayedRouteDataRecentlyViewed];
-        NSLog(@"RSVC - tV:commitEditingStyle:forRowAtIndexPath: %@; reload", indexPath);
+//        NSLog(@"RSVC - tV:commitEditingStyle:forRowAtIndexPath: %@; reload", indexPath);
         [tableView reloadData];
     }
     
@@ -2116,7 +2167,7 @@
 //    NSString *stringURL = @"http://www3.septa.org/beta/agga/Alerts/gga.php";
     
     NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"RSVC - getGenericAlertDetails -- api url: %@", webStringURL);
+//    NSLog(@"RSVC - getGenericAlertDetails -- api url: %@", webStringURL);
     
     _alertMainOp = [[NSBlockOperation alloc] init];
     
@@ -2169,7 +2220,7 @@
     NSString* stringURL = @"http://www3.septa.org/api/Alerts/";
     
     NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"RSVC - getMainAlerts -- api url: %@", webStringURL);
+//    NSLog(@"RSVC - getMainAlerts -- api url: %@", webStringURL);
     
     _alertMainOp = [[NSBlockOperation alloc] init];
     

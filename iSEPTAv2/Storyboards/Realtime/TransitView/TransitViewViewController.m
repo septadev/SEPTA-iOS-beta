@@ -197,11 +197,6 @@
     
     
     RouteInfo *route = [_tableData objectAtIndex: indexPath.row];
-
-//    if ( [route.route_short_name isEqualToString:@"91"] )
-//    {
-//        NSLog(@"Break!");
-//    }
     
     if ( [[(SystemStatusObject*)[_statusLookup objectForKey:route.route_short_name] issuspend] isEqualToString:@"Y"] )
     {
@@ -215,6 +210,12 @@
     }
 
     return serviceCell;
+    
+}
+
+
+-(void) tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
 }
 
