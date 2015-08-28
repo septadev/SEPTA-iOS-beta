@@ -363,7 +363,12 @@
      
      */
     
-    return [[_order objectAtIndex:path.section] intValue];
+    // Ensure that section is not pass _order size
+    // If _order bounds is 0..2 (count 3) and section is 3
+    if ( path.section >= [_order count] )
+        return 0;  // section is beyond bounds, return 0
+    else
+        return [[_order objectAtIndex:path.section] intValue];
     
 }
 
@@ -495,7 +500,7 @@
     {
         case kDisplayedRouteDataFavorites:
         
-            if ( [self.favorites count] < path.row )
+            if ( path.row >= [self.favorites count] )
                 return nil;
         
             dict = [ [self.favorites objectAtIndex:path.row ] dictionaryWithValuesForKeys:[RouteData returnAllKeyValues] ];
@@ -505,9 +510,9 @@
             
         case kDisplayedRouteDataRecentlyViewed:
         
-            if ( [self.recentlyViewed count] < path.row )
+            if ( path.row >= [self.recentlyViewed count] )
                 return nil;
-        
+            
             dict = [ [self.recentlyViewed objectAtIndex:path.row ] dictionaryWithValuesForKeys:[RouteData returnAllKeyValues] ];
             [route setValuesForKeysWithDictionary:dict];
             return route;
@@ -515,11 +520,21 @@
             break;
             
         case kDisplayedRouteDataAlerts:
+            
+            if ( path.row >= [self.alerts count] )
+                return nil;
+
             return [self.alerts objectAtIndex: path.row];
+            
             break;
             
         case kDisplayedRouteDataRoutes:
+            
+            if ( path.row >= [self.routes count] )
+                return nil;
+            
             return [self.routes objectAtIndex: path.row];
+            
             break;
             
         default:

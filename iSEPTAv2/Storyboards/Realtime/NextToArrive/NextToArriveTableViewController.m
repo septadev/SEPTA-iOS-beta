@@ -77,6 +77,10 @@
 -(void) viewWillDisappear:(BOOL)animated
 {
     
+#if FUNCTION_NAMES_ON
+    NSLog(@"NtATVC - viewWilLDisappear: %d", animated);
+#endif
+    
     [super viewWillDisappear:animated];
     
     [ALAlertBanner forceHideAllAlertBannersInView:self.view];
@@ -759,8 +763,11 @@
         CAShapeLayer *maskLayer;
         NextToArrivaJSONObject *ntaObject = [_tableData objectForIndexPath: indexPath];
         
-        
-        if ( [ntaObject Connection] == nil )  // If connection is nil then it's a single trip
+        if ( ntaObject == nil )
+        {
+            
+        }
+        else if ( [ntaObject Connection] == nil )  // If connection is nil then it's a single trip
         {
             myCell = (NextToArriveSingleTripCell*)[self.tableView dequeueReusableCellWithIdentifier: singleTripCell];
             [myCell updateCellUsingJsonData: ntaObject];

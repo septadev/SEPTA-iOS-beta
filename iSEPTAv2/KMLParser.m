@@ -136,7 +136,7 @@
 - (void)beginOutline;
 - (void)endOutline;
 
-- (void)applyToOverlayPathView:(MKOverlayPathView *)view;
+- (void)applyToOverlayPathView:(MKOverlayPathRenderer *)view;
 
 @end
 
@@ -162,7 +162,7 @@
 
 // Create (if necessary) and return the corresponding MKOverlayPathView for
 // the MKShape object.
-- (MKOverlayPathView *)createOverlayView:(MKShape *)shape;
+- (MKOverlayPathRenderer *)createOverlayView:(MKShape *)shape;
 
 @end
 
@@ -237,7 +237,7 @@
     MKShape *mkShape;
     
     MKAnnotationView *annotationView;
-    MKOverlayPathView *overlayView;
+    MKOverlayPathRenderer *overlayView;
     
     struct {
         int inName:1;
@@ -973,7 +973,9 @@ static void strToCoords(NSString *str, CLLocationCoordinate2D **coordsOut, NSUIn
     [self clearString];
 }
 
-- (void)applyToOverlayPathView:(MKOverlayPathView *)view
+
+// MKOverlayPathView was depreciated in iOS 7, using MKOverlayPathRenderer
+- (void)applyToOverlayPathView:(MKOverlayPathRenderer *)view
 {
     view.strokeColor = strokeColor;
     view.fillColor = fillColor;
@@ -1020,7 +1022,7 @@ static void strToCoords(NSString *str, CLLocationCoordinate2D **coordsOut, NSUIn
     return nil;
 }
 
-- (MKOverlayPathView *)createOverlayView:(MKShape *)shape
+- (MKOverlayPathRenderer *)createOverlayView:(MKShape *)shape
 {
     return nil;
 }
@@ -1136,11 +1138,11 @@ static void strToCoords(NSString *str, CLLocationCoordinate2D **coordsOut, NSUIn
     return poly;
 }
 
-- (MKOverlayPathView *)createOverlayView:(MKShape *)shape
+- (MKOverlayPathRenderer *)createOverlayView:(MKShape *)shape
 {
     // KMLPolygon corresponds to MKPolygonView
     
-    MKPolygonView *polyView = [[MKPolygonView alloc] initWithPolygon:(MKPolygon *)shape];
+    MKPolygonRenderer *polyView = [[MKPolygonRenderer alloc] initWithPolygon:(MKPolygon *)shape];
     return polyView;
 }
 
@@ -1231,14 +1233,14 @@ static void strToCoords(NSString *str, CLLocationCoordinate2D **coordsOut, NSUIn
     
 }
 
-- (MKOverlayPathView *)createOverlayView:(MKShape *)shape
+- (MKOverlayPathRenderer *)createOverlayView:(MKShape *)shape
 {
     // KMLLineString corresponds to MKPolylineView
 //    NSLog(@"KMLLineString -createOverlayView, shape: %@", shape);
 //    MKPolylineView *lineView = [[MKPolylineView alloc] initWithPolyline:(MKPolyline *)shape];
 //    return lineView;
     
-    return [[MKPolylineView alloc] initWithPolyline:(MKPolyline *)shape];
+    return [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline *)shape];
 }
 
 static void coordsFromString(NSString *str, CLLocationCoordinate2D **coordsOut, NSUInteger *coordsLenOut, NSUInteger *allocated)
@@ -1634,7 +1636,7 @@ static void coordsFromString(NSString *str, CLLocationCoordinate2D **coordsOut, 
 //}
 
 
-- (MKOverlayView *)overlayView
+- (MKOverlayRenderer *)overlayView
 {
     
     if (!overlayView)
@@ -1642,7 +1644,9 @@ static void coordsFromString(NSString *str, CLLocationCoordinate2D **coordsOut, 
         
 #ifdef ADD_MULTIGEOMETRY_SUPPORT
         
-        overlayView = [[MKMultiPolylineView alloc] initWithOverlay: self.polylines];
+
+        overlayView = [[MKMultiPolylineRenderer alloc] initWithOverlay: self.polylines];
+//        overlayView = [[MKMultiPolylineView alloc] initWithOverlay: self.polylines];
         [plStyle applyToOverlayPathView:overlayView];
         self.polylines = nil; // Only needed to create the overlayView.  And since it's checked if it's nil, overlayView is only created once.
 #else

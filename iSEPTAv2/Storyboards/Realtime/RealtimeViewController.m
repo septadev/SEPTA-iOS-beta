@@ -1182,7 +1182,7 @@
 {
 
 #if FUNCTION_NAMES_ON
-    NSLog(@"RVC - changeOrientation: %@", toInterfaceOrientation);
+    NSLog(@"RVC - changeOrientation: %ld", (long)toInterfaceOrientation);
 #endif
     
     CGFloat width;

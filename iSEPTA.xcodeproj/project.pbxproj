@@ -85,6 +85,7 @@
 		2774644517AADFC800A36A7D /* NearestRoutesScheduleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2774644417AADFC800A36A7D /* NearestRoutesScheduleStoryboard.storyboard */; };
 		2782CEEB17BE8D62005939DB /* RouteSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2782CEEA17BE8D62005939DB /* RouteSelectionCell.xib */; };
 		2782CEEE17BE8D7A005939DB /* RouteSelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2782CEED17BE8D7A005939DB /* RouteSelectionCell.m */; };
+		278961821B59637500C41531 /* MKMultiPolyLineRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 278961811B59637500C41531 /* MKMultiPolyLineRenderer.m */; };
 		278D8DB71807147600E80645 /* MMDrawerTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 278D8DB61807147600E80645 /* MMDrawerTestViewController.m */; };
 		278EE4FD177C829B002993C4 /* FindSchedulesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 278EE4FC177C829B002993C4 /* FindSchedulesCell.xib */; };
 		278EE503177C85EC002993C4 /* FindSchedulesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 278EE502177C85EC002993C4 /* FindSchedulesCell.m */; };
@@ -824,6 +825,8 @@
 		2782CEEA17BE8D62005939DB /* RouteSelectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RouteSelectionCell.xib; path = Storyboards/Schedules/RouteSelection/RouteSelectionCell.xib; sourceTree = "<group>"; };
 		2782CEEC17BE8D7A005939DB /* RouteSelectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RouteSelectionCell.h; path = Storyboards/Schedules/RouteSelection/RouteSelectionCell.h; sourceTree = "<group>"; };
 		2782CEED17BE8D7A005939DB /* RouteSelectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RouteSelectionCell.m; path = Storyboards/Schedules/RouteSelection/RouteSelectionCell.m; sourceTree = "<group>"; };
+		278961801B59637500C41531 /* MKMultiPolyLineRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMultiPolyLineRenderer.h; sourceTree = "<group>"; };
+		278961811B59637500C41531 /* MKMultiPolyLineRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMultiPolyLineRenderer.m; sourceTree = "<group>"; };
 		278D8DB51807147600E80645 /* MMDrawerTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMDrawerTestViewController.h; path = Storyboards/Realtime/TrainView/MMDrawerTest/MMDrawerTestViewController.h; sourceTree = "<group>"; };
 		278D8DB61807147600E80645 /* MMDrawerTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMDrawerTestViewController.m; path = Storyboards/Realtime/TrainView/MMDrawerTest/MMDrawerTestViewController.m; sourceTree = "<group>"; };
 		278EE4FC177C829B002993C4 /* FindSchedulesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FindSchedulesCell.xib; path = Realtime/FindSchedulesCell.xib; sourceTree = "<group>"; };
@@ -1728,6 +1731,8 @@
 		27297645179D9F4800DB2580 /* Subclasses */ = {
 			isa = PBXGroup;
 			children = (
+				278961801B59637500C41531 /* MKMultiPolyLineRenderer.h */,
+				278961811B59637500C41531 /* MKMultiPolyLineRenderer.m */,
 				27157FFD1A82C21F009F2FA0 /* Event.h */,
 				27157FFE1A82C21F009F2FA0 /* Event.m */,
 				278F5E771A783536004D6716 /* MKMultiPolyLine.h */,
@@ -3775,7 +3780,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = SEPTA;
 				TargetAttributes = {
 					568FA4791535C0E0009345F5 = {
@@ -4419,6 +4424,7 @@
 				278F5E551A783368004D6716 /* RouteData.m in Sources */,
 				278F5E901A783861004D6716 /* TripCell.m in Sources */,
 				2732B2A61A5D87C2005C280A /* CommentFormViewController.m in Sources */,
+				278961821B59637500C41531 /* MKMultiPolyLineRenderer.m in Sources */,
 				278F5E761A7834F1004D6716 /* mapAnnotation.m in Sources */,
 				278F5E6D1A7834B2004D6716 /* TripObject.m in Sources */,
 				27CD6958192273A000823FFC /* CommentsFormTemp.m in Sources */,
@@ -4555,6 +4561,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -4597,6 +4604,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -4635,7 +4643,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
-					"FUNCTION_NAMES_ON=0",
+					"FUNCTION_NAMES_ON=1",
 					"PRINT_SQL_CALLS=1",
 				);
 				GCC_VERSION = "";

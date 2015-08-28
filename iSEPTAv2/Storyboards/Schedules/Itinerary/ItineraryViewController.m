@@ -3570,6 +3570,9 @@
         for (NSValue *newTrip in trainNoArray)
         {
             
+            if ( [_jsonOp isCancelled] )
+                return;
+            
             TripObject *trip = [newTrip nonretainedObjectValue];
             
             // Find the trip that matches the trainNo AND the currentServiceID

@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
-@interface MKMultiPolyLine : NSObject <MKOverlay>
+
+@interface MKMultiPolyLinev2 : NSObject <MKOverlay>
 {
     NSMutableArray *_polylines;
     MKMapRect _boundingMapRect;
@@ -23,7 +24,7 @@
 
 @end
 
-@interface MKMultiPolylineView: MKOverlayPathRenderer
+@interface MKMultiPolylineRenderer: MKOverlayPathRenderer
 {
     
 }

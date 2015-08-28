@@ -8,6 +8,8 @@
 
 #import <MapKit/MapKit.h>
 #import "MKMultiPolyLine.h"
+#import "MKMultiPolyLineRenderer.h"
+
 
 @class KMLPlacemark;
 @class KMLStyle;

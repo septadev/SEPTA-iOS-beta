@@ -28,7 +28,11 @@
     CGRect rect = CGRectMake(point.x, point.y, image.size.width, image.size.height);
     [[UIColor whiteColor] set];
     
-    [text drawInRect:CGRectIntegral(rect) withFont:font];
+//    [text drawInRect:CGRectIntegral(rect) withFont:font];  // This was depreciated
+    
+    NSDictionary *attributes = @{ NSFontAttributeName: font};
+    [text drawInRect:CGRectIntegral(rect) withAttributes: attributes];
+    
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     
     

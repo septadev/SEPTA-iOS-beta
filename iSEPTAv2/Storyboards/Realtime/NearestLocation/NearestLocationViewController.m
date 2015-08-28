@@ -1048,7 +1048,8 @@
     if ( radiusView == nil )
         return;  // radiusView needs to exist otherwise there's nothing to add the DigitInput onto
     
-    [radiusView setBackgroundColor: [UIColor scrollViewTexturedBackgroundColor] ];
+    [radiusView setBackgroundColor: [UIColor groupTableViewBackgroundColor] ];  // This might not work
+//    [radiusView setBackgroundColor: [UIColor scrollViewTexturedBackgroundColor] ];  // Deprecated in iOS 7.0
     
     [self.view addSubview: radiusView];
     

@@ -180,16 +180,11 @@
     
     
     
-    
-    // If only one button, automatically select it
-//    if ( [alerts count] == 1 )
-//    {
-    
-        // Always set the first option
+    if ( [_buttonsArr count] > 0 )
+    {
         UIButton *button = [_buttonsArr objectAtIndex:0];
-//        [self changeColorBarTo: button.tag];
         [button sendActionsForControlEvents: UIControlEventTouchUpInside];
-//    }
+    }
     
     
     

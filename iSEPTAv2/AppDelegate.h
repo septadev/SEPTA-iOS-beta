@@ -46,7 +46,7 @@
 
 @property (nonatomic, strong) NSData *deviceToken;
 
-- (BOOL)transferDb;
+//- (BOOL)transferDb;
 
 
 @end

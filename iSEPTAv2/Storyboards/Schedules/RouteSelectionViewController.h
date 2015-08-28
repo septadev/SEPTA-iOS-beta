@@ -38,7 +38,7 @@
 
 
 
-enum
+typedef NS_ENUM(NSInteger, QueryTypeUsed)
 {
     kQueryNotYet,
     kQueryFailure,
@@ -46,7 +46,7 @@ enum
     kQueryNormalBus,
     kQuerySearchBus,
     
-} QueryTypeUsed;
+};
 
 
 @interface RouteSelectionViewController : UIViewController <RouteSelectionCellProtocol>

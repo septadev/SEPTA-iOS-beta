@@ -70,7 +70,10 @@
         
         [self.layer addSublayer:label];
         
-        CGSize size = [self.title sizeWithFont:[UIFont fontWithName:@"TrebuchetMS-Bold" size:45/2.0f] ];
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"TrebuchetMS-Bold" size: (45/2.0f) ]};
+        CGSize size = [self.title sizeWithAttributes:attributes]; // iOS 7.0
+        
+//        CGSize size = [self.title sizeWithFont:[UIFont fontWithName:@"TrebuchetMS-Bold" size:45/2.0f] ];  // Depreciated in iOS 7.0
         
 //        NSLog(@"Before Frame: %@", NSStringFromCGRect(self.frame));
         [self setFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width + size.width, self.frame.size.height)];

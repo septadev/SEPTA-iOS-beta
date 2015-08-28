@@ -767,6 +767,8 @@
         {
             
 //            [cell setAlpha:1.0f];
+            
+            // These two lines do nothing.  Should more code be uncommented or should this case section be removed?
             [cell setBackgroundColor: [UIColor clearColor]];
             RouteSelectionCell *rsCell = (RouteSelectionCell*)cell;
 //            NSLog(@"rsCell frame: %@, img: %@", NSStringFromCGRect(rsCell.frame), NSStringFromCGRect(rsCell.imgCell.frame));

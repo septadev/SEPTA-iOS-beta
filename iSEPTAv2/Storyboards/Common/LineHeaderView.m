@@ -173,7 +173,11 @@
     do
     {
         
-        size = [title sizeWithFont:[UIFont fontWithName:@"TrebuchetMS-Bold" size:_fontSize] ];
+        
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"TrebuchetMS-Bold" size:_fontSize]};
+        size = [title sizeWithAttributes:attributes]; // iOS 7.0
+        
+//        size = [title sizeWithFont:[UIFont fontWithName:@"TrebuchetMS-Bold" size:_fontSize] ];  // Depreciated in iOS 7.0
         
         if ( count == 0 && size.width < self.frame.size.width )
         {
@@ -198,7 +202,7 @@
         }
         count++;
         
-    } while ( ( fabsf(lastFontSize-_fontSize) > .500) && !stop);
+    } while ( ( fabs(lastFontSize-_fontSize) > .500) && !stop);
     
     
 //    NSLog(@"LHV - fontSize: %6.3f, count: %d", fontSize, count);

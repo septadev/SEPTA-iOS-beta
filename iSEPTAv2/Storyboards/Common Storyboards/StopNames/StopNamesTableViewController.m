@@ -1290,6 +1290,14 @@
 
 -(void) highlightTheDamnRow:(NSNumber*) index
 {
+    
+    //     TripData *trip = [_tableData objectForIndexPath:indexPath];
+
+    NSInteger rowCount = [_tableData numOfRowsForSection:0];
+    
+    if ( [index intValue] >= rowCount )
+        return;
+    
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:[index intValue] inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
     [self.navigationItem.rightBarButtonItem setEnabled:YES];
 }
