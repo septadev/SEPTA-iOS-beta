@@ -694,6 +694,10 @@
 		84CC993917B875620087477E /* TripListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CC993817B875620087477E /* TripListCell.m */; };
 		84CC993B17B87F060087477E /* TransitServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CC993A17B87F060087477E /* TransitServiceCell.xib */; };
 		84CC993E17B87F430087477E /* TransitServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CC993D17B87F430087477E /* TransitServiceCell.m */; };
+		84D05C1A1B936D8E00E30E20 /* RT_SpecialEvents@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D05C191B936D8E00E30E20 /* RT_SpecialEvents@2x.png */; };
+		84D05C1C1B936DA800E30E20 /* RT_SpecialEvents.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D05C1B1B936DA800E30E20 /* RT_SpecialEvents.png */; };
+		84D05C1E1B948DBB00E30E20 /* Greyscale in Resources */ = {isa = PBXBuildFile; fileRef = 84D05C1D1B948DBB00E30E20 /* Greyscale */; };
+		84D05C201B948DC900E30E20 /* Greyscale in Resources */ = {isa = PBXBuildFile; fileRef = 84D05C1F1B948DC900E30E20 /* Greyscale */; };
 		84D12B4D17E0A3E50079A8D7 /* NearestTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D12B4C17E0A3E30079A8D7 /* NearestTimeCell.m */; };
 		84D12B5117E1F0B90079A8D7 /* MobileSiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D12B5017E1F0B90079A8D7 /* MobileSiteViewController.m */; };
 		84F6AFFC17B18F5300680007 /* TabbedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6AFFB17B18F5300680007 /* TabbedButton.m */; };
@@ -1535,6 +1539,10 @@
 		84CC993A17B87F060087477E /* TransitServiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TransitServiceCell.xib; path = "Storyboards/Realtime/TransitView/Custom Cells/TransitServiceCell.xib"; sourceTree = "<group>"; };
 		84CC993C17B87F430087477E /* TransitServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransitServiceCell.h; path = "Storyboards/Realtime/TransitView/Custom Cells/TransitServiceCell.h"; sourceTree = "<group>"; };
 		84CC993D17B87F430087477E /* TransitServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransitServiceCell.m; path = "Storyboards/Realtime/TransitView/Custom Cells/TransitServiceCell.m"; sourceTree = "<group>"; };
+		84D05C191B936D8E00E30E20 /* RT_SpecialEvents@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RT_SpecialEvents@2x.png"; sourceTree = "<group>"; };
+		84D05C1B1B936DA800E30E20 /* RT_SpecialEvents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RT_SpecialEvents.png; sourceTree = "<group>"; };
+		84D05C1D1B948DBB00E30E20 /* Greyscale */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Greyscale; sourceTree = "<group>"; };
+		84D05C1F1B948DC900E30E20 /* Greyscale */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Greyscale; sourceTree = "<group>"; };
 		84D12B4B17E0A3E10079A8D7 /* NearestTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NearestTimeCell.h; path = Storyboards/Realtime/NearestLocation/Code/NearestTimeCell.h; sourceTree = "<group>"; };
 		84D12B4C17E0A3E30079A8D7 /* NearestTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NearestTimeCell.m; path = Storyboards/Realtime/NearestLocation/Code/NearestTimeCell.m; sourceTree = "<group>"; };
 		84D12B4F17E1F0B90079A8D7 /* MobileSiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MobileSiteViewController.h; path = Storyboards/Realtime/Mobile/MobileSiteViewController.h; sourceTree = "<group>"; };
@@ -3106,6 +3114,8 @@
 		8418EC5D17FEF6BB003607D1 /* HD */ = {
 			isa = PBXGroup;
 			children = (
+				84D05C1D1B948DBB00E30E20 /* Greyscale */,
+				84D05C191B936D8E00E30E20 /* RT_SpecialEvents@2x.png */,
 				8418EC5E17FEF6BB003607D1 /* RT_Find-Loc@2x.png */,
 				8418EC5F17FEF6BB003607D1 /* RT_NTA@2x.png */,
 				8418EC6017FEF6BB003607D1 /* RT_System-Status@2x.png */,
@@ -3119,6 +3129,8 @@
 		8418EC6417FEF6BB003607D1 /* SD */ = {
 			isa = PBXGroup;
 			children = (
+				84D05C1F1B948DC900E30E20 /* Greyscale */,
+				84D05C1B1B936DA800E30E20 /* RT_SpecialEvents.png */,
 				8418EC6517FEF6BB003607D1 /* RT_Find-Loc.png */,
 				8418EC6617FEF6BB003607D1 /* RT_NTA.png */,
 				8418EC6717FEF6BB003607D1 /* RT_System-Status.png */,
@@ -3834,6 +3846,7 @@
 				8418EDE217FEF6BD003607D1 /* Sys-Status-RRL-Click.png in Resources */,
 				8418EDCD17FEF6BD003607D1 /* Find_loc-white.png in Resources */,
 				8418EE7717FEF6BD003607D1 /* Station_alarm_white.png in Resources */,
+				84D05C201B948DC900E30E20 /* Greyscale in Resources */,
 				8418EECF18058D67003607D1 /* NTA.png in Resources */,
 				8418ED8617FEF6BD003607D1 /* cross-county@2x.png in Resources */,
 				8418EDB717FEF6BD003607D1 /* Refresh.png in Resources */,
@@ -3873,6 +3886,7 @@
 				8418EE1717FEF6BD003607D1 /* transitView-LUCY.png in Resources */,
 				8418EE9417FEF6BD003607D1 /* btnTransit_clicked.png in Resources */,
 				8418EDCE17FEF6BD003607D1 /* Find_Loc_BG.png in Resources */,
+				84D05C1E1B948DBB00E30E20 /* Greyscale in Resources */,
 				8418EE7E17FEF6BD003607D1 /* Alarm-white.png in Resources */,
 				27DB30081636D6B600153E4C /* 22.kml in Resources */,
 				8418EE7B17FEF6BD003607D1 /* attributionsIcon@2x.png in Resources */,
@@ -3904,6 +3918,7 @@
 				8418EDFE17FEF6BD003607D1 /* trainView-RRL-Red@2x.png in Resources */,
 				8418EE8B17FEF6BD003607D1 /* system_status-white@2x.png in Resources */,
 				8418EE2117FEF6BD003607D1 /* BSL_Orange@2x.png in Resources */,
+				84D05C1A1B936D8E00E30E20 /* RT_SpecialEvents@2x.png in Resources */,
 				27DB30141636D6B600153E4C /* 34.kml in Resources */,
 				8418EDEB17FEF6BD003607D1 /* tabConnectIconSelected.png in Resources */,
 				8418EE5017FEF6BD003607D1 /* Schedule_NHSL-BG@2x.png in Resources */,
@@ -3939,6 +3954,7 @@
 				27DB301C1636D6B600153E4C /* 43.kml in Resources */,
 				27DB301D1636D6B600153E4C /* 44.kml in Resources */,
 				8418EE7C17FEF6BD003607D1 /* update-white@2x.png in Resources */,
+				84D05C1C1B936DA800E30E20 /* RT_SpecialEvents.png in Resources */,
 				8418EE7917FEF6BD003607D1 /* Alarm-white@2x.png in Resources */,
 				27DB301E1636D6B600153E4C /* 46.kml in Resources */,
 				8418EE5317FEF6BD003607D1 /* Schedule_RRL-BG@2x.png in Resources */,

@@ -215,7 +215,6 @@
     [self.navigationItem setTitleView: newView];
     [self.navigationItem.titleView setNeedsDisplay];
     
-
     
     // Accessibility
     [self.btnNextToArrive        setAccessibilityLabel:@"Next to Arrive"];
@@ -446,9 +445,9 @@
 
     
 //    [_dbVersionAPI setTestMode: _testMode];
+    [_dbVersionAPI setTestMode:YES];
 
     [_dbVersionAPI fetchData];
-
     
 }
 
@@ -504,20 +503,23 @@
     if ( ( obj.message != nil ) && ( ![[_dbVersionAPI localMD5] isEqualToString: obj.md5] ) )
     {
         
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = @"MM/d/yy";
+        // Queue iOS 7's automatic downloading
         
-        NSDate *date = [dateFormatter dateFromString: obj.effective_date];
         
-        NSTimeInterval effectiveDiff = [date timeIntervalSinceNow];
-        NSTimeInterval lastDateDiff;
+//        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//        dateFormatter.dateFormat = @"MM/d/yy";
         
-        NSDate *lastDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:Update:DateOfLastNotification"];
+//        NSDate *date = [dateFormatter dateFromString: obj.effective_date];
         
-        if ( lastDate == nil )
-            lastDateDiff = 60*60*24*365;
-        else
-            lastDateDiff = [[NSDate date] timeIntervalSinceDate: lastDate];
+//        NSTimeInterval effectiveDiff = [date timeIntervalSinceNow];
+//        NSTimeInterval lastDateDiff;
+        
+//        NSDate *lastDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:Update:DateOfLastNotification"];
+//        
+//        if ( lastDate == nil )
+//            lastDateDiff = 60*60*24*365;
+//        else
+//            lastDateDiff = [[NSDate date] timeIntervalSinceDate: lastDate];
         
         
         // Two checks are performed to determine if an alert message goes up
@@ -526,14 +528,34 @@
         //   Has it been 24 hours since the last time this message was displayed?
         //   Has the latest schedule been downloaded?
         
-        if ( effectiveDiff < (60*60*24*7) && (lastDateDiff >= 60*2) )  // lastDateDiff was 60*60*24 (24 hours)
-        {
+//        if ( effectiveDiff < (60*60*24*7) && (lastDateDiff >= 60*2) )  // lastDateDiff was 60*60*24 (24 hours)
+//        {
             [self displayAlert: obj];
-        }
+//        }
         
     }
     
-//    [self downloadTest];
+    
+    if ( [obj isSpecialEvent] )  // Does the special_events hash contain any data
+    {
+        
+        SpecialEvent *sp = obj.special_event;
+        NSLog(@"Start: %@, End: %@, Message: %@", sp.start_datetime, sp.end_datetime, sp.event_message);
+        
+        // Check if current date is between start and end date
+        // If it is, disable NTA, TrainView, TransitView and Find Nearest Location
+        // and display the sp_message
+        
+//        obj.event_message
+//        obj.event_url
+//        obj.event_icon
+//        
+//        obj.start_datetime
+//        obj.end_datetime
+        
+    }
+    
+    
 }
 
 -(void) displayAlert: (DBVersionDataObject*) obj
@@ -817,15 +839,16 @@
         
         [_alertAPI addRoute:@"generic" ofModeType:kSEPTATypeNone];
     }
-    
     [_alertAPI fetchAlert];
 
+    
 //    NSArray *operations = [_alertAPI getOperations];
 //    for (AFJSONRequestOperation *jOp in operations)
 //    {
 //        // Add all operations to the operation queue
 //
 //    }
+    
     
 }
 

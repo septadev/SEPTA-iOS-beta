@@ -8,6 +8,17 @@
 
 #import "GetDBVersionAPI.h"
 
+@implementation SpecialEvent
+
+@synthesize start_datetime;
+@synthesize end_datetime;
+
+@synthesize event_message;
+@synthesize event_url;
+@synthesize event_icon;
+
+@end
+
 @implementation  DBVersionDataObject
 
 @synthesize effective_date;
@@ -17,9 +28,26 @@
 @synthesize version;
 @synthesize change_log;
 
+//@synthesize special_event;
+//@synthesize start_datetime;
+//@synthesize end_datetime;
+//
+//@synthesize sp_message;
+//@synthesize sp_url;
+//@synthesize sp_icon;
+
+
 -(NSString*) description
 {
     return [NSString stringWithFormat:@"Effective: %@, version: %@, md5: %@, title: %@, message: %@", effective_date, version, md5, title, message];
+}
+
+-(BOOL) isSpecialEvent
+{
+    if ( self.special_event != nil )
+        return YES;
+    else
+        return NO;
 }
 
 @end
@@ -41,7 +69,6 @@
 
 -(id) init
 {
-    
 
     if ( (  self = [super init] ) )
     {
@@ -79,7 +106,7 @@
     
     if ( _testMode )
     {
-        url = @"http://api0.septa.org/gga8893/dbVersion/";
+        url = @"http://www3.septa.org/beta/agga/dbVersion/";
     }
     else
     {
