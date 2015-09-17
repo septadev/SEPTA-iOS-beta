@@ -69,7 +69,7 @@ typedef NS_ENUM(NSInteger, GTFSCalendarOffset)
 +(BOOL) checkService:(int) serviceID withService:(int) otherID;
 
 +(BOOL) isServiceGood:(int) serviceID forRouteType:(GTFSRouteType) routeType withOffset:(GTFSCalendarOffset) offset;
-
++(BOOL) date:(NSDate*)date isBetweenDate:(NSDate*)beginDate andDate:(NSDate*)endDate;
 
 @end
 

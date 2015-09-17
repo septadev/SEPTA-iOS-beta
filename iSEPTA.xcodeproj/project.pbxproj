@@ -194,6 +194,18 @@
 		27C0AD0917DE3A3A005FDB80 /* NearestTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27C0AD0817DE3A39005FDB80 /* NearestTimeCell.xib */; };
 		27C8DC8F167FAD8C0030BAA8 /* SettingsGuide.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27C8DC8E167FAD8C0030BAA8 /* SettingsGuide.plist */; };
 		27CD6958192273A000823FFC /* CommentsFormTemp.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CD6957192273A000823FFC /* CommentsFormTemp.m */; };
+		27CE478D1B94C2D30000C6D6 /* RT_Find-Loc_GS@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CE47871B94C2D30000C6D6 /* RT_Find-Loc_GS@2x.png */; };
+		27CE478E1B94C2D30000C6D6 /* RT_NTA_GS@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CE47881B94C2D30000C6D6 /* RT_NTA_GS@2x.png */; };
+		27CE478F1B94C2D30000C6D6 /* RT_SpecialEvents_GS@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CE47891B94C2D30000C6D6 /* RT_SpecialEvents_GS@2x.png */; };
+		27CE47901B94C2D30000C6D6 /* RT_System-Status_GS@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CE478A1B94C2D30000C6D6 /* RT_System-Status_GS@2x.png */; };
+		27CE47911B94C2D30000C6D6 /* RT_TrainView_GS@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CE478B1B94C2D30000C6D6 /* RT_TrainView_GS@2x.png */; };
+		27CE47921B94C2D30000C6D6 /* RT_TransitView_GS@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CE478C1B94C2D30000C6D6 /* RT_TransitView_GS@2x.png */; };
+		27CE47991B94C2DF0000C6D6 /* RT_Find-Loc_GS.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CE47931B94C2DF0000C6D6 /* RT_Find-Loc_GS.png */; };
+		27CE479A1B94C2DF0000C6D6 /* RT_NTA_GS.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CE47941B94C2DF0000C6D6 /* RT_NTA_GS.png */; };
+		27CE479B1B94C2DF0000C6D6 /* RT_SpecialEvents_GS.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CE47951B94C2DF0000C6D6 /* RT_SpecialEvents_GS.png */; };
+		27CE479C1B94C2DF0000C6D6 /* RT_System-Status_GS.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CE47961B94C2DF0000C6D6 /* RT_System-Status_GS.png */; };
+		27CE479D1B94C2DF0000C6D6 /* RT_TrainView_GS.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CE47971B94C2DF0000C6D6 /* RT_TrainView_GS.png */; };
+		27CE479E1B94C2DF0000C6D6 /* RT_TransitView_GS.png in Resources */ = {isa = PBXBuildFile; fileRef = 27CE47981B94C2DF0000C6D6 /* RT_TransitView_GS.png */; };
 		27D4783B1845472B00854F2D /* ElevatorStatusObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D4783A1845472B00854F2D /* ElevatorStatusObject.m */; };
 		27D91F3017F0A5AE00627ECD /* TrainSlidingStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27D91F2F17F0A5AE00627ECD /* TrainSlidingStoryboard.storyboard */; };
 		27D91F3617F0A60100627ECD /* TrainSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D91F3517F0A60100627ECD /* TrainSlidingViewController.m */; };
@@ -696,8 +708,6 @@
 		84CC993E17B87F430087477E /* TransitServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CC993D17B87F430087477E /* TransitServiceCell.m */; };
 		84D05C1A1B936D8E00E30E20 /* RT_SpecialEvents@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D05C191B936D8E00E30E20 /* RT_SpecialEvents@2x.png */; };
 		84D05C1C1B936DA800E30E20 /* RT_SpecialEvents.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D05C1B1B936DA800E30E20 /* RT_SpecialEvents.png */; };
-		84D05C1E1B948DBB00E30E20 /* Greyscale in Resources */ = {isa = PBXBuildFile; fileRef = 84D05C1D1B948DBB00E30E20 /* Greyscale */; };
-		84D05C201B948DC900E30E20 /* Greyscale in Resources */ = {isa = PBXBuildFile; fileRef = 84D05C1F1B948DC900E30E20 /* Greyscale */; };
 		84D12B4D17E0A3E50079A8D7 /* NearestTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D12B4C17E0A3E30079A8D7 /* NearestTimeCell.m */; };
 		84D12B5117E1F0B90079A8D7 /* MobileSiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D12B5017E1F0B90079A8D7 /* MobileSiteViewController.m */; };
 		84F6AFFC17B18F5300680007 /* TabbedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6AFFB17B18F5300680007 /* TabbedButton.m */; };
@@ -1006,6 +1016,18 @@
 		27C8DC8E167FAD8C0030BAA8 /* SettingsGuide.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SettingsGuide.plist; sourceTree = "<group>"; };
 		27CD6956192273A000823FFC /* CommentsFormTemp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentsFormTemp.h; path = CustomerService/CommentsFormTemp.h; sourceTree = "<group>"; };
 		27CD6957192273A000823FFC /* CommentsFormTemp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentsFormTemp.m; path = CustomerService/CommentsFormTemp.m; sourceTree = "<group>"; };
+		27CE47871B94C2D30000C6D6 /* RT_Find-Loc_GS@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RT_Find-Loc_GS@2x.png"; path = "Grayscale/RT_Find-Loc_GS@2x.png"; sourceTree = "<group>"; };
+		27CE47881B94C2D30000C6D6 /* RT_NTA_GS@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RT_NTA_GS@2x.png"; path = "Grayscale/RT_NTA_GS@2x.png"; sourceTree = "<group>"; };
+		27CE47891B94C2D30000C6D6 /* RT_SpecialEvents_GS@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RT_SpecialEvents_GS@2x.png"; path = "Grayscale/RT_SpecialEvents_GS@2x.png"; sourceTree = "<group>"; };
+		27CE478A1B94C2D30000C6D6 /* RT_System-Status_GS@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RT_System-Status_GS@2x.png"; path = "Grayscale/RT_System-Status_GS@2x.png"; sourceTree = "<group>"; };
+		27CE478B1B94C2D30000C6D6 /* RT_TrainView_GS@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RT_TrainView_GS@2x.png"; path = "Grayscale/RT_TrainView_GS@2x.png"; sourceTree = "<group>"; };
+		27CE478C1B94C2D30000C6D6 /* RT_TransitView_GS@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RT_TransitView_GS@2x.png"; path = "Grayscale/RT_TransitView_GS@2x.png"; sourceTree = "<group>"; };
+		27CE47931B94C2DF0000C6D6 /* RT_Find-Loc_GS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RT_Find-Loc_GS.png"; path = "Grayscale/RT_Find-Loc_GS.png"; sourceTree = "<group>"; };
+		27CE47941B94C2DF0000C6D6 /* RT_NTA_GS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RT_NTA_GS.png; path = Grayscale/RT_NTA_GS.png; sourceTree = "<group>"; };
+		27CE47951B94C2DF0000C6D6 /* RT_SpecialEvents_GS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RT_SpecialEvents_GS.png; path = Grayscale/RT_SpecialEvents_GS.png; sourceTree = "<group>"; };
+		27CE47961B94C2DF0000C6D6 /* RT_System-Status_GS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RT_System-Status_GS.png"; path = "Grayscale/RT_System-Status_GS.png"; sourceTree = "<group>"; };
+		27CE47971B94C2DF0000C6D6 /* RT_TrainView_GS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RT_TrainView_GS.png; path = Grayscale/RT_TrainView_GS.png; sourceTree = "<group>"; };
+		27CE47981B94C2DF0000C6D6 /* RT_TransitView_GS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RT_TransitView_GS.png; path = Grayscale/RT_TransitView_GS.png; sourceTree = "<group>"; };
 		27D478391845472B00854F2D /* ElevatorStatusObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ElevatorStatusObject.h; path = Storyboards/Realtime/SystemStatus/ElevatorStatusObject.h; sourceTree = "<group>"; };
 		27D4783A1845472B00854F2D /* ElevatorStatusObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ElevatorStatusObject.m; path = Storyboards/Realtime/SystemStatus/ElevatorStatusObject.m; sourceTree = "<group>"; };
 		27D91F2F17F0A5AE00627ECD /* TrainSlidingStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrainSlidingStoryboard.storyboard; sourceTree = "<group>"; };
@@ -1541,8 +1563,6 @@
 		84CC993D17B87F430087477E /* TransitServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransitServiceCell.m; path = "Storyboards/Realtime/TransitView/Custom Cells/TransitServiceCell.m"; sourceTree = "<group>"; };
 		84D05C191B936D8E00E30E20 /* RT_SpecialEvents@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RT_SpecialEvents@2x.png"; sourceTree = "<group>"; };
 		84D05C1B1B936DA800E30E20 /* RT_SpecialEvents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RT_SpecialEvents.png; sourceTree = "<group>"; };
-		84D05C1D1B948DBB00E30E20 /* Greyscale */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Greyscale; sourceTree = "<group>"; };
-		84D05C1F1B948DC900E30E20 /* Greyscale */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Greyscale; sourceTree = "<group>"; };
 		84D12B4B17E0A3E10079A8D7 /* NearestTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NearestTimeCell.h; path = Storyboards/Realtime/NearestLocation/Code/NearestTimeCell.h; sourceTree = "<group>"; };
 		84D12B4C17E0A3E30079A8D7 /* NearestTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NearestTimeCell.m; path = Storyboards/Realtime/NearestLocation/Code/NearestTimeCell.m; sourceTree = "<group>"; };
 		84D12B4F17E1F0B90079A8D7 /* MobileSiteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MobileSiteViewController.h; path = Storyboards/Realtime/Mobile/MobileSiteViewController.h; sourceTree = "<group>"; };
@@ -2349,6 +2369,32 @@
 			name = "Leave Feedback";
 			sourceTree = "<group>";
 		};
+		27CE47851B94C27D0000C6D6 /* Grayscale */ = {
+			isa = PBXGroup;
+			children = (
+				27CE47871B94C2D30000C6D6 /* RT_Find-Loc_GS@2x.png */,
+				27CE47881B94C2D30000C6D6 /* RT_NTA_GS@2x.png */,
+				27CE47891B94C2D30000C6D6 /* RT_SpecialEvents_GS@2x.png */,
+				27CE478A1B94C2D30000C6D6 /* RT_System-Status_GS@2x.png */,
+				27CE478B1B94C2D30000C6D6 /* RT_TrainView_GS@2x.png */,
+				27CE478C1B94C2D30000C6D6 /* RT_TransitView_GS@2x.png */,
+			);
+			name = Grayscale;
+			sourceTree = "<group>";
+		};
+		27CE47861B94C2840000C6D6 /* Grayscale */ = {
+			isa = PBXGroup;
+			children = (
+				27CE47931B94C2DF0000C6D6 /* RT_Find-Loc_GS.png */,
+				27CE47941B94C2DF0000C6D6 /* RT_NTA_GS.png */,
+				27CE47951B94C2DF0000C6D6 /* RT_SpecialEvents_GS.png */,
+				27CE47961B94C2DF0000C6D6 /* RT_System-Status_GS.png */,
+				27CE47971B94C2DF0000C6D6 /* RT_TrainView_GS.png */,
+				27CE47981B94C2DF0000C6D6 /* RT_TransitView_GS.png */,
+			);
+			name = Grayscale;
+			sourceTree = "<group>";
+		};
 		27D91F3117F0A5B300627ECD /* Sliding */ = {
 			isa = PBXGroup;
 			children = (
@@ -3114,7 +3160,7 @@
 		8418EC5D17FEF6BB003607D1 /* HD */ = {
 			isa = PBXGroup;
 			children = (
-				84D05C1D1B948DBB00E30E20 /* Greyscale */,
+				27CE47851B94C27D0000C6D6 /* Grayscale */,
 				84D05C191B936D8E00E30E20 /* RT_SpecialEvents@2x.png */,
 				8418EC5E17FEF6BB003607D1 /* RT_Find-Loc@2x.png */,
 				8418EC5F17FEF6BB003607D1 /* RT_NTA@2x.png */,
@@ -3129,7 +3175,7 @@
 		8418EC6417FEF6BB003607D1 /* SD */ = {
 			isa = PBXGroup;
 			children = (
-				84D05C1F1B948DC900E30E20 /* Greyscale */,
+				27CE47861B94C2840000C6D6 /* Grayscale */,
 				84D05C1B1B936DA800E30E20 /* RT_SpecialEvents.png */,
 				8418EC6517FEF6BB003607D1 /* RT_Find-Loc.png */,
 				8418EC6617FEF6BB003607D1 /* RT_NTA.png */,
@@ -3846,7 +3892,6 @@
 				8418EDE217FEF6BD003607D1 /* Sys-Status-RRL-Click.png in Resources */,
 				8418EDCD17FEF6BD003607D1 /* Find_loc-white.png in Resources */,
 				8418EE7717FEF6BD003607D1 /* Station_alarm_white.png in Resources */,
-				84D05C201B948DC900E30E20 /* Greyscale in Resources */,
 				8418EECF18058D67003607D1 /* NTA.png in Resources */,
 				8418ED8617FEF6BD003607D1 /* cross-county@2x.png in Resources */,
 				8418EDB717FEF6BD003607D1 /* Refresh.png in Resources */,
@@ -3867,6 +3912,7 @@
 				8418EDE717FEF6BD003607D1 /* Bus-black.png in Resources */,
 				8418EE2217FEF6BD003607D1 /* BSL_Owl@2x.png in Resources */,
 				27DB30001636D6B600153E4C /* 14.kml in Resources */,
+				27CE47991B94C2DF0000C6D6 /* RT_Find-Loc_GS.png in Resources */,
 				271F03001871C56700CDFB16 /* BSL.kml in Resources */,
 				843445B8183E6A5500BA7A73 /* Filter-123.png in Resources */,
 				27DB30011636D6B600153E4C /* 15.kml in Resources */,
@@ -3879,6 +3925,7 @@
 				27DB30061636D6B600153E4C /* 20.kml in Resources */,
 				8418EE1F17FEF6BD003607D1 /* transitView-white.png in Resources */,
 				8418EE9517FEF6BD003607D1 /* system_status-white.png in Resources */,
+				27CE479A1B94C2DF0000C6D6 /* RT_NTA_GS.png in Resources */,
 				8418EDB417FEF6BD003607D1 /* Fare.png in Resources */,
 				8418EDA017FEF6BD003607D1 /* Back@2x.png in Resources */,
 				8418EEA217FEFA42003607D1 /* second-menu@2x.png in Resources */,
@@ -3886,7 +3933,6 @@
 				8418EE1717FEF6BD003607D1 /* transitView-LUCY.png in Resources */,
 				8418EE9417FEF6BD003607D1 /* btnTransit_clicked.png in Resources */,
 				8418EDCE17FEF6BD003607D1 /* Find_Loc_BG.png in Resources */,
-				84D05C1E1B948DBB00E30E20 /* Greyscale in Resources */,
 				8418EE7E17FEF6BD003607D1 /* Alarm-white.png in Resources */,
 				27DB30081636D6B600153E4C /* 22.kml in Resources */,
 				8418EE7B17FEF6BD003607D1 /* attributionsIcon@2x.png in Resources */,
@@ -4012,11 +4058,13 @@
 				8418EE5717FEF6BD003607D1 /* Schedule_Trolley@2x.png in Resources */,
 				8418EE4717FEF6BD003607D1 /* Schedule_Bus_Owl@2x.png in Resources */,
 				27DB302D1636D6B600153E4C /* 62.kml in Resources */,
+				27CE479C1B94C2DF0000C6D6 /* RT_System-Status_GS.png in Resources */,
 				8418ED9317FEF6BD003607D1 /* Cash-Fare.png in Resources */,
 				27DB302E1636D6B600153E4C /* 64.kml in Resources */,
 				27DB302F1636D6B600153E4C /* 65.kml in Resources */,
 				8418EDBB17FEF6BD003607D1 /* RT_NTA@2x.png in Resources */,
 				271DA8621808A0B4009ED7D6 /* septaIcon-57px.png in Resources */,
+				27CE479B1B94C2DF0000C6D6 /* RT_SpecialEvents_GS.png in Resources */,
 				8418EE7317FEF6BD003607D1 /* Schedule_Trolley-BG.png in Resources */,
 				8418EE9017FEF6BD003607D1 /* btnMFLBSLNHSL_clicked.png in Resources */,
 				27DB30301636D6B600153E4C /* 66.kml in Resources */,
@@ -4054,6 +4102,7 @@
 				8418EE4317FEF6BD003607D1 /* Schedule_BSL@2x.png in Resources */,
 				8418EE4817FEF6BD003607D1 /* Schedule_Bus_Owl_BG@2x.png in Resources */,
 				8418EE8617FEF6BD003607D1 /* btnMFLBSLNHSL_clicked@2x.png in Resources */,
+				27CE478E1B94C2D30000C6D6 /* RT_NTA_GS@2x.png in Resources */,
 				27DB303C1636D6B600153E4C /* 88.kml in Resources */,
 				8418EDA217FEF6BD003607D1 /* commentsIcon@2x.png in Resources */,
 				8418EDA717FEF6BD003607D1 /* twitterIcon@2x.png in Resources */,
@@ -4071,6 +4120,7 @@
 				8418EE4517FEF6BD003607D1 /* Schedule_Bus-BG@2x.png in Resources */,
 				8418EE0D17FEF6BD003607D1 /* transitView-Trolley-Red@2x.png in Resources */,
 				27DB30401636D6B600153E4C /* 92.kml in Resources */,
+				27CE479E1B94C2DF0000C6D6 /* RT_TransitView_GS.png in Resources */,
 				27DB30411636D6B600153E4C /* 93.kml in Resources */,
 				8418EE0417FEF6BD003607D1 /* transitView-Bus@2x.png in Resources */,
 				843445B218367D4400BA7A73 /* PlainNamesCell.xib in Resources */,
@@ -4130,6 +4180,7 @@
 				27DB30591636D6B600153E4C /* 118.kml in Resources */,
 				27DB305A1636D6B600153E4C /* 119.kml in Resources */,
 				27DB305B1636D6B600153E4C /* 120.kml in Resources */,
+				27CE47921B94C2D30000C6D6 /* RT_TransitView_GS@2x.png in Resources */,
 				8418EDFB17FEF6BD003607D1 /* tabSettingsIconSelected.png in Resources */,
 				8418EDA817FEF6BD003607D1 /* blankGrey-BG.png in Resources */,
 				8418EE4C17FEF6BD003607D1 /* Schedule_CCT_small@2x.png in Resources */,
@@ -4181,6 +4232,7 @@
 				27DB30701636D6B600153E4C /* 310.kml in Resources */,
 				8418EDE517FEF6BD003607D1 /* Sys-Status-Transit.png in Resources */,
 				8418EE9A17FEF6BD003607D1 /* gradient_tab@2x.png in Resources */,
+				27CE479D1B94C2DF0000C6D6 /* RT_TrainView_GS.png in Resources */,
 				8418EDF917FEF6BD003607D1 /* tabSettingsIcon.png in Resources */,
 				8418ED7C17FEF6BD003607D1 /* BG_pattern@2x.png in Resources */,
 				2700AE7018F456E900933C2E /* system_status_suspended@2x.png in Resources */,
@@ -4194,6 +4246,7 @@
 				27DB30751636D6B600153E4C /* H.kml in Resources */,
 				8418ED8E17FEF6BD003607D1 /* trailpass-BG@2x.png in Resources */,
 				8418EEC318058D67003607D1 /* NTA-start@2x.png in Resources */,
+				27CE478D1B94C2D30000C6D6 /* RT_Find-Loc_GS@2x.png in Resources */,
 				8418ED9017FEF6BD003607D1 /* transpass-BG@2x.png in Resources */,
 				8418EDA317FEF6BD003607D1 /* customerServiceIcon@2x.png in Resources */,
 				27DB30771636D6B600153E4C /* J.kml in Resources */,
@@ -4212,6 +4265,7 @@
 				8418EE6E17FEF6BD003607D1 /* Schedule_NHSL.png in Resources */,
 				27DB307C1636D6B600153E4C /* R.kml in Resources */,
 				8418EE3E17FEF6BD003607D1 /* Trolley_white.png in Resources */,
+				27CE478F1B94C2D30000C6D6 /* RT_SpecialEvents_GS@2x.png in Resources */,
 				8418EE1C17FEF6BD003607D1 /* transitView-Trolley-Blue.png in Resources */,
 				8418ED8217FEF6BD003607D1 /* Back.png in Resources */,
 				27AEF7B4188EC6C0004EC5E0 /* tipsBackActive@2x.png in Resources */,
@@ -4247,6 +4301,7 @@
 				8418ED9917FEF6BD003607D1 /* One-day-Convenience.png in Resources */,
 				8418EDE917FEF6BD003607D1 /* tabConnectIcon.png in Resources */,
 				8418EDF117FEF6BD003607D1 /* tabRealtimeIcon.png in Resources */,
+				27CE47911B94C2D30000C6D6 /* RT_TrainView_GS@2x.png in Resources */,
 				8418ED8517FEF6BD003607D1 /* cross-county-BG@2x.png in Resources */,
 				8418EDAF17FEF6BD003607D1 /* Advisory@2x.png in Resources */,
 				8418ED9117FEF6BD003607D1 /* transpass@2x.png in Resources */,
@@ -4350,6 +4405,7 @@
 				27C0ACFE17DE2A2B005FDB80 /* TwitterStoryboard.storyboard in Resources */,
 				8418ED7217FEF6BD003607D1 /* septaIcon.png in Resources */,
 				27C0AD0017DE2DF7005FDB80 /* FacebookStoryboard.storyboard in Resources */,
+				27CE47901B94C2D30000C6D6 /* RT_System-Status_GS@2x.png in Resources */,
 				8418EDBF17FEF6BD003607D1 /* RT_TransitView@2x.png in Resources */,
 				27C0AD0917DE3A3A005FDB80 /* NearestTimeCell.xib in Resources */,
 				27D91F3017F0A5AE00627ECD /* TrainSlidingStoryboard.storyboard in Resources */,

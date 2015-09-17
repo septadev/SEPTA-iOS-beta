@@ -196,33 +196,33 @@
 
 
 #ifdef ENABLE_PUSH_NOTIFICATIONS
--(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
-{
-    NSString *str=[NSString stringWithFormat:@"Error =%@",error];
-    NSLog(@"AppDelegate -- didFailToRegisterForRemoteNotificationsWithError -- %@",str);
-}
-
--(void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-{
-    NSString *str=[NSString stringWithFormat:@"Device Token=%@",deviceToken];
-    NSLog(@"AppDelegate -- didRegisterForRemoteNotificationsWithDeviceToken -- %@",str);
-    [self setDeviceToken: deviceToken];
-    // Send Token To Server
-}
-
--(void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceError:(NSError *) err
-{
-    NSString *str=[NSString stringWithFormat:@"Error =%@",err];
-    NSLog(@"AppDelegate -- didRegisterForRemoteNotificationsWithDeviceError -- %@",str);
-}
-
--(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
-{
-    for (id key in userInfo)
-    {
-        NSLog(@"AppDelegate - didReceiveRemoteNotification -- key : %@, value: %@", key,[userInfo objectForKey:key]);
-    }
-}
+//-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+//{
+//    NSString *str=[NSString stringWithFormat:@"Error =%@",error];
+//    NSLog(@"AppDelegate -- didFailToRegisterForRemoteNotificationsWithError -- %@",str);
+//}
+//
+//-(void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+//{
+//    NSString *str=[NSString stringWithFormat:@"Device Token=%@",deviceToken];
+//    NSLog(@"AppDelegate -- didRegisterForRemoteNotificationsWithDeviceToken -- %@",str);
+//    [self setDeviceToken: deviceToken];
+//    // Send Token To Server
+//}
+//
+//-(void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceError:(NSError *) err
+//{
+//    NSString *str=[NSString stringWithFormat:@"Error =%@",err];
+//    NSLog(@"AppDelegate -- didRegisterForRemoteNotificationsWithDeviceError -- %@",str);
+//}
+//
+//-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+//{
+//    for (id key in userInfo)
+//    {
+//        NSLog(@"AppDelegate - didReceiveRemoteNotification -- key : %@, value: %@", key,[userInfo objectForKey:key]);
+//    }
+//}
 #endif
 
 

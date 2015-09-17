@@ -13,11 +13,18 @@
 @synthesize start_datetime;
 @synthesize end_datetime;
 
-@synthesize event_message;
-@synthesize event_url;
-@synthesize event_icon;
+@synthesize message;
+@synthesize url;
+@synthesize icon;
+
+-(NSString*) description
+{
+    return [NSString stringWithFormat:@"Start: %@, End: %@, Message: %@, url: %@, icon: %@", start_datetime, end_datetime, message, url, icon];
+}
 
 @end
+
+
 
 @implementation  DBVersionDataObject
 
@@ -156,7 +163,23 @@
         
         @try
         {
-            [dbObject setValue:obj forKey:key];
+            if ( [(NSString*)key isEqualToString:@"special_event"] )
+            {
+                dbObject.special_event = [[SpecialEvent alloc] init];                
+                [obj enumerateKeysAndObjectsUsingBlock:^(id key2, id obj2, BOOL *stop2)
+                 {
+                     @try {
+                         [dbObject.special_event setValue:obj2 forKey:key2];
+                     }
+                     @catch (NSException *exception) {
+                         NSLog(@"GetDBVersionAPI processDBVersionJSON SpecialEvents exception for key '%@': '%@'", key2, exception);
+                     }
+
+                 }];
+                
+            }
+            else
+                [dbObject setValue:obj forKey:key];
         }
         @catch (NSException *exception) {
             NSLog(@"GetDBVersionAPI processDBVersionJSON exception for key %@: %@", key, exception);

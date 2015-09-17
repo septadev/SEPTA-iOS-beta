@@ -445,7 +445,7 @@
 
     
 //    [_dbVersionAPI setTestMode: _testMode];
-    [_dbVersionAPI setTestMode:YES];
+//    [_dbVersionAPI setTestMode:YES];
 
     [_dbVersionAPI fetchData];
     
@@ -540,7 +540,96 @@
     {
         
         SpecialEvent *sp = obj.special_event;
-        NSLog(@"Start: %@, End: %@, Message: %@", sp.start_datetime, sp.end_datetime, sp.event_message);
+//        NSLog(@"Start: %@, End: %@, Message: %@", sp.start_datetime, sp.end_datetime, sp.message);
+        
+        // Date format: YYYY-MM-dd H:i:s
+        NSDateFormatter *startDateFormat = [[NSDateFormatter alloc] init];
+        [startDateFormat setDateFormat:@"yyyy-MM-dd H:m:s"];
+        NSDate *start_date = [startDateFormat dateFromString: sp.start_datetime];
+
+        NSDateFormatter *endDateFormat = [[NSDateFormatter alloc] init];
+        [endDateFormat setDateFormat:@"yyyy-MM-dd H:m:s"];
+        NSDate *end_date = [endDateFormat dateFromString: sp.end_datetime];
+
+        
+        if ( [GTFSCommon date: [NSDate date] isBetweenDate: start_date andDate: end_date] )
+        {
+            // Disable NTA, TrainView, TransitView and Find Nearest Location
+            
+            // Accessibility
+//            [self.btnNextToArrive        setAccessibilityLabel:@"Next to Arrive"];
+//            [self.btnTrainView           setAccessibilityLabel:@"TrainView"];
+//            [self.btnTransitView         setAccessibilityLabel:@"TransitView"];
+//            [self.btnSystemStatus        setAccessibilityLabel:@"System Status"];
+//            [self.btnFindNearestLocation setAccessibilityLabel:@"Fine Nearest Location"];
+//            [self.btnGuide               setAccessibilityLabel:@"Guide"];
+
+//            [self.btnGuide setEnabled:NO];
+            
+//            [self.btnNextToArrive setImage:[UIImage imageNamed:@"RT_NTA_GS.png"] forState:UIControlStateDisabled];
+            
+            [self.btnNextToArrive setEnabled:NO];
+            [self.btnTransitView setEnabled:NO];
+            [self.btnTrainView setEnabled:NO];
+
+            [self.btnFindNearestLocation setEnabled:NO];
+
+//            [self.lblNextToArrive setTextColor:[UIColor colorWithRed:66.0/256.0 green:66.0/256.0 blue:66.0/256.0 alpha:1]];
+            [self.lblNextToArrive setTextColor: [UIColor lightGrayColor] ];
+            [self.lblTrainView setTextColor:[UIColor  lightGrayColor] ];
+            [self.lblTransitView setTextColor:[UIColor lightGrayColor] ];
+            [self.lblFindNeareset setTextColor:[UIColor lightGrayColor] ];
+            [self.lblLocations setTextColor: [UIColor lightGrayColor] ];
+
+            
+            ALAlertBanner *alertBanner = [ALAlertBanner alertBannerForView:self.view
+                                                                     style:ALAlertBannerStyleFailure
+                                                                  position:ALAlertBannerPositionBottom
+                                                                     title:@"Special Event"
+                                                                  subtitle:sp.message
+                                                               tappedBlock:^(ALAlertBanner *alertBanner)
+                                          {
+                                              NSLog(@"Generic Message: %@!", obj.message);
+                                              [alertBanner hide];
+                                          }];
+            
+            NSCharacterSet *separators = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+            NSArray *words = [sp.message componentsSeparatedByCharactersInSet:separators];
+            
+            NSIndexSet *separatorIndexes = [words indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+                return [obj isEqualToString:@""];
+            }];
+            
+            int numOfSeconds = (int)( ([words count] - [separatorIndexes count])/3.0 );  // Assume, on average, a person reads 3 words per second
+            
+            // Maintain a minimum and maximum time
+            if ( numOfSeconds < 10 )
+                numOfSeconds = 10;
+            else if ( numOfSeconds > 20 )
+                numOfSeconds = 20;
+            
+//            NSLog(@"numOfSeconds: %d", numOfSeconds);
+            
+            [alertBanner setSecondsToShow: numOfSeconds];
+            [alertBanner show];
+
+            
+        }
+        else
+        {
+            [self.btnNextToArrive setEnabled:YES];
+            [self.btnTransitView setEnabled:YES];
+            [self.btnTrainView setEnabled:YES];
+            
+            [self.btnFindNearestLocation setEnabled:YES];
+            
+            [self.lblNextToArrive setTextColor:[UIColor whiteColor] ];
+            [self.lblTrainView    setTextColor:[UIColor whiteColor] ];
+            [self.lblTransitView  setTextColor:[UIColor whiteColor] ];
+            [self.lblFindNeareset setTextColor:[UIColor whiteColor] ];
+            [self.lblLocations    setTextColor:[UIColor whiteColor] ];
+        }
+        
         
         // Check if current date is between start and end date
         // If it is, disable NTA, TrainView, TransitView and Find Nearest Location

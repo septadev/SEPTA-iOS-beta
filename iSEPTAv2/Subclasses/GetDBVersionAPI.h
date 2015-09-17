@@ -20,9 +20,9 @@
 @property (nonatomic, strong) NSString *start_datetime;
 @property (nonatomic, strong) NSString *end_datetime;
 
-@property (nonatomic, strong) NSString *event_message;
-@property (nonatomic, strong) NSString *event_url;
-@property (nonatomic, strong) NSString *event_icon;
+@property (nonatomic, strong) NSString *message;
+@property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) NSString *icon;
 
 @end
 

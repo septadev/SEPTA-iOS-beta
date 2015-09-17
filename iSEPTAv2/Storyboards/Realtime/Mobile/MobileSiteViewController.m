@@ -30,7 +30,7 @@
     
     // @"http://septa.org/service/septa-app.html"
 //    NSURL *url = [[NSURL alloc] initWithString:@"http://www.septa.org/m/"];
-    NSURL *url = [[NSURL alloc] initWithString:@"http://www.septa.org/service/septa-app-mobile.html"];
+    NSURL *url = [[NSURL alloc] initWithString:@"http://www.septa.org/service/special-events-mobile.html"];
         
     [self.webView loadRequest: [NSURLRequest requestWithURL: url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0f] ];
     [self.webView setHidden:NO];
@@ -39,7 +39,7 @@
     CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed:@"tipsBack.png" withTarget:self andWithAction:@selector(backButtonPressed:)];
     self.navigationItem.leftBarButtonItem = backBarButtonItem;
     
-    LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0,500, 32) withTitle:@"Tips"];
+    LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0,500, 32) withTitle:@"Special Events"];
     [self.navigationItem setTitleView:titleView];
     
 }
