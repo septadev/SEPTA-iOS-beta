@@ -576,7 +576,7 @@ static void strToCoords(NSString *str, CLLocationCoordinate2D **coordsOut, NSUIn
 }
 
 // Return the list of KMLPlacemarks from the object graph that contain overlays
-// (as opposed to simply point annotations).
+// (as opposed to simply point annotations). 
 - (NSArray *)overlays
 {
     NSMutableArray *overlays = [[NSMutableArray alloc] init];

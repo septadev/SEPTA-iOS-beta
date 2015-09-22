@@ -159,7 +159,7 @@
 //    {
         // If the network is not reachable, try again in another 20 seconds
         [self getLatestJSONData];       // Grabs the last updated data on the vehciles of the requested route
-        
+    
         [self loadKMLInTheBackground];  // Loads the KML for the requested route in the background
 //    }
     
@@ -416,7 +416,7 @@
         case kGTFSRouteTypeTrolley:
             stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TransitView/%@", self.routeName];
             webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            NSLog(@"TMVC - getLatestJSONData (bus) -- api url: %@", webStringURL);
+//            NSLog(@"TMVC - getLatestJSONData (bus) -- api url: %@", webStringURL);
             
             break;
             
@@ -424,7 +424,7 @@
             
             stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TrainView/"];
             webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            NSLog(@"TMVC - getLatestJSONData (rail) -- api url: %@", webStringURL);
+//            NSLog(@"TMVC - getLatestJSONData (rail) -- api url: %@", webStringURL);
             
             break;
             
@@ -586,7 +586,8 @@
                 
                 [readData addObject: tvObject];
                 [self addAnnotationUsingwithObject: tvObject];
-                
+            }
+            
             break;
             
         case kGTFSRouteTypeRail:
@@ -811,25 +812,26 @@
 
 
 #pragma mark - KMLParser
--(MKOverlayRenderer *) mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
-{
-    
-    NSLog(@"mapView rendererForOverlay");
-    if ([overlay isKindOfClass:[MKPolyline class]])
-    {
-        MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
-        
-        renderer.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
-        renderer.lineWidth   = 3;
-        
-        return renderer;
-    }
-    
-    return nil;
-    
-}
+//-(MKOverlayRenderer *) mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+//{
+//    
+//    NSLog(@"mapView rendererForOverlay");
+//    if ([overlay isKindOfClass:[MKPolyline class]])
+//    {
+//        MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
+//        
+//        renderer.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
+//        renderer.lineWidth   = 3;
+//        
+//        return renderer;
+//    }
+//    
+//    return nil;
+//    
+//}
 
 
+#pragma mark - KMLParser
 -(void)loadkml
 {
     
@@ -838,101 +840,66 @@
     GTFSRouteType routeType = (GTFSRouteType)[self.travelMode intValue];
     
     if ( routeType == kGTFSRouteTypeRail )
-        path = [NSString stringWithFormat:@"regionalrail"];
+        path = [[NSBundle mainBundle] pathForResource:@"regionalrail" ofType:@"kml"];
     else if ( routeType == kGTFSRouteTypeTrolley || routeType == kGTFSRouteTypeBus )
-        path = [NSString stringWithFormat:@"%@",self.routeName];
+        path = [[NSBundle mainBundle] pathForResource:self.routeName ofType:@"kml"];  // Hardcoded for now
     else if ( routeType == kGTFSRouteTypeSubway )
-        path = [NSString stringWithFormat:@"%@",self.routeName];
+        path = [[NSBundle mainBundle] pathForResource:self.routeName ofType:@"kml"];  // Hardcoded for now
     else
         path = nil;
     
     if ( path == nil )
         return;
-
-    KMLObject *kObj = [[KMLObject alloc] initWithFilename:path forMapView:self.mapView];
-    
-    CLLocationDegrees latDelta = kObj.latDelta;
-    MKCoordinateSpan span = MKCoordinateSpanMake(fabs(latDelta),0.0);
-    MKCoordinateRegion region = MKCoordinateRegionMake(kObj.midCoordinate, span);
-    
-    [[self mapView] setRegion:region];
     
     
-//    KMLOverlay *overlay = [[KMLOverlay alloc] initWithKML:kObj];
-//    if ( overlay != nil )
-//        [[self mapView] addOverlay:overlay];
-//
-//    [self.mapView removeAnnotations: self.mapView.annotations];
-//    [self.mapView removeOverlays:    self.mapView.overlays];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    kmlParser = [[KMLParser alloc] initWithURL:url];
+    [kmlParser parseKML];
     
-    return;
+    // Add all of the MKOverlay objects parsed from the KML file to the map.
+    NSArray *overlays = [kmlParser overlays];
+    //    NSLog(@"TVVC: overlays - %d",[overlays count]);
+    [self.mapView addOverlays:overlays];
     
-
-//    NSString *path2;
-////    GTFSRouteType routeType = (GTFSRouteType)[self.travelMode intValue];
-//    
-//    if ( routeType == kGTFSRouteTypeRail )
-//        path2 = [[NSBundle mainBundle] pathForResource:@"regionalrail" ofType:@"kml"];
-//    else if ( routeType == kGTFSRouteTypeTrolley || routeType == kGTFSRouteTypeBus )
-//        path2 = [[NSBundle mainBundle] pathForResource:self.routeName ofType:@"kml"];  // Hardcoded for now
-//    else if ( routeType == kGTFSRouteTypeSubway )
-//        path2 = [[NSBundle mainBundle] pathForResource:self.routeName ofType:@"kml"];  // Hardcoded for now
-//    else
-//        path2 = nil;
-//    
-//    if ( path2 == nil )
-//        return;
-//    
-//    
-//    NSURL *url = [NSURL fileURLWithPath:path2];
-//    kmlParser = [[KMLParser alloc] initWithURL:url];
-//    [kmlParser parseKML];
-//    
-//    //    NSLog(@"TVVC: %@", url);
-//    
-//    // Add all of the MKOverlay objects parsed from the KML file to the map.
-//    NSArray *overlays = [kmlParser overlays];
-//    //    NSLog(@"TVVC: overlays - %d",[overlays count]);
-//    [self.mapView addOverlays:overlays];
-//    
-//    // Add all of the MKAnnotation objects parsed from the KML file to the map.
-//    NSArray *annotations = [kmlParser points];
-//    NSLog(@"TVVC: annotations - %lu",(unsigned long)[annotations count]);
-//    [self.mapView addAnnotations:annotations];
-//    
-//    // Walk the list of overlays and annotations and create a MKMapRect that
-//    // bounds all of them and store it into flyTo.
-//    flyTo = MKMapRectNull;
-//    for (id <MKOverlay> overlay in overlays)
-//    {
-//        
-//        if (MKMapRectIsNull(flyTo))
-//        {
-//            flyTo = [overlay boundingMapRect];
-//        }
-//        else
-//        {
-//            flyTo = MKMapRectUnion(flyTo, [overlay boundingMapRect]);
-//        }
-//        
-//    }
-//    
-//    
-//    for (id <MKAnnotation> annotation in annotations) {
-//        MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
-//        MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0);
-//        if (MKMapRectIsNull(flyTo)) {
-//            flyTo = pointRect;
-//        } else {
-//            flyTo = MKMapRectUnion(flyTo, pointRect);
-//        }
-//    }
-//    
-//    
-//    // Position the map so that all overlays and annotations are visible on screen.
-//    self.mapView.visibleMapRect = flyTo;
+    // Add all of the MKAnnotation objects parsed from the KML file to the map.
+    NSArray *annotations = [kmlParser points];
+    NSLog(@"TVVC: annotations - %lu",(unsigned long)[annotations count]);
+    [self.mapView addAnnotations:annotations];
+    
+    // Walk the list of overlays and annotations and create a MKMapRect that
+    // bounds all of them and store it into flyTo.
+    flyTo = MKMapRectNull;
+    for (id <MKOverlay> overlay in overlays)
+    {
+        
+        if (MKMapRectIsNull(flyTo))
+        {
+            flyTo = [overlay boundingMapRect];
+        }
+        else
+        {
+            flyTo = MKMapRectUnion(flyTo, [overlay boundingMapRect]);
+        }
+        
+    }
+    
+    
+    for (id <MKAnnotation> annotation in annotations) {
+        MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
+        MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0);
+        if (MKMapRectIsNull(flyTo)) {
+            flyTo = pointRect;
+        } else {
+            flyTo = MKMapRectUnion(flyTo, pointRect);
+        }
+    }
+    
+    
+    // Position the map so that all overlays and annotations are visible on screen.
+    self.mapView.visibleMapRect = flyTo;
     
 }
+
 
 
 
@@ -1059,7 +1026,7 @@
 // gga commented
 -(MKOverlayView*) mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
 {
-    NSLog(@"TMVC -mapView viewForOverlay");
+//    NSLog(@"TMVC -mapView viewForOverlay");
     return [kmlParser viewForOverlay: overlay];
 }
 
