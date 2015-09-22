@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <malloc/malloc.h>
 
-@interface KMLObject : NSObject
+@interface KMLObject : NSObject <MKOverlay>
 
 @property (nonatomic, readonly) CLLocationCoordinate2D *boundary;
 @property (nonatomic, readonly) NSInteger boundaryPointsCount;
@@ -20,7 +20,8 @@
 @property (nonatomic, readonly) MKMapRect overlayBoundingMapRect;
 
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, readonly) CLLocationDegrees latDelta;
 
--(id)initWithFilename:(NSString *) filename;
+-(id)initWithFilename:(NSString *) filename forMapView:(MKMapView *) mapView;
 
 @end

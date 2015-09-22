@@ -76,6 +76,9 @@
 		2765AA7217AC18D600F93FBE /* ItineraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AA7117AC18D600F93FBE /* ItineraryViewController.m */; };
 		2765AA7417AC18F700F93FBE /* ItineraryStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2765AA7317AC18F700F93FBE /* ItineraryStoryboard.storyboard */; };
 		2765AB7E17B42EB700F93FBE /* TrainViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AB7D17B42EB700F93FBE /* TrainViewViewController.m */; };
+		276AE24D1BB1C69000DE84D3 /* 6.kml in Resources */ = {isa = PBXBuildFile; fileRef = 276AE24C1BB1C69000DE84D3 /* 6.kml */; settings = {ASSET_TAGS = (); }; };
+		276AE2501BB1D7B900DE84D3 /* KMLOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 276AE24F1BB1D7B900DE84D3 /* KMLOverlay.m */; settings = {ASSET_TAGS = (); }; };
+		276AE2531BB1D8E100DE84D3 /* KMLOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 276AE2521BB1D8E100DE84D3 /* KMLOverlayView.m */; settings = {ASSET_TAGS = (); }; };
 		276B16A9162DA0AC00A71D57 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 276B16A6162DA05900A71D57 /* sqlite3.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		276D3EA31AD71960008D5EF2 /* AlertMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 276D3EA21AD71960008D5EF2 /* AlertMessage.m */; };
 		276D3EA91AE119C9008D5EF2 /* TableCellAlertsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 276D3EA81AE119C9008D5EF2 /* TableCellAlertsView.m */; };
@@ -827,6 +830,11 @@
 		2765AA7317AC18F700F93FBE /* ItineraryStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ItineraryStoryboard.storyboard; path = Storyboards/Schedules/Itinerary/ItineraryStoryboard.storyboard; sourceTree = "<group>"; };
 		2765AB7C17B42EB600F93FBE /* TrainViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TrainViewViewController.h; path = Storyboards/Realtime/TrainView/TrainViewViewController.h; sourceTree = "<group>"; };
 		2765AB7D17B42EB700F93FBE /* TrainViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrainViewViewController.m; path = Storyboards/Realtime/TrainView/TrainViewViewController.m; sourceTree = "<group>"; };
+		276AE24C1BB1C69000DE84D3 /* 6.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 6.kml; path = kml/6.kml; sourceTree = "<group>"; };
+		276AE24E1BB1D7B900DE84D3 /* KMLOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KMLOverlay.h; path = Subclasses/Maps/KMLOverlay.h; sourceTree = "<group>"; };
+		276AE24F1BB1D7B900DE84D3 /* KMLOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KMLOverlay.m; path = Subclasses/Maps/KMLOverlay.m; sourceTree = "<group>"; };
+		276AE2511BB1D8E100DE84D3 /* KMLOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KMLOverlayView.h; path = Subclasses/Maps/KMLOverlayView.h; sourceTree = "<group>"; };
+		276AE2521BB1D8E100DE84D3 /* KMLOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KMLOverlayView.m; path = Subclasses/Maps/KMLOverlayView.m; sourceTree = "<group>"; };
 		276B16A6162DA05900A71D57 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
 		276B16A7162DA05900A71D57 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
 		276D3EA11AD71960008D5EF2 /* AlertMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertMessage.h; path = Storyboards/Realtime/NextToArrive/Objects/AlertMessage.h; sourceTree = "<group>"; };
@@ -3616,6 +3624,7 @@
 		8435FAEA1BB047F8002A8AC4 /* kml */ = {
 			isa = PBXGroup;
 			children = (
+				276AE24C1BB1C69000DE84D3 /* 6.kml */,
 				8435FBFD1BB05640002A8AC4 /* regionalrail.plist */,
 				8435FAEB1BB0480D002A8AC4 /* 6.plist */,
 				8435FAEC1BB0480D002A8AC4 /* 7.plist */,
@@ -3761,6 +3770,10 @@
 			children = (
 				8435FC021BB1A77F002A8AC4 /* KMLObject.h */,
 				8435FC031BB1A77F002A8AC4 /* KMLObject.m */,
+				276AE24E1BB1D7B900DE84D3 /* KMLOverlay.h */,
+				276AE24F1BB1D7B900DE84D3 /* KMLOverlay.m */,
+				276AE2511BB1D8E100DE84D3 /* KMLOverlayView.h */,
+				276AE2521BB1D8E100DE84D3 /* KMLOverlayView.m */,
 			);
 			name = Maps;
 			sourceTree = "<group>";
@@ -4249,6 +4262,7 @@
 				8435FB771BB0480E002A8AC4 /* 59.plist in Resources */,
 				8418ED6F17FEF6BD003607D1 /* septaIcon-60px.png in Resources */,
 				8418EDB917FEF6BD003607D1 /* System-Map.png in Resources */,
+				276AE24D1BB1C69000DE84D3 /* 6.kml in Resources */,
 				8418EE6517FEF6BD003607D1 /* Schedule_Bus_Owl_BG.png in Resources */,
 				8435FBBA1BB0480E002A8AC4 /* 36.plist in Resources */,
 				8435FB9E1BB0480E002A8AC4 /* MFO.plist in Resources */,
@@ -4527,6 +4541,7 @@
 				278EE50C177C9048002993C4 /* BusScheduleData.m in Sources */,
 				8417B39E17EDD3FB00E08237 /* internetReachability.m in Sources */,
 				278F5E431A783222004D6716 /* KMLParser.m in Sources */,
+				276AE2501BB1D7B900DE84D3 /* KMLOverlay.m in Sources */,
 				27E068911799A41800BA7A92 /* RealtimeViewController.m in Sources */,
 				2729760E1799AACC00DB2580 /* NextToArriveTableViewController.m in Sources */,
 				27297644179D9ED500DB2580 /* SEPTATitle.m in Sources */,
@@ -4609,6 +4624,7 @@
 				27EBAD8E17E36EE900189970 /* AttributionData.m in Sources */,
 				27EBAD9617E7518700189970 /* GetAlertDataAPI.m in Sources */,
 				278F5E591A7833D6004D6716 /* StopNamesObject.m in Sources */,
+				276AE2531BB1D8E100DE84D3 /* KMLOverlayView.m in Sources */,
 				27D91F3617F0A60100627ECD /* TrainSlidingViewController.m in Sources */,
 				27D91F3917F0A63F00627ECD /* TrainMapViewController.m in Sources */,
 				2731189417EB55D40046757B /* EnterAddressViewController.m in Sources */,
