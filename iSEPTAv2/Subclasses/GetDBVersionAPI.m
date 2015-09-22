@@ -22,6 +22,49 @@
     return [NSString stringWithFormat:@"Start: %@, End: %@, Message: %@, url: %@, icon: %@", start_datetime, end_datetime, message, url, icon];
 }
 
+-(void) encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:start_datetime forKey:@"start_datetime"];
+    [aCoder encodeObject:end_datetime   forKey:@"end_datetime"];
+    
+    [aCoder encodeObject:message forKey:@"message"];
+    [aCoder encodeObject:url   forKey:@"url"];
+    
+    [aCoder encodeObject:icon     forKey:@"icon"];
+}
+
+-(id) initWithCoder:(NSCoder *)aDecoder
+{
+    NSString *startDate = [aDecoder decodeObjectForKey:@"start_datetime"];
+    NSString *endDate   = [aDecoder decodeObjectForKey:@"end_datetime"  ];
+    
+    NSString *themessage = [aDecoder decodeObjectForKey:@"message"];
+    NSString *theurl     = [aDecoder decodeObjectForKey:@"url"  ];
+    
+    NSString *theicon      = [aDecoder decodeObjectForKey:@"icon"];
+    
+    return [self initWithStartDateTime:startDate withEndDateTime:endDate withMessage:themessage withURL:theurl withIcon:theicon];
+    
+}
+
+-(id) initWithStartDateTime: (NSString*)startDate withEndDateTime: (NSString *)endDate withMessage: (NSString *) withMessage withURL: (NSString *) withURL withIcon: (NSString *) withIcon
+{
+    
+    self = [super init];
+    if ( self )
+    {
+        self.start_datetime = startDate;
+        self.end_datetime = endDate;
+        
+        self.message = withMessage;
+        self.url = withURL;
+        
+        self.icon = withIcon;
+    }
+    return self;
+    
+}
+
 @end
 
 
@@ -110,7 +153,7 @@
 
 
     NSString *url;
-    
+//    _testMode = YES;
     if ( _testMode )
     {
         url = @"http://www3.septa.org/beta/agga/dbVersion/";

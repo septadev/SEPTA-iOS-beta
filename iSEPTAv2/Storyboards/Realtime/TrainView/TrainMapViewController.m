@@ -29,7 +29,7 @@
     BOOL _locationEnabled;
     
     NSTimer *updateTimer;
-    NSTimer *annotationTimer;
+//    NSTimer *annotationTimer;
     
     
     // -- for KML Parsing
@@ -474,48 +474,51 @@
 -(void) addStopAnnotationsForRouteType:(GTFSRouteType) routeType
 {
     
-    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
+    return;
     
-    if ( ![database open] )
-    {
-        [database close];
-        return;
-    }
-    
-    NSString *queryStr = [NSString stringWithFormat:@"SELECT sb.stop_id, sb.stop_lat, sb.stop_lon, sb.stop_name FROM reverseStopSearch rss JOIN stops_bus sb ON sb.stop_id=rss.stop_id  WHERE route_short_name=\"%@\"", self.routeName];
-    
-    FMResultSet *results = [database executeQuery: queryStr];
-    if ( [database hadError] )  // Check for errors
-    {
-        
-        int errorCode = [database lastErrorCode];
-        NSString *errorMsg = [database lastErrorMessage];
-        
-        NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
-        NSLog(@"IVC - query str: %@", queryStr);
-        
-        return;  // If an error occurred, there's nothing else to do but exit
-        
-    } // if ( [database hadError] )
-    
-    
-    while ( [results next] )
-    {
-        //        NSString *route_short_name = [results stringForColumn:@"Route"];
-        //        NSString *direction        = [results stringForColumn:@"Direction"];
-        //        NSString *description      = [results stringForColumn:@"DirectionDescription"];
-
-//        NSLog(@"%@ - (%@, %@)", [results stringForColumnIndex:0], [results stringForColumnIndex:1], [results stringForColumnIndex:2]);
-        
-        CLLocationCoordinate2D newCoord = CLLocationCoordinate2DMake([[results stringForColumnIndex:1] doubleValue], [[results stringForColumnIndex:2] doubleValue]);
-        mapAnnotation *annotation = [[mapAnnotation alloc] initWithCoordinate:newCoord];
-        [annotation setDirection:@"Stop"];
-        
-        [self.mapView addAnnotation: annotation];
-        
-    }
-    
-    [database close];
+//    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
+//    
+//    if ( ![database open] )
+//    {
+//        [database close];
+//        return;
+//    }
+//    
+//    NSString *queryStr = [NSString stringWithFormat:@"SELECT sb.stop_id, sb.stop_lat, sb.stop_lon, sb.stop_name FROM reverseStopSearch rss JOIN stops_bus sb ON sb.stop_id=rss.stop_id  WHERE route_short_name=\"%@\"", self.routeName];
+//    
+//    FMResultSet *results = [database executeQuery: queryStr];
+//    if ( [database hadError] )  // Check for errors
+//    {
+//        
+//        int errorCode = [database lastErrorCode];
+//        NSString *errorMsg = [database lastErrorMessage];
+//        
+//        NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
+//        NSLog(@"IVC - query str: %@", queryStr);
+//        
+//        return;  // If an error occurred, there's nothing else to do but exit
+//        
+//    } // if ( [database hadError] )
+//    
+//    
+//    while ( [results next] )
+//    {
+//        //        NSString *route_short_name = [results stringForColumn:@"Route"];
+//        //        NSString *direction        = [results stringForColumn:@"Direction"];
+//        //        NSString *description      = [results stringForColumn:@"DirectionDescription"];
+//
+////        NSLog(@"%@ - (%@, %@)", [results stringForColumnIndex:0], [results stringForColumnIndex:1], [results stringForColumnIndex:2]);
+//        
+//        CLLocationCoordinate2D newCoord = CLLocationCoordinate2DMake([[results stringForColumnIndex:1] doubleValue], [[results stringForColumnIndex:2] doubleValue]);
+////        mapAnnotation *annotation = [[mapAnnotation alloc] initWithCoordinate:newCoord];
+//        KMLAnnotation *annotation = [[KMLAnnotation alloc] initWithCoordinate:newCoord];
+//        [annotation setDirection:@"Stop"];
+//        
+//        [self.mapView addAnnotation: annotation];
+//        
+//    }
+//    
+//    [database close];
     
     
 }
@@ -588,7 +591,7 @@
                 [readData addObject: tvObject];
                 [self addAnnotationUsingwithObject: tvObject];
                 
-                [self addStopAnnotationsForRouteType: routeType];
+//                [self addStopAnnotationsForRouteType: routeType];
 
 //            }
 //            @catch (NSException *exception)
@@ -740,14 +743,15 @@
 {
     
     
-    if ( [object isKindOfClass:[TransitViewObject class] ] )
+    if ( [object isKindOfClass:[TransitViewObject class] ] )  // Bus
     {
         TransitViewObject *tvObject = (TransitViewObject*) object;
         CLLocationCoordinate2D newCoord = CLLocationCoordinate2DMake([tvObject.lat doubleValue], [tvObject.lng doubleValue]);
         
         NSString *direction = tvObject.Direction;
         
-        mapAnnotation *annotation  = [[mapAnnotation alloc] initWithCoordinate: newCoord];
+//        mapAnnotation *annotation  = [[mapAnnotation alloc] initWithCoordinate: newCoord];
+        KMLAnnotation *annotation = [[KMLAnnotation alloc] initWithCoordinate:newCoord];
 
         NSString *annotationTitle;
         if ( [tvObject.Offset intValue] == 1 )
@@ -755,18 +759,29 @@
         else
             annotationTitle  = [NSString stringWithFormat: @"Vehicle: %@ (position %@ mins ago)", tvObject.VehicleID, tvObject.Offset];
         
-//        if ( [tvObject.Offset intValue] > 1 )
-//        {
-//            annotationTitle  = [NSString stringWithFormat: @"Vehicle: %@ (position as of: %@ min ago)", tvObject.VehicleID, tvObject.Offset];
-//        }
-//        else
-//            annotationTitle  = [NSString stringWithFormat: @"Vehicle: %@ (position as of: %@ mins ago)", tvObject.VehicleID, tvObject.Offset];
-        
         [annotation setCurrentSubTitle: [NSString stringWithFormat: @"Destination: %@", tvObject.destination ] ];
         [annotation setCurrentTitle   : annotationTitle];
         [annotation setDirection      : direction];
         
         [annotation setVehicle_id: [NSNumber numberWithInt: [tvObject.VehicleID intValue] ] ];
+        
+        GTFSRouteType routeType = [self.travelMode intValue];
+        if ( ( [direction isEqualToString:@"EastBound"] ) || ( [direction isEqualToString:@"SouthBound"] ) )
+        {
+            if ( routeType == kGTFSRouteTypeTrolley )
+                [annotation setType:kKMLTrolleyBlue];
+            else
+                [annotation setType:kKMLBusBlue];
+        }
+        else if ( ( [direction isEqualToString:@"WestBound"] ) || ( [direction isEqualToString:@"NorthBound"] ) )
+        {
+            if ( routeType == kGTFSRouteTypeTrolley )
+                [annotation setType:kKMLTrolleyRed];
+            else
+                [annotation setType:kKMLBusRed];
+        }
+        else
+            [annotation setType:kKMLNone];
         
         [_annotationLookup setObject: [NSValue valueWithNonretainedObject: annotation] forKey: tvObject.VehicleID];
         
@@ -778,25 +793,26 @@
         
         CLLocationCoordinate2D newCoord = CLLocationCoordinate2DMake([tvObject.latitude doubleValue], [tvObject.longitude doubleValue]);
         
-        mapAnnotation *annotation  = [[mapAnnotation alloc] initWithCoordinate: newCoord];
-        //        NSString *annotationTitle  = [NSString stringWithFormat: @"TrainNo: %@ (%d min)", tvObject.trainNo, [tvObject.late intValue] ];
-        //
-        //        [annotation setCurrentSubTitle: [NSString stringWithFormat: @"Destination: %@", tvObject.endName ] ];
-        //        [annotation setCurrentTitle   : annotationTitle];
-        //        [annotation setDirection      : direction];
-        
+//        mapAnnotation *annotation  = [[mapAnnotation alloc] initWithCoordinate: newCoord];
+        KMLAnnotation *annotation = [[KMLAnnotation alloc] initWithCoordinate: newCoord];
         
         if ( [tvObject.trainNo intValue] % 2)
-        [annotation setDirection      : @"TrainSouth"];  // Modulus returns 1 on odd
+        {
+            [annotation setDirection      : @"TrainSouth"];  // Modulus returns 1 on odd
+            [annotation setType:kKMLTrainBlue];
+        }
         else
-        [annotation setDirection      : @"TrainNorth"];  // Modulus returns 0 on even
+        {
+            [annotation setDirection      : @"TrainNorth"];  // Modulus returns 0 on even
+            [annotation setType:kKMLTrainRed];
+        }
         
         // Create the annonation title
         NSString *annotationTitle;
         if ( [tvObject.late intValue] == 0 )
-        annotationTitle  = [NSString stringWithFormat: @"Train #%@ (on time)", tvObject.trainNo ];
+            annotationTitle  = [NSString stringWithFormat: @"Train #%@ (on time)", tvObject.trainNo ];
         else
-        annotationTitle  = [NSString stringWithFormat: @"Train #%@ (%d min late)", tvObject.trainNo, [tvObject.late intValue] ];
+            annotationTitle  = [NSString stringWithFormat: @"Train #%@ (%d min late)", tvObject.trainNo, [tvObject.late intValue] ];
         
         [annotation setCurrentTitle   : annotationTitle];
         [annotation setCurrentSubTitle: [NSString stringWithFormat: @"%@ to %@", tvObject.startName, tvObject.endName ] ];
@@ -957,51 +973,77 @@
 }
 
 
--(void) addAnnotationsUsingJSONBusLocations:(NSData*) returnedData
-{
-    
-    //    NSLog(@"TVVC - addAnnotationsUsingJSONBusLocations");
-    [SVProgressHUD dismiss];
-    _stillWaitingOnWebRequest = NO;  // We're no longer waiting on the web request
-    
-    
-    // This method is called once the realtime positioning data has been returned via the API is stored in data
-    NSError *error;
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData: returnedData options:kNilOptions error:&error];
-    
-    if ( error != nil )
-    return;  // Something bad happened, so just return.
-    
-    [self removeAnnotationsFromMapView];
-    
-    for (NSDictionary *busData in [json objectForKey:@"bus"])
-    {
-        
-        // Loop through all returned bus info...
-        NSNumber *latitude   = [NSNumber numberWithDouble: [[busData objectForKey:@"lat"] doubleValue] ];
-        NSNumber *longtitude = [NSNumber numberWithDouble: [[busData objectForKey:@"lng"] doubleValue] ];
-        
-        CLLocationCoordinate2D newCoord = CLLocationCoordinate2DMake([latitude doubleValue], [longtitude doubleValue]);
-        
-        NSString *direction = [busData objectForKey:@"Direction"];
-        
-        mapAnnotation *annotation  = [[mapAnnotation alloc] initWithCoordinate: newCoord];
-        NSString *annotationTitle  = [NSString stringWithFormat: @"BlockID: %@ (%@ min)", [busData objectForKey:@"BlockID"], [busData objectForKey:@"Offset"]];
-        
-        [annotation setCurrentSubTitle: [NSString stringWithFormat: @"Destination: %@", [busData objectForKey:@"destination"]] ];
-        [annotation setCurrentTitle   : annotationTitle];
-        [annotation setDirection      : direction];
-        
-        [self.mapView addAnnotation: annotation];
-        
-    }
-    
-    [self kickOffAnotherMapKitJSONRequest];
-    //    NSLog(@"TVVC - addAnnotationsUsingJSONBusLocations -- added %d annotations", [[json objectForKey:@"bus"] count]);
-    
-    //    [SVProgressHUD dismiss];  // We got data, even if it's nothing.  Dismiss the Loading screen...
-    
-}
+//-(void) addAnnotationsUsingJSONBusLocations:(NSData*) returnedData
+//{
+//    
+//    //    NSLog(@"TVVC - addAnnotationsUsingJSONBusLocations");
+//    [SVProgressHUD dismiss];
+//    _stillWaitingOnWebRequest = NO;  // We're no longer waiting on the web request
+//    
+//    
+//    // This method is called once the realtime positioning data has been returned via the API is stored in data
+//    NSError *error;
+//    NSDictionary *json = [NSJSONSerialization JSONObjectWithData: returnedData options:kNilOptions error:&error];
+//    
+//    if ( error != nil )
+//    return;  // Something bad happened, so just return.
+//    
+//    [self removeAnnotationsFromMapView];
+//    
+//    for (NSDictionary *busData in [json objectForKey:@"bus"])
+//    {
+//        
+//        // Loop through all returned bus info...
+//        NSNumber *latitude   = [NSNumber numberWithDouble: [[busData objectForKey:@"lat"] doubleValue] ];
+//        NSNumber *longtitude = [NSNumber numberWithDouble: [[busData objectForKey:@"lng"] doubleValue] ];
+//        
+//        CLLocationCoordinate2D newCoord = CLLocationCoordinate2DMake([latitude doubleValue], [longtitude doubleValue]);
+//        
+//        NSString *direction = [busData objectForKey:@"Direction"];
+//        
+//        KMLAnnotation *annotation = [[KMLAnnotation alloc] initWithCoordinate: newCoord];
+//        
+////        mapAnnotation *annotation  = [[mapAnnotation alloc] initWithCoordinate: newCoord];
+//        NSString *annotationTitle  = [NSString stringWithFormat: @"BlockID: %@ (%@ min)", [busData objectForKey:@"BlockID"], [busData objectForKey:@"Offset"]];
+//        
+//        [annotation setCurrentSubTitle: [NSString stringWithFormat: @"Destination: %@", [busData objectForKey:@"destination"]] ];
+//        [annotation setCurrentTitle   : annotationTitle];
+//        [annotation setDirection      : direction];
+//
+//        GTFSRouteType routeType = [self.travelMode intValue];
+//        if ( ( [direction isEqualToString:@"EastBound"] ) || ( [direction isEqualToString:@"SouthBound"] ) )
+//        {
+//            if ( routeType == kGTFSRouteTypeTrolley )
+//                [annotation setType:kKMLTrolleyBlue];
+//            else
+//                [annotation setType:kKMLBusBlue];
+//        }
+//        else if ( ( [direction isEqualToString:@"WestBound"] ) || ( [direction isEqualToString:@"NorthBound"] ) )
+//        {
+//            if ( routeType == kGTFSRouteTypeTrolley )
+//                [annotation setType:kKMLTrolleyRed];
+//            else
+//                [annotation setType:kKMLBusRed];
+//        }
+//        else if ( [direction isEqualToString: @"TrainSouth"] )
+//        {
+//            [annotation setType:kKMLTrainBlue];
+//        }
+//        else if ( [direction isEqualToString: @"TrainNorth"] )
+//        {
+//            [annotation setType:kKMLTrainRed];
+//        }
+//        
+//        [self.mapView addAnnotation: annotation];
+//        
+//    }
+//    
+//    [self kickOffAnotherMapKitJSONRequest];
+//    //    NSLog(@"TVVC - addAnnotationsUsingJSONBusLocations -- added %d annotations", [[json objectForKey:@"bus"] count]);
+//    
+//    //    [SVProgressHUD dismiss];  // We got data, even if it's nothing.  Dismiss the Loading screen...
+//    
+//}
 
 
 -(void) kickOffAnotherMapKitJSONRequest
@@ -1099,75 +1141,10 @@
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
     
-    
-    if ( [annotation isKindOfClass:[MKUserLocation class]] )
-    return nil;
-    
-    //    NSLog(@"TVVC - viewForAnnotations");
-    
-    static NSString *identifier = @"mapAnnotation";
-    
-    MKPinAnnotationView *annotationView = (MKPinAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier: identifier];
-    
-    // How often is something dequeued?
-    // Should buses/trains be removed or just updated?
-    if (annotationView == nil)
-    {
-        annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
-    } else {
-        annotationView.annotation = annotation;
-    }
-    
-    [annotationView setEnabled: YES];
-    [annotationView setCanShowCallout: YES];
-    
-    
-    GTFSRouteType routeType = [self.travelMode intValue];
-    UIImage *image;
-    
-    if ( ( [[(mapAnnotation*)annotation direction] isEqualToString:@"EastBound"] ) || ( [[(mapAnnotation*)annotation direction] isEqualToString:@"SouthBound"] ) )
-    {
-        //        if ( [self.routeType intValue] == 0)
-        if ( routeType == kGTFSRouteTypeTrolley )
-        image = [UIImage imageNamed:@"transitView-Trolley-Blue.png"];
-        else
-        image = [UIImage imageNamed:@"transitView-Bus-Blue.png"];
-    }
-    else if ( ( [[(mapAnnotation*)annotation direction] isEqualToString:@"WestBound"] ) || ( [[(mapAnnotation*)annotation direction] isEqualToString:@"NorthBound"] ) )
-    {
-        if ( routeType == kGTFSRouteTypeTrolley )
-        image = [UIImage imageNamed:@"transitView-Trolley-Red.png"];
-        else
-        image = [UIImage imageNamed:@"transitView-Bus-Red.png"];
-    }
-    else if ( [[(mapAnnotation*)annotation direction] isEqualToString: @"TrainSouth"] )
-    {
-        image = [UIImage imageNamed:@"trainView-RRL-Blue.png"];
-    }
-    else if ( [[(mapAnnotation*)annotation direction] isEqualToString: @"TrainNorth"] )
-    {
-        image = [UIImage imageNamed:@"trainView-RRL-Red.png"];
-    }
-    else if ( [[(mapAnnotation*)annotation direction] isEqualToString: @"Stop"] )
-    {
-        image = nil;
-    }
-    else
-    {
-        if ( routeType == kGTFSRouteTypeTrolley )
-        image = [UIImage imageNamed:@"transitView-Trolley-Blue.png"];
-        else
-        image = [UIImage imageNamed:@"transitView-Bus-Blue.png"];
-    }
-    
-    
-    [annotationView setImage: image];
-    //    [annotationView setCenter:CGPointMake(image.size.width/2, image.size.height/2)];
-    //    [annotationView setCenterOffset:CGPointMake(image.size.width/2, image.size.height/2)];
-    //    NSLog(@"image size: %@", NSStringFromCGSize( image.size));
-    
+    KMLAnnotationView *annotationView = [[KMLAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Vehicle"];
+    [annotationView setCanShowCallout:YES];
     return annotationView;
-    
+        
 }
 
 -(void) updateAnnotation:(NSTimer*) timerObj
@@ -1175,11 +1152,12 @@
     
 //    MKPinAnnotationView *anoView = (MKPinAnnotationView*)[timerObj userInfo];
     
-    NSLog(@"TMVC: updateAnnotation");
-    mapAnnotation *ano = (mapAnnotation*)[timerObj userInfo];
-    
-    [ano setCurrentTitle:@"Greg"];
-    NSLog(@"%@", ano);
+    // gga commented out on 9/22/15; no idea what this is
+//    NSLog(@"TMVC: updateAnnotation");
+//    mapAnnotation *ano = (mapAnnotation*)[timerObj userInfo];
+//    
+//    [ano setCurrentTitle:@"Greg"];
+//    NSLog(@"%@", ano);
     
 }
 

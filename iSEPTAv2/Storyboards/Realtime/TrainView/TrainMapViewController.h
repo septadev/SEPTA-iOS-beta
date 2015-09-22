@@ -34,7 +34,9 @@
 #import "TransitViewObject.h"
 // - for KML Parsing
 #import "RouteData.h"
-#import "mapAnnotation.h"
+//#import "mapAnnotation.h"
+#import "KMLAnnotation.h"
+#import "KMLAnnotationView.h"
 
 
 // --==  Xibs  ==--

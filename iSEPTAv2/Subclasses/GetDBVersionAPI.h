@@ -15,7 +15,7 @@
 #import <CommonCrypto/CommonCrypto.h>
 
 
-@interface SpecialEvent : NSObject
+@interface SpecialEvent : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSString *start_datetime;
 @property (nonatomic, strong) NSString *end_datetime;

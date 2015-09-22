@@ -11,7 +11,7 @@
 
 @interface mapAnnotation : NSObject <MKAnnotation>
 {
-     CLLocationCoordinate2D _coordinate; 
+    CLLocationCoordinate2D _coordinate; 
     NSString *currentSubTitle;
 	NSString *currentTitle;
 }
@@ -20,8 +20,6 @@
 @property (nonatomic, strong) NSString *currentSubTitle;
 @property (nonatomic, strong) NSString *direction;
 @property (nonatomic, strong) NSNumber *vehicle_id;
-//@property (nonatomic, strong, setter = setVehicleID:) NSNumber *vehicle_id;
-
 @property (nonatomic, strong) NSNumber *seconds;
 
 - (NSString *) title;

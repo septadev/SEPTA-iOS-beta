@@ -83,6 +83,8 @@
 		276D3EA31AD71960008D5EF2 /* AlertMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 276D3EA21AD71960008D5EF2 /* AlertMessage.m */; };
 		276D3EA91AE119C9008D5EF2 /* TableCellAlertsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 276D3EA81AE119C9008D5EF2 /* TableCellAlertsView.m */; };
 		2774644517AADFC800A36A7D /* NearestRoutesScheduleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2774644417AADFC800A36A7D /* NearestRoutesScheduleStoryboard.storyboard */; };
+		277C1F041BB1EB33000695CA /* KMLAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 277C1F031BB1EB33000695CA /* KMLAnnotationView.m */; settings = {ASSET_TAGS = (); }; };
+		277C1F071BB1EB84000695CA /* KMLAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 277C1F061BB1EB84000695CA /* KMLAnnotation.m */; settings = {ASSET_TAGS = (); }; };
 		2782CEEB17BE8D62005939DB /* RouteSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2782CEEA17BE8D62005939DB /* RouteSelectionCell.xib */; };
 		2782CEEE17BE8D7A005939DB /* RouteSelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2782CEED17BE8D7A005939DB /* RouteSelectionCell.m */; };
 		278961821B59637500C41531 /* MKMultiPolyLineRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 278961811B59637500C41531 /* MKMultiPolyLineRenderer.m */; };
@@ -836,6 +838,10 @@
 		276D3EA71AE119C9008D5EF2 /* TableCellAlertsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableCellAlertsView.h; path = Storyboards/Schedules/RouteSelection/TableCellAlertsView.h; sourceTree = "<group>"; };
 		276D3EA81AE119C9008D5EF2 /* TableCellAlertsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableCellAlertsView.m; path = Storyboards/Schedules/RouteSelection/TableCellAlertsView.m; sourceTree = "<group>"; };
 		2774644417AADFC800A36A7D /* NearestRoutesScheduleStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = NearestRoutesScheduleStoryboard.storyboard; path = Storyboards/Realtime/NearestLocation/NearestRoutesScheduleStoryboard.storyboard; sourceTree = "<group>"; };
+		277C1F021BB1EB33000695CA /* KMLAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KMLAnnotationView.h; path = Realtime/Annotations/KMLAnnotationView.h; sourceTree = "<group>"; };
+		277C1F031BB1EB33000695CA /* KMLAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KMLAnnotationView.m; path = Realtime/Annotations/KMLAnnotationView.m; sourceTree = "<group>"; };
+		277C1F051BB1EB84000695CA /* KMLAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KMLAnnotation.h; path = Realtime/Annotations/KMLAnnotation.h; sourceTree = "<group>"; };
+		277C1F061BB1EB84000695CA /* KMLAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KMLAnnotation.m; path = Realtime/Annotations/KMLAnnotation.m; sourceTree = "<group>"; };
 		2782CEEA17BE8D62005939DB /* RouteSelectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RouteSelectionCell.xib; path = Storyboards/Schedules/RouteSelection/RouteSelectionCell.xib; sourceTree = "<group>"; };
 		2782CEEC17BE8D7A005939DB /* RouteSelectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RouteSelectionCell.h; path = Storyboards/Schedules/RouteSelection/RouteSelectionCell.h; sourceTree = "<group>"; };
 		2782CEED17BE8D7A005939DB /* RouteSelectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RouteSelectionCell.m; path = Storyboards/Schedules/RouteSelection/RouteSelectionCell.m; sourceTree = "<group>"; };
@@ -1975,6 +1981,10 @@
 			children = (
 				278F5E601A78341B004D6716 /* TrainViewObject.h */,
 				278F5E611A78341B004D6716 /* TrainViewObject.m */,
+				277C1F021BB1EB33000695CA /* KMLAnnotationView.h */,
+				277C1F031BB1EB33000695CA /* KMLAnnotationView.m */,
+				277C1F051BB1EB84000695CA /* KMLAnnotation.h */,
+				277C1F061BB1EB84000695CA /* KMLAnnotation.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -4549,6 +4559,7 @@
 				27A4CE3218F5AA4E00340B2A /* CommentsViewController.m in Sources */,
 				278F5E721A7834D6004D6716 /* UserPreferenceCell.m in Sources */,
 				2765AA6617AC122000F93FBE /* RouteSelectionViewController.m in Sources */,
+				277C1F041BB1EB33000695CA /* KMLAnnotationView.m in Sources */,
 				2765AA6917AC122E00F93FBE /* SchedulesViewController.m in Sources */,
 				278F5E881A7836DA004D6716 /* NSArray+Indices.m in Sources */,
 				278F5E3E1A783202004D6716 /* ItineraryCell.m in Sources */,
@@ -4591,6 +4602,7 @@
 				27078245191A9949004EBCE1 /* BackgroundDownloader.m in Sources */,
 				84D12B5117E1F0B90079A8D7 /* MobileSiteViewController.m in Sources */,
 				27EBAD8217E3693800189970 /* AttributionsTextViewController.m in Sources */,
+				277C1F071BB1EB84000695CA /* KMLAnnotation.m in Sources */,
 				27EBAD8B17E36DCB00189970 /* AttributionCell.m in Sources */,
 				27EBAD8E17E36EE900189970 /* AttributionData.m in Sources */,
 				27EBAD9617E7518700189970 /* GetAlertDataAPI.m in Sources */,

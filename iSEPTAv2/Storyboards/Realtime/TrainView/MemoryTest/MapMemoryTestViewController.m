@@ -181,49 +181,49 @@
     annotationsToRemove = nil;
     
     
-            for (NSDictionary *data in json)
-            {
-                
-                if ( [_jsonOp isCancelled] )
-                    return;
-                
-                TrainViewObject *tvObject = [[TrainViewObject alloc] init];
-                // These keys need to be exactly as they appear in the returned JSON data
-                [tvObject setStartName:[data objectForKey:@"SOURCE"] ];
-                [tvObject setEndName  :[data objectForKey:@"dest"] ];
-                
-                [tvObject setLatitude :[data objectForKey:@"lat"] ];
-                [tvObject setLongitude:[data objectForKey:@"lon"] ];
-                
-                [tvObject setLate     :[data objectForKey:@"late"] ];
-                [tvObject setTrainNo  :[data objectForKey:@"trainno"] ];
-                
-//                CLLocation *stopLocation = [[CLLocation alloc] initWithLatitude:[[data objectForKey:@"lat"] doubleValue] longitude: [[data objectForKey:@"lon"] doubleValue] ];
-//                CLLocationDistance dist = [_locationManager.location distanceFromLocation: stopLocation] / 1609.34f;
-                
-//                [tvObject setDistance: [NSNumber numberWithDouble: dist] ];
-                
-                [readData addObject: tvObject];
-                [self addAnnotationUsingwithObject: tvObject];
-                
-            }
+    for (NSDictionary *data in json)
+    {
+        
+        if ( [_jsonOp isCancelled] )
+            return;
+        
+        TrainViewObject *tvObject = [[TrainViewObject alloc] init];
+        // These keys need to be exactly as they appear in the returned JSON data
+        [tvObject setStartName:[data objectForKey:@"SOURCE"] ];
+        [tvObject setEndName  :[data objectForKey:@"dest"] ];
+        
+        [tvObject setLatitude :[data objectForKey:@"lat"] ];
+        [tvObject setLongitude:[data objectForKey:@"lon"] ];
+        
+        [tvObject setLate     :[data objectForKey:@"late"] ];
+        [tvObject setTrainNo  :[data objectForKey:@"trainno"] ];
+        
+        //                CLLocation *stopLocation = [[CLLocation alloc] initWithLatitude:[[data objectForKey:@"lat"] doubleValue] longitude: [[data objectForKey:@"lon"] doubleValue] ];
+        //                CLLocationDistance dist = [_locationManager.location distanceFromLocation: stopLocation] / 1609.34f;
+        
+        //                [tvObject setDistance: [NSNumber numberWithDouble: dist] ];
+        
+        [readData addObject: tvObject];
+        [self addAnnotationUsingwithObject: tvObject];
+        
+    }
     
     
     [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(popTheVC) userInfo:Nil repeats:NO];
-
     
-//    NSSortDescriptor *lowestToHighest = [NSSortDescriptor sortDescriptorWithKey:@"distance" ascending:YES];
-//    [readData sortUsingDescriptors:[NSArray arrayWithObject:lowestToHighest]];
     
-
+    //    NSSortDescriptor *lowestToHighest = [NSSortDescriptor sortDescriptorWithKey:@"distance" ascending:YES];
+    //    [readData sortUsingDescriptors:[NSArray arrayWithObject:lowestToHighest]];
     
-//    _tableData = readData;
-//    if ( _trainDataVC != nil )
-//    {
-//        [_trainDataVC updateTableData: _tableData];
-//    }
     
-//    [self kickOffAnotherJSONRequest];
+    
+    //    _tableData = readData;
+    //    if ( _trainDataVC != nil )
+    //    {
+    //        [_trainDataVC updateTableData: _tableData];
+    //    }
+    
+    //    [self kickOffAnotherJSONRequest];
     
     
 }
@@ -237,12 +237,7 @@
         CLLocationCoordinate2D newCoord = CLLocationCoordinate2DMake([tvObject.latitude doubleValue], [tvObject.longitude doubleValue]);
         
         mapAnnotation *annotation  = [[mapAnnotation alloc] initWithCoordinate: newCoord];
-        //        NSString *annotationTitle  = [NSString stringWithFormat: @"TrainNo: %@ (%d min)", tvObject.trainNo, [tvObject.late intValue] ];
-        //
-        //        [annotation setCurrentSubTitle: [NSString stringWithFormat: @"Destination: %@", tvObject.endName ] ];
-        //        [annotation setCurrentTitle   : annotationTitle];
-        //        [annotation setDirection      : direction];
-        
+    
         
         if ( [tvObject.trainNo intValue] % 2)
             [annotation setDirection      : @"TrainSouth"];  // Modulus returns 1 on odd
