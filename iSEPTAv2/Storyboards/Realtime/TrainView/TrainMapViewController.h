@@ -14,6 +14,7 @@
 #import "CustomFlatBarButton.h"
 #import "KMLParser.h"
 #import "LineHeaderView.h"
+#import "KMLObject.h"
 // --==  Helper Classes  ==--
 
 

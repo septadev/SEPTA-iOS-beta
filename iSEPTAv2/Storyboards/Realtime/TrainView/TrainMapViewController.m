@@ -886,16 +886,60 @@
     GTFSRouteType routeType = (GTFSRouteType)[self.travelMode intValue];
     
     if ( routeType == kGTFSRouteTypeRail )
-        path = [[NSBundle mainBundle] pathForResource:@"regionalrail" ofType:@"kml"];
+        path = [NSString stringWithFormat:@"regionalrail"];
     else if ( routeType == kGTFSRouteTypeTrolley || routeType == kGTFSRouteTypeBus )
-        path = [[NSBundle mainBundle] pathForResource:self.routeName ofType:@"kml"];  // Hardcoded for now
+        path = [NSString stringWithFormat:@"%@",self.routeName];
     else if ( routeType == kGTFSRouteTypeSubway )
-        path = [[NSBundle mainBundle] pathForResource:self.routeName ofType:@"kml"];  // Hardcoded for now
+        path = [NSString stringWithFormat:@"%@",self.routeName];
     else
         path = nil;
     
     if ( path == nil )
         return;
+
+    KMLObject *kObj = [[KMLObject alloc] initWithFilename:path];
+    
+    CLLocationDegrees latDelta = MKMapRectGetHeight(kObj.overlayBoundingMapRect);
+    MKCoordinateSpan span = MKCoordinateSpanMake(fabs(latDelta),0.0);
+    MKCoordinateRegion region = MKCoordinateRegionMake(kObj.midCoordinate, span);
+    
+    [[self mapView] setRegion:region];
+    [[self mapView] setVisibleMapRect: kObj.overlayBoundingMapRect];
+    
+    return;
+    
+    NSLog(@"Done");
+    
+    NSDictionary *kmlData = [NSDictionary dictionaryWithContentsOfFile:path];
+    
+//    NSLog(@"%@",kmlData);
+    
+    for (NSArray *path in kmlData)
+    {
+        for (NSString *coords in [kmlData objectForKey:path])
+        {
+            CGPoint coord = CGPointFromString(coords);
+            NSLog(@"lon: %8.6f, lat: %8.6f", coord.x, coord.y);
+        }
+    }
+    
+    return;
+    
+//    NSString *path;
+//    
+//    GTFSRouteType routeType = (GTFSRouteType)[self.travelMode intValue];
+//    
+//    if ( routeType == kGTFSRouteTypeRail )
+//        path = [[NSBundle mainBundle] pathForResource:@"regionalrail" ofType:@"kml"];
+//    else if ( routeType == kGTFSRouteTypeTrolley || routeType == kGTFSRouteTypeBus )
+//        path = [[NSBundle mainBundle] pathForResource:self.routeName ofType:@"kml"];  // Hardcoded for now
+//    else if ( routeType == kGTFSRouteTypeSubway )
+//        path = [[NSBundle mainBundle] pathForResource:self.routeName ofType:@"kml"];  // Hardcoded for now
+//    else
+//        path = nil;
+//    
+//    if ( path == nil )
+//        return;
     
     
     NSURL *url = [NSURL fileURLWithPath:path];
