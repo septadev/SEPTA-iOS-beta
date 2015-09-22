@@ -130,7 +130,7 @@
         // A little background on span, thanks to http://stackoverflow.com/questions/7381783/mkcoordinatespan-in-meters
         float radiusInMiles = 2.0;
         [self.mapView setRegion: MKCoordinateRegionMakeWithDistance(_locationManager.location.coordinate, [self milesToMetersFor:radiusInMiles*2], [self milesToMetersFor:radiusInMiles*2] ) animated:YES];
-        
+
         [self.mapView setCenterCoordinate:_locationManager.location.coordinate animated:YES];
         [self.mapView setZoomEnabled:YES];
         [self.mapView setScrollEnabled:YES];
@@ -387,7 +387,6 @@
     
     //    NSLog(@"NTVVC - getLatestJSONData");
     
-    
     Reachability *network = [Reachability reachabilityForInternetConnection];
     if ( ![network isReachable] )
     {
@@ -532,7 +531,7 @@
     [SVProgressHUD dismiss];
     
     if ( returnedData == nil )
-    return;
+        return;
     
     // This method is called once the realtime positioning data has been returned via the API
     NSError *error;
@@ -540,7 +539,7 @@
     NSMutableArray *readData = [[NSMutableArray alloc] init];
     
     if ( error != nil )
-    return;  // Something bad happened, so just return.
+        return;  // Something bad happened, so just return.
     
     //    [masterList removeAllObjects];
     GTFSRouteType routeType = (GTFSRouteType)[self.travelMode intValue];
@@ -560,19 +559,16 @@
             
             [_annotationLookup removeAllObjects];
             for (NSDictionary *data in [json objectForKey:@"bus"] )
-        {
-            
-            if ( [_jsonOp isCancelled] )
-            return;
-            
-            if ( [[data objectForKey:@"Direction"] isEqualToString:@" "] )
-            continue;
-            
-            TransitViewObject *tvObject = [[TransitViewObject alloc] init];
-//            NSLog(@"%@", data);
-            
-//            @try {
-            
+            {
+                
+                if ( [_jsonOp isCancelled] )
+                    return;
+                
+                if ( [[data objectForKey:@"Direction"] isEqualToString:@" "] )
+                    continue;
+                
+                TransitViewObject *tvObject = [[TransitViewObject alloc] init];
+                
                 [tvObject setLat: [data objectForKey:@"lat"] ];
                 [tvObject setLng: [data objectForKey:@"lng"] ];
                 [tvObject setLabel: [data objectForKey:@"label"] ];
@@ -587,57 +583,42 @@
                 CLLocationDistance dist = [_locationManager.location distanceFromLocation: stopLocation] / 1609.34f;
                 
                 [tvObject setDistance: [NSNumber numberWithDouble: dist] ];
-
+                
                 [readData addObject: tvObject];
                 [self addAnnotationUsingwithObject: tvObject];
                 
-//                [self addStopAnnotationsForRouteType: routeType];
-
-//            }
-//            @catch (NSException *exception)
-//            {
-//                NSLog(@"TMVC - %@", exception.reason);
-//            }
-//            @finally
-//            {
-//                NSLog(@"TMVC - Unable to add object: %@", data);
-//            }
-            
-            
-        }
-            
             break;
             
         case kGTFSRouteTypeRail:
             
             for (NSDictionary *data in json)
-        {
-            
-            if ( [_jsonOp isCancelled] )
-            return;
-            
-            TrainViewObject *tvObject = [[TrainViewObject alloc] init];
-            // These keys need to be exactly as they appear in the returned JSON data
-            [tvObject setStartName:[data objectForKey:@"SOURCE"] ];
-            [tvObject setEndName  :[data objectForKey:@"dest"] ];
-            
-            [tvObject setLatitude :[data objectForKey:@"lat"] ];
-            [tvObject setLongitude:[data objectForKey:@"lon"] ];
-            
-            [tvObject setLate     :[data objectForKey:@"late"] ];
-            [tvObject setTrainNo  :[data objectForKey:@"trainno"] ];
-            
-            CLLocation *stopLocation = [[CLLocation alloc] initWithLatitude:[[data objectForKey:@"lat"] doubleValue] longitude: [[data objectForKey:@"lon"] doubleValue] ];
-            CLLocationDistance dist = [_locationManager.location distanceFromLocation: stopLocation] / 1609.34f;
-            
-            [tvObject setDistance: [NSNumber numberWithDouble: dist] ];
-            
-            NSLog(@"%@",tvObject);
-            
-            [readData addObject: tvObject];
-            [self addAnnotationUsingwithObject: tvObject];
-            
-        }
+            {
+                
+                if ( [_jsonOp isCancelled] )
+                    return;
+                
+                TrainViewObject *tvObject = [[TrainViewObject alloc] init];
+                // These keys need to be exactly as they appear in the returned JSON data
+                [tvObject setStartName:[data objectForKey:@"SOURCE"] ];
+                [tvObject setEndName  :[data objectForKey:@"dest"] ];
+                
+                [tvObject setLatitude :[data objectForKey:@"lat"] ];
+                [tvObject setLongitude:[data objectForKey:@"lon"] ];
+                
+                [tvObject setLate     :[data objectForKey:@"late"] ];
+                [tvObject setTrainNo  :[data objectForKey:@"trainno"] ];
+                
+                CLLocation *stopLocation = [[CLLocation alloc] initWithLatitude:[[data objectForKey:@"lat"] doubleValue] longitude: [[data objectForKey:@"lon"] doubleValue] ];
+                CLLocationDistance dist = [_locationManager.location distanceFromLocation: stopLocation] / 1609.34f;
+                
+                [tvObject setDistance: [NSNumber numberWithDouble: dist] ];
+                
+                NSLog(@"%@",tvObject);
+                
+                [readData addObject: tvObject];
+                [self addAnnotationUsingwithObject: tvObject];
+                
+            }
             
             break;
             
@@ -645,75 +626,11 @@
             return;
             break;
     }
-    
-    
-    
-    
+
     
     NSSortDescriptor *lowestToHighest = [NSSortDescriptor sortDescriptorWithKey:@"distance" ascending:YES];
     [readData sortUsingDescriptors:[NSArray arrayWithObject:lowestToHighest]];
     
-    //    [readData sortUsingComparator:^NSComparisonResult(id a, id b)
-    //     {
-    //         if ( _reverseSort )
-    //             return [[b distance] compare: [a distance] ];
-    //         else
-    //             return [[a distance] compare: [b distance] ];
-    //     }];
-    
-    
-    
-    //    if ( [self.travelMode isEqualToString:@"Bus"] )
-    //    {
-    //
-    //        for (NSDictionary *data in [json objectForKey:@"bus"] )
-    //        {
-    //
-    //            if ( [_jsonOp isCancelled] )
-    //                return;
-    //
-    //
-    //            if ( [[data objectForKey:@"Direction"] isEqualToString:@" "] )
-    //                continue;
-    //
-    //            TransitViewObject *tvObject = [[TransitViewObject alloc] init];
-    //
-    //            [tvObject setLat: [data objectForKey:@"lat"] ];
-    //            [tvObject setLng: [data objectForKey:@"lng"] ];
-    //            [tvObject setLabel: [data objectForKey:@"label"] ];
-    //            [tvObject setVehicleID: [data objectForKey:@"VehicleID"] ];
-    //
-    //            [tvObject setBlockID: [data objectForKey:@"BlockID"] ];
-    //            [tvObject setDirection: [data objectForKey:@"Direction"] ];
-    //            [tvObject setDestination: [data objectForKey:@"destination"] ];
-    //            [tvObject setOffset: [data objectForKey:@"Offset"] ];
-    //
-    //            [readData addObject: tvObject];
-    //
-    //        }
-    //    }
-    //    else if ( [self.travelMode isEqualToString:@"Rail"] )
-    //    {
-    //
-    //        for (NSDictionary *data in json)
-    //        {
-    //
-    //            if ( [_jsonOp isCancelled] )
-    //                return;
-    //
-    //            TrainViewObject *tvObject = [[TrainViewObject alloc] init];
-    //            // These keys need to be exactly as they appear in the returned JSON data
-    //            [tvObject setStartName:[data objectForKey:@"SOURCE"] ];
-    //            [tvObject setEndName  :[data objectForKey:@"dest"] ];
-    //
-    //            [tvObject setLate     :[data objectForKey:@"late"] ];
-    //            [tvObject setTrainNo  :[data objectForKey:@"trainno"] ];
-    //
-    //            [readData addObject: tvObject];
-    //
-    //        }
-    //
-    //    }
     
     
     _tableData = readData;
@@ -894,6 +811,25 @@
 
 
 #pragma mark - KMLParser
+-(MKOverlayRenderer *) mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+    
+    NSLog(@"mapView rendererForOverlay");
+    if ([overlay isKindOfClass:[MKPolyline class]])
+    {
+        MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
+        
+        renderer.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
+        renderer.lineWidth   = 3;
+        
+        return renderer;
+    }
+    
+    return nil;
+    
+}
+
+
 -(void)loadkml
 {
     
@@ -902,71 +838,107 @@
     GTFSRouteType routeType = (GTFSRouteType)[self.travelMode intValue];
     
     if ( routeType == kGTFSRouteTypeRail )
-        path = [[NSBundle mainBundle] pathForResource:@"regionalrail" ofType:@"kml"];
+        path = [NSString stringWithFormat:@"regionalrail"];
     else if ( routeType == kGTFSRouteTypeTrolley || routeType == kGTFSRouteTypeBus )
-        path = [[NSBundle mainBundle] pathForResource:self.routeName ofType:@"kml"];  // Hardcoded for now
+        path = [NSString stringWithFormat:@"%@",self.routeName];
     else if ( routeType == kGTFSRouteTypeSubway )
-        path = [[NSBundle mainBundle] pathForResource:self.routeName ofType:@"kml"];  // Hardcoded for now
+        path = [NSString stringWithFormat:@"%@",self.routeName];
     else
         path = nil;
     
     if ( path == nil )
         return;
+
+    KMLObject *kObj = [[KMLObject alloc] initWithFilename:path forMapView:self.mapView];
+    
+    CLLocationDegrees latDelta = kObj.latDelta;
+    MKCoordinateSpan span = MKCoordinateSpanMake(fabs(latDelta),0.0);
+    MKCoordinateRegion region = MKCoordinateRegionMake(kObj.midCoordinate, span);
+    
+    [[self mapView] setRegion:region];
     
     
-    NSURL *url = [NSURL fileURLWithPath:path];
-    kmlParser = [[KMLParser alloc] initWithURL:url];
-    [kmlParser parseKML];
+//    KMLOverlay *overlay = [[KMLOverlay alloc] initWithKML:kObj];
+//    if ( overlay != nil )
+//        [[self mapView] addOverlay:overlay];
+//
+//    [self.mapView removeAnnotations: self.mapView.annotations];
+//    [self.mapView removeOverlays:    self.mapView.overlays];
     
-    //    NSLog(@"TVVC: %@", url);
+    return;
     
-    // Add all of the MKOverlay objects parsed from the KML file to the map.
-    NSArray *overlays = [kmlParser overlays];
-    //    NSLog(@"TVVC: overlays - %d",[overlays count]);
-    [self.mapView addOverlays:overlays];
-    
-    // Add all of the MKAnnotation objects parsed from the KML file to the map.
-    NSArray *annotations = [kmlParser points];
-    NSLog(@"TVVC: annotations - %lu",(unsigned long)[annotations count]);
-    [self.mapView addAnnotations:annotations];
-    
-    // Walk the list of overlays and annotations and create a MKMapRect that
-    // bounds all of them and store it into flyTo.
-    flyTo = MKMapRectNull;
-    for (id <MKOverlay> overlay in overlays)
-    {
-        
-        if (MKMapRectIsNull(flyTo))
-        {
-            flyTo = [overlay boundingMapRect];
-        }
-        else
-        {
-            flyTo = MKMapRectUnion(flyTo, [overlay boundingMapRect]);
-        }
-        
-    }
-    
-    
-    for (id <MKAnnotation> annotation in annotations) {
-        MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
-        MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0);
-        if (MKMapRectIsNull(flyTo)) {
-            flyTo = pointRect;
-        } else {
-            flyTo = MKMapRectUnion(flyTo, pointRect);
-        }
-    }
-    
-    
-    // Position the map so that all overlays and annotations are visible on screen.
-    self.mapView.visibleMapRect = flyTo;
+
+//    NSString *path2;
+////    GTFSRouteType routeType = (GTFSRouteType)[self.travelMode intValue];
+//    
+//    if ( routeType == kGTFSRouteTypeRail )
+//        path2 = [[NSBundle mainBundle] pathForResource:@"regionalrail" ofType:@"kml"];
+//    else if ( routeType == kGTFSRouteTypeTrolley || routeType == kGTFSRouteTypeBus )
+//        path2 = [[NSBundle mainBundle] pathForResource:self.routeName ofType:@"kml"];  // Hardcoded for now
+//    else if ( routeType == kGTFSRouteTypeSubway )
+//        path2 = [[NSBundle mainBundle] pathForResource:self.routeName ofType:@"kml"];  // Hardcoded for now
+//    else
+//        path2 = nil;
+//    
+//    if ( path2 == nil )
+//        return;
+//    
+//    
+//    NSURL *url = [NSURL fileURLWithPath:path2];
+//    kmlParser = [[KMLParser alloc] initWithURL:url];
+//    [kmlParser parseKML];
+//    
+//    //    NSLog(@"TVVC: %@", url);
+//    
+//    // Add all of the MKOverlay objects parsed from the KML file to the map.
+//    NSArray *overlays = [kmlParser overlays];
+//    //    NSLog(@"TVVC: overlays - %d",[overlays count]);
+//    [self.mapView addOverlays:overlays];
+//    
+//    // Add all of the MKAnnotation objects parsed from the KML file to the map.
+//    NSArray *annotations = [kmlParser points];
+//    NSLog(@"TVVC: annotations - %lu",(unsigned long)[annotations count]);
+//    [self.mapView addAnnotations:annotations];
+//    
+//    // Walk the list of overlays and annotations and create a MKMapRect that
+//    // bounds all of them and store it into flyTo.
+//    flyTo = MKMapRectNull;
+//    for (id <MKOverlay> overlay in overlays)
+//    {
+//        
+//        if (MKMapRectIsNull(flyTo))
+//        {
+//            flyTo = [overlay boundingMapRect];
+//        }
+//        else
+//        {
+//            flyTo = MKMapRectUnion(flyTo, [overlay boundingMapRect]);
+//        }
+//        
+//    }
+//    
+//    
+//    for (id <MKAnnotation> annotation in annotations) {
+//        MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
+//        MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0);
+//        if (MKMapRectIsNull(flyTo)) {
+//            flyTo = pointRect;
+//        } else {
+//            flyTo = MKMapRectUnion(flyTo, pointRect);
+//        }
+//    }
+//    
+//    
+//    // Position the map so that all overlays and annotations are visible on screen.
+//    self.mapView.visibleMapRect = flyTo;
     
 }
 
 
+
 -(void) removeAnnotationsFromMapView
 {
+    NSLog(@"TMVC - removeAnnotationsFromMapView");
     NSMutableArray *annotationsToRemove = [[self.mapView annotations] mutableCopy];  // We want to remove all the annotations minus one
     [annotationsToRemove removeObject: [self.mapView userLocation] ];         // Keep the userLocation annotation on the map
     [self.mapView removeAnnotations: annotationsToRemove];                    // All annotations remaining in the array get removed
@@ -1081,59 +1053,13 @@
 
     
 }
-//
-//    if ( [view.annotation isKindOfClass:[MKUserLocation class]] )
-//        return;
-//    
-//    int row = 0;
-//    for (id object in _tableData)
-//    {
-//        if ( [object isKindOfClass:[TransitViewObject class] ] )
-//        {
-//            if ( [((TransitViewObject*)object).VehicleID intValue] == [pin.vehicle_id intValue] )
-//            {
-//                //                NSLog(@"Found!");
-////                [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
-//                break;
-//            }
-//        }
-//        row++;
-//    }
-//    
-//    //    NSLog(@"view selected: %@", pin.title );
-//}
-
-
-//- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view
-//{
-
-//    mapAnnotation *pin = (mapAnnotation*)view.annotation;
-//    [self.tableView deselectRowAtIndexPath: self.tableView.indexPathForSelectedRow animated:YES];
-    
-    //    int row = 0;
-    //    for (id object in _tableData)
-    //    {
-    //        if ( [object isKindOfClass:[TransitViewObject class] ] )
-    //        {
-    //            if ( [((TransitViewObject*)object).VehicleID intValue] == [pin.id intValue] )
-    //            {
-    //                //                NSLog(@"Found!");
-    //                [self.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] animated:YES];
-    //                break;
-    //            }
-    //        }
-    //        row++;
-    //    }
-    
-    //    NSLog(@"view deselected: %@", pin.title );
-    
-//}
 
 
 
+// gga commented
 -(MKOverlayView*) mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
 {
-    //    NSLog(@"TMVC -mapView viewForOverlay");
+    NSLog(@"TMVC -mapView viewForOverlay");
     return [kmlParser viewForOverlay: overlay];
 }
 
@@ -1165,49 +1091,13 @@
 - (void)mapView:(MKMapView *)thisMapView regionDidChangeAnimated:(BOOL)animated
 {
     
-    //    NSLog(@"TMVC - mapView regionDidChangeAnimated");
+    NSLog(@"TMVC - mapView regionDidChangeAnimated");
     MKCoordinateRegion mapRegion;
     // set the center of the map region to the now updated map view center
     mapRegion.center = thisMapView.centerCoordinate;
     
     mapRegion.span.latitudeDelta = 0.3; // you likely don't need these... just kinda hacked this out
     mapRegion.span.longitudeDelta = 0.3;
-    
-    // get the lat & lng of the map region
-    //    double lat = mapRegion.center.latitude;
-    //    double lng = mapRegion.center.longitude;
-    
-    // note: I have a variable I have saved called lastLocation. It is of type
-    // CLLocationCoordinate2D and I initially set it in the didUpdateUserLocation
-    // delegate method. I also update it again when this function is called
-    // so I always have the last mapRegion center point to compare the present one with
-    //    CLLocation *before = [[CLLocation alloc] initWithLatitude:lastLocation.latitude longitude:lastLocation.longitude];
-    //    CLLocation *now = [[CLLocation alloc] initWithLatitude:lat longitude:lng];
-    
-    //    CLLocationDistance distance = ([before distanceFromLocation:now]) * 0.000621371192;
-    
-    
-    //    NSLog(@"Scrolled distance: %@", [NSString stringWithFormat:@"%.02f", distance]);
-    
-    //    if( distance > SCROLL_UPDATE_DISTANCE )
-    //    {
-    //        // do something awesome
-    //
-    //        //        if(isSystemScroll)
-    //        //        {
-    //        //            isSystemScroll=NO;
-    //        //            thisMapView.visibleMapRect = flyTo;
-    //        //
-    //        //            isSystemScroll=YES;
-    //        //            NSLog(@"scrolled out of bounds");
-    //        //            TransitmapView.frame = mapFrame;
-    //        //        }
-    //
-    //    }
-    
-    // resave the last location center for the next map move event
-    //    lastLocation.latitude = mapRegion.center.latitude;
-    //    lastLocation.longitude = mapRegion.center.longitude;
     
 }
 
