@@ -95,7 +95,7 @@
 
     // Refresh visible cells
 //    [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationAutomatic];
-    NSLog(@"RSVC - willAnimateRotationToInterfaceOrientation; reload");
+//    NSLog(@"RSVC - willAnimateRotationToInterfaceOrientation; reload");
     [self.tableView reloadData];
     
 }
@@ -142,21 +142,13 @@
     UIColor *backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"newBG_pattern.png"] ];
     [self.view setBackgroundColor: backgroundColor];
     
-//    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mainBackground.png"] ];
-//    [backgroundImage setContentMode: UIViewContentModeScaleAspectFill];
-//    backgroundImage.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    
-//    [self.view addSubview:backgroundImage];
-//    [self.view sendSubviewToBack:backgroundImage];
-
-    
-//    _systemStatusArray = [[NSMutableArray alloc] init];
     _ssDict = [[NSMutableDictionary alloc] init];
     
     NSString *title;
     NSString *backButtonImage = @"";
     CGFloat fontSize = 45.0f/2.0f;
+    
+    
     if ( [travelMode isEqualToString:@"Rail"] )
     {
         title = @"Regional Rail Lines";
@@ -212,7 +204,15 @@
     [self getMainAlerts];
     [self getGenericAlertDetails];
     
+    
 }
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+}
+
 
 -(void) updateRouteData
 {
@@ -255,10 +255,10 @@
     else
         return;  // travelMode needs to be a recognized type otherwise nothing is going to work
     
-    for (NSArray *favorite in newData.favorites)
-    {
-        NSLog(@"%@",favorite);
-    }
+//    for (NSArray *favorite in newData.favorites)
+//    {
+//        NSLog(@"%@",favorite);
+//    }
     
     [_routeData setFavorites     : newData.favorites];
     [_routeData setRecentlyViewed: newData.recentlyViewed];
@@ -375,13 +375,13 @@
     //-----> LIST ALL FILES <-----//
     //    NSLog(@"LISTING ALL FILES FOUND");
     
-    int count;
+//    int count;
     
     NSArray *directoryContent = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:NULL];
-    for (count = 0; count < (int)[directoryContent count]; count++)
-    {
-        NSLog(@"BSRVC - File %d: %@", (count + 1), [directoryContent objectAtIndex:count]);
-    }
+//    for (count = 0; count < (int)[directoryContent count]; count++)
+//    {
+//        NSLog(@"BSRVC - File %d: %@", (count + 1), [directoryContent objectAtIndex:count]);
+//    }
     return directoryContent;
 }
 
@@ -770,7 +770,8 @@
             
             // These two lines do nothing.  Should more code be uncommented or should this case section be removed?
             [cell setBackgroundColor: [UIColor clearColor]];
-            RouteSelectionCell *rsCell = (RouteSelectionCell*)cell;
+
+//            RouteSelectionCell *rsCell = (RouteSelectionCell*)cell;
 //            NSLog(@"rsCell frame: %@, img: %@", NSStringFromCGRect(rsCell.frame), NSStringFromCGRect(rsCell.imgCell.frame));
             
             // Modify the label width depending on the orientation
@@ -827,33 +828,12 @@
     
     static NSString *alertCellID          = @"NextToArriveAlertsCell";
     
-    
-//    if ( tableView == self.searchDisplayController.searchResultsTableView )
-//    {
-//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:defaultCellID];
-//        if ( cell ==  nil )
-//        {
-//            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:defaultCellID];
-//        }
-//        
-//        //        RouteData *row = [_routeData objectWithIndexPath:indexPath];
-//        //        [[cell textLabel] setText: [row start_stop_name] ];
-//        
-//        NSDictionary *row = [filteredList objectAtIndex:indexPath.row];
-//        [[cell textLabel] setText: [row objectForKey:@"stop_name"]];
-//        return cell;
-//        
-//    }
-//    else
-    {
-        
         // Configure the cell...
 //        BusRoutesDefaultCell *defaultCell;// = [tableView dequeueReusableCellWithIdentifier:defaultCellID];
         UserPreferenceCell   *userPrefCell;
-        
         RouteSelectionCell *routeSelectionCell;
-        
         RouteData *row;
+    
         switch ( (NSInteger)[_routeData sectionForIndexPath:indexPath] )
         {
             
@@ -906,6 +886,9 @@
             case kDisplayedRouteDataAlerts:
                 // Insert code here!
             {
+                
+//                NSLog(@"RSVC - tV:cellForRowAtIndexPath: %@", indexPath);
+
                 NextToArriveAlerts *alertSelectionCell = (NextToArriveAlerts*)[self.tableView dequeueReusableCellWithIdentifier: alertCellID];
                 
                 AlertMessage *aMsg = (AlertMessage*)[_routeData objectWithIndexPath:indexPath];
@@ -1114,8 +1097,6 @@
 //            }
 //                break;
         }
-        
-    }
     
 }
 
@@ -1345,7 +1326,7 @@
         return;
     }
     
-    NSLog(@"BSRVC - s/r: %ld/%ld", (long)indexPath.section, (long)indexPath.row);
+//    NSLog(@"BSRVC - s/r: %ld/%ld", (long)indexPath.section, (long)indexPath.row);
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"ItineraryStoryboard" bundle:nil];
     ItineraryViewController *iVC = (ItineraryViewController*)[storyboard instantiateInitialViewController];
@@ -1401,7 +1382,7 @@
 
 - (IBAction)navbarSearchButtonClicked:(id)sender
 {
-    NSLog(@"BSRVC -(IBAction) navbarSearchButtonClicked");
+//    NSLog(@"BSRVC -(IBAction) navbarSearchButtonClicked");
     //    UIView *sup = self.view.superview;
     //    NSLog(@"BSRVC | superview frame: %@, bounds: %@", NSStringFromCGRect(sup.frame), NSStringFromCGRect(sup.bounds) );
     //    NSLog(@"BSRVC | tableview frame: %@, bounds: %@,\tcSize: %@, cOffset: %@, cInset: %@, sInset: %@", NSStringFromCGRect(self.tableView.frame), NSStringFromCGRect(self.tableView.bounds), NSStringFromCGSize(self.tableView.contentSize), NSStringFromCGPoint(self.tableView.contentOffset),NSStringFromUIEdgeInsets(self.tableView.contentInset), NSStringFromUIEdgeInsets(self.tableView.scrollIndicatorInsets) );
@@ -1422,7 +1403,7 @@
     NSLog(@"RSVC - hideShowSearchBar");
 #endif
     
-    NSLog(@"BSRVC -(void) hideShowSearchBar");
+//    NSLog(@"BSRVC -(void) hideShowSearchBar");
     float shiftBy = 0;
     
     if ( self.searchDisplayController.searchBar.hidden == YES )  // If it's hidden, make it visible
@@ -1601,11 +1582,11 @@
     if ( [database hadError] )  // Check for errors
     {
         
-        int errorCode = [database lastErrorCode];
-        NSString *errorMsg = [database lastErrorMessage];
+//        int errorCode = [database lastErrorCode];
+//        NSString *errorMsg = [database lastErrorMessage];
         
-        NSLog(@"BSRVC - query failure, code: %d, %@", errorCode, errorMsg);
-        NSLog(@"BSRVC - query str: %@", queryStr);
+//        NSLog(@"BSRVC - query failure, code: %d, %@", errorCode, errorMsg);
+//        NSLog(@"BSRVC - query str: %@", queryStr);
         
         return;  // If an error occurred, there's nothing else to do but exit
         
@@ -1727,7 +1708,7 @@
     
     filteredList = [[NSMutableArray alloc] init];
     
-    NSLog(@"BSRVC -(void) getFilteredRoutesWithString");
+//    NSLog(@"BSRVC -(void) getFilteredRoutesWithString");
     
     // Begin SQL3 db process
     if( sqlite3_open( [[GTFSCommon filePath] UTF8String], &dbh) == SQLITE_OK )
@@ -1738,7 +1719,7 @@
             queryStr = [NSString stringWithFormat:@"SELECT unique_stops.route_short_name, unique_stops.route_id, unique_stops.route_type, fts3_unique_stops.stop_name FROM fts3_unique_stops JOIN unique_stops ON fts3_unique_stops.uid=unique_stops.uid WHERE fts3_unique_stops.stop_name MATCH 'stop_name:*%@*'", searchStr];
         else
             queryStr = [NSString stringWithFormat:@"SELECT unique_stops.route_short_name, unique_stops.route_id, unique_stops.route_type, fts3_unique_stops.stop_name FROM fts3_unique_stops JOIN unique_stops ON fts3_unique_stops.uid=unique_stops.uid WHERE %@ AND fts3_unique_stops.stop_name MATCH 'stop_name:*%@*'", busFilterStr, searchStr];
-        NSLog(@"BSRVC -(void) getFilteredRoutesWithString: %@", queryStr);
+//        NSLog(@"BSRVC -(void) getFilteredRoutesWithString: %@", queryStr);
         
         
         queryType = kQuerySearchBus;
@@ -1778,11 +1759,11 @@
         }
         else
         {
-            int errorCode = sqlite3_step( statement );
-            char *errMsg = (char *)sqlite3_errmsg(dbh);
-            NSString *errStr = [[NSString alloc] initWithUTF8String:errMsg];
-            NSLog(@"BSRVC - query failure, code: %d, %@", errorCode, errStr);
-            NSLog(@"BSRVC - query str: %@", queryStr);
+//            int errorCode = sqlite3_step( statement );
+//            char *errMsg = (char *)sqlite3_errmsg(dbh);
+//            NSString *errStr = [[NSString alloc] initWithUTF8String:errMsg];
+//            NSLog(@"BSRVC - query failure, code: %d, %@", errorCode, errStr);
+//            NSLog(@"BSRVC - query str: %@", queryStr);
             queryType = kQueryFailure;
         }
         
@@ -1857,12 +1838,12 @@
 #pragma mark - UISearchDisplayDelegate Protocol
 -(void) searchDisplayController:(UISearchDisplayController *)controller didHideSearchResultsTableView:(UITableView *)tableView
 {
-    NSLog(@"BSRVC - didHideSearchResultsTableView");
+//    NSLog(@"BSRVC - didHideSearchResultsTableView");
 }
 
 -(void) searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView
 {
-    NSLog(@"BSRVC - didLoadSearchResultsTableView");
+//    NSLog(@"BSRVC - didLoadSearchResultsTableView");
     //    NSLog(@"BSVC | tableview frame: %@, bounds: %@,\tcSize: %@, cOffset: %@, cInset: %@, sInset: %@", NSStringFromCGRect(tableView.frame), NSStringFromCGRect(tableView.bounds), NSStringFromCGSize(tableView.contentSize), NSStringFromCGPoint(tableView.contentOffset),NSStringFromUIEdgeInsets(tableView.contentInset), NSStringFromUIEdgeInsets(tableView.scrollIndicatorInsets) );
     
     //    [tableView setBounds:CGRectMake(tableView.bounds.origin.x, 15, tableView.bounds.size.width, tableView.bounds.size.height)];
@@ -1875,7 +1856,7 @@
 
 -(void) searchDisplayController:(UISearchDisplayController *)controller didShowSearchResultsTableView:(UITableView *)tableView
 {
-    NSLog(@"BSRVC - didShowSearchResultsTableView");
+//    NSLog(@"BSRVC - didShowSearchResultsTableView");
     //    [tableView setContentInset:UIEdgeInsetsMake(58, 0, 0, 0)];
     
     [tableView setContentOffset:CGPointMake(0, -29) animated:YES];
@@ -1887,7 +1868,7 @@
 
 -(BOOL) searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-    NSLog(@"BSRVC - shouldReloadTableForSearchString");
+//    NSLog(@"BSRVC - shouldReloadTableForSearchString");
     [self filterContentForSearchText:searchString scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex ]]];
     
     //    UITableView *tableView = controller.searchResultsTableView;
@@ -1901,46 +1882,46 @@
 
 -(BOOL) searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
 {
-    NSLog(@"BSRVC - shouldReloadTableForSearchScope");
+//    NSLog(@"BSRVC - shouldReloadTableForSearchScope");
     [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
     return YES;
 }
 
 -(void) searchDisplayController:(UISearchDisplayController *)controller willHideSearchResultsTableView:(UITableView *)tableView
 {
-    NSLog(@"BSRVC - willHideSearchResultsTableView");
+//    NSLog(@"BSRVC - willHideSearchResultsTableView");
 }
 
 -(void) searchDisplayController:(UISearchDisplayController *)controller willShowSearchResultsTableView:(UITableView *)tableView
 {
-    NSLog(@"BSRVC - willShowSearchResultsTableView");
+//    NSLog(@"BSRVC - willShowSearchResultsTableView");
     //    [tableView setContentInset:UIEdgeInsetsMake(100, 0, 0, 0)];
     //    [tableView setBackgroundColor:[UIColor redColor]];
 }
 
 -(void) searchDisplayController:(UISearchDisplayController *)controller willUnloadSearchResultsTableView:(UITableView *)tableView
 {
-    NSLog(@"BSRVC - willUnloadSearchResultsTableView");
+//    NSLog(@"BSRVC - willUnloadSearchResultsTableView");
 }
 
 -(void) searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller
 {
-    NSLog(@"BSRVC - searchDisplayControllerDidBeginSearch");
+//    NSLog(@"BSRVC - searchDisplayControllerDidBeginSearch");
 }
 
 -(void) searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
 {
-    NSLog(@"BSRVC - searchDisplayControllerDidEndSearch");
+//    NSLog(@"BSRVC - searchDisplayControllerDidEndSearch");
 }
 
 -(void) searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
 {
-    NSLog(@"BSRVC - searchDisplayControllerWillBeginSearch");
+//    NSLog(@"BSRVC - searchDisplayControllerWillBeginSearch");
 }
 
 -(void) searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller
 {
-    NSLog(@"BSRVC - searchDisplayControllerWillEndSearch");
+//    NSLog(@"BSRVC - searchDisplayControllerWillEndSearch");
 }
 
 
@@ -1948,8 +1929,8 @@
 #pragma mark - UISearchBarDelegate Protocol
 -(void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    
-    NSLog(@"BSRVC - textDidChange");
+//    
+//    NSLog(@"BSRVC - textDidChange");
     //    if ( [searchText length] > 2)
     //    {
     //    }
@@ -1958,7 +1939,7 @@
 
 -(void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    NSLog(@"BSRVC - searchButtonClicked");
+//    NSLog(@"BSRVC - searchButtonClicked");
     
     // Readjust the table view yet again, at the searchDisplayController overwrite all our prior settings
     //    UITableView *tableView = self.searchDisplayController.searchResultsTableView;
@@ -1974,7 +1955,7 @@
 
 -(void) searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    NSLog(@"BSRVC - cancelButtonClicked");
+//    NSLog(@"BSRVC - cancelButtonClicked");
     [self hideShowSearchBar];
     [self getUnfilteredBusRoutes];  // Load the original list back into the routesArray array
     
@@ -2011,7 +1992,7 @@
 
     
     NSInteger index = [(UISegmentedControl*)sender selectedSegmentIndex];
-    NSLog(@"RSVC - filter has changed to: %ld", (long)index);
+//    NSLog(@"RSVC - filter has changed to: %ld", (long)index);
     
     
     //    BOOL showOnlyRoutes = YES;
@@ -2042,14 +2023,14 @@
     if ( queryType == kQueryNormalBus )
     {
         [self getUnfilteredBusRoutes];
-        NSLog(@"RSVC - segmentChanged; reload");
+//        NSLog(@"RSVC - segmentChanged; reload");
         [self.tableView reloadData];
     }
     else if ( queryType == kQuerySearchBus )
     {
         [self getFilteredBusRoutes];
         [self.searchDisplayController.searchBar setText: self.searchDisplayController.searchBar.text];  // Forces the searchDisplayController to refresh the data
-        NSLog(@"BSRVC - filterHasChanged:  filteredBusRoutes size: %lu", (unsigned long)[filteredList count]);
+//        NSLog(@"BSRVC - filterHasChanged:  filteredBusRoutes size: %lu", (unsigned long)[filteredList count]);
     }
     
 }
@@ -2092,14 +2073,14 @@
     if ( queryType == kQueryNormalBus )
     {
         [self getUnfilteredBusRoutes];
-        NSLog(@"RSVC - filterHasChanged: %d; reload", index);
+//        NSLog(@"RSVC - filterHasChanged: %d; reload", index);
         [self.tableView reloadData];
     }
     else if ( queryType == kQuerySearchBus )
     {
         [self getFilteredBusRoutes];
         [self.searchDisplayController.searchBar setText: self.searchDisplayController.searchBar.text];  // Forces the searchDisplayController to refresh the data
-        NSLog(@"RSVC - filterHasChanged:  filteredBusRoutes size: %lu", (unsigned long)[filteredList count]);
+//        NSLog(@"RSVC - filterHasChanged:  filteredBusRoutes size: %lu", (unsigned long)[filteredList count]);
     }
     
     //    NSLog(@"reloading data");
@@ -2140,8 +2121,31 @@
     NSLog(@"RSVC - dropDownMenuPressed");
 #endif
     
-    NSLog(@"RSVC - Alert Button Pressed!");
+//    NSLog(@"RSVC - Alert Button Pressed!");
 }
+
+
+
+-(NSString *)convertHTML:(NSString *)html {
+    
+    NSScanner *myScanner;
+    NSString *text = nil;
+    myScanner = [NSScanner scannerWithString:html];
+    
+    while ([myScanner isAtEnd] == NO) {
+        
+        [myScanner scanUpToString:@"<" intoString:NULL] ;
+        
+        [myScanner scanUpToString:@">" intoString:&text] ;
+        
+        html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>", text] withString:@""];
+    }
+    //
+    html = [html stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    return html;
+}
+
 
 
 #pragma mark - Fetching Alerts
@@ -2184,10 +2188,10 @@
                 [self processGenericAlertData:alertData];
             }];
         }
-        else
-        {
-            NSLog(@"NTAVC - getGenericAlertDetails: _jsonOp cancelled");
-        }
+//        else
+//        {
+//            NSLog(@"NTAVC - getGenericAlertDetails: _jsonOp cancelled");
+//        }
         
     }];
     
@@ -2237,10 +2241,10 @@
                 [self processMainAlerts:alertData];
             }];
         }
-        else
-        {
-            NSLog(@"NTAVC - getAlertsForLines: _jsonOp cancelled");
-        }
+//        else
+//        {
+//            NSLog(@"NTAVC - getAlertsForLines: _jsonOp cancelled");
+//        }
         
     }];
     
@@ -2408,6 +2412,7 @@
     }
     
     
+    
     NSMutableArray *myData;
     myData = [[NSMutableArray alloc] init];
     
@@ -2449,32 +2454,39 @@
             return;
         
         SystemAlertObject *saObj = [[SystemAlertObject alloc] init];
-        [saObj setCurrent_message: [data objectForKey:@"current_message" ] ];
+        [saObj setCurrent_message: [self convertHTML:[data objectForKey:@"current_message" ] ] ];
         
         // Does you even contain data, bro?
         if ( [saObj.current_message length] < 2 )  // In case current_message ever gets a space or two
+        {
             continue;
+        }
         
         [saObj setRoute_name: [data objectForKey:@"route_name"] ];
         [saObj setRoute_id  : [data objectForKey:@"route_id"  ] ];
-
         
         AlertMessage *alertMsg = [[AlertMessage alloc] init];
         [alertMsg setText: saObj.current_message];
         [alertMsg updateAttrText];
         
-        if ( [_alertMode isEqualToString:@"Regional Rail"] )
+        // Sometimes Generic alerts are for all routes.  Sometimes they are for specific ones.  Just display the all.
+        if ( [alertMsg.text length] > 0 )
         {
-         
-            if ( [ saObj.current_message rangeOfString:@"RRD"].location != NSNotFound )  // If the message contains RRD, it's a generic RR alert
             [_routeData addObject:alertMsg toSection:kDisplayedRouteDataAlerts];
-            
-        }  // if ( [_alertMode isEqualToString:@"Regional Rail"] )
-        else
-        {
-            if ( [ saObj.current_message rangeOfString:@"RRD"].location == NSNotFound )  // If the message does not contain RRD, it's a generic Bus/Trolley/MFL/BSL/NHSL alert
-                [_routeData addObject:alertMsg toSection:kDisplayedRouteDataAlerts];
         }
+        
+//        if ( [_alertMode isEqualToString:@"Regional Rail"] )
+//        {
+//         
+//            if ( [ saObj.current_message rangeOfString:@"RRD"].location != NSNotFound )  // If the message contains RRD, it's a generic RR alert
+//                [_routeData addObject:alertMsg toSection:kDisplayedRouteDataAlerts];
+//            
+//        }  // if ( [_alertMode isEqualToString:@"Regional Rail"] )
+//        else
+//        {
+//            if ( [ saObj.current_message rangeOfString:@"RRD"].location == NSNotFound )  // If the message does not contain RRD, it's a generic Bus/Trolley/MFL/BSL/NHSL alert
+//                [_routeData addObject:alertMsg toSection:kDisplayedRouteDataAlerts];
+//        }
         
     }
     
@@ -2522,7 +2534,7 @@
     NSLog(@"RSVC - alertTapped");
 #endif
     
-    NSLog(@"Alert Tapped");
+//    NSLog(@"Alert Tapped");
     
 }
 

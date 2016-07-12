@@ -76,6 +76,55 @@
 #endif
     
     [super viewDidAppear:animated];
+    
+    id object = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:Update:NeedUpdate"];
+    if ( object != nil )
+    {
+        BOOL needUpdate = [object boolValue];
+        if ( needUpdate )
+        {
+            UIAlertController *alert = [UIAlertController
+                                        alertControllerWithTitle:@"New Schedule Available"
+                                        message:@"Would you like to download the new schedule?"
+                                        preferredStyle:UIAlertControllerStyleAlert
+                                        ];
+            
+            UIAlertAction *dl = [UIAlertAction
+                                 actionWithTitle:@"Yes"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction *action)
+                                 {
+                                     // Do something here
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                     NSString *storyboardName = @"AutomaticUpdates";
+                                     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+                                     AutomaticUpdatesViewController *cwVC = (AutomaticUpdatesViewController*)[storyboard instantiateViewControllerWithIdentifier:@"AutomaticUpdates"];
+                                     
+                                     [cwVC setStartImmediately:YES];
+                                     
+                                     [self.navigationController pushViewController:cwVC animated:YES];
+                                     
+                                     
+                                 }];
+            
+            UIAlertAction* cancel = [UIAlertAction
+                                     actionWithTitle:@"Maybe Later"
+                                     style:UIAlertActionStyleDefault
+                                     handler:^(UIAlertAction * action)
+                                     {
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+                                     }];
+            
+            [alert addAction:dl];
+            [alert addAction:cancel];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        }
+        
+    }  // if ( object != nil )
+    
 }
 
 -(void) viewDidDisappear:(BOOL)animated

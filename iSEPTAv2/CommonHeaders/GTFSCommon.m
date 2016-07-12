@@ -24,72 +24,107 @@
     NSLog(@"GTFSCommon: filePath");
 #endif
     
-//    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
     
+    // Build the path where SEPTA.sqlite should exist
     NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *dbPath = [NSString stringWithFormat:@"%@/SEPTA.sqlite", [paths objectAtIndex:0] ];
-    
-    bool b = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];
+
+    // Check if SEPTA.sqlite exists
+    bool b = [[NSFileManager defaultManager] fileExistsAtPath:dbPath];    
     
     if ( !b )  // If the file does not exist
     {
-        
-        NSString *zipPath = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"zip"];
-
-        // Uncompress the zip file to get SEPTA.sqlite
-        if ( zipPath != nil )
-        {
-            
-            NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-            NSString  *uncompressPath = [paths objectAtIndex:0];
-            
-            ZipArchive *zip = [[ZipArchive alloc] init];
-            if ( [zip UnzipOpenFile: zipPath] )
-            {
-                
-                NSArray *contents = [zip getZipFileContents];
-                NSLog(@"Contents: %@", contents);
-                
-                //        BOOL ret = [zip UnzipFileTo:[[self filePath] stringByDeletingLastPathComponent] overWrite:YES];
-                BOOL ret = [zip UnzipFileTo:uncompressPath overWrite:YES];
-                if ( NO == ret )
-                {
-                    NSLog(@"Unable to unzip");
-                }
-                
-                
-                NSDirectoryEnumerator* dirEnum = [[NSFileManager defaultManager] enumeratorAtPath: zipPath];
-                NSString* file;
-                NSError* error = nil;
-                NSUInteger count = 1;
-                while ((file = [dirEnum nextObject]))
-                {
-                    count += 1;
-                    NSString* fullPath = [zipPath stringByAppendingPathComponent:file];
-                    NSDictionary* attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:fullPath error:&error];
-                    NSLog(@"file is not zero length: %@", attrs);
-                }
-                
-                NSLog(@"%ld == %ld, files extracted successfully", (unsigned long)count, (unsigned long)[contents count]);
-                
-                NSURL *dbPathURL = [NSURL fileURLWithPath:dbPath];
-                
-                NSError *pathError = nil;
-                BOOL success = [dbPathURL setResourceValue:[NSNumber numberWithBool: YES] forKey:NSURLIsExcludedFromBackupKey error:&pathError];
-                if ( !success )
-                    NSLog(@"Error excluding %@ from backup %@", [dbPathURL lastPathComponent], error);
-                else
-                    NSLog(@"Excluded %@ from backup", [dbPathURL lastPathComponent]);
-                
-            }
-            [zip UnzipCloseFile];
-            
-        }
-        
-
+        [GTFSCommon uncompressWithPath:dbPath];
     }
     
     return dbPath;
+    
+}
+
+
++(void) uncompressWithPath: (NSString*) dbPath
+{
+    
+    NSString *zipPath = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"zip"];
+    NSString *md5Path = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"md5"];
+    
+    // Uncompress the zip file to get SEPTA.sqlite
+    if ( zipPath != nil )
+    {
+        
+        NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+        NSString  *uncompressPath = [paths objectAtIndex:0];
+        
+        ZipArchive *zip = [[ZipArchive alloc] init];
+        if ( [zip UnzipOpenFile: zipPath] )
+        {
+            
+            //                NSArray *contents = [zip getZipFileContents];
+            //                NSLog(@"Contents: %@", contents);
+            
+            //        BOOL ret = [zip UnzipFileTo:[[self filePath] stringByDeletingLastPathComponent] overWrite:YES];
+            BOOL ret = [zip UnzipFileTo:uncompressPath overWrite:YES];
+            if ( NO == ret )
+            {
+//                    NSLog(@"Unable to unzip");
+            }
+            
+            
+            NSDirectoryEnumerator* dirEnum = [[NSFileManager defaultManager] enumeratorAtPath: zipPath];
+            NSString* file;
+            NSError* error = nil;
+            NSUInteger count = 1;
+            while ((file = [dirEnum nextObject]))
+            {
+                count += 1;
+                NSString* fullPath = [zipPath stringByAppendingPathComponent:file];
+                NSDictionary* attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:fullPath error:&error];
+                NSLog(@"file is not zero length: %@", attrs);
+            }
+            
+            //                NSLog(@"%ld == %ld, files extracted successfully", (unsigned long)count, (unsigned long)[contents count]);
+            
+            NSURL *dbPathURL = [NSURL fileURLWithPath:dbPath];
+            
+            NSError *pathError = nil;
+            BOOL success = [dbPathURL setResourceValue:[NSNumber numberWithBool: YES] forKey:NSURLIsExcludedFromBackupKey error:&pathError];
+            if ( !success )
+            {
+                //                    NSLog(@"Error excluding %@ from backup %@", [dbPathURL lastPathComponent], error);
+            }
+            else
+            {
+                //                    NSLog(@"Excluded %@ from backup", [dbPathURL lastPathComponent]);
+            }
+            
+            
+            // Copy the MD5 over to the Cache Directory as well
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            
+            // Find the location of the MD5 file
+            NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+            NSString *srcPath = [NSString stringWithFormat:@"%@/SEPTA.md5", [paths objectAtIndex:0] ];
+            NSError *md5Error;
+
+            if ( md5Path == nil )  // Check that srcPath exists
+            {
+                // NSLog(@"Could not find: %@", srcPath);
+            }
+            else
+            {
+                if ( [fileManager fileExistsAtPath: srcPath] )  // Check if the md5 file already exists
+                {
+                    [fileManager removeItemAtPath:srcPath error:&md5Error];  // Since it does, remove it
+                }
+                
+                [fileManager copyItemAtPath:md5Path toPath:srcPath error:&md5Error];  // Copy the md5 file over
+            }
+            
+        }  // if ( [zip UnzipOpenFile: zipPath] )
+        
+        [zip UnzipCloseFile];
+        
+    }  // if ( zipPath != nil )
     
 }
 
@@ -229,11 +264,11 @@
     if ( [database hadError] )  // Check for errors
     {
         
-        int errorCode = [database lastErrorCode];
-        NSString *errorMsg = [database lastErrorMessage];
+//        int errorCode = [database lastErrorCode];
+//        NSString *errorMsg = [database lastErrorMessage];
         
-        NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
-        NSLog(@"IVC - query str: %@", queryStr);
+//        NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
+//        NSLog(@"IVC - query str: %@", queryStr);
         
         return 0;  // If an error occurred, there's nothing else to do but exit
         
@@ -372,12 +407,12 @@
     if ( [database hadError] )  // Check for errors
     {
             
-        int errorCode = [database lastErrorCode];
-        NSString *errorMsg = [database lastErrorMessage];
-            
-        NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
-        NSLog(@"IVC - query str: %@", queryStr);
-            
+//        int errorCode = [database lastErrorCode];
+//        NSString *errorMsg = [database lastErrorMessage];
+        
+//        NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
+//        NSLog(@"IVC - query str: %@", queryStr);
+        
         return 0;  // If an error occurred, there's nothing else to do but exit
             
     } // if ( [database hadError] )
@@ -416,6 +451,10 @@
 
 +(BOOL) date:(NSDate*)date isBetweenDate:(NSDate*)beginDate andDate:(NSDate*)endDate
 {
+    
+    if ( beginDate == nil || endDate == nil )
+        return NO;  // If either date fields are nil, return NO
+    
     if ([date compare:beginDate] == NSOrderedAscending)
         return NO;
     

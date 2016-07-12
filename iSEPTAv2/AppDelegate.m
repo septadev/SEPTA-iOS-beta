@@ -41,7 +41,7 @@
             //imageView.image = [UIImage imageNamed: @"stop-32.png"] ;
             //Minor interface detail- connectionRequired may return yes, even when the host is unreachable.  We cover that up here...
             connectionRequired= NO;  
-            NSLog(@"AppDelegate - checkReachability: %@",statusString);
+//            NSLog(@"AppDelegate - checkReachability: %@",statusString);
             CanConnect.connection =statusString;
             break;
         }
@@ -50,7 +50,7 @@
         {
             statusString = @"Reachable WWAN";
             //imageView.image = [UIImage imageNamed: @"WWAN5.png"];
-            NSLog(@"AppDelegate - checkReachability: %@",statusString);
+//            NSLog(@"AppDelegate - checkReachability: %@",statusString);
             CanConnect.connection =statusString;
             break;
         }
@@ -58,7 +58,7 @@
         {
             statusString= @"Reachable WiFi";
             //imageView.image = [UIImage imageNamed: @"Airport.png"];
-            NSLog(@"AppDelegate - checkReachability: %@",statusString);
+//            NSLog(@"AppDelegate - checkReachability: %@",statusString);
             CanConnect.connection =statusString;
             break;
         }
@@ -68,7 +68,7 @@
     {
         statusString= [NSString stringWithFormat: @"%@, Connection Required", statusString];
     }
-    NSLog(@"AppDelegate: %@", statusString);
+//    NSLog(@"AppDelegate: %@", statusString);
     //textField.text= statusString;
 }
 
@@ -123,7 +123,7 @@
     
 //    [NSThread sleepForTimeInterval:.5];  // gga, remove 01/22/15, this might have been added to make the splash screen stay up longer.  Is it really needed?
     
-    [Crashlytics startWithAPIKey:@"bc2dd85ee4bc4580ad7a7e2819d8402ff8595c61"];
+//    [Crashlytics startWithAPIKey:@"bc2dd85ee4bc4580ad7a7e2819d8402ff8595c61"];
     // Override point for customization after application launch.
  
 //    UnitTest_TableViewStore *ut = [[UnitTest_TableViewStore alloc] init];
@@ -151,7 +151,7 @@
     NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     if ( userInfo == nil )
     {
-        NSLog(@"AppDelegate - didFinishLaunchingWithOptions: No notifications information stored in launchOptions");
+//        NSLog(@"AppDelegate - didFinishLaunchingWithOptions: No notifications information stored in launchOptions");
     }
 
     

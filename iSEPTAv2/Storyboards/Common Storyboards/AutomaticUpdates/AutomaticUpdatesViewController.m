@@ -8,13 +8,23 @@
 
 #import "AutomaticUpdatesViewController.h"
 
+@implementation UIProgressView (customView)
+- (CGSize)sizeThatFits:(CGSize)size {
+    CGSize newSize = CGSizeMake(size.width, 5);
+    return newSize;
+//    NSLog(@"old size: %@",NSStringFromCGSize(size) );
+//    NSLog(@"new size: %@", NSStringFromCGSize(newSize) );
+//    return size;
+}
+@end
+
 @interface AutomaticUpdatesViewController ()
 
 @end
 
 @implementation AutomaticUpdatesViewController
 {
-    
+
     GetDBVersionAPI *_dbVersionAPI;
     NSString *_localMD5;
     BOOL _autoUpdate;
@@ -31,6 +41,7 @@
     
 }
 
+@synthesize startImmediately;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -55,12 +66,11 @@
     
     _testMode = NO;
     
-    
-    
-    
 //    _updateSM = kAutomaticUpdateStartState;
+//    [self updateStateTo: kAutomaticUpdateChecking];
+    
     [self updateStateTo: kAutomaticUpdateChecking];
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -76,17 +86,6 @@
     CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed:@"update-white.png" withTarget:self andWithAction:@selector(backButtonPressed:)];
     self.navigationItem.leftBarButtonItem = backBarButtonItem;
 
-    
-//    CustomFlatBarButton *btnUpdate = [[CustomFlatBarButton alloc] initWithTitle:@"Update" style: UIBarButtonItemStylePlain target:self action:@selector(update:)];
-//    [self.navigationItem setRightBarButtonItem: btnUpdate];
-//    [btnUpdate setEnabled:NO];
-    
-    
-//    UIBarButtonItem *btnUpdate = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(update:)];
-//    [self.navigationItem setRightBarButtonItem:btnUpdate];
-    
-    //    float navW = [(UIView*)[self.navigationItem.leftBarButtonItem  valueForKey:@"view"] frame].size.width;
-    //    float w    = self.view.frame.size.width;
     LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0,500, 32) withTitle:@"Update"];
     [self.navigationItem setTitleView:titleView];
     
@@ -164,13 +163,25 @@
             
         case kAutomaticUpdateLatestAvailable:
             [self.lblVersionStatus setText: VERSION_AVAILABLE];
-            [self.btnMulti setHidden:NO];
+            
+            if ( self.startImmediately )
+                [self.btnMulti setHidden:YES];
+            else
+                [self.btnMulti setHidden:NO];
+            
             [self.btnMulti setTitle:@"Download" forState:UIControlStateNormal];
             break;
             
         case kAutomaticUpdateDownloading:
             [self.lblVersionStatus setText: @"Downloading..."];
-            [self.btnMulti setTitle:@"Cancel" forState:UIControlStateNormal];
+            
+            if ( self.startImmediately )
+                [self.btnMulti setHidden:YES];
+            else
+            {
+                [self.btnMulti setHidden:NO];
+                [self.btnMulti setTitle:@"Cancel" forState:UIControlStateNormal];
+            }
             
 #ifdef BACKGROUND_DOWNLOAD
         {
@@ -189,6 +200,12 @@
         case kAutomaticUpdateCancelledDownload:
             [self.lblVersionStatus setText: @"Cancelled Download..."];
             [self.btnMulti setTitle:@"Download" forState:UIControlStateNormal];
+            
+            if ( self.startImmediately )
+                [self.btnMulti setHidden:YES];
+            else
+                [self.btnMulti setHidden:NO];
+            
             [self cancelDownload];
             [self cleanUpDownload];
             break;
@@ -196,8 +213,14 @@
         case kAutomaticUpdateFinishedDownload:
             // TODO: When file was successfully downloaded, save state
             
-            [self.lblVersionStatus setText: @"Finished Download"];
-            [self.btnMulti setHidden:NO];
+//            [self.lblVersionStatus setText: @"Finished Download"];
+//            [self.btnMulti setHidden:NO];
+            
+            if ( self.startImmediately )
+                [self.btnMulti setHidden:YES];
+            else
+                [self.btnMulti setHidden:NO];
+            
             [self.btnMulti setTitle:@"Install" forState:UIControlStateNormal];
             
             {
@@ -213,84 +236,17 @@
                 [[NSUserDefaults standardUserDefaults] setObject: currentObj forKey:@"Settings:Update:StateMachineStatus"];
                 [[NSUserDefaults standardUserDefaults] synchronize];
             }
-            
-            // Either popup a message to install now or wait until effective_date before installing
-            
-        {
-            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            dateFormatter.dateFormat = @"MM/d/yy";
-            
-            DBVersionDataObject *obj = [_dbVersionAPI getData];
-            NSDate *date = [dateFormatter dateFromString: obj.effective_date];
-            
-            NSTimeInterval effectiveDiff = [date timeIntervalSinceNow];
-            
-//            NSTimeInterval lastDateDiff;
-            
-            
-            // Two checks are performed to determine if an alert message goes up
-            //   Does the new schedule go into effect within the next 7 days?
-            //                          AND
-            //   Has it been 24 hours since the last time this message was displayed?
-            //   Has the latest schedule been downloaded?
 
-
-//            NSString *title = @"New schedule";
-//            NSString *message = @"";
-            
-            if ( effectiveDiff < 0 )
-            {
-                // Install now
-            }
-            else
-            {
-                // Install in the future
-                int numOfWeeks = (int)(effectiveDiff / (60*60*24*7) );
-                int numOfDays  = (int)(effectiveDiff / (60*60*24) ) % 7;
-                int numOfHrs   = (int)(effectiveDiff / (60*60) ) % 24;
-                int numOfMins  = (int)(effectiveDiff / 60) % 60;
-                int numOfSec   = ((int)effectiveDiff % 60);
-                
-                NSLog(@"wks: %d, days: %d, hrs: %d, min: %d, sec: %d", numOfWeeks, numOfDays, numOfHrs, numOfMins, numOfSec);
-                
-                NSString *title = @"Install";
-                NSString *dayStr;
-                
-                if ( numOfDays > 1 )
-                    dayStr = @"days";
-                else
-                    dayStr = @"day";
-                NSString *subtitle = [NSString stringWithFormat:@"The latest schedule has been downloaded to the device but does not go into effect for another %d %@.  To continue anyway, click the install button.", numOfDays, dayStr];
-                
-                ALAlertBanner *alertBanner = [ALAlertBanner alertBannerForView: self.view
-                                                                         style: ALAlertBannerStyleNotify
-                                                                      position: ALAlertBannerPositionBottom
-                                                                         title: title
-                                                                      subtitle: subtitle
-                                                                   tappedBlock: ^(ALAlertBanner *alertBanner)
-                                              {
-                                                  [alertBanner hide];
-                                              }];
-
-                NSTimeInterval showTime = 25.0f;
-                [alertBanner setSecondsToShow: showTime];
-                
-                [alertBanner show];
-
-                
-            }
-            
-            
-        }
-            
-            
-            
-            break;
-            
-        case kAutomaticUpdateInstalling:
-            [self.lblVersionStatus setText: @"Installing"];
+            // Immediately start the installing
+            [self.lblVersionStatus setText: @"Please Wait While Installing..."];
             [self installNewSchedule];
+            
             break;
+            
+//        case kAutomaticUpdateInstalling:
+//            [self.lblVersionStatus setText: @"Installing"];
+//            [self installNewSchedule];
+//            break;
             
         case kAutomaticUpdateFinishedInstall:
             [self.lblVersionStatus setText: @"New Schedule Installed"];
@@ -393,6 +349,10 @@
             [self updateStateTo: kAutomaticUpdateDownloading];
         else
 #endif
+            
+        if ( self.startImmediately )
+            [self updateStateTo: kAutomaticUpdateDownloading];
+        else
             [self updateStateTo: kAutomaticUpdateLatestAvailable];
 
     
@@ -420,7 +380,7 @@
             [_progressTimer invalidate];
         
         [self updateStateTo: kAutomaticUpdateFinishedDownload];
-        [self.lblVersionStatus setText: @"Finished Download"];
+//        [self.lblVersionStatus setText: @"Finished Download"];
         [self.btnMulti setHidden:NO];
         [self.btnMulti setTitle:@"Install" forState:UIControlStateNormal];
     }
@@ -438,9 +398,7 @@
 {
     
     // Install!
-    
     NSString  *zipPath = [NSString stringWithFormat:@"%@/%@", _path, @"SEPTA.zip"];
-
 
     NSError *error;
     [[NSFileManager defaultManager] removeItemAtPath: zipPath error:&error];
@@ -454,7 +412,6 @@
         //zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[self filePath] stringByDeletingLastPathComponent] ];
         NSLog(@"Deleted zip file! zipPath: %@", zipPath);
     }
-
     
     // Note: v1.0.4 of the app used api0.septa.org/gga8893/dbVersion/download.php as the downloadURL
     NSURL *downloadURL;
@@ -488,7 +445,9 @@
 //    dOp.response.statusCode
     
     __weak AutomaticUpdatesViewController *weakSelf = self;
-    [_dOp setProgressiveDownloadProgressBlock:^(AFDownloadRequestOperation *operation, NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
+    [_dOp setProgressiveDownloadProgressBlock:^(AFDownloadRequestOperation *operation, NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile)
+    {
+
         //        NSLog(@"Operation%i: bytesRead: %d", 1, bytesRead);
         //        NSLog(@"Operation%i: totalBytesRead: %lld", 1, totalBytesRead);
         //        NSLog(@"Operation%i: totalBytesExpected: %lld", 1, totalBytesExpected);
@@ -502,10 +461,9 @@
         
         if ( totalBytesRead == totalBytesExpectedToReadForFile )
         {
-//            [self updateStateTo: kAutomaticUpdateFinishedDownload];
-            
             // This should be its own state
-            [weakSelf.lblVersionStatus setText: @"Finished Download"];
+            [weakSelf.lblVersionStatus setText: @"Installing..."];
+            
             [weakSelf.btnMulti setHidden:NO];
             [weakSelf.btnMulti setTitle:@"Install" forState:UIControlStateNormal];
             // Change the text of the button but don't update the state until the completion block executes
@@ -535,13 +493,9 @@
     
     
     [_dOp setCompletionBlock:^{
-//        NSLog(@"Download completed!");
+
         NSLog(@"Successfully downloaded file to %@", zipPath);
         [weakSelf updateStateTo: kAutomaticUpdateFinishedDownload];
-        
-//        NSFileManager *man = [NSFileManager defaultManager];
-//        NSDictionary *attrs = [man attributesOfItemAtPath:zipPath error:NULL];
-//        UInt32 result = [attrs fileSize];
         
     }];
     
@@ -629,8 +583,6 @@
     }
     [zip UnzipCloseFile];
     
-    [SVProgressHUD dismiss];
-    
     // The test!
 //    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
 //    [database open];
@@ -680,13 +632,12 @@
         [output appendFormat:@"%02x",md5Buffer[i]];
 
     _localMD5 = [_dbVersionAPI loadLocalMD5];
-    NSLog(@"Old MD5: %@", _localMD5);
-    
-    DBVersionDataObject *dbObj = [_dbVersionAPI getData];
-
-    NSLog(@"Dwn MD5: %@", dbObj.md5);
-    
-    NSLog(@"New MD5: %@", output);
+//    NSLog(@"Old MD5: %@", _localMD5);
+//    
+//    DBVersionDataObject *dbObj = [_dbVersionAPI getData];
+//
+//    NSLog(@"Dwn MD5: %@", dbObj.md5);
+//    NSLog(@"New MD5: %@", output);
 
     
 //    NSString *md5Path = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"md5"];
@@ -713,6 +664,11 @@
     [_dbVersionAPI loadLocalMD5];
     
     NSLog(@"Lcl MD5: %@", [_dbVersionAPI localMD5]);
+    
+    [SVProgressHUD dismiss];
+
+    [[NSUserDefaults standardUserDefaults] setObject: [NSNumber numberWithBool:NO] forKey:@"Settings:Update:NeedUpdate"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self updateStateTo:kAutomaticUpdateFinishedInstall];
     

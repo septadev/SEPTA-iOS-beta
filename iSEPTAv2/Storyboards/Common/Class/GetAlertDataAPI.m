@@ -308,6 +308,26 @@
     
 }
 
+-(NSString *)convertHTML:(NSString *)html {
+    
+    NSScanner *myScanner;
+    NSString *text = nil;
+    myScanner = [NSScanner scannerWithString:html];
+    
+    while ([myScanner isAtEnd] == NO) {
+        
+        [myScanner scanUpToString:@"<" intoString:NULL] ;
+        
+        [myScanner scanUpToString:@">" intoString:&text] ;
+        
+        html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>", text] withString:@""];
+    }
+    //
+    html = [html stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    return html;
+}
+
 
 -(void) loadIndividualAlertData: (NSDictionary*) jsonDict forRoute: (NSString*) routeName
 {
@@ -327,7 +347,7 @@
             [saObject setRoute_id:   [data objectForKey:@"route_id"] ];
             [saObject setRoute_name: [data objectForKey:@"route_name"] ];
             
-            [saObject setCurrent_message:  [data objectForKey:@"current_message"] ];
+            [saObject setCurrent_message:  [self convertHTML: [data objectForKey:@"current_message"] ] ];
             [saObject setAdvisory_message: [data objectForKey:@"advisory_message"] ];
             
             [saObject setDetour_message:        [data objectForKey:@"detour_message"] ];

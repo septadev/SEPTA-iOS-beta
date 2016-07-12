@@ -19,6 +19,7 @@
 
 #import "SEPTACommon.h"
 
+
 @protocol GetAlertDataAPIProtocol <NSObject>
 
 @optional

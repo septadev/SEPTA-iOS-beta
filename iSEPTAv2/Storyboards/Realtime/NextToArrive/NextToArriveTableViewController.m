@@ -2020,7 +2020,7 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     NSString *_newStartStop = [self fixMismatchedStopName: startStopName];
     NSString *_newEndStop   = [self fixMismatchedStopName: endStopName];
     
-    NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/NextToArrive/%@/%@/50", _newStartStop, _newEndStop];
+    NSString* stringURL = [NSString stringWithFormat:@"http://52.90.73.233/hackathon/NextToArrive/%@/%@/50", _newStartStop, _newEndStop];
     
     
     NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -2356,6 +2356,8 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
             return;
         
         NextToArrivaJSONObject *ntaObject = [[NextToArrivaJSONObject alloc] init];
+        
+        // TODO: Handle null or missing key gracefully
         
         [ntaObject setConnection: [data objectForKey:@"Connection"] ];
         [ntaObject setIsdirect: [data objectForKey:@"isdirect"] ];

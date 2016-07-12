@@ -57,6 +57,7 @@ typedef NS_ENUM(NSInteger, GTFSCalendarOffset)
 }
 
 +(NSString*) filePath;
++(void) uncompressWithPath: (NSString*) dbPath;
 
 +(NSInteger) isHoliday:(GTFSRouteType) routeType withOffset:(GTFSCalendarOffset) offset;
 +(NSString *) nextHoliday;

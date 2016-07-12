@@ -1,6 +1,8 @@
 #!/usr/bin/perl
 
 
+# TODO: Display stop_ids are pins/points in the KML
+
 # --==  USE Section  ==--
 use strict;
 
@@ -32,7 +34,7 @@ my $KMLHEADER = <<END;
             <scale>0</scale>
         </LabelStyle>
         <LineStyle>
-            <color>FF0000FF</color>
+            <color>LINECOLORGOESHERE</color>
             <width>5</width>
         </LineStyle>
         <PolyStyle>
@@ -94,7 +96,10 @@ my $optTimeStamp;
 my $optFilename;
 my $optCompress;
 
+my $optLineColor;
 my $optStops;
+
+my $routeSelection;
 
 my $routeShortName;
 my $routeLongName;
@@ -124,6 +129,7 @@ GetOptions(
     'o=s' => \$optFilename,
     'z'   => \$optCompress,
     'stops' => \$optStops,
+    'c=s' => \$optLineColor,
 #'b=s' => \$optBus,
 #'f' => \$optFirstEnabled,
 #'f' => \$optFirstLength,
@@ -162,22 +168,29 @@ sub usage
     print "\n";
     print "Usage:";
     print "\tperl shapeToKML.pl --route=10678 -r\n";
-    print "\t -r\t Searches rails for route_id\n";
-    print "\t -b\t Searches buses for route_id\n";
-    print "\t --route\t The route_id to find associated KML files\n";
+    print "\t -r\t\tSearches rails for route_id\n";
+    print "\t -b\t\tSearches buses for route_id\n";
+#    print "\t --route\tThe route_id to find associated KML files\n";
     print "\t --split\tSplit each shape_id into its own KML\n";
     print "\t --timeStamp\tBreak coordinates into points with timeStamp, allows animation of trip.\n";
-    print "\t -z\tCompresses the coordinates in shapes.txt by removing all duplicates.\n";
-    print "\t -o\tSpecify new output KML file instead of the default one\n";
+#    print "\t -z\t\tCompresses the coordinates in shapes.txt by removing all duplicates.\n";
+    print "\t -o\t\tSpecify new output KML file instead of the default one\n";
+    print "\n";
+    print "\t --stops\tAdded stop locations to each trip.\n";
+    print "\t -c\t\tSet line color.  Use hex values, format is: ARGB.  For now, only used with --stops\n";
+
     
     print "\n";
     print "Examples:\n";
-    print "\tperl shapeToKML.pl -r --route WAR --split -o WAR.kml\n";
+    print "\tperl shapeToKML.pl -r WAR --split -o WAR.kml\n";
     print "\t\t - Generates WAR.kml from route WAR, splitting each shape into Placemarks\n\n";
-    print "\tperl shapeToKML.pl -b --route 10684 --timestamp\n";
-    print "\t\t - Generates 50.kml (found route_short_name from 10684), splitting each coordinate into a time stamped point\n";
-    print "\tperl shapeToKML.pl -b --route 1\n";
-    print "\t\t - Generates 1.kml, combining all\n";
+    print "\tperl shapeToKML.pl -b 10684 --timestamp\n";
+    print "\t\t - Generates 50.kml (found route_short_name from 10684), splitting each coordinate into a time stamped point\n\n";
+    print "\tperl shapeToKML.pl -b 1\n";
+    print "\t\t - Generates 1.kml, combining all.\n\n";
+    print "\tperl shapeToKML.pl -b 130 -c FF00FF00 --stops -o 130stops_post.kml\n";
+    print "\t\t - Genertes 130stops_post.kml, adds points for all the stops along that trip, sets the line color to green";
+    
     print "\n\n";
 }
 
@@ -197,12 +210,20 @@ sub main
         my $tripsIDHashRef;
 
         $routesHashRef = populateRoutesHash( fullPathFor("routes.txt")    );
-        findRouteForRoute_X_WithRouteHash_Y( $optRoute_id, $routesHashRef );
+        $routeSelection = findRouteForRoute_X_WithRouteHash_Y( $optRoute_id, $routesHashRef );
+        
+        if ( ! $routeSelection )
+        {
+            createOutputFile();
+            p( $KMLHEADER_MINUS_PLACEMARK );
+            p( $KMLFOOTER_MINUS_PLACEMARK );
+            exit;
+        }
         
         ($tripsHashRef, $tripsIDHashRef) = populateTripsHash( fullPathFor("trips.txt" ), $routesHashRef );
         
-        $shapesHashRef = populateShapesHash  ( fullPathFor("shapes.txt"), $tripsHashRef ); # %tripsHashRef is organized by $shapeIDs, %tripsIDHashRef by $tripIDs
-        $stopsHashRef = populateStopsHash( fullPathFor("stops.txt" ) );
+        $shapesHashRef = populateShapesHash( fullPathFor("shapes.txt"), $tripsHashRef ); # %tripsHashRef is organized by $shapeIDs, %tripsIDHashRef by $tripIDs
+        $stopsHashRef  = populateStopsHash ( fullPathFor("stops.txt" ) );
         
         $stopTimesHashRef = populateStopTimesHashForFilename_X_WithStopsHash_Y_AndTripsIDHash_Z( fullPathFor("stop_times.txt"), $stopsHashRef, $tripsIDHashRef);
 #        $stopTimesHashRef = {test => "Dummy"};
@@ -1386,9 +1407,9 @@ sub populateTripsHash
         
         $routeID  = $line[ $columns->{route_id} ];  # routeID needs to contain a value for the optRouteSelection part to work
         
-        if ( $optRoute_id )
+        if ( $routeSelection )
         {
-            if ( $optRoute_id !~ /$routeID/ )
+            if ( $routeSelection !~ /$routeID/ )
             {
                 next;  # If the route selected does not match $routeID, read the next line
             }
@@ -1443,13 +1464,17 @@ sub findRouteForRoute_X_WithRouteHash_Y
     {
         foreach my $key (%routesHash)
         {
-            if ( $routesHash{$key}->{route_short_name} =~ /$routeSelection/ )
+            if ( $routesHash{$key}->{route_short_name} =~ /\b$routeSelection\b/ )
             {
                 $routeSelection = $key;
+                $routeShortName = $routesHash{$routeSelection}->{route_short_name};
+                $routeLongName  = $routesHash{$routeSelection}->{route_long_name};
                 return $key;
             }
         }
     }
+    
+    return;
     
 }
 
@@ -1480,11 +1505,12 @@ my $KMLSTOPSHEADER = <<END;
     </Style>
 
     <Style id="StopIDs">
-      <IconStyle>
+<!--      <IconStyle>
         <Icon>
           <href>stopidTag.png</href>
         </Icon>
       </IconStyle>
+-->
     </Style>
 
     <Style id="LineStyleROUTESHORTNAMEGOESHERE">
@@ -1493,7 +1519,7 @@ my $KMLSTOPSHEADER = <<END;
         <scale>0</scale>
       </LabelStyle>
       <LineStyle>
-        <color>FF0000FF</color>
+        <color>LINECOLORGOESHERE</color>
         <width>5</width>
       </LineStyle>
       <PolyStyle>
@@ -1567,14 +1593,24 @@ sub generateKMLForStopsWithStopHash_X_WithRoutesHash_Y_WithTripsHash_Z_AndShapes
     
     my %stopTimesHash = %{ $_[4] };
     
-    my $stopPairHashRef = populateStopPairHash( fullPathFor("stopPairs$routeShortName.csv") );
-    my %stopPairHash = %{ $stopPairHashRef };
+#    my $stopPairHashRef = populateStopPairHash( fullPathFor("stopPairs$routeShortName.csv") );
+#    my %stopPairHash = %{ $stopPairHashRef };
     
     my $tabLevel = 2;
     
     my $header = returnKMLStopHeader();
     $header =~ s/ROUTESHORTNAMEGOESHERE/$routeShortName/;
-    $header =~ s/NAMEGOESHERE/$routeShortName/;
+    
+    $optFilename =~ /^(.*)\.kml/i;
+    my $filename = $1;
+
+#    $header =~ s/NAMEGOESHERE/$routeShortName/;
+    $header =~ s/NAMEGOESHERE/$filename/;
+    
+    $optLineColor = "FF0000FF" if ( !$optLineColor );
+    $header =~ s/LINECOLORGOESHERE/$optLineColor/;
+    
+    createOutputFile();
     
     p( $header );
     
@@ -1664,56 +1700,57 @@ sub generateKMLForStopsWithStopHash_X_WithRoutesHash_Y_WithTripsHash_Z_AndShapes
         p(--$tabLevel,"</Folder>");
 
         
-        p($tabLevel,"<Folder>");
-        p(++$tabLevel,"<name>Stop Pairs</name>");
+#        p($tabLevel,"<Folder>");
+        
+#        p(++$tabLevel,"<name>Stop Pairs</name>");
 
         # Now build the stop pairs
         
-        my $oppositeDirID = (($dirID == 1) ? 0 : 1);
-        
+#        my $oppositeDirID = (($dirID == 1) ? 0 : 1);
+#        
 #        foreach my $stop ( keys %{ $stopPairHash{ $optRoute_id } } )
-        foreach my $stop ( keys %validStops )
-        {
-            my $opposite = $stopPairHash{$optRoute_id}{$stop}{opposite_stop_id};
-            my $stopName = $stopHash{$stop}{stop_name};
-            my $oppositeName = $stopHash{$opposite}{stop_name};
-            my $distance = $stopPairHash{$optRoute_id}{$stop}{distance_ft};
-            
-            if ( $distance < 100 )
-            {
-                next;
-            }
-            
-            $stopName =~ s/&/&amp;/;
-            $oppositeName =~ s/&/&amp;/;
-
-            
-            p($tabLevel,"<Folder>");
-            p(++$tabLevel,"<name>Stop ID $stop -> $opposite, dist: $distance</name>");
-            p($tabLevel,"<Placemark>");
-            p(++$tabLevel,"<styleUrl>#Direction$dirID</styleUrl>");
-            p($tabLevel,"<visibility>0</visibility>");
-            p($tabLevel,"<name>$stop</name>");
-            p($tabLevel,"<description>$stopName - stop_id: $stop</description>");
-            p($tabLevel,"<Point>");
-            p(++$tabLevel,"<coordinates>$stopHash{$stop}{stop_lon},$stopHash{$stop}{stop_lat}</coordinates>");
-            p(--$tabLevel,"</Point>");
-            p(--$tabLevel,"</Placemark>");
-
-            p($tabLevel,"<Placemark>");
-            p(++$tabLevel,"<styleUrl>#Direction$oppositeDirID</styleUrl>");
-            p($tabLevel,"<visibility>0</visibility>");
-            p($tabLevel,"<name>$opposite</name>");
-            p($tabLevel,"<description>$oppositeName - stop_id: $opposite</description>");
-            p($tabLevel,"<Point>");
-            p(++$tabLevel,"<coordinates>$stopHash{$opposite}{stop_lon},$stopHash{$opposite}{stop_lat}</coordinates>");
-            p(--$tabLevel,"</Point>");
-            p(--$tabLevel,"</Placemark>");
-            p(--$tabLevel,"</Folder>");
-
-        }  # foreach my $stop ( keys %{ $stopPairHash{ $optRoute_id } } )
-        
-        p(--$tabLevel,"</Folder>");
+#        foreach my $stop ( keys %validStops )
+#        {
+#            my $opposite = $stopPairHash{$optRoute_id}{$stop}{opposite_stop_id};
+#            my $stopName = $stopHash{$stop}{stop_name};
+#            my $oppositeName = $stopHash{$opposite}{stop_name};
+#            my $distance = $stopPairHash{$optRoute_id}{$stop}{distance_ft};
+#            
+#            if ( $distance < 100 )
+#            {
+#                next;
+#            }
+#            
+#            $stopName =~ s/&/&amp;/;
+#            $oppositeName =~ s/&/&amp;/;
+#
+#            
+#            p($tabLevel,"<Folder>");
+#            p(++$tabLevel,"<name>Stop ID $stop -> $opposite, dist: $distance</name>");
+#            p($tabLevel,"<Placemark>");
+#            p(++$tabLevel,"<styleUrl>#Direction$dirID</styleUrl>");
+#            p($tabLevel,"<visibility>0</visibility>");
+#            p($tabLevel,"<name>$stop</name>");
+#            p($tabLevel,"<description>$stopName - stop_id: $stop</description>");
+#            p($tabLevel,"<Point>");
+#            p(++$tabLevel,"<coordinates>$stopHash{$stop}{stop_lon},$stopHash{$stop}{stop_lat}</coordinates>");
+#            p(--$tabLevel,"</Point>");
+#            p(--$tabLevel,"</Placemark>");
+#
+#            p($tabLevel,"<Placemark>");
+#            p(++$tabLevel,"<styleUrl>#Direction$oppositeDirID</styleUrl>");
+#            p($tabLevel,"<visibility>0</visibility>");
+#            p($tabLevel,"<name>$opposite</name>");
+#            p($tabLevel,"<description>$oppositeName - stop_id: $opposite</description>");
+#            p($tabLevel,"<Point>");
+#            p(++$tabLevel,"<coordinates>$stopHash{$opposite}{stop_lon},$stopHash{$opposite}{stop_lat}</coordinates>");
+#            p(--$tabLevel,"</Point>");
+#            p(--$tabLevel,"</Placemark>");
+#            p(--$tabLevel,"</Folder>");
+#
+#        }  # foreach my $stop ( keys %{ $stopPairHash{ $optRoute_id } } )
+#        
+#        p(--$tabLevel,"</Folder>");
         p(--$tabLevel,"</Folder>");
 
     }  # foreach my $key (keys %tripsHash)
@@ -1756,11 +1793,11 @@ sub p
     {
         my $tabLevel = shift @_;
         $tabLevel = 0 if ($tabLevel < 0 );
-        print "  "x$tabLevel . "@_\n";
+        print OUTPUT "  "x$tabLevel . "@_\n";
     }
     else
     {
-        print "@_\n";
+        print OUTPUT "@_\n";
     }
 
 }

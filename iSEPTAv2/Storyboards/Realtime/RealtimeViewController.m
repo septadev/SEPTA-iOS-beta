@@ -27,14 +27,11 @@
     UIView *_testView;
     
     NSMutableArray *_alertMessage;
-//    NSMutableArray *_alertBannerArr;
     NSTimer *_alertTimer;
     
     GetAlertDataAPI *_alertAPI;
-//    ALAlertBanner *_alertBanner;
     
     NSTimer *_dbVersionTimer;
-//    NSTimer *_testTimer;
     GetDBVersionAPI *_dbVersionAPI;
     
     
@@ -42,10 +39,8 @@
     NSOperationQueue *_autoUpdateQueue;
     NSBlockOperation *_autoUpdateOp;
     
-//    NSOperationQueue *_networkQueue;
-    
-//    MMDrawerController *_drawerController;
 }
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -66,22 +61,7 @@
     [super viewWillDisappear:animated];
     
     
-//    NSLog(@"RVC - Alert Banners In View:%@", [ALAlertBanner alertBannersInView:self.view]);
     [ALAlertBanner forceHideAllAlertBannersInView:self.view];
-    
-//    for (ALAlertBanner *alertBanner in [ALAlertBanner alertBannersInView:self.view])
-//    {
-//        [ALAlertBanner hideAllAlertBanners];
-//        [ALAlertBanner hideAlertBanner:alertBanner forced:YES];
-//    }
-    
-//    for (ALAlertBanner *alertBanner in [ALAlertBanner alertBannersInView:self.view])
-//    {
-//        [ALAlertBanner hideAllAlertBanners];
-//    }
-    
-    
-//    [_alertBannerArr removeAllObjects];
     
     // Remove all timers from the main loop
     if ( _alertTimer != nil )
@@ -91,95 +71,11 @@
         [_dbVersionTimer invalidate];
 
     
-//    [_alertAPI setDelegate:nil];
-//    _alertAPI = nil;
     [_alertMessage removeAllObjects];
     
-//    [_networkQueue cancelAllOperations];
-    
     [SVProgressHUD dismiss];
     
 }
-
--(void)viewWillAppear:(BOOL)animated
-{
-    
-#if FUNCTION_NAMES_ON
-    NSLog(@"RVC - viewWillAppear: %d", animated);
-#endif
-    
-    [super viewWillAppear:animated];
-    
-    [self checkDBExists];
-    
-    [SVProgressHUD dismiss];
-    [ALAlertBanner forceHideAllAlertBannersInView:self.view];
-    
-    // Start timers back up
-    _alertTimer = [NSTimer scheduledTimerWithTimeInterval:ALALERTBANNER_TIMER target:self selector:@selector(getGenericAlert) userInfo:nil repeats:YES];
-    [self getGenericAlert];
-    
-    UIInterfaceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
-    [self changeOrientation:currentOrientation];
-    
-//    if ( _startTest )
-//    {
-//        [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(popTheVC) userInfo:nil repeats:NO];
-//    }
-
-    
-    // Hold for 1 sec, transition for 1 sec.
-//    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(loopImages) userInfo:nil repeats:YES];
-
-    
-}
-
-
-//-(void) popTheVC
-//{
-//    _counter++;
-//    NSLog(@"Transition: %d", _counter);
-////    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MemoryTestStoryboard" bundle:nil];
-////    MapMemoryTestViewController *tvVC = (MapMemoryTestViewController*)[storyboard instantiateInitialViewController];
-////    [tvVC setCounter: _counter];
-////    [self.navigationController pushViewController:tvVC animated:YES];
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"TrainSlidingStoryboard" bundle:nil];
-//    TrainViewViewController *tvVC = (TrainViewViewController*)[storyboard instantiateInitialViewController];
-//    [self.navigationController pushViewController:tvVC animated:YES];
-//
-//}
-
-//-(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-//{
-//    if ( !UIInterfaceOrientationIsLandscape(fromInterfaceOrientation) )
-//    {
-//        [_backgroundImage setTransform: CGAffineTransformMakeRotation( -0.5*M_PI )];
-//        [_backgroundImage setFrame:CGRectMake(0, 0, 480, 300)];
-//    }
-//    else
-//    {
-//        [_backgroundImage setTransform: CGAffineTransformMakeRotation( 0 )];
-//        [_backgroundImage setFrame:CGRectMake(0, 0, 320, 460)];
-//    }
-//}
-
-
-//-(void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-//{
-//
-//    
-//    if ( UIInterfaceOrientationIsLandscape(toInterfaceOrientation) )
-//    {
-//        [_backgroundImage setTransform: CGAffineTransformMakeRotation( -0.5*M_PI )];
-//        [_backgroundImage setFrame:CGRectMake(0, 0, 480, 300)];
-//    }
-//    else
-//    {
-//        [_backgroundImage setTransform: CGAffineTransformMakeRotation( 0 )];
-//        [_backgroundImage setFrame:CGRectMake(0, 0, 320, 460)];
-//    }
-//
-//}
 
 
 - (void)viewDidLoad
@@ -199,22 +95,16 @@
     
     _alertMessage = [[NSMutableArray alloc] init];
     
-//    _networkQueue = [[NSOperationQueue alloc] init];  // Used to call the Alert and DB Version APIs
-
-    
     UIColor *backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"newBG_pattern.png"] ];
     [self.view setBackgroundColor: backgroundColor];
-    
     
     UIImage *logo = [UIImage imageNamed:@"SEPTA_logo.png"];
 
     SEPTATitle *newView = [[SEPTATitle alloc] initWithFrame:CGRectMake(0, 0, logo.size.width, logo.size.height) andWithTitle:@"Realtime"];
     [newView setImage: logo];
     
-    
     [self.navigationItem setTitleView: newView];
     [self.navigationItem.titleView setNeedsDisplay];
-    
     
     // Accessibility
     [self.btnNextToArrive        setAccessibilityLabel:@"Next to Arrive"];
@@ -233,45 +123,36 @@
     [self.lblLocations    setAccessibilityElementsHidden:YES];
     [self.lblGuide        setAccessibilityElementsHidden:YES];
     
+
+    // Not needed (anymore?)  Is there any reason to disable function short of another Pope visit?
     
-    NSData *storedData = [[NSUserDefaults standardUserDefaults] objectForKey:@"Realtime:SpecialEvents"];
-    SpecialEvent *storedSE = [NSKeyedUnarchiver unarchiveObjectWithData:storedData];
-    if ( storedSE != nil )
-    {
-        NSDateFormatter *startDateFormat = [[NSDateFormatter alloc] init];
-        [startDateFormat setDateFormat:@"yyyy-MM-dd H:m:s"];
-        NSDate *start_date = [startDateFormat dateFromString: storedSE.start_datetime];
-        
-        NSDateFormatter *endDateFormat = [[NSDateFormatter alloc] init];
-        [endDateFormat setDateFormat:@"yyyy-MM-dd H:m:s"];
-        NSDate *end_date = [endDateFormat dateFromString: storedSE.end_datetime];
-
-        
-        if ( [GTFSCommon date: [NSDate date] isBetweenDate: start_date andDate: end_date ] )
-        {
-            // Disable NTA, TrainView, TransitView and Find Nearest Location
-            [self disableButtonsForSpecialEvent:storedSE andDisplayMessage:YES];
-        }
-
-        
-    }
-        
+//    NSData *storedData = [[NSUserDefaults standardUserDefaults] objectForKey:@"Realtime:SpecialEvents"];
+//    
+//    SpecialEvent *storedSE = [NSKeyedUnarchiver unarchiveObjectWithData:storedData];
+//    if ( storedSE != nil )
+//    {
+//        NSDateFormatter *startDateFormat = [[NSDateFormatter alloc] init];
+//        [startDateFormat setDateFormat:@"yyyy-MM-dd H:m:s"];
+//        NSDate *start_date = [startDateFormat dateFromString: storedSE.start_datetime];
+//        
+//        NSDateFormatter *endDateFormat = [[NSDateFormatter alloc] init];
+//        [endDateFormat setDateFormat:@"yyyy-MM-dd H:m:s"];
+//        NSDate *end_date = [endDateFormat dateFromString: storedSE.end_datetime];
+//
+//        
+//        if ( [GTFSCommon date: [NSDate date] isBetweenDate: start_date andDate: end_date ] )
+//        {
+//            // Disable NTA, TrainView, TransitView and Find Nearest Location
+//            [self disableButtonsForSpecialEvent:storedSE andDisplayMessage:YES];
+//        }
+//
+//        
+//    }
     
     
     //    [self automaticDownloading];
     //    [self checkDBVersion];
     //    [self md5check];
-    
-    
-    //     ALAlertBanner *aab = [ALAlertBanner alertBannerForView:self.view
-    //                                               style:ALAlertBannerStyleFailure
-    //                                            position:ALAlertBannerPositionBottom
-    //                                               title:@"Alert"
-    //                                                   subtitle:@"This is a test of the Emergency Alert System"];
-    //
-    //
-    //    [aab show];
-    
     
     
     //    unsigned char buff[CC_MD5_DIGEST_LENGTH];
@@ -346,18 +227,31 @@
     
     
 //    [[Crashlytics sharedInstance] crash];
-
     
-    /*  send a request for file modification date  */
-//    NSURLRequest *modReq = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.septa.org/service/septa-app-mobile.html"]
-//                                            cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:15.0f];
-//    
-//    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:modReq delegate:self];
-//    
-//    if ( !theConnection )
-//    {
-//        // Connect failed
-//    }
+}
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+#if FUNCTION_NAMES_ON
+    NSLog(@"RVC - viewWillAppear: %d", animated);
+#endif
+    
+    [super viewWillAppear:animated];
+    
+    // Check if the uncompress SQLite DB exists.  If it does not, uncompress it.  If it does, check the MD5 and make sure it's the latest.
+    [self checkDBExists];
+    
+    [SVProgressHUD dismiss];
+    [ALAlertBanner forceHideAllAlertBannersInView:self.view];
+    
+    // Start timers back up
+    _alertTimer = [NSTimer scheduledTimerWithTimeInterval:ALALERTBANNER_TIMER target:self selector:@selector(getGenericAlert) userInfo:nil repeats:YES];
+    [self getGenericAlert];
+    
+    UIInterfaceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    [self changeOrientation:currentOrientation];
     
 }
 
@@ -378,8 +272,8 @@
     // If not, set to nil
 
     
-    NSString * last_modified = [NSString stringWithFormat:@"%@",
-                                [[(NSHTTPURLResponse *)response allHeaderFields] objectForKey:@"Last-Modified"]];
+//    NSString * last_modified = [NSString stringWithFormat:@"%@",
+//                                [[(NSHTTPURLResponse *)response allHeaderFields] objectForKey:@"Last-Modified"]];
     
     // Last-Modified = "Mon, 26 Jan 2015 19:14:05 GMT"
     // Convert to NSDate
@@ -389,8 +283,8 @@
     // If last_modified is newer, add badge to Tips until tapped on
     
     
-    NSLog(@"Last-Modified: %@", last_modified );
-                                
+//    NSLog(@"Last-Modified: %@", last_modified );
+    
 }
 
 -(void) automaticDownloading
@@ -419,18 +313,18 @@
     
     NSString *formatted = [formatter stringFromNumber:[NSNumber numberWithLongLong:space] ];
     
-    NSLog(@"free space: %@", formatted);
+//    NSLog(@"free space: %@", formatted);
     
     
     NSString *dbPath = [GTFSCommon filePath];
-    NSLog(@"dbPath: %@", dbPath);
-    NSLog(@"dbPath: %@", [dbPath stringByDeletingLastPathComponent] );
+//    NSLog(@"dbPath: %@", dbPath);
+//    NSLog(@"dbPath: %@", [dbPath stringByDeletingLastPathComponent] );
     NSFileManager *man = [NSFileManager defaultManager];
     NSDictionary *attrs = [man attributesOfItemAtPath: dbPath error: NULL];
     UInt64 result = [attrs fileSize];
     
     formatted = [formatter stringFromNumber: [NSNumber numberWithLongLong: result] ];
-    NSLog(@"db Size:    %@", formatted);
+//    NSLog(@"db Size:    %@", formatted);
 
     
 //    [self downloadTest];
@@ -467,8 +361,7 @@
     }
 
     
-//    [_dbVersionAPI setTestMode: _testMode];
-//    [_dbVersionAPI setTestMode:YES];
+    [_dbVersionAPI setTestMode: _testMode];
 
     [_dbVersionAPI fetchData];
     
@@ -523,121 +416,63 @@
     
 
     [_dbVersionAPI loadLocalMD5];
-    if ( ( obj.message != nil ) && ( ![[_dbVersionAPI localMD5] isEqualToString: obj.md5] ) )
+    [_dbVersionAPI loadZippedMD5];
+    
+    
+    // API logic
+    // Does the API md5 match the local MD5?  Yes, stop as there's nothing else to do
+    // Does the API md5 match the zipped MD5?  Yes, unzip the bundled DB
+    // Otherwise, the schedule is out of date and it needs to be updated.
+    
+    BOOL needUpdate = NO;
+    if ( obj.message != nil )  // Did the API return data
     {
         
-        // Queue iOS 7's automatic downloading
-        
-        
-//        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//        dateFormatter.dateFormat = @"MM/d/yy";
-        
-//        NSDate *date = [dateFormatter dateFromString: obj.effective_date];
-        
-//        NSTimeInterval effectiveDiff = [date timeIntervalSinceNow];
-//        NSTimeInterval lastDateDiff;
-        
-//        NSDate *lastDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings:Update:DateOfLastNotification"];
-//        
-//        if ( lastDate == nil )
-//            lastDateDiff = 60*60*24*365;
-//        else
-//            lastDateDiff = [[NSDate date] timeIntervalSinceDate: lastDate];
-        
-        
-        // Two checks are performed to determine if an alert message goes up
-        //   Does the new schedule go into effect within the next 7 days?
-        //                          AND
-        //   Has it been 24 hours since the last time this message was displayed?
-        //   Has the latest schedule been downloaded?
-        
-//        if ( effectiveDiff < (60*60*24*7) && (lastDateDiff >= 60*2) )  // lastDateDiff was 60*60*24 (24 hours)
-//        {
+        if ( [obj.md5 isEqualToString: [_dbVersionAPI localMD5] ] )
+        {
+            NSLog(@"RVC - API MD5 matches uncompressed MD5");
+            return;  // The schedule is up to date, there's nothing to do
+        }
+        else if ( [obj.md5 isEqualToString: [_dbVersionAPI zippedMD5] ] )
+        {
+            // The schedule is out of date, but fortunately it matches what's bundled with the app
+            NSLog(@"RVC - API MD5 matches compressed MD5");
+            
+            NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+            NSString *dbPath = [NSString stringWithFormat:@"%@/SEPTA.sqlite", [paths objectAtIndex:0] ];
+            
+            [GTFSCommon uncompressWithPath:dbPath];
+            
+        }
+        else  // The schedule is out of date and a new one needs to be downloaded
+        {
+            NSLog(@"RVC - API MD5 does not matches any MD5");
+            needUpdate = YES;
             [self displayAlert: obj];
-//        }
+            
+//            NSURLSessionDownloadTask *download;
+            
+//            NSURLSessionConfiguration *backgroundConfigurationObject =
+//                [NSURLSessionConfiguration backgroundSessionConfiguration:"myBackgroundSessionIdentifier"];
+//            
+//            self.backgroundSession = [NSURLSession
+//                                      sessionWithConfiguration:backgroundConfigurationObject
+//                                      delegate:self
+//                                      delegateQueue:[NSOperationQueue mainQueue]
+//                                      ];
+//            
+//            [self.progressView setProgress:0 animated:NO];
+            
+        }
+        
+        [[NSUserDefaults standardUserDefaults] setObject: [NSNumber numberWithBool:needUpdate] forKey:@"Settings:Update:NeedUpdate"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+
         
     }
-    
-    
-    if ( [obj isSpecialEvent] )  // Does the special_events hash contain any data
-    {
-        
-        SpecialEvent *sp = obj.special_event;
-        
-        NSData *storedData = [[NSUserDefaults standardUserDefaults] objectForKey:@"Realtime:SpecialEvents"];
-        SpecialEvent *storedSE = [NSKeyedUnarchiver unarchiveObjectWithData:storedData];
-        
-        BOOL displayMessage = NO;
-        if ( storedSE == nil )
-        {
-            displayMessage = YES;
-        }
-        
-        if ( [storedSE.start_datetime isEqualToString:sp.start_datetime] && [storedSE.end_datetime isEqualToString:sp.end_datetime] && [storedSE.message isEqualToString:sp.message] )
-        {
-            // Then do nothing as the data has changed since the last time it was loaded
-            displayMessage = NO;
-        }
-        else
-        {
-            // There was a discrepancy (or storedSE is nil)
-            NSData *savedSP = [NSKeyedArchiver archivedDataWithRootObject:sp];
-            
-            [[NSUserDefaults standardUserDefaults] setObject:savedSP forKey:@"Realtime:SpecialEvents"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        }
-        
-            
-//        NSLog(@"Start: %@, End: %@, Message: %@", sp.start_datetime, sp.end_datetime, sp.message);
-        
-        // Date format: YYYY-MM-dd H:i:s
-        NSDateFormatter *startDateFormat = [[NSDateFormatter alloc] init];
-        [startDateFormat setDateFormat:@"yyyy-MM-dd H:m:s"];
-        NSDate *start_date = [startDateFormat dateFromString: sp.start_datetime];
-
-        NSDateFormatter *endDateFormat = [[NSDateFormatter alloc] init];
-        [endDateFormat setDateFormat:@"yyyy-MM-dd H:m:s"];
-        NSDate *end_date = [endDateFormat dateFromString: sp.end_datetime];
-
-        
-        if ( [GTFSCommon date: [NSDate date] isBetweenDate: start_date andDate: end_date] )
-        {
-            // Disable NTA, TrainView, TransitView and Find Nearest Location
-            
-            [self disableButtonsForSpecialEvent:sp andDisplayMessage: displayMessage];
-
-        }
-        else
-        {
-            [self.btnNextToArrive setEnabled:YES];
-            [self.btnTransitView setEnabled:YES];
-            [self.btnTrainView setEnabled:YES];
-            
-            [self.btnFindNearestLocation setEnabled:YES];
-            
-            [self.lblNextToArrive setTextColor:[UIColor whiteColor] ];
-            [self.lblTrainView    setTextColor:[UIColor whiteColor] ];
-            [self.lblTransitView  setTextColor:[UIColor whiteColor] ];
-            [self.lblFindNeareset setTextColor:[UIColor whiteColor] ];
-            [self.lblLocations    setTextColor:[UIColor whiteColor] ];
-        }
-        
-        
-        // Check if current date is between start and end date
-        // If it is, disable NTA, TrainView, TransitView and Find Nearest Location
-        // and display the sp_message
-        
-//        obj.event_message
-//        obj.event_url
-//        obj.event_icon
-//        
-//        obj.start_datetime
-//        obj.end_datetime
-        
-    }
-    
     
 }
+
 
 -(void) displayAlert: (DBVersionDataObject*) obj
 {
@@ -657,7 +492,7 @@
                                                           subtitle:obj.message
                                                        tappedBlock:^(ALAlertBanner *alertBanner)
                                   {
-                                      NSLog(@"Generic Message: %@!", obj.message);
+//                                      NSLog(@"Generic Message: %@!", obj.message);
                                       [alertBanner hide];
                                   }];
     
@@ -676,7 +511,7 @@
     else if ( numOfSeconds > 20 )
         numOfSeconds = 20;
     
-    NSLog(@"numOfSeconds: %d", numOfSeconds);
+//    NSLog(@"numOfSeconds: %d", numOfSeconds);
     
     [alertBanner setSecondsToShow: numOfSeconds];
     [alertBanner show];
@@ -817,9 +652,9 @@
     for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
         [output appendFormat:@"%02x",md5Buffer[i]];
     
-    NSTimeInterval secondsRan = [[NSDate date] timeIntervalSinceDate: start ];
+//    NSTimeInterval secondsRan = [[NSDate date] timeIntervalSinceDate: start ];
     
-    NSLog(@"output (%6.2f sec): %@", secondsRan, output);
+//    NSLog(@"output (%6.2f sec): %@", secondsRan, output);
     
     
 //    start = [NSDate date];
@@ -865,7 +700,7 @@
         
 //        finalStr = [string substringToIndex: [string length] -1 ];
 //        NSData *rowData = [finalStr dataUsingEncoding:NSUTF8StringEncoding];
-        NSLog(@"%@: %@", tableName, [[results resultDictionary] allKeys]);
+//        NSLog(@"%@: %@", tableName, [[results resultDictionary] allKeys]);
         
     }
     
@@ -891,7 +726,7 @@
     for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
         [output appendFormat:@"%02x",buff[i]];
     
-    NSLog(@"routes_rail: %@", output);
+//    NSLog(@"routes_rail: %@", output);
     
     [database close];
     
@@ -979,15 +814,15 @@
         
         for (NSString *message in _alertMessage)
         {
-            NSLog(@"Checking for message: %@", message);
+//            NSLog(@"Checking for message: %@", message);
             if ( [message isEqualToString: saObject.current_message] )
             {
                 duplicateFound = 1;
-                NSLog(@"Duplicate message found");
+//                NSLog(@"Duplicate message found");
                 break;
             }
-            else
-                NSLog(@"No duplicate message found");
+//            else
+//                NSLog(@"No duplicate message found");
         }
         
         
@@ -1013,7 +848,7 @@
                                                 subtitle:saObject.current_message
                                              tappedBlock:^(ALAlertBanner *alertBanner)
                         {
-                            NSLog(@"Generic Message: %@!", saObject.current_message);
+//                            NSLog(@"Generic Message: %@!", saObject.current_message);
                             [alertBanner hide];
                         }];
             
@@ -1034,7 +869,7 @@
             else if ( numOfSeconds > 20 )
                 numOfSeconds = 20;
             
-            NSLog(@"numOfSeconds: %d", numOfSeconds);
+//            NSLog(@"numOfSeconds: %d", numOfSeconds);
             
             [alertBanner setSecondsToShow: numOfSeconds];
 
@@ -1221,8 +1056,8 @@
 //    [_testView addSubview:detourImg];
 //    
 //    [self.view addSubview: _testView];
-    
-    NSLog(@"RVC - Added Image");
+//    
+//    NSLog(@"RVC - Added Image");
     
 }
 
@@ -1510,7 +1345,7 @@
                                                               subtitle:sp.message
                                                            tappedBlock:^(ALAlertBanner *alertBanner)
                                       {
-                                          NSLog(@"Generic Message: %@!", sp.message);
+//                                          NSLog(@"Generic Message: %@!", sp.message);
                                           [alertBanner hide];
                                       }];
         

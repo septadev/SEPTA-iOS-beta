@@ -1034,10 +1034,19 @@
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
     
-    KMLAnnotationView *annotationView = [[KMLAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Vehicle"];
-    [annotationView setCanShowCallout:YES];
-    return annotationView;
-        
+    NSLog(@"TMVC - @mapView:%@, viewForAnnotation:%@", mapView, annotation);
+    if ( [annotation isKindOfClass:[KMLAnnotation class]] )
+    {
+        // TODO: Verify that KMLAnnotationView doesn't crash and burn when a non-KMLAnnotation class it passed to it.
+        KMLAnnotationView *annotationView = [[KMLAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Vehicle"];
+        [annotationView setCanShowCallout:YES];
+        return annotationView;
+    }
+    else
+    {
+        return nil;
+    }
+    
 }
 
 -(void) updateAnnotation:(NSTimer*) timerObj

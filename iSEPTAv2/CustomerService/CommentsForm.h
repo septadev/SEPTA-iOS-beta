@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "FXForms.h"
 
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
+
 @interface CommentsForm : NSObject <FXForm>
 
 

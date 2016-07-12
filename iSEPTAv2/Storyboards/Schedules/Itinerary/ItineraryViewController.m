@@ -1,4 +1,4 @@
-    //
+//
 //  ItineraryViewController.m
 //  iSEPTA
 //
@@ -383,7 +383,7 @@
     
     _viewIsClosing = YES;
     
-    NSLog(@"IVC - viewWilLDisappear");
+//    NSLog(@"IVC - viewWilLDisappear");
     if ( cellRefreshTimer != nil )  // Might not be necessary but for now, better safe than CRASH!
     {
         
@@ -391,7 +391,7 @@
         {
             [cellRefreshTimer invalidate];
             cellRefreshTimer = nil;
-            NSLog(@"IVC - Killing updateTimer");
+//            NSLog(@"IVC - Killing updateTimer");
         }
         
     }
@@ -666,7 +666,7 @@
     [btnNow sendActionsForControlEvents:UIControlEventTouchUpInside];
     _currentFilter = kItineraryFilterTypeNow;
     
-    NSLog(@"Stop here");
+//    NSLog(@"Stop here");
 
 }
 
@@ -700,11 +700,11 @@
     if ( [database hadError] )  // Check for errors
     {
         
-        int errorCode = [database lastErrorCode];
-        NSString *errorMsg = [database lastErrorMessage];
+//        int errorCode = [database lastErrorCode];
+//        NSString *errorMsg = [database lastErrorMessage];
         
-        NSLog(@"SNFRTC - query failure, code: %d, %@", errorCode, errorMsg);
-        NSLog(@"SNFRTC - query str: %@", queryStr);
+//        NSLog(@"SNFRTC - query failure, code: %d, %@", errorCode, errorMsg);
+//        NSLog(@"SNFRTC - query str: %@", queryStr);
         
         return;  // If an error occurred, there's nothing else to do but exit
         
@@ -715,7 +715,7 @@
     {
         NSString *header = [results stringForColumn:@"DirectionDescription"];
         [_nameForSection addObject:[NSString stringWithFormat:@"To %@", header] ];
-        NSLog(@"IVC: loadHeaderNames: %@", header);
+//        NSLog(@"IVC: loadHeaderNames: %@", header);
     }
     
 }
@@ -1026,10 +1026,10 @@
             }];
             
         }  // if ( ![weakOp isCancelled] )
-        else
-        {
-            NSLog(@"IVC - running SQL Query: _sqlOp cancelled");
-        }
+//        else
+//        {
+//            NSLog(@"IVC - running SQL Query: _sqlOp cancelled");
+//        }
     
 
     }];
@@ -1058,7 +1058,7 @@
     if ( ![self.travelMode isEqualToString:@"Rail"] )
         return;
     
-    NSLog(@"IVC - createMasterJSONLookUpTable (start)");  // This table only needs to be run when masterTripsArr gets populated or repopulated
+//    NSLog(@"IVC - createMasterJSONLookUpTable (start)");  // This table only needs to be run when masterTripsArr gets populated or repopulated
     
     // Load all TripObjects
     for (TripObject *trip in masterTripsArr )
@@ -1092,7 +1092,7 @@
         }  // else if ( [_masterTrainLookUpDict objectForKey:tripKey] == nil )
         
     } // for (TripObject *trip in masterTripsArr)
-    NSLog(@"IVC - createMasterJSONLookUpTable (end)");
+//    NSLog(@"IVC - createMasterJSONLookUpTable (end)");
     
 }
 
@@ -1138,7 +1138,7 @@
     NSString *queryStr;
     NSMutableDictionary *tripDict = [[NSMutableDictionary alloc] init];
     FMResultSet *results;
-    NSDate *startTime = [NSDate date];
+//    NSDate *startTime = [NSDate date];
 
     
     //  --==  Part 1: Is start stop id valid?  ==--
@@ -1170,11 +1170,11 @@
         if ( [database hadError] )  // Check for errors
         {
             
-            int errorCode = [database lastErrorCode];
-            NSString *errorMsg = [database lastErrorMessage];
+//            int errorCode = [database lastErrorCode];
+//            NSString *errorMsg = [database lastErrorMessage];
             
-            NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
-            NSLog(@"IVC - query str: %@", queryStr);
+//            NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
+//            NSLog(@"IVC - query str: %@", queryStr);
             
             return;  // If an error occurred, there's nothing else to do but exit
             
@@ -1213,9 +1213,9 @@
             
         }  // while ( [results next] )
         
-        NSTimeInterval diff = [ [NSDate date] timeIntervalSinceDate: startTime];
-        NSLog(@"IVC - %6.3f seconds have passed.", diff);
-        NSLog(@"IVC - Loaded and stored");
+//        NSTimeInterval diff = [ [NSDate date] timeIntervalSinceDate: startTime];
+//        NSLog(@"IVC - %6.3f seconds have passed.", diff);
+//        NSLog(@"IVC - Loaded and stored");
         
     }
     
@@ -1264,11 +1264,11 @@
         if ( [database hadError] )  // Check for errors
         {
             
-            int errorCode = [database lastErrorCode];
-            NSString *errorMsg = [database lastErrorMessage];
+//            int errorCode = [database lastErrorCode];
+//            NSString *errorMsg = [database lastErrorMessage];
             
-            NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
-            NSLog(@"IVC - query str: %@", queryStr);
+//            NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
+//            NSLog(@"IVC - query str: %@", queryStr);
             
             return;  // If an error occurred, there's nothing else to do but exit
             
@@ -1344,7 +1344,7 @@
                     {
                         if ( !flippedOnce )
                         {
-                            NSLog(@"IVC - flipped trips!");
+//                            NSLog(@"IVC - flipped trips!");
                             flippedOnce = 1;
                             [itinerary flipStops];
                             //                        [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -1376,8 +1376,8 @@
             
         }  // while ( [results next] )
         
-        NSTimeInterval diff = [ [NSDate date] timeIntervalSinceDate: startTime];
-        NSLog(@"IVC - %6.3f seconds have passed.", diff);
+//        NSTimeInterval diff = [ [NSDate date] timeIntervalSinceDate: startTime];
+//        NSLog(@"IVC - %6.3f seconds have passed.", diff);
         
     }
 
@@ -1436,7 +1436,7 @@
     
     NSPredicate *predicateFilter = [NSPredicate predicateWithFormat: [NSString stringWithFormat:@"%@ AND (directionID == %ld)", _servicePredicate, (long)_currentDisplayDirection] ];
     
-    NSLog(@"IVC - filter active trains: %@", predicateFilter);
+//    NSLog(@"IVC - filter active trains: %@", predicateFilter);
     activeTrainsArr = nil;
     activeTrainsArr = [[_masterJSONTrainArr filteredArrayUsingPredicate:predicateFilter] mutableCopy];
     
@@ -1451,7 +1451,7 @@
          
      }];
     
-    NSLog(@"activeTrains: %@", activeTrainsArr);
+//    NSLog(@"activeTrains: %@", activeTrainsArr);
     
     // Whether activeTrainsArr is empty or not, update tableTrips
     [self.tableTrips reloadSections: [NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -1706,7 +1706,7 @@
     NSLog(@"IVC tV:accessoryButtonTappedForRowWithIndexPath");
 #endif
     
-    NSLog(@"IVC - accessoryButtonTappedForSection/Row: %ld/%ld", (long)indexPath.section, (long)indexPath.row);
+//    NSLog(@"IVC - accessoryButtonTappedForSection/Row: %ld/%ld", (long)indexPath.section, (long)indexPath.row);
 }
 
 
@@ -1800,7 +1800,7 @@
         ActiveTrainObject *atObject = [activeTrainsArr objectAtIndex: indexPath.row];
         [[cell lblTrainNo]    setText: [NSString stringWithFormat:@"%d", [atObject.trainNo intValue] ] ];
         
-        NSLog(@"_inDarkTerritory: %d, %ld/%ld", _inDarkTerritory, (long)indexPath.section, (long)indexPath.row);
+//        NSLog(@"_inDarkTerritory: %d, %ld/%ld", _inDarkTerritory, (long)indexPath.section, (long)indexPath.row);
         
         if ( _inDarkTerritory )
         {
@@ -2011,7 +2011,7 @@
 #endif
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
-    NSLog(@"IVC - removing cell at %ld/%ld", (long)indexPath.section, (long)indexPath.row);
+//    NSLog(@"IVC - removing cell at %ld/%ld", (long)indexPath.section, (long)indexPath.row);
     [currentTripsArr removeObjectAtIndex: [indexPath row] ];
     [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex: [indexPath section] ] withRowAnimation:UITableViewRowAnimationAutomatic];
     //    [cellRemoverTimer invalidate];
@@ -2509,7 +2509,7 @@
     }
     
     
-    NSLog(@"IVC - Flipped (Itinerary): %@", itinerary);
+//    NSLog(@"IVC - Flipped (Itinerary): %@", itinerary);
     
     
     DisplayedRouteData *routeData = [self convertItineraryObjectToDisplayedRouteData];
@@ -2523,10 +2523,10 @@
     
 //    [self.lblTabbedLabel setText: [NSString stringWithFormat:@"To %@", itinerary.endStopName] ];
     
-    if ( itinerary.startStopName == NULL )
-    {
-        NSLog(@"We have a friggin' problem!");
-    }
+//    if ( itinerary.startStopName == NULL )
+//    {
+//        NSLog(@"We have a friggin' problem!");
+//    }
     
     
 }
@@ -2720,10 +2720,10 @@
     //    }
     
     
-    if ( itinerary.startStopName == NULL )
-    {
-        NSLog(@"We have a problem!");
-    }
+//    if ( itinerary.startStopName == NULL )
+//    {
+//        NSLog(@"We have a problem!");
+//    }
     
     // Reload just the first section, with it's one giant cell.
 //    [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -2852,10 +2852,10 @@
     //    }
     
     
-    if ( itinerary.startStopName == NULL )
-    {
-        NSLog(@"We have a problem!");
-    }
+//    if ( itinerary.startStopName == NULL )
+//    {
+//        NSLog(@"We have a problem!");
+//    }
     
     // Reload just the first section, with it's one giant cell.
     if ( [self.tableTrips numberOfRowsInSection:0] != 0 )
@@ -2928,8 +2928,8 @@
         int errorCode = [database lastErrorCode];
         NSString *errorMsg = [database lastErrorMessage];
         
-        NSLog(@"SNFRTC - query failure, code: %d, %@", errorCode, errorMsg);
-        NSLog(@"SNFRTC - query str: %@", queryStr);
+//        NSLog(@"SNFRTC - query failure, code: %d, %@", errorCode, errorMsg);
+//        NSLog(@"SNFRTC - query str: %@", queryStr);
         
         return nil;  // If an error occurred, there's nothing else to do but exit
         
@@ -3011,8 +3011,8 @@
         int errorCode = [database lastErrorCode];
         NSString *errorMsg = [database lastErrorMessage];
         
-        NSLog(@"SNFRTC - query failure, code: %d, %@", errorCode, errorMsg);
-        NSLog(@"SNFRTC - query str: %@", queryStr);
+//        NSLog(@"SNFRTC - query failure, code: %d, %@", errorCode, errorMsg);
+//        NSLog(@"SNFRTC - query str: %@", queryStr);
         
         return;  // If an error occurred, there's nothing else to do but exit
         
@@ -3243,7 +3243,7 @@
     NSString *now = [dateFormatter stringFromDate: [NSDate date]];
 //    now = @"20131128";
     
-    NSLog(@"filePath: %@", [GTFSCommon filePath]);
+//    NSLog(@"filePath: %@", [GTFSCommon filePath]);
     FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
@@ -3270,8 +3270,8 @@
         int errorCode = [database lastErrorCode];
         NSString *errorMsg = [database lastErrorMessage];
         
-        NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
-        NSLog(@"IVC - query str: %@", queryStr);
+//        NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
+//        NSLog(@"IVC - query str: %@", queryStr);
         
         return 0;  // If an error occurred, there's nothing else to do but exit
         
@@ -3417,7 +3417,7 @@
     
     if ( [self.travelMode isEqualToString:@"MFL"] || [self.travelMode isEqualToString:@"BSL"] || [self.travelMode isEqualToString:@"NHSL"] || [self.travelMode isEqualToString:@"Bus"] )  // Bus is only temporary; I'll add that in later.
     {
-        NSLog(@"IVC - loadJSONDataInTheBackground - Current Route Does Not Support RealTime Data");
+//        NSLog(@"IVC - loadJSONDataInTheBackground - Current Route Does Not Support RealTime Data");
         return;
     }
     
@@ -3451,10 +3451,10 @@
             }];
             
         }  // if ( ![weakOp isCancelled] )
-        else
-        {
-            NSLog(@"IVC - running SQL Query: _sqlOp cancelled");
-        }
+//        else
+//        {
+//            NSLog(@"IVC - running SQL Query: _sqlOp cancelled");
+//        }
         
     }];
     
@@ -3503,7 +3503,7 @@
     {
         NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TrainView/"];
         NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSLog(@"IVC - loadLatestRailJSONData -- api url: %@", webStringURL);
+//        NSLog(@"IVC - loadLatestRailJSONData -- api url: %@", webStringURL);
         
         NSData *realtimeData = [NSData dataWithContentsOfURL:[NSURL URLWithString:webStringURL] ];
         [self processJSONData:realtimeData];
@@ -3527,7 +3527,7 @@
     
     if ( returnedData == nil )  // If returnedData is nil, don't even continue.
     {
-        NSLog(@"IVC processJSONData, returnedData is nil.  Returning");
+//        NSLog(@"IVC processJSONData, returnedData is nil.  Returning");
         return;
     }
     

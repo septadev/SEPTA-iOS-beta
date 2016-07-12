@@ -8,6 +8,9 @@
 
 #import "FXForms.h"
 
-@interface CommentFormViewController : FXFormViewController
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
+
+@interface CommentFormViewController : FXFormViewController <MFMailComposeViewControllerDelegate>
 
 @end

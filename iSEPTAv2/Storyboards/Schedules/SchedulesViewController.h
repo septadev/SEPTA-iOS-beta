@@ -11,6 +11,7 @@
 
 // --==  Connected VCs  ==--
 #import "RouteSelectionViewController.h"
+#import "AutomaticUpdatesViewController.h"
 
 
 // Subclassed, Others

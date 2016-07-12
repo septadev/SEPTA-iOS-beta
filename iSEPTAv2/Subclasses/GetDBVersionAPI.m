@@ -116,6 +116,7 @@
 }
 
 @synthesize localMD5 = _localMD5;
+@synthesize zippedMD5 = _zippedMD5;
 
 -(id) init
 {
@@ -246,6 +247,43 @@
 {
     
     return _dbObject;
+}
+
+
+
+-(NSString *) loadZippedMD5
+{
+    
+    // Load the MD5 bundled in the app
+    NSString *md5Path = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"md5"];
+
+    NSString* content = [[NSString stringWithContentsOfFile:md5Path
+                                                  encoding:NSUTF8StringEncoding
+                                                     error:NULL] stringByTrimmingCharactersInSet: [ NSCharacterSet newlineCharacterSet] ];
+    
+    
+    _zippedMD5 = content;
+    return content;
+    
+//    _localMD5 = nil;
+//    
+//    // Create byte array of unsigned chars
+//    unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
+//    
+//    NSData *fileData = [NSData dataWithContentsOfFile: md5Path ];
+//    
+//    // Create 16 byte MD5 hash value, store in buffer
+//    CC_MD5(fileData.bytes, (unsigned int)fileData.length, md5Buffer);
+//    
+//    // Convert unsigned char buffer to NSString of hex values
+//    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+//    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+//        [output appendFormat:@"%02x",md5Buffer[i]];
+//    
+//    _zippedMD5 = output;
+//    
+//    return _zippedMD5;
+    
 }
 
 

@@ -24,6 +24,7 @@
 		270ABC501771EF5000F631B6 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270ABC4F1771EF5000F631B6 /* MessageUI.framework */; };
 		270C8F64194A33A300AE208E /* SlidingAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 270C8F63194A33A300AE208E /* SlidingAlertView.m */; };
 		270C8F68194A33DB00AE208E /* SlidingAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270C8F67194A33DB00AE208E /* SlidingAlertViewController.m */; };
+		270D8C8F1CB2C87500CA4E6C /* SEPTA.md5 in Resources */ = {isa = PBXBuildFile; fileRef = 270D8C8E1CB2C87500CA4E6C /* SEPTA.md5 */; };
 		2712DE6C17EB943C0047343F /* EnterAddressStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2712DE6B17EB943C0047343F /* EnterAddressStoryboard.storyboard */; };
 		2712DE7B17ECE5920047343F /* SavedAddressesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2712DE7A17ECE5920047343F /* SavedAddressesViewController.m */; };
 		27157FFF1A82C21F009F2FA0 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 27157FFE1A82C21F009F2FA0 /* Event.m */; };
@@ -76,15 +77,15 @@
 		2765AA7217AC18D600F93FBE /* ItineraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AA7117AC18D600F93FBE /* ItineraryViewController.m */; };
 		2765AA7417AC18F700F93FBE /* ItineraryStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2765AA7317AC18F700F93FBE /* ItineraryStoryboard.storyboard */; };
 		2765AB7E17B42EB700F93FBE /* TrainViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AB7D17B42EB700F93FBE /* TrainViewViewController.m */; };
-		276AE24D1BB1C69000DE84D3 /* 6.kml in Resources */ = {isa = PBXBuildFile; fileRef = 276AE24C1BB1C69000DE84D3 /* 6.kml */; settings = {ASSET_TAGS = (); }; };
-		276AE2501BB1D7B900DE84D3 /* KMLOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 276AE24F1BB1D7B900DE84D3 /* KMLOverlay.m */; settings = {ASSET_TAGS = (); }; };
-		276AE2531BB1D8E100DE84D3 /* KMLOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 276AE2521BB1D8E100DE84D3 /* KMLOverlayView.m */; settings = {ASSET_TAGS = (); }; };
+		276AE24D1BB1C69000DE84D3 /* 6.kml in Resources */ = {isa = PBXBuildFile; fileRef = 276AE24C1BB1C69000DE84D3 /* 6.kml */; };
+		276AE2501BB1D7B900DE84D3 /* KMLOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 276AE24F1BB1D7B900DE84D3 /* KMLOverlay.m */; };
+		276AE2531BB1D8E100DE84D3 /* KMLOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 276AE2521BB1D8E100DE84D3 /* KMLOverlayView.m */; };
 		276B16A9162DA0AC00A71D57 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 276B16A6162DA05900A71D57 /* sqlite3.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		276D3EA31AD71960008D5EF2 /* AlertMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 276D3EA21AD71960008D5EF2 /* AlertMessage.m */; };
 		276D3EA91AE119C9008D5EF2 /* TableCellAlertsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 276D3EA81AE119C9008D5EF2 /* TableCellAlertsView.m */; };
 		2774644517AADFC800A36A7D /* NearestRoutesScheduleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2774644417AADFC800A36A7D /* NearestRoutesScheduleStoryboard.storyboard */; };
-		277C1F041BB1EB33000695CA /* KMLAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 277C1F031BB1EB33000695CA /* KMLAnnotationView.m */; settings = {ASSET_TAGS = (); }; };
-		277C1F071BB1EB84000695CA /* KMLAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 277C1F061BB1EB84000695CA /* KMLAnnotation.m */; settings = {ASSET_TAGS = (); }; };
+		277C1F041BB1EB33000695CA /* KMLAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 277C1F031BB1EB33000695CA /* KMLAnnotationView.m */; };
+		277C1F071BB1EB84000695CA /* KMLAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 277C1F061BB1EB84000695CA /* KMLAnnotation.m */; };
 		2782CEEB17BE8D62005939DB /* RouteSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2782CEEA17BE8D62005939DB /* RouteSelectionCell.xib */; };
 		2782CEEE17BE8D7A005939DB /* RouteSelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2782CEED17BE8D7A005939DB /* RouteSelectionCell.m */; };
 		278961821B59637500C41531 /* MKMultiPolyLineRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 278961811B59637500C41531 /* MKMultiPolyLineRenderer.m */; };
@@ -134,141 +135,141 @@
 		2792BFFD187B10F800626D8B /* GetDBVersionAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 2792BFFC187B10F800626D8B /* GetDBVersionAPI.m */; };
 		2792C00218818B7D00626D8B /* CommonWebViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2792C00118818B7D00626D8B /* CommonWebViewStoryboard.storyboard */; };
 		2792C00B18818C1600626D8B /* CommonWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2792C00A18818C1600626D8B /* CommonWebViewController.m */; };
-		279A89311BB20D0800A9F664 /* 1.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88AA1BB20D0800A9F664 /* 1.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89321BB20D0800A9F664 /* 2.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88AB1BB20D0800A9F664 /* 2.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89331BB20D0800A9F664 /* 3.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88AC1BB20D0800A9F664 /* 3.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89341BB20D0800A9F664 /* 4.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88AD1BB20D0800A9F664 /* 4.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89351BB20D0800A9F664 /* 5.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88AE1BB20D0800A9F664 /* 5.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89361BB20D0800A9F664 /* 7.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88AF1BB20D0800A9F664 /* 7.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89371BB20D0800A9F664 /* 8.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88B01BB20D0800A9F664 /* 8.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89381BB20D0800A9F664 /* 9.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88B11BB20D0800A9F664 /* 9.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89391BB20D0800A9F664 /* 10.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88B21BB20D0800A9F664 /* 10.kml */; settings = {ASSET_TAGS = (); }; };
-		279A893A1BB20D0800A9F664 /* 11.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88B31BB20D0800A9F664 /* 11.kml */; settings = {ASSET_TAGS = (); }; };
-		279A893B1BB20D0800A9F664 /* 12.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88B41BB20D0800A9F664 /* 12.kml */; settings = {ASSET_TAGS = (); }; };
-		279A893C1BB20D0800A9F664 /* 13.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88B51BB20D0800A9F664 /* 13.kml */; settings = {ASSET_TAGS = (); }; };
-		279A893D1BB20D0800A9F664 /* 14.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88B61BB20D0800A9F664 /* 14.kml */; settings = {ASSET_TAGS = (); }; };
-		279A893E1BB20D0800A9F664 /* 15.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88B71BB20D0800A9F664 /* 15.kml */; settings = {ASSET_TAGS = (); }; };
-		279A893F1BB20D0800A9F664 /* 16.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88B81BB20D0800A9F664 /* 16.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89401BB20D0800A9F664 /* 17.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88B91BB20D0800A9F664 /* 17.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89411BB20D0800A9F664 /* 18.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88BA1BB20D0800A9F664 /* 18.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89421BB20D0800A9F664 /* 19.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88BB1BB20D0800A9F664 /* 19.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89431BB20D0800A9F664 /* 20.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88BC1BB20D0800A9F664 /* 20.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89441BB20D0800A9F664 /* 21.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88BD1BB20D0800A9F664 /* 21.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89451BB20D0800A9F664 /* 22.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88BE1BB20D0800A9F664 /* 22.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89461BB20D0800A9F664 /* 23.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88BF1BB20D0800A9F664 /* 23.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89471BB20D0800A9F664 /* 24.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88C01BB20D0800A9F664 /* 24.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89481BB20D0800A9F664 /* 25.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88C11BB20D0800A9F664 /* 25.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89491BB20D0800A9F664 /* 26.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88C21BB20D0800A9F664 /* 26.kml */; settings = {ASSET_TAGS = (); }; };
-		279A894A1BB20D0800A9F664 /* 27.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88C31BB20D0800A9F664 /* 27.kml */; settings = {ASSET_TAGS = (); }; };
-		279A894B1BB20D0800A9F664 /* 28.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88C41BB20D0800A9F664 /* 28.kml */; settings = {ASSET_TAGS = (); }; };
-		279A894C1BB20D0800A9F664 /* 29.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88C51BB20D0800A9F664 /* 29.kml */; settings = {ASSET_TAGS = (); }; };
-		279A894D1BB20D0800A9F664 /* 30.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88C61BB20D0800A9F664 /* 30.kml */; settings = {ASSET_TAGS = (); }; };
-		279A894E1BB20D0800A9F664 /* 31.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88C71BB20D0800A9F664 /* 31.kml */; settings = {ASSET_TAGS = (); }; };
-		279A894F1BB20D0800A9F664 /* 32.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88C81BB20D0800A9F664 /* 32.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89501BB20D0800A9F664 /* 33.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88C91BB20D0800A9F664 /* 33.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89511BB20D0800A9F664 /* 34.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88CA1BB20D0800A9F664 /* 34.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89521BB20D0800A9F664 /* 35.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88CB1BB20D0800A9F664 /* 35.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89531BB20D0800A9F664 /* 36.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88CC1BB20D0800A9F664 /* 36.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89541BB20D0800A9F664 /* 37.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88CD1BB20D0800A9F664 /* 37.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89551BB20D0800A9F664 /* 38.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88CE1BB20D0800A9F664 /* 38.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89561BB20D0800A9F664 /* 39.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88CF1BB20D0800A9F664 /* 39.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89571BB20D0800A9F664 /* 40.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88D01BB20D0800A9F664 /* 40.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89581BB20D0800A9F664 /* 42.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88D11BB20D0800A9F664 /* 42.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89591BB20D0800A9F664 /* 43.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88D21BB20D0800A9F664 /* 43.kml */; settings = {ASSET_TAGS = (); }; };
-		279A895A1BB20D0800A9F664 /* 44.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88D31BB20D0800A9F664 /* 44.kml */; settings = {ASSET_TAGS = (); }; };
-		279A895B1BB20D0800A9F664 /* 46.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88D41BB20D0800A9F664 /* 46.kml */; settings = {ASSET_TAGS = (); }; };
-		279A895C1BB20D0800A9F664 /* 47.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88D51BB20D0800A9F664 /* 47.kml */; settings = {ASSET_TAGS = (); }; };
-		279A895D1BB20D0800A9F664 /* 47M.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88D61BB20D0800A9F664 /* 47M.kml */; settings = {ASSET_TAGS = (); }; };
-		279A895E1BB20D0800A9F664 /* 48.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88D71BB20D0800A9F664 /* 48.kml */; settings = {ASSET_TAGS = (); }; };
-		279A895F1BB20D0800A9F664 /* 50.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88D81BB20D0800A9F664 /* 50.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89601BB20D0800A9F664 /* 52.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88D91BB20D0800A9F664 /* 52.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89611BB20D0800A9F664 /* 53.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88DA1BB20D0800A9F664 /* 53.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89621BB20D0800A9F664 /* 54.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88DB1BB20D0800A9F664 /* 54.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89631BB20D0800A9F664 /* 55.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88DC1BB20D0800A9F664 /* 55.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89641BB20D0800A9F664 /* 56.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88DD1BB20D0800A9F664 /* 56.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89651BB20D0800A9F664 /* 57.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88DE1BB20D0800A9F664 /* 57.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89661BB20D0800A9F664 /* 58.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88DF1BB20D0800A9F664 /* 58.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89671BB20D0800A9F664 /* 59.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88E01BB20D0800A9F664 /* 59.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89681BB20D0800A9F664 /* 60.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88E11BB20D0800A9F664 /* 60.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89691BB20D0800A9F664 /* 61.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88E21BB20D0800A9F664 /* 61.kml */; settings = {ASSET_TAGS = (); }; };
-		279A896A1BB20D0800A9F664 /* 62.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88E31BB20D0800A9F664 /* 62.kml */; settings = {ASSET_TAGS = (); }; };
-		279A896B1BB20D0800A9F664 /* 64.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88E41BB20D0800A9F664 /* 64.kml */; settings = {ASSET_TAGS = (); }; };
-		279A896C1BB20D0800A9F664 /* 65.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88E51BB20D0800A9F664 /* 65.kml */; settings = {ASSET_TAGS = (); }; };
-		279A896D1BB20D0800A9F664 /* 66.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88E61BB20D0800A9F664 /* 66.kml */; settings = {ASSET_TAGS = (); }; };
-		279A896E1BB20D0800A9F664 /* 67.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88E71BB20D0800A9F664 /* 67.kml */; settings = {ASSET_TAGS = (); }; };
-		279A896F1BB20D0800A9F664 /* 68.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88E81BB20D0800A9F664 /* 68.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89701BB20D0800A9F664 /* 70.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88E91BB20D0800A9F664 /* 70.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89711BB20D0800A9F664 /* 73.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88EA1BB20D0800A9F664 /* 73.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89721BB20D0800A9F664 /* 75.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88EB1BB20D0800A9F664 /* 75.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89731BB20D0800A9F664 /* 77.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88EC1BB20D0800A9F664 /* 77.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89741BB20D0800A9F664 /* 78.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88ED1BB20D0800A9F664 /* 78.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89751BB20D0800A9F664 /* 79.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88EE1BB20D0800A9F664 /* 79.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89761BB20D0800A9F664 /* 80.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88EF1BB20D0800A9F664 /* 80.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89771BB20D0800A9F664 /* 84.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88F01BB20D0800A9F664 /* 84.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89781BB20D0800A9F664 /* 88.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88F11BB20D0800A9F664 /* 88.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89791BB20D0800A9F664 /* 89.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88F21BB20D0800A9F664 /* 89.kml */; settings = {ASSET_TAGS = (); }; };
-		279A897A1BB20D0800A9F664 /* 90.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88F31BB20D0800A9F664 /* 90.kml */; settings = {ASSET_TAGS = (); }; };
-		279A897B1BB20D0800A9F664 /* 91.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88F41BB20D0800A9F664 /* 91.kml */; settings = {ASSET_TAGS = (); }; };
-		279A897C1BB20D0800A9F664 /* 92.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88F51BB20D0800A9F664 /* 92.kml */; settings = {ASSET_TAGS = (); }; };
-		279A897D1BB20D0800A9F664 /* 93.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88F61BB20D0800A9F664 /* 93.kml */; settings = {ASSET_TAGS = (); }; };
-		279A897E1BB20D0800A9F664 /* 94.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88F71BB20D0800A9F664 /* 94.kml */; settings = {ASSET_TAGS = (); }; };
-		279A897F1BB20D0800A9F664 /* 95.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88F81BB20D0800A9F664 /* 95.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89801BB20D0800A9F664 /* 96.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88F91BB20D0800A9F664 /* 96.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89811BB20D0800A9F664 /* 97.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88FA1BB20D0800A9F664 /* 97.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89821BB20D0800A9F664 /* 98.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88FB1BB20D0800A9F664 /* 98.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89831BB20D0800A9F664 /* 99.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88FC1BB20D0800A9F664 /* 99.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89841BB20D0800A9F664 /* 101.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88FD1BB20D0800A9F664 /* 101.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89851BB20D0800A9F664 /* 102.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88FE1BB20D0800A9F664 /* 102.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89861BB20D0800A9F664 /* 103.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88FF1BB20D0800A9F664 /* 103.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89871BB20D0800A9F664 /* 104.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89001BB20D0800A9F664 /* 104.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89881BB20D0800A9F664 /* 105.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89011BB20D0800A9F664 /* 105.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89891BB20D0800A9F664 /* 106.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89021BB20D0800A9F664 /* 106.kml */; settings = {ASSET_TAGS = (); }; };
-		279A898A1BB20D0800A9F664 /* 107.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89031BB20D0800A9F664 /* 107.kml */; settings = {ASSET_TAGS = (); }; };
-		279A898B1BB20D0800A9F664 /* 108.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89041BB20D0800A9F664 /* 108.kml */; settings = {ASSET_TAGS = (); }; };
-		279A898C1BB20D0800A9F664 /* 109.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89051BB20D0800A9F664 /* 109.kml */; settings = {ASSET_TAGS = (); }; };
-		279A898D1BB20D0800A9F664 /* 110.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89061BB20D0800A9F664 /* 110.kml */; settings = {ASSET_TAGS = (); }; };
-		279A898E1BB20D0800A9F664 /* 111.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89071BB20D0800A9F664 /* 111.kml */; settings = {ASSET_TAGS = (); }; };
-		279A898F1BB20D0800A9F664 /* 112.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89081BB20D0800A9F664 /* 112.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89901BB20D0800A9F664 /* 113.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89091BB20D0800A9F664 /* 113.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89911BB20D0800A9F664 /* 114.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A890A1BB20D0800A9F664 /* 114.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89921BB20D0800A9F664 /* 115.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A890B1BB20D0800A9F664 /* 115.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89931BB20D0800A9F664 /* 117.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A890C1BB20D0800A9F664 /* 117.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89941BB20D0800A9F664 /* 118.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A890D1BB20D0800A9F664 /* 118.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89951BB20D0800A9F664 /* 119.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A890E1BB20D0800A9F664 /* 119.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89961BB20D0800A9F664 /* 120.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A890F1BB20D0800A9F664 /* 120.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89971BB20D0800A9F664 /* 123.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89101BB20D0800A9F664 /* 123.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89981BB20D0800A9F664 /* 124.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89111BB20D0800A9F664 /* 124.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89991BB20D0800A9F664 /* 125.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89121BB20D0800A9F664 /* 125.kml */; settings = {ASSET_TAGS = (); }; };
-		279A899A1BB20D0800A9F664 /* 126.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89131BB20D0800A9F664 /* 126.kml */; settings = {ASSET_TAGS = (); }; };
-		279A899B1BB20D0800A9F664 /* 127.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89141BB20D0800A9F664 /* 127.kml */; settings = {ASSET_TAGS = (); }; };
-		279A899C1BB20D0800A9F664 /* 128.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89151BB20D0800A9F664 /* 128.kml */; settings = {ASSET_TAGS = (); }; };
-		279A899D1BB20D0800A9F664 /* 129.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89161BB20D0800A9F664 /* 129.kml */; settings = {ASSET_TAGS = (); }; };
-		279A899E1BB20D0800A9F664 /* 130.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89171BB20D0800A9F664 /* 130.kml */; settings = {ASSET_TAGS = (); }; };
-		279A899F1BB20D0800A9F664 /* 131.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89181BB20D0800A9F664 /* 131.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89A01BB20D0800A9F664 /* 132.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89191BB20D0800A9F664 /* 132.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89A11BB20D0800A9F664 /* 133.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A891A1BB20D0800A9F664 /* 133.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89A21BB20D0800A9F664 /* 139.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A891B1BB20D0800A9F664 /* 139.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89A31BB20D0800A9F664 /* 150.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A891C1BB20D0800A9F664 /* 150.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89A41BB20D0800A9F664 /* 201.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A891D1BB20D0800A9F664 /* 201.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89A51BB20D0800A9F664 /* 204.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A891E1BB20D0800A9F664 /* 204.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89A61BB20D0800A9F664 /* 205.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A891F1BB20D0800A9F664 /* 205.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89A71BB20D0800A9F664 /* 206.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89201BB20D0800A9F664 /* 206.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89A81BB20D0800A9F664 /* 310.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89211BB20D0800A9F664 /* 310.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89A91BB20D0800A9F664 /* BSL.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89221BB20D0800A9F664 /* BSL.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89AA1BB20D0800A9F664 /* BSO.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89231BB20D0800A9F664 /* BSO.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89AB1BB20D0800A9F664 /* G.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89241BB20D0800A9F664 /* G.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89AC1BB20D0800A9F664 /* H.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89251BB20D0800A9F664 /* H.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89AD1BB20D0800A9F664 /* J.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89261BB20D0800A9F664 /* J.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89AE1BB20D0800A9F664 /* K.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89271BB20D0800A9F664 /* K.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89AF1BB20D0800A9F664 /* L.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89281BB20D0800A9F664 /* L.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89B01BB20D0800A9F664 /* LucyGold.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89291BB20D0800A9F664 /* LucyGold.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89B11BB20D0800A9F664 /* LucyGreen.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A892A1BB20D0800A9F664 /* LucyGreen.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89B21BB20D0800A9F664 /* MFL.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A892B1BB20D0800A9F664 /* MFL.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89B31BB20D0800A9F664 /* MFO.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A892C1BB20D0800A9F664 /* MFO.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89B41BB20D0800A9F664 /* NHSL.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A892D1BB20D0800A9F664 /* NHSL.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89B51BB20D0800A9F664 /* R.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A892E1BB20D0800A9F664 /* R.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89B61BB20D0800A9F664 /* regionalrail.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A892F1BB20D0800A9F664 /* regionalrail.kml */; settings = {ASSET_TAGS = (); }; };
-		279A89B71BB20D0800A9F664 /* XH.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89301BB20D0800A9F664 /* XH.kml */; settings = {ASSET_TAGS = (); }; };
+		279A89311BB20D0800A9F664 /* 1.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88AA1BB20D0800A9F664 /* 1.kml */; };
+		279A89321BB20D0800A9F664 /* 2.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88AB1BB20D0800A9F664 /* 2.kml */; };
+		279A89331BB20D0800A9F664 /* 3.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88AC1BB20D0800A9F664 /* 3.kml */; };
+		279A89341BB20D0800A9F664 /* 4.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88AD1BB20D0800A9F664 /* 4.kml */; };
+		279A89351BB20D0800A9F664 /* 5.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88AE1BB20D0800A9F664 /* 5.kml */; };
+		279A89361BB20D0800A9F664 /* 7.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88AF1BB20D0800A9F664 /* 7.kml */; };
+		279A89371BB20D0800A9F664 /* 8.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88B01BB20D0800A9F664 /* 8.kml */; };
+		279A89381BB20D0800A9F664 /* 9.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88B11BB20D0800A9F664 /* 9.kml */; };
+		279A89391BB20D0800A9F664 /* 10.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88B21BB20D0800A9F664 /* 10.kml */; };
+		279A893A1BB20D0800A9F664 /* 11.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88B31BB20D0800A9F664 /* 11.kml */; };
+		279A893B1BB20D0800A9F664 /* 12.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88B41BB20D0800A9F664 /* 12.kml */; };
+		279A893C1BB20D0800A9F664 /* 13.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88B51BB20D0800A9F664 /* 13.kml */; };
+		279A893D1BB20D0800A9F664 /* 14.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88B61BB20D0800A9F664 /* 14.kml */; };
+		279A893E1BB20D0800A9F664 /* 15.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88B71BB20D0800A9F664 /* 15.kml */; };
+		279A893F1BB20D0800A9F664 /* 16.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88B81BB20D0800A9F664 /* 16.kml */; };
+		279A89401BB20D0800A9F664 /* 17.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88B91BB20D0800A9F664 /* 17.kml */; };
+		279A89411BB20D0800A9F664 /* 18.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88BA1BB20D0800A9F664 /* 18.kml */; };
+		279A89421BB20D0800A9F664 /* 19.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88BB1BB20D0800A9F664 /* 19.kml */; };
+		279A89431BB20D0800A9F664 /* 20.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88BC1BB20D0800A9F664 /* 20.kml */; };
+		279A89441BB20D0800A9F664 /* 21.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88BD1BB20D0800A9F664 /* 21.kml */; };
+		279A89451BB20D0800A9F664 /* 22.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88BE1BB20D0800A9F664 /* 22.kml */; };
+		279A89461BB20D0800A9F664 /* 23.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88BF1BB20D0800A9F664 /* 23.kml */; };
+		279A89471BB20D0800A9F664 /* 24.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88C01BB20D0800A9F664 /* 24.kml */; };
+		279A89481BB20D0800A9F664 /* 25.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88C11BB20D0800A9F664 /* 25.kml */; };
+		279A89491BB20D0800A9F664 /* 26.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88C21BB20D0800A9F664 /* 26.kml */; };
+		279A894A1BB20D0800A9F664 /* 27.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88C31BB20D0800A9F664 /* 27.kml */; };
+		279A894B1BB20D0800A9F664 /* 28.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88C41BB20D0800A9F664 /* 28.kml */; };
+		279A894C1BB20D0800A9F664 /* 29.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88C51BB20D0800A9F664 /* 29.kml */; };
+		279A894D1BB20D0800A9F664 /* 30.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88C61BB20D0800A9F664 /* 30.kml */; };
+		279A894E1BB20D0800A9F664 /* 31.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88C71BB20D0800A9F664 /* 31.kml */; };
+		279A894F1BB20D0800A9F664 /* 32.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88C81BB20D0800A9F664 /* 32.kml */; };
+		279A89501BB20D0800A9F664 /* 33.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88C91BB20D0800A9F664 /* 33.kml */; };
+		279A89511BB20D0800A9F664 /* 34.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88CA1BB20D0800A9F664 /* 34.kml */; };
+		279A89521BB20D0800A9F664 /* 35.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88CB1BB20D0800A9F664 /* 35.kml */; };
+		279A89531BB20D0800A9F664 /* 36.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88CC1BB20D0800A9F664 /* 36.kml */; };
+		279A89541BB20D0800A9F664 /* 37.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88CD1BB20D0800A9F664 /* 37.kml */; };
+		279A89551BB20D0800A9F664 /* 38.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88CE1BB20D0800A9F664 /* 38.kml */; };
+		279A89561BB20D0800A9F664 /* 39.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88CF1BB20D0800A9F664 /* 39.kml */; };
+		279A89571BB20D0800A9F664 /* 40.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88D01BB20D0800A9F664 /* 40.kml */; };
+		279A89581BB20D0800A9F664 /* 42.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88D11BB20D0800A9F664 /* 42.kml */; };
+		279A89591BB20D0800A9F664 /* 43.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88D21BB20D0800A9F664 /* 43.kml */; };
+		279A895A1BB20D0800A9F664 /* 44.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88D31BB20D0800A9F664 /* 44.kml */; };
+		279A895B1BB20D0800A9F664 /* 46.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88D41BB20D0800A9F664 /* 46.kml */; };
+		279A895C1BB20D0800A9F664 /* 47.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88D51BB20D0800A9F664 /* 47.kml */; };
+		279A895D1BB20D0800A9F664 /* 47M.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88D61BB20D0800A9F664 /* 47M.kml */; };
+		279A895E1BB20D0800A9F664 /* 48.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88D71BB20D0800A9F664 /* 48.kml */; };
+		279A895F1BB20D0800A9F664 /* 50.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88D81BB20D0800A9F664 /* 50.kml */; };
+		279A89601BB20D0800A9F664 /* 52.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88D91BB20D0800A9F664 /* 52.kml */; };
+		279A89611BB20D0800A9F664 /* 53.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88DA1BB20D0800A9F664 /* 53.kml */; };
+		279A89621BB20D0800A9F664 /* 54.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88DB1BB20D0800A9F664 /* 54.kml */; };
+		279A89631BB20D0800A9F664 /* 55.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88DC1BB20D0800A9F664 /* 55.kml */; };
+		279A89641BB20D0800A9F664 /* 56.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88DD1BB20D0800A9F664 /* 56.kml */; };
+		279A89651BB20D0800A9F664 /* 57.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88DE1BB20D0800A9F664 /* 57.kml */; };
+		279A89661BB20D0800A9F664 /* 58.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88DF1BB20D0800A9F664 /* 58.kml */; };
+		279A89671BB20D0800A9F664 /* 59.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88E01BB20D0800A9F664 /* 59.kml */; };
+		279A89681BB20D0800A9F664 /* 60.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88E11BB20D0800A9F664 /* 60.kml */; };
+		279A89691BB20D0800A9F664 /* 61.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88E21BB20D0800A9F664 /* 61.kml */; };
+		279A896A1BB20D0800A9F664 /* 62.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88E31BB20D0800A9F664 /* 62.kml */; };
+		279A896B1BB20D0800A9F664 /* 64.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88E41BB20D0800A9F664 /* 64.kml */; };
+		279A896C1BB20D0800A9F664 /* 65.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88E51BB20D0800A9F664 /* 65.kml */; };
+		279A896D1BB20D0800A9F664 /* 66.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88E61BB20D0800A9F664 /* 66.kml */; };
+		279A896E1BB20D0800A9F664 /* 67.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88E71BB20D0800A9F664 /* 67.kml */; };
+		279A896F1BB20D0800A9F664 /* 68.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88E81BB20D0800A9F664 /* 68.kml */; };
+		279A89701BB20D0800A9F664 /* 70.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88E91BB20D0800A9F664 /* 70.kml */; };
+		279A89711BB20D0800A9F664 /* 73.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88EA1BB20D0800A9F664 /* 73.kml */; };
+		279A89721BB20D0800A9F664 /* 75.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88EB1BB20D0800A9F664 /* 75.kml */; };
+		279A89731BB20D0800A9F664 /* 77.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88EC1BB20D0800A9F664 /* 77.kml */; };
+		279A89741BB20D0800A9F664 /* 78.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88ED1BB20D0800A9F664 /* 78.kml */; };
+		279A89751BB20D0800A9F664 /* 79.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88EE1BB20D0800A9F664 /* 79.kml */; };
+		279A89761BB20D0800A9F664 /* 80.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88EF1BB20D0800A9F664 /* 80.kml */; };
+		279A89771BB20D0800A9F664 /* 84.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88F01BB20D0800A9F664 /* 84.kml */; };
+		279A89781BB20D0800A9F664 /* 88.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88F11BB20D0800A9F664 /* 88.kml */; };
+		279A89791BB20D0800A9F664 /* 89.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88F21BB20D0800A9F664 /* 89.kml */; };
+		279A897A1BB20D0800A9F664 /* 90.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88F31BB20D0800A9F664 /* 90.kml */; };
+		279A897B1BB20D0800A9F664 /* 91.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88F41BB20D0800A9F664 /* 91.kml */; };
+		279A897C1BB20D0800A9F664 /* 92.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88F51BB20D0800A9F664 /* 92.kml */; };
+		279A897D1BB20D0800A9F664 /* 93.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88F61BB20D0800A9F664 /* 93.kml */; };
+		279A897E1BB20D0800A9F664 /* 94.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88F71BB20D0800A9F664 /* 94.kml */; };
+		279A897F1BB20D0800A9F664 /* 95.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88F81BB20D0800A9F664 /* 95.kml */; };
+		279A89801BB20D0800A9F664 /* 96.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88F91BB20D0800A9F664 /* 96.kml */; };
+		279A89811BB20D0800A9F664 /* 97.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88FA1BB20D0800A9F664 /* 97.kml */; };
+		279A89821BB20D0800A9F664 /* 98.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88FB1BB20D0800A9F664 /* 98.kml */; };
+		279A89831BB20D0800A9F664 /* 99.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88FC1BB20D0800A9F664 /* 99.kml */; };
+		279A89841BB20D0800A9F664 /* 101.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88FD1BB20D0800A9F664 /* 101.kml */; };
+		279A89851BB20D0800A9F664 /* 102.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88FE1BB20D0800A9F664 /* 102.kml */; };
+		279A89861BB20D0800A9F664 /* 103.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A88FF1BB20D0800A9F664 /* 103.kml */; };
+		279A89871BB20D0800A9F664 /* 104.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89001BB20D0800A9F664 /* 104.kml */; };
+		279A89881BB20D0800A9F664 /* 105.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89011BB20D0800A9F664 /* 105.kml */; };
+		279A89891BB20D0800A9F664 /* 106.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89021BB20D0800A9F664 /* 106.kml */; };
+		279A898A1BB20D0800A9F664 /* 107.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89031BB20D0800A9F664 /* 107.kml */; };
+		279A898B1BB20D0800A9F664 /* 108.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89041BB20D0800A9F664 /* 108.kml */; };
+		279A898C1BB20D0800A9F664 /* 109.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89051BB20D0800A9F664 /* 109.kml */; };
+		279A898D1BB20D0800A9F664 /* 110.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89061BB20D0800A9F664 /* 110.kml */; };
+		279A898E1BB20D0800A9F664 /* 111.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89071BB20D0800A9F664 /* 111.kml */; };
+		279A898F1BB20D0800A9F664 /* 112.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89081BB20D0800A9F664 /* 112.kml */; };
+		279A89901BB20D0800A9F664 /* 113.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89091BB20D0800A9F664 /* 113.kml */; };
+		279A89911BB20D0800A9F664 /* 114.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A890A1BB20D0800A9F664 /* 114.kml */; };
+		279A89921BB20D0800A9F664 /* 115.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A890B1BB20D0800A9F664 /* 115.kml */; };
+		279A89931BB20D0800A9F664 /* 117.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A890C1BB20D0800A9F664 /* 117.kml */; };
+		279A89941BB20D0800A9F664 /* 118.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A890D1BB20D0800A9F664 /* 118.kml */; };
+		279A89951BB20D0800A9F664 /* 119.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A890E1BB20D0800A9F664 /* 119.kml */; };
+		279A89961BB20D0800A9F664 /* 120.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A890F1BB20D0800A9F664 /* 120.kml */; };
+		279A89971BB20D0800A9F664 /* 123.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89101BB20D0800A9F664 /* 123.kml */; };
+		279A89981BB20D0800A9F664 /* 124.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89111BB20D0800A9F664 /* 124.kml */; };
+		279A89991BB20D0800A9F664 /* 125.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89121BB20D0800A9F664 /* 125.kml */; };
+		279A899A1BB20D0800A9F664 /* 126.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89131BB20D0800A9F664 /* 126.kml */; };
+		279A899B1BB20D0800A9F664 /* 127.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89141BB20D0800A9F664 /* 127.kml */; };
+		279A899C1BB20D0800A9F664 /* 128.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89151BB20D0800A9F664 /* 128.kml */; };
+		279A899D1BB20D0800A9F664 /* 129.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89161BB20D0800A9F664 /* 129.kml */; };
+		279A899E1BB20D0800A9F664 /* 130.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89171BB20D0800A9F664 /* 130.kml */; };
+		279A899F1BB20D0800A9F664 /* 131.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89181BB20D0800A9F664 /* 131.kml */; };
+		279A89A01BB20D0800A9F664 /* 132.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89191BB20D0800A9F664 /* 132.kml */; };
+		279A89A11BB20D0800A9F664 /* 133.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A891A1BB20D0800A9F664 /* 133.kml */; };
+		279A89A21BB20D0800A9F664 /* 139.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A891B1BB20D0800A9F664 /* 139.kml */; };
+		279A89A31BB20D0800A9F664 /* 150.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A891C1BB20D0800A9F664 /* 150.kml */; };
+		279A89A41BB20D0800A9F664 /* 201.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A891D1BB20D0800A9F664 /* 201.kml */; };
+		279A89A51BB20D0800A9F664 /* 204.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A891E1BB20D0800A9F664 /* 204.kml */; };
+		279A89A61BB20D0800A9F664 /* 205.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A891F1BB20D0800A9F664 /* 205.kml */; };
+		279A89A71BB20D0800A9F664 /* 206.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89201BB20D0800A9F664 /* 206.kml */; };
+		279A89A81BB20D0800A9F664 /* 310.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89211BB20D0800A9F664 /* 310.kml */; };
+		279A89A91BB20D0800A9F664 /* BSL.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89221BB20D0800A9F664 /* BSL.kml */; };
+		279A89AA1BB20D0800A9F664 /* BSO.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89231BB20D0800A9F664 /* BSO.kml */; };
+		279A89AB1BB20D0800A9F664 /* G.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89241BB20D0800A9F664 /* G.kml */; };
+		279A89AC1BB20D0800A9F664 /* H.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89251BB20D0800A9F664 /* H.kml */; };
+		279A89AD1BB20D0800A9F664 /* J.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89261BB20D0800A9F664 /* J.kml */; };
+		279A89AE1BB20D0800A9F664 /* K.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89271BB20D0800A9F664 /* K.kml */; };
+		279A89AF1BB20D0800A9F664 /* L.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89281BB20D0800A9F664 /* L.kml */; };
+		279A89B01BB20D0800A9F664 /* LucyGold.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89291BB20D0800A9F664 /* LucyGold.kml */; };
+		279A89B11BB20D0800A9F664 /* LucyGreen.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A892A1BB20D0800A9F664 /* LucyGreen.kml */; };
+		279A89B21BB20D0800A9F664 /* MFL.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A892B1BB20D0800A9F664 /* MFL.kml */; };
+		279A89B31BB20D0800A9F664 /* MFO.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A892C1BB20D0800A9F664 /* MFO.kml */; };
+		279A89B41BB20D0800A9F664 /* NHSL.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A892D1BB20D0800A9F664 /* NHSL.kml */; };
+		279A89B51BB20D0800A9F664 /* R.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A892E1BB20D0800A9F664 /* R.kml */; };
+		279A89B61BB20D0800A9F664 /* regionalrail.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A892F1BB20D0800A9F664 /* regionalrail.kml */; };
+		279A89B71BB20D0800A9F664 /* XH.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89301BB20D0800A9F664 /* XH.kml */; };
 		279E3C1A17DE4374008CC7F8 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279E3C1917DE4374008CC7F8 /* SettingsViewController.m */; };
 		279E3C1D17DE4EAD008CC7F8 /* LocationObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 279E3C1C17DE4EAD008CC7F8 /* LocationObject.m */; };
 		279E3C2517E0F16B008CC7F8 /* AttributionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279E3C2417E0F16B008CC7F8 /* AttributionsViewController.m */; };
@@ -701,7 +702,7 @@
 		843445B9183E6A5500BA7A73 /* Filter-123@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 843445B5183E6A5500BA7A73 /* Filter-123@2x.png */; };
 		843445BA183E6A5500BA7A73 /* Filter-abc.png in Resources */ = {isa = PBXBuildFile; fileRef = 843445B6183E6A5500BA7A73 /* Filter-abc.png */; };
 		843445BB183E6A5500BA7A73 /* Filter-abc@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 843445B7183E6A5500BA7A73 /* Filter-abc@2x.png */; };
-		8435FC041BB1A77F002A8AC4 /* KMLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435FC031BB1A77F002A8AC4 /* KMLObject.m */; settings = {ASSET_TAGS = (); }; };
+		8435FC041BB1A77F002A8AC4 /* KMLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435FC031BB1A77F002A8AC4 /* KMLObject.m */; };
 		84C3864C1861070000B06BFA /* Filter_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C3864B1861070000B06BFA /* Filter_close@2x.png */; };
 		84C3864E1861071600B06BFA /* Filter_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C3864D1861071600B06BFA /* Filter_close.png */; };
 		84CA6E5A17D7B7F6002C2F3C /* ServiceHours.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CA6E5917D7B7F6002C2F3C /* ServiceHours.m */; };
@@ -742,6 +743,7 @@
 		270C8F63194A33A300AE208E /* SlidingAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlidingAlertView.m; path = SlidingAlertView/SlidingAlertView.m; sourceTree = "<group>"; };
 		270C8F66194A33DB00AE208E /* SlidingAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlidingAlertViewController.h; path = SlidingViewTest/SlidingAlertViewController.h; sourceTree = "<group>"; };
 		270C8F67194A33DB00AE208E /* SlidingAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlidingAlertViewController.m; path = SlidingViewTest/SlidingAlertViewController.m; sourceTree = "<group>"; };
+		270D8C8E1CB2C87500CA4E6C /* SEPTA.md5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SEPTA.md5; path = database/SEPTA.md5; sourceTree = SOURCE_ROOT; };
 		2712DE6B17EB943C0047343F /* EnterAddressStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = EnterAddressStoryboard.storyboard; path = "Storyboards/Common Storyboards/Enter Address/EnterAddressStoryboard.storyboard"; sourceTree = "<group>"; };
 		2712DE7917ECE5920047343F /* SavedAddressesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SavedAddressesViewController.h; path = "Storyboards/Common Storyboards/Enter Address/SavedAddressesViewController.h"; sourceTree = "<group>"; };
 		2712DE7A17ECE5920047343F /* SavedAddressesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SavedAddressesViewController.m; path = "Storyboards/Common Storyboards/Enter Address/SavedAddressesViewController.m"; sourceTree = "<group>"; };
@@ -2127,6 +2129,7 @@
 		27A4349F162DAA4200D9724A /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				270D8C8E1CB2C87500CA4E6C /* SEPTA.md5 */,
 				2750C57A19193BF300113BD3 /* SEPTA.zip */,
 			);
 			name = Database;
@@ -3853,7 +3856,7 @@
 				568FA4771535C0E0009345F5 /* Frameworks */,
 				568FA4781535C0E0009345F5 /* Resources */,
 				9977320E255646AEBE73FB25 /* Copy Pods Resources */,
-				271A00A41A714F5200EBD6C8 /* ShellScript */,
+				271A00A41A714F5200EBD6C8 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -4087,6 +4090,7 @@
 				8418EDBB17FEF6BD003607D1 /* RT_NTA@2x.png in Resources */,
 				271DA8621808A0B4009ED7D6 /* septaIcon-57px.png in Resources */,
 				27CE479B1B94C2DF0000C6D6 /* RT_SpecialEvents_GS.png in Resources */,
+				270D8C8F1CB2C87500CA4E6C /* SEPTA.md5 in Resources */,
 				8418EE7317FEF6BD003607D1 /* Schedule_Trolley-BG.png in Resources */,
 				8418EE9017FEF6BD003607D1 /* btnMFLBSLNHSL_clicked.png in Resources */,
 				8418EE9717FEF6BD003607D1 /* system_status_alert.png in Resources */,
@@ -4453,18 +4457,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		271A00A41A714F5200EBD6C8 /* ShellScript */ = {
+		271A00A41A714F5200EBD6C8 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run bc2dd85ee4bc4580ad7a7e2819d8402ff8595c61";
+			shellScript = "";
 		};
 		9977320E255646AEBE73FB25 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4754,8 +4759,8 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
-					"FUNCTION_NAMES_ON=1",
-					"PRINT_SQL_CALLS=1",
+					"FUNCTION_NAMES_ON=0",
+					"PRINT_SQL_CALLS=0",
 				);
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;

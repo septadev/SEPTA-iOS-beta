@@ -77,4 +77,6 @@ typedef NS_ENUM(NSInteger, AutomaticUpdateState)
 
 @property (weak, nonatomic) IBOutlet UIButton *btnMulti;
 
+@property (nonatomic) BOOL startImmediately;
+
 @end
