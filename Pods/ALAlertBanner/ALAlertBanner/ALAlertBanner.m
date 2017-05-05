@@ -72,7 +72,7 @@ static CGFloat const kForceHideAnimationDuration = 0.1f;
 @implementation UIColor (LightAndDark)
 
 - (UIColor *)darkerColor {
-    CGFloat h, s, b, a;
+    float h, s, b, a;
     if ([self getHue:&h saturation:&s brightness:&b alpha:&a])
         return [UIColor colorWithHue:h saturation:s brightness:b * 0.75 alpha:a];
     return nil;
