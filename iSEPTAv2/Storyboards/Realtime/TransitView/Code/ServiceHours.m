@@ -83,6 +83,212 @@
 }
 
 
+-(NSString*) statusForTime:(int) time andServiceIDs: (NSArray*) sids
+{
+
+//    NSArray* hourKeys = [_hours allKeys];
+
+    NSMutableSet *rteHoursSet = [NSMutableSet setWithArray:[_hours allKeys]];
+    NSMutableSet *serviceSet  = [NSMutableSet setWithArray:sids];
+    
+    [rteHoursSet intersectSet:serviceSet];
+    
+    if ( [[rteHoursSet allObjects] count] > 0)
+    {
+        NSString *key = [[rteHoursSet allObjects] objectAtIndex:0];
+        MinMax *mmToday = [ [_hours objectForKey: key] objectAtIndex:0];
+        
+        if ( mmToday == nil )
+        {
+            transitServiceStatus = [NSNumber numberWithInt:kTransitServiceOut];
+            _status = @"Not In Service";
+            return _status;
+        }
+        else // if ( mmToday == nil )
+        {
+            
+            //        NSArray *sidToday = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetToday];
+            //        NSArray *sidYest = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetYesterday];
+            
+            NSString *sidToday = [GTFSCommon getServiceIDStrFor:kGTFSRouteTypeBus withOffset:kGTFSCalendarOffsetToday];
+            NSString *sidYest  = [GTFSCommon getServiceIDStrFor:kGTFSRouteTypeBus withOffset:kGTFSCalendarOffsetYesterday];
+            
+            int x, y, yPrime;
+            
+            x = [[mmToday min] intValue];
+            y = [[mmToday max] intValue];
+            
+            if ( [sidToday isEqualToString: sidYest] )
+            {
+                
+                // If the service IDs for today and yesterday match, then letting:
+                //   x be today's min, y be today's max and a time being the current time,
+                //   The route is in service if the following is true:
+                //      ( (x < a) && (a < y) ) || ( (a + 2400) < y )
+                
+                // If the service IDs for today and yesterday do not match, then letting:
+                //   x be today's min, y be today's max, a time being the current time and y' be yesterday's max
+                //   The route is in service if the following is true:
+                //      ( (x < a) && (a < y) ) || ( (a + 2400) < y' )
+                
+                
+                yPrime = y;
+                
+            }
+            else  // if ( [sidToday isEqualToString: sidYest] )
+            {
+                
+                NSArray *yestArr = [GTFSCommon getServiceIDFor:kGTFSRouteTypeBus withOffset:kGTFSCalendarOffsetYesterday];
+                if ( yestArr != nil )
+                {
+                    int yest_service_id = [(NSNumber*)[yestArr objectAtIndex:0] intValue];
+                    MinMax *mmYest = [[_hours objectForKey: [NSString stringWithFormat:@"%d", yest_service_id] ] objectAtIndex:0];
+                    
+                    if ( mmYest == nil )
+                    {
+                        // Then this route didn't offer service yesterday
+                        yPrime = 0;  // Set yPrime to 0
+                    }
+                    else
+                    {
+                        yPrime = [[mmYest max] intValue];
+                    }
+                    
+                }  // if ( yestArr != nil )
+                
+            }  // if ( [sidToday isEqualToString: sidYest] )
+            
+            
+            if ( ( (x <= time) && (time < y) ) || ( (time + 2400) < yPrime ) )
+            {
+                transitServiceStatus = [NSNumber numberWithInt:kTransitServiceIn];
+                _status = @"In Service";
+                return _status;
+            }
+            else
+            {
+                transitServiceStatus = [NSNumber numberWithInt:kTransitServiceOut];
+                _status = @"Not In Service";
+                return _status;
+            }
+            
+            
+        }  // if ( mmToday == nil )
+
+        
+    }
+    else  // No service_ids in sids were found in rteHoursSet
+    {
+        transitServiceStatus = [NSNumber numberWithInt:kTransitServiceOut];
+        _status = @"Not In Service";
+        return _status;
+    }
+
+    
+    
+//    @try
+//    {
+//
+//        // sids is an array, _hours is an array for service_ids for a route.
+//        
+//        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains[c] %@",]
+//        
+//        MinMax *mmToday = [[_hours objectForKey: [NSString stringWithFormat:@"%d", service_id] ] objectAtIndex:0];
+//        
+//        if ( mmToday == nil )
+//        {
+//            // No service today!
+//            transitServiceStatus = [NSNumber numberWithInt:kTransitServiceOut];
+//            _status = @"Not In Service";
+//            return _status;
+//        }
+//        else
+//        {
+//            
+//            //        NSArray *sidToday = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetToday];
+//            //        NSArray *sidYest = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetYesterday];
+//            
+//            NSString *sidToday = [GTFSCommon getServiceIDStrFor:kGTFSRouteTypeBus withOffset:kGTFSCalendarOffsetToday];
+//            NSString *sidYest  = [GTFSCommon getServiceIDStrFor:kGTFSRouteTypeBus withOffset:kGTFSCalendarOffsetYesterday];
+//            
+//            int x, y, yPrime;
+//            
+//            x = [[mmToday min] intValue];
+//            y = [[mmToday max] intValue];
+//            
+//            if ( [sidToday isEqualToString: sidYest] )
+//            {
+//                
+//                // If the service IDs for today and yesterday match, then letting:
+//                //   x be today's min, y be today's max and a time being the current time,
+//                //   The route is in service if the following is true:
+//                //      ( (x < a) && (a < y) ) || ( (a + 2400) < y )
+//                
+//                // If the service IDs for today and yesterday do not match, then letting:
+//                //   x be today's min, y be today's max, a time being the current time and y' be yesterday's max
+//                //   The route is in service if the following is true:
+//                //      ( (x < a) && (a < y) ) || ( (a + 2400) < y' )
+//                
+//                
+//                yPrime = y;
+//                
+//            }
+//            else
+//            {
+//                
+//                NSArray *yestArr = [GTFSCommon getServiceIDFor:kGTFSRouteTypeBus withOffset:kGTFSCalendarOffsetYesterday];
+//                if ( yestArr != nil )
+//                {
+//                    int yest_service_id = [(NSNumber*)[yestArr objectAtIndex:0] intValue];
+//                    MinMax *mmYest = [[_hours objectForKey: [NSString stringWithFormat:@"%d", yest_service_id] ] objectAtIndex:0];
+//                    
+//                    if ( mmYest == nil )
+//                    {
+//                        // Then this route didn't offer service yesterday
+//                        yPrime = 0;  // Set yPrime to 0
+//                    }
+//                    else
+//                    {
+//                        yPrime = [[mmYest max] intValue];
+//                    }
+//                    
+//                    
+//                }
+//                
+//            }
+//            
+//            
+//            if ( ( (x <= time) && (time < y) ) || ( (time + 2400) < yPrime ) )
+//            {
+//                transitServiceStatus = [NSNumber numberWithInt:kTransitServiceIn];
+//                _status = @"In Service";
+//                return _status;
+//            }
+//            else
+//            {
+//                transitServiceStatus = [NSNumber numberWithInt:kTransitServiceOut];
+//                _status = @"Not In Service";
+//                return _status;
+//            }
+//            
+//            
+//        }
+//        
+//        
+//    }
+//    @catch (NSException *exception)
+//    {
+//        NSLog(@"Exception thrown");
+//    }
+//    @finally
+//    {
+//        // <#Code that gets executed whether or not an exception is thrown#
+//    }
+//    
+//    return @"N/A";
+//    
+}
+
 -(NSString*) statusForTime:(int) time andServiceID: (int) service_id
 {
     

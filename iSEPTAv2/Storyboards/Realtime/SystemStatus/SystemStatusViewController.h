@@ -17,7 +17,7 @@
 // --==  Data Models  ==--
 #import "SystemStatusObject.h"
 #import "SystemAlertObject.h"
-
+#import "NSDictionary+ObjectKeyNil.h"
 
 // --==  Xibs  ==--
 #import "SystemStatusCell.h"

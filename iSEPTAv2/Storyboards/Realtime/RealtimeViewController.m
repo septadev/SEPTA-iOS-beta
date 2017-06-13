@@ -113,6 +113,7 @@
     [self.btnSystemStatus        setAccessibilityLabel:@"System Status"];
     [self.btnFindNearestLocation setAccessibilityLabel:@"Fine Nearest Location"];
     [self.btnGuide               setAccessibilityLabel:@"Guide"];
+    [self.btnPassPerks           setAccessibilityLabel:@"Pass Perks"];
 
     
     [self.lblNextToArrive setAccessibilityElementsHidden:YES];
@@ -122,111 +123,7 @@
     [self.lblFindNeareset setAccessibilityElementsHidden:YES];
     [self.lblLocations    setAccessibilityElementsHidden:YES];
     [self.lblGuide        setAccessibilityElementsHidden:YES];
-    
-
-    // Not needed (anymore?)  Is there any reason to disable function short of another Pope visit?
-    
-//    NSData *storedData = [[NSUserDefaults standardUserDefaults] objectForKey:@"Realtime:SpecialEvents"];
-//    
-//    SpecialEvent *storedSE = [NSKeyedUnarchiver unarchiveObjectWithData:storedData];
-//    if ( storedSE != nil )
-//    {
-//        NSDateFormatter *startDateFormat = [[NSDateFormatter alloc] init];
-//        [startDateFormat setDateFormat:@"yyyy-MM-dd H:m:s"];
-//        NSDate *start_date = [startDateFormat dateFromString: storedSE.start_datetime];
-//        
-//        NSDateFormatter *endDateFormat = [[NSDateFormatter alloc] init];
-//        [endDateFormat setDateFormat:@"yyyy-MM-dd H:m:s"];
-//        NSDate *end_date = [endDateFormat dateFromString: storedSE.end_datetime];
-//
-//        
-//        if ( [GTFSCommon date: [NSDate date] isBetweenDate: start_date andDate: end_date ] )
-//        {
-//            // Disable NTA, TrainView, TransitView and Find Nearest Location
-//            [self disableButtonsForSpecialEvent:storedSE andDisplayMessage:YES];
-//        }
-//
-//        
-//    }
-    
-    
-    //    [self automaticDownloading];
-    //    [self checkDBVersion];
-    //    [self md5check];
-    
-    
-    //    unsigned char buff[CC_MD5_DIGEST_LENGTH];
-    //    CC_MD5_CTX md5;
-    //    CC_MD5_Init(&md5);
-    //
-    //    NSString *string1 = @"Gr";
-    //    NSString *string2 = @"eg";
-    //
-    //    NSData *data1 = [string1 dataUsingEncoding:NSUTF8StringEncoding];
-    //    NSData *data2 = [string2 dataUsingEncoding:NSUTF8StringEncoding];
-    //
-    //    CC_MD5_Update(&md5, [data1 bytes], [data1 length]);
-    //    CC_MD5_Update(&md5, [data2 bytes], [data2 length]);
-    //
-    //    CC_MD5_Final(buff, &md5);
-    //
-    //    output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
-    //    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
-    //        [output appendFormat:@"%02x",buff[i]];
-    //    
-    //    NSLog(@"Greg: %@", output);
-    //    NSLog(@"Greg: %@", [self md5FromString:@"Greg"] );
-    
-
-    
-    
-    //GTFSCommon *common = [[GTFSCommon alloc] init];
-    
-
-//    int serviceID_today = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetToday];
-//    int serviceID_sat   = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetSat];
-//    int serviceID_sun   = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetSun];
-//    int serviceID_week  = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetWeekday];
-//    
-//    int serviceID_tom = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetTomorrow];
-//    
-//    NSLog(@"Today: %d", serviceID_today);
-//    
-//    NSLog(@"Sat  : %d", serviceID_sat);
-//    NSLog(@"Sun  : %d", serviceID_sun);
-//    NSLog(@"Week : %d", serviceID_week);
-//    
-//    NSLog(@"Tom  : %d", serviceID_tom);
-
-    
-//    NSArray *sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetToday];
-//    NSLog(@"today: %@ - is it service_id 1? %d", sids, [GTFSCommon checkService:1 withArray:sids]);
-//    
-//    sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetTomorrow];
-//    NSLog(@"tom: %@", sids);
-//    NSLog(@"Does it match service_id 1? %@", [GTFSCommon checkService:1 withArray:sids] ? @"Yes" : @"No" );
-//    NSLog(@"Does it match service_id 2? %@", [GTFSCommon checkService:2 withArray:sids] ? @"Yes" : @"No" );
-//    NSLog(@"Does it match service_id 3? %@", [GTFSCommon checkService:3 withArray:sids] ? @"Yes" : @"No" );
-//    NSLog(@"Does it match service_id 4? %@", [GTFSCommon checkService:4 withArray:sids] ? @"Yes" : @"No" );
-//    NSLog(@"Does it match service_id 5? %@", [GTFSCommon checkService:5 withArray:sids] ? @"Yes" : @"No" );
-//    
-//    sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetSat];
-//    NSLog(@"sat: %@", sids);
-//    
-//    sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetSun];
-//    NSLog(@"sun: %@", sids);
-//    
-//    sids = [GTFSCommon getServiceIDFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetYesterday];
-//    NSLog(@"yes: %@", sids);
-//    
-//    NSString *sStr = [GTFSCommon getServiceIDStrFor:kGTFSRouteTypeRail withOffset:kGTFSCalendarOffsetTomorrow];
-//    NSLog(@"tomStr: %@", sStr);
-//    
-//    
-//    NSLog(@"End of test");
-    
-    
-//    [[Crashlytics sharedInstance] crash];
+    [self.lblPassPerks    setAccessibilityElementsHidden:YES];
     
 }
 
@@ -239,7 +136,8 @@
 #endif
     
     [super viewWillAppear:animated];
-    
+    NSLog(@"RVC - viewWillAppear: %d", animated);
+
     // Check if the uncompress SQLite DB exists.  If it does not, uncompress it.  If it does, check the MD5 and make sure it's the latest.
     [self checkDBExists];
     
@@ -251,7 +149,16 @@
     [self getGenericAlert];
     
     UIInterfaceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
-    [self changeOrientation:currentOrientation];
+//    UIDeviceOrientation currentOrientation = [[UIDevice currentDevice] orientation];
+//    [self changeOrientation:currentOrientation];
+    
+    CGFloat width = [self.view frame].size.width;
+    CGFloat height = [self.view frame].size.height;
+    
+    [self changeOrientation: [self.view frame].size ];
+    
+    NSLog(@"RVC:vWA - w: %5.3f, h: %5.3f", width, height);
+
     
 }
 
@@ -367,20 +274,6 @@
     
 }
 
-//-(void) downloadProgress
-//{
-//    
-//    BackgroundDownloader *bDown = [BackgroundDownloader sharedInstance];
-//    long long bytesRead;
-//    float percent;
-//    
-//    [bDown downloadStatusForBytes: &bytesRead andPercentDone: &percent];
-//    
-//    NSLog(@"bytes: %lld, percent: %6.3f", bytesRead, percent);
-//    
-//    
-//}
-
 
 -(void) dbVersionFetched:(DBVersionDataObject*) obj
 {
@@ -430,19 +323,18 @@
         
         if ( [obj.md5 isEqualToString: [_dbVersionAPI localMD5] ] )
         {
-            NSLog(@"RVC - API MD5 matches uncompressed MD5");
+            NSLog(@"RVC - API MD5 matches local MD5");
             return;  // The schedule is up to date, there's nothing to do
         }
         else if ( [obj.md5 isEqualToString: [_dbVersionAPI zippedMD5] ] )
         {
             // The schedule is out of date, but fortunately it matches what's bundled with the app
-            NSLog(@"RVC - API MD5 matches compressed MD5");
+            NSLog(@"RVC - API MD5 matches zipped MD5");
             
             NSArray   *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
             NSString *dbPath = [NSString stringWithFormat:@"%@/SEPTA.sqlite", [paths objectAtIndex:0] ];
             
             [GTFSCommon uncompressWithPath:dbPath];
-            
         }
         else  // The schedule is out of date and a new one needs to be downloaded
         {
@@ -450,25 +342,11 @@
             needUpdate = YES;
             [self displayAlert: obj];
             
-//            NSURLSessionDownloadTask *download;
-            
-//            NSURLSessionConfiguration *backgroundConfigurationObject =
-//                [NSURLSessionConfiguration backgroundSessionConfiguration:"myBackgroundSessionIdentifier"];
-//            
-//            self.backgroundSession = [NSURLSession
-//                                      sessionWithConfiguration:backgroundConfigurationObject
-//                                      delegate:self
-//                                      delegateQueue:[NSOperationQueue mainQueue]
-//                                      ];
-//            
-//            [self.progressView setProgress:0 animated:NO];
-            
         }
         
         [[NSUserDefaults standardUserDefaults] setObject: [NSNumber numberWithBool:needUpdate] forKey:@"Settings:Update:NeedUpdate"];
         [[NSUserDefaults standardUserDefaults] synchronize];
 
-        
     }
     
 }
@@ -505,11 +383,11 @@
     
     int numOfSeconds = (int)( ([words count] - [separatorIndexes count])/3.0 );  // Assume, on average, a person reads 3 words per second
     
-    // Maintain a minimum and maximum time
+    // Maintain a minimum and maximum time; increased max time from 20 to 30 seconds
     if ( numOfSeconds < 10 )
         numOfSeconds = 10;
-    else if ( numOfSeconds > 20 )
-        numOfSeconds = 20;
+    else if ( numOfSeconds > 30 )
+        numOfSeconds = 30;
     
 //    NSLog(@"numOfSeconds: %d", numOfSeconds);
     
@@ -524,61 +402,6 @@
 
 -(void) downloadTest
 {
-
-//    NSURL *downloadURL = [[NSURL alloc] initWithString: @"http://www3.septa.org/hackathon/dbVersion/download.php"];
-//    NSURLRequest *request = [NSURLRequest requestWithURL: downloadURL];
-//    NSString *zipPath = [NSString stringWithFormat:@"%@/SEPTA.zip", [[GTFSCommon filePath] stringByDeletingLastPathComponent] ];
-//    
-//    AFDownloadRequestOperation *dOp = [[AFDownloadRequestOperation alloc] initWithRequest:request targetPath:zipPath shouldResume:YES];
-//    dOp.outputStream = [NSOutputStream outputStreamToFileAtPath: zipPath append:NO];
-//    
-//    [dOp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
-//     {
-//         NSLog(@"Successfully downloaded file to %@", zipPath);
-//     }
-//                                      failure:^(AFHTTPRequestOperation *operation, NSError *error)
-//     {
-//         NSLog(@"Error: %@", error);
-//     }];
-//    
-//    
-//    [dOp setProgressiveDownloadProgressBlock:^(AFDownloadRequestOperation *operation, NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
-////        NSLog(@"Operation%i: bytesRead: %d", 1, bytesRead);
-////        NSLog(@"Operation%i: totalBytesRead: %lld", 1, totalBytesRead);
-////        NSLog(@"Operation%i: totalBytesExpected: %lld", 1, totalBytesExpected);
-////        NSLog(@"Operation%i: totalBytesReadForFile: %lld", 1, totalBytesReadForFile);
-////        NSLog(@"Operation%i: totalBytesExpectedToReadForFile: %lld", 1, totalBytesExpectedToReadForFile);
-//
-//         float percentDone = ((float)((int)totalBytesRead) / (float)((int)totalBytesExpectedToReadForFile));
-//         NSLog(@"Sent %lld of %lld bytes, percent: %6.3f", totalBytesRead, totalBytesExpectedToReadForFile, percentDone);
-//
-//        
-//    }];
-//
-//
-////    [dOp setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead)
-////     {
-////         //        NSLog(@"Operation%i: bytesRead: %d", i, bytesRead);
-////         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesRead);
-////         //        NSLog(@"Operation%i: bytesRead: %lld", i, totalBytesExpectedToRead);
-////         
-//////         float percentDone = ((float)((int)totalBytesRead) / (float)((int)totalBytesExpectedToRead));
-//////         NSLog(@"Sent %lld of %lld bytes, percent: %6.3f", totalBytesRead, totalBytesExpectedToRead, percentDone);
-////         
-////         NSLog(@"bytesRead: %d, totalBytesRead: %lld, totalBytesExpectedToRead: %lld", bytesRead, totalBytesRead, totalBytesExpectedToRead);
-////         
-////         
-////     }];
-//    
-//    
-//    [dOp setShouldExecuteAsBackgroundTaskWithExpirationHandler:^{
-//        NSLog(@"Download expired!");
-//    }];
-//    
-//    
-//    [dOp start];
-////    [dOp waitUntilFinished];
-    
     
 }
 
@@ -606,28 +429,6 @@
     return freeSpace;
 
 }
-
-
-//-(void) dateCheck
-//{
-//    
-//    NSDate *today = [[NSDate alloc] init];
-//    NSCalendar *gregorian = [[NSCalendar alloc]
-//                             initWithCalendarIdentifier:NSGregorianCalendar];
-//    
-//    // Get the weekday component of the current date
-//    NSDateComponents *weekdayComponents = [gregorian components:NSWeekdayCalendarUnit
-//                                                       fromDate:today];
-//    
-//    NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
-//    [componentsToSubtract setDay: 0 - ([weekdayComponents weekday] - 1)];
-//    
-//    NSDate *beginningOfWeek = [gregorian dateByAddingComponents:componentsToSubtract
-//                                                         toDate:today options:0];
-//    
-//    NSLog(@"Done");
-//    
-//}
 
 
 -(void) md5check
@@ -944,123 +745,6 @@
 //}
 
 
--(void) testImage
-{
-    
-//    UIImageView *imageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"second-menu.png"] ];
-//
-////    [imageView setFrame:CGRectMake(0, self.view.frame.size.height - 60, imageView.frame.size.width, imageView.frame.size.height)];
-//    
-//    [self.view addSubview: imageView];
-//    [self.view bringSubviewToFront: imageView];
-
-//    [self.navigationItem.rightBarButtonItem setImage: [UIImage imageNamed:@"second-menu.png"] ];
-    
-    
-    
-//    _testView = [[UIView alloc] initWithFrame:CGRectMake(10, 260, 50, 37.5)];
-//    
-//    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 5, 40, 30)];
-//    imgView.image = [UIImage imageNamed:@"second-menu.png"];
-//    imgView.contentMode = UIViewContentModeCenter;
-//    
-//    UIImageView *alertImg = [[UIImageView alloc] initWithFrame:CGRectMake(23, 0, 40/2.0f, 30/2.0f)];
-//    [alertImg setImage: [UIImage imageNamed:@"system_status_alert.png"] ];
-//    
-//    UIImageView *advisoryImg = [[UIImageView alloc] initWithFrame:CGRectMake(23, 0, 40/2.0f, 30/2.0f)];
-//    [advisoryImg setImage: [UIImage imageNamed:@"system_status_advisory.png"] ];
-//    [advisoryImg setAlpha:0.0f];
-//    
-//    UIImageView *detourImg = [[UIImageView alloc] initWithFrame:CGRectMake(23, 0, 40/2.0f, 30/2.0f)];
-//    [detourImg setImage: [UIImage imageNamed:@"system_status_detour.png"] ];
-//    [detourImg setAlpha:0.0f];
-
-
-    
-//    MenuAlertsImageView *mView = [[MenuAlertsImageView alloc] initWithFrame: CGRectMake(10, 260, 50, 37.5)];
-//    
-//    [mView setBaseImage: [UIImage imageNamed:@"second-menu.png"] ];
-//    
-//    [mView addAlert: kMenuAlertsImageAlerts];
-//    [mView addAlert: kMenuAlertsImageDetours];
-//    [mView addAlert: kMenuAlertsImageAdvisories];
-//    
-//    [self.view addSubview: mView];
-//    
-//    [mView startLoop];
-
-    
-    
-    /*
-     
-     ObjectView: UIImageView
-     
-     [object addAlert: kSecondMenuAlert];
-     [object addAlert: kSecondMenuAdvisory];
-     [object addAlert: kSecondMenuDetour];
-     
-     [object removeAllAlerts];
-     [object removeAlert: kSecondMenuAlert];
-     
-     [object nextLoop];  // duration + delay, starts state machine
-     [object stopLoop];  <-- cancel running animation block?, ends state machine
-     
-     [object setDuration: 1.5f];
-     [object setDelay:    0.5f];
-     
-     [object setBaseImageView: (UIImageView*) image];
-     [object setOverlayImageView: (UIImageView*) image];
-     
-     // One alert   - always on
-     // Two+ alerts - cycle through
-     
-     // Circular linked list
-     
-     [p][data][n]
-     
-     data
-       - image
-       - ???
-     
-     */
-    
-//    [UIView animateWithDuration:1.5f
-//                          delay:0.5f
-//                        options: UIViewAnimationCurveEaseInOut
-//                     animations:^{
-//                         [alertImg setAlpha:0.0f];
-//                         [advisoryImg setAlpha:1.0f];
-//                     }
-//                     completion:^(BOOL finished) {
-//
-//                         
-//                         [UIView animateWithDuration:1.5f
-//                                               delay:0.5f
-//                                             options: UIViewAnimationOptionOverrideInheritedCurve | UIViewAnimationOptionOverrideInheritedDuration | UIViewAnimationOptionCurveLinear | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat
-//                                          animations:^{
-//                                              [UIView setAnimationRepeatCount:2.5];
-//                                              [advisoryImg setAlpha:0.0f];
-//                                              [detourImg setAlpha:1.0f];
-//                                          }
-//                                          completion:^(BOOL finished) {
-//                                              NSLog(@"Animation complete");
-//                                          }];
-//                     }];
-    
-//    [self.view addSubview: imgView];
-    
-//    [_testView addSubview:imgView];
-//    
-//    [_testView addSubview:alertImg];
-//    [_testView addSubview:advisoryImg];
-//    [_testView addSubview:detourImg];
-//    
-//    [self.view addSubview: _testView];
-//    
-//    NSLog(@"RVC - Added Image");
-    
-}
-
 - (void)didReceiveMemoryWarning
 {
     
@@ -1086,114 +770,203 @@
     [self setBtnFindNearestLocation:nil];
     [self setBtnSystemStatus:nil];
     [self setBtnGuide:nil];
+    [self setBtnPassPerks:nil];
     
     [super viewDidUnload];
     
 }
 
+//-(void) viewWillLayoutSubviews
+//{
+//    [super viewWillLayoutSubviews];
+//    NSLog(@"RVC: viewWillLayoutSubviews");
+//}
 
--(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+-(void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
-
-//    [self changeOrientation:fromInterfaceOrientation];
+    [super viewWillTransitionToSize: size withTransitionCoordinator:coordinator];
+    NSLog(@"RVC: viewWillTransitionToSize");
+ 
+    [self changeOrientation:size];
     
 }
 
 
--(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-
-    [self changeOrientation:toInterfaceOrientation];
-    
-//    if ( UIInterfaceOrientationIsLandscape( toInterfaceOrientation ) )
-//    {
-//        // Add more padding to the buttons
-//    }
-//    else
-//    {
-//        // Squish the buttons together
-//    }
-    
-}
+//-(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+//{
+//
+////    [self changeOrientation:fromInterfaceOrientation];
+//    
+//}
 
 
--(void) changeOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+//-(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+//{
+//
+//    [self changeOrientation:toInterfaceOrientation];
+//    
+////    if ( UIInterfaceOrientationIsLandscape( toInterfaceOrientation ) )
+////    {
+////        // Add more padding to the buttons
+////    }
+////    else
+////    {
+////        // Squish the buttons together
+////    }
+//    
+//}
+
+
+
+
+-(void) changeOrientation:(CGSize) size
 {
 
 #if FUNCTION_NAMES_ON
-    NSLog(@"RVC - changeOrientation: %ld", (long)toInterfaceOrientation);
+    NSLog(@"RVC - changeOrientation: %@", NSStringFromCGSize(size) );
 #endif
+
+    NSLog(@"RVC - changeOrientation: %@", NSStringFromCGSize(size) );
     
-    CGFloat width;
-    
-    if ( UIInterfaceOrientationIsLandscape(toInterfaceOrientation) )
+    CGFloat width = size.width;
+    int padding;
+    int buttonWidth = 96;
+
+    // This is stupid...
+    int maxRow = 3;
+    if ( width > 400 )
     {
-        width = [[UIScreen mainScreen] bounds].size.height;
+        padding = (width - 4*buttonWidth)/5;
+        maxRow = 4;
     }
     else
     {
-        width = [[UIScreen mainScreen] bounds].size.width;
+        padding = (width - 3*buttonWidth)/4;
     }
     
+    NSArray *btnArray = [NSArray arrayWithObjects: self.btnNextToArrive, self.btnTrainView, self.btnTransitView, self.btnSystemStatus, self.btnFindNearestLocation, self.btnGuide, self.btnPassPerks, nil];
+    NSArray *lblArray = [NSArray arrayWithObjects: self.lblNextToArrive, self.lblTrainView, self.lblTransitView, self.lblSystemStatus, self.lblFindNeareset, self.lblGuide, self.lblPassPerks, nil];
+    
+    CGRect btnRect;
+    CGRect lblRect;
+    
+    int n = 0;
+    int r = 0;
+    int c = 0;
+    
+    CGRect btnOrigin = self.btnNextToArrive.frame;
+    
+    for (UIButton *button in btnArray)
+    {
 
-    int buttonWidth = 96;
+        UILabel *label = [lblArray objectAtIndex:n];
+        
+        btnRect = button.frame;
+        lblRect = label.frame;
+
+//        NSLog(@"Before: btnRect: (%5.3f, %5.3f), (%5.3f, %5.3f)", btnRect.origin.x, btnRect.origin.y, btnRect.size.width, btnRect.size.height);
+//        NSLog(@"Before: lblRect: (%5.3f, %5.3f), (%5.3f, %5.3f)", lblRect.origin.x, lblRect.origin.y, lblRect.size.width, lblRect.size.height);
+
+        
+//        btnRect.origin.x = (c+1)*padding + (r+1)*buttonWidth;
+        btnRect.origin.x = padding + (c)*(padding+buttonWidth);
+        btnRect.origin.y = r*(6+buttonWidth) + btnOrigin.origin.y;
     
-    int padding = (width - buttonWidth*3)/4;
+        lblRect.origin.x = btnRect.origin.x;
+        lblRect.origin.y = r*(6+buttonWidth) + (0.8f * buttonWidth);
     
-    // p = (w - 3*96) / 4
+//        NSLog(@"After : btnRect: (%5.3f, %5.3f), (%5.3f, %5.3f)", btnRect.origin.x, btnRect.origin.y, btnRect.size.width, btnRect.size.height);
+//        NSLog(@"After : lblRect: (%5.3f, %5.3f), (%5.3f, %5.3f)", lblRect.origin.x, lblRect.origin.y, lblRect.size.width, lblRect.size.height);
+        
+        [button setFrame: btnRect];
+        [label  setFrame: lblRect];
+        
+        if ( [button isEqual:self.btnFindNearestLocation] )
+        {
+            CGRect findRec = self.lblFindNeareset.frame;
+            findRec.origin.y -= 6;
+            [self.lblFindNeareset setFrame: findRec];
+        }
+
+        
+//        NSLog(@"n: %d, c: %d, r: %d",n,c,r);
+//        NSLog(@"");
+        
+        n++;
+
+        c = (n % maxRow);  // Progress if maxRow = 3; n = 0,1,2 0,1,2, when maxRow = 4; n = 0,1,2,3 0,1,2,3
+        r = (int)(n/maxRow);
+        
+        
+    }
+
     
-    CGRect btnNextToArriveRect = self.btnNextToArrive.frame;
-    CGRect lblNextToArriveRect = self.lblNextToArrive.frame;
+//    CGRect btnNextToArriveRect = self.btnNextToArrive.frame;
+//    CGRect lblNextToArriveRect = self.lblNextToArrive.frame;
+//    
+//    btnNextToArriveRect.origin.x = padding;
+//    lblNextToArriveRect.origin.x = btnNextToArriveRect.origin.x;
+//    [self.btnNextToArrive setFrame: btnNextToArriveRect];
+//    [self.lblNextToArrive setFrame: lblNextToArriveRect];
+//    
+//    
+//    CGRect btnTrainViewRect = self.btnTrainView.frame;
+//    CGRect lblTrainViewRect = self.lblTrainView.frame;
+//    
+//    btnTrainViewRect.origin.x = 2*padding+buttonWidth;
+//    lblTrainViewRect.origin.x = btnTrainViewRect.origin.x;
+//    [self.btnTrainView setFrame: btnTrainViewRect];
+//    [self.lblTrainView setFrame: lblTrainViewRect];
+//    
+//    
+//    CGRect btnTransitViewRect = self.btnTransitView.frame;
+//    CGRect lblTransitViewRect = self.lblTransitView.frame;
+//    
+//    btnTransitViewRect.origin.x = 3*padding + 2*buttonWidth;
+//    lblTransitViewRect.origin.x = btnTransitViewRect.origin.x;
+//    [self.btnTransitView setFrame: btnTransitViewRect];
+//    [self.lblTransitView setFrame: lblTransitViewRect];
+//    
+//    
+//    CGRect btnSystemStatusRect = self.btnSystemStatus.frame;
+//    CGRect lblSystemStatusRect = self.lblSystemStatus.frame;
+//    btnSystemStatusRect.origin.x = padding;
+//    lblSystemStatusRect.origin.x = btnSystemStatusRect.origin.x;
+//    
+//    [self.btnSystemStatus setFrame: btnSystemStatusRect];
+//    [self.lblSystemStatus setFrame: lblSystemStatusRect];
+//    
+//    CGRect btnNearestLocationRect = self.btnFindNearestLocation.frame;
+//    CGRect lblFindNearestRect     = self.lblFindNeareset.frame;
+//    CGRect lblLocationRect        = self.lblLocations.frame;
+//    btnNearestLocationRect.origin.x = 2*padding+buttonWidth;
+//    lblFindNearestRect.origin.x     = btnNearestLocationRect.origin.x;
+//    lblLocationRect.origin.x        = btnNearestLocationRect.origin.x;
+//    
+//    [self.btnFindNearestLocation setFrame: btnNearestLocationRect];
+//    [self.lblFindNeareset setFrame: lblFindNearestRect];
+//    [self.lblLocations setFrame: lblLocationRect];
+//    
+//    
+//    // Guide/Special Events
+//    CGRect btnGuideRect = self.btnGuide.frame;
+//    CGRect lblGuideRect = self.lblGuide.frame;
+//    
+//    btnGuideRect.origin.x = 3*padding+2*buttonWidth;
+//    lblGuideRect.origin.x = btnGuideRect.origin.x;
+//    [self.btnGuide setFrame: btnGuideRect];
+//    [self.lblGuide setFrame: lblGuideRect];
+//    
+//    
+//    // Pass Perks
+//    CGRect btnPassPerksRect = self.btnPassPerks.frame;
+//    CGRect lblPassPerksRect = self.lblPassPerks.frame;
+//    
+//    btnPassPerksRect.origin.x = padding;
+//    lblPassPerksRect.origin.x = btnPassPerksRect.origin.x;
+//    [self.btnPassPerks setFrame: btnPassPerksRect];
+//    [self.lblPassPerks setFrame: lblPassPerksRect];
     
-    btnNextToArriveRect.origin.x = padding;
-    lblNextToArriveRect.origin.x = btnNextToArriveRect.origin.x;
-    [self.btnNextToArrive setFrame: btnNextToArriveRect];
-    [self.lblNextToArrive setFrame: lblNextToArriveRect];
-    
-    CGRect btnTrainViewRect = self.btnTrainView.frame;
-    CGRect lblTrainViewRect = self.lblTrainView.frame;
-    
-    btnTrainViewRect.origin.x = 2*padding+buttonWidth;
-    lblTrainViewRect.origin.x = btnTrainViewRect.origin.x;
-    [self.btnTrainView setFrame: btnTrainViewRect];
-    [self.lblTrainView setFrame: lblTrainViewRect];
-    
-    CGRect btnTransitViewRect = self.btnTransitView.frame;
-    CGRect lblTransitViewRect = self.lblTransitView.frame;
-    
-    btnTransitViewRect.origin.x = 3*padding + 2*buttonWidth;
-    lblTransitViewRect.origin.x = btnTransitViewRect.origin.x;
-    [self.btnTransitView setFrame: btnTransitViewRect];
-    [self.lblTransitView setFrame: lblTransitViewRect];
-    
-    
-    CGRect btnSystemStatusRect = self.btnSystemStatus.frame;
-    CGRect lblSystemStatusRect = self.lblSystemStatus.frame;
-    btnSystemStatusRect.origin.x = padding;
-    lblSystemStatusRect.origin.x = btnSystemStatusRect.origin.x;
-    
-    [self.btnSystemStatus setFrame: btnSystemStatusRect];
-    [self.lblSystemStatus setFrame: lblSystemStatusRect];
-    
-    CGRect btnNearestLocationRect = self.btnFindNearestLocation.frame;
-    CGRect lblFindNearestRect     = self.lblFindNeareset.frame;
-    CGRect lblLocationRect        = self.lblLocations.frame;
-    btnNearestLocationRect.origin.x = 2*padding+buttonWidth;
-    lblFindNearestRect.origin.x = btnNearestLocationRect.origin.x;
-    lblLocationRect.origin.x = btnNearestLocationRect.origin.x;
-    
-    [self.btnFindNearestLocation setFrame: btnNearestLocationRect];
-    [self.lblFindNeareset setFrame: lblFindNearestRect];
-    [self.lblLocations setFrame: lblLocationRect];
-    
-    
-    CGRect btnGuideRect = self.btnGuide.frame;
-    CGRect lblGuideRect = self.lblGuide.frame;
-    
-    btnGuideRect.origin.x = 3*padding+2*buttonWidth;
-    lblGuideRect.origin.x = btnGuideRect.origin.x;
-    [self.btnGuide setFrame: btnGuideRect];
-    [self.lblGuide setFrame: lblGuideRect];
 }
 
 
@@ -1300,7 +1073,14 @@
 }
 
 
+
 - (IBAction)btnGuidePressed:(id)sender
+{
+    
+}
+
+
+- (IBAction)btnPassPerksPressed:(id)sender
 {
     
 }
@@ -1358,11 +1138,11 @@
         
         int numOfSeconds = (int)( ([words count] - [separatorIndexes count])/3.0 );  // Assume, on average, a person reads 3 words per second
         
-        // Maintain a minimum and maximum time
+        // Maintain a minimum and maximum time; increased max from 20 to 30 seconds
         if ( numOfSeconds < 10 )
             numOfSeconds = 10;
-        else if ( numOfSeconds > 20 )
-            numOfSeconds = 20;
+        else if ( numOfSeconds > 30 )
+            numOfSeconds = 30;
         
         //            NSLog(@"numOfSeconds: %d", numOfSeconds);
         

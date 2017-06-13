@@ -162,7 +162,7 @@
 //    filteredEmployee = [form.employee_description stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 //    
 //    
-//    NSString *urlString = @"http://www.septa.org/cs/comment/FormMail.cgi";
+//    NSString *urlString = @"https://www.septa.org/cs/comment/FormMail.cgi";
 //
 //    // Removed the ? from the beginning of POST string
 //    NSString *postString = [NSString stringWithFormat:@"recipient=cservice%%40septa.org&wl_tp=Empolyee%%2CComments&subject=Inquiry+from+www.septa.org&required=Name%%2Cemail%%2Cphone&Name=%@&phone=%@&email=%@&Incident+Date=%@&Boarding+Location=%@&route=%@&vehicle=%@&block=%@&Time+of+Incident=%@&Final+Destination=%@&Comment=%@&Employee=%@&Comments=%@&Mode=%@", filteredName, filteredPhone, filteredEmail, filteredDate, filteredLocation, filteredRoute, filteredVehicle, filteredBlock, filteredTime, filteredDestination, filteredCommentType, filteredEmployee, filteredComments, filteredMode];

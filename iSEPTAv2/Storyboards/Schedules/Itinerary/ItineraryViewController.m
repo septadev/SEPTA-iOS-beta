@@ -2706,29 +2706,6 @@
     _startENDButtonPressed = 0;
     
     
-//    if ( _currentDisplayDirection != [directionID intValue] )
-//    {
-//        _currentDisplayDirection = [directionID intValue];
-//        //        [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
-//    }
-    
-    
-    // If the Start Stop was just selected and the End Stop is still blank, reload the popup window for the end stops
-    //    if ( ( itinerary.startStopID != nil ) && ( [itinerary.endStopID intValue] == 0 ) )
-    //    {
-    //        [self performSegueWithIdentifier:@"EndStopTimesSegue" sender:nil];
-    //    }
-    
-    
-//    if ( itinerary.startStopName == NULL )
-//    {
-//        NSLog(@"We have a problem!");
-//    }
-    
-    // Reload just the first section, with it's one giant cell.
-//    [self.tableTrips reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-    
 }
 
 
@@ -2925,9 +2902,9 @@
     if ( [database hadError] )  // Basic DB error checking
     {
         
-        int errorCode = [database lastErrorCode];
-        NSString *errorMsg = [database lastErrorMessage];
-        
+//        int errorCode = [database lastErrorCode];
+//        NSString *errorMsg = [database lastErrorMessage];
+//    
 //        NSLog(@"SNFRTC - query failure, code: %d, %@", errorCode, errorMsg);
 //        NSLog(@"SNFRTC - query str: %@", queryStr);
         
@@ -3478,30 +3455,10 @@
     else
         _stillWaitingOnWebRequest = YES;
     
-
-    
-//    if ( [self.travelMode isEqualToString:@"Bus"] )  // Add MFL to this?  Need to investigate this further
-//    {
-//
-//        NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TransitView/%@",routeData.current.route_short_name];
-//        NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//        NSLog(@"DSTVC - getLatestBusJSONData -- api url: %@", webStringURL);
-//
-//        //    [SVProgressHUD showWithStatus:@"Retrieving data..."];
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
-//
-//            NSData *realtimeBusInfo = [NSData dataWithContentsOfURL:[NSURL URLWithString:webStringURL] ];
-//            [self performSelectorOnMainThread:@selector(addAnnotationsUsingJSONBusData:) withObject: realtimeBusInfo waitUntilDone:YES];
-//
-//        });
-//
-//    }
-//    else
-    
     
     if ( [self.travelMode isEqualToString:@"Rail"] )
     {
-        NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TrainView/"];
+        NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TrainView/"];
         NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 //        NSLog(@"IVC - loadLatestRailJSONData -- api url: %@", webStringURL);
         
@@ -3632,61 +3589,6 @@
     
     
     _stillWaitingOnWebRequest = NO;  // We're no longer waiting on the web request
-    
-    
-    //    // This method is called once the realtime positioning data has been returned via the API is stored in data
-    //    NSError *error;
-    //    NSDictionary *json = [NSJSONSerialization JSONObjectWithData: returnedData options:kNilOptions error:&error];
-    //    
-    //    if ( error != nil )
-    //        return;  // Something bad happened, so just return.
-    //    
-    //    NSMutableArray *annotationsToRemove = [[mapView annotations] mutableCopy];  // We want to remove all the annotations minus one
-    //    [annotationsToRemove removeObject: [mapView userLocation] ];         // Keep the userLocation annotation on the map
-    //    [mapView removeAnnotations: annotationsToRemove];                    // All annotations remaining in the array get removed
-    //    
-    //    
-    //    for (NSDictionary *railData in json)
-    //    {
-    //        
-    //        //        NSString *trainno = [railData objectForKey:@"trainno"];
-    //        //        if ( [trainNoArray containsObject:trainno] )
-    //        //        {
-    //        //            NSLog(@"Found %@ in JSON stream", trainno);
-    //        //        }
-    //        //        else
-    //        //        {
-    //        //            NSLog(@"Could not find %@ in JSON stream", trainno);
-    //        //        }
-    //        
-    //        
-    //        // Loop through all returned bus info...
-    //        NSNumber *latitude   = [NSNumber numberWithDouble: [[railData objectForKey:@"lat"] doubleValue] ];
-    //        NSNumber *longtitude = [NSNumber numberWithDouble: [[railData objectForKey:@"lon"] doubleValue] ];
-    //        
-    //        CLLocationCoordinate2D newCoord = CLLocationCoordinate2DMake([latitude doubleValue], [longtitude doubleValue]);
-    //        
-    //        mapAnnotation *annotation  = [[mapAnnotation alloc] initWithCoordinate: newCoord];
-    //        NSString *annotationTitle;
-    //        if ( [[railData objectForKey:@"late"] intValue] == 0 )
-    //            annotationTitle  = [NSString stringWithFormat: @"Train #%@ (on time)", [railData objectForKey:@"trainno"] ];
-    //        else
-    //            annotationTitle  = [NSString stringWithFormat: @"Train #%@ (%@ min late)", [railData objectForKey:@"trainno"], [railData objectForKey:@"late"]];
-    //        
-    //        [annotation setCurrentSubTitle: [NSString stringWithFormat: @"%@ to %@", [railData objectForKey:@"SOURCE"], [railData objectForKey:@"dest"] ] ];
-    //        [annotation setCurrentTitle   : annotationTitle];
-    //        
-    //        if ( [[railData objectForKey:@"trainno"] intValue] % 2)
-    //            [annotation setDirection      : @"TrainSouth"];  // Modulus returns 1 on odd
-    //        else
-    //            [annotation setDirection      : @"TrainNorth"];  // Modulus returns 0 on even
-    //        
-    //        
-    //        [mapView addAnnotation: annotation];
-    //        
-    //    }
-    //    
-    //    NSLog(@"DSTVC - addAnntoationsUsingJSONRailData -- added %d annotations", [json count]);
     
     
 }
@@ -3831,32 +3733,6 @@
 #if FUNCTION_NAMES_ON
     NSLog(@"IVC - updateFavoriteStatus");
 #endif
-
-    
-    // Compare the list of Favorites to that of _itinerary
-    
-//    NSArray *tempArr = [_tableData objectForSectionWithTitle:@"Favorites"];
-//    if (tempArr == nil)
-//    {
-//        
-//        if ( [itinerary.startStopName isEqualToString:DEFAULT_MESSAGE] && [itinerary.endStopName isEqualToString:DEFAULT_MESSAGE] )
-//            _favoriteStatus = kNextToArriveFavoriteSubtitleStatusUnknown;  // If either are not set, set status to unknown
-//        else
-//            _favoriteStatus = kNextToArriveFavoriteSubtitleNotAdded;  // If both have data, set not added for now.  We'll be checked for Added below.
-//        
-//    }
-//    
-//    
-//    for (NTASaveObject *sObject in [_tableData objectForSectionWithTitle:@"Favorites"] )
-//    {
-//        
-//        if ( [itinerary.startStopName isEqualToString: [sObject startStopName] ] && [itinerary.endStopName isEqualToString: [sObject endStopName] ] )
-//        {
-//            _favoriteStatus = kNextToArriveFavoriteSubtitleAdded;
-//            break;  // Once a match is found, no reason to continue searching
-//        }
-//        
-//    }
     
     
     // --==  Update Favorites subtitle
@@ -3997,47 +3873,8 @@
     
     [_alertsAPI clearAllRoutes];
     
-//    NSMutableDictionary *shortToAlertNameLookUp = [[NSMutableDictionary alloc] init];
-//    
-////    [shortToAlertNameLookUp setObject:@"AlertName" forKey:@"ShortName"];
-//    [shortToAlertNameLookUp setObject:@"che" forKey:@"CHE"];
-//    [shortToAlertNameLookUp setObject:@"chw" forKey:@"CHW"];
-//    [shortToAlertNameLookUp setObject:@"cyn" forKey:@"CYN"];
-//
-//    [shortToAlertNameLookUp setObject:@"fxc" forKey:@"FOX"];
-//    [shortToAlertNameLookUp setObject:@"landdoy" forKey:@"LAN"];
-//    [shortToAlertNameLookUp setObject:@"landdoy" forKey:@"DOY"];
-//    [shortToAlertNameLookUp setObject:@"med" forKey:@"MED"];
-//    
-//    [shortToAlertNameLookUp setObject:@"nor" forKey:@"NOR"];
-//    [shortToAlertNameLookUp setObject:@"pao" forKey:@"PAO"];
-//    [shortToAlertNameLookUp setObject:@"trent" forKey:@"TRE"];
-//
-//    [shortToAlertNameLookUp setObject:@"warm" forKey:@"WAR"];
-//    [shortToAlertNameLookUp setObject:@"wilm" forKey:@"WIL"];
-//    [shortToAlertNameLookUp setObject:@"wtren" forKey:@"WTR"];
-//    
-//    [shortToAlertNameLookUp setObject:@"gc" forKey:@"GC"];
-//
-//    NSString *alertName = [shortToAlertNameLookUp objectForKey: self.routeData.route_short_name];
-    
-//    if ( alertName == nil  && [self.routeData.route_short_name isEqualToString:@"GC"] )
-//    {
-//        [_alertsAPI addRoute: [shortToAlertNameLookUp objectForKey:@"WAR"] ];
-//        [_alertsAPI addRoute: [shortToAlertNameLookUp objectForKey:@"LAN"] ];
-//        [_alertsAPI addRoute: [shortToAlertNameLookUp objectForKey:@"WTR"] ];
-//    }
-//    else
-//        [_alertsAPI addRoute: alertName];
-
-//    if ( alertName != nil )
-//        [_alertsAPI addRoute: alertName];
-//    else
-//        [_alertsAPI addRoute: _routeData.route_short_name];
-    
     [_alertsAPI addRoute: _routeData.route_short_name ofModeType:[_routeData.route_type intValue] ];
     [_alertsAPI fetchAlert];
-
     
 }
 

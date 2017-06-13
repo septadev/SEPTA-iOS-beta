@@ -550,7 +550,7 @@
 -(void) getElevatorData
 {
  
-    NSString *elevatorURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/elevator/"];
+    NSString *elevatorURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/elevator/"];
     NSString *elevatorWebURL = [elevatorURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
@@ -579,7 +579,7 @@
         return;
     }
     
-    NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/Alerts/get_alert_data.php?req1=%@", [_ssObject route_id] ];
+    NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/Alerts/get_alert_data.php?req1=%@", [_ssObject route_id] ];
     
     NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"SAVC - getAlertData -- api url: %@", webStringURL);
@@ -647,20 +647,20 @@
     {
         SystemAlertObject *saObject = [[SystemAlertObject alloc] init];
         
-        [saObject setRoute_id:   [data objectForKey:@"route_id"] ];
-        [saObject setRoute_name: [data objectForKey:@"route_name"] ];
+        [saObject setRoute_id:   [data objectForKeyOrNil:@"route_id"] ];
+        [saObject setRoute_name: [data objectForKeyOrNil:@"route_name"] ];
         
-        [saObject setCurrent_message:  [data objectForKey:@"current_message"] ];
-        [saObject setAdvisory_message: [data objectForKey:@"advisory_message"] ];
+        [saObject setCurrent_message:  [data objectForKeyOrNil:@"current_message"] ];
+        [saObject setAdvisory_message: [data objectForKeyOrNil:@"advisory_message"] ];
         
-        [saObject setDetour_message:        [data objectForKey:@"detour_message"] ];
-        [saObject setDetour_start_location: [data objectForKey:@"detour_start_location"] ];
+        [saObject setDetour_message:        [data objectForKeyOrNil:@"detour_message"] ];
+        [saObject setDetour_start_location: [data objectForKeyOrNil:@"detour_start_location"] ];
         
-        [saObject setDetour_start_date_time: [data objectForKey:@"detour_start_date_time"] ];
-        [saObject setDetour_end_date_time:   [data objectForKey:@"detour_end_date_time"] ];
+        [saObject setDetour_start_date_time: [data objectForKeyOrNil:@"detour_start_date_time"] ];
+        [saObject setDetour_end_date_time:   [data objectForKeyOrNil:@"detour_end_date_time"] ];
         
-        [saObject setDetour_reason: [data objectForKey:@"detour_reason"] ];
-        [saObject setLast_updated:  [data objectForKey:@"last_updated"] ];
+        [saObject setDetour_reason: [data objectForKeyOrNil:@"detour_reason"] ];
+        [saObject setLast_updated:  [data objectForKeyOrNil:@"last_updated"] ];
         
         [_alertData addObject: saObject];
     }
@@ -717,7 +717,7 @@
     NSMutableString *html;
 
     
-    html = [NSMutableString stringWithString:@"<html><style>body { font-family:\"Trebuchet MS\"; } tr:nth-child(2n+1) {background-color: #ddd;} </style><head><base href='http://www.septa.org/'><title>TITLE</title></head>"];
+    html = [NSMutableString stringWithString:@"<html><style>body { font-family:\"Trebuchet MS\"; } tr:nth-child(2n+1) {background-color: #ddd;} </style><head><base href='https://www.septa.org/'><title>TITLE</title></head>"];
 
 //    SystemAlertObject *saObject = [_alertData objectAtIndex:0];
 

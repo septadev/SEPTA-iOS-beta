@@ -154,7 +154,7 @@
     if ( [self.travelMode isEqualToString:@"Bus"] )  // Add MFL to this?  Need to investigate this further
     {
         
-        NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TransitView/%@",itinerary.routeShortName];
+        NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TransitView/%@",itinerary.routeShortName];
         NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSLog(@"DSTVC - getLatestBusJSONData -- api url: %@", webStringURL);
         

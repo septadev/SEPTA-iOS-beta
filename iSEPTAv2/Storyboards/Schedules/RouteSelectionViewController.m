@@ -1570,7 +1570,7 @@
         queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
     }
     
-//    NSLog(@"BSRVC - getUnfilteredBusRoutes, queryStr: %@", queryStr);
+    NSLog(@"BSRVC - getUnfilteredBusRoutes, queryStr: %@", queryStr);
     
     //    NSDate *startTime = [NSDate date];
     //    NSDate *endTime;
@@ -2169,8 +2169,8 @@
     
     
 
-    NSString *stringURL = @"http://www3.septa.org/api/Alerts/get_alert_data.php?req1=generic";
-//    NSString *stringURL = @"http://www3.septa.org/beta/agga/Alerts/gga.php";
+    NSString *stringURL = @"https://www3.septa.org/api/Alerts/get_alert_data.php?req1=generic";
+//    NSString *stringURL = @"https://www3.septa.org/beta/agga/Alerts/gga.php";
     
     NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 //    NSLog(@"RSVC - getGenericAlertDetails -- api url: %@", webStringURL);
@@ -2223,7 +2223,7 @@
     //    [alertLineDict setObject:[NSArray arrayWithObjects:@"rr_route_gc",@"rr_route_landdoy", nil] forKey:@"Lansdale/Doylestown"];
     
     
-    NSString* stringURL = @"http://www3.septa.org/api/Alerts/";
+    NSString* stringURL = @"https://www3.septa.org/api/Alerts/";
     
     NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 //    NSLog(@"RSVC - getMainAlerts -- api url: %@", webStringURL);

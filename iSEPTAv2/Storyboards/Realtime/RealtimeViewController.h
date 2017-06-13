@@ -84,9 +84,14 @@ typedef NS_ENUM(NSInteger, SecondMenuAlertImageCycle)
 @property (weak, nonatomic) IBOutlet UIButton *btnFindNearestLocation;
 @property (weak, nonatomic) IBOutlet UIButton *btnGuide;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnPassPerks;
+
 @property (weak, nonatomic) IBOutlet UILabel *lblSystemStatus;
 @property (weak, nonatomic) IBOutlet UILabel *lblFindNeareset;
 @property (weak, nonatomic) IBOutlet UILabel *lblLocations;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblPassPerks;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *lblGuide;
 

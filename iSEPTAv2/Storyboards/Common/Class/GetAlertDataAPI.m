@@ -195,7 +195,7 @@
         
         
         
-        NSString *url = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/Alerts/get_alert_data.php?req1=%@", alertRouteName];
+        NSString *url = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/Alerts/get_alert_data.php?req1=%@", alertRouteName];
 //        NSLog(@"GetAlertDataAPI - url: %@", url);
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] ];
         
@@ -270,7 +270,7 @@
         
         
         
-        NSString *url = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/Alerts/get_alert_data.php?req1=%@", alertRouteName];
+        NSString *url = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/Alerts/get_alert_data.php?req1=%@", alertRouteName];
 //        NSLog(@"GetAlertDataAPI - url: %@", url);
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] ];
         
@@ -308,21 +308,20 @@
     
 }
 
--(NSString *)convertHTML:(NSString *)html {
++(NSString *)convertHTML:(NSString *)html {
     
     NSScanner *myScanner;
     NSString *text = nil;
     myScanner = [NSScanner scannerWithString:html];
     
-    while ([myScanner isAtEnd] == NO) {
-        
+    while ([myScanner isAtEnd] == NO)
+    {
         [myScanner scanUpToString:@"<" intoString:NULL] ;
-        
         [myScanner scanUpToString:@">" intoString:&text] ;
         
         html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>", text] withString:@""];
     }
-    //
+    
     html = [html stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     return html;
@@ -344,20 +343,20 @@
         {
             SystemAlertObject *saObject = [[SystemAlertObject alloc] init];
             
-            [saObject setRoute_id:   [data objectForKey:@"route_id"] ];
-            [saObject setRoute_name: [data objectForKey:@"route_name"] ];
+            [saObject setRoute_id:   [data objectForKeyOrNil:@"route_id"] ];
+            [saObject setRoute_name: [data objectForKeyOrNil:@"route_name"] ];
             
-            [saObject setCurrent_message:  [self convertHTML: [data objectForKey:@"current_message"] ] ];
-            [saObject setAdvisory_message: [data objectForKey:@"advisory_message"] ];
+            [saObject setCurrent_message:  [GetAlertDataAPI convertHTML: [data objectForKeyOrNil:@"current_message"] ] ];
+            [saObject setAdvisory_message: [data objectForKeyOrNil:@"advisory_message"] ];
             
-            [saObject setDetour_message:        [data objectForKey:@"detour_message"] ];
-            [saObject setDetour_start_location: [data objectForKey:@"detour_start_location"] ];
+            [saObject setDetour_message:        [data objectForKeyOrNil:@"detour_message"] ];
+            [saObject setDetour_start_location: [data objectForKeyOrNil:@"detour_start_location"] ];
             
-            [saObject setDetour_start_date_time: [data objectForKey:@"detour_start_date_time"] ];
-            [saObject setDetour_end_date_time:   [data objectForKey:@"detour_end_date_time"] ];
+            [saObject setDetour_start_date_time: [data objectForKeyOrNil:@"detour_start_date_time"] ];
+            [saObject setDetour_end_date_time:   [data objectForKeyOrNil:@"detour_end_date_time"] ];
             
-            [saObject setDetour_reason: [data objectForKey:@"detour_reason"] ];
-            [saObject setLast_updated:  [data objectForKey:@"last_updated"] ];
+            [saObject setDetour_reason: [data objectForKeyOrNil:@"detour_reason"] ];
+            [saObject setLast_updated:  [data objectForKeyOrNil:@"last_updated"] ];
             
             
             [alertsArr addObject:saObject];

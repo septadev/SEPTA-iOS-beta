@@ -24,6 +24,7 @@
     AFHTTPRequestOperation *_jsonSystemOp;
     
     NSInteger _currentServiceID;
+    NSArray  *_currentServiceIDs;
 }
 
 
@@ -205,7 +206,8 @@
     }
     else
     {
-        [sHours statusForTime:now andServiceID: (int)_currentServiceID];
+//        [sHours statusForTime:now andServiceID: (int)_currentServiceID];
+        [sHours statusForTime:now andServiceIDs:_currentServiceIDs];
         [serviceCell setServiceHours: sHours];
     }
 
@@ -303,11 +305,68 @@
 //     */
 //}
 
+-(NSArray*) getServiceIDs
+{
+    
+    //    NSLog(@"filePath: %@", [GTFSCommon filePath]);
+    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
+    
+    if ( ![database open] )
+    {
+        [database close];
+        return nil;
+    }
+    
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
+    NSInteger weekday = [comps weekday];  // Sunday is (1), Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
+    
+    int dayOfWeek;
+    dayOfWeek = pow(2,(7-weekday) );
+    
+    NSString *queryStr = [NSString stringWithFormat:@"SELECT service_id, days FROM calendarDB WHERE (days & %d)", dayOfWeek];
+    
+    queryStr = [queryStr stringByReplacingOccurrencesOfString:@"DB" withString:@"_bus"];
+    
+    FMResultSet *results = [database executeQuery: queryStr];
+    if ( [database hadError] )  // Check for errors
+    {
+        
+        int errorCode = [database lastErrorCode];
+        NSString *errorMsg = [database lastErrorMessage];
+        
+        NSLog(@"ITVC - query failure, code: %d, %@", errorCode, errorMsg);
+        NSLog(@"ITVC - query str: %@", queryStr);
+        
+        return nil;  // If an error occurred, there's nothing else to do but exit
+        
+    } // if ( [database hadError] )
+    
+    NSInteger service_id = 0;
+    NSMutableArray *sids = [NSMutableArray array];
+    
+    while ( [results next] )
+    {
+        service_id = [results intForColumn:@"service_id"];
+        [sids addObject:[NSString stringWithFormat:@"%ld",(long)service_id]];
+    }
+    
+    return [sids copy];
+    
+//    NSInteger service_id = 0;
+//    [results next];
+//    
+//    service_id = [results intForColumn:@"service_id"];
+//    
+//    return (NSInteger)service_id;
+    
+}
+
     
 -(NSInteger) getServiceID
 {
     
-    NSLog(@"filePath: %@", [GTFSCommon filePath]);
+//    NSLog(@"filePath: %@", [GTFSCommon filePath]);
     FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
     
     if ( ![database open] )
@@ -379,6 +438,7 @@
     NSString *queryStr; // = [NSString stringWithFormat: @"SELECT route_id,service_id, MIN(min) as min, MAX(max) as max FROM serviceHours WHERE (service_id & %d) GROUP BY route_id, service_id", currentServiceID];
     
     queryStr = @"SELECT s.route_id, r.route_type, s.service_id, MIN(min) as min, MAX(max) as max FROM serviceHours s JOIN routes_bus r ON r.route_short_name = s.route_short_name GROUP BY s.route_id, service_id ORDER BY s.route_id";
+    NSLog(@"TVVC: getBusRouteInfo: %@", queryStr);
     
     FMResultSet *results = [database executeQuery: queryStr];
     if ( [database hadError] )  // Check for errors
@@ -410,12 +470,6 @@
         
         ServiceHours *sHours;
         NSString *route_id  = [results stringForColumn:@"route_id"];
-        NSLog(@"TVVC - route_id: %@", route_id);
-        
-        if ( [route_id isEqualToString:@"101B"] )
-        {
-            NSLog(@"Done");
-        }
         
         if ( [sPtr.route_id isEqualToString:route_id] )
         {
@@ -446,16 +500,10 @@
         
     }
     
-//    NSLog(@"Done!");
+    _currentServiceIDs  = [self getServiceIDs];
+    _currentServiceID   = [self getServiceID];
     
     
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    [dateFormatter setDateFormat:@"e"];
-//    int day = [[dateFormatter stringFromDate: [NSDate date] ] intValue];
-    
-    // What if, some time in the future, a bus only has service on Friday?
-    _currentServiceID = [self getServiceID];
-
     // _currenteServiceID is used in tableView cellRowPath
     
     
@@ -623,7 +671,7 @@
         return;  // Don't bother continuing if no internet connection is available
     
     
-    NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/Alerts/"];
+    NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/Alerts/"];
     
     NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"TVVC - getSystemStatus -- api url: %@", webStringURL);

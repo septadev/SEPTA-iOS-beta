@@ -29,7 +29,7 @@
 	// Do any additional setup after loading the view.
     
     
-    NSURL *url = [[NSURL alloc] initWithString:@"http://www.septa.org/m/fares/"];
+    NSURL *url = [[NSURL alloc] initWithString:@"https://www.septa.org/m/fares/"];
     [self.webView loadRequest: [NSURLRequest requestWithURL: url] ];
     [self.webView setHidden:NO];
     

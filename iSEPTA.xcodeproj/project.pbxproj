@@ -40,6 +40,13 @@
 		271DA8651808A0B4009ED7D6 /* septaIcon-100px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 271DA85D1808A0B4009ED7D6 /* septaIcon-100px@2x.png */; };
 		271DA8661808A0B4009ED7D6 /* septaIcon-114px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 271DA85E1808A0B4009ED7D6 /* septaIcon-114px@2x.png */; };
 		272037D718F6FE6800730370 /* GTFSFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 272037D618F6FE6800730370 /* GTFSFunctions.m */; };
+		272464A21D789E0700FE73F5 /* RT_PassPerks@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 272464A11D789E0700FE73F5 /* RT_PassPerks@2x.png */; };
+		272464A41D789E1700FE73F5 /* RT_PassPerks.png in Resources */ = {isa = PBXBuildFile; fileRef = 272464A31D789E1700FE73F5 /* RT_PassPerks.png */; };
+		272464A81D78D9DB00FE73F5 /* PassPerksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272464A71D78D9DB00FE73F5 /* PassPerksViewController.m */; };
+		2727C0BB1E73122C0002B07E /* NSDictionary+ObjectKeyNil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2727C0BA1E73122C0002B07E /* NSDictionary+ObjectKeyNil.m */; };
+		2727C0BD1E7325A30002B07E /* 311.kml in Resources */ = {isa = PBXBuildFile; fileRef = 2727C0BC1E7325A30002B07E /* 311.kml */; };
+		2727C0C01E79AF3C0002B07E /* 15T.kml in Resources */ = {isa = PBXBuildFile; fileRef = 2727C0BE1E79AF3C0002B07E /* 15T.kml */; };
+		2727C0C11E79AF3C0002B07E /* 15B.kml in Resources */ = {isa = PBXBuildFile; fileRef = 2727C0BF1E79AF3C0002B07E /* 15B.kml */; };
 		2729760B1799A95000DB2580 /* NextToArriveStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2729760A1799A95000DB2580 /* NextToArriveStoryboard.storyboard */; };
 		2729760E1799AACC00DB2580 /* NextToArriveTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2729760D1799AACC00DB2580 /* NextToArriveTableViewController.m */; };
 		27297644179D9ED500DB2580 /* SEPTATitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 27297643179D9ED500DB2580 /* SEPTATitle.m */; };
@@ -270,6 +277,9 @@
 		279A89B51BB20D0800A9F664 /* R.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A892E1BB20D0800A9F664 /* R.kml */; };
 		279A89B61BB20D0800A9F664 /* regionalrail.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A892F1BB20D0800A9F664 /* regionalrail.kml */; };
 		279A89B71BB20D0800A9F664 /* XH.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279A89301BB20D0800A9F664 /* XH.kml */; };
+		279D97F81D92ED3E0047A4C5 /* 45.kml in Resources */ = {isa = PBXBuildFile; fileRef = 279D97F71D92ED3E0047A4C5 /* 45.kml */; };
+		279D97FA1D92F2C10047A4C5 /* passPerks@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 279D97F91D92F2C10047A4C5 /* passPerks@2x.png */; };
+		279D97FC1D92F2C80047A4C5 /* passPerks.png in Resources */ = {isa = PBXBuildFile; fileRef = 279D97FB1D92F2C80047A4C5 /* passPerks.png */; };
 		279E3C1A17DE4374008CC7F8 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279E3C1917DE4374008CC7F8 /* SettingsViewController.m */; };
 		279E3C1D17DE4EAD008CC7F8 /* LocationObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 279E3C1C17DE4EAD008CC7F8 /* LocationObject.m */; };
 		279E3C2517E0F16B008CC7F8 /* AttributionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279E3C2417E0F16B008CC7F8 /* AttributionsViewController.m */; };
@@ -763,6 +773,15 @@
 		271DA85E1808A0B4009ED7D6 /* septaIcon-114px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "septaIcon-114px@2x.png"; sourceTree = "<group>"; };
 		272037D518F6FE6800730370 /* GTFSFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTFSFunctions.h; path = Subclasses/GTFS/GTFSFunctions.h; sourceTree = "<group>"; };
 		272037D618F6FE6800730370 /* GTFSFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTFSFunctions.m; path = Subclasses/GTFS/GTFSFunctions.m; sourceTree = "<group>"; };
+		272464A11D789E0700FE73F5 /* RT_PassPerks@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RT_PassPerks@2x.png"; sourceTree = "<group>"; };
+		272464A31D789E1700FE73F5 /* RT_PassPerks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RT_PassPerks.png; sourceTree = "<group>"; };
+		272464A61D78D9DB00FE73F5 /* PassPerksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PassPerksViewController.h; path = Storyboards/Realtime/PassPerks/PassPerksViewController.h; sourceTree = "<group>"; };
+		272464A71D78D9DB00FE73F5 /* PassPerksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PassPerksViewController.m; path = Storyboards/Realtime/PassPerks/PassPerksViewController.m; sourceTree = "<group>"; };
+		2727C0B91E73122C0002B07E /* NSDictionary+ObjectKeyNil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+ObjectKeyNil.h"; path = "Categories/NSDictionary+ObjectKeyNil.h"; sourceTree = "<group>"; };
+		2727C0BA1E73122C0002B07E /* NSDictionary+ObjectKeyNil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+ObjectKeyNil.m"; path = "Categories/NSDictionary+ObjectKeyNil.m"; sourceTree = "<group>"; };
+		2727C0BC1E7325A30002B07E /* 311.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 311.kml; path = kml/311.kml; sourceTree = "<group>"; };
+		2727C0BE1E79AF3C0002B07E /* 15T.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 15T.kml; path = kml/15T.kml; sourceTree = "<group>"; };
+		2727C0BF1E79AF3C0002B07E /* 15B.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 15B.kml; path = kml/15B.kml; sourceTree = "<group>"; };
 		2729760A1799A95000DB2580 /* NextToArriveStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = NextToArriveStoryboard.storyboard; path = Storyboards/Realtime/NextToArrive/NextToArriveStoryboard.storyboard; sourceTree = "<group>"; };
 		2729760C1799AACC00DB2580 /* NextToArriveTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NextToArriveTableViewController.h; path = Storyboards/Realtime/NextToArrive/NextToArriveTableViewController.h; sourceTree = "<group>"; };
 		2729760D1799AACC00DB2580 /* NextToArriveTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NextToArriveTableViewController.m; path = Storyboards/Realtime/NextToArrive/NextToArriveTableViewController.m; sourceTree = "<group>"; };
@@ -1074,6 +1093,9 @@
 		279A892F1BB20D0800A9F664 /* regionalrail.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = regionalrail.kml; path = kml/regionalrail.kml; sourceTree = "<group>"; };
 		279A89301BB20D0800A9F664 /* XH.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = XH.kml; path = kml/XH.kml; sourceTree = "<group>"; };
 		279AD02F164869350079715E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		279D97F71D92ED3E0047A4C5 /* 45.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 45.kml; path = kml/45.kml; sourceTree = "<group>"; };
+		279D97F91D92F2C10047A4C5 /* passPerks@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "passPerks@2x.png"; sourceTree = "<group>"; };
+		279D97FB1D92F2C80047A4C5 /* passPerks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = passPerks.png; sourceTree = "<group>"; };
 		279E3C1817DE4374008CC7F8 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Storyboards/Settings/SettingsViewController.h; sourceTree = "<group>"; };
 		279E3C1917DE4374008CC7F8 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Storyboards/Settings/SettingsViewController.m; sourceTree = "<group>"; };
 		279E3C1B17DE4EAD008CC7F8 /* LocationObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationObject.h; path = Storyboards/Common/LocationObject.h; sourceTree = "<group>"; };
@@ -1744,6 +1766,15 @@
 			name = Test;
 			sourceTree = "<group>";
 		};
+		272464A51D78D8FA00FE73F5 /* PassPerks */ = {
+			isa = PBXGroup;
+			children = (
+				272464A61D78D9DB00FE73F5 /* PassPerksViewController.h */,
+				272464A71D78D9DB00FE73F5 /* PassPerksViewController.m */,
+			);
+			name = PassPerks;
+			sourceTree = "<group>";
+		};
 		272976061799A8D100DB2580 /* NextToArrive */ = {
 			isa = PBXGroup;
 			children = (
@@ -1763,6 +1794,7 @@
 				2700AE7318F4961000933C2E /* Dashboard */,
 				27E0688F1799A41800BA7A92 /* RealtimeViewController.h */,
 				27E068901799A41800BA7A92 /* RealtimeViewController.m */,
+				272464A51D78D8FA00FE73F5 /* PassPerks */,
 				84D12B4E17E1F0850079A8D7 /* Mobile */,
 				272976061799A8D100DB2580 /* NextToArrive */,
 				27DBA5FB17A97F2600118225 /* TrainView */,
@@ -2267,6 +2299,7 @@
 		27AEF7A5188EC6C0004EC5E0 /* HD */ = {
 			isa = PBXGroup;
 			children = (
+				279D97F91D92F2C10047A4C5 /* passPerks@2x.png */,
 				27AEF7A6188EC6C0004EC5E0 /* commentsBack@2x.png */,
 				27AEF7A7188EC6C0004EC5E0 /* faresBack@2x.png */,
 				27AEF7A8188EC6C0004EC5E0 /* tipsBack@2x.png */,
@@ -2279,6 +2312,7 @@
 		27AEF7AB188EC6C0004EC5E0 /* SD */ = {
 			isa = PBXGroup;
 			children = (
+				279D97FB1D92F2C80047A4C5 /* passPerks.png */,
 				27AEF7AC188EC6C0004EC5E0 /* commentsBack.png */,
 				27AEF7AD188EC6C0004EC5E0 /* faresBack.png */,
 				27AEF7AE188EC6C0004EC5E0 /* tipsBack.png */,
@@ -2605,6 +2639,8 @@
 				278F5E871A7836DA004D6716 /* UIImage+WithText.m */,
 				27328EA316DB854E00551B92 /* NSString+HTML.h */,
 				27328EA416DB854E00551B92 /* NSString+HTML.m */,
+				2727C0B91E73122C0002B07E /* NSDictionary+ObjectKeyNil.h */,
+				2727C0BA1E73122C0002B07E /* NSDictionary+ObjectKeyNil.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -3042,6 +3078,7 @@
 			children = (
 				27CE47851B94C27D0000C6D6 /* Grayscale */,
 				84D05C191B936D8E00E30E20 /* RT_SpecialEvents@2x.png */,
+				272464A11D789E0700FE73F5 /* RT_PassPerks@2x.png */,
 				8418EC5E17FEF6BB003607D1 /* RT_Find-Loc@2x.png */,
 				8418EC5F17FEF6BB003607D1 /* RT_NTA@2x.png */,
 				8418EC6017FEF6BB003607D1 /* RT_System-Status@2x.png */,
@@ -3057,6 +3094,7 @@
 			children = (
 				27CE47861B94C2840000C6D6 /* Grayscale */,
 				84D05C1B1B936DA800E30E20 /* RT_SpecialEvents.png */,
+				272464A31D789E1700FE73F5 /* RT_PassPerks.png */,
 				8418EC6517FEF6BB003607D1 /* RT_Find-Loc.png */,
 				8418EC6617FEF6BB003607D1 /* RT_NTA.png */,
 				8418EC6717FEF6BB003607D1 /* RT_System-Status.png */,
@@ -3635,9 +3673,13 @@
 		8435FAEA1BB047F8002A8AC4 /* kml */ = {
 			isa = PBXGroup;
 			children = (
+				2727C0BE1E79AF3C0002B07E /* 15T.kml */,
+				2727C0BF1E79AF3C0002B07E /* 15B.kml */,
+				2727C0BC1E7325A30002B07E /* 311.kml */,
 				279A88AA1BB20D0800A9F664 /* 1.kml */,
 				279A88AB1BB20D0800A9F664 /* 2.kml */,
 				279A88AC1BB20D0800A9F664 /* 3.kml */,
+				279D97F71D92ED3E0047A4C5 /* 45.kml */,
 				279A88AD1BB20D0800A9F664 /* 4.kml */,
 				279A88AE1BB20D0800A9F664 /* 5.kml */,
 				279A88AF1BB20D0800A9F664 /* 7.kml */,
@@ -3874,7 +3916,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = SEPTA;
 				TargetAttributes = {
 					568FA4791535C0E0009345F5 = {
@@ -3979,6 +4021,7 @@
 				27BE51CC1836852700507EAD /* handicap_blu.png in Resources */,
 				8418EDA117FEF6BD003607D1 /* blankGrey-BG@2x.png in Resources */,
 				279A89741BB20D0800A9F664 /* 78.kml in Resources */,
+				279D97FA1D92F2C10047A4C5 /* passPerks@2x.png in Resources */,
 				8418ED6E17FEF6BD003607D1 /* septaIcon-152@2x.png in Resources */,
 				8418EDD917FEF6BD003607D1 /* SEPTA_logo@2x.png in Resources */,
 				279A89721BB20D0800A9F664 /* 75.kml in Resources */,
@@ -4021,6 +4064,7 @@
 				8418EDFD17FEF6BD003607D1 /* trainView-RRL-Blue@2x.png in Resources */,
 				8418EDE017FEF6BD003607D1 /* Sys-Status-MFLBSLNHSL-Click.png in Resources */,
 				8418EE2D17FEF6BD003607D1 /* MFL_Owl.png in Resources */,
+				272464A21D789E0700FE73F5 /* RT_PassPerks@2x.png in Resources */,
 				8418EDC617FEF6BD003607D1 /* Distance@2x.png in Resources */,
 				8418EDAC17FEF6BD003607D1 /* fareIcon.png in Resources */,
 				8418EE0817FEF6BD003607D1 /* transitView-MFL_owl@2x.png in Resources */,
@@ -4075,6 +4119,7 @@
 				8418EDB517FEF6BD003607D1 /* Favorite.png in Resources */,
 				279A89671BB20D0800A9F664 /* 59.kml in Resources */,
 				8418EE5517FEF6BD003607D1 /* Schedule_RRL_small@2x.png in Resources */,
+				272464A41D789E1700FE73F5 /* RT_PassPerks.png in Resources */,
 				279A898F1BB20D0800A9F664 /* 112.kml in Resources */,
 				279A894E1BB20D0800A9F664 /* 31.kml in Resources */,
 				279A89691BB20D0800A9F664 /* 61.kml in Resources */,
@@ -4087,6 +4132,7 @@
 				8418EE4717FEF6BD003607D1 /* Schedule_Bus_Owl@2x.png in Resources */,
 				27CE479C1B94C2DF0000C6D6 /* RT_System-Status_GS.png in Resources */,
 				8418ED9317FEF6BD003607D1 /* Cash-Fare.png in Resources */,
+				279D97F81D92ED3E0047A4C5 /* 45.kml in Resources */,
 				8418EDBB17FEF6BD003607D1 /* RT_NTA@2x.png in Resources */,
 				271DA8621808A0B4009ED7D6 /* septaIcon-57px.png in Resources */,
 				27CE479B1B94C2DF0000C6D6 /* RT_SpecialEvents_GS.png in Resources */,
@@ -4106,6 +4152,7 @@
 				8418EDAE17FEF6BD003607D1 /* twitterIcon.png in Resources */,
 				8418EE7F17FEF6BD003607D1 /* Alarm_Add.png in Resources */,
 				8418EE0617FEF6BD003607D1 /* transitView-In-service_lines@2x.png in Resources */,
+				2727C0BD1E7325A30002B07E /* 311.kml in Resources */,
 				2704CECD1ACF14EB0027ECA7 /* NextToArriveAlerts.xib in Resources */,
 				8418EE0F17FEF6BD003607D1 /* transitView-white@2x.png in Resources */,
 				8418EDF417FEF6BD003607D1 /* tabRealtimeIconSelected@2x.png in Resources */,
@@ -4312,6 +4359,7 @@
 				279A89681BB20D0800A9F664 /* 60.kml in Resources */,
 				8418ED8517FEF6BD003607D1 /* cross-county-BG@2x.png in Resources */,
 				8418EDAF17FEF6BD003607D1 /* Advisory@2x.png in Resources */,
+				279D97FC1D92F2C80047A4C5 /* passPerks.png in Resources */,
 				8418ED9117FEF6BD003607D1 /* transpass@2x.png in Resources */,
 				8418EDCC17FEF6BD003607D1 /* Done.png in Resources */,
 				8418EEC018058D67003607D1 /* NTA-end@2x.png in Resources */,
@@ -4333,6 +4381,7 @@
 				2792C00218818B7D00626D8B /* CommonWebViewStoryboard.storyboard in Resources */,
 				8418EE5617FEF6BD003607D1 /* Schedule_Trolley-BG@2x.png in Resources */,
 				279A89B51BB20D0800A9F664 /* R.kml in Resources */,
+				2727C0C11E79AF3C0002B07E /* 15B.kml in Resources */,
 				279A893A1BB20D0800A9F664 /* 11.kml in Resources */,
 				8418ED8917FEF6BD003607D1 /* Independence-Pass@2x.png in Resources */,
 				279A89391BB20D0800A9F664 /* 10.kml in Resources */,
@@ -4343,6 +4392,7 @@
 				8418EE4117FEF6BD003607D1 /* Schedule_Arrow@2x.png in Resources */,
 				8418EDFF17FEF6BD003607D1 /* trainView-RRL-Blue.png in Resources */,
 				8418EE6917FEF6BD003607D1 /* Schedule_CCT_small.png in Resources */,
+				2727C0C01E79AF3C0002B07E /* 15T.kml in Resources */,
 				279A895E1BB20D0800A9F664 /* 48.kml in Resources */,
 				8418EE0317FEF6BD003607D1 /* transitView-Bus-Red@2x.png in Resources */,
 				8418EDE117FEF6BD003607D1 /* Sys-Status-MFLBSLNHSL.png in Resources */,
@@ -4514,6 +4564,7 @@
 				276B16A9162DA0AC00A71D57 /* sqlite3.c in Sources */,
 				568FA48B1535C0E0009345F5 /* main.m in Sources */,
 				568FA48F1535C0E0009345F5 /* AppDelegate.m in Sources */,
+				272464A81D78D9DB00FE73F5 /* PassPerksViewController.m in Sources */,
 				2792BFF41875BE4800626D8B /* GTFSCommon.m in Sources */,
 				84221961183FF6B30099B69F /* MenuAlertsImageView.m in Sources */,
 				275BE98916835938007AF394 /* RouteInfo.m in Sources */,
@@ -4621,6 +4672,7 @@
 				27C0ACFB17DE2A07005FDB80 /* TwitterViewController.m in Sources */,
 				27C0AD0317DE2E08005FDB80 /* FacebookViewController.m in Sources */,
 				27C0AD0717DE39E6005FDB80 /* NearestTimesViewController.m in Sources */,
+				2727C0BB1E73122C0002B07E /* NSDictionary+ObjectKeyNil.m in Sources */,
 				279E3C1A17DE4374008CC7F8 /* SettingsViewController.m in Sources */,
 				278F5E4D1A78325F004D6716 /* NTASaveObjectCell.m in Sources */,
 				279E3C1D17DE4EAD008CC7F8 /* LocationObject.m in Sources */,
@@ -4674,6 +4726,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -4772,6 +4825,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
 				PRODUCT_NAME = SEPTA;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -4807,6 +4861,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
 				PRODUCT_NAME = SEPTA;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

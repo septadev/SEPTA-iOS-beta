@@ -24,6 +24,8 @@
 -(void) addMin:(int) min andMax:(int) max withServiceID:(int) service_id;
 -(NSArray*) hoursForServiceID:(int) service_id;
 -(NSString*) statusForTime:(int) time andServiceID: (int) service_id;
+-(NSString*) statusForTime:(int) time andServiceIDs: (NSArray*) sids;
+
 
 -(void) changeServiceStatus:(TransitServiceStatus) newStatus;
 

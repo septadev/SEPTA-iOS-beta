@@ -1263,7 +1263,7 @@ NSComparisonResult (^sortNTASaveObjectByDate)(NTASaveObject*,NTASaveObject*) = ^
     if ( index == 0 )  // Add MFL to this?  Need to investigate this further
     {
         
-//        NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TransitView/%@",@"1"];
+//        NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TransitView/%@",@"1"];
 //        NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 //        NSLog(@"DSTVC - getLatestBusJSONData -- api url: %@", webStringURL);
 //        
@@ -1282,9 +1282,9 @@ NSComparisonResult (^sortNTASaveObjectByDate)(NTASaveObject*,NTASaveObject*) = ^
         NSString *_newStartStop = [self fixMismatchedStopName: startStopName];
         NSString *_newEndStop   = [self fixMismatchedStopName: endStopName];
         
-//        NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/NextToArrive/%@/%@/10", _startStopName, _endStopName];
+//        NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/NextToArrive/%@/%@/10", _startStopName, _endStopName];
 
-        NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/NextToArrive/%@/%@/50", _newStartStop, _newEndStop];
+        NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/NextToArrive/%@/%@/50", _newStartStop, _newEndStop];
 
         
         NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];

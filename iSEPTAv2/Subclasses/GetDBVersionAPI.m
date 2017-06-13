@@ -155,14 +155,14 @@
 
     NSString *url;
 //    _testMode = YES;
-    if ( _testMode )
-    {
-        url = @"http://www3.septa.org/beta/agga/dbVersion/";
-    }
-    else
-    {
-        url = @"http://www3.septa.org/hackathon/dbVersion/";
-    }
+//    if ( _testMode )
+//    {
+//        url = @"https://www3.septa.org/beta/agga/dbVersion/";
+//    }
+//    else
+//    {
+        url = @"https://www3.septa.org/hackathon/dbVersion/";
+//    }
 
 
     
@@ -213,7 +213,10 @@
                 [obj enumerateKeysAndObjectsUsingBlock:^(id key2, id obj2, BOOL *stop2)
                  {
                      @try {
-                         [dbObject.special_event setValue:obj2 forKey:key2];
+                         if ( obj2 == [NSNull null] )
+                             [dbObject.special_event setValue:nil forKey:key2];
+                         else
+                             [dbObject.special_event setValue:obj2 forKey:key2];
                      }
                      @catch (NSException *exception) {
                          NSLog(@"GetDBVersionAPI processDBVersionJSON SpecialEvents exception for key '%@': '%@'", key2, exception);
@@ -223,7 +226,13 @@
                 
             }
             else
-                [dbObject setValue:obj forKey:key];
+            {
+                if ( obj == [NSNull null] )
+                    [dbObject setValue:nil forKey:key];
+                else
+                    [dbObject setValue:obj forKey:key];
+            }
+            
         }
         @catch (NSException *exception) {
             NSLog(@"GetDBVersionAPI processDBVersionJSON exception for key %@: %@", key, exception);

@@ -47,6 +47,21 @@
 }
 
 
+//-(MKAnnotationView*) annotationView
+//{
+//    
+//    MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"BusAnnontationWithBlockID"];
+//    
+//    annotationView.enabled = YES;
+//    annotationView.canShowCallout = YES;
+//    
+//    
+//    return annotationView;
+//    
+//}
+
+
+
 -(NSString*) description
 {
     return [NSString stringWithFormat:@"title: %@, subtitle: %@, dir: %@, lat/lng: %6.3f, %6.3f", currentTitle, currentSubTitle, direction, _coordinate.latitude, _coordinate.longitude];

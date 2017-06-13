@@ -91,7 +91,7 @@
     }
     
     
-    NSURL *downloadURL = [[NSURL alloc] initWithString: @"http://www3.septa.org/api/dbVersion/download.php"];
+    NSURL *downloadURL = [[NSURL alloc] initWithString: @"https://www3.septa.org/api/dbVersion/download.php"];
     NSURLRequest *request = [NSURLRequest requestWithURL: downloadURL];
     
     if ( ![[Reachability reachabilityForInternetConnection] isReachable] )

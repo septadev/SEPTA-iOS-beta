@@ -1,18 +1,18 @@
 //
-//  MobileSiteViewController.m
+//  PassPerksViewController.m
 //  iSEPTA
 //
 //  Created by Administrator on 9/12/13.
 //  Copyright (c) 2013 SEPTA. All rights reserved.
 //
 
-#import "MobileSiteViewController.h"
+#import "PassPerksViewController.h"
 
-@interface MobileSiteViewController ()
+@interface PassPerksViewController ()
 
 @end
 
-@implementation MobileSiteViewController
+@implementation PassPerksViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,20 +26,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    
-    // @"https://septa.org/service/septa-app.html"
-//    NSURL *url = [[NSURL alloc] initWithString:@"https://www.septa.org/m/"];
-    NSURL *url = [[NSURL alloc] initWithString:@"http://www.septa.org/service/special-events-mobile.html"];
+
+    NSURL *url = [[NSURL alloc] initWithString:@"http://www.iseptaphilly.com/perks"];
         
     [self.webView loadRequest: [NSURLRequest requestWithURL: url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0f] ];
     [self.webView setHidden:NO];
     
     
-    CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed:@"tipsBack.png" withTarget:self andWithAction:@selector(backButtonPressed:)];
+    CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed:@"passPerks.png" withTarget:self andWithAction:@selector(backButtonPressed:)];
     self.navigationItem.leftBarButtonItem = backBarButtonItem;
     
-    LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0,500, 32) withTitle:@"Special Events"];
+    LineHeaderView *titleView = [[LineHeaderView alloc] initWithFrame:CGRectMake(0, 0,500, 32) withTitle:@"Pass Perks"];
     [self.navigationItem setTitleView:titleView];
     
 }

@@ -504,7 +504,7 @@
     {
         case kGTFSRouteTypeBus:
         case kGTFSRouteTypeTrolley:
-            stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TransitView/%@", self.routeName];
+            stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TransitView/%@", self.routeName];
             webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             NSLog(@"NTVVC - getLatestJSONData (bus) -- api url: %@", webStringURL);
             
@@ -512,7 +512,7 @@
             
         case kGTFSRouteTypeRail:
             
-            stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TrainView/"];
+            stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TrainView/"];
             webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             NSLog(@"NTVVC - getLatestJSONData (rail) -- api url: %@", webStringURL);
 
@@ -1114,7 +1114,7 @@
     if ( routeType == kGTFSRouteTypeTrolley || routeType == kGTFSRouteTypeBus)
     {
         
-        stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TransitView/%@", self.routeName];
+        stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TransitView/%@", self.routeName];
         webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSLog(@"TVVC - getLatestRouteLocations (bus) -- api url: %@", webStringURL);
 
@@ -1126,7 +1126,7 @@
     else if ( routeType == kGTFSRouteTypeRail )
     {
 
-        stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TrainView/"];
+        stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TrainView/"];
         webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSLog(@"TVVC - getLatestRouteLocations (rail) -- api url: %@", webStringURL);
         

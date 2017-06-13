@@ -437,7 +437,7 @@
 //        [mapView setRegion: MKCoordinateRegionMakeWithDistance(_locationManager.location.coordinate, [self milesToMetersFor:radiusInMiles], [self milesToMetersFor:radiusInMiles] ) animated:YES];
 
     
-    NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/locations/get_locations.php?lon=%9.6f&lat=%9.6f&radius=%6.3f&number_of_results=400", location.coordinate.longitude, location.coordinate.latitude, radiusInMiles];
+    NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/locations/get_locations.php?lon=%9.6f&lat=%9.6f&radius=%6.3f&number_of_results=400", location.coordinate.longitude, location.coordinate.latitude, radiusInMiles];
     
     NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"FNRVC - getLatestJSONData -- api url: %@", webStringURL);

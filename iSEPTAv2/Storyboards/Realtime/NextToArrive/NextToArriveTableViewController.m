@@ -340,10 +340,12 @@
     [alertLineDict setObject:@"rr_route_trent"   forKey:@"Trenton"];
     [alertLineDict setObject:@"rr_route_cyn" forKey:@"Cynwyd"];
     
+    
     [alertLineDict setObject:[NSArray arrayWithObjects:@"rr_route_gc",@"rr_route_landdoy", nil] forKey:@"Lansdale/Doylestown"];
     [alertLineDict setObject:[NSArray arrayWithObjects:@"rr_route_gc",@"rr_route_warm"   , nil] forKey:@"Warminster"];
 
     [alertLineDict setObject:@"generic" forKey:@"Generic"];
+    [alertLineDict setObject:@"generic" forKey:@"Regional Rail Line"];
     
 }
 
@@ -1943,16 +1945,19 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
         }
         else
         {
-            [lineDict setObject:@"1" forKey:[alertLineDict objectForKey:line]];
+            if ( [alertLineDict objectForKey:line] )
+            {
+                [lineDict setObject:@"1" forKey:[alertLineDict objectForKey:line]];
+            }
         }
         
     }
     
     NSString *lineStr = [[lineDict allKeys] componentsJoinedByString:@","];
-    NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/api/Alerts/get_alert_data.php?route_id=%@", lineStr];
+    NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/api/Alerts/get_alert_data.php?route_id=%@", lineStr];
     
     // Test code: allows the enabling and disabling of Alerts
-//    NSString *stringURL = @"http://www3.septa.org/beta/agga/Alerts/gga.php";
+//    NSString *stringURL = @"https://www3.septa.org/beta/agga/Alerts/gga.php";
 
     
     NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -2020,7 +2025,7 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     NSString *_newStartStop = [self fixMismatchedStopName: startStopName];
     NSString *_newEndStop   = [self fixMismatchedStopName: endStopName];
     
-    NSString* stringURL = [NSString stringWithFormat:@"http://52.90.73.233/hackathon/NextToArrive/%@/%@/50", _newStartStop, _newEndStop];
+    NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/api/NextToArrive/%@/%@/50", _newStartStop, _newEndStop];
     
     
     NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -2136,29 +2141,29 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     
 //    NSMutableDictionary *jsonTest = [[NSMutableDictionary alloc] init];
     
-    if ( /* DISABLES CODE */ (0) )  // Set to 1 when testing, 0 when um... the opposite.
-    {
-        NSMutableArray *jsonTest = [[NSMutableArray alloc] init];
-        
-        NSMutableDictionary *route = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"rr_route_warm",@"route_id",@"Warminster",@"route_name",@"Warminster Train #426 will now fly directly from Glenside to Jefferson Station.  Please be aware of the change in trip.  Frequent flyer miles can be redeemed at the SEPTA store at 1234 Market Street.",@"current_message", nil];
-        
-        [jsonTest addObject: route];
-        
-        route = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"generic",@"route_id",@"Generic",@"route_name",@"RRD: Warminster Train #4331 is canceled from Warmisnter to Glenside. Service will begin at Glenside to depart the scheduled time of 9:08AM",@"current_message", nil];
-        
-        [jsonTest addObject: route];
-
-        route = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"rr_route_gc",@"route_id",@"Glenside Combined",@"route_name",@"Glenside will be combined with Anti-Glenside and used to power the entire Eastern coast.  Please be advised that any anomalies should be avoided and promptly reported to the Department of Time and Space (DTS).",@"current_message", nil];
-        
-        [jsonTest addObject: route];
-
-        route = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"rr_route_pao",@"route_id",@"Paoli",@"route_name",@"Dinosaurs spotted along the Paoli line.  Delays possible.  SEPTA advises passengers not to cover themselves in ketchup, for safety reasons.",@"current_message", nil];
-        
-        [jsonTest addObject: route];
-
-        json = jsonTest;
-        
-    }
+//    if ( /* DISABLES CODE */ (0) )  // Set to 1 when testing, 0 when um... the opposite.
+//    {
+//        NSMutableArray *jsonTest = [[NSMutableArray alloc] init];
+//        
+//        NSMutableDictionary *route = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"rr_route_warm",@"route_id",@"Warminster",@"route_name",@"Warminster Train #426 will now fly directly from Glenside to Jefferson Station.  Please be aware of the change in trip.  Frequent flyer miles can be redeemed at the SEPTA store at 1234 Market Street.",@"current_message", nil];
+//        
+//        [jsonTest addObject: route];
+//        
+//        route = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"generic",@"route_id",@"Generic",@"route_name",@"RRD: Warminster Train #4331 is canceled from Warmisnter to Glenside. Service will begin at Glenside to depart the scheduled time of 9:08AM",@"current_message", nil];
+//        
+//        [jsonTest addObject: route];
+//
+//        route = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"rr_route_gc",@"route_id",@"Glenside Combined",@"route_name",@"Glenside will be combined with Anti-Glenside and used to power the entire Eastern coast.  Please be advised that any anomalies should be avoided and promptly reported to the Department of Time and Space (DTS).",@"current_message", nil];
+//        
+//        [jsonTest addObject: route];
+//
+//        route = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"rr_route_pao",@"route_id",@"Paoli",@"route_name",@"Dinosaurs spotted along the Paoli line.  Delays possible.  SEPTA advises passengers not to cover themselves in ketchup, for safety reasons.",@"current_message", nil];
+//        
+//        [jsonTest addObject: route];
+//
+//        json = jsonTest;
+//        
+//    }
     
     for (NSDictionary *data in json)
     {
@@ -2190,7 +2195,7 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
                 {
 //                    [myData addObject: [self formatCurrentMessage: saObj.current_message] ];
                     AlertMessage *alertMsg = [[AlertMessage alloc] init];
-                    [alertMsg setText: saObj.current_message];
+                    [alertMsg setText: [GetAlertDataAPI convertHTML: saObj.current_message] ];
                     [alertMsg updateAttrText];
                     
                     [myData addObject: alertMsg];
@@ -2200,7 +2205,7 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
             {
 //                [myData addObject: [self formatCurrentMessage: [NSString stringWithFormat:@"%@: %@",saObj.route_name, saObj.current_message] ] ];
                 AlertMessage *alertMsg = [[AlertMessage alloc] init];
-                [alertMsg setText: [NSString stringWithFormat:@"%@: %@",saObj.route_name, saObj.current_message] ];
+                [alertMsg setText: [NSString stringWithFormat:@"%@: %@",saObj.route_name, [GetAlertDataAPI convertHTML: saObj.current_message] ] ];
                 [alertMsg updateAttrText];
                 
                 [myData addObject: alertMsg];
@@ -2359,35 +2364,35 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
         
         // TODO: Handle null or missing key gracefully
         
-        [ntaObject setConnection: [data objectForKey:@"Connection"] ];
-        [ntaObject setIsdirect: [data objectForKey:@"isdirect"] ];
+        [ntaObject setConnection: [data objectForKeyOrNil:@"Connection"] ];
+        [ntaObject setIsdirect: [data objectForKeyOrNil:@"isdirect"] ];
         
         
-        NSString *time = [data objectForKey:@"orig_arrival_time"];
+        NSString *time = [data objectForKeyOrNil:@"orig_arrival_time"];
         [ntaObject setOrig_arrival_time: [time stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet] ] ];
-        [ntaObject setOrig_delay: [data objectForKey:@"orig_delay"] ];
+        [ntaObject setOrig_delay: [data objectForKeyOrNil:@"orig_delay"] ];
         
         
         time = [data objectForKey:@"orig_departure_time"];
         [ntaObject setOrig_departure_time: [time stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet] ] ];
         
-        [ntaObject setOrig_line: [data objectForKey:@"orig_line"] ];
-        [ntaObject setOrig_train: [data objectForKey:@"orig_train"] ];
+        [ntaObject setOrig_line: [data objectForKeyOrNil:@"orig_line"] ];
+        [ntaObject setOrig_train: [data objectForKeyOrNil:@"orig_train"] ];
         
         [dataLines setObject:@"1" forKey:ntaObject.orig_line];
         
-        time = [data objectForKey:@"term_arrival_time"];
+        time = [data objectForKeyOrNil:@"term_arrival_time"];
         [ntaObject setTerm_arrival_time: [time stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet] ] ];
         
-        [ntaObject setTerm_delay: [data objectForKey:@"term_delay"] ];
+        [ntaObject setTerm_delay: [data objectForKeyOrNil:@"term_delay"] ];
         
-        time = [data objectForKey:@"term_depart_time"];
+        time = [data objectForKeyOrNil:@"term_depart_time"];
         [ntaObject setTerm_depart_time: [time stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet] ] ];
         
-        [ntaObject setTerm_line: [data objectForKey:@"term_line"] ];
-        [ntaObject setTerm_train: [data objectForKey:@"term_train"] ];
+        [ntaObject setTerm_line: [data objectForKeyOrNil:@"term_line"] ];
+        [ntaObject setTerm_train: [data objectForKeyOrNil:@"term_train"] ];
         
-            [myData addObject:ntaObject];
+        [myData addObject:ntaObject];
 //        [_tableData addObject: ntaObject];  // Because we cleared the @"Data" above, the _tableData internal indexPath is pointing to the @"Data" section
         
     }
@@ -2536,5 +2541,8 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     [self.navigationController pushViewController: fVC animated: YES];
     
 }
+
+
+#pragma 
 
 @end

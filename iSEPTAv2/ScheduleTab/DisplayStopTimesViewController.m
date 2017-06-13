@@ -1109,7 +1109,7 @@
     if ( [self.travelMode isEqualToString:@"Bus"] )  // Add MFL to this?  Need to investigate this further
     {
     
-        NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TransitView/%@",routeData.current.route_short_name];
+        NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TransitView/%@",routeData.current.route_short_name];
         NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSLog(@"DSTVC - getLatestBusJSONData -- api url: %@", webStringURL);
         
@@ -1125,7 +1125,7 @@
     else if ( [self.travelMode isEqualToString:@"Rail"] )
     {
         
-        NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TrainView/"];
+        NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TrainView/"];
         NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSLog(@"DSTVC - getLatestRailJSONData -- api url: %@", webStringURL);
         

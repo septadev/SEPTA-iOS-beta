@@ -610,7 +610,9 @@
         return;  // Don't bother continuing if no internet connection is available
 
     
-    NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/Alerts/"];
+    NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/Alerts/"];
+//    NSString* stringURL = [NSString stringWithFormat:@"http://52.91.240.255/Playground/agga_AlertNull/"];
+    
 
     NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"NTAVC - getSystemStatus -- api url: %@", webStringURL);
@@ -643,8 +645,7 @@
     
     [jsonSystemOp start];
     
-    
-    NSString *elevatorURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/elevator/"];
+    NSString *elevatorURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/elevator/"];
     NSURLRequest *request = [NSURLRequest requestWithURL: [NSURL URLWithString: elevatorURL] ];
     
     AFHTTPRequestOperation *jsonElevatorOp = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -687,7 +688,7 @@
     
     SystemStatusObject *elevatorStatus = [[SystemStatusObject alloc] init];
     
-//    NSString *jsonStr = @"{\"meta\":{\"elevators_out\":2,\"updated\":\"2013-11-2611:38:02\"},\"results\":[{\"line\":\"MarketFrankfordLine\",\"station\":\"Berks\",\"elevator\":\"Westbound\",\"message\":\"Noaccessto/fromstation\",\"alternate_url\":\"http://www.septa.org/access/alternate/mfl.html#berks\"},{\"line\":\"BroadStreetLine\",\"station\":\"CityHall\",\"elevator\":\"EastBound\",\"message\":\"Noaccessto/fromstation\",\"alternate_url\":\"http://www.septa.org/access/alternate/mfl.html#berks\"}]}";
+//    NSString *jsonStr = @"{\"meta\":{\"elevators_out\":2,\"updated\":\"2013-11-2611:38:02\"},\"results\":[{\"line\":\"MarketFrankfordLine\",\"station\":\"Berks\",\"elevator\":\"Westbound\",\"message\":\"Noaccessto/fromstation\",\"alternate_url\":\"https://www.septa.org/access/alternate/mfl.html#berks\"},{\"line\":\"BroadStreetLine\",\"station\":\"CityHall\",\"elevator\":\"EastBound\",\"message\":\"Noaccessto/fromstation\",\"alternate_url\":\"https://www.septa.org/access/alternate/mfl.html#berks\"}]}";
 
     
     NSDictionary *meta = [json objectForKey:@"meta"];  // keys: elevators_out, updated
@@ -739,23 +740,23 @@
     {
         SystemStatusObject *ssObject = [[SystemStatusObject alloc] init];
     
-        NSString *routeName = [data objectForKey:@"route_name"];
+        NSString *routeName = [data objectForKeyOrNil:@"route_name"];
         if ( [routeName isEqualToString:@"CCT"] )  // || [routeName isEqualToString:@"Generic"]
             continue;
         else if ( [routeName isEqualToString:@"Generic"] )
         {
 
-            [ssObject setRoute_id:  [data objectForKey:@"route_id"] ];
+            [ssObject setRoute_id:  [data objectForKeyOrNil:@"route_id"] ];
             [ssObject setRoute_name:@"General"];
             
             [ssObject setMode:      @"Generic"];
             
-            [ssObject setIsadvisory:[data objectForKey:@"isadvisory"] ];
-            [ssObject setIsalert:   [data objectForKey:@"isalert"   ] ];
-            [ssObject setIssuspend: [data objectForKey:@"issuppend" ] ];
-            [ssObject setIsdetour:  [data objectForKey:@"isdetour"  ] ];
+            [ssObject setIsadvisory:[data objectForKeyOrNil:@"isadvisory"] ];
+            [ssObject setIsalert:   [data objectForKeyOrNil:@"isalert"   ] ];
+            [ssObject setIssuspend: [data objectForKeyOrNil:@"issuppend" ] ];
+            [ssObject setIsdetour:  [data objectForKeyOrNil:@"isdetour"  ] ];
             
-            [ssObject setLast_updated:[data objectForKey:@"last_updated"] ];
+            [ssObject setLast_updated:[data objectForKeyOrNil:@"last_updated"] ];
 
             [_additionalStatus setObject:ssObject forKey:@"Generic"];
             continue;
@@ -766,17 +767,17 @@
         else if ( [routeName isEqualToString:@"Market Frankford Owl"] )
             routeName = @"Market-Frankford Owl";
         
-        [ssObject setRoute_id:  [data objectForKey:@"route_id"] ];
+        [ssObject setRoute_id:  [data objectForKeyOrNil:@"route_id"] ];
         [ssObject setRoute_name:routeName];
         
-        [ssObject setMode:      [data objectForKey:@"mode"] ];
+        [ssObject setMode:      [data objectForKeyOrNil:@"mode"] ];
         
-        [ssObject setIsadvisory:[data objectForKey:@"isadvisory"] ];
-        [ssObject setIsalert:   [data objectForKey:@"isalert"] ];
-        [ssObject setIssuspend: [data objectForKey:@"issuppend"] ];
-        [ssObject setIsdetour:  [data objectForKey:@"isdetour"] ];
+        [ssObject setIsadvisory:[data objectForKeyOrNil:@"isadvisory"] ];
+        [ssObject setIsalert:   [data objectForKeyOrNil:@"isalert"] ];
+        [ssObject setIssuspend: [data objectForKeyOrNil:@"issuppend"] ];
+        [ssObject setIsdetour:  [data objectForKeyOrNil:@"isdetour"] ];
         
-        [ssObject setLast_updated:[data objectForKey:@"last_updated"] ];
+        [ssObject setLast_updated:[data objectForKeyOrNil:@"last_updated"] ];
         
         [_masterData addObject:ssObject];
         

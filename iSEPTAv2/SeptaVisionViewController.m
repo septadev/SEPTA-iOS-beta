@@ -243,7 +243,7 @@
     CLLocation *location = [locationManager location];
     CLLocationCoordinate2D coordinate = [location coordinate];
     
-    NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/locations/get_locations.php?lon=%f&lat=%f&radius=2&number_of_results=10&type=",coordinate.longitude,coordinate.latitude];
+    NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/locations/get_locations.php?lon=%f&lat=%f&radius=2&number_of_results=10&type=",coordinate.longitude,coordinate.latitude];
     NSLog(@"url %@",stringURL);
     NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSData *buses = [NSData dataWithContentsOfURL:[NSURL URLWithString:webStringURL]];

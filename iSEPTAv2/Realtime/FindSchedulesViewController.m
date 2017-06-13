@@ -143,7 +143,7 @@
 #pragma mark - Asynchronous Requests
 -(void) loadJSONParallel
 {
-    //    NSString *url = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/BusSchedules/?req1=%@&req6=%d", basicRoute.stop_id, NUMBER_OF_RESULTS ];
+    //    NSString *url = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/BusSchedules/?req1=%@&req6=%d", basicRoute.stop_id, NUMBER_OF_RESULTS ];
     //    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: url]];
     
     [SVProgressHUD showWithStatus:@"Loading schedule..."];
@@ -156,8 +156,8 @@
     for (RouteDetailsObject *rdObj in routes)
     {
         
-        NSString *url = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/BusSchedules/?req1=%@&req2=%@&req6=%d", basicRoute.stop_id, rdObj.route_short_name, _numResults];
-        //NSString *url = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/BusSchedules/?req1=%@&req6=%d", basicRoute.stop_id, _numResults ];
+        NSString *url = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/BusSchedules/?req1=%@&req2=%@&req6=%d", basicRoute.stop_id, rdObj.route_short_name, _numResults];
+        //NSString *url = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/BusSchedules/?req1=%@&req6=%d", basicRoute.stop_id, _numResults ];
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] ];
         
         NSLog(@"|%@|", url);
@@ -212,7 +212,7 @@
 -(void) loadJSON
 {
     
-    NSString *url = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/BusSchedules/?req1=%@&req6=%d", basicRoute.stop_id, _numResults ];
+    NSString *url = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/BusSchedules/?req1=%@&req6=%d", basicRoute.stop_id, _numResults ];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: url]];
     
     NSLog(@"FSVC - url: %@", url);

@@ -661,7 +661,7 @@
     for (NSString *type in typeArr)
     {
         
-        NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/locations/get_locations.php?lon=%9.6f&lat=%9.6f&radius=%6.3f&number_of_results=400&type=%@", location.coordinate.longitude, location.coordinate.latitude, radiusInMiles, type];
+        NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/locations/get_locations.php?lon=%9.6f&lat=%9.6f&radius=%6.3f&number_of_results=400&type=%@", location.coordinate.longitude, location.coordinate.latitude, radiusInMiles, type];
         
         NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSURL *url = [NSURL URLWithString: webStringURL];

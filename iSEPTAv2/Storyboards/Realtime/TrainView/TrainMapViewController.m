@@ -164,9 +164,6 @@
 //    }
     
     
-//    [NSTimer scheduledTimerWithTimeInterval:10.0f target:self selector:@selector(popTheVC) userInfo:Nil repeats:NO];
-
-    
 }
 
 
@@ -270,8 +267,6 @@
     CustomFlatBarButton *backBarButtonItem = [[CustomFlatBarButton alloc] initWithImageNamed: self.backImageName withTarget:self andWithAction:@selector(backButtonPressed:)];
     self.slidingViewController.navigationItem.leftBarButtonItem = backBarButtonItem;
     
-//    self.slidingViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(slide:)];
-    
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
     
     [self.mapView setDelegate:self];
@@ -285,63 +280,12 @@
 }
 
 
-- (void)applyMapViewMemoryHotFix
-{
-    
-    _jsonOp = nil;
-    _jsonQueue = nil;
-    
-//    return;
-//    
-//    switch (self.mapView.mapType)
-//    {
-//        case MKMapTypeHybrid:
-//        {
-//            self.mapView.mapType = MKMapTypeStandard;
-//        }
-//            
-//            break;
-//        case MKMapTypeStandard:
-//        {
-//            self.mapView.mapType = MKMapTypeHybrid;
-//        }
-//            
-//            break;
-//        default:
-//            break;
-//    }
-//    
-//    self.mapView.showsUserLocation = NO;
-//    self.mapView.delegate = nil;
-//    [self.mapView removeFromSuperview];
-//    self.mapView = nil;
-    
-}
-
-
-
 - (void)didReceiveMemoryWarning
 {
     
     [super didReceiveMemoryWarning];
     
     return;
-    
-    
-//    // Dispose of any resources that can be recreated.
-//    NSLog(@"TMVC - ***  didReceiveMemoryWarning  ***");
-//
-//    [self applyMapViewMemoryHotFix];
-//    
-//    [_locationManager stopUpdatingLocation];
-//    [_locationManager setDelegate:nil];
-//    _locationManager = nil;
-//    
-////    [self.mapView setDelegate:nil];
-////    [self setMapView:nil];
-//    
-//    _trainDataVC = nil;
-//    kmlParser = nil;
 
 }
 
@@ -396,25 +340,22 @@
     }
     
     
-    
-    
     if ( _stillWaitingOnWebRequest )  // The attempt here is to avoid asking the web server for data if it hasn't returned anything from the previous request
-    return;
+        return;
     else
-    _stillWaitingOnWebRequest = YES;
+        _stillWaitingOnWebRequest = YES;
     
     
     NSString* webStringURL;
     NSString *stringURL;
     GTFSRouteType routeType = (GTFSRouteType)[self.travelMode intValue];
-    
-    
+
     
     switch (routeType)
     {
         case kGTFSRouteTypeBus:
         case kGTFSRouteTypeTrolley:
-            stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TransitView/%@", self.routeName];
+            stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TransitView/%@", self.routeName];
             webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 //            NSLog(@"TMVC - getLatestJSONData (bus) -- api url: %@", webStringURL);
             
@@ -422,7 +363,7 @@
             
         case kGTFSRouteTypeRail:
             
-            stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TrainView/"];
+            stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TrainView/"];
             webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 //            NSLog(@"TMVC - getLatestJSONData (rail) -- api url: %@", webStringURL);
             
@@ -461,68 +402,6 @@
 }
 
 
-//-(NSString*) filePath
-//{
-//#if FUNCTION_NAMES_ON
-//    NSLog(@"IVC filePath");
-//#endif
-//    
-//    return [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"sqlite"];
-//}
-
--(void) addStopAnnotationsForRouteType:(GTFSRouteType) routeType
-{
-    
-    return;
-    
-//    FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
-//    
-//    if ( ![database open] )
-//    {
-//        [database close];
-//        return;
-//    }
-//    
-//    NSString *queryStr = [NSString stringWithFormat:@"SELECT sb.stop_id, sb.stop_lat, sb.stop_lon, sb.stop_name FROM reverseStopSearch rss JOIN stops_bus sb ON sb.stop_id=rss.stop_id  WHERE route_short_name=\"%@\"", self.routeName];
-//    
-//    FMResultSet *results = [database executeQuery: queryStr];
-//    if ( [database hadError] )  // Check for errors
-//    {
-//        
-//        int errorCode = [database lastErrorCode];
-//        NSString *errorMsg = [database lastErrorMessage];
-//        
-//        NSLog(@"IVC - query failure, code: %d, %@", errorCode, errorMsg);
-//        NSLog(@"IVC - query str: %@", queryStr);
-//        
-//        return;  // If an error occurred, there's nothing else to do but exit
-//        
-//    } // if ( [database hadError] )
-//    
-//    
-//    while ( [results next] )
-//    {
-//        //        NSString *route_short_name = [results stringForColumn:@"Route"];
-//        //        NSString *direction        = [results stringForColumn:@"Direction"];
-//        //        NSString *description      = [results stringForColumn:@"DirectionDescription"];
-//
-////        NSLog(@"%@ - (%@, %@)", [results stringForColumnIndex:0], [results stringForColumnIndex:1], [results stringForColumnIndex:2]);
-//        
-//        CLLocationCoordinate2D newCoord = CLLocationCoordinate2DMake([[results stringForColumnIndex:1] doubleValue], [[results stringForColumnIndex:2] doubleValue]);
-////        mapAnnotation *annotation = [[mapAnnotation alloc] initWithCoordinate:newCoord];
-//        KMLAnnotation *annotation = [[KMLAnnotation alloc] initWithCoordinate:newCoord];
-//        [annotation setDirection:@"Stop"];
-//        
-//        [self.mapView addAnnotation: annotation];
-//        
-//    }
-//    
-//    [database close];
-    
-    
-}
-
-
 
 -(void) processJSONData:(NSData*) returnedData
 {
@@ -546,9 +425,9 @@
     
     
     // TODO: Only remove annotations where the data has changed
-    NSMutableArray *annotationsToRemove = [[self.mapView annotations] mutableCopy];  // We want to remove all the annotations minus one
-    [annotationsToRemove removeObject: [self.mapView userLocation] ];                // Keep the userLocation annotation on the map
-    [self.mapView removeAnnotations: annotationsToRemove];                           // All annotations remaining in the array get removed
+    NSMutableArray *annotationsToRemove = [[self.mapView annotations] mutableCopy];  // Make a mutable copy of the annotation array
+    [annotationsToRemove removeObject: [self.mapView userLocation] ];                // Remove the userLocation annotation from the array
+    [self.mapView removeAnnotations: annotationsToRemove];                           // All annotations except for the userLocation are now removed
     annotationsToRemove = nil;
     
     
@@ -569,23 +448,23 @@
                 
                 TransitViewObject *tvObject = [[TransitViewObject alloc] init];
                 
-                [tvObject setLat: [data objectForKey:@"lat"] ];
-                [tvObject setLng: [data objectForKey:@"lng"] ];
-                [tvObject setLabel: [data objectForKey:@"label"] ];
+                [tvObject setLat:       [data objectForKey:@"lat"] ];
+                [tvObject setLng:       [data objectForKey:@"lng"] ];
+                [tvObject setLabel:     [data objectForKey:@"label"] ];
                 [tvObject setVehicleID: [data objectForKey:@"VehicleID"] ];
                 
-                [tvObject setBlockID: [data objectForKey:@"BlockID"] ];
-                [tvObject setDirection: [data objectForKey:@"Direction"] ];
-                [tvObject setDestination: [data objectForKey:@"destination"] ];
-                [tvObject setOffset: [data objectForKey:@"Offset"] ];
+                [tvObject setBlockID:       [data objectForKey:@"BlockID"] ];
+                [tvObject setDirection:     [data objectForKey:@"Direction"] ];
+                [tvObject setDestination:   [data objectForKey:@"destination"] ];
+                [tvObject setOffset:        [data objectForKey:@"Offset"] ];
                 
                 CLLocation *stopLocation = [[CLLocation alloc] initWithLatitude:[[data objectForKey:@"lat"] doubleValue] longitude: [[data objectForKey:@"lng"] doubleValue] ];
-                CLLocationDistance dist = [_locationManager.location distanceFromLocation: stopLocation] / 1609.34f;
+                CLLocationDistance dist =  [_locationManager.location distanceFromLocation: stopLocation] / 1609.34f;
                 
                 [tvObject setDistance: [NSNumber numberWithDouble: dist] ];
                 
                 [readData addObject: tvObject];
-                [self addAnnotationUsingwithObject: tvObject];
+                [self addAnnotationWithObject: tvObject];
             }
             
             break;
@@ -617,7 +496,7 @@
                 NSLog(@"%@",tvObject);
                 
                 [readData addObject: tvObject];
-                [self addAnnotationUsingwithObject: tvObject];
+                [self addAnnotationWithObject: tvObject];
                 
             }
             
@@ -631,8 +510,6 @@
     
     NSSortDescriptor *lowestToHighest = [NSSortDescriptor sortDescriptorWithKey:@"distance" ascending:YES];
     [readData sortUsingDescriptors:[NSArray arrayWithObject:lowestToHighest]];
-    
-    
     
     _tableData = readData;
     if ( _trainDataVC != nil )
@@ -657,7 +534,7 @@
 }
 
 
--(void) addAnnotationUsingwithObject: (id) object
+-(void) addAnnotationWithObject: (id) object
 {
     
     
@@ -668,14 +545,13 @@
         
         NSString *direction = tvObject.Direction;
         
-//        mapAnnotation *annotation  = [[mapAnnotation alloc] initWithCoordinate: newCoord];
         KMLAnnotation *annotation = [[KMLAnnotation alloc] initWithCoordinate:newCoord];
 
         NSString *annotationTitle;
         if ( [tvObject.Offset intValue] == 1 )
-            annotationTitle  = [NSString stringWithFormat: @"Vehicle: %@ (position %@ min ago)", tvObject.VehicleID, tvObject.Offset];
+            annotationTitle  = [NSString stringWithFormat: @"Vehicle/Block: %@/%@ (%@ mins ago)", tvObject.VehicleID, tvObject.BlockID, tvObject.Offset];
         else
-            annotationTitle  = [NSString stringWithFormat: @"Vehicle: %@ (position %@ mins ago)", tvObject.VehicleID, tvObject.Offset];
+            annotationTitle  = [NSString stringWithFormat: @"Vehicle/Block: %@/%@ (%@ mins ago)", tvObject.VehicleID, tvObject.BlockID, tvObject.Offset];
         
         [annotation setCurrentSubTitle: [NSString stringWithFormat: @"Destination: %@", tvObject.destination ] ];
         [annotation setCurrentTitle   : annotationTitle];
@@ -684,14 +560,14 @@
         [annotation setVehicle_id: [NSNumber numberWithInt: [tvObject.VehicleID intValue] ] ];
         
         GTFSRouteType routeType = [self.travelMode intValue];
-        if ( ( [direction isEqualToString:@"EastBound"] ) || ( [direction isEqualToString:@"SouthBound"] ) )
+        if ( ( [direction isEqualToString:@"EastBound"] ) || ( [direction isEqualToString:@"NorthBound"] ) || [direction isEqualToString:@"LOOP"] )
         {
             if ( routeType == kGTFSRouteTypeTrolley )
                 [annotation setType:kKMLTrolleyBlue];
             else
                 [annotation setType:kKMLBusBlue];
         }
-        else if ( ( [direction isEqualToString:@"WestBound"] ) || ( [direction isEqualToString:@"NorthBound"] ) )
+        else if ( ( [direction isEqualToString:@"WestBound"] ) || ( [direction isEqualToString:@"SouthBound"] ) )
         {
             if ( routeType == kGTFSRouteTypeTrolley )
                 [annotation setType:kKMLTrolleyRed];

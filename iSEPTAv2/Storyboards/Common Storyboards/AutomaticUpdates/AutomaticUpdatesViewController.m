@@ -142,13 +142,29 @@
     
     _updateSM = newState;
     
+    /* 
+     kAutomaticUpdateStartState,            0
+     kAutomaticUpdateChecking,              1
+     kAutomaticUpdateLatestAvailable,       2
+     kAutomaticUpdateUpToDate,              3
+     kAutomaticUpdateDownloading,           4
+     kAutomaticUpdateCancelledDownload,     5
+     kAutomaticUpdateFinishedDownload,      6
+     kAutomaticUpdateInstalling,            7
+     kAutomaticUpdateFinishedInstall,       8
+     kAutomaticUpdateDoNothing,             9
+     
+     kAutomaticUpdateNoInternet,            A
+     
+     */
+    
     switch (newState)
     {
 //        case kAutomaticUpdateStartState:
 //            [self.lblVersionStatus setText:@""];
 //            break;
             
-        case kAutomaticUpdateChecking:
+        case kAutomaticUpdateChecking:          // 1
             [self.lblVersionStatus setText: VERSION_CHECKING];
             [self.progressBar setProgress:0.0f];
             
@@ -157,11 +173,11 @@
             
             break;
             
-        case kAutomaticUpdateUpToDate:
+        case kAutomaticUpdateUpToDate:          // 3
             [self.lblVersionStatus setText: VERSION_NOUPDATE];
             break;
             
-        case kAutomaticUpdateLatestAvailable:
+        case kAutomaticUpdateLatestAvailable:   // 2
             [self.lblVersionStatus setText: VERSION_AVAILABLE];
             
             if ( self.startImmediately )
@@ -172,7 +188,7 @@
             [self.btnMulti setTitle:@"Download" forState:UIControlStateNormal];
             break;
             
-        case kAutomaticUpdateDownloading:
+        case kAutomaticUpdateDownloading:       // 4
             [self.lblVersionStatus setText: @"Downloading..."];
             
             if ( self.startImmediately )
@@ -197,7 +213,7 @@
             
             break;
             
-        case kAutomaticUpdateCancelledDownload:
+        case kAutomaticUpdateCancelledDownload:  // 5
             [self.lblVersionStatus setText: @"Cancelled Download..."];
             [self.btnMulti setTitle:@"Download" forState:UIControlStateNormal];
             
@@ -210,7 +226,7 @@
             [self cleanUpDownload];
             break;
             
-        case kAutomaticUpdateFinishedDownload:
+        case kAutomaticUpdateFinishedDownload:  // 6
             // TODO: When file was successfully downloaded, save state
             
 //            [self.lblVersionStatus setText: @"Finished Download"];
@@ -243,21 +259,21 @@
             
             break;
             
-//        case kAutomaticUpdateInstalling:
+//        case kAutomaticUpdateInstalling:      // 7
 //            [self.lblVersionStatus setText: @"Installing"];
 //            [self installNewSchedule];
 //            break;
             
-        case kAutomaticUpdateFinishedInstall:
+        case kAutomaticUpdateFinishedInstall:   // 8
             [self.lblVersionStatus setText: @"New Schedule Installed"];
             [self.btnMulti setHidden:YES];
             [self updateStateTo: kAutomaticUpdateDoNothing];
             break;
             
-        case kAutomaticUpdateDoNothing:
+        case kAutomaticUpdateDoNothing:         // 9
             break;
             
-        case kAutomaticUpdateNoInternet:
+        case kAutomaticUpdateNoInternet:        // A
             [self.lblVersionStatus setText:@"No Internet Connection Available"];
             [self.btnMulti setHidden:NO];
             [self.btnMulti setTitle:@"Retry" forState:UIControlStateNormal];
@@ -334,13 +350,13 @@
     NSLog(@"apiMD5: %@", obj.md5);
     if ( [_localMD5 isEqualToString: [obj md5] ] )
     {
-        NSLog(@"OMG!!!  The MD5 MATCH!");
+//        NSLog(@"OMG!!!  The MD5 MATCH!");
 //        _updateSM = kAutomaticUpdateUpToDate;
         [self updateStateTo:kAutomaticUpdateUpToDate];
     }
     else
     {
-        NSLog(@"The MD5s didn't match, I figured as much");
+//        NSLog(@"The MD5s didn't match, I figured as much");
 //        _updateSM = kAutomaticUpdateLatestAvailable;
         
 #ifdef BACKGROUND_DOWNLOAD
@@ -416,10 +432,10 @@
     // Note: v1.0.4 of the app used api0.septa.org/gga8893/dbVersion/download.php as the downloadURL
     NSURL *downloadURL;
     
-    if ( _testMode )
-        downloadURL = [[NSURL alloc] initWithString: @"http://api0.septa.org/gga8893/dbVersion/download.php"];
-    else
-        downloadURL = [[NSURL alloc] initWithString: @"http://www3.septa.org/api/dbVersion/download.php"];
+//    if ( _testMode )
+//        downloadURL = [[NSURL alloc] initWithString: @"https://api0.septa.org/gga8893/dbVersion/download.php"];
+//    else
+        downloadURL = [[NSURL alloc] initWithString: @"https://www3.septa.org/api/dbVersion/download.php"];
     
     NSURLRequest *request = [NSURLRequest requestWithURL: downloadURL];
 
@@ -583,35 +599,7 @@
     }
     [zip UnzipCloseFile];
     
-    // The test!
-//    FMDatabase *database = [FMDatabase databaseWithPath: [self filePath] ];
-//    [database open];
-//    
-//    FMResultSet *results = [database executeQuery:@"SELECT * FROM SECRETTABLE"];
-//    
-//    if ( [database hadError] )  // Basic DB error checking
-//    {
-//        
-//        int errorCode = [database lastErrorCode];
-//        NSString *errorMsg = [database lastErrorMessage];
-//        
-//        NSLog(@"SNFRTC - query failure, code: %d, %@", errorCode, errorMsg);
-//        NSLog(@"SNFRTC - query str: %@", @"SELECT * FROM SECRETTABLE");
-//        
-//        return;  // If an error occurred, there's nothing else to do but exit
-//        
-//    } // if ( [database hadError] )
-//
-//    while ( [results next] )
-//    {
-//        NSString *message = [results stringForColumn:@"message"];
-//        NSLog(@"The secret message is: %@", message);
-////        [self displayAlertWithTitle: @"Secret Message" andMessage: message];
-//    }
-//    
-//    [database close];
-    
-    
+
     
     // Create byte array of unsigned chars
     unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
@@ -632,16 +620,7 @@
         [output appendFormat:@"%02x",md5Buffer[i]];
 
     _localMD5 = [_dbVersionAPI loadLocalMD5];
-//    NSLog(@"Old MD5: %@", _localMD5);
-//    
-//    DBVersionDataObject *dbObj = [_dbVersionAPI getData];
-//
-//    NSLog(@"Dwn MD5: %@", dbObj.md5);
-//    NSLog(@"New MD5: %@", output);
 
-    
-//    NSString *md5Path = [[NSBundle mainBundle] pathForResource:@"SEPTA" ofType:@"md5"];
-//    NSString *md5Path = [NSString stringWithFormat:@"%@/SEPTA.md5", _path];
     NSString *md5Path = _path;
 
     NSMutableDictionary *md5Dict = [[NSMutableDictionary alloc] init];
@@ -657,10 +636,7 @@
     NSError *jsonParsingError;
     [jsonData writeToFile:md5Path options:NSDataWritingAtomic error:&jsonParsingError];
     
-    
-    
-//    BOOL retValue = [md5Dict writeToFile:md5Path atomically:YES];
-    
+
     [_dbVersionAPI loadLocalMD5];
     
     NSLog(@"Lcl MD5: %@", [_dbVersionAPI localMD5]);

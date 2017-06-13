@@ -469,7 +469,7 @@
 //    if ( [self.travelMode isEqualToString:@"Bus"] )  // Add MFL to this?  Need to investigate this further
 //    {
 //        
-//        NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TransitView/%@", self.routeName];
+//        NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TransitView/%@", self.routeName];
 //        webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 //        NSLog(@"NTVVC - getLatestJSONData (bus) -- api url: %@", webStringURL);
 //        
@@ -477,7 +477,7 @@
 //    else if ( [self.travelMode isEqualToString:@"Rail"] )
 //    {
 //        
-//        NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TrainView/"];
+//        NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TrainView/"];
 //        webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 //        NSLog(@"NTVVC - getLatestJSONData (rail) -- api url: %@", webStringURL);
 //        
@@ -536,7 +536,7 @@
     if ( [self.travelMode isEqualToString:@"Bus"] )  // Add MFL to this?  Need to investigate this further
     {
         
-        NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TransitView/%@", routeName];
+        NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TransitView/%@", routeName];
         NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSLog(@"TMVC - getLatestRouteLocations (bus) -- api url: %@", webStringURL);
         
@@ -552,7 +552,7 @@
     else if ( [self.travelMode isEqualToString:@"Rail"] )
     {
         
-        NSString* stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TrainView/"];
+        NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TrainView/"];
         NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSLog(@"TMVC - getLatestRouteLocations (rail) -- api url: %@", webStringURL);
         

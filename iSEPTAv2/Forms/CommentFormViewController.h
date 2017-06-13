@@ -6,11 +6,13 @@
 //  Copyright (c) 2015 SEPTA. All rights reserved.
 //
 
-#import "FXForms.h"
+#import <UIKit/UIKit.h>
 
-#import <MessageUI/MessageUI.h>
-#import <MessageUI/MFMailComposeViewController.h>
+#import "CustomFlatBarButton.h"
+#import "LineHeaderView.h"
 
-@interface CommentFormViewController : FXFormViewController <MFMailComposeViewControllerDelegate>
+@interface CommentFormViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end

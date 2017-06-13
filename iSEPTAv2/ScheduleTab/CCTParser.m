@@ -34,7 +34,7 @@
     
     
     
-//    NSURL *webURL = [NSURL URLWithString:@"http://www.septa.org/service/cct/"];
+//    NSURL *webURL = [NSURL URLWithString:@"https://www.septa.org/service/cct/"];
 //    NSData *webData  = [NSData dataWithContentsOfURL: webURL];
 //    
 //    TFHpple *htmlParser = [TFHpple hppleWithHTMLData: webData];
@@ -66,7 +66,7 @@
 //    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 
 //    NSError *error = nil;
-//    NSString *stringURL = @"http://www.septa.org/service/cct/";
+//    NSString *stringURL = @"https://www.septa.org/service/cct/";
 //    NSString *webURL = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:stringURL] encoding:NSUTF8StringEncoding error:&error];
     
 //    if ( error != nil )

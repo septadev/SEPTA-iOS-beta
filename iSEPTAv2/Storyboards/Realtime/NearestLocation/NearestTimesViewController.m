@@ -224,7 +224,7 @@
 #pragma mark - Asynchronous Requests
 -(void) loadJSONParallel
 {
-    //    NSString *url = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/BusSchedules/?req1=%@&req6=%d", basicRoute.stop_id, NUMBER_OF_RESULTS ];
+    //    NSString *url = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/BusSchedules/?req1=%@&req6=%d", basicRoute.stop_id, NUMBER_OF_RESULTS ];
     //    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: url]];
         
     
@@ -258,7 +258,7 @@
                 
                 [_routeLookup setObject:[NSString stringWithFormat:@"%@%@",rdObj.route_short_name, [rdObj.directionDict objectForKey:key] ] forKey: [NSString stringWithFormat:@"%@%@",rdObj.route_short_name, key] ];
                 
-                NSString *url = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/BusSchedules/?req1=%@&req2=%@&req3=%@&req6=%d", self.routeData.stop_id, rdObj.route_short_name, req3, _numResults];
+                NSString *url = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/BusSchedules/?req1=%@&req2=%@&req3=%@&req6=%d", self.routeData.stop_id, rdObj.route_short_name, req3, _numResults];
 
                 [urlArray addObject: url];
                 
@@ -273,7 +273,7 @@
             
             [_routeLookup setObject:[NSString stringWithFormat:@"%@%@",rdObj.route_short_name, [rdObj.directionDict objectForKey:key] ] forKey: [NSString stringWithFormat:@"%@%@",rdObj.route_short_name, key] ];
             
-            NSString *url = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/BusSchedules/?req1=%@&req2=%@&req6=%d", self.routeData.stop_id, rdObj.route_short_name, _numResults];
+            NSString *url = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/BusSchedules/?req1=%@&req2=%@&req6=%d", self.routeData.stop_id, rdObj.route_short_name, _numResults];
             [urlArray addObject: url];
         }
         
@@ -282,7 +282,7 @@
         for (NSString *url in urlArray)
         {
         
-            //NSString *url = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/BusSchedules/?req1=%@&req6=%d", basicRoute.stop_id, _numResults ];
+            //NSString *url = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/BusSchedules/?req1=%@&req6=%d", basicRoute.stop_id, _numResults ];
             NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] ];
             
             NSLog(@"NTVC:lJP - |%@|", url);

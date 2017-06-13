@@ -18,6 +18,7 @@
 
 
 #import "SEPTACommon.h"
+#import "NSDictionary+ObjectKeyNil.h"
 
 
 @protocol GetAlertDataAPIProtocol <NSObject>
@@ -48,7 +49,8 @@
 
 -(void) clearAllRoutes;
 
-
 -(NSDictionary*) getAlert;
+
++(NSString *)convertHTML:(NSString *)html;
 
 @end
