@@ -74,8 +74,6 @@
 		274B924D188738D700C7A297 /* AutomaticUpdates.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 274B924C188738D700C7A297 /* AutomaticUpdates.storyboard */; };
 		274B92531887392300C7A297 /* AutomaticUpdatesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274B92521887392300C7A297 /* AutomaticUpdatesViewController.m */; };
 		274B925B188985D300C7A297 /* UpdateStateMachineObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 274B925A188985D300C7A297 /* UpdateStateMachineObject.m */; };
-		2750C57B19193BF300113BD3 /* SEPTA.zip in Resources */ = {isa = PBXBuildFile; fileRef = 2750C57A19193BF300113BD3 /* SEPTA.zip */; };
-		27568B9318F32F4300422E37 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27568B9218F32F4300422E37 /* libPods.a */; };
 		275BE98916835938007AF394 /* RouteInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 275BE98816835938007AF394 /* RouteInfo.m */; };
 		2765AA6617AC122000F93FBE /* RouteSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AA6517AC122000F93FBE /* RouteSelectionViewController.m */; };
 		2765AA6917AC122E00F93FBE /* SchedulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2765AA6817AC122E00F93FBE /* SchedulesViewController.m */; };
@@ -388,6 +386,7 @@
 		568FA4CF1535C189009345F5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568FA4C61535C189009345F5 /* QuartzCore.framework */; };
 		568FA4F21535C6CF009345F5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568FA4F01535C6CF009345F5 /* MapKit.framework */; };
 		568FA4F31535C6CF009345F5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568FA4F11535C6CF009345F5 /* SystemConfiguration.framework */; };
+		5879BD7F1F27CA5A004E620F /* SEPTA.zip in Resources */ = {isa = PBXBuildFile; fileRef = 5879BD7E1F27CA5A004E620F /* SEPTA.zip */; };
 		840D112817C2BC3B00AD26BB /* FareStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840D112717C2BC3B00AD26BB /* FareStoryboard.storyboard */; };
 		840D112B17C2BC5600AD26BB /* FareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D112A17C2BC5600AD26BB /* FareViewController.m */; };
 		840D112F17C2BE2700AD26BB /* ConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D112E17C2BE2700AD26BB /* ConnectViewController.m */; };
@@ -727,6 +726,7 @@
 		84D12B4D17E0A3E50079A8D7 /* NearestTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D12B4C17E0A3E30079A8D7 /* NearestTimeCell.m */; };
 		84D12B5117E1F0B90079A8D7 /* MobileSiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D12B5017E1F0B90079A8D7 /* MobileSiteViewController.m */; };
 		84F6AFFC17B18F5300680007 /* TabbedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6AFFB17B18F5300680007 /* TabbedButton.m */; };
+		C597B5AAA45E466935AB08BF /* libPods-iSEPTA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F9F8ED5737D8D5E59320DC /* libPods-iSEPTA.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -824,7 +824,6 @@
 		274B92521887392300C7A297 /* AutomaticUpdatesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AutomaticUpdatesViewController.m; path = "Storyboards/Common Storyboards/AutomaticUpdates/AutomaticUpdatesViewController.m"; sourceTree = "<group>"; };
 		274B9259188985D300C7A297 /* UpdateStateMachineObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UpdateStateMachineObject.h; path = "Storyboards/Common Storyboards/AutomaticUpdates/UpdateStateMachineObject.h"; sourceTree = "<group>"; };
 		274B925A188985D300C7A297 /* UpdateStateMachineObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdateStateMachineObject.m; path = "Storyboards/Common Storyboards/AutomaticUpdates/UpdateStateMachineObject.m"; sourceTree = "<group>"; };
-		2750C57A19193BF300113BD3 /* SEPTA.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = SEPTA.zip; path = database/SEPTA.zip; sourceTree = SOURCE_ROOT; };
 		27568B7818F32F3500422E37 /* libPods-AFDownloadRequestOperation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AFDownloadRequestOperation.a"; path = "Pods/build/Debug-iphoneos/libPods-AFDownloadRequestOperation.a"; sourceTree = "<group>"; };
 		27568B7918F32F3500422E37 /* libPods-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AFNetworking.a"; path = "Pods/build/Debug-iphoneos/libPods-AFNetworking.a"; sourceTree = "<group>"; };
 		27568B7A18F32F3500422E37 /* libPods-ALAlertBanner.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ALAlertBanner.a"; path = "Pods/build/Debug-iphoneos/libPods-ALAlertBanner.a"; sourceTree = "<group>"; };
@@ -1254,8 +1253,7 @@
 		568FA4EE1535C6B2009345F5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		568FA4F01535C6CF009345F5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		568FA4F11535C6CF009345F5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		5D0D1C7FB3FB402E8733DC76 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		60B3BFD7FD9E633588B1167A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		5879BD7E1F27CA5A004E620F /* SEPTA.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = SEPTA.zip; sourceTree = "<group>"; };
 		840D112717C2BC3B00AD26BB /* FareStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FareStoryboard.storyboard; path = Storyboards/Connect/Fare/FareStoryboard.storyboard; sourceTree = "<group>"; };
 		840D112917C2BC5600AD26BB /* FareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FareViewController.h; path = Storyboards/Connect/Fare/FareViewController.h; sourceTree = "<group>"; };
 		840D112A17C2BC5600AD26BB /* FareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FareViewController.m; path = Storyboards/Connect/Fare/FareViewController.m; sourceTree = "<group>"; };
@@ -1608,7 +1606,9 @@
 		84D12B5017E1F0B90079A8D7 /* MobileSiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MobileSiteViewController.m; path = Storyboards/Realtime/Mobile/MobileSiteViewController.m; sourceTree = "<group>"; };
 		84F6AFFA17B18F5300680007 /* TabbedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabbedButton.h; path = Storyboards/Common/TabbedButton.h; sourceTree = "<group>"; };
 		84F6AFFB17B18F5300680007 /* TabbedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabbedButton.m; path = Storyboards/Common/TabbedButton.m; sourceTree = "<group>"; };
-		F1428D496BE92BF63CF0F60E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C2F9F8ED5737D8D5E59320DC /* libPods-iSEPTA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iSEPTA.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCB0757687E00CF66BF6E746 /* Pods-iSEPTA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSEPTA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iSEPTA/Pods-iSEPTA.debug.xcconfig"; sourceTree = "<group>"; };
+		DEE308015455B0EF3A5F133E /* Pods-iSEPTA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSEPTA.release.xcconfig"; path = "Pods/Target Support Files/Pods-iSEPTA/Pods-iSEPTA.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1616,7 +1616,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27568B9318F32F4300422E37 /* libPods.a in Frameworks */,
 				568FA4F31535C6CF009345F5 /* SystemConfiguration.framework in Frameworks */,
 				273763AD178EE9C6006EE244 /* AddressBook.framework in Frameworks */,
 				273763AE178EE9C6006EE244 /* AddressBookUI.framework in Frameworks */,
@@ -1645,6 +1644,7 @@
 				568FA47F1535C0E0009345F5 /* UIKit.framework in Frameworks */,
 				568FA4811535C0E0009345F5 /* Foundation.framework in Frameworks */,
 				568FA4831535C0E0009345F5 /* CoreGraphics.framework in Frameworks */,
+				C597B5AAA45E466935AB08BF /* libPods-iSEPTA.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2161,8 +2161,8 @@
 		27A4349F162DAA4200D9724A /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				5879BD7E1F27CA5A004E620F /* SEPTA.zip */,
 				270D8C8E1CB2C87500CA4E6C /* SEPTA.md5 */,
-				2750C57A19193BF300113BD3 /* SEPTA.zip */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -2671,15 +2671,6 @@
 			name = Xibs;
 			sourceTree = "<group>";
 		};
-		417984B5D3188F75E9399AC8 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				60B3BFD7FD9E633588B1167A /* Pods.debug.xcconfig */,
-				F1428D496BE92BF63CF0F60E /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		56061B081535CC6600B272B0 /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -2712,7 +2703,7 @@
 				568FA4841535C0E0009345F5 /* iSEPTAv2 */,
 				568FA47D1535C0E0009345F5 /* Frameworks */,
 				568FA47B1535C0E0009345F5 /* Products */,
-				417984B5D3188F75E9399AC8 /* Pods */,
+				DA55C07A44C03A0BCF7E1A84 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2771,7 +2762,7 @@
 				568FA4801535C0E0009345F5 /* Foundation.framework */,
 				568FA4821535C0E0009345F5 /* CoreGraphics.framework */,
 				568FA4A71535C0E0009345F5 /* SenTestingKit.framework */,
-				5D0D1C7FB3FB402E8733DC76 /* libPods.a */,
+				C2F9F8ED5737D8D5E59320DC /* libPods-iSEPTA.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2779,6 +2770,7 @@
 		568FA4841535C0E0009345F5 /* iSEPTAv2 */ = {
 			isa = PBXGroup;
 			children = (
+				5879BD801F27CD99004E620F /* Model */,
 				8435FAEA1BB047F8002A8AC4 /* kml */,
 				8417B39C17EDD3FB00E08237 /* internetReachability.h */,
 				8417B39D17EDD3FB00E08237 /* internetReachability.m */,
@@ -2802,6 +2794,13 @@
 				27C8DC8E167FAD8C0030BAA8 /* SettingsGuide.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5879BD801F27CD99004E620F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		840D10B417C2B98400AD26BB /* Connect */ = {
@@ -3886,6 +3885,15 @@
 			name = Mobile;
 			sourceTree = "<group>";
 		};
+		DA55C07A44C03A0BCF7E1A84 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CCB0757687E00CF66BF6E746 /* Pods-iSEPTA.debug.xcconfig */,
+				DEE308015455B0EF3A5F133E /* Pods-iSEPTA.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3893,12 +3901,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 568FA4B81535C0E0009345F5 /* Build configuration list for PBXNativeTarget "iSEPTA" */;
 			buildPhases = (
-				B1C08DA0DE96484BAE0ADAC3 /* Check Pods Manifest.lock */,
+				EBA1A03125382350E47B00F9 /* [CP] Check Pods Manifest.lock */,
 				568FA4761535C0E0009345F5 /* Sources */,
 				568FA4771535C0E0009345F5 /* Frameworks */,
 				568FA4781535C0E0009345F5 /* Resources */,
-				9977320E255646AEBE73FB25 /* Copy Pods Resources */,
-				271A00A41A714F5200EBD6C8 /* Run Script */,
+				7570F214AE128F36B018CA48 /* [CP] Embed Pods Frameworks */,
+				19700F6C733A1A3F2F2206C0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3970,6 +3978,7 @@
 				8418ED9D17FEF6BD003607D1 /* trailpass.png in Resources */,
 				8418EDE217FEF6BD003607D1 /* Sys-Status-RRL-Click.png in Resources */,
 				8418EDCD17FEF6BD003607D1 /* Find_loc-white.png in Resources */,
+				5879BD7F1F27CA5A004E620F /* SEPTA.zip in Resources */,
 				279A89961BB20D0800A9F664 /* 120.kml in Resources */,
 				8418EE7717FEF6BD003607D1 /* Station_alarm_white.png in Resources */,
 				8418EECF18058D67003607D1 /* NTA.png in Resources */,
@@ -4192,7 +4201,6 @@
 				8418EDF017FEF6BD003607D1 /* tabMapIconSelected@2x.png in Resources */,
 				8418EDED17FEF6BD003607D1 /* tabMapIcon.png in Resources */,
 				8418EE9F17FEF6BD003607D1 /* gradient_vertical_line.png in Resources */,
-				2750C57B19193BF300113BD3 /* SEPTA.zip in Resources */,
 				8418EEC218058D67003607D1 /* NTA-reverse@2x.png in Resources */,
 				279A89611BB20D0800A9F664 /* 53.kml in Resources */,
 				8418EDB017FEF6BD003607D1 /* Fare@2x.png in Resources */,
@@ -4507,48 +4515,50 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		271A00A41A714F5200EBD6C8 /* Run Script */ = {
+		19700F6C733A1A3F2F2206C0 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Run Script";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "";
-		};
-		9977320E255646AEBE73FB25 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iSEPTA/Pods-iSEPTA-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B1C08DA0DE96484BAE0ADAC3 /* Check Pods Manifest.lock */ = {
+		7570F214AE128F36B018CA48 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iSEPTA/Pods-iSEPTA-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EBA1A03125382350E47B00F9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -4743,12 +4753,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = SDK/lib/Release$EFFECTIVE_PLATFORM_NAME;
-				"HEADER_SEARCH_PATHS[arch=*]" = SDK/lib/Release$EFFECTIVE_PLATFORM_NAME;
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				"HEADER_SEARCH_PATHS[arch=*]" = "$(inherited)";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				LIBRARY_SEARCH_PATHS = SDK/lib/Release$EFFECTIVE_PLATFORM_NAME;
-				"LIBRARY_SEARCH_PATHS[arch=*]" = SDK/lib/Release$EFFECTIVE_PLATFORM_NAME;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = SEPTA;
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv7s";
@@ -4780,11 +4790,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = SDK/lib/Release$EFFECTIVE_PLATFORM_NAME;
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				LIBRARY_SEARCH_PATHS = SDK/lib/Release$EFFECTIVE_PLATFORM_NAME;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = SEPTA;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -4794,13 +4805,14 @@
 		};
 		568FA4B91535C0E0009345F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 60B3BFD7FD9E633588B1167A /* Pods.debug.xcconfig */;
+			baseConfigurationReference = CCB0757687E00CF66BF6E746 /* Pods-iSEPTA.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = L636S9JLLY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4822,7 +4834,7 @@
 				"HEADER_SEARCH_PATHS[arch=*]" = "$(inherited)";
 				INFOPLIST_FILE = "iSEPTAv2/iSEPTA-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
@@ -4837,13 +4849,14 @@
 		};
 		568FA4BA1535C0E0009345F5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F1428D496BE92BF63CF0F60E /* Pods.release.xcconfig */;
+			baseConfigurationReference = DEE308015455B0EF3A5F133E /* Pods-iSEPTA.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = L636S9JLLY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4858,7 +4871,7 @@
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "iSEPTAv2/iSEPTA-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;

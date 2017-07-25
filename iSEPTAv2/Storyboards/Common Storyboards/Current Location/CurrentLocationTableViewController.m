@@ -524,7 +524,7 @@
 
 -(NSArray*) findNearestTrainStop
 {
- 
+ /*
     NSString *queryStr;
     
     
@@ -630,13 +630,16 @@
     
     return tempArr;
     
+    */
+    return nil;
 }
 
 
 #define DEG2RAD(degrees) (degrees * 0.01745327) // degrees * pi over 180
 
-static void distanceFunc(sqlite3_context *context, int argc, sqlite3_value **argv)
+static void distanceFunc(id context, int argc, id argv)
 {
+    /*
     // check that we have four arguments (lat1, lon1, lat2, lon2)
     assert(argc == 4);
     // check that all four arguments are non-null
@@ -655,12 +658,13 @@ static void distanceFunc(sqlite3_context *context, int argc, sqlite3_value **arg
     // apply the spherical law of cosines to our latitudes and longitudes, and set the result appropriately
     // 6378.1 is the approximate radius of the earth in kilometres
     sqlite3_result_double(context, acos(sin(lat1rad) * sin(lat2rad) + cos(lat1rad) * cos(lat2rad) * cos(DEG2RAD(lon2) - DEG2RAD(lon1))) * 6378.1);
+     */
 }
 
 
 -(NSArray*) findNearestTransitStop
 {
-
+/*
 //    NSString *queryStr = [NSString stringWithFormat:@"SELECT *, ABS(%10.7f - stop_lat) + ABS(%10.7f - stop_lon) as dist FROM stops_bus ORDER BY dist ASC LIMIT 10", _currentLocation.coordinate.latitude, _currentLocation.coordinate.longitude];
 
     FMDatabase *database = [FMDatabase databaseWithPath: [GTFSCommon filePath] ];
@@ -720,7 +724,8 @@ static void distanceFunc(sqlite3_context *context, int argc, sqlite3_value **arg
     [database close];
     
     return tempArr;
-    
+    */
+    return nil;
 }
 
 //-(NSString*) filePath
