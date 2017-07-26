@@ -2172,7 +2172,7 @@
     NSString *stringURL = @"https://www3.septa.org/api/Alerts/get_alert_data.php?req1=generic";
 //    NSString *stringURL = @"https://www3.septa.org/beta/agga/Alerts/gga.php";
     
-    NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString* webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
 //    NSLog(@"RSVC - getGenericAlertDetails -- api url: %@", webStringURL);
     
     _alertMainOp = [[NSBlockOperation alloc] init];
@@ -2225,7 +2225,7 @@
     
     NSString* stringURL = @"https://www3.septa.org/api/Alerts/";
     
-    NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString* webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
 //    NSLog(@"RSVC - getMainAlerts -- api url: %@", webStringURL);
     
     _alertMainOp = [[NSBlockOperation alloc] init];

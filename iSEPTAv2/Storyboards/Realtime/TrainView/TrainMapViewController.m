@@ -356,7 +356,7 @@
         case kGTFSRouteTypeBus:
         case kGTFSRouteTypeTrolley:
             stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TransitView/%@", self.routeName];
-            webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
 //            NSLog(@"TMVC - getLatestJSONData (bus) -- api url: %@", webStringURL);
             
             break;
@@ -364,7 +364,7 @@
         case kGTFSRouteTypeRail:
             
             stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TrainView/"];
-            webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
 //            NSLog(@"TMVC - getLatestJSONData (rail) -- api url: %@", webStringURL);
             
             break;

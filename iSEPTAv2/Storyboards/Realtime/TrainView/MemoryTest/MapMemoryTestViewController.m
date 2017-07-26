@@ -127,7 +127,7 @@
     NSString *stringURL;
     
     stringURL = [NSString stringWithFormat:@"http://www3.septa.org/hackathon/TrainView/"];
-    webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];
     NSLog(@"NTVVC - getLatestJSONData (rail) -- api url: %@", webStringURL);
     
     _jsonOp     = [[NSBlockOperation alloc] init];

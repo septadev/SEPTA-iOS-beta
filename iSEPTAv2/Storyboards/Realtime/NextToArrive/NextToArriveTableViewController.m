@@ -1960,7 +1960,7 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
 //    NSString *stringURL = @"https://www3.septa.org/beta/agga/Alerts/gga.php";
 
     
-    NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString* webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
     NSLog(@"NTAVC - getAlertsForLines -- api url: %@", webStringURL);
 
     _alertOp = [[NSBlockOperation alloc] init];
@@ -2028,7 +2028,7 @@ NSComparisonResult (^sortNextToArriveSaveObjectByDate)(NTASaveObject*,NTASaveObj
     NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/api/NextToArrive/%@/%@/50", _newStartStop, _newEndStop];
     
     
-    NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString* webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
     NSLog(@"NTAVC - getLatestRailJSONData -- api url: %@", webStringURL);
     
     [SVProgressHUD showWithStatus:@"Loading..."];

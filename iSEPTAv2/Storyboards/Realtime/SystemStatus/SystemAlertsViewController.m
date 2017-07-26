@@ -551,7 +551,7 @@
 {
  
     NSString *elevatorURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/elevator/"];
-    NSString *elevatorWebURL = [elevatorURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *elevatorWebURL = [elevatorURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
         
@@ -581,7 +581,7 @@
     
     NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/Alerts/get_alert_data.php?req1=%@", [_ssObject route_id] ];
     
-    NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString* webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
     NSLog(@"SAVC - getAlertData -- api url: %@", webStringURL);
     
     [SVProgressHUD showWithStatus:@"Loading..."];

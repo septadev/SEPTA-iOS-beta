@@ -663,7 +663,7 @@
         
         NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/locations/get_locations.php?lon=%9.6f&lat=%9.6f&radius=%6.3f&number_of_results=400&type=%@", location.coordinate.longitude, location.coordinate.latitude, radiusInMiles, type];
         
-        NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString* webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
         NSURL *url = [NSURL URLWithString: webStringURL];
         NSURLRequest *request = [NSURLRequest requestWithURL: url];
         

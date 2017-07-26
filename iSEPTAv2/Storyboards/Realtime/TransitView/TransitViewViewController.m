@@ -673,7 +673,7 @@
     
     NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/Alerts/"];
     
-    NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString* webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
     NSLog(@"TVVC - getSystemStatus -- api url: %@", webStringURL);
     
     [SVProgressHUD showWithStatus:@"Loading..."];

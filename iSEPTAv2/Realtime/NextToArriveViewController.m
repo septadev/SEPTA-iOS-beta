@@ -1264,7 +1264,7 @@ NSComparisonResult (^sortNTASaveObjectByDate)(NTASaveObject*,NTASaveObject*) = ^
     {
         
 //        NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TransitView/%@",@"1"];
-//        NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//        NSString* webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
 //        NSLog(@"DSTVC - getLatestBusJSONData -- api url: %@", webStringURL);
 //        
 //        //    [SVProgressHUD showWithStatus:@"Retrieving data..."];
@@ -1287,7 +1287,7 @@ NSComparisonResult (^sortNTASaveObjectByDate)(NTASaveObject*,NTASaveObject*) = ^
         NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/NextToArrive/%@/%@/50", _newStartStop, _newEndStop];
 
         
-        NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString* webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
         NSLog(@"NtAVC - getLatestRailJSONData -- api url: %@", webStringURL);
         
         [SVProgressHUD showWithStatus:@"Loading..."]

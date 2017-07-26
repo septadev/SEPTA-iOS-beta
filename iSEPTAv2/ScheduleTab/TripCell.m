@@ -85,12 +85,13 @@
 
 -(void) addArrivalTimeStr:(NSString*) arrivalStr
 {
-    
+    NSDateFormatter *formatter = [NSDateFormatter new];
     arrivalTimeStr = arrivalStr;
     
     // Populates the arrival time label and calulates then populates the time before arrival label
     if ( _use24HourTime )
         [[self lblStartTime] setText: arrivalStr];
+        
     else
     {
         NSArray *timeArray = [NSArray arrayWithArray: [arrivalStr componentsSeparatedByString:@":"] ];

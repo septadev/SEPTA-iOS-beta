@@ -470,7 +470,7 @@
 //    {
 //        
 //        NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TransitView/%@", self.routeName];
-//        webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//        webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
 //        NSLog(@"NTVVC - getLatestJSONData (bus) -- api url: %@", webStringURL);
 //        
 //    }
@@ -478,7 +478,7 @@
 //    {
 //        
 //        NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TrainView/"];
-//        webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//        webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
 //        NSLog(@"NTVVC - getLatestJSONData (rail) -- api url: %@", webStringURL);
 //        
 //        [SVProgressHUD showWithStatus:@"Loading..."];
@@ -537,7 +537,7 @@
     {
         
         NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TransitView/%@", routeName];
-        NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString* webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
         NSLog(@"TMVC - getLatestRouteLocations (bus) -- api url: %@", webStringURL);
         
         [SVProgressHUD showWithStatus:@"Loading..."];
@@ -553,7 +553,7 @@
     {
         
         NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TrainView/"];
-        NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString* webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
         NSLog(@"TMVC - getLatestRouteLocations (rail) -- api url: %@", webStringURL);
         
         [SVProgressHUD showWithStatus:@"Loading..."];

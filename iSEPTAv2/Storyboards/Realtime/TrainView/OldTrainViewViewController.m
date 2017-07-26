@@ -430,7 +430,7 @@
     {
         
         NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TransitView/%@", routeName];
-        NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString* webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
         NSLog(@"NTVVC - getLatestRouteLocations (bus) -- api url: %@", webStringURL);
         
         [SVProgressHUD showWithStatus:@"Loading..."];
@@ -446,7 +446,7 @@
     {
         
         NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TrainView/"];
-        NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString* webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
         NSLog(@"NTVVC - getLatestRouteLocations (rail) -- api url: %@", webStringURL);
         
         [SVProgressHUD showWithStatus:@"Loading..."];

@@ -194,8 +194,8 @@
     }
     
     // What is the current day of the week.
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
+    NSCalendar *gregorian = [NSCalendar currentCalendar];
+    NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate:[NSDate date] ];
     NSInteger weekday = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
 
     int dayOfWeek = 0;  // Sun: 64, Mon: 32, Tue: 16, Wed: 8, Thu: 4, Fri: 2, Sat: 1
@@ -355,8 +355,8 @@
     {
         
         // What is the current day of the week.
-        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-        NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate:[NSDate date] ];
+        NSCalendar *gregorian = [NSCalendar currentCalendar];
+        NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate:[NSDate date] ];
         NSInteger today = [comps weekday];  // Sunday is 1, Mon (2), Tue (3), Wed (4), Thur (5), Fri (6) and Sat (7)
 
         NSInteger daysToAdd = 0;

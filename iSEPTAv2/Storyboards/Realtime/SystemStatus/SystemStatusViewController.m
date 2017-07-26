@@ -614,7 +614,7 @@
 //    NSString* stringURL = [NSString stringWithFormat:@"http://52.91.240.255/Playground/agga_AlertNull/"];
     
 
-    NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString* webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
     NSLog(@"NTAVC - getSystemStatus -- api url: %@", webStringURL);
     
     [SVProgressHUD showWithStatus:@"Loading..."];

@@ -57,7 +57,7 @@
     
 
     
-//    NSString *webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//    NSString *webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
     
 //    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString: webStringURL]
 //                                             cachePolicy:NSURLRequestUseProtocolCachePolicy

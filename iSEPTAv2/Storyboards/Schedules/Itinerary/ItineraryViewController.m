@@ -3459,7 +3459,7 @@
     if ( [self.travelMode isEqualToString:@"Rail"] )
     {
         NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TrainView/"];
-        NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString* webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
 //        NSLog(@"IVC - loadLatestRailJSONData -- api url: %@", webStringURL);
         
         NSData *realtimeData = [NSData dataWithContentsOfURL:[NSURL URLWithString:webStringURL] ];

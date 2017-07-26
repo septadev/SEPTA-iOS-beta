@@ -1110,7 +1110,7 @@
     {
     
         NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TransitView/%@",routeData.current.route_short_name];
-        NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString* webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
         NSLog(@"DSTVC - getLatestBusJSONData -- api url: %@", webStringURL);
         
     //    [SVProgressHUD showWithStatus:@"Retrieving data..."];
@@ -1126,7 +1126,7 @@
     {
         
         NSString* stringURL = [NSString stringWithFormat:@"https://www3.septa.org/hackathon/TrainView/"];
-        NSString* webStringURL = [stringURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString* webStringURL = [stringURL stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.alphanumericCharacterSet];;
         NSLog(@"DSTVC - getLatestRailJSONData -- api url: %@", webStringURL);
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul), ^{
