@@ -61,7 +61,7 @@ typedef NS_ENUM(NSInteger, QueryTypeUsed)
     int queryType;
     BOOL _segueInAction;
     
-    BusRouteSorterView *sorterBar;
+
     
 }
 

@@ -2748,7 +2748,7 @@
         _inDarkTerritory = NO;
     
 }
-
+/*
 #pragma mark - StopNamesForRoute Protocol
 -(void) doneButtonPressed:(StopNamesForRouteTableController *)view WithStopName:(NSString *)selectedStopName andStopID:(NSInteger)selectedStopID withDirectionID:(NSNumber*)directionID
 {
@@ -2866,7 +2866,7 @@
     _startENDButtonPressed = 0;
     
 }
-
+*/
 
 -(StopNamesObject*) reverseStopLookUpForStopID:(int) stopID
 {
