@@ -387,6 +387,7 @@
 		568FA4F21535C6CF009345F5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568FA4F01535C6CF009345F5 /* MapKit.framework */; };
 		568FA4F31535C6CF009345F5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568FA4F11535C6CF009345F5 /* SystemConfiguration.framework */; };
 		5879BD7F1F27CA5A004E620F /* SEPTA.zip in Resources */ = {isa = PBXBuildFile; fileRef = 5879BD7E1F27CA5A004E620F /* SEPTA.zip */; };
+		58ACBB731F28F136007CA25D /* PassedRouteData.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ACBB711F28F136007CA25D /* PassedRouteData.m */; };
 		840D112817C2BC3B00AD26BB /* FareStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840D112717C2BC3B00AD26BB /* FareStoryboard.storyboard */; };
 		840D112B17C2BC5600AD26BB /* FareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D112A17C2BC5600AD26BB /* FareViewController.m */; };
 		840D112F17C2BE2700AD26BB /* ConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840D112E17C2BE2700AD26BB /* ConnectViewController.m */; };
@@ -1255,6 +1256,8 @@
 		568FA4F11535C6CF009345F5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5879BD7E1F27CA5A004E620F /* SEPTA.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = SEPTA.zip; sourceTree = "<group>"; };
 		5879BD811F27CFE3004E620F /* iSEPTA-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "iSEPTA-Bridging-Header.h"; path = "iSEPTAv2/iSEPTA-Bridging-Header.h"; sourceTree = "<group>"; };
+		58ACBB711F28F136007CA25D /* PassedRouteData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PassedRouteData.m; path = ScheduleTab/PassedRouteData.m; sourceTree = "<group>"; };
+		58ACBB721F28F136007CA25D /* PassedRouteData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PassedRouteData.h; path = ScheduleTab/PassedRouteData.h; sourceTree = "<group>"; };
 		840D112717C2BC3B00AD26BB /* FareStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FareStoryboard.storyboard; path = Storyboards/Connect/Fare/FareStoryboard.storyboard; sourceTree = "<group>"; };
 		840D112917C2BC5600AD26BB /* FareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FareViewController.h; path = Storyboards/Connect/Fare/FareViewController.h; sourceTree = "<group>"; };
 		840D112A17C2BC5600AD26BB /* FareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FareViewController.m; path = Storyboards/Connect/Fare/FareViewController.m; sourceTree = "<group>"; };
@@ -2545,6 +2548,8 @@
 		27E0688C17998AE400BA7A92 /* Main Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				58ACBB711F28F136007CA25D /* PassedRouteData.m */,
+				58ACBB721F28F136007CA25D /* PassedRouteData.h */,
 				8422195E183FF62A0099B69F /* Subclasses */,
 				27E0688D17998B3300BA7A92 /* MainStoryboard.storyboard */,
 				27A6933917A04920008712FB /* Common Storyboards */,
@@ -4700,6 +4705,7 @@
 				277C1F071BB1EB84000695CA /* KMLAnnotation.m in Sources */,
 				27EBAD8B17E36DCB00189970 /* AttributionCell.m in Sources */,
 				27EBAD8E17E36EE900189970 /* AttributionData.m in Sources */,
+				58ACBB731F28F136007CA25D /* PassedRouteData.m in Sources */,
 				27EBAD9617E7518700189970 /* GetAlertDataAPI.m in Sources */,
 				278F5E591A7833D6004D6716 /* StopNamesObject.m in Sources */,
 				276AE2531BB1D8E100DE84D3 /* KMLOverlayView.m in Sources */,
