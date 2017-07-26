@@ -51,7 +51,6 @@
 
 
 // --==  Connected VCs  ==--
-#import "StopNamesForRouteTableController.h"
 #import "StopNamesTableViewController.h"
 #import "FareViewController.h"
 #import "SystemAlertsViewController.h"
@@ -60,7 +59,7 @@
 
 
 // --==  Categories  ==--
-#import "NSString+Hashes.h"
+
 #import "UIColor+SEPTA.h"
 // --==  Categories  ==--
 
