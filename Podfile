@@ -1,5 +1,5 @@
 platform :ios, '9.3'
-
+use_frameworks!
 target 'iSEPTA' do
     pod 'AFNetworking', '~> 2.5'
     pod 'AFDownloadRequestOperation', '~> 2.0'

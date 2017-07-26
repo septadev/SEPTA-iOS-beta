@@ -726,7 +726,7 @@
 		84D12B4D17E0A3E50079A8D7 /* NearestTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D12B4C17E0A3E30079A8D7 /* NearestTimeCell.m */; };
 		84D12B5117E1F0B90079A8D7 /* MobileSiteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D12B5017E1F0B90079A8D7 /* MobileSiteViewController.m */; };
 		84F6AFFC17B18F5300680007 /* TabbedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F6AFFB17B18F5300680007 /* TabbedButton.m */; };
-		C597B5AAA45E466935AB08BF /* libPods-iSEPTA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F9F8ED5737D8D5E59320DC /* libPods-iSEPTA.a */; };
+		A6887DEAC41C20828EC282CA /* Pods_iSEPTA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E035FE57EA394BBBD8F2139B /* Pods_iSEPTA.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1607,9 +1607,9 @@
 		84D12B5017E1F0B90079A8D7 /* MobileSiteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MobileSiteViewController.m; path = Storyboards/Realtime/Mobile/MobileSiteViewController.m; sourceTree = "<group>"; };
 		84F6AFFA17B18F5300680007 /* TabbedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabbedButton.h; path = Storyboards/Common/TabbedButton.h; sourceTree = "<group>"; };
 		84F6AFFB17B18F5300680007 /* TabbedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabbedButton.m; path = Storyboards/Common/TabbedButton.m; sourceTree = "<group>"; };
-		C2F9F8ED5737D8D5E59320DC /* libPods-iSEPTA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iSEPTA.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCB0757687E00CF66BF6E746 /* Pods-iSEPTA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSEPTA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iSEPTA/Pods-iSEPTA.debug.xcconfig"; sourceTree = "<group>"; };
 		DEE308015455B0EF3A5F133E /* Pods-iSEPTA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSEPTA.release.xcconfig"; path = "Pods/Target Support Files/Pods-iSEPTA/Pods-iSEPTA.release.xcconfig"; sourceTree = "<group>"; };
+		E035FE57EA394BBBD8F2139B /* Pods_iSEPTA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iSEPTA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1645,7 +1645,7 @@
 				568FA47F1535C0E0009345F5 /* UIKit.framework in Frameworks */,
 				568FA4811535C0E0009345F5 /* Foundation.framework in Frameworks */,
 				568FA4831535C0E0009345F5 /* CoreGraphics.framework in Frameworks */,
-				C597B5AAA45E466935AB08BF /* libPods-iSEPTA.a in Frameworks */,
+				A6887DEAC41C20828EC282CA /* Pods_iSEPTA.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2764,7 +2764,7 @@
 				568FA4801535C0E0009345F5 /* Foundation.framework */,
 				568FA4821535C0E0009345F5 /* CoreGraphics.framework */,
 				568FA4A71535C0E0009345F5 /* SenTestingKit.framework */,
-				C2F9F8ED5737D8D5E59320DC /* libPods-iSEPTA.a */,
+				E035FE57EA394BBBD8F2139B /* Pods_iSEPTA.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

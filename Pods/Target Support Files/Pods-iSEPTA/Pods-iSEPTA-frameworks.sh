@@ -87,6 +87,35 @@ strip_invalid_archs() {
   fi
 }
 
+
+if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/AFDownloadRequestOperation/AFDownloadRequestOperation.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/ALAlertBanner/ALAlertBanner.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/ECSlidingViewController/ECSlidingViewController.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FMDB/FMDB.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FXForms/FXForms.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MMDrawerController/MMDrawerController.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/REMenu/REMenu.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Reachability/Reachability.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SVProgressHUD/SVProgressHUD.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SVPullToRefresh/SVPullToRefresh.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/ZipArchive/ZipArchive.framework"
+fi
+if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/AFDownloadRequestOperation/AFDownloadRequestOperation.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/ALAlertBanner/ALAlertBanner.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/ECSlidingViewController/ECSlidingViewController.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FMDB/FMDB.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FXForms/FXForms.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MMDrawerController/MMDrawerController.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/REMenu/REMenu.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Reachability/Reachability.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SVProgressHUD/SVProgressHUD.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SVPullToRefresh/SVPullToRefresh.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/ZipArchive/ZipArchive.framework"
+fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
 fi
