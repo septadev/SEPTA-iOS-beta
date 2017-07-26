@@ -31,7 +31,7 @@
 
 
 //  --==  ViewControllers  ==--
-#import <CurrentLocationProtocol/CurrentLocationProtocol.h>
+#import "CurrentLocationProtocol.h"
 
 #import "EnterAddressViewController.h"
 #import "StopNamesTableViewController.h"
