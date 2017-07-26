@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 // --==  Pods  ==--
-#import <SVProgressHUD.h>
-#import <Reachability.h>
-#import <AFNetworking.h>
+#import <SVProgressHUD/SVProgressHUD.h>
+#import <Reachability/Reachability.h>
+#import <AFNetworking/AFNetworking.h>
 
 
 // --==  Data Models  ==--

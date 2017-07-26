@@ -11,8 +11,8 @@
 
 
 // --==  Pods  ==--
-#import <FMDatabase.h>
-#import <ZipArchive.h>
+#import <FMDB/FMDatabase.h>
+#import <ZipArchive/ZipArchive.h>
 // --==  Pods  ==--
 
 

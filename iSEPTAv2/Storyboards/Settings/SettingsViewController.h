@@ -26,7 +26,7 @@
 
 
 // --==  PODs  ==--
-#import <SVProgressHUD.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 
 typedef NS_ENUM(NSInteger, SettingsCellOrder)  // According to the GTFS guidelines

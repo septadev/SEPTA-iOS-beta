@@ -11,7 +11,7 @@
 
 
 // Pods
-#import <SVProgressHUD.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 // Custom Data Models
 #import "RouteData.h"

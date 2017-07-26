@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 
 // Pods
-#import <Reachability.h>
-#import <ZipArchive.h>
-#import <AFDownloadRequestOperation.h>
+#import <Reachability/Reachability.h>
+#import <ZipArchive/ZipArchive.h>
+#import <AFDownloadRequestOperation/AFDownloadRequestOperation.h>
 
 #import "GetDBVersionAPI.h"
 

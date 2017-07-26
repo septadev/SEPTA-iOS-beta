@@ -49,10 +49,10 @@
 
 
 // --==  Pods  ==--
-#import <FMDatabase.h>
-#import <SVProgressHUD.h>
-#import <Reachability.h>
-#import <AFNetworking.h>
+#import <FMDB/FMDatabase.h>
+#import <SVProgressHUD/SVProgressHUD.h>
+#import <Reachability/Reachability.h>
+#import <AFNetworking/AFNetworking.h>
 
 
 // --==  Xibs  ==--

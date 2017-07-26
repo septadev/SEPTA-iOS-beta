@@ -10,7 +10,7 @@
 
 
 // --==  PODs  ==--
-#import <SVProgressHUD.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 
 @interface FacebookViewController : UIViewController <UIWebViewDelegate>

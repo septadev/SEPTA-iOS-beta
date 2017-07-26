@@ -20,13 +20,13 @@
 #import <CommonCrypto/CommonCrypto.h>
 
 // --==  PODs  ==--
-#import <Reachability.h>
-#import <SVProgressHUD.h>
+#import <Reachability/Reachability.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 #import <ALAlertBanner/ALAlertBanner.h>
-#import <AFNetworking.h>
-#import <AFDownloadRequestOperation.h>
-#import <ZipArchive.h>
-#import <FMDatabase.h>
+#import <AFNetworking/AFNetworking.h>
+#import <AFDownloadRequestOperation/AFDownloadRequestOperation.h>
+#import <ZipArchive/ZipArchive.h>
+#import <FMDB/FMDatabase.h>
 
 #import "UpdateStateMachineObject.h"
 #import "BackgroundDownloader.h"

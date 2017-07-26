@@ -36,9 +36,9 @@
 
 
 // --==  PODs  ==--
-#import <SVProgressHUD.h>
-#import <AFNetworking.h>
-#import <Reachability.h>
+#import <SVProgressHUD/SVProgressHUD.h>
+#import <AFNetworking/AFNetworking.h>
+#import <Reachability/Reachability.h>
 
 
 #define JSON_REFRESH_RATE 20.0f

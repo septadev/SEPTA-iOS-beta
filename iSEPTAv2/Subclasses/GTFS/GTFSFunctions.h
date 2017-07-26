@@ -11,8 +11,8 @@
 #import "GTFSCommon.h"
 
 // --==  PODs  ==--
-#import <ZipArchive.h>
-#import <FMDatabase.h>
+#import <ZipArchive/ZipArchive.h>
+#import <FMDB/FMDatabase.h>
 
 
 @interface GTFSFunctions : NSObject

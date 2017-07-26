@@ -14,10 +14,10 @@
 
 
 // --==  Pods  ==--
-#import <SVProgressHUD.h>
-#import <FMDatabase.h>
-#import <Reachability.h>
-#import <REMenu.h>
+#import <SVProgressHUD/SVProgressHUD.h>
+#import <FMDB/FMDatabase.h>
+#import <Reachability/Reachability.h>
+#import <REMenu/REMenu.h>
 // --==  Pods  ==--
 
 

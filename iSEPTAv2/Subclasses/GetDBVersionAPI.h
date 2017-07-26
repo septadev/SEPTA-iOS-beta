@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 // --==  PODs  ==--
-#import <AFNetworking.h>
-#import <Reachability.h>
+#import <AFNetworking/AFNetworking.h>
+#import <Reachability/Reachability.h>
 
 #import "NSDictionary+ObjectKeyNil.h"
 

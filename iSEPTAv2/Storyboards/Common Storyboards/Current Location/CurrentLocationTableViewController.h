@@ -11,8 +11,8 @@
 
 
 // PODs
-#import <FMDatabase.h>
-#import <SVPullToRefresh.h>
+#import <FMDB/FMDatabase.h>
+#import <SVPullToRefresh/SVPullToRefresh.h>
 
 
 // Subclasses
@@ -31,7 +31,7 @@
 
 
 //  --==  ViewControllers  ==--
-#import <CurrentLocationProtocol.h>
+#import <CurrentLocationProtocol/CurrentLocationProtocol.h>
 
 #import "EnterAddressViewController.h"
 #import "StopNamesTableViewController.h"

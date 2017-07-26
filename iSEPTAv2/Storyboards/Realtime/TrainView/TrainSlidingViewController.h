@@ -18,7 +18,7 @@
 
 
 // --==  PODs  ==--
-#import <ECSlidingViewController.h>
+#import <ECSlidingViewController/ECSlidingViewController.h>
 
 
 

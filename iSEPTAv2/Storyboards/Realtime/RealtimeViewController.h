@@ -41,12 +41,12 @@
 
 
 // --==  PODs  ==--
-#import <Reachability.h>
-#import <SVProgressHUD.h>
-#import <FMDatabase.h>
+#import <Reachability/Reachability.h>
+#import <SVProgressHUD/SVProgressHUD.h>
+#import <FMDB/FMDatabase.h>
 #import <ALAlertBanner/ALAlertBanner.h>
-#import <AFNetworking.h>
-#import <AFDownloadRequestOperation.h>
+#import <AFNetworking/AFNetworking.h>
+#import <AFDownloadRequestOperation/AFDownloadRequestOperation.h>
 
 
 

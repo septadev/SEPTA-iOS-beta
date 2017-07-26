@@ -25,10 +25,10 @@
 
 
 // --==  PODs  ==--
-#import <ECSlidingViewController.h>
-#import <SVProgressHUD.h>
-#import <AFNetworking.h>
-#import <Reachability.h>
+#import <ECSlidingViewController/ECSlidingViewController.h>
+#import <SVProgressHUD/SVProgressHUD.h>
+#import <AFNetworking/AFNetworking.h>
+#import <Reachability/Reachability.h>
 #import <ALAlertBanner/ALAlertBanner.h>
 // --==  PODs  ==--
 

@@ -23,7 +23,7 @@
 #import "SEPTATitle.h"
 
 // --==  PODs  ==--
-#import <SVProgressHUD.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 
 typedef NS_ENUM(NSInteger, ConnectCellOrder)  // According to the GTFS guidelines

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 // --==  PODs  ==--
-#import <SVProgressHUD.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 
 @interface MoreDetailsViewController : UIViewController <UIWebViewDelegate>

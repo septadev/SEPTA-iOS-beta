@@ -21,9 +21,9 @@
 
 
 // --==  PODs  ==--
-#import <AFNetworking.h>
-#import <SVProgressHUD.h>
-#import <FMDatabase.h>
+#import <AFNetworking/AFNetworking.h>
+#import <SVProgressHUD/SVProgressHUD.h>
+#import <FMDB/FMDatabase.h>
 
 // --==  Xibs  ==--
 #import "NearestTimeCell.h"
