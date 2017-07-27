@@ -1,0 +1,611 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		583BEC751F2A601000235EDE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583BEC741F2A601000235EDE /* MainViewController.swift */; };
+		58B299F61F2A32020080B0DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B299F51F2A32020080B0DA /* main.m */; };
+		58B299F91F2A32020080B0DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B299F81F2A32020080B0DA /* AppDelegate.m */; };
+		58B299FC1F2A32020080B0DA /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B299FB1F2A32020080B0DA /* FirstViewController.m */; };
+		58B299FF1F2A32020080B0DA /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B299FE1F2A32020080B0DA /* SecondViewController.m */; };
+		58B29A021F2A32020080B0DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58B29A001F2A32020080B0DA /* Main.storyboard */; };
+		58B29A041F2A32020080B0DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58B29A031F2A32020080B0DA /* Assets.xcassets */; };
+		58B29A071F2A32020080B0DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58B29A051F2A32020080B0DA /* LaunchScreen.storyboard */; };
+		58B29A121F2A32020080B0DA /* SeptaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B29A111F2A32020080B0DA /* SeptaTests.m */; };
+		58B29AA51F2A3D960080B0DA /* SeptaCoreData.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58B29A941F2A36300080B0DA /* SeptaCoreData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		58B29AA61F2A3D9E0080B0DA /* SeptaMapping.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58B29A9D1F2A3B4E0080B0DA /* SeptaMapping.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		58B29AA71F2A3D9E0080B0DA /* SeptaNetworking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58B29A9B1F2A3B450080B0DA /* SeptaNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		58B29AAA1F2A3E700080B0DA /* Family.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B29AA91F2A3E700080B0DA /* Family.swift */; };
+		58EDE29C1F2A627900F97B8C /* about.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58EDE29B1F2A627900F97B8C /* about.storyboard */; };
+		58EDE29E1F2A628300F97B8C /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58EDE29D1F2A628300F97B8C /* settings.storyboard */; };
+		58EDE2A01F2A628E00F97B8C /* contact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58EDE29F1F2A628E00F97B8C /* contact.storyboard */; };
+		58EDE2A21F2A629900F97B8C /* favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58EDE2A11F2A629900F97B8C /* favorites.storyboard */; };
+		58EDE2A41F2A62A900F97B8C /* nextToArrive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58EDE2A31F2A62A900F97B8C /* nextToArrive.storyboard */; };
+		58EDE2A61F2A62B600F97B8C /* alerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58EDE2A51F2A62B600F97B8C /* alerts.storyboard */; };
+		58EDE2A81F2A62C100F97B8C /* fairs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58EDE2A71F2A62C100F97B8C /* fairs.storyboard */; };
+		58EDE2AA1F2A62CB00F97B8C /* schedules.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58EDE2A91F2A62CB00F97B8C /* schedules.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		58B29A0E1F2A32020080B0DA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58B299E91F2A32020080B0DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 58B299F01F2A32020080B0DA;
+			remoteInfo = Septa;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		58B29AA01F2A3D380080B0DA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				58B29AA51F2A3D960080B0DA /* SeptaCoreData.framework in CopyFiles */,
+				58B29AA61F2A3D9E0080B0DA /* SeptaMapping.framework in CopyFiles */,
+				58B29AA71F2A3D9E0080B0DA /* SeptaNetworking.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		583BEC741F2A601000235EDE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		58B299F11F2A32020080B0DA /* Septa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Septa.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		58B299F51F2A32020080B0DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		58B299F71F2A32020080B0DA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		58B299F81F2A32020080B0DA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		58B299FA1F2A32020080B0DA /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		58B299FB1F2A32020080B0DA /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		58B299FD1F2A32020080B0DA /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		58B299FE1F2A32020080B0DA /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		58B29A011F2A32020080B0DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		58B29A031F2A32020080B0DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		58B29A061F2A32020080B0DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		58B29A081F2A32020080B0DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58B29A0D1F2A32020080B0DA /* SeptaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeptaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		58B29A111F2A32020080B0DA /* SeptaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SeptaTests.m; sourceTree = "<group>"; };
+		58B29A131F2A32020080B0DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58B29A941F2A36300080B0DA /* SeptaCoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaCoreData.framework; path = "../../../../DerivedData/Septa-cyhvqqfccphbryfykqpgnmhbvujj/Build/Products/Debug-iphonesimulator/SeptaCoreData.framework"; sourceTree = "<group>"; };
+		58B29A9B1F2A3B450080B0DA /* SeptaNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaNetworking.framework; path = "../../../../DerivedData/Septa-cyhvqqfccphbryfykqpgnmhbvujj/Build/Products/Debug-iphonesimulator/SeptaNetworking.framework"; sourceTree = "<group>"; };
+		58B29A9D1F2A3B4E0080B0DA /* SeptaMapping.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaMapping.framework; path = "../../../../DerivedData/Septa-cyhvqqfccphbryfykqpgnmhbvujj/Build/Products/Debug-iphonesimulator/SeptaMapping.framework"; sourceTree = "<group>"; };
+		58B29AA81F2A3E700080B0DA /* Septa-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Septa-Bridging-Header.h"; sourceTree = "<group>"; };
+		58B29AA91F2A3E700080B0DA /* Family.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Family.swift; sourceTree = "<group>"; };
+		58EDE29B1F2A627900F97B8C /* about.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = about.storyboard; sourceTree = "<group>"; };
+		58EDE29D1F2A628300F97B8C /* settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = settings.storyboard; sourceTree = "<group>"; };
+		58EDE29F1F2A628E00F97B8C /* contact.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = contact.storyboard; sourceTree = "<group>"; };
+		58EDE2A11F2A629900F97B8C /* favorites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = favorites.storyboard; sourceTree = "<group>"; };
+		58EDE2A31F2A62A900F97B8C /* nextToArrive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = nextToArrive.storyboard; sourceTree = "<group>"; };
+		58EDE2A51F2A62B600F97B8C /* alerts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = alerts.storyboard; sourceTree = "<group>"; };
+		58EDE2A71F2A62C100F97B8C /* fairs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = fairs.storyboard; sourceTree = "<group>"; };
+		58EDE2A91F2A62CB00F97B8C /* schedules.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = schedules.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		58B299EE1F2A32020080B0DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58B29A0A1F2A32020080B0DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		583BEC721F2A5F2700235EDE /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				583BEC761F2A60FD00235EDE /* Favorites */,
+				583BEC771F2A610400235EDE /* NextToArrive */,
+				583BEC7A1F2A616A00235EDE /* Alerts */,
+				583BEC781F2A610E00235EDE /* FaresAndTransitInfo */,
+				583BEC791F2A613500235EDE /* Schedules */,
+				583BEC7B1F2A619C00235EDE /* Contact */,
+				583BEC7C1F2A61A400235EDE /* Settings */,
+				583BEC7D1F2A61AE00235EDE /* About */,
+			);
+			name = Features;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		583BEC731F2A5FA900235EDE /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				58B29A001F2A32020080B0DA /* Main.storyboard */,
+				583BEC741F2A601000235EDE /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		583BEC761F2A60FD00235EDE /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				58EDE2A11F2A629900F97B8C /* favorites.storyboard */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		583BEC771F2A610400235EDE /* NextToArrive */ = {
+			isa = PBXGroup;
+			children = (
+				58EDE2A31F2A62A900F97B8C /* nextToArrive.storyboard */,
+			);
+			path = NextToArrive;
+			sourceTree = "<group>";
+		};
+		583BEC781F2A610E00235EDE /* FaresAndTransitInfo */ = {
+			isa = PBXGroup;
+			children = (
+				58EDE2A71F2A62C100F97B8C /* fairs.storyboard */,
+			);
+			path = FaresAndTransitInfo;
+			sourceTree = "<group>";
+		};
+		583BEC791F2A613500235EDE /* Schedules */ = {
+			isa = PBXGroup;
+			children = (
+				58EDE2A91F2A62CB00F97B8C /* schedules.storyboard */,
+			);
+			path = Schedules;
+			sourceTree = "<group>";
+		};
+		583BEC7A1F2A616A00235EDE /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				58EDE2A51F2A62B600F97B8C /* alerts.storyboard */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		583BEC7B1F2A619C00235EDE /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				58EDE29F1F2A628E00F97B8C /* contact.storyboard */,
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
+		583BEC7C1F2A61A400235EDE /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				58EDE29D1F2A628300F97B8C /* settings.storyboard */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		583BEC7D1F2A61AE00235EDE /* About */ = {
+			isa = PBXGroup;
+			children = (
+				58EDE29B1F2A627900F97B8C /* about.storyboard */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		58B299E81F2A32020080B0DA = {
+			isa = PBXGroup;
+			children = (
+				58B299F31F2A32020080B0DA /* Septa */,
+				58B29A101F2A32020080B0DA /* SeptaTests */,
+				58B299F21F2A32020080B0DA /* Products */,
+				58B29A931F2A36300080B0DA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		58B299F21F2A32020080B0DA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				58B299F11F2A32020080B0DA /* Septa.app */,
+				58B29A0D1F2A32020080B0DA /* SeptaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		58B299F31F2A32020080B0DA /* Septa */ = {
+			isa = PBXGroup;
+			children = (
+				583BEC731F2A5FA900235EDE /* Main */,
+				583BEC721F2A5F2700235EDE /* Features */,
+				58B299F71F2A32020080B0DA /* AppDelegate.h */,
+				58B29A051F2A32020080B0DA /* LaunchScreen.storyboard */,
+				58B299F81F2A32020080B0DA /* AppDelegate.m */,
+				58B299FA1F2A32020080B0DA /* FirstViewController.h */,
+				58B299FB1F2A32020080B0DA /* FirstViewController.m */,
+				58B299FD1F2A32020080B0DA /* SecondViewController.h */,
+				58B29AA91F2A3E700080B0DA /* Family.swift */,
+				58B299FE1F2A32020080B0DA /* SecondViewController.m */,
+				58B29A031F2A32020080B0DA /* Assets.xcassets */,
+				58B299F41F2A32020080B0DA /* Supporting Files */,
+			);
+			path = Septa;
+			sourceTree = "<group>";
+		};
+		58B299F41F2A32020080B0DA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				58B29A081F2A32020080B0DA /* Info.plist */,
+				58B29AA81F2A3E700080B0DA /* Septa-Bridging-Header.h */,
+				58B299F51F2A32020080B0DA /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		58B29A101F2A32020080B0DA /* SeptaTests */ = {
+			isa = PBXGroup;
+			children = (
+				58B29A111F2A32020080B0DA /* SeptaTests.m */,
+				58B29A131F2A32020080B0DA /* Info.plist */,
+			);
+			path = SeptaTests;
+			sourceTree = "<group>";
+		};
+		58B29A931F2A36300080B0DA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				58B29A9D1F2A3B4E0080B0DA /* SeptaMapping.framework */,
+				58B29A9B1F2A3B450080B0DA /* SeptaNetworking.framework */,
+				58B29A941F2A36300080B0DA /* SeptaCoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		58B299F01F2A32020080B0DA /* Septa */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58B29A161F2A32020080B0DA /* Build configuration list for PBXNativeTarget "Septa" */;
+			buildPhases = (
+				58B299ED1F2A32020080B0DA /* Sources */,
+				58B299EE1F2A32020080B0DA /* Frameworks */,
+				58B299EF1F2A32020080B0DA /* Resources */,
+				58B29AA01F2A3D380080B0DA /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Septa;
+			productName = Septa;
+			productReference = 58B299F11F2A32020080B0DA /* Septa.app */;
+			productType = "com.apple.product-type.application";
+		};
+		58B29A0C1F2A32020080B0DA /* SeptaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58B29A191F2A32020080B0DA /* Build configuration list for PBXNativeTarget "SeptaTests" */;
+			buildPhases = (
+				58B29A091F2A32020080B0DA /* Sources */,
+				58B29A0A1F2A32020080B0DA /* Frameworks */,
+				58B29A0B1F2A32020080B0DA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				58B29A0F1F2A32020080B0DA /* PBXTargetDependency */,
+			);
+			name = SeptaTests;
+			productName = SeptaTests;
+			productReference = 58B29A0D1F2A32020080B0DA /* SeptaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		58B299E91F2A32020080B0DA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Mark Broski";
+				TargetAttributes = {
+					58B299F01F2A32020080B0DA = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = L636S9JLLY;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+					};
+					58B29A0C1F2A32020080B0DA = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = L636S9JLLY;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 58B299F01F2A32020080B0DA;
+					};
+				};
+			};
+			buildConfigurationList = 58B299EC1F2A32020080B0DA /* Build configuration list for PBXProject "Septa" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 58B299E81F2A32020080B0DA;
+			productRefGroup = 58B299F21F2A32020080B0DA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				58B299F01F2A32020080B0DA /* Septa */,
+				58B29A0C1F2A32020080B0DA /* SeptaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		58B299EF1F2A32020080B0DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58B29A071F2A32020080B0DA /* LaunchScreen.storyboard in Resources */,
+				58EDE2A41F2A62A900F97B8C /* nextToArrive.storyboard in Resources */,
+				58B29A041F2A32020080B0DA /* Assets.xcassets in Resources */,
+				58EDE29C1F2A627900F97B8C /* about.storyboard in Resources */,
+				58B29A021F2A32020080B0DA /* Main.storyboard in Resources */,
+				58EDE29E1F2A628300F97B8C /* settings.storyboard in Resources */,
+				58EDE2A81F2A62C100F97B8C /* fairs.storyboard in Resources */,
+				58EDE2AA1F2A62CB00F97B8C /* schedules.storyboard in Resources */,
+				58EDE2A61F2A62B600F97B8C /* alerts.storyboard in Resources */,
+				58EDE2A21F2A629900F97B8C /* favorites.storyboard in Resources */,
+				58EDE2A01F2A628E00F97B8C /* contact.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58B29A0B1F2A32020080B0DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		58B299ED1F2A32020080B0DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58B29AAA1F2A3E700080B0DA /* Family.swift in Sources */,
+				58B299FF1F2A32020080B0DA /* SecondViewController.m in Sources */,
+				58B299F91F2A32020080B0DA /* AppDelegate.m in Sources */,
+				583BEC751F2A601000235EDE /* MainViewController.swift in Sources */,
+				58B299FC1F2A32020080B0DA /* FirstViewController.m in Sources */,
+				58B299F61F2A32020080B0DA /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58B29A091F2A32020080B0DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58B29A121F2A32020080B0DA /* SeptaTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		58B29A0F1F2A32020080B0DA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 58B299F01F2A32020080B0DA /* Septa */;
+			targetProxy = 58B29A0E1F2A32020080B0DA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		58B29A001F2A32020080B0DA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				58B29A011F2A32020080B0DA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		58B29A051F2A32020080B0DA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				58B29A061F2A32020080B0DA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		58B29A141F2A32020080B0DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		58B29A151F2A32020080B0DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		58B29A171F2A32020080B0DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = L636S9JLLY;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Septa/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.septa.Septa;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Septa/Septa-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		58B29A181F2A32020080B0DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = L636S9JLLY;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = Septa/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.septa.Septa;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Septa/Septa-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		58B29A1A1F2A32020080B0DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = L636S9JLLY;
+				INFOPLIST_FILE = SeptaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.septa.SeptaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Septa.app/Septa";
+			};
+			name = Debug;
+		};
+		58B29A1B1F2A32020080B0DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = L636S9JLLY;
+				INFOPLIST_FILE = SeptaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.septa.SeptaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Septa.app/Septa";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		58B299EC1F2A32020080B0DA /* Build configuration list for PBXProject "Septa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58B29A141F2A32020080B0DA /* Debug */,
+				58B29A151F2A32020080B0DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58B29A161F2A32020080B0DA /* Build configuration list for PBXNativeTarget "Septa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58B29A171F2A32020080B0DA /* Debug */,
+				58B29A181F2A32020080B0DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58B29A191F2A32020080B0DA /* Build configuration list for PBXNativeTarget "SeptaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58B29A1A1F2A32020080B0DA /* Debug */,
+				58B29A1B1F2A32020080B0DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 58B299E91F2A32020080B0DA /* Project object */;
+}
