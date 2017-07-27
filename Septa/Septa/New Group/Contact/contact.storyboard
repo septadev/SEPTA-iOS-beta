@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Contacts View Controller-->
         <scene sceneID="rUk-4f-qSt">
             <objects>
-                <tableViewController id="krv-A6-LbQ" sceneMemberID="viewController">
+                <tableViewController title="Contacts View Controller" id="krv-A6-LbQ" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Iye-Px-lR6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,16 +32,18 @@
                             <outlet property="delegate" destination="krv-A6-LbQ" id="SB7-7a-pmh"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="sOE-DG-5CU"/>
+                    <navigationItem key="navigationItem" title="Contact Us" id="sOE-DG-5CU"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fnR-bk-q9g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="540" y="90"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav Controller-->
         <scene sceneID="lVW-Wg-h1j">
             <objects>
-                <navigationController id="lL1-2R-9vv" sceneMemberID="viewController">
+                <navigationController title="Nav Controller" id="lL1-2R-9vv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Contact" id="Svs-UP-gfU"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TZ4-I5-xvb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

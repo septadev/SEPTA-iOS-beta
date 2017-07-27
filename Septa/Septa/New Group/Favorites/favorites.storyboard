@@ -6,53 +6,59 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
-        <scene sceneID="DWj-uT-aJC">
-            <objects>
-                <tableViewController id="NFh-no-M11" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="g2P-21-W8m">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qOO-iG-dwL">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qOO-iG-dwL" id="9xo-4Y-Eod">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="NFh-no-M11" id="17L-Bm-EU0"/>
-                            <outlet property="delegate" destination="NFh-no-M11" id="03z-ck-Cp1"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="srb-1C-oyD"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Lnc-ap-c83" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="590" y="72"/>
-        </scene>
-        <!--Navigation Controller-->
+        <!--Nav Controller-->
         <scene sceneID="6kW-a0-5Q5">
             <objects>
-                <navigationController id="PgU-tC-Xbs" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="favorites" title="Nav Controller" id="PgU-tC-Xbs" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="Favorite" landscapeImage="Favorite" id="8AL-ee-M5e"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3Zz-pW-NUS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.96728127850000001" blue="0.35519992830000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="NFh-no-M11" kind="relationship" relationship="rootViewController" id="p2y-ec-9Fw"/>
+                        <segue destination="9fg-fF-0lT" kind="relationship" relationship="rootViewController" id="ann-c6-siL"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="82y-4E-6Ev" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-362" y="72"/>
         </scene>
+        <!--Favorites-->
+        <scene sceneID="3HZ-MP-cgj">
+            <objects>
+                <viewController title="Favorites" id="9fg-fF-0lT" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IKI-ji-rvA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Favorites View Controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HPL-Rd-h3Z">
+                                <rect key="frame" x="82" y="195" width="245" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="r0o-VE-tqY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Favorites" id="Y4l-EX-Cv6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G3q-8u-Zo7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="645.60000000000002" y="34.632683658170919"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Favorite" width="40" height="30"/>
+    </resources>
 </document>

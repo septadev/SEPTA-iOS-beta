@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--About Us-->
         <scene sceneID="cmm-E6-r0q">
             <objects>
                 <tableViewController id="DQa-NN-55a" sceneMemberID="viewController">
@@ -32,16 +32,18 @@
                             <outlet property="delegate" destination="DQa-NN-55a" id="yaS-nx-feK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="e5V-8G-DFy"/>
+                    <navigationItem key="navigationItem" title="About Us" id="e5V-8G-DFy"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X5b-KB-Vdg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="559" y="24"/>
         </scene>
-        <!--About-->
+        <!--Nav Controller-->
         <scene sceneID="Bd7-8i-zRg">
             <objects>
-                <navigationController title="About" id="gRn-fI-DGT" sceneMemberID="viewController">
+                <navigationController title="Nav Controller" id="gRn-fI-DGT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="About" id="FZ0-GS-JFo"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HaP-Wz-aKs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

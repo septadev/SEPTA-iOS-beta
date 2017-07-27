@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Schedules View Controller-->
         <scene sceneID="ITd-yd-8p1">
             <objects>
-                <tableViewController id="mgD-ir-7HL" sceneMemberID="viewController">
+                <tableViewController title="Schedules View Controller" id="mgD-ir-7HL" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Jvi-F8-pLF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,16 +32,18 @@
                             <outlet property="delegate" destination="mgD-ir-7HL" id="3ct-UC-uPk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="gp9-YQ-lc3"/>
+                    <navigationItem key="navigationItem" title="Schedules" id="gp9-YQ-lc3"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MPb-nZ-m5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="666" y="72"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav Controller Scene-->
         <scene sceneID="83K-FD-2cf">
             <objects>
-                <navigationController id="Flo-rT-aez" sceneMemberID="viewController">
+                <navigationController title="Nav Controller Scene" id="Flo-rT-aez" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Schedules" id="PYF-su-Tfx"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oLi-QD-Eie">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -6,53 +6,55 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
-        <scene sceneID="ZL2-Rr-vhZ">
-            <objects>
-                <tableViewController id="sjc-Wj-g4T" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DkN-dI-sZg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="W5K-qq-q09">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W5K-qq-q09" id="E6v-Fl-cXJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="sjc-Wj-g4T" id="Qbc-48-8r5"/>
-                            <outlet property="delegate" destination="sjc-Wj-g4T" id="DhP-za-9e6"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="es3-gG-vQx"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W5N-qv-USM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="140" y="30"/>
-        </scene>
-        <!--Navigation Controller-->
+        <!--Nav Controller-->
         <scene sceneID="8lQ-ax-JJ9">
             <objects>
-                <navigationController id="4lt-fc-Rad" sceneMemberID="viewController">
+                <navigationController title="Nav Controller" id="4lt-fc-Rad" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Next to Arrive" image="NextToArrive" landscapeImage="NextToArrive" id="p4A-rk-lsI"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h50-1J-wdn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="sjc-Wj-g4T" kind="relationship" relationship="rootViewController" id="Xxh-gJ-sjk"/>
+                        <segue destination="9Vo-vn-udf" kind="relationship" relationship="rootViewController" id="sLF-hx-A01"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="irk-yA-FP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-812" y="30"/>
         </scene>
+        <!--Next To Arrive-->
+        <scene sceneID="j73-53-Tub">
+            <objects>
+                <viewController storyboardIdentifier="nextToArrive" title="Next To Arrive" id="9Vo-vn-udf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gAN-tc-gAL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Next to arrive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIU-2z-8m1">
+                                <rect key="frame" x="89" y="172" width="215" height="175"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="EfI-BV-qbR"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Next To Arrive" id="uGV-Ko-GIz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jP3-6O-Gdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="168.80000000000001" y="-18.440779610194905"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="NextToArrive" width="34" height="34"/>
+    </resources>
 </document>

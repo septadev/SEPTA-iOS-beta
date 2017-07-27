@@ -10,24 +10,21 @@
 		583BEC751F2A601000235EDE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583BEC741F2A601000235EDE /* MainViewController.swift */; };
 		58B299F61F2A32020080B0DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B299F51F2A32020080B0DA /* main.m */; };
 		58B299F91F2A32020080B0DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B299F81F2A32020080B0DA /* AppDelegate.m */; };
-		58B299FC1F2A32020080B0DA /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B299FB1F2A32020080B0DA /* FirstViewController.m */; };
-		58B299FF1F2A32020080B0DA /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B299FE1F2A32020080B0DA /* SecondViewController.m */; };
 		58B29A021F2A32020080B0DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58B29A001F2A32020080B0DA /* Main.storyboard */; };
-		58B29A041F2A32020080B0DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58B29A031F2A32020080B0DA /* Assets.xcassets */; };
 		58B29A071F2A32020080B0DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58B29A051F2A32020080B0DA /* LaunchScreen.storyboard */; };
 		58B29A121F2A32020080B0DA /* SeptaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B29A111F2A32020080B0DA /* SeptaTests.m */; };
 		58B29AA51F2A3D960080B0DA /* SeptaCoreData.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58B29A941F2A36300080B0DA /* SeptaCoreData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		58B29AA61F2A3D9E0080B0DA /* SeptaMapping.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58B29A9D1F2A3B4E0080B0DA /* SeptaMapping.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		58B29AA71F2A3D9E0080B0DA /* SeptaNetworking.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58B29A9B1F2A3B450080B0DA /* SeptaNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		58B29AAA1F2A3E700080B0DA /* Family.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B29AA91F2A3E700080B0DA /* Family.swift */; };
 		58EDE29C1F2A627900F97B8C /* about.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58EDE29B1F2A627900F97B8C /* about.storyboard */; };
 		58EDE29E1F2A628300F97B8C /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58EDE29D1F2A628300F97B8C /* settings.storyboard */; };
 		58EDE2A01F2A628E00F97B8C /* contact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58EDE29F1F2A628E00F97B8C /* contact.storyboard */; };
 		58EDE2A21F2A629900F97B8C /* favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58EDE2A11F2A629900F97B8C /* favorites.storyboard */; };
 		58EDE2A41F2A62A900F97B8C /* nextToArrive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58EDE2A31F2A62A900F97B8C /* nextToArrive.storyboard */; };
 		58EDE2A61F2A62B600F97B8C /* alerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58EDE2A51F2A62B600F97B8C /* alerts.storyboard */; };
-		58EDE2A81F2A62C100F97B8C /* fairs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58EDE2A71F2A62C100F97B8C /* fairs.storyboard */; };
+		58EDE2A81F2A62C100F97B8C /* fares.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58EDE2A71F2A62C100F97B8C /* fares.storyboard */; };
 		58EDE2AA1F2A62CB00F97B8C /* schedules.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58EDE2A91F2A62CB00F97B8C /* schedules.storyboard */; };
+		58EDE2AC1F2A6A6000F97B8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EDE2AB1F2A6A6000F97B8C /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,12 +58,7 @@
 		58B299F51F2A32020080B0DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		58B299F71F2A32020080B0DA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		58B299F81F2A32020080B0DA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		58B299FA1F2A32020080B0DA /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		58B299FB1F2A32020080B0DA /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		58B299FD1F2A32020080B0DA /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		58B299FE1F2A32020080B0DA /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		58B29A011F2A32020080B0DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		58B29A031F2A32020080B0DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		58B29A061F2A32020080B0DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		58B29A081F2A32020080B0DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58B29A0D1F2A32020080B0DA /* SeptaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeptaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,15 +68,15 @@
 		58B29A9B1F2A3B450080B0DA /* SeptaNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaNetworking.framework; path = "../../../../DerivedData/Septa-cyhvqqfccphbryfykqpgnmhbvujj/Build/Products/Debug-iphonesimulator/SeptaNetworking.framework"; sourceTree = "<group>"; };
 		58B29A9D1F2A3B4E0080B0DA /* SeptaMapping.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaMapping.framework; path = "../../../../DerivedData/Septa-cyhvqqfccphbryfykqpgnmhbvujj/Build/Products/Debug-iphonesimulator/SeptaMapping.framework"; sourceTree = "<group>"; };
 		58B29AA81F2A3E700080B0DA /* Septa-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Septa-Bridging-Header.h"; sourceTree = "<group>"; };
-		58B29AA91F2A3E700080B0DA /* Family.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Family.swift; sourceTree = "<group>"; };
 		58EDE29B1F2A627900F97B8C /* about.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = about.storyboard; sourceTree = "<group>"; };
 		58EDE29D1F2A628300F97B8C /* settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = settings.storyboard; sourceTree = "<group>"; };
 		58EDE29F1F2A628E00F97B8C /* contact.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = contact.storyboard; sourceTree = "<group>"; };
 		58EDE2A11F2A629900F97B8C /* favorites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = favorites.storyboard; sourceTree = "<group>"; };
 		58EDE2A31F2A62A900F97B8C /* nextToArrive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = nextToArrive.storyboard; sourceTree = "<group>"; };
 		58EDE2A51F2A62B600F97B8C /* alerts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = alerts.storyboard; sourceTree = "<group>"; };
-		58EDE2A71F2A62C100F97B8C /* fairs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = fairs.storyboard; sourceTree = "<group>"; };
+		58EDE2A71F2A62C100F97B8C /* fares.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = fares.storyboard; sourceTree = "<group>"; };
 		58EDE2A91F2A62CB00F97B8C /* schedules.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = schedules.storyboard; sourceTree = "<group>"; };
+		58EDE2AB1F2A6A6000F97B8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +141,7 @@
 		583BEC781F2A610E00235EDE /* FaresAndTransitInfo */ = {
 			isa = PBXGroup;
 			children = (
-				58EDE2A71F2A62C100F97B8C /* fairs.storyboard */,
+				58EDE2A71F2A62C100F97B8C /* fares.storyboard */,
 			);
 			path = FaresAndTransitInfo;
 			sourceTree = "<group>";
@@ -216,17 +208,11 @@
 		58B299F31F2A32020080B0DA /* Septa */ = {
 			isa = PBXGroup;
 			children = (
+				58EDE2AD1F2A6BB600F97B8C /* Assets */,
 				583BEC731F2A5FA900235EDE /* Main */,
 				583BEC721F2A5F2700235EDE /* Features */,
 				58B299F71F2A32020080B0DA /* AppDelegate.h */,
-				58B29A051F2A32020080B0DA /* LaunchScreen.storyboard */,
 				58B299F81F2A32020080B0DA /* AppDelegate.m */,
-				58B299FA1F2A32020080B0DA /* FirstViewController.h */,
-				58B299FB1F2A32020080B0DA /* FirstViewController.m */,
-				58B299FD1F2A32020080B0DA /* SecondViewController.h */,
-				58B29AA91F2A3E700080B0DA /* Family.swift */,
-				58B299FE1F2A32020080B0DA /* SecondViewController.m */,
-				58B29A031F2A32020080B0DA /* Assets.xcassets */,
 				58B299F41F2A32020080B0DA /* Supporting Files */,
 			);
 			path = Septa;
@@ -235,6 +221,7 @@
 		58B299F41F2A32020080B0DA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				58B29A051F2A32020080B0DA /* LaunchScreen.storyboard */,
 				58B29A081F2A32020080B0DA /* Info.plist */,
 				58B29AA81F2A3E700080B0DA /* Septa-Bridging-Header.h */,
 				58B299F51F2A32020080B0DA /* main.m */,
@@ -259,6 +246,14 @@
 				58B29A941F2A36300080B0DA /* SeptaCoreData.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		58EDE2AD1F2A6BB600F97B8C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				58EDE2AB1F2A6A6000F97B8C /* Assets.xcassets */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,11 +344,11 @@
 			files = (
 				58B29A071F2A32020080B0DA /* LaunchScreen.storyboard in Resources */,
 				58EDE2A41F2A62A900F97B8C /* nextToArrive.storyboard in Resources */,
-				58B29A041F2A32020080B0DA /* Assets.xcassets in Resources */,
+				58EDE2AC1F2A6A6000F97B8C /* Assets.xcassets in Resources */,
 				58EDE29C1F2A627900F97B8C /* about.storyboard in Resources */,
 				58B29A021F2A32020080B0DA /* Main.storyboard in Resources */,
 				58EDE29E1F2A628300F97B8C /* settings.storyboard in Resources */,
-				58EDE2A81F2A62C100F97B8C /* fairs.storyboard in Resources */,
+				58EDE2A81F2A62C100F97B8C /* fares.storyboard in Resources */,
 				58EDE2AA1F2A62CB00F97B8C /* schedules.storyboard in Resources */,
 				58EDE2A61F2A62B600F97B8C /* alerts.storyboard in Resources */,
 				58EDE2A21F2A629900F97B8C /* favorites.storyboard in Resources */,
@@ -375,11 +370,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58B29AAA1F2A3E700080B0DA /* Family.swift in Sources */,
-				58B299FF1F2A32020080B0DA /* SecondViewController.m in Sources */,
 				58B299F91F2A32020080B0DA /* AppDelegate.m in Sources */,
 				583BEC751F2A601000235EDE /* MainViewController.swift in Sources */,
-				58B299FC1F2A32020080B0DA /* FirstViewController.m in Sources */,
 				58B299F61F2A32020080B0DA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

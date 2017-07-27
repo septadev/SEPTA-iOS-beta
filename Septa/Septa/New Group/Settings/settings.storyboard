@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="sB4-Cb-9rg">
             <objects>
-                <tableViewController id="ij6-qs-xmS" sceneMemberID="viewController">
+                <tableViewController title="Settings View Controller" id="ij6-qs-xmS" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zou-bD-08B">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,16 +32,18 @@
                             <outlet property="delegate" destination="ij6-qs-xmS" id="GtE-1Z-XMA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="LXD-0p-RAW"/>
+                    <navigationItem key="navigationItem" title="Settings" id="LXD-0p-RAW"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RcW-ZD-E6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="577" y="94"/>
         </scene>
-        <!--Settings-->
+        <!--Nav Controller-->
         <scene sceneID="5Qd-gL-SfM">
             <objects>
-                <navigationController title="Settings" id="eXb-yl-Wzx" sceneMemberID="viewController">
+                <navigationController title="Nav Controller" id="eXb-yl-Wzx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" id="zRl-hJ-LFy"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UFA-0d-B48">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
