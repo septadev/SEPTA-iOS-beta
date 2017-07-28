@@ -13,7 +13,6 @@
 		583F0CBC1F2A896F007266EC /* SetupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583F0CBB1F2A896F007266EC /* SetupTests.swift */; };
 		5851E10A1F2AA47D009087CE /* ManagedObjectContext+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5851E1091F2AA47D009087CE /* ManagedObjectContext+Util.swift */; };
 		5851E10C1F2AA59E009087CE /* ManagedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5851E10B1F2AA59E009087CE /* ManagedProtocol.swift */; };
-		588A58D11F2B823B00AE02E5 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588A58D01F2B823B00AE02E5 /* Zip.framework */; };
 		588A58D51F2B846500AE02E5 /* PreloadedDatabaseMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588A58D41F2B846500AE02E5 /* PreloadedDatabaseMover.swift */; };
 		588A58D71F2B84E200AE02E5 /* SEPTA.zip in Resources */ = {isa = PBXBuildFile; fileRef = 588A58D61F2B84E200AE02E5 /* SEPTA.zip */; };
 		588A58D91F2B852400AE02E5 /* PreloadedDatabaseMoverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588A58D81F2B852400AE02E5 /* PreloadedDatabaseMoverTests.swift */; };
@@ -68,7 +67,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				588A58D11F2B823B00AE02E5 /* Zip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
