@@ -70,7 +70,7 @@ class SetupTests: XCTestCase {
         try! setup.createPersistentStore()
         let moc = setup.uiManagedObjectContext!
         let transitType = TransitType.insert(intoContext: moc, name: "Mark")
-        moc.saveOrRollback()
+        let _ = moc.saveOrRollback()
         XCTAssertNotNil(transitType)
     }
 

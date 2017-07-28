@@ -14,7 +14,7 @@ public final class SetupCoreData {
 
     lazy var managedObjectModelURL: URL? = {
         let bundle = Bundle(for: SetupCoreData.self)
-        return bundle.url(forResource: modelName, withExtension: "momd")
+        return bundle.url(forResource: SetupCoreData.modelName, withExtension: "momd")
     }()
 
     lazy var applicationDocumentsDirectory: URL? = {
@@ -24,7 +24,7 @@ public final class SetupCoreData {
     }()
 
     lazy var persistentStoreURL: URL? = {
-        self.applicationDocumentsDirectory!.appendingPathComponent(dbName)
+        self.applicationDocumentsDirectory!.appendingPathComponent(SetupCoreData.dbName)
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel? = {
