@@ -53,4 +53,9 @@ public final class SetupCoreData {
     public func destroyPersistentStore() throws {
         try persistentStoreCoordinator?.destroyPersistentStore(at: persistentStoreURL!, ofType: NSSQLiteStoreType, options: nil)
     }
+
+    public func resetPersistentStore() throws {
+        try destroyPersistentStore()
+        try createPersistentStore()
+    }
 }

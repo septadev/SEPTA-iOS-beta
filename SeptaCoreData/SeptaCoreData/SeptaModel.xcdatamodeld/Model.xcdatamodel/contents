@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13209.6" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Stop" representedClassName="Stop" syncable="YES">
+        <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="lon" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stop_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="wheelchairEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="transitType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TransitType" inverseName="stops" inverseEntity="TransitType" syncable="YES"/>
+    </entity>
     <entity name="TransitType" representedClassName="TransitType" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="stops" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Stop" inverseName="transitType" inverseEntity="Stop" syncable="YES"/>
     </entity>
     <elements>
-        <element name="TransitType" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="TransitType" positionX="-63" positionY="9" width="128" height="73"/>
+        <element name="Stop" positionX="198" positionY="33" width="128" height="133"/>
     </elements>
 </model>

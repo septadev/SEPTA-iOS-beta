@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		583F0CB41F2A8503007266EC /* SeptaModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 583F0CB21F2A8503007266EC /* SeptaModel.xcdatamodeld */; };
 		583F0CB71F2A85AC007266EC /* TransitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583F0CB61F2A85AC007266EC /* TransitType.swift */; };
 		583F0CB91F2A86E1007266EC /* SetupCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583F0CB81F2A86E1007266EC /* SetupCoreData.swift */; };
 		583F0CBC1F2A896F007266EC /* SetupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583F0CBB1F2A896F007266EC /* SetupTests.swift */; };
@@ -16,7 +15,12 @@
 		588A58D51F2B846500AE02E5 /* PreloadedDatabaseMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588A58D41F2B846500AE02E5 /* PreloadedDatabaseMover.swift */; };
 		588A58D71F2B84E200AE02E5 /* SEPTA.zip in Resources */ = {isa = PBXBuildFile; fileRef = 588A58D61F2B84E200AE02E5 /* SEPTA.zip */; };
 		588A58D91F2B852400AE02E5 /* PreloadedDatabaseMoverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588A58D81F2B852400AE02E5 /* PreloadedDatabaseMoverTests.swift */; };
-		588A58E11F2B89E600AE02E5 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588A58DC1F2B898F00AE02E5 /* Zip.framework */; };
+		588A58E21F2B8C2D00AE02E5 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588A58DC1F2B898F00AE02E5 /* Zip.framework */; };
+		588A58E41F2BAF6D00AE02E5 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588A58E31F2BAF5500AE02E5 /* SQLite.framework */; };
+		588A58E61F2BB47900AE02E5 /* SEPTA.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 588A58E51F2BB47900AE02E5 /* SEPTA.sqlite */; };
+		588A58E81F2BB6F000AE02E5 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588A58E71F2BB6F000AE02E5 /* Stop.swift */; };
+		588A58EB1F2BB78100AE02E5 /* SeptaModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 588A58E91F2BB78100AE02E5 /* SeptaModel.xcdatamodeld */; };
+		588A58ED1F2BBACB00AE02E5 /* StopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588A58EC1F2BBACB00AE02E5 /* StopTests.swift */; };
 		58B29A301F2A33240080B0DA /* SeptaCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B29A261F2A33240080B0DA /* SeptaCoreData.framework */; };
 		58B29A371F2A33240080B0DA /* SeptaCoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B29A291F2A33240080B0DA /* SeptaCoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -31,20 +35,7 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		588A58D31F2B841000AE02E5 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		583F0CB31F2A8503007266EC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		583F0CB61F2A85AC007266EC /* TransitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitType.swift; sourceTree = "<group>"; };
 		583F0CB81F2A86E1007266EC /* SetupCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupCoreData.swift; sourceTree = "<group>"; };
 		583F0CBA1F2A896F007266EC /* SeptaCoreDataTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SeptaCoreDataTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -56,7 +47,12 @@
 		588A58D41F2B846500AE02E5 /* PreloadedDatabaseMover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedDatabaseMover.swift; sourceTree = "<group>"; };
 		588A58D61F2B84E200AE02E5 /* SEPTA.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = SEPTA.zip; path = ../../../../../septafolder/SEPTA.zip; sourceTree = "<group>"; };
 		588A58D81F2B852400AE02E5 /* PreloadedDatabaseMoverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedDatabaseMoverTests.swift; sourceTree = "<group>"; };
-		588A58DC1F2B898F00AE02E5 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Zip.framework; sourceTree = "<group>"; };
+		588A58DC1F2B898F00AE02E5 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = SeptaCoreData/Frameworks/Zip.framework; sourceTree = SOURCE_ROOT; };
+		588A58E31F2BAF5500AE02E5 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SQLite.framework; sourceTree = "<group>"; };
+		588A58E51F2BB47900AE02E5 /* SEPTA.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = SEPTA.sqlite; sourceTree = "<group>"; };
+		588A58E71F2BB6F000AE02E5 /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
+		588A58EA1F2BB78100AE02E5 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		588A58EC1F2BBACB00AE02E5 /* StopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopTests.swift; sourceTree = "<group>"; };
 		58B29A261F2A33240080B0DA /* SeptaCoreData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SeptaCoreData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58B29A291F2A33240080B0DA /* SeptaCoreData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SeptaCoreData.h; sourceTree = "<group>"; };
 		58B29A2A1F2A33240080B0DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -69,7 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				588A58E11F2B89E600AE02E5 /* Zip.framework in Frameworks */,
+				588A58E21F2B8C2D00AE02E5 /* Zip.framework in Frameworks */,
+				588A58E41F2BAF6D00AE02E5 /* SQLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				583F0CB61F2A85AC007266EC /* TransitType.swift */,
+				588A58E71F2BB6F000AE02E5 /* Stop.swift */,
 			);
 			path = "Managed Objects";
 			sourceTree = "<group>";
@@ -104,9 +102,18 @@
 		588A58DB1F2B898F00AE02E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				588A58E31F2BAF5500AE02E5 /* SQLite.framework */,
 				588A58DC1F2B898F00AE02E5 /* Zip.framework */,
 			);
 			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		588A58EE1F2BBEA200AE02E5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				58B29A291F2A33240080B0DA /* SeptaCoreData.h */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		58B29A1C1F2A33240080B0DA = {
@@ -131,12 +138,12 @@
 		58B29A281F2A33240080B0DA /* SeptaCoreData */ = {
 			isa = PBXGroup;
 			children = (
+				58B29A2A1F2A33240080B0DA /* Info.plist */,
+				588A58EE1F2BBEA200AE02E5 /* Supporting Files */,
+				588A58E91F2BB78100AE02E5 /* SeptaModel.xcdatamodeld */,
 				588A58DB1F2B898F00AE02E5 /* Frameworks */,
 				588A58D61F2B84E200AE02E5 /* SEPTA.zip */,
 				583F0CB51F2A8599007266EC /* Managed Objects */,
-				58B29A291F2A33240080B0DA /* SeptaCoreData.h */,
-				58B29A2A1F2A33240080B0DA /* Info.plist */,
-				583F0CB21F2A8503007266EC /* SeptaModel.xcdatamodeld */,
 				583F0CB81F2A86E1007266EC /* SetupCoreData.swift */,
 				588A58D41F2B846500AE02E5 /* PreloadedDatabaseMover.swift */,
 				5851E1091F2AA47D009087CE /* ManagedObjectContext+Util.swift */,
@@ -148,8 +155,10 @@
 		58B29A331F2A33240080B0DA /* SeptaCoreDataTests */ = {
 			isa = PBXGroup;
 			children = (
+				588A58E51F2BB47900AE02E5 /* SEPTA.sqlite */,
 				58B29A361F2A33240080B0DA /* Info.plist */,
 				583F0CBB1F2A896F007266EC /* SetupTests.swift */,
+				588A58EC1F2BBACB00AE02E5 /* StopTests.swift */,
 				588A58D81F2B852400AE02E5 /* PreloadedDatabaseMoverTests.swift */,
 				583F0CBA1F2A896F007266EC /* SeptaCoreDataTests-Bridging-Header.h */,
 			);
@@ -178,8 +187,7 @@
 				58B29A221F2A33240080B0DA /* Frameworks */,
 				58B29A231F2A33240080B0DA /* Headers */,
 				58B29A241F2A33240080B0DA /* Resources */,
-				588A58D21F2B827100AE02E5 /* ShellScript */,
-				588A58D31F2B841000AE02E5 /* CopyFiles */,
+				588A58D21F2B827100AE02E5 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -262,22 +270,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				588A58E61F2BB47900AE02E5 /* SEPTA.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		588A58D21F2B827100AE02E5 /* ShellScript */ = {
+		588A58D21F2B827100AE02E5 /* Copy Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Frameworks/Zip.framework",
+				"$(SRCROOT)/SeptaCoreData/Frameworks/Zip.framework",
+				"$(SRCROOT)/SeptaCoreData/Frameworks/SQLite.framework",
 			);
+			name = "Copy Frameworks";
 			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SeptaCoreData.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Zip.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SQLite.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -293,9 +305,10 @@
 				5851E10A1F2AA47D009087CE /* ManagedObjectContext+Util.swift in Sources */,
 				5851E10C1F2AA59E009087CE /* ManagedProtocol.swift in Sources */,
 				588A58D51F2B846500AE02E5 /* PreloadedDatabaseMover.swift in Sources */,
-				583F0CB41F2A8503007266EC /* SeptaModel.xcdatamodeld in Sources */,
 				583F0CB71F2A85AC007266EC /* TransitType.swift in Sources */,
+				588A58EB1F2BB78100AE02E5 /* SeptaModel.xcdatamodeld in Sources */,
 				583F0CB91F2A86E1007266EC /* SetupCoreData.swift in Sources */,
+				588A58E81F2BB6F000AE02E5 /* Stop.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				588A58ED1F2BBACB00AE02E5 /* StopTests.swift in Sources */,
 				583F0CBC1F2A896F007266EC /* SetupTests.swift in Sources */,
 				588A58D91F2B852400AE02E5 /* PreloadedDatabaseMoverTests.swift in Sources */,
 			);
@@ -444,8 +458,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/SeptaCoreData/Frameworks",
 				);
 				INFOPLIST_FILE = SeptaCoreData/Info.plist;
@@ -473,8 +485,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/SeptaCoreData/Frameworks",
 				);
 				INFOPLIST_FILE = SeptaCoreData/Info.plist;
@@ -553,12 +563,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		583F0CB21F2A8503007266EC /* SeptaModel.xcdatamodeld */ = {
+		588A58E91F2BB78100AE02E5 /* SeptaModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				583F0CB31F2A8503007266EC /* Model.xcdatamodel */,
+				588A58EA1F2BB78100AE02E5 /* Model.xcdatamodel */,
 			);
-			currentVersion = 583F0CB31F2A8503007266EC /* Model.xcdatamodel */;
+			currentVersion = 588A58EA1F2BB78100AE02E5 /* Model.xcdatamodel */;
 			path = SeptaModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

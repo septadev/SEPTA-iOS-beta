@@ -1,21 +1,27 @@
 // SEPTA.org, created on 7/28/17.
 
-
 import XCTest
 import CoreData
 @testable import SeptaCoreData
 
 class ProloadedDatabaseMoverTests: XCTestCase {
-
-    let mover = PreloadedDatabaseMover()
     let fileManager = FileManager.default
+    let mover = PreloadedDatabaseMover()
 
-    func testURL(){
-
-        let url = mover.preloadedDatabaseURL
-        fileManager.fileExists(atPath: url!.path)
-    
+    func testPreloadedURL() {
+        let url = mover.preloadedZippedDatabaseURL
+        XCTAssertNotNil(url)
     }
 
+    func testDestinationURL() {
+        let url = mover.databaseDestinationURL
+        XCTAssertNotNil(url)
+    }
 
+    func testUnzippingDatabase() {
+        mover.expandZipDatabaseFile()
+        let path = mover.databaseDestinationURL!.path
+        let fileExists = fileManager.fileExists(atPath: path)
+        XCTAssertTrue(fileExists)
+    }
 }

@@ -67,10 +67,13 @@ class SetupTests: XCTestCase {
 
     func testAddSomeObjectsWithValue() {
         let setup = SetupCoreData()
+        try! setup.destroyPersistentStore()
         try! setup.createPersistentStore()
         let moc = setup.uiManagedObjectContext!
         let transitType = TransitType.insert(intoContext: moc, name: "Mark")
-        let _ = moc.saveOrRollback()
+        _ = moc.saveOrRollback()
+        let count = getTransitTypeCount(moc: moc)
+        XCTAssertEqual(count, 1, "Should be a result there")
         XCTAssertNotNil(transitType)
     }
 
