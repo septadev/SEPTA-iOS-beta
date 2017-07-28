@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		583BEC751F2A601000235EDE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583BEC741F2A601000235EDE /* MainViewController.swift */; };
-		5851E1121F2B704E009087CE /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5851E1111F2B704E009087CE /* Favorites.swift */; };
 		58B299F61F2A32020080B0DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B299F51F2A32020080B0DA /* main.m */; };
 		58B299F91F2A32020080B0DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B299F81F2A32020080B0DA /* AppDelegate.m */; };
 		58B29A021F2A32020080B0DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58B29A001F2A32020080B0DA /* Main.storyboard */; };
@@ -55,7 +54,6 @@
 
 /* Begin PBXFileReference section */
 		583BEC741F2A601000235EDE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		5851E1111F2B704E009087CE /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
 		58B299F11F2A32020080B0DA /* Septa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Septa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58B299F51F2A32020080B0DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		58B299F71F2A32020080B0DA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				58EDE2A11F2A629900F97B8C /* favorites.storyboard */,
-				5851E1111F2B704E009087CE /* Favorites.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -374,7 +371,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				58B299F91F2A32020080B0DA /* AppDelegate.m in Sources */,
-				5851E1121F2B704E009087CE /* Favorites.swift in Sources */,
 				583BEC751F2A601000235EDE /* MainViewController.swift in Sources */,
 				58B299F61F2A32020080B0DA /* main.m in Sources */,
 			);
@@ -537,7 +533,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Septa/Septa-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -555,7 +551,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Septa/Septa-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
