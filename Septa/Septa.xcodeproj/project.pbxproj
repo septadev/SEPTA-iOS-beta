@@ -514,7 +514,7 @@
 				INFOPLIST_FILE = Septa/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.septa.Septa;
+				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Septa/Septa-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -532,7 +532,7 @@
 				INFOPLIST_FILE = Septa/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.septa.Septa;
+				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Septa/Septa-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

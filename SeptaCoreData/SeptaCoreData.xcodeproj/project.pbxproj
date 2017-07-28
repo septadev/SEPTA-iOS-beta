@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		583F0CB41F2A8503007266EC /* SeptaModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 583F0CB21F2A8503007266EC /* SeptaModel.xcdatamodeld */; };
+		583F0CB71F2A85AC007266EC /* TransitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583F0CB61F2A85AC007266EC /* TransitType.swift */; };
+		583F0CB91F2A86E1007266EC /* SetupCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583F0CB81F2A86E1007266EC /* SetupCoreData.swift */; };
+		583F0CBC1F2A896F007266EC /* SetupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583F0CBB1F2A896F007266EC /* SetupTests.swift */; };
+		5851E10A1F2AA47D009087CE /* ManagedObjectContext+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5851E1091F2AA47D009087CE /* ManagedObjectContext+Util.swift */; };
+		5851E10C1F2AA59E009087CE /* ManagedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5851E10B1F2AA59E009087CE /* ManagedProtocol.swift */; };
 		58B29A301F2A33240080B0DA /* SeptaCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B29A261F2A33240080B0DA /* SeptaCoreData.framework */; };
-		58B29A351F2A33240080B0DA /* SeptaCoreDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B29A341F2A33240080B0DA /* SeptaCoreDataTests.m */; };
 		58B29A371F2A33240080B0DA /* SeptaCoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B29A291F2A33240080B0DA /* SeptaCoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58B29A411F2A333A0080B0DA /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B29A401F2A333A0080B0DA /* Person.swift */; };
 /* End PBXBuildFile section */
@@ -24,11 +29,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		583F0CB31F2A8503007266EC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		583F0CB61F2A85AC007266EC /* TransitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitType.swift; sourceTree = "<group>"; };
+		583F0CB81F2A86E1007266EC /* SetupCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupCoreData.swift; sourceTree = "<group>"; };
+		583F0CBA1F2A896F007266EC /* SeptaCoreDataTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SeptaCoreDataTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		583F0CBB1F2A896F007266EC /* SetupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTests.swift; sourceTree = "<group>"; };
+		5851E1091F2AA47D009087CE /* ManagedObjectContext+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManagedObjectContext+Util.swift"; sourceTree = "<group>"; };
+		5851E10B1F2AA59E009087CE /* ManagedProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedProtocol.swift; sourceTree = "<group>"; };
 		58B29A261F2A33240080B0DA /* SeptaCoreData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SeptaCoreData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58B29A291F2A33240080B0DA /* SeptaCoreData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SeptaCoreData.h; sourceTree = "<group>"; };
 		58B29A2A1F2A33240080B0DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58B29A2F1F2A33240080B0DA /* SeptaCoreDataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeptaCoreDataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		58B29A341F2A33240080B0DA /* SeptaCoreDataTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SeptaCoreDataTests.m; sourceTree = "<group>"; };
 		58B29A361F2A33240080B0DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58B29A401F2A333A0080B0DA /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		583F0CB51F2A8599007266EC /* Managed Objects */ = {
+			isa = PBXGroup;
+			children = (
+				583F0CB61F2A85AC007266EC /* TransitType.swift */,
+			);
+			path = "Managed Objects";
+			sourceTree = "<group>";
+		};
 		58B29A1C1F2A33240080B0DA = {
 			isa = PBXGroup;
 			children = (
@@ -73,9 +92,14 @@
 		58B29A281F2A33240080B0DA /* SeptaCoreData */ = {
 			isa = PBXGroup;
 			children = (
+				583F0CB51F2A8599007266EC /* Managed Objects */,
 				58B29A291F2A33240080B0DA /* SeptaCoreData.h */,
 				58B29A401F2A333A0080B0DA /* Person.swift */,
 				58B29A2A1F2A33240080B0DA /* Info.plist */,
+				583F0CB21F2A8503007266EC /* SeptaModel.xcdatamodeld */,
+				583F0CB81F2A86E1007266EC /* SetupCoreData.swift */,
+				5851E1091F2AA47D009087CE /* ManagedObjectContext+Util.swift */,
+				5851E10B1F2AA59E009087CE /* ManagedProtocol.swift */,
 			);
 			path = SeptaCoreData;
 			sourceTree = "<group>";
@@ -83,8 +107,9 @@
 		58B29A331F2A33240080B0DA /* SeptaCoreDataTests */ = {
 			isa = PBXGroup;
 			children = (
-				58B29A341F2A33240080B0DA /* SeptaCoreDataTests.m */,
 				58B29A361F2A33240080B0DA /* Info.plist */,
+				583F0CBB1F2A896F007266EC /* SetupTests.swift */,
+				583F0CBA1F2A896F007266EC /* SeptaCoreDataTests-Bridging-Header.h */,
 			);
 			path = SeptaCoreDataTests;
 			sourceTree = "<group>";
@@ -157,6 +182,7 @@
 					58B29A2E1F2A33240080B0DA = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = L636S9JLLY;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -201,7 +227,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5851E10A1F2AA47D009087CE /* ManagedObjectContext+Util.swift in Sources */,
+				5851E10C1F2AA59E009087CE /* ManagedProtocol.swift in Sources */,
 				58B29A411F2A333A0080B0DA /* Person.swift in Sources */,
+				583F0CB41F2A8503007266EC /* SeptaModel.xcdatamodeld in Sources */,
+				583F0CB71F2A85AC007266EC /* TransitType.swift in Sources */,
+				583F0CB91F2A86E1007266EC /* SetupCoreData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58B29A351F2A33240080B0DA /* SeptaCoreDataTests.m in Sources */,
+				583F0CBC1F2A896F007266EC /* SetupTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,11 +400,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				INFOPLIST_FILE = SeptaCoreDataTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.SeptaCoreDataTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SeptaCoreDataTests/SeptaCoreDataTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -381,11 +416,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				INFOPLIST_FILE = SeptaCoreDataTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.SeptaCoreDataTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SeptaCoreDataTests/SeptaCoreDataTests-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -420,6 +458,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		583F0CB21F2A8503007266EC /* SeptaModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				583F0CB31F2A8503007266EC /* Model.xcdatamodel */,
+			);
+			currentVersion = 583F0CB31F2A8503007266EC /* Model.xcdatamodel */;
+			path = SeptaModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 58B29A1D1F2A33240080B0DA /* Project object */;
 }

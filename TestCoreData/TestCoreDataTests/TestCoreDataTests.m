@@ -1,6 +1,6 @@
 //
-//  SeptaCoreDataTests.m
-//  SeptaCoreDataTests
+//  TestCoreDataTests.m
+//  TestCoreDataTests
 //
 //  Created by Mark Broski on 7/27/17.
 //  Copyright © 2017 Mark Broski. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface SeptaCoreDataTests : XCTestCase
+@interface TestCoreDataTests : XCTestCase
 
 @end
 
-@implementation SeptaCoreDataTests
+@implementation TestCoreDataTests
 
 - (void)setUp {
     [super setUp];
