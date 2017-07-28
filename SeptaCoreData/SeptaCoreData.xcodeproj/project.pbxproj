@@ -16,6 +16,7 @@
 		588A58D51F2B846500AE02E5 /* PreloadedDatabaseMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588A58D41F2B846500AE02E5 /* PreloadedDatabaseMover.swift */; };
 		588A58D71F2B84E200AE02E5 /* SEPTA.zip in Resources */ = {isa = PBXBuildFile; fileRef = 588A58D61F2B84E200AE02E5 /* SEPTA.zip */; };
 		588A58D91F2B852400AE02E5 /* PreloadedDatabaseMoverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588A58D81F2B852400AE02E5 /* PreloadedDatabaseMoverTests.swift */; };
+		588A58E11F2B89E600AE02E5 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588A58DC1F2B898F00AE02E5 /* Zip.framework */; };
 		58B29A301F2A33240080B0DA /* SeptaCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B29A261F2A33240080B0DA /* SeptaCoreData.framework */; };
 		58B29A371F2A33240080B0DA /* SeptaCoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = 58B29A291F2A33240080B0DA /* SeptaCoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -55,6 +56,7 @@
 		588A58D41F2B846500AE02E5 /* PreloadedDatabaseMover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedDatabaseMover.swift; sourceTree = "<group>"; };
 		588A58D61F2B84E200AE02E5 /* SEPTA.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = SEPTA.zip; path = ../../../../../septafolder/SEPTA.zip; sourceTree = "<group>"; };
 		588A58D81F2B852400AE02E5 /* PreloadedDatabaseMoverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedDatabaseMoverTests.swift; sourceTree = "<group>"; };
+		588A58DC1F2B898F00AE02E5 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Zip.framework; sourceTree = "<group>"; };
 		58B29A261F2A33240080B0DA /* SeptaCoreData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SeptaCoreData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58B29A291F2A33240080B0DA /* SeptaCoreData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SeptaCoreData.h; sourceTree = "<group>"; };
 		58B29A2A1F2A33240080B0DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				588A58E11F2B89E600AE02E5 /* Zip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +101,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		588A58DB1F2B898F00AE02E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				588A58DC1F2B898F00AE02E5 /* Zip.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 		58B29A1C1F2A33240080B0DA = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +131,7 @@
 		58B29A281F2A33240080B0DA /* SeptaCoreData */ = {
 			isa = PBXGroup;
 			children = (
+				588A58DB1F2B898F00AE02E5 /* Frameworks */,
 				588A58D61F2B84E200AE02E5 /* SEPTA.zip */,
 				583F0CB51F2A8599007266EC /* Managed Objects */,
 				58B29A291F2A33240080B0DA /* SeptaCoreData.h */,
@@ -262,7 +274,7 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Zip.framework",
+				"$(SRCROOT)/Frameworks/Zip.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SeptaCoreData.framework",
@@ -434,6 +446,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/SeptaCoreData/Frameworks",
 				);
 				INFOPLIST_FILE = SeptaCoreData/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -462,6 +475,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/SeptaCoreData/Frameworks",
 				);
 				INFOPLIST_FILE = SeptaCoreData/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

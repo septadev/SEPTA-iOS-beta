@@ -54,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		583BEC741F2A601000235EDE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		588A58DE1F2B899C00AE02E5 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = ../SeptaCoreData/SeptaCoreData/Frameworks/Zip.framework; sourceTree = "<group>"; };
 		58B299F11F2A32020080B0DA /* Septa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Septa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58B299F51F2A32020080B0DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		58B299F71F2A32020080B0DA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -241,6 +242,7 @@
 		58B29A931F2A36300080B0DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				588A58DE1F2B899C00AE02E5 /* Zip.framework */,
 				58B29A9D1F2A3B4E0080B0DA /* SeptaMapping.framework */,
 				58B29A9B1F2A3B450080B0DA /* SeptaNetworking.framework */,
 				58B29A941F2A36300080B0DA /* SeptaCoreData.framework */,
@@ -525,7 +527,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = L636S9JLLY;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)CoreData/SeptaCoreData/Frameworks",
+				);
 				INFOPLIST_FILE = Septa/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -544,7 +549,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = L636S9JLLY;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)CoreData/SeptaCoreData/Frameworks",
+				);
 				INFOPLIST_FILE = Septa/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -562,6 +570,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = L636S9JLLY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)CoreData/SeptaCoreData/Frameworks",
+				);
 				INFOPLIST_FILE = SeptaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.SeptaTests;
@@ -576,6 +588,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = L636S9JLLY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)CoreData/SeptaCoreData/Frameworks",
+				);
 				INFOPLIST_FILE = SeptaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.SeptaTests;
