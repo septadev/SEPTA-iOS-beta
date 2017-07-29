@@ -11,51 +11,91 @@ import CoreData
 public final class SetupCoreData {
     static let dbName = "Septa.sqlite"
     static let modelName = "SeptaModel"
+    static let coreDataDirectoryName = "SEPTACoreData"
+
+    static let sharedInstance = SetupCoreData()
+
+    let fileManager = FileManager.default
+
+    private init() {
+        print("Private Init is called")
+    } // This prevents others from using the default '()' initializer for this class.
 
     lazy var managedObjectModelURL: URL? = {
         let bundle = Bundle(for: SetupCoreData.self)
+        print("Initiatiing Moc")
         return bundle.url(forResource: SetupCoreData.modelName, withExtension: "momd")
     }()
 
     lazy var applicationDocumentsDirectory: URL? = {
-
+        print("Locating Documents Directory")
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return urls.first
     }()
 
+    lazy var coreDataDirectory: URL? = {
+        guard let docsDirectory = applicationDocumentsDirectory else { return nil }
+        return docsDirectory.appendingPathComponent(SetupCoreData.coreDataDirectoryName)
+
+    }()
+
+    func createCoreDataDirectoryIfNeeded() {
+        do {
+            try fileManager.createDirectory(at: coreDataDirectory!, withIntermediateDirectories: true, attributes: nil)
+            print("Creating directory for core data")
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
     lazy var persistentStoreURL: URL? = {
-        self.applicationDocumentsDirectory!.appendingPathComponent(SetupCoreData.dbName)
+        coreDataDirectory?.appendingPathComponent(SetupCoreData.dbName)
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel? = {
-        // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
+        print("Building out Managed Object Model")
         let modelURL = self.managedObjectModelURL!
         return NSManagedObjectModel(contentsOf: modelURL)!
     }()
 
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
-        // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
-        // Create the coordinator and store
-        NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel!)
+        print("Building Persistent Store Coordinator")
+        return NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel!)
     }()
 
-    public lazy var uiManagedObjectContext: NSManagedObjectContext? = {
-        guard let persistentStoreCoordinator = self.persistentStoreCoordinator else { return nil }
+    public func getMainQueueManagedObjectContext() -> NSManagedObjectContext? {
         let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         moc.persistentStoreCoordinator = persistentStoreCoordinator
         return moc
-    }()
+    }
+
+    public func getPrivateQueueManagedObjectContext() -> NSManagedObjectContext? {
+        let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        moc.persistentStoreCoordinator = persistentStoreCoordinator
+        return moc
+    }
 
     public func createPersistentStore() throws {
+        createCoreDataDirectoryIfNeeded()
         try persistentStoreCoordinator?.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: persistentStoreURL!, options: nil)
+        assert(persistentStoreCoordinator!.persistentStores.count == 1)
+        print("adding persistent store")
     }
 
     public func destroyPersistentStore() throws {
+        guard persistentStoreCoordinator?.persistentStores.count == 1 else { return }
         try persistentStoreCoordinator?.destroyPersistentStore(at: persistentStoreURL!, ofType: NSSQLiteStoreType, options: nil)
+        assert(persistentStoreCoordinator!.persistentStores.count == 0)
+
+        print("removing persistent store")
     }
 
     public func resetPersistentStore() throws {
         try destroyPersistentStore()
         try createPersistentStore()
+    }
+
+    deinit {
+        print("Core Data Setup is disappearing")
     }
 }

@@ -6,22 +6,28 @@ import CoreData
 
 class ProloadedDatabaseMoverTests: XCTestCase {
     let fileManager = FileManager.default
-    let mover = PreloadedDatabaseMover()
+    let importDatabase = ImportDatabase()
 
     func testPreloadedURL() {
-        let url = mover.preloadedZippedDatabaseURL
+        let url = importDatabase.preloadedZippedDatabaseURL
         XCTAssertNotNil(url)
     }
 
     func testDestinationURL() {
-        let url = mover.databaseDestinationURL
+        let url = importDatabase.databaseDestinationURL
         XCTAssertNotNil(url)
     }
 
     func testUnzippingDatabase() {
+        let dbURL = importDatabase.databaseDestinationURL!
+        let dbPath = dbURL.path
+        if fileManager.fileExists(atPath: dbPath) {
+            try! fileManager.removeItem(at: dbURL)
+        }
+        let mover = PreloadedDatabaseMover()
         mover.expandZipDatabaseFile()
-        let path = mover.databaseDestinationURL!.path
-        let fileExists = fileManager.fileExists(atPath: path)
+
+        let fileExists = fileManager.fileExists(atPath: dbPath)
         XCTAssertTrue(fileExists)
     }
 }

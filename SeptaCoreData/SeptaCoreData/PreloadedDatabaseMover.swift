@@ -4,29 +4,11 @@ import Foundation
 import Zip
 
 class PreloadedDatabaseMover {
-    let bundle = Bundle(for: SetupCoreData.self)
-    static let expandedDatabaseName = "SEPTA.sqlite"
-
-    lazy var preloadedZippedDatabaseURL: URL? = {
-
-        bundle.url(forResource: "SEPTA", withExtension: "zip")
-    }()
-
-    lazy var cachesDirectoryURL: URL? = {
-        let cachesDirectoryPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
-        print(cachesDirectoryPath)
-        return URL(fileURLWithPath: cachesDirectoryPath)
-    }()
-
-    lazy var databaseDestinationURL: URL? = {
-        cachesDirectoryURL?.appendingPathComponent(PreloadedDatabaseMover.expandedDatabaseName)
-    }()
+    let importDatabase = ImportDatabase()
 
     func expandZipDatabaseFile() {
         do {
-            print("what the fuck")
-
-            try Zip.unzipFile(preloadedZippedDatabaseURL!, destination: cachesDirectoryURL!, overwrite: true, password: nil, progress: nil)
+            try Zip.unzipFile(importDatabase.preloadedZippedDatabaseURL!, destination: importDatabase.cachesDirectoryURL!, overwrite: true, password: nil, progress: nil)
         } catch {
             print("Something went wrong")
         }
