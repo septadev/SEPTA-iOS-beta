@@ -2,20 +2,24 @@
 
 import XCTest
 import CoreData
+import SQLite
 @testable import SeptaCoreData
 
-class PreloadedDatabaseLoaderTests: XCTestCase {
+class PreloadedDatabaseLoaderTests: BaseCoreDataTests {
 
-    let setup = SetupCoreData.sharedInstance
-
-    override func setUp() {
-        try! setup.destroyPersistentStore()
-        try! setup.createPersistentStore()
-        
-    }
 
     func testLoader() {
         let loader = PreloadedDatabaseLoader(moc: setup.getMainQueueManagedObjectContext()!)
-        loader.loadRailStops()
+        loader.loadTransitModes()
+
+        let actualCount: Int = getStopCountFromMainQueue()
+
+        let db = try! Connection(ImportDatabase().databaseDestinationURL!.path)
+
+        let stopsTable = Table("stops_rail")
+        let expectedCount: Int = try! db.scalar(stopsTable.count)
+        XCTAssertEqual(actualCount, expectedCount)
     }
+
+    
 }

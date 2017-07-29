@@ -9,7 +9,7 @@
 import CoreData
 
 public final class SetupCoreData {
-    static let dbName = "Septa.sqlite"
+    static let dbName = "SeptaCoreData.sqlite"
     static let modelName = "SeptaModel"
     static let coreDataDirectoryName = "SEPTACoreData"
 
@@ -49,7 +49,9 @@ public final class SetupCoreData {
     }
 
     lazy var persistentStoreURL: URL? = {
-        coreDataDirectory?.appendingPathComponent(SetupCoreData.dbName)
+        let url = coreDataDirectory?.appendingPathComponent(SetupCoreData.dbName)
+        print("SQL LITE DB is here: \(url!)")
+        return url
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel? = {
@@ -88,6 +90,15 @@ public final class SetupCoreData {
         assert(persistentStoreCoordinator!.persistentStores.count == 0)
 
         print("removing persistent store")
+    }
+
+    func removeCoreDataFiles() throws {
+        let coreDataPath = coreDataDirectory!.path
+        let enumerator = fileManager.enumerator(atPath: coreDataPath)
+        fileManager.changeCurrentDirectoryPath(coreDataPath)
+        while let file = enumerator?.nextObject() as? String {
+            try fileManager.removeItem(atPath: file)
+        }
     }
 
     public func resetPersistentStore() throws {

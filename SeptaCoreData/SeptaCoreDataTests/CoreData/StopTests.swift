@@ -30,10 +30,5 @@ class StopTests: BaseCoreDataTests {
         XCTAssertEqual(count, 1)
     }
 
-    func getStopCountFromMainQueue() -> Int {
-        let fetchRequest = NSFetchRequest<Stop>(entityName: Stop.entityName())
-        fetchRequest.fetchBatchSize = 20
-        let results = try! moc.fetch(fetchRequest)
-        return results.count
-    }
+    
 }

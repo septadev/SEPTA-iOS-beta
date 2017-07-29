@@ -21,4 +21,11 @@ class BaseCoreDataTests: XCTestCase {
     override func tearDown() {
         try! setup.destroyPersistentStore()
     }
+
+    func getStopCountFromMainQueue() -> Int {
+        let fetchRequest = NSFetchRequest<Stop>(entityName: Stop.entityName())
+        fetchRequest.fetchBatchSize = 20
+        let results = try! moc.fetch(fetchRequest)
+        return results.count
+    }
 }

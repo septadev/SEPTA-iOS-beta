@@ -8,12 +8,12 @@ open class _Entity: NSManagedObject {
 
     // MARK: - Class methods
 
-    open class func entityName () -> String {
+    open class func entityName() -> String {
         return "Entity"
     }
 
     open class func entity(managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
-        return NSEntityDescription.entity(forEntityName: self.entityName(), in: managedObjectContext)
+        return NSEntityDescription.entity(forEntityName: entityName(), in: managedObjectContext)
     }
 
     // MARK: - Life cycle methods
@@ -30,6 +30,4 @@ open class _Entity: NSManagedObject {
     // MARK: - Properties
 
     // MARK: - Relationships
-
 }
-

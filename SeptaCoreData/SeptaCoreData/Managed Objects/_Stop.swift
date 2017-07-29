@@ -5,27 +5,27 @@ import Foundation
 import CoreData
 
 public enum StopAttributes: String {
-    case lat = "lat"
-    case lon = "lon"
-    case name = "name"
-    case stop_id = "stop_id"
-    case wheelchairEnabled = "wheelchairEnabled"
+    case lat
+    case lon
+    case name
+    case stop_id
+    case wheelchairEnabled
 }
 
 public enum StopRelationships: String {
-    case transitType = "transitType"
+    case transitType
 }
 
 open class _Stop: NSManagedObject {
 
     // MARK: - Class methods
 
-    open class func entityName () -> String {
+    open class func entityName() -> String {
         return "Stop"
     }
 
     open class func entity(managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
-        return NSEntityDescription.entity(forEntityName: self.entityName(), in: managedObjectContext)
+        return NSEntityDescription.entity(forEntityName: entityName(), in: managedObjectContext)
     }
 
     // MARK: - Life cycle methods
@@ -60,6 +60,4 @@ open class _Stop: NSManagedObject {
 
     @NSManaged open
     var transitType: TransitType?
-
 }
-

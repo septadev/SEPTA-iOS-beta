@@ -17,7 +17,24 @@ class PreloadedDatabaseLoader {
         self.moc = moc
     }
 
-    func loadRailStops() {
+    func loadTransitModes(){
+        guard
+            let railTransitType = TransitType(managedObjectContext: moc),
+            let busTransitType = TransitType(managedObjectContext: moc) else {return }
+
+        railTransitType.name = "Rail"
+        busTransitType.name = "Bus"
+        loadRailStops(railTransitType:railTransitType)
+
+        do {
+            try moc.save()
+        }
+        catch {
+            print ("Error saving MOC")
+        }
+    }
+
+    func loadRailStops(railTransitType: TransitType) {
         let importDatabase = ImportDatabase()
         guard let path = importDatabase.databaseDestinationURL?.path else { return }
 
@@ -44,8 +61,10 @@ class PreloadedDatabaseLoader {
                 stop.lon = numberFormatter.number(from: lon)
                 let wheelchairBoarding: Int64 = row[wheelchairBoardingExpression] ?? 0
                 stop.wheelchairEnabled = NSNumber(value: wheelchairBoarding > 0)
+
+                railTransitType.addStopsObject(stop)
             }
-            try moc.save()
+
 
         } catch {
             print(error.localizedDescription)
