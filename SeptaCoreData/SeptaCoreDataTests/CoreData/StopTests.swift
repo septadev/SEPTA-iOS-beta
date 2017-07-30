@@ -29,6 +29,4 @@ class StopTests: BaseCoreDataTests {
         let count = getStopCountFromMainQueue()
         XCTAssertEqual(count, 1)
     }
-
-    
 }

@@ -13,7 +13,8 @@ class BaseCoreDataTests: XCTestCase {
     var privateMoc: NSManagedObjectContext!
 
     override func setUp() {
-        try! setup.resetPersistentStore()
+        try! setup.removeCoreDataFiles()
+        try! setup.createPersistentStore()
         moc = setup.getMainQueueManagedObjectContext()
         privateMoc = setup.getPrivateQueueManagedObjectContext()
     }
@@ -24,9 +25,13 @@ class BaseCoreDataTests: XCTestCase {
 
     func getStopCountFromMainQueue() -> Int {
         let fetchRequest = NSFetchRequest<Stop>(entityName: Stop.entityName())
-        fetchRequest.fetchBatchSize = 20
 
-        return try! moc.count(for:fetchRequest)
+        return try! moc.count(for: fetchRequest)
+    }
 
+    func getStopTimeCountFromMainQueue() -> Int {
+        let fetchRequest = NSFetchRequest<Stop>(entityName: StopTime.entityName())
+
+        return try! moc.count(for: fetchRequest)
     }
 }

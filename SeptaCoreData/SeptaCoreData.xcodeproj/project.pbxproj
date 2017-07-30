@@ -25,6 +25,8 @@
 		583F0CBC1F2A896F007266EC /* SetupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583F0CBB1F2A896F007266EC /* SetupTests.swift */; };
 		58493FBA1F2D2C29008E43BD /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588A58E31F2BAF5500AE02E5 /* SQLite.framework */; };
 		58493FBC1F2D2D39008E43BD /* SQLite.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 588A58E31F2BAF5500AE02E5 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		58493FBF1F2D60BA008E43BD /* _StopTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58493FBD1F2D60BA008E43BD /* _StopTime.swift */; };
+		58493FC01F2D60BA008E43BD /* StopTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58493FBE1F2D60BA008E43BD /* StopTime.swift */; };
 		5851E10A1F2AA47D009087CE /* ManagedObjectContext+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5851E1091F2AA47D009087CE /* ManagedObjectContext+Util.swift */; };
 		5851E10C1F2AA59E009087CE /* ManagedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5851E10B1F2AA59E009087CE /* ManagedProtocol.swift */; };
 		5864F2F81F2D1FE0004FA31E /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5864F2F71F2D1FE0004FA31E /* Main.swift */; };
@@ -78,6 +80,8 @@
 		583F0CB81F2A86E1007266EC /* SetupCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupCoreData.swift; sourceTree = "<group>"; };
 		583F0CBA1F2A896F007266EC /* SeptaCoreDataTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SeptaCoreDataTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		583F0CBB1F2A896F007266EC /* SetupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTests.swift; sourceTree = "<group>"; };
+		58493FBD1F2D60BA008E43BD /* _StopTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _StopTime.swift; sourceTree = "<group>"; };
+		58493FBE1F2D60BA008E43BD /* StopTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopTime.swift; sourceTree = "<group>"; };
 		5851E1091F2AA47D009087CE /* ManagedObjectContext+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManagedObjectContext+Util.swift"; sourceTree = "<group>"; };
 		5851E10B1F2AA59E009087CE /* ManagedProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedProtocol.swift; sourceTree = "<group>"; };
 		5864F2F71F2D1FE0004FA31E /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
@@ -135,6 +139,8 @@
 		583F0CB51F2A8599007266EC /* Managed Objects */ = {
 			isa = PBXGroup;
 			children = (
+				58493FBD1F2D60BA008E43BD /* _StopTime.swift */,
+				58493FBE1F2D60BA008E43BD /* StopTime.swift */,
 				589249611F2CE37A0061C90D /* _Stop.swift */,
 				5892495F1F2CE37A0061C90D /* _TransitType.swift */,
 				589249621F2CE37A0061C90D /* Stop.swift */,
@@ -405,6 +411,8 @@
 				5851E10C1F2AA59E009087CE /* ManagedProtocol.swift in Sources */,
 				588A58D51F2B846500AE02E5 /* PreloadedDatabaseMover.swift in Sources */,
 				589249631F2CE37B0061C90D /* _TransitType.swift in Sources */,
+				58493FC01F2D60BA008E43BD /* StopTime.swift in Sources */,
+				58493FBF1F2D60BA008E43BD /* _StopTime.swift in Sources */,
 				5892494F1F2CB8320061C90D /* TransitTypeMapper.swift in Sources */,
 				589249641F2CE37B0061C90D /* TransitType.swift in Sources */,
 				589249661F2CE37B0061C90D /* Stop.swift in Sources */,

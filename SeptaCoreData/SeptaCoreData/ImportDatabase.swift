@@ -9,16 +9,14 @@ class ImportDatabase {
     struct TableNames {
         static let stopsRail = "stops_rail"
         static let stopsBus = "stops_bus"
-
+        static let stopTimesRail = "stop_times_rail"
+        static let stopTimesBus = "stop_times_bus"
     }
 
     lazy var preloadedZippedDatabaseURL: URL? = {
 
         bundle.url(forResource: "SEPTA", withExtension: "zip")
     }()
-
-
-
 
     lazy var cachesDirectoryURL: URL? = {
         let cachesDirectoryPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]

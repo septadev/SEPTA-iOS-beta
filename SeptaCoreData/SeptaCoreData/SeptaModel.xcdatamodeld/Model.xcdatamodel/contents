@@ -5,9 +5,28 @@
         <attribute name="lon" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="stop_id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="transitTypeString" attributeType="String" syncable="YES"/>
         <attribute name="wheelchairEnabled" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="stopTimes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StopTime" inverseName="stop" inverseEntity="StopTime" syncable="YES"/>
         <relationship name="transitType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TransitType" inverseName="stops" inverseEntity="TransitType" syncable="YES"/>
-        <fetchIndex name="byStop_idIndex">
+        <fetchIndex name="StopId">
+            <fetchIndexElement property="stop_id" type="Binary" order="ascending"/>
+            <fetchIndexElement property="name" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <fetchIndex name="TransitType">
+            <fetchIndexElement property="transitTypeString" type="Binary" order="ascending"/>
+        </fetchIndex>
+    </entity>
+    <entity name="StopTime" representedClassName="StopTime" syncable="YES">
+        <attribute name="arrivalTime" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stop_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stopSequence" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="trip_id" attributeType="String" syncable="YES"/>
+        <relationship name="stop" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Stop" inverseName="stopTimes" inverseEntity="Stop" syncable="YES"/>
+        <fetchIndex name="TripId">
+            <fetchIndexElement property="trip_id" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <fetchIndex name="StopId">
             <fetchIndexElement property="stop_id" type="Binary" order="ascending"/>
         </fetchIndex>
     </entity>
@@ -16,7 +35,8 @@
         <relationship name="stops" toMany="YES" deletionRule="Nullify" destinationEntity="Stop" inverseName="transitType" inverseEntity="Stop" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Stop" positionX="198" positionY="33" width="128" height="135"/>
-        <element name="TransitType" positionX="-63" positionY="9" width="128" height="75"/>
+        <element name="Stop" positionX="297" positionY="-207" width="128" height="163"/>
+        <element name="TransitType" positionX="-135" positionY="-189" width="128" height="75"/>
+        <element name="StopTime" positionX="297" positionY="36" width="128" height="118"/>
     </elements>
 </model>
