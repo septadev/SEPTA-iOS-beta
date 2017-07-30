@@ -5,23 +5,23 @@ import Foundation
 import CoreData
 
 public enum TransitTypeAttributes: String {
-    case name = "name"
+    case name
 }
 
 public enum TransitTypeRelationships: String {
-    case stops = "stops"
+    case stops
 }
 
 open class _TransitType: NSManagedObject {
 
     // MARK: - Class methods
 
-    open class func entityName () -> String {
+    open class func entityName() -> String {
         return "TransitType"
     }
 
     open class func entity(managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
-        return NSEntityDescription.entity(forEntityName: self.entityName(), in: managedObjectContext)
+        return NSEntityDescription.entity(forEntityName: entityName(), in: managedObjectContext)
     }
 
     // MARK: - Life cycle methods
@@ -46,36 +46,33 @@ open class _TransitType: NSManagedObject {
     var stops: NSSet
 
     open func stopsSet() -> NSMutableSet {
-        return self.stops.mutableCopy() as! NSMutableSet
+        return stops.mutableCopy() as! NSMutableSet
     }
-
 }
 
 extension _TransitType {
 
     open func addStops(_ objects: NSSet) {
-        let mutable = self.stops.mutableCopy() as! NSMutableSet
+        let mutable = stops.mutableCopy() as! NSMutableSet
         mutable.union(objects as Set<NSObject>)
-        self.stops = mutable.copy() as! NSSet
+        stops = mutable.copy() as! NSSet
     }
 
     open func removeStops(_ objects: NSSet) {
-        let mutable = self.stops.mutableCopy() as! NSMutableSet
+        let mutable = stops.mutableCopy() as! NSMutableSet
         mutable.minus(objects as Set<NSObject>)
-        self.stops = mutable.copy() as! NSSet
+        stops = mutable.copy() as! NSSet
     }
 
     open func addStopsObject(_ value: Stop) {
-        let mutable = self.stops.mutableCopy() as! NSMutableSet
+        let mutable = stops.mutableCopy() as! NSMutableSet
         mutable.add(value)
-        self.stops = mutable.copy() as! NSSet
+        stops = mutable.copy() as! NSSet
     }
 
     open func removeStopsObject(_ value: Stop) {
-        let mutable = self.stops.mutableCopy() as! NSMutableSet
+        let mutable = stops.mutableCopy() as! NSMutableSet
         mutable.remove(value)
-        self.stops = mutable.copy() as! NSSet
+        stops = mutable.copy() as! NSSet
     }
-
 }
-

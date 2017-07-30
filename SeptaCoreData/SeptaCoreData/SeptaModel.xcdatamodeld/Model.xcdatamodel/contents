@@ -19,7 +19,7 @@
     </entity>
     <entity name="StopTime" representedClassName="StopTime" syncable="YES">
         <attribute name="arrivalTime" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="stop_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stop_id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="stopSequence" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="trip_id" attributeType="String" syncable="YES"/>
         <relationship name="stop" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Stop" inverseName="stopTimes" inverseEntity="Stop" syncable="YES"/>

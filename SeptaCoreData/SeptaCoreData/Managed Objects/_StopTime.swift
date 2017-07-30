@@ -5,26 +5,26 @@ import Foundation
 import CoreData
 
 public enum StopTimeAttributes: String {
-    case arrivalTime = "arrivalTime"
-    case stopSequence = "stopSequence"
-    case stop_id = "stop_id"
-    case trip_id = "trip_id"
+    case arrivalTime
+    case stopSequence
+    case stop_id
+    case trip_id
 }
 
 public enum StopTimeRelationships: String {
-    case stop = "stop"
+    case stop
 }
 
 open class _StopTime: NSManagedObject {
 
     // MARK: - Class methods
 
-    open class func entityName () -> String {
+    open class func entityName() -> String {
         return "StopTime"
     }
 
     open class func entity(managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
-        return NSEntityDescription.entity(forEntityName: self.entityName(), in: managedObjectContext)
+        return NSEntityDescription.entity(forEntityName: entityName(), in: managedObjectContext)
     }
 
     // MARK: - Life cycle methods
@@ -56,6 +56,4 @@ open class _StopTime: NSManagedObject {
 
     @NSManaged open
     var stop: Stop?
-
 }
-

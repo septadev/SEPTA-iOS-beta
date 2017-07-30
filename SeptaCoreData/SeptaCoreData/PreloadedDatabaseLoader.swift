@@ -48,6 +48,7 @@ class PreloadedDatabaseLoader {
         loadStops(railTransitType: busTransitType, tableName: ImportDatabase.TableNames.stopsBus, transitType: transitTypeBus)
 
         loadStopTimes(tableName: ImportDatabase.TableNames.stopTimesRail)
+        createRelationFromStopTimeToStop()
         do {
             try moc.save()
         } catch {
@@ -125,7 +126,6 @@ class PreloadedDatabaseLoader {
                     stopTime.stopSequence = NSNumber(value: stopSequence)
                 }
 
-
                 if Int(i) % 1000 == 0 {
                     try moc.save()
                     moc.reset()
@@ -141,8 +141,28 @@ class PreloadedDatabaseLoader {
         }
     }
 
-    func createRelationFromStopTimeToStop(){
-        let fetchRequest = NSFetchRequest<StopTime>(entity:StopTime.entityName())
-        let fet
+    func createRelationFromStopTimeToStop() {
+        let stopFetchRequest = NSFetchRequest<Stop>(entityName: Stop.entityName())
+        stopFetchRequest.propertiesToFetch = [StopAttributes.stop_id.rawValue]
+        do {
+            let stops = try moc.fetch(stopFetchRequest) as [Stop]
+            var i: Double = 0
+
+            for stop in stops {
+                guard let stop_id = stop.stop_id else { continue }
+                let stopTimesFetchRequest = NSFetchRequest<StopTime>(entityName: StopTime.entityName())
+                stopTimesFetchRequest.predicate = NSPredicate(format: "%K == %@", StopTimeAttributes.stop_id.rawValue, stop_id)
+                stopTimesFetchRequest.includesPropertyValues = false
+                let matchingStopTimes = try moc.fetch(stopTimesFetchRequest)
+                let set = NSSet(array: matchingStopTimes)
+                stop.addStopTimes(set)
+                try moc.save()
+                i = i + 1
+                let percentComplete = percentFormatter.string(from: NSNumber(value: i / Double(stops.count)))!
+                print("loading stopTimes  \(percentComplete)")
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }

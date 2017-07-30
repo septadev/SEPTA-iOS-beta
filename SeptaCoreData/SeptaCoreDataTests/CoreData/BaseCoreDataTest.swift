@@ -30,7 +30,7 @@ class BaseCoreDataTests: XCTestCase {
     }
 
     func getStopTimeCountFromMainQueue() -> Int {
-        let fetchRequest = NSFetchRequest<Stop>(entityName: StopTime.entityName())
+        let fetchRequest = NSFetchRequest<StopTime>(entityName: StopTime.entityName())
 
         return try! moc.count(for: fetchRequest)
     }
