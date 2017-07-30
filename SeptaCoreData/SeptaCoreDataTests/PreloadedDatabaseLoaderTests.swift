@@ -16,9 +16,10 @@ class PreloadedDatabaseLoaderTests: BaseCoreDataTests {
 
         let db = try! Connection(ImportDatabase().databaseDestinationURL!.path)
 
-        let stopsTable = Table("stops_rail")
-        let expectedCount: Int = try! db.scalar(stopsTable.count)
-        XCTAssertEqual(actualCount, expectedCount)
+
+        let busCount: Int = try! db.scalar(Table(ImportDatabase.TableNames.stopsBus).count)
+        let trainCount: Int = try! db.scalar(Table(ImportDatabase.TableNames.stopsRail).count)
+        XCTAssertEqual(actualCount, busCount + trainCount)
     }
 
     

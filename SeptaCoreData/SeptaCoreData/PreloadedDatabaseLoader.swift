@@ -18,51 +18,55 @@ class PreloadedDatabaseLoader {
     }
 
     func loadTransitModes(){
+
         guard
             let railTransitType = TransitType(managedObjectContext: moc),
             let busTransitType = TransitType(managedObjectContext: moc) else {return }
 
         railTransitType.name = "Rail"
         busTransitType.name = "Bus"
-        loadRailStops(railTransitType:railTransitType)
+        loadStops(railTransitType:railTransitType, tableName: ImportDatabase.TableNames.stopsRail)
+        loadStops(railTransitType:busTransitType, tableName: ImportDatabase.TableNames.stopsBus)
 
         do {
             try moc.save()
         }
         catch {
-            print ("Error saving MOC")
+            fatalError()
         }
     }
 
-    func loadRailStops(railTransitType: TransitType) {
+    func loadStops(railTransitType: TransitType, tableName: String) {
         let importDatabase = ImportDatabase()
         guard let path = importDatabase.databaseDestinationURL?.path else { return }
 
-        let railStopsTable = Table("stops_rail")
+        let stopsTable = Table(tableName)
         let stopIdExpression = Expression<Int?>("stop_id")
         let nameExpression = Expression<String?>("stop_name")
         let latExpressino = Expression<String?>("stop_lat")
         let lonExpression = Expression<String?>("stop_lon")
-        let wheelchairBoardingExpression = Expression<Int64?>("wheelchair_boarding")
+        let wheelchairBoardingExpression = Expression<Bool?>("wheelchair_boarding")
 
         do {
 
             let db = try Connection(path)
-
-            for row in try db.prepare(railStopsTable) {
+            var i = 1;
+            for row in try db.prepare(stopsTable) {
                 guard let stop = Stop(managedObjectContext: moc) else { fatalError() }
                 guard let stopId = row[stopIdExpression],
                     let name = row[nameExpression],
                     let lat = row[latExpressino],
-                    let lon = row[lonExpression] else { return }
+                    let lon = row[lonExpression] else { fatalError()  }
                 stop.stop_id = NSNumber(value: stopId)
                 stop.name = name
                 stop.lat = numberFormatter.number(from: lat)
                 stop.lon = numberFormatter.number(from: lon)
-                let wheelchairBoarding: Int64 = row[wheelchairBoardingExpression] ?? 0
-                stop.wheelchairEnabled = NSNumber(value: wheelchairBoarding > 0)
+                let wheelchairBoarding: Bool = row[wheelchairBoardingExpression] ?? false
+                stop.wheelchairEnabled = NSNumber(value: wheelchairBoarding)
 
                 railTransitType.addStopsObject(stop)
+                print ("Adding stops Object for \(tableName) \(i)")
+                i = i + 1
             }
 
 
@@ -70,4 +74,6 @@ class PreloadedDatabaseLoader {
             print(error.localizedDescription)
         }
     }
+
+
 }
