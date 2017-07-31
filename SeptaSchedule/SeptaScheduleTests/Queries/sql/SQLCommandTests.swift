@@ -5,14 +5,15 @@ import XCTest
 
 /// SQLCommandTests purpose: Verifies that data objects are correctly returned from commands
 class SQLCommandTests: XCTestCase {
-    let cmd = SQLCommand()
+    let cmd = BusCommands()
 
-    func testAsyncCalback() {
+    func testCallToBusStart() {
 
         let expectation = self.expectation(description: "Should Return")
-        try! cmd.busDestinationBeginStops(routeId: 44, scheduleType: .weekday) { stops, _ in
+        cmd.availableStartingPoints(onRoute: 44, scheduleType: .saturday) { stops, _ in
             XCTAssertNotNil(stops)
             XCTAssertTrue(Thread.isMainThread)
+            XCTAssertEqual(stops?.count, 122)
             expectation.fulfill()
         }
 

@@ -6,6 +6,6 @@ SELECT ST.stop_id
 FROM trips_bus T
 JOIN stop_times_bus ST
 ON T.trip_id = ST.trip_id WHERE
-T.route_id == 44 AND T.service_id = 2)
+T.route_id == ? AND T.service_id = ?)
 ORDER BY S.stop_name;
 
