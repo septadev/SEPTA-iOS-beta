@@ -22,12 +22,12 @@ class DatabaseFileManager {
         fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
     }()
 
-    lazy var databseURL: URL? = {
+    lazy var databaseURL: URL? = {
         documentDirectoryURL?.appendingPathComponent(databaseName)
     }()
 
     var databaseFileExistsInDocumentsDirectory: Bool {
-        guard let url = databseURL else { return false }
+        guard let url = databaseURL else { return false }
         return fileManager.fileExists(atPath: url.path)
     }
 
