@@ -156,11 +156,17 @@ class PreloadedDatabaseLoader {
                 let matchingStopTimes = try moc.fetch(stopTimesFetchRequest)
                 let set = NSSet(array: matchingStopTimes)
                 stop.addStopTimes(set)
-                try moc.save()
+
                 i = i + 1
                 let percentComplete = percentFormatter.string(from: NSNumber(value: i / Double(stops.count)))!
                 print("loading stopTimes  \(percentComplete)")
+
+                if Int(i) % 1000 == 0 {
+                    try moc.save()
+                    moc.reset()
+                }
             }
+            moc.reset()
         } catch {
             print(error.localizedDescription)
         }

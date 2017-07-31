@@ -24,7 +24,7 @@ class PreloadedDatabaseLoaderTests: BaseCoreDataTests {
         XCTAssertEqual(actualStopTimeCount, trainStopTimesCount)
 
         let fetchRequest = NSFetchRequest<Stop>(entityName: Stop.entityName())
-        fetchRequest.predicate = NSPredicate(format: "%K == %@", "stop_id", NSNumber(value:90210))
+        fetchRequest.predicate = NSPredicate(format: "%K == %@", StopAttributes.stop_id.rawValue, NSNumber(value: 90210))
         let testStop = try! moc.fetch(fetchRequest).first
         let count = testStop?.stopTimes.count
         XCTAssertEqual(count, 113)
