@@ -37,6 +37,8 @@
 		58493FEC1F2F5EAE008E43BD /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58493FEA1F2F5EAE008E43BD /* Zip.framework */; };
 		58493FEE1F2F5ED5008E43BD /* SQLite.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58493FE91F2F5EAE008E43BD /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		58493FEF1F2F5ED5008E43BD /* Zip.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58493FEA1F2F5EAE008E43BD /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		584AF7A81F30A61A00244CE3 /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7A71F30A61A00244CE3 /* DateTime.swift */; };
+		584AF7AB1F30A85D00244CE3 /* TripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7AA1F30A85D00244CE3 /* TripTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,8 @@
 		58493FE91F2F5EAE008E43BD /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SQLite.framework; sourceTree = "<group>"; };
 		58493FEA1F2F5EAE008E43BD /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Zip.framework; sourceTree = "<group>"; };
 		58493FF91F2F6725008E43BD /* Regex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Regex.framework; sourceTree = "<group>"; };
+		584AF7A71F30A61A00244CE3 /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
+		584AF7AA1F30A85D00244CE3 /* TripTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				580D0D651F30398A009CE61C /* GeoCompare.swift */,
+				584AF7A71F30A61A00244CE3 /* DateTime.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 		58493FD81F2F584B008E43BD /* SeptaScheduleTests */ = {
 			isa = PBXGroup;
 			children = (
+				584AF7A91F30A84F00244CE3 /* DataObjectTests */,
 				580D0D591F300091009CE61C /* SEPTA.sqlite */,
 				580D0D441F2F97FC009CE61C /* Queries */,
 				580D0D361F2F94A7009CE61C /* PreloadedDatabase */,
@@ -306,6 +312,14 @@
 			children = (
 			);
 			path = Train;
+			sourceTree = "<group>";
+		};
+		584AF7A91F30A84F00244CE3 /* DataObjectTests */ = {
+			isa = PBXGroup;
+			children = (
+				584AF7AA1F30A85D00244CE3 /* TripTests.swift */,
+			);
+			path = DataObjectTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -434,6 +448,7 @@
 				580D0D4B1F2FA08E009CE61C /* SQLConnection.swift in Sources */,
 				580D0D491F2FA083009CE61C /* BusCommands.swift in Sources */,
 				580D0D3B1F2F9689009CE61C /* DatabaseFileManager.swift in Sources */,
+				584AF7A81F30A61A00244CE3 /* DateTime.swift in Sources */,
 				580D0D401F2F96A1009CE61C /* DatabaseTables.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,6 +462,7 @@
 				580D0D471F2F9817009CE61C /* SQLStringsTests.swift in Sources */,
 				580D0D4D1F2FA1BD009CE61C /* SQLConnectionTests.swift in Sources */,
 				580D0D2C1F2F7956009CE61C /* DatabaseTablesTests.swift in Sources */,
+				584AF7AB1F30A85D00244CE3 /* TripTests.swift in Sources */,
 				580D0D531F2FA58A009CE61C /* BusCommandTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

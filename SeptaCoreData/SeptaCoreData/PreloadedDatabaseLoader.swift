@@ -1,10 +1,10 @@
 //// SEPTA.org, created on 7/29/17.
 //
-//import Foundation
-//import CoreData
-//import SQLite
+// import Foundation
+// import CoreData
+// import SQLite
 //
-//class PreloadedDatabaseLoader {
+// class PreloadedDatabaseLoader {
 //    let moc: NSManagedObjectContext
 //    let importDatabase = ImportDatabase()
 //    let transitTypeRail = "rail"
@@ -172,5 +172,4 @@
 //            print(error.localizedDescription)
 //        }
 //    }
-//}
-
+// }

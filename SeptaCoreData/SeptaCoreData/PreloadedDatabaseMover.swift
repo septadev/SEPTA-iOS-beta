@@ -1,9 +1,9 @@
 //// Septa.org created on 7/28/17.
 //
-//import Foundation
-//import Zip
+// import Foundation
+// import Zip
 //
-//class PreloadedDatabaseMover {
+// class PreloadedDatabaseMover {
 //    let importDatabase = ImportDatabase()
 //
 //    func expandZipDatabaseFile() {
@@ -13,5 +13,4 @@
 //            print("Something went wrong")
 //        }
 //    }
-//}
-
+// }

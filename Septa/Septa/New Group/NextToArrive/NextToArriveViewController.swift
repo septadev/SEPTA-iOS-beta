@@ -7,7 +7,5 @@ class NextToArriveViewController: UIViewController {
     @IBOutlet weak var toolbar: UIToolbar!
 
     override func viewDidLoad() {
-        
-}
-
+    }
 }

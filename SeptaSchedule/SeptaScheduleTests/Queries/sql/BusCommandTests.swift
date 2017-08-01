@@ -16,7 +16,7 @@ class BusCommandTests: XCTestCase {
             XCTAssertNil(error)
             XCTAssertTrue(Thread.isMainThread)
             let sampleStop = Stop(stopId: 20589, stopName: "54th St & City Av", stopLatitude: 39.99696, stopLongitude: -75.235135, wheelchairBoarding: false)
-            let filtered = stops!.filter {$0 == sampleStop}
+            let filtered = stops!.filter { $0 == sampleStop }
 
             XCTAssertEqual(filtered.count, 1)
             XCTAssertEqual(stops?.count, 122)
@@ -39,7 +39,7 @@ class BusCommandTests: XCTestCase {
             XCTAssertNil(error)
             XCTAssertTrue(Thread.isMainThread)
             let sampleStop = Stop(stopId: 3566, stopName: "52nd St & Overbrook Av", stopLatitude: 39.995615, stopLongitude: -75.231605, wheelchairBoarding: false)
-            let filtered = stops!.filter {$0 == sampleStop}
+            let filtered = stops!.filter { $0 == sampleStop }
             XCTAssertEqual(filtered.count, 1)
             XCTAssertEqual(stops?.count, 184)
             expectation.fulfill()
@@ -61,7 +61,7 @@ class BusCommandTests: XCTestCase {
             XCTAssertNil(error)
             XCTAssertTrue(Thread.isMainThread)
             let sampleStop = Stop(stopId: 30592, stopName: "Old Lancaster Rd & City Line Av", stopLatitude: -75.235548, stopLongitude: -75.235548, wheelchairBoarding: false)
-            let filtered = stops!.filter {$0 == sampleStop}
+            let filtered = stops!.filter { $0 == sampleStop }
             XCTAssertEqual(filtered.count, 1)
             XCTAssertEqual(stops?.count, 58)
             expectation.fulfill()
@@ -83,7 +83,7 @@ class BusCommandTests: XCTestCase {
             XCTAssertNil(error)
             XCTAssertTrue(Thread.isMainThread)
             let sampleTrip = Trip(departureInt: 1412, arrivalInt: 1508)
-            let filtered = trips!.filter {$0 == sampleTrip}
+            let filtered = trips!.filter { $0 == sampleTrip }
             XCTAssertEqual(filtered.count, 1)
             XCTAssertEqual(trips?.count, 20)
             expectation.fulfill()
