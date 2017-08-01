@@ -4,7 +4,7 @@ import UIKit
 import SeptaSchedule
 
 class SelectStopsViewController: UITableViewController, UpdateableFromViewModel {
-
+    let segueId = "showStop"
     @IBOutlet var footerView: UIView!
 
     @IBAction func viewSchedulesTapped(_: Any) {
@@ -14,6 +14,7 @@ class SelectStopsViewController: UITableViewController, UpdateableFromViewModel 
     var routeType: RouteType!
     var route: Route?
     var viewModel: SelectStopsViewModel!
+    var routeStops: RouteStops?
 
     func setRouteType(_ routeType: RouteType, route _: Route) {
         self.routeType = routeType
@@ -46,5 +47,21 @@ class SelectStopsViewController: UITableViewController, UpdateableFromViewModel 
 
     func viewModelUpdated() {
         tableView.reloadData()
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        routeStops = viewModel.routeStops
+        performSegue(withIdentifier: segueId, sender: self)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
+        guard
+            let selectStopViewController = segue.destination as? SelectStopViewController,
+            let routeType = routeType,
+            let route = route, let routeStops = routeStops
+        else { return }
+
+        selectStopViewController.setRouteType(routeType, route: route, routeStops: routeStops)
     }
 }

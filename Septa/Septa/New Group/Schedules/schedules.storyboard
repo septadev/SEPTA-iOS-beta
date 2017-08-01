@@ -194,11 +194,56 @@
                             <outlet property="delegate" destination="zWZ-jt-AT5" id="Ob3-EV-YVy"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="u3d-Rh-7gw" kind="show" identifier="selectStop" id="Lxl-Wi-MRE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CLo-bZ-Bfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationItem title="Select Stops" id="RlQ-gJ-iwZ"/>
             </objects>
             <point key="canvasLocation" x="1738" y="-12"/>
+        </scene>
+        <!--Select Stop-->
+        <scene sceneID="cRd-04-jom">
+            <objects>
+                <tableViewController title="Select Stop" id="u3d-Rh-7gw" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jQa-TV-39Z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="stopCell" id="hQ2-lO-aeF" customClass="SingleStringCell" customModule="Septa" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hQ2-lO-aeF" id="Njj-dd-7Ok">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ap-u1-lfC" userLabel="StopName">
+                                            <rect key="frame" x="10" y="10" width="355" height="23.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="5ap-u1-lfC" firstAttribute="leading" secondItem="Njj-dd-7Ok" secondAttribute="leading" constant="10" id="Bro-9h-TI1"/>
+                                        <constraint firstAttribute="bottom" secondItem="5ap-u1-lfC" secondAttribute="bottom" constant="10" id="FYG-7S-Fc6"/>
+                                        <constraint firstAttribute="trailing" secondItem="5ap-u1-lfC" secondAttribute="trailing" constant="10" id="jcr-jb-O4i"/>
+                                        <constraint firstItem="5ap-u1-lfC" firstAttribute="top" secondItem="Njj-dd-7Ok" secondAttribute="top" constant="10" id="m84-75-zHv"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="u3d-Rh-7gw" id="k4Y-wA-4Gg"/>
+                            <outlet property="delegate" destination="u3d-Rh-7gw" id="wsX-yW-1HJ"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JFf-Ey-IIT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2716" y="-12"/>
         </scene>
         <!--Nav Controller Scene-->
         <scene sceneID="83K-FD-2cf">

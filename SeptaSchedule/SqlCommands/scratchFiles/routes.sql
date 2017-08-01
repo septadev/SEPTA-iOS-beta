@@ -15,5 +15,5 @@ group BY route_type;
 
 -- 3 = bus
 -- trolly = 0 anf NHSL
--- 1 subway   
+-- 1 subway
 
