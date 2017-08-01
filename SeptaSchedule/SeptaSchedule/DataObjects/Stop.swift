@@ -2,16 +2,16 @@
 
 import Foundation
 
-struct Stop {
-    let stopId: Int
-    let stopName: String
-    let stopLatitude: Double
-    let stopLongitude: Double
-    let wheelchairBoarding: Bool
+public struct Stop {
+    public let stopId: Int
+    public let stopName: String
+    public let stopLatitude: Double
+    public let stopLongitude: Double
+    public let wheelchairBoarding: Bool
 }
 
 extension Stop: Equatable {
-    static func == (lhs: Stop, rhs: Stop) -> Bool {
+    public static func == (lhs: Stop, rhs: Stop) -> Bool {
         return
             lhs.stopId == rhs.stopId &&
             lhs.stopName == rhs.stopName &&

@@ -9,6 +9,17 @@
 /* Begin PBXBuildFile section */
 		583BEC751F2A601000235EDE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583BEC741F2A601000235EDE /* MainViewController.swift */; };
 		584AF7A61F30A06B00244CE3 /* NextToArriveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7A51F30A06B00244CE3 /* NextToArriveViewController.swift */; };
+		584AF7B51F30BD5900244CE3 /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7B41F30BD5900244CE3 /* RoutesViewController.swift */; };
+		584AF7B81F30BDC400244CE3 /* TransitMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7B71F30BDC400244CE3 /* TransitMode.swift */; };
+		584AF7BA1F30C06700244CE3 /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7B91F30C06700244CE3 /* RouteTableViewCell.swift */; };
+		584AF7BC1F30C25200244CE3 /* RoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7BB1F30C25200244CE3 /* RoutesViewModel.swift */; };
+		584AF7C21F30C41800244CE3 /* RoutesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7C11F30C41800244CE3 /* RoutesViewModelTests.swift */; };
+		584AF7C51F30C9FA00244CE3 /* ViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7C41F30C9FA00244CE3 /* ViewModelDelegate.swift */; };
+		584AF7C71F30D55000244CE3 /* TransitModesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7C61F30D55000244CE3 /* TransitModesViewController.swift */; };
+		584AF7CA1F30E2ED00244CE3 /* SelectStopsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7C91F30E2ED00244CE3 /* SelectStopsViewModel.swift */; };
+		584AF7CC1F30E2FB00244CE3 /* SelectStopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7CB1F30E2FB00244CE3 /* SelectStopsViewController.swift */; };
+		584AF7CE1F30E4FA00244CE3 /* SingleLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7CD1F30E4FA00244CE3 /* SingleLabelCell.swift */; };
+		584AF7D01F30FB3B00244CE3 /* SelectStopsFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 584AF7CF1F30FB3B00244CE3 /* SelectStopsFooterView.xib */; };
 		58B299F61F2A32020080B0DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B299F51F2A32020080B0DA /* main.m */; };
 		58B299F91F2A32020080B0DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B299F81F2A32020080B0DA /* AppDelegate.m */; };
 		58B29A021F2A32020080B0DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58B29A001F2A32020080B0DA /* Main.storyboard */; };
@@ -56,6 +67,18 @@
 /* Begin PBXFileReference section */
 		583BEC741F2A601000235EDE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		584AF7A51F30A06B00244CE3 /* NextToArriveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveViewController.swift; sourceTree = "<group>"; };
+		584AF7B41F30BD5900244CE3 /* RoutesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
+		584AF7B71F30BDC400244CE3 /* TransitMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitMode.swift; sourceTree = "<group>"; };
+		584AF7B91F30C06700244CE3 /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
+		584AF7BB1F30C25200244CE3 /* RoutesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewModel.swift; sourceTree = "<group>"; };
+		584AF7C01F30C41700244CE3 /* SeptaTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SeptaTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		584AF7C11F30C41800244CE3 /* RoutesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewModelTests.swift; sourceTree = "<group>"; };
+		584AF7C41F30C9FA00244CE3 /* ViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelDelegate.swift; sourceTree = "<group>"; };
+		584AF7C61F30D55000244CE3 /* TransitModesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitModesViewController.swift; sourceTree = "<group>"; };
+		584AF7C91F30E2ED00244CE3 /* SelectStopsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopsViewModel.swift; sourceTree = "<group>"; };
+		584AF7CB1F30E2FB00244CE3 /* SelectStopsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopsViewController.swift; sourceTree = "<group>"; };
+		584AF7CD1F30E4FA00244CE3 /* SingleLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLabelCell.swift; sourceTree = "<group>"; };
+		584AF7CF1F30FB3B00244CE3 /* SelectStopsFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectStopsFooterView.xib; sourceTree = "<group>"; };
 		588A58DE1F2B899C00AE02E5 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = ../SeptaCoreData/SeptaCoreData/Frameworks/Zip.framework; sourceTree = "<group>"; };
 		58B299F11F2A32020080B0DA /* Septa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Septa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58B299F51F2A32020080B0DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -153,7 +176,10 @@
 		583BEC791F2A613500235EDE /* Schedules */ = {
 			isa = PBXGroup;
 			children = (
+				584AF7C81F30E2CF00244CE3 /* SelectStop */,
+				584AF7C31F30C47C00244CE3 /* Routes */,
 				58EDE2A91F2A62CB00F97B8C /* schedules.storyboard */,
+				584AF7C61F30D55000244CE3 /* TransitModesViewController.swift */,
 			);
 			path = Schedules;
 			sourceTree = "<group>";
@@ -190,6 +216,75 @@
 			path = About;
 			sourceTree = "<group>";
 		};
+		584AF7B21F30BCE700244CE3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				584AF7B31F30BCF300244CE3 /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		584AF7B31F30BCF300244CE3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				584AF7CD1F30E4FA00244CE3 /* SingleLabelCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		584AF7B61F30BDAD00244CE3 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				584AF7B71F30BDC400244CE3 /* TransitMode.swift */,
+				584AF7C41F30C9FA00244CE3 /* ViewModelDelegate.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		584AF7BD1F30C3CD00244CE3 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				584AF7BE1F30C3E100244CE3 /* Schedules */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		584AF7BE1F30C3E100244CE3 /* Schedules */ = {
+			isa = PBXGroup;
+			children = (
+				584AF7BF1F30C3F100244CE3 /* Routes */,
+			);
+			path = Schedules;
+			sourceTree = "<group>";
+		};
+		584AF7BF1F30C3F100244CE3 /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				584AF7C11F30C41800244CE3 /* RoutesViewModelTests.swift */,
+			);
+			path = Routes;
+			sourceTree = "<group>";
+		};
+		584AF7C31F30C47C00244CE3 /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				584AF7B41F30BD5900244CE3 /* RoutesViewController.swift */,
+				584AF7B91F30C06700244CE3 /* RouteTableViewCell.swift */,
+				584AF7BB1F30C25200244CE3 /* RoutesViewModel.swift */,
+			);
+			path = Routes;
+			sourceTree = "<group>";
+		};
+		584AF7C81F30E2CF00244CE3 /* SelectStop */ = {
+			isa = PBXGroup;
+			children = (
+				584AF7C91F30E2ED00244CE3 /* SelectStopsViewModel.swift */,
+				584AF7CB1F30E2FB00244CE3 /* SelectStopsViewController.swift */,
+				584AF7CF1F30FB3B00244CE3 /* SelectStopsFooterView.xib */,
+			);
+			path = SelectStop;
+			sourceTree = "<group>";
+		};
 		58B299E81F2A32020080B0DA = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +307,8 @@
 		58B299F31F2A32020080B0DA /* Septa */ = {
 			isa = PBXGroup;
 			children = (
+				584AF7B61F30BDAD00244CE3 /* View Models */,
+				584AF7B21F30BCE700244CE3 /* Views */,
 				58EDE2AD1F2A6BB600F97B8C /* Assets */,
 				583BEC731F2A5FA900235EDE /* Main */,
 				583BEC721F2A5F2700235EDE /* Features */,
@@ -236,6 +333,8 @@
 		58B29A101F2A32020080B0DA /* SeptaTests */ = {
 			isa = PBXGroup;
 			children = (
+				584AF7C01F30C41700244CE3 /* SeptaTests-Bridging-Header.h */,
+				584AF7BD1F30C3CD00244CE3 /* Features */,
 				58B29A111F2A32020080B0DA /* SeptaTests.m */,
 				58B29A131F2A32020080B0DA /* Info.plist */,
 			);
@@ -318,6 +417,7 @@
 					58B29A0C1F2A32020080B0DA = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = L636S9JLLY;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 58B299F01F2A32020080B0DA;
 					};
@@ -352,6 +452,7 @@
 				58EDE2AC1F2A6A6000F97B8C /* Assets.xcassets in Resources */,
 				58EDE29C1F2A627900F97B8C /* about.storyboard in Resources */,
 				58B29A021F2A32020080B0DA /* Main.storyboard in Resources */,
+				584AF7D01F30FB3B00244CE3 /* SelectStopsFooterView.xib in Resources */,
 				58EDE29E1F2A628300F97B8C /* settings.storyboard in Resources */,
 				58EDE2A81F2A62C100F97B8C /* fares.storyboard in Resources */,
 				58EDE2AA1F2A62CB00F97B8C /* schedules.storyboard in Resources */,
@@ -375,10 +476,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				584AF7C71F30D55000244CE3 /* TransitModesViewController.swift in Sources */,
 				58B299F91F2A32020080B0DA /* AppDelegate.m in Sources */,
+				584AF7CC1F30E2FB00244CE3 /* SelectStopsViewController.swift in Sources */,
 				583BEC751F2A601000235EDE /* MainViewController.swift in Sources */,
+				584AF7B81F30BDC400244CE3 /* TransitMode.swift in Sources */,
 				584AF7A61F30A06B00244CE3 /* NextToArriveViewController.swift in Sources */,
+				584AF7C51F30C9FA00244CE3 /* ViewModelDelegate.swift in Sources */,
+				584AF7BA1F30C06700244CE3 /* RouteTableViewCell.swift in Sources */,
 				58B299F61F2A32020080B0DA /* main.m in Sources */,
+				584AF7CA1F30E2ED00244CE3 /* SelectStopsViewModel.swift in Sources */,
+				584AF7CE1F30E4FA00244CE3 /* SingleLabelCell.swift in Sources */,
+				584AF7BC1F30C25200244CE3 /* RoutesViewModel.swift in Sources */,
+				584AF7B51F30BD5900244CE3 /* RoutesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +496,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				584AF7C21F30C41800244CE3 /* RoutesViewModelTests.swift in Sources */,
 				58B29A121F2A32020080B0DA /* SeptaTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -573,6 +684,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -582,6 +694,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.SeptaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Septa.app/Septa";
 			};
 			name = Debug;
@@ -591,6 +707,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -600,6 +717,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.SeptaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Septa.app/Septa";
 			};
 			name = Release;

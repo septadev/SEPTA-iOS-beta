@@ -2,7 +2,7 @@
 
 import Foundation
 
-enum ScheduleType: Int {
+public enum ScheduleType: Int {
     case weekday = 1
     case saturday = 2
     case sunday = 3

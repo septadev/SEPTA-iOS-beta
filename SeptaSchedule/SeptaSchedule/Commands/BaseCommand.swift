@@ -3,7 +3,7 @@
 import Foundation
 import SQLite
 
-class BaseCommand {
+public class BaseCommand {
 
     func retrieveResults<T>(sqlQuery: SQLQuery, userCompletion: @escaping ([T]?, Error?) -> Void, resultsMapper mapper: @escaping (Statement) -> [T]) {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in

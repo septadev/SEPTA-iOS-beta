@@ -2,7 +2,7 @@
 
 import Foundation
 
-enum RouteType: Int {
+public enum RouteType: Int {
 
     case bus = 3
 }

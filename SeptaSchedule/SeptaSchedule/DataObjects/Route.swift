@@ -3,9 +3,9 @@
 import Foundation
 
 public struct Route {
-    let routeId: String
-    let routeShortName: String
-    let routeLongName: String
+    public let routeId: String
+    public let routeShortName: String
+    public let routeLongName: String
 }
 
 extension Route: Equatable {

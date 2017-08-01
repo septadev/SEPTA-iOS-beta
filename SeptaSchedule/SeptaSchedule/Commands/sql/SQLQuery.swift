@@ -2,7 +2,7 @@
 
 import Foundation
 
-enum SQLQuery {
+public enum SQLQuery {
     case busStart(routeId: Int, scheduleType: ScheduleType)
     case busEnd(routeId: Int, scheduleType: ScheduleType, startStopId: Int)
     case busTrip(routeId: Int, scheduleType: ScheduleType, startStopId: Int, endStopId: Int)

@@ -3,24 +3,26 @@
 import Foundation
 import SQLite
 
-enum SQLCommandError: Error {
+public enum SQLCommandError: Error {
     case noConnection
     case noCommand
 }
 
-class BusCommands: BaseCommand {
-    typealias BusStopsCompletion = ([Stop]?, Error?) -> Void
-    typealias BusTripsCompletion = ([Trip]?, Error?) -> Void
-    typealias BusRoutesCompletion = ([Route]?, Error?) -> Void
+public class BusCommands: BaseCommand {
+    public typealias BusStopsCompletion = ([Stop]?, Error?) -> Void
+    public typealias BusTripsCompletion = ([Trip]?, Error?) -> Void
+    public typealias BusRoutesCompletion = ([Route]?, Error?) -> Void
 
-    func busRoutes(withQuery sqlQuery: SQLQuery, completion: @escaping BusRoutesCompletion) {
+    public override init() {}
+
+    public func busRoutes(withQuery sqlQuery: SQLQuery, completion: @escaping BusRoutesCompletion) {
 
         retrieveResults(sqlQuery: sqlQuery, userCompletion: completion) { (statement) -> [Route] in
             var routes = [Route]()
             for row in statement {
 
                 let routeId: String?
-                // in the databse, route_id is defined as an Int, but there are strings in there.
+                // in the database, route_id is defined as an Int, but there are strings in there.
                 if let col0 = row[0] {
                     if let routeIdString = col0 as? String {
                         routeId = routeIdString
@@ -45,7 +47,7 @@ class BusCommands: BaseCommand {
         }
     }
 
-    func busStops(withQuery sqlQuery: SQLQuery, completion: @escaping BusStopsCompletion) {
+    public func busStops(withQuery sqlQuery: SQLQuery, completion: @escaping BusStopsCompletion) {
 
         retrieveResults(sqlQuery: sqlQuery, userCompletion: completion) { (statement) -> [Stop] in
             var stops = [Stop]()
@@ -64,7 +66,7 @@ class BusCommands: BaseCommand {
         }
     }
 
-    func busTrips(withQuery sqlQuery: SQLQuery, completion: @escaping BusTripsCompletion) {
+    public func busTrips(withQuery sqlQuery: SQLQuery, completion: @escaping BusTripsCompletion) {
 
         retrieveResults(sqlQuery: sqlQuery, userCompletion: completion) { (statement) -> [Trip] in
             var trips = [Trip]()

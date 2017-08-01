@@ -9,22 +9,109 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Schedules View Controller-->
+        <!--Transit Modes-->
+        <scene sceneID="lcp-Id-01x">
+            <objects>
+                <tableViewController id="IIx-hh-INC" customClass="TransitModesViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="95N-MP-YNM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="XHm-EP-HTW">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="slg-J1-Ycb">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="slg-J1-Ycb" id="2SX-rN-1bP">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwK-RD-eai">
+                                                    <rect key="frame" x="29" y="11" width="258" height="33"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vYg-MS-fwv">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vYg-MS-fwv" id="gwb-QL-hPV">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nd0-zM-gDg">
+                                        <rect key="frame" x="0.0" y="88" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nd0-zM-gDg" id="DPC-nm-ex6">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="IIx-hh-INC" id="Hyt-vP-qL2"/>
+                            <outlet property="delegate" destination="IIx-hh-INC" id="V41-HK-Da0"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Transit Modes" id="Pqg-rd-QzG"/>
+                    <connections>
+                        <segue destination="mgD-ir-7HL" kind="show" identifier="showRoutes" id="yRO-uU-G4S"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xEw-03-eh6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-748" y="220.83958020989508"/>
+        </scene>
+        <!--Routes-->
         <scene sceneID="ITd-yd-8p1">
             <objects>
-                <tableViewController title="Schedules View Controller" id="mgD-ir-7HL" sceneMemberID="viewController">
+                <tableViewController title="Routes" id="mgD-ir-7HL" customClass="RoutesViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Jvi-F8-pLF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="CbY-uF-J3d">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="routeCell" id="CbY-uF-J3d" customClass="RouteTableViewCell" customModule="Septa" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CbY-uF-J3d" id="umE-dY-tQp">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVB-Zd-MCV" userLabel="RouteShortName">
+                                            <rect key="frame" x="15" y="9" width="54" height="25.5"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2i-Pv-bzR" userLabel="RouteLongName">
+                                            <rect key="frame" x="108" y="5" width="234" height="33.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="M2i-Pv-bzR" secondAttribute="trailing" id="3ig-cP-pfb" userLabel="RouteLongNameRight"/>
+                                        <constraint firstItem="wVB-Zd-MCV" firstAttribute="centerY" secondItem="umE-dY-tQp" secondAttribute="centerY" id="84h-Hb-2lO" userLabel="RouteShortNameCenterY"/>
+                                        <constraint firstAttribute="bottom" secondItem="M2i-Pv-bzR" secondAttribute="bottom" constant="5" id="IFP-l7-gH6" userLabel="RouteLongNameBottom"/>
+                                        <constraint firstItem="M2i-Pv-bzR" firstAttribute="leading" secondItem="umE-dY-tQp" secondAttribute="leading" constant="108" id="fTb-o7-HD3" userLabel="RouteLongNameLeft"/>
+                                        <constraint firstItem="M2i-Pv-bzR" firstAttribute="top" secondItem="umE-dY-tQp" secondAttribute="top" constant="5" id="jMg-1z-3wC" userLabel="RouteLongNameTop"/>
+                                        <constraint firstItem="wVB-Zd-MCV" firstAttribute="leading" secondItem="umE-dY-tQp" secondAttribute="leading" constant="15" id="knw-zX-eDe" userLabel="RouteShortNameLeft"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="routeLongNameLabel" destination="M2i-Pv-bzR" id="aCb-li-HKB"/>
+                                    <outlet property="routeShortNameLabel" destination="wVB-Zd-MCV" id="rzn-5Q-7o4"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -32,11 +119,86 @@
                             <outlet property="delegate" destination="mgD-ir-7HL" id="3ct-UC-uPk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Schedules" id="gp9-YQ-lc3"/>
+                    <navigationItem key="navigationItem" title="Bus Routes" id="gp9-YQ-lc3"/>
+                    <connections>
+                        <segue destination="zWZ-jt-AT5" kind="show" identifier="selectStops" id="UyG-1n-43G"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MPb-nZ-m5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationItem title="Bus Routes" id="QlM-7k-qZC"/>
             </objects>
             <point key="canvasLocation" x="666" y="72"/>
+        </scene>
+        <!--Select Stops-->
+        <scene sceneID="mO2-QH-vLX">
+            <objects>
+                <tableViewController title="Select Stops" id="zWZ-jt-AT5" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="UDe-fl-wdO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="noSelectionCell" id="qi9-hA-ROc" customClass="SingleLabelCell" customModule="Septa" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qi9-hA-ROc" id="MaJ-Yf-noi">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pleaes Make a Selection" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUs-QG-5Bv">
+                                            <rect key="frame" x="10" y="10" width="322" height="23.5"/>
+                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="tUs-QG-5Bv" firstAttribute="top" secondItem="MaJ-Yf-noi" secondAttribute="top" constant="10" id="0aE-ae-RAz"/>
+                                        <constraint firstAttribute="bottom" secondItem="tUs-QG-5Bv" secondAttribute="bottom" constant="10" id="WLU-Fj-9kA"/>
+                                        <constraint firstAttribute="trailing" secondItem="tUs-QG-5Bv" secondAttribute="trailing" constant="10" id="WSb-fT-2d1"/>
+                                        <constraint firstItem="tUs-QG-5Bv" firstAttribute="leading" secondItem="MaJ-Yf-noi" secondAttribute="leading" constant="10" id="lge-r2-9e1"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="tUs-QG-5Bv" id="tcP-QQ-S5y"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="stopCell" id="wI0-hQ-g8x" customClass="SingleLabelCell" customModule="Septa" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wI0-hQ-g8x" id="161-93-jNM">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55th and Baldwin Avenue" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gde-Va-bOd">
+                                            <rect key="frame" x="10" y="10" width="322" height="23.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Gde-Va-bOd" firstAttribute="top" secondItem="161-93-jNM" secondAttribute="top" constant="10" id="0fM-0t-CL5"/>
+                                        <constraint firstAttribute="bottom" secondItem="Gde-Va-bOd" secondAttribute="bottom" constant="10" id="9Ig-8l-Bcu"/>
+                                        <constraint firstAttribute="trailing" secondItem="Gde-Va-bOd" secondAttribute="trailing" constant="10" id="npg-re-9AY"/>
+                                        <constraint firstItem="Gde-Va-bOd" firstAttribute="leading" secondItem="161-93-jNM" secondAttribute="leading" constant="10" id="rwg-qJ-W0o"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="Gde-Va-bOd" id="UGv-v7-Nq9"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="zWZ-jt-AT5" id="IMu-Fi-7i9"/>
+                            <outlet property="delegate" destination="zWZ-jt-AT5" id="Ob3-EV-YVy"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CLo-bZ-Bfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationItem title="Select Stops" id="RlQ-gJ-iwZ"/>
+            </objects>
+            <point key="canvasLocation" x="1738" y="-12"/>
         </scene>
         <!--Nav Controller Scene-->
         <scene sceneID="83K-FD-2cf">
@@ -49,12 +211,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="mgD-ir-7HL" kind="relationship" relationship="rootViewController" id="OPM-A2-5hL"/>
+                        <segue destination="IIx-hh-INC" kind="relationship" relationship="rootViewController" id="3NK-Rv-UOv"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZi-KV-b8v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-286" y="72"/>
+            <point key="canvasLocation" x="-1892" y="221"/>
         </scene>
     </scenes>
 </document>
