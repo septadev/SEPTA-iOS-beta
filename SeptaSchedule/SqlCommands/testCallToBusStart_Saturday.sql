@@ -3,7 +3,8 @@
 
 -- returns 122 rows
 
--- including 20589	54th St & City Av
+-- including 20589	54th St & City Av 39.99696	-75.235135
+
 
 SELECT
   S.stop_id, S.Stop_name, S.stop_lat, S.stop_lon, s.wheelchair_boarding

@@ -26,6 +26,9 @@
 		580D0D5A1F300092009CE61C /* SEPTA.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 580D0D591F300091009CE61C /* SEPTA.sqlite */; };
 		580D0D5D1F30020F009CE61C /* busEnd.sql in Resources */ = {isa = PBXBuildFile; fileRef = 580D0D5C1F30020F009CE61C /* busEnd.sql */; };
 		580D0D631F3007E8009CE61C /* SQLQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D621F3007E8009CE61C /* SQLQuery.swift */; };
+		580D0D661F30398A009CE61C /* GeoCompare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D651F30398A009CE61C /* GeoCompare.swift */; };
+		580D0D681F303F33009CE61C /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D671F303F33009CE61C /* Trip.swift */; };
+		580D0D6A1F304000009CE61C /* busTrip.sql in Resources */ = {isa = PBXBuildFile; fileRef = 580D0D691F304000009CE61C /* busTrip.sql */; };
 		58493FD51F2F584B008E43BD /* SeptaSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58493FCB1F2F584B008E43BD /* SeptaSchedule.framework */; };
 		58493FDA1F2F584B008E43BD /* DatabaseFileManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58493FD91F2F584B008E43BD /* DatabaseFileManagerTests.swift */; };
 		58493FDC1F2F584B008E43BD /* SeptaSchedule.h in Headers */ = {isa = PBXBuildFile; fileRef = 58493FCE1F2F584B008E43BD /* SeptaSchedule.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -88,6 +91,9 @@
 		580D0D591F300091009CE61C /* SEPTA.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = SEPTA.sqlite; sourceTree = "<group>"; };
 		580D0D5C1F30020F009CE61C /* busEnd.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = busEnd.sql; sourceTree = "<group>"; };
 		580D0D621F3007E8009CE61C /* SQLQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLQuery.swift; sourceTree = "<group>"; };
+		580D0D651F30398A009CE61C /* GeoCompare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoCompare.swift; sourceTree = "<group>"; };
+		580D0D671F303F33009CE61C /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		580D0D691F304000009CE61C /* busTrip.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = busTrip.sql; sourceTree = "<group>"; };
 		58493FCB1F2F584B008E43BD /* SeptaSchedule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SeptaSchedule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58493FCE1F2F584B008E43BD /* SeptaSchedule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SeptaSchedule.h; sourceTree = "<group>"; };
 		58493FCF1F2F584B008E43BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -202,6 +208,14 @@
 			path = Bus;
 			sourceTree = "<group>";
 		};
+		580D0D641F303972009CE61C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				580D0D651F30398A009CE61C /* GeoCompare.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		58493FC11F2F584B008E43BD = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +237,7 @@
 		58493FCD1F2F584B008E43BD /* SeptaSchedule */ = {
 			isa = PBXGroup;
 			children = (
+				580D0D641F303972009CE61C /* Utilities */,
 				580D0D371F2F953F009CE61C /* Database */,
 				580D0D341F2F9401009CE61C /* Commands */,
 				58493FF31F2F5F67008E43BD /* DataObjects */,
@@ -250,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				580D0D421F2F97E7009CE61C /* SQLCommandTemplate.swift */,
+				580D0D691F304000009CE61C /* busTrip.sql */,
 				58493FE61F2F5D79008E43BD /* busStart.sql */,
 				580D0D5C1F30020F009CE61C /* busEnd.sql */,
 				580D0D621F3007E8009CE61C /* SQLQuery.swift */,
@@ -273,6 +289,7 @@
 				58493FF51F2F5F76008E43BD /* Train */,
 				58493FF41F2F5F70008E43BD /* Bus */,
 				580D0D501F2FA4E6009CE61C /* Stop.swift */,
+				580D0D671F303F33009CE61C /* Trip.swift */,
 			);
 			path = DataObjects;
 			sourceTree = "<group>";
@@ -387,6 +404,7 @@
 			files = (
 				58493FE71F2F5D8B008E43BD /* busStart.sql in Resources */,
 				580D0D3C1F2F9689009CE61C /* SEPTA.zip in Resources */,
+				580D0D6A1F304000009CE61C /* busTrip.sql in Resources */,
 				580D0D5D1F30020F009CE61C /* busEnd.sql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,9 +424,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				580D0D681F303F33009CE61C /* Trip.swift in Sources */,
 				580D0D551F2FCCA0009CE61C /* BaseCommand.swift in Sources */,
 				580D0D4F1F2FA435009CE61C /* ScheduleType.swift in Sources */,
 				580D0D431F2F97E7009CE61C /* SQLCommandTemplate.swift in Sources */,
+				580D0D661F30398A009CE61C /* GeoCompare.swift in Sources */,
 				580D0D511F2FA4E6009CE61C /* Stop.swift in Sources */,
 				580D0D631F3007E8009CE61C /* SQLQuery.swift in Sources */,
 				580D0D4B1F2FA08E009CE61C /* SQLConnection.swift in Sources */,

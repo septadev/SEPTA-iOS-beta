@@ -4,9 +4,9 @@
 
 --In this case, find stops on route 44, on Saturday, given that the user has already selected
 -- stop id 694, 5th St & Market St - FS as the start
--- stop id 638	52nd St & City Av - FS
+-- stop id 638    52nd St & City Av - FS
 
--- returns 20 rows, eg. Coulter Av & Saint Georges Rd	1616	5th St & Market St - FS	1712
+-- returns 20 rows, eg. Coulter Av & Saint Georges Rd    1616    5th St & Market St - FS    1712
 
 
 
@@ -22,9 +22,9 @@ FROM
       JOIN stops_bus S
         ON ST.stop_id = S.stop_id
 
-    WHERE ST.stop_id = 694 AND ST.trip_id IN (
+    WHERE ST.stop_id = :start_stop_id AND ST.trip_id IN (
       SELECT trip_id
-      FROM trips_bus T WHERE T.route_id == 44 AND T.service_id = 2)
+      FROM trips_bus T WHERE T.route_id == :route_id AND T.service_id = :service_id)
 
 
   ) Start
@@ -38,11 +38,11 @@ FROM
       JOIN stops_bus S
         ON ST.stop_id = S.stop_id
 
-    WHERE ST.stop_id = 638 AND ST.trip_id IN (
+    WHERE ST.stop_id = :end_stop_id AND ST.trip_id IN (
       SELECT trip_id
-      FROM trips_bus T WHERE T.route_id == 44 AND T.service_id = 2)
+      FROM trips_bus T WHERE T.route_id == :route_id AND T.service_id = :service_id)
 
   ) End
   -- join them together so they show up on the same trip
-    ON Start.trip_id = End.trip_id where start.arrival_time < End.arrival_time
+  ON Start.trip_id = End.trip_id where start.arrival_time < End.arrival_time
 ORDER BY Start.arrival_time;

@@ -15,15 +15,15 @@ class BusCommandTests: XCTestCase {
             XCTAssertNotNil(stops)
             XCTAssertNil(error)
             XCTAssertTrue(Thread.isMainThread)
-            let filtered = stops!.filter {
-                return $0.stopId == 1169 && $0.stopName == "City Av & Bala Av"
-            }
+            let sampleStop = Stop(stopId: 20589, stopName: "54th St & City Av", stopLatitude: 39.99696, stopLongitude: -75.235135, wheelchairBoarding: false)
+            let filtered = stops!.filter {$0 == sampleStop}
+
             XCTAssertEqual(filtered.count, 1)
             XCTAssertEqual(stops?.count, 122)
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: 1) { error in
+        waitForExpectations(timeout: 3) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
             }
@@ -38,15 +38,14 @@ class BusCommandTests: XCTestCase {
             XCTAssertNotNil(stops)
             XCTAssertNil(error)
             XCTAssertTrue(Thread.isMainThread)
-            let filtered = stops!.filter {
-                return $0.stopId == 21893 && $0.stopName == "Essex Av & Woodbine Av"
-            }
+            let sampleStop = Stop(stopId: 3566, stopName: "52nd St & Overbrook Av", stopLatitude: 39.995615, stopLongitude: -75.231605, wheelchairBoarding: false)
+            let filtered = stops!.filter {$0 == sampleStop}
             XCTAssertEqual(filtered.count, 1)
             XCTAssertEqual(stops?.count, 184)
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: 1) { error in
+        waitForExpectations(timeout: 3) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
             }
@@ -56,20 +55,41 @@ class BusCommandTests: XCTestCase {
     func testCallToBusEnd_Saturday() {
 
         let expectation = self.expectation(description: "Should Return")
-        let sqlQuery = SQLQuery.busEnd(routeId: 44, scheduleType: .saturday, startStopId: 638)
+        let sqlQuery = SQLQuery.busEnd(routeId: 44, scheduleType: .saturday, startStopId: 694)
         cmd.busStops(withQuery: sqlQuery) { stops, error in
             XCTAssertNotNil(stops)
             XCTAssertNil(error)
             XCTAssertTrue(Thread.isMainThread)
-            XCTAssertEqual(stops?.count, 121)
-            let filtered = stops!.filter {
-                return $0.stopId == 6232 && $0.stopName == "City Av & Bryn Mawr Av"
-            }
+            let sampleStop = Stop(stopId: 30592, stopName: "Old Lancaster Rd & City Line Av", stopLatitude: -75.235548, stopLongitude: -75.235548, wheelchairBoarding: false)
+            let filtered = stops!.filter {$0 == sampleStop}
             XCTAssertEqual(filtered.count, 1)
+            XCTAssertEqual(stops?.count, 58)
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: 1) { error in
+        waitForExpectations(timeout: 3) { error in
+            if let error = error {
+                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+            }
+        }
+    }
+
+    func testCallToBusTrip_Saturday() {
+
+        let expectation = self.expectation(description: "Should Return")
+        let sqlQuery = SQLQuery.busTrip(routeId: 44, scheduleType: .saturday, startStopId: 694, endStopId: 638)
+        cmd.busTrips(withQuery: sqlQuery) { trips, error in
+            XCTAssertNotNil(trips)
+            XCTAssertNil(error)
+            XCTAssertTrue(Thread.isMainThread)
+            let sampleTrip = Trip(departureInt: 1412, arrivalInt: 1508)
+            let filtered = trips!.filter {$0 == sampleTrip}
+            XCTAssertEqual(filtered.count, 1)
+            XCTAssertEqual(trips?.count, 20)
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 3) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
             }
