@@ -39,6 +39,9 @@
 		58493FEF1F2F5ED5008E43BD /* Zip.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58493FEA1F2F5EAE008E43BD /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		584AF7A81F30A61A00244CE3 /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7A71F30A61A00244CE3 /* DateTime.swift */; };
 		584AF7AB1F30A85D00244CE3 /* TripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7AA1F30A85D00244CE3 /* TripTests.swift */; };
+		584AF7AD1F30AE4200244CE3 /* busRoute.sql in Resources */ = {isa = PBXBuildFile; fileRef = 584AF7AC1F30AE4200244CE3 /* busRoute.sql */; };
+		584AF7AF1F30AEF900244CE3 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7AE1F30AEF900244CE3 /* Route.swift */; };
+		584AF7B11F30B16800244CE3 /* RouteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7B01F30B16800244CE3 /* RouteType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +111,9 @@
 		58493FF91F2F6725008E43BD /* Regex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Regex.framework; sourceTree = "<group>"; };
 		584AF7A71F30A61A00244CE3 /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
 		584AF7AA1F30A85D00244CE3 /* TripTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTests.swift; sourceTree = "<group>"; };
+		584AF7AC1F30AE4200244CE3 /* busRoute.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = busRoute.sql; sourceTree = "<group>"; };
+		584AF7AE1F30AEF900244CE3 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		584AF7B01F30B16800244CE3 /* RouteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +147,7 @@
 				580D0D3E1F2F96A1009CE61C /* DatabaseTables.swift */,
 				58493FE51F2F5D79008E43BD /* sql */,
 				580D0D4E1F2FA435009CE61C /* ScheduleType.swift */,
+				584AF7B01F30B16800244CE3 /* RouteType.swift */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -274,6 +281,7 @@
 				580D0D691F304000009CE61C /* busTrip.sql */,
 				58493FE61F2F5D79008E43BD /* busStart.sql */,
 				580D0D5C1F30020F009CE61C /* busEnd.sql */,
+				584AF7AC1F30AE4200244CE3 /* busRoute.sql */,
 				580D0D621F3007E8009CE61C /* SQLQuery.swift */,
 			);
 			path = sql;
@@ -296,6 +304,7 @@
 				58493FF41F2F5F70008E43BD /* Bus */,
 				580D0D501F2FA4E6009CE61C /* Stop.swift */,
 				580D0D671F303F33009CE61C /* Trip.swift */,
+				584AF7AE1F30AEF900244CE3 /* Route.swift */,
 			);
 			path = DataObjects;
 			sourceTree = "<group>";
@@ -416,6 +425,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				584AF7AD1F30AE4200244CE3 /* busRoute.sql in Resources */,
 				58493FE71F2F5D8B008E43BD /* busStart.sql in Resources */,
 				580D0D3C1F2F9689009CE61C /* SEPTA.zip in Resources */,
 				580D0D6A1F304000009CE61C /* busTrip.sql in Resources */,
@@ -442,6 +452,8 @@
 				580D0D551F2FCCA0009CE61C /* BaseCommand.swift in Sources */,
 				580D0D4F1F2FA435009CE61C /* ScheduleType.swift in Sources */,
 				580D0D431F2F97E7009CE61C /* SQLCommandTemplate.swift in Sources */,
+				584AF7AF1F30AEF900244CE3 /* Route.swift in Sources */,
+				584AF7B11F30B16800244CE3 /* RouteType.swift in Sources */,
 				580D0D661F30398A009CE61C /* GeoCompare.swift in Sources */,
 				580D0D511F2FA4E6009CE61C /* Stop.swift in Sources */,
 				580D0D631F3007E8009CE61C /* SQLQuery.swift in Sources */,

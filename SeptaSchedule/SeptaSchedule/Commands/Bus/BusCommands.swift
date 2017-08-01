@@ -11,6 +11,39 @@ enum SQLCommandError: Error {
 class BusCommands: BaseCommand {
     typealias BusStopsCompletion = ([Stop]?, Error?) -> Void
     typealias BusTripsCompletion = ([Trip]?, Error?) -> Void
+    typealias BusRoutesCompletion = ([Route]?, Error?) -> Void
+
+    func busRoutes(withQuery sqlQuery: SQLQuery, completion: @escaping BusRoutesCompletion) {
+
+        retrieveResults(sqlQuery: sqlQuery, userCompletion: completion) { (statement) -> [Route] in
+            var routes = [Route]()
+            for row in statement {
+
+                let routeId: String?
+                // in the databse, route_id is defined as an Int, but there are strings in there.
+                if let col0 = row[0] {
+                    if let routeIdString = col0 as? String {
+                        routeId = routeIdString
+                    } else if let routeIdInt = col0 as? Int64 {
+                        routeId = String(routeIdInt)
+                    } else {
+                        routeId = nil
+                    }
+                } else {
+                    routeId = nil
+                }
+
+                if
+                    let routeId = routeId,
+                    let col1 = row[1], let routeShortName = col1 as? String,
+                    let col2 = row[2], let routeLongName = col2 as? String {
+                    let route = Route(routeId: routeId, routeShortName: routeShortName, routeLongName: routeLongName)
+                    routes.append(route)
+                }
+            }
+            return routes
+        }
+    }
 
     func busStops(withQuery sqlQuery: SQLQuery, completion: @escaping BusStopsCompletion) {
 

@@ -7,6 +7,29 @@ import XCTest
 class BusCommandTests: XCTestCase {
     let cmd = BusCommands()
 
+    func testCallToBusRoutes() {
+
+        let expectation = self.expectation(description: "Should Return")
+        let sqlQuery = SQLQuery.busRoute(routeType: .bus)
+        cmd.busRoutes(withQuery: sqlQuery) { routes, error in
+            XCTAssertNotNil(routes)
+            XCTAssertNil(error)
+
+            XCTAssertTrue(Thread.isMainThread)
+            let sampleRoute = Route(routeId: "108", routeShortName: "108", routeLongName: "UPS or Airport to 69th St TC")
+            let filtered = routes!.filter { $0 == sampleRoute }
+            XCTAssertEqual(filtered.count, 1)
+            XCTAssertEqual(routes?.count, 127)
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 3) { error in
+            if let error = error {
+                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+            }
+        }
+    }
+
     func testCallToBusStart_Saturday() {
 
         let expectation = self.expectation(description: "Should Return")

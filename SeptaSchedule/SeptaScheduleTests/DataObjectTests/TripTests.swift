@@ -4,7 +4,6 @@ import XCTest
 @testable import SeptaSchedule
 
 ///  TripTests purpose: Verify that the conversion to components works correctly.
-
 class TripTests: XCTestCase {
 
     /// Verify that the components are created correctly
@@ -22,7 +21,6 @@ class TripTests: XCTestCase {
         let actualArrivalComponents = trip.arrivalComponents
         XCTAssertEqual(expectedDepartureComponents, actualDepartureComponents)
         XCTAssertEqual(expectedArrivalComponets, actualArrivalComponents)
-
     }
 
     func testTripDuration_1() {
@@ -30,7 +28,6 @@ class TripTests: XCTestCase {
         var expectedDurationComponents = DateComponents()
         expectedDurationComponents.hour = 0
         expectedDurationComponents.minute = 27
-
 
         let actualDurationComponents = trip.tripDuration
         XCTAssertEqual(expectedDurationComponents, actualDurationComponents)
@@ -55,5 +52,4 @@ class TripTests: XCTestCase {
         let actualDurationComponents = trip.tripDuration
         XCTAssertEqual(expectedDurationComponents, actualDurationComponents)
     }
-
 }
