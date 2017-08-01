@@ -20,7 +20,7 @@
 		580D0D4D1F2FA1BD009CE61C /* SQLConnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D4C1F2FA1BD009CE61C /* SQLConnectionTests.swift */; };
 		580D0D4F1F2FA435009CE61C /* ScheduleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D4E1F2FA435009CE61C /* ScheduleType.swift */; };
 		580D0D511F2FA4E6009CE61C /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D501F2FA4E6009CE61C /* Stop.swift */; };
-		580D0D531F2FA58A009CE61C /* SQLCommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D521F2FA58A009CE61C /* SQLCommandTests.swift */; };
+		580D0D531F2FA58A009CE61C /* BusCommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D521F2FA58A009CE61C /* BusCommandTests.swift */; };
 		580D0D551F2FCCA0009CE61C /* BaseCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D541F2FCCA0009CE61C /* BaseCommand.swift */; };
 		580D0D581F300032009CE61C /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D571F300032009CE61C /* Main.swift */; };
 		580D0D5A1F300092009CE61C /* SEPTA.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 580D0D591F300091009CE61C /* SEPTA.sqlite */; };
@@ -82,7 +82,7 @@
 		580D0D4C1F2FA1BD009CE61C /* SQLConnectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLConnectionTests.swift; sourceTree = "<group>"; };
 		580D0D4E1F2FA435009CE61C /* ScheduleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleType.swift; sourceTree = "<group>"; };
 		580D0D501F2FA4E6009CE61C /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
-		580D0D521F2FA58A009CE61C /* SQLCommandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLCommandTests.swift; sourceTree = "<group>"; };
+		580D0D521F2FA58A009CE61C /* BusCommandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusCommandTests.swift; sourceTree = "<group>"; };
 		580D0D541F2FCCA0009CE61C /* BaseCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCommand.swift; sourceTree = "<group>"; };
 		580D0D571F300032009CE61C /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		580D0D591F300091009CE61C /* SEPTA.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = SEPTA.sqlite; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 			children = (
 				580D0D461F2F9817009CE61C /* SQLStringsTests.swift */,
 				580D0D4C1F2FA1BD009CE61C /* SQLConnectionTests.swift */,
-				580D0D521F2FA58A009CE61C /* SQLCommandTests.swift */,
+				580D0D521F2FA58A009CE61C /* BusCommandTests.swift */,
 			);
 			path = sql;
 			sourceTree = "<group>";
@@ -427,7 +427,7 @@
 				580D0D471F2F9817009CE61C /* SQLStringsTests.swift in Sources */,
 				580D0D4D1F2FA1BD009CE61C /* SQLConnectionTests.swift in Sources */,
 				580D0D2C1F2F7956009CE61C /* DatabaseTablesTests.swift in Sources */,
-				580D0D531F2FA58A009CE61C /* SQLCommandTests.swift in Sources */,
+				580D0D531F2FA58A009CE61C /* BusCommandTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

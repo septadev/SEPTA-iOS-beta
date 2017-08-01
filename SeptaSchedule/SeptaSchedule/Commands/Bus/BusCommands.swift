@@ -11,7 +11,7 @@ enum SQLCommandError: Error {
 class BusCommands: BaseCommand {
     typealias completion = ([Stop]?, Error?) -> Void
 
-    func availableStartingPoints(withQuery sqlQuery: SQLQuery, completion: @escaping completion) {
+    func busStops(withQuery sqlQuery: SQLQuery, completion: @escaping completion) {
 
         retrieveResults(sqlQuery: sqlQuery, userCompletion: completion) { (statement) -> [Stop] in
             var stops = [Stop]()
