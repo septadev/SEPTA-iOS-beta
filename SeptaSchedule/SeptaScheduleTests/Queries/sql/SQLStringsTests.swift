@@ -6,9 +6,9 @@ import XCTest
 /// SQLStringTests purpose: Validate that sql strings can be returned from the bundle
 class SQLStringsTests: XCTestCase {
 
-    let bundle = Bundle(for: SQLCommandStrings.self)
+    let bundle = Bundle(for: SQLCommandTemplate.self)
     let fileManager = FileManager.default
-    let commandStrings = SQLCommandStrings()
+    let commandStrings = SQLCommandTemplate()
 
     /// Verify that we can read from the bundle
     func testVerifyReadFileFromBundle() {
@@ -18,7 +18,8 @@ class SQLStringsTests: XCTestCase {
 
     /// Verify that we can pull the string from a file
     func testPullSqlCommandStringFromFile() {
-        let commandString = try! commandStrings.commandStringForFileName(.busStart)
+        let sqlQuery = SQLQuery.busStart(routeId: 44, scheduleType: .saturday)
+        let commandString = try! commandStrings.commandString(forSQLQuery: sqlQuery)
         XCTAssertNotNil(commandString)
     }
 }
