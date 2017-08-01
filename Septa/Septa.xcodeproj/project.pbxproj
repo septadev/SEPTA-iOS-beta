@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		583BEC751F2A601000235EDE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583BEC741F2A601000235EDE /* MainViewController.swift */; };
+		584AF7A61F30A06B00244CE3 /* NextToArriveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7A51F30A06B00244CE3 /* NextToArriveViewController.swift */; };
 		58B299F61F2A32020080B0DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B299F51F2A32020080B0DA /* main.m */; };
 		58B299F91F2A32020080B0DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B299F81F2A32020080B0DA /* AppDelegate.m */; };
 		58B29A021F2A32020080B0DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58B29A001F2A32020080B0DA /* Main.storyboard */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		583BEC741F2A601000235EDE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		584AF7A51F30A06B00244CE3 /* NextToArriveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveViewController.swift; sourceTree = "<group>"; };
 		588A58DE1F2B899C00AE02E5 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = ../SeptaCoreData/SeptaCoreData/Frameworks/Zip.framework; sourceTree = "<group>"; };
 		58B299F11F2A32020080B0DA /* Septa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Septa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58B299F51F2A32020080B0DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				58EDE2A31F2A62A900F97B8C /* nextToArrive.storyboard */,
+				584AF7A51F30A06B00244CE3 /* NextToArriveViewController.swift */,
 			);
 			path = NextToArrive;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 			files = (
 				58B299F91F2A32020080B0DA /* AppDelegate.m in Sources */,
 				583BEC751F2A601000235EDE /* MainViewController.swift in Sources */,
+				584AF7A61F30A06B00244CE3 /* NextToArriveViewController.swift in Sources */,
 				58B299F61F2A32020080B0DA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
