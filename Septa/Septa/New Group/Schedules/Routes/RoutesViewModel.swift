@@ -8,9 +8,9 @@ class RoutesViewModel {
     fileprivate var routes: [Route]
     let busCommands = BusCommands()
 
-    private weak var delegate: ViewModelUpdateable?
+    private weak var delegate: UpdateableFromViewModel?
 
-    init(delegate: ViewModelUpdateable, routeType: RouteType) {
+    init(delegate: UpdateableFromViewModel, routeType: RouteType) {
         routes = [Route]()
         self.delegate = delegate
         retrieveRoutes(routeType: routeType)
@@ -18,6 +18,10 @@ class RoutesViewModel {
 
     var routesCount: Int {
         return routes.count
+    }
+
+    func routeAtRow(row: Int) -> Route {
+        return routes[row]
     }
 
     func configureRoute(displayable: RouteCellDisplayable, atIndex index: Int) {

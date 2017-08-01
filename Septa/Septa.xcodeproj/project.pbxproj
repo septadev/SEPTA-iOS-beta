@@ -18,7 +18,7 @@
 		584AF7C71F30D55000244CE3 /* TransitModesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7C61F30D55000244CE3 /* TransitModesViewController.swift */; };
 		584AF7CA1F30E2ED00244CE3 /* SelectStopsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7C91F30E2ED00244CE3 /* SelectStopsViewModel.swift */; };
 		584AF7CC1F30E2FB00244CE3 /* SelectStopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7CB1F30E2FB00244CE3 /* SelectStopsViewController.swift */; };
-		584AF7CE1F30E4FA00244CE3 /* SingleLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7CD1F30E4FA00244CE3 /* SingleLabelCell.swift */; };
+		584AF7CE1F30E4FA00244CE3 /* SingleStringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7CD1F30E4FA00244CE3 /* SingleStringCell.swift */; };
 		584AF7D01F30FB3B00244CE3 /* SelectStopsFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 584AF7CF1F30FB3B00244CE3 /* SelectStopsFooterView.xib */; };
 		58B299F61F2A32020080B0DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B299F51F2A32020080B0DA /* main.m */; };
 		58B299F91F2A32020080B0DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B299F81F2A32020080B0DA /* AppDelegate.m */; };
@@ -77,7 +77,7 @@
 		584AF7C61F30D55000244CE3 /* TransitModesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitModesViewController.swift; sourceTree = "<group>"; };
 		584AF7C91F30E2ED00244CE3 /* SelectStopsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopsViewModel.swift; sourceTree = "<group>"; };
 		584AF7CB1F30E2FB00244CE3 /* SelectStopsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopsViewController.swift; sourceTree = "<group>"; };
-		584AF7CD1F30E4FA00244CE3 /* SingleLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLabelCell.swift; sourceTree = "<group>"; };
+		584AF7CD1F30E4FA00244CE3 /* SingleStringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStringCell.swift; sourceTree = "<group>"; };
 		584AF7CF1F30FB3B00244CE3 /* SelectStopsFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectStopsFooterView.xib; sourceTree = "<group>"; };
 		588A58DE1F2B899C00AE02E5 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = ../SeptaCoreData/SeptaCoreData/Frameworks/Zip.framework; sourceTree = "<group>"; };
 		58B299F11F2A32020080B0DA /* Septa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Septa.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -227,7 +227,7 @@
 		584AF7B31F30BCF300244CE3 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				584AF7CD1F30E4FA00244CE3 /* SingleLabelCell.swift */,
+				584AF7CD1F30E4FA00244CE3 /* SingleStringCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -486,7 +486,7 @@
 				584AF7BA1F30C06700244CE3 /* RouteTableViewCell.swift in Sources */,
 				58B299F61F2A32020080B0DA /* main.m in Sources */,
 				584AF7CA1F30E2ED00244CE3 /* SelectStopsViewModel.swift in Sources */,
-				584AF7CE1F30E4FA00244CE3 /* SingleLabelCell.swift in Sources */,
+				584AF7CE1F30E4FA00244CE3 /* SingleStringCell.swift in Sources */,
 				584AF7BC1F30C25200244CE3 /* RoutesViewModel.swift in Sources */,
 				584AF7B51F30BD5900244CE3 /* RoutesViewController.swift in Sources */,
 			);

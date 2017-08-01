@@ -10,6 +10,11 @@ enum SelectStopsCellType: String {
     case stopCell
 }
 
+enum SelectStopRow: Int {
+    case selectStart = 0
+    case selectDestination = 1
+}
+
 enum SelectedStopType {
 
     case noStartSelected
@@ -43,14 +48,14 @@ struct SelectedStopViewElement {
 
 class SelectStopsViewModel {
     private typealias ViewElement = SelectedStopViewElement
-    private weak var delegate: ViewModelUpdateable?
+    private weak var delegate: UpdateableFromViewModel?
 
     private var startElement = ViewElement.buildViewElement(forType: .noStartSelected, withStop: nil)
 
-    private var endElement = ViewElement.buildViewElement(forType: .noDestinationSelected, withStop: nil)
+    private var destinationElement = ViewElement.buildViewElement(forType: .noDestinationSelected, withStop: nil)
 
-    func shouldEnableContinueButton() -> Bool {
-        return startElement.stop != nil && endElement.stop != nil
+    func canUserContinue() -> Bool {
+        return startElement.stop != nil && destinationElement.stop != nil
     }
 
     func setStartStop(_ stop: Stop) {
@@ -59,11 +64,31 @@ class SelectStopsViewModel {
     }
 
     func setDestinationStop(_ stop: Stop) {
-        endElement = ViewElement.buildViewElement(forType: .destinationSelected, withStop: stop)
+        destinationElement = ViewElement.buildViewElement(forType: .destinationSelected, withStop: stop)
         delegate?.viewModelUpdated()
     }
 
-    init(delegate: ViewModelUpdateable, routeType _: RouteType) {
+    init(delegate: UpdateableFromViewModel, routeType _: RouteType) {
         self.delegate = delegate
+    }
+
+    func configureDisplayable(_ displayable: SingleStringDisplayable, atRow row: Int) {
+        guard let row = SelectStopRow(rawValue: row) else { return }
+        switch row {
+        case .selectStart:
+            displayable.setLabelText(text: startElement.labelText)
+        case .selectDestination:
+            displayable.setLabelText(text: destinationElement.labelText)
+        }
+    }
+
+    func cellIdentifierAtRow(_ row: Int) -> String? {
+        guard let row = SelectStopRow(rawValue: row) else { return nil }
+        switch row {
+        case .selectStart:
+            return startElement.cellType.rawValue
+        case .selectDestination:
+            return destinationElement.cellType.rawValue
+        }
     }
 }

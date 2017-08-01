@@ -14,6 +14,6 @@ class TransitModesViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         guard let routesViewController = segue.destination as? RoutesViewController else { return }
 
-        routesViewController.setRouteType(routeType: .bus)
+        routesViewController.setRouteType(.bus)
     }
 }

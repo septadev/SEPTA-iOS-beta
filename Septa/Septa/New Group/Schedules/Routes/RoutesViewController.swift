@@ -3,16 +3,21 @@
 import UIKit
 import SeptaSchedule
 
-class RoutesViewController: UITableViewController, ViewModelUpdateable {
+class RoutesViewController: UITableViewController, UpdateableFromViewModel {
     typealias Data = [Route]
     let routeCellId = "routeCell"
+    let segueId = "selectStops"
     var viewModel: RoutesViewModel!
+    var routeType: RouteType?
+    var selectedRoute: Route?
 
-    func setRouteType(routeType: RouteType) {
-        initializeViewModel(routeType: routeType)
+    func setRouteType(_ routeType: RouteType) {
+        self.routeType = routeType
+        initializeViewModel()
     }
 
-    fileprivate func initializeViewModel(routeType: RouteType) {
+    fileprivate func initializeViewModel() {
+        guard let routeType = routeType else { return }
         viewModel = RoutesViewModel(delegate: self, routeType: routeType)
     }
 
@@ -29,6 +34,19 @@ class RoutesViewController: UITableViewController, ViewModelUpdateable {
 
         viewModel.configureRoute(displayable: cell, atIndex: indexPath.row)
         return cell
+    }
+
+    override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedRoute = viewModel.routeAtRow(row: indexPath.row)
+        performSegue(withIdentifier: segueId, sender: self)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
+        guard
+            let selectStopsViewController = segue.destination as? SelectStopsViewController,
+            let routeType = routeType,
+            let selectedRoute = selectedRoute else { return }
+        selectStopsViewController.setRouteType(routeType, route: selectedRoute)
     }
 
     func viewModelUpdated() {
