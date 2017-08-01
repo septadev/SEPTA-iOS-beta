@@ -43,6 +43,6 @@ SELECT DestinationStops.stop_id, DestinationStops.Stop_name, DestinationStops.st
   on StartingTrips.trip_id = DestinationStops.trip_id
  where StartingTrips.arrival_time < DestinationStops.arrival_time
 group by DestinationStops.stop_id, DestinationStops.Stop_name, DestinationStops.stop_lon, DestinationStops.stop_lon, DestinationStops.wheelchair_boarding
-order by DestinationStops.stop_id;
+order by DestinationStops.stop_name;
 
 

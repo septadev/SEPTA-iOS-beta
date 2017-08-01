@@ -14,5 +14,5 @@ WHERE S.stop_id IN (
     JOIN stop_times_bus ST
       ON T.trip_id = ST.trip_id WHERE
     T.route_id == 44 AND T.service_id = 2)
-ORDER BY S.stop_id;
+ORDER BY S.stop_name;
 
