@@ -23,8 +23,6 @@
 /* Begin PBXBuildFile section */
 		583F0CB91F2A86E1007266EC /* SetupCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583F0CB81F2A86E1007266EC /* SetupCoreData.swift */; };
 		583F0CBC1F2A896F007266EC /* SetupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583F0CBB1F2A896F007266EC /* SetupTests.swift */; };
-		58493FBA1F2D2C29008E43BD /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588A58E31F2BAF5500AE02E5 /* SQLite.framework */; };
-		58493FBC1F2D2D39008E43BD /* SQLite.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 588A58E31F2BAF5500AE02E5 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		58493FBF1F2D60BA008E43BD /* _StopTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58493FBD1F2D60BA008E43BD /* _StopTime.swift */; };
 		58493FC01F2D60BA008E43BD /* StopTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58493FBE1F2D60BA008E43BD /* StopTime.swift */; };
 		5851E10A1F2AA47D009087CE /* ManagedObjectContext+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5851E1091F2AA47D009087CE /* ManagedObjectContext+Util.swift */; };
@@ -32,10 +30,7 @@
 		5864F2F81F2D1FE0004FA31E /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5864F2F71F2D1FE0004FA31E /* Main.swift */; };
 		586815BE1F2D129700F44031 /* SeptaModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 586815BC1F2D129700F44031 /* SeptaModel.xcdatamodeld */; };
 		588A58D51F2B846500AE02E5 /* PreloadedDatabaseMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588A58D41F2B846500AE02E5 /* PreloadedDatabaseMover.swift */; };
-		588A58D71F2B84E200AE02E5 /* SEPTA.zip in Resources */ = {isa = PBXBuildFile; fileRef = 588A58D61F2B84E200AE02E5 /* SEPTA.zip */; };
 		588A58D91F2B852400AE02E5 /* PreloadedDatabaseMoverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588A58D81F2B852400AE02E5 /* PreloadedDatabaseMoverTests.swift */; };
-		588A58E21F2B8C2D00AE02E5 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588A58DC1F2B898F00AE02E5 /* Zip.framework */; };
-		588A58E41F2BAF6D00AE02E5 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588A58E31F2BAF5500AE02E5 /* SQLite.framework */; };
 		588A58E61F2BB47900AE02E5 /* SEPTA.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 588A58E51F2BB47900AE02E5 /* SEPTA.sqlite */; };
 		588A58ED1F2BBACB00AE02E5 /* StopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588A58EC1F2BBACB00AE02E5 /* StopTests.swift */; };
 		5892494E1F2CB8320061C90D /* StopMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588A58F01F2BC73E00AE02E5 /* StopMapper.swift */; };
@@ -70,7 +65,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				58493FBC1F2D2D39008E43BD /* SQLite.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,13 +80,8 @@
 		5851E10B1F2AA59E009087CE /* ManagedProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedProtocol.swift; sourceTree = "<group>"; };
 		5864F2F71F2D1FE0004FA31E /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		586815BD1F2D129700F44031 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		588A58CE1F2B81AE00AE02E5 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = Carthage/Build/Mac/Zip.framework; sourceTree = "<group>"; };
-		588A58D01F2B823B00AE02E5 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = Carthage/Build/iOS/Zip.framework; sourceTree = "<group>"; };
 		588A58D41F2B846500AE02E5 /* PreloadedDatabaseMover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedDatabaseMover.swift; sourceTree = "<group>"; };
-		588A58D61F2B84E200AE02E5 /* SEPTA.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = SEPTA.zip; path = ../../../../../septafolder/SEPTA.zip; sourceTree = "<group>"; };
 		588A58D81F2B852400AE02E5 /* PreloadedDatabaseMoverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadedDatabaseMoverTests.swift; sourceTree = "<group>"; };
-		588A58DC1F2B898F00AE02E5 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = SeptaCoreData/Frameworks/Zip.framework; sourceTree = SOURCE_ROOT; };
-		588A58E31F2BAF5500AE02E5 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SQLite.framework; sourceTree = "<group>"; };
 		588A58E51F2BB47900AE02E5 /* SEPTA.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = SEPTA.sqlite; sourceTree = "<group>"; };
 		588A58EC1F2BBACB00AE02E5 /* StopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopTests.swift; sourceTree = "<group>"; };
 		588A58F01F2BC73E00AE02E5 /* StopMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopMapper.swift; sourceTree = "<group>"; };
@@ -119,8 +108,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				588A58E21F2B8C2D00AE02E5 /* Zip.framework in Frameworks */,
-				588A58E41F2BAF6D00AE02E5 /* SQLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,7 +116,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				58B29A301F2A33240080B0DA /* SeptaCoreData.framework in Frameworks */,
-				58493FBA1F2D2C29008E43BD /* SQLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,19 +138,8 @@
 		588A58CD1F2B81AE00AE02E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				588A58D01F2B823B00AE02E5 /* Zip.framework */,
-				588A58CE1F2B81AE00AE02E5 /* Zip.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		588A58DB1F2B898F00AE02E5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				588A58E31F2BAF5500AE02E5 /* SQLite.framework */,
-				588A58DC1F2B898F00AE02E5 /* Zip.framework */,
-			);
-			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		588A58EE1F2BBEA200AE02E5 /* Supporting Files */ = {
@@ -221,8 +196,6 @@
 				588A58EF1F2BC72E00AE02E5 /* Database Mapper */,
 				58B29A2A1F2A33240080B0DA /* Info.plist */,
 				588A58EE1F2BBEA200AE02E5 /* Supporting Files */,
-				588A58DB1F2B898F00AE02E5 /* Frameworks */,
-				588A58D61F2B84E200AE02E5 /* SEPTA.zip */,
 				583F0CB51F2A8599007266EC /* Managed Objects */,
 				583F0CB81F2A86E1007266EC /* SetupCoreData.swift */,
 				588A58D41F2B846500AE02E5 /* PreloadedDatabaseMover.swift */,
@@ -271,7 +244,6 @@
 				58B29A221F2A33240080B0DA /* Frameworks */,
 				58B29A231F2A33240080B0DA /* Headers */,
 				58B29A241F2A33240080B0DA /* Resources */,
-				588A58D21F2B827100AE02E5 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -352,7 +324,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				588A58D71F2B84E200AE02E5 /* SEPTA.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,24 +338,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		588A58D21F2B827100AE02E5 /* Copy Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/SeptaCoreData/Frameworks/Zip.framework",
-				"$(SRCROOT)/SeptaCoreData/Frameworks/SQLite.framework",
-			);
-			name = "Copy Frameworks";
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Zip.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SQLite.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
 		5892495C1F2CE0D10061C90D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
