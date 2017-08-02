@@ -23,7 +23,7 @@ class BusCommandTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: 3) { error in
+        waitForExpectations(timeout: 13) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
             }
@@ -33,7 +33,7 @@ class BusCommandTests: XCTestCase {
     func testCallToBusStart_Saturday() {
 
         let expectation = self.expectation(description: "Should Return")
-        let sqlQuery = SQLQuery.busStart(routeId: 44, scheduleType: .saturday)
+        let sqlQuery = SQLQuery.busStart(routeId: "44", scheduleType: .saturday)
         cmd.busStops(withQuery: sqlQuery) { stops, error in
             XCTAssertNotNil(stops)
             XCTAssertNil(error)
@@ -56,7 +56,7 @@ class BusCommandTests: XCTestCase {
     func testCallToBusStart_Weekday() {
 
         let expectation = self.expectation(description: "Should Return")
-        let sqlQuery = SQLQuery.busStart(routeId: 44, scheduleType: .weekday)
+        let sqlQuery = SQLQuery.busStart(routeId: "44", scheduleType: .weekday)
         cmd.busStops(withQuery: sqlQuery) { stops, error in
             XCTAssertNotNil(stops)
             XCTAssertNil(error)
@@ -78,7 +78,7 @@ class BusCommandTests: XCTestCase {
     func testCallToBusEnd_Saturday() {
 
         let expectation = self.expectation(description: "Should Return")
-        let sqlQuery = SQLQuery.busEnd(routeId: 44, scheduleType: .saturday, startStopId: 694)
+        let sqlQuery = SQLQuery.busEnd(routeId: "44", scheduleType: .saturday, startStopId: 694)
         cmd.busStops(withQuery: sqlQuery) { stops, error in
             XCTAssertNotNil(stops)
             XCTAssertNil(error)
@@ -100,7 +100,7 @@ class BusCommandTests: XCTestCase {
     func testCallToBusTrip_Saturday() {
 
         let expectation = self.expectation(description: "Should Return")
-        let sqlQuery = SQLQuery.busTrip(routeId: 44, scheduleType: .saturday, startStopId: 694, endStopId: 638)
+        let sqlQuery = SQLQuery.busTrip(routeId: "44", scheduleType: .saturday, startStopId: 694, endStopId: 638)
         cmd.busTrips(withQuery: sqlQuery) { trips, error in
             XCTAssertNotNil(trips)
             XCTAssertNil(error)

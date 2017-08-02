@@ -5,44 +5,30 @@ import SeptaSchedule
 
 class SelectStopsViewModel {
     private typealias ViewElement = SelectedStopViewElement
-    private weak var delegate: UpdateableFromViewModel?
 
+    // These two are like like view models just for each row
     private var startElement = ViewElement.buildViewElement(forType: .noStartSelected, withStop: nil)
-
     private var destinationElement = ViewElement.buildViewElement(forType: .noDestinationSelected, withStop: nil)
 
-    func canUserContinue() -> Bool {
-        return startElement.stop != nil && destinationElement.stop != nil
-    }
+    private weak var delegate: UpdateableFromViewModel?
+    var routeType: RouteType
+    var route: Route
 
-    func setStartStop(_ stop: Stop) {
-        startElement = ViewElement.buildViewElement(forType: .startSelected, withStop: stop)
-        delegate?.viewModelUpdated()
-    }
+    // The model element that totall determins ehter or not
+    var routeStops = RouteStops(startStop: nil, destinationStop: nil)
 
-    func setDestinationStop(_ stop: Stop) {
-        destinationElement = ViewElement.buildViewElement(forType: .destinationSelected, withStop: stop)
-        delegate?.viewModelUpdated()
-    }
-
-    func stopAtRow(_ row: Int) -> Stop? {
-        guard let row = SelectStopRow(rawValue: row) else { return nil }
-        switch row {
-        case .selectStart:
-            return startElement.stop
-        case .selectDestination:
-            return destinationElement.stop
-        }
-    }
-
-    var routeStops: RouteStops {
-        return RouteStops(startStop: startElement.stop
-                          , destinationStop: destinationElement.stop)
-    }
-
-    init(delegate: UpdateableFromViewModel, routeType _: RouteType) {
+    init(routeType: RouteType, route: Route, delegate: UpdateableFromViewModel) {
+        self.routeType = routeType
+        self.route = route
         self.delegate = delegate
     }
+
+    func canUserContinue() -> Bool {
+        return routeStops.isComplete
+    }
+
+    var selectedRow: SelectStopRow = .selectStart
+
 
     func configureDisplayable(_ displayable: SingleStringDisplayable, atRow row: Int) {
         guard let row = SelectStopRow(rawValue: row) else { return }

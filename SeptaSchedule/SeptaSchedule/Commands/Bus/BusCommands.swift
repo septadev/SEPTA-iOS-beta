@@ -82,4 +82,7 @@ public class BusCommands: BaseCommand {
             return trips
         }
     }
+
+    deinit {
+    }
 }

@@ -206,7 +206,7 @@
         <!--Select Stop-->
         <scene sceneID="cRd-04-jom">
             <objects>
-                <tableViewController title="Select Stop" id="u3d-Rh-7gw" sceneMemberID="viewController">
+                <tableViewController title="Select Stop" id="u3d-Rh-7gw" customClass="SelectStopViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jQa-TV-39Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -233,6 +233,9 @@
                                         <constraint firstItem="5ap-u1-lfC" firstAttribute="top" secondItem="Njj-dd-7Ok" secondAttribute="top" constant="10" id="m84-75-zHv"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="5ap-u1-lfC" id="ZBY-a9-aLb"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
