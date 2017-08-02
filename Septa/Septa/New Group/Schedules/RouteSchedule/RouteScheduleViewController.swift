@@ -7,6 +7,7 @@ class RouteScheduleViewController: UIViewController, UITableViewDelegate, UITabl
     func viewModelUpdated() {
         tableView.reloadData()
     }
+    @IBOutlet var alertsIcon: UIBarButtonItem!
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return viewModel.trips.count
@@ -66,6 +67,7 @@ class RouteScheduleViewController: UIViewController, UITableViewDelegate, UITabl
         item.tintColor = UIColor.green
         startingPoint.text = viewModel.routeStops.startStop?.stopName
         endingPoint.text = viewModel.routeStops.destinationStop?.stopName
+        self.navigationItem.rightBarButtonItem = alertsIcon
     }
 
     override func viewWillAppear(_: Bool) {

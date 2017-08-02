@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Septa.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "58493FCA1F2F584B008E43BD"
+               BuildableName = "SeptaSchedule.framework"
+               BlueprintName = "SeptaSchedule"
+               ReferencedContainer = "container:../SeptaSchedule/SeptaSchedule.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

@@ -9,3 +9,4 @@ class NextToArriveViewController: UIViewController {
     override func viewDidLoad() {
     }
 }
+

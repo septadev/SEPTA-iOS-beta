@@ -3,12 +3,12 @@
 import UIKit
 import SeptaSchedule
 
-class SelectStopViewController: UITableViewController, UpdateableFromViewModel {
+class SelectStopViewController: UITableViewController, UpdateableFromViewModel, UISearchBarDelegate {
     let cellId = "stopCell"
     var viewModel: SelectStopViewModel!
 
     var defaultColor: UIColor!
-
+    @IBOutlet var headerView: UIView!
     @IBOutlet var scheduleTypeSelector: UIToolbar! {
         didSet {
             defaultColor = scheduleTypeSelector.items![0].tintColor
@@ -44,7 +44,7 @@ class SelectStopViewController: UITableViewController, UpdateableFromViewModel {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableHeaderView = scheduleTypeSelector
+        tableView.tableHeaderView = headerView
         let item = scheduleTypeSelector.items![0]
         item.tintColor = UIColor.green
     }

@@ -8,7 +8,7 @@ enum DatabaseFileManagerError: Error {
     case NoDocumentsDirectory
 }
 
-class DatabaseFileManager {
+public class DatabaseFileManager {
 
     fileprivate let bundle = Bundle(for: DatabaseFileManager.self)
     fileprivate let databaseName = "SEPTA.sqlite"
@@ -31,11 +31,17 @@ class DatabaseFileManager {
         return fileManager.fileExists(atPath: url.path)
     }
 
-    func unzipFileToDocumentsDirectoryIfNecessary() throws {
+   public func unzipFileToDocumentsDirectoryIfNecessary() throws -> Bool {
         guard let preloadedURL = preloadedZippedDatabaseURL else { throw DatabaseFileManagerError.NoPreloadedDatabase }
         guard let documentsURL = documentDirectoryURL else { throw DatabaseFileManagerError.NoDocumentsDirectory }
         if !databaseFileExistsInDocumentsDirectory {
             try Zip.unzipFile(preloadedURL, destination: documentsURL, overwrite: false, password: nil, progress: nil)
+            return true
+        } else {
+            return false
         }
+
     }
+
+    public init() {}
 }

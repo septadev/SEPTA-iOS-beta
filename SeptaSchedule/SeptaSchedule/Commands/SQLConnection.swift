@@ -7,7 +7,7 @@ class SQLConnection {
 
     class func sqlConnection() throws -> Connection? {
         let fileManager = DatabaseFileManager()
-        try fileManager.unzipFileToDocumentsDirectoryIfNecessary()
+        let _ = try fileManager.unzipFileToDocumentsDirectoryIfNecessary()
         guard let path = fileManager.databaseURL?.path else { return nil }
         return try Connection(path, readonly: true)
     }

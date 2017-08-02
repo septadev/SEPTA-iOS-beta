@@ -18,6 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CRu-Sm-xaa">
+                            <rect key="frame" x="0.0" y="176" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <sections>
                             <tableViewSection id="XHm-EP-HTW">
                                 <cells>
@@ -29,7 +36,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwK-RD-eai">
-                                                    <rect key="frame" x="29" y="11" width="258" height="33"/>
+                                                    <rect key="frame" x="29" y="11" width="293" height="33"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -44,6 +51,15 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vYg-MS-fwv" id="gwb-QL-hPV">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Train" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSL-lG-fPJ">
+                                                    <rect key="frame" x="28" y="11" width="275" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nd0-zM-gDg">
@@ -52,6 +68,32 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nd0-zM-gDg" id="DPC-nm-ex6">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subway" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D21-LG-TVk">
+                                                    <rect key="frame" x="30" y="11" width="270" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Xz3-Ea-Ntg">
+                                        <rect key="frame" x="0.0" y="132" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xz3-Ea-Ntg" id="YPG-Xj-gMM">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Troller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcl-GX-nhJ">
+                                                    <rect key="frame" x="32" y="11" width="254" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -258,32 +300,60 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="scheduleTypeSelector" destination="95h-cl-Ae2" id="t6e-Sz-lmx"/>
+                        <outlet property="headerView" destination="VKL-PV-1Hz" id="1C2-VU-UVy"/>
+                        <outlet property="scheduleTypeSelector" destination="G0d-6P-ixp" id="oCv-vX-a43"/>
                         <segue destination="zpf-RC-HTa" kind="unwind" identifier="unwindToSelectStops" unwindAction="unwindSeguefromSelectStop:" id="Pgp-GB-tom"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JFf-Ey-IIT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zpf-RC-HTa" userLabel="Exit" sceneMemberID="exit"/>
+                <view contentMode="scaleToFill" id="VKL-PV-1Hz">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="84"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="BBe-32-kci">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="56"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="G0d-6P-ixp">
+                            <rect key="frame" x="0.0" y="56" width="240" height="28"/>
+                            <items>
+                                <barButtonItem title="Weekdays" id="Y96-dO-VlD">
+                                    <connections>
+                                        <action selector="weekdaysSelected:" destination="u3d-Rh-7gw" id="4nn-J1-CbG"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem title="Saturday" id="XfT-Qy-0Ny">
+                                    <connections>
+                                        <action selector="saturdaySelected:" destination="u3d-Rh-7gw" id="hj1-x8-mFY"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem title="Sunday" id="JY0-bM-Xco">
+                                    <connections>
+                                        <action selector="sundaySelected:" destination="u3d-Rh-7gw" id="cjX-of-Ihp"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="IYu-Rh-Spd" firstAttribute="bottom" secondItem="G0d-6P-ixp" secondAttribute="bottom" id="GDA-jd-oPS"/>
+                        <constraint firstItem="BBe-32-kci" firstAttribute="leading" secondItem="IYu-Rh-Spd" secondAttribute="leading" id="ULT-wX-Qc4"/>
+                        <constraint firstItem="IYu-Rh-Spd" firstAttribute="trailing" secondItem="BBe-32-kci" secondAttribute="trailing" id="V6u-Sq-B6c"/>
+                        <constraint firstItem="G0d-6P-ixp" firstAttribute="top" secondItem="BBe-32-kci" secondAttribute="bottom" id="V9w-Cz-dPm"/>
+                        <constraint firstItem="IYu-Rh-Spd" firstAttribute="trailing" secondItem="G0d-6P-ixp" secondAttribute="trailing" id="a3Y-SH-IHc"/>
+                        <constraint firstItem="G0d-6P-ixp" firstAttribute="leading" secondItem="IYu-Rh-Spd" secondAttribute="leading" id="dwJ-fP-wDq"/>
+                        <constraint firstItem="BBe-32-kci" firstAttribute="top" secondItem="IYu-Rh-Spd" secondAttribute="top" id="n7X-m8-LYv"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="IYu-Rh-Spd"/>
+                    <string key="userLabel">
+HeaderView</string>
+                </view>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="95h-cl-Ae2">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <items>
-                        <barButtonItem title="Weekdays" id="Y96-dO-VlD">
-                            <connections>
-                                <action selector="weekdaysSelected:" destination="u3d-Rh-7gw" id="4nn-J1-CbG"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem title="Saturday" id="XfT-Qy-0Ny">
-                            <connections>
-                                <action selector="saturdaySelected:" destination="u3d-Rh-7gw" id="hj1-x8-mFY"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem title="Sunday" id="JY0-bM-Xco">
-                            <connections>
-                                <action selector="sundaySelected:" destination="u3d-Rh-7gw" id="cjX-of-Ihp"/>
-                            </connections>
-                        </barButtonItem>
-                    </items>
+                    <items/>
                 </toolbar>
             </objects>
             <point key="canvasLocation" x="2716" y="-12"/>
@@ -465,6 +535,7 @@ StartingLabelRight</string>
                         <viewLayoutGuide key="safeArea" id="kWc-gl-RxX"/>
                     </view>
                     <connections>
+                        <outlet property="alertsIcon" destination="veQ-Iq-UgU" id="8OY-pl-fRm"/>
                         <outlet property="endingPoint" destination="s9c-AY-wQ2" id="9pf-VV-ItM"/>
                         <outlet property="header" destination="N85-DJ-dTv" id="7bt-5z-vK1"/>
                         <outlet property="scheduleTypeSelector" destination="Z80-GO-8Wi" id="GmU-QJ-3FW"/>
@@ -473,6 +544,7 @@ StartingLabelRight</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fR1-Ib-5Si" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem image="system_status_alert" id="veQ-Iq-UgU"/>
                 <view contentMode="scaleToFill" id="N85-DJ-dTv" userLabel="Header">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -551,4 +623,7 @@ StartingLabelRight</string>
             <point key="canvasLocation" x="-1892" y="221"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="system_status_alert" width="40" height="30"/>
+    </resources>
 </document>
