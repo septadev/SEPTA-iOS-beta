@@ -9,16 +9,23 @@ class SelectStopsViewController: UITableViewController, UpdateableFromViewModel 
     @IBOutlet var footerView: UIView!
     @IBOutlet weak var viewSchedulesButton: UIButton!
 
+    @IBOutlet var resetSearch: UIBarButtonItem!
     var viewModel: SelectStopsViewModel!
 
     func setRouteType(_ routeType: RouteType, route: Route) {
         viewModel = SelectStopsViewModel(routeType: routeType, route: route, delegate: self)
+    }
+    @IBAction func cancelSearch(_ sender: Any) {
+     viewModel.routeStops = RouteStops(startStop: nil, destinationStop: nil)
+        viewSchedulesButton.isEnabled = viewModel.canUserContinue()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         Bundle.main.loadNibNamed("SelectStopsFooterView", owner: self, options: nil)
         tableView.tableFooterView = footerView
+        viewSchedulesButton.isEnabled = false
+        navigationItem.rightBarButtonItem = resetSearch
     }
 
     override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -37,10 +44,11 @@ class SelectStopsViewController: UITableViewController, UpdateableFromViewModel 
 
     func viewModelUpdated() {
         tableView.reloadData()
+
     }
 
     override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.selectedRow =  SelectStopRow(rawValue: indexPath.row)!
+        viewModel.selectedRow = SelectStopRow(rawValue: indexPath.row)!
         performSegue(withIdentifier: segueId, sender: self)
     }
 
@@ -50,6 +58,14 @@ class SelectStopsViewController: UITableViewController, UpdateableFromViewModel 
         }
     }
 
+    func routeStopSelected(_ routeStops: RouteStops) {
+        viewModel.routeStops = routeStops
+        viewSchedulesButton.isEnabled = viewModel.canUserContinue()
+    }
+
     @IBAction func viewSchedulesTapped(_: Any) {
+    }
+
+    @IBAction func unwindSeguefromSelectStop(_: UIStoryboardSegue) {
     }
 }

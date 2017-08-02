@@ -15,7 +15,16 @@ class SelectStopsViewModel {
     var route: Route
 
     // The model element that totall determins ehter or not
-    var routeStops = RouteStops(startStop: nil, destinationStop: nil)
+    var routeStops = RouteStops(startStop: nil, destinationStop: nil) {
+        didSet {
+            let startType: SelectedStopType = routeStops.startStop == nil ? .noStartSelected : .startSelected
+            let destinationType: SelectedStopType = routeStops.destinationStop == nil ? .noDestinationSelected : .destinationSelected
+
+            startElement = ViewElement.buildViewElement(forType: startType, withStop: routeStops.startStop)
+            destinationElement = ViewElement.buildViewElement(forType: destinationType, withStop: routeStops.destinationStop)
+            delegate?.viewModelUpdated()
+        }
+    }
 
     init(routeType: RouteType, route: Route, delegate: UpdateableFromViewModel) {
         self.routeType = routeType
@@ -28,7 +37,6 @@ class SelectStopsViewModel {
     }
 
     var selectedRow: SelectStopRow = .selectStart
-
 
     func configureDisplayable(_ displayable: SingleStringDisplayable, atRow row: Int) {
         guard let row = SelectStopRow(rawValue: row) else { return }

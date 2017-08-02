@@ -194,11 +194,21 @@
                             <outlet property="delegate" destination="zWZ-jt-AT5" id="Ob3-EV-YVy"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="help" style="done" id="x7E-PS-DGD"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="resetSearch" destination="O64-v7-NAS" id="bj8-ej-MwS"/>
                         <segue destination="u3d-Rh-7gw" kind="show" identifier="selectStop" id="Lxl-Wi-MRE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CLo-bZ-Bfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem systemItem="undo" id="O64-v7-NAS">
+                    <connections>
+                        <action selector="cancelSearch:" destination="zWZ-jt-AT5" id="smh-uM-D07"/>
+                    </connections>
+                </barButtonItem>
                 <navigationItem title="Select Stops" id="RlQ-gJ-iwZ"/>
             </objects>
             <point key="canvasLocation" x="1738" y="-12"/>
@@ -243,8 +253,36 @@
                             <outlet property="delegate" destination="u3d-Rh-7gw" id="wsX-yW-1HJ"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="scheduleTypeSelector" destination="95h-cl-Ae2" id="t6e-Sz-lmx"/>
+                        <segue destination="zpf-RC-HTa" kind="unwind" identifier="unwindToSelectStops" unwindAction="unwindSeguefromSelectStop:" id="Pgp-GB-tom"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JFf-Ey-IIT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="zpf-RC-HTa" userLabel="Exit" sceneMemberID="exit"/>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="95h-cl-Ae2">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem title="Weekdays" id="Y96-dO-VlD">
+                            <connections>
+                                <action selector="weekdaysSelected:" destination="u3d-Rh-7gw" id="4nn-J1-CbG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Saturday" id="XfT-Qy-0Ny">
+                            <connections>
+                                <action selector="saturdaySelected:" destination="u3d-Rh-7gw" id="hj1-x8-mFY"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Sunday" id="JY0-bM-Xco">
+                            <connections>
+                                <action selector="sundaySelected:" destination="u3d-Rh-7gw" id="cjX-of-Ihp"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
             </objects>
             <point key="canvasLocation" x="2716" y="-12"/>
         </scene>

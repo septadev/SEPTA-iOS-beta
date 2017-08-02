@@ -5,4 +5,4 @@
 
 SELECT route_id, route_short_name, route_long_name
 FROM routes_bus WHERE route_type = :route_type
-ORDER BY route_short_name;
+ORDER BY route_id;
