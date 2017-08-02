@@ -3,15 +3,24 @@
 import Foundation
 
 public struct Trip {
+    public let tripId: Int
     let departureInt: Int
     let arrivalInt: Int
 
-    var departureComponents: DateComponents {
+    public var departureComponents: DateComponents {
         return departureInt.toDataComponents()
     }
 
-    var arrivalComponents: DateComponents {
+    public var arrivalComponents: DateComponents {
         return arrivalInt.toDataComponents()
+    }
+
+    public var departureDate: Date? {
+        return Calendar.current.date(from: departureComponents)
+    }
+
+    public var arrivalDate: Date? {
+        return Calendar.current.date(from: arrivalComponents)
     }
 
     public var tripDuration: DateComponents {

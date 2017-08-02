@@ -4,7 +4,8 @@ import UIKit
 import SeptaSchedule
 
 class SelectStopsViewController: UITableViewController, UpdateableFromViewModel {
-    let segueId = "selectStop"
+    let selectStopSegueId = "selectStop"
+    let showSheduleSegueId = "showSchedule"
 
     @IBOutlet var footerView: UIView!
     @IBOutlet weak var viewSchedulesButton: UIButton!
@@ -15,8 +16,9 @@ class SelectStopsViewController: UITableViewController, UpdateableFromViewModel 
     func setRouteType(_ routeType: RouteType, route: Route) {
         viewModel = SelectStopsViewModel(routeType: routeType, route: route, delegate: self)
     }
-    @IBAction func cancelSearch(_ sender: Any) {
-     viewModel.routeStops = RouteStops(startStop: nil, destinationStop: nil)
+
+    @IBAction func cancelSearch(_: Any) {
+        viewModel.routeStops = RouteStops(startStop: nil, destinationStop: nil)
         viewSchedulesButton.isEnabled = viewModel.canUserContinue()
     }
 
@@ -44,17 +46,21 @@ class SelectStopsViewController: UITableViewController, UpdateableFromViewModel 
 
     func viewModelUpdated() {
         tableView.reloadData()
-
     }
 
     override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.selectedRow = SelectStopRow(rawValue: indexPath.row)!
-        performSegue(withIdentifier: segueId, sender: self)
+        performSegue(withIdentifier: selectStopSegueId, sender: self)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if let destinationViewController = segue.destination as? SelectStopViewController {
             destinationViewController.setRouteType(viewModel.routeType, route: viewModel.route, selectedStop: viewModel.selectedRow, routeStops: viewModel.routeStops)
+        }
+        if let scheduleViewController = segue.destination as? RouteScheduleViewController {
+            // func setRouteType(_ routeType: RouteType, route: Route, routeStops: RouteStops) {
+
+            scheduleViewController.setRouteType(routeType: viewModel.routeType, route: viewModel.route, routeStops: viewModel.routeStops)
         }
     }
 
@@ -64,6 +70,7 @@ class SelectStopsViewController: UITableViewController, UpdateableFromViewModel 
     }
 
     @IBAction func viewSchedulesTapped(_: Any) {
+        performSegue(withIdentifier: showSheduleSegueId, sender: self)
     }
 
     @IBAction func unwindSeguefromSelectStop(_: UIStoryboardSegue) {

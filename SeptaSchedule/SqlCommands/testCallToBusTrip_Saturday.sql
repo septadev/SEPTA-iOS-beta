@@ -12,7 +12,7 @@
 
 
 SELECT
-  Start.arrival_time, End.arrival_time
+  Start.trip_id,Start.arrival_time, End.arrival_time
 FROM
   -- get all the trips/ stops from the selected starting point
   (
