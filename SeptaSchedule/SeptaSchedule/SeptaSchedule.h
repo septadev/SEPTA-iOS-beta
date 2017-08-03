@@ -2,7 +2,7 @@
 //  SeptaSchedule.h
 //  SeptaSchedule
 //
-//  Created by Mark Broski on 7/31/17.
+//  Created by Mark Broski on 8/3/17.
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 

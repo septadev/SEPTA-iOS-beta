@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSPrincipalClass</key>
-	<string>SeptaScheduleTests.Main</string>
+	<string>Main.swift</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

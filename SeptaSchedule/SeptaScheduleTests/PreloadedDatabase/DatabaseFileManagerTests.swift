@@ -42,7 +42,7 @@ class DatabaseFileManagerTests: XCTestCase {
     /// Verify that the preloaded database can be unzipped to the documents directory
     func testVerifyUnzipToDocumentsDirectory() {
         deleteDatabaseIfItExists()
-        try! databaseFileManager.unzipFileToDocumentsDirectoryIfNecessary()
+        let _ = try! databaseFileManager.unzipFileToDocumentsDirectoryIfNecessary()
         let fileExists = fileManager.fileExists(atPath: databaseURL.path)
         XCTAssertTrue(fileExists)
     }

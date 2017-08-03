@@ -1,9 +1,9 @@
 // SEPTA.org, created on 8/1/17.
 
 import Foundation
-
+// Encapsulates a trip
 public struct Trip {
-    public let tripId: Int
+    
     let departureInt: Int
     let arrivalInt: Int
 

@@ -7,353 +7,351 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		580D0D2C1F2F7956009CE61C /* DatabaseTablesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D2B1F2F7956009CE61C /* DatabaseTablesTests.swift */; };
-		580D0D311F2F8DFD009CE61C /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58493FEA1F2F5EAE008E43BD /* Zip.framework */; };
-		580D0D331F2F8E07009CE61C /* Zip.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58493FEA1F2F5EAE008E43BD /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		580D0D3B1F2F9689009CE61C /* DatabaseFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D391F2F9689009CE61C /* DatabaseFileManager.swift */; };
-		580D0D3C1F2F9689009CE61C /* SEPTA.zip in Resources */ = {isa = PBXBuildFile; fileRef = 580D0D3A1F2F9689009CE61C /* SEPTA.zip */; };
-		580D0D401F2F96A1009CE61C /* DatabaseTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D3E1F2F96A1009CE61C /* DatabaseTables.swift */; };
-		580D0D431F2F97E7009CE61C /* SQLCommandTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D421F2F97E7009CE61C /* SQLCommandTemplate.swift */; };
-		580D0D471F2F9817009CE61C /* SQLStringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D461F2F9817009CE61C /* SQLStringsTests.swift */; };
-		580D0D491F2FA083009CE61C /* BusCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D481F2FA083009CE61C /* BusCommands.swift */; };
-		580D0D4B1F2FA08E009CE61C /* SQLConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D4A1F2FA08E009CE61C /* SQLConnection.swift */; };
-		580D0D4D1F2FA1BD009CE61C /* SQLConnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D4C1F2FA1BD009CE61C /* SQLConnectionTests.swift */; };
-		580D0D4F1F2FA435009CE61C /* ScheduleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D4E1F2FA435009CE61C /* ScheduleType.swift */; };
-		580D0D511F2FA4E6009CE61C /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D501F2FA4E6009CE61C /* Stop.swift */; };
-		580D0D531F2FA58A009CE61C /* BusCommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D521F2FA58A009CE61C /* BusCommandTests.swift */; };
-		580D0D551F2FCCA0009CE61C /* BaseCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D541F2FCCA0009CE61C /* BaseCommand.swift */; };
-		580D0D581F300032009CE61C /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D571F300032009CE61C /* Main.swift */; };
-		580D0D5A1F300092009CE61C /* SEPTA.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 580D0D591F300091009CE61C /* SEPTA.sqlite */; };
-		580D0D5D1F30020F009CE61C /* busEnd.sql in Resources */ = {isa = PBXBuildFile; fileRef = 580D0D5C1F30020F009CE61C /* busEnd.sql */; };
-		580D0D631F3007E8009CE61C /* SQLQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D621F3007E8009CE61C /* SQLQuery.swift */; };
-		580D0D661F30398A009CE61C /* GeoCompare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D651F30398A009CE61C /* GeoCompare.swift */; };
-		580D0D681F303F33009CE61C /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D0D671F303F33009CE61C /* Trip.swift */; };
-		580D0D6A1F304000009CE61C /* busTrip.sql in Resources */ = {isa = PBXBuildFile; fileRef = 580D0D691F304000009CE61C /* busTrip.sql */; };
-		58493FD51F2F584B008E43BD /* SeptaSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58493FCB1F2F584B008E43BD /* SeptaSchedule.framework */; };
-		58493FDA1F2F584B008E43BD /* DatabaseFileManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58493FD91F2F584B008E43BD /* DatabaseFileManagerTests.swift */; };
-		58493FDC1F2F584B008E43BD /* SeptaSchedule.h in Headers */ = {isa = PBXBuildFile; fileRef = 58493FCE1F2F584B008E43BD /* SeptaSchedule.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		58493FE71F2F5D8B008E43BD /* busStart.sql in Resources */ = {isa = PBXBuildFile; fileRef = 58493FE61F2F5D79008E43BD /* busStart.sql */; };
-		58493FEB1F2F5EAE008E43BD /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58493FE91F2F5EAE008E43BD /* SQLite.framework */; };
-		58493FEC1F2F5EAE008E43BD /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58493FEA1F2F5EAE008E43BD /* Zip.framework */; };
-		58493FEE1F2F5ED5008E43BD /* SQLite.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58493FE91F2F5EAE008E43BD /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		58493FEF1F2F5ED5008E43BD /* Zip.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58493FEA1F2F5EAE008E43BD /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		584AF7A81F30A61A00244CE3 /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7A71F30A61A00244CE3 /* DateTime.swift */; };
-		584AF7AB1F30A85D00244CE3 /* TripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7AA1F30A85D00244CE3 /* TripTests.swift */; };
-		584AF7AD1F30AE4200244CE3 /* busRoute.sql in Resources */ = {isa = PBXBuildFile; fileRef = 584AF7AC1F30AE4200244CE3 /* busRoute.sql */; };
-		584AF7AF1F30AEF900244CE3 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7AE1F30AEF900244CE3 /* Route.swift */; };
-		584AF7B11F30B16800244CE3 /* RouteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AF7B01F30B16800244CE3 /* RouteType.swift */; };
+		582F4F041F33B1370062A546 /* NewBusEnd.sql in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EE31F33B1370062A546 /* NewBusEnd.sql */; };
+		582F4F051F33B1370062A546 /* routes.sql in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EE41F33B1370062A546 /* routes.sql */; };
+		582F4F061F33B1370062A546 /* testCallToBusEnd_Saturday.sql in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EE51F33B1370062A546 /* testCallToBusEnd_Saturday.sql */; };
+		582F4F071F33B1370062A546 /* testCallToBusRoutes.sql in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EE61F33B1370062A546 /* testCallToBusRoutes.sql */; };
+		582F4F081F33B1370062A546 /* testCallToBusStart_Saturday.sql in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EE71F33B1370062A546 /* testCallToBusStart_Saturday.sql */; };
+		582F4F091F33B1370062A546 /* testCallToBusStart_Weekday.sql in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EE81F33B1370062A546 /* testCallToBusStart_Weekday.sql */; };
+		582F4F0A1F33B1370062A546 /* testCallToBusTrip_Saturday.sql in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EE91F33B1370062A546 /* testCallToBusTrip_Saturday.sql */; };
+		582F4F0C1F33B1370062A546 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EEB1F33B1370062A546 /* Test.swift */; };
+		582F4F0E1F33B1370062A546 /* DatabaseFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EEF1F33B1370062A546 /* DatabaseFileManager.swift */; };
+		582F4F0F1F33B1370062A546 /* SEPTA.zip in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EF01F33B1370062A546 /* SEPTA.zip */; };
+		582F4F101F33B1370062A546 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EF21F33B1370062A546 /* Route.swift */; };
+		582F4F111F33B1370062A546 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EF31F33B1370062A546 /* Stop.swift */; };
+		582F4F121F33B1370062A546 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EF41F33B1370062A546 /* Trip.swift */; };
+		582F4F131F33B1370062A546 /* BaseCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EF61F33B1370062A546 /* BaseCommand.swift */; };
+		582F4F141F33B1370062A546 /* BusCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EF81F33B1370062A546 /* BusCommands.swift */; };
+		582F4F151F33B1370062A546 /* DatabaseTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EF91F33B1370062A546 /* DatabaseTables.swift */; };
+		582F4F161F33B1370062A546 /* RouteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EFA1F33B1370062A546 /* RouteType.swift */; };
+		582F4F171F33B1370062A546 /* ScheduleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EFB1F33B1370062A546 /* ScheduleType.swift */; };
+		582F4F181F33B1370062A546 /* busEnd.sql in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EFD1F33B1370062A546 /* busEnd.sql */; };
+		582F4F191F33B1370062A546 /* busRoute.sql in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EFE1F33B1370062A546 /* busRoute.sql */; };
+		582F4F1A1F33B1370062A546 /* busStart.sql in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EFF1F33B1370062A546 /* busStart.sql */; };
+		582F4F1B1F33B1370062A546 /* busTrip.sql in Resources */ = {isa = PBXBuildFile; fileRef = 582F4F001F33B1370062A546 /* busTrip.sql */; };
+		582F4F1C1F33B1370062A546 /* SQLCommandTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F011F33B1370062A546 /* SQLCommandTemplate.swift */; };
+		582F4F1D1F33B1370062A546 /* SQLQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F021F33B1370062A546 /* SQLQuery.swift */; };
+		582F4F1E1F33B1370062A546 /* SQLConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F031F33B1370062A546 /* SQLConnection.swift */; };
+		582F4F221F33B1AA0062A546 /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F201F33B1AA0062A546 /* DateTime.swift */; };
+		582F4F231F33B1AA0062A546 /* GeoCompare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F211F33B1AA0062A546 /* GeoCompare.swift */; };
+		582F4F251F33B3A60062A546 /* SeptaSchedule.h in Headers */ = {isa = PBXBuildFile; fileRef = 582F4EEA1F33B1370062A546 /* SeptaSchedule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		582F4F331F33B4E50062A546 /* DatabaseFileManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F281F33B4E50062A546 /* DatabaseFileManagerTests.swift */; };
+		582F4F341F33B4E50062A546 /* BusCommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F2B1F33B4E50062A546 /* BusCommandTests.swift */; };
+		582F4F351F33B4E50062A546 /* SQLConnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F2C1F33B4E50062A546 /* SQLConnectionTests.swift */; };
+		582F4F361F33B4E50062A546 /* SQLStringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F2D1F33B4E50062A546 /* SQLStringsTests.swift */; };
+		582F4F371F33B4E50062A546 /* DatabaseTablesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F2F1F33B4E50062A546 /* DatabaseTablesTests.swift */; };
+		582F4F381F33B4E50062A546 /* TripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F311F33B4E50062A546 /* TripTests.swift */; };
+		582F4F391F33B4E50062A546 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F321F33B4E50062A546 /* Main.swift */; };
+		58D9C42D1F3336C6002BE2E8 /* SeptaSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58D9C4231F3336C6002BE2E8 /* SeptaSchedule.framework */; };
+		58DCF1031F33B8F70033B112 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DCF1001F33B8F70033B112 /* SQLite.framework */; };
+		58DCF1041F33B8F70033B112 /* Regex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DCF1011F33B8F70033B112 /* Regex.framework */; };
+		58DCF1051F33B8F70033B112 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DCF1021F33B8F70033B112 /* Zip.framework */; };
+		58DCF1061F33B90F0033B112 /* Regex.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DCF1011F33B8F70033B112 /* Regex.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		58DCF1071F33B90F0033B112 /* SQLite.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DCF1001F33B8F70033B112 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		58DCF1081F33B90F0033B112 /* Zip.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DCF1021F33B8F70033B112 /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		58493FD61F2F584B008E43BD /* PBXContainerItemProxy */ = {
+		58D9C42E1F3336C6002BE2E8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 58493FC21F2F584B008E43BD /* Project object */;
+			containerPortal = 58D9C41A1F3336C6002BE2E8 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 58493FCA1F2F584B008E43BD;
+			remoteGlobalIDString = 58D9C4221F3336C6002BE2E8;
 			remoteInfo = SeptaSchedule;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		580D0D321F2F8E00009CE61C /* CopyFiles */ = {
+		5835B42B1F33B74D00096F47 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				580D0D331F2F8E07009CE61C /* Zip.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		58493FED1F2F5ECC008E43BD /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				58493FEE1F2F5ED5008E43BD /* SQLite.framework in CopyFiles */,
-				58493FEF1F2F5ED5008E43BD /* Zip.framework in CopyFiles */,
+				58DCF1061F33B90F0033B112 /* Regex.framework in CopyFiles */,
+				58DCF1071F33B90F0033B112 /* SQLite.framework in CopyFiles */,
+				58DCF1081F33B90F0033B112 /* Zip.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		580D0D2B1F2F7956009CE61C /* DatabaseTablesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTablesTests.swift; sourceTree = "<group>"; };
-		580D0D391F2F9689009CE61C /* DatabaseFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseFileManager.swift; sourceTree = "<group>"; };
-		580D0D3A1F2F9689009CE61C /* SEPTA.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = SEPTA.zip; sourceTree = "<group>"; };
-		580D0D3E1F2F96A1009CE61C /* DatabaseTables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseTables.swift; sourceTree = "<group>"; };
-		580D0D421F2F97E7009CE61C /* SQLCommandTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLCommandTemplate.swift; sourceTree = "<group>"; };
-		580D0D461F2F9817009CE61C /* SQLStringsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLStringsTests.swift; sourceTree = "<group>"; };
-		580D0D481F2FA083009CE61C /* BusCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusCommands.swift; sourceTree = "<group>"; };
-		580D0D4A1F2FA08E009CE61C /* SQLConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLConnection.swift; sourceTree = "<group>"; };
-		580D0D4C1F2FA1BD009CE61C /* SQLConnectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLConnectionTests.swift; sourceTree = "<group>"; };
-		580D0D4E1F2FA435009CE61C /* ScheduleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleType.swift; sourceTree = "<group>"; };
-		580D0D501F2FA4E6009CE61C /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
-		580D0D521F2FA58A009CE61C /* BusCommandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusCommandTests.swift; sourceTree = "<group>"; };
-		580D0D541F2FCCA0009CE61C /* BaseCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCommand.swift; sourceTree = "<group>"; };
-		580D0D571F300032009CE61C /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
-		580D0D591F300091009CE61C /* SEPTA.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = SEPTA.sqlite; sourceTree = "<group>"; };
-		580D0D5C1F30020F009CE61C /* busEnd.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = busEnd.sql; sourceTree = "<group>"; };
-		580D0D621F3007E8009CE61C /* SQLQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLQuery.swift; sourceTree = "<group>"; };
-		580D0D651F30398A009CE61C /* GeoCompare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoCompare.swift; sourceTree = "<group>"; };
-		580D0D671F303F33009CE61C /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
-		580D0D691F304000009CE61C /* busTrip.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = busTrip.sql; sourceTree = "<group>"; };
-		58493FCB1F2F584B008E43BD /* SeptaSchedule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SeptaSchedule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		58493FCE1F2F584B008E43BD /* SeptaSchedule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SeptaSchedule.h; sourceTree = "<group>"; };
-		58493FCF1F2F584B008E43BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		58493FD41F2F584B008E43BD /* SeptaScheduleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeptaScheduleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		58493FD91F2F584B008E43BD /* DatabaseFileManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseFileManagerTests.swift; sourceTree = "<group>"; };
-		58493FDB1F2F584B008E43BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		58493FE61F2F5D79008E43BD /* busStart.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = busStart.sql; sourceTree = "<group>"; };
-		58493FE91F2F5EAE008E43BD /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SQLite.framework; sourceTree = "<group>"; };
-		58493FEA1F2F5EAE008E43BD /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Zip.framework; sourceTree = "<group>"; };
-		58493FF91F2F6725008E43BD /* Regex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Regex.framework; sourceTree = "<group>"; };
-		584AF7A71F30A61A00244CE3 /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
-		584AF7AA1F30A85D00244CE3 /* TripTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTests.swift; sourceTree = "<group>"; };
-		584AF7AC1F30AE4200244CE3 /* busRoute.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = busRoute.sql; sourceTree = "<group>"; };
-		584AF7AE1F30AEF900244CE3 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
-		584AF7B01F30B16800244CE3 /* RouteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteType.swift; sourceTree = "<group>"; };
+		582F4EE31F33B1370062A546 /* NewBusEnd.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NewBusEnd.sql; sourceTree = "<group>"; };
+		582F4EE41F33B1370062A546 /* routes.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = routes.sql; sourceTree = "<group>"; };
+		582F4EE51F33B1370062A546 /* testCallToBusEnd_Saturday.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testCallToBusEnd_Saturday.sql; sourceTree = "<group>"; };
+		582F4EE61F33B1370062A546 /* testCallToBusRoutes.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testCallToBusRoutes.sql; sourceTree = "<group>"; };
+		582F4EE71F33B1370062A546 /* testCallToBusStart_Saturday.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testCallToBusStart_Saturday.sql; sourceTree = "<group>"; };
+		582F4EE81F33B1370062A546 /* testCallToBusStart_Weekday.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testCallToBusStart_Weekday.sql; sourceTree = "<group>"; };
+		582F4EE91F33B1370062A546 /* testCallToBusTrip_Saturday.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testCallToBusTrip_Saturday.sql; sourceTree = "<group>"; };
+		582F4EEA1F33B1370062A546 /* SeptaSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeptaSchedule.h; sourceTree = "<group>"; };
+		582F4EEB1F33B1370062A546 /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		582F4EEC1F33B1370062A546 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		582F4EEF1F33B1370062A546 /* DatabaseFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseFileManager.swift; sourceTree = "<group>"; };
+		582F4EF01F33B1370062A546 /* SEPTA.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = SEPTA.zip; sourceTree = "<group>"; };
+		582F4EF21F33B1370062A546 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		582F4EF31F33B1370062A546 /* Stop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
+		582F4EF41F33B1370062A546 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		582F4EF61F33B1370062A546 /* BaseCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCommand.swift; sourceTree = "<group>"; };
+		582F4EF81F33B1370062A546 /* BusCommands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusCommands.swift; sourceTree = "<group>"; };
+		582F4EF91F33B1370062A546 /* DatabaseTables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseTables.swift; sourceTree = "<group>"; };
+		582F4EFA1F33B1370062A546 /* RouteType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteType.swift; sourceTree = "<group>"; };
+		582F4EFB1F33B1370062A546 /* ScheduleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleType.swift; sourceTree = "<group>"; };
+		582F4EFD1F33B1370062A546 /* busEnd.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = busEnd.sql; sourceTree = "<group>"; };
+		582F4EFE1F33B1370062A546 /* busRoute.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = busRoute.sql; sourceTree = "<group>"; };
+		582F4EFF1F33B1370062A546 /* busStart.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = busStart.sql; sourceTree = "<group>"; };
+		582F4F001F33B1370062A546 /* busTrip.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = busTrip.sql; sourceTree = "<group>"; };
+		582F4F011F33B1370062A546 /* SQLCommandTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLCommandTemplate.swift; sourceTree = "<group>"; };
+		582F4F021F33B1370062A546 /* SQLQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLQuery.swift; sourceTree = "<group>"; };
+		582F4F031F33B1370062A546 /* SQLConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLConnection.swift; sourceTree = "<group>"; };
+		582F4F201F33B1AA0062A546 /* DateTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
+		582F4F211F33B1AA0062A546 /* GeoCompare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoCompare.swift; sourceTree = "<group>"; };
+		582F4F261F33B4E40062A546 /* SeptaScheduleTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SeptaScheduleTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		582F4F281F33B4E50062A546 /* DatabaseFileManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseFileManagerTests.swift; sourceTree = "<group>"; };
+		582F4F2B1F33B4E50062A546 /* BusCommandTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusCommandTests.swift; sourceTree = "<group>"; };
+		582F4F2C1F33B4E50062A546 /* SQLConnectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLConnectionTests.swift; sourceTree = "<group>"; };
+		582F4F2D1F33B4E50062A546 /* SQLStringsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLStringsTests.swift; sourceTree = "<group>"; };
+		582F4F2F1F33B4E50062A546 /* DatabaseTablesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseTablesTests.swift; sourceTree = "<group>"; };
+		582F4F311F33B4E50062A546 /* TripTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTests.swift; sourceTree = "<group>"; };
+		582F4F321F33B4E50062A546 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		58D9C4231F3336C6002BE2E8 /* SeptaSchedule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SeptaSchedule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58D9C42C1F3336C6002BE2E8 /* SeptaScheduleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeptaScheduleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		58D9C4331F3336C6002BE2E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58DCF1001F33B8F70033B112 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = ../Frameworks/SQLite.framework; sourceTree = "<group>"; };
+		58DCF1011F33B8F70033B112 /* Regex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Regex.framework; path = ../Frameworks/Regex.framework; sourceTree = "<group>"; };
+		58DCF1021F33B8F70033B112 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = ../Frameworks/Zip.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		58493FC71F2F584B008E43BD /* Frameworks */ = {
+		58D9C41F1F3336C6002BE2E8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58493FEC1F2F5EAE008E43BD /* Zip.framework in Frameworks */,
-				58493FEB1F2F5EAE008E43BD /* SQLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		58493FD11F2F584B008E43BD /* Frameworks */ = {
+		58D9C4291F3336C6002BE2E8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58493FD51F2F584B008E43BD /* SeptaSchedule.framework in Frameworks */,
-				580D0D311F2F8DFD009CE61C /* Zip.framework in Frameworks */,
+				58DCF1031F33B8F70033B112 /* SQLite.framework in Frameworks */,
+				58DCF1041F33B8F70033B112 /* Regex.framework in Frameworks */,
+				58DCF1051F33B8F70033B112 /* Zip.framework in Frameworks */,
+				58D9C42D1F3336C6002BE2E8 /* SeptaSchedule.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		580D0D341F2F9401009CE61C /* Commands */ = {
+		582F4EE11F33B1370062A546 /* SqlCommands */ = {
 			isa = PBXGroup;
 			children = (
-				580D0D541F2FCCA0009CE61C /* BaseCommand.swift */,
-				580D0D4A1F2FA08E009CE61C /* SQLConnection.swift */,
-				580D0D5B1F3001BF009CE61C /* Bus */,
-				580D0D3E1F2F96A1009CE61C /* DatabaseTables.swift */,
-				58493FE51F2F5D79008E43BD /* sql */,
-				580D0D4E1F2FA435009CE61C /* ScheduleType.swift */,
-				584AF7B01F30B16800244CE3 /* RouteType.swift */,
+				582F4EE21F33B1370062A546 /* scratchFiles */,
+				582F4EE51F33B1370062A546 /* testCallToBusEnd_Saturday.sql */,
+				582F4EE61F33B1370062A546 /* testCallToBusRoutes.sql */,
+				582F4EE71F33B1370062A546 /* testCallToBusStart_Saturday.sql */,
+				582F4EE81F33B1370062A546 /* testCallToBusStart_Weekday.sql */,
+				582F4EE91F33B1370062A546 /* testCallToBusTrip_Saturday.sql */,
 			);
-			path = Commands;
+			path = SqlCommands;
 			sourceTree = "<group>";
 		};
-		580D0D351F2F946A009CE61C /* DataProviders */ = {
+		582F4EE21F33B1370062A546 /* scratchFiles */ = {
 			isa = PBXGroup;
 			children = (
-				580D0D2B1F2F7956009CE61C /* DatabaseTablesTests.swift */,
+				582F4EE31F33B1370062A546 /* NewBusEnd.sql */,
+				582F4EE41F33B1370062A546 /* routes.sql */,
 			);
-			path = DataProviders;
+			path = scratchFiles;
 			sourceTree = "<group>";
 		};
-		580D0D361F2F94A7009CE61C /* PreloadedDatabase */ = {
+		582F4EED1F33B1370062A546 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				58493FD91F2F584B008E43BD /* DatabaseFileManagerTests.swift */,
-			);
-			path = PreloadedDatabase;
-			sourceTree = "<group>";
-		};
-		580D0D371F2F953F009CE61C /* Database */ = {
-			isa = PBXGroup;
-			children = (
-				580D0D411F2F9713009CE61C /* ScheduleDownload */,
-				580D0D381F2F9689009CE61C /* PreloadedDatabase */,
+				582F4EEE1F33B1370062A546 /* PreloadedDatabase */,
 			);
 			path = Database;
 			sourceTree = "<group>";
 		};
-		580D0D381F2F9689009CE61C /* PreloadedDatabase */ = {
+		582F4EEE1F33B1370062A546 /* PreloadedDatabase */ = {
 			isa = PBXGroup;
 			children = (
-				580D0D391F2F9689009CE61C /* DatabaseFileManager.swift */,
-				580D0D3A1F2F9689009CE61C /* SEPTA.zip */,
+				582F4EEF1F33B1370062A546 /* DatabaseFileManager.swift */,
+				582F4EF01F33B1370062A546 /* SEPTA.zip */,
 			);
 			path = PreloadedDatabase;
 			sourceTree = "<group>";
 		};
-		580D0D411F2F9713009CE61C /* ScheduleDownload */ = {
+		582F4EF11F33B1370062A546 /* DataObjects */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = ScheduleDownload;
-			sourceTree = "<group>";
-		};
-		580D0D441F2F97FC009CE61C /* Queries */ = {
-			isa = PBXGroup;
-			children = (
-				580D0D451F2F9805009CE61C /* sql */,
-			);
-			path = Queries;
-			sourceTree = "<group>";
-		};
-		580D0D451F2F9805009CE61C /* sql */ = {
-			isa = PBXGroup;
-			children = (
-				580D0D461F2F9817009CE61C /* SQLStringsTests.swift */,
-				580D0D4C1F2FA1BD009CE61C /* SQLConnectionTests.swift */,
-				580D0D521F2FA58A009CE61C /* BusCommandTests.swift */,
-			);
-			path = sql;
-			sourceTree = "<group>";
-		};
-		580D0D5B1F3001BF009CE61C /* Bus */ = {
-			isa = PBXGroup;
-			children = (
-				580D0D481F2FA083009CE61C /* BusCommands.swift */,
-			);
-			path = Bus;
-			sourceTree = "<group>";
-		};
-		580D0D641F303972009CE61C /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				580D0D651F30398A009CE61C /* GeoCompare.swift */,
-				584AF7A71F30A61A00244CE3 /* DateTime.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		58493FC11F2F584B008E43BD = {
-			isa = PBXGroup;
-			children = (
-				58493FCD1F2F584B008E43BD /* SeptaSchedule */,
-				58493FD81F2F584B008E43BD /* SeptaScheduleTests */,
-				58493FCC1F2F584B008E43BD /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		58493FCC1F2F584B008E43BD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				58493FCB1F2F584B008E43BD /* SeptaSchedule.framework */,
-				58493FD41F2F584B008E43BD /* SeptaScheduleTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		58493FCD1F2F584B008E43BD /* SeptaSchedule */ = {
-			isa = PBXGroup;
-			children = (
-				580D0D641F303972009CE61C /* Utilities */,
-				580D0D371F2F953F009CE61C /* Database */,
-				580D0D341F2F9401009CE61C /* Commands */,
-				58493FF31F2F5F67008E43BD /* DataObjects */,
-				58493FE81F2F5EAE008E43BD /* Frameworks */,
-				58493FCE1F2F584B008E43BD /* SeptaSchedule.h */,
-				58493FCF1F2F584B008E43BD /* Info.plist */,
-			);
-			path = SeptaSchedule;
-			sourceTree = "<group>";
-		};
-		58493FD81F2F584B008E43BD /* SeptaScheduleTests */ = {
-			isa = PBXGroup;
-			children = (
-				584AF7A91F30A84F00244CE3 /* DataObjectTests */,
-				580D0D591F300091009CE61C /* SEPTA.sqlite */,
-				580D0D441F2F97FC009CE61C /* Queries */,
-				580D0D361F2F94A7009CE61C /* PreloadedDatabase */,
-				580D0D351F2F946A009CE61C /* DataProviders */,
-				58493FDB1F2F584B008E43BD /* Info.plist */,
-				580D0D571F300032009CE61C /* Main.swift */,
-			);
-			path = SeptaScheduleTests;
-			sourceTree = "<group>";
-		};
-		58493FE51F2F5D79008E43BD /* sql */ = {
-			isa = PBXGroup;
-			children = (
-				580D0D421F2F97E7009CE61C /* SQLCommandTemplate.swift */,
-				580D0D691F304000009CE61C /* busTrip.sql */,
-				58493FE61F2F5D79008E43BD /* busStart.sql */,
-				580D0D5C1F30020F009CE61C /* busEnd.sql */,
-				584AF7AC1F30AE4200244CE3 /* busRoute.sql */,
-				580D0D621F3007E8009CE61C /* SQLQuery.swift */,
-			);
-			path = sql;
-			sourceTree = "<group>";
-		};
-		58493FE81F2F5EAE008E43BD /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				58493FF91F2F6725008E43BD /* Regex.framework */,
-				58493FE91F2F5EAE008E43BD /* SQLite.framework */,
-				58493FEA1F2F5EAE008E43BD /* Zip.framework */,
-			);
-			path = Frameworks;
-			sourceTree = "<group>";
-		};
-		58493FF31F2F5F67008E43BD /* DataObjects */ = {
-			isa = PBXGroup;
-			children = (
-				58493FF51F2F5F76008E43BD /* Train */,
-				58493FF41F2F5F70008E43BD /* Bus */,
-				580D0D501F2FA4E6009CE61C /* Stop.swift */,
-				580D0D671F303F33009CE61C /* Trip.swift */,
-				584AF7AE1F30AEF900244CE3 /* Route.swift */,
+				582F4EF21F33B1370062A546 /* Route.swift */,
+				582F4EF31F33B1370062A546 /* Stop.swift */,
+				582F4EF41F33B1370062A546 /* Trip.swift */,
 			);
 			path = DataObjects;
 			sourceTree = "<group>";
 		};
-		58493FF41F2F5F70008E43BD /* Bus */ = {
+		582F4EF51F33B1370062A546 /* Commands */ = {
 			isa = PBXGroup;
 			children = (
+				582F4EF61F33B1370062A546 /* BaseCommand.swift */,
+				582F4EF71F33B1370062A546 /* Bus */,
+				582F4EF91F33B1370062A546 /* DatabaseTables.swift */,
+				582F4EFA1F33B1370062A546 /* RouteType.swift */,
+				582F4EFB1F33B1370062A546 /* ScheduleType.swift */,
+				582F4EFC1F33B1370062A546 /* sql */,
+				582F4F031F33B1370062A546 /* SQLConnection.swift */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		582F4EF71F33B1370062A546 /* Bus */ = {
+			isa = PBXGroup;
+			children = (
+				582F4EF81F33B1370062A546 /* BusCommands.swift */,
 			);
 			path = Bus;
 			sourceTree = "<group>";
 		};
-		58493FF51F2F5F76008E43BD /* Train */ = {
+		582F4EFC1F33B1370062A546 /* sql */ = {
 			isa = PBXGroup;
 			children = (
+				582F4EFD1F33B1370062A546 /* busEnd.sql */,
+				582F4EFE1F33B1370062A546 /* busRoute.sql */,
+				582F4EFF1F33B1370062A546 /* busStart.sql */,
+				582F4F001F33B1370062A546 /* busTrip.sql */,
+				582F4F011F33B1370062A546 /* SQLCommandTemplate.swift */,
+				582F4F021F33B1370062A546 /* SQLQuery.swift */,
 			);
-			path = Train;
+			path = sql;
 			sourceTree = "<group>";
 		};
-		584AF7A91F30A84F00244CE3 /* DataObjectTests */ = {
+		582F4F1F1F33B1AA0062A546 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				584AF7AA1F30A85D00244CE3 /* TripTests.swift */,
+				582F4F201F33B1AA0062A546 /* DateTime.swift */,
+				582F4F211F33B1AA0062A546 /* GeoCompare.swift */,
+			);
+			name = Utilities;
+			path = SeptaSchedule/Utilities;
+			sourceTree = "<group>";
+		};
+		582F4F271F33B4E50062A546 /* PreloadedDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				582F4F281F33B4E50062A546 /* DatabaseFileManagerTests.swift */,
+			);
+			path = PreloadedDatabase;
+			sourceTree = "<group>";
+		};
+		582F4F291F33B4E50062A546 /* Queries */ = {
+			isa = PBXGroup;
+			children = (
+				582F4F2A1F33B4E50062A546 /* sql */,
+			);
+			path = Queries;
+			sourceTree = "<group>";
+		};
+		582F4F2A1F33B4E50062A546 /* sql */ = {
+			isa = PBXGroup;
+			children = (
+				582F4F2B1F33B4E50062A546 /* BusCommandTests.swift */,
+				582F4F2C1F33B4E50062A546 /* SQLConnectionTests.swift */,
+				582F4F2D1F33B4E50062A546 /* SQLStringsTests.swift */,
+			);
+			path = sql;
+			sourceTree = "<group>";
+		};
+		582F4F2E1F33B4E50062A546 /* DataProviders */ = {
+			isa = PBXGroup;
+			children = (
+				582F4F2F1F33B4E50062A546 /* DatabaseTablesTests.swift */,
+			);
+			path = DataProviders;
+			sourceTree = "<group>";
+		};
+		582F4F301F33B4E50062A546 /* DataObjectTests */ = {
+			isa = PBXGroup;
+			children = (
+				582F4F311F33B4E50062A546 /* TripTests.swift */,
 			);
 			path = DataObjectTests;
+			sourceTree = "<group>";
+		};
+		58D9C4191F3336C6002BE2E8 = {
+			isa = PBXGroup;
+			children = (
+				58DCF1011F33B8F70033B112 /* Regex.framework */,
+				58DCF1001F33B8F70033B112 /* SQLite.framework */,
+				58DCF1021F33B8F70033B112 /* Zip.framework */,
+				582F4F1F1F33B1AA0062A546 /* Utilities */,
+				58D9C4251F3336C6002BE2E8 /* SeptaSchedule */,
+				58D9C4301F3336C6002BE2E8 /* SeptaScheduleTests */,
+				58D9C4241F3336C6002BE2E8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		58D9C4241F3336C6002BE2E8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				58D9C4231F3336C6002BE2E8 /* SeptaSchedule.framework */,
+				58D9C42C1F3336C6002BE2E8 /* SeptaScheduleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		58D9C4251F3336C6002BE2E8 /* SeptaSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				582F4EF51F33B1370062A546 /* Commands */,
+				582F4EED1F33B1370062A546 /* Database */,
+				582F4EF11F33B1370062A546 /* DataObjects */,
+				582F4EEC1F33B1370062A546 /* Info.plist */,
+				582F4EEA1F33B1370062A546 /* SeptaSchedule.h */,
+				582F4EE11F33B1370062A546 /* SqlCommands */,
+				582F4EEB1F33B1370062A546 /* Test.swift */,
+			);
+			path = SeptaSchedule;
+			sourceTree = "<group>";
+		};
+		58D9C4301F3336C6002BE2E8 /* SeptaScheduleTests */ = {
+			isa = PBXGroup;
+			children = (
+				582F4F301F33B4E50062A546 /* DataObjectTests */,
+				582F4F2E1F33B4E50062A546 /* DataProviders */,
+				582F4F321F33B4E50062A546 /* Main.swift */,
+				582F4F271F33B4E50062A546 /* PreloadedDatabase */,
+				582F4F291F33B4E50062A546 /* Queries */,
+				58D9C4331F3336C6002BE2E8 /* Info.plist */,
+				582F4F261F33B4E40062A546 /* SeptaScheduleTests-Bridging-Header.h */,
+			);
+			path = SeptaScheduleTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		58493FC81F2F584B008E43BD /* Headers */ = {
+		58D9C4201F3336C6002BE2E8 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58493FDC1F2F584B008E43BD /* SeptaSchedule.h in Headers */,
+				582F4F251F33B3A60062A546 /* SeptaSchedule.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		58493FCA1F2F584B008E43BD /* SeptaSchedule */ = {
+		58D9C4221F3336C6002BE2E8 /* SeptaSchedule */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58493FDF1F2F584B008E43BD /* Build configuration list for PBXNativeTarget "SeptaSchedule" */;
+			buildConfigurationList = 58D9C4371F3336C6002BE2E8 /* Build configuration list for PBXNativeTarget "SeptaSchedule" */;
 			buildPhases = (
-				58493FC61F2F584B008E43BD /* Sources */,
-				58493FC71F2F584B008E43BD /* Frameworks */,
-				58493FC81F2F584B008E43BD /* Headers */,
-				58493FC91F2F584B008E43BD /* Resources */,
-				58493FED1F2F5ECC008E43BD /* CopyFiles */,
+				58D9C41E1F3336C6002BE2E8 /* Sources */,
+				58D9C41F1F3336C6002BE2E8 /* Frameworks */,
+				58D9C4201F3336C6002BE2E8 /* Headers */,
+				58D9C4211F3336C6002BE2E8 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -361,136 +359,144 @@
 			);
 			name = SeptaSchedule;
 			productName = SeptaSchedule;
-			productReference = 58493FCB1F2F584B008E43BD /* SeptaSchedule.framework */;
+			productReference = 58D9C4231F3336C6002BE2E8 /* SeptaSchedule.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		58493FD31F2F584B008E43BD /* SeptaScheduleTests */ = {
+		58D9C42B1F3336C6002BE2E8 /* SeptaScheduleTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58493FE21F2F584B008E43BD /* Build configuration list for PBXNativeTarget "SeptaScheduleTests" */;
+			buildConfigurationList = 58D9C43A1F3336C6002BE2E8 /* Build configuration list for PBXNativeTarget "SeptaScheduleTests" */;
 			buildPhases = (
-				58493FD01F2F584B008E43BD /* Sources */,
-				58493FD11F2F584B008E43BD /* Frameworks */,
-				58493FD21F2F584B008E43BD /* Resources */,
-				580D0D321F2F8E00009CE61C /* CopyFiles */,
+				58D9C4281F3336C6002BE2E8 /* Sources */,
+				58D9C4291F3336C6002BE2E8 /* Frameworks */,
+				58D9C42A1F3336C6002BE2E8 /* Resources */,
+				5835B42B1F33B74D00096F47 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				58493FD71F2F584B008E43BD /* PBXTargetDependency */,
+				58D9C42F1F3336C6002BE2E8 /* PBXTargetDependency */,
 			);
 			name = SeptaScheduleTests;
 			productName = SeptaScheduleTests;
-			productReference = 58493FD41F2F584B008E43BD /* SeptaScheduleTests.xctest */;
+			productReference = 58D9C42C1F3336C6002BE2E8 /* SeptaScheduleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		58493FC21F2F584B008E43BD /* Project object */ = {
+		58D9C41A1F3336C6002BE2E8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Mark Broski";
 				TargetAttributes = {
-					58493FCA1F2F584B008E43BD = {
+					58D9C4221F3336C6002BE2E8 = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 0900;
 					};
-					58493FD31F2F584B008E43BD = {
+					58D9C42B1F3336C6002BE2E8 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 					};
 				};
 			};
-			buildConfigurationList = 58493FC51F2F584B008E43BD /* Build configuration list for PBXProject "SeptaSchedule" */;
+			buildConfigurationList = 58D9C41D1F3336C6002BE2E8 /* Build configuration list for PBXProject "SeptaSchedule" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 58493FC11F2F584B008E43BD;
-			productRefGroup = 58493FCC1F2F584B008E43BD /* Products */;
+			mainGroup = 58D9C4191F3336C6002BE2E8;
+			productRefGroup = 58D9C4241F3336C6002BE2E8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				58493FCA1F2F584B008E43BD /* SeptaSchedule */,
-				58493FD31F2F584B008E43BD /* SeptaScheduleTests */,
+				58D9C4221F3336C6002BE2E8 /* SeptaSchedule */,
+				58D9C42B1F3336C6002BE2E8 /* SeptaScheduleTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		58493FC91F2F584B008E43BD /* Resources */ = {
+		58D9C4211F3336C6002BE2E8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				584AF7AD1F30AE4200244CE3 /* busRoute.sql in Resources */,
-				58493FE71F2F5D8B008E43BD /* busStart.sql in Resources */,
-				580D0D3C1F2F9689009CE61C /* SEPTA.zip in Resources */,
-				580D0D6A1F304000009CE61C /* busTrip.sql in Resources */,
-				580D0D5D1F30020F009CE61C /* busEnd.sql in Resources */,
+				582F4F181F33B1370062A546 /* busEnd.sql in Resources */,
+				582F4F1B1F33B1370062A546 /* busTrip.sql in Resources */,
+				582F4F1A1F33B1370062A546 /* busStart.sql in Resources */,
+				582F4F071F33B1370062A546 /* testCallToBusRoutes.sql in Resources */,
+				582F4F051F33B1370062A546 /* routes.sql in Resources */,
+				582F4F061F33B1370062A546 /* testCallToBusEnd_Saturday.sql in Resources */,
+				582F4F081F33B1370062A546 /* testCallToBusStart_Saturday.sql in Resources */,
+				582F4F091F33B1370062A546 /* testCallToBusStart_Weekday.sql in Resources */,
+				582F4F0F1F33B1370062A546 /* SEPTA.zip in Resources */,
+				582F4F0A1F33B1370062A546 /* testCallToBusTrip_Saturday.sql in Resources */,
+				582F4F191F33B1370062A546 /* busRoute.sql in Resources */,
+				582F4F041F33B1370062A546 /* NewBusEnd.sql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		58493FD21F2F584B008E43BD /* Resources */ = {
+		58D9C42A1F3336C6002BE2E8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				580D0D5A1F300092009CE61C /* SEPTA.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		58493FC61F2F584B008E43BD /* Sources */ = {
+		58D9C41E1F3336C6002BE2E8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				580D0D681F303F33009CE61C /* Trip.swift in Sources */,
-				580D0D551F2FCCA0009CE61C /* BaseCommand.swift in Sources */,
-				580D0D4F1F2FA435009CE61C /* ScheduleType.swift in Sources */,
-				580D0D431F2F97E7009CE61C /* SQLCommandTemplate.swift in Sources */,
-				584AF7AF1F30AEF900244CE3 /* Route.swift in Sources */,
-				584AF7B11F30B16800244CE3 /* RouteType.swift in Sources */,
-				580D0D661F30398A009CE61C /* GeoCompare.swift in Sources */,
-				580D0D511F2FA4E6009CE61C /* Stop.swift in Sources */,
-				580D0D631F3007E8009CE61C /* SQLQuery.swift in Sources */,
-				580D0D4B1F2FA08E009CE61C /* SQLConnection.swift in Sources */,
-				580D0D491F2FA083009CE61C /* BusCommands.swift in Sources */,
-				580D0D3B1F2F9689009CE61C /* DatabaseFileManager.swift in Sources */,
-				584AF7A81F30A61A00244CE3 /* DateTime.swift in Sources */,
-				580D0D401F2F96A1009CE61C /* DatabaseTables.swift in Sources */,
+				582F4F131F33B1370062A546 /* BaseCommand.swift in Sources */,
+				582F4F1C1F33B1370062A546 /* SQLCommandTemplate.swift in Sources */,
+				582F4F161F33B1370062A546 /* RouteType.swift in Sources */,
+				582F4F231F33B1AA0062A546 /* GeoCompare.swift in Sources */,
+				582F4F1D1F33B1370062A546 /* SQLQuery.swift in Sources */,
+				582F4F141F33B1370062A546 /* BusCommands.swift in Sources */,
+				582F4F121F33B1370062A546 /* Trip.swift in Sources */,
+				582F4F171F33B1370062A546 /* ScheduleType.swift in Sources */,
+				582F4F1E1F33B1370062A546 /* SQLConnection.swift in Sources */,
+				582F4F101F33B1370062A546 /* Route.swift in Sources */,
+				582F4F0E1F33B1370062A546 /* DatabaseFileManager.swift in Sources */,
+				582F4F0C1F33B1370062A546 /* Test.swift in Sources */,
+				582F4F111F33B1370062A546 /* Stop.swift in Sources */,
+				582F4F221F33B1AA0062A546 /* DateTime.swift in Sources */,
+				582F4F151F33B1370062A546 /* DatabaseTables.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		58493FD01F2F584B008E43BD /* Sources */ = {
+		58D9C4281F3336C6002BE2E8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				580D0D581F300032009CE61C /* Main.swift in Sources */,
-				58493FDA1F2F584B008E43BD /* DatabaseFileManagerTests.swift in Sources */,
-				580D0D471F2F9817009CE61C /* SQLStringsTests.swift in Sources */,
-				580D0D4D1F2FA1BD009CE61C /* SQLConnectionTests.swift in Sources */,
-				580D0D2C1F2F7956009CE61C /* DatabaseTablesTests.swift in Sources */,
-				584AF7AB1F30A85D00244CE3 /* TripTests.swift in Sources */,
-				580D0D531F2FA58A009CE61C /* BusCommandTests.swift in Sources */,
+				582F4F341F33B4E50062A546 /* BusCommandTests.swift in Sources */,
+				582F4F361F33B4E50062A546 /* SQLStringsTests.swift in Sources */,
+				582F4F331F33B4E50062A546 /* DatabaseFileManagerTests.swift in Sources */,
+				582F4F351F33B4E50062A546 /* SQLConnectionTests.swift in Sources */,
+				582F4F381F33B4E50062A546 /* TripTests.swift in Sources */,
+				582F4F391F33B4E50062A546 /* Main.swift in Sources */,
+				582F4F371F33B4E50062A546 /* DatabaseTablesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		58493FD71F2F584B008E43BD /* PBXTargetDependency */ = {
+		58D9C42F1F3336C6002BE2E8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 58493FCA1F2F584B008E43BD /* SeptaSchedule */;
-			targetProxy = 58493FD61F2F584B008E43BD /* PBXContainerItemProxy */;
+			target = 58D9C4221F3336C6002BE2E8 /* SeptaSchedule */;
+			targetProxy = 58D9C42E1F3336C6002BE2E8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		58493FDD1F2F584B008E43BD /* Debug */ = {
+		58D9C4351F3336C6002BE2E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -550,7 +556,7 @@
 			};
 			name = Debug;
 		};
-		58493FDE1F2F584B008E43BD /* Release */ = {
+		58D9C4361F3336C6002BE2E8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -603,7 +609,7 @@
 			};
 			name = Release;
 		};
-		58493FE01F2F584B008E43BD /* Debug */ = {
+		58D9C4381F3336C6002BE2E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -613,15 +619,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/SeptaSchedule/Frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = $SRCROOT/../Frameworks;
 				INFOPLIST_FILE = SeptaSchedule/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.SeptaSchedule;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -631,7 +634,7 @@
 			};
 			name = Debug;
 		};
-		58493FE11F2F584B008E43BD /* Release */ = {
+		58D9C4391F3336C6002BE2E8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -641,14 +644,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/SeptaSchedule/Frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = $SRCROOT/../Frameworks;
 				INFOPLIST_FILE = SeptaSchedule/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.SeptaSchedule;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -657,37 +658,36 @@
 			};
 			name = Release;
 		};
-		58493FE31F2F584B008E43BD /* Debug */ = {
+		58D9C43B1F3336C6002BE2E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = L636S9JLLY;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/SeptaSchedule/Frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$SRCROOT/../Frameworks/**";
 				INFOPLIST_FILE = SeptaScheduleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.SeptaScheduleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SeptaScheduleTests/SeptaScheduleTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		58493FE41F2F584B008E43BD /* Release */ = {
+		58D9C43C1F3336C6002BE2E8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = L636S9JLLY;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/SeptaSchedule/Frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$SRCROOT/../Frameworks/**";
 				INFOPLIST_FILE = SeptaScheduleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.SeptaScheduleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SeptaScheduleTests/SeptaScheduleTests-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -696,34 +696,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		58493FC51F2F584B008E43BD /* Build configuration list for PBXProject "SeptaSchedule" */ = {
+		58D9C41D1F3336C6002BE2E8 /* Build configuration list for PBXProject "SeptaSchedule" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				58493FDD1F2F584B008E43BD /* Debug */,
-				58493FDE1F2F584B008E43BD /* Release */,
+				58D9C4351F3336C6002BE2E8 /* Debug */,
+				58D9C4361F3336C6002BE2E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58493FDF1F2F584B008E43BD /* Build configuration list for PBXNativeTarget "SeptaSchedule" */ = {
+		58D9C4371F3336C6002BE2E8 /* Build configuration list for PBXNativeTarget "SeptaSchedule" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				58493FE01F2F584B008E43BD /* Debug */,
-				58493FE11F2F584B008E43BD /* Release */,
+				58D9C4381F3336C6002BE2E8 /* Debug */,
+				58D9C4391F3336C6002BE2E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58493FE21F2F584B008E43BD /* Build configuration list for PBXNativeTarget "SeptaScheduleTests" */ = {
+		58D9C43A1F3336C6002BE2E8 /* Build configuration list for PBXNativeTarget "SeptaScheduleTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				58493FE31F2F584B008E43BD /* Debug */,
-				58493FE41F2F584B008E43BD /* Release */,
+				58D9C43B1F3336C6002BE2E8 /* Debug */,
+				58D9C43C1F3336C6002BE2E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 58493FC21F2F584B008E43BD /* Project object */;
+	rootObject = 58D9C41A1F3336C6002BE2E8 /* Project object */;
 }
