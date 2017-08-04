@@ -7,14 +7,6 @@ v#Can ignore specific files
 *.log
 *.zip
 
-build/
-*.pbxuser
-
-xcuserdata
-profile
-*.moved-aside
-DerivedData
-
-gtfs/gitraw
-#images/
-
+Build/
+DerivedData/
+**/xcuserdata/
