@@ -123,7 +123,7 @@
 		58C181FE1F34C557002748E9 /* Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		58C182001F34C560002748E9 /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		58C182051F34C5B6002748E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizeable.strings; sourceTree = "<group>"; };
-		58D9C3F01F3335BB002BE2E8 /* iSEPTA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSEPTA.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		58D9C3F01F3335BB002BE2E8 /* Septa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Septa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D9C4071F3335BB002BE2E8 /* iSEPTATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iSEPTATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D9C40B1F3335BB002BE2E8 /* iSEPTATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iSEPTATests.swift; sourceTree = "<group>"; };
 		58D9C40D1F3335BB002BE2E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -355,7 +355,7 @@
 		58D9C3F11F3335BB002BE2E8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				58D9C3F01F3335BB002BE2E8 /* iSEPTA.app */,
+				58D9C3F01F3335BB002BE2E8 /* Septa.app */,
 				58D9C4071F3335BB002BE2E8 /* iSEPTATests.xctest */,
 			);
 			name = Products;
@@ -419,7 +419,7 @@
 			);
 			name = iSEPTA;
 			productName = iSEPTA;
-			productReference = 58D9C3F01F3335BB002BE2E8 /* iSEPTA.app */;
+			productReference = 58D9C3F01F3335BB002BE2E8 /* Septa.app */;
 			productType = "com.apple.product-type.application";
 		};
 		58D9C4061F3335BB002BE2E8 /* iSEPTATests */ = {
@@ -732,7 +732,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Septa;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -749,7 +749,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Septa;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

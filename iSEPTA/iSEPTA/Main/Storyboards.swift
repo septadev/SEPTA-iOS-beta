@@ -1,12 +1,8 @@
-// Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
 import Foundation
 import UIKit
-import Septa
 
-// swiftlint:disable file_length
-// swiftlint:disable line_length
-// swiftlint:disable type_body_length
+
 
 protocol StoryboardSceneType {
   static var storyboardName: String { get }
