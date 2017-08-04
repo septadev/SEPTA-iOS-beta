@@ -453,6 +453,7 @@
 					58D9C3EF1F3335BB002BE2E8 = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 0900;
+						ProvisioningStyle = Manual;
 					};
 					58D9C4061F3335BB002BE2E8 = {
 						CreatedOnToolsVersion = 9.0;
@@ -726,6 +727,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				INFOPLIST_FILE = iSEPTA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -744,12 +746,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				INFOPLIST_FILE = iSEPTA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
 				PRODUCT_NAME = Septa;
+				PROVISIONING_PROFILE_SPECIFIER = SeptaVersion2;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
