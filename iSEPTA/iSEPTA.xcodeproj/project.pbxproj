@@ -89,6 +89,7 @@
 		583435931F34E82E0021EC6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EB81F33B1120062A546 /* LaunchScreen.storyboard */; };
 		583435941F34E82E0021EC6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EAF1F33B1120062A546 /* Assets.xcassets */; };
 		583435951F34E82E0021EC6D /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EAC1F33B1120062A546 /* settings.storyboard */; };
+		5867462B1F350BF6000F0D32 /* SeptaSchedule.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5867462A1F350BF6000F0D32 /* SeptaSchedule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C181FE1F34C557002748E9 /* Storyboards.swift */; };
 		58C182011F34C560002748E9 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C182001F34C560002748E9 /* Asset.swift */; };
 		58C182041F34C5B6002748E9 /* Localizeable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58C182061F34C5B6002748E9 /* Localizeable.strings */; };
@@ -112,6 +113,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				5867462B1F350BF6000F0D32 /* SeptaSchedule.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +175,7 @@
 		5834359F1F34E9420021EC6D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = ../Frameworks/Crashlytics.framework; sourceTree = "<group>"; };
 		583435A01F34E9420021EC6D /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = ../Frameworks/Fabric.framework; sourceTree = "<group>"; };
 		583E71CE1F33449D005AF3C7 /* Regex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Regex.framework; path = ../Frameworks/Regex.framework; sourceTree = "<group>"; };
+		5867462A1F350BF6000F0D32 /* SeptaSchedule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaSchedule.framework; path = "../Build/Products/Release-iphoneos/SeptaSchedule.framework"; sourceTree = "<group>"; };
 		58C181FE1F34C557002748E9 /* Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		58C182001F34C560002748E9 /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		58C182051F34C5B6002748E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizeable.strings; sourceTree = "<group>"; };
@@ -416,6 +419,7 @@
 		58D9C3E71F3335BB002BE2E8 = {
 			isa = PBXGroup;
 			children = (
+				5867462A1F350BF6000F0D32 /* SeptaSchedule.framework */,
 				58D9C3F21F3335BB002BE2E8 /* iSEPTA */,
 				58D9C40A1F3335BB002BE2E8 /* iSEPTATests */,
 				58D9C3F11F3335BB002BE2E8 /* Products */,
@@ -657,7 +661,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PROJECT_DIR}/Fabric.framework/run\" 573b4f7ab920a4fcd9f2da4d08fae80cefad40fe ee0c297d8103d2326ae8b9b2ebfe34df4f517b2d85ad6183b2fef9aad7cc7119";
+			shellScript = "\"${PROJECT_DIR}/../Frameworks/Fabric.framework/run\" 573b4f7ab920a4fcd9f2da4d08fae80cefad40fe ee0c297d8103d2326ae8b9b2ebfe34df4f517b2d85ad6183b2fef9aad7cc7119";
 		};
 		585F585A1F3377EF00D3ED6C /* Copy Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -804,7 +808,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "iSEPTA-Release-Info.plist";
+				INFOPLIST_FILE = "iSEPTA/Info/iSEPTA-Release-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
@@ -826,7 +830,7 @@
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = $SRCROOT/../Frameworks;
-				INFOPLIST_FILE = "iSEPTA-Release-Info.plist";
+				INFOPLIST_FILE = "iSEPTA/Info/iSEPTA-Release-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
