@@ -122,10 +122,10 @@ enum StoryboardScene {
     }
 
     case nextToArriveScene = "nextToArrive"
-    static func instantiateNextToArrive() -> Septa.NextToArriveViewController {
-      guard let vc = StoryboardScene.NextToArrive.nextToArriveScene.viewController() as? Septa.NextToArriveViewController
+    static func instantiateNextToArrive() -> NextToArriveViewController {
+      guard let vc = StoryboardScene.NextToArrive.nextToArriveScene.viewController() as? NextToArriveViewController
       else {
-        fatalError("ViewController 'nextToArrive' is not of the expected class Septa.NextToArriveViewController.")
+        fatalError("ViewController 'nextToArrive' is not of the expected class NextToArriveViewController.")
       }
       return vc
     }

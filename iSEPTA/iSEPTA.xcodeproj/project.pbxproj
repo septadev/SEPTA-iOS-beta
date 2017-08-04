@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		582118C61F34F1110053C050 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5834359F1F34E9420021EC6D /* Crashlytics.framework */; };
+		582118C71F34F1110053C050 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 583435A01F34E9420021EC6D /* Fabric.framework */; };
+		582118C91F34F48F0053C050 /* SeptaSchedule.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 582118C81F34F48F0053C050 /* SeptaSchedule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		582F4EBA1F33B1120062A546 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E7D1F33B1120062A546 /* ViewController.swift */; };
 		582F4EBB1F33B1120062A546 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E7E1F33B1120062A546 /* AppDelegate.swift */; };
 		582F4EBC1F33B1120062A546 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E801F33B1120062A546 /* DateFormatters.swift */; };
@@ -45,7 +48,51 @@
 		582F4EDE1F33B1120062A546 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EB41F33B1120062A546 /* Main.storyboard */; };
 		582F4EDF1F33B1120062A546 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EB61F33B1120062A546 /* MainViewController.swift */; };
 		582F4EE01F33B1120062A546 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EB81F33B1120062A546 /* LaunchScreen.storyboard */; };
+		5834356A1F34E82E0021EC6D /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C182001F34C560002748E9 /* Asset.swift */; };
+		5834356B1F34E82E0021EC6D /* SelectStopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA71F33B1120062A546 /* SelectStopsViewController.swift */; };
+		5834356C1F34E82E0021EC6D /* ViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EB21F33B1120062A546 /* ViewModelDelegate.swift */; };
+		5834356D1F34E82E0021EC6D /* SelectStopRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA51F33B1120062A546 /* SelectStopRow.swift */; };
+		5834356E1F34E82E0021EC6D /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E801F33B1120062A546 /* DateFormatters.swift */; };
+		5834356F1F34E82E0021EC6D /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E971F33B1120062A546 /* RouteTableViewCell.swift */; };
+		583435701F34E82E0021EC6D /* SelectedStopType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA31F33B1120062A546 /* SelectedStopType.swift */; };
+		583435711F34E82E0021EC6D /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9C1F33B1120062A546 /* ScheduleTableViewCell.swift */; };
+		583435721F34E82E0021EC6D /* RouteStops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA21F33B1120062A546 /* RouteStops.swift */; };
+		583435731F34E82E0021EC6D /* SelectStopsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA91F33B1120062A546 /* SelectStopsViewModel.swift */; };
+		583435741F34E82E0021EC6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E7E1F33B1120062A546 /* AppDelegate.swift */; };
+		583435751F34E82E0021EC6D /* SelectStopCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA41F33B1120062A546 /* SelectStopCellType.swift */; };
+		583435761F34E82E0021EC6D /* SingleStringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E831F33B1120062A546 /* SingleStringCell.swift */; };
+		583435771F34E82E0021EC6D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E881F33B1120062A546 /* Alert.swift */; };
+		583435781F34E82E0021EC6D /* NextToArriveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E921F33B1120062A546 /* NextToArriveViewController.swift */; };
+		583435791F34E82E0021EC6D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EB61F33B1120062A546 /* MainViewController.swift */; };
+		5834357A1F34E82E0021EC6D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E7D1F33B1120062A546 /* ViewController.swift */; };
+		5834357B1F34E82E0021EC6D /* TransitModesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EAA1F33B1120062A546 /* TransitModesViewController.swift */; };
+		5834357C1F34E82E0021EC6D /* SelectStopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA01F33B1120062A546 /* SelectStopViewModel.swift */; };
+		5834357D1F34E82E0021EC6D /* RoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E961F33B1120062A546 /* RoutesViewModel.swift */; };
+		5834357E1F34E82E0021EC6D /* RouteSheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9B1F33B1120062A546 /* RouteSheduleViewModel.swift */; };
+		5834357F1F34E82E0021EC6D /* SelectStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9F1F33B1120062A546 /* SelectStopViewController.swift */; };
+		583435801F34E82E0021EC6D /* SelectStopsViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA81F33B1120062A546 /* SelectStopsViewElement.swift */; };
+		583435811F34E82E0021EC6D /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C181FE1F34C557002748E9 /* Storyboards.swift */; };
+		583435821F34E82E0021EC6D /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E951F33B1120062A546 /* RoutesViewController.swift */; };
+		583435831F34E82E0021EC6D /* RouteScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9A1F33B1120062A546 /* RouteScheduleViewController.swift */; };
+		583435841F34E82E0021EC6D /* TransitMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EB11F33B1120062A546 /* TransitMode.swift */; };
+		583435881F34E82E0021EC6D /* fares.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4E8D1F33B1120062A546 /* fares.storyboard */; };
+		583435891F34E82E0021EC6D /* about.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4E861F33B1120062A546 /* about.storyboard */; };
+		5834358A1F34E82E0021EC6D /* SelectStopsFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EA61F33B1120062A546 /* SelectStopsFooterView.xib */; };
+		5834358B1F34E82E0021EC6D /* RouteScheduleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 582F4E991F33B1120062A546 /* RouteScheduleHeaderView.xib */; };
+		5834358C1F34E82E0021EC6D /* schedules.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4E9D1F33B1120062A546 /* schedules.storyboard */; };
+		5834358D1F34E82E0021EC6D /* alerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4E891F33B1120062A546 /* alerts.storyboard */; };
+		5834358E1F34E82E0021EC6D /* nextToArrive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4E911F33B1120062A546 /* nextToArrive.storyboard */; };
+		5834358F1F34E82E0021EC6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EB41F33B1120062A546 /* Main.storyboard */; };
+		583435901F34E82E0021EC6D /* favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4E8F1F33B1120062A546 /* favorites.storyboard */; };
+		583435911F34E82E0021EC6D /* Localizeable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58C182061F34C5B6002748E9 /* Localizeable.strings */; };
+		583435921F34E82E0021EC6D /* contact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4E8B1F33B1120062A546 /* contact.storyboard */; };
+		583435931F34E82E0021EC6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EB81F33B1120062A546 /* LaunchScreen.storyboard */; };
+		583435941F34E82E0021EC6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EAF1F33B1120062A546 /* Assets.xcassets */; };
+		583435951F34E82E0021EC6D /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EAC1F33B1120062A546 /* settings.storyboard */; };
 		58552F9A1F335259008C1886 /* SeptaSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58552F991F335259008C1886 /* SeptaSchedule.framework */; };
+		5879DE381F34EE7800E505E1 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5879DE361F34EE7800E505E1 /* Crashlytics.framework */; };
+		5879DE391F34EE7800E505E1 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5879DE371F34EE7800E505E1 /* Fabric.framework */; };
+		58A8E1431F34FB4400B0E612 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A8E1421F34FB4400B0E612 /* Crashlytics.framework */; };
 		58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C181FE1F34C557002748E9 /* Storyboards.swift */; };
 		58C182011F34C560002748E9 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C182001F34C560002748E9 /* Asset.swift */; };
 		58C182041F34C5B6002748E9 /* Localizeable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58C182061F34C5B6002748E9 /* Localizeable.strings */; };
@@ -64,6 +111,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		583435971F34E82E0021EC6D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				582118C91F34F48F0053C050 /* SeptaSchedule.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		58552F9B1F335272008C1886 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -77,6 +134,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		580041F51F34F9FA00691FDC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		580041F61F34FA0500691FDC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		580041F71F34FA1600691FDC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		582118C41F34EEA30053C050 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		582118C51F34EEA30053C050 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		582118C81F34F48F0053C050 /* SeptaSchedule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaSchedule.framework; path = "../Build/Products/Release-iphoneos/SeptaSchedule.framework"; sourceTree = "<group>"; };
 		582F4E7D1F33B1120062A546 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		582F4E7E1F33B1120062A546 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		582F4E801F33B1120062A546 /* DateFormatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
@@ -117,9 +180,15 @@
 		582F4EB61F33B1120062A546 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		582F4EB91F33B1120062A546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		582F4F241F33B2400062A546 /* Septa-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Septa-Bridging-Header.h"; sourceTree = "<group>"; };
+		5834359C1F34E82E0021EC6D /* iSEPTA-Release.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iSEPTA-Release.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5834359D1F34E82E0021EC6D /* iSEPTA-Release-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "iSEPTA-Release-Info.plist"; path = "/Users/mbroski/Code/Septa/Septa2/iSEPTA/iSEPTA-Release-Info.plist"; sourceTree = "<absolute>"; };
+		5834359F1F34E9420021EC6D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = ../Frameworks/Crashlytics.framework; sourceTree = "<group>"; };
+		583435A01F34E9420021EC6D /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = ../Frameworks/Fabric.framework; sourceTree = "<group>"; };
 		583E71CE1F33449D005AF3C7 /* Regex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Regex.framework; path = ../Frameworks/Regex.framework; sourceTree = "<group>"; };
 		58552F991F335259008C1886 /* SeptaSchedule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaSchedule.framework; path = "../Build/Products/Debug-iphoneos/SeptaSchedule.framework"; sourceTree = "<group>"; };
-		588363AE1F333994009B75BE /* SeptaSchedule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaSchedule.framework; path = "../Build/Products/Debug-iphonesimulator/SeptaSchedule.framework"; sourceTree = "<group>"; };
+		5879DE361F34EE7800E505E1 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		5879DE371F34EE7800E505E1 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		58A8E1421F34FB4400B0E612 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		58C181FE1F34C557002748E9 /* Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		58C182001F34C560002748E9 /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		58C182051F34C5B6002748E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizeable.strings; sourceTree = "<group>"; };
@@ -128,15 +197,26 @@
 		58D9C40B1F3335BB002BE2E8 /* iSEPTATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iSEPTATests.swift; sourceTree = "<group>"; };
 		58D9C40D1F3335BB002BE2E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58D9C4171F33362C002BE2E8 /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
-		58E2FF121F3338100009FC54 /* SeptaSchedule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaSchedule.framework; path = "../SeptaSchedule/build/Debug-iphoneos/SeptaSchedule.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		583435851F34E82E0021EC6D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				582118C61F34F1110053C050 /* Crashlytics.framework in Frameworks */,
+				582118C71F34F1110053C050 /* Fabric.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		58D9C3ED1F3335BB002BE2E8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5879DE381F34EE7800E505E1 /* Crashlytics.framework in Frameworks */,
 				58552F9A1F335259008C1886 /* SeptaSchedule.framework in Frameworks */,
+				58A8E1431F34FB4400B0E612 /* Crashlytics.framework in Frameworks */,
+				5879DE391F34EE7800E505E1 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,10 +425,15 @@
 		58D9C3E71F3335BB002BE2E8 = {
 			isa = PBXGroup;
 			children = (
+				580041F71F34FA1600691FDC /* Crashlytics.framework */,
+				582118C81F34F48F0053C050 /* SeptaSchedule.framework */,
+				5879DE361F34EE7800E505E1 /* Crashlytics.framework */,
+				5879DE371F34EE7800E505E1 /* Fabric.framework */,
 				58D9C3F21F3335BB002BE2E8 /* iSEPTA */,
 				58D9C40A1F3335BB002BE2E8 /* iSEPTATests */,
 				58D9C3F11F3335BB002BE2E8 /* Products */,
 				58D9C4161F33362C002BE2E8 /* Frameworks */,
+				5834359D1F34E82E0021EC6D /* iSEPTA-Release-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -357,6 +442,7 @@
 			children = (
 				58D9C3F01F3335BB002BE2E8 /* Septa.app */,
 				58D9C4071F3335BB002BE2E8 /* iSEPTATests.xctest */,
+				5834359C1F34E82E0021EC6D /* iSEPTA-Release.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -364,7 +450,10 @@
 		58D9C3F21F3335BB002BE2E8 /* iSEPTA */ = {
 			isa = PBXGroup;
 			children = (
+				58A8E1421F34FB4400B0E612 /* Crashlytics.framework */,
+				580041F51F34F9FA00691FDC /* Crashlytics.framework */,
 				582F4F241F33B2400062A546 /* Septa-Bridging-Header.h */,
+				580041F61F34FA0500691FDC /* Crashlytics.framework */,
 				582F4E7E1F33B1120062A546 /* AppDelegate.swift */,
 				582F4EAE1F33B1120062A546 /* Assets */,
 				582F4EB71F33B1120062A546 /* Base.lproj */,
@@ -391,10 +480,12 @@
 		58D9C4161F33362C002BE2E8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5834359F1F34E9420021EC6D /* Crashlytics.framework */,
+				582118C41F34EEA30053C050 /* Crashlytics.framework */,
+				583435A01F34E9420021EC6D /* Fabric.framework */,
+				582118C51F34EEA30053C050 /* Fabric.framework */,
 				58552F991F335259008C1886 /* SeptaSchedule.framework */,
 				583E71CE1F33449D005AF3C7 /* Regex.framework */,
-				58E2FF121F3338100009FC54 /* SeptaSchedule.framework */,
-				588363AE1F333994009B75BE /* SeptaSchedule.framework */,
 				58D9C4171F33362C002BE2E8 /* SceneKit.framework */,
 			);
 			name = Frameworks;
@@ -403,6 +494,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		583435681F34E82E0021EC6D /* iSEPTA-Release */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 583435991F34E82E0021EC6D /* Build configuration list for PBXNativeTarget "iSEPTA-Release" */;
+			buildPhases = (
+				583435691F34E82E0021EC6D /* Sources */,
+				583435851F34E82E0021EC6D /* Frameworks */,
+				583435871F34E82E0021EC6D /* Resources */,
+				583435961F34E82E0021EC6D /* Copy Frameworks */,
+				583435971F34E82E0021EC6D /* CopyFiles */,
+				5834359E1F34E84A0021EC6D /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iSEPTA-Release";
+			productName = iSEPTA;
+			productReference = 5834359C1F34E82E0021EC6D /* iSEPTA-Release.app */;
+			productType = "com.apple.product-type.application";
+		};
 		58D9C3EF1F3335BB002BE2E8 /* iSEPTA */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58D9C4101F3335BB002BE2E8 /* Build configuration list for PBXNativeTarget "iSEPTA" */;
@@ -450,10 +561,12 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Mark Broski";
 				TargetAttributes = {
+					583435681F34E82E0021EC6D = {
+						ProvisioningStyle = Manual;
+					};
 					58D9C3EF1F3335BB002BE2E8 = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Manual;
 					};
 					58D9C4061F3335BB002BE2E8 = {
 						CreatedOnToolsVersion = 9.0;
@@ -476,11 +589,33 @@
 			targets = (
 				58D9C3EF1F3335BB002BE2E8 /* iSEPTA */,
 				58D9C4061F3335BB002BE2E8 /* iSEPTATests */,
+				583435681F34E82E0021EC6D /* iSEPTA-Release */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		583435871F34E82E0021EC6D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				583435881F34E82E0021EC6D /* fares.storyboard in Resources */,
+				583435891F34E82E0021EC6D /* about.storyboard in Resources */,
+				5834358A1F34E82E0021EC6D /* SelectStopsFooterView.xib in Resources */,
+				5834358B1F34E82E0021EC6D /* RouteScheduleHeaderView.xib in Resources */,
+				5834358C1F34E82E0021EC6D /* schedules.storyboard in Resources */,
+				5834358D1F34E82E0021EC6D /* alerts.storyboard in Resources */,
+				5834358E1F34E82E0021EC6D /* nextToArrive.storyboard in Resources */,
+				5834358F1F34E82E0021EC6D /* Main.storyboard in Resources */,
+				583435901F34E82E0021EC6D /* favorites.storyboard in Resources */,
+				583435911F34E82E0021EC6D /* Localizeable.strings in Resources */,
+				583435921F34E82E0021EC6D /* contact.storyboard in Resources */,
+				583435931F34E82E0021EC6D /* LaunchScreen.storyboard in Resources */,
+				583435941F34E82E0021EC6D /* Assets.xcassets in Resources */,
+				583435951F34E82E0021EC6D /* settings.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		58D9C3EE1F3335BB002BE2E8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -512,6 +647,39 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		583435961F34E82E0021EC6D /* Copy Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../Frameworks/Regex.framework",
+				"$(SRCROOT)/../Frameworks/Zip.framework",
+				"$(SRCROOT)/../Frameworks/SQLite.framework",
+			);
+			name = "Copy Frameworks";
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Regex.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Zip.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SQLite.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "carthage copy-frameworks";
+		};
+		5834359E1F34E84A0021EC6D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PROJECT_DIR}/Fabric.framework/run\" 573b4f7ab920a4fcd9f2da4d08fae80cefad40fe ee0c297d8103d2326ae8b9b2ebfe34df4f517b2d85ad6183b2fef9aad7cc7119";
+		};
 		585F585A1F3377EF00D3ED6C /* Copy Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -535,6 +703,40 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		583435691F34E82E0021EC6D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5834356A1F34E82E0021EC6D /* Asset.swift in Sources */,
+				5834356B1F34E82E0021EC6D /* SelectStopsViewController.swift in Sources */,
+				5834356C1F34E82E0021EC6D /* ViewModelDelegate.swift in Sources */,
+				5834356D1F34E82E0021EC6D /* SelectStopRow.swift in Sources */,
+				5834356E1F34E82E0021EC6D /* DateFormatters.swift in Sources */,
+				5834356F1F34E82E0021EC6D /* RouteTableViewCell.swift in Sources */,
+				583435701F34E82E0021EC6D /* SelectedStopType.swift in Sources */,
+				583435711F34E82E0021EC6D /* ScheduleTableViewCell.swift in Sources */,
+				583435721F34E82E0021EC6D /* RouteStops.swift in Sources */,
+				583435731F34E82E0021EC6D /* SelectStopsViewModel.swift in Sources */,
+				583435741F34E82E0021EC6D /* AppDelegate.swift in Sources */,
+				583435751F34E82E0021EC6D /* SelectStopCellType.swift in Sources */,
+				583435761F34E82E0021EC6D /* SingleStringCell.swift in Sources */,
+				583435771F34E82E0021EC6D /* Alert.swift in Sources */,
+				583435781F34E82E0021EC6D /* NextToArriveViewController.swift in Sources */,
+				583435791F34E82E0021EC6D /* MainViewController.swift in Sources */,
+				5834357A1F34E82E0021EC6D /* ViewController.swift in Sources */,
+				5834357B1F34E82E0021EC6D /* TransitModesViewController.swift in Sources */,
+				5834357C1F34E82E0021EC6D /* SelectStopViewModel.swift in Sources */,
+				5834357D1F34E82E0021EC6D /* RoutesViewModel.swift in Sources */,
+				5834357E1F34E82E0021EC6D /* RouteSheduleViewModel.swift in Sources */,
+				5834357F1F34E82E0021EC6D /* SelectStopViewController.swift in Sources */,
+				583435801F34E82E0021EC6D /* SelectStopsViewElement.swift in Sources */,
+				583435811F34E82E0021EC6D /* Storyboards.swift in Sources */,
+				583435821F34E82E0021EC6D /* RoutesViewController.swift in Sources */,
+				583435831F34E82E0021EC6D /* RouteScheduleViewController.swift in Sources */,
+				583435841F34E82E0021EC6D /* TransitMode.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		58D9C3EC1F3335BB002BE2E8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -615,6 +817,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5834359A1F34E82E0021EC6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				DEVELOPMENT_TEAM = L636S9JLLY;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "iSEPTA-Release-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5834359B1F34E82E0021EC6D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = L636S9JLLY;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = $SRCROOT/../Frameworks;
+				INFOPLIST_FILE = "iSEPTA-Release-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = SeptaVersion2;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		58D9C40E1F3335BB002BE2E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -729,6 +973,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				DEVELOPMENT_TEAM = L636S9JLLY;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/iSEPTA",
+				);
 				INFOPLIST_FILE = iSEPTA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -749,6 +999,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = L636S9JLLY;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/iSEPTA",
+				);
 				INFOPLIST_FILE = iSEPTA/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -795,6 +1051,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		583435991F34E82E0021EC6D /* Build configuration list for PBXNativeTarget "iSEPTA-Release" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5834359A1F34E82E0021EC6D /* Debug */,
+				5834359B1F34E82E0021EC6D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		58D9C3EB1F3335BB002BE2E8 /* Build configuration list for PBXProject "iSEPTA" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

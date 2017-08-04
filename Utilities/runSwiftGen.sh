@@ -9,5 +9,8 @@
 swiftgen images -t swift3 "iSEPTA/iSEPTA/Assets/Assets.xcassets" > iSEPTA/iSEPTA/Assets/Asset.swift
 
 swiftgen storyboards -t swift3 "iSEPTA/iSEPTA" > iSEPTA/iSEPTA/Main/Storyboards.swift
-perl -pi -e 's/import Septa//g' iSEPTA/iSEPTA/Main/Storyboards.swift
+perl -pi -e 's/^import Septa//g' iSEPTA/iSEPTA/Main/Storyboards.swift
 perl -pi -e 's|^//.*\n||g' iSEPTA/iSEPTA/Main/Storyboards.swift
+perl -pi -e 's|Septa\.||g' iSEPTA/iSEPTA/Main/Storyboards.swift
+
+
