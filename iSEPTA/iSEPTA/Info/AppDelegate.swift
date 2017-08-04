@@ -9,8 +9,12 @@
 import UIKit
 
 import SeptaSchedule
-import Fabric
-import Crashlytics
+#if RELEASE
+    import Fabric
+    import Crashlytics
+
+#endif
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,7 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let databaseFileManager = DatabaseFileManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-      Fabric.with([Crashlytics.self])
+
+#if RELEASE
+     Fabric.with([Crashlytics.self])
+
+#endif
+
         movePreloadedDatabaseIfNeeded()
         return true
     }
