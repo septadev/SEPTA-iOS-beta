@@ -4,4 +4,7 @@ orig="$basedir/iSEPTA/iSEPTA"
 cd $orig
 dest="../iSEPTATests"
 
-find .  \(   -name '*.swift' \)  -type f
+find . \(   -name '*.swift' \)  -type f \
+      | xargs -I file \
+      | perl -pe 's/\.swift/Tests.swift/g' \
+      | xargs touch "$dest/{}"
