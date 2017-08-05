@@ -90,10 +90,36 @@
 		583435941F34E82E0021EC6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EAF1F33B1120062A546 /* Assets.xcassets */; };
 		583435951F34E82E0021EC6D /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EAC1F33B1120062A546 /* settings.storyboard */; };
 		5867462B1F350BF6000F0D32 /* SeptaSchedule.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5867462A1F350BF6000F0D32 /* SeptaSchedule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5867465D1F35D483000F0D32 /* SingleStringCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867462F1F35D483000F0D32 /* SingleStringCellTests.swift */; };
+		5867465E1F35D483000F0D32 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746311F35D483000F0D32 /* ViewControllerTests.swift */; };
+		5867465F1F35D483000F0D32 /* AlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746351F35D483000F0D32 /* AlertTests.swift */; };
+		586746601F35D483000F0D32 /* NextToArriveViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867463A1F35D483000F0D32 /* NextToArriveViewControllerTests.swift */; };
+		586746611F35D483000F0D32 /* RoutesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867463D1F35D483000F0D32 /* RoutesViewControllerTests.swift */; };
+		586746621F35D483000F0D32 /* RoutesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867463E1F35D483000F0D32 /* RoutesViewModelTests.swift */; };
+		586746631F35D483000F0D32 /* RouteTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867463F1F35D483000F0D32 /* RouteTableViewCellTests.swift */; };
+		586746641F35D483000F0D32 /* RouteScheduleViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746411F35D483000F0D32 /* RouteScheduleViewControllerTests.swift */; };
+		586746651F35D483000F0D32 /* RouteSheduleViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746421F35D483000F0D32 /* RouteSheduleViewModelTests.swift */; };
+		586746661F35D484000F0D32 /* ScheduleTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746431F35D483000F0D32 /* ScheduleTableViewCellTests.swift */; };
+		586746671F35D484000F0D32 /* SelectStopViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746451F35D483000F0D32 /* SelectStopViewControllerTests.swift */; };
+		586746681F35D484000F0D32 /* SelectStopViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746461F35D483000F0D32 /* SelectStopViewModelTests.swift */; };
+		586746691F35D484000F0D32 /* RouteStopsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746481F35D483000F0D32 /* RouteStopsTests.swift */; };
+		5867466A1F35D484000F0D32 /* SelectedStopTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746491F35D483000F0D32 /* SelectedStopTypeTests.swift */; };
+		5867466B1F35D484000F0D32 /* SelectStopCellTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867464A1F35D483000F0D32 /* SelectStopCellTypeTests.swift */; };
+		5867466C1F35D484000F0D32 /* SelectStopRowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867464B1F35D483000F0D32 /* SelectStopRowTests.swift */; };
+		5867466D1F35D484000F0D32 /* SelectStopsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867464C1F35D483000F0D32 /* SelectStopsViewControllerTests.swift */; };
+		5867466E1F35D484000F0D32 /* SelectStopsViewElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867464D1F35D483000F0D32 /* SelectStopsViewElementTests.swift */; };
+		5867466F1F35D484000F0D32 /* SelectStopsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867464E1F35D483000F0D32 /* SelectStopsViewModelTests.swift */; };
+		586746701F35D484000F0D32 /* TransitModesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867464F1F35D483000F0D32 /* TransitModesViewControllerTests.swift */; };
+		586746711F35D484000F0D32 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746521F35D483000F0D32 /* MainViewControllerTests.swift */; };
+		586746721F35D484000F0D32 /* StoryboardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746531F35D483000F0D32 /* StoryboardsTests.swift */; };
+		586746731F35D484000F0D32 /* AppDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746551F35D483000F0D32 /* AppDelegateTests.swift */; };
+		586746741F35D484000F0D32 /* TransitModeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746571F35D483000F0D32 /* TransitModeTests.swift */; };
+		586746751F35D484000F0D32 /* ViewModelDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746581F35D483000F0D32 /* ViewModelDelegateTests.swift */; };
+		586746761F35D484000F0D32 /* DateFormattersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867465A1F35D483000F0D32 /* DateFormattersTests.swift */; };
+		586746771F35D484000F0D32 /* AssetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867465C1F35D483000F0D32 /* AssetTests.swift */; };
 		58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C181FE1F34C557002748E9 /* Storyboards.swift */; };
 		58C182011F34C560002748E9 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C182001F34C560002748E9 /* Asset.swift */; };
 		58C182041F34C5B6002748E9 /* Localizeable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58C182061F34C5B6002748E9 /* Localizeable.strings */; };
-		58D9C40C1F3335BB002BE2E8 /* iSEPTATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D9C40B1F3335BB002BE2E8 /* iSEPTATests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,12 +202,39 @@
 		583435A01F34E9420021EC6D /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = ../Frameworks/Fabric.framework; sourceTree = "<group>"; };
 		583E71CE1F33449D005AF3C7 /* Regex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Regex.framework; path = ../Frameworks/Regex.framework; sourceTree = "<group>"; };
 		5867462A1F350BF6000F0D32 /* SeptaSchedule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaSchedule.framework; path = "../Build/Products/Release-iphoneos/SeptaSchedule.framework"; sourceTree = "<group>"; };
+		5867462C1F35D483000F0D32 /* iSEPTATests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSEPTATests-Bridging-Header.h"; sourceTree = "<group>"; };
+		5867462F1F35D483000F0D32 /* SingleStringCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleStringCellTests.swift; sourceTree = "<group>"; };
+		586746311F35D483000F0D32 /* ViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
+		586746351F35D483000F0D32 /* AlertTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTests.swift; sourceTree = "<group>"; };
+		5867463A1F35D483000F0D32 /* NextToArriveViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextToArriveViewControllerTests.swift; sourceTree = "<group>"; };
+		5867463D1F35D483000F0D32 /* RoutesViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesViewControllerTests.swift; sourceTree = "<group>"; };
+		5867463E1F35D483000F0D32 /* RoutesViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesViewModelTests.swift; sourceTree = "<group>"; };
+		5867463F1F35D483000F0D32 /* RouteTableViewCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTableViewCellTests.swift; sourceTree = "<group>"; };
+		586746411F35D483000F0D32 /* RouteScheduleViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteScheduleViewControllerTests.swift; sourceTree = "<group>"; };
+		586746421F35D483000F0D32 /* RouteSheduleViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSheduleViewModelTests.swift; sourceTree = "<group>"; };
+		586746431F35D483000F0D32 /* ScheduleTableViewCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCellTests.swift; sourceTree = "<group>"; };
+		586746451F35D483000F0D32 /* SelectStopViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopViewControllerTests.swift; sourceTree = "<group>"; };
+		586746461F35D483000F0D32 /* SelectStopViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopViewModelTests.swift; sourceTree = "<group>"; };
+		586746481F35D483000F0D32 /* RouteStopsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteStopsTests.swift; sourceTree = "<group>"; };
+		586746491F35D483000F0D32 /* SelectedStopTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedStopTypeTests.swift; sourceTree = "<group>"; };
+		5867464A1F35D483000F0D32 /* SelectStopCellTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopCellTypeTests.swift; sourceTree = "<group>"; };
+		5867464B1F35D483000F0D32 /* SelectStopRowTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopRowTests.swift; sourceTree = "<group>"; };
+		5867464C1F35D483000F0D32 /* SelectStopsViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopsViewControllerTests.swift; sourceTree = "<group>"; };
+		5867464D1F35D483000F0D32 /* SelectStopsViewElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopsViewElementTests.swift; sourceTree = "<group>"; };
+		5867464E1F35D483000F0D32 /* SelectStopsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopsViewModelTests.swift; sourceTree = "<group>"; };
+		5867464F1F35D483000F0D32 /* TransitModesViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitModesViewControllerTests.swift; sourceTree = "<group>"; };
+		586746521F35D483000F0D32 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
+		586746531F35D483000F0D32 /* StoryboardsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardsTests.swift; sourceTree = "<group>"; };
+		586746551F35D483000F0D32 /* AppDelegateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateTests.swift; sourceTree = "<group>"; };
+		586746571F35D483000F0D32 /* TransitModeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitModeTests.swift; sourceTree = "<group>"; };
+		586746581F35D483000F0D32 /* ViewModelDelegateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelDelegateTests.swift; sourceTree = "<group>"; };
+		5867465A1F35D483000F0D32 /* DateFormattersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormattersTests.swift; sourceTree = "<group>"; };
+		5867465C1F35D483000F0D32 /* AssetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetTests.swift; sourceTree = "<group>"; };
 		58C181FE1F34C557002748E9 /* Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		58C182001F34C560002748E9 /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		58C182051F34C5B6002748E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizeable.strings; sourceTree = "<group>"; };
 		58D9C3F01F3335BB002BE2E8 /* Septa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Septa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D9C4071F3335BB002BE2E8 /* iSEPTATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iSEPTATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		58D9C40B1F3335BB002BE2E8 /* iSEPTATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iSEPTATests.swift; sourceTree = "<group>"; };
 		58D9C40D1F3335BB002BE2E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -416,6 +469,193 @@
 			path = Base.lproj;
 			sourceTree = "<group>";
 		};
+		5867462D1F35D483000F0D32 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5867462E1F35D483000F0D32 /* Cells */,
+				586746301F35D483000F0D32 /* Toolbars */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5867462E1F35D483000F0D32 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5867462F1F35D483000F0D32 /* SingleStringCellTests.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		586746301F35D483000F0D32 /* Toolbars */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Toolbars;
+			sourceTree = "<group>";
+		};
+		586746321F35D483000F0D32 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				586746331F35D483000F0D32 /* About */,
+				586746341F35D483000F0D32 /* Alerts */,
+				586746361F35D483000F0D32 /* Contact */,
+				586746371F35D483000F0D32 /* FaresAndTransitInfo */,
+				586746381F35D483000F0D32 /* Favorites */,
+				586746391F35D483000F0D32 /* NextToArrive */,
+				5867463B1F35D483000F0D32 /* Schedules */,
+				586746501F35D483000F0D32 /* Settings */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		586746331F35D483000F0D32 /* About */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		586746341F35D483000F0D32 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				586746351F35D483000F0D32 /* AlertTests.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		586746361F35D483000F0D32 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
+		586746371F35D483000F0D32 /* FaresAndTransitInfo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FaresAndTransitInfo;
+			sourceTree = "<group>";
+		};
+		586746381F35D483000F0D32 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		586746391F35D483000F0D32 /* NextToArrive */ = {
+			isa = PBXGroup;
+			children = (
+				5867463A1F35D483000F0D32 /* NextToArriveViewControllerTests.swift */,
+			);
+			path = NextToArrive;
+			sourceTree = "<group>";
+		};
+		5867463B1F35D483000F0D32 /* Schedules */ = {
+			isa = PBXGroup;
+			children = (
+				5867463C1F35D483000F0D32 /* Routes */,
+				586746401F35D483000F0D32 /* RouteSchedule */,
+				586746441F35D483000F0D32 /* SelectStop */,
+				586746471F35D483000F0D32 /* SelectStops */,
+				5867464F1F35D483000F0D32 /* TransitModesViewControllerTests.swift */,
+			);
+			path = Schedules;
+			sourceTree = "<group>";
+		};
+		5867463C1F35D483000F0D32 /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				5867463D1F35D483000F0D32 /* RoutesViewControllerTests.swift */,
+				5867463E1F35D483000F0D32 /* RoutesViewModelTests.swift */,
+				5867463F1F35D483000F0D32 /* RouteTableViewCellTests.swift */,
+			);
+			path = Routes;
+			sourceTree = "<group>";
+		};
+		586746401F35D483000F0D32 /* RouteSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				586746411F35D483000F0D32 /* RouteScheduleViewControllerTests.swift */,
+				586746421F35D483000F0D32 /* RouteSheduleViewModelTests.swift */,
+				586746431F35D483000F0D32 /* ScheduleTableViewCellTests.swift */,
+			);
+			path = RouteSchedule;
+			sourceTree = "<group>";
+		};
+		586746441F35D483000F0D32 /* SelectStop */ = {
+			isa = PBXGroup;
+			children = (
+				586746451F35D483000F0D32 /* SelectStopViewControllerTests.swift */,
+				586746461F35D483000F0D32 /* SelectStopViewModelTests.swift */,
+			);
+			path = SelectStop;
+			sourceTree = "<group>";
+		};
+		586746471F35D483000F0D32 /* SelectStops */ = {
+			isa = PBXGroup;
+			children = (
+				586746481F35D483000F0D32 /* RouteStopsTests.swift */,
+				586746491F35D483000F0D32 /* SelectedStopTypeTests.swift */,
+				5867464A1F35D483000F0D32 /* SelectStopCellTypeTests.swift */,
+				5867464B1F35D483000F0D32 /* SelectStopRowTests.swift */,
+				5867464C1F35D483000F0D32 /* SelectStopsViewControllerTests.swift */,
+				5867464D1F35D483000F0D32 /* SelectStopsViewElementTests.swift */,
+				5867464E1F35D483000F0D32 /* SelectStopsViewModelTests.swift */,
+			);
+			path = SelectStops;
+			sourceTree = "<group>";
+		};
+		586746501F35D483000F0D32 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		586746511F35D483000F0D32 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				586746521F35D483000F0D32 /* MainViewControllerTests.swift */,
+				586746531F35D483000F0D32 /* StoryboardsTests.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		586746541F35D483000F0D32 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				586746551F35D483000F0D32 /* AppDelegateTests.swift */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
+		586746561F35D483000F0D32 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				586746571F35D483000F0D32 /* TransitModeTests.swift */,
+				586746581F35D483000F0D32 /* ViewModelDelegateTests.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		586746591F35D483000F0D32 /* Utlities */ = {
+			isa = PBXGroup;
+			children = (
+				5867465A1F35D483000F0D32 /* DateFormattersTests.swift */,
+			);
+			path = Utlities;
+			sourceTree = "<group>";
+		};
+		5867465B1F35D483000F0D32 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				5867465C1F35D483000F0D32 /* AssetTests.swift */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		58D9C3E71F3335BB002BE2E8 = {
 			isa = PBXGroup;
 			children = (
@@ -456,8 +696,16 @@
 		58D9C40A1F3335BB002BE2E8 /* iSEPTATests */ = {
 			isa = PBXGroup;
 			children = (
-				58D9C40B1F3335BB002BE2E8 /* iSEPTATests.swift */,
+				5867465B1F35D483000F0D32 /* Assets */,
+				586746321F35D483000F0D32 /* Features */,
+				586746541F35D483000F0D32 /* Info */,
+				586746511F35D483000F0D32 /* Main */,
+				586746591F35D483000F0D32 /* Utlities */,
+				586746561F35D483000F0D32 /* View Models */,
+				586746311F35D483000F0D32 /* ViewControllerTests.swift */,
+				5867462D1F35D483000F0D32 /* Views */,
 				58D9C40D1F3335BB002BE2E8 /* Info.plist */,
+				5867462C1F35D483000F0D32 /* iSEPTATests-Bridging-Header.h */,
 			);
 			path = iSEPTATests;
 			sourceTree = "<group>";
@@ -553,6 +801,7 @@
 					};
 					58D9C4061F3335BB002BE2E8 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						TestTargetID = 58D9C3EF1F3335BB002BE2E8;
 					};
 				};
@@ -758,7 +1007,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58D9C40C1F3335BB002BE2E8 /* iSEPTATests.swift in Sources */,
+				5867466A1F35D484000F0D32 /* SelectedStopTypeTests.swift in Sources */,
+				586746661F35D484000F0D32 /* ScheduleTableViewCellTests.swift in Sources */,
+				5867466D1F35D484000F0D32 /* SelectStopsViewControllerTests.swift in Sources */,
+				586746621F35D483000F0D32 /* RoutesViewModelTests.swift in Sources */,
+				586746631F35D483000F0D32 /* RouteTableViewCellTests.swift in Sources */,
+				5867466C1F35D484000F0D32 /* SelectStopRowTests.swift in Sources */,
+				586746721F35D484000F0D32 /* StoryboardsTests.swift in Sources */,
+				5867465F1F35D483000F0D32 /* AlertTests.swift in Sources */,
+				586746701F35D484000F0D32 /* TransitModesViewControllerTests.swift in Sources */,
+				586746601F35D483000F0D32 /* NextToArriveViewControllerTests.swift in Sources */,
+				5867465E1F35D483000F0D32 /* ViewControllerTests.swift in Sources */,
+				586746681F35D484000F0D32 /* SelectStopViewModelTests.swift in Sources */,
+				586746651F35D483000F0D32 /* RouteSheduleViewModelTests.swift in Sources */,
+				5867465D1F35D483000F0D32 /* SingleStringCellTests.swift in Sources */,
+				586746761F35D484000F0D32 /* DateFormattersTests.swift in Sources */,
+				586746751F35D484000F0D32 /* ViewModelDelegateTests.swift in Sources */,
+				586746741F35D484000F0D32 /* TransitModeTests.swift in Sources */,
+				5867466B1F35D484000F0D32 /* SelectStopCellTypeTests.swift in Sources */,
+				586746691F35D484000F0D32 /* RouteStopsTests.swift in Sources */,
+				5867466F1F35D484000F0D32 /* SelectStopsViewModelTests.swift in Sources */,
+				586746671F35D484000F0D32 /* SelectStopViewControllerTests.swift in Sources */,
+				586746611F35D483000F0D32 /* RoutesViewControllerTests.swift in Sources */,
+				586746641F35D483000F0D32 /* RouteScheduleViewControllerTests.swift in Sources */,
+				5867466E1F35D484000F0D32 /* SelectStopsViewElementTests.swift in Sources */,
+				586746771F35D484000F0D32 /* AssetTests.swift in Sources */,
+				586746711F35D484000F0D32 /* MainViewControllerTests.swift in Sources */,
+				586746731F35D484000F0D32 /* AppDelegateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1005,14 +1280,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				INFOPLIST_FILE = iSEPTATests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTATests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "iSEPTATests/iSEPTATests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iSEPTA.app/iSEPTA";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Septa.app/Septa";
 			};
 			name = Debug;
 		};
@@ -1021,14 +1299,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				INFOPLIST_FILE = iSEPTATests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTATests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "iSEPTATests/iSEPTATests-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iSEPTA.app/iSEPTA";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Septa.app/Septa";
 			};
 			name = Release;
 		};

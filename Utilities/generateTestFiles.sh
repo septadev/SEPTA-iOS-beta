@@ -1,5 +1,5 @@
 basedir="$(dirname "$0")/.."
-
+# Generate a test file for each swift file in the project
 orig="$basedir/iSEPTA/iSEPTA"
 cd $orig
 dest="../iSEPTATests"

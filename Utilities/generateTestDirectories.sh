@@ -1,3 +1,5 @@
+
+# Generate a test directory for each directory in the project
 basedir="$(dirname "$0")/.."
 
 orig="$basedir/iSEPTA/iSEPTA"
