@@ -1,0 +1,5 @@
+binary "https://raw.githubusercontent.com/Building42/Specs/master/Carthage/Crashlytics.json" "3.8.5"
+binary "https://raw.githubusercontent.com/Building42/Specs/master/Carthage/Fabric.json" "1.6.12"
+github "ReSwift/ReSwift" "4.0.0"
+github "marmelroy/Zip" "0.7.0"
+github "stephencelis/SQLite.swift" "0.11.3"
