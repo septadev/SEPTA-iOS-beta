@@ -1,3 +1,3 @@
-// SEPTA.org, created on 8/1/17.
+// Septa. 2017
 
 import Foundation

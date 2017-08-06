@@ -1,4 +1,3 @@
-// Septa. 2017
 
 import Foundation
 import UIKit

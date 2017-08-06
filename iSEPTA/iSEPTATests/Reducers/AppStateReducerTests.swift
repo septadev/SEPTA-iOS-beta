@@ -8,7 +8,7 @@ class AppStateReducerTests: XCTestCase {
 
     /// Can I make a state and does it get created
     func testTestMainReducer() {
-        mainStore.dispatch(AppStartUp())
+        mainStore.dispatch(ToggleFeature())
         XCTAssertNotNil(mainStore.state)
     }
 

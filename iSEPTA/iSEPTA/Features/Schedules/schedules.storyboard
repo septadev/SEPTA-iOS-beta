@@ -600,7 +600,7 @@ StartingLabelRight</string>
         <!--Nav Controller Scene-->
         <scene sceneID="83K-FD-2cf">
             <objects>
-                <navigationController title="Nav Controller Scene" id="Flo-rT-aez" sceneMemberID="viewController">
+                <navigationController title="Nav Controller Scene" id="Flo-rT-aez" customClass="SchedulesNavigationController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Schedules" id="PYF-su-Tfx"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oLi-QD-Eie">

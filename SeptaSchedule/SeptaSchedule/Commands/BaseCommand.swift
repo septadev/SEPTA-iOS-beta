@@ -1,4 +1,4 @@
-// SEPTA.org, created on 7/31/17.
+// Septa. 2017
 
 import Foundation
 import SQLite

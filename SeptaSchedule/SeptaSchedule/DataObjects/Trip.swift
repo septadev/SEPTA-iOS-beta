@@ -1,9 +1,9 @@
-// SEPTA.org, created on 8/1/17.
+// Septa. 2017
 
 import Foundation
 // Encapsulates a trip
 public struct Trip {
-    
+
     let departureInt: Int
     let arrivalInt: Int
 
@@ -26,14 +26,29 @@ public struct Trip {
     public var tripDuration: DateComponents {
         return Calendar.current.dateComponents([.hour, .minute], from: departureComponents, to: arrivalComponents)
     }
+
+    public init(departureInt: Int, arrivalInt: Int) {
+        self.departureInt = departureInt
+        self.arrivalInt = arrivalInt
+    }
 }
 
-extension Trip: Equatable {
-    public static func == (lhs: Trip, rhs: Trip) -> Bool {
-        return
-            lhs.departureInt == rhs.departureInt &&
-            lhs.arrivalInt == rhs.arrivalInt
+extension Trip: Equatable {}
+public func ==(lhs: Trip, rhs: Trip) -> Bool {
+    var areEqual = true
+
+    if lhs.departureInt == rhs.departureInt {
+        areEqual = true
+    } else {
+        return false
     }
+
+    if lhs.arrivalInt == rhs.arrivalInt {
+        areEqual = true
+    } else {
+        return false
+    }
+    return areEqual
 }
 
 private extension Int {

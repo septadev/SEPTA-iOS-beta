@@ -1,4 +1,4 @@
-// SEPTA.org, created on 7/31/17.
+// Septa. 2017
 
 import Foundation
 @testable import SeptaSchedule
@@ -20,4 +20,3 @@ class Main: NSObject {
         try! fileManager.copyItem(at: sourceURL, to: destinationPath)
     }
 }
-

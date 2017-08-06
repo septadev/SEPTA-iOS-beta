@@ -1,4 +1,4 @@
-// Septa. 2017
+// Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
 #if os(iOS) || os(tvOS) || os(watchOS)
     import UIKit.UIImage
@@ -16,7 +16,7 @@ enum Asset: String {
     case f2 = "F2"
     case fare = "Fare"
     case favorite = "Favorite"
-    case nextToArrive = "NextToArrive"
+    case nextToArriveImage = "NextToArriveImage"
     case systemStatusAlert = "system_status_alert"
 
     var image: Image {

@@ -1,4 +1,4 @@
-
+// Septa. 2017
 
 import XCTest
 import Zip
@@ -42,7 +42,7 @@ class DatabaseFileManagerTests: XCTestCase {
     /// Verify that the preloaded database can be unzipped to the documents directory
     func testVerifyUnzipToDocumentsDirectory() {
         deleteDatabaseIfItExists()
-        let _ = try! databaseFileManager.unzipFileToDocumentsDirectoryIfNecessary()
+        _ = try! databaseFileManager.unzipFileToDocumentsDirectoryIfNecessary()
         let fileExists = fileManager.fileExists(atPath: databaseURL.path)
         XCTAssertTrue(fileExists)
     }

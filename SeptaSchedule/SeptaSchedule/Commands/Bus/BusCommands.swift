@@ -1,4 +1,4 @@
-// SEPTA.org, created on 7/31/17.
+// Septa. 2017
 
 import Foundation
 import SQLite
@@ -73,7 +73,7 @@ public class BusCommands: BaseCommand {
             for row in statement {
 
                 if
-                    
+
                     let col1 = row[1], let departure = col1 as? Int64,
                     let col2 = row[2], let arrival = col2 as? Int64 {
                     let trip = Trip(departureInt: Int(departure), arrivalInt: Int(arrival))

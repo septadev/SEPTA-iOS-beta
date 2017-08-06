@@ -8,7 +8,7 @@ import SeptaSchedule
     import Crashlytics
 #endif
 
-let mainStore = Store<AppState>(
+let store = Store<AppState>(
     reducer: AppStateReducer.mainReducer,
     state: nil,
     middleware: []
@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
 
         movePreloadedDatabaseIfNeeded()
+        store.dispatch(SwitchFeature(selectedFeature: .schedules))
         return true
     }
 

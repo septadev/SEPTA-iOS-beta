@@ -6,14 +6,7 @@ import ReSwift
 class AppStateReducer {
 
     class func mainReducer(action: Action, state: AppState?) -> AppState {
-        var state = state ?? AppState()
-
-        switch action {
-
-            default: break
-
-
-        }
-        return state
+        return AppState(navigationState: NavigationReducers.main(action: action, state: state?.navigationState)
+        )
     }
 }

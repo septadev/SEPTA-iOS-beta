@@ -5,12 +5,13 @@
 # will generate helpful classes for working with storyboards and assets
 
 
+PROJ="/Users/mbroski/Code/Septa/Septa2/iSEPTA/iSEPTA"
+/usr/local/bin/swiftgen images -t swift3 "$PROJ/Assets/Assets.xcassets" > "$PROJ/Assets/Asset.swift"
 
-swiftgen images -t swift3 "iSEPTA/iSEPTA/Assets/Assets.xcassets" > iSEPTA/iSEPTA/Assets/Asset.swift
-
-swiftgen storyboards -t swift3 "iSEPTA/iSEPTA" > iSEPTA/iSEPTA/Main/Storyboards.swift
-perl -pi -e 's/^import Septa//g' iSEPTA/iSEPTA/Main/Storyboards.swift
-perl -pi -e 's|^//.*\n||g' iSEPTA/iSEPTA/Main/Storyboards.swift
-perl -pi -e 's|Septa\.||g' iSEPTA/iSEPTA/Main/Storyboards.swift
+SB="$PROJ/Main/Storyboards.swift"
+/usr/local/bin/swiftgen storyboards -t swift3 "$PROJ" > "$SB"
+perl -pi -e 's/^import Septa//g' "$SB"
+perl -pi -e 's|^//.*\n||g' "$SB"
+perl -pi -e 's|Septa\.||g' "$SB"
 
 

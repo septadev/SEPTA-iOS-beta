@@ -3,4 +3,12 @@
 import Foundation
 import ReSwift
 
-struct AppStartUp: Action {}
+struct SwitchFeature: Action {
+
+    let selectedFeature: Feature
+}
+
+struct SwitchFeatureCompleted: Action {
+
+    let activeFeature: Feature
+}

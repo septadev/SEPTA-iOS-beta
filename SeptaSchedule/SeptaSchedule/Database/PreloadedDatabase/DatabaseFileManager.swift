@@ -1,4 +1,4 @@
-// SEPTA.org, created on 7/31/17.
+// Septa. 2017
 
 import Foundation
 import Zip
@@ -31,7 +31,7 @@ public class DatabaseFileManager {
         return fileManager.fileExists(atPath: url.path)
     }
 
-   public func unzipFileToDocumentsDirectoryIfNecessary() throws -> Bool {
+    public func unzipFileToDocumentsDirectoryIfNecessary() throws -> Bool {
         guard let preloadedURL = preloadedZippedDatabaseURL else { throw DatabaseFileManagerError.NoPreloadedDatabase }
         guard let documentsURL = documentDirectoryURL else { throw DatabaseFileManagerError.NoDocumentsDirectory }
         if !databaseFileExistsInDocumentsDirectory {
@@ -40,7 +40,6 @@ public class DatabaseFileManager {
         } else {
             return false
         }
-
     }
 
     public init() {}

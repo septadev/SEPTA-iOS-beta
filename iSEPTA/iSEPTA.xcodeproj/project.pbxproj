@@ -101,7 +101,13 @@
 		5840D6C51F374FDB00C8CB76 /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E431F372BB9000CCF3C /* AppStateReducer.swift */; };
 		5840D6C61F374FDF00C8CB76 /* ScheduleReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E461F372C82000CCF3C /* ScheduleReducers.swift */; };
 		5840D6C71F374FFC00C8CB76 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E401F372B51000CCF3C /* AppState.swift */; };
-		5867462B1F350BF6000F0D32 /* SeptaSchedule.framework in Copy Custom Frameworks */ = {isa = PBXBuildFile; fileRef = 5867462A1F350BF6000F0D32 /* SeptaSchedule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5840D6CF1F375F5D00C8CB76 /* AppStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6CC1F375F5D00C8CB76 /* AppStateTests.swift */; };
+		5840D6D01F375F5D00C8CB76 /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6CD1F375F5D00C8CB76 /* ScheduleTests.swift */; };
+		5840D6D31F376D9C00C8CB76 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D21F376D9C00C8CB76 /* MainNavigationController.swift */; };
+		5840D6D51F376E5E00C8CB76 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D41F376E5E00C8CB76 /* NavigationState.swift */; };
+		5840D6D71F37728B00C8CB76 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D61F37728B00C8CB76 /* Feature.swift */; };
+		5840D6DA1F377E5B00C8CB76 /* NavigationReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D91F377E5B00C8CB76 /* NavigationReducers.swift */; };
+		5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6DB1F37925A00C8CB76 /* SchedulesNavigationViewController.swift */; };
 		5867465D1F35D483000F0D32 /* SingleStringCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867462F1F35D483000F0D32 /* SingleStringCellTests.swift */; };
 		5867465E1F35D483000F0D32 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746311F35D483000F0D32 /* ViewControllerTests.swift */; };
 		5867465F1F35D483000F0D32 /* AlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746351F35D483000F0D32 /* AlertTests.swift */; };
@@ -151,7 +157,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5867462B1F350BF6000F0D32 /* SeptaSchedule.framework in Copy Custom Frameworks */,
 			);
 			name = "Copy Custom Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,7 +226,14 @@
 		5834359D1F34E82E0021EC6D /* iSEPTA-Release-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "iSEPTA-Release-Info.plist"; path = "/Users/mbroski/Code/Septa/Septa2/iSEPTA/iSEPTA/Info/iSEPTA-Release-Info.plist"; sourceTree = "<absolute>"; };
 		5834359F1F34E9420021EC6D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = ../Frameworks/Crashlytics.framework; sourceTree = "<group>"; };
 		583435A01F34E9420021EC6D /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = ../Frameworks/Fabric.framework; sourceTree = "<group>"; };
-		5867462A1F350BF6000F0D32 /* SeptaSchedule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaSchedule.framework; path = "../Build/Products/Release-iphoneos/SeptaSchedule.framework"; sourceTree = "<group>"; };
+		5840D6CC1F375F5D00C8CB76 /* AppStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStateTests.swift; sourceTree = "<group>"; };
+		5840D6CD1F375F5D00C8CB76 /* ScheduleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTests.swift; sourceTree = "<group>"; };
+		5840D6D11F376D0700C8CB76 /* SeptaSchedule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaSchedule.framework; path = "../Build/Products/Release-iphoneos/SeptaSchedule.framework"; sourceTree = "<group>"; };
+		5840D6D21F376D9C00C8CB76 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		5840D6D41F376E5E00C8CB76 /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
+		5840D6D61F37728B00C8CB76 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
+		5840D6D91F377E5B00C8CB76 /* NavigationReducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationReducers.swift; sourceTree = "<group>"; };
+		5840D6DB1F37925A00C8CB76 /* SchedulesNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesNavigationViewController.swift; sourceTree = "<group>"; };
 		5867462C1F35D483000F0D32 /* iSEPTATests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSEPTATests-Bridging-Header.h"; sourceTree = "<group>"; };
 		5867462F1F35D483000F0D32 /* SingleStringCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleStringCellTests.swift; sourceTree = "<group>"; };
 		586746311F35D483000F0D32 /* ViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
@@ -302,6 +314,7 @@
 		58290E421F372B8E000CCF3C /* Reducers */ = {
 			isa = PBXGroup;
 			children = (
+				5840D6D81F377E4500C8CB76 /* Navigation Reducers */,
 				58290E451F372C6C000CCF3C /* New Group */,
 				58290E431F372BB9000CCF3C /* AppStateReducer.swift */,
 				58290E461F372C82000CCF3C /* ScheduleReducers.swift */,
@@ -346,6 +359,8 @@
 			children = (
 				58290E401F372B51000CCF3C /* AppState.swift */,
 				58290E521F372F36000CCF3C /* Schedule.swift */,
+				5840D6D41F376E5E00C8CB76 /* NavigationState.swift */,
+				5840D6D61F37728B00C8CB76 /* Feature.swift */,
 			);
 			path = StateObjects;
 			sourceTree = "<group>";
@@ -448,6 +463,7 @@
 				582F4E9E1F33B1120062A546 /* SelectStop */,
 				582F4EA11F33B1120062A546 /* SelectStops */,
 				582F4EAA1F33B1120062A546 /* TransitModesViewController.swift */,
+				5840D6DB1F37925A00C8CB76 /* SchedulesNavigationViewController.swift */,
 			);
 			path = Schedules;
 			sourceTree = "<group>";
@@ -530,6 +546,7 @@
 				582F4EB41F33B1120062A546 /* Main.storyboard */,
 				582F4EB61F33B1120062A546 /* MainViewController.swift */,
 				58C182061F34C5B6002748E9 /* Localizeable.strings */,
+				5840D6D21F376D9C00C8CB76 /* MainNavigationController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -540,6 +557,23 @@
 				582F4EB81F33B1120062A546 /* LaunchScreen.storyboard */,
 			);
 			path = Base.lproj;
+			sourceTree = "<group>";
+		};
+		5840D6CB1F375F5D00C8CB76 /* StateObjects */ = {
+			isa = PBXGroup;
+			children = (
+				5840D6CC1F375F5D00C8CB76 /* AppStateTests.swift */,
+				5840D6CD1F375F5D00C8CB76 /* ScheduleTests.swift */,
+			);
+			path = StateObjects;
+			sourceTree = "<group>";
+		};
+		5840D6D81F377E4500C8CB76 /* Navigation Reducers */ = {
+			isa = PBXGroup;
+			children = (
+				5840D6D91F377E5B00C8CB76 /* NavigationReducers.swift */,
+			);
+			path = "Navigation Reducers";
 			sourceTree = "<group>";
 		};
 		5867462D1F35D483000F0D32 /* Views */ = {
@@ -732,7 +766,6 @@
 		58D9C3E71F3335BB002BE2E8 = {
 			isa = PBXGroup;
 			children = (
-				5867462A1F350BF6000F0D32 /* SeptaSchedule.framework */,
 				58D9C3F21F3335BB002BE2E8 /* iSEPTA */,
 				58D9C40A1F3335BB002BE2E8 /* iSEPTATests */,
 				58D9C3F11F3335BB002BE2E8 /* Products */,
@@ -772,6 +805,7 @@
 		58D9C40A1F3335BB002BE2E8 /* iSEPTATests */ = {
 			isa = PBXGroup;
 			children = (
+				5840D6CB1F375F5D00C8CB76 /* StateObjects */,
 				58290E481F372CAD000CCF3C /* Reducers */,
 				5867465B1F35D483000F0D32 /* Assets */,
 				586746321F35D483000F0D32 /* Features */,
@@ -790,6 +824,7 @@
 		58D9C4161F33362C002BE2E8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5840D6D11F376D0700C8CB76 /* SeptaSchedule.framework */,
 				58290E3E1F3729FE000CCF3C /* ReSwift.framework */,
 				580041F91F35055000691FDC /* SeptaSchedule.framework */,
 				5834359F1F34E9420021EC6D /* Crashlytics.framework */,
@@ -1055,11 +1090,13 @@
 			files = (
 				58C182011F34C560002748E9 /* Asset.swift in Sources */,
 				582F4ED51F33B1120062A546 /* SelectStopsViewController.swift in Sources */,
+				5840D6DA1F377E5B00C8CB76 /* NavigationReducers.swift in Sources */,
 				582F4EDD1F33B1120062A546 /* ViewModelDelegate.swift in Sources */,
 				582F4ED31F33B1120062A546 /* SelectStopRow.swift in Sources */,
 				582F4EBC1F33B1120062A546 /* DateFormatters.swift in Sources */,
 				582F4EC81F33B1120062A546 /* RouteTableViewCell.swift in Sources */,
 				582F4ED11F33B1120062A546 /* SelectedStopType.swift in Sources */,
+				5840D6D31F376D9C00C8CB76 /* MainNavigationController.swift in Sources */,
 				582F4ECC1F33B1120062A546 /* ScheduleTableViewCell.swift in Sources */,
 				582F4ED01F33B1120062A546 /* RouteStops.swift in Sources */,
 				582F4ED71F33B1120062A546 /* SelectStopsViewModel.swift in Sources */,
@@ -1070,17 +1107,20 @@
 				582F4EC51F33B1120062A546 /* NextToArriveViewController.swift in Sources */,
 				582F4EDF1F33B1120062A546 /* MainViewController.swift in Sources */,
 				582F4EBA1F33B1120062A546 /* ViewController.swift in Sources */,
+				5840D6D51F376E5E00C8CB76 /* NavigationState.swift in Sources */,
 				582F4ED81F33B1120062A546 /* TransitModesViewController.swift in Sources */,
 				582F4ECF1F33B1120062A546 /* SelectStopViewModel.swift in Sources */,
 				58290E471F372C82000CCF3C /* ScheduleReducers.swift in Sources */,
 				582F4EC71F33B1120062A546 /* RoutesViewModel.swift in Sources */,
 				58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */,
+				5840D6D71F37728B00C8CB76 /* Feature.swift in Sources */,
 				58290E531F372F36000CCF3C /* Schedule.swift in Sources */,
 				582F4ECB1F33B1120062A546 /* RouteSheduleViewModel.swift in Sources */,
 				582F4ECE1F33B1120062A546 /* SelectStopViewController.swift in Sources */,
 				582F4ED61F33B1120062A546 /* SelectStopsViewElement.swift in Sources */,
 				58290E411F372B51000CCF3C /* AppState.swift in Sources */,
 				58290E501F372DDC000CCF3C /* Actions.swift in Sources */,
+				5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */,
 				58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */,
 				582F4EC61F33B1120062A546 /* RoutesViewController.swift in Sources */,
 				582F4ECA1F33B1120062A546 /* RouteScheduleViewController.swift in Sources */,
@@ -1105,6 +1145,7 @@
 				586746701F35D484000F0D32 /* TransitModesViewControllerTests.swift in Sources */,
 				586746601F35D483000F0D32 /* NextToArriveViewControllerTests.swift in Sources */,
 				5867465E1F35D483000F0D32 /* ViewControllerTests.swift in Sources */,
+				5840D6D01F375F5D00C8CB76 /* ScheduleTests.swift in Sources */,
 				586746681F35D484000F0D32 /* SelectStopViewModelTests.swift in Sources */,
 				586746651F35D483000F0D32 /* RouteSheduleViewModelTests.swift in Sources */,
 				5867465D1F35D483000F0D32 /* SingleStringCellTests.swift in Sources */,
@@ -1115,6 +1156,7 @@
 				586746691F35D484000F0D32 /* RouteStopsTests.swift in Sources */,
 				5867466F1F35D484000F0D32 /* SelectStopsViewModelTests.swift in Sources */,
 				586746671F35D484000F0D32 /* SelectStopViewControllerTests.swift in Sources */,
+				5840D6CF1F375F5D00C8CB76 /* AppStateTests.swift in Sources */,
 				586746611F35D483000F0D32 /* RoutesViewControllerTests.swift in Sources */,
 				586746641F35D483000F0D32 /* RouteScheduleViewControllerTests.swift in Sources */,
 				5867466E1F35D484000F0D32 /* SelectStopsViewElementTests.swift in Sources */,
