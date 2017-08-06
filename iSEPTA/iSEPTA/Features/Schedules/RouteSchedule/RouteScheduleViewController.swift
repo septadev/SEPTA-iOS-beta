@@ -1,4 +1,4 @@
-// SEPTA.org, created on 8/1/17.
+// Septa. 2017
 
 import UIKit
 import SeptaSchedule
@@ -7,6 +7,7 @@ class RouteScheduleViewController: UIViewController, UITableViewDelegate, UITabl
     func viewModelUpdated() {
         tableView.reloadData()
     }
+
     @IBOutlet var alertsIcon: UIBarButtonItem!
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -67,7 +68,7 @@ class RouteScheduleViewController: UIViewController, UITableViewDelegate, UITabl
         item.tintColor = UIColor.green
         startingPoint.text = viewModel.routeStops.startStop?.stopName
         endingPoint.text = viewModel.routeStops.destinationStop?.stopName
-        self.navigationItem.rightBarButtonItem = alertsIcon
+        navigationItem.rightBarButtonItem = alertsIcon
     }
 
     override func viewWillAppear(_: Bool) {

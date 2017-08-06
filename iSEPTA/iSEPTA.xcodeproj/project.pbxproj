@@ -10,6 +10,14 @@
 		580041FA1F35055000691FDC /* SeptaSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580041F91F35055000691FDC /* SeptaSchedule.framework */; };
 		582118C61F34F1110053C050 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5834359F1F34E9420021EC6D /* Crashlytics.framework */; };
 		582118C71F34F1110053C050 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 583435A01F34E9420021EC6D /* Fabric.framework */; };
+		58290E3F1F3729FE000CCF3C /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58290E3E1F3729FE000CCF3C /* ReSwift.framework */; };
+		58290E411F372B51000CCF3C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E401F372B51000CCF3C /* AppState.swift */; };
+		58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E431F372BB9000CCF3C /* AppStateReducer.swift */; };
+		58290E471F372C82000CCF3C /* ScheduleReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E461F372C82000CCF3C /* ScheduleReducers.swift */; };
+		58290E4C1F372CAD000CCF3C /* AppStateReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E491F372CAD000CCF3C /* AppStateReducerTests.swift */; };
+		58290E4D1F372CAD000CCF3C /* ScheduleReducersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E4B1F372CAD000CCF3C /* ScheduleReducersTests.swift */; };
+		58290E501F372DDC000CCF3C /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E4F1F372DDC000CCF3C /* Actions.swift */; };
+		58290E531F372F36000CCF3C /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E521F372F36000CCF3C /* Schedule.swift */; };
 		582F4EBA1F33B1120062A546 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E7D1F33B1120062A546 /* ViewController.swift */; };
 		582F4EBB1F33B1120062A546 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E7E1F33B1120062A546 /* AppDelegate.swift */; };
 		582F4EBC1F33B1120062A546 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E801F33B1120062A546 /* DateFormatters.swift */; };
@@ -89,7 +97,11 @@
 		583435931F34E82E0021EC6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EB81F33B1120062A546 /* LaunchScreen.storyboard */; };
 		583435941F34E82E0021EC6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EAF1F33B1120062A546 /* Assets.xcassets */; };
 		583435951F34E82E0021EC6D /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EAC1F33B1120062A546 /* settings.storyboard */; };
-		5867462B1F350BF6000F0D32 /* SeptaSchedule.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5867462A1F350BF6000F0D32 /* SeptaSchedule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5840D6C41F374FB100C8CB76 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58290E3E1F3729FE000CCF3C /* ReSwift.framework */; };
+		5840D6C51F374FDB00C8CB76 /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E431F372BB9000CCF3C /* AppStateReducer.swift */; };
+		5840D6C61F374FDF00C8CB76 /* ScheduleReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E461F372C82000CCF3C /* ScheduleReducers.swift */; };
+		5840D6C71F374FFC00C8CB76 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E401F372B51000CCF3C /* AppState.swift */; };
+		5867462B1F350BF6000F0D32 /* SeptaSchedule.framework in Copy Custom Frameworks */ = {isa = PBXBuildFile; fileRef = 5867462A1F350BF6000F0D32 /* SeptaSchedule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5867465D1F35D483000F0D32 /* SingleStringCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867462F1F35D483000F0D32 /* SingleStringCellTests.swift */; };
 		5867465E1F35D483000F0D32 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746311F35D483000F0D32 /* ViewControllerTests.swift */; };
 		5867465F1F35D483000F0D32 /* AlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746351F35D483000F0D32 /* AlertTests.swift */; };
@@ -133,14 +145,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		583435971F34E82E0021EC6D /* CopyFiles */ = {
+		583435971F34E82E0021EC6D /* Copy Custom Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5867462B1F350BF6000F0D32 /* SeptaSchedule.framework in CopyFiles */,
+				5867462B1F350BF6000F0D32 /* SeptaSchedule.framework in Copy Custom Frameworks */,
 			);
+			name = "Copy Custom Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		58552F9B1F335272008C1886 /* CopyFiles */ = {
@@ -156,6 +169,14 @@
 
 /* Begin PBXFileReference section */
 		580041F91F35055000691FDC /* SeptaSchedule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaSchedule.framework; path = "../Build/Products/Debug-iphonesimulator/SeptaSchedule.framework"; sourceTree = "<group>"; };
+		58290E3E1F3729FE000CCF3C /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = ../Carthage/Build/iOS/ReSwift.framework; sourceTree = "<group>"; };
+		58290E401F372B51000CCF3C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		58290E431F372BB9000CCF3C /* AppStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateReducer.swift; sourceTree = "<group>"; };
+		58290E461F372C82000CCF3C /* ScheduleReducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleReducers.swift; sourceTree = "<group>"; };
+		58290E491F372CAD000CCF3C /* AppStateReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStateReducerTests.swift; sourceTree = "<group>"; };
+		58290E4B1F372CAD000CCF3C /* ScheduleReducersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleReducersTests.swift; sourceTree = "<group>"; };
+		58290E4F1F372DDC000CCF3C /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
+		58290E521F372F36000CCF3C /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		582F4E7D1F33B1120062A546 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		582F4E7E1F33B1120062A546 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		582F4E801F33B1120062A546 /* DateFormatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
@@ -200,7 +221,6 @@
 		5834359D1F34E82E0021EC6D /* iSEPTA-Release-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "iSEPTA-Release-Info.plist"; path = "/Users/mbroski/Code/Septa/Septa2/iSEPTA/iSEPTA/Info/iSEPTA-Release-Info.plist"; sourceTree = "<absolute>"; };
 		5834359F1F34E9420021EC6D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = ../Frameworks/Crashlytics.framework; sourceTree = "<group>"; };
 		583435A01F34E9420021EC6D /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = ../Frameworks/Fabric.framework; sourceTree = "<group>"; };
-		583E71CE1F33449D005AF3C7 /* Regex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Regex.framework; path = ../Frameworks/Regex.framework; sourceTree = "<group>"; };
 		5867462A1F350BF6000F0D32 /* SeptaSchedule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaSchedule.framework; path = "../Build/Products/Release-iphoneos/SeptaSchedule.framework"; sourceTree = "<group>"; };
 		5867462C1F35D483000F0D32 /* iSEPTATests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSEPTATests-Bridging-Header.h"; sourceTree = "<group>"; };
 		5867462F1F35D483000F0D32 /* SingleStringCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleStringCellTests.swift; sourceTree = "<group>"; };
@@ -243,6 +263,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5840D6C41F374FB100C8CB76 /* ReSwift.framework in Frameworks */,
 				582118C61F34F1110053C050 /* Crashlytics.framework in Frameworks */,
 				582118C71F34F1110053C050 /* Fabric.framework in Frameworks */,
 			);
@@ -252,6 +273,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58290E3F1F3729FE000CCF3C /* ReSwift.framework in Frameworks */,
 				580041FA1F35055000691FDC /* SeptaSchedule.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +297,57 @@
 				582F4E7E1F33B1120062A546 /* AppDelegate.swift */,
 			);
 			path = Info;
+			sourceTree = "<group>";
+		};
+		58290E421F372B8E000CCF3C /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+				58290E451F372C6C000CCF3C /* New Group */,
+				58290E431F372BB9000CCF3C /* AppStateReducer.swift */,
+				58290E461F372C82000CCF3C /* ScheduleReducers.swift */,
+			);
+			path = Reducers;
+			sourceTree = "<group>";
+		};
+		58290E451F372C6C000CCF3C /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		58290E481F372CAD000CCF3C /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+				58290E491F372CAD000CCF3C /* AppStateReducerTests.swift */,
+				58290E4A1F372CAD000CCF3C /* New Group */,
+				58290E4B1F372CAD000CCF3C /* ScheduleReducersTests.swift */,
+			);
+			path = Reducers;
+			sourceTree = "<group>";
+		};
+		58290E4A1F372CAD000CCF3C /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		58290E4E1F372DC8000CCF3C /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				58290E4F1F372DDC000CCF3C /* Actions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		58290E511F372F27000CCF3C /* StateObjects */ = {
+			isa = PBXGroup;
+			children = (
+				58290E401F372B51000CCF3C /* AppState.swift */,
+				58290E521F372F36000CCF3C /* Schedule.swift */,
+			);
+			path = StateObjects;
 			sourceTree = "<group>";
 		};
 		582F4E7F1F33B1120062A546 /* Utlities */ = {
@@ -680,6 +753,9 @@
 		58D9C3F21F3335BB002BE2E8 /* iSEPTA */ = {
 			isa = PBXGroup;
 			children = (
+				58290E511F372F27000CCF3C /* StateObjects */,
+				58290E4E1F372DC8000CCF3C /* Actions */,
+				58290E421F372B8E000CCF3C /* Reducers */,
 				580041F81F3504D800691FDC /* Info */,
 				582F4EAE1F33B1120062A546 /* Assets */,
 				582F4EB71F33B1120062A546 /* Base.lproj */,
@@ -696,6 +772,7 @@
 		58D9C40A1F3335BB002BE2E8 /* iSEPTATests */ = {
 			isa = PBXGroup;
 			children = (
+				58290E481F372CAD000CCF3C /* Reducers */,
 				5867465B1F35D483000F0D32 /* Assets */,
 				586746321F35D483000F0D32 /* Features */,
 				586746541F35D483000F0D32 /* Info */,
@@ -713,10 +790,10 @@
 		58D9C4161F33362C002BE2E8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58290E3E1F3729FE000CCF3C /* ReSwift.framework */,
 				580041F91F35055000691FDC /* SeptaSchedule.framework */,
 				5834359F1F34E9420021EC6D /* Crashlytics.framework */,
 				583435A01F34E9420021EC6D /* Fabric.framework */,
-				583E71CE1F33449D005AF3C7 /* Regex.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -731,8 +808,8 @@
 				583435691F34E82E0021EC6D /* Sources */,
 				583435851F34E82E0021EC6D /* Frameworks */,
 				583435871F34E82E0021EC6D /* Resources */,
-				583435961F34E82E0021EC6D /* Copy Frameworks */,
-				583435971F34E82E0021EC6D /* CopyFiles */,
+				583435961F34E82E0021EC6D /* Copy Carthage Frameworks */,
+				583435971F34E82E0021EC6D /* Copy Custom Frameworks */,
 				5834359E1F34E84A0021EC6D /* ShellScript */,
 			);
 			buildRules = (
@@ -751,7 +828,7 @@
 				58D9C3EC1F3335BB002BE2E8 /* Sources */,
 				58D9C3ED1F3335BB002BE2E8 /* Frameworks */,
 				58D9C3EE1F3335BB002BE2E8 /* Resources */,
-				585F585A1F3377EF00D3ED6C /* Copy Frameworks */,
+				585F585A1F3377EF00D3ED6C /* Copy Carthage Frameworks */,
 				58552F9B1F335272008C1886 /* CopyFiles */,
 			);
 			buildRules = (
@@ -879,21 +956,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		583435961F34E82E0021EC6D /* Copy Frameworks */ = {
+		583435961F34E82E0021EC6D /* Copy Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/../Frameworks/Regex.framework",
 				"$(SRCROOT)/../Frameworks/Zip.framework",
 				"$(SRCROOT)/../Frameworks/SQLite.framework",
+				"$(SRCROOT)/../Frameworks/ReSwift.framework",
 			);
-			name = "Copy Frameworks";
+			name = "Copy Carthage Frameworks";
 			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Regex.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Zip.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SQLite.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ReSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -912,19 +989,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PROJECT_DIR}/../Frameworks/Fabric.framework/run\" 573b4f7ab920a4fcd9f2da4d08fae80cefad40fe ee0c297d8103d2326ae8b9b2ebfe34df4f517b2d85ad6183b2fef9aad7cc7119";
 		};
-		585F585A1F3377EF00D3ED6C /* Copy Frameworks */ = {
+		585F585A1F3377EF00D3ED6C /* Copy Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/../Frameworks/Regex.framework",
+				"$(SRCROOT)/../Frameworks/ReSwift.framework",
 				"$(SRCROOT)/../Frameworks/Zip.framework",
 				"$(SRCROOT)/../Frameworks/SQLite.framework",
 			);
-			name = "Copy Frameworks";
+			name = "Copy Carthage Frameworks";
 			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Regex.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ReSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Zip.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SQLite.framework",
 			);
@@ -951,13 +1028,16 @@
 				583435731F34E82E0021EC6D /* SelectStopsViewModel.swift in Sources */,
 				583435741F34E82E0021EC6D /* AppDelegate.swift in Sources */,
 				583435751F34E82E0021EC6D /* SelectStopCellType.swift in Sources */,
+				5840D6C61F374FDF00C8CB76 /* ScheduleReducers.swift in Sources */,
 				583435761F34E82E0021EC6D /* SingleStringCell.swift in Sources */,
 				583435771F34E82E0021EC6D /* Alert.swift in Sources */,
 				583435781F34E82E0021EC6D /* NextToArriveViewController.swift in Sources */,
 				583435791F34E82E0021EC6D /* MainViewController.swift in Sources */,
+				5840D6C51F374FDB00C8CB76 /* AppStateReducer.swift in Sources */,
 				5834357A1F34E82E0021EC6D /* ViewController.swift in Sources */,
 				5834357B1F34E82E0021EC6D /* TransitModesViewController.swift in Sources */,
 				5834357C1F34E82E0021EC6D /* SelectStopViewModel.swift in Sources */,
+				5840D6C71F374FFC00C8CB76 /* AppState.swift in Sources */,
 				5834357D1F34E82E0021EC6D /* RoutesViewModel.swift in Sources */,
 				5834357E1F34E82E0021EC6D /* RouteSheduleViewModel.swift in Sources */,
 				5834357F1F34E82E0021EC6D /* SelectStopViewController.swift in Sources */,
@@ -992,10 +1072,15 @@
 				582F4EBA1F33B1120062A546 /* ViewController.swift in Sources */,
 				582F4ED81F33B1120062A546 /* TransitModesViewController.swift in Sources */,
 				582F4ECF1F33B1120062A546 /* SelectStopViewModel.swift in Sources */,
+				58290E471F372C82000CCF3C /* ScheduleReducers.swift in Sources */,
 				582F4EC71F33B1120062A546 /* RoutesViewModel.swift in Sources */,
+				58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */,
+				58290E531F372F36000CCF3C /* Schedule.swift in Sources */,
 				582F4ECB1F33B1120062A546 /* RouteSheduleViewModel.swift in Sources */,
 				582F4ECE1F33B1120062A546 /* SelectStopViewController.swift in Sources */,
 				582F4ED61F33B1120062A546 /* SelectStopsViewElement.swift in Sources */,
+				58290E411F372B51000CCF3C /* AppState.swift in Sources */,
+				58290E501F372DDC000CCF3C /* Actions.swift in Sources */,
 				58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */,
 				582F4EC61F33B1120062A546 /* RoutesViewController.swift in Sources */,
 				582F4ECA1F33B1120062A546 /* RouteScheduleViewController.swift in Sources */,
@@ -1011,10 +1096,12 @@
 				586746661F35D484000F0D32 /* ScheduleTableViewCellTests.swift in Sources */,
 				5867466D1F35D484000F0D32 /* SelectStopsViewControllerTests.swift in Sources */,
 				586746621F35D483000F0D32 /* RoutesViewModelTests.swift in Sources */,
+				58290E4D1F372CAD000CCF3C /* ScheduleReducersTests.swift in Sources */,
 				586746631F35D483000F0D32 /* RouteTableViewCellTests.swift in Sources */,
 				5867466C1F35D484000F0D32 /* SelectStopRowTests.swift in Sources */,
 				586746721F35D484000F0D32 /* StoryboardsTests.swift in Sources */,
 				5867465F1F35D483000F0D32 /* AlertTests.swift in Sources */,
+				58290E4C1F372CAD000CCF3C /* AppStateReducerTests.swift in Sources */,
 				586746701F35D484000F0D32 /* TransitModesViewControllerTests.swift in Sources */,
 				586746601F35D483000F0D32 /* NextToArriveViewControllerTests.swift in Sources */,
 				5867465E1F35D483000F0D32 /* ViewControllerTests.swift in Sources */,
@@ -1238,13 +1325,14 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/iSEPTA",
+					"$(PROJECT_DIR)/../Frameworks",
 				);
 				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
+				PRODUCT_MODULE_NAME = Septa;
 				PRODUCT_NAME = Septa;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -1264,12 +1352,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/iSEPTA",
+					"$(PROJECT_DIR)/../Frameworks",
 				);
 				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
+				PRODUCT_MODULE_NAME = Septa;
 				PRODUCT_NAME = Septa;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;

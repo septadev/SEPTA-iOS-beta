@@ -1,10 +1,10 @@
-// SEPTA.org, created on 8/2/17.
+// Septa. 2017
 
 import Foundation
 
 public class DateFormatters {
 
-    static  var durationFormatter: DateComponentsFormatter = {
+    static var durationFormatter: DateComponentsFormatter = {
 
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .full

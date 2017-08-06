@@ -1,11 +1,11 @@
-// SEPTA.org, created on 8/2/17.
+// Septa. 2017
 
 import Foundation
 import UIKit
 
 class Alert {
 
-    static func presentOKAlertFrom(viewController: UIViewController, withTitle title: String, message: String, completion:  (()->())?){
+    static func presentOKAlertFrom(viewController: UIViewController, withTitle _: String, message: String, completion: (() -> Void)?) {
         // create the alert
         let alert = UIAlertController(title: "title", message: message, preferredStyle: UIAlertControllerStyle.alert)
 
@@ -14,6 +14,5 @@ class Alert {
 
         // show the alert
         viewController.present(alert, animated: true, completion: completion)
-
     }
 }

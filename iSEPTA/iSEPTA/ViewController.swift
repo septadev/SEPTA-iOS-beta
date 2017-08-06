@@ -1,10 +1,4 @@
-//
-//  ViewController.swift
-//  iSepta
-//
-//  Created by Mark Broski on 8/3/17.
-//  Copyright © 2017 Mark Broski. All rights reserved.
-//
+// Septa. 2017
 
 import UIKit
 
@@ -19,7 +13,4 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
-

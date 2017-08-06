@@ -1,9 +1,10 @@
-// SEPTA.org, created on 8/5/2017.
+// Septa. 2017
 
 import XCTest
-@testable import SeptaSchedule
+@testable import Septa
 
-/// DateFormattersTests purpose: Tests that date formatters work correctlyclass DateFormattersTests: XCTestCase {
+/// DateFormattersTests purpose: Tests that date formatters work correctly
+class DateFormattersTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -22,10 +23,7 @@ import XCTest
             expectation.fulfill()
         }
 
-
-
-
-            waitForExpectations(timeout:1) { error in
+        waitForExpectations(timeout: 1) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
             }
