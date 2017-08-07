@@ -3,7 +3,8 @@
 import Foundation
 import SeptaSchedule
 
-struct Schedule {
+struct ScheduleState {
+    let transitMode: TransitMode
     let routes: [Route]?
     let selectedRoute: Route?
     let availableStarts: [Stop]?
@@ -12,7 +13,8 @@ struct Schedule {
     let selectedStop: Stop?
     let availableTrips: [Trip]?
 
-    public init(routes: [Route]?, selectedRoute: Route?, availableStarts: [Stop]?, selectedStart: Stop?, availableStops: [Stop]?, selectedStop: Stop?, availableTrips: [Trip]?) {
+    public init(transitMode: TransitMode, routes: [Route]?, selectedRoute: Route?, availableStarts: [Stop]?, selectedStart: Stop?, availableStops: [Stop]?, selectedStop: Stop?, availableTrips: [Trip]?) {
+        self.transitMode = transitMode
         self.routes = routes
         self.selectedRoute = selectedRoute
         self.availableStarts = availableStarts
@@ -23,9 +25,15 @@ struct Schedule {
     }
 }
 
-extension Schedule: Equatable {}
-func ==(lhs: Schedule, rhs: Schedule) -> Bool {
+extension ScheduleState: Equatable {}
+func ==(lhs: ScheduleState, rhs: ScheduleState) -> Bool {
     var areEqual = true
+
+    if lhs.transitMode == rhs.transitMode {
+        areEqual = true
+    } else {
+        return false
+    }
 
     switch (lhs.routes, rhs.routes) {
     case (.none, .none):

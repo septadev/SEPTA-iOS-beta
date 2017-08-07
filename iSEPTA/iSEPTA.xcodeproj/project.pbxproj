@@ -13,11 +13,10 @@
 		58290E3F1F3729FE000CCF3C /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58290E3E1F3729FE000CCF3C /* ReSwift.framework */; };
 		58290E411F372B51000CCF3C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E401F372B51000CCF3C /* AppState.swift */; };
 		58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E431F372BB9000CCF3C /* AppStateReducer.swift */; };
-		58290E471F372C82000CCF3C /* ScheduleReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E461F372C82000CCF3C /* ScheduleReducers.swift */; };
 		58290E4C1F372CAD000CCF3C /* AppStateReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E491F372CAD000CCF3C /* AppStateReducerTests.swift */; };
 		58290E4D1F372CAD000CCF3C /* ScheduleReducersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E4B1F372CAD000CCF3C /* ScheduleReducersTests.swift */; };
-		58290E501F372DDC000CCF3C /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E4F1F372DDC000CCF3C /* Actions.swift */; };
-		58290E531F372F36000CCF3C /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E521F372F36000CCF3C /* Schedule.swift */; };
+		58290E501F372DDC000CCF3C /* NavigationActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E4F1F372DDC000CCF3C /* NavigationActions.swift */; };
+		58290E531F372F36000CCF3C /* ScheduleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E521F372F36000CCF3C /* ScheduleState.swift */; };
 		582F4EBA1F33B1120062A546 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E7D1F33B1120062A546 /* ViewController.swift */; };
 		582F4EBB1F33B1120062A546 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E7E1F33B1120062A546 /* AppDelegate.swift */; };
 		582F4EBC1F33B1120062A546 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E801F33B1120062A546 /* DateFormatters.swift */; };
@@ -51,7 +50,6 @@
 		582F4ED81F33B1120062A546 /* TransitModesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EAA1F33B1120062A546 /* TransitModesViewController.swift */; };
 		582F4ED91F33B1120062A546 /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EAC1F33B1120062A546 /* settings.storyboard */; };
 		582F4EDB1F33B1120062A546 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EAF1F33B1120062A546 /* Assets.xcassets */; };
-		582F4EDC1F33B1120062A546 /* TransitMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EB11F33B1120062A546 /* TransitMode.swift */; };
 		582F4EDD1F33B1120062A546 /* ViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EB21F33B1120062A546 /* ViewModelDelegate.swift */; };
 		582F4EDE1F33B1120062A546 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EB41F33B1120062A546 /* Main.storyboard */; };
 		582F4EDF1F33B1120062A546 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EB61F33B1120062A546 /* MainViewController.swift */; };
@@ -82,7 +80,6 @@
 		583435811F34E82E0021EC6D /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C181FE1F34C557002748E9 /* Storyboards.swift */; };
 		583435821F34E82E0021EC6D /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E951F33B1120062A546 /* RoutesViewController.swift */; };
 		583435831F34E82E0021EC6D /* RouteScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9A1F33B1120062A546 /* RouteScheduleViewController.swift */; };
-		583435841F34E82E0021EC6D /* TransitMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EB11F33B1120062A546 /* TransitMode.swift */; };
 		583435881F34E82E0021EC6D /* fares.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4E8D1F33B1120062A546 /* fares.storyboard */; };
 		583435891F34E82E0021EC6D /* about.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4E861F33B1120062A546 /* about.storyboard */; };
 		5834358A1F34E82E0021EC6D /* SelectStopsFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EA61F33B1120062A546 /* SelectStopsFooterView.xib */; };
@@ -99,7 +96,6 @@
 		583435951F34E82E0021EC6D /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EAC1F33B1120062A546 /* settings.storyboard */; };
 		5840D6C41F374FB100C8CB76 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58290E3E1F3729FE000CCF3C /* ReSwift.framework */; };
 		5840D6C51F374FDB00C8CB76 /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E431F372BB9000CCF3C /* AppStateReducer.swift */; };
-		5840D6C61F374FDF00C8CB76 /* ScheduleReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E461F372C82000CCF3C /* ScheduleReducers.swift */; };
 		5840D6C71F374FFC00C8CB76 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E401F372B51000CCF3C /* AppState.swift */; };
 		5840D6CF1F375F5D00C8CB76 /* AppStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6CC1F375F5D00C8CB76 /* AppStateTests.swift */; };
 		5840D6D01F375F5D00C8CB76 /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6CD1F375F5D00C8CB76 /* ScheduleTests.swift */; };
@@ -108,6 +104,12 @@
 		5840D6D71F37728B00C8CB76 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D61F37728B00C8CB76 /* Feature.swift */; };
 		5840D6DA1F377E5B00C8CB76 /* NavigationReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D91F377E5B00C8CB76 /* NavigationReducers.swift */; };
 		5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6DB1F37925A00C8CB76 /* SchedulesNavigationViewController.swift */; };
+		5840D6DE1F37E4B100C8CB76 /* TransitMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6DD1F37E4B100C8CB76 /* TransitMode.swift */; };
+		5840D6E01F37E5FB00C8CB76 /* ScheduleReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6DF1F37E5FB00C8CB76 /* ScheduleReducers.swift */; };
+		5840D6E31F37E9FB00C8CB76 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E21F37E9FB00C8CB76 /* UserPreferences.swift */; };
+		5840D6E51F37EA1900C8CB76 /* ScheduleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E41F37EA1900C8CB76 /* ScheduleProvider.swift */; };
+		5840D6E71F37EAEF00C8CB76 /* UserPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E61F37EAEF00C8CB76 /* UserPreferenceKey.swift */; };
+		5840D6E91F37EE6500C8CB76 /* Providers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E81F37EE6500C8CB76 /* Providers.swift */; };
 		5867465D1F35D483000F0D32 /* SingleStringCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867462F1F35D483000F0D32 /* SingleStringCellTests.swift */; };
 		5867465E1F35D483000F0D32 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746311F35D483000F0D32 /* ViewControllerTests.swift */; };
 		5867465F1F35D483000F0D32 /* AlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746351F35D483000F0D32 /* AlertTests.swift */; };
@@ -177,11 +179,10 @@
 		58290E3E1F3729FE000CCF3C /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = ../Carthage/Build/iOS/ReSwift.framework; sourceTree = "<group>"; };
 		58290E401F372B51000CCF3C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		58290E431F372BB9000CCF3C /* AppStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateReducer.swift; sourceTree = "<group>"; };
-		58290E461F372C82000CCF3C /* ScheduleReducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleReducers.swift; sourceTree = "<group>"; };
 		58290E491F372CAD000CCF3C /* AppStateReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStateReducerTests.swift; sourceTree = "<group>"; };
 		58290E4B1F372CAD000CCF3C /* ScheduleReducersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleReducersTests.swift; sourceTree = "<group>"; };
-		58290E4F1F372DDC000CCF3C /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
-		58290E521F372F36000CCF3C /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		58290E4F1F372DDC000CCF3C /* NavigationActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationActions.swift; sourceTree = "<group>"; };
+		58290E521F372F36000CCF3C /* ScheduleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleState.swift; sourceTree = "<group>"; };
 		582F4E7D1F33B1120062A546 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		582F4E7E1F33B1120062A546 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		582F4E801F33B1120062A546 /* DateFormatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
@@ -216,7 +217,6 @@
 		582F4EAC1F33B1120062A546 /* settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = settings.storyboard; sourceTree = "<group>"; };
 		582F4EAD1F33B1120062A546 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		582F4EAF1F33B1120062A546 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		582F4EB11F33B1120062A546 /* TransitMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitMode.swift; sourceTree = "<group>"; };
 		582F4EB21F33B1120062A546 /* ViewModelDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelDelegate.swift; sourceTree = "<group>"; };
 		582F4EB51F33B1120062A546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		582F4EB61F33B1120062A546 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +234,12 @@
 		5840D6D61F37728B00C8CB76 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
 		5840D6D91F377E5B00C8CB76 /* NavigationReducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationReducers.swift; sourceTree = "<group>"; };
 		5840D6DB1F37925A00C8CB76 /* SchedulesNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesNavigationViewController.swift; sourceTree = "<group>"; };
+		5840D6DD1F37E4B100C8CB76 /* TransitMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitMode.swift; sourceTree = "<group>"; };
+		5840D6DF1F37E5FB00C8CB76 /* ScheduleReducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleReducers.swift; sourceTree = "<group>"; };
+		5840D6E21F37E9FB00C8CB76 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		5840D6E41F37EA1900C8CB76 /* ScheduleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleProvider.swift; sourceTree = "<group>"; };
+		5840D6E61F37EAEF00C8CB76 /* UserPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferenceKey.swift; sourceTree = "<group>"; };
+		5840D6E81F37EE6500C8CB76 /* Providers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Providers.swift; sourceTree = "<group>"; };
 		5867462C1F35D483000F0D32 /* iSEPTATests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSEPTATests-Bridging-Header.h"; sourceTree = "<group>"; };
 		5867462F1F35D483000F0D32 /* SingleStringCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleStringCellTests.swift; sourceTree = "<group>"; };
 		586746311F35D483000F0D32 /* ViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
@@ -315,18 +321,18 @@
 			isa = PBXGroup;
 			children = (
 				5840D6D81F377E4500C8CB76 /* Navigation Reducers */,
-				58290E451F372C6C000CCF3C /* New Group */,
+				58290E451F372C6C000CCF3C /* Schedule Reducers */,
 				58290E431F372BB9000CCF3C /* AppStateReducer.swift */,
-				58290E461F372C82000CCF3C /* ScheduleReducers.swift */,
 			);
 			path = Reducers;
 			sourceTree = "<group>";
 		};
-		58290E451F372C6C000CCF3C /* New Group */ = {
+		58290E451F372C6C000CCF3C /* Schedule Reducers */ = {
 			isa = PBXGroup;
 			children = (
+				5840D6DF1F37E5FB00C8CB76 /* ScheduleReducers.swift */,
 			);
-			path = "New Group";
+			path = "Schedule Reducers";
 			sourceTree = "<group>";
 		};
 		58290E481F372CAD000CCF3C /* Reducers */ = {
@@ -349,7 +355,7 @@
 		58290E4E1F372DC8000CCF3C /* Actions */ = {
 			isa = PBXGroup;
 			children = (
-				58290E4F1F372DDC000CCF3C /* Actions.swift */,
+				58290E4F1F372DDC000CCF3C /* NavigationActions.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -358,9 +364,10 @@
 			isa = PBXGroup;
 			children = (
 				58290E401F372B51000CCF3C /* AppState.swift */,
-				58290E521F372F36000CCF3C /* Schedule.swift */,
+				58290E521F372F36000CCF3C /* ScheduleState.swift */,
 				5840D6D41F376E5E00C8CB76 /* NavigationState.swift */,
 				5840D6D61F37728B00C8CB76 /* Feature.swift */,
+				5840D6DD1F37E4B100C8CB76 /* TransitMode.swift */,
 			);
 			path = StateObjects;
 			sourceTree = "<group>";
@@ -533,7 +540,6 @@
 		582F4EB01F33B1120062A546 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				582F4EB11F33B1120062A546 /* TransitMode.swift */,
 				582F4EB21F33B1120062A546 /* ViewModelDelegate.swift */,
 			);
 			path = "View Models";
@@ -574,6 +580,17 @@
 				5840D6D91F377E5B00C8CB76 /* NavigationReducers.swift */,
 			);
 			path = "Navigation Reducers";
+			sourceTree = "<group>";
+		};
+		5840D6E11F37E9E300C8CB76 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				5840D6E21F37E9FB00C8CB76 /* UserPreferences.swift */,
+				5840D6E41F37EA1900C8CB76 /* ScheduleProvider.swift */,
+				5840D6E61F37EAEF00C8CB76 /* UserPreferenceKey.swift */,
+				5840D6E81F37EE6500C8CB76 /* Providers.swift */,
+			);
+			path = Providers;
 			sourceTree = "<group>";
 		};
 		5867462D1F35D483000F0D32 /* Views */ = {
@@ -786,6 +803,7 @@
 		58D9C3F21F3335BB002BE2E8 /* iSEPTA */ = {
 			isa = PBXGroup;
 			children = (
+				5840D6E11F37E9E300C8CB76 /* Providers */,
 				58290E511F372F27000CCF3C /* StateObjects */,
 				58290E4E1F372DC8000CCF3C /* Actions */,
 				58290E421F372B8E000CCF3C /* Reducers */,
@@ -1063,7 +1081,6 @@
 				583435731F34E82E0021EC6D /* SelectStopsViewModel.swift in Sources */,
 				583435741F34E82E0021EC6D /* AppDelegate.swift in Sources */,
 				583435751F34E82E0021EC6D /* SelectStopCellType.swift in Sources */,
-				5840D6C61F374FDF00C8CB76 /* ScheduleReducers.swift in Sources */,
 				583435761F34E82E0021EC6D /* SingleStringCell.swift in Sources */,
 				583435771F34E82E0021EC6D /* Alert.swift in Sources */,
 				583435781F34E82E0021EC6D /* NextToArriveViewController.swift in Sources */,
@@ -1080,7 +1097,6 @@
 				583435811F34E82E0021EC6D /* Storyboards.swift in Sources */,
 				583435821F34E82E0021EC6D /* RoutesViewController.swift in Sources */,
 				583435831F34E82E0021EC6D /* RouteScheduleViewController.swift in Sources */,
-				583435841F34E82E0021EC6D /* TransitMode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1105,26 +1121,30 @@
 				582F4EBD1F33B1120062A546 /* SingleStringCell.swift in Sources */,
 				582F4EBF1F33B1120062A546 /* Alert.swift in Sources */,
 				582F4EC51F33B1120062A546 /* NextToArriveViewController.swift in Sources */,
+				5840D6E71F37EAEF00C8CB76 /* UserPreferenceKey.swift in Sources */,
 				582F4EDF1F33B1120062A546 /* MainViewController.swift in Sources */,
 				582F4EBA1F33B1120062A546 /* ViewController.swift in Sources */,
 				5840D6D51F376E5E00C8CB76 /* NavigationState.swift in Sources */,
+				5840D6E91F37EE6500C8CB76 /* Providers.swift in Sources */,
 				582F4ED81F33B1120062A546 /* TransitModesViewController.swift in Sources */,
 				582F4ECF1F33B1120062A546 /* SelectStopViewModel.swift in Sources */,
-				58290E471F372C82000CCF3C /* ScheduleReducers.swift in Sources */,
+				5840D6DE1F37E4B100C8CB76 /* TransitMode.swift in Sources */,
 				582F4EC71F33B1120062A546 /* RoutesViewModel.swift in Sources */,
+				5840D6E51F37EA1900C8CB76 /* ScheduleProvider.swift in Sources */,
 				58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */,
 				5840D6D71F37728B00C8CB76 /* Feature.swift in Sources */,
-				58290E531F372F36000CCF3C /* Schedule.swift in Sources */,
+				58290E531F372F36000CCF3C /* ScheduleState.swift in Sources */,
+				5840D6E31F37E9FB00C8CB76 /* UserPreferences.swift in Sources */,
 				582F4ECB1F33B1120062A546 /* RouteSheduleViewModel.swift in Sources */,
 				582F4ECE1F33B1120062A546 /* SelectStopViewController.swift in Sources */,
 				582F4ED61F33B1120062A546 /* SelectStopsViewElement.swift in Sources */,
+				5840D6E01F37E5FB00C8CB76 /* ScheduleReducers.swift in Sources */,
 				58290E411F372B51000CCF3C /* AppState.swift in Sources */,
-				58290E501F372DDC000CCF3C /* Actions.swift in Sources */,
+				58290E501F372DDC000CCF3C /* NavigationActions.swift in Sources */,
 				5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */,
 				58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */,
 				582F4EC61F33B1120062A546 /* RoutesViewController.swift in Sources */,
 				582F4ECA1F33B1120062A546 /* RouteScheduleViewController.swift in Sources */,
-				582F4EDC1F33B1120062A546 /* TransitMode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

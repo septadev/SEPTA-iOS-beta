@@ -3,17 +3,9 @@
 import UIKit
 import SeptaSchedule
 
-class TransitModesViewController: UITableViewController {
-    let segueId = "showRoutes"
+class TransitModesViewController: UIViewController {
+    @IBOutlet weak var transitModeView: UIView!
 
-    override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: segueId, sender: self)
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
-        guard let routesViewController = segue.destination as? RoutesViewController else { return }
-
-        routesViewController.setRouteType(.bus)
+    @IBAction func toolbarButtonTapped(_: Any) {
     }
 }

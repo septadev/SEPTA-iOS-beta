@@ -9,8 +9,8 @@ class ScheduleTests: XCTestCase {
 
     /// Does equatable work properly for schedule
     func testDoesEquatableWorkProperlyForSchedule_Routes() {
-        let schedule1 = Schedule(routes: nil, selectedRoute: nil, availableStarts: nil, selectedStart: nil, availableStops: nil, selectedStop: nil, availableTrips: nil)
-        let schedule2 = Schedule(routes: [Route](), selectedRoute: nil, availableStarts: nil, selectedStart: nil, availableStops: nil, selectedStop: nil, availableTrips: nil)
+        let schedule1 = ScheduleState(routes: nil, selectedRoute: nil, availableStarts: nil, selectedStart: nil, availableStops: nil, selectedStop: nil, availableTrips: nil)
+        let schedule2 = ScheduleState(routes: [Route](), selectedRoute: nil, availableStarts: nil, selectedStart: nil, availableStops: nil, selectedStop: nil, availableTrips: nil)
 
         XCTAssertNotEqual(schedule1, schedule2)
     }
@@ -18,8 +18,8 @@ class ScheduleTests: XCTestCase {
     /// Does equatable work properly for schedule
     func testDoesEquatableWorkProperlyForSchedule_SelectedRoute() {
         let route1 = Route(routeId: "slkjsdf", routeShortName: "lkjsdfkj", routeLongName: "sljksdflkjsd")
-        let schedule1 = Schedule(routes: nil, selectedRoute: route1, availableStarts: nil, selectedStart: nil, availableStops: nil, selectedStop: nil, availableTrips: nil)
-        let schedule2 = Schedule(routes: nil, selectedRoute: nil, availableStarts: nil, selectedStart: nil, availableStops: nil, selectedStop: nil, availableTrips: nil)
+        let schedule1 = ScheduleState(routes: nil, selectedRoute: route1, availableStarts: nil, selectedStart: nil, availableStops: nil, selectedStop: nil, availableTrips: nil)
+        let schedule2 = ScheduleState(routes: nil, selectedRoute: nil, availableStarts: nil, selectedStart: nil, availableStops: nil, selectedStop: nil, availableTrips: nil)
 
         XCTAssertNotEqual(schedule1, schedule2)
     }

@@ -14,6 +14,8 @@ let store = Store<AppState>(
     middleware: []
 )
 
+var stateProviders = StateProviders()
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
