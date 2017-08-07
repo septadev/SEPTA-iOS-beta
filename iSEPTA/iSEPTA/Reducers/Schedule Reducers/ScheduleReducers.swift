@@ -15,6 +15,4 @@ class ScheduleReducers {
 
         return ScheduleState(transitMode: .bus, routes: nil, selectedRoute: nil, availableStarts: nil, selectedStart: nil, availableStops: nil, selectedStop: nil, availableTrips: nil)
     }
-
-    // First job is to get the transit modes right
 }

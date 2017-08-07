@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Transit Mode-->
+        <!--Schedules-->
         <scene sceneID="9Tf-Ia-A2O">
             <objects>
-                <viewController id="G8I-06-w6m" customClass="TransitModesViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Schedules" id="G8I-06-w6m" customClass="TransitModesViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pKm-2F-CDF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,50 +21,73 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DcS-hm-WiD" userLabel="ToolbarScollVierw">
                                 <rect key="frame" x="0.0" y="64" width="375" height="40"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="d5f-ZN-wAj">
-                                        <rect key="frame" x="0.0" y="0.0" width="440" height="40"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="d5f-ZN-wAj">
+                                        <rect key="frame" x="0.0" y="0.0" width="520" height="40"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abl-AS-hjN">
-                                                <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
-                                                <accessibility key="accessibilityConfiguration" label="Trolley"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Iw-Vt-aGu" customClass="TransitModeToolbarView" customModule="Septa" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="80" id="F18-2T-dwj"/>
+                                                    <constraint firstAttribute="width" constant="100" id="aAh-pa-eUt"/>
                                                 </constraints>
-                                                <state key="normal" title="Trolley"/>
-                                                <connections>
-                                                    <action selector="toolbarButtonTapped:" destination="G8I-06-w6m" eventType="touchUpInside" id="VCF-md-xCa"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2r-dg-nYt" userLabel="Bus">
-                                                <rect key="frame" x="90" y="0.0" width="80" height="40"/>
-                                                <accessibility key="accessibilityConfiguration" label="Bus"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="80" id="Qm0-Ev-JoH"/>
-                                                </constraints>
-                                                <state key="normal" title="Bus"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iTr-Nm-zwn">
-                                                <rect key="frame" x="180" y="0.0" width="80" height="40"/>
-                                                <accessibility key="accessibilityConfiguration" label="Rail"/>
-                                                <state key="normal" title="Rail"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4P-sb-mNs">
-                                                <rect key="frame" x="270" y="0.0" width="80" height="40"/>
-                                                <accessibility key="accessibilityConfiguration" label="Subway"/>
-                                                <state key="normal" title="Subway"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rce-cQ-3hB" userLabel="NHSL">
-                                                <rect key="frame" x="360" y="0.0" width="80" height="40"/>
-                                                <state key="normal" title="NHSL"/>
-                                            </button>
+                                                <string key="userLabel">
+Rail</string>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="highlighted" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Rail"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="rail"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hox-B9-Hbl" userLabel="Bus" customClass="TransitModeToolbarView" customModule="Septa" customModuleProvider="target">
+                                                <rect key="frame" x="105" y="0.0" width="100" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Bus"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="bus"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="highlighted" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AHW-A1-IWn" userLabel="Subway" customClass="TransitModeToolbarView" customModule="Septa" customModuleProvider="target">
+                                                <rect key="frame" x="210" y="0.0" width="100" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Subway"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="subway"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="highlighted" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xvH-nt-tSZ" userLabel="NHSL" customClass="TransitModeToolbarView" customModule="Septa" customModuleProvider="target">
+                                                <rect key="frame" x="315" y="0.0" width="100" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="NHSL"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="nhsl"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="highlighted" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yy9-Ty-3Cf" customClass="TransitModeToolbarView" customModule="Septa" customModuleProvider="target">
+                                                <rect key="frame" x="420" y="0.0" width="100" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <string key="userLabel">
+Trolley</string>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Trolley"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="trolley"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="highlighted" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="0.27536286799999998" blue="0.22840918169999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="EVy-qK-zqw" userLabel="StackViewHeight"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="q9D-Nm-uO8" appends="YES" id="moN-kn-07I"/>
+                                        </connections>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.21176470589999999" green="0.2156862745" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="d5f-ZN-wAj" firstAttribute="height" secondItem="DcS-hm-WiD" secondAttribute="height" id="0Py-91-c4z" userLabel="StackViewHeight"/>
                                     <constraint firstItem="d5f-ZN-wAj" firstAttribute="leading" secondItem="DcS-hm-WiD" secondAttribute="leading" id="85c-e2-A7X" userLabel="StackViewLeft"/>
@@ -74,17 +97,17 @@
                                 </constraints>
                             </scrollView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftb-fD-61S" userLabel="TransitModeView">
-                                <rect key="frame" x="0.0" y="104" width="375" height="563"/>
+                                <rect key="frame" x="0.0" y="129" width="375" height="538"/>
                                 <connections>
                                     <segue destination="hJ3-jF-wzS" kind="embed" id="umr-JY-ryC"/>
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="DcS-hm-WiD" firstAttribute="top" secondItem="k7n-XP-fHe" secondAttribute="top" id="09N-4r-jAs" userLabel="ScrollViewTop"/>
                             <constraint firstItem="DcS-hm-WiD" firstAttribute="leading" secondItem="pKm-2F-CDF" secondAttribute="leading" id="EBc-4j-FcP" userLabel="ScrollViewLeft"/>
-                            <constraint firstItem="ftb-fD-61S" firstAttribute="top" secondItem="DcS-hm-WiD" secondAttribute="bottom" id="RSF-Cu-SEC" userLabel="ContainerViewTop"/>
+                            <constraint firstItem="ftb-fD-61S" firstAttribute="top" secondItem="DcS-hm-WiD" secondAttribute="bottom" constant="25" id="RSF-Cu-SEC" userLabel="ContainerViewTop"/>
                             <constraint firstItem="k7n-XP-fHe" firstAttribute="trailing" secondItem="ftb-fD-61S" secondAttribute="trailing" id="T8y-YZ-I2T" userLabel="ContainerRight"/>
                             <constraint firstItem="ftb-fD-61S" firstAttribute="leading" secondItem="k7n-XP-fHe" secondAttribute="leading" id="Ycs-nF-FcE" userLabel="ContainerLeft"/>
                             <constraint firstItem="k7n-XP-fHe" firstAttribute="bottom" secondItem="ftb-fD-61S" secondAttribute="bottom" id="eox-63-5jk" userLabel="ContainerBottom"/>
@@ -93,11 +116,33 @@
                         <viewLayoutGuide key="safeArea" id="k7n-XP-fHe"/>
                     </view>
                     <navigationItem key="navigationItem" title="Transit Mode" id="fIz-Cf-6OQ"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="scrollbar" destination="DcS-hm-WiD" id="jeJ-ei-Lgj"/>
                         <outlet property="transitModeView" destination="ftb-fD-61S" id="vev-qn-v1l"/>
+                        <outletCollection property="transitModesToolbarElements" destination="0Iw-Vt-aGu" collectionClass="NSMutableArray" id="EpI-G6-BTZ"/>
+                        <outletCollection property="transitModesToolbarElements" destination="Hox-B9-Hbl" collectionClass="NSMutableArray" id="I00-u0-FXk"/>
+                        <outletCollection property="transitModesToolbarElements" destination="AHW-A1-IWn" collectionClass="NSMutableArray" id="thX-SK-ef1"/>
+                        <outletCollection property="transitModesToolbarElements" destination="xvH-nt-tSZ" collectionClass="NSMutableArray" id="DgQ-uS-LDf"/>
+                        <outletCollection property="transitModesToolbarElements" destination="yy9-Ty-3Cf" collectionClass="NSMutableArray" id="rM3-Nl-MYJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFf-Fy-dWz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationItem title="Schedules" id="xUl-pf-jYs"/>
+                <navigationBar alpha="0.25" contentMode="scaleToFill" id="Dxo-2R-NKC">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="0.017948382969999999" blue="0.093025084879999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" red="1" green="0.96728127850000001" blue="0.35519992830000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <items>
+                        <navigationItem title="Title" id="J7r-M1-U8B"/>
+                    </items>
+                </navigationBar>
+                <tapGestureRecognizer id="q9D-Nm-uO8">
+                    <connections>
+                        <action selector="toolbarTapped:" destination="G8I-06-w6m" id="ZRh-Di-Xz1"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-564" y="198"/>
         </scene>
@@ -615,9 +660,10 @@ StartingLabelRight</string>
             <objects>
                 <viewController id="hJ3-jF-wzS" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tqb-NY-2oM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="563"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="538"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="EFf-eX-lqz"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zP7-Gx-gxp" userLabel="First Responder" sceneMemberID="firstResponder"/>
