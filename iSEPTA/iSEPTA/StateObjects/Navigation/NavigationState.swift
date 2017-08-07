@@ -6,10 +6,10 @@ import ReSwift
 
 struct NavigationState {
 
-    var selectedFeature: Feature
-    var activeFeature: Feature
+    let selectedFeature: Feature?
+    let activeFeature: Feature?
 
-    public init(selectedFeature: Feature, activeFeature: Feature) {
+    init(selectedFeature: Feature? = nil, activeFeature: Feature? = nil) {
         self.selectedFeature = selectedFeature
         self.activeFeature = activeFeature
     }
@@ -19,15 +19,21 @@ extension NavigationState: Equatable {}
 func ==(lhs: NavigationState, rhs: NavigationState) -> Bool {
     var areEqual = true
 
-    if lhs.selectedFeature == rhs.selectedFeature {
+    switch (lhs.selectedFeature, rhs.selectedFeature) {
+    case (.none, .none):
         areEqual = true
-    } else {
+    case (.some, .some):
+        areEqual = lhs.selectedFeature! == rhs.selectedFeature!
+    default:
         return false
     }
 
-    if lhs.activeFeature == rhs.activeFeature {
+    switch (lhs.activeFeature, rhs.activeFeature) {
+    case (.none, .none):
         areEqual = true
-    } else {
+    case (.some, .some):
+        areEqual = lhs.activeFeature! == rhs.activeFeature!
+    default:
         return false
     }
     return areEqual

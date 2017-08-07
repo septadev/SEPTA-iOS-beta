@@ -5,24 +5,24 @@ import XCTest
 
 /// AppStateReducerTests purpose: make sure the basic app state reducer works
 class AppStateReducerTests: XCTestCase {
-
-    /// Can I make a state and does it get created
-    func testTestMainReducer() {
-        mainStore.dispatch(ToggleFeature())
-        XCTAssertNotNil(mainStore.state)
-    }
-
-    func testAsyncCalback() {
-
-        let expectation = self.expectation(description: "myExpectation")
-        DispatchQueue.main.async {
-            expectation.fulfill()
-        }
-
-        waitForExpectations(timeout: 1) { error in
-            if let error = error {
-                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
-            }
-        }
-    }
+    //
+    //    /// Can I make a state and does it get created
+    //    func testTestMainReducer() {
+    //        mainStore.dispatch(ToggleFeature())
+    //        XCTAssertNotNil(mainStore.state)
+    //    }
+    //
+    //    func testAsyncCalback() {
+    //
+    //        let expectation = self.expectation(description: "myExpectation")
+    //        DispatchQueue.main.async {
+    //            expectation.fulfill()
+    //        }
+    //
+    //        waitForExpectations(timeout: 1) { error in
+    //            if let error = error {
+    //                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+    //            }
+    //        }
+    //    }
 }

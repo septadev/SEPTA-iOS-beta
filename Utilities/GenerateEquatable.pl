@@ -1,31 +1,20 @@
 use Modern::Perl;
 use Data::Dumper; 
+
 my $struct = q |
 
-	struct ScheduleState {
-		let transitMode: TransitMode
-		let routes: [Route]?
-		let selectedRoute: Route?
-		let availableStarts: [Stop]?
-		let selectedStart: Stop?
-		let availableStops: [Stop]?
-		let selectedStop: Stop?
-		let availableTrips: [Trip]?
-		let featureViewControllerDisplayState: FeatureViewControllerDisplayState?
+	struct NavigationState {
 
-		public init(transitMode: TransitMode, routes: [Route]?, selectedRoute: Route?, availableStarts: [Stop]?, selectedStart: Stop?, availableStops: [Stop]?, selectedStop: Stop?, availableTrips: [Trip]?) {
-			self.transitMode = transitMode
-			self.routes = routes
-			self.selectedRoute = selectedRoute
-			self.availableStarts = availableStarts
-			self.selectedStart = selectedStart
-			self.availableStops = availableStops
-			self.selectedStop = selectedStop
-			self.availableTrips = availableTrips
+		let selectedFeature: Feature?
+		let activeFeature: Feature?
+
+		public init(selectedFeature: Feature, activeFeature: Feature) {
+			self.selectedFeature = selectedFeature
+			self.activeFeature = activeFeature
 		}
 	}
-|;
 
+|;
 
 my @initVars = ();
 my @vars = ();
@@ -73,11 +62,12 @@ my $output = qq |
 say  $output;
 
 my $initparams = join ', ', map {"$_->[0]: $_->[1]"} @initVars;
+$initparams =~ s/(.\?)/$1 = nil/mg;
 my $initdeclares = join "\n", map {"self.$_->[0] = $_->[0]"} @initVars;
 
 
 say qq |
-	public init($initparams){
+	 init($initparams){
 	$initdeclares
 }|;
 

@@ -19,8 +19,11 @@ class MainNavigationController: UITabBarController, StoreSubscriber {
     }
 
     func newState(state: StoreSubscriberStateType) {
-        guard state.selectedFeature != state.activeFeature else { return }
-        switch state.selectedFeature {
+        guard let selectedFeature = state.selectedFeature else { return }
+        if let activeFeature = state.activeFeature, selectedFeature == activeFeature {
+            return // don
+        }
+        switch selectedFeature {
         case .schedules:
             let schedules = viewControllers?.filter { viewController in
                 if viewController is SchedulesNavigationController {

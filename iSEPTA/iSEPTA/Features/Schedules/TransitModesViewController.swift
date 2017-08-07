@@ -2,12 +2,11 @@
 
 import UIKit
 import SeptaSchedule
+import ReSwift
 
-class TransitModesViewController: UIViewController {
+class TransitModesViewController: UIViewController, StoreSubscriber {
     @IBOutlet weak var transitModeView: UIView!
-
     @IBOutlet weak var scrollbar: UIScrollView!
-
     @IBOutlet var transitModesToolbarElements: [TransitModeToolbarView]!
     override func viewDidLoad() {
 
@@ -19,6 +18,9 @@ class TransitModesViewController: UIViewController {
         navBar.backgroundColor = UIColor.clear
         navBar.shadowImage = UIImage()
         navBar.setBackgroundImage(UIImage(), for: .default)
+        store.subscribe(self) { subscription in
+            subscription.select(self.filterSubscription)
+        }
     }
 
     @IBAction func toolbarTapped(_ gr: UITapGestureRecognizer) {
@@ -38,5 +40,24 @@ class TransitModesViewController: UIViewController {
 
         let action = ScheduleActions.TransitModeSelected(transitMode: hitToolbar?.transitMode)
         store.dispatch(action)
+    }
+
+    typealias StoreSubscriberStateType = NavigationState
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        store.dispatch(SwitchFeatureCompleted(activeFeature: .schedules))
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        store.unsubscribe(self)
+    }
+
+    func filterSubscription(state: AppState) -> NavigationState {
+        return state.navigationState
+    }
+
+    func newState(state _: StoreSubscriberStateType) {
     }
 }

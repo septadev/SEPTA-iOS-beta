@@ -14,7 +14,6 @@
 		58290E411F372B51000CCF3C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E401F372B51000CCF3C /* AppState.swift */; };
 		58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E431F372BB9000CCF3C /* AppStateReducer.swift */; };
 		58290E4C1F372CAD000CCF3C /* AppStateReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E491F372CAD000CCF3C /* AppStateReducerTests.swift */; };
-		58290E4D1F372CAD000CCF3C /* ScheduleReducersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E4B1F372CAD000CCF3C /* ScheduleReducersTests.swift */; };
 		58290E501F372DDC000CCF3C /* NavigationActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E4F1F372DDC000CCF3C /* NavigationActions.swift */; };
 		58290E531F372F36000CCF3C /* ScheduleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E521F372F36000CCF3C /* ScheduleState.swift */; };
 		582F4EBB1F33B1120062A546 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E7E1F33B1120062A546 /* AppDelegate.swift */; };
@@ -114,7 +113,6 @@
 		5867465E1F35D483000F0D32 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746311F35D483000F0D32 /* ViewControllerTests.swift */; };
 		5867465F1F35D483000F0D32 /* AlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746351F35D483000F0D32 /* AlertTests.swift */; };
 		586746601F35D483000F0D32 /* NextToArriveViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867463A1F35D483000F0D32 /* NextToArriveViewControllerTests.swift */; };
-		586746611F35D483000F0D32 /* RoutesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867463D1F35D483000F0D32 /* RoutesViewControllerTests.swift */; };
 		586746621F35D483000F0D32 /* RoutesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867463E1F35D483000F0D32 /* RoutesViewModelTests.swift */; };
 		586746631F35D483000F0D32 /* RouteTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867463F1F35D483000F0D32 /* RouteTableViewCellTests.swift */; };
 		586746641F35D483000F0D32 /* RouteScheduleViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746411F35D483000F0D32 /* RouteScheduleViewControllerTests.swift */; };
@@ -133,10 +131,22 @@
 		586746711F35D484000F0D32 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746521F35D483000F0D32 /* MainViewControllerTests.swift */; };
 		586746721F35D484000F0D32 /* StoryboardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746531F35D483000F0D32 /* StoryboardsTests.swift */; };
 		586746731F35D484000F0D32 /* AppDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746551F35D483000F0D32 /* AppDelegateTests.swift */; };
-		586746741F35D484000F0D32 /* TransitModeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746571F35D483000F0D32 /* TransitModeTests.swift */; };
 		586746751F35D484000F0D32 /* ViewModelDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746581F35D483000F0D32 /* ViewModelDelegateTests.swift */; };
 		586746761F35D484000F0D32 /* DateFormattersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867465A1F35D483000F0D32 /* DateFormattersTests.swift */; };
 		586746771F35D484000F0D32 /* AssetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867465C1F35D483000F0D32 /* AssetTests.swift */; };
+		58B891B21F38B4AA00BFFEFA /* ActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891B11F38B4AA00BFFEFA /* ActionsTests.swift */; };
+		58B891BE1F38B51400BFFEFA /* FeatureViewControllerDisplayStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891B31F38B51400BFFEFA /* FeatureViewControllerDisplayStateTests.swift */; };
+		58B891BF1F38B51400BFFEFA /* ScheduleDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891B51F38B51400BFFEFA /* ScheduleDataTests.swift */; };
+		58B891C01F38B51400BFFEFA /* ScheduleRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891B61F38B51400BFFEFA /* ScheduleRequestTests.swift */; };
+		58B891C11F38B51400BFFEFA /* ScheduleStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891B71F38B51400BFFEFA /* ScheduleStateTests.swift */; };
+		58B891C21F38B51400BFFEFA /* FeatureViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891B91F38B51400BFFEFA /* FeatureViewControllerTests.swift */; };
+		58B891C31F38B51400BFFEFA /* NavigationStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891BA1F38B51400BFFEFA /* NavigationStateTests.swift */; };
+		58B891C41F38B51400BFFEFA /* TransitModeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891BB1F38B51400BFFEFA /* TransitModeTests.swift */; };
+		58B891C51F38B51400BFFEFA /* EmbeddedViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891BC1F38B51400BFFEFA /* EmbeddedViewTests.swift */; };
+		58B891C61F38B51400BFFEFA /* FeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891BD1F38B51400BFFEFA /* FeatureTests.swift */; };
+		58B891CB1F38B51E00BFFEFA /* ScheduleReducersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891C81F38B51E00BFFEFA /* ScheduleReducersTests.swift */; };
+		58B891CC1F38B51E00BFFEFA /* NavigationReducersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891CA1F38B51E00BFFEFA /* NavigationReducersTests.swift */; };
+		58B892041F38B54600BFFEFA /* MainNavigationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892031F38B54600BFFEFA /* MainNavigationControllerTests.swift */; };
 		58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C181FE1F34C557002748E9 /* Storyboards.swift */; };
 		58C182011F34C560002748E9 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C182001F34C560002748E9 /* Asset.swift */; };
 		58C182041F34C5B6002748E9 /* Localizeable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58C182061F34C5B6002748E9 /* Localizeable.strings */; };
@@ -144,6 +154,9 @@
 		58C2A05E1F38948400F0D6CA /* FeatureViewControllerDisplayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A05D1F38948400F0D6CA /* FeatureViewControllerDisplayState.swift */; };
 		58C2A0611F38964E00F0D6CA /* FeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0601F3895E000F0D6CA /* FeatureViewController.swift */; };
 		58C2A0631F38977A00F0D6CA /* EmbeddedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0621F38977A00F0D6CA /* EmbeddedView.swift */; };
+		58C2A0651F389B6400F0D6CA /* TransitModesToolBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0641F389B6400F0D6CA /* TransitModesToolBarViewController.swift */; };
+		58C2A0671F38A75700F0D6CA /* ScheduleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */; };
+		58C2A0691F38AA1B00F0D6CA /* ScheduleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0681F38AA1B00F0D6CA /* ScheduleData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,7 +197,6 @@
 		58290E401F372B51000CCF3C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		58290E431F372BB9000CCF3C /* AppStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateReducer.swift; sourceTree = "<group>"; };
 		58290E491F372CAD000CCF3C /* AppStateReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStateReducerTests.swift; sourceTree = "<group>"; };
-		58290E4B1F372CAD000CCF3C /* ScheduleReducersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleReducersTests.swift; sourceTree = "<group>"; };
 		58290E4F1F372DDC000CCF3C /* NavigationActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationActions.swift; sourceTree = "<group>"; };
 		58290E521F372F36000CCF3C /* ScheduleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleState.swift; sourceTree = "<group>"; };
 		582F4E7E1F33B1120062A546 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -250,7 +262,6 @@
 		586746311F35D483000F0D32 /* ViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
 		586746351F35D483000F0D32 /* AlertTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTests.swift; sourceTree = "<group>"; };
 		5867463A1F35D483000F0D32 /* NextToArriveViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextToArriveViewControllerTests.swift; sourceTree = "<group>"; };
-		5867463D1F35D483000F0D32 /* RoutesViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesViewControllerTests.swift; sourceTree = "<group>"; };
 		5867463E1F35D483000F0D32 /* RoutesViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesViewModelTests.swift; sourceTree = "<group>"; };
 		5867463F1F35D483000F0D32 /* RouteTableViewCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTableViewCellTests.swift; sourceTree = "<group>"; };
 		586746411F35D483000F0D32 /* RouteScheduleViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteScheduleViewControllerTests.swift; sourceTree = "<group>"; };
@@ -269,10 +280,22 @@
 		586746521F35D483000F0D32 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
 		586746531F35D483000F0D32 /* StoryboardsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardsTests.swift; sourceTree = "<group>"; };
 		586746551F35D483000F0D32 /* AppDelegateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateTests.swift; sourceTree = "<group>"; };
-		586746571F35D483000F0D32 /* TransitModeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitModeTests.swift; sourceTree = "<group>"; };
 		586746581F35D483000F0D32 /* ViewModelDelegateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelDelegateTests.swift; sourceTree = "<group>"; };
 		5867465A1F35D483000F0D32 /* DateFormattersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormattersTests.swift; sourceTree = "<group>"; };
 		5867465C1F35D483000F0D32 /* AssetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetTests.swift; sourceTree = "<group>"; };
+		58B891B11F38B4AA00BFFEFA /* ActionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionsTests.swift; sourceTree = "<group>"; };
+		58B891B31F38B51400BFFEFA /* FeatureViewControllerDisplayStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureViewControllerDisplayStateTests.swift; sourceTree = "<group>"; };
+		58B891B51F38B51400BFFEFA /* ScheduleDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDataTests.swift; sourceTree = "<group>"; };
+		58B891B61F38B51400BFFEFA /* ScheduleRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleRequestTests.swift; sourceTree = "<group>"; };
+		58B891B71F38B51400BFFEFA /* ScheduleStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleStateTests.swift; sourceTree = "<group>"; };
+		58B891B91F38B51400BFFEFA /* FeatureViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureViewControllerTests.swift; sourceTree = "<group>"; };
+		58B891BA1F38B51400BFFEFA /* NavigationStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationStateTests.swift; sourceTree = "<group>"; };
+		58B891BB1F38B51400BFFEFA /* TransitModeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitModeTests.swift; sourceTree = "<group>"; };
+		58B891BC1F38B51400BFFEFA /* EmbeddedViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbeddedViewTests.swift; sourceTree = "<group>"; };
+		58B891BD1F38B51400BFFEFA /* FeatureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureTests.swift; sourceTree = "<group>"; };
+		58B891C81F38B51E00BFFEFA /* ScheduleReducersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleReducersTests.swift; sourceTree = "<group>"; };
+		58B891CA1F38B51E00BFFEFA /* NavigationReducersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationReducersTests.swift; sourceTree = "<group>"; };
+		58B892031F38B54600BFFEFA /* MainNavigationControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationControllerTests.swift; sourceTree = "<group>"; };
 		58C181FE1F34C557002748E9 /* Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		58C182001F34C560002748E9 /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		58C182051F34C5B6002748E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizeable.strings; sourceTree = "<group>"; };
@@ -280,6 +303,9 @@
 		58C2A05D1F38948400F0D6CA /* FeatureViewControllerDisplayState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureViewControllerDisplayState.swift; sourceTree = "<group>"; };
 		58C2A0601F3895E000F0D6CA /* FeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeatureViewController.swift; path = Navigation/FeatureViewController.swift; sourceTree = "<group>"; };
 		58C2A0621F38977A00F0D6CA /* EmbeddedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedView.swift; sourceTree = "<group>"; };
+		58C2A0641F389B6400F0D6CA /* TransitModesToolBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitModesToolBarViewController.swift; sourceTree = "<group>"; };
+		58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRequest.swift; sourceTree = "<group>"; };
+		58C2A0681F38AA1B00F0D6CA /* ScheduleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleData.swift; sourceTree = "<group>"; };
 		58D9C3F01F3335BB002BE2E8 /* Septa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Septa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D9C4071F3335BB002BE2E8 /* iSEPTATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iSEPTATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D9C40D1F3335BB002BE2E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -347,18 +373,11 @@
 		58290E481F372CAD000CCF3C /* Reducers */ = {
 			isa = PBXGroup;
 			children = (
+				58B891C91F38B51E00BFFEFA /* Navigation Reducers */,
+				58B891C71F38B51E00BFFEFA /* Schedule Reducers */,
 				58290E491F372CAD000CCF3C /* AppStateReducerTests.swift */,
-				58290E4A1F372CAD000CCF3C /* New Group */,
-				58290E4B1F372CAD000CCF3C /* ScheduleReducersTests.swift */,
 			);
 			path = Reducers;
-			sourceTree = "<group>";
-		};
-		58290E4A1F372CAD000CCF3C /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		58290E4E1F372DC8000CCF3C /* Actions */ = {
@@ -484,6 +503,7 @@
 				582F4E9E1F33B1120062A546 /* SelectStop */,
 				582F4EA11F33B1120062A546 /* SelectStops */,
 				582F4EAA1F33B1120062A546 /* TransitModesViewController.swift */,
+				58C2A0641F389B6400F0D6CA /* TransitModesToolBarViewController.swift */,
 				5840D6DB1F37925A00C8CB76 /* SchedulesNavigationViewController.swift */,
 			);
 			path = Schedules;
@@ -582,6 +602,12 @@
 		5840D6CB1F375F5D00C8CB76 /* StateObjects */ = {
 			isa = PBXGroup;
 			children = (
+				58B891BC1F38B51400BFFEFA /* EmbeddedViewTests.swift */,
+				58B891BD1F38B51400BFFEFA /* FeatureTests.swift */,
+				58B891B31F38B51400BFFEFA /* FeatureViewControllerDisplayStateTests.swift */,
+				58B891B81F38B51400BFFEFA /* Navigation */,
+				58B891B41F38B51400BFFEFA /* Schedule */,
+				58B891BB1F38B51400BFFEFA /* TransitModeTests.swift */,
 				5840D6CC1F375F5D00C8CB76 /* AppStateTests.swift */,
 				5840D6CD1F375F5D00C8CB76 /* ScheduleTests.swift */,
 			);
@@ -650,7 +676,7 @@
 				586746381F35D483000F0D32 /* Favorites */,
 				586746391F35D483000F0D32 /* NextToArrive */,
 				5867463B1F35D483000F0D32 /* Schedules */,
-				586746501F35D483000F0D32 /* Settings */,
+				58B891CE1F38B53300BFFEFA /* Settings */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -714,7 +740,6 @@
 		5867463C1F35D483000F0D32 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
-				5867463D1F35D483000F0D32 /* RoutesViewControllerTests.swift */,
 				5867463E1F35D483000F0D32 /* RoutesViewModelTests.swift */,
 				5867463F1F35D483000F0D32 /* RouteTableViewCellTests.swift */,
 			);
@@ -754,16 +779,10 @@
 			path = SelectStops;
 			sourceTree = "<group>";
 		};
-		586746501F35D483000F0D32 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
 		586746511F35D483000F0D32 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				58B892031F38B54600BFFEFA /* MainNavigationControllerTests.swift */,
 				586746521F35D483000F0D32 /* MainViewControllerTests.swift */,
 				586746531F35D483000F0D32 /* StoryboardsTests.swift */,
 			);
@@ -781,7 +800,6 @@
 		586746561F35D483000F0D32 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				586746571F35D483000F0D32 /* TransitModeTests.swift */,
 				586746581F35D483000F0D32 /* ViewModelDelegateTests.swift */,
 			);
 			path = "View Models";
@@ -803,6 +821,56 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		58B891B01F38B4AA00BFFEFA /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				58B891B11F38B4AA00BFFEFA /* ActionsTests.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		58B891B41F38B51400BFFEFA /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				58B891B51F38B51400BFFEFA /* ScheduleDataTests.swift */,
+				58B891B61F38B51400BFFEFA /* ScheduleRequestTests.swift */,
+				58B891B71F38B51400BFFEFA /* ScheduleStateTests.swift */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		58B891B81F38B51400BFFEFA /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				58B891B91F38B51400BFFEFA /* FeatureViewControllerTests.swift */,
+				58B891BA1F38B51400BFFEFA /* NavigationStateTests.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		58B891C71F38B51E00BFFEFA /* Schedule Reducers */ = {
+			isa = PBXGroup;
+			children = (
+				58B891C81F38B51E00BFFEFA /* ScheduleReducersTests.swift */,
+			);
+			path = "Schedule Reducers";
+			sourceTree = "<group>";
+		};
+		58B891C91F38B51E00BFFEFA /* Navigation Reducers */ = {
+			isa = PBXGroup;
+			children = (
+				58B891CA1F38B51E00BFFEFA /* NavigationReducersTests.swift */,
+			);
+			path = "Navigation Reducers";
+			sourceTree = "<group>";
+		};
+		58B891CE1F38B53300BFFEFA /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		58C2A05A1F3892E300F0D6CA /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -815,6 +883,8 @@
 			isa = PBXGroup;
 			children = (
 				58290E521F372F36000CCF3C /* ScheduleState.swift */,
+				58C2A0681F38AA1B00F0D6CA /* ScheduleData.swift */,
+				58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -861,6 +931,7 @@
 		58D9C40A1F3335BB002BE2E8 /* iSEPTATests */ = {
 			isa = PBXGroup;
 			children = (
+				58B891B01F38B4AA00BFFEFA /* Actions */,
 				5840D6CB1F375F5D00C8CB76 /* StateObjects */,
 				58290E481F372CAD000CCF3C /* Reducers */,
 				5867465B1F35D483000F0D32 /* Assets */,
@@ -1143,6 +1214,7 @@
 			files = (
 				58C2A0631F38977A00F0D6CA /* EmbeddedView.swift in Sources */,
 				58C182011F34C560002748E9 /* Asset.swift in Sources */,
+				58C2A0651F389B6400F0D6CA /* TransitModesToolBarViewController.swift in Sources */,
 				582F4ED51F33B1120062A546 /* SelectStopsViewController.swift in Sources */,
 				58C2A05E1F38948400F0D6CA /* FeatureViewControllerDisplayState.swift in Sources */,
 				5840D6DA1F377E5B00C8CB76 /* NavigationReducers.swift in Sources */,
@@ -1161,6 +1233,7 @@
 				582F4EBD1F33B1120062A546 /* SingleStringCell.swift in Sources */,
 				582F4EBF1F33B1120062A546 /* Alert.swift in Sources */,
 				582F4EC51F33B1120062A546 /* NextToArriveViewController.swift in Sources */,
+				58C2A0671F38A75700F0D6CA /* ScheduleRequest.swift in Sources */,
 				5840D6E71F37EAEF00C8CB76 /* UserPreferenceKey.swift in Sources */,
 				582F4EDF1F33B1120062A546 /* MainViewController.swift in Sources */,
 				5840D6D51F376E5E00C8CB76 /* NavigationState.swift in Sources */,
@@ -1172,6 +1245,7 @@
 				5840D6E51F37EA1900C8CB76 /* ScheduleProvider.swift in Sources */,
 				58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */,
 				5840D6D71F37728B00C8CB76 /* Feature.swift in Sources */,
+				58C2A0691F38AA1B00F0D6CA /* ScheduleData.swift in Sources */,
 				58290E531F372F36000CCF3C /* ScheduleState.swift in Sources */,
 				5840D6E31F37E9FB00C8CB76 /* UserPreferences.swift in Sources */,
 				58C2A0611F38964E00F0D6CA /* FeatureViewController.swift in Sources */,
@@ -1194,32 +1268,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58B891BE1F38B51400BFFEFA /* FeatureViewControllerDisplayStateTests.swift in Sources */,
+				58B891C31F38B51400BFFEFA /* NavigationStateTests.swift in Sources */,
+				58B891C41F38B51400BFFEFA /* TransitModeTests.swift in Sources */,
 				5867466A1F35D484000F0D32 /* SelectedStopTypeTests.swift in Sources */,
 				586746661F35D484000F0D32 /* ScheduleTableViewCellTests.swift in Sources */,
+				58B891C21F38B51400BFFEFA /* FeatureViewControllerTests.swift in Sources */,
 				5867466D1F35D484000F0D32 /* SelectStopsViewControllerTests.swift in Sources */,
 				586746621F35D483000F0D32 /* RoutesViewModelTests.swift in Sources */,
-				58290E4D1F372CAD000CCF3C /* ScheduleReducersTests.swift in Sources */,
+				58B891C01F38B51400BFFEFA /* ScheduleRequestTests.swift in Sources */,
+				58B891C51F38B51400BFFEFA /* EmbeddedViewTests.swift in Sources */,
+				58B891C61F38B51400BFFEFA /* FeatureTests.swift in Sources */,
 				586746631F35D483000F0D32 /* RouteTableViewCellTests.swift in Sources */,
+				58B891C11F38B51400BFFEFA /* ScheduleStateTests.swift in Sources */,
 				5867466C1F35D484000F0D32 /* SelectStopRowTests.swift in Sources */,
 				586746721F35D484000F0D32 /* StoryboardsTests.swift in Sources */,
 				5867465F1F35D483000F0D32 /* AlertTests.swift in Sources */,
+				58B891CB1F38B51E00BFFEFA /* ScheduleReducersTests.swift in Sources */,
+				58B891CC1F38B51E00BFFEFA /* NavigationReducersTests.swift in Sources */,
 				58290E4C1F372CAD000CCF3C /* AppStateReducerTests.swift in Sources */,
 				586746701F35D484000F0D32 /* TransitModesViewControllerTests.swift in Sources */,
 				586746601F35D483000F0D32 /* NextToArriveViewControllerTests.swift in Sources */,
 				5867465E1F35D483000F0D32 /* ViewControllerTests.swift in Sources */,
 				5840D6D01F375F5D00C8CB76 /* ScheduleTests.swift in Sources */,
 				586746681F35D484000F0D32 /* SelectStopViewModelTests.swift in Sources */,
+				58B892041F38B54600BFFEFA /* MainNavigationControllerTests.swift in Sources */,
 				586746651F35D483000F0D32 /* RouteSheduleViewModelTests.swift in Sources */,
 				5867465D1F35D483000F0D32 /* SingleStringCellTests.swift in Sources */,
+				58B891B21F38B4AA00BFFEFA /* ActionsTests.swift in Sources */,
 				586746761F35D484000F0D32 /* DateFormattersTests.swift in Sources */,
 				586746751F35D484000F0D32 /* ViewModelDelegateTests.swift in Sources */,
-				586746741F35D484000F0D32 /* TransitModeTests.swift in Sources */,
 				5867466B1F35D484000F0D32 /* SelectStopCellTypeTests.swift in Sources */,
 				586746691F35D484000F0D32 /* RouteStopsTests.swift in Sources */,
 				5867466F1F35D484000F0D32 /* SelectStopsViewModelTests.swift in Sources */,
 				586746671F35D484000F0D32 /* SelectStopViewControllerTests.swift in Sources */,
+				58B891BF1F38B51400BFFEFA /* ScheduleDataTests.swift in Sources */,
 				5840D6CF1F375F5D00C8CB76 /* AppStateTests.swift in Sources */,
-				586746611F35D483000F0D32 /* RoutesViewControllerTests.swift in Sources */,
 				586746641F35D483000F0D32 /* RouteScheduleViewControllerTests.swift in Sources */,
 				5867466E1F35D484000F0D32 /* SelectStopsViewElementTests.swift in Sources */,
 				586746771F35D484000F0D32 /* AssetTests.swift in Sources */,

@@ -25,6 +25,11 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber {
         store.dispatch(SwitchFeatureCompleted(activeFeature: .schedules))
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        store.unsubscribe(self)
+    }
+
     func filterSubscription(state: AppState) -> NavigationState {
         return state.navigationState
     }

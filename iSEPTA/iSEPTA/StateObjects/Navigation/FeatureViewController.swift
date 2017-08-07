@@ -9,10 +9,6 @@
 import Foundation
 
 enum FeatureViewController {
-    /// Initial screen in schedules.  Holds the toolbar.  Navigation Controller
+    /// Initial screen in schedules.  Holds the toolbar. Root view controller
     case transitModesViewController
-    /// Fills the frame in TransitModes when a bus transit mode is selected
-    case busTransitModesViewController
-    /// Fills the frame in TransitModes when a rail transit mode is selected
-    case railTransitModesViewController
 }
