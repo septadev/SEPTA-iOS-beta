@@ -11,8 +11,24 @@ import ReSwift
 
 class ScheduleReducers {
 
-    class func main(action _: Action, state _: ScheduleState?) -> ScheduleState {
+    class func main(action _: Action, state: ScheduleState?) -> ScheduleState {
+        guard let state = state else { return initializeScheduleState() }
+        return initializeScheduleState()
+    }
 
-        return ScheduleState()
+    class func initializeScheduleState() -> ScheduleState {
+        let scheduleRequest = ScheduleRequest(transitMode: getDefaultTransitMode())
+
+        return ScheduleState(scheduleRequest: scheduleRequest)
+    }
+
+    class func getDefaultTransitMode() -> TransitMode? {
+        let prefProvider = stateProviders.preferenceProvider
+        if let transitModeString = prefProvider.stringPreference(forKey: .preferredTransitMode) {
+            return TransitMode(rawValue: transitModeString)
+        } else {
+            let defaultTransitMode = UserPreferenceKeys.preferredTransitMode.defaultValue()
+            return TransitMode(rawValue: defaultTransitMode ?? "")
+        }
     }
 }

@@ -105,7 +105,7 @@
 		5840D6E01F37E5FB00C8CB76 /* ScheduleReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6DF1F37E5FB00C8CB76 /* ScheduleReducers.swift */; };
 		5840D6E31F37E9FB00C8CB76 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E21F37E9FB00C8CB76 /* UserPreferences.swift */; };
 		5840D6E51F37EA1900C8CB76 /* ScheduleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E41F37EA1900C8CB76 /* ScheduleProvider.swift */; };
-		5840D6E71F37EAEF00C8CB76 /* UserPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E61F37EAEF00C8CB76 /* UserPreferenceKey.swift */; };
+		5840D6E71F37EAEF00C8CB76 /* UserPreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E61F37EAEF00C8CB76 /* UserPreferenceKeys.swift */; };
 		5840D6E91F37EE6500C8CB76 /* Providers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E81F37EE6500C8CB76 /* Providers.swift */; };
 		5840D6EE1F37F63800C8CB76 /* TransitModeToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */; };
 		5840D6F01F37F66B00C8CB76 /* SeptaDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6EF1F37F66B00C8CB76 /* SeptaDraw.swift */; };
@@ -147,6 +147,9 @@
 		58B891CB1F38B51E00BFFEFA /* ScheduleReducersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891C81F38B51E00BFFEFA /* ScheduleReducersTests.swift */; };
 		58B891CC1F38B51E00BFFEFA /* NavigationReducersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891CA1F38B51E00BFFEFA /* NavigationReducersTests.swift */; };
 		58B892041F38B54600BFFEFA /* MainNavigationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892031F38B54600BFFEFA /* MainNavigationControllerTests.swift */; };
+		58B892051F38BB9700BFFEFA /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58290E3E1F3729FE000CCF3C /* ReSwift.framework */; };
+		58B8920D1F38C64C00BFFEFA /* MockPreferenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B8920C1F38C64C00BFFEFA /* MockPreferenceProvider.swift */; };
+		58B8920F1F38CBA900BFFEFA /* GenericAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B8920E1F38CBA900BFFEFA /* GenericAction.swift */; };
 		58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C181FE1F34C557002748E9 /* Storyboards.swift */; };
 		58C182011F34C560002748E9 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C182001F34C560002748E9 /* Asset.swift */; };
 		58C182041F34C5B6002748E9 /* Localizeable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58C182061F34C5B6002748E9 /* Localizeable.strings */; };
@@ -253,7 +256,7 @@
 		5840D6DF1F37E5FB00C8CB76 /* ScheduleReducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleReducers.swift; sourceTree = "<group>"; };
 		5840D6E21F37E9FB00C8CB76 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		5840D6E41F37EA1900C8CB76 /* ScheduleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleProvider.swift; sourceTree = "<group>"; };
-		5840D6E61F37EAEF00C8CB76 /* UserPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferenceKey.swift; sourceTree = "<group>"; };
+		5840D6E61F37EAEF00C8CB76 /* UserPreferenceKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferenceKeys.swift; sourceTree = "<group>"; };
 		5840D6E81F37EE6500C8CB76 /* Providers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Providers.swift; sourceTree = "<group>"; };
 		5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitModeToolbarView.swift; sourceTree = "<group>"; };
 		5840D6EF1F37F66B00C8CB76 /* SeptaDraw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeptaDraw.swift; sourceTree = "<group>"; };
@@ -296,6 +299,9 @@
 		58B891C81F38B51E00BFFEFA /* ScheduleReducersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleReducersTests.swift; sourceTree = "<group>"; };
 		58B891CA1F38B51E00BFFEFA /* NavigationReducersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationReducersTests.swift; sourceTree = "<group>"; };
 		58B892031F38B54600BFFEFA /* MainNavigationControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationControllerTests.swift; sourceTree = "<group>"; };
+		58B892071F38BBD100BFFEFA /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = ../Carthage/Build/iOS/ReSwift.framework; sourceTree = "<group>"; };
+		58B8920C1F38C64C00BFFEFA /* MockPreferenceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPreferenceProvider.swift; sourceTree = "<group>"; };
+		58B8920E1F38CBA900BFFEFA /* GenericAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAction.swift; sourceTree = "<group>"; };
 		58C181FE1F34C557002748E9 /* Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		58C182001F34C560002748E9 /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		58C182051F34C5B6002748E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizeable.strings; sourceTree = "<group>"; };
@@ -335,6 +341,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58B892051F38BB9700BFFEFA /* ReSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,9 +632,8 @@
 		5840D6E11F37E9E300C8CB76 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
-				5840D6E21F37E9FB00C8CB76 /* UserPreferences.swift */,
+				58B8920A1F38C27700BFFEFA /* UserPreferences */,
 				5840D6E41F37EA1900C8CB76 /* ScheduleProvider.swift */,
-				5840D6E61F37EAEF00C8CB76 /* UserPreferenceKey.swift */,
 				5840D6E81F37EE6500C8CB76 /* Providers.swift */,
 			);
 			path = Providers;
@@ -871,6 +877,24 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		58B8920A1F38C27700BFFEFA /* UserPreferences */ = {
+			isa = PBXGroup;
+			children = (
+				5840D6E21F37E9FB00C8CB76 /* UserPreferences.swift */,
+				5840D6E61F37EAEF00C8CB76 /* UserPreferenceKeys.swift */,
+			);
+			path = UserPreferences;
+			sourceTree = "<group>";
+		};
+		58B8920B1F38C63B00BFFEFA /* MockObjects */ = {
+			isa = PBXGroup;
+			children = (
+				58B8920C1F38C64C00BFFEFA /* MockPreferenceProvider.swift */,
+				58B8920E1F38CBA900BFFEFA /* GenericAction.swift */,
+			);
+			path = MockObjects;
+			sourceTree = "<group>";
+		};
 		58C2A05A1F3892E300F0D6CA /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -892,6 +916,7 @@
 		58D9C3E71F3335BB002BE2E8 = {
 			isa = PBXGroup;
 			children = (
+				58B892071F38BBD100BFFEFA /* ReSwift.framework */,
 				58D9C3F21F3335BB002BE2E8 /* iSEPTA */,
 				58D9C40A1F3335BB002BE2E8 /* iSEPTATests */,
 				58D9C3F11F3335BB002BE2E8 /* Products */,
@@ -931,6 +956,7 @@
 		58D9C40A1F3335BB002BE2E8 /* iSEPTATests */ = {
 			isa = PBXGroup;
 			children = (
+				58B8920B1F38C63B00BFFEFA /* MockObjects */,
 				58B891B01F38B4AA00BFFEFA /* Actions */,
 				5840D6CB1F375F5D00C8CB76 /* StateObjects */,
 				58290E481F372CAD000CCF3C /* Reducers */,
@@ -1234,7 +1260,7 @@
 				582F4EBF1F33B1120062A546 /* Alert.swift in Sources */,
 				582F4EC51F33B1120062A546 /* NextToArriveViewController.swift in Sources */,
 				58C2A0671F38A75700F0D6CA /* ScheduleRequest.swift in Sources */,
-				5840D6E71F37EAEF00C8CB76 /* UserPreferenceKey.swift in Sources */,
+				5840D6E71F37EAEF00C8CB76 /* UserPreferenceKeys.swift in Sources */,
 				582F4EDF1F33B1120062A546 /* MainViewController.swift in Sources */,
 				5840D6D51F376E5E00C8CB76 /* NavigationState.swift in Sources */,
 				5840D6E91F37EE6500C8CB76 /* Providers.swift in Sources */,
@@ -1297,6 +1323,7 @@
 				5867465D1F35D483000F0D32 /* SingleStringCellTests.swift in Sources */,
 				58B891B21F38B4AA00BFFEFA /* ActionsTests.swift in Sources */,
 				586746761F35D484000F0D32 /* DateFormattersTests.swift in Sources */,
+				58B8920F1F38CBA900BFFEFA /* GenericAction.swift in Sources */,
 				586746751F35D484000F0D32 /* ViewModelDelegateTests.swift in Sources */,
 				5867466B1F35D484000F0D32 /* SelectStopCellTypeTests.swift in Sources */,
 				586746691F35D484000F0D32 /* RouteStopsTests.swift in Sources */,
@@ -1307,6 +1334,7 @@
 				586746641F35D483000F0D32 /* RouteScheduleViewControllerTests.swift in Sources */,
 				5867466E1F35D484000F0D32 /* SelectStopsViewElementTests.swift in Sources */,
 				586746771F35D484000F0D32 /* AssetTests.swift in Sources */,
+				58B8920D1F38C64C00BFFEFA /* MockPreferenceProvider.swift in Sources */,
 				586746711F35D484000F0D32 /* MainViewControllerTests.swift in Sources */,
 				586746731F35D484000F0D32 /* AppDelegateTests.swift in Sources */,
 			);
@@ -1561,6 +1589,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = L636S9JLLY;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Frameworks";
 				INFOPLIST_FILE = iSEPTATests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTATests;
@@ -1580,6 +1609,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = L636S9JLLY;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Frameworks";
 				INFOPLIST_FILE = iSEPTATests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTATests;

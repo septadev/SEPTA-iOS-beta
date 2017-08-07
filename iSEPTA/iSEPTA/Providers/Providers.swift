@@ -9,9 +9,9 @@
 import Foundation
 
 class StateProviders {
-    let preferenceProvider: UserPreferencesProviderProtocol
+    let preferenceProvider: PreferencesProviderProtocol
 
-    init(preferenceProvider: UserPreferencesProviderProtocol = UserPreferencesProvider.sharedInstance) {
+    init(preferenceProvider: PreferencesProviderProtocol = PreferencesProvider.sharedInstance) {
         self.preferenceProvider = preferenceProvider
     }
 }
