@@ -13,6 +13,11 @@ import ReSwift
 class SchedulesNavigationController: UINavigationController, StoreSubscriber {
     typealias StoreSubscriberStateType = NavigationState
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        store.dispatch(ScheduleActions.WillViewSchedules())
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         store.subscribe(self) { subscription in

@@ -12,11 +12,21 @@ import ReSwift
 
 class NavigationReducers {
     class func main(action: Action, state: NavigationState?) -> NavigationState {
-        let newState = state ?? NavigationState(selectedFeature: .noneSelected, activeFeature: .noneSelected)
-        return switchTabs(action: action, state: newState)
+        guard let newState = state else { return NavigationState(selectedFeature: .noneSelected, activeFeature: .noneSelected) }
+        guard let action = action as? NavigationAction else { return newState }
+        return handleNavigationActions(action: action, state: newState)
     }
 
-    class func switchTabs(action: Action, state: NavigationState) -> NavigationState {
+    class func handleNavigationActions(action: NavigationAction, state: NavigationState) -> NavigationState {
+        switch action {
+        case let action as SwitchFeature:
+            return switchTabs(action: action, state: state)
+        default:
+            return state
+        }
+    }
+
+    class func switchTabs(action: NavigationAction, state: NavigationState) -> NavigationState {
 
         switch action {
         case let action as SwitchFeature:
@@ -24,7 +34,7 @@ class NavigationReducers {
         case let action as SwitchFeatureCompleted:
             return NavigationState(selectedFeature: state.selectedFeature, activeFeature: action.activeFeature)
         default:
-            return NavigationState(selectedFeature: .noneSelected, activeFeature: .noneSelected)
+            return state
         }
     }
 }

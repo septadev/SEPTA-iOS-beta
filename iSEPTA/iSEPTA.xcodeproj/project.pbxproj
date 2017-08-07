@@ -150,6 +150,8 @@
 		58B892051F38BB9700BFFEFA /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58290E3E1F3729FE000CCF3C /* ReSwift.framework */; };
 		58B8920D1F38C64C00BFFEFA /* MockPreferenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B8920C1F38C64C00BFFEFA /* MockPreferenceProvider.swift */; };
 		58B8920F1F38CBA900BFFEFA /* GenericAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B8920E1F38CBA900BFFEFA /* GenericAction.swift */; };
+		58B892121F38E44000BFFEFA /* ScheduleActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892101F38E44000BFFEFA /* ScheduleActionsTests.swift */; };
+		58B892131F38E44000BFFEFA /* NavigationActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892111F38E44000BFFEFA /* NavigationActionsTests.swift */; };
 		58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C181FE1F34C557002748E9 /* Storyboards.swift */; };
 		58C182011F34C560002748E9 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C182001F34C560002748E9 /* Asset.swift */; };
 		58C182041F34C5B6002748E9 /* Localizeable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58C182061F34C5B6002748E9 /* Localizeable.strings */; };
@@ -302,6 +304,8 @@
 		58B892071F38BBD100BFFEFA /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = ../Carthage/Build/iOS/ReSwift.framework; sourceTree = "<group>"; };
 		58B8920C1F38C64C00BFFEFA /* MockPreferenceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPreferenceProvider.swift; sourceTree = "<group>"; };
 		58B8920E1F38CBA900BFFEFA /* GenericAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAction.swift; sourceTree = "<group>"; };
+		58B892101F38E44000BFFEFA /* ScheduleActionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleActionsTests.swift; sourceTree = "<group>"; };
+		58B892111F38E44000BFFEFA /* NavigationActionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationActionsTests.swift; sourceTree = "<group>"; };
 		58C181FE1F34C557002748E9 /* Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		58C182001F34C560002748E9 /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		58C182051F34C5B6002748E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizeable.strings; sourceTree = "<group>"; };
@@ -830,6 +834,8 @@
 		58B891B01F38B4AA00BFFEFA /* Actions */ = {
 			isa = PBXGroup;
 			children = (
+				58B892111F38E44000BFFEFA /* NavigationActionsTests.swift */,
+				58B892101F38E44000BFFEFA /* ScheduleActionsTests.swift */,
 				58B891B11F38B4AA00BFFEFA /* ActionsTests.swift */,
 			);
 			path = Actions;
@@ -1296,6 +1302,7 @@
 			files = (
 				58B891BE1F38B51400BFFEFA /* FeatureViewControllerDisplayStateTests.swift in Sources */,
 				58B891C31F38B51400BFFEFA /* NavigationStateTests.swift in Sources */,
+				58B892121F38E44000BFFEFA /* ScheduleActionsTests.swift in Sources */,
 				58B891C41F38B51400BFFEFA /* TransitModeTests.swift in Sources */,
 				5867466A1F35D484000F0D32 /* SelectedStopTypeTests.swift in Sources */,
 				586746661F35D484000F0D32 /* ScheduleTableViewCellTests.swift in Sources */,
@@ -1315,6 +1322,7 @@
 				58290E4C1F372CAD000CCF3C /* AppStateReducerTests.swift in Sources */,
 				586746701F35D484000F0D32 /* TransitModesViewControllerTests.swift in Sources */,
 				586746601F35D483000F0D32 /* NextToArriveViewControllerTests.swift in Sources */,
+				58B892131F38E44000BFFEFA /* NavigationActionsTests.swift in Sources */,
 				5867465E1F35D483000F0D32 /* ViewControllerTests.swift in Sources */,
 				5840D6D01F375F5D00C8CB76 /* ScheduleTests.swift in Sources */,
 				586746681F35D484000F0D32 /* SelectStopViewModelTests.swift in Sources */,

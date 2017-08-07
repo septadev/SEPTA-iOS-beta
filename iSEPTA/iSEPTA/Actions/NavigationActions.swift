@@ -3,12 +3,14 @@
 import Foundation
 import ReSwift
 
-struct SwitchFeature: Action {
+protocol NavigationAction: Action {}
+
+struct SwitchFeature: NavigationAction {
 
     let selectedFeature: Feature
 }
 
-struct SwitchFeatureCompleted: Action {
+struct SwitchFeatureCompleted: NavigationAction {
 
     let activeFeature: Feature
 }
