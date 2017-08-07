@@ -13,7 +13,7 @@
         <!--Schedules-->
         <scene sceneID="9Tf-Ia-A2O">
             <objects>
-                <viewController title="Schedules" id="G8I-06-w6m" customClass="TransitModesViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Schedules" id="G8I-06-w6m" customClass="SelectSchedulesViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pKm-2F-CDF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,11 +27,45 @@
                                     <segue destination="zb9-QJ-YIl" kind="embed" id="r9L-Qz-PAU"/>
                                 </connections>
                             </containerView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JWx-ou-dAj">
+                                <rect key="frame" x="0.0" y="104" width="375" height="563"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="singleStringCell" id="zn7-Mx-Yv7" customClass="SingleStringCell" customModule="Septa" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zn7-Mx-Yv7" id="v2j-wI-BVS">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCd-TC-F1i">
+                                                    <rect key="frame" x="23" y="11" width="324" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="wCd-TC-F1i" id="n1N-uW-Pof"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="G8I-06-w6m" id="ZfZ-hj-wnb"/>
+                                    <outlet property="delegate" destination="G8I-06-w6m" id="XFJ-ih-poV"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="k7n-XP-fHe" firstAttribute="trailing" secondItem="JWx-ou-dAj" secondAttribute="trailing" id="EHj-Hg-T2s" userLabel="TableViewRight"/>
                             <constraint firstItem="qxS-RK-Hb9" firstAttribute="top" secondItem="k7n-XP-fHe" secondAttribute="top" id="L6P-6i-Rfe" userLabel="ToolbarTop"/>
+                            <constraint firstItem="JWx-ou-dAj" firstAttribute="top" secondItem="qxS-RK-Hb9" secondAttribute="bottom" id="buP-kd-US6" userLabel="TableViewTop"/>
+                            <constraint firstItem="JWx-ou-dAj" firstAttribute="leading" secondItem="k7n-XP-fHe" secondAttribute="leading" id="eRO-KX-DF6" userLabel="TableViewLeft"/>
                             <constraint firstItem="qxS-RK-Hb9" firstAttribute="leading" secondItem="pKm-2F-CDF" secondAttribute="leading" id="ei4-qx-ur5" userLabel="ToolbarLeft"/>
+                            <constraint firstItem="k7n-XP-fHe" firstAttribute="bottom" secondItem="JWx-ou-dAj" secondAttribute="bottom" id="emu-4A-2kJ" userLabel="TableViewBottom"/>
                             <constraint firstAttribute="trailing" secondItem="qxS-RK-Hb9" secondAttribute="trailing" id="ymX-Um-K6U" userLabel="ToolbarRight"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="k7n-XP-fHe"/>
@@ -39,13 +73,27 @@
                     <navigationItem key="navigationItem" title="Transit Mode" id="fIz-Cf-6OQ"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="tableView" destination="JWx-ou-dAj" id="E4N-FK-sNY"/>
+                        <outlet property="tableViewFooter" destination="t3k-vt-DEG" id="GMN-YW-enj"/>
+                        <outlet property="tableViewHeader" destination="1c9-Es-ZDV" id="Wwf-2z-Mox"/>
                         <outletCollection property="transitModesToolbarElements" destination="xvH-nt-tSZ" collectionClass="NSMutableArray" id="DgQ-uS-LDf"/>
                         <outletCollection property="transitModesToolbarElements" destination="AHW-A1-IWn" collectionClass="NSMutableArray" id="thX-SK-ef1"/>
                         <outletCollection property="transitModesToolbarElements" destination="Hox-B9-Hbl" collectionClass="NSMutableArray" id="I00-u0-FXk"/>
-                        <outletCollection property="transitModesToolbarElements" destination="yy9-Ty-3Cf" collectionClass="NSMutableArray" id="rM3-Nl-MYJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFf-Fy-dWz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="1c9-Es-ZDV" userLabel="TableViewHeader">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="10"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <viewLayoutGuide key="safeArea" id="59y-47-sNx"/>
+                </view>
+                <view contentMode="scaleToFill" id="t3k-vt-DEG" userLabel="TableViewFooter">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <viewLayoutGuide key="safeArea" id="eBi-Cq-E5z"/>
+                </view>
                 <navigationItem title="Schedules" id="xUl-pf-jYs"/>
                 <navigationBar alpha="0.25" contentMode="scaleToFill" id="Dxo-2R-NKC">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -57,7 +105,7 @@
                     </items>
                 </navigationBar>
             </objects>
-            <point key="canvasLocation" x="-564" y="198"/>
+            <point key="canvasLocation" x="-564" y="197.45127436281859"/>
         </scene>
         <!--Routes-->
         <scene sceneID="ITd-yd-8p1">
@@ -568,10 +616,10 @@ StartingLabelRight</string>
             </objects>
             <point key="canvasLocation" x="-1892" y="221"/>
         </scene>
-        <!--Transit Modes Toolbar View Controller-->
+        <!--ToolBar-->
         <scene sceneID="6r3-DF-WcU">
             <objects>
-                <viewController id="zb9-QJ-YIl" customClass="TransitModesToolbarViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ToolBar" id="zb9-QJ-YIl" customClass="TransitModesToolbarViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BiL-t2-ODt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

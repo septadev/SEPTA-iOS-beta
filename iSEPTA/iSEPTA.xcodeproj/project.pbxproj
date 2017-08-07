@@ -45,7 +45,7 @@
 		582F4ED51F33B1120062A546 /* SelectStopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA71F33B1120062A546 /* SelectStopsViewController.swift */; };
 		582F4ED61F33B1120062A546 /* SelectStopsViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA81F33B1120062A546 /* SelectStopsViewElement.swift */; };
 		582F4ED71F33B1120062A546 /* SelectStopsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA91F33B1120062A546 /* SelectStopsViewModel.swift */; };
-		582F4ED81F33B1120062A546 /* TransitModesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EAA1F33B1120062A546 /* TransitModesViewController.swift */; };
+		582F4ED81F33B1120062A546 /* SelectSchedulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EAA1F33B1120062A546 /* SelectSchedulesViewController.swift */; };
 		582F4ED91F33B1120062A546 /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EAC1F33B1120062A546 /* settings.storyboard */; };
 		582F4EDB1F33B1120062A546 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EAF1F33B1120062A546 /* Assets.xcassets */; };
 		582F4EDD1F33B1120062A546 /* ViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EB21F33B1120062A546 /* ViewModelDelegate.swift */; };
@@ -68,7 +68,7 @@
 		583435771F34E82E0021EC6D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E881F33B1120062A546 /* Alert.swift */; };
 		583435781F34E82E0021EC6D /* NextToArriveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E921F33B1120062A546 /* NextToArriveViewController.swift */; };
 		583435791F34E82E0021EC6D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EB61F33B1120062A546 /* MainViewController.swift */; };
-		5834357B1F34E82E0021EC6D /* TransitModesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EAA1F33B1120062A546 /* TransitModesViewController.swift */; };
+		5834357B1F34E82E0021EC6D /* SelectSchedulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EAA1F33B1120062A546 /* SelectSchedulesViewController.swift */; };
 		5834357C1F34E82E0021EC6D /* SelectStopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA01F33B1120062A546 /* SelectStopViewModel.swift */; };
 		5834357D1F34E82E0021EC6D /* RoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E961F33B1120062A546 /* RoutesViewModel.swift */; };
 		5834357E1F34E82E0021EC6D /* RouteSheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9B1F33B1120062A546 /* RouteSheduleViewModel.swift */; };
@@ -152,6 +152,8 @@
 		58B8920F1F38CBA900BFFEFA /* GenericAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B8920E1F38CBA900BFFEFA /* GenericAction.swift */; };
 		58B892121F38E44000BFFEFA /* ScheduleActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892101F38E44000BFFEFA /* ScheduleActionsTests.swift */; };
 		58B892131F38E44000BFFEFA /* NavigationActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892111F38E44000BFFEFA /* NavigationActionsTests.swift */; };
+		58B892151F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892141F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift */; };
+		58B892171F38F7E700BFFEFA /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892161F38F7E700BFFEFA /* Strings.swift */; };
 		58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C181FE1F34C557002748E9 /* Storyboards.swift */; };
 		58C182011F34C560002748E9 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C182001F34C560002748E9 /* Asset.swift */; };
 		58C182041F34C5B6002748E9 /* Localizeable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58C182061F34C5B6002748E9 /* Localizeable.strings */; };
@@ -233,7 +235,7 @@
 		582F4EA71F33B1120062A546 /* SelectStopsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopsViewController.swift; sourceTree = "<group>"; };
 		582F4EA81F33B1120062A546 /* SelectStopsViewElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopsViewElement.swift; sourceTree = "<group>"; };
 		582F4EA91F33B1120062A546 /* SelectStopsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopsViewModel.swift; sourceTree = "<group>"; };
-		582F4EAA1F33B1120062A546 /* TransitModesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitModesViewController.swift; sourceTree = "<group>"; };
+		582F4EAA1F33B1120062A546 /* SelectSchedulesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectSchedulesViewController.swift; sourceTree = "<group>"; };
 		582F4EAC1F33B1120062A546 /* settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = settings.storyboard; sourceTree = "<group>"; };
 		582F4EAD1F33B1120062A546 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		582F4EAF1F33B1120062A546 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -306,6 +308,8 @@
 		58B8920E1F38CBA900BFFEFA /* GenericAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAction.swift; sourceTree = "<group>"; };
 		58B892101F38E44000BFFEFA /* ScheduleActionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleActionsTests.swift; sourceTree = "<group>"; };
 		58B892111F38E44000BFFEFA /* NavigationActionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationActionsTests.swift; sourceTree = "<group>"; };
+		58B892141F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSchedulesViewModel.swift; sourceTree = "<group>"; };
+		58B892161F38F7E700BFFEFA /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		58C181FE1F34C557002748E9 /* Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		58C182001F34C560002748E9 /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		58C182051F34C5B6002748E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizeable.strings; sourceTree = "<group>"; };
@@ -423,13 +427,13 @@
 			path = Utlities;
 			sourceTree = "<group>";
 		};
-		582F4E811F33B1120062A546 /* Views */ = {
+		582F4E811F33B1120062A546 /* Common Views */ = {
 			isa = PBXGroup;
 			children = (
 				5840D6EA1F37F60D00C8CB76 /* Toolbars */,
 				582F4E821F33B1120062A546 /* Cells */,
 			);
-			path = Views;
+			path = "Common Views";
 			sourceTree = "<group>";
 		};
 		582F4E821F33B1120062A546 /* Cells */ = {
@@ -513,7 +517,8 @@
 				582F4E9D1F33B1120062A546 /* schedules.storyboard */,
 				582F4E9E1F33B1120062A546 /* SelectStop */,
 				582F4EA11F33B1120062A546 /* SelectStops */,
-				582F4EAA1F33B1120062A546 /* TransitModesViewController.swift */,
+				582F4EAA1F33B1120062A546 /* SelectSchedulesViewController.swift */,
+				58B892141F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift */,
 				58C2A0641F389B6400F0D6CA /* TransitModesToolBarViewController.swift */,
 				5840D6DB1F37925A00C8CB76 /* SchedulesNavigationViewController.swift */,
 			);
@@ -598,6 +603,7 @@
 				582F4EB61F33B1120062A546 /* MainViewController.swift */,
 				58C182061F34C5B6002748E9 /* Localizeable.strings */,
 				5840D6D21F376D9C00C8CB76 /* MainNavigationController.swift */,
+				58B892161F38F7E700BFFEFA /* Strings.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -954,7 +960,7 @@
 				582F4EB31F33B1120062A546 /* Main */,
 				582F4E7F1F33B1120062A546 /* Utlities */,
 				582F4EB01F33B1120062A546 /* View Models */,
-				582F4E811F33B1120062A546 /* Views */,
+				582F4E811F33B1120062A546 /* Common Views */,
 			);
 			path = iSEPTA;
 			sourceTree = "<group>";
@@ -1227,7 +1233,7 @@
 				583435781F34E82E0021EC6D /* NextToArriveViewController.swift in Sources */,
 				583435791F34E82E0021EC6D /* MainViewController.swift in Sources */,
 				5840D6C51F374FDB00C8CB76 /* AppStateReducer.swift in Sources */,
-				5834357B1F34E82E0021EC6D /* TransitModesViewController.swift in Sources */,
+				5834357B1F34E82E0021EC6D /* SelectSchedulesViewController.swift in Sources */,
 				5834357C1F34E82E0021EC6D /* SelectStopViewModel.swift in Sources */,
 				5840D6C71F374FFC00C8CB76 /* AppState.swift in Sources */,
 				5834357D1F34E82E0021EC6D /* RoutesViewModel.swift in Sources */,
@@ -1257,6 +1263,7 @@
 				582F4ED11F33B1120062A546 /* SelectedStopType.swift in Sources */,
 				5840D6D31F376D9C00C8CB76 /* MainNavigationController.swift in Sources */,
 				5840D6EE1F37F63800C8CB76 /* TransitModeToolbarView.swift in Sources */,
+				58B892151F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift in Sources */,
 				582F4ECC1F33B1120062A546 /* ScheduleTableViewCell.swift in Sources */,
 				582F4ED01F33B1120062A546 /* RouteStops.swift in Sources */,
 				582F4ED71F33B1120062A546 /* SelectStopsViewModel.swift in Sources */,
@@ -1270,7 +1277,7 @@
 				582F4EDF1F33B1120062A546 /* MainViewController.swift in Sources */,
 				5840D6D51F376E5E00C8CB76 /* NavigationState.swift in Sources */,
 				5840D6E91F37EE6500C8CB76 /* Providers.swift in Sources */,
-				582F4ED81F33B1120062A546 /* TransitModesViewController.swift in Sources */,
+				582F4ED81F33B1120062A546 /* SelectSchedulesViewController.swift in Sources */,
 				582F4ECF1F33B1120062A546 /* SelectStopViewModel.swift in Sources */,
 				5840D6DE1F37E4B100C8CB76 /* TransitMode.swift in Sources */,
 				582F4EC71F33B1120062A546 /* RoutesViewModel.swift in Sources */,
@@ -1292,6 +1299,7 @@
 				58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */,
 				582F4EC61F33B1120062A546 /* RoutesViewController.swift in Sources */,
 				5840D6F01F37F66B00C8CB76 /* SeptaDraw.swift in Sources */,
+				58B892171F38F7E700BFFEFA /* Strings.swift in Sources */,
 				582F4ECA1F33B1120062A546 /* RouteScheduleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

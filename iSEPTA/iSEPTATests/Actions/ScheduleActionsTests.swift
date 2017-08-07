@@ -1,5 +1,4 @@
-
-// SEPTA.org, created on 8/7/2017.
+// Septa. 2017
 
 import XCTest
 @testable import Septa
@@ -25,7 +24,7 @@ class ScheduleActionsTests: XCTestCase {
         XCTAssertEqual(selectedTransitMode, actualTransitMode)
     }
 
-    /// When selecting a transit mode, the model should be updated
+    /// When selecting a transit mode, preferences should be updated
     func testTransitmodeselectedProducesModelUpdate_AndUpdatesPreferences() {
         store.dispatch(ScheduleActions.WillViewSchedules())
         let selectedTransitMode = TransitMode.nhsl

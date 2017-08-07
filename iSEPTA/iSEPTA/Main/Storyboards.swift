@@ -45,8 +45,8 @@ enum StoryboardScene {
     enum Main: StoryboardSceneType {
         static let storyboardName = "Main"
 
-        static func initialViewController() -> UITabBarController {
-            guard let vc = storyboard().instantiateInitialViewController() as? UITabBarController else {
+        static func initialViewController() -> MainNavigationController {
+            guard let vc = storyboard().instantiateInitialViewController() as? MainNavigationController else {
                 fatalError("Failed to instantiate initialViewController for \(storyboardName)")
             }
             return vc
@@ -140,8 +140,8 @@ enum StoryboardScene {
     enum Schedules: StoryboardSceneType {
         static let storyboardName = "schedules"
 
-        static func initialViewController() -> UINavigationController {
-            guard let vc = storyboard().instantiateInitialViewController() as? UINavigationController else {
+        static func initialViewController() -> SchedulesNavigationController {
+            guard let vc = storyboard().instantiateInitialViewController() as? SchedulesNavigationController else {
                 fatalError("Failed to instantiate initialViewController for \(storyboardName)")
             }
             return vc
@@ -164,7 +164,6 @@ enum StoryboardSegue {
     enum Schedules: String, StoryboardSegueType {
         case selectStop
         case selectStops
-        case showRoutes
         case showSchedule
         case unwindToSelectStops
     }
