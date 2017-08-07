@@ -36,7 +36,7 @@ class TransitModesViewController: UIViewController {
 
         _ = transitModesToolbarElements.map { $0.setNeedsDisplay() }
 
-        let action = TransitModeSelected(transitMode: hitToolbar?.transitMode)
+        let action = ScheduleActions.TransitModeSelected(transitMode: hitToolbar?.transitMode)
         store.dispatch(action)
     }
 }

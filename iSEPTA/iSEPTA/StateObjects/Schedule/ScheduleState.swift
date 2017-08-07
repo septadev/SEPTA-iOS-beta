@@ -12,8 +12,9 @@ struct ScheduleState {
     let availableStops: [Stop]?
     let selectedStop: Stop?
     let availableTrips: [Trip]?
+    let featureViewControllerDisplayState: FeatureViewControllerDisplayState?
 
-    public init(transitMode: TransitMode, routes: [Route]?, selectedRoute: Route?, availableStarts: [Stop]?, selectedStart: Stop?, availableStops: [Stop]?, selectedStop: Stop?, availableTrips: [Trip]?) {
+    public init(transitMode: TransitMode, routes: [Route]?, selectedRoute: Route?, availableStarts: [Stop]?, selectedStart: Stop?, availableStops: [Stop]?, selectedStop: Stop?, availableTrips: [Trip]?, featureViewControllerDisplayState: FeatureViewControllerDisplayState?) {
         self.transitMode = transitMode
         self.routes = routes
         self.selectedRoute = selectedRoute
@@ -22,6 +23,7 @@ struct ScheduleState {
         self.availableStops = availableStops
         self.selectedStop = selectedStop
         self.availableTrips = availableTrips
+        self.featureViewControllerDisplayState = featureViewControllerDisplayState
     }
 }
 
@@ -94,6 +96,15 @@ func ==(lhs: ScheduleState, rhs: ScheduleState) -> Bool {
         areEqual = true
     case (.some, .some):
         areEqual = lhs.availableTrips! == rhs.availableTrips!
+    default:
+        return false
+    }
+
+    switch (lhs.featureViewControllerDisplayState, rhs.featureViewControllerDisplayState) {
+    case (.none, .none):
+        areEqual = true
+    case (.some, .some):
+        areEqual = lhs.featureViewControllerDisplayState! == rhs.featureViewControllerDisplayState!
     default:
         return false
     }

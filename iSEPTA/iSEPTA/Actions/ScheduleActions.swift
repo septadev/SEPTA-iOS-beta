@@ -9,7 +9,13 @@
 import Foundation
 import ReSwift
 
-struct TransitModeSelected: Action {
+class ScheduleActions {
+    struct TransitModeSelected: Action {
 
-    let transitMode: TransitMode?
+        let transitMode: TransitMode?
+    }
+
+    struct TransitModeDisplayed {
+        let transitMode: TransitMode?
+    }
 }

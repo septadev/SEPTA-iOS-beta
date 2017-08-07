@@ -13,6 +13,6 @@ class ScheduleReducers {
 
     class func main(action _: Action, state _: ScheduleState?) -> ScheduleState {
 
-        return ScheduleState(transitMode: .bus, routes: nil, selectedRoute: nil, availableStarts: nil, selectedStart: nil, availableStops: nil, selectedStop: nil, availableTrips: nil)
+        return ScheduleState(transitMode: .bus, routes: nil, selectedRoute: nil, availableStarts: nil, selectedStart: nil, availableStops: nil, selectedStop: nil, availableTrips: nil, featureViewControllerDisplayState: nil)
     }
 }
