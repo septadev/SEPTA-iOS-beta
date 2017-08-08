@@ -94,11 +94,9 @@
 		5840D6C41F374FB100C8CB76 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58290E3E1F3729FE000CCF3C /* ReSwift.framework */; };
 		5840D6C51F374FDB00C8CB76 /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E431F372BB9000CCF3C /* AppStateReducer.swift */; };
 		5840D6C71F374FFC00C8CB76 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E401F372B51000CCF3C /* AppState.swift */; };
-		5840D6CF1F375F5D00C8CB76 /* AppStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6CC1F375F5D00C8CB76 /* AppStateTests.swift */; };
-		5840D6D01F375F5D00C8CB76 /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6CD1F375F5D00C8CB76 /* ScheduleTests.swift */; };
 		5840D6D31F376D9C00C8CB76 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D21F376D9C00C8CB76 /* MainNavigationController.swift */; };
 		5840D6D51F376E5E00C8CB76 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D41F376E5E00C8CB76 /* NavigationState.swift */; };
-		5840D6D71F37728B00C8CB76 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D61F37728B00C8CB76 /* Feature.swift */; };
+		5840D6D71F37728B00C8CB76 /* FeatureNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D61F37728B00C8CB76 /* FeatureNavController.swift */; };
 		5840D6DA1F377E5B00C8CB76 /* NavigationReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D91F377E5B00C8CB76 /* NavigationReducers.swift */; };
 		5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6DB1F37925A00C8CB76 /* SchedulesNavigationViewController.swift */; };
 		5840D6DE1F37E4B100C8CB76 /* TransitMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6DD1F37E4B100C8CB76 /* TransitMode.swift */; };
@@ -112,42 +110,16 @@
 		585572861F39499D004ABCD6 /* Color+Septa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585572841F3948D3004ABCD6 /* Color+Septa.swift */; };
 		585572871F39499D004ABCD6 /* Color+Septa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585572841F3948D3004ABCD6 /* Color+Septa.swift */; };
 		585572891F395990004ABCD6 /* MockSingleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585572881F395990004ABCD6 /* MockSingleCell.swift */; };
-		5867465D1F35D483000F0D32 /* SingleStringCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867462F1F35D483000F0D32 /* SingleStringCellTests.swift */; };
-		5867465E1F35D483000F0D32 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746311F35D483000F0D32 /* ViewControllerTests.swift */; };
-		5867465F1F35D483000F0D32 /* AlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746351F35D483000F0D32 /* AlertTests.swift */; };
-		586746601F35D483000F0D32 /* NextToArriveViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867463A1F35D483000F0D32 /* NextToArriveViewControllerTests.swift */; };
 		586746621F35D483000F0D32 /* RoutesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867463E1F35D483000F0D32 /* RoutesViewModelTests.swift */; };
-		586746631F35D483000F0D32 /* RouteTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867463F1F35D483000F0D32 /* RouteTableViewCellTests.swift */; };
-		586746641F35D483000F0D32 /* RouteScheduleViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746411F35D483000F0D32 /* RouteScheduleViewControllerTests.swift */; };
-		586746651F35D483000F0D32 /* RouteSheduleViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746421F35D483000F0D32 /* RouteSheduleViewModelTests.swift */; };
-		586746661F35D484000F0D32 /* ScheduleTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746431F35D483000F0D32 /* ScheduleTableViewCellTests.swift */; };
-		586746671F35D484000F0D32 /* SelectStopViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746451F35D483000F0D32 /* SelectStopViewControllerTests.swift */; };
-		586746681F35D484000F0D32 /* SelectStopViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746461F35D483000F0D32 /* SelectStopViewModelTests.swift */; };
 		5867466F1F35D484000F0D32 /* SelectStopsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867464E1F35D483000F0D32 /* SelectStopsViewModelTests.swift */; };
-		586746711F35D484000F0D32 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746521F35D483000F0D32 /* MainViewControllerTests.swift */; };
-		586746721F35D484000F0D32 /* StoryboardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746531F35D483000F0D32 /* StoryboardsTests.swift */; };
-		586746731F35D484000F0D32 /* AppDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746551F35D483000F0D32 /* AppDelegateTests.swift */; };
-		586746751F35D484000F0D32 /* ViewModelDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746581F35D483000F0D32 /* ViewModelDelegateTests.swift */; };
-		586746761F35D484000F0D32 /* DateFormattersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867465A1F35D483000F0D32 /* DateFormattersTests.swift */; };
-		586746771F35D484000F0D32 /* AssetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867465C1F35D483000F0D32 /* AssetTests.swift */; };
-		58B891B21F38B4AA00BFFEFA /* ActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891B11F38B4AA00BFFEFA /* ActionsTests.swift */; };
-		58B891BE1F38B51400BFFEFA /* FeatureViewControllerDisplayStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891B31F38B51400BFFEFA /* FeatureViewControllerDisplayStateTests.swift */; };
-		58B891BF1F38B51400BFFEFA /* ScheduleDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891B51F38B51400BFFEFA /* ScheduleDataTests.swift */; };
-		58B891C01F38B51400BFFEFA /* ScheduleRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891B61F38B51400BFFEFA /* ScheduleRequestTests.swift */; };
-		58B891C11F38B51400BFFEFA /* ScheduleStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891B71F38B51400BFFEFA /* ScheduleStateTests.swift */; };
-		58B891C21F38B51400BFFEFA /* FeatureViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891B91F38B51400BFFEFA /* FeatureViewControllerTests.swift */; };
-		58B891C31F38B51400BFFEFA /* NavigationStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891BA1F38B51400BFFEFA /* NavigationStateTests.swift */; };
-		58B891C41F38B51400BFFEFA /* TransitModeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891BB1F38B51400BFFEFA /* TransitModeTests.swift */; };
-		58B891C51F38B51400BFFEFA /* EmbeddedViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891BC1F38B51400BFFEFA /* EmbeddedViewTests.swift */; };
-		58B891C61F38B51400BFFEFA /* FeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891BD1F38B51400BFFEFA /* FeatureTests.swift */; };
+		588F27F01F39DD7B00D62425 /* UserPreferenceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27EF1F39DD7B00D62425 /* UserPreferenceState.swift */; };
+		588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27F31F39E05A00D62425 /* PreferenceReducers.swift */; };
+		588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27F61F39E0BF00D62425 /* UserPreferenceActions.swift */; };
 		58B891CB1F38B51E00BFFEFA /* ScheduleReducersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891C81F38B51E00BFFEFA /* ScheduleReducersTests.swift */; };
-		58B891CC1F38B51E00BFFEFA /* NavigationReducersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891CA1F38B51E00BFFEFA /* NavigationReducersTests.swift */; };
-		58B892041F38B54600BFFEFA /* MainNavigationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892031F38B54600BFFEFA /* MainNavigationControllerTests.swift */; };
 		58B892051F38BB9700BFFEFA /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58290E3E1F3729FE000CCF3C /* ReSwift.framework */; };
 		58B8920D1F38C64C00BFFEFA /* MockPreferenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B8920C1F38C64C00BFFEFA /* MockPreferenceProvider.swift */; };
 		58B8920F1F38CBA900BFFEFA /* GenericAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B8920E1F38CBA900BFFEFA /* GenericAction.swift */; };
 		58B892121F38E44000BFFEFA /* ScheduleActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892101F38E44000BFFEFA /* ScheduleActionsTests.swift */; };
-		58B892131F38E44000BFFEFA /* NavigationActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892111F38E44000BFFEFA /* NavigationActionsTests.swift */; };
 		58B892151F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892141F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift */; };
 		58B892171F38F7E700BFFEFA /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892161F38F7E700BFFEFA /* Strings.swift */; };
 		58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C181FE1F34C557002748E9 /* Storyboards.swift */; };
@@ -244,12 +216,10 @@
 		5834359D1F34E82E0021EC6D /* iSEPTA-Release-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "iSEPTA-Release-Info.plist"; path = "/Users/mbroski/Code/Septa/Septa2/iSEPTA/iSEPTA/Info/iSEPTA-Release-Info.plist"; sourceTree = "<absolute>"; };
 		5834359F1F34E9420021EC6D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = ../Frameworks/Crashlytics.framework; sourceTree = "<group>"; };
 		583435A01F34E9420021EC6D /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = ../Frameworks/Fabric.framework; sourceTree = "<group>"; };
-		5840D6CC1F375F5D00C8CB76 /* AppStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStateTests.swift; sourceTree = "<group>"; };
-		5840D6CD1F375F5D00C8CB76 /* ScheduleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTests.swift; sourceTree = "<group>"; };
 		5840D6D11F376D0700C8CB76 /* SeptaSchedule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaSchedule.framework; path = "../Build/Products/Release-iphoneos/SeptaSchedule.framework"; sourceTree = "<group>"; };
 		5840D6D21F376D9C00C8CB76 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		5840D6D41F376E5E00C8CB76 /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
-		5840D6D61F37728B00C8CB76 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
+		5840D6D61F37728B00C8CB76 /* FeatureNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureNavController.swift; sourceTree = "<group>"; };
 		5840D6D91F377E5B00C8CB76 /* NavigationReducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationReducers.swift; sourceTree = "<group>"; };
 		5840D6DB1F37925A00C8CB76 /* SchedulesNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesNavigationViewController.swift; sourceTree = "<group>"; };
 		5840D6DD1F37E4B100C8CB76 /* TransitMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitMode.swift; sourceTree = "<group>"; };
@@ -263,42 +233,16 @@
 		585572841F3948D3004ABCD6 /* Color+Septa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Septa.swift"; sourceTree = "<group>"; };
 		585572881F395990004ABCD6 /* MockSingleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSingleCell.swift; sourceTree = "<group>"; };
 		5867462C1F35D483000F0D32 /* iSEPTATests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSEPTATests-Bridging-Header.h"; sourceTree = "<group>"; };
-		5867462F1F35D483000F0D32 /* SingleStringCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleStringCellTests.swift; sourceTree = "<group>"; };
-		586746311F35D483000F0D32 /* ViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
-		586746351F35D483000F0D32 /* AlertTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTests.swift; sourceTree = "<group>"; };
-		5867463A1F35D483000F0D32 /* NextToArriveViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextToArriveViewControllerTests.swift; sourceTree = "<group>"; };
 		5867463E1F35D483000F0D32 /* RoutesViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesViewModelTests.swift; sourceTree = "<group>"; };
-		5867463F1F35D483000F0D32 /* RouteTableViewCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTableViewCellTests.swift; sourceTree = "<group>"; };
-		586746411F35D483000F0D32 /* RouteScheduleViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteScheduleViewControllerTests.swift; sourceTree = "<group>"; };
-		586746421F35D483000F0D32 /* RouteSheduleViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSheduleViewModelTests.swift; sourceTree = "<group>"; };
-		586746431F35D483000F0D32 /* ScheduleTableViewCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCellTests.swift; sourceTree = "<group>"; };
-		586746451F35D483000F0D32 /* SelectStopViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopViewControllerTests.swift; sourceTree = "<group>"; };
-		586746461F35D483000F0D32 /* SelectStopViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopViewModelTests.swift; sourceTree = "<group>"; };
 		5867464E1F35D483000F0D32 /* SelectStopsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopsViewModelTests.swift; sourceTree = "<group>"; };
-		586746521F35D483000F0D32 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
-		586746531F35D483000F0D32 /* StoryboardsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardsTests.swift; sourceTree = "<group>"; };
-		586746551F35D483000F0D32 /* AppDelegateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateTests.swift; sourceTree = "<group>"; };
-		586746581F35D483000F0D32 /* ViewModelDelegateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelDelegateTests.swift; sourceTree = "<group>"; };
-		5867465A1F35D483000F0D32 /* DateFormattersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormattersTests.swift; sourceTree = "<group>"; };
-		5867465C1F35D483000F0D32 /* AssetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetTests.swift; sourceTree = "<group>"; };
-		58B891B11F38B4AA00BFFEFA /* ActionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionsTests.swift; sourceTree = "<group>"; };
-		58B891B31F38B51400BFFEFA /* FeatureViewControllerDisplayStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureViewControllerDisplayStateTests.swift; sourceTree = "<group>"; };
-		58B891B51F38B51400BFFEFA /* ScheduleDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDataTests.swift; sourceTree = "<group>"; };
-		58B891B61F38B51400BFFEFA /* ScheduleRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleRequestTests.swift; sourceTree = "<group>"; };
-		58B891B71F38B51400BFFEFA /* ScheduleStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleStateTests.swift; sourceTree = "<group>"; };
-		58B891B91F38B51400BFFEFA /* FeatureViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureViewControllerTests.swift; sourceTree = "<group>"; };
-		58B891BA1F38B51400BFFEFA /* NavigationStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationStateTests.swift; sourceTree = "<group>"; };
-		58B891BB1F38B51400BFFEFA /* TransitModeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitModeTests.swift; sourceTree = "<group>"; };
-		58B891BC1F38B51400BFFEFA /* EmbeddedViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbeddedViewTests.swift; sourceTree = "<group>"; };
-		58B891BD1F38B51400BFFEFA /* FeatureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureTests.swift; sourceTree = "<group>"; };
+		588F27EF1F39DD7B00D62425 /* UserPreferenceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferenceState.swift; sourceTree = "<group>"; };
+		588F27F31F39E05A00D62425 /* PreferenceReducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceReducers.swift; sourceTree = "<group>"; };
+		588F27F61F39E0BF00D62425 /* UserPreferenceActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferenceActions.swift; sourceTree = "<group>"; };
 		58B891C81F38B51E00BFFEFA /* ScheduleReducersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleReducersTests.swift; sourceTree = "<group>"; };
-		58B891CA1F38B51E00BFFEFA /* NavigationReducersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationReducersTests.swift; sourceTree = "<group>"; };
-		58B892031F38B54600BFFEFA /* MainNavigationControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationControllerTests.swift; sourceTree = "<group>"; };
 		58B892071F38BBD100BFFEFA /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = ../Carthage/Build/iOS/ReSwift.framework; sourceTree = "<group>"; };
 		58B8920C1F38C64C00BFFEFA /* MockPreferenceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPreferenceProvider.swift; sourceTree = "<group>"; };
 		58B8920E1F38CBA900BFFEFA /* GenericAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAction.swift; sourceTree = "<group>"; };
 		58B892101F38E44000BFFEFA /* ScheduleActionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleActionsTests.swift; sourceTree = "<group>"; };
-		58B892111F38E44000BFFEFA /* NavigationActionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationActionsTests.swift; sourceTree = "<group>"; };
 		58B892141F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSchedulesViewModel.swift; sourceTree = "<group>"; };
 		58B892161F38F7E700BFFEFA /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		58C181FE1F34C557002748E9 /* Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
@@ -306,7 +250,7 @@
 		58C182051F34C5B6002748E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizeable.strings; sourceTree = "<group>"; };
 		58C2A0581F3812D600F0D6CA /* ScheduleActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleActions.swift; sourceTree = "<group>"; };
 		58C2A05D1F38948400F0D6CA /* FeatureViewControllerDisplayState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureViewControllerDisplayState.swift; sourceTree = "<group>"; };
-		58C2A0601F3895E000F0D6CA /* FeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeatureViewController.swift; path = Navigation/FeatureViewController.swift; sourceTree = "<group>"; };
+		58C2A0601F3895E000F0D6CA /* FeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureViewController.swift; sourceTree = "<group>"; };
 		58C2A0621F38977A00F0D6CA /* EmbeddedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedView.swift; sourceTree = "<group>"; };
 		58C2A0641F389B6400F0D6CA /* TransitModesToolBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitModesToolBarViewController.swift; sourceTree = "<group>"; };
 		58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRequest.swift; sourceTree = "<group>"; };
@@ -358,56 +302,17 @@
 			path = Info;
 			sourceTree = "<group>";
 		};
-		58290E421F372B8E000CCF3C /* Reducers */ = {
+		58290E511F372F27000CCF3C /* App State */ = {
 			isa = PBXGroup;
 			children = (
-				5840D6D81F377E4500C8CB76 /* Navigation Reducers */,
-				58290E451F372C6C000CCF3C /* Schedule Reducers */,
-				58290E431F372BB9000CCF3C /* AppStateReducer.swift */,
-			);
-			path = Reducers;
-			sourceTree = "<group>";
-		};
-		58290E451F372C6C000CCF3C /* Schedule Reducers */ = {
-			isa = PBXGroup;
-			children = (
-				5840D6DF1F37E5FB00C8CB76 /* ScheduleReducers.swift */,
-			);
-			path = "Schedule Reducers";
-			sourceTree = "<group>";
-		};
-		58290E481F372CAD000CCF3C /* Reducers */ = {
-			isa = PBXGroup;
-			children = (
-				58B891C91F38B51E00BFFEFA /* Navigation Reducers */,
-				58B891C71F38B51E00BFFEFA /* Schedule Reducers */,
-				58290E491F372CAD000CCF3C /* AppStateReducerTests.swift */,
-			);
-			path = Reducers;
-			sourceTree = "<group>";
-		};
-		58290E4E1F372DC8000CCF3C /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-				58290E4F1F372DDC000CCF3C /* NavigationActions.swift */,
-				58C2A0581F3812D600F0D6CA /* ScheduleActions.swift */,
-			);
-			path = Actions;
-			sourceTree = "<group>";
-		};
-		58290E511F372F27000CCF3C /* StateObjects */ = {
-			isa = PBXGroup;
-			children = (
-				58C2A0601F3895E000F0D6CA /* FeatureViewController.swift */,
+				5840D6E11F37E9E300C8CB76 /* State Providers */,
+				588F27F11F39DDBF00D62425 /* UserPreference */,
 				58C2A05F1F38955E00F0D6CA /* Schedule */,
 				58C2A05A1F3892E300F0D6CA /* Navigation */,
 				58290E401F372B51000CCF3C /* AppState.swift */,
-				5840D6D61F37728B00C8CB76 /* Feature.swift */,
-				5840D6DD1F37E4B100C8CB76 /* TransitMode.swift */,
-				58C2A05D1F38948400F0D6CA /* FeatureViewControllerDisplayState.swift */,
-				58C2A0621F38977A00F0D6CA /* EmbeddedView.swift */,
+				58290E431F372BB9000CCF3C /* AppStateReducer.swift */,
 			);
-			path = StateObjects;
+			path = "App State";
 			sourceTree = "<group>";
 		};
 		582F4E7F1F33B1120062A546 /* Utlities */ = {
@@ -421,6 +326,7 @@
 		582F4E811F33B1120062A546 /* Common Views */ = {
 			isa = PBXGroup;
 			children = (
+				582F4EB01F33B1120062A546 /* View Models */,
 				5840D6EA1F37F60D00C8CB76 /* Toolbars */,
 				582F4E821F33B1120062A546 /* Cells */,
 			);
@@ -608,37 +514,14 @@
 			path = Base.lproj;
 			sourceTree = "<group>";
 		};
-		5840D6CB1F375F5D00C8CB76 /* StateObjects */ = {
-			isa = PBXGroup;
-			children = (
-				58B891BC1F38B51400BFFEFA /* EmbeddedViewTests.swift */,
-				58B891BD1F38B51400BFFEFA /* FeatureTests.swift */,
-				58B891B31F38B51400BFFEFA /* FeatureViewControllerDisplayStateTests.swift */,
-				58B891B81F38B51400BFFEFA /* Navigation */,
-				58B891B41F38B51400BFFEFA /* Schedule */,
-				58B891BB1F38B51400BFFEFA /* TransitModeTests.swift */,
-				5840D6CC1F375F5D00C8CB76 /* AppStateTests.swift */,
-				5840D6CD1F375F5D00C8CB76 /* ScheduleTests.swift */,
-			);
-			path = StateObjects;
-			sourceTree = "<group>";
-		};
-		5840D6D81F377E4500C8CB76 /* Navigation Reducers */ = {
-			isa = PBXGroup;
-			children = (
-				5840D6D91F377E5B00C8CB76 /* NavigationReducers.swift */,
-			);
-			path = "Navigation Reducers";
-			sourceTree = "<group>";
-		};
-		5840D6E11F37E9E300C8CB76 /* Providers */ = {
+		5840D6E11F37E9E300C8CB76 /* State Providers */ = {
 			isa = PBXGroup;
 			children = (
 				58B8920A1F38C27700BFFEFA /* UserPreferences */,
 				5840D6E41F37EA1900C8CB76 /* ScheduleProvider.swift */,
 				5840D6E81F37EE6500C8CB76 /* Providers.swift */,
 			);
-			path = Providers;
+			path = "State Providers";
 			sourceTree = "<group>";
 		};
 		5840D6EA1F37F60D00C8CB76 /* Toolbars */ = {
@@ -650,228 +533,184 @@
 			path = Toolbars;
 			sourceTree = "<group>";
 		};
-		5867462D1F35D483000F0D32 /* Views */ = {
+		588F27F11F39DDBF00D62425 /* UserPreference */ = {
 			isa = PBXGroup;
 			children = (
-				5867462E1F35D483000F0D32 /* Cells */,
-				586746301F35D483000F0D32 /* Toolbars */,
+				588F27F81F39E14300D62425 /* StateObjects */,
+				588F27F51F39E0AE00D62425 /* Actions */,
+				588F27F21F39E03A00D62425 /* Reducers */,
 			);
-			path = Views;
+			path = UserPreference;
 			sourceTree = "<group>";
 		};
-		5867462E1F35D483000F0D32 /* Cells */ = {
+		588F27F21F39E03A00D62425 /* Reducers */ = {
 			isa = PBXGroup;
 			children = (
-				5867462F1F35D483000F0D32 /* SingleStringCellTests.swift */,
+				588F27F31F39E05A00D62425 /* PreferenceReducers.swift */,
 			);
-			path = Cells;
+			path = Reducers;
 			sourceTree = "<group>";
 		};
-		586746301F35D483000F0D32 /* Toolbars */ = {
+		588F27F51F39E0AE00D62425 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = Toolbars;
-			sourceTree = "<group>";
-		};
-		586746321F35D483000F0D32 /* Features */ = {
-			isa = PBXGroup;
-			children = (
-				586746331F35D483000F0D32 /* About */,
-				586746341F35D483000F0D32 /* Alerts */,
-				586746361F35D483000F0D32 /* Contact */,
-				586746371F35D483000F0D32 /* FaresAndTransitInfo */,
-				586746381F35D483000F0D32 /* Favorites */,
-				586746391F35D483000F0D32 /* NextToArrive */,
-				5867463B1F35D483000F0D32 /* Schedules */,
-				58B891CE1F38B53300BFFEFA /* Settings */,
-			);
-			path = Features;
-			sourceTree = "<group>";
-		};
-		586746331F35D483000F0D32 /* About */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = About;
-			sourceTree = "<group>";
-		};
-		586746341F35D483000F0D32 /* Alerts */ = {
-			isa = PBXGroup;
-			children = (
-				586746351F35D483000F0D32 /* AlertTests.swift */,
-			);
-			path = Alerts;
-			sourceTree = "<group>";
-		};
-		586746361F35D483000F0D32 /* Contact */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Contact;
-			sourceTree = "<group>";
-		};
-		586746371F35D483000F0D32 /* FaresAndTransitInfo */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FaresAndTransitInfo;
-			sourceTree = "<group>";
-		};
-		586746381F35D483000F0D32 /* Favorites */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Favorites;
-			sourceTree = "<group>";
-		};
-		586746391F35D483000F0D32 /* NextToArrive */ = {
-			isa = PBXGroup;
-			children = (
-				5867463A1F35D483000F0D32 /* NextToArriveViewControllerTests.swift */,
-			);
-			path = NextToArrive;
-			sourceTree = "<group>";
-		};
-		5867463B1F35D483000F0D32 /* Schedules */ = {
-			isa = PBXGroup;
-			children = (
-				5867463C1F35D483000F0D32 /* Routes */,
-				586746401F35D483000F0D32 /* RouteSchedule */,
-				586746441F35D483000F0D32 /* SelectStop */,
-				586746471F35D483000F0D32 /* SelectStops */,
-			);
-			path = Schedules;
-			sourceTree = "<group>";
-		};
-		5867463C1F35D483000F0D32 /* Routes */ = {
-			isa = PBXGroup;
-			children = (
-				5867463E1F35D483000F0D32 /* RoutesViewModelTests.swift */,
-				5867463F1F35D483000F0D32 /* RouteTableViewCellTests.swift */,
-			);
-			path = Routes;
-			sourceTree = "<group>";
-		};
-		586746401F35D483000F0D32 /* RouteSchedule */ = {
-			isa = PBXGroup;
-			children = (
-				586746411F35D483000F0D32 /* RouteScheduleViewControllerTests.swift */,
-				586746421F35D483000F0D32 /* RouteSheduleViewModelTests.swift */,
-				586746431F35D483000F0D32 /* ScheduleTableViewCellTests.swift */,
-			);
-			path = RouteSchedule;
-			sourceTree = "<group>";
-		};
-		586746441F35D483000F0D32 /* SelectStop */ = {
-			isa = PBXGroup;
-			children = (
-				586746451F35D483000F0D32 /* SelectStopViewControllerTests.swift */,
-				586746461F35D483000F0D32 /* SelectStopViewModelTests.swift */,
-			);
-			path = SelectStop;
-			sourceTree = "<group>";
-		};
-		586746471F35D483000F0D32 /* SelectStops */ = {
-			isa = PBXGroup;
-			children = (
-				5867464E1F35D483000F0D32 /* SelectStopsViewModelTests.swift */,
-			);
-			path = SelectStops;
-			sourceTree = "<group>";
-		};
-		586746511F35D483000F0D32 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				58B892031F38B54600BFFEFA /* MainNavigationControllerTests.swift */,
-				586746521F35D483000F0D32 /* MainViewControllerTests.swift */,
-				586746531F35D483000F0D32 /* StoryboardsTests.swift */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		586746541F35D483000F0D32 /* Info */ = {
-			isa = PBXGroup;
-			children = (
-				586746551F35D483000F0D32 /* AppDelegateTests.swift */,
-			);
-			path = Info;
-			sourceTree = "<group>";
-		};
-		586746561F35D483000F0D32 /* View Models */ = {
-			isa = PBXGroup;
-			children = (
-				586746581F35D483000F0D32 /* ViewModelDelegateTests.swift */,
-			);
-			path = "View Models";
-			sourceTree = "<group>";
-		};
-		586746591F35D483000F0D32 /* Utlities */ = {
-			isa = PBXGroup;
-			children = (
-				5867465A1F35D483000F0D32 /* DateFormattersTests.swift */,
-			);
-			path = Utlities;
-			sourceTree = "<group>";
-		};
-		5867465B1F35D483000F0D32 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				5867465C1F35D483000F0D32 /* AssetTests.swift */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		58B891B01F38B4AA00BFFEFA /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-				58B892111F38E44000BFFEFA /* NavigationActionsTests.swift */,
-				58B892101F38E44000BFFEFA /* ScheduleActionsTests.swift */,
-				58B891B11F38B4AA00BFFEFA /* ActionsTests.swift */,
+				588F27F61F39E0BF00D62425 /* UserPreferenceActions.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
 		};
-		58B891B41F38B51400BFFEFA /* Schedule */ = {
+		588F27F81F39E14300D62425 /* StateObjects */ = {
 			isa = PBXGroup;
 			children = (
-				58B891B51F38B51400BFFEFA /* ScheduleDataTests.swift */,
-				58B891B61F38B51400BFFEFA /* ScheduleRequestTests.swift */,
-				58B891B71F38B51400BFFEFA /* ScheduleStateTests.swift */,
+				588F27EF1F39DD7B00D62425 /* UserPreferenceState.swift */,
 			);
-			path = Schedule;
+			path = StateObjects;
 			sourceTree = "<group>";
 		};
-		58B891B81F38B51400BFFEFA /* Navigation */ = {
+		588F27F91F39E15500D62425 /* StateObjects */ = {
 			isa = PBXGroup;
 			children = (
-				58B891B91F38B51400BFFEFA /* FeatureViewControllerTests.swift */,
-				58B891BA1F38B51400BFFEFA /* NavigationStateTests.swift */,
+				58290E521F372F36000CCF3C /* ScheduleState.swift */,
+				58C2A0681F38AA1B00F0D6CA /* ScheduleData.swift */,
+				58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */,
+				5840D6DD1F37E4B100C8CB76 /* TransitMode.swift */,
+			);
+			path = StateObjects;
+			sourceTree = "<group>";
+		};
+		588F27FA1F39E15C00D62425 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				58C2A0581F3812D600F0D6CA /* ScheduleActions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		588F27FB1F39E16200D62425 /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+				5840D6DF1F37E5FB00C8CB76 /* ScheduleReducers.swift */,
+				5840D6D91F377E5B00C8CB76 /* NavigationReducers.swift */,
+			);
+			path = Reducers;
+			sourceTree = "<group>";
+		};
+		588F27FC1F39E18A00D62425 /* StateObjects */ = {
+			isa = PBXGroup;
+			children = (
+				58C2A0601F3895E000F0D6CA /* FeatureViewController.swift */,
+				5840D6D61F37728B00C8CB76 /* FeatureNavController.swift */,
+				5840D6D41F376E5E00C8CB76 /* NavigationState.swift */,
+				58C2A05D1F38948400F0D6CA /* FeatureViewControllerDisplayState.swift */,
+				58C2A0621F38977A00F0D6CA /* EmbeddedView.swift */,
+			);
+			path = StateObjects;
+			sourceTree = "<group>";
+		};
+		588F27FD1F39E19600D62425 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				58290E4F1F372DDC000CCF3C /* NavigationActions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		588F27FE1F39E19D00D62425 /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Reducers;
+			sourceTree = "<group>";
+		};
+		588F27FF1F39E29200D62425 /* App State */ = {
+			isa = PBXGroup;
+			children = (
+				58290E491F372CAD000CCF3C /* AppStateReducerTests.swift */,
+				588F28021F39E2BC00D62425 /* Schedule */,
+				588F28011F39E2A100D62425 /* UserPreference */,
+				588F28001F39E29A00D62425 /* Navigation */,
+			);
+			path = "App State";
+			sourceTree = "<group>";
+		};
+		588F28001F39E29A00D62425 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				588F28091F39E32C00D62425 /* Reducers */,
+				588F28081F39E31F00D62425 /* Actions */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
 		};
-		58B891C71F38B51E00BFFEFA /* Schedule Reducers */ = {
+		588F28011F39E2A100D62425 /* UserPreference */ = {
+			isa = PBXGroup;
+			children = (
+				588F28071F39E31600D62425 /* Actions */,
+				588F28061F39E30D00D62425 /* Reducers */,
+			);
+			path = UserPreference;
+			sourceTree = "<group>";
+		};
+		588F28021F39E2BC00D62425 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				588F28051F39E2F700D62425 /* Reducers */,
+				588F28041F39E2F000D62425 /* Actions */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		588F28031F39E2D600D62425 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5867463E1F35D483000F0D32 /* RoutesViewModelTests.swift */,
+				5867464E1F35D483000F0D32 /* SelectStopsViewModelTests.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		588F28041F39E2F000D62425 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				58B892101F38E44000BFFEFA /* ScheduleActionsTests.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		588F28051F39E2F700D62425 /* Reducers */ = {
 			isa = PBXGroup;
 			children = (
 				58B891C81F38B51E00BFFEFA /* ScheduleReducersTests.swift */,
 			);
-			path = "Schedule Reducers";
+			path = Reducers;
 			sourceTree = "<group>";
 		};
-		58B891C91F38B51E00BFFEFA /* Navigation Reducers */ = {
-			isa = PBXGroup;
-			children = (
-				58B891CA1F38B51E00BFFEFA /* NavigationReducersTests.swift */,
-			);
-			path = "Navigation Reducers";
-			sourceTree = "<group>";
-		};
-		58B891CE1F38B53300BFFEFA /* Settings */ = {
+		588F28061F39E30D00D62425 /* Reducers */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Settings;
+			path = Reducers;
+			sourceTree = "<group>";
+		};
+		588F28071F39E31600D62425 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		588F28081F39E31F00D62425 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		588F28091F39E32C00D62425 /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Reducers;
 			sourceTree = "<group>";
 		};
 		58B8920A1F38C27700BFFEFA /* UserPreferences */ = {
@@ -896,7 +735,9 @@
 		58C2A05A1F3892E300F0D6CA /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				5840D6D41F376E5E00C8CB76 /* NavigationState.swift */,
+				588F27FE1F39E19D00D62425 /* Reducers */,
+				588F27FD1F39E19600D62425 /* Actions */,
+				588F27FC1F39E18A00D62425 /* StateObjects */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -904,9 +745,9 @@
 		58C2A05F1F38955E00F0D6CA /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				58290E521F372F36000CCF3C /* ScheduleState.swift */,
-				58C2A0681F38AA1B00F0D6CA /* ScheduleData.swift */,
-				58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */,
+				588F27FB1F39E16200D62425 /* Reducers */,
+				588F27FA1F39E15C00D62425 /* Actions */,
+				588F27F91F39E15500D62425 /* StateObjects */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -935,17 +776,13 @@
 		58D9C3F21F3335BB002BE2E8 /* iSEPTA */ = {
 			isa = PBXGroup;
 			children = (
-				5840D6E11F37E9E300C8CB76 /* Providers */,
-				58290E511F372F27000CCF3C /* StateObjects */,
-				58290E4E1F372DC8000CCF3C /* Actions */,
-				58290E421F372B8E000CCF3C /* Reducers */,
+				58290E511F372F27000CCF3C /* App State */,
 				580041F81F3504D800691FDC /* Info */,
 				582F4EAE1F33B1120062A546 /* Assets */,
 				582F4EB71F33B1120062A546 /* Base.lproj */,
 				582F4E841F33B1120062A546 /* Features */,
 				582F4EB31F33B1120062A546 /* Main */,
 				582F4E7F1F33B1120062A546 /* Utlities */,
-				582F4EB01F33B1120062A546 /* View Models */,
 				582F4E811F33B1120062A546 /* Common Views */,
 			);
 			path = iSEPTA;
@@ -954,18 +791,9 @@
 		58D9C40A1F3335BB002BE2E8 /* iSEPTATests */ = {
 			isa = PBXGroup;
 			children = (
+				588F28031F39E2D600D62425 /* ViewModel */,
+				588F27FF1F39E29200D62425 /* App State */,
 				58B8920B1F38C63B00BFFEFA /* MockObjects */,
-				58B891B01F38B4AA00BFFEFA /* Actions */,
-				5840D6CB1F375F5D00C8CB76 /* StateObjects */,
-				58290E481F372CAD000CCF3C /* Reducers */,
-				5867465B1F35D483000F0D32 /* Assets */,
-				586746321F35D483000F0D32 /* Features */,
-				586746541F35D483000F0D32 /* Info */,
-				586746511F35D483000F0D32 /* Main */,
-				586746591F35D483000F0D32 /* Utlities */,
-				586746561F35D483000F0D32 /* View Models */,
-				586746311F35D483000F0D32 /* ViewControllerTests.swift */,
-				5867462D1F35D483000F0D32 /* Views */,
 				58D9C40D1F3335BB002BE2E8 /* Info.plist */,
 				5867462C1F35D483000F0D32 /* iSEPTATests-Bridging-Header.h */,
 			);
@@ -1240,6 +1068,7 @@
 				58C2A0631F38977A00F0D6CA /* EmbeddedView.swift in Sources */,
 				58C182011F34C560002748E9 /* Asset.swift in Sources */,
 				58C2A0651F389B6400F0D6CA /* TransitModesToolBarViewController.swift in Sources */,
+				588F27F01F39DD7B00D62425 /* UserPreferenceState.swift in Sources */,
 				582F4ED51F33B1120062A546 /* SelectStopsViewController.swift in Sources */,
 				58C2A05E1F38948400F0D6CA /* FeatureViewControllerDisplayState.swift in Sources */,
 				5840D6DA1F377E5B00C8CB76 /* NavigationReducers.swift in Sources */,
@@ -1260,6 +1089,7 @@
 				582F4EBD1F33B1120062A546 /* SingleStringCell.swift in Sources */,
 				582F4EBF1F33B1120062A546 /* Alert.swift in Sources */,
 				582F4EC51F33B1120062A546 /* NextToArriveViewController.swift in Sources */,
+				588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */,
 				58C2A0671F38A75700F0D6CA /* ScheduleRequest.swift in Sources */,
 				5840D6E71F37EAEF00C8CB76 /* UserPreferenceKeys.swift in Sources */,
 				582F4EDF1F33B1120062A546 /* MainViewController.swift in Sources */,
@@ -1271,7 +1101,7 @@
 				582F4EC71F33B1120062A546 /* RoutesViewModel.swift in Sources */,
 				5840D6E51F37EA1900C8CB76 /* ScheduleProvider.swift in Sources */,
 				58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */,
-				5840D6D71F37728B00C8CB76 /* Feature.swift in Sources */,
+				5840D6D71F37728B00C8CB76 /* FeatureNavController.swift in Sources */,
 				58C2A0691F38AA1B00F0D6CA /* ScheduleData.swift in Sources */,
 				58290E531F372F36000CCF3C /* ScheduleState.swift in Sources */,
 				5840D6E31F37E9FB00C8CB76 /* UserPreferences.swift in Sources */,
@@ -1287,6 +1117,7 @@
 				58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */,
 				582F4EC61F33B1120062A546 /* RoutesViewController.swift in Sources */,
 				5840D6F01F37F66B00C8CB76 /* SeptaDraw.swift in Sources */,
+				588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */,
 				58B892171F38F7E700BFFEFA /* Strings.swift in Sources */,
 				582F4ECA1F33B1120062A546 /* RouteScheduleViewController.swift in Sources */,
 			);
@@ -1296,45 +1127,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58B891BE1F38B51400BFFEFA /* FeatureViewControllerDisplayStateTests.swift in Sources */,
-				58B891C31F38B51400BFFEFA /* NavigationStateTests.swift in Sources */,
 				58B892121F38E44000BFFEFA /* ScheduleActionsTests.swift in Sources */,
-				58B891C41F38B51400BFFEFA /* TransitModeTests.swift in Sources */,
-				586746661F35D484000F0D32 /* ScheduleTableViewCellTests.swift in Sources */,
-				58B891C21F38B51400BFFEFA /* FeatureViewControllerTests.swift in Sources */,
 				586746621F35D483000F0D32 /* RoutesViewModelTests.swift in Sources */,
-				58B891C01F38B51400BFFEFA /* ScheduleRequestTests.swift in Sources */,
-				58B891C51F38B51400BFFEFA /* EmbeddedViewTests.swift in Sources */,
-				58B891C61F38B51400BFFEFA /* FeatureTests.swift in Sources */,
-				586746631F35D483000F0D32 /* RouteTableViewCellTests.swift in Sources */,
-				58B891C11F38B51400BFFEFA /* ScheduleStateTests.swift in Sources */,
-				586746721F35D484000F0D32 /* StoryboardsTests.swift in Sources */,
-				5867465F1F35D483000F0D32 /* AlertTests.swift in Sources */,
 				58B891CB1F38B51E00BFFEFA /* ScheduleReducersTests.swift in Sources */,
-				58B891CC1F38B51E00BFFEFA /* NavigationReducersTests.swift in Sources */,
 				58290E4C1F372CAD000CCF3C /* AppStateReducerTests.swift in Sources */,
-				586746601F35D483000F0D32 /* NextToArriveViewControllerTests.swift in Sources */,
 				585572891F395990004ABCD6 /* MockSingleCell.swift in Sources */,
-				58B892131F38E44000BFFEFA /* NavigationActionsTests.swift in Sources */,
-				5867465E1F35D483000F0D32 /* ViewControllerTests.swift in Sources */,
-				5840D6D01F375F5D00C8CB76 /* ScheduleTests.swift in Sources */,
-				586746681F35D484000F0D32 /* SelectStopViewModelTests.swift in Sources */,
-				58B892041F38B54600BFFEFA /* MainNavigationControllerTests.swift in Sources */,
-				586746651F35D483000F0D32 /* RouteSheduleViewModelTests.swift in Sources */,
-				5867465D1F35D483000F0D32 /* SingleStringCellTests.swift in Sources */,
-				58B891B21F38B4AA00BFFEFA /* ActionsTests.swift in Sources */,
-				586746761F35D484000F0D32 /* DateFormattersTests.swift in Sources */,
 				58B8920F1F38CBA900BFFEFA /* GenericAction.swift in Sources */,
-				586746751F35D484000F0D32 /* ViewModelDelegateTests.swift in Sources */,
 				5867466F1F35D484000F0D32 /* SelectStopsViewModelTests.swift in Sources */,
-				586746671F35D484000F0D32 /* SelectStopViewControllerTests.swift in Sources */,
-				58B891BF1F38B51400BFFEFA /* ScheduleDataTests.swift in Sources */,
-				5840D6CF1F375F5D00C8CB76 /* AppStateTests.swift in Sources */,
-				586746641F35D483000F0D32 /* RouteScheduleViewControllerTests.swift in Sources */,
-				586746771F35D484000F0D32 /* AssetTests.swift in Sources */,
 				58B8920D1F38C64C00BFFEFA /* MockPreferenceProvider.swift in Sources */,
-				586746711F35D484000F0D32 /* MainViewControllerTests.swift in Sources */,
-				586746731F35D484000F0D32 /* AppDelegateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

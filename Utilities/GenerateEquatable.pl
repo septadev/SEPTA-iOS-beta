@@ -3,14 +3,18 @@ use Data::Dumper;
 
 my $struct = q |
 
-	public struct Stop {
-		public let stopId: Int
-		public let stopName: String
-		public let stopLatitude: Double
-		public let stopLongitude: Double
-		public let wheelchairBoarding: Bool
+	struct AppState: StateType {
+		let navigationState: NavigationState
+		let scheduleState: ScheduleState
+		let preferenceState: UserPreferenceState
+		public init(navigationState: NavigationState, scheduleState: ScheduleState) {
+			self.navigationState = navigationState
+			self.scheduleState = scheduleState
+		}
 	}
-|;
+
+	
+	|;
 
 my @initVars = ();
 my @vars = ();

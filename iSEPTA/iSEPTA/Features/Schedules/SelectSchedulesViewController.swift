@@ -43,8 +43,8 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
         viewModel.rowSelected(indexPath.row)
     }
 
-    func tableView(_: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        return viewModel.canCellBeSelected(atRow: indexPath.row) ? indexPath : nil
+    func tableView(_: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return viewModel.canCellBeSelected(atRow: indexPath.row)
     }
 
     func viewModelUpdated() {
