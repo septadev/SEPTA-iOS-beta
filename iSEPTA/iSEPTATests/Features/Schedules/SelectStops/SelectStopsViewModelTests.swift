@@ -67,6 +67,18 @@ class SelectScheduleViewModelTests: XCTestCase {
         XCTAssertEqual(mockCell.accessoryType, CellDecoration.none)
     }
 
+    func testSelectStartCell_NoRouteSelected() {
+
+        scheduleRequest_NoRoute = ScheduleRequest(selectedRoute: nil, selectedStart: nil, selectedEnd: nil, transitMode: nil, onlyOneRouteAvailable: false)
+        viewModel.newState(state: scheduleRequest_NoRoute)
+        viewModel.configureDisplayable(mockCell, atRow: TableRow.selectStart.rawValue)
+
+        XCTAssertEqual(mockCell.labelText, SeptaString.SelectStart)
+        XCTAssertTrue(mockCell.textColor.isEqual(SeptaColor.disabledText))
+        XCTAssertFalse(viewModel.canCellBeSelected(atRow: TableRow.selectStart.rawValue))
+        XCTAssertEqual(mockCell.accessoryType, CellDecoration.none)
+    }
+
     func testSelectStartCell_NoStartSelected() {
         let route = Route(routeId: "12", routeShortName: "Go Home", routeLongName: "Home to Work")
         scheduleRequest_NoRoute = ScheduleRequest(selectedRoute: route, selectedStart: nil, selectedEnd: nil, transitMode: nil, onlyOneRouteAvailable: false)
@@ -92,6 +104,18 @@ class SelectScheduleViewModelTests: XCTestCase {
         XCTAssertEqual(mockCell.accessoryType, CellDecoration.disclosureIndicator)
     }
 
+    func testSelectEndCell_NoRouteSelected() {
+
+        scheduleRequest_NoRoute = ScheduleRequest(selectedRoute: nil, selectedStart: nil, selectedEnd: nil, transitMode: nil, onlyOneRouteAvailable: false)
+        viewModel.newState(state: scheduleRequest_NoRoute)
+        viewModel.configureDisplayable(mockCell, atRow: TableRow.selectEnd.rawValue)
+
+        XCTAssertEqual(mockCell.labelText, SeptaString.SelectEnd)
+        XCTAssertTrue(mockCell.textColor.isEqual(SeptaColor.disabledText))
+        XCTAssertFalse(viewModel.canCellBeSelected(atRow: TableRow.selectEnd.rawValue))
+        XCTAssertEqual(mockCell.accessoryType, CellDecoration.none)
+    }
+
     func testSelectEndCell_NoStartSelected() {
         let route = Route(routeId: "12", routeShortName: "Go Home", routeLongName: "Home to Work")
         scheduleRequest_NoRoute = ScheduleRequest(selectedRoute: route, selectedStart: nil, selectedEnd: nil, transitMode: nil, onlyOneRouteAvailable: false)
@@ -114,7 +138,7 @@ class SelectScheduleViewModelTests: XCTestCase {
         XCTAssertEqual(mockCell.labelText, SeptaString.SelectEnd)
         XCTAssertTrue(mockCell.textColor.isEqual(SeptaColor.disabledText))
         XCTAssertTrue(viewModel.canCellBeSelected(atRow: TableRow.selectEnd.rawValue))
-        XCTAssertEqual(mockCell.accessoryType, CellDecoration.none)
+        XCTAssertEqual(mockCell.accessoryType, CellDecoration.disclosureIndicator)
     }
 
     func testSelectEndCell_EndSelected() {

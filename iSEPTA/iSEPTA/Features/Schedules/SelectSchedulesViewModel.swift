@@ -25,6 +25,9 @@ class SelectSchedulesViewModel: StoreSubscriber {
 
     init(delegate: UpdateableFromViewModel) {
         self.delegate = delegate
+    }
+
+    func subscribe() {
         store.subscribe(self) { subscription in
             subscription.select(self.filterSubscription)
         }
@@ -68,9 +71,11 @@ class SelectSchedulesViewModel: StoreSubscriber {
     fileprivate func configureSelectStartDisplayModel() -> RowDisplayModel {
         let text: String
         let color: UIColor
-        let accessoryType = CellDecoration.disclosureIndicator
-        let isSelectable = true
+        let accessoryType: CellDecoration
+        let isSelectable: Bool
         if let _ = scheduleRequest?.selectedRoute {
+            accessoryType = .disclosureIndicator
+            isSelectable = true
             if let startName = scheduleRequest?.selectedStart?.stopName {
                 text = startName
                 color = SeptaColor.enabledText
@@ -81,6 +86,8 @@ class SelectSchedulesViewModel: StoreSubscriber {
         } else {
             text = SeptaString.SelectStart
             color = SeptaColor.disabledText
+            accessoryType = .none
+            isSelectable = false
         }
         return RowDisplayModel(text: text, color: color, accessoryType: accessoryType, isSelectable: isSelectable)
     }
@@ -91,16 +98,14 @@ class SelectSchedulesViewModel: StoreSubscriber {
         let accessoryType: CellDecoration
         let isSelectable: Bool
         if let _ = scheduleRequest?.selectedStart {
+            accessoryType = .disclosureIndicator
+            isSelectable = true
             if let stopName = scheduleRequest?.selectedEnd?.stopName {
                 text = stopName
                 color = SeptaColor.enabledText
-                accessoryType = .disclosureIndicator
-                isSelectable = true
             } else {
                 text = SeptaString.SelectEnd
                 color = SeptaColor.disabledText
-                accessoryType = .none
-                isSelectable = true
             }
         } else {
             text = SeptaString.SelectEnd

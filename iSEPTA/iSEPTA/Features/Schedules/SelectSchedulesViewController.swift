@@ -21,10 +21,15 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
         navBar.backgroundColor = UIColor.clear
         navBar.shadowImage = UIImage()
         navBar.setBackgroundImage(UIImage(), for: .default)
+        viewModel.subscribe()
+    }
+
+    override func viewWillDisappear(_: Bool) {
+        viewModel.unsubscribe()
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return 0
+        return viewModel.numberOfRows()
     }
 
     func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -38,7 +43,11 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
         viewModel.rowSelected(indexPath.row)
     }
 
+    func tableView(_: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return viewModel.canCellBeSelected(atRow: indexPath.row) ? indexPath : nil
+    }
+
     func viewModelUpdated() {
-        // reload
+        tableView.reloadData()
     }
 }
