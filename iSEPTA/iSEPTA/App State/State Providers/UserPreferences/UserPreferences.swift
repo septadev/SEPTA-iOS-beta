@@ -1,37 +1,21 @@
 // Septa. 2017
 
 import Foundation
+import ReSwift
 
 protocol PreferencesProviderProtocol {
     func setStringPreference(preference: String, forKey key: UserPreferenceKeys)
     func stringPreference(forKey key: UserPreferenceKeys) -> String?
 }
 
-typealias UserPreferencesForFeature = [String: [String: String]]
-
-func ==(lhs: UserPreferencesForFeature, rhs: UserPreferencesForFeature) -> Bool {
-    if lhs.count != rhs.count { return false }
-
-    for (key, lhsub) in lhs {
-        if let rhsub = rhs[key] {
-            if lhsub != rhsub {
-                return false
-            }
-        } else {
-            return false
-        }
-    }
-
-    return true
-}
-
-class PreferencesProvider: PreferencesProviderProtocol {
-    // Defaults
+class PreferencesProvider: PreferencesProviderProtocol, StoreSubscriber {
+    typealias StoreSubscriberStateType = UserPreferenceState
 
     private let defaults = UserDefaults.standard
     static let sharedInstance = PreferencesProvider()
 
-    private init() {}
+    private init() {
+    }
 
     func setStringPreference(preference: String, forKey key: UserPreferenceKeys) {
         defaults.set(preference, forKey: key.rawValue)
@@ -43,5 +27,22 @@ class PreferencesProvider: PreferencesProviderProtocol {
         } else {
             return key.defaultValue()
         }
+    }
+
+    func subscribe() {
+        store.subscribe(self) { subscription in
+            subscription.select(self.filterSubscription)
+        }
+    }
+
+    func filterSubscription(state: AppState) -> UserPreferenceState {
+        return state.preferenceState
+    }
+
+    func unsubscribe() {
+        store.unsubscribe(self)
+    }
+
+    func newState(state _: StoreSubscriberStateType) {
     }
 }

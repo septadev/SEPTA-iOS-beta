@@ -115,6 +115,30 @@
 		588F27F01F39DD7B00D62425 /* UserPreferenceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27EF1F39DD7B00D62425 /* UserPreferenceState.swift */; };
 		588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27F31F39E05A00D62425 /* PreferenceReducers.swift */; };
 		588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27F61F39E0BF00D62425 /* UserPreferenceActions.swift */; };
+		588F280A1F39E93000D62425 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D41F376E5E00C8CB76 /* NavigationState.swift */; };
+		588F280B1F39E93C00D62425 /* ScheduleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E521F372F36000CCF3C /* ScheduleState.swift */; };
+		588F280C1F39E94400D62425 /* UserPreferenceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27EF1F39DD7B00D62425 /* UserPreferenceState.swift */; };
+		588F280D1F39E95100D62425 /* Providers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E81F37EE6500C8CB76 /* Providers.swift */; };
+		588F280E1F39E96A00D62425 /* NavigationActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E4F1F372DDC000CCF3C /* NavigationActions.swift */; };
+		588F280F1F39E97800D62425 /* ScheduleReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6DF1F37E5FB00C8CB76 /* ScheduleReducers.swift */; };
+		588F28101F39E98100D62425 /* PreferenceReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27F31F39E05A00D62425 /* PreferenceReducers.swift */; };
+		588F28111F39E98900D62425 /* SelectSchedulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892141F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift */; };
+		588F28121F39E9C800D62425 /* SchedulesNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6DB1F37925A00C8CB76 /* SchedulesNavigationViewController.swift */; };
+		588F28131F39E9D100D62425 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D21F376D9C00C8CB76 /* MainNavigationController.swift */; };
+		588F28141F39EA0200D62425 /* FeatureNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D61F37728B00C8CB76 /* FeatureNavController.swift */; };
+		588F28151F39EA1000D62425 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E21F37E9FB00C8CB76 /* UserPreferences.swift */; };
+		588F28161F39EA1A00D62425 /* UserPreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E61F37EAEF00C8CB76 /* UserPreferenceKeys.swift */; };
+		588F28171F39EA1D00D62425 /* ScheduleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E41F37EA1900C8CB76 /* ScheduleProvider.swift */; };
+		588F28181F39EA2700D62425 /* UserPreferenceActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27F61F39E0BF00D62425 /* UserPreferenceActions.swift */; };
+		588F28191F39EA4500D62425 /* NavigationReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D91F377E5B00C8CB76 /* NavigationReducers.swift */; };
+		588F281A1F39EA4900D62425 /* ScheduleActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0581F3812D600F0D6CA /* ScheduleActions.swift */; };
+		588F281B1F39EA5800D62425 /* ScheduleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0681F38AA1B00F0D6CA /* ScheduleData.swift */; };
+		588F281C1F39EA5C00D62425 /* ScheduleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */; };
+		588F281D1F39EA5F00D62425 /* TransitMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6DD1F37E4B100C8CB76 /* TransitMode.swift */; };
+		588F281E1F39EA6800D62425 /* FeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0601F3895E000F0D6CA /* FeatureViewController.swift */; };
+		588F281F1F39EA7000D62425 /* FeatureViewControllerDisplayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A05D1F38948400F0D6CA /* FeatureViewControllerDisplayState.swift */; };
+		588F28201F39EA7400D62425 /* EmbeddedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0621F38977A00F0D6CA /* EmbeddedView.swift */; };
+		588F28211F39EA9700D62425 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892161F38F7E700BFFEFA /* Strings.swift */; };
 		58B891CB1F38B51E00BFFEFA /* ScheduleReducersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891C81F38B51E00BFFEFA /* ScheduleReducersTests.swift */; };
 		58B892051F38BB9700BFFEFA /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58290E3E1F3729FE000CCF3C /* ReSwift.framework */; };
 		58B8920D1F38C64C00BFFEFA /* MockPreferenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B8920C1F38C64C00BFFEFA /* MockPreferenceProvider.swift */; };
@@ -1038,26 +1062,50 @@
 				5834356F1F34E82E0021EC6D /* RouteTableViewCell.swift in Sources */,
 				583435701F34E82E0021EC6D /* SelectedStopType.swift in Sources */,
 				583435711F34E82E0021EC6D /* ScheduleTableViewCell.swift in Sources */,
+				588F280D1F39E95100D62425 /* Providers.swift in Sources */,
+				588F28141F39EA0200D62425 /* FeatureNavController.swift in Sources */,
+				588F280F1F39E97800D62425 /* ScheduleReducers.swift in Sources */,
+				588F280B1F39E93C00D62425 /* ScheduleState.swift in Sources */,
+				588F281A1F39EA4900D62425 /* ScheduleActions.swift in Sources */,
 				583435721F34E82E0021EC6D /* RouteStops.swift in Sources */,
 				585572871F39499D004ABCD6 /* Color+Septa.swift in Sources */,
+				588F281E1F39EA6800D62425 /* FeatureViewController.swift in Sources */,
 				583435731F34E82E0021EC6D /* SelectStopsViewModel.swift in Sources */,
+				588F28171F39EA1D00D62425 /* ScheduleProvider.swift in Sources */,
+				588F280C1F39E94400D62425 /* UserPreferenceState.swift in Sources */,
 				583435741F34E82E0021EC6D /* AppDelegate.swift in Sources */,
 				583435751F34E82E0021EC6D /* SelectStopCellType.swift in Sources */,
 				583435761F34E82E0021EC6D /* SingleStringCell.swift in Sources */,
 				583435771F34E82E0021EC6D /* Alert.swift in Sources */,
 				583435781F34E82E0021EC6D /* NextToArriveViewController.swift in Sources */,
+				588F28101F39E98100D62425 /* PreferenceReducers.swift in Sources */,
+				588F280E1F39E96A00D62425 /* NavigationActions.swift in Sources */,
 				583435791F34E82E0021EC6D /* MainViewController.swift in Sources */,
+				588F28201F39EA7400D62425 /* EmbeddedView.swift in Sources */,
 				5840D6C51F374FDB00C8CB76 /* AppStateReducer.swift in Sources */,
+				588F281F1F39EA7000D62425 /* FeatureViewControllerDisplayState.swift in Sources */,
+				588F28151F39EA1000D62425 /* UserPreferences.swift in Sources */,
 				5834357B1F34E82E0021EC6D /* SelectSchedulesViewController.swift in Sources */,
+				588F28181F39EA2700D62425 /* UserPreferenceActions.swift in Sources */,
+				588F28111F39E98900D62425 /* SelectSchedulesViewModel.swift in Sources */,
+				588F280A1F39E93000D62425 /* NavigationState.swift in Sources */,
 				5834357C1F34E82E0021EC6D /* SelectStopViewModel.swift in Sources */,
+				588F28131F39E9D100D62425 /* MainNavigationController.swift in Sources */,
 				5840D6C71F374FFC00C8CB76 /* AppState.swift in Sources */,
 				5834357D1F34E82E0021EC6D /* RoutesViewModel.swift in Sources */,
+				588F281C1F39EA5C00D62425 /* ScheduleRequest.swift in Sources */,
 				5834357E1F34E82E0021EC6D /* RouteSheduleViewModel.swift in Sources */,
+				588F281D1F39EA5F00D62425 /* TransitMode.swift in Sources */,
 				5834357F1F34E82E0021EC6D /* SelectStopViewController.swift in Sources */,
 				583435801F34E82E0021EC6D /* SelectStopsViewElement.swift in Sources */,
 				583435811F34E82E0021EC6D /* Storyboards.swift in Sources */,
+				588F28121F39E9C800D62425 /* SchedulesNavigationViewController.swift in Sources */,
+				588F28211F39EA9700D62425 /* Strings.swift in Sources */,
+				588F28191F39EA4500D62425 /* NavigationReducers.swift in Sources */,
 				583435821F34E82E0021EC6D /* RoutesViewController.swift in Sources */,
 				583435831F34E82E0021EC6D /* RouteScheduleViewController.swift in Sources */,
+				588F281B1F39EA5800D62425 /* ScheduleData.swift in Sources */,
+				588F28161F39EA1A00D62425 /* UserPreferenceKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
