@@ -42,9 +42,9 @@ class SelectStopsViewModel {
         guard let row = SelectStopRow(rawValue: row) else { return }
         switch row {
         case .selectStart:
-            displayable.setLabelText(text: startElement.labelText)
+            displayable.setLabelText(startElement.labelText)
         case .selectDestination:
-            displayable.setLabelText(text: destinationElement.labelText)
+            displayable.setLabelText(destinationElement.labelText)
         }
     }
 

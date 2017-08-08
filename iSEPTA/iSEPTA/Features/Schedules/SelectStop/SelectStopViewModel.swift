@@ -69,6 +69,6 @@ class SelectStopViewModel {
     }
 
     func configureDisplayable(_ displayable: SingleStringDisplayable, atRow row: Int) {
-        displayable.setLabelText(text: stops[row].stopName)
+        displayable.setLabelText(stops[row].stopName)
     }
 }

@@ -8,12 +8,14 @@ struct ScheduleRequest {
     let selectedStart: Stop?
     let selectedEnd: Stop?
     let transitMode: TransitMode?
+    let onlyOneRouteAvailable: Bool
 
-    init(selectedRoute: Route? = nil, selectedStart: Stop? = nil, selectedEnd: Stop? = nil, transitMode: TransitMode? = nil) {
+    init(selectedRoute: Route? = nil, selectedStart: Stop? = nil, selectedEnd: Stop? = nil, transitMode: TransitMode? = nil, onlyOneRouteAvailable: Bool = false) {
         self.selectedRoute = selectedRoute
         self.selectedStart = selectedStart
         self.selectedEnd = selectedEnd
         self.transitMode = transitMode
+        self.onlyOneRouteAvailable = onlyOneRouteAvailable
     }
 }
 
@@ -54,6 +56,12 @@ func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
     case (.some, .some):
         areEqual = lhs.transitMode! == rhs.transitMode!
     default:
+        return false
+    }
+
+    if lhs.onlyOneRouteAvailable == rhs.onlyOneRouteAvailable {
+        areEqual = true
+    } else {
         return false
     }
     return areEqual

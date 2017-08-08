@@ -4,27 +4,24 @@ import Foundation
 import ReSwift
 import UIKit
 
-fileprivate enum Row: Int {
-    case selectRoute
-    case selectStart
-    case selectEnd
-
-    static func rows() -> [Row] {
-        return [.selectRoute, .selectStart, .selectEnd]
-    }
-}
-
 fileprivate struct RowDisplayModel {
     let text: String
     let color: UIColor
-    let enabled: Bool
+    let accessoryType: CellDecoration
+    let isSelectable: Bool
 }
 
 class SelectSchedulesViewModel: StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleRequest?
     var scheduleRequest: ScheduleRequest?
     weak var delegate: UpdateableFromViewModel?
+
+    fileprivate var selectRouteRowDisplayModel: RowDisplayModel?
+    fileprivate var selectStartRowDisplayModel: RowDisplayModel?
+    fileprivate var selectEndRowDisplayModel: RowDisplayModel?
     fileprivate var displayModel = [RowDisplayModel]()
+
+    var onlyOneRouteAvailable: Bool = false
 
     init(delegate: UpdateableFromViewModel) {
         self.delegate = delegate
@@ -40,68 +37,106 @@ class SelectSchedulesViewModel: StoreSubscriber {
     func newState(state: StoreSubscriberStateType) {
         scheduleRequest = state
         delegate?.viewModelUpdated()
+        buildDisplayModel()
     }
 
     func buildDisplayModel() {
-        var title: String = ""
-        var enabled: Bool = false
-        var color: UIColor = UIColor.clear
-        displayModel = Row.rows().map { row in
 
-            switch row {
-            case .selectRoute:
-                if let routeName = scheduleRequest?.selectedRoute?.routeShortName {
-                    title = routeName
-                    color = UIColor.black
-                    enabled = true
-                } else {
-                    title = String.SelectRoute
-                    enabled = true
-                    color = UIColor.gray
-                }
-            case .selectStart:
-                if let startName = scheduleRequest?.selectedStart?.stopName {
-                    title = startName
-                    color = UIColor.black
-                    enabled = true
-                } else {
-                    title = String.SelectStart
-                    enabled = true
-                    color = UIColor.gray
-                }
+        onlyOneRouteAvailable = scheduleRequest?.onlyOneRouteAvailable ?? false
 
-            case .selectEnd:
-                if let endName = scheduleRequest?.selectedEnd?.stopName {
-                    title = endName
-                    color = UIColor.black
-                    enabled = false
-                } else {
-                    title = String.SelectEnd
-                    enabled = true
-                    color = UIColor.gray
-                }
-            }
-            return RowDisplayModel(text: title, color: color, enabled: enabled)
+        displayModel = [
+            configureSelectRouteDisplayModel(),
+            configureSelectStartDisplayModel(),
+            configureSelectEndisplayModel(),
+        ]
+    }
+
+    fileprivate func configureSelectRouteDisplayModel() -> RowDisplayModel {
+        let text: String
+        if let routeName = scheduleRequest?.selectedRoute?.routeLongName {
+            text = routeName
+        } else {
+            text = SeptaString.SelectRoute
         }
+
+        let accessoryType = onlyOneRouteAvailable ? CellDecoration.none : CellDecoration.disclosureIndicator
+        let color = SeptaColor.enabledText
+        let isSelectable = !onlyOneRouteAvailable
+        return RowDisplayModel(text: text, color: color, accessoryType: accessoryType, isSelectable: isSelectable)
+    }
+
+    fileprivate func configureSelectStartDisplayModel() -> RowDisplayModel {
+        let text: String
+        let color: UIColor
+        let accessoryType = CellDecoration.disclosureIndicator
+        let isSelectable = true
+        if let _ = scheduleRequest?.selectedRoute {
+            if let startName = scheduleRequest?.selectedStart?.stopName {
+                text = startName
+                color = SeptaColor.enabledText
+            } else {
+                text = SeptaString.SelectStart
+                color = SeptaColor.disabledText
+            }
+        } else {
+            text = SeptaString.SelectStart
+            color = SeptaColor.disabledText
+        }
+        return RowDisplayModel(text: text, color: color, accessoryType: accessoryType, isSelectable: isSelectable)
+    }
+
+    fileprivate func configureSelectEndisplayModel() -> RowDisplayModel {
+        let text: String
+        let color: UIColor
+        let accessoryType: CellDecoration
+        let isSelectable: Bool
+        if let _ = scheduleRequest?.selectedStart {
+            if let stopName = scheduleRequest?.selectedEnd?.stopName {
+                text = stopName
+                color = SeptaColor.enabledText
+                accessoryType = .disclosureIndicator
+                isSelectable = true
+            } else {
+                text = SeptaString.SelectEnd
+                color = SeptaColor.disabledText
+                accessoryType = .none
+                isSelectable = true
+            }
+        } else {
+            text = SeptaString.SelectEnd
+            accessoryType = .none
+            color = SeptaColor.disabledText
+            isSelectable = false
+        }
+        return RowDisplayModel(text: text, color: color, accessoryType: accessoryType, isSelectable: isSelectable)
     }
 
     func configureDisplayable(_ displayable: SingleStringDisplayable, atRow row: Int) {
         guard row < displayModel.count else { return }
         let rowModel = displayModel[row]
-        displayable.setLabelText(text: rowModel.text)
-        displayable.setTextColor(color: rowModel.color)
+        displayable.setLabelText(rowModel.text)
+        displayable.setTextColor(rowModel.color)
+        displayable.setAccessoryType(rowModel.accessoryType)
     }
 
     func canCellBeSelected(atRow row: Int) -> Bool {
         guard row < displayModel.count else { return false }
-        return displayModel[row].enabled
+        return displayModel[row].isSelectable
     }
 
     func rowSelected(_: Int) {
         // Fire off the action
     }
 
+    func numberOfRows() -> Int {
+        return 3
+    }
+
     deinit {
+        unsubscribe()
+    }
+
+    func unsubscribe() {
         store.unsubscribe(self)
     }
 }

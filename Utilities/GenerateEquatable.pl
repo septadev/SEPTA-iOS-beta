@@ -3,17 +3,13 @@ use Data::Dumper;
 
 my $struct = q |
 
-	struct NavigationState {
-
-		let selectedFeature: Feature?
-		let activeFeature: Feature?
-
-		public init(selectedFeature: Feature, activeFeature: Feature) {
-			self.selectedFeature = selectedFeature
-			self.activeFeature = activeFeature
-		}
+	public struct Stop {
+		public let stopId: Int
+		public let stopName: String
+		public let stopLatitude: Double
+		public let stopLongitude: Double
+		public let wheelchairBoarding: Bool
 	}
-
 |;
 
 my @initVars = ();

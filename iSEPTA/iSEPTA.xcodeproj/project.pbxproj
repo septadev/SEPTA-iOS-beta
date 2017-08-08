@@ -109,6 +109,9 @@
 		5840D6E91F37EE6500C8CB76 /* Providers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E81F37EE6500C8CB76 /* Providers.swift */; };
 		5840D6EE1F37F63800C8CB76 /* TransitModeToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */; };
 		5840D6F01F37F66B00C8CB76 /* SeptaDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6EF1F37F66B00C8CB76 /* SeptaDraw.swift */; };
+		585572861F39499D004ABCD6 /* Color+Septa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585572841F3948D3004ABCD6 /* Color+Septa.swift */; };
+		585572871F39499D004ABCD6 /* Color+Septa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585572841F3948D3004ABCD6 /* Color+Septa.swift */; };
+		585572891F395990004ABCD6 /* MockSingleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585572881F395990004ABCD6 /* MockSingleCell.swift */; };
 		5867465D1F35D483000F0D32 /* SingleStringCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867462F1F35D483000F0D32 /* SingleStringCellTests.swift */; };
 		5867465E1F35D483000F0D32 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746311F35D483000F0D32 /* ViewControllerTests.swift */; };
 		5867465F1F35D483000F0D32 /* AlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746351F35D483000F0D32 /* AlertTests.swift */; };
@@ -120,14 +123,7 @@
 		586746661F35D484000F0D32 /* ScheduleTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746431F35D483000F0D32 /* ScheduleTableViewCellTests.swift */; };
 		586746671F35D484000F0D32 /* SelectStopViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746451F35D483000F0D32 /* SelectStopViewControllerTests.swift */; };
 		586746681F35D484000F0D32 /* SelectStopViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746461F35D483000F0D32 /* SelectStopViewModelTests.swift */; };
-		586746691F35D484000F0D32 /* RouteStopsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746481F35D483000F0D32 /* RouteStopsTests.swift */; };
-		5867466A1F35D484000F0D32 /* SelectedStopTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746491F35D483000F0D32 /* SelectedStopTypeTests.swift */; };
-		5867466B1F35D484000F0D32 /* SelectStopCellTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867464A1F35D483000F0D32 /* SelectStopCellTypeTests.swift */; };
-		5867466C1F35D484000F0D32 /* SelectStopRowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867464B1F35D483000F0D32 /* SelectStopRowTests.swift */; };
-		5867466D1F35D484000F0D32 /* SelectStopsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867464C1F35D483000F0D32 /* SelectStopsViewControllerTests.swift */; };
-		5867466E1F35D484000F0D32 /* SelectStopsViewElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867464D1F35D483000F0D32 /* SelectStopsViewElementTests.swift */; };
 		5867466F1F35D484000F0D32 /* SelectStopsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867464E1F35D483000F0D32 /* SelectStopsViewModelTests.swift */; };
-		586746701F35D484000F0D32 /* TransitModesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867464F1F35D483000F0D32 /* TransitModesViewControllerTests.swift */; };
 		586746711F35D484000F0D32 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746521F35D483000F0D32 /* MainViewControllerTests.swift */; };
 		586746721F35D484000F0D32 /* StoryboardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746531F35D483000F0D32 /* StoryboardsTests.swift */; };
 		586746731F35D484000F0D32 /* AppDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586746551F35D483000F0D32 /* AppDelegateTests.swift */; };
@@ -264,6 +260,8 @@
 		5840D6E81F37EE6500C8CB76 /* Providers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Providers.swift; sourceTree = "<group>"; };
 		5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitModeToolbarView.swift; sourceTree = "<group>"; };
 		5840D6EF1F37F66B00C8CB76 /* SeptaDraw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeptaDraw.swift; sourceTree = "<group>"; };
+		585572841F3948D3004ABCD6 /* Color+Septa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Septa.swift"; sourceTree = "<group>"; };
+		585572881F395990004ABCD6 /* MockSingleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSingleCell.swift; sourceTree = "<group>"; };
 		5867462C1F35D483000F0D32 /* iSEPTATests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSEPTATests-Bridging-Header.h"; sourceTree = "<group>"; };
 		5867462F1F35D483000F0D32 /* SingleStringCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleStringCellTests.swift; sourceTree = "<group>"; };
 		586746311F35D483000F0D32 /* ViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
@@ -276,14 +274,7 @@
 		586746431F35D483000F0D32 /* ScheduleTableViewCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCellTests.swift; sourceTree = "<group>"; };
 		586746451F35D483000F0D32 /* SelectStopViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopViewControllerTests.swift; sourceTree = "<group>"; };
 		586746461F35D483000F0D32 /* SelectStopViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopViewModelTests.swift; sourceTree = "<group>"; };
-		586746481F35D483000F0D32 /* RouteStopsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteStopsTests.swift; sourceTree = "<group>"; };
-		586746491F35D483000F0D32 /* SelectedStopTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedStopTypeTests.swift; sourceTree = "<group>"; };
-		5867464A1F35D483000F0D32 /* SelectStopCellTypeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopCellTypeTests.swift; sourceTree = "<group>"; };
-		5867464B1F35D483000F0D32 /* SelectStopRowTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopRowTests.swift; sourceTree = "<group>"; };
-		5867464C1F35D483000F0D32 /* SelectStopsViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopsViewControllerTests.swift; sourceTree = "<group>"; };
-		5867464D1F35D483000F0D32 /* SelectStopsViewElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopsViewElementTests.swift; sourceTree = "<group>"; };
 		5867464E1F35D483000F0D32 /* SelectStopsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopsViewModelTests.swift; sourceTree = "<group>"; };
-		5867464F1F35D483000F0D32 /* TransitModesViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitModesViewControllerTests.swift; sourceTree = "<group>"; };
 		586746521F35D483000F0D32 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
 		586746531F35D483000F0D32 /* StoryboardsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardsTests.swift; sourceTree = "<group>"; };
 		586746551F35D483000F0D32 /* AppDelegateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateTests.swift; sourceTree = "<group>"; };
@@ -581,6 +572,7 @@
 		582F4EAE1F33B1120062A546 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				585572841F3948D3004ABCD6 /* Color+Septa.swift */,
 				58C182001F34C560002748E9 /* Asset.swift */,
 				582F4EAF1F33B1120062A546 /* Assets.xcassets */,
 			);
@@ -748,7 +740,6 @@
 				586746401F35D483000F0D32 /* RouteSchedule */,
 				586746441F35D483000F0D32 /* SelectStop */,
 				586746471F35D483000F0D32 /* SelectStops */,
-				5867464F1F35D483000F0D32 /* TransitModesViewControllerTests.swift */,
 			);
 			path = Schedules;
 			sourceTree = "<group>";
@@ -784,12 +775,6 @@
 		586746471F35D483000F0D32 /* SelectStops */ = {
 			isa = PBXGroup;
 			children = (
-				586746481F35D483000F0D32 /* RouteStopsTests.swift */,
-				586746491F35D483000F0D32 /* SelectedStopTypeTests.swift */,
-				5867464A1F35D483000F0D32 /* SelectStopCellTypeTests.swift */,
-				5867464B1F35D483000F0D32 /* SelectStopRowTests.swift */,
-				5867464C1F35D483000F0D32 /* SelectStopsViewControllerTests.swift */,
-				5867464D1F35D483000F0D32 /* SelectStopsViewElementTests.swift */,
 				5867464E1F35D483000F0D32 /* SelectStopsViewModelTests.swift */,
 			);
 			path = SelectStops;
@@ -903,6 +888,7 @@
 			children = (
 				58B8920C1F38C64C00BFFEFA /* MockPreferenceProvider.swift */,
 				58B8920E1F38CBA900BFFEFA /* GenericAction.swift */,
+				585572881F395990004ABCD6 /* MockSingleCell.swift */,
 			);
 			path = MockObjects;
 			sourceTree = "<group>";
@@ -1225,6 +1211,7 @@
 				583435701F34E82E0021EC6D /* SelectedStopType.swift in Sources */,
 				583435711F34E82E0021EC6D /* ScheduleTableViewCell.swift in Sources */,
 				583435721F34E82E0021EC6D /* RouteStops.swift in Sources */,
+				585572871F39499D004ABCD6 /* Color+Septa.swift in Sources */,
 				583435731F34E82E0021EC6D /* SelectStopsViewModel.swift in Sources */,
 				583435741F34E82E0021EC6D /* AppDelegate.swift in Sources */,
 				583435751F34E82E0021EC6D /* SelectStopCellType.swift in Sources */,
@@ -1267,6 +1254,7 @@
 				582F4ECC1F33B1120062A546 /* ScheduleTableViewCell.swift in Sources */,
 				582F4ED01F33B1120062A546 /* RouteStops.swift in Sources */,
 				582F4ED71F33B1120062A546 /* SelectStopsViewModel.swift in Sources */,
+				585572861F39499D004ABCD6 /* Color+Septa.swift in Sources */,
 				582F4EBB1F33B1120062A546 /* AppDelegate.swift in Sources */,
 				582F4ED21F33B1120062A546 /* SelectStopCellType.swift in Sources */,
 				582F4EBD1F33B1120062A546 /* SingleStringCell.swift in Sources */,
@@ -1312,24 +1300,21 @@
 				58B891C31F38B51400BFFEFA /* NavigationStateTests.swift in Sources */,
 				58B892121F38E44000BFFEFA /* ScheduleActionsTests.swift in Sources */,
 				58B891C41F38B51400BFFEFA /* TransitModeTests.swift in Sources */,
-				5867466A1F35D484000F0D32 /* SelectedStopTypeTests.swift in Sources */,
 				586746661F35D484000F0D32 /* ScheduleTableViewCellTests.swift in Sources */,
 				58B891C21F38B51400BFFEFA /* FeatureViewControllerTests.swift in Sources */,
-				5867466D1F35D484000F0D32 /* SelectStopsViewControllerTests.swift in Sources */,
 				586746621F35D483000F0D32 /* RoutesViewModelTests.swift in Sources */,
 				58B891C01F38B51400BFFEFA /* ScheduleRequestTests.swift in Sources */,
 				58B891C51F38B51400BFFEFA /* EmbeddedViewTests.swift in Sources */,
 				58B891C61F38B51400BFFEFA /* FeatureTests.swift in Sources */,
 				586746631F35D483000F0D32 /* RouteTableViewCellTests.swift in Sources */,
 				58B891C11F38B51400BFFEFA /* ScheduleStateTests.swift in Sources */,
-				5867466C1F35D484000F0D32 /* SelectStopRowTests.swift in Sources */,
 				586746721F35D484000F0D32 /* StoryboardsTests.swift in Sources */,
 				5867465F1F35D483000F0D32 /* AlertTests.swift in Sources */,
 				58B891CB1F38B51E00BFFEFA /* ScheduleReducersTests.swift in Sources */,
 				58B891CC1F38B51E00BFFEFA /* NavigationReducersTests.swift in Sources */,
 				58290E4C1F372CAD000CCF3C /* AppStateReducerTests.swift in Sources */,
-				586746701F35D484000F0D32 /* TransitModesViewControllerTests.swift in Sources */,
 				586746601F35D483000F0D32 /* NextToArriveViewControllerTests.swift in Sources */,
+				585572891F395990004ABCD6 /* MockSingleCell.swift in Sources */,
 				58B892131F38E44000BFFEFA /* NavigationActionsTests.swift in Sources */,
 				5867465E1F35D483000F0D32 /* ViewControllerTests.swift in Sources */,
 				5840D6D01F375F5D00C8CB76 /* ScheduleTests.swift in Sources */,
@@ -1341,14 +1326,11 @@
 				586746761F35D484000F0D32 /* DateFormattersTests.swift in Sources */,
 				58B8920F1F38CBA900BFFEFA /* GenericAction.swift in Sources */,
 				586746751F35D484000F0D32 /* ViewModelDelegateTests.swift in Sources */,
-				5867466B1F35D484000F0D32 /* SelectStopCellTypeTests.swift in Sources */,
-				586746691F35D484000F0D32 /* RouteStopsTests.swift in Sources */,
 				5867466F1F35D484000F0D32 /* SelectStopsViewModelTests.swift in Sources */,
 				586746671F35D484000F0D32 /* SelectStopViewControllerTests.swift in Sources */,
 				58B891BF1F38B51400BFFEFA /* ScheduleDataTests.swift in Sources */,
 				5840D6CF1F375F5D00C8CB76 /* AppStateTests.swift in Sources */,
 				586746641F35D483000F0D32 /* RouteScheduleViewControllerTests.swift in Sources */,
-				5867466E1F35D484000F0D32 /* SelectStopsViewElementTests.swift in Sources */,
 				586746771F35D484000F0D32 /* AssetTests.swift in Sources */,
 				58B8920D1F38C64C00BFFEFA /* MockPreferenceProvider.swift in Sources */,
 				586746711F35D484000F0D32 /* MainViewControllerTests.swift in Sources */,
