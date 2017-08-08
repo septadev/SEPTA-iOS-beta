@@ -47,6 +47,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
         var enabled: Bool = false
         var color: UIColor = UIColor.clear
         displayModel = Row.rows().map { row in
+
             switch row {
             case .selectRoute:
                 if let routeName = scheduleRequest?.selectedRoute?.routeShortName {
