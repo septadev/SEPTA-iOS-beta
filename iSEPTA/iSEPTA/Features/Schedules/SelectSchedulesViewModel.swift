@@ -41,7 +41,6 @@ class SelectSchedulesViewModel: StoreSubscriber {
         scheduleRequest = state
         buildDisplayModel()
         delegate?.viewModelUpdated()
-
     }
 
     func buildDisplayModel() {

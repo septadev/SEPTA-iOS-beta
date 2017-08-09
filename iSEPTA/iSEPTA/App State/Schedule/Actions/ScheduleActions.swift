@@ -14,7 +14,7 @@ struct ScheduleActions {
         let transitMode: TransitMode
     }
 
-    struct TransitModeDisplayed: ScheduleAction , Codable {
+    struct TransitModeDisplayed: ScheduleAction, Codable {
         let transitMode: TransitMode?
     }
 }

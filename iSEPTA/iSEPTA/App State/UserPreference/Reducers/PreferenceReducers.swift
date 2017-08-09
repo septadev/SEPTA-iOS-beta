@@ -1,31 +1,34 @@
-//
-//  PreferenceReducers.swift
-//  iSEPTA
-//
-//  Created by Mark Broski on 8/8/17.
-//  Copyright © 2017 Mark Broski. All rights reserved.
-//
+// Septa. 2017
 
 import Foundation
 import ReSwift
 
-class UserPreferenceReducers {
+struct UserPreferenceReducer {
 
-    class func main(action: Action, state: UserPreferenceState?) -> UserPreferenceState {
-        let newState = state ?? PreferencesProvider.sharedInstance.retrievePersistedState()
-        guard let action = action as? UserPreferenceAction else { return newState }
+    static func main(action: Action, state: UserPreferenceState?) -> UserPreferenceState {
 
-        
-    switch action {
-        case let preferenceRetrievedAction as UserPreference.PreferencesRetrievedAction:
-            return updateModelFromPreferences(action: preferenceRetrievedAction, state: newState)
+        if let prefState = state {
+            guard let prefAction = action as? UserPreferenceAction else { return prefState }
 
-        default:
-            return newState
+            return reducePreference(action: prefAction, userPreferenceState: prefState)
+        } else {
+            
+            return UserPreferenceState()
         }
     }
 
-    class func updateModelFromPreferences(action: UserPreference.PreferencesRetrievedAction, state: UserPreferenceState) -> UserPreferenceState {
+    static func reducePreference(action: UserPreferenceAction, userPreferenceState: UserPreferenceState) -> UserPreferenceState {
+        let newPref: UserPreferenceState
+        switch action {
+        case let action as UserPreference.NewTransitModeAction:
+            newPref = UserPreferenceState(transitMode: action.transitMode)
+        default:
+            newPref = userPreferenceState
+        }
+        return newPref
+    }
+
+    static func updateModelFromPreferences(action: UserPreference.PreferencesRetrievedAction, state _: UserPreferenceState) -> UserPreferenceState {
         return action.preferenceState
     }
 }

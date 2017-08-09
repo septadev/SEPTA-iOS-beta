@@ -7,9 +7,9 @@ struct ScheduleState {
 
     let scheduleRequest: ScheduleRequest?
     let scheduleData: ScheduleData?
-    let scheduleNavigation: FeatureViewControllerDisplayState?
+    let scheduleNavigation: ViewControllerState?
 
-    init(scheduleRequest: ScheduleRequest? = nil, scheduleData: ScheduleData? = nil, scheduleNavigation: FeatureViewControllerDisplayState? = nil) {
+    init(scheduleRequest: ScheduleRequest? = nil, scheduleData: ScheduleData? = nil, scheduleNavigation: ViewControllerState? = nil) {
         self.scheduleRequest = scheduleRequest
         self.scheduleData = scheduleData
         self.scheduleNavigation = scheduleNavigation

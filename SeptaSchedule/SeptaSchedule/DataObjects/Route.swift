@@ -2,7 +2,7 @@
 
 import Foundation
 
-public struct Route {
+public struct Route: Codable {
     public let routeId: String
     public let routeShortName: String
     public let routeLongName: String

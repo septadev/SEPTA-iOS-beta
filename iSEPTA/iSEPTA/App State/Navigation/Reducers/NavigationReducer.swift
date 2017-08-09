@@ -1,15 +1,17 @@
 // Septa. 2017
 
 import Foundation
-import UIKit
 import ReSwift
 
-struct NavigationReducers {
-
+struct NavigationReducer {
     static func main(action: Action, state: NavigationState?) -> NavigationState {
-        guard let newState = state else { return NavigationState(selectedFeature: .noneSelected, activeFeature: .noneSelected) }
-        guard let action = action as? NavigationAction else { return newState }
-        return handleNavigationActions(action: action, state: newState)
+        if let navState = state {
+            guard let navigationAction = action as? NavigationAction else { return navState }
+            return handleNavigationActions(action: navigationAction, state: navState)
+        } else {
+
+            return NavigationState(selectedFeature: .schedules, activeFeature: .noneSelected)
+        }
     }
 
     static func handleNavigationActions(action: NavigationAction, state: NavigationState) -> NavigationState {

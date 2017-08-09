@@ -4,21 +4,25 @@ import Foundation
 import ReSwift
 
 class PreferencesProvider: PreferencesProviderProtocol, StoreSubscriber {
-      typealias StoreSubscriberStateType = UserPreferenceState
+    typealias StoreSubscriberStateType = UserPreferenceState
 
     private let defaults = UserDefaults.standard
     static let sharedInstance = PreferencesProvider()
 
-    private init() {}
+    private var subscribed = false
+
+    private init() {
+
+    
+    }
 
     func retrievePersistedState() -> UserPreferenceState {
-        var transitMode: TransitMode? = nil
-        if let prefString = stringPreference(forKey: .preferredTransitMode), let prefObj = TransitMode(rawValue: prefString){
+        var transitMode: TransitMode?
+        if let prefString = stringPreference(forKey: .preferredTransitMode), let prefObj = TransitMode(rawValue: prefString) {
             transitMode = prefObj
         }
         let preferenceState = UserPreferenceState(transitMode: transitMode)
         return preferenceState
-
     }
 
     func setStringPreference(preference: String, forKey key: UserPreferenceKeys) {
@@ -33,22 +37,21 @@ class PreferencesProvider: PreferencesProviderProtocol, StoreSubscriber {
         }
     }
 
-    func subscribe(){
+    func subscribe() {
         store.subscribe(self) { subscription in
             subscription.select(self.filterSubscription)
         }
-
     }
 
     func filterSubscription(state: AppState) -> UserPreferenceState {
         return state.preferenceState
     }
 
-    func unsubscribe(){
+    func unsubscribe() {
         store.unsubscribe(self)
     }
 
-    deinit{
+    deinit {
         unsubscribe()
     }
 

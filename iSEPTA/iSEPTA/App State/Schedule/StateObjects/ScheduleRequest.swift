@@ -3,18 +3,19 @@
 import Foundation
 import SeptaSchedule
 
-struct ScheduleRequest {
+struct ScheduleRequest: Codable {
+    let transitMode: TransitMode?
     let selectedRoute: Route?
     let selectedStart: Stop?
     let selectedEnd: Stop?
-    let transitMode: TransitMode?
+
     let onlyOneRouteAvailable: Bool
 
-    init(selectedRoute: Route? = nil, selectedStart: Stop? = nil, selectedEnd: Stop? = nil, transitMode: TransitMode? = nil, onlyOneRouteAvailable: Bool = false) {
+    init(transitMode: TransitMode? = nil, selectedRoute: Route? = nil, selectedStart: Stop? = nil, selectedEnd: Stop? = nil, onlyOneRouteAvailable: Bool = false) {
+        self.transitMode = transitMode
         self.selectedRoute = selectedRoute
         self.selectedStart = selectedStart
         self.selectedEnd = selectedEnd
-        self.transitMode = transitMode
         self.onlyOneRouteAvailable = onlyOneRouteAvailable
     }
 }
@@ -22,6 +23,15 @@ struct ScheduleRequest {
 extension ScheduleRequest: Equatable {}
 func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
     var areEqual = true
+
+    switch (lhs.transitMode, rhs.transitMode) {
+    case (.none, .none):
+        areEqual = true
+    case (.some, .some):
+        areEqual = lhs.transitMode! == rhs.transitMode!
+    default:
+        return false
+    }
 
     switch (lhs.selectedRoute, rhs.selectedRoute) {
     case (.none, .none):
@@ -46,15 +56,6 @@ func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
         areEqual = true
     case (.some, .some):
         areEqual = lhs.selectedEnd! == rhs.selectedEnd!
-    default:
-        return false
-    }
-
-    switch (lhs.transitMode, rhs.transitMode) {
-    case (.none, .none):
-        areEqual = true
-    case (.some, .some):
-        areEqual = lhs.transitMode! == rhs.transitMode!
     default:
         return false
     }

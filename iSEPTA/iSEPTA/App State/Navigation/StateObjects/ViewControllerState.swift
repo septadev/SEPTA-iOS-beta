@@ -2,20 +2,20 @@
 
 import Foundation
 
-struct FeatureViewControllerDisplayState {
+struct ViewControllerState {
     let requestedViewController: FeatureViewController?
     let activeViewController: FeatureViewController?
-    let embeddedViews: [EmbeddedView: FeatureViewControllerDisplayState]?
+    let embeddedViews: [EmbeddedView: ViewControllerState]?
 
-    init(requestedViewController: FeatureViewController? = nil, activeViewController: FeatureViewController? = nil, embeddedViews: [EmbeddedView: FeatureViewControllerDisplayState]? = nil) {
+    init(requestedViewController: FeatureViewController? = nil, activeViewController: FeatureViewController? = nil, embeddedViews: [EmbeddedView: ViewControllerState]? = nil) {
         self.requestedViewController = requestedViewController
         self.activeViewController = activeViewController
         self.embeddedViews = embeddedViews
     }
 }
 
-extension FeatureViewControllerDisplayState: Equatable {}
-func ==(lhs: FeatureViewControllerDisplayState, rhs: FeatureViewControllerDisplayState) -> Bool {
+extension ViewControllerState: Equatable {}
+func ==(lhs: ViewControllerState, rhs: ViewControllerState) -> Bool {
     var areEqual = true
 
     switch (lhs.requestedViewController, rhs.requestedViewController) {

@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         movePreloadedDatabaseIfNeeded()
         store.dispatch(SwitchFeature(selectedFeature: .schedules))
+        stateProviders.preferenceProvider.subscribe()
         return true
     }
 

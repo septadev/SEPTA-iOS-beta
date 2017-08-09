@@ -18,6 +18,4 @@ enum TransitMode: String, Codable {
         case .trolley: return "Trolley Routes"
         }
     }
-
-
 }
