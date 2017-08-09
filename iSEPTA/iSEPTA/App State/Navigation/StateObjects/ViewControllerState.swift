@@ -2,7 +2,7 @@
 
 import Foundation
 
-struct ViewControllerState {
+struct ViewControllerState: Codable {
     let requestedViewController: FeatureViewController?
     let activeViewController: FeatureViewController?
     let embeddedViews: [EmbeddedView: ViewControllerState]?

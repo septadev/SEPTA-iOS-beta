@@ -3,7 +3,7 @@
 import Foundation
 import ReSwift
 
-struct AppState: StateType {
+struct AppState: StateType, Codable {
     let navigationState: NavigationState
     let scheduleState: ScheduleState
     let preferenceState: UserPreferenceState

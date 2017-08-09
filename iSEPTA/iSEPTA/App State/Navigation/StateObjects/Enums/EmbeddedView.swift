@@ -2,6 +2,6 @@
 
 import Foundation
 
-enum EmbeddedView {
+enum EmbeddedView :Int, Codable{
     case transitMode
 }

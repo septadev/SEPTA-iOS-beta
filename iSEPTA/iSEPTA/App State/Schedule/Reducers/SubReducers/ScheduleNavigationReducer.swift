@@ -10,7 +10,15 @@ struct ScheduleNavigationReducer {
         return ViewControllerState()
     }
 
-    static func reduceNavigation(action _: ScheduleAction, scheduleNavigation: ViewControllerState) -> ViewControllerState {
+    static func reduceNavigation(action: ScheduleAction, scheduleNavigation: ViewControllerState) -> ViewControllerState {
+
+        switch action {
+            case let action as? ScheduleActions.DisplayRoutes:
+            let newRouter = ViewControllerState(requestedViewController: )
+
+        }
+
         return scheduleNavigation
     }
 }
+

@@ -4,7 +4,7 @@ import Foundation
 import UIKit
 import ReSwift
 
-enum FeatureNavController {
+enum FeatureNavController: Int, Codable {
     case noneSelected
     case arrivingSoon
     case favorites

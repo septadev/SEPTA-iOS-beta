@@ -5,11 +5,13 @@ import UIKit
 import ReSwift
 
 class SchedulesNavigationController: UINavigationController, StoreSubscriber {
-    typealias StoreSubscriberStateType = NavigationState
+    typealias StoreSubscriberStateType = ViewControllerState?
+
+    let showRoutesId = "showRoutes"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        store.dispatch(ScheduleActions.WillViewSchedules())
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -29,8 +31,8 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber {
         store.unsubscribe(self)
     }
 
-    func filterSubscription(state: AppState) -> NavigationState {
-        return state.navigationState
+    func filterSubscription(state: AppState) -> ViewControllerState? {
+        return state.scheduleState.scheduleNavigation
     }
 
     func newState(state _: StoreSubscriberStateType) {

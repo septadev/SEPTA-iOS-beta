@@ -2,7 +2,7 @@
 
 import Foundation
 // Encapsulates a trip
-public struct Trip {
+public struct Trip : Codable{
 
     let departureInt: Int
     let arrivalInt: Int

@@ -4,7 +4,7 @@ import Foundation
 import UIKit
 import ReSwift
 
-struct NavigationState {
+struct NavigationState: Codable {
 
     let selectedFeature: FeatureNavController?
     let activeFeature: FeatureNavController?

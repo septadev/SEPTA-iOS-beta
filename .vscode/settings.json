@@ -1,13 +1,14 @@
 // Place your settings in this file to overwrite default and user settings.
 {
     "files.exclude": {
-        "Build/": true,
+        "*/Build/": true,
+         "Build/": true,
         "Carthage/": true,
         "*/DerivedData/": true,
         "fastlane/": true,
-        "Frameworks/": true,
-        "CharlesSessions/": true
-
+        "*/Frameworks/": true,
+        "CharlesSessions/": true,
+        "*/*.framework/": true
     }
     
 }
