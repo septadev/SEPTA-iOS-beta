@@ -16,7 +16,7 @@ default_platform :ios
 lane :beta do
   # build your iOS app
   gym(
-    scheme: "iSEPTA-Release",
+    scheme: "iSEPTA",
     export_method: "ad-hoc"
   )
 

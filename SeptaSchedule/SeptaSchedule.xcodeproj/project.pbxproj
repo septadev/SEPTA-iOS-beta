@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5811CD691F3A890F00714C08 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5811CD681F3A890F00714C08 /* SQLite.framework */; };
+		5811CD6B1F3A891400714C08 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5811CD6A1F3A891300714C08 /* Zip.framework */; };
 		582F4F041F33B1370062A546 /* NewBusEnd.sql in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EE31F33B1370062A546 /* NewBusEnd.sql */; };
 		582F4F051F33B1370062A546 /* routes.sql in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EE41F33B1370062A546 /* routes.sql */; };
 		582F4F061F33B1370062A546 /* testCallToBusEnd_Saturday.sql in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EE51F33B1370062A546 /* testCallToBusEnd_Saturday.sql */; };
@@ -42,10 +44,6 @@
 		582F4F381F33B4E50062A546 /* TripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F311F33B4E50062A546 /* TripTests.swift */; };
 		582F4F391F33B4E50062A546 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F321F33B4E50062A546 /* Main.swift */; };
 		58D9C42D1F3336C6002BE2E8 /* SeptaSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58D9C4231F3336C6002BE2E8 /* SeptaSchedule.framework */; };
-		58DCF1031F33B8F70033B112 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DCF1001F33B8F70033B112 /* SQLite.framework */; };
-		58DCF1051F33B8F70033B112 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DCF1021F33B8F70033B112 /* Zip.framework */; };
-		58DCF1071F33B90F0033B112 /* SQLite.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DCF1001F33B8F70033B112 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		58DCF1081F33B90F0033B112 /* Zip.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DCF1021F33B8F70033B112 /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,14 +63,15 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				58DCF1071F33B90F0033B112 /* SQLite.framework in CopyFiles */,
-				58DCF1081F33B90F0033B112 /* Zip.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5811CD661F3A88F300714C08 /* Frameworks */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Frameworks; path = ../iSEPTA/Frameworks; sourceTree = "<group>"; };
+		5811CD681F3A890F00714C08 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = ../iSEPTA/Frameworks/SQLite.framework; sourceTree = "<group>"; };
+		5811CD6A1F3A891300714C08 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = ../iSEPTA/Frameworks/Zip.framework; sourceTree = "<group>"; };
 		582F4EE31F33B1370062A546 /* NewBusEnd.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NewBusEnd.sql; sourceTree = "<group>"; };
 		582F4EE41F33B1370062A546 /* routes.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = routes.sql; sourceTree = "<group>"; };
 		582F4EE51F33B1370062A546 /* testCallToBusEnd_Saturday.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testCallToBusEnd_Saturday.sql; sourceTree = "<group>"; };
@@ -112,8 +111,6 @@
 		58D9C4231F3336C6002BE2E8 /* SeptaSchedule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SeptaSchedule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D9C42C1F3336C6002BE2E8 /* SeptaScheduleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeptaScheduleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D9C4331F3336C6002BE2E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		58DCF1001F33B8F70033B112 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = ../Frameworks/SQLite.framework; sourceTree = "<group>"; };
-		58DCF1021F33B8F70033B112 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = ../Frameworks/Zip.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +118,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5811CD691F3A890F00714C08 /* SQLite.framework in Frameworks */,
+				5811CD6B1F3A891400714C08 /* Zip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,8 +127,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58DCF1031F33B8F70033B112 /* SQLite.framework in Frameworks */,
-				58DCF1051F33B8F70033B112 /* Zip.framework in Frameworks */,
 				58D9C42D1F3336C6002BE2E8 /* SeptaSchedule.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,8 +273,9 @@
 		58D9C4191F3336C6002BE2E8 = {
 			isa = PBXGroup;
 			children = (
-				58DCF1001F33B8F70033B112 /* SQLite.framework */,
-				58DCF1021F33B8F70033B112 /* Zip.framework */,
+				5811CD6A1F3A891300714C08 /* Zip.framework */,
+				5811CD681F3A890F00714C08 /* SQLite.framework */,
+				5811CD661F3A88F300714C08 /* Frameworks */,
 				582F4F1F1F33B1AA0062A546 /* Utilities */,
 				58D9C4251F3336C6002BE2E8 /* SeptaSchedule */,
 				58D9C4301F3336C6002BE2E8 /* SeptaScheduleTests */,
@@ -385,6 +383,7 @@
 					58D9C4221F3336C6002BE2E8 = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
 					};
 					58D9C42B1F3336C6002BE2E8 = {
 						CreatedOnToolsVersion = 9.0;
@@ -604,19 +603,24 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CONFIGURATION_BUILD_DIR = "$(inherited)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = L636S9JLLY;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = $SRCROOT/../Frameworks;
+				FRAMEWORK_SEARCH_PATHS = $SRCROOT/../iSEPTA/Frameworks;
 				INFOPLIST_FILE = SeptaSchedule/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.SeptaSchedule;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -629,12 +633,15 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CONFIGURATION_BUILD_DIR = "$(inherited)";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = L636S9JLLY;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = $SRCROOT/../Frameworks;
+				FRAMEWORK_SEARCH_PATHS = $SRCROOT/../iSEPTA/Frameworks;
 				INFOPLIST_FILE = SeptaSchedule/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -642,6 +649,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.SeptaSchedule;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -655,7 +663,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				ENABLE_BITCODE = YES;
-				FRAMEWORK_SEARCH_PATHS = "$SRCROOT/../Frameworks/**";
+				FRAMEWORK_SEARCH_PATHS = "$SRCROOT/../iSEPTA/Frameworks/**";
 				INFOPLIST_FILE = SeptaScheduleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.SeptaScheduleTests;
@@ -674,7 +682,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				ENABLE_BITCODE = YES;
-				FRAMEWORK_SEARCH_PATHS = "$SRCROOT/../Frameworks/**";
+				FRAMEWORK_SEARCH_PATHS = "$SRCROOT/../iSEPTA/Frameworks/**";
 				INFOPLIST_FILE = SeptaScheduleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.SeptaScheduleTests;
