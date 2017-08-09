@@ -6,44 +6,27 @@ import ReSwift
 class ScheduleReducers {
 
     class func main(action: Action, state: ScheduleState?) -> ScheduleState {
-        guard let newState = state else { return initializeScheduleState() }
-        guard let action = action as? ScheduleAction else { return newState }
-        return handleScheduleActions(action: action, state: newState)
+        let scheduleState = state ?? ScheduleState()
+        guard let scheduleAction = action as? ScheduleAction else { return scheduleState }
+
+
+        return ScheduleState(
+            scheduleRequest: scheduleRequest(scheduleAction: scheduleAction, scheduleState: scheduleState),
+            scheduleData: scheduleData(scheduleAction: scheduleAction, scheduleState: scheduleState),
+            scheduleNavigation: scheduleNavigation(scheduleAction: scheduleAction, scheduleState: scheduleState)
+        )
     }
 
-    class func initializeScheduleState() -> ScheduleState {
-        let scheduleRequest = ScheduleRequest(transitMode: getDefaultTransitMode())
-
-        return ScheduleState(scheduleRequest: scheduleRequest)
+    class func scheduleRequest(scheduleAction: ScheduleAction, scheduleState: ScheduleState?) -> ScheduleRequest   {
+        return ScheduleRequest()
     }
 
-    class func getDefaultTransitMode() -> TransitMode? {
-        let prefProvider = stateProviders.preferenceProvider
-        if let transitModeString = prefProvider.stringPreference(forKey: .preferredTransitMode) {
-            return TransitMode(rawValue: transitModeString)
-        } else {
-            let defaultTransitMode = UserPreferenceKeys.preferredTransitMode.defaultValue()
-            return TransitMode(rawValue: defaultTransitMode ?? "")
-        }
+    class func scheduleData(scheduleAction: ScheduleAction, scheduleState: ScheduleState?) -> ScheduleData{
+        return ScheduleData()
     }
 
-    class func handleScheduleActions(action _: ScheduleAction, state _: ScheduleState) -> ScheduleState {
-        return ScheduleState()
+    class func scheduleNavigation(scheduleAction: ScheduleAction, scheduleState: ScheduleState) -> FeatureViewControllerDisplayState{
+        return FeatureViewControllerDisplayState()
     }
 
-    class func newSchedule(transitMode: TransitMode) -> ScheduleState {
-        let request = ScheduleRequest(selectedRoute: nil, selectedStart: nil, selectedEnd: nil, transitMode: transitMode)
-        return ScheduleState(scheduleRequest: request, scheduleData: nil)
-    }
-
-    class func updatePreferences(state: [String: String]?, withString value: String, forKey key: String) -> [String: String] {
-
-        if var state = state {
-            state[key] = value
-            return state
-
-        } else {
-            return [key: value]
-        }
-    }
 }

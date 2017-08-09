@@ -5,8 +5,8 @@ import ReSwift
 
 protocol ScheduleAction: Action {}
 
-class ScheduleActions {
-    struct WillViewSchedules: ScheduleAction {
+struct ScheduleActions {
+    struct WillViewSchedules: ScheduleAction, Codable {
     }
 
     struct TransitModeSelected: ScheduleAction {
@@ -14,7 +14,7 @@ class ScheduleActions {
         let transitMode: TransitMode
     }
 
-    struct TransitModeDisplayed: ScheduleAction {
+    struct TransitModeDisplayed: ScheduleAction , Codable {
         let transitMode: TransitMode?
     }
 }

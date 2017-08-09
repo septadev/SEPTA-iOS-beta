@@ -2,7 +2,7 @@
 
 import Foundation
 
-enum TransitMode: String {
+enum TransitMode: String, Codable {
     case bus
     case rail
     case subway
@@ -18,4 +18,6 @@ enum TransitMode: String {
         case .trolley: return "Trolley Routes"
         }
     }
+
+
 }

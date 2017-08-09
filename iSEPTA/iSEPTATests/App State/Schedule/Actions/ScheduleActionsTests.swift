@@ -8,7 +8,7 @@ import ReSwift
 class ScheduleActionsTests: XCTestCase {
 
     /// Schedule should always return a transit mode
-    func testWilviewschedulesShouldAlwaysReturnATransitMode() {
+    func testViewschedulesShouldAlwaysReturnATransitMode() {
         store.dispatch(ScheduleActions.WillViewSchedules())
         let transitMode = store.state.scheduleState.scheduleRequest?.transitMode
         XCTAssertNotNil(transitMode)

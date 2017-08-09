@@ -68,9 +68,12 @@
 		585572891F395990004ABCD6 /* MockSingleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585572881F395990004ABCD6 /* MockSingleCell.swift */; };
 		586746621F35D483000F0D32 /* RoutesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867463E1F35D483000F0D32 /* RoutesViewModelTests.swift */; };
 		5867466F1F35D484000F0D32 /* SelectStopsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867464E1F35D483000F0D32 /* SelectStopsViewModelTests.swift */; };
+		5880C1991F3B30AB00337DB2 /* PreferenceProviderPrototocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880C1981F3B30AB00337DB2 /* PreferenceProviderPrototocol.swift */; };
+		5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880C19A1F3B4D1C00337DB2 /* ScheduleRequestReducers.swift */; };
+		5880C19D1F3B702500337DB2 /* Answers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5880C19C1F3B702500337DB2 /* Answers.framework */; };
 		588F27F01F39DD7B00D62425 /* UserPreferenceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27EF1F39DD7B00D62425 /* UserPreferenceState.swift */; };
 		588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27F31F39E05A00D62425 /* PreferenceReducers.swift */; };
-		588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27F61F39E0BF00D62425 /* UserPreferenceActions.swift */; };
+		588F27F71F39E0BF00D62425 /* UserPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27F61F39E0BF00D62425 /* UserPreference.swift */; };
 		5892DDF11F3AAA5C000BA54B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5892DDEF1F3AAA5C000BA54B /* Crashlytics.framework */; };
 		5892DDF21F3AAA5C000BA54B /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5892DDF01F3AAA5C000BA54B /* Fabric.framework */; };
 		58B891CB1F38B51E00BFFEFA /* ScheduleReducersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891C81F38B51E00BFFEFA /* ScheduleReducersTests.swift */; };
@@ -198,9 +201,12 @@
 		5867462C1F35D483000F0D32 /* iSEPTATests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSEPTATests-Bridging-Header.h"; sourceTree = "<group>"; };
 		5867463E1F35D483000F0D32 /* RoutesViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesViewModelTests.swift; sourceTree = "<group>"; };
 		5867464E1F35D483000F0D32 /* SelectStopsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopsViewModelTests.swift; sourceTree = "<group>"; };
+		5880C1981F3B30AB00337DB2 /* PreferenceProviderPrototocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceProviderPrototocol.swift; sourceTree = "<group>"; };
+		5880C19A1F3B4D1C00337DB2 /* ScheduleRequestReducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRequestReducers.swift; sourceTree = "<group>"; };
+		5880C19C1F3B702500337DB2 /* Answers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Answers.framework; sourceTree = "<group>"; };
 		588F27EF1F39DD7B00D62425 /* UserPreferenceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferenceState.swift; sourceTree = "<group>"; };
 		588F27F31F39E05A00D62425 /* PreferenceReducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceReducers.swift; sourceTree = "<group>"; };
-		588F27F61F39E0BF00D62425 /* UserPreferenceActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferenceActions.swift; sourceTree = "<group>"; };
+		588F27F61F39E0BF00D62425 /* UserPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreference.swift; sourceTree = "<group>"; };
 		5892DDEF1F3AAA5C000BA54B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		5892DDF01F3AAA5C000BA54B /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		58ACEADD1F3A9A9B00DC2836 /* SeptaSchedule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SeptaSchedule.xcodeproj; path = ../SeptaSchedule/SeptaSchedule.xcodeproj; sourceTree = "<group>"; };
@@ -230,6 +236,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5880C19D1F3B702500337DB2 /* Answers.framework in Frameworks */,
 				5811CD741F3A8F8F00714C08 /* ReSwift.framework in Frameworks */,
 				5892DDF11F3AAA5C000BA54B /* Crashlytics.framework in Frameworks */,
 				58406EB41F3A9C0900E6E04D /* SeptaSchedule.framework in Frameworks */,
@@ -509,7 +516,7 @@
 		588F27F51F39E0AE00D62425 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
-				588F27F61F39E0BF00D62425 /* UserPreferenceActions.swift */,
+				588F27F61F39E0BF00D62425 /* UserPreference.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -546,6 +553,7 @@
 			children = (
 				5840D6DF1F37E5FB00C8CB76 /* ScheduleReducers.swift */,
 				5840D6D91F377E5B00C8CB76 /* NavigationReducers.swift */,
+				5880C19A1F3B4D1C00337DB2 /* ScheduleRequestReducers.swift */,
 			);
 			path = Reducers;
 			sourceTree = "<group>";
@@ -682,6 +690,7 @@
 			children = (
 				5840D6E21F37E9FB00C8CB76 /* UserPreferences.swift */,
 				5840D6E61F37EAEF00C8CB76 /* UserPreferenceKeys.swift */,
+				5880C1981F3B30AB00337DB2 /* PreferenceProviderPrototocol.swift */,
 			);
 			path = UserPreferences;
 			sourceTree = "<group>";
@@ -719,6 +728,7 @@
 		58D9C3E71F3335BB002BE2E8 = {
 			isa = PBXGroup;
 			children = (
+				5880C19C1F3B702500337DB2 /* Answers.framework */,
 				5892DDEF1F3AAA5C000BA54B /* Crashlytics.framework */,
 				5892DDF01F3AAA5C000BA54B /* Fabric.framework */,
 				58ACEADD1F3A9A9B00DC2836 /* SeptaSchedule.xcodeproj */,
@@ -785,7 +795,7 @@
 				58D9C3EE1F3335BB002BE2E8 /* Resources */,
 				585F585A1F3377EF00D3ED6C /* Copy Carthage Frameworks */,
 				58552F9B1F335272008C1886 /* CopyFiles */,
-				5892DDE71F3AA3CA000BA54B /* ShellScript */,
+				5892DDE71F3AA3CA000BA54B /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -931,13 +941,14 @@
 			shellPath = /bin/sh;
 			shellScript = "carthage copy-frameworks";
 		};
-		5892DDE71F3AA3CA000BA54B /* ShellScript */ = {
+		5892DDE71F3AA3CA000BA54B /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = Crashlytics;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -971,11 +982,12 @@
 				582F4ED71F33B1120062A546 /* SelectStopsViewModel.swift in Sources */,
 				585572861F39499D004ABCD6 /* Color+Septa.swift in Sources */,
 				582F4EBB1F33B1120062A546 /* AppDelegate.swift in Sources */,
+				5880C1991F3B30AB00337DB2 /* PreferenceProviderPrototocol.swift in Sources */,
 				582F4ED21F33B1120062A546 /* SelectStopCellType.swift in Sources */,
 				582F4EBD1F33B1120062A546 /* SingleStringCell.swift in Sources */,
 				582F4EBF1F33B1120062A546 /* Alert.swift in Sources */,
 				582F4EC51F33B1120062A546 /* NextToArriveViewController.swift in Sources */,
-				588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */,
+				588F27F71F39E0BF00D62425 /* UserPreference.swift in Sources */,
 				58C2A0671F38A75700F0D6CA /* ScheduleRequest.swift in Sources */,
 				5840D6E71F37EAEF00C8CB76 /* UserPreferenceKeys.swift in Sources */,
 				582F4EDF1F33B1120062A546 /* MainViewController.swift in Sources */,
@@ -985,6 +997,7 @@
 				582F4ECF1F33B1120062A546 /* SelectStopViewModel.swift in Sources */,
 				5840D6DE1F37E4B100C8CB76 /* TransitMode.swift in Sources */,
 				582F4EC71F33B1120062A546 /* RoutesViewModel.swift in Sources */,
+				5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducers.swift in Sources */,
 				5840D6E51F37EA1900C8CB76 /* ScheduleProvider.swift in Sources */,
 				58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */,
 				5840D6D71F37728B00C8CB76 /* FeatureNavController.swift in Sources */,

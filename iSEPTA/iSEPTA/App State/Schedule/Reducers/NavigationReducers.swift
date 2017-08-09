@@ -4,14 +4,15 @@ import Foundation
 import UIKit
 import ReSwift
 
-class NavigationReducers {
-    class func main(action: Action, state: NavigationState?) -> NavigationState {
+struct NavigationReducers {
+
+    static func main(action: Action, state: NavigationState?) -> NavigationState {
         guard let newState = state else { return NavigationState(selectedFeature: .noneSelected, activeFeature: .noneSelected) }
         guard let action = action as? NavigationAction else { return newState }
         return handleNavigationActions(action: action, state: newState)
     }
 
-    class func handleNavigationActions(action: NavigationAction, state: NavigationState) -> NavigationState {
+    static func handleNavigationActions(action: NavigationAction, state: NavigationState) -> NavigationState {
         switch action {
         case let action as SwitchFeature:
             return switchTabs(action: action, state: state)
@@ -20,7 +21,7 @@ class NavigationReducers {
         }
     }
 
-    class func switchTabs(action: NavigationAction, state: NavigationState) -> NavigationState {
+    static func switchTabs(action: NavigationAction, state: NavigationState) -> NavigationState {
 
         switch action {
         case let action as SwitchFeature:

@@ -6,6 +6,7 @@ import SeptaSchedule
 #if RELEASE
     import Fabric
     import Crashlytics
+    import Answers
 #endif
 
 let store = Store<AppState>(
@@ -25,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         #if RELEASE
-            Fabric.with([Crashlytics.self])
+            Fabric.with([Crashlytics.self, Answers.self])
 
         #endif
 
