@@ -2,7 +2,7 @@
 
 import Foundation
 
-struct UserPreferenceState {
+struct UserPreferenceState: Codable {
     let transitMode: TransitMode?
 
     init(transitMode: TransitMode? = nil) {
