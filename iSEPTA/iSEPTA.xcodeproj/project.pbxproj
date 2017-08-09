@@ -180,7 +180,6 @@
 		582F4EB61F33B1120062A546 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		582F4EB91F33B1120062A546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		582F4F241F33B2400062A546 /* Septa-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Septa-Bridging-Header.h"; sourceTree = "<group>"; };
-		5834359D1F34E82E0021EC6D /* iSEPTA-Release-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "iSEPTA-Release-Info.plist"; path = "/Users/mbroski/Code/Septa/Septa2/iSEPTA/iSEPTA/Info/iSEPTA-Release-Info.plist"; sourceTree = "<absolute>"; };
 		5840D6D21F376D9C00C8CB76 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		5840D6D41F376E5E00C8CB76 /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
 		5840D6D61F37728B00C8CB76 /* FeatureNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureNavController.swift; sourceTree = "<group>"; };
@@ -253,7 +252,6 @@
 			children = (
 				582F4EAD1F33B1120062A546 /* Info.plist */,
 				582F4F241F33B2400062A546 /* Septa-Bridging-Header.h */,
-				5834359D1F34E82E0021EC6D /* iSEPTA-Release-Info.plist */,
 				582F4E7E1F33B1120062A546 /* AppDelegate.swift */,
 			);
 			path = Info;
