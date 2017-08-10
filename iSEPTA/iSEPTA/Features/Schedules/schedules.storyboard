@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qxS-RK-Hb9" userLabel="Toolbar">
+                            <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxS-RK-Hb9" userLabel="Toolbar">
                                 <rect key="frame" x="0.0" y="64" width="375" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="uDf-pF-twq"/>
@@ -76,9 +76,6 @@
                         <outlet property="tableView" destination="JWx-ou-dAj" id="E4N-FK-sNY"/>
                         <outlet property="tableViewFooter" destination="t3k-vt-DEG" id="GMN-YW-enj"/>
                         <outlet property="tableViewHeader" destination="1c9-Es-ZDV" id="Wwf-2z-Mox"/>
-                        <outletCollection property="transitModesToolbarElements" destination="xvH-nt-tSZ" collectionClass="NSMutableArray" id="DgQ-uS-LDf"/>
-                        <outletCollection property="transitModesToolbarElements" destination="AHW-A1-IWn" collectionClass="NSMutableArray" id="thX-SK-ef1"/>
-                        <outletCollection property="transitModesToolbarElements" destination="Hox-B9-Hbl" collectionClass="NSMutableArray" id="I00-u0-FXk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFf-Fy-dWz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -372,31 +369,31 @@ HeaderView</string>
                                 <rect key="frame" x="0.0" y="20" width="375" height="137"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starting Point" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azC-tQ-F57" userLabel="StartingLabel">
-                                        <rect key="frame" x="15" y="8" width="270" height="21"/>
+                                        <rect key="frame" x="0.0" y="8" width="270" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ardmore Station" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ake-6Y-gpx" userLabel="StartingStop">
-                                        <rect key="frame" x="15" y="37" width="270" height="24"/>
+                                        <rect key="frame" x="0.0" y="37" width="270" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Destination" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSc-b6-cJ8" userLabel="DestinationLabel">
-                                        <rect key="frame" x="15" y="69" width="270" height="21"/>
+                                        <rect key="frame" x="0.0" y="69" width="270" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="54th and Wakesha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9c-AY-wQ2" userLabel="DestinationStop">
-                                        <rect key="frame" x="15" y="98" width="270" height="24"/>
+                                        <rect key="frame" x="0.0" y="98" width="270" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUh-d4-gsx">
-                                        <rect key="frame" x="300" y="53.5" width="60" height="30"/>
+                                        <rect key="frame" x="100.5" y="53.5" width="60" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="k2B-og-VkJ"/>
                                         </constraints>
@@ -617,109 +614,52 @@ StartingLabelRight</string>
             </objects>
             <point key="canvasLocation" x="-1892" y="221"/>
         </scene>
-        <!--ToolBar-->
+        <!--ToolBar View Controller-->
         <scene sceneID="6r3-DF-WcU">
             <objects>
-                <viewController title="ToolBar" id="zb9-QJ-YIl" customClass="TransitModesToolbarViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ToolBar View Controller" id="zb9-QJ-YIl" customClass="TransitModesToolbarViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BiL-t2-ODt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DcS-hm-WiD" userLabel="ToolbarScollVierw">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="luf-cQ-783">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="d5f-ZN-wAj">
-                                        <rect key="frame" x="0.0" y="0.0" width="520" height="40"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="er6-I9-Gfl">
+                                        <rect key="frame" x="87" y="0.0" width="94" height="20.5"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Iw-Vt-aGu" customClass="TransitModeToolbarView" customModule="Septa" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="aAh-pa-eUt"/>
-                                                </constraints>
-                                                <string key="userLabel">
-Rail</string>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="highlighted" value="NO"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Rail"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="rail"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hox-B9-Hbl" userLabel="Bus" customClass="TransitModeToolbarView" customModule="Septa" customModuleProvider="target">
-                                                <rect key="frame" x="105" y="0.0" width="100" height="40"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Bus"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="bus"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="highlighted" value="NO"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AHW-A1-IWn" userLabel="Subway" customClass="TransitModeToolbarView" customModule="Septa" customModuleProvider="target">
-                                                <rect key="frame" x="210" y="0.0" width="100" height="40"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Subway"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="subway"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="highlighted" value="NO"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xvH-nt-tSZ" userLabel="NHSL" customClass="TransitModeToolbarView" customModule="Septa" customModuleProvider="target">
-                                                <rect key="frame" x="315" y="0.0" width="100" height="40"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="NHSL"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="nhsl"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="highlighted" value="NO"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yy9-Ty-3Cf" customClass="TransitModeToolbarView" customModule="Septa" customModuleProvider="target">
-                                                <rect key="frame" x="420" y="0.0" width="100" height="40"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <string key="userLabel">
-Trolley</string>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Trolley"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="trolley"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="highlighted" value="NO"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0c-EH-JAp">
+                                                <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eM6-79-TFq">
+                                                <rect key="frame" x="52" y="0.0" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="EVy-qK-zqw" userLabel="StackViewHeight"/>
-                                        </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="nmR-y5-bpm" appends="YES" id="ACT-bo-s78"/>
-                                        </connections>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="d5f-ZN-wAj" firstAttribute="leading" secondItem="DcS-hm-WiD" secondAttribute="leading" id="85c-e2-A7X" userLabel="StackViewLeft"/>
-                                    <constraint firstAttribute="bottom" secondItem="d5f-ZN-wAj" secondAttribute="bottom" id="Xt8-Pp-TKe" userLabel="StackViewBottom"/>
-                                    <constraint firstItem="d5f-ZN-wAj" firstAttribute="top" secondItem="DcS-hm-WiD" secondAttribute="top" id="Z90-ZS-o7X" userLabel="StackViewTop"/>
-                                    <constraint firstAttribute="trailing" secondItem="d5f-ZN-wAj" secondAttribute="trailing" id="vNf-cR-9jD" userLabel="StackViewRight"/>
+                                    <constraint firstItem="er6-I9-Gfl" firstAttribute="height" secondItem="luf-cQ-783" secondAttribute="height" id="2cp-3P-NhE"/>
+                                    <constraint firstAttribute="bottom" secondItem="er6-I9-Gfl" secondAttribute="bottom" id="DAI-3U-AOy"/>
+                                    <constraint firstItem="er6-I9-Gfl" firstAttribute="top" secondItem="luf-cQ-783" secondAttribute="top" id="T3g-6j-gSl"/>
+                                    <constraint firstItem="er6-I9-Gfl" firstAttribute="leading" secondItem="luf-cQ-783" secondAttribute="leading" constant="87" id="WeG-TB-Xrp"/>
+                                    <constraint firstAttribute="trailing" secondItem="er6-I9-Gfl" secondAttribute="trailing" constant="88" id="jHu-Ml-jvE"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.27536286799999998" blue="0.22840918169999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="DcS-hm-WiD" secondAttribute="bottom" id="I7i-F5-yfQ"/>
-                            <constraint firstAttribute="trailing" secondItem="DcS-hm-WiD" secondAttribute="trailing" id="W31-gr-U1l"/>
-                            <constraint firstItem="DcS-hm-WiD" firstAttribute="leading" secondItem="BiL-t2-ODt" secondAttribute="leading" id="jPf-PZ-tvM"/>
-                            <constraint firstItem="DcS-hm-WiD" firstAttribute="top" secondItem="BiL-t2-ODt" secondAttribute="top" id="xPk-HU-eh6"/>
+                            <constraint firstItem="5Vw-PS-aW7" firstAttribute="trailing" secondItem="luf-cQ-783" secondAttribute="trailing" id="5pb-eh-YDt"/>
+                            <constraint firstItem="luf-cQ-783" firstAttribute="leading" secondItem="5Vw-PS-aW7" secondAttribute="leading" id="NUw-RL-t3i"/>
+                            <constraint firstItem="5Vw-PS-aW7" firstAttribute="top" secondItem="luf-cQ-783" secondAttribute="top" id="XkH-Pt-QCR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5Vw-PS-aW7"/>
                     </view>
-                    <connections>
-                        <outlet property="scrollbar" destination="DcS-hm-WiD" id="wtS-cN-zVA"/>
-                        <outletCollection property="transitModesToolbarElements" destination="0Iw-Vt-aGu" collectionClass="NSMutableArray" id="dqx-HD-HRV"/>
-                        <outletCollection property="transitModesToolbarElements" destination="Hox-B9-Hbl" collectionClass="NSMutableArray" id="P1k-3T-ehQ"/>
-                        <outletCollection property="transitModesToolbarElements" destination="AHW-A1-IWn" collectionClass="NSMutableArray" id="FCQ-Cw-2bL"/>
-                        <outletCollection property="transitModesToolbarElements" destination="xvH-nt-tSZ" collectionClass="NSMutableArray" id="FdG-Yx-yAq"/>
-                        <outletCollection property="transitModesToolbarElements" destination="yy9-Ty-3Cf" collectionClass="NSMutableArray" id="YHH-Kh-cNz"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fNv-Zv-nnF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="nmR-y5-bpm">
