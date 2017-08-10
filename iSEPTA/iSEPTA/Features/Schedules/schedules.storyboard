@@ -13,12 +13,12 @@
         <!--Schedules-->
         <scene sceneID="9Tf-Ia-A2O">
             <objects>
-                <viewController title="Schedules" id="G8I-06-w6m" customClass="SelectSchedulesViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Schedules" automaticallyAdjustsScrollViewInsets="NO" id="G8I-06-w6m" customClass="SelectSchedulesViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pKm-2F-CDF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxS-RK-Hb9" userLabel="Toolbar">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qxS-RK-Hb9" userLabel="Toolbar">
                                 <rect key="frame" x="0.0" y="64" width="375" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="uDf-pF-twq"/>
@@ -35,7 +35,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zn7-Mx-Yv7" id="v2j-wI-BVS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCd-TC-F1i">
@@ -64,9 +64,9 @@
                             <constraint firstItem="qxS-RK-Hb9" firstAttribute="top" secondItem="k7n-XP-fHe" secondAttribute="top" id="L6P-6i-Rfe" userLabel="ToolbarTop"/>
                             <constraint firstItem="JWx-ou-dAj" firstAttribute="top" secondItem="qxS-RK-Hb9" secondAttribute="bottom" id="buP-kd-US6" userLabel="TableViewTop"/>
                             <constraint firstItem="JWx-ou-dAj" firstAttribute="leading" secondItem="k7n-XP-fHe" secondAttribute="leading" id="eRO-KX-DF6" userLabel="TableViewLeft"/>
-                            <constraint firstItem="qxS-RK-Hb9" firstAttribute="leading" secondItem="pKm-2F-CDF" secondAttribute="leading" id="ei4-qx-ur5" userLabel="ToolbarLeft"/>
+                            <constraint firstItem="qxS-RK-Hb9" firstAttribute="leading" secondItem="k7n-XP-fHe" secondAttribute="leading" id="ei4-qx-ur5" userLabel="ToolbarLeft"/>
                             <constraint firstItem="k7n-XP-fHe" firstAttribute="bottom" secondItem="JWx-ou-dAj" secondAttribute="bottom" id="emu-4A-2kJ" userLabel="TableViewBottom"/>
-                            <constraint firstAttribute="trailing" secondItem="qxS-RK-Hb9" secondAttribute="trailing" id="ymX-Um-K6U" userLabel="ToolbarRight"/>
+                            <constraint firstItem="k7n-XP-fHe" firstAttribute="trailing" secondItem="qxS-RK-Hb9" secondAttribute="trailing" id="ymX-Um-K6U" userLabel="ToolbarRight"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="k7n-XP-fHe"/>
                     </view>
@@ -76,6 +76,9 @@
                         <outlet property="tableView" destination="JWx-ou-dAj" id="E4N-FK-sNY"/>
                         <outlet property="tableViewFooter" destination="t3k-vt-DEG" id="GMN-YW-enj"/>
                         <outlet property="tableViewHeader" destination="1c9-Es-ZDV" id="Wwf-2z-Mox"/>
+                        <outletCollection property="transitModesToolbarElements" destination="xvH-nt-tSZ" collectionClass="NSMutableArray" id="DgQ-uS-LDf"/>
+                        <outletCollection property="transitModesToolbarElements" destination="AHW-A1-IWn" collectionClass="NSMutableArray" id="thX-SK-ef1"/>
+                        <outletCollection property="transitModesToolbarElements" destination="Hox-B9-Hbl" collectionClass="NSMutableArray" id="I00-u0-FXk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFf-Fy-dWz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -117,7 +120,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CbY-uF-J3d" id="umE-dY-tQp">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVB-Zd-MCV" userLabel="RouteShortName">
@@ -176,7 +179,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qi9-hA-ROc" id="MaJ-Yf-noi">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pleaes Make a Selection" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUs-QG-5Bv">
@@ -201,7 +204,7 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wI0-hQ-g8x" id="161-93-jNM">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55th and Baldwin Avenue" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gde-Va-bOd">
@@ -261,7 +264,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hQ2-lO-aeF" id="Njj-dd-7Ok">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ap-u1-lfC" userLabel="StopName">
@@ -430,7 +433,7 @@ StartingLabelRight</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ffg-L2-s06" id="QZ3-BZ-2bZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEg-oF-e3U" userLabel="Header">
@@ -607,59 +610,116 @@ StartingLabelRight</string>
                     </navigationBar>
                     <connections>
                         <segue destination="G8I-06-w6m" kind="relationship" relationship="rootViewController" id="ysr-1u-zxJ"/>
-                        <segue destination="mgD-ir-7HL" kind="presentation" identifier="showRoutes" id="vfP-5B-g19"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZi-KV-b8v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1892" y="221"/>
         </scene>
-        <!--ToolBar View Controller-->
+        <!--ToolBar-->
         <scene sceneID="6r3-DF-WcU">
             <objects>
-                <viewController title="ToolBar View Controller" id="zb9-QJ-YIl" customClass="TransitModesToolbarViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ToolBar" automaticallyAdjustsScrollViewInsets="NO" id="zb9-QJ-YIl" customClass="TransitModesToolbarViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BiL-t2-ODt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="luf-cQ-783">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DcS-hm-WiD" userLabel="ToolbarScollVierw">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="er6-I9-Gfl">
-                                        <rect key="frame" x="87" y="0.0" width="94" height="20.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="d5f-ZN-wAj">
+                                        <rect key="frame" x="0.0" y="0.0" width="520" height="40"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0c-EH-JAp">
-                                                <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eM6-79-TFq">
-                                                <rect key="frame" x="52" y="0.0" width="42" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Iw-Vt-aGu" customClass="TransitModeToolbarView" customModule="Septa" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="aAh-pa-eUt"/>
+                                                </constraints>
+                                                <string key="userLabel">
+Rail</string>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="highlighted" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Rail"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="rail"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hox-B9-Hbl" userLabel="Bus" customClass="TransitModeToolbarView" customModule="Septa" customModuleProvider="target">
+                                                <rect key="frame" x="105" y="0.0" width="100" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Bus"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="bus"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="highlighted" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AHW-A1-IWn" userLabel="Subway" customClass="TransitModeToolbarView" customModule="Septa" customModuleProvider="target">
+                                                <rect key="frame" x="210" y="0.0" width="100" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Subway"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="subway"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="highlighted" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xvH-nt-tSZ" userLabel="NHSL" customClass="TransitModeToolbarView" customModule="Septa" customModuleProvider="target">
+                                                <rect key="frame" x="315" y="0.0" width="100" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="NHSL"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="nhsl"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="highlighted" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yy9-Ty-3Cf" customClass="TransitModeToolbarView" customModule="Septa" customModuleProvider="target">
+                                                <rect key="frame" x="420" y="0.0" width="100" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <string key="userLabel">
+Trolley</string>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Trolley"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="trolley"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="highlighted" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="EVy-qK-zqw" userLabel="StackViewHeight"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Zuz-3Y-67v"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="nmR-y5-bpm" appends="YES" id="ACT-bo-s78"/>
+                                        </connections>
                                     </stackView>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="er6-I9-Gfl" firstAttribute="height" secondItem="luf-cQ-783" secondAttribute="height" id="2cp-3P-NhE"/>
-                                    <constraint firstAttribute="bottom" secondItem="er6-I9-Gfl" secondAttribute="bottom" id="DAI-3U-AOy"/>
-                                    <constraint firstItem="er6-I9-Gfl" firstAttribute="top" secondItem="luf-cQ-783" secondAttribute="top" id="T3g-6j-gSl"/>
-                                    <constraint firstItem="er6-I9-Gfl" firstAttribute="leading" secondItem="luf-cQ-783" secondAttribute="leading" constant="87" id="WeG-TB-Xrp"/>
-                                    <constraint firstAttribute="trailing" secondItem="er6-I9-Gfl" secondAttribute="trailing" constant="88" id="jHu-Ml-jvE"/>
+                                    <constraint firstItem="d5f-ZN-wAj" firstAttribute="leading" secondItem="DcS-hm-WiD" secondAttribute="leading" id="85c-e2-A7X" userLabel="StackViewLeft"/>
+                                    <constraint firstAttribute="bottom" secondItem="d5f-ZN-wAj" secondAttribute="bottom" id="Xt8-Pp-TKe" userLabel="StackViewBottom"/>
+                                    <constraint firstItem="d5f-ZN-wAj" firstAttribute="top" secondItem="DcS-hm-WiD" secondAttribute="top" id="Z90-ZS-o7X" userLabel="StackViewTop"/>
+                                    <constraint firstAttribute="height" constant="40" id="uuW-91-oOg"/>
+                                    <constraint firstAttribute="trailing" secondItem="d5f-ZN-wAj" secondAttribute="trailing" id="vNf-cR-9jD" userLabel="StackViewRight"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.27536286799999998" blue="0.22840918169999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5Vw-PS-aW7" firstAttribute="trailing" secondItem="luf-cQ-783" secondAttribute="trailing" id="5pb-eh-YDt"/>
-                            <constraint firstItem="luf-cQ-783" firstAttribute="leading" secondItem="5Vw-PS-aW7" secondAttribute="leading" id="NUw-RL-t3i"/>
-                            <constraint firstItem="5Vw-PS-aW7" firstAttribute="top" secondItem="luf-cQ-783" secondAttribute="top" id="XkH-Pt-QCR"/>
+                            <constraint firstItem="jya-sb-fcK" firstAttribute="trailing" secondItem="DcS-hm-WiD" secondAttribute="trailing" id="W31-gr-U1l"/>
+                            <constraint firstItem="DcS-hm-WiD" firstAttribute="leading" secondItem="jya-sb-fcK" secondAttribute="leading" id="jPf-PZ-tvM"/>
+                            <constraint firstItem="DcS-hm-WiD" firstAttribute="top" secondItem="jya-sb-fcK" secondAttribute="top" id="xPk-HU-eh6"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="5Vw-PS-aW7"/>
+                        <viewLayoutGuide key="safeArea" id="jya-sb-fcK"/>
                     </view>
+                    <connections>
+                        <outlet property="scrollbar" destination="DcS-hm-WiD" id="wtS-cN-zVA"/>
+                        <outletCollection property="transitModesToolbarElements" destination="0Iw-Vt-aGu" collectionClass="NSMutableArray" id="dqx-HD-HRV"/>
+                        <outletCollection property="transitModesToolbarElements" destination="Hox-B9-Hbl" collectionClass="NSMutableArray" id="P1k-3T-ehQ"/>
+                        <outletCollection property="transitModesToolbarElements" destination="AHW-A1-IWn" collectionClass="NSMutableArray" id="FCQ-Cw-2bL"/>
+                        <outletCollection property="transitModesToolbarElements" destination="xvH-nt-tSZ" collectionClass="NSMutableArray" id="FdG-Yx-yAq"/>
+                        <outletCollection property="transitModesToolbarElements" destination="yy9-Ty-3Cf" collectionClass="NSMutableArray" id="YHH-Kh-cNz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fNv-Zv-nnF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="nmR-y5-bpm">
