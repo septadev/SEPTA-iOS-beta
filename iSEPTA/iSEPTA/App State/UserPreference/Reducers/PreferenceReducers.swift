@@ -12,7 +12,7 @@ struct UserPreferenceReducer {
 
             return reducePreference(action: prefAction, userPreferenceState: prefState)
         } else {
-            
+
             return UserPreferenceState()
         }
     }

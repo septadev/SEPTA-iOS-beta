@@ -5,12 +5,12 @@ import ReSwift
 
 protocol NavigationAction: Action {}
 
-struct SwitchFeature: NavigationAction {
+struct InitialNavigationState: NavigationAction {
 
-    let selectedFeature: FeatureNavController
+    let state: NavigationState
 }
 
-struct SwitchFeatureCompleted: NavigationAction {
+struct InitialNavigationStackState: NavigationAction {
 
-    let activeFeature: FeatureNavController
+    let state: NavigationStackState
 }

@@ -3,22 +3,16 @@ use Data::Dumper;
 
 my $struct = q |
 
-	struct ScheduleRequest {
-	let transitMode: TransitMode?
-		let selectedRoute: Route?
-		let selectedStart: Stop?
-		let selectedEnd: Stop?
+	struct NavigationState: Codable {
+		let navigationControllers : [NavigationController]?
+	   let selectedTab: NavigationController?
 
-		let onlyOneRouteAvailable: Bool
 
-		init(selectedRoute: Route? = nil, selectedStart: Stop? = nil, selectedEnd: Stop? = nil, transitMode: TransitMode? = nil, onlyOneRouteAvailable: Bool = false) {
-			self.selectedRoute = selectedRoute
-			self.selectedStart = selectedStart
-			self.selectedEnd = selectedEnd
-			self.transitMode = transitMode
-			self.onlyOneRouteAvailable = onlyOneRouteAvailable
-		}
-	}	
+	   init(selectedTab: NavigationController? = nil){
+		self.selectedTab = selectedTab
+	}
+
+	}
 	|;
 
 my @initVars = ();

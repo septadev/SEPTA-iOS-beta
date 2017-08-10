@@ -3,16 +3,14 @@
 import Foundation
 import SeptaSchedule
 
-struct ScheduleState : Codable {
+struct ScheduleState: Codable {
 
     let scheduleRequest: ScheduleRequest?
     let scheduleData: ScheduleData?
-    let scheduleNavigation: ViewControllerState?
 
-    init(scheduleRequest: ScheduleRequest? = nil, scheduleData: ScheduleData? = nil, scheduleNavigation: ViewControllerState? = nil) {
+    init(scheduleRequest: ScheduleRequest? = nil, scheduleData: ScheduleData? = nil) {
         self.scheduleRequest = scheduleRequest
         self.scheduleData = scheduleData
-        self.scheduleNavigation = scheduleNavigation
     }
 }
 
@@ -34,15 +32,6 @@ func ==(lhs: ScheduleState, rhs: ScheduleState) -> Bool {
         areEqual = true
     case (.some, .some):
         areEqual = lhs.scheduleData! == rhs.scheduleData!
-    default:
-        return false
-    }
-
-    switch (lhs.scheduleNavigation, rhs.scheduleNavigation) {
-    case (.none, .none):
-        areEqual = true
-    case (.some, .some):
-        areEqual = lhs.scheduleNavigation! == rhs.scheduleNavigation!
     default:
         return false
     }

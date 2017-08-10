@@ -2,7 +2,7 @@
 
 import Foundation
 
-enum FeatureViewController : Int, Codable{
+enum ViewController: String, Codable {
     /// Initial screen in schedules.  Holds the toolbar. Root view controller
     case transitModesViewController
     case routesViewController

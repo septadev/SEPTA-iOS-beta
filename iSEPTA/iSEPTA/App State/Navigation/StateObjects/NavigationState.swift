@@ -1,17 +1,14 @@
 // Septa. 2017
 
 import Foundation
-import UIKit
-import ReSwift
 
 struct NavigationState: Codable {
+    let navigationControllers: [NavigationController]?
+    let selectedTab: NavigationController?
 
-    let selectedFeature: FeatureNavController?
-    let activeFeature: FeatureNavController?
-
-    init(selectedFeature: FeatureNavController? = nil, activeFeature: FeatureNavController? = nil) {
-        self.selectedFeature = selectedFeature
-        self.activeFeature = activeFeature
+    init(navigationControllers: [NavigationController]? = nil, selectedTab: NavigationController? = nil) {
+        self.navigationControllers = navigationControllers
+        self.selectedTab = selectedTab
     }
 }
 
@@ -19,20 +16,20 @@ extension NavigationState: Equatable {}
 func ==(lhs: NavigationState, rhs: NavigationState) -> Bool {
     var areEqual = true
 
-    switch (lhs.selectedFeature, rhs.selectedFeature) {
+    switch (lhs.navigationControllers, rhs.navigationControllers) {
     case (.none, .none):
         areEqual = true
     case (.some, .some):
-        areEqual = lhs.selectedFeature! == rhs.selectedFeature!
+        areEqual = lhs.navigationControllers! == rhs.navigationControllers!
     default:
         return false
     }
 
-    switch (lhs.activeFeature, rhs.activeFeature) {
+    switch (lhs.selectedTab, rhs.selectedTab) {
     case (.none, .none):
         areEqual = true
     case (.some, .some):
-        areEqual = lhs.activeFeature! == rhs.activeFeature!
+        areEqual = lhs.selectedTab! == rhs.selectedTab!
     default:
         return false
     }

@@ -5,8 +5,6 @@ import ReSwift
 
 protocol ScheduleAction: Action {}
 
-
-
 struct ScheduleActions {
 
     struct TransitModeSelected: ScheduleAction {
@@ -15,6 +13,4 @@ struct ScheduleActions {
     }
 
     struct DisplayRoutes: ScheduleAction {}
-
-   
 }

@@ -11,7 +11,7 @@ class PreferencesProvider: PreferencesProviderProtocol, StoreSubscriber {
 
     private var subscribed = false
 
-    private init() { }
+    private init() {}
 
     func retrievePersistedState() -> UserPreferenceState {
         var transitMode: TransitMode?
