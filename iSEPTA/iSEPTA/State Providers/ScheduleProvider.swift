@@ -7,7 +7,7 @@ import SeptaSchedule
 class ScheduleProvider: StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleRequest?
     static let sharedInstance = ScheduleProvider()
-    var currentScheduleRequest = ScheduleRequest()
+    var lastScheduleRequest = ScheduleRequest()
     let busCommands = BusCommands()
     private init() {
     }
@@ -24,22 +24,31 @@ class ScheduleProvider: StoreSubscriber {
 
     func newState(state: StoreSubscriberStateType) {
         guard let scheduleRequest = state,
-            let _ = scheduleRequest.transitMode,
-            let selectedRoute = scheduleRequest.selectedRoute else { return }
-        updateSelectedRoute(selectedRoute)
-        currentScheduleRequest = scheduleRequest
+            let transitMode = scheduleRequest.transitMode else { return }
+
+        if hasTransitModeChanged(transitMode: transitMode) {
+            retrieveAvailableRoutes(transitMode: transitMode)
+        }
+        lastScheduleRequest = scheduleRequest
     }
 
-    func updateSelectedRoute(_ route: Route) {
-        guard let transitMode = currentScheduleRequest.transitMode else { return }
-        if shouldUpdateSelectedRoute(route) {
-            if let query = buildQueryForRoutes(transitMode: transitMode, route: route) {
-                runQueryForRoutes(transitMode: transitMode, query: query)
-            }
+    func hasTransitModeChanged(transitMode: TransitMode) -> Bool {
+        if let lastTransitMode = lastScheduleRequest.transitMode {
+            return transitMode != lastTransitMode
+        } else {
+            return true
         }
     }
 
-    func buildQueryForRoutes(transitMode: TransitMode, route _: Route) -> SQLQuery? {
+    func retrieveAvailableRoutes(transitMode: TransitMode) {
+        guard let sqlQuery = buildQueryForRoutes(transitMode: transitMode) else { return }
+        busCommands.busRoutes(withQuery: sqlQuery) { routes, error in
+            let routesLoadedAction = RoutesLoaded(routes: routes, error: error)
+            store.dispatch(routesLoadedAction)
+        }
+    }
+
+    func buildQueryForRoutes(transitMode: TransitMode) -> SQLQuery? {
         var query: SQLQuery?
         switch transitMode {
         case .bus:
@@ -48,24 +57,6 @@ class ScheduleProvider: StoreSubscriber {
             query = nil
         }
         return query
-    }
-
-    func shouldUpdateSelectedRoute(_ route: Route) -> Bool {
-        guard let currentRoute = currentScheduleRequest.selectedRoute else { return true }
-        return currentRoute != route
-    }
-
-    func runQueryForRoutes(transitMode: TransitMode, query: SQLQuery) {
-
-        switch transitMode {
-        case .bus:
-            busCommands.busRoutes(withQuery: query) { routes, error in
-                let action = RoutesLoaded(routes: routes, error: error)
-                store.dispatch(action)
-            }
-        default:
-            break
-        }
     }
 
     deinit {

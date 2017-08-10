@@ -16,14 +16,24 @@ struct ScheduleDataReducer {
             newScheduleData = ScheduleData()
         case let action as DisplayRoutes:
             newScheduleData = reduceDisplayRoutes(action: action, scheduleData: newScheduleData)
-        default:
-            newScheduleData = scheduleData
+        case let action as RoutesLoaded:
+            newScheduleData = reduceRoutesLoaded(action: action, scheduleData: newScheduleData)
+        default: break
         }
         return newScheduleData
     }
 
     static func reduceDisplayRoutes(action _: DisplayRoutes, scheduleData: ScheduleData) -> ScheduleData {
 
+        return scheduleData
+    }
+
+    static func reduceRoutesLoaded(action: RoutesLoaded, scheduleData: ScheduleData) -> ScheduleData {
+        let scheduleData = ScheduleData(availableRoutes: action.routes,
+                                        availableStarts: nil,
+                                        availableStops: nil,
+                                        availableTrips: nil,
+                                        errorString: action.error?.localizedDescription)
         return scheduleData
     }
 }
