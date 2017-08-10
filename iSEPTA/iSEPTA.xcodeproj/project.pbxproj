@@ -85,7 +85,6 @@
 		58B892151F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892141F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift */; };
 		58B892171F38F7E700BFFEFA /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892161F38F7E700BFFEFA /* Strings.swift */; };
 		58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C181FE1F34C557002748E9 /* Storyboards.swift */; };
-		58C182011F34C560002748E9 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C182001F34C560002748E9 /* Asset.swift */; };
 		58C182041F34C5B6002748E9 /* Localizeable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58C182061F34C5B6002748E9 /* Localizeable.strings */; };
 		58C2A0591F3812D600F0D6CA /* ScheduleActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0581F3812D600F0D6CA /* ScheduleActions.swift */; };
 		58C2A0611F38964E00F0D6CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0601F3895E000F0D6CA /* ViewController.swift */; };
@@ -221,7 +220,6 @@
 		58B892141F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSchedulesViewModel.swift; sourceTree = "<group>"; };
 		58B892161F38F7E700BFFEFA /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		58C181FE1F34C557002748E9 /* Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
-		58C182001F34C560002748E9 /* Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		58C182051F34C5B6002748E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizeable.strings; sourceTree = "<group>"; };
 		58C2A0581F3812D600F0D6CA /* ScheduleActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleActions.swift; sourceTree = "<group>"; };
 		58C2A0601F3895E000F0D6CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -444,7 +442,6 @@
 			isa = PBXGroup;
 			children = (
 				585572841F3948D3004ABCD6 /* Color+Septa.swift */,
-				58C182001F34C560002748E9 /* Asset.swift */,
 				582F4EAF1F33B1120062A546 /* Assets.xcassets */,
 			);
 			path = Assets;
@@ -1000,7 +997,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58C182011F34C560002748E9 /* Asset.swift in Sources */,
 				58C2A0651F389B6400F0D6CA /* TransitModesToolBarViewController.swift in Sources */,
 				588F27F01F39DD7B00D62425 /* UserPreferenceState.swift in Sources */,
 				582F4ED51F33B1120062A546 /* SelectStopsViewController.swift in Sources */,
