@@ -43,7 +43,7 @@ class TransitModesToolbarViewController: UIViewController {
     func dispatchAction(toolbarItem: TransitModeToolbarView?) {
         guard let transitMode = toolbarItem?.transitMode else { return }
 
-        let action = ScheduleActions.TransitModeSelected(transitMode: transitMode)
+        let action = TransitModeSelected(transitMode: transitMode)
         store.dispatch(action)
         let preferenceAction = UserPreference.NewTransitModeAction(transitMode: transitMode)
         store.dispatch(preferenceAction)

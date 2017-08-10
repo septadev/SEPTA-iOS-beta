@@ -130,7 +130,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
     }
 
     func rowSelected(_: Int) {
-        store.dispatch(ScheduleActions.DisplayRoutes())
+        store.dispatch(DisplayRoutes())
     }
 
     func numberOfRows() -> Int {

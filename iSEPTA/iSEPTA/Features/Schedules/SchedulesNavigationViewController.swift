@@ -12,6 +12,9 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber, Id
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let navigationStackState = NavigationStackState(viewControllers: [.selectSchedules], modalViewController: nil)
+        let action = InitializeNavigationState(navigationController: .schedules, navigationStackState: navigationStackState)
+        store.dispatch(action)
     }
 
     override func viewWillAppear(_ animated: Bool) {

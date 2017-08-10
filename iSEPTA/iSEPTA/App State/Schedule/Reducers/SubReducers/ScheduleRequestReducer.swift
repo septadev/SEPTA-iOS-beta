@@ -10,7 +10,12 @@ struct ScheduleRequestReducer {
         return ScheduleRequest(transitMode: transitMode)
     }
 
-    static func reduceRequest(action _: ScheduleAction, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-        return scheduleRequest
+    static func reduceRequest(action: ScheduleAction, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
+        switch action {
+        case let action as TransitModeSelected:
+            return ScheduleRequest(transitMode: action.transitMode, selectedRoute: nil, selectedStart: nil, selectedEnd: nil, onlyOneRouteAvailable: false)
+        default:
+            return scheduleRequest
+        }
     }
 }
