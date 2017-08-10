@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         movePreloadedDatabaseIfNeeded()
 
         stateProviders.preferenceProvider.subscribe()
+        stateProviders.scheduleProvider.subscribe()
         return true
     }
 
