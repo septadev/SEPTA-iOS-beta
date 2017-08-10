@@ -4,8 +4,9 @@ import Foundation
 import UIKit
 import ReSwift
 
-class SchedulesNavigationController: UINavigationController, StoreSubscriber {
-    typealias StoreSubscriberStateType = [NavigationController]?
+class SchedulesNavigationController: UINavigationController, StoreSubscriber, IdentifiableNavController {
+    static var navController: NavigationController = .schedules
+    typealias StoreSubscriberStateType = [NavigationController: NavigationStackState]?
 
     let showRoutesId = "showRoutes"
 
@@ -29,8 +30,8 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber {
         store.unsubscribe(self)
     }
 
-    func filterSubscription(state: AppState) -> [NavigationController]? {
-        return state.navigationState.navigationControllers
+    func filterSubscription(state: AppState) -> [NavigationController: NavigationStackState]? {
+        return state.navigationState.appStackState
     }
 
     func newState(state _: StoreSubscriberStateType) {

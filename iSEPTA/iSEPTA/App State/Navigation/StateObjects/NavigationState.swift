@@ -2,12 +2,14 @@
 
 import Foundation
 
-struct NavigationState: Codable {
-    let navigationControllers: [NavigationController]?
-    let selectedTab: NavigationController?
+typealias AppStackState = [NavigationController: NavigationStackState]
 
-    init(navigationControllers: [NavigationController]? = nil, selectedTab: NavigationController? = nil) {
-        self.navigationControllers = navigationControllers
+struct NavigationState: Codable {
+    let appStackState: AppStackState?
+    let selectedTab: Int?
+
+    init(appStackState: AppStackState? = nil, selectedTab: Int? = nil) {
+        self.appStackState = appStackState
         self.selectedTab = selectedTab
     }
 }
@@ -16,11 +18,11 @@ extension NavigationState: Equatable {}
 func ==(lhs: NavigationState, rhs: NavigationState) -> Bool {
     var areEqual = true
 
-    switch (lhs.navigationControllers, rhs.navigationControllers) {
+    switch (lhs.appStackState, rhs.appStackState) {
     case (.none, .none):
         areEqual = true
     case (.some, .some):
-        areEqual = lhs.navigationControllers! == rhs.navigationControllers!
+        areEqual = lhs.appStackState! == rhs.appStackState!
     default:
         return false
     }

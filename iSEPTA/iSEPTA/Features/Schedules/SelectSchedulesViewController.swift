@@ -4,7 +4,8 @@ import UIKit
 import SeptaSchedule
 import ReSwift
 
-class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel {
+class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController {
+    static var navController: ViewController = .selectSchedules
 
     let cellId = "singleStringCell"
     @IBOutlet var tableViewHeader: UIView!

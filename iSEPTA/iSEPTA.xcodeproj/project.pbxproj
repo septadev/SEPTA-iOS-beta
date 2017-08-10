@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5811CD741F3A8F8F00714C08 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5811CD721F3A8D1F00714C08 /* ReSwift.framework */; };
+		581DA54A1F3BE1C8006AEC39 /* IdentifiableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581DA5491F3BE1C8006AEC39 /* IdentifiableController.swift */; };
+		581DA54F1F3BF102006AEC39 /* ViewTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581DA54E1F3BF102006AEC39 /* ViewTransitionType.swift */; };
 		58290E411F372B51000CCF3C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E401F372B51000CCF3C /* AppState.swift */; };
 		58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E431F372BB9000CCF3C /* AppStateReducer.swift */; };
 		58290E4C1F372CAD000CCF3C /* AppStateReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E491F372CAD000CCF3C /* AppStateReducerTests.swift */; };
@@ -140,6 +142,8 @@
 
 /* Begin PBXFileReference section */
 		5811CD721F3A8D1F00714C08 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = Frameworks/ReSwift.framework; sourceTree = "<group>"; };
+		581DA5491F3BE1C8006AEC39 /* IdentifiableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableController.swift; sourceTree = "<group>"; };
+		581DA54E1F3BF102006AEC39 /* ViewTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransitionType.swift; sourceTree = "<group>"; };
 		58290E401F372B51000CCF3C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		58290E431F372BB9000CCF3C /* AppStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateReducer.swift; sourceTree = "<group>"; };
 		58290E491F372CAD000CCF3C /* AppStateReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStateReducerTests.swift; sourceTree = "<group>"; };
@@ -289,6 +293,7 @@
 				582F4EB01F33B1120062A546 /* View Models */,
 				5840D6EA1F37F60D00C8CB76 /* Toolbars */,
 				582F4E821F33B1120062A546 /* Cells */,
+				581DA5491F3BE1C8006AEC39 /* IdentifiableController.swift */,
 			);
 			path = "Common Views";
 			sourceTree = "<group>";
@@ -569,6 +574,7 @@
 			isa = PBXGroup;
 			children = (
 				58290E4F1F372DDC000CCF3C /* NavigationActions.swift */,
+				581DA54E1F3BF102006AEC39 /* ViewTransitionType.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -1039,6 +1045,8 @@
 				582F4ECB1F33B1120062A546 /* RouteSheduleViewModel.swift in Sources */,
 				582F4ECE1F33B1120062A546 /* SelectStopViewController.swift in Sources */,
 				582F4ED61F33B1120062A546 /* SelectStopsViewElement.swift in Sources */,
+				581DA54A1F3BE1C8006AEC39 /* IdentifiableController.swift in Sources */,
+				581DA54F1F3BF102006AEC39 /* ViewTransitionType.swift in Sources */,
 				5840D6E01F37E5FB00C8CB76 /* ScheduleReducer.swift in Sources */,
 				58290E411F372B51000CCF3C /* AppState.swift in Sources */,
 				58DB10F81F3B8DB400191AED /* NavigationReducer.swift in Sources */,

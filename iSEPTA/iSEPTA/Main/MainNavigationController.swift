@@ -4,8 +4,8 @@ import Foundation
 import UIKit
 import ReSwift
 
-class MainNavigationController: UITabBarController, StoreSubscriber {
-    typealias StoreSubscriberStateType = NavigationState
+class MainNavigationController: UITabBarController, UITabBarControllerDelegate, StoreSubscriber {
+    typealias StoreSubscriberStateType = Int?
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -14,27 +14,19 @@ class MainNavigationController: UITabBarController, StoreSubscriber {
         }
     }
 
-    func filterSubscription(state: AppState) -> NavigationState {
-        return state.navigationState
+    func filterSubscription(state: AppState) -> Int? {
+        return state.navigationState.selectedTab
     }
 
-    func newState(state _: StoreSubscriberStateType) {
-        //        guard let selectedFeature = state.selectedFeature else { return }
-        //        if let activeFeature = state.activeFeature, selectedFeature == activeFeature {
-        //            return
-        //        }
-        //        switch selectedFeature {
-        //        case .schedules:
-        //            let schedules = viewControllers?.filter { viewController in
-        //                if viewController is SchedulesNavigationController {
-        //                    return true
-        //                } else {
-        //                    return false
-        //                }
-        //            }.first
-        //            selectedViewController = schedules
-        //        default:
-        //            print("")
-        //        }
+    override func tabBar(_: UITabBar, didSelect _: UITabBarItem) {
+        let action = SwitchTabs(tabBarItemIndex: selectedIndex)
+        store.dispatch(action)
+    }
+
+    func newState(state: StoreSubscriberStateType) {
+        guard let selectedIndex = state else { return }
+        if self.selectedIndex != selectedIndex {
+            self.selectedIndex = selectedIndex
+        }
     }
 }

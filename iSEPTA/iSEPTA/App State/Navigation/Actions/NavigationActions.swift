@@ -5,12 +5,17 @@ import ReSwift
 
 protocol NavigationAction: Action {}
 
-struct InitialNavigationState: NavigationAction {
-
-    let state: NavigationState
+struct InitializeNavigationState: NavigationAction {
+    let navigationController: NavigationController
+    let navigationStackState: NavigationStackState
 }
 
-struct InitialNavigationStackState: NavigationAction {
+struct TransitionView: NavigationAction {
+    let navigationController: NavigationController
+    let viewController: ViewController?
+    let viewTransitionType: ViewTransitionType
+}
 
-    let state: NavigationStackState
+struct SwitchTabs: NavigationAction {
+    let tabBarItemIndex: Int
 }

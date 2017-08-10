@@ -4,15 +4,13 @@ use Data::Dumper;
 my $struct = q |
 
 	struct NavigationState: Codable {
-		let navigationControllers : [NavigationController]?
-	   let selectedTab: NavigationController?
+		let appStackState: AppStackState?
+		let selectedTab: Int?
 
-
-	   init(selectedTab: NavigationController? = nil){
-		self.selectedTab = selectedTab
-	}
-
-	}
+	   	 init(appStackState: AppStackState? = nil, selectedTab: String? = nil){
+		self.appStackState = appStackState
+	self.selectedTab = selectedTab
+	} 
 	|;
 
 my @initVars = ();

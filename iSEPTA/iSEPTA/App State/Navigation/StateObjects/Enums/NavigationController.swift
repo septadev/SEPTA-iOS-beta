@@ -2,8 +2,8 @@
 
 import Foundation
 
-enum NavigationController: String, Codable {
-    case nextToArrive
-    case favorites
-    case schedules
+enum NavigationController: Int, Codable {
+    case nextToArrive = 0
+    case favorites = 1
+    case schedules = 2
 }
