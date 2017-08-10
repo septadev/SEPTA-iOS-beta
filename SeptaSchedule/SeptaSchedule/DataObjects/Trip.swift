@@ -31,6 +31,11 @@ public struct Trip: Codable {
         self.departureInt = departureInt
         self.arrivalInt = arrivalInt
     }
+
+    enum CodingKeys: String, CodingKey {
+        case departureInt
+        case arrivalInt
+    }
 }
 
 extension Trip: Equatable {}

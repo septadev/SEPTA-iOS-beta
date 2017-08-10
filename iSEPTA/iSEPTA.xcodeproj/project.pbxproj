@@ -1246,7 +1246,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
+				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA.beta;
 				PRODUCT_MODULE_NAME = Septa;
 				PRODUCT_NAME = Septa;
 				PROVISIONING_PROFILE = "f2f0b75e-dc62-40ce-8b12-b2c0e313ba3d";
@@ -1276,7 +1276,7 @@
 				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
+				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA.beta;
 				PRODUCT_MODULE_NAME = Septa;
 				PRODUCT_NAME = Septa;
 				PROVISIONING_PROFILE = "e8f99a1f-7b28-4307-b225-0aab2947e61a";

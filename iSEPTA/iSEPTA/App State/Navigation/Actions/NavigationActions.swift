@@ -19,3 +19,9 @@ struct TransitionView: NavigationAction {
 struct SwitchTabs: NavigationAction {
     let tabBarItemIndex: Int
 }
+
+struct UpdateScheduleData: NavigationAction {
+    let originalScheduleRequest: ScheduleRequest
+    let newScheduleRequest: ScheduleRequest
+    let action: ScheduleAction
+}

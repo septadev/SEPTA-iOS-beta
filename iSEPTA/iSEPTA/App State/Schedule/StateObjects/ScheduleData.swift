@@ -8,12 +8,14 @@ struct ScheduleData: Codable {
     let availableStarts: [Stop]?
     let availableStops: [Stop]?
     let availableTrips: [Trip]?
+    let errorString: String?
 
-    init(availableRoutes: [Route]? = nil, availableStarts: [Stop]? = nil, availableStops: [Stop]? = nil, availableTrips: [Trip]? = nil) {
+    init(availableRoutes: [Route]? = nil, availableStarts: [Stop]? = nil, availableStops: [Stop]? = nil, availableTrips: [Trip]? = nil, errorString: String? = nil) {
         self.availableRoutes = availableRoutes
         self.availableStarts = availableStarts
         self.availableStops = availableStops
         self.availableTrips = availableTrips
+        self.errorString = errorString
     }
 }
 
@@ -53,6 +55,15 @@ func ==(lhs: ScheduleData, rhs: ScheduleData) -> Bool {
         areEqual = true
     case (.some, .some):
         areEqual = lhs.availableTrips! == rhs.availableTrips!
+    default:
+        return false
+    }
+
+    switch (lhs.errorString, rhs.errorString) {
+    case (.none, .none):
+        areEqual = true
+    case (.some, .some):
+        areEqual = lhs.errorString! == rhs.errorString!
     default:
         return false
     }

@@ -3,15 +3,24 @@ use Data::Dumper;
 
 my $struct = q |
 
-	struct NavigationState: Codable {
-		let appStackState: AppStackState?
-		let selectedTab: Int?
+	struct ScheduleData: Codable {
+		let availableRoutes: [Route]?
+		let availableStarts: [Stop]?
+		let availableStops: [Stop]?
+		let availableTrips: [Trip]?
+		let errorString: String?
 
-	   	 init(appStackState: AppStackState? = nil, selectedTab: String? = nil){
-		self.appStackState = appStackState
-	self.selectedTab = selectedTab
-	} 
-	|;
+		init(availableRoutes: [Route]? = nil, availableStarts: [Stop]? = nil, availableStops: [Stop]? = nil, availableTrips: [Trip]? = nil) {
+			self.availableRoutes = availableRoutes
+			self.availableStarts = availableStarts
+			self.availableStops = availableStops
+			self.availableTrips = availableTrips
+		}
+
+
+	}
+
+	}	}	|;
 
 my @initVars = ();
 my @vars = ();

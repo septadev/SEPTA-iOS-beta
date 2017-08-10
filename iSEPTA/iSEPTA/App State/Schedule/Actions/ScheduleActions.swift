@@ -2,6 +2,7 @@
 
 import Foundation
 import ReSwift
+import SeptaSchedule
 
 protocol ScheduleAction: Action {}
 
@@ -11,3 +12,8 @@ struct TransitModeSelected: ScheduleAction {
 }
 
 struct DisplayRoutes: ScheduleAction {}
+
+struct RoutesLoaded: ScheduleAction {
+    let routes: [Route]?
+    let error: Error?
+}
