@@ -10,7 +10,6 @@ class ScheduleProvider: StoreSubscriber {
     var currentScheduleRequest = ScheduleRequest()
     let busCommands = BusCommands()
     private init() {
-        subscribe()
     }
 
     func subscribe() {
