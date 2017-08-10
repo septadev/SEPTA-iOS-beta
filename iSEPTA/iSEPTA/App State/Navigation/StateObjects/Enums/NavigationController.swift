@@ -2,8 +2,16 @@
 
 import Foundation
 
-enum NavigationController: Int, Codable {
-    case nextToArrive = 0
-    case favorites = 1
-    case schedules = 2
+enum NavigationController: String, Codable {
+    case nextToArrive
+    case favorites
+    case schedules
+
+    func tabIndex() -> Int {
+        switch self {
+        case .nextToArrive: return 0
+        case .favorites: return 1
+        case .schedules : return 2
+        }
+    }
 }

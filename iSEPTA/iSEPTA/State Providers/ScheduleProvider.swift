@@ -22,6 +22,8 @@ class ScheduleProvider: StoreSubscriber {
         return state.scheduleState.scheduleRequest
     }
 
+    // MARK: - Primary State Handler
+
     func newState(state: StoreSubscriberStateType) {
         guard let scheduleRequest = state,
             let transitMode = scheduleRequest.transitMode else { return }
@@ -29,6 +31,7 @@ class ScheduleProvider: StoreSubscriber {
         if hasTransitModeChanged(transitMode: transitMode) {
             retrieveAvailableRoutes(transitMode: transitMode)
         }
+
         lastScheduleRequest = scheduleRequest
     }
 
@@ -39,6 +42,28 @@ class ScheduleProvider: StoreSubscriber {
             return true
         }
     }
+
+    func hasSelectedRouteChanged(selectedRoute: Route?) -> Bool {
+        let lastSelectedRoute = lastScheduleRequest.selectedRoute
+        switch (lastSelectedRoute, selectedRoute) {
+        case (.some, .some):
+            return lastSelectedRoute != selectedRoute
+        case (.none, .some):
+            return true
+        case (.some, .none):
+            clearOutNonMatchingRoutes()
+            return false
+        case (.none, .none):
+            return false
+        }
+    }
+
+    func clearOutNonMatchingRoutes() {
+        let routesLoadedAction = RoutesLoaded(routes: [Route](), error: nil)
+        store.dispatch(routesLoadedAction)
+    }
+
+    // MARK: - Retrieve Routes
 
     func retrieveAvailableRoutes(transitMode: TransitMode) {
         guard let sqlQuery = buildQueryForRoutes(transitMode: transitMode) else { return }
@@ -58,6 +83,24 @@ class ScheduleProvider: StoreSubscriber {
         }
         return query
     }
+
+    // MARK: - Retrieve Starting Stops
+    /*
+     func  retrieveAvailableStartingStops(selectedRoute: selectedRoute){
+
+     }
+
+     func buildQueryForStartingStops(transitMode: transitMode, route: Route) -> SQLQuery? {
+     var query: SQLQuery?
+     switch transitMode {
+     case .bus:
+     query = SQLQuery.busRoute(routeType: .bus)
+     default:
+     query = nil
+     }
+     return query
+     }
+     */
 
     deinit {
         store.unsubscribe(self)

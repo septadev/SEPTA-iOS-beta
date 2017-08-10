@@ -5,7 +5,7 @@ import SeptaSchedule
 import ReSwift
 
 class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController {
-    static var navController: ViewController = .selectSchedules
+    static var viewController: ViewController = .selectSchedules
 
     let cellId = "singleStringCell"
     @IBOutlet var tableViewHeader: UIView!

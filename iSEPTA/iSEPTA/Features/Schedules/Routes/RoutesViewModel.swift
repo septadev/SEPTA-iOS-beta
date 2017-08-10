@@ -2,49 +2,56 @@
 
 import Foundation
 import SeptaSchedule
+import ReSwift
 
-class RoutesViewModel {
+class RoutesViewModel: StoreSubscriber {
+    typealias StoreSubscriberStateType = [Route]?
 
-    fileprivate var routes: [Route]
-    let busCommands = BusCommands()
+    fileprivate var routes: [Route]?
+    weak var delegate: UpdateableFromViewModel?
 
-    private weak var delegate: UpdateableFromViewModel?
-
-    init(delegate: UpdateableFromViewModel, routeType: RouteType) {
-        routes = [Route]()
+    init(delegate: UpdateableFromViewModel) {
         self.delegate = delegate
-        retrieveRoutes(routeType: routeType)
+        subscribe()
     }
 
-    var routesCount: Int {
+    func subscribe() {
+        store.subscribe(self) { subscription in
+            subscription.select(self.filterSubscription)
+        }
+    }
+
+    func filterSubscription(state: AppState) -> [Route]? {
+        return state.scheduleState.scheduleData?.availableRoutes
+    }
+
+    func newState(state: StoreSubscriberStateType) {
+        routes = state
+    }
+
+    func configureDisplayable(_ displayable: RouteCellDisplayable, atRow row: Int) {
+        guard let routes = routes, row < routes.count else { return }
+        let route = routes[row]
+        displayable.setShortName(text: route.routeShortName)
+        displayable.setLongName(text: route.routeLongName)
+    }
+
+    func canCellBeSelected(atRow _: Int) -> Bool {
+        return true
+    }
+
+    func rowSelected(row: Int) {
+        guard let routes = routes, row < routes.count else { return }
+        let action = RouteSelected(route: routes[row])
+        store.dispatch(action)
+    }
+
+    func numberOfRows() -> Int {
+        guard let routes = routes else { return 0 }
         return routes.count
     }
 
-    func routeAtRow(row: Int) -> Route {
-        return routes[row]
-    }
-
-    func configureRoute(displayable: RouteCellDisplayable, atIndex index: Int) {
-        let route = routes[index]
-        displayable.setLongName(text: route.routeLongName)
-        displayable.setShortName(text: route.routeShortName)
-    }
-
-    private func retrieveRoutes(routeType: RouteType) {
-
-        let query = SQLQuery.busRoute(routeType: routeType)
-        busCommands.busRoutes(withQuery: query) { [weak self] routes, error in
-            guard error == nil else {
-                print(error!.localizedDescription)
-                return
-            }
-            guard let strongSelf = self else { return }
-            guard let routes = routes else {
-                strongSelf.routes = [Route]()
-                return
-            }
-            strongSelf.routes = routes
-            strongSelf.delegate?.viewModelUpdated()
-        }
+    deinit {
+        store.unsubscribe(self)
     }
 }

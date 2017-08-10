@@ -14,18 +14,12 @@ struct ScheduleDataReducer {
         switch action {
         case _ as TransitModeSelected:
             newScheduleData = ScheduleData()
-        case let action as DisplayRoutes:
-            newScheduleData = reduceDisplayRoutes(action: action, scheduleData: newScheduleData)
+
         case let action as RoutesLoaded:
             newScheduleData = reduceRoutesLoaded(action: action, scheduleData: newScheduleData)
         default: break
         }
         return newScheduleData
-    }
-
-    static func reduceDisplayRoutes(action _: DisplayRoutes, scheduleData: ScheduleData) -> ScheduleData {
-
-        return scheduleData
     }
 
     static func reduceRoutesLoaded(action: RoutesLoaded, scheduleData: ScheduleData) -> ScheduleData {

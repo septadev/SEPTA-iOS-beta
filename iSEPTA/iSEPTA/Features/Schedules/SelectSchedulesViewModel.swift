@@ -9,6 +9,7 @@ fileprivate struct RowDisplayModel {
     let color: UIColor
     let accessoryType: CellDecoration
     let isSelectable: Bool
+    let targetController: ViewController
 }
 
 class SelectSchedulesViewModel: StoreSubscriber {
@@ -65,7 +66,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
         let accessoryType = onlyOneRouteAvailable ? CellDecoration.none : CellDecoration.disclosureIndicator
         let color = SeptaColor.enabledText
         let isSelectable = !onlyOneRouteAvailable
-        return RowDisplayModel(text: text, color: color, accessoryType: accessoryType, isSelectable: isSelectable)
+        return RowDisplayModel(text: text, color: color, accessoryType: accessoryType, isSelectable: isSelectable, targetController: .routesViewController)
     }
 
     fileprivate func configureSelectStartDisplayModel() -> RowDisplayModel {
@@ -89,7 +90,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
             accessoryType = .none
             isSelectable = false
         }
-        return RowDisplayModel(text: text, color: color, accessoryType: accessoryType, isSelectable: isSelectable)
+        return RowDisplayModel(text: text, color: color, accessoryType: accessoryType, isSelectable: isSelectable, targetController: .selectStartController)
     }
 
     fileprivate func configureSelectEndisplayModel() -> RowDisplayModel {
@@ -113,7 +114,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
             color = SeptaColor.disabledText
             isSelectable = false
         }
-        return RowDisplayModel(text: text, color: color, accessoryType: accessoryType, isSelectable: isSelectable)
+        return RowDisplayModel(text: text, color: color, accessoryType: accessoryType, isSelectable: isSelectable, targetController: .selectStopController)
     }
 
     func configureDisplayable(_ displayable: SingleStringDisplayable, atRow row: Int) {
@@ -129,9 +130,17 @@ class SelectSchedulesViewModel: StoreSubscriber {
         return displayModel[row].isSelectable
     }
 
-    func rowSelected(_: Int) {
+    func rowSelected(_ row: Int) {
+        guard row < displayModel.count else { return }
+        let navigationController = NavigationController.schedules
+        let viewTransitionType = ViewTransitionType.presentModal
+        let viewController = displayModel[row].targetController
 
-        store.dispatch(DisplayRoutes())
+        let action = TransitionView(navigationController: navigationController,
+                                    viewController: viewController,
+                                    viewTransitionType: viewTransitionType)
+
+        store.dispatch(action)
     }
 
     func numberOfRows() -> Int {

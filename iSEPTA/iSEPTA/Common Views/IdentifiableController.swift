@@ -11,7 +11,7 @@ import UIKit
 
 protocol IdentifiableController {
 
-    static var navController: ViewController { get set }
+    static var viewController: ViewController { get set }
 }
 
 extension IdentifiableController where Self: UIViewController {}

@@ -14,7 +14,7 @@ struct NavigationReducer {
         } else {
             return NavigationState(
                 appStackState: nil,
-                selectedTab: NavigationController.schedules.rawValue)
+                selectedTab: NavigationController.schedules.tabIndex())
         }
     }
 

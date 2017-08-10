@@ -9,6 +9,7 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber, Id
     typealias StoreSubscriberStateType = [NavigationController: NavigationStackState]?
 
     let showRoutesId = "showRoutes"
+    let myStoryboard = UIStoryboard(name: navController.rawValue, bundle: Bundle.main)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,14 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber, Id
         return state.navigationState.appStackState
     }
 
-    func newState(state _: StoreSubscriberStateType) {
+    func newState(state: StoreSubscriberStateType) {
+
+        guard let state = state, let stackState = state[.schedules] else { return }
+        if let modal = stackState.modalViewController {
+            let viewController = myStoryboard.instantiateViewController(withIdentifier: modal.rawValue)
+            present(viewController, animated: true) {
+                print("Just displayed the view controller")
+            }
+        }
     }
 }
