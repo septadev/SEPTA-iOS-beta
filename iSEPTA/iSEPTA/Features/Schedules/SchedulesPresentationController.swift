@@ -10,18 +10,16 @@ import Foundation
 import UIKit
 
 class SlideInPresentationManager: NSObject, UIViewControllerTransitioningDelegate {
-func presentationController(forPresented presented: UIViewController,
-                            presenting: UIViewController?,
-                            source: UIViewController) -> UIPresentationController? {
-  let presentationController = SlideInPresentationController(presentedViewController: presented,
-                                                             presenting: presenting,
-                                                             direction: direction)
-  return presentationController
-}
+    func presentationController(forPresented: UIViewController,
+                                presenting: UIViewController?,
+                                source _: UIViewController) -> UIPresentationController? {
+
+        return SchedulesPresentationController(presentedViewController: forPresented, presenting: presenting)
+    }
 }
 
 class SchedulesPresentationController: UIPresentationController {
-
+    let topMargin: CGFloat = 40
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
         setupDimmingView()
@@ -44,10 +42,8 @@ class SchedulesPresentationController: UIPresentationController {
 
     override func presentationTransitionWillBegin() {
 
-        // 1
         containerView?.insertSubview(dimmingView, at: 0)
 
-        // 2
         NSLayoutConstraint.activate(
             NSLayoutConstraint.constraints(withVisualFormat: "V:|[dimmingView]|",
                                            options: [], metrics: nil, views: ["dimmingView": dimmingView]))
@@ -55,7 +51,6 @@ class SchedulesPresentationController: UIPresentationController {
             NSLayoutConstraint.constraints(withVisualFormat: "H:|[dimmingView]|",
                                            options: [], metrics: nil, views: ["dimmingView": dimmingView]))
 
-        // 3
         guard let coordinator = presentedViewController.transitionCoordinator else {
             dimmingView.alpha = 1.0
             return
@@ -78,27 +73,25 @@ class SchedulesPresentationController: UIPresentationController {
     }
 
     override func containerViewWillLayoutSubviews() {
-  presentedView?.frame = frameOfPresentedViewInContainerView
-}
+        presentedView?.frame = frameOfPresentedViewInContainerView
+    }
 
-override func size(forChildContentContainer container: UIContentContainer,
-                   withParentContainerSize parentSize: CGSize) -> CGSize {
-  return CGSize(width: parentSize.width, height: parentSize.height*(2.0/3.0))
-}
+    override func size(forChildContentContainer _: UIContentContainer,
+                       withParentContainerSize parentSize: CGSize) -> CGSize {
+        return CGSize(width: parentSize.width, height: parentSize.height - topMargin)
+    }
 
-override var frameOfPresentedViewInContainerView: CGRect {
+    override var frameOfPresentedViewInContainerView: CGRect {
 
-  //1
-  var frame: CGRect = .zero
-  frame.size = size(forChildContentContainer: presentedViewController,
-                    withParentContainerSize: containerView!.bounds.size)
+        // 1
+        var frame: CGRect = .zero
+        frame.origin = CGPoint(x: 0, y: topMargin)
+        frame.size = size(forChildContentContainer: presentedViewController,
+                          withParentContainerSize: containerView!.bounds.size)
 
-
-  return frame
-}
+        return frame
+    }
 }
 
 final class SlideInPresentationAnimator: NSObject {
-
-
 }

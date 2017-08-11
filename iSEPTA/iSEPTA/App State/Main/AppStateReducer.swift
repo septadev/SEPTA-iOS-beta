@@ -29,7 +29,7 @@ class AppStateReducer {
 
     class func logState(_ appState: AppState) {
         do {
-            let jsonData = try encoder.encode(appState.scheduleState.scheduleRequest)
+            let jsonData = try encoder.encode(appState.navigationState)
             let json = String(data: jsonData, encoding: .utf8)
             print(json!)
         } catch {
