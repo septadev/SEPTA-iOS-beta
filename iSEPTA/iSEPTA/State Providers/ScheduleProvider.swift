@@ -8,7 +8,7 @@ class ScheduleProvider: StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleRequest?
     static let sharedInstance = ScheduleProvider()
     var lastScheduleRequest = ScheduleRequest()
-    let busCommands = BusCommands()
+    let routesCommand = RoutesCommand()
     private init() {
     }
 
@@ -66,24 +66,11 @@ class ScheduleProvider: StoreSubscriber {
     // MARK: - Retrieve Routes
 
     func retrieveAvailableRoutes(transitMode: TransitMode) {
-        guard let sqlQuery = buildQueryForRoutes(transitMode: transitMode) else { return }
-        busCommands.busRoutes(withQuery: sqlQuery) { routes, error in
+
+        routesCommand.routes(forTransitMode: transitMode) { routes, error in
             let routesLoadedAction = RoutesLoaded(routes: routes, error: error?.localizedDescription, description: "Routes have now been loaded")
             store.dispatch(routesLoadedAction)
         }
-    }
-
-    func buildQueryForRoutes(transitMode: TransitMode) -> SQLQuery? {
-        var query: SQLQuery?
-        switch transitMode {
-        case .bus:
-            query = SQLQuery.busRoute(routeType: .bus)
-        case .trolley:
-            query = SQLQuery.busRoute(routeType: .trolley)
-        default:
-            query = nil
-        }
-        return query
     }
 
     // MARK: - Retrieve Starting Stops

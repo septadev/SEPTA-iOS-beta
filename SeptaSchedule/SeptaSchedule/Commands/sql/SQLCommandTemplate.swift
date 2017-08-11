@@ -6,7 +6,7 @@ class SQLCommandTemplate {
 
     let bundle = Bundle(for: BaseCommand.self)
 
-    func commandString(forSQLQuery sqlQuery: SQLQuery) throws -> String? {
+    func commandString(forSQLQuery sqlQuery: SQLQueryProtocol) throws -> String? {
         guard let url = urlForFile(named: sqlQuery.fileName) else { return nil }
         do {
             let sqlString = try String(contentsOfFile: url.path)
@@ -16,7 +16,7 @@ class SQLCommandTemplate {
         }
     }
 
-    private func applyBindings(forSQLQuery query: SQLQuery, toSQLString sqlString: String) -> String {
+    private func applyBindings(forSQLQuery query: SQLQueryProtocol, toSQLString sqlString: String) -> String {
         let bindings = query.sqlBindings
         var parameterizedSqlString = sqlString
         for binding in bindings {

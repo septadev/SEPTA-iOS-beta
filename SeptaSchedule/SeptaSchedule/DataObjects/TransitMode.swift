@@ -17,7 +17,7 @@ public enum TransitMode: String, Codable {
     case nhsl
     case trolley
 
-    var routeTitle: String {
+    public var routeTitle: String {
         switch self {
         case .bus: return "Bus Routes"
         case .rail: return "Regional Rail Routes"

@@ -8,12 +8,7 @@
 
 import Foundation
 
-public enum SQLRoutesQuery {
-    case bus
-    case rail
-    case subway
-    case trolley
-    case nhsl
+extension TransitMode: SQLQueryProtocol {
 
     var sqlBindings: [[String]] {
         return [[String]]()
@@ -24,8 +19,8 @@ public enum SQLRoutesQuery {
         case .bus: return "busRoute"
         case .rail: return "railRoute"
         case .subway: return "subwayRoute"
-        case .trolley: return "trollyRoute"
-        case .nhsl: return "NHSL Route"
+        case .trolley: return "trolleyRoute"
+        case .nhsl: return "NHSLRoute"
         }
     }
 }

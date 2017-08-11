@@ -5,7 +5,7 @@ import SQLite
 
 public class BaseCommand {
 
-    func retrieveResults<T>(sqlQuery: SQLQuery, userCompletion: @escaping ([T]?, Error?) -> Void, resultsMapper mapper: @escaping (Statement) -> [T]) {
+    func retrieveResults<T>(sqlQuery: SQLQueryProtocol, userCompletion: @escaping ([T]?, Error?) -> Void, resultsMapper mapper: @escaping (Statement) -> [T]) {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let strongSelf = self else { return }
 
@@ -30,7 +30,7 @@ public class BaseCommand {
         return conn
     }
 
-    func getCommandString(forSqlQuery sqlQuery: SQLQuery) throws -> String {
+    func getCommandString(forSqlQuery sqlQuery: SQLQueryProtocol) throws -> String {
         let template = SQLCommandTemplate()
         guard let cmd = try template.commandString(forSQLQuery: sqlQuery) else { throw SQLCommandError.noCommand }
         return cmd
