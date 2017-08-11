@@ -3,21 +3,31 @@
 import Foundation
 import ReSwift
 
-protocol NavigationAction: Action {}
+protocol NavigationAction: SeptaAction {}
 
 struct InitializeNavigationState: NavigationAction {
     let navigationController: NavigationController
     let navigationStackState: NavigationStackState
+    let description: String
 }
 
 struct TransitionView: NavigationAction {
     let navigationController: NavigationController
     let viewController: ViewController?
     let viewTransitionType: ViewTransitionType
+    let description: String
 }
 
 struct SwitchTabs: NavigationAction {
     let tabBarItemIndex: Int
+    let description: String
 }
 
-struct SelectRouteTapped: NavigationAction {}
+struct SelectRouteTapped: NavigationAction {
+    let description: String
+}
+
+struct DismissModal: NavigationAction {
+    let navigationController: NavigationController
+    let description: String
+}

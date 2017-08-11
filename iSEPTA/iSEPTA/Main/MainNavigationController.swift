@@ -19,7 +19,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
     }
 
     override func tabBar(_: UITabBar, didSelect _: UITabBarItem) {
-        let action = SwitchTabs(tabBarItemIndex: selectedIndex)
+        let action = SwitchTabs(tabBarItemIndex: selectedIndex, description: "Tab Bar was selected by the user")
         store.dispatch(action)
     }
 

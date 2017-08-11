@@ -28,6 +28,8 @@ struct NavigationReducer {
             appStackState = reduceTransitionViewAction(action: action, state: appStackState)
         case let action as SwitchTabs:
             selectedTab = action.tabBarItemIndex
+        case let action as DismissModal:
+            appStackState = reduceDismissModalAction(action: action, state: appStackState)
         default:
             return state
         }
@@ -54,8 +56,20 @@ struct NavigationReducer {
             viewControllers.removeLast()
         case .presentModal:
             modalViewController = action.viewController
+        case .dismissModal:
+            modalViewController = nil
         }
         navigationStackState = NavigationStackState(viewControllers: viewControllers, modalViewController: modalViewController)
+        newState[action.navigationController] = navigationStackState
+        return newState
+    }
+
+    static func reduceDismissModalAction(action: DismissModal, state: AppStackState) -> AppStackState {
+        var newState = state
+        var navigationStackState = state[action.navigationController] ?? NavigationStackState()
+        let viewControllers = navigationStackState.viewControllers ?? [ViewController]()
+
+        navigationStackState = NavigationStackState(viewControllers: viewControllers, modalViewController: nil)
         newState[action.navigationController] = navigationStackState
         return newState
     }

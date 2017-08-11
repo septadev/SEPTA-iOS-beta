@@ -27,7 +27,7 @@ struct ScheduleDataReducer {
                                         availableStarts: nil,
                                         availableStops: nil,
                                         availableTrips: nil,
-                                        errorString: action.error?.localizedDescription)
+                                        errorString: action.error)
         return scheduleData
     }
 }

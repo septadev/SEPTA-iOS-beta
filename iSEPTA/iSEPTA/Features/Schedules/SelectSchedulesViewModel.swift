@@ -138,7 +138,8 @@ class SelectSchedulesViewModel: StoreSubscriber {
 
         let action = TransitionView(navigationController: navigationController,
                                     viewController: viewController,
-                                    viewTransitionType: viewTransitionType)
+                                    viewTransitionType: viewTransitionType,
+                                    description: "Schedule Selected on Select schedule view controller")
 
         store.dispatch(action)
     }

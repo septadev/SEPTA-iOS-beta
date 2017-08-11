@@ -2,9 +2,11 @@
 
 import UIKit
 import SeptaSchedule
+import ReSwift
 
 class RoutesViewController: UITableViewController, UpdateableFromViewModel, IdentifiableController {
     static var viewController: ViewController = .routesViewController
+    static var navigationController: NavigationController = .schedules
 
     typealias Data = [Route]
     let routeCellId = "routeCell"
@@ -29,9 +31,8 @@ class RoutesViewController: UITableViewController, UpdateableFromViewModel, Iden
         return cell
     }
 
-    override func tableView(_: UITableView, didSelectRowAt _: IndexPath) {
-        //        selectedRoute = viewModel.routeAtRow(row: indexPath.row)
-        //        performSegue(withIdentifier: segueId, sender: self)
+    override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.rowSelected(row: indexPath.row)
     }
 
     func viewModelUpdated() {

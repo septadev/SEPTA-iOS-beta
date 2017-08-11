@@ -93,6 +93,7 @@
 		58C2A0691F38AA1B00F0D6CA /* ScheduleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0681F38AA1B00F0D6CA /* ScheduleData.swift */; };
 		58DB10F41F3B8CCF00191AED /* ScheduleDataReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DB10F31F3B8CCF00191AED /* ScheduleDataReducer.swift */; };
 		58DB10F81F3B8DB400191AED /* NavigationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DB10F71F3B8DB400191AED /* NavigationReducer.swift */; };
+		58F444FC1F3D335400A93208 /* SeptaAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F444FB1F3D335400A93208 /* SeptaAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -231,6 +232,7 @@
 		58D9C40D1F3335BB002BE2E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58DB10F31F3B8CCF00191AED /* ScheduleDataReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDataReducer.swift; sourceTree = "<group>"; };
 		58DB10F71F3B8DB400191AED /* NavigationReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationReducer.swift; sourceTree = "<group>"; };
+		58F444FB1F3D335400A93208 /* SeptaAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -780,6 +782,7 @@
 			children = (
 				58290E401F372B51000CCF3C /* AppState.swift */,
 				58290E431F372BB9000CCF3C /* AppStateReducer.swift */,
+				58F444FB1F3D335400A93208 /* SeptaAction.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1050,6 +1053,7 @@
 				58C2A0591F3812D600F0D6CA /* ScheduleActions.swift in Sources */,
 				5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */,
 				58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */,
+				58F444FC1F3D335400A93208 /* SeptaAction.swift in Sources */,
 				582F4EC61F33B1120062A546 /* RoutesViewController.swift in Sources */,
 				5840D6F01F37F66B00C8CB76 /* SeptaDraw.swift in Sources */,
 				588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */,

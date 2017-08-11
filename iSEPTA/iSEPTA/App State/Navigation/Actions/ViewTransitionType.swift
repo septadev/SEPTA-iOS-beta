@@ -8,8 +8,9 @@
 
 import Foundation
 
-enum ViewTransitionType {
+enum ViewTransitionType: String, Codable {
     case push
     case pop
     case presentModal
+    case dismissModal
 }

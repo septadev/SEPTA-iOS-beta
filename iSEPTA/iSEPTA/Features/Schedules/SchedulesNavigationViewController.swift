@@ -14,7 +14,7 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber, Id
     override func viewDidLoad() {
         super.viewDidLoad()
         let navigationStackState = NavigationStackState(viewControllers: [.selectSchedules], modalViewController: nil)
-        let action = InitializeNavigationState(navigationController: .schedules, navigationStackState: navigationStackState)
+        let action = InitializeNavigationState(navigationController: .schedules, navigationStackState: navigationStackState, description: "Initialing schedule nav state")
         store.dispatch(action)
     }
 
@@ -38,14 +38,19 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber, Id
         return state.navigationState.appStackState
     }
 
+    var lastStackState = NavigationStackState()
     func newState(state: StoreSubscriberStateType) {
 
-        guard let state = state, let stackState = state[.schedules] else { return }
-        if let modal = stackState.modalViewController {
+        guard let newState = state, let newStackState = newState[.schedules], newStackState != lastStackState else { return }
+
+        if let modal = newStackState.modalViewController {
             let viewController = myStoryboard.instantiateViewController(withIdentifier: modal.rawValue)
-            present(viewController, animated: true) {
-                print("Just displayed the view controller")
-            }
+            present(viewController, animated: true)
         }
+        if let existingModal = lastStackState.modalViewController, newStackState.modalViewController == nil {
+            dismiss(animated: true, completion: nil)
+        }
+
+        lastStackState = newStackState
     }
 }

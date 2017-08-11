@@ -59,7 +59,7 @@ class ScheduleProvider: StoreSubscriber {
     }
 
     func clearOutNonMatchingRoutes() {
-        let routesLoadedAction = RoutesLoaded(routes: [Route](), error: nil)
+        let routesLoadedAction = RoutesLoaded(routes: [Route](), error: nil, description: "Clearing out matching routes")
         store.dispatch(routesLoadedAction)
     }
 
@@ -68,7 +68,7 @@ class ScheduleProvider: StoreSubscriber {
     func retrieveAvailableRoutes(transitMode: TransitMode) {
         guard let sqlQuery = buildQueryForRoutes(transitMode: transitMode) else { return }
         busCommands.busRoutes(withQuery: sqlQuery) { routes, error in
-            let routesLoadedAction = RoutesLoaded(routes: routes, error: error)
+            let routesLoadedAction = RoutesLoaded(routes: routes, error: error?.localizedDescription, description: "Routes have no been loaded")
             store.dispatch(routesLoadedAction)
         }
     }
