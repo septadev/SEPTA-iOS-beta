@@ -68,7 +68,7 @@ class ScheduleProvider: StoreSubscriber {
     func retrieveAvailableRoutes(transitMode: TransitMode) {
         guard let sqlQuery = buildQueryForRoutes(transitMode: transitMode) else { return }
         busCommands.busRoutes(withQuery: sqlQuery) { routes, error in
-            let routesLoadedAction = RoutesLoaded(routes: routes, error: error?.localizedDescription, description: "Routes have no been loaded")
+            let routesLoadedAction = RoutesLoaded(routes: routes, error: error?.localizedDescription, description: "Routes have now been loaded")
             store.dispatch(routesLoadedAction)
         }
     }
@@ -78,6 +78,8 @@ class ScheduleProvider: StoreSubscriber {
         switch transitMode {
         case .bus:
             query = SQLQuery.busRoute(routeType: .bus)
+        case .trolley:
+            query = SQLQuery.busRoute(routeType: .trolley)
         default:
             query = nil
         }

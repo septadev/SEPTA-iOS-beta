@@ -4,13 +4,8 @@
 
 
 SELECT route_id, route_short_name, route_long_name
-FROM routes_bus WHERE route_type = 3
-ORDER BY route_short_name;
-
-
-SELECT route_type
-FROM routes_bus
-group BY route_type;
+FROM routes_bus where route_type = 0
+ORDER BY route_id;
 
 
 -- 3 = bus

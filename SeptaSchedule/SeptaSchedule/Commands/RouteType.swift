@@ -5,4 +5,5 @@ import Foundation
 public enum RouteType: Int {
 
     case bus = 3
+    case trolley = 0
 }

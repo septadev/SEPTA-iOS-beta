@@ -24,14 +24,13 @@ class AppStateReducer {
     class func logAction(_ action: Action) {
         guard let action = action as? SeptaAction else { return }
         print("****  \(action.self)")
-        print(action.description)
     }
 
     class func logState(_ appState: AppState) {
         do {
-            let jsonData = try encoder.encode(appState.navigationState)
+            let jsonData = try encoder.encode(appState.scheduleState.scheduleData)
             let json = String(data: jsonData, encoding: .utf8)
-            print(json!)
+            print(json)
         } catch {
             print(error.localizedDescription)
         }
