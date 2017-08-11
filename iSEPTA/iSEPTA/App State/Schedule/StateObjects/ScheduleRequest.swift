@@ -3,7 +3,7 @@
 import Foundation
 import SeptaSchedule
 
-struct ScheduleRequest: Codable {
+struct ScheduleRequest {
     let transitMode: TransitMode?
     let selectedRoute: Route?
     let selectedStart: Stop?

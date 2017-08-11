@@ -38,7 +38,7 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber, Id
             viewController.transitioningDelegate = slideInTransitioningDelegate
             present(viewController, animated: true)
         }
-        if let existingModal = lastStackState.modalViewController, newStackState.modalViewController == nil {
+        if let _ = lastStackState.modalViewController, newStackState.modalViewController == nil {
             dismiss(animated: true, completion: nil)
         }
 

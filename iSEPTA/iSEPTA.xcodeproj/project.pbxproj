@@ -72,7 +72,6 @@
 		5867466F1F35D484000F0D32 /* SelectStopsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867464E1F35D483000F0D32 /* SelectStopsViewModelTests.swift */; };
 		5880C1991F3B30AB00337DB2 /* PreferenceProviderPrototocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880C1981F3B30AB00337DB2 /* PreferenceProviderPrototocol.swift */; };
 		5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880C19A1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift */; };
-		5880C19D1F3B702500337DB2 /* Answers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5880C19C1F3B702500337DB2 /* Answers.framework */; };
 		588F27F01F39DD7B00D62425 /* UserPreferenceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27EF1F39DD7B00D62425 /* UserPreferenceState.swift */; };
 		588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27F31F39E05A00D62425 /* PreferenceReducers.swift */; };
 		588F27F71F39E0BF00D62425 /* UserPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27F61F39E0BF00D62425 /* UserPreference.swift */; };
@@ -242,7 +241,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5880C19D1F3B702500337DB2 /* Answers.framework in Frameworks */,
 				5811CD741F3A8F8F00714C08 /* ReSwift.framework in Frameworks */,
 				5892DDF11F3AAA5C000BA54B /* Crashlytics.framework in Frameworks */,
 				58406EB41F3A9C0900E6E04D /* SeptaSchedule.framework in Frameworks */,
@@ -994,7 +992,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PROJECT_DIR}/Fabric.framework/run\" 573b4f7ab920a4fcd9f2da4d08fae80cefad40fe ee0c297d8103d2326ae8b9b2ebfe34df4f517b2d85ad6183b2fef9aad7cc7119";
+			shellScript = "\"${PROJECT_DIR}/Fabric.framework/run\" 573b4f7ab920a4fcd9f2da4d08fae80cefad40fe ee0c297d8103d2326ae8b9b2ebfe34df4f517b2d85ad6183b2fef9aad7cc7119\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1242,7 +1240,6 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/iSEPTA/Frameworks",
 					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)",
 				);
@@ -1273,7 +1270,6 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/iSEPTA/Frameworks",
 					"$(PROJECT_DIR)/Frameworks",
 					"$(PROJECT_DIR)",
 				);

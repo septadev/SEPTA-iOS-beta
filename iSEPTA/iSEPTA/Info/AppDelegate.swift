@@ -3,11 +3,9 @@
 import UIKit
 import ReSwift
 import SeptaSchedule
-#if RELEASE
-    import Fabric
-    import Crashlytics
-    import Answers
-#endif
+
+import Fabric
+import Crashlytics
 
 let store = Store<AppState>(
     reducer: AppStateReducer.mainReducer,
@@ -25,10 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        #if RELEASE
-            Fabric.with([Crashlytics.self, Answers.self])
-
-        #endif
+        Fabric.with([Crashlytics.self, Answers.self])
 
         movePreloadedDatabaseIfNeeded()
 

@@ -3,7 +3,7 @@
 import Foundation
 import SeptaSchedule
 
-struct ScheduleData: Codable {
+struct ScheduleData {
     let availableRoutes: [Route]?
     let availableStarts: [Stop]?
     let availableStops: [Stop]?
