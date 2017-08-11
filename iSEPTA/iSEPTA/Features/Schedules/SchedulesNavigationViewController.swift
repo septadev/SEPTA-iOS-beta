@@ -13,25 +13,14 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber, Id
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        subscribe()
+        initializeNavStackState()
+    }
+
+    func initializeNavStackState() {
         let navigationStackState = NavigationStackState(viewControllers: [.selectSchedules], modalViewController: nil)
         let action = InitializeNavigationState(navigationController: .schedules, navigationStackState: navigationStackState, description: "Initialing schedule nav state")
         store.dispatch(action)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        store.subscribe(self) { subscription in
-            subscription.select(self.filterSubscription)
-        }
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        store.unsubscribe(self)
     }
 
     func filterSubscription(state: AppState) -> [NavigationController: NavigationStackState]? {
@@ -52,5 +41,16 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber, Id
         }
 
         lastStackState = newStackState
+    }
+
+    func subscribe() {
+
+        store.subscribe(self) { subscription in
+            subscription.select(self.filterSubscription)
+        }
+    }
+
+    deinit {
+        store.unsubscribe(self)
     }
 }

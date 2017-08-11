@@ -42,9 +42,9 @@ class RoutesViewModel: StoreSubscriber {
 
     func rowSelected(row: Int) {
         guard let routes = routes, row < routes.count else { return }
-        let action = RouteSelected(route: routes[row], description: "Row Selected in Routes View Model")
+        let action = RouteSelected(route: routes[row], description: "A Route has been selected")
         store.dispatch(action)
-        let dismissAction = DismissModal(navigationController: .schedules, description: "Route has been selected")
+        let dismissAction = DismissModal(navigationController: .schedules, description: "Route should be dismissed")
         store.dispatch(dismissAction)
     }
 

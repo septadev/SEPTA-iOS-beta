@@ -132,14 +132,10 @@ class SelectSchedulesViewModel: StoreSubscriber {
 
     func rowSelected(_ row: Int) {
         guard row < displayModel.count else { return }
-        let navigationController = NavigationController.schedules
-        let viewTransitionType = ViewTransitionType.presentModal
-        let viewController = displayModel[row].targetController
 
-        let action = TransitionView(navigationController: navigationController,
-                                    viewController: viewController,
-                                    viewTransitionType: viewTransitionType,
-                                    description: "Schedule Selected on Select schedule view controller")
+        let action = PresentModal(navigationController: .schedules,
+                                  viewController: .routesViewController,
+                                  description: "User Wishes to pick a route")
 
         store.dispatch(action)
     }

@@ -23,11 +23,13 @@ struct SwitchTabs: NavigationAction {
     let description: String
 }
 
-struct SelectRouteTapped: NavigationAction {
+struct DismissModal: NavigationAction {
+    let navigationController: NavigationController
     let description: String
 }
 
-struct DismissModal: NavigationAction {
+struct PresentModal: NavigationAction {
     let navigationController: NavigationController
+    let viewController: ViewController
     let description: String
 }

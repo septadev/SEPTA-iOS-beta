@@ -8,6 +8,7 @@ class AppStateReducer {
     static let encoder = JSONEncoder()
 
     class func mainReducer(action: Action, state: AppState?) -> AppState {
+        logAction(action)
 
         let appState = AppState(
             navigationState: NavigationReducer.main(action: action, state: state?.navigationState),
@@ -15,7 +16,6 @@ class AppStateReducer {
             preferenceState: UserPreferenceReducer.main(action: action, state: state?.preferenceState)
         )
 
-        logAction(action)
         logState(appState)
 
         return appState
