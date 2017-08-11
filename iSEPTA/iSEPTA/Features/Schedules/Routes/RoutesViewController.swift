@@ -10,25 +10,24 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     static var viewController: ViewController = .routesViewController
     static var navigationController: NavigationController = .schedules
 
-
     @IBOutlet weak var searchTextBox: UITextField!
 
-    @IBAction func cancelButtonPressed(_ sender: Any) {
+    @IBAction func cancelButtonPressed(_: Any) {
+        let dismissAction = DismissModal(navigationController: .schedules, description: "Route should be dismissed")
+        store.dispatch(dismissAction)
     }
+
     typealias Data = [Route]
     let routeCellId = "routeCell"
     let segueId = "selectStops"
-    var viewModel: RoutesViewModel!
+    @IBOutlet var viewModel: RoutesViewModel!
     var routeType: RouteType?
     var selectedRoute: Route?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = RoutesViewModel(delegate: self)
-
     }
 
-    @IBOutlet var searchDelegate: SelectRoutesTextFieldDelegate!
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return viewModel.numberOfRows()
     }
@@ -47,9 +46,4 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func viewModelUpdated() {
         tableView.reloadData()
     }
-}
-
-class SelectRoutesTextFieldDelegate: NSObject, UITextFieldDelegate {
-
-
 }

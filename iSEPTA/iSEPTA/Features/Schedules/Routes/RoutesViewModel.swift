@@ -4,14 +4,47 @@ import Foundation
 import SeptaSchedule
 import ReSwift
 
-class RoutesViewModel: StoreSubscriber {
+struct FilterableRoute {
+    let filterString: String
+    let route: Route
+
+    init(route: Route) {
+        filterString = (route.routeId + route.routeLongName).lowercased()
+        self.route = route
+    }
+}
+
+class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
     typealias StoreSubscriberStateType = [Route]?
 
-    fileprivate var routes: [Route]?
-    weak var delegate: UpdateableFromViewModel?
+    var allRoutes: [Route]? {
+        didSet {
+            guard let allRoutes = allRoutes else { return }
+            allFilterableRoutes = allRoutes.map {
+                FilterableRoute(route: $0)
+            }
+        }
+    }
 
-    init(delegate: UpdateableFromViewModel) {
-        self.delegate = delegate
+    fileprivate var allFilterableRoutes: [FilterableRoute]? {
+        didSet {
+            filteredRoutes = allFilterableRoutes
+        }
+    }
+
+    var filteredRoutes: [FilterableRoute]? {
+        didSet {
+            guard let filteredRoutes = filteredRoutes else { return }
+            self.filteredRoutes = filteredRoutes.sorted {
+                $0.filterString < $1.filterString
+            }
+        }
+    }
+
+    @IBOutlet weak var delegate: UpdateableFromViewModel?
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
         subscribe()
     }
 
@@ -26,12 +59,12 @@ class RoutesViewModel: StoreSubscriber {
     }
 
     func newState(state: StoreSubscriberStateType) {
-        routes = state
+        allRoutes = state
     }
 
     func configureDisplayable(_ displayable: RouteCellDisplayable, atRow row: Int) {
-        guard let routes = routes, row < routes.count else { return }
-        let route = routes[row]
+        guard let filteredRoutes = filteredRoutes, row < filteredRoutes.count else { return }
+        let route = filteredRoutes[row].route
         displayable.setShortName(text: route.routeShortName)
         displayable.setLongName(text: route.routeLongName)
     }
@@ -41,19 +74,37 @@ class RoutesViewModel: StoreSubscriber {
     }
 
     func rowSelected(row: Int) {
-        guard let routes = routes, row < routes.count else { return }
-        let action = RouteSelected(route: routes[row], description: "A Route has been selected")
+        guard let filteredRoutes = filteredRoutes, row < filteredRoutes.count else { return }
+        let route = filteredRoutes[row].route
+        let action = RouteSelected(route: route, description: "A Route has been selected")
         store.dispatch(action)
         let dismissAction = DismissModal(navigationController: .schedules, description: "Route should be dismissed")
         store.dispatch(dismissAction)
     }
 
     func numberOfRows() -> Int {
-        guard let routes = routes else { return 0 }
-        return routes.count
+        guard let filteredRoutes = filteredRoutes else { return 0 }
+        return filteredRoutes.count
     }
 
     deinit {
         store.unsubscribe(self)
+    }
+
+    var filterString = ""
+    func textField(_: UITextField, shouldChangeCharactersIn range: NSRange, replacementString: String) -> Bool {
+
+        guard let allFilterableRoutes = allFilterableRoutes, let swiftRange = Range(range, in: filterString) else { return false }
+        filterString = filterString.replacingCharacters(in: swiftRange, with: replacementString.lowercased())
+        filteredRoutes = allFilterableRoutes.filter {
+            guard filterString.characters.count > 0 else { return true }
+            return $0.filterString.contains(filterString)
+        }
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+
+            strongSelf.delegate?.viewModelUpdated()
+        }
+        return true
     }
 }

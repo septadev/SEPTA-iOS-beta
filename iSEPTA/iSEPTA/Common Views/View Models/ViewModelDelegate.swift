@@ -2,7 +2,7 @@
 
 import Foundation
 
-protocol UpdateableFromViewModel: AnyObject {
+@objc protocol UpdateableFromViewModel: AnyObject {
 
     func viewModelUpdated()
 }

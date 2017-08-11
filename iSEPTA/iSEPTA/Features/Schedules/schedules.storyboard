@@ -107,63 +107,7 @@
             </objects>
             <point key="canvasLocation" x="-564" y="197.45127436281859"/>
         </scene>
-        <!--Old Routes-->
-        <scene sceneID="ITd-yd-8p1">
-            <objects>
-                <tableViewController storyboardIdentifier="routesViewController-old" title="Old Routes" id="mgD-ir-7HL" customClass="RoutesViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Jvi-F8-pLF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="routeCell" id="CbY-uF-J3d" customClass="RouteTableViewCell" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CbY-uF-J3d" id="umE-dY-tQp">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVB-Zd-MCV" userLabel="RouteShortName">
-                                            <rect key="frame" x="15" y="9" width="54" height="25.5"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2i-Pv-bzR" userLabel="RouteLongName">
-                                            <rect key="frame" x="108" y="5" width="234" height="33.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="M2i-Pv-bzR" secondAttribute="trailing" id="3ig-cP-pfb" userLabel="RouteLongNameRight"/>
-                                        <constraint firstItem="wVB-Zd-MCV" firstAttribute="centerY" secondItem="umE-dY-tQp" secondAttribute="centerY" id="84h-Hb-2lO" userLabel="RouteShortNameCenterY"/>
-                                        <constraint firstAttribute="bottom" secondItem="M2i-Pv-bzR" secondAttribute="bottom" constant="5" id="IFP-l7-gH6" userLabel="RouteLongNameBottom"/>
-                                        <constraint firstItem="M2i-Pv-bzR" firstAttribute="leading" secondItem="umE-dY-tQp" secondAttribute="leading" constant="108" id="fTb-o7-HD3" userLabel="RouteLongNameLeft"/>
-                                        <constraint firstItem="M2i-Pv-bzR" firstAttribute="top" secondItem="umE-dY-tQp" secondAttribute="top" constant="5" id="jMg-1z-3wC" userLabel="RouteLongNameTop"/>
-                                        <constraint firstItem="wVB-Zd-MCV" firstAttribute="leading" secondItem="umE-dY-tQp" secondAttribute="leading" constant="15" id="knw-zX-eDe" userLabel="RouteShortNameLeft"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="routeLongNameLabel" destination="M2i-Pv-bzR" id="aCb-li-HKB"/>
-                                    <outlet property="routeShortNameLabel" destination="wVB-Zd-MCV" id="rzn-5Q-7o4"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="mgD-ir-7HL" id="CRW-Nr-I56"/>
-                            <outlet property="delegate" destination="mgD-ir-7HL" id="3ct-UC-uPk"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Bus Routes" id="gp9-YQ-lc3"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MPb-nZ-m5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationItem title="Bus Routes" id="QlM-7k-qZC"/>
-            </objects>
-            <point key="canvasLocation" x="209" y="41"/>
-        </scene>
-        <!--Routes-->
+        <!--Delegate-->
         <scene sceneID="uR2-T4-wMD">
             <objects>
                 <viewController storyboardIdentifier="routesViewController" title="Routes" id="A30-AV-vlO" customClass="RoutesViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
@@ -172,11 +116,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Vk-6b-kfb" userLabel="SearchView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="128"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="82"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5Y-8t-Sgh" customClass="Cancel">
-                                        <rect key="frame" x="8" y="8" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5Y-8t-Sgh">
+                                        <rect key="frame" x="8" y="8" width="48" height="30"/>
+                                        <state key="normal" title="Cancel"/>
                                         <connections>
                                             <action selector="cancelButtonPressed:" destination="A30-AV-vlO" eventType="touchUpInside" id="bfp-sC-e6Q"/>
                                         </connections>
@@ -188,14 +132,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ai-id-8ua">
-                                        <rect key="frame" x="143" y="42" width="89" height="30"/>
+                                        <rect key="frame" x="15" y="42" width="345" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <string key="userLabel">
 SearchTextBox</string>
                                         <connections>
-                                            <outlet property="delegate" destination="rbG-tq-5YT" id="6eh-vd-pLq"/>
+                                            <outlet property="delegate" destination="Jge-ZX-dai" id="KrX-wh-baP"/>
                                         </connections>
                                     </textField>
                                 </subviews>
@@ -203,16 +147,16 @@ SearchTextBox</string>
                                 <constraints>
                                     <constraint firstItem="zz6-hF-3Zn" firstAttribute="centerX" secondItem="6Vk-6b-kfb" secondAttribute="centerX" id="A2c-Jt-ZoO" userLabel="SearchTitleCenterX"/>
                                     <constraint firstItem="zz6-hF-3Zn" firstAttribute="top" secondItem="6Vk-6b-kfb" secondAttribute="top" constant="13" id="GDf-Sq-QQ7" userLabel="SearchTitleTop"/>
-                                    <constraint firstAttribute="bottom" secondItem="1ai-id-8ua" secondAttribute="bottom" constant="56" id="S2G-UG-cpV" userLabel="TextBoxBottom"/>
+                                    <constraint firstItem="1ai-id-8ua" firstAttribute="leading" secondItem="6Vk-6b-kfb" secondAttribute="leading" constant="15" id="IDJ-hr-Oq0" userLabel="TextBoxLeft"/>
+                                    <constraint firstAttribute="bottom" secondItem="1ai-id-8ua" secondAttribute="bottom" constant="10" id="S2G-UG-cpV" userLabel="TextBoxBottom"/>
                                     <constraint firstItem="1ai-id-8ua" firstAttribute="top" secondItem="6Vk-6b-kfb" secondAttribute="top" constant="42" id="Tp9-1U-T1l" userLabel="TextBoxTop"/>
                                     <constraint firstItem="v5Y-8t-Sgh" firstAttribute="top" secondItem="6Vk-6b-kfb" secondAttribute="top" constant="8" id="UOn-5q-5lN" userLabel="ButtonTop"/>
-                                    <constraint firstItem="1ai-id-8ua" firstAttribute="centerX" secondItem="6Vk-6b-kfb" secondAttribute="centerX" id="asU-UF-Zat" userLabel="TextBoxCenterX"/>
                                     <constraint firstItem="v5Y-8t-Sgh" firstAttribute="leading" secondItem="6Vk-6b-kfb" secondAttribute="leading" constant="8" id="lBV-E5-shg" userLabel="ButtonLeft"/>
-                                    <constraint firstAttribute="trailing" secondItem="1ai-id-8ua" secondAttribute="trailing" constant="143" id="mlI-SV-Pzd" userLabel="TextBoxRight"/>
+                                    <constraint firstAttribute="trailing" secondItem="1ai-id-8ua" secondAttribute="trailing" constant="15" id="mlI-SV-Pzd" userLabel="TextBoxRight"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fCN-1s-A90">
-                                <rect key="frame" x="0.0" y="148" width="375" height="303"/>
+                                <rect key="frame" x="0.0" y="102" width="375" height="565"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="routeCell" id="mCg-hU-RGp" customClass="RouteTableViewCell" customModule="Septa" customModuleProvider="target">
@@ -263,19 +207,22 @@ SearchTextBox</string>
                             <constraint firstItem="fCN-1s-A90" firstAttribute="leading" secondItem="Xbt-rD-6Ku" secondAttribute="leading" id="JXi-mh-ll2" userLabel="TableViewLeft"/>
                             <constraint firstItem="6Vk-6b-kfb" firstAttribute="leading" secondItem="Xbt-rD-6Ku" secondAttribute="leading" id="KA0-z4-en6" userLabel="SearchViewLeft"/>
                             <constraint firstItem="Xbt-rD-6Ku" firstAttribute="trailing" secondItem="fCN-1s-A90" secondAttribute="trailing" id="Up4-zJ-wZZ" userLabel="TableViewRight"/>
-                            <constraint firstItem="Xbt-rD-6Ku" firstAttribute="bottom" secondItem="fCN-1s-A90" secondAttribute="bottom" constant="216" id="dbE-6d-rgd" userLabel="TableViewBottom"/>
+                            <constraint firstItem="Xbt-rD-6Ku" firstAttribute="bottom" secondItem="fCN-1s-A90" secondAttribute="bottom" id="dbE-6d-rgd" userLabel="TableViewBottom"/>
                             <constraint firstItem="Xbt-rD-6Ku" firstAttribute="trailing" secondItem="6Vk-6b-kfb" secondAttribute="trailing" id="ejM-re-5fw" userLabel="SearchViewRight"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xbt-rD-6Ku"/>
                     </view>
                     <connections>
-                        <outlet property="searchDelegate" destination="rbG-tq-5YT" id="0mS-KY-EuO"/>
-                        <outlet property="searchTextBox" destination="1ai-id-8ua" id="P7b-ez-1gp"/>
                         <outlet property="tableView" destination="fCN-1s-A90" id="ECq-YJ-eD4"/>
+                        <outlet property="viewModel" destination="Jge-ZX-dai" id="DJN-ci-UCa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="98I-ql-WrN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="rbG-tq-5YT" userLabel="SearchTextDelegate" customClass="SelectRoutesTextFieldDelegate" customModule="Septa" customModuleProvider="target"/>
+                <customObject id="Jge-ZX-dai" userLabel="ViewModel" customClass="RoutesViewModel" customModule="Septa" customModuleProvider="target">
+                    <connections>
+                        <outlet property="delegate" destination="A30-AV-vlO" id="5OF-by-eLS"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="957.60000000000002" y="53.523238380809602"/>
         </scene>
