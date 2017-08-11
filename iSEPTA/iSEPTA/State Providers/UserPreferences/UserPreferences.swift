@@ -2,6 +2,7 @@
 
 import Foundation
 import ReSwift
+import SeptaSchedule
 
 class PreferencesProvider: PreferencesProviderProtocol, StoreSubscriber {
     typealias StoreSubscriberStateType = UserPreferenceState

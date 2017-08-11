@@ -2,6 +2,7 @@
 
 import Foundation
 import ReSwift
+import SeptaSchedule
 
 protocol UserPreferenceAction: Action {}
 

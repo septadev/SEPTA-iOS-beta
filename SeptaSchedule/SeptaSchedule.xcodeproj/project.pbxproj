@@ -26,9 +26,6 @@
 		582F4F151F33B1370062A546 /* DatabaseTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EF91F33B1370062A546 /* DatabaseTables.swift */; };
 		582F4F161F33B1370062A546 /* RouteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EFA1F33B1370062A546 /* RouteType.swift */; };
 		582F4F171F33B1370062A546 /* ScheduleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EFB1F33B1370062A546 /* ScheduleType.swift */; };
-		582F4F181F33B1370062A546 /* busEnd.sql in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EFD1F33B1370062A546 /* busEnd.sql */; };
-		582F4F1A1F33B1370062A546 /* busStart.sql in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EFF1F33B1370062A546 /* busStart.sql */; };
-		582F4F1B1F33B1370062A546 /* busTrip.sql in Resources */ = {isa = PBXBuildFile; fileRef = 582F4F001F33B1370062A546 /* busTrip.sql */; };
 		582F4F1C1F33B1370062A546 /* SQLCommandTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F011F33B1370062A546 /* SQLCommandTemplate.swift */; };
 		582F4F1D1F33B1370062A546 /* SQLQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F021F33B1370062A546 /* SQLQuery.swift */; };
 		582F4F1E1F33B1370062A546 /* SQLConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F031F33B1370062A546 /* SQLConnection.swift */; };
@@ -43,7 +40,16 @@
 		582F4F381F33B4E50062A546 /* TripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F311F33B4E50062A546 /* TripTests.swift */; };
 		582F4F391F33B4E50062A546 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F321F33B4E50062A546 /* Main.swift */; };
 		58D9C42D1F3336C6002BE2E8 /* SeptaSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58D9C4231F3336C6002BE2E8 /* SeptaSchedule.framework */; };
-		58DCA0641F3DFCAA002F08CF /* busRoute.sql in Resources */ = {isa = PBXBuildFile; fileRef = 58DCA0631F3DFCAA002F08CF /* busRoute.sql */; };
+		58DCA0861F3E1C44002F08CF /* busEnd.sql in Resources */ = {isa = PBXBuildFile; fileRef = 58DCA07B1F3E1C44002F08CF /* busEnd.sql */; };
+		58DCA0881F3E1C44002F08CF /* busStart.sql in Resources */ = {isa = PBXBuildFile; fileRef = 58DCA07D1F3E1C44002F08CF /* busStart.sql */; };
+		58DCA0891F3E1C44002F08CF /* busTrip.sql in Resources */ = {isa = PBXBuildFile; fileRef = 58DCA07E1F3E1C44002F08CF /* busTrip.sql */; };
+		58DCA08A1F3E1C44002F08CF /* busRoute.sql in Resources */ = {isa = PBXBuildFile; fileRef = 58DCA0821F3E1C44002F08CF /* busRoute.sql */; };
+		58DCA08B1F3E1C44002F08CF /* NHSLRoute.sql in Resources */ = {isa = PBXBuildFile; fileRef = 58DCA0831F3E1C44002F08CF /* NHSLRoute.sql */; };
+		58DCA08C1F3E1C44002F08CF /* subwayRoute.sql in Resources */ = {isa = PBXBuildFile; fileRef = 58DCA0841F3E1C44002F08CF /* subwayRoute.sql */; };
+		58DCA08D1F3E1C44002F08CF /* trolleyRoute.sql in Resources */ = {isa = PBXBuildFile; fileRef = 58DCA0851F3E1C44002F08CF /* trolleyRoute.sql */; };
+		58DCA08F1F3E24F3002F08CF /* railRoute.sql in Resources */ = {isa = PBXBuildFile; fileRef = 58DCA08E1F3E24F3002F08CF /* railRoute.sql */; };
+		58DCA0921F3E25C8002F08CF /* RoutesQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DCA0911F3E25C8002F08CF /* RoutesQuery.swift */; };
+		58DCA0951F3E280C002F08CF /* TransitMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DCA0941F3E280C002F08CF /* TransitMode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,9 +97,6 @@
 		582F4EF91F33B1370062A546 /* DatabaseTables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseTables.swift; sourceTree = "<group>"; };
 		582F4EFA1F33B1370062A546 /* RouteType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteType.swift; sourceTree = "<group>"; };
 		582F4EFB1F33B1370062A546 /* ScheduleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleType.swift; sourceTree = "<group>"; };
-		582F4EFD1F33B1370062A546 /* busEnd.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = busEnd.sql; sourceTree = "<group>"; };
-		582F4EFF1F33B1370062A546 /* busStart.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = busStart.sql; sourceTree = "<group>"; };
-		582F4F001F33B1370062A546 /* busTrip.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = busTrip.sql; sourceTree = "<group>"; };
 		582F4F011F33B1370062A546 /* SQLCommandTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLCommandTemplate.swift; sourceTree = "<group>"; };
 		582F4F021F33B1370062A546 /* SQLQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLQuery.swift; sourceTree = "<group>"; };
 		582F4F031F33B1370062A546 /* SQLConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLConnection.swift; sourceTree = "<group>"; };
@@ -111,7 +114,16 @@
 		58D9C42C1F3336C6002BE2E8 /* SeptaScheduleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeptaScheduleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D9C4331F3336C6002BE2E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58DCA0621F3DEFB0002F08CF /* SEPTA.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = SEPTA.sqlite; sourceTree = "<group>"; };
-		58DCA0631F3DFCAA002F08CF /* busRoute.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = busRoute.sql; sourceTree = "<group>"; };
+		58DCA07B1F3E1C44002F08CF /* busEnd.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = busEnd.sql; sourceTree = "<group>"; };
+		58DCA07D1F3E1C44002F08CF /* busStart.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = busStart.sql; sourceTree = "<group>"; };
+		58DCA07E1F3E1C44002F08CF /* busTrip.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = busTrip.sql; sourceTree = "<group>"; };
+		58DCA0821F3E1C44002F08CF /* busRoute.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = busRoute.sql; sourceTree = "<group>"; };
+		58DCA0831F3E1C44002F08CF /* NHSLRoute.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NHSLRoute.sql; sourceTree = "<group>"; };
+		58DCA0841F3E1C44002F08CF /* subwayRoute.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = subwayRoute.sql; sourceTree = "<group>"; };
+		58DCA0851F3E1C44002F08CF /* trolleyRoute.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = trolleyRoute.sql; sourceTree = "<group>"; };
+		58DCA08E1F3E24F3002F08CF /* railRoute.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = railRoute.sql; sourceTree = "<group>"; };
+		58DCA0911F3E25C8002F08CF /* RoutesQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesQuery.swift; sourceTree = "<group>"; };
+		58DCA0941F3E280C002F08CF /* TransitMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitMode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +192,7 @@
 				582F4EF21F33B1370062A546 /* Route.swift */,
 				582F4EF31F33B1370062A546 /* Stop.swift */,
 				582F4EF41F33B1370062A546 /* Trip.swift */,
+				58DCA0941F3E280C002F08CF /* TransitMode.swift */,
 			);
 			path = DataObjects;
 			sourceTree = "<group>";
@@ -209,10 +222,10 @@
 		582F4EFC1F33B1370062A546 /* sql */ = {
 			isa = PBXGroup;
 			children = (
-				58DCA0631F3DFCAA002F08CF /* busRoute.sql */,
-				582F4EFD1F33B1370062A546 /* busEnd.sql */,
-				582F4EFF1F33B1370062A546 /* busStart.sql */,
-				582F4F001F33B1370062A546 /* busTrip.sql */,
+				58DCA07F1F3E1C44002F08CF /* AvailableTrips */,
+				58DCA0811F3E1C44002F08CF /* Routes */,
+				58DCA0801F3E1C44002F08CF /* TripEnd */,
+				58DCA07A1F3E1C44002F08CF /* TripStart */,
 				582F4F011F33B1370062A546 /* SQLCommandTemplate.swift */,
 				582F4F021F33B1370062A546 /* SQLQuery.swift */,
 			);
@@ -321,6 +334,51 @@
 			path = SeptaScheduleTests;
 			sourceTree = "<group>";
 		};
+		58DCA07A1F3E1C44002F08CF /* TripStart */ = {
+			isa = PBXGroup;
+			children = (
+				58DCA07D1F3E1C44002F08CF /* busStart.sql */,
+				58DCA07E1F3E1C44002F08CF /* busTrip.sql */,
+			);
+			path = TripStart;
+			sourceTree = "<group>";
+		};
+		58DCA07F1F3E1C44002F08CF /* AvailableTrips */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AvailableTrips;
+			sourceTree = "<group>";
+		};
+		58DCA0801F3E1C44002F08CF /* TripEnd */ = {
+			isa = PBXGroup;
+			children = (
+				58DCA07B1F3E1C44002F08CF /* busEnd.sql */,
+			);
+			path = TripEnd;
+			sourceTree = "<group>";
+		};
+		58DCA0811F3E1C44002F08CF /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				58DCA0901F3E25AC002F08CF /* sql */,
+				58DCA0911F3E25C8002F08CF /* RoutesQuery.swift */,
+			);
+			path = Routes;
+			sourceTree = "<group>";
+		};
+		58DCA0901F3E25AC002F08CF /* sql */ = {
+			isa = PBXGroup;
+			children = (
+				58DCA08E1F3E24F3002F08CF /* railRoute.sql */,
+				58DCA0821F3E1C44002F08CF /* busRoute.sql */,
+				58DCA0831F3E1C44002F08CF /* NHSLRoute.sql */,
+				58DCA0841F3E1C44002F08CF /* subwayRoute.sql */,
+				58DCA0851F3E1C44002F08CF /* trolleyRoute.sql */,
+			);
+			path = sql;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -416,14 +474,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				582F4F181F33B1370062A546 /* busEnd.sql in Resources */,
-				582F4F1B1F33B1370062A546 /* busTrip.sql in Resources */,
-				582F4F1A1F33B1370062A546 /* busStart.sql in Resources */,
+				58DCA0861F3E1C44002F08CF /* busEnd.sql in Resources */,
+				58DCA0881F3E1C44002F08CF /* busStart.sql in Resources */,
+				58DCA08B1F3E1C44002F08CF /* NHSLRoute.sql in Resources */,
+				58DCA08F1F3E24F3002F08CF /* railRoute.sql in Resources */,
+				58DCA0891F3E1C44002F08CF /* busTrip.sql in Resources */,
 				582F4F071F33B1370062A546 /* testCallToBusRoutes.sql in Resources */,
 				582F4F051F33B1370062A546 /* routes.sql in Resources */,
+				58DCA08C1F3E1C44002F08CF /* subwayRoute.sql in Resources */,
 				582F4F061F33B1370062A546 /* testCallToBusEnd_Saturday.sql in Resources */,
+				58DCA08D1F3E1C44002F08CF /* trolleyRoute.sql in Resources */,
 				582F4F081F33B1370062A546 /* testCallToBusStart_Saturday.sql in Resources */,
-				58DCA0641F3DFCAA002F08CF /* busRoute.sql in Resources */,
+				58DCA08A1F3E1C44002F08CF /* busRoute.sql in Resources */,
 				582F4F091F33B1370062A546 /* testCallToBusStart_Weekday.sql in Resources */,
 				582F4F0F1F33B1370062A546 /* SEPTA.zip in Resources */,
 				582F4F0A1F33B1370062A546 /* testCallToBusTrip_Saturday.sql in Resources */,
@@ -451,9 +513,11 @@
 				582F4F231F33B1AA0062A546 /* GeoCompare.swift in Sources */,
 				582F4F1D1F33B1370062A546 /* SQLQuery.swift in Sources */,
 				582F4F141F33B1370062A546 /* BusCommands.swift in Sources */,
+				58DCA0951F3E280C002F08CF /* TransitMode.swift in Sources */,
 				582F4F121F33B1370062A546 /* Trip.swift in Sources */,
 				582F4F171F33B1370062A546 /* ScheduleType.swift in Sources */,
 				582F4F1E1F33B1370062A546 /* SQLConnection.swift in Sources */,
+				58DCA0921F3E25C8002F08CF /* RoutesQuery.swift in Sources */,
 				582F4F101F33B1370062A546 /* Route.swift in Sources */,
 				582F4F0E1F33B1370062A546 /* DatabaseFileManager.swift in Sources */,
 				582F4F111F33B1370062A546 /* Stop.swift in Sources */,

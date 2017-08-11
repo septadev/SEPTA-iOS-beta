@@ -1,3 +1,15 @@
 
+select
+  route_id, route_short_name, route_long_name, route_type
+from (
+select
+  route_id, route_short_name, route_long_name, route_type
+from routes_bus
+union all
+select
+  route_id, route_short_name, route_long_name, route_type
+from routes_rail)
 
-select * from routes_bus where route_type = 3 order by route_id
+where route_id = 'NHSL';
+
+

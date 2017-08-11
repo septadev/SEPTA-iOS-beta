@@ -2,6 +2,7 @@
 
 import Foundation
 import UIKit
+import SeptaSchedule
 
 @IBDesignable
 class TransitModeToolbarView: UIView {

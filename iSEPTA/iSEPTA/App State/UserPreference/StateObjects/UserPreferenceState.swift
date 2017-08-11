@@ -1,6 +1,7 @@
 // Septa. 2017
 
 import Foundation
+import SeptaSchedule
 
 struct UserPreferenceState: Codable {
     let transitMode: TransitMode?

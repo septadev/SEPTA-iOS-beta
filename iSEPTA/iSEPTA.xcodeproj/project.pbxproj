@@ -57,7 +57,6 @@
 		5840D6D51F376E5E00C8CB76 /* NavigationStackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D41F376E5E00C8CB76 /* NavigationStackState.swift */; };
 		5840D6D71F37728B00C8CB76 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D61F37728B00C8CB76 /* NavigationController.swift */; };
 		5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6DB1F37925A00C8CB76 /* SchedulesNavigationViewController.swift */; };
-		5840D6DE1F37E4B100C8CB76 /* TransitMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6DD1F37E4B100C8CB76 /* TransitMode.swift */; };
 		5840D6E01F37E5FB00C8CB76 /* ScheduleReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6DF1F37E5FB00C8CB76 /* ScheduleReducer.swift */; };
 		5840D6E31F37E9FB00C8CB76 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E21F37E9FB00C8CB76 /* UserPreferences.swift */; };
 		5840D6E51F37EA1900C8CB76 /* ScheduleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E41F37EA1900C8CB76 /* ScheduleProvider.swift */; };
@@ -191,7 +190,6 @@
 		5840D6D41F376E5E00C8CB76 /* NavigationStackState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackState.swift; sourceTree = "<group>"; };
 		5840D6D61F37728B00C8CB76 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		5840D6DB1F37925A00C8CB76 /* SchedulesNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesNavigationViewController.swift; sourceTree = "<group>"; };
-		5840D6DD1F37E4B100C8CB76 /* TransitMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitMode.swift; sourceTree = "<group>"; };
 		5840D6DF1F37E5FB00C8CB76 /* ScheduleReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleReducer.swift; sourceTree = "<group>"; };
 		5840D6E21F37E9FB00C8CB76 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		5840D6E41F37EA1900C8CB76 /* ScheduleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleProvider.swift; sourceTree = "<group>"; };
@@ -538,7 +536,6 @@
 				58290E521F372F36000CCF3C /* ScheduleState.swift */,
 				58C2A0681F38AA1B00F0D6CA /* ScheduleData.swift */,
 				58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */,
-				5840D6DD1F37E4B100C8CB76 /* TransitMode.swift */,
 			);
 			path = StateObjects;
 			sourceTree = "<group>";
@@ -1031,7 +1028,6 @@
 				5840D6E91F37EE6500C8CB76 /* Providers.swift in Sources */,
 				582F4ED81F33B1120062A546 /* SelectSchedulesViewController.swift in Sources */,
 				582F4ECF1F33B1120062A546 /* SelectStopViewModel.swift in Sources */,
-				5840D6DE1F37E4B100C8CB76 /* TransitMode.swift in Sources */,
 				582F4EC71F33B1120062A546 /* RoutesViewModel.swift in Sources */,
 				5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift in Sources */,
 				5840D6E51F37EA1900C8CB76 /* ScheduleProvider.swift in Sources */,

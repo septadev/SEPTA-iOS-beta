@@ -1,8 +1,16 @@
-// Septa. 2017
+//
+//  TransitMode.swift
+//  SeptaSchedule
+//
+//  Created by Mark Broski on 8/11/17.
+//  Copyright © 2017 Mark Broski. All rights reserved.
+//
 
 import Foundation
 
-enum TransitMode: String, Codable {
+import Foundation
+
+public enum TransitMode: String, Codable {
     case bus
     case rail
     case subway

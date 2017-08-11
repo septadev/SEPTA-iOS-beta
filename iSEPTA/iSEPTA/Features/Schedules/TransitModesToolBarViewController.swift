@@ -3,6 +3,7 @@
 import Foundation
 import UIKit
 import ReSwift
+import SeptaSchedule
 
 class TransitModesToolbarViewController: UIViewController, StoreSubscriber {
     typealias StoreSubscriberStateType = TransitMode?
