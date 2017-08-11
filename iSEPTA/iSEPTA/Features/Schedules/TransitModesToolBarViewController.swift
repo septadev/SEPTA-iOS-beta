@@ -9,7 +9,7 @@ class TransitModesToolbarViewController: UIViewController, StoreSubscriber {
     typealias StoreSubscriberStateType = TransitMode?
     @IBOutlet var scrollbar: UIScrollView!
     @IBOutlet var transitModesToolbarElements: [TransitModeToolbarView]!
-    var transitMode: TransitMode?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 0.600, green: 0.600, blue: 0.600, alpha: 1.000)
@@ -23,6 +23,36 @@ class TransitModesToolbarViewController: UIViewController, StoreSubscriber {
         store.subscribe(self) { subscription in
             subscription.select(self.filterSubscription)
         }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        guard let selectedToolBarItem = selectedToolBar() else { return }
+
+        let rightEdgeOfSelectedItem = mapCGPointFromToolbar(toolBar: selectedToolBarItem)
+        let scrollBarWidth = scrollbar.frame.size.width
+        let amountToMove = rightEdgeOfSelectedItem - scrollBarWidth
+
+        if amountToMove > CGFloat(0) {
+            UIView.animate(withDuration: 0.35) { [weak self] in
+                self?.scrollbar.contentOffset = CGPoint(x: amountToMove, y: 0)
+            }
+        }
+    }
+
+    func selectedToolBar() -> TransitModeToolbarView? {
+        let selected = transitModesToolbarElements.filter(isSelectedToolbar)
+        return selected.first
+    }
+
+    func isSelectedToolbar(toolBar: TransitModeToolbarView) -> Bool {
+        return toolBar.highlighted
+    }
+
+    func mapCGPointFromToolbar(toolBar: TransitModeToolbarView) -> CGFloat {
+        let itemFrame = toolBar.frame
+        return itemFrame.origin.x + itemFrame.size.width
     }
 
     @IBAction func ToolbarTapped(_ sender: UITapGestureRecognizer) {
@@ -62,6 +92,7 @@ class TransitModesToolbarViewController: UIViewController, StoreSubscriber {
 
     func newState(state: StoreSubscriberStateType) {
         guard let transitMode = state else { fatalError("message: there should always be a transit mode") }
+
         intializeToolbar(transitMode: transitMode)
     }
 

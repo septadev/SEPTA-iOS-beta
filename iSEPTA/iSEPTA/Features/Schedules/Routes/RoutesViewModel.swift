@@ -65,7 +65,7 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
     func configureDisplayable(_ displayable: RouteCellDisplayable, atRow row: Int) {
         guard let filteredRoutes = filteredRoutes, row < filteredRoutes.count else { return }
         let route = filteredRoutes[row].route
-        displayable.setShortName(text: route.routeShortName)
+        displayable.setShortName(text: route.routeId)
         displayable.setLongName(text: route.routeLongName)
     }
 
