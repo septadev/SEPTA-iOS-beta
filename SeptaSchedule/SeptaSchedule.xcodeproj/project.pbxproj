@@ -111,6 +111,7 @@
 		58D9C4231F3336C6002BE2E8 /* SeptaSchedule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SeptaSchedule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D9C42C1F3336C6002BE2E8 /* SeptaScheduleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeptaScheduleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D9C4331F3336C6002BE2E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58DCA0621F3DEFB0002F08CF /* SEPTA.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = SEPTA.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +232,7 @@
 		582F4F271F33B4E50062A546 /* PreloadedDatabase */ = {
 			isa = PBXGroup;
 			children = (
+				58DCA0621F3DEFB0002F08CF /* SEPTA.sqlite */,
 				582F4F281F33B4E50062A546 /* DatabaseFileManagerTests.swift */,
 			);
 			path = PreloadedDatabase;
