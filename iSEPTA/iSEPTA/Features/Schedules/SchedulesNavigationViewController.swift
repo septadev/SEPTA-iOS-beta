@@ -7,7 +7,7 @@ import ReSwift
 class SchedulesNavigationController: UINavigationController, StoreSubscriber, IdentifiableNavController {
     static var navController: NavigationController = .schedules
     typealias StoreSubscriberStateType = [NavigationController: NavigationStackState]?
-
+    lazy var slideInTransitioningDelegate = SlideInPresentationManager()
     let showRoutesId = "showRoutes"
     let myStoryboard = UIStoryboard(name: navController.rawValue, bundle: Bundle.main)
 
@@ -34,6 +34,8 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber, Id
 
         if let modal = newStackState.modalViewController {
             let viewController = myStoryboard.instantiateViewController(withIdentifier: modal.rawValue)
+            viewController.modalPresentationStyle = .custom
+            viewController.transitioningDelegate = slideInTransitioningDelegate
             present(viewController, animated: true)
         }
         if let existingModal = lastStackState.modalViewController, newStackState.modalViewController == nil {

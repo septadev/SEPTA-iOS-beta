@@ -20,7 +20,6 @@ struct RoutesLoaded: ScheduleAction {
 }
 
 struct RouteSelected: ScheduleAction {
-
     let route: Route
     let description: String
 }

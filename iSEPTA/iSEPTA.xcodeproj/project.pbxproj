@@ -78,6 +78,7 @@
 		588F27F71F39E0BF00D62425 /* UserPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27F61F39E0BF00D62425 /* UserPreference.swift */; };
 		5892DDF11F3AAA5C000BA54B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5892DDEF1F3AAA5C000BA54B /* Crashlytics.framework */; };
 		5892DDF21F3AAA5C000BA54B /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5892DDF01F3AAA5C000BA54B /* Fabric.framework */; };
+		589BCC321F3D5068002FAEDE /* SchedulesPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589BCC311F3D5068002FAEDE /* SchedulesPresentationController.swift */; };
 		58B891CB1F38B51E00BFFEFA /* ScheduleReducersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891C81F38B51E00BFFEFA /* ScheduleReducersTests.swift */; };
 		58B8920D1F38C64C00BFFEFA /* MockPreferenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B8920C1F38C64C00BFFEFA /* MockPreferenceProvider.swift */; };
 		58B8920F1F38CBA900BFFEFA /* GenericAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B8920E1F38CBA900BFFEFA /* GenericAction.swift */; };
@@ -213,6 +214,7 @@
 		588F27F61F39E0BF00D62425 /* UserPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreference.swift; sourceTree = "<group>"; };
 		5892DDEF1F3AAA5C000BA54B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		5892DDF01F3AAA5C000BA54B /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		589BCC311F3D5068002FAEDE /* SchedulesPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesPresentationController.swift; sourceTree = "<group>"; };
 		58ACEADD1F3A9A9B00DC2836 /* SeptaSchedule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SeptaSchedule.xcodeproj; path = ../SeptaSchedule/SeptaSchedule.xcodeproj; sourceTree = "<group>"; };
 		58B891C81F38B51E00BFFEFA /* ScheduleReducersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleReducersTests.swift; sourceTree = "<group>"; };
 		58B8920C1F38C64C00BFFEFA /* MockPreferenceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPreferenceProvider.swift; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 				58B892141F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift */,
 				58C2A0641F389B6400F0D6CA /* TransitModesToolBarViewController.swift */,
 				5840D6DB1F37925A00C8CB76 /* SchedulesNavigationViewController.swift */,
+				589BCC311F3D5068002FAEDE /* SchedulesPresentationController.swift */,
 			);
 			path = Schedules;
 			sourceTree = "<group>";
@@ -1044,6 +1047,7 @@
 				582F4ECB1F33B1120062A546 /* RouteSheduleViewModel.swift in Sources */,
 				582F4ECE1F33B1120062A546 /* SelectStopViewController.swift in Sources */,
 				582F4ED61F33B1120062A546 /* SelectStopsViewElement.swift in Sources */,
+				589BCC321F3D5068002FAEDE /* SchedulesPresentationController.swift in Sources */,
 				581DA54A1F3BE1C8006AEC39 /* IdentifiableController.swift in Sources */,
 				581DA54F1F3BF102006AEC39 /* ViewTransitionType.swift in Sources */,
 				5840D6E01F37E5FB00C8CB76 /* ScheduleReducer.swift in Sources */,
