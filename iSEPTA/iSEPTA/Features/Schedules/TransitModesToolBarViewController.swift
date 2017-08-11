@@ -25,9 +25,15 @@ class TransitModesToolbarViewController: UIViewController, StoreSubscriber {
         }
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    func intializeToolbar(transitMode: TransitMode) {
 
+        for toolbarItem in transitModesToolbarElements {
+            toolbarItem.highlighted = toolbarItem.transitMode == transitMode
+        }
+        makeSelectedToolbarItemVisible()
+    }
+
+    func makeSelectedToolbarItemVisible() {
         guard let selectedToolBarItem = selectedToolBar() else { return }
 
         let rightEdgeOfSelectedItem = mapCGPointFromToolbar(toolBar: selectedToolBarItem)
@@ -94,12 +100,5 @@ class TransitModesToolbarViewController: UIViewController, StoreSubscriber {
         guard let transitMode = state else { fatalError("message: there should always be a transit mode") }
 
         intializeToolbar(transitMode: transitMode)
-    }
-
-    func intializeToolbar(transitMode: TransitMode) {
-
-        for toolbarItem in transitModesToolbarElements {
-            toolbarItem.highlighted = toolbarItem.transitMode == transitMode
-        }
     }
 }
