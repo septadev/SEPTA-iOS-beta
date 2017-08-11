@@ -4,10 +4,17 @@ import UIKit
 import SeptaSchedule
 import ReSwift
 
-class RoutesViewController: UITableViewController, UpdateableFromViewModel, IdentifiableController {
+class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController {
+
+    @IBOutlet weak var tableView: UITableView!
     static var viewController: ViewController = .routesViewController
     static var navigationController: NavigationController = .schedules
 
+
+    @IBOutlet weak var searchTextBox: UITextField!
+
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+    }
     typealias Data = [Route]
     let routeCellId = "routeCell"
     let segueId = "selectStops"
@@ -18,24 +25,31 @@ class RoutesViewController: UITableViewController, UpdateableFromViewModel, Iden
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = RoutesViewModel(delegate: self)
+
     }
 
-    override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+    @IBOutlet var searchDelegate: SelectRoutesTextFieldDelegate!
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return viewModel.numberOfRows()
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: routeCellId, for: indexPath) as? RouteTableViewCell else { return UITableViewCell() }
 
         viewModel.configureDisplayable(cell, atRow: indexPath.row)
         return cell
     }
 
-    override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.rowSelected(row: indexPath.row)
     }
 
     func viewModelUpdated() {
         tableView.reloadData()
     }
+}
+
+class SelectRoutesTextFieldDelegate: NSObject, UITextFieldDelegate {
+
+
 }
