@@ -1,1 +1,210 @@
-{"stateAfter":{"preferenceState":{"transitMode":"rail"},"navigationState":{"selectedTab":2,"appStackState":["schedules",{"viewControllers":["selectSchedules"],"modalViewController":"routesViewController"}]},"scheduleState":{"scheduleData":{"availableRoutes":[{"routeId":"AIR","routeShortName":"Airport Line","routeLongName":"Airport Line"},{"routeId":"CHE","routeShortName":"Chestnut Hill East Line","routeLongName":"Chestnut Hill East Line"},{"routeId":"CHW","routeShortName":"Chestnut Hill West Line","routeLongName":"Chestnut Hill West Line"},{"routeId":"LAN","routeShortName":"Lansdale\/Doylestown Line","routeLongName":"Lansdale\/Doylestown Line"},{"routeId":"MED","routeShortName":"Media\/Elwyn Line","routeLongName":"Media\/Elwyn Line"},{"routeId":"FOX","routeShortName":"Fox Chase Line","routeLongName":"Fox Chase Line"},{"routeId":"NOR","routeShortName":"Manayunk\/Norristown Line","routeLongName":"Manayunk\/Norristown Line"},{"routeId":"PAO","routeShortName":"Paoli\/Thorndale Line","routeLongName":"Paoli\/Thorndale Line"},{"routeId":"CYN","routeShortName":"Cynwyd Line","routeLongName":"Cynwyd Line"},{"routeId":"TRE","routeShortName":"Trenton Line","routeLongName":"Trenton Line"},{"routeId":"WAR","routeShortName":"Warminster Line","routeLongName":"Warminster Line"},{"routeId":"WIL","routeShortName":"Wilmington\/Newark Line","routeLongName":"Wilmington\/Newark Line"},{"routeId":"WTR","routeShortName":"West Trenton Line","routeLongName":"West Trenton Line"},{"routeId":"GC","routeShortName":"Glenside Combined","routeLongName":"Glenside Combined"}]},"scheduleRequest":{"selectedRoute":{"routeId":"CHW","routeShortName":"Chestnut Hill West Line","routeLongName":"Chestnut Hill West Line"},"transitMode":"rail","onlyOneRouteAvailable":false}}},"stateBefore":{"preferenceState":{"transitMode":"rail"},"navigationState":{"selectedTab":2,"appStackState":["schedules",{"viewControllers":["selectSchedules"],"modalViewController":"routesViewController"}]},"scheduleState":{"scheduleData":{"availableRoutes":[{"routeId":"AIR","routeShortName":"Airport Line","routeLongName":"Airport Line"},{"routeId":"CHE","routeShortName":"Chestnut Hill East Line","routeLongName":"Chestnut Hill East Line"},{"routeId":"CHW","routeShortName":"Chestnut Hill West Line","routeLongName":"Chestnut Hill West Line"},{"routeId":"LAN","routeShortName":"Lansdale\/Doylestown Line","routeLongName":"Lansdale\/Doylestown Line"},{"routeId":"MED","routeShortName":"Media\/Elwyn Line","routeLongName":"Media\/Elwyn Line"},{"routeId":"FOX","routeShortName":"Fox Chase Line","routeLongName":"Fox Chase Line"},{"routeId":"NOR","routeShortName":"Manayunk\/Norristown Line","routeLongName":"Manayunk\/Norristown Line"},{"routeId":"PAO","routeShortName":"Paoli\/Thorndale Line","routeLongName":"Paoli\/Thorndale Line"},{"routeId":"CYN","routeShortName":"Cynwyd Line","routeLongName":"Cynwyd Line"},{"routeId":"TRE","routeShortName":"Trenton Line","routeLongName":"Trenton Line"},{"routeId":"WAR","routeShortName":"Warminster Line","routeLongName":"Warminster Line"},{"routeId":"WIL","routeShortName":"Wilmington\/Newark Line","routeLongName":"Wilmington\/Newark Line"},{"routeId":"WTR","routeShortName":"West Trenton Line","routeLongName":"West Trenton Line"},{"routeId":"GC","routeShortName":"Glenside Combined","routeLongName":"Glenside Combined"}]},"scheduleRequest":{"transitMode":"rail","onlyOneRouteAvailable":false}}},"actionName":"RouteSelected","action":{"route":{"routeId":"CHW","routeShortName":"Chestnut Hill West Line","routeLongName":"Chestnut Hill West Line"},"description":"A Route has been selected"}}
+{
+    "stateAfter": {
+        "preferenceState": {
+            "transitMode": "rail"
+        },
+        "navigationState": {
+            "selectedTab": 2,
+            "appStackState": [
+                "schedules",
+                {
+                    "viewControllers": [
+                        "selectSchedules"
+                    ],
+                    "modalViewController": "routesViewController"
+                }
+            ]
+        },
+        "scheduleState": {
+            "scheduleData": {
+                "availableRoutes": [
+                    {
+                        "routeId": "AIR",
+                        "routeShortName": "Airport Line",
+                        "routeLongName": "Airport Line"
+                    },
+                    {
+                        "routeId": "CHE",
+                        "routeShortName": "Chestnut Hill East Line",
+                        "routeLongName": "Chestnut Hill East Line"
+                    },
+                    {
+                        "routeId": "CHW",
+                        "routeShortName": "Chestnut Hill West Line",
+                        "routeLongName": "Chestnut Hill West Line"
+                    },
+                    {
+                        "routeId": "LAN",
+                        "routeShortName": "Lansdale\/Doylestown Line",
+                        "routeLongName": "Lansdale\/Doylestown Line"
+                    },
+                    {
+                        "routeId": "MED",
+                        "routeShortName": "Media\/Elwyn Line",
+                        "routeLongName": "Media\/Elwyn Line"
+                    },
+                    {
+                        "routeId": "FOX",
+                        "routeShortName": "Fox Chase Line",
+                        "routeLongName": "Fox Chase Line"
+                    },
+                    {
+                        "routeId": "NOR",
+                        "routeShortName": "Manayunk\/Norristown Line",
+                        "routeLongName": "Manayunk\/Norristown Line"
+                    },
+                    {
+                        "routeId": "PAO",
+                        "routeShortName": "Paoli\/Thorndale Line",
+                        "routeLongName": "Paoli\/Thorndale Line"
+                    },
+                    {
+                        "routeId": "CYN",
+                        "routeShortName": "Cynwyd Line",
+                        "routeLongName": "Cynwyd Line"
+                    },
+                    {
+                        "routeId": "TRE",
+                        "routeShortName": "Trenton Line",
+                        "routeLongName": "Trenton Line"
+                    },
+                    {
+                        "routeId": "WAR",
+                        "routeShortName": "Warminster Line",
+                        "routeLongName": "Warminster Line"
+                    },
+                    {
+                        "routeId": "WIL",
+                        "routeShortName": "Wilmington\/Newark Line",
+                        "routeLongName": "Wilmington\/Newark Line"
+                    },
+                    {
+                        "routeId": "WTR",
+                        "routeShortName": "West Trenton Line",
+                        "routeLongName": "West Trenton Line"
+                    },
+                    {
+                        "routeId": "GC",
+                        "routeShortName": "Glenside Combined",
+                        "routeLongName": "Glenside Combined"
+                    }
+                ]
+            },
+            "scheduleRequest": {
+                "selectedRoute": {
+                    "routeId": "CHW",
+                    "routeShortName": "Chestnut Hill West Line",
+                    "routeLongName": "Chestnut Hill West Line"
+                },
+                "transitMode": "rail",
+                "onlyOneRouteAvailable": false
+            }
+        }
+    },
+    "stateBefore": {
+        "preferenceState": {
+            "transitMode": "rail"
+        },
+        "navigationState": {
+            "selectedTab": 2,
+            "appStackState": [
+                "schedules",
+                {
+                    "viewControllers": [
+                        "selectSchedules"
+                    ],
+                    "modalViewController": "routesViewController"
+                }
+            ]
+        },
+        "scheduleState": {
+            "scheduleData": {
+                "availableRoutes": [
+                    {
+                        "routeId": "AIR",
+                        "routeShortName": "Airport Line",
+                        "routeLongName": "Airport Line"
+                    },
+                    {
+                        "routeId": "CHE",
+                        "routeShortName": "Chestnut Hill East Line",
+                        "routeLongName": "Chestnut Hill East Line"
+                    },
+                    {
+                        "routeId": "CHW",
+                        "routeShortName": "Chestnut Hill West Line",
+                        "routeLongName": "Chestnut Hill West Line"
+                    },
+                    {
+                        "routeId": "LAN",
+                        "routeShortName": "Lansdale\/Doylestown Line",
+                        "routeLongName": "Lansdale\/Doylestown Line"
+                    },
+                    {
+                        "routeId": "MED",
+                        "routeShortName": "Media\/Elwyn Line",
+                        "routeLongName": "Media\/Elwyn Line"
+                    },
+                    {
+                        "routeId": "FOX",
+                        "routeShortName": "Fox Chase Line",
+                        "routeLongName": "Fox Chase Line"
+                    },
+                    {
+                        "routeId": "NOR",
+                        "routeShortName": "Manayunk\/Norristown Line",
+                        "routeLongName": "Manayunk\/Norristown Line"
+                    },
+                    {
+                        "routeId": "PAO",
+                        "routeShortName": "Paoli\/Thorndale Line",
+                        "routeLongName": "Paoli\/Thorndale Line"
+                    },
+                    {
+                        "routeId": "CYN",
+                        "routeShortName": "Cynwyd Line",
+                        "routeLongName": "Cynwyd Line"
+                    },
+                    {
+                        "routeId": "TRE",
+                        "routeShortName": "Trenton Line",
+                        "routeLongName": "Trenton Line"
+                    },
+                    {
+                        "routeId": "WAR",
+                        "routeShortName": "Warminster Line",
+                        "routeLongName": "Warminster Line"
+                    },
+                    {
+                        "routeId": "WIL",
+                        "routeShortName": "Wilmington\/Newark Line",
+                        "routeLongName": "Wilmington\/Newark Line"
+                    },
+                    {
+                        "routeId": "WTR",
+                        "routeShortName": "West Trenton Line",
+                        "routeLongName": "West Trenton Line"
+                    },
+                    {
+                        "routeId": "GC",
+                        "routeShortName": "Glenside Combined",
+                        "routeLongName": "Glenside Combined"
+                    }
+                ]
+            },
+            "scheduleRequest": {
+                "transitMode": "rail",
+                "onlyOneRouteAvailable": false
+            }
+        }
+    },
+    "actionName": "RouteSelected",
+    "action": {
+        "route": {
+            "routeId": "CHW",
+            "routeShortName": "Chestnut Hill West Line",
+            "routeLongName": "Chestnut Hill West Line"
+        },
+        "description": "A Route has been selected"
+    }
+}
