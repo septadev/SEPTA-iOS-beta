@@ -15,6 +15,13 @@ public class DateFormatters {
         return formatter
     }()
 
+    static var fileFormatter: DateFormatter = {
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-ss-hh-mm"
+        return formatter
+    }()
+
     static var timeFormatter: DateFormatter = {
 
         let formatter = DateFormatter()

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5811CD741F3A8F8F00714C08 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5811CD721F3A8D1F00714C08 /* ReSwift.framework */; };
+		581804BB1F3F8051002184E3 /* LoggingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581804BA1F3F8051002184E3 /* LoggingError.swift */; };
+		581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581804BC1F3F838B002184E3 /* CodableAppState.swift */; };
+		581804BF1F3F8479002184E3 /* EquatableAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581804BE1F3F8479002184E3 /* EquatableAppState.swift */; };
 		581DA54A1F3BE1C8006AEC39 /* IdentifiableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581DA5491F3BE1C8006AEC39 /* IdentifiableController.swift */; };
 		581DA54F1F3BF102006AEC39 /* ViewTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581DA54E1F3BF102006AEC39 /* ViewTransitionType.swift */; };
 		58290E411F372B51000CCF3C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E401F372B51000CCF3C /* AppState.swift */; };
@@ -58,13 +61,16 @@
 		5840D6D71F37728B00C8CB76 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D61F37728B00C8CB76 /* NavigationController.swift */; };
 		5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6DB1F37925A00C8CB76 /* SchedulesNavigationViewController.swift */; };
 		5840D6E01F37E5FB00C8CB76 /* ScheduleReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6DF1F37E5FB00C8CB76 /* ScheduleReducer.swift */; };
-		5840D6E31F37E9FB00C8CB76 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E21F37E9FB00C8CB76 /* UserPreferences.swift */; };
+		5840D6E31F37E9FB00C8CB76 /* PreferencesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E21F37E9FB00C8CB76 /* PreferencesProvider.swift */; };
 		5840D6E51F37EA1900C8CB76 /* ScheduleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E41F37EA1900C8CB76 /* ScheduleProvider.swift */; };
 		5840D6E71F37EAEF00C8CB76 /* UserPreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E61F37EAEF00C8CB76 /* UserPreferenceKeys.swift */; };
 		5840D6E91F37EE6500C8CB76 /* Providers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E81F37EE6500C8CB76 /* Providers.swift */; };
 		5840D6EE1F37F63800C8CB76 /* TransitModeToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */; };
 		5840D6F01F37F66B00C8CB76 /* SeptaDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6EF1F37F66B00C8CB76 /* SeptaDraw.swift */; };
 		5844CA1F1F3BD9B700651223 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5844CA1E1F3BD9B700651223 /* NavigationState.swift */; };
+		58470C071F3F1EF300F3C9B5 /* StateLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58470C061F3F1EF300F3C9B5 /* StateLogger.swift */; };
+		58470C091F3F276000F3C9B5 /* NumberFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58470C081F3F276000F3C9B5 /* NumberFormatters.swift */; };
+		58470C0B1F3F2AD500F3C9B5 /* StateLogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58470C0A1F3F2AD500F3C9B5 /* StateLogEntry.swift */; };
 		585572861F39499D004ABCD6 /* Color+Septa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585572841F3948D3004ABCD6 /* Color+Septa.swift */; };
 		585572891F395990004ABCD6 /* MockSingleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585572881F395990004ABCD6 /* MockSingleCell.swift */; };
 		586746621F35D483000F0D32 /* RoutesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867463E1F35D483000F0D32 /* RoutesViewModelTests.swift */; };
@@ -141,6 +147,9 @@
 
 /* Begin PBXFileReference section */
 		5811CD721F3A8D1F00714C08 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = Frameworks/ReSwift.framework; sourceTree = "<group>"; };
+		581804BA1F3F8051002184E3 /* LoggingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingError.swift; sourceTree = "<group>"; };
+		581804BC1F3F838B002184E3 /* CodableAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableAppState.swift; sourceTree = "<group>"; };
+		581804BE1F3F8479002184E3 /* EquatableAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquatableAppState.swift; sourceTree = "<group>"; };
 		581DA5491F3BE1C8006AEC39 /* IdentifiableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableController.swift; sourceTree = "<group>"; };
 		581DA54E1F3BF102006AEC39 /* ViewTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransitionType.swift; sourceTree = "<group>"; };
 		58290E401F372B51000CCF3C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -191,13 +200,16 @@
 		5840D6D61F37728B00C8CB76 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		5840D6DB1F37925A00C8CB76 /* SchedulesNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesNavigationViewController.swift; sourceTree = "<group>"; };
 		5840D6DF1F37E5FB00C8CB76 /* ScheduleReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleReducer.swift; sourceTree = "<group>"; };
-		5840D6E21F37E9FB00C8CB76 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		5840D6E21F37E9FB00C8CB76 /* PreferencesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesProvider.swift; sourceTree = "<group>"; };
 		5840D6E41F37EA1900C8CB76 /* ScheduleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleProvider.swift; sourceTree = "<group>"; };
 		5840D6E61F37EAEF00C8CB76 /* UserPreferenceKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferenceKeys.swift; sourceTree = "<group>"; };
 		5840D6E81F37EE6500C8CB76 /* Providers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Providers.swift; sourceTree = "<group>"; };
 		5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitModeToolbarView.swift; sourceTree = "<group>"; };
 		5840D6EF1F37F66B00C8CB76 /* SeptaDraw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeptaDraw.swift; sourceTree = "<group>"; };
 		5844CA1E1F3BD9B700651223 /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
+		58470C061F3F1EF300F3C9B5 /* StateLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateLogger.swift; sourceTree = "<group>"; };
+		58470C081F3F276000F3C9B5 /* NumberFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatters.swift; sourceTree = "<group>"; };
+		58470C0A1F3F2AD500F3C9B5 /* StateLogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateLogEntry.swift; sourceTree = "<group>"; };
 		585572841F3948D3004ABCD6 /* Color+Septa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Septa.swift"; sourceTree = "<group>"; };
 		585572881F395990004ABCD6 /* MockSingleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSingleCell.swift; sourceTree = "<group>"; };
 		5867462C1F35D483000F0D32 /* iSEPTATests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSEPTATests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -281,6 +293,10 @@
 			isa = PBXGroup;
 			children = (
 				582F4E801F33B1120062A546 /* DateFormatters.swift */,
+				58470C081F3F276000F3C9B5 /* NumberFormatters.swift */,
+				58470C061F3F1EF300F3C9B5 /* StateLogger.swift */,
+				58470C0A1F3F2AD500F3C9B5 /* StateLogEntry.swift */,
+				581804BA1F3F8051002184E3 /* LoggingError.swift */,
 			);
 			path = Utlities;
 			sourceTree = "<group>";
@@ -581,28 +597,8 @@
 			children = (
 				58290E491F372CAD000CCF3C /* AppStateReducerTests.swift */,
 				588F28021F39E2BC00D62425 /* Schedule */,
-				588F28011F39E2A100D62425 /* UserPreference */,
-				588F28001F39E29A00D62425 /* Navigation */,
 			);
 			path = "App State";
-			sourceTree = "<group>";
-		};
-		588F28001F39E29A00D62425 /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				588F28091F39E32C00D62425 /* Reducers */,
-				588F28081F39E31F00D62425 /* Actions */,
-			);
-			path = Navigation;
-			sourceTree = "<group>";
-		};
-		588F28011F39E2A100D62425 /* UserPreference */ = {
-			isa = PBXGroup;
-			children = (
-				588F28071F39E31600D62425 /* Actions */,
-				588F28061F39E30D00D62425 /* Reducers */,
-			);
-			path = UserPreference;
 			sourceTree = "<group>";
 		};
 		588F28021F39E2BC00D62425 /* Schedule */ = {
@@ -639,34 +635,6 @@
 			path = Reducers;
 			sourceTree = "<group>";
 		};
-		588F28061F39E30D00D62425 /* Reducers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Reducers;
-			sourceTree = "<group>";
-		};
-		588F28071F39E31600D62425 /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Actions;
-			sourceTree = "<group>";
-		};
-		588F28081F39E31F00D62425 /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Actions;
-			sourceTree = "<group>";
-		};
-		588F28091F39E32C00D62425 /* Reducers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Reducers;
-			sourceTree = "<group>";
-		};
 		58ACEADE1F3A9A9B00DC2836 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -679,7 +647,7 @@
 		58B8920A1F38C27700BFFEFA /* UserPreferences */ = {
 			isa = PBXGroup;
 			children = (
-				5840D6E21F37E9FB00C8CB76 /* UserPreferences.swift */,
+				5840D6E21F37E9FB00C8CB76 /* PreferencesProvider.swift */,
 				5840D6E61F37EAEF00C8CB76 /* UserPreferenceKeys.swift */,
 				5880C1981F3B30AB00337DB2 /* PreferenceProviderPrototocol.swift */,
 			);
@@ -779,6 +747,8 @@
 			isa = PBXGroup;
 			children = (
 				58290E401F372B51000CCF3C /* AppState.swift */,
+				581804BC1F3F838B002184E3 /* CodableAppState.swift */,
+				581804BE1F3F8479002184E3 /* EquatableAppState.swift */,
 				58290E431F372BB9000CCF3C /* AppStateReducer.swift */,
 				58F444FB1F3D335400A93208 /* SeptaAction.swift */,
 			);
@@ -999,18 +969,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				58C2A0651F389B6400F0D6CA /* TransitModesToolBarViewController.swift in Sources */,
+				58470C091F3F276000F3C9B5 /* NumberFormatters.swift in Sources */,
 				588F27F01F39DD7B00D62425 /* UserPreferenceState.swift in Sources */,
 				582F4ED51F33B1120062A546 /* SelectStopsViewController.swift in Sources */,
+				581804BF1F3F8479002184E3 /* EquatableAppState.swift in Sources */,
 				582F4EDD1F33B1120062A546 /* ViewModelDelegate.swift in Sources */,
 				582F4ED31F33B1120062A546 /* SelectStopRow.swift in Sources */,
 				582F4EBC1F33B1120062A546 /* DateFormatters.swift in Sources */,
 				582F4EC81F33B1120062A546 /* RouteTableViewCell.swift in Sources */,
 				582F4ED11F33B1120062A546 /* SelectedStopType.swift in Sources */,
 				5840D6D31F376D9C00C8CB76 /* MainNavigationController.swift in Sources */,
+				58470C0B1F3F2AD500F3C9B5 /* StateLogEntry.swift in Sources */,
 				5840D6EE1F37F63800C8CB76 /* TransitModeToolbarView.swift in Sources */,
 				58B892151F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift in Sources */,
 				582F4ECC1F33B1120062A546 /* ScheduleTableViewCell.swift in Sources */,
 				582F4ED01F33B1120062A546 /* RouteStops.swift in Sources */,
+				58470C071F3F1EF300F3C9B5 /* StateLogger.swift in Sources */,
 				582F4ED71F33B1120062A546 /* SelectStopsViewModel.swift in Sources */,
 				585572861F39499D004ABCD6 /* Color+Septa.swift in Sources */,
 				582F4EBB1F33B1120062A546 /* AppDelegate.swift in Sources */,
@@ -1026,6 +1000,7 @@
 				582F4EDF1F33B1120062A546 /* MainViewController.swift in Sources */,
 				5840D6D51F376E5E00C8CB76 /* NavigationStackState.swift in Sources */,
 				5840D6E91F37EE6500C8CB76 /* Providers.swift in Sources */,
+				581804BB1F3F8051002184E3 /* LoggingError.swift in Sources */,
 				582F4ED81F33B1120062A546 /* SelectSchedulesViewController.swift in Sources */,
 				582F4ECF1F33B1120062A546 /* SelectStopViewModel.swift in Sources */,
 				582F4EC71F33B1120062A546 /* RoutesViewModel.swift in Sources */,
@@ -1035,7 +1010,7 @@
 				5840D6D71F37728B00C8CB76 /* NavigationController.swift in Sources */,
 				58C2A0691F38AA1B00F0D6CA /* ScheduleData.swift in Sources */,
 				58290E531F372F36000CCF3C /* ScheduleState.swift in Sources */,
-				5840D6E31F37E9FB00C8CB76 /* UserPreferences.swift in Sources */,
+				5840D6E31F37E9FB00C8CB76 /* PreferencesProvider.swift in Sources */,
 				58C2A0611F38964E00F0D6CA /* ViewController.swift in Sources */,
 				58DB10F41F3B8CCF00191AED /* ScheduleDataReducer.swift in Sources */,
 				582F4ECB1F33B1120062A546 /* RouteSheduleViewModel.swift in Sources */,
@@ -1054,6 +1029,7 @@
 				58F444FC1F3D335400A93208 /* SeptaAction.swift in Sources */,
 				582F4EC61F33B1120062A546 /* RoutesViewController.swift in Sources */,
 				5840D6F01F37F66B00C8CB76 /* SeptaDraw.swift in Sources */,
+				581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */,
 				588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */,
 				58B892171F38F7E700BFFEFA /* Strings.swift in Sources */,
 				582F4ECA1F33B1120062A546 /* RouteScheduleViewController.swift in Sources */,

@@ -19,7 +19,7 @@ class SQLStringsTests: XCTestCase {
     /// Verify that we can pull the string from a file
     func testPullSqlCommandStringFromFile() {
         let sqlQuery = SQLQuery.busStart(routeId: "44", scheduleType: .saturday)
-        let commandString = try! commandStrings.commandString(forSQLQuery: sqlQuery)
+        let commandString = try! commandStrings.commandString(forSQLQuery: sqlQuery as! SQLQueryProtocol)
         XCTAssertNotNil(commandString)
     }
 }
