@@ -8,7 +8,7 @@ class AppStateReducerTests: XCTestCase {
 
     /// Does the main reducer return a state
     func testDoesTheMainReducerReturnAState() {
-        let action = ScheduleActions.TransitModeSelected(transitMode: .bus)
+        let action = TransitModeSelected(transitMode: .bus, description: "Just picked a transit Mode")
         let state = AppStateReducer.mainReducer(action: action, state: nil)
         XCTAssertNotNil(state)
     }

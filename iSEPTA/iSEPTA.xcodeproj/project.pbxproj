@@ -11,6 +11,13 @@
 		581804BB1F3F8051002184E3 /* LoggingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581804BA1F3F8051002184E3 /* LoggingError.swift */; };
 		581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581804BC1F3F838B002184E3 /* CodableAppState.swift */; };
 		581804BF1F3F8479002184E3 /* EquatableAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581804BE1F3F8479002184E3 /* EquatableAppState.swift */; };
+		581804C41F3F8DFE002184E3 /* NavigationReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581804C31F3F8DFE002184E3 /* NavigationReducerTests.swift */; };
+		58195FE81F3FA0350053B3D3 /* BaseStateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58195FE71F3FA0350053B3D3 /* BaseStateTest.swift */; };
+		58195FF01F3FA1C90053B3D3 /* PresentModal.json in Resources */ = {isa = PBXBuildFile; fileRef = 58195FEC1F3FA1480053B3D3 /* PresentModal.json */; };
+		58195FF11F3FA1C90053B3D3 /* DismissModal.json in Resources */ = {isa = PBXBuildFile; fileRef = 58195FED1F3FA1500053B3D3 /* DismissModal.json */; };
+		58195FF21F3FA1C90053B3D3 /* TransitModeSelected.json in Resources */ = {isa = PBXBuildFile; fileRef = 58195FEF1F3FA1830053B3D3 /* TransitModeSelected.json */; };
+		58195FF31F3FA1C90053B3D3 /* RoutesLoaded.json in Resources */ = {isa = PBXBuildFile; fileRef = 58195FEB1F3FA1140053B3D3 /* RoutesLoaded.json */; };
+		58195FF41F3FA1C90053B3D3 /* RouteSelected.json in Resources */ = {isa = PBXBuildFile; fileRef = 58195FEE1F3FA1790053B3D3 /* RouteSelected.json */; };
 		581DA54A1F3BE1C8006AEC39 /* IdentifiableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581DA5491F3BE1C8006AEC39 /* IdentifiableController.swift */; };
 		581DA54F1F3BF102006AEC39 /* ViewTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581DA54E1F3BF102006AEC39 /* ViewTransitionType.swift */; };
 		58290E411F372B51000CCF3C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E401F372B51000CCF3C /* AppState.swift */; };
@@ -83,10 +90,9 @@
 		5892DDF11F3AAA5C000BA54B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5892DDEF1F3AAA5C000BA54B /* Crashlytics.framework */; };
 		5892DDF21F3AAA5C000BA54B /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5892DDF01F3AAA5C000BA54B /* Fabric.framework */; };
 		589BCC321F3D5068002FAEDE /* SchedulesPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589BCC311F3D5068002FAEDE /* SchedulesPresentationController.swift */; };
-		58B891CB1F38B51E00BFFEFA /* ScheduleReducersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891C81F38B51E00BFFEFA /* ScheduleReducersTests.swift */; };
+		58B891CB1F38B51E00BFFEFA /* ScheduleRequestReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B891C81F38B51E00BFFEFA /* ScheduleRequestReducerTests.swift */; };
 		58B8920D1F38C64C00BFFEFA /* MockPreferenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B8920C1F38C64C00BFFEFA /* MockPreferenceProvider.swift */; };
 		58B8920F1F38CBA900BFFEFA /* GenericAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B8920E1F38CBA900BFFEFA /* GenericAction.swift */; };
-		58B892121F38E44000BFFEFA /* ScheduleActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892101F38E44000BFFEFA /* ScheduleActionsTests.swift */; };
 		58B892151F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892141F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift */; };
 		58B892171F38F7E700BFFEFA /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892161F38F7E700BFFEFA /* Strings.swift */; };
 		58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C181FE1F34C557002748E9 /* Storyboards.swift */; };
@@ -99,6 +105,7 @@
 		58DB10F41F3B8CCF00191AED /* ScheduleDataReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DB10F31F3B8CCF00191AED /* ScheduleDataReducer.swift */; };
 		58DB10F81F3B8DB400191AED /* NavigationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DB10F71F3B8DB400191AED /* NavigationReducer.swift */; };
 		58F444FC1F3D335400A93208 /* SeptaAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F444FB1F3D335400A93208 /* SeptaAction.swift */; };
+		58FC9D9D1F3F9CB0004269DE /* InitializeNavigationState.json in Resources */ = {isa = PBXBuildFile; fileRef = 581804C51F3F8F19002184E3 /* InitializeNavigationState.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +157,14 @@
 		581804BA1F3F8051002184E3 /* LoggingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingError.swift; sourceTree = "<group>"; };
 		581804BC1F3F838B002184E3 /* CodableAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableAppState.swift; sourceTree = "<group>"; };
 		581804BE1F3F8479002184E3 /* EquatableAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquatableAppState.swift; sourceTree = "<group>"; };
+		581804C31F3F8DFE002184E3 /* NavigationReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationReducerTests.swift; sourceTree = "<group>"; };
+		581804C51F3F8F19002184E3 /* InitializeNavigationState.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = InitializeNavigationState.json; sourceTree = "<group>"; };
+		58195FE71F3FA0350053B3D3 /* BaseStateTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStateTest.swift; sourceTree = "<group>"; };
+		58195FEB1F3FA1140053B3D3 /* RoutesLoaded.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RoutesLoaded.json; sourceTree = "<group>"; };
+		58195FEC1F3FA1480053B3D3 /* PresentModal.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PresentModal.json; sourceTree = "<group>"; };
+		58195FED1F3FA1500053B3D3 /* DismissModal.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DismissModal.json; sourceTree = "<group>"; };
+		58195FEE1F3FA1790053B3D3 /* RouteSelected.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RouteSelected.json; sourceTree = "<group>"; };
+		58195FEF1F3FA1830053B3D3 /* TransitModeSelected.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TransitModeSelected.json; sourceTree = "<group>"; };
 		581DA5491F3BE1C8006AEC39 /* IdentifiableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableController.swift; sourceTree = "<group>"; };
 		581DA54E1F3BF102006AEC39 /* ViewTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransitionType.swift; sourceTree = "<group>"; };
 		58290E401F372B51000CCF3C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -225,10 +240,9 @@
 		5892DDF01F3AAA5C000BA54B /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		589BCC311F3D5068002FAEDE /* SchedulesPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesPresentationController.swift; sourceTree = "<group>"; };
 		58ACEADD1F3A9A9B00DC2836 /* SeptaSchedule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SeptaSchedule.xcodeproj; path = ../SeptaSchedule/SeptaSchedule.xcodeproj; sourceTree = "<group>"; };
-		58B891C81F38B51E00BFFEFA /* ScheduleReducersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleReducersTests.swift; sourceTree = "<group>"; };
+		58B891C81F38B51E00BFFEFA /* ScheduleRequestReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleRequestReducerTests.swift; sourceTree = "<group>"; };
 		58B8920C1F38C64C00BFFEFA /* MockPreferenceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPreferenceProvider.swift; sourceTree = "<group>"; };
 		58B8920E1F38CBA900BFFEFA /* GenericAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAction.swift; sourceTree = "<group>"; };
-		58B892101F38E44000BFFEFA /* ScheduleActionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleActionsTests.swift; sourceTree = "<group>"; };
 		58B892141F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSchedulesViewModel.swift; sourceTree = "<group>"; };
 		58B892161F38F7E700BFFEFA /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		58C181FE1F34C557002748E9 /* Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
@@ -276,6 +290,24 @@
 				582F4E7E1F33B1120062A546 /* AppDelegate.swift */,
 			);
 			path = Info;
+			sourceTree = "<group>";
+		};
+		581804C21F3F8DE5002184E3 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		58195FEA1F3FA05D0053B3D3 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				58195FEC1F3FA1480053B3D3 /* PresentModal.json */,
+				58195FED1F3FA1500053B3D3 /* DismissModal.json */,
+				581804C51F3F8F19002184E3 /* InitializeNavigationState.json */,
+				581804C31F3F8DFE002184E3 /* NavigationReducerTests.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		58290E511F372F27000CCF3C /* App State */ = {
@@ -595,8 +627,10 @@
 		588F27FF1F39E29200D62425 /* App State */ = {
 			isa = PBXGroup;
 			children = (
+				58195FEA1F3FA05D0053B3D3 /* Navigation */,
 				58290E491F372CAD000CCF3C /* AppStateReducerTests.swift */,
 				588F28021F39E2BC00D62425 /* Schedule */,
+				58195FE71F3FA0350053B3D3 /* BaseStateTest.swift */,
 			);
 			path = "App State";
 			sourceTree = "<group>";
@@ -604,8 +638,10 @@
 		588F28021F39E2BC00D62425 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				588F28051F39E2F700D62425 /* Reducers */,
-				588F28041F39E2F000D62425 /* Actions */,
+				58195FEF1F3FA1830053B3D3 /* TransitModeSelected.json */,
+				58195FEB1F3FA1140053B3D3 /* RoutesLoaded.json */,
+				58195FEE1F3FA1790053B3D3 /* RouteSelected.json */,
+				58B891C81F38B51E00BFFEFA /* ScheduleRequestReducerTests.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -613,26 +649,11 @@
 		588F28031F39E2D600D62425 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				581804C21F3F8DE5002184E3 /* Navigation */,
 				5867463E1F35D483000F0D32 /* RoutesViewModelTests.swift */,
 				5867464E1F35D483000F0D32 /* SelectStopsViewModelTests.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		588F28041F39E2F000D62425 /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-				58B892101F38E44000BFFEFA /* ScheduleActionsTests.swift */,
-			);
-			path = Actions;
-			sourceTree = "<group>";
-		};
-		588F28051F39E2F700D62425 /* Reducers */ = {
-			isa = PBXGroup;
-			children = (
-				58B891C81F38B51E00BFFEFA /* ScheduleReducersTests.swift */,
-			);
-			path = Reducers;
 			sourceTree = "<group>";
 		};
 		58ACEADE1F3A9A9B00DC2836 /* Products */ = {
@@ -921,6 +942,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58195FF01F3FA1C90053B3D3 /* PresentModal.json in Resources */,
+				58195FF11F3FA1C90053B3D3 /* DismissModal.json in Resources */,
+				58195FF21F3FA1C90053B3D3 /* TransitModeSelected.json in Resources */,
+				58195FF31F3FA1C90053B3D3 /* RoutesLoaded.json in Resources */,
+				58195FF41F3FA1C90053B3D3 /* RouteSelected.json in Resources */,
+				58FC9D9D1F3F9CB0004269DE /* InitializeNavigationState.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1040,11 +1067,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58B892121F38E44000BFFEFA /* ScheduleActionsTests.swift in Sources */,
 				586746621F35D483000F0D32 /* RoutesViewModelTests.swift in Sources */,
-				58B891CB1F38B51E00BFFEFA /* ScheduleReducersTests.swift in Sources */,
+				58B891CB1F38B51E00BFFEFA /* ScheduleRequestReducerTests.swift in Sources */,
 				58290E4C1F372CAD000CCF3C /* AppStateReducerTests.swift in Sources */,
+				58195FE81F3FA0350053B3D3 /* BaseStateTest.swift in Sources */,
 				585572891F395990004ABCD6 /* MockSingleCell.swift in Sources */,
+				581804C41F3F8DFE002184E3 /* NavigationReducerTests.swift in Sources */,
 				58B8920F1F38CBA900BFFEFA /* GenericAction.swift in Sources */,
 				5867466F1F35D484000F0D32 /* SelectStopsViewModelTests.swift in Sources */,
 				58B8920D1F38C64C00BFFEFA /* MockPreferenceProvider.swift in Sources */,

@@ -14,6 +14,11 @@ public class StateLogger {
     fileprivate let sessionsDirName = "sessions"
     fileprivate let sessionDirName = DateFormatters.fileFormatter.string(from: Date())
     fileprivate let fileManager = FileManager.default
+    fileprivate let encoder: JSONEncoder = {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        return encoder
+    }()
 
     fileprivate lazy var documentDirectoryURL: URL? = {
         fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
@@ -48,7 +53,8 @@ public class StateLogger {
     }
 
     fileprivate func encodeLog(_ actionLog: StateLogEntry) throws -> Data {
-        return try JSONEncoder().encode(actionLog)
+
+        return try encoder.encode(actionLog)
     }
 
     fileprivate func buildURLForLogFile(fileNameForLogEntry: String) -> URL? {
@@ -61,7 +67,15 @@ public class StateLogger {
         }
     }
 
-    func logAction(stateBefore: AppState?, action: Action, stateAfter: AppState) {
+    fileprivate func logToConsole(_ objects: [Any?]?) {
+        guard let objects = objects else { return }
+        for obj in objects {
+            guard let obj = obj else { continue }
+            print(obj)
+        }
+    }
+
+    func logAction(stateBefore: AppState?, action: Action, stateAfter: AppState, consoleLogObjects: [Any?]? = nil) {
         guard let action = action as? SeptaAction else { return }
         DispatchQueue.global(qos: .background).async { [weak self] in
             guard let strongSelf = self else { return }
@@ -73,6 +87,7 @@ public class StateLogger {
                     let jsonData = try strongSelf.encodeLog(actionLog)
                     try strongSelf.writeLogToFile(path: url.path, jsonData: jsonData)
                     strongSelf.actionCounter += 1
+                    strongSelf.logToConsole(consoleLogObjects)
                 }
             } catch {
                 print("Error creating log file \(error.localizedDescription)")

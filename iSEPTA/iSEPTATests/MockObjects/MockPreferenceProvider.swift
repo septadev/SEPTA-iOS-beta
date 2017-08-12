@@ -5,6 +5,13 @@ import XCTest
 
 /// MockPreferenceProvider purpose: returns made up user preferences
 class MockPreferenceProvider: PreferencesProviderProtocol {
+    func retrievePersistedState() -> UserPreferenceState {
+        return UserPreferenceState()
+    }
+
+    func subscribe() {
+    }
+
     var preferenceSet: [UserPreferenceKeys: String]?
     private let preferences: [UserPreferenceKeys: String]
 

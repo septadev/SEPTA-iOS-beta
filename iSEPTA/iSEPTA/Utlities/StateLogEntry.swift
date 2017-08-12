@@ -33,6 +33,7 @@ struct StateLogEntry: Codable {
 
         let actionName = "\(type(of: action))"
         switch action {
+
         case let action as InitializeNavigationState:
             try container.encode(action, forKey: .action)
         case let action as TransitionView:
@@ -62,6 +63,7 @@ struct StateLogEntry: Codable {
         let actionName = try values.decode(String.self, forKey: .actionName)
 
         switch actionName {
+
         case "InitializeNavigationState":
             action = try values.decode(InitializeNavigationState.self, forKey: .action)
         case "TransitionView":
