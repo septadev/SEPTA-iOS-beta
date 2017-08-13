@@ -2,9 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>defaultNavigationController</key>
+	<key>startupNavigationController</key>
 	<string>schedules</string>
-	<key>defaultTransitMode</key>
+	<key>startupTransitMode</key>
 	<string>bus</string>
 	<key>showDirectionInRoutes</key>
 	<true/>

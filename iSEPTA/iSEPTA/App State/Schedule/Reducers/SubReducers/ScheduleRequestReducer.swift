@@ -7,7 +7,7 @@ import SeptaSchedule
 struct ScheduleRequestReducer {
 
     static func initRequest() -> ScheduleRequest {
-        let transitMode = stateProviders.preferenceProvider.retrievePersistedState().transitMode
+        let transitMode = stateProviders.preferenceProvider.retrievePersistedState().startupTransitMode
         return ScheduleRequest(transitMode: transitMode)
     }
 

@@ -9,8 +9,8 @@ enum PreferenceError: Error {
 }
 
 fileprivate enum DefaultPreferenceKeys: String {
-    case defaultNavigationController
-    case defaultTransitMode
+    case startupNavigationController
+    case startupTransitMode
     case showDirectionInRoutes
     case showDirectionInStops
 }
@@ -19,7 +19,7 @@ class DefaultPreferenceLoader {
     let bundle = Bundle.main
     var defaultPreferencesDict = [String: AnyObject]()
 
-    private var defaultPreferenceURL: URL? {
+    fileprivate var defaultPreferenceURL: URL? {
         return bundle.url(forResource: "DefaultPreferences", withExtension: "plist")
     }
 
@@ -33,16 +33,16 @@ class DefaultPreferenceLoader {
         guard let dict = plistDictionary else { throw PreferenceError.couldNotReadPlist }
         defaultPreferencesDict = dict
 
-        userPreferenceState.defaultNavigationController = try defaultNavigationController()
-        userPreferenceState.defaultTransitMode = try defaultTransitMode()
+        userPreferenceState.startupNavigationController = try startupNavigationController()
+        userPreferenceState.startupTransitMode = try startupTransitMode()
         userPreferenceState.showDirectionInRoutes = try showDirectionInRoutes()
-        userPreferenceState.showDirectioninStops = try showDirectionInStops()
+        userPreferenceState.showDirectionInStops = try showDirectionInStops()
 
         return userPreferenceState
     }
 
-    func defaultNavigationController() throws -> NavigationController {
-        let key = DefaultPreferenceKeys.defaultNavigationController.rawValue
+    fileprivate func startupNavigationController() throws -> NavigationController {
+        let key = DefaultPreferenceKeys.startupNavigationController.rawValue
         guard let defaultValue = defaultPreferencesDict[key] as? String,
             let navigationController = NavigationController(rawValue: defaultValue) else {
             throw PreferenceError.missingKey(key)
@@ -50,8 +50,8 @@ class DefaultPreferenceLoader {
         return navigationController
     }
 
-    func defaultTransitMode() throws -> TransitMode {
-        let key = DefaultPreferenceKeys.defaultTransitMode.rawValue
+    fileprivate func startupTransitMode() throws -> TransitMode {
+        let key = DefaultPreferenceKeys.startupTransitMode.rawValue
         guard let defaultValue = defaultPreferencesDict[key] as? String,
             let transitMode = TransitMode(rawValue: defaultValue) else {
             throw PreferenceError.missingKey(key)
@@ -59,7 +59,7 @@ class DefaultPreferenceLoader {
         return transitMode
     }
 
-    func showDirectionInRoutes() throws -> Bool {
+    fileprivate func showDirectionInRoutes() throws -> Bool {
         let key = DefaultPreferenceKeys.showDirectionInRoutes.rawValue
         guard let defaultValue = defaultPreferencesDict[key] as? Bool else {
             throw PreferenceError.missingKey(key)
@@ -67,7 +67,7 @@ class DefaultPreferenceLoader {
         return defaultValue
     }
 
-    func showDirectionInStops() throws -> Bool {
+    fileprivate func showDirectionInStops() throws -> Bool {
         let key = DefaultPreferenceKeys.showDirectionInStops.rawValue
         guard let defaultValue = defaultPreferencesDict[key] as? Bool else {
             throw PreferenceError.missingKey(key)

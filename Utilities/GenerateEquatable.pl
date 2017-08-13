@@ -3,20 +3,12 @@ use Data::Dumper;
 
 my $struct = q |
 
-	
-	struct UserPreferenceState: Codable, Equatable {
-			var transitMode: TransitMode?
-			var defaultNavigationController: NavigationController?
-			var defaultTransitMode: TransitMode?
-			var showDirectionInRoutes: Bool?
-			var showDirectioninStops: Bool?
-
-
-
-
-
-		}
-
+	struct UserPreferenceState: Codable {
+		var startupTransitMode: TransitMode?
+		var startupNavigationController: NavigationController?
+		var showDirectionInRoutes: Bool?
+		var showDirectioninStops: Bool?
+	}
 
 	
 	

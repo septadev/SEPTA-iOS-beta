@@ -22,6 +22,7 @@
 		581DA54F1F3BF102006AEC39 /* ViewTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581DA54E1F3BF102006AEC39 /* ViewTransitionType.swift */; };
 		582531951F406E790088D056 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 582531941F406E790088D056 /* DefaultPreferences.plist */; };
 		582531981F40707C0088D056 /* DefaultPreferenceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582531971F40707C0088D056 /* DefaultPreferenceLoader.swift */; };
+		5825319A1F407D380088D056 /* UserDefaultsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582531991F407D380088D056 /* UserDefaultsLoader.swift */; };
 		58290E411F372B51000CCF3C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E401F372B51000CCF3C /* AppState.swift */; };
 		58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E431F372BB9000CCF3C /* AppStateReducer.swift */; };
 		58290E4C1F372CAD000CCF3C /* AppStateReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E491F372CAD000CCF3C /* AppStateReducerTests.swift */; };
@@ -171,6 +172,7 @@
 		581DA54E1F3BF102006AEC39 /* ViewTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransitionType.swift; sourceTree = "<group>"; };
 		582531941F406E790088D056 /* DefaultPreferences.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
 		582531971F40707C0088D056 /* DefaultPreferenceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPreferenceLoader.swift; sourceTree = "<group>"; };
+		582531991F407D380088D056 /* UserDefaultsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsLoader.swift; sourceTree = "<group>"; };
 		58290E401F372B51000CCF3C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		58290E431F372BB9000CCF3C /* AppStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateReducer.swift; sourceTree = "<group>"; };
 		58290E491F372CAD000CCF3C /* AppStateReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStateReducerTests.swift; sourceTree = "<group>"; };
@@ -677,6 +679,7 @@
 				582531971F40707C0088D056 /* DefaultPreferenceLoader.swift */,
 				5840D6E61F37EAEF00C8CB76 /* UserPreferenceKeys.swift */,
 				5880C1981F3B30AB00337DB2 /* PreferenceProviderPrototocol.swift */,
+				582531991F407D380088D056 /* UserDefaultsLoader.swift */,
 			);
 			path = UserPreferences;
 			sourceTree = "<group>";
@@ -1005,6 +1008,7 @@
 				58C2A0651F389B6400F0D6CA /* TransitModesToolBarViewController.swift in Sources */,
 				58470C091F3F276000F3C9B5 /* NumberFormatters.swift in Sources */,
 				588F27F01F39DD7B00D62425 /* UserPreferenceState.swift in Sources */,
+				5825319A1F407D380088D056 /* UserDefaultsLoader.swift in Sources */,
 				582F4ED51F33B1120062A546 /* SelectStopsViewController.swift in Sources */,
 				581804BF1F3F8479002184E3 /* EquatableAppState.swift in Sources */,
 				582F4EDD1F33B1120062A546 /* ViewModelDelegate.swift in Sources */,

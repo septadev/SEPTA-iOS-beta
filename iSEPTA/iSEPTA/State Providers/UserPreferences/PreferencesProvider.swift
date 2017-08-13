@@ -9,18 +9,12 @@ class PreferencesProvider: PreferencesProviderProtocol, StoreSubscriber {
 
     private let defaults = UserDefaults.standard
     static let sharedInstance = PreferencesProvider()
-
-    private var subscribed = false
-
     private init() {}
 
     func retrievePersistedState() -> UserPreferenceState {
-        var transitMode: TransitMode?
-        if let prefString = stringPreference(forKey: .preferredTransitMode), let prefObj = TransitMode(rawValue: prefString) {
-            transitMode = prefObj
-        }
+
         var preferenceState = UserPreferenceState()
-        preferenceState.transitMode = TransitMode.bus
+        preferenceState.startupTransitMode = TransitMode.bus
         return preferenceState
     }
 
@@ -32,7 +26,7 @@ class PreferencesProvider: PreferencesProviderProtocol, StoreSubscriber {
         if let preference = defaults.string(forKey: key.rawValue) {
             return preference
         } else {
-            return key.defaultValue()
+            return nil
         }
     }
 
@@ -55,7 +49,7 @@ class PreferencesProvider: PreferencesProviderProtocol, StoreSubscriber {
     }
 
     func newState(state: StoreSubscriberStateType) {
-        guard let transitMode = state.transitMode?.rawValue else { return }
-        setStringPreference(preference: transitMode, forKey: UserPreferenceKeys.preferredTransitMode)
+        guard let transitMode = state.startupTransitMode?.rawValue else { return }
+        setStringPreference(preference: transitMode, forKey: UserPreferenceKeys.startupTransitMode)
     }
 }

@@ -4,40 +4,30 @@ import Foundation
 import SeptaSchedule
 
 struct UserPreferenceState: Codable {
-    var transitMode: TransitMode?
-    var defaultNavigationController: NavigationController?
-    var defaultTransitMode: TransitMode?
+    var startupTransitMode: TransitMode?
+    var startupNavigationController: NavigationController?
     var showDirectionInRoutes: Bool?
-    var showDirectioninStops: Bool?
+    var showDirectionInStops: Bool?
 }
 
 extension UserPreferenceState: Equatable {}
 func ==(lhs: UserPreferenceState, rhs: UserPreferenceState) -> Bool {
     var areEqual = true
 
-    switch (lhs.transitMode, rhs.transitMode) {
+    switch (lhs.startupTransitMode, rhs.startupTransitMode) {
     case (.none, .none):
         areEqual = true
     case (.some, .some):
-        areEqual = lhs.transitMode! == rhs.transitMode!
+        areEqual = lhs.startupTransitMode! == rhs.startupTransitMode!
     default:
         return false
     }
 
-    switch (lhs.defaultNavigationController, rhs.defaultNavigationController) {
+    switch (lhs.startupNavigationController, rhs.startupNavigationController) {
     case (.none, .none):
         areEqual = true
     case (.some, .some):
-        areEqual = lhs.defaultNavigationController! == rhs.defaultNavigationController!
-    default:
-        return false
-    }
-
-    switch (lhs.defaultTransitMode, rhs.defaultTransitMode) {
-    case (.none, .none):
-        areEqual = true
-    case (.some, .some):
-        areEqual = lhs.defaultTransitMode! == rhs.defaultTransitMode!
+        areEqual = lhs.startupNavigationController! == rhs.startupNavigationController!
     default:
         return false
     }
@@ -51,11 +41,11 @@ func ==(lhs: UserPreferenceState, rhs: UserPreferenceState) -> Bool {
         return false
     }
 
-    switch (lhs.showDirectioninStops, rhs.showDirectioninStops) {
+    switch (lhs.showDirectionInStops, rhs.showDirectionInStops) {
     case (.none, .none):
         areEqual = true
     case (.some, .some):
-        areEqual = lhs.showDirectioninStops! == rhs.showDirectioninStops!
+        areEqual = lhs.showDirectionInStops! == rhs.showDirectionInStops!
     default:
         return false
     }

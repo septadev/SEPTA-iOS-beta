@@ -4,15 +4,9 @@ import Foundation
 import SeptaSchedule
 
 enum UserPreferenceKeys: String {
-    case preferredTransitMode
-    case favorites
-
-    func defaultValue() -> String? {
-        switch self {
-        case .preferredTransitMode:
-            return TransitMode.rail.rawValue
-        default:
-            return nil
-        }
-    }
+    case startupTransitMode
+    case defaultsLoaded
+    case startupNavigtationController
+    case showDirectionInRoutes
+    case showDirectionInStops
 }
