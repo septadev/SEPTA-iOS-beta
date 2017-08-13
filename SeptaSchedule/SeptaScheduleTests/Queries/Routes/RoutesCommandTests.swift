@@ -23,7 +23,8 @@ class RoutesCommandTests: XCTestCase {
         let expectation = self.expectation(description: "Should Return")
         let json = extractJSON(fileName: "trainRoutes")
         var expectedResult = try! decoder.decode([Route].self, from: json)
-        expectedResult.sort { $0.routeId < $1.routeId }
+        expectedResult.sort { $0.routeId < $1.routeId
+        }
 
         routesCommand.routes(forTransitMode: .rail) { routes, error in
             var actualResult = routes!

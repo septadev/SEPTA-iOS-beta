@@ -23,6 +23,7 @@
 		5825318D1F3FCD490088D056 /* NHSLRoute.sql in Resources */ = {isa = PBXBuildFile; fileRef = 58DCA0831F3E1C44002F08CF /* NHSLRoute.sql */; };
 		5825318E1F3FCD490088D056 /* subwayRoute.sql in Resources */ = {isa = PBXBuildFile; fileRef = 58DCA0841F3E1C44002F08CF /* subwayRoute.sql */; };
 		5825318F1F3FCD490088D056 /* trolleyRoute.sql in Resources */ = {isa = PBXBuildFile; fileRef = 58DCA0851F3E1C44002F08CF /* trolleyRoute.sql */; };
+		582531931F3FD2070088D056 /* TripStartCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582531921F3FD2070088D056 /* TripStartCommand.swift */; };
 		582F4F041F33B1370062A546 /* NewBusEnd.sql in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EE31F33B1370062A546 /* NewBusEnd.sql */; };
 		582F4F051F33B1370062A546 /* routes.sql in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EE41F33B1370062A546 /* routes.sql */; };
 		582F4F061F33B1370062A546 /* testCallToBusEnd_Saturday.sql in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EE51F33B1370062A546 /* testCallToBusEnd_Saturday.sql */; };
@@ -99,6 +100,7 @@
 		581960111F3FB92B0053B3D3 /* trolleyRoutes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trolleyRoutes.json; sourceTree = "<group>"; };
 		581960121F3FB92B0053B3D3 /* trainRoutes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trainRoutes.json; sourceTree = "<group>"; };
 		581960171F3FB9990053B3D3 /* JSONExtractable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONExtractable.swift; sourceTree = "<group>"; };
+		582531921F3FD2070088D056 /* TripStartCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripStartCommand.swift; sourceTree = "<group>"; };
 		582F4EE31F33B1370062A546 /* NewBusEnd.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NewBusEnd.sql; sourceTree = "<group>"; };
 		582F4EE41F33B1370062A546 /* routes.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = routes.sql; sourceTree = "<group>"; };
 		582F4EE51F33B1370062A546 /* testCallToBusEnd_Saturday.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testCallToBusEnd_Saturday.sql; sourceTree = "<group>"; };
@@ -192,6 +194,22 @@
 			path = TestSQL;
 			sourceTree = "<group>";
 		};
+		582531901F3FD1E70088D056 /* TripStarts */ = {
+			isa = PBXGroup;
+			children = (
+				582531911F3FD1F50088D056 /* sql */,
+				582531921F3FD2070088D056 /* TripStartCommand.swift */,
+			);
+			path = TripStarts;
+			sourceTree = "<group>";
+		};
+		582531911F3FD1F50088D056 /* sql */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = sql;
+			sourceTree = "<group>";
+		};
 		582F4EE11F33B1370062A546 /* SqlCommands */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +263,7 @@
 		582F4EF51F33B1370062A546 /* Commands */ = {
 			isa = PBXGroup;
 			children = (
+				582531901F3FD1E70088D056 /* TripStarts */,
 				58DCA09A1F3E2A4C002F08CF /* Routes */,
 				58DCA0981F3E2944002F08CF /* CommandError.swift */,
 				582F4EF61F33B1370062A546 /* BaseCommand.swift */,
@@ -575,6 +594,7 @@
 				582F4F161F33B1370062A546 /* RouteType.swift in Sources */,
 				582F4F231F33B1AA0062A546 /* GeoCompare.swift in Sources */,
 				582F4F1D1F33B1370062A546 /* SQLQuery.swift in Sources */,
+				582531931F3FD2070088D056 /* TripStartCommand.swift in Sources */,
 				58DCA09C1F3E2B2B002F08CF /* SQLQueryProtocol.swift in Sources */,
 				582F4F141F33B1370062A546 /* BusCommands.swift in Sources */,
 				58DCA0951F3E280C002F08CF /* TransitMode.swift in Sources */,
