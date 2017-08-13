@@ -57,7 +57,7 @@ class SelectScheduleViewModelTests: XCTestCase {
 
     func testSelectRouteCell_OneRouteAvailable() {
         let route = Route(routeId: "12", routeShortName: "Go Home", routeLongName: "Home to Work")
-        scheduleRequest_NoRoute = ScheduleRequest( transitMode: nil, selectedRoute: route, selectedStart: nil, selectedEnd: nil,onlyOneRouteAvailable: true)
+        scheduleRequest_NoRoute = ScheduleRequest(transitMode: nil, selectedRoute: route, selectedStart: nil, selectedEnd: nil, onlyOneRouteAvailable: true)
         viewModel.newState(state: scheduleRequest_NoRoute)
         viewModel.configureDisplayable(mockCell, atRow: TableRow.selectRoute.rawValue)
 
@@ -106,7 +106,7 @@ class SelectScheduleViewModelTests: XCTestCase {
 
     func testSelectEndCell_NoRouteSelected() {
 
-        scheduleRequest_NoRoute = ScheduleRequest(transitMode: nil,selectedRoute: nil, selectedStart: nil, selectedEnd: nil,  onlyOneRouteAvailable: false)
+        scheduleRequest_NoRoute = ScheduleRequest(transitMode: nil, selectedRoute: nil, selectedStart: nil, selectedEnd: nil, onlyOneRouteAvailable: false)
         viewModel.newState(state: scheduleRequest_NoRoute)
         viewModel.configureDisplayable(mockCell, atRow: TableRow.selectEnd.rawValue)
 
@@ -131,7 +131,7 @@ class SelectScheduleViewModelTests: XCTestCase {
     func testSelectEndCell_NoEndSelected() {
         let route = Route(routeId: "12", routeShortName: "Go Home", routeLongName: "Home to Work")
         let start = Stop(stopId: 12, stopName: "Stop 12", stopLatitude: 13, stopLongitude: 14, wheelchairBoarding: true)
-        scheduleRequest_NoRoute = ScheduleRequest(transitMode: nil,selectedRoute: route, selectedStart: start, selectedEnd: nil,  onlyOneRouteAvailable: false)
+        scheduleRequest_NoRoute = ScheduleRequest(transitMode: nil, selectedRoute: route, selectedStart: start, selectedEnd: nil, onlyOneRouteAvailable: false)
         viewModel.newState(state: scheduleRequest_NoRoute)
         viewModel.configureDisplayable(mockCell, atRow: TableRow.selectEnd.rawValue)
 
@@ -145,7 +145,7 @@ class SelectScheduleViewModelTests: XCTestCase {
         let route = Route(routeId: "12", routeShortName: "Go Home", routeLongName: "Home to Work")
         let start = Stop(stopId: 12, stopName: "Stop 125", stopLatitude: 13, stopLongitude: 14, wheelchairBoarding: true)
         let end = Stop(stopId: 12, stopName: "Stop 45", stopLatitude: 13, stopLongitude: 14, wheelchairBoarding: true)
-        scheduleRequest_NoRoute = ScheduleRequest( transitMode: nil,selectedRoute: route, selectedStart: start, selectedEnd: end, onlyOneRouteAvailable: false)
+        scheduleRequest_NoRoute = ScheduleRequest(transitMode: nil, selectedRoute: route, selectedStart: start, selectedEnd: end, onlyOneRouteAvailable: false)
         viewModel.newState(state: scheduleRequest_NoRoute)
         viewModel.configureDisplayable(mockCell, atRow: TableRow.selectEnd.rawValue)
 

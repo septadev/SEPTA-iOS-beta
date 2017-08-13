@@ -1,4 +1,6 @@
 // Septa. 2017
+
+// Septa. 2017
 @testable import Septa
 import XCTest
 /// ScheduleReducerTests purpose: Each reducer will change state, these tests verify that they do it correctly.

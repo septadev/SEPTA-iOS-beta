@@ -1,4 +1,4 @@
-// SEPTA.org, created on 8/12/2017.
+// Septa. 2017
 
 @testable import Septa
 import XCTest

@@ -1,10 +1,4 @@
-//
-//  EquatableAppState.swift
-//  iSEPTA
-//
-//  Created by Mark Broski on 8/12/17.
-//  Copyright © 2017 Mark Broski. All rights reserved.
-//
+// Septa. 2017
 
 import Foundation
 
