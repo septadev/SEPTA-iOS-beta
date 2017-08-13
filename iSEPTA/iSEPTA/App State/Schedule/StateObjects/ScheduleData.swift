@@ -31,6 +31,7 @@ func ==(lhs: ScheduleData, rhs: ScheduleData) -> Bool {
     default:
         return false
     }
+    guard areEqual else { return false }
 
     switch (lhs.availableStarts, rhs.availableStarts) {
     case (.none, .none):
@@ -40,6 +41,7 @@ func ==(lhs: ScheduleData, rhs: ScheduleData) -> Bool {
     default:
         return false
     }
+    guard areEqual else { return false }
 
     switch (lhs.availableStops, rhs.availableStops) {
     case (.none, .none):
@@ -49,6 +51,7 @@ func ==(lhs: ScheduleData, rhs: ScheduleData) -> Bool {
     default:
         return false
     }
+    guard areEqual else { return false }
 
     switch (lhs.availableTrips, rhs.availableTrips) {
     case (.none, .none):
@@ -58,6 +61,7 @@ func ==(lhs: ScheduleData, rhs: ScheduleData) -> Bool {
     default:
         return false
     }
+    guard areEqual else { return false }
 
     switch (lhs.errorString, rhs.errorString) {
     case (.none, .none):
@@ -67,5 +71,7 @@ func ==(lhs: ScheduleData, rhs: ScheduleData) -> Bool {
     default:
         return false
     }
+    guard areEqual else { return false }
+
     return areEqual
 }

@@ -3,32 +3,35 @@
 import Foundation
 import ReSwift
 
-struct UserPreferenceReducer {
+struct UserPreferencesReducer {
 
     static func main(action: Action, state: UserPreferenceState?) -> UserPreferenceState {
 
-        if let prefState = state {
-            guard let prefAction = action as? UserPreferenceAction else { return prefState }
+        if let state = state {
+            guard let action = action as? UserPreferencesAction else { return state }
 
-            return reducePreference(action: prefAction, userPreferenceState: prefState)
+            return reducePreferenceActions(action: action, state: state)
+
         } else {
-
             return UserPreferenceState()
         }
     }
 
-    static func reducePreference(action: UserPreferenceAction, userPreferenceState: UserPreferenceState) -> UserPreferenceState {
-        var newPref = userPreferenceState
+    static func reducePreferenceActions(action: UserPreferencesAction, state: UserPreferenceState) -> UserPreferenceState {
+        var newPref = state
         switch action {
-        case let action as UserPreference.NewTransitModeAction:
+        case let action as PreferencesRetrievedAction:
+            return reducePreferencesRetrievedAction(action: action, state: state)
+        case let action as NewTransitModeAction:
             newPref.startupTransitMode = action.transitMode
         default:
-            newPref = userPreferenceState
+            break
         }
+
         return newPref
     }
 
-    static func updateModelFromPreferences(action: UserPreference.PreferencesRetrievedAction, state _: UserPreferenceState) -> UserPreferenceState {
-        return action.preferenceState
+    static func reducePreferencesRetrievedAction(action: PreferencesRetrievedAction, state _: UserPreferenceState) -> UserPreferenceState {
+        return action.userPreferenceState
     }
 }

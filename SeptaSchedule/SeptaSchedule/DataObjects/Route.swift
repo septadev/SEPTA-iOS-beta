@@ -34,7 +34,28 @@ public struct Route: Codable {
 
 extension Route: Equatable {}
 public func ==(lhs: Route, rhs: Route) -> Bool {
-    return lhs.routeId == rhs.routeId &&
-        lhs.routeShortName == rhs.routeShortName &&
-        lhs.routeLongName == rhs.routeLongName
+    var areEqual = true
+
+    if lhs.routeId == rhs.routeId {
+        areEqual = true
+    } else {
+        areEqual = false
+    }
+    guard areEqual else { return false }
+
+    if lhs.routeShortName == rhs.routeShortName {
+        areEqual = true
+    } else {
+        areEqual = false
+    }
+    guard areEqual else { return false }
+
+    if lhs.routeLongName == rhs.routeLongName {
+        areEqual = true
+    } else {
+        areEqual = false
+    }
+    guard areEqual else { return false }
+
+    return areEqual
 }

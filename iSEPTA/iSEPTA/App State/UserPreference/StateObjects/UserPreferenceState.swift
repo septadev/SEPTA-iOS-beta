@@ -23,6 +23,8 @@ func ==(lhs: UserPreferenceState, rhs: UserPreferenceState) -> Bool {
         return false
     }
 
+    guard areEqual else { return false }
+
     switch (lhs.startupNavigationController, rhs.startupNavigationController) {
     case (.none, .none):
         areEqual = true
@@ -32,6 +34,8 @@ func ==(lhs: UserPreferenceState, rhs: UserPreferenceState) -> Bool {
         return false
     }
 
+    guard areEqual else { return false }
+
     switch (lhs.showDirectionInRoutes, rhs.showDirectionInRoutes) {
     case (.none, .none):
         areEqual = true
@@ -40,6 +44,8 @@ func ==(lhs: UserPreferenceState, rhs: UserPreferenceState) -> Bool {
     default:
         return false
     }
+
+    guard areEqual else { return false }
 
     switch (lhs.showDirectionInStops, rhs.showDirectionInStops) {
     case (.none, .none):

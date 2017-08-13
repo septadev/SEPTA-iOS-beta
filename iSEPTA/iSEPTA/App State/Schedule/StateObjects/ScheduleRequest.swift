@@ -30,8 +30,9 @@ func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
     case (.some, .some):
         areEqual = lhs.transitMode! == rhs.transitMode!
     default:
-        return false
+        areEqual = false
     }
+    guard areEqual else { return false }
 
     switch (lhs.selectedRoute, rhs.selectedRoute) {
     case (.none, .none):
@@ -39,8 +40,9 @@ func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
     case (.some, .some):
         areEqual = lhs.selectedRoute! == rhs.selectedRoute!
     default:
-        return false
+        areEqual = false
     }
+    guard areEqual else { return false }
 
     switch (lhs.selectedStart, rhs.selectedStart) {
     case (.none, .none):
@@ -48,8 +50,9 @@ func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
     case (.some, .some):
         areEqual = lhs.selectedStart! == rhs.selectedStart!
     default:
-        return false
+        areEqual = false
     }
+    guard areEqual else { return false }
 
     switch (lhs.selectedEnd, rhs.selectedEnd) {
     case (.none, .none):
@@ -57,13 +60,16 @@ func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
     case (.some, .some):
         areEqual = lhs.selectedEnd! == rhs.selectedEnd!
     default:
-        return false
+        areEqual = false
     }
+    guard areEqual else { return false }
 
     if lhs.onlyOneRouteAvailable == rhs.onlyOneRouteAvailable {
         areEqual = true
     } else {
-        return false
+        areEqual = false
     }
+    guard areEqual else { return false }
+
     return areEqual
 }

@@ -3,10 +3,10 @@
 import Foundation
 import SeptaSchedule
 
-enum UserPreferenceKeys: String {
+enum UserPreferencesKeys: String {
     case startupTransitMode
     case defaultsLoaded
-    case startupNavigtationController
+    case startupNavigationController
     case showDirectionInRoutes
     case showDirectionInStops
 }

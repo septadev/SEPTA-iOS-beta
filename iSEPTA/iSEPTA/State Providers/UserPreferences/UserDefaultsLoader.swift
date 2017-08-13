@@ -11,26 +11,30 @@ import SeptaSchedule
 
 class UserDefaultsLoader {
     private let defaults = UserDefaults.standard
+    static let sharedInstance = UserDefaultsLoader()
+    private init() {}
 
     func loadDefaults(completion: @escaping (UserPreferenceState?, Error?) -> Void) {
 
-        var preferenceState: UserPreferenceState?
-        let defaultsLoaded = bool(forKey: .defaultsLoaded)
-        if !defaultsLoaded {
-            loadPreloadedDefaults(completion: completion)
-        } else {
-            loadDevicePersistedDefaults(completion: completion)
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let strongSelf = self else { return }
+            let defaultsLoaded = strongSelf.bool(forKey: .defaultsLoaded)
+            if !defaultsLoaded {
+                strongSelf.loadPreloadedDefaults(completion: completion)
+            } else {
+                strongSelf.loadDevicePersistedDefaults(completion: completion)
+            }
         }
     }
 
-    func loadPreloadedDefaults(completion: @escaping (UserPreferenceState?, Error?) -> Void) {
+    fileprivate func loadPreloadedDefaults(completion: @escaping (UserPreferenceState?, Error?) -> Void) {
         var returnError: Error?
         var preferenceState: UserPreferenceState?
-        do { let loader = DefaultPreferenceLoader()
+        do { let loader = DefaultPreferencesLoader.sharedInstance
 
             preferenceState = try loader.generateDefaultUserPreferenceState()
             setValue(true, forKey: .defaultsLoaded)
-
+            UserPreferencesStatePersister.sharedInstance.persistPreferenceState(preferenceState)
         } catch {
             returnError = error
         }
@@ -40,12 +44,12 @@ class UserDefaultsLoader {
         }
     }
 
-    func loadDevicePersistedDefaults(completion: @escaping (UserPreferenceState?, Error?) -> Void) {
+    fileprivate func loadDevicePersistedDefaults(completion: @escaping (UserPreferenceState?, Error?) -> Void) {
 
         var preferenceState = UserPreferenceState()
 
         preferenceState.startupTransitMode = startupTransitMode()
-        preferenceState.startupNavigationController = startupNavigtationController()
+        preferenceState.startupNavigationController = startupNavigationController()
         preferenceState.showDirectionInRoutes = showDirectionInRoutes()
         preferenceState.showDirectionInStops = showDirectionInStops()
 
@@ -54,41 +58,41 @@ class UserDefaultsLoader {
         }
     }
 
-    func startupTransitMode() -> TransitMode? {
+    fileprivate func startupTransitMode() -> TransitMode? {
         guard let stringValue = string(forKey: .startupTransitMode) else { return nil }
         return TransitMode(rawValue: stringValue)
     }
 
-    func startupNavigtationController() -> NavigationController? {
-        guard let stringValue = string(forKey: .startupNavigtationController) else { return nil }
+    fileprivate func startupNavigationController() -> NavigationController? {
+        guard let stringValue = string(forKey: .startupNavigationController) else { return nil }
         return NavigationController(rawValue: stringValue)
     }
 
-    func showDirectionInRoutes() -> Bool {
+    fileprivate func showDirectionInRoutes() -> Bool {
         return bool(forKey: .showDirectionInRoutes)
     }
 
-    func showDirectionInStops() -> Bool {
+    fileprivate func showDirectionInStops() -> Bool {
         return bool(forKey: .showDirectionInStops)
     }
 
-    func bool(forKey key: UserPreferenceKeys) -> Bool {
+    fileprivate func bool(forKey key: UserPreferencesKeys) -> Bool {
         return defaults.bool(forKey: key.rawValue)
     }
 
-    func string(forKey key: UserPreferenceKeys) -> String? {
+    fileprivate func string(forKey key: UserPreferencesKeys) -> String? {
         return defaults.string(forKey: key.rawValue)
     }
 
-    func array(forKey key: UserPreferenceKeys) -> String? {
+    fileprivate func array(forKey key: UserPreferencesKeys) -> String? {
         return defaults.string(forKey: key.rawValue)
     }
 
-    func int(forKey key: UserPreferenceKeys) -> Int? {
+    fileprivate func int(forKey key: UserPreferencesKeys) -> Int? {
         return defaults.integer(forKey: key.rawValue)
     }
 
-    func setValue(_ value: Any?, forKey key: UserPreferenceKeys) {
+    fileprivate func setValue(_ value: Any?, forKey key: UserPreferencesKeys) {
         defaults.set(value, forKey: key.rawValue)
     }
 }

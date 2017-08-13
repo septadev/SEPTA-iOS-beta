@@ -9,7 +9,7 @@ public struct Stop: Codable {
     public let stopLongitude: Double
     public let wheelchairBoarding: Bool
 
-    public init(stopId: Int, stopName: String, stopLatitude: Double, stopLongitude: Double, wheelchairBoarding: Bool) {
+    init(stopId: Int, stopName: String, stopLatitude: Double, stopLongitude: Double, wheelchairBoarding: Bool) {
         self.stopId = stopId
         self.stopName = stopName
         self.stopLatitude = stopLatitude
@@ -25,31 +25,37 @@ public func ==(lhs: Stop, rhs: Stop) -> Bool {
     if lhs.stopId == rhs.stopId {
         areEqual = true
     } else {
-        return false
+        areEqual = false
     }
+    guard areEqual else { return false }
 
     if lhs.stopName == rhs.stopName {
         areEqual = true
     } else {
-        return false
+        areEqual = false
     }
+    guard areEqual else { return false }
 
     if lhs.stopLatitude == rhs.stopLatitude {
         areEqual = true
     } else {
-        return false
+        areEqual = false
     }
+    guard areEqual else { return false }
 
     if lhs.stopLongitude == rhs.stopLongitude {
         areEqual = true
     } else {
-        return false
+        areEqual = false
     }
+    guard areEqual else { return false }
 
     if lhs.wheelchairBoarding == rhs.wheelchairBoarding {
         areEqual = true
     } else {
-        return false
+        areEqual = false
     }
+    guard areEqual else { return false }
+
     return areEqual
 }

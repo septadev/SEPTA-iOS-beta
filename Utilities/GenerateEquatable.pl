@@ -3,14 +3,21 @@ use Data::Dumper;
 
 my $struct = q |
 
-	struct UserPreferenceState: Codable {
-		var startupTransitMode: TransitMode?
-		var startupNavigationController: NavigationController?
-		var showDirectionInRoutes: Bool?
-		var showDirectioninStops: Bool?
-	}
+	public struct Stop: Codable {
+		public let stopId: Int
+		public let stopName: String
+		public let stopLatitude: Double
+		public let stopLongitude: Double
+		public let wheelchairBoarding: Bool
 
-	
+		public init(stopId: Int, stopName: String, stopLatitude: Double, stopLongitude: Double, wheelchairBoarding: Bool) {
+			self.stopId = stopId
+			self.stopName = stopName
+			self.stopLatitude = stopLatitude
+			self.stopLongitude = stopLongitude
+			self.wheelchairBoarding = wheelchairBoarding
+		}
+	}
 	
 		|;
 
@@ -27,14 +34,19 @@ while ($struct =~ m/(?:let|var)\s+(\w+)\s*:\s*([\w:\[\]\h]+)(\?*)\h*$/mg) {
 		areEqual = lhs.$1! == rhs.$1!
 	default:
 		return false
-	}|;
+	}
+	guard areEqual else { return false }
+
+	|;
 	} else {
 		$switchTemplate = qq |
 		if lhs.$1 == rhs.$1 {
 			areEqual = true
 	} else {
-		return false
-		}|;
+		areEqual = false
+		}
+		guard areEqual else { return false }
+|;
 	}
 	
 	push @initVars, ["$1","$2$3"];

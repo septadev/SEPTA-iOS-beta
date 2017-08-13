@@ -26,6 +26,7 @@ func ==(lhs: ScheduleState, rhs: ScheduleState) -> Bool {
     default:
         return false
     }
+    guard areEqual else { return false }
 
     switch (lhs.scheduleData, rhs.scheduleData) {
     case (.none, .none):
@@ -35,5 +36,7 @@ func ==(lhs: ScheduleState, rhs: ScheduleState) -> Bool {
     default:
         return false
     }
+    guard areEqual else { return false }
+
     return areEqual
 }

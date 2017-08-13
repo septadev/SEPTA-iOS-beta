@@ -26,6 +26,7 @@ func ==(lhs: NavigationStackState, rhs: NavigationStackState) -> Bool {
     default:
         return false
     }
+    guard areEqual else { return false }
 
     switch (lhs.modalViewController, rhs.modalViewController) {
     case (.none, .none):
@@ -35,5 +36,7 @@ func ==(lhs: NavigationStackState, rhs: NavigationStackState) -> Bool {
     default:
         return false
     }
+    guard areEqual else { return false }
+
     return areEqual
 }

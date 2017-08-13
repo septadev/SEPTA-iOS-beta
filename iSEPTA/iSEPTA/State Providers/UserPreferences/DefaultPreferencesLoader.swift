@@ -15,9 +15,11 @@ fileprivate enum DefaultPreferenceKeys: String {
     case showDirectionInStops
 }
 
-class DefaultPreferenceLoader {
+class DefaultPreferencesLoader {
     let bundle = Bundle.main
     var defaultPreferencesDict = [String: AnyObject]()
+    static let sharedInstance = DefaultPreferencesLoader()
+    private init() {}
 
     fileprivate var defaultPreferenceURL: URL? {
         return bundle.url(forResource: "DefaultPreferences", withExtension: "plist")

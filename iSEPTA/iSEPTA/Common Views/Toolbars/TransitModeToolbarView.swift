@@ -7,7 +7,12 @@ import SeptaSchedule
 @IBDesignable
 class TransitModeToolbarView: UIView {
 
-    @IBInspectable var highlighted: Bool = false
+    @IBInspectable var highlighted: Bool = false {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+
     @IBInspectable var title: String = "TransitMode"
     @IBInspectable var id: String = "bus"
     var transitMode: TransitMode? { return TransitMode(rawValue: id) }

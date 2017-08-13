@@ -4,7 +4,7 @@ import XCTest
 @testable import Septa
 
 /// MockPreferenceProvider purpose: returns made up user preferences
-class MockPreferenceProvider: PreferencesProviderProtocol {
+class MockPreferenceProvider: UserPreferencesProviderProtocol {
     func retrievePersistedState() -> UserPreferenceState {
         return UserPreferenceState()
     }
@@ -12,18 +12,18 @@ class MockPreferenceProvider: PreferencesProviderProtocol {
     func subscribe() {
     }
 
-    var preferenceSet: [UserPreferenceKeys: String]?
-    private let preferences: [UserPreferenceKeys: String]
+    var preferenceSet: [UserPreferencesKeys: String]?
+    private let preferences: [UserPreferencesKeys: String]
 
-    init(preferences: [UserPreferenceKeys: String]) {
+    init(preferences: [UserPreferencesKeys: String]) {
         self.preferences = preferences
     }
 
-    func setStringPreference(preference: String, forKey key: UserPreferenceKeys) {
+    func setStringPreference(preference: String, forKey key: UserPreferencesKeys) {
         preferenceSet?[key] = preference
     }
 
-    func stringPreference(forKey key: UserPreferenceKeys) -> String? {
+    func stringPreference(forKey key: UserPreferencesKeys) -> String? {
         return preferences[key]
     }
 }

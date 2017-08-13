@@ -3,10 +3,10 @@
 import Foundation
 
 class StateProviders {
-    let preferenceProvider: PreferencesProviderProtocol
+    let preferenceProvider: UserPreferencesProviderProtocol
     let scheduleProvider: ScheduleProvider
 
-    init(preferenceProvider: PreferencesProviderProtocol = PreferencesProvider.sharedInstance,
+    init(preferenceProvider: UserPreferencesProviderProtocol = UserPreferencesProvider.sharedInstance,
          scheduleProvider: ScheduleProvider = ScheduleProvider.sharedInstance) {
         self.preferenceProvider = preferenceProvider
         self.scheduleProvider = scheduleProvider
