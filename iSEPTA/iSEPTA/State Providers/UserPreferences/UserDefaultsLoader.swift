@@ -41,8 +41,8 @@ class UserDefaultsLoader {
     }
 
     func loadDevicePersistedDefaults(completion: @escaping (UserPreferenceState?, Error?) -> Void) {
-     
-        var preferenceState =  UserPreferenceState()
+
+        var preferenceState = UserPreferenceState()
 
         preferenceState.startupTransitMode = startupTransitMode()
         preferenceState.startupNavigationController = startupNavigtationController()
@@ -50,17 +50,17 @@ class UserDefaultsLoader {
         preferenceState.showDirectionInStops = showDirectionInStops()
 
         DispatchQueue.main.async {
-            completion(preferenceState, returnError)
+            completion(preferenceState, nil)
         }
     }
 
     func startupTransitMode() -> TransitMode? {
-        guard let stringValue  =  string(forKey: .startupTransitMode) else { return nil }
+        guard let stringValue = string(forKey: .startupTransitMode) else { return nil }
         return TransitMode(rawValue: stringValue)
     }
 
     func startupNavigtationController() -> NavigationController? {
-        guard let stringValue  =  string(forKey: .startupNavigtationController) else { return nil }
+        guard let stringValue = string(forKey: .startupNavigtationController) else { return nil }
         return NavigationController(rawValue: stringValue)
     }
 
@@ -68,7 +68,7 @@ class UserDefaultsLoader {
         return bool(forKey: .showDirectionInRoutes)
     }
 
-     func showDirectionInStops() -> Bool {
+    func showDirectionInStops() -> Bool {
         return bool(forKey: .showDirectionInStops)
     }
 
