@@ -1,0 +1,72 @@
+[
+  {
+    "route_id": "AIR",
+    "route_short_name": "Airport Line",
+    "route_long_name": "Airport Line"
+  },
+  {
+    "route_id": "CHE",
+    "route_short_name": "Chestnut Hill East Line",
+    "route_long_name": "Chestnut Hill East Line"
+  },
+  {
+    "route_id": "CHW",
+    "route_short_name": "Chestnut Hill West Line",
+    "route_long_name": "Chestnut Hill West Line"
+  },
+  {
+    "route_id": "LAN",
+    "route_short_name": "Lansdale/Doylestown Line",
+    "route_long_name": "Lansdale/Doylestown Line"
+  },
+  {
+    "route_id": "MED",
+    "route_short_name": "Media/Elwyn Line",
+    "route_long_name": "Media/Elwyn Line"
+  },
+  {
+    "route_id": "FOX",
+    "route_short_name": "Fox Chase Line",
+    "route_long_name": "Fox Chase Line"
+  },
+  {
+    "route_id": "NOR",
+    "route_short_name": "Manayunk/Norristown Line",
+    "route_long_name": "Manayunk/Norristown Line"
+  },
+  {
+    "route_id": "PAO",
+    "route_short_name": "Paoli/Thorndale Line",
+    "route_long_name": "Paoli/Thorndale Line"
+  },
+  {
+    "route_id": "CYN",
+    "route_short_name": "Cynwyd Line",
+    "route_long_name": "Cynwyd Line"
+  },
+  {
+    "route_id": "TRE",
+    "route_short_name": "Trenton Line",
+    "route_long_name": "Trenton Line"
+  },
+  {
+    "route_id": "WAR",
+    "route_short_name": "Warminster Line",
+    "route_long_name": "Warminster Line"
+  },
+  {
+    "route_id": "WIL",
+    "route_short_name": "Wilmington/Newark Line",
+    "route_long_name": "Wilmington/Newark Line"
+  },
+  {
+    "route_id": "WTR",
+    "route_short_name": "West Trenton Line",
+    "route_long_name": "West Trenton Line"
+  },
+  {
+    "route_id": "GC",
+    "route_short_name": "Glenside Combined",
+    "route_long_name": "Glenside Combined"
+  }
+]

@@ -1,0 +1,637 @@
+[
+  {
+    "route_id": 1,
+    "route_short_name": "1",
+    "route_long_name": "Parx Casino to 54th-City"
+  },
+  {
+    "route_id": "101B",
+    "route_short_name": "101B",
+    "route_long_name": "Media-69th St TC BUS"
+  },
+  {
+    "route_id": 103,
+    "route_short_name": "103",
+    "route_long_name": "Ardmore to 69th St TC"
+  },
+  {
+    "route_id": 104,
+    "route_short_name": "104",
+    "route_long_name": "West Chester U to 69th St TC"
+  },
+  {
+    "route_id": 105,
+    "route_short_name": "105",
+    "route_long_name": "Rosemont to 69th St TC"
+  },
+  {
+    "route_id": 106,
+    "route_short_name": "106",
+    "route_long_name": "Paoli to 69th St TC"
+  },
+  {
+    "route_id": 107,
+    "route_short_name": "107",
+    "route_long_name": "Lawrence Park to 69th St TC-107"
+  },
+  {
+    "route_id": 108,
+    "route_short_name": "108",
+    "route_long_name": "UPS or Airport to 69th St TC"
+  },
+  {
+    "route_id": 109,
+    "route_short_name": "109",
+    "route_long_name": "Chester TC to 69th St TC"
+  },
+  {
+    "route_id": 110,
+    "route_short_name": "110",
+    "route_long_name": "Penn State U to 69th St TC"
+  },
+  {
+    "route_id": 111,
+    "route_short_name": "111",
+    "route_long_name": "Chadds Ford to 69th St TC"
+  },
+  {
+    "route_id": 112,
+    "route_short_name": "112",
+    "route_long_name": "DCCC to 69th St TC"
+  },
+  {
+    "route_id": 113,
+    "route_short_name": "113",
+    "route_long_name": "Tri State Mall to 69th St TC"
+  },
+  {
+    "route_id": 114,
+    "route_short_name": "114",
+    "route_long_name": "Granite Run Mall to Darby TC"
+  },
+  {
+    "route_id": 115,
+    "route_short_name": "115",
+    "route_long_name": "DCCC & Darby TC to Airport"
+  },
+  {
+    "route_id": 117,
+    "route_short_name": "117",
+    "route_long_name": "Penn State U to I-95 Industrial Pk"
+  },
+  {
+    "route_id": 118,
+    "route_short_name": "118",
+    "route_long_name": "Newtown Square to Chester TC"
+  },
+  {
+    "route_id": 119,
+    "route_short_name": "119",
+    "route_long_name": "Cheyney U to Chester TC"
+  },
+  {
+    "route_id": 12,
+    "route_short_name": "12",
+    "route_long_name": "Columbus-Dock to 50th-Woodland"
+  },
+  {
+    "route_id": 120,
+    "route_short_name": "120",
+    "route_long_name": "Cheyney U to 69th St TC"
+  },
+  {
+    "route_id": 123,
+    "route_short_name": "123",
+    "route_long_name": "King of Prussia to 69th St TC"
+  },
+  {
+    "route_id": 124,
+    "route_short_name": "124",
+    "route_long_name": "Chesterbrook to 13th & Market"
+  },
+  {
+    "route_id": 125,
+    "route_short_name": "125",
+    "route_long_name": "Valley Forge to 13th-Market"
+  },
+  {
+    "route_id": 126,
+    "route_short_name": "126",
+    "route_long_name": "Lawrence Park to 69th St TC-126"
+  },
+  {
+    "route_id": 127,
+    "route_short_name": "127",
+    "route_long_name": "Trenton TC to Oxford Valley Mall"
+  },
+  {
+    "route_id": 128,
+    "route_short_name": "128",
+    "route_long_name": "Neshaminy to Oxford Valley Mall"
+  },
+  {
+    "route_id": 129,
+    "route_short_name": "129",
+    "route_long_name": "Frankford-Knights to Oxford Valley"
+  },
+  {
+    "route_id": 130,
+    "route_short_name": "130",
+    "route_long_name": "BCCC to Frankford & Knights"
+  },
+  {
+    "route_id": 131,
+    "route_short_name": "131",
+    "route_long_name": "Audubon to Norristown TC"
+  },
+  {
+    "route_id": 132,
+    "route_short_name": "132",
+    "route_long_name": "Telford to Montgomery Mall"
+  },
+  {
+    "route_id": 133,
+    "route_short_name": "133",
+    "route_long_name": "Frankford & Knights to Bensalem"
+  },
+  {
+    "route_id": 139,
+    "route_short_name": "139",
+    "route_long_name": "Limerick to King of Prussia"
+  },
+  {
+    "route_id": 14,
+    "route_short_name": "14",
+    "route_long_name": "FTC to Neshaminy/Oxford Vally Malls"
+  },
+  {
+    "route_id": 150,
+    "route_short_name": "150",
+    "route_long_name": "Parx Casino to Plymouth Meeting"
+  },
+  {
+    "route_id": 16,
+    "route_short_name": "16",
+    "route_long_name": "City Hall to Cheltenham-Ogontz"
+  },
+  {
+    "route_id": 17,
+    "route_short_name": "17",
+    "route_long_name": "Front-Mkt to 20-Johnston/Broad-Pat"
+  },
+  {
+    "route_id": 18,
+    "route_short_name": "18",
+    "route_long_name": "Fox Chase to Cedarbrook Plaza"
+  },
+  {
+    "route_id": 19,
+    "route_short_name": "19",
+    "route_long_name": "Torresdale Station to FTC"
+  },
+  {
+    "route_id": 2,
+    "route_short_name": "2",
+    "route_long_name": "20-Johnston to Pulaski-Hntg Park"
+  },
+  {
+    "route_id": 20,
+    "route_short_name": "20",
+    "route_long_name": "Philadelphia Mills to FTC"
+  },
+  {
+    "route_id": 201,
+    "route_short_name": "201",
+    "route_long_name": "Ft Wash Office Ctr to Fort Wash Sta"
+  },
+  {
+    "route_id": 204,
+    "route_short_name": "204",
+    "route_long_name": "Eagleview to Paoli Train Station"
+  },
+  {
+    "route_id": 205,
+    "route_short_name": "205",
+    "route_long_name": "Chesterbrook to Paoli Train Station"
+  },
+  {
+    "route_id": 206,
+    "route_short_name": "206",
+    "route_long_name": "Commons at Great Vly to Paoli Sta"
+  },
+  {
+    "route_id": 21,
+    "route_short_name": "21",
+    "route_long_name": "Penns Landing to 69th St TC"
+  },
+  {
+    "route_id": 22,
+    "route_short_name": "22",
+    "route_long_name": "Warminster & Willow Grove to OTC"
+  },
+  {
+    "route_id": 23,
+    "route_short_name": "23",
+    "route_long_name": "11th Market to Chestnut Hill"
+  },
+  {
+    "route_id": 24,
+    "route_short_name": "24",
+    "route_long_name": "Southampton & Rockledge to FTC"
+  },
+  {
+    "route_id": 25,
+    "route_short_name": "25",
+    "route_long_name": "FTC to Columbus Commons"
+  },
+  {
+    "route_id": 26,
+    "route_short_name": "26",
+    "route_long_name": "FTC to Chelten Av Station"
+  },
+  {
+    "route_id": 27,
+    "route_short_name": "27",
+    "route_long_name": "Broad-Carpenter to PlymouthMtgMall"
+  },
+  {
+    "route_id": 28,
+    "route_short_name": "28",
+    "route_long_name": "Fern Rock TC to Torresdale-Cottman"
+  },
+  {
+    "route_id": 29,
+    "route_short_name": "29",
+    "route_long_name": "Pier 70 to 33rd-Dickinson"
+  },
+  {
+    "route_id": 3,
+    "route_short_name": "3",
+    "route_long_name": "33rd-Cecil B. Moore to FTC"
+  },
+  {
+    "route_id": 30,
+    "route_short_name": "30",
+    "route_long_name": "Amtrak 30th St Sta to 69th St TC"
+  },
+  {
+    "route_id": 31,
+    "route_short_name": "31",
+    "route_long_name": "City Hall to 76th-City"
+  },
+  {
+    "route_id": 310,
+    "route_short_name": "310",
+    "route_long_name": "Horsham Breeze Red"
+  },
+  {
+    "route_id": 311,
+    "route_short_name": "311",
+    "route_long_name": "Horsham Breeze Blue"
+  },
+  {
+    "route_id": 32,
+    "route_short_name": "32",
+    "route_long_name": "Broad-Carpenter to Ridge-Lyceum"
+  },
+  {
+    "route_id": 33,
+    "route_short_name": "33",
+    "route_long_name": "Penns Landing to 23rd-Venango"
+  },
+  {
+    "route_id": 35,
+    "route_short_name": "35",
+    "route_long_name": "Manayunk Roxborough Loop"
+  },
+  {
+    "route_id": 37,
+    "route_short_name": "37",
+    "route_long_name": "ChesterTC to Broad-Snyder"
+  },
+  {
+    "route_id": 38,
+    "route_short_name": "38",
+    "route_long_name": "5th-Market to Wissahickon TC"
+  },
+  {
+    "route_id": 39,
+    "route_short_name": "39",
+    "route_long_name": "Richmond-Cumberland to 33rd-Dauphin"
+  },
+  {
+    "route_id": 4,
+    "route_short_name": "4",
+    "route_long_name": "Broad-Pattison to Fern Rock TC"
+  },
+  {
+    "route_id": 40,
+    "route_short_name": "40",
+    "route_long_name": "2nd-Lombard to Conshohocken-Monumnt"
+  },
+  {
+    "route_id": 42,
+    "route_short_name": "42",
+    "route_long_name": "Penns Landing to Wycombe or61stPine"
+  },
+  {
+    "route_id": 43,
+    "route_short_name": "43",
+    "route_long_name": "Richmond-Cumberland to 50th-Parksde"
+  },
+  {
+    "route_id": 44,
+    "route_short_name": "44",
+    "route_long_name": "5th-Market to Ardmore"
+  },
+  {
+    "route_id": 45,
+    "route_short_name": "45",
+    "route_long_name": "Broad & Oregon to Noble & 12th"
+  },
+  {
+    "route_id": 46,
+    "route_short_name": "46",
+    "route_long_name": "58th-Baltimore to 63rd-Malvern"
+  },
+  {
+    "route_id": 47,
+    "route_short_name": "47",
+    "route_long_name": "Whitman Plaza to 5th-Godfrey"
+  },
+  {
+    "route_id": "47M",
+    "route_short_name": "47M",
+    "route_long_name": "Whitmn Plz to 7th-Spg Grd via 9thSt"
+  },
+  {
+    "route_id": 48,
+    "route_short_name": "48",
+    "route_long_name": "Front-Market to 27th-Allegheny"
+  },
+  {
+    "route_id": 5,
+    "route_short_name": "5",
+    "route_long_name": "Front-Market to Frankford TC"
+  },
+  {
+    "route_id": 50,
+    "route_short_name": "50",
+    "route_long_name": "Parx Casino via Phila Mills to FTC"
+  },
+  {
+    "route_id": 52,
+    "route_short_name": "52",
+    "route_long_name": "49th-Wdland to 54th-City/50th-PrkSd"
+  },
+  {
+    "route_id": 53,
+    "route_short_name": "53",
+    "route_long_name": "Wayne-Carpenter to Broad-Hunting Pk"
+  },
+  {
+    "route_id": 54,
+    "route_short_name": "54",
+    "route_long_name": "Richmond-Cambria to 33rd-Dauphin"
+  },
+  {
+    "route_id": 55,
+    "route_short_name": "55",
+    "route_long_name": "Willow Grove & Doylestown to OTC"
+  },
+  {
+    "route_id": 56,
+    "route_short_name": "56",
+    "route_long_name": "23rd-Venango to Torresdale-Cottman"
+  },
+  {
+    "route_id": 57,
+    "route_short_name": "57",
+    "route_long_name": "WhitmanPlaza to RisingSun-Olney&FTC"
+  },
+  {
+    "route_id": 58,
+    "route_short_name": "58",
+    "route_long_name": "Neshaminy Mall & Somerton to FTC"
+  },
+  {
+    "route_id": 59,
+    "route_short_name": "59",
+    "route_long_name": "Castor-Bustleton to Arrott TC"
+  },
+  {
+    "route_id": 6,
+    "route_short_name": "6",
+    "route_long_name": "Cheltenham-Ogontz to Olney TC"
+  },
+  {
+    "route_id": 60,
+    "route_short_name": "60",
+    "route_long_name": "35th-Allegheny to Rich-Westmoreland"
+  },
+  {
+    "route_id": 61,
+    "route_short_name": "61",
+    "route_long_name": "9th-Market to Manayunk"
+  },
+  {
+    "route_id": 62,
+    "route_short_name": "62",
+    "route_long_name": "9th-Market to Andorra"
+  },
+  {
+    "route_id": 64,
+    "route_short_name": "64",
+    "route_long_name": "50th-Parkside to Pier 70"
+  },
+  {
+    "route_id": 65,
+    "route_short_name": "65",
+    "route_long_name": "Germantown-Chelten to 69th St TC"
+  },
+  {
+    "route_id": 66,
+    "route_short_name": "66",
+    "route_long_name": "Frankfd TC to Frankford-Knights"
+  },
+  {
+    "route_id": 67,
+    "route_short_name": "67",
+    "route_long_name": "Phila Mills & Bustleton to FTC"
+  },
+  {
+    "route_id": 68,
+    "route_short_name": "68",
+    "route_long_name": "Broad-Oregon to UPS & 69th St TC"
+  },
+  {
+    "route_id": 7,
+    "route_short_name": "7",
+    "route_long_name": "Pier 70 to 33rd-Dauphin"
+  },
+  {
+    "route_id": 70,
+    "route_short_name": "70",
+    "route_long_name": "Fkd-Gregg/Torr-Cottmn to FRTC"
+  },
+  {
+    "route_id": 73,
+    "route_short_name": "73",
+    "route_long_name": "FTC to Richmond-Westmoreland"
+  },
+  {
+    "route_id": 75,
+    "route_short_name": "75",
+    "route_long_name": "Wayne Junction to Arrott Trans Ctr"
+  },
+  {
+    "route_id": 77,
+    "route_short_name": "77",
+    "route_long_name": "Roosevelt-St Vincent to ChestntHill"
+  },
+  {
+    "route_id": 78,
+    "route_short_name": "78",
+    "route_long_name": "Express Cornwells Hgts to Ctr City"
+  },
+  {
+    "route_id": 79,
+    "route_short_name": "79",
+    "route_long_name": "Columbus Commons to 29th-Snyder"
+  },
+  {
+    "route_id": 8,
+    "route_short_name": "8",
+    "route_long_name": "Olney TC to Frankford TC"
+  },
+  {
+    "route_id": 80,
+    "route_short_name": "80",
+    "route_long_name": "Express Horsham to Olney TC"
+  },
+  {
+    "route_id": 84,
+    "route_short_name": "84",
+    "route_long_name": "Bustleton-CoLine&Phila Mills to FTC"
+  },
+  {
+    "route_id": 88,
+    "route_short_name": "88",
+    "route_long_name": "Bethayres&Holme-Pennypack to FTC"
+  },
+  {
+    "route_id": 89,
+    "route_short_name": "89",
+    "route_long_name": "Front-Dauphin to Arrott TC"
+  },
+  {
+    "route_id": 9,
+    "route_short_name": "9",
+    "route_long_name": "4th-Walnut to Andorra"
+  },
+  {
+    "route_id": 90,
+    "route_short_name": "90",
+    "route_long_name": "Plymouth Mtng to Norristown TC-90"
+  },
+  {
+    "route_id": 91,
+    "route_short_name": "91",
+    "route_long_name": "Graterford to Norristown TC"
+  },
+  {
+    "route_id": 92,
+    "route_short_name": "92",
+    "route_long_name": "Exton to King of Prussia"
+  },
+  {
+    "route_id": 93,
+    "route_short_name": "93",
+    "route_long_name": "Pottstown to Norristown TC"
+  },
+  {
+    "route_id": 94,
+    "route_short_name": "94",
+    "route_long_name": "Montgomery Mall to Chestnut Hill"
+  },
+  {
+    "route_id": 95,
+    "route_short_name": "95",
+    "route_long_name": "Gulph Mills to Willow Grove Mall"
+  },
+  {
+    "route_id": 96,
+    "route_short_name": "96",
+    "route_long_name": "Lansdale to Norristown TC"
+  },
+  {
+    "route_id": 97,
+    "route_short_name": "97",
+    "route_long_name": "Chestnut Hill to Norristown TC"
+  },
+  {
+    "route_id": 98,
+    "route_short_name": "98",
+    "route_long_name": "Plymouth Mtng to Norristown TC-98"
+  },
+  {
+    "route_id": 99,
+    "route_short_name": "99",
+    "route_long_name": "Phoenixville to Norristown TC"
+  },
+  {
+    "route_id": "BSO",
+    "route_short_name": "BSO",
+    "route_long_name": "Midnight-5am Service (Bus) for BSL"
+  },
+  {
+    "route_id": "G",
+    "route_short_name": "G",
+    "route_long_name": "Overbk/LankMC to ColCom/FdDstCtr"
+  },
+  {
+    "route_id": "H",
+    "route_short_name": "H",
+    "route_long_name": "Broad-Erie to Cheltenham-Ogontz-H"
+  },
+  {
+    "route_id": "J",
+    "route_short_name": "J",
+    "route_long_name": "Chelten-Wisshkn to Richmond-Orthodx"
+  },
+  {
+    "route_id": "K",
+    "route_short_name": "K",
+    "route_long_name": "Ridge-Midvale to Arrott TC"
+  },
+  {
+    "route_id": "L",
+    "route_short_name": "L",
+    "route_long_name": "Erdenheim/PlymouthMtngMall to Olney"
+  },
+  {
+    "route_id": "LUCYGO",
+    "route_short_name": "LUCYGO",
+    "route_long_name": "Gold Loop through University City"
+  },
+  {
+    "route_id": "LUCYGR",
+    "route_short_name": "LUCYGR",
+    "route_long_name": "Green Loop through University City"
+  },
+  {
+    "route_id": "MFO",
+    "route_short_name": "MFO",
+    "route_long_name": "Midnight-5am Service (Bus) for MFL"
+  },
+  {
+    "route_id": "R",
+    "route_short_name": "R",
+    "route_long_name": "Henry-Mid or WissTC to FrankfordTC"
+  },
+  {
+    "route_id": "XH",
+    "route_short_name": "XH",
+    "route_long_name": "Broad-Erie to Cheltenham-Ogontz-XH"
+  }
+]

@@ -7,5 +7,5 @@
 -- MFL	MFL	Frankford TC to 69th St TC	1
 
 SELECT
-  route_id, route_short_name, route_long_name, route_type
+  route_id, route_short_name, route_long_name
 FROM routes_bus WHERE route_id IN ('BSO', 'BSL', 'MFL');

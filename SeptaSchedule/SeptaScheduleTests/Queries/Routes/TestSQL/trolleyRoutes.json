@@ -1,0 +1,14 @@
+[
+  {
+    "route_id": "BSL",
+    "route_short_name": "BSL",
+    "route_long_name": "ATT Station to Fern Rock TC",
+    "route_type": 1
+  },
+  {
+    "route_id": "MFL",
+    "route_short_name": "MFL",
+    "route_long_name": "Frankford TC to 69th St TC",
+    "route_type": 1
+  }
+]

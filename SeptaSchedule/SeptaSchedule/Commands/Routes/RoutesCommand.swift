@@ -10,6 +10,7 @@ import Foundation
 
 public class RoutesCommand: BaseCommand {
     public typealias RouteCommandCompletion = ([Route]?, Error?) -> Void
+    public static let sharedInstance = RoutesCommand()
 
     public override init() {}
 

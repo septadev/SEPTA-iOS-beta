@@ -11,15 +11,28 @@ class SQLStringsTests: XCTestCase {
     let commandStrings = SQLCommandTemplate()
 
     /// Verify that we can read from the bundle
-    func testVerifyReadFileFromBundle() {
-        let url = bundle.url(forResource: "busStart", withExtension: "sql", subdirectory: nil, localization: nil)!
+    func testVerifyReadFileFromBundle_RailRoute() {
+        let url = bundle.url(forResource: "railRoute", withExtension: "sql", subdirectory: nil, localization: nil)!
         fileManager.fileExists(atPath: url.path)
     }
 
-    /// Verify that we can pull the string from a file
-    func testPullSqlCommandStringFromFile() {
-        let sqlQuery = SQLQuery.busStart(routeId: "44", scheduleType: .saturday)
-        let commandString = try! commandStrings.commandString(forSQLQuery: sqlQuery as! SQLQueryProtocol)
-        XCTAssertNotNil(commandString)
+    func testVerifyReadFileFromBundle_BusRoute() {
+        let url = bundle.url(forResource: "busRoute", withExtension: "sql", subdirectory: nil, localization: nil)!
+        fileManager.fileExists(atPath: url.path)
+    }
+
+    func testVerifyReadFileFromBundle_NHSLRoute() {
+        let url = bundle.url(forResource: "NHSLRoute", withExtension: "sql", subdirectory: nil, localization: nil)!
+        fileManager.fileExists(atPath: url.path)
+    }
+
+    func testVerifyReadFileFromBundle_SubwayRoute() {
+        let url = bundle.url(forResource: "subwayRoute", withExtension: "sql", subdirectory: nil, localization: nil)!
+        fileManager.fileExists(atPath: url.path)
+    }
+
+    func testVerifyReadFileFromBundle_TrolleyRoute() {
+        let url = bundle.url(forResource: "trolleyRoute", withExtension: "sql", subdirectory: nil, localization: nil)!
+        fileManager.fileExists(atPath: url.path)
     }
 }
