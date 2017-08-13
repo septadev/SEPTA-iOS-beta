@@ -3,12 +3,24 @@ use Data::Dumper;
 
 my $struct = q |
 
-	struct AppNavigationState {
-		let scheduleNavigationState: NavigationStackState?
-		let nextToArriveNavigationState: NavigationStackState?
-		let favoritesNavigationState: NavigationStackState?
-	}
-	}	}	|;
+	
+	struct UserPreferenceState: Codable, Equatable {
+			var transitMode: TransitMode?
+			var defaultNavigationController: NavigationController?
+			var defaultTransitMode: TransitMode?
+			var showDirectionInRoutes: Bool?
+			var showDirectioninStops: Bool?
+
+
+
+
+
+		}
+
+
+	
+	
+		|;
 
 my @initVars = ();
 my @vars = ();

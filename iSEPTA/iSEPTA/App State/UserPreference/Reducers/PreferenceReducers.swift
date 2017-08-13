@@ -18,10 +18,10 @@ struct UserPreferenceReducer {
     }
 
     static func reducePreference(action: UserPreferenceAction, userPreferenceState: UserPreferenceState) -> UserPreferenceState {
-        let newPref: UserPreferenceState
+        var newPref = userPreferenceState
         switch action {
         case let action as UserPreference.NewTransitModeAction:
-            newPref = UserPreferenceState(transitMode: action.transitMode)
+            newPref.transitMode = action.transitMode
         default:
             newPref = userPreferenceState
         }

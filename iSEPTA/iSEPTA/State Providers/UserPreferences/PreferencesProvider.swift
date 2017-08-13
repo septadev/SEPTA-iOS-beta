@@ -19,7 +19,8 @@ class PreferencesProvider: PreferencesProviderProtocol, StoreSubscriber {
         if let prefString = stringPreference(forKey: .preferredTransitMode), let prefObj = TransitMode(rawValue: prefString) {
             transitMode = prefObj
         }
-        let preferenceState = UserPreferenceState(transitMode: transitMode)
+        var preferenceState = UserPreferenceState()
+        preferenceState.transitMode = TransitMode.bus
         return preferenceState
     }
 

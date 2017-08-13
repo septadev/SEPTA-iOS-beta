@@ -20,6 +20,8 @@
 		58195FF41F3FA1C90053B3D3 /* RouteSelected.json in Resources */ = {isa = PBXBuildFile; fileRef = 58195FEE1F3FA1790053B3D3 /* RouteSelected.json */; };
 		581DA54A1F3BE1C8006AEC39 /* IdentifiableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581DA5491F3BE1C8006AEC39 /* IdentifiableController.swift */; };
 		581DA54F1F3BF102006AEC39 /* ViewTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581DA54E1F3BF102006AEC39 /* ViewTransitionType.swift */; };
+		582531951F406E790088D056 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 582531941F406E790088D056 /* DefaultPreferences.plist */; };
+		582531981F40707C0088D056 /* DefaultPreferenceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582531971F40707C0088D056 /* DefaultPreferenceLoader.swift */; };
 		58290E411F372B51000CCF3C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E401F372B51000CCF3C /* AppState.swift */; };
 		58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E431F372BB9000CCF3C /* AppStateReducer.swift */; };
 		58290E4C1F372CAD000CCF3C /* AppStateReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E491F372CAD000CCF3C /* AppStateReducerTests.swift */; };
@@ -167,6 +169,8 @@
 		58195FEF1F3FA1830053B3D3 /* TransitModeSelected.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TransitModeSelected.json; sourceTree = "<group>"; };
 		581DA5491F3BE1C8006AEC39 /* IdentifiableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableController.swift; sourceTree = "<group>"; };
 		581DA54E1F3BF102006AEC39 /* ViewTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransitionType.swift; sourceTree = "<group>"; };
+		582531941F406E790088D056 /* DefaultPreferences.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
+		582531971F40707C0088D056 /* DefaultPreferenceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPreferenceLoader.swift; sourceTree = "<group>"; };
 		58290E401F372B51000CCF3C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		58290E431F372BB9000CCF3C /* AppStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateReducer.swift; sourceTree = "<group>"; };
 		58290E491F372CAD000CCF3C /* AppStateReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStateReducerTests.swift; sourceTree = "<group>"; };
@@ -550,6 +554,7 @@
 				588F27F81F39E14300D62425 /* StateObjects */,
 				588F27F51F39E0AE00D62425 /* Actions */,
 				588F27F21F39E03A00D62425 /* Reducers */,
+				582531941F406E790088D056 /* DefaultPreferences.plist */,
 			);
 			path = UserPreference;
 			sourceTree = "<group>";
@@ -669,6 +674,7 @@
 			isa = PBXGroup;
 			children = (
 				5840D6E21F37E9FB00C8CB76 /* PreferencesProvider.swift */,
+				582531971F40707C0088D056 /* DefaultPreferenceLoader.swift */,
 				5840D6E61F37EAEF00C8CB76 /* UserPreferenceKeys.swift */,
 				5880C1981F3B30AB00337DB2 /* PreferenceProviderPrototocol.swift */,
 			);
@@ -932,6 +938,7 @@
 				582F4EC31F33B1120062A546 /* favorites.storyboard in Resources */,
 				58C182041F34C5B6002748E9 /* Localizeable.strings in Resources */,
 				582F4EC11F33B1120062A546 /* contact.storyboard in Resources */,
+				582531951F406E790088D056 /* DefaultPreferences.plist in Resources */,
 				582F4EE01F33B1120062A546 /* LaunchScreen.storyboard in Resources */,
 				582F4EDB1F33B1120062A546 /* Assets.xcassets in Resources */,
 				582F4ED91F33B1120062A546 /* settings.storyboard in Resources */,
@@ -1008,6 +1015,7 @@
 				5840D6D31F376D9C00C8CB76 /* MainNavigationController.swift in Sources */,
 				58470C0B1F3F2AD500F3C9B5 /* StateLogEntry.swift in Sources */,
 				5840D6EE1F37F63800C8CB76 /* TransitModeToolbarView.swift in Sources */,
+				582531981F40707C0088D056 /* DefaultPreferenceLoader.swift in Sources */,
 				58B892151F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift in Sources */,
 				582F4ECC1F33B1120062A546 /* ScheduleTableViewCell.swift in Sources */,
 				582F4ED01F33B1120062A546 /* RouteStops.swift in Sources */,

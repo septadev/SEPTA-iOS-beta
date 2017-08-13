@@ -11,6 +11,5 @@ import Foundation
 public class TripStart {
     public static let sharedInstance = TripStart()
 
-    private init(){}
-
+    private init() {}
 }
