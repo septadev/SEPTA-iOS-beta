@@ -54,7 +54,6 @@ JOIN routes_bus R
 ON T.route_id = R.route_id
 JOIN stops_bus S
 ON R.route_id = T.route_id
-
 WHERE T.route_id = '44' AND direction_id = '1'
 GROUP BY S.stop_id, S.stop_name, S.stop_lat, S.stop_lon;
 

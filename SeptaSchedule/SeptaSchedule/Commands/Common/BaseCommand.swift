@@ -13,8 +13,9 @@ public class BaseCommand {
             var results: [T]?
             do {
                 let conn = try strongSelf.getConnection()
-                let cmd = try strongSelf.getCommandString(forSqlQuery: sqlQuery)
-                let stmt = try conn.prepare(cmd)
+                let commandString = try strongSelf.getCommandString(forSqlQuery: sqlQuery)
+                print(commandString)
+                let stmt = try conn.prepare(commandString)
                 results = mapper(stmt)
             } catch {
                 cmdError = error

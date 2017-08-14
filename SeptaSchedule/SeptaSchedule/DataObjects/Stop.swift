@@ -63,6 +63,12 @@ public struct Stop: Codable {
     }
 }
 
+extension Stop: Hashable {
+    public var hashValue: Int {
+        return stopId.hashValue
+    }
+}
+
 extension Stop: Equatable {}
 public func ==(lhs: Stop, rhs: Stop) -> Bool {
     var areEqual = true
