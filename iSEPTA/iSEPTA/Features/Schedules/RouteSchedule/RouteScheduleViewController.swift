@@ -76,9 +76,4 @@ class RouteScheduleViewController: UIViewController, UITableViewDelegate, UITabl
             item.width = view.frame.size.width / 3.0
         }
     }
-
-    func setRouteType(routeType: RouteType, route: Route, routeStops: RouteStops) {
-
-        viewModel = RouteScheduleViewModel(routeType: routeType, route: route, routeStops: routeStops, delegate: self)
-    }
 }

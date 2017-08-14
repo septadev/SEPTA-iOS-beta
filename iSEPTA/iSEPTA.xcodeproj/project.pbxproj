@@ -45,20 +45,14 @@
 		582F4EC71F33B1120062A546 /* RoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E961F33B1120062A546 /* RoutesViewModel.swift */; };
 		582F4EC81F33B1120062A546 /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E971F33B1120062A546 /* RouteTableViewCell.swift */; };
 		582F4EC91F33B1120062A546 /* RouteScheduleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 582F4E991F33B1120062A546 /* RouteScheduleHeaderView.xib */; };
-		582F4ECA1F33B1120062A546 /* RouteScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9A1F33B1120062A546 /* RouteScheduleViewController.swift */; };
-		582F4ECB1F33B1120062A546 /* RouteSheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9B1F33B1120062A546 /* RouteSheduleViewModel.swift */; };
 		582F4ECC1F33B1120062A546 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9C1F33B1120062A546 /* ScheduleTableViewCell.swift */; };
 		582F4ECD1F33B1120062A546 /* schedules.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4E9D1F33B1120062A546 /* schedules.storyboard */; };
-		582F4ECE1F33B1120062A546 /* SelectStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9F1F33B1120062A546 /* SelectStopViewController.swift */; };
-		582F4ECF1F33B1120062A546 /* SelectStopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA01F33B1120062A546 /* SelectStopViewModel.swift */; };
 		582F4ED01F33B1120062A546 /* RouteStops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA21F33B1120062A546 /* RouteStops.swift */; };
 		582F4ED11F33B1120062A546 /* SelectedStopType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA31F33B1120062A546 /* SelectedStopType.swift */; };
 		582F4ED21F33B1120062A546 /* SelectStopCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA41F33B1120062A546 /* SelectStopCellType.swift */; };
 		582F4ED31F33B1120062A546 /* SelectStopRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA51F33B1120062A546 /* SelectStopRow.swift */; };
 		582F4ED41F33B1120062A546 /* SelectStopsFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EA61F33B1120062A546 /* SelectStopsFooterView.xib */; };
-		582F4ED51F33B1120062A546 /* SelectStopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA71F33B1120062A546 /* SelectStopsViewController.swift */; };
 		582F4ED61F33B1120062A546 /* SelectStopsViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA81F33B1120062A546 /* SelectStopsViewElement.swift */; };
-		582F4ED71F33B1120062A546 /* SelectStopsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA91F33B1120062A546 /* SelectStopsViewModel.swift */; };
 		582F4ED81F33B1120062A546 /* SelectSchedulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EAA1F33B1120062A546 /* SelectSchedulesViewController.swift */; };
 		582F4ED91F33B1120062A546 /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EAC1F33B1120062A546 /* settings.storyboard */; };
 		582F4EDB1F33B1120062A546 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EAF1F33B1120062A546 /* Assets.xcassets */; };
@@ -1012,7 +1006,6 @@
 				58470C091F3F276000F3C9B5 /* NumberFormatters.swift in Sources */,
 				588F27F01F39DD7B00D62425 /* UserPreferenceState.swift in Sources */,
 				5825319A1F407D380088D056 /* UserDefaultsLoader.swift in Sources */,
-				582F4ED51F33B1120062A546 /* SelectStopsViewController.swift in Sources */,
 				581804BF1F3F8479002184E3 /* EquatableAppState.swift in Sources */,
 				582F4EDD1F33B1120062A546 /* ViewModelDelegate.swift in Sources */,
 				582F4ED31F33B1120062A546 /* SelectStopRow.swift in Sources */,
@@ -1027,7 +1020,6 @@
 				582F4ECC1F33B1120062A546 /* ScheduleTableViewCell.swift in Sources */,
 				582F4ED01F33B1120062A546 /* RouteStops.swift in Sources */,
 				58470C071F3F1EF300F3C9B5 /* StateLogger.swift in Sources */,
-				582F4ED71F33B1120062A546 /* SelectStopsViewModel.swift in Sources */,
 				585572861F39499D004ABCD6 /* Color+Septa.swift in Sources */,
 				582F4EBB1F33B1120062A546 /* AppDelegate.swift in Sources */,
 				5844CA1F1F3BD9B700651223 /* NavigationState.swift in Sources */,
@@ -1043,7 +1035,6 @@
 				5840D6E91F37EE6500C8CB76 /* Providers.swift in Sources */,
 				581804BB1F3F8051002184E3 /* LoggingError.swift in Sources */,
 				582F4ED81F33B1120062A546 /* SelectSchedulesViewController.swift in Sources */,
-				582F4ECF1F33B1120062A546 /* SelectStopViewModel.swift in Sources */,
 				582F4EC71F33B1120062A546 /* RoutesViewModel.swift in Sources */,
 				5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift in Sources */,
 				5840D6E51F37EA1900C8CB76 /* ScheduleProvider.swift in Sources */,
@@ -1054,8 +1045,6 @@
 				5840D6E31F37E9FB00C8CB76 /* UserPreferencesProvider.swift in Sources */,
 				58C2A0611F38964E00F0D6CA /* ViewController.swift in Sources */,
 				58DB10F41F3B8CCF00191AED /* ScheduleDataReducer.swift in Sources */,
-				582F4ECB1F33B1120062A546 /* RouteSheduleViewModel.swift in Sources */,
-				582F4ECE1F33B1120062A546 /* SelectStopViewController.swift in Sources */,
 				582F4ED61F33B1120062A546 /* SelectStopsViewElement.swift in Sources */,
 				589BCC321F3D5068002FAEDE /* SchedulesPresentationController.swift in Sources */,
 				581DA54A1F3BE1C8006AEC39 /* IdentifiableController.swift in Sources */,
@@ -1075,7 +1064,6 @@
 				581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */,
 				588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */,
 				58B892171F38F7E700BFFEFA /* Strings.swift in Sources */,
-				582F4ECA1F33B1120062A546 /* RouteScheduleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

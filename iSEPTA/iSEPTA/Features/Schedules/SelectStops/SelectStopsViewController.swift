@@ -3,6 +3,11 @@
 import UIKit
 import SeptaSchedule
 
+enum RouteType {
+    case rail
+    case wheels
+}
+
 class SelectStopsViewController: UITableViewController, UpdateableFromViewModel {
     let selectStopSegueId = "selectStop"
     let showSheduleSegueId = "showSchedule"

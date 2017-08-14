@@ -66,7 +66,7 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
         guard let filteredRoutes = filteredRoutes, row < filteredRoutes.count else { return }
         let route = filteredRoutes[row].route
         displayable.setShortName(text: route.routeId)
-        displayable.setLongName(text: route.routeLongName)
+        displayable.setLongName(text: route.routeShortName)
     }
 
     func canCellBeSelected(atRow _: Int) -> Bool {

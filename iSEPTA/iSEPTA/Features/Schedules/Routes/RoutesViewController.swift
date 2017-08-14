@@ -21,7 +21,7 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let routeCellId = "routeCell"
     let segueId = "selectStops"
     @IBOutlet var viewModel: RoutesViewModel!
-    var routeType: RouteType?
+
     var selectedRoute: Route?
 
     override func viewDidLoad() {
