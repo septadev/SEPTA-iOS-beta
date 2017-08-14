@@ -19,7 +19,7 @@ SELECT
 FROM bus_stop_directions BSD
 JOIN routes_bus R
 ON BSD.Route = R.route_id
-WHERE R.route_type :route_type
-and R.route_id :route_id
+WHERE :route_type
+and :route_id
 
 

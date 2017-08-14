@@ -166,14 +166,14 @@ SearchTextBox</string>
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om0-j5-VdR" userLabel="RouteShortName">
-                                                    <rect key="frame" x="15" y="9" width="54" height="25.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NHSL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om0-j5-VdR" userLabel="RouteShortName">
+                                                    <rect key="frame" x="15" y="9" width="60" height="25.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ula-RY-ACf" userLabel="RouteLongName">
-                                                    <rect key="frame" x="60" y="15" width="300" height="13.5"/>
+                                                    <rect key="frame" x="80" y="15" width="280" height="13.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -181,11 +181,12 @@ SearchTextBox</string>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="ula-RY-ACf" secondAttribute="bottom" constant="15" id="2cA-tz-tlD" userLabel="RouteLongNameBottom"/>
+                                                <constraint firstItem="ula-RY-ACf" firstAttribute="leading" secondItem="Om0-j5-VdR" secondAttribute="trailing" constant="5" id="AiU-yk-lYJ" userLabel="RouteShortNameRight"/>
                                                 <constraint firstItem="ula-RY-ACf" firstAttribute="top" secondItem="EF9-Ow-ydw" secondAttribute="top" constant="15" id="LNf-oZ-Nbo" userLabel="RouteLongNameTop"/>
                                                 <constraint firstItem="Om0-j5-VdR" firstAttribute="leading" secondItem="EF9-Ow-ydw" secondAttribute="leading" constant="15" id="fex-IO-aGc" userLabel="RouteShortNameLeft"/>
                                                 <constraint firstAttribute="trailing" secondItem="ula-RY-ACf" secondAttribute="trailing" constant="15" id="hYX-d4-tc4" userLabel="RouteLongNameRight"/>
                                                 <constraint firstItem="Om0-j5-VdR" firstAttribute="centerY" secondItem="EF9-Ow-ydw" secondAttribute="centerY" id="ouB-Q1-1cc" userLabel="RouteShortNameCenterY"/>
-                                                <constraint firstItem="ula-RY-ACf" firstAttribute="leading" secondItem="EF9-Ow-ydw" secondAttribute="leading" constant="60" id="y52-CW-Iaf" userLabel="RouteLongNameLeft"/>
+                                                <constraint firstItem="ula-RY-ACf" firstAttribute="leading" secondItem="EF9-Ow-ydw" secondAttribute="leading" constant="80" id="y52-CW-Iaf" userLabel="RouteLongNameLeft"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

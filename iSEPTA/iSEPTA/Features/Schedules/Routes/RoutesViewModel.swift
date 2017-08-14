@@ -6,9 +6,21 @@ import ReSwift
 
 struct FilterableRoute {
     let filterString: String
+    let sortString: String
     let route: Route
 
+    static var routeNumberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.positiveFormat = "0000"
+        return formatter
+    }()
+
     init(route: Route) {
+        if let routeInt = Int(route.routeId), let routeString = FilterableRoute.routeNumberFormatter.string(from: NSNumber(value: routeInt)) {
+            sortString = routeString + String(route.routeDirectionCode.rawValue)
+        } else {
+            sortString = "z\(route.routeId)"
+        }
         filterString = (route.routeId + route.routeLongName).lowercased()
         self.route = route
     }
@@ -36,7 +48,7 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
         didSet {
             guard let filteredRoutes = filteredRoutes else { return }
             self.filteredRoutes = filteredRoutes.sorted {
-                $0.filterString < $1.filterString
+                $0.sortString < $1.sortString
             }
         }
     }

@@ -41,13 +41,13 @@
 		582F4F381F33B4E50062A546 /* TripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F311F33B4E50062A546 /* TripTests.swift */; };
 		582F4F391F33B4E50062A546 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F321F33B4E50062A546 /* Main.swift */; };
 		5837DB431F40C617008F50BC /* RouteDirectionCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5837DB421F40C617008F50BC /* RouteDirectionCode.swift */; };
+		58902EF01F41CB0100DE6F64 /* TripStart_Route44_Dir1.json in Resources */ = {isa = PBXBuildFile; fileRef = 58F253641F40D5570075C8AD /* TripStart_Route44_Dir1.json */; };
 		58D9C42D1F3336C6002BE2E8 /* SeptaSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58D9C4231F3336C6002BE2E8 /* SeptaSchedule.framework */; };
 		58DCA0921F3E25C8002F08CF /* TransitMode+SQLQueryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DCA0911F3E25C8002F08CF /* TransitMode+SQLQueryProtocol.swift */; };
 		58DCA0951F3E280C002F08CF /* TransitMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DCA0941F3E280C002F08CF /* TransitMode.swift */; };
 		58DCA0971F3E291F002F08CF /* RoutesCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DCA0961F3E291F002F08CF /* RoutesCommand.swift */; };
 		58DCA0991F3E2944002F08CF /* CommandError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DCA0981F3E2944002F08CF /* CommandError.swift */; };
 		58DCA09C1F3E2B2B002F08CF /* SQLQueryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DCA09B1F3E2B2B002F08CF /* SQLQueryProtocol.swift */; };
-		58F253681F40D5E70075C8AD /* TripStart_Route33.json in Resources */ = {isa = PBXBuildFile; fileRef = 58F253641F40D5570075C8AD /* TripStart_Route33.json */; };
 		58F2536C1F413A380075C8AD /* TripStartCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2536B1F413A380075C8AD /* TripStartCommand.swift */; };
 		58F253711F413B050075C8AD /* TripStartCommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F253701F413B050075C8AD /* TripStartCommandTests.swift */; };
 /* End PBXBuildFile section */
@@ -121,7 +121,7 @@
 		58DCA0961F3E291F002F08CF /* RoutesCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesCommand.swift; sourceTree = "<group>"; };
 		58DCA0981F3E2944002F08CF /* CommandError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandError.swift; sourceTree = "<group>"; };
 		58DCA09B1F3E2B2B002F08CF /* SQLQueryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLQueryProtocol.swift; sourceTree = "<group>"; };
-		58F253641F40D5570075C8AD /* TripStart_Route33.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TripStart_Route33.json; sourceTree = "<group>"; };
+		58F253641F40D5570075C8AD /* TripStart_Route44_Dir1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TripStart_Route44_Dir1.json; sourceTree = "<group>"; };
 		58F2536B1F413A380075C8AD /* TripStartCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripStartCommand.swift; sourceTree = "<group>"; };
 		58F253701F413B050075C8AD /* TripStartCommandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripStartCommandTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -321,7 +321,7 @@
 		58F253631F40D5240075C8AD /* TestSQL */ = {
 			isa = PBXGroup;
 			children = (
-				58F253641F40D5570075C8AD /* TripStart_Route33.json */,
+				58F253641F40D5570075C8AD /* TripStart_Route44_Dir1.json */,
 			);
 			path = TestSQL;
 			sourceTree = "<group>";
@@ -485,9 +485,9 @@
 				581960161F3FB92B0053B3D3 /* trainRoutes.json in Resources */,
 				581960131F3FB92B0053B3D3 /* busRoutes.json in Resources */,
 				58195FFC1F3FB7810053B3D3 /* nhslRoutes.json in Resources */,
-				58F253681F40D5E70075C8AD /* TripStart_Route33.json in Resources */,
 				581960141F3FB92B0053B3D3 /* subwayRoutes.json in Resources */,
 				581960151F3FB92B0053B3D3 /* trolleyRoutes.json in Resources */,
+				58902EF01F41CB0100DE6F64 /* TripStart_Route44_Dir1.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,6 +674,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = $SRCROOT/../iSEPTA/Frameworks;
 				INFOPLIST_FILE = SeptaSchedule/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -703,6 +704,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = $SRCROOT/../iSEPTA/Frameworks;
 				INFOPLIST_FILE = SeptaSchedule/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

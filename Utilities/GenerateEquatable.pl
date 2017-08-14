@@ -3,18 +3,24 @@ use Data::Dumper;
 
 my $struct = q |
 
-	public struct Route: Codable {
-		public let routeId: String
-		public let routeShortName: String
-		public let routeLongName: String
-		public let routeDirectionCode: RouteDirectionCode
+	public struct Stop: Codable {
+		public let stopId: Int
+		public let stopName: String
+		public let stopLatitude: Double
+		public let stopLongitude: Double
+		public let wheelchairBoarding: Bool
+		public let weekdayService: Bool
+		public let saturdayService: Bool
+		public let sundayService: Bool
 
-		public init(routeId: String, routeShortName: String, routeLongName: String) {
-			self.routeId = routeId
-			self.routeShortName = routeShortName
-			self.routeLongName = routeLongName
-			self.route
+		init(stopId: Int, stopName: String, stopLatitude: Double, stopLongitude: Double, wheelchairBoarding: Bool) {
+			self.stopId = stopId
+			self.stopName = stopName
+			self.stopLatitude = stopLatitude
+			self.stopLongitude = stopLongitude
+			self.wheelchairBoarding = wheelchairBoarding
 		}
+	}
 		|;
 
 my @initVars = ();

@@ -5,7 +5,7 @@ import XCTest
 @testable import SeptaSchedule
 
 class RoutesCommandTests: XCTestCase {
-    let tripStartCommand = TripStartCommand.sharedInstance
+
     let decoder = JSONDecoder()
 
     func testTrainRoutes_NotNil() {

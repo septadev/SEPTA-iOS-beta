@@ -5,7 +5,7 @@ import XCTest
 
 /// SQLCommandTests purpose: Verifies that data objects are correctly returned from commands
 class BusCommandTests: XCTestCase {
-    let cmd = BusCommands()
+    // Xlet cmd = BusCommands()
     /*
      func testCallToBusRoutes() {
 

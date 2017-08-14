@@ -36,18 +36,19 @@ ORDER BY BSD.route_id;
 -- give me all the Westbound stops on route 44
 
 SELECT
-  S.stop_id,
-  S.stop_name,
-  S.stop_lat,
-  S.stop_lon,
+  S.stop_id stopId,
+  S.stop_name stopName,
+  cast (S.stop_lat as decimal) stopLatitude,
+  cast (S.stop_lon as decimal) stopLongitude,
+  case when S.wheelchair_boarding = '1' then 1 else 0  end wheelchairBoarding,
   MAX(CASE WHEN T.service_id = '1'
-    THEN 'true' END) AS Weekday,
+    THEN 1 else 0 END) weekdayService,
   MAX(CASE WHEN
     T.service_id = '2'
-    THEN 'true' END) AS Saturday,
+    THEN 1  else 0 END) saturdayService,
   MAX(CASE WHEN
     T.service_id = '3'
-    THEN 'true' END) AS Sunday
+    THEN 1  else 0 END) AS sundayService
 FROM trips_bus T
 JOIN routes_bus R
 ON T.route_id = R.route_id

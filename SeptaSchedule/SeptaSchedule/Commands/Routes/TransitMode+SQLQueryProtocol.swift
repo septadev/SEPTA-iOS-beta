@@ -8,13 +8,13 @@ extension TransitMode: SQLQueryProtocol {
 
         switch self {
         case .bus:
-            return [[":route_id", " = R.route_id"], [":route_type", " = 3"]]
+            return [[":route_id", " R.route_id not in ( 'BSO', 'BSL', 'MFL' ) "], [":route_type", " R.route_type = 3"]]
         case .nhsl:
-            return [[":route_id", " = 'NHSL'"], [":route_type", " = R.route_type "]]
+            return [[":route_id", "  R.route_id = 'NHSL'"], [":route_type", " 1 = 1 "]]
         case .trolley:
-            return [[":route_id", " not in ( 'NHSL' ) "], [":route_type", " = 0 "]]
+            return [[":route_id", " R.route_id != 'NHSL' "], [":route_type", "  R.route_type = 0 "]]
         case .subway:
-            return [[":route_id", "  in ( 'BSO', 'BSL', 'MFL' ) "], [":route_type", " = R.route_type "]]
+            return [[":route_id", " R.route_id in ( 'BSO', 'BSL', 'MFL' ) "], [":route_type", "1 = 1 "]]
         case .rail:
             return [[String]]()
         }
