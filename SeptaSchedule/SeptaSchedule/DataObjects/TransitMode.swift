@@ -2,8 +2,6 @@
 
 import Foundation
 
-import Foundation
-
 public enum TransitMode: String, Codable {
     case bus
     case rail

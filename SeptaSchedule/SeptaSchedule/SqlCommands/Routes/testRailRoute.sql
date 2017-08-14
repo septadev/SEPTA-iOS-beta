@@ -10,5 +10,5 @@
 
 
 select
-  route_id, route_short_name, route_long_name, route_type
+  route_id, route_short_name, route_long_name, route_type, 0 dircode
 from routes_rail;

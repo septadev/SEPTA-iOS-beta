@@ -1,0 +1,1 @@
+Select dircode from bus_stop_directions GROUP BY  dircode;

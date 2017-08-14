@@ -1,14 +1,98 @@
 [
   {
-    "route_id": "BSL",
-    "route_short_name": "BSL",
-    "route_long_name": "ATT Station to Fern Rock TC",
-    "route_type": 1
+    "route_id": "10",
+    "route_short_name": "to 13th-Market",
+    "route_long_name": "13th-Market to 63rd-Malvern",
+    "dircode": "0"
   },
   {
-    "route_id": "MFL",
-    "route_short_name": "MFL",
-    "route_long_name": "Frankford TC to 69th St TC",
-    "route_type": 1
+    "route_id": "10",
+    "route_short_name": "to 63rd-Malvern",
+    "route_long_name": "13th-Market to 63rd-Malvern",
+    "dircode": "1"
+  },
+  {
+    "route_id": "11",
+    "route_short_name": "to 13th-Market",
+    "route_long_name": "13th-Market to Darby Trans Cntr",
+    "dircode": "0"
+  },
+  {
+    "route_id": "11",
+    "route_short_name": "to Darby Transportation Center",
+    "route_long_name": "13th-Market to Darby Trans Cntr",
+    "dircode": "1"
+  },
+  {
+    "route_id": "13",
+    "route_short_name": "to 13th-Market",
+    "route_long_name": "13th-Market to Yeadon-Darby",
+    "dircode": "0"
+  },
+  {
+    "route_id": "13",
+    "route_short_name": "to Yeadon and Darby Transportation Center",
+    "route_long_name": "13th-Market to Yeadon-Darby",
+    "dircode": "1"
+  },
+  {
+    "route_id": "15",
+    "route_short_name": "to 63rd-Girard",
+    "route_long_name": "63rd-Girard to Richmond-Westmorelnd",
+    "dircode": "0"
+  },
+  {
+    "route_id": "15",
+    "route_short_name": "to Richmond-Westmoreland",
+    "route_long_name": "63rd-Girard to Richmond-Westmorelnd",
+    "dircode": "1"
+  },
+  {
+    "route_id": "34",
+    "route_short_name": "to 13th-Market",
+    "route_long_name": "13th-Market to 61st-Baltimore",
+    "dircode": "0"
+  },
+  {
+    "route_id": "34",
+    "route_short_name": "to 61st-Baltimore",
+    "route_long_name": "13th-Market to 61st-Baltimore",
+    "dircode": "1"
+  },
+  {
+    "route_id": "36",
+    "route_short_name": "to 13th-Market",
+    "route_long_name": "13th-Market to 80th-Eastwick",
+    "dircode": "0"
+  },
+  {
+    "route_id": "36",
+    "route_short_name": "to 80th-Eastwick",
+    "route_long_name": "13th-Market to 80th-Eastwick",
+    "dircode": "1"
+  },
+  {
+    "route_id": "101",
+    "route_short_name": "to Media",
+    "route_long_name": "Media to 69th St TC",
+    "dircode": "0"
+  },
+  {
+    "route_id": "101",
+    "route_short_name": "to 69th Street Transportation Center",
+    "route_long_name": "Media to 69th St TC",
+    "dircode": "1"
+  },
+  {
+    "route_id": "102",
+    "route_short_name": "to Sharon Hill",
+    "route_long_name": "Sharon Hill to 69th St TC",
+    "dircode": "0"
+  },
+  {
+    "route_id": "102",
+    "route_short_name": "to 69th Street Transportation Center",
+    "route_long_name": "Sharon Hill to 69th St TC",
+    "dircode": "1"
   }
 ]

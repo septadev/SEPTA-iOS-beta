@@ -5,48 +5,20 @@ import XCTest
 @testable import SeptaSchedule
 
 class RoutesCommandTests: XCTestCase {
-    let routesCommand = RoutesCommand.sharedInstance
+    let tripStartCommand = TripStartCommand.sharedInstance
     let decoder = JSONDecoder()
 
     func testTrainRoutes_NotNil() {
-        let json = extractJSON(fileName: "trainRoutes")
+        let json = extractJSON(fileName: "busRoutes")
         XCTAssertNotNil(json)
     }
 
-    func testTrainRoutes() {
-        let expectation = self.expectation(description: "Should Return")
-        let json = extractJSON(fileName: "trainRoutes")
-        var expectedResult = try! decoder.decode([Route].self, from: json)
-        expectedResult.sort { $0.routeId < $1.routeId
-        }
-
-        routesCommand.routes(forTransitMode: .rail) { routes, error in
-            var actualResult = routes!
-            actualResult.sort { $0.routeId < $1.routeId }
-            XCTAssertEqual(expectedResult, actualResult)
-            XCTAssertNil(error)
-            expectation.fulfill()
-        }
-        waitForExpectations(timeout: 2) { error in
-            if let error = error {
-                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
-            }
-        }
-    }
-
-    func testBusRoutes() {
+    func testBusRoutes_decoding() {
         let expectation = self.expectation(description: "Should Return")
         let json = extractJSON(fileName: "busRoutes")
-        var expectedResult = try! decoder.decode([Route].self, from: json)
-        expectedResult.sort { $0.routeId < $1.routeId }
-
-        routesCommand.routes(forTransitMode: .bus) { routes, error in
-            var actualResult = routes!
-            actualResult.sort { $0.routeId < $1.routeId }
-            XCTAssertEqual(expectedResult, actualResult)
-            XCTAssertNil(error)
-            expectation.fulfill()
-        }
+        let expectedResult = try! decoder.decode([Route].self, from: json)
+        XCTAssertNotNil(expectedResult)
+        expectation.fulfill()
         waitForExpectations(timeout: 2) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
@@ -54,18 +26,13 @@ class RoutesCommandTests: XCTestCase {
         }
     }
 
-    func testSubwayRoutes() {
+    func testBusRoutes_makeSet() {
         let expectation = self.expectation(description: "Should Return")
-        let json = extractJSON(fileName: "subwayRoutes")
-        var expectedResult = try! decoder.decode([Route].self, from: json)
-        expectedResult.sort { $0.routeId < $1.routeId }
-        routesCommand.routes(forTransitMode: .subway) { routes, error in
-            var actualResult = routes!
-            actualResult.sort { $0.routeId < $1.routeId }
-            XCTAssertEqual(expectedResult, actualResult)
-            XCTAssertNil(error)
-            expectation.fulfill()
-        }
+        let json = extractJSON(fileName: "busRoutes")
+        let expectedResult = try! decoder.decode([Route].self, from: json)
+        _ = Set(expectedResult)
+
+        expectation.fulfill()
         waitForExpectations(timeout: 2) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
@@ -73,18 +40,37 @@ class RoutesCommandTests: XCTestCase {
         }
     }
 
-    func testNHSLRoutes() {
+    func testBusRoutes_RunCommandAndCompare() {
+        let expectation = self.expectation(description: "Should Return")
+        let json = extractJSON(fileName: "busRoutes")
+        let expectedResult = try! decoder.decode([Route].self, from: json)
+        let expectedResultSet = Set(expectedResult)
+        RoutesCommand.sharedInstance.routes(forTransitMode: TransitMode.bus) { routes, error in
+            let actualResultSet = Set(routes!)
+            XCTAssertNil(error)
+            XCTAssertEqual(expectedResultSet, actualResultSet)
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 2) { error in
+            if let error = error {
+                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+            }
+        }
+    }
+
+    func testNHSL_RunCommandAndCompare() {
         let expectation = self.expectation(description: "Should Return")
         let json = extractJSON(fileName: "nhslRoutes")
-        var expectedResult = try! decoder.decode([Route].self, from: json)
-        expectedResult.sort { $0.routeId < $1.routeId }
-        routesCommand.routes(forTransitMode: .nhsl) { routes, error in
-            var actualResult = routes!
-            actualResult.sort { $0.routeId < $1.routeId }
-            XCTAssertEqual(expectedResult, actualResult)
+        let expectedResult = try! decoder.decode([Route].self, from: json)
+        let expectedResultSet = Set(expectedResult)
+        RoutesCommand.sharedInstance.routes(forTransitMode: TransitMode.nhsl) { routes, error in
+            let actualResultSet = Set(routes!)
             XCTAssertNil(error)
+            XCTAssertEqual(expectedResultSet, actualResultSet)
             expectation.fulfill()
         }
+
         waitForExpectations(timeout: 2) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
@@ -92,18 +78,37 @@ class RoutesCommandTests: XCTestCase {
         }
     }
 
-    func testTrolleyRoutes() {
+    func testSubway_RunCommandAndCompare() {
         let expectation = self.expectation(description: "Should Return")
-        let json = extractJSON(fileName: "trolleyRoutes")
-        var expectedResult = try! decoder.decode([Route].self, from: json)
-        expectedResult.sort { $0.routeId < $1.routeId }
-        routesCommand.routes(forTransitMode: .trolley) { routes, error in
-            var actualResult = routes!
-            actualResult.sort { $0.routeId < $1.routeId }
-            XCTAssertEqual(expectedResult, actualResult)
+        let json = extractJSON(fileName: "subwayRoutes")
+        let expectedResult = try! decoder.decode([Route].self, from: json)
+        let expectedResultSet = Set(expectedResult)
+        RoutesCommand.sharedInstance.routes(forTransitMode: TransitMode.subway) { routes, error in
+            let actualResultSet = Set(routes!)
             XCTAssertNil(error)
+            XCTAssertEqual(expectedResultSet, actualResultSet)
             expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 2) { error in
+            if let error = error {
+                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+            }
+        }
+    }
+
+    func testRail_RunCommandAndCompare() {
+        let expectation = self.expectation(description: "Should Return")
+        let json = extractJSON(fileName: "trainRoutes")
+        let expectedResult = try! decoder.decode([Route].self, from: json)
+        let expectedResultSet = Set(expectedResult)
+        RoutesCommand.sharedInstance.routes(forTransitMode: TransitMode.rail) { routes, error in
+            let actualResultSet = Set(routes!)
+            XCTAssertNil(error)
+            XCTAssertEqual(expectedResultSet, actualResultSet)
+            expectation.fulfill()
+        }
+
         waitForExpectations(timeout: 2) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
