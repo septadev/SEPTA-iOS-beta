@@ -51,6 +51,10 @@
 		58DCA0971F3E291F002F08CF /* RoutesCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DCA0961F3E291F002F08CF /* RoutesCommand.swift */; };
 		58DCA0991F3E2944002F08CF /* CommandError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DCA0981F3E2944002F08CF /* CommandError.swift */; };
 		58DCA09C1F3E2B2B002F08CF /* SQLQueryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DCA09B1F3E2B2B002F08CF /* SQLQueryProtocol.swift */; };
+		58EF3D6A1F420AD6005EE2F1 /* TripStart_Trolley_Route102_Dir0.json in Resources */ = {isa = PBXBuildFile; fileRef = 58EF3D691F420AD6005EE2F1 /* TripStart_Trolley_Route102_Dir0.json */; };
+		58EF3D6D1F420BE9005EE2F1 /* TripStart_NHSL_Dir1.json in Resources */ = {isa = PBXBuildFile; fileRef = 58EF3D6B1F420BCE005EE2F1 /* TripStart_NHSL_Dir1.json */; };
+		58EF3D6F1F420CDC005EE2F1 /* TripStart_Subway_Dir1.json in Resources */ = {isa = PBXBuildFile; fileRef = 58EF3D6E1F420CDC005EE2F1 /* TripStart_Subway_Dir1.json */; };
+		58EF3D711F4210CD005EE2F1 /* TripStart_Rail_Fox_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 58EF3D701F4210CD005EE2F1 /* TripStart_Rail_Fox_0.json */; };
 		58F2536C1F413A380075C8AD /* TripStartCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2536B1F413A380075C8AD /* TripStartCommand.swift */; };
 		58F253711F413B050075C8AD /* TripStartCommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F253701F413B050075C8AD /* TripStartCommandTests.swift */; };
 /* End PBXBuildFile section */
@@ -127,6 +131,10 @@
 		58DCA0961F3E291F002F08CF /* RoutesCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesCommand.swift; sourceTree = "<group>"; };
 		58DCA0981F3E2944002F08CF /* CommandError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandError.swift; sourceTree = "<group>"; };
 		58DCA09B1F3E2B2B002F08CF /* SQLQueryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLQueryProtocol.swift; sourceTree = "<group>"; };
+		58EF3D691F420AD6005EE2F1 /* TripStart_Trolley_Route102_Dir0.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TripStart_Trolley_Route102_Dir0.json; sourceTree = "<group>"; };
+		58EF3D6B1F420BCE005EE2F1 /* TripStart_NHSL_Dir1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TripStart_NHSL_Dir1.json; sourceTree = "<group>"; };
+		58EF3D6E1F420CDC005EE2F1 /* TripStart_Subway_Dir1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TripStart_Subway_Dir1.json; sourceTree = "<group>"; };
+		58EF3D701F4210CD005EE2F1 /* TripStart_Rail_Fox_0.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TripStart_Rail_Fox_0.json; sourceTree = "<group>"; };
 		58F253641F40D5570075C8AD /* TripStart_Route44_Dir1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TripStart_Route44_Dir1.json; sourceTree = "<group>"; };
 		58F2536B1F413A380075C8AD /* TripStartCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripStartCommand.swift; sourceTree = "<group>"; };
 		58F253701F413B050075C8AD /* TripStartCommandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripStartCommandTests.swift; sourceTree = "<group>"; };
@@ -328,6 +336,10 @@
 			isa = PBXGroup;
 			children = (
 				58F253641F40D5570075C8AD /* TripStart_Route44_Dir1.json */,
+				58EF3D691F420AD6005EE2F1 /* TripStart_Trolley_Route102_Dir0.json */,
+				58EF3D6B1F420BCE005EE2F1 /* TripStart_NHSL_Dir1.json */,
+				58EF3D6E1F420CDC005EE2F1 /* TripStart_Subway_Dir1.json */,
+				58EF3D701F4210CD005EE2F1 /* TripStart_Rail_Fox_0.json */,
 			);
 			path = TestSQL;
 			sourceTree = "<group>";
@@ -493,8 +505,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58EF3D6D1F420BE9005EE2F1 /* TripStart_NHSL_Dir1.json in Resources */,
 				581960161F3FB92B0053B3D3 /* trainRoutes.json in Resources */,
+				58EF3D711F4210CD005EE2F1 /* TripStart_Rail_Fox_0.json in Resources */,
 				581960131F3FB92B0053B3D3 /* busRoutes.json in Resources */,
+				58EF3D6A1F420AD6005EE2F1 /* TripStart_Trolley_Route102_Dir0.json in Resources */,
+				58EF3D6F1F420CDC005EE2F1 /* TripStart_Subway_Dir1.json in Resources */,
 				58195FFC1F3FB7810053B3D3 /* nhslRoutes.json in Resources */,
 				581960141F3FB92B0053B3D3 /* subwayRoutes.json in Resources */,
 				581960151F3FB92B0053B3D3 /* trolleyRoutes.json in Resources */,

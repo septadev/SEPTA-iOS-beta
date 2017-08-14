@@ -12,6 +12,10 @@ import XCTest
 
 class TripStartCommandTests: XCTestCase {
     let busTripFileName = "TripStart_Route44_Dir1"
+    let trolleyTripFileName = "TripStart_Trolley_Route102_Dir0"
+    let nhslTripFileName = "TripStart_NHSL_Dir1"
+    let subwayTripFileName = "TripStart_Subway_Dir1"
+    let railTripFileName = "TripStart_Rail_Fox_0"
 
     let decoder = JSONDecoder()
 
@@ -68,61 +72,87 @@ class TripStartCommandTests: XCTestCase {
         }
     }
 
-    //
-    //    func testNHSL_RunCommandAndCompare() {
-    //        let expectation = self.expectation(description: "Should Return")
-    //        let json = extractJSON(fileName: "nhslRoutes")
-    //        let expectedResult = try! decoder.decode([Route].self, from: json)
-    //        let expectedResultSet = Set(expectedResult)
-    //        RoutesCommand.sharedInstance.routes(forTransitMode: TransitMode.nhsl) { routes, error in
-    //            let actualResultSet = Set(routes!)
-    //            XCTAssertNil(error)
-    //            XCTAssertEqual(expectedResultSet, actualResultSet)
-    //            expectation.fulfill()
-    //        }
-    //
-    //        waitForExpectations(timeout: 2) { error in
-    //            if let error = error {
-    //                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
-    //            }
-    //        }
-    //    }
-    //
-    //    func testSubway_RunCommandAndCompare() {
-    //        let expectation = self.expectation(description: "Should Return")
-    //        let json = extractJSON(fileName: "subwayRoutes")
-    //        let expectedResult = try! decoder.decode([Route].self, from: json)
-    //        let expectedResultSet = Set(expectedResult)
-    //        RoutesCommand.sharedInstance.routes(forTransitMode: TransitMode.subway) { routes, error in
-    //            let actualResultSet = Set(routes!)
-    //            XCTAssertNil(error)
-    //            XCTAssertEqual(expectedResultSet, actualResultSet)
-    //            expectation.fulfill()
-    //        }
-    //
-    //        waitForExpectations(timeout: 2) { error in
-    //            if let error = error {
-    //                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
-    //            }
-    //        }
-    //    }
-    //
-    //    func testRail_RunCommandAndCompare() {
-    //        let expectation = self.expectation(description: "Should Return")
-    //        let json = extractJSON(fileName: "trainRoutes")
-    //        let expectedResult = try! decoder.decode([Route].self, from: json)
-    //        let expectedResultSet = Set(expectedResult)
-    //        RoutesCommand.sharedInstance.routes(forTransitMode: TransitMode.rail) { routes, error in
-    //            let actualResultSet = Set(routes!)
-    //            XCTAssertNil(error)
-    //            XCTAssertEqual(expectedResultSet, actualResultSet)
-    //            expectation.fulfill()
-    //        }
-    //
-    //        waitForExpectations(timeout: 2) { error in
-    //            if let error = error {
-    //                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
-    //            }
-    //        }
-    //    }
+    func testTripTrolleyStart_RunCommandAndCompare() {
+        let expectation = self.expectation(description: "Should Return")
+        let json = extractJSON(fileName: busTripFileName)
+        let expectedResult: [Stop] = try! decoder.decode([Stop].self, from: json)
+
+        let route = Route(routeId: "102", routeShortName: "", routeLongName: "", routeDirectionCode: .outbound)
+        TripStartCommand.sharedInstance.stops(forTransitMode: TransitMode.bus, forRoute: route) { stops, _ in
+            guard let stops = stops else { XCTFail("Should have returned some records"); return }
+            for stop in expectedResult {
+                XCTAssertTrue(stops.contains(stop), "Could not find \(stop)")
+            }
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 25) { error in
+            if let error = error {
+                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+            }
+        }
+    }
+
+    func testTripNHSLStart_RunCommandAndCompare() {
+        let expectation = self.expectation(description: "Should Return")
+        let json = extractJSON(fileName: nhslTripFileName)
+        let expectedResult: [Stop] = try! decoder.decode([Stop].self, from: json)
+
+        let route = Route(routeId: "NHSL", routeShortName: "", routeLongName: "", routeDirectionCode: .inbound)
+        TripStartCommand.sharedInstance.stops(forTransitMode: TransitMode.bus, forRoute: route) { stops, _ in
+            guard let stops = stops else { XCTFail("Should have returned some records"); return }
+            for stop in expectedResult {
+                XCTAssertTrue(stops.contains(stop), "Could not find \(stop)")
+            }
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 25) { error in
+            if let error = error {
+                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+            }
+        }
+    }
+
+    func testTripSubwayStart_RunCommandAndCompare() {
+        let expectation = self.expectation(description: "Should Return")
+        let json = extractJSON(fileName: subwayTripFileName)
+        let expectedResult: [Stop] = try! decoder.decode([Stop].self, from: json)
+
+        let route = Route(routeId: "BSL", routeShortName: "", routeLongName: "", routeDirectionCode: .inbound)
+        TripStartCommand.sharedInstance.stops(forTransitMode: TransitMode.bus, forRoute: route) { stops, _ in
+            guard let stops = stops else { XCTFail("Should have returned some records"); return }
+            for stop in expectedResult {
+                XCTAssertTrue(stops.contains(stop), "Could not find \(stop)")
+            }
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 25) { error in
+            if let error = error {
+                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+            }
+        }
+    }
+
+    func testTripRailStart_RunCommandAndCompare() {
+        let expectation = self.expectation(description: "Should Return")
+        let json = extractJSON(fileName: railTripFileName)
+        let expectedResult: [Stop] = try! decoder.decode([Stop].self, from: json)
+
+        let route = Route(routeId: "FOX", routeShortName: "", routeLongName: "", routeDirectionCode: .outbound)
+        TripStartCommand.sharedInstance.stops(forTransitMode: TransitMode.rail, forRoute: route) { stops, _ in
+            guard let stops = stops else { XCTFail("Should have returned some records"); return }
+            for stop in expectedResult {
+                XCTAssertTrue(stops.contains(stop), "Could not find \(stop)")
+            }
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 25) { error in
+            if let error = error {
+                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
+            }
+        }
+    }
 }

@@ -14,12 +14,7 @@ class TripStartSQLQuery: SQLQueryProtocol {
     let routeDirecctionCodeString: String
 
     var sqlBindings: [[String]] {
-        switch transitMode {
-        case .rail:
-            return [[String]]()
-        default:
-            return [[":route_id", routeId], [":direction_id", routeDirecctionCodeString]]
-        }
+        return [[":route_id", routeId], [":direction_id", routeDirecctionCodeString]]
     }
 
     var fileName: String {
