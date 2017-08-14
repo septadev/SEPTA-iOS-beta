@@ -70,7 +70,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="k7n-XP-fHe"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Transit Mode" id="fIz-Cf-6OQ"/>
+                    <navigationItem key="navigationItem" title="Schedules" id="fIz-Cf-6OQ"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="JWx-ou-dAj" id="E4N-FK-sNY"/>
@@ -94,16 +94,6 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <viewLayoutGuide key="safeArea" id="eBi-Cq-E5z"/>
                 </view>
-                <navigationItem title="Schedules" id="xUl-pf-jYs"/>
-                <navigationBar alpha="0.25" contentMode="scaleToFill" id="Dxo-2R-NKC">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="0.017948382969999999" blue="0.093025084879999997" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="tintColor" red="1" green="0.96728127850000001" blue="0.35519992830000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <items>
-                        <navigationItem title="Title" id="J7r-M1-U8B"/>
-                    </items>
-                </navigationBar>
             </objects>
             <point key="canvasLocation" x="-564" y="197.45127436281859"/>
         </scene>
@@ -215,6 +205,7 @@ SearchTextBox</string>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="fCN-1s-A90" id="ECq-YJ-eD4"/>
+                        <outlet property="titleLabel" destination="zz6-hF-3Zn" id="I2c-bx-uGc"/>
                         <outlet property="viewModel" destination="Jge-ZX-dai" id="DJN-ci-UCa"/>
                     </connections>
                 </viewController>

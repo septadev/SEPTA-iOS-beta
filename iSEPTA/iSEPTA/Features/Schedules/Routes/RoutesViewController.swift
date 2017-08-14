@@ -7,6 +7,7 @@ import ReSwift
 class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var titleLabel: UILabel!
     static var viewController: ViewController = .routesViewController
     static var navigationController: NavigationController = .schedules
 
@@ -26,6 +27,9 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let selectedTransitMode = store.state.scheduleState.scheduleRequest?.transitMode {
+            titleLabel.text = selectedTransitMode.routeTitle()
+        }
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
