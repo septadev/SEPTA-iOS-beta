@@ -93,10 +93,10 @@ SELECT
 FROM trips_bus T
 JOIN routes_bus R
 ON T.route_id = R.route_id
-JOIN stops_bus S
-ON R.route_id = T.route_id
 JOIN stop_times_bus ST
-ON T.trip_id = ST.trip_id AND S.stop_id = ST.stop_id
+ON T.trip_id = ST.trip_id
+join stops_bus S
+  on ST.stop_id = S.Stop_id
 JOIN (SELECT
   T.trip_id,
   ST.stop_sequence

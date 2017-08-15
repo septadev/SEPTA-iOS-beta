@@ -78,7 +78,7 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
         case .starts:
             titleLabel.text = "Select Start"
         case .ends:
-            titleLabel.text = "Select Stop"
+            titleLabel.text = "Select End"
         }
         store.unsubscribe(self)
     }
