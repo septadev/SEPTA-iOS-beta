@@ -73,12 +73,17 @@
                     <navigationItem key="navigationItem" title="Schedules" id="fIz-Cf-6OQ"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="buttonView" destination="cOB-du-LRG" id="bi3-nK-egN"/>
+                        <outlet property="mapView" destination="GJS-IR-bDR" id="b8u-Mo-v6f"/>
                         <outlet property="tableView" destination="JWx-ou-dAj" id="E4N-FK-sNY"/>
                         <outlet property="tableViewFooter" destination="t3k-vt-DEG" id="GMN-YW-enj"/>
                         <outlet property="tableViewHeader" destination="1c9-Es-ZDV" id="Wwf-2z-Mox"/>
                         <outletCollection property="transitModesToolbarElements" destination="xvH-nt-tSZ" collectionClass="NSMutableArray" id="DgQ-uS-LDf"/>
                         <outletCollection property="transitModesToolbarElements" destination="AHW-A1-IWn" collectionClass="NSMutableArray" id="thX-SK-ef1"/>
                         <outletCollection property="transitModesToolbarElements" destination="Hox-B9-Hbl" collectionClass="NSMutableArray" id="I00-u0-FXk"/>
+                        <outletCollection property="buttons" destination="NLQ-jF-p64" collectionClass="NSMutableArray" id="quH-Pz-Rbq"/>
+                        <outletCollection property="buttons" destination="NLQ-jF-p64" collectionClass="NSMutableArray" id="Zld-Tm-QGW"/>
+                        <outletCollection property="buttons" destination="2Zi-hK-ow3" collectionClass="NSMutableArray" id="f8U-HA-2Ds"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFf-Fy-dWz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -89,9 +94,51 @@
                     <viewLayoutGuide key="safeArea" id="59y-47-sNx"/>
                 </view>
                 <view contentMode="scaleToFill" id="t3k-vt-DEG" userLabel="TableViewFooter">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <rect key="frame" x="0.0" y="0.0" width="439" height="400"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cOB-du-LRG" userLabel="ButtonView">
+                            <rect key="frame" x="44" y="15" width="350" height="60"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLQ-jF-p64">
+                                    <rect key="frame" x="97" y="15" width="39" height="30"/>
+                                    <state key="normal" title="Reset"/>
+                                    <connections>
+                                        <action selector="resetButtonTapped:" destination="G8I-06-w6m" eventType="touchUpInside" id="fvU-5C-9u0"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Zi-hK-ow3">
+                                    <rect key="frame" x="186" y="15" width="109" height="30"/>
+                                    <state key="normal" title="View Schedules"/>
+                                    <connections>
+                                        <action selector="ViewSchedulesButtonTapped:" destination="G8I-06-w6m" eventType="touchUpInside" id="ObK-Xc-KgC"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="NLQ-jF-p64" secondAttribute="bottom" constant="15" id="FxY-B6-BfI" userLabel="ResetBottom"/>
+                                <constraint firstAttribute="bottom" secondItem="2Zi-hK-ow3" secondAttribute="bottom" constant="15" id="J6J-hH-g00" userLabel="ViewBottom"/>
+                                <constraint firstAttribute="trailing" secondItem="2Zi-hK-ow3" secondAttribute="trailing" constant="55" id="Kbo-EP-Xq5" userLabel="ViewRight"/>
+                                <constraint firstItem="NLQ-jF-p64" firstAttribute="leading" secondItem="cOB-du-LRG" secondAttribute="leading" constant="97" id="Y2G-mF-UGf" userLabel="ResetLeft"/>
+                                <constraint firstItem="2Zi-hK-ow3" firstAttribute="leading" secondItem="NLQ-jF-p64" secondAttribute="trailing" constant="50" id="hbq-3R-zpo" userLabel="ResetRight"/>
+                                <constraint firstItem="2Zi-hK-ow3" firstAttribute="top" secondItem="cOB-du-LRG" secondAttribute="top" constant="15" id="y7j-Tj-E56" userLabel="ViewTop"/>
+                                <constraint firstItem="NLQ-jF-p64" firstAttribute="top" secondItem="cOB-du-LRG" secondAttribute="top" constant="15" id="ynQ-cG-CJD" userLabel="ResetTop"/>
+                            </constraints>
+                        </view>
+                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GJS-IR-bDR">
+                            <rect key="frame" x="0.0" y="90" width="439" height="310"/>
+                        </mapView>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="cOB-du-LRG" firstAttribute="centerX" secondItem="eBi-Cq-E5z" secondAttribute="centerX" id="5eI-JY-acw" userLabel="ButtonCenterX"/>
+                        <constraint firstItem="GJS-IR-bDR" firstAttribute="leading" secondItem="eBi-Cq-E5z" secondAttribute="leading" id="K1Y-Xg-f6T" userLabel="MapViewLeft"/>
+                        <constraint firstItem="GJS-IR-bDR" firstAttribute="top" secondItem="cOB-du-LRG" secondAttribute="bottom" constant="15" id="KOz-YS-Bcf" userLabel="MapViewTop"/>
+                        <constraint firstItem="cOB-du-LRG" firstAttribute="top" secondItem="eBi-Cq-E5z" secondAttribute="top" constant="15" id="f5H-RE-yLe" userLabel="ButtonViewTop"/>
+                        <constraint firstItem="eBi-Cq-E5z" firstAttribute="bottom" secondItem="GJS-IR-bDR" secondAttribute="bottom" id="ppu-zE-PU0" userLabel="MapViewBottom"/>
+                        <constraint firstItem="eBi-Cq-E5z" firstAttribute="trailing" secondItem="GJS-IR-bDR" secondAttribute="trailing" id="y4H-rw-uFZ" userLabel="MapViewRight"/>
+                    </constraints>
                     <viewLayoutGuide key="safeArea" id="eBi-Cq-E5z"/>
                 </view>
             </objects>

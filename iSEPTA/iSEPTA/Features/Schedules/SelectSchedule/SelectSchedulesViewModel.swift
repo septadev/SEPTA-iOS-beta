@@ -12,10 +12,15 @@ fileprivate struct RowDisplayModel {
     let targetController: ViewController
 }
 
+protocol SchedulesViewModelDelegate: AnyObject {
+    func formIsComplete(_ complete: Bool)
+}
+
 class SelectSchedulesViewModel: StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleRequest?
     var scheduleRequest: ScheduleRequest?
     weak var delegate: UpdateableFromViewModel?
+    weak var schedulesDelegate: SchedulesViewModelDelegate?
 
     fileprivate var selectRouteRowDisplayModel: RowDisplayModel?
     fileprivate var selectStartRowDisplayModel: RowDisplayModel?
@@ -42,6 +47,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
         scheduleRequest = state
         buildDisplayModel()
         delegate?.viewModelUpdated()
+        schedulesDelegate?.formIsComplete(scheduleRequest?.selectedEnd != nil)
     }
 
     func buildDisplayModel() {

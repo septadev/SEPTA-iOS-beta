@@ -3,9 +3,19 @@
 import UIKit
 import SeptaSchedule
 import ReSwift
+import MapKit
 
-class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController {
+class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController, SchedulesViewModelDelegate {
+    @IBOutlet weak var mapView: MKMapView!
     static var viewController: ViewController = .selectSchedules
+
+    @IBOutlet weak var buttonView: UIView!
+    @IBOutlet var buttons: [UIButton]!
+    @IBAction func ViewSchedulesButtonTapped(_: Any) {
+    }
+
+    @IBAction func resetButtonTapped(_: Any) {
+    }
 
     let cellId = "singleStringCell"
     @IBOutlet var tableViewHeader: UIView!
@@ -19,6 +29,9 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
         view.backgroundColor = UIColor(red: 0.600, green: 0.600, blue: 0.600, alpha: 1.000)
         tableView.tableFooterView = tableViewFooter
         viewModel.subscribe()
+        viewModel.schedulesDelegate = self
+        buttonView.isHidden = true
+        mapView.isHidden = true
     }
 
     override func viewWillAppear(_: Bool) {
@@ -53,5 +66,10 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
 
     func viewModelUpdated() {
         tableView.reloadData()
+    }
+
+    func formIsComplete(_ isComplete: Bool) {
+        buttonView.isHidden = !isComplete
+        mapView.isHidden = !isComplete
     }
 }
