@@ -35,7 +35,7 @@ ORDER BY BSD.route_id;
 
 -- give me all the Westbound stops on route 44
 
-SELECT 
+SELECT
   S.stop_id                   stopId,
   S.stop_name                 stopName,
   cast(S.stop_lat AS DECIMAL) stopLatitude,
@@ -72,18 +72,24 @@ GROUP BY S.stop_id, S.stop_name, S.stop_lat, S.stop_lon, S.wheelchair_boarding;
 
 
 SELECT
-  S.stop_id,
-  S.stop_name,
-  S.stop_lat,
-  S.stop_lon,
+  S.stop_id                   stopId,
+  S.stop_name                 stopName,
+  cast(S.stop_lat AS DECIMAL) stopLatitude,
+  cast(S.stop_lon AS DECIMAL) stopLongitude,
+  CASE WHEN S.wheelchair_boarding = '1'
+    THEN 1
+  ELSE 0 END                  wheelchairBoarding,
   MAX(CASE WHEN T.service_id = '1'
-    THEN 'true' END) AS Weekday,
+    THEN 1
+      ELSE 0 END)             weekdayService,
   MAX(CASE WHEN
     T.service_id = '2'
-    THEN 'true' END) AS Saturday,
+    THEN 1
+      ELSE 0 END)             saturdayService,
   MAX(CASE WHEN
     T.service_id = '3'
-    THEN 'true' END) AS Sunday
+    THEN 1
+      ELSE 0 END) AS          sundayService
 FROM trips_bus T
 JOIN routes_bus R
 ON T.route_id = R.route_id
@@ -97,9 +103,9 @@ JOIN (SELECT
 FROM trips_bus T
 JOIN stop_times_bus ST
 ON T.trip_id = ST.trip_id
-WHERE route_id = 44 AND T.direction_id = 0 AND ST.stop_id = 696) Start
+WHERE route_id = '44' AND T.direction_id = 0 AND ST.stop_id = 696) Start
 ON T.trip_id = Start.trip_id AND ST.stop_sequence > Start.stop_sequence
-WHERE T.route_id = '44' AND direction_id = '0'
+WHERE T.route_id = '44' AND direction_id = 0
 GROUP BY S.stop_id, S.stop_name, S.stop_lat, S.stop_lon;
 
 -- now I pick 638	5th St & Market St - FS	39.951047	-75.14876	true	true	true

@@ -13,24 +13,40 @@ struct TransitModeSelected: ScheduleAction {
 }
 
 struct RoutesLoaded: ScheduleAction {
-
     let routes: [Route]?
     let error: String?
-    let description: String
+    let description = "Routes for viewing are now available"
 }
 
 struct RouteSelected: ScheduleAction {
     let selectedRoute: Route
-    let description: String
+    let description = "User Selected a route"
 }
 
-struct TripStartsLoaded: ScheduleAction, Codable {
+struct TripStartsLoaded: ScheduleAction {
     let availableStarts: [Stop]?
-    let description = "Loading available route starting points for direction"
+    let description = "Loading available trip starting points for direction"
     let error: String?
 }
 
-struct TripStartSelected: ScheduleAction, Codable {
+struct TripStartSelected: ScheduleAction {
     let selectedStart: Stop
     let description = "The user has selected a stop"
+}
+
+struct TripEndsLoaded: ScheduleAction {
+    let availableStops: [Stop]?
+    let description = "Loading available trip ending points for direction"
+    let error: String?
+}
+
+struct TripEndsSelected: ScheduleAction {
+    let selectedEnd: Stop?
+    let description = "User picked a stop for the trip"
+}
+
+struct TripsLoaded: ScheduleAction {
+    let availableTrips: [Trip]
+    let description = "Now we have available trips for the user to consider"
+    let error: String?
 }

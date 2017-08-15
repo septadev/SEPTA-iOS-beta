@@ -14,15 +14,13 @@ struct ScheduleDataReducer {
         switch action {
         case _ as TransitModeSelected:
             newScheduleData = ScheduleData()
-        case let action as RouteSelected:
-            newScheduleData = reduceRouteSelected(action: action, scheduleData: scheduleData)
         case let action as RoutesLoaded:
             newScheduleData = reduceRoutesLoaded(action: action, scheduleData: newScheduleData)
         case let action as TripStartsLoaded:
             newScheduleData = reduceTripStartsLoaded(action: action, scheduleData: newScheduleData)
-        case _ as TripStartSelected:
-            break
-        default: fatalError("An unhandled action came ")
+        case let action as TripEndsLoaded:
+            newScheduleData = reduceTripEndsLoaded(action: action, scheduleData: newScheduleData)
+        default: break
         }
         return newScheduleData
     }
@@ -36,19 +34,19 @@ struct ScheduleDataReducer {
         return scheduleData
     }
 
-    static func reduceRouteSelected(action _: RouteSelected, scheduleData: ScheduleData) -> ScheduleData {
-        let scheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
-                                        availableStarts: nil,
-                                        availableStops: nil,
-                                        availableTrips: nil,
-                                        errorString: nil)
-        return scheduleData
-    }
-
     static func reduceTripStartsLoaded(action: TripStartsLoaded, scheduleData: ScheduleData) -> ScheduleData {
         let scheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
                                         availableStarts: action.availableStarts,
                                         availableStops: nil,
+                                        availableTrips: nil,
+                                        errorString: action.error)
+        return scheduleData
+    }
+
+    static func reduceTripEndsLoaded(action: TripEndsLoaded, scheduleData: ScheduleData) -> ScheduleData {
+        let scheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
+                                        availableStarts: scheduleData.availableStarts,
+                                        availableStops: scheduleData.availableStops,
                                         availableTrips: nil,
                                         errorString: action.error)
         return scheduleData

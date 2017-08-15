@@ -89,7 +89,7 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
         guard let filteredRoutes = filteredRoutes, row < filteredRoutes.count else { return }
         let route = filteredRoutes[row].route
         store.unsubscribe(self)
-        let action = RouteSelected(selectedRoute: route, description: "A Route has been selected")
+        let action = RouteSelected(selectedRoute: route)
         store.dispatch(action)
         let dismissAction = DismissModal(navigationController: .schedules, description: "Route should be dismissed")
         store.dispatch(dismissAction)

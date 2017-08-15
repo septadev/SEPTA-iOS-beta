@@ -430,6 +430,7 @@
 		582F4E931F33B1120062A546 /* Schedules */ = {
 			isa = PBXGroup;
 			children = (
+				5868897A1F42973C00B2920A /* SelectStop */,
 				58B18B0D1F42424C00A7F163 /* SelectSchedule */,
 				582F4E941F33B1120062A546 /* Routes */,
 				582F4E9E1F33B1120062A546 /* SelectStop */,
@@ -550,6 +551,14 @@
 				5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */,
 			);
 			path = Toolbars;
+			sourceTree = "<group>";
+		};
+		5868897A1F42973C00B2920A /* SelectStop */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SelectStop;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		588F27F11F39DDBF00D62425 /* UserPreference */ = {
