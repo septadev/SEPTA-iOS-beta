@@ -32,6 +32,11 @@ struct NavigationReducer {
             appStackState = reducePresentModalAction(action: action, state: appStackState)
         case let action as DismissModal:
             appStackState = reduceDismissModalAction(action: action, state: appStackState)
+        case let action as PushViewController:
+            appStackState = reducePushViewControllerAction(action: action, state: appStackState)
+        case let action as UserPoppedViewController:
+            appStackState = reduceUserPoppedViewControllerAction(action: action, state: appStackState)
+
         default:
             return state
         }
@@ -81,6 +86,26 @@ struct NavigationReducer {
         var navigationStackState = state[action.navigationController] ?? NavigationStackState()
         let viewControllers = navigationStackState.viewControllers ?? [ViewController]()
 
+        navigationStackState = NavigationStackState(viewControllers: viewControllers, modalViewController: nil)
+        newState[action.navigationController] = navigationStackState
+        return newState
+    }
+
+    static func reducePushViewControllerAction(action: PushViewController, state: AppStackState) -> AppStackState {
+        var newState = state
+        var navigationStackState = newState[action.navigationController] ?? NavigationStackState()
+        var viewControllers = navigationStackState.viewControllers ?? [ViewController]()
+        viewControllers.append(action.viewController)
+        navigationStackState = NavigationStackState(viewControllers: viewControllers, modalViewController: nil)
+        newState[action.navigationController] = navigationStackState
+        return newState
+    }
+
+    static func reduceUserPoppedViewControllerAction(action: UserPoppedViewController, state: AppStackState) -> AppStackState {
+        var newState = state
+        var navigationStackState = newState[action.navigationController] ?? NavigationStackState()
+        var viewControllers = navigationStackState.viewControllers ?? [ViewController]()
+        viewControllers.removeLast()
         navigationStackState = NavigationStackState(viewControllers: viewControllers, modalViewController: nil)
         newState[action.navigationController] = navigationStackState
         return newState

@@ -3,6 +3,7 @@
 import Foundation
 import UIKit
 import ReSwift
+import SeptaSchedule
 
 class SchedulesNavigationController: UINavigationController, StoreSubscriber, IdentifiableNavController {
     static var navController: NavigationController = .schedules
@@ -23,10 +24,10 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber, Id
         store.dispatch(action)
     }
 
-    var lastStackState = NavigationStackState()
+    var currentStackState = NavigationStackState()
     func newState(state: StoreSubscriberStateType) {
 
-        guard let newState = state, let newStackState = newState[.schedules], newStackState != lastStackState else { return }
+        guard let newState = state, let newStackState = newState[.schedules], newStackState != currentStackState else { return }
 
         if let modal = newStackState.modalViewController {
 
@@ -35,12 +36,24 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber, Id
             viewController.transitioningDelegate = slideInTransitioningDelegate
             present(viewController, animated: true)
         }
-        if let _ = lastStackState.modalViewController, newStackState.modalViewController == nil {
+        if let _ = currentStackState.modalViewController, newStackState.modalViewController == nil {
             dismiss(animated: true, completion: nil)
             slideInTransitioningDelegate = SlideInPresentationManager()
         }
 
-        lastStackState = newStackState
+        if let newViewControllers = newStackState.viewControllers,
+            let lastNewViewController = newViewControllers.last {
+            let uiControllersCount = viewControllers.count
+
+            if uiControllersCount > newViewControllers.count {
+                popViewController(animated: true)
+            } else if uiControllersCount < newViewControllers.count {
+                let newViewController = myStoryboard.instantiateViewController(withIdentifier: lastNewViewController.rawValue)
+                pushViewController(newViewController, animated: true)
+            }
+        }
+
+        currentStackState = newStackState
     }
 
     func subscribe() {

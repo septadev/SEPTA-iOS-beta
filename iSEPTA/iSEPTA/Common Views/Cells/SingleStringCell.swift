@@ -2,8 +2,6 @@
 
 import UIKit
 
-
-
 typealias CellDecoration = UITableViewCellAccessoryType
 
 class SingleStringCell: UITableViewCell, SingleStringDisplayable {

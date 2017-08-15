@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */; };
 		5811CD741F3A8F8F00714C08 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5811CD721F3A8D1F00714C08 /* ReSwift.framework */; };
+		5814AA841F43589E00DF774A /* RouteSheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9B1F33B1120062A546 /* RouteSheduleViewModel.swift */; };
+		5814AA891F4359CC00DF774A /* SingleStringDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5814AA861F4358D000DF774A /* SingleStringDisplayable.swift */; };
+		5814AA8A1F4359D000DF774A /* TripleTextDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5814AA851F4358D000DF774A /* TripleTextDisplayable.swift */; };
 		581804BB1F3F8051002184E3 /* LoggingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581804BA1F3F8051002184E3 /* LoggingError.swift */; };
 		581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581804BC1F3F838B002184E3 /* CodableAppState.swift */; };
 		581804BF1F3F8479002184E3 /* EquatableAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581804BE1F3F8479002184E3 /* EquatableAppState.swift */; };
@@ -45,10 +48,8 @@
 		582F4EC61F33B1120062A546 /* SelectRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E951F33B1120062A546 /* SelectRouteViewController.swift */; };
 		582F4EC71F33B1120062A546 /* RoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E961F33B1120062A546 /* RoutesViewModel.swift */; };
 		582F4EC81F33B1120062A546 /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E971F33B1120062A546 /* RouteTableViewCell.swift */; };
-		582F4EC91F33B1120062A546 /* RouteScheduleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 582F4E991F33B1120062A546 /* RouteScheduleHeaderView.xib */; };
 		582F4ECC1F33B1120062A546 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9C1F33B1120062A546 /* ScheduleTableViewCell.swift */; };
 		582F4ECD1F33B1120062A546 /* schedules.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4E9D1F33B1120062A546 /* schedules.storyboard */; };
-		582F4ED01F33B1120062A546 /* RouteStops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA21F33B1120062A546 /* RouteStops.swift */; };
 		582F4ED11F33B1120062A546 /* SelectedStopType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA31F33B1120062A546 /* SelectedStopType.swift */; };
 		582F4ED21F33B1120062A546 /* SelectStopCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA41F33B1120062A546 /* SelectStopCellType.swift */; };
 		582F4ED31F33B1120062A546 /* SelectStopRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA51F33B1120062A546 /* SelectStopRow.swift */; };
@@ -76,6 +77,7 @@
 		5840D6F01F37F66B00C8CB76 /* SeptaDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6EF1F37F66B00C8CB76 /* SeptaDraw.swift */; };
 		5844CA1F1F3BD9B700651223 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5844CA1E1F3BD9B700651223 /* NavigationState.swift */; };
 		58470C091F3F276000F3C9B5 /* NumberFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58470C081F3F276000F3C9B5 /* NumberFormatters.swift */; };
+		584AC8731F437DDB0040C1B4 /* TripScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9A1F33B1120062A546 /* TripScheduleViewController.swift */; };
 		585572861F39499D004ABCD6 /* Color+Septa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585572841F3948D3004ABCD6 /* Color+Septa.swift */; };
 		585572891F395990004ABCD6 /* MockSingleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585572881F395990004ABCD6 /* MockSingleCell.swift */; };
 		586746621F35D483000F0D32 /* RoutesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5867463E1F35D483000F0D32 /* RoutesViewModelTests.swift */; };
@@ -158,6 +160,8 @@
 /* Begin PBXFileReference section */
 		5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectedTableViewCell.swift; sourceTree = "<group>"; };
 		5811CD721F3A8D1F00714C08 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = Frameworks/ReSwift.framework; sourceTree = "<group>"; };
+		5814AA851F4358D000DF774A /* TripleTextDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripleTextDisplayable.swift; sourceTree = "<group>"; };
+		5814AA861F4358D000DF774A /* SingleStringDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleStringDisplayable.swift; sourceTree = "<group>"; };
 		581804BA1F3F8051002184E3 /* LoggingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingError.swift; sourceTree = "<group>"; };
 		581804BC1F3F838B002184E3 /* CodableAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableAppState.swift; sourceTree = "<group>"; };
 		581804BE1F3F8479002184E3 /* EquatableAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquatableAppState.swift; sourceTree = "<group>"; };
@@ -195,13 +199,11 @@
 		582F4E951F33B1120062A546 /* SelectRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectRouteViewController.swift; sourceTree = "<group>"; };
 		582F4E961F33B1120062A546 /* RoutesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesViewModel.swift; sourceTree = "<group>"; };
 		582F4E971F33B1120062A546 /* RouteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
-		582F4E991F33B1120062A546 /* RouteScheduleHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RouteScheduleHeaderView.xib; sourceTree = "<group>"; };
-		582F4E9A1F33B1120062A546 /* RouteScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteScheduleViewController.swift; sourceTree = "<group>"; };
+		582F4E9A1F33B1120062A546 /* TripScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripScheduleViewController.swift; sourceTree = "<group>"; };
 		582F4E9B1F33B1120062A546 /* RouteSheduleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSheduleViewModel.swift; sourceTree = "<group>"; };
 		582F4E9C1F33B1120062A546 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		582F4E9D1F33B1120062A546 /* schedules.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = schedules.storyboard; sourceTree = "<group>"; };
 		582F4EA01F33B1120062A546 /* SelectStopViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopViewModel.swift; sourceTree = "<group>"; };
-		582F4EA21F33B1120062A546 /* RouteStops.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteStops.swift; sourceTree = "<group>"; };
 		582F4EA31F33B1120062A546 /* SelectedStopType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedStopType.swift; sourceTree = "<group>"; };
 		582F4EA41F33B1120062A546 /* SelectStopCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopCellType.swift; sourceTree = "<group>"; };
 		582F4EA51F33B1120062A546 /* SelectStopRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopRow.swift; sourceTree = "<group>"; };
@@ -360,6 +362,8 @@
 		582F4E821F33B1120062A546 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				5814AA861F4358D000DF774A /* SingleStringDisplayable.swift */,
+				5814AA851F4358D000DF774A /* TripleTextDisplayable.swift */,
 				582F4E831F33B1120062A546 /* SingleStringCell.swift */,
 			);
 			path = Cells;
@@ -437,7 +441,7 @@
 				58B18B0D1F42424C00A7F163 /* SelectSchedule */,
 				582F4E941F33B1120062A546 /* Routes */,
 				582F4E9E1F33B1120062A546 /* SelectStop */,
-				582F4E981F33B1120062A546 /* RouteSchedule */,
+				582F4E981F33B1120062A546 /* TripSchedule */,
 				582F4E9D1F33B1120062A546 /* schedules.storyboard */,
 				582F4EA11F33B1120062A546 /* SelectStops old */,
 			);
@@ -454,15 +458,14 @@
 			path = Routes;
 			sourceTree = "<group>";
 		};
-		582F4E981F33B1120062A546 /* RouteSchedule */ = {
+		582F4E981F33B1120062A546 /* TripSchedule */ = {
 			isa = PBXGroup;
 			children = (
-				582F4E991F33B1120062A546 /* RouteScheduleHeaderView.xib */,
-				582F4E9A1F33B1120062A546 /* RouteScheduleViewController.swift */,
+				582F4E9A1F33B1120062A546 /* TripScheduleViewController.swift */,
 				582F4E9B1F33B1120062A546 /* RouteSheduleViewModel.swift */,
 				582F4E9C1F33B1120062A546 /* ScheduleTableViewCell.swift */,
 			);
-			path = RouteSchedule;
+			path = TripSchedule;
 			sourceTree = "<group>";
 		};
 		582F4E9E1F33B1120062A546 /* SelectStop */ = {
@@ -479,7 +482,6 @@
 		582F4EA11F33B1120062A546 /* SelectStops old */ = {
 			isa = PBXGroup;
 			children = (
-				582F4EA21F33B1120062A546 /* RouteStops.swift */,
 				582F4EA31F33B1120062A546 /* SelectedStopType.swift */,
 				582F4EA41F33B1120062A546 /* SelectStopCellType.swift */,
 				582F4EA51F33B1120062A546 /* SelectStopRow.swift */,
@@ -963,7 +965,6 @@
 				582F4EC21F33B1120062A546 /* fares.storyboard in Resources */,
 				582F4EBE1F33B1120062A546 /* about.storyboard in Resources */,
 				582F4ED41F33B1120062A546 /* SelectStopsFooterView.xib in Resources */,
-				582F4EC91F33B1120062A546 /* RouteScheduleHeaderView.xib in Resources */,
 				582F4ECD1F33B1120062A546 /* schedules.storyboard in Resources */,
 				582F4EC01F33B1120062A546 /* alerts.storyboard in Resources */,
 				582F4EC41F33B1120062A546 /* nextToArrive.storyboard in Resources */,
@@ -1050,7 +1051,6 @@
 				582531981F40707C0088D056 /* DefaultPreferencesLoader.swift in Sources */,
 				58B892151F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift in Sources */,
 				582F4ECC1F33B1120062A546 /* ScheduleTableViewCell.swift in Sources */,
-				582F4ED01F33B1120062A546 /* RouteStops.swift in Sources */,
 				585572861F39499D004ABCD6 /* Color+Septa.swift in Sources */,
 				582F4EBB1F33B1120062A546 /* AppDelegate.swift in Sources */,
 				5844CA1F1F3BD9B700651223 /* NavigationState.swift in Sources */,
@@ -1067,9 +1067,12 @@
 				5840D6E91F37EE6500C8CB76 /* Providers.swift in Sources */,
 				581804BB1F3F8051002184E3 /* LoggingError.swift in Sources */,
 				582F4ED81F33B1120062A546 /* SelectSchedulesViewController.swift in Sources */,
+				5814AA891F4359CC00DF774A /* SingleStringDisplayable.swift in Sources */,
 				582F4EC71F33B1120062A546 /* RoutesViewModel.swift in Sources */,
 				5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift in Sources */,
 				5840D6E51F37EA1900C8CB76 /* ScheduleProvider.swift in Sources */,
+				5814AA841F43589E00DF774A /* RouteSheduleViewModel.swift in Sources */,
+				5814AA8A1F4359D000DF774A /* TripleTextDisplayable.swift in Sources */,
 				58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */,
 				58F80D451F421C4B0089501A /* SelectStopViewController.swift in Sources */,
 				5840D6D71F37728B00C8CB76 /* NavigationController.swift in Sources */,
@@ -1088,6 +1091,7 @@
 				58290E411F372B51000CCF3C /* AppState.swift in Sources */,
 				5825319E1F40940B0088D056 /* UserPreferencesProviderProtocol.swift in Sources */,
 				58DB10F81F3B8DB400191AED /* NavigationReducer.swift in Sources */,
+				584AC8731F437DDB0040C1B4 /* TripScheduleViewController.swift in Sources */,
 				58290E501F372DDC000CCF3C /* NavigationActions.swift in Sources */,
 				58C2A0591F3812D600F0D6CA /* ScheduleActions.swift in Sources */,
 				5825319C1F408C2D0088D056 /* UserPreferencesStatePersister.swift in Sources */,

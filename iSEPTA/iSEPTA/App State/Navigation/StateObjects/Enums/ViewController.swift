@@ -9,4 +9,5 @@ enum ViewController: String, Equatable {
     case selectStartController
     case selectStopController
     case selectStopNavigationController
+    case tripScheduleController
 }

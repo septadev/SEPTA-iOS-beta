@@ -35,7 +35,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zn7-Mx-Yv7" id="v2j-wI-BVS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCd-TC-F1i">
@@ -55,7 +55,7 @@
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dRd-8A-9Y3" id="tv0-MK-MKw">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" misplaced="YES" text="17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5JT-lx-DGg" userLabel="RouteId">
@@ -171,17 +171,17 @@
                             </constraints>
                         </view>
                         <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GJS-IR-bDR">
-                            <rect key="frame" x="0.0" y="90" width="439" height="310"/>
+                            <rect key="frame" x="200" y="90" width="39" height="110"/>
                         </mapView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="cOB-du-LRG" firstAttribute="centerX" secondItem="eBi-Cq-E5z" secondAttribute="centerX" id="5eI-JY-acw" userLabel="ButtonCenterX"/>
-                        <constraint firstItem="GJS-IR-bDR" firstAttribute="leading" secondItem="eBi-Cq-E5z" secondAttribute="leading" id="K1Y-Xg-f6T" userLabel="MapViewLeft"/>
+                        <constraint firstItem="GJS-IR-bDR" firstAttribute="leading" secondItem="eBi-Cq-E5z" secondAttribute="leading" constant="200" id="K1Y-Xg-f6T" userLabel="MapViewLeft"/>
                         <constraint firstItem="GJS-IR-bDR" firstAttribute="top" secondItem="cOB-du-LRG" secondAttribute="bottom" constant="15" id="KOz-YS-Bcf" userLabel="MapViewTop"/>
                         <constraint firstItem="cOB-du-LRG" firstAttribute="top" secondItem="eBi-Cq-E5z" secondAttribute="top" constant="15" id="f5H-RE-yLe" userLabel="ButtonViewTop"/>
-                        <constraint firstItem="eBi-Cq-E5z" firstAttribute="bottom" secondItem="GJS-IR-bDR" secondAttribute="bottom" id="ppu-zE-PU0" userLabel="MapViewBottom"/>
-                        <constraint firstItem="eBi-Cq-E5z" firstAttribute="trailing" secondItem="GJS-IR-bDR" secondAttribute="trailing" id="y4H-rw-uFZ" userLabel="MapViewRight"/>
+                        <constraint firstItem="eBi-Cq-E5z" firstAttribute="bottom" secondItem="GJS-IR-bDR" secondAttribute="bottom" constant="200" id="ppu-zE-PU0" userLabel="MapViewBottom"/>
+                        <constraint firstItem="eBi-Cq-E5z" firstAttribute="trailing" secondItem="GJS-IR-bDR" secondAttribute="trailing" constant="200" id="y4H-rw-uFZ" userLabel="MapViewRight"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="eBi-Cq-E5z"/>
                 </view>
@@ -244,7 +244,7 @@ SearchTextBox</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mCg-hU-RGp" id="EF9-Ow-ydw">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NHSL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om0-j5-VdR" userLabel="RouteShortName">
@@ -328,7 +328,7 @@ SearchTextBox</string>
         <!--Trip Schedule-->
         <scene sceneID="Wce-qa-pbU">
             <objects>
-                <viewController title="Trip Schedule" id="9ZE-6T-hsR" customClass="RouteScheduleViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tripScheduleController" title="Trip Schedule" id="9ZE-6T-hsR" customClass="TripScheduleViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DNj-9c-Ll8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -406,7 +406,7 @@ StartingLabelRight</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ffg-L2-s06" id="QZ3-BZ-2bZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEg-oF-e3U" userLabel="Header">
@@ -480,10 +480,6 @@ StartingLabelRight</string>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="9ZE-6T-hsR" id="COi-Cs-Vi2"/>
-                                    <outlet property="delegate" destination="9ZE-6T-hsR" id="g6D-8I-nZL"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -501,17 +497,10 @@ StartingLabelRight</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kWc-gl-RxX"/>
                     </view>
-                    <connections>
-                        <outlet property="alertsIcon" destination="veQ-Iq-UgU" id="8OY-pl-fRm"/>
-                        <outlet property="endingPoint" destination="s9c-AY-wQ2" id="9pf-VV-ItM"/>
-                        <outlet property="header" destination="N85-DJ-dTv" id="7bt-5z-vK1"/>
-                        <outlet property="scheduleTypeSelector" destination="Z80-GO-8Wi" id="GmU-QJ-3FW"/>
-                        <outlet property="startingPoint" destination="ake-6Y-gpx" id="EFh-Ak-0H3"/>
-                        <outlet property="tableView" destination="zf9-bi-BCi" id="2es-5x-4iL"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Title" id="WwR-AN-Gry"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fR1-Ib-5Si" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <barButtonItem image="system_status_alert" id="veQ-Iq-UgU"/>
+                <barButtonItem title="Item" id="veQ-Iq-UgU"/>
                 <view contentMode="scaleToFill" id="N85-DJ-dTv" userLabel="Header">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -580,6 +569,9 @@ StartingLabelRight</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oLi-QD-Eie">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="delegate" destination="Flo-rT-aez" id="sTq-uc-0ZA"/>
+                        </connections>
                     </navigationBar>
                     <connections>
                         <segue destination="G8I-06-w6m" kind="relationship" relationship="rootViewController" id="ysr-1u-zxJ"/>
@@ -769,7 +761,7 @@ SearchTextBox</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wrn-eA-jgn" id="tLy-ES-enQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odK-ZX-VgC" userLabel="RouteLongName">
@@ -840,7 +832,4 @@ SearchTextBox</string>
             <point key="canvasLocation" x="2153" y="37"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="system_status_alert" width="40" height="30"/>
-    </resources>
 </document>

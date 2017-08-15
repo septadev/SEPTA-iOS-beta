@@ -12,6 +12,8 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet var buttons: [UIButton]!
     @IBAction func ViewSchedulesButtonTapped(_: Any) {
+        let action = PushViewController(navigationController: .schedules, viewController: .tripScheduleController, description: "Show Trip Schedule")
+        store.dispatch(action)
     }
 
     @IBAction func resetButtonTapped(_: Any) {
@@ -41,8 +43,6 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
         navBar.setBackgroundImage(UIImage(), for: .default)
     }
 
-
-
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return viewModel.numberOfRows()
     }
@@ -71,7 +71,7 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
         mapView.isHidden = !isComplete
     }
 
-  deinit {
+    deinit {
         viewModel.unsubscribe()
     }
 }

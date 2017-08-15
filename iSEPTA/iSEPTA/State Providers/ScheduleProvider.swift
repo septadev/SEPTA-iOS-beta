@@ -24,7 +24,6 @@ class ScheduleProvider: StoreSubscriber {
     // MARK: - Primary State Handler
 
     func newState(state: StoreSubscriberStateType) {
-        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest, newValue: state)
         guard let scheduleRequest = state else { return }
 
         processTransitMode(scheduleRequest: scheduleRequest)

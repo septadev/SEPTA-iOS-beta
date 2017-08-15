@@ -3,6 +3,7 @@
 import Foundation
 import UIKit
 import ReSwift
+import SeptaSchedule
 
 struct NavigationStackState {
     let viewControllers: [ViewController]?
@@ -26,6 +27,7 @@ func ==(lhs: NavigationStackState, rhs: NavigationStackState) -> Bool {
     default:
         return false
     }
+
     guard areEqual else { return false }
 
     switch (lhs.modalViewController, rhs.modalViewController) {
