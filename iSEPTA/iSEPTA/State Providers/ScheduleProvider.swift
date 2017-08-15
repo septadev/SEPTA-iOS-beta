@@ -7,7 +7,7 @@ import SeptaSchedule
 class ScheduleProvider: StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleRequest?
     static let sharedInstance = ScheduleProvider()
-    var lastScheduleRequest = ScheduleRequest()
+    var currentScheduleRequest = ScheduleRequest()
     let routesCommand = RoutesCommand()
     private init() {
     }
@@ -32,11 +32,17 @@ class ScheduleProvider: StoreSubscriber {
             retrieveAvailableRoutes(transitMode: transitMode)
         }
 
-        lastScheduleRequest = scheduleRequest
+        if hasSelectedRouteChanged(selectedRoute: scheduleRequest.selectedRoute) {
+            if let selectedRoute = scheduleRequest.selectedRoute {
+                retrieveStartingStopsForRoute(transitMode: transitMode, route: selectedRoute)
+            }
+        }
+
+        currentScheduleRequest = scheduleRequest
     }
 
     func hasTransitModeChanged(transitMode: TransitMode) -> Bool {
-        if let lastTransitMode = lastScheduleRequest.transitMode {
+        if let lastTransitMode = currentScheduleRequest.transitMode {
             return transitMode != lastTransitMode
         } else {
             return true
@@ -44,10 +50,10 @@ class ScheduleProvider: StoreSubscriber {
     }
 
     func hasSelectedRouteChanged(selectedRoute: Route?) -> Bool {
-        let lastSelectedRoute = lastScheduleRequest.selectedRoute
-        switch (lastSelectedRoute, selectedRoute) {
+        let currentSelectedRoute = currentScheduleRequest.selectedRoute
+        switch (currentSelectedRoute, selectedRoute) {
         case (.some, .some):
-            return lastSelectedRoute != selectedRoute
+            return currentSelectedRoute != selectedRoute
         case (.none, .some):
             return true
         case (.some, .none):
@@ -73,23 +79,13 @@ class ScheduleProvider: StoreSubscriber {
         }
     }
 
-    // MARK: - Retrieve Starting Stops
-    /*
-     func  retrieveAvailableStartingStops(selectedRoute: selectedRoute){
+    func retrieveStartingStopsForRoute(transitMode: TransitMode, route: Route) {
 
-     }
-
-     func buildQueryForStartingStops(transitMode: transitMode, route: Route) -> SQLQuery? {
-     var query: SQLQuery?
-     switch transitMode {
-     case .bus:
-     query = SQLQuery.busRoute(routeType: .bus)
-     default:
-     query = nil
-     }
-     return query
-     }
-     */
+        TripStartCommand.sharedInstance.stops(forTransitMode: transitMode, forRoute: route) { stops, error in
+            let action = TripStartsLoaded(availableStarts: stops, error: error?.localizedDescription)
+            store.dispatch(action)
+        }
+    }
 
     deinit {
         store.unsubscribe(self)

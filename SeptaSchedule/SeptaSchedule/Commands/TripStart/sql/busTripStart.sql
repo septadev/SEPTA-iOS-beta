@@ -13,11 +13,9 @@ SELECT
   MAX(CASE WHEN
     T.service_id = '3'
     THEN 1  else 0 END) AS sundayService
-FROM trips_bus T
-JOIN routes_bus R
-ON T.route_id = R.route_id
-JOIN stops_bus S
-ON R.route_id = T.route_id
+FROM trips_bus T join stop_times_bus ST ON T.trip_id
+  = ST.trip_id join stops_bus S on ST.stop_id = S.stop_id
+
 WHERE T.route_id = ':route_id' AND direction_id = ':direction_id'
 GROUP BY S.stop_id, S.stop_name, S.stop_lat, S.stop_lon;
 

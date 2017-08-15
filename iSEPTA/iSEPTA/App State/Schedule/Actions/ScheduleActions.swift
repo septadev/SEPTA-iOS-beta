@@ -20,6 +20,17 @@ struct RoutesLoaded: ScheduleAction {
 }
 
 struct RouteSelected: ScheduleAction {
-    let route: Route
+    let selectedRoute: Route
     let description: String
+}
+
+struct TripStartsLoaded: ScheduleAction, Codable {
+    let availableStarts: [Stop]?
+    let description = "Loading available route starting points for direction"
+    let error: String?
+}
+
+struct TripStartSelected: ScheduleAction, Codable {
+    let selectedStart: Stop
+    let description = "The user has selected a stop"
 }

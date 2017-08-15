@@ -71,16 +71,18 @@ public class StateLogger {
 
     func logAction(stateBefore: AppState?, action: Action, stateAfter: AppState, consoleLogObjects: [Any?]? = nil) {
         guard let action = action as? SeptaAction else { return }
+        actionCounter += 1
         DispatchQueue.global(qos: .background).async { [weak self] in
             guard let strongSelf = self else { return }
             let actionLog = StateLogEntry(stateBefore: stateBefore, action: action, stateAfter: stateAfter)
+
             do {
                 try strongSelf.createSessionDirectory()
                 if let fileName = strongSelf.buildFileNameForLogEntry(action),
                     let url = strongSelf.buildURLForLogFile(fileNameForLogEntry: fileName) {
                     let jsonData = try strongSelf.encodeLog(actionLog)
                     try strongSelf.writeLogToFile(path: url.path, jsonData: jsonData)
-                    strongSelf.actionCounter += 1
+
                     strongSelf.logToConsole(consoleLogObjects)
                 }
             } catch {

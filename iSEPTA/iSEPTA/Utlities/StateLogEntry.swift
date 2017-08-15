@@ -43,8 +43,16 @@ struct StateLogEntry: Codable {
         case let action as RoutesLoaded:
             try container.encode(action, forKey: .action)
         case let action as RouteSelected:
-            try container.encode(action, forKey: .action) default:
-            throw LoggingError.missingActionWhileEncoding(actionName)
+            try container.encode(action, forKey: .action)
+        case let action as TripStartsLoaded:
+            try container.encode(action, forKey: .action)
+        case let action as PreferencesRetrievedAction:
+            try container.encode(action, forKey: .action)
+        case let action as TripStartSelected:
+            try container.encode(action, forKey: .action)
+        default:
+            fatalError("YOu need to add the action here")
+            // throw LoggingError.missingActionWhileEncoding(actionName)
         }
         try container.encode(actionName, forKey: .actionName)
     }

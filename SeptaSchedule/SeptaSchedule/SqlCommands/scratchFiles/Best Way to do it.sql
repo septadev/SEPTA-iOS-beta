@@ -10,14 +10,14 @@
 
 
 SELECT
-  cast(R.route_id AS TEXT) route_id,
+  cast(R.route_id AS TEXT)          route_id,
   'to ' || BSD.DirectionDescription route_short_name,
   R.route_long_name,
   BSD.dircode
 FROM bus_stop_directions BSD
 JOIN routes_bus R
 ON BSD.Route = R.route_id
-WHERE R.route_id  in ( 'BSO', 'BSL', 'MFL')  ;
+WHERE R.route_id IN ('BSO', 'BSL', 'MFL');
 ;
 
 -- And I choose  Route 44 Westbound
@@ -36,26 +36,32 @@ ORDER BY BSD.route_id;
 -- give me all the Westbound stops on route 44
 
 SELECT
-  S.stop_id stopId,
-  S.stop_name stopName,
-  cast (S.stop_lat as decimal) stopLatitude,
-  cast (S.stop_lon as decimal) stopLongitude,
-  case when S.wheelchair_boarding = '1' then 1 else 0  end wheelchairBoarding,
+  S.stop_id                   stopId,
+  S.stop_name                 stopName,
+  cast(S.stop_lat AS DECIMAL) stopLatitude,
+  cast(S.stop_lon AS DECIMAL) stopLongitude,
+  CASE WHEN S.wheelchair_boarding = '1'
+    THEN 1
+  ELSE 0 END                  wheelchairBoarding,
   MAX(CASE WHEN T.service_id = '1'
-    THEN 1 else 0 END) weekdayService,
+    THEN 1
+      ELSE 0 END)             weekdayService,
   MAX(CASE WHEN
     T.service_id = '2'
-    THEN 1  else 0 END) saturdayService,
+    THEN 1
+      ELSE 0 END)             saturdayService,
   MAX(CASE WHEN
     T.service_id = '3'
-    THEN 1  else 0 END) AS sundayService
+    THEN 1
+      ELSE 0 END) AS          sundayService
 FROM trips_bus T
-JOIN routes_bus R
-ON T.route_id = R.route_id
+JOIN stop_times_bus ST
+ON T.trip_id
+   = ST.trip_id
 JOIN stops_bus S
-ON R.route_id = T.route_id
-WHERE T.route_id = 'BSL' AND direction_id = '1'
-GROUP BY S.stop_id, S.stop_name, S.stop_lat, S.stop_lon;
+ON ST.stop_id = S.stop_id
+WHERE T.route_id = '44' AND T.direction_id = '1'
+GROUP BY S.stop_id, S.stop_name, S.stop_lat, S.stop_lon, S.wheelchair_boarding;
 
 -- now I pick stop 696 as my starting point
 
@@ -86,12 +92,12 @@ ON R.route_id = T.route_id
 JOIN stop_times_bus ST
 ON T.trip_id = ST.trip_id AND S.stop_id = ST.stop_id
 JOIN (SELECT
-        T.trip_id,
-        ST.stop_sequence
-      FROM trips_bus T
-      JOIN stop_times_bus ST
-      ON T.trip_id = ST.trip_id
-      WHERE route_id = 44 AND T.direction_id = 0 AND ST.stop_id = 696) Start
+  T.trip_id,
+  ST.stop_sequence
+FROM trips_bus T
+JOIN stop_times_bus ST
+ON T.trip_id = ST.trip_id
+WHERE route_id = 44 AND T.direction_id = 0 AND ST.stop_id = 696) Start
 ON T.trip_id = Start.trip_id AND ST.stop_sequence > Start.stop_sequence
 WHERE T.route_id = '44' AND direction_id = '0'
 GROUP BY S.stop_id, S.stop_name, S.stop_lat, S.stop_lon;
@@ -107,22 +113,22 @@ SELECT
 FROM
 
 (SELECT
-   T.trip_id,
-   ST.arrival_time
- FROM
- stop_times_bus ST
- JOIN trips_bus T
- ON ST.trip_id = T.trip_id
- WHERE ST.stop_id = 696 AND T.service_id = 3) Start
+  T.trip_id,
+  ST.arrival_time
+FROM
+stop_times_bus ST
+JOIN trips_bus T
+ON ST.trip_id = T.trip_id
+WHERE ST.stop_id = 696 AND T.service_id = 3) Start
 
 JOIN (SELECT
-        T.trip_id,
-        ST.arrival_time
-      FROM
-      stop_times_bus ST
-      JOIN trips_bus T
-      ON ST.trip_id = T.trip_id
-      WHERE stop_id = 638 AND T.service_id = 3) Stop
+  T.trip_id,
+  ST.arrival_time
+FROM
+stop_times_bus ST
+JOIN trips_bus T
+ON ST.trip_id = T.trip_id
+WHERE stop_id = 638 AND T.service_id = 3) Stop
 ON start.trip_id = stop.trip_id
 ORDER BY DepartureTime;
 
@@ -166,22 +172,22 @@ SELECT
 FROM
 
 (SELECT
-   T.trip_id,
-   ST.arrival_time
- FROM
- stop_times_bus ST
- JOIN trips_bus T
- ON ST.trip_id = T.trip_id
- WHERE ST.stop_id = 638 AND T.service_id = 3) Start
+  T.trip_id,
+  ST.arrival_time
+FROM
+stop_times_bus ST
+JOIN trips_bus T
+ON ST.trip_id = T.trip_id
+WHERE ST.stop_id = 638 AND T.service_id = 3) Start
 
 JOIN (SELECT
-        T.trip_id,
-        ST.arrival_time
-      FROM
-      stop_times_bus ST
-      JOIN trips_bus T
-      ON ST.trip_id = T.trip_id
-      WHERE stop_id = 705 AND T.service_id = 3) Stop
+  T.trip_id,
+  ST.arrival_time
+FROM
+stop_times_bus ST
+JOIN trips_bus T
+ON ST.trip_id = T.trip_id
+WHERE stop_id = 705 AND T.service_id = 3) Stop
 ON start.trip_id = stop.trip_id
 ORDER BY DepartureTime;
 

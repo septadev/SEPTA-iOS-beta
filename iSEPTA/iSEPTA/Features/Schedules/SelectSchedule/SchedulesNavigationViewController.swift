@@ -33,6 +33,7 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber, Id
         guard let newState = state, let newStackState = newState[.schedules], newStackState != lastStackState else { return }
 
         if let modal = newStackState.modalViewController {
+
             let viewController = myStoryboard.instantiateViewController(withIdentifier: modal.rawValue)
             viewController.modalPresentationStyle = .custom
             viewController.transitioningDelegate = slideInTransitioningDelegate
@@ -40,6 +41,7 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber, Id
         }
         if let _ = lastStackState.modalViewController, newStackState.modalViewController == nil {
             dismiss(animated: true, completion: nil)
+            slideInTransitioningDelegate = SlideInPresentationManager()
         }
 
         lastStackState = newStackState

@@ -2,73 +2,123 @@
 
 import Foundation
 import SeptaSchedule
+import ReSwift
 
-class SelectStopViewModel {
+struct FilterableStop {
+    let filterString: String
+    let sortString: String
+    let stop: Stop
 
-    enum StopSearchType {
-        case start
-        case end
+    init(stop: Stop) {
 
-        static func stopSearchType(routeStops: RouteStops) -> StopSearchType {
-            if routeStops.startStop == nil {
-                return .start
-            } else {
-                return .end
+        filterString = stop.stopName
+        sortString = stop.stopName
+        self.stop = stop
+    }
+}
+
+enum StopToSelect {
+    case starts
+    case ends
+}
+
+class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
+    typealias StoreSubscriberStateType = [Stop]?
+
+    var allStops: [Stop]? {
+        didSet {
+            guard let allStops = allStops else { return }
+            allFilterableStops = allStops.map {
+                FilterableStop(stop: $0)
             }
         }
     }
 
-    let busCommands = BusCommands()
-
-    let routeType: RouteType
-    let route: Route
-    var routeStops: RouteStops
-    let selectedStop: SelectStopRow
-    var scheduleType = ScheduleType.weekday
-    weak var delegate: UpdateableFromViewModel?
-    var stops = [Stop]()
-
-    init(routeType: RouteType, route: Route, selectedStop: SelectStopRow, routeStops: RouteStops, delegate: UpdateableFromViewModel) {
-        self.routeType = routeType
-        self.route = route
-        self.selectedStop = selectedStop
-        self.routeStops = routeStops
-        self.delegate = delegate
-        retrieveStops()
+    fileprivate var allFilterableStops: [FilterableStop]? {
+        didSet {
+            filteredStops = allFilterableStops
+        }
     }
 
-    func setScheduleType(_ scheduleType: ScheduleType) {
-        self.scheduleType = scheduleType
-        retrieveStops()
+    var filteredStops: [FilterableStop]? {
+        didSet {
+            guard let filteredStops = filteredStops else { return }
+            self.filteredStops = filteredStops.sorted {
+                $0.sortString < $1.sortString
+            }
+        }
     }
 
-    func rowSelected(atRow row: Int) {
-        let stop = stops[row]
-        let newRouteStops: RouteStops
-        if selectedStop == .selectStart {
-            newRouteStops = RouteStops(startStop: stop, destinationStop: routeStops.destinationStop)
-        } else {
-            newRouteStops = RouteStops(startStop: routeStops.startStop, destinationStop: stop)
-        }
-        routeStops = newRouteStops
+    @IBOutlet weak var selectStopViewController: UpdateableFromViewModel?
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        subscribe()
     }
 
-    func retrieveStops() {
-        let query: SQLQuery
-        if StopSearchType.stopSearchType(routeStops: routeStops) == .start {
-            query = SQLQuery.busStart(routeId: route.routeId, scheduleType: scheduleType)
-        } else {
-            guard let stop = routeStops.startStop else { return }
-            query = SQLQuery.busEnd(routeId: route.routeId, scheduleType: scheduleType, startStopId: stop.stopId)
+    func subscribe() {
+        store.subscribe(self) { subscription in
+            subscription.select(self.subscribeToTripStarts)
         }
-        busCommands.busStops(withQuery: query) { [weak self] stops, _ in
-            guard let strongSelf = self, let stops = stops else { return }
-            strongSelf.stops = stops
-            strongSelf.delegate?.viewModelUpdated()
-        }
+    }
+
+    func subscribeToTripStarts(state: AppState) -> [Stop]? {
+        return state.scheduleState.scheduleData?.availableStarts
+    }
+
+    func subscribeToTripEnds(state: AppState) -> [Stop]? {
+        return state.scheduleState.scheduleData?.availableStops
+    }
+
+    func newState(state: StoreSubscriberStateType) {
+        allStops = state
+        selectStopViewController?.viewModelUpdated()
     }
 
     func configureDisplayable(_ displayable: SingleStringDisplayable, atRow row: Int) {
-        displayable.setLabelText(stops[row].stopName)
+        guard let filteredStops = filteredStops, row < filteredStops.count else { return }
+        let stop = filteredStops[row].stop
+
+        displayable.setLabelText(stop.stopName)
+    }
+
+    func canCellBeSelected(atRow _: Int) -> Bool {
+        return true
+    }
+
+    func rowSelected(row: Int) {
+        guard let filteredStops = filteredStops, row < filteredStops.count else { return }
+        let stop = filteredStops[row].stop
+        store.unsubscribe(self)
+        let action = TripStartSelected(selectedStart: stop)
+        store.dispatch(action)
+        let dismissAction = DismissModal(navigationController: .schedules, description: "Stop should be dismissed")
+        store.dispatch(dismissAction)
+    }
+
+    func numberOfRows() -> Int {
+        guard let filteredStops = filteredStops else { return 0 }
+        return filteredStops.count
+    }
+
+    deinit {
+        store.unsubscribe(self)
+    }
+
+    var filterString = ""
+    func textField(_: UITextField, shouldChangeCharactersIn range: NSRange, replacementString: String) -> Bool {
+
+        guard let allFilterableStops = allFilterableStops, let swiftRange = Range(range, in: filterString) else { return false }
+        filterString = filterString.replacingCharacters(in: swiftRange, with: replacementString.lowercased())
+        filteredStops = allFilterableStops.filter {
+            guard filterString.characters.count > 0 else { return true }
+            return $0.filterString.contains(filterString)
+        }
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+
+            strongSelf.selectStopViewController?.viewModelUpdated()
+        }
+        return true
     }
 }

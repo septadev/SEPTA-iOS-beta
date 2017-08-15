@@ -17,8 +17,8 @@ struct ScheduleRequestReducer {
             newScheduleRequest = reduceTransitModeSelected(action: action, scheduleRequest: scheduleRequest)
         case let action as RouteSelected:
             newScheduleRequest = reduceRouteSelected(action: action, scheduleRequest: scheduleRequest)
-        case let action as RoutesLoaded:
-            newScheduleRequest = reduceRoutesLoaded(action: action, scheduleRequest: scheduleRequest)
+        case let action as TripStartSelected:
+            newScheduleRequest = reduceTripStartSelected(action: action, scheduleRequest: scheduleRequest)
         default:
             newScheduleRequest = scheduleRequest
         }
@@ -30,17 +30,10 @@ struct ScheduleRequestReducer {
     }
 
     static func reduceRouteSelected(action: RouteSelected, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: action.route)
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: action.selectedRoute)
     }
 
-    static func reduceRoutesLoaded(action: RoutesLoaded, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-        guard let routes = action.routes else { return scheduleRequest }
-        let origSR = scheduleRequest
-        if routes.count == 1 {
-
-            return ScheduleRequest(transitMode: origSR.transitMode, selectedRoute: routes[0], selectedStart: origSR.selectedStart, selectedEnd: origSR.selectedEnd, onlyOneRouteAvailable: true)
-        } else {
-            return origSR
-        }
+    static func reduceTripStartSelected(action _: TripStartSelected, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute)
     }
 }

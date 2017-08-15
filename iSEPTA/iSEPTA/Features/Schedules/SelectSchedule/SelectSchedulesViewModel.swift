@@ -94,7 +94,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
             accessoryType = .none
             isSelectable = false
         }
-        return RowDisplayModel(text: text, color: color, accessoryType: accessoryType, isSelectable: isSelectable, targetController: .selectStartController)
+        return RowDisplayModel(text: text, color: color, accessoryType: accessoryType, isSelectable: isSelectable, targetController: .selectStopNavigationController)
     }
 
     fileprivate func configureSelectEndisplayModel() -> RowDisplayModel {

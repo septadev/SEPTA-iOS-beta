@@ -8,4 +8,5 @@ enum ViewController: String, Codable {
     case routesViewController
     case selectStartController
     case selectStopController
+    case selectStopNavigationController
 }

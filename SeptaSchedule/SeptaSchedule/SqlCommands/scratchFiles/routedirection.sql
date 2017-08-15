@@ -1,1 +1,1 @@
-Select dircode from bus_stop_directions GROUP BY  dircode;
+select count(*) from stop_times_bus ST where ST

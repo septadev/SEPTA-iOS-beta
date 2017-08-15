@@ -4,26 +4,18 @@ import UIKit
 import SeptaSchedule
 import ReSwift
 
-class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController {
-
+class SelectRouteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController {
+    @IBOutlet var viewModel: RoutesViewModel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
     static var viewController: ViewController = .routesViewController
-    static var navigationController: NavigationController = .schedules
-
+    let routeCellId = "routeCell"
     @IBOutlet weak var searchTextBox: UITextField!
 
     @IBAction func cancelButtonPressed(_: Any) {
         let dismissAction = DismissModal(navigationController: .schedules, description: "Route should be dismissed")
         store.dispatch(dismissAction)
     }
-
-    typealias Data = [Route]
-    let routeCellId = "routeCell"
-    let segueId = "selectStops"
-    @IBOutlet var viewModel: RoutesViewModel!
-
-    var selectedRoute: Route?
 
     override func viewDidLoad() {
         super.viewDidLoad()
