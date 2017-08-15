@@ -16,6 +16,8 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
     override func viewDidLoad() {
         viewModel = SelectSchedulesViewModel(delegate: self)
         view.backgroundColor = UIColor(red: 0.600, green: 0.600, blue: 0.600, alpha: 1.000)
+        tableView.tableFooterView = tableViewFooter
+        viewModel.subscribe()
     }
 
     override func viewWillAppear(_: Bool) {
@@ -23,10 +25,9 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
         navBar.backgroundColor = UIColor.clear
         navBar.shadowImage = UIImage()
         navBar.setBackgroundImage(UIImage(), for: .default)
-        viewModel.subscribe()
     }
 
-    override func viewWillDisappear(_: Bool) {
+    deinit {
         viewModel.unsubscribe()
     }
 

@@ -13,6 +13,8 @@ class SelectStopViewController: UIViewController, IdentifiableController, UITabl
     @IBOutlet var viewModel: SelectStopViewModel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet var tableFooterView: UIView!
+
     static var viewController: ViewController = .routesViewController
     let cellId = "stopCell"
     @IBOutlet weak var searchTextBox: UITextField!
@@ -29,6 +31,7 @@ class SelectStopViewController: UIViewController, IdentifiableController, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = "Select Start"
+        tableView.tableFooterView = tableFooterView
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -47,8 +50,10 @@ class SelectStopViewController: UIViewController, IdentifiableController, UITabl
     }
 
     func viewModelUpdated() {
+        if let activityIndicator = activityIndicator {
         activityIndicator.removeFromSuperview()
         tableView.reloadData()
+        }
     }
 
     deinit {

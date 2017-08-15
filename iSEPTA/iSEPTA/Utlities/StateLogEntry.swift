@@ -50,6 +50,8 @@ struct StateLogEntry: Codable {
             try container.encode(action, forKey: .action)
         case let action as TripStartSelected:
             try container.encode(action, forKey: .action)
+        case let action as NewTransitModeAction:
+            try container.encode(action, forKey: .action)
         default:
             fatalError("YOu need to add the action here")
             // throw LoggingError.missingActionWhileEncoding(actionName)

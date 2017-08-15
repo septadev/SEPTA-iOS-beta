@@ -30,15 +30,17 @@ class ScheduleProvider: StoreSubscriber {
 
         if hasTransitModeChanged(transitMode: transitMode) {
             retrieveAvailableRoutes(transitMode: transitMode)
+            currentScheduleRequest = scheduleRequest
+            return
         }
 
         if hasSelectedRouteChanged(selectedRoute: scheduleRequest.selectedRoute) {
             if let selectedRoute = scheduleRequest.selectedRoute {
                 retrieveStartingStopsForRoute(transitMode: transitMode, route: selectedRoute)
+                currentScheduleRequest = scheduleRequest
             }
+            return
         }
-
-        currentScheduleRequest = scheduleRequest
     }
 
     func hasTransitModeChanged(transitMode: TransitMode) -> Bool {

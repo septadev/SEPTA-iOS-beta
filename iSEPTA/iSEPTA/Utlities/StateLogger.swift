@@ -65,7 +65,7 @@ public class StateLogger {
         guard let objects = objects else { return }
         for obj in objects {
             guard let obj = obj else { continue }
-            print(obj)
+            // print(obj)
         }
     }
 

@@ -726,12 +726,19 @@ SearchTextBox</string>
                     <navigationItem key="navigationItem" title="Select Start" id="6oq-36-aan"/>
                     <connections>
                         <outlet property="activityIndicator" destination="fEJ-bC-2Y5" id="6wy-OP-bGM"/>
+                        <outlet property="tableFooterView" destination="c3p-Xn-uy1" id="AR6-90-5bU"/>
                         <outlet property="tableView" destination="ICn-d3-5wr" id="HZl-1B-6VZ"/>
                         <outlet property="titleLabel" destination="GzI-jB-UfB" id="2eF-sm-w8H"/>
                         <outlet property="viewModel" destination="d82-BN-gFA" id="UCE-dx-WaT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qXG-sq-UlS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="c3p-Xn-uy1" userLabel="TableFooterView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <viewLayoutGuide key="safeArea" id="9rd-JQ-ssn"/>
+                </view>
                 <customObject id="d82-BN-gFA" userLabel="SelectStopViewModel" customClass="SelectStopViewModel" customModule="Septa" customModuleProvider="target">
                     <connections>
                         <outlet property="selectStopViewController" destination="aLS-4r-fkd" id="nDd-kF-Y0e"/>
