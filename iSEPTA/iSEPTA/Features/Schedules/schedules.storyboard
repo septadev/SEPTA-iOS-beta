@@ -51,6 +51,50 @@
                                             <outlet property="label" destination="wCd-TC-F1i" id="n1N-uW-Pof"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="routeSelectedCell" id="dRd-8A-9Y3" customClass="RouteSelectedTableViewCell" customModule="Septa" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dRd-8A-9Y3" id="tv0-MK-MKw">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" misplaced="YES" text="17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5JT-lx-DGg" userLabel="RouteId">
+                                                    <rect key="frame" x="17" y="8" width="42" height="28"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="to Front-Market" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UtE-hk-g8E" userLabel="routeShortName">
+                                                    <rect key="frame" x="74" y="22" width="282" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Front-Mkt to 20-Johnston/Broad-Pat" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkG-cm-4jM" userLabel="RouteLongName">
+                                                    <rect key="frame" x="74" y="0.0" width="266" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="pkG-cm-4jM" secondAttribute="trailing" constant="35" id="Eqe-Ym-17S" userLabel="RouteLongNameRight"/>
+                                                <constraint firstAttribute="trailing" secondItem="UtE-hk-g8E" secondAttribute="trailing" constant="19" id="RJi-bh-SnB" userLabel="RouteShortNameRight"/>
+                                                <constraint firstAttribute="bottom" secondItem="UtE-hk-g8E" secondAttribute="bottom" constant="0.5" id="TAv-Pz-vZH" userLabel="RouteShortNameBottom"/>
+                                                <constraint firstItem="UtE-hk-g8E" firstAttribute="leading" secondItem="5JT-lx-DGg" secondAttribute="trailing" constant="15" id="Vrm-Pp-Vc3" userLabel="RouteShortNameLeft"/>
+                                                <constraint firstItem="pkG-cm-4jM" firstAttribute="leading" secondItem="5JT-lx-DGg" secondAttribute="trailing" constant="15" id="fuv-Nn-Fhk" userLabel="RouteLongNameLeft"/>
+                                                <constraint firstItem="5JT-lx-DGg" firstAttribute="centerY" secondItem="tv0-MK-MKw" secondAttribute="centerY" id="hho-GJ-fgP" userLabel="RouteIdCenterY"/>
+                                                <constraint firstItem="5JT-lx-DGg" firstAttribute="leading" secondItem="tv0-MK-MKw" secondAttribute="leading" constant="17" id="mbU-Gb-m20" userLabel="RouteIdLeft"/>
+                                                <constraint firstItem="pkG-cm-4jM" firstAttribute="top" secondItem="tv0-MK-MKw" secondAttribute="top" constant="8" id="uas-G6-7aJ" userLabel="RouteLongNameTop"/>
+                                                <constraint firstItem="UtE-hk-g8E" firstAttribute="top" secondItem="pkG-cm-4jM" secondAttribute="bottom" constant="5" id="wvy-QR-NrY" userLabel="RouteShortNameTop"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="routeIdLabel" destination="5JT-lx-DGg" id="NEe-Iw-LEW"/>
+                                            <outlet property="routeLongNameLabel" destination="pkG-cm-4jM" id="csL-hL-5MB"/>
+                                            <outlet property="routeShortNameLabel" destination="UtE-hk-g8E" id="kfP-QE-GuG"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="G8I-06-w6m" id="ZfZ-hj-wnb"/>

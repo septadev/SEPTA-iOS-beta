@@ -30,4 +30,4 @@ GROUP BY S.stop_id, S.stop_name, S.stop_lat, S.stop_lon;
 select * from trips_rail
 
 
-Select *  from routes_rail
+Select *  from routes_bus R join bus_stop_directions BSD on R.route_id = Route

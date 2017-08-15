@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */; };
 		5811CD741F3A8F8F00714C08 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5811CD721F3A8D1F00714C08 /* ReSwift.framework */; };
 		581804BB1F3F8051002184E3 /* LoggingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581804BA1F3F8051002184E3 /* LoggingError.swift */; };
 		581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581804BC1F3F838B002184E3 /* CodableAppState.swift */; };
@@ -155,6 +156,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectedTableViewCell.swift; sourceTree = "<group>"; };
 		5811CD721F3A8D1F00714C08 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = Frameworks/ReSwift.framework; sourceTree = "<group>"; };
 		581804BA1F3F8051002184E3 /* LoggingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingError.swift; sourceTree = "<group>"; };
 		581804BC1F3F838B002184E3 /* CodableAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableAppState.swift; sourceTree = "<group>"; };
@@ -688,6 +690,7 @@
 		58B18B0D1F42424C00A7F163 /* SelectSchedule */ = {
 			isa = PBXGroup;
 			children = (
+				5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */,
 				582F4EAA1F33B1120062A546 /* SelectSchedulesViewController.swift */,
 				58B892141F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift */,
 				58C2A0641F389B6400F0D6CA /* TransitModesToolBarViewController.swift */,
@@ -1092,6 +1095,7 @@
 				58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */,
 				58F444FC1F3D335400A93208 /* SeptaAction.swift in Sources */,
 				582F4EC61F33B1120062A546 /* SelectRouteViewController.swift in Sources */,
+				5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */,
 				58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */,
 				5840D6F01F37F66B00C8CB76 /* SeptaDraw.swift in Sources */,
 				581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */,

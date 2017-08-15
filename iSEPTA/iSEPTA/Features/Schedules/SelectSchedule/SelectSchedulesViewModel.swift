@@ -66,8 +66,8 @@ class SelectSchedulesViewModel: StoreSubscriber {
 
     fileprivate func configureSelectRouteDisplayModel() -> RowDisplayModel {
         let text: String
-        if let routeName = scheduleRequest?.selectedRoute?.routeLongName {
-            text = routeName
+        if let route = scheduleRequest?.selectedRoute {
+            text = "\(route.routeId) \(route.routeShortName)"
         } else {
             if let routeTitle = scheduleRequest?.transitMode?.selectRouteTitle() {
                 text = routeTitle
