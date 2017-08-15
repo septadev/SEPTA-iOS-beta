@@ -35,7 +35,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zn7-Mx-Yv7" id="v2j-wI-BVS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCd-TC-F1i">
@@ -55,7 +55,7 @@
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dRd-8A-9Y3" id="tv0-MK-MKw">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" misplaced="YES" text="17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5JT-lx-DGg" userLabel="RouteId">
@@ -171,17 +171,19 @@
                             </constraints>
                         </view>
                         <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GJS-IR-bDR">
-                            <rect key="frame" x="200" y="90" width="39" height="110"/>
+                            <rect key="frame" x="0.0" y="200" width="200" height="200"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="200" id="Yvw-7G-pzT"/>
+                                <constraint firstAttribute="width" constant="200" id="ubE-Ny-de2"/>
+                            </constraints>
                         </mapView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="cOB-du-LRG" firstAttribute="centerX" secondItem="eBi-Cq-E5z" secondAttribute="centerX" id="5eI-JY-acw" userLabel="ButtonCenterX"/>
-                        <constraint firstItem="GJS-IR-bDR" firstAttribute="leading" secondItem="eBi-Cq-E5z" secondAttribute="leading" constant="200" id="K1Y-Xg-f6T" userLabel="MapViewLeft"/>
-                        <constraint firstItem="GJS-IR-bDR" firstAttribute="top" secondItem="cOB-du-LRG" secondAttribute="bottom" constant="15" id="KOz-YS-Bcf" userLabel="MapViewTop"/>
+                        <constraint firstItem="GJS-IR-bDR" firstAttribute="leading" secondItem="eBi-Cq-E5z" secondAttribute="leading" id="K1Y-Xg-f6T" userLabel="MapViewLeft"/>
                         <constraint firstItem="cOB-du-LRG" firstAttribute="top" secondItem="eBi-Cq-E5z" secondAttribute="top" constant="15" id="f5H-RE-yLe" userLabel="ButtonViewTop"/>
-                        <constraint firstItem="eBi-Cq-E5z" firstAttribute="bottom" secondItem="GJS-IR-bDR" secondAttribute="bottom" constant="200" id="ppu-zE-PU0" userLabel="MapViewBottom"/>
-                        <constraint firstItem="eBi-Cq-E5z" firstAttribute="trailing" secondItem="GJS-IR-bDR" secondAttribute="trailing" constant="200" id="y4H-rw-uFZ" userLabel="MapViewRight"/>
+                        <constraint firstItem="eBi-Cq-E5z" firstAttribute="bottom" secondItem="GJS-IR-bDR" secondAttribute="bottom" id="ppu-zE-PU0" userLabel="MapViewBottom"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="eBi-Cq-E5z"/>
                 </view>
@@ -244,7 +246,7 @@ SearchTextBox</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mCg-hU-RGp" id="EF9-Ow-ydw">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NHSL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om0-j5-VdR" userLabel="RouteShortName">
@@ -406,7 +408,7 @@ StartingLabelRight</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ffg-L2-s06" id="QZ3-BZ-2bZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEg-oF-e3U" userLabel="Header">
@@ -761,7 +763,7 @@ SearchTextBox</string>
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wrn-eA-jgn" id="tLy-ES-enQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odK-ZX-VgC" userLabel="RouteLongName">
