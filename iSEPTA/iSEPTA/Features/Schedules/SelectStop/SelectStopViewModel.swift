@@ -17,13 +17,19 @@ struct FilterableStop {
     }
 }
 
-enum StopToSelect {
-    case starts
-    case ends
+enum StopToSelect: Int {
+    case starts = 1
+    case ends = 2
 }
 
 class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
     typealias StoreSubscriberStateType = [Stop]?
+
+    var stopToSelect: StopToSelect = .starts {
+        didSet {
+            subscribe()
+        }
+    }
 
     var allStops: [Stop]? {
         didSet {
@@ -52,8 +58,15 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
     @IBOutlet weak var selectStopViewController: UpdateableFromViewModel?
 
     func subscribe() {
-        store.subscribe(self) { subscription in
-            subscription.select(self.subscribeToTripStarts)
+        if stopToSelect == .starts {
+            store.subscribe(self) { subscription in
+                subscription.select(self.subscribeToTripStarts)
+            }
+
+        } else {
+            store.subscribe(self) { subscription in
+                subscription.select(self.subscribeToTripEnds)
+            }
         }
     }
 
@@ -71,6 +84,7 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
 
     func newState(state: StoreSubscriberStateType) {
         allStops = state
+        guard let state = state, state.count > 0 else { return }
         selectStopViewController?.viewModelUpdated()
     }
 
@@ -89,8 +103,13 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
         guard let filteredStops = filteredStops, row < filteredStops.count else { return }
         let stop = filteredStops[row].stop
         store.unsubscribe(self)
-        let action = TripStartSelected(selectedStart: stop)
-        store.dispatch(action)
+        if stopToSelect == .starts {
+            let action = TripStartSelected(selectedStart: stop)
+            store.dispatch(action)
+        } else {
+            let action = TripEndSelected(selectedEnd: stop)
+            store.dispatch(action)
+        }
         let dismissAction = DismissModal(navigationController: .schedules, description: "Stop should be dismissed")
         store.dispatch(dismissAction)
     }

@@ -23,6 +23,11 @@ struct RouteSelected: ScheduleAction {
     let description = "User Selected a route"
 }
 
+struct CurrentStopToEdit: ScheduleAction {
+    let description = "User Selected a route"
+    let stopToEdit: StopToSelect
+}
+
 struct TripStartsLoaded: ScheduleAction {
     let availableStarts: [Stop]?
     let description = "Loading available trip starting points for direction"
@@ -40,7 +45,7 @@ struct TripEndsLoaded: ScheduleAction {
     let error: String?
 }
 
-struct TripEndsSelected: ScheduleAction {
+struct TripEndSelected: ScheduleAction {
     let selectedEnd: Stop?
     let description = "User picked a stop for the trip"
 }

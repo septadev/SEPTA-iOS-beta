@@ -8,9 +8,11 @@
 
 import Foundation
 import UIKit
+import ReSwift
 
-class SelectStopViewController: UIViewController, IdentifiableController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel {
-    @IBOutlet var viewModel: SelectStopViewModel!
+class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel {
+    typealias StoreSubscriberStateType = StopToSelect?
+    @IBOutlet weak var viewModel: SelectStopViewModel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet var tableFooterView: UIView!
@@ -54,7 +56,35 @@ class SelectStopViewController: UIViewController, IdentifiableController, UITabl
     }
 
     override func viewWillAppear(_: Bool) {
-        viewModel.subscribe()
+        subscribe()
+    }
+
+    func subscribe() {
+
+        store.subscribe(self) { subscription in
+            subscription.select(self.filterSubscription)
+        }
+    }
+
+    func filterSubscription(state: AppState) -> StopToSelect? {
+        return state.scheduleState.scheduleRequest?.stopToEdit
+    }
+
+    func newState(state: StoreSubscriberStateType) {
+        guard let state = state else { return }
+        viewModel.stopToSelect = state
+
+        switch state {
+        case .starts:
+            titleLabel.text = "Select Start"
+        case .ends:
+            titleLabel.text = "Select Stop"
+        }
+        store.unsubscribe(self)
+    }
+
+    func unsubscribe() {
+        store.unsubscribe(self)
     }
 
     func viewModelUpdated() {

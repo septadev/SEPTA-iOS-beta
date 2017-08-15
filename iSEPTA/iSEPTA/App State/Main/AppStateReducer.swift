@@ -15,8 +15,8 @@ class AppStateReducer {
             preferenceState: UserPreferencesReducer.main(action: action, state: state?.preferenceState)
         )
 
-        StateLogger.sharedInstance.logAction(stateBefore: state, action: action, stateAfter: appState,
-                                             consoleLogObjects: [action, appState.scheduleState.scheduleRequest])
+        //        StateLogger.sharedInstance.logAction(stateBefore: state, action: action, stateAfter: appState,
+        //                                             consoleLogObjects: [action, appState.scheduleState.scheduleRequest])
         return appState
     }
 }

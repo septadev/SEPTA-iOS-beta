@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum RouteDirectionCode: Int, Codable {
+public enum RouteDirectionCode: Int {
     case inbound = 0
     case outbound = 1
 }

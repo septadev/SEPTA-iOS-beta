@@ -42,4 +42,7 @@ class SelectRouteViewController: UIViewController, UITableViewDelegate, UITableV
     func viewModelUpdated() {
         tableView.reloadData()
     }
+
+    deinit {
+    }
 }

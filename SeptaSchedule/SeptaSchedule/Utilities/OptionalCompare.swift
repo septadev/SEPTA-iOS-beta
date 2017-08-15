@@ -8,20 +8,22 @@
 
 import Foundation
 
-public func optionalCompare<T: Equatable>(currentValue: T?, newValue: T?) -> OptionalCompareResult {
-    switch (currentValue, newValue) {
-    case (.some, .some):
-        if currentValue == newValue {
-            return .bothNonNilAndEqual
-        } else {
-            return .bothNonNilAndDifferent
+public class Optionals {
+    public static func optionalCompare<T: Equatable>(currentValue: T?, newValue: T?) -> OptionalCompareResult {
+        switch (currentValue, newValue) {
+        case (.some, .some):
+            if currentValue == newValue {
+                return .bothNonNilAndEqual
+            } else {
+                return .bothNonNilAndDifferent
+            }
+        case (.none, .some):
+            return .currentIsNil
+        case (.some, .none):
+            return .newIsNil
+        case (.none, .none):
+            return .bothNil
         }
-    case (.none, .some):
-        return .currentIsNil
-    case (.some, .none):
-        return .newIsNil
-    case (.none, .none):
-        return .bothNil
     }
 }
 

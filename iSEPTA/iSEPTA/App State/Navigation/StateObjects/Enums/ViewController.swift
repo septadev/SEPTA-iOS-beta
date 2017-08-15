@@ -2,7 +2,7 @@
 
 import Foundation
 
-enum ViewController: String, Codable {
+enum ViewController: String, Equatable {
     /// Initial screen in schedules.  Holds the toolbar. Root view controller
     case selectSchedules
     case routesViewController

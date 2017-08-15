@@ -3,7 +3,7 @@
 import Foundation
 import ReSwift
 
-protocol SeptaAction: Action, Codable {
+protocol SeptaAction: Action {
 
     var description: String { get }
 }

@@ -13,6 +13,7 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
 
     @IBOutlet var tableViewFooter: UIView!
     var viewModel: SelectSchedulesViewModel!
+
     override func viewDidLoad() {
         viewModel = SelectSchedulesViewModel(delegate: self)
         view.backgroundColor = UIColor(red: 0.600, green: 0.600, blue: 0.600, alpha: 1.000)

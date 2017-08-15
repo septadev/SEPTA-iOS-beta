@@ -4,7 +4,7 @@ import Foundation
 import UIKit
 import ReSwift
 
-struct NavigationStackState: Codable {
+struct NavigationStackState {
     let viewControllers: [ViewController]?
     let modalViewController: ViewController?
 

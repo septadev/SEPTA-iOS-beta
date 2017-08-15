@@ -3,20 +3,20 @@
 import Foundation
 import SeptaSchedule
 
-struct ScheduleRequest: Codable {
+struct ScheduleRequest {
     let transitMode: TransitMode?
     let selectedRoute: Route?
     let selectedStart: Stop?
     let selectedEnd: Stop?
+    let stopToEdit: StopToSelect?
 
-    let onlyOneRouteAvailable: Bool
-
-    init(transitMode: TransitMode? = nil, selectedRoute: Route? = nil, selectedStart: Stop? = nil, selectedEnd: Stop? = nil, onlyOneRouteAvailable: Bool = false) {
+    init(transitMode: TransitMode? = nil, selectedRoute: Route? = nil, selectedStart: Stop? = nil,
+         selectedEnd: Stop? = nil, stopToEdit: StopToSelect? = nil) {
         self.transitMode = transitMode
         self.selectedRoute = selectedRoute
         self.selectedStart = selectedStart
         self.selectedEnd = selectedEnd
-        self.onlyOneRouteAvailable = onlyOneRouteAvailable
+        self.stopToEdit = stopToEdit
     }
 }
 
@@ -64,12 +64,17 @@ func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
     }
     guard areEqual else { return false }
 
-    if lhs.onlyOneRouteAvailable == rhs.onlyOneRouteAvailable {
+    switch (lhs.stopToEdit, rhs.stopToEdit) {
+    case (.none, .none):
         areEqual = true
-    } else {
+    case (.some, .some):
+        areEqual = lhs.stopToEdit! == rhs.stopToEdit!
+    default:
         areEqual = false
     }
     guard areEqual else { return false }
 
+    guard areEqual else { return false }
+    print("Schedule Requests are equal")
     return areEqual
 }

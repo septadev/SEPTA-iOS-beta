@@ -2,7 +2,7 @@
 
 import Foundation
 
-public struct Route: Codable {
+public struct Route {
     public let routeId: String
     public let routeShortName: String
     public let routeLongName: String
@@ -13,26 +13,6 @@ public struct Route: Codable {
         self.routeShortName = routeShortName
         self.routeLongName = routeLongName
         self.routeDirectionCode = routeDirectionCode
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case routeId = "route_id"
-        case routeShortName = "route_short_name"
-        case routeLongName = "route_long_name"
-        case routeDirectionCode = "dircode"
-    }
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        routeId = try container.decode(String.self, forKey: .routeId)
-        routeShortName = try container.decode(String.self, forKey: .routeShortName)
-        routeLongName = try container.decode(String.self, forKey: .routeLongName)
-        let dirCode = try container.decode(String.self, forKey: .routeDirectionCode)
-        if let dirCodeInt = Int(dirCode), let routeDirectionCode = RouteDirectionCode(rawValue: dirCodeInt) {
-            self.routeDirectionCode = routeDirectionCode
-        } else {
-            routeDirectionCode = RouteDirectionCode.inbound
-        }
     }
 
     public var hashValue: Int {

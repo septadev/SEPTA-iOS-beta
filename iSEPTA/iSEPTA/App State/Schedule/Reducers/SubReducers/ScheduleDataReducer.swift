@@ -46,7 +46,7 @@ struct ScheduleDataReducer {
     static func reduceTripEndsLoaded(action: TripEndsLoaded, scheduleData: ScheduleData) -> ScheduleData {
         let scheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
                                         availableStarts: scheduleData.availableStarts,
-                                        availableStops: scheduleData.availableStops,
+                                        availableStops: action.availableStops,
                                         availableTrips: nil,
                                         errorString: action.error)
         return scheduleData

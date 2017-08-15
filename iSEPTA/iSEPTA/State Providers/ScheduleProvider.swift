@@ -25,33 +25,36 @@ class ScheduleProvider: StoreSubscriber {
     // MARK: - Primary State Handler
 
     func newState(state: StoreSubscriberStateType) {
+        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest, newValue: state)
         guard let scheduleRequest = state else { return }
 
         processTransitMode(scheduleRequest: scheduleRequest)
     }
 
     func processTransitMode(scheduleRequest: ScheduleRequest) {
-        let comparisonResult = optionalCompare(currentValue: currentScheduleRequest.transitMode, newValue: scheduleRequest.transitMode)
+        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.transitMode, newValue: scheduleRequest.transitMode)
+
         switch comparisonResult {
         case .newIsNil:
             clearOutNonMatchingRoutes()
         case .bothNonNilAndDifferent, .currentIsNil:
+            clearOutNonMatchingRoutes()
             retrieveAvailableRoutes(scheduleRequest: scheduleRequest)
         case .bothNonNilAndEqual:
             processRoutes(scheduleRequest: scheduleRequest)
             return
         default: break
         }
-
         currentScheduleRequest = scheduleRequest
     }
 
     func processRoutes(scheduleRequest: ScheduleRequest) {
-        let comparisonResult = optionalCompare(currentValue: currentScheduleRequest.selectedRoute, newValue: scheduleRequest.selectedRoute)
+        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.selectedRoute, newValue: scheduleRequest.selectedRoute)
         switch comparisonResult {
         case .newIsNil:
             clearOutNonMatchingTripStarts()
         case .bothNonNilAndDifferent, .currentIsNil:
+            clearOutNonMatchingTripStarts()
             retrieveStartingStopsForRoute(scheduleRequest: scheduleRequest)
         case .bothNonNilAndEqual:
             processTripStarts(scheduleRequest: scheduleRequest)
@@ -62,12 +65,13 @@ class ScheduleProvider: StoreSubscriber {
     }
 
     func processTripStarts(scheduleRequest: ScheduleRequest) {
-        let comparisonResult = optionalCompare(currentValue: currentScheduleRequest.selectedStart, newValue: scheduleRequest.selectedStart)
+        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.selectedStart, newValue: scheduleRequest.selectedStart)
         switch comparisonResult {
         case .newIsNil:
             clearOutNonMatchingTripEnds()
         case .bothNonNilAndDifferent, .currentIsNil:
-            retrieveStartingStopsForRoute(scheduleRequest: scheduleRequest)
+            clearOutNonMatchingTripEnds()
+            retrieveEndingStopsForRoute(scheduleRequest: scheduleRequest)
         case .bothNonNilAndEqual:
             processTripEnds(scheduleRequest: scheduleRequest)
             return
@@ -77,11 +81,12 @@ class ScheduleProvider: StoreSubscriber {
     }
 
     func processTripEnds(scheduleRequest: ScheduleRequest) {
-        let comparisonResult = optionalCompare(currentValue: currentScheduleRequest.selectedEnd, newValue: scheduleRequest.selectedEnd)
+        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.selectedEnd, newValue: scheduleRequest.selectedEnd)
         switch comparisonResult {
         case .newIsNil:
             clearOutNonMatchingTripEnds()
         case .bothNonNilAndDifferent, .currentIsNil:
+            clearOutNonMatchingTripEnds()
             retrieveTripsForRoute(scheduleRequest: scheduleRequest)
         case .bothNonNilAndEqual:
             return
@@ -91,23 +96,31 @@ class ScheduleProvider: StoreSubscriber {
     }
 
     func clearOutNonMatchingRoutes() {
-        let routesLoadedAction = RoutesLoaded(routes: [Route](), error: nil)
-        store.dispatch(routesLoadedAction)
+        DispatchQueue.main.async {
+            let routesLoadedAction = RoutesLoaded(routes: [Route](), error: nil)
+            store.dispatch(routesLoadedAction)
+        }
     }
 
     func clearOutNonMatchingTripStarts() {
-        let tripStartsLoadedAction = TripStartsLoaded(availableStarts: [Stop](), error: nil)
-        store.dispatch(tripStartsLoadedAction)
+        DispatchQueue.main.async {
+            let tripStartsLoadedAction = TripStartsLoaded(availableStarts: [Stop](), error: nil)
+            store.dispatch(tripStartsLoadedAction)
+        }
     }
 
     func clearOutNonMatchingTripEnds() {
-        let tripEndsLoadedAction = TripEndsLoaded(availableStops: [Stop](), error: nil)
-        store.dispatch(tripEndsLoadedAction)
+        DispatchQueue.main.async {
+            let tripEndsLoadedAction = TripEndsLoaded(availableStops: [Stop](), error: nil)
+            store.dispatch(tripEndsLoadedAction)
+        }
     }
 
     func clearOutNonMatchingTrips() {
-        let tripsLoadedAction = TripsLoaded(availableTrips: [Trip](), error: nil)
-        store.dispatch(tripsLoadedAction)
+        DispatchQueue.main.async {
+            let tripsLoadedAction = TripsLoaded(availableTrips: [Trip](), error: nil)
+            store.dispatch(tripsLoadedAction)
+        }
     }
 
     // MARK: - Retrieve Routes

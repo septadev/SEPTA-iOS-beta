@@ -46,7 +46,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
 
     func buildDisplayModel() {
 
-        onlyOneRouteAvailable = scheduleRequest?.onlyOneRouteAvailable ?? false
+        onlyOneRouteAvailable = false
 
         displayModel = [
             configureSelectRouteDisplayModel(),
@@ -142,6 +142,11 @@ class SelectSchedulesViewModel: StoreSubscriber {
                                   description: "User Wishes to pick a route")
 
         store.dispatch(action)
+
+        if let stopToEdit = StopToSelect(rawValue: row) {
+            let editStopAction = CurrentStopToEdit(stopToEdit: stopToEdit)
+            store.dispatch(editStopAction)
+        }
     }
 
     func numberOfRows() -> Int {

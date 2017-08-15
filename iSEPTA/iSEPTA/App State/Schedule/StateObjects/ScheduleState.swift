@@ -3,7 +3,7 @@
 import Foundation
 import SeptaSchedule
 
-struct ScheduleState: Codable {
+struct ScheduleState {
 
     let scheduleRequest: ScheduleRequest?
     let scheduleData: ScheduleData?

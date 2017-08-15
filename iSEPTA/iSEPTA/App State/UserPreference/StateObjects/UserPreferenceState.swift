@@ -3,7 +3,7 @@
 import Foundation
 import SeptaSchedule
 
-struct UserPreferenceState: Codable {
+struct UserPreferenceState {
     var startupTransitMode: TransitMode?
     var startupNavigationController: NavigationController?
     var showDirectionInRoutes: Bool?

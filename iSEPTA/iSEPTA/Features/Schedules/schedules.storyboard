@@ -705,8 +705,9 @@ SearchTextBox</string>
                                     <outlet property="delegate" destination="aLS-4r-fkd" id="WdV-uk-ZEZ"/>
                                 </connections>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fEJ-bC-2Y5">
-                                <rect key="frame" x="177" y="403.5" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="fEJ-bC-2Y5">
+                                <rect key="frame" x="168.5" y="395" width="37" height="37"/>
+                                <color key="color" red="1" green="0.017948382969999999" blue="0.093025084879999997" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
