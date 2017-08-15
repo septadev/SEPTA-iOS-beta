@@ -652,7 +652,7 @@ Trolley</string>
                                         <string key="userLabel">
 SearchTextBox</string>
                                         <connections>
-                                            <outlet property="delegate" destination="Jge-ZX-dai" id="2KC-ZI-Uhk"/>
+                                            <outlet property="delegate" destination="d82-BN-gFA" id="Ats-xm-g4X"/>
                                         </connections>
                                     </textField>
                                 </subviews>
@@ -705,7 +705,7 @@ SearchTextBox</string>
                                     <outlet property="delegate" destination="aLS-4r-fkd" id="WdV-uk-ZEZ"/>
                                 </connections>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fEJ-bC-2Y5">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fEJ-bC-2Y5">
                                 <rect key="frame" x="177" y="403.5" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>

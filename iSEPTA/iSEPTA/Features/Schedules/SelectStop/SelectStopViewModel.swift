@@ -11,8 +11,8 @@ struct FilterableStop {
 
     init(stop: Stop) {
 
-        filterString = stop.stopName
-        sortString = stop.stopName
+        filterString = stop.stopName.lowercased()
+        sortString = stop.stopName.lowercased()
         self.stop = stop
     }
 }
@@ -51,15 +51,14 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
 
     @IBOutlet weak var selectStopViewController: UpdateableFromViewModel?
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        subscribe()
-    }
-
     func subscribe() {
         store.subscribe(self) { subscription in
             subscription.select(self.subscribeToTripStarts)
         }
+    }
+
+    func unsubscribe() {
+        store.unsubscribe(self)
     }
 
     func subscribeToTripStarts(state: AppState) -> [Stop]? {
@@ -110,8 +109,10 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
 
         guard let allFilterableStops = allFilterableStops, let swiftRange = Range(range, in: filterString) else { return false }
         filterString = filterString.replacingCharacters(in: swiftRange, with: replacementString.lowercased())
+        print(filterString)
         filteredStops = allFilterableStops.filter {
             guard filterString.characters.count > 0 else { return true }
+            print($0.filterString)
             return $0.filterString.contains(filterString)
         }
         DispatchQueue.main.async { [weak self] in

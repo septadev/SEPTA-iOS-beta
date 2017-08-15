@@ -19,7 +19,7 @@ class SelectStopViewController: UIViewController, IdentifiableController, UITabl
     let cellId = "stopCell"
     @IBOutlet weak var searchTextBox: UITextField!
 
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBAction func cancelButtonPressed(_: Any) {
         let dismissAction = DismissModal(navigationController: .schedules, description: "Route should be dismissed")
         store.dispatch(dismissAction)
@@ -49,13 +49,16 @@ class SelectStopViewController: UIViewController, IdentifiableController, UITabl
         viewModel.rowSelected(row: indexPath.row)
     }
 
-    func viewModelUpdated() {
-        if let activityIndicator = activityIndicator {
-        activityIndicator.removeFromSuperview()
-        tableView.reloadData()
-        }
+    override func viewWillDisappear(_: Bool) {
+        viewModel.unsubscribe()
     }
 
-    deinit {
+    override func viewWillAppear(_: Bool) {
+        viewModel.subscribe()
+    }
+
+    func viewModelUpdated() {
+        activityIndicator.stopAnimating()
+        tableView.reloadData()
     }
 }

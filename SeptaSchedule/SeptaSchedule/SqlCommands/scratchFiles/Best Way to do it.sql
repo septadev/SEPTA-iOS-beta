@@ -35,7 +35,7 @@ ORDER BY BSD.route_id;
 
 -- give me all the Westbound stops on route 44
 
-SELECT
+SELECT 
   S.stop_id                   stopId,
   S.stop_name                 stopName,
   cast(S.stop_lat AS DECIMAL) stopLatitude,
