@@ -13,13 +13,12 @@ class ScheduleProvider: StoreSubscriber {
     }
 
     func subscribe() {
-        store.subscribe(self) { subscription in
-            subscription.select(self.filterSubscription)
-        }
-    }
 
-    func filterSubscription(state: AppState) -> ScheduleRequest? {
-        return state.scheduleState.scheduleRequest
+        store.subscribe(self) {
+            $0.select {
+                $0.scheduleState.scheduleRequest
+            }
+        }
     }
 
     // MARK: - Primary State Handler

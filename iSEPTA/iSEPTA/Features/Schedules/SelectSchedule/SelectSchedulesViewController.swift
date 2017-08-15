@@ -41,9 +41,7 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
         navBar.setBackgroundImage(UIImage(), for: .default)
     }
 
-    deinit {
-        viewModel.unsubscribe()
-    }
+
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return viewModel.numberOfRows()
@@ -71,5 +69,9 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
     func formIsComplete(_ isComplete: Bool) {
         buttonView.isHidden = !isComplete
         mapView.isHidden = !isComplete
+    }
+
+  deinit {
+        viewModel.unsubscribe()
     }
 }

@@ -23,10 +23,6 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber, Id
         store.dispatch(action)
     }
 
-    func filterSubscription(state: AppState) -> [NavigationController: NavigationStackState]? {
-        return state.navigationState.appStackState
-    }
-
     var lastStackState = NavigationStackState()
     func newState(state: StoreSubscriberStateType) {
 
@@ -48,9 +44,10 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber, Id
     }
 
     func subscribe() {
-
-        store.subscribe(self) { subscription in
-            subscription.select(self.filterSubscription)
+        store.subscribe(self) {
+            $0.select {
+                $0.navigationState.appStackState
+            }
         }
     }
 

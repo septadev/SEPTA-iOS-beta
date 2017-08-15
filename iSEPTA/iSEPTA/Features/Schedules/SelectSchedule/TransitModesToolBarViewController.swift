@@ -20,8 +20,11 @@ class TransitModesToolbarViewController: UIViewController, StoreSubscriber {
     }
 
     func subscribe() {
+
         store.subscribe(self) { subscription in
-            subscription.select(self.filterSubscription)
+            subscription.select {
+                $0.scheduleState.scheduleRequest?.transitMode
+            }
         }
     }
 
@@ -90,10 +93,6 @@ class TransitModesToolbarViewController: UIViewController, StoreSubscriber {
         store.dispatch(action)
         let preferenceAction = NewTransitModeAction(transitMode: transitMode)
         store.dispatch(preferenceAction)
-    }
-
-    func filterSubscription(state: AppState) -> TransitMode? {
-        return state.scheduleState.scheduleRequest?.transitMode
     }
 
     func newState(state: StoreSubscriberStateType) {

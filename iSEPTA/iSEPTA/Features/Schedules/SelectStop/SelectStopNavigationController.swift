@@ -50,13 +50,11 @@ class SelectStopNavigationController: UINavigationController, IdentifiableContro
 
     func subscribe() {
 
-        store.subscribe(self) { subscription in
-            subscription.select(self.filterSubscription)
+        store.subscribe(self) {
+            $0.select {
+                $0.navigationState.appStackState
+            }
         }
-    }
-
-    func filterSubscription(state: AppState) -> [NavigationController: NavigationStackState]? {
-        return state.navigationState.appStackState
     }
 
     deinit {

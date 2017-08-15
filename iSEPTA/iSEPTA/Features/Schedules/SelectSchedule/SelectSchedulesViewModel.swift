@@ -34,8 +34,11 @@ class SelectSchedulesViewModel: StoreSubscriber {
     }
 
     func subscribe() {
-        store.subscribe(self) { subscription in
-            subscription.select(self.filterSubscription)
+
+        store.subscribe(self) {
+            $0.select {
+                $0.scheduleState.scheduleRequest
+            }
         }
     }
 

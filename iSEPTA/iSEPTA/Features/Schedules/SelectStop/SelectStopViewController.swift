@@ -61,13 +61,11 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
 
     func subscribe() {
 
-        store.subscribe(self) { subscription in
-            subscription.select(self.filterSubscription)
+        store.subscribe(self) {
+            $0.select {
+                $0.scheduleState.scheduleRequest?.stopToEdit
+            }
         }
-    }
-
-    func filterSubscription(state: AppState) -> StopToSelect? {
-        return state.scheduleState.scheduleRequest?.stopToEdit
     }
 
     func newState(state: StoreSubscriberStateType) {

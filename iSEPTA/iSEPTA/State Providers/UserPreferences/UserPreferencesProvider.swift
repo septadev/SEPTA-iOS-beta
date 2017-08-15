@@ -13,13 +13,12 @@ class UserPreferencesProvider: StoreSubscriber, UserPreferencesProviderProtocol 
     private init() {}
 
     func subscribe() {
-        store.subscribe(self) { subscription in
-            subscription.select(self.filterSubscription)
-        }
-    }
 
-    func filterSubscription(state: AppState) -> UserPreferenceState {
-        return state.preferenceState
+        store.subscribe(self) {
+            $0.select {
+                $0.preferenceState
+            }
+        }
     }
 
     private func unsubscribe() {

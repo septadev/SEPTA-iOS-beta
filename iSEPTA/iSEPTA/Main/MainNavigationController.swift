@@ -9,13 +9,12 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        store.subscribe(self) { subscription in
-            subscription.select(self.filterSubscription)
-        }
-    }
 
-    func filterSubscription(state: AppState) -> Int? {
-        return state.navigationState.selectedTab
+        store.subscribe(self) {
+            $0.select {
+                $0.navigationState.selectedTab
+            }
+        }
     }
 
     override func tabBar(_: UITabBar, didSelect _: UITabBarItem) {

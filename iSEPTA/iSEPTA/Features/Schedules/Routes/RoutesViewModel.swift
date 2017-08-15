@@ -61,13 +61,11 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
     }
 
     func subscribe() {
-        store.subscribe(self) { subscription in
-            subscription.select(self.filterSubscription)
+        store.subscribe(self) {
+            $0.select {
+                $0.scheduleState.scheduleData?.availableRoutes
+            }
         }
-    }
-
-    func filterSubscription(state: AppState) -> [Route]? {
-        return state.scheduleState.scheduleData?.availableRoutes
     }
 
     func newState(state: StoreSubscriberStateType) {

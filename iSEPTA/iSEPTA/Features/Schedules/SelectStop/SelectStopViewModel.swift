@@ -59,27 +59,22 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
 
     func subscribe() {
         if stopToSelect == .starts {
-            store.subscribe(self) { subscription in
-                subscription.select(self.subscribeToTripStarts)
+            store.subscribe(self) {
+                $0.select {
+                    $0.scheduleState.scheduleData?.availableStarts
+                }
             }
-
         } else {
-            store.subscribe(self) { subscription in
-                subscription.select(self.subscribeToTripEnds)
+            store.subscribe(self) {
+                $0.select {
+                    $0.scheduleState.scheduleData?.availableStops
+                }
             }
         }
     }
 
     func unsubscribe() {
         store.unsubscribe(self)
-    }
-
-    func subscribeToTripStarts(state: AppState) -> [Stop]? {
-        return state.scheduleState.scheduleData?.availableStarts
-    }
-
-    func subscribeToTripEnds(state: AppState) -> [Stop]? {
-        return state.scheduleState.scheduleData?.availableStops
     }
 
     func newState(state: StoreSubscriberStateType) {
