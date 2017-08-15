@@ -41,6 +41,8 @@
 		582F4F381F33B4E50062A546 /* TripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F311F33B4E50062A546 /* TripTests.swift */; };
 		582F4F391F33B4E50062A546 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4F321F33B4E50062A546 /* Main.swift */; };
 		5837DB431F40C617008F50BC /* RouteDirectionCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5837DB421F40C617008F50BC /* RouteDirectionCode.swift */; };
+		584AC8771F4383A90040C1B4 /* TripScheduleCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AC8761F4383A90040C1B4 /* TripScheduleCommand.swift */; };
+		584AC8791F4383BB0040C1B4 /* TripScheduleSQLQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584AC8781F4383BB0040C1B4 /* TripScheduleSQLQuery.swift */; };
 		5868897F1F42978A00B2920A /* busTripEnd.sql in Resources */ = {isa = PBXBuildFile; fileRef = 5868897E1F42978A00B2920A /* busTripEnd.sql */; };
 		586889811F42979B00B2920A /* railTripEnd.sql in Resources */ = {isa = PBXBuildFile; fileRef = 586889801F42979B00B2920A /* railTripEnd.sql */; };
 		586889831F4297B400B2920A /* TripEndCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586889821F4297B400B2920A /* TripEndCommand.swift */; };
@@ -122,6 +124,8 @@
 		582F4F311F33B4E50062A546 /* TripTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTests.swift; sourceTree = "<group>"; };
 		582F4F321F33B4E50062A546 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		5837DB421F40C617008F50BC /* RouteDirectionCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDirectionCode.swift; sourceTree = "<group>"; };
+		584AC8761F4383A90040C1B4 /* TripScheduleCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripScheduleCommand.swift; sourceTree = "<group>"; };
+		584AC8781F4383BB0040C1B4 /* TripScheduleSQLQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripScheduleSQLQuery.swift; sourceTree = "<group>"; };
 		5868897E1F42978A00B2920A /* busTripEnd.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = busTripEnd.sql; sourceTree = "<group>"; };
 		586889801F42979B00B2920A /* railTripEnd.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = railTripEnd.sql; sourceTree = "<group>"; };
 		586889821F4297B400B2920A /* TripEndCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripEndCommand.swift; sourceTree = "<group>"; };
@@ -228,6 +232,7 @@
 				58DCA09A1F3E2A4C002F08CF /* Routes */,
 				58F2536A1F4139FA0075C8AD /* TripStart */,
 				5868897C1F42976300B2920A /* TripEnd */,
+				584AC8741F4383620040C1B4 /* Trips */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -266,6 +271,23 @@
 				582F4F311F33B4E50062A546 /* TripTests.swift */,
 			);
 			path = DataObjectTests;
+			sourceTree = "<group>";
+		};
+		584AC8741F4383620040C1B4 /* Trips */ = {
+			isa = PBXGroup;
+			children = (
+				584AC8751F43838C0040C1B4 /* sql */,
+				584AC8761F4383A90040C1B4 /* TripScheduleCommand.swift */,
+				584AC8781F4383BB0040C1B4 /* TripScheduleSQLQuery.swift */,
+			);
+			path = Trips;
+			sourceTree = "<group>";
+		};
+		584AC8751F43838C0040C1B4 /* sql */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = sql;
 			sourceTree = "<group>";
 		};
 		5868897C1F42976300B2920A /* TripEnd */ = {
@@ -562,6 +584,7 @@
 				58902EF41F41ED7C00DE6F64 /* TripStartSQLQuery.swift in Sources */,
 				586889851F4297CE00B2920A /* TripEndSQLQuery.swift in Sources */,
 				582F4F1C1F33B1370062A546 /* SQLCommandTemplate.swift in Sources */,
+				584AC8771F4383A90040C1B4 /* TripScheduleCommand.swift in Sources */,
 				582F4F231F33B1AA0062A546 /* GeoCompare.swift in Sources */,
 				58DCA09C1F3E2B2B002F08CF /* SQLQueryProtocol.swift in Sources */,
 				58DCA0951F3E280C002F08CF /* TransitMode.swift in Sources */,
@@ -580,6 +603,7 @@
 				5837DB431F40C617008F50BC /* RouteDirectionCode.swift in Sources */,
 				582F4F151F33B1370062A546 /* DatabaseTables.swift in Sources */,
 				58F2536C1F413A380075C8AD /* TripStartCommand.swift in Sources */,
+				584AC8791F4383BB0040C1B4 /* TripScheduleSQLQuery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
