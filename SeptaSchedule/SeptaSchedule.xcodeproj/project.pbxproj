@@ -10,10 +10,6 @@
 		5809EDFE1F4385EB00BBECFF /* busTripSchedule.sql in Resources */ = {isa = PBXBuildFile; fileRef = 5809EDFD1F4385EB00BBECFF /* busTripSchedule.sql */; };
 		5809EE021F43883900BBECFF /* TransitMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DCA0941F3E280C002F08CF /* TransitMode.swift */; };
 		5809EE051F4389F400BBECFF /* RoutesSQLQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5809EE041F4389F300BBECFF /* RoutesSQLQuery.swift */; };
-		5811CD691F3A890F00714C08 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5811CD681F3A890F00714C08 /* SQLite.framework */; };
-		5811CD6B1F3A891400714C08 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5811CD6A1F3A891300714C08 /* Zip.framework */; };
-		58195FF51F3FA7D00053B3D3 /* Zip.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5811CD6A1F3A891300714C08 /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		58195FF61F3FA7D00053B3D3 /* SQLite.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5811CD681F3A890F00714C08 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		58195FFC1F3FB7810053B3D3 /* nhslRoutes.json in Resources */ = {isa = PBXBuildFile; fileRef = 58195FFB1F3FB7810053B3D3 /* nhslRoutes.json */; };
 		5819600E1F3FB8AA0053B3D3 /* RoutesCommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5819600D1F3FB8AA0053B3D3 /* RoutesCommandTests.swift */; };
 		581960131F3FB92B0053B3D3 /* busRoutes.json in Resources */ = {isa = PBXBuildFile; fileRef = 5819600F1F3FB92B0053B3D3 /* busRoutes.json */; };
@@ -84,8 +80,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				58195FF51F3FA7D00053B3D3 /* Zip.framework in CopyFiles */,
-				58195FF61F3FA7D00053B3D3 /* SQLite.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,9 +88,6 @@
 /* Begin PBXFileReference section */
 		5809EDFD1F4385EB00BBECFF /* busTripSchedule.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = busTripSchedule.sql; sourceTree = "<group>"; };
 		5809EE041F4389F300BBECFF /* RoutesSQLQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesSQLQuery.swift; sourceTree = "<group>"; };
-		5811CD661F3A88F300714C08 /* Frameworks */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Frameworks; path = ../iSEPTA/Frameworks; sourceTree = "<group>"; };
-		5811CD681F3A890F00714C08 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = ../iSEPTA/Frameworks/SQLite.framework; sourceTree = "<group>"; };
-		5811CD6A1F3A891300714C08 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = ../iSEPTA/Frameworks/Zip.framework; sourceTree = "<group>"; };
 		58195FFB1F3FB7810053B3D3 /* nhslRoutes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = nhslRoutes.json; sourceTree = "<group>"; };
 		5819600D1F3FB8AA0053B3D3 /* RoutesCommandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesCommandTests.swift; sourceTree = "<group>"; };
 		5819600F1F3FB92B0053B3D3 /* busRoutes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = busRoutes.json; sourceTree = "<group>"; };
@@ -161,8 +152,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5811CD691F3A890F00714C08 /* SQLite.framework in Frameworks */,
-				5811CD6B1F3A891400714C08 /* Zip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,9 +304,6 @@
 		58D9C4191F3336C6002BE2E8 = {
 			isa = PBXGroup;
 			children = (
-				5811CD6A1F3A891300714C08 /* Zip.framework */,
-				5811CD681F3A890F00714C08 /* SQLite.framework */,
-				5811CD661F3A88F300714C08 /* Frameworks */,
 				582F4F1F1F33B1AA0062A546 /* Utilities */,
 				58D9C4251F3336C6002BE2E8 /* SeptaSchedule */,
 				58D9C4301F3336C6002BE2E8 /* SeptaScheduleTests */,
@@ -767,7 +753,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = YES;
-				FRAMEWORK_SEARCH_PATHS = $SRCROOT/../iSEPTA/Frameworks;
+				FRAMEWORK_SEARCH_PATHS = "$SRCROOT/../Carthage/Build/iOS/**";
 				INFOPLIST_FILE = SeptaSchedule/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -800,7 +786,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = YES;
-				FRAMEWORK_SEARCH_PATHS = $SRCROOT/../iSEPTA/Frameworks;
+				FRAMEWORK_SEARCH_PATHS = "$SRCROOT/../Carthage/Build/iOS/**";
 				INFOPLIST_FILE = SeptaSchedule/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
