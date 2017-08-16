@@ -4,10 +4,10 @@ import Foundation
 import SeptaSchedule
 import ReSwift
 
-class TripScheduleViewModel: StoreSubscriber {
+@objc class TripScheduleViewModel: NSObject, StoreSubscriber {
     typealias StoreSubscriberStateType = [Trip]?
     var trips = [Trip]()
-
+    @IBOutlet weak var tripScheduleViewController: UpdateableFromViewModel?
     func subscribe() {
         store.subscribe(self) {
             $0.select {

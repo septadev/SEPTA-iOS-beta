@@ -51,7 +51,7 @@ struct TripEndSelected: ScheduleAction {
 }
 
 struct TripsLoaded: ScheduleAction {
-    let availableTrips: [Trip]
+    let availableTrips: [Trip]?
     let description = "Now we have available trips for the user to consider"
     let error: String?
 }

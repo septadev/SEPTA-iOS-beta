@@ -9,7 +9,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var startingPoint: UILabel!
     @IBOutlet weak var endingPoint: UILabel!
     var defaultColor: UIColor!
-    var viewModel: TripScheduleViewModel!
+    @IBOutlet var viewModel: TripScheduleViewModel!
     @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet var header: UIView!

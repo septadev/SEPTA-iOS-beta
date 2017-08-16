@@ -146,12 +146,12 @@ class ScheduleProvider: StoreSubscriber {
         }
     }
 
-    func retrieveTripsForRoute(scheduleRequest _: ScheduleRequest) {
+    func retrieveTripsForRoute(scheduleRequest: ScheduleRequest) {
 
-        //        TripEndCommand.sharedInstance.stops(forTransitMode: transitMode, forRoute: route, tripStart: tripStart) { stops, error in
-        //            let action = TripEndsLoaded(availableStops: stops, error: error?.localizedDescription)
-        //            store.dispatch(action)
-        //        }
+        TripScheduleCommand.sharedInstance.tripSchedules(forTransitMode: scheduleRequest.transitMode!, selectedStart: scheduleRequest.selectedStart!, selectedEnd: scheduleRequest.selectedEnd!, scheduleType: .weekday) { trips, error in
+            let action = TripsLoaded(availableTrips: trips, error: error?.localizedDescription)
+            store.dispatch(action)
+        }
     }
 
     deinit {

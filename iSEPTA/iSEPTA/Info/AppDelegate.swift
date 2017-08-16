@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func movePreloadedDatabaseIfNeeded() {
 
-        DispatchQueue.global(qos: .utility).async {
+        DispatchQueue.global(qos: .userInitiated).async {
             do {
                 _ = try self.databaseFileManager.unzipFileToDocumentsDirectoryIfNecessary()
 

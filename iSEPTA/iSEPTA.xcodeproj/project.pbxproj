@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */; };
 		5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */; };
-		5811CD741F3A8F8F00714C08 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5811CD721F3A8D1F00714C08 /* ReSwift.framework */; };
-		5814AA841F43589E00DF774A /* RouteSheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9B1F33B1120062A546 /* RouteSheduleViewModel.swift */; };
+		5814AA841F43589E00DF774A /* TripScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9B1F33B1120062A546 /* TripScheduleViewModel.swift */; };
 		5814AA891F4359CC00DF774A /* SingleStringDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5814AA861F4358D000DF774A /* SingleStringDisplayable.swift */; };
 		5814AA8A1F4359D000DF774A /* TripleTextDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5814AA851F4358D000DF774A /* TripleTextDisplayable.swift */; };
 		581804BB1F3F8051002184E3 /* LoggingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581804BA1F3F8051002184E3 /* LoggingError.swift */; };
@@ -158,7 +157,6 @@
 
 /* Begin PBXFileReference section */
 		5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectedTableViewCell.swift; sourceTree = "<group>"; };
-		5811CD721F3A8D1F00714C08 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = Frameworks/ReSwift.framework; sourceTree = "<group>"; };
 		5814AA851F4358D000DF774A /* TripleTextDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripleTextDisplayable.swift; sourceTree = "<group>"; };
 		5814AA861F4358D000DF774A /* SingleStringDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleStringDisplayable.swift; sourceTree = "<group>"; };
 		581804BA1F3F8051002184E3 /* LoggingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingError.swift; sourceTree = "<group>"; };
@@ -199,7 +197,7 @@
 		582F4E961F33B1120062A546 /* RoutesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesViewModel.swift; sourceTree = "<group>"; };
 		582F4E971F33B1120062A546 /* RouteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
 		582F4E9A1F33B1120062A546 /* TripScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripScheduleViewController.swift; sourceTree = "<group>"; };
-		582F4E9B1F33B1120062A546 /* RouteSheduleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSheduleViewModel.swift; sourceTree = "<group>"; };
+		582F4E9B1F33B1120062A546 /* TripScheduleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripScheduleViewModel.swift; sourceTree = "<group>"; };
 		582F4E9C1F33B1120062A546 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		582F4E9D1F33B1120062A546 /* schedules.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = schedules.storyboard; sourceTree = "<group>"; };
 		582F4EA01F33B1120062A546 /* SelectStopViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopViewModel.swift; sourceTree = "<group>"; };
@@ -278,7 +276,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				58B1FFD61F42EB2500AD8620 /* MapKit.framework in Frameworks */,
-				5811CD741F3A8F8F00714C08 /* ReSwift.framework in Frameworks */,
 				5892DDF11F3AAA5C000BA54B /* Crashlytics.framework in Frameworks */,
 				58406EB41F3A9C0900E6E04D /* SeptaSchedule.framework in Frameworks */,
 				5892DDF21F3AAA5C000BA54B /* Fabric.framework in Frameworks */,
@@ -435,7 +432,6 @@
 		582F4E931F33B1120062A546 /* Schedules */ = {
 			isa = PBXGroup;
 			children = (
-				5868897A1F42973C00B2920A /* SelectStop */,
 				58B18B0D1F42424C00A7F163 /* SelectSchedule */,
 				582F4E941F33B1120062A546 /* Routes */,
 				582F4E9E1F33B1120062A546 /* SelectStop */,
@@ -460,7 +456,7 @@
 			isa = PBXGroup;
 			children = (
 				582F4E9A1F33B1120062A546 /* TripScheduleViewController.swift */,
-				582F4E9B1F33B1120062A546 /* RouteSheduleViewModel.swift */,
+				582F4E9B1F33B1120062A546 /* TripScheduleViewModel.swift */,
 				582F4E9C1F33B1120062A546 /* ScheduleTableViewCell.swift */,
 			);
 			path = TripSchedule;
@@ -554,14 +550,6 @@
 				5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */,
 			);
 			path = Toolbars;
-			sourceTree = "<group>";
-		};
-		5868897A1F42973C00B2920A /* SelectStop */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = SelectStop;
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		588F27F11F39DDBF00D62425 /* UserPreference */ = {
@@ -797,7 +785,6 @@
 			isa = PBXGroup;
 			children = (
 				58B1FFD41F42EB2400AD8620 /* MapKit.framework */,
-				5811CD721F3A8D1F00714C08 /* ReSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -998,9 +985,9 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Frameworks/ReSwift.framework",
-				"$(SRCROOT)/Frameworks/Zip.framework",
-				"$(SRCROOT)/Frameworks/SQLite.framework",
+				"$(SRCROOT)/../Carthage/Build/IOS/ReSwift.framework",
+				"$(SRCROOT)/../Carthage/Build/IOS/Zip.framework",
+				"$(SRCROOT)/../Carthage/Build/IOS/SQLite.framework",
 			);
 			name = "Copy Carthage Frameworks";
 			outputPaths = (
@@ -1068,7 +1055,7 @@
 				582F4EC71F33B1120062A546 /* RoutesViewModel.swift in Sources */,
 				5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift in Sources */,
 				5840D6E51F37EA1900C8CB76 /* ScheduleProvider.swift in Sources */,
-				5814AA841F43589E00DF774A /* RouteSheduleViewModel.swift in Sources */,
+				5814AA841F43589E00DF774A /* TripScheduleViewModel.swift in Sources */,
 				5814AA8A1F4359D000DF774A /* TripleTextDisplayable.swift in Sources */,
 				58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */,
 				58F80D451F421C4B0089501A /* SelectStopViewController.swift in Sources */,
@@ -1280,9 +1267,9 @@
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
+					$SRCROOT/../Carthage/Build/iOS,
 					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks",
-					"$(PROJECT_DIR)",
+					$SRCROOT,
 				);
 				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -1310,9 +1297,9 @@
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
+					$SRCROOT/../Carthage/Build/iOS,
 					"$(inherited)",
-					"$(PROJECT_DIR)/Frameworks",
-					"$(PROJECT_DIR)",
+					$SRCROOT,
 				);
 				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
