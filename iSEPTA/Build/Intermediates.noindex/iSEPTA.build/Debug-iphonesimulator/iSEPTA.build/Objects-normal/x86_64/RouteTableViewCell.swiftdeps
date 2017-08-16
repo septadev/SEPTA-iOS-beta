@@ -1,0 +1,302 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "RouteCellDisplayable"
+- "RouteTableViewCell"
+provides-nominal:
+- "5Septa20RouteCellDisplayableP"
+- "5Septa18RouteTableViewCellC"
+provides-member:
+- ["5Septa20RouteCellDisplayableP", ""]
+- ["5Septa18RouteTableViewCellC", ""]
+provides-dynamic-lookup:
+- "routeLongNameLabel"
+- "routeShortNameLabel"
+depends-top-level:
+- "AssignmentPrecedence"
+- "RouteCellDisplayable"
+- "RouteTableViewCell"
+- "String"
+- "UILabel"
+- "UITableViewCell"
+depends-member:
+- !private ["So15CALayerDelegateP", "init"]
+- !private ["So15CALayerDelegateP", "routeLongNameLabel"]
+- !private ["So15CALayerDelegateP", "routeShortNameLabel"]
+- ["So15CALayerDelegateP", "setLongName"]
+- ["So15CALayerDelegateP", "setShortName"]
+- !private ["So15CALayerDelegateP", "text"]
+- ["So15CALayerDelegateP", ""]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "routeLongNameLabel"]
+- !private ["s7CVarArgP", "routeShortNameLabel"]
+- ["s7CVarArgP", "setLongName"]
+- ["s7CVarArgP", "setShortName"]
+- !private ["s7CVarArgP", "text"]
+- ["s7CVarArgP", ""]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "routeLongNameLabel"]
+- !private ["s28CustomDebugStringConvertibleP", "routeShortNameLabel"]
+- ["s28CustomDebugStringConvertibleP", "setLongName"]
+- ["s28CustomDebugStringConvertibleP", "setShortName"]
+- !private ["s28CustomDebugStringConvertibleP", "text"]
+- ["s28CustomDebugStringConvertibleP", ""]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "routeLongNameLabel"]
+- !private ["s23CustomStringConvertibleP", "routeShortNameLabel"]
+- ["s23CustomStringConvertibleP", "setLongName"]
+- ["s23CustomStringConvertibleP", "setShortName"]
+- !private ["s23CustomStringConvertibleP", "text"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "routeLongNameLabel"]
+- !private ["s9EquatableP", "routeShortNameLabel"]
+- ["s9EquatableP", "setLongName"]
+- ["s9EquatableP", "setShortName"]
+- !private ["s9EquatableP", "text"]
+- ["s9EquatableP", ""]
+- !private ["s8HashableP", "init"]
+- !private ["s8HashableP", "routeLongNameLabel"]
+- !private ["s8HashableP", "routeShortNameLabel"]
+- ["s8HashableP", "setLongName"]
+- ["s8HashableP", "setShortName"]
+- !private ["s8HashableP", "text"]
+- ["s8HashableP", ""]
+- !private ["So8NSCodingP", "init"]
+- !private ["So8NSCodingP", "routeLongNameLabel"]
+- !private ["So8NSCodingP", "routeShortNameLabel"]
+- ["So8NSCodingP", "setLongName"]
+- ["So8NSCodingP", "setShortName"]
+- !private ["So8NSCodingP", "text"]
+- ["So8NSCodingP", ""]
+- ["So8NSObjectC", "String"]
+- ["So8NSObjectC", "UILabel"]
+- ["So8NSObjectC", "init"]
+- ["So8NSObjectC", "routeLongNameLabel"]
+- ["So8NSObjectC", "routeShortNameLabel"]
+- ["So8NSObjectC", "setLongName"]
+- ["So8NSObjectC", "setShortName"]
+- !private ["So8NSObjectC", "text"]
+- !private ["So16NSObjectProtocolP", "init"]
+- !private ["So16NSObjectProtocolP", "routeLongNameLabel"]
+- !private ["So16NSObjectProtocolP", "routeShortNameLabel"]
+- ["So16NSObjectProtocolP", "setLongName"]
+- ["So16NSObjectProtocolP", "setShortName"]
+- !private ["So16NSObjectProtocolP", "text"]
+- ["So16NSObjectProtocolP", ""]
+- ["5Septa20RouteCellDisplayableP", "String"]
+- !private ["5Septa20RouteCellDisplayableP", "routeLongNameLabel"]
+- !private ["5Septa20RouteCellDisplayableP", "routeShortNameLabel"]
+- ["5Septa20RouteCellDisplayableP", "setLongName"]
+- ["5Septa20RouteCellDisplayableP", "setShortName"]
+- ["5Septa20RouteCellDisplayableP", ""]
+- ["5Septa18RouteTableViewCellC", "String"]
+- ["5Septa18RouteTableViewCellC", "UILabel"]
+- ["5Septa18RouteTableViewCellC", "deinit"]
+- ["5Septa18RouteTableViewCellC", "init"]
+- ["5Septa18RouteTableViewCellC", "routeLongNameLabel"]
+- ["5Septa18RouteTableViewCellC", "routeShortNameLabel"]
+- ["5Septa18RouteTableViewCellC", "setLongName"]
+- ["5Septa18RouteTableViewCellC", "setShortName"]
+- !private ["So29UIAccessibilityIdentificationP", "init"]
+- !private ["So29UIAccessibilityIdentificationP", "routeLongNameLabel"]
+- !private ["So29UIAccessibilityIdentificationP", "routeShortNameLabel"]
+- ["So29UIAccessibilityIdentificationP", "setLongName"]
+- ["So29UIAccessibilityIdentificationP", "setShortName"]
+- !private ["So29UIAccessibilityIdentificationP", "text"]
+- ["So29UIAccessibilityIdentificationP", ""]
+- !private ["So12UIAppearanceP", "init"]
+- !private ["So12UIAppearanceP", "routeLongNameLabel"]
+- !private ["So12UIAppearanceP", "routeShortNameLabel"]
+- ["So12UIAppearanceP", "setLongName"]
+- ["So12UIAppearanceP", "setShortName"]
+- !private ["So12UIAppearanceP", "text"]
+- ["So12UIAppearanceP", ""]
+- !private ["So21UIAppearanceContainerP", "init"]
+- !private ["So21UIAppearanceContainerP", "routeLongNameLabel"]
+- !private ["So21UIAppearanceContainerP", "routeShortNameLabel"]
+- ["So21UIAppearanceContainerP", "setLongName"]
+- ["So21UIAppearanceContainerP", "setShortName"]
+- !private ["So21UIAppearanceContainerP", "text"]
+- ["So21UIAppearanceContainerP", ""]
+- !private ["So30UIContentSizeCategoryAdjustingP", "text"]
+- !private ["So17UICoordinateSpaceP", "init"]
+- !private ["So17UICoordinateSpaceP", "routeLongNameLabel"]
+- !private ["So17UICoordinateSpaceP", "routeShortNameLabel"]
+- ["So17UICoordinateSpaceP", "setLongName"]
+- ["So17UICoordinateSpaceP", "setShortName"]
+- !private ["So17UICoordinateSpaceP", "text"]
+- ["So17UICoordinateSpaceP", ""]
+- !private ["So13UIDynamicItemP", "init"]
+- !private ["So13UIDynamicItemP", "routeLongNameLabel"]
+- !private ["So13UIDynamicItemP", "routeShortNameLabel"]
+- ["So13UIDynamicItemP", "setLongName"]
+- ["So13UIDynamicItemP", "setShortName"]
+- !private ["So13UIDynamicItemP", "text"]
+- ["So13UIDynamicItemP", ""]
+- !private ["So18UIFocusEnvironmentP", "init"]
+- !private ["So18UIFocusEnvironmentP", "routeLongNameLabel"]
+- !private ["So18UIFocusEnvironmentP", "routeShortNameLabel"]
+- ["So18UIFocusEnvironmentP", "setLongName"]
+- ["So18UIFocusEnvironmentP", "setShortName"]
+- !private ["So18UIFocusEnvironmentP", "text"]
+- ["So18UIFocusEnvironmentP", ""]
+- !private ["So11UIFocusItemP", "init"]
+- !private ["So11UIFocusItemP", "routeLongNameLabel"]
+- !private ["So11UIFocusItemP", "routeShortNameLabel"]
+- ["So11UIFocusItemP", "setLongName"]
+- ["So11UIFocusItemP", "setShortName"]
+- !private ["So11UIFocusItemP", "text"]
+- ["So11UIFocusItemP", ""]
+- !private ["So27UIGestureRecognizerDelegateP", "init"]
+- !private ["So27UIGestureRecognizerDelegateP", "routeLongNameLabel"]
+- !private ["So27UIGestureRecognizerDelegateP", "routeShortNameLabel"]
+- ["So27UIGestureRecognizerDelegateP", "setLongName"]
+- ["So27UIGestureRecognizerDelegateP", "setShortName"]
+- ["So27UIGestureRecognizerDelegateP", ""]
+- !private ["So7UILabelC", "text"]
+- !private ["So30UIPasteConfigurationSupportingP", "init"]
+- !private ["So30UIPasteConfigurationSupportingP", "routeLongNameLabel"]
+- !private ["So30UIPasteConfigurationSupportingP", "routeShortNameLabel"]
+- ["So30UIPasteConfigurationSupportingP", "setLongName"]
+- ["So30UIPasteConfigurationSupportingP", "setShortName"]
+- !private ["So30UIPasteConfigurationSupportingP", "text"]
+- ["So30UIPasteConfigurationSupportingP", ""]
+- ["So11UIResponderC", "String"]
+- ["So11UIResponderC", "UILabel"]
+- ["So11UIResponderC", "init"]
+- ["So11UIResponderC", "routeLongNameLabel"]
+- ["So11UIResponderC", "routeShortNameLabel"]
+- ["So11UIResponderC", "setLongName"]
+- ["So11UIResponderC", "setShortName"]
+- !private ["So11UIResponderC", "text"]
+- !private ["So30UIResponderStandardEditActionsP", "init"]
+- !private ["So30UIResponderStandardEditActionsP", "routeLongNameLabel"]
+- !private ["So30UIResponderStandardEditActionsP", "routeShortNameLabel"]
+- ["So30UIResponderStandardEditActionsP", "setLongName"]
+- ["So30UIResponderStandardEditActionsP", "setShortName"]
+- !private ["So30UIResponderStandardEditActionsP", "text"]
+- ["So30UIResponderStandardEditActionsP", ""]
+- ["So15UITableViewCellC", "String"]
+- ["So15UITableViewCellC", "UILabel"]
+- ["So15UITableViewCellC", "init"]
+- ["So15UITableViewCellC", "routeLongNameLabel"]
+- ["So15UITableViewCellC", "routeShortNameLabel"]
+- ["So15UITableViewCellC", "setLongName"]
+- ["So15UITableViewCellC", "setShortName"]
+- ["So15UITableViewCellC", ""]
+- !private ["So18UITraitEnvironmentP", "init"]
+- !private ["So18UITraitEnvironmentP", "routeLongNameLabel"]
+- !private ["So18UITraitEnvironmentP", "routeShortNameLabel"]
+- ["So18UITraitEnvironmentP", "setLongName"]
+- ["So18UITraitEnvironmentP", "setShortName"]
+- !private ["So18UITraitEnvironmentP", "text"]
+- ["So18UITraitEnvironmentP", ""]
+- ["So6UIViewC", "String"]
+- ["So6UIViewC", "UILabel"]
+- ["So6UIViewC", "init"]
+- ["So6UIViewC", "routeLongNameLabel"]
+- ["So6UIViewC", "routeShortNameLabel"]
+- ["So6UIViewC", "setLongName"]
+- ["So6UIViewC", "setShortName"]
+- !private ["So6UIViewC", "text"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "init"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "routeLongNameLabel"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "routeShortNameLabel"]
+- ["s37_DefaultCustomPlaygroundQuickLookableP", "setLongName"]
+- ["s37_DefaultCustomPlaygroundQuickLookableP", "setShortName"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "text"]
+- ["s37_DefaultCustomPlaygroundQuickLookableP", ""]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "routeLongNameLabel"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "routeShortNameLabel"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "setLongName"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "setShortName"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "text"]
+- ["10Foundation27_KeyValueCodingAndObservingP", ""]
+depends-nominal:
+- "So15CALayerDelegateP"
+- "s7CVarArgP"
+- "s28CustomDebugStringConvertibleP"
+- "s23CustomStringConvertibleP"
+- "s9EquatableP"
+- "s8HashableP"
+- "So8NSCodingP"
+- "So8NSObjectC"
+- "So16NSObjectProtocolP"
+- "5Septa20RouteCellDisplayableP"
+- "5Septa18RouteTableViewCellC"
+- "So29UIAccessibilityIdentificationP"
+- "So12UIAppearanceP"
+- "So21UIAppearanceContainerP"
+- !private "So30UIContentSizeCategoryAdjustingP"
+- "So17UICoordinateSpaceP"
+- "So13UIDynamicItemP"
+- "So18UIFocusEnvironmentP"
+- "So11UIFocusItemP"
+- "So27UIGestureRecognizerDelegateP"
+- !private "So7UILabelC"
+- "So30UIPasteConfigurationSupportingP"
+- "So11UIResponderC"
+- "So30UIResponderStandardEditActionsP"
+- "So15UITableViewCellC"
+- "So18UITraitEnvironmentP"
+- "So6UIViewC"
+- "s37_DefaultCustomPlaygroundQuickLookableP"
+- "10Foundation27_KeyValueCodingAndObservingP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Modules/SeptaSchedule.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Modules/SQLite.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Modules/Zip.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Modules/ReSwift.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/sqlite3.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Headers/Fabric.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Headers/SeptaSchedule.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSStackFrame.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite-Bridging.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSLogging.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Headers/Zip.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/Crashlytics.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Headers/FABAttributes.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSAttributes.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/Answers.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Headers/SeptaSchedule-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Headers/Zip-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Headers/ReSwift-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Headers/ReSwift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSReport.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/ANSCompatibility.h"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/Zip/Zip/minizip/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/SQLite.swift/CocoaPods/iphonesimulator/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Modules/module.modulemap"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "b92c333ee9182aeb3b5eea9fd7ebd9df"

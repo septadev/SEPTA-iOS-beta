@@ -1,0 +1,432 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "TransitModeToolbarView"
+provides-nominal:
+- "5Septa22TransitModeToolbarViewC"
+provides-member:
+- ["5Septa22TransitModeToolbarViewC", ""]
+provides-dynamic-lookup:
+- "draw"
+- "highlighted"
+- "id"
+- "title"
+depends-top-level:
+- "AssignmentPrecedence"
+- "Bool"
+- "BooleanLiteralType"
+- "CGRect"
+- !private "SeptaDraw"
+- "String"
+- "StringLiteralType"
+- "TransitMode"
+- "TransitModeToolbarView"
+- "UIView"
+depends-member:
+- ["s23BidirectionalCollectionP", "init"]
+- ["6SQLite7BindingP", "init"]
+- !private ["So15CALayerDelegateP", "SeptaDraw"]
+- !private ["So15CALayerDelegateP", "TransitMode"]
+- !private ["So15CALayerDelegateP", "backgroundColor"]
+- !private ["So15CALayerDelegateP", "highlighted"]
+- !private ["So15CALayerDelegateP", "id"]
+- !private ["So15CALayerDelegateP", "init"]
+- !private ["So15CALayerDelegateP", "setNeedsDisplay"]
+- !private ["So15CALayerDelegateP", "title"]
+- ["So15CALayerDelegateP", ""]
+- !private ["s7CVarArgP", "SeptaDraw"]
+- !private ["s7CVarArgP", "TransitMode"]
+- !private ["s7CVarArgP", "backgroundColor"]
+- !private ["s7CVarArgP", "drawTranssitModeToolbar"]
+- !private ["s7CVarArgP", "highlighted"]
+- !private ["s7CVarArgP", "id"]
+- ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "setNeedsDisplay"]
+- !private ["s7CVarArgP", "title"]
+- ["s7CVarArgP", ""]
+- ["s10CollectionP", "init"]
+- ["s10ComparableP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "SeptaDraw"]
+- !private ["s28CustomDebugStringConvertibleP", "TransitMode"]
+- !private ["s28CustomDebugStringConvertibleP", "backgroundColor"]
+- !private ["s28CustomDebugStringConvertibleP", "drawTranssitModeToolbar"]
+- !private ["s28CustomDebugStringConvertibleP", "highlighted"]
+- !private ["s28CustomDebugStringConvertibleP", "id"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "setNeedsDisplay"]
+- !private ["s28CustomDebugStringConvertibleP", "title"]
+- ["s28CustomDebugStringConvertibleP", ""]
+- ["s29CustomPlaygroundQuickLookableP", "init"]
+- ["s17CustomReflectableP", "init"]
+- !private ["s23CustomStringConvertibleP", "SeptaDraw"]
+- !private ["s23CustomStringConvertibleP", "TransitMode"]
+- !private ["s23CustomStringConvertibleP", "backgroundColor"]
+- !private ["s23CustomStringConvertibleP", "drawTranssitModeToolbar"]
+- !private ["s23CustomStringConvertibleP", "highlighted"]
+- !private ["s23CustomStringConvertibleP", "id"]
+- ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "setNeedsDisplay"]
+- !private ["s23CustomStringConvertibleP", "title"]
+- ["s23CustomStringConvertibleP", ""]
+- ["s9DecodableP", "init"]
+- ["s9EncodableP", "init"]
+- !private ["s9EquatableP", "SeptaDraw"]
+- !private ["s9EquatableP", "TransitMode"]
+- !private ["s9EquatableP", "backgroundColor"]
+- !private ["s9EquatableP", "drawTranssitModeToolbar"]
+- !private ["s9EquatableP", "highlighted"]
+- !private ["s9EquatableP", "id"]
+- ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "setNeedsDisplay"]
+- !private ["s9EquatableP", "title"]
+- ["s9EquatableP", ""]
+- ["6SQLite11ExpressibleP", "init"]
+- ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- ["s26ExpressibleByStringLiteralP", "init"]
+- ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["s8HashableP", "SeptaDraw"]
+- !private ["s8HashableP", "TransitMode"]
+- !private ["s8HashableP", "backgroundColor"]
+- !private ["s8HashableP", "drawTranssitModeToolbar"]
+- !private ["s8HashableP", "highlighted"]
+- !private ["s8HashableP", "id"]
+- ["s8HashableP", "init"]
+- !private ["s8HashableP", "setNeedsDisplay"]
+- !private ["s8HashableP", "title"]
+- ["s8HashableP", ""]
+- ["s25LosslessStringConvertibleP", "init"]
+- ["s10MirrorPathP", "init"]
+- !private ["So8NSCodingP", "SeptaDraw"]
+- !private ["So8NSCodingP", "TransitMode"]
+- !private ["So8NSCodingP", "backgroundColor"]
+- !private ["So8NSCodingP", "highlighted"]
+- !private ["So8NSCodingP", "id"]
+- ["So8NSCodingP", "init"]
+- !private ["So8NSCodingP", "setNeedsDisplay"]
+- !private ["So8NSCodingP", "title"]
+- ["So8NSCodingP", ""]
+- ["So9NSCopyingP", "init"]
+- ["So21NSItemProviderReadingP", "init"]
+- ["So21NSItemProviderWritingP", "init"]
+- ["So16NSMutableCopyingP", "init"]
+- ["So8NSObjectC", "Bool"]
+- ["So8NSObjectC", "CGRect"]
+- !private ["So8NSObjectC", "SeptaDraw"]
+- ["So8NSObjectC", "String"]
+- ["So8NSObjectC", "TransitMode"]
+- !private ["So8NSObjectC", "backgroundColor"]
+- ["So8NSObjectC", "draw"]
+- !private ["So8NSObjectC", "drawTranssitModeToolbar"]
+- ["So8NSObjectC", "highlighted"]
+- ["So8NSObjectC", "id"]
+- ["So8NSObjectC", "init"]
+- !private ["So8NSObjectC", "setNeedsDisplay"]
+- ["So8NSObjectC", "title"]
+- ["So8NSObjectC", "transitMode"]
+- !private ["So16NSObjectProtocolP", "SeptaDraw"]
+- !private ["So16NSObjectProtocolP", "TransitMode"]
+- !private ["So16NSObjectProtocolP", "backgroundColor"]
+- !private ["So16NSObjectProtocolP", "drawTranssitModeToolbar"]
+- !private ["So16NSObjectProtocolP", "highlighted"]
+- !private ["So16NSObjectProtocolP", "id"]
+- ["So16NSObjectProtocolP", "init"]
+- !private ["So16NSObjectProtocolP", "setNeedsDisplay"]
+- !private ["So16NSObjectProtocolP", "title"]
+- ["So16NSObjectProtocolP", ""]
+- ["So14NSSecureCodingP", "init"]
+- ["So8NSStringC", "init"]
+- ["s26RangeReplaceableCollectionP", "init"]
+- !private ["s16RawRepresentableP", "init"]
+- !private ["5Septa0A4DrawC", "drawTranssitModeToolbar"]
+- ["s8SequenceP", "init"]
+- ["SS", "init"]
+- ["s14StringProtocolP", "init"]
+- ["s16TextOutputStreamP", "init"]
+- ["s20TextOutputStreamableP", "init"]
+- !private ["13SeptaSchedule11TransitModeO", "init"]
+- ["5Septa22TransitModeToolbarViewC", "Bool"]
+- ["5Septa22TransitModeToolbarViewC", "CGRect"]
+- !private ["5Septa22TransitModeToolbarViewC", "SeptaDraw"]
+- ["5Septa22TransitModeToolbarViewC", "String"]
+- ["5Septa22TransitModeToolbarViewC", "TransitMode"]
+- !private ["5Septa22TransitModeToolbarViewC", "backgroundColor"]
+- ["5Septa22TransitModeToolbarViewC", "deinit"]
+- ["5Septa22TransitModeToolbarViewC", "draw"]
+- ["5Septa22TransitModeToolbarViewC", "highlighted"]
+- ["5Septa22TransitModeToolbarViewC", "id"]
+- ["5Septa22TransitModeToolbarViewC", "init"]
+- !private ["5Septa22TransitModeToolbarViewC", "setNeedsDisplay"]
+- ["5Septa22TransitModeToolbarViewC", "title"]
+- ["5Septa22TransitModeToolbarViewC", "transitMode"]
+- !private ["So29UIAccessibilityIdentificationP", "SeptaDraw"]
+- !private ["So29UIAccessibilityIdentificationP", "TransitMode"]
+- !private ["So29UIAccessibilityIdentificationP", "backgroundColor"]
+- !private ["So29UIAccessibilityIdentificationP", "highlighted"]
+- !private ["So29UIAccessibilityIdentificationP", "id"]
+- !private ["So29UIAccessibilityIdentificationP", "init"]
+- !private ["So29UIAccessibilityIdentificationP", "setNeedsDisplay"]
+- !private ["So29UIAccessibilityIdentificationP", "title"]
+- ["So29UIAccessibilityIdentificationP", ""]
+- !private ["So12UIAppearanceP", "SeptaDraw"]
+- !private ["So12UIAppearanceP", "TransitMode"]
+- !private ["So12UIAppearanceP", "backgroundColor"]
+- !private ["So12UIAppearanceP", "highlighted"]
+- !private ["So12UIAppearanceP", "id"]
+- !private ["So12UIAppearanceP", "init"]
+- !private ["So12UIAppearanceP", "setNeedsDisplay"]
+- !private ["So12UIAppearanceP", "title"]
+- ["So12UIAppearanceP", ""]
+- !private ["So21UIAppearanceContainerP", "SeptaDraw"]
+- !private ["So21UIAppearanceContainerP", "TransitMode"]
+- !private ["So21UIAppearanceContainerP", "backgroundColor"]
+- !private ["So21UIAppearanceContainerP", "highlighted"]
+- !private ["So21UIAppearanceContainerP", "id"]
+- !private ["So21UIAppearanceContainerP", "init"]
+- !private ["So21UIAppearanceContainerP", "setNeedsDisplay"]
+- !private ["So21UIAppearanceContainerP", "title"]
+- ["So21UIAppearanceContainerP", ""]
+- !private ["So17UICoordinateSpaceP", "SeptaDraw"]
+- !private ["So17UICoordinateSpaceP", "TransitMode"]
+- !private ["So17UICoordinateSpaceP", "backgroundColor"]
+- !private ["So17UICoordinateSpaceP", "highlighted"]
+- !private ["So17UICoordinateSpaceP", "id"]
+- !private ["So17UICoordinateSpaceP", "init"]
+- !private ["So17UICoordinateSpaceP", "setNeedsDisplay"]
+- !private ["So17UICoordinateSpaceP", "title"]
+- ["So17UICoordinateSpaceP", ""]
+- !private ["So13UIDynamicItemP", "SeptaDraw"]
+- !private ["So13UIDynamicItemP", "TransitMode"]
+- !private ["So13UIDynamicItemP", "backgroundColor"]
+- !private ["So13UIDynamicItemP", "highlighted"]
+- !private ["So13UIDynamicItemP", "id"]
+- !private ["So13UIDynamicItemP", "init"]
+- !private ["So13UIDynamicItemP", "setNeedsDisplay"]
+- !private ["So13UIDynamicItemP", "title"]
+- ["So13UIDynamicItemP", ""]
+- !private ["So18UIFocusEnvironmentP", "SeptaDraw"]
+- !private ["So18UIFocusEnvironmentP", "TransitMode"]
+- !private ["So18UIFocusEnvironmentP", "backgroundColor"]
+- !private ["So18UIFocusEnvironmentP", "highlighted"]
+- !private ["So18UIFocusEnvironmentP", "id"]
+- !private ["So18UIFocusEnvironmentP", "init"]
+- !private ["So18UIFocusEnvironmentP", "setNeedsDisplay"]
+- !private ["So18UIFocusEnvironmentP", "title"]
+- ["So18UIFocusEnvironmentP", ""]
+- !private ["So11UIFocusItemP", "SeptaDraw"]
+- !private ["So11UIFocusItemP", "TransitMode"]
+- !private ["So11UIFocusItemP", "backgroundColor"]
+- !private ["So11UIFocusItemP", "highlighted"]
+- !private ["So11UIFocusItemP", "id"]
+- !private ["So11UIFocusItemP", "init"]
+- !private ["So11UIFocusItemP", "setNeedsDisplay"]
+- !private ["So11UIFocusItemP", "title"]
+- ["So11UIFocusItemP", ""]
+- !private ["So30UIPasteConfigurationSupportingP", "SeptaDraw"]
+- !private ["So30UIPasteConfigurationSupportingP", "TransitMode"]
+- !private ["So30UIPasteConfigurationSupportingP", "backgroundColor"]
+- !private ["So30UIPasteConfigurationSupportingP", "highlighted"]
+- !private ["So30UIPasteConfigurationSupportingP", "id"]
+- !private ["So30UIPasteConfigurationSupportingP", "init"]
+- !private ["So30UIPasteConfigurationSupportingP", "setNeedsDisplay"]
+- !private ["So30UIPasteConfigurationSupportingP", "title"]
+- ["So30UIPasteConfigurationSupportingP", ""]
+- ["So11UIResponderC", "Bool"]
+- ["So11UIResponderC", "CGRect"]
+- !private ["So11UIResponderC", "SeptaDraw"]
+- ["So11UIResponderC", "String"]
+- ["So11UIResponderC", "TransitMode"]
+- !private ["So11UIResponderC", "backgroundColor"]
+- ["So11UIResponderC", "draw"]
+- ["So11UIResponderC", "highlighted"]
+- ["So11UIResponderC", "id"]
+- ["So11UIResponderC", "init"]
+- !private ["So11UIResponderC", "setNeedsDisplay"]
+- ["So11UIResponderC", "title"]
+- ["So11UIResponderC", "transitMode"]
+- !private ["So30UIResponderStandardEditActionsP", "SeptaDraw"]
+- !private ["So30UIResponderStandardEditActionsP", "TransitMode"]
+- !private ["So30UIResponderStandardEditActionsP", "backgroundColor"]
+- !private ["So30UIResponderStandardEditActionsP", "highlighted"]
+- !private ["So30UIResponderStandardEditActionsP", "id"]
+- !private ["So30UIResponderStandardEditActionsP", "init"]
+- !private ["So30UIResponderStandardEditActionsP", "setNeedsDisplay"]
+- !private ["So30UIResponderStandardEditActionsP", "title"]
+- ["So30UIResponderStandardEditActionsP", ""]
+- !private ["So18UITraitEnvironmentP", "SeptaDraw"]
+- !private ["So18UITraitEnvironmentP", "TransitMode"]
+- !private ["So18UITraitEnvironmentP", "backgroundColor"]
+- !private ["So18UITraitEnvironmentP", "highlighted"]
+- !private ["So18UITraitEnvironmentP", "id"]
+- !private ["So18UITraitEnvironmentP", "init"]
+- !private ["So18UITraitEnvironmentP", "setNeedsDisplay"]
+- !private ["So18UITraitEnvironmentP", "title"]
+- ["So18UITraitEnvironmentP", ""]
+- ["So6UIViewC", "Bool"]
+- ["So6UIViewC", "CGRect"]
+- !private ["So6UIViewC", "SeptaDraw"]
+- ["So6UIViewC", "String"]
+- ["So6UIViewC", "TransitMode"]
+- !private ["So6UIViewC", "backgroundColor"]
+- ["So6UIViewC", "draw"]
+- ["So6UIViewC", "highlighted"]
+- ["So6UIViewC", "id"]
+- ["So6UIViewC", "init"]
+- !private ["So6UIViewC", "setNeedsDisplay"]
+- ["So6UIViewC", "title"]
+- ["So6UIViewC", "transitMode"]
+- ["So6UIViewC", ""]
+- ["6SQLite5ValueP", "init"]
+- ["s23_BidirectionalIndexableP", "init"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "SeptaDraw"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "TransitMode"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "backgroundColor"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "highlighted"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "id"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "init"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "setNeedsDisplay"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "title"]
+- ["s37_DefaultCustomPlaygroundQuickLookableP", ""]
+- ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- ["s33_ExpressibleByStringInterpolationP", "init"]
+- ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- ["s10_IndexableP", "init"]
+- ["s14_IndexableBaseP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "SeptaDraw"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "TransitMode"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "backgroundColor"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "drawTranssitModeToolbar"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "highlighted"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "id"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "setNeedsDisplay"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "title"]
+- ["10Foundation27_KeyValueCodingAndObservingP", ""]
+- ["s21_ObjectiveCBridgeableP", "init"]
+- ["s26_RangeReplaceableIndexableP", "init"]
+- ["s16_SwiftStringViewP", "init"]
+depends-nominal:
+- "s23BidirectionalCollectionP"
+- "6SQLite7BindingP"
+- "So15CALayerDelegateP"
+- "s7CVarArgP"
+- "s10CollectionP"
+- "s10ComparableP"
+- "s28CustomDebugStringConvertibleP"
+- "s29CustomPlaygroundQuickLookableP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- "s9DecodableP"
+- "s9EncodableP"
+- "s9EquatableP"
+- "6SQLite11ExpressibleP"
+- "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- "s26ExpressibleByStringLiteralP"
+- "s33ExpressibleByUnicodeScalarLiteralP"
+- "s8HashableP"
+- "s25LosslessStringConvertibleP"
+- "s10MirrorPathP"
+- "So8NSCodingP"
+- "So9NSCopyingP"
+- "So21NSItemProviderReadingP"
+- "So21NSItemProviderWritingP"
+- "So16NSMutableCopyingP"
+- "So8NSObjectC"
+- "So16NSObjectProtocolP"
+- "So14NSSecureCodingP"
+- "So8NSStringC"
+- "s26RangeReplaceableCollectionP"
+- !private "s16RawRepresentableP"
+- !private "5Septa0A4DrawC"
+- "s8SequenceP"
+- "SS"
+- "s14StringProtocolP"
+- "s16TextOutputStreamP"
+- "s20TextOutputStreamableP"
+- !private "13SeptaSchedule11TransitModeO"
+- "5Septa22TransitModeToolbarViewC"
+- "So29UIAccessibilityIdentificationP"
+- "So12UIAppearanceP"
+- "So21UIAppearanceContainerP"
+- "So17UICoordinateSpaceP"
+- "So13UIDynamicItemP"
+- "So18UIFocusEnvironmentP"
+- "So11UIFocusItemP"
+- "So30UIPasteConfigurationSupportingP"
+- "So11UIResponderC"
+- "So30UIResponderStandardEditActionsP"
+- "So18UITraitEnvironmentP"
+- "So6UIViewC"
+- "6SQLite5ValueP"
+- "s23_BidirectionalIndexableP"
+- "s37_DefaultCustomPlaygroundQuickLookableP"
+- "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- "s34_ExpressibleByBuiltinStringLiteralP"
+- "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- "s33_ExpressibleByStringInterpolationP"
+- "s35_HasCustomAnyHashableRepresentationP"
+- "s10_IndexableP"
+- "s14_IndexableBaseP"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- "s21_ObjectiveCBridgeableP"
+- "s26_RangeReplaceableIndexableP"
+- "s16_SwiftStringViewP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Modules/SeptaSchedule.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Modules/SQLite.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Modules/Zip.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Modules/ReSwift.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/sqlite3.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Headers/Fabric.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Headers/SeptaSchedule.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSStackFrame.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite-Bridging.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSLogging.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Headers/Zip.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/Crashlytics.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Headers/FABAttributes.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSAttributes.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/Answers.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Headers/SeptaSchedule-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Headers/Zip-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Headers/ReSwift-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Headers/ReSwift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSReport.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/ANSCompatibility.h"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/Zip/Zip/minizip/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/SQLite.swift/CocoaPods/iphonesimulator/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Modules/module.modulemap"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "2a7e6c6b4944b0988ebc23cd1d3753a9"

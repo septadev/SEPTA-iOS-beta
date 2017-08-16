@@ -1,0 +1,246 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "DateFormatters"
+provides-nominal:
+- "5Septa14DateFormattersC"
+provides-member:
+- ["5Septa14DateFormattersC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "Array"
+- "AssignmentPrecedence"
+- "DateComponentsFormatter"
+- "DateFormatter"
+- "DateFormatters"
+- "StringLiteralType"
+depends-member:
+- ["s23BidirectionalCollectionP", "init"]
+- ["6SQLite7BindingP", "init"]
+- ["s7CVarArgP", "allowedUnits"]
+- ["s7CVarArgP", "dateFormat"]
+- ["s7CVarArgP", "init"]
+- ["s7CVarArgP", "unitsStyle"]
+- ["s10CollectionP", "init"]
+- ["s10ComparableP", "init"]
+- ["s28CustomDebugStringConvertibleP", "allowedUnits"]
+- ["s28CustomDebugStringConvertibleP", "dateFormat"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- ["s28CustomDebugStringConvertibleP", "unitsStyle"]
+- ["s29CustomPlaygroundQuickLookableP", "init"]
+- ["s17CustomReflectableP", "init"]
+- ["s23CustomStringConvertibleP", "allowedUnits"]
+- ["s23CustomStringConvertibleP", "dateFormat"]
+- ["s23CustomStringConvertibleP", "init"]
+- ["s23CustomStringConvertibleP", "unitsStyle"]
+- ["So23DateComponentsFormatterC", "allowedUnits"]
+- ["So23DateComponentsFormatterC", "init"]
+- ["So23DateComponentsFormatterC", "unitsStyle"]
+- ["So13DateFormatterC", "dateFormat"]
+- ["So13DateFormatterC", "init"]
+- ["5Septa14DateFormattersC", "DateComponentsFormatter"]
+- ["5Septa14DateFormattersC", "DateFormatter"]
+- ["5Septa14DateFormattersC", "deinit"]
+- ["5Septa14DateFormattersC", "durationFormatter"]
+- ["5Septa14DateFormattersC", "fileFormatter"]
+- ["5Septa14DateFormattersC", "init"]
+- ["5Septa14DateFormattersC", "timeFormatter"]
+- ["s9DecodableP", "init"]
+- ["s9EncodableP", "init"]
+- ["s9EquatableP", "abbreviated"]
+- ["s9EquatableP", "allowedUnits"]
+- ["s9EquatableP", "dateFormat"]
+- ["s9EquatableP", "full"]
+- ["s9EquatableP", "hour"]
+- ["s9EquatableP", "init"]
+- ["s9EquatableP", "minute"]
+- ["s9EquatableP", "unitsStyle"]
+- ["6SQLite11ExpressibleP", "init"]
+- ["s25ExpressibleByArrayLiteralP", "hour"]
+- ["s25ExpressibleByArrayLiteralP", "minute"]
+- ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- ["s26ExpressibleByStringLiteralP", "init"]
+- ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- ["So9FormatterC", "allowedUnits"]
+- ["So9FormatterC", "dateFormat"]
+- ["So9FormatterC", "init"]
+- ["So9FormatterC", "unitsStyle"]
+- ["s8HashableP", "abbreviated"]
+- ["s8HashableP", "allowedUnits"]
+- ["s8HashableP", "dateFormat"]
+- ["s8HashableP", "full"]
+- ["s8HashableP", "init"]
+- ["s8HashableP", "unitsStyle"]
+- ["s25LosslessStringConvertibleP", "init"]
+- ["s10MirrorPathP", "init"]
+- ["So8NSCodingP", "allowedUnits"]
+- ["So8NSCodingP", "dateFormat"]
+- ["So8NSCodingP", "init"]
+- ["So8NSCodingP", "unitsStyle"]
+- ["So9NSCopyingP", "allowedUnits"]
+- ["So9NSCopyingP", "dateFormat"]
+- ["So9NSCopyingP", "init"]
+- ["So9NSCopyingP", "unitsStyle"]
+- ["So21NSItemProviderReadingP", "init"]
+- ["So21NSItemProviderWritingP", "init"]
+- ["So16NSMutableCopyingP", "init"]
+- ["So8NSObjectC", "allowedUnits"]
+- ["So8NSObjectC", "dateFormat"]
+- ["So8NSObjectC", "init"]
+- ["So8NSObjectC", "unitsStyle"]
+- ["So16NSObjectProtocolP", "allowedUnits"]
+- ["So16NSObjectProtocolP", "dateFormat"]
+- ["So16NSObjectProtocolP", "init"]
+- ["So16NSObjectProtocolP", "unitsStyle"]
+- ["So14NSSecureCodingP", "init"]
+- ["So8NSStringC", "init"]
+- ["s9OptionSetP", "hour"]
+- ["s9OptionSetP", "minute"]
+- ["s26RangeReplaceableCollectionP", "init"]
+- ["s16RawRepresentableP", "abbreviated"]
+- ["s16RawRepresentableP", "full"]
+- ["s16RawRepresentableP", "hour"]
+- ["s16RawRepresentableP", "minute"]
+- ["s8SequenceP", "init"]
+- ["s10SetAlgebraP", "hour"]
+- ["s10SetAlgebraP", "minute"]
+- ["SS", "init"]
+- ["s14StringProtocolP", "init"]
+- ["s16TextOutputStreamP", "init"]
+- ["s20TextOutputStreamableP", "init"]
+- ["So10NSCalendarC4UnitV", "hour"]
+- ["So10NSCalendarC4UnitV", "minute"]
+- ["So23DateComponentsFormatterC10UnitsStyleO", "abbreviated"]
+- ["So23DateComponentsFormatterC10UnitsStyleO", "full"]
+- ["6SQLite5ValueP", "init"]
+- ["s23_BidirectionalIndexableP", "init"]
+- ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- ["s33_ExpressibleByStringInterpolationP", "init"]
+- ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- ["s10_IndexableP", "init"]
+- ["s14_IndexableBaseP", "init"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "allowedUnits"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "dateFormat"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "unitsStyle"]
+- ["s21_ObjectiveCBridgeableP", "init"]
+- ["s26_RangeReplaceableIndexableP", "init"]
+- ["s16_SwiftStringViewP", "init"]
+depends-nominal:
+- "s23BidirectionalCollectionP"
+- "6SQLite7BindingP"
+- "s7CVarArgP"
+- "s10CollectionP"
+- "s10ComparableP"
+- "s28CustomDebugStringConvertibleP"
+- "s29CustomPlaygroundQuickLookableP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- "So23DateComponentsFormatterC"
+- "So13DateFormatterC"
+- "5Septa14DateFormattersC"
+- "s9DecodableP"
+- "s9EncodableP"
+- "s9EquatableP"
+- "6SQLite11ExpressibleP"
+- "s25ExpressibleByArrayLiteralP"
+- "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- "s26ExpressibleByStringLiteralP"
+- "s33ExpressibleByUnicodeScalarLiteralP"
+- "So9FormatterC"
+- "s8HashableP"
+- "s25LosslessStringConvertibleP"
+- "s10MirrorPathP"
+- "So8NSCodingP"
+- "So9NSCopyingP"
+- "So21NSItemProviderReadingP"
+- "So21NSItemProviderWritingP"
+- "So16NSMutableCopyingP"
+- "So8NSObjectC"
+- "So16NSObjectProtocolP"
+- "So14NSSecureCodingP"
+- "So8NSStringC"
+- "s9OptionSetP"
+- "s26RangeReplaceableCollectionP"
+- "s16RawRepresentableP"
+- "s8SequenceP"
+- "s10SetAlgebraP"
+- "SS"
+- "s14StringProtocolP"
+- "s16TextOutputStreamP"
+- "s20TextOutputStreamableP"
+- "So10NSCalendarC4UnitV"
+- "So23DateComponentsFormatterC10UnitsStyleO"
+- "6SQLite5ValueP"
+- "s23_BidirectionalIndexableP"
+- "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- "s34_ExpressibleByBuiltinStringLiteralP"
+- "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- "s33_ExpressibleByStringInterpolationP"
+- "s35_HasCustomAnyHashableRepresentationP"
+- "s10_IndexableP"
+- "s14_IndexableBaseP"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- "s21_ObjectiveCBridgeableP"
+- "s26_RangeReplaceableIndexableP"
+- "s16_SwiftStringViewP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Modules/SeptaSchedule.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Modules/SQLite.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Modules/Zip.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Modules/ReSwift.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/sqlite3.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Headers/Fabric.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Headers/SeptaSchedule.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSStackFrame.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite-Bridging.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSLogging.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Headers/Zip.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/Crashlytics.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Headers/FABAttributes.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSAttributes.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/Answers.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Headers/SeptaSchedule-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Headers/Zip-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Headers/ReSwift-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Headers/ReSwift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSReport.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/ANSCompatibility.h"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/Zip/Zip/minizip/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/SQLite.swift/CocoaPods/iphonesimulator/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Modules/module.modulemap"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "73845fdc76b2557d4807eaf074b22452"

@@ -1,0 +1,11 @@
+framework module SeptaSchedule {
+  umbrella header "SeptaSchedule.h"
+
+  export *
+  module * { export * }
+}
+
+module SeptaSchedule.Swift {
+    header "SeptaSchedule-Swift.h"
+    requires objc
+}

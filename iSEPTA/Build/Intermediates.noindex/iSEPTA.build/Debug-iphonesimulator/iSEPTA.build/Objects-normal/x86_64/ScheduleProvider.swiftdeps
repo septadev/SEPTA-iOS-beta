@@ -1,0 +1,345 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ScheduleProvider"
+provides-nominal:
+- "5Septa16ScheduleProviderC"
+provides-member:
+- ["5Septa16ScheduleProviderC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "AssignmentPrecedence"
+- !private "DispatchQueue"
+- !private "Optionals"
+- !private "Route"
+- !private "RoutesCommand"
+- !private "RoutesLoaded"
+- "ScheduleProvider"
+- "ScheduleRequest"
+- !private "Stop"
+- "StoreSubscriber"
+- !private "Trip"
+- !private "TripEndCommand"
+- !private "TripEndsLoaded"
+- !private "TripStartCommand"
+- !private "TripStartsLoaded"
+- !private "TripsLoaded"
+- !private "store"
+depends-member:
+- !private ["7ReSwift6ActionP", "init"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "DispatchQueue"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "Optionals"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "Route"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "RoutesCommand"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "RoutesLoaded"]
+- ["7ReSwift18AnyStoreSubscriberP", "ScheduleProvider"]
+- ["7ReSwift18AnyStoreSubscriberP", "ScheduleRequest"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "Stop"]
+- ["7ReSwift18AnyStoreSubscriberP", "StoreSubscriberStateType"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "Trip"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "TripEndCommand"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "TripEndsLoaded"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "TripStartCommand"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "TripStartsLoaded"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "TripsLoaded"]
+- ["7ReSwift18AnyStoreSubscriberP", "_newState"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "clearOutNonMatchingRoutes"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "clearOutNonMatchingTripEnds"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "clearOutNonMatchingTripStarts"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "currentScheduleRequest"]
+- ["7ReSwift18AnyStoreSubscriberP", "init"]
+- ["7ReSwift18AnyStoreSubscriberP", "newState"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "processRoutes"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "processTransitMode"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "processTripEnds"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "processTripStarts"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "retrieveAvailableRoutes"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "retrieveEndingStopsForRoute"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "retrieveStartingStopsForRoute"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "retrieveTripsForRoute"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "store"]
+- ["7ReSwift18AnyStoreSubscriberP", ""]
+- !private ["5Septa8AppStateV", "deinit"]
+- !private ["5Septa8AppStateV", "scheduleState"]
+- !private ["Sa", "init"]
+- !private ["13SeptaSchedule11BaseCommandC", "routes"]
+- !private ["13SeptaSchedule11BaseCommandC", "sharedInstance"]
+- !private ["13SeptaSchedule11BaseCommandC", "stops"]
+- !private ["s23BidirectionalCollectionP", "init"]
+- !private ["s7CVarArgP", "async"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "main"]
+- !private ["s10CollectionP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "async"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "main"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s23CustomStringConvertibleP", "async"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "main"]
+- !private ["s9DecodableP", "init"]
+- !private ["So14DispatchObjectC", "async"]
+- !private ["So14DispatchObjectC", "main"]
+- !private ["So13DispatchQueueC", "async"]
+- !private ["So13DispatchQueueC", "main"]
+- !private ["7ReSwift20DispatchingStoreTypeP", "dispatch"]
+- !private ["7ReSwift20DispatchingStoreTypeP", "subscribe"]
+- !private ["7ReSwift20DispatchingStoreTypeP", "unsubscribe"]
+- !private ["s9EncodableP", "init"]
+- !private ["s9EquatableP", "async"]
+- ["s9EquatableP", "bothNonNilAndDifferent"]
+- ["s9EquatableP", "bothNonNilAndEqual"]
+- ["s9EquatableP", "currentIsNil"]
+- ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "main"]
+- ["s9EquatableP", "newIsNil"]
+- !private ["s9EquatableP", "scheduleRequest"]
+- !private ["s9EquatableP", "scheduleState"]
+- !private ["s9EquatableP", "selectedEnd"]
+- !private ["s9EquatableP", "selectedRoute"]
+- !private ["s9EquatableP", "selectedStart"]
+- !private ["s9EquatableP", "transitMode"]
+- !private ["s5ErrorP", "localizedDescription"]
+- !private ["s25ExpressibleByArrayLiteralP", "init"]
+- !private ["s8HashableP", "async"]
+- ["s8HashableP", "bothNonNilAndDifferent"]
+- ["s8HashableP", "bothNonNilAndEqual"]
+- ["s8HashableP", "currentIsNil"]
+- !private ["s8HashableP", "main"]
+- ["s8HashableP", "newIsNil"]
+- !private ["s17MutableCollectionP", "init"]
+- !private ["So8NSObjectC", "async"]
+- !private ["So8NSObjectC", "main"]
+- !private ["So16NSObjectProtocolP", "async"]
+- !private ["So16NSObjectProtocolP", "main"]
+- !private ["So9OS_objectC", "async"]
+- !private ["So9OS_objectC", "main"]
+- ["13SeptaSchedule21OptionalCompareResultO", "bothNonNilAndDifferent"]
+- ["13SeptaSchedule21OptionalCompareResultO", "bothNonNilAndEqual"]
+- ["13SeptaSchedule21OptionalCompareResultO", "currentIsNil"]
+- ["13SeptaSchedule21OptionalCompareResultO", "newIsNil"]
+- !private ["13SeptaSchedule9OptionalsC", "optionalCompare"]
+- !private ["s22RandomAccessCollectionP", "init"]
+- !private ["s26RangeReplaceableCollectionP", "init"]
+- !private ["13SeptaSchedule13RoutesCommandC", "routes"]
+- !private ["13SeptaSchedule13RoutesCommandC", "sharedInstance"]
+- !private ["5Septa12RoutesLoadedV", "deinit"]
+- !private ["5Septa12RoutesLoadedV", "init"]
+- !private ["5Septa14ScheduleActionP", "init"]
+- !private ["5Septa16ScheduleProviderC", "DispatchQueue"]
+- !private ["5Septa16ScheduleProviderC", "Optionals"]
+- !private ["5Septa16ScheduleProviderC", "Route"]
+- !private ["5Septa16ScheduleProviderC", "RoutesCommand"]
+- !private ["5Septa16ScheduleProviderC", "RoutesLoaded"]
+- ["5Septa16ScheduleProviderC", "ScheduleProvider"]
+- ["5Septa16ScheduleProviderC", "ScheduleRequest"]
+- !private ["5Septa16ScheduleProviderC", "Stop"]
+- ["5Septa16ScheduleProviderC", "StoreSubscriberStateType"]
+- !private ["5Septa16ScheduleProviderC", "Trip"]
+- !private ["5Septa16ScheduleProviderC", "TripEndCommand"]
+- !private ["5Septa16ScheduleProviderC", "TripEndsLoaded"]
+- !private ["5Septa16ScheduleProviderC", "TripStartCommand"]
+- !private ["5Septa16ScheduleProviderC", "TripStartsLoaded"]
+- !private ["5Septa16ScheduleProviderC", "TripsLoaded"]
+- ["5Septa16ScheduleProviderC", "_newState"]
+- ["5Septa16ScheduleProviderC", "clearOutNonMatchingRoutes"]
+- ["5Septa16ScheduleProviderC", "clearOutNonMatchingTripEnds"]
+- ["5Septa16ScheduleProviderC", "clearOutNonMatchingTripStarts"]
+- ["5Septa16ScheduleProviderC", "clearOutNonMatchingTrips"]
+- ["5Septa16ScheduleProviderC", "currentScheduleRequest"]
+- ["5Septa16ScheduleProviderC", "deinit"]
+- ["5Septa16ScheduleProviderC", "init"]
+- ["5Septa16ScheduleProviderC", "newState"]
+- ["5Septa16ScheduleProviderC", "processRoutes"]
+- ["5Septa16ScheduleProviderC", "processTransitMode"]
+- ["5Septa16ScheduleProviderC", "processTripEnds"]
+- ["5Septa16ScheduleProviderC", "processTripStarts"]
+- ["5Septa16ScheduleProviderC", "retrieveAvailableRoutes"]
+- ["5Septa16ScheduleProviderC", "retrieveEndingStopsForRoute"]
+- ["5Septa16ScheduleProviderC", "retrieveStartingStopsForRoute"]
+- ["5Septa16ScheduleProviderC", "retrieveTripsForRoute"]
+- ["5Septa16ScheduleProviderC", "sharedInstance"]
+- !private ["5Septa16ScheduleProviderC", "store"]
+- ["5Septa16ScheduleProviderC", "subscribe"]
+- ["5Septa15ScheduleRequestV", "init"]
+- !private ["5Septa15ScheduleRequestV", "selectedEnd"]
+- !private ["5Septa15ScheduleRequestV", "selectedRoute"]
+- !private ["5Septa15ScheduleRequestV", "selectedStart"]
+- !private ["5Septa15ScheduleRequestV", "transitMode"]
+- !private ["5Septa13ScheduleStateV", "scheduleRequest"]
+- !private ["5Septa0A6ActionP", "init"]
+- !private ["s8SequenceP", "init"]
+- !private ["7ReSwift9StateTypeP", "scheduleState"]
+- !private ["7ReSwift5StoreC", "dispatch"]
+- !private ["7ReSwift5StoreC", "subscribe"]
+- !private ["7ReSwift5StoreC", "unsubscribe"]
+- !private ["7ReSwift15StoreSubscriberP", "DispatchQueue"]
+- !private ["7ReSwift15StoreSubscriberP", "Optionals"]
+- !private ["7ReSwift15StoreSubscriberP", "Route"]
+- !private ["7ReSwift15StoreSubscriberP", "RoutesCommand"]
+- !private ["7ReSwift15StoreSubscriberP", "RoutesLoaded"]
+- ["7ReSwift15StoreSubscriberP", "ScheduleProvider"]
+- ["7ReSwift15StoreSubscriberP", "ScheduleRequest"]
+- !private ["7ReSwift15StoreSubscriberP", "Stop"]
+- ["7ReSwift15StoreSubscriberP", "StoreSubscriberStateType"]
+- !private ["7ReSwift15StoreSubscriberP", "Trip"]
+- !private ["7ReSwift15StoreSubscriberP", "TripEndCommand"]
+- !private ["7ReSwift15StoreSubscriberP", "TripEndsLoaded"]
+- !private ["7ReSwift15StoreSubscriberP", "TripStartCommand"]
+- !private ["7ReSwift15StoreSubscriberP", "TripStartsLoaded"]
+- !private ["7ReSwift15StoreSubscriberP", "TripsLoaded"]
+- ["7ReSwift15StoreSubscriberP", "_newState"]
+- !private ["7ReSwift15StoreSubscriberP", "clearOutNonMatchingRoutes"]
+- !private ["7ReSwift15StoreSubscriberP", "clearOutNonMatchingTripEnds"]
+- !private ["7ReSwift15StoreSubscriberP", "clearOutNonMatchingTripStarts"]
+- !private ["7ReSwift15StoreSubscriberP", "currentScheduleRequest"]
+- ["7ReSwift15StoreSubscriberP", "init"]
+- ["7ReSwift15StoreSubscriberP", "newState"]
+- !private ["7ReSwift15StoreSubscriberP", "processRoutes"]
+- !private ["7ReSwift15StoreSubscriberP", "processTransitMode"]
+- !private ["7ReSwift15StoreSubscriberP", "processTripEnds"]
+- !private ["7ReSwift15StoreSubscriberP", "processTripStarts"]
+- !private ["7ReSwift15StoreSubscriberP", "retrieveAvailableRoutes"]
+- !private ["7ReSwift15StoreSubscriberP", "retrieveEndingStopsForRoute"]
+- !private ["7ReSwift15StoreSubscriberP", "retrieveStartingStopsForRoute"]
+- !private ["7ReSwift15StoreSubscriberP", "retrieveTripsForRoute"]
+- !private ["7ReSwift15StoreSubscriberP", "store"]
+- ["7ReSwift15StoreSubscriberP", ""]
+- !private ["7ReSwift9StoreTypeP", "dispatch"]
+- !private ["7ReSwift9StoreTypeP", "subscribe"]
+- !private ["7ReSwift9StoreTypeP", "unsubscribe"]
+- !private ["7ReSwift12SubscriptionC", "select"]
+- !private ["13SeptaSchedule14TripEndCommandC", "sharedInstance"]
+- !private ["13SeptaSchedule14TripEndCommandC", "stops"]
+- !private ["5Septa14TripEndsLoadedV", "deinit"]
+- !private ["5Septa14TripEndsLoadedV", "init"]
+- !private ["13SeptaSchedule16TripStartCommandC", "sharedInstance"]
+- !private ["13SeptaSchedule16TripStartCommandC", "stops"]
+- !private ["5Septa16TripStartsLoadedV", "deinit"]
+- !private ["5Septa16TripStartsLoadedV", "init"]
+- !private ["5Septa11TripsLoadedV", "deinit"]
+- !private ["5Septa11TripsLoadedV", "init"]
+- !private ["s14_ArrayProtocolP", "init"]
+- !private ["s23_BidirectionalIndexableP", "init"]
+- !private ["s24_DestructorSafeContainerP", "init"]
+- !private ["s10_IndexableP", "init"]
+- !private ["s14_IndexableBaseP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "async"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "main"]
+- !private ["s17_MutableIndexableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s22_RandomAccessIndexableP", "init"]
+- !private ["s26_RangeReplaceableIndexableP", "init"]
+depends-nominal:
+- !private "7ReSwift6ActionP"
+- "7ReSwift18AnyStoreSubscriberP"
+- !private "5Septa8AppStateV"
+- !private "Sa"
+- !private "13SeptaSchedule11BaseCommandC"
+- !private "s23BidirectionalCollectionP"
+- !private "s7CVarArgP"
+- !private "s10CollectionP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "So14DispatchObjectC"
+- !private "So13DispatchQueueC"
+- !private "7ReSwift20DispatchingStoreTypeP"
+- !private "s9EncodableP"
+- "s9EquatableP"
+- !private "s5ErrorP"
+- !private "s25ExpressibleByArrayLiteralP"
+- "s8HashableP"
+- !private "s17MutableCollectionP"
+- !private "So8NSObjectC"
+- !private "So16NSObjectProtocolP"
+- !private "So9OS_objectC"
+- "13SeptaSchedule21OptionalCompareResultO"
+- !private "13SeptaSchedule9OptionalsC"
+- !private "s22RandomAccessCollectionP"
+- !private "s26RangeReplaceableCollectionP"
+- !private "13SeptaSchedule13RoutesCommandC"
+- !private "5Septa12RoutesLoadedV"
+- !private "5Septa14ScheduleActionP"
+- "5Septa16ScheduleProviderC"
+- "5Septa15ScheduleRequestV"
+- !private "5Septa13ScheduleStateV"
+- !private "5Septa0A6ActionP"
+- !private "s8SequenceP"
+- !private "7ReSwift9StateTypeP"
+- !private "7ReSwift5StoreC"
+- "7ReSwift15StoreSubscriberP"
+- !private "7ReSwift9StoreTypeP"
+- !private "7ReSwift12SubscriptionC"
+- !private "13SeptaSchedule14TripEndCommandC"
+- !private "5Septa14TripEndsLoadedV"
+- !private "13SeptaSchedule16TripStartCommandC"
+- !private "5Septa16TripStartsLoadedV"
+- !private "5Septa11TripsLoadedV"
+- !private "s14_ArrayProtocolP"
+- !private "s23_BidirectionalIndexableP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s10_IndexableP"
+- !private "s14_IndexableBaseP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s17_MutableIndexableP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s22_RandomAccessIndexableP"
+- !private "s26_RangeReplaceableIndexableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Modules/SeptaSchedule.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Modules/SQLite.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Modules/Zip.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Modules/ReSwift.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/sqlite3.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Headers/Fabric.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Headers/SeptaSchedule.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSStackFrame.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite-Bridging.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSLogging.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Headers/Zip.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/Crashlytics.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Headers/FABAttributes.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSAttributes.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/Answers.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Headers/SeptaSchedule-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Headers/Zip-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Headers/ReSwift-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Headers/ReSwift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSReport.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/ANSCompatibility.h"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/Zip/Zip/minizip/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/SQLite.swift/CocoaPods/iphonesimulator/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Modules/module.modulemap"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "13109dd64918ffa75faeca19a4fe35b8"

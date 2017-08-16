@@ -1,0 +1,180 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "TripStartSQLQuery"
+provides-nominal:
+- "13SeptaSchedule17TripStartSQLQueryC"
+provides-member:
+- ["13SeptaSchedule17TripStartSQLQueryC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "Array"
+- "AssignmentPrecedence"
+- "Route"
+- "SQLQueryProtocol"
+- "String"
+- !private "StringLiteralType"
+- "TransitMode"
+- "TripStartSQLQuery"
+depends-member:
+- !private ["s23BidirectionalCollectionP", "init"]
+- !private ["6SQLite7BindingP", "init"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s10CollectionP", "init"]
+- !private ["s10ComparableP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s9DecodableP", "init"]
+- !private ["s9EncodableP", "init"]
+- !private ["s9EquatableP", "init"]
+- ["s9EquatableP", "rail"]
+- !private ["s9EquatableP", "rawValue"]
+- !private ["s9EquatableP", "routeDirectionCode"]
+- !private ["s9EquatableP", "routeId"]
+- !private ["6SQLite11ExpressibleP", "init"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["s8HashableP", "init"]
+- ["s8HashableP", "rail"]
+- !private ["s8HashableP", "rawValue"]
+- !private ["s8HashableP", "routeDirectionCode"]
+- !private ["s8HashableP", "routeId"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["So8NSCodingP", "init"]
+- !private ["So9NSCopyingP", "init"]
+- !private ["So21NSItemProviderReadingP", "init"]
+- !private ["So21NSItemProviderWritingP", "init"]
+- !private ["So16NSMutableCopyingP", "init"]
+- !private ["So16NSObjectProtocolP", "init"]
+- !private ["So14NSSecureCodingP", "init"]
+- !private ["So8NSStringC", "init"]
+- !private ["s26RangeReplaceableCollectionP", "init"]
+- ["s16RawRepresentableP", "rail"]
+- !private ["s16RawRepresentableP", "rawValue"]
+- !private ["13SeptaSchedule5RouteV", "routeDirectionCode"]
+- !private ["13SeptaSchedule5RouteV", "routeId"]
+- !private ["13SeptaSchedule18RouteDirectionCodeO", "deinit"]
+- !private ["13SeptaSchedule18RouteDirectionCodeO", "rawValue"]
+- !private ["13SeptaSchedule16SQLQueryProtocolP", "String"]
+- ["13SeptaSchedule16SQLQueryProtocolP", "fileName"]
+- !private ["13SeptaSchedule16SQLQueryProtocolP", "routeDirecctionCodeString"]
+- !private ["13SeptaSchedule16SQLQueryProtocolP", "routeId"]
+- ["13SeptaSchedule16SQLQueryProtocolP", "sqlBindings"]
+- !private ["13SeptaSchedule16SQLQueryProtocolP", "transitMode"]
+- ["13SeptaSchedule16SQLQueryProtocolP", ""]
+- !private ["s8SequenceP", "init"]
+- !private ["SS", "init"]
+- !private ["s14StringProtocolP", "init"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "init"]
+- ["13SeptaSchedule11TransitModeO", "rail"]
+- ["13SeptaSchedule17TripStartSQLQueryC", "Route"]
+- ["13SeptaSchedule17TripStartSQLQueryC", "String"]
+- ["13SeptaSchedule17TripStartSQLQueryC", "TransitMode"]
+- ["13SeptaSchedule17TripStartSQLQueryC", "deinit"]
+- ["13SeptaSchedule17TripStartSQLQueryC", "fileName"]
+- ["13SeptaSchedule17TripStartSQLQueryC", "init"]
+- ["13SeptaSchedule17TripStartSQLQueryC", "routeDirecctionCodeString"]
+- ["13SeptaSchedule17TripStartSQLQueryC", "routeId"]
+- ["13SeptaSchedule17TripStartSQLQueryC", "sqlBindings"]
+- ["13SeptaSchedule17TripStartSQLQueryC", "transitMode"]
+- !private ["6SQLite5ValueP", "init"]
+- !private ["s23_BidirectionalIndexableP", "init"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s33_ExpressibleByStringInterpolationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s10_IndexableP", "init"]
+- !private ["s14_IndexableBaseP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s26_RangeReplaceableIndexableP", "init"]
+- !private ["s16_SwiftStringViewP", "init"]
+depends-nominal:
+- !private "s23BidirectionalCollectionP"
+- !private "6SQLite7BindingP"
+- !private "s7CVarArgP"
+- !private "s10CollectionP"
+- !private "s10ComparableP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- "s9EquatableP"
+- !private "6SQLite11ExpressibleP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- "s8HashableP"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- !private "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- !private "So16NSMutableCopyingP"
+- !private "So16NSObjectProtocolP"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
+- !private "s26RangeReplaceableCollectionP"
+- "s16RawRepresentableP"
+- !private "13SeptaSchedule5RouteV"
+- !private "13SeptaSchedule18RouteDirectionCodeO"
+- "13SeptaSchedule16SQLQueryProtocolP"
+- !private "s8SequenceP"
+- !private "SS"
+- !private "s14StringProtocolP"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- "13SeptaSchedule11TransitModeO"
+- "13SeptaSchedule17TripStartSQLQueryC"
+- !private "6SQLite5ValueP"
+- !private "s23_BidirectionalIndexableP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s33_ExpressibleByStringInterpolationP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "s10_IndexableP"
+- !private "s14_IndexableBaseP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s26_RangeReplaceableIndexableP"
+- !private "s16_SwiftStringViewP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/i386/Dispatch.apinotesc"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../iSEPTA/Frameworks/SQLite.framework/Modules/SQLite.swiftmodule/i386.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../iSEPTA/Frameworks/Zip.framework/Modules/Zip.swiftmodule/i386.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/i386/ObjectiveC.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/i386/CoreImage.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/i386/QuartzCore.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/i386/Dispatch.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/i386/Darwin.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/i386/Foundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/i386/CoreFoundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/i386/CoreGraphics.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/i386/Swift.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/i386/UIKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/i386/SwiftOnoneSupport.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../iSEPTA/Frameworks/SQLite.framework/Headers/sqlite3.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/SeptaSchedule/SeptaSchedule.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../iSEPTA/Frameworks/SQLite.framework/Headers/SQLite.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../iSEPTA/Frameworks/SQLite.framework/Headers/SQLite-Bridging.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../iSEPTA/Frameworks/Zip.framework/Headers/Zip.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../iSEPTA/Frameworks/SQLite.framework/Headers/SQLite-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../iSEPTA/Frameworks/Zip.framework/Headers/Zip-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Intermediates.noindex/SeptaSchedule.build/Debug-iphonesimulator/SeptaSchedule.build/unextended-module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/Zip/Zip/minizip/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/SQLite.swift/CocoaPods/iphonesimulator/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../iSEPTA/Frameworks/SQLite.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../iSEPTA/Frameworks/Zip.framework/Modules/module.modulemap"
+interface-hash: "5525891e50bbbee41f28197f5c8715ac"

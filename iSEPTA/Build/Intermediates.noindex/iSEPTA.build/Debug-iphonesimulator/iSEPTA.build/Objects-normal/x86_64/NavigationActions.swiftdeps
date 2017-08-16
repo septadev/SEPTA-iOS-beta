@@ -1,0 +1,172 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "NavigationAction"
+- "InitializeNavigationState"
+- "TransitionView"
+- "SwitchTabs"
+- "DismissModal"
+- "PresentModal"
+- "PushViewController"
+- "UserPoppedViewController"
+provides-nominal:
+- "5Septa16NavigationActionP"
+- "5Septa25InitializeNavigationStateV"
+- "5Septa14TransitionViewV"
+- "5Septa10SwitchTabsV"
+- "5Septa12DismissModalV"
+- "5Septa12PresentModalV"
+- "5Septa18PushViewControllerV"
+- "5Septa24UserPoppedViewControllerV"
+provides-member:
+- ["5Septa16NavigationActionP", ""]
+- ["5Septa25InitializeNavigationStateV", ""]
+- ["5Septa14TransitionViewV", ""]
+- ["5Septa10SwitchTabsV", ""]
+- ["5Septa12DismissModalV", ""]
+- ["5Septa12PresentModalV", ""]
+- ["5Septa18PushViewControllerV", ""]
+- ["5Septa24UserPoppedViewControllerV", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "DismissModal"
+- "InitializeNavigationState"
+- "Int"
+- "NavigationAction"
+- "NavigationController"
+- "NavigationStackState"
+- "PresentModal"
+- "PushViewController"
+- "SeptaAction"
+- "String"
+- "SwitchTabs"
+- "TransitionView"
+- "UserPoppedViewController"
+- "ViewController"
+- "ViewTransitionType"
+depends-member:
+- ["7ReSwift6ActionP", "description"]
+- ["7ReSwift6ActionP", ""]
+- ["5Septa12DismissModalV", "NavigationController"]
+- ["5Septa12DismissModalV", "String"]
+- ["5Septa12DismissModalV", "deinit"]
+- ["5Septa12DismissModalV", "description"]
+- ["5Septa12DismissModalV", "init"]
+- ["5Septa12DismissModalV", "navigationController"]
+- ["5Septa25InitializeNavigationStateV", "NavigationController"]
+- ["5Septa25InitializeNavigationStateV", "NavigationStackState"]
+- ["5Septa25InitializeNavigationStateV", "String"]
+- ["5Septa25InitializeNavigationStateV", "deinit"]
+- ["5Septa25InitializeNavigationStateV", "description"]
+- ["5Septa25InitializeNavigationStateV", "init"]
+- ["5Septa25InitializeNavigationStateV", "navigationController"]
+- ["5Septa25InitializeNavigationStateV", "navigationStackState"]
+- ["5Septa16NavigationActionP", "description"]
+- ["5Septa16NavigationActionP", ""]
+- ["5Septa12PresentModalV", "NavigationController"]
+- ["5Septa12PresentModalV", "String"]
+- ["5Septa12PresentModalV", "ViewController"]
+- ["5Septa12PresentModalV", "deinit"]
+- ["5Septa12PresentModalV", "description"]
+- ["5Septa12PresentModalV", "init"]
+- ["5Septa12PresentModalV", "navigationController"]
+- ["5Septa12PresentModalV", "viewController"]
+- ["5Septa18PushViewControllerV", "NavigationController"]
+- ["5Septa18PushViewControllerV", "String"]
+- ["5Septa18PushViewControllerV", "ViewController"]
+- ["5Septa18PushViewControllerV", "deinit"]
+- ["5Septa18PushViewControllerV", "description"]
+- ["5Septa18PushViewControllerV", "init"]
+- ["5Septa18PushViewControllerV", "navigationController"]
+- ["5Septa18PushViewControllerV", "viewController"]
+- ["5Septa0A6ActionP", "description"]
+- ["5Septa0A6ActionP", ""]
+- ["5Septa10SwitchTabsV", "Int"]
+- ["5Septa10SwitchTabsV", "String"]
+- ["5Septa10SwitchTabsV", "deinit"]
+- ["5Septa10SwitchTabsV", "description"]
+- ["5Septa10SwitchTabsV", "init"]
+- ["5Septa10SwitchTabsV", "tabBarItemIndex"]
+- ["5Septa14TransitionViewV", "NavigationController"]
+- ["5Septa14TransitionViewV", "String"]
+- ["5Septa14TransitionViewV", "ViewController"]
+- ["5Septa14TransitionViewV", "ViewTransitionType"]
+- ["5Septa14TransitionViewV", "deinit"]
+- ["5Septa14TransitionViewV", "description"]
+- ["5Septa14TransitionViewV", "init"]
+- ["5Septa14TransitionViewV", "navigationController"]
+- ["5Septa14TransitionViewV", "viewController"]
+- ["5Septa14TransitionViewV", "viewTransitionType"]
+- ["5Septa24UserPoppedViewControllerV", "NavigationController"]
+- ["5Septa24UserPoppedViewControllerV", "String"]
+- ["5Septa24UserPoppedViewControllerV", "deinit"]
+- ["5Septa24UserPoppedViewControllerV", "description"]
+- ["5Septa24UserPoppedViewControllerV", "init"]
+- ["5Septa24UserPoppedViewControllerV", "navigationController"]
+depends-nominal:
+- "7ReSwift6ActionP"
+- "5Septa12DismissModalV"
+- "5Septa25InitializeNavigationStateV"
+- "5Septa16NavigationActionP"
+- "5Septa12PresentModalV"
+- "5Septa18PushViewControllerV"
+- "5Septa0A6ActionP"
+- "5Septa10SwitchTabsV"
+- "5Septa14TransitionViewV"
+- "5Septa24UserPoppedViewControllerV"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Modules/SeptaSchedule.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Modules/SQLite.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Modules/Zip.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Modules/ReSwift.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/sqlite3.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Headers/Fabric.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Headers/SeptaSchedule.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSStackFrame.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite-Bridging.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSLogging.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Headers/Zip.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/Crashlytics.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Headers/FABAttributes.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSAttributes.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/Answers.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Headers/SeptaSchedule-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Headers/Zip-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Headers/ReSwift-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Headers/ReSwift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSReport.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/ANSCompatibility.h"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/Zip/Zip/minizip/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/SQLite.swift/CocoaPods/iphonesimulator/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Modules/module.modulemap"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "e7822a885ac18d25206afc1f1f037782"

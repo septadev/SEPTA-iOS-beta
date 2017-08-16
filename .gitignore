@@ -1,13 +1,6 @@
-v#Can ignore specific files
 
-*.txt
-*.csv
 *.DS_Store
-*.pid
-*.log
 
 
-
-DerivedData/
 **/xcuserdata/
 

@@ -1,0 +1,860 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "SlideInPresentationManager"
+- "SchedulesPresentationController"
+- "SlideInPresentationAnimator"
+provides-nominal:
+- "5Septa26SlideInPresentationManagerC"
+- "5Septa31SchedulesPresentationControllerC"
+- "5Septa27SlideInPresentationAnimatorC"
+provides-member:
+- ["5Septa26SlideInPresentationManagerC", ""]
+- ["5Septa31SchedulesPresentationControllerC", ""]
+- ["5Septa27SlideInPresentationAnimatorC", ""]
+provides-dynamic-lookup:
+- "containerViewWillLayoutSubviews"
+- "dismissalTransitionWillBegin"
+- "frameOfPresentedViewInContainerView"
+- "handleTap"
+- "presentationController"
+- "presentationTransitionWillBegin"
+- "size"
+depends-top-level:
+- !private "-"
+- !private "Array"
+- "AssignmentPrecedence"
+- !private "BooleanLiteralType"
+- "CGFloat"
+- !private "CGPoint"
+- "CGRect"
+- "CGSize"
+- !private "Dictionary"
+- !private "NSLayoutConstraint"
+- "NSObject"
+- "SchedulesPresentationController"
+- "SlideInPresentationAnimator"
+- "SlideInPresentationManager"
+- !private "StringLiteralType"
+- !private "UIColor"
+- "UIContentContainer"
+- "UIPresentationController"
+- "UITapGestureRecognizer"
+- "UIView"
+- "UIViewController"
+- "UIViewControllerTransitioningDelegate"
+depends-member:
+- !private ["s23BidirectionalCollectionP", "init"]
+- !private ["6SQLite7BindingP", "init"]
+- !private ["So15CALayerDelegateP", "addGestureRecognizer"]
+- !private ["So15CALayerDelegateP", "alpha"]
+- !private ["So15CALayerDelegateP", "backgroundColor"]
+- !private ["So15CALayerDelegateP", "bounds"]
+- !private ["So15CALayerDelegateP", "frame"]
+- !private ["So15CALayerDelegateP", "init"]
+- !private ["So15CALayerDelegateP", "insertSubview"]
+- !private ["So15CALayerDelegateP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["SC7CGPointV", "init"]
+- !private ["SC6CGRectV", "origin"]
+- !private ["SC6CGRectV", "size"]
+- !private ["SC6CGRectV", "zero"]
+- !private ["SC6CGSizeV", "height"]
+- !private ["SC6CGSizeV", "init"]
+- !private ["SC6CGSizeV", "width"]
+- !private ["s7CVarArgP", "CGPoint"]
+- !private ["s7CVarArgP", "CGSize"]
+- !private ["s7CVarArgP", "NSLayoutConstraint"]
+- !private ["s7CVarArgP", "SchedulesPresentationController"]
+- !private ["s7CVarArgP", "UIColor"]
+- !private ["s7CVarArgP", "UITapGestureRecognizer"]
+- !private ["s7CVarArgP", "UIView"]
+- !private ["s7CVarArgP", "activate"]
+- !private ["s7CVarArgP", "addGestureRecognizer"]
+- !private ["s7CVarArgP", "alpha"]
+- ["s7CVarArgP", "animationController"]
+- ["s7CVarArgP", "animationControllerForDismissedController"]
+- ["s7CVarArgP", "animationControllerForPresentedController"]
+- !private ["s7CVarArgP", "backgroundColor"]
+- !private ["s7CVarArgP", "bounds"]
+- !private ["s7CVarArgP", "constraints"]
+- !private ["s7CVarArgP", "containerView"]
+- !private ["s7CVarArgP", "dimmingView"]
+- !private ["s7CVarArgP", "dismiss"]
+- !private ["s7CVarArgP", "frame"]
+- !private ["s7CVarArgP", "frameOfPresentedViewInContainerView"]
+- !private ["s7CVarArgP", "handleTap"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "insertSubview"]
+- ["s7CVarArgP", "interactionControllerForDismissal"]
+- ["s7CVarArgP", "interactionControllerForPresentation"]
+- ["s7CVarArgP", "presentationController"]
+- ["s7CVarArgP", "presentationControllerForPresentedViewController"]
+- !private ["s7CVarArgP", "presentedView"]
+- !private ["s7CVarArgP", "presentedViewController"]
+- !private ["s7CVarArgP", "presentingViewController"]
+- !private ["s7CVarArgP", "setupDimmingView"]
+- !private ["s7CVarArgP", "size"]
+- !private ["s7CVarArgP", "topMargin"]
+- !private ["s7CVarArgP", "transitionCoordinator"]
+- !private ["s7CVarArgP", "translatesAutoresizingMaskIntoConstraints"]
+- ["s7CVarArgP", ""]
+- !private ["s10CollectionP", "init"]
+- !private ["s10ComparableP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "CGPoint"]
+- !private ["s28CustomDebugStringConvertibleP", "CGSize"]
+- !private ["s28CustomDebugStringConvertibleP", "NSLayoutConstraint"]
+- !private ["s28CustomDebugStringConvertibleP", "SchedulesPresentationController"]
+- !private ["s28CustomDebugStringConvertibleP", "UIColor"]
+- !private ["s28CustomDebugStringConvertibleP", "UITapGestureRecognizer"]
+- !private ["s28CustomDebugStringConvertibleP", "UIView"]
+- !private ["s28CustomDebugStringConvertibleP", "activate"]
+- !private ["s28CustomDebugStringConvertibleP", "addGestureRecognizer"]
+- !private ["s28CustomDebugStringConvertibleP", "alpha"]
+- ["s28CustomDebugStringConvertibleP", "animationController"]
+- ["s28CustomDebugStringConvertibleP", "animationControllerForDismissedController"]
+- ["s28CustomDebugStringConvertibleP", "animationControllerForPresentedController"]
+- !private ["s28CustomDebugStringConvertibleP", "backgroundColor"]
+- !private ["s28CustomDebugStringConvertibleP", "bounds"]
+- !private ["s28CustomDebugStringConvertibleP", "constraints"]
+- !private ["s28CustomDebugStringConvertibleP", "containerView"]
+- !private ["s28CustomDebugStringConvertibleP", "dimmingView"]
+- !private ["s28CustomDebugStringConvertibleP", "dismiss"]
+- !private ["s28CustomDebugStringConvertibleP", "frame"]
+- !private ["s28CustomDebugStringConvertibleP", "frameOfPresentedViewInContainerView"]
+- !private ["s28CustomDebugStringConvertibleP", "handleTap"]
+- !private ["s28CustomDebugStringConvertibleP", "height"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "insertSubview"]
+- ["s28CustomDebugStringConvertibleP", "interactionControllerForDismissal"]
+- ["s28CustomDebugStringConvertibleP", "interactionControllerForPresentation"]
+- !private ["s28CustomDebugStringConvertibleP", "origin"]
+- ["s28CustomDebugStringConvertibleP", "presentationController"]
+- ["s28CustomDebugStringConvertibleP", "presentationControllerForPresentedViewController"]
+- !private ["s28CustomDebugStringConvertibleP", "presentedView"]
+- !private ["s28CustomDebugStringConvertibleP", "presentedViewController"]
+- !private ["s28CustomDebugStringConvertibleP", "presentingViewController"]
+- !private ["s28CustomDebugStringConvertibleP", "setupDimmingView"]
+- !private ["s28CustomDebugStringConvertibleP", "size"]
+- !private ["s28CustomDebugStringConvertibleP", "topMargin"]
+- !private ["s28CustomDebugStringConvertibleP", "transitionCoordinator"]
+- !private ["s28CustomDebugStringConvertibleP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["s28CustomDebugStringConvertibleP", "width"]
+- !private ["s28CustomDebugStringConvertibleP", "zero"]
+- ["s28CustomDebugStringConvertibleP", ""]
+- !private ["s29CustomPlaygroundQuickLookableP", "height"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s29CustomPlaygroundQuickLookableP", "origin"]
+- !private ["s29CustomPlaygroundQuickLookableP", "size"]
+- !private ["s29CustomPlaygroundQuickLookableP", "width"]
+- !private ["s29CustomPlaygroundQuickLookableP", "zero"]
+- !private ["s17CustomReflectableP", "height"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "origin"]
+- !private ["s17CustomReflectableP", "size"]
+- !private ["s17CustomReflectableP", "width"]
+- !private ["s17CustomReflectableP", "zero"]
+- !private ["s23CustomStringConvertibleP", "CGPoint"]
+- !private ["s23CustomStringConvertibleP", "CGSize"]
+- !private ["s23CustomStringConvertibleP", "NSLayoutConstraint"]
+- !private ["s23CustomStringConvertibleP", "SchedulesPresentationController"]
+- !private ["s23CustomStringConvertibleP", "UIColor"]
+- !private ["s23CustomStringConvertibleP", "UITapGestureRecognizer"]
+- !private ["s23CustomStringConvertibleP", "UIView"]
+- !private ["s23CustomStringConvertibleP", "activate"]
+- !private ["s23CustomStringConvertibleP", "addGestureRecognizer"]
+- !private ["s23CustomStringConvertibleP", "alpha"]
+- ["s23CustomStringConvertibleP", "animationController"]
+- ["s23CustomStringConvertibleP", "animationControllerForDismissedController"]
+- ["s23CustomStringConvertibleP", "animationControllerForPresentedController"]
+- !private ["s23CustomStringConvertibleP", "backgroundColor"]
+- !private ["s23CustomStringConvertibleP", "bounds"]
+- !private ["s23CustomStringConvertibleP", "constraints"]
+- !private ["s23CustomStringConvertibleP", "containerView"]
+- !private ["s23CustomStringConvertibleP", "dimmingView"]
+- !private ["s23CustomStringConvertibleP", "dismiss"]
+- !private ["s23CustomStringConvertibleP", "frame"]
+- !private ["s23CustomStringConvertibleP", "frameOfPresentedViewInContainerView"]
+- !private ["s23CustomStringConvertibleP", "handleTap"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "insertSubview"]
+- ["s23CustomStringConvertibleP", "interactionControllerForDismissal"]
+- ["s23CustomStringConvertibleP", "interactionControllerForPresentation"]
+- ["s23CustomStringConvertibleP", "presentationController"]
+- ["s23CustomStringConvertibleP", "presentationControllerForPresentedViewController"]
+- !private ["s23CustomStringConvertibleP", "presentedView"]
+- !private ["s23CustomStringConvertibleP", "presentedViewController"]
+- !private ["s23CustomStringConvertibleP", "presentingViewController"]
+- !private ["s23CustomStringConvertibleP", "setupDimmingView"]
+- !private ["s23CustomStringConvertibleP", "size"]
+- !private ["s23CustomStringConvertibleP", "topMargin"]
+- !private ["s23CustomStringConvertibleP", "transitionCoordinator"]
+- !private ["s23CustomStringConvertibleP", "translatesAutoresizingMaskIntoConstraints"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s9DecodableP", "height"]
+- !private ["s9DecodableP", "init"]
+- !private ["s9DecodableP", "origin"]
+- !private ["s9DecodableP", "size"]
+- !private ["s9DecodableP", "width"]
+- !private ["s9DecodableP", "zero"]
+- !private ["s9EncodableP", "height"]
+- !private ["s9EncodableP", "init"]
+- !private ["s9EncodableP", "origin"]
+- !private ["s9EncodableP", "size"]
+- !private ["s9EncodableP", "width"]
+- !private ["s9EncodableP", "zero"]
+- !private ["s9EquatableP", "CGPoint"]
+- !private ["s9EquatableP", "CGSize"]
+- !private ["s9EquatableP", "NSLayoutConstraint"]
+- !private ["s9EquatableP", "SchedulesPresentationController"]
+- !private ["s9EquatableP", "UIColor"]
+- !private ["s9EquatableP", "UITapGestureRecognizer"]
+- !private ["s9EquatableP", "UIView"]
+- !private ["s9EquatableP", "activate"]
+- !private ["s9EquatableP", "addGestureRecognizer"]
+- !private ["s9EquatableP", "alpha"]
+- ["s9EquatableP", "animationController"]
+- ["s9EquatableP", "animationControllerForDismissedController"]
+- ["s9EquatableP", "animationControllerForPresentedController"]
+- !private ["s9EquatableP", "backgroundColor"]
+- !private ["s9EquatableP", "bounds"]
+- !private ["s9EquatableP", "constraints"]
+- !private ["s9EquatableP", "containerView"]
+- !private ["s9EquatableP", "dimmingView"]
+- !private ["s9EquatableP", "dismiss"]
+- !private ["s9EquatableP", "frame"]
+- !private ["s9EquatableP", "frameOfPresentedViewInContainerView"]
+- !private ["s9EquatableP", "handleTap"]
+- !private ["s9EquatableP", "height"]
+- !private ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "insertSubview"]
+- ["s9EquatableP", "interactionControllerForDismissal"]
+- ["s9EquatableP", "interactionControllerForPresentation"]
+- !private ["s9EquatableP", "origin"]
+- ["s9EquatableP", "presentationController"]
+- ["s9EquatableP", "presentationControllerForPresentedViewController"]
+- !private ["s9EquatableP", "presentedView"]
+- !private ["s9EquatableP", "presentedViewController"]
+- !private ["s9EquatableP", "presentingViewController"]
+- !private ["s9EquatableP", "setupDimmingView"]
+- !private ["s9EquatableP", "size"]
+- !private ["s9EquatableP", "topMargin"]
+- !private ["s9EquatableP", "transitionCoordinator"]
+- !private ["s9EquatableP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["s9EquatableP", "width"]
+- !private ["s9EquatableP", "zero"]
+- ["s9EquatableP", ""]
+- !private ["6SQLite11ExpressibleP", "init"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["s8HashableP", "CGPoint"]
+- !private ["s8HashableP", "CGSize"]
+- !private ["s8HashableP", "NSLayoutConstraint"]
+- !private ["s8HashableP", "SchedulesPresentationController"]
+- !private ["s8HashableP", "UIColor"]
+- !private ["s8HashableP", "UITapGestureRecognizer"]
+- !private ["s8HashableP", "UIView"]
+- !private ["s8HashableP", "activate"]
+- !private ["s8HashableP", "addGestureRecognizer"]
+- !private ["s8HashableP", "alpha"]
+- ["s8HashableP", "animationController"]
+- ["s8HashableP", "animationControllerForDismissedController"]
+- ["s8HashableP", "animationControllerForPresentedController"]
+- !private ["s8HashableP", "backgroundColor"]
+- !private ["s8HashableP", "bounds"]
+- !private ["s8HashableP", "constraints"]
+- !private ["s8HashableP", "containerView"]
+- !private ["s8HashableP", "dimmingView"]
+- !private ["s8HashableP", "dismiss"]
+- !private ["s8HashableP", "frame"]
+- !private ["s8HashableP", "frameOfPresentedViewInContainerView"]
+- !private ["s8HashableP", "handleTap"]
+- !private ["s8HashableP", "init"]
+- !private ["s8HashableP", "insertSubview"]
+- ["s8HashableP", "interactionControllerForDismissal"]
+- ["s8HashableP", "interactionControllerForPresentation"]
+- ["s8HashableP", "presentationController"]
+- ["s8HashableP", "presentationControllerForPresentedViewController"]
+- !private ["s8HashableP", "presentedView"]
+- !private ["s8HashableP", "presentedViewController"]
+- !private ["s8HashableP", "presentingViewController"]
+- !private ["s8HashableP", "setupDimmingView"]
+- !private ["s8HashableP", "size"]
+- !private ["s8HashableP", "topMargin"]
+- !private ["s8HashableP", "transitionCoordinator"]
+- !private ["s8HashableP", "translatesAutoresizingMaskIntoConstraints"]
+- ["s8HashableP", ""]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["So8NSCodingP", "addGestureRecognizer"]
+- !private ["So8NSCodingP", "alpha"]
+- !private ["So8NSCodingP", "backgroundColor"]
+- !private ["So8NSCodingP", "bounds"]
+- !private ["So8NSCodingP", "dismiss"]
+- !private ["So8NSCodingP", "frame"]
+- !private ["So8NSCodingP", "init"]
+- !private ["So8NSCodingP", "insertSubview"]
+- !private ["So8NSCodingP", "transitionCoordinator"]
+- !private ["So8NSCodingP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So9NSCopyingP", "init"]
+- !private ["So26NSExtensionRequestHandlingP", "dismiss"]
+- !private ["So26NSExtensionRequestHandlingP", "transitionCoordinator"]
+- !private ["So21NSItemProviderReadingP", "init"]
+- !private ["So21NSItemProviderWritingP", "init"]
+- !private ["So18NSLayoutConstraintC", "activate"]
+- !private ["So18NSLayoutConstraintC", "constraints"]
+- !private ["So16NSMutableCopyingP", "init"]
+- ["So8NSObjectC", "CGFloat"]
+- !private ["So8NSObjectC", "CGPoint"]
+- ["So8NSObjectC", "CGRect"]
+- ["So8NSObjectC", "CGSize"]
+- !private ["So8NSObjectC", "NSLayoutConstraint"]
+- !private ["So8NSObjectC", "SchedulesPresentationController"]
+- !private ["So8NSObjectC", "UIColor"]
+- ["So8NSObjectC", "UIContentContainer"]
+- ["So8NSObjectC", "UIPresentationController"]
+- ["So8NSObjectC", "UITapGestureRecognizer"]
+- ["So8NSObjectC", "UIView"]
+- ["So8NSObjectC", "UIViewController"]
+- !private ["So8NSObjectC", "activate"]
+- !private ["So8NSObjectC", "addGestureRecognizer"]
+- !private ["So8NSObjectC", "alpha"]
+- ["So8NSObjectC", "animationController"]
+- ["So8NSObjectC", "animationControllerForDismissedController"]
+- ["So8NSObjectC", "animationControllerForPresentedController"]
+- !private ["So8NSObjectC", "backgroundColor"]
+- !private ["So8NSObjectC", "bounds"]
+- !private ["So8NSObjectC", "constraints"]
+- !private ["So8NSObjectC", "containerView"]
+- ["So8NSObjectC", "containerViewWillLayoutSubviews"]
+- ["So8NSObjectC", "dimmingView"]
+- !private ["So8NSObjectC", "dismiss"]
+- ["So8NSObjectC", "dismissalTransitionWillBegin"]
+- !private ["So8NSObjectC", "frame"]
+- ["So8NSObjectC", "frameOfPresentedViewInContainerView"]
+- ["So8NSObjectC", "handleTap"]
+- ["So8NSObjectC", "init"]
+- !private ["So8NSObjectC", "insertSubview"]
+- ["So8NSObjectC", "interactionControllerForDismissal"]
+- ["So8NSObjectC", "interactionControllerForPresentation"]
+- ["So8NSObjectC", "presentationController"]
+- ["So8NSObjectC", "presentationControllerForPresentedViewController"]
+- ["So8NSObjectC", "presentationTransitionWillBegin"]
+- !private ["So8NSObjectC", "presentedView"]
+- !private ["So8NSObjectC", "presentedViewController"]
+- !private ["So8NSObjectC", "presentingViewController"]
+- ["So8NSObjectC", "setupDimmingView"]
+- ["So8NSObjectC", "size"]
+- ["So8NSObjectC", "topMargin"]
+- !private ["So8NSObjectC", "transitionCoordinator"]
+- !private ["So8NSObjectC", "translatesAutoresizingMaskIntoConstraints"]
+- ["So8NSObjectC", ""]
+- !private ["So16NSObjectProtocolP", "CGPoint"]
+- !private ["So16NSObjectProtocolP", "CGSize"]
+- !private ["So16NSObjectProtocolP", "NSLayoutConstraint"]
+- !private ["So16NSObjectProtocolP", "SchedulesPresentationController"]
+- !private ["So16NSObjectProtocolP", "UIColor"]
+- !private ["So16NSObjectProtocolP", "UITapGestureRecognizer"]
+- !private ["So16NSObjectProtocolP", "UIView"]
+- !private ["So16NSObjectProtocolP", "activate"]
+- !private ["So16NSObjectProtocolP", "addGestureRecognizer"]
+- !private ["So16NSObjectProtocolP", "alpha"]
+- !private ["So16NSObjectProtocolP", "animate"]
+- ["So16NSObjectProtocolP", "animationController"]
+- ["So16NSObjectProtocolP", "animationControllerForDismissedController"]
+- ["So16NSObjectProtocolP", "animationControllerForPresentedController"]
+- !private ["So16NSObjectProtocolP", "backgroundColor"]
+- !private ["So16NSObjectProtocolP", "bounds"]
+- !private ["So16NSObjectProtocolP", "constraints"]
+- !private ["So16NSObjectProtocolP", "containerView"]
+- !private ["So16NSObjectProtocolP", "dimmingView"]
+- !private ["So16NSObjectProtocolP", "dismiss"]
+- !private ["So16NSObjectProtocolP", "frame"]
+- !private ["So16NSObjectProtocolP", "frameOfPresentedViewInContainerView"]
+- !private ["So16NSObjectProtocolP", "handleTap"]
+- !private ["So16NSObjectProtocolP", "init"]
+- !private ["So16NSObjectProtocolP", "insertSubview"]
+- ["So16NSObjectProtocolP", "interactionControllerForDismissal"]
+- ["So16NSObjectProtocolP", "interactionControllerForPresentation"]
+- ["So16NSObjectProtocolP", "presentationController"]
+- ["So16NSObjectProtocolP", "presentationControllerForPresentedViewController"]
+- !private ["So16NSObjectProtocolP", "presentedView"]
+- !private ["So16NSObjectProtocolP", "presentedViewController"]
+- !private ["So16NSObjectProtocolP", "presentingViewController"]
+- !private ["So16NSObjectProtocolP", "setupDimmingView"]
+- !private ["So16NSObjectProtocolP", "size"]
+- !private ["So16NSObjectProtocolP", "topMargin"]
+- !private ["So16NSObjectProtocolP", "transitionCoordinator"]
+- !private ["So16NSObjectProtocolP", "translatesAutoresizingMaskIntoConstraints"]
+- ["So16NSObjectProtocolP", ""]
+- !private ["So14NSSecureCodingP", "init"]
+- !private ["So8NSStringC", "init"]
+- !private ["s26RangeReplaceableCollectionP", "init"]
+- ["5Septa31SchedulesPresentationControllerC", "CGFloat"]
+- !private ["5Septa31SchedulesPresentationControllerC", "CGPoint"]
+- ["5Septa31SchedulesPresentationControllerC", "CGRect"]
+- ["5Septa31SchedulesPresentationControllerC", "CGSize"]
+- !private ["5Septa31SchedulesPresentationControllerC", "NSLayoutConstraint"]
+- !private ["5Septa31SchedulesPresentationControllerC", "UIColor"]
+- ["5Septa31SchedulesPresentationControllerC", "UIContentContainer"]
+- ["5Septa31SchedulesPresentationControllerC", "UITapGestureRecognizer"]
+- ["5Septa31SchedulesPresentationControllerC", "UIView"]
+- ["5Septa31SchedulesPresentationControllerC", "UIViewController"]
+- !private ["5Septa31SchedulesPresentationControllerC", "containerView"]
+- ["5Septa31SchedulesPresentationControllerC", "containerViewWillLayoutSubviews"]
+- ["5Septa31SchedulesPresentationControllerC", "deinit"]
+- !private ["5Septa31SchedulesPresentationControllerC", "dimmingView"]
+- ["5Septa31SchedulesPresentationControllerC", "dismissalTransitionWillBegin"]
+- ["5Septa31SchedulesPresentationControllerC", "frameOfPresentedViewInContainerView"]
+- ["5Septa31SchedulesPresentationControllerC", "handleTap"]
+- ["5Septa31SchedulesPresentationControllerC", "init"]
+- ["5Septa31SchedulesPresentationControllerC", "presentationTransitionWillBegin"]
+- !private ["5Septa31SchedulesPresentationControllerC", "presentedView"]
+- !private ["5Septa31SchedulesPresentationControllerC", "presentedViewController"]
+- !private ["5Septa31SchedulesPresentationControllerC", "presentingViewController"]
+- ["5Septa31SchedulesPresentationControllerC", "setupDimmingView"]
+- ["5Septa31SchedulesPresentationControllerC", "size"]
+- ["5Septa31SchedulesPresentationControllerC", "topMargin"]
+- !private ["s8SequenceP", "init"]
+- ["5Septa27SlideInPresentationAnimatorC", "deinit"]
+- ["5Septa27SlideInPresentationAnimatorC", "init"]
+- !private ["5Septa26SlideInPresentationManagerC", "SchedulesPresentationController"]
+- ["5Septa26SlideInPresentationManagerC", "UIPresentationController"]
+- ["5Septa26SlideInPresentationManagerC", "UIViewController"]
+- ["5Septa26SlideInPresentationManagerC", "animationController"]
+- ["5Septa26SlideInPresentationManagerC", "animationControllerForDismissedController"]
+- ["5Septa26SlideInPresentationManagerC", "animationControllerForPresentedController"]
+- ["5Septa26SlideInPresentationManagerC", "deinit"]
+- ["5Septa26SlideInPresentationManagerC", "init"]
+- ["5Septa26SlideInPresentationManagerC", "interactionControllerForDismissal"]
+- ["5Septa26SlideInPresentationManagerC", "interactionControllerForPresentation"]
+- ["5Septa26SlideInPresentationManagerC", "presentationController"]
+- ["5Septa26SlideInPresentationManagerC", "presentationControllerForPresentedViewController"]
+- !private ["SS", "init"]
+- !private ["s14StringProtocolP", "init"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["So29UIAccessibilityIdentificationP", "addGestureRecognizer"]
+- !private ["So29UIAccessibilityIdentificationP", "alpha"]
+- !private ["So29UIAccessibilityIdentificationP", "backgroundColor"]
+- !private ["So29UIAccessibilityIdentificationP", "bounds"]
+- !private ["So29UIAccessibilityIdentificationP", "frame"]
+- !private ["So29UIAccessibilityIdentificationP", "init"]
+- !private ["So29UIAccessibilityIdentificationP", "insertSubview"]
+- !private ["So29UIAccessibilityIdentificationP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So12UIAppearanceP", "addGestureRecognizer"]
+- !private ["So12UIAppearanceP", "alpha"]
+- !private ["So12UIAppearanceP", "backgroundColor"]
+- !private ["So12UIAppearanceP", "bounds"]
+- !private ["So12UIAppearanceP", "frame"]
+- !private ["So12UIAppearanceP", "init"]
+- !private ["So12UIAppearanceP", "insertSubview"]
+- !private ["So12UIAppearanceP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So21UIAppearanceContainerP", "CGPoint"]
+- !private ["So21UIAppearanceContainerP", "CGSize"]
+- !private ["So21UIAppearanceContainerP", "NSLayoutConstraint"]
+- !private ["So21UIAppearanceContainerP", "UIColor"]
+- !private ["So21UIAppearanceContainerP", "UITapGestureRecognizer"]
+- !private ["So21UIAppearanceContainerP", "UIView"]
+- !private ["So21UIAppearanceContainerP", "addGestureRecognizer"]
+- !private ["So21UIAppearanceContainerP", "alpha"]
+- !private ["So21UIAppearanceContainerP", "backgroundColor"]
+- !private ["So21UIAppearanceContainerP", "bounds"]
+- !private ["So21UIAppearanceContainerP", "containerView"]
+- !private ["So21UIAppearanceContainerP", "dimmingView"]
+- !private ["So21UIAppearanceContainerP", "dismiss"]
+- !private ["So21UIAppearanceContainerP", "frame"]
+- !private ["So21UIAppearanceContainerP", "frameOfPresentedViewInContainerView"]
+- !private ["So21UIAppearanceContainerP", "handleTap"]
+- !private ["So21UIAppearanceContainerP", "init"]
+- !private ["So21UIAppearanceContainerP", "insertSubview"]
+- !private ["So21UIAppearanceContainerP", "presentedView"]
+- !private ["So21UIAppearanceContainerP", "presentedViewController"]
+- !private ["So21UIAppearanceContainerP", "presentingViewController"]
+- !private ["So21UIAppearanceContainerP", "setupDimmingView"]
+- !private ["So21UIAppearanceContainerP", "size"]
+- !private ["So21UIAppearanceContainerP", "topMargin"]
+- !private ["So21UIAppearanceContainerP", "transitionCoordinator"]
+- !private ["So21UIAppearanceContainerP", "translatesAutoresizingMaskIntoConstraints"]
+- ["So21UIAppearanceContainerP", ""]
+- !private ["So7UIColorC", "init"]
+- !private ["So18UIContentContainerP", "CGPoint"]
+- !private ["So18UIContentContainerP", "CGSize"]
+- !private ["So18UIContentContainerP", "NSLayoutConstraint"]
+- !private ["So18UIContentContainerP", "UIColor"]
+- !private ["So18UIContentContainerP", "UITapGestureRecognizer"]
+- !private ["So18UIContentContainerP", "UIView"]
+- !private ["So18UIContentContainerP", "containerView"]
+- !private ["So18UIContentContainerP", "dimmingView"]
+- !private ["So18UIContentContainerP", "dismiss"]
+- !private ["So18UIContentContainerP", "frameOfPresentedViewInContainerView"]
+- !private ["So18UIContentContainerP", "handleTap"]
+- !private ["So18UIContentContainerP", "init"]
+- !private ["So18UIContentContainerP", "presentedView"]
+- !private ["So18UIContentContainerP", "presentedViewController"]
+- !private ["So18UIContentContainerP", "presentingViewController"]
+- !private ["So18UIContentContainerP", "setupDimmingView"]
+- !private ["So18UIContentContainerP", "size"]
+- !private ["So18UIContentContainerP", "topMargin"]
+- !private ["So18UIContentContainerP", "transitionCoordinator"]
+- ["So18UIContentContainerP", ""]
+- !private ["So17UICoordinateSpaceP", "addGestureRecognizer"]
+- !private ["So17UICoordinateSpaceP", "alpha"]
+- !private ["So17UICoordinateSpaceP", "backgroundColor"]
+- !private ["So17UICoordinateSpaceP", "bounds"]
+- !private ["So17UICoordinateSpaceP", "frame"]
+- !private ["So17UICoordinateSpaceP", "init"]
+- !private ["So17UICoordinateSpaceP", "insertSubview"]
+- !private ["So17UICoordinateSpaceP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So13UIDynamicItemP", "addGestureRecognizer"]
+- !private ["So13UIDynamicItemP", "alpha"]
+- !private ["So13UIDynamicItemP", "backgroundColor"]
+- !private ["So13UIDynamicItemP", "bounds"]
+- !private ["So13UIDynamicItemP", "frame"]
+- !private ["So13UIDynamicItemP", "init"]
+- !private ["So13UIDynamicItemP", "insertSubview"]
+- !private ["So13UIDynamicItemP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So18UIFocusEnvironmentP", "CGPoint"]
+- !private ["So18UIFocusEnvironmentP", "CGSize"]
+- !private ["So18UIFocusEnvironmentP", "NSLayoutConstraint"]
+- !private ["So18UIFocusEnvironmentP", "UIColor"]
+- !private ["So18UIFocusEnvironmentP", "UITapGestureRecognizer"]
+- !private ["So18UIFocusEnvironmentP", "UIView"]
+- !private ["So18UIFocusEnvironmentP", "addGestureRecognizer"]
+- !private ["So18UIFocusEnvironmentP", "alpha"]
+- !private ["So18UIFocusEnvironmentP", "backgroundColor"]
+- !private ["So18UIFocusEnvironmentP", "bounds"]
+- !private ["So18UIFocusEnvironmentP", "containerView"]
+- !private ["So18UIFocusEnvironmentP", "dimmingView"]
+- !private ["So18UIFocusEnvironmentP", "dismiss"]
+- !private ["So18UIFocusEnvironmentP", "frame"]
+- !private ["So18UIFocusEnvironmentP", "frameOfPresentedViewInContainerView"]
+- !private ["So18UIFocusEnvironmentP", "handleTap"]
+- !private ["So18UIFocusEnvironmentP", "init"]
+- !private ["So18UIFocusEnvironmentP", "insertSubview"]
+- !private ["So18UIFocusEnvironmentP", "presentedView"]
+- !private ["So18UIFocusEnvironmentP", "presentedViewController"]
+- !private ["So18UIFocusEnvironmentP", "presentingViewController"]
+- !private ["So18UIFocusEnvironmentP", "setupDimmingView"]
+- !private ["So18UIFocusEnvironmentP", "size"]
+- !private ["So18UIFocusEnvironmentP", "topMargin"]
+- !private ["So18UIFocusEnvironmentP", "transitionCoordinator"]
+- !private ["So18UIFocusEnvironmentP", "translatesAutoresizingMaskIntoConstraints"]
+- ["So18UIFocusEnvironmentP", ""]
+- !private ["So11UIFocusItemP", "addGestureRecognizer"]
+- !private ["So11UIFocusItemP", "alpha"]
+- !private ["So11UIFocusItemP", "backgroundColor"]
+- !private ["So11UIFocusItemP", "bounds"]
+- !private ["So11UIFocusItemP", "frame"]
+- !private ["So11UIFocusItemP", "init"]
+- !private ["So11UIFocusItemP", "insertSubview"]
+- !private ["So11UIFocusItemP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So19UIGestureRecognizerC", "init"]
+- !private ["So30UIPasteConfigurationSupportingP", "addGestureRecognizer"]
+- !private ["So30UIPasteConfigurationSupportingP", "alpha"]
+- !private ["So30UIPasteConfigurationSupportingP", "backgroundColor"]
+- !private ["So30UIPasteConfigurationSupportingP", "bounds"]
+- !private ["So30UIPasteConfigurationSupportingP", "dismiss"]
+- !private ["So30UIPasteConfigurationSupportingP", "frame"]
+- !private ["So30UIPasteConfigurationSupportingP", "init"]
+- !private ["So30UIPasteConfigurationSupportingP", "insertSubview"]
+- !private ["So30UIPasteConfigurationSupportingP", "transitionCoordinator"]
+- !private ["So30UIPasteConfigurationSupportingP", "translatesAutoresizingMaskIntoConstraints"]
+- ["So24UIPresentationControllerC", "CGFloat"]
+- !private ["So24UIPresentationControllerC", "CGPoint"]
+- ["So24UIPresentationControllerC", "CGRect"]
+- ["So24UIPresentationControllerC", "CGSize"]
+- !private ["So24UIPresentationControllerC", "NSLayoutConstraint"]
+- !private ["So24UIPresentationControllerC", "UIColor"]
+- ["So24UIPresentationControllerC", "UIContentContainer"]
+- ["So24UIPresentationControllerC", "UITapGestureRecognizer"]
+- ["So24UIPresentationControllerC", "UIView"]
+- ["So24UIPresentationControllerC", "UIViewController"]
+- !private ["So24UIPresentationControllerC", "containerView"]
+- ["So24UIPresentationControllerC", "containerViewWillLayoutSubviews"]
+- ["So24UIPresentationControllerC", "dimmingView"]
+- ["So24UIPresentationControllerC", "dismissalTransitionWillBegin"]
+- ["So24UIPresentationControllerC", "frameOfPresentedViewInContainerView"]
+- ["So24UIPresentationControllerC", "handleTap"]
+- ["So24UIPresentationControllerC", "init"]
+- ["So24UIPresentationControllerC", "presentationTransitionWillBegin"]
+- !private ["So24UIPresentationControllerC", "presentedView"]
+- !private ["So24UIPresentationControllerC", "presentedViewController"]
+- !private ["So24UIPresentationControllerC", "presentingViewController"]
+- ["So24UIPresentationControllerC", "setupDimmingView"]
+- ["So24UIPresentationControllerC", "size"]
+- ["So24UIPresentationControllerC", "topMargin"]
+- ["So24UIPresentationControllerC", ""]
+- !private ["So11UIResponderC", "addGestureRecognizer"]
+- !private ["So11UIResponderC", "alpha"]
+- !private ["So11UIResponderC", "backgroundColor"]
+- !private ["So11UIResponderC", "bounds"]
+- !private ["So11UIResponderC", "dismiss"]
+- !private ["So11UIResponderC", "frame"]
+- !private ["So11UIResponderC", "init"]
+- !private ["So11UIResponderC", "insertSubview"]
+- !private ["So11UIResponderC", "transitionCoordinator"]
+- !private ["So11UIResponderC", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So30UIResponderStandardEditActionsP", "addGestureRecognizer"]
+- !private ["So30UIResponderStandardEditActionsP", "alpha"]
+- !private ["So30UIResponderStandardEditActionsP", "backgroundColor"]
+- !private ["So30UIResponderStandardEditActionsP", "bounds"]
+- !private ["So30UIResponderStandardEditActionsP", "dismiss"]
+- !private ["So30UIResponderStandardEditActionsP", "frame"]
+- !private ["So30UIResponderStandardEditActionsP", "init"]
+- !private ["So30UIResponderStandardEditActionsP", "insertSubview"]
+- !private ["So30UIResponderStandardEditActionsP", "transitionCoordinator"]
+- !private ["So30UIResponderStandardEditActionsP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So16UIStateRestoringP", "dismiss"]
+- !private ["So16UIStateRestoringP", "transitionCoordinator"]
+- !private ["So22UITapGestureRecognizerC", "init"]
+- !private ["So18UITraitEnvironmentP", "CGPoint"]
+- !private ["So18UITraitEnvironmentP", "CGSize"]
+- !private ["So18UITraitEnvironmentP", "NSLayoutConstraint"]
+- !private ["So18UITraitEnvironmentP", "UIColor"]
+- !private ["So18UITraitEnvironmentP", "UITapGestureRecognizer"]
+- !private ["So18UITraitEnvironmentP", "UIView"]
+- !private ["So18UITraitEnvironmentP", "addGestureRecognizer"]
+- !private ["So18UITraitEnvironmentP", "alpha"]
+- !private ["So18UITraitEnvironmentP", "backgroundColor"]
+- !private ["So18UITraitEnvironmentP", "bounds"]
+- !private ["So18UITraitEnvironmentP", "containerView"]
+- !private ["So18UITraitEnvironmentP", "dimmingView"]
+- !private ["So18UITraitEnvironmentP", "dismiss"]
+- !private ["So18UITraitEnvironmentP", "frame"]
+- !private ["So18UITraitEnvironmentP", "frameOfPresentedViewInContainerView"]
+- !private ["So18UITraitEnvironmentP", "handleTap"]
+- !private ["So18UITraitEnvironmentP", "init"]
+- !private ["So18UITraitEnvironmentP", "insertSubview"]
+- !private ["So18UITraitEnvironmentP", "presentedView"]
+- !private ["So18UITraitEnvironmentP", "presentedViewController"]
+- !private ["So18UITraitEnvironmentP", "presentingViewController"]
+- !private ["So18UITraitEnvironmentP", "setupDimmingView"]
+- !private ["So18UITraitEnvironmentP", "size"]
+- !private ["So18UITraitEnvironmentP", "topMargin"]
+- !private ["So18UITraitEnvironmentP", "transitionCoordinator"]
+- !private ["So18UITraitEnvironmentP", "translatesAutoresizingMaskIntoConstraints"]
+- ["So18UITraitEnvironmentP", ""]
+- !private ["So6UIViewC", "addGestureRecognizer"]
+- !private ["So6UIViewC", "alpha"]
+- !private ["So6UIViewC", "backgroundColor"]
+- !private ["So6UIViewC", "bounds"]
+- !private ["So6UIViewC", "frame"]
+- !private ["So6UIViewC", "init"]
+- !private ["So6UIViewC", "insertSubview"]
+- !private ["So6UIViewC", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["So16UIViewControllerC", "dismiss"]
+- !private ["So16UIViewControllerC", "transitionCoordinator"]
+- !private ["So37UIViewControllerTransitionCoordinatorP", "animate"]
+- !private ["So44UIViewControllerTransitionCoordinatorContextP", "animate"]
+- !private ["So37UIViewControllerTransitioningDelegateP", "SchedulesPresentationController"]
+- ["So37UIViewControllerTransitioningDelegateP", "animationController"]
+- ["So37UIViewControllerTransitioningDelegateP", "animationControllerForDismissedController"]
+- ["So37UIViewControllerTransitioningDelegateP", "animationControllerForPresentedController"]
+- ["So37UIViewControllerTransitioningDelegateP", "interactionControllerForDismissal"]
+- ["So37UIViewControllerTransitioningDelegateP", "interactionControllerForPresentation"]
+- ["So37UIViewControllerTransitioningDelegateP", "presentationController"]
+- ["So37UIViewControllerTransitioningDelegateP", "presentationControllerForPresentedViewController"]
+- ["So37UIViewControllerTransitioningDelegateP", ""]
+- !private ["6SQLite5ValueP", "init"]
+- !private ["s23_BidirectionalIndexableP", "init"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "addGestureRecognizer"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "alpha"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "backgroundColor"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "bounds"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "frame"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "init"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "insertSubview"]
+- !private ["s37_DefaultCustomPlaygroundQuickLookableP", "translatesAutoresizingMaskIntoConstraints"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s26_ExpressibleByColorLiteralP", "init"]
+- !private ["s33_ExpressibleByStringInterpolationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s10_IndexableP", "init"]
+- !private ["s14_IndexableBaseP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "CGPoint"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "CGSize"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "NSLayoutConstraint"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "SchedulesPresentationController"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "UIColor"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "UITapGestureRecognizer"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "UIView"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "activate"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "addGestureRecognizer"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "alpha"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "animationController"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "animationControllerForDismissedController"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "animationControllerForPresentedController"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "backgroundColor"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "bounds"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "constraints"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "containerView"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "dimmingView"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "dismiss"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "frame"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "frameOfPresentedViewInContainerView"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "handleTap"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "insertSubview"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "interactionControllerForDismissal"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "interactionControllerForPresentation"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "presentationController"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "presentationControllerForPresentedViewController"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "presentedView"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "presentedViewController"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "presentingViewController"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "setupDimmingView"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "size"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "topMargin"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "transitionCoordinator"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "translatesAutoresizingMaskIntoConstraints"]
+- ["10Foundation27_KeyValueCodingAndObservingP", ""]
+- !private ["s21_ObjectiveCBridgeableP", "height"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "origin"]
+- !private ["s21_ObjectiveCBridgeableP", "size"]
+- !private ["s21_ObjectiveCBridgeableP", "width"]
+- !private ["s21_ObjectiveCBridgeableP", "zero"]
+- !private ["s26_RangeReplaceableIndexableP", "init"]
+- !private ["s16_SwiftStringViewP", "init"]
+depends-nominal:
+- !private "s23BidirectionalCollectionP"
+- !private "6SQLite7BindingP"
+- !private "So15CALayerDelegateP"
+- !private "SC7CGPointV"
+- !private "SC6CGRectV"
+- !private "SC6CGSizeV"
+- "s7CVarArgP"
+- !private "s10CollectionP"
+- !private "s10ComparableP"
+- "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- "s9EquatableP"
+- !private "6SQLite11ExpressibleP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- "s8HashableP"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- !private "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So26NSExtensionRequestHandlingP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- !private "So18NSLayoutConstraintC"
+- !private "So16NSMutableCopyingP"
+- "So8NSObjectC"
+- "So16NSObjectProtocolP"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
+- !private "s26RangeReplaceableCollectionP"
+- "5Septa31SchedulesPresentationControllerC"
+- !private "s8SequenceP"
+- "5Septa27SlideInPresentationAnimatorC"
+- "5Septa26SlideInPresentationManagerC"
+- !private "SS"
+- !private "s14StringProtocolP"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "So29UIAccessibilityIdentificationP"
+- !private "So12UIAppearanceP"
+- "So21UIAppearanceContainerP"
+- !private "So7UIColorC"
+- "So18UIContentContainerP"
+- !private "So17UICoordinateSpaceP"
+- !private "So13UIDynamicItemP"
+- "So18UIFocusEnvironmentP"
+- !private "So11UIFocusItemP"
+- !private "So19UIGestureRecognizerC"
+- !private "So30UIPasteConfigurationSupportingP"
+- "So24UIPresentationControllerC"
+- !private "So11UIResponderC"
+- !private "So30UIResponderStandardEditActionsP"
+- !private "So16UIStateRestoringP"
+- !private "So22UITapGestureRecognizerC"
+- "So18UITraitEnvironmentP"
+- !private "So6UIViewC"
+- !private "So16UIViewControllerC"
+- !private "So37UIViewControllerTransitionCoordinatorP"
+- !private "So44UIViewControllerTransitionCoordinatorContextP"
+- "So37UIViewControllerTransitioningDelegateP"
+- !private "6SQLite5ValueP"
+- !private "s23_BidirectionalIndexableP"
+- !private "s37_DefaultCustomPlaygroundQuickLookableP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s26_ExpressibleByColorLiteralP"
+- !private "s33_ExpressibleByStringInterpolationP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "s10_IndexableP"
+- !private "s14_IndexableBaseP"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s26_RangeReplaceableIndexableP"
+- !private "s16_SwiftStringViewP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Modules/SeptaSchedule.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Modules/SQLite.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Modules/Zip.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Modules/ReSwift.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/sqlite3.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Headers/Fabric.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Headers/SeptaSchedule.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSStackFrame.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite-Bridging.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSLogging.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Headers/Zip.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/Crashlytics.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Headers/FABAttributes.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSAttributes.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/Answers.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Headers/SeptaSchedule-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Headers/Zip-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Headers/ReSwift-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Headers/ReSwift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSReport.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/ANSCompatibility.h"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/Zip/Zip/minizip/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/SQLite.swift/CocoaPods/iphonesimulator/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Modules/module.modulemap"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "6bbb428558625b9babdf4db25eb632bd"

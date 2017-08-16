@@ -1,0 +1,505 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "SchedulesViewModelDelegate"
+- "SelectSchedulesViewModel"
+provides-nominal:
+- "5Septa26SchedulesViewModelDelegateP"
+- "5Septa24SelectSchedulesViewModelC"
+provides-member:
+- ["5Septa26SchedulesViewModelDelegateP", ""]
+- ["5Septa24SelectSchedulesViewModelC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "!"
+- !private "!="
+- !private "<"
+- "AnyObject"
+- "AppState"
+- "AssignmentPrecedence"
+- "Bool"
+- "BooleanLiteralType"
+- !private "CellDecoration"
+- !private "CurrentStopToEdit"
+- "Int"
+- !private "PresentModal"
+- "RowDisplayModel"
+- "ScheduleRequest"
+- "SchedulesViewModelDelegate"
+- "SelectSchedulesViewModel"
+- !private "SeptaColor"
+- !private "SeptaString"
+- "SingleStringDisplayable"
+- !private "StopToSelect"
+- "StoreSubscriber"
+- !private "String"
+- !private "StringLiteralType"
+- !private "TernaryPrecedence"
+- !private "UIColor"
+- !private "UnicodeScalarType"
+- "UpdateableFromViewModel"
+- !private "ViewController"
+- !private "store"
+depends-member:
+- !private ["7ReSwift6ActionP", "init"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "CellDecoration"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "CurrentStopToEdit"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "PresentModal"]
+- ["7ReSwift18AnyStoreSubscriberP", "RowDisplayModel"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "SeptaColor"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "SeptaString"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "StopToSelect"]
+- ["7ReSwift18AnyStoreSubscriberP", "StoreSubscriberStateType"]
+- ["7ReSwift18AnyStoreSubscriberP", "_newState"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "buildDisplayModel"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "configureSelectEndisplayModel"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "configureSelectRouteDisplayModel"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "configureSelectStartDisplayModel"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "delegate"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "displayModel"]
+- ["7ReSwift18AnyStoreSubscriberP", "newState"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "onlyOneRouteAvailable"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "scheduleRequest"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "schedulesDelegate"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "store"]
+- !private ["7ReSwift18AnyStoreSubscriberP", "unsubscribe"]
+- ["7ReSwift18AnyStoreSubscriberP", ""]
+- !private ["5Septa8AppStateV", "deinit"]
+- !private ["5Septa8AppStateV", "scheduleState"]
+- !private ["Sa", "count"]
+- ["Sa", "init"]
+- !private ["Sa", "subscript"]
+- !private ["s10ArraySliceV", "isSelectable"]
+- !private ["s10ArraySliceV", "targetController"]
+- !private ["s23BidirectionalCollectionP", "count"]
+- ["s23BidirectionalCollectionP", "init"]
+- !private ["s23BidirectionalCollectionP", "isSelectable"]
+- !private ["s23BidirectionalCollectionP", "subscript"]
+- !private ["s23BidirectionalCollectionP", "targetController"]
+- !private ["6SQLite7BindingP", "_getBuiltinLogicValue"]
+- !private ["6SQLite7BindingP", "init"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["s7CVarArgP", "count"]
+- ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "subscript"]
+- !private ["s10CollectionP", "count"]
+- ["s10CollectionP", "init"]
+- !private ["s10CollectionP", "isSelectable"]
+- !private ["s10CollectionP", "subscript"]
+- !private ["s10CollectionP", "targetController"]
+- !private ["s10ComparableP", "init"]
+- !private ["5Septa17CurrentStopToEditV", "deinit"]
+- !private ["5Septa17CurrentStopToEditV", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "count"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "isSelectable"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
+- !private ["s28CustomDebugStringConvertibleP", "targetController"]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "count"]
+- ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "isSelectable"]
+- !private ["s17CustomReflectableP", "subscript"]
+- !private ["s17CustomReflectableP", "targetController"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "count"]
+- ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "isSelectable"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "targetController"]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9DecodableP", "count"]
+- ["s9DecodableP", "init"]
+- !private ["s9DecodableP", "schedules"]
+- !private ["s9DecodableP", "subscript"]
+- !private ["7ReSwift20DispatchingStoreTypeP", "dispatch"]
+- !private ["7ReSwift20DispatchingStoreTypeP", "subscribe"]
+- !private ["7ReSwift20DispatchingStoreTypeP", "unsubscribe"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "count"]
+- ["s9EncodableP", "init"]
+- !private ["s9EncodableP", "schedules"]
+- !private ["s9EncodableP", "subscript"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "disclosureIndicator"]
+- !private ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "none"]
+- !private ["s9EquatableP", "routeId"]
+- !private ["s9EquatableP", "routeShortName"]
+- !private ["s9EquatableP", "routesViewController"]
+- !private ["s9EquatableP", "scheduleRequest"]
+- !private ["s9EquatableP", "scheduleState"]
+- !private ["s9EquatableP", "schedules"]
+- !private ["s9EquatableP", "selectStopController"]
+- !private ["s9EquatableP", "selectStopNavigationController"]
+- !private ["s9EquatableP", "selectedEnd"]
+- !private ["s9EquatableP", "selectedRoute"]
+- !private ["s9EquatableP", "selectedStart"]
+- !private ["s9EquatableP", "stopName"]
+- !private ["6SQLite11ExpressibleP", "_getBuiltinLogicValue"]
+- !private ["6SQLite11ExpressibleP", "init"]
+- !private ["s25ExpressibleByArrayLiteralP", "count"]
+- ["s25ExpressibleByArrayLiteralP", "init"]
+- !private ["s25ExpressibleByArrayLiteralP", "isSelectable"]
+- !private ["s25ExpressibleByArrayLiteralP", "subscript"]
+- !private ["s25ExpressibleByArrayLiteralP", "targetController"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- !private ["s8HashableP", "disclosureIndicator"]
+- !private ["s8HashableP", "init"]
+- !private ["s8HashableP", "none"]
+- !private ["s8HashableP", "routeId"]
+- !private ["s8HashableP", "routeShortName"]
+- !private ["s8HashableP", "routesViewController"]
+- !private ["s8HashableP", "schedules"]
+- !private ["s8HashableP", "selectStopController"]
+- !private ["s8HashableP", "selectStopNavigationController"]
+- !private ["s8HashableP", "stopName"]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["s17MutableCollectionP", "count"]
+- ["s17MutableCollectionP", "init"]
+- !private ["s17MutableCollectionP", "isSelectable"]
+- !private ["s17MutableCollectionP", "subscript"]
+- !private ["s17MutableCollectionP", "targetController"]
+- !private ["So8NSCodingP", "init"]
+- !private ["So9NSCopyingP", "init"]
+- !private ["So21NSItemProviderReadingP", "init"]
+- !private ["So21NSItemProviderWritingP", "init"]
+- !private ["So16NSMutableCopyingP", "init"]
+- !private ["So16NSObjectProtocolP", "init"]
+- !private ["So14NSSecureCodingP", "init"]
+- !private ["So8NSStringC", "init"]
+- !private ["5Septa16NavigationActionP", "init"]
+- !private ["5Septa20NavigationControllerO", "schedules"]
+- !private ["5Septa12PresentModalV", "deinit"]
+- !private ["5Septa12PresentModalV", "init"]
+- !private ["s22RandomAccessCollectionP", "count"]
+- ["s22RandomAccessCollectionP", "init"]
+- !private ["s22RandomAccessCollectionP", "isSelectable"]
+- !private ["s22RandomAccessCollectionP", "subscript"]
+- !private ["s22RandomAccessCollectionP", "targetController"]
+- !private ["s26RangeReplaceableCollectionP", "count"]
+- ["s26RangeReplaceableCollectionP", "init"]
+- !private ["s26RangeReplaceableCollectionP", "isSelectable"]
+- !private ["s26RangeReplaceableCollectionP", "subscript"]
+- !private ["s26RangeReplaceableCollectionP", "targetController"]
+- !private ["s16RawRepresentableP", "disclosureIndicator"]
+- !private ["s16RawRepresentableP", "init"]
+- !private ["s16RawRepresentableP", "none"]
+- !private ["s16RawRepresentableP", "routesViewController"]
+- !private ["s16RawRepresentableP", "schedules"]
+- !private ["s16RawRepresentableP", "selectStopController"]
+- !private ["s16RawRepresentableP", "selectStopNavigationController"]
+- !private ["13SeptaSchedule5RouteV", "routeId"]
+- !private ["13SeptaSchedule5RouteV", "routeShortName"]
+- !private ["5Septa14ScheduleActionP", "init"]
+- !private ["5Septa15ScheduleRequestV", "selectedEnd"]
+- !private ["5Septa15ScheduleRequestV", "selectedRoute"]
+- !private ["5Septa15ScheduleRequestV", "selectedStart"]
+- !private ["5Septa13ScheduleStateV", "scheduleRequest"]
+- ["5Septa26SchedulesViewModelDelegateP", "Bool"]
+- ["5Septa26SchedulesViewModelDelegateP", "formIsComplete"]
+- ["5Septa24SelectSchedulesViewModelC", "AppState"]
+- ["5Septa24SelectSchedulesViewModelC", "Bool"]
+- !private ["5Septa24SelectSchedulesViewModelC", "CellDecoration"]
+- !private ["5Septa24SelectSchedulesViewModelC", "CurrentStopToEdit"]
+- ["5Septa24SelectSchedulesViewModelC", "Int"]
+- !private ["5Septa24SelectSchedulesViewModelC", "PresentModal"]
+- ["5Septa24SelectSchedulesViewModelC", "RowDisplayModel"]
+- ["5Septa24SelectSchedulesViewModelC", "ScheduleRequest"]
+- ["5Septa24SelectSchedulesViewModelC", "SchedulesViewModelDelegate"]
+- !private ["5Septa24SelectSchedulesViewModelC", "SeptaColor"]
+- !private ["5Septa24SelectSchedulesViewModelC", "SeptaString"]
+- ["5Septa24SelectSchedulesViewModelC", "SingleStringDisplayable"]
+- !private ["5Septa24SelectSchedulesViewModelC", "StopToSelect"]
+- ["5Septa24SelectSchedulesViewModelC", "StoreSubscriberStateType"]
+- !private ["5Septa24SelectSchedulesViewModelC", "String"]
+- !private ["5Septa24SelectSchedulesViewModelC", "UIColor"]
+- ["5Septa24SelectSchedulesViewModelC", "UpdateableFromViewModel"]
+- ["5Septa24SelectSchedulesViewModelC", "_newState"]
+- ["5Septa24SelectSchedulesViewModelC", "buildDisplayModel"]
+- ["5Septa24SelectSchedulesViewModelC", "canCellBeSelected"]
+- ["5Septa24SelectSchedulesViewModelC", "configureDisplayable"]
+- !private ["5Septa24SelectSchedulesViewModelC", "configureSelectEndisplayModel"]
+- !private ["5Septa24SelectSchedulesViewModelC", "configureSelectRouteDisplayModel"]
+- !private ["5Septa24SelectSchedulesViewModelC", "configureSelectStartDisplayModel"]
+- ["5Septa24SelectSchedulesViewModelC", "deinit"]
+- ["5Septa24SelectSchedulesViewModelC", "delegate"]
+- !private ["5Septa24SelectSchedulesViewModelC", "displayModel"]
+- ["5Septa24SelectSchedulesViewModelC", "filterSubscription"]
+- ["5Septa24SelectSchedulesViewModelC", "init"]
+- ["5Septa24SelectSchedulesViewModelC", "newState"]
+- ["5Septa24SelectSchedulesViewModelC", "numberOfRows"]
+- ["5Septa24SelectSchedulesViewModelC", "onlyOneRouteAvailable"]
+- ["5Septa24SelectSchedulesViewModelC", "rowSelected"]
+- ["5Septa24SelectSchedulesViewModelC", "scheduleRequest"]
+- ["5Septa24SelectSchedulesViewModelC", "schedulesDelegate"]
+- !private ["5Septa24SelectSchedulesViewModelC", "selectEndRowDisplayModel"]
+- !private ["5Septa24SelectSchedulesViewModelC", "selectRouteRowDisplayModel"]
+- !private ["5Septa24SelectSchedulesViewModelC", "selectStartRowDisplayModel"]
+- !private ["5Septa24SelectSchedulesViewModelC", "store"]
+- ["5Septa24SelectSchedulesViewModelC", "subscribe"]
+- ["5Septa24SelectSchedulesViewModelC", "unsubscribe"]
+- !private ["5Septa0A6ActionP", "init"]
+- !private ["5Septa0A5ColorV", "disabledText"]
+- !private ["5Septa0A5ColorV", "enabledText"]
+- !private ["5Septa0A6StringV", "SelectEnd"]
+- !private ["5Septa0A6StringV", "SelectStart"]
+- !private ["s8SequenceP", "count"]
+- ["s8SequenceP", "init"]
+- !private ["s8SequenceP", "isSelectable"]
+- !private ["s8SequenceP", "subscript"]
+- !private ["s8SequenceP", "targetController"]
+- !private ["5Septa23SingleStringDisplayableP", "setAccessoryType"]
+- !private ["5Septa23SingleStringDisplayableP", "setLabelText"]
+- !private ["5Septa23SingleStringDisplayableP", "setTextColor"]
+- !private ["7ReSwift9StateTypeP", "scheduleState"]
+- !private ["13SeptaSchedule4StopV", "stopName"]
+- !private ["5Septa12StopToSelectO", "deinit"]
+- !private ["5Septa12StopToSelectO", "init"]
+- !private ["7ReSwift5StoreC", "dispatch"]
+- !private ["7ReSwift5StoreC", "subscribe"]
+- !private ["7ReSwift5StoreC", "unsubscribe"]
+- !private ["7ReSwift15StoreSubscriberP", "CellDecoration"]
+- !private ["7ReSwift15StoreSubscriberP", "CurrentStopToEdit"]
+- !private ["7ReSwift15StoreSubscriberP", "PresentModal"]
+- ["7ReSwift15StoreSubscriberP", "RowDisplayModel"]
+- !private ["7ReSwift15StoreSubscriberP", "SeptaColor"]
+- !private ["7ReSwift15StoreSubscriberP", "SeptaString"]
+- !private ["7ReSwift15StoreSubscriberP", "StopToSelect"]
+- ["7ReSwift15StoreSubscriberP", "StoreSubscriberStateType"]
+- ["7ReSwift15StoreSubscriberP", "_newState"]
+- !private ["7ReSwift15StoreSubscriberP", "buildDisplayModel"]
+- !private ["7ReSwift15StoreSubscriberP", "configureSelectEndisplayModel"]
+- !private ["7ReSwift15StoreSubscriberP", "configureSelectRouteDisplayModel"]
+- !private ["7ReSwift15StoreSubscriberP", "configureSelectStartDisplayModel"]
+- !private ["7ReSwift15StoreSubscriberP", "delegate"]
+- !private ["7ReSwift15StoreSubscriberP", "displayModel"]
+- ["7ReSwift15StoreSubscriberP", "newState"]
+- !private ["7ReSwift15StoreSubscriberP", "onlyOneRouteAvailable"]
+- !private ["7ReSwift15StoreSubscriberP", "scheduleRequest"]
+- !private ["7ReSwift15StoreSubscriberP", "schedulesDelegate"]
+- !private ["7ReSwift15StoreSubscriberP", "store"]
+- !private ["7ReSwift15StoreSubscriberP", "unsubscribe"]
+- ["7ReSwift15StoreSubscriberP", ""]
+- !private ["7ReSwift9StoreTypeP", "dispatch"]
+- !private ["7ReSwift9StoreTypeP", "subscribe"]
+- !private ["7ReSwift9StoreTypeP", "unsubscribe"]
+- !private ["SS", "init"]
+- !private ["s14StringProtocolP", "init"]
+- !private ["7ReSwift12SubscriptionC", "select"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["SC28UITableViewCellAccessoryTypeO", "disclosureIndicator"]
+- !private ["SC28UITableViewCellAccessoryTypeO", "none"]
+- !private ["5Septa23UpdateableFromViewModelP", "viewModelUpdated"]
+- !private ["6SQLite5ValueP", "_getBuiltinLogicValue"]
+- !private ["6SQLite5ValueP", "init"]
+- !private ["5Septa14ViewControllerO", "routesViewController"]
+- !private ["5Septa14ViewControllerO", "selectStopController"]
+- !private ["5Septa14ViewControllerO", "selectStopNavigationController"]
+- !private ["s14_ArrayProtocolP", "count"]
+- ["s14_ArrayProtocolP", "init"]
+- !private ["s14_ArrayProtocolP", "isSelectable"]
+- !private ["s14_ArrayProtocolP", "subscript"]
+- !private ["s14_ArrayProtocolP", "targetController"]
+- !private ["s23_BidirectionalIndexableP", "count"]
+- ["s23_BidirectionalIndexableP", "init"]
+- !private ["s23_BidirectionalIndexableP", "isSelectable"]
+- !private ["s23_BidirectionalIndexableP", "subscript"]
+- !private ["s23_BidirectionalIndexableP", "targetController"]
+- !private ["s24_DestructorSafeContainerP", "count"]
+- ["s24_DestructorSafeContainerP", "init"]
+- !private ["s24_DestructorSafeContainerP", "isSelectable"]
+- !private ["s24_DestructorSafeContainerP", "subscript"]
+- !private ["s24_DestructorSafeContainerP", "targetController"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s33_ExpressibleByStringInterpolationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s10_IndexableP", "count"]
+- ["s10_IndexableP", "init"]
+- !private ["s10_IndexableP", "isSelectable"]
+- !private ["s10_IndexableP", "subscript"]
+- !private ["s10_IndexableP", "targetController"]
+- !private ["s14_IndexableBaseP", "count"]
+- ["s14_IndexableBaseP", "init"]
+- !private ["s14_IndexableBaseP", "isSelectable"]
+- !private ["s14_IndexableBaseP", "subscript"]
+- !private ["s14_IndexableBaseP", "targetController"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["s17_MutableIndexableP", "count"]
+- ["s17_MutableIndexableP", "init"]
+- !private ["s17_MutableIndexableP", "isSelectable"]
+- !private ["s17_MutableIndexableP", "subscript"]
+- !private ["s17_MutableIndexableP", "targetController"]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "count"]
+- ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "subscript"]
+- !private ["s22_RandomAccessIndexableP", "count"]
+- ["s22_RandomAccessIndexableP", "init"]
+- !private ["s22_RandomAccessIndexableP", "isSelectable"]
+- !private ["s22_RandomAccessIndexableP", "subscript"]
+- !private ["s22_RandomAccessIndexableP", "targetController"]
+- !private ["s26_RangeReplaceableIndexableP", "count"]
+- ["s26_RangeReplaceableIndexableP", "init"]
+- !private ["s26_RangeReplaceableIndexableP", "isSelectable"]
+- !private ["s26_RangeReplaceableIndexableP", "subscript"]
+- !private ["s26_RangeReplaceableIndexableP", "targetController"]
+- !private ["s16_SwiftStringViewP", "init"]
+depends-nominal:
+- !private "7ReSwift6ActionP"
+- "7ReSwift18AnyStoreSubscriberP"
+- !private "5Septa8AppStateV"
+- "Sa"
+- !private "s10ArraySliceV"
+- "s23BidirectionalCollectionP"
+- !private "6SQLite7BindingP"
+- !private "Sb"
+- "s7CVarArgP"
+- "s10CollectionP"
+- !private "s10ComparableP"
+- !private "5Septa17CurrentStopToEditV"
+- "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- "s9DecodableP"
+- !private "7ReSwift20DispatchingStoreTypeP"
+- "s9EncodableP"
+- !private "s9EquatableP"
+- !private "6SQLite11ExpressibleP"
+- "s25ExpressibleByArrayLiteralP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "s8HashableP"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- "s17MutableCollectionP"
+- !private "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- !private "So16NSMutableCopyingP"
+- !private "So16NSObjectProtocolP"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
+- !private "5Septa16NavigationActionP"
+- !private "5Septa20NavigationControllerO"
+- !private "5Septa12PresentModalV"
+- "s22RandomAccessCollectionP"
+- "s26RangeReplaceableCollectionP"
+- !private "s16RawRepresentableP"
+- !private "13SeptaSchedule5RouteV"
+- !private "5Septa14ScheduleActionP"
+- !private "5Septa15ScheduleRequestV"
+- !private "5Septa13ScheduleStateV"
+- "5Septa26SchedulesViewModelDelegateP"
+- "5Septa24SelectSchedulesViewModelC"
+- !private "5Septa0A6ActionP"
+- !private "5Septa0A5ColorV"
+- !private "5Septa0A6StringV"
+- "s8SequenceP"
+- !private "5Septa23SingleStringDisplayableP"
+- !private "7ReSwift9StateTypeP"
+- !private "13SeptaSchedule4StopV"
+- !private "5Septa12StopToSelectO"
+- !private "7ReSwift5StoreC"
+- "7ReSwift15StoreSubscriberP"
+- !private "7ReSwift9StoreTypeP"
+- !private "SS"
+- !private "s14StringProtocolP"
+- !private "7ReSwift12SubscriptionC"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "SC28UITableViewCellAccessoryTypeO"
+- !private "5Septa23UpdateableFromViewModelP"
+- !private "6SQLite5ValueP"
+- !private "5Septa14ViewControllerO"
+- "s14_ArrayProtocolP"
+- "s23_BidirectionalIndexableP"
+- "s24_DestructorSafeContainerP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s33_ExpressibleByStringInterpolationP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- "s10_IndexableP"
+- "s14_IndexableBaseP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+- "s17_MutableIndexableP"
+- "s21_ObjectiveCBridgeableP"
+- "s22_RandomAccessIndexableP"
+- "s26_RangeReplaceableIndexableP"
+- !private "s16_SwiftStringViewP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Modules/SeptaSchedule.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Modules/SQLite.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Modules/Zip.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Modules/ReSwift.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/sqlite3.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Headers/Fabric.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Headers/SeptaSchedule.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSStackFrame.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite-Bridging.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSLogging.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Headers/Zip.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/Crashlytics.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Headers/FABAttributes.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSAttributes.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/Answers.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Headers/SeptaSchedule-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Headers/Zip-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Headers/ReSwift-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Headers/ReSwift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSReport.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/ANSCompatibility.h"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/Zip/Zip/minizip/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/SQLite.swift/CocoaPods/iphonesimulator/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Modules/module.modulemap"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "c6966d1e44c324e82d133a634da8a99a"

@@ -1,0 +1,603 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "SeptaDraw"
+provides-nominal:
+- "5Septa0A4DrawC"
+provides-member:
+- ["5Septa0A4DrawC", ""]
+provides-dynamic-lookup:
+- "drawTranssitModeToolbar"
+depends-top-level:
+- !private "+"
+- !private "-"
+- !private "/"
+- "AssignmentPrecedence"
+- "Bool"
+- "BooleanLiteralType"
+- !private "CGFloat"
+- "CGRect"
+- !private "CGSize"
+- "CastingPrecedence"
+- !private "Dictionary"
+- !private "NSAttributedStringKey"
+- !private "NSMutableParagraphStyle"
+- "NSObject"
+- "SeptaDraw"
+- "String"
+- "StringLiteralType"
+- "TernaryPrecedence"
+- !private "UIBezierPath"
+- !private "UIColor"
+- !private "UIFont"
+- !private "UIGraphicsGetCurrentContext"
+depends-member:
+- !private ["s23BidirectionalCollectionP", "boundingRect"]
+- !private ["s23BidirectionalCollectionP", "draw"]
+- !private ["s23BidirectionalCollectionP", "init"]
+- !private ["s19BinaryFloatingPointP", "infinity"]
+- !private ["6SQLite7BindingP", "_getBuiltinLogicValue"]
+- !private ["6SQLite7BindingP", "boundingRect"]
+- !private ["6SQLite7BindingP", "draw"]
+- !private ["6SQLite7BindingP", "init"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["So9CGContextC", "clip"]
+- !private ["So9CGContextC", "restoreGState"]
+- !private ["So9CGContextC", "saveGState"]
+- !private ["12CoreGraphics7CGFloatV", "infinity"]
+- !private ["SC6CGRectV", "height"]
+- !private ["SC6CGRectV", "init"]
+- !private ["SC6CGRectV", "minX"]
+- !private ["SC6CGRectV", "minY"]
+- !private ["SC6CGRectV", "width"]
+- !private ["SC6CGSizeV", "init"]
+- !private ["s7CVarArgP", "CGFloat"]
+- !private ["s7CVarArgP", "CGRect"]
+- !private ["s7CVarArgP", "CGSize"]
+- !private ["s7CVarArgP", "NSMutableParagraphStyle"]
+- !private ["s7CVarArgP", "UIBezierPath"]
+- !private ["s7CVarArgP", "UIColor"]
+- !private ["s7CVarArgP", "UIFont"]
+- !private ["s7CVarArgP", "UIGraphicsGetCurrentContext"]
+- !private ["s7CVarArgP", "Weight"]
+- !private ["s7CVarArgP", "alignment"]
+- !private ["s7CVarArgP", "boundingRect"]
+- !private ["s7CVarArgP", "draw"]
+- !private ["s7CVarArgP", "fill"]
+- !private ["s7CVarArgP", "infinity"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "setFill"]
+- !private ["s7CVarArgP", "systemFont"]
+- !private ["s7CVarArgP", "withAlphaComponent"]
+- ["s7CVarArgP", ""]
+- !private ["s10CollectionP", "boundingRect"]
+- !private ["s10CollectionP", "draw"]
+- !private ["s10CollectionP", "init"]
+- !private ["s10ComparableP", "boundingRect"]
+- !private ["s10ComparableP", "draw"]
+- !private ["s10ComparableP", "infinity"]
+- !private ["s10ComparableP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "CGFloat"]
+- !private ["s28CustomDebugStringConvertibleP", "CGRect"]
+- !private ["s28CustomDebugStringConvertibleP", "CGSize"]
+- !private ["s28CustomDebugStringConvertibleP", "NSMutableParagraphStyle"]
+- !private ["s28CustomDebugStringConvertibleP", "UIBezierPath"]
+- !private ["s28CustomDebugStringConvertibleP", "UIColor"]
+- !private ["s28CustomDebugStringConvertibleP", "UIFont"]
+- !private ["s28CustomDebugStringConvertibleP", "UIGraphicsGetCurrentContext"]
+- !private ["s28CustomDebugStringConvertibleP", "Weight"]
+- !private ["s28CustomDebugStringConvertibleP", "alignment"]
+- !private ["s28CustomDebugStringConvertibleP", "boundingRect"]
+- !private ["s28CustomDebugStringConvertibleP", "draw"]
+- !private ["s28CustomDebugStringConvertibleP", "fill"]
+- !private ["s28CustomDebugStringConvertibleP", "height"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "minX"]
+- !private ["s28CustomDebugStringConvertibleP", "minY"]
+- !private ["s28CustomDebugStringConvertibleP", "setFill"]
+- !private ["s28CustomDebugStringConvertibleP", "systemFont"]
+- !private ["s28CustomDebugStringConvertibleP", "width"]
+- !private ["s28CustomDebugStringConvertibleP", "withAlphaComponent"]
+- ["s28CustomDebugStringConvertibleP", ""]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "boundingRect"]
+- !private ["s29CustomPlaygroundQuickLookableP", "draw"]
+- !private ["s29CustomPlaygroundQuickLookableP", "height"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s29CustomPlaygroundQuickLookableP", "minX"]
+- !private ["s29CustomPlaygroundQuickLookableP", "minY"]
+- !private ["s29CustomPlaygroundQuickLookableP", "width"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "boundingRect"]
+- !private ["s17CustomReflectableP", "draw"]
+- !private ["s17CustomReflectableP", "height"]
+- !private ["s17CustomReflectableP", "infinity"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "minX"]
+- !private ["s17CustomReflectableP", "minY"]
+- !private ["s17CustomReflectableP", "width"]
+- !private ["s23CustomStringConvertibleP", "CGFloat"]
+- !private ["s23CustomStringConvertibleP", "CGRect"]
+- !private ["s23CustomStringConvertibleP", "CGSize"]
+- !private ["s23CustomStringConvertibleP", "NSMutableParagraphStyle"]
+- !private ["s23CustomStringConvertibleP", "UIBezierPath"]
+- !private ["s23CustomStringConvertibleP", "UIColor"]
+- !private ["s23CustomStringConvertibleP", "UIFont"]
+- !private ["s23CustomStringConvertibleP", "UIGraphicsGetCurrentContext"]
+- !private ["s23CustomStringConvertibleP", "Weight"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "alignment"]
+- !private ["s23CustomStringConvertibleP", "boundingRect"]
+- !private ["s23CustomStringConvertibleP", "draw"]
+- !private ["s23CustomStringConvertibleP", "fill"]
+- !private ["s23CustomStringConvertibleP", "infinity"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "setFill"]
+- !private ["s23CustomStringConvertibleP", "systemFont"]
+- !private ["s23CustomStringConvertibleP", "withAlphaComponent"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9DecodableP", "boundingRect"]
+- !private ["s9DecodableP", "draw"]
+- !private ["s9DecodableP", "height"]
+- !private ["s9DecodableP", "infinity"]
+- !private ["s9DecodableP", "init"]
+- !private ["s9DecodableP", "minX"]
+- !private ["s9DecodableP", "minY"]
+- !private ["s9DecodableP", "width"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "boundingRect"]
+- !private ["s9EncodableP", "draw"]
+- !private ["s9EncodableP", "height"]
+- !private ["s9EncodableP", "infinity"]
+- !private ["s9EncodableP", "init"]
+- !private ["s9EncodableP", "minX"]
+- !private ["s9EncodableP", "minY"]
+- !private ["s9EncodableP", "width"]
+- !private ["s9EquatableP", "CGFloat"]
+- !private ["s9EquatableP", "CGRect"]
+- !private ["s9EquatableP", "CGSize"]
+- !private ["s9EquatableP", "NSMutableParagraphStyle"]
+- !private ["s9EquatableP", "UIBezierPath"]
+- !private ["s9EquatableP", "UIColor"]
+- !private ["s9EquatableP", "UIFont"]
+- !private ["s9EquatableP", "UIGraphicsGetCurrentContext"]
+- !private ["s9EquatableP", "Weight"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "alignment"]
+- !private ["s9EquatableP", "boundingRect"]
+- !private ["s9EquatableP", "center"]
+- !private ["s9EquatableP", "clip"]
+- !private ["s9EquatableP", "draw"]
+- !private ["s9EquatableP", "fill"]
+- !private ["s9EquatableP", "font"]
+- !private ["s9EquatableP", "foregroundColor"]
+- !private ["s9EquatableP", "height"]
+- !private ["s9EquatableP", "infinity"]
+- !private ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "medium"]
+- !private ["s9EquatableP", "minX"]
+- !private ["s9EquatableP", "minY"]
+- !private ["s9EquatableP", "paragraphStyle"]
+- !private ["s9EquatableP", "restoreGState"]
+- !private ["s9EquatableP", "saveGState"]
+- !private ["s9EquatableP", "setFill"]
+- !private ["s9EquatableP", "systemFont"]
+- !private ["s9EquatableP", "usesLineFragmentOrigin"]
+- !private ["s9EquatableP", "width"]
+- !private ["s9EquatableP", "withAlphaComponent"]
+- ["s9EquatableP", ""]
+- !private ["6SQLite11ExpressibleP", "_getBuiltinLogicValue"]
+- !private ["6SQLite11ExpressibleP", "boundingRect"]
+- !private ["6SQLite11ExpressibleP", "draw"]
+- !private ["6SQLite11ExpressibleP", "init"]
+- !private ["s25ExpressibleByArrayLiteralP", "usesLineFragmentOrigin"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "boundingRect"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "draw"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s25ExpressibleByFloatLiteralP", "infinity"]
+- !private ["s27ExpressibleByIntegerLiteralP", "infinity"]
+- !private ["s26ExpressibleByStringLiteralP", "boundingRect"]
+- !private ["s26ExpressibleByStringLiteralP", "draw"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "boundingRect"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "draw"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["s13FloatingPointP", "infinity"]
+- !private ["s8HashableP", "CGFloat"]
+- !private ["s8HashableP", "CGRect"]
+- !private ["s8HashableP", "CGSize"]
+- !private ["s8HashableP", "NSMutableParagraphStyle"]
+- !private ["s8HashableP", "UIBezierPath"]
+- !private ["s8HashableP", "UIColor"]
+- !private ["s8HashableP", "UIFont"]
+- !private ["s8HashableP", "UIGraphicsGetCurrentContext"]
+- !private ["s8HashableP", "Weight"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- !private ["s8HashableP", "alignment"]
+- !private ["s8HashableP", "boundingRect"]
+- !private ["s8HashableP", "center"]
+- !private ["s8HashableP", "clip"]
+- !private ["s8HashableP", "draw"]
+- !private ["s8HashableP", "fill"]
+- !private ["s8HashableP", "font"]
+- !private ["s8HashableP", "foregroundColor"]
+- !private ["s8HashableP", "infinity"]
+- !private ["s8HashableP", "init"]
+- !private ["s8HashableP", "medium"]
+- !private ["s8HashableP", "paragraphStyle"]
+- !private ["s8HashableP", "restoreGState"]
+- !private ["s8HashableP", "saveGState"]
+- !private ["s8HashableP", "setFill"]
+- !private ["s8HashableP", "systemFont"]
+- !private ["s8HashableP", "withAlphaComponent"]
+- ["s8HashableP", ""]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s25LosslessStringConvertibleP", "boundingRect"]
+- !private ["s25LosslessStringConvertibleP", "draw"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s10MirrorPathP", "boundingRect"]
+- !private ["s10MirrorPathP", "draw"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["SC21NSAttributedStringKeyV", "font"]
+- !private ["SC21NSAttributedStringKeyV", "foregroundColor"]
+- !private ["SC21NSAttributedStringKeyV", "paragraphStyle"]
+- !private ["So8NSCodingP", "alignment"]
+- !private ["So8NSCodingP", "boundingRect"]
+- !private ["So8NSCodingP", "draw"]
+- !private ["So8NSCodingP", "fill"]
+- !private ["So8NSCodingP", "init"]
+- !private ["So8NSCodingP", "setFill"]
+- !private ["So8NSCodingP", "withAlphaComponent"]
+- !private ["So9NSCopyingP", "Weight"]
+- !private ["So9NSCopyingP", "alignment"]
+- !private ["So9NSCopyingP", "boundingRect"]
+- !private ["So9NSCopyingP", "draw"]
+- !private ["So9NSCopyingP", "fill"]
+- !private ["So9NSCopyingP", "init"]
+- !private ["So9NSCopyingP", "setFill"]
+- !private ["So9NSCopyingP", "systemFont"]
+- !private ["So9NSCopyingP", "withAlphaComponent"]
+- !private ["So21NSItemProviderReadingP", "boundingRect"]
+- !private ["So21NSItemProviderReadingP", "draw"]
+- !private ["So21NSItemProviderReadingP", "init"]
+- !private ["So21NSItemProviderReadingP", "setFill"]
+- !private ["So21NSItemProviderReadingP", "withAlphaComponent"]
+- !private ["So21NSItemProviderWritingP", "boundingRect"]
+- !private ["So21NSItemProviderWritingP", "draw"]
+- !private ["So21NSItemProviderWritingP", "init"]
+- !private ["So21NSItemProviderWritingP", "setFill"]
+- !private ["So21NSItemProviderWritingP", "withAlphaComponent"]
+- !private ["So16NSMutableCopyingP", "alignment"]
+- !private ["So16NSMutableCopyingP", "boundingRect"]
+- !private ["So16NSMutableCopyingP", "draw"]
+- !private ["So16NSMutableCopyingP", "init"]
+- !private ["So23NSMutableParagraphStyleC", "alignment"]
+- !private ["So23NSMutableParagraphStyleC", "init"]
+- ["So8NSObjectC", "Bool"]
+- !private ["So8NSObjectC", "CGFloat"]
+- ["So8NSObjectC", "CGRect"]
+- !private ["So8NSObjectC", "CGSize"]
+- !private ["So8NSObjectC", "NSAttributedStringKey"]
+- !private ["So8NSObjectC", "NSMutableParagraphStyle"]
+- ["So8NSObjectC", "String"]
+- !private ["So8NSObjectC", "UIBezierPath"]
+- !private ["So8NSObjectC", "UIColor"]
+- !private ["So8NSObjectC", "UIFont"]
+- !private ["So8NSObjectC", "UIGraphicsGetCurrentContext"]
+- !private ["So8NSObjectC", "Weight"]
+- !private ["So8NSObjectC", "alignment"]
+- !private ["So8NSObjectC", "boundingRect"]
+- !private ["So8NSObjectC", "draw"]
+- ["So8NSObjectC", "drawTranssitModeToolbar"]
+- !private ["So8NSObjectC", "fill"]
+- ["So8NSObjectC", "init"]
+- !private ["So8NSObjectC", "setFill"]
+- !private ["So8NSObjectC", "systemFont"]
+- !private ["So8NSObjectC", "withAlphaComponent"]
+- ["So8NSObjectC", ""]
+- !private ["So16NSObjectProtocolP", "CGFloat"]
+- !private ["So16NSObjectProtocolP", "CGRect"]
+- !private ["So16NSObjectProtocolP", "CGSize"]
+- !private ["So16NSObjectProtocolP", "NSMutableParagraphStyle"]
+- !private ["So16NSObjectProtocolP", "UIBezierPath"]
+- !private ["So16NSObjectProtocolP", "UIColor"]
+- !private ["So16NSObjectProtocolP", "UIFont"]
+- !private ["So16NSObjectProtocolP", "UIGraphicsGetCurrentContext"]
+- !private ["So16NSObjectProtocolP", "Weight"]
+- !private ["So16NSObjectProtocolP", "alignment"]
+- !private ["So16NSObjectProtocolP", "boundingRect"]
+- !private ["So16NSObjectProtocolP", "draw"]
+- !private ["So16NSObjectProtocolP", "fill"]
+- !private ["So16NSObjectProtocolP", "init"]
+- !private ["So16NSObjectProtocolP", "setFill"]
+- !private ["So16NSObjectProtocolP", "systemFont"]
+- !private ["So16NSObjectProtocolP", "withAlphaComponent"]
+- ["So16NSObjectProtocolP", ""]
+- !private ["So16NSParagraphStyleC", "alignment"]
+- !private ["So16NSParagraphStyleC", "init"]
+- !private ["So14NSSecureCodingP", "alignment"]
+- !private ["So14NSSecureCodingP", "boundingRect"]
+- !private ["So14NSSecureCodingP", "draw"]
+- !private ["So14NSSecureCodingP", "fill"]
+- !private ["So14NSSecureCodingP", "init"]
+- !private ["So14NSSecureCodingP", "setFill"]
+- !private ["So14NSSecureCodingP", "withAlphaComponent"]
+- !private ["So8NSStringC", "boundingRect"]
+- !private ["So8NSStringC", "draw"]
+- !private ["So8NSStringC", "init"]
+- !private ["SC22NSStringDrawingOptionsV", "usesLineFragmentOrigin"]
+- !private ["SC15NSTextAlignmentO", "center"]
+- !private ["s7NumericP", "infinity"]
+- !private ["s9OptionSetP", "usesLineFragmentOrigin"]
+- !private ["s26RangeReplaceableCollectionP", "boundingRect"]
+- !private ["s26RangeReplaceableCollectionP", "draw"]
+- !private ["s26RangeReplaceableCollectionP", "init"]
+- !private ["s16RawRepresentableP", "center"]
+- !private ["s16RawRepresentableP", "font"]
+- !private ["s16RawRepresentableP", "foregroundColor"]
+- !private ["s16RawRepresentableP", "medium"]
+- !private ["s16RawRepresentableP", "paragraphStyle"]
+- !private ["s16RawRepresentableP", "usesLineFragmentOrigin"]
+- ["5Septa0A4DrawC", "Bool"]
+- !private ["5Septa0A4DrawC", "CGFloat"]
+- ["5Septa0A4DrawC", "CGRect"]
+- !private ["5Septa0A4DrawC", "CGSize"]
+- !private ["5Septa0A4DrawC", "NSAttributedStringKey"]
+- !private ["5Septa0A4DrawC", "NSMutableParagraphStyle"]
+- ["5Septa0A4DrawC", "String"]
+- !private ["5Septa0A4DrawC", "UIBezierPath"]
+- !private ["5Septa0A4DrawC", "UIColor"]
+- !private ["5Septa0A4DrawC", "UIFont"]
+- !private ["5Septa0A4DrawC", "UIGraphicsGetCurrentContext"]
+- ["5Septa0A4DrawC", "deinit"]
+- ["5Septa0A4DrawC", "drawTranssitModeToolbar"]
+- ["5Septa0A4DrawC", "init"]
+- !private ["s8SequenceP", "boundingRect"]
+- !private ["s8SequenceP", "draw"]
+- !private ["s8SequenceP", "init"]
+- !private ["s10SetAlgebraP", "usesLineFragmentOrigin"]
+- !private ["s13SignedNumericP", "infinity"]
+- !private ["s10StrideableP", "infinity"]
+- !private ["SS", "boundingRect"]
+- !private ["SS", "draw"]
+- !private ["SS", "init"]
+- !private ["s14StringProtocolP", "boundingRect"]
+- !private ["s14StringProtocolP", "draw"]
+- !private ["s14StringProtocolP", "init"]
+- !private ["s16TextOutputStreamP", "boundingRect"]
+- !private ["s16TextOutputStreamP", "draw"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "boundingRect"]
+- !private ["s20TextOutputStreamableP", "draw"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["So12UIBezierPathC", "fill"]
+- !private ["So12UIBezierPathC", "init"]
+- !private ["So7UIColorC", "init"]
+- !private ["So7UIColorC", "setFill"]
+- !private ["So7UIColorC", "withAlphaComponent"]
+- !private ["So6UIFontC", "Weight"]
+- !private ["So6UIFontC", "systemFont"]
+- !private ["6SQLite5ValueP", "_getBuiltinLogicValue"]
+- !private ["6SQLite5ValueP", "boundingRect"]
+- !private ["6SQLite5ValueP", "draw"]
+- !private ["6SQLite5ValueP", "init"]
+- !private ["So6UIFontC6WeightV", "medium"]
+- !private ["s23_BidirectionalIndexableP", "boundingRect"]
+- !private ["s23_BidirectionalIndexableP", "draw"]
+- !private ["s23_BidirectionalIndexableP", "init"]
+- !private ["14CoreFoundation9_CFObjectP", "clip"]
+- !private ["14CoreFoundation9_CFObjectP", "restoreGState"]
+- !private ["14CoreFoundation9_CFObjectP", "saveGState"]
+- !private ["s15_CVarArgAlignedP", "infinity"]
+- !private ["s22_CVarArgPassedAsDoubleP", "infinity"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "boundingRect"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "draw"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "boundingRect"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "draw"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "boundingRect"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "draw"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "boundingRect"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "draw"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s26_ExpressibleByColorLiteralP", "init"]
+- !private ["s26_ExpressibleByColorLiteralP", "setFill"]
+- !private ["s26_ExpressibleByColorLiteralP", "withAlphaComponent"]
+- !private ["s33_ExpressibleByStringInterpolationP", "boundingRect"]
+- !private ["s33_ExpressibleByStringInterpolationP", "draw"]
+- !private ["s33_ExpressibleByStringInterpolationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "boundingRect"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "draw"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s10_IndexableP", "boundingRect"]
+- !private ["s10_IndexableP", "draw"]
+- !private ["s10_IndexableP", "init"]
+- !private ["s14_IndexableBaseP", "boundingRect"]
+- !private ["s14_IndexableBaseP", "draw"]
+- !private ["s14_IndexableBaseP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "CGFloat"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "CGRect"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "CGSize"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "NSMutableParagraphStyle"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "UIBezierPath"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "UIColor"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "UIFont"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "UIGraphicsGetCurrentContext"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Weight"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "alignment"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "boundingRect"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "draw"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "fill"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "setFill"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "systemFont"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "withAlphaComponent"]
+- ["10Foundation27_KeyValueCodingAndObservingP", ""]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "boundingRect"]
+- !private ["s21_ObjectiveCBridgeableP", "draw"]
+- !private ["s21_ObjectiveCBridgeableP", "font"]
+- !private ["s21_ObjectiveCBridgeableP", "foregroundColor"]
+- !private ["s21_ObjectiveCBridgeableP", "height"]
+- !private ["s21_ObjectiveCBridgeableP", "infinity"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "medium"]
+- !private ["s21_ObjectiveCBridgeableP", "minX"]
+- !private ["s21_ObjectiveCBridgeableP", "minY"]
+- !private ["s21_ObjectiveCBridgeableP", "paragraphStyle"]
+- !private ["s21_ObjectiveCBridgeableP", "width"]
+- !private ["s26_RangeReplaceableIndexableP", "boundingRect"]
+- !private ["s26_RangeReplaceableIndexableP", "draw"]
+- !private ["s26_RangeReplaceableIndexableP", "init"]
+- !private ["s11_StrideableP", "infinity"]
+- !private ["s20_SwiftNewtypeWrapperP", "font"]
+- !private ["s20_SwiftNewtypeWrapperP", "foregroundColor"]
+- !private ["s20_SwiftNewtypeWrapperP", "medium"]
+- !private ["s20_SwiftNewtypeWrapperP", "paragraphStyle"]
+- !private ["s16_SwiftStringViewP", "boundingRect"]
+- !private ["s16_SwiftStringViewP", "draw"]
+- !private ["s16_SwiftStringViewP", "init"]
+depends-nominal:
+- !private "s23BidirectionalCollectionP"
+- !private "s19BinaryFloatingPointP"
+- !private "6SQLite7BindingP"
+- !private "Sb"
+- !private "So9CGContextC"
+- !private "12CoreGraphics7CGFloatV"
+- !private "SC6CGRectV"
+- !private "SC6CGSizeV"
+- "s7CVarArgP"
+- !private "s10CollectionP"
+- !private "s10ComparableP"
+- "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- "s9EquatableP"
+- !private "6SQLite11ExpressibleP"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s25ExpressibleByFloatLiteralP"
+- !private "s27ExpressibleByIntegerLiteralP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "s13FloatingPointP"
+- "s8HashableP"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- !private "SC21NSAttributedStringKeyV"
+- !private "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- !private "So16NSMutableCopyingP"
+- !private "So23NSMutableParagraphStyleC"
+- "So8NSObjectC"
+- "So16NSObjectProtocolP"
+- !private "So16NSParagraphStyleC"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
+- !private "SC22NSStringDrawingOptionsV"
+- !private "SC15NSTextAlignmentO"
+- !private "s7NumericP"
+- !private "s9OptionSetP"
+- !private "s26RangeReplaceableCollectionP"
+- !private "s16RawRepresentableP"
+- "5Septa0A4DrawC"
+- !private "s8SequenceP"
+- !private "s10SetAlgebraP"
+- !private "s13SignedNumericP"
+- !private "s10StrideableP"
+- !private "SS"
+- !private "s14StringProtocolP"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "So12UIBezierPathC"
+- !private "So7UIColorC"
+- !private "So6UIFontC"
+- !private "6SQLite5ValueP"
+- !private "So6UIFontC6WeightV"
+- !private "s23_BidirectionalIndexableP"
+- !private "14CoreFoundation9_CFObjectP"
+- !private "s15_CVarArgAlignedP"
+- !private "s22_CVarArgPassedAsDoubleP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s26_ExpressibleByColorLiteralP"
+- !private "s33_ExpressibleByStringInterpolationP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "s10_IndexableP"
+- !private "s14_IndexableBaseP"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s26_RangeReplaceableIndexableP"
+- !private "s11_StrideableP"
+- !private "s20_SwiftNewtypeWrapperP"
+- !private "s16_SwiftStringViewP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Modules/SeptaSchedule.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Modules/SQLite.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Modules/Zip.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Modules/ReSwift.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/MapKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/sqlite3.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Headers/Fabric.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Headers/SeptaSchedule.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSStackFrame.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite-Bridging.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSLogging.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Headers/Zip.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/Crashlytics.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Headers/FABAttributes.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSAttributes.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/Answers.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Headers/SeptaSchedule-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Headers/SQLite-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Headers/Zip-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Headers/ReSwift-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Headers/ReSwift.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/CLSReport.h"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Headers/ANSCompatibility.h"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/Zip/Zip/minizip/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/SQLite.swift/CocoaPods/iphonesimulator/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Fabric.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Debug-iphonesimulator/SeptaSchedule.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/SQLite.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/Zip.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Crashlytics.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Frameworks/ReSwift.framework/Modules/module.modulemap"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "624a2309f5bfddc47c37f4758e0f5f68"
