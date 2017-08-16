@@ -10,3 +10,4 @@ v#Can ignore specific files
 
 DerivedData/
 **/xcuserdata/
+/iSEPTA/Build
