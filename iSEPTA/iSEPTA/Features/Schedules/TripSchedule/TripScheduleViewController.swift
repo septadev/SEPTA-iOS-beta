@@ -8,25 +8,37 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
     static var viewController: ViewController = .tripScheduleController
     @IBOutlet weak var startingPoint: UILabel!
     @IBOutlet weak var endingPoint: UILabel!
+    @IBOutlet weak var tableViewFooter: UIView!
     var defaultColor: UIColor!
     @IBOutlet var viewModel: TripScheduleViewModel!
     @IBOutlet weak var tableView: UITableView!
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var header: UIView!
 
     func viewModelUpdated() {
+        updateLabels()
+        guard let availableTrips = viewModel.availableTrips, availableTrips.count > 0 else { return }
+        activityIndicator.stopAnimating()
         tableView.reloadData()
+    }
+
+    func updateLabels() {
+        guard let labels = viewModel.tripStops else { return }
+        startingPoint.text = labels.0
+        endingPoint.text = labels.1
     }
 
     @IBOutlet var alertsIcon: UIBarButtonItem!
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return 0
+        guard let tripsCount = viewModel.availableTrips?.count, tripsCount > 0 else { return 0 }
+        return tripsCount
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt _: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell") as? ScheduleTableViewCell else { return UITableViewCell() }
-        //    viewModel.makeDisplayable(displayable: cell, atRow: indexPath.row)
+        viewModel.makeTripDisplayable(displayable: cell, atRow: indexPath.row)
         return cell
     }
 
@@ -65,6 +77,8 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.subscribe()
+        tableView.tableFooterView = tableViewFooter
         //        tableView.tableHeaderView = header
         //        let item = scheduleTypeSelector.items![0]
         //        item.tintColor = UIColor.green

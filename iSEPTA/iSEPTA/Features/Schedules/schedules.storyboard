@@ -327,7 +327,7 @@ SearchTextBox</string>
             </objects>
             <point key="canvasLocation" x="1230" y="53"/>
         </scene>
-        <!--Trip Schedule-->
+        <!--Trip Schedule View Controller-->
         <scene sceneID="Wce-qa-pbU">
             <objects>
                 <viewController storyboardIdentifier="tripScheduleController" title="Trip Schedule" id="9ZE-6T-hsR" customClass="TripScheduleViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
@@ -338,9 +338,21 @@ SearchTextBox</string>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="Z80-GO-8Wi">
                                 <rect key="frame" x="0.0" y="157" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="Weekdays" id="m7c-Ro-hva"/>
-                                    <barButtonItem title="Saturday" id="z18-J9-ya7"/>
-                                    <barButtonItem title="Sunday" id="omX-U0-Gxb"/>
+                                    <barButtonItem title="Weekdays" id="m7c-Ro-hva">
+                                        <connections>
+                                            <action selector="weekdaysSelected:" destination="9ZE-6T-hsR" id="zLy-Yc-MbU"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Saturday" id="z18-J9-ya7">
+                                        <connections>
+                                            <action selector="saturdaySelected:" destination="9ZE-6T-hsR" id="Bkg-vl-7VH"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Sunday" id="omX-U0-Gxb">
+                                        <connections>
+                                            <action selector="sundaySelected:" destination="9ZE-6T-hsR" id="ZfB-h2-mYD"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pyu-Um-zmh">
@@ -482,7 +494,15 @@ StartingLabelRight</string>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="9ZE-6T-hsR" id="QLB-6W-2Qj"/>
+                                    <outlet property="delegate" destination="9ZE-6T-hsR" id="13c-ub-P5S"/>
+                                </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="V0h-9O-nLg">
+                                <rect key="frame" x="168.5" y="415.5" width="37" height="37"/>
+                                <color key="color" red="1" green="0.12214555959999999" blue="0.19503632169999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -490,18 +510,40 @@ StartingLabelRight</string>
                             <constraint firstItem="kWc-gl-RxX" firstAttribute="bottom" secondItem="zf9-bi-BCi" secondAttribute="bottom" id="DVO-I1-4cz" userLabel="TableViewBottom"/>
                             <constraint firstItem="Pyu-Um-zmh" firstAttribute="leading" secondItem="kWc-gl-RxX" secondAttribute="leading" id="TIX-71-zHT" userLabel="HeaderLeft"/>
                             <constraint firstItem="kWc-gl-RxX" firstAttribute="trailing" secondItem="Z80-GO-8Wi" secondAttribute="trailing" id="Yqq-lX-YHm" userLabel="ToolBarRight"/>
+                            <constraint firstItem="V0h-9O-nLg" firstAttribute="centerX" secondItem="zf9-bi-BCi" secondAttribute="centerX" id="b49-ya-ziu"/>
                             <constraint firstItem="Z80-GO-8Wi" firstAttribute="leading" secondItem="kWc-gl-RxX" secondAttribute="leading" id="bcv-67-4aJ" userLabel="ToolbarLeft"/>
                             <constraint firstItem="zf9-bi-BCi" firstAttribute="top" secondItem="Z80-GO-8Wi" secondAttribute="bottom" id="e0x-8o-k7Q" userLabel="TableViewTop"/>
                             <constraint firstItem="kWc-gl-RxX" firstAttribute="trailing" secondItem="Pyu-Um-zmh" secondAttribute="trailing" id="gx2-D3-F8J" userLabel="HeaderRight"/>
                             <constraint firstItem="kWc-gl-RxX" firstAttribute="trailing" secondItem="zf9-bi-BCi" secondAttribute="trailing" id="jKT-9f-gnZ" userLabel="TableViewRight"/>
                             <constraint firstItem="Z80-GO-8Wi" firstAttribute="top" secondItem="Pyu-Um-zmh" secondAttribute="bottom" id="mj3-eV-gu4" userLabel="ToolBarTop"/>
+                            <constraint firstItem="V0h-9O-nLg" firstAttribute="centerY" secondItem="zf9-bi-BCi" secondAttribute="centerY" id="n4p-tf-PuI"/>
                             <constraint firstItem="zf9-bi-BCi" firstAttribute="leading" secondItem="kWc-gl-RxX" secondAttribute="leading" id="yGh-cC-9Rh" userLabel="TableViewLeft"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kWc-gl-RxX"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="WwR-AN-Gry"/>
+                    <navigationItem key="navigationItem" title="Schedule" id="WwR-AN-Gry"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="V0h-9O-nLg" id="FiS-d3-T0b"/>
+                        <outlet property="endingPoint" destination="s9c-AY-wQ2" id="jTU-hZ-Uko"/>
+                        <outlet property="scheduleTypeSelector" destination="Z80-GO-8Wi" id="aFx-bW-WYN"/>
+                        <outlet property="startingPoint" destination="ake-6Y-gpx" id="eUR-Ne-p47"/>
+                        <outlet property="tableView" destination="zf9-bi-BCi" id="DFV-Aa-tSM"/>
+                        <outlet property="tableViewFooter" destination="Dzc-I0-HQC" id="DI2-WE-ofO"/>
+                        <outlet property="viewModel" destination="n3L-Yu-gMQ" id="SuR-cW-JAO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fR1-Ib-5Si" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="n3L-Yu-gMQ" userLabel="TripScheduleViewModel" customClass="TripScheduleViewModel" customModule="Septa" customModuleProvider="target">
+                    <connections>
+                        <outlet property="tripScheduleViewController" destination="9ZE-6T-hsR" id="CeG-xY-bsS"/>
+                    </connections>
+                </customObject>
+                <view contentMode="scaleToFill" id="Dzc-I0-HQC" userLabel="TableViewFooter">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <viewLayoutGuide key="safeArea" id="qtn-tn-OXx"/>
+                </view>
                 <barButtonItem title="Item" id="veQ-Iq-UgU"/>
                 <view contentMode="scaleToFill" id="N85-DJ-dTv" userLabel="Header">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>

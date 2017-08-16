@@ -15,8 +15,8 @@ class TripScheduleSQLQuery: SQLQueryProtocol {
     let stopId: String
 
     var sqlBindings: [[String]] {
-        //        return [[":route_id", routeId], [":direction_id", routeDirecctionCodeString], [":stop_id", stopId]]
-        return [[String]]()
+
+        return [[":start_stop_id", startId], [":end_stop_id", stopId], [":service_id", serviceId]]
     }
 
     var fileName: String {
@@ -26,7 +26,7 @@ class TripScheduleSQLQuery: SQLQueryProtocol {
         //        default:
         //            return "busTripEnd"
         //        }
-        return "busTripEnd"
+        return "busTripSchedule"
     }
 
     init(forTransitMode transitMode: TransitMode, selectedStart start: Stop, selectedEnd stop: Stop, scheduleType: ScheduleType) {
