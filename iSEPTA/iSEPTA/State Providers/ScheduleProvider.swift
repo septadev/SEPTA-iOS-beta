@@ -66,22 +66,31 @@ class ScheduleProvider: StoreSubscriber {
     }
 
     func processSelectedTripEnd(scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-        return scheduleRequest
+        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.selectedStart, newValue: scheduleRequest.selectedStart)
+
+        switch comparisonResult {
+        case .bothNonNilAndEqual, .bothNil:
+            break
+        case .newIsNil:
+            clearEndingStops()
+        default:
+            retrieveEndingStopsForRoute(scheduleRequest: scheduleRequest)
+        }
+
+        return processSelectedScheduleType(scheduleRequest: scheduleRequest)
     }
 
     func processSelectedScheduleType(scheduleRequest: ScheduleRequest) -> ScheduleRequest {
 
-        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.scheduleType, newValue: scheduleRequest.scheduleType)
+        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.selectedEnd, newValue: scheduleRequest.selectedEnd)
+
         switch comparisonResult {
-        case .newIsNil, .bothNil:
+        case .bothNonNilAndEqual, .bothNil:
+            break
+        case .newIsNil:
             clearTrips()
-            return scheduleRequest
-        case .bothNonNilAndDifferent, .currentIsNil:
-            clearTrips()
-            retrieveTripsForRoute(scheduleRequest: scheduleRequest, scheduleType: scheduleRequest.scheduleType!)
-            return scheduleRequest
-        case .bothNonNilAndEqual:
-            return scheduleRequest
+        default:
+            retrieveTripsForRoute(scheduleRequest: scheduleRequest)
         }
 
         return scheduleRequest
@@ -126,7 +135,7 @@ class ScheduleProvider: StoreSubscriber {
     }
 
     func retrieveStartingStopsForRoute(scheduleRequest: ScheduleRequest) {
-        clearStartingStops()
+
         TripStartCommand.sharedInstance.stops(forTransitMode: scheduleRequest.transitMode!, forRoute: scheduleRequest.selectedRoute!) { stops, error in
             let action = TripStartsLoaded(availableStarts: stops, error: error?.localizedDescription)
             store.dispatch(action)

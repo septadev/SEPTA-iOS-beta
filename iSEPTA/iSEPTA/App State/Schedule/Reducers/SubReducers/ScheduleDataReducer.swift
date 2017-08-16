@@ -12,8 +12,8 @@ struct ScheduleDataReducer {
     static func reduceData(action: ScheduleAction, scheduleData: ScheduleData) -> ScheduleData {
         var newScheduleData = scheduleData
         switch action {
-        case _ as TransitModeSelected:
-            newScheduleData = ScheduleData()
+        case let action as TransitModeSelected:
+            return reduceTransitModeSelected(action: action, scheduleData: scheduleData)
         case let action as RoutesLoaded:
             newScheduleData = reduceRoutesLoaded(action: action, scheduleData: newScheduleData)
         case let action as CurrentStopToEdit:
@@ -28,6 +28,11 @@ struct ScheduleDataReducer {
         default: break
         }
         return newScheduleData
+    }
+
+    static func reduceTransitModeSelected(action _: TransitModeSelected, scheduleData: ScheduleData) -> ScheduleData {
+        let scheduleData = ScheduleData()
+        return scheduleData
     }
 
     static func reduceRoutesLoaded(action: RoutesLoaded, scheduleData: ScheduleData) -> ScheduleData {
@@ -66,21 +71,21 @@ struct ScheduleDataReducer {
         return scheduleData
     }
 
-    static func reduceCurrentStopToEdit(action: CurrentStopToEdit, scheduleData: ScheduleData) -> ScheduleData {
-        var scheduleData: ScheduleData = ScheduleData()
-        if action.stopToEdit == .starts {
-            scheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
-                                        availableStarts: nil,
-                                        availableStops: nil,
-                                        availableTrips: nil,
-                                        errorString: nil)
-        } else {
-            scheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
-                                        availableStarts: scheduleData.availableStarts,
-                                        availableStops: nil,
-                                        availableTrips: nil,
-                                        errorString: nil)
-        }
+    static func reduceCurrentStopToEdit(action _: CurrentStopToEdit, scheduleData: ScheduleData) -> ScheduleData {
+        //        var scheduleData: ScheduleData = ScheduleData()
+        //        if action.stopToEdit == .starts {
+        //            scheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
+        //                                        availableStarts: nil,
+        //                                        availableStops: nil,
+        //                                        availableTrips: nil,
+        //                                        errorString: nil)
+        //        } else {
+        //            scheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
+        //                                        availableStarts: scheduleData.availableStarts,
+        //                                        availableStops: nil,
+        //                                        availableTrips: nil,
+        //                                        errorString: nil)
+        //        }
         return scheduleData
     }
 }

@@ -17,5 +17,3 @@ from
   join stops_rail S on ST.stop_id = S.stop_id
 WHERE T.route_id = 'CHW' AND direction_id = '0'
 GROUP BY S.stop_id, S.stop_name, S.stop_lat, S.stop_lon;
-;
-
