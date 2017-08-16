@@ -85,7 +85,23 @@ class ScheduleProvider: StoreSubscriber {
             clearOutNonMatchingTripEnds()
         case .bothNonNilAndDifferent, .currentIsNil:
             clearOutNonMatchingTripEnds()
-            retrieveTripsForRoute(scheduleRequest: scheduleRequest)
+            retrieveTripsForRoute(scheduleRequest: scheduleRequest, scheduleType: scheduleRequest.scheduleType!)
+        case .bothNonNilAndEqual:
+            processScheduleType(scheduleRequest: scheduleRequest)
+        default: break
+        }
+        currentScheduleRequest = scheduleRequest
+    }
+
+    func processScheduleType(scheduleRequest: ScheduleRequest) {
+
+        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.scheduleType, newValue: scheduleRequest.scheduleType)
+        switch comparisonResult {
+        case .newIsNil:
+            clearOutNonMatchingTrips()
+        case .bothNonNilAndDifferent, .currentIsNil:
+            clearOutNonMatchingTrips()
+            retrieveTripsForRoute(scheduleRequest: scheduleRequest, scheduleType: scheduleRequest.scheduleType!)
         case .bothNonNilAndEqual:
             return
         default: break
@@ -146,9 +162,9 @@ class ScheduleProvider: StoreSubscriber {
         }
     }
 
-    func retrieveTripsForRoute(scheduleRequest: ScheduleRequest) {
+    func retrieveTripsForRoute(scheduleRequest: ScheduleRequest, scheduleType: ScheduleType = .weekday) {
 
-        TripScheduleCommand.sharedInstance.tripSchedules(forTransitMode: scheduleRequest.transitMode!, route: scheduleRequest.selectedRoute!, selectedStart: scheduleRequest.selectedStart!, selectedEnd: scheduleRequest.selectedEnd!, scheduleType: .weekday) { trips, error in
+        TripScheduleCommand.sharedInstance.tripSchedules(forTransitMode: scheduleRequest.transitMode!, route: scheduleRequest.selectedRoute!, selectedStart: scheduleRequest.selectedStart!, selectedEnd: scheduleRequest.selectedEnd!, scheduleType: scheduleType) { trips, error in
             let action = TripsLoaded(availableTrips: trips, error: error?.localizedDescription)
             store.dispatch(action)
         }

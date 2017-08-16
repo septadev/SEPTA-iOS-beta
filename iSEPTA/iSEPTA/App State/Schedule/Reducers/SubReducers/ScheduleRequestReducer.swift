@@ -23,6 +23,8 @@ struct ScheduleRequestReducer {
             newScheduleRequest = reduceCurrentStopToEdit(action: action, scheduleRequest: scheduleRequest)
         case let action as TripEndSelected:
             newScheduleRequest = reduceTripEndSelected(action: action, scheduleRequest: scheduleRequest)
+        case let action as ScheduleTypeSelected:
+            newScheduleRequest = reduceScheduleTypeSelected(action: action, scheduleRequest: scheduleRequest)
         default:
             newScheduleRequest = scheduleRequest
         }
@@ -46,6 +48,10 @@ struct ScheduleRequestReducer {
     }
 
     static func reduceTripEndSelected(action: TripEndSelected, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: scheduleRequest.selectedStart, selectedEnd: action.selectedEnd)
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: scheduleRequest.selectedStart, selectedEnd: action.selectedEnd, scheduleType: .weekday)
+    }
+
+    static func reduceScheduleTypeSelected(action: ScheduleTypeSelected, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: scheduleRequest.selectedStart, selectedEnd: scheduleRequest.selectedEnd, scheduleType: action.scheduleType)
     }
 }

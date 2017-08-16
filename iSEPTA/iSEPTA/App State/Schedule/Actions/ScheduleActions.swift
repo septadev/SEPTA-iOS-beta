@@ -55,3 +55,8 @@ struct TripsLoaded: ScheduleAction {
     let description = "Now we have available trips for the user to consider"
     let error: String?
 }
+
+struct ScheduleTypeSelected: ScheduleAction {
+    let scheduleType: ScheduleType
+    let description = "change from weekday, saturday, sunday"
+}

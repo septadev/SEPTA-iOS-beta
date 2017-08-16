@@ -12,13 +12,13 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
     var defaultColor: UIColor!
     @IBOutlet var viewModel: TripScheduleViewModel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var weekdayBarButtonItem: UIBarButtonItem!
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var header: UIView!
 
     func viewModelUpdated() {
         updateLabels()
-        guard let availableTrips = viewModel.availableTrips, availableTrips.count > 0 else { return }
         activityIndicator.stopAnimating()
         tableView.reloadData()
     }
@@ -32,8 +32,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet var alertsIcon: UIBarButtonItem!
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        guard let tripsCount = viewModel.availableTrips?.count, tripsCount > 0 else { return 0 }
-        return tripsCount
+        return viewModel.numberOfRows()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,6 +52,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         let item = sender as! UIBarButtonItem
         resetTintColors()
         item.tintColor = UIColor.darkText
+        dispatchScheduleTypeAction(.weekday)
     }
 
     @IBAction func saturdaySelected(_ sender: Any) {
@@ -60,6 +60,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         resetTintColors()
         let item = sender as! UIBarButtonItem
         item.tintColor = UIColor.darkText
+        dispatchScheduleTypeAction(.saturday)
     }
 
     @IBAction func sundaySelected(_ sender: Any) {
@@ -67,6 +68,15 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         //    viewModel.setScheduleType(.weekday)
         let item = sender as! UIBarButtonItem
         item.tintColor = UIColor.darkText
+
+        dispatchScheduleTypeAction(.sunday)
+    }
+
+    func dispatchScheduleTypeAction(_ scheduleType: ScheduleType) {
+
+        let action = ScheduleTypeSelected(scheduleType: scheduleType)
+        store.dispatch(action)
+        //        activityIndicator.startAnimating()
     }
 
     func resetTintColors() {
@@ -79,6 +89,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         viewModel.subscribe()
         tableView.tableFooterView = tableViewFooter
+        weekdayBarButtonItem.tintColor = UIColor.darkText
         //        tableView.tableHeaderView = header
         //        let item = scheduleTypeSelector.items![0]
         //        item.tintColor = UIColor.green

@@ -9,13 +9,18 @@ import ReSwift
     @IBOutlet weak var tripScheduleViewController: UpdateableFromViewModel!
 
     var scheduleRequest: ScheduleRequest?
-    var availableTrips: [Trip]?
+    private var availableTrips: [Trip]?
 
     var tripStops: (String, String)? {
         guard let scheduleRequest = scheduleRequest,
             let selectedStart = scheduleRequest.selectedStart,
             let selectedEnd = scheduleRequest.selectedEnd else { return nil }
         return (selectedStart.stopName, selectedEnd.stopName)
+    }
+
+    func numberOfRows() -> Int {
+        guard let availableTrips = availableTrips else { return 0 }
+        return availableTrips.count
     }
 
     func makeTripDisplayable(displayable: ScheduleDisplayable, atRow row: Int) {
