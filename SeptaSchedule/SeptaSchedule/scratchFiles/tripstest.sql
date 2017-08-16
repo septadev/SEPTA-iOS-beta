@@ -10,7 +10,7 @@ FROM
 stop_times_bus ST
 JOIN trips_bus T
 ON ST.trip_id = T.trip_id
-WHERE ST.stop_id = 28699 AND T.service_id = 1) Start
+WHERE ST.stop_id = 28699 AND T.service_id = 1 and T.direction_id = 0) Start
 
 JOIN (SELECT
   T.trip_id,
@@ -19,7 +19,7 @@ FROM
 stop_times_bus ST
 JOIN trips_bus T
 ON ST.trip_id = T.trip_id
-WHERE stop_id = 16053 AND T.service_id = 1) Stop
+WHERE stop_id = 16053 AND T.service_id = 1 and T.direction_id = 0) Stop
 ON start.trip_id = stop.trip_id
 ORDER BY DepartureTime;
 
@@ -45,3 +45,60 @@ WHERE T.route_id = '44' AND direction_id = '1'
 GROUP BY S.stop_id, S.stop_name, S.stop_lat, S.stop_lon ;
 
 Select* from reverseStopSearch;
+
+SELECT
+  start.arrival_time DepartureTime,
+  Stop.arrival_time  ArrivalTime
+FROM
+
+(SELECT
+  T.trip_id,
+  ST.arrival_time
+FROM
+stop_times_bus ST
+JOIN trips_bus T
+ON ST.trip_id = T.trip_id
+WHERE ST.stop_id = 341 AND T.service_id = 1 and T.direction_id = 0) Start
+
+JOIN (SELECT
+  T.trip_id,
+  ST.arrival_time
+FROM
+stop_times_bus ST
+JOIN trips_bus T
+ON ST.trip_id = T.trip_id
+WHERE stop_id = 21044 AND T.service_id = 1 and T.direction_id = 0 ) Stop
+ON start.trip_id = stop.trip_id
+ORDER BY DepartureTime;
+
+
+SELECT
+  start.arrival_time DepartureTime,
+  Stop.arrival_time  ArrivalTime
+FROM
+
+(SELECT
+  T.trip_id,
+  ST.arrival_time
+FROM
+stop_times_bus ST
+JOIN trips_bus T
+ON ST.trip_id = T.trip_id
+WHERE ST.stop_id = 20965 AND T.service_id = 1 and T.direction_id = 0) Start
+
+JOIN (SELECT
+  T.trip_id,
+  ST.arrival_time
+FROM
+stop_times_bus ST
+JOIN trips_bus T
+ON ST.trip_id = T.trip_id
+WHERE stop_id = 21531 AND T.service_id = 1 and T.direction_id = 0) Stop
+ON start.trip_id = stop.trip_id
+ORDER BY DepartureTime;
+
+
+select * from stop_times_bus where arrival_time = 545 and stop_id = 20965;
+select * from stop_times_bus where arrival_time = 542 and stop_id = 21531;
+
+689964

@@ -148,7 +148,7 @@ class ScheduleProvider: StoreSubscriber {
 
     func retrieveTripsForRoute(scheduleRequest: ScheduleRequest) {
 
-        TripScheduleCommand.sharedInstance.tripSchedules(forTransitMode: scheduleRequest.transitMode!, selectedStart: scheduleRequest.selectedStart!, selectedEnd: scheduleRequest.selectedEnd!, scheduleType: .weekday) { trips, error in
+        TripScheduleCommand.sharedInstance.tripSchedules(forTransitMode: scheduleRequest.transitMode!, route: scheduleRequest.selectedRoute!, selectedStart: scheduleRequest.selectedStart!, selectedEnd: scheduleRequest.selectedEnd!, scheduleType: .weekday) { trips, error in
             let action = TripsLoaded(availableTrips: trips, error: error?.localizedDescription)
             store.dispatch(action)
         }
