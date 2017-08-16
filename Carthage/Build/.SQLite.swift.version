@@ -1,0 +1,27 @@
+{
+  "iOS" : [
+    {
+      "hash" : "6f9623514fd851113ff3ad4d5e3c54d55beeb2410d1d192fc3936d3601ee075c",
+      "name" : "SQLite"
+    }
+  ],
+  "commitish" : "0.11.3",
+  "watchOS" : [
+    {
+      "hash" : "f861cfb65ef7108d7f7f326e679444804ef8179edab552125a65afba83898720",
+      "name" : "SQLite"
+    }
+  ],
+  "tvOS" : [
+    {
+      "hash" : "a5872f538c0b94c8b48340e242b33566f0327ff13704958401b639b0db0540e3",
+      "name" : "SQLite"
+    }
+  ],
+  "Mac" : [
+    {
+      "hash" : "6f307ed641059fa36f09e7a41d549ad2e0dfb8ecaec2dbb99ab7e157b2073268",
+      "name" : "SQLite"
+    }
+  ]
+}

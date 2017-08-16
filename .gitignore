@@ -7,6 +7,6 @@ v#Can ignore specific files
 *.log
 
 
-Build/
+
 DerivedData/
 **/xcuserdata/
