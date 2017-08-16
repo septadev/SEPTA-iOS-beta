@@ -9,14 +9,16 @@ struct ScheduleRequest {
     let selectedStart: Stop?
     let selectedEnd: Stop?
     let stopToEdit: StopToSelect?
+    let scheduleType: ScheduleType?
 
     init(transitMode: TransitMode? = nil, selectedRoute: Route? = nil, selectedStart: Stop? = nil,
-         selectedEnd: Stop? = nil, stopToEdit: StopToSelect? = nil) {
+         selectedEnd: Stop? = nil, stopToEdit: StopToSelect? = nil, scheduleType: ScheduleType? = nil) {
         self.transitMode = transitMode
         self.selectedRoute = selectedRoute
         self.selectedStart = selectedStart
         self.selectedEnd = selectedEnd
         self.stopToEdit = stopToEdit
+        self.scheduleType = scheduleType
     }
 }
 
@@ -73,7 +75,14 @@ func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
         areEqual = false
     }
     guard areEqual else { return false }
-
+    switch (lhs.scheduleType, rhs.scheduleType) {
+    case (.none, .none):
+        areEqual = true
+    case (.some, .some):
+        areEqual = lhs.scheduleType! == rhs.scheduleType!
+    default:
+        areEqual = false
+    }
     guard areEqual else { return false }
     print("Schedule Requests are equal")
     return areEqual

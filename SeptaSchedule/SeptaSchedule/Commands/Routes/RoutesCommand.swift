@@ -8,8 +8,8 @@ public class RoutesCommand: BaseCommand {
 
     public override init() {}
 
-    public func routes(forTransitMode sqlQuery: TransitMode, completion: @escaping RouteCommandCompletion) {
-
+    public func routes(forTransitMode transitMode: TransitMode, completion: @escaping RouteCommandCompletion) {
+        let sqlQuery = RoutesSQLQuery(transitMode: transitMode)
         retrieveResults(sqlQuery: sqlQuery, userCompletion: completion) { (statement) -> [Route] in
             var routes = [Route]()
             for row in statement {

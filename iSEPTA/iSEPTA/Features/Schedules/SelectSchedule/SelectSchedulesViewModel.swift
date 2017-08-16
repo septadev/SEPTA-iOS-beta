@@ -69,11 +69,12 @@ class SelectSchedulesViewModel: StoreSubscriber {
         if let route = scheduleRequest?.selectedRoute {
             text = "\(route.routeId) \(route.routeShortName)"
         } else {
-            if let routeTitle = scheduleRequest?.transitMode?.selectRouteTitle() {
-                text = routeTitle
-            } else {
-                text = SeptaString.SelectRoute
-            }
+            //            if let routeTitle = "dsds"? {
+            //                text = routeTitle
+            //            } else {
+            //                text = SeptaString.SelectRoute
+            //            }
+            text = "Schedule"
         }
 
         let accessoryType = onlyOneRouteAvailable ? CellDecoration.none : CellDecoration.disclosureIndicator
