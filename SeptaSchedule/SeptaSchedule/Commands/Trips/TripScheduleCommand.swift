@@ -8,11 +8,11 @@
 
 import Foundation
 
-class TripScheduleCommand: BaseCommand {
+public class TripScheduleCommand: BaseCommand {
     public typealias TripScheduleCommandCompletion = ([Trip]?, Error?) -> Void
-    static let sharedInstance = TripScheduleCommand()
+    public static let sharedInstance = TripScheduleCommand()
 
-    public func stops(forTransitMode transitMode: TransitMode, selectedStart: Stop, selectedEnd: Stop, scheduleType: ScheduleType, completion: @escaping TripScheduleCommandCompletion) {
+    public func tripSchedules(forTransitMode transitMode: TransitMode, selectedStart: Stop, selectedEnd: Stop, scheduleType: ScheduleType, completion: @escaping TripScheduleCommandCompletion) {
         let sqlQuery = TripScheduleSQLQuery(forTransitMode: transitMode, selectedStart: selectedStart, selectedEnd: selectedEnd, scheduleType: scheduleType)
         retrieveResults(sqlQuery: sqlQuery, userCompletion: completion) { (statement) -> [Trip] in
             var trips = [Trip]()
