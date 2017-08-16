@@ -11,7 +11,7 @@ struct FilterableStop {
 
     init(stop: Stop) {
 
-        filterString = stop.stopName.lowercased()
+        filterString = "\(stop.stopName.lowercased())_\(stop.stopId)"
         sortString = stop.stopName.lowercased()
         self.stop = stop
     }
@@ -126,7 +126,7 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
         print(filterString)
         filteredStops = allFilterableStops.filter {
             guard filterString.characters.count > 0 else { return true }
-            print($0.filterString)
+
             return $0.filterString.contains(filterString)
         }
         DispatchQueue.main.async { [weak self] in
