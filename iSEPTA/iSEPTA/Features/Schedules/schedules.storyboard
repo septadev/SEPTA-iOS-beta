@@ -118,7 +118,6 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="buttonView" destination="cOB-du-LRG" id="bi3-nK-egN"/>
-                        <outlet property="mapView" destination="GJS-IR-bDR" id="b8u-Mo-v6f"/>
                         <outlet property="tableView" destination="JWx-ou-dAj" id="E4N-FK-sNY"/>
                         <outlet property="tableViewFooter" destination="t3k-vt-DEG" id="GMN-YW-enj"/>
                         <outlet property="tableViewHeader" destination="1c9-Es-ZDV" id="Wwf-2z-Mox"/>
@@ -170,20 +169,11 @@
                                 <constraint firstItem="NLQ-jF-p64" firstAttribute="top" secondItem="cOB-du-LRG" secondAttribute="top" constant="15" id="ynQ-cG-CJD" userLabel="ResetTop"/>
                             </constraints>
                         </view>
-                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GJS-IR-bDR">
-                            <rect key="frame" x="0.0" y="200" width="200" height="200"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="200" id="Yvw-7G-pzT"/>
-                                <constraint firstAttribute="width" constant="200" id="ubE-Ny-de2"/>
-                            </constraints>
-                        </mapView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="cOB-du-LRG" firstAttribute="centerX" secondItem="eBi-Cq-E5z" secondAttribute="centerX" id="5eI-JY-acw" userLabel="ButtonCenterX"/>
-                        <constraint firstItem="GJS-IR-bDR" firstAttribute="leading" secondItem="eBi-Cq-E5z" secondAttribute="leading" id="K1Y-Xg-f6T" userLabel="MapViewLeft"/>
                         <constraint firstItem="cOB-du-LRG" firstAttribute="top" secondItem="eBi-Cq-E5z" secondAttribute="top" constant="15" id="f5H-RE-yLe" userLabel="ButtonViewTop"/>
-                        <constraint firstItem="eBi-Cq-E5z" firstAttribute="bottom" secondItem="GJS-IR-bDR" secondAttribute="bottom" id="ppu-zE-PU0" userLabel="MapViewBottom"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="eBi-Cq-E5z"/>
                 </view>

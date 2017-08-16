@@ -21,13 +21,12 @@ class TripScheduleSQLQuery: SQLQueryProtocol {
     }
 
     var fileName: String {
-        //        switch transitMode {
-        //        case .rail:
-        //            return "railTripEnd"
-        //        default:
-        //            return "busTripEnd"
-        //        }
-        return "busTripSchedule"
+        switch transitMode {
+        case .rail:
+            return "railTripSchedule"
+        default:
+            return "busTripSchedule"
+        }
     }
 
     init(forTransitMode transitMode: TransitMode, route: Route, selectedStart start: Stop,

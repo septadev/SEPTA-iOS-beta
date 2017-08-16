@@ -3,10 +3,9 @@
 import UIKit
 import SeptaSchedule
 import ReSwift
-import MapKit
 
 class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController, SchedulesViewModelDelegate {
-    @IBOutlet weak var mapView: MKMapView!
+
     static var viewController: ViewController = .selectSchedules
 
     @IBOutlet weak var buttonView: UIView!
@@ -33,7 +32,6 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
         viewModel.subscribe()
         viewModel.schedulesDelegate = self
         buttonView.isHidden = true
-        mapView.isHidden = true
     }
 
     override func viewWillAppear(_: Bool) {
@@ -68,7 +66,6 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
 
     func formIsComplete(_ isComplete: Bool) {
         buttonView.isHidden = !isComplete
-        mapView.isHidden = !isComplete
     }
 
     deinit {

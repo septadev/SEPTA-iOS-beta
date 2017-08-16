@@ -61,6 +61,7 @@
 		58EF3D711F4210CD005EE2F1 /* TripStart_Rail_Fox_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 58EF3D701F4210CD005EE2F1 /* TripStart_Rail_Fox_0.json */; };
 		58F2536C1F413A380075C8AD /* TripStartCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2536B1F413A380075C8AD /* TripStartCommand.swift */; };
 		58F253711F413B050075C8AD /* TripStartCommandTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F253701F413B050075C8AD /* TripStartCommandTests.swift */; };
+		6789F0011F44894100BD26B1 /* railTripSchedule.sql in Resources */ = {isa = PBXBuildFile; fileRef = 6789F0001F44894100BD26B1 /* railTripSchedule.sql */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +146,7 @@
 		58F253641F40D5570075C8AD /* TripStart_Route44_Dir1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TripStart_Route44_Dir1.json; sourceTree = "<group>"; };
 		58F2536B1F413A380075C8AD /* TripStartCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripStartCommand.swift; sourceTree = "<group>"; };
 		58F253701F413B050075C8AD /* TripStartCommandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripStartCommandTests.swift; sourceTree = "<group>"; };
+		6789F0001F44894100BD26B1 /* railTripSchedule.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = railTripSchedule.sql; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				5809EDFD1F4385EB00BBECFF /* busTripSchedule.sql */,
+				6789F0001F44894100BD26B1 /* railTripSchedule.sql */,
 			);
 			path = sql;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				5825318C1F3FCD490088D056 /* busRoute.sql in Resources */,
 				586889811F42979B00B2920A /* railTripEnd.sql in Resources */,
 				58902EF71F41EFBC00DE6F64 /* busTripStart.sql in Resources */,
+				6789F0011F44894100BD26B1 /* railTripSchedule.sql in Resources */,
 				5868897F1F42978A00B2920A /* busTripEnd.sql in Resources */,
 				5825318B1F3FCD490088D056 /* railRoute.sql in Resources */,
 				582F4F0F1F33B1370062A546 /* SEPTA.zip in Resources */,
