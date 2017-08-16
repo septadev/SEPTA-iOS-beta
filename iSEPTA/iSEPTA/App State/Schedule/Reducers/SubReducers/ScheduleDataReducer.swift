@@ -16,12 +16,15 @@ struct ScheduleDataReducer {
             newScheduleData = ScheduleData()
         case let action as RoutesLoaded:
             newScheduleData = reduceRoutesLoaded(action: action, scheduleData: newScheduleData)
+        case let action as CurrentStopToEdit:
+            newScheduleData = reduceCurrentStopToEdit(action: action, scheduleData: newScheduleData)
         case let action as TripStartsLoaded:
             newScheduleData = reduceTripStartsLoaded(action: action, scheduleData: newScheduleData)
         case let action as TripEndsLoaded:
             newScheduleData = reduceTripEndsLoaded(action: action, scheduleData: newScheduleData)
         case let action as TripsLoaded:
             newScheduleData = reduceTripLoaded(action: action, scheduleData: newScheduleData)
+
         default: break
         }
         return newScheduleData
@@ -60,6 +63,24 @@ struct ScheduleDataReducer {
                                         availableStops: scheduleData.availableStops,
                                         availableTrips: action.availableTrips,
                                         errorString: action.error)
+        return scheduleData
+    }
+
+    static func reduceCurrentStopToEdit(action: CurrentStopToEdit, scheduleData: ScheduleData) -> ScheduleData {
+        var scheduleData: ScheduleData = ScheduleData()
+        if action.stopToEdit == .starts {
+            scheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
+                                        availableStarts: nil,
+                                        availableStops: nil,
+                                        availableTrips: nil,
+                                        errorString: nil)
+        } else {
+            scheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
+                                        availableStarts: scheduleData.availableStarts,
+                                        availableStops: nil,
+                                        availableTrips: nil,
+                                        errorString: nil)
+        }
         return scheduleData
     }
 }

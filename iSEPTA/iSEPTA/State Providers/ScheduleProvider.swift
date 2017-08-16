@@ -15,54 +15,52 @@ class ScheduleProvider: StoreSubscriber {
     func subscribe() {
 
         store.subscribe(self) {
-            $0.select {
-                $0.scheduleState.scheduleRequest
-            }
+            $0.select { $0.scheduleState.scheduleRequest }
+                .skipRepeats { $0 != $1 }
         }
     }
 
     // MARK: - Primary State Handler
 
     func newState(state: StoreSubscriberStateType) {
-        guard let scheduleRequest = state else { return }
-
-        processTransitMode(scheduleRequest: scheduleRequest)
+        guard let scheduleRequest = state, let _ = scheduleRequest.transitMode else { return }
+        print("New State fired")
+        currentScheduleRequest =  processTransitMode(scheduleRequest: scheduleRequest)
     }
 
-    func processTransitMode(scheduleRequest: ScheduleRequest) {
+    func processTransitMode(scheduleRequest: ScheduleRequest) -> ScheduleRequest {
         let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.transitMode, newValue: scheduleRequest.transitMode)
 
         switch comparisonResult {
-        case .newIsNil:
-            clearOutNonMatchingRoutes()
-        case .bothNonNilAndDifferent, .currentIsNil:
-            clearOutNonMatchingRoutes()
+        case .bothNil:
+            return scheduleRequest
+        case .bothNonNilAndDifferent, .currentIsNil, .newIsNil:
             retrieveAvailableRoutes(scheduleRequest: scheduleRequest)
+            return scheduleRequest
         case .bothNonNilAndEqual:
-            processRoutes(scheduleRequest: scheduleRequest)
-            return
-        default: break
-        }
-        currentScheduleRequest = scheduleRequest
+          return    processRoutes(scheduleRequest: scheduleRequest)
+         }
+      
     }
 
-    func processRoutes(scheduleRequest: ScheduleRequest) {
+    func processRoutes(scheduleRequest: ScheduleRequest) -> ScheduleRequest {
         let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.selectedRoute, newValue: scheduleRequest.selectedRoute)
         switch comparisonResult {
         case .newIsNil:
-            clearOutNonMatchingTripStarts()
+            return scheduleRequest
         case .bothNonNilAndDifferent, .currentIsNil:
             clearOutNonMatchingTripStarts()
             retrieveStartingStopsForRoute(scheduleRequest: scheduleRequest)
+            return scheduleRequest
         case .bothNonNilAndEqual:
-            processTripStarts(scheduleRequest: scheduleRequest)
-            return
+         return     processTripStarts(scheduleRequest: scheduleRequest)
+       
         default: break
         }
-        currentScheduleRequest = scheduleRequest
+        
     }
 
-    func processTripStarts(scheduleRequest: ScheduleRequest) {
+    func processTripStarts(scheduleRequest: ScheduleRequest) -> ScheduleRequest {
         let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.selectedStart, newValue: scheduleRequest.selectedStart)
         switch comparisonResult {
         case .newIsNil:
@@ -71,42 +69,47 @@ class ScheduleProvider: StoreSubscriber {
             clearOutNonMatchingTripEnds()
             retrieveEndingStopsForRoute(scheduleRequest: scheduleRequest)
         case .bothNonNilAndEqual:
-            processTripEnds(scheduleRequest: scheduleRequest)
+      return        processTripEnds(scheduleRequest: scheduleRequest)
             return
         default: break
         }
-        currentScheduleRequest = scheduleRequest
+      
     }
 
-    func processTripEnds(scheduleRequest: ScheduleRequest) {
+    func processTripEnds(scheduleRequest: ScheduleRequest) -> ScheduleRequest {
         let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.selectedEnd, newValue: scheduleRequest.selectedEnd)
         switch comparisonResult {
         case .newIsNil:
             clearOutNonMatchingTripEnds()
+            return scheduleRequest
         case .bothNonNilAndDifferent, .currentIsNil:
             clearOutNonMatchingTripEnds()
             retrieveTripsForRoute(scheduleRequest: scheduleRequest, scheduleType: scheduleRequest.scheduleType!)
+            return scheduleRequest
+            
         case .bothNonNilAndEqual:
-            processScheduleType(scheduleRequest: scheduleRequest)
+            return processScheduleType(scheduleRequest: scheduleRequest)
         default: break
         }
-        currentScheduleRequest = scheduleRequest
+        
     }
 
-    func processScheduleType(scheduleRequest: ScheduleRequest) {
+    func processScheduleType(scheduleRequest: ScheduleRequest) -> ScheduleRequest {
 
         let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.scheduleType, newValue: scheduleRequest.scheduleType)
         switch comparisonResult {
         case .newIsNil:
             clearOutNonMatchingTrips()
+            return scheduleRequest
         case .bothNonNilAndDifferent, .currentIsNil:
             clearOutNonMatchingTrips()
             retrieveTripsForRoute(scheduleRequest: scheduleRequest, scheduleType: scheduleRequest.scheduleType!)
+            return scheduleRequest
         case .bothNonNilAndEqual:
-            return
+            return scheduleRequest
         default: break
         }
-        currentScheduleRequest = scheduleRequest
+        
     }
 
     func clearOutNonMatchingRoutes() {

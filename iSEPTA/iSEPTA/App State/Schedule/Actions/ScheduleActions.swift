@@ -23,6 +23,11 @@ struct RouteSelected: ScheduleAction {
     let description = "User Selected a route"
 }
 
+struct RouteToEdit: ScheduleAction {
+    let description = "User wants to edit a route"
+    let stopToEdit: StopToSelect
+}
+
 struct CurrentStopToEdit: ScheduleAction {
     let description = "User Selected a route"
     let stopToEdit: StopToSelect
