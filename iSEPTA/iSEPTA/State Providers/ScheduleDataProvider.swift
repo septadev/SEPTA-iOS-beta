@@ -4,9 +4,9 @@ import Foundation
 import ReSwift
 import SeptaSchedule
 
-class ScheduleProvider: StoreSubscriber {
+class ScheduleDataProvider: StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleRequest?
-    static let sharedInstance = ScheduleProvider()
+    static let sharedInstance = ScheduleDataProvider()
     var currentScheduleRequest = ScheduleRequest()
 
     private init() {
@@ -19,17 +19,9 @@ class ScheduleProvider: StoreSubscriber {
         }
     }
 
-    var hasRoutes: Bool = false
-    var hasStarts: Bool = false
-    var hasStops: Bool = false
-
     func newState(state: StoreSubscriberStateType) {
         guard let scheduleRequest = state else { return }
-        print("New State fired")
-
-        hasRoutes = store.state.scheduleState.scheduleData?.availableRoutes == nil
-        hasStarts = store.state.scheduleState.scheduleData?.availableStarts == nil
-        hasStops = store.state.scheduleState.scheduleData?.availableStops == nil
+        print("New State in Schedule Data Provider")
 
         currentScheduleRequest = processSelectedRoute(scheduleRequest: scheduleRequest)
     }
@@ -77,10 +69,10 @@ class ScheduleProvider: StoreSubscriber {
             retrieveEndingStopsForRoute(scheduleRequest: scheduleRequest)
         }
 
-        return processSelectedScheduleType(scheduleRequest: scheduleRequest)
+        return processSelectedTrip(scheduleRequest: scheduleRequest)
     }
 
-    func processSelectedScheduleType(scheduleRequest: ScheduleRequest) -> ScheduleRequest {
+    func processSelectedTrip(scheduleRequest: ScheduleRequest) -> ScheduleRequest {
 
         let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.selectedEnd, newValue: scheduleRequest.selectedEnd)
 
@@ -91,6 +83,22 @@ class ScheduleProvider: StoreSubscriber {
             clearTrips()
         default:
             retrieveTripsForRoute(scheduleRequest: scheduleRequest)
+        }
+
+        return processSelectedScheduleType(scheduleRequest: scheduleRequest)
+    }
+
+    func processSelectedScheduleType(scheduleRequest: ScheduleRequest) -> ScheduleRequest {
+
+        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.scheduleType, newValue: scheduleRequest.scheduleType)
+
+        switch comparisonResult {
+        case .bothNonNilAndEqual, .bothNil:
+            break
+        case .newIsNil:
+            clearTrips()
+        default:
+            retrieveTripsForRoute(scheduleRequest: scheduleRequest, scheduleType: scheduleRequest.scheduleType!)
         }
 
         return scheduleRequest

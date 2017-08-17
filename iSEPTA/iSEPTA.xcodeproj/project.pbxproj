@@ -70,7 +70,7 @@
 		5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6DB1F37925A00C8CB76 /* SchedulesNavigationViewController.swift */; };
 		5840D6E01F37E5FB00C8CB76 /* ScheduleReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6DF1F37E5FB00C8CB76 /* ScheduleReducer.swift */; };
 		5840D6E31F37E9FB00C8CB76 /* UserPreferencesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E21F37E9FB00C8CB76 /* UserPreferencesProvider.swift */; };
-		5840D6E51F37EA1900C8CB76 /* ScheduleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E41F37EA1900C8CB76 /* ScheduleProvider.swift */; };
+		5840D6E51F37EA1900C8CB76 /* ScheduleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E41F37EA1900C8CB76 /* ScheduleDataProvider.swift */; };
 		5840D6E71F37EAEF00C8CB76 /* UserPreferencesKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E61F37EAEF00C8CB76 /* UserPreferencesKeys.swift */; };
 		5840D6E91F37EE6500C8CB76 /* Providers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E81F37EE6500C8CB76 /* Providers.swift */; };
 		5840D6EE1F37F63800C8CB76 /* TransitModeToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */; };
@@ -223,7 +223,7 @@
 		5840D6DB1F37925A00C8CB76 /* SchedulesNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesNavigationViewController.swift; sourceTree = "<group>"; };
 		5840D6DF1F37E5FB00C8CB76 /* ScheduleReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleReducer.swift; sourceTree = "<group>"; };
 		5840D6E21F37E9FB00C8CB76 /* UserPreferencesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesProvider.swift; sourceTree = "<group>"; };
-		5840D6E41F37EA1900C8CB76 /* ScheduleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleProvider.swift; sourceTree = "<group>"; };
+		5840D6E41F37EA1900C8CB76 /* ScheduleDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDataProvider.swift; sourceTree = "<group>"; };
 		5840D6E61F37EAEF00C8CB76 /* UserPreferencesKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesKeys.swift; sourceTree = "<group>"; };
 		5840D6E81F37EE6500C8CB76 /* Providers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Providers.swift; sourceTree = "<group>"; };
 		5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitModeToolbarView.swift; sourceTree = "<group>"; };
@@ -537,7 +537,7 @@
 			isa = PBXGroup;
 			children = (
 				58B8920A1F38C27700BFFEFA /* UserPreferences */,
-				5840D6E41F37EA1900C8CB76 /* ScheduleProvider.swift */,
+				5840D6E41F37EA1900C8CB76 /* ScheduleDataProvider.swift */,
 				5840D6E81F37EE6500C8CB76 /* Providers.swift */,
 			);
 			path = "State Providers";
@@ -1054,7 +1054,7 @@
 				5814AA891F4359CC00DF774A /* SingleStringDisplayable.swift in Sources */,
 				582F4EC71F33B1120062A546 /* RoutesViewModel.swift in Sources */,
 				5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift in Sources */,
-				5840D6E51F37EA1900C8CB76 /* ScheduleProvider.swift in Sources */,
+				5840D6E51F37EA1900C8CB76 /* ScheduleDataProvider.swift in Sources */,
 				5814AA841F43589E00DF774A /* TripScheduleViewModel.swift in Sources */,
 				5814AA8A1F4359D000DF774A /* TripleTextDisplayable.swift in Sources */,
 				58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */,

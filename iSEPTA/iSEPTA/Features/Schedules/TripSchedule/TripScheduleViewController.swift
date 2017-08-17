@@ -19,7 +19,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     func viewModelUpdated() {
         updateLabels()
-        activityIndicator.stopAnimating()
+
         tableView.reloadData()
     }
 
@@ -32,7 +32,13 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet var alertsIcon: UIBarButtonItem!
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return viewModel.numberOfRows()
+        let rowCount = viewModel.numberOfRows()
+        if rowCount > 0 {
+            activityIndicator.stopAnimating()
+        } else {
+            activityIndicator.startAnimating()
+        }
+        return rowCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

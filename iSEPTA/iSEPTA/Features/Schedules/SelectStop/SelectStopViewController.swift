@@ -37,7 +37,13 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return viewModel.numberOfRows()
+        let rowCount = viewModel.numberOfRows()
+        if rowCount > 0 {
+            activityIndicator.stopAnimating()
+        } else {
+            activityIndicator.startAnimating()
+        }
+        return rowCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -86,7 +92,7 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     }
 
     func viewModelUpdated() {
-        activityIndicator.stopAnimating()
+
         tableView.reloadData()
     }
 }
