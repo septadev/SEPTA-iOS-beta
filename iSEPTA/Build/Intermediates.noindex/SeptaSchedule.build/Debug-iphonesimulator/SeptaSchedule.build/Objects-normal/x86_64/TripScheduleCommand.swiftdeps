@@ -14,6 +14,7 @@ depends-top-level:
 - !private "Int"
 - !private "Int64"
 - "IntegerLiteralType"
+- "Route"
 - "ScheduleType"
 - "Stop"
 - "TransitMode"
@@ -28,6 +29,7 @@ depends-member:
 - ["13SeptaSchedule11BaseCommandC", "Error"]
 - !private ["13SeptaSchedule11BaseCommandC", "Int"]
 - !private ["13SeptaSchedule11BaseCommandC", "Int64"]
+- ["13SeptaSchedule11BaseCommandC", "Route"]
 - ["13SeptaSchedule11BaseCommandC", "ScheduleType"]
 - ["13SeptaSchedule11BaseCommandC", "Stop"]
 - ["13SeptaSchedule11BaseCommandC", "TransitMode"]
@@ -39,7 +41,7 @@ depends-member:
 - ["13SeptaSchedule11BaseCommandC", "init"]
 - !private ["13SeptaSchedule11BaseCommandC", "retrieveResults"]
 - ["13SeptaSchedule11BaseCommandC", "sharedInstance"]
-- ["13SeptaSchedule11BaseCommandC", "stops"]
+- ["13SeptaSchedule11BaseCommandC", "tripSchedules"]
 - ["13SeptaSchedule11BaseCommandC", ""]
 - !private ["s23BidirectionalCollectionP", "append"]
 - !private ["s23BidirectionalCollectionP", "init"]
@@ -101,6 +103,7 @@ depends-member:
 - ["13SeptaSchedule04TripB7CommandC", "Error"]
 - !private ["13SeptaSchedule04TripB7CommandC", "Int"]
 - !private ["13SeptaSchedule04TripB7CommandC", "Int64"]
+- ["13SeptaSchedule04TripB7CommandC", "Route"]
 - ["13SeptaSchedule04TripB7CommandC", "ScheduleType"]
 - ["13SeptaSchedule04TripB7CommandC", "Stop"]
 - ["13SeptaSchedule04TripB7CommandC", "TransitMode"]
@@ -113,7 +116,7 @@ depends-member:
 - ["13SeptaSchedule04TripB7CommandC", "init"]
 - !private ["13SeptaSchedule04TripB7CommandC", "retrieveResults"]
 - ["13SeptaSchedule04TripB7CommandC", "sharedInstance"]
-- ["13SeptaSchedule04TripB7CommandC", "stops"]
+- ["13SeptaSchedule04TripB7CommandC", "tripSchedules"]
 - !private ["13SeptaSchedule04TripB8SQLQueryC", "deinit"]
 - !private ["13SeptaSchedule04TripB8SQLQueryC", "init"]
 - !private ["6SQLite5ValueP", "init"]
@@ -199,8 +202,8 @@ depends-nominal:
 depends-dynamic-lookup:
 depends-external:
 - "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
-- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../iSEPTA/Frameworks/SQLite.framework/Modules/SQLite.swiftmodule/x86_64.swiftmodule"
-- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../iSEPTA/Frameworks/Zip.framework/Modules/Zip.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Modules/SQLite.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/Zip.framework/Modules/Zip.swiftmodule/x86_64.swiftmodule"
 - "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
 - "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
 - "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
@@ -212,18 +215,16 @@ depends-external:
 - "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
 - "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
 - "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
-- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../iSEPTA/Frameworks/SQLite.framework/Headers/sqlite3.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Headers/sqlite3.h"
 - "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/SeptaSchedule/SeptaSchedule.h"
-- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../iSEPTA/Frameworks/SQLite.framework/Headers/SQLite.h"
-- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../iSEPTA/Frameworks/SQLite.framework/Headers/SQLite-Bridging.h"
-- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../iSEPTA/Frameworks/Zip.framework/Headers/Zip.h"
-- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../iSEPTA/Frameworks/SQLite.framework/Headers/SQLite-Swift.h"
-- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../iSEPTA/Frameworks/Zip.framework/Headers/Zip-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Headers/SQLite.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Headers/SQLite-Bridging.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/Zip.framework/Headers/Zip.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Headers/SQLite-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/Zip.framework/Headers/Zip-Swift.h"
 - "/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Intermediates.noindex/SeptaSchedule.build/Debug-iphonesimulator/SeptaSchedule.build/unextended-module.modulemap"
-- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/Zip/Zip/minizip/module.modulemap"
-- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/SQLite.swift/CocoaPods/iphonesimulator/module.modulemap"
-- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../iSEPTA/Frameworks/SQLite.framework/Modules/module.modulemap"
-- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../iSEPTA/Frameworks/Zip.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/Zip.framework/Modules/module.modulemap"
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/usr/include/objc/ObjectiveC.apinotes"
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
@@ -231,4 +232,4 @@ depends-external:
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
-interface-hash: "2cf25185b5522b7bda1469c7dd200b71"
+interface-hash: "fb9d81403603eb6ebf1dcccbf7371a8b"

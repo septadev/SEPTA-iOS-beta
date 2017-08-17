@@ -80,20 +80,14 @@ extern "C" {
 ** that we have taken it all out and gone back to using simple
 ** noop macros.
 */
-#define SQLITE_DEPRECATED
+#if defined(__APPLE__)
+# define SQLITE_DEPRECATED __attribute__((deprecated))
+#else
+# define SQLITE_DEPRECATED
+#endif
 #define SQLITE_EXPERIMENTAL
-
-#if !defined(SQLITE_AVAILABLE)
-# if defined(__APPLE__) && !defined(SQLITE_DEBUG)
-#  include <Availability.h>
-#  define SQLITE_AVAILABLE __API_AVAILABLE
-#  define SQLITE_DEPRECATED_NO_REPLACEMENT __API_DEPRECATED
-#  define SQLITE_DEPRECATED_WITH_REPLACEMENT __API_DEPRECATED_WITH_REPLACEMENT
-# else
-#  define SQLITE_AVAILABLE(...)
-#  define SQLITE_DEPRECATED_NO_REPLACEMENT(...)
-#  define SQLITE_DEPRECATED_WITH_REPLACEMENT(...)
-# endif
+#ifndef __OSX_AVAILABLE_BUT_DEPRECATED
+#define __OSX_AVAILABLE_BUT_DEPRECATED(MacOSAvailable, MacOSDeprecated, iPhoneOSAvailable, iPhoneOSDeprecated)
 #endif
 
 /*
@@ -127,20 +121,20 @@ extern "C" {
 ** system</a>.  ^The SQLITE_SOURCE_ID macro evaluates to
 ** a string which identifies a particular check-in of SQLite
 ** within its configuration management system.  ^The SQLITE_SOURCE_ID
-** string contains the date and time of the check-in (UTC) and a SHA1
-** or SHA3-256 hash of the entire source tree.
+** string contains the date and time of the check-in (UTC) and an SHA1
+** hash of the entire source tree.
 **
 ** See also: [sqlite3_libversion()],
 ** [sqlite3_libversion_number()], [sqlite3_sourceid()],
 ** [sqlite_version()] and [sqlite_source_id()].
 */
-#define SQLITE_VERSION        "3.19.3"
-#define SQLITE_VERSION_NUMBER 3019003
-#define SQLITE_SOURCE_ID      "2017-06-27 16:48:08 2b0954060fe10d6de6d479287dd88890f1bef6cc1beca11bc6cdb79f72e2377b"
+#define SQLITE_VERSION        "3.16.0"
+#define SQLITE_VERSION_NUMBER 3016000
+#define SQLITE_SOURCE_ID      "2016-11-04 19:09:39 0e5ffd9123d6d2d2b8f3701e8a73cc98a3a7ff5f"
 
 /*
 ** CAPI3REF: Run-Time Library Version Numbers
-** KEYWORDS: sqlite3_version sqlite3_sourceid
+** KEYWORDS: sqlite3_version, sqlite3_sourceid
 **
 ** These interfaces provide the same information as the [SQLITE_VERSION],
 ** [SQLITE_VERSION_NUMBER], and [SQLITE_SOURCE_ID] C preprocessor macros
@@ -170,10 +164,7 @@ extern "C" {
 */
 SQLITE_API SQLITE_EXTERN const char sqlite3_version[];
 SQLITE_API const char *sqlite3_libversion(void);
-
-SQLITE_AVAILABLE(macos(10.7), ios(4.0))
 SQLITE_API const char *sqlite3_sourceid(void);
-
 SQLITE_API int sqlite3_libversion_number(void);
 
 /*
@@ -199,10 +190,7 @@ SQLITE_API int sqlite3_libversion_number(void);
 ** [sqlite_compileoption_get()] and the [compile_options pragma].
 */
 #ifndef SQLITE_OMIT_COMPILEOPTION_DIAGS
-SQLITE_AVAILABLE(macos(10.7), ios(5.0))
 SQLITE_API int sqlite3_compileoption_used(const char *zOptName);
-
-SQLITE_AVAILABLE(macos(10.7), ios(5.0))
 SQLITE_API const char *sqlite3_compileoption_get(int N);
 #endif
 
@@ -278,11 +266,7 @@ typedef struct sqlite3 sqlite3;
 */
 #ifdef SQLITE_INT64_TYPE
   typedef SQLITE_INT64_TYPE sqlite_int64;
-# ifdef SQLITE_UINT64_TYPE
-    typedef SQLITE_UINT64_TYPE sqlite_uint64;
-# else  
-    typedef unsigned SQLITE_INT64_TYPE sqlite_uint64;
-# endif
+  typedef unsigned SQLITE_INT64_TYPE sqlite_uint64;
 #elif defined(_MSC_VER) || defined(__BORLANDC__)
   typedef __int64 sqlite_int64;
   typedef unsigned __int64 sqlite_uint64;
@@ -344,8 +328,6 @@ typedef sqlite_uint64 sqlite3_uint64;
 ** argument is a harmless no-op.
 */
 SQLITE_API int sqlite3_close(sqlite3*);
-
-SQLITE_AVAILABLE(macos(10.10), ios(8.2))
 SQLITE_API int sqlite3_close_v2(sqlite3*);
 
 /*
@@ -602,7 +584,7 @@ SQLITE_API int sqlite3_exec(
 ** file that were written at the application level might have changed
 ** and that adjacent bytes, even bytes within the same sector are
 ** guaranteed to be unchanged.  The SQLITE_IOCAP_UNDELETABLE_WHEN_OPEN
-** flag indicates that a file cannot be deleted when open.  The
+** flag indicate that a file cannot be deleted when open.  The
 ** SQLITE_IOCAP_IMMUTABLE flag indicates that the file is on
 ** read-only media and cannot be changed even by processes with
 ** elevated privileges.
@@ -752,9 +734,6 @@ struct sqlite3_file {
 ** <li> [SQLITE_IOCAP_ATOMIC64K]
 ** <li> [SQLITE_IOCAP_SAFE_APPEND]
 ** <li> [SQLITE_IOCAP_SEQUENTIAL]
-** <li> [SQLITE_IOCAP_UNDELETABLE_WHEN_OPEN]
-** <li> [SQLITE_IOCAP_POWERSAFE_OVERWRITE]
-** <li> [SQLITE_IOCAP_IMMUTABLE]
 ** </ul>
 **
 ** The SQLITE_IOCAP_ATOMIC property means that all writes of
@@ -883,7 +862,7 @@ struct sqlite3_io_methods {
 ** opcode allows these two values (10 retries and 25 milliseconds of delay)
 ** to be adjusted.  The values are changed for all database connections
 ** within the same process.  The argument is a pointer to an array of two
-** integers where the first integer is the new retry count and the second
+** integers where the first integer i the new retry count and the second
 ** integer is the delay.  If either integer is negative, then the setting
 ** is not changed but instead the prior value of that setting is written
 ** into the array entry, allowing the current retry settings to be
@@ -2066,30 +2045,20 @@ SQLITE_API int sqlite3_extended_result_codes(sqlite3*, int onoff);
 ** the table has a column of type [INTEGER PRIMARY KEY] then that column
 ** is another alias for the rowid.
 **
-** ^The sqlite3_last_insert_rowid(D) interface usually returns the [rowid] of
-** the most recent successful [INSERT] into a rowid table or [virtual table]
-** on database connection D. ^Inserts into [WITHOUT ROWID] tables are not
-** recorded. ^If no successful [INSERT]s into rowid tables have ever occurred 
-** on the database connection D, then sqlite3_last_insert_rowid(D) returns 
-** zero.
+** ^The sqlite3_last_insert_rowid(D) interface returns the [rowid] of the 
+** most recent successful [INSERT] into a rowid table or [virtual table]
+** on database connection D.
+** ^Inserts into [WITHOUT ROWID] tables are not recorded.
+** ^If no successful [INSERT]s into rowid tables
+** have ever occurred on the database connection D, 
+** then sqlite3_last_insert_rowid(D) returns zero.
 **
-** As well as being set automatically as rows are inserted into database
-** tables, the value returned by this function may be set explicitly by
-** [sqlite3_set_last_insert_rowid()]
-**
-** Some virtual table implementations may INSERT rows into rowid tables as
-** part of committing a transaction (e.g. to flush data accumulated in memory
-** to disk). In this case subsequent calls to this function return the rowid
-** associated with these internal INSERT operations, which leads to 
-** unintuitive results. Virtual table implementations that do write to rowid
-** tables in this way can avoid this problem by restoring the original 
-** rowid value using [sqlite3_set_last_insert_rowid()] before returning 
-** control to the user.
-**
-** ^(If an [INSERT] occurs within a trigger then this routine will 
-** return the [rowid] of the inserted row as long as the trigger is 
-** running. Once the trigger program ends, the value returned 
-** by this routine reverts to what it was before the trigger was fired.)^
+** ^(If an [INSERT] occurs within a trigger or within a [virtual table]
+** method, then this routine will return the [rowid] of the inserted
+** row as long as the trigger or virtual table method is running.
+** But once the trigger or virtual table method ends, the value returned 
+** by this routine reverts to what it was before the trigger or virtual
+** table method began.)^
 **
 ** ^An [INSERT] that fails due to a constraint violation is not a
 ** successful [INSERT] and does not change the value returned by this
@@ -2115,16 +2084,6 @@ SQLITE_API int sqlite3_extended_result_codes(sqlite3*, int onoff);
 ** last insert [rowid].
 */
 SQLITE_API sqlite3_int64 sqlite3_last_insert_rowid(sqlite3*);
-
-/*
-** CAPI3REF: Set the Last Insert Rowid value.
-** METHOD: sqlite3
-**
-** The sqlite3_set_last_insert_rowid(D, R) method allows the application to
-** set the value returned by calling sqlite3_last_insert_rowid(D) to R 
-** without inserting a row into the database.
-*/
-SQLITE_API void sqlite3_set_last_insert_rowid(sqlite3*,sqlite3_int64);
 
 /*
 ** CAPI3REF: Count The Number Of Rows Modified
@@ -2237,6 +2196,9 @@ SQLITE_API int sqlite3_total_changes(sqlite3*);
 ** ^A call to sqlite3_interrupt(D) that occurs when there are no running
 ** SQL statements is a no-op and has no effect on SQL statements
 ** that are started after the sqlite3_interrupt() call returns.
+**
+** If the database connection closes while [sqlite3_interrupt()]
+** is running then bad things will likely happen.
 */
 SQLITE_API void sqlite3_interrupt(sqlite3*);
 
@@ -2550,8 +2512,6 @@ SQLITE_API void sqlite3_free_table(char **result);
 SQLITE_API char *sqlite3_mprintf(const char*,...);
 SQLITE_API char *sqlite3_vmprintf(const char*, va_list);
 SQLITE_API char *sqlite3_snprintf(int,char*,const char*, ...);
-
-SQLITE_AVAILABLE(macos(10.7), ios(5.0))
 SQLITE_API char *sqlite3_vsnprintf(int,char*,const char*, va_list);
 
 /*
@@ -2643,18 +2603,10 @@ SQLITE_API char *sqlite3_vsnprintf(int,char*,const char*, va_list);
 ** [sqlite3_free()] or [sqlite3_realloc()].
 */
 SQLITE_API void *sqlite3_malloc(int);
-
-SQLITE_AVAILABLE(macos(10.11), ios(9.0))
 SQLITE_API void *sqlite3_malloc64(sqlite3_uint64);
-
 SQLITE_API void *sqlite3_realloc(void*, int);
-
-SQLITE_AVAILABLE(macos(10.11), ios(9.0))
 SQLITE_API void *sqlite3_realloc64(void*, sqlite3_uint64);
-
 SQLITE_API void sqlite3_free(void*);
-
-SQLITE_AVAILABLE(macos(10.11), ios(9.0))
 SQLITE_API sqlite3_uint64 sqlite3_msize(void*);
 
 /*
@@ -2709,7 +2661,6 @@ SQLITE_API void sqlite3_randomness(int N, void *P);
 /*
 ** CAPI3REF: Compile-Time Authorization Callbacks
 ** METHOD: sqlite3
-** KEYWORDS: {authorizer callback}
 **
 ** ^This routine registers an authorizer callback with a particular
 ** [database connection], supplied in the first argument.
@@ -2737,10 +2688,8 @@ SQLITE_API void sqlite3_randomness(int N, void *P);
 ** parameter to the sqlite3_set_authorizer() interface. ^The second parameter
 ** to the callback is an integer [SQLITE_COPY | action code] that specifies
 ** the particular action to be authorized. ^The third through sixth parameters
-** to the callback are either NULL pointers or zero-terminated strings
-** that contain additional details about the action to be authorized.
-** Applications must always be prepared to encounter a NULL pointer in any
-** of the third through the sixth parameters of the authorization callback.
+** to the callback are zero-terminated strings that contain additional
+** details about the action to be authorized.
 **
 ** ^If the action code is [SQLITE_READ]
 ** and the callback returns [SQLITE_IGNORE] then the
@@ -2749,10 +2698,6 @@ SQLITE_API void sqlite3_randomness(int N, void *P);
 ** been read if [SQLITE_OK] had been returned.  The [SQLITE_IGNORE]
 ** return can be used to deny an untrusted user access to individual
 ** columns of a table.
-** ^When a table is referenced by a [SELECT] but no column values are
-** extracted from that table (for example in a query like
-** "SELECT count(*) FROM tab") then the [SQLITE_READ] authorizer callback
-** is invoked once for that table with a column name that is an empty string.
 ** ^If the action code is [SQLITE_DELETE] and the callback returns
 ** [SQLITE_IGNORE] then the [DELETE] operation proceeds but the
 ** [truncate optimization] is disabled and all rows are deleted individually.
@@ -2902,19 +2847,10 @@ SQLITE_API int sqlite3_set_authorizer(
 ** sqlite3_profile() function is considered experimental and is
 ** subject to change in future versions of SQLite.
 */
-SQLITE_DEPRECATED_WITH_REPLACEMENT("sqlite3_trace_v2", macos(10.7, 10.12), ios(5.0, 10.0), watchos(2.0, 3.0), tvos(9.0, 10.0))
-SQLITE_API SQLITE_DEPRECATED void *sqlite3_trace(
-  sqlite3*,
-  void(*xTrace)(void*,const char*),
-  void*
-);
-
-SQLITE_DEPRECATED_WITH_REPLACEMENT("sqlite3_trace_v2", macos(10.6, 10.12), ios(3.0, 10.0), watchos(2.0, 3.0), tvos(9.0, 10.0))
-SQLITE_API SQLITE_DEPRECATED void *sqlite3_profile(
-  sqlite3*,
-  void(*xProfile)(void*,const char*,sqlite3_uint64),
-  void*
-);
+SQLITE_API SQLITE_DEPRECATED void *sqlite3_trace(sqlite3*,
+   void(*xTrace)(void*,const char*), void*);
+SQLITE_API SQLITE_DEPRECATED void *sqlite3_profile(sqlite3*,
+   void(*xProfile)(void*,const char*,sqlite3_uint64), void*);
 
 /*
 ** CAPI3REF: SQL Trace Event Codes
@@ -3002,7 +2938,6 @@ SQLITE_API SQLITE_DEPRECATED void *sqlite3_profile(
 ** interfaces [sqlite3_trace()] and [sqlite3_profile()], both of which
 ** are deprecated.
 */
-SQLITE_AVAILABLE(macos(10.12), ios(10.0), watchos(3.0), tvos(10.0))
 SQLITE_API int sqlite3_trace_v2(
   sqlite3*,
   unsigned uMask,
@@ -3325,13 +3260,8 @@ SQLITE_API int sqlite3_open_v2(
 ** VFS method, then the behavior of this routine is undefined and probably
 ** undesirable.
 */
-SQLITE_AVAILABLE(macos(10.8), ios(5.0))
 SQLITE_API const char *sqlite3_uri_parameter(const char *zFilename, const char *zParam);
-
-SQLITE_AVAILABLE(macos(10.8), ios(6.0))
 SQLITE_API int sqlite3_uri_boolean(const char *zFile, const char *zParam, int bDefault);
-
-SQLITE_AVAILABLE(macos(10.8), ios(6.0))
 SQLITE_API sqlite3_int64 sqlite3_uri_int64(const char*, const char*, sqlite3_int64);
 
 
@@ -3380,8 +3310,6 @@ SQLITE_API int sqlite3_errcode(sqlite3 *db);
 SQLITE_API int sqlite3_extended_errcode(sqlite3 *db);
 SQLITE_API const char *sqlite3_errmsg(sqlite3*);
 SQLITE_API const void *sqlite3_errmsg16(sqlite3*);
-
-SQLITE_AVAILABLE(macos(10.10), ios(8.2))
 SQLITE_API const char *sqlite3_errstr(int);
 
 /*
@@ -3481,9 +3409,9 @@ SQLITE_API int sqlite3_limit(sqlite3*, int id, int newVal);
 **
 ** [[SQLITE_LIMIT_VDBE_OP]] ^(<dt>SQLITE_LIMIT_VDBE_OP</dt>
 ** <dd>The maximum number of instructions in a virtual machine program
-** used to implement an SQL statement.  If [sqlite3_prepare_v2()] or
-** the equivalent tries to allocate space for more than this many opcodes
-** in a single prepared statement, an SQLITE_NOMEM error is returned.</dd>)^
+** used to implement an SQL statement.  This limit is not currently
+** enforced, though that might be added in some future release of
+** SQLite.</dd>)^
 **
 ** [[SQLITE_LIMIT_FUNCTION_ARG]] ^(<dt>SQLITE_LIMIT_FUNCTION_ARG</dt>
 ** <dd>The maximum number of arguments on a function.</dd>)^
@@ -3520,7 +3448,6 @@ SQLITE_API int sqlite3_limit(sqlite3*, int id, int newVal);
 #define SQLITE_LIMIT_VARIABLE_NUMBER           9
 #define SQLITE_LIMIT_TRIGGER_DEPTH            10
 #define SQLITE_LIMIT_WORKER_THREADS           11
-
 
 /*
 ** CAPI3REF: Compiling An SQL Statement
@@ -3664,8 +3591,6 @@ SQLITE_API int sqlite3_prepare16_v2(
 ** by passing it to [sqlite3_free()].
 */
 SQLITE_API const char *sqlite3_sql(sqlite3_stmt *pStmt);
-
-SQLITE_AVAILABLE(macos(10.12), ios(10.0), watchos(3.0), tvos(10.0))
 SQLITE_API char *sqlite3_expanded_sql(sqlite3_stmt *pStmt);
 
 /*
@@ -3697,12 +3622,7 @@ SQLITE_API char *sqlite3_expanded_sql(sqlite3_stmt *pStmt);
 ** sqlite3_stmt_readonly() to return true since, while those statements
 ** change the configuration of a database connection, they do not make 
 ** changes to the content of the database files on disk.
-** ^The sqlite3_stmt_readonly() interface returns true for [BEGIN] since
-** [BEGIN] merely sets internal flags, but the [BEGIN|BEGIN IMMEDIATE] and
-** [BEGIN|BEGIN EXCLUSIVE] commands do touch the database and so
-** sqlite3_stmt_readonly() returns false for those commands.
 */
-SQLITE_AVAILABLE(macos(10.7), ios(5.0))
 SQLITE_API int sqlite3_stmt_readonly(sqlite3_stmt *pStmt);
 
 /*
@@ -3724,7 +3644,6 @@ SQLITE_API int sqlite3_stmt_readonly(sqlite3_stmt *pStmt);
 ** for example, in diagnostic routines to search for prepared 
 ** statements that are holding a transaction open.
 */
-SQLITE_AVAILABLE(macos(10.8), ios(6.0))
 SQLITE_API int sqlite3_stmt_busy(sqlite3_stmt*);
 
 /*
@@ -3766,7 +3685,7 @@ SQLITE_API int sqlite3_stmt_busy(sqlite3_stmt*);
 ** The [sqlite3_value_blob | sqlite3_value_type()] family of
 ** interfaces require protected sqlite3_value objects.
 */
-typedef struct sqlite3_value sqlite3_value;
+typedef struct Mem sqlite3_value;
 
 /*
 ** CAPI3REF: SQL Function Context Object
@@ -3902,8 +3821,6 @@ SQLITE_API int sqlite3_bind_text64(sqlite3_stmt*, int, const char*, sqlite3_uint
                          void(*)(void*), unsigned char encoding);
 SQLITE_API int sqlite3_bind_value(sqlite3_stmt*, int, const sqlite3_value*);
 SQLITE_API int sqlite3_bind_zeroblob(sqlite3_stmt*, int, int n);
-
-SQLITE_AVAILABLE(macos(10.12), ios(10.0), watchos(3.0), tvos(10.0))
 SQLITE_API int sqlite3_bind_zeroblob64(sqlite3_stmt*, int, sqlite3_uint64);
 
 /*
@@ -3987,12 +3904,8 @@ SQLITE_API int sqlite3_clear_bindings(sqlite3_stmt*);
 ** METHOD: sqlite3_stmt
 **
 ** ^Return the number of columns in the result set returned by the
-** [prepared statement]. ^If this routine returns 0, that means the 
-** [prepared statement] returns no data (for example an [UPDATE]).
-** ^However, just because this routine returns a positive number does not
-** mean that one or more rows of data will be returned.  ^A SELECT statement
-** will always have a positive sqlite3_column_count() but depending on the
-** WHERE clause constraints and the table content, it might return no rows.
+** [prepared statement]. ^This routine returns 0 if pStmt is an SQL
+** statement that does not return data (for example an [UPDATE]).
 **
 ** See also: [sqlite3_data_count()]
 */
@@ -4588,8 +4501,6 @@ SQLITE_API int sqlite3_create_function16(
   void (*xStep)(sqlite3_context*,int,sqlite3_value**),
   void (*xFinal)(sqlite3_context*)
 );
-
-SQLITE_AVAILABLE(macos(10.7), ios(5.0))
 SQLITE_API int sqlite3_create_function_v2(
   sqlite3 *db,
   const char *zFunctionName,
@@ -4636,22 +4547,11 @@ SQLITE_API int sqlite3_create_function_v2(
 ** these functions, we will not explain what they do.
 */
 #ifndef SQLITE_OMIT_DEPRECATED
-SQLITE_DEPRECATED_NO_REPLACEMENT("Not supported", macos(10.6, 10.6), ios(3.0, 3.0), watchos(2.0, 2.0), tvos(9.0, 9.0))
 SQLITE_API SQLITE_DEPRECATED int sqlite3_aggregate_count(sqlite3_context*);
-
-SQLITE_DEPRECATED_NO_REPLACEMENT("Not supported", macos(10.6, 10.6), ios(3.0, 3.0), watchos(2.0, 2.0), tvos(9.0, 9.0))
 SQLITE_API SQLITE_DEPRECATED int sqlite3_expired(sqlite3_stmt*);
-
-SQLITE_DEPRECATED_NO_REPLACEMENT("Not supported", macos(10.6, 10.6), ios(3.0, 3.0), watchos(2.0, 2.0), tvos(9.0, 9.0))
 SQLITE_API SQLITE_DEPRECATED int sqlite3_transfer_bindings(sqlite3_stmt*, sqlite3_stmt*);
-
-SQLITE_DEPRECATED_NO_REPLACEMENT("Not supported", macos(10.6, 10.6), ios(3.0, 3.0), watchos(2.0, 2.0), tvos(9.0, 9.0))
 SQLITE_API SQLITE_DEPRECATED int sqlite3_global_recover(void);
-
-SQLITE_DEPRECATED_NO_REPLACEMENT("Not supported", macos(10.6, 10.6), ios(3.0, 3.0), watchos(2.0, 2.0), tvos(9.0, 9.0))
 SQLITE_API SQLITE_DEPRECATED void sqlite3_thread_cleanup(void);
-
-SQLITE_DEPRECATED_NO_REPLACEMENT("Not supported", macos(10.6, 10.6), ios(3.0, 3.0), watchos(2.0, 2.0), tvos(9.0, 9.0))
 SQLITE_API SQLITE_DEPRECATED int sqlite3_memory_alarm(void(*)(void*,sqlite3_int64,int),
                       void*,sqlite3_int64);
 #endif
@@ -4729,7 +4629,6 @@ SQLITE_API int sqlite3_value_numeric_type(sqlite3_value*);
 ** from the result of one [application-defined SQL function] into the
 ** input of another.
 */
-SQLITE_AVAILABLE(macos(10.12), ios(10.0), watchos(3.0), tvos(10.0))
 SQLITE_API unsigned int sqlite3_value_subtype(sqlite3_value*);
 
 /*
@@ -4746,10 +4645,7 @@ SQLITE_API unsigned int sqlite3_value_subtype(sqlite3_value*);
 ** previously obtained from [sqlite3_value_dup()].  ^If V is a NULL pointer
 ** then sqlite3_value_free(V) is a harmless no-op.
 */
-SQLITE_AVAILABLE(macos(10.12), ios(10.0), watchos(3.0), tvos(10.0))
 SQLITE_API sqlite3_value *sqlite3_value_dup(const sqlite3_value*);
-
-SQLITE_AVAILABLE(macos(10.12), ios(10.0), watchos(3.0), tvos(10.0))
 SQLITE_API void sqlite3_value_free(sqlite3_value*);
 
 /*
@@ -4839,11 +4735,10 @@ SQLITE_API sqlite3 *sqlite3_context_db_handle(sqlite3_context*);
 ** the compiled regular expression can be reused on multiple
 ** invocations of the same function.
 **
-** ^The sqlite3_get_auxdata(C,N) interface returns a pointer to the metadata
-** associated by the sqlite3_set_auxdata(C,N,P,X) function with the Nth argument
-** value to the application-defined function.  ^N is zero for the left-most
-** function argument.  ^If there is no metadata
-** associated with the function argument, the sqlite3_get_auxdata(C,N) interface
+** ^The sqlite3_get_auxdata() interface returns a pointer to the metadata
+** associated by the sqlite3_set_auxdata() function with the Nth argument
+** value to the application-defined function. ^If there is no metadata
+** associated with the function argument, this sqlite3_get_auxdata() interface
 ** returns a NULL pointer.
 **
 ** ^The sqlite3_set_auxdata(C,N,P,X) interface saves P as metadata for the N-th
@@ -4873,10 +4768,6 @@ SQLITE_API sqlite3 *sqlite3_context_db_handle(sqlite3_context*);
 ** ^(In practice, metadata is preserved between function calls for
 ** function parameters that are compile-time constants, including literal
 ** values and [parameters] and expressions composed from the same.)^
-**
-** The value of the N parameter to these interfaces should be non-negative.
-** Future enhancements may make use of negative N values to define new
-** kinds of function caching behavior.
 **
 ** These routines must be called from the same thread in which
 ** the SQL function is running.
@@ -5038,8 +4929,6 @@ SQLITE_API void sqlite3_result_text16le(sqlite3_context*, const void*, int,void(
 SQLITE_API void sqlite3_result_text16be(sqlite3_context*, const void*, int,void(*)(void*));
 SQLITE_API void sqlite3_result_value(sqlite3_context*, sqlite3_value*);
 SQLITE_API void sqlite3_result_zeroblob(sqlite3_context*, int n);
-
-SQLITE_AVAILABLE(macos(10.12), ios(10.0), watchos(3.0), tvos(10.0))
 SQLITE_API int sqlite3_result_zeroblob64(sqlite3_context*, sqlite3_uint64 n);
 
 
@@ -5055,7 +4944,6 @@ SQLITE_API int sqlite3_result_zeroblob64(sqlite3_context*, sqlite3_uint64 n);
 ** The number of subtype bytes preserved by SQLite might increase
 ** in future releases of SQLite.
 */
-SQLITE_AVAILABLE(macos(10.12), ios(10.0), watchos(3.0), tvos(10.0))
 SQLITE_API void sqlite3_result_subtype(sqlite3_context*,unsigned int);
 
 /*
@@ -5199,6 +5087,61 @@ SQLITE_API int sqlite3_collation_needed16(
   void(*)(void*,sqlite3*,int eTextRep,const void*)
 );
 
+#ifdef SQLITE_HAS_CODEC
+/*
+** Specify the key for an encrypted database.  This routine should be
+** called right after sqlite3_open().
+**
+** The code to implement this API is not available in the public release
+** of SQLite.
+*/
+SQLITE_API int sqlite3_key(
+  sqlite3 *db,                   /* Database to be rekeyed */
+  const void *pKey, int nKey     /* The key */
+);
+SQLITE_API int sqlite3_key_v2(
+  sqlite3 *db,                   /* Database to be rekeyed */
+  const char *zDbName,           /* Name of the database */
+  const void *pKey, int nKey     /* The key */
+);
+
+/*
+** Change the key on an open database.  If the current database is not
+** encrypted, this routine will encrypt it.  If pNew==0 or nNew==0, the
+** database is decrypted.
+**
+** The code to implement this API is not available in the public release
+** of SQLite.
+*/
+SQLITE_API int sqlite3_rekey(
+  sqlite3 *db,                   /* Database to be rekeyed */
+  const void *pKey, int nKey     /* The new key */
+);
+SQLITE_API int sqlite3_rekey_v2(
+  sqlite3 *db,                   /* Database to be rekeyed */
+  const char *zDbName,           /* Name of the database */
+  const void *pKey, int nKey     /* The new key */
+);
+
+/*
+** Specify the activation key for a SEE database.  Unless 
+** activated, none of the SEE routines will work.
+*/
+SQLITE_API void sqlite3_activate_see(
+  const char *zPassPhrase        /* Activation phrase */
+);
+#endif
+
+#ifdef SQLITE_ENABLE_CEROD
+/*
+** Specify the activation key for a CEROD database.  Unless 
+** activated, none of the CEROD routines will work.
+*/
+SQLITE_API void sqlite3_activate_cerod(
+  const char *zPassPhrase        /* Activation phrase */
+);
+#endif
+
 /*
 ** CAPI3REF: Suspend Execution For A Short Time
 **
@@ -5311,7 +5254,6 @@ SQLITE_API SQLITE_EXTERN char *sqlite3_temp_directory;
 ** made NULL or made to point to memory obtained from [sqlite3_malloc]
 ** or else the use of the [data_store_directory pragma] should be avoided.
 */
-SQLITE_AVAILABLE(macos(10.9), ios(6.0))
 SQLITE_API SQLITE_EXTERN char *sqlite3_data_directory;
 
 /*
@@ -5366,7 +5308,6 @@ SQLITE_API sqlite3 *sqlite3_db_handle(sqlite3_stmt*);
 ** will be an absolute pathname, even if the filename used
 ** to open the database originally was a URI or relative pathname.
 */
-SQLITE_AVAILABLE(macos(10.8), ios(6.0))
 SQLITE_API const char *sqlite3_db_filename(sqlite3 *db, const char *zDbName);
 
 /*
@@ -5377,7 +5318,6 @@ SQLITE_API const char *sqlite3_db_filename(sqlite3 *db, const char *zDbName);
 ** of connection D is read-only, 0 if it is read/write, or -1 if N is not
 ** the name of a database on connection D.
 */
-SQLITE_AVAILABLE(macos(10.8), ios(6.0))
 SQLITE_API int sqlite3_db_readonly(sqlite3 *db, const char *zDbName);
 
 /*
@@ -5474,7 +5414,7 @@ SQLITE_API void *sqlite3_rollback_hook(sqlite3*, void(*)(void *), void*);
 ** ^The update hook is not invoked when [WITHOUT ROWID] tables are modified.
 **
 ** ^In the current implementation, the update hook
-** is not invoked when conflicting rows are deleted because of an
+** is not invoked when duplication rows are deleted because of an
 ** [ON CONFLICT | ON CONFLICT REPLACE] clause.  ^Nor is the update hook
 ** invoked when rows are deleted using the [truncate optimization].
 ** The exceptions defined in this paragraph might change in a future
@@ -5536,8 +5476,7 @@ SQLITE_API void *sqlite3_update_hook(
 **
 ** See Also:  [SQLite Shared-Cache Mode]
 */
-SQLITE_DEPRECATED_NO_REPLACEMENT("Not supported", macos(10.6, 10.7), ios(3.0, 5.0), watchos(2.0, 2.0), tvos(9.0, 9.0))
-SQLITE_API int sqlite3_enable_shared_cache(int);
+SQLITE_API int sqlite3_enable_shared_cache(int) __OSX_AVAILABLE_BUT_DEPRECATED(__MAC_10_0, __MAC_10_7, __IPHONE_2_0, __IPHONE_5_0);
 
 /*
 ** CAPI3REF: Attempt To Free Heap Memory
@@ -5553,7 +5492,6 @@ SQLITE_API int sqlite3_enable_shared_cache(int);
 **
 ** See also: [sqlite3_db_release_memory()]
 */
-SQLITE_AVAILABLE(macos(10.8), ios(6.0))
 SQLITE_API int sqlite3_release_memory(int);
 
 /*
@@ -5621,7 +5559,6 @@ SQLITE_API int sqlite3_db_release_memory(sqlite3*);
 ** The circumstances under which SQLite will enforce the soft heap limit may
 ** changes in future releases of SQLite.
 */
-SQLITE_AVAILABLE(macos(10.7), ios(5.0))
 SQLITE_API sqlite3_int64 sqlite3_soft_heap_limit64(sqlite3_int64 N);
 
 /*
@@ -5633,7 +5570,6 @@ SQLITE_API sqlite3_int64 sqlite3_soft_heap_limit64(sqlite3_int64 N);
 ** only.  All new applications should use the
 ** [sqlite3_soft_heap_limit64()] interface rather than this one.
 */
-SQLITE_DEPRECATED_WITH_REPLACEMENT("sqlite3_soft_heap_limit64", macos(10.6, 10.7), ios(3.0, 5.0), watchos(2.0, 2.0), tvos(9.0, 9.0))
 SQLITE_API SQLITE_DEPRECATED void sqlite3_soft_heap_limit(int N);
 
 
@@ -5651,9 +5587,7 @@ SQLITE_API SQLITE_DEPRECATED void sqlite3_soft_heap_limit(int N);
 ** ^If the column-name parameter to sqlite3_table_column_metadata() is a
 ** NULL pointer, then this routine simply checks for the existence of the
 ** table and returns SQLITE_OK if the table exists and SQLITE_ERROR if it
-** does not.  If the table name parameter T in a call to
-** sqlite3_table_column_metadata(X,D,T,C,...) is NULL then the result is
-** undefined behavior.
+** does not.
 **
 ** ^The column is identified by the second, third and fourth parameters to
 ** this function. ^(The second parameter is either the name of the database
@@ -5832,7 +5766,6 @@ SQLITE_API int sqlite3_enable_load_extension(sqlite3 *db, int onoff);
 ** See also: [sqlite3_reset_auto_extension()]
 ** and [sqlite3_cancel_auto_extension()]
 */
-SQLITE_DEPRECATED_NO_REPLACEMENT("Process-global auto extensions are not supported on Apple platforms", macos(10.10, 10.10), ios(8.2, 8.2), watchos(2.0, 2.0), tvos(9.0, 9.0))
 SQLITE_API int sqlite3_auto_extension(void(*xEntryPoint)(void));
 
 /*
@@ -6263,12 +6196,6 @@ typedef struct sqlite3_blob sqlite3_blob;
 ** [database connection] error code and message accessible via 
 ** [sqlite3_errcode()] and [sqlite3_errmsg()] and related functions. 
 **
-** A BLOB referenced by sqlite3_blob_open() may be read using the
-** [sqlite3_blob_read()] interface and modified by using
-** [sqlite3_blob_write()].  The [BLOB handle] can be moved to a
-** different row of the same table using the [sqlite3_blob_reopen()]
-** interface.  However, the column, table, or database of a [BLOB handle]
-** cannot be changed after the [BLOB handle] is opened.
 **
 ** ^(If the row that a BLOB handle points to is modified by an
 ** [UPDATE], [DELETE], or by [ON CONFLICT] side-effects
@@ -6292,10 +6219,6 @@ typedef struct sqlite3_blob sqlite3_blob;
 **
 ** To avoid a resource leak, every open [BLOB handle] should eventually
 ** be released by a call to [sqlite3_blob_close()].
-**
-** See also: [sqlite3_blob_close()],
-** [sqlite3_blob_reopen()], [sqlite3_blob_read()],
-** [sqlite3_blob_bytes()], [sqlite3_blob_write()].
 */
 SQLITE_API int sqlite3_blob_open(
   sqlite3*,
@@ -6311,11 +6234,11 @@ SQLITE_API int sqlite3_blob_open(
 ** CAPI3REF: Move a BLOB Handle to a New Row
 ** METHOD: sqlite3_blob
 **
-** ^This function is used to move an existing [BLOB handle] so that it points
+** ^This function is used to move an existing blob handle so that it points
 ** to a different row of the same database table. ^The new row is identified
 ** by the rowid value passed as the second argument. Only the row can be
 ** changed. ^The database, table and column on which the blob handle is open
-** remain the same. Moving an existing [BLOB handle] to a new row is
+** remain the same. Moving an existing blob handle to a new row can be
 ** faster than closing the existing handle and opening a new one.
 **
 ** ^(The new row must meet the same criteria as for [sqlite3_blob_open()] -
@@ -6330,7 +6253,6 @@ SQLITE_API int sqlite3_blob_open(
 **
 ** ^This function sets the database handle error code and message.
 */
-SQLITE_AVAILABLE(macos(10.7), ios(5.0))
 SQLITE_API int sqlite3_blob_reopen(sqlite3_blob *, sqlite3_int64);
 
 /*
@@ -6864,7 +6786,6 @@ SQLITE_API int sqlite3_test_control(int op, ...);
 ** See also: [sqlite3_db_status()]
 */
 SQLITE_API int sqlite3_status(int op, int *pCurrent, int *pHighwater, int resetFlag);
-SQLITE_AVAILABLE(macos(10.11), ios(9.0))
 SQLITE_API int sqlite3_status64(
   int op,
   sqlite3_int64 *pCurrent,
@@ -7169,12 +7090,6 @@ SQLITE_API int sqlite3_stmt_status(sqlite3_stmt*, int op,int resetFlg);
 ** used as a proxy for the total work done by the prepared statement.
 ** If the number of virtual machine operations exceeds 2147483647
 ** then the value returned by this statement status code is undefined.
-**
-** [[SQLITE_STMTSTATUS_MEMUSED]] <dt>SQLITE_STMTSTATUS_MEMUSED</dt>
-** <dd>^This is the approximate number of bytes of heap memory
-** used to store the prepared statement.  ^This value is not actually
-** a counter, and so the resetFlg parameter to sqlite3_stmt_status()
-** is ignored when the opcode is SQLITE_STMTSTATUS_MEMUSED.
 ** </dd>
 ** </dl>
 */
@@ -7182,7 +7097,6 @@ SQLITE_API int sqlite3_stmt_status(sqlite3_stmt*, int op,int resetFlg);
 #define SQLITE_STMTSTATUS_SORT              2
 #define SQLITE_STMTSTATUS_AUTOINDEX         3
 #define SQLITE_STMTSTATUS_VM_STEP           4
-#define SQLITE_STMTSTATUS_MEMUSED           5
 
 /*
 ** CAPI3REF: Custom Page Cache Object
@@ -7750,10 +7664,7 @@ SQLITE_API int sqlite3_unlock_notify(
 ** strings in a case-independent fashion, using the same definition of "case
 ** independence" that SQLite uses internally when comparing identifiers.
 */
-SQLITE_AVAILABLE(macos(10.8), ios(6.0))
 SQLITE_API int sqlite3_stricmp(const char *, const char *);
-
-SQLITE_AVAILABLE(macos(10.7), ios(4.0))
 SQLITE_API int sqlite3_strnicmp(const char *, const char *, int);
 
 /*
@@ -7771,7 +7682,6 @@ SQLITE_API int sqlite3_strnicmp(const char *, const char *, int);
 **
 ** See also: [sqlite3_strlike()].
 */
-SQLITE_AVAILABLE(macos(10.10), ios(8.2))
 SQLITE_API int sqlite3_strglob(const char *zGlob, const char *zStr);
 
 /*
@@ -7795,7 +7705,6 @@ SQLITE_API int sqlite3_strglob(const char *zGlob, const char *zStr);
 **
 ** See also: [sqlite3_strglob()].
 */
-SQLITE_AVAILABLE(macos(10.12), ios(10.0), watchos(3.0), tvos(10.0))
 SQLITE_API int sqlite3_strlike(const char *zGlob, const char *zStr, unsigned int cEsc);
 
 /*
@@ -7819,7 +7728,6 @@ SQLITE_API int sqlite3_strlike(const char *zGlob, const char *zStr, unsigned int
 ** a few hundred characters, it will be truncated to the length of the
 ** buffer.
 */
-SQLITE_AVAILABLE(macos(10.7), ios(5.0))
 SQLITE_API void sqlite3_log(int iErrCode, const char *zFormat, ...);
 
 /*
@@ -7856,7 +7764,6 @@ SQLITE_API void sqlite3_log(int iErrCode, const char *zFormat, ...);
 ** [wal_autocheckpoint pragma] both invoke [sqlite3_wal_hook()] and will
 ** overwrite any prior [sqlite3_wal_hook()] settings.
 */
-SQLITE_AVAILABLE(macos(10.7), ios(5.0))
 SQLITE_API void *sqlite3_wal_hook(
   sqlite3*, 
   int(*)(void *,sqlite3*,const char*,int),
@@ -7892,7 +7799,6 @@ SQLITE_API void *sqlite3_wal_hook(
 ** is only necessary if the default setting is found to be suboptimal
 ** for a particular application.
 */
-SQLITE_AVAILABLE(macos(10.7), ios(5.0))
 SQLITE_API int sqlite3_wal_autocheckpoint(sqlite3 *db, int N);
 
 /*
@@ -7915,7 +7821,6 @@ SQLITE_API int sqlite3_wal_autocheckpoint(sqlite3 *db, int N);
 ** start a callback but which do not need the full power (and corresponding
 ** complication) of [sqlite3_wal_checkpoint_v2()].
 */
-SQLITE_AVAILABLE(macos(10.7), ios(5.0))
 SQLITE_API int sqlite3_wal_checkpoint(sqlite3 *db, const char *zDb);
 
 /*
@@ -8010,7 +7915,6 @@ SQLITE_API int sqlite3_wal_checkpoint(sqlite3 *db, const char *zDb);
 ** ^The [PRAGMA wal_checkpoint] command can be used to invoke this interface
 ** from SQL.
 */
-SQLITE_AVAILABLE(macos(10.8), ios(5.0))
 SQLITE_API int sqlite3_wal_checkpoint_v2(
   sqlite3 *db,                    /* Database handle */
   const char *zDb,                /* Name of attached database (or NULL) */
@@ -8047,7 +7951,6 @@ SQLITE_API int sqlite3_wal_checkpoint_v2(
 ** this function. (See [SQLITE_VTAB_CONSTRAINT_SUPPORT].)  Further options
 ** may be added in the future.
 */
-SQLITE_AVAILABLE(macos(10.8), ios(5.0))
 SQLITE_API int sqlite3_vtab_config(sqlite3*, int op, ...);
 
 /*
@@ -8101,7 +8004,6 @@ SQLITE_API int sqlite3_vtab_config(sqlite3*, int op, ...);
 ** of the SQL statement that triggered the call to the [xUpdate] method of the
 ** [virtual table].
 */
-SQLITE_AVAILABLE(macos(10.8), ios(5.0))
 SQLITE_API int sqlite3_vtab_on_conflict(sqlite3 *);
 
 /*
@@ -8207,7 +8109,6 @@ SQLITE_API int sqlite3_vtab_on_conflict(sqlite3 *);
 **
 ** See also: [sqlite3_stmt_scanstatus_reset()]
 */
-SQLITE_AVAILABLE(macos(10.11), ios(9.0))
 SQLITE_API int sqlite3_stmt_scanstatus(
   sqlite3_stmt *pStmt,      /* Prepared statement for which info desired */
   int idx,                  /* Index of loop to report on */
@@ -8224,7 +8125,6 @@ SQLITE_API int sqlite3_stmt_scanstatus(
 ** This API is only available if the library is built with pre-processor
 ** symbol [SQLITE_ENABLE_STMT_SCANSTATUS] defined.
 */
-SQLITE_AVAILABLE(macos(10.11), ios(9.0))
 SQLITE_API void sqlite3_stmt_scanstatus_reset(sqlite3_stmt*);
 
 /*
@@ -8257,7 +8157,6 @@ SQLITE_API void sqlite3_stmt_scanstatus_reset(sqlite3_stmt*);
 ** ^This function does not set the database handle error code or message
 ** returned by the [sqlite3_errcode()] and [sqlite3_errmsg()] functions.
 */
-SQLITE_AVAILABLE(macos(10.12), ios(10.0), watchos(3.0), tvos(10.0))
 SQLITE_API int sqlite3_db_cacheflush(sqlite3*);
 
 /*
@@ -8270,7 +8169,6 @@ SQLITE_API int sqlite3_db_cacheflush(sqlite3*);
 ** called to get back the underlying "errno" that caused the problem, such
 ** as ENOSPC, EAUTH, EISDIR, and so forth.  
 */
-SQLITE_AVAILABLE(macos(10.12), ios(10.0), watchos(3.0), tvos(10.0))
 SQLITE_API int sqlite3_system_errno(sqlite3*);
 
 /*
@@ -8326,7 +8224,6 @@ typedef struct sqlite3_rtree_query_info sqlite3_rtree_query_info;
 **
 **   SELECT ... FROM <rtree> WHERE <rtree col> MATCH $zGeom(... params ...)
 */
-SQLITE_AVAILABLE(macos(10.7), ios(5.0))
 SQLITE_API int sqlite3_rtree_geometry_callback(
   sqlite3 *db,
   const char *zGeom,
@@ -8353,7 +8250,6 @@ struct sqlite3_rtree_geometry {
 **
 **   SELECT ... FROM <rtree> WHERE <rtree col> MATCH $zQueryFunc(... params ...)
 */
-SQLITE_AVAILABLE(macos(10.10), ios(8.2))
 SQLITE_API int sqlite3_rtree_query_callback(
   sqlite3 *db,
   const char *zQueryFunc,
