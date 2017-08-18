@@ -1,19 +1,19 @@
 //
-//  TripScheduleCommand.swift
+//  RouteReverseCommand.swift
 //  SeptaSchedule
 //
-//  Created by Mark Broski on 8/15/17.
+//  Created by Mark Broski on 8/17/17.
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
 import Foundation
-public typealias TripScheduleCommandCompletion = ([Trip]?, Error?) -> Void
-public class TripScheduleCommand: BaseCommand {
 
-    public static let sharedInstance = TripScheduleCommand()
+public class TripReverseCommand: BaseCommand {
 
-    public func tripSchedules(forTransitMode transitMode: TransitMode, route: Route, selectedStart: Stop, selectedEnd: Stop, scheduleType: ScheduleType, completion: @escaping TripScheduleCommandCompletion) {
-        let sqlQuery = TripScheduleSQLQuery(forTransitMode: transitMode, route: route, selectedStart: selectedStart, selectedEnd: selectedEnd, scheduleType: scheduleType)
+    public static let sharedInstance = TripReverseCommand()
+
+    public func reverseTrip(forTransitMode transitMode: TransitMode, tripStopId: TripStopId, scheduleType: ScheduleType, completion: @escaping TripScheduleCommandCompletion) {
+        let sqlQuery = TripReverseSQLQuery(forTransitMode: transitMode, tripStopId: tripStopId, scheduleType: scheduleType)
         retrieveResults(sqlQuery: sqlQuery, userCompletion: completion) { (statement) -> [Trip] in
             var trips = [Trip]()
             for row in statement {

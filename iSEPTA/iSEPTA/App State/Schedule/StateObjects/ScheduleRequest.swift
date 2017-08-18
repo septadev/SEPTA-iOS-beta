@@ -10,15 +10,16 @@ struct ScheduleRequest {
     let selectedEnd: Stop?
     let stopToEdit: StopToSelect?
     let scheduleType: ScheduleType?
+    let reverseStops: Bool
 
-    init(transitMode: TransitMode? = nil, selectedRoute: Route? = nil, selectedStart: Stop? = nil,
-         selectedEnd: Stop? = nil, stopToEdit: StopToSelect? = nil, scheduleType: ScheduleType? = nil) {
+    init(transitMode: TransitMode? = nil, selectedRoute: Route? = nil, selectedStart: Stop? = nil, selectedEnd: Stop? = nil, stopToEdit: StopToSelect? = nil, scheduleType: ScheduleType? = .weekday, reverseStops: Bool = false) {
         self.transitMode = transitMode
         self.selectedRoute = selectedRoute
         self.selectedStart = selectedStart
         self.selectedEnd = selectedEnd
         self.stopToEdit = stopToEdit
         self.scheduleType = scheduleType
+        self.reverseStops = reverseStops
     }
 }
 
@@ -32,7 +33,7 @@ func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
     case (.some, .some):
         areEqual = lhs.transitMode! == rhs.transitMode!
     default:
-        areEqual = false
+        return false
     }
     guard areEqual else { return false }
 
@@ -42,7 +43,7 @@ func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
     case (.some, .some):
         areEqual = lhs.selectedRoute! == rhs.selectedRoute!
     default:
-        areEqual = false
+        return false
     }
     guard areEqual else { return false }
 
@@ -52,7 +53,7 @@ func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
     case (.some, .some):
         areEqual = lhs.selectedStart! == rhs.selectedStart!
     default:
-        areEqual = false
+        return false
     }
     guard areEqual else { return false }
 
@@ -62,7 +63,7 @@ func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
     case (.some, .some):
         areEqual = lhs.selectedEnd! == rhs.selectedEnd!
     default:
-        areEqual = false
+        return false
     }
     guard areEqual else { return false }
 
@@ -72,18 +73,26 @@ func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
     case (.some, .some):
         areEqual = lhs.stopToEdit! == rhs.stopToEdit!
     default:
-        areEqual = false
+        return false
     }
     guard areEqual else { return false }
+
     switch (lhs.scheduleType, rhs.scheduleType) {
     case (.none, .none):
         areEqual = true
     case (.some, .some):
         areEqual = lhs.scheduleType! == rhs.scheduleType!
     default:
+        return false
+    }
+    guard areEqual else { return false }
+
+    if lhs.reverseStops == rhs.reverseStops {
+        areEqual = true
+    } else {
         areEqual = false
     }
     guard areEqual else { return false }
-    print("Schedule Requests are equal")
+
     return areEqual
 }

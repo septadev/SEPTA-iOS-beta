@@ -118,4 +118,8 @@ class BusCommandTests: XCTestCase {
      }
      }
      }*/
+
+    func testThis() {
+        XCTAssertTrue(true)
+    }
 }

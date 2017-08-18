@@ -65,3 +65,19 @@ struct ScheduleTypeSelected: ScheduleAction {
     let scheduleType: ScheduleType
     let description = "change from weekday, saturday, sunday"
 }
+
+struct ReverseStops: ScheduleAction {
+    let description = "User wants to reverse starts to the destination becomes the start and vice versa"
+}
+
+struct ReverseLoaded: ScheduleAction {
+    let scheduleRequest: ScheduleRequest
+    let trips: [Trip]
+    let description = "Database has returned reverse stops"
+    let error: String?
+}
+
+struct ResetSchedule: ScheduleAction {
+
+    let description = "The User wants to reset the schedule"
+}

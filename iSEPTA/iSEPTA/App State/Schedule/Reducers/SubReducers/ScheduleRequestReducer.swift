@@ -25,6 +25,10 @@ struct ScheduleRequestReducer {
             newScheduleRequest = reduceTripEndSelected(action: action, scheduleRequest: scheduleRequest)
         case let action as ScheduleTypeSelected:
             newScheduleRequest = reduceScheduleTypeSelected(action: action, scheduleRequest: scheduleRequest)
+        case let action as ReverseStops:
+            newScheduleRequest = reduceReverseStops(action: action, scheduleRequest: scheduleRequest)
+        case let action as ResetSchedule:
+            newScheduleRequest = reduceResetSchedule(action: action, scheduleRequest: scheduleRequest)
         default:
             newScheduleRequest = scheduleRequest
         }
@@ -40,7 +44,7 @@ struct ScheduleRequestReducer {
     }
 
     static func reduceTripStartSelected(action: TripStartSelected, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: action.selectedStart)
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: action.selectedStart, stopToEdit: nil)
     }
 
     static func reduceCurrentStopToEdit(action: CurrentStopToEdit, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
@@ -48,10 +52,18 @@ struct ScheduleRequestReducer {
     }
 
     static func reduceTripEndSelected(action: TripEndSelected, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: scheduleRequest.selectedStart, selectedEnd: action.selectedEnd, scheduleType: .weekday)
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: scheduleRequest.selectedStart, selectedEnd: action.selectedEnd, stopToEdit: nil, scheduleType: .weekday)
     }
 
     static func reduceScheduleTypeSelected(action: ScheduleTypeSelected, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
         return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: scheduleRequest.selectedStart, selectedEnd: scheduleRequest.selectedEnd, scheduleType: action.scheduleType)
+    }
+
+    static func reduceReverseStops(action _: ReverseStops, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: scheduleRequest.selectedStart, selectedEnd: scheduleRequest.selectedEnd, scheduleType: scheduleRequest.scheduleType, reverseStops: true)
+    }
+
+    static func reduceResetSchedule(action _: ResetSchedule, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: nil, selectedStart: nil, selectedEnd: nil, scheduleType: .weekday, reverseStops: false)
     }
 }

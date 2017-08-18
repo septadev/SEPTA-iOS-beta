@@ -37,9 +37,9 @@ struct ScheduleDataReducer {
 
     static func reduceRoutesLoaded(action: RoutesLoaded, scheduleData: ScheduleData) -> ScheduleData {
         let scheduleData = ScheduleData(availableRoutes: action.routes,
-                                        availableStarts: nil,
-                                        availableStops: nil,
-                                        availableTrips: nil,
+                                        availableStarts: scheduleData.availableStarts,
+                                        availableStops: scheduleData.availableStops,
+                                        availableTrips: scheduleData.availableTrips,
                                         errorString: action.error)
         return scheduleData
     }
@@ -47,8 +47,8 @@ struct ScheduleDataReducer {
     static func reduceTripStartsLoaded(action: TripStartsLoaded, scheduleData: ScheduleData) -> ScheduleData {
         let scheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
                                         availableStarts: action.availableStarts,
-                                        availableStops: nil,
-                                        availableTrips: nil,
+                                        availableStops: scheduleData.availableStops,
+                                        availableTrips: scheduleData.availableTrips,
                                         errorString: action.error)
         return scheduleData
     }
@@ -57,7 +57,7 @@ struct ScheduleDataReducer {
         let scheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
                                         availableStarts: scheduleData.availableStarts,
                                         availableStops: action.availableStops,
-                                        availableTrips: nil,
+                                        availableTrips: scheduleData.availableTrips,
                                         errorString: action.error)
         return scheduleData
     }

@@ -15,95 +15,122 @@ class ScheduleDataProvider: StoreSubscriber {
     func subscribe() {
 
         store.subscribe(self) {
-            $0.select { $0.scheduleState.scheduleRequest }
+            $0.select { $0.scheduleState.scheduleRequest } // .skipRepeats { $0 != $1 }
         }
     }
 
     func newState(state: StoreSubscriberStateType) {
-        guard let scheduleRequest = state else { return }
+        guard let scheduleRequest = state, currentScheduleRequest != scheduleRequest else { return }
         print("New State in Schedule Data Provider")
 
-        currentScheduleRequest = processSelectedRoute(scheduleRequest: scheduleRequest)
+        processSelectedRoute(scheduleRequest: scheduleRequest)
+        processSelectedTripStart(scheduleRequest: scheduleRequest)
+        processSelectedTripEnd(scheduleRequest: scheduleRequest)
+        processSelectedTrip(scheduleRequest: scheduleRequest)
+        processReverseTrip(scheduleRequest: scheduleRequest)
+
+        currentScheduleRequest = scheduleRequest
     }
 
-    func processSelectedRoute(scheduleRequest: ScheduleRequest) -> ScheduleRequest {
+    func processSelectedRoute(scheduleRequest: ScheduleRequest) {
+        let prereqsExist = prerequisitesExistForRoutes(scheduleRequest: scheduleRequest)
+        let prereqsChanged = prerequisitesForRoutesHaveChanged(scheduleRequest: scheduleRequest)
 
-        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.transitMode, newValue: scheduleRequest.transitMode)
-
-        switch comparisonResult {
-        case .bothNonNilAndEqual, .bothNil:
-            break
-        case .newIsNil:
+        if prereqsExist && prereqsChanged {
             clearRoutes()
-        default:
             retrieveAvailableRoutes(scheduleRequest: scheduleRequest)
         }
-
-        return processSelectedTripStart(scheduleRequest: scheduleRequest)
     }
 
-    func processSelectedTripStart(scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.selectedRoute, newValue: scheduleRequest.selectedRoute)
+    func processSelectedTripStart(scheduleRequest: ScheduleRequest) {
+        let prereqsExist = prerequisitesExistForTripStarts(scheduleRequest: scheduleRequest)
+        let prereqsChanged = prerequisitesForTripStartsHaveChanged(scheduleRequest: scheduleRequest)
 
-        switch comparisonResult {
-        case .bothNonNilAndEqual, .bothNil:
-            break
-        case .newIsNil:
+        if prereqsExist && prereqsChanged {
             clearStartingStops()
-        default:
             retrieveStartingStopsForRoute(scheduleRequest: scheduleRequest)
         }
-
-        return processSelectedTripEnd(scheduleRequest: scheduleRequest)
     }
 
-    func processSelectedTripEnd(scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.selectedStart, newValue: scheduleRequest.selectedStart)
+    func processSelectedTripEnd(scheduleRequest: ScheduleRequest) {
+        let prereqsExist = prerequisitesExistForTripEnds(scheduleRequest: scheduleRequest)
+        let prereqsChanged = prerequisitesForTripEndsHaveChanged(scheduleRequest: scheduleRequest)
 
-        switch comparisonResult {
-        case .bothNonNilAndEqual, .bothNil:
-            break
-        case .newIsNil:
+        if prereqsExist && prereqsChanged {
             clearEndingStops()
-        default:
             retrieveEndingStopsForRoute(scheduleRequest: scheduleRequest)
         }
-
-        return processSelectedTrip(scheduleRequest: scheduleRequest)
     }
 
-    func processSelectedTrip(scheduleRequest: ScheduleRequest) -> ScheduleRequest {
+    func processSelectedTrip(scheduleRequest: ScheduleRequest) {
+        let prereqsExist = prerequisitesExistForTrips(scheduleRequest: scheduleRequest)
+        let prereqsChanged = prerequisitesForTripsHaveChanged(scheduleRequest: scheduleRequest)
 
-        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.selectedEnd, newValue: scheduleRequest.selectedEnd)
-
-        switch comparisonResult {
-        case .bothNonNilAndEqual, .bothNil:
-            break
-        case .newIsNil:
+        if prereqsExist && prereqsChanged {
             clearTrips()
-        default:
             retrieveTripsForRoute(scheduleRequest: scheduleRequest)
         }
-
-        return processSelectedScheduleType(scheduleRequest: scheduleRequest)
     }
 
-    func processSelectedScheduleType(scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-
-        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.scheduleType, newValue: scheduleRequest.scheduleType)
-
-        switch comparisonResult {
-        case .bothNonNilAndEqual, .bothNil:
-            break
-        case .newIsNil:
-            clearTrips()
-        default:
-            retrieveTripsForRoute(scheduleRequest: scheduleRequest, scheduleType: scheduleRequest.scheduleType!)
+    func processReverseTrip(scheduleRequest: ScheduleRequest) {
+        if scheduleRequest.reverseStops == true {
+            reverseTrip(scheduleRequest: scheduleRequest)
         }
-
-        return scheduleRequest
     }
 
+    // MARK: - Prerequisites Exist
+    func isStopToEditUnchanged(scheduleRequest: ScheduleRequest) -> Bool {
+        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.stopToEdit, newValue: scheduleRequest.stopToEdit)
+        return comparisonResult.equalityResult()
+    }
+
+    func prerequisitesExistForRoutes(scheduleRequest: ScheduleRequest) -> Bool {
+        return scheduleRequest.transitMode != nil
+    }
+
+    func prerequisitesExistForTripStarts(scheduleRequest: ScheduleRequest) -> Bool {
+        return scheduleRequest.transitMode != nil &&
+            scheduleRequest.selectedRoute != nil && scheduleRequest.stopToEdit == nil
+    }
+
+    func prerequisitesExistForTripEnds(scheduleRequest: ScheduleRequest) -> Bool {
+        return scheduleRequest.transitMode != nil &&
+            scheduleRequest.selectedRoute != nil &&
+            scheduleRequest.selectedStart != nil && scheduleRequest.stopToEdit == nil
+    }
+
+    func prerequisitesExistForTrips(scheduleRequest: ScheduleRequest) -> Bool {
+        return scheduleRequest.transitMode != nil &&
+            scheduleRequest.selectedRoute != nil &&
+            scheduleRequest.selectedStart != nil &&
+            scheduleRequest.selectedEnd != nil &&
+            scheduleRequest.scheduleType != nil
+    }
+
+    // MARK: -  Prerequisites Have Changed
+
+    func prerequisitesForRoutesHaveChanged(scheduleRequest: ScheduleRequest) -> Bool {
+        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.transitMode, newValue: scheduleRequest.transitMode)
+        return !comparisonResult.equalityResult()
+    }
+
+    func prerequisitesForTripStartsHaveChanged(scheduleRequest: ScheduleRequest) -> Bool {
+        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.selectedRoute, newValue: scheduleRequest.selectedRoute)
+        return !comparisonResult.equalityResult()
+    }
+
+    func prerequisitesForTripEndsHaveChanged(scheduleRequest: ScheduleRequest) -> Bool {
+        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.selectedStart, newValue: scheduleRequest.selectedStart)
+        return !comparisonResult.equalityResult()
+    }
+
+    func prerequisitesForTripsHaveChanged(scheduleRequest: ScheduleRequest) -> Bool {
+        let selectedEndComparison = Optionals.optionalCompare(currentValue: currentScheduleRequest.selectedEnd, newValue: scheduleRequest.selectedEnd)
+        let scheduleTypeComparison = Optionals.optionalCompare(currentValue: currentScheduleRequest.scheduleType, newValue: scheduleRequest.scheduleType)
+        return !selectedEndComparison.equalityResult() || !scheduleTypeComparison.equalityResult()
+    }
+
+    // MARK: - Clear out existing data
     func clearRoutes() {
         DispatchQueue.main.async {
             let routesLoadedAction = RoutesLoaded(routes: nil, error: nil)
@@ -132,7 +159,7 @@ class ScheduleDataProvider: StoreSubscriber {
         }
     }
 
-    // MARK: - Retrieve Routes
+    // MARK: - Retrieve Data
 
     func retrieveAvailableRoutes(scheduleRequest: ScheduleRequest) {
         clearRoutes()
@@ -158,11 +185,42 @@ class ScheduleDataProvider: StoreSubscriber {
         }
     }
 
-    func retrieveTripsForRoute(scheduleRequest: ScheduleRequest, scheduleType: ScheduleType = .weekday) {
+    func retrieveTripsForRoute(scheduleRequest: ScheduleRequest) {
         clearTrips()
-        TripScheduleCommand.sharedInstance.tripSchedules(forTransitMode: scheduleRequest.transitMode!, route: scheduleRequest.selectedRoute!, selectedStart: scheduleRequest.selectedStart!, selectedEnd: scheduleRequest.selectedEnd!, scheduleType: scheduleType) { trips, error in
+        TripScheduleCommand.sharedInstance.tripSchedules(forTransitMode: scheduleRequest.transitMode!, route: scheduleRequest.selectedRoute!, selectedStart: scheduleRequest.selectedStart!, selectedEnd: scheduleRequest.selectedEnd!, scheduleType: scheduleRequest.scheduleType!) { trips, error in
             let action = TripsLoaded(availableTrips: trips, error: error?.localizedDescription)
             store.dispatch(action)
+        }
+    }
+
+    // MARK: - Reverse Trip
+
+    func reverseTrip(scheduleRequest: ScheduleRequest) {
+        clearTrips()
+        guard let transitMode = scheduleRequest.transitMode,
+            let selectedRoute = scheduleRequest.selectedRoute,
+            let selectedStart = scheduleRequest.selectedStart,
+            let selectedEnd = scheduleRequest.selectedEnd,
+            let scheduleType = scheduleRequest.scheduleType else { return }
+
+        let tripStopId = TripStopId(start: selectedStart.stopId, end: selectedEnd.stopId)
+
+        StopReverseCommand.sharedInstance.reverseStops(forTransitMode: transitMode, tripStopId: tripStopId) { tripStopIds, _ in
+            guard let tripStopIds = tripStopIds, let tripStopId = tripStopIds.first else { return }
+            TripReverseCommand.sharedInstance.reverseTrip(forTransitMode: transitMode, tripStopId: tripStopId, scheduleType: scheduleType) { trips, _ in
+                guard let reversedTrips = trips else { return }
+                StopsByStopIdCommand.sharedInstance.retrieveStops(forTransitMode: transitMode, tripStopId: tripStopId) { stops, _ in
+                    guard let stops = stops,
+                        let newStart = stops.filter({ $0.stopId == tripStopId.start }).first,
+                        let newEnd = stops.filter({ $0.stopId == tripStopId.end }).first else { return }
+                    ReverseRouteCommand.sharedInstance.reverseRoute(forTransitMode: transitMode, route: selectedRoute) { routes, error in
+                        guard let routes = routes, let newRoute = routes.first else { return }
+                        let newScheduleRequest = ScheduleRequest(transitMode: transitMode, selectedRoute: newRoute, selectedStart: newStart, selectedEnd: newEnd, scheduleType: scheduleType, reverseStops: false)
+                        let action = ReverseLoaded(scheduleRequest: newScheduleRequest, trips: reversedTrips, error: error?.localizedDescription)
+                        store.dispatch(action)
+                    }
+                }
+            }
         }
     }
 

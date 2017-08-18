@@ -373,12 +373,15 @@ SearchTextBox</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUh-d4-gsx">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUh-d4-gsx" userLabel="Reverse">
                                         <rect key="frame" x="300" y="53.5" width="60" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="k2B-og-VkJ"/>
                                         </constraints>
-                                        <state key="normal" title="Favorite"/>
+                                        <state key="normal" title="Reverse"/>
+                                        <connections>
+                                            <action selector="reverseStopsButtonTapped:" destination="9ZE-6T-hsR" eventType="touchUpInside" id="qCH-F0-s4s"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>

@@ -31,6 +31,10 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet var alertsIcon: UIBarButtonItem!
 
+    @IBAction func reverseStopsButtonTapped(_: Any) {
+        store.dispatch(ReverseStops())
+    }
+
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         let rowCount = viewModel.numberOfRows()
         if rowCount > 0 {

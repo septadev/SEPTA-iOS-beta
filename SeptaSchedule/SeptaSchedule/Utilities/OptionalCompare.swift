@@ -34,10 +34,10 @@ public enum OptionalCompareResult {
     case bothNonNilAndEqual
     case bothNonNilAndDifferent
 
-    func equalityResult() -> Bool {
+    public func equalityResult() -> Bool {
         switch self {
         case .currentIsNil, .newIsNil, .bothNonNilAndDifferent: return false
-        case .bothNil, .bothNonNilAndEqual: return false
+        case .bothNil, .bothNonNilAndEqual: return true
         }
     }
 }

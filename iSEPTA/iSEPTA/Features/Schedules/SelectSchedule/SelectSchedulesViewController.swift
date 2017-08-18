@@ -16,6 +16,7 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
     }
 
     @IBAction func resetButtonTapped(_: Any) {
+        store.dispatch(ResetSchedule())
     }
 
     let cellId = "singleStringCell"

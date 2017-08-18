@@ -9,6 +9,13 @@ fileprivate typealias Data = ScheduleDataReducer
 struct ScheduleReducer {
 
     static func main(action: Action, state: ScheduleState?) -> ScheduleState {
+        if let action = action as? ReverseLoaded {
+
+            return ScheduleState(
+                scheduleRequest: action.scheduleRequest,
+                scheduleData: ScheduleData(availableRoutes: nil, availableStarts: nil, availableStops: nil, availableTrips: nil, errorString: action.error)
+            )
+        }
 
         if let newState = state {
             guard let action = action as? ScheduleAction,
