@@ -1,19 +1,62 @@
 SELECT
-  S.stop_id stopId,
-  S.stop_name stopName,
-  cast (S.stop_lat as decimal) stopLatitude,
-  cast (S.stop_lon as decimal) stopLongitude,
-  case when S.wheelchair_boarding = '1' then 1 else 0  end wheelchairBoarding,
-  MAX(CASE WHEN T.service_id = '1'
-    THEN 1 else 0 END) weekdayService,
-  MAX(CASE WHEN
-    T.service_id = '2'
-    THEN 1  else 0 END) saturdayService,
-  MAX(CASE WHEN
-    T.service_id = '3'
-    THEN 1  else 0 END) AS sundayService
-from
-  stop_times_rail ST join trips_rail T on  T.trip_id = ST.trip_id
-  join stops_rail S on ST.stop_id = S.stop_id
-WHERE T.route_id = 'CHW' AND direction_id = '0'
-GROUP BY S.stop_id, S.stop_name, S.stop_lat, S.stop_lon;
+Start.trip_id, stop.trip_id,
+  start.arrival_time DepartureTime,
+Stop.arrival_time  ArrivalTime
+FROM
+
+(SELECT
+T.trip_id,
+ST.arrival_time,
+ T.service_id,
+  T.direction_id
+FROM
+stop_times_rail ST
+JOIN trips_rail T
+ON ST.trip_id = T.trip_id
+WHERE ST.stop_id = 90518 AND T.service_id = 1 and T.direction_id = 0) Start
+
+JOIN (SELECT
+T.trip_id,
+ST.arrival_time,
+  T.service_id,
+  T.direction_id
+FROM
+stop_times_rail ST
+JOIN trips_rail T
+ON ST.trip_id = T.trip_id
+WHERE stop_id = 90521 AND T.service_id = 1 and T.direction_id = 0) Stop
+ON start.trip_id = stop.trip_id and start.service_id = stop.service_id and start.direction_id = stop.direction_id;
+
+
+
+SELECT
+start.arrival_time DepartureTime,
+Stop.arrival_time  ArrivalTime
+FROM
+
+(SELECT
+T.trip_id,
+ST.arrival_time
+FROM
+stop_times_rail ST
+JOIN trips_rail T
+ON ST.trip_id = T.trip_id
+WHERE ST.stop_id = 90522 AND T.service_id = 1 and T.direction_id = 0) Start
+
+JOIN (SELECT
+T.trip_id,
+ST.arrival_time
+FROM
+stop_times_rail ST
+JOIN trips_rail T
+ON ST.trip_id = T.trip_id
+WHERE stop_id = 90007 AND T.service_id = 1 and T.direction_id = 0) Stop
+ON start.trip_id = stop.trip_id
+
+group by start.arrival_time,Stop.arrival_time
+ORDER BY DepartureTime;
+
+select stop_id from stops_rail where stop_name = 'Overbrook';  -- 90522
+select stop_id from stops_rail where stop_name = 'Temple University';  --90007
+select stop_id from stops_rail where stop_name = 'Jefferson Station';  --90006
+

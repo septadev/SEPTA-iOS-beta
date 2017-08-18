@@ -2,7 +2,6 @@
 
 
 
-
 SELECT
 start.arrival_time DepartureTime,
 Stop.arrival_time  ArrivalTime
@@ -26,4 +25,6 @@ JOIN trips_rail T
 ON ST.trip_id = T.trip_id
 WHERE stop_id = :end_stop_id AND T.service_id = :service_id and T.direction_id = :direction_id) Stop
 ON start.trip_id = stop.trip_id
+
+
 ORDER BY DepartureTime;
