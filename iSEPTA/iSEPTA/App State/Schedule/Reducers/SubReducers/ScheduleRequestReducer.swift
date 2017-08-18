@@ -38,38 +38,38 @@ struct ScheduleRequestReducer {
     }
 
     static func reduceDatabaseLoaded(action _: DatabaseLoaded, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-        return ScheduleRequest(transitMode: scheduleRequest.transitMode, reloadDatabase: true)
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, databaseIsLoaded: true)
     }
 
-    static func reduceTransitModeSelected(action: TransitModeSelected, scheduleRequest _: ScheduleRequest) -> ScheduleRequest {
-        return ScheduleRequest(transitMode: action.transitMode, selectedRoute: nil, selectedStart: nil, selectedEnd: nil)
+    static func reduceTransitModeSelected(action: TransitModeSelected, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
+        return ScheduleRequest(transitMode: action.transitMode, selectedRoute: nil, selectedStart: nil, selectedEnd: nil, databaseIsLoaded: scheduleRequest.databaseIsLoaded)
     }
 
     static func reduceRouteSelected(action: RouteSelected, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: action.selectedRoute, reloadDatabase: false)
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: action.selectedRoute, databaseIsLoaded: scheduleRequest.databaseIsLoaded)
     }
 
     static func reduceTripStartSelected(action: TripStartSelected, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: action.selectedStart, stopToEdit: nil)
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: action.selectedStart, stopToEdit: nil, databaseIsLoaded: scheduleRequest.databaseIsLoaded)
     }
 
     static func reduceCurrentStopToEdit(action: CurrentStopToEdit, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: scheduleRequest.selectedStart, stopToEdit: action.stopToEdit)
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: scheduleRequest.selectedStart, stopToEdit: action.stopToEdit, databaseIsLoaded: scheduleRequest.databaseIsLoaded)
     }
 
     static func reduceTripEndSelected(action: TripEndSelected, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: scheduleRequest.selectedStart, selectedEnd: action.selectedEnd, stopToEdit: nil, scheduleType: .weekday)
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: scheduleRequest.selectedStart, selectedEnd: action.selectedEnd, stopToEdit: nil, scheduleType: .weekday, databaseIsLoaded: scheduleRequest.databaseIsLoaded)
     }
 
     static func reduceScheduleTypeSelected(action: ScheduleTypeSelected, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: scheduleRequest.selectedStart, selectedEnd: scheduleRequest.selectedEnd, scheduleType: action.scheduleType)
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: scheduleRequest.selectedStart, selectedEnd: scheduleRequest.selectedEnd, scheduleType: action.scheduleType, databaseIsLoaded: scheduleRequest.databaseIsLoaded)
     }
 
     static func reduceReverseStops(action _: ReverseStops, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: scheduleRequest.selectedStart, selectedEnd: scheduleRequest.selectedEnd, scheduleType: scheduleRequest.scheduleType, reverseStops: true)
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: scheduleRequest.selectedStart, selectedEnd: scheduleRequest.selectedEnd, scheduleType: scheduleRequest.scheduleType, reverseStops: true, databaseIsLoaded: scheduleRequest.databaseIsLoaded)
     }
 
     static func reduceResetSchedule(action _: ResetSchedule, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: nil, selectedStart: nil, selectedEnd: nil, scheduleType: .weekday, reverseStops: false)
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: nil, selectedStart: nil, selectedEnd: nil, scheduleType: .weekday, reverseStops: false, databaseIsLoaded: scheduleRequest.databaseIsLoaded)
     }
 }

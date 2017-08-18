@@ -35,15 +35,16 @@ public class DatabaseFileManager {
         let message: String
         if databaseFileExistsInDocumentsDirectory {
             message = "The schedule database is good to go"
+            endCompletion?("Database is loaded")
         } else {
-            moveDatabase(completion: endCompletion)
+            moveDatabase(endCompletion: endCompletion)
             message = "Please allow a few moments to get the database set up"
         }
 
         startCompletion?(message)
     }
 
-    func moveDatabase(completion: ((String) -> Void)?) {
+    func moveDatabase(endCompletion: ((String) -> Void)?) {
 
         var message: String = "The database has been successfully moved."
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
@@ -54,14 +55,14 @@ public class DatabaseFileManager {
                 try Zip.unzipFile(preloadedURL, destination: documentsURL, overwrite: false, password: nil, progress: { (progress) -> Void in
                     if progress == 1 {
                         DispatchQueue.main.async {
-                            completion?(message)
+                            endCompletion?(message)
                         }
                     }
                 })
             } catch {
                 message = error.localizedDescription
                 DispatchQueue.main.async {
-                    completion?(message)
+                    endCompletion?(message)
                 }
             }
         }

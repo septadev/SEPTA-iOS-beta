@@ -5,12 +5,16 @@ import SeptaSchedule
 
 struct ScheduleData {
     let availableRoutes: [Route]?
+
     let availableStarts: [Stop]?
     let availableStops: [Stop]?
     let availableTrips: [Trip]?
     let errorString: String?
 
     init(availableRoutes: [Route]? = nil, availableStarts: [Stop]? = nil, availableStops: [Stop]? = nil, availableTrips: [Trip]? = nil, errorString: String? = nil) {
+        if availableRoutes == nil {
+            let i = 0
+        }
         self.availableRoutes = availableRoutes
         self.availableStarts = availableStarts
         self.availableStops = availableStops

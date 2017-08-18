@@ -22,12 +22,11 @@ class ScheduleDataProvider: StoreSubscriber {
     func newState(state: StoreSubscriberStateType) {
         guard let scheduleRequest = state, currentScheduleRequest != scheduleRequest else { return }
         print("New State in Schedule Data Provider")
-
+        processReverseTrip(scheduleRequest: scheduleRequest)
         processSelectedRoute(scheduleRequest: scheduleRequest)
         processSelectedTripStart(scheduleRequest: scheduleRequest)
         processSelectedTripEnd(scheduleRequest: scheduleRequest)
         processSelectedTrip(scheduleRequest: scheduleRequest)
-        processReverseTrip(scheduleRequest: scheduleRequest)
 
         currentScheduleRequest = scheduleRequest
     }
@@ -37,7 +36,7 @@ class ScheduleDataProvider: StoreSubscriber {
         let prereqsChanged = prerequisitesForRoutesHaveChanged(scheduleRequest: scheduleRequest)
 
         if prereqsExist && prereqsChanged {
-            clearRoutes()
+
             retrieveAvailableRoutes(scheduleRequest: scheduleRequest)
         }
     }
@@ -47,7 +46,7 @@ class ScheduleDataProvider: StoreSubscriber {
         let prereqsChanged = prerequisitesForTripStartsHaveChanged(scheduleRequest: scheduleRequest)
 
         if prereqsExist && prereqsChanged {
-            clearStartingStops()
+
             retrieveStartingStopsForRoute(scheduleRequest: scheduleRequest)
         }
     }
@@ -57,7 +56,7 @@ class ScheduleDataProvider: StoreSubscriber {
         let prereqsChanged = prerequisitesForTripEndsHaveChanged(scheduleRequest: scheduleRequest)
 
         if prereqsExist && prereqsChanged {
-            clearEndingStops()
+
             retrieveEndingStopsForRoute(scheduleRequest: scheduleRequest)
         }
     }
@@ -67,7 +66,7 @@ class ScheduleDataProvider: StoreSubscriber {
         let prereqsChanged = prerequisitesForTripsHaveChanged(scheduleRequest: scheduleRequest)
 
         if prereqsExist && prereqsChanged {
-            clearTrips()
+
             retrieveTripsForRoute(scheduleRequest: scheduleRequest)
         }
     }
@@ -85,7 +84,7 @@ class ScheduleDataProvider: StoreSubscriber {
     }
 
     func prerequisitesExistForRoutes(scheduleRequest: ScheduleRequest) -> Bool {
-        return scheduleRequest.transitMode != nil
+        return scheduleRequest.transitMode != nil && scheduleRequest.databaseIsLoaded
     }
 
     func prerequisitesExistForTripStarts(scheduleRequest: ScheduleRequest) -> Bool {
@@ -111,8 +110,10 @@ class ScheduleDataProvider: StoreSubscriber {
 
     func prerequisitesForRoutesHaveChanged(scheduleRequest: ScheduleRequest) -> Bool {
         let transitModeComparison = Optionals.optionalCompare(currentValue: currentScheduleRequest.transitMode, newValue: scheduleRequest.transitMode)
-        let reloadDatabaseComparison = Optionals.optionalCompare(currentValue: currentScheduleRequest.reloadDatabase, newValue: scheduleRequest.reloadDatabase)
-        return !transitModeComparison.equalityResult() || !reloadDatabaseComparison.equalityResult()
+        let databaseIsLoadedComparison = currentScheduleRequest.databaseIsLoaded == scheduleRequest.databaseIsLoaded
+        let reverseHasExecuted = scheduleRequest.reverseStops
+        let prereqsHaveChanged = !transitModeComparison.equalityResult() || !databaseIsLoadedComparison
+        return prereqsHaveChanged
     }
 
     func prerequisitesForTripStartsHaveChanged(scheduleRequest: ScheduleRequest) -> Bool {
@@ -163,7 +164,7 @@ class ScheduleDataProvider: StoreSubscriber {
     // MARK: - Retrieve Data
 
     func retrieveAvailableRoutes(scheduleRequest: ScheduleRequest) {
-        clearRoutes()
+
         RoutesCommand.sharedInstance.routes(forTransitMode: scheduleRequest.transitMode!) { routes, error in
             let routesLoadedAction = RoutesLoaded(routes: routes, error: error?.localizedDescription)
             store.dispatch(routesLoadedAction)
@@ -179,7 +180,7 @@ class ScheduleDataProvider: StoreSubscriber {
     }
 
     func retrieveEndingStopsForRoute(scheduleRequest: ScheduleRequest) {
-        clearEndingStops()
+
         TripEndCommand.sharedInstance.stops(forTransitMode: scheduleRequest.transitMode!, forRoute: scheduleRequest.selectedRoute!, tripStart: scheduleRequest.selectedStart!) { stops, error in
             let action = TripEndsLoaded(availableStops: stops, error: error?.localizedDescription)
             store.dispatch(action)
@@ -197,7 +198,7 @@ class ScheduleDataProvider: StoreSubscriber {
     // MARK: - Reverse Trip
 
     func reverseTrip(scheduleRequest: ScheduleRequest) {
-        clearTrips()
+
         guard let transitMode = scheduleRequest.transitMode,
             let selectedRoute = scheduleRequest.selectedRoute,
             let selectedStart = scheduleRequest.selectedStart,
@@ -216,7 +217,7 @@ class ScheduleDataProvider: StoreSubscriber {
                         let newEnd = stops.filter({ $0.stopId == tripStopId.end }).first else { return }
                     ReverseRouteCommand.sharedInstance.reverseRoute(forTransitMode: transitMode, route: selectedRoute) { routes, error in
                         guard let routes = routes, let newRoute = routes.first else { return }
-                        let newScheduleRequest = ScheduleRequest(transitMode: transitMode, selectedRoute: newRoute, selectedStart: newStart, selectedEnd: newEnd, scheduleType: scheduleType, reverseStops: false)
+                        let newScheduleRequest = ScheduleRequest(transitMode: transitMode, selectedRoute: newRoute, selectedStart: newStart, selectedEnd: newEnd, scheduleType: scheduleType, reverseStops: false, databaseIsLoaded: scheduleRequest.databaseIsLoaded)
                         let action = ReverseLoaded(scheduleRequest: newScheduleRequest, trips: reversedTrips, error: error?.localizedDescription)
                         store.dispatch(action)
                     }

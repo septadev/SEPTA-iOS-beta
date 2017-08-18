@@ -13,7 +13,7 @@ struct ScheduleReducer {
 
             return ScheduleState(
                 scheduleRequest: action.scheduleRequest,
-                scheduleData: ScheduleData(availableRoutes: nil, availableStarts: nil, availableStops: nil, availableTrips: nil, errorString: action.error)
+                scheduleData: ScheduleData(availableRoutes: state?.scheduleData?.availableRoutes, availableStarts: nil, availableStops: nil, availableTrips: nil, errorString: action.error)
             )
         }
 

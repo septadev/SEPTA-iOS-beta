@@ -35,6 +35,7 @@ class TripScheduleSQLQuery: SQLQueryProtocol {
         serviceId = String(scheduleType.rawValue)
         startId = String(start.stopId)
         stopId = String(stop.stopId)
+        print("start id is \(start.stopId), end id is \(stop.stopId)")
         routeDirecctionCodeString = String(route.routeDirectionCode.rawValue)
     }
 }
