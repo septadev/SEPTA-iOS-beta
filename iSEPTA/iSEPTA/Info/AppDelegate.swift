@@ -18,36 +18,18 @@ var stateProviders = StateProviders()
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-    let databaseFileManager = DatabaseFileManager()
+    var window: UIWindow? {
+        didSet {
+        }
+    }
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         Fabric.with([Crashlytics.self, Answers.self])
 
-        movePreloadedDatabaseIfNeeded()
-
         stateProviders.preferenceProvider.subscribe()
         stateProviders.scheduleProvider.subscribe()
         return true
-    }
-
-    func movePreloadedDatabaseIfNeeded() {
-
-        DispatchQueue.global(qos: .userInitiated).async {
-            do {
-                _ = try self.databaseFileManager.unzipFileToDocumentsDirectoryIfNecessary()
-
-            } catch {
-                DispatchQueue.main.async {
-                    guard let rootviewController = self.window?.rootViewController else { return }
-                    Alert.presentOKAlertFrom(viewController: rootviewController,
-                                             withTitle: "Database Error",
-                                             message: "Could not move the database",
-                                             completion: nil)
-                }
-            }
-        }
     }
 
     func applicationWillResignActive(_: UIApplication) {

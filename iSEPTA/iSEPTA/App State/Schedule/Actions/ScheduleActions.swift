@@ -12,6 +12,10 @@ struct TransitModeSelected: ScheduleAction {
     let description: String
 }
 
+struct DatabaseLoaded: ScheduleAction {
+    let description = "The database has been moved and is the right place"
+}
+
 struct RoutesLoaded: ScheduleAction {
     let routes: [Route]?
     let error: String?

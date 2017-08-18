@@ -5,9 +5,9 @@ import UIKit
 
 class Alert {
 
-    static func presentOKAlertFrom(viewController: UIViewController, withTitle _: String, message: String, completion: (() -> Void)?) {
+    static func presentOKAlertFrom(viewController: UIViewController, withTitle title: String, message: String, completion: (() -> Void)?) {
         // create the alert
-        let alert = UIAlertController(title: "title", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
 
         // add an action (button)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))

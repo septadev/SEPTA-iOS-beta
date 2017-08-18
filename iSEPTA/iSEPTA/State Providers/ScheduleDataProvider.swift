@@ -110,8 +110,9 @@ class ScheduleDataProvider: StoreSubscriber {
     // MARK: -  Prerequisites Have Changed
 
     func prerequisitesForRoutesHaveChanged(scheduleRequest: ScheduleRequest) -> Bool {
-        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.transitMode, newValue: scheduleRequest.transitMode)
-        return !comparisonResult.equalityResult()
+        let transitModeComparison = Optionals.optionalCompare(currentValue: currentScheduleRequest.transitMode, newValue: scheduleRequest.transitMode)
+        let reloadDatabaseComparison = Optionals.optionalCompare(currentValue: currentScheduleRequest.reloadDatabase, newValue: scheduleRequest.reloadDatabase)
+        return !transitModeComparison.equalityResult() || !reloadDatabaseComparison.equalityResult()
     }
 
     func prerequisitesForTripStartsHaveChanged(scheduleRequest: ScheduleRequest) -> Bool {

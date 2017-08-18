@@ -11,8 +11,9 @@ struct ScheduleRequest {
     let stopToEdit: StopToSelect?
     let scheduleType: ScheduleType?
     let reverseStops: Bool
+    let reloadDatabase: Bool
 
-    init(transitMode: TransitMode? = nil, selectedRoute: Route? = nil, selectedStart: Stop? = nil, selectedEnd: Stop? = nil, stopToEdit: StopToSelect? = nil, scheduleType: ScheduleType? = .weekday, reverseStops: Bool = false) {
+    init(transitMode: TransitMode? = nil, selectedRoute: Route? = nil, selectedStart: Stop? = nil, selectedEnd: Stop? = nil, stopToEdit: StopToSelect? = nil, scheduleType: ScheduleType? = .weekday, reverseStops: Bool = false, reloadDatabase: Bool = false) {
         self.transitMode = transitMode
         self.selectedRoute = selectedRoute
         self.selectedStart = selectedStart
@@ -20,6 +21,7 @@ struct ScheduleRequest {
         self.stopToEdit = stopToEdit
         self.scheduleType = scheduleType
         self.reverseStops = reverseStops
+        self.reloadDatabase = reloadDatabase
     }
 }
 
@@ -88,6 +90,13 @@ func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
     guard areEqual else { return false }
 
     if lhs.reverseStops == rhs.reverseStops {
+        areEqual = true
+    } else {
+        areEqual = false
+    }
+    guard areEqual else { return false }
+
+    if lhs.reloadDatabase == rhs.reloadDatabase {
         areEqual = true
     } else {
         areEqual = false

@@ -13,6 +13,8 @@ struct ScheduleRequestReducer {
     static func reduceRequest(action: ScheduleAction, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
         var newScheduleRequest: ScheduleRequest
         switch action {
+        case let action as DatabaseLoaded:
+            newScheduleRequest = reduceDatabaseLoaded(action: action, scheduleRequest: scheduleRequest)
         case let action as TransitModeSelected:
             newScheduleRequest = reduceTransitModeSelected(action: action, scheduleRequest: scheduleRequest)
         case let action as RouteSelected:
@@ -35,12 +37,16 @@ struct ScheduleRequestReducer {
         return newScheduleRequest
     }
 
+    static func reduceDatabaseLoaded(action _: DatabaseLoaded, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, reloadDatabase: true)
+    }
+
     static func reduceTransitModeSelected(action: TransitModeSelected, scheduleRequest _: ScheduleRequest) -> ScheduleRequest {
         return ScheduleRequest(transitMode: action.transitMode, selectedRoute: nil, selectedStart: nil, selectedEnd: nil)
     }
 
     static func reduceRouteSelected(action: RouteSelected, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: action.selectedRoute)
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: action.selectedRoute, reloadDatabase: false)
     }
 
     static func reduceTripStartSelected(action: TripStartSelected, scheduleRequest: ScheduleRequest) -> ScheduleRequest {

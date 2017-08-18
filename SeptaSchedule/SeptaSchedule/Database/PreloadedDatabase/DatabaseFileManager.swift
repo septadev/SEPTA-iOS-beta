@@ -31,14 +31,39 @@ public class DatabaseFileManager {
         return fileManager.fileExists(atPath: url.path)
     }
 
-    public func unzipFileToDocumentsDirectoryIfNecessary() throws -> Bool {
-        guard let preloadedURL = preloadedZippedDatabaseURL else { throw DatabaseFileManagerError.NoPreloadedDatabase }
-        guard let documentsURL = documentDirectoryURL else { throw DatabaseFileManagerError.NoDocumentsDirectory }
-        if !databaseFileExistsInDocumentsDirectory {
-            try Zip.unzipFile(preloadedURL, destination: documentsURL, overwrite: false, password: nil, progress: nil)
-            return true
+    public func unzipFileToDocumentsDirectoryIfNecessary(startCompletion: ((String) -> Void)? = nil, endCompletion: ((String) -> Void)? = nil) {
+        let message: String
+        if databaseFileExistsInDocumentsDirectory {
+            message = "The schedule database is good to go"
         } else {
-            return false
+            moveDatabase(completion: endCompletion)
+            message = "Please allow a few moments to get the database set up"
+        }
+
+        startCompletion?(message)
+    }
+
+    func moveDatabase(completion: ((String) -> Void)?) {
+
+        var message: String = "The database has been successfully moved."
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let strongSelf = self else { return }
+            do {
+                guard let preloadedURL = strongSelf.preloadedZippedDatabaseURL else { throw DatabaseFileManagerError.NoPreloadedDatabase }
+                guard let documentsURL = strongSelf.documentDirectoryURL else { throw DatabaseFileManagerError.NoDocumentsDirectory }
+                try Zip.unzipFile(preloadedURL, destination: documentsURL, overwrite: false, password: nil, progress: { (progress) -> Void in
+                    if progress == 1 {
+                        DispatchQueue.main.async {
+                            completion?(message)
+                        }
+                    }
+                })
+            } catch {
+                message = error.localizedDescription
+                DispatchQueue.main.async {
+                    completion?(message)
+                }
+            }
         }
     }
 

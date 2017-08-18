@@ -3,10 +3,11 @@
 import Foundation
 import UIKit
 import ReSwift
+import SeptaSchedule
 
 class MainNavigationController: UITabBarController, UITabBarControllerDelegate, StoreSubscriber {
     typealias StoreSubscriberStateType = Int?
-
+    let databaseFileManager = DatabaseFileManager()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -27,5 +28,37 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         if self.selectedIndex != selectedIndex {
             self.selectedIndex = selectedIndex
         }
+    }
+
+    override func viewDidLoad() {
+
+        super.viewDidLoad()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        movePreloadedDatabaseIfNeeded()
+    }
+
+    func movePreloadedDatabaseIfNeeded() {
+
+        databaseFileManager.unzipFileToDocumentsDirectoryIfNecessary(
+            startCompletion: { [weak self] message in
+                self?.displayAlert(message) },
+            endCompletion: { [weak self] message in
+                self?.dismiss(animated: true, completion: nil)
+                let action = DatabaseLoaded()
+                store.dispatch(action)
+                self?.displayAlert(message)
+
+        })
+    }
+
+    func displayAlert(_ message: String) {
+
+        Alert.presentOKAlertFrom(viewController: self,
+                                 withTitle: "SEPTA Beta Testers!",
+                                 message: message,
+                                 completion: nil)
     }
 }
