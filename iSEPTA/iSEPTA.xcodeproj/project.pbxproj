@@ -71,7 +71,6 @@
 		5840D6E71F37EAEF00C8CB76 /* UserPreferencesKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E61F37EAEF00C8CB76 /* UserPreferencesKeys.swift */; };
 		5840D6E91F37EE6500C8CB76 /* Providers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E81F37EE6500C8CB76 /* Providers.swift */; };
 		5840D6EE1F37F63800C8CB76 /* TransitModeToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */; };
-		5840D6F01F37F66B00C8CB76 /* SeptaDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6EF1F37F66B00C8CB76 /* SeptaDraw.swift */; };
 		5844CA1F1F3BD9B700651223 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5844CA1E1F3BD9B700651223 /* NavigationState.swift */; };
 		58470C091F3F276000F3C9B5 /* NumberFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58470C081F3F276000F3C9B5 /* NumberFormatters.swift */; };
 		584AC8731F437DDB0040C1B4 /* TripScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9A1F33B1120062A546 /* TripScheduleViewController.swift */; };
@@ -101,6 +100,11 @@
 		58F80D471F421C740089501A /* SelectStopByAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F80D461F421C740089501A /* SelectStopByAddressViewController.swift */; };
 		58FC9D9D1F3F9CB0004269DE /* InitializeNavigationState.json in Resources */ = {isa = PBXBuildFile; fileRef = 581804C51F3F8F19002184E3 /* InitializeNavigationState.json */; };
 		67F757AC1F48582700D3A4EE /* UIColor+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F757AB1F48582700D3A4EE /* UIColor+Util.swift */; };
+		67F757AF1F486BB600D3A4EE /* TransitModeToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F757AE1F486BB600D3A4EE /* TransitModeToolBarView.xib */; };
+		67F757B11F486F0600D3A4EE /* TransitModeDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F757B01F486F0600D3A4EE /* TransitModeDisplayable.swift */; };
+		67F757B31F48729C00D3A4EE /* UIView+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F757B21F48729C00D3A4EE /* UIView+Util.swift */; };
+		67F757B51F488A4400D3A4EE /* SeptaDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F757B41F488A4400D3A4EE /* SeptaDraw.swift */; };
+		67F757B71F488A5E00D3A4EE /* BlueGradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F757B61F488A5E00D3A4EE /* BlueGradientBackgroundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -219,7 +223,6 @@
 		5840D6E61F37EAEF00C8CB76 /* UserPreferencesKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesKeys.swift; sourceTree = "<group>"; };
 		5840D6E81F37EE6500C8CB76 /* Providers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Providers.swift; sourceTree = "<group>"; };
 		5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitModeToolbarView.swift; sourceTree = "<group>"; };
-		5840D6EF1F37F66B00C8CB76 /* SeptaDraw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeptaDraw.swift; sourceTree = "<group>"; };
 		5844CA1E1F3BD9B700651223 /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
 		58470C061F3F1EF300F3C9B5 /* StateLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateLogger.swift; sourceTree = "<group>"; };
 		58470C081F3F276000F3C9B5 /* NumberFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatters.swift; sourceTree = "<group>"; };
@@ -264,6 +267,11 @@
 		58F80D441F421C4B0089501A /* SelectStopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopViewController.swift; sourceTree = "<group>"; };
 		58F80D461F421C740089501A /* SelectStopByAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopByAddressViewController.swift; sourceTree = "<group>"; };
 		67F757AB1F48582700D3A4EE /* UIColor+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Util.swift"; sourceTree = "<group>"; };
+		67F757AE1F486BB600D3A4EE /* TransitModeToolBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransitModeToolBarView.xib; sourceTree = "<group>"; };
+		67F757B01F486F0600D3A4EE /* TransitModeDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitModeDisplayable.swift; sourceTree = "<group>"; };
+		67F757B21F48729C00D3A4EE /* UIView+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Util.swift"; sourceTree = "<group>"; };
+		67F757B41F488A4400D3A4EE /* SeptaDraw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SeptaDraw.swift; path = iSEPTA/Views/SeptaDraw.swift; sourceTree = SOURCE_ROOT; };
+		67F757B61F488A5E00D3A4EE /* BlueGradientBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueGradientBackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,10 +350,13 @@
 		582F4E811F33B1120062A546 /* Common Views */ = {
 			isa = PBXGroup;
 			children = (
+				67F757B41F488A4400D3A4EE /* SeptaDraw.swift */,
 				582F4EB01F33B1120062A546 /* View Models */,
 				5840D6EA1F37F60D00C8CB76 /* Toolbars */,
 				582F4E821F33B1120062A546 /* Cells */,
 				581DA5491F3BE1C8006AEC39 /* IdentifiableController.swift */,
+				67F757B21F48729C00D3A4EE /* UIView+Util.swift */,
+				67F757B61F488A5E00D3A4EE /* BlueGradientBackgroundView.swift */,
 			);
 			path = "Common Views";
 			sourceTree = "<group>";
@@ -543,8 +554,9 @@
 		5840D6EA1F37F60D00C8CB76 /* Toolbars */ = {
 			isa = PBXGroup;
 			children = (
-				5840D6EF1F37F66B00C8CB76 /* SeptaDraw.swift */,
 				5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */,
+				67F757AE1F486BB600D3A4EE /* TransitModeToolBarView.xib */,
+				67F757B01F486F0600D3A4EE /* TransitModeDisplayable.swift */,
 			);
 			path = Toolbars;
 			sourceTree = "<group>";
@@ -948,6 +960,7 @@
 			files = (
 				582F4EC21F33B1120062A546 /* fares.storyboard in Resources */,
 				582F4EBE1F33B1120062A546 /* about.storyboard in Resources */,
+				67F757AF1F486BB600D3A4EE /* TransitModeToolBarView.xib in Resources */,
 				582F4ED41F33B1120062A546 /* SelectStopsFooterView.xib in Resources */,
 				582F4ECD1F33B1120062A546 /* schedules.storyboard in Resources */,
 				582F4EC01F33B1120062A546 /* alerts.storyboard in Resources */,
@@ -1029,6 +1042,7 @@
 				582F4ED31F33B1120062A546 /* SelectStopRow.swift in Sources */,
 				582F4EBC1F33B1120062A546 /* DateFormatters.swift in Sources */,
 				582F4EC81F33B1120062A546 /* RouteTableViewCell.swift in Sources */,
+				67F757B51F488A4400D3A4EE /* SeptaDraw.swift in Sources */,
 				582F4ED11F33B1120062A546 /* SelectedStopType.swift in Sources */,
 				5840D6D31F376D9C00C8CB76 /* MainNavigationController.swift in Sources */,
 				5840D6EE1F37F63800C8CB76 /* TransitModeToolbarView.swift in Sources */,
@@ -1053,8 +1067,10 @@
 				582F4ED81F33B1120062A546 /* SelectSchedulesViewController.swift in Sources */,
 				5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */,
 				5814AA891F4359CC00DF774A /* SingleStringDisplayable.swift in Sources */,
+				67F757B31F48729C00D3A4EE /* UIView+Util.swift in Sources */,
 				582F4EC71F33B1120062A546 /* RoutesViewModel.swift in Sources */,
 				5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift in Sources */,
+				67F757B11F486F0600D3A4EE /* TransitModeDisplayable.swift in Sources */,
 				5840D6E51F37EA1900C8CB76 /* ScheduleDataProvider.swift in Sources */,
 				5814AA841F43589E00DF774A /* TripScheduleViewModel.swift in Sources */,
 				5814AA8A1F4359D000DF774A /* TripleTextDisplayable.swift in Sources */,
@@ -1065,6 +1081,7 @@
 				58F80D471F421C740089501A /* SelectStopByAddressViewController.swift in Sources */,
 				58290E531F372F36000CCF3C /* ScheduleState.swift in Sources */,
 				5840D6E31F37E9FB00C8CB76 /* UserPreferencesProvider.swift in Sources */,
+				67F757B71F488A5E00D3A4EE /* BlueGradientBackgroundView.swift in Sources */,
 				58C2A0611F38964E00F0D6CA /* ViewController.swift in Sources */,
 				58DB10F41F3B8CCF00191AED /* ScheduleDataReducer.swift in Sources */,
 				582F4ED61F33B1120062A546 /* SelectStopsViewElement.swift in Sources */,
@@ -1085,7 +1102,6 @@
 				582F4EC61F33B1120062A546 /* SelectRouteViewController.swift in Sources */,
 				5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */,
 				58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */,
-				5840D6F01F37F66B00C8CB76 /* SeptaDraw.swift in Sources */,
 				581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */,
 				588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */,
 				58B892171F38F7E700BFFEFA /* Strings.swift in Sources */,

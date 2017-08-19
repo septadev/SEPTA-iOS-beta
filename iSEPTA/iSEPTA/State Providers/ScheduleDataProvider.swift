@@ -111,7 +111,7 @@ class ScheduleDataProvider: StoreSubscriber {
     func prerequisitesForRoutesHaveChanged(scheduleRequest: ScheduleRequest) -> Bool {
         let transitModeComparison = Optionals.optionalCompare(currentValue: currentScheduleRequest.transitMode, newValue: scheduleRequest.transitMode)
         let databaseIsLoadedComparison = currentScheduleRequest.databaseIsLoaded == scheduleRequest.databaseIsLoaded
-        let reverseHasExecuted = scheduleRequest.reverseStops
+
         let prereqsHaveChanged = !transitModeComparison.equalityResult() || !databaseIsLoadedComparison
         return prereqsHaveChanged
     }

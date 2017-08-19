@@ -8,11 +8,13 @@ import SeptaSchedule
 class TransitModesToolbarViewController: UIViewController, StoreSubscriber {
     typealias StoreSubscriberStateType = TransitMode?
     @IBOutlet var scrollbar: UIScrollView!
-    @IBOutlet var transitModesToolbarElements: [TransitModeToolbarView]!
+    var transitModesToolbarElements = [TransitModeToolbarView]()
 
+    @IBOutlet weak var stackView: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 0.600, green: 0.600, blue: 0.600, alpha: 1.000)
+        view.backgroundColor = UIColor.clear
+        buildToolbar()
     }
 
     override func viewWillAppear(_: Bool) {
@@ -25,6 +27,16 @@ class TransitModesToolbarViewController: UIViewController, StoreSubscriber {
             subscription.select {
                 $0.scheduleState.scheduleRequest?.transitMode
             }
+        }
+    }
+
+    func buildToolbar() {
+        transitModesToolbarElements.removeAll()
+        for transitMode in TransitMode.displayOrder() {
+            let toolbarView: TransitModeToolbarView = UIView.instanceFromNib(named: "TransitModeToolBarView")
+            toolbarView.transitMode = transitMode
+            transitModesToolbarElements.append(toolbarView)
+            stackView.addArrangedSubview(toolbarView)
         }
     }
 

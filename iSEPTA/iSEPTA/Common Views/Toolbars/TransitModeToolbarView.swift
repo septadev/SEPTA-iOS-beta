@@ -7,18 +7,35 @@ import SeptaSchedule
 @IBDesignable
 class TransitModeToolbarView: UIView {
 
-    @IBInspectable var highlighted: Bool = false {
+    @IBOutlet private weak var transitModeIconImageView: UIImageView!
+    @IBOutlet private weak var transitModeLabel: UILabel!
+
+    @IBOutlet weak var iconHeightContraint: NSLayoutConstraint!
+    @IBOutlet weak var iconWidthContraint: NSLayoutConstraint!
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        backgroundColor = UIColor.clear
+    }
+
+    var highlighted: Bool = false {
         didSet {
-            self.setNeedsDisplay()
+            transitModeIconImageView.isHighlighted = highlighted
+            iconWidthContraint.constant = highlightedSize(highlighted)
+            iconHeightContraint.constant = highlightedSize(highlighted)
+            self.setNeedsLayout()
         }
     }
 
-    @IBInspectable var title: String = "TransitMode"
-    @IBInspectable var id: String = "bus"
-    var transitMode: TransitMode? { return TransitMode(rawValue: id) }
+    func highlightedSize(_ highlighted: Bool) -> CGFloat {
+        return highlighted ? 30 : 15
+    }
 
-    override func draw(_ rect: CGRect) {
-        backgroundColor = nil
-        SeptaDraw.drawTranssitModeToolbar(frame: rect, transitMode: title, highlighted: highlighted)
+    var transitMode: TransitMode = .bus {
+        didSet {
+            transitModeIconImageView.image = UIImage(named: transitMode.imageName())
+            transitModeIconImageView.highlightedImage = UIImage(named: transitMode.highlightedImageName())
+            transitModeLabel.text = transitMode.name()
+        }
     }
 }

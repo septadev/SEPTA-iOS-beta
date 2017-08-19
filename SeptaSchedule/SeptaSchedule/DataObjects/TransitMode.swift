@@ -8,14 +8,4 @@ public enum TransitMode: String {
     case subway
     case nhsl
     case trolley
-
-    public func routeTitle() -> String {
-        switch self {
-        case .bus: return "Bus Route"
-        case .rail: return "Rail Line"
-        case .subway: return "Subway Line"
-        case .nhsl: return "NHSL Line"
-        case .trolley: return "Trolley Line"
-        }
-    }
 }
