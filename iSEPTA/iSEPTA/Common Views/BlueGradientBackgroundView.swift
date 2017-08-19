@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@IBDesignable
 class BlueGradientBackgroundView: UIView {
 
     override func draw(_ rect: CGRect) {

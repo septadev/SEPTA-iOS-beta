@@ -5,6 +5,7 @@ import SeptaSchedule
 import ReSwift
 
 class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController, SchedulesViewModelDelegate {
+    @IBOutlet weak var tableViewWrapper: UIView!
 
     static var viewController: ViewController = .selectSchedules
 
@@ -33,6 +34,7 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
         viewModel.subscribe()
         viewModel.schedulesDelegate = self
         buttonView.isHidden = true
+        UIView.addSurroundShadow(toView: tableViewWrapper)
     }
 
     override func viewWillAppear(_: Bool) {
