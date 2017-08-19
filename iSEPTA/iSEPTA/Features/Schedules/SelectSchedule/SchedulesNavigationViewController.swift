@@ -16,6 +16,7 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber, Id
         super.viewDidLoad()
         subscribe()
         initializeNavStackState()
+        navigationBar.backgroundColor = UIColor.clear
     }
 
     func initializeNavStackState() {
