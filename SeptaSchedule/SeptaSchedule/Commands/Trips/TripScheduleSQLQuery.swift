@@ -31,8 +31,21 @@ class TripScheduleSQLQuery: SQLQueryProtocol {
 
     init(forTransitMode transitMode: TransitMode, route: Route, selectedStart start: Stop,
          selectedEnd stop: Stop, scheduleType: ScheduleType) {
+        if transitMode == .rail {
+            switch scheduleType {
+            case .weekday:
+                serviceId = "8"
+            case .saturday:
+                serviceId = "1"
+            case .sunday:
+                serviceId = "64"
+            }
+        } else {
+            serviceId = String(scheduleType.rawValue)
+        }
+
         self.transitMode = transitMode
-        serviceId = String(scheduleType.rawValue)
+
         startId = String(start.stopId)
         stopId = String(stop.stopId)
         print("start id is \(start.stopId), end id is \(stop.stopId)")

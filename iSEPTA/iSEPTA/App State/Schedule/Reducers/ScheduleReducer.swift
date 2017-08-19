@@ -10,10 +10,10 @@ struct ScheduleReducer {
 
     static func main(action: Action, state: ScheduleState?) -> ScheduleState {
         /// Handle the edge case of trip reverses
-        if let action = action as? ReverseLoaded, state = state {
-            reduceTripReverse(action: action, state, state)
+        if let action = action as? ReverseLoaded, let state = state {
+            return reduceTripReverse(action: action, state: state)
         }
-        /// only work with non optionals
+        /// only work with non optionals for the primary reducers
         if let newState = state {
             guard let action = action as? ScheduleAction,
                 let scheduleRequest = newState.scheduleRequest,
@@ -24,7 +24,7 @@ struct ScheduleReducer {
                 scheduleRequest: Req.reduceRequest(action: action, scheduleRequest: scheduleRequest),
                 scheduleData: Data.reduceData(action: action, scheduleData: scheduleData)
             )
-        /// if there are optionals, run through the init
+            /// if there are optionals, run through the init
         } else {
             return ScheduleState(
                 scheduleRequest: Req.initRequest(),
@@ -32,16 +32,11 @@ struct ScheduleReducer {
             )
         }
     }
-    
-    static func reduceTripReverse(action: TripReverse, state: ScheduleState) -> ScheduleState{
+
+    static func reduceTripReverse(action: ReverseLoaded, state: ScheduleState) -> ScheduleState {
         return ScheduleState(
             scheduleRequest: action.scheduleRequest,
-            scheduleData: ScheduleData(availableRoutes: state?.scheduleData?.availableRoutes, availableStarts: nil, availableStops: nil, availableTrips: nil, errorString: action.error)
+            scheduleData: ScheduleData(availableRoutes: state.scheduleData?.availableRoutes, availableStarts: nil, availableStops: nil, availableTrips: nil, errorString: action.error)
         )
-
-        
     }
 }
-
-
-
