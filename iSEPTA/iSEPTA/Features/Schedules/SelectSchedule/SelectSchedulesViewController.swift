@@ -59,20 +59,19 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
 
     func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? SingleStringCell else { return UITableViewCell() }
-        let row = indexPath.section + indexPath.row
-        viewModel.configureDisplayable(cell, atRow: row)
-        viewModel.configureBorder(cell, atRow: row)
+
+        viewModel.configureDisplayable(cell, atRow: indexPath.section)
         return cell
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let row = indexPath.section + indexPath.row
-        viewModel.rowSelected(row)
+
+        viewModel.rowSelected(indexPath.section)
     }
 
     func tableView(_: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        let row = indexPath.section + indexPath.row
-        return viewModel.canCellBeSelected(atRow: row)
+
+        return viewModel.canCellBeSelected(atRow: indexPath.section)
     }
 
     func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {

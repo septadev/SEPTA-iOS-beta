@@ -3,13 +3,17 @@
 import Foundation
 import ReSwift
 import UIKit
+import SeptaSchedule
 
 fileprivate struct RowDisplayModel {
     let text: String
-    let opacity: CGFloat
-    let accessoryType: CellDecoration
+    let shouldFillCell: Bool
     let isSelectable: Bool
     let targetController: ViewController
+
+    var opacity: Float {
+        return isSelectable ? Float(1) : Float(0.3)
+    }
 }
 
 protocol SchedulesViewModelDelegate: AnyObject {
@@ -18,7 +22,22 @@ protocol SchedulesViewModelDelegate: AnyObject {
 
 class SelectSchedulesViewModel: StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleRequest?
-    var scheduleRequest: ScheduleRequest?
+    var scheduleRequest: ScheduleRequest? {
+        didSet {
+            transitModeVar = scheduleRequest?.transitMode
+        }
+    }
+
+    var transitModeVar: TransitMode?
+
+    func transitMode() -> TransitMode {
+        if let transitMode = transitModeVar {
+            return transitMode
+        } else {
+            return .bus
+        }
+    }
+
     weak var delegate: UpdateableFromViewModel?
     weak var schedulesDelegate: SchedulesViewModelDelegate?
 
@@ -27,14 +46,11 @@ class SelectSchedulesViewModel: StoreSubscriber {
     fileprivate var selectEndRowDisplayModel: RowDisplayModel?
     fileprivate var displayModel = [RowDisplayModel]()
 
-    var onlyOneRouteAvailable: Bool = false
-
     init(delegate: UpdateableFromViewModel) {
         self.delegate = delegate
     }
 
     func subscribe() {
-
         store.subscribe(self) {
             $0.select {
                 $0.scheduleState.scheduleRequest
@@ -59,8 +75,6 @@ class SelectSchedulesViewModel: StoreSubscriber {
 
     func buildDisplayModel() {
 
-        onlyOneRouteAvailable = false
-
         displayModel = [
             configureSelectRouteDisplayModel(),
             configureSelectStartDisplayModel(),
@@ -69,92 +83,60 @@ class SelectSchedulesViewModel: StoreSubscriber {
     }
 
     func transitModeTitle() -> String? {
-        return scheduleRequest?.transitMode?.routeTitle()
+        return transitMode().routeTitle()
     }
 
     fileprivate func configureSelectRouteDisplayModel() -> RowDisplayModel {
-        var text = ""
-        if let transitMode = scheduleRequest?.transitMode {
-            text = transitMode.selector()
+        var text = transitMode().selector()
+        let isSelectable = true
+        if let routeName = scheduleRequest?.selectedRoute?.routeShortName {
+            text = routeName
         }
-
-        let accessoryType = CellDecoration.none
-
-        let isSelectable = !onlyOneRouteAvailable
-        let opacity = isSelectable ? CGFloat(1.0) : CGFloat(0.3)
-        return RowDisplayModel(text: text, opacity: opacity, accessoryType: accessoryType, isSelectable: isSelectable, targetController: .routesViewController)
+        return RowDisplayModel(text: text, shouldFillCell: false, isSelectable: isSelectable, targetController: .routesViewController)
     }
 
     fileprivate func configureSelectStartDisplayModel() -> RowDisplayModel {
         var text: String = ""
 
-        let accessoryType: CellDecoration
         let isSelectable: Bool
         if let _ = scheduleRequest?.selectedRoute {
-            accessoryType = .none
             isSelectable = true
             if let startName = scheduleRequest?.selectedStart?.stopName {
                 text = startName
-
             } else {
-                text = SeptaString.SelectStart
+                text = transitMode().startingStopName()
             }
         } else {
-            if let transitMode = scheduleRequest?.transitMode {
-                text = transitMode.startingStopName()
-            }
-            text = SeptaString.SelectStart
-
-            accessoryType = .none
+            text = transitMode().startingStopName()
             isSelectable = false
         }
-        let opacity = isSelectable ? CGFloat(1.0) : CGFloat(0.3)
-        return RowDisplayModel(text: text, opacity: opacity, accessoryType: accessoryType, isSelectable: isSelectable, targetController: .selectStopNavigationController)
+        return RowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopNavigationController)
     }
 
     fileprivate func configureSelectEndisplayModel() -> RowDisplayModel {
         var text: String = ""
 
-        let accessoryType: CellDecoration
         let isSelectable: Bool
         if let _ = scheduleRequest?.selectedStart {
-            accessoryType = .none
             isSelectable = true
             if let stopName = scheduleRequest?.selectedEnd?.stopName {
                 text = stopName
-
             } else {
-                text = SeptaString.SelectEnd
+                text = transitMode().endingStopName()
             }
         } else {
-            if let transitMode = scheduleRequest?.transitMode {
-                text = transitMode.endingStopName()
-            }
-            accessoryType = .none
-
+            text = transitMode().endingStopName()
             isSelectable = false
         }
-        let opacity = isSelectable ? CGFloat(1.0) : CGFloat(0.3)
-        return RowDisplayModel(text: text, opacity: opacity, accessoryType: accessoryType, isSelectable: isSelectable, targetController: .selectStopController)
+        return RowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopController)
     }
 
     func configureDisplayable(_ displayable: SingleStringDisplayable, atRow row: Int) {
         guard row < displayModel.count else { return }
         let rowModel = displayModel[row]
         displayable.setLabelText(rowModel.text)
-        displayable.setTextOpacity(Float(rowModel.opacity))
-        displayable.setAccessoryType(rowModel.accessoryType)
-    }
-
-    func configureBorder(_ cell: UITableViewCell, atRow row: Int) {
-        guard row < displayModel.count else { return }
-        let rowModel = displayModel[row]
-        let layer = cell.contentView.layer
-        layer.opacity = Float(rowModel.opacity)
-        layer.cornerRadius = 4
-        layer.borderWidth = 1
-        layer.borderColor = SeptaColor.enabledCellBorder.cgColor
-        layer.masksToBounds = false
+        displayable.setOpacity(rowModel.opacity)
+        displayable.setShouldFill(rowModel.shouldFillCell)
     }
 
     func canCellBeSelected(atRow row: Int) -> Bool {

@@ -5,7 +5,8 @@ import UIKit
 typealias CellDecoration = UITableViewCellAccessoryType
 
 class SingleStringCell: UITableViewCell, SingleStringDisplayable {
-    func setTextOpacity(_ opacity: Float) {
+    var shouldFill: Bool = false
+    func setOpacity(_ opacity: Float) {
         label.layer.opacity = opacity
     }
 
@@ -23,6 +24,10 @@ class SingleStringCell: UITableViewCell, SingleStringDisplayable {
     }
 
     override func draw(_ rect: CGRect) {
-        SeptaDraw.drawBlueGradientCell(frame: rect)
+        SeptaDraw.drawBlueGradientCell(frame: rect, shouldFill: shouldFill)
+    }
+
+    func setShouldFill(_ shouldFill: Bool) {
+        self.shouldFill = shouldFill
     }
 }
