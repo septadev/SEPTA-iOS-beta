@@ -49,7 +49,7 @@ public class SeptaDraw: NSObject {
         let white = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
 
         //// Gradient Declarations
-        let blueGradientLeftToRight = CGGradient(colorsSpace: nil, colors: [blueGradientLeft.cgColor, blueGradientRight.cgColor] as CFArray, locations: [0, 1])!
+        let blueGradientLeftToRight = CGGradient(colorsSpace: nil, colors: [blueGradientLeft.cgColor, blueGradientLeft.blended(withFraction: 0.5, of: blueGradientRight).cgColor, blueGradientRight.cgColor] as CFArray, locations: [0, 0.24, 1])!
         let whiteGradient = CGGradient(colorsSpace: nil, colors: [white.cgColor, UIColor.white.cgColor] as CFArray, locations: [0, 1])!
 
         //// Shadow Declarations
@@ -79,5 +79,20 @@ public class SeptaDraw: NSObject {
         rectanglePath.lineWidth = 1
         rectanglePath.lineJoinStyle = .round
         rectanglePath.stroke()
+    }
+}
+
+private extension UIColor {
+    func blended(withFraction fraction: CGFloat, of color: UIColor) -> UIColor {
+        var r1: CGFloat = 1, g1: CGFloat = 1, b1: CGFloat = 1, a1: CGFloat = 1
+        var r2: CGFloat = 1, g2: CGFloat = 1, b2: CGFloat = 1, a2: CGFloat = 1
+
+        getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
+        color.getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
+
+        return UIColor(red: r1 * (1 - fraction) + r2 * fraction,
+                       green: g1 * (1 - fraction) + g2 * fraction,
+                       blue: b1 * (1 - fraction) + b2 * fraction,
+                       alpha: a1 * (1 - fraction) + a2 * fraction)
     }
 }
