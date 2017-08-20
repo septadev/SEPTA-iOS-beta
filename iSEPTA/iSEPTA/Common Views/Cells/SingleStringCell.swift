@@ -5,6 +5,9 @@ import UIKit
 typealias CellDecoration = UITableViewCellAccessoryType
 
 class SingleStringCell: UITableViewCell, SingleStringDisplayable {
+    func setTextOpacity(_ opacity: Float) {
+        label.layer.opacity = opacity
+    }
 
     @IBOutlet private weak var label: UILabel!
     func setTextColor(_ color: UIColor) {
@@ -17,5 +20,9 @@ class SingleStringCell: UITableViewCell, SingleStringDisplayable {
 
     func setAccessoryType(_ accessoryType: UITableViewCellAccessoryType) {
         self.accessoryType = accessoryType
+    }
+
+    override func draw(_ rect: CGRect) {
+        SeptaDraw.drawBlueGradientCell(frame: rect)
     }
 }

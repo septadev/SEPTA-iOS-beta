@@ -37,4 +37,27 @@ public class SeptaDraw: NSObject {
                                    options: [])
         context.restoreGState()
     }
+
+    @objc public dynamic class func drawBlueGradientCell(frame: CGRect = CGRect(x: 0, y: 0, width: 76, height: 32)) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()!
+
+        //// Color Declarations
+        let blueGradientLeft = UIColor(red: 0.871, green: 0.933, blue: 1.000, alpha: 1.000)
+        let blueGradientRight = UIColor(red: 0.976, green: 0.988, blue: 1.000, alpha: 1.000)
+
+        //// Gradient Declarations
+        let blueGradientLeftToRight = CGGradient(colorsSpace: nil, colors: [blueGradientLeft.cgColor, blueGradientRight.cgColor] as CFArray, locations: [0, 1])!
+
+        //// Rectangle Drawing
+        let rectangleRect = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height)
+        let rectanglePath = UIBezierPath(rect: rectangleRect)
+        context.saveGState()
+        rectanglePath.addClip()
+        context.drawLinearGradient(blueGradientLeftToRight,
+                                   start: CGPoint(x: rectangleRect.maxX, y: rectangleRect.midY),
+                                   end: CGPoint(x: rectangleRect.minX, y: rectangleRect.midY),
+                                   options: [])
+        context.restoreGState()
+    }
 }

@@ -63,6 +63,37 @@ extension TransitMode {
         }
     }
 
+    public func scheduleName() -> String {
+        switch self {
+        case .bus: return "Bus Schedules"
+        case .rail: return "Regional Rail Schedules"
+        case .subway: return "Subway Schedules"
+        case .nhsl: return "NHSL Schedules"
+        case .trolley: return "Trolley Schedules"
+        }
+    }
+
+    public func selector() -> String {
+        switch self {
+        case .rail: return "Select Line"
+        default: return "Select Stop"
+        }
+    }
+
+    public func startingStopName() -> String {
+        switch self {
+        case .rail: return "Starting Station"
+        default: return "Starting Stop"
+        }
+    }
+
+    public func endingStopName() -> String {
+        switch self {
+        case .rail: return "Destination Station"
+        default: return "Destination Stop"
+        }
+    }
+
     public static func displayOrder() -> [TransitMode] {
         return [.bus, .rail, .subway, .nhsl, .trolley]
     }

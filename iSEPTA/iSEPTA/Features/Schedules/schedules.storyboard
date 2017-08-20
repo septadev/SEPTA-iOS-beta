@@ -37,38 +37,48 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ob2-7I-l1n" userLabel="GradientView" customClass="BlueGradientBackgroundView" customModule="Septa" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="115" width="375" height="503"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Regional Rail Schedules" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pfb-N7-O3a" userLabel="TransitModeSchedules">
+                                        <rect key="frame" x="11" y="14" width="355" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v5s-9c-IuB">
-                                        <rect key="frame" x="15" y="50" width="345" height="453"/>
+                                        <rect key="frame" x="9" y="50" width="355" height="453"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JWx-ou-dAj">
-                                                <rect key="frame" x="0.0" y="0.0" width="345" height="453"/>
+                                                <rect key="frame" x="19" y="0.0" width="321" height="453"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="singleStringCell" id="zn7-Mx-Yv7" customClass="SingleStringCell" customModule="Septa" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="28" width="335" height="44"/>
+                                                        <rect key="frame" x="0.0" y="28" width="325" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zn7-Mx-Yv7" id="v2j-wI-BVS">
-                                                            <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="325" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCd-TC-F1i">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCd-TC-F1i">
                                                                     <rect key="frame" x="23" y="11" width="324" height="21"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="wCd-TC-F1i" firstAttribute="centerY" secondItem="v2j-wI-BVS" secondAttribute="centerY" id="4aG-wF-zB0" userLabel="labelCenterY"/>
+                                                                <constraint firstItem="wCd-TC-F1i" firstAttribute="leading" secondItem="v2j-wI-BVS" secondAttribute="leading" constant="11" id="VFM-ZE-Rk9" userLabel="LabelLeft"/>
+                                                                <constraint firstAttribute="trailing" secondItem="wCd-TC-F1i" secondAttribute="trailing" constant="-22" id="uny-Kq-70X" userLabel="LabelRight"/>
+                                                            </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
                                                             <outlet property="label" destination="wCd-TC-F1i" id="n1N-uW-Pof"/>
                                                         </connections>
                                                     </tableViewCell>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="routeSelectedCell" rowHeight="60" id="dRd-8A-9Y3" customClass="RouteSelectedTableViewCell" customModule="Septa" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="72" width="335" height="60"/>
+                                                        <rect key="frame" x="0.0" y="72" width="325" height="60"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dRd-8A-9Y3" id="tv0-MK-MKw">
-                                                            <rect key="frame" x="0.0" y="0.0" width="335" height="60"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="325" height="60"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5JT-lx-DGg" userLabel="RouteId">
@@ -78,13 +88,13 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="248" text="to Front-Market" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UtE-hk-g8E" userLabel="routeShortName">
-                                                                    <rect key="frame" x="50.5" y="41" width="265.5" height="18"/>
+                                                                    <rect key="frame" x="50.5" y="41" width="255.5" height="18"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Front-Mkt to 20-Johnston/Broad-Pat" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkG-cm-4jM" userLabel="RouteLongName">
-                                                                    <rect key="frame" x="50.5" y="8" width="249.5" height="28"/>
+                                                                    <rect key="frame" x="50.5" y="8" width="239.5" height="28"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -115,12 +125,12 @@
                                                 </connections>
                                             </tableView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="JWx-ou-dAj" secondAttribute="bottom" id="3GB-Zt-bia"/>
-                                            <constraint firstAttribute="trailing" secondItem="JWx-ou-dAj" secondAttribute="trailing" id="SOx-ig-p19"/>
-                                            <constraint firstItem="JWx-ou-dAj" firstAttribute="top" secondItem="v5s-9c-IuB" secondAttribute="top" id="btk-5I-uS8"/>
-                                            <constraint firstItem="JWx-ou-dAj" firstAttribute="leading" secondItem="v5s-9c-IuB" secondAttribute="leading" id="gfw-Nj-OSu"/>
+                                            <constraint firstAttribute="bottom" secondItem="JWx-ou-dAj" secondAttribute="bottom" id="3GB-Zt-bia" userLabel="TableViewBottom"/>
+                                            <constraint firstAttribute="trailing" secondItem="JWx-ou-dAj" secondAttribute="trailing" constant="15" id="SOx-ig-p19" userLabel="TableViewRight"/>
+                                            <constraint firstItem="JWx-ou-dAj" firstAttribute="top" secondItem="v5s-9c-IuB" secondAttribute="top" id="btk-5I-uS8" userLabel="TableViewTop"/>
+                                            <constraint firstItem="JWx-ou-dAj" firstAttribute="leading" secondItem="v5s-9c-IuB" secondAttribute="leading" constant="19" id="gfw-Nj-OSu" userLabel="TableViewLeft"/>
                                         </constraints>
                                         <string key="userLabel">
 TableViewWrapper</string>
@@ -128,10 +138,13 @@ TableViewWrapper</string>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.12214555959999999" blue="0.19503632169999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="v5s-9c-IuB" firstAttribute="top" secondItem="Ob2-7I-l1n" secondAttribute="top" constant="50" id="7b3-t0-XJF"/>
-                                    <constraint firstAttribute="bottom" secondItem="v5s-9c-IuB" secondAttribute="bottom" id="Da1-ZU-Dq0"/>
-                                    <constraint firstItem="v5s-9c-IuB" firstAttribute="leading" secondItem="Ob2-7I-l1n" secondAttribute="leading" constant="15" id="PqU-zo-QdL"/>
-                                    <constraint firstAttribute="trailing" secondItem="v5s-9c-IuB" secondAttribute="trailing" constant="15" id="U75-xz-a0p"/>
+                                    <constraint firstItem="v5s-9c-IuB" firstAttribute="top" secondItem="Ob2-7I-l1n" secondAttribute="top" constant="50" id="7b3-t0-XJF" userLabel="TableViewWrapperTop"/>
+                                    <constraint firstItem="Pfb-N7-O3a" firstAttribute="top" secondItem="Ob2-7I-l1n" secondAttribute="top" constant="14" id="CoS-JP-UTX" userLabel="TransitModeSchedulesTop"/>
+                                    <constraint firstAttribute="bottom" secondItem="v5s-9c-IuB" secondAttribute="bottom" id="Da1-ZU-Dq0" userLabel="TableViewWrapperBottom"/>
+                                    <constraint firstItem="v5s-9c-IuB" firstAttribute="leading" secondItem="Ob2-7I-l1n" secondAttribute="leading" constant="9" id="PqU-zo-QdL" userLabel="TableViewWrapperLeft"/>
+                                    <constraint firstAttribute="trailing" secondItem="Pfb-N7-O3a" secondAttribute="trailing" constant="9" id="TQI-ah-JtK" userLabel="TransitModeSchedulesRight"/>
+                                    <constraint firstAttribute="trailing" secondItem="v5s-9c-IuB" secondAttribute="trailing" constant="11" id="U75-xz-a0p" userLabel="TableViewWrapperRight"/>
+                                    <constraint firstItem="Pfb-N7-O3a" firstAttribute="leading" secondItem="Ob2-7I-l1n" secondAttribute="leading" constant="11" id="tq8-l1-qNT" userLabel="TransitModeSchedulesLeft"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -154,6 +167,10 @@ TableViewWrapper</string>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="buttonView" destination="cOB-du-LRG" id="bi3-nK-egN"/>
+                        <outlet property="scheduleLabel" destination="Pfb-N7-O3a" id="3m5-wi-Gxj"/>
+                        <outlet property="section0View" destination="ZJr-qg-6UD" id="2D5-7l-LDn"/>
+                        <outlet property="section1View" destination="4dl-af-AHj" id="LOr-Nu-trS"/>
+                        <outlet property="sectionHeaderLabel" destination="gMi-Um-mFi" id="lFA-B6-KZU"/>
                         <outlet property="tableView" destination="JWx-ou-dAj" id="E4N-FK-sNY"/>
                         <outlet property="tableViewFooter" destination="t3k-vt-DEG" id="GMN-YW-enj"/>
                         <outlet property="tableViewHeader" destination="1c9-Es-ZDV" id="Wwf-2z-Mox"/>
@@ -169,6 +186,31 @@ TableViewWrapper</string>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <viewLayoutGuide key="safeArea" id="59y-47-sNx"/>
+                </view>
+                <view contentMode="scaleToFill" id="ZJr-qg-6UD" userLabel="TableViewSection0">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rail Line" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMi-Um-mFi" userLabel="TransitModeName">
+                            <rect key="frame" x="5" y="16" width="230" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.42745098039215684" green="0.42745098039215684" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="j4R-r2-dzo" firstAttribute="trailing" secondItem="gMi-Um-mFi" secondAttribute="trailing" constant="5" id="2Ad-WN-Rzs" userLabel="TransitModeNameRight"/>
+                        <constraint firstItem="gMi-Um-mFi" firstAttribute="leading" secondItem="j4R-r2-dzo" secondAttribute="leading" constant="5" id="8H7-Ow-GKj" userLabel="TransitModeNameLeft"/>
+                        <constraint firstItem="gMi-Um-mFi" firstAttribute="top" secondItem="j4R-r2-dzo" secondAttribute="top" constant="16" id="SgA-pl-Aft" userLabel="TransitModeLabelTop"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="j4R-r2-dzo"/>
+                </view>
+                <view contentMode="scaleToFill" id="4dl-af-AHj" userLabel="TableViewSection1">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <viewLayoutGuide key="safeArea" id="YFt-bp-fHy"/>
                 </view>
                 <view contentMode="scaleToFill" id="t3k-vt-DEG" userLabel="TableViewFooter">
                     <rect key="frame" x="0.0" y="0.0" width="439" height="400"/>
