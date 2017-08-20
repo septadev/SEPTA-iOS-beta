@@ -10,10 +10,6 @@ fileprivate struct RowDisplayModel {
     let shouldFillCell: Bool
     let isSelectable: Bool
     let targetController: ViewController
-
-    var opacity: Float {
-        return isSelectable ? Float(1) : Float(0.3)
-    }
 }
 
 protocol SchedulesViewModelDelegate: AnyObject {
@@ -135,7 +131,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
         guard row < displayModel.count else { return }
         let rowModel = displayModel[row]
         displayable.setLabelText(rowModel.text)
-        displayable.setOpacity(rowModel.opacity)
+        displayable.setEnabled(rowModel.isSelectable)
         displayable.setShouldFill(rowModel.shouldFillCell)
     }
 

@@ -44,11 +44,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v5s-9c-IuB">
-                                        <rect key="frame" x="9" y="50" width="355" height="453"/>
+                                        <rect key="frame" x="9" y="50" width="355" height="277"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JWx-ou-dAj">
-                                                <rect key="frame" x="19" y="0.0" width="317" height="453"/>
+                                                <rect key="frame" x="19" y="0.0" width="317" height="277"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="277" id="cQI-oV-uBg"/>
+                                                </constraints>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="singleStringCell" id="zn7-Mx-Yv7" customClass="SingleStringCell" customModule="Septa" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="317" height="44"/>
@@ -118,6 +121,14 @@
                                                             <outlet property="routeShortNameLabel" destination="UtE-hk-g8E" id="kfP-QE-GuG"/>
                                                         </connections>
                                                     </tableViewCell>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="buttonViewCell" id="mXb-No-6FH" userLabel="ButtonViewCell" customClass="ButtonViewCell" customModule="Septa" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="132" width="317" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mXb-No-6FH" id="8Lx-dK-btO">
+                                                            <rect key="frame" x="0.0" y="0.0" width="317" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </tableViewCellContentView>
+                                                    </tableViewCell>
                                                 </prototypes>
                                                 <connections>
                                                     <outlet property="dataSource" destination="G8I-06-w6m" id="ZfZ-hj-wnb"/>
@@ -140,7 +151,6 @@ TableViewWrapper</string>
                                 <constraints>
                                     <constraint firstItem="v5s-9c-IuB" firstAttribute="top" secondItem="Ob2-7I-l1n" secondAttribute="top" constant="50" id="7b3-t0-XJF" userLabel="TableViewWrapperTop"/>
                                     <constraint firstItem="Pfb-N7-O3a" firstAttribute="top" secondItem="Ob2-7I-l1n" secondAttribute="top" constant="14" id="CoS-JP-UTX" userLabel="TransitModeSchedulesTop"/>
-                                    <constraint firstAttribute="bottom" secondItem="v5s-9c-IuB" secondAttribute="bottom" id="Da1-ZU-Dq0" userLabel="TableViewWrapperBottom"/>
                                     <constraint firstItem="v5s-9c-IuB" firstAttribute="leading" secondItem="Ob2-7I-l1n" secondAttribute="leading" constant="9" id="PqU-zo-QdL" userLabel="TableViewWrapperLeft"/>
                                     <constraint firstAttribute="trailing" secondItem="Pfb-N7-O3a" secondAttribute="trailing" constant="9" id="TQI-ah-JtK" userLabel="TransitModeSchedulesRight"/>
                                     <constraint firstAttribute="trailing" secondItem="v5s-9c-IuB" secondAttribute="trailing" constant="11" id="U75-xz-a0p" userLabel="TableViewWrapperRight"/>

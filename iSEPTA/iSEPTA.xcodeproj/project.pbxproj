@@ -99,6 +99,7 @@
 		58F80D451F421C4B0089501A /* SelectStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F80D441F421C4B0089501A /* SelectStopViewController.swift */; };
 		58F80D471F421C740089501A /* SelectStopByAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F80D461F421C740089501A /* SelectStopByAddressViewController.swift */; };
 		58FC9D9D1F3F9CB0004269DE /* InitializeNavigationState.json in Resources */ = {isa = PBXBuildFile; fileRef = 581804C51F3F8F19002184E3 /* InitializeNavigationState.json */; };
+		67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B511801F499E8F000E3065 /* ButtonViewCell.swift */; };
 		67F757AC1F48582700D3A4EE /* UIColor+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F757AB1F48582700D3A4EE /* UIColor+Util.swift */; };
 		67F757AF1F486BB600D3A4EE /* TransitModeToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F757AE1F486BB600D3A4EE /* TransitModeToolBarView.xib */; };
 		67F757B11F486F0600D3A4EE /* TransitModeDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F757B01F486F0600D3A4EE /* TransitModeDisplayable.swift */; };
@@ -266,6 +267,7 @@
 		58F80D421F421C1F0089501A /* SelectStopNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopNavigationController.swift; sourceTree = "<group>"; };
 		58F80D441F421C4B0089501A /* SelectStopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopViewController.swift; sourceTree = "<group>"; };
 		58F80D461F421C740089501A /* SelectStopByAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopByAddressViewController.swift; sourceTree = "<group>"; };
+		67B511801F499E8F000E3065 /* ButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewCell.swift; sourceTree = "<group>"; };
 		67F757AB1F48582700D3A4EE /* UIColor+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Util.swift"; sourceTree = "<group>"; };
 		67F757AE1F486BB600D3A4EE /* TransitModeToolBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransitModeToolBarView.xib; sourceTree = "<group>"; };
 		67F757B01F486F0600D3A4EE /* TransitModeDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitModeDisplayable.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				5814AA861F4358D000DF774A /* SingleStringDisplayable.swift */,
 				5814AA851F4358D000DF774A /* TripleTextDisplayable.swift */,
 				582F4E831F33B1120062A546 /* SingleStringCell.swift */,
+				67B511801F499E8F000E3065 /* ButtonViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1061,6 +1064,7 @@
 				5840D6E71F37EAEF00C8CB76 /* UserPreferencesKeys.swift in Sources */,
 				582F4EDF1F33B1120062A546 /* MainViewController.swift in Sources */,
 				58F80D431F421C1F0089501A /* SelectStopNavigationController.swift in Sources */,
+				67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */,
 				5840D6D51F376E5E00C8CB76 /* NavigationStackState.swift in Sources */,
 				5840D6E91F37EE6500C8CB76 /* Providers.swift in Sources */,
 				581804BB1F3F8051002184E3 /* LoggingError.swift in Sources */,

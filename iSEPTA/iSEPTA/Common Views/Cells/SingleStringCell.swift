@@ -2,14 +2,9 @@
 
 import UIKit
 
-typealias CellDecoration = UITableViewCellAccessoryType
-
 class SingleStringCell: UITableViewCell, SingleStringDisplayable {
     var shouldFill: Bool = false
-    func setOpacity(_ opacity: Float) {
-        label.layer.opacity = opacity
-    }
-
+    var enabled: Bool = false
     @IBOutlet private weak var label: UILabel!
     func setTextColor(_ color: UIColor) {
         label.textColor = color
@@ -24,10 +19,16 @@ class SingleStringCell: UITableViewCell, SingleStringDisplayable {
     }
 
     override func draw(_ rect: CGRect) {
-        SeptaDraw.drawBlueGradientCell(frame: rect, shouldFill: shouldFill)
+        SeptaDraw.drawBlueGradientCell(frame: rect, shouldFill: shouldFill, enabled: enabled)
     }
 
     func setShouldFill(_ shouldFill: Bool) {
         self.shouldFill = shouldFill
+    }
+
+    func setEnabled(_ enabled: Bool) {
+        self.enabled = enabled
+        label.alpha = enabled ? CGFloat(0.7) : CGFloat(0.3)
+        setNeedsDisplay()
     }
 }
