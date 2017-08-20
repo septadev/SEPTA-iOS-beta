@@ -17,13 +17,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Transit Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPk-7f-QMn" userLabel="TransitModeLabel">
-                    <rect key="frame" x="50" y="25.5" width="168" height="17"/>
+                    <rect key="frame" x="51" y="25.5" width="141" height="17"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="busFinalIconWhite" highlightedImage="busActiveFinal" translatesAutoresizingMaskIntoConstraints="NO" id="k4T-cC-dUg" userLabel="TransitModeIcon">
-                    <rect key="frame" x="15" y="19" width="30" height="30"/>
+                    <rect key="frame" x="14" y="19" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="47C-WO-Itc"/>
                         <constraint firstAttribute="height" constant="30" id="GQ4-2j-ede"/>
@@ -32,14 +32,20 @@
             </subviews>
             <color key="backgroundColor" red="0.1333333333" green="0.32549019610000002" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="k4T-cC-dUg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="14" id="OpR-f8-s4j" userLabel="IconLeft"/>
                 <constraint firstItem="dPk-7f-QMn" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="W9h-8v-jOq" userLabel="TransitModeLabelCenterY"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dPk-7f-QMn" secondAttribute="trailing" id="hgb-9X-Tca" userLabel="TransitModeLabelRight"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dPk-7f-QMn" secondAttribute="trailing" constant="26" id="hgb-9X-Tca" userLabel="TransitModeLabelRight"/>
                 <constraint firstItem="dPk-7f-QMn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="pw9-wT-Cak"/>
-                <constraint firstItem="dPk-7f-QMn" firstAttribute="leading" secondItem="k4T-cC-dUg" secondAttribute="trailing" constant="5" id="vWP-dd-4kA" userLabel="IconRight"/>
+                <constraint firstItem="dPk-7f-QMn" firstAttribute="leading" secondItem="k4T-cC-dUg" secondAttribute="trailing" constant="7" id="vWP-dd-4kA" userLabel="IconRight"/>
                 <constraint firstItem="k4T-cC-dUg" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="xvt-En-1d9" userLabel="IconCenterY"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="pw9-wT-Cak"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="iconHeightContraint" destination="GQ4-2j-ede" id="u1y-Ys-Snv"/>
                 <outlet property="iconWidthContraint" destination="47C-WO-Itc" id="Of8-mm-ep7"/>
