@@ -13,7 +13,7 @@ class SlideInPresentationManager: NSObject, UIViewControllerTransitioningDelegat
 }
 
 class SchedulesPresentationController: UIPresentationController {
-    let topMargin: CGFloat = 40
+    let topMargin: CGFloat = 50
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
         setupDimmingView()

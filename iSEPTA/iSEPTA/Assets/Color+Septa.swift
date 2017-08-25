@@ -10,4 +10,7 @@ struct SeptaColor {
     static let white20 = UIColor.toPercent(255, 255, 255, 0.2)
     static let viewShadowColor = UIColor.toPercent(0, 0, 0, 0.2)
     static let enabledCellBorder = UIColor.toPercent(132, 162, 194, 1)
+
+    static let segmentBlue = UIColor.toPercent(20, 75, 136, 1)
+    static let subSegmentBlue = UIColor.toPercent(132, 162, 194, 1)
 }
