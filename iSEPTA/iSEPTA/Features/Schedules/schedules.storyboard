@@ -774,58 +774,74 @@ StartingLabelRight</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yNe-eq-oKw" userLabel="SearchView" customClass="SelectStopSearchModeView" customModule="Septa" customModuleProvider="target">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V9N-D8-oWg">
                                 <rect key="frame" x="0.0" y="20" width="375" height="140"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YES-GZ-e9C">
-                                        <rect key="frame" x="8" y="8" width="48" height="30"/>
-                                        <state key="normal" title="Cancel"/>
-                                        <connections>
-                                            <action selector="cancelButtonPressed:" destination="aLS-4r-fkd" eventType="touchUpInside" id="Ssl-J2-yQj"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Stop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GzI-jB-UfB" userLabel="SearchViewTitle">
-                                        <rect key="frame" x="143.5" y="13" width="88.5" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GLP-4B-ZV9" userLabel="SearchMode">
-                                        <rect key="frame" x="75" y="52" width="225" height="29"/>
-                                        <segments>
-                                            <segment title="BY STOP"/>
-                                            <segment title="NEAR ADDRESS"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="searchMethodToggled:" destination="aLS-4r-fkd" eventType="valueChanged" id="vZX-DJ-l5C"/>
-                                        </connections>
-                                    </segmentedControl>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c7b-ro-9K9">
-                                        <rect key="frame" x="15" y="95" width="345" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <string key="userLabel">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6Xu-dj-Oeo">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yNe-eq-oKw" userLabel="SearchView" customClass="SelectStopSearchModeView" customModule="Septa" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YES-GZ-e9C">
+                                                    <rect key="frame" x="8" y="8" width="48" height="30"/>
+                                                    <state key="normal" title="Cancel"/>
+                                                    <connections>
+                                                        <action selector="cancelButtonPressed:" destination="aLS-4r-fkd" eventType="touchUpInside" id="Ssl-J2-yQj"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Stop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GzI-jB-UfB" userLabel="SearchViewTitle">
+                                                    <rect key="frame" x="143.5" y="13" width="88.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GLP-4B-ZV9" userLabel="SearchMode">
+                                                    <rect key="frame" x="75" y="52" width="225" height="29"/>
+                                                    <segments>
+                                                        <segment title="BY STOP"/>
+                                                        <segment title="NEAR ADDRESS"/>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="searchMethodToggled:" destination="aLS-4r-fkd" eventType="valueChanged" id="vZX-DJ-l5C"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c7b-ro-9K9">
+                                                    <rect key="frame" x="15" y="95" width="345" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <string key="userLabel">
 SearchTextBox</string>
-                                        <connections>
-                                            <outlet property="delegate" destination="d82-BN-gFA" id="Ats-xm-g4X"/>
-                                        </connections>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" red="0.92941176469999998" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="c7b-ro-9K9" secondAttribute="bottom" constant="15" id="1KK-eR-UAB" userLabel="TextBoxBottom"/>
-                                    <constraint firstItem="YES-GZ-e9C" firstAttribute="leading" secondItem="yNe-eq-oKw" secondAttribute="leading" constant="8" id="O8k-7A-axz" userLabel="ButtonLeft"/>
-                                    <constraint firstItem="GzI-jB-UfB" firstAttribute="centerX" secondItem="yNe-eq-oKw" secondAttribute="centerX" id="SEB-gD-7pM" userLabel="SearchTitleCenterX"/>
-                                    <constraint firstItem="GLP-4B-ZV9" firstAttribute="centerX" secondItem="yNe-eq-oKw" secondAttribute="centerX" id="V1u-qQ-ufS" userLabel="SearchModeCenterX"/>
-                                    <constraint firstItem="c7b-ro-9K9" firstAttribute="leading" secondItem="yNe-eq-oKw" secondAttribute="leading" constant="15" id="ccx-2G-dRH" userLabel="TextBoxLeft"/>
-                                    <constraint firstAttribute="trailing" secondItem="c7b-ro-9K9" secondAttribute="trailing" constant="15" id="hgQ-Dy-Plz" userLabel="TextBoxRight"/>
-                                    <constraint firstItem="GzI-jB-UfB" firstAttribute="top" secondItem="yNe-eq-oKw" secondAttribute="top" constant="13" id="jxx-Wn-tHy" userLabel="SearchTitleTop"/>
-                                    <constraint firstItem="GLP-4B-ZV9" firstAttribute="top" secondItem="yNe-eq-oKw" secondAttribute="top" constant="52" id="q1e-Da-wKo" userLabel="SearchModeTop"/>
-                                    <constraint firstItem="YES-GZ-e9C" firstAttribute="top" secondItem="yNe-eq-oKw" secondAttribute="top" constant="8" id="r3S-wn-emI" userLabel="ButtonTop"/>
-                                    <constraint firstItem="c7b-ro-9K9" firstAttribute="top" secondItem="GLP-4B-ZV9" secondAttribute="bottom" constant="15" id="xTY-dU-mLZ" userLabel="TextBoxTop"/>
-                                </constraints>
-                            </view>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="d82-BN-gFA" id="Ats-xm-g4X"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="c7b-ro-9K9" secondAttribute="bottom" constant="15" id="1KK-eR-UAB" userLabel="TextBoxBottom"/>
+                                                <constraint firstItem="YES-GZ-e9C" firstAttribute="leading" secondItem="yNe-eq-oKw" secondAttribute="leading" constant="8" id="O8k-7A-axz" userLabel="ButtonLeft"/>
+                                                <constraint firstItem="GzI-jB-UfB" firstAttribute="centerX" secondItem="yNe-eq-oKw" secondAttribute="centerX" id="SEB-gD-7pM" userLabel="SearchTitleCenterX"/>
+                                                <constraint firstItem="GLP-4B-ZV9" firstAttribute="centerX" secondItem="yNe-eq-oKw" secondAttribute="centerX" id="V1u-qQ-ufS" userLabel="SearchModeCenterX"/>
+                                                <constraint firstItem="c7b-ro-9K9" firstAttribute="leading" secondItem="yNe-eq-oKw" secondAttribute="leading" constant="15" id="ccx-2G-dRH" userLabel="TextBoxLeft"/>
+                                                <constraint firstAttribute="trailing" secondItem="c7b-ro-9K9" secondAttribute="trailing" constant="15" id="hgQ-Dy-Plz" userLabel="TextBoxRight"/>
+                                                <constraint firstItem="GzI-jB-UfB" firstAttribute="top" secondItem="yNe-eq-oKw" secondAttribute="top" constant="13" id="jxx-Wn-tHy" userLabel="SearchTitleTop"/>
+                                                <constraint firstItem="GLP-4B-ZV9" firstAttribute="top" secondItem="yNe-eq-oKw" secondAttribute="top" constant="52" id="q1e-Da-wKo" userLabel="SearchModeTop"/>
+                                                <constraint firstItem="YES-GZ-e9C" firstAttribute="top" secondItem="yNe-eq-oKw" secondAttribute="top" constant="8" id="r3S-wn-emI" userLabel="ButtonTop"/>
+                                                <constraint firstItem="c7b-ro-9K9" firstAttribute="top" secondItem="GLP-4B-ZV9" secondAttribute="bottom" constant="15" id="xTY-dU-mLZ" userLabel="TextBoxTop"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="yNe-eq-oKw" firstAttribute="top" secondItem="6Xu-dj-Oeo" secondAttribute="top" id="1xd-G2-euW"/>
+                                        <constraint firstItem="yNe-eq-oKw" firstAttribute="leading" secondItem="6Xu-dj-Oeo" secondAttribute="leading" id="QMR-kd-MAu"/>
+                                        <constraint firstAttribute="trailing" secondItem="yNe-eq-oKw" secondAttribute="trailing" id="R1F-e7-ntS"/>
+                                        <constraint firstAttribute="bottom" secondItem="yNe-eq-oKw" secondAttribute="bottom" id="xai-bI-ZJq"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ICn-d3-5wr">
                                 <rect key="frame" x="0.0" y="160" width="375" height="507"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -868,14 +884,14 @@ SearchTextBox</string>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1Jh-Fy-1l6" firstAttribute="trailing" secondItem="yNe-eq-oKw" secondAttribute="trailing" id="90a-3C-kNu" userLabel="SearchViewRight"/>
-                            <constraint firstItem="fEJ-bC-2Y5" firstAttribute="centerY" secondItem="ICn-d3-5wr" secondAttribute="centerY" id="A0G-Xd-Ome"/>
-                            <constraint firstItem="yNe-eq-oKw" firstAttribute="leading" secondItem="1Jh-Fy-1l6" secondAttribute="leading" id="AfC-Qp-Aah" userLabel="SearchViewLeft"/>
-                            <constraint firstItem="yNe-eq-oKw" firstAttribute="top" secondItem="1Jh-Fy-1l6" secondAttribute="top" id="D0n-n5-ZMy" userLabel="SearchViewTop"/>
+                            <constraint firstItem="V9N-D8-oWg" firstAttribute="top" secondItem="1Jh-Fy-1l6" secondAttribute="top" id="95l-mS-b2D" userLabel="VisualEffectTop"/>
+                            <constraint firstItem="fEJ-bC-2Y5" firstAttribute="centerY" secondItem="ICn-d3-5wr" secondAttribute="centerY" id="A0G-Xd-Ome" userLabel="ActivityIndicatorCenterY"/>
                             <constraint firstItem="ICn-d3-5wr" firstAttribute="leading" secondItem="1Jh-Fy-1l6" secondAttribute="leading" id="JCZ-8f-35C" userLabel="TableViewLeft"/>
-                            <constraint firstItem="fEJ-bC-2Y5" firstAttribute="centerX" secondItem="ICn-d3-5wr" secondAttribute="centerX" id="Ypg-7U-unv"/>
-                            <constraint firstItem="ICn-d3-5wr" firstAttribute="top" secondItem="yNe-eq-oKw" secondAttribute="bottom" id="kqc-XD-SWg" userLabel="TableViewTop"/>
+                            <constraint firstItem="V9N-D8-oWg" firstAttribute="bottom" secondItem="ICn-d3-5wr" secondAttribute="top" id="MnY-lX-1TC" userLabel="TableViewTop"/>
+                            <constraint firstItem="V9N-D8-oWg" firstAttribute="leading" secondItem="1Jh-Fy-1l6" secondAttribute="leading" id="NqX-bO-Lrb" userLabel="VisualEffectLeft"/>
+                            <constraint firstItem="fEJ-bC-2Y5" firstAttribute="centerX" secondItem="ICn-d3-5wr" secondAttribute="centerX" id="Ypg-7U-unv" userLabel="ActivityIndicatorCenterX"/>
                             <constraint firstItem="1Jh-Fy-1l6" firstAttribute="bottom" secondItem="ICn-d3-5wr" secondAttribute="bottom" id="nKI-If-BeY" userLabel="TableViewBottom"/>
+                            <constraint firstItem="1Jh-Fy-1l6" firstAttribute="trailing" secondItem="V9N-D8-oWg" secondAttribute="trailing" id="pby-NC-lDf" userLabel="VisualEffectRight"/>
                             <constraint firstItem="1Jh-Fy-1l6" firstAttribute="trailing" secondItem="ICn-d3-5wr" secondAttribute="trailing" id="snI-WQ-QRt" userLabel="TableViewRight"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Jh-Fy-1l6"/>
