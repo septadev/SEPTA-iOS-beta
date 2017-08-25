@@ -851,7 +851,7 @@ SearchTextBox</string>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AYP-M7-x77" userLabel="Divider">
-                                                    <rect key="frame" x="0.0" y="646" width="375" height="1"/>
+                                                    <rect key="frame" x="0.0" y="120" width="375" height="1"/>
                                                     <color key="backgroundColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="nXO-Fi-FAQ" userLabel="Dividerheight"/>
@@ -861,9 +861,12 @@ SearchTextBox</string>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                             <gestureRecognizers/>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="AYP-M7-x77" secondAttribute="bottom" id="066-zI-uCw" userLabel="DividerBottom"/>
                                                 <constraint firstItem="2zk-3Z-4XZ" firstAttribute="top" secondItem="yNe-eq-oKw" secondAttribute="top" id="70a-Xk-Wx8" userLabel="DismissViewtop"/>
+                                                <constraint firstAttribute="trailing" secondItem="AYP-M7-x77" secondAttribute="trailing" id="9gg-pv-390" userLabel="DividerRight"/>
                                                 <constraint firstAttribute="trailing" secondItem="2zk-3Z-4XZ" secondAttribute="trailing" id="HLL-ob-t9g" userLabel="DismissViewRight"/>
                                                 <constraint firstItem="GLP-4B-ZV9" firstAttribute="leading" secondItem="yNe-eq-oKw" secondAttribute="leading" constant="11" id="RwH-o7-och" userLabel="SearchModeLeft"/>
+                                                <constraint firstItem="AYP-M7-x77" firstAttribute="leading" secondItem="yNe-eq-oKw" secondAttribute="leading" id="TKV-hl-Yzw" userLabel="DividerLeft"/>
                                                 <constraint firstAttribute="trailing" secondItem="M8t-3Y-X3R" secondAttribute="trailing" constant="11" id="YdI-O3-I4A" userLabel="SearchByTextRight"/>
                                                 <constraint firstAttribute="bottom" secondItem="M8t-3Y-X3R" secondAttribute="bottom" constant="12" id="ZA6-Kg-762" userLabel="SearchByTextBottom"/>
                                                 <constraint firstItem="M8t-3Y-X3R" firstAttribute="leading" secondItem="yNe-eq-oKw" secondAttribute="leading" constant="11" id="ayu-Gm-TbQ" userLabel="SearchByTextLeft"/>
@@ -923,14 +926,11 @@ SearchTextBox</string>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="yNe-eq-oKw" firstAttribute="top" secondItem="6Xu-dj-Oeo" secondAttribute="top" id="1xd-G2-euW" userLabel="SearchViewTop"/>
-                                        <constraint firstAttribute="bottom" secondItem="AYP-M7-x77" secondAttribute="bottom" id="3by-BV-bmn" userLabel="DividerBottom"/>
-                                        <constraint firstItem="AYP-M7-x77" firstAttribute="leading" secondItem="6Xu-dj-Oeo" secondAttribute="leading" id="9cs-iA-ruh" userLabel="DividerLeft"/>
                                         <constraint firstItem="ICn-d3-5wr" firstAttribute="leading" secondItem="6Xu-dj-Oeo" secondAttribute="leading" id="G6n-xH-wwJ" userLabel="TableViewLeft"/>
                                         <constraint firstAttribute="bottom" secondItem="ICn-d3-5wr" secondAttribute="bottom" id="Isg-Ow-mJ2" userLabel="TableViewBottom"/>
                                         <constraint firstAttribute="trailing" secondItem="ICn-d3-5wr" secondAttribute="trailing" id="NvC-Eg-mgW" userLabel="TableViewRight"/>
                                         <constraint firstItem="yNe-eq-oKw" firstAttribute="leading" secondItem="6Xu-dj-Oeo" secondAttribute="leading" id="QMR-kd-MAu" userLabel="SearchViewLeft"/>
                                         <constraint firstAttribute="trailing" secondItem="yNe-eq-oKw" secondAttribute="trailing" id="R1F-e7-ntS" userLabel="SearchViewRight"/>
-                                        <constraint firstAttribute="trailing" secondItem="AYP-M7-x77" secondAttribute="trailing" id="b9t-tm-xA7" userLabel="DividerRight"/>
                                         <constraint firstItem="yNe-eq-oKw" firstAttribute="bottom" secondItem="ICn-d3-5wr" secondAttribute="top" id="qh4-yY-pne" userLabel="TableViewTop"/>
                                     </constraints>
                                 </view>
