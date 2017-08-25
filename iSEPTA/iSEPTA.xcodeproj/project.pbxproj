@@ -75,6 +75,8 @@
 		58470C091F3F276000F3C9B5 /* NumberFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58470C081F3F276000F3C9B5 /* NumberFormatters.swift */; };
 		584AC8731F437DDB0040C1B4 /* TripScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9A1F33B1120062A546 /* TripScheduleViewController.swift */; };
 		585572861F39499D004ABCD6 /* Color+Septa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585572841F3948D3004ABCD6 /* Color+Septa.swift */; };
+		586DFEC21F5051C4004BC972 /* SelectStopSearchModeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 586DFEC11F5051C4004BC972 /* SelectStopSearchModeView.xib */; };
+		586DFEC51F505482004BC972 /* SelectStopSearchModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586DFEC41F505482004BC972 /* SelectStopSearchModeView.swift */; };
 		5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880C19A1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift */; };
 		588F27F01F39DD7B00D62425 /* UserPreferenceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27EF1F39DD7B00D62425 /* UserPreferenceState.swift */; };
 		588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27F31F39E05A00D62425 /* PreferenceReducers.swift */; };
@@ -236,6 +238,8 @@
 		5867AC391F46249700370254 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = ../Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
 		5867AC3B1F46249700370254 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = ../Carthage/Build/iOS/ReSwift.framework; sourceTree = "<group>"; };
 		5867AC3C1F46249800370254 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = ../Carthage/Build/iOS/Zip.framework; sourceTree = "<group>"; };
+		586DFEC11F5051C4004BC972 /* SelectStopSearchModeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectStopSearchModeView.xib; sourceTree = "<group>"; };
+		586DFEC41F505482004BC972 /* SelectStopSearchModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopSearchModeView.swift; sourceTree = "<group>"; };
 		5880C19A1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRequestReducer.swift; sourceTree = "<group>"; };
 		5880C19C1F3B702500337DB2 /* Answers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Answers.framework; sourceTree = "<group>"; };
 		588F27EF1F39DD7B00D62425 /* UserPreferenceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferenceState.swift; sourceTree = "<group>"; };
@@ -479,6 +483,8 @@
 				58F80D421F421C1F0089501A /* SelectStopNavigationController.swift */,
 				58F80D441F421C4B0089501A /* SelectStopViewController.swift */,
 				58F80D461F421C740089501A /* SelectStopByAddressViewController.swift */,
+				586DFEC11F5051C4004BC972 /* SelectStopSearchModeView.xib */,
+				586DFEC41F505482004BC972 /* SelectStopSearchModeView.swift */,
 			);
 			path = SelectStop;
 			sourceTree = "<group>";
@@ -970,6 +976,7 @@
 				582F4EC41F33B1120062A546 /* nextToArrive.storyboard in Resources */,
 				582F4EDE1F33B1120062A546 /* Main.storyboard in Resources */,
 				582F4EC31F33B1120062A546 /* favorites.storyboard in Resources */,
+				586DFEC21F5051C4004BC972 /* SelectStopSearchModeView.xib in Resources */,
 				58C182041F34C5B6002748E9 /* Localizeable.strings in Resources */,
 				582F4EC11F33B1120062A546 /* contact.storyboard in Resources */,
 				582531951F406E790088D056 /* DefaultPreferences.plist in Resources */,
@@ -1090,6 +1097,7 @@
 				58DB10F41F3B8CCF00191AED /* ScheduleDataReducer.swift in Sources */,
 				582F4ED61F33B1120062A546 /* SelectStopsViewElement.swift in Sources */,
 				589BCC321F3D5068002FAEDE /* SchedulesPresentationController.swift in Sources */,
+				586DFEC51F505482004BC972 /* SelectStopSearchModeView.swift in Sources */,
 				581DA54A1F3BE1C8006AEC39 /* IdentifiableController.swift in Sources */,
 				581DA54F1F3BF102006AEC39 /* ViewTransitionType.swift in Sources */,
 				5840D6E01F37E5FB00C8CB76 /* ScheduleReducer.swift in Sources */,
