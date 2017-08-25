@@ -54,7 +54,7 @@ struct ScheduleRequestReducer {
     }
 
     static func reduceCurrentStopToEdit(action: CurrentStopToEdit, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: scheduleRequest.selectedStart, stopToEdit: action.stopToEdit, databaseIsLoaded: scheduleRequest.databaseIsLoaded)
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: scheduleRequest.selectedStart, selectedEnd: scheduleRequest.selectedEnd, stopToEdit: action.stopToEdit, databaseIsLoaded: scheduleRequest.databaseIsLoaded)
     }
 
     static func reduceTripEndSelected(action: TripEndSelected, scheduleRequest: ScheduleRequest) -> ScheduleRequest {

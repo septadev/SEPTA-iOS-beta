@@ -83,6 +83,7 @@
 		588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27F61F39E0BF00D62425 /* UserPreferenceActions.swift */; };
 		5892DDF11F3AAA5C000BA54B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5892DDEF1F3AAA5C000BA54B /* Crashlytics.framework */; };
 		5892DDF21F3AAA5C000BA54B /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5892DDF01F3AAA5C000BA54B /* Fabric.framework */; };
+		589A89D71F50BB73007329DB /* SelectStopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A89D61F50BB73007329DB /* SelectStopCell.swift */; };
 		589BCC321F3D5068002FAEDE /* SchedulesPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589BCC311F3D5068002FAEDE /* SchedulesPresentationController.swift */; };
 		58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA01F33B1120062A546 /* SelectStopViewModel.swift */; };
 		58B1FFD61F42EB2500AD8620 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B1FFD41F42EB2400AD8620 /* MapKit.framework */; };
@@ -247,6 +248,7 @@
 		588F27F61F39E0BF00D62425 /* UserPreferenceActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferenceActions.swift; sourceTree = "<group>"; };
 		5892DDEF1F3AAA5C000BA54B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		5892DDF01F3AAA5C000BA54B /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		589A89D61F50BB73007329DB /* SelectStopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopCell.swift; sourceTree = "<group>"; };
 		589BCC311F3D5068002FAEDE /* SchedulesPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesPresentationController.swift; sourceTree = "<group>"; };
 		58ACEADD1F3A9A9B00DC2836 /* SeptaSchedule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SeptaSchedule.xcodeproj; path = ../SeptaSchedule/SeptaSchedule.xcodeproj; sourceTree = "<group>"; };
 		58B1FFD41F42EB2400AD8620 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -485,6 +487,7 @@
 				58F80D461F421C740089501A /* SelectStopByAddressViewController.swift */,
 				586DFEC11F5051C4004BC972 /* SelectStopSearchModeView.xib */,
 				586DFEC41F505482004BC972 /* SelectStopSearchModeView.swift */,
+				589A89D61F50BB73007329DB /* SelectStopCell.swift */,
 			);
 			path = SelectStop;
 			sourceTree = "<group>";
@@ -1117,6 +1120,7 @@
 				581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */,
 				588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */,
 				58B892171F38F7E700BFFEFA /* Strings.swift in Sources */,
+				589A89D71F50BB73007329DB /* SelectStopCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

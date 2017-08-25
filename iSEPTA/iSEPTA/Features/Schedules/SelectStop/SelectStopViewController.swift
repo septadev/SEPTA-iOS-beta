@@ -31,10 +31,13 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
         }
     }
 
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    @IBAction func cancelButtonPressed(_: Any) {
+    @IBAction func DismissViewTapped(_: Any) {
         let dismissAction = DismissModal(navigationController: .schedules, description: "Route should be dismissed")
         store.dispatch(dismissAction)
+    }
+
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBAction func cancelButtonPressed(_: Any) {
     }
 
     @IBAction func searchMethodToggled(_: Any) {
@@ -61,7 +64,7 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? SingleStringCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? SelectStopCell else { return UITableViewCell() }
 
         viewModel.configureDisplayable(cell, atRow: indexPath.row)
         return cell
