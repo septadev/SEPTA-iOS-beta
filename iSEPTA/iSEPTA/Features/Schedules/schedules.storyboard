@@ -873,15 +873,15 @@ SearchTextBox</string>
                                                 <constraint firstItem="M8t-3Y-X3R" firstAttribute="top" secondItem="GLP-4B-ZV9" secondAttribute="bottom" constant="17" id="uOc-Hw-ubz" userLabel="SearchByTextTop"/>
                                             </constraints>
                                         </view>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ICn-d3-5wr">
+                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ICn-d3-5wr">
                                             <rect key="frame" x="0.0" y="121" width="375" height="526"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
                                             <prototypes>
                                                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="stopCell" id="wrn-eA-jgn" userLabel="stopCell" customClass="SelectStopCell" customModule="Septa" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wrn-eA-jgn" id="tLy-ES-enQ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18th and Vine" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odK-ZX-VgC" userLabel="StopName">
@@ -890,11 +890,21 @@ SearchTextBox</string>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Og7-Hg-Inb" userLabel="Divider">
+                                                                <rect key="frame" x="15" y="43" width="360" height="1"/>
+                                                                <color key="backgroundColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="1" id="s8i-4w-TfB"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstItem="odK-ZX-VgC" firstAttribute="top" secondItem="tLy-ES-enQ" secondAttribute="top" constant="15" id="5ke-Ct-g2Y" userLabel="RouteLongNameTop"/>
                                                             <constraint firstAttribute="trailing" secondItem="odK-ZX-VgC" secondAttribute="trailing" constant="17" id="A72-IP-S8h" userLabel="RouteLongNameRight"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Og7-Hg-Inb" secondAttribute="bottom" id="BCc-JG-Hdd" userLabel="DividerBottom"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Og7-Hg-Inb" secondAttribute="trailing" id="daX-4B-a8J" userLabel="DividerRight"/>
+                                                            <constraint firstItem="Og7-Hg-Inb" firstAttribute="leading" secondItem="tLy-ES-enQ" secondAttribute="leading" constant="15" id="jCK-fw-Ydq" userLabel="DividerLeft"/>
                                                             <constraint firstAttribute="bottom" secondItem="odK-ZX-VgC" secondAttribute="bottom" constant="15" id="jqB-pd-Cwy" userLabel="RouteLongNameBottom"/>
                                                             <constraint firstItem="odK-ZX-VgC" firstAttribute="leading" secondItem="tLy-ES-enQ" secondAttribute="leading" constant="17" id="v1N-HV-JcH" userLabel="RouteLongNameLeft"/>
                                                         </constraints>
@@ -947,18 +957,11 @@ SearchTextBox</string>
                         <outlet property="dismissIcon" destination="dz1-Pl-MLV" id="Ksl-Cq-bOq"/>
                         <outlet property="searchbyTextView" destination="M8t-3Y-X3R" id="OK4-sI-MKK"/>
                         <outlet property="segmentedControl" destination="GLP-4B-ZV9" id="HXp-gE-4Fn"/>
-                        <outlet property="tableFooterView" destination="c3p-Xn-uy1" id="AR6-90-5bU"/>
                         <outlet property="tableView" destination="ICn-d3-5wr" id="HZl-1B-6VZ"/>
                         <outlet property="viewModel" destination="d82-BN-gFA" id="UCE-dx-WaT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qXG-sq-UlS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="c3p-Xn-uy1" userLabel="TableFooterView">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="5"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <viewLayoutGuide key="safeArea" id="9rd-JQ-ssn"/>
-                </view>
                 <customObject id="d82-BN-gFA" userLabel="SelectStopViewModel" customClass="SelectStopViewModel" customModule="Septa" customModuleProvider="target">
                     <connections>
                         <outlet property="selectStopViewController" destination="aLS-4r-fkd" id="nDd-kF-Y0e"/>

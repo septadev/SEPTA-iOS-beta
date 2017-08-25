@@ -46,7 +46,6 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.tableFooterView = tableFooterView
         searchbyTextView.layer.cornerRadius = 3.0
         searchbyTextView.layer.borderColor = SeptaColor.subSegmentBlue.cgColor
         searchbyTextView.layer.borderWidth = 1.0
