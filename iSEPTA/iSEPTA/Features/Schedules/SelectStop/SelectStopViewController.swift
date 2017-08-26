@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import ReSwift
 
-class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel {
+class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, SearchModalHeaderDelegate {
     typealias StoreSubscriberStateType = StopToSelect?
     @IBOutlet weak var viewModel: SelectStopViewModel!
     @IBOutlet weak var tableView: UITableView!
@@ -57,6 +57,26 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
             activityIndicator.startAnimating()
         }
         return rowCount
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
+        if segue.identifier == "embedHeader" {
+            if let headerViewController = segue.destination as? SearchModalHeaderViewController {
+                headerViewController.delegate = self
+            }
+        }
+    }
+
+    func animatedLayoutNeeded(block: @escaping (() -> Void)) {
+
+        UIView.animate(withDuration: 0.25, animations: {
+            block()
+            self.view.layoutIfNeeded()
+
+        }, completion: {
+            completed in print(completed)
+
+        })
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

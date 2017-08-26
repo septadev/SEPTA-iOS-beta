@@ -770,7 +770,7 @@ StartingLabelRight</string>
         <scene sceneID="cTk-Wb-vFD">
             <objects>
                 <viewController storyboardIdentifier="selectStopController" title="Select stop" id="aLS-4r-fkd" customClass="SelectStopViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8Mo-47-rlQ">
+                    <view key="view" contentMode="scaleToFill" id="8Mo-47-rlQ" customClass="CurvedTopView" customModule="Septa" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -782,16 +782,17 @@ StartingLabelRight</string>
                                     <subviews>
                                         <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etJ-OH-PkF" userLabel="SearchView">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="121" id="CSK-OX-lZ2" userLabel="SearchViewHeight"/>
+                                                <constraint firstAttribute="height" constant="121" placeholder="YES" id="CSK-OX-lZ2" userLabel="SearchViewHeight"/>
                                             </constraints>
                                             <connections>
-                                                <segue destination="gOh-OW-Svi" kind="embed" id="x0k-eT-tQL"/>
+                                                <segue destination="gOh-OW-Svi" kind="embed" identifier="embedHeader" id="x0k-eT-tQL"/>
                                             </connections>
                                         </containerView>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ICn-d3-5wr">
                                             <rect key="frame" x="0.0" y="121" width="375" height="526"/>
-                                            <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <prototypes>
                                                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="stopCell" id="wrn-eA-jgn" userLabel="stopCell" customClass="SelectStopCell" customModule="Septa" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -837,6 +838,7 @@ StartingLabelRight</string>
                                             </connections>
                                         </tableView>
                                     </subviews>
+                                    <color key="backgroundColor" white="1" alpha="0.83395761986301364" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="ICn-d3-5wr" firstAttribute="top" secondItem="etJ-OH-PkF" secondAttribute="bottom" id="DHM-EK-WfM" userLabel="TableViewTop"/>
                                         <constraint firstItem="ICn-d3-5wr" firstAttribute="leading" secondItem="6Xu-dj-Oeo" secondAttribute="leading" id="G6n-xH-wwJ" userLabel="TableViewLeft"/>
@@ -897,11 +899,11 @@ StartingLabelRight</string>
         <scene sceneID="3p5-lM-9EN">
             <objects>
                 <viewController storyboardIdentifier="SearchByViewController" id="gOh-OW-Svi" customClass="SearchModalHeaderViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="FoR-GN-4Jb" customClass="CurvedTopView" customModule="Septa" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="FoR-GN-4Jb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNI-mk-YGB" userLabel="SearchView" customClass="CurvedTopView" customModule="Septa" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNI-mk-YGB" userLabel="SearchView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7nN-gG-h58" userLabel="DismissView">
@@ -938,7 +940,7 @@ StartingLabelRight</string>
                                         </segments>
                                         <color key="tintColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <action selector="searchMethodToggled:" destination="aLS-4r-fkd" eventType="valueChanged" id="vhl-dW-LGv"/>
+                                            <action selector="didToggleSegmentedControl:" destination="gOh-OW-Svi" eventType="valueChanged" id="TgA-I2-vrO"/>
                                         </connections>
                                     </segmentedControl>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dt3-Pb-w7Y" userLabel="SearchByText">
@@ -953,6 +955,7 @@ StartingLabelRight</string>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type the line name or select" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B7Q-Zl-LKP">
                                                 <rect key="frame" x="34" y="5" width="309" height="26"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="textColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -963,7 +966,7 @@ SearchTextBox</string>
                                                 </connections>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="B7Q-Zl-LKP" secondAttribute="bottom" constant="5" id="F2Y-Bf-SZw" userLabel="TextBoxBottom"/>
                                             <constraint firstItem="B7Q-Zl-LKP" firstAttribute="top" secondItem="dt3-Pb-w7Y" secondAttribute="top" constant="5" id="Iqq-WD-Vzc" userLabel="TextBoxTop"/>
@@ -982,15 +985,17 @@ SearchTextBox</string>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" identifier="SearchView" label="SearchView"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="rS7-En-2sJ" firstAttribute="top" secondItem="7nN-gG-h58" secondAttribute="bottom" id="0ed-aq-GZg" userLabel="SearchModeTop"/>
                                     <constraint firstAttribute="trailing" secondItem="Clu-4h-zwi" secondAttribute="trailing" id="2Sn-aE-o1f" userLabel="DividerRight"/>
                                     <constraint firstItem="7nN-gG-h58" firstAttribute="leading" secondItem="bNI-mk-YGB" secondAttribute="leading" id="59s-e7-UuD" userLabel="DismissViewLeft"/>
-                                    <constraint firstAttribute="bottom" secondItem="dt3-Pb-w7Y" secondAttribute="bottom" constant="12" id="7iJ-cX-l2V" userLabel="SearchByTextBottom"/>
                                     <constraint firstItem="dt3-Pb-w7Y" firstAttribute="leading" secondItem="bNI-mk-YGB" secondAttribute="leading" constant="11" id="968-nr-Yhv" userLabel="SearchByTextLeft"/>
+                                    <constraint firstAttribute="height" constant="121" id="I6p-N4-ZO9" userLabel="HeightForStops"/>
                                     <constraint firstAttribute="trailing" secondItem="dt3-Pb-w7Y" secondAttribute="trailing" constant="11" id="S0D-XI-tad" userLabel="SearchByTextRight"/>
+                                    <constraint firstAttribute="height" constant="151" id="VTR-cS-2Tz" userLabel="heightForAddress"/>
                                     <constraint firstItem="7nN-gG-h58" firstAttribute="top" secondItem="bNI-mk-YGB" secondAttribute="top" id="cVa-Nh-Cd8" userLabel="DismissViewtop"/>
                                     <constraint firstItem="dt3-Pb-w7Y" firstAttribute="top" secondItem="rS7-En-2sJ" secondAttribute="bottom" constant="17" id="gA0-td-8Qh" userLabel="SearchByTextTop"/>
                                     <constraint firstAttribute="bottom" secondItem="Clu-4h-zwi" secondAttribute="bottom" id="gY3-cj-cRM" userLabel="DividerBottom"/>
@@ -1000,20 +1005,30 @@ SearchTextBox</string>
                                     <constraint firstAttribute="trailing" secondItem="rS7-En-2sJ" secondAttribute="trailing" constant="11" id="z84-nL-rBs" userLabel="SearchModeRight"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="bnv-m2-pE9"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="VTR-cS-2Tz"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bNI-mk-YGB" firstAttribute="top" secondItem="FoR-GN-4Jb" secondAttribute="top" id="7d0-Tv-rp5" userLabel="SearchViewtop"/>
                             <constraint firstAttribute="bottom" secondItem="bNI-mk-YGB" secondAttribute="bottom" id="Sua-to-Y4v" userLabel="SearchViewBottom"/>
                             <constraint firstItem="bNI-mk-YGB" firstAttribute="leading" secondItem="FoR-GN-4Jb" secondAttribute="leading" id="jAJ-db-gUX" userLabel="SearchViewLeft"/>
                             <constraint firstAttribute="trailing" secondItem="bNI-mk-YGB" secondAttribute="trailing" id="nvC-TT-k8r" userLabel="SearchViewRight"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="b5p-AH-fxq"/>
                     </view>
                     <size key="freeformSize" width="375" height="121"/>
                     <connections>
                         <outlet property="dismissIcon" destination="lHK-2s-TQT" id="6JC-XF-P9X"/>
                         <outlet property="searchByTextView" destination="dt3-Pb-w7Y" id="Rk7-D1-3Dq"/>
+                        <outlet property="searchView" destination="bNI-mk-YGB" id="L0V-jA-FVd"/>
+                        <outlet property="segmentedControl" destination="rS7-En-2sJ" id="oGT-VZ-K0i"/>
+                        <outlet property="viewHeightConstraintForAddress" destination="VTR-cS-2Tz" id="7ks-Xp-t7p"/>
+                        <outlet property="viewHeightConstraintForStops" destination="I6p-N4-ZO9" id="k0T-y2-L0v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eod-vm-ubd" userLabel="First Responder" sceneMemberID="firstResponder"/>
