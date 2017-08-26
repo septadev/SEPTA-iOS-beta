@@ -16,8 +16,6 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var searchbyTextView: UIView!
-    @IBOutlet var tableFooterView: UIView!
-    @IBOutlet weak var dismissIcon: UIView!
 
     static var viewController: ViewController = .routesViewController
     let cellId = "stopCell"
@@ -46,10 +44,9 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        searchbyTextView.layer.cornerRadius = 3.0
-        searchbyTextView.layer.borderColor = SeptaColor.subSegmentBlue.cgColor
-        searchbyTextView.layer.borderWidth = 1.0
-        dismissIcon.layer.cornerRadius = 3.0
+        //        searchbyTextView.layer.cornerRadius = 3.0
+        //        searchbyTextView.layer.borderColor = SeptaColor.subSegmentBlue.cgColor
+        //        searchbyTextView.layer.borderWidth = 1.0
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {

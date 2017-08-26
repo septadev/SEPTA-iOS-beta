@@ -10,12 +10,7 @@ import Foundation
 import UIKit
 
 @IBDesignable
-class SelectStopSearchModeView: UIView {
-
-    //    required init?(coder _: NSCoder) {
-    //        let blurEffect = UIBlurEffect(style: .light)
-    //        super.init(effect: blurEffect)
-    //    }
+class CurvedTopView: UIView {
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)

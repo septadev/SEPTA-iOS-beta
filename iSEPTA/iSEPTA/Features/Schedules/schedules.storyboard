@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Flo-rT-aez">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Flo-rT-aez">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -274,7 +274,7 @@ TableViewWrapper</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Vk-6b-kfb" userLabel="SearchView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Vk-6b-kfb" userLabel="SearchView" customClass="SelectStopSearchModeView" customModule="Septa" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="82"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5Y-8t-Sgh">
@@ -780,102 +780,15 @@ StartingLabelRight</string>
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yNe-eq-oKw" userLabel="SearchView" customClass="SelectStopSearchModeView" customModule="Septa" customModuleProvider="target">
+                                        <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etJ-OH-PkF" userLabel="SearchView">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2zk-3Z-4XZ" userLabel="DismissView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="28"/>
-                                                    <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dz1-Pl-MLV" userLabel="DismissButton">
-                                                            <rect key="frame" x="170" y="9" width="35" height="4"/>
-                                                            <color key="backgroundColor" red="0.73333333333333328" green="0.73333333333333328" blue="0.73333333333333328" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="35" id="hhN-nw-JPT"/>
-                                                                <constraint firstAttribute="height" constant="4" id="qb8-tF-WHY"/>
-                                                            </constraints>
-                                                        </view>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <gestureRecognizers/>
-                                                    <constraints>
-                                                        <constraint firstItem="dz1-Pl-MLV" firstAttribute="centerX" secondItem="2zk-3Z-4XZ" secondAttribute="centerX" id="cLI-mT-H08" userLabel="DismissButtonCenterX"/>
-                                                        <constraint firstItem="dz1-Pl-MLV" firstAttribute="top" secondItem="2zk-3Z-4XZ" secondAttribute="top" constant="9" id="ivG-Kp-ndy" userLabel="DismissButtonTop"/>
-                                                        <constraint firstAttribute="height" constant="28" id="m4T-RC-eyL"/>
-                                                    </constraints>
-                                                    <connections>
-                                                        <outletCollection property="gestureRecognizers" destination="fhg-X2-KFw" appends="YES" id="Cde-ew-eKk"/>
-                                                    </connections>
-                                                </view>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GLP-4B-ZV9" userLabel="SearchMode">
-                                                    <rect key="frame" x="11" y="28" width="353" height="29"/>
-                                                    <segments>
-                                                        <segment title="Search By Station"/>
-                                                        <segment title="Search Near Address"/>
-                                                    </segments>
-                                                    <color key="tintColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <connections>
-                                                        <action selector="searchMethodToggled:" destination="aLS-4r-fkd" eventType="valueChanged" id="vZX-DJ-l5C"/>
-                                                    </connections>
-                                                </segmentedControl>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M8t-3Y-X3R" userLabel="SearchByText">
-                                                    <rect key="frame" x="11" y="73" width="353" height="36"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SearchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="vLK-9U-bTV" userLabel="SearchIcon">
-                                                            <rect key="frame" x="8" y="9.5" width="17" height="17"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="17" id="B5b-Ze-Ktv"/>
-                                                                <constraint firstAttribute="height" constant="17" id="afI-Bn-aNg"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type the line name or select" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c7b-ro-9K9">
-                                                            <rect key="frame" x="34" y="5" width="309" height="26"/>
-                                                            <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
-                                                            <string key="userLabel">
-SearchTextBox</string>
-                                                            <connections>
-                                                                <outlet property="delegate" destination="d82-BN-gFA" id="Ats-xm-g4X"/>
-                                                            </connections>
-                                                        </textField>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstItem="vLK-9U-bTV" firstAttribute="leading" secondItem="M8t-3Y-X3R" secondAttribute="leading" constant="8" id="4LE-rZ-5FJ" userLabel="SearchIconLeft"/>
-                                                        <constraint firstItem="c7b-ro-9K9" firstAttribute="top" secondItem="M8t-3Y-X3R" secondAttribute="top" constant="5" id="8px-zN-eJb" userLabel="TextBoxTop"/>
-                                                        <constraint firstAttribute="bottom" secondItem="c7b-ro-9K9" secondAttribute="bottom" constant="5" id="BWk-Tg-8x3" userLabel="TextBoxBottom"/>
-                                                        <constraint firstItem="vLK-9U-bTV" firstAttribute="centerY" secondItem="M8t-3Y-X3R" secondAttribute="centerY" id="Oaa-c0-3gQ" userLabel="IconCenterY"/>
-                                                        <constraint firstAttribute="trailing" secondItem="c7b-ro-9K9" secondAttribute="trailing" constant="10" id="g6c-cW-TCS" userLabel="TextBoxRight"/>
-                                                        <constraint firstItem="c7b-ro-9K9" firstAttribute="leading" secondItem="vLK-9U-bTV" secondAttribute="trailing" constant="9" id="mBg-u4-vP8" userLabel="TextBoxLeft"/>
-                                                        <constraint firstAttribute="height" constant="36" id="y5A-Kc-K8P" userLabel="SearchByText"/>
-                                                    </constraints>
-                                                </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AYP-M7-x77" userLabel="Divider">
-                                                    <rect key="frame" x="0.0" y="120" width="375" height="1"/>
-                                                    <color key="backgroundColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="nXO-Fi-FAQ" userLabel="Dividerheight"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
-                                            <gestureRecognizers/>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="AYP-M7-x77" secondAttribute="bottom" id="066-zI-uCw" userLabel="DividerBottom"/>
-                                                <constraint firstItem="2zk-3Z-4XZ" firstAttribute="top" secondItem="yNe-eq-oKw" secondAttribute="top" id="70a-Xk-Wx8" userLabel="DismissViewtop"/>
-                                                <constraint firstAttribute="trailing" secondItem="AYP-M7-x77" secondAttribute="trailing" id="9gg-pv-390" userLabel="DividerRight"/>
-                                                <constraint firstAttribute="trailing" secondItem="2zk-3Z-4XZ" secondAttribute="trailing" id="HLL-ob-t9g" userLabel="DismissViewRight"/>
-                                                <constraint firstItem="GLP-4B-ZV9" firstAttribute="leading" secondItem="yNe-eq-oKw" secondAttribute="leading" constant="11" id="RwH-o7-och" userLabel="SearchModeLeft"/>
-                                                <constraint firstItem="AYP-M7-x77" firstAttribute="leading" secondItem="yNe-eq-oKw" secondAttribute="leading" id="TKV-hl-Yzw" userLabel="DividerLeft"/>
-                                                <constraint firstAttribute="trailing" secondItem="M8t-3Y-X3R" secondAttribute="trailing" constant="11" id="YdI-O3-I4A" userLabel="SearchByTextRight"/>
-                                                <constraint firstAttribute="bottom" secondItem="M8t-3Y-X3R" secondAttribute="bottom" constant="12" id="ZA6-Kg-762" userLabel="SearchByTextBottom"/>
-                                                <constraint firstItem="M8t-3Y-X3R" firstAttribute="leading" secondItem="yNe-eq-oKw" secondAttribute="leading" constant="11" id="ayu-Gm-TbQ" userLabel="SearchByTextLeft"/>
-                                                <constraint firstAttribute="trailing" secondItem="GLP-4B-ZV9" secondAttribute="trailing" constant="11" id="bzh-jL-dc1" userLabel="SearchModeRight"/>
-                                                <constraint firstItem="2zk-3Z-4XZ" firstAttribute="leading" secondItem="yNe-eq-oKw" secondAttribute="leading" id="fgN-6b-7Ze" userLabel="DismissViewLeft"/>
-                                                <constraint firstItem="GLP-4B-ZV9" firstAttribute="top" secondItem="yNe-eq-oKw" secondAttribute="top" constant="28" id="q1e-Da-wKo" userLabel="SearchModeTop"/>
-                                                <constraint firstItem="M8t-3Y-X3R" firstAttribute="top" secondItem="GLP-4B-ZV9" secondAttribute="bottom" constant="17" id="uOc-Hw-ubz" userLabel="SearchByTextTop"/>
+                                                <constraint firstAttribute="height" constant="121" id="CSK-OX-lZ2" userLabel="SearchViewHeight"/>
                                             </constraints>
-                                        </view>
+                                            <connections>
+                                                <segue destination="gOh-OW-Svi" kind="embed" id="x0k-eT-tQL"/>
+                                            </connections>
+                                        </containerView>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ICn-d3-5wr">
                                             <rect key="frame" x="0.0" y="121" width="375" height="526"/>
                                             <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
@@ -925,13 +838,13 @@ SearchTextBox</string>
                                         </tableView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="yNe-eq-oKw" firstAttribute="top" secondItem="6Xu-dj-Oeo" secondAttribute="top" id="1xd-G2-euW" userLabel="SearchViewTop"/>
+                                        <constraint firstItem="ICn-d3-5wr" firstAttribute="top" secondItem="etJ-OH-PkF" secondAttribute="bottom" id="DHM-EK-WfM" userLabel="TableViewTop"/>
                                         <constraint firstItem="ICn-d3-5wr" firstAttribute="leading" secondItem="6Xu-dj-Oeo" secondAttribute="leading" id="G6n-xH-wwJ" userLabel="TableViewLeft"/>
                                         <constraint firstAttribute="bottom" secondItem="ICn-d3-5wr" secondAttribute="bottom" id="Isg-Ow-mJ2" userLabel="TableViewBottom"/>
+                                        <constraint firstItem="etJ-OH-PkF" firstAttribute="leading" secondItem="6Xu-dj-Oeo" secondAttribute="leading" id="KbF-qG-zzr" userLabel="SearchViewLeft"/>
                                         <constraint firstAttribute="trailing" secondItem="ICn-d3-5wr" secondAttribute="trailing" id="NvC-Eg-mgW" userLabel="TableViewRight"/>
-                                        <constraint firstItem="yNe-eq-oKw" firstAttribute="leading" secondItem="6Xu-dj-Oeo" secondAttribute="leading" id="QMR-kd-MAu" userLabel="SearchViewLeft"/>
-                                        <constraint firstAttribute="trailing" secondItem="yNe-eq-oKw" secondAttribute="trailing" id="R1F-e7-ntS" userLabel="SearchViewRight"/>
-                                        <constraint firstItem="yNe-eq-oKw" firstAttribute="bottom" secondItem="ICn-d3-5wr" secondAttribute="top" id="qh4-yY-pne" userLabel="TableViewTop"/>
+                                        <constraint firstAttribute="trailing" secondItem="etJ-OH-PkF" secondAttribute="trailing" id="eQN-IB-dNF" userLabel="SearchViewRight"/>
+                                        <constraint firstItem="etJ-OH-PkF" firstAttribute="top" secondItem="6Xu-dj-Oeo" secondAttribute="top" id="kK3-lE-Ok1" userLabel="SearchViewTop"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="light"/>
@@ -954,9 +867,6 @@ SearchTextBox</string>
                     <navigationItem key="navigationItem" title="Select Start" id="6oq-36-aan"/>
                     <connections>
                         <outlet property="activityIndicator" destination="fEJ-bC-2Y5" id="6wy-OP-bGM"/>
-                        <outlet property="dismissIcon" destination="dz1-Pl-MLV" id="Ksl-Cq-bOq"/>
-                        <outlet property="searchbyTextView" destination="M8t-3Y-X3R" id="OK4-sI-MKK"/>
-                        <outlet property="segmentedControl" destination="GLP-4B-ZV9" id="HXp-gE-4Fn"/>
                         <outlet property="tableView" destination="ICn-d3-5wr" id="HZl-1B-6VZ"/>
                         <outlet property="viewModel" destination="d82-BN-gFA" id="UCE-dx-WaT"/>
                     </connections>
@@ -974,6 +884,146 @@ SearchTextBox</string>
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2153" y="37"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bq6-ri-MUt">
+            <objects>
+                <viewController id="8jP-8J-0DC" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kJm-HR-6qH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3167" y="159"/>
+        </scene>
+        <!--Search Modal Header View Controller-->
+        <scene sceneID="3p5-lM-9EN">
+            <objects>
+                <viewController storyboardIdentifier="SearchByViewController" id="gOh-OW-Svi" customClass="SearchModalHeaderViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FoR-GN-4Jb" customClass="CurvedTopView" customModule="Septa" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNI-mk-YGB" userLabel="SearchView" customClass="CurvedTopView" customModule="Septa" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7nN-gG-h58" userLabel="DismissView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="28"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lHK-2s-TQT" userLabel="DismissButton">
+                                                <rect key="frame" x="170" y="9" width="35" height="4"/>
+                                                <color key="backgroundColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="35" id="7aF-jI-fPp" userLabel="DismissButtonWidth"/>
+                                                    <constraint firstAttribute="height" constant="4" id="8Qk-cv-dap" userLabel="DismissButtonHeight"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="lHK-2s-TQT" firstAttribute="centerX" secondItem="7nN-gG-h58" secondAttribute="centerX" id="7Dr-2D-Edp" userLabel="DismissButtonCenterX"/>
+                                            <constraint firstItem="lHK-2s-TQT" firstAttribute="top" secondItem="7nN-gG-h58" secondAttribute="top" constant="9" id="CgF-zY-BHA" userLabel="DismissButtonTop"/>
+                                            <constraint firstAttribute="height" constant="28" id="mHZ-CM-8lb" userLabel="DismissViewHeight"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="PMy-Uh-yG3" appends="YES" id="TUy-7k-mzW"/>
+                                        </connections>
+                                    </view>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rS7-En-2sJ" userLabel="SearchMode">
+                                        <rect key="frame" x="11" y="28" width="353" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="4vd-kv-6sr" userLabel="SearchModeHeight"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Search By Station"/>
+                                            <segment title="Search Near Address"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="searchMethodToggled:" destination="aLS-4r-fkd" eventType="valueChanged" id="vhl-dW-LGv"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dt3-Pb-w7Y" userLabel="SearchByText">
+                                        <rect key="frame" x="11" y="73" width="353" height="36"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SearchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="vb4-Bo-S2n" userLabel="SearchIcon">
+                                                <rect key="frame" x="8" y="9.5" width="17" height="17"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="17" id="S5g-bY-Uaw"/>
+                                                    <constraint firstAttribute="height" constant="17" id="oNn-af-7xA"/>
+                                                </constraints>
+                                            </imageView>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type the line name or select" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B7Q-Zl-LKP">
+                                                <rect key="frame" x="34" y="5" width="309" height="26"/>
+                                                <color key="textColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <string key="userLabel">
+SearchTextBox</string>
+                                                <connections>
+                                                    <outlet property="delegate" destination="d82-BN-gFA" id="S6i-9x-PDC"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="B7Q-Zl-LKP" secondAttribute="bottom" constant="5" id="F2Y-Bf-SZw" userLabel="TextBoxBottom"/>
+                                            <constraint firstItem="B7Q-Zl-LKP" firstAttribute="top" secondItem="dt3-Pb-w7Y" secondAttribute="top" constant="5" id="Iqq-WD-Vzc" userLabel="TextBoxTop"/>
+                                            <constraint firstItem="B7Q-Zl-LKP" firstAttribute="leading" secondItem="vb4-Bo-S2n" secondAttribute="trailing" constant="9" id="Q11-xr-GF1" userLabel="TextBoxLeft"/>
+                                            <constraint firstAttribute="trailing" secondItem="B7Q-Zl-LKP" secondAttribute="trailing" constant="10" id="TAc-8k-jgf" userLabel="TextBoxRight"/>
+                                            <constraint firstAttribute="height" constant="36" id="XrC-qg-R7K" userLabel="SearchByText"/>
+                                            <constraint firstItem="vb4-Bo-S2n" firstAttribute="centerY" secondItem="dt3-Pb-w7Y" secondAttribute="centerY" id="aGA-FQ-ASQ" userLabel="IconCenterY"/>
+                                            <constraint firstItem="vb4-Bo-S2n" firstAttribute="leading" secondItem="dt3-Pb-w7Y" secondAttribute="leading" constant="8" id="v16-Ap-0Dp" userLabel="SearchIconLeft"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Clu-4h-zwi" userLabel="Divider">
+                                        <rect key="frame" x="0.0" y="120" width="375" height="1"/>
+                                        <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="bhN-Ds-Red" userLabel="Dividerheight"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="rS7-En-2sJ" firstAttribute="top" secondItem="7nN-gG-h58" secondAttribute="bottom" id="0ed-aq-GZg" userLabel="SearchModeTop"/>
+                                    <constraint firstAttribute="trailing" secondItem="Clu-4h-zwi" secondAttribute="trailing" id="2Sn-aE-o1f" userLabel="DividerRight"/>
+                                    <constraint firstItem="7nN-gG-h58" firstAttribute="leading" secondItem="bNI-mk-YGB" secondAttribute="leading" id="59s-e7-UuD" userLabel="DismissViewLeft"/>
+                                    <constraint firstAttribute="bottom" secondItem="dt3-Pb-w7Y" secondAttribute="bottom" constant="12" id="7iJ-cX-l2V" userLabel="SearchByTextBottom"/>
+                                    <constraint firstItem="dt3-Pb-w7Y" firstAttribute="leading" secondItem="bNI-mk-YGB" secondAttribute="leading" constant="11" id="968-nr-Yhv" userLabel="SearchByTextLeft"/>
+                                    <constraint firstAttribute="trailing" secondItem="dt3-Pb-w7Y" secondAttribute="trailing" constant="11" id="S0D-XI-tad" userLabel="SearchByTextRight"/>
+                                    <constraint firstItem="7nN-gG-h58" firstAttribute="top" secondItem="bNI-mk-YGB" secondAttribute="top" id="cVa-Nh-Cd8" userLabel="DismissViewtop"/>
+                                    <constraint firstItem="dt3-Pb-w7Y" firstAttribute="top" secondItem="rS7-En-2sJ" secondAttribute="bottom" constant="17" id="gA0-td-8Qh" userLabel="SearchByTextTop"/>
+                                    <constraint firstAttribute="bottom" secondItem="Clu-4h-zwi" secondAttribute="bottom" id="gY3-cj-cRM" userLabel="DividerBottom"/>
+                                    <constraint firstItem="Clu-4h-zwi" firstAttribute="leading" secondItem="bNI-mk-YGB" secondAttribute="leading" id="ge7-2w-xfv" userLabel="DividerLeft"/>
+                                    <constraint firstAttribute="trailing" secondItem="7nN-gG-h58" secondAttribute="trailing" id="hQF-z2-p5j" userLabel="DismissViewRight"/>
+                                    <constraint firstItem="rS7-En-2sJ" firstAttribute="leading" secondItem="bNI-mk-YGB" secondAttribute="leading" constant="11" id="wWL-We-hOh" userLabel="SearchModeLeft"/>
+                                    <constraint firstAttribute="trailing" secondItem="rS7-En-2sJ" secondAttribute="trailing" constant="11" id="z84-nL-rBs" userLabel="SearchModeRight"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="bnv-m2-pE9"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bNI-mk-YGB" firstAttribute="top" secondItem="FoR-GN-4Jb" secondAttribute="top" id="7d0-Tv-rp5" userLabel="SearchViewtop"/>
+                            <constraint firstAttribute="bottom" secondItem="bNI-mk-YGB" secondAttribute="bottom" id="Sua-to-Y4v" userLabel="SearchViewBottom"/>
+                            <constraint firstItem="bNI-mk-YGB" firstAttribute="leading" secondItem="FoR-GN-4Jb" secondAttribute="leading" id="jAJ-db-gUX" userLabel="SearchViewLeft"/>
+                            <constraint firstAttribute="trailing" secondItem="bNI-mk-YGB" secondAttribute="trailing" id="nvC-TT-k8r" userLabel="SearchViewRight"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="375" height="121"/>
+                    <connections>
+                        <outlet property="dismissIcon" destination="lHK-2s-TQT" id="6JC-XF-P9X"/>
+                        <outlet property="searchByTextView" destination="dt3-Pb-w7Y" id="Rk7-D1-3Dq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eod-vm-ubd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="PMy-Uh-yG3">
+                    <connections>
+                        <action selector="didTapDismiss:" destination="gOh-OW-Svi" id="LRv-c5-erJ"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2881.5999999999999" y="-507.34632683658174"/>
         </scene>
     </scenes>
     <resources>
