@@ -8,8 +8,7 @@
 
 import Foundation
 
-enum SearchMode{
-    case directLookup
-    case byAddress
-
+enum SearchMode: Int {
+    case directLookup = 0
+    case byAddress = 1
 }
