@@ -16,4 +16,7 @@ protocol SearchModalHeaderDelegate {
     func delegateForTextField() -> UITextFieldDelegate
     
     func dismiss()
+    
+    func searchModeDidChange(searchMode: SearchMode)
+    
 }
