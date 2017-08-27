@@ -94,7 +94,7 @@ extension TransitMode {
         }
     }
 
-    public func placeHolderText() -> String {
+    public func placeholderText() -> String {
         switch self {
         case .rail: return "Type the station name or select"
         default: return "Type the stop name or select"

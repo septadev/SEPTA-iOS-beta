@@ -20,6 +20,8 @@ struct ScheduleStopEditReducer {
 
         case let action as CurrentStopToEdit:
             newScheduleStopEdit = reduceCurrentStopToEdit(action: action, scheduleStopEdit: scheduleStopEdit)
+        case let action as StopSearchModeChanged:
+            newScheduleStopEdit = reduceSearchModeChanged(action: action, scheduleStopEdit: scheduleStopEdit)
 
         default:
             newScheduleStopEdit = scheduleStopEdit
@@ -29,5 +31,9 @@ struct ScheduleStopEditReducer {
 
     static func reduceCurrentStopToEdit(action: CurrentStopToEdit, scheduleStopEdit _: ScheduleStopEdit) -> ScheduleStopEdit {
         return ScheduleStopEdit(stopToEdit: action.stopToEdit)
+    }
+
+    static func reduceSearchModeChanged(action: StopSearchModeChanged, scheduleStopEdit: ScheduleStopEdit) -> ScheduleStopEdit {
+        return ScheduleStopEdit(stopToEdit: scheduleStopEdit.stopToEdit, searchMode: action.searchMode)
     }
 }

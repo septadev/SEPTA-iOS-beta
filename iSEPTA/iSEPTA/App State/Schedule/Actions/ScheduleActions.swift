@@ -81,6 +81,11 @@ struct ReverseLoaded: ScheduleAction {
     let error: String?
 }
 
+struct StopSearchModeChanged: ScheduleAction {
+    let searchMode: StopEditSearchMode
+    let description = "User has toggled segmented control"
+}
+
 struct ResetSchedule: ScheduleAction {
 
     let description = "The User wants to reset the schedule"

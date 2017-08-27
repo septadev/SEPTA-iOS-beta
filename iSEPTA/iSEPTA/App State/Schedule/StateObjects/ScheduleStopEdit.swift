@@ -10,9 +10,11 @@ import Foundation
 
 struct ScheduleStopEdit {
     let stopToEdit: StopToSelect
+    let searchMode: StopEditSearchMode
 
-    init(stopToEdit: StopToSelect = .starts) {
+    init(stopToEdit: StopToSelect = .starts, searchMode: StopEditSearchMode = .directLookup) {
         self.stopToEdit = stopToEdit
+        self.searchMode = searchMode
     }
 }
 
@@ -21,6 +23,9 @@ func ==(lhs: ScheduleStopEdit, rhs: ScheduleStopEdit) -> Bool {
     var areEqual = true
 
     areEqual = lhs.stopToEdit == rhs.stopToEdit
+    guard areEqual else { return false }
+
+    areEqual = lhs.searchMode == rhs.searchMode
     guard areEqual else { return false }
 
     return areEqual

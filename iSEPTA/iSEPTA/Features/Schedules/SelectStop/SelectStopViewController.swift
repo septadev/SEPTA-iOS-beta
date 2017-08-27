@@ -38,7 +38,7 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
         super.viewDidLoad()
     }
 
-    @IBAction func DismissViewTapped(_: Any) {
+    func dismissModal() {
         let dismissAction = DismissModal(navigationController: .schedules, description: "Route should be dismissed")
         store.dispatch(dismissAction)
     }
@@ -114,8 +114,6 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     func newState(state: StoreSubscriberStateType) {
         guard let state = state else { return }
         viewModel.stopToSelect = state.stopToEdit
-
-        store.unsubscribe(self)
     }
 
     func unsubscribe() {

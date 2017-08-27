@@ -3,25 +3,15 @@ use Data::Dumper;
 
 my $struct = q |
 
-	struct ScheduleRequest {
+	struct ScheduleStopEdit {
+    let stopToEdit: StopToSelect
+    let searchMode: StopEditSearchMode
 
-    let transitMode: TransitMode?
-    let selectedRoute: Route?
-    let selectedStart: Stop?
-    let selectedEnd: Stop?
-    let scheduleType: ScheduleType?
-    let reverseStops: Bool
-    let databaseIsLoaded: Bool
-
-    init(databaseIsLoaded: Bool, transitMode: TransitMode? = nil, selectedRoute: Route? = nil, selectedStart: Stop? = nil, selectedEnd: Stop? = nil, scheduleType: ScheduleType? = nil, reverseStops: Bool){
-    self.databaseIsLoaded = databaseIsLoaded
-self.transitMode = transitMode
-self.selectedRoute = selectedRoute
-self.selectedStart = selectedStart
-self.selectedEnd = selectedEnd
-self.scheduleType = scheduleType
-self.reverseStops = reverseStops
+    init(stopToEdit: StopToSelect = .starts) {
+        self.stopToEdit = stopToEdit
+    }
 }
+
 
 	|;
 

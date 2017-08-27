@@ -105,7 +105,7 @@
 		67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B511801F499E8F000E3065 /* ButtonViewCell.swift */; };
 		67EA2B5D1F50F23C00C0567A /* SearchModalHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B5C1F50F23C00C0567A /* SearchModalHeaderViewController.swift */; };
 		67EA2B611F518CA600C0567A /* SearchModalHeaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B601F518CA600C0567A /* SearchModalHeaderDelegate.swift */; };
-		67EA2B631F51AB8700C0567A /* SearchMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B621F51AB8700C0567A /* SearchMode.swift */; };
+		67EA2B631F51AB8700C0567A /* StopEditSearchMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B621F51AB8700C0567A /* StopEditSearchMode.swift */; };
 		67F757AC1F48582700D3A4EE /* UIColor+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F757AB1F48582700D3A4EE /* UIColor+Util.swift */; };
 		67F757AF1F486BB600D3A4EE /* TransitModeToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F757AE1F486BB600D3A4EE /* TransitModeToolBarView.xib */; };
 		67F757B11F486F0600D3A4EE /* TransitModeDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F757B01F486F0600D3A4EE /* TransitModeDisplayable.swift */; };
@@ -279,7 +279,7 @@
 		67B511801F499E8F000E3065 /* ButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewCell.swift; sourceTree = "<group>"; };
 		67EA2B5C1F50F23C00C0567A /* SearchModalHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModalHeaderViewController.swift; sourceTree = "<group>"; };
 		67EA2B601F518CA600C0567A /* SearchModalHeaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModalHeaderDelegate.swift; sourceTree = "<group>"; };
-		67EA2B621F51AB8700C0567A /* SearchMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMode.swift; sourceTree = "<group>"; };
+		67EA2B621F51AB8700C0567A /* StopEditSearchMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopEditSearchMode.swift; sourceTree = "<group>"; };
 		67F757AB1F48582700D3A4EE /* UIColor+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Util.swift"; sourceTree = "<group>"; };
 		67F757AE1F486BB600D3A4EE /* TransitModeToolBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransitModeToolBarView.xib; sourceTree = "<group>"; };
 		67F757B01F486F0600D3A4EE /* TransitModeDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitModeDisplayable.swift; sourceTree = "<group>"; };
@@ -372,8 +372,7 @@
 				581DA5491F3BE1C8006AEC39 /* IdentifiableController.swift */,
 				67F757B21F48729C00D3A4EE /* UIView+Util.swift */,
 				67F757B61F488A5E00D3A4EE /* BlueGradientBackgroundView.swift */,
-				67EA2B601F518CA600C0567A /* SearchModalHeaderDelegate.swift */,
-				67EA2B621F51AB8700C0567A /* SearchMode.swift */,
+				67EA2B621F51AB8700C0567A /* StopEditSearchMode.swift */,
 			);
 			path = "Common Views";
 			sourceTree = "<group>";
@@ -491,6 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				582F4EA01F33B1120062A546 /* SelectStopViewModel.swift */,
+				67EA2B601F518CA600C0567A /* SearchModalHeaderDelegate.swift */,
 				58F80D421F421C1F0089501A /* SelectStopNavigationController.swift */,
 				58F80D441F421C4B0089501A /* SelectStopViewController.swift */,
 				67EA2B5C1F50F23C00C0567A /* SearchModalHeaderViewController.swift */,
@@ -1121,7 +1121,7 @@
 				58290E501F372DDC000CCF3C /* NavigationActions.swift in Sources */,
 				58C2A0591F3812D600F0D6CA /* ScheduleActions.swift in Sources */,
 				5825319C1F408C2D0088D056 /* UserPreferencesStatePersister.swift in Sources */,
-				67EA2B631F51AB8700C0567A /* SearchMode.swift in Sources */,
+				67EA2B631F51AB8700C0567A /* StopEditSearchMode.swift in Sources */,
 				5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */,
 				58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */,
 				58F444FC1F3D335400A93208 /* SeptaAction.swift in Sources */,
