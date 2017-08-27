@@ -19,5 +19,5 @@ protocol SearchModalHeaderDelegate: AnyObject {
     //
     //    func searchModeDidChange(searchMode: SearchMode)
 
-    func animatedLayoutNeeded(block: @escaping (() -> Void))
+    func animatedLayoutNeeded(block: @escaping (() -> Void), completion: @escaping (() -> Void))
 }

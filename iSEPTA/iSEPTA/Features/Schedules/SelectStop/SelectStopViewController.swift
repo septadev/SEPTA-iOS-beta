@@ -12,7 +12,12 @@ import ReSwift
 
 class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, SearchModalHeaderDelegate {
     typealias StoreSubscriberStateType = StopToSelect?
-    @IBOutlet weak var viewModel: SelectStopViewModel!
+    @IBOutlet weak var viewModel: SelectStopViewModel! {
+        didSet {
+            headerViewController?.textField.delegate = viewModel
+        }
+    }
+
     @IBOutlet weak var tableView: UITableView!
 
     @IBOutlet weak var searchbyTextView: UIView!
@@ -29,6 +34,10 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
         }
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
     @IBAction func DismissViewTapped(_: Any) {
         let dismissAction = DismissModal(navigationController: .schedules, description: "Route should be dismissed")
         store.dispatch(dismissAction)
@@ -41,14 +50,6 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     @IBAction func searchMethodToggled(_: Any) {
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        //        searchbyTextView.layer.cornerRadius = 3.0
-        //        searchbyTextView.layer.borderColor = SeptaColor.subSegmentBlue.cgColor
-        //        searchbyTextView.layer.borderWidth = 1.0
-    }
-
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         let rowCount = viewModel.numberOfRows()
         if rowCount > 0 {
@@ -59,22 +60,26 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
         return rowCount
     }
 
+    var headerViewController: SearchModalHeaderViewController?
+
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == "embedHeader" {
             if let headerViewController = segue.destination as? SearchModalHeaderViewController {
+                self.headerViewController = headerViewController
                 headerViewController.delegate = self
+                headerViewController.textFieldDelegate = viewModel
             }
         }
     }
 
-    func animatedLayoutNeeded(block: @escaping (() -> Void)) {
+    func animatedLayoutNeeded(block: @escaping (() -> Void), completion: @escaping (() -> Void)) {
 
         UIView.animate(withDuration: 0.25, animations: {
             block()
             self.view.layoutIfNeeded()
 
         }, completion: {
-            completed in print(completed)
+            _ in completion()
 
         })
     }

@@ -3,6 +3,7 @@
 import Foundation
 import SeptaSchedule
 import ReSwift
+import CoreLocation
 
 struct FilterableStop {
     let filterString: String
@@ -134,6 +135,21 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
 
             strongSelf.selectStopViewController?.viewModelUpdated()
         }
+        if filterString.count > 4 {
+            geoCodeFilterString()
+        }
         return true
+    }
+
+    let geoCoder = CLGeocoder()
+
+    func geoCodeFilterString() {
+        geoCoder.geocodeAddressString(filterString) { placemarks, _ in
+            guard let placemarks = placemarks else { return }
+            for placemark in placemarks {
+                print(placemark)
+            }
+            print("-----------")
+        }
     }
 }

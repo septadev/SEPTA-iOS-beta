@@ -900,7 +900,7 @@ StartingLabelRight</string>
             <objects>
                 <viewController storyboardIdentifier="SearchByViewController" id="gOh-OW-Svi" customClass="SearchModalHeaderViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FoR-GN-4Jb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="151"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNI-mk-YGB" userLabel="SearchView">
@@ -958,12 +958,9 @@ StartingLabelRight</string>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="textColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                 <string key="userLabel">
 SearchTextBox</string>
-                                                <connections>
-                                                    <outlet property="delegate" destination="d82-BN-gFA" id="S6i-9x-PDC"/>
-                                                </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -984,6 +981,12 @@ SearchTextBox</string>
                                             <constraint firstAttribute="height" constant="1" id="bhN-Ds-Red" userLabel="Dividerheight"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Nearby Station" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7k-b0-CdL">
+                                        <rect key="frame" x="12" y="119" width="351" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration" identifier="SearchView" label="SearchView"/>
@@ -993,6 +996,7 @@ SearchTextBox</string>
                                     <constraint firstAttribute="trailing" secondItem="Clu-4h-zwi" secondAttribute="trailing" id="2Sn-aE-o1f" userLabel="DividerRight"/>
                                     <constraint firstItem="7nN-gG-h58" firstAttribute="leading" secondItem="bNI-mk-YGB" secondAttribute="leading" id="59s-e7-UuD" userLabel="DismissViewLeft"/>
                                     <constraint firstItem="dt3-Pb-w7Y" firstAttribute="leading" secondItem="bNI-mk-YGB" secondAttribute="leading" constant="11" id="968-nr-Yhv" userLabel="SearchByTextLeft"/>
+                                    <constraint firstItem="L7k-b0-CdL" firstAttribute="top" secondItem="bnv-m2-pE9" secondAttribute="top" constant="119" id="Dqj-4e-fFc" userLabel="SelectNearbyLabelTop"/>
                                     <constraint firstAttribute="height" constant="121" id="I6p-N4-ZO9" userLabel="HeightForStops"/>
                                     <constraint firstAttribute="trailing" secondItem="dt3-Pb-w7Y" secondAttribute="trailing" constant="11" id="S0D-XI-tad" userLabel="SearchByTextRight"/>
                                     <constraint firstAttribute="height" constant="151" id="VTR-cS-2Tz" userLabel="heightForAddress"/>
@@ -1001,6 +1005,8 @@ SearchTextBox</string>
                                     <constraint firstAttribute="bottom" secondItem="Clu-4h-zwi" secondAttribute="bottom" id="gY3-cj-cRM" userLabel="DividerBottom"/>
                                     <constraint firstItem="Clu-4h-zwi" firstAttribute="leading" secondItem="bNI-mk-YGB" secondAttribute="leading" id="ge7-2w-xfv" userLabel="DividerLeft"/>
                                     <constraint firstAttribute="trailing" secondItem="7nN-gG-h58" secondAttribute="trailing" id="hQF-z2-p5j" userLabel="DismissViewRight"/>
+                                    <constraint firstItem="bnv-m2-pE9" firstAttribute="trailing" secondItem="L7k-b0-CdL" secondAttribute="trailing" constant="12" id="j7o-0H-l2o" userLabel="SelectNearbyLabelRight"/>
+                                    <constraint firstItem="L7k-b0-CdL" firstAttribute="leading" secondItem="bnv-m2-pE9" secondAttribute="leading" constant="12" id="k8r-hi-gVE" userLabel="SelectNearbyLabelLeft"/>
                                     <constraint firstItem="rS7-En-2sJ" firstAttribute="leading" secondItem="bNI-mk-YGB" secondAttribute="leading" constant="11" id="wWL-We-hOh" userLabel="SearchModeLeft"/>
                                     <constraint firstAttribute="trailing" secondItem="rS7-En-2sJ" secondAttribute="trailing" constant="11" id="z84-nL-rBs" userLabel="SearchModeRight"/>
                                 </constraints>
@@ -1021,12 +1027,14 @@ SearchTextBox</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="b5p-AH-fxq"/>
                     </view>
-                    <size key="freeformSize" width="375" height="121"/>
+                    <size key="freeformSize" width="375" height="151"/>
                     <connections>
                         <outlet property="dismissIcon" destination="lHK-2s-TQT" id="6JC-XF-P9X"/>
                         <outlet property="searchByTextView" destination="dt3-Pb-w7Y" id="Rk7-D1-3Dq"/>
                         <outlet property="searchView" destination="bNI-mk-YGB" id="L0V-jA-FVd"/>
                         <outlet property="segmentedControl" destination="rS7-En-2sJ" id="oGT-VZ-K0i"/>
+                        <outlet property="selectNearbyLabel" destination="L7k-b0-CdL" id="rQY-mO-xSd"/>
+                        <outlet property="textField" destination="B7Q-Zl-LKP" id="mVI-Om-oct"/>
                         <outlet property="viewHeightConstraintForAddress" destination="VTR-cS-2Tz" id="7ks-Xp-t7p"/>
                         <outlet property="viewHeightConstraintForStops" destination="I6p-N4-ZO9" id="k0T-y2-L0v"/>
                     </connections>
@@ -1038,7 +1046,7 @@ SearchTextBox</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2881.5999999999999" y="-507.34632683658174"/>
+            <point key="canvasLocation" x="2880.8000000000002" y="-507.79610194902551"/>
         </scene>
     </scenes>
     <resources>

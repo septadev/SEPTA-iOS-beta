@@ -94,6 +94,20 @@ extension TransitMode {
         }
     }
 
+    public func placeHolderText() -> String {
+        switch self {
+        case .rail: return "Type the station name or select"
+        default: return "Type the stop name or select"
+        }
+    }
+
+    public func addressSearchPrompt() -> String {
+        switch self {
+        case .rail: return "Select Nearby Station"
+        default: return "Select Nearby Stop"
+        }
+    }
+
     public static func displayOrder() -> [TransitMode] {
         return [.bus, .rail, .subway, .nhsl, .trolley]
     }

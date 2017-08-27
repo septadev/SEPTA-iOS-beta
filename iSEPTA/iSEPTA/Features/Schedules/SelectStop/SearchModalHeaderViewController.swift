@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SeptaSchedule
 
 class SearchModalHeaderViewController: UIViewController {
     weak var delegate: SearchModalHeaderDelegate? {
@@ -20,16 +21,27 @@ class SearchModalHeaderViewController: UIViewController {
     @IBOutlet weak var viewHeightConstraintForAddress: NSLayoutConstraint!
     @IBOutlet weak var viewHeightConstraintForStops: NSLayoutConstraint!
 
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textField: UITextField! {
+        didSet {
+            textField.delegate = textFieldDelegate
+            textField.placeholder = transitMode.placeHolderText()
+        }
+    }
+
     var searchMode: SearchMode = .directLookup {
         didSet {
             toggleHeightContraintsForSearchMode()
         }
     }
 
+    let transitMode: TransitMode! = store.state.scheduleState.scheduleRequest?.transitMode
+
+    var textFieldDelegate: UITextFieldDelegate!
+
     @IBOutlet weak var segmentedControl: UISegmentedControl!
 
-    @IBOutlet weak var searchView: CurvedTopView!
+    @IBOutlet weak var selectNearbyLabel: UILabel!
+    @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var dismissIcon: UIView!
     @IBOutlet weak var searchByTextView: UIView!
     override func viewDidLoad() {
@@ -39,25 +51,28 @@ class SearchModalHeaderViewController: UIViewController {
         searchByTextView.layer.borderWidth = 1.0
         dismissIcon.layer.cornerRadius = 3.0
         view.translatesAutoresizingMaskIntoConstraints = false
-
-        toggleHeightContraintsForSearchMode()
+        selectNearbyLabel.text = transitMode.addressSearchPrompt()
+        selectNearbyLabel.isHidden = true
     }
 
     func toggleHeightContraintsForSearchMode() {
         if searchMode == .byAddress {
             viewHeightConstraintForStops.isActive = false
             viewHeightConstraintForAddress.isActive = true
+            searchView.setNeedsLayout()
+            delegate?.animatedLayoutNeeded(block: {
+                self.searchView.layoutIfNeeded()
+            }, completion: { self.selectNearbyLabel.isHidden = false })
 
         } else {
+            selectNearbyLabel.isHidden = true
             viewHeightConstraintForAddress.isActive = false
             viewHeightConstraintForStops.isActive = true
+            searchView.setNeedsLayout()
+            delegate?.animatedLayoutNeeded(block: {
+                self.searchView.layoutIfNeeded()
+            }, completion: {})
         }
-
-        searchView.setNeedsLayout()
-
-        delegate?.animatedLayoutNeeded(block: {
-            self.searchView.layoutIfNeeded()
-        })
     }
 
     @IBAction func didToggleSegmentedControl(_ sender: Any) {
