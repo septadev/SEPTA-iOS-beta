@@ -5,6 +5,12 @@ import SeptaSchedule
 import ReSwift
 
 class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController, SchedulesViewModelDelegate {
+    func updateActivityIndicator(animating _: Bool) {
+    }
+
+    func displayErrorMessage(message _: String) {
+    }
+
     @IBOutlet weak var tableViewWrapper: UIView!
     @IBOutlet var sectionHeaders: [UIView]!
 

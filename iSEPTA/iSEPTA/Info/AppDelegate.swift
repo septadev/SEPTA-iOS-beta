@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         stateProviders.preferenceProvider.subscribe()
         stateProviders.scheduleProvider.subscribe()
+
         return true
     }
 

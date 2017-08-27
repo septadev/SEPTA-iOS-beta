@@ -5,6 +5,12 @@ import SeptaSchedule
 import ReSwift
 
 class TripScheduleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController {
+    func updateActivityIndicator(animating _: Bool) {
+    }
+
+    func displayErrorMessage(message _: String) {
+    }
+
     static var viewController: ViewController = .tripScheduleController
     @IBOutlet weak var startingPoint: UILabel!
     @IBOutlet weak var endingPoint: UILabel!

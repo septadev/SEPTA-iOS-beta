@@ -4,6 +4,7 @@ import Foundation
 import SeptaSchedule
 import ReSwift
 import CoreLocation
+import UIKit
 
 struct FilterableStop {
     let filterString: String
@@ -23,7 +24,7 @@ enum StopToSelect: Int {
     case ends = 2
 }
 
-class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
+class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
     typealias StoreSubscriberStateType = [Stop]?
 
     var stopToSelect: StopToSelect = .starts {
@@ -57,6 +58,27 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
     }
 
     @IBOutlet weak var selectStopViewController: UpdateableFromViewModel?
+
+    let cellId = "stopCell"
+
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        let rowCount = numberOfRows()
+        guard let delegate = selectStopViewController else { return 0 }
+        let animating = rowCount == 0
+        delegate.updateActivityIndicator(animating: animating)
+        return rowCount
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? SelectStopCell else { return UITableViewCell() }
+
+        configureDisplayable(cell, atRow: indexPath.row)
+        return cell
+    }
+
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        rowSelected(row: indexPath.row)
+    }
 
     func subscribe() {
         if stopToSelect == .starts {

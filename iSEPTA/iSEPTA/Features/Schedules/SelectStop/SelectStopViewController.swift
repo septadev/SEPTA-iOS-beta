@@ -10,13 +10,28 @@ import Foundation
 import UIKit
 import ReSwift
 
-class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, SearchModalHeaderDelegate {
+class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableController, UpdateableFromViewModel, SearchModalHeaderDelegate {
+    func updateActivityIndicator(animating: Bool) {
+        if animating {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
+    }
+
+    func displayErrorMessage(message: String) {
+        Alert.presentOKAlertFrom(viewController: self,
+                                 withTitle: "SEPTA Alert",
+                                 message: message,
+                                 completion: nil)
+    }
+
     static var viewController: ViewController = .selectStopController
 
     typealias StoreSubscriberStateType = ScheduleStopEdit?
-    @IBOutlet weak var viewModel: SelectStopViewModel! {
+    @IBOutlet weak var stopsViewModel: SelectStopViewModel! {
         didSet {
-            headerViewController?.textField.delegate = viewModel
+            headerViewController?.textField.delegate = stopsViewModel
         }
     }
 
@@ -24,42 +39,23 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     var headerViewController: SearchModalHeaderViewController?
 
-    let cellId = "stopCell"
-
-    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        let rowCount = viewModel.numberOfRows()
-        if rowCount > 0 {
-            activityIndicator.stopAnimating()
-        } else {
-            activityIndicator.startAnimating()
-        }
-        return rowCount
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? SelectStopCell else { return UITableViewCell() }
-
-        viewModel.configureDisplayable(cell, atRow: indexPath.row)
-        return cell
-    }
-
-    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.rowSelected(row: indexPath.row)
-    }
-
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == "embedHeader" {
             if let headerViewController = segue.destination as? SearchModalHeaderViewController {
                 self.headerViewController = headerViewController
                 headerViewController.delegate = self
-                headerViewController.textFieldDelegate = viewModel
+                headerViewController.textFieldDelegate = stopsViewModel
             }
         }
     }
 
     func newState(state: StoreSubscriberStateType) {
         guard let state = state else { return }
-        viewModel.stopToSelect = state.stopToEdit
+        stopsViewModel.stopToSelect = state.stopToEdit
+        if state.searchMode == .directLookup {
+            tableView.dataSource = stopsViewModel
+            tableView.delegate = stopsViewModel
+        }
     }
 
     override func viewWillAppear(_: Bool) {
@@ -70,7 +66,7 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
         store.subscribe(self) {
             $0.select {
                 $0.scheduleState.scheduleStopEdit
-            }
+            }.skipRepeats { $0 == $1 }
         }
     }
 
@@ -80,7 +76,7 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     }
 
     override func viewWillDisappear(_: Bool) {
-        viewModel.unsubscribe()
+        stopsViewModel.unsubscribe()
     }
 
     func unsubscribe() {

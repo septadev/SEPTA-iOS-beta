@@ -5,6 +5,12 @@ import SeptaSchedule
 import ReSwift
 
 class SelectRouteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController {
+    func updateActivityIndicator(animating _: Bool) {
+    }
+
+    func displayErrorMessage(message _: String) {
+    }
+
     @IBOutlet var viewModel: RoutesViewModel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!

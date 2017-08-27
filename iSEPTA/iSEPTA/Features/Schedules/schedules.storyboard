@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Flo-rT-aez">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Flo-rT-aez">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -833,8 +833,8 @@ StartingLabelRight</string>
                                                 </tableViewCell>
                                             </prototypes>
                                             <connections>
-                                                <outlet property="dataSource" destination="aLS-4r-fkd" id="Wvy-bk-yT1"/>
-                                                <outlet property="delegate" destination="aLS-4r-fkd" id="WdV-uk-ZEZ"/>
+                                                <outlet property="dataSource" destination="d82-BN-gFA" id="oyj-CK-ccq"/>
+                                                <outlet property="delegate" destination="d82-BN-gFA" id="OsE-lR-c8f"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
@@ -869,8 +869,8 @@ StartingLabelRight</string>
                     <navigationItem key="navigationItem" title="Select Start" id="6oq-36-aan"/>
                     <connections>
                         <outlet property="activityIndicator" destination="fEJ-bC-2Y5" id="6wy-OP-bGM"/>
+                        <outlet property="stopsViewModel" destination="d82-BN-gFA" id="OtS-Ft-bcC"/>
                         <outlet property="tableView" destination="ICn-d3-5wr" id="HZl-1B-6VZ"/>
-                        <outlet property="viewModel" destination="d82-BN-gFA" id="UCE-dx-WaT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qXG-sq-UlS" userLabel="First Responder" sceneMemberID="firstResponder"/>
