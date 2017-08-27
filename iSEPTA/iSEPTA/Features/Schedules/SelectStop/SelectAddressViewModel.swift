@@ -11,11 +11,6 @@ import UIKit
 import CoreLocation
 import SeptaSchedule
 
-struct DisplayAddress {
-    let street: String
-    let csz: String
-}
-
 class SelectAddressViewModel: NSObject, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     let geoCoder = CLGeocoder()
 
@@ -32,10 +27,6 @@ class SelectAddressViewModel: NSObject, UITableViewDataSource, UITableViewDelega
 
     override func awakeFromNib() {
         identifyPhillyRegion()
-    }
-
-    func numberOfRows() -> Int {
-        return 0
     }
 
     var addresses = [DisplayAddress]()
@@ -83,7 +74,7 @@ class SelectAddressViewModel: NSObject, UITableViewDataSource, UITableViewDelega
 
             for placemark in placemarks {
                 guard let name = placemark.name, let locality = placemark.locality, let state = placemark.administrativeArea, let zip = placemark.postalCode else { continue }
-                let address = DisplayAddress(street: "\(name)", csz: "\(locality) \(state) \(zip)")
+                let address = DisplayAddress(street: "\(name)", csz: "\(locality) \(state) \(zip)", placemark: placemark)
                 self.addresses.append(address)
             }
             self.selectStopViewController?.viewModelUpdated()

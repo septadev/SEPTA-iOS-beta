@@ -952,7 +952,7 @@ StartingLabelRight</string>
             <objects>
                 <viewController storyboardIdentifier="SearchByViewController" id="gOh-OW-Svi" customClass="SearchModalHeaderViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FoR-GN-4Jb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="151"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNI-mk-YGB" userLabel="SearchView">
@@ -1079,7 +1079,7 @@ SearchTextBox</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="b5p-AH-fxq"/>
                     </view>
-                    <size key="freeformSize" width="375" height="151"/>
+                    <size key="freeformSize" width="375" height="121"/>
                     <connections>
                         <outlet property="dismissIcon" destination="lHK-2s-TQT" id="6JC-XF-P9X"/>
                         <outlet property="searchByTextView" destination="dt3-Pb-w7Y" id="Rk7-D1-3Dq"/>

@@ -76,6 +76,7 @@
 		584AC8731F437DDB0040C1B4 /* TripScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9A1F33B1120062A546 /* TripScheduleViewController.swift */; };
 		585572861F39499D004ABCD6 /* Color+Septa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585572841F3948D3004ABCD6 /* Color+Septa.swift */; };
 		58658D1B1F53135100E67B4E /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58658D1A1F53135100E67B4E /* AddressCell.swift */; };
+		58658D1E1F53298B00E67B4E /* DisplayAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58658D1D1F53298B00E67B4E /* DisplayAddress.swift */; };
 		586DFEC51F505482004BC972 /* CurvedTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586DFEC41F505482004BC972 /* CurvedTopView.swift */; };
 		5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880C19A1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift */; };
 		588F27F01F39DD7B00D62425 /* UserPreferenceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27EF1F39DD7B00D62425 /* UserPreferenceState.swift */; };
@@ -239,6 +240,7 @@
 		585572841F3948D3004ABCD6 /* Color+Septa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Septa.swift"; sourceTree = "<group>"; };
 		585572881F395990004ABCD6 /* MockSingleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSingleCell.swift; sourceTree = "<group>"; };
 		58658D1A1F53135100E67B4E /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
+		58658D1D1F53298B00E67B4E /* DisplayAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAddress.swift; sourceTree = "<group>"; };
 		5867462C1F35D483000F0D32 /* iSEPTATests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iSEPTATests-Bridging-Header.h"; sourceTree = "<group>"; };
 		5867463E1F35D483000F0D32 /* RoutesViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesViewModelTests.swift; sourceTree = "<group>"; };
 		5867464E1F35D483000F0D32 /* SelectStopsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStopsViewModelTests.swift; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 				67EA2B5C1F50F23C00C0567A /* SearchModalHeaderViewController.swift */,
 				589A89D61F50BB73007329DB /* SelectStopCell.swift */,
 				58658D1A1F53135100E67B4E /* AddressCell.swift */,
+				58658D1D1F53298B00E67B4E /* DisplayAddress.swift */,
 			);
 			path = SelectStop;
 			sourceTree = "<group>";
@@ -1105,6 +1108,7 @@
 				589A89E01F5304D6007329DB /* SelectAddressViewModel.swift in Sources */,
 				5814AA841F43589E00DF774A /* TripScheduleViewModel.swift in Sources */,
 				5814AA8A1F4359D000DF774A /* TripleTextDisplayable.swift in Sources */,
+				58658D1E1F53298B00E67B4E /* DisplayAddress.swift in Sources */,
 				58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */,
 				58F80D451F421C4B0089501A /* SelectStopViewController.swift in Sources */,
 				5840D6D71F37728B00C8CB76 /* NavigationController.swift in Sources */,

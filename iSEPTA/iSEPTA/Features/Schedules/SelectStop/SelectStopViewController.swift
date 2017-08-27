@@ -106,4 +106,8 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
             _ in completion()
         })
     }
+
+    func layoutNeeded() {
+        view.layoutIfNeeded()
+    }
 }

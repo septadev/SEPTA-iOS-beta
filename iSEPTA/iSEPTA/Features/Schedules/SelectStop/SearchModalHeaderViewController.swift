@@ -25,7 +25,6 @@ class SearchModalHeaderViewController: UIViewController, StoreSubscriber {
     func newState(state: StoreSubscriberStateType) {
         guard let state = state else { return }
         searchMode = state.searchMode
-        toggleHeightContraintsForSearchMode()
     }
 
     @IBOutlet weak var textField: UITextField! {
@@ -61,13 +60,13 @@ class SearchModalHeaderViewController: UIViewController, StoreSubscriber {
         didSet {
             if oldValue != searchMode {
                 store.dispatch(StopSearchModeChanged(searchMode: searchMode))
-                toggleHeightContraintsForSearchMode()
+                toggleHeightConstraintsForSearchMode()
                 updateTextFieldPlaceholderText()
             }
         }
     }
 
-    func toggleHeightContraintsForSearchMode() {
+    func toggleHeightConstraintsForSearchMode() {
         switch searchMode {
         case .directLookup, .byAddress:
             viewHeightConstraintForAddress.isActive = false
@@ -80,7 +79,7 @@ class SearchModalHeaderViewController: UIViewController, StoreSubscriber {
         searchView.setNeedsLayout()
 
         delegate?.animatedLayoutNeeded(block: {
-            self.searchView.layoutIfNeeded()
+
         }, completion: {
             self.selectNearbyLabel.isHidden = self.searchMode != .directLookupWithAddress
 
@@ -112,7 +111,7 @@ class SearchModalHeaderViewController: UIViewController, StoreSubscriber {
         store.subscribe(self) {
             $0.select {
                 $0.scheduleState.scheduleStopEdit
-            }
+            }.skipRepeats { $0 == $1 }
         }
     }
 

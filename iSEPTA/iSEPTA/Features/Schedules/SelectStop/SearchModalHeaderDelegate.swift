@@ -21,5 +21,7 @@ protocol SearchModalHeaderDelegate: AnyObject {
 
     func animatedLayoutNeeded(block: @escaping (() -> Void), completion: @escaping (() -> Void))
 
+    func layoutNeeded()
+
     func dismissModal()
 }
