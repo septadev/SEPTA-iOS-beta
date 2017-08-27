@@ -11,6 +11,8 @@ import UIKit
 import ReSwift
 
 class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, SearchModalHeaderDelegate {
+    static var viewController: ViewController = .selectStopController
+
     typealias StoreSubscriberStateType = ScheduleStopEdit?
     @IBOutlet weak var viewModel: SelectStopViewModel! {
         didSet {
@@ -19,36 +21,10 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     }
 
     @IBOutlet weak var tableView: UITableView!
-
-    @IBOutlet weak var searchbyTextView: UIView!
-
-    static var viewController: ViewController = .routesViewController
-    let cellId = "stopCell"
-    @IBOutlet weak var searchTextBox: UITextField!
-
-    @IBOutlet weak var segmentedControl: UISegmentedControl! {
-        didSet {
-            let font = UIFont.systemFont(ofSize: 11, weight: .medium)
-            segmentedControl.setTitleTextAttributes([NSAttributedStringKey.font: font],
-                                                    for: .normal)
-        }
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    func dismissModal() {
-        let dismissAction = DismissModal(navigationController: .schedules, description: "Route should be dismissed")
-        store.dispatch(dismissAction)
-    }
-
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    @IBAction func cancelButtonPressed(_: Any) {
-    }
+    var headerViewController: SearchModalHeaderViewController?
 
-    @IBAction func searchMethodToggled(_: Any) {
-    }
+    let cellId = "stopCell"
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         let rowCount = viewModel.numberOfRows()
@@ -58,30 +34,6 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
             activityIndicator.startAnimating()
         }
         return rowCount
-    }
-
-    var headerViewController: SearchModalHeaderViewController?
-
-    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
-        if segue.identifier == "embedHeader" {
-            if let headerViewController = segue.destination as? SearchModalHeaderViewController {
-                self.headerViewController = headerViewController
-                headerViewController.delegate = self
-                headerViewController.textFieldDelegate = viewModel
-            }
-        }
-    }
-
-    func animatedLayoutNeeded(block: @escaping (() -> Void), completion: @escaping (() -> Void)) {
-
-        UIView.animate(withDuration: 0.25, animations: {
-            block()
-            self.view.layoutIfNeeded()
-
-        }, completion: {
-            _ in completion()
-
-        })
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,8 +47,19 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
         viewModel.rowSelected(row: indexPath.row)
     }
 
-    override func viewWillDisappear(_: Bool) {
-        viewModel.unsubscribe()
+    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
+        if segue.identifier == "embedHeader" {
+            if let headerViewController = segue.destination as? SearchModalHeaderViewController {
+                self.headerViewController = headerViewController
+                headerViewController.delegate = self
+                headerViewController.textFieldDelegate = viewModel
+            }
+        }
+    }
+
+    func newState(state: StoreSubscriberStateType) {
+        guard let state = state else { return }
+        viewModel.stopToSelect = state.stopToEdit
     }
 
     override func viewWillAppear(_: Bool) {
@@ -111,9 +74,13 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
         }
     }
 
-    func newState(state: StoreSubscriberStateType) {
-        guard let state = state else { return }
-        viewModel.stopToSelect = state.stopToEdit
+    func dismissModal() {
+        let dismissAction = DismissModal(navigationController: .schedules, description: "Route should be dismissed")
+        store.dispatch(dismissAction)
+    }
+
+    override func viewWillDisappear(_: Bool) {
+        viewModel.unsubscribe()
     }
 
     func unsubscribe() {
@@ -123,5 +90,16 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     func viewModelUpdated() {
 
         tableView.reloadData()
+    }
+
+    func animatedLayoutNeeded(block: @escaping (() -> Void), completion: @escaping (() -> Void)) {
+
+        UIView.animate(withDuration: 0.25, animations: {
+            block()
+            self.view.layoutIfNeeded()
+
+        }, completion: {
+            _ in completion()
+        })
     }
 }

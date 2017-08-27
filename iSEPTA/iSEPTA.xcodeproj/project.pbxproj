@@ -85,6 +85,7 @@
 		589A89D71F50BB73007329DB /* SelectStopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A89D61F50BB73007329DB /* SelectStopCell.swift */; };
 		589A89DB1F52E6A9007329DB /* ScheduleStopEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A89DA1F52E6A9007329DB /* ScheduleStopEdit.swift */; };
 		589A89DE1F52E7E8007329DB /* ScheduleStopEditReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A89DD1F52E7E8007329DB /* ScheduleStopEditReducer.swift */; };
+		589A89E01F5304D6007329DB /* SelectAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A89DF1F5304D5007329DB /* SelectAddressViewModel.swift */; };
 		589BCC321F3D5068002FAEDE /* SchedulesPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589BCC311F3D5068002FAEDE /* SchedulesPresentationController.swift */; };
 		58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA01F33B1120062A546 /* SelectStopViewModel.swift */; };
 		58B1FFD61F42EB2500AD8620 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B1FFD41F42EB2400AD8620 /* MapKit.framework */; };
@@ -253,6 +254,7 @@
 		589A89D61F50BB73007329DB /* SelectStopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopCell.swift; sourceTree = "<group>"; };
 		589A89DA1F52E6A9007329DB /* ScheduleStopEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStopEdit.swift; sourceTree = "<group>"; };
 		589A89DD1F52E7E8007329DB /* ScheduleStopEditReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStopEditReducer.swift; sourceTree = "<group>"; };
+		589A89DF1F5304D5007329DB /* SelectAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAddressViewModel.swift; sourceTree = "<group>"; };
 		589BCC311F3D5068002FAEDE /* SchedulesPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesPresentationController.swift; sourceTree = "<group>"; };
 		58ACEADD1F3A9A9B00DC2836 /* SeptaSchedule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SeptaSchedule.xcodeproj; path = ../SeptaSchedule/SeptaSchedule.xcodeproj; sourceTree = "<group>"; };
 		58B1FFD41F42EB2400AD8620 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -490,6 +492,7 @@
 			isa = PBXGroup;
 			children = (
 				582F4EA01F33B1120062A546 /* SelectStopViewModel.swift */,
+				589A89DF1F5304D5007329DB /* SelectAddressViewModel.swift */,
 				67EA2B601F518CA600C0567A /* SearchModalHeaderDelegate.swift */,
 				58F80D421F421C1F0089501A /* SelectStopNavigationController.swift */,
 				58F80D441F421C4B0089501A /* SelectStopViewController.swift */,
@@ -1095,6 +1098,7 @@
 				5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift in Sources */,
 				67F757B11F486F0600D3A4EE /* TransitModeDisplayable.swift in Sources */,
 				5840D6E51F37EA1900C8CB76 /* ScheduleDataProvider.swift in Sources */,
+				589A89E01F5304D6007329DB /* SelectAddressViewModel.swift in Sources */,
 				5814AA841F43589E00DF774A /* TripScheduleViewModel.swift in Sources */,
 				5814AA8A1F4359D000DF774A /* TripleTextDisplayable.swift in Sources */,
 				58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */,
