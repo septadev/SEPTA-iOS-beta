@@ -4,33 +4,29 @@ import Foundation
 import SeptaSchedule
 
 struct ScheduleRequest {
-    let databaseIsLoaded: Bool
+
     let transitMode: TransitMode?
     let selectedRoute: Route?
     let selectedStart: Stop?
     let selectedEnd: Stop?
-    let stopToEdit: StopToSelect?
     let scheduleType: ScheduleType?
     let reverseStops: Bool
+    let databaseIsLoaded: Bool
 
-    init(transitMode: TransitMode? = nil, selectedRoute: Route? = nil, selectedStart: Stop? = nil, selectedEnd: Stop? = nil, stopToEdit: StopToSelect? = nil, scheduleType: ScheduleType? = nil, reverseStops: Bool = false, databaseIsLoaded: Bool = false) {
-        self.databaseIsLoaded = databaseIsLoaded
+    init(transitMode: TransitMode? = nil, selectedRoute: Route? = nil, selectedStart: Stop? = nil, selectedEnd: Stop? = nil, scheduleType: ScheduleType? = nil, reverseStops: Bool = false, databaseIsLoaded: Bool = false) {
         self.transitMode = transitMode
         self.selectedRoute = selectedRoute
         self.selectedStart = selectedStart
         self.selectedEnd = selectedEnd
-        self.stopToEdit = stopToEdit
         self.scheduleType = scheduleType
         self.reverseStops = reverseStops
+        self.databaseIsLoaded = databaseIsLoaded
     }
 }
 
 extension ScheduleRequest: Equatable {}
 func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
     var areEqual = true
-
-    areEqual = lhs.databaseIsLoaded == rhs.databaseIsLoaded
-    guard areEqual else { return false }
 
     areEqual = Optionals.optionalCompare(currentValue: lhs.transitMode, newValue: rhs.transitMode).equalityResult()
     guard areEqual else { return false }
@@ -44,13 +40,13 @@ func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
     areEqual = Optionals.optionalCompare(currentValue: lhs.selectedEnd, newValue: rhs.selectedEnd).equalityResult()
     guard areEqual else { return false }
 
-    areEqual = Optionals.optionalCompare(currentValue: lhs.stopToEdit, newValue: rhs.stopToEdit).equalityResult()
-    guard areEqual else { return false }
-
     areEqual = Optionals.optionalCompare(currentValue: lhs.scheduleType, newValue: rhs.scheduleType).equalityResult()
     guard areEqual else { return false }
 
     areEqual = lhs.reverseStops == rhs.reverseStops
+    guard areEqual else { return false }
+
+    areEqual = lhs.databaseIsLoaded == rhs.databaseIsLoaded
     guard areEqual else { return false }
 
     return areEqual

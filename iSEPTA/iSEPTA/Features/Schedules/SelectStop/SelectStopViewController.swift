@@ -11,7 +11,7 @@ import UIKit
 import ReSwift
 
 class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, SearchModalHeaderDelegate {
-    typealias StoreSubscriberStateType = StopToSelect?
+    typealias StoreSubscriberStateType = ScheduleStopEdit?
     @IBOutlet weak var viewModel: SelectStopViewModel! {
         didSet {
             headerViewController?.textField.delegate = viewModel
@@ -104,17 +104,16 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     }
 
     func subscribe() {
-
         store.subscribe(self) {
             $0.select {
-                $0.scheduleState.scheduleRequest?.stopToEdit
+                $0.scheduleState.scheduleStopEdit
             }
         }
     }
 
     func newState(state: StoreSubscriberStateType) {
         guard let state = state else { return }
-        viewModel.stopToSelect = state
+        viewModel.stopToSelect = state.stopToEdit
 
         store.unsubscribe(self)
     }

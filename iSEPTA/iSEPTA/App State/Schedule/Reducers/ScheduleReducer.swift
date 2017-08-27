@@ -5,6 +5,7 @@ import ReSwift
 
 fileprivate typealias Req = ScheduleRequestReducer
 fileprivate typealias Data = ScheduleDataReducer
+fileprivate typealias StopEdit = ScheduleStopEditReducer
 
 struct ScheduleReducer {
 
@@ -13,22 +14,26 @@ struct ScheduleReducer {
         if let action = action as? ReverseLoaded, let state = state {
             return reduceTripReverse(action: action, state: state)
         }
-        /// only work with non optionals for the primary reducers
+        /// if the state already exists
         if let newState = state {
+            /// if the action is a schedule action
             guard let action = action as? ScheduleAction,
                 let scheduleRequest = newState.scheduleRequest,
-                let scheduleData = newState.scheduleData
+                let scheduleData = newState.scheduleData,
+                let scheduleStopEdit = newState.scheduleStopEdit
 
             else { return newState }
             return ScheduleState(
                 scheduleRequest: Req.reduceRequest(action: action, scheduleRequest: scheduleRequest),
-                scheduleData: Data.reduceData(action: action, scheduleData: scheduleData)
+                scheduleData: Data.reduceData(action: action, scheduleData: scheduleData),
+                scheduleStopEdit: StopEdit.reduceStopEdit(action: action, scheduleStopEdit: scheduleStopEdit)
             )
-            /// if there are optionals, run through the init
+            /// if schedule state does not exist, run through the init
         } else {
             return ScheduleState(
                 scheduleRequest: Req.initRequest(),
-                scheduleData: Data.initScheduleData()
+                scheduleData: Data.initScheduleData(),
+                scheduleStopEdit: StopEdit.initStopEdit()
             )
         }
     }

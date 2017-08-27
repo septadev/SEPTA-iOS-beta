@@ -78,10 +78,6 @@ class ScheduleDataProvider: StoreSubscriber {
     }
 
     // MARK: - Prerequisites Exist
-    func isStopToEditUnchanged(scheduleRequest: ScheduleRequest) -> Bool {
-        let comparisonResult = Optionals.optionalCompare(currentValue: currentScheduleRequest.stopToEdit, newValue: scheduleRequest.stopToEdit)
-        return comparisonResult.equalityResult()
-    }
 
     func prerequisitesExistForRoutes(scheduleRequest: ScheduleRequest) -> Bool {
         return scheduleRequest.transitMode != nil && scheduleRequest.databaseIsLoaded
@@ -89,13 +85,13 @@ class ScheduleDataProvider: StoreSubscriber {
 
     func prerequisitesExistForTripStarts(scheduleRequest: ScheduleRequest) -> Bool {
         return scheduleRequest.transitMode != nil &&
-            scheduleRequest.selectedRoute != nil && scheduleRequest.stopToEdit == nil
+            scheduleRequest.selectedRoute != nil
     }
 
     func prerequisitesExistForTripEnds(scheduleRequest: ScheduleRequest) -> Bool {
         return scheduleRequest.transitMode != nil &&
             scheduleRequest.selectedRoute != nil &&
-            scheduleRequest.selectedStart != nil && scheduleRequest.stopToEdit == nil
+            scheduleRequest.selectedStart != nil
     }
 
     func prerequisitesExistForTrips(scheduleRequest: ScheduleRequest) -> Bool {
