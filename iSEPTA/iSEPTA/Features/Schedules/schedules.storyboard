@@ -790,7 +790,7 @@ StartingLabelRight</string>
                                                 <segue destination="gOh-OW-Svi" kind="embed" identifier="embedHeader" id="x0k-eT-tQL"/>
                                             </connections>
                                         </containerView>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ICn-d3-5wr">
+                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="140" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ICn-d3-5wr">
                                             <rect key="frame" x="0.0" y="121" width="375" height="526"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <prototypes>
@@ -831,27 +831,27 @@ StartingLabelRight</string>
                                                         <outlet property="label" destination="odK-ZX-VgC" id="v5J-6t-03b"/>
                                                     </connections>
                                                 </tableViewCell>
-                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addressCell" rowHeight="85" id="SpY-lT-gto" userLabel="AddressCell" customClass="AddressCell" customModule="Septa" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="96" width="375" height="85"/>
+                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addressCell" id="SpY-lT-gto" userLabel="AddressCell" customClass="AddressCell" customModule="Septa" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="96" width="375" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SpY-lT-gto" id="zU6-1z-7NA">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" ambiguous="YES" text="11617 McGee" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaI-v7-bCU" userLabel="StreetAddress">
-                                                                <rect key="frame" x="17" y="15" width="341" height="24"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="11617 McGee" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaI-v7-bCU" userLabel="StreetAddress">
+                                                                <rect key="frame" x="17" y="16" width="341" height="8"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="999" ambiguous="YES" text="Kansas City, MO 64114" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rhm-sR-W31" userLabel="CSZ">
-                                                                <rect key="frame" x="17" y="44" width="358" height="11"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="999" text="Kansas City, MO 64114" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rhm-sR-W31" userLabel="CSZ">
+                                                                <rect key="frame" x="17" y="25" width="358" height="0.0"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <color key="textColor" red="0.5490196078431373" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qyd-th-7m7" userLabel="Divider">
-                                                                <rect key="frame" x="15" y="84" width="360" height="1"/>
+                                                                <rect key="frame" x="15" y="43" width="360" height="1"/>
                                                                 <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="1" id="6pB-OM-M0d"/>
@@ -863,12 +863,12 @@ StartingLabelRight</string>
                                                             <constraint firstItem="Rhm-sR-W31" firstAttribute="leading" secondItem="zU6-1z-7NA" secondAttribute="leading" constant="17" id="A6T-WZ-v7l" userLabel="CSZLeft"/>
                                                             <constraint firstItem="zaI-v7-bCU" firstAttribute="leading" secondItem="zU6-1z-7NA" secondAttribute="leading" constant="17" id="EPy-5q-KRn" userLabel="StreetAddressLeft"/>
                                                             <constraint firstAttribute="trailing" secondItem="Rhm-sR-W31" secondAttribute="trailing" id="PbT-KM-vhl" userLabel="CSZRight"/>
-                                                            <constraint firstItem="zaI-v7-bCU" firstAttribute="top" secondItem="zU6-1z-7NA" secondAttribute="top" constant="5" id="Xbo-SJ-1GC" userLabel="StreetAddressTop"/>
+                                                            <constraint firstItem="zaI-v7-bCU" firstAttribute="top" secondItem="zU6-1z-7NA" secondAttribute="top" constant="16" id="Xbo-SJ-1GC" userLabel="StreetAddressTop"/>
                                                             <constraint firstAttribute="trailing" secondItem="zaI-v7-bCU" secondAttribute="trailing" constant="17" id="kXb-fa-Qyl" userLabel="StreetAddressRight"/>
                                                             <constraint firstAttribute="trailing" secondItem="Qyd-th-7m7" secondAttribute="trailing" id="njr-3f-1iH" userLabel="DividerRight"/>
                                                             <constraint firstAttribute="bottom" secondItem="Qyd-th-7m7" secondAttribute="bottom" id="pa0-l3-4uO" userLabel="DividerBottom"/>
-                                                            <constraint firstAttribute="bottom" secondItem="Rhm-sR-W31" secondAttribute="bottom" constant="5" id="r1i-ga-rH3" userLabel="CSZBottom"/>
-                                                            <constraint firstItem="Rhm-sR-W31" firstAttribute="top" secondItem="zaI-v7-bCU" secondAttribute="bottom" constant="3" id="xA1-KR-s1X" userLabel="CSZTop"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Rhm-sR-W31" secondAttribute="bottom" constant="19" id="r1i-ga-rH3" userLabel="CSZBottom"/>
+                                                            <constraint firstItem="Rhm-sR-W31" firstAttribute="top" secondItem="zaI-v7-bCU" secondAttribute="bottom" constant="1" id="xA1-KR-s1X" userLabel="CSZTop"/>
                                                         </constraints>
                                                     </tableViewCellContentView>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

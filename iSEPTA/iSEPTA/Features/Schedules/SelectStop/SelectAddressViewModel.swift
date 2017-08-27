@@ -55,6 +55,7 @@ class SelectAddressViewModel: NSObject, UITableViewDataSource, UITableViewDelega
     }
 
     func configureCell(_ addressCell: AddressCell, atRow row: Int) {
+
         guard row < addresses.count else { return }
         addressCell.streetAddressLabel.text = addresses[row].street
         addressCell.CSZLabel.text = addresses[row].csz
