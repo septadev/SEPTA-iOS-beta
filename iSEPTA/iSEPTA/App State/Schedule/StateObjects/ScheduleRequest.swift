@@ -13,7 +13,8 @@ struct ScheduleRequest {
     let scheduleType: ScheduleType?
     let reverseStops: Bool
 
-    init(transitMode: TransitMode? = nil, selectedRoute: Route? = nil, selectedStart: Stop? = nil, selectedEnd: Stop? = nil, stopToEdit: StopToSelect? = nil, scheduleType: ScheduleType? = .weekday, reverseStops: Bool = false, reloadDatabase _: Bool = false, databaseIsLoaded: Bool = false) {
+    init(transitMode: TransitMode? = nil, selectedRoute: Route? = nil, selectedStart: Stop? = nil, selectedEnd: Stop? = nil, stopToEdit: StopToSelect? = nil, scheduleType: ScheduleType? = nil, reverseStops: Bool = false, databaseIsLoaded: Bool = false) {
+        self.databaseIsLoaded = databaseIsLoaded
         self.transitMode = transitMode
         self.selectedRoute = selectedRoute
         self.selectedStart = selectedStart
@@ -21,7 +22,6 @@ struct ScheduleRequest {
         self.stopToEdit = stopToEdit
         self.scheduleType = scheduleType
         self.reverseStops = reverseStops
-        self.databaseIsLoaded = databaseIsLoaded
     }
 }
 
@@ -29,78 +29,28 @@ extension ScheduleRequest: Equatable {}
 func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
     var areEqual = true
 
-    switch (lhs.transitMode, rhs.transitMode) {
-    case (.none, .none):
-        areEqual = true
-    case (.some, .some):
-        areEqual = lhs.transitMode! == rhs.transitMode!
-    default:
-        return false
-    }
+    areEqual = lhs.databaseIsLoaded == rhs.databaseIsLoaded
     guard areEqual else { return false }
 
-    switch (lhs.selectedRoute, rhs.selectedRoute) {
-    case (.none, .none):
-        areEqual = true
-    case (.some, .some):
-        areEqual = lhs.selectedRoute! == rhs.selectedRoute!
-    default:
-        return false
-    }
+    areEqual = Optionals.optionalCompare(currentValue: lhs.transitMode, newValue: rhs.transitMode).equalityResult()
     guard areEqual else { return false }
 
-    switch (lhs.selectedStart, rhs.selectedStart) {
-    case (.none, .none):
-        areEqual = true
-    case (.some, .some):
-        areEqual = lhs.selectedStart! == rhs.selectedStart!
-    default:
-        return false
-    }
+    areEqual = Optionals.optionalCompare(currentValue: lhs.selectedRoute, newValue: rhs.selectedRoute).equalityResult()
     guard areEqual else { return false }
 
-    switch (lhs.selectedEnd, rhs.selectedEnd) {
-    case (.none, .none):
-        areEqual = true
-    case (.some, .some):
-        areEqual = lhs.selectedEnd! == rhs.selectedEnd!
-    default:
-        return false
-    }
+    areEqual = Optionals.optionalCompare(currentValue: lhs.selectedStart, newValue: rhs.selectedStart).equalityResult()
     guard areEqual else { return false }
 
-    switch (lhs.stopToEdit, rhs.stopToEdit) {
-    case (.none, .none):
-        areEqual = true
-    case (.some, .some):
-        areEqual = lhs.stopToEdit! == rhs.stopToEdit!
-    default:
-        return false
-    }
+    areEqual = Optionals.optionalCompare(currentValue: lhs.selectedEnd, newValue: rhs.selectedEnd).equalityResult()
     guard areEqual else { return false }
 
-    switch (lhs.scheduleType, rhs.scheduleType) {
-    case (.none, .none):
-        areEqual = true
-    case (.some, .some):
-        areEqual = lhs.scheduleType! == rhs.scheduleType!
-    default:
-        return false
-    }
+    areEqual = Optionals.optionalCompare(currentValue: lhs.stopToEdit, newValue: rhs.stopToEdit).equalityResult()
     guard areEqual else { return false }
 
-    if lhs.reverseStops == rhs.reverseStops {
-        areEqual = true
-    } else {
-        areEqual = false
-    }
+    areEqual = Optionals.optionalCompare(currentValue: lhs.scheduleType, newValue: rhs.scheduleType).equalityResult()
     guard areEqual else { return false }
 
-    if lhs.databaseIsLoaded == rhs.databaseIsLoaded {
-        areEqual = true
-    } else {
-        areEqual = false
-    }
+    areEqual = lhs.reverseStops == rhs.reverseStops
     guard areEqual else { return false }
 
     return areEqual

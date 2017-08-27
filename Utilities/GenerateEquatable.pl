@@ -3,11 +3,16 @@ use Data::Dumper;
 
 my $struct = q |
 
-	public struct TripStopId {
-		let start: Int
-		let end: Int
-	}
-	}		|;
+	struct ScheduleRequest {
+    let databaseIsLoaded: Bool
+    let transitMode: TransitMode?
+    let selectedRoute: Route?
+    let selectedStart: Stop?
+    let selectedEnd: Stop?
+    let stopToEdit: StopToSelect?
+    let scheduleType: ScheduleType?
+    let reverseStops: Bool
+	|;
 
 my @initVars = ();
 my @vars = ();
@@ -15,24 +20,13 @@ while ($struct =~ m/(?:let|var)\s+(\w+)\s*:\s*([\w:\[\]\h]+)(\?*)\h*$/mg) {
 	my $switchTemplate;
 	if ($3) {
 	$switchTemplate = qq |
-	switch (lhs.$1, rhs.$1) {
-	case (.none, .none):
-		areEqual = true
-	case (.some, .some):
-		areEqual = lhs.$1! == rhs.$1!
-	default:
-		return false
-	}
+	areEqual = Optionals.optionalCompare(currentValue: lhs.$1, newValue: rhs.$1).equalityResult()
 	guard areEqual else { return false }
 
 	|;
 	} else {
 		$switchTemplate = qq |
-		if lhs.$1 == rhs.$1 {
-			areEqual = true
-	} else {
-		areEqual = false
-		}
+		areEqual = lhs.$1 == rhs.$1
 		guard areEqual else { return false }
 |;
 	}
