@@ -3,7 +3,7 @@
 import Foundation
 import SeptaSchedule
 import ReSwift
-import CoreLocation
+
 import UIKit
 
 struct FilterableStop {
@@ -146,7 +146,7 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITab
 
         guard let allFilterableStops = allFilterableStops, let swiftRange = Range(range, in: filterString) else { return false }
         filterString = filterString.replacingCharacters(in: swiftRange, with: replacementString.lowercased())
-        print(filterString)
+
         filteredStops = allFilterableStops.filter {
             guard filterString.characters.count > 0 else { return true }
 
@@ -157,21 +157,7 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITab
 
             strongSelf.selectStopViewController?.viewModelUpdated()
         }
-        if filterString.count > 4 {
-            geoCodeFilterString()
-        }
+
         return true
-    }
-
-    let geoCoder = CLGeocoder()
-
-    func geoCodeFilterString() {
-        geoCoder.geocodeAddressString(filterString) { placemarks, _ in
-            guard let placemarks = placemarks else { return }
-            for placemark in placemarks {
-                print(placemark)
-            }
-            print("-----------")
-        }
     }
 }

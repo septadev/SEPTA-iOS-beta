@@ -35,6 +35,7 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
         }
     }
 
+    @IBOutlet var selectAddressViewModel: SelectAddressViewModel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     var headerViewController: SearchModalHeaderViewController?
@@ -55,7 +56,14 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
         if state.searchMode == .directLookup {
             tableView.dataSource = stopsViewModel
             tableView.delegate = stopsViewModel
+            headerViewController?.textField.delegate = stopsViewModel
         }
+        if state.searchMode == .byAddress {
+            tableView.dataSource = selectAddressViewModel
+            tableView.delegate = selectAddressViewModel
+            headerViewController?.textField.delegate = selectAddressViewModel
+        }
+        tableView.reloadData()
     }
 
     override func viewWillAppear(_: Bool) {
