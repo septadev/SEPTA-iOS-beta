@@ -84,17 +84,6 @@ class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber, UITableView
         store.unsubscribe(self)
     }
 
-    var measurementFormatter: MeasurementFormatter = {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.positiveFormat = "0.00"
-        let formatter = MeasurementFormatter()
-        formatter.numberFormatter = numberFormatter
-
-        formatter.unitStyle = .short
-        return formatter
-
-    }()
-
     func newState(state: StoreSubscriberStateType) {
         stopToEdit = state?.stopToEdit
         var optionalStops: [Stop]?
@@ -112,10 +101,8 @@ class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber, UITableView
 
                 let stopCoordinates = CLLocation(latitude: stop.stopLatitude, longitude: stop.stopLongitude)
                 let distanceInMeters = stopCoordinates.distance(from: location)
-                let metersMeasurement = Measurement(value: distanceInMeters, unit: UnitLength.meters)
-                let milesMeasurement = metersMeasurement.converted(to: UnitLength.miles)
-                let measurementString = measurementFormatter.string(from: milesMeasurement)
-                return StopWithDistance(stop: stop, distanceMeasurement: distanceInMeters, distanceString: measurementString)
+                let distanceString = NumberFormatters.metersToMilesFormatter.string(from: NSNumber(value: distanceInMeters)) ?? ""
+                return StopWithDistance(stop: stop, distanceMeasurement: distanceInMeters, distanceString: distanceString)
             }
 
             stopsWithDistance = unsortedStopsWithDistance.sorted { $0.distanceMeasurement < $1.distanceMeasurement }

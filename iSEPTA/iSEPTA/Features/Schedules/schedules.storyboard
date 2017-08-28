@@ -884,8 +884,8 @@ StartingLabelRight</string>
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18th and Vine" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LbH-Oq-MxP" userLabel="StopName">
-                                                                <rect key="frame" x="17" y="15" width="341" height="38"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="18th and Vine" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LbH-Oq-MxP" userLabel="StopName">
+                                                                <rect key="frame" x="17" y="15" width="126" height="38"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -898,7 +898,7 @@ StartingLabelRight</string>
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.5m" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8P-NK-lks" userLabel="DistanceLabel">
-                                                                <rect key="frame" x="322.5" y="33.5" width="34.5" height="18"/>
+                                                                <rect key="frame" x="153" y="33.5" width="204" height="18"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -907,11 +907,11 @@ StartingLabelRight</string>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="LbH-Oq-MxP" secondAttribute="bottom" constant="15" id="AYx-ew-mAc" userLabel="RouteLongNameBottom"/>
-                                                            <constraint firstAttribute="trailing" secondItem="LbH-Oq-MxP" secondAttribute="trailing" constant="17" id="VGi-Xl-5Uz" userLabel="RouteLongNameRight"/>
                                                             <constraint firstAttribute="bottom" secondItem="Uh2-Wa-QzF" secondAttribute="bottom" id="eoh-Xs-bCa" userLabel="DividerBottom"/>
                                                             <constraint firstItem="LbH-Oq-MxP" firstAttribute="top" secondItem="QfY-TI-Hw2" secondAttribute="top" constant="15" id="eyq-Hy-9ru" userLabel="RouteLongNameTop"/>
                                                             <constraint firstItem="Uh2-Wa-QzF" firstAttribute="leading" secondItem="QfY-TI-Hw2" secondAttribute="leading" constant="15" id="jmy-z0-iIY" userLabel="DividerLeft"/>
                                                             <constraint firstItem="W8P-NK-lks" firstAttribute="baseline" secondItem="LbH-Oq-MxP" secondAttribute="baseline" id="kNr-TS-fpZ" userLabel="DistanceLabelBaseLine"/>
+                                                            <constraint firstItem="W8P-NK-lks" firstAttribute="leading" secondItem="LbH-Oq-MxP" secondAttribute="trailing" constant="10" id="lub-fC-Vwe" userLabel="StopNameRight"/>
                                                             <constraint firstAttribute="trailing" secondItem="Uh2-Wa-QzF" secondAttribute="trailing" id="sRj-IV-xS5" userLabel="DividerRight"/>
                                                             <constraint firstItem="LbH-Oq-MxP" firstAttribute="leading" secondItem="QfY-TI-Hw2" secondAttribute="leading" constant="17" id="vhU-SH-Ah3" userLabel="RouteLongNameLeft"/>
                                                             <constraint firstAttribute="trailing" secondItem="W8P-NK-lks" secondAttribute="trailing" constant="18" id="zxI-Pr-6YN" userLabel="DistanceLabelRight"/>
