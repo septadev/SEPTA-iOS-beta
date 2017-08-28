@@ -3,13 +3,16 @@ use Data::Dumper;
 
 my $struct = q |
 
-	struct DisplayAddress {
-    let street: String
-    let csz: String
-    let placemark: CLPlacemark
+	struct ScheduleStopEdit {
+    let stopToEdit: StopToSelect
+    let searchMode: StopEditSearchMode
+    let selectedAddress: DisplayAddress?
+
+    init(stopToEdit: StopToSelect = .starts, searchMode: StopEditSearchMode = .directLookup) {
+        self.stopToEdit = stopToEdit
+        self.searchMode = searchMode
+    }
 }
-
-
 
 	|;
 

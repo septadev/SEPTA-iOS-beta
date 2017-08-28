@@ -7,14 +7,17 @@
 //
 
 import Foundation
+import SeptaSchedule
 
 struct ScheduleStopEdit {
     let stopToEdit: StopToSelect
     let searchMode: StopEditSearchMode
+    let selectedAddress: DisplayAddress?
 
-    init(stopToEdit: StopToSelect = .starts, searchMode: StopEditSearchMode = .directLookup) {
+    init(stopToEdit: StopToSelect = .starts, searchMode: StopEditSearchMode = .directLookup, selectedAddress: DisplayAddress? = nil) {
         self.stopToEdit = stopToEdit
         self.searchMode = searchMode
+        self.selectedAddress = selectedAddress
     }
 }
 
@@ -26,6 +29,9 @@ func ==(lhs: ScheduleStopEdit, rhs: ScheduleStopEdit) -> Bool {
     guard areEqual else { return false }
 
     areEqual = lhs.searchMode == rhs.searchMode
+    guard areEqual else { return false }
+
+    areEqual = Optionals.optionalCompare(currentValue: lhs.selectedAddress, newValue: rhs.selectedAddress).equalityResult()
     guard areEqual else { return false }
 
     return areEqual

@@ -52,7 +52,11 @@ class SelectAddressViewModel: NSObject, UITableViewDataSource, UITableViewDelega
         addressCell.CSZLabel.text = addresses[row].csz
     }
 
-    func tableView(_: UITableView, didSelectRowAt _: IndexPath) {
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.row < addresses.count else { return }
+        let displayAddress = addresses[indexPath.row]
+        let addressSelectedAction = AddressSelected(selectedAddress: displayAddress)
+        store.dispatch(addressSelectedAction)
     }
 
     var filterString = ""

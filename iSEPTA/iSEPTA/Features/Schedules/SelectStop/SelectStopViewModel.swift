@@ -19,10 +19,7 @@ struct FilterableStop {
     }
 }
 
-enum StopToSelect: Int {
-    case starts = 1
-    case ends = 2
-}
+
 
 class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
     typealias StoreSubscriberStateType = [Stop]?
@@ -67,6 +64,10 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITab
         let animating = rowCount == 0
         delegate.updateActivityIndicator(animating: animating)
         return rowCount
+    }
+    
+    var selectedAddress: DisplayAddress {
+        
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

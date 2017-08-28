@@ -11,6 +11,7 @@ import UIKit
 import ReSwift
 
 class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableController, UpdateableFromViewModel, SearchModalHeaderDelegate {
+    typealias StoreSubscriberStateType = ScheduleStopEdit?
     func updateActivityIndicator(animating: Bool) {
         if animating {
             activityIndicator.startAnimating()
@@ -28,7 +29,7 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
 
     static var viewController: ViewController = .selectStopController
 
-    typealias StoreSubscriberStateType = ScheduleStopEdit?
+   
     @IBOutlet weak var stopsViewModel: SelectStopViewModel! {
         didSet {
             headerViewController?.textField.delegate = stopsViewModel
@@ -58,10 +59,14 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
             tableView.delegate = stopsViewModel
             headerViewController?.textField.delegate = stopsViewModel
         }
-        if state.searchMode == .byAddress {
+       else if state.searchMode == .byAddress {
             tableView.dataSource = selectAddressViewModel
             tableView.delegate = selectAddressViewModel
             headerViewController?.textField.delegate = selectAddressViewModel
+        }
+        else {
+            tableView.dataSource = stopsViewModel
+            tableView.delegate = stopsViewModel
         }
         tableView.reloadData()
     }

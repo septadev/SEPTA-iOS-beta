@@ -90,3 +90,8 @@ struct ResetSchedule: ScheduleAction {
 
     let description = "The User wants to reset the schedule"
 }
+
+struct AddressSelected: ScheduleAction {
+    let selectedAddress: DisplayAddress
+    let description = "The user has selected an address to search near"
+}

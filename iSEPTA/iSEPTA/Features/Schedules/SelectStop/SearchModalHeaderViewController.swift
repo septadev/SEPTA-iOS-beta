@@ -25,6 +25,14 @@ class SearchModalHeaderViewController: UIViewController, StoreSubscriber {
     func newState(state: StoreSubscriberStateType) {
         guard let state = state else { return }
         searchMode = state.searchMode
+
+        if let selectedAddress = state.selectedAddress {
+            textField.text = selectedAddress.street
+            textField.resignFirstResponder()
+            textField.isEnabled = false
+        } else {
+            textField.isEnabled = true
+        }
     }
 
     @IBOutlet weak var textField: UITextField! {
