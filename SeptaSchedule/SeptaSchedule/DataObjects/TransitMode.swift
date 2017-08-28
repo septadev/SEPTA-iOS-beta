@@ -2,7 +2,7 @@
 
 import Foundation
 
-public enum TransitMode: String {
+@objc public enum TransitMode: Int {
     case bus
     case rail
     case subway

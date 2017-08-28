@@ -54,7 +54,8 @@ class DefaultPreferencesLoader {
 
     fileprivate func startupTransitMode() throws -> TransitMode {
         let key = DefaultPreferenceKeys.startupTransitMode.rawValue
-        guard let defaultValue = defaultPreferencesDict[key] as? String,
+        guard let defaultValue = defaultPreferencesDict[key] as? Int,
+
             let transitMode = TransitMode(rawValue: defaultValue) else {
             throw PreferenceError.missingKey(key)
         }

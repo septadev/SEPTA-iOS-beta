@@ -59,8 +59,9 @@ class UserDefaultsLoader {
     }
 
     fileprivate func startupTransitMode() -> TransitMode? {
-        guard let stringValue = string(forKey: .startupTransitMode) else { return nil }
-        return TransitMode(rawValue: stringValue)
+        guard let intValue = int(forKey: .startupTransitMode) else { return nil }
+
+        return TransitMode(rawValue: intValue)
     }
 
     fileprivate func startupNavigationController() -> NavigationController? {
