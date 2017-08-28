@@ -39,7 +39,7 @@ class SchedulesPresentationController: UIPresentationController {
         containerView?.insertSubview(dimmingView, at: 0)
 
         NSLayoutConstraint.activate(
-            NSLayoutConstraint.constraints(withVisualFormat: "V:|[dimmingView]|",
+            NSLayoutConstraint.constraints(withVisualFormat: "V:|[dimmingView(151)]",
                                            options: [], metrics: nil, views: ["dimmingView": dimmingView]))
         NSLayoutConstraint.activate(
             NSLayoutConstraint.constraints(withVisualFormat: "H:|[dimmingView]|",

@@ -11,7 +11,7 @@ import UIKit
 import SeptaSchedule
 import ReSwift
 
-class SearchModalHeaderViewController: UIViewController, StoreSubscriber {
+class SearchModalHeaderViewController: UIViewController, StoreSubscriber, UIGestureRecognizerDelegate {
     typealias StoreSubscriberStateType = ScheduleStopEdit?
     let transitMode: TransitMode! = store.state.scheduleState.scheduleRequest?.transitMode
 
@@ -126,5 +126,14 @@ class SearchModalHeaderViewController: UIViewController, StoreSubscriber {
 
     override func viewWillDisappear(_: Bool) {
         store.unsubscribe(self)
+    }
+
+    func gestureRecognizer(_: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith _: UIGestureRecognizer) -> Bool {
+        return true
+    }
+
+    func gestureRecognizer(_: UIGestureRecognizer, shouldRequireFailureOf _: UIGestureRecognizer) -> Bool {
+        delegate?.dismissModal()
+        return false
     }
 }

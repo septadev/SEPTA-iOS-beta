@@ -930,7 +930,7 @@ StartingLabelRight</string>
                                             </connections>
                                         </tableView>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="0.83395761986301364" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="ICn-d3-5wr" firstAttribute="top" secondItem="etJ-OH-PkF" secondAttribute="bottom" id="DHM-EK-WfM" userLabel="TableViewTop"/>
                                         <constraint firstItem="ICn-d3-5wr" firstAttribute="leading" secondItem="6Xu-dj-Oeo" secondAttribute="leading" id="G6n-xH-wwJ" userLabel="TableViewLeft"/>
@@ -941,19 +941,22 @@ StartingLabelRight</string>
                                         <constraint firstItem="etJ-OH-PkF" firstAttribute="top" secondItem="6Xu-dj-Oeo" secondAttribute="top" id="kK3-lE-Ok1" userLabel="SearchViewTop"/>
                                     </constraints>
                                 </view>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                                 <blurEffect style="light"/>
                             </visualEffectView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="fEJ-bC-2Y5">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="fEJ-bC-2Y5">
                                 <rect key="frame" x="168.5" y="385.5" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="V9N-D8-oWg" firstAttribute="top" secondItem="1Jh-Fy-1l6" secondAttribute="top" id="95l-mS-b2D" userLabel="VisualEffectTop"/>
                             <constraint firstItem="V9N-D8-oWg" firstAttribute="leading" secondItem="1Jh-Fy-1l6" secondAttribute="leading" id="NqX-bO-Lrb" userLabel="VisualEffectLeft"/>
+                            <constraint firstItem="fEJ-bC-2Y5" firstAttribute="centerY" secondItem="ICn-d3-5wr" secondAttribute="centerY" id="cWx-Cc-xM1" userLabel="ActivityIndicatorCenterY"/>
                             <constraint firstItem="1Jh-Fy-1l6" firstAttribute="bottom" secondItem="V9N-D8-oWg" secondAttribute="bottom" id="hRh-Gd-KBe" userLabel="VisualEffectViewBottom"/>
                             <constraint firstItem="1Jh-Fy-1l6" firstAttribute="trailing" secondItem="V9N-D8-oWg" secondAttribute="trailing" id="pby-NC-lDf" userLabel="VisualEffectRight"/>
+                            <constraint firstItem="fEJ-bC-2Y5" firstAttribute="centerX" secondItem="ICn-d3-5wr" secondAttribute="centerX" id="rqL-SV-rG3" userLabel="ActivityIndicatorCenterX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Jh-Fy-1l6"/>
                     </view>
@@ -1030,6 +1033,7 @@ StartingLabelRight</string>
                                         </constraints>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="PMy-Uh-yG3" appends="YES" id="TUy-7k-mzW"/>
+                                            <outletCollection property="gestureRecognizers" destination="ckk-C0-fjG" appends="YES" id="yoc-kW-vKf"/>
                                         </connections>
                                     </view>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rS7-En-2sJ" userLabel="SearchMode">
@@ -1143,11 +1147,18 @@ SearchTextBox</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eod-vm-ubd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="PMy-Uh-yG3">
+                <tapGestureRecognizer delaysTouchesEnded="NO" id="PMy-Uh-yG3">
                     <connections>
                         <action selector="didTapDismiss:" destination="gOh-OW-Svi" id="LRv-c5-erJ"/>
+                        <outlet property="delegate" destination="gOh-OW-Svi" id="Kpi-AW-lQ8"/>
                     </connections>
                 </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="ckk-C0-fjG">
+                    <connections>
+                        <action selector="didTapDismiss:" destination="gOh-OW-Svi" id="Hgb-Za-auk"/>
+                        <outlet property="delegate" destination="gOh-OW-Svi" id="o1H-ns-a9J"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2880.8000000000002" y="-507.79610194902551"/>
         </scene>
