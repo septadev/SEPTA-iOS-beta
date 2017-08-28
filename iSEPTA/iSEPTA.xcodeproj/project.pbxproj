@@ -59,7 +59,6 @@
 		582F4EDE1F33B1120062A546 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EB41F33B1120062A546 /* Main.storyboard */; };
 		582F4EDF1F33B1120062A546 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EB61F33B1120062A546 /* MainViewController.swift */; };
 		582F4EE01F33B1120062A546 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EB81F33B1120062A546 /* LaunchScreen.storyboard */; };
-		58406EB41F3A9C0900E6E04D /* SeptaSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58ACEAE31F3A9A9B00DC2836 /* SeptaSchedule.framework */; };
 		58406EB51F3A9C0E00E6E04D /* SeptaSchedule.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58ACEAE31F3A9A9B00DC2836 /* SeptaSchedule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5840D6D31F376D9C00C8CB76 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D21F376D9C00C8CB76 /* MainNavigationController.swift */; };
 		5840D6D51F376E5E00C8CB76 /* NavigationStackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D41F376E5E00C8CB76 /* NavigationStackState.swift */; };
@@ -99,6 +98,7 @@
 		58C2A0611F38964E00F0D6CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0601F3895E000F0D6CA /* ViewController.swift */; };
 		58C2A0651F389B6400F0D6CA /* TransitModesToolBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0641F389B6400F0D6CA /* TransitModesToolBarViewController.swift */; };
 		58C2A0691F38AA1B00F0D6CA /* ScheduleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0681F38AA1B00F0D6CA /* ScheduleData.swift */; };
+		58DB04A31F54D7F2005CC850 /* SeptaSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58ACEAE31F3A9A9B00DC2836 /* SeptaSchedule.framework */; };
 		58DB10F41F3B8CCF00191AED /* ScheduleDataReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DB10F31F3B8CCF00191AED /* ScheduleDataReducer.swift */; };
 		58DB10F81F3B8DB400191AED /* NavigationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DB10F71F3B8DB400191AED /* NavigationReducer.swift */; };
 		58F444FC1F3D335400A93208 /* SeptaAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F444FB1F3D335400A93208 /* SeptaAction.swift */; };
@@ -250,6 +250,7 @@
 		5867AC3B1F46249700370254 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = ../Carthage/Build/iOS/ReSwift.framework; sourceTree = "<group>"; };
 		5867AC3C1F46249800370254 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = ../Carthage/Build/iOS/Zip.framework; sourceTree = "<group>"; };
 		586DFEC41F505482004BC972 /* CurvedTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedTopView.swift; sourceTree = "<group>"; };
+		5870CCDD1F54C05A004E61A9 /* SeptaSchedule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaSchedule.framework; path = "Build/Products/Debug-iphonesimulator/SeptaSchedule.framework"; sourceTree = "<group>"; };
 		5880C19A1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRequestReducer.swift; sourceTree = "<group>"; };
 		5880C19C1F3B702500337DB2 /* Answers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Answers.framework; sourceTree = "<group>"; };
 		588F27EF1F39DD7B00D62425 /* UserPreferenceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferenceState.swift; sourceTree = "<group>"; };
@@ -304,8 +305,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				58B1FFD61F42EB2500AD8620 /* MapKit.framework in Frameworks */,
+				58DB04A31F54D7F2005CC850 /* SeptaSchedule.framework in Frameworks */,
 				5892DDF11F3AAA5C000BA54B /* Crashlytics.framework in Frameworks */,
-				58406EB41F3A9C0900E6E04D /* SeptaSchedule.framework in Frameworks */,
 				5892DDF21F3AAA5C000BA54B /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -828,6 +829,7 @@
 		58D9C4161F33362C002BE2E8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5870CCDD1F54C05A004E61A9 /* SeptaSchedule.framework */,
 				5867AC3B1F46249700370254 /* ReSwift.framework */,
 				5867AC391F46249700370254 /* SQLite.framework */,
 				5867AC3C1F46249800370254 /* Zip.framework */,
@@ -1326,10 +1328,13 @@
 					$SRCROOT/../Carthage/Build/iOS,
 					"$(inherited)",
 					$SRCROOT,
+					"/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Release-iphoneos",
+					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator",
 				);
 				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA.beta;
 				PRODUCT_MODULE_NAME = Septa;
@@ -1356,15 +1361,19 @@
 					$SRCROOT/../Carthage/Build/iOS,
 					"$(inherited)",
 					$SRCROOT,
+					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator",
 				);
 				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA.beta;
 				PRODUCT_MODULE_NAME = Septa;
 				PRODUCT_NAME = Septa;
 				PROVISIONING_PROFILE = "e8f99a1f-7b28-4307-b225-0aab2947e61a";
 				PROVISIONING_PROFILE_SPECIFIER = CapTechBetaTesting;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
