@@ -18,6 +18,12 @@ class SelectStopCell: UITableViewCell, SingleStringDisplayable {
         textLabel?.textColor = color
     }
 
+    @IBOutlet weak var distanceLabel: UILabel! {
+        didSet {
+            distanceLabel.isHidden = true
+        }
+    }
+
     func setLabelText(_ text: String?) {
         label?.text = text
     }

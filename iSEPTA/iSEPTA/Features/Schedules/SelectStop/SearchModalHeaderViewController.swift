@@ -32,6 +32,7 @@ class SearchModalHeaderViewController: UIViewController, StoreSubscriber {
             textField.isEnabled = false
         } else {
             textField.isEnabled = true
+            textField.text = nil
         }
     }
 

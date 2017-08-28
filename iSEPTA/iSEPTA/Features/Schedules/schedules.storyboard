@@ -877,6 +877,52 @@ StartingLabelRight</string>
                                                         <outlet property="streetAddressLabel" destination="zaI-v7-bCU" id="5vU-kq-Ica"/>
                                                     </connections>
                                                 </tableViewCell>
+                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="relativeStopCell" rowHeight="68" id="rzB-li-V0Z" userLabel="relativeStopCell" customClass="SelectStopCell" customModule="Septa" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="140" width="375" height="68"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rzB-li-V0Z" id="QfY-TI-Hw2">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18th and Vine" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LbH-Oq-MxP" userLabel="StopName">
+                                                                <rect key="frame" x="17" y="15" width="341" height="38"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uh2-Wa-QzF" userLabel="Divider">
+                                                                <rect key="frame" x="15" y="67" width="360" height="1"/>
+                                                                <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="1" id="3IO-Z0-46o"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.5m" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8P-NK-lks" userLabel="DistanceLabel">
+                                                                <rect key="frame" x="322.5" y="33.5" width="34.5" height="18"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="LbH-Oq-MxP" secondAttribute="bottom" constant="15" id="AYx-ew-mAc" userLabel="RouteLongNameBottom"/>
+                                                            <constraint firstAttribute="trailing" secondItem="LbH-Oq-MxP" secondAttribute="trailing" constant="17" id="VGi-Xl-5Uz" userLabel="RouteLongNameRight"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Uh2-Wa-QzF" secondAttribute="bottom" id="eoh-Xs-bCa" userLabel="DividerBottom"/>
+                                                            <constraint firstItem="LbH-Oq-MxP" firstAttribute="top" secondItem="QfY-TI-Hw2" secondAttribute="top" constant="15" id="eyq-Hy-9ru" userLabel="RouteLongNameTop"/>
+                                                            <constraint firstItem="Uh2-Wa-QzF" firstAttribute="leading" secondItem="QfY-TI-Hw2" secondAttribute="leading" constant="15" id="jmy-z0-iIY" userLabel="DividerLeft"/>
+                                                            <constraint firstItem="W8P-NK-lks" firstAttribute="baseline" secondItem="LbH-Oq-MxP" secondAttribute="baseline" id="kNr-TS-fpZ" userLabel="DistanceLabelBaseLine"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Uh2-Wa-QzF" secondAttribute="trailing" id="sRj-IV-xS5" userLabel="DividerRight"/>
+                                                            <constraint firstItem="LbH-Oq-MxP" firstAttribute="leading" secondItem="QfY-TI-Hw2" secondAttribute="leading" constant="17" id="vhU-SH-Ah3" userLabel="RouteLongNameLeft"/>
+                                                            <constraint firstAttribute="trailing" secondItem="W8P-NK-lks" secondAttribute="trailing" constant="18" id="zxI-Pr-6YN" userLabel="DistanceLabelRight"/>
+                                                        </constraints>
+                                                    </tableViewCellContentView>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <connections>
+                                                        <outlet property="distanceLabel" destination="W8P-NK-lks" id="WAk-wH-PCt"/>
+                                                        <outlet property="label" destination="LbH-Oq-MxP" id="bpt-bg-FHX"/>
+                                                    </connections>
+                                                </tableViewCell>
                                             </prototypes>
                                             <connections>
                                                 <outlet property="dataSource" destination="d82-BN-gFA" id="oyj-CK-ccq"/>
@@ -900,7 +946,6 @@ StartingLabelRight</string>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="fEJ-bC-2Y5">
                                 <rect key="frame" x="168.5" y="385.5" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="color" red="1" green="0.017948382969999999" blue="0.093025084879999997" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -915,6 +960,7 @@ StartingLabelRight</string>
                     <navigationItem key="navigationItem" title="Select Start" id="6oq-36-aan"/>
                     <connections>
                         <outlet property="activityIndicator" destination="fEJ-bC-2Y5" id="6wy-OP-bGM"/>
+                        <outlet property="selectAddressRelativeStopViewModel" destination="0Ta-JN-el7" id="rt3-zw-rIO"/>
                         <outlet property="selectAddressViewModel" destination="m7E-FI-zyX" id="Y4e-Jp-vtb"/>
                         <outlet property="stopsViewModel" destination="d82-BN-gFA" id="OtS-Ft-bcC"/>
                         <outlet property="tableView" destination="ICn-d3-5wr" id="HZl-1B-6VZ"/>
@@ -924,6 +970,11 @@ StartingLabelRight</string>
                 <customObject id="d82-BN-gFA" userLabel="SelectStopViewModel" customClass="SelectStopViewModel" customModule="Septa" customModuleProvider="target">
                     <connections>
                         <outlet property="selectStopViewController" destination="aLS-4r-fkd" id="nDd-kF-Y0e"/>
+                    </connections>
+                </customObject>
+                <customObject id="0Ta-JN-el7" customClass="SelectAddressRelativeStopViewModel" customModule="Septa" customModuleProvider="target">
+                    <connections>
+                        <outlet property="selectStopViewController" destination="aLS-4r-fkd" id="pbQ-qe-Zur"/>
                     </connections>
                 </customObject>
                 <customObject id="m7E-FI-zyX" customClass="SelectAddressViewModel" customModule="Septa" customModuleProvider="target">

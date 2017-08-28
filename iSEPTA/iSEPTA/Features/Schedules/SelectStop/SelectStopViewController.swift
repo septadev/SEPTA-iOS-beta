@@ -29,13 +29,13 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
 
     static var viewController: ViewController = .selectStopController
 
-   
     @IBOutlet weak var stopsViewModel: SelectStopViewModel! {
         didSet {
             headerViewController?.textField.delegate = stopsViewModel
         }
     }
 
+    @IBOutlet var selectAddressRelativeStopViewModel: SelectAddressRelativeStopViewModel!
     @IBOutlet var selectAddressViewModel: SelectAddressViewModel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
@@ -58,15 +58,14 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
             tableView.dataSource = stopsViewModel
             tableView.delegate = stopsViewModel
             headerViewController?.textField.delegate = stopsViewModel
-        }
-       else if state.searchMode == .byAddress {
+
+        } else if state.searchMode == .byAddress {
             tableView.dataSource = selectAddressViewModel
             tableView.delegate = selectAddressViewModel
             headerViewController?.textField.delegate = selectAddressViewModel
-        }
-        else {
-            tableView.dataSource = stopsViewModel
-            tableView.delegate = stopsViewModel
+        } else {
+            tableView.dataSource = selectAddressRelativeStopViewModel
+            tableView.delegate = selectAddressRelativeStopViewModel
         }
         tableView.reloadData()
     }
