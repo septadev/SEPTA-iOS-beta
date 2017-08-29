@@ -1,0 +1,326 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "Stop"
+- "=="
+provides-nominal:
+- "13SeptaSchedule4StopV"
+- "13SeptaSchedule4StopV10CodingKeysO"
+provides-member:
+- ["13SeptaSchedule4StopV", ""]
+- ["13SeptaSchedule4StopV10CodingKeysO", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "=="
+- "AssignmentPrecedence"
+- "Bool"
+- !private "BooleanLiteralType"
+- "CodingKey"
+- "Decoder"
+- "Double"
+- "Encoder"
+- "Equatable"
+- "Hashable"
+- "Int"
+- "Stop"
+- "String"
+- "StringLiteralType"
+- "TernaryPrecedence"
+- !private "~="
+depends-member:
+- ["s23BidirectionalCollectionP", "init"]
+- !private ["s13BinaryIntegerP", "hashValue"]
+- !private ["6SQLite7BindingP", "_getBuiltinLogicValue"]
+- !private ["6SQLite7BindingP", "hashValue"]
+- ["6SQLite7BindingP", "init"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["s7CVarArgP", "hashValue"]
+- ["s7CVarArgP", "init"]
+- ["s9CodingKeyP", "RawValue"]
+- ["s9CodingKeyP", "hashValue"]
+- ["s9CodingKeyP", "init"]
+- ["s9CodingKeyP", "intValue"]
+- ["s9CodingKeyP", "rawValue"]
+- !private ["s9CodingKeyP", "saturdayService"]
+- !private ["s9CodingKeyP", "stopId"]
+- !private ["s9CodingKeyP", "stopLatitude"]
+- !private ["s9CodingKeyP", "stopLongitude"]
+- !private ["s9CodingKeyP", "stopName"]
+- ["s9CodingKeyP", "stringValue"]
+- !private ["s9CodingKeyP", "sundayService"]
+- !private ["s9CodingKeyP", "weekdayService"]
+- !private ["s9CodingKeyP", "wheelchairBoarding"]
+- ["s9CodingKeyP", ""]
+- ["13SeptaSchedule4StopV10CodingKeysO", "RawValue"]
+- ["13SeptaSchedule4StopV10CodingKeysO", "deinit"]
+- ["13SeptaSchedule4StopV10CodingKeysO", "hashValue"]
+- ["13SeptaSchedule4StopV10CodingKeysO", "init"]
+- ["13SeptaSchedule4StopV10CodingKeysO", "intValue"]
+- ["13SeptaSchedule4StopV10CodingKeysO", "rawValue"]
+- ["13SeptaSchedule4StopV10CodingKeysO", "saturdayService"]
+- ["13SeptaSchedule4StopV10CodingKeysO", "stopId"]
+- ["13SeptaSchedule4StopV10CodingKeysO", "stopLatitude"]
+- ["13SeptaSchedule4StopV10CodingKeysO", "stopLongitude"]
+- ["13SeptaSchedule4StopV10CodingKeysO", "stopName"]
+- ["13SeptaSchedule4StopV10CodingKeysO", "stringValue"]
+- ["13SeptaSchedule4StopV10CodingKeysO", "sundayService"]
+- ["13SeptaSchedule4StopV10CodingKeysO", "weekdayService"]
+- ["13SeptaSchedule4StopV10CodingKeysO", "wheelchairBoarding"]
+- ["s10CollectionP", "init"]
+- !private ["s10ComparableP", "hashValue"]
+- ["s10ComparableP", "init"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "hashValue"]
+- ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "hashValue"]
+- ["s17CustomReflectableP", "init"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "hashValue"]
+- ["s23CustomStringConvertibleP", "init"]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9DecodableP", "hashValue"]
+- ["s9DecodableP", "init"]
+- !private ["s7DecoderP", "container"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "hashValue"]
+- ["s9EncodableP", "init"]
+- !private ["s7EncoderP", "container"]
+- !private ["s9EquatableP", "CodingKeys"]
+- !private ["s9EquatableP", "Double"]
+- !private ["s9EquatableP", "Int"]
+- ["s9EquatableP", "RawValue"]
+- !private ["s9EquatableP", "String"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- ["s9EquatableP", "hashValue"]
+- ["s9EquatableP", "init"]
+- ["s9EquatableP", "intValue"]
+- ["s9EquatableP", "rawValue"]
+- !private ["s9EquatableP", "saturdayService"]
+- !private ["s9EquatableP", "stopId"]
+- !private ["s9EquatableP", "stopLatitude"]
+- !private ["s9EquatableP", "stopLongitude"]
+- !private ["s9EquatableP", "stopName"]
+- ["s9EquatableP", "stringValue"]
+- !private ["s9EquatableP", "sundayService"]
+- !private ["s9EquatableP", "weekdayService"]
+- !private ["s9EquatableP", "wheelchairBoarding"]
+- ["s9EquatableP", ""]
+- !private ["6SQLite11ExpressibleP", "_getBuiltinLogicValue"]
+- !private ["6SQLite11ExpressibleP", "hashValue"]
+- ["6SQLite11ExpressibleP", "init"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s27ExpressibleByIntegerLiteralP", "hashValue"]
+- ["s26ExpressibleByStringLiteralP", "init"]
+- ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["s17FixedWidthIntegerP", "hashValue"]
+- !private ["s8HashableP", "CodingKeys"]
+- !private ["s8HashableP", "Double"]
+- !private ["s8HashableP", "Int"]
+- ["s8HashableP", "RawValue"]
+- !private ["s8HashableP", "String"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- ["s8HashableP", "hashValue"]
+- ["s8HashableP", "init"]
+- ["s8HashableP", "intValue"]
+- ["s8HashableP", "rawValue"]
+- !private ["s8HashableP", "saturdayService"]
+- !private ["s8HashableP", "stopId"]
+- !private ["s8HashableP", "stopLatitude"]
+- !private ["s8HashableP", "stopLongitude"]
+- !private ["s8HashableP", "stopName"]
+- ["s8HashableP", "stringValue"]
+- !private ["s8HashableP", "sundayService"]
+- !private ["s8HashableP", "weekdayService"]
+- !private ["s8HashableP", "wheelchairBoarding"]
+- ["s8HashableP", ""]
+- !private ["Si", "hashValue"]
+- !private ["s22KeyedDecodingContainerV", "decode"]
+- !private ["s30KeyedDecodingContainerProtocolP", "decode"]
+- !private ["s22KeyedEncodingContainerV", "encode"]
+- !private ["s30KeyedEncodingContainerProtocolP", "encode"]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s25LosslessStringConvertibleP", "hashValue"]
+- ["s25LosslessStringConvertibleP", "init"]
+- !private ["s10MirrorPathP", "hashValue"]
+- ["s10MirrorPathP", "init"]
+- ["So8NSCodingP", "init"]
+- ["So9NSCopyingP", "init"]
+- ["So21NSItemProviderReadingP", "init"]
+- ["So21NSItemProviderWritingP", "init"]
+- ["So16NSMutableCopyingP", "init"]
+- ["So16NSObjectProtocolP", "init"]
+- ["So14NSSecureCodingP", "init"]
+- ["So8NSStringC", "init"]
+- !private ["6SQLite6NumberP", "hashValue"]
+- !private ["s7NumericP", "hashValue"]
+- ["s26RangeReplaceableCollectionP", "init"]
+- ["s16RawRepresentableP", "RawValue"]
+- ["s16RawRepresentableP", "hashValue"]
+- ["s16RawRepresentableP", "init"]
+- ["s16RawRepresentableP", "intValue"]
+- ["s16RawRepresentableP", "rawValue"]
+- !private ["s16RawRepresentableP", "saturdayService"]
+- !private ["s16RawRepresentableP", "stopId"]
+- !private ["s16RawRepresentableP", "stopLatitude"]
+- !private ["s16RawRepresentableP", "stopLongitude"]
+- !private ["s16RawRepresentableP", "stopName"]
+- ["s16RawRepresentableP", "stringValue"]
+- !private ["s16RawRepresentableP", "sundayService"]
+- !private ["s16RawRepresentableP", "weekdayService"]
+- !private ["s16RawRepresentableP", "wheelchairBoarding"]
+- ["s16RawRepresentableP", ""]
+- ["s8SequenceP", "init"]
+- !private ["s13SignedIntegerP", "hashValue"]
+- !private ["s13SignedNumericP", "hashValue"]
+- ["13SeptaSchedule4StopV", "Bool"]
+- ["13SeptaSchedule4StopV", "CodingKey"]
+- ["13SeptaSchedule4StopV", "CodingKeys"]
+- ["13SeptaSchedule4StopV", "Decoder"]
+- ["13SeptaSchedule4StopV", "Double"]
+- ["13SeptaSchedule4StopV", "Encoder"]
+- ["13SeptaSchedule4StopV", "Int"]
+- ["13SeptaSchedule4StopV", "String"]
+- ["13SeptaSchedule4StopV", "deinit"]
+- ["13SeptaSchedule4StopV", "encode"]
+- ["13SeptaSchedule4StopV", "hashValue"]
+- ["13SeptaSchedule4StopV", "init"]
+- ["13SeptaSchedule4StopV", "saturdayService"]
+- ["13SeptaSchedule4StopV", "stopId"]
+- ["13SeptaSchedule4StopV", "stopLatitude"]
+- ["13SeptaSchedule4StopV", "stopLongitude"]
+- ["13SeptaSchedule4StopV", "stopName"]
+- ["13SeptaSchedule4StopV", "sundayService"]
+- ["13SeptaSchedule4StopV", "weekdayService"]
+- ["13SeptaSchedule4StopV", "wheelchairBoarding"]
+- !private ["s10StrideableP", "hashValue"]
+- ["SS", "init"]
+- ["s14StringProtocolP", "init"]
+- ["s16TextOutputStreamP", "init"]
+- ["s20TextOutputStreamableP", "init"]
+- !private ["6SQLite5ValueP", "_getBuiltinLogicValue"]
+- !private ["6SQLite5ValueP", "hashValue"]
+- ["6SQLite5ValueP", "init"]
+- ["s23_BidirectionalIndexableP", "init"]
+- !private ["s18_BitwiseOperationsP", "hashValue"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "hashValue"]
+- ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- ["s33_ExpressibleByStringInterpolationP", "init"]
+- ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- ["s10_IndexableP", "init"]
+- ["s14_IndexableBaseP", "init"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "hashValue"]
+- ["s21_ObjectiveCBridgeableP", "init"]
+- ["s26_RangeReplaceableIndexableP", "init"]
+- !private ["s11_StrideableP", "hashValue"]
+- ["s16_SwiftStringViewP", "init"]
+depends-nominal:
+- "s23BidirectionalCollectionP"
+- !private "s13BinaryIntegerP"
+- "6SQLite7BindingP"
+- !private "Sb"
+- "s7CVarArgP"
+- "s9CodingKeyP"
+- "13SeptaSchedule4StopV10CodingKeysO"
+- "s10CollectionP"
+- "s10ComparableP"
+- "s28CustomDebugStringConvertibleP"
+- "s29CustomPlaygroundQuickLookableP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- "s9DecodableP"
+- !private "s7DecoderP"
+- "s9EncodableP"
+- !private "s7EncoderP"
+- "s9EquatableP"
+- "6SQLite11ExpressibleP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s27ExpressibleByIntegerLiteralP"
+- "s26ExpressibleByStringLiteralP"
+- "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "s17FixedWidthIntegerP"
+- "s8HashableP"
+- !private "Si"
+- !private "s22KeyedDecodingContainerV"
+- !private "s30KeyedDecodingContainerProtocolP"
+- !private "s22KeyedEncodingContainerV"
+- !private "s30KeyedEncodingContainerProtocolP"
+- "s25LosslessStringConvertibleP"
+- "s10MirrorPathP"
+- "So8NSCodingP"
+- "So9NSCopyingP"
+- "So21NSItemProviderReadingP"
+- "So21NSItemProviderWritingP"
+- "So16NSMutableCopyingP"
+- "So16NSObjectProtocolP"
+- "So14NSSecureCodingP"
+- "So8NSStringC"
+- !private "6SQLite6NumberP"
+- !private "s7NumericP"
+- "s26RangeReplaceableCollectionP"
+- "s16RawRepresentableP"
+- "s8SequenceP"
+- !private "s13SignedIntegerP"
+- !private "s13SignedNumericP"
+- "13SeptaSchedule4StopV"
+- !private "s10StrideableP"
+- "SS"
+- "s14StringProtocolP"
+- "s16TextOutputStreamP"
+- "s20TextOutputStreamableP"
+- "6SQLite5ValueP"
+- "s23_BidirectionalIndexableP"
+- !private "s18_BitwiseOperationsP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s35_ExpressibleByBuiltinIntegerLiteralP"
+- "s34_ExpressibleByBuiltinStringLiteralP"
+- "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- "s33_ExpressibleByStringInterpolationP"
+- "s35_HasCustomAnyHashableRepresentationP"
+- "s10_IndexableP"
+- "s14_IndexableBaseP"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- "s21_ObjectiveCBridgeableP"
+- "s26_RangeReplaceableIndexableP"
+- !private "s11_StrideableP"
+- "s16_SwiftStringViewP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.apinotesc"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Modules/SQLite.swiftmodule/arm64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/Zip.framework/Modules/Zip.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/QuartzCore.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Metal.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/SwiftOnoneSupport.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Headers/sqlite3.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/SeptaSchedule/SeptaSchedule.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Headers/SQLite.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Headers/SQLite-Bridging.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/Zip.framework/Headers/Zip.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Headers/SQLite-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/Zip.framework/Headers/Zip-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/Build/Intermediates.noindex/SeptaSchedule.build/Debug-iphoneos/SeptaSchedule.build/unextended-module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/Zip/Zip/minizip/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/Zip.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/SQLite.swift/CocoaPods/iphoneos/module.modulemap"
+interface-hash: "e40ebc3f9dc1405627b2c8b05f6cc99c"

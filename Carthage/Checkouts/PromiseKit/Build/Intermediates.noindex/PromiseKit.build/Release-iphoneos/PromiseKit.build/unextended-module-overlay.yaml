@@ -1,0 +1,13 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': '/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/PromiseKit/Build/Products/Release-iphoneos/PromiseKit.framework/Modules'
+    'contents': [{
+      'type': 'file',
+      'name': 'module.modulemap',
+      'external-contents': '/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/PromiseKit/Build/Intermediates.noindex/PromiseKit.build/Release-iphoneos/PromiseKit.build/unextended-module.modulemap',
+    }]
+  }]
+}

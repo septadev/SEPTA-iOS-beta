@@ -1,0 +1,371 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "SimpleRestClient"
+provides-nominal:
+- "9SeptaRest06SimpleB6ClientC"
+provides-member:
+- ["9SeptaRest06SimpleB6ClientC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "!="
+- !private "&&"
+- "AnyObject"
+- !private "AssignmentPrecedence"
+- !private "CastingPrecedence"
+- !private "Dictionary"
+- !private "ErrorResult"
+- "HTTPHeaders"
+- !private "HTTPMethod"
+- "HTTPRouter"
+- "Mappable"
+- !private "Mapper"
+- !private "NSError"
+- "NSObject"
+- "Promise"
+- !private "RestResponse"
+- "SimpleRestClient"
+- "String"
+- !private "Void"
+- !private "request"
+depends-member:
+- !private ["12ObjectMapper12BaseMappableP", "error"]
+- !private ["12ObjectMapper12BaseMappableP", "success"]
+- !private ["s23BidirectionalCollectionP", "init"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["s7CVarArgP", "ErrorResult"]
+- !private ["s7CVarArgP", "HTTPRouter"]
+- !private ["s7CVarArgP", "Mapper"]
+- !private ["s7CVarArgP", "NSError"]
+- !private ["s7CVarArgP", "Promise"]
+- !private ["s7CVarArgP", "SimpleRestClient"]
+- !private ["s7CVarArgP", "apiKey"]
+- !private ["s7CVarArgP", "headers"]
+- !private ["s7CVarArgP", "httpRequest"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "request"]
+- !private ["s7CVarArgP", "url"]
+- ["s7CVarArgP", ""]
+- !private ["s10CollectionP", "init"]
+- !private ["s10ComparableP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "ErrorResult"]
+- !private ["s28CustomDebugStringConvertibleP", "HTTPRouter"]
+- !private ["s28CustomDebugStringConvertibleP", "Mapper"]
+- !private ["s28CustomDebugStringConvertibleP", "NSError"]
+- !private ["s28CustomDebugStringConvertibleP", "Promise"]
+- !private ["s28CustomDebugStringConvertibleP", "SimpleRestClient"]
+- !private ["s28CustomDebugStringConvertibleP", "apiKey"]
+- !private ["s28CustomDebugStringConvertibleP", "error"]
+- !private ["s28CustomDebugStringConvertibleP", "headers"]
+- !private ["s28CustomDebugStringConvertibleP", "httpRequest"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "request"]
+- !private ["s28CustomDebugStringConvertibleP", "responseJSON"]
+- !private ["s28CustomDebugStringConvertibleP", "result"]
+- !private ["s28CustomDebugStringConvertibleP", "url"]
+- !private ["s28CustomDebugStringConvertibleP", "value"]
+- ["s28CustomDebugStringConvertibleP", ""]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s23CustomStringConvertibleP", "ErrorResult"]
+- !private ["s23CustomStringConvertibleP", "HTTPRouter"]
+- !private ["s23CustomStringConvertibleP", "Mapper"]
+- !private ["s23CustomStringConvertibleP", "NSError"]
+- !private ["s23CustomStringConvertibleP", "Promise"]
+- !private ["s23CustomStringConvertibleP", "SimpleRestClient"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "apiKey"]
+- !private ["s23CustomStringConvertibleP", "error"]
+- !private ["s23CustomStringConvertibleP", "headers"]
+- !private ["s23CustomStringConvertibleP", "httpRequest"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "request"]
+- !private ["s23CustomStringConvertibleP", "responseJSON"]
+- !private ["s23CustomStringConvertibleP", "result"]
+- !private ["s23CustomStringConvertibleP", "url"]
+- !private ["s23CustomStringConvertibleP", "value"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["9Alamofire11DataRequestC", "responseJSON"]
+- !private ["9Alamofire12DataResponseV", "result"]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9DecodableP", "init"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "init"]
+- !private ["s9EquatableP", "ErrorResult"]
+- !private ["s9EquatableP", "HTTPRouter"]
+- !private ["s9EquatableP", "Mapper"]
+- !private ["s9EquatableP", "NSError"]
+- !private ["s9EquatableP", "Promise"]
+- !private ["s9EquatableP", "SimpleRestClient"]
+- !private ["s9EquatableP", "URLString"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "apiKey"]
+- !private ["s9EquatableP", "baseURLString"]
+- !private ["s9EquatableP", "delete"]
+- !private ["s9EquatableP", "get"]
+- !private ["s9EquatableP", "headers"]
+- !private ["s9EquatableP", "httpRequest"]
+- !private ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "post"]
+- !private ["s9EquatableP", "put"]
+- !private ["s9EquatableP", "request"]
+- !private ["s9EquatableP", "url"]
+- ["s9EquatableP", ""]
+- !private ["s5ErrorP", "init"]
+- !private ["9SeptaRest11ErrorResultC", "deinit"]
+- !private ["9SeptaRest11ErrorResultC", "init"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["9Alamofire10HTTPMethodO", "delete"]
+- !private ["9Alamofire10HTTPMethodO", "get"]
+- !private ["9Alamofire10HTTPMethodO", "post"]
+- !private ["9Alamofire10HTTPMethodO", "put"]
+- !private ["9SeptaRest10HTTPRouterO", "URLString"]
+- !private ["9SeptaRest10HTTPRouterO", "baseURLString"]
+- !private ["s8HashableP", "ErrorResult"]
+- !private ["s8HashableP", "HTTPRouter"]
+- !private ["s8HashableP", "Mapper"]
+- !private ["s8HashableP", "NSError"]
+- !private ["s8HashableP", "Promise"]
+- !private ["s8HashableP", "SimpleRestClient"]
+- !private ["s8HashableP", "URLString"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- !private ["s8HashableP", "apiKey"]
+- !private ["s8HashableP", "baseURLString"]
+- !private ["s8HashableP", "delete"]
+- !private ["s8HashableP", "get"]
+- !private ["s8HashableP", "headers"]
+- !private ["s8HashableP", "httpRequest"]
+- !private ["s8HashableP", "init"]
+- !private ["s8HashableP", "post"]
+- !private ["s8HashableP", "put"]
+- !private ["s8HashableP", "request"]
+- !private ["s8HashableP", "url"]
+- ["s8HashableP", ""]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["12ObjectMapper8MappableP", "error"]
+- !private ["12ObjectMapper8MappableP", "success"]
+- !private ["12ObjectMapper0B0C", "init"]
+- !private ["12ObjectMapper0B0C", "map"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["So8NSCodingP", "init"]
+- !private ["So9NSCopyingP", "init"]
+- !private ["So7NSErrorC", "init"]
+- !private ["So21NSItemProviderReadingP", "init"]
+- !private ["So21NSItemProviderWritingP", "init"]
+- !private ["So16NSMutableCopyingP", "init"]
+- ["So8NSObjectC", "AnyObject"]
+- !private ["So8NSObjectC", "ErrorResult"]
+- ["So8NSObjectC", "HTTPHeaders"]
+- !private ["So8NSObjectC", "HTTPMethod"]
+- ["So8NSObjectC", "HTTPRouter"]
+- ["So8NSObjectC", "Mappable"]
+- !private ["So8NSObjectC", "Mapper"]
+- !private ["So8NSObjectC", "NSError"]
+- ["So8NSObjectC", "Promise"]
+- !private ["So8NSObjectC", "RestResponse"]
+- ["So8NSObjectC", "SimpleRestClient"]
+- ["So8NSObjectC", "String"]
+- !private ["So8NSObjectC", "Void"]
+- ["So8NSObjectC", "apiKey"]
+- ["So8NSObjectC", "defaultClient"]
+- ["So8NSObjectC", "delete"]
+- ["So8NSObjectC", "get"]
+- ["So8NSObjectC", "headers"]
+- ["So8NSObjectC", "httpRequest"]
+- ["So8NSObjectC", "init"]
+- ["So8NSObjectC", "post"]
+- ["So8NSObjectC", "put"]
+- !private ["So8NSObjectC", "request"]
+- ["So8NSObjectC", "url"]
+- ["So8NSObjectC", ""]
+- !private ["So16NSObjectProtocolP", "ErrorResult"]
+- !private ["So16NSObjectProtocolP", "HTTPRouter"]
+- !private ["So16NSObjectProtocolP", "Mapper"]
+- !private ["So16NSObjectProtocolP", "NSError"]
+- !private ["So16NSObjectProtocolP", "Promise"]
+- !private ["So16NSObjectProtocolP", "SimpleRestClient"]
+- !private ["So16NSObjectProtocolP", "apiKey"]
+- !private ["So16NSObjectProtocolP", "headers"]
+- !private ["So16NSObjectProtocolP", "httpRequest"]
+- !private ["So16NSObjectProtocolP", "init"]
+- !private ["So16NSObjectProtocolP", "request"]
+- !private ["So16NSObjectProtocolP", "url"]
+- ["So16NSObjectProtocolP", ""]
+- !private ["So14NSSecureCodingP", "init"]
+- !private ["So8NSStringC", "init"]
+- !private ["10PromiseKit0A0C", "init"]
+- !private ["s26RangeReplaceableCollectionP", "init"]
+- !private ["s16RawRepresentableP", "delete"]
+- !private ["s16RawRepresentableP", "get"]
+- !private ["s16RawRepresentableP", "post"]
+- !private ["s16RawRepresentableP", "put"]
+- !private ["9Alamofire7RequestC", "responseJSON"]
+- !private ["9Alamofire8ResponseP", "result"]
+- !private ["9SeptaRest0B8ResponseC", "error"]
+- !private ["9SeptaRest0B8ResponseC", "success"]
+- !private ["9Alamofire6ResultO", "error"]
+- !private ["9Alamofire6ResultO", "value"]
+- !private ["s8SequenceP", "init"]
+- ["9SeptaRest06SimpleB6ClientC", "AnyObject"]
+- !private ["9SeptaRest06SimpleB6ClientC", "ErrorResult"]
+- ["9SeptaRest06SimpleB6ClientC", "HTTPHeaders"]
+- !private ["9SeptaRest06SimpleB6ClientC", "HTTPMethod"]
+- ["9SeptaRest06SimpleB6ClientC", "HTTPRouter"]
+- ["9SeptaRest06SimpleB6ClientC", "Mappable"]
+- !private ["9SeptaRest06SimpleB6ClientC", "Mapper"]
+- !private ["9SeptaRest06SimpleB6ClientC", "NSError"]
+- ["9SeptaRest06SimpleB6ClientC", "Promise"]
+- !private ["9SeptaRest06SimpleB6ClientC", "RestResponse"]
+- ["9SeptaRest06SimpleB6ClientC", "SimpleRestClient"]
+- ["9SeptaRest06SimpleB6ClientC", "String"]
+- !private ["9SeptaRest06SimpleB6ClientC", "Void"]
+- !private ["9SeptaRest06SimpleB6ClientC", "apiKey"]
+- ["9SeptaRest06SimpleB6ClientC", "defaultClient"]
+- ["9SeptaRest06SimpleB6ClientC", "deinit"]
+- ["9SeptaRest06SimpleB6ClientC", "delete"]
+- ["9SeptaRest06SimpleB6ClientC", "get"]
+- !private ["9SeptaRest06SimpleB6ClientC", "headers"]
+- !private ["9SeptaRest06SimpleB6ClientC", "httpRequest"]
+- ["9SeptaRest06SimpleB6ClientC", "init"]
+- ["9SeptaRest06SimpleB6ClientC", "post"]
+- ["9SeptaRest06SimpleB6ClientC", "put"]
+- !private ["9SeptaRest06SimpleB6ClientC", "request"]
+- !private ["9SeptaRest06SimpleB6ClientC", "url"]
+- !private ["s12StaticStringV", "init"]
+- !private ["SS", "init"]
+- !private ["s14StringProtocolP", "init"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["9Alamofire14URLConvertibleP", "init"]
+- !private ["s23_BidirectionalIndexableP", "init"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s33_ExpressibleByStringInterpolationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s10_IndexableP", "init"]
+- !private ["s14_IndexableBaseP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "ErrorResult"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "HTTPRouter"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Mapper"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "NSError"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Promise"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "SimpleRestClient"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "apiKey"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "headers"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "httpRequest"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "request"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "url"]
+- ["10Foundation27_KeyValueCodingAndObservingP", ""]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s26_RangeReplaceableIndexableP", "init"]
+- !private ["s16_SwiftStringViewP", "init"]
+depends-nominal:
+- !private "12ObjectMapper12BaseMappableP"
+- !private "s23BidirectionalCollectionP"
+- !private "Sb"
+- "s7CVarArgP"
+- !private "s10CollectionP"
+- !private "s10ComparableP"
+- "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- !private "9Alamofire11DataRequestC"
+- !private "9Alamofire12DataResponseV"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- "s9EquatableP"
+- !private "s5ErrorP"
+- !private "9SeptaRest11ErrorResultC"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "9Alamofire10HTTPMethodO"
+- !private "9SeptaRest10HTTPRouterO"
+- "s8HashableP"
+- !private "s25LosslessStringConvertibleP"
+- !private "12ObjectMapper8MappableP"
+- !private "12ObjectMapper0B0C"
+- !private "s10MirrorPathP"
+- !private "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So7NSErrorC"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- !private "So16NSMutableCopyingP"
+- "So8NSObjectC"
+- "So16NSObjectProtocolP"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
+- !private "10PromiseKit0A0C"
+- !private "s26RangeReplaceableCollectionP"
+- !private "s16RawRepresentableP"
+- !private "9Alamofire7RequestC"
+- !private "9Alamofire8ResponseP"
+- !private "9SeptaRest0B8ResponseC"
+- !private "9Alamofire6ResultO"
+- !private "s8SequenceP"
+- "9SeptaRest06SimpleB6ClientC"
+- !private "s12StaticStringV"
+- !private "SS"
+- !private "s14StringProtocolP"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "9Alamofire14URLConvertibleP"
+- !private "s23_BidirectionalIndexableP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s33_ExpressibleByStringInterpolationP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "s10_IndexableP"
+- !private "s14_IndexableBaseP"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s26_RangeReplaceableIndexableP"
+- !private "s16_SwiftStringViewP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/Alamofire.framework/Modules/Alamofire.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/ObjectMapper.framework/Modules/ObjectMapper.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/PromiseKit.framework/Modules/PromiseKit.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/PromiseKit.framework/Headers/fwd.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/Alamofire.framework/Headers/Alamofire.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/PromiseKit.framework/Headers/AnyPromise.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/ObjectMapper.framework/Headers/ObjectMapper.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/Alamofire.framework/Headers/Alamofire-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/ObjectMapper.framework/Headers/ObjectMapper-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/PromiseKit.framework/Headers/PromiseKit-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/PromiseKit.framework/Headers/PromiseKit.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/SeptaRest/SeptaRest.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/Build/Intermediates.noindex/SeptaRest.build/Debug-iphonesimulator/SeptaRest.build/unextended-module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/Alamofire.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/ObjectMapper.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/PromiseKit.framework/Modules/module.modulemap"
+interface-hash: "4a1b29296b0d551bdaa4e269d08bf0c0"

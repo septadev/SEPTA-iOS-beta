@@ -3,7 +3,7 @@
 import Foundation
 import UIKit
 
-class Alert {
+class UIAlert {
 
     static func presentOKAlertFrom(viewController: UIViewController, withTitle title: String, message: String, completion: (() -> Void)?) {
         // create the alert

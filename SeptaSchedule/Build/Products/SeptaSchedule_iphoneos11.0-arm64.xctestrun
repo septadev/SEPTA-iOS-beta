@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SeptaScheduleTests</key>
+	<dict>
+		<key>BundleIdentifiersForCrashReportEmphasis</key>
+		<array>
+			<string>org.septa.SeptaScheduleTests</string>
+			<string>org.septa.SeptaSchedule</string>
+		</array>
+		<key>CommandLineArguments</key>
+		<array/>
+		<key>DependentProductPaths</key>
+		<array>
+			<string>__TESTROOT__/Debug-iphoneos/SeptaSchedule.framework</string>
+			<string>__TESTROOT__/Debug-iphoneos/SeptaScheduleTests.xctest</string>
+		</array>
+		<key>EnvironmentVariables</key>
+		<dict>
+			<key>DYLD_FRAMEWORK_PATH</key>
+			<string>/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/Build/Products/Debug-iphoneos</string>
+			<key>DYLD_LIBRARY_PATH</key>
+			<string>/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/Build/Products/Debug-iphoneos</string>
+			<key>OS_ACTIVITY_DT_MODE</key>
+			<string>YES</string>
+			<key>__XCODE_BUILT_PRODUCTS_DIR_PATHS</key>
+			<string>/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/Build/Products/Debug-iphoneos</string>
+			<key>__XPC_DYLD_FRAMEWORK_PATH</key>
+			<string>/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/Build/Products/Debug-iphoneos</string>
+			<key>__XPC_DYLD_LIBRARY_PATH</key>
+			<string>/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/Build/Products/Debug-iphoneos</string>
+		</dict>
+		<key>ProductModuleName</key>
+		<string>SeptaScheduleTests</string>
+		<key>SkipTestIdentifiers</key>
+		<array>
+			<string>TripTests</string>
+		</array>
+		<key>SystemAttachmentLifetime</key>
+		<string>deleteOnSuccess</string>
+		<key>TestBundlePath</key>
+		<string>__TESTROOT__/Debug-iphoneos/SeptaScheduleTests.xctest</string>
+		<key>TestHostPath</key>
+		<string>__PLATFORMS__/iPhoneOS.platform/Developer/Library/Xcode/Agents/xctest</string>
+		<key>TestingEnvironmentVariables</key>
+		<dict>
+			<key>DYLD_FRAMEWORK_PATH</key>
+			<string>__TESTROOT__/Debug-iphoneos:__PLATFORMS__/iPhoneOS.platform/Developer/Library/Frameworks:/Developer/Library/PrivateFrameworks</string>
+			<key>DYLD_LIBRARY_PATH</key>
+			<string>__TESTROOT__/Debug-iphoneos:__PLATFORMS__/iPhoneOS.platform/Developer/Library/Frameworks:/Developer/Library/PrivateFrameworks</string>
+			<key>IDEiPhoneInternalTestBundleName</key>
+			<string>SeptaScheduleTests.xctest</string>
+			<key>XCODE_DBG_XPC_EXCLUSIONS</key>
+			<string>com.apple.dt.xctestSymbolicator</string>
+		</dict>
+		<key>ToolchainsSettingValue</key>
+		<array/>
+		<key>UITargetAppCommandLineArguments</key>
+		<array/>
+		<key>UITargetAppMainThreadCheckerEnabled</key>
+		<false/>
+		<key>UserAttachmentLifetime</key>
+		<string>deleteOnSuccess</string>
+	</dict>
+</dict>
+</plist>

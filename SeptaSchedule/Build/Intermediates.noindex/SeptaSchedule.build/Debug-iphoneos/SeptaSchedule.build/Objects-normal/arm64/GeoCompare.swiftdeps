@@ -1,0 +1,55 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "GeoCompare"
+provides-nominal:
+- "13SeptaSchedule10GeoCompareC"
+provides-member:
+- ["13SeptaSchedule10GeoCompareC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "-"
+- !private "<"
+- "Bool"
+- "Double"
+- !private "FloatLiteralType"
+- "GeoCompare"
+- !private "abs"
+depends-member:
+- ["13SeptaSchedule10GeoCompareC", "Bool"]
+- ["13SeptaSchedule10GeoCompareC", "Double"]
+- !private ["13SeptaSchedule10GeoCompareC", "abs"]
+- ["13SeptaSchedule10GeoCompareC", "deinit"]
+- ["13SeptaSchedule10GeoCompareC", "init"]
+- ["13SeptaSchedule10GeoCompareC", "point"]
+depends-nominal:
+- "13SeptaSchedule10GeoCompareC"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.apinotesc"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Modules/SQLite.swiftmodule/arm64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/Zip.framework/Modules/Zip.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/QuartzCore.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Metal.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/SwiftOnoneSupport.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Headers/sqlite3.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/SeptaSchedule/SeptaSchedule.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Headers/SQLite.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Headers/SQLite-Bridging.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/Zip.framework/Headers/Zip.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Headers/SQLite-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/Zip.framework/Headers/Zip-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/Build/Intermediates.noindex/SeptaSchedule.build/Debug-iphoneos/SeptaSchedule.build/unextended-module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/Zip/Zip/minizip/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/Zip.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/SQLite.swift/CocoaPods/iphoneos/module.modulemap"
+interface-hash: "f9b53d587277bbb345425558135c33cb"

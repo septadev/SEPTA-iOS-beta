@@ -21,10 +21,10 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     }
 
     func displayErrorMessage(message: String) {
-        Alert.presentOKAlertFrom(viewController: self,
-                                 withTitle: "SEPTA Alert",
-                                 message: message,
-                                 completion: nil)
+        UIAlert.presentOKAlertFrom(viewController: self,
+                                   withTitle: "SEPTA Alert",
+                                   message: message,
+                                   completion: nil)
     }
 
     static var viewController: ViewController = .selectStopController

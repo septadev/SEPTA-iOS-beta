@@ -1,0 +1,10 @@
+framework module SeptaRest {
+  umbrella header "SeptaRest.h"
+
+  export *
+  module * { export * }
+}
+
+module SeptaRest.__Swift {
+    exclude header "SeptaRest-Swift.h"
+}

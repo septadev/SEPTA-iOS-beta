@@ -1,0 +1,197 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "Alerts"
+provides-nominal:
+- "9SeptaRest6AlertsC"
+provides-member:
+- ["9SeptaRest6AlertsC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "<-"
+- "Alert"
+- "Alerts"
+- "AssignmentPrecedence"
+- !private "BooleanLiteralType"
+- "Int"
+- "Map"
+- "RestResponse"
+- !private "StringLiteralType"
+depends-member:
+- !private ["9SeptaRest5AlertC", "deinit"]
+- ["9SeptaRest6AlertsC", "Alert"]
+- ["9SeptaRest6AlertsC", "Int"]
+- ["9SeptaRest6AlertsC", "Map"]
+- ["9SeptaRest6AlertsC", "alerts"]
+- ["9SeptaRest6AlertsC", "deinit"]
+- ["9SeptaRest6AlertsC", "init"]
+- ["9SeptaRest6AlertsC", "mapping"]
+- ["9SeptaRest6AlertsC", "results"]
+- !private ["9SeptaRest6AlertsC", "success"]
+- !private ["12ObjectMapper12BaseMappableP", "alerts"]
+- !private ["12ObjectMapper12BaseMappableP", "init"]
+- !private ["12ObjectMapper12BaseMappableP", "mapping"]
+- !private ["12ObjectMapper12BaseMappableP", "results"]
+- !private ["12ObjectMapper12BaseMappableP", "success"]
+- ["12ObjectMapper12BaseMappableP", ""]
+- !private ["s23BidirectionalCollectionP", "init"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s10CollectionP", "init"]
+- !private ["s10ComparableP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9DecodableP", "init"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "init"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "init"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- !private ["s8HashableP", "init"]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["12ObjectMapper3MapC", "isKeyPresent"]
+- !private ["12ObjectMapper3MapC", "subscript"]
+- !private ["12ObjectMapper8MappableP", "alerts"]
+- !private ["12ObjectMapper8MappableP", "init"]
+- !private ["12ObjectMapper8MappableP", "mapping"]
+- !private ["12ObjectMapper8MappableP", "results"]
+- !private ["12ObjectMapper8MappableP", "success"]
+- ["12ObjectMapper8MappableP", ""]
+- !private ["s10MirrorPathP", "init"]
+- !private ["So8NSCodingP", "init"]
+- !private ["So9NSCopyingP", "init"]
+- !private ["So21NSItemProviderReadingP", "init"]
+- !private ["So21NSItemProviderWritingP", "init"]
+- !private ["So16NSMutableCopyingP", "init"]
+- !private ["So16NSObjectProtocolP", "init"]
+- !private ["So14NSSecureCodingP", "init"]
+- !private ["So8NSStringC", "init"]
+- !private ["s26RangeReplaceableCollectionP", "init"]
+- ["9SeptaRest0B8ResponseC", "Alert"]
+- ["9SeptaRest0B8ResponseC", "Int"]
+- ["9SeptaRest0B8ResponseC", "Map"]
+- ["9SeptaRest0B8ResponseC", "alerts"]
+- !private ["9SeptaRest0B8ResponseC", "deinit"]
+- ["9SeptaRest0B8ResponseC", "init"]
+- ["9SeptaRest0B8ResponseC", "mapping"]
+- ["9SeptaRest0B8ResponseC", "results"]
+- !private ["9SeptaRest0B8ResponseC", "success"]
+- ["9SeptaRest0B8ResponseC", ""]
+- !private ["s8SequenceP", "init"]
+- !private ["SS", "init"]
+- !private ["s14StringProtocolP", "init"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["9Alamofire14URLConvertibleP", "init"]
+- !private ["s23_BidirectionalIndexableP", "init"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s33_ExpressibleByStringInterpolationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s10_IndexableP", "init"]
+- !private ["s14_IndexableBaseP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s26_RangeReplaceableIndexableP", "init"]
+- !private ["s16_SwiftStringViewP", "init"]
+depends-nominal:
+- !private "9SeptaRest5AlertC"
+- "9SeptaRest6AlertsC"
+- "12ObjectMapper12BaseMappableP"
+- !private "s23BidirectionalCollectionP"
+- !private "Sb"
+- !private "s7CVarArgP"
+- !private "s10CollectionP"
+- !private "s10ComparableP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- !private "s9EquatableP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "s8HashableP"
+- !private "s25LosslessStringConvertibleP"
+- !private "12ObjectMapper3MapC"
+- "12ObjectMapper8MappableP"
+- !private "s10MirrorPathP"
+- !private "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- !private "So16NSMutableCopyingP"
+- !private "So16NSObjectProtocolP"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
+- !private "s26RangeReplaceableCollectionP"
+- "9SeptaRest0B8ResponseC"
+- !private "s8SequenceP"
+- !private "SS"
+- !private "s14StringProtocolP"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "9Alamofire14URLConvertibleP"
+- !private "s23_BidirectionalIndexableP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s33_ExpressibleByStringInterpolationP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "s10_IndexableP"
+- !private "s14_IndexableBaseP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s26_RangeReplaceableIndexableP"
+- !private "s16_SwiftStringViewP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/Alamofire.framework/Modules/Alamofire.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/ObjectMapper.framework/Modules/ObjectMapper.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/PromiseKit.framework/Modules/PromiseKit.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/PromiseKit.framework/Headers/fwd.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/Alamofire.framework/Headers/Alamofire.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/PromiseKit.framework/Headers/AnyPromise.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/ObjectMapper.framework/Headers/ObjectMapper.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/Alamofire.framework/Headers/Alamofire-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/ObjectMapper.framework/Headers/ObjectMapper-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/PromiseKit.framework/Headers/PromiseKit-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/PromiseKit.framework/Headers/PromiseKit.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/SeptaRest/SeptaRest.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/Build/Intermediates.noindex/SeptaRest.build/Debug-iphonesimulator/SeptaRest.build/unextended-module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/Alamofire.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/ObjectMapper.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/PromiseKit.framework/Modules/module.modulemap"
+interface-hash: "f19d905c9f33a97df9fd30ba23e1ced3"

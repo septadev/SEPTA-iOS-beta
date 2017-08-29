@@ -56,9 +56,9 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
 
     func displayAlert(_ message: String) {
 
-        Alert.presentOKAlertFrom(viewController: self,
-                                 withTitle: "SEPTA Beta Testers!",
-                                 message: message,
-                                 completion: nil)
+        UIAlert.presentOKAlertFrom(viewController: self,
+                                   withTitle: "SEPTA Beta Testers!",
+                                   message: message,
+                                   completion: nil)
     }
 }

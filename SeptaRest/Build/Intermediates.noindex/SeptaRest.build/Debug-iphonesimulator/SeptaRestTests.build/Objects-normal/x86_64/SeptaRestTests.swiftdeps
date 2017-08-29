@@ -1,0 +1,333 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "SeptaRestTests"
+provides-nominal:
+- "14SeptaRestTestsAAC"
+provides-member:
+- ["14SeptaRestTestsAAC", ""]
+provides-dynamic-lookup:
+- "client"
+- "testAlerts"
+depends-top-level:
+- !private ">"
+- "SEPTAApiClient"
+- "SeptaRestTests"
+- "StringLiteralType"
+- !private "Void"
+- !private "XCTAssertTrue"
+- "XCTestCase"
+- !private "print"
+depends-member:
+- !private ["9SeptaRest6AlertsC", "alerts"]
+- !private ["Sa", "count"]
+- !private ["12ObjectMapper12BaseMappableP", "alerts"]
+- !private ["s23BidirectionalCollectionP", "count"]
+- ["s23BidirectionalCollectionP", "init"]
+- ["s7CVarArgP", "SEPTAApiClient"]
+- !private ["s7CVarArgP", "XCTAssertTrue"]
+- !private ["s7CVarArgP", "client"]
+- !private ["s7CVarArgP", "count"]
+- ["s7CVarArgP", "defaultClient"]
+- !private ["s7CVarArgP", "expectation"]
+- !private ["s7CVarArgP", "fulfill"]
+- !private ["s7CVarArgP", "getAlerts"]
+- ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "print"]
+- !private ["s7CVarArgP", "waitForExpectations"]
+- ["s7CVarArgP", ""]
+- !private ["s10CollectionP", "count"]
+- ["s10CollectionP", "init"]
+- ["s10ComparableP", "init"]
+- ["s28CustomDebugStringConvertibleP", "SEPTAApiClient"]
+- !private ["s28CustomDebugStringConvertibleP", "XCTAssertTrue"]
+- !private ["s28CustomDebugStringConvertibleP", "client"]
+- !private ["s28CustomDebugStringConvertibleP", "count"]
+- ["s28CustomDebugStringConvertibleP", "defaultClient"]
+- !private ["s28CustomDebugStringConvertibleP", "expectation"]
+- !private ["s28CustomDebugStringConvertibleP", "fulfill"]
+- !private ["s28CustomDebugStringConvertibleP", "getAlerts"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "print"]
+- !private ["s28CustomDebugStringConvertibleP", "waitForExpectations"]
+- ["s28CustomDebugStringConvertibleP", ""]
+- ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s17CustomReflectableP", "count"]
+- ["s17CustomReflectableP", "init"]
+- ["s23CustomStringConvertibleP", "SEPTAApiClient"]
+- !private ["s23CustomStringConvertibleP", "XCTAssertTrue"]
+- !private ["s23CustomStringConvertibleP", "catch"]
+- !private ["s23CustomStringConvertibleP", "client"]
+- !private ["s23CustomStringConvertibleP", "count"]
+- ["s23CustomStringConvertibleP", "defaultClient"]
+- !private ["s23CustomStringConvertibleP", "expectation"]
+- !private ["s23CustomStringConvertibleP", "fulfill"]
+- !private ["s23CustomStringConvertibleP", "getAlerts"]
+- ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "print"]
+- !private ["s23CustomStringConvertibleP", "then"]
+- !private ["s23CustomStringConvertibleP", "waitForExpectations"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s9DecodableP", "count"]
+- ["s9DecodableP", "init"]
+- !private ["s9EncodableP", "count"]
+- ["s9EncodableP", "init"]
+- ["s9EquatableP", "SEPTAApiClient"]
+- !private ["s9EquatableP", "XCTAssertTrue"]
+- !private ["s9EquatableP", "client"]
+- ["s9EquatableP", "defaultClient"]
+- !private ["s9EquatableP", "expectation"]
+- !private ["s9EquatableP", "fulfill"]
+- !private ["s9EquatableP", "getAlerts"]
+- ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "print"]
+- !private ["s9EquatableP", "waitForExpectations"]
+- ["s9EquatableP", ""]
+- !private ["s5ErrorP", "localizedDescription"]
+- !private ["s25ExpressibleByArrayLiteralP", "count"]
+- ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- ["s26ExpressibleByStringLiteralP", "init"]
+- ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- ["s8HashableP", "SEPTAApiClient"]
+- !private ["s8HashableP", "XCTAssertTrue"]
+- !private ["s8HashableP", "client"]
+- ["s8HashableP", "defaultClient"]
+- !private ["s8HashableP", "expectation"]
+- !private ["s8HashableP", "fulfill"]
+- !private ["s8HashableP", "getAlerts"]
+- ["s8HashableP", "init"]
+- !private ["s8HashableP", "print"]
+- !private ["s8HashableP", "waitForExpectations"]
+- ["s8HashableP", ""]
+- ["s25LosslessStringConvertibleP", "init"]
+- !private ["12ObjectMapper8MappableP", "alerts"]
+- ["s10MirrorPathP", "init"]
+- !private ["s17MutableCollectionP", "count"]
+- ["So8NSCodingP", "init"]
+- ["So9NSCopyingP", "init"]
+- ["So21NSItemProviderReadingP", "init"]
+- ["So21NSItemProviderWritingP", "init"]
+- ["So16NSMutableCopyingP", "init"]
+- ["So8NSObjectC", "SEPTAApiClient"]
+- !private ["So8NSObjectC", "Void"]
+- !private ["So8NSObjectC", "XCTAssertTrue"]
+- ["So8NSObjectC", "client"]
+- ["So8NSObjectC", "defaultClient"]
+- !private ["So8NSObjectC", "expectation"]
+- !private ["So8NSObjectC", "fulfill"]
+- !private ["So8NSObjectC", "getAlerts"]
+- ["So8NSObjectC", "init"]
+- !private ["So8NSObjectC", "print"]
+- ["So8NSObjectC", "testAlerts"]
+- !private ["So8NSObjectC", "waitForExpectations"]
+- ["So16NSObjectProtocolP", "SEPTAApiClient"]
+- !private ["So16NSObjectProtocolP", "XCTAssertTrue"]
+- !private ["So16NSObjectProtocolP", "client"]
+- ["So16NSObjectProtocolP", "defaultClient"]
+- !private ["So16NSObjectProtocolP", "expectation"]
+- !private ["So16NSObjectProtocolP", "fulfill"]
+- !private ["So16NSObjectProtocolP", "getAlerts"]
+- ["So16NSObjectProtocolP", "init"]
+- !private ["So16NSObjectProtocolP", "print"]
+- !private ["So16NSObjectProtocolP", "waitForExpectations"]
+- ["So16NSObjectProtocolP", ""]
+- ["So14NSSecureCodingP", "init"]
+- ["So8NSStringC", "init"]
+- !private ["10PromiseKit0A0C", "catch"]
+- !private ["10PromiseKit0A0C", "then"]
+- !private ["s22RandomAccessCollectionP", "count"]
+- !private ["s26RangeReplaceableCollectionP", "count"]
+- ["s26RangeReplaceableCollectionP", "init"]
+- !private ["9SeptaRest0B8ResponseC", "alerts"]
+- ["9SeptaRest14SEPTAApiClientC", "defaultClient"]
+- !private ["9SeptaRest14SEPTAApiClientC", "getAlerts"]
+- ["14SeptaRestTestsAAC", "SEPTAApiClient"]
+- !private ["14SeptaRestTestsAAC", "Void"]
+- !private ["14SeptaRestTestsAAC", "XCTAssertTrue"]
+- ["14SeptaRestTestsAAC", "client"]
+- ["14SeptaRestTestsAAC", "deinit"]
+- !private ["14SeptaRestTestsAAC", "expectation"]
+- ["14SeptaRestTestsAAC", "init"]
+- !private ["14SeptaRestTestsAAC", "print"]
+- ["14SeptaRestTestsAAC", "testAlerts"]
+- !private ["14SeptaRestTestsAAC", "waitForExpectations"]
+- !private ["s8SequenceP", "count"]
+- ["s8SequenceP", "init"]
+- !private ["s12StaticStringV", "init"]
+- ["SS", "init"]
+- ["s14StringProtocolP", "init"]
+- ["s16TextOutputStreamP", "init"]
+- ["s20TextOutputStreamableP", "init"]
+- ["9Alamofire14URLConvertibleP", "init"]
+- ["So11XCTActivityP", "SEPTAApiClient"]
+- !private ["So11XCTActivityP", "XCTAssertTrue"]
+- !private ["So11XCTActivityP", "client"]
+- !private ["So11XCTActivityP", "expectation"]
+- !private ["So11XCTActivityP", "init"]
+- !private ["So11XCTActivityP", "print"]
+- !private ["So11XCTActivityP", "waitForExpectations"]
+- ["So11XCTActivityP", ""]
+- ["So17XCTWaiterDelegateP", "SEPTAApiClient"]
+- !private ["So17XCTWaiterDelegateP", "XCTAssertTrue"]
+- !private ["So17XCTWaiterDelegateP", "client"]
+- !private ["So17XCTWaiterDelegateP", "expectation"]
+- !private ["So17XCTWaiterDelegateP", "init"]
+- !private ["So17XCTWaiterDelegateP", "print"]
+- !private ["So17XCTWaiterDelegateP", "waitForExpectations"]
+- ["So17XCTWaiterDelegateP", ""]
+- ["So6XCTestC", "SEPTAApiClient"]
+- !private ["So6XCTestC", "Void"]
+- !private ["So6XCTestC", "XCTAssertTrue"]
+- ["So6XCTestC", "client"]
+- !private ["So6XCTestC", "expectation"]
+- ["So6XCTestC", "init"]
+- !private ["So6XCTestC", "print"]
+- ["So6XCTestC", "testAlerts"]
+- !private ["So6XCTestC", "waitForExpectations"]
+- ["So10XCTestCaseC", "SEPTAApiClient"]
+- !private ["So10XCTestCaseC", "Void"]
+- !private ["So10XCTestCaseC", "XCTAssertTrue"]
+- ["So10XCTestCaseC", "client"]
+- !private ["So10XCTestCaseC", "expectation"]
+- ["So10XCTestCaseC", "init"]
+- !private ["So10XCTestCaseC", "print"]
+- ["So10XCTestCaseC", "testAlerts"]
+- !private ["So10XCTestCaseC", "waitForExpectations"]
+- ["So10XCTestCaseC", ""]
+- !private ["So17XCTestExpectationC", "fulfill"]
+- !private ["s14_ArrayProtocolP", "count"]
+- !private ["s23_BidirectionalIndexableP", "count"]
+- ["s23_BidirectionalIndexableP", "init"]
+- !private ["s24_DestructorSafeContainerP", "count"]
+- ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- ["s33_ExpressibleByStringInterpolationP", "init"]
+- ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s10_IndexableP", "count"]
+- ["s10_IndexableP", "init"]
+- !private ["s14_IndexableBaseP", "count"]
+- ["s14_IndexableBaseP", "init"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "SEPTAApiClient"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "XCTAssertTrue"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "client"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "defaultClient"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "expectation"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "fulfill"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "getAlerts"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "print"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "waitForExpectations"]
+- ["10Foundation27_KeyValueCodingAndObservingP", ""]
+- !private ["s17_MutableIndexableP", "count"]
+- !private ["s21_ObjectiveCBridgeableP", "count"]
+- ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s22_RandomAccessIndexableP", "count"]
+- !private ["s26_RangeReplaceableIndexableP", "count"]
+- ["s26_RangeReplaceableIndexableP", "init"]
+- ["s16_SwiftStringViewP", "init"]
+depends-nominal:
+- !private "9SeptaRest6AlertsC"
+- !private "Sa"
+- !private "12ObjectMapper12BaseMappableP"
+- "s23BidirectionalCollectionP"
+- "s7CVarArgP"
+- "s10CollectionP"
+- "s10ComparableP"
+- "s28CustomDebugStringConvertibleP"
+- "s29CustomPlaygroundQuickLookableP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- "s9DecodableP"
+- "s9EncodableP"
+- "s9EquatableP"
+- !private "s5ErrorP"
+- !private "s25ExpressibleByArrayLiteralP"
+- "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- "s26ExpressibleByStringLiteralP"
+- "s33ExpressibleByUnicodeScalarLiteralP"
+- "s8HashableP"
+- "s25LosslessStringConvertibleP"
+- !private "12ObjectMapper8MappableP"
+- "s10MirrorPathP"
+- !private "s17MutableCollectionP"
+- "So8NSCodingP"
+- "So9NSCopyingP"
+- "So21NSItemProviderReadingP"
+- "So21NSItemProviderWritingP"
+- "So16NSMutableCopyingP"
+- "So8NSObjectC"
+- "So16NSObjectProtocolP"
+- "So14NSSecureCodingP"
+- "So8NSStringC"
+- !private "10PromiseKit0A0C"
+- !private "s22RandomAccessCollectionP"
+- "s26RangeReplaceableCollectionP"
+- !private "9SeptaRest0B8ResponseC"
+- "9SeptaRest14SEPTAApiClientC"
+- "14SeptaRestTestsAAC"
+- "s8SequenceP"
+- !private "s12StaticStringV"
+- "SS"
+- "s14StringProtocolP"
+- "s16TextOutputStreamP"
+- "s20TextOutputStreamableP"
+- "9Alamofire14URLConvertibleP"
+- "So11XCTActivityP"
+- "So17XCTWaiterDelegateP"
+- "So6XCTestC"
+- "So10XCTestCaseC"
+- !private "So17XCTestExpectationC"
+- !private "s14_ArrayProtocolP"
+- "s23_BidirectionalIndexableP"
+- !private "s24_DestructorSafeContainerP"
+- "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- "s34_ExpressibleByBuiltinStringLiteralP"
+- "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- "s33_ExpressibleByStringInterpolationP"
+- "s35_HasCustomAnyHashableRepresentationP"
+- "s10_IndexableP"
+- "s14_IndexableBaseP"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s17_MutableIndexableP"
+- "s21_ObjectiveCBridgeableP"
+- !private "s22_RandomAccessIndexableP"
+- "s26_RangeReplaceableIndexableP"
+- "s16_SwiftStringViewP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.apinotesc"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/Alamofire.framework/Modules/Alamofire.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/ObjectMapper.framework/Modules/ObjectMapper.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/PromiseKit.framework/Modules/PromiseKit.swiftmodule/x86_64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/Build/Products/Debug-iphonesimulator/SeptaRest.framework/Modules/SeptaRest.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreImage.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/QuartzCore.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Metal.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/XCTest.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/PromiseKit.framework/Headers/fwd.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/Alamofire.framework/Headers/Alamofire.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/PromiseKit.framework/Headers/AnyPromise.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/ObjectMapper.framework/Headers/ObjectMapper.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/Alamofire.framework/Headers/Alamofire-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/ObjectMapper.framework/Headers/ObjectMapper-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/PromiseKit.framework/Headers/PromiseKit-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/Build/Products/Debug-iphonesimulator/SeptaRest.framework/Headers/SeptaRest-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/PromiseKit.framework/Headers/PromiseKit.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/SeptaRest/SeptaRest.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/Build/Intermediates.noindex/SeptaRest.build/Debug-iphonesimulator/SeptaRest.build/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/Alamofire.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/ObjectMapper.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaRest/../Carthage/Build/iOS/PromiseKit.framework/Modules/module.modulemap"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework/Modules/module.modulemap"
+interface-hash: "29f2cec68053f53075bcbce0ad5fee0b"

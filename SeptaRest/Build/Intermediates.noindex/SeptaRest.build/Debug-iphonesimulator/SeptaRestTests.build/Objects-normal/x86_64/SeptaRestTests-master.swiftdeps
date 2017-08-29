@@ -1,0 +1,5 @@
+version: "Apple Swift version 4.0 (swiftlang-900.0.63.10 clang-900.0.36)"
+options: "3fdb2514abdc4153a6b8f3dfbd93b6a7"
+build_time: [1504031409, 141341000]
+inputs:
+  "/Users/mbroski/Code/Septa/Septa2/SeptaRest/SeptaRestTests/SeptaRestTests.swift": [1504031371, 0]

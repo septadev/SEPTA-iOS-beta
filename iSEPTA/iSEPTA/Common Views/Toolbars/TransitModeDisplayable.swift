@@ -9,6 +9,10 @@
 import Foundation
 import SeptaSchedule
 
+func == (lhs: TransitMode, rhs: TransitMode) -> Bool {
+    return lhs.rawValue == rhs.rawValue
+}
+
 extension TransitMode {
 
     func imageName() -> String {
@@ -134,5 +138,25 @@ extension TransitMode {
 
     public static func displayOrder() -> [TransitMode] {
         return [.bus, .rail, .subway, .nhsl, .trolley]
+    }
+
+    public static func convertFromTransitMode(_ type: String) -> TransitMode? {
+        let transitMode: TransitMode? = {
+            switch type {
+            case "RAIL":
+                return .rail
+            case "BUS":
+                return .bus
+            case "TROLLEY":
+                return .trolley
+            case "SUBWAY":
+                return .subway
+            case "NHSL":
+                return .nhsl
+
+            default: return nil
+            }
+        }()
+        return transitMode
     }
 }

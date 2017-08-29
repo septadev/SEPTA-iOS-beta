@@ -12,12 +12,6 @@
     {
       "idiom" : "universal",
       "scale" : "3x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "subwayCell.png",
-      "unassigned" : true,
-      "scale" : "1x"
     }
   ],
   "info" : {

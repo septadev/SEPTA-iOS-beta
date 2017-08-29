@@ -3,14 +3,16 @@ use Data::Dumper;
 
 my $struct = q |
 
-	struct ScheduleStopEdit {
-    let stopToEdit: StopToSelect
-    let searchMode: StopEditSearchMode
-    let selectedAddress: DisplayAddress?
+struct AppState: StateType {
+    let navigationState: NavigationState
+    let scheduleState: ScheduleState
+    let preferenceState: UserPreferenceState
+    let alertState: AlertState
 
-    init(stopToEdit: StopToSelect = .starts, searchMode: StopEditSearchMode = .directLookup) {
-        self.stopToEdit = stopToEdit
-        self.searchMode = searchMode
+    init(navigationState: NavigationState, scheduleState: ScheduleState, preferenceState: UserPreferenceState) {
+        self.navigationState = navigationState
+        self.scheduleState = scheduleState
+        self.preferenceState = preferenceState
     }
 }
 

@@ -294,27 +294,27 @@ TableViewWrapper</string>
                                             <rect key="frame" x="0.0" y="74" width="375" height="573"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <prototypes>
-                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="routeCell" rowHeight="147" id="mCg-hU-RGp" customClass="RouteTableViewCell" customModule="Septa" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="28" width="375" height="147"/>
+                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="routeCell" rowHeight="80" id="mCg-hU-RGp" customClass="RouteTableViewCell" customModule="Septa" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mCg-hU-RGp" id="EF9-Ow-ydw">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="146.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="44 Route" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om0-j5-VdR" userLabel="RouteShortName">
-                                                                <rect key="frame" x="65" y="14" width="295" height="24"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="44 Route" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om0-j5-VdR" userLabel="RouteShortName">
+                                                                <rect key="frame" x="65" y="17" width="295" height="24"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="To Market and 15th St" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ula-RY-ACf" userLabel="RouteLongName">
-                                                                <rect key="frame" x="65" y="72.5" width="295" height="18"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Market and 15th St" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ula-RY-ACf" userLabel="RouteLongName">
+                                                                <rect key="frame" x="65" y="41" width="295" height="17.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <color key="textColor" red="0.5490196078431373" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qn5-u5-hrG">
-                                                                <rect key="frame" x="15" y="58.5" width="30" height="30"/>
+                                                                <rect key="frame" x="15" y="25" width="30" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="OZu-d9-YKz"/>
                                                                     <constraint firstAttribute="width" constant="30" id="bwY-Cl-ijp"/>
@@ -990,14 +990,6 @@ StartingLabelRight</string>
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2153" y="37"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="bq6-ri-MUt">
-            <objects>
-                <viewController id="8jP-8J-0DC" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kJm-HR-6qH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3167" y="159"/>
         </scene>
         <!--Search Stops Modal Header View Controller-->
         <scene sceneID="3p5-lM-9EN">

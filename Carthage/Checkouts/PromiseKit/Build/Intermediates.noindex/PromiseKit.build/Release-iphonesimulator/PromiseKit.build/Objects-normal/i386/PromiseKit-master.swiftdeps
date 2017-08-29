@@ -1,0 +1,17 @@
+version: "Apple Swift version 4.0 (swiftlang-900.0.63.10 clang-900.0.36)"
+options: "8159a40cce072f67323a2a10e53844e2"
+build_time: [1504026016, 34113000]
+inputs:
+  "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/PromiseKit/Sources/when.swift": [9223372036, 854775807]
+  "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/PromiseKit/Sources/join.swift": [9223372036, 854775807]
+  "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/PromiseKit/Sources/Zalgo.swift": [9223372036, 854775807]
+  "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/PromiseKit/Sources/wrap.swift": [9223372036, 854775807]
+  "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/PromiseKit/Sources/after.swift": [9223372036, 854775807]
+  "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/PromiseKit/Sources/Promise+AnyPromise.swift": [9223372036, 854775807]
+  "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/PromiseKit/Sources/Promise+Properties.swift": [9223372036, 854775807]
+  "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/PromiseKit/Sources/race.swift": [9223372036, 854775807]
+  "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/PromiseKit/Sources/State.swift": [9223372036, 854775807]
+  "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/PromiseKit/Sources/DispatchQueue+Promise.swift": [9223372036, 854775807]
+  "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/PromiseKit/Sources/Promise.swift": [9223372036, 854775807]
+  "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/PromiseKit/Sources/AnyPromise.swift": [9223372036, 854775807]
+  "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/PromiseKit/Sources/Error.swift": [9223372036, 854775807]

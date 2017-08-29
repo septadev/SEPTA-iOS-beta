@@ -12,11 +12,10 @@ class AppStateReducer {
         let appState = AppState(
             navigationState: NavigationReducer.main(action: action, state: state?.navigationState),
             scheduleState: ScheduleReducer.main(action: action, state: state?.scheduleState),
-            preferenceState: UserPreferencesReducer.main(action: action, state: state?.preferenceState)
+            preferenceState: UserPreferencesReducer.main(action: action, state: state?.preferenceState),
+            alertState: AlertReducer.main(action: action, state: state?.alertState)
         )
 
-        //        StateLogger.sharedInstance.logAction(stateBefore: state, action: action, stateAfter: appState,
-        //                                             consoleLogObjects: [action, appState.scheduleState.scheduleRequest])
         return appState
     }
 }
