@@ -15,7 +15,7 @@ class ScheduleDataProvider: StoreSubscriber {
     func subscribe() {
 
         store.subscribe(self) {
-            $0.select { $0.scheduleState.scheduleRequest } // .skipRepeats { $0 != $1 }
+            $0.select { $0.scheduleState.scheduleRequest }.skipRepeats { $0 == $1 }
         }
     }
 
@@ -160,7 +160,7 @@ class ScheduleDataProvider: StoreSubscriber {
     // MARK: - Retrieve Data
 
     func retrieveAvailableRoutes(scheduleRequest: ScheduleRequest) {
-
+        clearRoutes()
         RoutesCommand.sharedInstance.routes(forTransitMode: scheduleRequest.transitMode!) { routes, error in
             let routesLoadedAction = RoutesLoaded(routes: routes, error: error?.localizedDescription)
             store.dispatch(routesLoadedAction)
@@ -168,7 +168,7 @@ class ScheduleDataProvider: StoreSubscriber {
     }
 
     func retrieveStartingStopsForRoute(scheduleRequest: ScheduleRequest) {
-
+        clearStartingStops()
         TripStartCommand.sharedInstance.stops(forTransitMode: scheduleRequest.transitMode!, forRoute: scheduleRequest.selectedRoute!) { stops, error in
             let action = TripStartsLoaded(availableStarts: stops, error: error?.localizedDescription)
             store.dispatch(action)
@@ -176,7 +176,7 @@ class ScheduleDataProvider: StoreSubscriber {
     }
 
     func retrieveEndingStopsForRoute(scheduleRequest: ScheduleRequest) {
-
+        clearEndingStops()
         TripEndCommand.sharedInstance.stops(forTransitMode: scheduleRequest.transitMode!, forRoute: scheduleRequest.selectedRoute!, tripStart: scheduleRequest.selectedStart!) { stops, error in
             let action = TripEndsLoaded(availableStops: stops, error: error?.localizedDescription)
             store.dispatch(action)
