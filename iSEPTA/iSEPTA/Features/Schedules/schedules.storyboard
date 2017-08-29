@@ -302,15 +302,15 @@ TableViewWrapper</string>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="44 Route" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om0-j5-VdR" userLabel="RouteShortName">
-                                                                <rect key="frame" x="75" y="14" width="285" height="24"/>
+                                                                <rect key="frame" x="65" y="14" width="295" height="24"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="To Market and 15th St" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ula-RY-ACf" userLabel="RouteLongName">
-                                                                <rect key="frame" x="75" y="72.5" width="285" height="18"/>
+                                                                <rect key="frame" x="65" y="72.5" width="295" height="18"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" red="0.5490196078431373" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qn5-u5-hrG">
@@ -322,15 +322,15 @@ TableViewWrapper</string>
                                                             </imageView>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstAttribute="bottom" secondItem="ula-RY-ACf" secondAttribute="bottom" constant="15" id="2cA-tz-tlD" userLabel="RouteLongNameBottom"/>
+                                                            <constraint firstAttribute="bottom" secondItem="ula-RY-ACf" secondAttribute="bottom" constant="21" id="2cA-tz-tlD" userLabel="RouteLongNameBottom"/>
                                                             <constraint firstItem="Qn5-u5-hrG" firstAttribute="centerY" secondItem="EF9-Ow-ydw" secondAttribute="centerY" id="C5F-Kc-pW4" userLabel="ImageCenterY"/>
-                                                            <constraint firstItem="ula-RY-ACf" firstAttribute="top" secondItem="Om0-j5-VdR" secondAttribute="bottom" constant="3" id="Fgx-ht-nAr" userLabel="RouteLongNameTop"/>
-                                                            <constraint firstItem="Om0-j5-VdR" firstAttribute="leading" secondItem="Qn5-u5-hrG" secondAttribute="trailing" constant="30" id="I6I-je-wS3" userLabel="RouteShortNameLeft"/>
+                                                            <constraint firstItem="ula-RY-ACf" firstAttribute="top" secondItem="Om0-j5-VdR" secondAttribute="bottom" id="Fgx-ht-nAr" userLabel="RouteLongNameTop"/>
+                                                            <constraint firstItem="Om0-j5-VdR" firstAttribute="leading" secondItem="Qn5-u5-hrG" secondAttribute="trailing" constant="20" id="I6I-je-wS3" userLabel="RouteShortNameLeft"/>
                                                             <constraint firstItem="Qn5-u5-hrG" firstAttribute="leading" secondItem="EF9-Ow-ydw" secondAttribute="leading" constant="15" id="Pji-fd-Ptm" userLabel="ImageLeft"/>
                                                             <constraint firstAttribute="trailing" secondItem="Om0-j5-VdR" secondAttribute="trailing" constant="15" id="W3T-R0-430" userLabel="RouteShortNameRight"/>
-                                                            <constraint firstItem="ula-RY-ACf" firstAttribute="leading" secondItem="Qn5-u5-hrG" secondAttribute="trailing" constant="30" id="eyb-6k-TEw" userLabel="RouteLongNameLeft"/>
+                                                            <constraint firstItem="ula-RY-ACf" firstAttribute="leading" secondItem="Qn5-u5-hrG" secondAttribute="trailing" constant="20" id="eyb-6k-TEw" userLabel="RouteLongNameLeft"/>
                                                             <constraint firstAttribute="trailing" secondItem="ula-RY-ACf" secondAttribute="trailing" constant="15" id="hYX-d4-tc4" userLabel="RouteLongNameRight"/>
-                                                            <constraint firstItem="Om0-j5-VdR" firstAttribute="top" secondItem="EF9-Ow-ydw" secondAttribute="top" constant="14" id="xKV-NG-Kqx" userLabel="RouteShortNameTop"/>
+                                                            <constraint firstItem="Om0-j5-VdR" firstAttribute="top" secondItem="EF9-Ow-ydw" secondAttribute="top" constant="17" id="xKV-NG-Kqx" userLabel="RouteShortNameTop"/>
                                                         </constraints>
                                                     </tableViewCellContentView>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
