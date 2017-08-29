@@ -4,7 +4,13 @@ import UIKit
 import SeptaSchedule
 import ReSwift
 
-class SelectRouteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController {
+class SelectRouteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SearchModalHeaderDelegate, UpdateableFromViewModel, IdentifiableController {
+    func animatedLayoutNeeded(block _: @escaping (() -> Void), completion _: @escaping (() -> Void)) {
+    }
+
+    func layoutNeeded() {
+    }
+
     func updateActivityIndicator(animating _: Bool) {
     }
 
@@ -18,7 +24,7 @@ class SelectRouteViewController: UIViewController, UITableViewDelegate, UITableV
     let routeCellId = "routeCell"
     @IBOutlet weak var searchTextBox: UITextField!
 
-    @IBAction func cancelButtonPressed(_: Any) {
+    func dismissModal() {
         let dismissAction = DismissModal(navigationController: .schedules, description: "Route should be dismissed")
         store.dispatch(dismissAction)
     }
@@ -49,7 +55,7 @@ class SelectRouteViewController: UIViewController, UITableViewDelegate, UITableV
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == "embedHeader" {
             if let headerViewController = segue.destination as? SearchRoutesModalHeaderViewController {
-
+                headerViewController.delegate = self
                 headerViewController.textFieldDelegate = viewModel
             }
         }
