@@ -115,11 +115,18 @@ extension TransitMode {
         }
     }
 
-    public func cellImage() -> UIImage? {
+    public func cellImage(routeId: String) -> UIImage? {
         switch self {
         case .bus: return UIImage(named: "busCell")
         case .rail: return UIImage(named: "railCell")
-        case .subway: return UIImage(named: "subwayCell")
+        case .subway:
+            switch routeId {
+            case "MFO", "BSO": return UIImage(named: "busCell")
+            case "MFL": return UIImage(named: "MFLCell")
+            case "BSL": return UIImage(named: "BSLCell")
+            default: return nil
+            }
+
         case .trolley: return UIImage(named: "trolleyCell")
         case .nhsl: return UIImage(named: "nhslCell")
         }

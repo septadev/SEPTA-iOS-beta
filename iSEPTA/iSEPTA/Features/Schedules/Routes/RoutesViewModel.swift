@@ -29,6 +29,8 @@ struct FilterableRoute {
 class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
     typealias StoreSubscriberStateType = [Route]?
 
+    let transitMode = store.state.scheduleState.scheduleRequest?.transitMode!
+
     var allRoutes: [Route]? {
         didSet {
             guard let allRoutes = allRoutes else { return }
@@ -77,6 +79,9 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
         let route = filteredRoutes[row].route
         displayable.setShortName(text: route.routeId)
         displayable.setLongName(text: route.routeShortName)
+        if let transitMode = transitMode, let image = transitMode.cellImage(routeId: route.routeId) {
+            displayable.setIcon(image: image)
+        }
     }
 
     func canCellBeSelected(atRow _: Int) -> Bool {
