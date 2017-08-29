@@ -101,6 +101,13 @@ extension TransitMode {
         }
     }
 
+    public func routePlaceholderText() -> String {
+        switch self {
+        case .rail: return "Type the line name or select"
+        default: return "Type the bus route name or select"
+        }
+    }
+
     public func addressSearchPrompt() -> String {
         switch self {
         case .rail: return "Select Nearby Station"

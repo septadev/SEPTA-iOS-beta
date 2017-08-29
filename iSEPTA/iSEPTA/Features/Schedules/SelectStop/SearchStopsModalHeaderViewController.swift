@@ -11,7 +11,7 @@ import UIKit
 import SeptaSchedule
 import ReSwift
 
-class SearchModalHeaderViewController: UIViewController, StoreSubscriber, UIGestureRecognizerDelegate {
+class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, UIGestureRecognizerDelegate {
     typealias StoreSubscriberStateType = ScheduleStopEdit?
     let transitMode: TransitMode! = store.state.scheduleState.scheduleRequest?.transitMode
 

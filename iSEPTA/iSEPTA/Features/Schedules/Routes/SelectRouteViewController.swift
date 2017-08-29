@@ -25,9 +25,6 @@ class SelectRouteViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let selectedTransitMode = store.state.scheduleState.scheduleRequest?.transitMode {
-            titleLabel.text = selectedTransitMode.routeTitle()
-        }
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -47,6 +44,15 @@ class SelectRouteViewController: UIViewController, UITableViewDelegate, UITableV
 
     func viewModelUpdated() {
         tableView.reloadData()
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
+        if segue.identifier == "embedHeader" {
+            if let headerViewController = segue.destination as? SearchRoutesModalHeaderViewController {
+
+                headerViewController.textFieldDelegate = viewModel
+            }
+        }
     }
 
     deinit {

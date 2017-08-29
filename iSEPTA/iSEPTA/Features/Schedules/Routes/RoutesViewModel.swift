@@ -53,7 +53,7 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
         }
     }
 
-    @IBOutlet weak var delegate: UpdateableFromViewModel?
+    @IBOutlet weak var selectRoutesViewController: UpdateableFromViewModel?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -114,7 +114,7 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
         DispatchQueue.main.async { [weak self] in
             guard let strongSelf = self else { return }
 
-            strongSelf.delegate?.viewModelUpdated()
+            strongSelf.selectRoutesViewController?.viewModelUpdated()
         }
         return true
     }

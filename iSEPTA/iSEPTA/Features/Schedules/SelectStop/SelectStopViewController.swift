@@ -39,11 +39,11 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     @IBOutlet var selectAddressViewModel: SelectAddressViewModel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    var headerViewController: SearchModalHeaderViewController?
+    var headerViewController: SearchStopsModalHeaderViewController?
 
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == "embedHeader" {
-            if let headerViewController = segue.destination as? SearchModalHeaderViewController {
+            if let headerViewController = segue.destination as? SearchStopsModalHeaderViewController {
                 self.headerViewController = headerViewController
                 headerViewController.delegate = self
                 headerViewController.textFieldDelegate = stopsViewModel
