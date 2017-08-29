@@ -115,6 +115,16 @@ extension TransitMode {
         }
     }
 
+    public func cellImage() -> UIImage? {
+        switch self {
+        case .bus: return UIImage(named: "busCell")
+        case .rail: return UIImage(named: "railCell")
+        case .subway: return UIImage(named: "subwayCell")
+        case .trolley: return UIImage(named: "trolleyCell")
+        case .nhsl: return UIImage(named: "nhslCell")
+        }
+    }
+
     public static func displayOrder() -> [TransitMode] {
         return [.bus, .rail, .subway, .nhsl, .trolley]
     }

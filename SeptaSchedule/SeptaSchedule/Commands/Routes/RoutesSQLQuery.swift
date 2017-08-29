@@ -21,7 +21,7 @@ class RoutesSQLQuery: SQLQueryProtocol {
         case .trolley:
             return [[":route_id", " R.route_id != 'NHSL' "], [":route_type", "  R.route_type = 0 "]]
         case .subway:
-            return [[":route_id", " R.route_id in ( 'BSO', 'BSL', 'MFL' ) "], [":route_type", "1 = 1 "]]
+            return [[":route_id", " R.route_id in ( 'BSO', 'BSL', 'MFL' , 'MFO' ) "], [":route_type", "1 = 1 "]]
         case .rail:
             return [[String]]()
         }

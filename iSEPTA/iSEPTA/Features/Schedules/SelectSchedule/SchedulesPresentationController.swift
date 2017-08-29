@@ -77,7 +77,6 @@ class SchedulesPresentationController: UIPresentationController {
 
     override var frameOfPresentedViewInContainerView: CGRect {
 
-        // 1
         var frame: CGRect = .zero
         frame.origin = CGPoint(x: 0, y: topMargin)
         frame.size = size(forChildContentContainer: presentedViewController,
