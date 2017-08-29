@@ -61,6 +61,11 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber, Id
         store.subscribe(self) {
             $0.select {
                 $0.navigationState.appStackState
+            }.skipRepeats {
+                if let lhsState = $0, let rhsState = $1 {
+                    return lhsState == rhsState
+                }
+                return false
             }
         }
     }
