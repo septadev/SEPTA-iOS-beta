@@ -8,6 +8,7 @@
 
 import Foundation
 import SeptaSchedule
+import UIKit
 
 struct SeptaAlert {
     let advisory: Bool
@@ -20,6 +21,23 @@ struct SeptaAlert {
         self.alert = alert
         self.detour = detour
         self.weather = weather
+    }
+
+    func imagesForAlert() -> [UIImage] {
+        var imageArray = [UIImage?]()
+        if advisory {
+            imageArray.append(UIImage(named: "advisoryAlert"))
+        }
+        if alert {
+            imageArray.append(UIImage(named: "alertAlert"))
+        }
+        if detour {
+            imageArray.append(UIImage(named: "detourAlert"))
+        }
+        if weather {
+            imageArray.append(UIImage(named: "weatherAlert"))
+        }
+        return imageArray.flatMap { $0 }
     }
 }
 

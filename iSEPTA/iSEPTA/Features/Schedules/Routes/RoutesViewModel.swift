@@ -30,6 +30,7 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
     typealias StoreSubscriberStateType = [Route]?
 
     let transitMode = store.state.scheduleState.scheduleRequest?.transitMode!
+    let alerts = store.state.alertState.alertDict
 
     var allRoutes: [Route]? {
         didSet {
@@ -66,6 +67,12 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
         store.subscribe(self) {
             $0.select {
                 $0.scheduleState.scheduleData?.availableRoutes
+            }.skipRepeats {
+                if let lhsRoutes = $0, let rhsRoutes = $1 {
+                    return lhsRoutes == rhsRoutes
+                } else {
+                    return false
+                }
             }
         }
     }
@@ -81,6 +88,8 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
         displayable.setLongName(text: route.routeShortName)
         if let transitMode = transitMode, let image = transitMode.cellImage(routeId: route.routeId) {
             displayable.setIcon(image: image)
+            let alert = alerts[transitMode]?[route.routeId]
+            displayable.addAlert(alert)
         }
     }
 

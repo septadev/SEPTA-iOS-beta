@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Flo-rT-aez">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Flo-rT-aez">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -301,8 +301,8 @@ TableViewWrapper</string>
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="44 Route" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om0-j5-VdR" userLabel="RouteShortName">
-                                                                <rect key="frame" x="65" y="17" width="295" height="24"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="44 Route" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om0-j5-VdR" userLabel="RouteShortName">
+                                                                <rect key="frame" x="65" y="17" width="261" height="24"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -313,7 +313,14 @@ TableViewWrapper</string>
                                                                 <color key="textColor" red="0.5490196078431373" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qn5-u5-hrG">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="tzT-6t-VNZ">
+                                                                <rect key="frame" x="341" y="17" width="20" height="20"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="20" placeholder="YES" id="TNr-57-kYR"/>
+                                                                    <constraint firstAttribute="height" constant="20" placeholder="YES" id="cal-WS-enN"/>
+                                                                </constraints>
+                                                            </stackView>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Qn5-u5-hrG">
                                                                 <rect key="frame" x="15" y="25" width="30" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="OZu-d9-YKz"/>
@@ -322,14 +329,16 @@ TableViewWrapper</string>
                                                             </imageView>
                                                         </subviews>
                                                         <constraints>
+                                                            <constraint firstItem="tzT-6t-VNZ" firstAttribute="leading" secondItem="Om0-j5-VdR" secondAttribute="trailing" constant="15" id="1qf-gz-pwT" userLabel="RouteShortNameRight"/>
                                                             <constraint firstAttribute="bottom" secondItem="ula-RY-ACf" secondAttribute="bottom" constant="21" id="2cA-tz-tlD" userLabel="RouteLongNameBottom"/>
                                                             <constraint firstItem="Qn5-u5-hrG" firstAttribute="centerY" secondItem="EF9-Ow-ydw" secondAttribute="centerY" id="C5F-Kc-pW4" userLabel="ImageCenterY"/>
                                                             <constraint firstItem="ula-RY-ACf" firstAttribute="top" secondItem="Om0-j5-VdR" secondAttribute="bottom" id="Fgx-ht-nAr" userLabel="RouteLongNameTop"/>
                                                             <constraint firstItem="Om0-j5-VdR" firstAttribute="leading" secondItem="Qn5-u5-hrG" secondAttribute="trailing" constant="20" id="I6I-je-wS3" userLabel="RouteShortNameLeft"/>
                                                             <constraint firstItem="Qn5-u5-hrG" firstAttribute="leading" secondItem="EF9-Ow-ydw" secondAttribute="leading" constant="15" id="Pji-fd-Ptm" userLabel="ImageLeft"/>
-                                                            <constraint firstAttribute="trailing" secondItem="Om0-j5-VdR" secondAttribute="trailing" constant="15" id="W3T-R0-430" userLabel="RouteShortNameRight"/>
                                                             <constraint firstItem="ula-RY-ACf" firstAttribute="leading" secondItem="Qn5-u5-hrG" secondAttribute="trailing" constant="20" id="eyb-6k-TEw" userLabel="RouteLongNameLeft"/>
+                                                            <constraint firstItem="tzT-6t-VNZ" firstAttribute="top" secondItem="Om0-j5-VdR" secondAttribute="top" id="fhp-dr-oDE" userLabel="StackViewTop"/>
                                                             <constraint firstAttribute="trailing" secondItem="ula-RY-ACf" secondAttribute="trailing" constant="15" id="hYX-d4-tc4" userLabel="RouteLongNameRight"/>
+                                                            <constraint firstAttribute="trailing" secondItem="tzT-6t-VNZ" secondAttribute="trailing" constant="14" id="lQE-ry-U6U" userLabel="StackViewRight"/>
                                                             <constraint firstItem="Om0-j5-VdR" firstAttribute="top" secondItem="EF9-Ow-ydw" secondAttribute="top" constant="17" id="xKV-NG-Kqx" userLabel="RouteShortNameTop"/>
                                                         </constraints>
                                                     </tableViewCellContentView>
@@ -338,6 +347,7 @@ TableViewWrapper</string>
                                                         <outlet property="iconImageView" destination="Qn5-u5-hrG" id="edK-M7-u5s"/>
                                                         <outlet property="routeLongNameLabel" destination="ula-RY-ACf" id="LAQ-kF-Qpe"/>
                                                         <outlet property="routeShortNameLabel" destination="Om0-j5-VdR" id="NeY-bt-zAo"/>
+                                                        <outlet property="stackView" destination="tzT-6t-VNZ" id="vJ9-Jo-Ekb"/>
                                                     </connections>
                                                 </tableViewCell>
                                             </prototypes>

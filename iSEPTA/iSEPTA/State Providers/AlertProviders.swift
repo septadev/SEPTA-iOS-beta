@@ -73,7 +73,7 @@ class AlertProvider {
         guard
             let transitModeString = alert.mode,
             let transitMode = TransitMode.convertFromTransitMode(transitModeString),
-            let routeId = alert.route_id,
+            let routeId = alert.route_name,
             let advisory = alert.advisory,
             let weather = alert.snow,
             let detour = alert.detour,

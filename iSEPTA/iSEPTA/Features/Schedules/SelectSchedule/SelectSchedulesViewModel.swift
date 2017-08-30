@@ -83,7 +83,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
     }
 
     fileprivate func configureSelectRouteDisplayModel() -> RowDisplayModel {
-        var text = transitMode().selector()
+        var text = transitMode().selectRoutePlaceholderText()
         let isSelectable = true
         if let routeName = scheduleRequest?.selectedRoute?.routeShortName {
             text = routeName

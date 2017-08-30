@@ -77,10 +77,10 @@ extension TransitMode {
         }
     }
 
-    public func selector() -> String {
+    public func selectRoutePlaceholderText() -> String {
         switch self {
         case .rail: return "Select Line"
-        default: return "Select Stop"
+        default: return "Select Route"
         }
     }
 
