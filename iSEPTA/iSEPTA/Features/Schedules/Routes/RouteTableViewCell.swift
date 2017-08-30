@@ -11,7 +11,12 @@ protocol RouteCellDisplayable {
 
 class RouteTableViewCell: UITableViewCell, RouteCellDisplayable {
 
-    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var stackView: UIStackView! {
+        didSet {
+            stackView.isExclusiveTouch = true
+        }
+    }
+
     @IBOutlet private weak var routeShortNameLabel: UILabel!
     @IBOutlet private weak var routeLongNameLabel: UILabel!
 
@@ -38,8 +43,23 @@ class RouteTableViewCell: UITableViewCell, RouteCellDisplayable {
                 UIImageView(image: $0)
             }
             for imageView in imageViews {
+                imageView.isUserInteractionEnabled = true
                 stackView.addArrangedSubview(imageView)
             }
         }
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        let gr = UITapGestureRecognizer(target: self, action: #selector(gestureReognizerTapped(gr:)))
+        stackView.addGestureRecognizer(gr)
+    }
+
+    @objc func gestureReognizerTapped(gr: UITapGestureRecognizer) {
+        gr.cancelsTouchesInView = true
+        let dismissModalAction = DismissModal(navigationController: .schedules, description: "Dismissing the modal to switch tabs")
+        store.dispatch(dismissModalAction)
+        let switchTabsAction = SwitchTabs(tabBarItemIndex: .alerts, description: "User tapped on alert")
+        store.dispatch(switchTabsAction)
     }
 }

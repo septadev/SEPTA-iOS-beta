@@ -15,7 +15,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         store.subscribe(self) {
             $0.select {
                 $0.navigationState.selectedTab
-                }
+            }
         }
     }
 

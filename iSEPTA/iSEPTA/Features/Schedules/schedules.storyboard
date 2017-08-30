@@ -313,11 +313,13 @@ TableViewWrapper</string>
                                                                 <color key="textColor" red="0.5490196078431373" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="tzT-6t-VNZ">
-                                                                <rect key="frame" x="341" y="17" width="20" height="20"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="tzT-6t-VNZ">
+                                                                <rect key="frame" x="341" y="17" width="20" height="22"/>
+                                                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <gestureRecognizers/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="20" placeholder="YES" id="TNr-57-kYR"/>
-                                                                    <constraint firstAttribute="height" constant="20" placeholder="YES" id="cal-WS-enN"/>
+                                                                    <constraint firstAttribute="height" constant="22" placeholder="YES" id="cal-WS-enN"/>
                                                                 </constraints>
                                                             </stackView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Qn5-u5-hrG">
