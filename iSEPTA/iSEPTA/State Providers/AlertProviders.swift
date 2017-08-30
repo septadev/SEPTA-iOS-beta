@@ -16,8 +16,9 @@ class AlertProvider {
     let calendar = Calendar.current
     var timer: Timer?
     let client = SEPTAApiClient.defaultClient(url: "https://vnjb5kvq2b.execute-api.us-east-1.amazonaws.com/prod", apiKey: "7Nx754dd9G5YkpYoRLbi4aoNW9LtWllt1Jcbw9v8")
-    init() {
-        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(oneMinuteTimerFired(timer:)), userInfo: nil, repeats: true)
+    private init() {
+        timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(oneMinuteTimerFired(timer:)), userInfo: nil, repeats: true)
+        updateAlertsIfNeeded()
     }
 
     @objc func oneMinuteTimerFired(timer _: Timer) {
@@ -32,32 +33,40 @@ class AlertProvider {
     }
 
     func updateAlertsIfNeeded() {
-        var tempResult = [QuickMap]()
+        var quickMap = [QuickMap]()
         if shouldAttemptToUpdateAlerts() {
             client.getAlerts(route: "").then { alerts -> Void in
                 if let alerts = alerts?.alerts {
                     for rawAlert in alerts {
                         if let mappingResult = self.mapRestAlert(alert: rawAlert) {
-                            tempResult.append(mappingResult)
+                            quickMap.append(mappingResult)
                         }
                     }
-                    let busAlerts = tempResult.filter { $0.transitMode == .bus }
-                    let railAlerts = tempResult.filter { $0.transitMode == .rail }
-                    let subwayAlerts = tempResult.filter { $0.transitMode == .subway }
-                    let trolleyAlerts = tempResult.filter { $0.transitMode == .trolley }
-                    let nhslAlerts = tempResult.filter { $0.transitMode == .nhsl }
+                    var alertsByTransitModeThenRoute = AlertsByTransitModeThenRoute()
+                    alertsByTransitModeThenRoute[.bus] = self.mapToTransitMode(.bus, quickMap: quickMap)
+                    alertsByTransitModeThenRoute[.rail] = self.mapToTransitMode(.rail, quickMap: quickMap)
+                    alertsByTransitModeThenRoute[.subway] = self.mapToTransitMode(.subway, quickMap: quickMap)
+                    alertsByTransitModeThenRoute[.trolley] = self.mapToTransitMode(.trolley, quickMap: quickMap)
+                    alertsByTransitModeThenRoute[.nhsl] = self.mapToTransitMode(.nhsl, quickMap: quickMap)
 
-                    let busDictionary: [String: SeptaAlert] = busAlerts.reduce([String: SeptaAlert]()) {
-                        result, quickmap in
-                        var result = result
-                        result[quickmap.routeId] = quickmap.septaAlert
-                        return result
-                    }
+                    let action = NewAlertsRetrieved(alertsByTransitModeThenRoute: alertsByTransitModeThenRoute)
+                    store.dispatch(action)
                 }
             }.catch { err in
                 print(err)
             }
         }
+    }
+
+    func mapToTransitMode(_ transitMode: TransitMode, quickMap: [QuickMap]) -> [String: SeptaAlert] {
+        let filteredAlerts = quickMap.filter { $0.transitMode == transitMode }
+        let result: [String: SeptaAlert] = filteredAlerts.reduce([String: SeptaAlert]()) {
+            result, quickmap in
+            var result = result
+            result[quickmap.routeId] = quickmap.septaAlert
+            return result
+        }
+        return result
     }
 
     func mapRestAlert(alert: Alert) -> QuickMap? {

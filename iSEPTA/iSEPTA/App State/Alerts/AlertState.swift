@@ -9,7 +9,7 @@
 import Foundation
 import SeptaSchedule
 
-typealias AlertsByTransitModeThenRoute = [TransitMode: [String: SeptaAlert]]?
+typealias AlertsByTransitModeThenRoute = [TransitMode: [String: SeptaAlert]]
 
 struct AlertState {
     // transitMode/RouteId/SeptaAlert
