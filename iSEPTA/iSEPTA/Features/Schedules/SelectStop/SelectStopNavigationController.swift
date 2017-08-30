@@ -16,7 +16,7 @@ class SelectStopNavigationController: UINavigationController, IdentifiableContro
     static var navController: NavigationController = NavigationController.selectStop
     static var viewController: ViewController = .selectStopNavigationController
 
-    let myStoryboard = UIStoryboard(name: NavigationController.schedules.rawValue, bundle: Bundle.main)
+    let myStoryboard = UIStoryboard(name: NavigationController.schedules.storyboard(), bundle: Bundle.main)
     var lastStackState = NavigationStackState()
     var currentNavigationStackState = NavigationStackState()
 

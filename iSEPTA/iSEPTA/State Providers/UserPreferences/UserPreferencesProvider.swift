@@ -73,7 +73,7 @@ class UserPreferencesProvider: StoreSubscriber, UserPreferencesProviderProtocol 
 
     func dispatchStartupNavigationController() {
         guard let navigationController = currentState?.startupNavigationController else { return }
-        let action = SwitchTabs(tabBarItemIndex: navigationController.tabIndex(), description: "Loading From Defaults")
+        let action = SwitchTabs(tabBarItemIndex: navigationController, description: "Loading From Defaults")
         store.dispatch(action)
     }
 }

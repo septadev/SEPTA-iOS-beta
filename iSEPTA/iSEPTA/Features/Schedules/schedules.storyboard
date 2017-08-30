@@ -697,7 +697,7 @@ StartingLabelRight</string>
         <scene sceneID="83K-FD-2cf">
             <objects>
                 <navigationController title="Nav Controller Scene" id="Flo-rT-aez" customClass="SchedulesNavigationController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Schedules" id="PYF-su-Tfx"/>
+                    <tabBarItem key="tabBarItem" title="Schedules" image="schedulesTabbar" selectedImage="schedulesTabbarSelected" id="PYF-su-Tfx"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="oLi-QD-Eie">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1287,5 +1287,7 @@ SearchTextBox</string>
     </scenes>
     <resources>
         <image name="SearchIcon" width="17" height="17"/>
+        <image name="schedulesTabbar" width="21" height="22"/>
+        <image name="schedulesTabbarSelected" width="20" height="21"/>
     </resources>
 </document>

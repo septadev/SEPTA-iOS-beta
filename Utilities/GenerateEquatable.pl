@@ -3,19 +3,14 @@ use Data::Dumper;
 
 my $struct = q |
 
-struct AppState: StateType {
-    let navigationState: NavigationState
-    let scheduleState: ScheduleState
-    let preferenceState: UserPreferenceState
-    let alertState: AlertState
+struct NavigationState {
+    let appStackState: AppStackState
+    let selectedTab: NavigationController
 
-    init(navigationState: NavigationState, scheduleState: ScheduleState, preferenceState: UserPreferenceState) {
-        self.navigationState = navigationState
-        self.scheduleState = scheduleState
-        self.preferenceState = preferenceState
-    }
+     init(appStackState: AppStackState? = [NavigationController: NavigationStackState], selectedTab: .schedules){
+    self.appStackState = appStackState
+self.selectedTab = selectedTab
 }
-
 	|;
 
 my @initVars = ();

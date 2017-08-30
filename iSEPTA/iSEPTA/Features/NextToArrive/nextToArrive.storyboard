@@ -14,7 +14,7 @@
         <scene sceneID="8lQ-ax-JJ9">
             <objects>
                 <navigationController title="Nav Controller" id="4lt-fc-Rad" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Next to Arrive" image="NextToArrive" landscapeImage="NextToArrive" id="p4A-rk-lsI"/>
+                    <tabBarItem key="tabBarItem" title="Next-to-Arrive" image="nextToArriveTabbar" landscapeImage="NextToArrive" selectedImage="nextToArriveTabbarSelected" id="p4A-rk-lsI"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h50-1J-wdn">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -129,5 +129,7 @@
     </scenes>
     <resources>
         <image name="NextToArrive" width="34" height="34"/>
+        <image name="nextToArriveTabbar" width="28" height="22"/>
+        <image name="nextToArriveTabbarSelected" width="28" height="22"/>
     </resources>
 </document>

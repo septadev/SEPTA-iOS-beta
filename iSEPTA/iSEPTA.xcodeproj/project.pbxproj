@@ -922,17 +922,9 @@
 		58DB10F51F3B8D9000191AED /* Reducers */ = {
 			isa = PBXGroup;
 			children = (
-				58DB10F61F3B8D9B00191AED /* New Group */,
 				58DB10F71F3B8DB400191AED /* NavigationReducer.swift */,
 			);
 			path = Reducers;
-			sourceTree = "<group>";
-		};
-		58DB10F61F3B8D9B00191AED /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

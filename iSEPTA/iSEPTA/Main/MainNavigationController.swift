@@ -6,7 +6,8 @@ import ReSwift
 import SeptaSchedule
 
 class MainNavigationController: UITabBarController, UITabBarControllerDelegate, StoreSubscriber {
-    typealias StoreSubscriberStateType = Int?
+
+    typealias StoreSubscriberStateType = NavigationController
     let databaseFileManager = DatabaseFileManager()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -14,25 +15,35 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         store.subscribe(self) {
             $0.select {
                 $0.navigationState.selectedTab
-            }
+                }
         }
-    }
-
-    override func tabBar(_: UITabBar, didSelect _: UITabBarItem) {
-        let action = SwitchTabs(tabBarItemIndex: selectedIndex, description: "Tab Bar was selected by the user")
-        store.dispatch(action)
     }
 
     func newState(state: StoreSubscriberStateType) {
-        guard let selectedIndex = state else { return }
-        if self.selectedIndex != selectedIndex {
-            self.selectedIndex = selectedIndex
+        selectedIndex = state.tabIndex()
+    }
+
+    override func tabBar(_: UITabBar, didSelect _: UITabBarItem) {
+        let action = SwitchTabs(tabBarItemIndex: navigationControllerFromTabIndex(selectedIndex), description: "Tab Bar was selected by the user")
+        store.dispatch(action)
+    }
+
+    func navigationControllerFromTabIndex(_ index: Int) -> NavigationController {
+        switch index {
+        case 0: return .nextToArrive
+        case 1: return .favorites
+        case 2: return .alerts
+        case 3: return .schedules
+        default: return .schedules
         }
     }
 
-    override func viewDidLoad() {
+    func displayAlert(_ message: String) {
 
-        super.viewDidLoad()
+        UIAlert.presentOKAlertFrom(viewController: self,
+                                   withTitle: "SEPTA Beta Testers!",
+                                   message: message,
+                                   completion: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -52,13 +63,5 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
                 self?.displayAlert(message)
 
         })
-    }
-
-    func displayAlert(_ message: String) {
-
-        UIAlert.presentOKAlertFrom(viewController: self,
-                                   withTitle: "SEPTA Beta Testers!",
-                                   message: message,
-                                   completion: nil)
     }
 }

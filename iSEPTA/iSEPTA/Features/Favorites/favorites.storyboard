@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PgU-tC-Xbs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PgU-tC-Xbs">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,10 +14,10 @@
         <scene sceneID="6kW-a0-5Q5">
             <objects>
                 <navigationController storyboardIdentifier="favorites" title="Nav Controller" id="PgU-tC-Xbs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" image="Favorite" landscapeImage="Favorite" id="8AL-ee-M5e"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="favoriteTabbar" landscapeImage="Favorite" selectedImage="favoriteTabbarSelected" id="8AL-ee-M5e"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3Zz-pW-NUS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.96728127850000001" blue="0.35519992830000002" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
@@ -60,5 +60,7 @@
     </scenes>
     <resources>
         <image name="Favorite" width="40" height="30"/>
+        <image name="favoriteTabbar" width="22" height="20"/>
+        <image name="favoriteTabbarSelected" width="22" height="20"/>
     </resources>
 </document>

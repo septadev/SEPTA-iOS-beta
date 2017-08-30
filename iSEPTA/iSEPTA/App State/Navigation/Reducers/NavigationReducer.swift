@@ -12,14 +12,12 @@ struct NavigationReducer {
             return reduceNavigationActions(action: action, state: state)
 
         } else {
-            return NavigationState(
-                appStackState: nil,
-                selectedTab: NavigationController.schedules.tabIndex())
+            return NavigationState()
         }
     }
 
     static func reduceNavigationActions(action: NavigationAction, state: NavigationState) -> NavigationState {
-        var appStackState = state.appStackState ?? AppStackState()
+        var appStackState = state.appStackState
         var selectedTab = state.selectedTab
         switch action {
         case let action as InitializeNavigationState:

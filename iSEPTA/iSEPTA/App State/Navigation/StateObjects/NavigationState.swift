@@ -1,14 +1,15 @@
 // Septa. 2017
 
 import Foundation
+import SeptaSchedule
 
 typealias AppStackState = [NavigationController: NavigationStackState]
 
 struct NavigationState {
-    let appStackState: AppStackState?
-    let selectedTab: Int?
+    let appStackState: AppStackState
+    let selectedTab: NavigationController
 
-    init(appStackState: AppStackState? = nil, selectedTab: Int? = nil) {
+    init(appStackState: AppStackState = [NavigationController: NavigationStackState](), selectedTab: NavigationController = .schedules) {
         self.appStackState = appStackState
         self.selectedTab = selectedTab
     }
@@ -18,24 +19,10 @@ extension NavigationState: Equatable {}
 func ==(lhs: NavigationState, rhs: NavigationState) -> Bool {
     var areEqual = true
 
-    switch (lhs.appStackState, rhs.appStackState) {
-    case (.none, .none):
-        areEqual = true
-    case (.some, .some):
-        areEqual = lhs.appStackState! == rhs.appStackState!
-    default:
-        return false
-    }
+    areEqual = lhs.appStackState == rhs.appStackState
     guard areEqual else { return false }
 
-    switch (lhs.selectedTab, rhs.selectedTab) {
-    case (.none, .none):
-        areEqual = true
-    case (.some, .some):
-        areEqual = lhs.selectedTab! == rhs.selectedTab!
-    default:
-        return false
-    }
+    areEqual = lhs.selectedTab == rhs.selectedTab
     guard areEqual else { return false }
 
     return areEqual

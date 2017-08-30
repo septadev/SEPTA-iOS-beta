@@ -65,8 +65,8 @@ class UserDefaultsLoader {
     }
 
     fileprivate func startupNavigationController() -> NavigationController? {
-        guard let stringValue = string(forKey: .startupNavigationController) else { return nil }
-        return NavigationController(rawValue: stringValue)
+        guard let intValue = int(forKey: .startupNavigationController) else { return nil }
+        return NavigationController(rawValue: intValue)
     }
 
     fileprivate func showDirectionInRoutes() -> Bool {

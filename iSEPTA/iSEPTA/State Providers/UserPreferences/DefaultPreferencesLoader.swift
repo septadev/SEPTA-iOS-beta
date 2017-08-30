@@ -45,7 +45,7 @@ class DefaultPreferencesLoader {
 
     fileprivate func startupNavigationController() throws -> NavigationController {
         let key = DefaultPreferenceKeys.startupNavigationController.rawValue
-        guard let defaultValue = defaultPreferencesDict[key] as? String,
+        guard let defaultValue = defaultPreferencesDict[key] as? Int,
             let navigationController = NavigationController(rawValue: defaultValue) else {
             throw PreferenceError.missingKey(key)
         }

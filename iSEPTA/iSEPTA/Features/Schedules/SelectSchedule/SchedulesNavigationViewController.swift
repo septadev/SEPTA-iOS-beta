@@ -10,7 +10,7 @@ class SchedulesNavigationController: UINavigationController, StoreSubscriber, Id
     typealias StoreSubscriberStateType = [NavigationController: NavigationStackState]?
     lazy var slideInTransitioningDelegate = SlideInPresentationManager()
     let showRoutesId = "showRoutes"
-    let myStoryboard = UIStoryboard(name: navController.rawValue, bundle: Bundle.main)
+    let myStoryboard = UIStoryboard(name: navController.storyboard(), bundle: Bundle.main)
 
     override func viewDidLoad() {
         super.viewDidLoad()
