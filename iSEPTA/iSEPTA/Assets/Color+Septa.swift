@@ -13,4 +13,11 @@ struct SeptaColor {
 
     static let segmentBlue = UIColor.toPercent(20, 75, 136, 1)
     static let subSegmentBlue = UIColor.toPercent(132, 162, 194, 1)
+
+    static let nhslColor = UIColor.toPercent(157, 66, 149, 1)
+    static let busColor = UIColor.toPercent(65, 82, 92, 1)
+    static let bslColor = UIColor.toPercent(245, 130, 32, 1)
+    static let mflColor = UIColor.toPercent(65, 135, 199, 1)
+    static let trolleylColor = UIColor.toPercent(32, 114, 0, 1)
+    static let railColor = UIColor.toPercent(148, 78, 111, 1)
 }

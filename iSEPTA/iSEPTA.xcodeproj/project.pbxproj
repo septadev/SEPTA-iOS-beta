@@ -113,6 +113,8 @@
 		58FC9D9D1F3F9CB0004269DE /* InitializeNavigationState.json in Resources */ = {isa = PBXBuildFile; fileRef = 581804C51F3F8F19002184E3 /* InitializeNavigationState.json */; };
 		6749A46E1F53997D00AF6119 /* StopToSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749A46D1F53997D00AF6119 /* StopToSelect.swift */; };
 		6749A4711F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */; };
+		674FDBBF1F56E87F00CA67D2 /* SeptaRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; };
+		674FDBC01F56E87F00CA67D2 /* SeptaRest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B511801F499E8F000E3065 /* ButtonViewCell.swift */; };
 		67EA2B5D1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B5C1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift */; };
 		67EA2B611F518CA600C0567A /* SearchModalHeaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B601F518CA600C0567A /* SearchModalHeaderDelegate.swift */; };
@@ -168,6 +170,13 @@
 			remoteGlobalIDString = 58D9C3EF1F3335BB002BE2E8;
 			remoteInfo = iSEPTA;
 		};
+		674FDBC11F56E87F00CA67D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58490E361F55F6F9007DBCA1 /* SeptaRest.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 58490DE81F55D5D1007DBCA1;
+			remoteInfo = SeptaRest;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -177,6 +186,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				674FDBC01F56E87F00CA67D2 /* SeptaRest.framework in CopyFiles */,
 				58406EB51F3A9C0E00E6E04D /* SeptaSchedule.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,6 +340,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				674FDBBF1F56E87F00CA67D2 /* SeptaRest.framework in Frameworks */,
 				58490E401F55F84F007DBCA1 /* SeptaRest.framework in Frameworks */,
 				58B1FFD61F42EB2500AD8620 /* MapKit.framework in Frameworks */,
 				58DB04A31F54D7F2005CC850 /* SeptaSchedule.framework in Frameworks */,
@@ -945,6 +956,7 @@
 			);
 			dependencies = (
 				58406EB31F3A9AE200E6E04D /* PBXTargetDependency */,
+				674FDBC21F56E87F00CA67D2 /* PBXTargetDependency */,
 			);
 			name = iSEPTA;
 			productName = iSEPTA;
@@ -1249,6 +1261,11 @@
 			target = 58D9C3EF1F3335BB002BE2E8 /* iSEPTA */;
 			targetProxy = 58F9FB741F3387620036F3FA /* PBXContainerItemProxy */;
 		};
+		674FDBC21F56E87F00CA67D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SeptaRest;
+			targetProxy = 674FDBC11F56E87F00CA67D2 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1389,6 +1406,7 @@
 		58D9C4111F3335BB002BE2E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1421,6 +1439,7 @@
 		58D9C4121F3335BB002BE2E8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

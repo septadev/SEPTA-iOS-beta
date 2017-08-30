@@ -2,6 +2,9 @@
 
 import UIKit
 
+class SelectRouteCell: UITableViewCell {
+}
+
 class SingleStringCell: UITableViewCell, SingleStringDisplayable {
     var shouldFill: Bool = false
     var enabled: Bool = false

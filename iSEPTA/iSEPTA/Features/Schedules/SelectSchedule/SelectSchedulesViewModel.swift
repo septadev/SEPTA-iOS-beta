@@ -82,6 +82,15 @@ class SelectSchedulesViewModel: StoreSubscriber {
         return transitMode().routeTitle()
     }
 
+    func cellIdForRow(_ row: Int) -> String {
+
+        if row == 0 && scheduleRequest?.selectedRoute != nil {
+            return "routeSelectedCell"
+        } else {
+            return "singleStringCell"
+        }
+    }
+
     fileprivate func configureSelectRouteDisplayModel() -> RowDisplayModel {
         var text = transitMode().selectRoutePlaceholderText()
         let isSelectable = true
@@ -127,12 +136,17 @@ class SelectSchedulesViewModel: StoreSubscriber {
         return RowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopController)
     }
 
-    func configureDisplayable(_ displayable: SingleStringDisplayable, atRow row: Int) {
+    func configureCell(_ cell: UITableViewCell, atRow row: Int) {
         guard row < displayModel.count else { return }
-        let rowModel = displayModel[row]
-        displayable.setLabelText(rowModel.text)
-        displayable.setEnabled(rowModel.isSelectable)
-        displayable.setShouldFill(rowModel.shouldFillCell)
+        if let cell = cell as? SingleStringCell {
+            let rowModel = displayModel[row]
+            cell.setLabelText(rowModel.text)
+            cell.setEnabled(rowModel.isSelectable)
+            cell.setShouldFill(rowModel.shouldFillCell)
+        } else if let cell = cell as? RouteSelectedTableViewCell, let selectedRoute = scheduleRequest?.selectedRoute {
+            cell.routeIdLabel.text = "\(selectedRoute.routeId):"
+            cell.routeShortNameLabel.text = selectedRoute.routeShortName
+        }
     }
 
     func canCellBeSelected(atRow row: Int) -> Bool {

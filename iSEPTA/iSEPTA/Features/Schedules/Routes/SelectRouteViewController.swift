@@ -44,8 +44,8 @@ class SelectRouteViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
 
-    func tableView(_: UITableView, didSelectRowAt _: IndexPath) {
-        // viewModel.rowSelected(row: indexPath.row)
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.rowSelected(row: indexPath.row)
     }
 
     func viewModelUpdated() {

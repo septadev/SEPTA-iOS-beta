@@ -64,8 +64,9 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
     func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         if indexPath.section < buttonRow {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? SingleStringCell else { return UITableViewCell() }
-            viewModel.configureDisplayable(cell, atRow: indexPath.section)
+            let cellId = viewModel.cellIdForRow(indexPath.section)
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+            viewModel.configureCell(cell, atRow: indexPath.section)
             return cell
 
         } else {
@@ -118,6 +119,11 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
     func formIsComplete(_ isComplete: Bool) {
         formIsComplete = isComplete
         tableView.reloadData()
+    }
+
+    @IBAction func resetSearch(_: Any) {
+        let action = ResetSchedule()
+        store.dispatch(action)
     }
 
     func ViewSchedulesButtonTapped() {
