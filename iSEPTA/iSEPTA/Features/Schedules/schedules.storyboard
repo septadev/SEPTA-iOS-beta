@@ -66,15 +66,25 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SearchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="TrZ-8T-4KS" userLabel="Searchicon">
+                                                                    <rect key="frame" x="295" y="13.5" width="17" height="17"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="17" id="qCU-3i-cyC"/>
+                                                                        <constraint firstAttribute="width" constant="17" id="wea-jJ-iPo"/>
+                                                                    </constraints>
+                                                                </imageView>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="wCd-TC-F1i" firstAttribute="centerY" secondItem="v2j-wI-BVS" secondAttribute="centerY" id="4aG-wF-zB0" userLabel="labelCenterY"/>
+                                                                <constraint firstAttribute="trailing" secondItem="TrZ-8T-4KS" secondAttribute="trailing" constant="12" id="CaU-th-Cxm" userLabel="SearchIconRight"/>
                                                                 <constraint firstItem="wCd-TC-F1i" firstAttribute="leading" secondItem="v2j-wI-BVS" secondAttribute="leading" constant="11" id="VFM-ZE-Rk9" userLabel="LabelLeft"/>
+                                                                <constraint firstItem="TrZ-8T-4KS" firstAttribute="centerY" secondItem="v2j-wI-BVS" secondAttribute="centerY" id="qDU-sU-nso" userLabel="SearchIconCenterY"/>
                                                                 <constraint firstAttribute="trailing" secondItem="wCd-TC-F1i" secondAttribute="trailing" constant="-22" id="uny-Kq-70X" userLabel="LabelRight"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
                                                             <outlet property="label" destination="wCd-TC-F1i" id="n1N-uW-Pof"/>
+                                                            <outlet property="searchIcon" destination="TrZ-8T-4KS" id="QQY-rU-pVF"/>
                                                         </connections>
                                                     </tableViewCell>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="routeSelectedCell" rowHeight="60" id="dRd-8A-9Y3" customClass="RouteSelectedTableViewCell" customModule="Septa" customModuleProvider="target">
@@ -98,7 +108,7 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="248" text="to Front-Market" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UtE-hk-g8E" userLabel="routeShortName">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="248" text="to Front-Market" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UtE-hk-g8E" userLabel="routeShortName">
                                                                     <rect key="frame" x="60" y="23" width="221" height="18"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <nil key="textColor"/>

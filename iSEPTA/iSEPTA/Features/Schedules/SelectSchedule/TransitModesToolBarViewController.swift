@@ -26,7 +26,7 @@ class TransitModesToolbarViewController: UIViewController, StoreSubscriber {
         store.subscribe(self) { subscription in
             subscription.select {
                 $0.scheduleState.scheduleRequest?.transitMode
-            }
+            }.skipRepeats { $0 == $1 }
         }
     }
 

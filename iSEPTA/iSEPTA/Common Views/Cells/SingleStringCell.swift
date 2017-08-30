@@ -13,6 +13,7 @@ class SingleStringCell: UITableViewCell, SingleStringDisplayable {
         label.textColor = color
     }
 
+    @IBOutlet weak var searchIcon: UIImageView!
     func setLabelText(_ text: String?) {
         label.text = text
     }
@@ -32,6 +33,7 @@ class SingleStringCell: UITableViewCell, SingleStringDisplayable {
     func setEnabled(_ enabled: Bool) {
         self.enabled = enabled
         label.alpha = enabled ? CGFloat(0.7) : CGFloat(0.3)
+        searchIcon.alpha = enabled ? CGFloat(0.7) : CGFloat(0.3)
         setNeedsDisplay()
     }
 }

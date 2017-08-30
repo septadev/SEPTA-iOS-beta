@@ -3,13 +3,15 @@ use Data::Dumper;
 
 my $struct = q |
 
-struct NavigationState {
-    let appStackState: AppStackState
-    let selectedTab: NavigationController
-
-     init(appStackState: AppStackState? = [NavigationController: NavigationStackState], selectedTab: .schedules){
-    self.appStackState = appStackState
-self.selectedTab = selectedTab
+fileprivate struct RowDisplayModel {
+    let text: String
+    let shouldFillCell: Bool
+    let isSelectable: Bool
+    let targetController: ViewController
+    let pillColor: UIColor
+    let showSearchIcon: Bool
+    
+    
 }
 	|;
 

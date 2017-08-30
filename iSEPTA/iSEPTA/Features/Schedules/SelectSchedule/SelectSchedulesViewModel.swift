@@ -11,6 +11,16 @@ fileprivate struct RowDisplayModel {
     let isSelectable: Bool
     let targetController: ViewController
     let pillColor: UIColor
+    let showSearchIcon: Bool
+
+    init(text: String, shouldFillCell: Bool, isSelectable: Bool, targetController: ViewController, pillColor: UIColor, showSearchIcon: Bool = false) {
+        self.text = text
+        self.shouldFillCell = shouldFillCell
+        self.isSelectable = isSelectable
+        self.targetController = targetController
+        self.pillColor = pillColor
+        self.showSearchIcon = showSearchIcon
+    }
 }
 
 protocol SchedulesViewModelDelegate: AnyObject {
@@ -123,7 +133,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
             text = transitMode().startingStopName()
             isSelectable = false
         }
-        return RowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopNavigationController, pillColor: UIColor.clear)
+        return RowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopNavigationController, pillColor: UIColor.clear, showSearchIcon: true)
     }
 
     fileprivate func configureSelectEndisplayModel() -> RowDisplayModel {
@@ -141,7 +151,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
             text = transitMode().endingStopName()
             isSelectable = false
         }
-        return RowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopController, pillColor: UIColor.clear)
+        return RowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopController, pillColor: UIColor.clear, showSearchIcon: true)
     }
 
     func configureCell(_ cell: UITableViewCell, atRow row: Int) {
@@ -152,6 +162,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
             cell.setLabelText(rowModel.text)
             cell.setEnabled(rowModel.isSelectable)
             cell.setShouldFill(rowModel.shouldFillCell)
+            cell.searchIcon.isHidden = !rowModel.showSearchIcon
         } else if let cell = cell as? RouteSelectedTableViewCell, let selectedRoute = scheduleRequest?.selectedRoute {
             cell.routeIdLabel.text = "\(selectedRoute.routeId):"
             cell.routeShortNameLabel.text = selectedRoute.routeShortName
