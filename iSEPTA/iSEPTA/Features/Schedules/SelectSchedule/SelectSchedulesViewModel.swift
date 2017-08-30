@@ -10,6 +10,7 @@ fileprivate struct RowDisplayModel {
     let shouldFillCell: Bool
     let isSelectable: Bool
     let targetController: ViewController
+    let pillColor: UIColor
 }
 
 protocol SchedulesViewModelDelegate: AnyObject {
@@ -94,10 +95,17 @@ class SelectSchedulesViewModel: StoreSubscriber {
     fileprivate func configureSelectRouteDisplayModel() -> RowDisplayModel {
         var text = transitMode().selectRoutePlaceholderText()
         let isSelectable = true
-        if let routeName = scheduleRequest?.selectedRoute?.routeShortName {
-            text = routeName
+        var pillColor = UIColor.clear
+        if let route = scheduleRequest?.selectedRoute {
+            text = route.routeShortName
+
+            if let routeColor = route.colorForRoute() {
+                pillColor = routeColor
+            } else if let transitModeColor = transitMode().colorForPill() {
+                pillColor = transitModeColor
+            }
         }
-        return RowDisplayModel(text: text, shouldFillCell: false, isSelectable: isSelectable, targetController: .routesViewController)
+        return RowDisplayModel(text: text, shouldFillCell: false, isSelectable: isSelectable, targetController: .routesViewController, pillColor: pillColor)
     }
 
     fileprivate func configureSelectStartDisplayModel() -> RowDisplayModel {
@@ -115,7 +123,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
             text = transitMode().startingStopName()
             isSelectable = false
         }
-        return RowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopNavigationController)
+        return RowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopNavigationController, pillColor: UIColor.clear)
     }
 
     fileprivate func configureSelectEndisplayModel() -> RowDisplayModel {
@@ -133,19 +141,21 @@ class SelectSchedulesViewModel: StoreSubscriber {
             text = transitMode().endingStopName()
             isSelectable = false
         }
-        return RowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopController)
+        return RowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopController, pillColor: UIColor.clear)
     }
 
     func configureCell(_ cell: UITableViewCell, atRow row: Int) {
         guard row < displayModel.count else { return }
+        let rowModel = displayModel[row]
         if let cell = cell as? SingleStringCell {
-            let rowModel = displayModel[row]
+
             cell.setLabelText(rowModel.text)
             cell.setEnabled(rowModel.isSelectable)
             cell.setShouldFill(rowModel.shouldFillCell)
         } else if let cell = cell as? RouteSelectedTableViewCell, let selectedRoute = scheduleRequest?.selectedRoute {
             cell.routeIdLabel.text = "\(selectedRoute.routeId):"
             cell.routeShortNameLabel.text = selectedRoute.routeShortName
+            cell.pillView.backgroundColor = rowModel.pillColor
         }
     }
 

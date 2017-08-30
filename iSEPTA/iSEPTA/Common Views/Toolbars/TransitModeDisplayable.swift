@@ -140,16 +140,10 @@ extension TransitMode {
         return [.bus, .rail, .subway, .nhsl, .trolley]
     }
 
-    public func colorForPill(routeId: String) -> UIColor? {
+    public func colorForPill() -> UIColor? {
         switch self {
-        case .rail: return SeptaColor.railColor
-        case .subway :
-            switch routeId {
-            case "MFO", "BSO": return nil
-            case "MFL": return SeptaColor.mflColor
-            case "BSL": return SeptaColor.bslColor
-            default: return nil
-            }
+        case .rail: return nil
+        case .subway : return nil
         case .bus: return SeptaColor.busColor
         case .trolley :return SeptaColor.trolleylColor
         case .nhsl: return SeptaColor.nhslColor
