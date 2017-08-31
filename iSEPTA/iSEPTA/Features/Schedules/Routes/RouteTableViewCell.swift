@@ -44,6 +44,22 @@ class RouteTableViewCell: UITableViewCell, RouteCellDisplayable {
             }
             for imageView in imageViews {
                 imageView.isUserInteractionEnabled = true
+                imageView.contentMode = UIViewContentMode.scaleAspectFit
+                let height = NSLayoutConstraint(item: imageView,
+                                                attribute: .height,
+                                                relatedBy: .equal,
+                                                toItem: nil,
+                                                attribute: .notAnAttribute,
+                                                multiplier: 1.0,
+                                                constant: 18)
+                let width = NSLayoutConstraint(item: imageView,
+                                               attribute: .width,
+                                               relatedBy: .equal,
+                                               toItem: nil,
+                                               attribute: .notAnAttribute,
+                                               multiplier: 1.0,
+                                               constant: 18)
+                imageView.addConstraints([height, width])
                 stackView.addArrangedSubview(imageView)
             }
         }

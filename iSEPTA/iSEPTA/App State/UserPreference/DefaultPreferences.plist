@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>startupNavigationController</key>
-	<string>schedules</string>
+	<string>nextToArrive</string>
 	<key>startupTransitMode</key>
 	<string>bus</string>
 	<key>showDirectionInRoutes</key>

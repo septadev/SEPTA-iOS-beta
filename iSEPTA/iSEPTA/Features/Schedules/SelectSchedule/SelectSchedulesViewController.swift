@@ -40,7 +40,7 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
         viewModel = SelectSchedulesViewModel(delegate: self)
         view.backgroundColor = SeptaColor.navBarBlue
         tableView.tableFooterView = tableViewFooter
-        viewModel.subscribe()
+
         viewModel.schedulesDelegate = self
         buttonView.isHidden = true
         UIView.addSurroundShadow(toView: tableViewWrapper)
@@ -51,6 +51,11 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
 
         navBar.shadowImage = UIImage()
         navBar.setBackgroundImage(UIImage(), for: .default)
+        viewModel.subscribe()
+    }
+
+    override func viewWillDisappear(_: Bool) {
+        viewModel.unsubscribe()
     }
 
     func numberOfSections(in _: UITableView) -> Int {
@@ -129,9 +134,5 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
     func ViewSchedulesButtonTapped() {
         let action = PushViewController(navigationController: .schedules, viewController: .tripScheduleController, description: "Show Trip Schedule")
         store.dispatch(action)
-    }
-
-    deinit {
-        viewModel.unsubscribe()
     }
 }

@@ -54,3 +54,7 @@ FROM trips_bus T join stop_times_bus ST ON T.trip_id
 
 WHERE T.route_id = '1' AND direction_id = '0'
 GROUP BY S.stop_id, S.stop_name, S.stop_lat, S.stop_lon ;
+
+
+select * from routes_bus where route_id = 'MFL';
+select * from routes_rail;

@@ -61,6 +61,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
 
     func newState(state: StoreSubscriberStateType) {
         scheduleRequest = state
+
         buildDisplayModel()
         delegate?.viewModelUpdated()
         schedulesDelegate?.formIsComplete(scheduleRequest?.selectedEnd != nil)
@@ -179,10 +180,6 @@ class SelectSchedulesViewModel: StoreSubscriber {
 
     func numberOfRows() -> Int {
         return 3
-    }
-
-    deinit {
-        unsubscribe()
     }
 
     func unsubscribe() {

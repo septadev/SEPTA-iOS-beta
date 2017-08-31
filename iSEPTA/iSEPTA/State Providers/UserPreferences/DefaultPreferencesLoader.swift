@@ -44,22 +44,18 @@ class DefaultPreferencesLoader {
     }
 
     fileprivate func startupNavigationController() throws -> NavigationController {
-        let key = DefaultPreferenceKeys.startupNavigationController.rawValue
-        guard let defaultValue = defaultPreferencesDict[key] as? Int,
-            let navigationController = NavigationController(rawValue: defaultValue) else {
-            throw PreferenceError.missingKey(key)
-        }
-        return navigationController
+
+        return NavigationController.nextToArrive
     }
 
     fileprivate func startupTransitMode() throws -> TransitMode {
-        let key = DefaultPreferenceKeys.startupTransitMode.rawValue
-        guard let defaultValue = defaultPreferencesDict[key] as? Int,
-
-            let transitMode = TransitMode(rawValue: defaultValue) else {
-            throw PreferenceError.missingKey(key)
-        }
-        return transitMode
+        //        let key = DefaultPreferenceKeys.startupTransitMode.rawValue
+        //        guard let defaultValue = defaultPreferencesDict[key] as? Int,
+        //
+        //            let transitMode = TransitMode(rawValue: defaultValue) else {
+        //            throw PreferenceError.missingKey(key)
+        //        }
+        return TransitMode.bus
     }
 
     fileprivate func showDirectionInRoutes() throws -> Bool {

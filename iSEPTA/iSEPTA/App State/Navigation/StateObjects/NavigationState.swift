@@ -9,7 +9,7 @@ struct NavigationState {
     let appStackState: AppStackState
     let selectedTab: NavigationController
 
-    init(appStackState: AppStackState = [NavigationController: NavigationStackState](), selectedTab: NavigationController = .schedules) {
+    init(appStackState: AppStackState = [NavigationController: NavigationStackState](), selectedTab: NavigationController = .nextToArrive) {
         self.appStackState = appStackState
         self.selectedTab = selectedTab
     }
