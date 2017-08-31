@@ -11,7 +11,7 @@
 
 SELECT
 R.Route_id,
-R.route_short_name || ' to ' || S.stop_name route_short_name,
+R.route_short_name route_short_name,
 'to ' || S.stop_name route_long_name,
 cast (T.direction_id  as TEXT )                            dircode
 

@@ -110,6 +110,7 @@
 		58F444FC1F3D335400A93208 /* SeptaAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F444FB1F3D335400A93208 /* SeptaAction.swift */; };
 		58F80D431F421C1F0089501A /* SelectStopNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F80D421F421C1F0089501A /* SelectStopNavigationController.swift */; };
 		58F80D451F421C4B0089501A /* SelectStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F80D441F421C4B0089501A /* SelectStopViewController.swift */; };
+		58FBB6681F58590F00E6532B /* Route+Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBB6671F58590F00E6532B /* Route+Title.swift */; };
 		58FC9D9D1F3F9CB0004269DE /* InitializeNavigationState.json in Resources */ = {isa = PBXBuildFile; fileRef = 581804C51F3F8F19002184E3 /* InitializeNavigationState.json */; };
 		67075FC21F578578008BB38C /* ScheduleUpdateMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC11F578578008BB38C /* ScheduleUpdateMode.swift */; };
 		67075FC41F57858C008BB38C /* ScheduleStopState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC31F57858C008BB38C /* ScheduleStopState.swift */; };
@@ -327,6 +328,7 @@
 		58F444FB1F3D335400A93208 /* SeptaAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaAction.swift; sourceTree = "<group>"; };
 		58F80D421F421C1F0089501A /* SelectStopNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopNavigationController.swift; sourceTree = "<group>"; };
 		58F80D441F421C4B0089501A /* SelectStopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopViewController.swift; sourceTree = "<group>"; };
+		58FBB6671F58590F00E6532B /* Route+Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Title.swift"; sourceTree = "<group>"; };
 		67075FC11F578578008BB38C /* ScheduleUpdateMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleUpdateMode.swift; sourceTree = "<group>"; };
 		67075FC31F57858C008BB38C /* ScheduleStopState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStopState.swift; sourceTree = "<group>"; };
 		67075FC51F57860E008BB38C /* ScheduleTripState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTripState.swift; sourceTree = "<group>"; };
@@ -713,6 +715,7 @@
 				589A89DA1F52E6A9007329DB /* ScheduleStopEdit.swift */,
 				674FDBC41F57390D00CA67D2 /* Route+Color.swift */,
 				674FDBC61F577D3B00CA67D2 /* Route+Icon.swift */,
+				58FBB6671F58590F00E6532B /* Route+Title.swift */,
 				67075FC11F578578008BB38C /* ScheduleUpdateMode.swift */,
 				67075FC31F57858C008BB38C /* ScheduleStopState.swift */,
 				67075FC51F57860E008BB38C /* ScheduleTripState.swift */,
@@ -1239,6 +1242,7 @@
 				5840D6E01F37E5FB00C8CB76 /* ScheduleReducer.swift in Sources */,
 				58290E411F372B51000CCF3C /* AppState.swift in Sources */,
 				5825319E1F40940B0088D056 /* UserPreferencesProviderProtocol.swift in Sources */,
+				58FBB6681F58590F00E6532B /* Route+Title.swift in Sources */,
 				589A89DB1F52E6A9007329DB /* ScheduleStopEdit.swift in Sources */,
 				58DB10F81F3B8DB400191AED /* NavigationReducer.swift in Sources */,
 				584AC8731F437DDB0040C1B4 /* TripScheduleViewController.swift in Sources */,

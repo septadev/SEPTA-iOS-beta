@@ -80,8 +80,13 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
     func configureDisplayable(_ displayable: RouteCellDisplayable, atRow row: Int) {
         guard let filteredRoutes = filteredRoutes, row < filteredRoutes.count else { return }
         let route = filteredRoutes[row].route
-        displayable.setShortName(text: route.routeId)
-        displayable.setLongName(text: route.routeShortName)
+        if let shortNameOverride = route.shortNameOverrideForRoute(transitMode: transitMode) {
+            displayable.setShortName(text: shortNameOverride)
+        } else {
+            displayable.setShortName(text: route.routeShortName)
+        }
+
+        displayable.setLongName(text: route.routeLongName)
         var icon: UIImage?
         if let routeImage = route.iconForRoute() {
             icon = routeImage
