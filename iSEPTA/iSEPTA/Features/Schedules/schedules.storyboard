@@ -108,7 +108,7 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="248" text="to Front-Market" textAlignment="natural" lineBreakMode="headTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UtE-hk-g8E" userLabel="routeShortName">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="248" text="to Front-Market" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UtE-hk-g8E" userLabel="routeShortName">
                                                                     <rect key="frame" x="54.5" y="21.5" width="226.5" height="18"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <nil key="textColor"/>
@@ -126,9 +126,9 @@
                                                                 <constraint firstItem="9ED-ah-fuy" firstAttribute="centerY" secondItem="tv0-MK-MKw" secondAttribute="centerY" id="1Ws-a0-Dzi" userLabel="PillCenterY"/>
                                                                 <constraint firstItem="Vpi-aO-AXA" firstAttribute="leading" secondItem="UtE-hk-g8E" secondAttribute="trailing" constant="5" id="BoA-Q7-I7G" userLabel="RouteShortNameRight"/>
                                                                 <constraint firstItem="Vpi-aO-AXA" firstAttribute="centerY" secondItem="tv0-MK-MKw" secondAttribute="centerY" id="DSD-GX-L6e" userLabel="IconCenterY"/>
+                                                                <constraint firstItem="UtE-hk-g8E" firstAttribute="centerY" secondItem="tv0-MK-MKw" secondAttribute="centerY" id="Hs2-hL-8aK"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Vpi-aO-AXA" secondAttribute="trailing" constant="12" id="U35-mU-2dC" userLabel="IconRight"/>
                                                                 <constraint firstItem="5JT-lx-DGg" firstAttribute="leading" secondItem="9ED-ah-fuy" secondAttribute="trailing" constant="10" id="Uvt-FX-IBT" userLabel="RouteIdLeft"/>
-                                                                <constraint firstItem="UtE-hk-g8E" firstAttribute="baseline" secondItem="5JT-lx-DGg" secondAttribute="baseline" id="Vya-Yg-stT" userLabel="RouteShortNameBaseLine"/>
                                                                 <constraint firstItem="UtE-hk-g8E" firstAttribute="leading" secondItem="5JT-lx-DGg" secondAttribute="trailing" constant="3" id="aIV-rs-MKC" userLabel="RouteShortNameLeft"/>
                                                                 <constraint firstItem="9ED-ah-fuy" firstAttribute="leading" secondItem="tv0-MK-MKw" secondAttribute="leading" constant="8" id="cNX-ei-Kmo" userLabel="PillLeft"/>
                                                                 <constraint firstItem="5JT-lx-DGg" firstAttribute="centerY" secondItem="tv0-MK-MKw" secondAttribute="centerY" id="hho-GJ-fgP" userLabel="RouteIdCenterY"/>
