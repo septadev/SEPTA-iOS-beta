@@ -333,7 +333,7 @@ TableViewWrapper</string>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="44 Route" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om0-j5-VdR" userLabel="RouteShortName">
-                                                                <rect key="frame" x="65" y="17" width="261" height="24"/>
+                                                                <rect key="frame" x="65" y="17" width="259" height="24"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -345,11 +345,11 @@ TableViewWrapper</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="tzT-6t-VNZ">
-                                                                <rect key="frame" x="341" y="17" width="20" height="18"/>
+                                                                <rect key="frame" x="339" y="17" width="22" height="18"/>
                                                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <gestureRecognizers/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="20" placeholder="YES" id="TNr-57-kYR"/>
+                                                                    <constraint firstAttribute="width" constant="22" placeholder="YES" id="TNr-57-kYR"/>
                                                                     <constraint firstAttribute="height" constant="18" placeholder="YES" id="cal-WS-enN"/>
                                                                 </constraints>
                                                             </stackView>
