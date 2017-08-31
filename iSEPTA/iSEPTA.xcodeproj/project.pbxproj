@@ -112,6 +112,8 @@
 		58F80D451F421C4B0089501A /* SelectStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F80D441F421C4B0089501A /* SelectStopViewController.swift */; };
 		58FBB6681F58590F00E6532B /* Route+Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBB6671F58590F00E6532B /* Route+Title.swift */; };
 		58FBB66A1F58717500E6532B /* SeptaTabBarImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBB6691F58717500E6532B /* SeptaTabBarImages.swift */; };
+		58FBB66C1F5885D800E6532B /* TripIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBB66B1F5885D800E6532B /* TripIconView.swift */; };
+		58FBB66E1F58AAC000E6532B /* AlertViewGradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBB66D1F58AAC000E6532B /* AlertViewGradientBackgroundView.swift */; };
 		58FC9D9D1F3F9CB0004269DE /* InitializeNavigationState.json in Resources */ = {isa = PBXBuildFile; fileRef = 581804C51F3F8F19002184E3 /* InitializeNavigationState.json */; };
 		67075FC21F578578008BB38C /* ScheduleUpdateMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC11F578578008BB38C /* ScheduleUpdateMode.swift */; };
 		67075FC41F57858C008BB38C /* ScheduleStopState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC31F57858C008BB38C /* ScheduleStopState.swift */; };
@@ -331,6 +333,8 @@
 		58F80D441F421C4B0089501A /* SelectStopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopViewController.swift; sourceTree = "<group>"; };
 		58FBB6671F58590F00E6532B /* Route+Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Title.swift"; sourceTree = "<group>"; };
 		58FBB6691F58717500E6532B /* SeptaTabBarImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaTabBarImages.swift; sourceTree = "<group>"; };
+		58FBB66B1F5885D800E6532B /* TripIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripIconView.swift; sourceTree = "<group>"; };
+		58FBB66D1F58AAC000E6532B /* AlertViewGradientBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewGradientBackgroundView.swift; sourceTree = "<group>"; };
 		67075FC11F578578008BB38C /* ScheduleUpdateMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleUpdateMode.swift; sourceTree = "<group>"; };
 		67075FC31F57858C008BB38C /* ScheduleStopState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStopState.swift; sourceTree = "<group>"; };
 		67075FC51F57860E008BB38C /* ScheduleTripState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTripState.swift; sourceTree = "<group>"; };
@@ -440,6 +444,8 @@
 				67F757B61F488A5E00D3A4EE /* BlueGradientBackgroundView.swift */,
 				67EA2B621F51AB8700C0567A /* StopEditSearchMode.swift */,
 				58FBB6691F58717500E6532B /* SeptaTabBarImages.swift */,
+				58FBB66B1F5885D800E6532B /* TripIconView.swift */,
+				58FBB66D1F58AAC000E6532B /* AlertViewGradientBackgroundView.swift */,
 			);
 			path = "Common Views";
 			sourceTree = "<group>";
@@ -1188,6 +1194,7 @@
 				5840D6D31F376D9C00C8CB76 /* MainNavigationController.swift in Sources */,
 				5840D6EE1F37F63800C8CB76 /* TransitModeToolbarView.swift in Sources */,
 				582531981F40707C0088D056 /* DefaultPreferencesLoader.swift in Sources */,
+				58FBB66E1F58AAC000E6532B /* AlertViewGradientBackgroundView.swift in Sources */,
 				58B892151F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift in Sources */,
 				582F4ECC1F33B1120062A546 /* ScheduleTableViewCell.swift in Sources */,
 				585572861F39499D004ABCD6 /* Color+Septa.swift in Sources */,
@@ -1213,6 +1220,7 @@
 				582F4ED81F33B1120062A546 /* SelectSchedulesViewController.swift in Sources */,
 				58FBB66A1F58717500E6532B /* SeptaTabBarImages.swift in Sources */,
 				5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */,
+				58FBB66C1F5885D800E6532B /* TripIconView.swift in Sources */,
 				67EA2B611F518CA600C0567A /* SearchModalHeaderDelegate.swift in Sources */,
 				5814AA891F4359CC00DF774A /* SingleStringDisplayable.swift in Sources */,
 				67F757B31F48729C00D3A4EE /* UIView+Util.swift in Sources */,

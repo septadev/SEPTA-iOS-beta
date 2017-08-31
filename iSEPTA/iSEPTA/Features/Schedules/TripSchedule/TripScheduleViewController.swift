@@ -13,6 +13,27 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
 
+    @IBOutlet weak var routeNameLabel: UILabel! {
+        didSet {
+            routeNameLabel.text = route.routeLongName
+        }
+    }
+
+    @IBOutlet weak var insetWhiteView: UIView! {
+        didSet {
+            UIView.addSurroundShadow(toView: insetWhiteView, withCornerRadius: 4)
+        }
+    }
+
+    @IBOutlet weak var routePillView: UIView!
+    @IBOutlet weak var shadowView: UIView!
+
+    let scheduleRequest = store.state.scheduleState.scheduleRequest
+
+    let transitMode = store.state.scheduleState.scheduleRequest.transitMode!
+
+    let route = store.state.scheduleState.scheduleRequest.selectedRoute!
+
     static var viewController: ViewController = .tripScheduleController
     @IBOutlet weak var startingPoint: UILabel!
     @IBOutlet weak var endingPoint: UILabel!
@@ -102,8 +123,33 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         viewModel.subscribe()
         tableView.tableFooterView = tableViewFooter
-        weekdayBarButtonItem.tintColor = UIColor.darkText
+        view.backgroundColor = SeptaColor.navBarBlue
+        routePillView.layer.cornerRadius = 5
+
+        var pillColor = UIColor.clear
+        if let routeColor = route.colorForRoute() {
+            pillColor = routeColor
+        } else if let transitModeColor = transitMode.colorForPill() {
+            pillColor = transitModeColor
+        }
+
+        routePillView.backgroundColor = pillColor
+        navigationItem.title = "Schedules: \(transitMode.name())"
         updateLabels()
+        navigationController?.navigationBar.tintColor = UIColor.white
+        if let topItem = self.navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+        shadowView.backgroundColor = SeptaColor.navBarBlue
+        shadowView.layer.masksToBounds = false
+        shadowView.layer.shadowOffset = CGSize(width: 0, height: 0.0)
+        shadowView.layer.shadowRadius = 7
+        shadowView.layer.shadowOpacity = 1
+        shadowView.layer.shadowColor = SeptaColor.navBarShadowColor.cgColor
+        //
+        //        let font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        //
+        //        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: font]
     }
 
     override func viewDidAppear(_ animated: Bool) {
