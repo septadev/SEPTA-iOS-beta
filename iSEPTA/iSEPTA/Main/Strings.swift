@@ -8,4 +8,8 @@ struct SeptaString {
     static let SelectEnd = NSLocalizedString("Select Destination", comment: "To Select a Transit Stop")
 
     static let selectScheduleButton = NSLocalizedString("View Schedules", comment: "To Indicate that user wants to view schedule")
+
+    static let NoRoutesAvailable = NSLocalizedString("Sorry, there are no routes that match your request", comment: "Query for routes in the database returned no results")
+    static let NoStopsAvailable = NSLocalizedString("Sorry, there are no stops/stations that match your request", comment: "Query for stops in the database returned no results")
+    static let NoTripsAvailable = NSLocalizedString("Sorry, there are no trips that match your request", comment: "Query for trips in the database returned no results")
 }

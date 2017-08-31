@@ -9,7 +9,7 @@ class TransitModesToolbarViewController: UIViewController, StoreSubscriber {
     typealias StoreSubscriberStateType = TransitMode?
     @IBOutlet var scrollbar: UIScrollView!
     var transitModesToolbarElements = [TransitModeToolbarView]()
-
+    var currentTransitMode: TransitMode?
     @IBOutlet weak var stackView: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class TransitModesToolbarViewController: UIViewController, StoreSubscriber {
 
         store.subscribe(self) { subscription in
             subscription.select {
-                $0.scheduleState.scheduleRequest?.transitMode
+                $0.scheduleState.scheduleRequest.transitMode
             }.skipRepeats { $0 == $1 }
         }
     }
@@ -99,17 +99,18 @@ class TransitModesToolbarViewController: UIViewController, StoreSubscriber {
     }
 
     func dispatchAction(toolbarItem: TransitModeToolbarView?) {
-        guard let transitMode = toolbarItem?.transitMode else { return }
-
-        let action = TransitModeSelected(transitMode: transitMode, description: "User switched the transit mode toolbar")
-        store.dispatch(action)
-        let preferenceAction = NewTransitModeAction(transitMode: transitMode)
-        store.dispatch(preferenceAction)
+        guard let newTransitMode = toolbarItem?.transitMode, let currentTransitMode = currentTransitMode else { return }
+        if currentTransitMode != newTransitMode {
+            let action = TransitModeSelected(transitMode: newTransitMode, description: "User switched the transit mode toolbar")
+            store.dispatch(action)
+            let preferenceAction = NewTransitModeAction(transitMode: newTransitMode)
+            store.dispatch(preferenceAction)
+        }
     }
 
     func newState(state: StoreSubscriberStateType) {
         guard let transitMode = state else { fatalError("message: there should always be a transit mode") }
-
+        currentTransitMode = transitMode
         intializeToolbar(transitMode: transitMode)
     }
 }

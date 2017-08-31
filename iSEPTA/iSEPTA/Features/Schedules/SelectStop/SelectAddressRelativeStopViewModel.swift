@@ -86,14 +86,12 @@ class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber, UITableView
 
     func newState(state: StoreSubscriberStateType) {
         stopToEdit = state?.stopToEdit
-        var optionalStops: [Stop]?
+        var stops: [Stop]
         if state?.stopToEdit == .starts {
-            optionalStops = store.state.scheduleState.scheduleData?.availableStarts
+            stops = store.state.scheduleState.scheduleData.availableStarts.stops
         } else {
-            optionalStops = store.state.scheduleState.scheduleData?.availableStops
+            stops = store.state.scheduleState.scheduleData.availableStops.stops
         }
-
-        guard let stops = optionalStops else { return }
 
         if let placemark = state?.selectedAddress?.placemark, let location = placemark.location {
 

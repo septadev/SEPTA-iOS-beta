@@ -12,20 +12,6 @@ import ReSwift
 
 class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableController, UpdateableFromViewModel, SearchModalHeaderDelegate {
     typealias StoreSubscriberStateType = ScheduleStopEdit?
-    func updateActivityIndicator(animating: Bool) {
-        if animating {
-            activityIndicator.startAnimating()
-        } else {
-            activityIndicator.stopAnimating()
-        }
-    }
-
-    func displayErrorMessage(message: String) {
-        UIAlert.presentOKAlertFrom(viewController: self,
-                                   withTitle: "SEPTA Alert",
-                                   message: message,
-                                   completion: nil)
-    }
 
     static var viewController: ViewController = .selectStopController
 
@@ -70,10 +56,6 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
         tableView.reloadData()
     }
 
-    override func viewWillAppear(_: Bool) {
-        subscribe()
-    }
-
     func subscribe() {
         store.subscribe(self) {
             $0.select {
@@ -91,6 +73,15 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
         stopsViewModel.unsubscribe()
     }
 
+    override func viewWillAppear(_: Bool) {
+        subscribe()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewHasAppeared = true
+    }
+
     func unsubscribe() {
         store.unsubscribe(self)
     }
@@ -98,6 +89,38 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     func viewModelUpdated() {
 
         tableView.reloadData()
+    }
+
+    var shouldBeAnimatingActivityIndicator = true {
+        didSet {
+            updateActivityIndicator()
+        }
+    }
+
+    var viewHasAppeared = false {
+        didSet {
+            updateActivityIndicator()
+        }
+    }
+
+    func updateActivityIndicator() {
+        if viewHasAppeared && shouldBeAnimatingActivityIndicator {
+            activityIndicator.startAnimating()
+        } else if viewHasAppeared && !shouldBeAnimatingActivityIndicator {
+            activityIndicator.stopAnimating()
+        }
+    }
+
+    func updateActivityIndicator(animating: Bool) {
+        shouldBeAnimatingActivityIndicator = animating
+    }
+
+    func displayErrorMessage(message: String) {
+        UIAlert.presentOKAlertFrom(viewController: self,
+                                   withTitle: "Select Stop",
+                                   message: message) { [weak self] in
+            self?.dismissModal()
+        }
     }
 
     func animatedLayoutNeeded(block: @escaping (() -> Void), completion: @escaping (() -> Void)) {

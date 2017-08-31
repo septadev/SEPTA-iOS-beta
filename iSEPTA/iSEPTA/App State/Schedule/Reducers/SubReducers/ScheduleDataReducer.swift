@@ -5,22 +5,26 @@ import SeptaSchedule
 
 struct ScheduleDataReducer {
 
-    static func initScheduleData() -> ScheduleData {
-        return ScheduleData()
-    }
-
     static func reduceData(action: ScheduleAction, scheduleData: ScheduleData) -> ScheduleData {
         var newScheduleData = scheduleData
 
         switch action {
         case let action as TransitModeSelected:
             newScheduleData = reduceTransitModeSelected(action: action, scheduleData: scheduleData)
+        case let action as ClearRoutes:
+            newScheduleData = reduceClearRoutes(action: action, scheduleData: newScheduleData)
         case let action as RoutesLoaded:
             newScheduleData = reduceRoutesLoaded(action: action, scheduleData: newScheduleData)
+        case let action as ClearTripStarts:
+            newScheduleData = reduceClearTripStarts(action: action, scheduleData: newScheduleData)
         case let action as TripStartsLoaded:
             newScheduleData = reduceTripStartsLoaded(action: action, scheduleData: newScheduleData)
+        case let action as ClearTripEnds:
+            newScheduleData = reduceClearTripEnds(action: action, scheduleData: newScheduleData)
         case let action as TripEndsLoaded:
             newScheduleData = reduceTripEndsLoaded(action: action, scheduleData: newScheduleData)
+        case let action as ClearTrips:
+            newScheduleData = reduceClearTrips(action: action, scheduleData: newScheduleData)
         case let action as TripsLoaded:
             newScheduleData = reduceTripLoaded(action: action, scheduleData: newScheduleData)
 
@@ -35,22 +39,56 @@ struct ScheduleDataReducer {
         return newScheduleData
     }
 
-    static func reduceRoutesLoaded(action: RoutesLoaded, scheduleData: ScheduleData) -> ScheduleData {
-        let newScheduleData = ScheduleData(availableRoutes: action.routes,
+    // MARK: - Clearing Data
+
+    static func reduceClearRoutes(action _: ClearRoutes, scheduleData _: ScheduleData) -> ScheduleData {
+        let newScheduleData = ScheduleData(availableRoutes: ScheduleRouteState(),
+                                           availableStarts: ScheduleStopState(),
+                                           availableStops: ScheduleStopState(),
+                                           availableTrips: ScheduleTripState())
+        return newScheduleData
+    }
+
+    static func reduceClearTripStarts(action _: ClearTripStarts, scheduleData: ScheduleData) -> ScheduleData {
+        let newScheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
+                                           availableStarts: ScheduleStopState(),
+                                           availableStops: ScheduleStopState(),
+                                           availableTrips: ScheduleTripState())
+        return newScheduleData
+    }
+
+    static func reduceClearTripEnds(action _: ClearTripEnds, scheduleData: ScheduleData) -> ScheduleData {
+        let newScheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
+                                           availableStarts: scheduleData.availableStarts,
+                                           availableStops: ScheduleStopState(),
+                                           availableTrips: ScheduleTripState())
+        return newScheduleData
+    }
+
+    static func reduceClearTrips(action _: ClearTrips, scheduleData: ScheduleData) -> ScheduleData {
+
+        let newScheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
                                            availableStarts: scheduleData.availableStarts,
                                            availableStops: scheduleData.availableStops,
-                                           availableTrips: scheduleData.availableTrips,
-                                           errorString: action.error)
+                                           availableTrips: ScheduleTripState())
+        return newScheduleData
+    }
+
+    // MARK: - Loading Data
+    static func reduceRoutesLoaded(action: RoutesLoaded, scheduleData: ScheduleData) -> ScheduleData {
+        let newScheduleData = ScheduleData(availableRoutes: ScheduleRouteState(routes: action.routes, updateMode: .loadValues),
+                                           availableStarts: scheduleData.availableStarts,
+                                           availableStops: scheduleData.availableStops,
+                                           availableTrips: scheduleData.availableTrips)
         return newScheduleData
     }
 
     static func reduceTripStartsLoaded(action: TripStartsLoaded, scheduleData: ScheduleData) -> ScheduleData {
 
         let newScheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
-                                           availableStarts: action.availableStarts,
+                                           availableStarts: ScheduleStopState(stops: action.availableStarts, updateMode: .loadValues),
                                            availableStops: scheduleData.availableStops,
-                                           availableTrips: scheduleData.availableTrips,
-                                           errorString: action.error)
+                                           availableTrips: scheduleData.availableTrips)
         return newScheduleData
     }
 
@@ -58,9 +96,8 @@ struct ScheduleDataReducer {
 
         let newScheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
                                            availableStarts: scheduleData.availableStarts,
-                                           availableStops: action.availableStops,
-                                           availableTrips: scheduleData.availableTrips,
-                                           errorString: action.error)
+                                           availableStops: ScheduleStopState(stops: action.availableStops, updateMode: .loadValues),
+                                           availableTrips: scheduleData.availableTrips)
         return newScheduleData
     }
 
@@ -69,8 +106,7 @@ struct ScheduleDataReducer {
         let newScheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
                                            availableStarts: scheduleData.availableStarts,
                                            availableStops: scheduleData.availableStops,
-                                           availableTrips: action.availableTrips,
-                                           errorString: action.error)
+                                           availableTrips: ScheduleTripState(trips: action.availableTrips, updateMode: .loadValues))
         return newScheduleData
     }
 }

@@ -13,7 +13,7 @@ import ReSwift
 
 class SearchRoutesModalHeaderViewController: UIViewController, UIGestureRecognizerDelegate {
 
-    let transitMode: TransitMode! = store.state.scheduleState.scheduleRequest?.transitMode
+    let transitMode: TransitMode! = store.state.scheduleState.scheduleRequest.transitMode
 
     weak var delegate: SearchModalHeaderDelegate?
 

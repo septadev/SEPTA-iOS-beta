@@ -29,21 +29,7 @@ protocol SchedulesViewModelDelegate: AnyObject {
 
 class SelectSchedulesViewModel: StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleRequest?
-    var scheduleRequest: ScheduleRequest? {
-        didSet {
-            transitModeVar = scheduleRequest?.transitMode
-        }
-    }
-
-    var transitModeVar: TransitMode?
-
-    func transitMode() -> TransitMode {
-        if let transitMode = transitModeVar {
-            return transitMode
-        } else {
-            return .bus
-        }
-    }
+    var scheduleRequest: ScheduleRequest?
 
     weak var delegate: UpdateableFromViewModel?
     weak var schedulesDelegate: SchedulesViewModelDelegate?
@@ -90,7 +76,8 @@ class SelectSchedulesViewModel: StoreSubscriber {
     }
 
     func transitModeTitle() -> String? {
-        return transitMode().routeTitle()
+        guard let transitMode = scheduleRequest?.transitMode else { return nil }
+        return transitMode.routeTitle()
     }
 
     func cellIdForRow(_ row: Int) -> String {
@@ -103,15 +90,15 @@ class SelectSchedulesViewModel: StoreSubscriber {
     }
 
     fileprivate func configureSelectRouteDisplayModel() -> RowDisplayModel {
-        var text = transitMode().selectRoutePlaceholderText()
+        var text = scheduleRequest?.transitMode?.selectRoutePlaceholderText() ?? ""
         let isSelectable = true
         var pillColor = UIColor.clear
-        if let route = scheduleRequest?.selectedRoute {
-            text = route.routeShortName
+        if let route = scheduleRequest?.selectedRoute, let transitMode = scheduleRequest?.transitMode {
+            text = (transitMode == .rail) ? route.routeLongName : route.routeShortName
 
             if let routeColor = route.colorForRoute() {
                 pillColor = routeColor
-            } else if let transitModeColor = transitMode().colorForPill() {
+            } else if let transitModeColor = scheduleRequest?.transitMode?.colorForPill() {
                 pillColor = transitModeColor
             }
         }
@@ -127,10 +114,10 @@ class SelectSchedulesViewModel: StoreSubscriber {
             if let startName = scheduleRequest?.selectedStart?.stopName {
                 text = startName
             } else {
-                text = transitMode().startingStopName()
+                text = scheduleRequest?.transitMode?.startingStopName() ?? ""
             }
         } else {
-            text = transitMode().startingStopName()
+            text = scheduleRequest?.transitMode?.startingStopName() ?? ""
             isSelectable = false
         }
         return RowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopNavigationController, pillColor: UIColor.clear, showSearchIcon: true)
@@ -145,10 +132,10 @@ class SelectSchedulesViewModel: StoreSubscriber {
             if let stopName = scheduleRequest?.selectedEnd?.stopName {
                 text = stopName
             } else {
-                text = transitMode().endingStopName()
+                text = scheduleRequest?.transitMode?.endingStopName() ?? ""
             }
         } else {
-            text = transitMode().endingStopName()
+            text = scheduleRequest?.transitMode?.endingStopName() ?? ""
             isSelectable = false
         }
         return RowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopController, pillColor: UIColor.clear, showSearchIcon: true)
@@ -165,7 +152,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
             cell.searchIcon.isHidden = !rowModel.showSearchIcon
         } else if let cell = cell as? RouteSelectedTableViewCell, let selectedRoute = scheduleRequest?.selectedRoute {
             cell.routeIdLabel.text = "\(selectedRoute.routeId):"
-            cell.routeShortNameLabel.text = selectedRoute.routeShortName
+            cell.routeShortNameLabel.text = rowModel.text
             cell.pillView.backgroundColor = rowModel.pillColor
         }
     }

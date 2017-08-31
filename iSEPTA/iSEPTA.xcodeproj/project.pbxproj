@@ -111,11 +111,16 @@
 		58F80D431F421C1F0089501A /* SelectStopNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F80D421F421C1F0089501A /* SelectStopNavigationController.swift */; };
 		58F80D451F421C4B0089501A /* SelectStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F80D441F421C4B0089501A /* SelectStopViewController.swift */; };
 		58FC9D9D1F3F9CB0004269DE /* InitializeNavigationState.json in Resources */ = {isa = PBXBuildFile; fileRef = 581804C51F3F8F19002184E3 /* InitializeNavigationState.json */; };
+		67075FC21F578578008BB38C /* ScheduleUpdateMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC11F578578008BB38C /* ScheduleUpdateMode.swift */; };
+		67075FC41F57858C008BB38C /* ScheduleStopState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC31F57858C008BB38C /* ScheduleStopState.swift */; };
+		67075FC61F57860E008BB38C /* ScheduleTripState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC51F57860E008BB38C /* ScheduleTripState.swift */; };
+		67075FC81F57866D008BB38C /* ScheduleRouteState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC71F57866D008BB38C /* ScheduleRouteState.swift */; };
 		6749A46E1F53997D00AF6119 /* StopToSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749A46D1F53997D00AF6119 /* StopToSelect.swift */; };
 		6749A4711F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */; };
 		674FDBBF1F56E87F00CA67D2 /* SeptaRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; };
 		674FDBC01F56E87F00CA67D2 /* SeptaRest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		674FDBC51F57390D00CA67D2 /* Route+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674FDBC41F57390D00CA67D2 /* Route+Color.swift */; };
+		674FDBC71F577D3B00CA67D2 /* Route+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674FDBC61F577D3B00CA67D2 /* Route+Icon.swift */; };
 		67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B511801F499E8F000E3065 /* ButtonViewCell.swift */; };
 		67EA2B5D1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B5C1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift */; };
 		67EA2B611F518CA600C0567A /* SearchModalHeaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B601F518CA600C0567A /* SearchModalHeaderDelegate.swift */; };
@@ -322,9 +327,14 @@
 		58F444FB1F3D335400A93208 /* SeptaAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaAction.swift; sourceTree = "<group>"; };
 		58F80D421F421C1F0089501A /* SelectStopNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopNavigationController.swift; sourceTree = "<group>"; };
 		58F80D441F421C4B0089501A /* SelectStopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopViewController.swift; sourceTree = "<group>"; };
+		67075FC11F578578008BB38C /* ScheduleUpdateMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleUpdateMode.swift; sourceTree = "<group>"; };
+		67075FC31F57858C008BB38C /* ScheduleStopState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStopState.swift; sourceTree = "<group>"; };
+		67075FC51F57860E008BB38C /* ScheduleTripState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTripState.swift; sourceTree = "<group>"; };
+		67075FC71F57866D008BB38C /* ScheduleRouteState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRouteState.swift; sourceTree = "<group>"; };
 		6749A46D1F53997D00AF6119 /* StopToSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopToSelect.swift; sourceTree = "<group>"; };
 		6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAddressRelativeStopViewModel.swift; sourceTree = "<group>"; };
 		674FDBC41F57390D00CA67D2 /* Route+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Color.swift"; sourceTree = "<group>"; };
+		674FDBC61F577D3B00CA67D2 /* Route+Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Icon.swift"; sourceTree = "<group>"; };
 		67B511801F499E8F000E3065 /* ButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewCell.swift; sourceTree = "<group>"; };
 		67EA2B5C1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStopsModalHeaderViewController.swift; sourceTree = "<group>"; };
 		67EA2B601F518CA600C0567A /* SearchModalHeaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModalHeaderDelegate.swift; sourceTree = "<group>"; };
@@ -702,6 +712,11 @@
 				58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */,
 				589A89DA1F52E6A9007329DB /* ScheduleStopEdit.swift */,
 				674FDBC41F57390D00CA67D2 /* Route+Color.swift */,
+				674FDBC61F577D3B00CA67D2 /* Route+Icon.swift */,
+				67075FC11F578578008BB38C /* ScheduleUpdateMode.swift */,
+				67075FC31F57858C008BB38C /* ScheduleStopState.swift */,
+				67075FC51F57860E008BB38C /* ScheduleTripState.swift */,
+				67075FC71F57866D008BB38C /* ScheduleRouteState.swift */,
 			);
 			path = StateObjects;
 			sourceTree = "<group>";
@@ -1160,8 +1175,10 @@
 				582F4ED31F33B1120062A546 /* SelectStopRow.swift in Sources */,
 				582F4EBC1F33B1120062A546 /* DateFormatters.swift in Sources */,
 				582F4EC81F33B1120062A546 /* RouteTableViewCell.swift in Sources */,
+				67075FC21F578578008BB38C /* ScheduleUpdateMode.swift in Sources */,
 				67F757B51F488A4400D3A4EE /* SeptaDraw.swift in Sources */,
 				582F4ED11F33B1120062A546 /* SelectedStopType.swift in Sources */,
+				67075FC61F57860E008BB38C /* ScheduleTripState.swift in Sources */,
 				5840D6D31F376D9C00C8CB76 /* MainNavigationController.swift in Sources */,
 				5840D6EE1F37F63800C8CB76 /* TransitModeToolbarView.swift in Sources */,
 				582531981F40707C0088D056 /* DefaultPreferencesLoader.swift in Sources */,
@@ -1179,12 +1196,14 @@
 				67F757AC1F48582700D3A4EE /* UIColor+Util.swift in Sources */,
 				5840D6E71F37EAEF00C8CB76 /* UserPreferencesKeys.swift in Sources */,
 				582F4EDF1F33B1120062A546 /* MainViewController.swift in Sources */,
+				674FDBC71F577D3B00CA67D2 /* Route+Icon.swift in Sources */,
 				58F80D431F421C1F0089501A /* SelectStopNavigationController.swift in Sources */,
 				58658D1B1F53135100E67B4E /* AddressCell.swift in Sources */,
 				67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */,
 				5840D6D51F376E5E00C8CB76 /* NavigationStackState.swift in Sources */,
 				5840D6E91F37EE6500C8CB76 /* Providers.swift in Sources */,
 				581804BB1F3F8051002184E3 /* LoggingError.swift in Sources */,
+				67075FC41F57858C008BB38C /* ScheduleStopState.swift in Sources */,
 				582F4ED81F33B1120062A546 /* SelectSchedulesViewController.swift in Sources */,
 				5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */,
 				67EA2B611F518CA600C0567A /* SearchModalHeaderDelegate.swift in Sources */,
@@ -1204,6 +1223,7 @@
 				58F80D451F421C4B0089501A /* SelectStopViewController.swift in Sources */,
 				5840D6D71F37728B00C8CB76 /* NavigationController.swift in Sources */,
 				58C2A0691F38AA1B00F0D6CA /* ScheduleData.swift in Sources */,
+				67075FC81F57866D008BB38C /* ScheduleRouteState.swift in Sources */,
 				58290E531F372F36000CCF3C /* ScheduleState.swift in Sources */,
 				5840D6E31F37E9FB00C8CB76 /* UserPreferencesProvider.swift in Sources */,
 				67F757B71F488A5E00D3A4EE /* BlueGradientBackgroundView.swift in Sources */,

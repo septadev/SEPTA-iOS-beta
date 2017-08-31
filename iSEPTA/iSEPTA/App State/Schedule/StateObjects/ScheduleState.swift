@@ -5,11 +5,11 @@ import SeptaSchedule
 
 struct ScheduleState {
 
-    let scheduleRequest: ScheduleRequest?
-    let scheduleData: ScheduleData?
-    let scheduleStopEdit: ScheduleStopEdit?
+    let scheduleRequest: ScheduleRequest
+    let scheduleData: ScheduleData
+    let scheduleStopEdit: ScheduleStopEdit
 
-    init(scheduleRequest: ScheduleRequest? = nil, scheduleData: ScheduleData? = nil, scheduleStopEdit: ScheduleStopEdit? = nil) {
+    init(scheduleRequest: ScheduleRequest = ScheduleRequest(), scheduleData: ScheduleData = ScheduleData(), scheduleStopEdit: ScheduleStopEdit = ScheduleStopEdit()) {
         self.scheduleRequest = scheduleRequest
         self.scheduleData = scheduleData
         self.scheduleStopEdit = scheduleStopEdit
@@ -20,13 +20,13 @@ extension ScheduleState: Equatable {}
 func ==(lhs: ScheduleState, rhs: ScheduleState) -> Bool {
     var areEqual = true
 
-    areEqual = Optionals.optionalCompare(currentValue: lhs.scheduleRequest, newValue: rhs.scheduleRequest).equalityResult()
+    areEqual = lhs.scheduleRequest == rhs.scheduleRequest
     guard areEqual else { return false }
 
-    areEqual = Optionals.optionalCompare(currentValue: lhs.scheduleData, newValue: rhs.scheduleData).equalityResult()
+    areEqual = lhs.scheduleData == rhs.scheduleData
     guard areEqual else { return false }
 
-    areEqual = Optionals.optionalCompare(currentValue: lhs.scheduleStopEdit, newValue: rhs.scheduleStopEdit).equalityResult()
+    areEqual = lhs.scheduleStopEdit == rhs.scheduleStopEdit
     guard areEqual else { return false }
 
     return areEqual

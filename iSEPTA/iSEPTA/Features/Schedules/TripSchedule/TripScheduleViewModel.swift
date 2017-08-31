@@ -5,15 +5,19 @@ import SeptaSchedule
 import ReSwift
 
 @objc class TripScheduleViewModel: NSObject, StoreSubscriber {
-    typealias StoreSubscriberStateType = ScheduleState?
+    typealias StoreSubscriberStateType = ScheduleTripState
     @IBOutlet weak var tripScheduleViewController: UpdateableFromViewModel!
 
-    var scheduleRequest: ScheduleRequest?
-    private var availableTrips: [Trip]?
+    var scheduleRequest = store.state.scheduleState.scheduleRequest
+    private var availableTrips: [Trip]? {
+        didSet {
+            scheduleRequest = store.state.scheduleState.scheduleRequest
+            tripScheduleViewController?.viewModelUpdated()
+        }
+    }
 
     var tripStops: (String, String)? {
-        guard let scheduleRequest = scheduleRequest,
-            let selectedStart = scheduleRequest.selectedStart,
+        guard let selectedStart = scheduleRequest.selectedStart,
             let selectedEnd = scheduleRequest.selectedEnd else { return nil }
         return (selectedStart.stopName, selectedEnd.stopName)
     }
@@ -44,19 +48,22 @@ import ReSwift
     func subscribe() {
         store.subscribe(self) {
             $0.select {
-                $0.scheduleState
-            }
+                $0.scheduleState.scheduleData.availableTrips
+            }.skipRepeats { $0 == $1 }
         }
     }
 
     func newState(state: StoreSubscriberStateType) {
-        guard let scheduleState = state else { return }
-        if let scheduleRequest = scheduleState.scheduleRequest {
-            self.scheduleRequest = scheduleRequest
-        }
-        availableTrips = scheduleState.scheduleData?.availableTrips
 
-        tripScheduleViewController?.viewModelUpdated()
+        if state.updateMode == .loadValues && state.trips.count == 0 {
+            tripScheduleViewController?.displayErrorMessage(message: SeptaString.NoTripsAvailable)
+            tripScheduleViewController?.updateActivityIndicator(animating: false)
+        } else if state.updateMode == .clearValues {
+            tripScheduleViewController?.updateActivityIndicator(animating: true)
+        } else if state.updateMode == .loadValues && state.trips.count > 0 {
+            tripScheduleViewController?.updateActivityIndicator(animating: false)
+        }
+        availableTrips = state.trips
     }
 
     deinit {

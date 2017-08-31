@@ -14,7 +14,8 @@ class SelectRouteViewController: UIViewController, UITableViewDelegate, UITableV
     func updateActivityIndicator(animating _: Bool) {
     }
 
-    func displayErrorMessage(message _: String) {
+    func displayErrorMessage(message: String) {
+        UIAlert.presentOKAlertFrom(viewController: self, withTitle: "Select Routes", message: message)
     }
 
     @IBOutlet var viewModel: RoutesViewModel!
@@ -49,6 +50,7 @@ class SelectRouteViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func viewModelUpdated() {
+        guard let tableView = tableView else { return }
         tableView.reloadData()
     }
 

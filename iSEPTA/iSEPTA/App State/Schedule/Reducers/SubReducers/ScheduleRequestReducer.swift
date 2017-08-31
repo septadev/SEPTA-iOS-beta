@@ -6,10 +6,6 @@ import SeptaSchedule
 
 struct ScheduleRequestReducer {
 
-    static func initRequest() -> ScheduleRequest {
-        return ScheduleRequest()
-    }
-
     static func reduceRequest(action: ScheduleAction, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
         var newScheduleRequest: ScheduleRequest
         switch action {

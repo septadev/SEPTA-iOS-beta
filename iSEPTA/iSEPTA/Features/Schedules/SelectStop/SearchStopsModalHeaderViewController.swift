@@ -13,7 +13,7 @@ import ReSwift
 
 class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, UIGestureRecognizerDelegate {
     typealias StoreSubscriberStateType = ScheduleStopEdit?
-    let transitMode: TransitMode! = store.state.scheduleState.scheduleRequest?.transitMode
+    let transitMode: TransitMode! = store.state.scheduleState.scheduleRequest.transitMode
 
     @IBOutlet weak var viewHeightConstraintForAddress: NSLayoutConstraint!
     @IBOutlet weak var viewHeightConstraintForStops: NSLayoutConstraint!

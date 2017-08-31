@@ -20,7 +20,7 @@ struct FilterableStop {
 }
 
 class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
-    typealias StoreSubscriberStateType = [Stop]?
+    typealias StoreSubscriberStateType = ScheduleStopState
 
     var stopToSelect: StopToSelect = .starts {
         didSet {
@@ -49,6 +49,7 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITab
             self.filteredStops = filteredStops.sorted {
                 $0.sortString < $1.sortString
             }
+            selectStopViewController?.viewModelUpdated()
         }
     }
 
@@ -57,11 +58,7 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITab
     let cellId = "stopCell"
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        let rowCount = numberOfRows()
-        guard let delegate = selectStopViewController else { return 0 }
-        let animating = rowCount == 0
-        delegate.updateActivityIndicator(animating: animating)
-        return rowCount
+        return numberOfRows()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,14 +76,14 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITab
         if stopToSelect == .starts {
             store.subscribe(self) {
                 $0.select {
-                    $0.scheduleState.scheduleData?.availableStarts
-                }
+                    $0.scheduleState.scheduleData.availableStarts
+                }.skipRepeats { $0 == $1 }
             }
         } else {
             store.subscribe(self) {
                 $0.select {
-                    $0.scheduleState.scheduleData?.availableStops
-                }
+                    $0.scheduleState.scheduleData.availableStops
+                }.skipRepeats { $0 == $1 }
             }
         }
     }
@@ -96,9 +93,15 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITab
     }
 
     func newState(state: StoreSubscriberStateType) {
-        allStops = state
-        guard let state = state, state.count > 0 else { return }
-        selectStopViewController?.viewModelUpdated()
+        allStops = state.stops
+        if state.updateMode == .loadValues && state.stops.count == 0 {
+            selectStopViewController?.displayErrorMessage(message: SeptaString.NoStopsAvailable)
+            selectStopViewController?.updateActivityIndicator(animating: false)
+        } else if state.updateMode == .clearValues {
+            selectStopViewController?.updateActivityIndicator(animating: true)
+        } else if state.updateMode == .loadValues && state.stops.count > 0 {
+            selectStopViewController?.updateActivityIndicator(animating: false)
+        }
     }
 
     func configureDisplayable(_ displayable: SingleStringDisplayable, atRow row: Int) {

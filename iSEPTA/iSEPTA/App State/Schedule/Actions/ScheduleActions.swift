@@ -17,9 +17,13 @@ struct DatabaseLoaded: ScheduleAction {
 }
 
 struct RoutesLoaded: ScheduleAction {
-    let routes: [Route]?
+    let routes: [Route]
     let error: String?
     let description = "Routes for viewing are now available"
+}
+
+struct ClearRoutes: ScheduleAction {
+    let description = "Clearing out routes in preparation for a new query to run"
 }
 
 struct RouteSelected: ScheduleAction {
@@ -38,7 +42,7 @@ struct CurrentStopToEdit: ScheduleAction {
 }
 
 struct TripStartsLoaded: ScheduleAction {
-    let availableStarts: [Stop]?
+    let availableStarts: [Stop]
     let description = "Loading available trip starting points for direction"
     let error: String?
 }
@@ -48,10 +52,18 @@ struct TripStartSelected: ScheduleAction {
     let description = "The user has selected a stop"
 }
 
+struct ClearTripStarts: ScheduleAction {
+    let description = "Clearing out starting stops in preparation for a new query"
+}
+
 struct TripEndsLoaded: ScheduleAction {
-    let availableStops: [Stop]?
+    let availableStops: [Stop]
     let description = "Loading available trip ending points for direction"
     let error: String?
+}
+
+struct ClearTripEnds: ScheduleAction {
+    let description = "Clearing out ending stops in preparation for a new query"
 }
 
 struct TripEndSelected: ScheduleAction {
@@ -60,9 +72,13 @@ struct TripEndSelected: ScheduleAction {
 }
 
 struct TripsLoaded: ScheduleAction {
-    let availableTrips: [Trip]?
+    let availableTrips: [Trip]
     let description = "Now we have available trips for the user to consider"
     let error: String?
+}
+
+struct ClearTrips: ScheduleAction {
+    let description = "Clearing out trips in preparation for a new query"
 }
 
 struct ScheduleTypeSelected: ScheduleAction {

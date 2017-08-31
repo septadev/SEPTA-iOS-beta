@@ -3,15 +3,21 @@ use Data::Dumper;
 
 my $struct = q |
 
-fileprivate struct RowDisplayModel {
-    let text: String
-    let shouldFillCell: Bool
-    let isSelectable: Bool
-    let targetController: ViewController
-    let pillColor: UIColor
-    let showSearchIcon: Bool
-    
-    
+struct ScheduleData {
+    let availableRoutes: ScheduleRouteState
+
+    let availableStarts: ScheduleStopState
+    let availableStops: ScheduleStopState
+    let availableTrips: ScheduleTripState
+
+
+    init(availableRoutes: [Route]? = nil, availableStarts: [Stop]? = nil, availableStops: [Stop]? = nil, availableTrips: [Trip]? = nil, errorString: String? = nil) {
+        self.availableRoutes = availableRoutes
+        self.availableStarts = availableStarts
+        self.availableStops = availableStops
+        self.availableTrips = availableTrips
+        self.errorString = errorString
+    }
 }
 	|;
 

@@ -5,10 +5,12 @@ import SeptaSchedule
 import ReSwift
 
 class TripScheduleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController {
-    func updateActivityIndicator(animating _: Bool) {
-    }
 
-    func displayErrorMessage(message _: String) {
+    func displayErrorMessage(message: String) {
+        UIAlert.presentOKAlertFrom(viewController: self,
+                                   withTitle: "View Trips",
+                                   message: message) { [weak self] in
+        }
     }
 
     static var viewController: ViewController = .tripScheduleController
@@ -43,11 +45,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         let rowCount = viewModel.numberOfRows()
-        if rowCount > 0 {
-            activityIndicator.stopAnimating()
-        } else {
-            activityIndicator.startAnimating()
-        }
+
         return rowCount
     }
 
@@ -92,7 +90,6 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
         let action = ScheduleTypeSelected(scheduleType: scheduleType)
         store.dispatch(action)
-        //        activityIndicator.startAnimating()
     }
 
     func resetTintColors() {
@@ -106,30 +103,37 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         viewModel.subscribe()
         tableView.tableFooterView = tableViewFooter
         weekdayBarButtonItem.tintColor = UIColor.darkText
-        //        tableView.tableHeaderView = header
-        //        let item = scheduleTypeSelector.items![0]
-        //        item.tintColor = UIColor.green
-        //        startingPoint.text = viewModel.routeStops.startStop?.stopName
-        //        endingPoint.text = viewModel.routeStops.destinationStop?.stopName
+        updateLabels()
     }
 
-    override func viewWillAppear(_: Bool) {
-        //        super.viewWillAppear(animated)
-        //        for item in scheduleTypeSelector.items! {
-        //            item.width = view.frame.size.width / 3.0
-        //        }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewHasAppeared = true
     }
 
-    override func viewWillDisappear(_: Bool) {
+    var shouldBeAnimatingActivityIndicator = true {
+        didSet {
+            updateActivityIndicator()
+        }
     }
 
-    //    override func didMove(toParentViewController parent: UIViewController?) {
-    //        super.didMove(toParentViewController: parent)
-    //        if parent == nil {
-    //            let action = UserPoppedViewController(navigationController: .schedules, description: "TripScheduleViewController has been popped")
-    //            store.dispatch(action)
-    //        }
-    //    }
+    func updateActivityIndicator(animating: Bool) {
+        shouldBeAnimatingActivityIndicator = animating
+    }
+
+    var viewHasAppeared = false {
+        didSet {
+            updateActivityIndicator()
+        }
+    }
+
+    func updateActivityIndicator() {
+        if viewHasAppeared && shouldBeAnimatingActivityIndicator {
+            activityIndicator.startAnimating()
+        } else if viewHasAppeared && !shouldBeAnimatingActivityIndicator {
+            activityIndicator.stopAnimating()
+        }
+    }
 
     override func didMove(toParentViewController parent: UIViewController?) {
         super.didMove(toParentViewController: parent)

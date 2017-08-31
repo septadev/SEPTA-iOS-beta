@@ -17,31 +17,23 @@ struct ScheduleReducer {
         /// if the state already exists
         if let newState = state {
             /// if the action is a schedule action
-            guard let action = action as? ScheduleAction,
-                let scheduleRequest = newState.scheduleRequest,
-                let scheduleData = newState.scheduleData,
-                let scheduleStopEdit = newState.scheduleStopEdit
+            guard let action = action as? ScheduleAction else { return newState }
+            return ScheduleState(
+                scheduleRequest: Req.reduceRequest(action: action, scheduleRequest: newState.scheduleRequest),
+                scheduleData: Data.reduceData(action: action, scheduleData: newState.scheduleData),
+                scheduleStopEdit: StopEdit.reduceStopEdit(action: action, scheduleStopEdit: newState.scheduleStopEdit)
+            )
 
-            else { return newState }
-            return ScheduleState(
-                scheduleRequest: Req.reduceRequest(action: action, scheduleRequest: scheduleRequest),
-                scheduleData: Data.reduceData(action: action, scheduleData: scheduleData),
-                scheduleStopEdit: StopEdit.reduceStopEdit(action: action, scheduleStopEdit: scheduleStopEdit)
-            )
-            /// if schedule state does not exist, run through the init
         } else {
-            return ScheduleState(
-                scheduleRequest: Req.initRequest(),
-                scheduleData: Data.initScheduleData(),
-                scheduleStopEdit: StopEdit.initStopEdit()
-            )
+            return ScheduleState()
         }
     }
 
     static func reduceTripReverse(action: ReverseLoaded, state: ScheduleState) -> ScheduleState {
         return ScheduleState(
             scheduleRequest: action.scheduleRequest,
-            scheduleData: ScheduleData(availableRoutes: state.scheduleData?.availableRoutes, availableStarts: nil, availableStops: nil, availableTrips: nil, errorString: action.error)
+            scheduleData: ScheduleData(availableRoutes: state.scheduleData.availableRoutes),
+            scheduleStopEdit: ScheduleStopEdit()
         )
     }
 }

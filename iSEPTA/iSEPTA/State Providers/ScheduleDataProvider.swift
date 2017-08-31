@@ -131,29 +131,26 @@ class ScheduleDataProvider: StoreSubscriber {
     // MARK: - Clear out existing data
     func clearRoutes() {
         DispatchQueue.main.async {
-            let routesLoadedAction = RoutesLoaded(routes: nil, error: nil)
-            store.dispatch(routesLoadedAction)
+
+            store.dispatch(ClearRoutes())
         }
     }
 
     func clearStartingStops() {
         DispatchQueue.main.async {
-            let tripStartsLoadedAction = TripStartsLoaded(availableStarts: nil, error: nil)
-            store.dispatch(tripStartsLoadedAction)
+            store.dispatch(ClearTripStarts())
         }
     }
 
     func clearEndingStops() {
         DispatchQueue.main.async {
-            let tripEndsLoadedAction = TripEndsLoaded(availableStops: nil, error: nil)
-            store.dispatch(tripEndsLoadedAction)
+            store.dispatch(ClearTripEnds())
         }
     }
 
     func clearTrips() {
         DispatchQueue.main.async {
-            let tripsLoadedAction = TripsLoaded(availableTrips: nil, error: nil)
-            store.dispatch(tripsLoadedAction)
+            store.dispatch(ClearTrips())
         }
     }
 
@@ -162,6 +159,7 @@ class ScheduleDataProvider: StoreSubscriber {
     func retrieveAvailableRoutes(scheduleRequest: ScheduleRequest) {
         clearRoutes()
         RoutesCommand.sharedInstance.routes(forTransitMode: scheduleRequest.transitMode!) { routes, error in
+            let routes = routes ?? [Route]()
             let routesLoadedAction = RoutesLoaded(routes: routes, error: error?.localizedDescription)
             store.dispatch(routesLoadedAction)
         }
@@ -170,6 +168,7 @@ class ScheduleDataProvider: StoreSubscriber {
     func retrieveStartingStopsForRoute(scheduleRequest: ScheduleRequest) {
         clearStartingStops()
         TripStartCommand.sharedInstance.stops(forTransitMode: scheduleRequest.transitMode!, forRoute: scheduleRequest.selectedRoute!) { stops, error in
+            let stops = stops ?? [Stop]()
             let action = TripStartsLoaded(availableStarts: stops, error: error?.localizedDescription)
             store.dispatch(action)
         }
@@ -178,6 +177,7 @@ class ScheduleDataProvider: StoreSubscriber {
     func retrieveEndingStopsForRoute(scheduleRequest: ScheduleRequest) {
         clearEndingStops()
         TripEndCommand.sharedInstance.stops(forTransitMode: scheduleRequest.transitMode!, forRoute: scheduleRequest.selectedRoute!, tripStart: scheduleRequest.selectedStart!) { stops, error in
+            let stops = stops ?? [Stop]()
             let action = TripEndsLoaded(availableStops: stops, error: error?.localizedDescription)
             store.dispatch(action)
         }
@@ -186,6 +186,7 @@ class ScheduleDataProvider: StoreSubscriber {
     func retrieveTripsForRoute(scheduleRequest: ScheduleRequest) {
         clearTrips()
         TripScheduleCommand.sharedInstance.tripSchedules(forTransitMode: scheduleRequest.transitMode!, route: scheduleRequest.selectedRoute!, selectedStart: scheduleRequest.selectedStart!, selectedEnd: scheduleRequest.selectedEnd!, scheduleType: scheduleRequest.scheduleType!) { trips, error in
+            let trips = trips ?? [Trip]()
             let action = TripsLoaded(availableTrips: trips, error: error?.localizedDescription)
             store.dispatch(action)
         }
