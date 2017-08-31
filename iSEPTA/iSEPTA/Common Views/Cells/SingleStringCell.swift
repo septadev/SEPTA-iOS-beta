@@ -8,7 +8,7 @@ class SelectRouteCell: UITableViewCell {
 class SingleStringCell: UITableViewCell, SingleStringDisplayable {
     var shouldFill: Bool = false
     var enabled: Bool = false
-    @IBOutlet private weak var label: UILabel!
+    @IBOutlet weak var label: UILabel!
     func setTextColor(_ color: UIColor) {
         label.textColor = color
     }

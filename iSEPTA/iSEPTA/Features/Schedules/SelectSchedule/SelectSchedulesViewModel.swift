@@ -12,14 +12,16 @@ fileprivate struct RowDisplayModel {
     let targetController: ViewController
     let pillColor: UIColor
     let showSearchIcon: Bool
+    let fontWeight: UIFont.Weight
 
-    init(text: String, shouldFillCell: Bool, isSelectable: Bool, targetController: ViewController, pillColor: UIColor, showSearchIcon: Bool = false) {
+    init(text: String, shouldFillCell: Bool, isSelectable: Bool, targetController: ViewController, pillColor: UIColor, showSearchIcon: Bool = false, fontWeight: UIFont.Weight = UIFont.Weight.regular) {
         self.text = text
         self.shouldFillCell = shouldFillCell
         self.isSelectable = isSelectable
         self.targetController = targetController
         self.pillColor = pillColor
         self.showSearchIcon = showSearchIcon
+        self.fontWeight = fontWeight
     }
 }
 
@@ -108,12 +110,13 @@ class SelectSchedulesViewModel: StoreSubscriber {
 
     fileprivate func configureSelectStartDisplayModel() -> RowDisplayModel {
         var text: String = ""
-
+        var fontWeight = UIFont.Weight.regular
         let isSelectable: Bool
         if let _ = scheduleRequest?.selectedRoute {
             isSelectable = true
             if let startName = scheduleRequest?.selectedStart?.stopName {
                 text = startName
+                fontWeight = UIFont.Weight.medium
             } else {
                 text = scheduleRequest?.transitMode?.startingStopName() ?? ""
             }
@@ -121,17 +124,18 @@ class SelectSchedulesViewModel: StoreSubscriber {
             text = scheduleRequest?.transitMode?.startingStopName() ?? ""
             isSelectable = false
         }
-        return RowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopNavigationController, pillColor: UIColor.clear, showSearchIcon: true)
+        return RowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopNavigationController, pillColor: UIColor.clear, showSearchIcon: true, fontWeight: fontWeight)
     }
 
     fileprivate func configureSelectEndisplayModel() -> RowDisplayModel {
         var text: String = ""
-
+        var fontWeight = UIFont.Weight.regular
         let isSelectable: Bool
         if let _ = scheduleRequest?.selectedStart {
             isSelectable = true
             if let stopName = scheduleRequest?.selectedEnd?.stopName {
                 text = stopName
+                fontWeight = UIFont.Weight.medium
             } else {
                 text = scheduleRequest?.transitMode?.endingStopName() ?? ""
             }
@@ -139,14 +143,14 @@ class SelectSchedulesViewModel: StoreSubscriber {
             text = scheduleRequest?.transitMode?.endingStopName() ?? ""
             isSelectable = false
         }
-        return RowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopController, pillColor: UIColor.clear, showSearchIcon: true)
+        return RowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopController, pillColor: UIColor.clear, showSearchIcon: true, fontWeight: fontWeight)
     }
 
     func configureCell(_ cell: UITableViewCell, atRow row: Int) {
         guard row < displayModel.count else { return }
         let rowModel = displayModel[row]
         if let cell = cell as? SingleStringCell {
-
+            cell.label?.font = UIFont.systemFont(ofSize: 14, weight: rowModel.fontWeight)
             cell.setLabelText(rowModel.text)
             cell.setEnabled(rowModel.isSelectable)
             cell.setShouldFill(rowModel.shouldFillCell)

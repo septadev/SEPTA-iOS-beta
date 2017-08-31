@@ -103,13 +103,13 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5JT-lx-DGg" userLabel="RouteId">
-                                                                    <rect key="frame" x="35" y="21.5" width="16.5" height="18"/>
+                                                                    <rect key="frame" x="30" y="21.5" width="16.5" height="18"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="248" text="to Front-Market" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UtE-hk-g8E" userLabel="routeShortName">
-                                                                    <rect key="frame" x="54.5" y="21.5" width="226.5" height="18"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="248" text="to Front-Market" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UtE-hk-g8E" userLabel="routeShortName">
+                                                                    <rect key="frame" x="49.5" y="21.5" width="231.5" height="18"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -128,7 +128,7 @@
                                                                 <constraint firstItem="Vpi-aO-AXA" firstAttribute="centerY" secondItem="tv0-MK-MKw" secondAttribute="centerY" id="DSD-GX-L6e" userLabel="IconCenterY"/>
                                                                 <constraint firstItem="UtE-hk-g8E" firstAttribute="centerY" secondItem="tv0-MK-MKw" secondAttribute="centerY" id="Hs2-hL-8aK"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Vpi-aO-AXA" secondAttribute="trailing" constant="12" id="U35-mU-2dC" userLabel="IconRight"/>
-                                                                <constraint firstItem="5JT-lx-DGg" firstAttribute="leading" secondItem="9ED-ah-fuy" secondAttribute="trailing" constant="10" id="Uvt-FX-IBT" userLabel="RouteIdLeft"/>
+                                                                <constraint firstItem="5JT-lx-DGg" firstAttribute="leading" secondItem="9ED-ah-fuy" secondAttribute="trailing" constant="5" id="Uvt-FX-IBT" userLabel="RouteIdLeft"/>
                                                                 <constraint firstItem="UtE-hk-g8E" firstAttribute="leading" secondItem="5JT-lx-DGg" secondAttribute="trailing" constant="3" id="aIV-rs-MKC" userLabel="RouteShortNameLeft"/>
                                                                 <constraint firstItem="9ED-ah-fuy" firstAttribute="leading" secondItem="tv0-MK-MKw" secondAttribute="leading" constant="8" id="cNX-ei-Kmo" userLabel="PillLeft"/>
                                                                 <constraint firstItem="5JT-lx-DGg" firstAttribute="centerY" secondItem="tv0-MK-MKw" secondAttribute="centerY" id="hho-GJ-fgP" userLabel="RouteIdCenterY"/>
@@ -332,13 +332,13 @@ TableViewWrapper</string>
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="44 Route" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om0-j5-VdR" userLabel="RouteShortName">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" text="44 Route" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om0-j5-VdR" userLabel="RouteShortName">
                                                                 <rect key="frame" x="65" y="17" width="259" height="24"/>
-                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Market and 15th St" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ula-RY-ACf" userLabel="RouteLongName">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="To Market and 15th St" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ula-RY-ACf" userLabel="RouteLongName">
                                                                 <rect key="frame" x="65" y="41" width="295" height="17.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <color key="textColor" red="0.5490196078431373" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
