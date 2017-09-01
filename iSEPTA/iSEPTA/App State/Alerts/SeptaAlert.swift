@@ -10,6 +10,11 @@ import Foundation
 import SeptaSchedule
 import UIKit
 
+struct AlertViewElement {
+    let text: String
+    let image: UIImage
+}
+
 struct SeptaAlert {
     let advisory: Bool
     let alert: Bool
@@ -38,6 +43,35 @@ struct SeptaAlert {
             imageArray.append(UIImage(named: "weatherAlert"))
         }
         return imageArray.flatMap { $0 }
+    }
+
+    func stringsForAlert() -> [String] {
+        var stringArray = [String]()
+        if advisory {
+            stringArray.append("Advisory")
+        }
+        if alert {
+            stringArray.append("Alert")
+        }
+        if detour {
+            stringArray.append("Detour")
+        }
+        if weather {
+            stringArray.append("Weather")
+        }
+        return stringArray
+    }
+
+    func alertViewElements() -> [AlertViewElement] {
+        let images = imagesForAlert()
+        let strings = stringsForAlert()
+
+        var elements = [AlertViewElement]()
+
+        for (index, _) in images.enumerated() {
+            elements.append(AlertViewElement(text: strings[index], image: images[index]))
+        }
+        return elements
     }
 }
 

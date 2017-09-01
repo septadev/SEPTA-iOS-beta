@@ -6,11 +6,11 @@ import ReSwift
 
 class TripScheduleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController {
 
-    func displayErrorMessage(message: String) {
-        UIAlert.presentOKAlertFrom(viewController: self,
-                                   withTitle: "View Trips",
-                                   message: message) { [weak self] in
-        }
+    func displayErrorMessage(message _: String) {
+        //        UIAlert.presentOKAlertFrom(viewController: self,
+        //                                   withTitle: "View Trips",
+        //                                   message: message) { [weak self] in
+        //        }
     }
 
     @IBOutlet weak var routeNameLabel: UILabel! {

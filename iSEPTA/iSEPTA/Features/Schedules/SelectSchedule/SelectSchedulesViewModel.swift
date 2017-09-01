@@ -96,7 +96,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
         var text = scheduleRequest?.transitMode?.selectRoutePlaceholderText() ?? ""
         let isSelectable = true
         var pillColor = UIColor.clear
-        if let route = scheduleRequest?.selectedRoute, let transitMode = scheduleRequest?.transitMode {
+        if let route = scheduleRequest?.selectedRoute {
             text = route.routeLongName
 
             if let routeColor = route.colorForRoute() {

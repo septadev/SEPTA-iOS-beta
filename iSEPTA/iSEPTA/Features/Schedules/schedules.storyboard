@@ -332,14 +332,14 @@ TableViewWrapper</string>
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" text="44 Route" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om0-j5-VdR" userLabel="RouteShortName">
-                                                                <rect key="frame" x="65" y="17" width="259" height="24"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="751" text="44 Route" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om0-j5-VdR" userLabel="RouteShortName">
+                                                                <rect key="frame" x="65" y="17" width="259" height="23.5"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="To Market and 15th St" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ula-RY-ACf" userLabel="RouteLongName">
-                                                                <rect key="frame" x="65" y="41" width="295" height="17.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Market and 15th St" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ula-RY-ACf" userLabel="RouteLongName">
+                                                                <rect key="frame" x="65" y="40.5" width="295" height="18"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <color key="textColor" red="0.5490196078431373" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -484,7 +484,7 @@ TableViewWrapper</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pyu-Um-zmh" userLabel="InsetWhiteView">
-                                        <rect key="frame" x="9" y="50" width="357" height="458"/>
+                                        <rect key="frame" x="9" y="50" width="357" height="499"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drm-u7-yWJ" userLabel="TripDetails">
                                                 <rect key="frame" x="10" y="17" width="337" height="44"/>
@@ -509,39 +509,64 @@ TableViewWrapper</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUh-d4-gsx" userLabel="Reverse">
-                                                        <rect key="frame" x="277" y="0.0" width="60" height="30"/>
+                                                        <rect key="frame" x="120" y="14.5" width="60" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="60" id="k2B-og-VkJ"/>
                                                         </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="7"/>
                                                         <state key="normal" title="Reverse"/>
                                                         <connections>
                                                             <action selector="reverseStopsButtonTapped:" destination="9ZE-6T-hsR" eventType="touchUpInside" id="qCH-F0-s4s"/>
                                                         </connections>
                                                     </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FsL-gs-X84" userLabel="NextToArriveButton" customClass="NextToArriveButtonView" customModule="Septa" customModuleProvider="target">
+                                                        <rect key="frame" x="211" y="7" width="126" height="30"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="dtB-Ua-VBq"/>
+                                                            <constraint firstAttribute="width" constant="126" id="pXJ-WQ-Bq5"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="s9c-AY-wQ2" firstAttribute="top" secondItem="ake-6Y-gpx" secondAttribute="bottom" constant="15" id="1sw-yf-9vI" userLabel="DestinationStopTop"/>
+                                                    <constraint firstItem="IUh-d4-gsx" firstAttribute="leading" secondItem="drm-u7-yWJ" secondAttribute="leading" constant="120" id="55t-qn-pfQ" userLabel="ReverseLeft"/>
                                                     <constraint firstAttribute="bottom" secondItem="R3N-JS-aaK" secondAttribute="bottom" id="8sr-qp-22e" userLabel="DottedLineViewBottom"/>
-                                                    <constraint firstItem="IUh-d4-gsx" firstAttribute="top" secondItem="drm-u7-yWJ" secondAttribute="top" id="Cnr-ap-r4n" userLabel="ReverseTop"/>
                                                     <constraint firstItem="R3N-JS-aaK" firstAttribute="top" secondItem="drm-u7-yWJ" secondAttribute="top" id="Imv-zN-3p0" userLabel="DottedLineViewTop"/>
-                                                    <constraint firstAttribute="trailing" secondItem="IUh-d4-gsx" secondAttribute="trailing" id="TG8-rK-SZe" userLabel="ReverseRight"/>
+                                                    <constraint firstItem="FsL-gs-X84" firstAttribute="centerY" secondItem="drm-u7-yWJ" secondAttribute="centerY" id="Sqb-G0-V38" userLabel="NextToArriveButtonCenterY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="FsL-gs-X84" secondAttribute="trailing" id="TDy-4l-3i3" userLabel="NextToArriveRight"/>
                                                     <constraint firstItem="s9c-AY-wQ2" firstAttribute="leading" secondItem="drm-u7-yWJ" secondAttribute="leading" constant="22" id="Te8-JV-alM" userLabel="DestinationStopLeft"/>
                                                     <constraint firstItem="ake-6Y-gpx" firstAttribute="leading" secondItem="drm-u7-yWJ" secondAttribute="leading" constant="22" id="f2e-h7-Iei" userLabel="StartingStopLeft"/>
                                                     <constraint firstItem="R3N-JS-aaK" firstAttribute="leading" secondItem="drm-u7-yWJ" secondAttribute="leading" id="gRV-zM-EoZ" userLabel="DottedLineViewLeft"/>
                                                     <constraint firstItem="ake-6Y-gpx" firstAttribute="top" secondItem="drm-u7-yWJ" secondAttribute="top" id="gnM-uo-g24" userLabel="StartingStopTop"/>
                                                     <constraint firstAttribute="bottom" secondItem="s9c-AY-wQ2" secondAttribute="bottom" id="jl4-tX-cEx" userLabel="DestinationStopBottom"/>
+                                                    <constraint firstItem="IUh-d4-gsx" firstAttribute="top" secondItem="ake-6Y-gpx" secondAttribute="bottom" id="nUr-Xo-nf6"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uu3-3d-692" userLabel="AlertDetails" customClass="AlertViewGradientBackgroundView" customModule="Septa" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="61" width="357" height="56"/>
+                                                <rect key="frame" x="0.0" y="73" width="357" height="56"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0f-IX-1hl">
+                                                        <rect key="frame" x="15" y="7" width="66.5" height="14.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sAt-c3-1X6" userLabel="AlertStackView">
+                                                        <rect key="frame" x="78" y="-27" width="200" height="110"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </stackView>
+                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="45p-S2-JmA"/>
+                                                    <constraint firstItem="x0f-IX-1hl" firstAttribute="leading" secondItem="uu3-3d-692" secondAttribute="leading" constant="15" id="bqv-eV-EYN" userLabel="LineStatusLabelLeft"/>
+                                                    <constraint firstItem="x0f-IX-1hl" firstAttribute="top" secondItem="uu3-3d-692" secondAttribute="top" constant="7" id="khi-fi-Ill" userLabel="LineStatusLabelTop"/>
                                                 </constraints>
                                             </view>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="d5G-1F-kch" userLabel="ScheduelType">
-                                                <rect key="frame" x="10" y="137" width="337" height="29"/>
+                                                <rect key="frame" x="10" y="149" width="337" height="29"/>
                                                 <segments>
                                                     <segment title="Weekday"/>
                                                     <segment title="Saturday"/>
@@ -549,7 +574,7 @@ TableViewWrapper</string>
                                                 </segments>
                                             </segmentedControl>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zf9-bi-BCi">
-                                                <rect key="frame" x="0.0" y="175" width="357" height="283"/>
+                                                <rect key="frame" x="0.0" y="187" width="357" height="312"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="scheduleCell" id="ffg-L2-s06" customClass="ScheduleTableViewCell" customModule="Septa" customModuleProvider="target">
@@ -641,7 +666,7 @@ TableViewWrapper</string>
                                             <constraint firstItem="zf9-bi-BCi" firstAttribute="top" secondItem="d5G-1F-kch" secondAttribute="bottom" constant="10" id="0aM-EX-Z5i" userLabel="TableViewTop"/>
                                             <constraint firstAttribute="trailing" secondItem="uu3-3d-692" secondAttribute="trailing" id="5tZ-85-Kre" userLabel="AlertDetailsRight"/>
                                             <constraint firstItem="d5G-1F-kch" firstAttribute="leading" secondItem="Pyu-Um-zmh" secondAttribute="leading" constant="10" id="BHf-si-z2Q" userLabel="ScheduleTypeLeft"/>
-                                            <constraint firstItem="uu3-3d-692" firstAttribute="top" secondItem="drm-u7-yWJ" secondAttribute="bottom" id="Ea8-0H-OM8" userLabel="AlertDetailsTop"/>
+                                            <constraint firstItem="uu3-3d-692" firstAttribute="top" secondItem="drm-u7-yWJ" secondAttribute="bottom" constant="12" id="Ea8-0H-OM8" userLabel="AlertDetailsTop"/>
                                             <constraint firstItem="d5G-1F-kch" firstAttribute="top" secondItem="uu3-3d-692" secondAttribute="bottom" constant="20" id="Eyq-wM-IvO" userLabel="ScheduleTypeTop"/>
                                             <constraint firstAttribute="trailing" secondItem="d5G-1F-kch" secondAttribute="trailing" constant="10" id="GjU-BD-anT" userLabel="ScheduleTypeTop"/>
                                             <constraint firstItem="drm-u7-yWJ" firstAttribute="leading" secondItem="Pyu-Um-zmh" secondAttribute="leading" constant="10" id="Gxo-Hg-osl" userLabel="TripDetailsLeft"/>
@@ -656,7 +681,7 @@ TableViewWrapper</string>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Pyu-Um-zmh" secondAttribute="bottom" constant="51" id="2wQ-ZZ-4xp" userLabel="InsetWhiteViewBottom"/>
+                                    <constraint firstAttribute="bottom" secondItem="Pyu-Um-zmh" secondAttribute="bottom" constant="10" id="2wQ-ZZ-4xp" userLabel="InsetWhiteViewBottom"/>
                                     <constraint firstItem="dDq-5d-Xzd" firstAttribute="leading" secondItem="vAY-DY-CSA" secondAttribute="leading" constant="11" id="4FM-O5-4gK" userLabel="TitleViewLeft"/>
                                     <constraint firstItem="Pyu-Um-zmh" firstAttribute="leading" secondItem="vAY-DY-CSA" secondAttribute="leading" constant="9" id="DWr-pT-jsy" userLabel="InsetWhiteViewLeft"/>
                                     <constraint firstItem="Pyu-Um-zmh" firstAttribute="top" secondItem="dDq-5d-Xzd" secondAttribute="bottom" constant="13" id="Nbe-hX-zjR" userLabel="InsetWhiteViewTop"/>

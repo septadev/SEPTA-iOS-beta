@@ -128,6 +128,11 @@
 		67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B511801F499E8F000E3065 /* ButtonViewCell.swift */; };
 		67C567271F59695900FF6203 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C567261F59695900FF6203 /* Favorite.swift */; };
 		67C5672B1F596E0700FF6203 /* ErrorObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C5672A1F596E0700FF6203 /* ErrorObjects.swift */; };
+		67C5672F1F59862600FF6203 /* NextToArriveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C5672E1F59862600FF6203 /* NextToArriveButtonView.swift */; };
+		67C567311F5989D900FF6203 /* TransitAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67C567301F5989D900FF6203 /* TransitAlertView.xib */; };
+		67C567331F598A0400FF6203 /* TransitAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C567321F598A0400FF6203 /* TransitAlertView.swift */; };
+		67C567351F598C7900FF6203 /* SeptaAlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C567341F598C7900FF6203 /* SeptaAlertsViewController.swift */; };
+		67C567371F598D7A00FF6203 /* TransitAlerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67C567361F598D7A00FF6203 /* TransitAlerts.storyboard */; };
 		67EA2B5D1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B5C1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift */; };
 		67EA2B611F518CA600C0567A /* SearchModalHeaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B601F518CA600C0567A /* SearchModalHeaderDelegate.swift */; };
 		67EA2B631F51AB8700C0567A /* StopEditSearchMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B621F51AB8700C0567A /* StopEditSearchMode.swift */; };
@@ -348,6 +353,11 @@
 		67B511801F499E8F000E3065 /* ButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewCell.swift; sourceTree = "<group>"; };
 		67C567261F59695900FF6203 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		67C5672A1F596E0700FF6203 /* ErrorObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorObjects.swift; sourceTree = "<group>"; };
+		67C5672E1F59862600FF6203 /* NextToArriveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveButtonView.swift; sourceTree = "<group>"; };
+		67C567301F5989D900FF6203 /* TransitAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransitAlertView.xib; sourceTree = "<group>"; };
+		67C567321F598A0400FF6203 /* TransitAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitAlertView.swift; sourceTree = "<group>"; };
+		67C567341F598C7900FF6203 /* SeptaAlertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaAlertsViewController.swift; sourceTree = "<group>"; };
+		67C567361F598D7A00FF6203 /* TransitAlerts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransitAlerts.storyboard; sourceTree = "<group>"; };
 		67EA2B5C1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStopsModalHeaderViewController.swift; sourceTree = "<group>"; };
 		67EA2B601F518CA600C0567A /* SearchModalHeaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModalHeaderDelegate.swift; sourceTree = "<group>"; };
 		67EA2B621F51AB8700C0567A /* StopEditSearchMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopEditSearchMode.swift; sourceTree = "<group>"; };
@@ -560,6 +570,7 @@
 				582F4E9A1F33B1120062A546 /* TripScheduleViewController.swift */,
 				582F4E9B1F33B1120062A546 /* TripScheduleViewModel.swift */,
 				582F4E9C1F33B1120062A546 /* ScheduleTableViewCell.swift */,
+				67C5672E1F59862600FF6203 /* NextToArriveButtonView.swift */,
 			);
 			path = TripSchedule;
 			sourceTree = "<group>";
@@ -660,6 +671,10 @@
 				5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */,
 				67F757AE1F486BB600D3A4EE /* TransitModeToolBarView.xib */,
 				67F757B01F486F0600D3A4EE /* TransitModeDisplayable.swift */,
+				67C567301F5989D900FF6203 /* TransitAlertView.xib */,
+				67C567321F598A0400FF6203 /* TransitAlertView.swift */,
+				67C567341F598C7900FF6203 /* SeptaAlertsViewController.swift */,
+				67C567361F598D7A00FF6203 /* TransitAlerts.storyboard */,
 			);
 			path = Toolbars;
 			sourceTree = "<group>";
@@ -1115,8 +1130,10 @@
 				582F4EC31F33B1120062A546 /* favorites.storyboard in Resources */,
 				58C182041F34C5B6002748E9 /* Localizeable.strings in Resources */,
 				582F4EC11F33B1120062A546 /* contact.storyboard in Resources */,
+				67C567371F598D7A00FF6203 /* TransitAlerts.storyboard in Resources */,
 				582531951F406E790088D056 /* DefaultPreferences.plist in Resources */,
 				582F4EE01F33B1120062A546 /* LaunchScreen.storyboard in Resources */,
+				67C567311F5989D900FF6203 /* TransitAlertView.xib in Resources */,
 				582F4EDB1F33B1120062A546 /* Assets.xcassets in Resources */,
 				582F4ED91F33B1120062A546 /* settings.storyboard in Resources */,
 			);
@@ -1236,6 +1253,7 @@
 				67F757B11F486F0600D3A4EE /* TransitModeDisplayable.swift in Sources */,
 				5840D6E51F37EA1900C8CB76 /* ScheduleDataProvider.swift in Sources */,
 				589A89E01F5304D6007329DB /* SelectAddressViewModel.swift in Sources */,
+				67C567331F598A0400FF6203 /* TransitAlertView.swift in Sources */,
 				5814AA841F43589E00DF774A /* TripScheduleViewModel.swift in Sources */,
 				58490E471F55F98B007DBCA1 /* AlertState.swift in Sources */,
 				5814AA8A1F4359D000DF774A /* TripleTextDisplayable.swift in Sources */,
@@ -1256,6 +1274,8 @@
 				589BCC321F3D5068002FAEDE /* SchedulesPresentationController.swift in Sources */,
 				586DFEC51F505482004BC972 /* CurvedTopView.swift in Sources */,
 				581DA54A1F3BE1C8006AEC39 /* IdentifiableController.swift in Sources */,
+				67C5672F1F59862600FF6203 /* NextToArriveButtonView.swift in Sources */,
+				67C567351F598C7900FF6203 /* SeptaAlertsViewController.swift in Sources */,
 				589A89DE1F52E7E8007329DB /* ScheduleStopEditReducer.swift in Sources */,
 				581DA54F1F3BF102006AEC39 /* ViewTransitionType.swift in Sources */,
 				5840D6E01F37E5FB00C8CB76 /* ScheduleReducer.swift in Sources */,
