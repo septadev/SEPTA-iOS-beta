@@ -2,7 +2,7 @@
 
 import Foundation
 
-public struct Stop {
+public struct Stop: Codable {
     public let stopId: Int
     public let stopName: String
     public let stopLatitude: Double

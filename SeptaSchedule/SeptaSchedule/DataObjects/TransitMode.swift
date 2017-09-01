@@ -2,7 +2,7 @@
 
 import Foundation
 
-@objc public enum TransitMode: Int {
+@objc public enum TransitMode: Int, Codable {
     case bus
     case rail
     case subway

@@ -3,22 +3,15 @@ use Data::Dumper;
 
 my $struct = q |
 
-struct ScheduleData {
-    let availableRoutes: ScheduleRouteState
-
-    let availableStarts: ScheduleStopState
-    let availableStops: ScheduleStopState
-    let availableTrips: ScheduleTripState
-
-
-    init(availableRoutes: [Route]? = nil, availableStarts: [Stop]? = nil, availableStops: [Stop]? = nil, availableTrips: [Trip]? = nil, errorString: String? = nil) {
-        self.availableRoutes = availableRoutes
-        self.availableStarts = availableStarts
-        self.availableStops = availableStops
-        self.availableTrips = availableTrips
-        self.errorString = errorString
-    }
+struct Favorite {
+    
+    let transitMode: TransitMode
+    let selectedRoute: Route
+    let selectedStart: Stop
+    let selectedEnd: Stop
+    let scheduleType: ScheduleType
 }
+
 	|;
 
 my @initVars = ();

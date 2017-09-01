@@ -74,6 +74,7 @@
 		58EF3D711F4210CD005EE2F1 /* TripStart_Rail_Fox_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 58EF3D701F4210CD005EE2F1 /* TripStart_Rail_Fox_0.json */; };
 		58F2536C1F413A380075C8AD /* TripStartCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2536B1F413A380075C8AD /* TripStartCommand.swift */; };
 		6789F0011F44894100BD26B1 /* railTripSchedule.sql in Resources */ = {isa = PBXBuildFile; fileRef = 6789F0001F44894100BD26B1 /* railTripSchedule.sql */; };
+		67C5672D1F596E8500FF6203 /* ErrorObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C5672C1F596E8500FF6203 /* ErrorObjects.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +184,7 @@
 		58F2536B1F413A380075C8AD /* TripStartCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripStartCommand.swift; sourceTree = "<group>"; };
 		58F253701F413B050075C8AD /* TripStartCommandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripStartCommandTests.swift; sourceTree = "<group>"; };
 		6789F0001F44894100BD26B1 /* railTripSchedule.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = railTripSchedule.sql; sourceTree = "<group>"; };
+		67C5672C1F596E8500FF6203 /* ErrorObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorObjects.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +261,7 @@
 				58DCA0941F3E280C002F08CF /* TransitMode.swift */,
 				5837DB421F40C617008F50BC /* RouteDirectionCode.swift */,
 				5854E20F1F4612330030E3E6 /* TripStopId.swift */,
+				67C5672C1F596E8500FF6203 /* ErrorObjects.swift */,
 			);
 			path = DataObjects;
 			sourceTree = "<group>";
@@ -752,6 +755,7 @@
 				582F4F221F33B1AA0062A546 /* DateTime.swift in Sources */,
 				5837DB431F40C617008F50BC /* RouteDirectionCode.swift in Sources */,
 				582F4F151F33B1370062A546 /* DatabaseTables.swift in Sources */,
+				67C5672D1F596E8500FF6203 /* ErrorObjects.swift in Sources */,
 				58F2536C1F413A380075C8AD /* TripStartCommand.swift in Sources */,
 				584AC8791F4383BB0040C1B4 /* TripScheduleSQLQuery.swift in Sources */,
 			);
