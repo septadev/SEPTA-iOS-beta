@@ -73,3 +73,33 @@ func ==(lhs: Favorite, rhs: Favorite) -> Bool {
 
     return areEqual
 }
+
+func ==(lhs: Favorite, rhs: ScheduleRequest) -> Bool {
+    guard let scheduleRequestTransitMode = rhs.transitMode,
+        let scheduleRequestSelectedRoute = rhs.selectedRoute,
+        let scheduleRequestSelectedStart = rhs.selectedStart,
+        let scheduleRequestSelectedEnd = rhs.selectedEnd,
+        let scheduleRequestScheduleType = rhs.scheduleType else { return false }
+    var areEqual = true
+
+    areEqual = lhs.transitMode == scheduleRequestTransitMode
+    guard areEqual else { return false }
+
+    areEqual = lhs.selectedRoute == scheduleRequestSelectedRoute
+    guard areEqual else { return false }
+
+    areEqual = lhs.selectedStart == scheduleRequestSelectedStart
+    guard areEqual else { return false }
+
+    areEqual = lhs.selectedEnd == scheduleRequestSelectedEnd
+    guard areEqual else { return false }
+
+    areEqual = lhs.scheduleType == scheduleRequestScheduleType
+    guard areEqual else { return false }
+
+    return areEqual
+}
+
+func ==(lhs: ScheduleRequest, rhs: Favorite) -> Bool {
+    return rhs == lhs
+}
