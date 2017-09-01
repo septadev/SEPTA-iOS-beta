@@ -162,4 +162,20 @@ extension TransitMode {
         }()
         return transitMode
     }
+
+    public func scheduleTypeSegments() -> [ScheduleType] {
+        switch self {
+        case .rail : return [.mondayThroughThursday, .friday, .saturday, .sunday]
+        default:
+            return [.weekday, .saturday, .sunday]
+        }
+    }
+
+    public func defaultScheduleType() -> ScheduleType {
+        switch self {
+        case .rail : return .mondayThroughThursday
+        default:
+            return .weekday
+        }
+    }
 }

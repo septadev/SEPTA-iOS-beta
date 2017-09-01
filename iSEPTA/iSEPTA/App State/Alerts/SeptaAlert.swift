@@ -21,7 +21,7 @@ struct SeptaAlert {
     let detour: Bool
     let weather: Bool
 
-    init(advisory: Bool, alert: Bool, detour: Bool, weather: Bool) {
+    init(advisory: Bool = false, alert: Bool = false, detour: Bool = false, weather: Bool = false) {
         self.advisory = advisory
         self.alert = alert
         self.detour = detour

@@ -126,3 +126,11 @@ GROUP BY R.route_id, T.direction_id) lastStop
 ON R.route_id = lastStop.route_id AND T.direction_id = lastStop.direction_id AND
 ST.stop_sequence = lastStop.max_stop_sequence
 GROUP BY R.Route_id,R.route_short_name, R.route_long_name,T.direction_id ,S.stop_name;
+
+-- Sunday, Monday, Tuesday, Wed, Thursday, Friday, Saturday
+--  64       32       16       8     4        2        1
+
+select * from calendar_rail where days & 2 order by days desc;
+select * from calendar_rail where days & 32 order by days desc;
+
+select * from calendar_bus where days & 32 order by days desc;

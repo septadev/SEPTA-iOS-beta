@@ -25,6 +25,8 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
 
+    var septaAlertsViewController: SeptaAlertsViewController!
+
     @IBOutlet weak var routePillView: UIView!
     @IBOutlet weak var shadowView: UIView!
 
@@ -33,6 +35,8 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
     let transitMode = store.state.scheduleState.scheduleRequest.transitMode!
 
     let route = store.state.scheduleState.scheduleRequest.selectedRoute!
+
+    let alertsDict = store.state.alertState.alertDict
 
     static var viewController: ViewController = .tripScheduleController
     @IBOutlet weak var startingPoint: UILabel!
@@ -43,6 +47,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var weekdayBarButtonItem: UIBarButtonItem!
 
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var header: UIView!
 
@@ -82,32 +87,18 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
 
-    @IBAction func weekdaysSelected(_ sender: Any) {
-        //  viewModel.setScheduleType(.weekday)
-        let item = sender as! UIBarButtonItem
-        resetTintColors()
-        item.tintColor = UIColor.darkText
-        dispatchScheduleTypeAction(.weekday)
+    @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+
+        guard let scheduleType = mapSegmentsToScheduleType(segmentedControl: sender) else { return }
+        dispatchScheduleTypeAction(scheduleType)
     }
 
-    @IBAction func saturdaySelected(_ sender: Any) {
-        //     viewModel.setScheduleType(.weekday)
-        resetTintColors()
-        let item = sender as! UIBarButtonItem
-        item.tintColor = UIColor.darkText
-        dispatchScheduleTypeAction(.saturday)
-    }
-
-    @IBAction func sundaySelected(_ sender: Any) {
-        resetTintColors()
-        //    viewModel.setScheduleType(.weekday)
-        let item = sender as! UIBarButtonItem
-        item.tintColor = UIColor.darkText
-
-        dispatchScheduleTypeAction(.sunday)
+    func mapSegmentsToScheduleType(segmentedControl: UISegmentedControl) -> ScheduleType? {
+        return scheduleTypeSegments[segmentedControl.selectedSegmentIndex]
     }
 
     func dispatchScheduleTypeAction(_ scheduleType: ScheduleType) {
+        store.dispatch(ClearTrips())
 
         let action = ScheduleTypeSelected(scheduleType: scheduleType)
         store.dispatch(action)
@@ -146,11 +137,23 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         shadowView.layer.shadowRadius = 7
         shadowView.layer.shadowOpacity = 1
         shadowView.layer.shadowColor = SeptaColor.navBarShadowColor.cgColor
-        //
-        //        let font = UIFont.systemFont(ofSize: 14, weight: .semibold)
-        //
-        //        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: font]
+
+        if let alert = alertsDict[transitMode]?[route.routeId] {
+
+            septaAlertsViewController.displaySeptaAlert(alert: alert)
+        }
+
+        segmentedControl.removeAllSegments()
+        scheduleTypeSegments = transitMode.scheduleTypeSegments()
+        let reversedSegments = scheduleTypeSegments.reversed()
+        for scheduleType in reversedSegments {
+
+            segmentedControl.insertSegment(withTitle: scheduleType.stringForSegments(), at: 0, animated: false)
+        }
+        segmentedControl.selectedSegmentIndex = 0
     }
+
+    var scheduleTypeSegments: [ScheduleType]!
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -187,6 +190,12 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         if parent == navigationController?.parent {
             let action = UserPoppedViewController(navigationController: .schedules, description: "TripScheduleViewController has been popped")
             store.dispatch(action)
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
+        if segue.identifier == "embedTransitAlerts" {
+            septaAlertsViewController = segue.destination as! SeptaAlertsViewController
         }
     }
 }

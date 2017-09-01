@@ -10,7 +10,7 @@ import Foundation
 
 import UIKit
 
-class NextToArriveButtonView: UIView {
+class NextToArriveButtonView: UIButton {
     override func draw(_ rect: CGRect) {
         SeptaDraw.drawSchedulesJumpToNextToArrive(frame: rect)
     }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IrW-ye-tbM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IrW-ye-tbM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,16 +27,29 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xjI-lB-dNz" userLabel="AlertStackView">
-                                        <rect key="frame" x="78" y="-27" width="200" height="110"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no transit alerts at this time." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOf-Lz-Wld">
+                                        <rect key="frame" x="15" y="27.5" width="242.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="xjI-lB-dNz" userLabel="AlertStackView">
+                                        <rect key="frame" x="16" y="27.5" width="42" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="nxz-We-q7L"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="90W-oS-w9B" firstAttribute="leading" secondItem="Ac7-UP-bkg" secondAttribute="leading" constant="15" id="6Yn-hE-yhS" userLabel="LineStatusLabelLeft"/>
+                                    <constraint firstItem="xjI-lB-dNz" firstAttribute="top" secondItem="90W-oS-w9B" secondAttribute="bottom" constant="6" id="Gka-C1-dn4" userLabel="StackViewTop"/>
+                                    <constraint firstItem="xjI-lB-dNz" firstAttribute="leading" secondItem="Ac7-UP-bkg" secondAttribute="leading" constant="15" id="OBi-fb-wNY" userLabel="StackViewLeft"/>
                                     <constraint firstAttribute="height" constant="56" id="PUC-KD-FZr"/>
                                     <constraint firstItem="90W-oS-w9B" firstAttribute="top" secondItem="Ac7-UP-bkg" secondAttribute="top" constant="7" id="Urt-Bl-JQe" userLabel="LineStatusLabelTop"/>
+                                    <constraint firstItem="gOf-Lz-Wld" firstAttribute="top" secondItem="xjI-lB-dNz" secondAttribute="top" id="gUv-3y-Hck"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xjI-lB-dNz" secondAttribute="trailing" id="iLm-UI-5WY" userLabel="StackViewright"/>
+                                    <constraint firstItem="gOf-Lz-Wld" firstAttribute="leading" secondItem="xjI-lB-dNz" secondAttribute="leading" id="rfI-rW-S7z"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -52,6 +65,7 @@
                     <size key="freeformSize" width="375" height="56"/>
                     <connections>
                         <outlet property="alertStackView" destination="xjI-lB-dNz" id="9Sw-Ak-Fa6"/>
+                        <outlet property="noTransitAlertsLabel" destination="gOf-Lz-Wld" id="qVM-A8-AAd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a8n-2F-fpG" userLabel="First Responder" sceneMemberID="firstResponder"/>

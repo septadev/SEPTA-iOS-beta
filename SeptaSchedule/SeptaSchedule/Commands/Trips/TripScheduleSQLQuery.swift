@@ -39,6 +39,10 @@ class TripScheduleSQLQuery: SQLQueryProtocol {
                 serviceId = "1"
             case .sunday:
                 serviceId = "64"
+            case .friday:
+                serviceId = "2"
+            case .mondayThroughThursday:
+                serviceId = "32"
             }
         } else {
             serviceId = String(scheduleType.rawValue)
