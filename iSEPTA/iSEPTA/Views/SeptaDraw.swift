@@ -411,7 +411,7 @@ public class SeptaDraw: NSObject {
         context.restoreGState()
     }
 
-    @objc public dynamic class func drawNextToArriveButton(buttonFrame: CGRect = CGRect(x: 0, y: -0, width: 250, height: 100)) {
+    @objc public dynamic class func drawNextToArriveButton(buttonFrame: CGRect = CGRect(x: 0, y: -0, width: 250, height: 100), buttonHighlighted: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         // This non-generic function dramatically improves compilation times of complex expressions.
@@ -421,6 +421,8 @@ public class SeptaDraw: NSObject {
         let redButtonGradientLeft = UIColor(red: 0.502, green: 0.153, blue: 0.063, alpha: 1.000)
         let redButtonGradientRight1 = UIColor(red: 0.843, green: 0.227, blue: 0.071, alpha: 1.000)
         let fillColor2 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
+        let buttonHighlight = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.078)
+        let buttonDefault = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.000)
         let buttonShadowColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.075)
 
         //// Gradient Declarations
@@ -431,6 +433,9 @@ public class SeptaDraw: NSObject {
         buttonShadow.shadowColor = buttonShadowColor
         buttonShadow.shadowOffset = CGSize(width: 0, height: 0)
         buttonShadow.shadowBlurRadius = 3
+
+        //// Variable Declarations
+        let buttonHighlightedColor = buttonHighlighted ? buttonHighlight : buttonDefault
 
         //// Subframes
         let frame = CGRect(x: buttonFrame.minX + fastFloor((buttonFrame.width - 224.13) * 0.55446 + 0.15) + 0.35, y: buttonFrame.minY + fastFloor((buttonFrame.height - 50) * 0.50000 - 0.5) + 1, width: 224.13, height: 50)
@@ -551,6 +556,14 @@ public class SeptaDraw: NSObject {
         bezier5Path.fill()
 
         //// NextToArriveButtonIcon.pdf Group
+
+        //// Shadow Drawing
+        let shadowPath = UIBezierPath(roundedRect: CGRect(x: buttonFrame.minX + fastFloor((buttonFrame.width - 3) * 0.01215 + 0.5), y: buttonFrame.minY + fastFloor((buttonFrame.height - 3) * 0.03093 - 0.5) + 1, width: buttonFrame.width - 3 - fastFloor((buttonFrame.width - 3) * 0.01215 + 0.5), height: buttonFrame.height - 4 - fastFloor((buttonFrame.height - 3) * 0.03093 - 0.5)), cornerRadius: 4)
+        context.saveGState()
+        context.setShadow(offset: buttonShadow.shadowOffset, blur: buttonShadow.shadowBlurRadius, color: (buttonShadow.shadowColor as! UIColor).cgColor)
+        buttonHighlightedColor.setFill()
+        shadowPath.fill()
+        context.restoreGState()
     }
 
     @objc(SeptaDrawResizingBehavior)

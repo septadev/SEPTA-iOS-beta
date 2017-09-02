@@ -223,7 +223,7 @@ SWIFT_CLASS("_TtC9ViewTests9SeptaDraw")
 + (void)drawTripCanvasWithFrame:(CGRect)frame;
 + (void)drawAlertViewWithAlertViewFrame:(CGRect)alertViewFrame;
 + (void)drawReverseTripButtonWithFrame:(CGRect)targetFrame resizing:(enum SeptaDrawResizingBehavior)resizing buttonHighlighted:(BOOL)buttonHighlighted;
-+ (void)drawNextToArriveButtonWithButtonFrame:(CGRect)buttonFrame;
++ (void)drawNextToArriveButtonWithButtonFrame:(CGRect)buttonFrame buttonHighlighted:(BOOL)buttonHighlighted;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

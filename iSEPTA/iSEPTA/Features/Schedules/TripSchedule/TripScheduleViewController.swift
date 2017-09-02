@@ -64,6 +64,12 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var header: UIView!
 
+    @IBAction func navigateToNextToArrive(_: Any) {
+
+        let switchTabsAction = SwitchTabs(tabBarItemIndex: .nextToArrive, description: "User tapped on alert")
+        store.dispatch(switchTabsAction)
+    }
+
     func viewModelUpdated() {
         updateLabels()
 

@@ -23,8 +23,11 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         selectedIndex = state.tabIndex()
     }
 
-    override func tabBar(_: UITabBar, didSelect _: UITabBarItem) {
-        let action = SwitchTabs(tabBarItemIndex: navigationControllerFromTabIndex(selectedIndex), description: "Tab Bar was selected by the user")
+    override func tabBar(_: UITabBar, didSelect item: UITabBarItem) {
+        guard let newIndex = tabBar.items?.index(of: item) else { return }
+        
+        let targetNavController = navigationControllerFromTabIndex(newIndex)
+        let action = SwitchTabs(tabBarItemIndex: targetNavController, description: "Tab Bar was selected by the user")
         store.dispatch(action)
     }
 
@@ -35,6 +38,12 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         case 2: return .alerts
         case 3: return .schedules
         default: return .schedules
+        }
+    }
+
+    override var selectedIndex: Int {
+        didSet {
+            print(selectedIndex)
         }
     }
 

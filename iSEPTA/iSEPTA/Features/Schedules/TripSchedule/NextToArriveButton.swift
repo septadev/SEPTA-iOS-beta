@@ -12,7 +12,7 @@ import UIKit
 @IBDesignable
 class NextToArriveButton: UIButton {
     override func draw(_ rect: CGRect) {
-        SeptaDraw.drawNextToArriveButton(buttonFrame: rect)
+        SeptaDraw.drawNextToArriveButton(buttonFrame: rect, buttonHighlighted: isHighlighted)
     }
 
     private var shouldHighlight: Bool {
