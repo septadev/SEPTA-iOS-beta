@@ -125,6 +125,7 @@
 		674FDBC01F56E87F00CA67D2 /* SeptaRest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		674FDBC51F57390D00CA67D2 /* Route+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674FDBC41F57390D00CA67D2 /* Route+Color.swift */; };
 		674FDBC71F577D3B00CA67D2 /* Route+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674FDBC61F577D3B00CA67D2 /* Route+Icon.swift */; };
+		67A65BFC1F5AEBB20068428E /* NextToArriveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A65BFB1F5AEBB20068428E /* NextToArriveButton.swift */; };
 		67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B511801F499E8F000E3065 /* ButtonViewCell.swift */; };
 		67C567271F59695900FF6203 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C567261F59695900FF6203 /* Favorite.swift */; };
 		67C5672B1F596E0700FF6203 /* ErrorObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C5672A1F596E0700FF6203 /* ErrorObjects.swift */; };
@@ -350,6 +351,7 @@
 		6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAddressRelativeStopViewModel.swift; sourceTree = "<group>"; };
 		674FDBC41F57390D00CA67D2 /* Route+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Color.swift"; sourceTree = "<group>"; };
 		674FDBC61F577D3B00CA67D2 /* Route+Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Icon.swift"; sourceTree = "<group>"; };
+		67A65BFB1F5AEBB20068428E /* NextToArriveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveButton.swift; sourceTree = "<group>"; };
 		67B511801F499E8F000E3065 /* ButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewCell.swift; sourceTree = "<group>"; };
 		67C567261F59695900FF6203 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		67C5672A1F596E0700FF6203 /* ErrorObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorObjects.swift; sourceTree = "<group>"; };
@@ -571,6 +573,7 @@
 				582F4E9B1F33B1120062A546 /* TripScheduleViewModel.swift */,
 				582F4E9C1F33B1120062A546 /* ScheduleTableViewCell.swift */,
 				67C5672E1F59862600FF6203 /* ReverseTripButton.swift */,
+				67A65BFB1F5AEBB20068428E /* NextToArriveButton.swift */,
 			);
 			path = TripSchedule;
 			sourceTree = "<group>";
@@ -1259,6 +1262,7 @@
 				5814AA8A1F4359D000DF774A /* TripleTextDisplayable.swift in Sources */,
 				58DB04A51F558DD0005CC850 /* SearchRoutesModalHeaderViewController.swift in Sources */,
 				58658D1E1F53298B00E67B4E /* DisplayAddress.swift in Sources */,
+				67A65BFC1F5AEBB20068428E /* NextToArriveButton.swift in Sources */,
 				58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */,
 				58F80D451F421C4B0089501A /* SelectStopViewController.swift in Sources */,
 				5840D6D71F37728B00C8CB76 /* NavigationController.swift in Sources */,

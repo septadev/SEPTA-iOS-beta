@@ -227,7 +227,7 @@ TableViewWrapper</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaJ-Ig-ASV">
-                            <rect key="frame" x="207" y="10.5" width="33" height="27"/>
+                            <rect key="frame" x="207" y="10" width="33" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Reset">
                                 <color key="titleColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -975,9 +975,22 @@ TitleViewTop</string>
                     </connections>
                 </customObject>
                 <view contentMode="scaleToFill" id="Dzc-I0-HQC" userLabel="TableViewFooter">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="58"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ze-OF-6D9" userLabel="NextToArriveButton" customClass="NextToArriveButton" customModule="Septa" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="8" width="240" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="snU-aC-2rs"/>
+                            </constraints>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="qtn-tn-OXx" firstAttribute="trailing" secondItem="9ze-OF-6D9" secondAttribute="trailing" id="9YX-gx-BbU" userLabel="ButtonRight"/>
+                        <constraint firstItem="9ze-OF-6D9" firstAttribute="top" secondItem="qtn-tn-OXx" secondAttribute="top" constant="8" id="vpi-gI-slq" userLabel="ButtonTop"/>
+                        <constraint firstItem="9ze-OF-6D9" firstAttribute="leading" secondItem="qtn-tn-OXx" secondAttribute="leading" id="zMi-i5-pxP" userLabel="ButtonLeft"/>
+                    </constraints>
                     <viewLayoutGuide key="safeArea" id="qtn-tn-OXx"/>
                 </view>
                 <view contentMode="scaleToFill" id="N85-DJ-dTv" userLabel="Header">
