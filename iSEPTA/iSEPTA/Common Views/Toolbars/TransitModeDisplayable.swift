@@ -67,6 +67,16 @@ extension TransitMode {
         }
     }
 
+    public func vehicleNumberTitle() -> String {
+        switch self {
+        case .bus: return "Bus #"
+        case .rail: return "Train #"
+        case .subway: return "Train #"
+        case .nhsl: return "Train #"
+        case .trolley: return "Trolley #"
+        }
+    }
+
     public func scheduleName() -> String {
         switch self {
         case .bus: return "Bus Schedules"

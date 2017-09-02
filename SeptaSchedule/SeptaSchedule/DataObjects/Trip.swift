@@ -6,7 +6,7 @@ public struct Trip {
 
     let departureInt: Int
     let arrivalInt: Int
-    let blockId: String
+    public let blockId: String
 
     public var departureComponents: DateComponents {
         return departureInt.toDataComponents()

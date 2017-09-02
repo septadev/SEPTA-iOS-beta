@@ -8,6 +8,8 @@ import ReSwift
     typealias StoreSubscriberStateType = ScheduleTripState
     @IBOutlet weak var tripScheduleViewController: UpdateableFromViewModel!
 
+    let transitMode = store.state.scheduleState.scheduleRequest.transitMode!
+
     var scheduleRequest = store.state.scheduleState.scheduleRequest
     private var availableTrips: [Trip]? {
         didSet {
@@ -42,6 +44,8 @@ import ReSwift
             displayable.setDepartText(text: depatureString)
             displayable.setArriveText(text: arrivalString)
             displayable.setDurationText(text: durationString)
+            displayable.setVehicleTitle(text: transitMode.vehicleNumberTitle())
+            displayable.setVehicleText(text: trip.blockId)
         }
     }
 

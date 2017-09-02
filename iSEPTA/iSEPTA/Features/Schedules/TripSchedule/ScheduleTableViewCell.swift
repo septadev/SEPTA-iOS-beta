@@ -8,6 +8,8 @@ protocol ScheduleDisplayable {
     func setDepartText(text: String)
     func setArriveText(text: String)
     func setDurationText(text: String)
+    func setVehicleTitle(text: String)
+    func setVehicleText(text: String)
 }
 
 class ScheduleTableViewCell: UITableViewCell, ScheduleDisplayable {
@@ -16,6 +18,8 @@ class ScheduleTableViewCell: UITableViewCell, ScheduleDisplayable {
     @IBOutlet private weak var departLabel: UILabel!
     @IBOutlet private weak var arriveLabel: UILabel!
     @IBOutlet private weak var durationLabel: UILabel!
+    @IBOutlet weak var vehicleTitleLabel: UILabel!
+    @IBOutlet weak var vehicleLabel: UILabel!
 
     func setTripText(text: String) {
         tripLabel.text = text
@@ -31,5 +35,13 @@ class ScheduleTableViewCell: UITableViewCell, ScheduleDisplayable {
 
     func setDurationText(text: String) {
         durationLabel.text = text
+    }
+
+    func setVehicleTitle(text: String) {
+        vehicleTitleLabel.text = text
+    }
+
+    func setVehicleText(text: String) {
+        vehicleLabel.text = text
     }
 }
