@@ -1,14 +1,16 @@
 
 SELECT
   NewStart.arrival_time,
-  NewEnd.arrival_time
+  NewEnd.arrival_time,
+  NewStart.block_id
 FROM
 
   (
     SELECT
       S.stop_id,
       T.trip_id,
-      ST.arrival_time
+      ST.arrival_time,
+      T.block_id
     FROM stops_bus S
       JOIN stop_times_bus ST
       ON S.stop_id = ST.stop_id

@@ -203,3 +203,105 @@ ON ST.trip_id = T.trip_id
 WHERE  stop_id = 90401 and T.direction_id = 1  and T.service_id in (select service_id from calendar_rail  C where days & 32)) Stop
 ON start.trip_id = stop.trip_id
 group by start.arrival_time, stop.arrival_time;
+
+
+SELECT
+  NewStart.arrival_time,
+  NewEnd.arrival_time
+FROM
+
+  (
+    SELECT
+      S.stop_id,
+      T.trip_id,
+      ST.arrival_time
+    FROM stops_rail S
+      JOIN stop_times_rail ST
+      ON S.stop_id = ST.stop_id
+      JOIN trips_rail T
+      ON ST.trip_id = T.trip_id
+    WHERE S.stop_id = 90713 AND T.direction_id = 1 AND T.service_id = 4) NewStart
+  JOIN
+  (SELECT
+    S.stop_id,
+    T.trip_id,
+    ST.arrival_time
+  FROM stops_rail S
+    JOIN stop_times_rail ST
+    ON S.stop_id = ST.stop_id
+    JOIN trips_rail T
+    ON ST.trip_id = T.trip_id
+  WHERE S.stop_id = 90720 AND T.direction_id = 1 AND T.service_id = 4) NewEnd
+  ON NewStart.trip_id = NewEnd.trip_id;
+
+
+SELECT
+  NewStart.arrival_time,
+  NewEnd.arrival_time,
+NewStart.block_id
+FROM
+
+(SELECT
+T.trip_id,
+ST.arrival_time,
+T.block_id
+FROM
+
+  (
+    SELECT
+      S.stop_id,
+      T.trip_id,
+      ST.arrival_time
+    FROM stops_bus S
+      JOIN stop_times_bus ST
+      ON S.stop_id = ST.stop_id
+      JOIN trips_bus T
+      ON ST.trip_id = T.trip_id
+    WHERE S.stop_id = 5229 AND T.direction_id = 1 AND T.service_id = 1) NewStart
+  JOIN
+  (SELECT
+    S.stop_id,
+    T.trip_id,
+    ST.arrival_time
+  FROM stops_bus S
+    JOIN stop_times_bus ST
+    ON S.stop_id = ST.stop_id
+    JOIN trips_bus T
+    ON ST.trip_id = T.trip_id
+  WHERE S.stop_id = 17277 AND T.direction_id = 1 AND T.service_id = 1) NewEnd
+  ON NewStart.trip_id = NewEnd.trip_id;
+
+
+
+
+
+SELECT
+  NewStart.arrival_time,
+  NewEnd.arrival_time,
+  NewStart.block_id
+FROM
+
+  (
+    SELECT
+      S.stop_id,
+      T.trip_id,
+      ST.arrival_time,
+      T.block_id
+    FROM stops_bus S
+      JOIN stop_times_bus ST
+      ON S.stop_id = ST.stop_id
+      JOIN trips_bus T
+      ON ST.trip_id = T.trip_id
+    WHERE S.stop_id = 20965 AND T.direction_id = 1 AND T.service_id = 1) NewStart
+  JOIN
+  (SELECT
+    S.stop_id,
+    T.trip_id,
+    ST.arrival_time
+  FROM stops_bus S
+    JOIN stop_times_bus ST
+    ON S.stop_id = ST.stop_id
+    JOIN trips_bus T
+    ON ST.trip_id = T.trip_id
+  WHERE S.stop_id = 152 AND T.direction_id = 1 AND T.service_id = 1) NewEnd
+  ON NewStart.trip_id = NewEnd.trip_id;

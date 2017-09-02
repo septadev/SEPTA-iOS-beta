@@ -3,15 +3,15 @@
 
 
 SELECT
-  NewStart.arrival_time,
-  NewEnd.arrival_time
+NewStart.arrival_time DepartureTime,
+NewEnd.arrival_time  ArrivalTime,
+NewStart.block_id
 FROM
 
-  (
-    SELECT
-      S.stop_id,
-      T.trip_id,
-      ST.arrival_time
+(SELECT
+T.trip_id,T.route_id,
+ST.arrival_time,
+T.block_id
     FROM stops_rail S
       JOIN stop_times_rail ST
       ON S.stop_id = ST.stop_id
