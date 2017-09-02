@@ -1441,7 +1441,7 @@ TitleViewTop</string>
                                                     <constraint firstAttribute="height" constant="17" id="oNn-af-7xA"/>
                                                 </constraints>
                                             </imageView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type the line name or select" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B7Q-Zl-LKP">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type the line name or select" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="B7Q-Zl-LKP">
                                                 <rect key="frame" x="34" y="5" width="309" height="26"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="textColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1449,9 +1449,14 @@ TitleViewTop</string>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                 <string key="userLabel">
 SearchTextBox</string>
+                                                <connections>
+                                                    <action selector="textFieldDidCancelEditing:" destination="gOh-OW-Svi" eventType="primaryActionTriggered" id="jg5-VZ-BgL"/>
+                                                    <action selector="textFieldDidTouchCancel:" destination="gOh-OW-Svi" eventType="touchCancel" id="nky-Zq-iee"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="B7Q-Zl-LKP" secondAttribute="bottom" constant="5" id="F2Y-Bf-SZw" userLabel="TextBoxBottom"/>
                                             <constraint firstItem="B7Q-Zl-LKP" firstAttribute="top" secondItem="dt3-Pb-w7Y" secondAttribute="top" constant="5" id="Iqq-WD-Vzc" userLabel="TextBoxTop"/>
@@ -1461,6 +1466,9 @@ SearchTextBox</string>
                                             <constraint firstItem="vb4-Bo-S2n" firstAttribute="centerY" secondItem="dt3-Pb-w7Y" secondAttribute="centerY" id="aGA-FQ-ASQ" userLabel="IconCenterY"/>
                                             <constraint firstItem="vb4-Bo-S2n" firstAttribute="leading" secondItem="dt3-Pb-w7Y" secondAttribute="leading" constant="8" id="v16-Ap-0Dp" userLabel="SearchIconLeft"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="joG-sX-gAY" appends="YES" id="xDh-dL-Tji"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Clu-4h-zwi" userLabel="Divider">
                                         <rect key="frame" x="0.0" y="120" width="375" height="1"/>
@@ -1518,6 +1526,7 @@ SearchTextBox</string>
                     <size key="freeformSize" width="375" height="121"/>
                     <connections>
                         <outlet property="dismissIcon" destination="lHK-2s-TQT" id="6JC-XF-P9X"/>
+                        <outlet property="resetTextBoxGestureRecognizer" destination="joG-sX-gAY" id="TiU-Lj-SsL"/>
                         <outlet property="searchByTextView" destination="dt3-Pb-w7Y" id="Rk7-D1-3Dq"/>
                         <outlet property="searchView" destination="bNI-mk-YGB" id="L0V-jA-FVd"/>
                         <outlet property="segmentedControl" destination="rS7-En-2sJ" id="oGT-VZ-K0i"/>
@@ -1540,6 +1549,11 @@ SearchTextBox</string>
                         <outlet property="delegate" destination="gOh-OW-Svi" id="o1H-ns-a9J"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer id="joG-sX-gAY" userLabel="ResetTextBoxGestureRecognizer">
+                    <connections>
+                        <action selector="userTappedSearchByStops:" destination="gOh-OW-Svi" id="DvC-Eg-1oS"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2880.8000000000002" y="-507.79610194902551"/>
         </scene>
@@ -1591,11 +1605,15 @@ SearchTextBox</string>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type the line name or select" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cVL-Uu-Pyc">
                                                 <rect key="frame" x="34" y="5" width="309" height="26"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <gestureRecognizers/>
                                                 <color key="textColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                 <string key="userLabel">
 SearchTextBox</string>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="muK-X4-z3d" appends="YES" id="Lh3-20-Yso"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1662,6 +1680,7 @@ SearchTextBox</string>
                         <outlet property="delegate" destination="sw4-Eu-qy3" id="Lob-N8-MYd"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer id="muK-X4-z3d"/>
             </objects>
             <point key="canvasLocation" x="244" y="-508"/>
         </scene>

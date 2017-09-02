@@ -17,22 +17,39 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, U
 
     @IBOutlet weak var viewHeightConstraintForAddress: NSLayoutConstraint!
     @IBOutlet weak var viewHeightConstraintForStops: NSLayoutConstraint!
+    @IBAction func userTappedSearchByStops(_: Any) {
+
+        if searchMode == .directLookupWithAddress {
+            store.dispatch(StopSearchModeChanged(searchMode: .directLookup))
+
+        }
+    }
+
+    @IBOutlet var resetTextBoxGestureRecognizer: UITapGestureRecognizer!
 
     weak var delegate: SearchModalHeaderDelegate?
 
     var textFieldDelegate: UITextFieldDelegate!
 
+    @IBAction func textFieldDidTouchCancel(_: Any) {
+    }
+
+    @IBAction func textFieldDidCancelEditing(_: Any) {
+        let i = 0
+    }
+
     func newState(state: StoreSubscriberStateType) {
         guard let state = state else { return }
         searchMode = state.searchMode
-
         if let selectedAddress = state.selectedAddress {
             textField.text = selectedAddress.street
             textField.resignFirstResponder()
             textField.isEnabled = false
+            textField.clearButtonMode = .always
         } else {
             textField.isEnabled = true
             textField.text = nil
+            textField.clearButtonMode = .never
         }
     }
 
@@ -71,6 +88,9 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, U
                 store.dispatch(StopSearchModeChanged(searchMode: searchMode))
                 toggleHeightConstraintsForSearchMode()
                 updateTextFieldPlaceholderText()
+                if searchMode == .directLookup {
+                    segmentedControl.selectedSegmentIndex = 0
+                }
             }
         }
     }

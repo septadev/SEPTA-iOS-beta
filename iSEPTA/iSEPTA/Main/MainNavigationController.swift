@@ -25,7 +25,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
 
     override func tabBar(_: UITabBar, didSelect item: UITabBarItem) {
         guard let newIndex = tabBar.items?.index(of: item) else { return }
-        
+
         let targetNavController = navigationControllerFromTabIndex(newIndex)
         let action = SwitchTabs(tabBarItemIndex: targetNavController, description: "Tab Bar was selected by the user")
         store.dispatch(action)
