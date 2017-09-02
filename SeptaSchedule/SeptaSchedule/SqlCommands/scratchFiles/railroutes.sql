@@ -134,3 +134,15 @@ select * from calendar_rail where days & 2 order by days desc;
 select * from calendar_rail where days & 32 order by days desc;
 
 select * from calendar_bus where days & 32 order by days desc;
+
+
+SELECT
+cast(R.route_id AS TEXT) route_id,
+route_long_name route_short_name,
+'to ' || BSD.DirectionDescription route_long_name,
+BSD.dircode
+  BSD.dircode
+FROM bus_stop_directions BSD
+JOIN routes_bus R
+ON BSD.Route = R.route_id
+where BSD.dircode != '0' and R.route_id = '2';

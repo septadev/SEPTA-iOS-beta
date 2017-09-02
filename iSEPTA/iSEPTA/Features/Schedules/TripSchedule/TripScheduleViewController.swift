@@ -13,12 +13,6 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
 
-    @IBOutlet weak var routeShortNameLabel: UILabel! {
-        didSet {
-            routeShortNameLabel.text = route.routeShortName
-        }
-    }
-
     @IBOutlet weak var routeIcon: UIImageView! {
         didSet {
             routeIcon.image = route.iconForRoute(transitMode: transitMode)
@@ -28,6 +22,13 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet var scheduleTypeTopWhenAlerts: NSLayoutConstraint!
     @IBOutlet var scheduleTypeTopWhenNoAlerts: NSLayoutConstraint!
     @IBOutlet weak var transitAlertViews: UIView!
+
+    @IBOutlet weak var routeShortNameLabel: UILabel! {
+        didSet {
+            routeShortNameLabel.text = route.routeShortName
+        }
+    }
+
     @IBOutlet weak var routeLongNameLabel: UILabel! {
         didSet {
             routeLongNameLabel.text = route.routeLongName
@@ -73,6 +74,10 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         guard let labels = viewModel.tripStops else { return }
         startingPoint.text = labels.0
         endingPoint.text = labels.1
+        let route = store.state.scheduleState.scheduleRequest.selectedRoute!
+        routeShortNameLabel.text = route.routeShortName
+
+        routeLongNameLabel.text = route.routeLongName
     }
 
     @IBOutlet var alertsIcon: UIBarButtonItem!
