@@ -6,6 +6,7 @@ public struct Trip {
 
     let departureInt: Int
     let arrivalInt: Int
+    let blockId: String
 
     public var departureComponents: DateComponents {
         return departureInt.toDataComponents()
@@ -27,9 +28,10 @@ public struct Trip {
         return Calendar.current.dateComponents([.hour, .minute], from: departureComponents, to: arrivalComponents)
     }
 
-    public init(departureInt: Int, arrivalInt: Int) {
+    init(departureInt: Int, arrivalInt: Int, blockId: String) {
         self.departureInt = departureInt
         self.arrivalInt = arrivalInt
+        self.blockId = blockId
     }
 
     enum CodingKeys: String, CodingKey {
@@ -42,17 +44,15 @@ extension Trip: Equatable {}
 public func ==(lhs: Trip, rhs: Trip) -> Bool {
     var areEqual = true
 
-    if lhs.departureInt == rhs.departureInt {
-        areEqual = true
-    } else {
-        return false
-    }
+    areEqual = lhs.departureInt == rhs.departureInt
+    guard areEqual else { return false }
 
-    if lhs.arrivalInt == rhs.arrivalInt {
-        areEqual = true
-    } else {
-        return false
-    }
+    areEqual = lhs.arrivalInt == rhs.arrivalInt
+    guard areEqual else { return false }
+
+    areEqual = lhs.blockId == rhs.blockId
+    guard areEqual else { return false }
+
     return areEqual
 }
 

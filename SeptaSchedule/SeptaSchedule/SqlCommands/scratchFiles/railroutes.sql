@@ -146,3 +146,60 @@ FROM bus_stop_directions BSD
 JOIN routes_bus R
 ON BSD.Route = R.route_id
 where BSD.dircode != '0' and R.route_id = '2';
+
+  SELECT
+  start.arrival_time DepartureTime,
+  Stop.arrival_time  ArrivalTime,
+  Start.block_id
+  FROM
+
+  (SELECT
+  T.trip_id,
+  ST.arrival_time,
+  T.block_id
+  FROM
+  stop_times_bus ST
+  JOIN trips_bus T
+  ON ST.trip_id = T.trip_id
+WHERE ST.stop_id = 22990 AND T.service_id = 2 and T.direction_id = 1) Start
+
+JOIN (SELECT
+T.trip_id, T.direction_id, T.service_id,
+ST.arrival_time
+FROM
+stop_times_bus  ST
+JOIN trips_bus T
+ON ST.trip_id = T.trip_id
+WHERE  stop_id = 22997 AND T.service_id = 2 and T.direction_id = 1) Stop
+ON start.trip_id = stop.trip_id
+group by start.arrival_time, Stop.arrival_time
+ORDER BY DepartureTime;
+
+
+
+SELECT
+start.arrival_time DepartureTime,
+Stop.arrival_time  ArrivalTime,
+start.block_id
+FROM
+
+(SELECT
+T.trip_id,T.route_id,
+ST.arrival_time,
+T.block_id
+FROM
+stop_times_rail ST
+JOIN trips_rail T
+ON ST.trip_id = T.trip_id
+WHERE ST.stop_id = 90403 and T.direction_id = 1 and T.service_id in (select service_id from calendar_rail C where days & 32)) Start
+
+JOIN (SELECT
+T.trip_id, T.direction_id, T.service_id,
+ST.arrival_time
+FROM
+stop_times_rail ST
+JOIN trips_rail T
+ON ST.trip_id = T.trip_id
+WHERE  stop_id = 90401 and T.direction_id = 1  and T.service_id in (select service_id from calendar_rail  C where days & 32)) Stop
+ON start.trip_id = stop.trip_id
+group by start.arrival_time, stop.arrival_time;

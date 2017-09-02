@@ -3,14 +3,12 @@ use Data::Dumper;
 
 my $struct = q |
 
-struct Favorite {
-    
-    let transitMode: TransitMode
-    let selectedRoute: Route
-    let selectedStart: Stop
-    let selectedEnd: Stop
-    let scheduleType: ScheduleType
-}
+public struct Trip {
+
+    let departureInt: Int
+    let arrivalInt: Int
+    let blockId: String
+
 
 	|;
 
