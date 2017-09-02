@@ -6,16 +6,31 @@ import ReSwift
 
 class TripScheduleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController {
 
-    func displayErrorMessage(message _: String) {
-        //        UIAlert.presentOKAlertFrom(viewController: self,
-        //                                   withTitle: "View Trips",
-        //                                   message: message) { [weak self] in
-        //        }
+    func displayErrorMessage(message: String) {
+        UIAlert.presentOKAlertFrom(viewController: self,
+                                   withTitle: "View Trips",
+                                   message: message) {
+        }
     }
 
-    @IBOutlet weak var routeNameLabel: UILabel! {
+    @IBOutlet weak var routeShortNameLabel: UILabel! {
         didSet {
-            routeNameLabel.text = route.routeLongName
+            routeShortNameLabel.text = route.routeShortName
+        }
+    }
+
+    @IBOutlet weak var routeIcon: UIImageView! {
+        didSet {
+            routeIcon.image = route.iconForRoute(transitMode: transitMode)
+        }
+    }
+
+    @IBOutlet var scheduleTypeTopWhenAlerts: NSLayoutConstraint!
+    @IBOutlet var scheduleTypeTopWhenNoAlerts: NSLayoutConstraint!
+    @IBOutlet weak var transitAlertViews: UIView!
+    @IBOutlet weak var routeLongNameLabel: UILabel! {
+        didSet {
+            routeLongNameLabel.text = route.routeLongName
         }
     }
 
@@ -27,7 +42,6 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     var septaAlertsViewController: SeptaAlertsViewController!
 
-    @IBOutlet weak var routePillView: UIView!
     @IBOutlet weak var shadowView: UIView!
 
     let scheduleRequest = store.state.scheduleState.scheduleRequest
@@ -35,8 +49,6 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
     let transitMode = store.state.scheduleState.scheduleRequest.transitMode!
 
     let route = store.state.scheduleState.scheduleRequest.selectedRoute!
-
-    let alertsDict = store.state.alertState.alertDict
 
     static var viewController: ViewController = .tripScheduleController
     @IBOutlet weak var startingPoint: UILabel!
@@ -115,16 +127,6 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         viewModel.subscribe()
         tableView.tableFooterView = tableViewFooter
         view.backgroundColor = SeptaColor.navBarBlue
-        routePillView.layer.cornerRadius = 5
-
-        var pillColor = UIColor.clear
-        if let routeColor = route.colorForRoute() {
-            pillColor = routeColor
-        } else if let transitModeColor = transitMode.colorForPill() {
-            pillColor = transitModeColor
-        }
-
-        routePillView.backgroundColor = pillColor
         navigationItem.title = "Schedules: \(transitMode.name())"
         updateLabels()
         navigationController?.navigationBar.tintColor = UIColor.white
@@ -138,11 +140,30 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         shadowView.layer.shadowOpacity = 1
         shadowView.layer.shadowColor = SeptaColor.navBarShadowColor.cgColor
 
-        if let alert = alertsDict[transitMode]?[route.routeId] {
+        configureSegementedControl()
+        septaAlertsViewController.setTransitMode(transitMode, route: route)
+    }
 
-            septaAlertsViewController.displaySeptaAlert(alert: alert)
+    override func viewDidLayoutSubviews() {
+    }
+
+    override func viewWillLayoutSubviews() {
+        if septaAlertsViewController.hasAlerts {
+            scheduleTypeTopWhenNoAlerts.isActive = false
+            scheduleTypeTopWhenAlerts.isActive = true
+        } else {
+            scheduleTypeTopWhenAlerts.isActive = false
+            scheduleTypeTopWhenNoAlerts.isActive = true
         }
+        super.viewWillLayoutSubviews()
+    }
 
+    override func updateViewConstraints() {
+
+        super.updateViewConstraints()
+    }
+
+    func configureSegementedControl() {
         segmentedControl.removeAllSegments()
         scheduleTypeSegments = transitMode.scheduleTypeSegments()
         let reversedSegments = scheduleTypeSegments.reversed()
@@ -151,6 +172,9 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
             segmentedControl.insertSegment(withTitle: scheduleType.stringForSegments(), at: 0, animated: false)
         }
         segmentedControl.selectedSegmentIndex = 0
+    }
+
+    func showHideAlertViewifNecessary() {
     }
 
     var scheduleTypeSegments: [ScheduleType]!

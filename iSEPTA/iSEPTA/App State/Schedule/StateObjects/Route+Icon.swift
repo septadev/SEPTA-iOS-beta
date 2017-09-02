@@ -35,4 +35,13 @@ extension Route {
         default: return nil
         }
     }
+
+    func iconForRoute(transitMode: TransitMode) -> UIImage? {
+        if let routeImage = self.iconForRoute() {
+            return routeImage
+        } else if let transitViewImage = transitMode.cellImage() {
+            return transitViewImage
+        }
+        return nil
+    }
 }

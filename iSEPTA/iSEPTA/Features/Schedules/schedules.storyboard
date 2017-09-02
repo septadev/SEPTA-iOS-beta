@@ -329,7 +329,7 @@ TableViewWrapper</string>
                                                     <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mCg-hU-RGp" id="EF9-Ow-ydw">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="751" text="44 Route" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om0-j5-VdR" userLabel="RouteShortName">
@@ -456,41 +456,47 @@ TableViewWrapper</string>
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dDq-5d-Xzd" userLabel="TitleView">
-                                        <rect key="frame" x="11" y="13" width="353" height="24"/>
+                                        <rect key="frame" x="11" y="13" width="353" height="39"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to the Wizard" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cV-aV-zSM" userLabel="RouteName">
-                                                <rect key="frame" x="0.0" y="0.0" width="317" height="24"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RB9-ar-35t" userLabel="RouteIcon">
+                                                <rect key="frame" x="0.0" y="8.5" width="22" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="22" id="GyA-Ky-pFY"/>
+                                                    <constraint firstAttribute="height" constant="22" id="jdt-1n-VLO"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paoli Thorton" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cV-aV-zSM" userLabel="RouteShortName">
+                                                <rect key="frame" x="30" y="0.0" width="116" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ALR-sf-oVA" userLabel="PillView">
-                                                <rect key="frame" x="322" y="5.5" width="31" height="13"/>
-                                                <color key="backgroundColor" red="1" green="0.017948382969999999" blue="0.093025084879999997" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="13" id="2du-zA-HDr"/>
-                                                    <constraint firstAttribute="width" constant="31" id="Sgh-Le-tj3"/>
-                                                </constraints>
-                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to City Center" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGN-KZ-r04" userLabel="RouteLongName">
+                                                <rect key="frame" x="30" y="24.5" width="79" height="14.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="8cV-aV-zSM" secondAttribute="bottom" id="0Zp-xo-YbC" userLabel="RouteNameBottom"/>
-                                            <constraint firstItem="8cV-aV-zSM" firstAttribute="leading" secondItem="dDq-5d-Xzd" secondAttribute="leading" id="FR3-KU-iDs" userLabel="RouteNameLeft"/>
-                                            <constraint firstItem="ALR-sf-oVA" firstAttribute="leading" secondItem="8cV-aV-zSM" secondAttribute="trailing" constant="5" id="J0y-4L-qtR" userLabel="RouteNameRight"/>
-                                            <constraint firstAttribute="trailing" secondItem="ALR-sf-oVA" secondAttribute="trailing" id="ffk-sa-ycc" userLabel="PillViewRight"/>
-                                            <constraint firstItem="8cV-aV-zSM" firstAttribute="top" secondItem="dDq-5d-Xzd" secondAttribute="top" id="g11-8E-BVD" userLabel="RouteNameTop"/>
-                                            <constraint firstItem="ALR-sf-oVA" firstAttribute="centerY" secondItem="dDq-5d-Xzd" secondAttribute="centerY" id="hle-Go-Jso" userLabel="PillViewCenterY"/>
+                                            <constraint firstItem="RB9-ar-35t" firstAttribute="leading" secondItem="dDq-5d-Xzd" secondAttribute="leading" id="Ivw-QH-vaS" userLabel="RouteIconLeft"/>
+                                            <constraint firstItem="RB9-ar-35t" firstAttribute="centerY" secondItem="dDq-5d-Xzd" secondAttribute="centerY" id="YAs-vb-nYP" userLabel="RouteIconCenterY"/>
+                                            <constraint firstItem="8cV-aV-zSM" firstAttribute="top" secondItem="dDq-5d-Xzd" secondAttribute="top" id="g11-8E-BVD" userLabel="RouteShortNameTop"/>
+                                            <constraint firstAttribute="bottom" secondItem="WGN-KZ-r04" secondAttribute="bottom" id="lSa-Bo-03J" userLabel="RouteLongNameBottom"/>
+                                            <constraint firstItem="WGN-KZ-r04" firstAttribute="leading" secondItem="RB9-ar-35t" secondAttribute="trailing" constant="8" id="sjI-4P-6V8" userLabel="RouteLongNameLeft"/>
+                                            <constraint firstItem="WGN-KZ-r04" firstAttribute="top" secondItem="8cV-aV-zSM" secondAttribute="bottom" constant="3" id="teO-v9-R1x" userLabel="RouteLongNameTop"/>
+                                            <constraint firstItem="8cV-aV-zSM" firstAttribute="leading" secondItem="RB9-ar-35t" secondAttribute="trailing" constant="8" id="wHg-sc-qGx" userLabel="RouteShortNameLeft"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pyu-Um-zmh" userLabel="InsetWhiteView">
-                                        <rect key="frame" x="9" y="50" width="357" height="499"/>
+                                        <rect key="frame" x="9" y="65" width="357" height="484"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drm-u7-yWJ" userLabel="TripDetails">
                                                 <rect key="frame" x="10" y="17" width="337" height="44"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R3N-JS-aaK" userLabel="DottedLineView" customClass="TripIconView" customModule="Septa" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="12" height="44"/>
+                                                        <rect key="frame" x="2" y="0.0" width="12" height="44"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="12" id="RjH-Gr-kus" userLabel="DottedLineViewWidth"/>
@@ -508,40 +514,47 @@ TableViewWrapper</string>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUh-d4-gsx" userLabel="Reverse">
-                                                        <rect key="frame" x="120" y="14.5" width="60" height="21"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="60" id="k2B-og-VkJ"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                                                        <state key="normal" title="Reverse"/>
-                                                        <connections>
-                                                            <action selector="reverseStopsButtonTapped:" destination="9ZE-6T-hsR" eventType="touchUpInside" id="qCH-F0-s4s"/>
-                                                        </connections>
-                                                    </button>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FsL-gs-X84" userLabel="NextToArriveButton" customClass="NextToArriveButtonView" customModule="Septa" customModuleProvider="target">
-                                                        <rect key="frame" x="211" y="7" width="126" height="30"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vBq-EB-EcZ" userLabel="ReverseTrip">
+                                                        <rect key="frame" x="269" y="10" width="60" height="25"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wec-xl-ho7" customClass="ReverseTripButton" customModule="Septa" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="-0.5" width="60" height="25"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="4"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="reverseStopsButtonTapped:" destination="9ZE-6T-hsR" eventType="touchUpInside" id="5sc-TR-THk"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="dtB-Ua-VBq"/>
-                                                            <constraint firstAttribute="width" constant="126" id="pXJ-WQ-Bq5"/>
+                                                            <constraint firstAttribute="width" constant="60" id="Irz-cd-si2"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Wec-xl-ho7" secondAttribute="bottom" id="JXz-2t-HZG" userLabel="ButtomBottom"/>
+                                                            <constraint firstItem="Wec-xl-ho7" firstAttribute="top" secondItem="vBq-EB-EcZ" secondAttribute="top" id="MtG-tA-D9S" userLabel="ButtomTop"/>
+                                                            <constraint firstItem="Wec-xl-ho7" firstAttribute="leading" secondItem="vBq-EB-EcZ" secondAttribute="leading" id="NAk-LA-qox" userLabel="ButtonLeft"/>
+                                                            <constraint firstAttribute="height" constant="25" id="mMW-tc-npr"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Wec-xl-ho7" secondAttribute="trailing" id="sbh-My-Orb" userLabel="ButtonRight"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="s9c-AY-wQ2" firstAttribute="top" secondItem="ake-6Y-gpx" secondAttribute="bottom" constant="15" id="1sw-yf-9vI" userLabel="DestinationStopTop"/>
-                                                    <constraint firstItem="IUh-d4-gsx" firstAttribute="leading" secondItem="drm-u7-yWJ" secondAttribute="leading" constant="120" id="55t-qn-pfQ" userLabel="ReverseLeft"/>
+                                                    <constraint firstAttribute="trailing" secondItem="vBq-EB-EcZ" secondAttribute="trailing" constant="8" id="6JZ-4H-dEo" userLabel="ReverseTripRight"/>
+                                                    <constraint firstItem="vBq-EB-EcZ" firstAttribute="centerY" secondItem="drm-u7-yWJ" secondAttribute="centerY" id="789-uG-MQe" userLabel="ReverseTripCenterY"/>
                                                     <constraint firstAttribute="bottom" secondItem="R3N-JS-aaK" secondAttribute="bottom" id="8sr-qp-22e" userLabel="DottedLineViewBottom"/>
+                                                    <constraint firstItem="vBq-EB-EcZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="s9c-AY-wQ2" secondAttribute="trailing" constant="15" id="EpM-45-vDG" userLabel="DestinationStopRight"/>
                                                     <constraint firstItem="R3N-JS-aaK" firstAttribute="top" secondItem="drm-u7-yWJ" secondAttribute="top" id="Imv-zN-3p0" userLabel="DottedLineViewTop"/>
-                                                    <constraint firstItem="FsL-gs-X84" firstAttribute="centerY" secondItem="drm-u7-yWJ" secondAttribute="centerY" id="Sqb-G0-V38" userLabel="NextToArriveButtonCenterY"/>
-                                                    <constraint firstAttribute="trailing" secondItem="FsL-gs-X84" secondAttribute="trailing" id="TDy-4l-3i3" userLabel="NextToArriveRight"/>
+                                                    <constraint firstItem="vBq-EB-EcZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ake-6Y-gpx" secondAttribute="trailing" constant="15" id="JzT-fV-XOm" userLabel="StartingStopRight"/>
                                                     <constraint firstItem="s9c-AY-wQ2" firstAttribute="leading" secondItem="drm-u7-yWJ" secondAttribute="leading" constant="22" id="Te8-JV-alM" userLabel="DestinationStopLeft"/>
                                                     <constraint firstItem="ake-6Y-gpx" firstAttribute="leading" secondItem="drm-u7-yWJ" secondAttribute="leading" constant="22" id="f2e-h7-Iei" userLabel="StartingStopLeft"/>
-                                                    <constraint firstItem="R3N-JS-aaK" firstAttribute="leading" secondItem="drm-u7-yWJ" secondAttribute="leading" id="gRV-zM-EoZ" userLabel="DottedLineViewLeft"/>
+                                                    <constraint firstItem="R3N-JS-aaK" firstAttribute="leading" secondItem="drm-u7-yWJ" secondAttribute="leading" constant="2" id="gRV-zM-EoZ" userLabel="DottedLineViewLeft"/>
                                                     <constraint firstItem="ake-6Y-gpx" firstAttribute="top" secondItem="drm-u7-yWJ" secondAttribute="top" id="gnM-uo-g24" userLabel="StartingStopTop"/>
                                                     <constraint firstAttribute="bottom" secondItem="s9c-AY-wQ2" secondAttribute="bottom" id="jl4-tX-cEx" userLabel="DestinationStopBottom"/>
-                                                    <constraint firstItem="IUh-d4-gsx" firstAttribute="top" secondItem="ake-6Y-gpx" secondAttribute="bottom" id="nUr-Xo-nf6"/>
                                                 </constraints>
                                             </view>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MBk-l9-tXz" userLabel="TransitAlerts">
@@ -560,19 +573,20 @@ TableViewWrapper</string>
                                                     <segment title="Saturday"/>
                                                     <segment title="Sunday"/>
                                                 </segments>
+                                                <color key="tintColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="segmentedControlValueChanged:" destination="9ZE-6T-hsR" eventType="valueChanged" id="QsN-yl-0u9"/>
                                                 </connections>
                                             </segmentedControl>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zf9-bi-BCi">
-                                                <rect key="frame" x="0.0" y="173" width="357" height="326"/>
+                                                <rect key="frame" x="0.0" y="173" width="357" height="311"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="scheduleCell" id="ffg-L2-s06" customClass="ScheduleTableViewCell" customModule="Septa" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="357" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ffg-L2-s06" id="QZ3-BZ-2bZ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="357" height="44"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="357" height="43.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEg-oF-e3U" userLabel="Header">
@@ -656,6 +670,7 @@ TableViewWrapper</string>
                                         <constraints>
                                             <constraint firstItem="zf9-bi-BCi" firstAttribute="top" secondItem="d5G-1F-kch" secondAttribute="bottom" constant="10" id="0aM-EX-Z5i" userLabel="TableViewTop"/>
                                             <constraint firstAttribute="trailing" secondItem="MBk-l9-tXz" secondAttribute="trailing" id="32P-bJ-xkg" userLabel="TransitAlertsRighjt"/>
+                                            <constraint firstItem="d5G-1F-kch" firstAttribute="top" secondItem="drm-u7-yWJ" secondAttribute="bottom" constant="15" id="8oP-vG-BKc" userLabel="ScheduleTypeTop_WhenNoAlerts"/>
                                             <constraint firstItem="d5G-1F-kch" firstAttribute="leading" secondItem="Pyu-Um-zmh" secondAttribute="leading" constant="10" id="BHf-si-z2Q" userLabel="ScheduleTypeLeft"/>
                                             <constraint firstAttribute="trailing" secondItem="d5G-1F-kch" secondAttribute="trailing" constant="10" id="GjU-BD-anT" userLabel="ScheduleTypeRight"/>
                                             <constraint firstItem="drm-u7-yWJ" firstAttribute="leading" secondItem="Pyu-Um-zmh" secondAttribute="leading" constant="10" id="Gxo-Hg-osl" userLabel="TripDetailsLeft"/>
@@ -664,10 +679,15 @@ TableViewWrapper</string>
                                             <constraint firstItem="MBk-l9-tXz" firstAttribute="top" secondItem="drm-u7-yWJ" secondAttribute="bottom" constant="10" id="Oso-KY-Fvt" userLabel="TransitAlertsTop"/>
                                             <constraint firstAttribute="bottom" secondItem="zf9-bi-BCi" secondAttribute="bottom" id="S7F-ga-eYJ" userLabel="TableViewBottom"/>
                                             <constraint firstItem="MBk-l9-tXz" firstAttribute="leading" secondItem="Pyu-Um-zmh" secondAttribute="leading" id="Thn-xC-2Ao" userLabel="TransitAlertsLeft"/>
-                                            <constraint firstItem="d5G-1F-kch" firstAttribute="top" secondItem="MBk-l9-tXz" secondAttribute="bottom" constant="8" id="b5y-nI-pOS" userLabel="ScheduleTypeTop"/>
+                                            <constraint firstItem="d5G-1F-kch" firstAttribute="top" secondItem="MBk-l9-tXz" secondAttribute="bottom" constant="8" id="b5y-nI-pOS" userLabel="ScheduleTypeTop_WithAlerts"/>
                                             <constraint firstAttribute="trailing" secondItem="drm-u7-yWJ" secondAttribute="trailing" constant="10" id="oBa-Oe-Ndm" userLabel="TripDetailsRight"/>
                                             <constraint firstItem="drm-u7-yWJ" firstAttribute="top" secondItem="Pyu-Um-zmh" secondAttribute="top" constant="17" id="pXL-Rr-dOo" userLabel="TripDetailsTop"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="8oP-vG-BKc"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -684,8 +704,8 @@ TitleViewTop</string>
                                     <constraint firstAttribute="trailing" secondItem="Pyu-Um-zmh" secondAttribute="trailing" constant="9" id="sfU-Mr-jKE" userLabel="InsetWhiteViewRight"/>
                                 </constraints>
                             </view>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="V0h-9O-nLg">
-                                <rect key="frame" x="168.5" y="415.5" width="37" height="37"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="V0h-9O-nLg">
+                                <rect key="frame" x="168.5" y="439" width="37" height="37"/>
                                 <color key="color" red="0.5490196078431373" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ua0-R8-FzE" userLabel="ShadowView">
@@ -720,13 +740,17 @@ TitleViewTop</string>
                         <outlet property="activityIndicator" destination="V0h-9O-nLg" id="FiS-d3-T0b"/>
                         <outlet property="endingPoint" destination="s9c-AY-wQ2" id="jTU-hZ-Uko"/>
                         <outlet property="insetWhiteView" destination="Pyu-Um-zmh" id="7mS-HY-5dY"/>
-                        <outlet property="routeNameLabel" destination="8cV-aV-zSM" id="cW5-yG-XQQ"/>
-                        <outlet property="routePillView" destination="ALR-sf-oVA" id="UL1-FA-qTG"/>
+                        <outlet property="routeIcon" destination="RB9-ar-35t" id="se8-B9-May"/>
+                        <outlet property="routeLongNameLabel" destination="WGN-KZ-r04" id="qK4-QC-Trk"/>
+                        <outlet property="routeShortNameLabel" destination="8cV-aV-zSM" id="Rf1-pH-XvV"/>
+                        <outlet property="scheduleTypeTopWhenAlerts" destination="b5y-nI-pOS" id="XZu-Ay-5CC"/>
+                        <outlet property="scheduleTypeTopWhenNoAlerts" destination="8oP-vG-BKc" id="s8q-Nu-n16"/>
                         <outlet property="segmentedControl" destination="d5G-1F-kch" id="42A-X3-3RS"/>
                         <outlet property="shadowView" destination="ua0-R8-FzE" id="5aE-gI-lqV"/>
                         <outlet property="startingPoint" destination="ake-6Y-gpx" id="eUR-Ne-p47"/>
                         <outlet property="tableView" destination="zf9-bi-BCi" id="DFV-Aa-tSM"/>
                         <outlet property="tableViewFooter" destination="Dzc-I0-HQC" id="DI2-WE-ofO"/>
+                        <outlet property="transitAlertViews" destination="MBk-l9-tXz" id="YLD-z3-78S"/>
                         <outlet property="view" destination="DNj-9c-Ll8" id="Q3G-Hj-SMV"/>
                         <outlet property="viewModel" destination="n3L-Yu-gMQ" id="SuR-cW-JAO"/>
                     </connections>

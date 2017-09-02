@@ -8,12 +8,24 @@
 
 import Foundation
 import UIKit
+import SeptaSchedule
 
 class SeptaAlertsViewController: UIViewController {
 
     @IBOutlet weak var alertStackView: UIStackView!
 
-    func displaySeptaAlert(alert: SeptaAlert) {
+    let alertsDict = store.state.alertState.alertDict
+
+    public func setTransitMode(_ transitMode: TransitMode, route: Route) {
+        if let alert = alertsDict[transitMode]?[route.routeId] {
+            configureAlerts(alert: alert)
+        } else {
+            hasAlerts = false
+            view.isHidden = true
+        }
+    }
+
+    private func configureAlerts(alert: SeptaAlert) {
         let alertViewElements = alert.alertViewElements()
         for element in alertViewElements {
             let alertView = loadAlertView()
@@ -22,13 +34,11 @@ class SeptaAlertsViewController: UIViewController {
             alertStackView.addArrangedSubview(alertView)
         }
 
-        noTransitAlertsLabel.isHidden = alertViewElements.count > 0
+        hasAlerts = alertViewElements.count > 0
+        view.isHidden = !hasAlerts
     }
 
-    @IBOutlet weak var noTransitAlertsLabel: UILabel!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    var hasAlerts: Bool = false
 
     private func loadAlertView() -> TransitAlertView {
         let loadedNib = Bundle.main.loadNibNamed("TransitAlertView", owner: nil, options: nil) as! [TransitAlertView]

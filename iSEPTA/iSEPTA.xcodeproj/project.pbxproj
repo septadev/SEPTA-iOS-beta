@@ -128,7 +128,7 @@
 		67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B511801F499E8F000E3065 /* ButtonViewCell.swift */; };
 		67C567271F59695900FF6203 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C567261F59695900FF6203 /* Favorite.swift */; };
 		67C5672B1F596E0700FF6203 /* ErrorObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C5672A1F596E0700FF6203 /* ErrorObjects.swift */; };
-		67C5672F1F59862600FF6203 /* NextToArriveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C5672E1F59862600FF6203 /* NextToArriveButtonView.swift */; };
+		67C5672F1F59862600FF6203 /* ReverseTripButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C5672E1F59862600FF6203 /* ReverseTripButton.swift */; };
 		67C567311F5989D900FF6203 /* TransitAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67C567301F5989D900FF6203 /* TransitAlertView.xib */; };
 		67C567331F598A0400FF6203 /* TransitAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C567321F598A0400FF6203 /* TransitAlertView.swift */; };
 		67C567351F598C7900FF6203 /* SeptaAlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C567341F598C7900FF6203 /* SeptaAlertsViewController.swift */; };
@@ -353,7 +353,7 @@
 		67B511801F499E8F000E3065 /* ButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewCell.swift; sourceTree = "<group>"; };
 		67C567261F59695900FF6203 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		67C5672A1F596E0700FF6203 /* ErrorObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorObjects.swift; sourceTree = "<group>"; };
-		67C5672E1F59862600FF6203 /* NextToArriveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveButtonView.swift; sourceTree = "<group>"; };
+		67C5672E1F59862600FF6203 /* ReverseTripButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseTripButton.swift; sourceTree = "<group>"; };
 		67C567301F5989D900FF6203 /* TransitAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransitAlertView.xib; sourceTree = "<group>"; };
 		67C567321F598A0400FF6203 /* TransitAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitAlertView.swift; sourceTree = "<group>"; };
 		67C567341F598C7900FF6203 /* SeptaAlertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaAlertsViewController.swift; sourceTree = "<group>"; };
@@ -570,7 +570,7 @@
 				582F4E9A1F33B1120062A546 /* TripScheduleViewController.swift */,
 				582F4E9B1F33B1120062A546 /* TripScheduleViewModel.swift */,
 				582F4E9C1F33B1120062A546 /* ScheduleTableViewCell.swift */,
-				67C5672E1F59862600FF6203 /* NextToArriveButtonView.swift */,
+				67C5672E1F59862600FF6203 /* ReverseTripButton.swift */,
 			);
 			path = TripSchedule;
 			sourceTree = "<group>";
@@ -1274,7 +1274,7 @@
 				589BCC321F3D5068002FAEDE /* SchedulesPresentationController.swift in Sources */,
 				586DFEC51F505482004BC972 /* CurvedTopView.swift in Sources */,
 				581DA54A1F3BE1C8006AEC39 /* IdentifiableController.swift in Sources */,
-				67C5672F1F59862600FF6203 /* NextToArriveButtonView.swift in Sources */,
+				67C5672F1F59862600FF6203 /* ReverseTripButton.swift in Sources */,
 				67C567351F598C7900FF6203 /* SeptaAlertsViewController.swift in Sources */,
 				589A89DE1F52E7E8007329DB /* ScheduleStopEditReducer.swift in Sources */,
 				581DA54F1F3BF102006AEC39 /* ViewTransitionType.swift in Sources */,
