@@ -19,10 +19,10 @@ public class TripReverseCommand: BaseCommand {
             for row in statement {
                 if
                     let col0 = row[0], let departureInt = col0 as? Int64,
-                    let col1 = row[1], let arrivalInt = col1 as? Int64 ,
+                    let col1 = row[1], let arrivalInt = col1 as? Int64,
                     let col2 = row[2], let blockId = col2 as? String {
 
-                    let trip = Trip(departureInt: Int(departureInt), arrivalInt: Int(arrivalInt), blockId:blockId)
+                    let trip = Trip(departureInt: Int(departureInt), arrivalInt: Int(arrivalInt), blockId: blockId)
                     trips.append(trip)
                 }
             }

@@ -411,7 +411,7 @@ public class SeptaDraw: NSObject {
         context.restoreGState()
     }
 
-    @objc public dynamic class func drawNextToArriveButton(buttonFrame: CGRect = CGRect(x: 3.94, y: 3.28, width: 240.51, height: 64.69)) {
+    @objc public dynamic class func drawNextToArriveButton(buttonFrame: CGRect = CGRect(x: 0, y: -0, width: 250, height: 100)) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         // This non-generic function dramatically improves compilation times of complex expressions.
@@ -421,27 +421,25 @@ public class SeptaDraw: NSObject {
         let redButtonGradientLeft = UIColor(red: 0.502, green: 0.153, blue: 0.063, alpha: 1.000)
         let redButtonGradientRight1 = UIColor(red: 0.843, green: 0.227, blue: 0.071, alpha: 1.000)
         let fillColor2 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
+        let buttonShadowColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.075)
 
         //// Gradient Declarations
         let redButtonGradient = CGGradient(colorsSpace: nil, colors: [redButtonGradientLeft.cgColor, redButtonGradientRight1.cgColor] as CFArray, locations: [0, 1])!
 
         //// Shadow Declarations
-        let testShadow = NSShadow()
-        testShadow.shadowColor = UIColor.green
-        testShadow.shadowOffset = CGSize(width: 0, height: 0)
-        testShadow.shadowBlurRadius = 5
+        let buttonShadow = NSShadow()
+        buttonShadow.shadowColor = buttonShadowColor
+        buttonShadow.shadowOffset = CGSize(width: 0, height: 0)
+        buttonShadow.shadowBlurRadius = 3
 
         //// Subframes
-        let textFrame = CGRect(x: buttonFrame.minX + fastFloor((buttonFrame.width - 224) * 0.75403 + 0.05) + 0.45, y: buttonFrame.minY + fastFloor((buttonFrame.height - 28.46) * 0.53337 + 0.17) + 0.33, width: 224, height: 28.46)
+        let frame = CGRect(x: buttonFrame.minX + fastFloor((buttonFrame.width - 224.13) * 0.55446 + 0.15) + 0.35, y: buttonFrame.minY + fastFloor((buttonFrame.height - 50) * 0.50000 - 0.5) + 1, width: 224.13, height: 50)
 
         //// Rectangle Drawing
-        context.saveGState()
-        context.translateBy(x: textFrame.minX + 107.8, y: textFrame.minY + 13.02)
-
-        let rectangleRect = CGRect(x: -120.26, y: -32.35, width: 240.51, height: 64.69)
+        let rectangleRect = CGRect(x: buttonFrame.minX + 3, y: buttonFrame.minY + fastFloor((buttonFrame.height - 3) * 0.03093 - 0.5) + 1, width: buttonFrame.width - 6, height: buttonFrame.height - 4 - fastFloor((buttonFrame.height - 3) * 0.03093 - 0.5))
         let rectanglePath = UIBezierPath(roundedRect: rectangleRect, cornerRadius: 4)
         context.saveGState()
-        context.setShadow(offset: testShadow.shadowOffset, blur: testShadow.shadowBlurRadius, color: (testShadow.shadowColor as! UIColor).cgColor)
+        context.setShadow(offset: buttonShadow.shadowOffset, blur: buttonShadow.shadowBlurRadius, color: (buttonShadow.shadowColor as! UIColor).cgColor)
         context.beginTransparencyLayer(auxiliaryInfo: nil)
         rectanglePath.addClip()
         context.drawLinearGradient(redButtonGradient,
@@ -451,10 +449,8 @@ public class SeptaDraw: NSObject {
         context.endTransparencyLayer()
         context.restoreGState()
 
-        context.restoreGState()
-
         //// Text Drawing
-        let textRect = CGRect(x: textFrame.minX + 35.05, y: textFrame.minY, width: 189.71, height: 28.46)
+        let textRect = CGRect(x: frame.minX + 33.16, y: frame.minY + 9.5, width: 190.97, height: 28.46)
         let textTextContent = "Next to Arrive for this Route"
         let textStyle = NSMutableParagraphStyle()
         textStyle.alignment = .left
@@ -474,23 +470,23 @@ public class SeptaDraw: NSObject {
         //// Icon
         //// Bezier Drawing
         let bezierPath = UIBezierPath()
-        bezierPath.move(to: CGPoint(x: textFrame.minX + 15.89, y: textFrame.minY + 25.06))
-        bezierPath.addCurve(to: CGPoint(x: textFrame.minX + 6.94, y: textFrame.minY + 16.36), controlPoint1: CGPoint(x: textFrame.minX + 10.95, y: textFrame.minY + 25.06), controlPoint2: CGPoint(x: textFrame.minX + 6.94, y: textFrame.minY + 21.16))
-        bezierPath.addCurve(to: CGPoint(x: textFrame.minX + 15.89, y: textFrame.minY + 7.67), controlPoint1: CGPoint(x: textFrame.minX + 6.94, y: textFrame.minY + 11.57), controlPoint2: CGPoint(x: textFrame.minX + 10.95, y: textFrame.minY + 7.67))
-        bezierPath.addCurve(to: CGPoint(x: textFrame.minX + 24.84, y: textFrame.minY + 16.36), controlPoint1: CGPoint(x: textFrame.minX + 20.82, y: textFrame.minY + 7.67), controlPoint2: CGPoint(x: textFrame.minX + 24.84, y: textFrame.minY + 11.57))
-        bezierPath.addCurve(to: CGPoint(x: textFrame.minX + 15.89, y: textFrame.minY + 25.06), controlPoint1: CGPoint(x: textFrame.minX + 24.84, y: textFrame.minY + 21.16), controlPoint2: CGPoint(x: textFrame.minX + 20.82, y: textFrame.minY + 25.06))
+        bezierPath.move(to: CGPoint(x: frame.minX + 15.34, y: frame.minY + 32.38))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 6.39, y: frame.minY + 23.69), controlPoint1: CGPoint(x: frame.minX + 10.4, y: frame.minY + 32.38), controlPoint2: CGPoint(x: frame.minX + 6.39, y: frame.minY + 28.48))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 15.34, y: frame.minY + 14.99), controlPoint1: CGPoint(x: frame.minX + 6.39, y: frame.minY + 18.89), controlPoint2: CGPoint(x: frame.minX + 10.4, y: frame.minY + 14.99))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 24.29, y: frame.minY + 23.69), controlPoint1: CGPoint(x: frame.minX + 20.27, y: frame.minY + 14.99), controlPoint2: CGPoint(x: frame.minX + 24.29, y: frame.minY + 18.89))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 15.34, y: frame.minY + 32.38), controlPoint1: CGPoint(x: frame.minX + 24.29, y: frame.minY + 28.48), controlPoint2: CGPoint(x: frame.minX + 20.27, y: frame.minY + 32.38))
         bezierPath.close()
-        bezierPath.move(to: CGPoint(x: textFrame.minX + 15.99, y: textFrame.minY + 18.1))
-        bezierPath.addCurve(to: CGPoint(x: textFrame.minX + 17.88, y: textFrame.minY + 16.24), controlPoint1: CGPoint(x: textFrame.minX + 17.03, y: textFrame.minY + 18.1), controlPoint2: CGPoint(x: textFrame.minX + 17.88, y: textFrame.minY + 17.27))
-        bezierPath.addCurve(to: CGPoint(x: textFrame.minX + 17.73, y: textFrame.minY + 15.54), controlPoint1: CGPoint(x: textFrame.minX + 17.88, y: textFrame.minY + 16), controlPoint2: CGPoint(x: textFrame.minX + 17.83, y: textFrame.minY + 15.77))
-        bezierPath.addLine(to: CGPoint(x: textFrame.minX + 20.16, y: textFrame.minY + 13.15))
-        bezierPath.addCurve(to: CGPoint(x: textFrame.minX + 20.16, y: textFrame.minY + 12.21), controlPoint1: CGPoint(x: textFrame.minX + 20.43, y: textFrame.minY + 12.89), controlPoint2: CGPoint(x: textFrame.minX + 20.43, y: textFrame.minY + 12.47))
-        bezierPath.addCurve(to: CGPoint(x: textFrame.minX + 19.69, y: textFrame.minY + 12.01), controlPoint1: CGPoint(x: textFrame.minX + 20.04, y: textFrame.minY + 12.08), controlPoint2: CGPoint(x: textFrame.minX + 19.87, y: textFrame.minY + 12.01))
-        bezierPath.addCurve(to: CGPoint(x: textFrame.minX + 19.21, y: textFrame.minY + 12.21), controlPoint1: CGPoint(x: textFrame.minX + 19.51, y: textFrame.minY + 12.01), controlPoint2: CGPoint(x: textFrame.minX + 19.34, y: textFrame.minY + 12.08))
-        bezierPath.addLine(to: CGPoint(x: textFrame.minX + 16.81, y: textFrame.minY + 14.57))
-        bezierPath.addCurve(to: CGPoint(x: textFrame.minX + 15.99, y: textFrame.minY + 14.38), controlPoint1: CGPoint(x: textFrame.minX + 16.55, y: textFrame.minY + 14.45), controlPoint2: CGPoint(x: textFrame.minX + 16.27, y: textFrame.minY + 14.38))
-        bezierPath.addCurve(to: CGPoint(x: textFrame.minX + 14.1, y: textFrame.minY + 16.24), controlPoint1: CGPoint(x: textFrame.minX + 14.94, y: textFrame.minY + 14.38), controlPoint2: CGPoint(x: textFrame.minX + 14.1, y: textFrame.minY + 15.22))
-        bezierPath.addCurve(to: CGPoint(x: textFrame.minX + 15.99, y: textFrame.minY + 18.1), controlPoint1: CGPoint(x: textFrame.minX + 14.1, y: textFrame.minY + 17.27), controlPoint2: CGPoint(x: textFrame.minX + 14.94, y: textFrame.minY + 18.1))
+        bezierPath.move(to: CGPoint(x: frame.minX + 15.44, y: frame.minY + 25.43))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 17.33, y: frame.minY + 23.57), controlPoint1: CGPoint(x: frame.minX + 16.48, y: frame.minY + 25.43), controlPoint2: CGPoint(x: frame.minX + 17.33, y: frame.minY + 24.59))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 17.18, y: frame.minY + 22.87), controlPoint1: CGPoint(x: frame.minX + 17.33, y: frame.minY + 23.33), controlPoint2: CGPoint(x: frame.minX + 17.28, y: frame.minY + 23.1))
+        bezierPath.addLine(to: CGPoint(x: frame.minX + 19.62, y: frame.minY + 20.47))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 19.62, y: frame.minY + 19.53), controlPoint1: CGPoint(x: frame.minX + 19.88, y: frame.minY + 20.21), controlPoint2: CGPoint(x: frame.minX + 19.88, y: frame.minY + 19.79))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 19.14, y: frame.minY + 19.34), controlPoint1: CGPoint(x: frame.minX + 19.49, y: frame.minY + 19.41), controlPoint2: CGPoint(x: frame.minX + 19.32, y: frame.minY + 19.34))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 18.66, y: frame.minY + 19.53), controlPoint1: CGPoint(x: frame.minX + 18.96, y: frame.minY + 19.34), controlPoint2: CGPoint(x: frame.minX + 18.79, y: frame.minY + 19.41))
+        bezierPath.addLine(to: CGPoint(x: frame.minX + 16.26, y: frame.minY + 21.9))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 15.44, y: frame.minY + 21.71), controlPoint1: CGPoint(x: frame.minX + 16, y: frame.minY + 21.77), controlPoint2: CGPoint(x: frame.minX + 15.72, y: frame.minY + 21.71))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 13.55, y: frame.minY + 23.57), controlPoint1: CGPoint(x: frame.minX + 14.4, y: frame.minY + 21.71), controlPoint2: CGPoint(x: frame.minX + 13.55, y: frame.minY + 22.54))
+        bezierPath.addCurve(to: CGPoint(x: frame.minX + 15.44, y: frame.minY + 25.43), controlPoint1: CGPoint(x: frame.minX + 13.55, y: frame.minY + 24.59), controlPoint2: CGPoint(x: frame.minX + 14.4, y: frame.minY + 25.43))
         bezierPath.close()
         bezierPath.usesEvenOddFillRule = true
         fillColor2.setFill()
@@ -498,15 +494,15 @@ public class SeptaDraw: NSObject {
 
         //// Bezier 2 Drawing
         let bezier2Path = UIBezierPath()
-        bezier2Path.move(to: CGPoint(x: textFrame.minX + 14.88, y: textFrame.minY + 7.7))
-        bezier2Path.addCurve(to: CGPoint(x: textFrame.minX + 14.39, y: textFrame.minY + 7.19), controlPoint1: CGPoint(x: textFrame.minX + 14.61, y: textFrame.minY + 7.7), controlPoint2: CGPoint(x: textFrame.minX + 14.39, y: textFrame.minY + 7.47))
-        bezier2Path.addLine(to: CGPoint(x: textFrame.minX + 14.39, y: textFrame.minY + 6.86))
-        bezier2Path.addCurve(to: CGPoint(x: textFrame.minX + 15.23, y: textFrame.minY + 5.96), controlPoint1: CGPoint(x: textFrame.minX + 14.39, y: textFrame.minY + 6.36), controlPoint2: CGPoint(x: textFrame.minX + 14.77, y: textFrame.minY + 5.96))
-        bezier2Path.addLine(to: CGPoint(x: textFrame.minX + 17.14, y: textFrame.minY + 5.96))
-        bezier2Path.addCurve(to: CGPoint(x: textFrame.minX + 17.97, y: textFrame.minY + 6.86), controlPoint1: CGPoint(x: textFrame.minX + 17.6, y: textFrame.minY + 5.96), controlPoint2: CGPoint(x: textFrame.minX + 17.97, y: textFrame.minY + 6.36))
-        bezier2Path.addLine(to: CGPoint(x: textFrame.minX + 17.97, y: textFrame.minY + 7.19))
-        bezier2Path.addCurve(to: CGPoint(x: textFrame.minX + 17.49, y: textFrame.minY + 7.7), controlPoint1: CGPoint(x: textFrame.minX + 17.97, y: textFrame.minY + 7.47), controlPoint2: CGPoint(x: textFrame.minX + 17.76, y: textFrame.minY + 7.7))
-        bezier2Path.addLine(to: CGPoint(x: textFrame.minX + 14.88, y: textFrame.minY + 7.7))
+        bezier2Path.move(to: CGPoint(x: frame.minX + 14.33, y: frame.minY + 15.03))
+        bezier2Path.addCurve(to: CGPoint(x: frame.minX + 13.85, y: frame.minY + 14.51), controlPoint1: CGPoint(x: frame.minX + 14.06, y: frame.minY + 15.03), controlPoint2: CGPoint(x: frame.minX + 13.85, y: frame.minY + 14.8))
+        bezier2Path.addLine(to: CGPoint(x: frame.minX + 13.85, y: frame.minY + 14.18))
+        bezier2Path.addCurve(to: CGPoint(x: frame.minX + 14.68, y: frame.minY + 13.29), controlPoint1: CGPoint(x: frame.minX + 13.85, y: frame.minY + 13.69), controlPoint2: CGPoint(x: frame.minX + 14.22, y: frame.minY + 13.29))
+        bezier2Path.addLine(to: CGPoint(x: frame.minX + 16.59, y: frame.minY + 13.29))
+        bezier2Path.addCurve(to: CGPoint(x: frame.minX + 17.43, y: frame.minY + 14.18), controlPoint1: CGPoint(x: frame.minX + 17.05, y: frame.minY + 13.29), controlPoint2: CGPoint(x: frame.minX + 17.43, y: frame.minY + 13.69))
+        bezier2Path.addLine(to: CGPoint(x: frame.minX + 17.43, y: frame.minY + 14.51))
+        bezier2Path.addCurve(to: CGPoint(x: frame.minX + 16.94, y: frame.minY + 15.03), controlPoint1: CGPoint(x: frame.minX + 17.43, y: frame.minY + 14.8), controlPoint2: CGPoint(x: frame.minX + 17.21, y: frame.minY + 15.03))
+        bezier2Path.addLine(to: CGPoint(x: frame.minX + 14.33, y: frame.minY + 15.03))
         bezier2Path.close()
         bezier2Path.usesEvenOddFillRule = true
         fillColor2.setFill()
@@ -514,13 +510,13 @@ public class SeptaDraw: NSObject {
 
         //// Bezier 3 Drawing
         let bezier3Path = UIBezierPath()
-        bezier3Path.move(to: CGPoint(x: textFrame.minX + 1.54, y: textFrame.minY + 16.83))
-        bezier3Path.addCurve(to: CGPoint(x: textFrame.minX + 1, y: textFrame.minY + 16.4), controlPoint1: CGPoint(x: textFrame.minX + 1.24, y: textFrame.minY + 16.83), controlPoint2: CGPoint(x: textFrame.minX + 1, y: textFrame.minY + 16.64))
-        bezier3Path.addCurve(to: CGPoint(x: textFrame.minX + 1.54, y: textFrame.minY + 15.96), controlPoint1: CGPoint(x: textFrame.minX + 1, y: textFrame.minY + 16.16), controlPoint2: CGPoint(x: textFrame.minX + 1.24, y: textFrame.minY + 15.96))
-        bezier3Path.addLine(to: CGPoint(x: textFrame.minX + 5.83, y: textFrame.minY + 15.96))
-        bezier3Path.addCurve(to: CGPoint(x: textFrame.minX + 6.37, y: textFrame.minY + 16.4), controlPoint1: CGPoint(x: textFrame.minX + 6.13, y: textFrame.minY + 15.96), controlPoint2: CGPoint(x: textFrame.minX + 6.37, y: textFrame.minY + 16.16))
-        bezier3Path.addCurve(to: CGPoint(x: textFrame.minX + 5.83, y: textFrame.minY + 16.83), controlPoint1: CGPoint(x: textFrame.minX + 6.37, y: textFrame.minY + 16.64), controlPoint2: CGPoint(x: textFrame.minX + 6.13, y: textFrame.minY + 16.83))
-        bezier3Path.addLine(to: CGPoint(x: textFrame.minX + 1.54, y: textFrame.minY + 16.83))
+        bezier3Path.move(to: CGPoint(x: frame.minX + 1, y: frame.minY + 24.16))
+        bezier3Path.addCurve(to: CGPoint(x: frame.minX + 0.45, y: frame.minY + 23.73), controlPoint1: CGPoint(x: frame.minX + 0.7, y: frame.minY + 24.16), controlPoint2: CGPoint(x: frame.minX + 0.45, y: frame.minY + 23.97))
+        bezier3Path.addCurve(to: CGPoint(x: frame.minX + 1, y: frame.minY + 23.29), controlPoint1: CGPoint(x: frame.minX + 0.45, y: frame.minY + 23.49), controlPoint2: CGPoint(x: frame.minX + 0.7, y: frame.minY + 23.29))
+        bezier3Path.addLine(to: CGPoint(x: frame.minX + 5.28, y: frame.minY + 23.29))
+        bezier3Path.addCurve(to: CGPoint(x: frame.minX + 5.82, y: frame.minY + 23.73), controlPoint1: CGPoint(x: frame.minX + 5.58, y: frame.minY + 23.29), controlPoint2: CGPoint(x: frame.minX + 5.82, y: frame.minY + 23.49))
+        bezier3Path.addCurve(to: CGPoint(x: frame.minX + 5.28, y: frame.minY + 24.16), controlPoint1: CGPoint(x: frame.minX + 5.82, y: frame.minY + 23.97), controlPoint2: CGPoint(x: frame.minX + 5.58, y: frame.minY + 24.16))
+        bezier3Path.addLine(to: CGPoint(x: frame.minX + 1, y: frame.minY + 24.16))
         bezier3Path.close()
         bezier3Path.usesEvenOddFillRule = true
         fillColor2.setFill()
@@ -528,13 +524,13 @@ public class SeptaDraw: NSObject {
 
         //// Bezier 4 Drawing
         let bezier4Path = UIBezierPath()
-        bezier4Path.move(to: CGPoint(x: textFrame.minX + 2.47, y: textFrame.minY + 20.47))
-        bezier4Path.addCurve(to: CGPoint(x: textFrame.minX + 1.89, y: textFrame.minY + 20.04), controlPoint1: CGPoint(x: textFrame.minX + 2.15, y: textFrame.minY + 20.47), controlPoint2: CGPoint(x: textFrame.minX + 1.89, y: textFrame.minY + 20.28))
-        bezier4Path.addCurve(to: CGPoint(x: textFrame.minX + 2.47, y: textFrame.minY + 19.6), controlPoint1: CGPoint(x: textFrame.minX + 1.89, y: textFrame.minY + 19.8), controlPoint2: CGPoint(x: textFrame.minX + 2.15, y: textFrame.minY + 19.6))
-        bezier4Path.addLine(to: CGPoint(x: textFrame.minX + 5.79, y: textFrame.minY + 19.6))
-        bezier4Path.addCurve(to: CGPoint(x: textFrame.minX + 6.37, y: textFrame.minY + 20.04), controlPoint1: CGPoint(x: textFrame.minX + 6.11, y: textFrame.minY + 19.6), controlPoint2: CGPoint(x: textFrame.minX + 6.37, y: textFrame.minY + 19.8))
-        bezier4Path.addCurve(to: CGPoint(x: textFrame.minX + 5.79, y: textFrame.minY + 20.47), controlPoint1: CGPoint(x: textFrame.minX + 6.37, y: textFrame.minY + 20.28), controlPoint2: CGPoint(x: textFrame.minX + 6.11, y: textFrame.minY + 20.47))
-        bezier4Path.addLine(to: CGPoint(x: textFrame.minX + 2.47, y: textFrame.minY + 20.47))
+        bezier4Path.move(to: CGPoint(x: frame.minX + 1.92, y: frame.minY + 27.8))
+        bezier4Path.addCurve(to: CGPoint(x: frame.minX + 1.35, y: frame.minY + 27.36), controlPoint1: CGPoint(x: frame.minX + 1.6, y: frame.minY + 27.8), controlPoint2: CGPoint(x: frame.minX + 1.35, y: frame.minY + 27.6))
+        bezier4Path.addCurve(to: CGPoint(x: frame.minX + 1.92, y: frame.minY + 26.93), controlPoint1: CGPoint(x: frame.minX + 1.35, y: frame.minY + 27.12), controlPoint2: CGPoint(x: frame.minX + 1.6, y: frame.minY + 26.93))
+        bezier4Path.addLine(to: CGPoint(x: frame.minX + 5.24, y: frame.minY + 26.93))
+        bezier4Path.addCurve(to: CGPoint(x: frame.minX + 5.82, y: frame.minY + 27.36), controlPoint1: CGPoint(x: frame.minX + 5.56, y: frame.minY + 26.93), controlPoint2: CGPoint(x: frame.minX + 5.82, y: frame.minY + 27.12))
+        bezier4Path.addCurve(to: CGPoint(x: frame.minX + 5.24, y: frame.minY + 27.8), controlPoint1: CGPoint(x: frame.minX + 5.82, y: frame.minY + 27.6), controlPoint2: CGPoint(x: frame.minX + 5.56, y: frame.minY + 27.8))
+        bezier4Path.addLine(to: CGPoint(x: frame.minX + 1.92, y: frame.minY + 27.8))
         bezier4Path.close()
         bezier4Path.usesEvenOddFillRule = true
         fillColor2.setFill()
@@ -542,13 +538,13 @@ public class SeptaDraw: NSObject {
 
         //// Bezier 5 Drawing
         let bezier5Path = UIBezierPath()
-        bezier5Path.move(to: CGPoint(x: textFrame.minX + 2.47, y: textFrame.minY + 14.11))
-        bezier5Path.addCurve(to: CGPoint(x: textFrame.minX + 1.89, y: textFrame.minY + 13.67), controlPoint1: CGPoint(x: textFrame.minX + 2.15, y: textFrame.minY + 14.11), controlPoint2: CGPoint(x: textFrame.minX + 1.89, y: textFrame.minY + 13.91))
-        bezier5Path.addCurve(to: CGPoint(x: textFrame.minX + 2.47, y: textFrame.minY + 13.24), controlPoint1: CGPoint(x: textFrame.minX + 1.89, y: textFrame.minY + 13.43), controlPoint2: CGPoint(x: textFrame.minX + 2.15, y: textFrame.minY + 13.24))
-        bezier5Path.addLine(to: CGPoint(x: textFrame.minX + 5.79, y: textFrame.minY + 13.24))
-        bezier5Path.addCurve(to: CGPoint(x: textFrame.minX + 6.37, y: textFrame.minY + 13.67), controlPoint1: CGPoint(x: textFrame.minX + 6.11, y: textFrame.minY + 13.24), controlPoint2: CGPoint(x: textFrame.minX + 6.37, y: textFrame.minY + 13.43))
-        bezier5Path.addCurve(to: CGPoint(x: textFrame.minX + 5.79, y: textFrame.minY + 14.11), controlPoint1: CGPoint(x: textFrame.minX + 6.37, y: textFrame.minY + 13.91), controlPoint2: CGPoint(x: textFrame.minX + 6.11, y: textFrame.minY + 14.11))
-        bezier5Path.addLine(to: CGPoint(x: textFrame.minX + 2.47, y: textFrame.minY + 14.11))
+        bezier5Path.move(to: CGPoint(x: frame.minX + 1.92, y: frame.minY + 21.43))
+        bezier5Path.addCurve(to: CGPoint(x: frame.minX + 1.35, y: frame.minY + 21), controlPoint1: CGPoint(x: frame.minX + 1.6, y: frame.minY + 21.43), controlPoint2: CGPoint(x: frame.minX + 1.35, y: frame.minY + 21.24))
+        bezier5Path.addCurve(to: CGPoint(x: frame.minX + 1.92, y: frame.minY + 20.56), controlPoint1: CGPoint(x: frame.minX + 1.35, y: frame.minY + 20.76), controlPoint2: CGPoint(x: frame.minX + 1.6, y: frame.minY + 20.56))
+        bezier5Path.addLine(to: CGPoint(x: frame.minX + 5.24, y: frame.minY + 20.56))
+        bezier5Path.addCurve(to: CGPoint(x: frame.minX + 5.82, y: frame.minY + 21), controlPoint1: CGPoint(x: frame.minX + 5.56, y: frame.minY + 20.56), controlPoint2: CGPoint(x: frame.minX + 5.82, y: frame.minY + 20.76))
+        bezier5Path.addCurve(to: CGPoint(x: frame.minX + 5.24, y: frame.minY + 21.43), controlPoint1: CGPoint(x: frame.minX + 5.82, y: frame.minY + 21.24), controlPoint2: CGPoint(x: frame.minX + 5.56, y: frame.minY + 21.43))
+        bezier5Path.addLine(to: CGPoint(x: frame.minX + 1.92, y: frame.minY + 21.43))
         bezier5Path.close()
         bezier5Path.usesEvenOddFillRule = true
         fillColor2.setFill()
