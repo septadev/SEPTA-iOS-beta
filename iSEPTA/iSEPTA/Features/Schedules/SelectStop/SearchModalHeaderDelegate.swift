@@ -24,4 +24,6 @@ protocol SearchModalHeaderDelegate: AnyObject {
     func layoutNeeded()
 
     func dismissModal()
+
+    func updateActivityIndicator(animating: Bool)
 }

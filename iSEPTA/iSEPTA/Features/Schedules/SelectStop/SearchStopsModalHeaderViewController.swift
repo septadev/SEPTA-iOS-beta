@@ -49,6 +49,7 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, U
         case .byAddress:
             textField.clearButtonMode = .never
             textField.isEnabled = true
+            textField.text = nil
             searchByLocationButton.isHidden = false
             segmentedControl.selectedSegmentIndex = 1
         case .directLookupWithAddress:
@@ -81,6 +82,7 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, U
 
     @IBAction func SearchByLocation(_: Any) {
         store.dispatch(RequestLocation())
+        delegate?.updateActivityIndicator(animating: true)
     }
 
     @IBAction func didToggleSegmentedControl(_ sender: Any) {

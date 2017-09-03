@@ -526,7 +526,7 @@ TableViewWrapper</string>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
-                                                                    <action selector="reverseStopsButtonTapped:" destination="9ZE-6T-hsR" eventType="touchUpInside" id="5sc-TR-THk"/>
+                                                                    <action selector="reverseStopsButtonTapped:" destination="9ZE-6T-hsR" eventType="touchUpInside" id="0ih-3q-o8O"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -953,6 +953,7 @@ TitleViewTop</string>
                         <outlet property="activityIndicator" destination="V0h-9O-nLg" id="FiS-d3-T0b"/>
                         <outlet property="endingPoint" destination="s9c-AY-wQ2" id="jTU-hZ-Uko"/>
                         <outlet property="insetWhiteView" destination="Pyu-Um-zmh" id="7mS-HY-5dY"/>
+                        <outlet property="reverseStopsButton" destination="Wec-xl-ho7" id="cU4-FU-HHs"/>
                         <outlet property="routeIcon" destination="RB9-ar-35t" id="se8-B9-May"/>
                         <outlet property="routeLongNameLabel" destination="WGN-KZ-r04" id="qK4-QC-Trk"/>
                         <outlet property="routeShortNameLabel" destination="8cV-aV-zSM" id="Rf1-pH-XvV"/>

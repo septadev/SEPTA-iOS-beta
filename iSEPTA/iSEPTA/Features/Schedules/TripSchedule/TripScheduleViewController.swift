@@ -76,7 +76,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     func viewModelUpdated() {
         updateLabels()
-
+        reverseStopsButton.isEnabled = true
         tableView.reloadData()
     }
 
@@ -92,13 +92,16 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet var alertsIcon: UIBarButtonItem!
 
-    @IBAction func reverseStopsButtonTapped(_: Any) {
+    @IBAction func reverseStopsButtonTapped(_: ReverseTripButton) {
+        reverseStopsButton.isEnabled = false
         store.dispatch(ReverseStops())
     }
 
+    @IBOutlet weak var reverseStopsButton: ReverseTripButton!
+
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         let rowCount = viewModel.numberOfRows()
-
+        tableViewFooter.isHidden = rowCount == 0
         return rowCount
     }
 

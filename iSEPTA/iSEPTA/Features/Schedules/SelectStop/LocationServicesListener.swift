@@ -19,6 +19,8 @@ class LocationServicesListener: StoreSubscriber {
     }
 
     func newState(state: LocationState) {
+
+        delegate?.updateActivityIndicator(animating: false)
         if let errorMessage = state.errorMessage {
             delegate?.displayErrorMessage(message: errorMessage, shouldDismissAfterDisplay: false)
         }
