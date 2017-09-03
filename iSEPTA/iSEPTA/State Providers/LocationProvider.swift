@@ -43,16 +43,45 @@ class LocationProvider: NSObject, StoreSubscriber, CLLocationManagerDelegate {
         store.unsubscribe(self)
     }
 
-    func newState(state _: LocationState) {
+    var state: LocationState {
+        return store.state.locationState
     }
 
-    func locationManager(_: CLLocationManager, didChangeAuthorization _: CLAuthorizationStatus) {
-        //        if status == .authorizedWhenInUse {
-        //            if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
-        //                if CLLocationManager.isRangingAvailable() {
-        //                    // do stuff
-        //                }
-        //            }
-        //        }
+    func newState(state: LocationState) {
+        if shouldRequestAuthorization(state: state) {
+            locationManager.requestWhenInUseAuthorization()
+        } else if shouldRequestLocation(state: state) {
+            locationManager.requestLocation()
+        }
+    }
+
+    func shouldRequestAuthorization(state: LocationState) -> Bool {
+        return state.userHasRequestedLocationState && CLLocationManager.authorizationStatus() == .notDetermined
+    }
+
+    func shouldRequestLocation(state: LocationState) -> Bool {
+        return state.userHasRequestedLocationState && CLLocationManager.authorizationStatus() == .authorizedWhenInUse
+    }
+
+    func locationManager(_: CLLocationManager, didChangeAuthorization authorizationStatus: CLAuthorizationStatus) {
+        store.dispatch(LocationAuthorizationChanged(authorizationStatus: authorizationStatus))
+
+        if state.userHasRequestedLocationState && authorizationStatus == .authorizedWhenInUse {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+
+    func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let lastLocation = locations.last {
+            let locationAction = RequestLocationResultSucceeded(locationCoordinate: lastLocation.coordinate)
+            store.dispatch(locationAction)
+            let addressAction = LookupAddressRequestCoordinates(location: lastLocation)
+            store.dispatch(addressAction)
+        }
+    }
+
+    func locationManager(_: CLLocationManager, didFailWithError error: Error) {
+        let action = RequestLocationResultFailed(errorMessage: error.localizedDescription)
+        store.dispatch(action)
     }
 }

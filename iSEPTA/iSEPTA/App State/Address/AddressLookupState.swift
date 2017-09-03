@@ -10,11 +10,19 @@ import Foundation
 import CoreLocation
 
 struct AddressLookupState {
+    let addressLookupSearchMode: AddressLookupSearchMode
     let searchString: String
+    let searchLocationCoordinate: CLLocationCoordinate2D
     let searchResults: [CLPlacemark]
     let error: Error?
-    init(searchString: String = "", searchResults: [CLPlacemark] = [CLPlacemark](), error: Error? = nil) {
+    init(addressLookupSearchMode: AddressLookupSearchMode = .none,
+         searchString: String = "",
+         searchLocationCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(),
+         searchResults: [CLPlacemark] = [CLPlacemark](),
+         error: Error? = nil) {
+        self.addressLookupSearchMode = addressLookupSearchMode
         self.searchString = searchString
+        self.searchLocationCoordinate = searchLocationCoordinate
         self.searchResults = searchResults
         self.error = error
     }
@@ -23,6 +31,9 @@ struct AddressLookupState {
 extension AddressLookupState: Equatable {}
 func ==(lhs: AddressLookupState, rhs: AddressLookupState) -> Bool {
     var areEqual = true
+
+    areEqual = lhs.addressLookupSearchMode == rhs.addressLookupSearchMode
+    guard areEqual else { return false }
 
     areEqual = lhs.searchString == rhs.searchString
     guard areEqual else { return false }

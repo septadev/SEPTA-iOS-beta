@@ -26,10 +26,13 @@ struct AddressLookupReducer {
         switch action {
         case let action as LookupAddressRequest:
             addressLookup = reduceLookupAddressRequest(action: action, state: state)
+        case let action as LookupAddressRequestCoordinates:
+            addressLookup = reduceLookupAddressRequestCoordinates(action: action, state: state)
         case let action as LoadLookupAddresses:
             addressLookup = reduceLoadLookupAddresses(action: action, state: state)
         case let action as ClearLookupAddresses:
             addressLookup = reduceClearLookupAddresses(action: action, state: state)
+
         default:
             break
         }
@@ -37,8 +40,17 @@ struct AddressLookupReducer {
         return addressLookup
     }
 
-    static func reduceLookupAddressRequest(action: LookupAddressRequest, state: AddressLookupState) -> AddressLookupState {
-        return AddressLookupState(searchString: action.searchString, searchResults: state.searchResults)
+    static func reduceLookupAddressRequest(action: LookupAddressRequest, state _: AddressLookupState) -> AddressLookupState {
+        return AddressLookupState(
+            addressLookupSearchMode: .byString,
+            searchString: action.searchString)
+    }
+
+    static func reduceLookupAddressRequestCoordinates(action: LookupAddressRequestCoordinates, state _: AddressLookupState) -> AddressLookupState {
+        return AddressLookupState(
+            addressLookupSearchMode: .byCoordinates,
+            searchLocationCoordinate: action.location.coordinate
+        )
     }
 
     static func reduceLoadLookupAddresses(action: LoadLookupAddresses, state: AddressLookupState) -> AddressLookupState {

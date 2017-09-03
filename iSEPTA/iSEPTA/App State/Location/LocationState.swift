@@ -14,11 +14,16 @@ struct LocationState {
     let userHasRequestedLocationState: Bool
     let authorizationStatus: CLAuthorizationStatus
     let locationCoordinate: CLLocationCoordinate2D?
+    let errorMessage: String?
 
-    init(userHasRequestedLocationState: Bool = false, authorizationStatus: CLAuthorizationStatus = CLAuthorizationStatus.notDetermined, locationCoordinate: CLLocationCoordinate2D? = nil) {
+    init(userHasRequestedLocationState: Bool = false,
+         authorizationStatus: CLAuthorizationStatus = CLAuthorizationStatus.notDetermined,
+         locationCoordinate: CLLocationCoordinate2D? = nil,
+         errorMessage: String? = nil) {
         self.userHasRequestedLocationState = userHasRequestedLocationState
         self.authorizationStatus = authorizationStatus
         self.locationCoordinate = locationCoordinate
+        self.errorMessage = errorMessage
     }
 }
 
@@ -35,6 +40,14 @@ func ==(lhs: LocationState, rhs: LocationState) -> Bool {
     if let lhsCoordinate = lhs.locationCoordinate, let rhsCoordinate = rhs.locationCoordinate {
         areEqual = (lhsCoordinate.latitude == rhsCoordinate.latitude) && (lhsCoordinate.longitude == rhsCoordinate.longitude)
     } else if lhs.locationCoordinate == nil && rhs.locationCoordinate == nil {
+        areEqual = true
+    } else {
+        areEqual = false
+    }
+
+    if let lhsMessage = lhs.errorMessage, let rhsMessage = rhs.errorMessage {
+        areEqual = lhsMessage == rhsMessage
+    } else if lhs.errorMessage == nil && rhs.errorMessage == nil {
         areEqual = true
     } else {
         areEqual = false

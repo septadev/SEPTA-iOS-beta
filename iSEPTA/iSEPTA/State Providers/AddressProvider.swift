@@ -11,7 +11,7 @@ import ReSwift
 import CoreLocation
 
 class AddressLookupProvider: StoreSubscriber {
-    typealias StoreSubscriberStateType = String
+    typealias StoreSubscriberStateType = AddressLookupState
     let geoCoder = CLGeocoder()
     static let sharedInstance = AddressLookupProvider()
     private init() {
@@ -22,7 +22,7 @@ class AddressLookupProvider: StoreSubscriber {
     func subscribe() {
         store.subscribe(self) {
             $0.select {
-                $0.addressLookupState.searchString
+                $0.addressLookupState
             }.skipRepeats { $0 == $1 }
         }
     }
@@ -48,13 +48,32 @@ class AddressLookupProvider: StoreSubscriber {
 
     let currentState = ""
     func newState(state: StoreSubscriberStateType) {
-        if state != currentState && state.characters.count > 4 {
-            lookupAddressForString(searchString: state)
+        if shouldLookupByString(state: state) {
+            lookupAddressForString(searchString: state.searchString)
+        } else if shouldLookupByCoordinates(state: state) {
+            lookupAddressForCoordinates(coordinates: state.searchLocationCoordinate)
         }
+    }
+
+    func shouldLookupByString(state: AddressLookupState) -> Bool {
+        return state.addressLookupSearchMode == .byString && state.searchString.characters.count > 3
+    }
+
+    func shouldLookupByCoordinates(state: AddressLookupState) -> Bool {
+        return state.addressLookupSearchMode == .byCoordinates
     }
 
     func lookupAddressForString(searchString: String) {
         geoCoder.geocodeAddressString(searchString, in: region) { placemarks, error in
+            let placemarks = placemarks ?? [CLPlacemark]()
+            let action = LoadLookupAddresses(searchResults: placemarks, error: error)
+            store.dispatch(action)
+        }
+    }
+
+    func lookupAddressForCoordinates(coordinates: CLLocationCoordinate2D) {
+        let location = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
+        geoCoder.reverseGeocodeLocation(location) { placemarks, error in
             let placemarks = placemarks ?? [CLPlacemark]()
             let action = LoadLookupAddresses(searchResults: placemarks, error: error)
             store.dispatch(action)

@@ -15,8 +15,17 @@ struct RequestLocation: LocationAction {
     let description: String = "User has requested his location to be used in the app"
 }
 
-struct RequestLocationResultLoaded: LocationAction {
+struct LocationAuthorizationChanged: LocationAction {
     let authorizationStatus: CLAuthorizationStatus
-    let locationCoordinate: CLLocationCoordinate2D?
-    let description = "Location info returned from LocationManager"
+    let description: String = "Access to location data has changed"
+}
+
+struct RequestLocationResultFailed: LocationAction {
+    let errorMessage: String
+    let description = "Location info returned error from LocationManager"
+}
+
+struct RequestLocationResultSucceeded: LocationAction {
+    let locationCoordinate: CLLocationCoordinate2D
+    let description = "Location info returned successfrom LocationManager"
 }

@@ -37,12 +37,25 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, U
         if let selectedAddress = state.selectedAddress {
             textField.text = selectedAddress.street
             textField.resignFirstResponder()
-            textField.isEnabled = false
-            textField.clearButtonMode = .always
-        } else {
+        }
+
+        switch searchMode {
+        case .directLookup:
+            textField.clearButtonMode = .never
             textField.isEnabled = true
             textField.text = nil
+            searchByLocationButton.isHidden = true
+            segmentedControl.selectedSegmentIndex = 0
+        case .byAddress:
             textField.clearButtonMode = .never
+            textField.isEnabled = true
+            searchByLocationButton.isHidden = false
+            segmentedControl.selectedSegmentIndex = 1
+        case .directLookupWithAddress:
+            textField.clearButtonMode = .always
+            textField.isEnabled = false
+            searchByLocationButton.isHidden = true
+        default: break
         }
     }
 
@@ -57,6 +70,7 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, U
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var dismissIcon: UIView!
     @IBOutlet weak var searchByTextView: UIView!
+    @IBOutlet weak var searchByLocationButton: UIButton!
 
     func addCornersAndBorders() {
         searchByTextView.layer.cornerRadius = 3.0
@@ -66,9 +80,8 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, U
     }
 
     @IBAction func SearchByLocation(_: Any) {
+        store.dispatch(RequestLocation())
     }
-
-    @IBOutlet weak var searchByLocationButton: UIButton!
 
     @IBAction func didToggleSegmentedControl(_ sender: Any) {
         guard let segmentedControl = sender as? UISegmentedControl else { return }
@@ -86,9 +99,6 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, U
                 store.dispatch(StopSearchModeChanged(searchMode: searchMode))
                 toggleHeightConstraintsForSearchMode()
                 updateTextFieldPlaceholderText()
-                if searchMode == .directLookup {
-                    segmentedControl.selectedSegmentIndex = 0
-                }
             }
         }
     }

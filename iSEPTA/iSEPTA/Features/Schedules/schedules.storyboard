@@ -227,7 +227,7 @@ TableViewWrapper</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaJ-Ig-ASV">
-                            <rect key="frame" x="207" y="10" width="33" height="27"/>
+                            <rect key="frame" x="207" y="10.5" width="33" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Reset">
                                 <color key="titleColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -329,7 +329,7 @@ TableViewWrapper</string>
                                                     <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mCg-hU-RGp" id="EF9-Ow-ydw">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="751" text="44 Route" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om0-j5-VdR" userLabel="RouteShortName">
@@ -1450,13 +1450,13 @@ TitleViewTop</string>
                                                 <string key="userLabel">
 SearchTextBox</string>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gv4-52-NvY" userLabel="SearchByLocation">
-                                                <rect key="frame" x="328" y="8" width="20" height="20"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gv4-52-NvY" userLabel="SearchByLocation">
+                                                <rect key="frame" x="318" y="8.5" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="6IA-KV-rdO"/>
                                                     <constraint firstAttribute="height" constant="20" id="Ji0-5r-usZ"/>
                                                 </constraints>
-                                                <state key="normal" title="L"/>
+                                                <state key="normal" title="L" image="LocationLookup"/>
                                                 <connections>
                                                     <action selector="SearchByLocation:" destination="gOh-OW-Svi" eventType="touchUpInside" id="1yO-8u-TZm"/>
                                                 </connections>
@@ -1466,7 +1466,7 @@ SearchTextBox</string>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="B7Q-Zl-LKP" secondAttribute="bottom" constant="5" id="F2Y-Bf-SZw" userLabel="TextBoxBottom"/>
-                                            <constraint firstAttribute="trailing" secondItem="gv4-52-NvY" secondAttribute="trailing" constant="5" id="FBH-op-FXB" userLabel="ButtonRight"/>
+                                            <constraint firstAttribute="trailing" secondItem="gv4-52-NvY" secondAttribute="trailing" constant="15" id="FBH-op-FXB" userLabel="ButtonRight"/>
                                             <constraint firstItem="B7Q-Zl-LKP" firstAttribute="top" secondItem="dt3-Pb-w7Y" secondAttribute="top" constant="5" id="Iqq-WD-Vzc" userLabel="TextBoxTop"/>
                                             <constraint firstItem="B7Q-Zl-LKP" firstAttribute="leading" secondItem="vb4-Bo-S2n" secondAttribute="trailing" constant="9" id="Q11-xr-GF1" userLabel="TextBoxLeft"/>
                                             <constraint firstAttribute="trailing" secondItem="B7Q-Zl-LKP" secondAttribute="trailing" constant="10" id="TAc-8k-jgf" userLabel="TextBoxRight"/>
@@ -1696,6 +1696,7 @@ SearchTextBox</string>
         </scene>
     </scenes>
     <resources>
+        <image name="LocationLookup" width="30" height="27"/>
         <image name="SearchIcon" width="17" height="17"/>
         <image name="favoriteTabbar" width="22" height="20"/>
         <image name="schedulesTabbar" width="21" height="22"/>

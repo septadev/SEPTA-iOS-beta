@@ -27,9 +27,12 @@ struct LocationReducer {
         switch action {
         case let action as RequestLocation:
             locationState = reduceRequestLocation(action: action, state: state)
-        case let action as RequestLocationResultLoaded:
-            locationState = reduceRequestLocationResultLoaded(action: action, state: state)
-
+        case let action as LocationAuthorizationChanged:
+            locationState = reduceLocationAuthorizationChanged(action: action, state: state)
+        case let action as RequestLocationResultFailed:
+            locationState = reduceRequestLocationResultFailed(action: action, state: state)
+        case let action as RequestLocationResultSucceeded:
+            locationState = reduceRequestLocationResultSucceeded(action: action, state: state)
         default:
             break
         }
@@ -38,10 +41,33 @@ struct LocationReducer {
     }
 
     static func reduceRequestLocation(action _: RequestLocation, state: LocationState) -> LocationState {
-        return state
+        return LocationState(userHasRequestedLocationState: true, authorizationStatus: state.authorizationStatus, locationCoordinate: state.locationCoordinate)
     }
 
-    static func reduceRequestLocationResultLoaded(action: RequestLocationResultLoaded, state _: LocationState) -> LocationState {
-        return LocationState(authorizationStatus: action.authorizationStatus, locationCoordinate: action.locationCoordinate)
+    static func reduceLocationAuthorizationChanged(action: LocationAuthorizationChanged, state: LocationState) -> LocationState {
+        return LocationState(
+            userHasRequestedLocationState: state.userHasRequestedLocationState,
+            authorizationStatus: action.authorizationStatus,
+            locationCoordinate: state.locationCoordinate,
+            errorMessage: state.errorMessage
+        )
+    }
+
+    static func reduceRequestLocationResultFailed(action: RequestLocationResultFailed, state: LocationState) -> LocationState {
+        return LocationState(
+            userHasRequestedLocationState: false,
+            authorizationStatus: state.authorizationStatus,
+            locationCoordinate: nil,
+            errorMessage: action.errorMessage
+        )
+    }
+
+    static func reduceRequestLocationResultSucceeded(action: RequestLocationResultSucceeded, state: LocationState) -> LocationState {
+        return LocationState(
+            userHasRequestedLocationState: false,
+            authorizationStatus: state.authorizationStatus,
+            locationCoordinate: action.locationCoordinate,
+            errorMessage: nil
+        )
     }
 }

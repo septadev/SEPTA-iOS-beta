@@ -133,6 +133,7 @@
 		678F05331F5BFFC900CC4D3C /* LocationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F05321F5BFFC900CC4D3C /* LocationState.swift */; };
 		678F05371F5BFFDC00CC4D3C /* LocationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F05361F5BFFDC00CC4D3C /* LocationReducer.swift */; };
 		678F05391F5BFFE500CC4D3C /* LocationActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F05381F5BFFE500CC4D3C /* LocationActions.swift */; };
+		678F053B1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F053A1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift */; };
 		67A65BFC1F5AEBB20068428E /* NextToArriveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A65BFB1F5AEBB20068428E /* NextToArriveButton.swift */; };
 		67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B511801F499E8F000E3065 /* ButtonViewCell.swift */; };
 		67C567271F59695900FF6203 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C567261F59695900FF6203 /* Favorite.swift */; };
@@ -367,6 +368,7 @@
 		678F05321F5BFFC900CC4D3C /* LocationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationState.swift; sourceTree = "<group>"; };
 		678F05361F5BFFDC00CC4D3C /* LocationReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationReducer.swift; sourceTree = "<group>"; };
 		678F05381F5BFFE500CC4D3C /* LocationActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationActions.swift; sourceTree = "<group>"; };
+		678F053A1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupSearchMode.swift; sourceTree = "<group>"; };
 		67A65BFB1F5AEBB20068428E /* NextToArriveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveButton.swift; sourceTree = "<group>"; };
 		67B511801F499E8F000E3065 /* ButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewCell.swift; sourceTree = "<group>"; };
 		67C567261F59695900FF6203 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
@@ -1018,6 +1020,7 @@
 				678F052B1F5B7CEC00CC4D3C /* AddressLookupReducer.swift */,
 				678F05281F5B7BE400CC4D3C /* AddressLookupState.swift */,
 				678F052D1F5B7D3E00CC4D3C /* AddressLookupActions.swift */,
+				678F053A1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift */,
 			);
 			path = Address;
 			sourceTree = "<group>";
@@ -1276,6 +1279,7 @@
 				588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */,
 				58490E491F56019B007DBCA1 /* AlertReducer.swift in Sources */,
 				67F757AC1F48582700D3A4EE /* UIColor+Util.swift in Sources */,
+				678F053B1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift in Sources */,
 				5840D6E71F37EAEF00C8CB76 /* UserPreferencesKeys.swift in Sources */,
 				582F4EDF1F33B1120062A546 /* MainViewController.swift in Sources */,
 				674FDBC71F577D3B00CA67D2 /* Route+Icon.swift in Sources */,

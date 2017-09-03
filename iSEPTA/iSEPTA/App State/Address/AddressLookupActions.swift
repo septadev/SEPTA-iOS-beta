@@ -16,6 +16,11 @@ struct LookupAddressRequest: AddressLookupAction {
     let description = "User entered an address to search by"
 }
 
+struct LookupAddressRequestCoordinates: AddressLookupAction {
+    let location: CLLocation
+    let description = "User entered an address to search by"
+}
+
 struct LoadLookupAddresses: AddressLookupAction {
     let searchResults: [CLPlacemark]
     let error: Error?
