@@ -13,7 +13,8 @@ class AppStateReducer {
             navigationState: NavigationReducer.main(action: action, state: state?.navigationState),
             scheduleState: ScheduleReducer.main(action: action, state: state?.scheduleState),
             preferenceState: UserPreferencesReducer.main(action: action, state: state?.preferenceState),
-            alertState: AlertReducer.main(action: action, state: state?.alertState)
+            alertState: AlertReducer.main(action: action, state: state?.alertState),
+            addressLookupState: AddressLookupReducer.main(action: action, state: state?.addressLookupState)
         )
 
         return appState

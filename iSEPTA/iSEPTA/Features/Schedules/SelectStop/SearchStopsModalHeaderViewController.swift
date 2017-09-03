@@ -20,8 +20,8 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, U
     @IBAction func userTappedSearchByStops(_: Any) {
 
         if searchMode == .directLookupWithAddress {
-            store.dispatch(StopSearchModeChanged(searchMode: .directLookup))
-
+            store.dispatch(ClearLookupAddresses())
+            store.dispatch(StopSearchModeChanged(searchMode: .byAddress))
         }
     }
 
@@ -30,13 +30,6 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, U
     weak var delegate: SearchModalHeaderDelegate?
 
     var textFieldDelegate: UITextFieldDelegate!
-
-    @IBAction func textFieldDidTouchCancel(_: Any) {
-    }
-
-    @IBAction func textFieldDidCancelEditing(_: Any) {
-        let i = 0
-    }
 
     func newState(state: StoreSubscriberStateType) {
         guard let state = state else { return }
@@ -71,6 +64,11 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, U
         searchByTextView.layer.borderWidth = 1.0
         dismissIcon.layer.cornerRadius = 3.0
     }
+
+    @IBAction func SearchByLocation(_: Any) {
+    }
+
+    @IBOutlet weak var searchByLocationButton: UIButton!
 
     @IBAction func didToggleSegmentedControl(_ sender: Any) {
         guard let segmentedControl = sender as? UISegmentedControl else { return }
@@ -111,7 +109,6 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, U
 
         }, completion: {
             self.selectNearbyLabel.isHidden = self.searchMode != .directLookupWithAddress
-
         })
     }
 

@@ -227,7 +227,7 @@ TableViewWrapper</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaJ-Ig-ASV">
-                            <rect key="frame" x="207" y="10.5" width="33" height="27"/>
+                            <rect key="frame" x="207" y="10" width="33" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Reset">
                                 <color key="titleColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -1286,8 +1286,8 @@ TitleViewTop</string>
                                                                     <constraint firstAttribute="height" constant="1" id="3IO-Z0-46o"/>
                                                                 </constraints>
                                                             </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.5m" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8P-NK-lks" userLabel="DistanceLabel">
-                                                                <rect key="frame" x="153" y="33.5" width="204" height="18"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="0.5m" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8P-NK-lks" userLabel="DistanceLabel">
+                                                                <rect key="frame" x="322.5" y="33.5" width="34.5" height="18"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -1300,7 +1300,7 @@ TitleViewTop</string>
                                                             <constraint firstItem="LbH-Oq-MxP" firstAttribute="top" secondItem="QfY-TI-Hw2" secondAttribute="top" constant="15" id="eyq-Hy-9ru" userLabel="RouteLongNameTop"/>
                                                             <constraint firstItem="Uh2-Wa-QzF" firstAttribute="leading" secondItem="QfY-TI-Hw2" secondAttribute="leading" constant="15" id="jmy-z0-iIY" userLabel="DividerLeft"/>
                                                             <constraint firstItem="W8P-NK-lks" firstAttribute="baseline" secondItem="LbH-Oq-MxP" secondAttribute="baseline" id="kNr-TS-fpZ" userLabel="DistanceLabelBaseLine"/>
-                                                            <constraint firstItem="W8P-NK-lks" firstAttribute="leading" secondItem="LbH-Oq-MxP" secondAttribute="trailing" constant="10" id="lub-fC-Vwe" userLabel="StopNameRight"/>
+                                                            <constraint firstItem="W8P-NK-lks" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LbH-Oq-MxP" secondAttribute="trailing" constant="10" id="lub-fC-Vwe" userLabel="StopNameRight"/>
                                                             <constraint firstAttribute="trailing" secondItem="Uh2-Wa-QzF" secondAttribute="trailing" id="sRj-IV-xS5" userLabel="DividerRight"/>
                                                             <constraint firstItem="LbH-Oq-MxP" firstAttribute="leading" secondItem="QfY-TI-Hw2" secondAttribute="leading" constant="17" id="vhU-SH-Ah3" userLabel="RouteLongNameLeft"/>
                                                             <constraint firstAttribute="trailing" secondItem="W8P-NK-lks" secondAttribute="trailing" constant="18" id="zxI-Pr-6YN" userLabel="DistanceLabelRight"/>
@@ -1449,21 +1449,30 @@ TitleViewTop</string>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                 <string key="userLabel">
 SearchTextBox</string>
-                                                <connections>
-                                                    <action selector="textFieldDidCancelEditing:" destination="gOh-OW-Svi" eventType="primaryActionTriggered" id="jg5-VZ-BgL"/>
-                                                    <action selector="textFieldDidTouchCancel:" destination="gOh-OW-Svi" eventType="touchCancel" id="nky-Zq-iee"/>
-                                                </connections>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gv4-52-NvY" userLabel="SearchByLocation">
+                                                <rect key="frame" x="328" y="8" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="6IA-KV-rdO"/>
+                                                    <constraint firstAttribute="height" constant="20" id="Ji0-5r-usZ"/>
+                                                </constraints>
+                                                <state key="normal" title="L"/>
+                                                <connections>
+                                                    <action selector="SearchByLocation:" destination="gOh-OW-Svi" eventType="touchUpInside" id="1yO-8u-TZm"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="B7Q-Zl-LKP" secondAttribute="bottom" constant="5" id="F2Y-Bf-SZw" userLabel="TextBoxBottom"/>
+                                            <constraint firstAttribute="trailing" secondItem="gv4-52-NvY" secondAttribute="trailing" constant="5" id="FBH-op-FXB" userLabel="ButtonRight"/>
                                             <constraint firstItem="B7Q-Zl-LKP" firstAttribute="top" secondItem="dt3-Pb-w7Y" secondAttribute="top" constant="5" id="Iqq-WD-Vzc" userLabel="TextBoxTop"/>
                                             <constraint firstItem="B7Q-Zl-LKP" firstAttribute="leading" secondItem="vb4-Bo-S2n" secondAttribute="trailing" constant="9" id="Q11-xr-GF1" userLabel="TextBoxLeft"/>
                                             <constraint firstAttribute="trailing" secondItem="B7Q-Zl-LKP" secondAttribute="trailing" constant="10" id="TAc-8k-jgf" userLabel="TextBoxRight"/>
                                             <constraint firstAttribute="height" constant="36" id="XrC-qg-R7K" userLabel="SearchByText"/>
                                             <constraint firstItem="vb4-Bo-S2n" firstAttribute="centerY" secondItem="dt3-Pb-w7Y" secondAttribute="centerY" id="aGA-FQ-ASQ" userLabel="IconCenterY"/>
+                                            <constraint firstItem="gv4-52-NvY" firstAttribute="centerY" secondItem="dt3-Pb-w7Y" secondAttribute="centerY" id="ulq-y3-Vch" userLabel="ButtonCenterY"/>
                                             <constraint firstItem="vb4-Bo-S2n" firstAttribute="leading" secondItem="dt3-Pb-w7Y" secondAttribute="leading" constant="8" id="v16-Ap-0Dp" userLabel="SearchIconLeft"/>
                                         </constraints>
                                         <connections>
@@ -1527,6 +1536,7 @@ SearchTextBox</string>
                     <connections>
                         <outlet property="dismissIcon" destination="lHK-2s-TQT" id="6JC-XF-P9X"/>
                         <outlet property="resetTextBoxGestureRecognizer" destination="joG-sX-gAY" id="TiU-Lj-SsL"/>
+                        <outlet property="searchByLocationButton" destination="gv4-52-NvY" id="d7e-IR-Uo9"/>
                         <outlet property="searchByTextView" destination="dt3-Pb-w7Y" id="Rk7-D1-3Dq"/>
                         <outlet property="searchView" destination="bNI-mk-YGB" id="L0V-jA-FVd"/>
                         <outlet property="segmentedControl" destination="rS7-En-2sJ" id="oGT-VZ-K0i"/>

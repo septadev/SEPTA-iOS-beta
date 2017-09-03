@@ -87,7 +87,7 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     }
 
     func viewModelUpdated() {
-
+        guard let tableView = tableView else { return }
         tableView.reloadData()
     }
 
@@ -128,7 +128,7 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
         UIView.animate(withDuration: 0.25, animations: {
             block()
             self.view.layoutIfNeeded()
-
+            self.tableView.reloadData()
         }, completion: {
             _ in completion()
         })

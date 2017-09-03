@@ -125,6 +125,11 @@
 		674FDBC01F56E87F00CA67D2 /* SeptaRest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		674FDBC51F57390D00CA67D2 /* Route+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674FDBC41F57390D00CA67D2 /* Route+Color.swift */; };
 		674FDBC71F577D3B00CA67D2 /* Route+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674FDBC61F577D3B00CA67D2 /* Route+Icon.swift */; };
+		678F05241F5B7B6E00CC4D3C /* AddressProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F05231F5B7B6E00CC4D3C /* AddressProvider.swift */; };
+		678F05291F5B7BE400CC4D3C /* AddressLookupState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F05281F5B7BE400CC4D3C /* AddressLookupState.swift */; };
+		678F052C1F5B7CEC00CC4D3C /* AddressLookupReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F052B1F5B7CEC00CC4D3C /* AddressLookupReducer.swift */; };
+		678F052E1F5B7D3E00CC4D3C /* AddressLookupActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F052D1F5B7D3E00CC4D3C /* AddressLookupActions.swift */; };
+		678F05301F5B918300CC4D3C /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F052F1F5B918300CC4D3C /* LocationProvider.swift */; };
 		67A65BFC1F5AEBB20068428E /* NextToArriveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A65BFB1F5AEBB20068428E /* NextToArriveButton.swift */; };
 		67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B511801F499E8F000E3065 /* ButtonViewCell.swift */; };
 		67C567271F59695900FF6203 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C567261F59695900FF6203 /* Favorite.swift */; };
@@ -351,6 +356,11 @@
 		6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAddressRelativeStopViewModel.swift; sourceTree = "<group>"; };
 		674FDBC41F57390D00CA67D2 /* Route+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Color.swift"; sourceTree = "<group>"; };
 		674FDBC61F577D3B00CA67D2 /* Route+Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Icon.swift"; sourceTree = "<group>"; };
+		678F05231F5B7B6E00CC4D3C /* AddressProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressProvider.swift; sourceTree = "<group>"; };
+		678F05281F5B7BE400CC4D3C /* AddressLookupState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupState.swift; sourceTree = "<group>"; };
+		678F052B1F5B7CEC00CC4D3C /* AddressLookupReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupReducer.swift; sourceTree = "<group>"; };
+		678F052D1F5B7D3E00CC4D3C /* AddressLookupActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupActions.swift; sourceTree = "<group>"; };
+		678F052F1F5B918300CC4D3C /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 		67A65BFB1F5AEBB20068428E /* NextToArriveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveButton.swift; sourceTree = "<group>"; };
 		67B511801F499E8F000E3065 /* ButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewCell.swift; sourceTree = "<group>"; };
 		67C567261F59695900FF6203 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
@@ -426,6 +436,7 @@
 		58290E511F372F27000CCF3C /* App State */ = {
 			isa = PBXGroup;
 			children = (
+				678F05271F5B7BA900CC4D3C /* Address */,
 				58490E431F55F8F0007DBCA1 /* Alerts */,
 				58DB10EF1F3B889700191AED /* Main */,
 				58C2A05F1F38955E00F0D6CA /* Schedule */,
@@ -664,6 +675,8 @@
 				5840D6E41F37EA1900C8CB76 /* ScheduleDataProvider.swift */,
 				5840D6E81F37EE6500C8CB76 /* Providers.swift */,
 				58490E411F55F899007DBCA1 /* AlertProviders.swift */,
+				678F05231F5B7B6E00CC4D3C /* AddressProvider.swift */,
+				678F052F1F5B918300CC4D3C /* LocationProvider.swift */,
 			);
 			path = "State Providers";
 			sourceTree = "<group>";
@@ -992,6 +1005,24 @@
 			path = Reducers;
 			sourceTree = "<group>";
 		};
+		678F05271F5B7BA900CC4D3C /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				678F052A1F5B7CD600CC4D3C /* reducers */,
+				678F05281F5B7BE400CC4D3C /* AddressLookupState.swift */,
+				678F052D1F5B7D3E00CC4D3C /* AddressLookupActions.swift */,
+			);
+			path = Address;
+			sourceTree = "<group>";
+		};
+		678F052A1F5B7CD600CC4D3C /* reducers */ = {
+			isa = PBXGroup;
+			children = (
+				678F052B1F5B7CEC00CC4D3C /* AddressLookupReducer.swift */,
+			);
+			path = reducers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1214,8 +1245,10 @@
 				582F4EBC1F33B1120062A546 /* DateFormatters.swift in Sources */,
 				582F4EC81F33B1120062A546 /* RouteTableViewCell.swift in Sources */,
 				67075FC21F578578008BB38C /* ScheduleUpdateMode.swift in Sources */,
+				678F052E1F5B7D3E00CC4D3C /* AddressLookupActions.swift in Sources */,
 				67F757B51F488A4400D3A4EE /* SeptaDraw.swift in Sources */,
 				582F4ED11F33B1120062A546 /* SelectedStopType.swift in Sources */,
+				678F05291F5B7BE400CC4D3C /* AddressLookupState.swift in Sources */,
 				67075FC61F57860E008BB38C /* ScheduleTripState.swift in Sources */,
 				5840D6D31F376D9C00C8CB76 /* MainNavigationController.swift in Sources */,
 				5840D6EE1F37F63800C8CB76 /* TransitModeToolbarView.swift in Sources */,
@@ -1252,6 +1285,7 @@
 				67F757B31F48729C00D3A4EE /* UIView+Util.swift in Sources */,
 				67C567271F59695900FF6203 /* Favorite.swift in Sources */,
 				582F4EC71F33B1120062A546 /* RoutesViewModel.swift in Sources */,
+				678F05301F5B918300CC4D3C /* LocationProvider.swift in Sources */,
 				5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift in Sources */,
 				67F757B11F486F0600D3A4EE /* TransitModeDisplayable.swift in Sources */,
 				5840D6E51F37EA1900C8CB76 /* ScheduleDataProvider.swift in Sources */,
@@ -1299,7 +1333,9 @@
 				5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */,
 				58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */,
 				58F444FC1F3D335400A93208 /* SeptaAction.swift in Sources */,
+				678F052C1F5B7CEC00CC4D3C /* AddressLookupReducer.swift in Sources */,
 				582F4EC61F33B1120062A546 /* SelectRouteViewController.swift in Sources */,
+				678F05241F5B7B6E00CC4D3C /* AddressProvider.swift in Sources */,
 				67EA2B5D1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift in Sources */,
 				58490E451F55F8FF007DBCA1 /* SeptaAlert.swift in Sources */,
 				5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */,
@@ -1482,6 +1518,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				ENABLE_BITCODE = NO;
@@ -1500,8 +1537,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA.beta;
 				PRODUCT_MODULE_NAME = Septa;
 				PRODUCT_NAME = Septa;
-				PROVISIONING_PROFILE = "f2f0b75e-dc62-40ce-8b12-b2c0e313ba3d";
-				PROVISIONING_PROFILE_SPECIFIER = BroskiDevelopment;
+				PROVISIONING_PROFILE = "12113721-876f-4ac2-bd31-7b2686d7a339";
+				PROVISIONING_PROFILE_SPECIFIER = CapTechBetaTesting;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
