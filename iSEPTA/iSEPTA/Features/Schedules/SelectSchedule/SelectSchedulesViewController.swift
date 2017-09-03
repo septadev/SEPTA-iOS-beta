@@ -8,7 +8,8 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
     func updateActivityIndicator(animating _: Bool) {
     }
 
-    func displayErrorMessage(message _: String) {
+    func displayErrorMessage(message: String, shouldDismissAfterDisplay _: Bool = false) {
+        UIAlert.presentOKAlertFrom(viewController: self, withTitle: "Select Schedule", message: message)
     }
 
     @IBOutlet weak var tableViewWrapper: UIView!

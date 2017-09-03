@@ -14,8 +14,11 @@ class SelectRouteViewController: UIViewController, UITableViewDelegate, UITableV
     func updateActivityIndicator(animating _: Bool) {
     }
 
-    func displayErrorMessage(message: String) {
+    func displayErrorMessage(message: String, shouldDismissAfterDisplay: Bool = false) {
         UIAlert.presentOKAlertFrom(viewController: self, withTitle: "Select Routes", message: message)
+        if shouldDismissAfterDisplay {
+            store.dispatch(DismissModal(navigationController: .schedules, description: "Dismissing after error"))
+        }
     }
 
     @IBOutlet var viewModel: RoutesViewModel!

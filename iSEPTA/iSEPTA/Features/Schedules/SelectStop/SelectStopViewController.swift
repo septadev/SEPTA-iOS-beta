@@ -65,7 +65,7 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     }
 
     func dismissModal() {
-        let dismissAction = DismissModal(navigationController: .schedules, description: "Route should be dismissed")
+        let dismissAction = DismissModal(navigationController: .schedules, description: "Stop should be dismissed")
         store.dispatch(dismissAction)
     }
 
@@ -115,11 +115,13 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
         shouldBeAnimatingActivityIndicator = animating
     }
 
-    func displayErrorMessage(message: String) {
+    func displayErrorMessage(message: String, shouldDismissAfterDisplay: Bool = false) {
         UIAlert.presentOKAlertFrom(viewController: self,
                                    withTitle: "Select Stop",
                                    message: message) { [weak self] in
-            self?.dismissModal()
+            if shouldDismissAfterDisplay {
+                self?.dismissModal()
+            }
         }
     }
 
@@ -136,5 +138,12 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
 
     func layoutNeeded() {
         view.layoutIfNeeded()
+    }
+
+    var locationListener: LocationServicesListener?
+
+    override func awakeFromNib() {
+        locationListener = LocationServicesListener()
+        locationListener?.delegate = self
     }
 }

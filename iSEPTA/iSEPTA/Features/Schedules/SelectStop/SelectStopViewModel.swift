@@ -95,7 +95,7 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITab
     func newState(state: StoreSubscriberStateType) {
         allStops = state.stops
         if state.updateMode == .loadValues && state.stops.count == 0 {
-            selectStopViewController?.displayErrorMessage(message: SeptaString.NoStopsAvailable)
+            selectStopViewController?.displayErrorMessage(message: SeptaString.NoStopsAvailable, shouldDismissAfterDisplay: true)
             selectStopViewController?.updateActivityIndicator(animating: false)
         } else if state.updateMode == .clearValues {
             selectStopViewController?.updateActivityIndicator(animating: true)

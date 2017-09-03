@@ -52,6 +52,9 @@ class LocationProvider: NSObject, StoreSubscriber, CLLocationManagerDelegate {
             locationManager.requestWhenInUseAuthorization()
         } else if shouldRequestLocation(state: state) {
             locationManager.requestLocation()
+        } else if shouldAlertThatLocationServicesNotPermitted(state: state) {
+            let action = RequestLocationResultFailed(errorMessage: "To use this feature, please go to Settings > Privacy to enable location services")
+            store.dispatch(action)
         }
     }
 
@@ -61,6 +64,10 @@ class LocationProvider: NSObject, StoreSubscriber, CLLocationManagerDelegate {
 
     func shouldRequestLocation(state: LocationState) -> Bool {
         return state.userHasRequestedLocationState && CLLocationManager.authorizationStatus() == .authorizedWhenInUse
+    }
+
+    func shouldAlertThatLocationServicesNotPermitted(state: LocationState) -> Bool {
+        return state.userHasRequestedLocationState && CLLocationManager.authorizationStatus() == .denied
     }
 
     func locationManager(_: CLLocationManager, didChangeAuthorization authorizationStatus: CLAuthorizationStatus) {

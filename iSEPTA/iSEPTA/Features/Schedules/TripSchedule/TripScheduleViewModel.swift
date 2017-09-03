@@ -60,7 +60,7 @@ import ReSwift
     func newState(state: StoreSubscriberStateType) {
 
         if state.updateMode == .loadValues && state.trips.count == 0 {
-            tripScheduleViewController?.displayErrorMessage(message: SeptaString.NoTripsAvailable)
+            tripScheduleViewController?.displayErrorMessage(message: SeptaString.NoTripsAvailable, shouldDismissAfterDisplay: false)
             tripScheduleViewController?.updateActivityIndicator(animating: false)
         } else if state.updateMode == .clearValues {
             tripScheduleViewController?.updateActivityIndicator(animating: true)

@@ -73,7 +73,7 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
     func newState(state: StoreSubscriberStateType) {
         allRoutes = state.routes
         if state.updateMode == .loadValues && state.routes.count == 0 {
-            selectRoutesViewController?.displayErrorMessage(message: SeptaString.NoRoutesAvailable)
+            selectRoutesViewController?.displayErrorMessage(message: SeptaString.NoRoutesAvailable, shouldDismissAfterDisplay: true)
         }
     }
 

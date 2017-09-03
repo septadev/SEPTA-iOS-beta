@@ -8,5 +8,5 @@ import Foundation
 
     func updateActivityIndicator(animating: Bool)
 
-    func displayErrorMessage(message: String)
+    func displayErrorMessage(message: String, shouldDismissAfterDisplay: Bool)
 }

@@ -6,10 +6,14 @@ import ReSwift
 
 class TripScheduleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController {
 
-    func displayErrorMessage(message: String) {
+    func displayErrorMessage(message: String, shouldDismissAfterDisplay: Bool = false) {
         UIAlert.presentOKAlertFrom(viewController: self,
-                                   withTitle: "View Trips",
+                                   withTitle: "View Trips Error",
                                    message: message) {
+            if shouldDismissAfterDisplay {
+                let action = DismissModal(navigationController: .schedules, description: "dismissing trip schedules")
+                store.dispatch(action)
+            }
         }
     }
 
