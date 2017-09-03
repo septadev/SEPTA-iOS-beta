@@ -3,20 +3,11 @@ use Data::Dumper;
 
 my $struct = q |
 
-struct AppState: StateType {
-    let navigationState: NavigationState
-    let scheduleState: ScheduleState
-    let preferenceState: UserPreferenceState
-    let alertState: AlertState
-    let addressLookup: AddressLookup
-
-    init(navigationState: NavigationState, scheduleState: ScheduleState, preferenceState: UserPreferenceState, alertState: AlertState) {
-        self.navigationState = navigationState
-        self.scheduleState = scheduleState
-        self.preferenceState = preferenceState
-        self.alertState = alertState
-    }
+struct LocationState{
+    let authorizationStatus: CLAuthorizationStatus
+    let locationCoordinate: CLLocationCoordinate2D?
 }
+
 
 	|;
 

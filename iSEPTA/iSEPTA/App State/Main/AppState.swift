@@ -9,13 +9,15 @@ struct AppState: StateType {
     let preferenceState: UserPreferenceState
     let alertState: AlertState
     let addressLookupState: AddressLookupState
+    let locationState: LocationState
 
-    init(navigationState: NavigationState, scheduleState: ScheduleState, preferenceState: UserPreferenceState, alertState: AlertState, addressLookupState: AddressLookupState) {
+    init(navigationState: NavigationState, scheduleState: ScheduleState, preferenceState: UserPreferenceState, alertState: AlertState, addressLookupState: AddressLookupState, locationState: LocationState) {
         self.navigationState = navigationState
         self.scheduleState = scheduleState
         self.preferenceState = preferenceState
         self.alertState = alertState
         self.addressLookupState = addressLookupState
+        self.locationState = locationState
     }
 }
 
@@ -36,6 +38,9 @@ func ==(lhs: AppState, rhs: AppState) -> Bool {
     guard areEqual else { return false }
 
     areEqual = lhs.addressLookupState == rhs.addressLookupState
+    guard areEqual else { return false }
+
+    areEqual = lhs.locationState == rhs.locationState
     guard areEqual else { return false }
 
     return areEqual

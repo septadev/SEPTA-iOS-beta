@@ -130,6 +130,9 @@
 		678F052C1F5B7CEC00CC4D3C /* AddressLookupReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F052B1F5B7CEC00CC4D3C /* AddressLookupReducer.swift */; };
 		678F052E1F5B7D3E00CC4D3C /* AddressLookupActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F052D1F5B7D3E00CC4D3C /* AddressLookupActions.swift */; };
 		678F05301F5B918300CC4D3C /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F052F1F5B918300CC4D3C /* LocationProvider.swift */; };
+		678F05331F5BFFC900CC4D3C /* LocationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F05321F5BFFC900CC4D3C /* LocationState.swift */; };
+		678F05371F5BFFDC00CC4D3C /* LocationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F05361F5BFFDC00CC4D3C /* LocationReducer.swift */; };
+		678F05391F5BFFE500CC4D3C /* LocationActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F05381F5BFFE500CC4D3C /* LocationActions.swift */; };
 		67A65BFC1F5AEBB20068428E /* NextToArriveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A65BFB1F5AEBB20068428E /* NextToArriveButton.swift */; };
 		67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B511801F499E8F000E3065 /* ButtonViewCell.swift */; };
 		67C567271F59695900FF6203 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C567261F59695900FF6203 /* Favorite.swift */; };
@@ -361,6 +364,9 @@
 		678F052B1F5B7CEC00CC4D3C /* AddressLookupReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupReducer.swift; sourceTree = "<group>"; };
 		678F052D1F5B7D3E00CC4D3C /* AddressLookupActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupActions.swift; sourceTree = "<group>"; };
 		678F052F1F5B918300CC4D3C /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
+		678F05321F5BFFC900CC4D3C /* LocationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationState.swift; sourceTree = "<group>"; };
+		678F05361F5BFFDC00CC4D3C /* LocationReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationReducer.swift; sourceTree = "<group>"; };
+		678F05381F5BFFE500CC4D3C /* LocationActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationActions.swift; sourceTree = "<group>"; };
 		67A65BFB1F5AEBB20068428E /* NextToArriveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveButton.swift; sourceTree = "<group>"; };
 		67B511801F499E8F000E3065 /* ButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewCell.swift; sourceTree = "<group>"; };
 		67C567261F59695900FF6203 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
@@ -436,6 +442,7 @@
 		58290E511F372F27000CCF3C /* App State */ = {
 			isa = PBXGroup;
 			children = (
+				678F05311F5BFFB000CC4D3C /* Location */,
 				678F05271F5B7BA900CC4D3C /* Address */,
 				58490E431F55F8F0007DBCA1 /* Alerts */,
 				58DB10EF1F3B889700191AED /* Main */,
@@ -1008,19 +1015,21 @@
 		678F05271F5B7BA900CC4D3C /* Address */ = {
 			isa = PBXGroup;
 			children = (
-				678F052A1F5B7CD600CC4D3C /* reducers */,
+				678F052B1F5B7CEC00CC4D3C /* AddressLookupReducer.swift */,
 				678F05281F5B7BE400CC4D3C /* AddressLookupState.swift */,
 				678F052D1F5B7D3E00CC4D3C /* AddressLookupActions.swift */,
 			);
 			path = Address;
 			sourceTree = "<group>";
 		};
-		678F052A1F5B7CD600CC4D3C /* reducers */ = {
+		678F05311F5BFFB000CC4D3C /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				678F052B1F5B7CEC00CC4D3C /* AddressLookupReducer.swift */,
+				678F05321F5BFFC900CC4D3C /* LocationState.swift */,
+				678F05361F5BFFDC00CC4D3C /* LocationReducer.swift */,
+				678F05381F5BFFE500CC4D3C /* LocationActions.swift */,
 			);
-			path = reducers;
+			path = Location;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1243,6 +1252,7 @@
 				582F4EDD1F33B1120062A546 /* ViewModelDelegate.swift in Sources */,
 				582F4ED31F33B1120062A546 /* SelectStopRow.swift in Sources */,
 				582F4EBC1F33B1120062A546 /* DateFormatters.swift in Sources */,
+				678F05331F5BFFC900CC4D3C /* LocationState.swift in Sources */,
 				582F4EC81F33B1120062A546 /* RouteTableViewCell.swift in Sources */,
 				67075FC21F578578008BB38C /* ScheduleUpdateMode.swift in Sources */,
 				678F052E1F5B7D3E00CC4D3C /* AddressLookupActions.swift in Sources */,
@@ -1281,6 +1291,7 @@
 				5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */,
 				58FBB66C1F5885D800E6532B /* TripIconView.swift in Sources */,
 				67EA2B611F518CA600C0567A /* SearchModalHeaderDelegate.swift in Sources */,
+				678F05371F5BFFDC00CC4D3C /* LocationReducer.swift in Sources */,
 				5814AA891F4359CC00DF774A /* SingleStringDisplayable.swift in Sources */,
 				67F757B31F48729C00D3A4EE /* UIView+Util.swift in Sources */,
 				67C567271F59695900FF6203 /* Favorite.swift in Sources */,
@@ -1323,6 +1334,7 @@
 				589A89DB1F52E6A9007329DB /* ScheduleStopEdit.swift in Sources */,
 				58DB10F81F3B8DB400191AED /* NavigationReducer.swift in Sources */,
 				584AC8731F437DDB0040C1B4 /* TripScheduleViewController.swift in Sources */,
+				678F05391F5BFFE500CC4D3C /* LocationActions.swift in Sources */,
 				58290E501F372DDC000CCF3C /* NavigationActions.swift in Sources */,
 				6749A46E1F53997D00AF6119 /* StopToSelect.swift in Sources */,
 				58C2A0591F3812D600F0D6CA /* ScheduleActions.swift in Sources */,

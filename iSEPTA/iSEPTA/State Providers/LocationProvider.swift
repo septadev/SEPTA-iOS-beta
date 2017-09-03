@@ -12,7 +12,7 @@ import ReSwift
 
 class LocationProvider: NSObject, StoreSubscriber, CLLocationManagerDelegate {
 
-    typealias StoreSubscriberStateType = String
+    typealias StoreSubscriberStateType = LocationState
 
     static let sharedInstance = LocationProvider()
     private let locationManager: CLLocationManager
@@ -30,7 +30,7 @@ class LocationProvider: NSObject, StoreSubscriber, CLLocationManagerDelegate {
     func subscribe() {
         store.subscribe(self) {
             $0.select {
-                $0.addressLookupState.searchString
+                $0.locationState
             }.skipRepeats { $0 == $1 }
         }
     }
@@ -43,7 +43,7 @@ class LocationProvider: NSObject, StoreSubscriber, CLLocationManagerDelegate {
         store.unsubscribe(self)
     }
 
-    func newState(state _: String) {
+    func newState(state _: LocationState) {
     }
 
     func locationManager(_: CLLocationManager, didChangeAuthorization _: CLAuthorizationStatus) {
