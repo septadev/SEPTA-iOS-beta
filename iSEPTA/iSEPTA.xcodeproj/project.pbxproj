@@ -122,6 +122,7 @@
 		58EB8D2D1F5D927E0028A487 /* NextToArriveScheduleReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB8D2C1F5D927E0028A487 /* NextToArriveScheduleReducer.swift */; };
 		58EB8D2F1F5D92A20028A487 /* NextToArriveActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB8D2E1F5D92A20028A487 /* NextToArriveActions.swift */; };
 		58EB8D311F5D94640028A487 /* BaseScheduleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB8D301F5D94640028A487 /* BaseScheduleDataProvider.swift */; };
+		58EB8D331F5D98320028A487 /* NextToArriveScheduleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB8D321F5D98320028A487 /* NextToArriveScheduleDataProvider.swift */; };
 		58F444FC1F3D335400A93208 /* SeptaAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F444FB1F3D335400A93208 /* SeptaAction.swift */; };
 		58F80D431F421C1F0089501A /* SelectStopNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F80D421F421C1F0089501A /* SelectStopNavigationController.swift */; };
 		58F80D451F421C4B0089501A /* SelectStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F80D441F421C4B0089501A /* SelectStopViewController.swift */; };
@@ -382,6 +383,7 @@
 		58EB8D2C1F5D927E0028A487 /* NextToArriveScheduleReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveScheduleReducer.swift; sourceTree = "<group>"; };
 		58EB8D2E1F5D92A20028A487 /* NextToArriveActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveActions.swift; sourceTree = "<group>"; };
 		58EB8D301F5D94640028A487 /* BaseScheduleDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScheduleDataProvider.swift; sourceTree = "<group>"; };
+		58EB8D321F5D98320028A487 /* NextToArriveScheduleDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveScheduleDataProvider.swift; sourceTree = "<group>"; };
 		58F444FB1F3D335400A93208 /* SeptaAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaAction.swift; sourceTree = "<group>"; };
 		58F80D421F421C1F0089501A /* SelectStopNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopNavigationController.swift; sourceTree = "<group>"; };
 		58F80D441F421C4B0089501A /* SelectStopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopViewController.swift; sourceTree = "<group>"; };
@@ -736,9 +738,8 @@
 		5840D6E11F37E9E300C8CB76 /* State Providers */ = {
 			isa = PBXGroup;
 			children = (
+				58EB8D341F5D99310028A487 /* ScheduleDataProviders */,
 				58B8920A1F38C27700BFFEFA /* UserPreferences */,
-				5840D6E41F37EA1900C8CB76 /* ScheduleDataProvider.swift */,
-				58EB8D301F5D94640028A487 /* BaseScheduleDataProvider.swift */,
 				5840D6E81F37EE6500C8CB76 /* Providers.swift */,
 				58490E411F55F899007DBCA1 /* AlertProviders.swift */,
 				678F05231F5B7B6E00CC4D3C /* AddressProvider.swift */,
@@ -1110,6 +1111,16 @@
 			path = NextToArrive;
 			sourceTree = "<group>";
 		};
+		58EB8D341F5D99310028A487 /* ScheduleDataProviders */ = {
+			isa = PBXGroup;
+			children = (
+				5840D6E41F37EA1900C8CB76 /* ScheduleDataProvider.swift */,
+				58EB8D301F5D94640028A487 /* BaseScheduleDataProvider.swift */,
+				58EB8D321F5D98320028A487 /* NextToArriveScheduleDataProvider.swift */,
+			);
+			path = ScheduleDataProviders;
+			sourceTree = "<group>";
+		};
 		678D26C21F5CC49200D140CC /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
@@ -1451,6 +1462,7 @@
 				67C5672F1F59862600FF6203 /* ReverseTripButton.swift in Sources */,
 				67C567351F598C7900FF6203 /* SeptaAlertsViewController.swift in Sources */,
 				589A89DE1F52E7E8007329DB /* ScheduleStopEditReducer.swift in Sources */,
+				58EB8D331F5D98320028A487 /* NextToArriveScheduleDataProvider.swift in Sources */,
 				581DA54F1F3BF102006AEC39 /* ViewTransitionType.swift in Sources */,
 				5840D6E01F37E5FB00C8CB76 /* ScheduleReducer.swift in Sources */,
 				58290E411F372B51000CCF3C /* AppState.swift in Sources */,

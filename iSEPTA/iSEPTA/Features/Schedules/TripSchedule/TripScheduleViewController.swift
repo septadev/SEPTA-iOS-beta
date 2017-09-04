@@ -102,7 +102,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBAction func reverseStopsButtonTapped(_: ReverseTripButton) {
         reverseStopsButton.isEnabled = false
-        store.dispatch(ReverseStops())
+        store.dispatch(ReverseStops(targetForScheduleAction: targetForScheduleAction))
     }
 
     @IBOutlet weak var reverseStopsButton: ReverseTripButton!
@@ -135,10 +135,11 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         return scheduleTypeSegments[segmentedControl.selectedSegmentIndex]
     }
 
+    let targetForScheduleAction = TargetForScheduleAction.schedules
     func dispatchScheduleTypeAction(_ scheduleType: ScheduleType) {
-        store.dispatch(ClearTrips())
+        store.dispatch(ClearTrips(targetForScheduleAction: targetForScheduleAction))
 
-        let action = ScheduleTypeSelected(scheduleType: scheduleType)
+        let action = ScheduleTypeSelected(targetForScheduleAction: targetForScheduleAction, scheduleType: scheduleType)
         store.dispatch(action)
     }
 

@@ -21,7 +21,7 @@ struct FilterableStop {
 
 class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
     typealias StoreSubscriberStateType = ScheduleStopState
-
+    let targetForScheduleAction = TargetForScheduleAction.schedules
     var stopToSelect: StopToSelect = .starts {
         didSet {
             subscribe()
@@ -120,10 +120,10 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITab
         let stop = filteredStops[row].stop
         store.unsubscribe(self)
         if stopToSelect == .starts {
-            let action = TripStartSelected(selectedStart: stop)
+            let action = TripStartSelected(targetForScheduleAction: targetForScheduleAction, selectedStart: stop)
             store.dispatch(action)
         } else {
-            let action = TripEndSelected(selectedEnd: stop)
+            let action = TripEndSelected(targetForScheduleAction: targetForScheduleAction, selectedEnd: stop)
             store.dispatch(action)
         }
         let dismissAction = DismissModal(navigationController: .schedules, description: "Stop should be dismissed")

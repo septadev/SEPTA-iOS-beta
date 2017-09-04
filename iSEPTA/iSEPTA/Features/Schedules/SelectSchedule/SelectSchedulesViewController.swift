@@ -25,8 +25,9 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
     var formIsComplete = false
     @IBOutlet var buttons: [UIButton]!
 
+    let targetForScheduleAction = TargetForScheduleAction.schedules
     @IBAction func resetButtonTapped(_: Any) {
-        store.dispatch(ResetSchedule())
+        store.dispatch(ResetSchedule(targetForScheduleAction: targetForScheduleAction))
     }
 
     let cellId = "singleStringCell"
@@ -128,7 +129,7 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
     }
 
     @IBAction func resetSearch(_: Any) {
-        let action = ResetSchedule()
+        let action = ResetSchedule(targetForScheduleAction: targetForScheduleAction)
         store.dispatch(action)
     }
 

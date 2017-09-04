@@ -10,6 +10,8 @@ class TransitModesToolbarViewController: UIViewController, StoreSubscriber {
     @IBOutlet var scrollbar: UIScrollView!
     var transitModesToolbarElements = [TransitModeToolbarView]()
     var currentTransitMode: TransitMode?
+
+    let targetForScheduleAction = TargetForScheduleAction.schedules
     @IBOutlet weak var stackView: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,7 +103,7 @@ class TransitModesToolbarViewController: UIViewController, StoreSubscriber {
     func dispatchAction(toolbarItem: TransitModeToolbarView?) {
         guard let newTransitMode = toolbarItem?.transitMode, let currentTransitMode = currentTransitMode else { return }
         if currentTransitMode != newTransitMode {
-            let action = TransitModeSelected(transitMode: newTransitMode, description: "User switched the transit mode toolbar")
+            let action = TransitModeSelected(targetForScheduleAction: targetForScheduleAction, transitMode: newTransitMode, description: "User switched the transit mode toolbar")
             store.dispatch(action)
             let preferenceAction = NewTransitModeAction(transitMode: newTransitMode)
             store.dispatch(preferenceAction)

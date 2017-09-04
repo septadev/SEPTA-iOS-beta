@@ -7,6 +7,24 @@ fileprivate typealias Req = ScheduleRequestReducer
 fileprivate typealias Data = ScheduleDataReducer
 fileprivate typealias StopEdit = ScheduleStopEditReducer
 
+struct ScheduleStateReducer {
+    static func main(action: Action, state: ScheduleState?) -> ScheduleState {
+        if let state = state {
+            return reduceScheduleState(action: action, state: state)
+        } else {
+            return ScheduleState()
+        }
+    }
+
+    static func reduceScheduleState(action: Action, state: ScheduleState) -> ScheduleState {
+        if let action = action as? ScheduleAction, action.targetForScheduleAction != .nextToArrive {
+            return ScheduleReducer.main(action: action, state: state)
+        } else {
+            return state
+        }
+    }
+}
+
 struct ScheduleReducer {
 
     static func main(action: Action, state: ScheduleState?) -> ScheduleState {

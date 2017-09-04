@@ -12,10 +12,19 @@ import ReSwift
 struct NextToArriveReducer {
     static func main(action: Action, state: NextToArriveState?) -> NextToArriveState {
         if let state = state {
-            guard let action = action as? NextToArriveAction else { return state }
-            return reduceNextToArriveAction(action: action, state: state)
+            return NextToArriveState(
+                scheduleState: reduceScheduleState(action: action, state: state.scheduleState)
+            )
         } else {
             return NextToArriveState()
+        }
+    }
+
+    static func reduceScheduleState(action: Action, state: ScheduleState) -> ScheduleState {
+        if let action = action as? ScheduleAction, action.targetForScheduleAction != .schedules {
+            return ScheduleReducer.main(action: action, state: state)
+        } else {
+            return state
         }
     }
 

@@ -29,7 +29,7 @@ class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber, UITableView
     let cellId = "relativeStopCell"
     var stopToEdit: StopToSelect?
     @IBOutlet weak var selectStopViewController: UpdateableFromViewModel?
-
+    let targetForScheduleAction = TargetForScheduleAction.schedules
     var stopsWithDistance = [StopWithDistance]()
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -58,10 +58,10 @@ class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber, UITableView
         guard let stopToEdit = stopToEdit, indexPath.row < stopsWithDistance.count else { return }
         let stopWithDistance = stopsWithDistance[indexPath.row]
         if stopToEdit == .starts {
-            let action = TripStartSelected(selectedStart: stopWithDistance.stop)
+            let action = TripStartSelected(targetForScheduleAction: targetForScheduleAction, selectedStart: stopWithDistance.stop)
             store.dispatch(action)
         } else {
-            let action = TripEndSelected(selectedEnd: stopWithDistance.stop)
+            let action = TripEndSelected(targetForScheduleAction: targetForScheduleAction, selectedEnd: stopWithDistance.stop)
             store.dispatch(action)
         }
         let dismissAction = DismissModal(navigationController: .schedules, description: "Stop should be dismissed")

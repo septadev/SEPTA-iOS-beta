@@ -32,7 +32,7 @@ protocol SchedulesViewModelDelegate: AnyObject {
 class SelectSchedulesViewModel: StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleRequest?
     var scheduleRequest: ScheduleRequest?
-
+    let targetForScheduleAction = TargetForScheduleAction.schedules
     weak var delegate: UpdateableFromViewModel?
     weak var schedulesDelegate: SchedulesViewModelDelegate?
 
@@ -177,7 +177,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
         store.dispatch(action)
 
         if let stopToEdit = StopToSelect(rawValue: row) {
-            let editStopAction = CurrentStopToEdit(stopToEdit: stopToEdit)
+            let editStopAction = CurrentStopToEdit(targetForScheduleAction: targetForScheduleAction, stopToEdit: stopToEdit)
             store.dispatch(editStopAction)
         }
     }

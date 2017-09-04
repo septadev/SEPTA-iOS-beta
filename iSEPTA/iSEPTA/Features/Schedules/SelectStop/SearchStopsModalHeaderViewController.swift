@@ -17,11 +17,13 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, U
 
     @IBOutlet weak var viewHeightConstraintForAddress: NSLayoutConstraint!
     @IBOutlet weak var viewHeightConstraintForStops: NSLayoutConstraint!
+
+    let targetForScheduleAction = TargetForScheduleAction.schedules
     @IBAction func userTappedSearchByStops(_: Any) {
 
         if searchMode == .directLookupWithAddress {
             store.dispatch(ClearLookupAddresses())
-            store.dispatch(StopSearchModeChanged(searchMode: .byAddress))
+            store.dispatch(StopSearchModeChanged(targetForScheduleAction: targetForScheduleAction, searchMode: .byAddress))
         }
     }
 
@@ -98,7 +100,7 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, U
     var searchMode: StopEditSearchMode! {
         didSet {
             if oldValue != searchMode {
-                store.dispatch(StopSearchModeChanged(searchMode: searchMode))
+                store.dispatch(StopSearchModeChanged(targetForScheduleAction: targetForScheduleAction, searchMode: searchMode))
                 toggleHeightConstraintsForSearchMode()
                 updateTextFieldPlaceholderText()
             }

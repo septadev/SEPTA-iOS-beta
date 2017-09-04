@@ -9,13 +9,15 @@ class StateProviders {
     let addressProvider: AddressLookupProvider
     let locationProvider: LocationProvider
     let favoritesProvider: FavoritesProvider
+    let nextToArriveScheduleDataProvider: NextToArriveScheduleDataProvider
 
     init(preferenceProvider: UserPreferencesProviderProtocol = UserPreferencesProvider.sharedInstance,
          scheduleProvider: ScheduleDataProvider = ScheduleDataProvider.sharedInstance,
          alertProvider: AlertProvider = AlertProvider.sharedInstance,
          addressProvider: AddressLookupProvider = AddressLookupProvider.sharedInstance,
          locationProvider: LocationProvider = LocationProvider.sharedInstance,
-         favoritesProvider: FavoritesProvider = FavoritesProvider.sharedInstance
+         favoritesProvider: FavoritesProvider = FavoritesProvider.sharedInstance,
+         nextToArriveScheduleDataProvider: NextToArriveScheduleDataProvider = NextToArriveScheduleDataProvider.sharedInstance
     ) {
         self.preferenceProvider = preferenceProvider
         self.scheduleProvider = scheduleProvider
@@ -23,5 +25,6 @@ class StateProviders {
         self.addressProvider = addressProvider
         self.locationProvider = locationProvider
         self.favoritesProvider = favoritesProvider
+        self.nextToArriveScheduleDataProvider = nextToArriveScheduleDataProvider
     }
 }

@@ -1,46 +1,51 @@
-// Septa. 2017
+//
+//  NextToArriveScheduleProvider.swift
+//  iSEPTA
+//
+//  Created by Mark Broski on 9/4/17.
+//  Copyright © 2017 Mark Broski. All rights reserved.
+//
 
 import Foundation
 import ReSwift
 import SeptaSchedule
 
-class ScheduleDataProvider: BaseScheduleDataProvider {
+class NextToArriveScheduleDataProvider: BaseScheduleDataProvider {
     typealias StoreSubscriberStateType = ScheduleRequest
-    static let sharedInstance = ScheduleDataProvider()
-
+    static let sharedInstance = NextToArriveScheduleDataProvider()
+    let targetForScheduleAction = TargetForScheduleAction.nextToArrive
     private override init() {
         super.init()
     }
 
     func subscribe() {
-
         store.subscribe(self) {
-            $0.select { $0.scheduleState.scheduleRequest }.skipRepeats { $0 == $1 }
+            $0.select { $0.nextToArriveState.scheduleState.scheduleRequest }.skipRepeats { $0 == $1 }
         }
     }
 
     // MARK: - Clear out existing data
     override func clearRoutes() {
         DispatchQueue.main.async {
-            store.dispatch(ClearRoutes())
+            // store.dispatch(ClearRoutes())
         }
     }
 
     override func clearStartingStops() {
         DispatchQueue.main.async {
-            store.dispatch(ClearTripStarts())
+            // store.dispatch(ClearTripStarts())
         }
     }
 
     override func clearEndingStops() {
         DispatchQueue.main.async {
-            store.dispatch(ClearTripEnds())
+            // store.dispatch(ClearTripEnds())
         }
     }
 
     override func clearTrips() {
         DispatchQueue.main.async {
-            store.dispatch(ClearTrips())
+            // store.dispatch(ClearTrips())
         }
     }
 
@@ -50,8 +55,8 @@ class ScheduleDataProvider: BaseScheduleDataProvider {
         clearRoutes()
         RoutesCommand.sharedInstance.routes(forTransitMode: scheduleRequest.transitMode!) { routes, error in
             let routes = routes ?? [Route]()
-            let routesLoadedAction = RoutesLoaded(routes: routes, error: error?.localizedDescription)
-            store.dispatch(routesLoadedAction)
+            let routesLoadedAction = RoutesLoaded(targetForScheduleAction: self.targetForScheduleAction, routes: routes, error: error?.localizedDescription)
+            // store.dispatch(routesLoadedAction)
         }
     }
 
@@ -59,8 +64,8 @@ class ScheduleDataProvider: BaseScheduleDataProvider {
         clearStartingStops()
         TripStartCommand.sharedInstance.stops(forTransitMode: scheduleRequest.transitMode!, forRoute: scheduleRequest.selectedRoute!) { stops, error in
             let stops = stops ?? [Stop]()
-            let action = TripStartsLoaded(availableStarts: stops, error: error?.localizedDescription)
-            store.dispatch(action)
+            let action = TripStartsLoaded(targetForScheduleAction: self.targetForScheduleAction, availableStarts: stops, error: error?.localizedDescription)
+            // store.dispatch(action)
         }
     }
 
@@ -68,8 +73,8 @@ class ScheduleDataProvider: BaseScheduleDataProvider {
         clearEndingStops()
         TripEndCommand.sharedInstance.stops(forTransitMode: scheduleRequest.transitMode!, forRoute: scheduleRequest.selectedRoute!, tripStart: scheduleRequest.selectedStart!) { stops, error in
             let stops = stops ?? [Stop]()
-            let action = TripEndsLoaded(availableStops: stops, error: error?.localizedDescription)
-            store.dispatch(action)
+            let action = TripEndsLoaded(targetForScheduleAction: self.targetForScheduleAction, availableStops: stops, error: error?.localizedDescription)
+            // store.dispatch(action)
         }
     }
 
@@ -77,8 +82,8 @@ class ScheduleDataProvider: BaseScheduleDataProvider {
         clearTrips()
         TripScheduleCommand.sharedInstance.tripSchedules(forTransitMode: scheduleRequest.transitMode!, route: scheduleRequest.selectedRoute!, selectedStart: scheduleRequest.selectedStart!, selectedEnd: scheduleRequest.selectedEnd!, scheduleType: scheduleRequest.scheduleType!) { trips, error in
             let trips = trips ?? [Trip]()
-            let action = TripsLoaded(availableTrips: trips, error: error?.localizedDescription)
-            store.dispatch(action)
+            let action = TripsLoaded(targetForScheduleAction: self.targetForScheduleAction, availableTrips: trips, error: error?.localizedDescription)
+            // store.dispatch(action)
         }
     }
 
@@ -105,8 +110,8 @@ class ScheduleDataProvider: BaseScheduleDataProvider {
                     ReverseRouteCommand.sharedInstance.reverseRoute(forTransitMode: transitMode, route: selectedRoute) { routes, error in
                         guard let routes = routes, let newRoute = routes.first else { return }
                         let newScheduleRequest = ScheduleRequest(transitMode: transitMode, selectedRoute: newRoute, selectedStart: newStart, selectedEnd: newEnd, scheduleType: scheduleType, reverseStops: false, databaseIsLoaded: scheduleRequest.databaseIsLoaded)
-                        let action = ReverseLoaded(scheduleRequest: newScheduleRequest, trips: reversedTrips, error: error?.localizedDescription)
-                        store.dispatch(action)
+                        let action = ReverseLoaded(targetForScheduleAction: self.targetForScheduleAction, scheduleRequest: newScheduleRequest, trips: reversedTrips, error: error?.localizedDescription)
+                        // store.dispatch(action)
                     }
                 }
             }

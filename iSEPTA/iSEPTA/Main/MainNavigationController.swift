@@ -67,7 +67,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
                 self?.displayAlert(message) },
             endCompletion: { [weak self] message in
                 self?.dismiss(animated: true, completion: nil)
-                let action = DatabaseLoaded()
+                let action = DatabaseLoaded(targetForScheduleAction: .both)
                 store.dispatch(action)
                 self?.displayAlert(message)
 

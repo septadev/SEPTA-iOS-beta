@@ -28,7 +28,7 @@ struct FilterableRoute {
 
 class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
     typealias StoreSubscriberStateType = ScheduleRouteState
-
+    let targetForScheduleAction = TargetForScheduleAction.schedules
     let transitMode = store.state.scheduleState.scheduleRequest.transitMode!
     let alerts = store.state.alertState.alertDict
 
@@ -107,7 +107,7 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
         guard let filteredRoutes = filteredRoutes, row < filteredRoutes.count else { return }
         let route = filteredRoutes[row].route
 
-        let action = RouteSelected(selectedRoute: route)
+        let action = RouteSelected(targetForScheduleAction: targetForScheduleAction, selectedRoute: route)
         store.dispatch(action)
         let dismissAction = DismissModal(navigationController: .schedules, description: "Route should be dismissed")
         store.dispatch(dismissAction)

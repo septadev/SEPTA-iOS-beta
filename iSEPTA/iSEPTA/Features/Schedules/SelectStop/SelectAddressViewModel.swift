@@ -36,6 +36,7 @@ class SelectAddressViewModel: NSObject, UITableViewDataSource, UITableViewDelega
     }
 
     var addresses = [DisplayAddress]()
+    let targetForScheduleAction = TargetForScheduleAction.schedules
 
     @IBOutlet weak var selectStopViewController: UpdateableFromViewModel?
     let cellId = "addressCell"
@@ -61,7 +62,7 @@ class SelectAddressViewModel: NSObject, UITableViewDataSource, UITableViewDelega
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.row < addresses.count else { return }
         let displayAddress = addresses[indexPath.row]
-        let addressSelectedAction = AddressSelected(selectedAddress: displayAddress)
+        let addressSelectedAction = AddressSelected(targetForScheduleAction: targetForScheduleAction, selectedAddress: displayAddress)
         store.dispatch(addressSelectedAction)
     }
 
