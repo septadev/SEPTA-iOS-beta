@@ -13,125 +13,35 @@
         <!--Nav Controller-->
         <scene sceneID="8lQ-ax-JJ9">
             <objects>
-                <navigationController title="Nav Controller" id="4lt-fc-Rad" sceneMemberID="viewController">
+                <navigationController title="Nav Controller" id="4lt-fc-Rad" customClass="BaseNavigationController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Next-to-Arrive" image="nextToArriveTabbar" landscapeImage="NextToArrive" selectedImage="nextToArriveTabbarSelected" id="p4A-rk-lsI"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h50-1J-wdn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="h50-1J-wdn" customClass="BaseNavigationBar" customModule="Septa" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.13333333333333333" green="0.32549019607843138" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
+                        <outlet property="stateProvider" destination="ag4-fI-gKN" id="W5F-Kf-fqf"/>
                         <segue destination="9Vo-vn-udf" kind="relationship" relationship="rootViewController" id="sLF-hx-A01"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="irk-yA-FP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="ag4-fI-gKN" userLabel="StateProvider" customClass="NextToArriveNavigationControllerStateProvider" customModule="Septa" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="-812" y="30"/>
         </scene>
         <!--Next To Arrive-->
         <scene sceneID="j73-53-Tub">
             <objects>
-                <viewController storyboardIdentifier="nextToArrive" title="Next To Arrive" id="9Vo-vn-udf" customClass="NextToArriveViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="nextToArriveSelectTrip" title="Next To Arrive" id="9Vo-vn-udf" customClass="NextToArriveViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gAN-tc-gAL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDT-WK-HgD">
-                                <rect key="frame" x="16" y="124" width="352" height="20.5"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UWz-Ur-1xh">
-                                        <rect key="frame" x="0.0" y="0.0" width="501" height="20.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Train" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSJ-Tc-7gn">
-                                                <rect key="frame" x="0.0" y="0.0" width="63" height="20.5"/>
-                                                <color key="backgroundColor" white="0.22" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                <color key="textColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subway" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Nj-yF-8NI">
-                                                <rect key="frame" x="73" y="0.0" width="63" height="20.5"/>
-                                                <color key="backgroundColor" white="0.22" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                <color key="textColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bus" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xjv-Ub-t8o">
-                                                <rect key="frame" x="146" y="0.0" width="63" height="20.5"/>
-                                                <color key="backgroundColor" white="0.22" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                <color key="textColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trolley" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yg-Ug-g3l">
-                                                <rect key="frame" x="219" y="0.0" width="63" height="20.5"/>
-                                                <color key="backgroundColor" white="0.22" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                <color key="textColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Car" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBN-tw-kPL">
-                                                <rect key="frame" x="292" y="0.0" width="63" height="20.5"/>
-                                                <color key="backgroundColor" white="0.22" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                <color key="textColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Boat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocU-H3-Iuk">
-                                                <rect key="frame" x="365" y="0.0" width="63" height="20.5"/>
-                                                <color key="backgroundColor" white="0.22" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                <color key="textColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plain" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZO-Cz-jHZ">
-                                                <rect key="frame" x="438" y="0.0" width="63" height="20.5"/>
-                                                <color key="backgroundColor" white="0.22" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                <color key="textColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" red="1" green="0.27536286799999998" blue="0.22840918169999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.21176470589999999" green="0.2156862745" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="UWz-Ur-1xh" firstAttribute="top" secondItem="KDT-WK-HgD" secondAttribute="top" id="9Cn-EH-kv0"/>
-                                    <constraint firstItem="UWz-Ur-1xh" firstAttribute="height" secondItem="KDT-WK-HgD" secondAttribute="height" id="Cvg-wh-cZI"/>
-                                    <constraint firstAttribute="bottom" secondItem="UWz-Ur-1xh" secondAttribute="bottom" id="ucP-pl-0pB"/>
-                                    <constraint firstAttribute="trailing" secondItem="UWz-Ur-1xh" secondAttribute="trailing" id="y9l-El-Smz"/>
-                                    <constraint firstItem="UWz-Ur-1xh" firstAttribute="leading" secondItem="KDT-WK-HgD" secondAttribute="leading" id="z4T-Ti-4Xg"/>
-                                </constraints>
-                            </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abV-8m-isg">
-                                <rect key="frame" x="30" y="309" width="177" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="RequestLocation"/>
-                                <connections>
-                                    <action selector="LocationButtonTapped:" destination="9Vo-vn-udf" eventType="touchUpInside" id="cqI-px-Rdc"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Next to arrive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIU-2z-8m1">
-                                <rect key="frame" x="22" y="194" width="215" height="63"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="EfI-BV-qbR" firstAttribute="trailing" secondItem="KDT-WK-HgD" secondAttribute="trailing" constant="7" id="79X-vF-43B" userLabel="ScrollViewRight"/>
-                            <constraint firstItem="KDT-WK-HgD" firstAttribute="top" secondItem="EfI-BV-qbR" secondAttribute="top" constant="60" id="Eb9-md-P6u" userLabel="ScrollViewTop"/>
-                            <constraint firstItem="KDT-WK-HgD" firstAttribute="leading" secondItem="EfI-BV-qbR" secondAttribute="leading" constant="16" id="jM5-n8-yS6" userLabel="ScrollViewLeft"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="EfI-BV-qbR"/>
                     </view>
                     <navigationItem key="navigationItem" title="Next To Arrive" id="uGV-Ko-GIz"/>
-                    <connections>
-                        <outlet property="nextToArriveLabel" destination="fIU-2z-8m1" id="zjt-sI-IGF"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jP3-6O-Gdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

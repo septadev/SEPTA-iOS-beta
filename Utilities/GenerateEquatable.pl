@@ -3,10 +3,11 @@ use Data::Dumper;
 
 my $struct = q |
 
-struct FavoriteState {
-    let favorites: [Favorite]
+struct NextToArriveState {
+    let scheduleState: ScheduleState
 
 }
+
 
 
 	|;
