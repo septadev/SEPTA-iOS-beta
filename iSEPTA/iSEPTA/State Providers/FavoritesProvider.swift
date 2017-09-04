@@ -83,7 +83,7 @@ class FavoritesProvider: StoreSubscriber {
                 if let targetURL = self?.favoritesFileURL,
                     let tempURL = self?.tempFavoritesFileURL,
                     let fileManager = self?.fileManager {
-                    let jsonData = try JSONEncoder().encode(state)
+                    let jsonData = try JSONEncoder().encode(state.favorites)
                     fileManager.createFile(atPath: tempURL.path, contents: jsonData, attributes: nil)
                     _ = try fileManager.replaceItemAt(targetURL, withItemAt: tempURL)
                     print("copy favorites to \(targetURL.path) was successful")
