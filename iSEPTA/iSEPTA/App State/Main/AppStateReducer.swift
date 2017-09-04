@@ -15,7 +15,8 @@ class AppStateReducer {
             preferenceState: UserPreferencesReducer.main(action: action, state: state?.preferenceState),
             alertState: AlertReducer.main(action: action, state: state?.alertState),
             addressLookupState: AddressLookupReducer.main(action: action, state: state?.addressLookupState),
-            locationState: LocationReducer.main(action: action, state: state?.locationState)
+            locationState: LocationReducer.main(action: action, state: state?.locationState),
+            favoriteState: FavoritesReducer.main(action: action, state: state?.favoritesState)
         )
 
         return appState

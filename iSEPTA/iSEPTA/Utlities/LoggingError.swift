@@ -6,4 +6,5 @@ enum LoggingError: Error {
     case missingActionWhileEncoding(String)
     case missingActionWhileDecoding(String)
     case couldNotCreateLoggingFile
+    case couldNotCreateFavoritesFile
 }

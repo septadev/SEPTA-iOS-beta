@@ -3,9 +3,9 @@ use Data::Dumper;
 
 my $struct = q |
 
-struct LocationState{
-    let authorizationStatus: CLAuthorizationStatus
-    let locationCoordinate: CLLocationCoordinate2D?
+struct FavoriteState {
+    let favorites: [Favorite]
+
 }
 
 
