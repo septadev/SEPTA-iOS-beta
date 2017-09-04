@@ -130,6 +130,8 @@
 		678D26C61F5CC52300D140CC /* FavoritesReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26C51F5CC52300D140CC /* FavoritesReducer.swift */; };
 		678D26C81F5CC54900D140CC /* FavoritesActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26C71F5CC54900D140CC /* FavoritesActions.swift */; };
 		678D26CA1F5CC83900D140CC /* FavoritesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26C91F5CC83900D140CC /* FavoritesProvider.swift */; };
+		678D26CC1F5CDB4200D140CC /* Septa+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26CB1F5CDB4200D140CC /* Septa+Images.swift */; };
+		678D26CE1F5CE4A500D140CC /* TripScheduleFavoritesIconController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26CD1F5CE4A500D140CC /* TripScheduleFavoritesIconController.swift */; };
 		678F05241F5B7B6E00CC4D3C /* AddressProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F05231F5B7B6E00CC4D3C /* AddressProvider.swift */; };
 		678F05291F5B7BE400CC4D3C /* AddressLookupState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F05281F5B7BE400CC4D3C /* AddressLookupState.swift */; };
 		678F052C1F5B7CEC00CC4D3C /* AddressLookupReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F052B1F5B7CEC00CC4D3C /* AddressLookupReducer.swift */; };
@@ -370,6 +372,8 @@
 		678D26C51F5CC52300D140CC /* FavoritesReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesReducer.swift; sourceTree = "<group>"; };
 		678D26C71F5CC54900D140CC /* FavoritesActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesActions.swift; sourceTree = "<group>"; };
 		678D26C91F5CC83900D140CC /* FavoritesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesProvider.swift; sourceTree = "<group>"; };
+		678D26CB1F5CDB4200D140CC /* Septa+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Septa+Images.swift"; sourceTree = "<group>"; };
+		678D26CD1F5CE4A500D140CC /* TripScheduleFavoritesIconController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripScheduleFavoritesIconController.swift; sourceTree = "<group>"; };
 		678F05231F5B7B6E00CC4D3C /* AddressProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressProvider.swift; sourceTree = "<group>"; };
 		678F05281F5B7BE400CC4D3C /* AddressLookupState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupState.swift; sourceTree = "<group>"; };
 		678F052B1F5B7CEC00CC4D3C /* AddressLookupReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupReducer.swift; sourceTree = "<group>"; };
@@ -493,6 +497,7 @@
 				58FBB6691F58717500E6532B /* SeptaTabBarImages.swift */,
 				58FBB66B1F5885D800E6532B /* TripIconView.swift */,
 				58FBB66D1F58AAC000E6532B /* AlertViewGradientBackgroundView.swift */,
+				678D26CB1F5CDB4200D140CC /* Septa+Images.swift */,
 			);
 			path = "Common Views";
 			sourceTree = "<group>";
@@ -601,6 +606,7 @@
 			isa = PBXGroup;
 			children = (
 				582F4E9A1F33B1120062A546 /* TripScheduleViewController.swift */,
+				678D26CD1F5CE4A500D140CC /* TripScheduleFavoritesIconController.swift */,
 				582F4E9B1F33B1120062A546 /* TripScheduleViewModel.swift */,
 				582F4E9C1F33B1120062A546 /* ScheduleTableViewCell.swift */,
 				67C5672E1F59862600FF6203 /* ReverseTripButton.swift */,
@@ -1321,6 +1327,7 @@
 				67EA2B611F518CA600C0567A /* SearchModalHeaderDelegate.swift in Sources */,
 				678F05371F5BFFDC00CC4D3C /* LocationReducer.swift in Sources */,
 				5814AA891F4359CC00DF774A /* SingleStringDisplayable.swift in Sources */,
+				678D26CE1F5CE4A500D140CC /* TripScheduleFavoritesIconController.swift in Sources */,
 				67F757B31F48729C00D3A4EE /* UIView+Util.swift in Sources */,
 				67C567271F59695900FF6203 /* Favorite.swift in Sources */,
 				582F4EC71F33B1120062A546 /* RoutesViewModel.swift in Sources */,
@@ -1338,6 +1345,7 @@
 				67A65BFC1F5AEBB20068428E /* NextToArriveButton.swift in Sources */,
 				58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */,
 				58F80D451F421C4B0089501A /* SelectStopViewController.swift in Sources */,
+				678D26CC1F5CDB4200D140CC /* Septa+Images.swift in Sources */,
 				5840D6D71F37728B00C8CB76 /* NavigationController.swift in Sources */,
 				58C2A0691F38AA1B00F0D6CA /* ScheduleData.swift in Sources */,
 				67075FC81F57866D008BB38C /* ScheduleRouteState.swift in Sources */,

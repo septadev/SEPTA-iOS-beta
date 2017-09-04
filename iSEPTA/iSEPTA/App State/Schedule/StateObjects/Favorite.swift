@@ -15,14 +15,12 @@ struct Favorite: Codable {
     let selectedRoute: Route
     let selectedStart: Stop
     let selectedEnd: Stop
-    let scheduleType: ScheduleType
 
-    init(transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop, scheduleType: ScheduleType) {
+    init(transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop) {
         self.transitMode = transitMode
         self.selectedRoute = selectedRoute
         self.selectedStart = selectedStart
         self.selectedEnd = selectedEnd
-        self.scheduleType = scheduleType
     }
 
     enum CodingKeys: String, CodingKey {
@@ -30,7 +28,6 @@ struct Favorite: Codable {
         case selectedRoute
         case selectedStart
         case selectedEnd
-        case scheduleType
     }
 
     public init(from decoder: Decoder) throws {
@@ -39,7 +36,6 @@ struct Favorite: Codable {
         selectedRoute = try container.decode(Route.self, forKey: .selectedRoute)
         selectedStart = try container.decode(Stop.self, forKey: .selectedStart)
         selectedEnd = try container.decode(Stop.self, forKey: .selectedEnd)
-        scheduleType = try container.decode(ScheduleType.self, forKey: .scheduleType)
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -48,7 +44,6 @@ struct Favorite: Codable {
         try container.encode(selectedRoute, forKey: .selectedRoute)
         try container.encode(selectedStart, forKey: .selectedStart)
         try container.encode(selectedEnd, forKey: .selectedEnd)
-        try container.encode(scheduleType, forKey: .scheduleType)
     }
 }
 
@@ -68,9 +63,6 @@ func ==(lhs: Favorite, rhs: Favorite) -> Bool {
     areEqual = lhs.selectedEnd == rhs.selectedEnd
     guard areEqual else { return false }
 
-    areEqual = lhs.scheduleType == rhs.scheduleType
-    guard areEqual else { return false }
-
     return areEqual
 }
 
@@ -78,8 +70,7 @@ func ==(lhs: Favorite, rhs: ScheduleRequest) -> Bool {
     guard let scheduleRequestTransitMode = rhs.transitMode,
         let scheduleRequestSelectedRoute = rhs.selectedRoute,
         let scheduleRequestSelectedStart = rhs.selectedStart,
-        let scheduleRequestSelectedEnd = rhs.selectedEnd,
-        let scheduleRequestScheduleType = rhs.scheduleType else { return false }
+        let scheduleRequestSelectedEnd = rhs.selectedEnd else { return false }
     var areEqual = true
 
     areEqual = lhs.transitMode == scheduleRequestTransitMode
@@ -92,9 +83,6 @@ func ==(lhs: Favorite, rhs: ScheduleRequest) -> Bool {
     guard areEqual else { return false }
 
     areEqual = lhs.selectedEnd == scheduleRequestSelectedEnd
-    guard areEqual else { return false }
-
-    areEqual = lhs.scheduleType == scheduleRequestScheduleType
     guard areEqual else { return false }
 
     return areEqual

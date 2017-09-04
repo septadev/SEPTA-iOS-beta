@@ -5,7 +5,7 @@ import ReSwift
 import SeptaSchedule
 
 class ScheduleDataProvider: StoreSubscriber {
-    typealias StoreSubscriberStateType = ScheduleRequest?
+    typealias StoreSubscriberStateType = ScheduleRequest
     static let sharedInstance = ScheduleDataProvider()
     var currentScheduleRequest = ScheduleRequest()
 
@@ -20,7 +20,8 @@ class ScheduleDataProvider: StoreSubscriber {
     }
 
     func newState(state: StoreSubscriberStateType) {
-        guard let scheduleRequest = state, currentScheduleRequest != scheduleRequest else { return }
+        let scheduleRequest = state
+        guard currentScheduleRequest != scheduleRequest else { return }
         print("New State in Schedule Data Provider")
         processReverseTrip(scheduleRequest: scheduleRequest)
         processSelectedRoute(scheduleRequest: scheduleRequest)

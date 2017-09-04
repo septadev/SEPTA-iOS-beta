@@ -51,3 +51,19 @@ func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
 
     return areEqual
 }
+
+extension ScheduleRequest {
+
+    func convertedToFavorite() -> Favorite? {
+        guard let transitMode = transitMode,
+            let selectedRoute = selectedRoute,
+            let selectedStart = selectedStart,
+            let selectedEnd = selectedEnd else { return nil }
+        return Favorite(transitMode: transitMode, selectedRoute: selectedRoute, selectedStart: selectedStart, selectedEnd: selectedEnd)
+    }
+
+    func isFavorited() -> Bool {
+        guard let favorite = self.convertedToFavorite() else { return false }
+        return store.state.favoritesState.favorites.contains(favorite)
+    }
+}

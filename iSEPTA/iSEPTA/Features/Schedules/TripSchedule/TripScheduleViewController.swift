@@ -17,6 +17,14 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
 
+    var tripScheduleFavoritesIconController: TripScheduleFavoritesIconController?
+
+    @IBOutlet weak var favoritesIcon: UIBarButtonItem! {
+        didSet {
+            tripScheduleFavoritesIconController = TripScheduleFavoritesIconController(favoritesBarButtonItem: favoritesIcon)
+        }
+    }
+
     @IBOutlet weak var routeIcon: UIImageView! {
         didSet {
             routeIcon.image = route.iconForRoute(transitMode: transitMode)
