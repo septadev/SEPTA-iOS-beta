@@ -29,8 +29,7 @@ struct NextToArriveReducer {
     }
 
     static func reduceNextToArriveAction(action _: NextToArriveAction, state: NextToArriveState) -> NextToArriveState {
-        var nextToArriveState = state
 
-        return nextToArriveState
+        return state
     }
 }

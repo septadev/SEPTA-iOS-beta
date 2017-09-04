@@ -58,6 +58,8 @@
 		582F4EDE1F33B1120062A546 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EB41F33B1120062A546 /* Main.storyboard */; };
 		582F4EDF1F33B1120062A546 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EB61F33B1120062A546 /* MainViewController.swift */; };
 		582F4EE01F33B1120062A546 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EB81F33B1120062A546 /* LaunchScreen.storyboard */; };
+		583523971F5DAF9100F95FC8 /* NextToArriveTransitModesToolBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583523961F5DAF9100F95FC8 /* NextToArriveTransitModesToolBarViewController.swift */; };
+		583523991F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583523981F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift */; };
 		58406EB51F3A9C0E00E6E04D /* SeptaSchedule.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58ACEAE31F3A9A9B00DC2836 /* SeptaSchedule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5840D6D31F376D9C00C8CB76 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D21F376D9C00C8CB76 /* MainNavigationController.swift */; };
 		5840D6D51F376E5E00C8CB76 /* NavigationStackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D41F376E5E00C8CB76 /* NavigationStackState.swift */; };
@@ -101,7 +103,7 @@
 		58C182041F34C5B6002748E9 /* Localizeable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58C182061F34C5B6002748E9 /* Localizeable.strings */; };
 		58C2A0591F3812D600F0D6CA /* ScheduleActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0581F3812D600F0D6CA /* ScheduleActions.swift */; };
 		58C2A0611F38964E00F0D6CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0601F3895E000F0D6CA /* ViewController.swift */; };
-		58C2A0651F389B6400F0D6CA /* TransitModesToolBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0641F389B6400F0D6CA /* TransitModesToolBarViewController.swift */; };
+		58C2A0651F389B6400F0D6CA /* BaseTransitModesToolBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0641F389B6400F0D6CA /* BaseTransitModesToolBarViewController.swift */; };
 		58C2A0691F38AA1B00F0D6CA /* ScheduleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0681F38AA1B00F0D6CA /* ScheduleData.swift */; };
 		58DB04A31F54D7F2005CC850 /* SeptaSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58ACEAE31F3A9A9B00DC2836 /* SeptaSchedule.framework */; };
 		58DB04A51F558DD0005CC850 /* SearchRoutesModalHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DB04A41F558DD0005CC850 /* SearchRoutesModalHeaderViewController.swift */; };
@@ -304,6 +306,8 @@
 		582F4EB61F33B1120062A546 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		582F4EB91F33B1120062A546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		582F4F241F33B2400062A546 /* Septa-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Septa-Bridging-Header.h"; sourceTree = "<group>"; };
+		583523961F5DAF9100F95FC8 /* NextToArriveTransitModesToolBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveTransitModesToolBarViewController.swift; sourceTree = "<group>"; };
+		583523981F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTransitModesToolBarViewController.swift; sourceTree = "<group>"; };
 		5840D6D21F376D9C00C8CB76 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		5840D6D41F376E5E00C8CB76 /* NavigationStackState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackState.swift; sourceTree = "<group>"; };
 		5840D6D61F37728B00C8CB76 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -359,7 +363,7 @@
 		58C182051F34C5B6002748E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizeable.strings; sourceTree = "<group>"; };
 		58C2A0581F3812D600F0D6CA /* ScheduleActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleActions.swift; sourceTree = "<group>"; };
 		58C2A0601F3895E000F0D6CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		58C2A0641F389B6400F0D6CA /* TransitModesToolBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitModesToolBarViewController.swift; sourceTree = "<group>"; };
+		58C2A0641F389B6400F0D6CA /* BaseTransitModesToolBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTransitModesToolBarViewController.swift; sourceTree = "<group>"; };
 		58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRequest.swift; sourceTree = "<group>"; };
 		58C2A0681F38AA1B00F0D6CA /* ScheduleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleData.swift; sourceTree = "<group>"; };
 		58D9C3F01F3335BB002BE2E8 /* Septa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Septa.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -921,7 +925,8 @@
 				5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */,
 				582F4EAA1F33B1120062A546 /* SelectSchedulesViewController.swift */,
 				58B892141F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift */,
-				58C2A0641F389B6400F0D6CA /* TransitModesToolBarViewController.swift */,
+				58C2A0641F389B6400F0D6CA /* BaseTransitModesToolBarViewController.swift */,
+				583523981F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift */,
 				5840D6DB1F37925A00C8CB76 /* SchedulesNavigationViewController.swift */,
 				589BCC311F3D5068002FAEDE /* SchedulesPresentationController.swift */,
 			);
@@ -1096,6 +1101,7 @@
 		58EB8D261F5D904A0028A487 /* TransitModeToolbar */ = {
 			isa = PBXGroup;
 			children = (
+				583523961F5DAF9100F95FC8 /* NextToArriveTransitModesToolBarViewController.swift */,
 			);
 			path = TransitModeToolbar;
 			sourceTree = "<group>";
@@ -1365,7 +1371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58C2A0651F389B6400F0D6CA /* TransitModesToolBarViewController.swift in Sources */,
+				58C2A0651F389B6400F0D6CA /* BaseTransitModesToolBarViewController.swift in Sources */,
 				58470C091F3F276000F3C9B5 /* NumberFormatters.swift in Sources */,
 				588F27F01F39DD7B00D62425 /* UserPreferenceState.swift in Sources */,
 				5825319A1F407D380088D056 /* UserDefaultsLoader.swift in Sources */,
@@ -1401,6 +1407,7 @@
 				588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */,
 				58490E491F56019B007DBCA1 /* AlertReducer.swift in Sources */,
 				67F757AC1F48582700D3A4EE /* UIColor+Util.swift in Sources */,
+				583523971F5DAF9100F95FC8 /* NextToArriveTransitModesToolBarViewController.swift in Sources */,
 				678F053B1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift in Sources */,
 				5840D6E71F37EAEF00C8CB76 /* UserPreferencesKeys.swift in Sources */,
 				582F4EDF1F33B1120062A546 /* MainViewController.swift in Sources */,
@@ -1497,6 +1504,7 @@
 				581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */,
 				588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */,
 				58EB8D291F5D90CD0028A487 /* NextToArriveState.swift in Sources */,
+				583523991F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift in Sources */,
 				58B892171F38F7E700BFFEFA /* Strings.swift in Sources */,
 				58EB8D151F5D7CD20028A487 /* BaseNavigationController.swift in Sources */,
 				589A89D71F50BB73007329DB /* SelectStopCell.swift in Sources */,

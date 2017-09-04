@@ -227,7 +227,7 @@ TableViewWrapper</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaJ-Ig-ASV">
-                            <rect key="frame" x="207" y="10.5" width="33" height="27"/>
+                            <rect key="frame" x="207" y="10" width="33" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Reset">
                                 <color key="titleColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -295,7 +295,7 @@ TableViewWrapper</string>
                     <viewLayoutGuide key="safeArea" id="eBi-Cq-E5z"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="-564" y="197.45127436281859"/>
+            <point key="canvasLocation" x="-903" y="45"/>
         </scene>
         <!--Select Routes View Controller-->
         <scene sceneID="uR2-T4-wMD">
@@ -1108,7 +1108,7 @@ TitleViewTop</string>
         <!--Transit Mode Toolbar-->
         <scene sceneID="6r3-DF-WcU">
             <objects>
-                <viewController title="Transit Mode Toolbar" automaticallyAdjustsScrollViewInsets="NO" id="zb9-QJ-YIl" customClass="TransitModesToolbarViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Transit Mode Toolbar" automaticallyAdjustsScrollViewInsets="NO" id="zb9-QJ-YIl" customClass="ScheduleTransitModesToolBarViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BiL-t2-ODt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

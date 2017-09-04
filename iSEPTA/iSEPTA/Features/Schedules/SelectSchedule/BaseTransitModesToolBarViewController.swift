@@ -5,13 +5,13 @@ import UIKit
 import ReSwift
 import SeptaSchedule
 
-class TransitModesToolbarViewController: UIViewController, StoreSubscriber {
+class BaseTransitModesToolbarViewController: UIViewController, StoreSubscriber {
     typealias StoreSubscriberStateType = TransitMode?
     @IBOutlet var scrollbar: UIScrollView!
     var transitModesToolbarElements = [TransitModeToolbarView]()
     var currentTransitMode: TransitMode?
 
-    let targetForScheduleAction = TargetForScheduleAction.schedules
+    var targetForScheduleAction = TargetForScheduleAction.schedules
     @IBOutlet weak var stackView: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +24,6 @@ class TransitModesToolbarViewController: UIViewController, StoreSubscriber {
     }
 
     func subscribe() {
-
-        store.subscribe(self) { subscription in
-            subscription.select {
-                $0.scheduleState.scheduleRequest.transitMode
-            }.skipRepeats { $0 == $1 }
-        }
     }
 
     func buildToolbar() {
