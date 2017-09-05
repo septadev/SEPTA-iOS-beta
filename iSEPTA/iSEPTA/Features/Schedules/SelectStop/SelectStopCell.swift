@@ -9,21 +9,19 @@
 import Foundation
 import UIKit
 
-class SelectStopCell: UITableViewCell, SingleStringDisplayable {
+class SelectStopCell: UITableViewCell {
     @IBOutlet var label: UILabel!
     var shouldFill: Bool = false
     var enabled: Bool = false
-
-    func setTextColor(_ color: UIColor) {
-        textLabel?.textColor = color
-    }
 
     @IBOutlet weak var distanceLabel: UILabel! {
         didSet {
             distanceLabel.isHidden = true
         }
     }
+}
 
+extension SelectStopCell: SingleStringDisplayable {
     func setLabelText(_ text: String?) {
         label?.text = text
     }
@@ -38,5 +36,9 @@ class SelectStopCell: UITableViewCell, SingleStringDisplayable {
 
     func setEnabled(_ enabled: Bool) {
         self.enabled = enabled
+    }
+
+    func setTextColor(_ color: UIColor) {
+        textLabel?.textColor = color
     }
 }

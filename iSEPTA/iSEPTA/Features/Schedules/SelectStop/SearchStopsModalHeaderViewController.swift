@@ -11,43 +11,30 @@ import UIKit
 import SeptaSchedule
 import ReSwift
 
-class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, UIGestureRecognizerDelegate {
+class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleStopEdit?
 
+    @IBOutlet var resetTextBoxGestureRecognizer: UITapGestureRecognizer!
+    @IBOutlet weak var dismissIcon: UIView!
+    @IBOutlet weak var searchByLocationButton: UIButton!
+    @IBOutlet weak var searchByTextView: UIView!
+    @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var selectNearbyLabel: UILabel!
     @IBOutlet weak var viewHeightConstraintForAddress: NSLayoutConstraint!
     @IBOutlet weak var viewHeightConstraintForStops: NSLayoutConstraint!
-    @IBOutlet var resetTextBoxGestureRecognizer: UITapGestureRecognizer!
     @IBOutlet weak var textField: UITextField! {
         didSet {
             textField.delegate = textFieldDelegate
         }
     }
 
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var selectNearbyLabel: UILabel!
-    @IBOutlet weak var searchView: UIView!
-    @IBOutlet weak var dismissIcon: UIView!
-    @IBOutlet weak var searchByTextView: UIView!
-    @IBOutlet weak var searchByLocationButton: UIButton!
-
     weak var delegate: SearchModalHeaderDelegate?
     var textFieldDelegate: UITextFieldDelegate!
-
-    var transitMode: TransitMode! {
-        if targetForScheduleAction == .schedules {
-            return store.state.scheduleState.scheduleRequest.transitMode
-        } else {
-            return store.state.nextToArriveState.scheduleState.scheduleRequest.transitMode
-        }
-    }
-
-    var targetForScheduleAction: TargetForScheduleAction {
-        if store.state.navigationState.activeNavigationController == .schedules { return .schedules }
-        else { return .nextToArrive }
-    }
+    var transitMode: TransitMode! = TransitMode.currentTransitMode()
+    var targetForScheduleAction = store.state.targetForScheduleActions()
 
     @IBAction func userTappedSearchByStops(_: Any) {
-
         if searchMode == .directLookupWithAddress {
             store.dispatch(ClearLookupAddresses())
             store.dispatch(StopSearchModeChanged(targetForScheduleAction: targetForScheduleAction, searchMode: .byAddress))
@@ -153,6 +140,9 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, U
     @IBAction func didTapDismiss(_: Any) {
         delegate?.dismissModal()
     }
+}
+
+extension SearchStopsModalHeaderViewController: SubscriberUnsubscriber {
 
     func subscribe() {
         if store.state.navigationState.activeNavigationController == .schedules {
@@ -171,9 +161,15 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, U
     }
 
     override func viewWillDisappear(_: Bool) {
-        store.unsubscribe(self)
+        unsubscribe()
     }
 
+    func unsubscribe() {
+        store.unsubscribe(self)
+    }
+}
+
+extension SearchStopsModalHeaderViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith _: UIGestureRecognizer) -> Bool {
         return true
     }
