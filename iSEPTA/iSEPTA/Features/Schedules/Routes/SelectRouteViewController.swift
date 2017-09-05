@@ -29,7 +29,8 @@ class SelectRouteViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var searchTextBox: UITextField!
 
     func dismissModal() {
-        let dismissAction = DismissModal(navigationController: .schedules, description: "Route should be dismissed")
+        let navigationController = store.state.navigationState.activeNavigationController
+        let dismissAction = DismissModal(navigationController: navigationController, description: "Route should be dismissed")
         store.dispatch(dismissAction)
     }
 

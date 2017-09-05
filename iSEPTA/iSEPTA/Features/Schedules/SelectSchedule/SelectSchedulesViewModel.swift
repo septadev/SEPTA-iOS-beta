@@ -5,50 +5,35 @@ import ReSwift
 import UIKit
 import SeptaSchedule
 
-fileprivate struct RowDisplayModel {
-    let text: String
-    let shouldFillCell: Bool
-    let isSelectable: Bool
-    let targetController: ViewController
-    let pillColor: UIColor
-    let showSearchIcon: Bool
-    let fontWeight: UIFont.Weight
-
-    init(text: String, shouldFillCell: Bool, isSelectable: Bool, targetController: ViewController, pillColor: UIColor, showSearchIcon: Bool = false, fontWeight: UIFont.Weight = UIFont.Weight.regular) {
-        self.text = text
-        self.shouldFillCell = shouldFillCell
-        self.isSelectable = isSelectable
-        self.targetController = targetController
-        self.pillColor = pillColor
-        self.showSearchIcon = showSearchIcon
-        self.fontWeight = fontWeight
-    }
-}
-
-protocol SchedulesViewModelDelegate: AnyObject {
-    func formIsComplete(_ complete: Bool)
-}
-
 class SelectSchedulesViewModel: StoreSubscriber {
+
     typealias StoreSubscriberStateType = ScheduleRequest?
     var scheduleRequest: ScheduleRequest?
     let targetForScheduleAction = TargetForScheduleAction.schedules
     weak var delegate: UpdateableFromViewModel?
     weak var schedulesDelegate: SchedulesViewModelDelegate?
 
-    fileprivate var selectRouteRowDisplayModel: RowDisplayModel?
-    fileprivate var selectStartRowDisplayModel: RowDisplayModel?
-    fileprivate var selectEndRowDisplayModel: RowDisplayModel?
-    fileprivate var displayModel = [RowDisplayModel]()
+    fileprivate var selectRouteRowDisplayModel: SelectSchedulesRowDisplayModel?
+    fileprivate var selectStartRowDisplayModel: SelectSchedulesRowDisplayModel?
+    fileprivate var selectEndRowDisplayModel: SelectSchedulesRowDisplayModel?
+    fileprivate var displayModel = [SelectSchedulesRowDisplayModel]()
 
     init(delegate: UpdateableFromViewModel) {
         self.delegate = delegate
     }
 
     func subscribe() {
-        store.subscribe(self) {
-            $0.select {
-                $0.scheduleState.scheduleRequest
+        if store.state.targetForScheduleActions() == .schedules {
+            store.subscribe(self) {
+                $0.select {
+                    $0.scheduleState.scheduleRequest
+                }
+            }
+        } else {
+            store.subscribe(self) {
+                $0.select {
+                    $0.nextToArriveState.scheduleState.scheduleRequest
+                }
             }
         }
     }
@@ -92,7 +77,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
         }
     }
 
-    fileprivate func configureSelectRouteDisplayModel() -> RowDisplayModel {
+    func configureSelectRouteDisplayModel() -> SelectSchedulesRowDisplayModel {
         var text = scheduleRequest?.transitMode?.selectRoutePlaceholderText() ?? ""
         let isSelectable = true
         var pillColor = UIColor.clear
@@ -105,10 +90,10 @@ class SelectSchedulesViewModel: StoreSubscriber {
                 pillColor = transitModeColor
             }
         }
-        return RowDisplayModel(text: text, shouldFillCell: false, isSelectable: isSelectable, targetController: .routesViewController, pillColor: pillColor)
+        return SelectSchedulesRowDisplayModel(text: text, shouldFillCell: false, isSelectable: isSelectable, targetController: .routesViewController, pillColor: pillColor)
     }
 
-    fileprivate func configureSelectStartDisplayModel() -> RowDisplayModel {
+    func configureSelectStartDisplayModel() -> SelectSchedulesRowDisplayModel {
         var text: String = ""
         var fontWeight = UIFont.Weight.regular
         let isSelectable: Bool
@@ -124,10 +109,10 @@ class SelectSchedulesViewModel: StoreSubscriber {
             text = scheduleRequest?.transitMode?.startingStopName() ?? ""
             isSelectable = false
         }
-        return RowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopNavigationController, pillColor: UIColor.clear, showSearchIcon: true, fontWeight: fontWeight)
+        return SelectSchedulesRowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopNavigationController, pillColor: UIColor.clear, showSearchIcon: true, fontWeight: fontWeight)
     }
 
-    fileprivate func configureSelectEndisplayModel() -> RowDisplayModel {
+    func configureSelectEndisplayModel() -> SelectSchedulesRowDisplayModel {
         var text: String = ""
         var fontWeight = UIFont.Weight.regular
         let isSelectable: Bool
@@ -143,7 +128,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
             text = scheduleRequest?.transitMode?.endingStopName() ?? ""
             isSelectable = false
         }
-        return RowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopController, pillColor: UIColor.clear, showSearchIcon: true, fontWeight: fontWeight)
+        return SelectSchedulesRowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopController, pillColor: UIColor.clear, showSearchIcon: true, fontWeight: fontWeight)
     }
 
     func configureCell(_ cell: UITableViewCell, atRow row: Int) {

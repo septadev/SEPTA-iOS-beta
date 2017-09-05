@@ -4,38 +4,27 @@ import UIKit
 import SeptaSchedule
 import ReSwift
 
-class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController, SchedulesViewModelDelegate {
-    func updateActivityIndicator(animating _: Bool) {
-    }
-
-    func displayErrorMessage(message: String, shouldDismissAfterDisplay _: Bool = false) {
-        UIAlert.presentOKAlertFrom(viewController: self, withTitle: "Select Schedule", message: message)
-    }
-
-    @IBOutlet weak var tableViewWrapper: UIView!
+class SelectSchedulesViewController: UIViewController, IdentifiableController {
+    // MARK: - Outlets
+    @IBOutlet var buttons: [UIButton]!
+    @IBOutlet var section0View: UIView!
+    @IBOutlet var section1View: UIView!
     @IBOutlet var sectionHeaders: [UIView]!
-
+    @IBOutlet var tableViewFooter: UIView!
+    @IBOutlet var tableViewHeader: UIView!
+    @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var scheduleLabel: UILabel!
+    @IBOutlet weak var sectionHeaderLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewWrapper: UIView!
+
+    // MARK: - Properties
     static var viewController: ViewController = .selectSchedules
     let buttonRow = 3
-    @IBOutlet var section1View: UIView!
-    @IBOutlet var section0View: UIView!
-    @IBOutlet weak var sectionHeaderLabel: UILabel!
-    @IBOutlet weak var buttonView: UIView!
     var formIsComplete = false
-    @IBOutlet var buttons: [UIButton]!
-
-    let targetForScheduleAction = TargetForScheduleAction.schedules
-    @IBAction func resetButtonTapped(_: Any) {
-        store.dispatch(ResetSchedule(targetForScheduleAction: targetForScheduleAction))
-    }
-
+    let targetForScheduleAction = store.state.targetForScheduleActions()
     let cellId = "singleStringCell"
     let buttonCellId = "buttonViewCell"
-    @IBOutlet var tableViewHeader: UIView!
-    @IBOutlet weak var tableView: UITableView!
-
-    @IBOutlet var tableViewFooter: UIView!
     var viewModel: SelectSchedulesViewModel!
 
     override func viewDidLoad() {
@@ -60,6 +49,25 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
         viewModel.unsubscribe()
     }
 
+    // MARK: - IBActions
+
+    @IBAction func resetSearch(_: Any) {
+        let action = ResetSchedule(targetForScheduleAction: targetForScheduleAction)
+        store.dispatch(action)
+    }
+
+    func ViewSchedulesButtonTapped() {
+        let navigationController = store.state.navigationState.activeNavigationController
+        let action = PushViewController(navigationController: navigationController, viewController: .tripScheduleController, description: "Show Trip Schedule")
+        store.dispatch(action)
+    }
+
+    @IBAction func resetButtonTapped(_: Any) {
+        store.dispatch(ResetSchedule(targetForScheduleAction: targetForScheduleAction))
+    }
+}
+
+extension SelectSchedulesViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in _: UITableView) -> Int {
         return 4
     }
@@ -116,6 +124,12 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
         default: return 0
         }
     }
+}
+
+extension SelectSchedulesViewController: UpdateableFromViewModel {
+
+    func updateActivityIndicator(animating _: Bool) {
+    }
 
     func viewModelUpdated() {
         scheduleLabel.text = viewModel.scheduleTitle()
@@ -123,18 +137,15 @@ class SelectSchedulesViewController: UIViewController, UITableViewDelegate, UITa
         tableView.reloadData()
     }
 
+    func displayErrorMessage(message: String, shouldDismissAfterDisplay _: Bool = false) {
+        UIAlert.presentOKAlertFrom(viewController: self, withTitle: "Select Schedule", message: message)
+    }
+}
+
+extension SelectSchedulesViewController: SchedulesViewModelDelegate {
+
     func formIsComplete(_ isComplete: Bool) {
         formIsComplete = isComplete
         tableView.reloadData()
-    }
-
-    @IBAction func resetSearch(_: Any) {
-        let action = ResetSchedule(targetForScheduleAction: targetForScheduleAction)
-        store.dispatch(action)
-    }
-
-    func ViewSchedulesButtonTapped() {
-        let action = PushViewController(navigationController: .schedules, viewController: .tripScheduleController, description: "Show Trip Schedule")
-        store.dispatch(action)
     }
 }

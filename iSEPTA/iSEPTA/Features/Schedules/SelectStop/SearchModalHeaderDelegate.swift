@@ -11,14 +11,6 @@ import UIKit
 
 protocol SearchModalHeaderDelegate: AnyObject {
 
-    //    func titlesForSegmentedControl() -> [String]
-    //
-    //    func delegateForTextField() -> UITextFieldDelegate
-    //
-    //    func dismiss()
-    //
-    //    func searchModeDidChange(searchMode: SearchMode)
-
     func animatedLayoutNeeded(block: @escaping (() -> Void), completion: @escaping (() -> Void))
 
     func layoutNeeded()

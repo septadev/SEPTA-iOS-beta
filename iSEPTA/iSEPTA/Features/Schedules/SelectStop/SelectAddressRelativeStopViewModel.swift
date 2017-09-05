@@ -29,7 +29,9 @@ class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber, UITableView
     let cellId = "relativeStopCell"
     var stopToEdit: StopToSelect?
     @IBOutlet weak var selectStopViewController: UpdateableFromViewModel?
-    let targetForScheduleAction = TargetForScheduleAction.schedules
+
+    let targetForScheduleAction = store.state.targetForScheduleActions()
+
     var stopsWithDistance = [StopWithDistance]()
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -69,10 +71,18 @@ class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber, UITableView
     }
 
     func subscribe() {
-        store.subscribe(self) {
-            $0.select {
-                $0.scheduleState.scheduleStopEdit
-            }.skipRepeats { $0 == $1 }
+        if targetForScheduleAction == .schedules {
+            store.subscribe(self) {
+                $0.select {
+                    $0.scheduleState.scheduleStopEdit
+                }.skipRepeats { $0 == $1 }
+            }
+        } else if targetForScheduleAction == .nextToArrive {
+            store.subscribe(self) {
+                $0.select {
+                    $0.nextToArriveState.scheduleState.scheduleStopEdit
+                }.skipRepeats { $0 == $1 }
+            }
         }
     }
 

@@ -20,10 +20,18 @@ class SelectAddressViewModel: NSObject, UITableViewDataSource, UITableViewDelega
     }
 
     func subscribe() {
-        store.subscribe(self) {
-            $0.select {
-                $0.addressLookupState
-            }.skipRepeats { $0 == $1 }
+        if store.state.navigationState.activeNavigationController == .schedules {
+            store.subscribe(self) {
+                $0.select {
+                    $0.addressLookupState
+                }.skipRepeats { $0 == $1 }
+            }
+        } else if store.state.navigationState.activeNavigationController == .nextToArrive {
+            store.subscribe(self) {
+                $0.select {
+                    $0.addressLookupState
+                }.skipRepeats { $0 == $1 }
+            }
         }
     }
 

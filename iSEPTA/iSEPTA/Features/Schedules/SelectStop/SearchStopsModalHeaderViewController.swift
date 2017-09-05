@@ -13,12 +13,39 @@ import ReSwift
 
 class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, UIGestureRecognizerDelegate {
     typealias StoreSubscriberStateType = ScheduleStopEdit?
-    let transitMode: TransitMode! = store.state.scheduleState.scheduleRequest.transitMode
 
     @IBOutlet weak var viewHeightConstraintForAddress: NSLayoutConstraint!
     @IBOutlet weak var viewHeightConstraintForStops: NSLayoutConstraint!
+    @IBOutlet var resetTextBoxGestureRecognizer: UITapGestureRecognizer!
+    @IBOutlet weak var textField: UITextField! {
+        didSet {
+            textField.delegate = textFieldDelegate
+        }
+    }
 
-    let targetForScheduleAction = TargetForScheduleAction.schedules
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var selectNearbyLabel: UILabel!
+    @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var dismissIcon: UIView!
+    @IBOutlet weak var searchByTextView: UIView!
+    @IBOutlet weak var searchByLocationButton: UIButton!
+
+    weak var delegate: SearchModalHeaderDelegate?
+    var textFieldDelegate: UITextFieldDelegate!
+
+    var transitMode: TransitMode! {
+        if targetForScheduleAction == .schedules {
+            return store.state.scheduleState.scheduleRequest.transitMode
+        } else {
+            return store.state.nextToArriveState.scheduleState.scheduleRequest.transitMode
+        }
+    }
+
+    var targetForScheduleAction: TargetForScheduleAction {
+        if store.state.navigationState.activeNavigationController == .schedules { return .schedules }
+        else { return .nextToArrive }
+    }
+
     @IBAction func userTappedSearchByStops(_: Any) {
 
         if searchMode == .directLookupWithAddress {
@@ -26,12 +53,6 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, U
             store.dispatch(StopSearchModeChanged(targetForScheduleAction: targetForScheduleAction, searchMode: .byAddress))
         }
     }
-
-    @IBOutlet var resetTextBoxGestureRecognizer: UITapGestureRecognizer!
-
-    weak var delegate: SearchModalHeaderDelegate?
-
-    var textFieldDelegate: UITextFieldDelegate!
 
     func newState(state: StoreSubscriberStateType) {
         guard let state = state else { return }
@@ -61,19 +82,6 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, U
         default: break
         }
     }
-
-    @IBOutlet weak var textField: UITextField! {
-        didSet {
-            textField.delegate = textFieldDelegate
-        }
-    }
-
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var selectNearbyLabel: UILabel!
-    @IBOutlet weak var searchView: UIView!
-    @IBOutlet weak var dismissIcon: UIView!
-    @IBOutlet weak var searchByTextView: UIView!
-    @IBOutlet weak var searchByLocationButton: UIButton!
 
     func addCornersAndBorders() {
         searchByTextView.layer.cornerRadius = 3.0
@@ -147,11 +155,18 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber, U
     }
 
     func subscribe() {
-
-        store.subscribe(self) {
-            $0.select {
-                $0.scheduleState.scheduleStopEdit
-            }.skipRepeats { $0 == $1 }
+        if store.state.navigationState.activeNavigationController == .schedules {
+            store.subscribe(self) {
+                $0.select {
+                    $0.scheduleState.scheduleStopEdit
+                }.skipRepeats { $0 == $1 }
+            }
+        } else if store.state.navigationState.activeNavigationController == .nextToArrive {
+            store.subscribe(self) {
+                $0.select {
+                    $0.nextToArriveState.scheduleState.scheduleStopEdit
+                }.skipRepeats { $0 == $1 }
+            }
         }
     }
 

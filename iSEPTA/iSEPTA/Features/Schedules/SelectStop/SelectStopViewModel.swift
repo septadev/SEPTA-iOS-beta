@@ -6,22 +6,16 @@ import ReSwift
 
 import UIKit
 
-struct FilterableStop {
-    let filterString: String
-    let sortString: String
-    let stop: Stop
-
-    init(stop: Stop) {
-
-        filterString = "\(stop.stopName.lowercased())_\(stop.stopId)"
-        sortString = stop.stopName.lowercased()
-        self.stop = stop
-    }
-}
-
 class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
     typealias StoreSubscriberStateType = ScheduleStopState
-    let targetForScheduleAction = TargetForScheduleAction.schedules
+    var targetForScheduleAction: TargetForScheduleAction {
+        if store.state.navigationState.activeNavigationController == .schedules {
+            return TargetForScheduleAction.schedules
+        } else {
+            return TargetForScheduleAction.nextToArrive
+        }
+    }
+
     var stopToSelect: StopToSelect = .starts {
         didSet {
             subscribe()
@@ -73,17 +67,33 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITab
     }
 
     func subscribe() {
-        if stopToSelect == .starts {
-            store.subscribe(self) {
-                $0.select {
-                    $0.scheduleState.scheduleData.availableStarts
-                }.skipRepeats { $0 == $1 }
+        if targetForScheduleAction == .schedules {
+            if stopToSelect == .starts {
+                store.subscribe(self) {
+                    $0.select {
+                        $0.scheduleState.scheduleData.availableStarts
+                    }.skipRepeats { $0 == $1 }
+                }
+            } else {
+                store.subscribe(self) {
+                    $0.select {
+                        $0.scheduleState.scheduleData.availableStops
+                    }.skipRepeats { $0 == $1 }
+                }
             }
-        } else {
-            store.subscribe(self) {
-                $0.select {
-                    $0.scheduleState.scheduleData.availableStops
-                }.skipRepeats { $0 == $1 }
+        } else if targetForScheduleAction == .nextToArrive {
+            if stopToSelect == .starts {
+                store.subscribe(self) {
+                    $0.select {
+                        $0.nextToArriveState.scheduleState.scheduleData.availableStarts
+                    }.skipRepeats { $0 == $1 }
+                }
+            } else {
+                store.subscribe(self) {
+                    $0.select {
+                        $0.nextToArriveState.scheduleState.scheduleData.availableStops
+                    }.skipRepeats { $0 == $1 }
+                }
             }
         }
     }

@@ -57,15 +57,24 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     }
 
     func subscribe() {
-        store.subscribe(self) {
-            $0.select {
-                $0.scheduleState.scheduleStopEdit
-            }.skipRepeats { $0 == $1 }
+        if store.state.navigationState.activeNavigationController == .schedules {
+            store.subscribe(self) {
+                $0.select {
+                    $0.scheduleState.scheduleStopEdit
+                }.skipRepeats { $0 == $1 }
+            }
+        } else if store.state.navigationState.activeNavigationController == .nextToArrive {
+            store.subscribe(self) {
+                $0.select {
+                    $0.nextToArriveState.scheduleState.scheduleStopEdit
+                }.skipRepeats { $0 == $1 }
+            }
         }
     }
 
     func dismissModal() {
-        let dismissAction = DismissModal(navigationController: .schedules, description: "Stop should be dismissed")
+        let navigationController = store.state.navigationState.activeNavigationController
+        let dismissAction = DismissModal(navigationController: navigationController, description: "Stop should be dismissed")
         store.dispatch(dismissAction)
     }
 
