@@ -80,7 +80,7 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
 
         let action = RouteSelected(targetForScheduleAction: targetForScheduleAction, selectedRoute: route)
         store.dispatch(action)
-        let dismissAction = DismissModal(navigationController: .schedules, description: "Route should be dismissed")
+        let dismissAction = DismissModal(description: "Route should be dismissed")
         store.dispatch(dismissAction)
     }
 

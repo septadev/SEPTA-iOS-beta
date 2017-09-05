@@ -57,8 +57,8 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
     }
 
     func ViewSchedulesButtonTapped() {
-        let navigationController = store.state.navigationState.activeNavigationController
-        let action = PushViewController(navigationController: navigationController, viewController: .tripScheduleController, description: "Show Trip Schedule")
+
+        let action = PushViewController(viewController: .tripScheduleController, description: "Show Trip Schedule")
         store.dispatch(action)
     }
 

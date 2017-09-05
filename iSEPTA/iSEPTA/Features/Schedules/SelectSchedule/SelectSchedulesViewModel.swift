@@ -154,11 +154,10 @@ class SelectSchedulesViewModel: StoreSubscriber {
 
     func rowSelected(_ row: Int) {
         guard row < displayModel.count else { return }
-        let navigationController = store.state.navigationState.activeNavigationController
         let viewController = displayModel[row].targetController
-        let action = PresentModal(navigationController: navigationController,
-                                  viewController: viewController,
-                                  description: "User Wishes to pick a route")
+        let action = PresentModal(
+            viewController: viewController,
+            description: "User Wishes to pick a route")
 
         store.dispatch(action)
 

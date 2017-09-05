@@ -136,7 +136,7 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITab
             let action = TripEndSelected(targetForScheduleAction: targetForScheduleAction, selectedEnd: stop)
             store.dispatch(action)
         }
-        let dismissAction = DismissModal(navigationController: .schedules, description: "Stop should be dismissed")
+        let dismissAction = DismissModal(description: "Stop should be dismissed")
         store.dispatch(dismissAction)
     }
 

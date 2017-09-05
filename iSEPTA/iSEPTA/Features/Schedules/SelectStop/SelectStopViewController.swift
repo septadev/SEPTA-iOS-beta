@@ -73,8 +73,8 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     }
 
     func dismissModal() {
-        let navigationController = store.state.navigationState.activeNavigationController
-        let dismissAction = DismissModal(navigationController: navigationController, description: "Stop should be dismissed")
+
+        let dismissAction = DismissModal(description: "Stop should be dismissed")
         store.dispatch(dismissAction)
     }
 

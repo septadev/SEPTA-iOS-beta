@@ -66,7 +66,7 @@ class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber, UITableView
             let action = TripEndSelected(targetForScheduleAction: targetForScheduleAction, selectedEnd: stopWithDistance.stop)
             store.dispatch(action)
         }
-        let dismissAction = DismissModal(navigationController: .schedules, description: "Stop should be dismissed")
+        let dismissAction = DismissModal(description: "Stop should be dismissed")
         store.dispatch(dismissAction)
     }
 

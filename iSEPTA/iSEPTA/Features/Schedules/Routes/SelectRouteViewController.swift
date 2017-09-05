@@ -31,7 +31,7 @@ extension SelectRouteViewController: UpdateableFromViewModel {
     func displayErrorMessage(message: String, shouldDismissAfterDisplay: Bool = false) {
         UIAlert.presentOKAlertFrom(viewController: self, withTitle: "Select Routes", message: message)
         if shouldDismissAfterDisplay {
-            store.dispatch(DismissModal(navigationController: .schedules, description: "Dismissing after error"))
+            store.dispatch(DismissModal(description: "Dismissing after error"))
         }
     }
 }
@@ -61,8 +61,8 @@ extension SelectRouteViewController: SearchModalHeaderDelegate {
     }
 
     func dismissModal() {
-        let navigationController = store.state.navigationState.activeNavigationController
-        let dismissAction = DismissModal(navigationController: navigationController, description: "Route should be dismissed")
+
+        let dismissAction = DismissModal(description: "Route should be dismissed")
         store.dispatch(dismissAction)
     }
 

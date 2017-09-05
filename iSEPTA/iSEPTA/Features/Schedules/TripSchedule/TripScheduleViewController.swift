@@ -11,7 +11,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
                                    withTitle: "View Trips Error",
                                    message: message) {
             if shouldDismissAfterDisplay {
-                let action = DismissModal(navigationController: .schedules, description: "dismissing trip schedules")
+                let action = DismissModal(description: "dismissing trip schedules")
                 store.dispatch(action)
             }
         }
@@ -236,7 +236,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         super.didMove(toParentViewController: parent)
 
         if parent == navigationController?.parent {
-            let action = UserPoppedViewController(navigationController: .schedules, description: "TripScheduleViewController has been popped")
+            let action = UserPoppedViewController(description: "TripScheduleViewController has been popped")
             store.dispatch(action)
         }
     }

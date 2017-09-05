@@ -134,7 +134,7 @@ class NextToArriveViewController: BaseNonModalViewController, UITableViewDelegat
     }
 
     func ViewSchedulesButtonTapped() {
-        let action = PushViewController(navigationController: .schedules, viewController: .tripScheduleController, description: "Show Trip Schedule")
+        let action = PushViewController(viewController: .tripScheduleController, description: "Show Trip Schedule")
         store.dispatch(action)
     }
 }
