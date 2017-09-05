@@ -7,11 +7,11 @@ typealias AppStackState = [NavigationController: NavigationStackState]
 
 struct NavigationState {
     let appStackState: AppStackState
-    let selectedTab: NavigationController
+    let activeNavigationController: NavigationController
 
-    init(appStackState: AppStackState = [NavigationController: NavigationStackState](), selectedTab: NavigationController = .nextToArrive) {
+    init(appStackState: AppStackState = [NavigationController: NavigationStackState](), activeNavigationController: NavigationController = .nextToArrive) {
         self.appStackState = appStackState
-        self.selectedTab = selectedTab
+        self.activeNavigationController = activeNavigationController
     }
 }
 
@@ -22,7 +22,7 @@ func ==(lhs: NavigationState, rhs: NavigationState) -> Bool {
     areEqual = lhs.appStackState == rhs.appStackState
     guard areEqual else { return false }
 
-    areEqual = lhs.selectedTab == rhs.selectedTab
+    areEqual = lhs.activeNavigationController == rhs.activeNavigationController
     guard areEqual else { return false }
 
     return areEqual

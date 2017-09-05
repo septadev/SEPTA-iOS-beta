@@ -19,7 +19,7 @@ struct TransitionView: NavigationAction {
 }
 
 struct SwitchTabs: NavigationAction {
-    let tabBarItemIndex: NavigationController
+    let activeNavigationController: NavigationController
     let description: String
 }
 

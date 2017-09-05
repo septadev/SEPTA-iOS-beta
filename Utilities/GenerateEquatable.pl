@@ -3,12 +3,16 @@ use Data::Dumper;
 
 my $struct = q |
 
-struct NextToArriveState {
-    let scheduleState: ScheduleState
+struct NavigationState {
+    let appStackState: AppStackState
+    let selectedTab: NavigationController
+    let targetForScheduleUpdates: TargetForScheduleUpdates
 
+    init(appStackState: AppStackState = [NavigationController: NavigationStackState](), selectedTab: NavigationController = .nextToArrive) {
+        self.appStackState = appStackState
+        self.selectedTab = selectedTab
+    }
 }
-
-
 
 	|;
 

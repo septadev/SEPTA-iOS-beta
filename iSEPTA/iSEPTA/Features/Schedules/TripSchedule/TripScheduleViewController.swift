@@ -78,7 +78,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBAction func navigateToNextToArrive(_: Any) {
 
-        let switchTabsAction = SwitchTabs(tabBarItemIndex: .nextToArrive, description: "User tapped on alert")
+        let switchTabsAction = SwitchTabs(activeNavigationController: .nextToArrive, description: "User tapped on alert")
         store.dispatch(switchTabsAction)
     }
 

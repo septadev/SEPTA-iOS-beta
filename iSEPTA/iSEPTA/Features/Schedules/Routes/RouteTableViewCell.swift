@@ -75,7 +75,7 @@ class RouteTableViewCell: UITableViewCell, RouteCellDisplayable {
         gr.cancelsTouchesInView = true
         let dismissModalAction = DismissModal(navigationController: .schedules, description: "Dismissing the modal to switch tabs")
         store.dispatch(dismissModalAction)
-        let switchTabsAction = SwitchTabs(tabBarItemIndex: .alerts, description: "User tapped on alert")
+        let switchTabsAction = SwitchTabs(activeNavigationController: .alerts, description: "User tapped on alert")
         store.dispatch(switchTabsAction)
     }
 }

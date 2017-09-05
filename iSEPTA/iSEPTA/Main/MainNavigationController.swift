@@ -14,7 +14,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
 
         store.subscribe(self) {
             $0.select {
-                $0.navigationState.selectedTab
+                $0.navigationState.activeNavigationController
             }
         }
     }
@@ -27,7 +27,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         guard let newIndex = tabBar.items?.index(of: item) else { return }
 
         let targetNavController = navigationControllerFromTabIndex(newIndex)
-        let action = SwitchTabs(tabBarItemIndex: targetNavController, description: "Tab Bar was selected by the user")
+        let action = SwitchTabs(activeNavigationController: targetNavController, description: "Tab Bar was selected by the user")
         store.dispatch(action)
     }
 
