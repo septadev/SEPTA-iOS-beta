@@ -25,7 +25,7 @@ class NextToArriveViewController: BaseNonModalViewController, UITableViewDelegat
     var formIsComplete = false
     @IBOutlet var buttons: [UIButton]!
 
-    let targetForScheduleAction = TargetForScheduleAction.schedules
+    var targetForScheduleAction: TargetForScheduleAction { return store.state.targetForScheduleActions() }
     @IBAction func resetButtonTapped(_: Any) {
         store.dispatch(ResetSchedule(targetForScheduleAction: targetForScheduleAction))
     }

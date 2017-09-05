@@ -22,7 +22,7 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
     static var viewController: ViewController = .selectSchedules
     let buttonRow = 3
     var formIsComplete = false
-    let targetForScheduleAction = store.state.targetForScheduleActions()
+    var targetForScheduleAction: TargetForScheduleAction { return store.state.targetForScheduleActions() }
     let cellId = "singleStringCell"
     let buttonCellId = "buttonViewCell"
     var viewModel: SelectSchedulesViewModel!

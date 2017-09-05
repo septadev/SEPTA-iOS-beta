@@ -14,7 +14,7 @@ class RouteTableViewCell: UITableViewCell, RouteCellDisplayable {
     @IBOutlet private weak var routeLongNameLabel: UILabel!
     @IBOutlet private weak var iconImageView: UIImageView!
 
-    let targetForScheduleAction = store.state.targetForScheduleActions()
+    var targetForScheduleAction: TargetForScheduleAction { return store.state.targetForScheduleActions() }
 
     @IBOutlet weak var stackView: UIStackView! {
         didSet {

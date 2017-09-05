@@ -9,7 +9,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
 
     typealias StoreSubscriberStateType = ScheduleRequest?
     var scheduleRequest: ScheduleRequest?
-    let targetForScheduleAction = store.state.targetForScheduleActions()
+    var targetForScheduleAction: TargetForScheduleAction { return store.state.targetForScheduleActions() }
     weak var delegate: UpdateableFromViewModel?
     weak var schedulesDelegate: SchedulesViewModelDelegate?
 
