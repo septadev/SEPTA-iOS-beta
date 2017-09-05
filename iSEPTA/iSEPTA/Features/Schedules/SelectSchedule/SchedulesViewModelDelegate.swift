@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol SchedulesViewModelDelegate: AnyObject {
+@objc protocol SchedulesViewModelDelegate: AnyObject {
     func formIsComplete(_ complete: Bool)
 }

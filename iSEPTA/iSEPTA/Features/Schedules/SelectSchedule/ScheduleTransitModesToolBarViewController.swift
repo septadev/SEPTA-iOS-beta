@@ -16,17 +16,13 @@ class ScheduleTransitModesToolBarViewController: UIViewController, StoreSubscrib
     @IBOutlet var scrollbar: UIScrollView!
     @IBOutlet weak var stackView: UIStackView!
     var currentTransitMode: TransitMode?
-    var targetForScheduleAction = store.state.targetForScheduleActions()
+    var targetForScheduleAction: TargetForScheduleAction { return store.state.targetForScheduleActions() }
     var transitModesToolbarElements = [TransitModeToolbarView]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
         buildToolbar()
-    }
-
-    override func viewWillAppear(_: Bool) {
-        subscribe()
     }
 
     func buildToolbar() {
@@ -92,11 +88,6 @@ class ScheduleTransitModesToolBarViewController: UIViewController, StoreSubscrib
         dispatchAction(toolbarItem: hitToolbar)
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        store.unsubscribe(self)
-        super.viewWillDisappear(animated)
-    }
-
     func dispatchAction(toolbarItem: TransitModeToolbarView?) {
         guard let newTransitMode = toolbarItem?.transitMode, let currentTransitMode = currentTransitMode else { return }
         if currentTransitMode != newTransitMode {
@@ -112,10 +103,11 @@ class ScheduleTransitModesToolBarViewController: UIViewController, StoreSubscrib
         currentTransitMode = transitMode
         intializeToolbar(transitMode: transitMode)
     }
+}
 
-    override func awakeFromNib() {
-        targetForScheduleAction = TargetForScheduleAction.schedules
-        super.awakeFromNib()
+extension ScheduleTransitModesToolBarViewController: SubscriberUnsubscriber {
+    override func viewWillAppear(_: Bool) {
+        subscribe()
     }
 
     func subscribe() {
@@ -132,5 +124,14 @@ class ScheduleTransitModesToolBarViewController: UIViewController, StoreSubscrib
                 }.skipRepeats { $0 == $1 }
             }
         }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        unsubscribe()
+        super.viewWillDisappear(animated)
+    }
+
+    func unsubscribe() {
+        store.unsubscribe(self)
     }
 }

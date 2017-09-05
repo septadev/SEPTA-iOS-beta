@@ -3,49 +3,41 @@
 import UIKit
 import ReSwift
 
-class NextToArriveViewController: BaseNonModalViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController, SchedulesViewModelDelegate {
+class NextToArriveViewController: BaseNonModalViewController, IdentifiableController {
 
-    func updateActivityIndicator(animating _: Bool) {
-    }
-
-    func displayErrorMessage(message: String, shouldDismissAfterDisplay _: Bool = false) {
-        UIAlert.presentOKAlertFrom(viewController: self, withTitle: "Select Schedule", message: message)
-    }
-
-    @IBOutlet weak var tableViewWrapper: UIView!
-    @IBOutlet var sectionHeaders: [UIView]!
-
-    @IBOutlet weak var scheduleLabel: UILabel!
-    static var viewController: ViewController = .selectSchedules
-    let buttonRow = 3
-    @IBOutlet var section1View: UIView!
-    @IBOutlet var section0View: UIView!
-    @IBOutlet weak var sectionHeaderLabel: UILabel!
-    @IBOutlet weak var buttonView: UIView!
-    var formIsComplete = false
     @IBOutlet var buttons: [UIButton]!
+    @IBOutlet var section0View: UIView!
+    @IBOutlet var section1View: UIView!
+    @IBOutlet var sectionHeaders: [UIView]!
+    @IBOutlet var tableViewFooter: UIView!
+    @IBOutlet var tableViewHeader: UIView!
+    @IBOutlet weak var buttonView: UIView!
+    @IBOutlet weak var scheduleLabel: UILabel!
+    @IBOutlet weak var sectionHeaderLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewWrapper: UIView!
 
+    let buttonCellId = "buttonViewCell"
+    let buttonRow = 3
+    let cellId = "singleStringCell"
+    static var viewController: ViewController = .selectSchedules
+    var formIsComplete = false
     var targetForScheduleAction: TargetForScheduleAction { return store.state.targetForScheduleActions() }
+
+    @IBOutlet var viewModel: NextToArriveViewModel!
+
     @IBAction func resetButtonTapped(_: Any) {
         store.dispatch(ResetSchedule(targetForScheduleAction: targetForScheduleAction))
     }
 
-    let cellId = "singleStringCell"
-    let buttonCellId = "buttonViewCell"
-    @IBOutlet var tableViewHeader: UIView!
-    @IBOutlet weak var tableView: UITableView!
-
-    @IBOutlet var tableViewFooter: UIView!
-    var viewModel: SelectSchedulesViewModel!
-
     override func viewDidLoad() {
-        viewModel = SelectSchedulesViewModel(delegate: self)
+
         view.backgroundColor = SeptaColor.navBarBlue
         tableView.tableFooterView = tableViewFooter
 
-        viewModel.schedulesDelegate = self
         buttonView.isHidden = true
         UIView.addSurroundShadow(toView: tableViewWrapper)
+        super.viewDidLoad()
     }
 
     override func viewWillAppear(_: Bool) {
@@ -53,15 +45,23 @@ class NextToArriveViewController: BaseNonModalViewController, UITableViewDelegat
 
         navBar.shadowImage = UIImage()
         navBar.setBackgroundImage(UIImage(), for: .default)
-        viewModel.subscribe()
     }
 
-    override func viewWillDisappear(_: Bool) {
-        viewModel.unsubscribe()
+    @IBAction func resetSearch(_: Any) {
+        let action = ResetSchedule(targetForScheduleAction: targetForScheduleAction)
+        store.dispatch(action)
     }
+
+    func ViewSchedulesButtonTapped() {
+        let action = PushViewController(viewController: .tripScheduleController, description: "Show Trip Schedule")
+        store.dispatch(action)
+    }
+}
+
+extension NextToArriveViewController: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in _: UITableView) -> Int {
-        return 4
+        return viewModel.numberOfRows()
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -116,25 +116,30 @@ class NextToArriveViewController: BaseNonModalViewController, UITableViewDelegat
         default: return 0
         }
     }
+}
+
+extension NextToArriveViewController: UpdateableFromViewModel {
 
     func viewModelUpdated() {
+        guard let tableView = tableView else { return }
         scheduleLabel.text = viewModel.scheduleTitle()
         sectionHeaderLabel.text = viewModel.transitModeTitle()
         tableView.reloadData()
     }
 
+    func updateActivityIndicator(animating _: Bool) {
+    }
+
+    func displayErrorMessage(message: String, shouldDismissAfterDisplay _: Bool = false) {
+        UIAlert.presentOKAlertFrom(viewController: self, withTitle: "Select Schedule", message: message)
+    }
+}
+
+extension NextToArriveViewController: SchedulesViewModelDelegate {
+
     func formIsComplete(_ isComplete: Bool) {
+        guard let tableView = tableView else { return }
         formIsComplete = isComplete
         tableView.reloadData()
-    }
-
-    @IBAction func resetSearch(_: Any) {
-        let action = ResetSchedule(targetForScheduleAction: targetForScheduleAction)
-        store.dispatch(action)
-    }
-
-    func ViewSchedulesButtonTapped() {
-        let action = PushViewController(viewController: .tripScheduleController, description: "Show Trip Schedule")
-        store.dispatch(action)
     }
 }

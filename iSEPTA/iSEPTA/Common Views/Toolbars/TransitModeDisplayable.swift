@@ -153,6 +153,16 @@ extension TransitMode {
         }
     }
 
+    public func nextToArriveTitle() -> String {
+        switch self {
+        case .rail: return "Regional Rail"
+        case .subway : return "Subway"
+        case .bus: return "Bus"
+        case .trolley :return "Trolley"
+        case .nhsl: return "NHSL"
+        }
+    }
+
     public static func convertFromTransitMode(_ type: String) -> TransitMode? {
         let transitMode: TransitMode? = {
             switch type {

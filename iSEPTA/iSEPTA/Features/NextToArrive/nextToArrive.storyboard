@@ -31,7 +31,7 @@
             </objects>
             <point key="canvasLocation" x="-812" y="30"/>
         </scene>
-        <!--Schedules-->
+        <!--Next To Arrive View Controller-->
         <scene sceneID="YHv-zw-lBk">
             <objects>
                 <viewController title="Schedules" automaticallyAdjustsScrollViewInsets="NO" id="93K-JI-5OU" customClass="NextToArriveViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
@@ -161,8 +161,33 @@
                                                             <outlet property="routeShortNameLabel" destination="ALv-sl-vn7" id="Rpr-63-K4e"/>
                                                         </connections>
                                                     </tableViewCell>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="buttonViewCell" id="X6G-Tw-gEe" userLabel="ButtonViewCell" customClass="ButtonViewCell" customModule="Septa" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="noRouteNeeded" id="sav-jC-59q" userLabel="NoRouteNeededCell" customClass="NoRouteNeededCell" customModule="Septa" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="132" width="324" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sav-jC-59q" id="ssx-lu-FiU">
+                                                            <rect key="frame" x="0.0" y="0.0" width="324" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a start and destination to view the next trains to arrive for that route." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTq-Mk-IZ7">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="324" height="44"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                    <color key="textColor" red="0.42745098039215684" green="0.42745098039215684" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="zTq-Mk-IZ7" firstAttribute="top" secondItem="ssx-lu-FiU" secondAttribute="top" id="1W5-hF-CQb"/>
+                                                                <constraint firstAttribute="bottom" secondItem="zTq-Mk-IZ7" secondAttribute="bottom" id="e9R-VU-8gz"/>
+                                                                <constraint firstAttribute="trailing" secondItem="zTq-Mk-IZ7" secondAttribute="trailing" id="j4Q-bO-qWR"/>
+                                                                <constraint firstItem="zTq-Mk-IZ7" firstAttribute="leading" secondItem="ssx-lu-FiU" secondAttribute="leading" id="kr6-YW-9n9"/>
+                                                            </constraints>
+                                                        </tableViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="label" destination="zTq-Mk-IZ7" id="89S-P3-JNI"/>
+                                                        </connections>
+                                                    </tableViewCell>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="buttonViewCell" id="X6G-Tw-gEe" userLabel="ButtonViewCell" customClass="ButtonViewCell" customModule="Septa" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="176" width="324" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X6G-Tw-gEe" id="8Rl-fK-5QR">
                                                             <rect key="frame" x="0.0" y="0.0" width="324" height="44"/>
@@ -186,32 +211,12 @@
                                         <string key="userLabel">
 TableViewWrapper</string>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AxR-ZD-inj" userLabel="ComingSoonView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="503"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming Soon!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zow-3i-bsc">
-                                                <rect key="frame" x="133.5" y="241.5" width="108" height="21"/>
-                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="0.87858518835616439" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="Zow-3i-bsc" firstAttribute="centerY" secondItem="AxR-ZD-inj" secondAttribute="centerY" id="e4c-Dr-AUo"/>
-                                            <constraint firstItem="Zow-3i-bsc" firstAttribute="centerX" secondItem="AxR-ZD-inj" secondAttribute="centerX" id="sGe-hs-4EG"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.12214555959999999" blue="0.19503632169999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="AxR-ZD-inj" secondAttribute="bottom" id="2ID-dZ-dGj"/>
                                     <constraint firstAttribute="trailing" secondItem="sFO-Tz-lzW" secondAttribute="trailing" constant="11" id="5jX-As-g2k" userLabel="TableViewWrapperRight"/>
-                                    <constraint firstAttribute="trailing" secondItem="AxR-ZD-inj" secondAttribute="trailing" id="9VJ-Z3-OEv"/>
                                     <constraint firstItem="DV2-DW-kcH" firstAttribute="leading" secondItem="vho-Fp-seE" secondAttribute="leading" constant="11" id="Mvr-eK-bGg" userLabel="TransitModeSchedulesLeft"/>
-                                    <constraint firstItem="AxR-ZD-inj" firstAttribute="top" secondItem="vho-Fp-seE" secondAttribute="top" id="bwM-e2-ZL0"/>
                                     <constraint firstItem="sFO-Tz-lzW" firstAttribute="leading" secondItem="vho-Fp-seE" secondAttribute="leading" constant="10" id="ju7-qV-iky" userLabel="TableViewWrapperLeft"/>
-                                    <constraint firstItem="AxR-ZD-inj" firstAttribute="leading" secondItem="vho-Fp-seE" secondAttribute="leading" id="maO-49-bra"/>
                                     <constraint firstItem="sFO-Tz-lzW" firstAttribute="top" secondItem="vho-Fp-seE" secondAttribute="top" constant="50" id="o8Y-Jd-aXL" userLabel="TableViewWrapperTop"/>
                                     <constraint firstAttribute="trailing" secondItem="DV2-DW-kcH" secondAttribute="trailing" constant="9" id="p9g-rY-EbP" userLabel="TransitModeSchedulesRight"/>
                                     <constraint firstItem="DV2-DW-kcH" firstAttribute="top" secondItem="vho-Fp-seE" secondAttribute="top" constant="14" id="tOb-l3-6CZ" userLabel="TransitModeSchedulesTop"/>
@@ -245,6 +250,7 @@ TableViewWrapper</string>
                         <outlet property="tableViewFooter" destination="cVD-02-CcX" id="0IX-a4-kPp"/>
                         <outlet property="tableViewHeader" destination="P8d-ph-M7m" id="sJY-ay-Jvk"/>
                         <outlet property="tableViewWrapper" destination="sFO-Tz-lzW" id="Rd9-CO-Mcy"/>
+                        <outlet property="viewModel" destination="oNq-b9-Hbj" id="5nD-Tg-a7C"/>
                         <outletCollection property="buttons" destination="8vc-EI-vAS" collectionClass="NSMutableArray" id="Dsr-lA-nsF"/>
                         <outletCollection property="buttons" destination="8vc-EI-vAS" collectionClass="NSMutableArray" id="Gdk-lW-bub"/>
                         <outletCollection property="buttons" destination="BzQ-Du-7oz" collectionClass="NSMutableArray" id="sSk-hi-CrW"/>
@@ -268,7 +274,7 @@ TableViewWrapper</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5l-jy-fMz">
-                            <rect key="frame" x="207" y="10" width="33" height="27"/>
+                            <rect key="frame" x="207" y="10.5" width="33" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Reset">
                                 <color key="titleColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -288,6 +294,12 @@ TableViewWrapper</string>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="fb3-zv-iRO"/>
                 </view>
+                <customObject id="oNq-b9-Hbj" userLabel="NextToArriveViewModel" customClass="NextToArriveViewModel" customModule="Septa" customModuleProvider="target">
+                    <connections>
+                        <outlet property="nextToArriveViewController" destination="93K-JI-5OU" id="a8C-sD-4hi"/>
+                        <outlet property="schedulesDelegate" destination="93K-JI-5OU" id="Cbo-vq-jwr"/>
+                    </connections>
+                </customObject>
                 <view contentMode="scaleToFill" id="kbb-1w-ntt" userLabel="TableViewSection1">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

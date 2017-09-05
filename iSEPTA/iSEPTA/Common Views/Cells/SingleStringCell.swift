@@ -2,9 +2,6 @@
 
 import UIKit
 
-class SelectRouteCell: UITableViewCell {
-}
-
 class SingleStringCell: UITableViewCell, SingleStringDisplayable {
     var shouldFill: Bool = false
     var enabled: Bool = false
@@ -33,7 +30,9 @@ class SingleStringCell: UITableViewCell, SingleStringDisplayable {
     func setEnabled(_ enabled: Bool) {
         self.enabled = enabled
         label.alpha = enabled ? CGFloat(0.7) : CGFloat(0.3)
-        searchIcon.alpha = enabled ? CGFloat(0.7) : CGFloat(0.3)
+        if let searchIcon = searchIcon {
+            searchIcon.alpha = enabled ? CGFloat(0.7) : CGFloat(0.3)
+        }
         setNeedsDisplay()
     }
 }
