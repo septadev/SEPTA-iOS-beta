@@ -11,23 +11,26 @@ import UIKit
 import SeptaSchedule
 import ReSwift
 
-class SearchRoutesModalHeaderViewController: UIViewController, UIGestureRecognizerDelegate {
+class SearchRoutesModalHeaderViewController: UIViewController {
 
-    let transitMode: TransitMode! = store.state.scheduleState.scheduleRequest.transitMode
-
+    @IBOutlet weak var dismissIcon: UIView!
+    @IBOutlet weak var searchByTextView: UIView!
+    var textFieldDelegate: UITextFieldDelegate!
     weak var delegate: SearchModalHeaderDelegate?
 
-    var textFieldDelegate: UITextFieldDelegate!
+    var transitMode: TransitMode! {
+        if store.state.targetForScheduleActions() == .schedules {
+            return store.state.scheduleState.scheduleRequest.transitMode
+        } else {
+            return store.state.nextToArriveState.scheduleState.scheduleRequest.transitMode
+        }
+    }
 
     @IBOutlet weak var textField: UITextField! {
         didSet {
             textField.delegate = textFieldDelegate
         }
     }
-
-    @IBOutlet weak var searchByTextView: UIView!
-
-    @IBOutlet weak var dismissIcon: UIView!
 
     func addCornersAndBorders() {
         searchByTextView.layer.cornerRadius = 3.0
@@ -44,8 +47,6 @@ class SearchRoutesModalHeaderViewController: UIViewController, UIGestureRecogniz
     override func viewDidLoad() {
         super.viewDidLoad()
         addCornersAndBorders()
-        // addCornersAndBorders()
-
         view.translatesAutoresizingMaskIntoConstraints = false
     }
 
@@ -53,7 +54,9 @@ class SearchRoutesModalHeaderViewController: UIViewController, UIGestureRecogniz
     @IBAction func didTapDismiss(_: Any) {
         delegate?.dismissModal()
     }
+}
 
+extension SearchRoutesModalHeaderViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith _: UIGestureRecognizer) -> Bool {
         return true
     }

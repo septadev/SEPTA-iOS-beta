@@ -4,14 +4,28 @@ import UIKit
 import SeptaSchedule
 import ReSwift
 
-class SelectRouteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SearchModalHeaderDelegate, UpdateableFromViewModel, IdentifiableController {
-    func animatedLayoutNeeded(block _: @escaping (() -> Void), completion _: @escaping (() -> Void)) {
-    }
+class SelectRouteViewController: UIViewController, IdentifiableController {
+    @IBOutlet var viewModel: RoutesViewModel!
+    @IBOutlet weak var searchTextBox: UITextField!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var titleLabel: UILabel!
+    let routeCellId = "routeCell"
+    static var viewController: ViewController = .routesViewController
 
-    func layoutNeeded() {
+    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
+        if segue.identifier == "embedHeader" {
+            if let headerViewController = segue.destination as? SearchRoutesModalHeaderViewController {
+                headerViewController.delegate = self
+                headerViewController.textFieldDelegate = viewModel
+            }
+        }
     }
+}
 
-    func updateActivityIndicator(animating _: Bool) {
+extension SelectRouteViewController: UpdateableFromViewModel {
+    func viewModelUpdated() {
+        guard let tableView = tableView else { return }
+        tableView.reloadData()
     }
 
     func displayErrorMessage(message: String, shouldDismissAfterDisplay: Bool = false) {
@@ -20,24 +34,9 @@ class SelectRouteViewController: UIViewController, UITableViewDelegate, UITableV
             store.dispatch(DismissModal(navigationController: .schedules, description: "Dismissing after error"))
         }
     }
+}
 
-    @IBOutlet var viewModel: RoutesViewModel!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var titleLabel: UILabel!
-    static var viewController: ViewController = .routesViewController
-    let routeCellId = "routeCell"
-    @IBOutlet weak var searchTextBox: UITextField!
-
-    func dismissModal() {
-        let navigationController = store.state.navigationState.activeNavigationController
-        let dismissAction = DismissModal(navigationController: navigationController, description: "Route should be dismissed")
-        store.dispatch(dismissAction)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
+extension SelectRouteViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return viewModel.numberOfRows()
     }
@@ -52,21 +51,21 @@ class SelectRouteViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.rowSelected(row: indexPath.row)
     }
+}
 
-    func viewModelUpdated() {
-        guard let tableView = tableView else { return }
-        tableView.reloadData()
+extension SelectRouteViewController: SearchModalHeaderDelegate {
+    func animatedLayoutNeeded(block _: @escaping (() -> Void), completion _: @escaping (() -> Void)) {
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
-        if segue.identifier == "embedHeader" {
-            if let headerViewController = segue.destination as? SearchRoutesModalHeaderViewController {
-                headerViewController.delegate = self
-                headerViewController.textFieldDelegate = viewModel
-            }
-        }
+    func layoutNeeded() {
     }
 
-    deinit {
+    func dismissModal() {
+        let navigationController = store.state.navigationState.activeNavigationController
+        let dismissAction = DismissModal(navigationController: navigationController, description: "Route should be dismissed")
+        store.dispatch(dismissAction)
+    }
+
+    func updateActivityIndicator(animating _: Bool) {
     }
 }

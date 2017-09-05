@@ -9,7 +9,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
 
     typealias StoreSubscriberStateType = ScheduleRequest?
     var scheduleRequest: ScheduleRequest?
-    let targetForScheduleAction = TargetForScheduleAction.schedules
+    let targetForScheduleAction = store.state.targetForScheduleActions()
     weak var delegate: UpdateableFromViewModel?
     weak var schedulesDelegate: SchedulesViewModelDelegate?
 
@@ -23,7 +23,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
     }
 
     func subscribe() {
-        if store.state.targetForScheduleActions() == .schedules {
+        if targetForScheduleAction == .schedules {
             store.subscribe(self) {
                 $0.select {
                     $0.scheduleState.scheduleRequest
@@ -154,8 +154,9 @@ class SelectSchedulesViewModel: StoreSubscriber {
 
     func rowSelected(_ row: Int) {
         guard row < displayModel.count else { return }
+        let navigationController = store.state.navigationState.activeNavigationController
         let viewController = displayModel[row].targetController
-        let action = PresentModal(navigationController: .schedules,
+        let action = PresentModal(navigationController: navigationController,
                                   viewController: viewController,
                                   description: "User Wishes to pick a route")
 
