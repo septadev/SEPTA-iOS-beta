@@ -186,12 +186,32 @@
                                         <string key="userLabel">
 TableViewWrapper</string>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AxR-ZD-inj" userLabel="ComingSoonView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="503"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming Soon!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zow-3i-bsc">
+                                                <rect key="frame" x="133.5" y="241.5" width="108" height="21"/>
+                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="0.87858518835616439" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="Zow-3i-bsc" firstAttribute="centerY" secondItem="AxR-ZD-inj" secondAttribute="centerY" id="e4c-Dr-AUo"/>
+                                            <constraint firstItem="Zow-3i-bsc" firstAttribute="centerX" secondItem="AxR-ZD-inj" secondAttribute="centerX" id="sGe-hs-4EG"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.12214555959999999" blue="0.19503632169999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="AxR-ZD-inj" secondAttribute="bottom" id="2ID-dZ-dGj"/>
                                     <constraint firstAttribute="trailing" secondItem="sFO-Tz-lzW" secondAttribute="trailing" constant="11" id="5jX-As-g2k" userLabel="TableViewWrapperRight"/>
+                                    <constraint firstAttribute="trailing" secondItem="AxR-ZD-inj" secondAttribute="trailing" id="9VJ-Z3-OEv"/>
                                     <constraint firstItem="DV2-DW-kcH" firstAttribute="leading" secondItem="vho-Fp-seE" secondAttribute="leading" constant="11" id="Mvr-eK-bGg" userLabel="TransitModeSchedulesLeft"/>
+                                    <constraint firstItem="AxR-ZD-inj" firstAttribute="top" secondItem="vho-Fp-seE" secondAttribute="top" id="bwM-e2-ZL0"/>
                                     <constraint firstItem="sFO-Tz-lzW" firstAttribute="leading" secondItem="vho-Fp-seE" secondAttribute="leading" constant="10" id="ju7-qV-iky" userLabel="TableViewWrapperLeft"/>
+                                    <constraint firstItem="AxR-ZD-inj" firstAttribute="leading" secondItem="vho-Fp-seE" secondAttribute="leading" id="maO-49-bra"/>
                                     <constraint firstItem="sFO-Tz-lzW" firstAttribute="top" secondItem="vho-Fp-seE" secondAttribute="top" constant="50" id="o8Y-Jd-aXL" userLabel="TableViewWrapperTop"/>
                                     <constraint firstAttribute="trailing" secondItem="DV2-DW-kcH" secondAttribute="trailing" constant="9" id="p9g-rY-EbP" userLabel="TransitModeSchedulesRight"/>
                                     <constraint firstItem="DV2-DW-kcH" firstAttribute="top" secondItem="vho-Fp-seE" secondAttribute="top" constant="14" id="tOb-l3-6CZ" userLabel="TransitModeSchedulesTop"/>
@@ -321,7 +341,7 @@ TableViewWrapper</string>
         <!--Transit Mode Toolbar-->
         <scene sceneID="HCT-ea-2mU">
             <objects>
-                <viewController title="Transit Mode Toolbar" automaticallyAdjustsScrollViewInsets="NO" id="QkO-Ty-yTA" customClass="NextToArriveTransitModesToolBarViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Transit Mode Toolbar" automaticallyAdjustsScrollViewInsets="NO" id="QkO-Ty-yTA" customClass="ScheduleTransitModesToolBarViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MvO-RR-Q5a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

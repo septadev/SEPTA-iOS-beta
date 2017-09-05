@@ -14,7 +14,7 @@ import CoreLocation
 
 class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleStopEdit?
-   
+
     @IBOutlet weak var selectStopViewController: UpdateableFromViewModel?
 
     let targetForScheduleAction = store.state.targetForScheduleActions()
