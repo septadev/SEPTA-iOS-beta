@@ -26,6 +26,13 @@ class LocationServicesListener: StoreSubscriber {
         }
     }
 
+    deinit {
+        unsubscribe()
+    }
+}
+
+extension LocationServicesListener: SubscriberUnsubscriber {
+
     func subscribe() {
         store.subscribe(self) {
             $0.select {
@@ -34,11 +41,7 @@ class LocationServicesListener: StoreSubscriber {
         }
     }
 
-    deinit {
-        unsubscribe()
-    }
-
-    private func unsubscribe() {
+    func unsubscribe() {
         store.unsubscribe(self)
     }
 }

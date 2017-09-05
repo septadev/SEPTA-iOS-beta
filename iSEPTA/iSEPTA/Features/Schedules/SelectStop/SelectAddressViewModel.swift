@@ -43,7 +43,6 @@ class SelectAddressViewModel: NSObject, StoreSubscriber {
     func newState(state: StoreSubscriberStateType) {
         addresses = [DisplayAddress]()
         if let error = state.error {
-            //            selectStopViewController?.displayErrorMessage(message: "There was an error retrieving address from your search.  Please try again later")
             print(error.localizedDescription)
         } else {
             for placemark in state.searchResults {
@@ -80,7 +79,7 @@ extension SelectAddressViewModel: UITableViewDataSource, UITableViewDelegate {
 
     func configureCell(_ addressCell: AddressCell, atRow row: Int) {
         guard row < addresses.count else { return }
-        
+
         addressCell.streetAddressLabel.text = addresses[row].street
         addressCell.CSZLabel.text = addresses[row].csz
     }

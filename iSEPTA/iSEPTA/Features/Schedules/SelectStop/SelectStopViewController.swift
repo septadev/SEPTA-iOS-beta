@@ -10,10 +10,14 @@ import Foundation
 import UIKit
 import ReSwift
 
-class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableController, UpdateableFromViewModel, SearchModalHeaderDelegate {
+class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableController {
     typealias StoreSubscriberStateType = ScheduleStopEdit?
-
     static var viewController: ViewController = .selectStopController
+
+    @IBOutlet var selectAddressRelativeStopViewModel: SelectAddressRelativeStopViewModel!
+    @IBOutlet var selectAddressViewModel: SelectAddressViewModel!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
     @IBOutlet weak var stopsViewModel: SelectStopViewModel! {
         didSet {
@@ -21,11 +25,25 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
         }
     }
 
-    @IBOutlet var selectAddressRelativeStopViewModel: SelectAddressRelativeStopViewModel!
-    @IBOutlet var selectAddressViewModel: SelectAddressViewModel!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    var locationListener: LocationServicesListener?
     var headerViewController: SearchStopsModalHeaderViewController?
+
+    var shouldBeAnimatingActivityIndicator = true {
+        didSet {
+            updateActivityIndicator()
+        }
+    }
+
+    var viewHasAppeared = false {
+        didSet {
+            updateActivityIndicator()
+        }
+    }
+
+    override func awakeFromNib() {
+        locationListener = LocationServicesListener()
+        locationListener?.delegate = self
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == "embedHeader" {
@@ -56,6 +74,42 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
         tableView.reloadData()
     }
 
+    func displayErrorMessage(message: String, shouldDismissAfterDisplay: Bool = false) {
+        UIAlert.presentOKAlertFrom(viewController: self,
+                                   withTitle: "Select Stop",
+                                   message: message) { [weak self] in
+            if shouldDismissAfterDisplay {
+                self?.dismissModal()
+            }
+        }
+    }
+
+    func updateActivityIndicator(animating: Bool) {
+        shouldBeAnimatingActivityIndicator = animating
+    }
+}
+
+extension SelectStopViewController: UpdateableFromViewModel {
+    func viewModelUpdated() {
+        guard let tableView = tableView else { return }
+        tableView.reloadData()
+    }
+
+    func updateActivityIndicator() {
+        if viewHasAppeared && shouldBeAnimatingActivityIndicator {
+            activityIndicator.startAnimating()
+        } else if viewHasAppeared && !shouldBeAnimatingActivityIndicator {
+            activityIndicator.stopAnimating()
+        }
+    }
+}
+
+extension SelectStopViewController: SubscriberUnsubscriber {
+
+    override func viewWillAppear(_: Bool) {
+        subscribe()
+    }
+
     func subscribe() {
         if store.state.navigationState.activeNavigationController == .schedules {
             store.subscribe(self) {
@@ -72,70 +126,17 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
         }
     }
 
-    func dismissModal() {
-
-        let dismissAction = DismissModal(description: "Stop should be dismissed")
-        store.dispatch(dismissAction)
-    }
-
     override func viewWillDisappear(_: Bool) {
         stopsViewModel.unsubscribe()
-    }
-
-    override func viewWillAppear(_: Bool) {
-        subscribe()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        viewHasAppeared = true
     }
 
     func unsubscribe() {
         store.unsubscribe(self)
     }
+}
 
-    func viewModelUpdated() {
-        guard let tableView = tableView else { return }
-        tableView.reloadData()
-    }
-
-    var shouldBeAnimatingActivityIndicator = true {
-        didSet {
-            updateActivityIndicator()
-        }
-    }
-
-    var viewHasAppeared = false {
-        didSet {
-            updateActivityIndicator()
-        }
-    }
-
-    func updateActivityIndicator() {
-        if viewHasAppeared && shouldBeAnimatingActivityIndicator {
-            activityIndicator.startAnimating()
-        } else if viewHasAppeared && !shouldBeAnimatingActivityIndicator {
-            activityIndicator.stopAnimating()
-        }
-    }
-
-    func updateActivityIndicator(animating: Bool) {
-        shouldBeAnimatingActivityIndicator = animating
-    }
-
-    func displayErrorMessage(message: String, shouldDismissAfterDisplay: Bool = false) {
-        UIAlert.presentOKAlertFrom(viewController: self,
-                                   withTitle: "Select Stop",
-                                   message: message) { [weak self] in
-            if shouldDismissAfterDisplay {
-                self?.dismissModal()
-            }
-        }
-    }
-
+extension SelectStopViewController: SearchModalHeaderDelegate {
     func animatedLayoutNeeded(block: @escaping (() -> Void), completion: @escaping (() -> Void)) {
-
         UIView.animate(withDuration: 0.25, animations: {
             block()
             self.view.layoutIfNeeded()
@@ -149,10 +150,14 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
         view.layoutIfNeeded()
     }
 
-    var locationListener: LocationServicesListener?
+    func dismissModal() {
 
-    override func awakeFromNib() {
-        locationListener = LocationServicesListener()
-        locationListener?.delegate = self
+        let dismissAction = DismissModal(description: "Stop should be dismissed")
+        store.dispatch(dismissAction)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewHasAppeared = true
     }
 }

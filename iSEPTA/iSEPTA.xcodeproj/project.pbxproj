@@ -146,6 +146,7 @@
 		676355011F5E326800CA7EAB /* AppState+Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676355001F5E326800CA7EAB /* AppState+Context.swift */; };
 		676355031F5E998200CA7EAB /* SelectSchedulesRowDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676355021F5E998200CA7EAB /* SelectSchedulesRowDisplayModel.swift */; };
 		676355051F5E9A0300CA7EAB /* SchedulesViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676355041F5E9A0300CA7EAB /* SchedulesViewModelDelegate.swift */; };
+		676355071F5EAD5900CA7EAB /* SubscriberUnsubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676355061F5EAD5900CA7EAB /* SubscriberUnsubscriber.swift */; };
 		678D26BF1F5C414800D140CC /* LocationServicesListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26BE1F5C414800D140CC /* LocationServicesListener.swift */; };
 		678D26C41F5CC4A400D140CC /* FavoritesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26C31F5CC4A400D140CC /* FavoritesState.swift */; };
 		678D26C61F5CC52300D140CC /* FavoritesReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26C51F5CC52300D140CC /* FavoritesReducer.swift */; };
@@ -409,6 +410,7 @@
 		676355001F5E326800CA7EAB /* AppState+Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState+Context.swift"; sourceTree = "<group>"; };
 		676355021F5E998200CA7EAB /* SelectSchedulesRowDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSchedulesRowDisplayModel.swift; sourceTree = "<group>"; };
 		676355041F5E9A0300CA7EAB /* SchedulesViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesViewModelDelegate.swift; sourceTree = "<group>"; };
+		676355061F5EAD5900CA7EAB /* SubscriberUnsubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriberUnsubscriber.swift; sourceTree = "<group>"; };
 		678D26BE1F5C414800D140CC /* LocationServicesListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServicesListener.swift; sourceTree = "<group>"; };
 		678D26C31F5CC4A400D140CC /* FavoritesState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesState.swift; sourceTree = "<group>"; };
 		678D26C51F5CC52300D140CC /* FavoritesReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesReducer.swift; sourceTree = "<group>"; };
@@ -1056,6 +1058,7 @@
 				581804BC1F3F838B002184E3 /* CodableAppState.swift */,
 				58290E431F372BB9000CCF3C /* AppStateReducer.swift */,
 				58F444FB1F3D335400A93208 /* SeptaAction.swift */,
+				676355061F5EAD5900CA7EAB /* SubscriberUnsubscriber.swift */,
 				676355001F5E326800CA7EAB /* AppState+Context.swift */,
 			);
 			path = Main;
@@ -1423,6 +1426,7 @@
 				58F80D431F421C1F0089501A /* SelectStopNavigationController.swift in Sources */,
 				58658D1B1F53135100E67B4E /* AddressCell.swift in Sources */,
 				67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */,
+				676355071F5EAD5900CA7EAB /* SubscriberUnsubscriber.swift in Sources */,
 				58EB8D251F5D8EE80028A487 /* BaseNavigationBar.swift in Sources */,
 				5840D6D51F376E5E00C8CB76 /* NavigationStackState.swift in Sources */,
 				5840D6E91F37EE6500C8CB76 /* Providers.swift in Sources */,
