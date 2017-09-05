@@ -6,15 +6,12 @@ import ReSwift
 
 import UIKit
 
-class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+class SelectStopViewModel: NSObject, StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleStopState
-    var targetForScheduleAction: TargetForScheduleAction {
-        if store.state.navigationState.activeNavigationController == .schedules {
-            return TargetForScheduleAction.schedules
-        } else {
-            return TargetForScheduleAction.nextToArrive
-        }
-    }
+    let targetForScheduleAction = store.state.targetForScheduleActions()
+    @IBOutlet weak var selectStopViewController: UpdateableFromViewModel?
+    var filterString = ""
+    let cellId = "stopCell"
 
     var stopToSelect: StopToSelect = .starts {
         didSet {
@@ -45,25 +42,6 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITab
             }
             selectStopViewController?.viewModelUpdated()
         }
-    }
-
-    @IBOutlet weak var selectStopViewController: UpdateableFromViewModel?
-
-    let cellId = "stopCell"
-
-    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return numberOfRows()
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? SelectStopCell else { return UITableViewCell() }
-
-        configureDisplayable(cell, atRow: indexPath.row)
-        return cell
-    }
-
-    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        rowSelected(row: indexPath.row)
     }
 
     func subscribe() {
@@ -98,10 +76,6 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITab
         }
     }
 
-    func unsubscribe() {
-        store.unsubscribe(self)
-    }
-
     func newState(state: StoreSubscriberStateType) {
         allStops = state.stops
         if state.updateMode == .loadValues && state.stops.count == 0 {
@@ -114,6 +88,32 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITab
         }
     }
 
+    deinit {
+        store.unsubscribe(self)
+    }
+
+    func unsubscribe() {
+        store.unsubscribe(self)
+    }
+}
+
+extension SelectStopViewModel: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        return numberOfRows()
+    }
+
+    func numberOfRows() -> Int {
+        guard let filteredStops = filteredStops else { return 0 }
+        return filteredStops.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? SelectStopCell else { return UITableViewCell() }
+
+        configureDisplayable(cell, atRow: indexPath.row)
+        return cell
+    }
+
     func configureDisplayable(_ displayable: SingleStringDisplayable, atRow row: Int) {
         guard let filteredStops = filteredStops, row < filteredStops.count else { return }
         let stop = filteredStops[row].stop
@@ -121,8 +121,8 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITab
         displayable.setLabelText(stop.stopName)
     }
 
-    func canCellBeSelected(atRow _: Int) -> Bool {
-        return true
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        rowSelected(row: indexPath.row)
     }
 
     func rowSelected(row: Int) {
@@ -139,17 +139,10 @@ class SelectStopViewModel: NSObject, StoreSubscriber, UITextFieldDelegate, UITab
         let dismissAction = DismissModal(description: "Stop should be dismissed")
         store.dispatch(dismissAction)
     }
+}
 
-    func numberOfRows() -> Int {
-        guard let filteredStops = filteredStops else { return 0 }
-        return filteredStops.count
-    }
+extension SelectStopViewModel: UITextFieldDelegate {
 
-    deinit {
-        store.unsubscribe(self)
-    }
-
-    var filterString = ""
     func textField(_: UITextField, shouldChangeCharactersIn range: NSRange, replacementString: String) -> Bool {
 
         guard let allFilterableStops = allFilterableStops, let swiftRange = Range(range, in: filterString) else { return false }
