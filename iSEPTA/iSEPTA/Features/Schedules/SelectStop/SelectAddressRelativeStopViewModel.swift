@@ -12,27 +12,46 @@ import UIKit
 import ReSwift
 import CoreLocation
 
-struct StopWithDistance {
-    let stop: Stop
-    let distanceString: String
-    let distanceMeasurement: CLLocationDistance
-
-    init(stop: Stop, distanceMeasurement: CLLocationDistance, distanceString: String) {
-        self.stop = stop
-        self.distanceMeasurement = distanceMeasurement
-        self.distanceString = distanceString
-    }
-}
-
-class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber, UITableViewDataSource, UITableViewDelegate {
+class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleStopEdit?
-    let cellId = "relativeStopCell"
-    var stopToEdit: StopToSelect?
+   
     @IBOutlet weak var selectStopViewController: UpdateableFromViewModel?
 
     let targetForScheduleAction = store.state.targetForScheduleActions()
-
     var stopsWithDistance = [StopWithDistance]()
+    let cellId = "relativeStopCell"
+    var stopToEdit: StopToSelect?
+
+    func newState(state: StoreSubscriberStateType) {
+        stopToEdit = state?.stopToEdit
+        var stops: [Stop]
+        if state?.stopToEdit == .starts {
+            stops = store.state.scheduleState.scheduleData.availableStarts.stops
+        } else {
+            stops = store.state.scheduleState.scheduleData.availableStops.stops
+        }
+
+        if let placemark = state?.selectedAddress?.placemark, let location = placemark.location {
+
+            let unsortedStopsWithDistance: [StopWithDistance] = stops.map { stop in
+
+                let stopCoordinates = CLLocation(latitude: stop.stopLatitude, longitude: stop.stopLongitude)
+                let distanceInMeters = stopCoordinates.distance(from: location)
+                let distanceString = NumberFormatters.metersToMilesFormatter.string(from: NSNumber(value: distanceInMeters)) ?? ""
+                return StopWithDistance(stop: stop, distanceMeasurement: distanceInMeters, distanceString: distanceString)
+            }
+
+            stopsWithDistance = unsortedStopsWithDistance.sorted { $0.distanceMeasurement < $1.distanceMeasurement }
+            selectStopViewController?.viewModelUpdated()
+        }
+    }
+
+    deinit {
+        unsubscribe()
+    }
+}
+
+extension SelectAddressRelativeStopViewModel: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return stopsWithDistance.count
@@ -69,6 +88,12 @@ class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber, UITableView
         let dismissAction = DismissModal(description: "Stop should be dismissed")
         store.dispatch(dismissAction)
     }
+}
+
+extension SelectAddressRelativeStopViewModel: SubscriberUnsubscriber {
+    override func awakeFromNib() {
+        subscribe()
+    }
 
     func subscribe() {
         if targetForScheduleAction == .schedules {
@@ -86,39 +111,7 @@ class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber, UITableView
         }
     }
 
-    override func awakeFromNib() {
-        subscribe()
-    }
-
     func unsubscribe() {
         store.unsubscribe(self)
-    }
-
-    func newState(state: StoreSubscriberStateType) {
-        stopToEdit = state?.stopToEdit
-        var stops: [Stop]
-        if state?.stopToEdit == .starts {
-            stops = store.state.scheduleState.scheduleData.availableStarts.stops
-        } else {
-            stops = store.state.scheduleState.scheduleData.availableStops.stops
-        }
-
-        if let placemark = state?.selectedAddress?.placemark, let location = placemark.location {
-
-            let unsortedStopsWithDistance: [StopWithDistance] = stops.map { stop in
-
-                let stopCoordinates = CLLocation(latitude: stop.stopLatitude, longitude: stop.stopLongitude)
-                let distanceInMeters = stopCoordinates.distance(from: location)
-                let distanceString = NumberFormatters.metersToMilesFormatter.string(from: NSNumber(value: distanceInMeters)) ?? ""
-                return StopWithDistance(stop: stop, distanceMeasurement: distanceInMeters, distanceString: distanceString)
-            }
-
-            stopsWithDistance = unsortedStopsWithDistance.sorted { $0.distanceMeasurement < $1.distanceMeasurement }
-            selectStopViewController?.viewModelUpdated()
-        }
-    }
-
-    deinit {
-        unsubscribe()
     }
 }
