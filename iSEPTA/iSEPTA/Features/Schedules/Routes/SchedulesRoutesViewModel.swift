@@ -4,12 +4,11 @@ import Foundation
 import SeptaSchedule
 import ReSwift
 
-class BaseRoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
+class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
     typealias StoreSubscriberStateType = ScheduleRouteState
-    var targetForScheduleAction = TargetForScheduleAction.schedules
-    let transitMode = store.state.scheduleState.scheduleRequest.transitMode!
+    var targetForScheduleAction = store.state.targetForScheduleActions()
+    let transitMode = TransitMode.currentTransitMode()!
     let alerts = store.state.alertState.alertDict
-
     @IBOutlet weak var selectRoutesViewController: UpdateableFromViewModel?
 
     var allRoutes: [Route]? {
@@ -40,9 +39,6 @@ class BaseRoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         subscribe()
-    }
-
-    func subscribe() {
     }
 
     func newState(state: StoreSubscriberStateType) {
@@ -93,10 +89,6 @@ class BaseRoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
         return filteredRoutes.count
     }
 
-    deinit {
-        store.unsubscribe(self)
-    }
-
     var filterString = ""
     func textField(_: UITextField, shouldChangeCharactersIn range: NSRange, replacementString: String) -> Bool {
 
@@ -113,36 +105,20 @@ class BaseRoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
         }
         return true
     }
-}
 
-class RoutesViewModel: BaseRoutesViewModel {
-    override func awakeFromNib() {
-
-        if let targetForRouteUpdates = determineTargetForRouteUpdates() {
-            super.targetForScheduleAction = targetForRouteUpdates
-        }
-        super.awakeFromNib()
-    }
-
-    func determineTargetForRouteUpdates() -> TargetForScheduleAction? {
-        let scheduleTargets: [NavigationController] = [.nextToArrive, .schedules]
-        let activeNavigationController = store.state.navigationState.activeNavigationController
-        guard scheduleTargets.contains(activeNavigationController) else { return nil }
-
-        if activeNavigationController == .schedules { return TargetForScheduleAction.schedules }
-        if activeNavigationController == .nextToArrive { return TargetForScheduleAction.nextToArrive }
-        return nil
-    }
-
-    override func subscribe() {
-        if super.targetForScheduleAction == .schedules {
+    func subscribe() {
+        if targetForScheduleAction == .schedules {
             store.subscribe(self) {
                 $0.select { $0.scheduleState.scheduleData.availableRoutes }.skipRepeats { $0 == $1 }
             }
-        } else if super.targetForScheduleAction == .nextToArrive {
+        } else if targetForScheduleAction == .nextToArrive {
             store.subscribe(self) {
                 $0.select { $0.nextToArriveState.scheduleState.scheduleData.availableRoutes }.skipRepeats { $0 == $1 }
             }
         }
+    }
+
+    deinit {
+        store.unsubscribe(self)
     }
 }

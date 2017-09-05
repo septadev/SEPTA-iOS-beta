@@ -18,13 +18,7 @@ class SearchRoutesModalHeaderViewController: UIViewController {
     var textFieldDelegate: UITextFieldDelegate!
     weak var delegate: SearchModalHeaderDelegate?
 
-    var transitMode: TransitMode! {
-        if store.state.targetForScheduleActions() == .schedules {
-            return store.state.scheduleState.scheduleRequest.transitMode
-        } else {
-            return store.state.nextToArriveState.scheduleState.scheduleRequest.transitMode
-        }
-    }
+    var transitMode = TransitMode.currentTransitMode()!
 
     @IBOutlet weak var textField: UITextField! {
         didSet {

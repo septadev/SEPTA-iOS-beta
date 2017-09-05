@@ -10,17 +10,18 @@ protocol RouteCellDisplayable {
 }
 
 class RouteTableViewCell: UITableViewCell, RouteCellDisplayable {
-
+    @IBOutlet private weak var routeShortNameLabel: UILabel!
+    @IBOutlet private weak var routeLongNameLabel: UILabel!
+    @IBOutlet private weak var iconImageView: UIImageView!
+    
+    let targetForScheduleAction = store.state.targetForScheduleActions()
+    
     @IBOutlet weak var stackView: UIStackView! {
         didSet {
             stackView.isExclusiveTouch = true
         }
     }
 
-    @IBOutlet private weak var routeShortNameLabel: UILabel!
-    @IBOutlet private weak var routeLongNameLabel: UILabel!
-
-    @IBOutlet private weak var iconImageView: UIImageView!
     func setShortName(text: String) {
         routeShortNameLabel.text = text
     }
@@ -72,8 +73,9 @@ class RouteTableViewCell: UITableViewCell, RouteCellDisplayable {
     }
 
     @objc func gestureReognizerTapped(gr: UITapGestureRecognizer) {
+        let navigationController = store.state.navigationState.activeNavigationController
         gr.cancelsTouchesInView = true
-        let dismissModalAction = DismissModal(navigationController: .schedules, description: "Dismissing the modal to switch tabs")
+        let dismissModalAction = DismissModal(navigationController: navigationController, description: "Dismissing the modal to switch tabs")
         store.dispatch(dismissModalAction)
         let switchTabsAction = SwitchTabs(activeNavigationController: .alerts, description: "User tapped on alert")
         store.dispatch(switchTabsAction)

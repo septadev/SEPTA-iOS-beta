@@ -188,4 +188,12 @@ extension TransitMode {
             return .weekday
         }
     }
+
+    public static func currentTransitMode() -> TransitMode! {
+        if store.state.targetForScheduleActions() == .schedules {
+            return store.state.scheduleState.scheduleRequest.transitMode
+        } else {
+            return store.state.nextToArriveState.scheduleState.scheduleRequest.transitMode
+        }
+    }
 }
