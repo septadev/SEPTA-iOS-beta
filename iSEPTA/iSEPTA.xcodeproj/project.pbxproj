@@ -109,6 +109,10 @@
 		58DB10F81F3B8DB400191AED /* NavigationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DB10F71F3B8DB400191AED /* NavigationReducer.swift */; };
 		58DD1A821F5EEB46002532DC /* NextToArriveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD1A811F5EEB46002532DC /* NextToArriveViewModel.swift */; };
 		58DD1A861F5F148F002532DC /* NoRouteNeededCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD1A851F5F148F002532DC /* NoRouteNeededCell.swift */; };
+		58DD1A8C1F6006D5002532DC /* NextToArriveViewModel+RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD1A8B1F6006D5002532DC /* NextToArriveViewModel+RouteCell.swift */; };
+		58DD1A8E1F600715002532DC /* NextToArriveViewModel+StartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD1A8D1F600715002532DC /* NextToArriveViewModel+StartCell.swift */; };
+		58DD1A901F600758002532DC /* NextToArriveViewModel+StopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD1A8F1F600758002532DC /* NextToArriveViewModel+StopCell.swift */; };
+		58DD1A921F60078D002532DC /* NextToArriveRowDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD1A911F60078D002532DC /* NextToArriveRowDisplayModel.swift */; };
 		58EB8D0F1F5D79530028A487 /* NextToArriveNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB8D0E1F5D79530028A487 /* NextToArriveNavigationController.swift */; };
 		58EB8D131F5D79C10028A487 /* NextToArriveNavigationControllerStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB8D121F5D79C10028A487 /* NextToArriveNavigationControllerStateProvider.swift */; };
 		58EB8D151F5D7CD20028A487 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB8D141F5D7CD20028A487 /* BaseNavigationController.swift */; };
@@ -379,6 +383,10 @@
 		58DB10F71F3B8DB400191AED /* NavigationReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationReducer.swift; sourceTree = "<group>"; };
 		58DD1A811F5EEB46002532DC /* NextToArriveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveViewModel.swift; sourceTree = "<group>"; };
 		58DD1A851F5F148F002532DC /* NoRouteNeededCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRouteNeededCell.swift; sourceTree = "<group>"; };
+		58DD1A8B1F6006D5002532DC /* NextToArriveViewModel+RouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NextToArriveViewModel+RouteCell.swift"; sourceTree = "<group>"; };
+		58DD1A8D1F600715002532DC /* NextToArriveViewModel+StartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NextToArriveViewModel+StartCell.swift"; sourceTree = "<group>"; };
+		58DD1A8F1F600758002532DC /* NextToArriveViewModel+StopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NextToArriveViewModel+StopCell.swift"; sourceTree = "<group>"; };
+		58DD1A911F60078D002532DC /* NextToArriveRowDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveRowDisplayModel.swift; sourceTree = "<group>"; };
 		58EB8D0E1F5D79530028A487 /* NextToArriveNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveNavigationController.swift; sourceTree = "<group>"; };
 		58EB8D121F5D79C10028A487 /* NextToArriveNavigationControllerStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveNavigationControllerStateProvider.swift; sourceTree = "<group>"; };
 		58EB8D141F5D7CD20028A487 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
@@ -630,7 +638,8 @@
 				58EB8D181F5D7ED70028A487 /* SelectTrip */,
 				582F4E911F33B1120062A546 /* nextToArrive.storyboard */,
 				582F4E921F33B1120062A546 /* NextToArriveViewController.swift */,
-				58DD1A811F5EEB46002532DC /* NextToArriveViewModel.swift */,
+				58DD1A931F6007F9002532DC /* NextToArriveViewModel */,
+				58DD1A911F60078D002532DC /* NextToArriveRowDisplayModel.swift */,
 				58EB8D221F5D8C6B0028A487 /* BaseNonModalViewController.swift */,
 				58EB8D141F5D7CD20028A487 /* BaseNavigationController.swift */,
 				58EB8D1E1F5D8A650028A487 /* BaseNavigationController+Styling.swift */,
@@ -1100,6 +1109,17 @@
 			path = Reducers;
 			sourceTree = "<group>";
 		};
+		58DD1A931F6007F9002532DC /* NextToArriveViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				58DD1A811F5EEB46002532DC /* NextToArriveViewModel.swift */,
+				58DD1A8B1F6006D5002532DC /* NextToArriveViewModel+RouteCell.swift */,
+				58DD1A8D1F600715002532DC /* NextToArriveViewModel+StartCell.swift */,
+				58DD1A8F1F600758002532DC /* NextToArriveViewModel+StopCell.swift */,
+			);
+			path = NextToArriveViewModel;
+			sourceTree = "<group>";
+		};
 		58EB8D181F5D7ED70028A487 /* SelectTrip */ = {
 			isa = PBXGroup;
 			children = (
@@ -1432,6 +1452,7 @@
 				678F053B1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift in Sources */,
 				5840D6E71F37EAEF00C8CB76 /* UserPreferencesKeys.swift in Sources */,
 				582F4EDF1F33B1120062A546 /* MainViewController.swift in Sources */,
+				58DD1A921F60078D002532DC /* NextToArriveRowDisplayModel.swift in Sources */,
 				674FDBC71F577D3B00CA67D2 /* Route+Icon.swift in Sources */,
 				58F80D431F421C1F0089501A /* SelectStopNavigationController.swift in Sources */,
 				58658D1B1F53135100E67B4E /* AddressCell.swift in Sources */,
@@ -1448,6 +1469,7 @@
 				5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */,
 				676355011F5E326800CA7EAB /* AppState+Context.swift in Sources */,
 				58FBB66C1F5885D800E6532B /* TripIconView.swift in Sources */,
+				58DD1A901F600758002532DC /* NextToArriveViewModel+StopCell.swift in Sources */,
 				67EA2B611F518CA600C0567A /* SearchModalHeaderDelegate.swift in Sources */,
 				678F05371F5BFFDC00CC4D3C /* LocationReducer.swift in Sources */,
 				5814AA891F4359CC00DF774A /* SingleStringDisplayable.swift in Sources */,
@@ -1516,6 +1538,7 @@
 				67C5672B1F596E0700FF6203 /* ErrorObjects.swift in Sources */,
 				58490E4B1F560226007DBCA1 /* AlertActions.swift in Sources */,
 				67EA2B631F51AB8700C0567A /* StopEditSearchMode.swift in Sources */,
+				58DD1A8E1F600715002532DC /* NextToArriveViewModel+StartCell.swift in Sources */,
 				5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */,
 				58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */,
 				58EB8D0F1F5D79530028A487 /* NextToArriveNavigationController.swift in Sources */,
@@ -1526,6 +1549,7 @@
 				678F05241F5B7B6E00CC4D3C /* AddressProvider.swift in Sources */,
 				67EA2B5D1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift in Sources */,
 				58490E451F55F8FF007DBCA1 /* SeptaAlert.swift in Sources */,
+				58DD1A8C1F6006D5002532DC /* NextToArriveViewModel+RouteCell.swift in Sources */,
 				5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */,
 				58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */,
 				581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */,

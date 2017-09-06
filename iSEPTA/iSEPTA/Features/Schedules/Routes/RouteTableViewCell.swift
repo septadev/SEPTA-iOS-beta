@@ -73,7 +73,7 @@ class RouteTableViewCell: UITableViewCell, RouteCellDisplayable {
     }
 
     @objc func gestureReognizerTapped(gr: UITapGestureRecognizer) {
-        
+
         gr.cancelsTouchesInView = true
         let dismissModalAction = DismissModal(description: "Dismissing the modal to switch tabs")
         store.dispatch(dismissModalAction)

@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Nav Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="8lQ-ax-JJ9">
             <objects>
                 <navigationController title="Nav Controller" id="4lt-fc-Rad" customClass="BaseNavigationController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
@@ -27,7 +27,11 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="irk-yA-FP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="ag4-fI-gKN" userLabel="StateProvider" customClass="NextToArriveNavigationControllerStateProvider" customModule="Septa" customModuleProvider="target"/>
+                <customObject id="ag4-fI-gKN" userLabel="StateProvider" customClass="NextToArriveNavigationControllerStateProvider" customModule="Septa" customModuleProvider="target">
+                    <connections>
+                        <outlet property="navigationController" destination="4lt-fc-Rad" id="SaW-yo-PPY"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="-812" y="30"/>
         </scene>

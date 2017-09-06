@@ -13,4 +13,6 @@ struct SeptaString {
     static let NoStopsAvailable = NSLocalizedString("Sorry, there are no stops/stations that match your request", comment: "Query for stops in the database returned no results")
     static let NoTripsAvailable = NSLocalizedString("Sorry, there are no trips that match your request", comment: "Query for trips in the database returned no results")
     static let NoRouteNeeded = NSLocalizedString("Select a start and destination to view the next trains to arrive for that route.", comment: "Don't need to search for route because we can build a trip for your from any two stops, provided you are using rail")
+
+    static let NextToArriveTitle = NSLocalizedString("Next to Arrive", comment: "Text indicating a feature that allows user's to view coming transit opportunities")
 }

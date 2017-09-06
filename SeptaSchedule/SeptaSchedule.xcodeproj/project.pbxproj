@@ -69,7 +69,8 @@
 		58DCA0991F3E2944002F08CF /* CommandError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DCA0981F3E2944002F08CF /* CommandError.swift */; };
 		58DCA09C1F3E2B2B002F08CF /* SQLQueryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DCA09B1F3E2B2B002F08CF /* SQLQueryProtocol.swift */; };
 		58DD1A881F5F73FA002532DC /* AllRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD1A871F5F73FA002532DC /* AllRoutes.swift */; };
-		58DD1A8A1F5F7824002532DC /* allRailTripStops.sql in Resources */ = {isa = PBXBuildFile; fileRef = 58DD1A891F5F7824002532DC /* allRailTripStops.sql */; };
+		58DD1A8A1F5F7824002532DC /* allRailStarts.sql in Resources */ = {isa = PBXBuildFile; fileRef = 58DD1A891F5F7824002532DC /* allRailStarts.sql */; };
+		58DD1A951F6011A3002532DC /* allRailEnds.sql in Resources */ = {isa = PBXBuildFile; fileRef = 58DD1A941F6011A3002532DC /* allRailEnds.sql */; };
 		58EF3D6A1F420AD6005EE2F1 /* TripStart_Trolley_Route102_Dir0.json in Resources */ = {isa = PBXBuildFile; fileRef = 58EF3D691F420AD6005EE2F1 /* TripStart_Trolley_Route102_Dir0.json */; };
 		58EF3D6D1F420BE9005EE2F1 /* TripStart_NHSL_Dir1.json in Resources */ = {isa = PBXBuildFile; fileRef = 58EF3D6B1F420BCE005EE2F1 /* TripStart_NHSL_Dir1.json */; };
 		58EF3D6F1F420CDC005EE2F1 /* TripStart_Subway_Dir1.json in Resources */ = {isa = PBXBuildFile; fileRef = 58EF3D6E1F420CDC005EE2F1 /* TripStart_Subway_Dir1.json */; };
@@ -179,7 +180,8 @@
 		58DCA0981F3E2944002F08CF /* CommandError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandError.swift; sourceTree = "<group>"; };
 		58DCA09B1F3E2B2B002F08CF /* SQLQueryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLQueryProtocol.swift; sourceTree = "<group>"; };
 		58DD1A871F5F73FA002532DC /* AllRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRoutes.swift; sourceTree = "<group>"; };
-		58DD1A891F5F7824002532DC /* allRailTripStops.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = allRailTripStops.sql; sourceTree = "<group>"; };
+		58DD1A891F5F7824002532DC /* allRailStarts.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = allRailStarts.sql; sourceTree = "<group>"; };
+		58DD1A941F6011A3002532DC /* allRailEnds.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = allRailEnds.sql; sourceTree = "<group>"; };
 		58EF3D691F420AD6005EE2F1 /* TripStart_Trolley_Route102_Dir0.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TripStart_Trolley_Route102_Dir0.json; sourceTree = "<group>"; };
 		58EF3D6B1F420BCE005EE2F1 /* TripStart_NHSL_Dir1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TripStart_NHSL_Dir1.json; sourceTree = "<group>"; };
 		58EF3D6E1F420CDC005EE2F1 /* TripStart_Subway_Dir1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TripStart_Subway_Dir1.json; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 			children = (
 				5868897E1F42978A00B2920A /* busTripEnd.sql */,
 				586889801F42979B00B2920A /* railTripEnd.sql */,
+				58DD1A941F6011A3002532DC /* allRailEnds.sql */,
 			);
 			path = sql;
 			sourceTree = "<group>";
@@ -563,7 +566,7 @@
 			children = (
 				58902EF51F41EFAB00DE6F64 /* busTripStart.sql */,
 				58902EF81F41F09900DE6F64 /* railTripStart.sql */,
-				58DD1A891F5F7824002532DC /* allRailTripStops.sql */,
+				58DD1A891F5F7824002532DC /* allRailStarts.sql */,
 			);
 			path = sql;
 			sourceTree = "<group>";
@@ -693,12 +696,13 @@
 				5854E2061F45FDA50030E3E6 /* railTripStopReverse.sql in Resources */,
 				58902EF71F41EFBC00DE6F64 /* busTripStart.sql in Resources */,
 				6789F0011F44894100BD26B1 /* railTripSchedule.sql in Resources */,
+				58DD1A951F6011A3002532DC /* allRailEnds.sql in Resources */,
 				5868897F1F42978A00B2920A /* busTripEnd.sql in Resources */,
 				5854E2051F45FDA00030E3E6 /* busTripStopReverse.sql in Resources */,
 				5825318B1F3FCD490088D056 /* railRoute.sql in Resources */,
 				582F4F0F1F33B1370062A546 /* SEPTA.zip in Resources */,
 				58902EF91F41F09900DE6F64 /* railTripStart.sql in Resources */,
-				58DD1A8A1F5F7824002532DC /* allRailTripStops.sql in Resources */,
+				58DD1A8A1F5F7824002532DC /* allRailStarts.sql in Resources */,
 				581C3BD11F46889F00C3198C /* railReverseRoute.sql in Resources */,
 				5854E20E1F4604AF0030E3E6 /* busTripReverse.sql in Resources */,
 				581C3BCF1F46884400C3198C /* railStopsByStopId.sql in Resources */,

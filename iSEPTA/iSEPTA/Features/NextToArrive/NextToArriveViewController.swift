@@ -77,7 +77,7 @@ extension NextToArriveViewController: UITableViewDelegate, UITableViewDataSource
 
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "buttonViewCell", for: indexPath) as? ButtonViewCell else { return ButtonViewCell() }
-            cell.buttonText = SeptaString.selectScheduleButton
+            cell.buttonText = SeptaString.NextToArriveTitle
             cell.enabled = formIsComplete
             return cell
         }
