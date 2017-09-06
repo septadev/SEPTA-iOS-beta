@@ -139,3 +139,8 @@ struct AddressSelected: ScheduleAction {
     let selectedAddress: DisplayAddress
     let description = "The user has selected an address to search near"
 }
+
+struct LoadAllRailRoutes: ScheduleAction {
+    let description = "For next to arrive the user will need access to all rail routes"
+    let targetForScheduleAction = TargetForScheduleAction.nextToArrive
+}

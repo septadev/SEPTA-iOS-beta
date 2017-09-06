@@ -27,6 +27,8 @@ struct ScheduleRequestReducer {
             newScheduleRequest = reduceReverseStops(action: action, scheduleRequest: scheduleRequest)
         case let action as ResetSchedule:
             newScheduleRequest = reduceResetSchedule(action: action, scheduleRequest: scheduleRequest)
+        case let action as LoadAllRailRoutes:
+            newScheduleRequest = reduceLoadAllRailRoutes(action: action, scheduleRequest: scheduleRequest)
         default:
             newScheduleRequest = scheduleRequest
         }
@@ -67,5 +69,9 @@ struct ScheduleRequestReducer {
 
     static func reduceResetSchedule(action _: ResetSchedule, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
         return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: nil, selectedStart: nil, selectedEnd: nil, scheduleType: scheduleRequest.transitMode!.defaultScheduleType(), reverseStops: false, databaseIsLoaded: scheduleRequest.databaseIsLoaded)
+    }
+
+    static func reduceLoadAllRailRoutes(action _: LoadAllRailRoutes, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: Route.allRailRoutesRoute(), selectedStart: nil, selectedEnd: nil, scheduleType: scheduleRequest.transitMode!.defaultScheduleType(), reverseStops: false, databaseIsLoaded: scheduleRequest.databaseIsLoaded)
     }
 }

@@ -18,6 +18,9 @@ class TripStartSQLQuery: SQLQueryProtocol {
     }
 
     var fileName: String {
+        if routeId == Route.allRailRoutesRouteId() {
+            return "allRailTripStops"
+        }
         switch transitMode {
         case .rail:
             return "railTripStart"

@@ -17,9 +17,8 @@ class NextToArriveViewController: BaseNonModalViewController, IdentifiableContro
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewWrapper: UIView!
 
-    let buttonCellId = "buttonViewCell"
     let buttonRow = 3
-    let cellId = "singleStringCell"
+
     static var viewController: ViewController = .selectSchedules
     var formIsComplete = false
     var targetForScheduleAction: TargetForScheduleAction { return store.state.targetForScheduleActions() }
@@ -77,7 +76,7 @@ extension NextToArriveViewController: UITableViewDelegate, UITableViewDataSource
             return cell
 
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: buttonCellId, for: indexPath) as? ButtonViewCell else { return ButtonViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "buttonViewCell", for: indexPath) as? ButtonViewCell else { return ButtonViewCell() }
             cell.buttonText = SeptaString.selectScheduleButton
             cell.enabled = formIsComplete
             return cell
@@ -104,7 +103,11 @@ extension NextToArriveViewController: UITableViewDelegate, UITableViewDataSource
     }
 
     func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return section == 0 ? section0View : section1View
+        if viewModel.shouldDisplaySectionHeaderForSection(section) {
+            return section == 0 ? section0View : section1View
+        } else {
+            return nil
+        }
     }
 
     func tableView(_: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

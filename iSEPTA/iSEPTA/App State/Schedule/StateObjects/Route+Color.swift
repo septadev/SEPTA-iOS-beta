@@ -36,4 +36,16 @@ extension Route {
         default: return nil
         }
     }
+
+    static func colorForRoute(_ route: Route, transitMode: TransitMode) -> UIColor {
+        let color: UIColor
+        if let routeColor = route.colorForRoute() {
+            color = routeColor
+        } else if let transitModeColor = transitMode.colorForPill() {
+            color = transitModeColor
+        } else {
+            color = UIColor.clear
+        }
+        return color
+    }
 }

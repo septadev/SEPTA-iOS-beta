@@ -23,4 +23,8 @@ class NextToArriveScheduleDataProvider: BaseScheduleDataProvider {
             $0.select { $0.nextToArriveState.scheduleState.scheduleRequest }.skipRepeats { $0 == $1 }
         }
     }
+
+    deinit {
+        print("Next to arrive schedule data provider will vanish")
+    }
 }
