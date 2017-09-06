@@ -67,7 +67,8 @@ func ==(lhs: Favorite, rhs: Favorite) -> Bool {
 }
 
 func ==(lhs: Favorite, rhs: ScheduleRequest) -> Bool {
-    guard let scheduleRequestTransitMode = rhs.transitMode,
+    let scheduleRequestTransitMode = rhs.transitMode
+    guard
         let scheduleRequestSelectedRoute = rhs.selectedRoute,
         let scheduleRequestSelectedStart = rhs.selectedStart,
         let scheduleRequestSelectedEnd = rhs.selectedEnd else { return false }

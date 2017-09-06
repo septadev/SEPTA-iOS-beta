@@ -5,7 +5,7 @@ import SeptaSchedule
 
 struct ScheduleRequest {
 
-    let transitMode: TransitMode?
+    let transitMode: TransitMode
     let selectedRoute: Route?
     let selectedStart: Stop?
     let selectedEnd: Stop?
@@ -13,7 +13,7 @@ struct ScheduleRequest {
     let reverseStops: Bool
     let databaseIsLoaded: Bool
 
-    init(transitMode: TransitMode? = nil, selectedRoute: Route? = nil, selectedStart: Stop? = nil, selectedEnd: Stop? = nil, scheduleType: ScheduleType? = nil, reverseStops: Bool = false, databaseIsLoaded: Bool = false) {
+    init(transitMode: TransitMode = TransitMode.defaultTransitMode(), selectedRoute: Route? = nil, selectedStart: Stop? = nil, selectedEnd: Stop? = nil, scheduleType: ScheduleType? = nil, reverseStops: Bool = false, databaseIsLoaded: Bool = false) {
         self.transitMode = transitMode
         self.selectedRoute = selectedRoute
         self.selectedStart = selectedStart
@@ -55,7 +55,7 @@ func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
 extension ScheduleRequest {
 
     func convertedToFavorite() -> Favorite? {
-        guard let transitMode = transitMode,
+        guard
             let selectedRoute = selectedRoute,
             let selectedStart = selectedStart,
             let selectedEnd = selectedEnd else { return nil }

@@ -8,7 +8,7 @@ import ReSwift
     typealias StoreSubscriberStateType = ScheduleTripState
     @IBOutlet weak var tripScheduleViewController: UpdateableFromViewModel!
 
-    let transitMode = store.state.scheduleState.scheduleRequest.transitMode!
+    let transitMode = store.state.scheduleState.scheduleRequest.transitMode
 
     var scheduleRequest = store.state.scheduleState.scheduleRequest
     private var availableTrips: [Trip]? {

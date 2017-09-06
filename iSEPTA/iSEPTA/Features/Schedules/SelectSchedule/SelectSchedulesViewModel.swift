@@ -39,7 +39,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
     }
 
     func scheduleTitle() -> String? {
-        return scheduleRequest?.transitMode?.scheduleName()
+        return scheduleRequest?.transitMode.scheduleName()
     }
 
     func filterSubscription(state: AppState) -> ScheduleRequest? {
@@ -78,7 +78,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
     }
 
     func configureSelectRouteDisplayModel() -> SelectSchedulesRowDisplayModel {
-        var text = scheduleRequest?.transitMode?.selectRoutePlaceholderText() ?? ""
+        var text = scheduleRequest?.transitMode.selectRoutePlaceholderText() ?? ""
         let isSelectable = true
         var pillColor = UIColor.clear
         if let route = scheduleRequest?.selectedRoute {
@@ -86,7 +86,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
 
             if let routeColor = route.colorForRoute() {
                 pillColor = routeColor
-            } else if let transitModeColor = scheduleRequest?.transitMode?.colorForPill() {
+            } else if let transitModeColor = scheduleRequest?.transitMode.colorForPill() {
                 pillColor = transitModeColor
             }
         }
@@ -103,10 +103,10 @@ class SelectSchedulesViewModel: StoreSubscriber {
                 text = startName
                 fontWeight = UIFont.Weight.medium
             } else {
-                text = scheduleRequest?.transitMode?.startingStopName() ?? ""
+                text = scheduleRequest?.transitMode.startingStopName() ?? ""
             }
         } else {
-            text = scheduleRequest?.transitMode?.startingStopName() ?? ""
+            text = scheduleRequest?.transitMode.startingStopName() ?? ""
             isSelectable = false
         }
         return SelectSchedulesRowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopNavigationController, pillColor: UIColor.clear, showSearchIcon: true, fontWeight: fontWeight)
@@ -122,10 +122,10 @@ class SelectSchedulesViewModel: StoreSubscriber {
                 text = stopName
                 fontWeight = UIFont.Weight.medium
             } else {
-                text = scheduleRequest?.transitMode?.endingStopName() ?? ""
+                text = scheduleRequest?.transitMode.endingStopName() ?? ""
             }
         } else {
-            text = scheduleRequest?.transitMode?.endingStopName() ?? ""
+            text = scheduleRequest?.transitMode.endingStopName() ?? ""
             isSelectable = false
         }
         return SelectSchedulesRowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .selectStopController, pillColor: UIColor.clear, showSearchIcon: true, fontWeight: fontWeight)

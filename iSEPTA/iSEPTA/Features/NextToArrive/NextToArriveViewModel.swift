@@ -65,7 +65,7 @@ class NextToArriveViewModel: NSObject, StoreSubscriber {
     fileprivate var displayModel = [NextToArriveSchedulesRowDisplayModel]()
 
     func scheduleTitle() -> String? {
-        return scheduleRequest?.transitMode?.nextToArriveTitle()
+        return scheduleRequest?.transitMode.nextToArriveTitle()
     }
 
     func newState(state: StoreSubscriberStateType) {

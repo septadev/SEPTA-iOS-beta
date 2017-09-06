@@ -59,7 +59,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     let scheduleRequest = store.state.scheduleState.scheduleRequest
 
-    let transitMode = store.state.scheduleState.scheduleRequest.transitMode!
+    let transitMode = store.state.scheduleState.scheduleRequest.transitMode
 
     let route = store.state.scheduleState.scheduleRequest.selectedRoute!
 

@@ -206,4 +206,8 @@ extension TransitMode {
             return store.state.nextToArriveState.scheduleState.scheduleRequest.transitMode
         }
     }
+
+    public static func defaultTransitMode() -> TransitMode {
+        return .bus
+    }
 }

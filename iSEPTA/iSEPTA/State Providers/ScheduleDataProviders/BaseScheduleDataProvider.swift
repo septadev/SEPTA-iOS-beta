@@ -76,22 +76,22 @@ class BaseScheduleDataProvider: StoreSubscriber {
     // MARK: - Prerequisites Exist
 
     func prerequisitesExistForRoutes(scheduleRequest: ScheduleRequest) -> Bool {
-        return scheduleRequest.transitMode != nil && scheduleRequest.databaseIsLoaded
+        return scheduleRequest.databaseIsLoaded
     }
 
     func prerequisitesExistForTripStarts(scheduleRequest: ScheduleRequest) -> Bool {
-        return scheduleRequest.transitMode != nil &&
+        return
             scheduleRequest.selectedRoute != nil
     }
 
     func prerequisitesExistForTripEnds(scheduleRequest: ScheduleRequest) -> Bool {
-        return scheduleRequest.transitMode != nil &&
+        return
             scheduleRequest.selectedRoute != nil &&
             scheduleRequest.selectedStart != nil
     }
 
     func prerequisitesExistForTrips(scheduleRequest: ScheduleRequest) -> Bool {
-        return scheduleRequest.transitMode != nil &&
+        return
             scheduleRequest.selectedRoute != nil &&
             scheduleRequest.selectedStart != nil &&
             scheduleRequest.selectedEnd != nil &&
@@ -153,7 +153,7 @@ class BaseScheduleDataProvider: StoreSubscriber {
 
     func retrieveAvailableRoutes(scheduleRequest: ScheduleRequest) {
         clearRoutes()
-        RoutesCommand.sharedInstance.routes(forTransitMode: scheduleRequest.transitMode!) { routes, error in
+        RoutesCommand.sharedInstance.routes(forTransitMode: scheduleRequest.transitMode) { routes, error in
             let routes = routes ?? [Route]()
             let routesLoadedAction = RoutesLoaded(targetForScheduleAction: self.targetForScheduleAction, routes: routes, error: error?.localizedDescription)
             store.dispatch(routesLoadedAction)
@@ -162,7 +162,7 @@ class BaseScheduleDataProvider: StoreSubscriber {
 
     func retrieveStartingStopsForRoute(scheduleRequest: ScheduleRequest) {
         clearStartingStops()
-        TripStartCommand.sharedInstance.stops(forTransitMode: scheduleRequest.transitMode!, forRoute: scheduleRequest.selectedRoute!) { stops, error in
+        TripStartCommand.sharedInstance.stops(forTransitMode: scheduleRequest.transitMode, forRoute: scheduleRequest.selectedRoute!) { stops, error in
             let stops = stops ?? [Stop]()
             let action = TripStartsLoaded(targetForScheduleAction: self.targetForScheduleAction, availableStarts: stops, error: error?.localizedDescription)
             store.dispatch(action)
@@ -171,7 +171,7 @@ class BaseScheduleDataProvider: StoreSubscriber {
 
     func retrieveEndingStopsForRoute(scheduleRequest: ScheduleRequest) {
         clearEndingStops()
-        TripEndCommand.sharedInstance.stops(forTransitMode: scheduleRequest.transitMode!, forRoute: scheduleRequest.selectedRoute!, tripStart: scheduleRequest.selectedStart!) { stops, error in
+        TripEndCommand.sharedInstance.stops(forTransitMode: scheduleRequest.transitMode, forRoute: scheduleRequest.selectedRoute!, tripStart: scheduleRequest.selectedStart!) { stops, error in
             let stops = stops ?? [Stop]()
             let action = TripEndsLoaded(targetForScheduleAction: self.targetForScheduleAction, availableStops: stops, error: error?.localizedDescription)
             store.dispatch(action)
@@ -180,7 +180,7 @@ class BaseScheduleDataProvider: StoreSubscriber {
 
     func retrieveTripsForRoute(scheduleRequest: ScheduleRequest) {
         clearTrips()
-        TripScheduleCommand.sharedInstance.tripSchedules(forTransitMode: scheduleRequest.transitMode!, route: scheduleRequest.selectedRoute!, selectedStart: scheduleRequest.selectedStart!, selectedEnd: scheduleRequest.selectedEnd!, scheduleType: scheduleRequest.scheduleType!) { trips, error in
+        TripScheduleCommand.sharedInstance.tripSchedules(forTransitMode: scheduleRequest.transitMode, route: scheduleRequest.selectedRoute!, selectedStart: scheduleRequest.selectedStart!, selectedEnd: scheduleRequest.selectedEnd!, scheduleType: scheduleRequest.scheduleType!) { trips, error in
             let trips = trips ?? [Trip]()
             let action = TripsLoaded(targetForScheduleAction: self.targetForScheduleAction, availableTrips: trips, error: error?.localizedDescription)
             store.dispatch(action)
@@ -190,8 +190,8 @@ class BaseScheduleDataProvider: StoreSubscriber {
     // MARK: - Reverse Trip
 
     func reverseTrip(scheduleRequest: ScheduleRequest) {
-
-        guard let transitMode = scheduleRequest.transitMode,
+        let transitMode = scheduleRequest.transitMode
+        guard
             let selectedRoute = scheduleRequest.selectedRoute,
             let selectedStart = scheduleRequest.selectedStart,
             let selectedEnd = scheduleRequest.selectedEnd,
