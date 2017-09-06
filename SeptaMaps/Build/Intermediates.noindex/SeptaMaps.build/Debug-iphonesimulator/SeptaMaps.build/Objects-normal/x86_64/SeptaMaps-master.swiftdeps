@@ -1,0 +1,6 @@
+version: "Apple Swift version 4.0 (swiftlang-900.0.63.10 clang-900.0.36)"
+options: "485dc78d712370309508c93481788e5c"
+build_time: [1504711626, 769563000]
+inputs:
+  "/Users/mbroski/Code/Septa/Septa2/SeptaMaps/SeptaMaps/ViewController.swift": [1504711624, 0]
+  "/Users/mbroski/Code/Septa/Septa2/SeptaMaps/SeptaMaps/AppDelegate.swift": [1504711624, 0]

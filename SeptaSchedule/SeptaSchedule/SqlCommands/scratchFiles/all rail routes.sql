@@ -57,7 +57,11 @@ from
   join stops_rail S on ST.stop_id = S.stop_id
 
 GROUP BY S.stop_id, S.stop_name, S.stop_lat, S.stop_lon;
+
+
 ;
+
+select  * from stops_rail where stop_name in ('Gravers', 'Chestnut Hill East');
 
 
 
