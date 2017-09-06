@@ -20,18 +20,14 @@ class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber {
     var targetForScheduleAction: TargetForScheduleAction { return store.state.targetForScheduleActions() }
     var stopsWithDistance = [StopWithDistance]()
     let cellId = "relativeStopCell"
-    var stopToEdit: StopToSelect?
+    var scheduleStopEdit = ScheduleStopEdit()
 
     func newState(state: StoreSubscriberStateType) {
-        stopToEdit = state?.stopToEdit
-        var stops: [Stop]
-        if state?.stopToEdit == .starts {
-            stops = store.state.scheduleState.scheduleData.availableStarts.stops
-        } else {
-            stops = store.state.scheduleState.scheduleData.availableStops.stops
-        }
+        guard let state = state else { return }
+        scheduleStopEdit = state
+        let stops = retrieveStops()
 
-        if let placemark = state?.selectedAddress?.placemark, let location = placemark.location {
+        if let placemark = state.selectedAddress?.placemark, let location = placemark.location {
 
             let unsortedStopsWithDistance: [StopWithDistance] = stops.map { stop in
 
@@ -43,6 +39,28 @@ class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber {
 
             stopsWithDistance = unsortedStopsWithDistance.sorted { $0.distanceMeasurement < $1.distanceMeasurement }
             selectStopViewController?.viewModelUpdated()
+        }
+    }
+
+    func retrieveStops() -> [Stop] {
+        var stops = [Stop]()
+        guard let scheduleData = retrieveScheduleData() else { return stops }
+        if scheduleStopEdit.stopToEdit == .starts {
+            stops = scheduleData.availableStarts.stops
+        } else {
+            stops = scheduleData.availableStops.stops
+        }
+        return stops
+    }
+
+    func retrieveScheduleData() -> ScheduleData? {
+        if store.state.targetForScheduleActions() == .schedules {
+            return store.state.scheduleState.scheduleData
+        } else if store.state.targetForScheduleActions() == .nextToArrive {
+            return store.state.nextToArriveState.scheduleState.scheduleData
+
+        } else {
+            return nil
         }
     }
 
@@ -76,9 +94,9 @@ extension SelectAddressRelativeStopViewModel: UITableViewDataSource, UITableView
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        guard let stopToEdit = stopToEdit, indexPath.row < stopsWithDistance.count else { return }
+        guard indexPath.row < stopsWithDistance.count else { return }
         let stopWithDistance = stopsWithDistance[indexPath.row]
-        if stopToEdit == .starts {
+        if scheduleStopEdit.stopToEdit == .starts {
             let action = TripStartSelected(targetForScheduleAction: targetForScheduleAction, selectedStart: stopWithDistance.stop)
             store.dispatch(action)
         } else {
