@@ -55,6 +55,6 @@ extension NextToArriveViewModel {
             isSelectable: true,
             targetController: .selectStopController,
             showSearchIcon: true,
-            fontWeight: UIFont.Weight.regular)
+            fontWeight: UIFont.Weight.medium)
     }
 }

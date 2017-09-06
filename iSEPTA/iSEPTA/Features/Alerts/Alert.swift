@@ -17,4 +17,8 @@ class UIAlert {
         // show the alert
         viewController.present(alert, animated: true, completion: nil)
     }
+
+    static func presentComingSoonAlertFrom(_ viewController: UIViewController) {
+        presentOKAlertFrom(viewController: viewController, withTitle: "Septa", message: "This cool feature is coming soon!")
+    }
 }

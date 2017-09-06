@@ -100,6 +100,7 @@ extension SelectSchedulesViewController: UITableViewDelegate, UITableViewDataSou
         } else {
             ViewSchedulesButtonTapped()
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     func tableView(_: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {

@@ -62,15 +62,6 @@ class NextToArriveViewModel: NSObject, StoreSubscriber {
         return transitMode.routeTitle()
     }
 
-    func shouldDisplaySectionHeaderForSection(_ section: Int) -> Bool {
-        guard let transitMode = scheduleRequest?.transitMode else { return false }
-        if section == 0 && transitMode == .rail {
-            return false
-        } else {
-            return true
-        }
-    }
-
     deinit {
         unsubscribe()
     }
@@ -78,6 +69,25 @@ class NextToArriveViewModel: NSObject, StoreSubscriber {
 
 // MARK: -  Loading table view cells
 extension NextToArriveViewModel {
+
+    func shouldDisplayBlankSectionHeaderForSection(_ section: Int) -> Bool {
+
+        if section == 0 && transitMode != .rail {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    func heightForSectionHeader(atRow row: Int) -> CGFloat {
+        switch row {
+        case 0:
+            return transitMode == .rail ? 10 : 37
+        case 1, 3: return 21
+        case 2: return 11
+        default: return 0
+        }
+    }
 
     func numberOfRows() -> Int {
         return 4
