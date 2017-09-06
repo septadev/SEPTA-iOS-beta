@@ -173,6 +173,9 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 #if __has_feature(modules)
 @import UIKit;
+@import ObjectiveC;
+@import MapKit;
+@import CoreLocation;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -190,22 +193,49 @@ SWIFT_MODULE_NAMESPACE_PUSH("SeptaMaps")
 SWIFT_CLASS("_TtC9SeptaMaps11AppDelegate")
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 @property (nonatomic, strong) UIWindow * _Nullable window;
-- (BOOL)application:(UIApplication * _Nonnull)application didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)launchOptions SWIFT_WARN_UNUSED_RESULT;
-- (void)applicationWillResignActive:(UIApplication * _Nonnull)application;
-- (void)applicationDidEnterBackground:(UIApplication * _Nonnull)application;
-- (void)applicationWillEnterForeground:(UIApplication * _Nonnull)application;
-- (void)applicationDidBecomeActive:(UIApplication * _Nonnull)application;
-- (void)applicationWillTerminate:(UIApplication * _Nonnull)application;
+- (BOOL)application:(UIApplication * _Nonnull)_ didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> * _Nullable)_ SWIFT_WARN_UNUSED_RESULT;
+- (void)applicationWillResignActive:(UIApplication * _Nonnull)_;
+- (void)applicationDidEnterBackground:(UIApplication * _Nonnull)_;
+- (void)applicationWillEnterForeground:(UIApplication * _Nonnull)_;
+- (void)applicationDidBecomeActive:(UIApplication * _Nonnull)_;
+- (void)applicationWillTerminate:(UIApplication * _Nonnull)_;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+SWIFT_CLASS("_TtC9SeptaMaps13KMLAnnotation")
+@interface KMLAnnotation : NSObject <MKAnnotation>
+@property (nonatomic) CLLocationCoordinate2D coordinate;
+@property (nonatomic, copy) NSString * _Nullable title;
+@property (nonatomic, copy) NSString * _Nullable subtitle;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
+@end
+
+
+SWIFT_CLASS("_TtC9SeptaMaps17KMLOverlayPolygon")
+@interface KMLOverlayPolygon : MKPolygon
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC9SeptaMaps18KMLOverlayPolyline")
+@interface KMLOverlayPolyline : MKPolyline
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@class MKMapView;
+@protocol MKOverlay;
+@class MKOverlayRenderer;
 @class NSBundle;
 @class NSCoder;
 
 SWIFT_CLASS("_TtC9SeptaMaps14ViewController")
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <MKMapViewDelegate>
 - (void)viewDidLoad;
-- (void)didReceiveMemoryWarning;
+- (MKOverlayRenderer * _Nonnull)mapView:(MKMapView * _Nonnull)_ rendererForOverlay:(id <MKOverlay> _Nonnull)overlay SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, strong) IBOutlet MKMapView * _Null_unspecified mapView;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
