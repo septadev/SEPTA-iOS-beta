@@ -89,6 +89,8 @@ extension SelectAddressViewModel: UITableViewDataSource, UITableViewDelegate {
         let displayAddress = addresses[indexPath.row]
         let addressSelectedAction = AddressSelected(targetForScheduleAction: targetForScheduleAction, selectedAddress: displayAddress)
         store.dispatch(addressSelectedAction)
+        let clearAddressesAction = ClearLookupAddresses()
+        store.dispatch(clearAddressesAction)
     }
 }
 
