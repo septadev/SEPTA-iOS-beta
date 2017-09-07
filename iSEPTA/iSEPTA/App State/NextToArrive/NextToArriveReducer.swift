@@ -16,7 +16,7 @@ struct NextToArriveReducer {
                 scheduleState: reduceScheduleState(action: action, state: state.scheduleState)
             )
         } else {
-            return NextToArriveState(scheduleState: ScheduleState())
+            return NextToArriveState()
         }
     }
 

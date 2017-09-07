@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>url</key>
+	<string>https://vnjb5kvq2b.execute-api.us-east-1.amazonaws.com/prod</string>
+	<key>apiKey</key>
+	<string>7Nx754dd9G5YkpYoRLbi4aoNW9LtWllt1Jcbw9v8</string>
+</dict>
+</plist>

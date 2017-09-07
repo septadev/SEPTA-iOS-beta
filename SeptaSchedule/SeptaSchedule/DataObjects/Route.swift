@@ -8,7 +8,7 @@ public struct Route: Codable {
     public let routeLongName: String
     public let routeDirectionCode: RouteDirectionCode
 
-    init(routeId: String, routeShortName: String, routeLongName: String, routeDirectionCode: RouteDirectionCode) {
+    public init(routeId: String, routeShortName: String, routeLongName: String, routeDirectionCode: RouteDirectionCode) {
         self.routeId = routeId
         self.routeShortName = routeShortName
         self.routeLongName = routeLongName

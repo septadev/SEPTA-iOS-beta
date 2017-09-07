@@ -13,9 +13,11 @@ import ReSwift
 
 class NextToArriveProvider: StoreSubscriber {
 
-    typealias StoreSubscriberStateType = FavoritesState
+    typealias StoreSubscriberStateType = Bool
 
     static let sharedInstance = NextToArriveProvider()
+
+    let client = SEPTAApiClient.defaultClient(url: SeptaNetwork.sharedInstance.url, apiKey: SeptaNetwork.sharedInstance.apiKey)
 
     private init() {
 
@@ -26,21 +28,41 @@ class NextToArriveProvider: StoreSubscriber {
         unsubscribe()
     }
 
-    func newState(state _: FavoritesState) {
+    func newState(state: Bool) {
+        let updateRequested = state
+        if updateRequested {
+            let scheduleRequest = store.state.nextToArriveState.scheduleState.scheduleRequest
+            retrieveNextToArrive(scheduleRequest: scheduleRequest, completion: nil)
+        }
+    }
+
+    func retrieveNextToArrive(scheduleRequest: ScheduleRequest, completion: (([RealTimeArrival]) -> Void)?) {
+        guard
+            let startId = scheduleRequest.selectedStart?.stopId,
+            let stopId = scheduleRequest.selectedEnd?.stopId,
+            let route = scheduleRequest.selectedRoute?.routeId else { return }
+        let transitType = TransitType.fromTransitMode(scheduleRequest.transitMode)
+        let originId = String(startId)
+        let destinationId = String(stopId)
+        client.getRealTimeArrivals(originId: originId, destinationId: destinationId, transitType: transitType, route: route).then { realTimeArrivals -> Void in
+            guard let arrivals = realTimeArrivals?.arrivals else { return }
+            completion?(arrivals)
+        }.catch { err in
+            print(err)
+        }
     }
 }
 
 extension NextToArriveProvider: SubscriberUnsubscriber {
-
-    func unsubscribe() {
-        store.unsubscribe(self)
-    }
-
     func subscribe() {
         store.subscribe(self) {
             $0.select {
-                $0.favoritesState
+                $0.nextToArriveState.updateRequested
             }.skipRepeats { $0 == $1 }
         }
+    }
+
+    func unsubscribe() {
+        store.unsubscribe(self)
     }
 }

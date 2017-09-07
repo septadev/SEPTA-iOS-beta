@@ -12,10 +12,11 @@ import SeptaSchedule
 struct NextToArriveState {
     let scheduleState: ScheduleState
     let nextToArriveTrip: NextToArriveTrip?
-
-    init(scheduleState: ScheduleState, nextToArriveTrip: NextToArriveTrip? = nil) {
+    let updateRequested: Bool
+    init(scheduleState: ScheduleState = ScheduleState(), nextToArriveTrip: NextToArriveTrip? = nil, updateRequested: Bool = false) {
         self.scheduleState = scheduleState
         self.nextToArriveTrip = nextToArriveTrip
+        self.updateRequested = updateRequested
     }
 }
 

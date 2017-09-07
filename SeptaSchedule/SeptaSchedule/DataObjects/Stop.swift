@@ -12,7 +12,7 @@ public struct Stop: Codable {
     public let saturdayService: Bool
     public let sundayService: Bool
 
-    init(stopId: Int, stopName: String, stopLatitude: Double, stopLongitude: Double, wheelchairBoarding: Bool, weekdayService: Bool, saturdayService: Bool, sundayService: Bool) {
+    public init(stopId: Int, stopName: String, stopLatitude: Double, stopLongitude: Double, wheelchairBoarding: Bool, weekdayService: Bool, saturdayService: Bool, sundayService: Bool) {
         self.stopId = stopId
         self.stopName = stopName
         self.stopLatitude = stopLatitude

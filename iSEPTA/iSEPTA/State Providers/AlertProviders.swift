@@ -15,7 +15,8 @@ class AlertProvider {
     static let sharedInstance = AlertProvider()
     let calendar = Calendar.current
     var timer: Timer?
-    let client = SEPTAApiClient.defaultClient(url: "https://vnjb5kvq2b.execute-api.us-east-1.amazonaws.com/prod", apiKey: "7Nx754dd9G5YkpYoRLbi4aoNW9LtWllt1Jcbw9v8")
+
+    let client = SEPTAApiClient.defaultClient(url: SeptaNetwork.sharedInstance.url, apiKey: SeptaNetwork.sharedInstance.apiKey)
     private init() {
         timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(oneMinuteTimerFired(timer:)), userInfo: nil, repeats: true)
         updateAlertsIfNeeded()

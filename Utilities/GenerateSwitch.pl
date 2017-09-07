@@ -1,21 +1,20 @@
 use Modern::Perl;
 use Data::Dumper; 
 
-my $defaultReturn = q| return "schedules"   |;
+my $defaultReturn = q| return "transitType"   |;
 
-my $enumInstanceName = q|  self |;
+my $enumInstanceName = q|  transitMode |;
 
 my $enum = q |
 
-enum ViewController: String, Equatable {
-    /// Initial screen in schedules.  Holds the toolbar. Root view controller
-    case selectSchedules
-    case routesViewController
-    case selectStartController
-    case selectStopController
-    case selectStopNavigationController
-    case tripScheduleController
+@objc public enum TransitMode: Int, Codable {
+    case bus
+    case rail
+    case subway
+    case nhsl
+    case trolley
 }
+
 
 
 	|;
