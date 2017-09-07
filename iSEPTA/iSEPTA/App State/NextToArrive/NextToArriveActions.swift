@@ -33,3 +33,8 @@ struct NextToArrivePrerequisitesStatus: NextToArriveAction {
     let status: Bool
     let description = "Indicating whether prerequistes are complete to perform next to arrive request"
 }
+
+struct ViewScheduleDataInNextToArrive: NextToArriveAction {
+
+    let description = "Jumping from schedules to next to arrive"
+}

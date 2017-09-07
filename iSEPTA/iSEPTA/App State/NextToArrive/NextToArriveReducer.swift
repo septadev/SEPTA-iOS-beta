@@ -12,7 +12,6 @@ import ReSwift
 struct NextToArriveReducer {
     static func main(action: Action, state: NextToArriveState?) -> NextToArriveState {
         if let state = state {
-
             switch action {
             case let action as ScheduleAction where action.targetForScheduleAction != .schedules :
                 return reduceScheduleAction(action: action, state: state)
@@ -43,6 +42,8 @@ struct NextToArriveReducer {
             state = reduceUpdateNextToArriveData(action: action, state: state)
         case let action as NextToArrivePrerequisitesStatus:
             state = reduceNextToArrivePrerequisitesStatus(action: action, state: state)
+        case let action as ViewScheduleDataInNextToArrive:
+            state = reduceViewScheduleData(action: action, state: state)
         default:
             break
         }
@@ -64,5 +65,9 @@ struct NextToArriveReducer {
 
     static func reduceNextToArrivePrerequisitesStatus(action _: NextToArrivePrerequisitesStatus, state: NextToArriveState) -> NextToArriveState {
         return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: state.nextToArriveTrips, updateRequested: true)
+    }
+
+    static func reduceViewScheduleData(action _: ViewScheduleDataInNextToArrive, state: NextToArriveState) -> NextToArriveState {
+        return NextToArriveState(scheduleState: store.state.scheduleState, nextToArriveTrips: state.nextToArriveTrips, updateRequested: state.updateRequested)
     }
 }
