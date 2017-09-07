@@ -12,15 +12,13 @@ import CoreLocation
 struct NextToArriveTrip {
     let startStop: NextToArriveStop
     let endStop: NextToArriveStop
-    let vehicleLocation: VehicleLocation
-    let connectionLocation: NextToArriveConnectionStation
-    let arrivalTime: Date
+    let vehicleLocation: VehicleLocation?
+    let connectionLocation: NextToArriveConnectionStation?
 
-    init(startStop: NextToArriveStop, endStop: NextToArriveStop, vehicleLocation: VehicleLocation, arrivalTime: Date, connectionLocation: NextToArriveConnectionStation) {
+    init(startStop: NextToArriveStop, endStop: NextToArriveStop, vehicleLocation: VehicleLocation?, connectionLocation: NextToArriveConnectionStation?) {
         self.startStop = startStop
         self.endStop = endStop
         self.vehicleLocation = vehicleLocation
-        self.arrivalTime = arrivalTime
         self.connectionLocation = connectionLocation
     }
 }
@@ -36,9 +34,6 @@ func ==(lhs: NextToArriveTrip, rhs: NextToArriveTrip) -> Bool {
     guard areEqual else { return false }
 
     areEqual = lhs.vehicleLocation == rhs.vehicleLocation
-    guard areEqual else { return false }
-
-    areEqual = lhs.arrivalTime == rhs.arrivalTime
     guard areEqual else { return false }
 
     return areEqual

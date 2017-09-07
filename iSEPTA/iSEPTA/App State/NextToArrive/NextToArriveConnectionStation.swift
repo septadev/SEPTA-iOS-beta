@@ -9,10 +9,10 @@
 import Foundation
 
 struct NextToArriveConnectionStation {
-    let stopId: Int
+    let stopId: Int?
     let stopName: String
 
-    init(stopId: Int, stopName: String) {
+    init(stopId: Int?, stopName: String) {
         self.stopId = stopId
         self.stopName = stopName
     }
@@ -21,9 +21,6 @@ struct NextToArriveConnectionStation {
 extension NextToArriveConnectionStation: Equatable {}
 func ==(lhs: NextToArriveConnectionStation, rhs: NextToArriveConnectionStation) -> Bool {
     var areEqual = true
-
-    areEqual = lhs.stopId == rhs.stopId
-    guard areEqual else { return false }
 
     areEqual = lhs.stopName == rhs.stopName
     guard areEqual else { return false }

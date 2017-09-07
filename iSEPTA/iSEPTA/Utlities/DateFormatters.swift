@@ -28,4 +28,11 @@ public class DateFormatters {
         formatter.dateFormat = "h:mm a"
         return formatter
     }()
+
+    static var networkFormatter: DateFormatter = {
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        return formatter
+    }()
 }

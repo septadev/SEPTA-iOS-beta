@@ -13,7 +13,7 @@ struct VehicleLocation {
     let firstLegLocation: CLLocationCoordinate2D
     let secondLegLocation: CLLocationCoordinate2D
 
-    init(firstLegLocation: CLLocationCoordinate2D, secondLegLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()) {
+    init(firstLegLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(), secondLegLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()) {
         self.firstLegLocation = firstLegLocation
         self.secondLegLocation = secondLegLocation
     }

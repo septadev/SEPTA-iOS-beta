@@ -16,7 +16,7 @@ public class RealTimeArrivals: RestResponse {
     var type: String?
     var route: String?
     var results: Int?
- public    var arrivals: [RealTimeArrival]?
+ public     var arrivals: [RealTimeArrival]?
 
     public override func mapping(map: Map) {
 

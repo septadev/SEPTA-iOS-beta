@@ -93,3 +93,41 @@ select * from routes_bus where route_id = 'R';
 
 select * from stops_rail where stop_name = 'Ivy Ridge';  --90222
 select * from stops_rail where stop_name = 'Angora'; --90313
+
+
+SELECT
+  cast(R.route_id AS TEXT) route_id,
+  route_long_name route_short_name,
+  'to ' || BSD.DirectionDescription route_long_name,
+  BSD.dircode
+FROM bus_stop_directions BSD
+JOIN routes_bus R
+ON BSD.Route = R.route_id;
+
+
+SELECT
+R.Route_id,
+R.route_short_name route_short_name,
+'to ' || S.stop_name route_long_name,
+cast (T.direction_id  as TEXT )                            dircode
+
+FROM routes_rail R
+JOIN trips_rail T ON R.route_id = T.route_id
+JOIN stop_times_rail ST ON T.trip_id = ST.trip_id
+JOIN stops_rail S ON ST.stop_id = S.stop_id
+JOIN
+(
+SELECT
+R.route_id,
+T.direction_id,
+max(ST.stop_sequence) max_stop_sequence
+
+FROM routes_rail R
+JOIN trips_rail T ON R.route_id = T.route_id
+JOIN stop_times_rail ST ON T.trip_id = ST.trip_id
+JOIN stops_rail S ON ST.stop_id = S.stop_id
+GROUP BY R.route_id, T.direction_id) lastStop
+ON R.route_id = lastStop.route_id AND T.direction_id = lastStop.direction_id AND
+ST.stop_sequence = lastStop.max_stop_sequence
+GROUP BY R.Route_id,R.route_short_name, R.route_long_name,T.direction_id ,S.stop_name;
+
