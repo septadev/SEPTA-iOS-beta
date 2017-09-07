@@ -10,9 +10,5 @@ import Foundation
 import AEXML
 import UIKit
 
-
 class NextToArriveMapViewController: UIViewController {
-
-
 }
-

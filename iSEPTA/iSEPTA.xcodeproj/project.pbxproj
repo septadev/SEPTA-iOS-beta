@@ -116,6 +116,13 @@
 		58E33F0E1F6098FE00C74B7C /* NextToArriveMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F0D1F6098FE00C74B7C /* NextToArriveMapViewController.swift */; };
 		58E33F101F60995600C74B7C /* NextToArriveInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F0F1F60995600C74B7C /* NextToArriveInfoViewController.swift */; };
 		58E33F121F60998F00C74B7C /* NextToArriveDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F111F60998F00C74B7C /* NextToArriveDetailViewController.swift */; };
+		58E33F141F61425600C74B7C /* NextToArriveProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F131F61425600C74B7C /* NextToArriveProvider.swift */; };
+		58E33F161F6143E000C74B7C /* NextToArriveStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F151F6143E000C74B7C /* NextToArriveStop.swift */; };
+		58E33F181F61453000C74B7C /* NextToArriveTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F171F61453000C74B7C /* NextToArriveTrip.swift */; };
+		58E33F1A1F6145C000C74B7C /* NextToArriveConnectionStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F191F6145C000C74B7C /* NextToArriveConnectionStation.swift */; };
+		58E33F1C1F61473800C74B7C /* VehicleLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F1B1F61473800C74B7C /* VehicleLocation.swift */; };
+		58E33F1E1F6147DE00C74B7C /* CLLocationCoordinate2D+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F1D1F6147DE00C74B7C /* CLLocationCoordinate2D+Equatable.swift */; };
+		58E33F201F61494700C74B7C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F1F1F61494700C74B7C /* File.swift */; };
 		58EB8D0F1F5D79530028A487 /* NextToArriveNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB8D0E1F5D79530028A487 /* NextToArriveNavigationController.swift */; };
 		58EB8D131F5D79C10028A487 /* NextToArriveNavigationControllerStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB8D121F5D79C10028A487 /* NextToArriveNavigationControllerStateProvider.swift */; };
 		58EB8D151F5D7CD20028A487 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB8D141F5D7CD20028A487 /* BaseNavigationController.swift */; };
@@ -393,6 +400,13 @@
 		58E33F0D1F6098FE00C74B7C /* NextToArriveMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveMapViewController.swift; sourceTree = "<group>"; };
 		58E33F0F1F60995600C74B7C /* NextToArriveInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveInfoViewController.swift; sourceTree = "<group>"; };
 		58E33F111F60998F00C74B7C /* NextToArriveDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveDetailViewController.swift; sourceTree = "<group>"; };
+		58E33F131F61425600C74B7C /* NextToArriveProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveProvider.swift; sourceTree = "<group>"; };
+		58E33F151F6143E000C74B7C /* NextToArriveStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveStop.swift; sourceTree = "<group>"; };
+		58E33F171F61453000C74B7C /* NextToArriveTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveTrip.swift; sourceTree = "<group>"; };
+		58E33F191F6145C000C74B7C /* NextToArriveConnectionStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveConnectionStation.swift; sourceTree = "<group>"; };
+		58E33F1B1F61473800C74B7C /* VehicleLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleLocation.swift; sourceTree = "<group>"; };
+		58E33F1D1F6147DE00C74B7C /* CLLocationCoordinate2D+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Equatable.swift"; sourceTree = "<group>"; };
+		58E33F1F1F61494700C74B7C /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		58EB8D0E1F5D79530028A487 /* NextToArriveNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveNavigationController.swift; sourceTree = "<group>"; };
 		58EB8D121F5D79C10028A487 /* NextToArriveNavigationControllerStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveNavigationControllerStateProvider.swift; sourceTree = "<group>"; };
 		58EB8D141F5D7CD20028A487 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
@@ -543,6 +557,7 @@
 				58470C061F3F1EF300F3C9B5 /* StateLogger.swift */,
 				58470C0A1F3F2AD500F3C9B5 /* StateLogEntry.swift */,
 				581804BA1F3F8051002184E3 /* LoggingError.swift */,
+				58E33F1D1F6147DE00C74B7C /* CLLocationCoordinate2D+Equatable.swift */,
 			);
 			path = Utlities;
 			sourceTree = "<group>";
@@ -784,6 +799,7 @@
 				678F05231F5B7B6E00CC4D3C /* AddressProvider.swift */,
 				678F052F1F5B918300CC4D3C /* LocationProvider.swift */,
 				678D26C91F5CC83900D140CC /* FavoritesProvider.swift */,
+				58E33F131F61425600C74B7C /* NextToArriveProvider.swift */,
 			);
 			path = "State Providers";
 			sourceTree = "<group>";
@@ -1171,6 +1187,11 @@
 				58EB8D2A1F5D92170028A487 /* NextToArriveReducer.swift */,
 				58EB8D2E1F5D92A20028A487 /* NextToArriveActions.swift */,
 				58EB8D2C1F5D927E0028A487 /* NextToArriveScheduleReducer.swift */,
+				58E33F171F61453000C74B7C /* NextToArriveTrip.swift */,
+				58E33F1F1F61494700C74B7C /* File.swift */,
+				58E33F1B1F61473800C74B7C /* VehicleLocation.swift */,
+				58E33F191F6145C000C74B7C /* NextToArriveConnectionStation.swift */,
+				58E33F151F6143E000C74B7C /* NextToArriveStop.swift */,
 			);
 			path = NextToArrive;
 			sourceTree = "<group>";
@@ -1436,6 +1457,7 @@
 				5825319A1F407D380088D056 /* UserDefaultsLoader.swift in Sources */,
 				582F4EDD1F33B1120062A546 /* UpdateableFromViewModel.swift in Sources */,
 				58EB8D1F1F5D8A650028A487 /* BaseNavigationController+Styling.swift in Sources */,
+				58E33F201F61494700C74B7C /* File.swift in Sources */,
 				58E33F101F60995600C74B7C /* NextToArriveInfoViewController.swift in Sources */,
 				58EB8D211F5D8C270028A487 /* NextToArriveSelectTripViewModel.swift in Sources */,
 				678D26C61F5CC52300D140CC /* FavoritesReducer.swift in Sources */,
@@ -1460,6 +1482,7 @@
 				582F4ECC1F33B1120062A546 /* ScheduleTableViewCell.swift in Sources */,
 				585572861F39499D004ABCD6 /* Color+Septa.swift in Sources */,
 				582F4EBB1F33B1120062A546 /* AppDelegate.swift in Sources */,
+				58E33F1E1F6147DE00C74B7C /* CLLocationCoordinate2D+Equatable.swift in Sources */,
 				5844CA1F1F3BD9B700651223 /* NavigationState.swift in Sources */,
 				582F4ED21F33B1120062A546 /* SelectStopCellType.swift in Sources */,
 				582F4EBD1F33B1120062A546 /* SingleStringCell.swift in Sources */,
@@ -1486,6 +1509,7 @@
 				67075FC41F57858C008BB38C /* ScheduleStopState.swift in Sources */,
 				582F4ED81F33B1120062A546 /* SelectSchedulesViewController.swift in Sources */,
 				58FBB66A1F58717500E6532B /* SeptaTabBarImages.swift in Sources */,
+				58E33F141F61425600C74B7C /* NextToArriveProvider.swift in Sources */,
 				5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */,
 				676355011F5E326800CA7EAB /* AppState+Context.swift in Sources */,
 				58FBB66C1F5885D800E6532B /* TripIconView.swift in Sources */,
@@ -1513,6 +1537,7 @@
 				5814AA8A1F4359D000DF774A /* TripleTextDisplayable.swift in Sources */,
 				58DB04A51F558DD0005CC850 /* SearchRoutesModalHeaderViewController.swift in Sources */,
 				58E33F0E1F6098FE00C74B7C /* NextToArriveMapViewController.swift in Sources */,
+				58E33F181F61453000C74B7C /* NextToArriveTrip.swift in Sources */,
 				58EB8D1A1F5D7F350028A487 /* NextToArriveSelectTripStateProvider.swift in Sources */,
 				58DD1A861F5F148F002532DC /* NoRouteNeededCell.swift in Sources */,
 				58658D1E1F53298B00E67B4E /* DisplayAddress.swift in Sources */,
@@ -1540,6 +1565,7 @@
 				589A89DE1F52E7E8007329DB /* ScheduleStopEditReducer.swift in Sources */,
 				58EB8D331F5D98320028A487 /* NextToArriveScheduleDataProvider.swift in Sources */,
 				581DA54F1F3BF102006AEC39 /* ViewTransitionType.swift in Sources */,
+				58E33F1C1F61473800C74B7C /* VehicleLocation.swift in Sources */,
 				5840D6E01F37E5FB00C8CB76 /* ScheduleReducer.swift in Sources */,
 				58290E411F372B51000CCF3C /* AppState.swift in Sources */,
 				5825319E1F40940B0088D056 /* UserPreferencesProviderProtocol.swift in Sources */,
@@ -1551,6 +1577,7 @@
 				58E33F121F60998F00C74B7C /* NextToArriveDetailViewController.swift in Sources */,
 				678D26C41F5CC4A400D140CC /* FavoritesState.swift in Sources */,
 				58290E501F372DDC000CCF3C /* NavigationActions.swift in Sources */,
+				58E33F1A1F6145C000C74B7C /* NextToArriveConnectionStation.swift in Sources */,
 				678D26BF1F5C414800D140CC /* LocationServicesListener.swift in Sources */,
 				58EB8D2F1F5D92A20028A487 /* NextToArriveActions.swift in Sources */,
 				6749A46E1F53997D00AF6119 /* StopToSelect.swift in Sources */,
@@ -1563,6 +1590,7 @@
 				58DD1A8E1F600715002532DC /* NextToArriveViewModel+StartCell.swift in Sources */,
 				5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */,
 				58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */,
+				58E33F161F6143E000C74B7C /* NextToArriveStop.swift in Sources */,
 				58EB8D0F1F5D79530028A487 /* NextToArriveNavigationController.swift in Sources */,
 				58F444FC1F3D335400A93208 /* SeptaAction.swift in Sources */,
 				678F052C1F5B7CEC00CC4D3C /* AddressLookupReducer.swift in Sources */,

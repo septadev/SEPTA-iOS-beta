@@ -7,11 +7,15 @@
 //
 
 import Foundation
+import SeptaSchedule
 
 struct NextToArriveState {
     let scheduleState: ScheduleState
-    init(scheduleState: ScheduleState = ScheduleState()) {
+    let nextToArriveTrip: NextToArriveTrip?
+
+    init(scheduleState: ScheduleState, nextToArriveTrip: NextToArriveTrip? = nil) {
         self.scheduleState = scheduleState
+        self.nextToArriveTrip = nextToArriveTrip
     }
 }
 
@@ -20,6 +24,9 @@ func ==(lhs: NextToArriveState, rhs: NextToArriveState) -> Bool {
     var areEqual = true
 
     areEqual = lhs.scheduleState == rhs.scheduleState
+    guard areEqual else { return false }
+
+    areEqual = Optionals.optionalCompare(currentValue: lhs.nextToArriveTrip, newValue: rhs.nextToArriveTrip).equalityResult()
     guard areEqual else { return false }
 
     return areEqual

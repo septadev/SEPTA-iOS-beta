@@ -128,7 +128,7 @@
     </object>
     <object type="LMREQUEST" id="z110">
         <attribute name="uuid" type="string">FB6ED240-8974-4FC3-BBC0-BBC2753E94D0</attribute>
-        <attribute name="url" type="string">https://vnjb5kvq2b.execute-api.us-east-1.amazonaws.com/prod/realtimearrivals?destination=90222\u2600origin=90313\u2600type=RAIL</attribute>
+        <attribute name="url" type="string">https://vnjb5kvq2b.execute-api.us-east-1.amazonaws.com/prod/realtimearrivals?destination=90313\u2600origin=90222\u2600type=RAIL</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>

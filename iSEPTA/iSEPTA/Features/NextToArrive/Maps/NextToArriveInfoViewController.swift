@@ -10,6 +10,4 @@ import Foundation
 import UIKit
 
 class NextToArriveInfoViewController: UIViewController {
-
-
 }
