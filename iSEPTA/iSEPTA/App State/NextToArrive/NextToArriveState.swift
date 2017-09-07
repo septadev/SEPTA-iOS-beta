@@ -11,11 +11,11 @@ import SeptaSchedule
 
 struct NextToArriveState {
     let scheduleState: ScheduleState
-    let nextToArriveTrip: NextToArriveTrip?
+    let nextToArriveTrips: [NextToArriveTrip]
     let updateRequested: Bool
-    init(scheduleState: ScheduleState = ScheduleState(), nextToArriveTrip: NextToArriveTrip? = nil, updateRequested: Bool = false) {
+    init(scheduleState: ScheduleState = ScheduleState(), nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip](), updateRequested: Bool = false) {
         self.scheduleState = scheduleState
-        self.nextToArriveTrip = nextToArriveTrip
+        self.nextToArriveTrips = nextToArriveTrips
         self.updateRequested = updateRequested
     }
 }
@@ -27,7 +27,7 @@ func ==(lhs: NextToArriveState, rhs: NextToArriveState) -> Bool {
     areEqual = lhs.scheduleState == rhs.scheduleState
     guard areEqual else { return false }
 
-    areEqual = Optionals.optionalCompare(currentValue: lhs.nextToArriveTrip, newValue: rhs.nextToArriveTrip).equalityResult()
+    areEqual = lhs.nextToArriveTrips == rhs.nextToArriveTrips
     guard areEqual else { return false }
 
     return areEqual

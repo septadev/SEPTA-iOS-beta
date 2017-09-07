@@ -52,7 +52,7 @@ class RealTimeArrivalTests: XCTestCase {
     }()
 
     let scheduleRequest_bus: ScheduleRequest = {
-        ScheduleRequest.dummyRequest(transitMode: .bus, routeId: "22", startId: 18584, stopId: 809)
+        ScheduleRequest.dummyRequest(transitMode: .bus, routeId: "16", startId: 515, stopId: 136)
 
     }()
 

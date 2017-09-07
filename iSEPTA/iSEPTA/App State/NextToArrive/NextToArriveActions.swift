@@ -24,6 +24,11 @@ struct ClearNextToArriveData: NextToArriveAction {
     let description = "All next to arrive data should be cleared"
 }
 
+struct UpdateNextToArriveData: NextToArriveAction {
+    let nextToArriveTrips: [NextToArriveTrip]
+    let description = "New Data retrieved for Next to arrive"
+}
+
 struct NextToArrivePrerequisitesStatus: NextToArriveAction {
     let status: Bool
     let description = "Indicating whether prerequistes are complete to perform next to arrive request"

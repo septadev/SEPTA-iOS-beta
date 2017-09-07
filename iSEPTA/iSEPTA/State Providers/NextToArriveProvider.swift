@@ -38,7 +38,7 @@ class NextToArriveProvider: StoreSubscriber {
     }
 
     func mapArrivals(realTimeArrivals: [RealTimeArrival]) {
-        var trips = [NextToArriveTrip]()
+        var nextToArriveTrips = [NextToArriveTrip]()
         for realTimeArrival in realTimeArrivals {
             let startStop = mapStart(realTimeArrival: realTimeArrival)
             let endStop = mapEnd(realTimeArrival: realTimeArrival)
@@ -47,9 +47,12 @@ class NextToArriveProvider: StoreSubscriber {
 
             if let startStop = startStop, let endStop = endStop {
                 let nextToArriveTrip = NextToArriveTrip(startStop: startStop, endStop: endStop, vehicleLocation: vehicleLocation, connectionLocation: connectionLocation)
-                trips.append(nextToArriveTrip)
+                nextToArriveTrips.append(nextToArriveTrip)
             }
         }
+
+        let action = UpdateNextToArriveData(nextToArriveTrips: nextToArriveTrips)
+        store.dispatch(action)
     }
 
     func mapStart(realTimeArrival a: RealTimeArrival) -> NextToArriveStop? {
