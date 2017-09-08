@@ -81,16 +81,30 @@ open class KMLElement {
     static let regex = try! NSRegularExpression(pattern: "([-\\d\\.]+),([-\\d\\.]+)", options: [])
 
     class func parseCoordinates(_ element: AEXMLElement) -> [CLLocationCoordinate2D] {
+
         let coordinatesString = element.string
-        let matches: [NSTextCheckingResult] = regex.matches(in: coordinatesString, options: [], range: NSMakeRange(0, coordinatesString.count))
-        return matches.map { match in
-            let longitudeRange = match.range(at: 1)
-            let longitude = extractDegreesByRange(string: coordinatesString, range: longitudeRange)
-            let latitudeRange = match.range(at: 2)
-            let latitude = extractDegreesByRange(string: coordinatesString, range: latitudeRange)
+        let components = coordinatesString.components(separatedBy: NSCharacterSet.whitespacesAndNewlines)
+        let coordinateStrings: [String] = components.filter { !$0.isEmpty }
+
+        let coordinates: [CLLocationCoordinate2D] = coordinateStrings.map { string in
+            let comp = string.components(separatedBy: ",")
+
+            let longitude = CLLocationDegrees(comp[0])!
+            let latitude = CLLocationDegrees(comp[1])!
             return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         }
+        return coordinates
     }
+
+    //    let matches: [NSTextCheckingResult] = regex.matches(in: coordinatesString, options: [], range: NSMakeRange(0, coordinatesString.count))
+    //        let coordinates: [CLLocationCoordinate2D] = matches.map { match in
+    //            let longitudeRange = match.range(at: 1)
+    //            let longitude = extractDegreesByRange(string: coordinatesString, range: longitudeRange)
+    //            let latitudeRange = match.range(at: 2)
+    //            let latitude = extractDegreesByRange(string: coordinatesString, range: latitudeRange)
+    //            return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    //        }
+    //        return coordinates
 
     // return First emelent
     open func findElement<T: KMLElement>(_: T.Type) -> T! {

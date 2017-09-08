@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */; };
 		5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */; };
+		58126F671F631C0800A6E187 /* ColorPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F661F631C0800A6E187 /* ColorPointAnnotation.swift */; };
+		58126F6B1F631C3100A6E187 /* RouteOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F6A1F631C3100A6E187 /* RouteOverlay.swift */; };
+		58126F6D1F631C5100A6E187 /* RouteDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F6C1F631C5100A6E187 /* RouteDrawable.swift */; };
+		58126F6F1F631C8300A6E187 /* NextToArriveMapRouteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F6E1F631C8300A6E187 /* NextToArriveMapRouteViewModel.swift */; };
+		58126F711F631CB200A6E187 /* NextToArriveEndpointsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F701F631CB200A6E187 /* NextToArriveEndpointsViewModel.swift */; };
 		5814AA841F43589E00DF774A /* TripScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9B1F33B1120062A546 /* TripScheduleViewModel.swift */; };
 		5814AA891F4359CC00DF774A /* SingleStringDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5814AA861F4358D000DF774A /* SingleStringDisplayable.swift */; };
 		5814AA8A1F4359D000DF774A /* TripleTextDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5814AA851F4358D000DF774A /* TripleTextDisplayable.swift */; };
@@ -431,6 +436,11 @@
 
 /* Begin PBXFileReference section */
 		5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectedTableViewCell.swift; sourceTree = "<group>"; };
+		58126F661F631C0800A6E187 /* ColorPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPointAnnotation.swift; sourceTree = "<group>"; };
+		58126F6A1F631C3100A6E187 /* RouteOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteOverlay.swift; sourceTree = "<group>"; };
+		58126F6C1F631C5100A6E187 /* RouteDrawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDrawable.swift; sourceTree = "<group>"; };
+		58126F6E1F631C8300A6E187 /* NextToArriveMapRouteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveMapRouteViewModel.swift; sourceTree = "<group>"; };
+		58126F701F631CB200A6E187 /* NextToArriveEndpointsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveEndpointsViewModel.swift; sourceTree = "<group>"; };
 		5814AA851F4358D000DF774A /* TripleTextDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripleTextDisplayable.swift; sourceTree = "<group>"; };
 		5814AA861F4358D000DF774A /* SingleStringDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleStringDisplayable.swift; sourceTree = "<group>"; };
 		581804BA1F3F8051002184E3 /* LoggingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingError.swift; sourceTree = "<group>"; };
@@ -1523,7 +1533,12 @@
 				58B277901F62AAD500663507 /* kml */,
 				58B2778E1F62A9C800663507 /* KML.swift */,
 				58E33F0D1F6098FE00C74B7C /* NextToArriveMapViewController.swift */,
+				58126F701F631CB200A6E187 /* NextToArriveEndpointsViewModel.swift */,
+				58126F6E1F631C8300A6E187 /* NextToArriveMapRouteViewModel.swift */,
 				58E33F0F1F60995600C74B7C /* NextToArriveInfoViewController.swift */,
+				58126F6C1F631C5100A6E187 /* RouteDrawable.swift */,
+				58126F6A1F631C3100A6E187 /* RouteOverlay.swift */,
+				58126F661F631C0800A6E187 /* ColorPointAnnotation.swift */,
 				58E33F111F60998F00C74B7C /* NextToArriveDetailViewController.swift */,
 				6763550E1F628C3E00CA7EAB /* nextToArriveDetail.storyboard */,
 			);
@@ -2160,11 +2175,14 @@
 				582F4ED81F33B1120062A546 /* SelectSchedulesViewController.swift in Sources */,
 				58B2778B1F629FAA00663507 /* DummyData.swift in Sources */,
 				58FBB66A1F58717500E6532B /* SeptaTabBarImages.swift in Sources */,
+				58126F711F631CB200A6E187 /* NextToArriveEndpointsViewModel.swift in Sources */,
 				58E33F141F61425600C74B7C /* NextToArriveProvider.swift in Sources */,
 				5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */,
 				676355011F5E326800CA7EAB /* AppState+Context.swift in Sources */,
+				58126F671F631C0800A6E187 /* ColorPointAnnotation.swift in Sources */,
 				58FBB66C1F5885D800E6532B /* TripIconView.swift in Sources */,
 				58DD1A901F600758002532DC /* NextToArriveViewModel+StopCell.swift in Sources */,
+				58126F6B1F631C3100A6E187 /* RouteOverlay.swift in Sources */,
 				67EA2B611F518CA600C0567A /* SearchModalHeaderDelegate.swift in Sources */,
 				678F05371F5BFFDC00CC4D3C /* LocationReducer.swift in Sources */,
 				5814AA891F4359CC00DF774A /* SingleStringDisplayable.swift in Sources */,
@@ -2172,6 +2190,7 @@
 				58E33F261F61619500C74B7C /* SeptaNetwork.swift in Sources */,
 				676354FF1F5E2C2C00CA7EAB /* FilterableStop.swift in Sources */,
 				67F757B31F48729C00D3A4EE /* UIView+Util.swift in Sources */,
+				58126F6F1F631C8300A6E187 /* NextToArriveMapRouteViewModel.swift in Sources */,
 				67C567271F59695900FF6203 /* Favorite.swift in Sources */,
 				582F4EC71F33B1120062A546 /* SchedulesRoutesViewModel.swift in Sources */,
 				678F05301F5B918300CC4D3C /* LocationProvider.swift in Sources */,
@@ -2267,6 +2286,7 @@
 				589A89D71F50BB73007329DB /* SelectStopCell.swift in Sources */,
 				6749A4711F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift in Sources */,
 				674FDBC51F57390D00CA67D2 /* Route+Color.swift in Sources */,
+				58126F6D1F631C5100A6E187 /* RouteDrawable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

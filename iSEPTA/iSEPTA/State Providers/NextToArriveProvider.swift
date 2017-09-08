@@ -42,6 +42,7 @@ class NextToArriveProvider: StoreSubscriber {
     }
 
     func mapArrivals(realTimeArrivals: [RealTimeArrival]) {
+
         var nextToArriveTrips = [NextToArriveTrip]()
         for realTimeArrival in realTimeArrivals {
             let startStop = mapStart(realTimeArrival: realTimeArrival)
@@ -137,6 +138,7 @@ class NextToArriveProvider: StoreSubscriber {
         let transitType = TransitType.fromTransitMode(scheduleRequest.transitMode)
         let originId = String(startId)
         let destinationId = String(stopId)
+        print("About to retrieve next to arrive")
         client.getRealTimeArrivals(originId: originId, destinationId: destinationId, transitType: transitType, route: route).then { realTimeArrivals -> Void in
             guard let arrivals = realTimeArrivals?.arrivals else { return }
             completion?(arrivals)

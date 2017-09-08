@@ -11,4 +11,13 @@ import UIKit
 
 class NextToArriveDetailViewController: UIViewController, IdentifiableController {
     static var viewController: ViewController = .nextToArriveDetailController
+
+    override func didMove(toParentViewController parent: UIViewController?) {
+        super.didMove(toParentViewController: parent)
+
+        if parent == navigationController?.parent {
+            let action = UserPoppedViewController(description: "TripScheduleViewController has been popped")
+            store.dispatch(action)
+        }
+    }
 }

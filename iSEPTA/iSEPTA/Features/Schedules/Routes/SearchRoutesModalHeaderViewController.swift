@@ -23,6 +23,7 @@ class SearchRoutesModalHeaderViewController: UIViewController {
     @IBOutlet weak var textField: UITextField! {
         didSet {
             textField.delegate = textFieldDelegate
+            textField.isEnabled = true
         }
     }
 

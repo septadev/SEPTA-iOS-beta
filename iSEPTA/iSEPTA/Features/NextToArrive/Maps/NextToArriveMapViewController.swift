@@ -13,65 +13,61 @@ import MapKit
 import SeptaSchedule
 import ReSwift
 
-class RouteOverlay: KMLOverlayPolyline {
+class NextToArriveMapViewController: UIViewController, RouteDrawable {
 
-    var routeId: String?
-}
+    var nextToArriveMapRouteViewModel: NextToArriveMapRouteViewModel!
+    var nextToArriveMapEndpointsViewModel: NextToArriveMapEndpointsViewModel!
 
-struct RouteMap {
-    let maxLat: CLLocationDegrees
-    let minLat: CLLocationDegrees
-    let maxLon: CLLocationDegrees
-    let minLon: CLLocationDegrees
-
-    var center: CLLocationCoordinate2D {
-        return CLLocationCoordinate2D(latitude: (maxLat + minLat) / 2.0, longitude: (maxLon + minLon) / 2.0)
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        nextToArriveMapRouteViewModel = NextToArriveMapRouteViewModel()
+        nextToArriveMapRouteViewModel.delegate = self
+        nextToArriveMapEndpointsViewModel = NextToArriveMapEndpointsViewModel()
+        nextToArriveMapEndpointsViewModel.delegate = self
     }
 
-    var coordinateSpan: MKCoordinateSpan {
-        return MKCoordinateSpan(latitudeDelta: ((maxLat - minLat) / 2.0), longitudeDelta: ((maxLon - minLon) / 2.0))
+    @IBOutlet private weak var mapView: MKMapView! {
+        didSet {
+            addOverlaysToMap()
+            addScheduleRequestToMap()
+        }
     }
 
-    var region: MKCoordinateRegion {
-        return MKCoordinateRegion(center: center, span: coordinateSpan)
-    }
-}
+    private var overlaysToAdd = [MKOverlay]() {
+        willSet {
+            updateMapRect(overlays: newValue)
+        }
 
-@objc protocol RouteDrawable: AnyObject {
-    func drawRoute(routeId: String)
-}
-
-class NextToArriveMapViewController: UIViewController, MKMapViewDelegate, RouteDrawable {
-
-    @IBOutlet var primaryRouteViewModel: NextToArriveMapPrimaryRouteViewModel!
-    @IBOutlet var secondaryRouteViewModel: NextToArriveMapSecondaryRouteViewModel!
-
-    @IBOutlet weak var mapView: MKMapView!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        mapView.delegate = self
+        didSet {
+            guard let _ = mapView else { return }
+            addOverlaysToMap()
+            overlaysToAdd.removeAll()
+        }
     }
 
-    func mapRectForCoordinateRegion(region: MKCoordinateRegion) -> MKMapRect {
-        let topLeft = CLLocationCoordinate2D(latitude: region.center.latitude + (region.span.latitudeDelta / 2), longitude: region.center.longitude - (region.span.longitudeDelta / 2))
-        let bottomRight = CLLocationCoordinate2D(latitude: region.center.latitude - (region.span.latitudeDelta / 2), longitude: region.center.longitude + (region.span.longitudeDelta / 2))
-
-        let a = MKMapPointForCoordinate(topLeft)
-        let b = MKMapPointForCoordinate(bottomRight)
-
-        return MKMapRect(origin: MKMapPoint(x: min(a.x, b.x), y: min(a.y, b.y)), size: MKMapSize(width: abs(a.x - b.x), height: abs(a.y - b.y)))
+    private var scheduleRequest: ScheduleRequest? {
+        didSet {
+            guard let _ = mapView else { return }
+            addScheduleRequestToMap()
+        }
     }
 
-    func mapView(_: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        guard let routeOverlay = overlay as? RouteOverlay, let routeId = routeOverlay.routeId else { return MKOverlayRenderer(overlay: overlay) }
-        let renderer: MKPolylineRenderer = MKPolylineRenderer(polyline: routeOverlay)
+    var mapRect = MKMapRectNull
 
-        renderer.strokeColor = Route.colorForRouteId(routeId, transitMode: .bus)
-        renderer.lineWidth = 4.0
+    func updateMapRect(overlays: [MKOverlay]) {
+        for overlay in overlays {
+            mapRect = MKMapRectUnion(mapRect, overlay.boundingMapRect)
+        }
+    }
 
-        return renderer
+    func addOverlaysToMap() {
+        mapView.addOverlays(overlaysToAdd)
+        updateVisibleMap()
+    }
+
+    func updateVisibleMap() {
+        let expandedRect = mapView.mapRectThatFits(mapRect, edgePadding: UIEdgeInsetsMake(10, 10, 10, 10))
+        mapView.setVisibleMapRect(expandedRect, animated: false)
     }
 
     func drawRoute(routeId: String) {
@@ -79,20 +75,37 @@ class NextToArriveMapViewController: UIViewController, MKMapViewDelegate, RouteD
         parseKMLForRoute(url: url, routeId: routeId)
     }
 
+    func drawTrip(scheduleRequest: ScheduleRequest) {
+        if self.scheduleRequest == nil {
+            self.scheduleRequest = scheduleRequest
+        }
+    }
+
+    func addScheduleRequestToMap() {
+        guard let scheduleRequest = scheduleRequest,
+            let selectedStart = scheduleRequest.selectedStart,
+            let selectedEnd = scheduleRequest.selectedEnd else { return }
+        addStopToMap(stop: selectedStart, pinColor: UIColor.green)
+        addStopToMap(stop: selectedEnd, pinColor: UIColor.red)
+        updateVisibleMap()
+    }
+
+    func addStopToMap(stop: Stop, pinColor: UIColor) {
+        let annotation = ColorPointAnnotation(pinColor: pinColor)
+        annotation.coordinate = CLLocationCoordinate2D(latitude: stop.stopLatitude, longitude: stop.stopLongitude)
+        annotation.title = stop.stopName
+        mapView.addAnnotation(annotation)
+        let mapPoint = MKMapPointForCoordinate(annotation.coordinate)
+        let annotationMapRect = MKMapRect(origin: mapPoint, size: MKMapSize(width: 1000, height: 1000))
+        mapRect = MKMapRectUnion(mapRect, annotationMapRect)
+    }
+
     func parseKMLForRoute(url: URL, routeId: String) {
-        var mapRect = MKMapRectNull
+        print("Beginning to parse")
         KMLDocument.parse(url) { [unowned self] kml in
             guard let overlays = kml.overlays as? [KMLOverlayPolyline] else { return }
             let routeOverlays = self.mapOverlaysToRouteOverlays(routeId: routeId, overlays: overlays)
-
-            for overlay in routeOverlays {
-                let overlayRegion = MKCoordinateRegionMakeWithDistance(overlay.coordinate, 1000, 1000)
-                let overlayMapRect = self.mapRectForCoordinateRegion(region: overlayRegion)
-                mapRect = MKMapRectUnion(mapRect, overlayMapRect)
-            }
-            self.mapView.addOverlays(routeOverlays)
-            let expandedRect = self.mapView.mapRectThatFits(mapRect, edgePadding: UIEdgeInsetsMake(10, 10, 10, 10))
-            self.mapView.setVisibleMapRect(expandedRect, animated: false)
+            self.overlaysToAdd = self.overlaysToAdd + routeOverlays
         }
     }
 
@@ -115,58 +128,34 @@ class NextToArriveMapViewController: UIViewController, MKMapViewDelegate, RouteD
     }
 }
 
-/*
+extension NextToArriveMapViewController: MKMapViewDelegate {
 
- import ObjectiveC
+    func mapView(_: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        guard let routeOverlay = overlay as? RouteOverlay, let routeId = routeOverlay.routeId else { return MKOverlayRenderer(overlay: overlay) }
+        let renderer: MKPolylineRenderer = MKPolylineRenderer(polyline: routeOverlay)
 
- // Declare a global var to produce a unique address as the assoc object handle
- var AssociatedObjectHandle: UInt8 = 0
+        renderer.strokeColor = Route.colorForRouteId(routeId, transitMode: .bus)
+        renderer.lineWidth = 4.0
 
- extension MyClass {
- var stringProperty:String {
- get {
- return objc_getAssociatedObject(self, &AssociatedObjectHandle) as String
- }
- set {
- objc_setAssociatedObject(self, &AssociatedObjectHandle, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
- }
- }
- }
- */
-
-class NextToArriveMapPrimaryRouteViewModel: NSObject, StoreSubscriber {
-
-    @IBOutlet weak var nextToArriveMapViewController: RouteDrawable!
-    typealias StoreSubscriberStateType = [NextToArriveTrip]
-
-    override func awakeFromNib() {
-        subscribe()
-        super.awakeFromNib()
+        return renderer
     }
 
-    func subscribe() {
-
-        store.subscribe(self) {
-            $0.select {
-                $0.nextToArriveState.nextToArriveTrips
-            }.skipRepeats { $0 == $1 }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
         }
-    }
 
-    private func unsubscribe() {
-        store.unsubscribe(self)
-    }
+        let reuseId = "pin"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
 
-    deinit {
-        unsubscribe()
-    }
+            let colorPointAnnotation = annotation as! ColorPointAnnotation
+            pinView?.pinTintColor = colorPointAnnotation.pinColor
+        } else {
+            pinView?.annotation = annotation
+        }
 
-    var currentRouteId = ""
-    func newState(state: StoreSubscriberStateType) {
-        guard let firstTrip = state.first, let routeId = firstTrip.startStop.routeId else { return }
-        nextToArriveMapViewController.drawRoute(routeId: routeId)
+        return pinView
     }
-}
-
-class NextToArriveMapSecondaryRouteViewModel: NSObject {
 }
