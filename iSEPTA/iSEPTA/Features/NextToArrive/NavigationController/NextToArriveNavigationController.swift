@@ -17,7 +17,7 @@ class NextToArriveNavigationController: BaseNavigationController {
     }
 
     func initializeNavStackState() {
-        currentStackState = NavigationStackState(viewControllers: [.nextToArriveSelectTrip], modalViewController: nil)
+        currentStackState = NavigationStackState(viewControllers: [.nextToArriveController], modalViewController: nil)
 
         let action = InitializeNavigationState(navigationController: .nextToArrive, navigationStackState: currentStackState, description: "Initializing stack state for next to arrive")
         store.dispatch(action)

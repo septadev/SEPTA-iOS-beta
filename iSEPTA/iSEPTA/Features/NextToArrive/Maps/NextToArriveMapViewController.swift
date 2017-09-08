@@ -9,6 +9,8 @@
 import Foundation
 import AEXML
 import UIKit
+import MapKit
 
-class NextToArriveMapViewController: UIViewController {
+class NextToArriveMapViewController: UIViewController, MKMapViewDelegate {
+    @IBOutlet weak var mapView: MKMapView!
 }

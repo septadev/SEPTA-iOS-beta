@@ -1,7 +1,100 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Next To Arrive Detail View Controller-->
+        <scene sceneID="QEv-gx-hNx">
+            <objects>
+                <viewController storyboardIdentifier="nextToArriveDetailController" id="tkq-Rq-kOk" customClass="NextToArriveDetailViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qvw-Ja-qon">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sea-lE-H6m" userLabel="mapView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="313.5"/>
+                                <connections>
+                                    <segue destination="rct-ch-dKT" kind="embed" id="Yl0-TR-k5C"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Okh-dP-SyD" userLabel="InfoView">
+                                <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
+                                <connections>
+                                    <segue destination="GjY-a8-64h" kind="embed" id="dw6-cp-OOw"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3Tc-6p-fL6" firstAttribute="bottom" secondItem="Okh-dP-SyD" secondAttribute="bottom" id="C9f-dm-L7A" userLabel="InfoViewBottom"/>
+                            <constraint firstItem="3Tc-6p-fL6" firstAttribute="trailing" secondItem="Okh-dP-SyD" secondAttribute="trailing" id="GSB-uz-xUO" userLabel="InfoViewRight"/>
+                            <constraint firstItem="3Tc-6p-fL6" firstAttribute="trailing" secondItem="Sea-lE-H6m" secondAttribute="trailing" id="SJX-kq-HWL" userLabel="MapViewRight"/>
+                            <constraint firstItem="Okh-dP-SyD" firstAttribute="leading" secondItem="3Tc-6p-fL6" secondAttribute="leading" id="bT9-VG-llq" userLabel="InfoViewLeft"/>
+                            <constraint firstItem="Sea-lE-H6m" firstAttribute="top" secondItem="3Tc-6p-fL6" secondAttribute="top" id="jdz-AJ-2jX" userLabel="MapViewTop"/>
+                            <constraint firstItem="Okh-dP-SyD" firstAttribute="top" secondItem="Sea-lE-H6m" secondAttribute="bottom" id="mnx-qo-6az" userLabel="InfoViewTopToMapViewBottom"/>
+                            <constraint firstItem="Okh-dP-SyD" firstAttribute="height" secondItem="Qvw-Ja-qon" secondAttribute="height" multiplier="0.5" id="p0q-B7-fKT" userLabel="InfoViewHeight"/>
+                            <constraint firstItem="Sea-lE-H6m" firstAttribute="leading" secondItem="3Tc-6p-fL6" secondAttribute="leading" id="uap-N7-6zJ" userLabel="MapViewLeft"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3Tc-6p-fL6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HAO-bO-wcr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-543" y="61"/>
+        </scene>
+        <!--Next To Arrive Info View Controller-->
+        <scene sceneID="ZUe-4d-PvN">
+            <objects>
+                <viewController id="GjY-a8-64h" customClass="NextToArriveInfoViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qY6-1g-9Xv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="337"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="ZlA-14-XfZ"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="337"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jiy-sR-bTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="406" y="12"/>
+        </scene>
+        <!--Next To Arrive Map View Controller-->
+        <scene sceneID="aR1-NF-2Q4">
+            <objects>
+                <viewController id="rct-ch-dKT" customClass="NextToArriveMapViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U3E-wU-Rb0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="337"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="H6h-6Q-csi">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="337"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vxh-Hj-gKa" firstAttribute="trailing" secondItem="H6h-6Q-csi" secondAttribute="trailing" id="IoX-sX-DnD" userLabel="MapViewRight"/>
+                            <constraint firstItem="H6h-6Q-csi" firstAttribute="leading" secondItem="vxh-Hj-gKa" secondAttribute="leading" id="RAq-Ds-59Y" userLabel="MapViewLeft"/>
+                            <constraint firstItem="vxh-Hj-gKa" firstAttribute="bottom" secondItem="H6h-6Q-csi" secondAttribute="bottom" id="ZvK-OK-8Ck" userLabel="MapViewBottom"/>
+                            <constraint firstItem="H6h-6Q-csi" firstAttribute="top" secondItem="vxh-Hj-gKa" secondAttribute="top" id="l8X-B1-Dfh" userLabel="MapViewTop"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vxh-Hj-gKa"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="337"/>
+                    <connections>
+                        <outlet property="mapView" destination="H6h-6Q-csi" id="VpX-Ii-08B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k8A-2R-OLK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="406" y="-436"/>
+        </scene>
+    </scenes>
 </document>

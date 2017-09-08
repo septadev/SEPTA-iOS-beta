@@ -12,7 +12,9 @@ enum ViewController: String, Equatable {
     case tripScheduleController
 
     // -- next to arrive
-    case nextToArriveSelectTrip
+
+    case nextToArriveController
+    case nextToArriveDetailController
 
     func storyboardIdentifier() -> String {
         switch self {
@@ -28,9 +30,10 @@ enum ViewController: String, Equatable {
             return "schedules"
         case .tripScheduleController:
             return "schedules"
-
-        case .nextToArriveSelectTrip:
+        case .nextToArriveController:
             return "nextToArrive"
+        case .nextToArriveDetailController:
+            return "nextToArriveDetail"
         }
     }
 }

@@ -9,5 +9,6 @@
 import Foundation
 import UIKit
 
-class NextToArriveDetailViewController: UIViewController {
+class NextToArriveDetailViewController: UIViewController, IdentifiableController {
+    static var viewController: ViewController = .nextToArriveDetailController
 }

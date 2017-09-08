@@ -171,6 +171,7 @@
 		676355051F5E9A0300CA7EAB /* SchedulesViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676355041F5E9A0300CA7EAB /* SchedulesViewModelDelegate.swift */; };
 		676355071F5EAD5900CA7EAB /* SubscriberUnsubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676355061F5EAD5900CA7EAB /* SubscriberUnsubscriber.swift */; };
 		676355091F5EB2C700CA7EAB /* StopWithDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676355081F5EB2C700CA7EAB /* StopWithDistance.swift */; };
+		6763550F1F628C3E00CA7EAB /* nextToArriveDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6763550E1F628C3E00CA7EAB /* nextToArriveDetail.storyboard */; };
 		678D26BF1F5C414800D140CC /* LocationServicesListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26BE1F5C414800D140CC /* LocationServicesListener.swift */; };
 		678D26C41F5CC4A400D140CC /* FavoritesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26C31F5CC4A400D140CC /* FavoritesState.swift */; };
 		678D26C61F5CC52300D140CC /* FavoritesReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26C51F5CC52300D140CC /* FavoritesReducer.swift */; };
@@ -457,6 +458,7 @@
 		676355041F5E9A0300CA7EAB /* SchedulesViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesViewModelDelegate.swift; sourceTree = "<group>"; };
 		676355061F5EAD5900CA7EAB /* SubscriberUnsubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriberUnsubscriber.swift; sourceTree = "<group>"; };
 		676355081F5EB2C700CA7EAB /* StopWithDistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWithDistance.swift; sourceTree = "<group>"; };
+		6763550E1F628C3E00CA7EAB /* nextToArriveDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = nextToArriveDetail.storyboard; sourceTree = "<group>"; };
 		678D26BE1F5C414800D140CC /* LocationServicesListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServicesListener.swift; sourceTree = "<group>"; };
 		678D26C31F5CC4A400D140CC /* FavoritesState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesState.swift; sourceTree = "<group>"; };
 		678D26C51F5CC52300D140CC /* FavoritesReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesReducer.swift; sourceTree = "<group>"; };
@@ -671,7 +673,6 @@
 			isa = PBXGroup;
 			children = (
 				58D5D22A1F6098160016C382 /* Maps */,
-				58EB8D261F5D904A0028A487 /* TransitModeToolbar */,
 				58EB8D1B1F5D7F4E0028A487 /* NavigationController */,
 				58EB8D181F5D7ED70028A487 /* SelectTrip */,
 				582F4E911F33B1120062A546 /* nextToArrive.storyboard */,
@@ -1051,6 +1052,7 @@
 				58E33F0D1F6098FE00C74B7C /* NextToArriveMapViewController.swift */,
 				58E33F0F1F60995600C74B7C /* NextToArriveInfoViewController.swift */,
 				58E33F111F60998F00C74B7C /* NextToArriveDetailViewController.swift */,
+				6763550E1F628C3E00CA7EAB /* nextToArriveDetail.storyboard */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -1197,13 +1199,6 @@
 				58EB8D1C1F5D85F50028A487 /* NavigationControllerBaseStateProvider.swift */,
 			);
 			path = NavigationController;
-			sourceTree = "<group>";
-		};
-		58EB8D261F5D904A0028A487 /* TransitModeToolbar */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TransitModeToolbar;
 			sourceTree = "<group>";
 		};
 		58EB8D271F5D90A40028A487 /* NextToArrive */ = {
@@ -1401,6 +1396,7 @@
 				582F4ED41F33B1120062A546 /* SelectStopsFooterView.xib in Resources */,
 				582F4ECD1F33B1120062A546 /* schedules.storyboard in Resources */,
 				582F4EC01F33B1120062A546 /* alerts.storyboard in Resources */,
+				6763550F1F628C3E00CA7EAB /* nextToArriveDetail.storyboard in Resources */,
 				582F4EC41F33B1120062A546 /* nextToArrive.storyboard in Resources */,
 				582F4EDE1F33B1120062A546 /* Main.storyboard in Resources */,
 				582F4EC31F33B1120062A546 /* favorites.storyboard in Resources */,

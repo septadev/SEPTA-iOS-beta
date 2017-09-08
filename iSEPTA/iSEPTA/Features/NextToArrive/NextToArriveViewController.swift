@@ -52,9 +52,8 @@ class NextToArriveViewController: BaseNonModalViewController, IdentifiableContro
     }
 
     func ViewSchedulesButtonTapped() {
-        //        let action = PushViewController(viewController: .tripScheduleController, description: "Show Trip Schedule")
-        //        store.dispatch(action)
-        UIAlert.presentComingSoonAlertFrom(self)
+        let action = PushViewController(viewController: .nextToArriveDetailController, description: "Show Trip Schedule")
+        store.dispatch(action)
     }
 }
 

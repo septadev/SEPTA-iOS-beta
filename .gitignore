@@ -4,8 +4,8 @@
 
 **/xcuserdata/
 
-/Carthage/Build
+/Carthage/Build/
 /iSEPTA/Build
 /Utilities/format.log
 Carthage/Checkouts/
-Carthage
+Carthage/
