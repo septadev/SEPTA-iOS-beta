@@ -72,15 +72,24 @@ open class KMLElement {
         }
     }
 
+    static func extractDegreesByRange(string: String, range: NSRange) -> CLLocationDegrees {
+        let startIndex = string.index(string.startIndex, offsetBy: range.location)
+        let endIndex = string.index(startIndex, offsetBy: range.length)
+        return CLLocationDegrees(String(string[startIndex ..< endIndex]))!
+    }
+
+    static let regex = try! NSRegularExpression(pattern: "([-\\d\\.]+),([-\\d\\.]+)", options: [])
+
     class func parseCoordinates(_ element: AEXMLElement) -> [CLLocationCoordinate2D] {
-        var coordinates: [CLLocationCoordinate2D] = []
-        let lines: [String] = element.string.components(separatedBy: CharacterSet.whitespacesAndNewlines)
-        for line in lines {
-            let points: [String] = line.components(separatedBy: ",")
-            assert(points.count >= 2, "points lenth is \(points)")
-            coordinates.append(CLLocationCoordinate2DMake(atof(points[1]), atof(points[0])))
+        let coordinatesString = element.string
+        let matches: [NSTextCheckingResult] = regex.matches(in: coordinatesString, options: [], range: NSMakeRange(0, coordinatesString.count))
+        return matches.map { match in
+            let longitudeRange = match.range(at: 1)
+            let longitude = extractDegreesByRange(string: coordinatesString, range: longitudeRange)
+            let latitudeRange = match.range(at: 2)
+            let latitude = extractDegreesByRange(string: coordinatesString, range: latitudeRange)
+            return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         }
-        return coordinates
     }
 
     // return First emelent

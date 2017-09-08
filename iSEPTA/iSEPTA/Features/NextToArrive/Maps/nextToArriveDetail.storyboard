@@ -90,9 +90,17 @@
                     <size key="freeformSize" width="375" height="337"/>
                     <connections>
                         <outlet property="mapView" destination="H6h-6Q-csi" id="VpX-Ii-08B"/>
+                        <outlet property="primaryRouteViewModel" destination="6b3-SO-3WN" id="Ew9-Ek-yJP"/>
+                        <outlet property="secondaryRouteViewModel" destination="77l-uL-4IR" id="naR-v0-mx2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k8A-2R-OLK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="6b3-SO-3WN" customClass="NextToArriveMapPrimaryRouteViewModel" customModule="Septa" customModuleProvider="target">
+                    <connections>
+                        <outlet property="nextToArriveMapViewController" destination="rct-ch-dKT" id="E9S-hL-4h9"/>
+                    </connections>
+                </customObject>
+                <customObject id="77l-uL-4IR" customClass="NextToArriveMapSecondaryRouteViewModel" customModule="Septa" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="406" y="-436"/>
         </scene>

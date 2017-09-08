@@ -11,6 +11,7 @@ import AEXML
 import UIKit
 import MapKit
 import SeptaSchedule
+import ReSwift
 
 class RouteOverlay: KMLOverlayPolyline {
 
@@ -36,14 +37,21 @@ struct RouteMap {
     }
 }
 
-class NextToArriveMapViewController: UIViewController, MKMapViewDelegate {
+@objc protocol RouteDrawable: AnyObject {
+    func drawRoute(routeId: String)
+}
+
+class NextToArriveMapViewController: UIViewController, MKMapViewDelegate, RouteDrawable {
+
+    @IBOutlet var primaryRouteViewModel: NextToArriveMapPrimaryRouteViewModel!
+    @IBOutlet var secondaryRouteViewModel: NextToArriveMapSecondaryRouteViewModel!
+
     @IBOutlet weak var mapView: MKMapView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         mapView.delegate = self
-        drawRoute(routeId: "44")
     }
 
     func mapRectForCoordinateRegion(region: MKCoordinateRegion) -> MKMapRect {
@@ -126,8 +134,39 @@ class NextToArriveMapViewController: UIViewController, MKMapViewDelegate {
  }
  */
 
-class NextToArriveMapPrimaryRouteViewModel {
+class NextToArriveMapPrimaryRouteViewModel: NSObject, StoreSubscriber {
+
+    @IBOutlet weak var nextToArriveMapViewController: RouteDrawable!
+    typealias StoreSubscriberStateType = [NextToArriveTrip]
+
+    override func awakeFromNib() {
+        subscribe()
+        super.awakeFromNib()
+    }
+
+    func subscribe() {
+
+        store.subscribe(self) {
+            $0.select {
+                $0.nextToArriveState.nextToArriveTrips
+            }.skipRepeats { $0 == $1 }
+        }
+    }
+
+    private func unsubscribe() {
+        store.unsubscribe(self)
+    }
+
+    deinit {
+        unsubscribe()
+    }
+
+    var currentRouteId = ""
+    func newState(state: StoreSubscriberStateType) {
+        guard let firstTrip = state.first, let routeId = firstTrip.startStop.routeId else { return }
+        nextToArriveMapViewController.drawRoute(routeId: routeId)
+    }
 }
 
-class NextToArriveMapSecondaryRouteViewModel {
+class NextToArriveMapSecondaryRouteViewModel: NSObject {
 }

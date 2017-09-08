@@ -65,8 +65,8 @@ struct NextToArriveReducer {
         return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: action.nextToArriveTrips, updateRequested: false)
     }
 
-    static func reduceNextToArrivePrerequisitesStatus(action _: NextToArrivePrerequisitesStatus, state: NextToArriveState) -> NextToArriveState {
-        return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: state.nextToArriveTrips, updateRequested: true)
+    static func reduceNextToArrivePrerequisitesStatus(action: NextToArrivePrerequisitesStatus, state: NextToArriveState) -> NextToArriveState {
+        return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: state.nextToArriveTrips, updateRequested: action.status)
     }
 
     static func reduceViewScheduleData(action _: ViewScheduleDataInNextToArrive, state: NextToArriveState) -> NextToArriveState {

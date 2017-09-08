@@ -20,6 +20,8 @@ class NextToArriveProvider: StoreSubscriber {
 
     let client = SEPTAApiClient.defaultClient(url: SeptaNetwork.sharedInstance.url, apiKey: SeptaNetwork.sharedInstance.apiKey)
 
+    let scheduleRequestWatcher = NextToArriveScheduleRequestWatcher()
+
     private init() {
 
         subscribe()
@@ -29,9 +31,11 @@ class NextToArriveProvider: StoreSubscriber {
         unsubscribe()
     }
 
+    var currentUpdateStatus = false
     func newState(state: Bool) {
         let updateRequested = state
-        if updateRequested {
+        if updateRequested && currentUpdateStatus == false {
+            currentUpdateStatus = true
             let scheduleRequest = store.state.nextToArriveState.scheduleState.scheduleRequest
             retrieveNextToArrive(scheduleRequest: scheduleRequest, completion: mapArrivals)
         }
