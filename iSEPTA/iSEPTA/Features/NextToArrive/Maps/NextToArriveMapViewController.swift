@@ -11,6 +11,20 @@ import AEXML
 import UIKit
 import MapKit
 
+class RouteOverlay: NSObject, MKOverlay {
+    var coordinate: CLLocationCoordinate2D
+
+    var boundingMapRect: MKMapRect
+
+    var routeId: String
+
+    init(routeId: String, boundingMapRect: MKMapRect, coordinate: CLLocationCoordinate2D) {
+        self.coordinate = coordinate
+        self.boundingMapRect = boundingMapRect
+        self.routeId = routeId
+    }
+}
+
 struct RouteMap {
     let maxLat: CLLocationDegrees
     let minLat: CLLocationDegrees
@@ -35,25 +49,9 @@ class NextToArriveMapViewController: UIViewController, MKMapViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let routeMap = RouteMap(maxLat: 40.040856, minLat: 39.950876, maxLon: -75.14876, minLon: -75.289491)
-        mapView.region = routeMap.region
-
-        let url = Bundle.main.url(forResource: "44", withExtension: "kml")
-
-        var mapRect = MKMapRectNull
 
         mapView.delegate = self
-        KMLDocument.parse(url!, callback: { [unowned self] kml in
-            for overlay in kml.overlays {
-                let overlayRegion = MKCoordinateRegionMakeWithDistance(overlay.coordinate, 1000, 1000)
-                let overlayMapRect = self.mapRectForCoordinateRegion(region: overlayRegion)
-                mapRect = MKMapRectUnion(mapRect, overlayMapRect)
-            }
-            self.mapView.addOverlays(kml.overlays)
-            let expandedRect = self.mapView.mapRectThatFits(mapRect, edgePadding: UIEdgeInsetsMake(10, 10, 10, 10))
-            self.mapView.setVisibleMapRect(expandedRect, animated: false)
-        }
-        )
+        drawRoute(routeId: "44")
     }
 
     func mapRectForCoordinateRegion(region: MKCoordinateRegion) -> MKMapRect {
@@ -76,5 +74,38 @@ class NextToArriveMapViewController: UIViewController, MKMapViewDelegate {
         return renderer
     }
 
-    // 40.040856    39.950876    -75.14876    -75.289491
+    func drawRoute(routeId: String) {
+        guard let url = locateKMLFile(routeId: routeId) else { return }
+        parseKMLForRoute(url: url, routeId: routeId)
+    }
+
+    func parseKMLForRoute(url: URL, routeId _: String) {
+        var mapRect = MKMapRectNull
+        KMLDocument.parse(url) { [unowned self] kml in
+            for overlay in kml.overlays {
+                let overlayRegion = MKCoordinateRegionMakeWithDistance(overlay.coordinate, 1000, 1000)
+                let overlayMapRect = self.mapRectForCoordinateRegion(region: overlayRegion)
+                mapRect = MKMapRectUnion(mapRect, overlayMapRect)
+            }
+            self.mapView.addOverlays(kml.overlays)
+            let expandedRect = self.mapView.mapRectThatFits(mapRect, edgePadding: UIEdgeInsetsMake(10, 10, 10, 10))
+            self.mapView.setVisibleMapRect(expandedRect, animated: false)
+        }
+    }
+
+    func locateKMLFile(routeId: String) -> URL? {
+        guard let url = Bundle.main.url(forResource: routeId, withExtension: "kml") else { return nil }
+        if FileManager.default.fileExists(atPath: url.path) {
+            return url
+        } else {
+            print("Could not find kml file for route \(routeId)")
+            return nil
+        }
+    }
+}
+
+class NextToArriveMapPrimaryRouteViewModel {
+}
+
+class NextToArriveMapSecondaryRouteViewModel {
 }
