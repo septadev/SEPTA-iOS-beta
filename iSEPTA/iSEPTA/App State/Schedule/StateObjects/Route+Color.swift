@@ -13,6 +13,10 @@ import UIKit
 extension Route {
 
     func colorForRoute() -> UIColor? {
+        return Route.colorForRouteId(routeId: routeId)
+    }
+
+    static func colorForRouteId(routeId: String) -> UIColor? {
         switch routeId {
         case "AIR": return SeptaColor.AIR_RailLineColor
         case "CHE": return SeptaColor.CHE_RailLineColor
@@ -40,6 +44,18 @@ extension Route {
     static func colorForRoute(_ route: Route, transitMode: TransitMode) -> UIColor {
         let color: UIColor
         if let routeColor = route.colorForRoute() {
+            color = routeColor
+        } else if let transitModeColor = transitMode.colorForPill() {
+            color = transitModeColor
+        } else {
+            color = UIColor.clear
+        }
+        return color
+    }
+
+    static func colorForRouteId(_ routeId: String, transitMode: TransitMode) -> UIColor {
+        let color: UIColor
+        if let routeColor = Route.colorForRouteId(routeId: routeId) {
             color = routeColor
         } else if let transitModeColor = transitMode.colorForPill() {
             color = transitModeColor

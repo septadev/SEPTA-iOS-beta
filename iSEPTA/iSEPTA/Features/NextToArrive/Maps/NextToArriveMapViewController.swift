@@ -10,19 +10,11 @@ import Foundation
 import AEXML
 import UIKit
 import MapKit
+import SeptaSchedule
 
-class RouteOverlay: NSObject, MKOverlay {
-    var coordinate: CLLocationCoordinate2D
+class RouteOverlay: KMLOverlayPolyline {
 
-    var boundingMapRect: MKMapRect
-
-    var routeId: String
-
-    init(routeId: String, boundingMapRect: MKMapRect, coordinate: CLLocationCoordinate2D) {
-        self.coordinate = coordinate
-        self.boundingMapRect = boundingMapRect
-        self.routeId = routeId
-    }
+    var routeId: String?
 }
 
 struct RouteMap {
@@ -65,10 +57,10 @@ class NextToArriveMapViewController: UIViewController, MKMapViewDelegate {
     }
 
     func mapView(_: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        guard let polyline = overlay as? KMLOverlayPolyline else { return MKOverlayRenderer(overlay: overlay) }
-        let renderer: MKPolylineRenderer = MKPolylineRenderer(polyline: polyline)
+        guard let routeOverlay = overlay as? RouteOverlay, let routeId = routeOverlay.routeId else { return MKOverlayRenderer(overlay: overlay) }
+        let renderer: MKPolylineRenderer = MKPolylineRenderer(polyline: routeOverlay)
 
-        renderer.strokeColor = UIColor.red
+        renderer.strokeColor = Route.colorForRouteId(routeId, transitMode: .bus)
         renderer.lineWidth = 4.0
 
         return renderer
@@ -79,15 +71,18 @@ class NextToArriveMapViewController: UIViewController, MKMapViewDelegate {
         parseKMLForRoute(url: url, routeId: routeId)
     }
 
-    func parseKMLForRoute(url: URL, routeId _: String) {
+    func parseKMLForRoute(url: URL, routeId: String) {
         var mapRect = MKMapRectNull
         KMLDocument.parse(url) { [unowned self] kml in
-            for overlay in kml.overlays {
+            guard let overlays = kml.overlays as? [KMLOverlayPolyline] else { return }
+            let routeOverlays = self.mapOverlaysToRouteOverlays(routeId: routeId, overlays: overlays)
+
+            for overlay in routeOverlays {
                 let overlayRegion = MKCoordinateRegionMakeWithDistance(overlay.coordinate, 1000, 1000)
                 let overlayMapRect = self.mapRectForCoordinateRegion(region: overlayRegion)
                 mapRect = MKMapRectUnion(mapRect, overlayMapRect)
             }
-            self.mapView.addOverlays(kml.overlays)
+            self.mapView.addOverlays(routeOverlays)
             let expandedRect = self.mapView.mapRectThatFits(mapRect, edgePadding: UIEdgeInsetsMake(10, 10, 10, 10))
             self.mapView.setVisibleMapRect(expandedRect, animated: false)
         }
@@ -102,7 +97,34 @@ class NextToArriveMapViewController: UIViewController, MKMapViewDelegate {
             return nil
         }
     }
+
+    func mapOverlaysToRouteOverlays(routeId: String, overlays: [KMLOverlayPolyline]) -> [RouteOverlay] {
+        return overlays.map { overlay in
+            let routeOverlay = RouteOverlay(points: overlay.points(), count: overlay.pointCount)
+            routeOverlay.routeId = routeId
+            return routeOverlay
+        }
+    }
 }
+
+/*
+
+ import ObjectiveC
+
+ // Declare a global var to produce a unique address as the assoc object handle
+ var AssociatedObjectHandle: UInt8 = 0
+
+ extension MyClass {
+ var stringProperty:String {
+ get {
+ return objc_getAssociatedObject(self, &AssociatedObjectHandle) as String
+ }
+ set {
+ objc_setAssociatedObject(self, &AssociatedObjectHandle, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+ }
+ }
+ }
+ */
 
 class NextToArriveMapPrimaryRouteViewModel {
 }
