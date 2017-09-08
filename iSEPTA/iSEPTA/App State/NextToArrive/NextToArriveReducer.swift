@@ -44,6 +44,8 @@ struct NextToArriveReducer {
             state = reduceNextToArrivePrerequisitesStatus(action: action, state: state)
         case let action as ViewScheduleDataInNextToArrive:
             state = reduceViewScheduleData(action: action, state: state)
+        case let action as InsertNextToArriveScheduleRequest:
+            state = reduceInsertNextToArriveScheduleRequest(action: action, state: state)
         default:
             break
         }
@@ -69,5 +71,10 @@ struct NextToArriveReducer {
 
     static func reduceViewScheduleData(action _: ViewScheduleDataInNextToArrive, state: NextToArriveState) -> NextToArriveState {
         return NextToArriveState(scheduleState: store.state.scheduleState, nextToArriveTrips: state.nextToArriveTrips, updateRequested: state.updateRequested)
+    }
+
+    static func reduceInsertNextToArriveScheduleRequest(action: InsertNextToArriveScheduleRequest, state: NextToArriveState) -> NextToArriveState {
+        let scheduleState = ScheduleState(scheduleRequest: action.scheduleRequest, scheduleData: ScheduleData(), scheduleStopEdit: ScheduleStopEdit())
+        return NextToArriveState(scheduleState: scheduleState, nextToArriveTrips: state.nextToArriveTrips, updateRequested: state.updateRequested)
     }
 }

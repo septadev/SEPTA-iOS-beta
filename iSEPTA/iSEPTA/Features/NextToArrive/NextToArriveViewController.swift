@@ -2,6 +2,7 @@
 
 import UIKit
 import ReSwift
+import SeptaSchedule
 
 class NextToArriveViewController: BaseNonModalViewController, IdentifiableController {
 

@@ -38,3 +38,8 @@ struct ViewScheduleDataInNextToArrive: NextToArriveAction {
 
     let description = "Jumping from schedules to next to arrive"
 }
+
+struct InsertNextToArriveScheduleRequest: NextToArriveAction {
+    let scheduleRequest: ScheduleRequest
+    let description = "force a new schedule request into NTA"
+}

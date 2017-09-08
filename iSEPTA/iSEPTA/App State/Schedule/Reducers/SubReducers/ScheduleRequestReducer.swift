@@ -36,7 +36,8 @@ struct ScheduleRequestReducer {
     }
 
     static func reduceDatabaseLoaded(action _: DatabaseLoaded, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
-        return ScheduleRequest(transitMode: scheduleRequest.transitMode, databaseIsLoaded: true)
+
+        return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: scheduleRequest.selectedRoute, selectedStart: scheduleRequest.selectedStart, selectedEnd: scheduleRequest.selectedEnd, scheduleType: scheduleRequest.scheduleType, reverseStops: scheduleRequest.reverseStops, databaseIsLoaded: true)
     }
 
     static func reduceTransitModeSelected(action: TransitModeSelected, scheduleRequest: ScheduleRequest) -> ScheduleRequest {

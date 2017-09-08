@@ -47,12 +47,12 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         }
     }
 
-    func displayAlert(_ message: String) {
+    func displayAlert(_: String) {
 
-        UIAlert.presentOKAlertFrom(viewController: self,
-                                   withTitle: "SEPTA Beta Testers!",
-                                   message: message,
-                                   completion: nil)
+        //        UIAlert.presentOKAlertFrom(viewController: self,
+        //                                   withTitle: "SEPTA Beta Testers!",
+        //                                   message: message,
+        //                                   completion: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {

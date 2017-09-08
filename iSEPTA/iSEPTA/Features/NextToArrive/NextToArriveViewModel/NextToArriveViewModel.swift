@@ -42,11 +42,21 @@ class NextToArriveViewModel: NSObject, StoreSubscriber {
     func newState(state: StoreSubscriberStateType) {
         scheduleRequest = state
         guard let transitMode = state?.transitMode else { return }
+
         self.transitMode = transitMode
         buildDisplayModel()
         nextToArriveViewController?.viewModelUpdated()
         schedulesDelegate?.formIsComplete(scheduleRequest?.selectedEnd != nil)
     }
+
+    let scheduleRequest_rail: ScheduleRequest = {
+        ScheduleRequest.dummyRequest(transitMode: .rail, routeId: Route.allRailRoutesRoute().routeId, startId: 90222, stopId: 90313)
+    }()
+    var lastTransitMode: TransitMode = .bus
+    let scheduleRequest_bus: ScheduleRequest = {
+        ScheduleRequest.dummyRequest(transitMode: .bus, routeId: "16", startId: 515, stopId: 136)
+
+    }()
 
     func buildDisplayModel() {
 
@@ -151,7 +161,16 @@ extension NextToArriveViewModel {
 extension NextToArriveViewModel: SubscriberUnsubscriber {
     override func awakeFromNib() {
         super.awakeFromNib()
+        insertDummyScheduleRequest()
         subscribe()
+    }
+
+    func insertDummyScheduleRequest() {
+        let deadlineTime = DispatchTime.now() + .seconds(3)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+            let action = InsertNextToArriveScheduleRequest(scheduleRequest: self.scheduleRequest_rail)
+            store.dispatch(action)
+        }
     }
 
     func subscribe() {
