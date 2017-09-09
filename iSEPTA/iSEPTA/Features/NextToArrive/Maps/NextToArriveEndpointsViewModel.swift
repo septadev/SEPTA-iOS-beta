@@ -37,9 +37,9 @@ class NextToArriveMapEndpointsViewModel: StoreSubscriber {
         unsubscribe()
     }
 
-    func newState(state _: StoreSubscriberStateType) {
+    func newState(state: StoreSubscriberStateType) {
         guard let delegate = delegate else { return }
 
-        //    delegate.drawTrip(scheduleRequest: state)
+        delegate.drawTrip(scheduleRequest: state)
     }
 }

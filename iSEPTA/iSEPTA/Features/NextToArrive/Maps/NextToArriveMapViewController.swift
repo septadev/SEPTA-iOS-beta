@@ -62,11 +62,11 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
 
     func addOverlaysToMap() {
         mapView.addOverlays(overlaysToAdd)
-        updateVisibleMap()
+        // updateVisibleMap()
     }
 
     func updateVisibleMap() {
-        let expandedRect = mapView.mapRectThatFits(mapRect, edgePadding: UIEdgeInsetsMake(10, 10, 10, 10))
+        let expandedRect = mapView.mapRectThatFits(mapRect, edgePadding: UIEdgeInsetsMake(100, 10, 10, 10))
         mapView.setVisibleMapRect(expandedRect, animated: false)
     }
 

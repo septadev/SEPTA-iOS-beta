@@ -41,7 +41,7 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
         let routeIds = [firstTrip.startStop.routeId, firstTrip.endStop.routeId].flatMap { $0 }
         let uniqueRouteIds = Array(Set(routeIds))
         for routeId in uniqueRouteIds {
-            //       delegate.drawRoute(routeId: routeId)
+            delegate.drawRoute(routeId: routeId)
         }
     }
 }

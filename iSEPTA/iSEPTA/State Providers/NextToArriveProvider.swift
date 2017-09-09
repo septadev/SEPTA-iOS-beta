@@ -31,11 +31,11 @@ class NextToArriveProvider: StoreSubscriber {
         unsubscribe()
     }
 
-    var currentUpdateStatus = false
+    var currentlyRetrieving = false
     func newState(state: Bool) {
         let updateRequested = state
-        if updateRequested && currentUpdateStatus == false {
-            currentUpdateStatus = true
+        if updateRequested && !currentlyRetrieving {
+            currentlyRetrieving = true
             let scheduleRequest = store.state.nextToArriveState.scheduleState.scheduleRequest
             retrieveNextToArrive(scheduleRequest: scheduleRequest, completion: mapArrivals)
         }
@@ -142,6 +142,7 @@ class NextToArriveProvider: StoreSubscriber {
         client.getRealTimeArrivals(originId: originId, destinationId: destinationId, transitType: transitType, route: route).then { realTimeArrivals -> Void in
             guard let arrivals = realTimeArrivals?.arrivals else { return }
             completion?(arrivals)
+            self.currentlyRetrieving = false
         }.catch { err in
             print(err)
         }

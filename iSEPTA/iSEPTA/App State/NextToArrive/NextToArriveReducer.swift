@@ -58,7 +58,7 @@ struct NextToArriveReducer {
     }
 
     static func reduceClearNextToArriveData(action _: ClearNextToArriveData, state: NextToArriveState) -> NextToArriveState {
-        return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: [NextToArriveTrip](), updateRequested: state.updateRequested)
+        return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: [NextToArriveTrip](), updateRequested: false)
     }
 
     static func reduceUpdateNextToArriveData(action: UpdateNextToArriveData, state: NextToArriveState) -> NextToArriveState {

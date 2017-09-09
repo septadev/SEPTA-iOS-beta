@@ -20,15 +20,21 @@ class NextToArriveScheduleRequestWatcher: StoreSubscriber {
         unsubscribe()
     }
 
+    var currentScheduleRequest = ScheduleRequest()
+
     func newState(state: ScheduleRequest) {
 
-        if let _ = state.selectedRoute, let _ = state.selectedStart, let _ = state.selectedEnd {
+        if let selectedRoute = state.selectedRoute, let selectedStart = state.selectedStart, let selectedEnd = state.selectedEnd {
+            guard selectedRoute != currentScheduleRequest.selectedRoute,
+                selectedStart != currentScheduleRequest.selectedStart,
+                selectedEnd != currentScheduleRequest.selectedEnd else { return }
             let action = NextToArrivePrerequisitesStatus(status: true)
             store.dispatch(action)
         } else {
             let action = NextToArrivePrerequisitesStatus(status: false)
             store.dispatch(action)
         }
+        currentScheduleRequest = state
     }
 }
 
