@@ -94,6 +94,7 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         let annotation = ColorPointAnnotation(pinColor: pinColor)
         annotation.coordinate = CLLocationCoordinate2D(latitude: stop.stopLatitude, longitude: stop.stopLongitude)
         annotation.title = stop.stopName
+
         mapView.addAnnotation(annotation)
         let mapPoint = MKMapPointForCoordinate(annotation.coordinate)
         let annotationMapRect = MKMapRect(origin: mapPoint, size: MKMapSize(width: 1000, height: 1000))
@@ -149,7 +150,9 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
         var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-
+            pinView?.canShowCallout = true
+            pinView?.animatesDrop = true
+            pinView?.isEnabled = true
             let colorPointAnnotation = annotation as! ColorPointAnnotation
             pinView?.pinTintColor = colorPointAnnotation.pinColor
         } else {
@@ -157,5 +160,9 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
         }
 
         return pinView
+    }
+
+    func mapView(_: MKMapView, didSelect _: MKAnnotationView) {
+        print("User Selected a pin")
     }
 }

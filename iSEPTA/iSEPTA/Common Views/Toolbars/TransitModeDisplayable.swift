@@ -183,6 +183,18 @@ extension TransitMode {
         return transitMode
     }
 
+    func mapPin() -> UIImage? {
+        let imageName: String
+        switch self {
+        case .rail: imageName = "RailPin"
+        case .subway : imageName = "SubwayPin"
+        case .bus: imageName = "BusPin"
+        case .trolley :imageName = "TrolleyPin"
+        case .nhsl:imageName = "NHSLPin"
+        }
+        return UIImage(named: imageName)
+    }
+
     public func scheduleTypeSegments() -> [ScheduleType] {
         switch self {
         case .rail : return [.mondayThroughThursday, .friday, .saturday, .sunday]
