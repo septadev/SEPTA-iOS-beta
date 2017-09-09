@@ -56,12 +56,12 @@ public class RealTimeArrival: Mappable {
   public var term_line_route_id: String?
   public var term_line_route_name: String?
   public var term_line_trip_id: String?
-  public var vehicle_lat: String?
-  public var vehicle_lon: String?
-  public var orig_vehicle_lat: String?
-  public var orig_vehicle_lon: String?
-  public var term_vehicle_lat: String?
-  public var term_vehicle_lon: String?
+  public var vehicle_lat: Double?
+  public var vehicle_lon: Double?
+  public var orig_vehicle_lat: Double?
+  public var orig_vehicle_lon: Double?
+  public var term_vehicle_lat: Double?
+  public var term_vehicle_lon: Double?
 
     public required init?(map _: Map) {
     }

@@ -131,3 +131,9 @@ ON R.route_id = lastStop.route_id AND T.direction_id = lastStop.direction_id AND
 ST.stop_sequence = lastStop.max_stop_sequence
 GROUP BY R.Route_id,R.route_short_name, R.route_long_name,T.direction_id ,S.stop_name;
 
+
+select * from stops_rail where stop_id = 90222;
+
+
+select * from stops_rail where stop_id = 90313;
+

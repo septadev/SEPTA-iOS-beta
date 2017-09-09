@@ -12,4 +12,5 @@ import SeptaSchedule
 protocol RouteDrawable: AnyObject {
     func drawRoute(routeId: String)
     func drawTrip(scheduleRequest: ScheduleRequest)
+    func drawVehicleLocations(_ vehicleLocations: [VehicleLocation])
 }

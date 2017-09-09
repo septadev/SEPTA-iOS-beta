@@ -39,13 +39,15 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
     }
 
     func newState(state: StoreSubscriberStateType) {
-
-        guard let firstTrip = state.first, let delegate = delegate else { return }
+        let trips = state
+        guard let firstTrip = trips.first, let delegate = delegate else { return }
         let routeIds = [firstTrip.startStop.routeId, firstTrip.endStop.routeId].flatMap { $0 }
         let uniqueRouteIds = Array(Set(routeIds))
         for routeId in uniqueRouteIds {
             delegate.drawRoute(routeId: routeId)
         }
+        let vehicleLocations = trips.map { $0.vehicleLocation }.flatMap { $0 }.filter { $0.firstLegLocation.latitude != 0 }
+        delegate.drawVehicleLocations(vehicleLocations)
     }
 }
 

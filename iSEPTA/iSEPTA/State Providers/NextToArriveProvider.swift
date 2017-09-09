@@ -51,13 +51,14 @@ class NextToArriveProvider: StoreSubscriber {
     func retrieveNextToArrive(scheduleRequest: ScheduleRequest, completion: (([RealTimeArrival]) -> Void)?) {
         guard
             let startId = scheduleRequest.selectedStart?.stopId,
-            let stopId = scheduleRequest.selectedEnd?.stopId,
-            let route = scheduleRequest.selectedRoute?.routeId else { return }
+            let stopId = scheduleRequest.selectedEnd?.stopId else { return }
         let transitType = TransitType.fromTransitMode(scheduleRequest.transitMode)
         let originId = String(startId)
         let destinationId = String(stopId)
 
-        client.getRealTimeArrivals(originId: originId, destinationId: destinationId, transitType: transitType, route: route).then { realTimeArrivals -> Void in
+        let routeId = scheduleRequest.transitMode == .rail ? nil : scheduleRequest.selectedRoute?.routeId
+
+        client.getRealTimeArrivals(originId: originId, destinationId: destinationId, transitType: transitType, route: routeId).then { realTimeArrivals -> Void in
             guard let arrivals = realTimeArrivals?.arrivals else { return }
             completion?(arrivals)
 
@@ -125,12 +126,12 @@ class NextToArriveProvider: StoreSubscriber {
 
     func mapVehicleLocation(realTimeArrival a: RealTimeArrival) -> VehicleLocation? {
         var firstLegLocation = CLLocationCoordinate2D()
-        if let location = mapCoordinateFromString(latString: a.vehicle_lat, lonString: a.vehicle_lon) {
+        if let location = mapCoordinateFromString(a.vehicle_lat, a.vehicle_lon) {
             firstLegLocation = location
-        } else if let location = mapCoordinateFromString(latString: a.orig_vehicle_lat, lonString: a.orig_vehicle_lon) {
+        } else if let location = mapCoordinateFromString(a.orig_vehicle_lat, a.orig_vehicle_lon) {
             firstLegLocation = location
         }
-        let secondLegLocation = mapCoordinateFromString(latString: a.term_vehicle_lat, lonString: a.term_vehicle_lon) ?? CLLocationCoordinate2D()
+        let secondLegLocation = mapCoordinateFromString(a.term_vehicle_lat, a.term_vehicle_lon) ?? CLLocationCoordinate2D()
 
         return VehicleLocation(firstLegLocation: firstLegLocation, secondLegLocation: secondLegLocation)
     }
@@ -144,13 +145,13 @@ class NextToArriveProvider: StoreSubscriber {
         return NextToArriveConnectionStation(stopId: stopId, stopName: stopName)
     }
 
-    func mapCoordinateFromString(latString: String?, lonString: String?) -> CLLocationCoordinate2D? {
+    func mapCoordinateFromString(_ latDouble: Double?, _ lonDouble: Double?) -> CLLocationCoordinate2D? {
         guard
-            let latString = latString,
-            let latDegrees = CLLocationDegrees(latString),
-            let lonString = lonString,
-            let lonDegrees = CLLocationDegrees(lonString) else { return nil }
+            let latDouble = latDouble, latDouble != 0,
+            let lonDouble = lonDouble, lonDouble != 0 else { return nil }
 
+        let latDegrees = CLLocationDegrees(latDouble)
+        let lonDegrees = CLLocationDegrees(lonDouble)
         return CLLocationCoordinate2D(latitude: latDegrees, longitude: lonDegrees)
     }
 }

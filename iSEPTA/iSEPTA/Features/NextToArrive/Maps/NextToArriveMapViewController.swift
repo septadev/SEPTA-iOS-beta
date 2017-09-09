@@ -30,6 +30,15 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         didSet {
             addOverlaysToMap()
             addScheduleRequestToMap()
+            drawVehicleLocations()
+        }
+    }
+
+    private var vehiclesToAdd = [VehicleLocation]() {
+        didSet {
+            guard let _ = mapView else { return }
+            drawVehicleLocations()
+            vehiclesToAdd.removeAll()
         }
     }
 
@@ -66,7 +75,7 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
     }
 
     func updateVisibleMap() {
-        let expandedRect = mapView.mapRectThatFits(mapRect, edgePadding: UIEdgeInsetsMake(100, 10, 10, 10))
+        let expandedRect = mapView.mapRectThatFits(mapRect, edgePadding: UIEdgeInsetsMake(100, 10, 10, 30))
         mapView.setVisibleMapRect(expandedRect, animated: false)
     }
 
@@ -90,15 +99,49 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         updateVisibleMap()
     }
 
+    var stops = [ColorPointAnnotation]()
     func addStopToMap(stop: Stop, pinColor: UIColor) {
         let annotation = ColorPointAnnotation(pinColor: pinColor)
         annotation.coordinate = CLLocationCoordinate2D(latitude: stop.stopLatitude, longitude: stop.stopLongitude)
         annotation.title = stop.stopName
-
+        stops.append(annotation)
         mapView.addAnnotation(annotation)
         let mapPoint = MKMapPointForCoordinate(annotation.coordinate)
         let annotationMapRect = MKMapRect(origin: mapPoint, size: MKMapSize(width: 1000, height: 1000))
         mapRect = MKMapRectUnion(mapRect, annotationMapRect)
+    }
+
+    func drawVehicleLocations(_ vehicleLocations: [VehicleLocation]) {
+        vehiclesToAdd = vehicleLocations
+    }
+
+    func drawVehicleLocations() {
+        for vehicle in vehiclesToAdd {
+            if isPhillyCoordinate(vehicle.firstLegLocation) {
+                drawVehicle(coordinate: vehicle.firstLegLocation)
+            }
+
+            if isPhillyCoordinate(vehicle.secondLegLocation) {
+                drawVehicle(coordinate: vehicle.secondLegLocation)
+            }
+        }
+    }
+
+    let philly = CLLocation(latitude: 39.952583, longitude: -75.165222)
+    func isPhillyCoordinate(_ coordinate: CLLocationCoordinate2D) -> Bool {
+        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        return philly.distance(from: location) < 160_934 // 100 miles
+    }
+
+    func drawVehicle(coordinate: CLLocationCoordinate2D) {
+        let annotation = VehicleLocationAnnotation()
+        annotation.coordinate = coordinate
+        mapView.addAnnotation(annotation)
+
+        let mapPoint = MKMapPointForCoordinate(annotation.coordinate)
+        let annotationMapRect = MKMapRect(origin: mapPoint, size: MKMapSize(width: 1000, height: 1000))
+        mapRect = MKMapRectUnion(mapRect, annotationMapRect)
+        updateVisibleMap()
     }
 
     func parseKMLForRoute(url: URL, routeId: String) {
@@ -127,6 +170,10 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
             return routeOverlay
         }
     }
+
+    deinit {
+        _ = 1
+    }
 }
 
 extension NextToArriveMapViewController: MKMapViewDelegate {
@@ -141,25 +188,49 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
         return renderer
     }
 
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation {
+    func mapView(_: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        switch annotation {
+        case let annotation as ColorPointAnnotation:
+            return retrievePinAnnogationView(annotation: annotation)
+        case let annotation as VehicleLocationAnnotation:
+            return retrieveVehicleAnnogationView(annotation: annotation)
+        default:
             return nil
         }
+    }
 
-        let reuseId = "pin"
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
-        if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView?.canShowCallout = true
-            pinView?.animatesDrop = true
-            pinView?.isEnabled = true
-            let colorPointAnnotation = annotation as! ColorPointAnnotation
-            pinView?.pinTintColor = colorPointAnnotation.pinColor
-        } else {
-            pinView?.annotation = annotation
+    func retrievePinAnnogationView(annotation: ColorPointAnnotation) -> MKAnnotationView {
+        let pinViewId = "pin"
+        guard let pinView = mapView.dequeueReusableAnnotationView(withIdentifier: pinViewId) as? MKPinAnnotationView else {
+            return buildNewPinAnnotationView(annotation: annotation, pinViewId: pinViewId)
         }
-
+        pinView.annotation = annotation
         return pinView
+    }
+
+    func buildNewPinAnnotationView(annotation: ColorPointAnnotation, pinViewId: String) -> MKPinAnnotationView {
+        let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: pinViewId)
+        pinView.canShowCallout = true
+        pinView.animatesDrop = true
+        pinView.isEnabled = true
+        pinView.isSelected = true
+        pinView.pinTintColor = annotation.pinColor
+        return pinView
+    }
+
+    func retrieveVehicleAnnogationView(annotation: VehicleLocationAnnotation) -> MKAnnotationView {
+        let vehicleId = "vehicle"
+        guard let vehicleView = mapView.dequeueReusableAnnotationView(withIdentifier: vehicleId) else {
+            return buildNewVehicleAnnotationView(annotation: annotation, vehicleViewId: vehicleId)
+        }
+        vehicleView.annotation = annotation
+        return vehicleView
+    }
+
+    func buildNewVehicleAnnotationView(annotation: VehicleLocationAnnotation, vehicleViewId: String) -> MKAnnotationView {
+        let vehicleView = MKAnnotationView(annotation: annotation, reuseIdentifier: vehicleViewId)
+        vehicleView.image = scheduleRequest?.transitMode.mapPin()
+        return vehicleView
     }
 
     func mapView(_: MKMapView, didSelect _: MKAnnotationView) {

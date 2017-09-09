@@ -34,6 +34,7 @@
 		5825319C1F408C2D0088D056 /* UserPreferencesStatePersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5825319B1F408C2D0088D056 /* UserPreferencesStatePersister.swift */; };
 		5825319E1F40940B0088D056 /* UserPreferencesProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5825319D1F40940B0088D056 /* UserPreferencesProviderProtocol.swift */; };
 		5828C7F51F6445B40046435A /* LAN.kml in Resources */ = {isa = PBXBuildFile; fileRef = 5828C7F21F6445B30046435A /* LAN.kml */; };
+		5828C7F71F6451180046435A /* VehicleLocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5828C7F61F6451180046435A /* VehicleLocationAnnotation.swift */; };
 		58290E411F372B51000CCF3C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E401F372B51000CCF3C /* AppState.swift */; };
 		58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E431F372BB9000CCF3C /* AppStateReducer.swift */; };
 		58290E501F372DDC000CCF3C /* NavigationActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E4F1F372DDC000CCF3C /* NavigationActions.swift */; };
@@ -466,6 +467,7 @@
 		5825319B1F408C2D0088D056 /* UserPreferencesStatePersister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesStatePersister.swift; sourceTree = "<group>"; };
 		5825319D1F40940B0088D056 /* UserPreferencesProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesProviderProtocol.swift; sourceTree = "<group>"; };
 		5828C7F21F6445B30046435A /* LAN.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LAN.kml; sourceTree = "<group>"; };
+		5828C7F61F6451180046435A /* VehicleLocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleLocationAnnotation.swift; sourceTree = "<group>"; };
 		58290E401F372B51000CCF3C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		58290E431F372BB9000CCF3C /* AppStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateReducer.swift; sourceTree = "<group>"; };
 		58290E491F372CAD000CCF3C /* AppStateReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStateReducerTests.swift; sourceTree = "<group>"; };
@@ -1546,6 +1548,7 @@
 				58126F6C1F631C5100A6E187 /* RouteDrawable.swift */,
 				58126F6A1F631C3100A6E187 /* RouteOverlay.swift */,
 				58126F661F631C0800A6E187 /* ColorPointAnnotation.swift */,
+				5828C7F61F6451180046435A /* VehicleLocationAnnotation.swift */,
 				58E33F111F60998F00C74B7C /* NextToArriveDetailViewController.swift */,
 				6763550E1F628C3E00CA7EAB /* nextToArriveDetail.storyboard */,
 			);
@@ -2221,6 +2224,7 @@
 				58E33F281F61651400C74B7C /* TransitType+TransitMode.swift in Sources */,
 				58E33F0E1F6098FE00C74B7C /* NextToArriveMapViewController.swift in Sources */,
 				58E33F181F61453000C74B7C /* NextToArriveTrip.swift in Sources */,
+				5828C7F71F6451180046435A /* VehicleLocationAnnotation.swift in Sources */,
 				58EB8D1A1F5D7F350028A487 /* NextToArriveSelectTripStateProvider.swift in Sources */,
 				58DD1A861F5F148F002532DC /* NoRouteNeededCell.swift in Sources */,
 				58658D1E1F53298B00E67B4E /* DisplayAddress.swift in Sources */,
