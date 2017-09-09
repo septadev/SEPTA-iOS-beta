@@ -14,7 +14,7 @@ public class BaseCommand {
             do {
                 let conn = try strongSelf.getConnection()
                 let commandString = try strongSelf.getCommandString(forSqlQuery: sqlQuery)
-
+                print(commandString)
                 let stmt = try conn.prepare(commandString)
                 results = mapper(stmt)
             } catch {

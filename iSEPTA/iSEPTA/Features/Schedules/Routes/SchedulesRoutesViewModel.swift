@@ -58,14 +58,10 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
         }
 
         displayable.setLongName(text: route.routeLongName)
-        var icon: UIImage?
-        if let routeImage = route.iconForRoute() {
-            icon = routeImage
-        } else if let transitModeImage = transitMode.cellImage() {
-            icon = transitModeImage
-        }
 
-        displayable.setIcon(image: icon!)
+        if let routeImage = route.iconForRoute(transitMode: transitMode) {
+            displayable.setIcon(image: routeImage)
+        }
         let alert = alerts[transitMode]?[route.routeId]
         displayable.addAlert(alert)
     }

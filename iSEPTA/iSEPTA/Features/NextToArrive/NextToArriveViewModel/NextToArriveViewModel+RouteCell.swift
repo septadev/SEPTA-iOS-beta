@@ -44,7 +44,7 @@ extension NextToArriveViewModel {
 
     func configureRouteForNonRail_RouteDefined(route: Route) -> NextToArriveRowDisplayModel {
         return CellModel(
-            text: transitMode.selectRoutePlaceholderText(),
+            text: route.routeLongName,
             cellId: "singleStringCell",
             shouldFillCell: false,
             isSelectable: true,

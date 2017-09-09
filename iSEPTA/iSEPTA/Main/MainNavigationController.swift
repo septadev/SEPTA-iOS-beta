@@ -70,6 +70,8 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
                 let action = DatabaseLoaded(targetForScheduleAction: .both)
                 store.dispatch(action)
                 self?.displayAlert(message)
+                stateProviders.scheduleProvider.subscribe()
+                stateProviders.nextToArriveScheduleDataProvider.subscribe()
 
         })
     }

@@ -11,16 +11,14 @@ struct ScheduleRequest {
     let selectedEnd: Stop?
     let scheduleType: ScheduleType?
     let reverseStops: Bool
-    let databaseIsLoaded: Bool
 
-    init(transitMode: TransitMode = TransitMode.defaultTransitMode(), selectedRoute: Route? = nil, selectedStart: Stop? = nil, selectedEnd: Stop? = nil, scheduleType: ScheduleType? = nil, reverseStops: Bool = false, databaseIsLoaded: Bool = false) {
+    init(transitMode: TransitMode = TransitMode.defaultTransitMode(), selectedRoute: Route? = nil, selectedStart: Stop? = nil, selectedEnd: Stop? = nil, scheduleType: ScheduleType? = nil, reverseStops: Bool = false) {
         self.transitMode = transitMode
         self.selectedRoute = selectedRoute
         self.selectedStart = selectedStart
         self.selectedEnd = selectedEnd
         self.scheduleType = scheduleType
         self.reverseStops = reverseStops
-        self.databaseIsLoaded = databaseIsLoaded
     }
 }
 
@@ -44,9 +42,6 @@ func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
     guard areEqual else { return false }
 
     areEqual = lhs.reverseStops == rhs.reverseStops
-    guard areEqual else { return false }
-
-    areEqual = lhs.databaseIsLoaded == rhs.databaseIsLoaded
     guard areEqual else { return false }
 
     return areEqual

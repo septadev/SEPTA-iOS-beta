@@ -28,8 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self, Answers.self])
 
         stateProviders.preferenceProvider.subscribe()
-        stateProviders.scheduleProvider.subscribe()
-        stateProviders.nextToArriveScheduleDataProvider.subscribe()
+
         return true
     }
 

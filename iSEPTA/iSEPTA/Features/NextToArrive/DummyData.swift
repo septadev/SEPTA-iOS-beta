@@ -29,7 +29,6 @@ extension ScheduleRequest {
                                selectedRoute: Route.dummyRoute(routeId: routeId),
                                selectedStart: Stop.dummyStop(stopId: startId),
                                selectedEnd: Stop.dummyStop(stopId: stopId),
-                               scheduleType: .weekday, reverseStops: false,
-                               databaseIsLoaded: true)
+                               scheduleType: .weekday, reverseStops: false)
     }
 }

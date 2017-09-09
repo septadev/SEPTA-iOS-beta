@@ -28,23 +28,28 @@ struct ScheduleStateReducer {
 struct ScheduleReducer {
 
     static func main(action: Action, state: ScheduleState?) -> ScheduleState {
-        /// Handle the edge case of trip reverses
-        if let action = action as? ReverseLoaded, let state = state {
-            return reduceTripReverse(action: action, state: state)
-        }
-        /// if the state already exists
-        if let newState = state {
-            /// if the action is a schedule action
-            guard let action = action as? ScheduleAction else { return newState }
-            return ScheduleState(
-                scheduleRequest: Req.reduceRequest(action: action, scheduleRequest: newState.scheduleRequest),
-                scheduleData: Data.reduceData(action: action, scheduleData: newState.scheduleData),
-                scheduleStopEdit: StopEdit.reduceStopEdit(action: action, scheduleStopEdit: newState.scheduleStopEdit)
-            )
+        let scheduleState = state ?? ScheduleState()
 
-        } else {
-            return ScheduleState()
+        guard let action = action as? ScheduleAction else { return scheduleState }
+        return reduceScheduleAction(action: action, state: scheduleState)
+    }
+
+    static func reduceScheduleAction(action: ScheduleAction, state: ScheduleState) -> ScheduleState {
+        var scheduleState = state
+        switch action {
+        case let action as ReverseLoaded:
+            scheduleState = reduceTripReverse(action: action, state: state)
+        case let action as DatabaseLoaded:
+            scheduleState = reduceDatabaseLoaded(action: action, state: state)
+        default:
+            scheduleState = ScheduleState(
+                scheduleRequest: Req.reduceRequest(action: action, scheduleRequest: scheduleState.scheduleRequest),
+                scheduleData: Data.reduceData(action: action, scheduleData: scheduleState.scheduleData),
+                scheduleStopEdit: StopEdit.reduceStopEdit(action: action, scheduleStopEdit: scheduleState.scheduleStopEdit),
+                databaseIsLoaded: scheduleState.databaseIsLoaded
+            )
         }
+        return scheduleState
     }
 
     static func reduceTripReverse(action: ReverseLoaded, state: ScheduleState) -> ScheduleState {
@@ -53,5 +58,9 @@ struct ScheduleReducer {
             scheduleData: ScheduleData(availableRoutes: state.scheduleData.availableRoutes),
             scheduleStopEdit: ScheduleStopEdit()
         )
+    }
+
+    static func reduceDatabaseLoaded(action _: DatabaseLoaded, state: ScheduleState) -> ScheduleState {
+        return ScheduleState(scheduleRequest: state.scheduleRequest, scheduleData: state.scheduleData, scheduleStopEdit: state.scheduleStopEdit, databaseIsLoaded: true)
     }
 }
