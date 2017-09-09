@@ -13,8 +13,8 @@ class ScheduleDataProvider: BaseScheduleDataProvider {
     }
 
     func subscribe() {
-        //        store.subscribe(self) {
-        //            $0.select { $0.scheduleState.scheduleRequest }.skipRepeats { $0 == $1 }
-        //        }
+        store.subscribe(self) {
+            $0.select { $0.scheduleState.scheduleRequest }.skipRepeats { $0 == $1 }
+        }
     }
 }

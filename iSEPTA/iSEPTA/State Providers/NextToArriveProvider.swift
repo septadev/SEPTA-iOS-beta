@@ -61,7 +61,8 @@ class NextToArriveProvider: StoreSubscriber {
             guard let arrivals = realTimeArrivals?.arrivals else { return }
             completion?(arrivals)
 
-        }.catch { _ in
+        }.catch { error in
+            print(error.localizedDescription)
             self.reportStatus(.dataLoadingError)
         }
     }

@@ -33,6 +33,7 @@
 		5825319A1F407D380088D056 /* UserDefaultsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582531991F407D380088D056 /* UserDefaultsLoader.swift */; };
 		5825319C1F408C2D0088D056 /* UserPreferencesStatePersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5825319B1F408C2D0088D056 /* UserPreferencesStatePersister.swift */; };
 		5825319E1F40940B0088D056 /* UserPreferencesProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5825319D1F40940B0088D056 /* UserPreferencesProviderProtocol.swift */; };
+		5828C7F51F6445B40046435A /* LAN.kml in Resources */ = {isa = PBXBuildFile; fileRef = 5828C7F21F6445B30046435A /* LAN.kml */; };
 		58290E411F372B51000CCF3C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E401F372B51000CCF3C /* AppState.swift */; };
 		58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E431F372BB9000CCF3C /* AppStateReducer.swift */; };
 		58290E501F372DDC000CCF3C /* NavigationActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E4F1F372DDC000CCF3C /* NavigationActions.swift */; };
@@ -464,6 +465,7 @@
 		582531991F407D380088D056 /* UserDefaultsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsLoader.swift; sourceTree = "<group>"; };
 		5825319B1F408C2D0088D056 /* UserPreferencesStatePersister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesStatePersister.swift; sourceTree = "<group>"; };
 		5825319D1F40940B0088D056 /* UserPreferencesProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesProviderProtocol.swift; sourceTree = "<group>"; };
+		5828C7F21F6445B30046435A /* LAN.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LAN.kml; sourceTree = "<group>"; };
 		58290E401F372B51000CCF3C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		58290E431F372BB9000CCF3C /* AppStateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateReducer.swift; sourceTree = "<group>"; };
 		58290E491F372CAD000CCF3C /* AppStateReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStateReducerTests.swift; sourceTree = "<group>"; };
@@ -1468,6 +1470,7 @@
 				58B278171F62AAD500663507 /* J.kml */,
 				58B278181F62AAD500663507 /* K.kml */,
 				58B278191F62AAD500663507 /* L.kml */,
+				5828C7F21F6445B30046435A /* LAN.kml */,
 				58B2781A1F62AAD500663507 /* LucyGold.kml */,
 				58B2781B1F62AAD500663507 /* LucyGreen.kml */,
 				58B2781C1F62AAD500663507 /* MED.kml */,
@@ -1889,6 +1892,7 @@
 				58B2787F1F62AAD500663507 /* 52.kml in Resources */,
 				58B2788D1F62AAD500663507 /* 66.kml in Resources */,
 				58B278641F62AAD500663507 /* 28.kml in Resources */,
+				5828C7F51F6445B40046435A /* LAN.kml in Resources */,
 				58B278611F62AAD500663507 /* 25.kml in Resources */,
 				58B278411F62AAD500663507 /* 123.kml in Resources */,
 				58B2788E1F62AAD500663507 /* 67.kml in Resources */,
