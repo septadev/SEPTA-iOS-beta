@@ -8,6 +8,7 @@
 
 import Foundation
 import ReSwift
+import SeptaSchedule
 
 class NextToArriveScheduleRequestWatcher: StoreSubscriber {
 
@@ -23,18 +24,46 @@ class NextToArriveScheduleRequestWatcher: StoreSubscriber {
     var currentScheduleRequest = ScheduleRequest()
 
     func newState(state: ScheduleRequest) {
+        let scheduleRequest = state
+        let newStatus = prerequisitesExistForNTA(scheduleRequest: scheduleRequest)
+        let prereqsChanged = prerequisitesForNTAHaveChanged(scheduleRequest: scheduleRequest)
 
-        if let selectedRoute = state.selectedRoute, let selectedStart = state.selectedStart, let selectedEnd = state.selectedEnd {
-            guard selectedRoute != currentScheduleRequest.selectedRoute,
-                selectedStart != currentScheduleRequest.selectedStart,
-                selectedEnd != currentScheduleRequest.selectedEnd else { return }
-            let action = NextToArrivePrerequisitesStatus(status: true)
-            store.dispatch(action)
-        } else {
-            let action = NextToArrivePrerequisitesStatus(status: false)
-            store.dispatch(action)
+        if prereqsChanged {
+            let updatePreReqsAction = NextToArrivePrerequisteStatusChanged(newStatus: newStatus)
+            store.dispatch(updatePreReqsAction)
+
+            if newStatus == .prerequisitesExist {
+                let clearTripsAction = ClearNextToArriveData()
+                store.dispatch(clearTripsAction)
+
+                let updateRequestedAction = NextToArriveRefreshDataRequested(refreshUpdateRequested: true)
+                store.dispatch(updateRequestedAction)
+            }
         }
+
         currentScheduleRequest = state
+    }
+
+    func prerequisitesExistForNTA(scheduleRequest: ScheduleRequest) -> NextToArrivePrerequisiteStatus {
+        if scheduleRequest.selectedRoute != nil &&
+            scheduleRequest.selectedStart != nil &&
+            scheduleRequest.selectedEnd != nil {
+            return .prerequisitesExist
+        } else {
+            return .missingPrerequisites
+        }
+    }
+
+    func prerequisitesForNTAHaveChanged(scheduleRequest: ScheduleRequest) -> Bool {
+        let selectedRouteComparison = Optionals.optionalCompare(currentValue: currentScheduleRequest.selectedRoute, newValue: scheduleRequest.selectedRoute)
+        let selectedStartComparison = Optionals.optionalCompare(currentValue: currentScheduleRequest.selectedStart, newValue: scheduleRequest.selectedStart)
+        let scheduleEndComparison = Optionals.optionalCompare(currentValue: currentScheduleRequest.selectedEnd, newValue: scheduleRequest.selectedEnd)
+        return !selectedRouteComparison.equalityResult() || !selectedStartComparison.equalityResult() || !scheduleEndComparison.equalityResult()
+    }
+
+    func nextToArrivePrerequisiteStatusHasChanged(newStatus: NextToArrivePrerequisiteStatus) -> Bool {
+        let currentNextToArrivePrerequisiteStatus = store.state.nextToArriveState.nextToArrivePrerequisiteStatus
+        return currentNextToArrivePrerequisiteStatus != newStatus
     }
 }
 

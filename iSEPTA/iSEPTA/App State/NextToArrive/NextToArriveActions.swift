@@ -16,7 +16,13 @@ import SeptaSchedule
 
 protocol NextToArriveAction: SeptaAction {}
 
-struct NextToArriveUpdateRequested: NextToArriveAction {
+struct NextToArrivePrerequisteStatusChanged: NextToArriveAction {
+    let newStatus: NextToArrivePrerequisiteStatus
+    let description = "The underlying dependencies for the NTA service call have changed"
+}
+
+struct NextToArriveRefreshDataRequested: NextToArriveAction {
+    let refreshUpdateRequested: Bool
     let description = "User has a requested a refresh of Next to arrive data"
 }
 
@@ -24,14 +30,11 @@ struct ClearNextToArriveData: NextToArriveAction {
     let description = "All next to arrive data should be cleared"
 }
 
-struct UpdateNextToArriveData: NextToArriveAction {
+struct UpdateNextToArriveStatusAndData: NextToArriveAction {
+    let nextToArriveUpdateStatus: NextToArriveUpdateStatus
     let nextToArriveTrips: [NextToArriveTrip]
-    let description = "New Data retrieved for Next to arrive"
-}
-
-struct NextToArrivePrerequisitesStatus: NextToArriveAction {
-    let status: Bool
-    let description = "Indicating whether prerequistes are complete to perform next to arrive request"
+    let refreshDataRequested: Bool
+    let description = "Provider reporting on the status of the update"
 }
 
 struct ViewScheduleDataInNextToArrive: NextToArriveAction {

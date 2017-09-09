@@ -14,6 +14,8 @@
 		58126F6D1F631C5100A6E187 /* RouteDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F6C1F631C5100A6E187 /* RouteDrawable.swift */; };
 		58126F6F1F631C8300A6E187 /* NextToArriveMapRouteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F6E1F631C8300A6E187 /* NextToArriveMapRouteViewModel.swift */; };
 		58126F711F631CB200A6E187 /* NextToArriveEndpointsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F701F631CB200A6E187 /* NextToArriveEndpointsViewModel.swift */; };
+		58126F751F640F8600A6E187 /* NextToArriveUpdateStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F741F640F8600A6E187 /* NextToArriveUpdateStatus.swift */; };
+		58126F771F64127B00A6E187 /* NextToArrivePrerequisiteStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F761F64127B00A6E187 /* NextToArrivePrerequisiteStatus.swift */; };
 		5814AA841F43589E00DF774A /* TripScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9B1F33B1120062A546 /* TripScheduleViewModel.swift */; };
 		5814AA891F4359CC00DF774A /* SingleStringDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5814AA861F4358D000DF774A /* SingleStringDisplayable.swift */; };
 		5814AA8A1F4359D000DF774A /* TripleTextDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5814AA851F4358D000DF774A /* TripleTextDisplayable.swift */; };
@@ -441,6 +443,8 @@
 		58126F6C1F631C5100A6E187 /* RouteDrawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDrawable.swift; sourceTree = "<group>"; };
 		58126F6E1F631C8300A6E187 /* NextToArriveMapRouteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveMapRouteViewModel.swift; sourceTree = "<group>"; };
 		58126F701F631CB200A6E187 /* NextToArriveEndpointsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveEndpointsViewModel.swift; sourceTree = "<group>"; };
+		58126F741F640F8600A6E187 /* NextToArriveUpdateStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveUpdateStatus.swift; sourceTree = "<group>"; };
+		58126F761F64127B00A6E187 /* NextToArrivePrerequisiteStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArrivePrerequisiteStatus.swift; sourceTree = "<group>"; };
 		5814AA851F4358D000DF774A /* TripleTextDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripleTextDisplayable.swift; sourceTree = "<group>"; };
 		5814AA861F4358D000DF774A /* SingleStringDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleStringDisplayable.swift; sourceTree = "<group>"; };
 		581804BA1F3F8051002184E3 /* LoggingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingError.swift; sourceTree = "<group>"; };
@@ -1695,6 +1699,8 @@
 				58EB8D281F5D90CD0028A487 /* NextToArriveState.swift */,
 				58EB8D2A1F5D92170028A487 /* NextToArriveReducer.swift */,
 				58EB8D2E1F5D92A20028A487 /* NextToArriveActions.swift */,
+				58126F741F640F8600A6E187 /* NextToArriveUpdateStatus.swift */,
+				58126F761F64127B00A6E187 /* NextToArrivePrerequisiteStatus.swift */,
 				58EB8D2C1F5D927E0028A487 /* NextToArriveScheduleReducer.swift */,
 				58E33F171F61453000C74B7C /* NextToArriveTrip.swift */,
 				58E33F271F61651400C74B7C /* TransitType+TransitMode.swift */,
@@ -2133,6 +2139,7 @@
 				582F4EC81F33B1120062A546 /* RouteTableViewCell.swift in Sources */,
 				67075FC21F578578008BB38C /* ScheduleUpdateMode.swift in Sources */,
 				676355031F5E998200CA7EAB /* SelectSchedulesRowDisplayModel.swift in Sources */,
+				58126F771F64127B00A6E187 /* NextToArrivePrerequisiteStatus.swift in Sources */,
 				676355091F5EB2C700CA7EAB /* StopWithDistance.swift in Sources */,
 				678F052E1F5B7D3E00CC4D3C /* AddressLookupActions.swift in Sources */,
 				67F757B51F488A4400D3A4EE /* SeptaDraw.swift in Sources */,
@@ -2261,6 +2268,7 @@
 				67C5672B1F596E0700FF6203 /* ErrorObjects.swift in Sources */,
 				58490E4B1F560226007DBCA1 /* AlertActions.swift in Sources */,
 				67EA2B631F51AB8700C0567A /* StopEditSearchMode.swift in Sources */,
+				58126F751F640F8600A6E187 /* NextToArriveUpdateStatus.swift in Sources */,
 				58DD1A8E1F600715002532DC /* NextToArriveViewModel+StartCell.swift in Sources */,
 				5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */,
 				58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */,

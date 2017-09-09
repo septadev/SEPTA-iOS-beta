@@ -12,11 +12,22 @@ import SeptaSchedule
 struct NextToArriveState {
     let scheduleState: ScheduleState
     let nextToArriveTrips: [NextToArriveTrip]
-    let updateRequested: Bool
-    init(scheduleState: ScheduleState = ScheduleState(), nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip](), updateRequested: Bool = false) {
+    let nextToArrivePrerequisiteStatus: NextToArrivePrerequisiteStatus
+    let nextToArriveUpdateStatus: NextToArriveUpdateStatus
+
+    let refreshDataRequested: Bool
+
+    init(scheduleState: ScheduleState = ScheduleState(),
+         nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip](),
+         nextToArrivePrerequisiteStatus: NextToArrivePrerequisiteStatus = .missingPrerequisites,
+         nextToArriveUpdateStatus: NextToArriveUpdateStatus = .idle,
+         refreshDataRequested: Bool = false
+    ) {
         self.scheduleState = scheduleState
         self.nextToArriveTrips = nextToArriveTrips
-        self.updateRequested = updateRequested
+        self.nextToArrivePrerequisiteStatus = nextToArrivePrerequisiteStatus
+        self.nextToArriveUpdateStatus = nextToArriveUpdateStatus
+        self.refreshDataRequested = refreshDataRequested
     }
 }
 
@@ -28,6 +39,15 @@ func ==(lhs: NextToArriveState, rhs: NextToArriveState) -> Bool {
     guard areEqual else { return false }
 
     areEqual = lhs.nextToArriveTrips == rhs.nextToArriveTrips
+    guard areEqual else { return false }
+
+    areEqual = lhs.nextToArrivePrerequisiteStatus == rhs.nextToArrivePrerequisiteStatus
+    guard areEqual else { return false }
+
+    areEqual = lhs.nextToArriveUpdateStatus == rhs.nextToArriveUpdateStatus
+    guard areEqual else { return false }
+
+    areEqual = lhs.refreshDataRequested == rhs.refreshDataRequested
     guard areEqual else { return false }
 
     return areEqual

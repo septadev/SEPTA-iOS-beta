@@ -5,10 +5,18 @@ my $struct = q |
 
 struct NextToArriveState {
     let scheduleState: ScheduleState
-    let nextToArriveTrip: NextToArriveTrip?
-    init(scheduleState: ScheduleState = ScheduleState()) {
-        self.scheduleState = scheduleState
-    }
+    let nextToArriveTrips: [NextToArriveTrip]
+    let nextToArrivePrerequisiteStatus: NextToArrivePrerequisiteStatus
+    let nextToArriveUpdateStatus: NextToArriveUpdateStatus
+
+    let refreshRequested: Bool
+
+    init(scheduleState: ScheduleState = ScheduleState(), nextToArriveTrips: [NextToArriveTrip] =  [NextToArriveTrip](), nextToArriveUpdateStatus: NextToArriveUpdateStatus = .missingPrerequsites, refreshRequested: Bool = false){
+    self.scheduleState = scheduleState
+self.nextToArriveTrips = nextToArriveTrips
+self.nextToArriveUpdateStatus = nextToArriveUpdateStatus
+self.refreshRequested = refreshRequested
+}
 }
 
 

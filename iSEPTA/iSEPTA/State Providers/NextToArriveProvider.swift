@@ -31,13 +31,38 @@ class NextToArriveProvider: StoreSubscriber {
         unsubscribe()
     }
 
-    var currentlyRetrieving = false
+    var scheduleRequest: ScheduleRequest { return store.state.nextToArriveState.scheduleState.scheduleRequest }
+    var nextToArriveUpdateStatus: NextToArriveUpdateStatus { return store.state.nextToArriveState.nextToArriveUpdateStatus }
+
     func newState(state: Bool) {
-        let updateRequested = state
-        if updateRequested && !currentlyRetrieving {
-            currentlyRetrieving = true
-            let scheduleRequest = store.state.nextToArriveState.scheduleState.scheduleRequest
+        let refreshDataRequested = state
+
+        if refreshDataRequested && nextToArriveUpdateStatus != .dataLoading {
+            reportStatus(.dataLoading)
             retrieveNextToArrive(scheduleRequest: scheduleRequest, completion: mapArrivals)
+        }
+    }
+
+    func reportStatus(_ status: NextToArriveUpdateStatus, nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip]()) {
+        let updateAction = UpdateNextToArriveStatusAndData(nextToArriveUpdateStatus: status, nextToArriveTrips: nextToArriveTrips, refreshDataRequested: false)
+        store.dispatch(updateAction)
+    }
+
+    func retrieveNextToArrive(scheduleRequest: ScheduleRequest, completion: (([RealTimeArrival]) -> Void)?) {
+        guard
+            let startId = scheduleRequest.selectedStart?.stopId,
+            let stopId = scheduleRequest.selectedEnd?.stopId,
+            let route = scheduleRequest.selectedRoute?.routeId else { return }
+        let transitType = TransitType.fromTransitMode(scheduleRequest.transitMode)
+        let originId = String(startId)
+        let destinationId = String(stopId)
+
+        client.getRealTimeArrivals(originId: originId, destinationId: destinationId, transitType: transitType, route: route).then { realTimeArrivals -> Void in
+            guard let arrivals = realTimeArrivals?.arrivals else { return }
+            completion?(arrivals)
+
+        }.catch { _ in
+            self.reportStatus(.dataLoadingError)
         }
     }
 
@@ -55,9 +80,7 @@ class NextToArriveProvider: StoreSubscriber {
                 nextToArriveTrips.append(nextToArriveTrip)
             }
         }
-
-        let action = UpdateNextToArriveData(nextToArriveTrips: nextToArriveTrips)
-        store.dispatch(action)
+        reportStatus(.dataLoadedSuccessfully, nextToArriveTrips: nextToArriveTrips)
     }
 
     func mapStart(realTimeArrival a: RealTimeArrival) -> NextToArriveStop? {
@@ -129,31 +152,13 @@ class NextToArriveProvider: StoreSubscriber {
 
         return CLLocationCoordinate2D(latitude: latDegrees, longitude: lonDegrees)
     }
-
-    func retrieveNextToArrive(scheduleRequest: ScheduleRequest, completion: (([RealTimeArrival]) -> Void)?) {
-        guard
-            let startId = scheduleRequest.selectedStart?.stopId,
-            let stopId = scheduleRequest.selectedEnd?.stopId,
-            let route = scheduleRequest.selectedRoute?.routeId else { return }
-        let transitType = TransitType.fromTransitMode(scheduleRequest.transitMode)
-        let originId = String(startId)
-        let destinationId = String(stopId)
-        print("About to retrieve next to arrive")
-        client.getRealTimeArrivals(originId: originId, destinationId: destinationId, transitType: transitType, route: route).then { realTimeArrivals -> Void in
-            guard let arrivals = realTimeArrivals?.arrivals else { return }
-            completion?(arrivals)
-            self.currentlyRetrieving = false
-        }.catch { err in
-            print(err)
-        }
-    }
 }
 
 extension NextToArriveProvider: SubscriberUnsubscriber {
     func subscribe() {
         store.subscribe(self) {
             $0.select {
-                $0.nextToArriveState.updateRequested
+                $0.nextToArriveState.refreshDataRequested
             }.skipRepeats { $0 == $1 }
         }
     }

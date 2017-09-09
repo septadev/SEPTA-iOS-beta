@@ -1627,9 +1627,6 @@ SearchTextBox</string>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                 <string key="userLabel">
 SearchTextBox</string>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="muK-X4-z3d" appends="YES" id="Lh3-20-Yso"/>
-                                                </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1696,7 +1693,6 @@ SearchTextBox</string>
                         <outlet property="delegate" destination="sw4-Eu-qy3" id="Lob-N8-MYd"/>
                     </connections>
                 </swipeGestureRecognizer>
-                <tapGestureRecognizer id="muK-X4-z3d"/>
             </objects>
             <point key="canvasLocation" x="244" y="-508"/>
         </scene>

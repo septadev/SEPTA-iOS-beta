@@ -28,20 +28,23 @@ struct NextToArriveReducer {
 
     static func reduceScheduleAction(action: ScheduleAction, state: NextToArriveState) -> NextToArriveState {
         let scheduleState = ScheduleReducer.main(action: action, state: state.scheduleState)
-        return NextToArriveState(scheduleState: scheduleState, nextToArriveTrips: state.nextToArriveTrips, updateRequested: state.updateRequested)
+        return NextToArriveState(scheduleState: scheduleState, nextToArriveTrips: state.nextToArriveTrips)
     }
 
     static func reduceNextToArriveAction(action: NextToArriveAction, state: NextToArriveState) -> NextToArriveState {
         var state = state
         switch action {
-        case let action as NextToArriveUpdateRequested:
-            state = reduceNextToArriveUpdateRequested(action: action, state: state)
+        case let action as NextToArrivePrerequisteStatusChanged:
+            state = reduceNextToArrivePrerequisteStatusChanged(action: action, state: state)
+
         case let action as ClearNextToArriveData:
             state = reduceClearNextToArriveData(action: action, state: state)
-        case let action as UpdateNextToArriveData:
-            state = reduceUpdateNextToArriveData(action: action, state: state)
-        case let action as NextToArrivePrerequisitesStatus:
-            state = reduceNextToArrivePrerequisitesStatus(action: action, state: state)
+        case let action as NextToArriveRefreshDataRequested:
+            state = reduceNextToArriveRefreshDataRequested(action: action, state: state)
+
+        case let action as UpdateNextToArriveStatusAndData:
+            state = reduceUpdateNextToArriveStatusAndData(action: action, state: state)
+
         case let action as ViewScheduleDataInNextToArrive:
             state = reduceViewScheduleData(action: action, state: state)
         case let action as InsertNextToArriveScheduleRequest:
@@ -53,28 +56,28 @@ struct NextToArriveReducer {
         return state
     }
 
-    static func reduceNextToArriveUpdateRequested(action _: NextToArriveUpdateRequested, state: NextToArriveState) -> NextToArriveState {
-        return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: state.nextToArriveTrips, updateRequested: true)
+    static func reduceNextToArrivePrerequisteStatusChanged(action: NextToArrivePrerequisteStatusChanged, state: NextToArriveState) -> NextToArriveState {
+        return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: state.nextToArriveTrips, nextToArrivePrerequisiteStatus: action.newStatus, nextToArriveUpdateStatus: state.nextToArriveUpdateStatus, refreshDataRequested: state.refreshDataRequested)
     }
 
     static func reduceClearNextToArriveData(action _: ClearNextToArriveData, state: NextToArriveState) -> NextToArriveState {
-        return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: [NextToArriveTrip](), updateRequested: false)
+        return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: [NextToArriveTrip](), nextToArrivePrerequisiteStatus: state.nextToArrivePrerequisiteStatus, nextToArriveUpdateStatus: state.nextToArriveUpdateStatus, refreshDataRequested: state.refreshDataRequested)
     }
 
-    static func reduceUpdateNextToArriveData(action: UpdateNextToArriveData, state: NextToArriveState) -> NextToArriveState {
-        return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: action.nextToArriveTrips, updateRequested: false)
+    static func reduceNextToArriveRefreshDataRequested(action: NextToArriveRefreshDataRequested, state: NextToArriveState) -> NextToArriveState {
+        return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: state.nextToArriveTrips, nextToArrivePrerequisiteStatus: state.nextToArrivePrerequisiteStatus, nextToArriveUpdateStatus: state.nextToArriveUpdateStatus, refreshDataRequested: action.refreshUpdateRequested)
     }
 
-    static func reduceNextToArrivePrerequisitesStatus(action: NextToArrivePrerequisitesStatus, state: NextToArriveState) -> NextToArriveState {
-        return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: state.nextToArriveTrips, updateRequested: action.status)
+    static func reduceUpdateNextToArriveStatusAndData(action: UpdateNextToArriveStatusAndData, state: NextToArriveState) -> NextToArriveState {
+        return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: action.nextToArriveTrips, nextToArrivePrerequisiteStatus: state.nextToArrivePrerequisiteStatus, nextToArriveUpdateStatus: action.nextToArriveUpdateStatus, refreshDataRequested: action.refreshDataRequested)
     }
 
     static func reduceViewScheduleData(action _: ViewScheduleDataInNextToArrive, state: NextToArriveState) -> NextToArriveState {
-        return NextToArriveState(scheduleState: store.state.scheduleState, nextToArriveTrips: state.nextToArriveTrips, updateRequested: state.updateRequested)
+        return NextToArriveState(scheduleState: store.state.scheduleState, nextToArriveTrips: state.nextToArriveTrips)
     }
 
     static func reduceInsertNextToArriveScheduleRequest(action: InsertNextToArriveScheduleRequest, state: NextToArriveState) -> NextToArriveState {
         let scheduleState = ScheduleState(scheduleRequest: action.scheduleRequest, scheduleData: ScheduleData(), scheduleStopEdit: ScheduleStopEdit())
-        return NextToArriveState(scheduleState: scheduleState, nextToArriveTrips: state.nextToArriveTrips, updateRequested: state.updateRequested)
+        return NextToArriveState(scheduleState: scheduleState, nextToArriveTrips: state.nextToArriveTrips)
     }
 }
