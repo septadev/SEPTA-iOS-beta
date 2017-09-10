@@ -37,6 +37,7 @@ class NextToArriveViewController: BaseNonModalViewController, IdentifiableContro
 
         buttonView.isHidden = true
         UIView.addSurroundShadow(toView: tableViewWrapper)
+        updateHeaderLabels()
         super.viewDidLoad()
     }
 
@@ -114,14 +115,18 @@ extension NextToArriveViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return viewModel.heightForSectionHeader(atRow: section)
     }
+
+    func updateHeaderLabels() {
+        scheduleLabel.text = viewModel.scheduleTitle()
+        sectionHeaderLabel.text = viewModel.transitModeTitle()
+    }
 }
 
 extension NextToArriveViewController: UpdateableFromViewModel {
 
     func viewModelUpdated() {
         guard let tableView = tableView else { return }
-        scheduleLabel.text = viewModel.scheduleTitle()
-        sectionHeaderLabel.text = viewModel.transitModeTitle()
+        updateHeaderLabels()
         tableView.reloadData()
     }
 

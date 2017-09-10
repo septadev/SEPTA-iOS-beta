@@ -17,7 +17,7 @@ class NextToArriveViewModel: NSObject, StoreSubscriber {
 
     @IBOutlet weak var nextToArriveViewController: UpdateableFromViewModel?
     @IBOutlet weak var schedulesDelegate: SchedulesViewModelDelegate?
-    typealias StoreSubscriberStateType = ScheduleRequest?
+    typealias StoreSubscriberStateType = ScheduleRequest
     var scheduleRequest: ScheduleRequest?
     var transitMode: TransitMode! {
         didSet {
@@ -35,28 +35,14 @@ class NextToArriveViewModel: NSObject, StoreSubscriber {
     fileprivate var selectEndRowDisplayModel: NextToArriveRowDisplayModel?
     fileprivate var displayModel = [NextToArriveRowDisplayModel]()
 
-    func scheduleTitle() -> String? {
-        return scheduleRequest?.transitMode.nextToArriveTitle()
-    }
-
     func newState(state: StoreSubscriberStateType) {
         scheduleRequest = state
-        guard let transitMode = state?.transitMode else { return }
 
-        self.transitMode = transitMode
+        transitMode = state.transitMode
         buildDisplayModel()
         nextToArriveViewController?.viewModelUpdated()
         schedulesDelegate?.formIsComplete(scheduleRequest?.selectedEnd != nil)
     }
-
-    //    let scheduleRequest_rail: ScheduleRequest = {
-    //        ScheduleRequest.dummyRequest(transitMode: .rail, routeId: Route.allRailRoutesRoute().routeId, startId: 90222, stopId: 90313)
-    //    }()
-    //    var lastTransitMode: TransitMode = .bus
-    //    let scheduleRequest_bus: ScheduleRequest = {
-    //        ScheduleRequest.dummyRequest(transitMode: .bus, routeId: "16", startId: 515, stopId: 136)
-    //
-    //    }()
 
     func buildDisplayModel() {
 
@@ -68,8 +54,11 @@ class NextToArriveViewModel: NSObject, StoreSubscriber {
     }
 
     func transitModeTitle() -> String? {
-        guard let transitMode = scheduleRequest?.transitMode else { return nil }
         return transitMode.routeTitle()
+    }
+
+    func scheduleTitle() -> String {
+        return transitMode.nextToArriveTitle()
     }
 
     deinit {
