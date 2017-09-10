@@ -8,31 +8,50 @@ class BaseScheduleDataProvider: StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleRequest
     var currentScheduleRequest = ScheduleRequest()
 
-    var databaseIsLoaded: Bool { return store.state.nextToArriveState.scheduleState.databaseIsLoaded }
-
     let targetForScheduleAction: TargetForScheduleAction
+
+    let databaseStateWatcher: ScheduleProviderDatabaseStateWatcher
 
     init(targetForScheduleAction: TargetForScheduleAction) {
         self.targetForScheduleAction = targetForScheduleAction
+        databaseStateWatcher = ScheduleProviderDatabaseStateWatcher()
+        databaseStateWatcher.delegate = self
+    }
+
+    var isFirstRun: Bool = true
+
+    func subscribe() {
     }
 
     func newState(state: StoreSubscriberStateType) {
         let scheduleRequest = state
-        guard currentScheduleRequest != scheduleRequest else { return }
-        print("New State in Schedule Data Provider")
+
+        if isFirstRun {
+            firstRunSetup(scheduleRequest: scheduleRequest)
+        } else {
+            processNewState(scheduleRequest: scheduleRequest)
+        }
+
+        currentScheduleRequest = scheduleRequest
+    }
+
+    func firstRunSetup(scheduleRequest: ScheduleRequest) {
+        retrieveAvailableRoutes(scheduleRequest: scheduleRequest)
+        isFirstRun = false
+    }
+
+    func processNewState(scheduleRequest: ScheduleRequest) {
         processReverseTrip(scheduleRequest: scheduleRequest)
         processSelectedRoute(scheduleRequest: scheduleRequest)
         processSelectedTripStart(scheduleRequest: scheduleRequest)
         processSelectedTripEnd(scheduleRequest: scheduleRequest)
         processSelectedTrip(scheduleRequest: scheduleRequest)
-
-        currentScheduleRequest = scheduleRequest
     }
 
     func processSelectedRoute(scheduleRequest: ScheduleRequest) {
         let prereqsExist = prerequisitesExistForRoutes(scheduleRequest: scheduleRequest)
         let prereqsChanged = prerequisitesForRoutesHaveChanged(scheduleRequest: scheduleRequest)
-        let databaseLoaded = databaseIsLoaded
+
         if prereqsExist && prereqsChanged {
 
             retrieveAvailableRoutes(scheduleRequest: scheduleRequest)
@@ -78,7 +97,7 @@ class BaseScheduleDataProvider: StoreSubscriber {
     // MARK: - Prerequisites Exist
 
     func prerequisitesExistForRoutes(scheduleRequest _: ScheduleRequest) -> Bool {
-        return databaseIsLoaded
+        return true
     }
 
     func prerequisitesExistForTripStarts(scheduleRequest: ScheduleRequest) -> Bool {

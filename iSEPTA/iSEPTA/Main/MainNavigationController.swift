@@ -8,7 +8,7 @@ import SeptaSchedule
 class MainNavigationController: UITabBarController, UITabBarControllerDelegate, StoreSubscriber {
 
     typealias StoreSubscriberStateType = NavigationController
-    let databaseFileManager = DatabaseFileManager()
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -57,22 +57,5 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        movePreloadedDatabaseIfNeeded()
-    }
-
-    func movePreloadedDatabaseIfNeeded() {
-
-        databaseFileManager.unzipFileToDocumentsDirectoryIfNecessary(
-            startCompletion: { [weak self] message in
-                self?.displayAlert(message) },
-            endCompletion: { [weak self] message in
-                self?.dismiss(animated: true, completion: nil)
-                let action = DatabaseLoaded(targetForScheduleAction: .both)
-                store.dispatch(action)
-                self?.displayAlert(message)
-                stateProviders.scheduleProvider.subscribe()
-                stateProviders.nextToArriveScheduleDataProvider.subscribe()
-
-        })
     }
 }

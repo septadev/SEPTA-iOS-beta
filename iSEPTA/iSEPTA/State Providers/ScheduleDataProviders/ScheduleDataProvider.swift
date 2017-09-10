@@ -12,7 +12,7 @@ class ScheduleDataProvider: BaseScheduleDataProvider {
         super.init(targetForScheduleAction: .schedules)
     }
 
-    func subscribe() {
+    override func subscribe() {
         store.subscribe(self) {
             $0.select { $0.scheduleState.scheduleRequest }.skipRepeats { $0 == $1 }
         }

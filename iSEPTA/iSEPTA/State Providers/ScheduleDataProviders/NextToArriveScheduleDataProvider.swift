@@ -18,7 +18,8 @@ class NextToArriveScheduleDataProvider: BaseScheduleDataProvider {
         super.init(targetForScheduleAction: .nextToArrive)
     }
 
-    func subscribe() {
+    override func subscribe() {
+
         store.subscribe(self) {
             $0.select { $0.nextToArriveState.scheduleState.scheduleRequest }.skipRepeats { $0 == $1 }
         }

@@ -16,8 +16,8 @@ let store = Store<AppState>(
 var stateProviders = StateProviders()
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, DatabaseStateDelegate {
+    let databaseFileManager = DatabaseFileManager()
     var window: UIWindow? {
         didSet {
         }
@@ -28,8 +28,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self, Answers.self])
 
         stateProviders.preferenceProvider.subscribe()
+        movePreloadedDatabaseIfNeeded()
 
         return true
+    }
+
+    func movePreloadedDatabaseIfNeeded() {
+        databaseFileManager.delegate = self
+        databaseFileManager.unzipFileToDocumentsDirectoryIfNecessary()
+    }
+
+    func databaseStateUpdated(databaseState: DatabaseState) {
+        let action = NewDatabaseState(databaseState: databaseState)
+        store.dispatch(action)
     }
 
     func applicationWillResignActive(_: UIApplication) {

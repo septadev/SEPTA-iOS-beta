@@ -45,8 +45,7 @@ struct ScheduleReducer {
             scheduleState = ScheduleState(
                 scheduleRequest: Req.reduceRequest(action: action, scheduleRequest: scheduleState.scheduleRequest),
                 scheduleData: Data.reduceData(action: action, scheduleData: scheduleState.scheduleData),
-                scheduleStopEdit: StopEdit.reduceStopEdit(action: action, scheduleStopEdit: scheduleState.scheduleStopEdit),
-                databaseIsLoaded: scheduleState.databaseIsLoaded
+                scheduleStopEdit: StopEdit.reduceStopEdit(action: action, scheduleStopEdit: scheduleState.scheduleStopEdit)
             )
         }
         return scheduleState
@@ -61,6 +60,6 @@ struct ScheduleReducer {
     }
 
     static func reduceDatabaseLoaded(action _: DatabaseLoaded, state: ScheduleState) -> ScheduleState {
-        return ScheduleState(scheduleRequest: state.scheduleRequest, scheduleData: state.scheduleData, scheduleStopEdit: state.scheduleStopEdit, databaseIsLoaded: true)
+        return ScheduleState(scheduleRequest: state.scheduleRequest, scheduleData: state.scheduleData, scheduleStopEdit: state.scheduleStopEdit)
     }
 }

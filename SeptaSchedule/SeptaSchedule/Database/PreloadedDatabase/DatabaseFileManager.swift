@@ -14,6 +14,8 @@ public class DatabaseFileManager {
     fileprivate let databaseName = "SEPTA.sqlite"
     let fileManager = FileManager.default
 
+    public weak var delegate: DatabaseStateDelegate?
+
     lazy var preloadedZippedDatabaseURL: URL? = {
         bundle.url(forResource: "SEPTA", withExtension: "zip")
     }()
@@ -31,22 +33,18 @@ public class DatabaseFileManager {
         return fileManager.fileExists(atPath: url.path)
     }
 
-    public func unzipFileToDocumentsDirectoryIfNecessary(startCompletion: ((String) -> Void)? = nil, endCompletion: ((String) -> Void)? = nil) {
-        let message: String
-        if databaseFileExistsInDocumentsDirectory {
-            message = "The schedule database is good to go"
-            endCompletion?("Database is loaded")
-        } else {
-            moveDatabase(endCompletion: endCompletion)
-            message = "Please allow a few moments to get the database set up"
-        }
+    public func unzipFileToDocumentsDirectoryIfNecessary() {
 
-        startCompletion?(message)
+        if databaseFileExistsInDocumentsDirectory {
+            updateState(databaseState: .loaded)
+        } else {
+            updateState(databaseState: .loading)
+            moveDatabase()
+        }
     }
 
-    func moveDatabase(endCompletion: ((String) -> Void)?) {
+    private func moveDatabase() {
 
-        var message: String = "The database has been successfully moved."
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let strongSelf = self else { return }
             do {
@@ -54,17 +52,19 @@ public class DatabaseFileManager {
                 guard let documentsURL = strongSelf.documentDirectoryURL else { throw DatabaseFileManagerError.NoDocumentsDirectory }
                 try Zip.unzipFile(preloadedURL, destination: documentsURL, overwrite: false, password: nil, progress: { (progress) -> Void in
                     if progress == 1 {
-                        DispatchQueue.main.async {
-                            endCompletion?(message)
-                        }
+                        strongSelf.updateState(databaseState: .loaded)
                     }
                 })
             } catch {
-                message = error.localizedDescription
-                DispatchQueue.main.async {
-                    endCompletion?(message)
-                }
+                print(error.localizedDescription)
+                strongSelf.updateState(databaseState: .error)
             }
+        }
+    }
+
+    func updateState(databaseState: DatabaseState) {
+        DispatchQueue.main.async {
+            self.delegate?.databaseStateUpdated(databaseState: databaseState)
         }
     }
 
