@@ -26,6 +26,10 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         nextToArriveMapEndpointsViewModel.delegate = self
     }
 
+    override func viewDidAppear(_: Bool) {
+        mapView.showAnnotations(mapView.annotations, animated: true)
+    }
+
     @IBOutlet private weak var mapView: MKMapView! {
         didSet {
             addOverlaysToMap()
@@ -43,9 +47,6 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
     }
 
     private var overlaysToAdd = [MKOverlay]() {
-        willSet {
-            updateMapRect(overlays: newValue)
-        }
 
         didSet {
             guard let _ = mapView else { return }
@@ -61,22 +62,8 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         }
     }
 
-    var mapRect = MKMapRectNull
-
-    func updateMapRect(overlays: [MKOverlay]) {
-        for overlay in overlays {
-            mapRect = MKMapRectUnion(mapRect, overlay.boundingMapRect)
-        }
-    }
-
     func addOverlaysToMap() {
         mapView.addOverlays(overlaysToAdd)
-        // updateVisibleMap()
-    }
-
-    func updateVisibleMap() {
-        let expandedRect = mapView.mapRectThatFits(mapRect, edgePadding: UIEdgeInsetsMake(100, 10, 10, 30))
-        mapView.setVisibleMapRect(expandedRect, animated: false)
     }
 
     func drawRoute(routeId: String) {
@@ -96,7 +83,6 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
             let selectedEnd = scheduleRequest.selectedEnd else { return }
         addStopToMap(stop: selectedStart, pinColor: UIColor.green)
         addStopToMap(stop: selectedEnd, pinColor: UIColor.red)
-        updateVisibleMap()
     }
 
     var stops = [ColorPointAnnotation]()
@@ -106,9 +92,6 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         annotation.title = stop.stopName
         stops.append(annotation)
         mapView.addAnnotation(annotation)
-        let mapPoint = MKMapPointForCoordinate(annotation.coordinate)
-        let annotationMapRect = MKMapRect(origin: mapPoint, size: MKMapSize(width: 1000, height: 1000))
-        mapRect = MKMapRectUnion(mapRect, annotationMapRect)
     }
 
     func drawVehicleLocations(_ vehicleLocations: [VehicleLocation]) {
@@ -137,11 +120,6 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         let annotation = VehicleLocationAnnotation()
         annotation.coordinate = coordinate
         mapView.addAnnotation(annotation)
-
-        let mapPoint = MKMapPointForCoordinate(annotation.coordinate)
-        let annotationMapRect = MKMapRect(origin: mapPoint, size: MKMapSize(width: 1000, height: 1000))
-        mapRect = MKMapRectUnion(mapRect, annotationMapRect)
-        updateVisibleMap()
     }
 
     func parseKMLForRoute(url: URL, routeId: String) {
@@ -170,10 +148,6 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
             return routeOverlay
         }
     }
-
-    deinit {
-        _ = 1
-    }
 }
 
 extension NextToArriveMapViewController: MKMapViewDelegate {
@@ -183,7 +157,7 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
         let renderer: MKPolylineRenderer = MKPolylineRenderer(polyline: routeOverlay)
 
         renderer.strokeColor = Route.colorForRouteId(routeId, transitMode: .bus)
-        renderer.lineWidth = 4.0
+        renderer.lineWidth = 2.0
 
         return renderer
     }

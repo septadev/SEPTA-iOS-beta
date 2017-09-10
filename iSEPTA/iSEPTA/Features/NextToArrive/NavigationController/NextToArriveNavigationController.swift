@@ -13,6 +13,7 @@ class NextToArriveNavigationController: BaseNavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = SeptaColor.navBarBlue
         initializeNavStackState()
     }
 

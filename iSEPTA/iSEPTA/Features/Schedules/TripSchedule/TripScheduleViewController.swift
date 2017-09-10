@@ -157,10 +157,8 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         view.backgroundColor = SeptaColor.navBarBlue
         navigationItem.title = "Schedules: \(transitMode.name())"
         updateLabels()
-        navigationController?.navigationBar.tintColor = UIColor.white
-        if let topItem = self.navigationController?.navigationBar.topItem {
-            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        }
+        navigationController?.navigationBar.configureBackButton()
+
         shadowView.backgroundColor = SeptaColor.navBarBlue
         shadowView.layer.masksToBounds = false
         shadowView.layer.shadowOffset = CGSize(width: 0, height: 0.0)

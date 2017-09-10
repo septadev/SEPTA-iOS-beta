@@ -10,3 +10,6 @@ import Foundation
 
     func displayErrorMessage(message: String, shouldDismissAfterDisplay: Bool)
 }
+
+extension UpdateableFromViewModel {
+}

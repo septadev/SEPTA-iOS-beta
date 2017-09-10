@@ -164,6 +164,16 @@ extension TransitMode {
         }
     }
 
+    public func nextToArriveDetailTitle() -> String {
+        switch self {
+        case .rail: return "Next to Arrive: Regional Rail"
+        case .subway : return "Next to Arrive: Subway"
+        case .bus: return "Next to Arrive: Bus"
+        case .trolley :return "Next to Arrive: Trolley"
+        case .nhsl: return "Next to Arrive: NHSL"
+        }
+    }
+
     public func nextToDetailTitle() -> String {
         switch self {
         case .rail: return "Next Trains To Arrive"

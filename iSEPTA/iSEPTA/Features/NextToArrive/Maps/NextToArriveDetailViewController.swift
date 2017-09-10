@@ -10,7 +10,14 @@ import Foundation
 import UIKit
 
 class NextToArriveDetailViewController: UIViewController, IdentifiableController {
+
     static var viewController: ViewController = .nextToArriveDetailController
+
+    override func viewDidLoad() {
+        navigationController?.navigationBar.configureBackButton()
+
+        navigationItem.title = store.state.nextToArriveState.scheduleState.scheduleRequest.transitMode.nextToArriveDetailTitle()
+    }
 
     override func didMove(toParentViewController parent: UIViewController?) {
         super.didMove(toParentViewController: parent)

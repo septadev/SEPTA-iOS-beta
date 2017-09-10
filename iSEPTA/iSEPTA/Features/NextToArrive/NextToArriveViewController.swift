@@ -37,6 +37,7 @@ class NextToArriveViewController: BaseNonModalViewController, IdentifiableContro
 
         buttonView.isHidden = true
         UIView.addSurroundShadow(toView: tableViewWrapper)
+
         updateHeaderLabels()
         super.viewDidLoad()
     }
