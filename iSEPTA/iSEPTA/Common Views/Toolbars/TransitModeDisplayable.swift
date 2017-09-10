@@ -130,6 +130,7 @@ extension TransitMode {
     }
 
     public func cellImage() -> UIImage? {
+
         switch self {
         case .bus: return UIImage(named: "BUS_Line")
         case .rail: return nil
@@ -163,6 +164,16 @@ extension TransitMode {
         }
     }
 
+    public func nextToDetailTitle() -> String {
+        switch self {
+        case .rail: return "Next Trains To Arrive"
+        case .subway : return "Next Trains to Arrive"
+        case .bus: return "Next Buses to Arrive"
+        case .trolley :return "Next Trolleys to Arrive"
+        case .nhsl: return "Next Trains To Arrive"
+        }
+    }
+
     public static func convertFromTransitMode(_ type: String) -> TransitMode? {
         let transitMode: TransitMode? = {
             switch type {
@@ -192,7 +203,9 @@ extension TransitMode {
         case .trolley :imageName = "TrolleyPin"
         case .nhsl:imageName = "NHSLPin"
         }
-        return UIImage(named: imageName)
+        guard let image = UIImage(named: imageName), let cgImage = image.cgImage else { return nil }
+
+        return UIImage(cgImage: cgImage, scale: 0.25, orientation: image.imageOrientation)
     }
 
     public func scheduleTypeSegments() -> [ScheduleType] {
