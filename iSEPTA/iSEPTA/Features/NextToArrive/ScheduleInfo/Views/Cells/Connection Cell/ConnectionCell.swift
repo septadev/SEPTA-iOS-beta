@@ -1,5 +1,5 @@
 //
-//  NoConnectingSectionView.swift
+//  ConnectionCell.swift
 //  iSEPTA
 //
 //  Created by Mark Broski on 9/11/17.
@@ -9,5 +9,5 @@
 import Foundation
 import UIKit
 
-class NoConnectingSectionView: UIView {
+class ConnectionCell: UITableViewCell {
 }

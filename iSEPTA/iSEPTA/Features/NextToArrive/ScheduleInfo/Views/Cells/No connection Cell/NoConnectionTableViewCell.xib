@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="noConnectionCell" rowHeight="44" id="q3t-QG-QTb" customClass="NoConnectionCell" customModule="Septa" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q3t-QG-QTb" id="AcL-jl-jV2">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ZZ-b9-7H2" userLabel="DepartingView">
+                        <rect key="frame" x="284" y="0.5" width="81" height="42.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEPARTING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMC-Xs-TMs" userLabel="Departing">
+                                <rect key="frame" x="11.5" y="7.5" width="57.5" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="0.42745098040000001" green="0.42745098040000001" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="42 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLY-PC-Us7" userLabel="DepartingWhen">
+                                <rect key="frame" x="20" y="20.5" width="41.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="81" id="Cty-I7-3bK"/>
+                            <constraint firstItem="NMC-Xs-TMs" firstAttribute="top" secondItem="3ZZ-b9-7H2" secondAttribute="top" constant="7" id="LOv-l2-pQv" userLabel="DepartingTop"/>
+                            <constraint firstItem="JLY-PC-Us7" firstAttribute="top" secondItem="NMC-Xs-TMs" secondAttribute="bottom" constant="1" id="U66-EH-JsX" userLabel="DepartingWhenTop"/>
+                            <constraint firstAttribute="height" constant="42" id="UMJ-vA-D5i"/>
+                            <constraint firstItem="NMC-Xs-TMs" firstAttribute="centerX" secondItem="3ZZ-b9-7H2" secondAttribute="centerX" id="XzK-5b-S35" userLabel="DepartingCenterX"/>
+                            <constraint firstItem="JLY-PC-Us7" firstAttribute="centerX" secondItem="3ZZ-b9-7H2" secondAttribute="centerX" id="smy-SP-lX8" userLabel="DepartingWhenCenterX"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:29 AM - 10:03 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="66Z-Mp-x5z" userLabel="StartStopLabel">
+                        <rect key="frame" x="16" y="2" width="131" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 Min Late" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dnt-Uu-bEj" userLabel="OnTimeLabel">
+                        <rect key="frame" x="16" y="23" width="63" height="14.5"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                        <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#546 to 30th St. Station" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eM3-AZ-llx" userLabel="EndStopLabel">
+                        <rect key="frame" x="87" y="23.5" width="135.5" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="66Z-Mp-x5z" firstAttribute="top" secondItem="AcL-jl-jV2" secondAttribute="top" constant="2" id="0Ua-Kd-gYa" userLabel="StartStopLabelTop"/>
+                    <constraint firstItem="3ZZ-b9-7H2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eM3-AZ-llx" secondAttribute="trailing" constant="10" id="CmW-4a-iUf" userLabel="EndStopLabelRight"/>
+                    <constraint firstItem="Dnt-Uu-bEj" firstAttribute="top" secondItem="66Z-Mp-x5z" secondAttribute="bottom" constant="4" id="Ewp-oq-GhZ" userLabel="OnTimeLabelTop"/>
+                    <constraint firstItem="3ZZ-b9-7H2" firstAttribute="centerY" secondItem="AcL-jl-jV2" secondAttribute="centerY" id="FeF-TY-yPQ" userLabel="DepartingViewCenterY"/>
+                    <constraint firstItem="3ZZ-b9-7H2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="66Z-Mp-x5z" secondAttribute="trailing" constant="10" id="NaM-3y-LSK" userLabel="StartStopLabelRight"/>
+                    <constraint firstItem="Dnt-Uu-bEj" firstAttribute="leading" secondItem="AcL-jl-jV2" secondAttribute="leading" constant="16" id="TBb-RK-geJ" userLabel="OnTimeLabelLeft"/>
+                    <constraint firstAttribute="trailing" secondItem="3ZZ-b9-7H2" secondAttribute="trailing" constant="10" id="TyA-WM-KIa" userLabel="DepartingViewRight"/>
+                    <constraint firstItem="eM3-AZ-llx" firstAttribute="leading" secondItem="Dnt-Uu-bEj" secondAttribute="trailing" constant="8" id="aNm-aU-hZj" userLabel="EndStopLabelLeft"/>
+                    <constraint firstItem="eM3-AZ-llx" firstAttribute="baseline" secondItem="Dnt-Uu-bEj" secondAttribute="baseline" id="cfl-mn-9wu" userLabel="EndStopLabelBaseline"/>
+                    <constraint firstItem="66Z-Mp-x5z" firstAttribute="leading" secondItem="AcL-jl-jV2" secondAttribute="leading" constant="16" id="ign-Iu-JMB" userLabel="StartStopLabelLeft"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="departingView" destination="3ZZ-b9-7H2" id="Kgn-9G-3UM"/>
+                <outlet property="departingWhenLabel" destination="JLY-PC-Us7" id="iUf-HW-1eZ"/>
+                <outlet property="endStopLabel" destination="eM3-AZ-llx" id="wPX-Ps-Rug"/>
+                <outlet property="onTimeLabel" destination="Dnt-Uu-bEj" id="dm7-ah-IiV"/>
+                <outlet property="startStopLabel" destination="66Z-Mp-x5z" id="zO2-yb-2Rj"/>
+            </connections>
+            <point key="canvasLocation" x="9" y="-103"/>
+        </tableViewCell>
+    </objects>
+</document>
