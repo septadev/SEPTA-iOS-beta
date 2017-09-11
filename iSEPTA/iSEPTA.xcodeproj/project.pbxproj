@@ -278,7 +278,6 @@
 		58DD1A901F600758002532DC /* NextToArriveViewModel+StopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD1A8F1F600758002532DC /* NextToArriveViewModel+StopCell.swift */; };
 		58DD1A921F60078D002532DC /* NextToArriveRowDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD1A911F60078D002532DC /* NextToArriveRowDisplayModel.swift */; };
 		58E33F0E1F6098FE00C74B7C /* NextToArriveMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F0D1F6098FE00C74B7C /* NextToArriveMapViewController.swift */; };
-		58E33F101F60995600C74B7C /* NextToArriveInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F0F1F60995600C74B7C /* NextToArriveInfoViewController.swift */; };
 		58E33F121F60998F00C74B7C /* NextToArriveDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F111F60998F00C74B7C /* NextToArriveDetailViewController.swift */; };
 		58E33F141F61425600C74B7C /* NextToArriveProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F131F61425600C74B7C /* NextToArriveProvider.swift */; };
 		58E33F161F6143E000C74B7C /* NextToArriveStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F151F6143E000C74B7C /* NextToArriveStop.swift */; };
@@ -329,6 +328,10 @@
 		67075FC81F57866D008BB38C /* ScheduleRouteState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC71F57866D008BB38C /* ScheduleRouteState.swift */; };
 		671A19201F6613A600C8EEDA /* ConstraintsToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A191F1F6613A600C8EEDA /* ConstraintsToggle.swift */; };
 		671A19241F661F8F00C8EEDA /* SwipeGestureRecognizerToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A19231F661F8F00C8EEDA /* SwipeGestureRecognizerToggle.swift */; };
+		671A19261F662DF000C8EEDA /* DividerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A19251F662DF000C8EEDA /* DividerViews.swift */; };
+		671A19291F66385100C8EEDA /* NoConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A19281F66385100C8EEDA /* NoConnectionCell.swift */; };
+		671A192B1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A192A1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift */; };
+		671A192D1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A192C1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift */; };
 		6749A46E1F53997D00AF6119 /* StopToSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749A46D1F53997D00AF6119 /* StopToSelect.swift */; };
 		6749A4711F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */; };
 		674FDBBF1F56E87F00CA67D2 /* SeptaRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; };
@@ -741,7 +744,6 @@
 		58DD1A8F1F600758002532DC /* NextToArriveViewModel+StopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NextToArriveViewModel+StopCell.swift"; sourceTree = "<group>"; };
 		58DD1A911F60078D002532DC /* NextToArriveRowDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveRowDisplayModel.swift; sourceTree = "<group>"; };
 		58E33F0D1F6098FE00C74B7C /* NextToArriveMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveMapViewController.swift; sourceTree = "<group>"; };
-		58E33F0F1F60995600C74B7C /* NextToArriveInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveInfoViewController.swift; sourceTree = "<group>"; };
 		58E33F111F60998F00C74B7C /* NextToArriveDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveDetailViewController.swift; sourceTree = "<group>"; };
 		58E33F131F61425600C74B7C /* NextToArriveProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveProvider.swift; sourceTree = "<group>"; };
 		58E33F151F6143E000C74B7C /* NextToArriveStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveStop.swift; sourceTree = "<group>"; };
@@ -789,6 +791,10 @@
 		67075FC71F57866D008BB38C /* ScheduleRouteState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRouteState.swift; sourceTree = "<group>"; };
 		671A191F1F6613A600C8EEDA /* ConstraintsToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsToggle.swift; sourceTree = "<group>"; };
 		671A19231F661F8F00C8EEDA /* SwipeGestureRecognizerToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeGestureRecognizerToggle.swift; sourceTree = "<group>"; };
+		671A19251F662DF000C8EEDA /* DividerViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerViews.swift; sourceTree = "<group>"; };
+		671A19281F66385100C8EEDA /* NoConnectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionCell.swift; sourceTree = "<group>"; };
+		671A192A1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextToArriveInfoViewController.swift; sourceTree = "<group>"; };
+		671A192C1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveInfoViewModel.swift; sourceTree = "<group>"; };
 		6749A46D1F53997D00AF6119 /* StopToSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopToSelect.swift; sourceTree = "<group>"; };
 		6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAddressRelativeStopViewModel.swift; sourceTree = "<group>"; };
 		674FDBC41F57390D00CA67D2 /* Route+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Color.swift"; sourceTree = "<group>"; };
@@ -943,6 +949,7 @@
 				58E54E231F65A40100E9B66D /* NavigationBar+Util.swift */,
 				671A191F1F6613A600C8EEDA /* ConstraintsToggle.swift */,
 				671A19231F661F8F00C8EEDA /* SwipeGestureRecognizerToggle.swift */,
+				671A19251F662DF000C8EEDA /* DividerViews.swift */,
 			);
 			path = "Common Views";
 			sourceTree = "<group>";
@@ -1018,6 +1025,7 @@
 		582F4E901F33B1120062A546 /* NextToArrive */ = {
 			isa = PBXGroup;
 			children = (
+				671A19271F66383900C8EEDA /* ScheduleInfo */,
 				58D5D22A1F6098160016C382 /* Maps */,
 				58EB8D1B1F5D7F4E0028A487 /* NavigationController */,
 				58EB8D181F5D7ED70028A487 /* SelectTrip */,
@@ -1563,7 +1571,6 @@
 				58E33F0D1F6098FE00C74B7C /* NextToArriveMapViewController.swift */,
 				58126F701F631CB200A6E187 /* NextToArriveEndpointsViewModel.swift */,
 				58126F6E1F631C8300A6E187 /* NextToArriveMapRouteViewModel.swift */,
-				58E33F0F1F60995600C74B7C /* NextToArriveInfoViewController.swift */,
 				58126F6C1F631C5100A6E187 /* RouteDrawable.swift */,
 				58126F6A1F631C3100A6E187 /* RouteOverlay.swift */,
 				58126F661F631C0800A6E187 /* ColorPointAnnotation.swift */,
@@ -1755,6 +1762,16 @@
 				58FBBFA51F65823600B7A4DA /* DatabaseActions.swift */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		671A19271F66383900C8EEDA /* ScheduleInfo */ = {
+			isa = PBXGroup;
+			children = (
+				671A192A1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift */,
+				671A19281F66385100C8EEDA /* NoConnectionCell.swift */,
+				671A192C1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift */,
+			);
+			path = ScheduleInfo;
 			sourceTree = "<group>";
 		};
 		678D26C21F5CC49200D140CC /* Favorites */ = {
@@ -2165,8 +2182,8 @@
 				582F4EDD1F33B1120062A546 /* UpdateableFromViewModel.swift in Sources */,
 				58EB8D1F1F5D8A650028A487 /* BaseNavigationController+Styling.swift in Sources */,
 				58E33F201F61494700C74B7C /* File.swift in Sources */,
-				58E33F101F60995600C74B7C /* NextToArriveInfoViewController.swift in Sources */,
 				58EB8D211F5D8C270028A487 /* NextToArriveSelectTripViewModel.swift in Sources */,
+				671A192D1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift in Sources */,
 				678D26C61F5CC52300D140CC /* FavoritesReducer.swift in Sources */,
 				582F4ED31F33B1120062A546 /* SelectStopRow.swift in Sources */,
 				582F4EBC1F33B1120062A546 /* DateFormatters.swift in Sources */,
@@ -2193,11 +2210,13 @@
 				582F4EBB1F33B1120062A546 /* AppDelegate.swift in Sources */,
 				58E33F1E1F6147DE00C74B7C /* CLLocationCoordinate2D+Equatable.swift in Sources */,
 				5844CA1F1F3BD9B700651223 /* NavigationState.swift in Sources */,
+				671A19261F662DF000C8EEDA /* DividerViews.swift in Sources */,
 				582F4ED21F33B1120062A546 /* SelectStopCellType.swift in Sources */,
 				582F4EBD1F33B1120062A546 /* SingleStringCell.swift in Sources */,
 				58EB8D311F5D94640028A487 /* BaseScheduleDataProvider.swift in Sources */,
 				582F4EBF1F33B1120062A546 /* Alert.swift in Sources */,
 				582F4EC51F33B1120062A546 /* NextToArriveViewController.swift in Sources */,
+				671A19291F66385100C8EEDA /* NoConnectionCell.swift in Sources */,
 				588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */,
 				58490E491F56019B007DBCA1 /* AlertReducer.swift in Sources */,
 				67F757AC1F48582700D3A4EE /* UIColor+Util.swift in Sources */,
@@ -2315,6 +2334,7 @@
 				58126F751F640F8600A6E187 /* NextToArriveUpdateStatus.swift in Sources */,
 				58DD1A8E1F600715002532DC /* NextToArriveViewModel+StartCell.swift in Sources */,
 				5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */,
+				671A192B1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift in Sources */,
 				58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */,
 				58E33F161F6143E000C74B7C /* NextToArriveStop.swift in Sources */,
 				58EB8D0F1F5D79530028A487 /* NextToArriveNavigationController.swift in Sources */,

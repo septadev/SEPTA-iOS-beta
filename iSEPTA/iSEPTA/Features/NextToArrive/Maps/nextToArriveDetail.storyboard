@@ -55,7 +55,6 @@
                             <constraint firstItem="tHU-O1-qGx" firstAttribute="leading" secondItem="3Tc-6p-fL6" secondAttribute="leading" id="WQY-Qu-5cP" userLabel="TripViewLeft"/>
                             <constraint firstItem="Okh-dP-SyD" firstAttribute="leading" secondItem="3Tc-6p-fL6" secondAttribute="leading" id="bT9-VG-llq" userLabel="InfoViewLeft"/>
                             <constraint firstItem="tHU-O1-qGx" firstAttribute="top" secondItem="3Tc-6p-fL6" secondAttribute="top" id="dCQ-pl-3Yg" userLabel="TripViewTop"/>
-                            <constraint firstItem="Okh-dP-SyD" firstAttribute="top" secondItem="Sea-lE-H6m" secondAttribute="bottom" constant="-9" id="mnx-qo-6az" userLabel="InfoViewTopToMapViewBottom"/>
                             <constraint firstItem="3Tc-6p-fL6" firstAttribute="bottom" secondItem="Sea-lE-H6m" secondAttribute="bottom" constant="111" id="sfl-PX-Jtq" userLabel="MapViewExpanded"/>
                             <constraint firstItem="Okh-dP-SyD" firstAttribute="top" secondItem="tHU-O1-qGx" secondAttribute="bottom" id="tSY-uq-i3T" userLabel="InfoViewHeightFullToTripView"/>
                             <constraint firstItem="Sea-lE-H6m" firstAttribute="leading" secondItem="3Tc-6p-fL6" secondAttribute="leading" id="uap-N7-6zJ" userLabel="MapViewLeft"/>
@@ -63,7 +62,6 @@
                         <viewLayoutGuide key="safeArea" id="3Tc-6p-fL6"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="mnx-qo-6az"/>
                                 <exclude reference="tSY-uq-i3T"/>
                             </mask>
                         </variation>
@@ -84,11 +82,11 @@
         <scene sceneID="ZUe-4d-PvN">
             <objects>
                 <viewController id="GjY-a8-64h" customClass="NextToArriveInfoViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qY6-1g-9Xv" customClass="CurvedTopView" customModule="Septa" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="qY6-1g-9Xv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="337"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjJ-NE-5hP" userLabel="HeaderView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjJ-NE-5hP" userLabel="HeaderView" customClass="CurvedTopView" customModule="Septa" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
                                 <subviews>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pullHandle" translatesAutoresizingMaskIntoConstraints="NO" id="w8Z-do-EH3" userLabel="SliderView">
@@ -119,18 +117,100 @@
                                     <outletCollection property="gestureRecognizers" destination="ACM-6Z-FqX" appends="YES" id="aJf-3H-GEh"/>
                                 </connections>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XWV-WF-JiF">
-                                <rect key="frame" x="0.0" y="62" width="375" height="275"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XWV-WF-JiF">
+                                <rect key="frame" x="0.0" y="62" width="375" height="270"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="noConnectionCell" rowHeight="44" id="UqR-ir-NeI" customClass="NoConnectionCell" customModule="Septa" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UqR-ir-NeI" id="fdI-XN-3kc">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GpY-s1-z3A" userLabel="DepartingView">
+                                                    <rect key="frame" x="284" y="0.5" width="81" height="42.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEPARTING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bxu-X6-8WM" userLabel="Departing">
+                                                            <rect key="frame" x="11.5" y="7.5" width="57.5" height="12"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <color key="textColor" red="0.42745098039215684" green="0.42745098039215684" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="42 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="di5-uw-LXy" userLabel="DepartingWhen">
+                                                            <rect key="frame" x="20" y="20.5" width="41.5" height="14.5"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="Bxu-X6-8WM" firstAttribute="top" secondItem="GpY-s1-z3A" secondAttribute="top" constant="7" id="7QZ-Be-2Xw" userLabel="DepartingTop"/>
+                                                        <constraint firstAttribute="width" constant="81" id="UEi-1b-F6D"/>
+                                                        <constraint firstAttribute="height" constant="42" id="cEM-Tv-vfZ"/>
+                                                        <constraint firstItem="Bxu-X6-8WM" firstAttribute="centerX" secondItem="GpY-s1-z3A" secondAttribute="centerX" id="eDZ-fN-AK9" userLabel="DepartingCenterX"/>
+                                                        <constraint firstItem="di5-uw-LXy" firstAttribute="centerX" secondItem="GpY-s1-z3A" secondAttribute="centerX" id="gRh-Ph-RiL" userLabel="DepartingWhenCenterX"/>
+                                                        <constraint firstItem="di5-uw-LXy" firstAttribute="top" secondItem="Bxu-X6-8WM" secondAttribute="bottom" constant="1" id="u1j-Y3-Slf" userLabel="DepartingWhenTop"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:29 AM - 10:03 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yL-mT-fFX" userLabel="StartStopLabel">
+                                                    <rect key="frame" x="16" y="2" width="131" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 Min Late" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTB-EF-TTI" userLabel="OnTimeLabel">
+                                                    <rect key="frame" x="16" y="23" width="63" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                    <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#546 to 30th St. Station" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTD-0r-da9" userLabel="EndStopLabel">
+                                                    <rect key="frame" x="87" y="23.5" width="135.5" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7yL-mT-fFX" firstAttribute="leading" secondItem="fdI-XN-3kc" secondAttribute="leading" constant="16" id="0pK-9d-zTn" userLabel="StartStopLabelLeft"/>
+                                                <constraint firstItem="7yL-mT-fFX" firstAttribute="top" secondItem="fdI-XN-3kc" secondAttribute="top" constant="2" id="383-9K-zYX" userLabel="StartStopLabelTop"/>
+                                                <constraint firstItem="zTD-0r-da9" firstAttribute="leading" secondItem="aTB-EF-TTI" secondAttribute="trailing" constant="8" id="8G8-4f-IDn" userLabel="EndStopLabelLeft"/>
+                                                <constraint firstItem="aTB-EF-TTI" firstAttribute="top" secondItem="7yL-mT-fFX" secondAttribute="bottom" constant="4" id="NiN-zL-GOu" userLabel="OnTimeLabelTop"/>
+                                                <constraint firstItem="zTD-0r-da9" firstAttribute="baseline" secondItem="aTB-EF-TTI" secondAttribute="baseline" id="Q1D-45-sjs" userLabel="EndStopLabelBaseline"/>
+                                                <constraint firstItem="GpY-s1-z3A" firstAttribute="centerY" secondItem="fdI-XN-3kc" secondAttribute="centerY" id="Sra-Go-qZQ" userLabel="DepartingViewCenterY"/>
+                                                <constraint firstItem="aTB-EF-TTI" firstAttribute="leading" secondItem="fdI-XN-3kc" secondAttribute="leading" constant="16" id="U1F-rF-VaD" userLabel="OnTimeLabelLeft"/>
+                                                <constraint firstItem="GpY-s1-z3A" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7yL-mT-fFX" secondAttribute="trailing" constant="10" id="Ujc-6d-oMM" userLabel="StartStopLabelRight"/>
+                                                <constraint firstAttribute="trailing" secondItem="GpY-s1-z3A" secondAttribute="trailing" constant="10" id="VYB-hN-H7D" userLabel="DepartingViewRight"/>
+                                                <constraint firstItem="GpY-s1-z3A" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zTD-0r-da9" secondAttribute="trailing" constant="10" id="vxd-79-cKE" userLabel="EndStopLabelRight"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="departingView" destination="GpY-s1-z3A" id="U2Q-p8-U7J"/>
+                                            <outlet property="departingWhenLabel" destination="di5-uw-LXy" id="NJK-Us-HaX"/>
+                                            <outlet property="endStopLabel" destination="zTD-0r-da9" id="HZO-7Q-i0G"/>
+                                            <outlet property="onTimeLabel" destination="aTB-EF-TTI" id="8fc-ai-clX"/>
+                                            <outlet property="startStopLabel" destination="7yL-mT-fFX" id="oxg-3d-tEU"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="GjY-a8-64h" id="vwB-Yi-TZp"/>
+                                    <outlet property="delegate" destination="GjY-a8-64h" id="a7Q-Gp-OEv"/>
+                                </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XWV-WF-JiF" firstAttribute="leading" secondItem="ZlA-14-XfZ" secondAttribute="leading" id="Rr4-pI-dUJ" userLabel="TableViewLeft"/>
                             <constraint firstItem="pjJ-NE-5hP" firstAttribute="top" secondItem="ZlA-14-XfZ" secondAttribute="top" id="Vfm-UM-BxE" userLabel="HeaderViewTop"/>
                             <constraint firstItem="ZlA-14-XfZ" firstAttribute="trailing" secondItem="XWV-WF-JiF" secondAttribute="trailing" id="eB4-wf-v2z" userLabel="TableViewRight"/>
                             <constraint firstItem="ZlA-14-XfZ" firstAttribute="trailing" secondItem="pjJ-NE-5hP" secondAttribute="trailing" id="eas-lF-gnO" userLabel="HeaderViewRight"/>
-                            <constraint firstItem="ZlA-14-XfZ" firstAttribute="bottom" secondItem="XWV-WF-JiF" secondAttribute="bottom" id="edK-B2-HTd" userLabel="TableViewBottom"/>
+                            <constraint firstAttribute="bottom" secondItem="XWV-WF-JiF" secondAttribute="bottom" constant="5" id="edK-B2-HTd" userLabel="TableViewBottom"/>
                             <constraint firstItem="XWV-WF-JiF" firstAttribute="top" secondItem="pjJ-NE-5hP" secondAttribute="bottom" id="jTU-7r-hSK" userLabel="TableViewTop"/>
                             <constraint firstItem="pjJ-NE-5hP" firstAttribute="leading" secondItem="ZlA-14-XfZ" secondAttribute="leading" id="xlA-hf-g9z" userLabel="HeaderViewLeft"/>
                         </constraints>
@@ -139,14 +219,22 @@
                     <size key="freeformSize" width="375" height="337"/>
                     <connections>
                         <outlet property="downSwipeGestureRecognizer" destination="6ND-qN-wkW" id="v5t-Ff-yOl"/>
+                        <outlet property="tableFooterView" destination="5ea-Zd-gT6" id="TA0-ws-O0i"/>
+                        <outlet property="tableView" destination="XWV-WF-JiF" id="CEu-K8-xN1"/>
                         <outlet property="upSwipeGestureRecognizer" destination="ACM-6Z-FqX" id="MbS-iY-xM3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jiy-sR-bTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="5ea-Zd-gT6" userLabel="TableFooterView">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="10"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <viewLayoutGuide key="safeArea" id="tJI-Ps-HfJ"/>
+                </view>
                 <swipeGestureRecognizer enabled="NO" direction="down" id="6ND-qN-wkW" userLabel="Down Swipe Gesture Recognizer"/>
                 <swipeGestureRecognizer direction="up" id="ACM-6Z-FqX" userLabel="Up Swipe Gesture Recognizer"/>
             </objects>
-            <point key="canvasLocation" x="406" y="12"/>
+            <point key="canvasLocation" x="405.60000000000002" y="11.244377811094454"/>
         </scene>
         <!--Next To Arrive Map View Controller-->
         <scene sceneID="aR1-NF-2Q4">

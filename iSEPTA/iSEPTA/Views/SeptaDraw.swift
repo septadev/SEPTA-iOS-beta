@@ -635,7 +635,7 @@ public class SeptaDraw: NSObject {
         bezierPath.stroke()
     }
 
-    @objc public dynamic class func drawConnectingBentDividerView(frame: CGRect = CGRect(x: 0, y: 0, width: 11, height: 11)) {
+    @objc public dynamic class func drawConnectingBentDividerViewLeft(frame: CGRect = CGRect(x: 0, y: 0, width: 11, height: 11)) {
         //// Color Declarations
         let connectingDividerColor = UIColor(red: 0.855, green: 0.855, blue: 0.855, alpha: 1.000)
 
@@ -644,6 +644,20 @@ public class SeptaDraw: NSObject {
         bezierPath.move(to: CGPoint(x: frame.minX + 0.5, y: frame.minY + 11))
         bezierPath.addLine(to: CGPoint(x: frame.minX + 0.5, y: frame.minY + 0.5))
         bezierPath.addLine(to: CGPoint(x: frame.maxX, y: frame.minY + 0.5))
+        connectingDividerColor.setStroke()
+        bezierPath.lineWidth = 1
+        bezierPath.stroke()
+    }
+
+    @objc public dynamic class func drawConnectingBentDividerViewRight(frame: CGRect = CGRect(x: 0, y: 0, width: 11, height: 11)) {
+        //// Color Declarations
+        let connectingDividerColor = UIColor(red: 0.855, green: 0.855, blue: 0.855, alpha: 1.000)
+
+        //// Bezier Drawing
+        let bezierPath = UIBezierPath()
+        bezierPath.move(to: CGPoint(x: frame.maxX - 0.5, y: frame.minY + 11))
+        bezierPath.addLine(to: CGPoint(x: frame.maxX - 0.5, y: frame.minY + 0.5))
+        bezierPath.addLine(to: CGPoint(x: frame.minX, y: frame.minY + 0.5))
         connectingDividerColor.setStroke()
         bezierPath.lineWidth = 1
         bezierPath.stroke()
