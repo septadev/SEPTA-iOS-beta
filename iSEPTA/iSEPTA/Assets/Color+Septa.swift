@@ -36,4 +36,10 @@ struct SeptaColor {
     static let WIL_RailLineColor = UIColor.toPercent(153, 211, 104, 1)
     static let WTR_RailLineColor = UIColor.toPercent(77, 85, 176, 1)
     static let GC_RailLineColor = UIColor.toPercent(156, 153, 210, 1)
+
+    static let transitIsLate = UIColor.toPercent(215, 46, 18, 1)
+    static let transitOnTime = UIColor.toPercent(83, 158, 0, 1)
+    static let departingOnTime = UIColor.toPercent(222, 222, 222, 1)
+    static let departingBoundaryOnTime = UIColor.toPercent(222, 222, 222, 1)
+    static let departingBoundaryLate = UIColor.toPercent(217, 43, 0, 1)
 }

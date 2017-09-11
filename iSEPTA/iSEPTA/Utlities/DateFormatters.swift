@@ -35,4 +35,25 @@ public class DateFormatters {
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         return formatter
     }()
+
+    static var hourMinuteFormatter: DateFormatter = {
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        return formatter
+    }()
+
+    static func formatDurationString(startDate: Date, endDate: Date) -> String? {
+        let startString = DateFormatters.hourMinuteFormatter.string(from: startDate)
+        let endString = DateFormatters.hourMinuteFormatter.string(from: endDate)
+
+        return "\(startString) - \(endString)"
+    }
+
+    static func formatTimeFromNow(date: Date) -> String? {
+        let rightNow = Date()
+        let calendar = Calendar.current
+        let diff = calendar.dateComponents([.hour, .minute], from: rightNow, to: date)
+        return durationFormatter.string(from: diff)
+    }
 }

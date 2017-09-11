@@ -45,7 +45,42 @@ extension NextToArriveInfoViewModel { // Table View
         return "noConnectionCell"
     }
 
-    func configureCell(_: UITableViewCell, atIndexPath _: IndexPath) {
+    func configureCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
+        guard indexPath.row < trips.count, let cell = cell as? NoConnectionCell else { return }
+        let trip = trips[indexPath.row]
+        cell.startStopLabel.text = generateTimeString(trip: trip)
+        cell.departingWhenLabel.text = generateTimeToDeparture(trip: trip)
+        cell.onTimeLabel.text = generateOnTimeString(trip: trip)
+        cell.onTimeLabel.textColor = generateOnTimeColor(trip: trip)
+    }
+
+    func generateTimeString(trip: NextToArriveTrip) -> String? {
+
+        return DateFormatters.formatDurationString(startDate: trip.startStop.arrivalTime, endDate: trip.endStop.arrivalTime)
+    }
+
+    func generateTimeToDeparture(trip: NextToArriveTrip) -> String? {
+        return DateFormatters.formatTimeFromNow(date: trip.startStop.arrivalTime)
+    }
+
+    func generateOnTimeString(trip: NextToArriveTrip) -> String? {
+        guard let tripDelayMinutes = trip.startStop.delayMinutes else { return "On Time" }
+        let delayString = String(tripDelayMinutes)
+        if tripDelayMinutes > 0 {
+            return "\(delayString) min late"
+        } else {
+            return "\(delayString) min early"
+        }
+    }
+
+    func generateOnTimeColor(trip: NextToArriveTrip) -> UIColor {
+        guard let tripDelayMinutes = trip.startStop.delayMinutes else { return SeptaColor.transitOnTime }
+
+        if tripDelayMinutes > 0 {
+            return SeptaColor.transitIsLate
+        } else {
+            return SeptaColor.transitOnTime
+        }
     }
 }
 
