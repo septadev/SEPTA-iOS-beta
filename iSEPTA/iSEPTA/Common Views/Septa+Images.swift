@@ -10,6 +10,6 @@ import Foundation
 import UIKit
 
 struct SeptaImages {
-    static let favoritesEnabled: UIImage = UIImage(named: "favoriteTabbarSelected")!
-    static let favoritesNotEnabled: UIImage = UIImage(named: "favoriteTabbar")!
+    static let favoritesEnabled: UIImage = UIImage(named: "favoriteNavBarOn")!
+    static let favoritesNotEnabled: UIImage = UIImage(named: "favoriteNavBarOff")!
 }

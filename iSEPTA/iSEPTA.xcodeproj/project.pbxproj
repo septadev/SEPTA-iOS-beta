@@ -332,6 +332,7 @@
 		671A19291F66385100C8EEDA /* NoConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A19281F66385100C8EEDA /* NoConnectionCell.swift */; };
 		671A192B1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A192A1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift */; };
 		671A192D1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A192C1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift */; };
+		671A192F1F66A3D500C8EEDA /* NextToArriveFavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A192E1F66A3D500C8EEDA /* NextToArriveFavoritesController.swift */; };
 		6749A46E1F53997D00AF6119 /* StopToSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749A46D1F53997D00AF6119 /* StopToSelect.swift */; };
 		6749A4711F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */; };
 		674FDBBF1F56E87F00CA67D2 /* SeptaRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; };
@@ -795,6 +796,7 @@
 		671A19281F66385100C8EEDA /* NoConnectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionCell.swift; sourceTree = "<group>"; };
 		671A192A1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextToArriveInfoViewController.swift; sourceTree = "<group>"; };
 		671A192C1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveInfoViewModel.swift; sourceTree = "<group>"; };
+		671A192E1F66A3D500C8EEDA /* NextToArriveFavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveFavoritesController.swift; sourceTree = "<group>"; };
 		6749A46D1F53997D00AF6119 /* StopToSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopToSelect.swift; sourceTree = "<group>"; };
 		6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAddressRelativeStopViewModel.swift; sourceTree = "<group>"; };
 		674FDBC41F57390D00CA67D2 /* Route+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Color.swift"; sourceTree = "<group>"; };
@@ -1576,6 +1578,7 @@
 				58126F661F631C0800A6E187 /* ColorPointAnnotation.swift */,
 				5828C7F61F6451180046435A /* VehicleLocationAnnotation.swift */,
 				58E33F111F60998F00C74B7C /* NextToArriveDetailViewController.swift */,
+				671A192E1F66A3D500C8EEDA /* NextToArriveFavoritesController.swift */,
 				6763550E1F628C3E00CA7EAB /* nextToArriveDetail.storyboard */,
 			);
 			path = Maps;
@@ -2178,6 +2181,7 @@
 			files = (
 				58470C091F3F276000F3C9B5 /* NumberFormatters.swift in Sources */,
 				588F27F01F39DD7B00D62425 /* UserPreferenceState.swift in Sources */,
+				671A192F1F66A3D500C8EEDA /* NextToArriveFavoritesController.swift in Sources */,
 				5825319A1F407D380088D056 /* UserDefaultsLoader.swift in Sources */,
 				582F4EDD1F33B1120062A546 /* UpdateableFromViewModel.swift in Sources */,
 				58EB8D1F1F5D8A650028A487 /* BaseNavigationController+Styling.swift in Sources */,

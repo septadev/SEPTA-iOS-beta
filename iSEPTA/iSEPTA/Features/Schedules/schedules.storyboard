@@ -227,7 +227,7 @@ TableViewWrapper</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaJ-Ig-ASV">
-                            <rect key="frame" x="207" y="10.5" width="33" height="27"/>
+                            <rect key="frame" x="207" y="10" width="33" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Reset">
                                 <color key="titleColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -945,7 +945,7 @@ TitleViewTop</string>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="nhz-5x-m1w">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="favoriteTabbar" id="eKN-kS-l45">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="favoritesNavBarOff" id="eKN-kS-l45">
                             <connections>
                                 <action selector="favoritesIconTapped:" destination="9ZE-6T-hsR" id="4RC-BI-HNJ"/>
                             </connections>
@@ -1700,7 +1700,7 @@ SearchTextBox</string>
     <resources>
         <image name="LocationLookup" width="30" height="27"/>
         <image name="SearchIcon" width="17" height="17"/>
-        <image name="favoriteTabbar" width="22" height="20"/>
+        <image name="favoritesNavBarOff" width="22" height="20"/>
         <image name="schedulesTabbar" width="21" height="22"/>
         <image name="schedulesTabbarSelected" width="20" height="21"/>
         <image name="selectRouteAccessory" width="26" height="14"/>

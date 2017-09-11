@@ -24,6 +24,11 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel 
         view.addStandardDropShadow()
     }
 
+    @IBAction func refreshButtonTapped(_: Any) {
+        let action = NextToArriveRefreshDataRequested(refreshUpdateRequested: true)
+        store.dispatch(action)
+    }
+
     func viewModelUpdated() {
         startLabel.text = viewModel.startName()
         endLabel.text = viewModel.endName()

@@ -13,6 +13,13 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
     @IBOutlet var infoViewHeightCollapsedConstraint: NSLayoutConstraint!
     @IBOutlet var infoViewHeightExpandedConstraint: NSLayoutConstraint!
 
+    var nextToArriveFavoritesController: NextToArriveFavoritesIconController!
+    @IBOutlet weak var favoritesBarButtonItem: UIBarButtonItem! {
+        didSet {
+            nextToArriveFavoritesController = NextToArriveFavoritesIconController(favoritesBarButtonItem: favoritesBarButtonItem)
+        }
+    }
+
     @IBOutlet var upSwipeGestureRecognizer: UISwipeGestureRecognizer! {
         didSet {
             upSwipeGestureRecognizer.addTarget(self, action: #selector(NextToArriveDetailViewController.swipeAction(_:)))
