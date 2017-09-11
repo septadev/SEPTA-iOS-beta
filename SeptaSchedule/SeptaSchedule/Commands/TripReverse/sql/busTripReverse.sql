@@ -2,7 +2,8 @@
 SELECT
   NewStart.arrival_time,
   NewEnd.arrival_time,
-  NewStart.block_id
+NewStart.block_id,
+NewStart.trip_id
 FROM
 
   (

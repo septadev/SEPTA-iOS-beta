@@ -355,6 +355,9 @@
 		678D26CC1F5CDB4200D140CC /* Septa+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26CB1F5CDB4200D140CC /* Septa+Images.swift */; };
 		678D26CE1F5CE4A500D140CC /* TripScheduleFavoritesIconController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26CD1F5CE4A500D140CC /* TripScheduleFavoritesIconController.swift */; };
 		678DAA9A1F66EEC800EB6EE8 /* BaseFavoritesIconController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DAA991F66EEC800EB6EE8 /* BaseFavoritesIconController.swift */; };
+		678DAA9E1F67065F00EB6EE8 /* NextToArriveConnectingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DAA9D1F67065F00EB6EE8 /* NextToArriveConnectingViewModel.swift */; };
+		678DAAA01F67067500EB6EE8 /* NextToArriveNonConnectivingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DAA9F1F67067500EB6EE8 /* NextToArriveNonConnectivingViewModel.swift */; };
+		678DAAA21F6706E300EB6EE8 /* NextToArriveTripGrouper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DAAA11F6706E300EB6EE8 /* NextToArriveTripGrouper.swift */; };
 		678F05241F5B7B6E00CC4D3C /* AddressProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F05231F5B7B6E00CC4D3C /* AddressProvider.swift */; };
 		678F05291F5B7BE400CC4D3C /* AddressLookupState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F05281F5B7BE400CC4D3C /* AddressLookupState.swift */; };
 		678F052C1F5B7CEC00CC4D3C /* AddressLookupReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F052B1F5B7CEC00CC4D3C /* AddressLookupReducer.swift */; };
@@ -820,6 +823,9 @@
 		678D26CB1F5CDB4200D140CC /* Septa+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Septa+Images.swift"; sourceTree = "<group>"; };
 		678D26CD1F5CE4A500D140CC /* TripScheduleFavoritesIconController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripScheduleFavoritesIconController.swift; sourceTree = "<group>"; };
 		678DAA991F66EEC800EB6EE8 /* BaseFavoritesIconController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFavoritesIconController.swift; sourceTree = "<group>"; };
+		678DAA9D1F67065F00EB6EE8 /* NextToArriveConnectingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveConnectingViewModel.swift; sourceTree = "<group>"; };
+		678DAA9F1F67067500EB6EE8 /* NextToArriveNonConnectivingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveNonConnectivingViewModel.swift; sourceTree = "<group>"; };
+		678DAAA11F6706E300EB6EE8 /* NextToArriveTripGrouper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveTripGrouper.swift; sourceTree = "<group>"; };
 		678F05231F5B7B6E00CC4D3C /* AddressProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressProvider.swift; sourceTree = "<group>"; };
 		678F05281F5B7BE400CC4D3C /* AddressLookupState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupState.swift; sourceTree = "<group>"; };
 		678F052B1F5B7CEC00CC4D3C /* AddressLookupReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupReducer.swift; sourceTree = "<group>"; };
@@ -1780,6 +1786,9 @@
 				671A192A1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift */,
 				671A19281F66385100C8EEDA /* NoConnectionCell.swift */,
 				671A192C1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift */,
+				678DAA9D1F67065F00EB6EE8 /* NextToArriveConnectingViewModel.swift */,
+				678DAA9F1F67067500EB6EE8 /* NextToArriveNonConnectivingViewModel.swift */,
+				678DAAA11F6706E300EB6EE8 /* NextToArriveTripGrouper.swift */,
 				67BC3F8C1F66AD4E001F9FE3 /* ConnectingSectionView.swift */,
 				67BC3F901F66ADB5001F9FE3 /* NoConnectingSectionView.swift */,
 			);
@@ -2284,6 +2293,7 @@
 				58EB8D231F5D8C6B0028A487 /* BaseNonModalViewController.swift in Sources */,
 				58EB8D1D1F5D85F50028A487 /* NavigationControllerBaseStateProvider.swift in Sources */,
 				589A89E01F5304D6007329DB /* SelectAddressViewModel.swift in Sources */,
+				678DAAA21F6706E300EB6EE8 /* NextToArriveTripGrouper.swift in Sources */,
 				67C567331F598A0400FF6203 /* TransitAlertView.swift in Sources */,
 				5814AA841F43589E00DF774A /* TripScheduleViewModel.swift in Sources */,
 				58490E471F55F98B007DBCA1 /* AlertState.swift in Sources */,
@@ -2307,6 +2317,7 @@
 				5840D6E31F37E9FB00C8CB76 /* UserPreferencesProvider.swift in Sources */,
 				67F757B71F488A5E00D3A4EE /* BlueGradientBackgroundView.swift in Sources */,
 				58B2778F1F62A9C900663507 /* KML.swift in Sources */,
+				678DAAA01F67067500EB6EE8 /* NextToArriveNonConnectivingViewModel.swift in Sources */,
 				58C2A0611F38964E00F0D6CA /* ViewController.swift in Sources */,
 				58DB10F41F3B8CCF00191AED /* ScheduleDataReducer.swift in Sources */,
 				582F4ED61F33B1120062A546 /* SelectStopsViewElement.swift in Sources */,
@@ -2335,6 +2346,7 @@
 				58E33F121F60998F00C74B7C /* NextToArriveDetailViewController.swift in Sources */,
 				678D26C41F5CC4A400D140CC /* FavoritesState.swift in Sources */,
 				58290E501F372DDC000CCF3C /* NavigationActions.swift in Sources */,
+				678DAA9E1F67065F00EB6EE8 /* NextToArriveConnectingViewModel.swift in Sources */,
 				58E33F1A1F6145C000C74B7C /* NextToArriveConnectionStation.swift in Sources */,
 				678D26BF1F5C414800D140CC /* LocationServicesListener.swift in Sources */,
 				58EB8D2F1F5D92A20028A487 /* NextToArriveActions.swift in Sources */,

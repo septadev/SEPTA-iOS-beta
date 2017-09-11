@@ -3,9 +3,11 @@
 
 
 SELECT
+
 start.arrival_time DepartureTime,
 Stop.arrival_time  ArrivalTime,
-start.block_id
+start.block_id,
+start.trip_id
 FROM
 
 (SELECT

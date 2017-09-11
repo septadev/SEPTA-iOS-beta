@@ -108,8 +108,13 @@ extension NextToArriveInfoViewModel { // Table View
 
     func generateLastStopName(trip: NextToArriveTrip) -> String? {
         guard let lastStopName = trip.startStop.lastStopName else { return nil }
-
-        return "to \(lastStopName)"
+        if transitMode() == .rail {
+            return "#\(trip) to \(lastStopName)"
+        } else if let tripIdInt = trip.startStop.tripId {
+            return "#\(String(tripIdInt)) to \(lastStopName)"
+        } else {
+            return "to \(lastStopName)"
+        }
     }
 
     func generateDepartingBoxColor(trip: NextToArriveTrip) -> CGColor {

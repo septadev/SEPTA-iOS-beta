@@ -11,8 +11,8 @@ import SeptaSchedule
 
 struct NextToArriveStop {
 
-    let routeId: String?
-    let routeName: String?
+    let routeId: String
+    let routeName: String
     let tripId: Int?
 
     let arrivalTime: Date
@@ -22,7 +22,7 @@ struct NextToArriveStop {
     let delayMinutes: Int?
     let direction: RouteDirectionCode?
 
-    init(routeId: String?, routeName: String?, tripId: Int?, arrivalTime: Date, departureTime: Date, lastStopId: Int?, lastStopName: String?, delayMinutes: Int?, direction: RouteDirectionCode?) {
+    init(routeId: String, routeName: String, tripId: Int?, arrivalTime: Date, departureTime: Date, lastStopId: Int?, lastStopName: String?, delayMinutes: Int?, direction: RouteDirectionCode?) {
         self.routeId = routeId
         self.routeName = routeName
         self.tripId = tripId

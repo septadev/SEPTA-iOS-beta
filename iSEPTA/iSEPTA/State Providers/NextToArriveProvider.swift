@@ -87,15 +87,18 @@ class NextToArriveProvider: StoreSubscriber {
 
     func mapStart(realTimeArrival a: RealTimeArrival) -> NextToArriveStop? {
         let formatter = DateFormatters.networkFormatter
-        guard let arrivalTimeString = a.orig_arrival_time,
+        guard
+            let routeId = a.orig_line_route_id,
+            let routeName = a.orig_line_route_name,
+            let arrivalTimeString = a.orig_arrival_time,
             let arrivalTime = formatter.date(from: arrivalTimeString),
             let departureTimeString = a.orig_departure_time,
 
             let departureTime = formatter.date(from: departureTimeString) else {
             return nil
         }
-        return NextToArriveStop(routeId: a.orig_line_route_id,
-                                routeName: a.orig_line_route_name,
+        return NextToArriveStop(routeId: routeId,
+                                routeName: routeName,
                                 tripId: Int(a.orig_line_trip_id ?? ""),
                                 arrivalTime: arrivalTime,
                                 departureTime: departureTime,
@@ -107,14 +110,17 @@ class NextToArriveProvider: StoreSubscriber {
 
     func mapEnd(realTimeArrival a: RealTimeArrival) -> NextToArriveStop? {
         let formatter = DateFormatters.networkFormatter
-        guard let arrivalTimeString = a.term_arrival_time,
+        guard
+            let routeId = a.term_line_route_id,
+            let routeName = a.term_line_route_name,
+            let arrivalTimeString = a.term_arrival_time,
             let arrivalTime = formatter.date(from: arrivalTimeString),
             let departureTimeString = a.term_departure_time,
             let departureTime = formatter.date(from: departureTimeString) else {
             return nil
         }
-        return NextToArriveStop(routeId: a.term_line_route_id,
-                                routeName: a.term_line_route_name,
+        return NextToArriveStop(routeId: routeId,
+                                routeName: routeName,
                                 tripId: Int(a.term_line_trip_id ?? ""),
                                 arrivalTime: arrivalTime,
                                 departureTime: departureTime,

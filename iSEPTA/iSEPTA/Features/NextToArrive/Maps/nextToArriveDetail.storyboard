@@ -213,35 +213,15 @@
                                     <outlet property="delegate" destination="GjY-a8-64h" id="a7Q-Gp-OEv"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tLk-pE-2X6" userLabel="HiddenView">
-                                <rect key="frame" x="0.0" y="62" width="375" height="275"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Quite Ready..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Re5-wg-Tdv">
-                                        <rect key="frame" x="118.5" y="126.5" width="138" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.81506849315068497" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="Re5-wg-Tdv" firstAttribute="centerX" secondItem="tLk-pE-2X6" secondAttribute="centerX" id="Lt4-Pz-uDs"/>
-                                    <constraint firstItem="Re5-wg-Tdv" firstAttribute="centerY" secondItem="tLk-pE-2X6" secondAttribute="centerY" id="O8I-Tp-7fl"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tLk-pE-2X6" firstAttribute="leading" secondItem="XWV-WF-JiF" secondAttribute="leading" id="3yp-HI-TTX"/>
-                            <constraint firstItem="tLk-pE-2X6" firstAttribute="height" secondItem="XWV-WF-JiF" secondAttribute="height" id="9Xu-he-ed5"/>
-                            <constraint firstItem="tLk-pE-2X6" firstAttribute="top" secondItem="XWV-WF-JiF" secondAttribute="top" id="R2k-6Q-9vO"/>
                             <constraint firstItem="XWV-WF-JiF" firstAttribute="leading" secondItem="ZlA-14-XfZ" secondAttribute="leading" id="Rr4-pI-dUJ" userLabel="TableViewLeft"/>
                             <constraint firstItem="pjJ-NE-5hP" firstAttribute="top" secondItem="ZlA-14-XfZ" secondAttribute="top" id="Vfm-UM-BxE" userLabel="HeaderViewTop"/>
                             <constraint firstItem="ZlA-14-XfZ" firstAttribute="trailing" secondItem="XWV-WF-JiF" secondAttribute="trailing" id="eB4-wf-v2z" userLabel="TableViewRight"/>
                             <constraint firstItem="ZlA-14-XfZ" firstAttribute="trailing" secondItem="pjJ-NE-5hP" secondAttribute="trailing" id="eas-lF-gnO" userLabel="HeaderViewRight"/>
                             <constraint firstAttribute="bottom" secondItem="XWV-WF-JiF" secondAttribute="bottom" id="edK-B2-HTd" userLabel="TableViewBottom"/>
                             <constraint firstItem="XWV-WF-JiF" firstAttribute="top" secondItem="pjJ-NE-5hP" secondAttribute="bottom" id="jTU-7r-hSK" userLabel="TableViewTop"/>
-                            <constraint firstItem="tLk-pE-2X6" firstAttribute="width" secondItem="XWV-WF-JiF" secondAttribute="width" id="tEr-uT-uEv"/>
                             <constraint firstItem="pjJ-NE-5hP" firstAttribute="leading" secondItem="ZlA-14-XfZ" secondAttribute="leading" id="xlA-hf-g9z" userLabel="HeaderViewLeft"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZlA-14-XfZ"/>

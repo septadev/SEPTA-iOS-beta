@@ -3,7 +3,7 @@
 import Foundation
 // Encapsulates a trip
 public struct Trip {
-
+    public let tripId: Int
     let departureInt: Int
     let arrivalInt: Int
     public let blockId: String
@@ -28,10 +28,11 @@ public struct Trip {
         return Calendar.current.dateComponents([.hour, .minute], from: departureComponents, to: arrivalComponents)
     }
 
-    init(departureInt: Int, arrivalInt: Int, blockId: String) {
+    init(tripId: Int, departureInt: Int, arrivalInt: Int, blockId: String) {
         self.departureInt = departureInt
         self.arrivalInt = arrivalInt
         self.blockId = blockId
+        self.tripId = tripId
     }
 
     enum CodingKeys: String, CodingKey {
@@ -51,6 +52,9 @@ public func ==(lhs: Trip, rhs: Trip) -> Bool {
     guard areEqual else { return false }
 
     areEqual = lhs.blockId == rhs.blockId
+    guard areEqual else { return false }
+
+    areEqual = lhs.tripId == rhs.tripId
     guard areEqual else { return false }
 
     return areEqual
