@@ -67,7 +67,9 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Next To Arrive" id="hQX-Wc-MEI">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="favoriteNavBarOff" id="12w-LS-2A8" userLabel="FavoritesButton"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="favoriteNavBarOff" style="plain" id="12w-LS-2A8" userLabel="FavoritesButton">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
@@ -207,28 +209,135 @@
                                     <outlet property="delegate" destination="GjY-a8-64h" id="a7Q-Gp-OEv"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tLk-pE-2X6" userLabel="HiddenView">
+                                <rect key="frame" x="0.0" y="62" width="375" height="275"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Quite Ready..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Re5-wg-Tdv">
+                                        <rect key="frame" x="118.5" y="126.5" width="138" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.81506849315068497" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Re5-wg-Tdv" firstAttribute="centerX" secondItem="tLk-pE-2X6" secondAttribute="centerX" id="Lt4-Pz-uDs"/>
+                                    <constraint firstItem="Re5-wg-Tdv" firstAttribute="centerY" secondItem="tLk-pE-2X6" secondAttribute="centerY" id="O8I-Tp-7fl"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="tLk-pE-2X6" firstAttribute="leading" secondItem="XWV-WF-JiF" secondAttribute="leading" id="3yp-HI-TTX"/>
+                            <constraint firstItem="tLk-pE-2X6" firstAttribute="height" secondItem="XWV-WF-JiF" secondAttribute="height" id="9Xu-he-ed5"/>
+                            <constraint firstItem="tLk-pE-2X6" firstAttribute="top" secondItem="XWV-WF-JiF" secondAttribute="top" id="R2k-6Q-9vO"/>
                             <constraint firstItem="XWV-WF-JiF" firstAttribute="leading" secondItem="ZlA-14-XfZ" secondAttribute="leading" id="Rr4-pI-dUJ" userLabel="TableViewLeft"/>
                             <constraint firstItem="pjJ-NE-5hP" firstAttribute="top" secondItem="ZlA-14-XfZ" secondAttribute="top" id="Vfm-UM-BxE" userLabel="HeaderViewTop"/>
                             <constraint firstItem="ZlA-14-XfZ" firstAttribute="trailing" secondItem="XWV-WF-JiF" secondAttribute="trailing" id="eB4-wf-v2z" userLabel="TableViewRight"/>
                             <constraint firstItem="ZlA-14-XfZ" firstAttribute="trailing" secondItem="pjJ-NE-5hP" secondAttribute="trailing" id="eas-lF-gnO" userLabel="HeaderViewRight"/>
                             <constraint firstAttribute="bottom" secondItem="XWV-WF-JiF" secondAttribute="bottom" id="edK-B2-HTd" userLabel="TableViewBottom"/>
                             <constraint firstItem="XWV-WF-JiF" firstAttribute="top" secondItem="pjJ-NE-5hP" secondAttribute="bottom" id="jTU-7r-hSK" userLabel="TableViewTop"/>
+                            <constraint firstItem="tLk-pE-2X6" firstAttribute="width" secondItem="XWV-WF-JiF" secondAttribute="width" id="tEr-uT-uEv"/>
                             <constraint firstItem="pjJ-NE-5hP" firstAttribute="leading" secondItem="ZlA-14-XfZ" secondAttribute="leading" id="xlA-hf-g9z" userLabel="HeaderViewLeft"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZlA-14-XfZ"/>
                     </view>
                     <size key="freeformSize" width="375" height="337"/>
                     <connections>
+                        <outlet property="connectingSectionView" destination="oxe-Eb-5Jn" id="Gn5-a9-IjY"/>
                         <outlet property="downSwipeGestureRecognizer" destination="6ND-qN-wkW" id="v5t-Ff-yOl"/>
                         <outlet property="tableFooterView" destination="5ea-Zd-gT6" id="TA0-ws-O0i"/>
                         <outlet property="tableView" destination="XWV-WF-JiF" id="CEu-K8-xN1"/>
+                        <outlet property="titleLabel" destination="m5N-7U-7Uy" id="zyS-C8-Mac"/>
                         <outlet property="upSwipeGestureRecognizer" destination="ACM-6Z-FqX" id="MbS-iY-xM3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jiy-sR-bTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="oxe-Eb-5Jn" userLabel="ConnectingSectionView" customClass="ConnectingSectionView" customModule="Septa" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="500" height="100"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cn8-hL-mku" userLabel="LeftDividerView" customClass="BentDividerViewLeft" customModule="Septa" customModuleProvider="target">
+                            <rect key="frame" x="10" y="24" width="146.5" height="11"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="11" id="xer-za-IED"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fET-Pj-vbm" userLabel="Centerheader">
+                            <rect key="frame" x="166.5" y="14" width="168.5" height="20.5"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8e0-3B-cE9" userLabel="PillView">
+                                    <rect key="frame" x="0.0" y="6.5" width="16" height="7"/>
+                                    <color key="backgroundColor" red="1" green="0.12214555959999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="7" id="qBY-UU-rHL"/>
+                                        <constraint firstAttribute="width" constant="16" id="yhP-ec-6rY"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paoli / Thorndale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mA5-K0-RGn" userLabel="DestinationLabel">
+                                    <rect key="frame" x="21" y="0.0" width="128.5" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lKB-7Z-Bvk" userLabel="AlertView">
+                                    <rect key="frame" x="154.5" y="3" width="14" height="14.5"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHm-vy-Ihl">
+                                            <rect key="frame" x="0.0" y="0.0" width="14" height="14.5"/>
+                                            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="14" id="K4x-84-YkR"/>
+                                                <constraint firstAttribute="width" constant="14" id="qLk-sa-1i5"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="lKB-7Z-Bvk" secondAttribute="trailing" id="81h-aR-p6S" userLabel="AlertViewRight"/>
+                                <constraint firstItem="8e0-3B-cE9" firstAttribute="leading" secondItem="fET-Pj-vbm" secondAttribute="leading" id="Acm-sg-40i" userLabel="PillViewLeft"/>
+                                <constraint firstItem="8e0-3B-cE9" firstAttribute="centerY" secondItem="fET-Pj-vbm" secondAttribute="centerY" id="BA1-lk-Lmd" userLabel="PillViewCenterY"/>
+                                <constraint firstItem="lKB-7Z-Bvk" firstAttribute="centerY" secondItem="fET-Pj-vbm" secondAttribute="centerY" id="Csx-FM-fyU" userLabel="AlertViewCenterY"/>
+                                <constraint firstItem="lKB-7Z-Bvk" firstAttribute="leading" secondItem="mA5-K0-RGn" secondAttribute="trailing" constant="5" id="MkR-p2-TxI" userLabel="AlertViewLeft"/>
+                                <constraint firstItem="mA5-K0-RGn" firstAttribute="top" secondItem="fET-Pj-vbm" secondAttribute="top" id="QQa-hX-RUB" userLabel="DestinationLabelTop"/>
+                                <constraint firstAttribute="bottom" secondItem="mA5-K0-RGn" secondAttribute="bottom" id="b6A-Da-WEM" userLabel="DestinationLabelBottom"/>
+                                <constraint firstItem="mA5-K0-RGn" firstAttribute="leading" secondItem="8e0-3B-cE9" secondAttribute="trailing" constant="5" id="jxg-nW-k1w" userLabel="DestinationLabelLeft"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmb-VC-v5J" userLabel="RightDividerView" customClass="BentDividerViewRight" customModule="Septa" customModuleProvider="target">
+                            <rect key="frame" x="345" y="24" width="145" height="11"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="11" id="TtV-9G-XpT"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="zBI-Lt-oUd" firstAttribute="trailing" secondItem="wmb-VC-v5J" secondAttribute="trailing" constant="10" id="8IU-OY-EO4" userLabel="RightDividerViewRight"/>
+                        <constraint firstItem="fET-Pj-vbm" firstAttribute="top" secondItem="zBI-Lt-oUd" secondAttribute="top" constant="14" id="I4Y-C2-Z8z" userLabel="HeaderViewTop"/>
+                        <constraint firstItem="fET-Pj-vbm" firstAttribute="centerX" secondItem="zBI-Lt-oUd" secondAttribute="centerX" id="K9c-bY-RU6" userLabel="HeaderViewCenterX"/>
+                        <constraint firstItem="fET-Pj-vbm" firstAttribute="leading" secondItem="cn8-hL-mku" secondAttribute="trailing" constant="10" id="SKR-zM-tce" userLabel="LeftDividerViewRight"/>
+                        <constraint firstItem="cn8-hL-mku" firstAttribute="leading" secondItem="zBI-Lt-oUd" secondAttribute="leading" constant="10" id="T1z-mU-OcP" userLabel="LeftDividerViewLeft"/>
+                        <constraint firstItem="wmb-VC-v5J" firstAttribute="centerY" secondItem="fET-Pj-vbm" secondAttribute="centerY" constant="5" id="a44-WW-kEB" userLabel="RightDividerViewCenterY"/>
+                        <constraint firstItem="wmb-VC-v5J" firstAttribute="leading" secondItem="fET-Pj-vbm" secondAttribute="trailing" constant="10" id="wbZ-Ml-Dxe" userLabel="RightDividerViewLeft"/>
+                        <constraint firstItem="cn8-hL-mku" firstAttribute="centerY" secondItem="fET-Pj-vbm" secondAttribute="centerY" constant="5" id="yKs-8Z-Yl6" userLabel="LeftDividerViewCenterY"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="zBI-Lt-oUd"/>
+                    <connections>
+                        <outlet property="alertStackView" destination="lKB-7Z-Bvk" id="dX2-ry-3cg"/>
+                        <outlet property="destinationLabel" destination="mA5-K0-RGn" id="k9T-Pe-cSk"/>
+                        <outlet property="pillView" destination="8e0-3B-cE9" id="6Tn-j0-3be"/>
+                    </connections>
+                </view>
                 <view contentMode="scaleToFill" id="5ea-Zd-gT6" userLabel="TableFooterView">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="10"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

@@ -365,6 +365,8 @@
 		678F053B1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F053A1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift */; };
 		67A65BFC1F5AEBB20068428E /* NextToArriveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A65BFB1F5AEBB20068428E /* NextToArriveButton.swift */; };
 		67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B511801F499E8F000E3065 /* ButtonViewCell.swift */; };
+		67BC3F8D1F66AD4E001F9FE3 /* ConnectingSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BC3F8C1F66AD4E001F9FE3 /* ConnectingSectionView.swift */; };
+		67BC3F911F66ADB5001F9FE3 /* NoConnectingSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BC3F901F66ADB5001F9FE3 /* NoConnectingSectionView.swift */; };
 		67C567271F59695900FF6203 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C567261F59695900FF6203 /* Favorite.swift */; };
 		67C5672B1F596E0700FF6203 /* ErrorObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C5672A1F596E0700FF6203 /* ErrorObjects.swift */; };
 		67C5672F1F59862600FF6203 /* ReverseTripButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C5672E1F59862600FF6203 /* ReverseTripButton.swift */; };
@@ -827,6 +829,8 @@
 		678F053A1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupSearchMode.swift; sourceTree = "<group>"; };
 		67A65BFB1F5AEBB20068428E /* NextToArriveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveButton.swift; sourceTree = "<group>"; };
 		67B511801F499E8F000E3065 /* ButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewCell.swift; sourceTree = "<group>"; };
+		67BC3F8C1F66AD4E001F9FE3 /* ConnectingSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectingSectionView.swift; sourceTree = "<group>"; };
+		67BC3F901F66ADB5001F9FE3 /* NoConnectingSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectingSectionView.swift; sourceTree = "<group>"; };
 		67C567261F59695900FF6203 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		67C5672A1F596E0700FF6203 /* ErrorObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorObjects.swift; sourceTree = "<group>"; };
 		67C5672E1F59862600FF6203 /* ReverseTripButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseTripButton.swift; sourceTree = "<group>"; };
@@ -1773,6 +1777,8 @@
 				671A192A1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift */,
 				671A19281F66385100C8EEDA /* NoConnectionCell.swift */,
 				671A192C1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift */,
+				67BC3F8C1F66AD4E001F9FE3 /* ConnectingSectionView.swift */,
+				67BC3F901F66ADB5001F9FE3 /* NoConnectingSectionView.swift */,
 			);
 			path = ScheduleInfo;
 			sourceTree = "<group>";
@@ -2234,6 +2240,7 @@
 				58658D1B1F53135100E67B4E /* AddressCell.swift in Sources */,
 				67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */,
 				676355071F5EAD5900CA7EAB /* SubscriberUnsubscriber.swift in Sources */,
+				67BC3F911F66ADB5001F9FE3 /* NoConnectingSectionView.swift in Sources */,
 				58EB8D251F5D8EE80028A487 /* BaseNavigationBar.swift in Sources */,
 				5840D6D51F376E5E00C8CB76 /* NavigationStackState.swift in Sources */,
 				5840D6E91F37EE6500C8CB76 /* Providers.swift in Sources */,
@@ -2356,6 +2363,7 @@
 				588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */,
 				58EB8D291F5D90CD0028A487 /* NextToArriveState.swift in Sources */,
 				583523991F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift in Sources */,
+				67BC3F8D1F66AD4E001F9FE3 /* ConnectingSectionView.swift in Sources */,
 				676354FD1F5E255A00CA7EAB /* FilterableRoute.swift in Sources */,
 				58B892171F38F7E700BFFEFA /* Strings.swift in Sources */,
 				58EB8D151F5D7CD20028A487 /* BaseNavigationController.swift in Sources */,

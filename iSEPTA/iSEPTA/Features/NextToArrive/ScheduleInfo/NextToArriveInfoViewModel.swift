@@ -9,9 +9,18 @@
 import Foundation
 import ReSwift
 import UIKit
+import SeptaSchedule
 
 class NextToArriveInfoViewModel: StoreSubscriber {
     typealias StoreSubscriberStateType = [NextToArriveTrip]
+
+    func scheduleRequest() -> ScheduleRequest {
+        return store.state.nextToArriveState.scheduleState.scheduleRequest
+    }
+
+    func transitMode() -> TransitMode {
+        return scheduleRequest().transitMode
+    }
 
     var delegate: UpdateableFromViewModel! {
         didSet {
@@ -28,6 +37,18 @@ class NextToArriveInfoViewModel: StoreSubscriber {
 
     deinit {
         unsubscribe()
+    }
+
+    func viewTitle() -> String {
+        return scheduleRequest().transitMode.nextToArriveInfoDetailTitle()
+    }
+}
+
+extension NextToArriveInfoViewModel { // Section Headers
+    func configureSectionHeader(header: ConnectingSectionView) {
+        guard let firstTrip = trips.first else { return }
+        header.destinationLabel.text = firstTrip.startStop.routeName
+        header.pillView.backgroundColor = transitMode().colorForPill()
     }
 }
 
@@ -58,7 +79,7 @@ extension NextToArriveInfoViewModel { // Table View
 
     func generateTimeString(trip: NextToArriveTrip) -> String? {
 
-        return DateFormatters.formatDurationString(startDate: trip.startStop.arrivalTime, endDate: trip.endStop.arrivalTime)
+        return DateFormatters.formatDurationString(startDate: trip.startStop.departureTime, endDate: trip.startStop.arrivalTime)
     }
 
     func generateTimeToDeparture(trip: NextToArriveTrip) -> String? {

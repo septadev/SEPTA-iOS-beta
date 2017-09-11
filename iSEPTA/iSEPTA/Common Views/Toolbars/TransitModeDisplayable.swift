@@ -174,7 +174,7 @@ extension TransitMode {
         }
     }
 
-    public func nextToDetailTitle() -> String {
+    public func nextToArriveInfoDetailTitle() -> String {
         switch self {
         case .rail: return "Next Trains To Arrive"
         case .subway : return "Next Trains to Arrive"

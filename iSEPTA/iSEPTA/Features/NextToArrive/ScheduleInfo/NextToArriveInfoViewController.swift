@@ -14,9 +14,11 @@ class NextToArriveInfoViewController: UIViewController {
     @IBOutlet var upSwipeGestureRecognizer: UISwipeGestureRecognizer!
     @IBOutlet var downSwipeGestureRecognizer: UISwipeGestureRecognizer!
 
+    @IBOutlet var connectingSectionView: ConnectingSectionView!
     @IBOutlet weak var tableView: UITableView!
     weak var nextToArriveDetailViewController: NextToArriveDetailViewController?
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet var tableFooterView: UIView!
     var viewModel: NextToArriveInfoViewModel!
 
@@ -27,6 +29,7 @@ class NextToArriveInfoViewController: UIViewController {
 
         viewModel = NextToArriveInfoViewModel()
         viewModel.delegate = self
+        titleLabel.text = viewModel.viewTitle()
         tableView.tableFooterView = tableFooterView
     }
 }
@@ -46,6 +49,15 @@ extension NextToArriveInfoViewController: UITableViewDataSource, UITableViewDele
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         viewModel.configureCell(cell, atIndexPath: indexPath)
         return cell
+    }
+
+    func tableView(_: UITableView, viewForHeaderInSection _: Int) -> UIView? {
+        viewModel.configureSectionHeader(header: connectingSectionView)
+        return connectingSectionView
+    }
+
+    func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
+        return 60
     }
 }
 
