@@ -67,13 +67,17 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Next To Arrive" id="hQX-Wc-MEI">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="favoriteNavBarOff" style="plain" id="12w-LS-2A8" userLabel="FavoritesButton">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <barButtonItem key="rightBarButtonItem" image="favoriteNavBarOff" style="plain" id="yu0-pI-RYt">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1Ec-bf-5Na">
+                                <rect key="frame" x="337" y="11" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="favoriteNavBarOn"/>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
-                        <outlet property="favoritesBarButtonItem" destination="12w-LS-2A8" id="fZy-b1-bVd"/>
+                        <outlet property="favoritesButton" destination="1Ec-bf-5Na" id="bc8-HQ-v9P"/>
                         <outlet property="infoViewHeightCollapsedConstraint" destination="NQ4-FL-dqQ" id="5J1-ir-PRP"/>
                         <outlet property="infoViewHeightExpandedConstraint" destination="tSY-uq-i3T" id="9ft-4v-ANC"/>
                         <outlet property="navigationItem" destination="hQX-Wc-MEI" id="0SE-85-ymX"/>
@@ -463,6 +467,7 @@
     </scenes>
     <resources>
         <image name="favoriteNavBarOff" width="22" height="20"/>
+        <image name="favoriteNavBarOn" width="22" height="20"/>
         <image name="pullHandle" width="35" height="4"/>
     </resources>
 </document>

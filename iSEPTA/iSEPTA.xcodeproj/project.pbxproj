@@ -354,6 +354,7 @@
 		678D26CA1F5CC83900D140CC /* FavoritesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26C91F5CC83900D140CC /* FavoritesProvider.swift */; };
 		678D26CC1F5CDB4200D140CC /* Septa+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26CB1F5CDB4200D140CC /* Septa+Images.swift */; };
 		678D26CE1F5CE4A500D140CC /* TripScheduleFavoritesIconController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26CD1F5CE4A500D140CC /* TripScheduleFavoritesIconController.swift */; };
+		678DAA9A1F66EEC800EB6EE8 /* BaseFavoritesIconController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DAA991F66EEC800EB6EE8 /* BaseFavoritesIconController.swift */; };
 		678F05241F5B7B6E00CC4D3C /* AddressProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F05231F5B7B6E00CC4D3C /* AddressProvider.swift */; };
 		678F05291F5B7BE400CC4D3C /* AddressLookupState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F05281F5B7BE400CC4D3C /* AddressLookupState.swift */; };
 		678F052C1F5B7CEC00CC4D3C /* AddressLookupReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F052B1F5B7CEC00CC4D3C /* AddressLookupReducer.swift */; };
@@ -818,6 +819,7 @@
 		678D26C91F5CC83900D140CC /* FavoritesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesProvider.swift; sourceTree = "<group>"; };
 		678D26CB1F5CDB4200D140CC /* Septa+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Septa+Images.swift"; sourceTree = "<group>"; };
 		678D26CD1F5CE4A500D140CC /* TripScheduleFavoritesIconController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripScheduleFavoritesIconController.swift; sourceTree = "<group>"; };
+		678DAA991F66EEC800EB6EE8 /* BaseFavoritesIconController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFavoritesIconController.swift; sourceTree = "<group>"; };
 		678F05231F5B7B6E00CC4D3C /* AddressProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressProvider.swift; sourceTree = "<group>"; };
 		678F05281F5B7BE400CC4D3C /* AddressLookupState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupState.swift; sourceTree = "<group>"; };
 		678F052B1F5B7CEC00CC4D3C /* AddressLookupReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupReducer.swift; sourceTree = "<group>"; };
@@ -956,6 +958,7 @@
 				671A191F1F6613A600C8EEDA /* ConstraintsToggle.swift */,
 				671A19231F661F8F00C8EEDA /* SwipeGestureRecognizerToggle.swift */,
 				671A19251F662DF000C8EEDA /* DividerViews.swift */,
+				678DAA991F66EEC800EB6EE8 /* BaseFavoritesIconController.swift */,
 			);
 			path = "Common Views";
 			sourceTree = "<group>";
@@ -2220,6 +2223,7 @@
 				582F4EBB1F33B1120062A546 /* AppDelegate.swift in Sources */,
 				58E33F1E1F6147DE00C74B7C /* CLLocationCoordinate2D+Equatable.swift in Sources */,
 				5844CA1F1F3BD9B700651223 /* NavigationState.swift in Sources */,
+				678DAA9A1F66EEC800EB6EE8 /* BaseFavoritesIconController.swift in Sources */,
 				671A19261F662DF000C8EEDA /* DividerViews.swift in Sources */,
 				582F4ED21F33B1120062A546 /* SelectStopCellType.swift in Sources */,
 				582F4EBD1F33B1120062A546 /* SingleStringCell.swift in Sources */,

@@ -17,11 +17,11 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
 
-    var tripScheduleFavoritesIconController: TripScheduleFavoritesIconController?
+    var tripScheduleFavoritesIconController: TripScheduleFavoritesIconController!
 
-    @IBOutlet weak var favoritesIcon: UIBarButtonItem! {
+    @IBOutlet weak var favoritesButton: UIButton! {
         didSet {
-            tripScheduleFavoritesIconController = TripScheduleFavoritesIconController(favoritesBarButtonItem: favoritesIcon)
+            tripScheduleFavoritesIconController = TripScheduleFavoritesIconController(favoritesButton: favoritesButton, hostController: self)
         }
     }
 

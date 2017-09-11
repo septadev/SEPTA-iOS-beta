@@ -227,7 +227,7 @@ TableViewWrapper</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaJ-Ig-ASV">
-                            <rect key="frame" x="207" y="10" width="33" height="27"/>
+                            <rect key="frame" x="207" y="10.5" width="33" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Reset">
                                 <color key="titleColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -945,10 +945,11 @@ TitleViewTop</string>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="nhz-5x-m1w">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="favoritesNavBarOff" id="eKN-kS-l45">
-                            <connections>
-                                <action selector="favoritesIconTapped:" destination="9ZE-6T-hsR" id="4RC-BI-HNJ"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="S4P-TT-Ydz">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fVP-sM-g0P">
+                                <rect key="frame" x="329" y="7" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -956,7 +957,7 @@ TitleViewTop</string>
                     <connections>
                         <outlet property="activityIndicator" destination="V0h-9O-nLg" id="FiS-d3-T0b"/>
                         <outlet property="endingPoint" destination="s9c-AY-wQ2" id="jTU-hZ-Uko"/>
-                        <outlet property="favoritesIcon" destination="eKN-kS-l45" id="hO1-9c-DfS"/>
+                        <outlet property="favoritesButton" destination="fVP-sM-g0P" id="Fr1-7S-ob7"/>
                         <outlet property="insetWhiteView" destination="Pyu-Um-zmh" id="7mS-HY-5dY"/>
                         <outlet property="reverseStopsButton" destination="Wec-xl-ho7" id="cU4-FU-HHs"/>
                         <outlet property="routeIcon" destination="RB9-ar-35t" id="se8-B9-May"/>
@@ -1700,7 +1701,6 @@ SearchTextBox</string>
     <resources>
         <image name="LocationLookup" width="30" height="27"/>
         <image name="SearchIcon" width="17" height="17"/>
-        <image name="favoritesNavBarOff" width="22" height="20"/>
         <image name="schedulesTabbar" width="21" height="22"/>
         <image name="schedulesTabbarSelected" width="20" height="21"/>
         <image name="selectRouteAccessory" width="26" height="14"/>

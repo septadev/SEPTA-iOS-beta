@@ -14,9 +14,10 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
     @IBOutlet var infoViewHeightExpandedConstraint: NSLayoutConstraint!
 
     var nextToArriveFavoritesController: NextToArriveFavoritesIconController!
-    @IBOutlet weak var favoritesBarButtonItem: UIBarButtonItem! {
+
+    @IBOutlet weak var favoritesButton: UIButton! {
         didSet {
-            nextToArriveFavoritesController = NextToArriveFavoritesIconController(favoritesBarButtonItem: favoritesBarButtonItem)
+            nextToArriveFavoritesController = NextToArriveFavoritesIconController(favoritesButton: favoritesButton, hostController: self)
         }
     }
 
