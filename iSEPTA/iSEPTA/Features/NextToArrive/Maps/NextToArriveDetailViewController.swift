@@ -11,12 +11,14 @@ import UIKit
 
 class NextToArriveDetailViewController: UIViewController, IdentifiableController {
 
+    @IBOutlet weak var tripView: UIView!
     static var viewController: ViewController = .nextToArriveDetailController
 
     override func viewDidLoad() {
         navigationController?.navigationBar.configureBackButton()
-
+        view.backgroundColor = SeptaColor.navBarBlue
         navigationItem.title = store.state.nextToArriveState.scheduleState.scheduleRequest.transitMode.nextToArriveDetailTitle()
+        view.bringSubview(toFront: tripView)
     }
 
     override func didMove(toParentViewController parent: UIViewController?) {

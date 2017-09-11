@@ -19,7 +19,9 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel 
 
     override func viewDidLoad() {
         viewModel.delegate = self
-        view.backgroundColor = UIColor.clear
+        view.backgroundColor = SeptaColor.navBarBlue
+
+        view.addStandardDropShadow()
     }
 
     func viewModelUpdated() {

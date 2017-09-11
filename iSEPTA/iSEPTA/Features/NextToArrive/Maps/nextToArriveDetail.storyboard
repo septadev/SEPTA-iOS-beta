@@ -19,6 +19,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tHU-O1-qGx" userLabel="tripView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="QnL-zp-lB6"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="0La-Ry-f7T" kind="embed" id="dhB-qc-isg"/>
+                                </connections>
+                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sea-lE-H6m" userLabel="mapView">
                                 <rect key="frame" x="0.0" y="80" width="375" height="253.5"/>
                                 <connections>
@@ -31,17 +41,9 @@
                                     <segue destination="GjY-a8-64h" kind="embed" id="dw6-cp-OOw"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tHU-O1-qGx" userLabel="tripView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="QnL-zp-lB6"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="0La-Ry-f7T" kind="embed" id="dhB-qc-isg"/>
-                                </connections>
-                            </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.11764705882352941" green="0.19607843137254902" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Sea-lE-H6m" firstAttribute="top" secondItem="tHU-O1-qGx" secondAttribute="bottom" id="4sq-7h-U6D" userLabel="MapViewTop"/>
                             <constraint firstItem="3Tc-6p-fL6" firstAttribute="bottom" secondItem="Okh-dP-SyD" secondAttribute="bottom" id="C9f-dm-L7A" userLabel="InfoViewBottom"/>
@@ -60,6 +62,7 @@
                     <navigationItem key="navigationItem" title="Next To Arrive" id="hQX-Wc-MEI"/>
                     <connections>
                         <outlet property="navigationItem" destination="hQX-Wc-MEI" id="0SE-85-ymX"/>
+                        <outlet property="tripView" destination="tHU-O1-qGx" id="oom-Dp-RsZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HAO-bO-wcr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -211,6 +214,7 @@
                             <constraint firstAttribute="trailing" secondItem="FfQ-gZ-8tW" secondAttribute="trailing" id="wFa-Ok-WLy" userLabel="DividerRight"/>
                             <constraint firstItem="f3B-d9-8HH" firstAttribute="top" secondItem="A9e-oT-VFV" secondAttribute="top" constant="12" id="xVt-EQ-Me5" userLabel="StartLabelTop"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ixl-7k-2ZF"/>
                     </view>
                     <connections>
                         <outlet property="endLabel" destination="8rU-a0-dpY" id="bjw-Bg-Mc0"/>
@@ -219,7 +223,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4a5-VE-7SE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="209" y="515"/>
+            <point key="canvasLocation" x="206" y="514"/>
         </scene>
     </scenes>
 </document>

@@ -26,8 +26,8 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         nextToArriveMapEndpointsViewModel.delegate = self
     }
 
-    override func viewDidAppear(_: Bool) {
-        mapView.showAnnotations(mapView.annotations, animated: true)
+    override func viewWillAppear(_: Bool) {
+        mapView.showAnnotations(mapView.annotations, animated: false)
     }
 
     @IBOutlet private weak var mapView: MKMapView! {
