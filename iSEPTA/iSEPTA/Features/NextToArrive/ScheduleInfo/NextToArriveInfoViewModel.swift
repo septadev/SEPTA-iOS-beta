@@ -52,6 +52,8 @@ extension NextToArriveInfoViewModel { // Table View
         cell.departingWhenLabel.text = generateTimeToDeparture(trip: trip)
         cell.onTimeLabel.text = generateOnTimeString(trip: trip)
         cell.onTimeLabel.textColor = generateOnTimeColor(trip: trip)
+        cell.endStopLabel.text = generateLastStopName(trip: trip)
+        cell.departingView.layer.borderColor = generateDepartingBoxColor(trip: trip)
     }
 
     func generateTimeString(trip: NextToArriveTrip) -> String? {
@@ -69,7 +71,7 @@ extension NextToArriveInfoViewModel { // Table View
         if tripDelayMinutes > 0 {
             return "\(delayString) min late"
         } else {
-            return "\(delayString) min early"
+            return "On Time"
         }
     }
 
@@ -80,6 +82,22 @@ extension NextToArriveInfoViewModel { // Table View
             return SeptaColor.transitIsLate
         } else {
             return SeptaColor.transitOnTime
+        }
+    }
+
+    func generateLastStopName(trip: NextToArriveTrip) -> String? {
+        guard let lastStopName = trip.startStop.lastStopName else { return nil }
+
+        return "to \(lastStopName)"
+    }
+
+    func generateDepartingBoxColor(trip: NextToArriveTrip) -> CGColor {
+        guard let tripDelayMinutes = trip.startStop.delayMinutes else { return SeptaColor.transitOnTime.cgColor }
+
+        if tripDelayMinutes > 0 {
+            return SeptaColor.transitIsLate.cgColor
+        } else {
+            return SeptaColor.transitOnTime.cgColor
         }
     }
 }

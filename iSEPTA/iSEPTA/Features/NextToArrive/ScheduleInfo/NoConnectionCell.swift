@@ -14,7 +14,8 @@ class NoConnectionCell: UITableViewCell {
     @IBOutlet weak var departingWhenLabel: UILabel!
     @IBOutlet weak var departingView: UIView! {
         didSet {
-            departingView.layer.cornerRadius = 2
+            departingView.layer.cornerRadius = 2.0
+            departingView.layer.borderWidth = 1.0
         }
     }
 
