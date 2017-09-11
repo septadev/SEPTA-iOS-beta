@@ -10,4 +10,15 @@ import Foundation
 import UIKit
 
 class NextToArriveInfoViewController: UIViewController {
+
+    @IBOutlet var upSwipeGestureRecognizer: UISwipeGestureRecognizer!
+    @IBOutlet var downSwipeGestureRecognizer: UISwipeGestureRecognizer!
+
+    weak var nextToArriveDetailViewController: NextToArriveDetailViewController?
+
+    override func viewDidLoad() {
+
+        nextToArriveDetailViewController?.upSwipeGestureRecognizer = upSwipeGestureRecognizer
+        nextToArriveDetailViewController?.downSwipeGestureRecognizer = downSwipeGestureRecognizer
+    }
 }

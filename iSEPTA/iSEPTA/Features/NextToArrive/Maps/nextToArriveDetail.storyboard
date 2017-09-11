@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,15 +29,18 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sea-lE-H6m" userLabel="mapView">
-                                <rect key="frame" x="0.0" y="80" width="375" height="253.5"/>
+                                <rect key="frame" x="0.0" y="80" width="375" height="476"/>
                                 <connections>
                                     <segue destination="rct-ch-dKT" kind="embed" id="Yl0-TR-k5C"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Okh-dP-SyD" userLabel="InfoView">
-                                <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
+                                <rect key="frame" x="0.0" y="547" width="375" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="NQ4-FL-dqQ" userLabel="InfoViewHeightCollapsed"/>
+                                </constraints>
                                 <connections>
-                                    <segue destination="GjY-a8-64h" kind="embed" id="dw6-cp-OOw"/>
+                                    <segue destination="GjY-a8-64h" kind="embed" identifier="embedInfoViewController" id="dw6-cp-OOw"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -53,14 +55,23 @@
                             <constraint firstItem="tHU-O1-qGx" firstAttribute="leading" secondItem="3Tc-6p-fL6" secondAttribute="leading" id="WQY-Qu-5cP" userLabel="TripViewLeft"/>
                             <constraint firstItem="Okh-dP-SyD" firstAttribute="leading" secondItem="3Tc-6p-fL6" secondAttribute="leading" id="bT9-VG-llq" userLabel="InfoViewLeft"/>
                             <constraint firstItem="tHU-O1-qGx" firstAttribute="top" secondItem="3Tc-6p-fL6" secondAttribute="top" id="dCQ-pl-3Yg" userLabel="TripViewTop"/>
-                            <constraint firstItem="Okh-dP-SyD" firstAttribute="top" secondItem="Sea-lE-H6m" secondAttribute="bottom" id="mnx-qo-6az" userLabel="InfoViewTopToMapViewBottom"/>
-                            <constraint firstItem="Okh-dP-SyD" firstAttribute="height" secondItem="Qvw-Ja-qon" secondAttribute="height" multiplier="0.5" id="p0q-B7-fKT" userLabel="InfoViewHeight"/>
+                            <constraint firstItem="Okh-dP-SyD" firstAttribute="top" secondItem="Sea-lE-H6m" secondAttribute="bottom" constant="-9" id="mnx-qo-6az" userLabel="InfoViewTopToMapViewBottom"/>
+                            <constraint firstItem="3Tc-6p-fL6" firstAttribute="bottom" secondItem="Sea-lE-H6m" secondAttribute="bottom" constant="111" id="sfl-PX-Jtq" userLabel="MapViewExpanded"/>
+                            <constraint firstItem="Okh-dP-SyD" firstAttribute="top" secondItem="tHU-O1-qGx" secondAttribute="bottom" id="tSY-uq-i3T" userLabel="InfoViewHeightFullToTripView"/>
                             <constraint firstItem="Sea-lE-H6m" firstAttribute="leading" secondItem="3Tc-6p-fL6" secondAttribute="leading" id="uap-N7-6zJ" userLabel="MapViewLeft"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3Tc-6p-fL6"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="mnx-qo-6az"/>
+                                <exclude reference="tSY-uq-i3T"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Next To Arrive" id="hQX-Wc-MEI"/>
                     <connections>
+                        <outlet property="infoViewHeightCollapsedConstraint" destination="NQ4-FL-dqQ" id="5J1-ir-PRP"/>
+                        <outlet property="infoViewHeightExpandedConstraint" destination="tSY-uq-i3T" id="9ft-4v-ANC"/>
                         <outlet property="navigationItem" destination="hQX-Wc-MEI" id="0SE-85-ymX"/>
                         <outlet property="tripView" destination="tHU-O1-qGx" id="oom-Dp-RsZ"/>
                     </connections>
@@ -73,29 +84,43 @@
         <scene sceneID="ZUe-4d-PvN">
             <objects>
                 <viewController id="GjY-a8-64h" customClass="NextToArriveInfoViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qY6-1g-9Xv">
+                    <view key="view" contentMode="scaleToFill" id="qY6-1g-9Xv" customClass="CurvedTopView" customModule="Septa" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="337"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjJ-NE-5hP" userLabel="HeaderView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5N-7U-7Uy" userLabel="Title">
-                                        <rect key="frame" x="166.5" y="5" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pullHandle" translatesAutoresizingMaskIntoConstraints="NO" id="w8Z-do-EH3" userLabel="SliderView">
+                                        <rect key="frame" x="169.5" y="11" width="35" height="4"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="4" id="Bjd-GO-xNK"/>
+                                            <constraint firstAttribute="width" constant="35" id="NWH-3z-jer"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Tricycles To Arrive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5N-7U-7Uy" userLabel="Title">
+                                        <rect key="frame" x="77" y="32" width="221" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="0wH-CM-Zsv" userLabel="HeaderViewTop"/>
+                                    <constraint firstAttribute="height" constant="62" id="0wH-CM-Zsv" userLabel="HeaderViewTop"/>
                                     <constraint firstItem="m5N-7U-7Uy" firstAttribute="centerX" secondItem="pjJ-NE-5hP" secondAttribute="centerX" id="FWC-zC-VNO" userLabel="titleCenterX"/>
-                                    <constraint firstItem="m5N-7U-7Uy" firstAttribute="top" secondItem="pjJ-NE-5hP" secondAttribute="top" constant="5" id="rnp-zY-ETk" userLabel="TitleTop"/>
+                                    <constraint firstItem="w8Z-do-EH3" firstAttribute="top" secondItem="pjJ-NE-5hP" secondAttribute="top" constant="11" id="S2h-hu-LgY" userLabel="SliderViewTop"/>
+                                    <constraint firstItem="w8Z-do-EH3" firstAttribute="centerX" secondItem="pjJ-NE-5hP" secondAttribute="centerX" id="m9A-gy-clU" userLabel="SliderViewCenterX"/>
+                                    <constraint firstItem="m5N-7U-7Uy" firstAttribute="top" secondItem="pjJ-NE-5hP" secondAttribute="top" constant="32" id="rnp-zY-ETk" userLabel="TitleTop"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="6ND-qN-wkW" appends="YES" id="mHM-bm-Bdh"/>
+                                    <outletCollection property="gestureRecognizers" destination="ACM-6Z-FqX" appends="YES" id="aJf-3H-GEh"/>
+                                </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XWV-WF-JiF">
-                                <rect key="frame" x="0.0" y="128" width="375" height="209"/>
+                                <rect key="frame" x="0.0" y="62" width="375" height="275"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
@@ -112,8 +137,14 @@
                         <viewLayoutGuide key="safeArea" id="ZlA-14-XfZ"/>
                     </view>
                     <size key="freeformSize" width="375" height="337"/>
+                    <connections>
+                        <outlet property="downSwipeGestureRecognizer" destination="6ND-qN-wkW" id="v5t-Ff-yOl"/>
+                        <outlet property="upSwipeGestureRecognizer" destination="ACM-6Z-FqX" id="MbS-iY-xM3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jiy-sR-bTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer enabled="NO" direction="down" id="6ND-qN-wkW" userLabel="Down Swipe Gesture Recognizer"/>
+                <swipeGestureRecognizer direction="up" id="ACM-6Z-FqX" userLabel="Up Swipe Gesture Recognizer"/>
             </objects>
             <point key="canvasLocation" x="406" y="12"/>
         </scene>
@@ -226,4 +257,7 @@
             <point key="canvasLocation" x="206" y="514"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pullHandle" width="35" height="4"/>
+    </resources>
 </document>
