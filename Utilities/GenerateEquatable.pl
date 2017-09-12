@@ -3,20 +3,14 @@ use Data::Dumper;
 
 my $struct = q |
 
-struct NextToArriveState {
-    let scheduleState: ScheduleState
-    let nextToArriveTrips: [NextToArriveTrip]
-    let nextToArrivePrerequisiteStatus: NextToArrivePrerequisiteStatus
-    let nextToArriveUpdateStatus: NextToArriveUpdateStatus
+struct VehicleLocation {
+    let firstLegLocation: CLLocationCoordinate2D?
+    let secondLegLocation: CLLocationCoordinate2D?
 
-    let refreshRequested: Bool
-
-    init(scheduleState: ScheduleState = ScheduleState(), nextToArriveTrips: [NextToArriveTrip] =  [NextToArriveTrip](), nextToArriveUpdateStatus: NextToArriveUpdateStatus = .missingPrerequsites, refreshRequested: Bool = false){
-    self.scheduleState = scheduleState
-self.nextToArriveTrips = nextToArriveTrips
-self.nextToArriveUpdateStatus = nextToArriveUpdateStatus
-self.refreshRequested = refreshRequested
-}
+    init(firstLegLocation: CLLocationCoordinate2D? = CLLocationCoordinate2D(), secondLegLocation: CLLocationCoordinate2D? = CLLocationCoordinate2D()) {
+        self.firstLegLocation = firstLegLocation
+        self.secondLegLocation = secondLegLocation
+    }
 }
 
 

@@ -38,7 +38,7 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         }
     }
 
-    private var vehiclesToAdd = [VehicleLocation]() {
+    private var vehiclesToAdd = [CLLocationCoordinate2D]() {
         didSet {
             guard let _ = mapView else { return }
             drawVehicleLocations()
@@ -94,26 +94,14 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         mapView.addAnnotation(annotation)
     }
 
-    func drawVehicleLocations(_ vehicleLocations: [VehicleLocation]) {
-        vehiclesToAdd = vehicleLocations
+    func drawVehicleLocations(_ vehicleLocations: [CLLocationCoordinate2D]) {
+        self.vehiclesToAdd = vehicleLocations
     }
 
     func drawVehicleLocations() {
         for vehicle in vehiclesToAdd {
-            if isPhillyCoordinate(vehicle.firstLegLocation) {
-                drawVehicle(coordinate: vehicle.firstLegLocation)
-            }
-
-            if isPhillyCoordinate(vehicle.secondLegLocation) {
-                drawVehicle(coordinate: vehicle.secondLegLocation)
-            }
+            drawVehicle(coordinate: vehicle)
         }
-    }
-
-    let philly = CLLocation(latitude: 39.952583, longitude: -75.165222)
-    func isPhillyCoordinate(_ coordinate: CLLocationCoordinate2D) -> Bool {
-        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-        return philly.distance(from: location) < 160_934 // 100 miles
     }
 
     func drawVehicle(coordinate: CLLocationCoordinate2D) {

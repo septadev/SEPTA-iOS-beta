@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class NextToArriveInfoViewController: UIViewController {
-
+    var timer: Timer?
     @IBOutlet var upSwipeGestureRecognizer: UISwipeGestureRecognizer!
     @IBOutlet var downSwipeGestureRecognizer: UISwipeGestureRecognizer!
 
@@ -32,6 +32,26 @@ class NextToArriveInfoViewController: UIViewController {
 
         viewModel.delegate = self
         titleLabel.text = viewModel.viewTitle()
+    }
+}
+
+extension NextToArriveInfoViewController { // refresh timer
+    override func viewDidAppear(_: Bool) {
+        initTimer()
+    }
+
+    override func viewWillDisappear(_: Bool) {
+        timer?.invalidate()
+    }
+
+    func initTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(oneMinuteTimerFired(timer:)), userInfo: nil, repeats: true)
+    }
+
+    @objc func oneMinuteTimerFired(timer _: Timer) {
+
+        let action = NextToArriveRefreshDataRequested(refreshUpdateRequested: true)
+        store.dispatch(action)
     }
 }
 

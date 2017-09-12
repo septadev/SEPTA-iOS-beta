@@ -102,10 +102,6 @@ extension NextToArriveInfoViewModel { // Section Headers
 
 extension NextToArriveInfoViewModel { // Table View
 
-    func heightForHeaderInSection(section _: Int) -> CGFloat {
-        return 60.0
-    }
-
     func numberOfRows(forSection section: Int) -> Int {
         guard section < groupedTripData.count else { return 0 }
         return groupedTripData[section].count
@@ -131,34 +127,37 @@ extension NextToArriveInfoViewModel { // Table View
 
     func configureCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
         guard indexPath.section < groupedTripData.count, indexPath.row < groupedTripData[indexPath.section].count else { return }
-
+        let trip = groupedTripData[indexPath.section][indexPath.row]
         switch cell {
         case let cell as NoConnectionCell:
-            configureNoConnectionCell(cell: cell)
+            configureNoConnectionCell(cell: cell, forTrip: trip)
         case let cell as ConnectionCell:
             configureConnectionCell(cell: cell)
         default:break
         }
 
-        //        cell.startStopLabel.text = generateTimeString(trip: trip)
-        //        cell.departingWhenLabel.text = generateTimeToDeparture(trip: trip)
-        //        cell.onTimeLabel.text = generateOnTimeString(trip: trip)
-        //        cell.onTimeLabel.textColor = generateOnTimeColor(trip: trip)
-        //        cell.endStopLabel.text = generateLastStopName(trip: trip)
-        //        cell.departingView.layer.borderColor = generateDepartingBoxColor(trip: trip)
-
         print("building cell")
     }
 
-    func configureNoConnectionCell(cell _: NoConnectionCell) {
+    func configureNoConnectionCell(cell: NoConnectionCell, forTrip trip: NextToArriveTrip) {
+        let tripView = cell.tripView!
+        tripView.startStopLabel.text = generateTimeString(trip: trip)
+        tripView.departingWhenLabel.text = generateTimeToDeparture(trip: trip)
+        tripView.onTimeLabel.text = generateOnTimeString(trip: trip)
+        tripView.onTimeLabel.textColor = generateOnTimeColor(trip: trip)
+        tripView.endStopLabel.text = generateLastStopName(trip: trip)
+        tripView.departingBox.layer.borderColor = generateDepartingBoxColor(trip: trip)
     }
 
     func configureConnectionCell(cell _: ConnectionCell) {
     }
 
     func generateTimeString(trip: NextToArriveTrip) -> String? {
-
-        return DateFormatters.formatDurationString(startDate: trip.startStop.departureTime, endDate: trip.startStop.arrivalTime)
+        if tripHasConnection(trip: trip) {
+            return DateFormatters.formatDurationString(startDate: trip.startStop.departureTime, endDate: trip.startStop.arrivalTime)
+        } else {
+            return DateFormatters.formatDurationString(startDate: trip.startStop.departureTime, endDate: trip.endStop.arrivalTime)
+        }
     }
 
     func generateTimeToDeparture(trip: NextToArriveTrip) -> String? {
@@ -170,8 +169,10 @@ extension NextToArriveInfoViewModel { // Table View
         let delayString = String(tripDelayMinutes)
         if tripDelayMinutes > 0 {
             return "\(delayString) min late"
-        } else {
+        } else if let _ = trip.vehicleLocation.firstLegLocation {
             return "On Time"
+        } else {
+            return "Scheduled"
         }
     }
 
@@ -180,8 +181,10 @@ extension NextToArriveInfoViewModel { // Table View
 
         if tripDelayMinutes > 0 {
             return SeptaColor.transitIsLate
-        } else {
+        } else if let _ = trip.vehicleLocation.firstLegLocation {
             return SeptaColor.transitOnTime
+        } else {
+            return SeptaColor.transitIsScheduled
         }
     }
 

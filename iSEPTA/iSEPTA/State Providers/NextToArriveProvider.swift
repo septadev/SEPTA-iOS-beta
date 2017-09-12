@@ -130,14 +130,14 @@ class NextToArriveProvider: StoreSubscriber {
                                 direction: RouteDirectionCode.fromNetwork(a.term_line_direction ?? ""))
     }
 
-    func mapVehicleLocation(realTimeArrival a: RealTimeArrival) -> VehicleLocation? {
-        var firstLegLocation = CLLocationCoordinate2D()
+    func mapVehicleLocation(realTimeArrival a: RealTimeArrival) -> VehicleLocation {
+        var firstLegLocation: CLLocationCoordinate2D?
         if let location = mapCoordinateFromString(a.vehicle_lat, a.vehicle_lon) {
             firstLegLocation = location
         } else if let location = mapCoordinateFromString(a.orig_vehicle_lat, a.orig_vehicle_lon) {
             firstLegLocation = location
         }
-        let secondLegLocation = mapCoordinateFromString(a.term_vehicle_lat, a.term_vehicle_lon) ?? CLLocationCoordinate2D()
+        let secondLegLocation = mapCoordinateFromString(a.term_vehicle_lat, a.term_vehicle_lon)
 
         return VehicleLocation(firstLegLocation: firstLegLocation, secondLegLocation: secondLegLocation)
     }
@@ -158,7 +158,17 @@ class NextToArriveProvider: StoreSubscriber {
 
         let latDegrees = CLLocationDegrees(latDouble)
         let lonDegrees = CLLocationDegrees(lonDouble)
-        return CLLocationCoordinate2D(latitude: latDegrees, longitude: lonDegrees)
+        let coordinate = CLLocationCoordinate2D(latitude: latDegrees, longitude: lonDegrees)
+        if isPhillyCoordinate(coordinate) {
+            return coordinate
+        } else {
+            return nil
+        }
+    }
+    let philly = CLLocation(latitude: 39.952583, longitude: -75.165222)
+    func isPhillyCoordinate(_ coordinate: CLLocationCoordinate2D) -> Bool {
+        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        return philly.distance(from: location) < 160_934 // 100 miles
     }
 }
 

@@ -8,9 +8,10 @@
 
 import Foundation
 import SeptaSchedule
+import CoreLocation
 
 protocol RouteDrawable: AnyObject {
     func drawRoute(routeId: String)
     func drawTrip(scheduleRequest: ScheduleRequest)
-    func drawVehicleLocations(_ vehicleLocations: [VehicleLocation])
+    func drawVehicleLocations(_ vehicleLocations: [CLLocationCoordinate2D])
 }

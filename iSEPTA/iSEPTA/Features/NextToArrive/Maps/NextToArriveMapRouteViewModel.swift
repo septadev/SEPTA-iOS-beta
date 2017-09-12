@@ -8,6 +8,7 @@
 
 import Foundation
 import ReSwift
+import CoreLocation
 
 class NextToArriveMapRouteViewModel: StoreSubscriber {
     typealias StoreSubscriberStateType = [NextToArriveTrip]
@@ -46,8 +47,12 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
         //        for routeId in uniqueRouteIds {
         //            delegate.drawRoute(routeId: routeId)
         //        }
-        let vehicleLocations = trips.map { $0.vehicleLocation }.flatMap { $0 }.filter { $0.firstLegLocation.latitude != 0 }
-        delegate.drawVehicleLocations(vehicleLocations)
+        let startVehicles: [CLLocationCoordinate2D?] = trips.map { $0.vehicleLocation.firstLegLocation }
+        let endVehicles: [CLLocationCoordinate2D?] = trips.map { $0.vehicleLocation.secondLegLocation }
+        let allVehicles = startVehicles + endVehicles
+        let nonOptionalVehicles: [CLLocationCoordinate2D] = allVehicles.flatMap { $0 }
+
+        delegate.drawVehicleLocations(nonOptionalVehicles)
     }
 }
 

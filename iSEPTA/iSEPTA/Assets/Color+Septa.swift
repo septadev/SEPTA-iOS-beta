@@ -39,6 +39,7 @@ struct SeptaColor {
 
     static let transitIsLate = UIColor.toPercent(215, 46, 18, 1)
     static let transitOnTime = UIColor.toPercent(83, 158, 0, 1)
+    static let transitIsScheduled = UIColor.toPercent(117, 117, 117, 1)
     static let departingOnTime = UIColor.toPercent(222, 222, 222, 1)
     static let departingBoundaryOnTime = UIColor.toPercent(222, 222, 222, 1)
     static let departingBoundaryLate = UIColor.toPercent(217, 43, 0, 1)
