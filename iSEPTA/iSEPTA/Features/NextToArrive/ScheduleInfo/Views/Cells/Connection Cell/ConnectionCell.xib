@@ -6,36 +6,39 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="connectionCell" rowHeight="310" id="75C-gz-yWd" userLabel="ConnectionCell" customClass="ConnectionCell" customModule="Septa" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="405" height="300"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="connectionCell" rowHeight="538" id="75C-gz-yWd" userLabel="ConnectionCell" customClass="ConnectionCell" customModule="Septa" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="452" height="519"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="75C-gz-yWd" id="q1z-c6-ub9">
-                <rect key="frame" x="0.0" y="0.0" width="405" height="299.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="452" height="518.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DN8-ub-z2m" userLabel="TripHeaderWrapperView">
-                        <rect key="frame" x="127.5" y="0.0" width="150" height="50"/>
+                        <rect key="frame" x="151" y="10" width="150" height="50.5"/>
                         <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" placeholder="YES" id="6Tt-KD-eHk"/>
                             <constraint firstAttribute="width" constant="150" id="eyh-Mb-DW0"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QxS-AM-yiT" userLabel="FirstLegTripWrapper">
-                        <rect key="frame" x="82" y="85" width="240" height="128"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QxS-AM-yiT" userLabel="FirstLegTripWrapper">
+                        <rect key="frame" x="19" y="62.5" width="416" height="58.5"/>
+                        <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="58" placeholder="YES" id="ziz-fg-z5o"/>
+                        </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rIi-Va-Mfd" userLabel="BlueGradientView" customClass="BlueGradientView" customModule="Septa" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="136.5" width="405" height="27"/>
+                        <rect key="frame" x="0.0" y="130" width="452" height="27"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect @ 30th St Station" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZj-Q7-GNx" userLabel="ConnectionLabel">
-                                <rect key="frame" x="50" y="6.5" width="345" height="14.5"/>
+                                <rect key="frame" x="37" y="6.5" width="405" height="14.5"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
                                 <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -46,59 +49,109 @@
                             <constraint firstItem="yZj-Q7-GNx" firstAttribute="centerY" secondItem="rIi-Va-Mfd" secondAttribute="centerY" id="LVd-af-gCl" userLabel="ConnectionLabelCenterY"/>
                             <constraint firstAttribute="trailing" secondItem="yZj-Q7-GNx" secondAttribute="trailing" constant="10" id="LWi-lF-0h6" userLabel="ConnectionLabelRight"/>
                             <constraint firstAttribute="height" constant="27" id="ROh-OS-Y2K"/>
-                            <constraint firstItem="yZj-Q7-GNx" firstAttribute="leading" secondItem="rIi-Va-Mfd" secondAttribute="leading" constant="50" id="jpJ-xl-cwf" userLabel="ConnectionLabelLeft"/>
+                            <constraint firstItem="yZj-Q7-GNx" firstAttribute="leading" secondItem="rIi-Va-Mfd" secondAttribute="leading" constant="37" id="jpJ-xl-cwf" userLabel="ConnectionLabelLeft"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NKb-az-UpW" userLabel="SecondLegTripWrapper">
-                        <rect key="frame" x="82" y="85" width="240" height="128"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NKb-az-UpW" userLabel="SecondLegTripWrapper">
+                        <rect key="frame" x="20" y="460.5" width="415" height="58"/>
+                        <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="58" placeholder="YES" id="kSL-QC-tId"/>
+                        </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t7N-Y9-vF3" userLabel="ConnectionGraphic">
-                        <rect key="frame" x="15" y="0.0" width="10" height="283"/>
+                        <rect key="frame" x="15" y="62.5" width="10" height="431"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="naf-4K-9lr" userLabel="ConnectionConnectorView" customClass="VerticalDottedTripGraphic" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="10" height="283"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="17" width="10" height="410"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LhA-CQ-mEZ" userLabel="DiamondView" customClass="NextToArriveDiamond" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="145.5" width="10" height="10"/>
-                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="-2" y="74" width="14" height="14"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="10" id="Qtn-OC-V2N"/>
-                                    <constraint firstAttribute="height" constant="10" id="sH5-3z-MoH"/>
+                                    <constraint firstAttribute="width" constant="14" id="Qtn-OC-V2N"/>
+                                    <constraint firstAttribute="height" constant="14" id="sH5-3z-MoH"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.12214555959999999" blue="0.19503632169999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="naf-4K-9lr" secondAttribute="trailing" id="5gl-7a-QUn" userLabel="ConnectionConnectorViewRight"/>
-                            <constraint firstItem="naf-4K-9lr" firstAttribute="top" secondItem="t7N-Y9-vF3" secondAttribute="top" id="FYJ-09-avN" userLabel="ConnectingConnectorViewTop"/>
+                            <constraint firstItem="naf-4K-9lr" firstAttribute="top" secondItem="t7N-Y9-vF3" secondAttribute="top" constant="17" id="FYJ-09-avN" userLabel="ConnectingConnectorViewTop"/>
                             <constraint firstAttribute="width" constant="10" id="ICZ-TV-9y4" userLabel="ConnectionGraphicWidth"/>
-                            <constraint firstAttribute="bottom" secondItem="naf-4K-9lr" secondAttribute="bottom" id="JYF-Gs-Wjb" userLabel="ConnectionConnectorViewBottom"/>
+                            <constraint firstAttribute="bottom" secondItem="naf-4K-9lr" secondAttribute="bottom" constant="4" id="JYF-Gs-Wjb" userLabel="ConnectionConnectorViewBottom"/>
                             <constraint firstItem="LhA-CQ-mEZ" firstAttribute="centerX" secondItem="t7N-Y9-vF3" secondAttribute="centerX" id="cw3-mm-qod" userLabel="DiamondViewCenterX"/>
-                            <constraint firstAttribute="height" constant="283" id="fsO-Dj-RfC"/>
                             <constraint firstItem="naf-4K-9lr" firstAttribute="leading" secondItem="t7N-Y9-vF3" secondAttribute="leading" id="vJc-ug-TjM" userLabel="ConnectionConnectorViewLeft"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qup-9b-8XM" userLabel="LeftDivider" customClass="FlatDividerView" customModule="Septa" customModuleProvider="target">
+                        <rect key="frame" x="37" y="36" width="109" height="1"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="See-Rv-79t"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="16D-px-e74" userLabel="SecondLeftDivider" customClass="FlatDividerView" customModule="Septa" customModuleProvider="target">
+                        <rect key="frame" x="171" y="258" width="109" height="1"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="aQ4-bg-bt9"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eBo-w0-XYv" userLabel="RightDivider" customClass="FlatDividerView" customModule="Septa" customModuleProvider="target">
+                        <rect key="frame" x="306" y="36" width="125" height="1"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Hh1-kQ-Hlj"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HC0-5N-K2B" userLabel="SecondRightDivider" customClass="FlatDividerView" customModule="Septa" customModuleProvider="target">
+                        <rect key="frame" x="163" y="258" width="125" height="1"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Hvm-Yr-Cbe"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WgL-X9-2lL" userLabel="SecondTripHeaderWrapperView">
+                        <rect key="frame" x="85" y="229" width="240" height="128"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="58" placeholder="YES" id="yNW-GW-GQN"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="NKb-az-UpW" firstAttribute="top" secondItem="rIi-Va-Mfd" secondAttribute="bottom" id="4lU-FA-O43" userLabel="SecondLegTop"/>
-                    <constraint firstItem="DN8-ub-z2m" firstAttribute="top" secondItem="t7N-Y9-vF3" secondAttribute="top" id="IYC-qY-Mp1" userLabel="TripViewWrapperTop"/>
+                    <constraint firstItem="qup-9b-8XM" firstAttribute="leading" secondItem="q1z-c6-ub9" secondAttribute="leading" constant="37" id="4oX-Vt-zO2" userLabel="LeftDividerLeft"/>
+                    <constraint firstItem="t7N-Y9-vF3" firstAttribute="top" secondItem="QxS-AM-yiT" secondAttribute="top" id="73S-FK-JPp" userLabel="ConnectorWrapperTop"/>
+                    <constraint firstItem="eBo-w0-XYv" firstAttribute="leading" secondItem="DN8-ub-z2m" secondAttribute="trailing" constant="5" id="Ave-Tl-qQJ" userLabel="RightDividerLeft"/>
+                    <constraint firstAttribute="trailing" secondItem="eBo-w0-XYv" secondAttribute="trailing" constant="21" id="Bjd-cc-Fm9" userLabel="RightDividerRight"/>
+                    <constraint firstItem="eBo-w0-XYv" firstAttribute="top" secondItem="DN8-ub-z2m" secondAttribute="centerY" id="E1W-rD-ZZs" userLabel="RightDividerTop"/>
+                    <constraint firstItem="DN8-ub-z2m" firstAttribute="top" secondItem="q1z-c6-ub9" secondAttribute="top" constant="10" id="Gqz-ay-lsX" userLabel="TripHeaderWrapperViewTop"/>
+                    <constraint firstItem="rIi-Va-Mfd" firstAttribute="top" secondItem="QxS-AM-yiT" secondAttribute="bottom" constant="9" id="I5b-BS-dB9" userLabel="FirstLegWrapperViewBottom"/>
                     <constraint firstItem="rIi-Va-Mfd" firstAttribute="leading" secondItem="q1z-c6-ub9" secondAttribute="leading" id="Ktn-pU-fsl" userLabel="BlueGradientLeft"/>
                     <constraint firstItem="t7N-Y9-vF3" firstAttribute="leading" secondItem="q1z-c6-ub9" secondAttribute="leading" constant="15" id="LT5-54-Rdc" userLabel="ConnectionGraphicLeft"/>
                     <constraint firstItem="LhA-CQ-mEZ" firstAttribute="centerY" secondItem="rIi-Va-Mfd" secondAttribute="centerY" id="Qzw-wO-7Lw" userLabel="DiamondViewCenterY"/>
-                    <constraint firstAttribute="bottom" secondItem="t7N-Y9-vF3" secondAttribute="bottom" constant="16.5" id="TCg-ot-Ent" userLabel="ConnectionGraphicBottom"/>
-                    <constraint firstItem="rIi-Va-Mfd" firstAttribute="centerY" secondItem="q1z-c6-ub9" secondAttribute="centerY" id="ml6-SP-BV8" userLabel="BlueGradientViewCenterY"/>
-                    <constraint firstItem="t7N-Y9-vF3" firstAttribute="top" secondItem="q1z-c6-ub9" secondAttribute="top" id="t42-wV-fkL" userLabel="ConnectionGraphicTop"/>
+                    <constraint firstAttribute="bottom" secondItem="NKb-az-UpW" secondAttribute="bottom" priority="750" id="WXO-5n-YPT" userLabel="SecondLegBottom"/>
+                    <constraint firstItem="DN8-ub-z2m" firstAttribute="leading" secondItem="qup-9b-8XM" secondAttribute="trailing" constant="5" id="XfT-Cq-ofs" userLabel="LeftDividerRight"/>
+                    <constraint firstItem="QxS-AM-yiT" firstAttribute="top" secondItem="DN8-ub-z2m" secondAttribute="bottom" constant="2" id="eEv-WX-b6z" userLabel="TripHeaderBottom"/>
+                    <constraint firstItem="qup-9b-8XM" firstAttribute="top" secondItem="DN8-ub-z2m" secondAttribute="centerY" id="hDz-vG-u8m" userLabel="LeftDividertop"/>
+                    <constraint firstItem="NKb-az-UpW" firstAttribute="centerY" secondItem="naf-4K-9lr" secondAttribute="bottom" id="hUH-8f-jcV" userLabel="ConnectorViewBottom"/>
+                    <constraint firstAttribute="trailing" secondItem="NKb-az-UpW" secondAttribute="trailing" constant="17" id="qfb-1T-GNv" userLabel="SecondLegWrapperViewRight"/>
+                    <constraint firstItem="NKb-az-UpW" firstAttribute="leading" secondItem="t7N-Y9-vF3" secondAttribute="trailing" constant="-5" id="rct-cd-OpF" userLabel="SecondLegTripWrapperLeft"/>
                     <constraint firstItem="DN8-ub-z2m" firstAttribute="centerX" secondItem="q1z-c6-ub9" secondAttribute="centerX" id="vqU-Sm-bww" userLabel="TripViewWrapperCenterX"/>
                     <constraint firstAttribute="trailing" secondItem="rIi-Va-Mfd" secondAttribute="trailing" id="wxS-gG-R1v" userLabel="BlueGradientViewRight"/>
+                    <constraint firstItem="QxS-AM-yiT" firstAttribute="leading" secondItem="t7N-Y9-vF3" secondAttribute="trailing" constant="-6" id="x3O-PJ-jOk" userLabel="FirstLeftWrapperLeft"/>
+                    <constraint firstAttribute="trailing" secondItem="QxS-AM-yiT" secondAttribute="trailing" constant="17" id="zil-cI-wSE" userLabel="FirstLegWrapperRight"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="connectionLabel" destination="yZj-Q7-GNx" id="xWA-QM-9Lj"/>
-                <outlet property="tripHeaderWrapperView" destination="DN8-ub-z2m" id="zs7-B4-gaz"/>
+                <outlet property="firstLegTripWrapper" destination="QxS-AM-yiT" id="uIz-4c-huT"/>
+                <outlet property="secondLegTripWrapper" destination="NKb-az-UpW" id="0r6-D0-QpK"/>
+                <outlet property="tripHeaderWrapperView" destination="DN8-ub-z2m" id="ezp-jS-2fN"/>
             </connections>
-            <point key="canvasLocation" x="23.5" y="30"/>
+            <point key="canvasLocation" x="47" y="143.5"/>
         </tableViewCell>
     </objects>
 </document>

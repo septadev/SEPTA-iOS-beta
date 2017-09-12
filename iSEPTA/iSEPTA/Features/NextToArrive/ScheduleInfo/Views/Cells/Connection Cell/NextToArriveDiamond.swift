@@ -12,7 +12,7 @@ import UIKit
 @IBDesignable
 class NextToArriveDiamond: UIView {
 
-    override func draw(_: CGRect) {
-        SeptaDraw.drawConnectingDiamondStationView()
+    override func draw(_ rect: CGRect) {
+        SeptaDraw.drawConnectingDiamondStationView(frame: rect)
     }
 }

@@ -48,7 +48,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="hai-e6-bia" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="7GG-dT-T1K" userLabel="TripViewBottom"/>
+                <constraint firstItem="hai-e6-bia" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="7GG-dT-T1K" userLabel="TripViewBottom"/>
                 <constraint firstItem="hai-e6-bia" firstAttribute="top" secondItem="CjH-I9-am1" secondAttribute="bottom" constant="8" id="PV6-32-CnB" userLabel="TripViewWrapperTop"/>
                 <constraint firstItem="CjH-I9-am1" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Q0r-gm-vX5" userLabel="HeaderViewWrapperTop"/>
                 <constraint firstItem="KQy-LC-Fs4" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="7" id="YSY-H0-1e1" userLabel="FlatDividerLeftTop"/>
