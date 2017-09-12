@@ -38,28 +38,28 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dMq-rf-S82" userLabel="StartConnectionView">
-                        <rect key="frame" x="18" y="188" width="415" height="58"/>
+                        <rect key="frame" x="0.0" y="188" width="452" height="58"/>
                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="58" placeholder="YES" id="VLz-dx-gwI"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NKb-az-UpW" userLabel="EndConnectionView">
-                        <rect key="frame" x="20" y="273" width="415" height="58"/>
+                        <rect key="frame" x="0.0" y="283" width="452" height="58"/>
                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="58" placeholder="YES" id="kSL-QC-tId"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t7N-Y9-vF3" userLabel="ConnectionGraphic">
-                        <rect key="frame" x="15" y="188" width="10" height="118"/>
+                        <rect key="frame" x="15" y="210" width="10" height="109"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="naf-4K-9lr" userLabel="ConnectionConnectorView" customClass="VerticalDottedTripGraphic" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="17" width="10" height="97"/>
+                                <rect key="frame" x="0.0" y="0.0" width="10" height="109"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LhA-CQ-mEZ" userLabel="DiamondView" customClass="NextToArriveDiamond" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="-2" y="64.5" width="14" height="14"/>
+                                <rect key="frame" x="-2" y="42.5" width="14" height="14"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="14" id="Qtn-OC-V2N"/>
@@ -70,28 +70,28 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="naf-4K-9lr" secondAttribute="trailing" id="5gl-7a-QUn" userLabel="ConnectionConnectorViewRight"/>
-                            <constraint firstItem="naf-4K-9lr" firstAttribute="top" secondItem="t7N-Y9-vF3" secondAttribute="top" constant="17" id="FYJ-09-avN" userLabel="ConnectingConnectorViewTop"/>
+                            <constraint firstItem="naf-4K-9lr" firstAttribute="top" secondItem="t7N-Y9-vF3" secondAttribute="top" id="7FS-6Y-iIP" userLabel="ConnectorConnectorViewTop"/>
                             <constraint firstAttribute="width" constant="10" id="ICZ-TV-9y4" userLabel="ConnectionGraphicWidth"/>
-                            <constraint firstAttribute="bottom" secondItem="naf-4K-9lr" secondAttribute="bottom" constant="4" id="JYF-Gs-Wjb" userLabel="ConnectionConnectorViewBottom"/>
                             <constraint firstItem="LhA-CQ-mEZ" firstAttribute="centerX" secondItem="t7N-Y9-vF3" secondAttribute="centerX" id="cw3-mm-qod" userLabel="DiamondViewCenterX"/>
+                            <constraint firstAttribute="bottom" secondItem="naf-4K-9lr" secondAttribute="bottom" id="vHW-AB-WwJ" userLabel="ConnectionConnectorViewBottom"/>
                             <constraint firstItem="naf-4K-9lr" firstAttribute="leading" secondItem="t7N-Y9-vF3" secondAttribute="leading" id="vJc-ug-TjM" userLabel="ConnectionConnectorViewLeft"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="t7N-Y9-vF3" firstAttribute="top" secondItem="dMq-rf-S82" secondAttribute="top" id="Dvc-LP-eSF" userLabel="ConnectionGraphicTop"/>
+                    <constraint firstItem="dMq-rf-S82" firstAttribute="leading" secondItem="q1z-c6-ub9" secondAttribute="leading" id="23H-uf-utb"/>
+                    <constraint firstItem="t7N-Y9-vF3" firstAttribute="bottom" secondItem="NKb-az-UpW" secondAttribute="centerY" constant="7" id="4QX-tG-Bmo" userLabel="ConnectionGraphicBottom"/>
+                    <constraint firstItem="t7N-Y9-vF3" firstAttribute="top" secondItem="dMq-rf-S82" secondAttribute="centerY" constant="-7" id="Dvc-LP-eSF" userLabel="ConnectionGraphicTop"/>
                     <constraint firstItem="dMq-rf-S82" firstAttribute="top" relation="greaterThanOrEqual" secondItem="q1z-c6-ub9" secondAttribute="top" id="GkO-oy-q9O" userLabel="StartConnectionViewTop"/>
                     <constraint firstItem="rIi-Va-Mfd" firstAttribute="leading" secondItem="q1z-c6-ub9" secondAttribute="leading" id="Ktn-pU-fsl" userLabel="BlueGradientLeft"/>
                     <constraint firstItem="t7N-Y9-vF3" firstAttribute="leading" secondItem="q1z-c6-ub9" secondAttribute="leading" constant="15" id="LT5-54-Rdc" userLabel="ConnectionGraphicLeft"/>
+                    <constraint firstItem="NKb-az-UpW" firstAttribute="leading" secondItem="q1z-c6-ub9" secondAttribute="leading" id="QdK-qZ-6ma"/>
                     <constraint firstItem="LhA-CQ-mEZ" firstAttribute="centerY" secondItem="rIi-Va-Mfd" secondAttribute="centerY" id="Qzw-wO-7Lw" userLabel="DiamondViewCenterY"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="NKb-az-UpW" secondAttribute="bottom" priority="750" id="WXO-5n-YPT" userLabel="EndConnectionViewBottom"/>
-                    <constraint firstItem="NKb-az-UpW" firstAttribute="top" secondItem="rIi-Va-Mfd" secondAttribute="bottom" id="b04-Og-e8Q" userLabel="EndConnectionViewTop"/>
-                    <constraint firstAttribute="trailing" secondItem="dMq-rf-S82" secondAttribute="trailing" constant="19" id="bmY-LP-tX6" userLabel="StartConnectionViewright"/>
-                    <constraint firstItem="NKb-az-UpW" firstAttribute="centerY" secondItem="naf-4K-9lr" secondAttribute="bottom" id="hUH-8f-jcV" userLabel="ConnectorViewBottom"/>
+                    <constraint firstItem="NKb-az-UpW" firstAttribute="top" secondItem="rIi-Va-Mfd" secondAttribute="bottom" constant="10" id="b04-Og-e8Q" userLabel="EndConnectionViewTop"/>
+                    <constraint firstAttribute="trailing" secondItem="dMq-rf-S82" secondAttribute="trailing" id="bmY-LP-tX6" userLabel="StartConnectionViewright"/>
                     <constraint firstItem="rIi-Va-Mfd" firstAttribute="top" secondItem="dMq-rf-S82" secondAttribute="bottom" id="nwS-IE-hol" userLabel="StartConnectionViewBottom"/>
-                    <constraint firstAttribute="trailing" secondItem="NKb-az-UpW" secondAttribute="trailing" constant="17" id="qfb-1T-GNv" userLabel="SecondLegWrapperViewRight"/>
-                    <constraint firstItem="NKb-az-UpW" firstAttribute="leading" secondItem="t7N-Y9-vF3" secondAttribute="trailing" constant="-5" id="rct-cd-OpF" userLabel="SecondLegTripWrapperLeft"/>
-                    <constraint firstItem="dMq-rf-S82" firstAttribute="leading" secondItem="t7N-Y9-vF3" secondAttribute="trailing" constant="-7" id="wAh-81-XbR" userLabel="StartConnectionViewLeft"/>
+                    <constraint firstAttribute="trailing" secondItem="NKb-az-UpW" secondAttribute="trailing" id="qfb-1T-GNv" userLabel="SecondLegWrapperViewRight"/>
                     <constraint firstAttribute="trailing" secondItem="rIi-Va-Mfd" secondAttribute="trailing" id="wxS-gG-R1v" userLabel="BlueGradientViewRight"/>
                     <constraint firstItem="rIi-Va-Mfd" firstAttribute="centerY" secondItem="q1z-c6-ub9" secondAttribute="centerY" id="zsg-8o-ddW" userLabel="BlueGradientCenterY"/>
                 </constraints>
