@@ -11,14 +11,14 @@ import UIKit
 
 class ConnectionView: UIView {
     var tripHeaderView: TripHeaderView!
-    @IBOutlet weak var headerViewWrapper: UIView! {
+    @IBOutlet var headerViewWrapper: UIView! {
         didSet {
             tripHeaderView = headerViewWrapper.awakeInsertAndPinSubview(nibName: "TripHeaderView")
         }
     }
 
     var tripView: TripView!
-    @IBOutlet weak var tripViewWrapper: UIView! {
+    @IBOutlet var tripViewWrapper: UIView! {
         didSet {
             tripView = tripViewWrapper.awakeInsertAndPinSubview(nibName: "TripView")
         }

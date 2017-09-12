@@ -22,6 +22,10 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
 
     let nextToArriveMapRouteViewModelErrorWatcher = NextToArriveMapRouteViewModelErrorWatcher()
 
+    var requestedRoutedId: String? {
+        return store.state.nextToArriveState.scheduleState.scheduleRequest.selectedRoute?.routeId
+    }
+
     func subscribe() {
 
         store.subscribe(self) {
@@ -47,12 +51,17 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
         //        for routeId in uniqueRouteIds {
         //            delegate.drawRoute(routeId: routeId)
         //        }
-        let startVehicles: [CLLocationCoordinate2D?] = trips.map { $0.vehicleLocation.firstLegLocation }
-        let endVehicles: [CLLocationCoordinate2D?] = trips.map { $0.vehicleLocation.secondLegLocation }
-        let allVehicles = startVehicles + endVehicles
-        let nonOptionalVehicles: [CLLocationCoordinate2D] = allVehicles.flatMap { $0 }
+        if store.state.nextToArriveState.nextToArriveUpdateStatus == .dataLoadedSuccessfully {
+            let startVehicles: [CLLocationCoordinate2D?] = trips.map { $0.vehicleLocation.firstLegLocation }
+            let endVehicles: [CLLocationCoordinate2D?] = trips.map { $0.vehicleLocation.secondLegLocation }
+            let allVehicles = startVehicles + endVehicles
+            let nonOptionalVehicles: [CLLocationCoordinate2D] = allVehicles.flatMap { $0 }
 
-        delegate.drawVehicleLocations(nonOptionalVehicles)
+            let allRouteIds = NextToArriveGrouper.filterRoutesToMap(trips: trips, requestRouteId: requestedRoutedId)
+
+            delegate.drawRoutes(routeIds: allRouteIds)
+            delegate.drawVehicleLocations(nonOptionalVehicles)
+        }
     }
 }
 
@@ -85,9 +94,9 @@ class NextToArriveMapRouteViewModelErrorWatcher: StoreSubscriber {
     func newState(state: StoreSubscriberStateType) {
 
         if state == .dataLoadingError {
-            if let routeId = store.state.nextToArriveState.scheduleState.scheduleRequest.selectedRoute?.routeId {
-                delegate.drawRoute(routeId: routeId)
-            }
+            //            if let routeId = store.state.nextToArriveState.scheduleState.scheduleRequest.selectedRoute?.routeId {
+            //
+            //            }
         }
     }
 }

@@ -52,14 +52,14 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t7N-Y9-vF3" userLabel="ConnectionGraphic">
-                        <rect key="frame" x="15" y="210" width="10" height="109"/>
+                        <rect key="frame" x="15" y="206" width="10" height="110"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="naf-4K-9lr" userLabel="ConnectionConnectorView" customClass="VerticalDottedTripGraphic" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="10" height="109"/>
+                                <rect key="frame" x="0.0" y="0.0" width="10" height="110"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LhA-CQ-mEZ" userLabel="DiamondView" customClass="NextToArriveDiamond" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="-2" y="42.5" width="14" height="14"/>
+                                <rect key="frame" x="-2" y="46.5" width="14" height="14"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="14" id="Qtn-OC-V2N"/>
@@ -79,9 +79,9 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="dMq-rf-S82" firstAttribute="leading" secondItem="q1z-c6-ub9" secondAttribute="leading" id="23H-uf-utb"/>
-                    <constraint firstItem="t7N-Y9-vF3" firstAttribute="bottom" secondItem="NKb-az-UpW" secondAttribute="centerY" constant="7" id="4QX-tG-Bmo" userLabel="ConnectionGraphicBottom"/>
-                    <constraint firstItem="t7N-Y9-vF3" firstAttribute="top" secondItem="dMq-rf-S82" secondAttribute="centerY" constant="-7" id="Dvc-LP-eSF" userLabel="ConnectionGraphicTop"/>
+                    <constraint firstItem="dMq-rf-S82" firstAttribute="leading" secondItem="q1z-c6-ub9" secondAttribute="leading" id="23H-uf-utb" userLabel="StartConnectionViewLeft"/>
+                    <constraint firstItem="t7N-Y9-vF3" firstAttribute="bottom" secondItem="NKb-az-UpW" secondAttribute="centerY" constant="4" id="4QX-tG-Bmo" userLabel="ConnectionGraphicBottom"/>
+                    <constraint firstItem="t7N-Y9-vF3" firstAttribute="top" secondItem="dMq-rf-S82" secondAttribute="centerY" constant="-11" id="Dvc-LP-eSF" userLabel="ConnectionGraphicTop"/>
                     <constraint firstItem="dMq-rf-S82" firstAttribute="top" relation="greaterThanOrEqual" secondItem="q1z-c6-ub9" secondAttribute="top" id="GkO-oy-q9O" userLabel="StartConnectionViewTop"/>
                     <constraint firstItem="rIi-Va-Mfd" firstAttribute="leading" secondItem="q1z-c6-ub9" secondAttribute="leading" id="Ktn-pU-fsl" userLabel="BlueGradientLeft"/>
                     <constraint firstItem="t7N-Y9-vF3" firstAttribute="leading" secondItem="q1z-c6-ub9" secondAttribute="leading" constant="15" id="LT5-54-Rdc" userLabel="ConnectionGraphicLeft"/>

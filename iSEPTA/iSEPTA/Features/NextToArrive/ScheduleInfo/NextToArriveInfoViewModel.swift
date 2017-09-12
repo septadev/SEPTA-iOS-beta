@@ -92,10 +92,10 @@ extension NextToArriveInfoViewModel { // Section Headers
             let headerView = view as? NoConnectionUIHeaderFooterView,
             let noConnectionHeaderView = headerView.noConnectionSectionHeader,
             let tripHeaderView = noConnectionHeaderView.tripHeaderView else { return }
-
-        tripHeaderView.pillView.backgroundColor = transitMode().colorForPill()
+        let routeId = firstTripInSection.startStop.routeId
+        tripHeaderView.pillView.backgroundColor = Route.colorForRouteId(routeId, transitMode: transitMode())
         tripHeaderView.lineNameLabel.text = firstTripInSection.startStop.routeName
-        let alert = alerts[transitMode()]?[firstTripInSection.startStop.routeId]
+        let alert = alerts[transitMode()]?[routeId]
         tripHeaderView.alertStackView.addAlert(alert)
     }
 }
@@ -132,73 +132,107 @@ extension NextToArriveInfoViewModel { // Table View
         case let cell as NoConnectionCell:
             configureNoConnectionCell(cell: cell, forTrip: trip)
         case let cell as ConnectionCell:
-            configureConnectionCell(cell: cell)
+            configureConnectionCell(cell: cell, forTrip: trip)
         default:break
         }
     }
 
     func configureNoConnectionCell(cell: NoConnectionCell, forTrip trip: NextToArriveTrip) {
         let tripView = cell.tripView!
+        let hasVehicleLocation = trip.vehicleLocation.firstLegLocation != nil
         tripView.startStopLabel.text = generateTimeString(trip: trip)
-        tripView.departingWhenLabel.text = generateTimeToDeparture(trip: trip)
-        tripView.onTimeLabel.text = generateOnTimeString(trip: trip)
-        tripView.onTimeLabel.textColor = generateOnTimeColor(trip: trip)
-        tripView.endStopLabel.text = generateLastStopName(trip: trip)
-        tripView.departingBox.layer.borderColor = generateDepartingBoxColor(trip: trip)
+        tripView.departingWhenLabel.text = generateTimeToDeparture(stop: trip.startStop)
+        tripView.onTimeLabel.text = generateOnTimeString(stop: trip.startStop, hasVehicleLocation: hasVehicleLocation)
+        tripView.onTimeLabel.textColor = generateOnTimeColor(stop: trip.startStop, hasVehicleLocation: hasVehicleLocation)
+        tripView.endStopLabel.text = generateLastStopName(stop: trip.startStop)
+        tripView.departingBox.layer.borderColor = generateDepartingBoxColor(stop: trip.startStop)
     }
 
-    func configureConnectionCell(cell _: ConnectionCell) {
+    func configureConnectionCell(cell: ConnectionCell, forTrip trip: NextToArriveTrip) {
+
+        let firstLegTripView = cell.startConnectionView.tripView!
+        let startHasVehicleLocation = trip.vehicleLocation.firstLegLocation != nil
+        firstLegTripView.startStopLabel.text = generateTimeString(stop: trip.startStop)
+        firstLegTripView.departingWhenLabel.text = generateTimeToDeparture(stop: trip.startStop)
+        firstLegTripView.onTimeLabel.text = generateOnTimeString(stop: trip.startStop, hasVehicleLocation: startHasVehicleLocation)
+        firstLegTripView.onTimeLabel.textColor = generateOnTimeColor(stop: trip.startStop, hasVehicleLocation: startHasVehicleLocation)
+        firstLegTripView.endStopLabel.text = generateLastStopName(stop: trip.startStop)
+        firstLegTripView.departingBox.layer.borderColor = generateDepartingBoxColor(stop: trip.startStop)
+
+        let secondLegTripView = cell.endConnectionView.tripView!
+        let endHasVehicleLocation = trip.vehicleLocation.secondLegLocation != nil
+        secondLegTripView.startStopLabel.text = generateTimeString(stop: trip.endStop)
+        secondLegTripView.departingWhenLabel.text = generateTimeToDeparture(stop: trip.endStop)
+        secondLegTripView.onTimeLabel.text = generateOnTimeString(stop: trip.endStop, hasVehicleLocation: endHasVehicleLocation)
+        secondLegTripView.onTimeLabel.textColor = generateOnTimeColor(stop: trip.endStop, hasVehicleLocation: endHasVehicleLocation)
+        secondLegTripView.endStopLabel.text = generateLastStopName(stop: trip.endStop)
+        secondLegTripView.departingBox.layer.borderColor = generateDepartingBoxColor(stop: trip.endStop)
+
+        let connectionStation = trip.connectionLocation?.stopName ?? ""
+        cell.connectionLabel.text = "Connect @\(connectionStation)"
+
+        styleTripHeaderView(tripHeaderView: cell.startConnectionView.tripHeaderView, forStop: trip.startStop)
+        styleTripHeaderView(tripHeaderView: cell.endConnectionView.tripHeaderView, forStop: trip.endStop)
+    }
+
+    func styleTripHeaderView(tripHeaderView: TripHeaderView, forStop stop: NextToArriveStop) {
+        tripHeaderView.pillView.backgroundColor = Route.colorForRouteId(stop.routeId, transitMode: transitMode())
+        tripHeaderView.lineNameLabel.text = stop.routeName
+        let alert = alerts[transitMode()]?[stop.routeId]
+        tripHeaderView.alertStackView.addAlert(alert)
+    }
+
+    func generateTimeString(stop: NextToArriveStop) -> String? {
+        let sortedDates = [stop.arrivalTime, stop.departureTime].sorted()
+        return DateFormatters.formatDurationString(startDate: sortedDates[0], endDate: sortedDates[1])
     }
 
     func generateTimeString(trip: NextToArriveTrip) -> String? {
-        if tripHasConnection(trip: trip) {
-            return DateFormatters.formatDurationString(startDate: trip.startStop.departureTime, endDate: trip.startStop.arrivalTime)
-        } else {
-            return DateFormatters.formatDurationString(startDate: trip.startStop.departureTime, endDate: trip.endStop.arrivalTime)
-        }
+        let sortedDates = [trip.startStop.arrivalTime, trip.endStop.arrivalTime].sorted()
+        return DateFormatters.formatDurationString(startDate: sortedDates[0], endDate: sortedDates[1])
     }
 
-    func generateTimeToDeparture(trip: NextToArriveTrip) -> String? {
-        return DateFormatters.formatTimeFromNow(date: trip.startStop.arrivalTime)
+    func generateTimeToDeparture(stop: NextToArriveStop) -> String? {
+        return DateFormatters.formatTimeFromNow(date: stop.arrivalTime)
     }
 
-    func generateOnTimeString(trip: NextToArriveTrip) -> String? {
-        guard let tripDelayMinutes = trip.startStop.delayMinutes else { return "Scheduled" }
+    func generateOnTimeString(stop: NextToArriveStop, hasVehicleLocation: Bool) -> String? {
+        guard let tripDelayMinutes = stop.delayMinutes else { return "Scheduled" }
         let delayString = String(tripDelayMinutes)
         if tripDelayMinutes > 0 {
             return "\(delayString) min late"
-        } else if let _ = trip.vehicleLocation.firstLegLocation {
+        } else if hasVehicleLocation {
             return "On Time"
         } else {
             return "Scheduled"
         }
     }
 
-    func generateOnTimeColor(trip: NextToArriveTrip) -> UIColor {
-        guard let tripDelayMinutes = trip.startStop.delayMinutes else { return SeptaColor.transitIsScheduled }
+    func generateOnTimeColor(stop: NextToArriveStop, hasVehicleLocation: Bool) -> UIColor {
+        guard let tripDelayMinutes = stop.delayMinutes else { return SeptaColor.transitIsScheduled }
 
         if tripDelayMinutes > 0 {
             return SeptaColor.transitIsLate
-        } else if let _ = trip.vehicleLocation.firstLegLocation {
+        } else if hasVehicleLocation {
             return SeptaColor.transitOnTime
         } else {
             return SeptaColor.transitIsScheduled
         }
     }
 
-    func generateLastStopName(trip: NextToArriveTrip) -> String? {
-        guard let lastStopName = trip.startStop.lastStopName else { return nil }
+    func generateLastStopName(stop: NextToArriveStop) -> String? {
+        guard let lastStopName = stop.lastStopName, let tripId = stop.tripId else { return nil }
         if transitMode() == .rail {
-            return "#\(trip) to \(lastStopName)"
-        } else if let tripIdInt = trip.startStop.tripId {
+            return "#\(tripId) to \(lastStopName)"
+        } else if let tripIdInt = stop.tripId {
             return "#\(String(tripIdInt)) to \(lastStopName)"
         } else {
             return "to \(lastStopName)"
         }
     }
 
-    func generateDepartingBoxColor(trip: NextToArriveTrip) -> CGColor {
-        guard let tripDelayMinutes = trip.startStop.delayMinutes else { return SeptaColor.transitOnTime.cgColor }
+    func generateDepartingBoxColor(stop: NextToArriveStop) -> CGColor {
+        guard let tripDelayMinutes = stop.delayMinutes else { return SeptaColor.transitOnTime.cgColor }
 
         if tripDelayMinutes > 0 {
             return SeptaColor.transitIsLate.cgColor

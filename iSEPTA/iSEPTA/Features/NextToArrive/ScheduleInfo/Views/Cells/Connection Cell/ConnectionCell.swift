@@ -14,7 +14,7 @@ class ConnectionCell: UITableViewCell {
     var startConnectionView: ConnectionView!
     @IBOutlet weak var startConnectionViewWrapper: UIView! {
         didSet {
-            endConnectionView = startConnectionViewWrapper.awakeInsertAndPinSubview(nibName: "ConnectionView")
+            startConnectionView = startConnectionViewWrapper.awakeInsertAndPinSubview(nibName: "ConnectionView")
         }
     }
 

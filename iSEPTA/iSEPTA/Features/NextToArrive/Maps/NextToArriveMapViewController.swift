@@ -38,9 +38,11 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         }
     }
 
+    var vehiclesAnnotationsAdded = [VehicleLocationAnnotation]()
     private var vehiclesToAdd = [CLLocationCoordinate2D]() {
         didSet {
             guard let _ = mapView else { return }
+            clearExistingVehicleLocations()
             drawVehicleLocations()
             vehiclesToAdd.removeAll()
         }
@@ -66,9 +68,14 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         mapView.addOverlays(overlaysToAdd)
     }
 
-    func drawRoute(routeId: String) {
-        guard let url = locateKMLFile(routeId: routeId) else { return }
-        parseKMLForRoute(url: url, routeId: routeId)
+    var routesHaveBeenAdded = false
+    func drawRoutes(routeIds: [String]) {
+        guard !routesHaveBeenAdded else { return }
+        for routeId in routeIds {
+            guard let url = locateKMLFile(routeId: routeId) else { return }
+            parseKMLForRoute(url: url, routeId: routeId)
+            routesHaveBeenAdded = true
+        }
     }
 
     func drawTrip(scheduleRequest: ScheduleRequest) {
@@ -107,7 +114,14 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
     func drawVehicle(coordinate: CLLocationCoordinate2D) {
         let annotation = VehicleLocationAnnotation()
         annotation.coordinate = coordinate
+
         mapView.addAnnotation(annotation)
+        vehiclesAnnotationsAdded.append(annotation)
+    }
+
+    func clearExistingVehicleLocations() {
+        mapView.removeAnnotations(vehiclesAnnotationsAdded)
+        vehiclesAnnotationsAdded.removeAll()
     }
 
     func parseKMLForRoute(url: URL, routeId: String) {
