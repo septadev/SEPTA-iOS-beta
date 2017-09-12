@@ -135,8 +135,6 @@ extension NextToArriveInfoViewModel { // Table View
             configureConnectionCell(cell: cell)
         default:break
         }
-
-        print("building cell")
     }
 
     func configureNoConnectionCell(cell: NoConnectionCell, forTrip trip: NextToArriveTrip) {

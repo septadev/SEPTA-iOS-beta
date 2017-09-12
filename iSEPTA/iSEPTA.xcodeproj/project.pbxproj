@@ -1864,8 +1864,8 @@
 			isa = PBXGroup;
 			children = (
 				678DAAB21F67475200EB6EE8 /* ConnectionCell.xib */,
-				6716090C1F67765500941D2C /* NextToArriveDiamond.swift */,
 				678DAAB41F67478900EB6EE8 /* ConnectionCell.swift */,
+				6716090C1F67765500941D2C /* NextToArriveDiamond.swift */,
 			);
 			path = "Connection Cell";
 			sourceTree = "<group>";

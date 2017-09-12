@@ -13,18 +13,18 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ConnectionView" customModule="Septa" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="368" height="104"/>
+            <rect key="frame" x="0.0" y="0.0" width="428" height="108"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQy-LC-Fs4" userLabel="FlatDividerLeft" customClass="FlatDividerView" customModule="Septa" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="7" width="124" height="1"/>
+                    <rect key="frame" x="0.0" y="7" width="154" height="1"/>
                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="O1c-ZS-DIX"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CjH-I9-am1" userLabel="HeaderViewWrapper">
-                    <rect key="frame" x="129" y="0.0" width="110" height="42"/>
+                    <rect key="frame" x="159" y="0.0" width="110" height="42"/>
                     <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="110" placeholder="YES" id="Uvd-N2-RUD"/>
@@ -32,24 +32,24 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iBC-xA-NIz" userLabel="FlatDividerRight" customClass="FlatDividerView" customModule="Septa" customModuleProvider="target">
-                    <rect key="frame" x="244" y="7" width="124" height="1"/>
+                    <rect key="frame" x="274" y="7" width="154" height="1"/>
                     <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="Ojn-dL-J79"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hai-e6-bia" userLabel="TripViewWrapper">
-                    <rect key="frame" x="0.0" y="52" width="368" height="52"/>
+                    <rect key="frame" x="0.0" y="50" width="428" height="58"/>
                     <color key="backgroundColor" red="1" green="0.12214555959999999" blue="0.19503632169999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="52" placeholder="YES" id="zYZ-OZ-Wco"/>
+                        <constraint firstAttribute="height" constant="58" id="zYZ-OZ-Wco"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="hai-e6-bia" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="7GG-dT-T1K" userLabel="TripViewBottom"/>
-                <constraint firstItem="hai-e6-bia" firstAttribute="top" secondItem="CjH-I9-am1" secondAttribute="bottom" constant="10" id="PV6-32-CnB" userLabel="TripViewWrapperTop"/>
+                <constraint firstItem="hai-e6-bia" firstAttribute="top" secondItem="CjH-I9-am1" secondAttribute="bottom" constant="8" id="PV6-32-CnB" userLabel="TripViewWrapperTop"/>
                 <constraint firstItem="CjH-I9-am1" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Q0r-gm-vX5" userLabel="HeaderViewWrapperTop"/>
                 <constraint firstItem="KQy-LC-Fs4" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="7" id="YSY-H0-1e1" userLabel="FlatDividerLeftTop"/>
                 <constraint firstItem="iBC-xA-NIz" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="7" id="ZRE-u7-1ti" userLabel="FlatDividerRightTop"/>
@@ -67,7 +67,7 @@
                 <outlet property="headerViewWrapper" destination="CjH-I9-am1" id="nIb-ex-hJo"/>
                 <outlet property="tripViewWrapper" destination="hai-e6-bia" id="1ZE-5B-HN3"/>
             </connections>
-            <point key="canvasLocation" x="36" y="-216.5"/>
+            <point key="canvasLocation" x="66" y="-55.5"/>
         </view>
     </objects>
 </document>

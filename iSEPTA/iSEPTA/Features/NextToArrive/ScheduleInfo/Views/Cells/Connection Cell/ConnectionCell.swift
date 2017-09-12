@@ -10,6 +10,31 @@ import Foundation
 import UIKit
 
 class ConnectionCell: UITableViewCell {
+    
+    var tripHeaderView: TripHeaderView!
+    @IBOutlet weak var tripHeaderWrapperView: UIView {
+        didSet {
+                tripHeaderView = tripHeaderWrapperView.awakeInsertAndPinSubview(nibName: "TripHeaderView")
+            
+        }
+    }
+    
+    @IBOutlet weak var startingTripWrapperView: UIView! {
+        didSet {
+            connectionView = startingTripWrapperView.awakeInsertAndPinSubview(nibName: "ConnectionView")
+            startingTripView = connectionView.tripView
+        }
+    }
+    var startingTripView: TripView!
+    var tripView: TripHeaderView!
+    var endingTripView: TripView!
+    @IBOutlet weak var endingTripWrapperView: UIView! {
+        didSet {
+            endingTripView = endingTripWrapperView.awakeInsertAndPinSubview(nibName: "TripView")
+        }
+    }
+
+    @IBOutlet weak var connectionLabel: UILabel!
 }
 
 class BlueGradientView: UIView {
