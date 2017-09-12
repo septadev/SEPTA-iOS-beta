@@ -28,6 +28,7 @@ class NextToArriveInfoViewController: UIViewController {
 
         viewModel = NextToArriveInfoViewModel()
         viewModel.registerViews(tableView: tableView)
+        tableView.allowsSelection = false
 
         viewModel.delegate = self
         titleLabel.text = viewModel.viewTitle()

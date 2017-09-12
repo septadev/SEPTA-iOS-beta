@@ -18,6 +18,7 @@ class NextToArriveInfoViewModel: StoreSubscriber {
         case noConnectionSectionHeader
     }
 
+    let alerts = store.state.alertState.alertDict
     var groupedTripData = [[NextToArriveTrip]]()
 
     typealias StoreSubscriberStateType = [NextToArriveTrip]
@@ -53,7 +54,7 @@ class NextToArriveInfoViewModel: StoreSubscriber {
     func registerViews(tableView: UITableView) {
         tableView.register(UINib(nibName: "NoConnectionCell", bundle: nil), forCellReuseIdentifier: CellIds.noConnectionCell.rawValue)
         tableView.register(UINib(nibName: "ConnectionCell", bundle: nil), forCellReuseIdentifier: CellIds.connectionCell.rawValue)
-        tableView.register(UINib(nibName: "NoConnectionSectionHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: CellIds.noConnectionSectionHeader.rawValue)
+        tableView.register(NoConnectionUIHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: CellIds.noConnectionSectionHeader.rawValue)
     }
 }
 
@@ -81,13 +82,21 @@ extension NextToArriveInfoViewModel { // Section Headers
         if tripHasConnection(trip: firstTripInSection) {
             return 0
         } else {
-            return 50
+            return 35
         }
     }
 
-    func configureSectionHeader(view _: UITableViewHeaderFooterView, forSection section: Int) {
+    func configureSectionHeader(view: UITableViewHeaderFooterView, forSection section: Int) {
         guard section < groupedTripData.count,
-            let firstTripInSection = groupedTripData[section].first else { return }
+            let firstTripInSection = groupedTripData[section].first,
+            let headerView = view as? NoConnectionUIHeaderFooterView,
+            let noConnectionHeaderView = headerView.noConnectionSectionHeader,
+            let tripHeaderView = noConnectionHeaderView.tripHeaderView else { return }
+
+        tripHeaderView.pillView.backgroundColor = transitMode().colorForPill()
+        tripHeaderView.lineNameLabel.text = firstTripInSection.startStop.routeName
+        let alert = alerts[transitMode()]?[firstTripInSection.startStop.routeId]
+        tripHeaderView.alertStackView.addAlert(alert)
     }
 }
 
@@ -137,6 +146,8 @@ extension NextToArriveInfoViewModel { // Table View
         //        cell.onTimeLabel.textColor = generateOnTimeColor(trip: trip)
         //        cell.endStopLabel.text = generateLastStopName(trip: trip)
         //        cell.departingView.layer.borderColor = generateDepartingBoxColor(trip: trip)
+
+        print("building cell")
     }
 
     func configureNoConnectionCell(cell _: NoConnectionCell) {

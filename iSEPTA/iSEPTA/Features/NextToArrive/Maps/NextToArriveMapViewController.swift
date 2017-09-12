@@ -210,4 +210,8 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
     func mapView(_: MKMapView, didSelect _: MKAnnotationView) {
         print("User Selected a pin")
     }
+
+    func mapViewDidFinishLoadingMap(_: MKMapView) {
+        print("Map View Finished Loading")
+    }
 }

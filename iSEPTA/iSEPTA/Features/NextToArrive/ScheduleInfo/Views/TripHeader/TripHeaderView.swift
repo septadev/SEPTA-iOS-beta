@@ -12,7 +12,12 @@ import UIKit
 @IBDesignable
 class TripHeaderView: UIView {
 
-    @IBOutlet weak var pillView: UIView!
+    @IBOutlet weak var pillView: UIView! {
+        didSet {
+            pillView.layer.cornerRadius = 4
+        }
+    }
+
     @IBOutlet weak var lineNameLabel: UILabel!
     @IBOutlet weak var alertStackView: UIStackView!
 }

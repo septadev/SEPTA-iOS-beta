@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class NoConnectionSectionHeader: UITableViewHeaderFooterView {
+class NoConnectionSectionHeader: UIView {
     var tripHeaderView: TripHeaderView?
 
     @IBOutlet var tripHeaderWrapperView: UIView! {
@@ -19,7 +19,7 @@ class NoConnectionSectionHeader: UITableViewHeaderFooterView {
     }
 
     override func awakeFromNib() {
-        backgroundColor = UIColor.green
-        contentView.backgroundColor = UIColor.white
+        backgroundColor = UIColor.white
+        super.awakeFromNib()
     }
 }
