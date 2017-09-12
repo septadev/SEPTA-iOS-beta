@@ -9,10 +9,11 @@
 import Foundation
 import UIKit
 
-class ConnectingSectionView: UIView {
-
-    @IBOutlet weak var pillView: UIView!
-
-    @IBOutlet weak var alertStackView: UIStackView!
-    @IBOutlet weak var destinationLabel: UILabel!
+class NoConnectionSectionHeader: UIView {
+    var tripHeaderView: TripHeaderView?
+    @IBOutlet var tripHeaderWrapperView: UIView! {
+        didSet {
+            tripHeaderView = tripHeaderWrapperView.awakeInsertAndPinSubview(nibName: "TripHeaderView")
+        }
+    }
 }

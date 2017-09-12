@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="h1Q-tf-smI" customClass="TripView" customModule="Septa" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="380" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EFo-Ny-r4U" userLabel="DepartingView">
+                    <rect key="frame" x="289" y="5" width="81" height="42"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEPARTING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRp-aO-xV4" userLabel="Departing">
+                            <rect key="frame" x="11.5" y="7.5" width="57.5" height="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" red="0.42745098040000001" green="0.42745098040000001" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="42 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ag-sb-qIU" userLabel="DepartingWhen">
+                            <rect key="frame" x="20" y="20.5" width="41.5" height="14.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="81" id="6Nm-Rf-Lk4"/>
+                        <constraint firstItem="oRp-aO-xV4" firstAttribute="centerX" secondItem="EFo-Ny-r4U" secondAttribute="centerX" id="TAw-1F-Thj" userLabel="DepartingCenterX"/>
+                        <constraint firstAttribute="height" constant="42" id="UPt-kd-9mV"/>
+                        <constraint firstItem="2Ag-sb-qIU" firstAttribute="top" secondItem="oRp-aO-xV4" secondAttribute="bottom" constant="1" id="g1H-Jy-3O8" userLabel="DepartingWhenTop"/>
+                        <constraint firstItem="2Ag-sb-qIU" firstAttribute="centerX" secondItem="EFo-Ny-r4U" secondAttribute="centerX" id="hMk-9w-dh2" userLabel="DepartingWhenCenterX"/>
+                        <constraint firstItem="oRp-aO-xV4" firstAttribute="top" secondItem="EFo-Ny-r4U" secondAttribute="top" constant="7" id="te8-pu-xEk" userLabel="DepartingTop"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RUy-UC-P8X" userLabel="LabelBox">
+                    <rect key="frame" x="0.0" y="7" width="203.5" height="36.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:29 AM - 10:03 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUO-LI-a43" userLabel="StartStopLabel">
+                            <rect key="frame" x="0.0" y="0.0" width="203.5" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="3 Min Late" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ju-XO-Vsu" userLabel="OnTimeLabel">
+                            <rect key="frame" x="0.0" y="22" width="63" height="14.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                            <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#546 to 30th St. Station" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WW2-8i-ztR" userLabel="EndStopLabel">
+                            <rect key="frame" x="68" y="22" width="135.5" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="3ju-XO-Vsu" firstAttribute="top" secondItem="AUO-LI-a43" secondAttribute="bottom" constant="5" id="O8i-gO-kiN" userLabel="OnTimeLabelTop"/>
+                        <constraint firstAttribute="bottom" secondItem="3ju-XO-Vsu" secondAttribute="bottom" id="Okc-Kg-kgZ" userLabel="OnTimeLabelBottom"/>
+                        <constraint firstItem="AUO-LI-a43" firstAttribute="top" secondItem="RUy-UC-P8X" secondAttribute="top" id="P76-ks-iiz" userLabel="StartStopLabelTop"/>
+                        <constraint firstItem="WW2-8i-ztR" firstAttribute="leading" secondItem="3ju-XO-Vsu" secondAttribute="trailing" constant="5" id="Rq0-er-WXT" userLabel="EndStopLabelLeft"/>
+                        <constraint firstItem="3ju-XO-Vsu" firstAttribute="leading" secondItem="RUy-UC-P8X" secondAttribute="leading" id="W4B-gD-FKG" userLabel="OnTimeLabelLeft"/>
+                        <constraint firstAttribute="trailing" secondItem="WW2-8i-ztR" secondAttribute="trailing" id="YTo-el-HPt" userLabel="EndStopLabelRight"/>
+                        <constraint firstItem="AUO-LI-a43" firstAttribute="leading" secondItem="RUy-UC-P8X" secondAttribute="leading" id="jn7-p9-G1d" userLabel="StartStopLabelLeft"/>
+                        <constraint firstItem="WW2-8i-ztR" firstAttribute="baseline" secondItem="3ju-XO-Vsu" secondAttribute="baseline" id="o1u-Io-2CE" userLabel="EndStopLabelBaseline"/>
+                        <constraint firstAttribute="trailing" secondItem="AUO-LI-a43" secondAttribute="trailing" id="oB7-9f-suJ" userLabel="StartStopLabelRight"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="5Fu-JC-ETZ" firstAttribute="bottom" secondItem="EFo-Ny-r4U" secondAttribute="bottom" constant="5" id="3gl-3X-Uua" userLabel="DepartingViewBottom"/>
+                <constraint firstItem="EFo-Ny-r4U" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RUy-UC-P8X" secondAttribute="trailing" constant="10" id="Eti-eV-tM9" userLabel="LabelBoxRight"/>
+                <constraint firstItem="EFo-Ny-r4U" firstAttribute="top" secondItem="5Fu-JC-ETZ" secondAttribute="top" constant="5" id="FMk-iT-fiX" userLabel="DepartingViewTop"/>
+                <constraint firstItem="RUy-UC-P8X" firstAttribute="centerY" secondItem="5Fu-JC-ETZ" secondAttribute="centerY" id="aBi-VJ-RJO" userLabel="LabelBoxCenterY"/>
+                <constraint firstItem="RUy-UC-P8X" firstAttribute="leading" secondItem="5Fu-JC-ETZ" secondAttribute="leading" id="feO-3T-ejp" userLabel="LabelBoxLeft"/>
+                <constraint firstItem="5Fu-JC-ETZ" firstAttribute="trailing" secondItem="EFo-Ny-r4U" secondAttribute="trailing" constant="10" id="gr0-D6-ZOb" userLabel="DepartingViewRight"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="5Fu-JC-ETZ"/>
+            <connections>
+                <outlet property="departingBox" destination="EFo-Ny-r4U" id="mLx-iw-gTa"/>
+                <outlet property="departingWhenLabel" destination="2Ag-sb-qIU" id="4DB-8n-RBi"/>
+                <outlet property="endStopLabel" destination="WW2-8i-ztR" id="R5N-0q-x3e"/>
+                <outlet property="onTimeLabel" destination="3ju-XO-Vsu" id="ZSp-ME-upC"/>
+                <outlet property="startStopLabel" destination="AUO-LI-a43" id="wKg-Zo-u4b"/>
+            </connections>
+            <point key="canvasLocation" x="11" y="-221"/>
+        </view>
+    </objects>
+</document>

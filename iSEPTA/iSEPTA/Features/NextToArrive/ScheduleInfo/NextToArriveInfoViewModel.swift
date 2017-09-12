@@ -45,11 +45,6 @@ class NextToArriveInfoViewModel: StoreSubscriber {
 }
 
 extension NextToArriveInfoViewModel { // Section Headers
-    func configureSectionHeader(header _: ConnectingSectionView) {
-        //        guard let firstTrip = trips.first else { return }
-        //        header.destinationLabel.text = firstTrip.startStop.routeName
-        //        header.pillView.backgroundColor = transitMode().colorForPill()
-    }
 }
 
 extension NextToArriveInfoViewModel { // Table View

@@ -326,6 +326,8 @@
 		67075FC41F57858C008BB38C /* ScheduleStopState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC31F57858C008BB38C /* ScheduleStopState.swift */; };
 		67075FC61F57860E008BB38C /* ScheduleTripState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC51F57860E008BB38C /* ScheduleTripState.swift */; };
 		67075FC81F57866D008BB38C /* ScheduleRouteState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC71F57866D008BB38C /* ScheduleRouteState.swift */; };
+		671609031F6766FF00941D2C /* TripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671609021F6766FF00941D2C /* TripView.swift */; };
+		671609071F67671F00941D2C /* TripView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 671609061F67671F00941D2C /* TripView.xib */; };
 		671A19201F6613A600C8EEDA /* ConstraintsToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A191F1F6613A600C8EEDA /* ConstraintsToggle.swift */; };
 		671A19241F661F8F00C8EEDA /* SwipeGestureRecognizerToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A19231F661F8F00C8EEDA /* SwipeGestureRecognizerToggle.swift */; };
 		671A19261F662DF000C8EEDA /* DividerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A19251F662DF000C8EEDA /* DividerViews.swift */; };
@@ -804,6 +806,8 @@
 		67075FC31F57858C008BB38C /* ScheduleStopState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStopState.swift; sourceTree = "<group>"; };
 		67075FC51F57860E008BB38C /* ScheduleTripState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTripState.swift; sourceTree = "<group>"; };
 		67075FC71F57866D008BB38C /* ScheduleRouteState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRouteState.swift; sourceTree = "<group>"; };
+		671609021F6766FF00941D2C /* TripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripView.swift; sourceTree = "<group>"; };
+		671609061F67671F00941D2C /* TripView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripView.xib; sourceTree = "<group>"; };
 		671A191F1F6613A600C8EEDA /* ConstraintsToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsToggle.swift; sourceTree = "<group>"; };
 		671A19231F661F8F00C8EEDA /* SwipeGestureRecognizerToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeGestureRecognizerToggle.swift; sourceTree = "<group>"; };
 		671A19251F662DF000C8EEDA /* DividerViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerViews.swift; sourceTree = "<group>"; };
@@ -1828,6 +1832,8 @@
 				678DAABC1F6749A700EB6EE8 /* TripHeader */,
 				678DAAB71F6747E500EB6EE8 /* SectionHeader */,
 				678DAAB61F6747B500EB6EE8 /* Cells */,
+				671609021F6766FF00941D2C /* TripView.swift */,
+				671609061F67671F00941D2C /* TripView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2056,6 +2062,7 @@
 				58B2787E1F62AAD500663507 /* 50.kml in Resources */,
 				58B278891F62AAD500663507 /* 61.kml in Resources */,
 				58B2785A1F62AAD500663507 /* 204.kml in Resources */,
+				671609071F67671F00941D2C /* TripView.xib in Resources */,
 				582F4EBE1F33B1120062A546 /* about.storyboard in Resources */,
 				58B278B61F62AAD500663507 /* MFL.kml in Resources */,
 				58B2789F1F62AAD500663507 /* 92.kml in Resources */,
@@ -2297,6 +2304,7 @@
 				58FBBFAC1F658D3500B7A4DA /* ScheduleProviderDatabaseStateWatcher.swift in Sources */,
 				676355091F5EB2C700CA7EAB /* StopWithDistance.swift in Sources */,
 				678F052E1F5B7D3E00CC4D3C /* AddressLookupActions.swift in Sources */,
+				671609031F6766FF00941D2C /* TripView.swift in Sources */,
 				67F757B51F488A4400D3A4EE /* SeptaDraw.swift in Sources */,
 				582F4ED11F33B1120062A546 /* SelectedStopType.swift in Sources */,
 				678F05291F5B7BE400CC4D3C /* AddressLookupState.swift in Sources */,

@@ -14,7 +14,6 @@ class NextToArriveInfoViewController: UIViewController {
     @IBOutlet var upSwipeGestureRecognizer: UISwipeGestureRecognizer!
     @IBOutlet var downSwipeGestureRecognizer: UISwipeGestureRecognizer!
 
-    @IBOutlet var connectingSectionView: ConnectingSectionView!
     @IBOutlet weak var tableView: UITableView!
     weak var nextToArriveDetailViewController: NextToArriveDetailViewController?
 
@@ -52,8 +51,7 @@ extension NextToArriveInfoViewController: UITableViewDataSource, UITableViewDele
     }
 
     func tableView(_: UITableView, viewForHeaderInSection _: Int) -> UIView? {
-        viewModel.configureSectionHeader(header: connectingSectionView)
-        return connectingSectionView
+        return nil
     }
 
     func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
