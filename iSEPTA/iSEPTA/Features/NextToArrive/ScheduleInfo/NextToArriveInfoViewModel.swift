@@ -64,12 +64,12 @@ extension NextToArriveInfoViewModel { // Table View
     func configureCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
         guard indexPath.row < trips.count, let cell = cell as? NoConnectionCell else { return }
         let trip = trips[indexPath.row]
-        cell.startStopLabel.text = generateTimeString(trip: trip)
-        cell.departingWhenLabel.text = generateTimeToDeparture(trip: trip)
-        cell.onTimeLabel.text = generateOnTimeString(trip: trip)
-        cell.onTimeLabel.textColor = generateOnTimeColor(trip: trip)
-        cell.endStopLabel.text = generateLastStopName(trip: trip)
-        cell.departingView.layer.borderColor = generateDepartingBoxColor(trip: trip)
+        //        cell.startStopLabel.text = generateTimeString(trip: trip)
+        //        cell.departingWhenLabel.text = generateTimeToDeparture(trip: trip)
+        //        cell.onTimeLabel.text = generateOnTimeString(trip: trip)
+        //        cell.onTimeLabel.textColor = generateOnTimeColor(trip: trip)
+        //        cell.endStopLabel.text = generateLastStopName(trip: trip)
+        //        cell.departingView.layer.borderColor = generateDepartingBoxColor(trip: trip)
     }
 
     func generateTimeString(trip: NextToArriveTrip) -> String? {

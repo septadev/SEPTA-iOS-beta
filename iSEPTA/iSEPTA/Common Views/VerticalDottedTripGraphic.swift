@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 @IBDesignable
-class TripIconView: UIView {
+class VerticalDottedTripGraphic: UIView {
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        SeptaDraw.drawTripCanvas(frame: rect)
+        SeptaDraw.drawVerticalDottedTripGraphic(frame: rect)
     }
 }

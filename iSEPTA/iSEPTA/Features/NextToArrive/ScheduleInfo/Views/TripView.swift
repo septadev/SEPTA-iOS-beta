@@ -11,7 +11,13 @@ import UIKit
 
 class TripView: UIView {
 
-    @IBOutlet weak var departingBox: UIView!
+    @IBOutlet weak var departingBox: UIView! {
+        didSet {
+            departingBox.layer.cornerRadius = 2.0
+            departingBox.layer.borderWidth = 1.0
+        }
+    }
+
     @IBOutlet weak var departingWhenLabel: UILabel!
     @IBOutlet weak var startStopLabel: UILabel!
     @IBOutlet weak var onTimeLabel: UILabel!

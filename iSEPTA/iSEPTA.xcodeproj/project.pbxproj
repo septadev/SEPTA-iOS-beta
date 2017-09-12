@@ -316,7 +316,7 @@
 		58F80D451F421C4B0089501A /* SelectStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F80D441F421C4B0089501A /* SelectStopViewController.swift */; };
 		58FBB6681F58590F00E6532B /* Route+Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBB6671F58590F00E6532B /* Route+Title.swift */; };
 		58FBB66A1F58717500E6532B /* SeptaTabBarImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBB6691F58717500E6532B /* SeptaTabBarImages.swift */; };
-		58FBB66C1F5885D800E6532B /* TripIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBB66B1F5885D800E6532B /* TripIconView.swift */; };
+		58FBB66C1F5885D800E6532B /* VerticalDottedTripGraphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBB66B1F5885D800E6532B /* VerticalDottedTripGraphic.swift */; };
 		58FBB66E1F58AAC000E6532B /* AlertViewGradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBB66D1F58AAC000E6532B /* AlertViewGradientBackgroundView.swift */; };
 		58FBBFA41F65821000B7A4DA /* DatabaseReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBBFA31F65821000B7A4DA /* DatabaseReducer.swift */; };
 		58FBBFA61F65823600B7A4DA /* DatabaseActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBBFA51F65823600B7A4DA /* DatabaseActions.swift */; };
@@ -328,6 +328,9 @@
 		67075FC81F57866D008BB38C /* ScheduleRouteState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC71F57866D008BB38C /* ScheduleRouteState.swift */; };
 		671609031F6766FF00941D2C /* TripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671609021F6766FF00941D2C /* TripView.swift */; };
 		671609071F67671F00941D2C /* TripView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 671609061F67671F00941D2C /* TripView.xib */; };
+		671609091F676F1300941D2C /* ConnectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 671609081F676F1300941D2C /* ConnectionView.xib */; };
+		6716090B1F676F2300941D2C /* ConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6716090A1F676F2300941D2C /* ConnectionView.swift */; };
+		6716090D1F67765500941D2C /* NextToArriveDiamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6716090C1F67765500941D2C /* NextToArriveDiamond.swift */; };
 		671A19201F6613A600C8EEDA /* ConstraintsToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A191F1F6613A600C8EEDA /* ConstraintsToggle.swift */; };
 		671A19241F661F8F00C8EEDA /* SwipeGestureRecognizerToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A19231F661F8F00C8EEDA /* SwipeGestureRecognizerToggle.swift */; };
 		671A19261F662DF000C8EEDA /* DividerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A19251F662DF000C8EEDA /* DividerViews.swift */; };
@@ -364,7 +367,7 @@
 		678DAAA61F67291400EB6EE8 /* NextToArriveTripsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DAAA51F67291400EB6EE8 /* NextToArriveTripsViewModel.swift */; };
 		678DAAA81F67294500EB6EE8 /* NextToArriveTrips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 678DAAA71F67294500EB6EE8 /* NextToArriveTrips.storyboard */; };
 		678DAAAB1F67458500EB6EE8 /* NoConnectionSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 678DAAAA1F67458500EB6EE8 /* NoConnectionSectionHeader.xib */; };
-		678DAAAF1F6745A900EB6EE8 /* NoConnectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 678DAAAE1F6745A900EB6EE8 /* NoConnectionTableViewCell.xib */; };
+		678DAAAF1F6745A900EB6EE8 /* NoConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 678DAAAE1F6745A900EB6EE8 /* NoConnectionCell.xib */; };
 		678DAAB31F67475200EB6EE8 /* ConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 678DAAB21F67475200EB6EE8 /* ConnectionCell.xib */; };
 		678DAAB51F67478900EB6EE8 /* ConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DAAB41F67478900EB6EE8 /* ConnectionCell.swift */; };
 		678DAAB91F6748BE00EB6EE8 /* TripHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DAAB81F6748BE00EB6EE8 /* TripHeaderView.swift */; };
@@ -797,7 +800,7 @@
 		58F80D441F421C4B0089501A /* SelectStopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopViewController.swift; sourceTree = "<group>"; };
 		58FBB6671F58590F00E6532B /* Route+Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Title.swift"; sourceTree = "<group>"; };
 		58FBB6691F58717500E6532B /* SeptaTabBarImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaTabBarImages.swift; sourceTree = "<group>"; };
-		58FBB66B1F5885D800E6532B /* TripIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripIconView.swift; sourceTree = "<group>"; };
+		58FBB66B1F5885D800E6532B /* VerticalDottedTripGraphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalDottedTripGraphic.swift; sourceTree = "<group>"; };
 		58FBB66D1F58AAC000E6532B /* AlertViewGradientBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewGradientBackgroundView.swift; sourceTree = "<group>"; };
 		58FBBFA31F65821000B7A4DA /* DatabaseReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseReducer.swift; sourceTree = "<group>"; };
 		58FBBFA51F65823600B7A4DA /* DatabaseActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseActions.swift; sourceTree = "<group>"; };
@@ -808,6 +811,9 @@
 		67075FC71F57866D008BB38C /* ScheduleRouteState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRouteState.swift; sourceTree = "<group>"; };
 		671609021F6766FF00941D2C /* TripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripView.swift; sourceTree = "<group>"; };
 		671609061F67671F00941D2C /* TripView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripView.xib; sourceTree = "<group>"; };
+		671609081F676F1300941D2C /* ConnectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionView.xib; sourceTree = "<group>"; };
+		6716090A1F676F2300941D2C /* ConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionView.swift; sourceTree = "<group>"; };
+		6716090C1F67765500941D2C /* NextToArriveDiamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveDiamond.swift; sourceTree = "<group>"; };
 		671A191F1F6613A600C8EEDA /* ConstraintsToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsToggle.swift; sourceTree = "<group>"; };
 		671A19231F661F8F00C8EEDA /* SwipeGestureRecognizerToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeGestureRecognizerToggle.swift; sourceTree = "<group>"; };
 		671A19251F662DF000C8EEDA /* DividerViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerViews.swift; sourceTree = "<group>"; };
@@ -842,7 +848,7 @@
 		678DAAA51F67291400EB6EE8 /* NextToArriveTripsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveTripsViewModel.swift; sourceTree = "<group>"; };
 		678DAAA71F67294500EB6EE8 /* NextToArriveTrips.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NextToArriveTrips.storyboard; sourceTree = "<group>"; };
 		678DAAAA1F67458500EB6EE8 /* NoConnectionSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoConnectionSectionHeader.xib; sourceTree = "<group>"; };
-		678DAAAE1F6745A900EB6EE8 /* NoConnectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoConnectionTableViewCell.xib; sourceTree = "<group>"; };
+		678DAAAE1F6745A900EB6EE8 /* NoConnectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoConnectionCell.xib; sourceTree = "<group>"; };
 		678DAAB21F67475200EB6EE8 /* ConnectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionCell.xib; sourceTree = "<group>"; };
 		678DAAB41F67478900EB6EE8 /* ConnectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionCell.swift; sourceTree = "<group>"; };
 		678DAAB81F6748BE00EB6EE8 /* TripHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHeaderView.swift; sourceTree = "<group>"; };
@@ -976,7 +982,7 @@
 				67F757B61F488A5E00D3A4EE /* BlueGradientBackgroundView.swift */,
 				67EA2B621F51AB8700C0567A /* StopEditSearchMode.swift */,
 				58FBB6691F58717500E6532B /* SeptaTabBarImages.swift */,
-				58FBB66B1F5885D800E6532B /* TripIconView.swift */,
+				58FBB66B1F5885D800E6532B /* VerticalDottedTripGraphic.swift */,
 				58FBB66D1F58AAC000E6532B /* AlertViewGradientBackgroundView.swift */,
 				678D26CB1F5CDB4200D140CC /* Septa+Images.swift */,
 				58EB8D241F5D8EE80028A487 /* BaseNavigationBar.swift */,
@@ -1833,6 +1839,8 @@
 				678DAAB71F6747E500EB6EE8 /* SectionHeader */,
 				678DAAB61F6747B500EB6EE8 /* Cells */,
 				671609021F6766FF00941D2C /* TripView.swift */,
+				671609081F676F1300941D2C /* ConnectionView.xib */,
+				6716090A1F676F2300941D2C /* ConnectionView.swift */,
 				671609061F67671F00941D2C /* TripView.xib */,
 			);
 			path = Views;
@@ -1842,7 +1850,7 @@
 			isa = PBXGroup;
 			children = (
 				671A19281F66385100C8EEDA /* NoConnectionCell.swift */,
-				678DAAAE1F6745A900EB6EE8 /* NoConnectionTableViewCell.xib */,
+				678DAAAE1F6745A900EB6EE8 /* NoConnectionCell.xib */,
 			);
 			path = "No connection Cell";
 			sourceTree = "<group>";
@@ -1851,6 +1859,7 @@
 			isa = PBXGroup;
 			children = (
 				678DAAB21F67475200EB6EE8 /* ConnectionCell.xib */,
+				6716090C1F67765500941D2C /* NextToArriveDiamond.swift */,
 				678DAAB41F67478900EB6EE8 /* ConnectionCell.swift */,
 			);
 			path = "Connection Cell";
@@ -2064,6 +2073,7 @@
 				58B2785A1F62AAD500663507 /* 204.kml in Resources */,
 				671609071F67671F00941D2C /* TripView.xib in Resources */,
 				582F4EBE1F33B1120062A546 /* about.storyboard in Resources */,
+				671609091F676F1300941D2C /* ConnectionView.xib in Resources */,
 				58B278B61F62AAD500663507 /* MFL.kml in Resources */,
 				58B2789F1F62AAD500663507 /* 92.kml in Resources */,
 				58B2788F1F62AAD500663507 /* 68.kml in Resources */,
@@ -2203,7 +2213,7 @@
 				58B2785C1F62AAD500663507 /* 206.kml in Resources */,
 				67C567311F5989D900FF6203 /* TransitAlertView.xib in Resources */,
 				58B278661F62AAD500663507 /* 3.kml in Resources */,
-				678DAAAF1F6745A900EB6EE8 /* NoConnectionTableViewCell.xib in Resources */,
+				678DAAAF1F6745A900EB6EE8 /* NoConnectionCell.xib in Resources */,
 				58B278811F62AAD500663507 /* 54.kml in Resources */,
 				58B278451F62AAD500663507 /* 127.kml in Resources */,
 				58B278791F62AAD500663507 /* 46.kml in Resources */,
@@ -2356,7 +2366,8 @@
 				5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */,
 				676355011F5E326800CA7EAB /* AppState+Context.swift in Sources */,
 				58126F671F631C0800A6E187 /* ColorPointAnnotation.swift in Sources */,
-				58FBB66C1F5885D800E6532B /* TripIconView.swift in Sources */,
+				58FBB66C1F5885D800E6532B /* VerticalDottedTripGraphic.swift in Sources */,
+				6716090B1F676F2300941D2C /* ConnectionView.swift in Sources */,
 				58E54E241F65A40100E9B66D /* NavigationBar+Util.swift in Sources */,
 				58DD1A901F600758002532DC /* NextToArriveViewModel+StopCell.swift in Sources */,
 				678DAAB51F67478900EB6EE8 /* ConnectionCell.swift in Sources */,
@@ -2371,6 +2382,7 @@
 				58126F6F1F631C8300A6E187 /* NextToArriveMapRouteViewModel.swift in Sources */,
 				67C567271F59695900FF6203 /* Favorite.swift in Sources */,
 				582F4EC71F33B1120062A546 /* SchedulesRoutesViewModel.swift in Sources */,
+				6716090D1F67765500941D2C /* NextToArriveDiamond.swift in Sources */,
 				678F05301F5B918300CC4D3C /* LocationProvider.swift in Sources */,
 				5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift in Sources */,
 				67F757B11F486F0600D3A4EE /* TransitModeDisplayable.swift in Sources */,

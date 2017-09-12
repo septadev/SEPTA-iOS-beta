@@ -10,17 +10,9 @@ import Foundation
 import UIKit
 
 class NoConnectionCell: UITableViewCell {
-
-    @IBOutlet weak var departingWhenLabel: UILabel!
-    @IBOutlet weak var departingView: UIView! {
-        didSet {
-            departingView.layer.cornerRadius = 2.0
-            departingView.layer.borderWidth = 1.0
-        }
+    var tripView: TripView!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        tripView = contentView.awakeInsertAndPinSubview(nibName: "TripView")
     }
-
-    @IBOutlet weak var endStopLabel: UILabel!
-
-    @IBOutlet weak var onTimeLabel: UILabel!
-    @IBOutlet weak var startStopLabel: UILabel!
 }

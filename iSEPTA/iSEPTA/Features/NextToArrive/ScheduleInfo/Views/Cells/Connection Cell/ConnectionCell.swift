@@ -11,3 +11,10 @@ import UIKit
 
 class ConnectionCell: UITableViewCell {
 }
+
+class BlueGradientView: UIView {
+
+    override func draw(_ rect: CGRect) {
+        SeptaDraw.drawConnectingGradientView(frame:rect)
+    }
+}

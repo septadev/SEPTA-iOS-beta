@@ -23,7 +23,7 @@
                         <constraint firstAttribute="height" constant="19" id="iWe-pD-H4I"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="FoN-5Q-bnL" userLabel="TripHeaderView">
+                <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="FoN-5Q-bnL" userLabel="TripHeaderViewWrapper">
                     <rect key="frame" x="130" y="22" width="125" height="23"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
