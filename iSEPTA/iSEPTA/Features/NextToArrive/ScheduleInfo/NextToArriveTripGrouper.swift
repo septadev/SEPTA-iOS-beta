@@ -43,7 +43,7 @@ class NextToArriveGrouper {
     static func routeIdsHaveChanged(a: NextToArriveTrip?, b: NextToArriveTrip?) -> Bool {
 
         if let a = a, let b = b {
-            return a.startStop.routeId == b.startStop.routeId
+            return a.startStop.routeId != b.startStop.routeId
         } else {
             return true
         }

@@ -15,6 +15,6 @@ class ConnectionCell: UITableViewCell {
 class BlueGradientView: UIView {
 
     override func draw(_ rect: CGRect) {
-        SeptaDraw.drawConnectingGradientView(frame:rect)
+        SeptaDraw.drawConnectingGradientView(frame: rect)
     }
 }

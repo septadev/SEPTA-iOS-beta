@@ -1066,6 +1066,7 @@
 		582F4E901F33B1120062A546 /* NextToArrive */ = {
 			isa = PBXGroup;
 			children = (
+				6763550E1F628C3E00CA7EAB /* nextToArriveDetail.storyboard */,
 				671A19271F66383900C8EEDA /* ScheduleInfo */,
 				58D5D22A1F6098160016C382 /* Maps */,
 				58EB8D1B1F5D7F4E0028A487 /* NavigationController */,
@@ -1618,7 +1619,6 @@
 				5828C7F61F6451180046435A /* VehicleLocationAnnotation.swift */,
 				58E33F111F60998F00C74B7C /* NextToArriveDetailViewController.swift */,
 				671A192E1F66A3D500C8EEDA /* NextToArriveFavoritesController.swift */,
-				6763550E1F628C3E00CA7EAB /* nextToArriveDetail.storyboard */,
 			);
 			path = Maps;
 			sourceTree = "<group>";

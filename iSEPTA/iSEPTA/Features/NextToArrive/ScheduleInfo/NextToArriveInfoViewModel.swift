@@ -12,6 +12,14 @@ import UIKit
 import SeptaSchedule
 
 class NextToArriveInfoViewModel: StoreSubscriber {
+    enum CellIds: String {
+        case noConnectionCell
+        case connectionCell
+        case noConnectionSectionHeader
+    }
+
+    var groupedTripData = [[NextToArriveTrip]]()
+
     typealias StoreSubscriberStateType = [NextToArriveTrip]
 
     func scheduleRequest() -> ScheduleRequest {
@@ -28,10 +36,9 @@ class NextToArriveInfoViewModel: StoreSubscriber {
         }
     }
 
-    var trips = [NextToArriveTrip]()
-
     func newState(state: StoreSubscriberStateType) {
-        trips = state
+        groupedTripData = NextToArriveGrouper.buildNextToArriveTripSections(trips: state)
+
         delegate.viewModelUpdated()
     }
 
@@ -42,34 +49,100 @@ class NextToArriveInfoViewModel: StoreSubscriber {
     func viewTitle() -> String {
         return scheduleRequest().transitMode.nextToArriveInfoDetailTitle()
     }
+
+    func registerViews(tableView: UITableView) {
+        tableView.register(UINib(nibName: "NoConnectionCell", bundle: nil), forCellReuseIdentifier: CellIds.noConnectionCell.rawValue)
+        tableView.register(UINib(nibName: "ConnectionCell", bundle: nil), forCellReuseIdentifier: CellIds.connectionCell.rawValue)
+        tableView.register(UINib(nibName: "NoConnectionSectionHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: CellIds.noConnectionSectionHeader.rawValue)
+    }
 }
 
 extension NextToArriveInfoViewModel { // Section Headers
+
+    func numberOfSections() -> Int {
+        return groupedTripData.count
+    }
+
+    func viewIdForSection(_ section: Int) -> String? {
+        guard section < groupedTripData.count,
+            let firstTripInSection = groupedTripData[section].first else { return nil }
+
+        if tripHasConnection(trip: firstTripInSection) {
+            return nil
+        } else {
+            return CellIds.noConnectionSectionHeader.rawValue
+        }
+    }
+
+    func heightForHeaderInSection(_ section: Int) -> CGFloat {
+        guard section < groupedTripData.count,
+            let firstTripInSection = groupedTripData[section].first else { return 0 }
+
+        if tripHasConnection(trip: firstTripInSection) {
+            return 0
+        } else {
+            return 50
+        }
+    }
+
+    func configureSectionHeader(view _: UITableViewHeaderFooterView, forSection section: Int) {
+        guard section < groupedTripData.count,
+            let firstTripInSection = groupedTripData[section].first else { return }
+    }
 }
 
 extension NextToArriveInfoViewModel { // Table View
-    func numberOfSections() -> Int {
 
-        return 1
+    func heightForHeaderInSection(section _: Int) -> CGFloat {
+        return 60.0
     }
 
-    func numberOfRows() -> Int {
-        return trips.count
+    func numberOfRows(forSection section: Int) -> Int {
+        guard section < groupedTripData.count else { return 0 }
+        return groupedTripData[section].count
     }
 
-    func cellIdAtIndexPath(_: IndexPath) -> String {
-        return "noConnectionCell"
+    func cellIdAtIndexPath(_ indexPath: IndexPath) -> String {
+        let trip = groupedTripData[indexPath.section][indexPath.row]
+
+        if tripHasConnection(trip: trip) {
+            return CellIds.connectionCell.rawValue
+        } else {
+            return CellIds.noConnectionCell.rawValue
+        }
+    }
+
+    func tripHasConnection(trip: NextToArriveTrip) -> Bool {
+        if let _ = trip.connectionLocation {
+            return true
+        } else {
+            return false
+        }
     }
 
     func configureCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
-        guard indexPath.row < trips.count, let cell = cell as? NoConnectionCell else { return }
-        let trip = trips[indexPath.row]
+        guard indexPath.section < groupedTripData.count, indexPath.row < groupedTripData[indexPath.section].count else { return }
+
+        switch cell {
+        case let cell as NoConnectionCell:
+            configureNoConnectionCell(cell: cell)
+        case let cell as ConnectionCell:
+            configureConnectionCell(cell: cell)
+        default:break
+        }
+
         //        cell.startStopLabel.text = generateTimeString(trip: trip)
         //        cell.departingWhenLabel.text = generateTimeToDeparture(trip: trip)
         //        cell.onTimeLabel.text = generateOnTimeString(trip: trip)
         //        cell.onTimeLabel.textColor = generateOnTimeColor(trip: trip)
         //        cell.endStopLabel.text = generateLastStopName(trip: trip)
         //        cell.departingView.layer.borderColor = generateDepartingBoxColor(trip: trip)
+    }
+
+    func configureNoConnectionCell(cell _: NoConnectionCell) {
+    }
+
+    func configureConnectionCell(cell _: ConnectionCell) {
     }
 
     func generateTimeString(trip: NextToArriveTrip) -> String? {

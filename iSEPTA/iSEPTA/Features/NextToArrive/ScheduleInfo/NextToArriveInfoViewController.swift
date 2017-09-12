@@ -27,9 +27,10 @@ class NextToArriveInfoViewController: UIViewController {
         nextToArriveDetailViewController?.downSwipeGestureRecognizer = downSwipeGestureRecognizer
 
         viewModel = NextToArriveInfoViewModel()
+        viewModel.registerViews(tableView: tableView)
+
         viewModel.delegate = self
         titleLabel.text = viewModel.viewTitle()
-        tableView.tableFooterView = tableFooterView
     }
 }
 
@@ -39,8 +40,8 @@ extension NextToArriveInfoViewController: UITableViewDataSource, UITableViewDele
         return viewModel.numberOfSections()
     }
 
-    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return viewModel.numberOfRows()
+    func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfRows(forSection: section)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -50,12 +51,19 @@ extension NextToArriveInfoViewController: UITableViewDataSource, UITableViewDele
         return cell
     }
 
-    func tableView(_: UITableView, viewForHeaderInSection _: Int) -> UIView? {
-        return nil
+    func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let viewId = viewModel.viewIdForSection(section),
+            let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: viewId) else { return nil }
+        viewModel.configureSectionHeader(view: headerView, forSection: section)
+        return headerView
     }
 
-    func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
-        return 60
+    func tableView(_: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return viewModel.heightForHeaderInSection(section)
+    }
+
+    func tableView(_: UITableView, willDisplayHeaderView view: UIView, forSection _: Int) {
+        view.backgroundColor = UIColor.green
     }
 }
 

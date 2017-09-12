@@ -9,11 +9,17 @@
 import Foundation
 import UIKit
 
-class NoConnectionSectionHeader: UIView {
+class NoConnectionSectionHeader: UITableViewHeaderFooterView {
     var tripHeaderView: TripHeaderView?
+
     @IBOutlet var tripHeaderWrapperView: UIView! {
         didSet {
             tripHeaderView = tripHeaderWrapperView.awakeInsertAndPinSubview(nibName: "TripHeaderView")
         }
+    }
+
+    override func awakeFromNib() {
+        backgroundColor = UIColor.green
+        contentView.backgroundColor = UIColor.white
     }
 }
