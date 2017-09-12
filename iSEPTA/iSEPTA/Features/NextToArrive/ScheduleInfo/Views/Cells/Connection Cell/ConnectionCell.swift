@@ -11,24 +11,17 @@ import UIKit
 
 class ConnectionCell: UITableViewCell {
 
-    var tripHeaderView: TripHeaderView!
-    @IBOutlet weak var tripHeaderWrapperView: UIView! {
+    var startConnectionView: ConnectionView!
+    @IBOutlet weak var startConnectionViewWrapper: UIView! {
         didSet {
-            tripHeaderView = tripHeaderWrapperView.awakeInsertAndPinSubview(nibName: "TripHeaderView")
+            endConnectionView = startConnectionViewWrapper.awakeInsertAndPinSubview(nibName: "ConnectionView")
         }
     }
 
-    var firstLegTripView: TripView!
-    @IBOutlet weak var firstLegTripWrapper: UIView! {
+    var endConnectionView: ConnectionView!
+    @IBOutlet weak var endConnectionViewWrapper: UIView! {
         didSet {
-            firstLegTripView = firstLegTripWrapper.awakeInsertAndPinSubview(nibName: "TripView")
-        }
-    }
-
-    var secondLegTripView: TripView!
-    @IBOutlet weak var secondLegTripWrapper: UIView! {
-        didSet {
-            secondLegTripView = secondLegTripWrapper.awakeInsertAndPinSubview(nibName: "TripView")
+            endConnectionView = endConnectionViewWrapper.awakeInsertAndPinSubview(nibName: "ConnectionView")
         }
     }
 

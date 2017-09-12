@@ -20,7 +20,7 @@ class ConnectionView: UIView {
     var tripView: TripView!
     @IBOutlet weak var tripViewWrapper: UIView! {
         didSet {
-            tripView = headerViewWrapper.awakeInsertAndPinSubview(nibName: "TripView")
+            tripView = tripViewWrapper.awakeInsertAndPinSubview(nibName: "TripView")
         }
     }
 }
