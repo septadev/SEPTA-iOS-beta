@@ -165,7 +165,7 @@ extension NextToArriveInfoViewModel { // Table View
     }
 
     func generateOnTimeString(trip: NextToArriveTrip) -> String? {
-        guard let tripDelayMinutes = trip.startStop.delayMinutes else { return "On Time" }
+        guard let tripDelayMinutes = trip.startStop.delayMinutes else { return "Scheduled" }
         let delayString = String(tripDelayMinutes)
         if tripDelayMinutes > 0 {
             return "\(delayString) min late"
@@ -177,7 +177,7 @@ extension NextToArriveInfoViewModel { // Table View
     }
 
     func generateOnTimeColor(trip: NextToArriveTrip) -> UIColor {
-        guard let tripDelayMinutes = trip.startStop.delayMinutes else { return SeptaColor.transitOnTime }
+        guard let tripDelayMinutes = trip.startStop.delayMinutes else { return SeptaColor.transitIsScheduled }
 
         if tripDelayMinutes > 0 {
             return SeptaColor.transitIsLate
