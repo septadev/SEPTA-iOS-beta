@@ -82,6 +82,10 @@ class FavoritesProvider: StoreSubscriber {
         writeFavoritesToFile(state: state)
     }
 
+    func setStartupNavController(state: FavoritesState) {
+        //TODO  When there are favorites the startup controller should be set here.
+    }
+
     func writeFavoritesToFile(state: FavoritesState) {
         guard initialLoadFavoritesFromDiskHasCompleted else { return }
         DispatchQueue.global(qos: .background).async { [weak self] in
