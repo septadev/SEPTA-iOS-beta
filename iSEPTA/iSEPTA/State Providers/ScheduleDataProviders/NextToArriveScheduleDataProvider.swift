@@ -25,6 +25,18 @@ class NextToArriveScheduleDataProvider: BaseScheduleDataProvider {
         }
     }
 
+    override func processNewState(scheduleRequest: ScheduleRequest) {
+        processTransitMode(scheduleRequest: scheduleRequest)
+        super.processNewState(scheduleRequest: scheduleRequest)
+    }
+
+    func processTransitMode(scheduleRequest: ScheduleRequest) {
+        if scheduleRequest.transitMode == .rail && scheduleRequest.selectedRoute == nil {
+            let action = LoadAllRailRoutes()
+            store.dispatch(action)
+        }
+    }
+
     deinit {
         print("Next to arrive schedule data provider will vanish")
     }

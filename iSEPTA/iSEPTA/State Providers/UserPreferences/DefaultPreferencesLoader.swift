@@ -11,8 +11,7 @@ enum PreferenceError: Error {
 fileprivate enum DefaultPreferenceKeys: String {
     case startupNavigationController
     case startupTransitMode
-    case showDirectionInRoutes
-    case showDirectionInStops
+    case databaseVersion
 }
 
 class DefaultPreferencesLoader {
@@ -31,16 +30,7 @@ class DefaultPreferencesLoader {
     }
 
     func generateDefaultUserPreferenceState() throws -> UserPreferenceState {
-        var userPreferenceState = UserPreferenceState()
-        guard let dict = plistDictionary else { throw PreferenceError.couldNotReadPlist }
-        defaultPreferencesDict = dict
-
-        userPreferenceState.startupNavigationController = try startupNavigationController()
-        userPreferenceState.startupTransitMode = try startupTransitMode()
-        userPreferenceState.showDirectionInRoutes = try showDirectionInRoutes()
-        userPreferenceState.showDirectionInStops = try showDirectionInStops()
-
-        return userPreferenceState
+        return UserPreferenceState()
     }
 
     fileprivate func startupNavigationController() throws -> NavigationController {
@@ -49,28 +39,6 @@ class DefaultPreferencesLoader {
     }
 
     fileprivate func startupTransitMode() throws -> TransitMode {
-        //        let key = DefaultPreferenceKeys.startupTransitMode.rawValue
-        //        guard let defaultValue = defaultPreferencesDict[key] as? Int,
-        //
-        //            let transitMode = TransitMode(rawValue: defaultValue) else {
-        //            throw PreferenceError.missingKey(key)
-        //        }
         return TransitMode.bus
-    }
-
-    fileprivate func showDirectionInRoutes() throws -> Bool {
-        let key = DefaultPreferenceKeys.showDirectionInRoutes.rawValue
-        guard let defaultValue = defaultPreferencesDict[key] as? Bool else {
-            throw PreferenceError.missingKey(key)
-        }
-        return defaultValue
-    }
-
-    fileprivate func showDirectionInStops() throws -> Bool {
-        let key = DefaultPreferenceKeys.showDirectionInStops.rawValue
-        guard let defaultValue = defaultPreferencesDict[key] as? Bool else {
-            throw PreferenceError.missingKey(key)
-        }
-        return defaultValue
     }
 }

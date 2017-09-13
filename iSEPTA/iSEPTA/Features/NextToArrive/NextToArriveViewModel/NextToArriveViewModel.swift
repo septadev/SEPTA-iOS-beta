@@ -21,10 +21,11 @@ class NextToArriveViewModel: NSObject, StoreSubscriber {
     var scheduleRequest: ScheduleRequest?
     var transitMode: TransitMode! {
         didSet {
-            if transitMode == .rail && scheduleRequest?.selectedRoute == nil {
-                let action = LoadAllRailRoutes()
-                store.dispatch(action)
-            }
+            let target = store.state.targetForScheduleActions()
+            //            if transitMode == .rail {
+            //                let action = LoadAllRailRoutes()
+            //                store.dispatch(action)
+            //            }
         }
     }
 

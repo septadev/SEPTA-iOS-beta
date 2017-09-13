@@ -21,9 +21,11 @@ struct UserPreferencesReducer {
         var newPref = state
         switch action {
         case let action as PreferencesRetrievedAction:
-            return reducePreferencesRetrievedAction(action: action, state: state)
+            newPref = reducePreferencesRetrievedAction(action: action, state: state)
         case let action as NewTransitModeAction:
-            newPref.startupTransitMode = action.transitMode
+            newPref = reduceNewTransitModeAction(action: action, state: state)
+        case let action as PreferencesDatabaseLoaded:
+            newPref = reducePreferencesDatabaseLoaded(action: action, state: state)
         default:
             break
         }
@@ -33,5 +35,13 @@ struct UserPreferencesReducer {
 
     static func reducePreferencesRetrievedAction(action: PreferencesRetrievedAction, state _: UserPreferenceState) -> UserPreferenceState {
         return action.userPreferenceState
+    }
+
+    static func reduceNewTransitModeAction(action: NewTransitModeAction, state: UserPreferenceState) -> UserPreferenceState {
+        return UserPreferenceState(defaultsLoaded: state.defaultsLoaded, startupTransitMode: action.transitMode, startupNavigationController: state.startupNavigationController, databaseVersion: state.databaseVersion)
+    }
+
+    static func reducePreferencesDatabaseLoaded(action: PreferencesDatabaseLoaded, state: UserPreferenceState) -> UserPreferenceState {
+        return UserPreferenceState(defaultsLoaded: state.defaultsLoaded, startupTransitMode: state.startupTransitMode, startupNavigationController: state.startupNavigationController, databaseVersion: action.databaseVersion)
     }
 }

@@ -20,20 +20,21 @@ class UserPreferencesStatePersister {
             guard let strongSelf = self else { return }
             strongSelf.setTransitMode(state: state)
             strongSelf.setStartupNavigationControllder(state: state)
-            strongSelf.set(state.showDirectionInRoutes, forKey: .showDirectionInRoutes)
-            strongSelf.set(state.showDirectionInStops, forKey: .showDirectionInStops)
+            strongSelf.setDatabaseVersion(state: state)
             strongSelf.defaults.synchronize()
         }
     }
 
     func setTransitMode(state: UserPreferenceState) {
-        guard let transitMode = state.startupTransitMode else { return }
-        set(transitMode.rawValue, forKey: .startupTransitMode)
+        set(state.startupTransitMode.rawValue, forKey: .startupTransitMode)
     }
 
     func setStartupNavigationControllder(state: UserPreferenceState) {
-        guard let startupNavigationController = state.startupNavigationController else { return }
-        set(startupNavigationController.rawValue, forKey: .startupNavigationController)
+        set(state.startupNavigationController.rawValue, forKey: .startupNavigationController)
+    }
+
+    func setDatabaseVersion(state: UserPreferenceState) {
+        set(state.databaseVersion, forKey: .databaseVersion)
     }
 
     private func set(_ value: Any?, forKey key: UserPreferencesKeys) {

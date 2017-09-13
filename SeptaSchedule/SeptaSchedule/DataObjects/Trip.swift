@@ -3,7 +3,7 @@
 import Foundation
 // Encapsulates a trip
 public struct Trip {
-    public let tripId: Int
+    public let tripId: String
     let departureInt: Int
     let arrivalInt: Int
     public let blockId: String
@@ -28,7 +28,7 @@ public struct Trip {
         return Calendar.current.dateComponents([.hour, .minute], from: departureComponents, to: arrivalComponents)
     }
 
-    init(tripId: Int, departureInt: Int, arrivalInt: Int, blockId: String) {
+    init(tripId: String, departureInt: Int, arrivalInt: Int, blockId: String) {
         self.departureInt = departureInt
         self.arrivalInt = arrivalInt
         self.blockId = blockId

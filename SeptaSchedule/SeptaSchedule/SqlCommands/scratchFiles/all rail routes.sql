@@ -137,3 +137,153 @@ select * from stops_rail where stop_id = 90222;
 
 select * from stops_rail where stop_id = 90313;
 
+
+
+SELECT
+
+start.arrival_time DepartureTime,
+Stop.arrival_time  ArrivalTime,
+start.block_id,
+start.trip_id
+FROM
+
+(SELECT
+T.trip_id,T.route_id,
+ST.arrival_time,
+T.block_id
+FROM
+stop_times_rail ST
+JOIN trips_rail T
+ON ST.trip_id = T.trip_id
+WHERE ST.stop_id = 90508 and T.direction_id = 0 and T.service_id in (select service_id from calendar_rail C where days & 32)) Start
+
+JOIN (SELECT
+T.trip_id, T.direction_id, T.service_id,
+ST.arrival_time
+FROM
+stop_times_rail ST
+JOIN trips_rail T
+ON ST.trip_id = T.trip_id
+WHERE  stop_id = 90719 and T.direction_id = 0  and T.service_id in (select service_id from calendar_rail  C where days & 32)) Stop
+ON start.trip_id = stop.trip_id
+group by start.arrival_time, stop.arrival_time;
+
+
+SELECT
+
+start.arrival_time DepartureTime,
+Stop.arrival_time  ArrivalTime,
+start.block_id,
+start.trip_id
+FROM
+
+(SELECT
+T.trip_id,T.route_id,
+ST.arrival_time,
+T.block_id
+FROM
+stop_times_rail ST
+JOIN trips_rail T
+ON ST.trip_id = T.trip_id
+WHERE ST.stop_id = 90502 and T.direction_id = 0 and T.service_id in (select service_id from calendar_rail C where days & 32)) Start
+
+JOIN (SELECT
+T.trip_id, T.direction_id, T.service_id,
+ST.arrival_time
+FROM
+stop_times_rail ST
+JOIN trips_rail T
+ON ST.trip_id = T.trip_id
+WHERE  stop_id = 90503 and T.direction_id = 0  and T.service_id in (select service_id from calendar_rail  C where days & 32)) Stop
+ON start.trip_id = stop.trip_id
+group by start.arrival_time, stop.arrival_time;
+
+SELECT
+
+start.arrival_time DepartureTime,
+Stop.arrival_time  ArrivalTime,
+start.block_id,
+start.trip_id
+FROM
+
+(SELECT
+T.trip_id,T.route_id,
+ST.arrival_time,
+T.block_id
+FROM
+stop_times_rail ST
+JOIN trips_rail T
+ON ST.trip_id = T.trip_id
+WHERE ST.stop_id = 90502 and T.direction_id = 0 and T.service_id in (select service_id from calendar_rail C where days & 32)) Start
+
+JOIN (SELECT
+T.trip_id, T.direction_id, T.service_id,
+ST.arrival_time
+FROM
+stop_times_rail ST
+JOIN trips_rail T
+ON ST.trip_id = T.trip_id
+WHERE  stop_id = 90503 and T.direction_id = 0  and T.service_id in (select service_id from calendar_rail  C where days & 32)) Stop
+ON start.trip_id = stop.trip_id
+group by start.arrival_time, stop.arrival_time;
+
+select * from trips_rail;
+
+
+SELECT
+R.Route_id,
+R.route_short_name route_short_name,
+'to ' || S.stop_name route_long_name,
+cast (T.direction_id  as TEXT )                            dircode
+
+FROM routes_rail R
+JOIN trips_rail T ON R.route_id = T.route_id
+JOIN stop_times_rail ST ON T.trip_id = ST.trip_id
+JOIN stops_rail S ON ST.stop_id = S.stop_id
+JOIN
+(
+SELECT
+R.route_id,
+T.direction_id,
+max(ST.stop_sequence) max_stop_sequence
+
+FROM routes_rail R
+JOIN trips_rail T ON R.route_id = T.route_id
+JOIN stop_times_rail ST ON T.trip_id = ST.trip_id
+JOIN stops_rail S ON ST.stop_id = S.stop_id
+GROUP BY R.route_id, T.direction_id) lastStop
+ON R.route_id = lastStop.route_id AND T.direction_id = lastStop.direction_id AND
+ST.stop_sequence = lastStop.max_stop_sequence
+GROUP BY R.Route_id,R.route_short_name, R.route_long_name,T.direction_id ,S.stop_name;
+
+
+
+SELECT
+
+start.arrival_time DepartureTime,
+Stop.arrival_time  ArrivalTime,
+cast (start.block_id as TEXT) block_id,
+start.trip_id
+FROM
+
+(SELECT
+T.trip_id,T.route_id,
+ST.arrival_time,
+T.block_id
+FROM
+stop_times_rail ST
+JOIN trips_rail T
+ON ST.trip_id = T.trip_id
+WHERE ST.stop_id = 90403 and T.direction_id = 1 and T.service_id in (select service_id from calendar_rail C where days & 32)) Start
+
+JOIN (SELECT
+T.trip_id, T.direction_id, T.service_id,
+ST.arrival_time
+FROM
+stop_times_rail ST
+JOIN trips_rail T
+ON ST.trip_id = T.trip_id
+WHERE  stop_id = 90401 and T.direction_id = 1  and T.service_id in (select service_id from calendar_rail  C where days & 32)) Stop
+ON start.trip_id = stop.trip_id
+group by start.arrival_time, stop.arrival_time;
+

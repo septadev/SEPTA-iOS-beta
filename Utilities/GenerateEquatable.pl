@@ -3,17 +3,18 @@ use Data::Dumper;
 
 my $struct = q |
 
-struct VehicleLocation {
-    let firstLegLocation: CLLocationCoordinate2D?
-    let secondLegLocation: CLLocationCoordinate2D?
+struct UserPreferenceState {
+    let defaultsLoaded: Bool
+    let startupTransitMode: TransitMode
+    let startupNavigationController: NavigationController
+    let databaseVersion: Int
 
-    init(firstLegLocation: CLLocationCoordinate2D? = CLLocationCoordinate2D(), secondLegLocation: CLLocationCoordinate2D? = CLLocationCoordinate2D()) {
-        self.firstLegLocation = firstLegLocation
-        self.secondLegLocation = secondLegLocation
+    init(startupTransitMode: TransitMode = .bus, startupNavigationController: NavigationController = .nextToArrive, databaseVersion: Int = 0) {
+        self.startupTransitMode = startupTransitMode
+        self.startupNavigationController = startupNavigationController
+        self.databaseVersion = databaseVersion
     }
 }
-
-
 
 	|;
 

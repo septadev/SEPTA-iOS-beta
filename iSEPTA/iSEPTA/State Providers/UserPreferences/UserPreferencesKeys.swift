@@ -7,6 +7,5 @@ enum UserPreferencesKeys: String {
     case startupTransitMode
     case defaultsLoaded
     case startupNavigationController
-    case showDirectionInRoutes
-    case showDirectionInStops
+    case databaseVersion
 }

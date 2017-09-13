@@ -11,12 +11,13 @@ import Foundation
 struct SeptaNetwork {
     let url: String
     let apiKey: String
+    let databaseVersion: Int
 
     private init() {
         let path = Bundle.main.path(forResource: "network", ofType: "plist")!
         let dict = NSDictionary(contentsOfFile: path)!
         let urlString = dict["url"] as! String
-
+        databaseVersion = dict["databaseVersion"] as! Int
         let apiKey = dict["apiKey"] as! String
         url = urlString
         self.apiKey = apiKey

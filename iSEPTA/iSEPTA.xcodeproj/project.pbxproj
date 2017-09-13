@@ -65,7 +65,7 @@
 		582F4EDB1F33B1120062A546 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EAF1F33B1120062A546 /* Assets.xcassets */; };
 		582F4EDD1F33B1120062A546 /* UpdateableFromViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EB21F33B1120062A546 /* UpdateableFromViewModel.swift */; };
 		582F4EDE1F33B1120062A546 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EB41F33B1120062A546 /* Main.storyboard */; };
-		582F4EDF1F33B1120062A546 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EB61F33B1120062A546 /* MainViewController.swift */; };
+		582F4EDF1F33B1120062A546 /* DatabaseStateWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EB61F33B1120062A546 /* DatabaseStateWatcher.swift */; };
 		582F4EE01F33B1120062A546 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EB81F33B1120062A546 /* LaunchScreen.storyboard */; };
 		583523991F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583523981F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift */; };
 		58406EB51F3A9C0E00E6E04D /* SeptaSchedule.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58ACEAE31F3A9A9B00DC2836 /* SeptaSchedule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -91,6 +91,8 @@
 		585572861F39499D004ABCD6 /* Color+Septa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585572841F3948D3004ABCD6 /* Color+Septa.swift */; };
 		58658D1B1F53135100E67B4E /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58658D1A1F53135100E67B4E /* AddressCell.swift */; };
 		58658D1E1F53298B00E67B4E /* DisplayAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58658D1D1F53298B00E67B4E /* DisplayAddress.swift */; };
+		586C1CED1F69A7E10023607C /* DatabaseLoadingModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1CEC1F69A7E10023607C /* DatabaseLoadingModalViewController.swift */; };
+		586C1CF11F69B3EE0023607C /* DatabaseMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1CF01F69B3EE0023607C /* DatabaseMover.swift */; };
 		586DFEC51F505482004BC972 /* CurvedTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586DFEC41F505482004BC972 /* CurvedTopView.swift */; };
 		5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880C19A1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift */; };
 		588F27F01F39DD7B00D62425 /* UserPreferenceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27EF1F39DD7B00D62425 /* UserPreferenceState.swift */; };
@@ -537,7 +539,7 @@
 		582F4EAF1F33B1120062A546 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		582F4EB21F33B1120062A546 /* UpdateableFromViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateableFromViewModel.swift; sourceTree = "<group>"; };
 		582F4EB51F33B1120062A546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		582F4EB61F33B1120062A546 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		582F4EB61F33B1120062A546 /* DatabaseStateWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseStateWatcher.swift; sourceTree = "<group>"; };
 		582F4EB91F33B1120062A546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		582F4F241F33B2400062A546 /* Septa-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Septa-Bridging-Header.h"; sourceTree = "<group>"; };
 		583523981F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTransitModesToolBarViewController.swift; sourceTree = "<group>"; };
@@ -571,6 +573,8 @@
 		5867AC391F46249700370254 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = ../Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
 		5867AC3B1F46249700370254 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = ../Carthage/Build/iOS/ReSwift.framework; sourceTree = "<group>"; };
 		5867AC3C1F46249800370254 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = ../Carthage/Build/iOS/Zip.framework; sourceTree = "<group>"; };
+		586C1CEC1F69A7E10023607C /* DatabaseLoadingModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseLoadingModalViewController.swift; sourceTree = "<group>"; };
+		586C1CF01F69B3EE0023607C /* DatabaseMover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseMover.swift; sourceTree = "<group>"; };
 		586DFEC41F505482004BC972 /* CurvedTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedTopView.swift; sourceTree = "<group>"; };
 		5870CCDD1F54C05A004E61A9 /* SeptaSchedule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaSchedule.framework; path = "Build/Products/Debug-iphonesimulator/SeptaSchedule.framework"; sourceTree = "<group>"; };
 		5880C19A1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRequestReducer.swift; sourceTree = "<group>"; };
@@ -919,6 +923,7 @@
 				582F4EAD1F33B1120062A546 /* Info.plist */,
 				582F4F241F33B2400062A546 /* Septa-Bridging-Header.h */,
 				582F4E7E1F33B1120062A546 /* AppDelegate.swift */,
+				586C1CF01F69B3EE0023607C /* DatabaseMover.swift */,
 				58E33F231F61615900C74B7C /* network.plist */,
 				58E33F251F61619500C74B7C /* SeptaNetwork.swift */,
 			);
@@ -1193,10 +1198,11 @@
 			children = (
 				58C181FE1F34C557002748E9 /* Storyboards.swift */,
 				582F4EB41F33B1120062A546 /* Main.storyboard */,
-				582F4EB61F33B1120062A546 /* MainViewController.swift */,
+				582F4EB61F33B1120062A546 /* DatabaseStateWatcher.swift */,
 				58C182061F34C5B6002748E9 /* Localizeable.strings */,
 				5840D6D21F376D9C00C8CB76 /* MainNavigationController.swift */,
 				58B892161F38F7E700BFFEFA /* Strings.swift */,
+				586C1CEC1F69A7E10023607C /* DatabaseLoadingModalViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -2349,7 +2355,7 @@
 				671A19241F661F8F00C8EEDA /* SwipeGestureRecognizerToggle.swift in Sources */,
 				678F053B1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift in Sources */,
 				5840D6E71F37EAEF00C8CB76 /* UserPreferencesKeys.swift in Sources */,
-				582F4EDF1F33B1120062A546 /* MainViewController.swift in Sources */,
+				582F4EDF1F33B1120062A546 /* DatabaseStateWatcher.swift in Sources */,
 				58DD1A921F60078D002532DC /* NextToArriveRowDisplayModel.swift in Sources */,
 				674FDBC71F577D3B00CA67D2 /* Route+Icon.swift in Sources */,
 				58F80D431F421C1F0089501A /* SelectStopNavigationController.swift in Sources */,
@@ -2440,6 +2446,7 @@
 				581DA54F1F3BF102006AEC39 /* ViewTransitionType.swift in Sources */,
 				678DAAA61F67291400EB6EE8 /* NextToArriveTripsViewModel.swift in Sources */,
 				58E33F1C1F61473800C74B7C /* VehicleLocation.swift in Sources */,
+				586C1CED1F69A7E10023607C /* DatabaseLoadingModalViewController.swift in Sources */,
 				5840D6E01F37E5FB00C8CB76 /* ScheduleReducer.swift in Sources */,
 				58FBBFA41F65821000B7A4DA /* DatabaseReducer.swift in Sources */,
 				58290E411F372B51000CCF3C /* AppState.swift in Sources */,
@@ -2484,6 +2491,7 @@
 				5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */,
 				58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */,
 				581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */,
+				586C1CF11F69B3EE0023607C /* DatabaseMover.swift in Sources */,
 				588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */,
 				58EB8D291F5D90CD0028A487 /* NextToArriveState.swift in Sources */,
 				583523991F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift in Sources */,

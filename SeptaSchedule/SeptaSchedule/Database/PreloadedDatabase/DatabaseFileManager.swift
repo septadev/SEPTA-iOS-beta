@@ -33,13 +33,17 @@ public class DatabaseFileManager {
         return fileManager.fileExists(atPath: url.path)
     }
 
-    public func unzipFileToDocumentsDirectoryIfNecessary() {
+    public func unzipFileToDocumentsDirectoryIfNecessary(forceUpdate: Bool = false) {
 
-        if databaseFileExistsInDocumentsDirectory {
+        if databaseFileExistsInDocumentsDirectory && !forceUpdate {
             updateState(databaseState: .loaded)
+            print("No need to move database")
         } else {
             updateState(databaseState: .loading)
-            moveDatabase()
+            print("database will be moving")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+                self?.moveDatabase()
+            }
         }
     }
 
@@ -50,9 +54,10 @@ public class DatabaseFileManager {
             do {
                 guard let preloadedURL = strongSelf.preloadedZippedDatabaseURL else { throw DatabaseFileManagerError.NoPreloadedDatabase }
                 guard let documentsURL = strongSelf.documentDirectoryURL else { throw DatabaseFileManagerError.NoDocumentsDirectory }
-                try Zip.unzipFile(preloadedURL, destination: documentsURL, overwrite: false, password: nil, progress: { (progress) -> Void in
+                try Zip.unzipFile(preloadedURL, destination: documentsURL, overwrite: true, password: nil, progress: { (progress) -> Void in
                     if progress == 1 {
                         strongSelf.updateState(databaseState: .loaded)
+                        print("database unzip is complete")
                     }
                 })
             } catch {

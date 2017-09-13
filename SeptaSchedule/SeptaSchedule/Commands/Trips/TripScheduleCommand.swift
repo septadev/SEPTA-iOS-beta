@@ -21,8 +21,8 @@ public class TripScheduleCommand: BaseCommand {
                     let col0 = row[0], let departureInt = col0 as? Int64,
                     let col1 = row[1], let arrivalInt = col1 as? Int64,
                     let col2 = row[2], let blockId = col2 as? String,
-                    let col3 = row[3], let tripId = col3 as? Int64 {
-                    let trip = Trip(tripId: Int(tripId), departureInt: Int(departureInt), arrivalInt: Int(arrivalInt), blockId: blockId)
+                    let col3 = row[3], let tripId = col3 as? String {
+                    let trip = Trip(tripId: tripId, departureInt: Int(departureInt), arrivalInt: Int(arrivalInt), blockId: blockId)
                     trips.append(trip)
                 }
             }

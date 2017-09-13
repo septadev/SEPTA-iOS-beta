@@ -6,7 +6,7 @@ SELECT
 
 start.arrival_time DepartureTime,
 Stop.arrival_time  ArrivalTime,
-start.block_id,
+cast (start.block_id as TEXT) block_id,
 start.trip_id
 FROM
 

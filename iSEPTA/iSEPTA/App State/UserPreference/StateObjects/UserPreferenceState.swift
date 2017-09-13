@@ -4,56 +4,34 @@ import Foundation
 import SeptaSchedule
 
 struct UserPreferenceState {
-    var startupTransitMode: TransitMode?
-    var startupNavigationController: NavigationController?
-    var showDirectionInRoutes: Bool?
-    var showDirectionInStops: Bool?
+    let defaultsLoaded: Bool
+    let startupTransitMode: TransitMode
+    let startupNavigationController: NavigationController
+    let databaseVersion: Int
+
+    init(defaultsLoaded: Bool = false, startupTransitMode: TransitMode = .bus, startupNavigationController: NavigationController = .nextToArrive, databaseVersion: Int = 0) {
+        self.defaultsLoaded = defaultsLoaded
+        self.startupTransitMode = startupTransitMode
+        self.startupNavigationController = startupNavigationController
+        self.databaseVersion = databaseVersion
+    }
 }
 
 extension UserPreferenceState: Equatable {}
 func ==(lhs: UserPreferenceState, rhs: UserPreferenceState) -> Bool {
     var areEqual = true
 
-    switch (lhs.startupTransitMode, rhs.startupTransitMode) {
-    case (.none, .none):
-        areEqual = true
-    case (.some, .some):
-        areEqual = lhs.startupTransitMode! == rhs.startupTransitMode!
-    default:
-        return false
-    }
-
+    areEqual = lhs.defaultsLoaded == rhs.defaultsLoaded
     guard areEqual else { return false }
 
-    switch (lhs.startupNavigationController, rhs.startupNavigationController) {
-    case (.none, .none):
-        areEqual = true
-    case (.some, .some):
-        areEqual = lhs.startupNavigationController! == rhs.startupNavigationController!
-    default:
-        return false
-    }
-
+    areEqual = lhs.startupTransitMode == rhs.startupTransitMode
     guard areEqual else { return false }
 
-    switch (lhs.showDirectionInRoutes, rhs.showDirectionInRoutes) {
-    case (.none, .none):
-        areEqual = true
-    case (.some, .some):
-        areEqual = lhs.showDirectionInRoutes! == rhs.showDirectionInRoutes!
-    default:
-        return false
-    }
-
+    areEqual = lhs.startupNavigationController == rhs.startupNavigationController
     guard areEqual else { return false }
 
-    switch (lhs.showDirectionInStops, rhs.showDirectionInStops) {
-    case (.none, .none):
-        areEqual = true
-    case (.some, .some):
-        areEqual = lhs.showDirectionInStops! == rhs.showDirectionInStops!
-    default:
-        return false
-    }
+    areEqual = lhs.databaseVersion == rhs.databaseVersion
+    guard areEqual else { return false }
+
     return areEqual
 }

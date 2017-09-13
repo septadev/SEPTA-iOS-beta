@@ -140,7 +140,7 @@ extension NextToArriveInfoViewModel { // Table View
     func configureNoConnectionCell(cell: NoConnectionCell, forTrip trip: NextToArriveTrip) {
         let tripView = cell.tripView!
         let hasVehicleLocation = trip.vehicleLocation.firstLegLocation != nil
-        tripView.startStopLabel.text = generateTimeString(trip: trip)
+        tripView.startStopLabel.text = generateTimeString(stop: trip.startStop)
         tripView.departingWhenLabel.text = generateTimeToDeparture(stop: trip.startStop)
         tripView.onTimeLabel.text = generateOnTimeString(stop: trip.startStop, hasVehicleLocation: hasVehicleLocation)
         tripView.onTimeLabel.textColor = generateOnTimeColor(stop: trip.startStop, hasVehicleLocation: hasVehicleLocation)

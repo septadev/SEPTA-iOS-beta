@@ -92,10 +92,10 @@ class NextToArriveProvider: StoreSubscriber {
             let routeName = a.orig_line_route_name,
             let arrivalTimeString = a.orig_arrival_time,
             let arrivalTime = formatter.date(from: arrivalTimeString),
-            isValidDate(date: arrivalTime),
+            isValidStartDate(date: arrivalTime),
             let departureTimeString = a.orig_departure_time,
             let departureTime = formatter.date(from: departureTimeString),
-            isValidDate(date: departureTime) else {
+            isValidStartDate(date: departureTime) else {
             return nil
         }
         return NextToArriveStop(routeId: routeId,
@@ -116,10 +116,10 @@ class NextToArriveProvider: StoreSubscriber {
             let routeName = a.term_line_route_name,
             let arrivalTimeString = a.term_arrival_time,
             let arrivalTime = formatter.date(from: arrivalTimeString),
-            isValidDate(date: arrivalTime),
+            isValidEndDate(date: arrivalTime, connectionStationName: a.connection_station_name),
             let departureTimeString = a.term_departure_time,
             let departureTime = formatter.date(from: departureTimeString),
-            isValidDate(date: departureTime) else {
+            isValidEndDate(date: departureTime, connectionStationName: a.connection_station_name) else {
             return nil
         }
         return NextToArriveStop(routeId: routeId,
@@ -175,7 +175,16 @@ class NextToArriveProvider: StoreSubscriber {
         return philly.distance(from: location) < 160_934 // 100 miles
     }
 
-    func isValidDate(date: Date) -> Bool {
+    func isValidStartDate(date: Date) -> Bool {
+
+        var fiveHours = DateComponents()
+        fiveHours.hour = 5
+        let fiveHoursFromNow: Date = Calendar.current.date(byAdding: .hour, value: 5, to: Date())!
+        return date > Date() && date < fiveHoursFromNow
+    }
+
+    func isValidEndDate(date: Date, connectionStationName: String?) -> Bool {
+        guard let _ = connectionStationName else { return true }
         var fiveHours = DateComponents()
         fiveHours.hour = 5
         let fiveHoursFromNow: Date = Calendar.current.date(byAdding: .hour, value: 5, to: Date())!

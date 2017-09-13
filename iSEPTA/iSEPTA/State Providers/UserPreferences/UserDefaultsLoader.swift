@@ -46,35 +46,34 @@ class UserDefaultsLoader {
 
     fileprivate func loadDevicePersistedDefaults(completion: @escaping (UserPreferenceState?, Error?) -> Void) {
 
-        var preferenceState = UserPreferenceState()
+        let defaultPreferenceState = UserPreferenceState()
 
-        preferenceState.startupTransitMode = startupTransitMode()
-        preferenceState.startupNavigationController = startupNavigationController()
-        preferenceState.showDirectionInRoutes = showDirectionInRoutes()
-        preferenceState.showDirectionInStops = showDirectionInStops()
+        let defaultsLoaded = true
+        let startupTransitMode = retrieveStartupTransitMode() ?? defaultPreferenceState.startupTransitMode
+        let startupNavigationController = retrieveStartupNavigationController() ?? defaultPreferenceState.startupNavigationController
+        let databaseVersion = retrieveDatabaseVersion() ?? defaultPreferenceState.databaseVersion
+
+        let retrievedPreferenceState = UserPreferenceState(defaultsLoaded: defaultsLoaded, startupTransitMode: startupTransitMode, startupNavigationController: startupNavigationController, databaseVersion: databaseVersion)
 
         DispatchQueue.main.async {
-            completion(preferenceState, nil)
+            completion(retrievedPreferenceState, nil)
         }
     }
 
-    fileprivate func startupTransitMode() -> TransitMode? {
+    fileprivate func retrieveStartupTransitMode() -> TransitMode? {
         guard let intValue = int(forKey: .startupTransitMode) else { return nil }
 
         return TransitMode(rawValue: intValue)
     }
 
-    fileprivate func startupNavigationController() -> NavigationController? {
+    fileprivate func retrieveStartupNavigationController() -> NavigationController? {
         guard let intValue = int(forKey: .startupNavigationController) else { return nil }
         return NavigationController(rawValue: intValue)
     }
 
-    fileprivate func showDirectionInRoutes() -> Bool {
-        return bool(forKey: .showDirectionInRoutes)
-    }
-
-    fileprivate func showDirectionInStops() -> Bool {
-        return bool(forKey: .showDirectionInStops)
+    fileprivate func retrieveDatabaseVersion() -> Int? {
+        guard let intValue = int(forKey: .databaseVersion) else { return nil }
+        return intValue
     }
 
     fileprivate func bool(forKey key: UserPreferencesKeys) -> Bool {
