@@ -16,14 +16,16 @@ struct Favorite: Codable {
     let selectedRoute: Route
     let selectedStart: Stop
     let selectedEnd: Stop
+    let nextToArriveTrips: [NextToArriveTrip]
 
-    init(favoriteId: String, favoriteName: String, transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop) {
+    init(favoriteId: String, favoriteName: String, transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop, nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip]()) {
         self.favoriteId = favoriteId
         self.favoriteName = favoriteName
         self.transitMode = transitMode
         self.selectedRoute = selectedRoute
         self.selectedStart = selectedStart
         self.selectedEnd = selectedEnd
+        self.nextToArriveTrips = nextToArriveTrips
     }
 
     enum CodingKeys: String, CodingKey {
@@ -54,6 +56,7 @@ struct Favorite: Codable {
         } else {
             favoriteName = "\(selectedRoute.routeId): \(selectedStart.stopName) to \(selectedEnd.stopName)"
         }
+        nextToArriveTrips = [NextToArriveTrip]()
     }
 
     public func encode(to encoder: Encoder) throws {

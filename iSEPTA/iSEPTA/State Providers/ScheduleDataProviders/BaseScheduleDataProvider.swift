@@ -28,6 +28,7 @@ class BaseScheduleDataProvider: StoreSubscriber {
 
         if isFirstRun {
             firstRunSetup(scheduleRequest: scheduleRequest)
+            isFirstRun = false
         } else {
             processNewState(scheduleRequest: scheduleRequest)
         }
@@ -37,7 +38,6 @@ class BaseScheduleDataProvider: StoreSubscriber {
 
     func firstRunSetup(scheduleRequest: ScheduleRequest) {
         retrieveAvailableRoutes(scheduleRequest: scheduleRequest)
-        isFirstRun = false
     }
 
     func processNewState(scheduleRequest: ScheduleRequest) {

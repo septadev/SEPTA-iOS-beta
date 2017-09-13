@@ -3,19 +3,15 @@ use Data::Dumper;
 
 my $struct = q |
 
-struct UserPreferenceState {
-    let defaultsLoaded: Bool
-    let startupTransitMode: TransitMode
-    let startupNavigationController: NavigationController
-    let databaseVersion: Int
+struct FavoritesState: Codable {
+    let favorites: [Favorite]
+    let nextToArriveUpdateStatus: NextToArriveUpdateStatus
+    let refreshDataRequested: Bool
 
-    init(startupTransitMode: TransitMode = .bus, startupNavigationController: NavigationController = .nextToArrive, databaseVersion: Int = 0) {
-        self.startupTransitMode = startupTransitMode
-        self.startupNavigationController = startupNavigationController
-        self.databaseVersion = databaseVersion
+    init(favorites: [Favorite] = [Favorite]()) {
+        self.favorites = favorites
     }
 }
-
 	|;
 
 my @initVars = ();

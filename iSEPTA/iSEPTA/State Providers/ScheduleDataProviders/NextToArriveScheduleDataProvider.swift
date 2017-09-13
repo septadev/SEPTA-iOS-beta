@@ -25,15 +25,12 @@ class NextToArriveScheduleDataProvider: BaseScheduleDataProvider {
         }
     }
 
-    override func processNewState(scheduleRequest: ScheduleRequest) {
-        processTransitMode(scheduleRequest: scheduleRequest)
-        super.processNewState(scheduleRequest: scheduleRequest)
-    }
-
-    func processTransitMode(scheduleRequest: ScheduleRequest) {
+    override func firstRunSetup(scheduleRequest: ScheduleRequest) {
         if scheduleRequest.transitMode == .rail && scheduleRequest.selectedRoute == nil {
             let action = LoadAllRailRoutes()
             store.dispatch(action)
+        } else {
+            retrieveAvailableRoutes(scheduleRequest: scheduleRequest)
         }
     }
 
