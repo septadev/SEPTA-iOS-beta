@@ -18,34 +18,26 @@ class BaseScheduleDataProvider: StoreSubscriber {
         databaseStateWatcher.delegate = self
     }
 
-    var isFirstRun: Bool = true
-
     func subscribe() {
     }
 
     func newState(state: StoreSubscriberStateType) {
         let scheduleRequest = state
-
-        if isFirstRun {
-            firstRunSetup(scheduleRequest: scheduleRequest)
-            isFirstRun = false
-        } else {
-            processNewState(scheduleRequest: scheduleRequest)
-        }
-
+        processNewState(scheduleRequest: scheduleRequest)
         currentScheduleRequest = scheduleRequest
-    }
-
-    func firstRunSetup(scheduleRequest: ScheduleRequest) {
-        retrieveAvailableRoutes(scheduleRequest: scheduleRequest)
     }
 
     func processNewState(scheduleRequest: ScheduleRequest) {
         processReverseTrip(scheduleRequest: scheduleRequest)
+        processSelectedTransitMode(scheduleRequest: scheduleRequest)
         processSelectedRoute(scheduleRequest: scheduleRequest)
         processSelectedTripStart(scheduleRequest: scheduleRequest)
         processSelectedTripEnd(scheduleRequest: scheduleRequest)
         processSelectedTrip(scheduleRequest: scheduleRequest)
+    }
+
+    func processSelectedTransitMode(scheduleRequest: ScheduleRequest) {
+        retrieveAvailableRoutes(scheduleRequest: scheduleRequest)
     }
 
     func processSelectedRoute(scheduleRequest: ScheduleRequest) {

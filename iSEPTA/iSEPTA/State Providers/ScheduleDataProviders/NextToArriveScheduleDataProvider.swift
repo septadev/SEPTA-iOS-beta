@@ -19,14 +19,13 @@ class NextToArriveScheduleDataProvider: BaseScheduleDataProvider {
     }
 
     override func subscribe() {
-
         store.subscribe(self) {
             $0.select { $0.nextToArriveState.scheduleState.scheduleRequest }.skipRepeats { $0 == $1 }
         }
     }
 
-    override func firstRunSetup(scheduleRequest: ScheduleRequest) {
-        if scheduleRequest.transitMode == .rail && scheduleRequest.selectedRoute == nil {
+    override func processSelectedTransitMode(scheduleRequest: ScheduleRequest) {
+        if scheduleRequest.transitMode == .rail && scheduleRequest.selectedStart == nil {
             let action = LoadAllRailRoutes()
             store.dispatch(action)
         } else {

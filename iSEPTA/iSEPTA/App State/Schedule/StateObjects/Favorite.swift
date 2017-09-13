@@ -16,9 +16,11 @@ struct Favorite: Codable {
     let selectedRoute: Route
     let selectedStart: Stop
     let selectedEnd: Stop
-    let nextToArriveTrips: [NextToArriveTrip]
+    var nextToArriveTrips: [NextToArriveTrip]
+    var nextToArriveUpdateStatus: NextToArriveUpdateStatus
+    var refreshDataRequested: Bool
 
-    init(favoriteId: String, favoriteName: String, transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop, nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip]()) {
+    init(favoriteId: String, favoriteName: String, transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop, nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip](), nextToArriveUpdateStatus: NextToArriveUpdateStatus = .idle, refreshDataRequested: Bool = false) {
         self.favoriteId = favoriteId
         self.favoriteName = favoriteName
         self.transitMode = transitMode
@@ -26,6 +28,8 @@ struct Favorite: Codable {
         self.selectedStart = selectedStart
         self.selectedEnd = selectedEnd
         self.nextToArriveTrips = nextToArriveTrips
+        self.nextToArriveUpdateStatus = nextToArriveUpdateStatus
+        self.refreshDataRequested = refreshDataRequested
     }
 
     enum CodingKeys: String, CodingKey {
@@ -57,10 +61,13 @@ struct Favorite: Codable {
             favoriteName = "\(selectedRoute.routeId): \(selectedStart.stopName) to \(selectedEnd.stopName)"
         }
         nextToArriveTrips = [NextToArriveTrip]()
+        nextToArriveUpdateStatus = .idle
+        refreshDataRequested = true
     }
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(favoriteId, forKey: .favoriteId)
         try container.encode(favoriteName, forKey: .favoriteName)
         try container.encode(transitMode, forKey: .transitMode)
         try container.encode(selectedRoute, forKey: .selectedRoute)
@@ -89,6 +96,15 @@ func ==(lhs: Favorite, rhs: Favorite) -> Bool {
     guard areEqual else { return false }
 
     areEqual = lhs.selectedEnd == rhs.selectedEnd
+    guard areEqual else { return false }
+
+    areEqual = lhs.nextToArriveTrips == rhs.nextToArriveTrips
+    guard areEqual else { return false }
+
+    areEqual = lhs.nextToArriveUpdateStatus == rhs.nextToArriveUpdateStatus
+    guard areEqual else { return false }
+
+    areEqual = lhs.refreshDataRequested == rhs.refreshDataRequested
     guard areEqual else { return false }
 
     return areEqual

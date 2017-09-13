@@ -25,9 +25,7 @@ struct RemoveFavorite: FavoritesAction {
     let description = "User removes a favorite"
 }
 
-struct FavoritesUpdateNextToArriveStatusAndData: FavoritesAction {
-    let nextToArriveUpdateStatus: NextToArriveUpdateStatus
-    let favorites: [Favorite]
-    let refreshDataRequested: Bool
-    let description = "Provider reporting on the status of the update for favorites"
+struct UpdateFavorite: FavoritesAction {
+    let favorite: Favorite
+    let description: String
 }

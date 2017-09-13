@@ -14,7 +14,7 @@ import CoreLocation
 
 class FavoritesNextToArriveProvider: StoreSubscriber {
 
-    typealias StoreSubscriberStateType = Bool
+    typealias StoreSubscriberStateType = [Favorite]
 
     let mapper = NextToArriveMapper()
 
@@ -32,44 +32,61 @@ class FavoritesNextToArriveProvider: StoreSubscriber {
         unsubscribe()
     }
 
-    var scheduleRequest: ScheduleRequest { return store.state.nextToArriveState.scheduleState.scheduleRequest }
-    var nextToArriveUpdateStatus: NextToArriveUpdateStatus { return store.state.favoritesState.nextToArriveUpdateStatus }
+    func newState(state: [Favorite]) {
+        let favorites = state
+        let favoritesToUpdate = filterFavoritesThatNeedUpdating(favorites: favorites)
+        retrieveNextToArrive(favorites: favoritesToUpdate)
+    }
 
-    func newState(state: Bool) {
-        let refreshDataRequested = state
+    func filterFavoritesThatNeedUpdating(favorites: [Favorite]) -> [Favorite] {
+        return favorites.filter { $0.refreshDataRequested && $0.nextToArriveUpdateStatus != .dataLoading }
+    }
 
-        if refreshDataRequested && nextToArriveUpdateStatus != .dataLoading {
-            reportStatus(.dataLoading)
-            retrieveNextToArrive(scheduleRequest: scheduleRequest, completion: mapArrivals)
+    func retrieveNextToArrive(favorites: [Favorite]) {
+        for favorite in favorites {
+            retrieveNextToArrive(favorite: favorite, completion: mapArrivals)
         }
     }
 
-    func reportStatus(_ status: NextToArriveUpdateStatus, nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip]()) {
-        let updateAction = UpdateNextToArriveStatusAndData(nextToArriveUpdateStatus: status, nextToArriveTrips: nextToArriveTrips, refreshDataRequested: false)
+    func reportSuccessfullyUpdatedFavorite(favorite: Favorite, nextToArriveTrips: [NextToArriveTrip]) {
+        var favorite = favorite
+        favorite.nextToArriveTrips = nextToArriveTrips
+        favorite.nextToArriveUpdateStatus = .dataLoadedSuccessfully
+        favorite.refreshDataRequested = false
+        let updateAction = UpdateFavorite(favorite: favorite, description: "Updating favorite \(favorite.favoriteId) next to arrive")
         store.dispatch(updateAction)
     }
 
-    func retrieveNextToArrive(scheduleRequest: ScheduleRequest, completion: (([RealTimeArrival]) -> Void)?) {
-        guard
-            let startId = scheduleRequest.selectedStart?.stopId,
-            let stopId = scheduleRequest.selectedEnd?.stopId else { return }
-        let transitType = TransitType.fromTransitMode(scheduleRequest.transitMode)
+    func reportUpdatedFavoriteStatus(favorite existing: Favorite, status: NextToArriveUpdateStatus) {
+        var updatedFavorite = existing
+        updatedFavorite.nextToArriveUpdateStatus = status
+        let action = UpdateFavorite(favorite: updatedFavorite, description: "Updating favorite \(updatedFavorite.favoriteId) status")
+        store.dispatch(action)
+    }
+
+    func retrieveNextToArrive(favorite: Favorite, completion: (([RealTimeArrival], Favorite) -> Void)?) {
+        let transitType = TransitType.fromTransitMode(favorite.transitMode)
+        let startId = favorite.selectedStart.stopId
+        let stopId = favorite.selectedEnd.stopId
+
         let originId = String(startId)
         let destinationId = String(stopId)
 
-        let routeId = scheduleRequest.transitMode == .rail ? nil : scheduleRequest.selectedRoute?.routeId
+        let routeId = favorite.transitMode == .rail ? nil : favorite.selectedRoute.routeId
+
+        reportUpdatedFavoriteStatus(favorite: favorite, status: .dataLoading)
 
         client.getRealTimeArrivals(originId: originId, destinationId: destinationId, transitType: transitType, route: routeId).then { realTimeArrivals -> Void in
             guard let arrivals = realTimeArrivals?.arrivals else { return }
-            completion?(arrivals)
+            completion?(arrivals, favorite)
 
         }.catch { error in
             print(error.localizedDescription)
-            self.reportStatus(.dataLoadingError)
+            self.reportUpdatedFavoriteStatus(favorite: favorite, status: .dataLoadingError)
         }
     }
 
-    func mapArrivals(realTimeArrivals: [RealTimeArrival]) {
+    func mapArrivals(realTimeArrivals: [RealTimeArrival], favorite: Favorite) {
 
         var nextToArriveTrips = [NextToArriveTrip]()
         for realTimeArrival in realTimeArrivals {
@@ -83,7 +100,7 @@ class FavoritesNextToArriveProvider: StoreSubscriber {
                 nextToArriveTrips.append(nextToArriveTrip)
             }
         }
-        reportStatus(.dataLoadedSuccessfully, nextToArriveTrips: nextToArriveTrips)
+        reportSuccessfullyUpdatedFavorite(favorite: favorite, nextToArriveTrips: nextToArriveTrips)
     }
 }
 
@@ -91,7 +108,7 @@ extension FavoritesNextToArriveProvider: SubscriberUnsubscriber {
     func subscribe() {
         store.subscribe(self) {
             $0.select {
-                $0.favoritesState.refreshDataRequested
+                $0.favoritesState.favorites
             }.skipRepeats { $0 == $1 }
         }
     }

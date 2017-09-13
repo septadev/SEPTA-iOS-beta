@@ -29,7 +29,8 @@ struct FavoritesReducer {
             favoritesState = reduceAddFavorite(action: action, state: state)
         case let action as RemoveFavorite:
             favoritesState = reduceRemoveFavorite(action: action, state: state)
-
+        case let action as UpdateFavorite:
+            favoritesState = reduceUpdateFavorite(action: action, state: state)
         default:
             break
         }
@@ -49,6 +50,12 @@ struct FavoritesReducer {
 
     static func reduceRemoveFavorite(action: RemoveFavorite, state: FavoritesState) -> FavoritesState {
         let favorites = state.favorites.filter { $0 != action.favorite }
+        return FavoritesState(favorites: favorites)
+    }
+
+    static func reduceUpdateFavorite(action: UpdateFavorite, state: FavoritesState) -> FavoritesState {
+        var favorites = state.favorites.filter { $0.favoriteId != action.favorite.favoriteId }
+        favorites.append(action.favorite)
         return FavoritesState(favorites: favorites)
     }
 }

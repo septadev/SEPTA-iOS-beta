@@ -42,10 +42,17 @@ class FavoritesProvider: StoreSubscriber {
 
                     let jsonData = try Data(contentsOf: targetURL)
                     let favorites = try JSONDecoder().decode([Favorite].self, from: jsonData)
-                    let action = LoadFavorites(favorites: favorites)
-                    DispatchQueue.main.async { store.dispatch(action) }
 
-                    print("retrieve favorites from \(targetURL.path) was successful")
+                    DispatchQueue.main.async {
+
+                        print("retrieve favorites from \(targetURL.path) was successful")
+                        if favorites.count > 0 {
+                            let switcchTabsAction = SwitchTabs(activeNavigationController: .favorites, description: "Defaulting to Favorites because they exist")
+                            store.dispatch(switcchTabsAction)
+                        }
+                        let action = LoadFavorites(favorites: favorites)
+                        store.dispatch(action)
+                    }
                 }
                 self?.initialLoadFavoritesFromDiskHasCompleted = true
             } catch {
