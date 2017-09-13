@@ -10,13 +10,16 @@ import Foundation
 import SeptaSchedule
 
 struct Favorite: Codable {
-
+    let favoriteId: String
+    let favoriteName: String
     let transitMode: TransitMode
     let selectedRoute: Route
     let selectedStart: Stop
     let selectedEnd: Stop
 
-    init(transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop) {
+    init(favoriteId: String, favoriteName: String, transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop) {
+        self.favoriteId = favoriteId
+        self.favoriteName = favoriteName
         self.transitMode = transitMode
         self.selectedRoute = selectedRoute
         self.selectedStart = selectedStart
@@ -24,6 +27,8 @@ struct Favorite: Codable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case favoriteId
+        case favoriteName
         case transitMode
         case selectedRoute
         case selectedStart
@@ -32,14 +37,28 @@ struct Favorite: Codable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self) // defining our (keyed) container
+
         transitMode = try container.decode(TransitMode.self, forKey: .transitMode)
         selectedRoute = try container.decode(Route.self, forKey: .selectedRoute)
         selectedStart = try container.decode(Stop.self, forKey: .selectedStart)
         selectedEnd = try container.decode(Stop.self, forKey: .selectedEnd)
+
+        if let favoriteId = try container.decode(String?.self, forKey: .favoriteId) {
+            self.favoriteId = favoriteId
+        } else {
+            favoriteId = UUID().uuidString
+        }
+
+        if let favoriteName = try container.decode(String?.self, forKey: .favoriteName) {
+            self.favoriteName = favoriteName
+        } else {
+            favoriteName = "\(selectedRoute.routeId): \(selectedStart.stopName) to \(selectedEnd.stopName)"
+        }
     }
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(favoriteName, forKey: .favoriteName)
         try container.encode(transitMode, forKey: .transitMode)
         try container.encode(selectedRoute, forKey: .selectedRoute)
         try container.encode(selectedStart, forKey: .selectedStart)
@@ -50,6 +69,12 @@ struct Favorite: Codable {
 extension Favorite: Equatable {}
 func ==(lhs: Favorite, rhs: Favorite) -> Bool {
     var areEqual = true
+
+    areEqual = lhs.favoriteId == rhs.favoriteId
+    guard areEqual else { return false }
+
+    areEqual = lhs.favoriteName == rhs.favoriteName
+    guard areEqual else { return false }
 
     areEqual = lhs.transitMode == rhs.transitMode
     guard areEqual else { return false }

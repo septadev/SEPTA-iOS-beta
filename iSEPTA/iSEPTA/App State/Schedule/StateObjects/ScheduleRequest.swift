@@ -54,7 +54,9 @@ extension ScheduleRequest {
             let selectedRoute = selectedRoute,
             let selectedStart = selectedStart,
             let selectedEnd = selectedEnd else { return nil }
-        return Favorite(transitMode: transitMode, selectedRoute: selectedRoute, selectedStart: selectedStart, selectedEnd: selectedEnd)
+        let favoriteId = UUID().uuidString
+        let favoriteName = "\(selectedRoute.routeId): \(selectedStart.stopName) to \(selectedEnd.stopName)"
+        return Favorite(favoriteId: favoriteId, favoriteName: favoriteName, transitMode: transitMode, selectedRoute: selectedRoute, selectedStart: selectedStart, selectedEnd: selectedEnd)
     }
 
     func isFavorited() -> Bool {
