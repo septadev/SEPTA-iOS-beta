@@ -32,11 +32,11 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_: UITableView, heightForFooterInSection _: Int) -> CGFloat {
-        return 5
+        return 20
     }
 
     func tableView(_: UITableView, viewForFooterInSection _: Int) -> UIView? {
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 5))
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 18))
         footerView.backgroundColor = UIColor.clear
         return footerView
     }

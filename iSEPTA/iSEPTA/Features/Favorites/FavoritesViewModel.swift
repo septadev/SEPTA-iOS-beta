@@ -42,7 +42,8 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
     var favoriteViewModels = [FavoriteNextToArriveViewModel]()
 
     func newState(state: StoreSubscriberStateType) {
-        favoriteViewModels = state.map { FavoriteNextToArriveViewModel(favorite: $0, delegate: favoriteDelegate) }
+        let loadedFavorites = state.filter { $0.nextToArriveUpdateStatus == .dataLoadedSuccessfully }
+        favoriteViewModels = loadedFavorites.map { FavoriteNextToArriveViewModel(favorite: $0, delegate: favoriteDelegate) }
         favoriteViewModels.sort { $0.favorite.favoriteName < $1.favorite.favoriteName }
         delegate.viewModelUpdated()
     }
@@ -95,7 +96,7 @@ extension FavoritesViewModel { // table loading
                     configureTrip(favoriteViewModel: favoriteViewModel, trip: trip, stackView: stackView)
                 }
             } else {
-                configureTrip(favoriteViewModel: favoriteViewModel, trip: firstTripInSection, stackView: stackView)
+                configureConnectingTrip(favoriteViewModel: favoriteViewModel, trip: firstTripInSection, stackView: stackView)
             }
         }
     }

@@ -55,7 +55,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="busFavorite" translatesAutoresizingMaskIntoConstraints="NO" id="JEP-LR-x4h">
-                                                            <rect key="frame" x="5" y="5" width="35" height="35"/>
+                                                            <rect key="frame" x="14" y="5" width="35" height="35"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="35" id="EoG-mS-S6F"/>
                                                                 <constraint firstAttribute="height" constant="35" id="fve-IW-Chv"/>
@@ -65,7 +65,7 @@
                                                             <rect key="frame" x="0.0" y="55" width="355" height="90.5"/>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ea-2V-oVM" userLabel="FavoriteName">
-                                                            <rect key="frame" x="48" y="13" width="47" height="19.5"/>
+                                                            <rect key="frame" x="56" y="13" width="47" height="19.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="16"/>
                                                             <color key="textColor" red="0.10588235294117647" green="0.30588235294117649" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -73,13 +73,13 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="0ea-2V-oVM" firstAttribute="centerY" secondItem="JEP-LR-x4h" secondAttribute="centerY" id="8Su-ce-t5p" userLabel="FavoriteNameCenterY"/>
-                                                        <constraint firstItem="0ea-2V-oVM" firstAttribute="leading" secondItem="JEP-LR-x4h" secondAttribute="trailing" constant="8" id="Af7-i6-not" userLabel="FavoriteNameLeft"/>
+                                                        <constraint firstItem="0ea-2V-oVM" firstAttribute="leading" secondItem="JEP-LR-x4h" secondAttribute="trailing" constant="7" id="Af7-i6-not" userLabel="FavoriteNameLeft"/>
                                                         <constraint firstItem="Jgd-J4-iX8" firstAttribute="top" secondItem="JEP-LR-x4h" secondAttribute="bottom" constant="35" id="eNo-lx-uJZ" userLabel="StackViewTop"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0ea-2V-oVM" secondAttribute="trailing" constant="10" id="gxF-Nc-Inw" userLabel="FavoriteNameRight"/>
-                                                        <constraint firstItem="JEP-LR-x4h" firstAttribute="top" secondItem="Er8-AI-vQ0" secondAttribute="top" constant="5" id="iaA-cZ-vDd" userLabel="IconViewTop"/>
+                                                        <constraint firstItem="JEP-LR-x4h" firstAttribute="top" secondItem="Er8-AI-vQ0" secondAttribute="top" constant="11" id="iaA-cZ-vDd" userLabel="IconViewTop"/>
                                                         <constraint firstItem="Jgd-J4-iX8" firstAttribute="leading" secondItem="Er8-AI-vQ0" secondAttribute="leading" id="mcv-6R-wVs" userLabel="StackViewLeft"/>
                                                         <constraint firstAttribute="bottom" secondItem="Jgd-J4-iX8" secondAttribute="bottom" id="pSd-8I-ssp" userLabel="StackViewBottom"/>
-                                                        <constraint firstItem="JEP-LR-x4h" firstAttribute="leading" secondItem="Er8-AI-vQ0" secondAttribute="leading" constant="5" id="wBO-Uu-hTV" userLabel="IconViewLeft"/>
+                                                        <constraint firstItem="JEP-LR-x4h" firstAttribute="leading" secondItem="Er8-AI-vQ0" secondAttribute="leading" constant="14" id="wBO-Uu-hTV" userLabel="IconViewLeft"/>
                                                         <constraint firstAttribute="trailing" secondItem="Jgd-J4-iX8" secondAttribute="trailing" id="zNv-Cr-a9N" userLabel="StackViewRight"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
