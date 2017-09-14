@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */; };
 		5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */; };
+		580A355B1F6A0E84000FCA82 /* FavoritesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A355A1F6A0E84000FCA82 /* FavoritesNavigationController.swift */; };
+		580A355F1F6A0F9B000FCA82 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A355E1F6A0F9B000FCA82 /* FavoritesViewController.swift */; };
+		580A35611F6A12C0000FCA82 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A35601F6A12C0000FCA82 /* FavoritesViewModel.swift */; };
+		580A35631F6A1374000FCA82 /* BaseNextToArriveInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A35621F6A1374000FCA82 /* BaseNextToArriveInfoViewModel.swift */; };
 		58126F671F631C0800A6E187 /* ColorPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F661F631C0800A6E187 /* ColorPointAnnotation.swift */; };
 		58126F6B1F631C3100A6E187 /* RouteOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F6A1F631C3100A6E187 /* RouteOverlay.swift */; };
 		58126F6D1F631C5100A6E187 /* RouteDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F6C1F631C5100A6E187 /* RouteDrawable.swift */; };
@@ -476,6 +480,10 @@
 
 /* Begin PBXFileReference section */
 		5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectedTableViewCell.swift; sourceTree = "<group>"; };
+		580A355A1F6A0E84000FCA82 /* FavoritesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesNavigationController.swift; sourceTree = "<group>"; };
+		580A355E1F6A0F9B000FCA82 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		580A35601F6A12C0000FCA82 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		580A35621F6A1374000FCA82 /* BaseNextToArriveInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNextToArriveInfoViewModel.swift; sourceTree = "<group>"; };
 		58126F661F631C0800A6E187 /* ColorPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPointAnnotation.swift; sourceTree = "<group>"; };
 		58126F6A1F631C3100A6E187 /* RouteOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteOverlay.swift; sourceTree = "<group>"; };
 		58126F6C1F631C5100A6E187 /* RouteDrawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDrawable.swift; sourceTree = "<group>"; };
@@ -1073,6 +1081,9 @@
 			isa = PBXGroup;
 			children = (
 				582F4E8F1F33B1120062A546 /* favorites.storyboard */,
+				580A35601F6A12C0000FCA82 /* FavoritesViewModel.swift */,
+				580A355A1F6A0E84000FCA82 /* FavoritesNavigationController.swift */,
+				580A355E1F6A0F9B000FCA82 /* FavoritesViewController.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -1836,6 +1847,7 @@
 			children = (
 				671A192A1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift */,
 				671A192C1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift */,
+				580A35621F6A1374000FCA82 /* BaseNextToArriveInfoViewModel.swift */,
 				678DAA9D1F67065F00EB6EE8 /* NextToArriveConnectingViewModel.swift */,
 				678DAA9F1F67067500EB6EE8 /* NextToArriveNonConnectivingViewModel.swift */,
 				678DAAA11F6706E300EB6EE8 /* NextToArriveTripGrouper.swift */,
@@ -2332,6 +2344,7 @@
 				582F4EBC1F33B1120062A546 /* DateFormatters.swift in Sources */,
 				678DAAA41F6728B100EB6EE8 /* NextToArriveTripsTableViewController.swift in Sources */,
 				678DAAB91F6748BE00EB6EE8 /* TripHeaderView.swift in Sources */,
+				580A35611F6A12C0000FCA82 /* FavoritesViewModel.swift in Sources */,
 				58EB8D171F5D7D630028A487 /* NextToArriveSelectTripViewController.swift in Sources */,
 				678F05331F5BFFC900CC4D3C /* LocationState.swift in Sources */,
 				582F4EC81F33B1120062A546 /* RouteTableViewCell.swift in Sources */,
@@ -2453,6 +2466,7 @@
 				58490E421F55F899007DBCA1 /* AlertProviders.swift in Sources */,
 				589BCC321F3D5068002FAEDE /* SchedulesPresentationController.swift in Sources */,
 				586DFEC51F505482004BC972 /* CurvedTopView.swift in Sources */,
+				580A355B1F6A0E84000FCA82 /* FavoritesNavigationController.swift in Sources */,
 				581DA54A1F3BE1C8006AEC39 /* IdentifiableController.swift in Sources */,
 				58EB8D2D1F5D927E0028A487 /* NextToArriveScheduleReducer.swift in Sources */,
 				67C5672F1F59862600FF6203 /* ReverseTripButton.swift in Sources */,
@@ -2493,7 +2507,9 @@
 				58DD1A8E1F600715002532DC /* NextToArriveViewModel+StartCell.swift in Sources */,
 				5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */,
 				671A192B1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift in Sources */,
+				580A35631F6A1374000FCA82 /* BaseNextToArriveInfoViewModel.swift in Sources */,
 				58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */,
+				580A355F1F6A0F9B000FCA82 /* FavoritesViewController.swift in Sources */,
 				58E33F161F6143E000C74B7C /* NextToArriveStop.swift in Sources */,
 				58EB8D0F1F5D79530028A487 /* NextToArriveNavigationController.swift in Sources */,
 				58F444FC1F3D335400A93208 /* SeptaAction.swift in Sources */,

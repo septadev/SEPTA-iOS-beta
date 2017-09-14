@@ -16,6 +16,10 @@ enum ViewController: String, Equatable {
     case nextToArriveController
     case nextToArriveDetailController
 
+    // Favorites
+
+    case favoritesViewController
+
     func storyboardIdentifier() -> String {
         switch self {
         case .selectSchedules:
@@ -34,6 +38,8 @@ enum ViewController: String, Equatable {
             return "nextToArrive"
         case .nextToArriveDetailController:
             return "nextToArriveDetail"
+        case .favoritesViewController:
+            return "favorites"
         }
     }
 }
