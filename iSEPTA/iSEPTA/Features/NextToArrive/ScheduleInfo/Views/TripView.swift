@@ -22,4 +22,8 @@ class TripView: UIView {
     @IBOutlet weak var startStopLabel: UILabel!
     @IBOutlet weak var onTimeLabel: UILabel!
     @IBOutlet weak var endStopLabel: UILabel!
+
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: UIViewNoIntrinsicMetric, height: 58)
+    }
 }
