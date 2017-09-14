@@ -22,11 +22,13 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
     }
 
     let delegate: UpdateableFromViewModel
-
+    let tableView: UITableView!
     let favoriteDelegate = FavoritesViewModelDelegate()
 
     init(delegate: UpdateableFromViewModel = FavoritesViewModelDelegate(), tableView: UITableView) {
         self.delegate = delegate
+        self.tableView = tableView
+        self.tableView.backgroundColor = UIColor.clear
         registerViews(tableView: tableView)
         subscribe()
     }
@@ -41,6 +43,7 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
 
     func newState(state: StoreSubscriberStateType) {
         favoriteViewModels = state.map { FavoriteNextToArriveViewModel(favorite: $0, delegate: favoriteDelegate) }
+        favoriteViewModels.sort { $0.favorite.favoriteName < $1.favorite.favoriteName }
         delegate.viewModelUpdated()
     }
 
@@ -54,6 +57,23 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
 
     func unsubscribe() {
         store.unsubscribe(self)
+    }
+}
+
+extension FavoritesViewModel { // table loading
+
+    func numberOfRows() -> Int {
+
+        return favoriteViewModels.count
+    }
+
+    func configureTripCell(favoriteTripCell: FavoriteTripCell, indexPath: IndexPath) {
+        guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "favoriteHeaderCell", for: indexPath) as? FavoriteHeaderCell else { return }
+        let favoriteViewModel = favoriteViewModels[indexPath.section]
+        headerCell.favoriteIcon.image = favoriteViewModel.transitMode().favoritesIcon()
+        headerCell.favoriteName.text = favoriteViewModel.favorite.favoriteName
+        favoriteTripCell.stackView.clearSubviews()
+        favoriteTripCell.stackView.addArrangedSubview(headerCell.contentView)
     }
 }
 

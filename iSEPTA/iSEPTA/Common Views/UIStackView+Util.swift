@@ -44,4 +44,11 @@ extension UIStackView {
             }
         }
     }
+
+    func clearSubviews() {
+        for subview in arrangedSubviews {
+            removeArrangedSubview(subview)
+            subview.removeFromSuperview()
+        }
+    }
 }

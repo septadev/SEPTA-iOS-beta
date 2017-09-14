@@ -17,6 +17,34 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         view.backgroundColor = SeptaColor.navBarBlue
         viewModel = FavoritesViewModel(delegate: self, tableView: tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+}
+
+extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in _: UITableView) -> Int {
+        return viewModel.numberOfRows()
+    }
+
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        return 1
+    }
+
+    func tableView(_: UITableView, heightForFooterInSection _: Int) -> CGFloat {
+        return 5
+    }
+
+    func tableView(_: UITableView, viewForFooterInSection _: Int) -> UIView? {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 5))
+        footerView.backgroundColor = UIColor.clear
+        return footerView
+    }
+
+    func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let tripCell = tableView.dequeueReusableCell(withIdentifier: "favoriteTripCell") as? FavoriteTripCell else { return UITableViewCell() }
+        viewModel.configureTripCell(favoriteTripCell: tripCell, indexPath: indexPath)
+        return tripCell
     }
 }
 
