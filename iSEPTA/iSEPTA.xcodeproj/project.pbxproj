@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */; };
+		580128061F6B1D13006B6DB8 /* FavoriteTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580128031F6B1D13006B6DB8 /* FavoriteTripCell.xib */; };
+		580128081F6B26D2006B6DB8 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580128071F6B26D2006B6DB8 /* RoundedShadowView.swift */; };
 		5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */; };
 		580A355B1F6A0E84000FCA82 /* FavoritesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A355A1F6A0E84000FCA82 /* FavoritesNavigationController.swift */; };
 		580A355F1F6A0F9B000FCA82 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A355E1F6A0F9B000FCA82 /* FavoritesViewController.swift */; };
@@ -485,6 +487,8 @@
 
 /* Begin PBXFileReference section */
 		5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectedTableViewCell.swift; sourceTree = "<group>"; };
+		580128031F6B1D13006B6DB8 /* FavoriteTripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteTripCell.xib; sourceTree = "<group>"; };
+		580128071F6B26D2006B6DB8 /* RoundedShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundedShadowView.swift; path = iSEPTA/Views/RoundedShadowView.swift; sourceTree = SOURCE_ROOT; };
 		580A355A1F6A0E84000FCA82 /* FavoritesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesNavigationController.swift; sourceTree = "<group>"; };
 		580A355E1F6A0F9B000FCA82 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		580A35601F6A12C0000FCA82 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
@@ -1003,6 +1007,7 @@
 		582F4E811F33B1120062A546 /* Common Views */ = {
 			isa = PBXGroup;
 			children = (
+				580128071F6B26D2006B6DB8 /* RoundedShadowView.swift */,
 				586DFEC41F505482004BC972 /* CurvedTopView.swift */,
 				67F757B41F488A4400D3A4EE /* SeptaDraw.swift */,
 				582F4EB01F33B1120062A546 /* View Models */,
@@ -1090,6 +1095,7 @@
 		582F4E8E1F33B1120062A546 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				580128031F6B1D13006B6DB8 /* FavoriteTripCell.xib */,
 				580A35661F6A255F000FCA82 /* FavoriteTripCell.swift */,
 				582F4E8F1F33B1120062A546 /* favorites.storyboard */,
 				580A35601F6A12C0000FCA82 /* FavoritesViewModel.swift */,
@@ -2276,6 +2282,7 @@
 				58B2782E1F62AAD500663507 /* 103.kml in Resources */,
 				58B2789B1F62AAD500663507 /* 89.kml in Resources */,
 				582F4EDB1F33B1120062A546 /* Assets.xcassets in Resources */,
+				580128061F6B1D13006B6DB8 /* FavoriteTripCell.xib in Resources */,
 				582F4ED91F33B1120062A546 /* settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2363,6 +2370,7 @@
 				678DAAB91F6748BE00EB6EE8 /* TripHeaderView.swift in Sources */,
 				580A35611F6A12C0000FCA82 /* FavoritesViewModel.swift in Sources */,
 				58EB8D171F5D7D630028A487 /* NextToArriveSelectTripViewController.swift in Sources */,
+				580128081F6B26D2006B6DB8 /* RoundedShadowView.swift in Sources */,
 				678F05331F5BFFC900CC4D3C /* LocationState.swift in Sources */,
 				582F4EC81F33B1120062A546 /* RouteTableViewCell.swift in Sources */,
 				67075FC21F578578008BB38C /* ScheduleUpdateMode.swift in Sources */,

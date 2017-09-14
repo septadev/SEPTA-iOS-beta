@@ -10,17 +10,29 @@ import Foundation
 import UIKit
 
 class FavoriteTripCell: UITableViewCell {
+    @IBOutlet weak var content: UIView!
 
+    @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var favoriteIcon: UIImageView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var favoriteNameLabel: UILabel!
 
     override func awakeFromNib() {
 
-        backgroundColor = UIColor.clear
-        contentView.backgroundColor = UIColor.white
-        UIView.addSurroundShadow(toView: contentView, withCornerRadius: 4)
+        styleClearViews([self, contentView])
+        styleWhiteViews([shadowView, content])
+    }
 
-        separatorInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    func styleWhiteViews(_ views: [UIView]) {
+        for view in views {
+            view.backgroundColor = UIColor.white
+            view.layer.cornerRadius = 4
+        }
+    }
+
+    func styleClearViews(_ views: [UIView]) {
+        for view in views {
+            view.backgroundColor = UIColor.clear
+        }
     }
 }

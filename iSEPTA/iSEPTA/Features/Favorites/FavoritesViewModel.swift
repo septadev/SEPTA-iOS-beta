@@ -16,9 +16,7 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
     typealias StoreSubscriberStateType = [Favorite]
 
     enum CellIds: String {
-        case noConnectionCell
-        case connectionCell
-        case noConnectionSectionHeader
+        case favoriteTripCell
     }
 
     let delegate: UpdateableFromViewModel
@@ -34,9 +32,8 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
     }
 
     func registerViews(tableView: UITableView) {
-        tableView.register(UINib(nibName: "NoConnectionCell", bundle: nil), forCellReuseIdentifier: CellIds.noConnectionCell.rawValue)
-        tableView.register(UINib(nibName: "ConnectionCell", bundle: nil), forCellReuseIdentifier: CellIds.connectionCell.rawValue)
-        tableView.register(NoConnectionUIHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: CellIds.noConnectionSectionHeader.rawValue)
+        let nib = UINib(nibName: "FavoriteTripCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: CellIds.favoriteTripCell.rawValue)
     }
 
     var favoriteViewModels = [FavoriteNextToArriveViewModel]()
@@ -86,13 +83,18 @@ extension FavoritesViewModel { // table loading
         for tripsByRoute in favoriteViewModel.groupedTripData {
             guard let firstTripInSection = tripsByRoute.first else { continue }
             if !favoriteViewModel.tripHasConnection(trip: firstTripInSection) {
-                let wrapperView = UIView()
-                wrapperView.translatesAutoresizingMaskIntoConstraints = false
-                let headerView: NoConnectionSectionHeader! = wrapperView.awakeInsertAndPinSubview(nibName: "NoConnectionSectionHeader")
-                favoriteViewModel.configureSectionHeader(firstTripInSection: firstTripInSection, headerView: headerView)
-                stackView.addArrangedSubview(headerView)
 
-                for trip in tripsByRoute {
+                let headerView: NoConnectionSectionHeader! = stackView.awakeInsertArrangedView(nibName: "NoConnectionSectionHeader")
+                favoriteViewModel.configureSectionHeader(firstTripInSection: firstTripInSection, headerView: headerView)
+
+                let firstThreeTrips: ArraySlice<NextToArriveTrip>
+                if tripsByRoute.count > 3 {
+                    firstThreeTrips = tripsByRoute[0 ... 2]
+                } else {
+                    firstThreeTrips = tripsByRoute[0 ..< tripsByRoute.count]
+                }
+
+                for trip in firstThreeTrips {
                     configureTrip(favoriteViewModel: favoriteViewModel, trip: trip, stackView: stackView)
                 }
             } else {
@@ -102,19 +104,15 @@ extension FavoritesViewModel { // table loading
     }
 
     func configureTrip(favoriteViewModel: FavoriteNextToArriveViewModel, trip: NextToArriveTrip, stackView: UIStackView) {
-        let wrapperView = UIView()
-        wrapperView.translatesAutoresizingMaskIntoConstraints = false
-        let tripView: TripView! = wrapperView.awakeInsertAndPinSubview(nibName: "TripView")
+
+        let tripView: TripView! = stackView.awakeInsertArrangedView(nibName: "TripView")
         favoriteViewModel.configureTripView(tripView: tripView, forTrip: trip)
-        stackView.addArrangedSubview(wrapperView)
     }
 
     func configureConnectingTrip(favoriteViewModel: FavoriteNextToArriveViewModel, trip: NextToArriveTrip, stackView: UIStackView) {
-        let wrapperView = UIView()
-        wrapperView.translatesAutoresizingMaskIntoConstraints = false
-        let connectionView: CellConnectionView! = wrapperView.awakeInsertAndPinSubview(nibName: "CellConnectionView")
+
+        let connectionView: CellConnectionView! = stackView.awakeInsertArrangedView(nibName: "CellConnectionView")
         favoriteViewModel.configureConnectionCell(cell: connectionView, forTrip: trip)
-        stackView.addArrangedSubview(wrapperView)
     }
 }
 

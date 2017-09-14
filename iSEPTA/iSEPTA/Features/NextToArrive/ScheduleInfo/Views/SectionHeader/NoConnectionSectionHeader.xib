@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -47,12 +46,13 @@
                 <constraint firstItem="FoN-5Q-bnL" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="7wc-KG-pSJ" userLabel="TripHeaderViewCenterX"/>
                 <constraint firstItem="hcG-as-Dze" firstAttribute="leading" secondItem="FoN-5Q-bnL" secondAttribute="trailing" constant="5" id="CjQ-30-Jc3" userLabel="BentDividerViewRightLeading"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hcG-as-Dze" secondAttribute="trailing" constant="17" id="GBT-0x-ey0" userLabel="BentDividerViewRightTrailing"/>
+                <constraint firstItem="FoN-5Q-bnL" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="2" id="TMT-dN-0XU" userLabel="TripHeaderViewTop"/>
                 <constraint firstItem="hcG-as-Dze" firstAttribute="centerY" secondItem="FoN-5Q-bnL" secondAttribute="centerY" constant="9" id="Z7E-IY-UrX" userLabel="BentDividerViewRightCenterY"/>
                 <constraint firstItem="FoN-5Q-bnL" firstAttribute="leading" secondItem="LNn-JJ-qdx" secondAttribute="trailing" constant="5" id="eCL-i9-7mu" userLabel="TripHeaderViewLeft"/>
                 <constraint firstItem="LNn-JJ-qdx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="17" id="eCP-7o-igf" userLabel="BentDividerViewLeftLeading"/>
                 <constraint firstItem="LNn-JJ-qdx" firstAttribute="centerY" secondItem="FoN-5Q-bnL" secondAttribute="centerY" constant="9" id="q5a-bX-yC0" userLabel="BentDividerLeftCenterY"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="FoN-5Q-bnL" secondAttribute="bottom" constant="10" id="rxs-gU-TAU" userLabel="TripHeaderViewBottom"/>
-                <constraint firstItem="LNn-JJ-qdx" firstAttribute="width" secondItem="hcG-as-Dze" secondAttribute="width" id="sCQ-6z-RkI"/>
+                <constraint firstItem="LNn-JJ-qdx" firstAttribute="width" secondItem="hcG-as-Dze" secondAttribute="width" id="sCQ-6z-RkI" userLabel="BentDividerEqualWidth"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

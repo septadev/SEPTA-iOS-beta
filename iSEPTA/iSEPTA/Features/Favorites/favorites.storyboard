@@ -44,14 +44,14 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pJh-WZ-kY4">
-                                        <rect key="frame" x="10" y="20" width="355" height="534"/>
+                                        <rect key="frame" x="5" y="20" width="365" height="534"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteTripCell" id="a1D-sT-eLB" userLabel="TripCell" customClass="FavoriteTripCell" customModule="Septa" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="355" height="44"/>
+                                                <rect key="frame" x="0.0" y="28" width="365" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a1D-sT-eLB" id="Er8-AI-vQ0">
-                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="365" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="busFavorite" translatesAutoresizingMaskIntoConstraints="NO" id="JEP-LR-x4h">
@@ -62,7 +62,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Jgd-J4-iX8">
-                                                            <rect key="frame" x="0.0" y="55" width="355" height="90.5"/>
+                                                            <rect key="frame" x="0.0" y="55" width="365" height="90.5"/>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ea-2V-oVM" userLabel="FavoriteName">
                                                             <rect key="frame" x="56" y="13" width="47" height="19.5"/>
@@ -95,8 +95,8 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="pJh-WZ-kY4" secondAttribute="bottom" id="3cZ-4h-izk" userLabel="tableViewBottom"/>
-                                    <constraint firstAttribute="trailing" secondItem="pJh-WZ-kY4" secondAttribute="trailing" constant="10" id="4OA-o1-tsc" userLabel="TableViewRight"/>
-                                    <constraint firstItem="pJh-WZ-kY4" firstAttribute="leading" secondItem="z3c-wj-1cI" secondAttribute="leading" constant="10" id="N8v-D0-Ees" userLabel="TableViewLeft"/>
+                                    <constraint firstAttribute="trailing" secondItem="pJh-WZ-kY4" secondAttribute="trailing" constant="5" id="4OA-o1-tsc" userLabel="TableViewRight"/>
+                                    <constraint firstItem="pJh-WZ-kY4" firstAttribute="leading" secondItem="z3c-wj-1cI" secondAttribute="leading" constant="5" id="N8v-D0-Ees" userLabel="TableViewLeft"/>
                                     <constraint firstItem="pJh-WZ-kY4" firstAttribute="top" secondItem="z3c-wj-1cI" secondAttribute="top" constant="20" id="qtu-c8-Wg7" userLabel="TableViewTop"/>
                                 </constraints>
                             </view>

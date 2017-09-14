@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="CA8-I5-nTp" customClass="CellConnectionView" customModule="Septa" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="CA8-I5-nTp" customClass="CellConnectionView" customModule="FavoritesCell" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="520" height="185"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -31,7 +30,7 @@
                         <constraint firstAttribute="height" constant="58" placeholder="YES" id="iHG-0A-45Y"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qPT-ni-OhQ" userLabel="BlueGradientView" customClass="BlueGradientView" customModule="Septa" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qPT-ni-OhQ" userLabel="BlueGradientView" customClass="BlueGradientView" customModule="FavoritesCell" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="79" width="520" height="27"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect @ 30th St Station" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPX-HB-JJE" userLabel="ConnectionLabel">
@@ -52,11 +51,11 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9C-N2-WgH" userLabel="ConnectionGraphic">
                     <rect key="frame" x="15" y="33.5" width="10" height="116"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idZ-Sb-S2V" userLabel="ConnectionConnectorView" customClass="VerticalDottedTripGraphic" customModule="Septa" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idZ-Sb-S2V" userLabel="ConnectionConnectorView" customClass="VerticalDottedTripGraphic" customModule="FavoritesCell" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="10" height="116"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ITK-9F-7ey" userLabel="DiamondView" customClass="NextToArriveDiamond" customModule="Septa" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ITK-9F-7ey" userLabel="DiamondView" customClass="NextToArriveDiamond" customModule="FavoritesCell" customModuleProvider="target">
                             <rect key="frame" x="-2" y="52" width="14" height="14"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
