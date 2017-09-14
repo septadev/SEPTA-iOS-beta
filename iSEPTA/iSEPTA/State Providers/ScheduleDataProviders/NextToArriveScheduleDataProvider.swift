@@ -24,13 +24,14 @@ class NextToArriveScheduleDataProvider: BaseScheduleDataProvider {
         }
     }
 
-    override func processSelectedTransitMode(scheduleRequest: ScheduleRequest) {
-        if scheduleRequest.transitMode == .rail && scheduleRequest.selectedStart == nil {
+    override func prerequisitesExistForTripStarts(scheduleRequest: ScheduleRequest) -> Bool {
+        if scheduleRequest.transitMode == .rail && scheduleRequest.selectedRoute == nil {
             let action = LoadAllRailRoutes()
             store.dispatch(action)
-        } else {
+        } else if scheduleRequest.selectedRoute == nil {
             retrieveAvailableRoutes(scheduleRequest: scheduleRequest)
         }
+        return scheduleRequest.selectedRoute != nil
     }
 
     deinit {

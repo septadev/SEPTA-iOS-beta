@@ -16,5 +16,11 @@ class ScheduleDataProvider: BaseScheduleDataProvider {
         store.subscribe(self) {
             $0.select { $0.scheduleState.scheduleRequest }.skipRepeats { $0 == $1 }
         }
+        handleDefaultTransitMode()
+    }
+
+    func handleDefaultTransitMode() {
+        let defaultScheduleRequest = ScheduleRequest()
+        retrieveAvailableRoutes(scheduleRequest: defaultScheduleRequest)
     }
 }

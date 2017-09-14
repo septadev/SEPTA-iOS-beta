@@ -29,15 +29,10 @@ class BaseScheduleDataProvider: StoreSubscriber {
 
     func processNewState(scheduleRequest: ScheduleRequest) {
         processReverseTrip(scheduleRequest: scheduleRequest)
-        processSelectedTransitMode(scheduleRequest: scheduleRequest)
         processSelectedRoute(scheduleRequest: scheduleRequest)
         processSelectedTripStart(scheduleRequest: scheduleRequest)
         processSelectedTripEnd(scheduleRequest: scheduleRequest)
         processSelectedTrip(scheduleRequest: scheduleRequest)
-    }
-
-    func processSelectedTransitMode(scheduleRequest: ScheduleRequest) {
-        retrieveAvailableRoutes(scheduleRequest: scheduleRequest)
     }
 
     func processSelectedRoute(scheduleRequest: ScheduleRequest) {
@@ -114,9 +109,8 @@ class BaseScheduleDataProvider: StoreSubscriber {
     // MARK: -  Prerequisites Have Changed
 
     func prerequisitesForRoutesHaveChanged(scheduleRequest: ScheduleRequest) -> Bool {
-        let transitModeComparison = Optionals.optionalCompare(currentValue: currentScheduleRequest.transitMode, newValue: scheduleRequest.transitMode)
-        let prereqsHaveChanged = !transitModeComparison.equalityResult()
-        return prereqsHaveChanged
+
+        return scheduleRequest.transitMode != currentScheduleRequest.transitMode
     }
 
     func prerequisitesForTripStartsHaveChanged(scheduleRequest: ScheduleRequest) -> Bool {
