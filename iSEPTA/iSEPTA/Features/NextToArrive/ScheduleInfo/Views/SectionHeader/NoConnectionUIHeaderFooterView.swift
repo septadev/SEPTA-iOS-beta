@@ -9,7 +9,11 @@
 import Foundation
 import UIKit
 
-class NoConnectionUIHeaderFooterView: UITableViewHeaderFooterView {
+protocol NoConnectionUIHeaderFooterViewDisplayable {
+    var noConnectionSectionHeader: NoConnectionSectionHeader! { get }
+}
+
+class NoConnectionUIHeaderFooterView: UITableViewHeaderFooterView, NoConnectionUIHeaderFooterViewDisplayable {
 
     var noConnectionSectionHeader: NoConnectionSectionHeader!
     override func awakeFromNib() {
@@ -20,7 +24,7 @@ class NoConnectionUIHeaderFooterView: UITableViewHeaderFooterView {
         noConnectionSectionHeader = contentView.awakeInsertAndPinSubview(nibName: "NoConnectionSectionHeader")
     }
 
-    required override init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 }

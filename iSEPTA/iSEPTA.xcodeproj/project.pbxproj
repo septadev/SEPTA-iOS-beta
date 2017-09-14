@@ -14,6 +14,8 @@
 		580A35611F6A12C0000FCA82 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A35601F6A12C0000FCA82 /* FavoritesViewModel.swift */; };
 		580A35631F6A1374000FCA82 /* BaseNextToArriveInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A35621F6A1374000FCA82 /* BaseNextToArriveInfoViewModel.swift */; };
 		580A35651F6A1949000FCA82 /* FavoriteNextToArriveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A35641F6A1949000FCA82 /* FavoriteNextToArriveViewModel.swift */; };
+		580A35671F6A255F000FCA82 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A35661F6A255F000FCA82 /* FavoriteCell.swift */; };
+		580A35691F6A2B0A000FCA82 /* FavoriteHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A35681F6A2B0A000FCA82 /* FavoriteHeaderCell.swift */; };
 		58126F671F631C0800A6E187 /* ColorPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F661F631C0800A6E187 /* ColorPointAnnotation.swift */; };
 		58126F6B1F631C3100A6E187 /* RouteOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F6A1F631C3100A6E187 /* RouteOverlay.swift */; };
 		58126F6D1F631C5100A6E187 /* RouteDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F6C1F631C5100A6E187 /* RouteDrawable.swift */; };
@@ -486,6 +488,8 @@
 		580A35601F6A12C0000FCA82 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		580A35621F6A1374000FCA82 /* BaseNextToArriveInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNextToArriveInfoViewModel.swift; sourceTree = "<group>"; };
 		580A35641F6A1949000FCA82 /* FavoriteNextToArriveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNextToArriveViewModel.swift; sourceTree = "<group>"; };
+		580A35661F6A255F000FCA82 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		580A35681F6A2B0A000FCA82 /* FavoriteHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHeaderCell.swift; sourceTree = "<group>"; };
 		58126F661F631C0800A6E187 /* ColorPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPointAnnotation.swift; sourceTree = "<group>"; };
 		58126F6A1F631C3100A6E187 /* RouteOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteOverlay.swift; sourceTree = "<group>"; };
 		58126F6C1F631C5100A6E187 /* RouteDrawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDrawable.swift; sourceTree = "<group>"; };
@@ -1087,6 +1091,7 @@
 				580A35641F6A1949000FCA82 /* FavoriteNextToArriveViewModel.swift */,
 				580A355A1F6A0E84000FCA82 /* FavoritesNavigationController.swift */,
 				580A355E1F6A0F9B000FCA82 /* FavoritesViewController.swift */,
+				580A35681F6A2B0A000FCA82 /* FavoriteHeaderCell.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -1289,6 +1294,7 @@
 			children = (
 				678D26C91F5CC83900D140CC /* FavoritesProvider.swift */,
 				585303CC1F69C74F00145D87 /* FavoritesNextToArriveProvider.swift */,
+				580A35661F6A255F000FCA82 /* FavoriteCell.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -2345,6 +2351,7 @@
 				585303CD1F69C74F00145D87 /* FavoritesNextToArriveProvider.swift in Sources */,
 				582F4ED31F33B1120062A546 /* SelectStopRow.swift in Sources */,
 				582F4EBC1F33B1120062A546 /* DateFormatters.swift in Sources */,
+				580A35671F6A255F000FCA82 /* FavoriteCell.swift in Sources */,
 				678DAAA41F6728B100EB6EE8 /* NextToArriveTripsTableViewController.swift in Sources */,
 				678DAAB91F6748BE00EB6EE8 /* TripHeaderView.swift in Sources */,
 				580A35611F6A12C0000FCA82 /* FavoritesViewModel.swift in Sources */,
@@ -2528,6 +2535,7 @@
 				58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */,
 				581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */,
 				586C1CF11F69B3EE0023607C /* DatabaseMover.swift in Sources */,
+				580A35691F6A2B0A000FCA82 /* FavoriteHeaderCell.swift in Sources */,
 				588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */,
 				58EB8D291F5D90CD0028A487 /* NextToArriveState.swift in Sources */,
 				583523991F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift in Sources */,

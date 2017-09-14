@@ -15,9 +15,9 @@ class FavoriteNextToArriveViewModel: BaseNextToArriveInfoViewModel {
     init(favorite: Favorite, delegate: UpdateableFromViewModel) {
         self.favorite = favorite
         super.init()
-
-        groupedTripData = NextToArriveGrouper.buildNextToArriveTripSections(trips: favorite.nextToArriveTrips)
         self.delegate = delegate
+        groupedTripData = NextToArriveGrouper.buildNextToArriveTripSections(trips: favorite.nextToArriveTrips)
+
     }
 
     override func transitMode() -> TransitMode {

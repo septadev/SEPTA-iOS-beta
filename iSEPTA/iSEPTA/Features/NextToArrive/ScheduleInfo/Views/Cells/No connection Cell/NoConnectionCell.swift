@@ -9,7 +9,11 @@
 import Foundation
 import UIKit
 
-class NoConnectionCell: UITableViewCell {
+protocol NoConnectionCellDisplayable {
+    var tripView: TripView! { get }
+}
+
+class NoConnectionCell: UITableViewCell, NoConnectionCellDisplayable {
     var tripView: TripView!
     override func awakeFromNib() {
         super.awakeFromNib()

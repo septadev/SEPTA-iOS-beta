@@ -76,10 +76,10 @@ extension BaseNextToArriveInfoViewModel { // Section Headers
         }
     }
 
-    func configureSectionHeader(view: UITableViewHeaderFooterView, forSection section: Int) {
+    func configureSectionHeader(view: UIView, forSection section: Int) {
         guard section < groupedTripData.count,
             let firstTripInSection = groupedTripData[section].first,
-            let headerView = view as? NoConnectionUIHeaderFooterView,
+            let headerView = view as? NoConnectionUIHeaderFooterViewDisplayable,
             let noConnectionHeaderView = headerView.noConnectionSectionHeader,
             let tripHeaderView = noConnectionHeaderView.tripHeaderView else { return }
         let routeId = firstTripInSection.startStop.routeId
@@ -115,19 +115,19 @@ extension BaseNextToArriveInfoViewModel { // Table View
         }
     }
 
-    func configureCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
+    func configureCell(_ cell: UIView, atIndexPath indexPath: IndexPath) {
         guard indexPath.section < groupedTripData.count, indexPath.row < groupedTripData[indexPath.section].count else { return }
         let trip = groupedTripData[indexPath.section][indexPath.row]
         switch cell {
-        case let cell as NoConnectionCell:
+        case let cell as NoConnectionCellDisplayable:
             configureNoConnectionCell(cell: cell, forTrip: trip)
-        case let cell as ConnectionCell:
+        case let cell as ConnectionCellDisplayable:
             configureConnectionCell(cell: cell, forTrip: trip)
         default:break
         }
     }
 
-    func configureNoConnectionCell(cell: NoConnectionCell, forTrip trip: NextToArriveTrip) {
+    func configureNoConnectionCell(cell: NoConnectionCellDisplayable, forTrip trip: NextToArriveTrip) {
         let tripView = cell.tripView!
         let hasVehicleLocation = trip.vehicleLocation.firstLegLocation != nil
         tripView.startStopLabel.text = generateTimeString(stop: trip.startStop)
@@ -138,7 +138,7 @@ extension BaseNextToArriveInfoViewModel { // Table View
         tripView.departingBox.layer.borderColor = generateDepartingBoxColor(stop: trip.startStop)
     }
 
-    func configureConnectionCell(cell: ConnectionCell, forTrip trip: NextToArriveTrip) {
+    func configureConnectionCell(cell: ConnectionCellDisplayable, forTrip trip: NextToArriveTrip) {
 
         let firstLegTripView = cell.startConnectionView.tripView!
         let startHasVehicleLocation = trip.vehicleLocation.firstLegLocation != nil

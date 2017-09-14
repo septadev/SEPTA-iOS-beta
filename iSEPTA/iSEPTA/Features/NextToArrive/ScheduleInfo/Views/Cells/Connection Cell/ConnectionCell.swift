@@ -9,7 +9,13 @@
 import Foundation
 import UIKit
 
-class ConnectionCell: UITableViewCell {
+protocol ConnectionCellDisplayable {
+    var startConnectionView: ConnectionView! { get }
+    var endConnectionView: ConnectionView! { get }
+    var connectionLabel: UILabel! { get }
+}
+
+class ConnectionCell: UITableViewCell, ConnectionCellDisplayable {
 
     var startConnectionView: ConnectionView!
     @IBOutlet weak var startConnectionViewWrapper: UIView! {
@@ -25,21 +31,6 @@ class ConnectionCell: UITableViewCell {
         }
     }
 
-    //    @IBOutlet weak var startingTripWrapperView: UIView! {
-    //        didSet {
-    //            connectionView = startingTripWrapperView.awakeInsertAndPinSubview(nibName: "ConnectionView")
-    //            startingTripView = connectionView.tripView
-    //        }
-    //    }
-    //    var startingTripView: TripView!
-    //    var tripView: TripHeaderView!
-    //    var endingTripView: TripView!
-    //    @IBOutlet weak var endingTripWrapperView: UIView! {
-    //        didSet {
-    //            endingTripView = endingTripWrapperView.awakeInsertAndPinSubview(nibName: "TripView")
-    //        }
-    //    }
-    //
     @IBOutlet weak var connectionLabel: UILabel!
 }
 

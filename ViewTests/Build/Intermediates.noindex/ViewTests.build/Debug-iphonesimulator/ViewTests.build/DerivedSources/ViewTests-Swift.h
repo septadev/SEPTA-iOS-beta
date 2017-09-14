@@ -220,10 +220,15 @@ SWIFT_CLASS("_TtC9ViewTests9SeptaDraw")
 + (void)drawBlueGradientViewWithFrame:(CGRect)frame;
 + (void)drawBlueGradientCellWithFrame:(CGRect)frame shouldFill:(BOOL)shouldFill enabled:(BOOL)enabled;
 + (void)drawRedButtonWithFrame:(CGRect)frame redButtonText:(NSString * _Nonnull)redButtonText enabled:(BOOL)enabled;
-+ (void)drawTripCanvasWithFrame:(CGRect)frame;
++ (void)drawVerticalDottedTripGraphicWithFrame:(CGRect)frame;
 + (void)drawAlertViewWithAlertViewFrame:(CGRect)alertViewFrame;
 + (void)drawReverseTripButtonWithFrame:(CGRect)targetFrame resizing:(enum SeptaDrawResizingBehavior)resizing buttonHighlighted:(BOOL)buttonHighlighted;
-+ (void)drawNextToArriveButtonWithButtonFrame:(CGRect)buttonFrame;
++ (void)drawNextToArriveButtonWithButtonFrame:(CGRect)buttonFrame buttonHighlighted:(BOOL)buttonHighlighted;
++ (void)drawConnectingDiamondStationViewWithFrame:(CGRect)frame;
++ (void)drawConnectingGradientViewWithFrame:(CGRect)frame;
++ (void)drawConnectingFlatDividerViewWithFrame:(CGRect)frame;
++ (void)drawConnectingBentDividerViewLeftWithFrame:(CGRect)frame;
++ (void)drawConnectingBentDividerViewRightWithFrame:(CGRect)frame;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

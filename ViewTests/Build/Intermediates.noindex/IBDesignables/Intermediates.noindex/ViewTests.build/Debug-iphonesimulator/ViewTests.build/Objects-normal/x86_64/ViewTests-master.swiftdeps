@@ -1,8 +1,8 @@
 version: "Apple Swift version 4.0 (swiftlang-900.0.63.10 clang-900.0.36)"
 options: "f8ef5fcdcfba60103fbc48ef5e460884"
-build_time: [1504373771, 848965000]
+build_time: [1505356547, 995257000]
 inputs:
-  "/Users/mbroski/Code/Septa/Septa2/iSEPTA/iSEPTA/Views/SeptaDraw.swift": [1504373688, 0]
+  "/Users/mbroski/Code/Septa/Septa2/iSEPTA/iSEPTA/Views/SeptaDraw.swift": [1505248628, 0]
   "/Users/mbroski/Code/Septa/Septa2/ViewTests/ViewTests/ViewController.swift": [1504371316, 0]
   "/Users/mbroski/Code/Septa/Septa2/iSEPTA/iSEPTA/Features/Schedules/TripSchedule/NextToArriveButton.swift": [1504373768, 0]
   "/Users/mbroski/Code/Septa/Septa2/ViewTests/ViewTests/AppDelegate.swift": [1504371316, 0]

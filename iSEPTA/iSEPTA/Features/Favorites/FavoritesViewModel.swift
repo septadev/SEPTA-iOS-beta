@@ -15,16 +15,33 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
 
     typealias StoreSubscriberStateType = [Favorite]
 
+    enum CellIds: String {
+        case noConnectionCell
+        case connectionCell
+        case noConnectionSectionHeader
+    }
+
     let delegate: UpdateableFromViewModel
 
-    init(delegate: UpdateableFromViewModel = FavoritesViewModelDelegate()) {
+    let favoriteDelegate = FavoritesViewModelDelegate()
+
+    init(delegate: UpdateableFromViewModel = FavoritesViewModelDelegate(), tableView: UITableView) {
         self.delegate = delegate
+        registerViews(tableView: tableView)
+        subscribe()
+    }
+
+    func registerViews(tableView: UITableView) {
+        tableView.register(UINib(nibName: "NoConnectionCell", bundle: nil), forCellReuseIdentifier: CellIds.noConnectionCell.rawValue)
+        tableView.register(UINib(nibName: "ConnectionCell", bundle: nil), forCellReuseIdentifier: CellIds.connectionCell.rawValue)
+        tableView.register(NoConnectionUIHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: CellIds.noConnectionSectionHeader.rawValue)
     }
 
     var favoriteViewModels = [FavoriteNextToArriveViewModel]()
 
     func newState(state: StoreSubscriberStateType) {
-        favoriteViewModels = state.map { FavoriteNextToArriveViewModel(favorite: $0, delegate: delegate) }
+        favoriteViewModels = state.map { FavoriteNextToArriveViewModel(favorite: $0, delegate: favoriteDelegate) }
+        delegate.viewModelUpdated()
     }
 
     func subscribe() {

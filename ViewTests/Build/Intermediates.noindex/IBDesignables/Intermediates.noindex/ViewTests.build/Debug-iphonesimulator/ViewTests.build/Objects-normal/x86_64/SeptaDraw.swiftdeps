@@ -11,10 +11,15 @@ provides-dynamic-lookup:
 - "drawAlertView"
 - "drawBlueGradientCell"
 - "drawBlueGradientView"
+- "drawConnectingBentDividerViewLeft"
+- "drawConnectingBentDividerViewRight"
+- "drawConnectingDiamondStationView"
+- "drawConnectingFlatDividerView"
+- "drawConnectingGradientView"
 - "drawNextToArriveButton"
 - "drawRedButton"
 - "drawReverseTripButton"
-- "drawTripCanvas"
+- "drawVerticalDottedTripGraphic"
 depends-top-level:
 - !private "*"
 - !private "*="
@@ -78,6 +83,7 @@ depends-member:
 - !private ["12CoreGraphics7CGFloatV", "infinity"]
 - !private ["12CoreGraphics7CGFloatV", "pi"]
 - !private ["So10CGGradientC", "init"]
+- !private ["SC9CGLineCapO", "square"]
 - !private ["SC10CGLineJoinO", "round"]
 - !private ["So6CGPathC", "boundingBoxOfPath"]
 - !private ["SC7CGPointV", "applying"]
@@ -134,6 +140,7 @@ depends-member:
 - !private ["s7CVarArgP", "hashValue"]
 - !private ["s7CVarArgP", "infinity"]
 - !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "lineCapStyle"]
 - !private ["s7CVarArgP", "lineJoinStyle"]
 - !private ["s7CVarArgP", "lineWidth"]
 - !private ["s7CVarArgP", "max"]
@@ -194,6 +201,7 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "getRed"]
 - !private ["s28CustomDebugStringConvertibleP", "height"]
 - !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "lineCapStyle"]
 - !private ["s28CustomDebugStringConvertibleP", "lineJoinStyle"]
 - !private ["s28CustomDebugStringConvertibleP", "lineWidth"]
 - !private ["s28CustomDebugStringConvertibleP", "max"]
@@ -300,6 +308,7 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "hashValue"]
 - !private ["s23CustomStringConvertibleP", "infinity"]
 - !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "lineCapStyle"]
 - !private ["s23CustomStringConvertibleP", "lineJoinStyle"]
 - !private ["s23CustomStringConvertibleP", "lineWidth"]
 - !private ["s23CustomStringConvertibleP", "max"]
@@ -413,6 +422,7 @@ depends-member:
 - ["s9EquatableP", "init"]
 - !private ["s9EquatableP", "inverted"]
 - !private ["s9EquatableP", "left"]
+- !private ["s9EquatableP", "lineCapStyle"]
 - !private ["s9EquatableP", "lineJoinStyle"]
 - !private ["s9EquatableP", "lineWidth"]
 - !private ["s9EquatableP", "max"]
@@ -442,6 +452,7 @@ depends-member:
 - !private ["s9EquatableP", "shadowColor"]
 - !private ["s9EquatableP", "shadowOffset"]
 - !private ["s9EquatableP", "size"]
+- !private ["s9EquatableP", "square"]
 - !private ["s9EquatableP", "standardized"]
 - ["s9EquatableP", "stretch"]
 - !private ["s9EquatableP", "stroke"]
@@ -522,6 +533,7 @@ depends-member:
 - !private ["s8HashableP", "infinity"]
 - ["s8HashableP", "init"]
 - !private ["s8HashableP", "left"]
+- !private ["s8HashableP", "lineCapStyle"]
 - !private ["s8HashableP", "lineJoinStyle"]
 - !private ["s8HashableP", "lineWidth"]
 - !private ["s8HashableP", "max"]
@@ -543,6 +555,7 @@ depends-member:
 - !private ["s8HashableP", "shadowBlurRadius"]
 - !private ["s8HashableP", "shadowColor"]
 - !private ["s8HashableP", "shadowOffset"]
+- !private ["s8HashableP", "square"]
 - ["s8HashableP", "stretch"]
 - !private ["s8HashableP", "stroke"]
 - !private ["s8HashableP", "systemFont"]
@@ -582,6 +595,7 @@ depends-member:
 - !private ["So8NSCodingP", "fill"]
 - !private ["So8NSCodingP", "getRed"]
 - !private ["So8NSCodingP", "init"]
+- !private ["So8NSCodingP", "lineCapStyle"]
 - !private ["So8NSCodingP", "lineJoinStyle"]
 - !private ["So8NSCodingP", "lineWidth"]
 - !private ["So8NSCodingP", "move"]
@@ -612,6 +626,7 @@ depends-member:
 - !private ["So9NSCopyingP", "fill"]
 - !private ["So9NSCopyingP", "getRed"]
 - !private ["So9NSCopyingP", "init"]
+- !private ["So9NSCopyingP", "lineCapStyle"]
 - !private ["So9NSCopyingP", "lineJoinStyle"]
 - !private ["So9NSCopyingP", "lineWidth"]
 - !private ["So9NSCopyingP", "move"]
@@ -692,14 +707,20 @@ depends-member:
 - ["So8NSObjectC", "drawAlertView"]
 - ["So8NSObjectC", "drawBlueGradientCell"]
 - ["So8NSObjectC", "drawBlueGradientView"]
+- ["So8NSObjectC", "drawConnectingBentDividerViewLeft"]
+- ["So8NSObjectC", "drawConnectingBentDividerViewRight"]
+- ["So8NSObjectC", "drawConnectingDiamondStationView"]
+- ["So8NSObjectC", "drawConnectingFlatDividerView"]
+- ["So8NSObjectC", "drawConnectingGradientView"]
 - ["So8NSObjectC", "drawNextToArriveButton"]
 - ["So8NSObjectC", "drawRedButton"]
 - ["So8NSObjectC", "drawReverseTripButton"]
-- ["So8NSObjectC", "drawTripCanvas"]
+- ["So8NSObjectC", "drawVerticalDottedTripGraphic"]
 - !private ["So8NSObjectC", "fill"]
 - !private ["So8NSObjectC", "floor"]
 - !private ["So8NSObjectC", "getRed"]
 - ["So8NSObjectC", "init"]
+- !private ["So8NSObjectC", "lineCapStyle"]
 - !private ["So8NSObjectC", "lineJoinStyle"]
 - !private ["So8NSObjectC", "lineWidth"]
 - !private ["So8NSObjectC", "max"]
@@ -748,6 +769,7 @@ depends-member:
 - !private ["So16NSObjectProtocolP", "floor"]
 - !private ["So16NSObjectProtocolP", "getRed"]
 - !private ["So16NSObjectProtocolP", "init"]
+- !private ["So16NSObjectProtocolP", "lineCapStyle"]
 - !private ["So16NSObjectProtocolP", "lineJoinStyle"]
 - !private ["So16NSObjectProtocolP", "lineWidth"]
 - !private ["So16NSObjectProtocolP", "max"]
@@ -784,6 +806,7 @@ depends-member:
 - !private ["So14NSSecureCodingP", "fill"]
 - !private ["So14NSSecureCodingP", "getRed"]
 - !private ["So14NSSecureCodingP", "init"]
+- !private ["So14NSSecureCodingP", "lineCapStyle"]
 - !private ["So14NSSecureCodingP", "lineJoinStyle"]
 - !private ["So14NSSecureCodingP", "lineWidth"]
 - !private ["So14NSSecureCodingP", "move"]
@@ -830,6 +853,7 @@ depends-member:
 - ["s16RawRepresentableP", "rawValue"]
 - !private ["s16RawRepresentableP", "right"]
 - !private ["s16RawRepresentableP", "round"]
+- !private ["s16RawRepresentableP", "square"]
 - ["s16RawRepresentableP", "stretch"]
 - !private ["s16RawRepresentableP", "usesLineFragmentOrigin"]
 - ["s16RawRepresentableP", ""]
@@ -871,10 +895,15 @@ depends-member:
 - ["9ViewTests9SeptaDrawC", "drawAlertView"]
 - ["9ViewTests9SeptaDrawC", "drawBlueGradientCell"]
 - ["9ViewTests9SeptaDrawC", "drawBlueGradientView"]
+- ["9ViewTests9SeptaDrawC", "drawConnectingBentDividerViewLeft"]
+- ["9ViewTests9SeptaDrawC", "drawConnectingBentDividerViewRight"]
+- ["9ViewTests9SeptaDrawC", "drawConnectingDiamondStationView"]
+- ["9ViewTests9SeptaDrawC", "drawConnectingFlatDividerView"]
+- ["9ViewTests9SeptaDrawC", "drawConnectingGradientView"]
 - ["9ViewTests9SeptaDrawC", "drawNextToArriveButton"]
 - ["9ViewTests9SeptaDrawC", "drawRedButton"]
 - ["9ViewTests9SeptaDrawC", "drawReverseTripButton"]
-- ["9ViewTests9SeptaDrawC", "drawTripCanvas"]
+- ["9ViewTests9SeptaDrawC", "drawVerticalDottedTripGraphic"]
 - !private ["9ViewTests9SeptaDrawC", "floor"]
 - ["9ViewTests9SeptaDrawC", "init"]
 - !private ["9ViewTests9SeptaDrawC", "max"]
@@ -911,6 +940,7 @@ depends-member:
 - !private ["So12UIBezierPathC", "close"]
 - !private ["So12UIBezierPathC", "fill"]
 - !private ["So12UIBezierPathC", "init"]
+- !private ["So12UIBezierPathC", "lineCapStyle"]
 - !private ["So12UIBezierPathC", "lineJoinStyle"]
 - !private ["So12UIBezierPathC", "lineWidth"]
 - !private ["So12UIBezierPathC", "move"]
@@ -1018,6 +1048,7 @@ depends-member:
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "floor"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "getRed"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "lineCapStyle"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "lineJoinStyle"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "lineWidth"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "max"]
@@ -1082,6 +1113,7 @@ depends-nominal:
 - !private "So9CGContextC"
 - !private "12CoreGraphics7CGFloatV"
 - !private "So10CGGradientC"
+- !private "SC9CGLineCapO"
 - !private "SC10CGLineJoinO"
 - !private "So6CGPathC"
 - !private "SC7CGPointV"
@@ -1180,4 +1212,4 @@ depends-external:
 - "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/Swift.swiftmodule"
 - "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/UIKit.swiftmodule"
 - "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/SwiftOnoneSupport.swiftmodule"
-interface-hash: "58a2993ef059a57ceef389d92b763ec0"
+interface-hash: "50a5231ac905b979efc11d2acacd54f4"

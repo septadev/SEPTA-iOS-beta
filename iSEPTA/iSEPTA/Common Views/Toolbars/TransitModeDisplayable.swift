@@ -184,6 +184,18 @@ extension TransitMode {
         }
     }
 
+      public func favoritesIcon() -> UIImage? {
+        let imageName: String
+        switch self {
+        case .rail: imageName =  "railFavorite"
+        case .subway : imageName =  "subwayFavorite"
+        case .bus: imageName =  "busFavorite"
+        case .trolley : imageName =  "trolleyFavorite"
+        case .nhsl: imageName =  "nhslFavorite"
+        }
+        return UIImage(named: imageName)
+    }
+
     public static func convertFromTransitMode(_ type: String) -> TransitMode? {
         let transitMode: TransitMode? = {
             switch type {

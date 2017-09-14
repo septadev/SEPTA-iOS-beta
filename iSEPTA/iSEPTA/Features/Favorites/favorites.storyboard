@@ -42,7 +42,77 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z3c-wj-1cI" userLabel="BlueGraidentView">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pJh-WZ-kY4">
+                                        <rect key="frame" x="10" y="20" width="355" height="534"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="146" id="a1D-sT-eLB" userLabel="TripCell" customClass="FavoriteTripCell" customModule="Septa" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="355" height="146"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a1D-sT-eLB" id="Er8-AI-vQ0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="145.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Jgd-J4-iX8">
+                                                            <rect key="frame" x="0.0" y="0.0" width="355" height="145.5"/>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="Jgd-J4-iX8" firstAttribute="top" secondItem="Er8-AI-vQ0" secondAttribute="top" id="C24-xB-F3P" userLabel="StackViewTop"/>
+                                                        <constraint firstItem="Jgd-J4-iX8" firstAttribute="leading" secondItem="Er8-AI-vQ0" secondAttribute="leading" id="mcv-6R-wVs" userLabel="StackViewLeft"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Jgd-J4-iX8" secondAttribute="bottom" id="pSd-8I-ssp" userLabel="StackViewBottom"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Jgd-J4-iX8" secondAttribute="trailing" id="zNv-Cr-a9N" userLabel="StackViewRight"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="stackView" destination="Jgd-J4-iX8" id="Iq3-7U-bqW"/>
+                                                </connections>
+                                            </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="-1" id="nBG-nh-new" userLabel="FavoriteHeaderCell" customClass="FavoriteHeaderCell" customModule="Septa" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="174" width="355" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nBG-nh-new" id="eSP-3f-zQg">
+                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vMh-gv-CZ9" userLabel="favoriteIcon">
+                                                            <rect key="frame" x="5" y="5" width="35" height="35"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="35" id="PzP-xI-TSe"/>
+                                                                <constraint firstAttribute="height" constant="35" id="Wko-Wl-Adg"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office Commute" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEG-yM-FIo" userLabel="FavoriteName">
+                                                            <rect key="frame" x="45" y="-10" width="305" height="20"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="16"/>
+                                                            <color key="textColor" red="0.10588235294117647" green="0.30588235294117649" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="aEG-yM-FIo" secondAttribute="trailing" constant="5" id="CCs-oi-OeS" userLabel="FavoriteNameRight"/>
+                                                        <constraint firstAttribute="bottom" secondItem="vMh-gv-CZ9" secondAttribute="bottom" constant="5" id="Ih8-C8-qYX" userLabel="favoriteIconBottom"/>
+                                                        <constraint firstItem="aEG-yM-FIo" firstAttribute="centerY" secondItem="eSP-3f-zQg" secondAttribute="centerY" id="bjJ-aT-tC1" userLabel="FavoriteNameCenterY"/>
+                                                        <constraint firstItem="vMh-gv-CZ9" firstAttribute="top" secondItem="eSP-3f-zQg" secondAttribute="top" constant="5" id="nZf-8P-bHa" userLabel="FavoriteIconTop"/>
+                                                        <constraint firstItem="aEG-yM-FIo" firstAttribute="leading" secondItem="vMh-gv-CZ9" secondAttribute="trailing" constant="5" id="uBK-Er-TH1" userLabel="FavoriteNameLeft"/>
+                                                        <constraint firstItem="vMh-gv-CZ9" firstAttribute="leading" secondItem="eSP-3f-zQg" secondAttribute="leading" constant="5" id="udJ-G4-Mr5" userLabel="FavoriteIconLeft"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="TitleLabel" destination="aEG-yM-FIo" id="Inu-OL-9V8"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="pJh-WZ-kY4" secondAttribute="bottom" id="3cZ-4h-izk" userLabel="tableViewBottom"/>
+                                    <constraint firstAttribute="trailing" secondItem="pJh-WZ-kY4" secondAttribute="trailing" constant="10" id="4OA-o1-tsc" userLabel="TableViewRight"/>
+                                    <constraint firstItem="pJh-WZ-kY4" firstAttribute="leading" secondItem="z3c-wj-1cI" secondAttribute="leading" constant="10" id="N8v-D0-Ees" userLabel="TableViewLeft"/>
+                                    <constraint firstItem="pJh-WZ-kY4" firstAttribute="top" secondItem="z3c-wj-1cI" secondAttribute="top" constant="20" id="qtu-c8-Wg7" userLabel="TableViewTop"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -55,6 +125,9 @@
                         <viewLayoutGuide key="safeArea" id="r0o-VE-tqY"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Favorites" id="Y4l-EX-Cv6"/>
+                    <connections>
+                        <outlet property="tableView" destination="pJh-WZ-kY4" id="I2q-z3-qv7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G3q-8u-Zo7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
