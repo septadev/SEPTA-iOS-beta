@@ -8,7 +8,7 @@
 
 import Foundation
 import SeptaSchedule
-//TODO: create a parallel favorite data array so that we aren't writing favorites to disk so much
+// TODO: create a parallel favorite data array so that we aren't writing favorites to disk so much
 struct Favorite: Codable {
     let favoriteId: String
     let favoriteName: String

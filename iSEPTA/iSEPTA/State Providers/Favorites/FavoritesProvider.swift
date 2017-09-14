@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 import Foundation
 import CoreLocation
 import ReSwift
@@ -30,6 +30,11 @@ class FavoritesProvider: StoreSubscriber {
     private init() {
         retrieveFavoritesFromDisk()
         subscribe()
+        let app = UIApplication.shared
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.appLosingFocus(notification:)),
+                                               name: NSNotification.Name.UIApplicationWillResignActive,
+                                               object: app)
     }
 
     func retrieveFavoritesFromDisk() {
@@ -78,12 +83,13 @@ class FavoritesProvider: StoreSubscriber {
         store.unsubscribe(self)
     }
 
+    var currentFavoriteState: FavoritesState?
     func newState(state: FavoritesState) {
-        writeFavoritesToFile(state: state)
+        currentFavoriteState = state
     }
 
-    func setStartupNavController(state: FavoritesState) {
-        //TODO  When there are favorites the startup controller should be set here.
+    func setStartupNavController(state _: FavoritesState) {
+        // TODO: When there are favorites the startup controller should be set here.
     }
 
     func writeFavoritesToFile(state: FavoritesState) {
@@ -116,4 +122,9 @@ class FavoritesProvider: StoreSubscriber {
     fileprivate lazy var tempFavoritesFileURL: URL? = {
         documentDirectoryURL?.appendingPathComponent("Tempfavorites.json")
     }()
+
+    @objc func appLosingFocus(notification _: NSNotification) {
+        guard let currentFavoriteState = self.currentFavoriteState else { return }
+        writeFavoritesToFile(state: currentFavoriteState)
+    }
 }
