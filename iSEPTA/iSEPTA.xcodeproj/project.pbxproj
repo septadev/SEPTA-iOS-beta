@@ -13,6 +13,7 @@
 		580A355F1F6A0F9B000FCA82 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A355E1F6A0F9B000FCA82 /* FavoritesViewController.swift */; };
 		580A35611F6A12C0000FCA82 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A35601F6A12C0000FCA82 /* FavoritesViewModel.swift */; };
 		580A35631F6A1374000FCA82 /* BaseNextToArriveInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A35621F6A1374000FCA82 /* BaseNextToArriveInfoViewModel.swift */; };
+		580A35651F6A1949000FCA82 /* FavoriteNextToArriveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A35641F6A1949000FCA82 /* FavoriteNextToArriveViewModel.swift */; };
 		58126F671F631C0800A6E187 /* ColorPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F661F631C0800A6E187 /* ColorPointAnnotation.swift */; };
 		58126F6B1F631C3100A6E187 /* RouteOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F6A1F631C3100A6E187 /* RouteOverlay.swift */; };
 		58126F6D1F631C5100A6E187 /* RouteDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F6C1F631C5100A6E187 /* RouteDrawable.swift */; };
@@ -484,6 +485,7 @@
 		580A355E1F6A0F9B000FCA82 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		580A35601F6A12C0000FCA82 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		580A35621F6A1374000FCA82 /* BaseNextToArriveInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNextToArriveInfoViewModel.swift; sourceTree = "<group>"; };
+		580A35641F6A1949000FCA82 /* FavoriteNextToArriveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNextToArriveViewModel.swift; sourceTree = "<group>"; };
 		58126F661F631C0800A6E187 /* ColorPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPointAnnotation.swift; sourceTree = "<group>"; };
 		58126F6A1F631C3100A6E187 /* RouteOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteOverlay.swift; sourceTree = "<group>"; };
 		58126F6C1F631C5100A6E187 /* RouteDrawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDrawable.swift; sourceTree = "<group>"; };
@@ -1082,6 +1084,7 @@
 			children = (
 				582F4E8F1F33B1120062A546 /* favorites.storyboard */,
 				580A35601F6A12C0000FCA82 /* FavoritesViewModel.swift */,
+				580A35641F6A1949000FCA82 /* FavoriteNextToArriveViewModel.swift */,
 				580A355A1F6A0E84000FCA82 /* FavoritesNavigationController.swift */,
 				580A355E1F6A0F9B000FCA82 /* FavoritesViewController.swift */,
 			);
@@ -2410,6 +2413,7 @@
 				58FBB66C1F5885D800E6532B /* VerticalDottedTripGraphic.swift in Sources */,
 				6716090B1F676F2300941D2C /* ConnectionView.swift in Sources */,
 				671609111F67F72600941D2C /* UIStackView+Util.swift in Sources */,
+				580A35651F6A1949000FCA82 /* FavoriteNextToArriveViewModel.swift in Sources */,
 				58E54E241F65A40100E9B66D /* NavigationBar+Util.swift in Sources */,
 				58DD1A901F600758002532DC /* NextToArriveViewModel+StopCell.swift in Sources */,
 				678DAAB51F67478900EB6EE8 /* ConnectionCell.swift in Sources */,
