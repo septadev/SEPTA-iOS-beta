@@ -88,6 +88,15 @@ extension BaseNextToArriveInfoViewModel { // Section Headers
         let alert = alerts[transitMode()]?[routeId]
         tripHeaderView.alertStackView.addAlert(alert)
     }
+
+    func configureSectionHeader(firstTripInSection: NextToArriveTrip, headerView: NoConnectionSectionHeader) {
+        let routeId = firstTripInSection.startStop.routeId
+        guard let tripHeaderView = headerView.tripHeaderView else { return }
+        tripHeaderView.pillView.backgroundColor = Route.colorForRouteId(routeId, transitMode: transitMode())
+        tripHeaderView.lineNameLabel.text = firstTripInSection.startStop.routeName
+        let alert = alerts[transitMode()]?[routeId]
+        tripHeaderView.alertStackView.addAlert(alert)
+    }
 }
 
 extension BaseNextToArriveInfoViewModel { // Table View
@@ -129,6 +138,10 @@ extension BaseNextToArriveInfoViewModel { // Table View
 
     func configureNoConnectionCell(cell: NoConnectionCellDisplayable, forTrip trip: NextToArriveTrip) {
         let tripView = cell.tripView!
+        configureTripView(tripView: tripView, forTrip: trip)
+    }
+
+    func configureTripView(tripView: TripView, forTrip trip: NextToArriveTrip) {
         let hasVehicleLocation = trip.vehicleLocation.firstLegLocation != nil
         tripView.startStopLabel.text = generateTimeString(stop: trip.startStop)
         tripView.departingWhenLabel.text = generateTimeToDeparture(stop: trip.startStop)

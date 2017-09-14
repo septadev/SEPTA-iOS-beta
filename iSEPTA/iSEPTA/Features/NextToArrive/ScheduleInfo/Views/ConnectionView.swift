@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class ConnectionView: UIView {
+
     var tripHeaderView: TripHeaderView!
     @IBOutlet var headerViewWrapper: UIView! {
         didSet {

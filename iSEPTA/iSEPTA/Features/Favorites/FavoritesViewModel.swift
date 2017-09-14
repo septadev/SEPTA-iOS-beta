@@ -80,7 +80,40 @@ extension FavoritesViewModel { // table loading
         configureTrips(favoriteViewModel: favoriteViewModel, stackView: stackView, indexPath: indexPath)
     }
 
-    func configureTrips(favoriteViewModel _: FavoriteNextToArriveViewModel, stackView _: UIStackView, indexPath _: IndexPath) {
+    func configureTrips(favoriteViewModel: FavoriteNextToArriveViewModel, stackView: UIStackView, indexPath _: IndexPath) {
+
+        for tripsByRoute in favoriteViewModel.groupedTripData {
+            guard let firstTripInSection = tripsByRoute.first else { continue }
+            if !favoriteViewModel.tripHasConnection(trip: firstTripInSection) {
+                let wrapperView = UIView()
+                wrapperView.translatesAutoresizingMaskIntoConstraints = false
+                let headerView: NoConnectionSectionHeader! = wrapperView.awakeInsertAndPinSubview(nibName: "NoConnectionSectionHeader")
+                favoriteViewModel.configureSectionHeader(firstTripInSection: firstTripInSection, headerView: headerView)
+                stackView.addArrangedSubview(headerView)
+
+                for trip in tripsByRoute {
+                    configureTrip(favoriteViewModel: favoriteViewModel, trip: trip, stackView: stackView)
+                }
+            } else {
+                configureTrip(favoriteViewModel: favoriteViewModel, trip: firstTripInSection, stackView: stackView)
+            }
+        }
+    }
+
+    func configureTrip(favoriteViewModel: FavoriteNextToArriveViewModel, trip: NextToArriveTrip, stackView: UIStackView) {
+        let wrapperView = UIView()
+        wrapperView.translatesAutoresizingMaskIntoConstraints = false
+        let tripView: TripView! = wrapperView.awakeInsertAndPinSubview(nibName: "TripView")
+        favoriteViewModel.configureTripView(tripView: tripView, forTrip: trip)
+        stackView.addArrangedSubview(wrapperView)
+    }
+
+    func configureConnectingTrip(favoriteViewModel: FavoriteNextToArriveViewModel, trip: NextToArriveTrip, stackView: UIStackView) {
+        let wrapperView = UIView()
+        wrapperView.translatesAutoresizingMaskIntoConstraints = false
+        let connectionView: CellConnectionView! = wrapperView.awakeInsertAndPinSubview(nibName: "CellConnectionView")
+        favoriteViewModel.configureConnectionCell(cell: connectionView, forTrip: trip)
+        stackView.addArrangedSubview(wrapperView)
     }
 }
 

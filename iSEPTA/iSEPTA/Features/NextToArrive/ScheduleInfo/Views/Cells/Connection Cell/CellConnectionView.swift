@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CellConnectionView: UIView {
+class CellConnectionView: UIView, ConnectionCellDisplayable {
 
     var startConnectionView: ConnectionView!
     @IBOutlet weak var startConnectionViewWrapper: UIView! {
