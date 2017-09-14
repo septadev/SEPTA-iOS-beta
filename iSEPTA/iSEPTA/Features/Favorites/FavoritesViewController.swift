@@ -19,6 +19,9 @@ class FavoritesViewController: UIViewController {
         viewModel = FavoritesViewModel(delegate: self, tableView: tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 18))
+        footerView.backgroundColor = UIColor.clear
+        tableView.tableFooterView = footerView
     }
 }
 
