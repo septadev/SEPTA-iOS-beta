@@ -11,26 +11,23 @@ import UIKit
 import ReSwift
 import SeptaSchedule
 
-class FavoritesViewModel: BaseNextToArriveInfoViewModel, StoreSubscriber, SubscriberUnsubscriber {
+class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
 
     typealias StoreSubscriberStateType = [Favorite]
 
-    override func scheduleRequest() -> ScheduleRequest {
-        return store.state.nextToArriveState.scheduleState.scheduleRequest
+    let delegate: UpdateableFromViewModel
+
+    init(delegate: UpdateableFromViewModel = FavoritesViewModelDelegate()) {
+        self.delegate = delegate
     }
 
-    override func transitMode() -> TransitMode {
-        return scheduleRequest().transitMode
+    var favoriteViewModels = [FavoriteNextToArriveViewModel]()
+
+    func newState(state: StoreSubscriberStateType) {
+        favoriteViewModels = state.map { FavoriteNextToArriveViewModel(favorite: $0, delegate: delegate) }
     }
 
-    func newState(state _: StoreSubscriberStateType) {
-    }
-
-    func viewTitle() -> String {
-        return scheduleRequest().transitMode.nextToArriveInfoDetailTitle()
-    }
-
-    override func subscribe() {
+    func subscribe() {
         store.subscribe(self) {
             $0.select {
                 $0.favoritesState.favorites
@@ -40,5 +37,16 @@ class FavoritesViewModel: BaseNextToArriveInfoViewModel, StoreSubscriber, Subscr
 
     func unsubscribe() {
         store.unsubscribe(self)
+    }
+}
+
+class FavoritesViewModelDelegate: UpdateableFromViewModel {
+    func viewModelUpdated() {
+    }
+
+    func updateActivityIndicator(animating _: Bool) {
+    }
+
+    func displayErrorMessage(message _: String, shouldDismissAfterDisplay _: Bool) {
     }
 }
