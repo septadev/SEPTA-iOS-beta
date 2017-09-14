@@ -273,6 +273,8 @@
 		58B278C21F62AAD500663507 /* XH.kml in Resources */ = {isa = PBXBuildFile; fileRef = 58B278291F62AAD500663507 /* XH.kml */; };
 		58B892151F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892141F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift */; };
 		58B892171F38F7E700BFFEFA /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892161F38F7E700BFFEFA /* Strings.swift */; };
+		58BE70711F6A4CFB00D12479 /* ConnectionCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BE70701F6A4CFB00D12479 /* ConnectionCellView.xib */; };
+		58BE70731F6A4E5A00D12479 /* CellConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BE70721F6A4E5A00D12479 /* CellConnectionView.swift */; };
 		58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C181FE1F34C557002748E9 /* Storyboards.swift */; };
 		58C182041F34C5B6002748E9 /* Localizeable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58C182061F34C5B6002748E9 /* Localizeable.strings */; };
 		58C2A0591F3812D600F0D6CA /* ScheduleActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0581F3812D600F0D6CA /* ScheduleActions.swift */; };
@@ -769,6 +771,8 @@
 		58B8920E1F38CBA900BFFEFA /* GenericAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAction.swift; sourceTree = "<group>"; };
 		58B892141F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSchedulesViewModel.swift; sourceTree = "<group>"; };
 		58B892161F38F7E700BFFEFA /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		58BE70701F6A4CFB00D12479 /* ConnectionCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionCellView.xib; sourceTree = "<group>"; };
+		58BE70721F6A4E5A00D12479 /* CellConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConnectionView.swift; sourceTree = "<group>"; };
 		58C181FE1F34C557002748E9 /* Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		58C182051F34C5B6002748E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizeable.strings; sourceTree = "<group>"; };
 		58C2A0581F3812D600F0D6CA /* ScheduleActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleActions.swift; sourceTree = "<group>"; };
@@ -1907,6 +1911,8 @@
 				678DAAB21F67475200EB6EE8 /* ConnectionCell.xib */,
 				678DAAB41F67478900EB6EE8 /* ConnectionCell.swift */,
 				6716090C1F67765500941D2C /* NextToArriveDiamond.swift */,
+				58BE70701F6A4CFB00D12479 /* ConnectionCellView.xib */,
+				58BE70721F6A4E5A00D12479 /* CellConnectionView.swift */,
 			);
 			path = "Connection Cell";
 			sourceTree = "<group>";
@@ -2165,6 +2171,7 @@
 				58B278AB1F62AAD500663507 /* CHW.kml in Resources */,
 				58B278A01F62AAD500663507 /* 93.kml in Resources */,
 				58B278381F62AAD500663507 /* 112.kml in Resources */,
+				58BE70711F6A4CFB00D12479 /* ConnectionCellView.xib in Resources */,
 				58B278851F62AAD500663507 /* 58.kml in Resources */,
 				582F4EC41F33B1120062A546 /* nextToArrive.storyboard in Resources */,
 				58B278BA1F62AAD500663507 /* PAO.kml in Resources */,
@@ -2430,6 +2437,7 @@
 				5814AA891F4359CC00DF774A /* SingleStringDisplayable.swift in Sources */,
 				678D26CE1F5CE4A500D140CC /* TripScheduleFavoritesIconController.swift in Sources */,
 				58E33F261F61619500C74B7C /* SeptaNetwork.swift in Sources */,
+				58BE70731F6A4E5A00D12479 /* CellConnectionView.swift in Sources */,
 				676354FF1F5E2C2C00CA7EAB /* FilterableStop.swift in Sources */,
 				67F757B31F48729C00D3A4EE /* UIView+Util.swift in Sources */,
 				58126F6F1F631C8300A6E187 /* NextToArriveMapRouteViewModel.swift in Sources */,

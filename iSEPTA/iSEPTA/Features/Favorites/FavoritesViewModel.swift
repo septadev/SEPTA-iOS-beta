@@ -68,12 +68,19 @@ extension FavoritesViewModel { // table loading
     }
 
     func configureTripCell(favoriteTripCell: FavoriteTripCell, indexPath: IndexPath) {
-        guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "favoriteHeaderCell", for: indexPath) as? FavoriteHeaderCell else { return }
+
         let favoriteViewModel = favoriteViewModels[indexPath.section]
-        headerCell.favoriteIcon.image = favoriteViewModel.transitMode().favoritesIcon()
-        headerCell.favoriteName.text = favoriteViewModel.favorite.favoriteName
-        favoriteTripCell.stackView.clearSubviews()
-        favoriteTripCell.stackView.addArrangedSubview(headerCell.contentView)
+        favoriteTripCell.favoriteIcon.image = favoriteViewModel.transitMode().favoritesIcon()
+        favoriteTripCell.favoriteNameLabel.text = favoriteViewModel.favorite.favoriteName
+        guard let stackView = favoriteTripCell.stackView else { return }
+        stackView.clearSubviews()
+
+        // stackView.addArrangedSubview(headerCell.contentView)
+
+        configureTrips(favoriteViewModel: favoriteViewModel, stackView: stackView, indexPath: indexPath)
+    }
+
+    func configureTrips(favoriteViewModel _: FavoriteNextToArriveViewModel, stackView _: UIStackView, indexPath _: IndexPath) {
     }
 }
 

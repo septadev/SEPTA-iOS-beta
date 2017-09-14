@@ -11,7 +11,10 @@ import UIKit
 
 class FavoriteTripCell: UITableViewCell {
 
+    @IBOutlet weak var favoriteIcon: UIImageView!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var favoriteNameLabel: UILabel!
+
     override func awakeFromNib() {
 
         backgroundColor = UIColor.clear
