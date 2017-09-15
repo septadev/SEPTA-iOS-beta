@@ -46,6 +46,10 @@ extension UIView {
         }
     }
 
+    static func loadNibView<T>(nibName: String) -> T? {
+        return Bundle.main.loadNibNamed(nibName, owner: nil, options: nil)?.first as? T
+    }
+
     func awakeInsertAndPinSubview<T>(nibName: String) -> T? where T: UIView {
         guard let subview = Bundle.main.loadNibNamed(nibName, owner: nil, options: nil)?.first as? T else { return nil }
         subview.translatesAutoresizingMaskIntoConstraints = false

@@ -11,7 +11,7 @@ import UIKit
 import SeptaSchedule
 
 @IBDesignable
-class NoFavoriteTransitView: UIView {
+class NoFavoriteTransitModeView: UIView {
 
     @IBOutlet weak var transitModeIcon: UIImageView!
     @IBOutlet weak var transitModeName: UILabel!

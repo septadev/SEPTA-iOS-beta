@@ -159,13 +159,6 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         updateLabels()
         navigationController?.navigationBar.configureBackButton()
 
-        shadowView.backgroundColor = SeptaColor.navBarBlue
-        shadowView.layer.masksToBounds = false
-        shadowView.layer.shadowOffset = CGSize(width: 0, height: 0.0)
-        shadowView.layer.shadowRadius = 7
-        shadowView.layer.shadowOpacity = 1
-        shadowView.layer.shadowColor = SeptaColor.navBarShadowColor.cgColor
-
         configureSegementedControl()
         septaAlertsViewController.setTransitMode(transitMode, route: route)
     }
