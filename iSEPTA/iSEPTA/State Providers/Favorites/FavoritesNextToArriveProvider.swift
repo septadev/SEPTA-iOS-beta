@@ -14,7 +14,7 @@ import CoreLocation
 
 class FavoritesNextToArriveProvider: StoreSubscriber {
 
-    typealias StoreSubscriberStateType = [Favorite]
+    typealias StoreSubscriberStateType = Set<Favorite>
 
     let mapper = NextToArriveMapper()
 
@@ -32,9 +32,9 @@ class FavoritesNextToArriveProvider: StoreSubscriber {
         unsubscribe()
     }
 
-    func newState(state: [Favorite]) {
+    func newState(state: StoreSubscriberStateType) {
         let favoritesToUpdate = state
-        retrieveNextToArrive(favorites: favoritesToUpdate)
+        retrieveNextToArrive(favorites: Array(favoritesToUpdate))
     }
 
     func retrieveNextToArrive(favorites: [Favorite]) {
@@ -104,7 +104,7 @@ extension FavoritesNextToArriveProvider: SubscriberUnsubscriber {
         store.subscribe(self) {
             $0.select {
                 $0.favoritesState.favoritesToUpdate
-            }.skipRepeats { $0 == $1 }
+            }
         }
     }
 

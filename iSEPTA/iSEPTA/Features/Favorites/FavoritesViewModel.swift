@@ -13,7 +13,7 @@ import SeptaSchedule
 
 class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
 
-    typealias StoreSubscriberStateType = [Favorite]
+    typealias StoreSubscriberStateType = Set<Favorite>
 
     enum CellIds: String {
         case favoriteTripCell
@@ -39,8 +39,9 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
     var favoriteViewModels = [FavoriteNextToArriveViewModel]()
 
     func newState(state: StoreSubscriberStateType) {
-        let loadedFavorites = state.filter { $0.nextToArriveUpdateStatus == .dataLoadedSuccessfully }
-        favoriteViewModels = loadedFavorites.map { FavoriteNextToArriveViewModel(favorite: $0, delegate: favoriteDelegate) }
+        let favoritesToDisplay = Array(state)
+
+        favoriteViewModels = favoritesToDisplay.map { FavoriteNextToArriveViewModel(favorite: $0, delegate: favoriteDelegate) }
         favoriteViewModels.sort { $0.favorite.favoriteName < $1.favorite.favoriteName }
 
         delegate.viewModelUpdated()
@@ -50,7 +51,7 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
         store.subscribe(self) {
             $0.select {
                 $0.favoritesState.favoritesToDisplay
-            }.skipRepeats { $0 == $1 }
+            }
         }
     }
 

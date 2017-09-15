@@ -8,11 +8,14 @@
 
 import Foundation
 import SeptaSchedule
+import ReSwift
 
 class UserPreferencesStatePersister {
     let defaults = UserDefaults.standard
     static let sharedInstance = UserPreferencesStatePersister()
-    private init() {}
+    private init() {
+        subscribe()
+    }
 
     func persistPreferenceState(_ state: UserPreferenceState?) {
         guard let state = state else { return }
@@ -39,5 +42,33 @@ class UserPreferencesStatePersister {
 
     private func set(_ value: Any?, forKey key: UserPreferencesKeys) {
         defaults.set(value, forKey: key.rawValue)
+    }
+
+    deinit {
+        store.unsubscribe(self)
+    }
+}
+
+extension UserPreferencesStatePersister: StoreSubscriber {
+    typealias StoreSubscriberStateType = Bool
+
+    func newState(state: StoreSubscriberStateType) {
+        let favoritesExist = state
+        let navController: NavigationController
+        if favoritesExist {
+            navController = .favorites
+        } else {
+            navController = .nextToArrive
+        }
+        let action = NewStartupController(navigationController: navController)
+        store.dispatch(action)
+    }
+
+    func subscribe() {
+        store.subscribe(self) {
+            $0.select {
+                $0.favoritesState.favoritesExist
+            }.skipRepeats { $0 == $1 }
+        }
     }
 }

@@ -8,6 +8,7 @@ class UserPreferencesProvider: StoreSubscriber, UserPreferencesProviderProtocol 
     typealias StoreSubscriberStateType = UserPreferenceState
 
     var currentState: UserPreferenceState?
+    let persister = UserPreferencesStatePersister.sharedInstance
 
     static let sharedInstance = UserPreferencesProvider()
     private init() {}
@@ -34,7 +35,7 @@ class UserPreferencesProvider: StoreSubscriber, UserPreferencesProviderProtocol 
             initializePreferenceStateFromDefaults()
         } else {
             if currentState != state {
-                UserPreferencesStatePersister.sharedInstance.persistPreferenceState(state)
+                persister.persistPreferenceState(state)
                 currentState = state
             }
         }

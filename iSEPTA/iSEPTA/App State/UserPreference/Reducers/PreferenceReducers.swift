@@ -26,6 +26,8 @@ struct UserPreferencesReducer {
             newPref = reduceNewTransitModeAction(action: action, state: state)
         case let action as PreferencesDatabaseLoaded:
             newPref = reducePreferencesDatabaseLoaded(action: action, state: state)
+        case let action as NewStartupController:
+            newPref = reduceNewStartupController(action: action, state: state)
         default:
             break
         }
@@ -43,5 +45,11 @@ struct UserPreferencesReducer {
 
     static func reducePreferencesDatabaseLoaded(action: PreferencesDatabaseLoaded, state: UserPreferenceState) -> UserPreferenceState {
         return UserPreferenceState(defaultsLoaded: state.defaultsLoaded, startupTransitMode: state.startupTransitMode, startupNavigationController: state.startupNavigationController, databaseVersion: action.databaseVersion)
+    }
+
+    static func reduceNewStartupController(action: NewStartupController, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.startupNavigationController = action.navigationController
+        return userPreferenceState
     }
 }

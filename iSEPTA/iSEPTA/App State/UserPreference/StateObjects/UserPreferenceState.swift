@@ -4,10 +4,10 @@ import Foundation
 import SeptaSchedule
 
 struct UserPreferenceState {
-    let defaultsLoaded: Bool
-    let startupTransitMode: TransitMode
-    let startupNavigationController: NavigationController
-    let databaseVersion: Int
+    var defaultsLoaded: Bool
+    var startupTransitMode: TransitMode
+    var startupNavigationController: NavigationController
+    var databaseVersion: Int
 
     init(defaultsLoaded: Bool = false, startupTransitMode: TransitMode = .bus, startupNavigationController: NavigationController = .nextToArrive, databaseVersion: Int = 0) {
         self.defaultsLoaded = defaultsLoaded

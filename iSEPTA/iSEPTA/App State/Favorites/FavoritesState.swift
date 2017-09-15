@@ -12,8 +12,12 @@ import SeptaSchedule
 struct FavoritesState: Codable {
     let favorites: [Favorite]
     var favoritesExist: Bool { return favorites.count > 0 }
-    var favoritesToUpdate: [Favorite] { return favorites.filter { $0.refreshDataRequested && $0.nextToArriveUpdateStatus != .dataLoading } }
-    var favoritesToDisplay: [Favorite] { return favorites.filter { $0.nextToArriveUpdateStatus == .dataLoadedSuccessfully } }
+    var favoritesToUpdate: Set<Favorite> {
+        return Set(favorites.filter { $0.refreshDataRequested && $0.nextToArriveUpdateStatus != .dataLoading })
+    }
+    var favoritesToDisplay: Set<Favorite> { return
+        Set(favorites.filter { $0.nextToArriveUpdateStatus == .dataLoadedSuccessfully })
+    }
 
     init(favorites: [Favorite] = [Favorite](), lastFavoriteUpdated _: Favorite? = nil) {
         self.favorites = favorites

@@ -76,6 +76,12 @@ struct Favorite: Codable {
     }
 }
 
+extension Favorite: Hashable {
+    var hashValue: Int {
+        return favoriteId.hashValue
+    }
+}
+
 extension Favorite: Equatable {}
 func ==(lhs: Favorite, rhs: Favorite) -> Bool {
     var areEqual = true
