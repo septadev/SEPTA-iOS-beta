@@ -60,7 +60,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_: UITableView, heightForFooterInSection _: Int) -> CGFloat {
-        return 20
+        return 10
     }
 
     func tableView(_: UITableView, viewForFooterInSection _: Int) -> UIView? {

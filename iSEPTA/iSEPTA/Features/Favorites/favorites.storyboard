@@ -78,7 +78,7 @@
         <!--No Favorites-->
         <scene sceneID="ndT-ZA-ZgP">
             <objects>
-                <viewController title="No Favorites" id="vRw-wL-43T" customClass="NoFavoritesViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="noFavoritesViewController" title="No Favorites" id="vRw-wL-43T" customClass="NoFavoritesViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fhk-cl-xWT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -134,7 +134,7 @@
                                             <constraint firstItem="fxY-4J-40E" firstAttribute="centerY" secondItem="qyh-wj-euK" secondAttribute="centerY" id="O0j-DU-BQS" userLabel="HeartIconCenterY"/>
                                             <constraint firstItem="fxY-4J-40E" firstAttribute="leading" secondItem="qyh-wj-euK" secondAttribute="leading" id="r5b-KW-0Il" userLabel="HeartIconLeft"/>
                                             <constraint firstItem="sMX-YF-FRn" firstAttribute="top" secondItem="qyh-wj-euK" secondAttribute="top" id="tai-Da-1gn" userLabel="InstructionsTop"/>
-                                            <constraint firstAttribute="trailing" secondItem="sMX-YF-FRn" secondAttribute="trailing" id="wY1-jA-X4m" userLabel="InstructionsRight"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sMX-YF-FRn" secondAttribute="trailing" id="wY1-jA-X4m" userLabel="InstructionsRight"/>
                                             <constraint firstAttribute="bottom" secondItem="sMX-YF-FRn" secondAttribute="bottom" id="xUe-Wt-KKa" userLabel="InstructionsBottom"/>
                                             <constraint firstItem="sMX-YF-FRn" firstAttribute="leading" secondItem="fxY-4J-40E" secondAttribute="trailing" constant="9" id="y8I-nz-6hq" userLabel="InstructionsLeft"/>
                                         </constraints>
