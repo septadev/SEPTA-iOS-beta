@@ -14,6 +14,7 @@
 		5801280C1F6BEF67006B6DB8 /* NoFavoriteTransitModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5801280B1F6BEF67006B6DB8 /* NoFavoriteTransitModeView.swift */; };
 		5801280E1F6BF2DF006B6DB8 /* NoFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5801280D1F6BF2DF006B6DB8 /* NoFavoriteViewController.swift */; };
 		580128101F6BFC9F006B6DB8 /* NavBarShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5801280F1F6BFC9F006B6DB8 /* NavBarShadowView.swift */; };
+		580128121F6C055B006B6DB8 /* RedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580128111F6C055B006B6DB8 /* RedButton.swift */; };
 		5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */; };
 		580A355B1F6A0E84000FCA82 /* FavoritesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A355A1F6A0E84000FCA82 /* FavoritesNavigationController.swift */; };
 		580A355F1F6A0F9B000FCA82 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A355E1F6A0F9B000FCA82 /* FavoritesViewController.swift */; };
@@ -497,6 +498,7 @@
 		5801280B1F6BEF67006B6DB8 /* NoFavoriteTransitModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoFavoriteTransitModeView.swift; sourceTree = "<group>"; };
 		5801280D1F6BF2DF006B6DB8 /* NoFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoFavoriteViewController.swift; sourceTree = "<group>"; };
 		5801280F1F6BFC9F006B6DB8 /* NavBarShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarShadowView.swift; sourceTree = "<group>"; };
+		580128111F6C055B006B6DB8 /* RedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedButton.swift; sourceTree = "<group>"; };
 		580A355A1F6A0E84000FCA82 /* FavoritesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesNavigationController.swift; sourceTree = "<group>"; };
 		580A355E1F6A0F9B000FCA82 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		580A35601F6A12C0000FCA82 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
@@ -1037,6 +1039,7 @@
 				671A19251F662DF000C8EEDA /* DividerViews.swift */,
 				678DAA991F66EEC800EB6EE8 /* BaseFavoritesIconController.swift */,
 				671609101F67F72600941D2C /* UIStackView+Util.swift */,
+				580128111F6C055B006B6DB8 /* RedButton.swift */,
 			);
 			path = "Common Views";
 			sourceTree = "<group>";
@@ -2443,6 +2446,7 @@
 				58126F711F631CB200A6E187 /* NextToArriveEndpointsViewModel.swift in Sources */,
 				58E33F141F61425600C74B7C /* NextToArriveProvider.swift in Sources */,
 				671A19201F6613A600C8EEDA /* ConstraintsToggle.swift in Sources */,
+				580128121F6C055B006B6DB8 /* RedButton.swift in Sources */,
 				5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */,
 				676355011F5E326800CA7EAB /* AppState+Context.swift in Sources */,
 				58126F671F631C0800A6E187 /* ColorPointAnnotation.swift in Sources */,

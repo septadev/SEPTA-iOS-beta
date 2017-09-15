@@ -12,15 +12,17 @@ import SeptaSchedule
 
 class NoFavoritesViewController: UIViewController {
 
-    @IBOutlet weak var shadowView: UIView! {
+    @IBOutlet weak var infoLabel: UILabel! {
         didSet {
-            shadowView.backgroundColor = SeptaColor.navBarBlue
-            shadowView.layer.masksToBounds = false
-            shadowView.layer.shadowOffset = CGSize(width: 0, height: 0.0)
-            shadowView.layer.shadowRadius = 7
-            shadowView.layer.shadowOpacity = 1
-            shadowView.layer.shadowColor = SeptaColor.navBarShadowColor.cgColor
+            let attributedString = NSMutableAttributedString(string: SeptaString.NoFavoritesInfo)
+            attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 16.0, weight: UIFont.Weight.bold), range: NSRange(location: 43, length: 16))
+            infoLabel.attributedText = attributedString
         }
+    }
+
+    @IBAction func goToFavoritesTapped(_: Any) {
+        let action = SwitchTabs(activeNavigationController: .nextToArrive, description: "Moving from No favorites to Next to arrive")
+        store.dispatch(action)
     }
 
     @IBOutlet weak var iconStackView: UIStackView! {

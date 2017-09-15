@@ -15,4 +15,7 @@ struct SeptaString {
     static let NoRouteNeeded = NSLocalizedString("Select a start and destination to view the next trains to arrive for that route.", comment: "Don't need to search for route because we can build a trip for your from any two stops, provided you are using rail")
 
     static let NextToArriveTitle = NSLocalizedString("Next to Arrive", comment: "Text indicating a feature that allows user's to view coming transit opportunities")
+
+    static let NoFavoritesInfo = NSLocalizedString("Save your SEPTA trips as a favorite to get immediate access to the Next to Arrive transit, and schedules.", comment: "How favorites work in the app")
+    static let NoFavoritesInstructions = NSLocalizedString("Find a trip then use the favorite icon to add it to your Favorites.", comment: "How favorites work in the app instructions")
 }

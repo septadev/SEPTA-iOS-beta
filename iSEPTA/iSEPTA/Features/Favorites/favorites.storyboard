@@ -86,19 +86,74 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pq0-g0-inS" userLabel="BlueGradientView" customClass="BlueGradientBackgroundView" customModule="Septa" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="t0e-qD-eXK" userLabel="IconStackView">
-                                        <rect key="frame" x="40" y="9" width="295" height="110"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="t0e-qD-eXK" userLabel="IconStackView">
+                                        <rect key="frame" x="40" y="48" width="297" height="110"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" placeholder="YES" id="ege-aQ-0eB"/>
                                             <constraint firstAttribute="height" constant="110" placeholder="YES" id="niJ-3b-7Qz"/>
                                         </constraints>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save your SEPTA trips as a favorite to get immediate access to the Next to Arrive transit, and schedules." textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjp-LN-3DT" userLabel="InfoLabel">
+                                        <rect key="frame" x="38" y="128" width="299" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                        <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJk-bn-WxX" customClass="RedButton" customModule="Septa" customModuleProvider="target">
+                                        <rect key="frame" x="38" y="304" width="299" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="D2i-IB-KZC"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="buttonTitle" value="Add Favorite"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="goToFavoritesTapped:" destination="vRw-wL-43T" eventType="touchUpInside" id="AEH-uC-5yG"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qyh-wj-euK" userLabel="InstructionsView">
+                                        <rect key="frame" x="67" y="213" width="240" height="128"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" misplaced="YES" image="blueFavoriteIcon" translatesAutoresizingMaskIntoConstraints="NO" id="fxY-4J-40E" userLabel="HeartIcon">
+                                                <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                                <color key="tintColor" red="1" green="0.017948382969999999" blue="0.093025084879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="19.199999999999999" placeholder="YES" id="CIh-6b-jKb"/>
+                                                    <constraint firstAttribute="width" constant="21.899999999999999" placeholder="YES" id="i8a-FP-0cG"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find a trip then use the favorite icon to add it to your Favorites." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMX-YF-FRn" userLabel="Instructions">
+                                                <rect key="frame" x="99" y="53" width="42" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="fxY-4J-40E" firstAttribute="centerY" secondItem="qyh-wj-euK" secondAttribute="centerY" id="O0j-DU-BQS" userLabel="HeartIconCenterY"/>
+                                            <constraint firstItem="fxY-4J-40E" firstAttribute="leading" secondItem="qyh-wj-euK" secondAttribute="leading" id="r5b-KW-0Il" userLabel="HeartIconLeft"/>
+                                            <constraint firstItem="sMX-YF-FRn" firstAttribute="top" secondItem="qyh-wj-euK" secondAttribute="top" id="tai-Da-1gn" userLabel="InstructionsTop"/>
+                                            <constraint firstAttribute="trailing" secondItem="sMX-YF-FRn" secondAttribute="trailing" id="wY1-jA-X4m" userLabel="InstructionsRight"/>
+                                            <constraint firstAttribute="bottom" secondItem="sMX-YF-FRn" secondAttribute="bottom" id="xUe-Wt-KKa" userLabel="InstructionsBottom"/>
+                                            <constraint firstItem="sMX-YF-FRn" firstAttribute="leading" secondItem="fxY-4J-40E" secondAttribute="trailing" constant="9" id="y8I-nz-6hq" userLabel="InstructionsLeft"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="t0e-qD-eXK" firstAttribute="top" secondItem="Pq0-g0-inS" secondAttribute="top" constant="9" id="SfF-0i-ue1" userLabel="IconStackViewTop"/>
-                                    <constraint firstAttribute="trailing" secondItem="t0e-qD-eXK" secondAttribute="trailing" constant="40" id="nFf-bU-5OC" userLabel="StackViewLeft"/>
+                                    <constraint firstItem="WJk-bn-WxX" firstAttribute="top" secondItem="Pq0-g0-inS" secondAttribute="top" constant="304" id="72c-2I-oN1" userLabel="ButtonTop"/>
+                                    <constraint firstItem="qyh-wj-euK" firstAttribute="leading" secondItem="Pq0-g0-inS" secondAttribute="leading" constant="38" id="90m-ab-bYc" userLabel="InstructionsLeft"/>
+                                    <constraint firstAttribute="trailing" secondItem="hjp-LN-3DT" secondAttribute="trailing" constant="38" id="KWm-cH-wJZ" userLabel="InfoLabelRight"/>
+                                    <constraint firstItem="hjp-LN-3DT" firstAttribute="top" secondItem="Pq0-g0-inS" secondAttribute="top" constant="128" id="QmO-gh-ynY" userLabel="InfoLabelTop"/>
+                                    <constraint firstItem="t0e-qD-eXK" firstAttribute="top" secondItem="Pq0-g0-inS" secondAttribute="top" constant="48" id="SfF-0i-ue1" userLabel="IconStackViewTop"/>
+                                    <constraint firstItem="WJk-bn-WxX" firstAttribute="leading" secondItem="Pq0-g0-inS" secondAttribute="leading" constant="38" id="ULQ-va-ZMc" userLabel="ButtonLeft"/>
+                                    <constraint firstAttribute="trailing" secondItem="qyh-wj-euK" secondAttribute="trailing" constant="38" id="ULY-jC-Iii" userLabel="InstructionsRight"/>
+                                    <constraint firstAttribute="trailing" secondItem="WJk-bn-WxX" secondAttribute="trailing" constant="38" id="l3G-Br-2us" userLabel="ButtonRight"/>
+                                    <constraint firstAttribute="trailing" secondItem="t0e-qD-eXK" secondAttribute="trailing" constant="38" id="nFf-bU-5OC" userLabel="StackViewLeft"/>
                                     <constraint firstItem="t0e-qD-eXK" firstAttribute="leading" secondItem="Pq0-g0-inS" secondAttribute="leading" constant="40" id="pCc-A5-7jW" userLabel="StackViewRight"/>
+                                    <constraint firstItem="qyh-wj-euK" firstAttribute="top" secondItem="Pq0-g0-inS" secondAttribute="top" constant="219" id="qhb-Tr-qVx" userLabel="InstructionsTop"/>
+                                    <constraint firstItem="hjp-LN-3DT" firstAttribute="leading" secondItem="Pq0-g0-inS" secondAttribute="leading" constant="38" id="yIF-TE-xbb" userLabel="InfoLabelLeft"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AeA-II-YUx" userLabel="ShadowView" customClass="NavBarShadowView" customModule="Septa" customModuleProvider="target">
@@ -124,7 +179,7 @@
                     <navigationItem key="navigationItem" title="My Favorites" id="OBt-zR-amq"/>
                     <connections>
                         <outlet property="iconStackView" destination="t0e-qD-eXK" id="DY6-Lx-R7D"/>
-                        <outlet property="shadowView" destination="AeA-II-YUx" id="hYJ-U2-6EZ"/>
+                        <outlet property="infoLabel" destination="hjp-LN-3DT" id="hOf-7i-4Us"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mqb-ka-ui5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -134,6 +189,7 @@
     </scenes>
     <resources>
         <image name="Favorite" width="40" height="30"/>
+        <image name="blueFavoriteIcon" width="22" height="20"/>
         <image name="favoriteTabbar" width="22" height="20"/>
         <image name="favoriteTabbarSelected" width="22" height="20"/>
     </resources>
