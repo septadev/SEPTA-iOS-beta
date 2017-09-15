@@ -15,18 +15,18 @@
             <rect key="frame" x="0.0" y="0.0" width="605" height="205"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3AG-3O-URg" id="UY2-Ca-Sh5">
-                <rect key="frame" x="0.0" y="0.0" width="605" height="204.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="605" height="205"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H4L-ex-I4m" userLabel="ShadowView" customClass="RoundedSurroundShadowedCellView" customModule="Septa" customModuleProvider="target">
-                        <rect key="frame" x="5" y="5" width="595" height="200.5"/>
+                        <rect key="frame" x="5" y="10" width="595" height="200.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="200.5" placeholder="YES" id="Csg-CY-DeB"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="27g-iu-NbY" userLabel="Content">
-                        <rect key="frame" x="5" y="5" width="595" height="200.5"/>
+                        <rect key="frame" x="5" y="10" width="595" height="200.5"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqs-q6-yyu" userLabel="CellHeader">
                                 <rect key="frame" x="14" y="11" width="581" height="36"/>
@@ -95,8 +95,8 @@ IconView</string>
                     <constraint firstItem="H4L-ex-I4m" firstAttribute="leading" secondItem="UY2-Ca-Sh5" secondAttribute="leading" constant="5" id="4KV-0R-eYc" userLabel="ShadowViewLeft"/>
                     <constraint firstAttribute="bottom" secondItem="27g-iu-NbY" secondAttribute="bottom" constant="5" id="4fS-it-etA" userLabel="ContentBottom"/>
                     <constraint firstAttribute="trailing" secondItem="H4L-ex-I4m" secondAttribute="trailing" constant="5" id="7mT-xz-Pgd" userLabel="ShadowViewRight"/>
-                    <constraint firstItem="H4L-ex-I4m" firstAttribute="top" secondItem="UY2-Ca-Sh5" secondAttribute="top" constant="5" id="Aq9-5D-whI" userLabel="ShadowViewTop"/>
-                    <constraint firstItem="27g-iu-NbY" firstAttribute="top" secondItem="UY2-Ca-Sh5" secondAttribute="top" constant="5" id="XnQ-vD-hXy" userLabel="ContentTop"/>
+                    <constraint firstItem="H4L-ex-I4m" firstAttribute="top" secondItem="UY2-Ca-Sh5" secondAttribute="top" constant="10" id="Aq9-5D-whI" userLabel="ShadowViewTop"/>
+                    <constraint firstItem="27g-iu-NbY" firstAttribute="top" secondItem="UY2-Ca-Sh5" secondAttribute="top" constant="10" id="XnQ-vD-hXy" userLabel="ContentTop"/>
                     <constraint firstAttribute="bottom" secondItem="H4L-ex-I4m" secondAttribute="bottom" constant="5" id="XxA-HU-bCd" userLabel="ShadViewBottom"/>
                     <constraint firstItem="27g-iu-NbY" firstAttribute="leading" secondItem="UY2-Ca-Sh5" secondAttribute="leading" constant="5" id="mlI-U7-fcy" userLabel="ContentLeft"/>
                     <constraint firstAttribute="trailing" secondItem="27g-iu-NbY" secondAttribute="trailing" constant="5" id="vT9-Vx-XuY" userLabel="ContentRight"/>

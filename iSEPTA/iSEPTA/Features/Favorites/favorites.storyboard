@@ -44,7 +44,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pJh-WZ-kY4">
-                                        <rect key="frame" x="5" y="20" width="365" height="627"/>
+                                        <rect key="frame" x="5" y="0.0" width="365" height="647"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableView>
                                 </subviews>
@@ -53,7 +53,7 @@
                                     <constraint firstAttribute="bottom" secondItem="pJh-WZ-kY4" secondAttribute="bottom" id="3cZ-4h-izk" userLabel="tableViewBottom"/>
                                     <constraint firstAttribute="trailing" secondItem="pJh-WZ-kY4" secondAttribute="trailing" constant="5" id="4OA-o1-tsc" userLabel="TableViewRight"/>
                                     <constraint firstItem="pJh-WZ-kY4" firstAttribute="leading" secondItem="z3c-wj-1cI" secondAttribute="leading" constant="5" id="N8v-D0-Ees" userLabel="TableViewLeft"/>
-                                    <constraint firstItem="pJh-WZ-kY4" firstAttribute="top" secondItem="z3c-wj-1cI" secondAttribute="top" constant="20" id="qtu-c8-Wg7" userLabel="TableViewTop"/>
+                                    <constraint firstItem="pJh-WZ-kY4" firstAttribute="top" secondItem="z3c-wj-1cI" secondAttribute="top" id="qtu-c8-Wg7" userLabel="TableViewTop"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -112,7 +112,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qyh-wj-euK" userLabel="InstructionsView">
-                                        <rect key="frame" x="67" y="213" width="240" height="128"/>
+                                        <rect key="frame" x="38" y="219" width="299" height="38.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" misplaced="YES" image="blueFavoriteIcon" translatesAutoresizingMaskIntoConstraints="NO" id="fxY-4J-40E" userLabel="HeartIcon">
                                                 <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
@@ -123,7 +123,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find a trip then use the favorite icon to add it to your Favorites." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMX-YF-FRn" userLabel="Instructions">
-                                                <rect key="frame" x="99" y="53" width="42" height="21"/>
+                                                <rect key="frame" x="31" y="0.0" width="260.5" height="38.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                 <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>

@@ -13,12 +13,16 @@ class FavoritesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var timer: Timer?
     var viewModel: FavoritesViewModel!
+    private var pendingRequestWorkItem: DispatchWorkItem?
+
+    var millisecondsToDelayTableReload = 250
 
     override func viewDidLoad() {
         view.backgroundColor = SeptaColor.navBarBlue
         viewModel = FavoritesViewModel(delegate: self, tableView: tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.allowsSelection = false
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 18))
         footerView.backgroundColor = UIColor.clear
         tableView.tableFooterView = footerView
@@ -28,6 +32,7 @@ class FavoritesViewController: UIViewController {
 extension FavoritesViewController { // refresh timer
     override func viewDidAppear(_: Bool) {
         initTimer()
+        refreshNextToArriveForAllFavorites()
     }
 
     override func viewWillDisappear(_: Bool) {
@@ -39,8 +44,12 @@ extension FavoritesViewController { // refresh timer
     }
 
     @objc func oneMinuteTimerFired(timer _: Timer) {
+        millisecondsToDelayTableReload = 4000
+        refreshNextToArriveForAllFavorites()
+    }
 
-        let _: [Favorite] = store.state.favoritesState.favorites.filter({ $0.nextToArriveUpdateStatus == .dataLoadedSuccessfully }).map {
+    public func refreshNextToArriveForAllFavorites() {
+        let _: [Favorite] = store.state.favoritesState.favorites.filter({ $0.nextToArriveUpdateStatus != .dataLoading }).map {
             var favorite = $0
             favorite.refreshDataRequested = true
             let action = UpdateFavorite(favorite: favorite, description: "Timer based request to update this favorite")
@@ -60,7 +69,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_: UITableView, heightForFooterInSection _: Int) -> CGFloat {
-        return 10
+        return 0
     }
 
     func tableView(_: UITableView, viewForFooterInSection _: Int) -> UIView? {
@@ -72,13 +81,25 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let tripCell = tableView.dequeueReusableCell(withIdentifier: "favoriteTripCell") as? FavoriteTripCell else { return UITableViewCell() }
         viewModel.configureTripCell(favoriteTripCell: tripCell, indexPath: indexPath)
+
         return tripCell
     }
 }
 
 extension FavoritesViewController: UpdateableFromViewModel {
+
     func viewModelUpdated() {
-        tableView.reloadData()
+        pendingRequestWorkItem?.cancel()
+
+        // Wrap our request in a work item
+        let requestWorkItem = DispatchWorkItem { [weak self] in
+            self?.tableView.reloadData()
+            print("Reload data")
+        }
+
+        // Save the new work item and execute it after 250 ms
+        pendingRequestWorkItem = requestWorkItem
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(millisecondsToDelayTableReload), execute: requestWorkItem)
     }
 
     func updateActivityIndicator(animating _: Bool) {

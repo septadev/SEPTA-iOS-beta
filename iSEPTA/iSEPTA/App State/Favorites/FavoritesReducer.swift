@@ -54,7 +54,9 @@ struct FavoritesReducer {
     }
 
     static func reduceUpdateFavorite(action: UpdateFavorite, state: FavoritesState) -> FavoritesState {
-        var favorites = state.favorites.filter { $0.favoriteId != action.favorite.favoriteId }
+        var favorites = state.favorites
+
+        favorites = favorites.filter { $0.favoriteId != action.favorite.favoriteId }
         favorites.append(action.favorite)
         return FavoritesState(favorites: favorites)
     }

@@ -33,13 +33,8 @@ class FavoritesNextToArriveProvider: StoreSubscriber {
     }
 
     func newState(state: [Favorite]) {
-        let favorites = state
-        let favoritesToUpdate = filterFavoritesThatNeedUpdating(favorites: favorites)
+        let favoritesToUpdate = state
         retrieveNextToArrive(favorites: favoritesToUpdate)
-    }
-
-    func filterFavoritesThatNeedUpdating(favorites: [Favorite]) -> [Favorite] {
-        return favorites.filter { $0.refreshDataRequested && $0.nextToArriveUpdateStatus != .dataLoading }
     }
 
     func retrieveNextToArrive(favorites: [Favorite]) {
@@ -108,7 +103,7 @@ extension FavoritesNextToArriveProvider: SubscriberUnsubscriber {
     func subscribe() {
         store.subscribe(self) {
             $0.select {
-                $0.favoritesState.favorites
+                $0.favoritesState.favoritesToUpdate
             }.skipRepeats { $0 == $1 }
         }
     }

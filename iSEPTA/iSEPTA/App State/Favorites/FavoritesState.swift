@@ -7,11 +7,15 @@
 //
 
 import Foundation
+import SeptaSchedule
 
 struct FavoritesState: Codable {
     let favorites: [Favorite]
+    var favoritesExist: Bool { return favorites.count > 0 }
+    var favoritesToUpdate: [Favorite] { return favorites.filter { $0.refreshDataRequested && $0.nextToArriveUpdateStatus != .dataLoading } }
+    var favoritesToDisplay: [Favorite] { return favorites.filter { $0.nextToArriveUpdateStatus == .dataLoadedSuccessfully } }
 
-    init(favorites: [Favorite] = [Favorite]()) {
+    init(favorites: [Favorite] = [Favorite](), lastFavoriteUpdated _: Favorite? = nil) {
         self.favorites = favorites
     }
 
@@ -33,6 +37,19 @@ struct FavoritesState: Codable {
 
 extension FavoritesState: Equatable {}
 func ==(lhs: FavoritesState, rhs: FavoritesState) -> Bool {
+    var areEqual = true
 
-    return lhs.favorites == rhs.favorites
+    areEqual = lhs.favorites == rhs.favorites
+    guard areEqual else { return false }
+
+    areEqual = lhs.favoritesExist == rhs.favoritesExist
+    guard areEqual else { return false }
+
+    areEqual = lhs.favoritesToDisplay == rhs.favoritesToDisplay
+    guard areEqual else { return false }
+
+    areEqual = lhs.favoritesToUpdate == rhs.favoritesToUpdate
+    guard areEqual else { return false }
+
+    return areEqual
 }

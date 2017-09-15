@@ -3,16 +3,15 @@ use Data::Dumper;
 
 my $struct = q |
 
-struct Favorite: Codable {
-    let favoriteId: String
-    let favoriteName: String
-    let transitMode: TransitMode
-    let selectedRoute: Route
-    let selectedStart: Stop
-    let selectedEnd: Stop
-    let nextToArriveTrips: [NextToArriveTrip]
-     let nextToArriveUpdateStatus: NextToArriveUpdateStatus
-    let refreshDataRequested: Bool
+struct FavoritesState: Codable {
+    let favorites: [Favorite]
+    var lastFavoriteUpdated: Favorite?
+
+    init(favorites: [Favorite] = [Favorite]()) {
+        self.favorites = favorites
+    }
+
+
 
 	|;
 

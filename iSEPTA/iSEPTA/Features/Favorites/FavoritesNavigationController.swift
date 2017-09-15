@@ -11,15 +11,16 @@ import UIKit
 import ReSwift
 
 class FavoritesNavigationController: UINavigationController, StoreSubscriber {
-    typealias StoreSubscriberStateType = [Favorite]
+    typealias StoreSubscriberStateType = Bool
 
     override func viewDidLoad() {
         subscribe()
     }
 
+
     func newState(state: StoreSubscriberStateType) {
-        let favorites = state
-        if favorites.count > 0 {
+        let favoritesExist = state
+        if favoritesExist {
             showFavoritesController()
         } else {
             showNoFavoritesViewController()
@@ -62,7 +63,7 @@ extension FavoritesNavigationController: SubscriberUnsubscriber {
     func subscribe() {
         store.subscribe(self) {
             $0.select {
-                $0.favoritesState.favorites
+                $0.favoritesState.favoritesExist
             }.skipRepeats { $0 == $1 }
         }
     }

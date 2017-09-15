@@ -49,7 +49,7 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
     func subscribe() {
         store.subscribe(self) {
             $0.select {
-                $0.favoritesState.favorites
+                $0.favoritesState.favoritesToDisplay
             }.skipRepeats { $0 == $1 }
         }
     }

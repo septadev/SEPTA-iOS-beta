@@ -19,6 +19,10 @@ class NextToArriveInfoViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet var tableFooterView: UIView!
+
+    private var pendingRequestWorkItem: DispatchWorkItem?
+
+    var millisecondsToDelayTableReload = 250
     var viewModel: NextToArriveInfoViewModel!
 
     override func viewDidLoad() {
@@ -49,7 +53,7 @@ extension NextToArriveInfoViewController { // refresh timer
     }
 
     @objc func oneMinuteTimerFired(timer _: Timer) {
-
+        millisecondsToDelayTableReload = 5000
         let action = NextToArriveRefreshDataRequested(refreshUpdateRequested: true)
         store.dispatch(action)
     }
@@ -90,7 +94,17 @@ extension NextToArriveInfoViewController: UITableViewDataSource, UITableViewDele
 
 extension NextToArriveInfoViewController: UpdateableFromViewModel {
     func viewModelUpdated() {
-        tableView.reloadData()
+        pendingRequestWorkItem?.cancel()
+
+        // Wrap our request in a work item
+        let requestWorkItem = DispatchWorkItem { [weak self] in
+            self?.tableView.reloadData()
+            print("Reload data")
+        }
+
+        // Save the new work item and execute it after 250 ms
+        pendingRequestWorkItem = requestWorkItem
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(millisecondsToDelayTableReload), execute: requestWorkItem)
     }
 
     func updateActivityIndicator(animating _: Bool) {
