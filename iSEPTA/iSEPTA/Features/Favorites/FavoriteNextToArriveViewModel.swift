@@ -16,8 +16,21 @@ class FavoriteNextToArriveViewModel: BaseNextToArriveInfoViewModel {
         self.favorite = favorite
         super.init()
         self.delegate = delegate
-        groupedTripData = NextToArriveGrouper.buildNextToArriveTripSections(trips: favorite.nextToArriveTrips)
+        groupedTripData = groupNextToArriveTripsByRoute(trips: favorite.nextToArriveTrips)
+    }
 
+    func groupNextToArriveTripsByRoute(trips _: [NextToArriveTrip]) -> [[NextToArriveTrip]] {
+        var groupedTripData = NextToArriveGrouper.buildNextToArriveTripSections(trips: favorite.nextToArriveTrips)
+        groupedTripData = includeOnlyTheFirstThreeRoutes(groupedTripData: groupedTripData)
+        return groupedTripData
+    }
+
+    func includeOnlyTheFirstThreeRoutes(groupedTripData: [[NextToArriveTrip]]) -> [[NextToArriveTrip]] {
+        if groupedTripData.count > 3 {
+            return Array(groupedTripData[0 ... 2])
+        } else {
+            return groupedTripData
+        }
     }
 
     override func transitMode() -> TransitMode {

@@ -42,6 +42,7 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
         let loadedFavorites = state.filter { $0.nextToArriveUpdateStatus == .dataLoadedSuccessfully }
         favoriteViewModels = loadedFavorites.map { FavoriteNextToArriveViewModel(favorite: $0, delegate: favoriteDelegate) }
         favoriteViewModels.sort { $0.favorite.favoriteName < $1.favorite.favoriteName }
+
         delegate.viewModelUpdated()
     }
 
