@@ -22,6 +22,8 @@ class FavoritesViewController: UIViewController {
         viewModel = FavoritesViewModel(delegate: self, tableView: tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 300
         tableView.allowsSelection = false
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 18))
         footerView.backgroundColor = UIColor.clear
@@ -93,7 +95,12 @@ extension FavoritesViewController: UpdateableFromViewModel {
 
         // Wrap our request in a work item
         let requestWorkItem = DispatchWorkItem { [weak self] in
-            self?.tableView.reloadData()
+            guard let strongSelf = self, let tableView = strongSelf.tableView else { return }
+            let offset = tableView.contentOffset
+            print(offset)
+            tableView.reloadData()
+            tableView.layoutIfNeeded()
+            tableView.contentOffset = offset
             print("Reload data")
         }
 
