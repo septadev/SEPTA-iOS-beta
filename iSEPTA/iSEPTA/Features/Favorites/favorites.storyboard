@@ -185,6 +185,9 @@ TextFieldWrapper</string>
                     <value key="contentSizeForViewInPopover" type="size" width="375" height="299"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="299"/>
+                    <connections>
+                        <outlet property="textField" destination="wzn-yb-Nx7" id="ztm-kA-cMf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w7Y-8j-qXW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

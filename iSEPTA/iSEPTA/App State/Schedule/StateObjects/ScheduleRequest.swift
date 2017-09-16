@@ -60,20 +60,20 @@ extension ScheduleRequest {
         return Favorite(favoriteId: favoriteId, favoriteName: favoriteName, transitMode: transitMode, selectedRoute: selectedRoute, selectedStart: selectedStart, selectedEnd: selectedEnd, nextToArriveTrips: [NextToArriveTrip](), nextToArriveUpdateStatus: .idle, refreshDataRequested: true)
     }
 
-    func isFavorited() -> Bool {
+    func locateInFavorites() -> Favorite? {
         guard
             let selectedRoute = selectedRoute,
             let selectedStart = selectedStart,
-            let selectedEnd = selectedEnd else { return false }
+            let selectedEnd = selectedEnd else { return nil }
         let favorites = store.state.favoritesState.favorites
-        if let _ = favorites.filter({
+        if let favorite = favorites.filter({
             $0.transitMode == transitMode &&
                 $0.selectedRoute == selectedRoute &&
                 $0.selectedStart == selectedStart &&
                 $0.selectedEnd == selectedEnd }).first {
-            return true
+            return favorite
         } else {
-            return false
+            return nil
         }
     }
 }

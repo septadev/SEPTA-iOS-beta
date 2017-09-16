@@ -5,9 +5,14 @@ import UIKit
 import ReSwift
 import SeptaSchedule
 
-class MainNavigationController: UITabBarController, UITabBarControllerDelegate, StoreSubscriber {
+class MainNavigationController: UITabBarController, UITabBarControllerDelegate, StoreSubscriber, FavoritesState_FavoriteToEditWatcherDelegate {
 
     typealias StoreSubscriberStateType = NavigationController
+    var favoritestoEditWatcher: FavoritesState_FavoriteToEditWatcher?
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        favoritestoEditWatcher = FavoritesState_FavoriteToEditWatcher(delegate: self)
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -54,7 +59,6 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
                 self?.performSegue(withIdentifier: "showDatabaseLoadingModal", sender: self)
             }
         }
-        presentEditFavoritModal()
     }
 
     var modalTransitioningDelegate: UIViewControllerTransitioningDelegate!
@@ -65,6 +69,14 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
             viewController.modalPresentationStyle = .custom
             viewController.transitioningDelegate = modalTransitioningDelegate
             present(viewController, animated: true, completion: nil)
+        }
+    }
+
+    func favoritesState_FavoriteToEditUpdated(favorite: Favorite?) {
+        if let _ = favorite, presentedViewController == nil {
+            presentEditFavoritModal()
+        } else if let _ = presentedViewController, favorite == nil {
+            dismiss(animated: true, completion: nil)
         }
     }
 }

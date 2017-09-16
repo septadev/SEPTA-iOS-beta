@@ -17,7 +17,8 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
 
     @IBOutlet weak var favoritesButton: UIButton! {
         didSet {
-            nextToArriveFavoritesController = NextToArriveFavoritesIconController(favoritesButton: favoritesButton, hostController: self)
+            nextToArriveFavoritesController = NextToArriveFavoritesIconController()
+            nextToArriveFavoritesController.favoritesButton = favoritesButton
         }
     }
 

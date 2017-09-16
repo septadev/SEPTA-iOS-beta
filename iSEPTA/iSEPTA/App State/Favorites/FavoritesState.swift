@@ -11,6 +11,8 @@ import SeptaSchedule
 
 struct FavoritesState: Codable {
     let favorites: [Favorite]
+    var favoriteToEdit: Favorite?
+    var hasFavoriteToEdit: Bool { return favoriteToEdit != nil }
     var favoritesExist: Bool { return favorites.count > 0 }
     var favoritesToUpdate: Set<Favorite> {
         return Set(favorites.filter { $0.refreshDataRequested && $0.nextToArriveUpdateStatus != .dataLoading })
@@ -19,7 +21,7 @@ struct FavoritesState: Codable {
         Set(favorites.filter { $0.nextToArriveUpdateStatus == .dataLoadedSuccessfully })
     }
 
-    init(favorites: [Favorite] = [Favorite](), lastFavoriteUpdated _: Favorite? = nil) {
+    init(favorites: [Favorite] = [Favorite]()) {
         self.favorites = favorites
     }
 
@@ -56,4 +58,10 @@ func ==(lhs: FavoritesState, rhs: FavoritesState) -> Bool {
     guard areEqual else { return false }
 
     return areEqual
+}
+
+extension FavoritesState {
+    func favoriteForScheduleRequest(_ scheduleRequest: ScheduleRequest) -> Favorite? {
+        return favorites.filter({ $0 == scheduleRequest }).first
+    }
 }

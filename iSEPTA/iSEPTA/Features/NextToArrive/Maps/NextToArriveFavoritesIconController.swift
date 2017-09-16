@@ -1,50 +1,58 @@
 //
-//  TripScheduleFavoritesIconController.swift
+//  NextToArriveFavoritesController.swift
 //  iSEPTA
 //
-//  Created by Mark Broski on 9/3/17.
+//  Created by Mark Broski on 9/11/17.
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
 import Foundation
 import UIKit
 import ReSwift
-import SeptaSchedule
 
-class TripScheduleFavoritesIconController: FavoritesState_FavoritesWatcherDelegate, ScheduleState_ScheduleRequestWatcherDelegate {
+class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelegate, NextToArriveState_ScheduleState_ScheduleRequestWatcherDelegate {
 
-    var favoritesButton: UIButton? {
+    var favoritesButton: UIButton! {
         didSet {
             setUpTargetAndActionForButton()
+            favoritesWatcher.delegate = self
+            scheduleRequestWatcher.delegate = self
         }
     }
 
-    let favoritesWatcher: FavoritesState_FavoritesWatcher?
-    let scheduleRequestWatcher: NextToArriveState_ScheduleState_ScheduleRequestWatcher?
+    var favoritesWatcher: FavoritesState_FavoritesWatcher! {
+        didSet {
+        }
+    }
 
-    var currentScheduleRequest: ScheduleRequest!
+    var scheduleRequestWatcher: NextToArriveState_ScheduleState_ScheduleRequestWatcher! {
+        didSet {
+        }
+    }
+
+    var currentScheduleRequest: ScheduleRequest?
     var currentFavorite: Favorite?
 
-    init(favoritesButton: UIButton) {
-        self.favoritesButton = favoritesButton
+    init() {
 
         favoritesWatcher = FavoritesState_FavoritesWatcher()
         scheduleRequestWatcher = NextToArriveState_ScheduleState_ScheduleRequestWatcher()
     }
 
     func favoritesState_FavoritesUpdated(favorites _: [Favorite]) {
+        guard let currentScheduleRequest = currentScheduleRequest else { return }
         currentFavorite = currentScheduleRequest.locateInFavorites()
         updateFavoritesNavBarIcon()
     }
 
-    func scheduleState_ScheduleRequestUpdated(scheduleRequest: ScheduleRequest) {
+    func nextToArriveState_ScheduleState_ScheduleRequestUpdated(scheduleRequest: ScheduleRequest) {
         currentScheduleRequest = scheduleRequest
-        currentFavorite = currentScheduleRequest.locateInFavorites()
+        currentFavorite = scheduleRequest.locateInFavorites()
         updateFavoritesNavBarIcon()
     }
 
     func setUpTargetAndActionForButton() {
-        favoritesButton?.addTarget(self, action: #selector(NextToArriveFavoritesIconController.didTapFavoritesButton(_:)), for: UIControlEvents.touchUpInside)
+        favoritesButton.addTarget(self, action: #selector(NextToArriveFavoritesIconController.didTapFavoritesButton(_:)), for: UIControlEvents.touchUpInside)
     }
 
     @IBAction func didTapFavoritesButton(_: UIButton) {
@@ -52,7 +60,7 @@ class TripScheduleFavoritesIconController: FavoritesState_FavoritesWatcherDelega
             let action = EditFavorite(favorite: currentFavorite)
             store.dispatch(action)
         } else {
-            guard let newFavorite = currentScheduleRequest.convertedToFavorite() else { return }
+            guard let newFavorite = currentScheduleRequest?.convertedToFavorite() else { return }
             let action = AddFavorite(favorite: newFavorite)
             store.dispatch(action)
         }
@@ -65,6 +73,6 @@ class TripScheduleFavoritesIconController: FavoritesState_FavoritesWatcherDelega
         } else {
             image = SeptaImages.favoritesNotEnabled
         }
-        favoritesButton?.setImage(image, for: UIControlState.normal)
+        favoritesButton.setImage(image, for: UIControlState.normal)
     }
 }

@@ -11,7 +11,7 @@ import SeptaSchedule
 // TODO: create a parallel favorite data array so that we aren't writing favorites to disk so much
 struct Favorite: Codable {
     let favoriteId: String
-    let favoriteName: String
+    var favoriteName: String
     let transitMode: TransitMode
     let selectedRoute: Route
     let selectedStart: Stop

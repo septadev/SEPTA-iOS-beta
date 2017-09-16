@@ -21,7 +21,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet weak var favoritesButton: UIButton! {
         didSet {
-            tripScheduleFavoritesIconController = TripScheduleFavoritesIconController(favoritesButton: favoritesButton, hostController: self)
+            tripScheduleFavoritesIconController = TripScheduleFavoritesIconController(favoritesButton: favoritesButton)
         }
     }
 

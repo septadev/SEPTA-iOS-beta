@@ -5,19 +5,17 @@ import SeptaSchedule
 import ReSwift
 
 protocol NextToArriveState_ScheduleState_ScheduleRequestWatcherDelegate: AnyObject {
-    func stateUpdated(scheduleRequest: ScheduleRequest)
+    func nextToArriveState_ScheduleState_ScheduleRequestUpdated(scheduleRequest: ScheduleRequest)
 }
 
 class NextToArriveState_ScheduleState_ScheduleRequestWatcher: BaseWatcher, StoreSubscriber {
 
     typealias StoreSubscriberStateType = ScheduleRequest
 
-    weak var delegate: NextToArriveState_ScheduleState_ScheduleRequestWatcherDelegate?
-
-    init(delegate: NextToArriveState_ScheduleState_ScheduleRequestWatcherDelegate) {
-        self.delegate = delegate
-        super.init()
-        subscribe()
+    weak var delegate: NextToArriveState_ScheduleState_ScheduleRequestWatcherDelegate? {
+        didSet {
+            subscribe()
+        }
     }
 
     func subscribe() {
@@ -27,6 +25,6 @@ class NextToArriveState_ScheduleState_ScheduleRequestWatcher: BaseWatcher, Store
     }
 
     func newState(state: StoreSubscriberStateType) {
-        delegate?.stateUpdated(scheduleRequest: state)
+        delegate?.nextToArriveState_ScheduleState_ScheduleRequestUpdated(scheduleRequest: state)
     }
 }

@@ -4,9 +4,9 @@ use String::Util  ':all';
 use Modern::Perl;
 use Data::Dumper; 
 
-my $type = q| Bool   |;
+my $type = q| ScheduleRequest   |;
 
-my $keyPath = q|  favoritesState.favoritesExist |;
+my $keyPath = q|  scheduleState.scheduleRequest |;
 
 
 
@@ -24,13 +24,13 @@ class %ClassName%: BaseWatcher, StoreSubscriber {
 
     typealias StoreSubscriberStateType = %Type%
 
-    weak var %DelegateInstance%: %DelegateName%?
-
-    init(%DelegateInstance%: %DelegateName%) {
-    	self.%DelegateInstance% = %DelegateInstance%
-    	super.init()
-        subscribe()
+    weak var %DelegateInstance%: %DelegateName%? {
+        didSet {
+            subscribe()
+        }
     }
+
+   
 
     func subscribe() {
         store.subscribe(self) {
@@ -58,6 +58,7 @@ $delegateName .= "Delegate";
 my $output = $template;
 $type = trim($type);
 my $typeParam = "\l$type";
+$typeParam =~ s/\?//g;
 $keyPath = trim($keyPath);
 
 my $delegateInstance = "delegate";

@@ -49,7 +49,7 @@ extension NextToArriveInfoViewController { // refresh timer
     }
 
     func initTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(oneMinuteTimerFired(timer:)), userInfo: nil, repeats: true)
+        //        timer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(oneMinuteTimerFired(timer:)), userInfo: nil, repeats: true)
     }
 
     @objc func oneMinuteTimerFired(timer _: Timer) {

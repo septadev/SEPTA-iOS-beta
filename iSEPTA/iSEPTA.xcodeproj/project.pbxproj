@@ -52,6 +52,7 @@
 		58248B771F6D8F6C00DA2D65 /* HalfSheetAnimationIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B761F6D8F6C00DA2D65 /* HalfSheetAnimationIn.swift */; };
 		58248B791F6D8F9200DA2D65 /* HalfSheetAnimationOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B781F6D8F9200DA2D65 /* HalfSheetAnimationOut.swift */; };
 		58248B7B1F6D8FB400DA2D65 /* ViewControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B7A1F6D8FB400DA2D65 /* ViewControllerTransitioningDelegate.swift */; };
+		58248B7D1F6D992900DA2D65 /* FavoriteToEditWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B7C1F6D992900DA2D65 /* FavoriteToEditWatcher.swift */; };
 		582531951F406E790088D056 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 582531941F406E790088D056 /* DefaultPreferences.plist */; };
 		582531981F40707C0088D056 /* DefaultPreferencesLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582531971F40707C0088D056 /* DefaultPreferencesLoader.swift */; };
 		5825319A1F407D380088D056 /* UserDefaultsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582531991F407D380088D056 /* UserDefaultsLoader.swift */; };
@@ -289,6 +290,8 @@
 		58B278C01F62AAD500663507 /* WIL.kml in Resources */ = {isa = PBXBuildFile; fileRef = 58B278271F62AAD500663507 /* WIL.kml */; };
 		58B278C11F62AAD500663507 /* WTR.kml in Resources */ = {isa = PBXBuildFile; fileRef = 58B278281F62AAD500663507 /* WTR.kml */; };
 		58B278C21F62AAD500663507 /* XH.kml in Resources */ = {isa = PBXBuildFile; fileRef = 58B278291F62AAD500663507 /* XH.kml */; };
+		58B5B1051F6DB00000A3DAFB /* FavoritesState_FavoritesWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B5B1041F6DB00000A3DAFB /* FavoritesState_FavoritesWatcher.swift */; };
+		58B5B1091F6DBFFF00A3DAFB /* ScheduleState_ScheduleRequestWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B5B1081F6DBFFF00A3DAFB /* ScheduleState_ScheduleRequestWatcher.swift */; };
 		58B892151F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892141F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift */; };
 		58B892171F38F7E700BFFEFA /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892161F38F7E700BFFEFA /* Strings.swift */; };
 		58BE70711F6A4CFB00D12479 /* CellConnectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BE70701F6A4CFB00D12479 /* CellConnectionView.xib */; };
@@ -370,7 +373,7 @@
 		671A19291F66385100C8EEDA /* NoConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A19281F66385100C8EEDA /* NoConnectionCell.swift */; };
 		671A192B1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A192A1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift */; };
 		671A192D1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A192C1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift */; };
-		671A192F1F66A3D500C8EEDA /* NextToArriveFavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A192E1F66A3D500C8EEDA /* NextToArriveFavoritesController.swift */; };
+		671A192F1F66A3D500C8EEDA /* NextToArriveFavoritesIconController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A192E1F66A3D500C8EEDA /* NextToArriveFavoritesIconController.swift */; };
 		6749A46E1F53997D00AF6119 /* StopToSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749A46D1F53997D00AF6119 /* StopToSelect.swift */; };
 		6749A4711F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */; };
 		674FDBBF1F56E87F00CA67D2 /* SeptaRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; };
@@ -392,7 +395,6 @@
 		678D26CA1F5CC83900D140CC /* FavoritesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26C91F5CC83900D140CC /* FavoritesProvider.swift */; };
 		678D26CC1F5CDB4200D140CC /* Septa+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26CB1F5CDB4200D140CC /* Septa+Images.swift */; };
 		678D26CE1F5CE4A500D140CC /* TripScheduleFavoritesIconController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26CD1F5CE4A500D140CC /* TripScheduleFavoritesIconController.swift */; };
-		678DAA9A1F66EEC800EB6EE8 /* BaseFavoritesIconController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DAA991F66EEC800EB6EE8 /* BaseFavoritesIconController.swift */; };
 		678DAA9E1F67065F00EB6EE8 /* NextToArriveConnectingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DAA9D1F67065F00EB6EE8 /* NextToArriveConnectingViewModel.swift */; };
 		678DAAA01F67067500EB6EE8 /* NextToArriveNonConnectivingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DAA9F1F67067500EB6EE8 /* NextToArriveNonConnectivingViewModel.swift */; };
 		678DAAA21F6706E300EB6EE8 /* NextToArriveTripGrouper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DAAA11F6706E300EB6EE8 /* NextToArriveTripGrouper.swift */; };
@@ -548,6 +550,7 @@
 		58248B761F6D8F6C00DA2D65 /* HalfSheetAnimationIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheetAnimationIn.swift; sourceTree = "<group>"; };
 		58248B781F6D8F9200DA2D65 /* HalfSheetAnimationOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheetAnimationOut.swift; sourceTree = "<group>"; };
 		58248B7A1F6D8FB400DA2D65 /* ViewControllerTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTransitioningDelegate.swift; sourceTree = "<group>"; };
+		58248B7C1F6D992900DA2D65 /* FavoriteToEditWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteToEditWatcher.swift; sourceTree = "<group>"; };
 		582531941F406E790088D056 /* DefaultPreferences.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
 		582531971F40707C0088D056 /* DefaultPreferencesLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPreferencesLoader.swift; sourceTree = "<group>"; };
 		582531991F407D380088D056 /* UserDefaultsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsLoader.swift; sourceTree = "<group>"; };
@@ -802,6 +805,8 @@
 		58B278271F62AAD500663507 /* WIL.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = WIL.kml; sourceTree = "<group>"; };
 		58B278281F62AAD500663507 /* WTR.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = WTR.kml; sourceTree = "<group>"; };
 		58B278291F62AAD500663507 /* XH.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = XH.kml; sourceTree = "<group>"; };
+		58B5B1041F6DB00000A3DAFB /* FavoritesState_FavoritesWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesState_FavoritesWatcher.swift; sourceTree = "<group>"; };
+		58B5B1081F6DBFFF00A3DAFB /* ScheduleState_ScheduleRequestWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleState_ScheduleRequestWatcher.swift; sourceTree = "<group>"; };
 		58B891C81F38B51E00BFFEFA /* ScheduleRequestReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleRequestReducerTests.swift; sourceTree = "<group>"; };
 		58B8920C1F38C64C00BFFEFA /* MockPreferenceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPreferenceProvider.swift; sourceTree = "<group>"; };
 		58B8920E1F38CBA900BFFEFA /* GenericAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAction.swift; sourceTree = "<group>"; };
@@ -886,7 +891,7 @@
 		671A19281F66385100C8EEDA /* NoConnectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionCell.swift; sourceTree = "<group>"; };
 		671A192A1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextToArriveInfoViewController.swift; sourceTree = "<group>"; };
 		671A192C1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveInfoViewModel.swift; sourceTree = "<group>"; };
-		671A192E1F66A3D500C8EEDA /* NextToArriveFavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveFavoritesController.swift; sourceTree = "<group>"; };
+		671A192E1F66A3D500C8EEDA /* NextToArriveFavoritesIconController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveFavoritesIconController.swift; sourceTree = "<group>"; };
 		6749A46D1F53997D00AF6119 /* StopToSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopToSelect.swift; sourceTree = "<group>"; };
 		6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAddressRelativeStopViewModel.swift; sourceTree = "<group>"; };
 		674FDBC41F57390D00CA67D2 /* Route+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Color.swift"; sourceTree = "<group>"; };
@@ -906,7 +911,6 @@
 		678D26C91F5CC83900D140CC /* FavoritesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesProvider.swift; sourceTree = "<group>"; };
 		678D26CB1F5CDB4200D140CC /* Septa+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Septa+Images.swift"; sourceTree = "<group>"; };
 		678D26CD1F5CE4A500D140CC /* TripScheduleFavoritesIconController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripScheduleFavoritesIconController.swift; sourceTree = "<group>"; };
-		678DAA991F66EEC800EB6EE8 /* BaseFavoritesIconController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFavoritesIconController.swift; sourceTree = "<group>"; };
 		678DAA9D1F67065F00EB6EE8 /* NextToArriveConnectingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveConnectingViewModel.swift; sourceTree = "<group>"; };
 		678DAA9F1F67067500EB6EE8 /* NextToArriveNonConnectivingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveNonConnectivingViewModel.swift; sourceTree = "<group>"; };
 		678DAAA11F6706E300EB6EE8 /* NextToArriveTripGrouper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveTripGrouper.swift; sourceTree = "<group>"; };
@@ -1010,8 +1014,11 @@
 			isa = PBXGroup;
 			children = (
 				58248B631F6D573000DA2D65 /* NextToArriveState_ScheduleState_ScheduleRequestWatcher.swift */,
+				58B5B1081F6DBFFF00A3DAFB /* ScheduleState_ScheduleRequestWatcher.swift */,
 				58248B651F6D575A00DA2D65 /* BaseWatcher.swift */,
 				58248B6B1F6D5B6900DA2D65 /* FavoritesState_FavoritesExistWatcher.swift */,
+				58B5B1041F6DB00000A3DAFB /* FavoritesState_FavoritesWatcher.swift */,
+				58248B7C1F6D992900DA2D65 /* FavoriteToEditWatcher.swift */,
 			);
 			path = "State Watchers";
 			sourceTree = "<group>";
@@ -1122,7 +1129,6 @@
 				671A191F1F6613A600C8EEDA /* ConstraintsToggle.swift */,
 				671A19231F661F8F00C8EEDA /* SwipeGestureRecognizerToggle.swift */,
 				671A19251F662DF000C8EEDA /* DividerViews.swift */,
-				678DAA991F66EEC800EB6EE8 /* BaseFavoritesIconController.swift */,
 				671609101F67F72600941D2C /* UIStackView+Util.swift */,
 				580128111F6C055B006B6DB8 /* RedButton.swift */,
 				58248B6F1F6D6C3800DA2D65 /* SaveFavoriteButton.swift */,
@@ -1769,7 +1775,7 @@
 				58126F661F631C0800A6E187 /* ColorPointAnnotation.swift */,
 				5828C7F61F6451180046435A /* VehicleLocationAnnotation.swift */,
 				58E33F111F60998F00C74B7C /* NextToArriveDetailViewController.swift */,
-				671A192E1F66A3D500C8EEDA /* NextToArriveFavoritesController.swift */,
+				671A192E1F66A3D500C8EEDA /* NextToArriveFavoritesIconController.swift */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -2452,7 +2458,7 @@
 			files = (
 				58470C091F3F276000F3C9B5 /* NumberFormatters.swift in Sources */,
 				588F27F01F39DD7B00D62425 /* UserPreferenceState.swift in Sources */,
-				671A192F1F66A3D500C8EEDA /* NextToArriveFavoritesController.swift in Sources */,
+				671A192F1F66A3D500C8EEDA /* NextToArriveFavoritesIconController.swift in Sources */,
 				5825319A1F407D380088D056 /* UserDefaultsLoader.swift in Sources */,
 				582F4EDD1F33B1120062A546 /* UpdateableFromViewModel.swift in Sources */,
 				58EB8D1F1F5D8A650028A487 /* BaseNavigationController+Styling.swift in Sources */,
@@ -2490,12 +2496,12 @@
 				58FBB66E1F58AAC000E6532B /* AlertViewGradientBackgroundView.swift in Sources */,
 				58B892151F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift in Sources */,
 				582F4ECC1F33B1120062A546 /* ScheduleTableViewCell.swift in Sources */,
+				58B5B1051F6DB00000A3DAFB /* FavoritesState_FavoritesWatcher.swift in Sources */,
 				585572861F39499D004ABCD6 /* Color+Septa.swift in Sources */,
 				582F4EBB1F33B1120062A546 /* AppDelegate.swift in Sources */,
 				58E33F1E1F6147DE00C74B7C /* CLLocationCoordinate2D+Equatable.swift in Sources */,
 				5844CA1F1F3BD9B700651223 /* NavigationState.swift in Sources */,
 				58248B641F6D573000DA2D65 /* NextToArriveState_ScheduleState_ScheduleRequestWatcher.swift in Sources */,
-				678DAA9A1F66EEC800EB6EE8 /* BaseFavoritesIconController.swift in Sources */,
 				5863DB5A1F6C6B6700FC0F1F /* FavoritesExistWatcher.swift in Sources */,
 				671A19261F662DF000C8EEDA /* DividerViews.swift in Sources */,
 				582F4ED21F33B1120062A546 /* SelectStopCellType.swift in Sources */,
@@ -2504,6 +2510,7 @@
 				582F4EBF1F33B1120062A546 /* Alert.swift in Sources */,
 				585303CF1F69CAC600145D87 /* NextToArriveMapper.swift in Sources */,
 				582F4EC51F33B1120062A546 /* NextToArriveViewController.swift in Sources */,
+				58B5B1091F6DBFFF00A3DAFB /* ScheduleState_ScheduleRequestWatcher.swift in Sources */,
 				671A19291F66385100C8EEDA /* NoConnectionCell.swift in Sources */,
 				588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */,
 				58490E491F56019B007DBCA1 /* AlertReducer.swift in Sources */,
@@ -2526,6 +2533,7 @@
 				58FBBFA61F65823600B7A4DA /* DatabaseActions.swift in Sources */,
 				581804BB1F3F8051002184E3 /* LoggingError.swift in Sources */,
 				67075FC41F57858C008BB38C /* ScheduleStopState.swift in Sources */,
+				58248B7D1F6D992900DA2D65 /* FavoriteToEditWatcher.swift in Sources */,
 				582F4ED81F33B1120062A546 /* SelectSchedulesViewController.swift in Sources */,
 				58B2778B1F629FAA00663507 /* DummyData.swift in Sources */,
 				58FBB66A1F58717500E6532B /* SeptaTabBarImages.swift in Sources */,

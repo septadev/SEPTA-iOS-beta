@@ -27,6 +27,12 @@ struct FavoritesReducer {
             favoritesState = reduceLoadFavorites(action: action, state: state)
         case let action as AddFavorite:
             favoritesState = reduceAddFavorite(action: action, state: state)
+        case let action as EditFavorite:
+            favoritesState = reduceEditFavorite(action: action, state: state)
+        case let action as SaveFavorite:
+            favoritesState = reduceSaveFavorite(action: action, state: state)
+        case let action as CancelFavoriteEdit:
+            favoritesState = reduceCancelFavoriteEdit(action: action, state: state)
         case let action as RemoveFavorite:
             favoritesState = reduceRemoveFavorite(action: action, state: state)
         case let action as UpdateFavorite:
@@ -43,9 +49,25 @@ struct FavoritesReducer {
     }
 
     static func reduceAddFavorite(action: AddFavorite, state: FavoritesState) -> FavoritesState {
-        var favorites = state.favorites
+        var newState = state
+        newState.favoriteToEdit = action.favorite
+        return newState
+    }
+
+    static func reduceEditFavorite(action: EditFavorite, state: FavoritesState) -> FavoritesState {
+        var newState = state
+        newState.favoriteToEdit = action.favorite
+        return newState
+    }
+
+    static func reduceSaveFavorite(action: SaveFavorite, state: FavoritesState) -> FavoritesState {
+        var favorites = state.favorites.filter { $0.favoriteId != action.favorite.favoriteId }
         favorites.append(action.favorite)
         return FavoritesState(favorites: favorites)
+    }
+
+    static func reduceCancelFavoriteEdit(action _: CancelFavoriteEdit, state: FavoritesState) -> FavoritesState {
+        return FavoritesState(favorites: state.favorites)
     }
 
     static func reduceRemoveFavorite(action: RemoveFavorite, state: FavoritesState) -> FavoritesState {
