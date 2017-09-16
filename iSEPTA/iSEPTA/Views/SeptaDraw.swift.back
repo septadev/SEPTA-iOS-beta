@@ -9,13 +9,15 @@
 //  http://www.paintcodeapp.com
 //
 
+
+
 import UIKit
 
-public class SeptaDraw: NSObject {
+public class SeptaDraw : NSObject {
 
     //// Drawing Methods
 
-    @objc public dynamic class func drawBlueGradientView(frame: CGRect = CGRect(x: 17, y: 49, width: 106, height: 59)) {
+    @objc dynamic public class func drawBlueGradientView(frame: CGRect = CGRect(x: 17, y: 49, width: 106, height: 59)) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -32,13 +34,13 @@ public class SeptaDraw: NSObject {
         context.saveGState()
         viewPath.addClip()
         context.drawLinearGradient(blueGradient,
-                                   start: CGPoint(x: viewRect.midX, y: viewRect.minY),
-                                   end: CGPoint(x: viewRect.midX, y: viewRect.maxY),
-                                   options: [])
+            start: CGPoint(x: viewRect.midX, y: viewRect.minY),
+            end: CGPoint(x: viewRect.midX, y: viewRect.maxY),
+            options: [])
         context.restoreGState()
     }
 
-    @objc public dynamic class func drawBlueGradientCell(frame: CGRect = CGRect(x: 0, y: 0, width: 76, height: 32), shouldFill: Bool = true, enabled: Bool = true) {
+    @objc dynamic public class func drawBlueGradientCell(frame: CGRect = CGRect(x: 0, y: 0, width: 76, height: 32), shouldFill: Bool = true, enabled: Bool = true) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -74,9 +76,9 @@ public class SeptaDraw: NSObject {
         context.beginTransparencyLayer(auxiliaryInfo: nil)
         rectanglePath.addClip()
         context.drawLinearGradient(cellFill,
-                                   start: CGPoint(x: rectangleRect.maxX, y: rectangleRect.midY),
-                                   end: CGPoint(x: rectangleRect.minX, y: rectangleRect.midY),
-                                   options: [])
+            start: CGPoint(x: rectangleRect.maxX, y: rectangleRect.midY),
+            end: CGPoint(x: rectangleRect.minX, y: rectangleRect.midY),
+            options: [])
         context.endTransparencyLayer()
         context.restoreGState()
 
@@ -89,7 +91,7 @@ public class SeptaDraw: NSObject {
         context.restoreGState()
     }
 
-    @objc public dynamic class func drawRedButton(frame: CGRect = CGRect(x: 0, y: 0, width: 125, height: 46), redButtonText: String = "Button Text", enabled: Bool = true, buttonHighlighted: Bool = false) {
+    @objc dynamic public class func drawRedButton(frame: CGRect = CGRect(x: 0, y: 0, width: 125, height: 46), redButtonText: String = "Button Text", enabled: Bool = true, buttonHighlighted: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -126,14 +128,14 @@ public class SeptaDraw: NSObject {
         rectanglePath.addClip()
         let rectangleRotatedPath = UIBezierPath()
         rectangleRotatedPath.append(rectanglePath)
-        var rectangleTransform = CGAffineTransform(rotationAngle: -45 * -CGFloat.pi / 180)
+        var rectangleTransform = CGAffineTransform(rotationAngle: -45 * -CGFloat.pi/180)
         rectangleRotatedPath.apply(rectangleTransform)
         let rectangleBounds = rectangleRotatedPath.cgPath.boundingBoxOfPath
         rectangleTransform = rectangleTransform.inverted()
         context.drawLinearGradient(redButtonGradient,
-                                   start: CGPoint(x: rectangleBounds.minX, y: rectangleBounds.midY).applying(rectangleTransform),
-                                   end: CGPoint(x: rectangleBounds.maxX, y: rectangleBounds.midY).applying(rectangleTransform),
-                                   options: [])
+            start: CGPoint(x: rectangleBounds.minX, y: rectangleBounds.midY).applying(rectangleTransform),
+            end: CGPoint(x: rectangleBounds.maxX, y: rectangleBounds.midY).applying(rectangleTransform),
+            options: [])
         context.endTransparencyLayer()
         context.restoreGState()
 
@@ -154,6 +156,7 @@ public class SeptaDraw: NSObject {
         context.endTransparencyLayer()
         context.restoreGState()
 
+
         //// Rectangle 2 Drawing
         let rectangle2Path = UIBezierPath(roundedRect: CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height), cornerRadius: 4)
         context.saveGState()
@@ -163,7 +166,7 @@ public class SeptaDraw: NSObject {
         context.restoreGState()
     }
 
-    @objc public dynamic class func drawVerticalDottedTripGraphic(frame: CGRect = CGRect(x: 21, y: 26, width: 10, height: 52)) {
+    @objc dynamic public class func drawVerticalDottedTripGraphic(frame: CGRect = CGRect(x: 21, y: 26, width: 10, height: 52)) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -171,8 +174,10 @@ public class SeptaDraw: NSObject {
         let fillColor = UIColor(red: 0.078, green: 0.294, blue: 0.533, alpha: 1.000)
         let tripCanvasColor = UIColor(red: 0.078, green: 0.294, blue: 0.533, alpha: 1.000)
 
+
         //// Subframes
         let destinationMarker: CGRect = CGRect(x: frame.minX + 0.5, y: frame.minY + frame.height - 15, width: 9, height: 14)
+
 
         //// DestinationMarker
         //// Bezier 2 Drawing
@@ -220,6 +225,7 @@ public class SeptaDraw: NSObject {
         fillColor.setFill()
         bezier2Path.fill()
 
+
         //// Bezier 3 Drawing
         let bezier3Path = UIBezierPath()
         bezier3Path.move(to: CGPoint(x: destinationMarker.minX + 4.5, y: destinationMarker.minY + 3.45))
@@ -265,11 +271,15 @@ public class SeptaDraw: NSObject {
         bezier3Path.lineWidth = 0.3
         bezier3Path.stroke()
 
+
+
+
         //// TripStart Drawing
         let tripStartPath = UIBezierPath(ovalIn: CGRect(x: frame.minX + 0.5, y: frame.minY + 1, width: 9, height: 9))
         tripCanvasColor.setStroke()
         tripStartPath.lineWidth = 1
         tripStartPath.stroke()
+
 
         //// Bezier Drawing
         let bezierPath = UIBezierPath()
@@ -283,15 +293,16 @@ public class SeptaDraw: NSObject {
         context.restoreGState()
     }
 
-    @objc public dynamic class func drawBlueFavoriteIcon(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 22, height: 20), resizing: ResizingBehavior = .aspectFit) {
+    @objc dynamic public class func drawBlueFavoriteIcon(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 22, height: 20), resizing: ResizingBehavior = .aspectFit) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
-
+        
         //// Resize to Target Frame
         context.saveGState()
         let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 22, height: 20), target: targetFrame)
         context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
         context.scaleBy(x: resizedFrame.width / 22, y: resizedFrame.height / 20)
+
 
         //// Color Declarations
         let blueTextColor = UIColor(red: 0.078, green: 0.294, blue: 0.533, alpha: 1.000)
@@ -332,6 +343,7 @@ public class SeptaDraw: NSObject {
         bezierPath.lineWidth = 0
         bezierPath.stroke()
 
+
         //// Bezier 2 Drawing
         let bezier2Path = UIBezierPath()
         bezier2Path.move(to: CGPoint(x: 3.39, y: 6.49))
@@ -350,11 +362,12 @@ public class SeptaDraw: NSObject {
         blueTextColor.setStroke()
         bezier2Path.lineWidth = 0
         bezier2Path.stroke()
-
+        
         context.restoreGState()
+
     }
 
-    @objc public dynamic class func drawSaveButton(frame: CGRect = CGRect(x: 0, y: 0, width: 50, height: 25), buttonHighlighted: Bool = false) {
+    @objc dynamic public class func drawSaveButton(frame: CGRect = CGRect(x: 0, y: 0, width: 50, height: 25), buttonHighlighted: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -379,7 +392,7 @@ public class SeptaDraw: NSObject {
         let saveButtonTextRectStyle = NSMutableParagraphStyle()
         saveButtonTextRectStyle.alignment = .center
         let saveButtonTextRectFontAttributes = [
-            .font: UIFont.systemFont(ofSize: UIFont.systemFontSize, weight: UIFont.Weight.bold),
+            .font: UIFont.systemFont(ofSize: UIFont.systemFontSize, weight: UIFontWeightBold),
             .foregroundColor: white,
             .paragraphStyle: saveButtonTextRectStyle,
         ] as [NSAttributedStringKey: Any]
@@ -390,6 +403,7 @@ public class SeptaDraw: NSObject {
         saveButtonTextRectTextContent.draw(in: CGRect(x: saveButtonTextRectRect.minX, y: saveButtonTextRectRect.minY + (saveButtonTextRectRect.height - saveButtonTextRectTextHeight) / 2, width: saveButtonTextRectRect.width, height: saveButtonTextRectTextHeight), withAttributes: saveButtonTextRectFontAttributes)
         context.restoreGState()
 
+
         //// SaveButtonShadow Drawing
         let saveButtonShadowPath = UIBezierPath(roundedRect: CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height), cornerRadius: 4)
         buttonHighlightedColor.setFill()
@@ -399,7 +413,7 @@ public class SeptaDraw: NSObject {
         saveButtonShadowPath.stroke()
     }
 
-    @objc public dynamic class func drawDeleteFavorite(frame: CGRect = CGRect(x: 0, y: 0, width: 150, height: 25), buttonHighlighted: Bool = false) {
+    @objc dynamic public class func drawDeleteFavorite(frame: CGRect = CGRect(x: 0, y: 0, width: 150, height: 25), buttonHighlighted: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -432,13 +446,14 @@ public class SeptaDraw: NSObject {
         saveButtonTextRectTextContent.draw(in: CGRect(x: saveButtonTextRectRect.minX, y: saveButtonTextRectRect.minY + (saveButtonTextRectRect.height - saveButtonTextRectTextHeight) / 2, width: saveButtonTextRectRect.width, height: saveButtonTextRectTextHeight), withAttributes: saveButtonTextRectFontAttributes)
         context.restoreGState()
 
+
         //// SaveButtonShadow Drawing
         let saveButtonShadowPath = UIBezierPath(roundedRect: CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height), cornerRadius: 4)
         buttonHighlightedColor.setFill()
         saveButtonShadowPath.fill()
     }
 
-    @objc public dynamic class func drawAlertView(alertViewFrame: CGRect = CGRect(x: 0, y: 0, width: 100, height: 100)) {
+    @objc dynamic public class func drawAlertView(alertViewFrame: CGRect = CGRect(x: 0, y: 0, width: 100, height: 100)) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -461,23 +476,24 @@ public class SeptaDraw: NSObject {
         context.saveGState()
         rectanglePath.addClip()
         context.drawLinearGradient(alertOrange,
-                                   start: CGPoint(x: rectangleRect.maxX, y: rectangleRect.midY),
-                                   end: CGPoint(x: rectangleRect.minX, y: rectangleRect.midY),
-                                   options: [])
+            start: CGPoint(x: rectangleRect.maxX, y: rectangleRect.midY),
+            end: CGPoint(x: rectangleRect.minX, y: rectangleRect.midY),
+            options: [])
         context.restoreGState()
 
         context.restoreGState()
     }
 
-    @objc public dynamic class func drawReverseTripButton(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 25), resizing: ResizingBehavior = .aspectFit, buttonHighlighted: Bool = false) {
+    @objc dynamic public class func drawReverseTripButton(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 60, height: 25), resizing: ResizingBehavior = .aspectFit, buttonHighlighted: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
-
+        
         //// Resize to Target Frame
         context.saveGState()
         let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 60, height: 25), target: targetFrame)
         context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
         context.scaleBy(x: resizedFrame.width / 60, y: resizedFrame.height / 25)
+
 
         //// Color Declarations
         let fillColor = UIColor(red: 0.078, green: 0.294, blue: 0.533, alpha: 1.000)
@@ -493,6 +509,7 @@ public class SeptaDraw: NSObject {
         let backgroundPath = UIBezierPath(roundedRect: CGRect(x: 0.08, y: 0, width: 63.39, height: 23.81), cornerRadius: 3)
         buttonHighlightedColor.setFill()
         backgroundPath.fill()
+
 
         //// nextToArriveLabel Drawing
         let nextToArriveLabelRect = CGRect(x: 0, y: -0.15, width: 38.75, height: 23.35)
@@ -511,11 +528,13 @@ public class SeptaDraw: NSObject {
         nextToArriveLabelTextContent.draw(in: CGRect(x: nextToArriveLabelRect.minX, y: nextToArriveLabelRect.minY + (nextToArriveLabelRect.height - nextToArriveLabelTextHeight) / 2, width: nextToArriveLabelRect.width, height: nextToArriveLabelTextHeight), withAttributes: nextToArriveLabelFontAttributes)
         context.restoreGState()
 
+
         //// Bezier 9 Drawing
         let bezier9Path = UIBezierPath()
         UIColor.black.setStroke()
         bezier9Path.lineWidth = 1
         bezier9Path.stroke()
+
 
         //// reverseIcon.pdf Group
         //// Bezier Drawing
@@ -532,6 +551,7 @@ public class SeptaDraw: NSObject {
         fillColor.setFill()
         bezierPath.fill()
 
+
         //// Bezier 2 Drawing
         let bezier2Path = UIBezierPath()
         bezier2Path.move(to: CGPoint(x: 54.03, y: 3.75))
@@ -545,6 +565,7 @@ public class SeptaDraw: NSObject {
         strokeColor.setStroke()
         bezier2Path.lineWidth = 0.5
         bezier2Path.stroke()
+
 
         //// Bezier 3 Drawing
         let bezier3Path = UIBezierPath()
@@ -560,6 +581,7 @@ public class SeptaDraw: NSObject {
         fillColor.setFill()
         bezier3Path.fill()
 
+
         //// Bezier 4 Drawing
         let bezier4Path = UIBezierPath()
         bezier4Path.move(to: CGPoint(x: 45.03, y: 7.8))
@@ -573,11 +595,12 @@ public class SeptaDraw: NSObject {
         strokeColor.setStroke()
         bezier4Path.lineWidth = 0.5
         bezier4Path.stroke()
-
+        
         context.restoreGState()
+
     }
 
-    @objc public dynamic class func drawNextToArriveButton(buttonFrame: CGRect = CGRect(x: 0, y: -0, width: 250, height: 100), buttonHighlighted: Bool = false) {
+    @objc dynamic public class func drawNextToArriveButton(buttonFrame: CGRect = CGRect(x: 0, y: -0, width: 250, height: 100), buttonHighlighted: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         // This non-generic function dramatically improves compilation times of complex expressions.
@@ -603,8 +626,10 @@ public class SeptaDraw: NSObject {
         //// Variable Declarations
         let buttonHighlightedColor = buttonHighlighted ? buttonHighlight : buttonDefault
 
+
         //// Subframes
         let frame = CGRect(x: buttonFrame.minX + fastFloor((buttonFrame.width - 224.13) * 0.55446 + 0.15) + 0.35, y: buttonFrame.minY + fastFloor((buttonFrame.height - 50) * 0.50000 - 0.5) + 1, width: 224.13, height: 50)
+
 
         //// Rectangle Drawing
         let rectangleRect = CGRect(x: buttonFrame.minX + 3, y: buttonFrame.minY + fastFloor((buttonFrame.height - 3) * 0.03093 - 0.5) + 1, width: buttonFrame.width - 6, height: buttonFrame.height - 4 - fastFloor((buttonFrame.height - 3) * 0.03093 - 0.5))
@@ -614,11 +639,13 @@ public class SeptaDraw: NSObject {
         context.beginTransparencyLayer(auxiliaryInfo: nil)
         rectanglePath.addClip()
         context.drawLinearGradient(redButtonGradient,
-                                   start: CGPoint(x: rectangleRect.minX, y: rectangleRect.midY),
-                                   end: CGPoint(x: rectangleRect.maxX, y: rectangleRect.midY),
-                                   options: [])
+            start: CGPoint(x: rectangleRect.minX, y: rectangleRect.midY),
+            end: CGPoint(x: rectangleRect.maxX, y: rectangleRect.midY),
+            options: [])
         context.endTransparencyLayer()
         context.restoreGState()
+
+
 
         //// Text Drawing
         let textRect = CGRect(x: frame.minX + 33.16, y: frame.minY + 9.5, width: 190.97, height: 28.46)
@@ -636,6 +663,7 @@ public class SeptaDraw: NSObject {
         context.clip(to: textRect)
         textTextContent.draw(in: CGRect(x: textRect.minX, y: textRect.minY + (textRect.height - textTextHeight) / 2, width: textRect.width, height: textTextHeight), withAttributes: textFontAttributes)
         context.restoreGState()
+
 
         //// Group
         //// Icon
@@ -663,6 +691,7 @@ public class SeptaDraw: NSObject {
         fillColor2.setFill()
         bezierPath.fill()
 
+
         //// Bezier 2 Drawing
         let bezier2Path = UIBezierPath()
         bezier2Path.move(to: CGPoint(x: frame.minX + 14.33, y: frame.minY + 15.03))
@@ -679,6 +708,7 @@ public class SeptaDraw: NSObject {
         fillColor2.setFill()
         bezier2Path.fill()
 
+
         //// Bezier 3 Drawing
         let bezier3Path = UIBezierPath()
         bezier3Path.move(to: CGPoint(x: frame.minX + 1, y: frame.minY + 24.16))
@@ -692,6 +722,7 @@ public class SeptaDraw: NSObject {
         bezier3Path.usesEvenOddFillRule = true
         fillColor2.setFill()
         bezier3Path.fill()
+
 
         //// Bezier 4 Drawing
         let bezier4Path = UIBezierPath()
@@ -707,6 +738,7 @@ public class SeptaDraw: NSObject {
         fillColor2.setFill()
         bezier4Path.fill()
 
+
         //// Bezier 5 Drawing
         let bezier5Path = UIBezierPath()
         bezier5Path.move(to: CGPoint(x: frame.minX + 1.92, y: frame.minY + 21.43))
@@ -721,7 +753,13 @@ public class SeptaDraw: NSObject {
         fillColor2.setFill()
         bezier5Path.fill()
 
+
+
+
         //// NextToArriveButtonIcon.pdf Group
+
+
+
 
         //// Shadow Drawing
         let shadowPath = UIBezierPath(roundedRect: CGRect(x: buttonFrame.minX + fastFloor((buttonFrame.width - 3) * 0.01215 + 0.5), y: buttonFrame.minY + fastFloor((buttonFrame.height - 3) * 0.03093 - 0.5) + 1, width: buttonFrame.width - 3 - fastFloor((buttonFrame.width - 3) * 0.01215 + 0.5), height: buttonFrame.height - 4 - fastFloor((buttonFrame.height - 3) * 0.03093 - 0.5)), cornerRadius: 4)
@@ -732,7 +770,7 @@ public class SeptaDraw: NSObject {
         context.restoreGState()
     }
 
-    @objc public dynamic class func drawConnectingDiamondStationView(frame: CGRect = CGRect(x: 0, y: 0, width: 10, height: 10)) {
+    @objc dynamic public class func drawConnectingDiamondStationView(frame: CGRect = CGRect(x: 0, y: 0, width: 10, height: 10)) {
         //// Color Declarations
         let tripCanvasColor = UIColor(red: 0.078, green: 0.294, blue: 0.533, alpha: 1.000)
 
@@ -752,7 +790,7 @@ public class SeptaDraw: NSObject {
         bezierPath.stroke()
     }
 
-    @objc public dynamic class func drawConnectingGradientView(frame: CGRect = CGRect(x: 0, y: 0, width: 15, height: 3)) {
+    @objc dynamic public class func drawConnectingGradientView(frame: CGRect = CGRect(x: 0, y: 0, width: 15, height: 3)) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -769,13 +807,13 @@ public class SeptaDraw: NSObject {
         context.saveGState()
         rectanglePath.addClip()
         context.drawLinearGradient(connectingGradient,
-                                   start: CGPoint(x: rectangleRect.minX, y: rectangleRect.midY),
-                                   end: CGPoint(x: rectangleRect.maxX, y: rectangleRect.midY),
-                                   options: [])
+            start: CGPoint(x: rectangleRect.minX, y: rectangleRect.midY),
+            end: CGPoint(x: rectangleRect.maxX, y: rectangleRect.midY),
+            options: [])
         context.restoreGState()
     }
 
-    @objc public dynamic class func drawConnectingFlatDividerView(frame: CGRect = CGRect(x: 0, y: 0, width: 20, height: 1)) {
+    @objc dynamic public class func drawConnectingFlatDividerView(frame: CGRect = CGRect(x: 0, y: 0, width: 20, height: 1)) {
         //// Color Declarations
         let connectingDividerColor = UIColor(red: 0.855, green: 0.855, blue: 0.855, alpha: 1.000)
 
@@ -788,7 +826,7 @@ public class SeptaDraw: NSObject {
         bezierPath.stroke()
     }
 
-    @objc public dynamic class func drawConnectingBentDividerViewLeft(frame: CGRect = CGRect(x: 0, y: 0, width: 11, height: 11)) {
+    @objc dynamic public class func drawConnectingBentDividerViewLeft(frame: CGRect = CGRect(x: 0, y: 0, width: 11, height: 11)) {
         //// Color Declarations
         let connectingDividerColor = UIColor(red: 0.855, green: 0.855, blue: 0.855, alpha: 1.000)
 
@@ -802,7 +840,7 @@ public class SeptaDraw: NSObject {
         bezierPath.stroke()
     }
 
-    @objc public dynamic class func drawConnectingBentDividerViewRight(frame: CGRect = CGRect(x: 0, y: 0, width: 11, height: 11)) {
+    @objc dynamic public class func drawConnectingBentDividerViewRight(frame: CGRect = CGRect(x: 0, y: 0, width: 11, height: 11)) {
         //// Color Declarations
         let connectingDividerColor = UIColor(red: 0.855, green: 0.855, blue: 0.855, alpha: 1.000)
 
@@ -815,6 +853,9 @@ public class SeptaDraw: NSObject {
         bezierPath.lineWidth = 1
         bezierPath.stroke()
     }
+
+
+
 
     @objc(SeptaDrawResizingBehavior)
     public enum ResizingBehavior: Int {
@@ -833,17 +874,17 @@ public class SeptaDraw: NSObject {
             scales.height = abs(target.height / rect.height)
 
             switch self {
-            case .aspectFit:
-                scales.width = min(scales.width, scales.height)
-                scales.height = scales.width
-            case .aspectFill:
-                scales.width = max(scales.width, scales.height)
-                scales.height = scales.width
-            case .stretch:
-                break
-            case .center:
-                scales.width = 1
-                scales.height = 1
+                case .aspectFit:
+                    scales.width = min(scales.width, scales.height)
+                    scales.height = scales.width
+                case .aspectFill:
+                    scales.width = max(scales.width, scales.height)
+                    scales.height = scales.width
+                case .stretch:
+                    break
+                case .center:
+                    scales.width = 1
+                    scales.height = 1
             }
 
             var result = rect.standardized
@@ -856,17 +897,19 @@ public class SeptaDraw: NSObject {
     }
 }
 
+
+
 private extension UIColor {
     func blended(withFraction fraction: CGFloat, of color: UIColor) -> UIColor {
         var r1: CGFloat = 1, g1: CGFloat = 1, b1: CGFloat = 1, a1: CGFloat = 1
         var r2: CGFloat = 1, g2: CGFloat = 1, b2: CGFloat = 1, a2: CGFloat = 1
 
-        getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
+        self.getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
         color.getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
 
         return UIColor(red: r1 * (1 - fraction) + r2 * fraction,
-                       green: g1 * (1 - fraction) + g2 * fraction,
-                       blue: b1 * (1 - fraction) + b2 * fraction,
-                       alpha: a1 * (1 - fraction) + a2 * fraction)
+            green: g1 * (1 - fraction) + g2 * fraction,
+            blue: b1 * (1 - fraction) + b2 * fraction,
+            alpha: a1 * (1 - fraction) + a2 * fraction);
     }
 }

@@ -43,4 +43,6 @@ struct SeptaColor {
     static let departingOnTime = UIColor.toPercent(222, 222, 222, 1)
     static let departingBoundaryOnTime = UIColor.toPercent(222, 222, 222, 1)
     static let departingBoundaryLate = UIColor.toPercent(217, 43, 0, 1)
+
+    static let editFavoriteBlue = UIColor.toPercent(34, 83, 145, 1)
 }

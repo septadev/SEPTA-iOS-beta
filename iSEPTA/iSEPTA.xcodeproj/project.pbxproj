@@ -45,6 +45,13 @@
 		58248B641F6D573000DA2D65 /* NextToArriveState_ScheduleState_ScheduleRequestWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B631F6D573000DA2D65 /* NextToArriveState_ScheduleState_ScheduleRequestWatcher.swift */; };
 		58248B661F6D575A00DA2D65 /* BaseWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B651F6D575A00DA2D65 /* BaseWatcher.swift */; };
 		58248B6C1F6D5B6900DA2D65 /* FavoritesState_FavoritesExistWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B6B1F6D5B6900DA2D65 /* FavoritesState_FavoritesExistWatcher.swift */; };
+		58248B6E1F6D6A3800DA2D65 /* EditFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B6D1F6D6A3800DA2D65 /* EditFavoriteViewController.swift */; };
+		58248B701F6D6C3800DA2D65 /* SaveFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B6F1F6D6C3800DA2D65 /* SaveFavoriteButton.swift */; };
+		58248B721F6D77A100DA2D65 /* DeleteFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B711F6D77A100DA2D65 /* DeleteFavoriteButton.swift */; };
+		58248B751F6D8AA800DA2D65 /* HalfSheetPresentationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B741F6D8AA800DA2D65 /* HalfSheetPresentationCoordinator.swift */; };
+		58248B771F6D8F6C00DA2D65 /* HalfSheetAnimationIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B761F6D8F6C00DA2D65 /* HalfSheetAnimationIn.swift */; };
+		58248B791F6D8F9200DA2D65 /* HalfSheetAnimationOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B781F6D8F9200DA2D65 /* HalfSheetAnimationOut.swift */; };
+		58248B7B1F6D8FB400DA2D65 /* ViewControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B7A1F6D8FB400DA2D65 /* ViewControllerTransitioningDelegate.swift */; };
 		582531951F406E790088D056 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 582531941F406E790088D056 /* DefaultPreferences.plist */; };
 		582531981F40707C0088D056 /* DefaultPreferencesLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582531971F40707C0088D056 /* DefaultPreferencesLoader.swift */; };
 		5825319A1F407D380088D056 /* UserDefaultsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582531991F407D380088D056 /* UserDefaultsLoader.swift */; };
@@ -534,6 +541,13 @@
 		58248B631F6D573000DA2D65 /* NextToArriveState_ScheduleState_ScheduleRequestWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveState_ScheduleState_ScheduleRequestWatcher.swift; sourceTree = "<group>"; };
 		58248B651F6D575A00DA2D65 /* BaseWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWatcher.swift; sourceTree = "<group>"; };
 		58248B6B1F6D5B6900DA2D65 /* FavoritesState_FavoritesExistWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesState_FavoritesExistWatcher.swift; sourceTree = "<group>"; };
+		58248B6D1F6D6A3800DA2D65 /* EditFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFavoriteViewController.swift; sourceTree = "<group>"; };
+		58248B6F1F6D6C3800DA2D65 /* SaveFavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFavoriteButton.swift; sourceTree = "<group>"; };
+		58248B711F6D77A100DA2D65 /* DeleteFavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFavoriteButton.swift; sourceTree = "<group>"; };
+		58248B741F6D8AA800DA2D65 /* HalfSheetPresentationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfSheetPresentationCoordinator.swift; sourceTree = "<group>"; };
+		58248B761F6D8F6C00DA2D65 /* HalfSheetAnimationIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheetAnimationIn.swift; sourceTree = "<group>"; };
+		58248B781F6D8F9200DA2D65 /* HalfSheetAnimationOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheetAnimationOut.swift; sourceTree = "<group>"; };
+		58248B7A1F6D8FB400DA2D65 /* ViewControllerTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTransitioningDelegate.swift; sourceTree = "<group>"; };
 		582531941F406E790088D056 /* DefaultPreferences.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
 		582531971F40707C0088D056 /* DefaultPreferencesLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPreferencesLoader.swift; sourceTree = "<group>"; };
 		582531991F407D380088D056 /* UserDefaultsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsLoader.swift; sourceTree = "<group>"; };
@@ -1005,6 +1019,7 @@
 		58248B671F6D598A00DA2D65 /* Edit Favorite */ = {
 			isa = PBXGroup;
 			children = (
+				58248B6D1F6D6A3800DA2D65 /* EditFavoriteViewController.swift */,
 			);
 			path = "Edit Favorite";
 			sourceTree = "<group>";
@@ -1041,6 +1056,18 @@
 			path = "Favorites Exist";
 			sourceTree = "<group>";
 		};
+		58248B731F6D8AA800DA2D65 /* PresentationControllers */ = {
+			isa = PBXGroup;
+			children = (
+				58248B741F6D8AA800DA2D65 /* HalfSheetPresentationCoordinator.swift */,
+				58248B781F6D8F9200DA2D65 /* HalfSheetAnimationOut.swift */,
+				58248B761F6D8F6C00DA2D65 /* HalfSheetAnimationIn.swift */,
+				58248B7A1F6D8FB400DA2D65 /* ViewControllerTransitioningDelegate.swift */,
+			);
+			name = PresentationControllers;
+			path = iSEPTA/Views/PresentationControllers;
+			sourceTree = SOURCE_ROOT;
+		};
 		58290E511F372F27000CCF3C /* App State */ = {
 			isa = PBXGroup;
 			children = (
@@ -1074,6 +1101,7 @@
 		582F4E811F33B1120062A546 /* Common Views */ = {
 			isa = PBXGroup;
 			children = (
+				58248B731F6D8AA800DA2D65 /* PresentationControllers */,
 				580128071F6B26D2006B6DB8 /* RoundedShadowView.swift */,
 				586DFEC41F505482004BC972 /* CurvedTopView.swift */,
 				67F757B41F488A4400D3A4EE /* SeptaDraw.swift */,
@@ -1097,6 +1125,8 @@
 				678DAA991F66EEC800EB6EE8 /* BaseFavoritesIconController.swift */,
 				671609101F67F72600941D2C /* UIStackView+Util.swift */,
 				580128111F6C055B006B6DB8 /* RedButton.swift */,
+				58248B6F1F6D6C3800DA2D65 /* SaveFavoriteButton.swift */,
+				58248B711F6D77A100DA2D65 /* DeleteFavoriteButton.swift */,
 			);
 			path = "Common Views";
 			sourceTree = "<group>";
@@ -2484,6 +2514,7 @@
 				582F4EDF1F33B1120062A546 /* DatabaseStateWatcher.swift in Sources */,
 				58DD1A921F60078D002532DC /* NextToArriveRowDisplayModel.swift in Sources */,
 				674FDBC71F577D3B00CA67D2 /* Route+Icon.swift in Sources */,
+				58248B771F6D8F6C00DA2D65 /* HalfSheetAnimationIn.swift in Sources */,
 				58F80D431F421C1F0089501A /* SelectStopNavigationController.swift in Sources */,
 				58658D1B1F53135100E67B4E /* AddressCell.swift in Sources */,
 				67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */,
@@ -2528,6 +2559,7 @@
 				678F05301F5B918300CC4D3C /* LocationProvider.swift in Sources */,
 				5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift in Sources */,
 				67F757B11F486F0600D3A4EE /* TransitModeDisplayable.swift in Sources */,
+				58248B721F6D77A100DA2D65 /* DeleteFavoriteButton.swift in Sources */,
 				58EB8D2B1F5D92170028A487 /* NextToArriveReducer.swift in Sources */,
 				58EB8D131F5D79C10028A487 /* NextToArriveNavigationControllerStateProvider.swift in Sources */,
 				5840D6E51F37EA1900C8CB76 /* ScheduleDataProvider.swift in Sources */,
@@ -2554,6 +2586,7 @@
 				5840D6D71F37728B00C8CB76 /* NavigationController.swift in Sources */,
 				58C2A0691F38AA1B00F0D6CA /* ScheduleData.swift in Sources */,
 				67075FC81F57866D008BB38C /* ScheduleRouteState.swift in Sources */,
+				58248B791F6D8F9200DA2D65 /* HalfSheetAnimationOut.swift in Sources */,
 				58290E531F372F36000CCF3C /* ScheduleState.swift in Sources */,
 				5840D6E31F37E9FB00C8CB76 /* UserPreferencesProvider.swift in Sources */,
 				67F757B71F488A5E00D3A4EE /* BlueGradientBackgroundView.swift in Sources */,
@@ -2606,6 +2639,7 @@
 				58E54E201F65977100E9B66D /* NextToArriveTripViewController.swift in Sources */,
 				67EA2B631F51AB8700C0567A /* StopEditSearchMode.swift in Sources */,
 				58126F751F640F8600A6E187 /* NextToArriveUpdateStatus.swift in Sources */,
+				58248B7B1F6D8FB400DA2D65 /* ViewControllerTransitioningDelegate.swift in Sources */,
 				58DD1A8E1F600715002532DC /* NextToArriveViewModel+StartCell.swift in Sources */,
 				5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */,
 				671A192B1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift in Sources */,
@@ -2622,6 +2656,7 @@
 				678F05241F5B7B6E00CC4D3C /* AddressProvider.swift in Sources */,
 				67EA2B5D1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift in Sources */,
 				58490E451F55F8FF007DBCA1 /* SeptaAlert.swift in Sources */,
+				58248B751F6D8AA800DA2D65 /* HalfSheetPresentationCoordinator.swift in Sources */,
 				58DD1A8C1F6006D5002532DC /* NextToArriveViewModel+RouteCell.swift in Sources */,
 				5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */,
 				58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */,
@@ -2632,6 +2667,7 @@
 				58EB8D291F5D90CD0028A487 /* NextToArriveState.swift in Sources */,
 				583523991F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift in Sources */,
 				67BC3F8D1F66AD4E001F9FE3 /* NoConnectionSectionHeader.swift in Sources */,
+				58248B6E1F6D6A3800DA2D65 /* EditFavoriteViewController.swift in Sources */,
 				676354FD1F5E255A00CA7EAB /* FilterableRoute.swift in Sources */,
 				58B892171F38F7E700BFFEFA /* Strings.swift in Sources */,
 				58EB8D151F5D7CD20028A487 /* BaseNavigationController.swift in Sources */,
@@ -2639,6 +2675,7 @@
 				6749A4711F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift in Sources */,
 				674FDBC51F57390D00CA67D2 /* Route+Color.swift in Sources */,
 				58126F6D1F631C5100A6E187 /* RouteDrawable.swift in Sources */,
+				58248B701F6D6C3800DA2D65 /* SaveFavoriteButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

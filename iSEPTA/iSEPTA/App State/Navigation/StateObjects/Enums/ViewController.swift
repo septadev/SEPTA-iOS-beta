@@ -1,6 +1,7 @@
 // Septa. 2017
 
 import Foundation
+import UIKit
 
 enum ViewController: String, Equatable {
     /// Initial screen in schedules.  Holds the toolbar. Root view controller
@@ -20,6 +21,7 @@ enum ViewController: String, Equatable {
 
     case favoritesViewController
     case noFavoritesViewController
+    case editFavoriteViewController
 
     func storyboardIdentifier() -> String {
         switch self {
@@ -43,6 +45,45 @@ enum ViewController: String, Equatable {
             return "favorites"
         case .noFavoritesViewController:
             return "favorites"
+        case .editFavoriteViewController:
+            return "favorites"
+        }
+    }
+
+    func storyboard() -> UIStoryboard? {
+        return UIStoryboard(name: storyboardIdentifier(), bundle: nil)
+    }
+
+    func instantiateViewController<T>() -> T? {
+        let storyboard = UIStoryboard(name: storyboardIdentifier(), bundle: nil)
+        if let viewController = storyboard.instantiateViewController(withIdentifier: rawValue) as? T {
+            return viewController
+        } else {
+            return nil
+        }
+    }
+
+    func presentationController(presentedViewController: UIViewController, presenting: UIViewController?) -> UIPresentationController? {
+        switch self {
+        case .editFavoriteViewController:
+            return HalfSizePresentationController(presentedViewController: presentedViewController, presenting: presenting)
+        default: return nil
+        }
+    }
+
+    func animationInController() -> UIViewControllerAnimatedTransitioning? {
+        switch self {
+        case .editFavoriteViewController:
+            return HalfSheetAnimationIn()
+        default: return nil
+        }
+    }
+
+    func animationOutController() -> UIViewControllerAnimatedTransitioning? {
+        switch self {
+        case .editFavoriteViewController:
+            return HalfSheetAnimationOut()
+        default: return nil
         }
     }
 }

@@ -54,5 +54,17 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
                 self?.performSegue(withIdentifier: "showDatabaseLoadingModal", sender: self)
             }
         }
+        presentEditFavoritModal()
+    }
+
+    var modalTransitioningDelegate: UIViewControllerTransitioningDelegate!
+    func presentEditFavoritModal() {
+
+        modalTransitioningDelegate = ViewControllerTransitioningDelegate(viewController: .editFavoriteViewController)
+        if let viewController: UIViewController = ViewController.editFavoriteViewController.instantiateViewController() {
+            viewController.modalPresentationStyle = .custom
+            viewController.transitioningDelegate = modalTransitioningDelegate
+            present(viewController, animated: true, completion: nil)
+        }
     }
 }

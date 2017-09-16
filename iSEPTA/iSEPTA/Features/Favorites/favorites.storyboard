@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PgU-tC-Xbs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PgU-tC-Xbs">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -74,6 +74,121 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G3q-8u-Zo7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="663" y="4"/>
+        </scene>
+        <!--Edit Favorite View Controller-->
+        <scene sceneID="smF-4U-0Tl">
+            <objects>
+                <viewController storyboardIdentifier="editFavoriteViewController" id="sVb-bQ-PdN" customClass="EditFavoriteViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ohM-K9-yaK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="299"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Vx-eO-NoD" userLabel="CloseButton">
+                                <rect key="frame" x="344" y="40" width="17" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="17" id="9Lx-gg-b2V"/>
+                                    <constraint firstAttribute="height" constant="17" id="S6X-n8-3BW"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="cancelEditFavorite"/>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="sVb-bQ-PdN" eventType="touchUpInside" id="DrJ-h6-I4c"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K0P-t9-BdM" customClass="DeleteFavoriteButton" customModule="Septa" customModuleProvider="target">
+                                <rect key="frame" x="17" y="246" width="341" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="wYl-xm-pjF"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="deleteFavoriteButtonTapped:" destination="sVb-bQ-PdN" eventType="touchUpInside" id="qo8-2s-beV"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lAV-wR-tvj" customClass="SaveFavoriteButton" customModule="Septa" customModuleProvider="target">
+                                <rect key="frame" x="17" y="196" width="341" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="WRj-KM-VhP"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="sVb-bQ-PdN" eventType="touchUpInside" id="ljX-4O-rFg"/>
+                                </connections>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office Commute" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5a-jq-uAA" userLabel="ExistingFavoriteName">
+                                <rect key="frame" x="134" y="40" width="108.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Favorite Trip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xvt-J7-pv3" userLabel="EditFavoriteTrip">
+                                <rect key="frame" x="17" y="75" width="343" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O72-oe-7ts" userLabel="FavoriteName">
+                                <rect key="frame" x="17" y="112" width="341" height="13.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hew-PO-uax">
+                                <rect key="frame" x="17" y="131" width="341" height="40"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wzn-yb-Nx7" userLabel="TextField">
+                                        <rect key="frame" x="8" y="5" width="325" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="bZL-Pk-3PY"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="wzn-yb-Nx7" firstAttribute="centerY" secondItem="Hew-PO-uax" secondAttribute="centerY" id="5Pc-Q6-bZN" userLabel="TextFieldCenterY"/>
+                                    <constraint firstAttribute="trailing" secondItem="wzn-yb-Nx7" secondAttribute="trailing" constant="8" id="EF9-YU-wLp" userLabel="TextFieldRight"/>
+                                    <constraint firstItem="wzn-yb-Nx7" firstAttribute="leading" secondItem="Hew-PO-uax" secondAttribute="leading" constant="8" id="N1e-3n-9Vp" userLabel="TextFieldLeft"/>
+                                    <constraint firstAttribute="height" constant="40" id="h1S-EA-FbU" userLabel="TextFieldWrapperHeight"/>
+                                </constraints>
+                                <string key="userLabel">
+TextFieldWrapper</string>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.13333333333333333" green="0.32549019607843138" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="lAV-wR-tvj" firstAttribute="top" secondItem="Rwh-xb-SUE" secondAttribute="top" constant="196" id="2Sz-xv-jyZ" userLabel="SaveFavoriteTop"/>
+                            <constraint firstItem="Rwh-xb-SUE" firstAttribute="trailing" secondItem="Hew-PO-uax" secondAttribute="trailing" constant="17" id="9oa-pA-Zbu" userLabel="TextFieldWrapperRight"/>
+                            <constraint firstItem="9Vx-eO-NoD" firstAttribute="top" secondItem="Rwh-xb-SUE" secondAttribute="top" constant="40" id="E3c-cS-GQN" userLabel="CloseButtonTop"/>
+                            <constraint firstItem="u5a-jq-uAA" firstAttribute="top" secondItem="Rwh-xb-SUE" secondAttribute="top" constant="40" id="Efi-uL-Jra" userLabel="favoriteNameTop"/>
+                            <constraint firstItem="9Vx-eO-NoD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="u5a-jq-uAA" secondAttribute="trailing" constant="10" id="KHR-TO-lfF" userLabel="FavoriteNameRight"/>
+                            <constraint firstItem="Rwh-xb-SUE" firstAttribute="trailing" secondItem="Xvt-J7-pv3" secondAttribute="trailing" constant="15" id="Kd6-8J-dIE" userLabel="EditFavoriteTripRight"/>
+                            <constraint firstItem="lAV-wR-tvj" firstAttribute="leading" secondItem="Rwh-xb-SUE" secondAttribute="leading" constant="17" id="PEl-1l-q5a" userLabel="SaveButtonLeft"/>
+                            <constraint firstItem="Rwh-xb-SUE" firstAttribute="trailing" secondItem="O72-oe-7ts" secondAttribute="trailing" constant="17" id="WiO-fW-sSB" userLabel="FavoriteNameRight"/>
+                            <constraint firstItem="K0P-t9-BdM" firstAttribute="top" secondItem="lAV-wR-tvj" secondAttribute="bottom" constant="15" id="XHg-N8-GbR" userLabel="DeleteFavoriteTop"/>
+                            <constraint firstItem="Rwh-xb-SUE" firstAttribute="trailing" secondItem="9Vx-eO-NoD" secondAttribute="trailing" constant="14" id="ZaS-Yk-8l5" userLabel="CloseButtonRight"/>
+                            <constraint firstItem="Hew-PO-uax" firstAttribute="leading" secondItem="Rwh-xb-SUE" secondAttribute="leading" constant="17" id="aZ5-Yb-ATK" userLabel="TextFieldWrapperLeft"/>
+                            <constraint firstItem="Xvt-J7-pv3" firstAttribute="leading" secondItem="Rwh-xb-SUE" secondAttribute="leading" constant="17" id="awx-3I-BlD" userLabel="EditFavoriteTripLeft"/>
+                            <constraint firstItem="u5a-jq-uAA" firstAttribute="centerX" secondItem="Rwh-xb-SUE" secondAttribute="centerX" id="boR-NZ-96z" userLabel="FavoriteNameCenterX"/>
+                            <constraint firstItem="u5a-jq-uAA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Rwh-xb-SUE" secondAttribute="leading" constant="17" id="bsg-Cj-85H" userLabel="FavoriteNameLeft"/>
+                            <constraint firstItem="O72-oe-7ts" firstAttribute="top" secondItem="Rwh-xb-SUE" secondAttribute="top" constant="112" id="eVX-o4-NSh" userLabel="FavoriteNameTop"/>
+                            <constraint firstItem="Xvt-J7-pv3" firstAttribute="top" secondItem="Rwh-xb-SUE" secondAttribute="top" constant="75" id="kz3-vP-aBq" userLabel="EditFavoriteTripTop"/>
+                            <constraint firstItem="O72-oe-7ts" firstAttribute="leading" secondItem="Rwh-xb-SUE" secondAttribute="leading" constant="17" id="onG-sn-FKq" userLabel="FavoriteNameLeft"/>
+                            <constraint firstItem="K0P-t9-BdM" firstAttribute="leading" secondItem="Rwh-xb-SUE" secondAttribute="leading" constant="17" id="pFV-u0-ufb" userLabel="DeleteButtonLeft"/>
+                            <constraint firstItem="Rwh-xb-SUE" firstAttribute="trailing" secondItem="lAV-wR-tvj" secondAttribute="trailing" constant="17" id="qSs-PE-Hl9" userLabel="SaveButtonRight"/>
+                            <constraint firstItem="Rwh-xb-SUE" firstAttribute="trailing" secondItem="K0P-t9-BdM" secondAttribute="trailing" constant="17" id="tBU-c6-sRw" userLabel="DeleteButtonRight"/>
+                            <constraint firstItem="Hew-PO-uax" firstAttribute="top" secondItem="Rwh-xb-SUE" secondAttribute="top" constant="131" id="tdz-Jb-Z33" userLabel="TextFieldWrapperTop"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Rwh-xb-SUE"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="299"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="299"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w7Y-8j-qXW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="821" y="765"/>
         </scene>
         <!--No Favorites-->
         <scene sceneID="ndT-ZA-ZgP">
@@ -190,6 +305,7 @@
     <resources>
         <image name="Favorite" width="40" height="30"/>
         <image name="blueFavoriteIcon" width="22" height="20"/>
+        <image name="cancelEditFavorite" width="17" height="17"/>
         <image name="favoriteTabbar" width="22" height="20"/>
         <image name="favoriteTabbarSelected" width="22" height="20"/>
     </resources>
