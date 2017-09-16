@@ -97,7 +97,7 @@ extension FavoritesViewController: UpdateableFromViewModel {
         let requestWorkItem = DispatchWorkItem { [weak self] in
             guard let strongSelf = self, let tableView = strongSelf.tableView else { return }
             let offset = tableView.contentOffset
-            print(offset)
+           
             tableView.reloadData()
             tableView.layoutIfNeeded()
             tableView.contentOffset = offset
