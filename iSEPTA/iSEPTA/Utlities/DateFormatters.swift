@@ -54,6 +54,10 @@ public class DateFormatters {
         let rightNow = Date()
         let calendar = Calendar.current
         let diff = calendar.dateComponents([.hour, .minute], from: rightNow, to: date)
-        return durationFormatter.string(from: diff)
+        if let hour = diff.hour, let minute = diff.minute, hour == 0, minute == 0 {
+            return "now"
+        } else {
+            return durationFormatter.string(from: diff)
+        }
     }
 }

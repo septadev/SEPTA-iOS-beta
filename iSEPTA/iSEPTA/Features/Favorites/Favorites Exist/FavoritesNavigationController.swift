@@ -10,16 +10,17 @@ import Foundation
 import UIKit
 import ReSwift
 
-class FavoritesNavigationController: UINavigationController, StoreSubscriber {
+class FavoritesNavigationController: UINavigationController, FavoritesState_FavoritesExistWatcherDelegate {
     typealias StoreSubscriberStateType = Bool
+    var favoritesWatcher: FavoritesState_FavoritesExistWatcher!
 
-    override func viewDidLoad() {
-        subscribe()
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        favoritesWatcher = FavoritesState_FavoritesExistWatcher(delegate: self)
     }
 
-
-    func newState(state: StoreSubscriberStateType) {
-        let favoritesExist = state
+    func favoritesState_FavoritesExistUpdated(bool: Bool) {
+        let favoritesExist = bool
         if favoritesExist {
             showFavoritesController()
         } else {
@@ -47,28 +48,8 @@ class FavoritesNavigationController: UINavigationController, StoreSubscriber {
         return storyboard.instantiateViewController(withIdentifier: viewController.rawValue)
     }
 
-    deinit {
-        unsubscribe()
-    }
-
     func retrieveStoryboardForViewController(_ viewController: ViewController) -> UIStoryboard {
         let storyboardString = viewController.storyboardIdentifier()
         return UIStoryboard(name: storyboardString, bundle: Bundle.main)
-    }
-}
-
-import ReSwift
-
-extension FavoritesNavigationController: SubscriberUnsubscriber {
-    func subscribe() {
-        store.subscribe(self) {
-            $0.select {
-                $0.favoritesState.favoritesExist
-            }.skipRepeats { $0 == $1 }
-        }
-    }
-
-    func unsubscribe() {
-        store.unsubscribe(self)
     }
 }
