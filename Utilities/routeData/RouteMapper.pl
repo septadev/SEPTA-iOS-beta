@@ -15,19 +15,35 @@ $webAlerts = $webAlerts->{alerts};
 
 my $mapperText = read_file('webAlertsToAppStateMap.json');
 my $mapper     = decode_json($mapperText);
+$mapper = $mapper->{mode};
 
 my $webAlertModes = {};
 
-for (@$webAlerts) {
-    $webAlertModes->{ $_->{mode} } = 1;
+my $newMapper = {};
+my $newMapperMode = $newMapper->{mode} = {};
+
+
+
+for (keys %$mapper){
+	my $key = $_;
+	my $mode = $mapper->{$key};
+	my $newTransitHash = $newMapperMode->{$key} = {};
+	my $defaultTransitMode = $mode->{transitMode};
+	my $maps = $mode->{mapFromAlertRouteToDbRoute};
+	for (keys %$maps){
+		my $routeKey = $_;
+		my $dbRouteId = $maps->{$routeKey};
+		$newTransitHash->{$routeKey} = {transitModes=>[$defaultTransitMode], dbRouteId=>$dbRouteId};
+	}
 }
 
-reverseKeys();
-say Dumper $mapper;
+say Dumper $newMapper;
+my $newMapperJson = encode_json $newMapper;
+write_file "WebAlertsRoutesMappedToDBRoutes.json", $newMapperJson;
 
-sub listAllModes {
-    for ( keys %$webAlertModes ) {
-        findMissingMapKeys($_);
+sub buildWebAlertModes {
+    for (@$webAlerts) {
+        $webAlertModes->{ $_->{mode} } = 1;
     }
 }
 
@@ -37,7 +53,7 @@ sub reverseKeys {
 
         my $mapFromDbRouteToAlertRoute = {};
         my $alertToDbMap               = $mapper->{$mode}->{mapFromAlertRouteToDbRoute};
-		
+
         for ( keys %$alertToDbMap ) {
             my $alertRoute = $_;
             my $dbroute    = $alertToDbMap->{$alertRoute};
@@ -47,7 +63,13 @@ sub reverseKeys {
     }
 }
 
-sub findMissingMapKeys {
+sub findMissingMapKeysForAllModes {
+    for ( keys %$webAlertModes ) {
+        findMissingMapKeysForMode($_);
+    }
+}
+
+sub findMissingMapKeysForMode {
     my $key    = shift;
     my $mapper = $mapper->{$key}->{mapFromAlertRouteToDbRoute};
     my @alerts = grep { $_->{mode} eq $key } @$webAlerts;
