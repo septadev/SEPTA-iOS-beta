@@ -27,6 +27,8 @@ class HalfSizePresentationController: UIPresentationController {
     }
 
     @objc func dimmingViewTapped(_: UITapGestureRecognizer) {
+        let action = CancelFavoriteEdit()
+        store.dispatch(action)
         presentingViewController.dismiss(animated: true, completion: nil)
     }
 

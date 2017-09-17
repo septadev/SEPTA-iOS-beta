@@ -18,7 +18,7 @@ enum FavoritesError: Error {
     case couldNotCreateFavoritesFile
 }
 
-class FavoritesProvider: StoreSubscriber {
+class FavoritesProvider: StoreSubscriber, FavoritesState_FavoriteToEditWatcherDelegate {
 
     typealias StoreSubscriberStateType = FavoritesState
 
@@ -27,14 +27,18 @@ class FavoritesProvider: StoreSubscriber {
     let fileManager = FileManager.default
     var initialLoadFavoritesFromDiskHasCompleted = false
 
+    var favoriteToEditWatcher: FavoritesState_FavoriteToEditWatcher?
+
     private init() {
         retrieveFavoritesFromDisk()
         subscribe()
-        let app = UIApplication.shared
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.appLosingFocus(notification:)),
-                                               name: NSNotification.Name.UIApplicationWillResignActive,
-                                               object: app)
+
+        favoriteToEditWatcher = FavoritesState_FavoriteToEditWatcher(delegate: self)
+    }
+
+    func favoritesState_FavoriteToEditUpdated(favorite _: Favorite?) {
+        guard let currentFavoriteState = currentFavoriteState else { return }
+        writeFavoritesToFile(state: currentFavoriteState)
     }
 
     func retrieveFavoritesFromDisk() {
@@ -122,9 +126,4 @@ class FavoritesProvider: StoreSubscriber {
     fileprivate lazy var tempFavoritesFileURL: URL? = {
         documentDirectoryURL?.appendingPathComponent("Tempfavorites.json")
     }()
-
-    @objc func appLosingFocus(notification _: NSNotification) {
-        guard let currentFavoriteState = self.currentFavoriteState else { return }
-        writeFavoritesToFile(state: currentFavoriteState)
-    }
 }
