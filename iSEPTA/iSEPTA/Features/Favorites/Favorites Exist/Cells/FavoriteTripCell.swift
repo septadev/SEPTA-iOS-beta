@@ -17,10 +17,18 @@ class FavoriteTripCell: UITableViewCell {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var favoriteNameLabel: UILabel!
 
+    var currentFavorite: Favorite?
+
     override func awakeFromNib() {
 
         styleClearViews([self, contentView])
         styleWhiteViews([shadowView, content])
+    }
+
+    @IBAction func moreButtonTapped(_: Any) {
+        guard let currentFavorite = currentFavorite else { return }
+        let action = EditFavorite(favorite: currentFavorite)
+        store.dispatch(action)
     }
 
     func styleWhiteViews(_ views: [UIView]) {

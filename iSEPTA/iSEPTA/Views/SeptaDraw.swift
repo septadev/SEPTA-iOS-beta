@@ -38,7 +38,7 @@ public class SeptaDraw: NSObject {
         context.restoreGState()
     }
 
-    @objc public dynamic class func drawBlueGradientCell(frame: CGRect = CGRect(x: 0, y: 0, width: 76, height: 32), shouldFill: Bool = true, enabled: Bool = true) {
+    @objc public dynamic class func drawBlueGradientCell(frame: CGRect = CGRect(x: 0, y: 0, width: 76, height: 32), shouldFill: Bool = true, enabled: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -89,7 +89,7 @@ public class SeptaDraw: NSObject {
         context.restoreGState()
     }
 
-    @objc public dynamic class func drawRedButton(frame: CGRect = CGRect(x: 0, y: 0, width: 125, height: 46), redButtonText: String = "Button Text", enabled: Bool = true, buttonHighlighted: Bool = false) {
+    @objc public dynamic class func drawRedButton(frame: CGRect = CGRect(x: 0, y: 0, width: 125, height: 46), redButtonText: String = "Button Text", enabled: Bool = false, buttonHighlighted: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -354,62 +354,7 @@ public class SeptaDraw: NSObject {
         context.restoreGState()
     }
 
-    @objc public dynamic class func drawSaveButton(frame: CGRect = CGRect(x: 0, y: 0, width: 50, height: 25), enabled: Bool = true, buttonHighlighted: Bool = false) {
-        //// General Declarations
-        let context = UIGraphicsGetCurrentContext()!
-
-        //// Color Declarations
-        let white = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
-        let buttonHighlight = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.078)
-        let buttonDefault = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.000)
-        let editFavoriteBlue = UIColor(red: 0.133, green: 0.325, blue: 0.569, alpha: 1.000)
-
-        //// Variable Declarations
-        let opacity: CGFloat = enabled ? 1 : 0.3
-        let buttonHighlightedColor = buttonHighlighted ? buttonHighlight : buttonDefault
-
-        if enabled {
-            //// saveButtonTextRect Drawing
-            context.saveGState()
-            context.setAlpha(opacity)
-            context.beginTransparencyLayer(auxiliaryInfo: nil)
-
-            let saveButtonTextRectRect = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height)
-            let saveButtonTextRectPath = UIBezierPath(roundedRect: saveButtonTextRectRect, cornerRadius: 4)
-            editFavoriteBlue.setFill()
-            saveButtonTextRectPath.fill()
-            white.setStroke()
-            saveButtonTextRectPath.lineWidth = 1
-            saveButtonTextRectPath.stroke()
-            let saveButtonTextRectTextContent = "Save"
-            let saveButtonTextRectStyle = NSMutableParagraphStyle()
-            saveButtonTextRectStyle.alignment = .center
-            let saveButtonTextRectFontAttributes = [
-                .font: UIFont.systemFont(ofSize: UIFont.systemFontSize, weight: UIFont.Weight.bold),
-                .foregroundColor: white,
-                .paragraphStyle: saveButtonTextRectStyle,
-            ] as [NSAttributedStringKey: Any]
-
-            let saveButtonTextRectTextHeight: CGFloat = saveButtonTextRectTextContent.boundingRect(with: CGSize(width: saveButtonTextRectRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: saveButtonTextRectFontAttributes, context: nil).height
-            context.saveGState()
-            context.clip(to: saveButtonTextRectRect)
-            saveButtonTextRectTextContent.draw(in: CGRect(x: saveButtonTextRectRect.minX, y: saveButtonTextRectRect.minY + (saveButtonTextRectRect.height - saveButtonTextRectTextHeight) / 2, width: saveButtonTextRectRect.width, height: saveButtonTextRectTextHeight), withAttributes: saveButtonTextRectFontAttributes)
-            context.restoreGState()
-
-            context.endTransparencyLayer()
-            context.restoreGState()
-        }
-
-        //// SaveButtonShadow Drawing
-        let saveButtonShadowPath = UIBezierPath(roundedRect: CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height), cornerRadius: 4)
-        buttonHighlightedColor.setFill()
-        saveButtonShadowPath.fill()
-        white.setStroke()
-        saveButtonShadowPath.lineWidth = 1
-        saveButtonShadowPath.stroke()
-    }
-
-    @objc public dynamic class func drawDeleteFavorite(frame: CGRect = CGRect(x: 0, y: 0, width: 150, height: 25), enabled: Bool = true, buttonHighlighted: Bool = false) {
+    @objc public dynamic class func drawSaveButton(frame: CGRect = CGRect(x: 0, y: 0, width: 50, height: 25), enabled: Bool = false, buttonHighlighted: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -428,15 +373,18 @@ public class SeptaDraw: NSObject {
         context.setAlpha(opacity)
         context.beginTransparencyLayer(auxiliaryInfo: nil)
 
-        let saveButtonTextRectRect = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height)
+        let saveButtonTextRectRect = CGRect(x: frame.minX + 1, y: frame.minY + 1, width: frame.width - 2, height: frame.height - 2)
         let saveButtonTextRectPath = UIBezierPath(roundedRect: saveButtonTextRectRect, cornerRadius: 4)
         editFavoriteBlue.setFill()
         saveButtonTextRectPath.fill()
-        let saveButtonTextRectTextContent = "Delete Favorite"
+        white.setStroke()
+        saveButtonTextRectPath.lineWidth = 1
+        saveButtonTextRectPath.stroke()
+        let saveButtonTextRectTextContent = "Save"
         let saveButtonTextRectStyle = NSMutableParagraphStyle()
         saveButtonTextRectStyle.alignment = .center
         let saveButtonTextRectFontAttributes = [
-            .font: UIFont.systemFont(ofSize: UIFont.systemFontSize),
+            .font: UIFont.systemFont(ofSize: UIFont.systemFontSize, weight: UIFont.Weight.bold),
             .foregroundColor: white,
             .paragraphStyle: saveButtonTextRectStyle,
         ] as [NSAttributedStringKey: Any]
@@ -451,9 +399,111 @@ public class SeptaDraw: NSObject {
         context.restoreGState()
 
         //// SaveButtonShadow Drawing
-        let saveButtonShadowPath = UIBezierPath(roundedRect: CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height), cornerRadius: 4)
+        let saveButtonShadowPath = UIBezierPath(roundedRect: CGRect(x: frame.minX + 1, y: frame.minY + 1, width: frame.width - 2, height: frame.height - 2), cornerRadius: 4)
         buttonHighlightedColor.setFill()
         saveButtonShadowPath.fill()
+    }
+
+    @objc public dynamic class func drawDeleteFavorite(frame: CGRect = CGRect(x: 0, y: 0, width: 150, height: 25), enabled: Bool = false, buttonHighlighted: Bool = false) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()!
+
+        //// Color Declarations
+        let white = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
+        let buttonHighlight = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.078)
+        let buttonDefault = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.000)
+        let editFavoriteBlue = UIColor(red: 0.133, green: 0.325, blue: 0.569, alpha: 1.000)
+
+        //// Variable Declarations
+        let opacity: CGFloat = enabled ? 1 : 0.3
+        let buttonHighlightedColor = buttonHighlighted ? buttonHighlight : buttonDefault
+
+        //// deleteButtonTextRect Drawing
+        context.saveGState()
+        context.setAlpha(opacity)
+        context.beginTransparencyLayer(auxiliaryInfo: nil)
+
+        let deleteButtonTextRectRect = CGRect(x: frame.minX + 1, y: frame.minY + 1, width: frame.width - 2, height: frame.height - 2)
+        let deleteButtonTextRectPath = UIBezierPath(roundedRect: deleteButtonTextRectRect, cornerRadius: 4)
+        editFavoriteBlue.setFill()
+        deleteButtonTextRectPath.fill()
+        UIColor.white.setStroke()
+        deleteButtonTextRectPath.lineWidth = 1
+        deleteButtonTextRectPath.stroke()
+        let deleteButtonTextRectTextContent = "Delete Favorite"
+        let deleteButtonTextRectStyle = NSMutableParagraphStyle()
+        deleteButtonTextRectStyle.alignment = .center
+        let deleteButtonTextRectFontAttributes = [
+            .font: UIFont.systemFont(ofSize: UIFont.systemFontSize),
+            .foregroundColor: white,
+            .paragraphStyle: deleteButtonTextRectStyle,
+        ] as [NSAttributedStringKey: Any]
+
+        let deleteButtonTextRectTextHeight: CGFloat = deleteButtonTextRectTextContent.boundingRect(with: CGSize(width: deleteButtonTextRectRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: deleteButtonTextRectFontAttributes, context: nil).height
+        context.saveGState()
+        context.clip(to: deleteButtonTextRectRect)
+        deleteButtonTextRectTextContent.draw(in: CGRect(x: deleteButtonTextRectRect.minX, y: deleteButtonTextRectRect.minY + (deleteButtonTextRectRect.height - deleteButtonTextRectTextHeight) / 2, width: deleteButtonTextRectRect.width, height: deleteButtonTextRectTextHeight), withAttributes: deleteButtonTextRectFontAttributes)
+        context.restoreGState()
+
+        context.endTransparencyLayer()
+        context.restoreGState()
+
+        //// SaveButtonShadow Drawing
+        let saveButtonShadowPath = UIBezierPath(roundedRect: CGRect(x: frame.minX + 1, y: frame.minY + 1, width: frame.width - 2, height: frame.height - 2), cornerRadius: 4)
+        buttonHighlightedColor.setFill()
+        saveButtonShadowPath.fill()
+    }
+
+    @objc public dynamic class func drawMoreButton(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 43, height: 22), resizing: ResizingBehavior = .aspectFit, buttonHighlighted: Bool = false) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()!
+
+        //// Resize to Target Frame
+        context.saveGState()
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 43, height: 22), target: targetFrame)
+        context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
+        context.scaleBy(x: resizedFrame.width / 43, y: resizedFrame.height / 22)
+
+        //// Color Declarations
+        let buttonHighlight = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.078)
+        let buttonDefault = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.000)
+        let moreButtonBlack = UIColor(red: 0.184, green: 0.184, blue: 0.184, alpha: 1.000)
+
+        //// Variable Declarations
+        let buttonHighlightedColor = buttonHighlighted ? buttonHighlight : buttonDefault
+
+        //// MoreButtonText Drawing
+        let moreButtonTextRect = CGRect(x: 5, y: 0, width: 30.75, height: 22)
+        let moreButtonTextTextContent = "MORE"
+        let moreButtonTextStyle = NSMutableParagraphStyle()
+        moreButtonTextStyle.alignment = .left
+        let moreButtonTextFontAttributes = [
+            .font: UIFont.systemFont(ofSize: 10),
+            .foregroundColor: moreButtonBlack,
+            .paragraphStyle: moreButtonTextStyle,
+        ] as [NSAttributedStringKey: Any]
+
+        let moreButtonTextTextHeight: CGFloat = moreButtonTextTextContent.boundingRect(with: CGSize(width: moreButtonTextRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: moreButtonTextFontAttributes, context: nil).height
+        context.saveGState()
+        context.clip(to: moreButtonTextRect)
+        moreButtonTextTextContent.draw(in: CGRect(x: moreButtonTextRect.minX, y: moreButtonTextRect.minY + (moreButtonTextRect.height - moreButtonTextTextHeight) / 2, width: moreButtonTextRect.width, height: moreButtonTextTextHeight), withAttributes: moreButtonTextFontAttributes)
+        context.restoreGState()
+
+        //// Bezier Drawing
+        let bezierPath = UIBezierPath()
+        bezierPath.move(to: CGPoint(x: 39.5, y: 8.5))
+        bezierPath.addLine(to: CGPoint(x: 42.46, y: 11.46))
+        bezierPath.addLine(to: CGPoint(x: 39.5, y: 14.42))
+        moreButtonBlack.setStroke()
+        bezierPath.lineWidth = 1
+        bezierPath.stroke()
+
+        //// Rectangle Drawing
+        let rectanglePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 43, height: 22))
+        buttonHighlightedColor.setFill()
+        rectanglePath.fill()
+
+        context.restoreGState()
     }
 
     @objc public dynamic class func drawAlertView(alertViewFrame: CGRect = CGRect(x: 0, y: 0, width: 100, height: 100)) {

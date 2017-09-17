@@ -27,7 +27,11 @@ class EditFavoriteViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var existingFavoriteTitleLabel: UILabel!
+    @IBOutlet weak var textField: UITextField! {
+        didSet { textField.delegate = self }
+    }
+
     @IBOutlet weak var saveButton: SaveFavoriteButton!
 
     @IBAction func closeButtonTapped(_: Any) {
@@ -62,9 +66,17 @@ class EditFavoriteViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
+    func textFieldShouldClear(_: UITextField) -> Bool {
+        filterString = ""
+        return true
+    }
+
     override func viewDidLoad() {
+        guard let favoriteName = favoriteToEdit?.favoriteName else { return }
         view.backgroundColor = SeptaColor.editFavoriteBlue
-        textField.text = favoriteToEdit?.favoriteName
+        textField.text = favoriteName
+        filterString = favoriteName
+        existingFavoriteTitleLabel.text = favoriteName
         textField.selectAll(self)
     }
 

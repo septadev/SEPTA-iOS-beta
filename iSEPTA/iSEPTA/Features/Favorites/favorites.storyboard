@@ -187,6 +187,7 @@ TextFieldWrapper</string>
                     <size key="freeformSize" width="375" height="299"/>
                     <connections>
                         <outlet property="deleteFavoriteButton" destination="K0P-t9-BdM" id="WxY-0k-nti"/>
+                        <outlet property="existingFavoriteTitleLabel" destination="u5a-jq-uAA" id="Eao-Fs-Q4P"/>
                         <outlet property="saveButton" destination="lAV-wR-tvj" id="yEX-3x-Zou"/>
                         <outlet property="textField" destination="wzn-yb-Nx7" id="ztm-kA-cMf"/>
                     </connections>

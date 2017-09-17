@@ -44,8 +44,10 @@ struct FavoritesReducer {
         return favoritesState
     }
 
-    static func reduceLoadFavorites(action: LoadFavorites, state _: FavoritesState) -> FavoritesState {
-        return FavoritesState(favorites: action.favorites)
+    static func reduceLoadFavorites(action: LoadFavorites, state: FavoritesState) -> FavoritesState {
+        var newState = FavoritesState(favorites: action.favorites)
+        newState.favoriteToEdit = state.favoriteToEdit
+        return newState
     }
 
     static func reduceAddFavorite(action: AddFavorite, state: FavoritesState) -> FavoritesState {
@@ -80,6 +82,8 @@ struct FavoritesReducer {
 
         favorites = favorites.filter { $0.favoriteId != action.favorite.favoriteId }
         favorites.append(action.favorite)
-        return FavoritesState(favorites: favorites)
+        var newState = FavoritesState(favorites: favorites)
+        newState.favoriteToEdit = state.favoriteToEdit
+        return newState
     }
 }

@@ -15,7 +15,7 @@ class FavoritesViewController: UIViewController {
     var viewModel: FavoritesViewModel!
     private var pendingRequestWorkItem: DispatchWorkItem?
 
-    var millisecondsToDelayTableReload = 250
+    var millisecondsToDelayTableReload = 100
 
     override func viewDidLoad() {
         view.backgroundColor = SeptaColor.navBarBlue

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="605" height="205"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3AG-3O-URg" id="UY2-Ca-Sh5">
-                <rect key="frame" x="0.0" y="0.0" width="605" height="205"/>
+                <rect key="frame" x="0.0" y="0.0" width="605" height="204.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H4L-ex-I4m" userLabel="ShadowView" customClass="RoundedSurroundShadowedCellView" customModule="Septa" customModuleProvider="target">
@@ -29,7 +29,7 @@
                         <rect key="frame" x="5" y="10" width="595" height="200.5"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqs-q6-yyu" userLabel="CellHeader">
-                                <rect key="frame" x="14" y="11" width="581" height="36"/>
+                                <rect key="frame" x="14" y="11" width="509" height="36"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="busFavorite" translatesAutoresizingMaskIntoConstraints="NO" id="NjI-te-plL">
                                         <rect key="frame" x="0.0" y="1" width="35" height="35"/>
@@ -77,17 +77,30 @@ IconView</string>
                                 </subviews>
                                 <color key="backgroundColor" red="0.36901968442455318" green="0.62583249807357788" blue="0.27395910647073296" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ql1-55-mOK" userLabel="MoreButton" customClass="MoreButton" customModule="Septa" customModuleProvider="target">
+                                <rect key="frame" x="533" y="18" width="45" height="22"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="IYz-er-4cz"/>
+                                    <constraint firstAttribute="width" constant="45" id="k7Q-eL-zOz"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="moreButtonTapped:" destination="3AG-3O-URg" eventType="touchUpInside" id="mRS-tK-Rwf"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ql1-55-mOK" secondAttribute="trailing" constant="17" id="1rh-7Z-rhS" userLabel="MoreButtonRight"/>
+                            <constraint firstItem="ql1-55-mOK" firstAttribute="leading" secondItem="eqs-q6-yyu" secondAttribute="trailing" constant="10" id="40z-jc-7CD" userLabel="CellHeaderRight"/>
                             <constraint firstAttribute="trailing" secondItem="8j1-4I-RG0" secondAttribute="trailing" id="AUC-b9-SJN" userLabel="StackViewRight"/>
                             <constraint firstItem="8j1-4I-RG0" firstAttribute="leading" secondItem="27g-iu-NbY" secondAttribute="leading" id="RL7-oM-BgN" userLabel="StackViewLeft"/>
                             <constraint firstItem="eqs-q6-yyu" firstAttribute="top" secondItem="27g-iu-NbY" secondAttribute="top" constant="11" id="WNs-Jh-LJ7" userLabel="CellHeaderTop"/>
+                            <constraint firstItem="ql1-55-mOK" firstAttribute="top" secondItem="27g-iu-NbY" secondAttribute="top" constant="18" id="ayi-PV-W2K" userLabel="MoreButtonTop"/>
                             <constraint firstAttribute="height" constant="200.5" placeholder="YES" id="dbZ-4c-EzD"/>
                             <constraint firstAttribute="bottom" secondItem="8j1-4I-RG0" secondAttribute="bottom" priority="999" constant="10" id="eRn-i3-jGE" userLabel="StackViewBottom"/>
                             <constraint firstItem="eqs-q6-yyu" firstAttribute="leading" secondItem="27g-iu-NbY" secondAttribute="leading" constant="14" id="hLd-f0-txB" userLabel="CellHeaderLeft"/>
                             <constraint firstItem="8j1-4I-RG0" firstAttribute="top" secondItem="eqs-q6-yyu" secondAttribute="bottom" constant="10" id="kN9-VL-OgO" userLabel="StackViewTop"/>
-                            <constraint firstAttribute="trailing" secondItem="eqs-q6-yyu" secondAttribute="trailing" id="yhb-8U-2qf" userLabel="CellHeaderRight"/>
                         </constraints>
                     </view>
                 </subviews>
