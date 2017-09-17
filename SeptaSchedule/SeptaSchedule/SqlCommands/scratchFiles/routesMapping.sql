@@ -1,0 +1,1 @@
+select cast (route_id as TEXT) route_id from routes_bus;

@@ -287,3 +287,5 @@ WHERE  stop_id = 90401 and T.direction_id = 1  and T.service_id in (select servi
 ON start.trip_id = stop.trip_id
 group by start.arrival_time, stop.arrival_time;
 
+select * from routes_rail;
+

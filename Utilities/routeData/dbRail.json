@@ -1,0 +1,44 @@
+[
+  {
+    "route_id": "AIR"
+  },
+  {
+    "route_id": "CHE"
+  },
+  {
+    "route_id": "CHW"
+  },
+  {
+    "route_id": "LAN"
+  },
+  {
+    "route_id": "MED"
+  },
+  {
+    "route_id": "FOX"
+  },
+  {
+    "route_id": "NOR"
+  },
+  {
+    "route_id": "PAO"
+  },
+  {
+    "route_id": "CYN"
+  },
+  {
+    "route_id": "TRE"
+  },
+  {
+    "route_id": "WAR"
+  },
+  {
+    "route_id": "WIL"
+  },
+  {
+    "route_id": "WTR"
+  },
+  {
+    "route_id": "GC"
+  }
+]
