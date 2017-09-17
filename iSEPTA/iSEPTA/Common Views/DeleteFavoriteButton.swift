@@ -14,7 +14,14 @@ class DeleteFavoriteButton: UIControl {
 
     override func draw(_ rect: CGRect) {
 
-        SeptaDraw.drawDeleteFavorite(frame: rect, buttonHighlighted: buttonHighlighted)
+        SeptaDraw.drawDeleteFavorite(frame: rect, enabled: isEnabled, buttonHighlighted: buttonHighlighted)
+    }
+
+    override var isEnabled: Bool {
+        didSet {
+            super.isEnabled = self.isEnabled
+            setNeedsDisplay()
+        }
     }
 
     override func awakeFromNib() {
@@ -23,6 +30,7 @@ class DeleteFavoriteButton: UIControl {
     }
 
     override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+
         super.beginTracking(touch, with: event)
         buttonHighlighted = true
         setNeedsDisplay()

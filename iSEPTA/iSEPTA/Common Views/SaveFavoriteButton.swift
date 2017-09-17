@@ -14,7 +14,14 @@ class SaveFavoriteButton: UIControl {
 
     override func draw(_ rect: CGRect) {
 
-        SeptaDraw.drawSaveButton(frame: rect, buttonHighlighted: buttonHighlighted)
+        SeptaDraw.drawSaveButton(frame: rect, enabled: isEnabled, buttonHighlighted: buttonHighlighted)
+    }
+
+    override var isEnabled: Bool {
+        didSet {
+            super.isEnabled = self.isEnabled
+            setNeedsDisplay()
+        }
     }
 
     override func awakeFromNib() {

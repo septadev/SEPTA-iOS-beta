@@ -354,7 +354,7 @@ public class SeptaDraw: NSObject {
         context.restoreGState()
     }
 
-    @objc public dynamic class func drawSaveButton(frame: CGRect = CGRect(x: 0, y: 0, width: 50, height: 25), buttonHighlighted: Bool = false) {
+    @objc public dynamic class func drawSaveButton(frame: CGRect = CGRect(x: 0, y: 0, width: 50, height: 25), enabled: Bool = true, buttonHighlighted: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -365,30 +365,40 @@ public class SeptaDraw: NSObject {
         let editFavoriteBlue = UIColor(red: 0.133, green: 0.325, blue: 0.569, alpha: 1.000)
 
         //// Variable Declarations
+        let opacity: CGFloat = enabled ? 1 : 0.3
         let buttonHighlightedColor = buttonHighlighted ? buttonHighlight : buttonDefault
 
-        //// saveButtonTextRect Drawing
-        let saveButtonTextRectRect = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height)
-        let saveButtonTextRectPath = UIBezierPath(roundedRect: saveButtonTextRectRect, cornerRadius: 4)
-        editFavoriteBlue.setFill()
-        saveButtonTextRectPath.fill()
-        white.setStroke()
-        saveButtonTextRectPath.lineWidth = 1
-        saveButtonTextRectPath.stroke()
-        let saveButtonTextRectTextContent = "Save"
-        let saveButtonTextRectStyle = NSMutableParagraphStyle()
-        saveButtonTextRectStyle.alignment = .center
-        let saveButtonTextRectFontAttributes = [
-            .font: UIFont.systemFont(ofSize: UIFont.systemFontSize, weight: UIFont.Weight.bold),
-            .foregroundColor: white,
-            .paragraphStyle: saveButtonTextRectStyle,
-        ] as [NSAttributedStringKey: Any]
+        if enabled {
+            //// saveButtonTextRect Drawing
+            context.saveGState()
+            context.setAlpha(opacity)
+            context.beginTransparencyLayer(auxiliaryInfo: nil)
 
-        let saveButtonTextRectTextHeight: CGFloat = saveButtonTextRectTextContent.boundingRect(with: CGSize(width: saveButtonTextRectRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: saveButtonTextRectFontAttributes, context: nil).height
-        context.saveGState()
-        context.clip(to: saveButtonTextRectRect)
-        saveButtonTextRectTextContent.draw(in: CGRect(x: saveButtonTextRectRect.minX, y: saveButtonTextRectRect.minY + (saveButtonTextRectRect.height - saveButtonTextRectTextHeight) / 2, width: saveButtonTextRectRect.width, height: saveButtonTextRectTextHeight), withAttributes: saveButtonTextRectFontAttributes)
-        context.restoreGState()
+            let saveButtonTextRectRect = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height)
+            let saveButtonTextRectPath = UIBezierPath(roundedRect: saveButtonTextRectRect, cornerRadius: 4)
+            editFavoriteBlue.setFill()
+            saveButtonTextRectPath.fill()
+            white.setStroke()
+            saveButtonTextRectPath.lineWidth = 1
+            saveButtonTextRectPath.stroke()
+            let saveButtonTextRectTextContent = "Save"
+            let saveButtonTextRectStyle = NSMutableParagraphStyle()
+            saveButtonTextRectStyle.alignment = .center
+            let saveButtonTextRectFontAttributes = [
+                .font: UIFont.systemFont(ofSize: UIFont.systemFontSize, weight: UIFont.Weight.bold),
+                .foregroundColor: white,
+                .paragraphStyle: saveButtonTextRectStyle,
+            ] as [NSAttributedStringKey: Any]
+
+            let saveButtonTextRectTextHeight: CGFloat = saveButtonTextRectTextContent.boundingRect(with: CGSize(width: saveButtonTextRectRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: saveButtonTextRectFontAttributes, context: nil).height
+            context.saveGState()
+            context.clip(to: saveButtonTextRectRect)
+            saveButtonTextRectTextContent.draw(in: CGRect(x: saveButtonTextRectRect.minX, y: saveButtonTextRectRect.minY + (saveButtonTextRectRect.height - saveButtonTextRectTextHeight) / 2, width: saveButtonTextRectRect.width, height: saveButtonTextRectTextHeight), withAttributes: saveButtonTextRectFontAttributes)
+            context.restoreGState()
+
+            context.endTransparencyLayer()
+            context.restoreGState()
+        }
 
         //// SaveButtonShadow Drawing
         let saveButtonShadowPath = UIBezierPath(roundedRect: CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height), cornerRadius: 4)
@@ -399,7 +409,7 @@ public class SeptaDraw: NSObject {
         saveButtonShadowPath.stroke()
     }
 
-    @objc public dynamic class func drawDeleteFavorite(frame: CGRect = CGRect(x: 0, y: 0, width: 150, height: 25), buttonHighlighted: Bool = false) {
+    @objc public dynamic class func drawDeleteFavorite(frame: CGRect = CGRect(x: 0, y: 0, width: 150, height: 25), enabled: Bool = true, buttonHighlighted: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -410,9 +420,14 @@ public class SeptaDraw: NSObject {
         let editFavoriteBlue = UIColor(red: 0.133, green: 0.325, blue: 0.569, alpha: 1.000)
 
         //// Variable Declarations
+        let opacity: CGFloat = enabled ? 1 : 0.3
         let buttonHighlightedColor = buttonHighlighted ? buttonHighlight : buttonDefault
 
         //// saveButtonTextRect Drawing
+        context.saveGState()
+        context.setAlpha(opacity)
+        context.beginTransparencyLayer(auxiliaryInfo: nil)
+
         let saveButtonTextRectRect = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: frame.height)
         let saveButtonTextRectPath = UIBezierPath(roundedRect: saveButtonTextRectRect, cornerRadius: 4)
         editFavoriteBlue.setFill()
@@ -430,6 +445,9 @@ public class SeptaDraw: NSObject {
         context.saveGState()
         context.clip(to: saveButtonTextRectRect)
         saveButtonTextRectTextContent.draw(in: CGRect(x: saveButtonTextRectRect.minX, y: saveButtonTextRectRect.minY + (saveButtonTextRectRect.height - saveButtonTextRectTextHeight) / 2, width: saveButtonTextRectRect.width, height: saveButtonTextRectTextHeight), withAttributes: saveButtonTextRectFontAttributes)
+        context.restoreGState()
+
+        context.endTransparencyLayer()
         context.restoreGState()
 
         //// SaveButtonShadow Drawing

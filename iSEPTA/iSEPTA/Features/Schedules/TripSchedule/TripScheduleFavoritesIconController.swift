@@ -13,26 +13,28 @@ import SeptaSchedule
 
 class TripScheduleFavoritesIconController: FavoritesState_FavoritesWatcherDelegate, ScheduleState_ScheduleRequestWatcherDelegate {
 
-    var favoritesButton: UIButton? {
+    var favoritesButton: UIButton! {
         didSet {
             setUpTargetAndActionForButton()
+            favoritesWatcher?.delegate = self
+            scheduleRequestWatcher?.delegate = self
         }
     }
 
+    let scheduleRequestWatcher: ScheduleState_ScheduleRequestWatcher?
     let favoritesWatcher: FavoritesState_FavoritesWatcher?
-    let scheduleRequestWatcher: NextToArriveState_ScheduleState_ScheduleRequestWatcher?
 
     var currentScheduleRequest: ScheduleRequest!
     var currentFavorite: Favorite?
 
     init(favoritesButton: UIButton) {
         self.favoritesButton = favoritesButton
-
+        scheduleRequestWatcher = ScheduleState_ScheduleRequestWatcher()
         favoritesWatcher = FavoritesState_FavoritesWatcher()
-        scheduleRequestWatcher = NextToArriveState_ScheduleState_ScheduleRequestWatcher()
     }
 
     func favoritesState_FavoritesUpdated(favorites _: [Favorite]) {
+        guard let currentScheduleRequest = currentScheduleRequest else { return }
         currentFavorite = currentScheduleRequest.locateInFavorites()
         updateFavoritesNavBarIcon()
     }
@@ -44,7 +46,7 @@ class TripScheduleFavoritesIconController: FavoritesState_FavoritesWatcherDelega
     }
 
     func setUpTargetAndActionForButton() {
-        favoritesButton?.addTarget(self, action: #selector(NextToArriveFavoritesIconController.didTapFavoritesButton(_:)), for: UIControlEvents.touchUpInside)
+        favoritesButton?.addTarget(self, action: #selector(didTapFavoritesButton(_:)), for: UIControlEvents.touchUpInside)
     }
 
     @IBAction func didTapFavoritesButton(_: UIButton) {

@@ -16,7 +16,19 @@ class EditFavoriteViewController: UIViewController, UITextFieldDelegate {
         favoriteToEdit = store.state.favoritesState.favoriteToEdit
     }
 
+    var favoriteHasBeenSaved: Bool {
+        guard let favoriteToEdit = favoriteToEdit else { return false }
+        return store.state.favoritesState.favorites.contains(favoriteToEdit)
+    }
+
+    @IBOutlet weak var deleteFavoriteButton: DeleteFavoriteButton! {
+        didSet {
+            deleteFavoriteButton.isEnabled = favoriteHasBeenSaved
+        }
+    }
+
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var saveButton: SaveFavoriteButton!
 
     @IBAction func closeButtonTapped(_: Any) {
         view.resignFirstResponder()
@@ -26,7 +38,7 @@ class EditFavoriteViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func deleteFavoriteButtonTapped(_: Any) {
         guard let favoriteToEdit = favoriteToEdit else { return }
-
+        view.resignFirstResponder()
         requestPermissionToRemoveFavorite(favorite: favoriteToEdit)
     }
 
@@ -38,7 +50,12 @@ class EditFavoriteViewController: UIViewController, UITextFieldDelegate {
         store.dispatch(action)
     }
 
-    var filterString = ""
+    var filterString = "" {
+        didSet {
+            saveButton.isEnabled = filterString.count > 0
+        }
+    }
+
     func textField(_: UITextField, shouldChangeCharactersIn range: NSRange, replacementString: String) -> Bool {
         guard let swiftRange = Range(range, in: filterString) else { return false }
         filterString = filterString.replacingCharacters(in: swiftRange, with: replacementString)
@@ -52,14 +69,14 @@ class EditFavoriteViewController: UIViewController, UITextFieldDelegate {
     }
 
     override func viewDidAppear(_: Bool) {
-        textField.selectAll(self)
+
         textField.becomeFirstResponder()
     }
 
     func requestPermissionToRemoveFavorite(favorite: Favorite) {
-        guard let presentingViewController = presentingViewController else { return }
-        UIAlert.presentDestructiveYesNoAlertFrom(viewController: presentingViewController, withTitle: "Remove a Favorite?", message: "Would you like to remove this trip as a favorite?") { [weak self] in
-            self?.view.resignFirstResponder()
+
+        UIAlert.presentDestructiveYesNoAlertFrom(viewController: self, withTitle: "Remove a Favorite?", message: "Would you like to remove this trip as a favorite?") {
+
             let action = RemoveFavorite(favorite: favorite)
             store.dispatch(action)
         }

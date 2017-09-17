@@ -34,9 +34,8 @@ class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelega
     var currentFavorite: Favorite?
 
     init() {
-
-        favoritesWatcher = FavoritesState_FavoritesWatcher()
         scheduleRequestWatcher = NextToArriveState_ScheduleState_ScheduleRequestWatcher()
+        favoritesWatcher = FavoritesState_FavoritesWatcher()
     }
 
     func favoritesState_FavoritesUpdated(favorites _: [Favorite]) {

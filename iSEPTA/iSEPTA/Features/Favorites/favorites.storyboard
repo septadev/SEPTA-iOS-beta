@@ -135,14 +135,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hew-PO-uax">
                                 <rect key="frame" x="17" y="131" width="341" height="40"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wzn-yb-Nx7" userLabel="TextField">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wzn-yb-Nx7" userLabel="TextField">
                                         <rect key="frame" x="8" y="5" width="325" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="bZL-Pk-3PY"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -186,6 +186,8 @@ TextFieldWrapper</string>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="299"/>
                     <connections>
+                        <outlet property="deleteFavoriteButton" destination="K0P-t9-BdM" id="WxY-0k-nti"/>
+                        <outlet property="saveButton" destination="lAV-wR-tvj" id="yEX-3x-Zou"/>
                         <outlet property="textField" destination="wzn-yb-Nx7" id="ztm-kA-cMf"/>
                     </connections>
                 </viewController>
