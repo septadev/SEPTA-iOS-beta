@@ -323,6 +323,7 @@
 		58C2A0591F3812D600F0D6CA /* ScheduleActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0581F3812D600F0D6CA /* ScheduleActions.swift */; };
 		58C2A0611F38964E00F0D6CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0601F3895E000F0D6CA /* ViewController.swift */; };
 		58C2A0691F38AA1B00F0D6CA /* ScheduleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0681F38AA1B00F0D6CA /* ScheduleData.swift */; };
+		58C9D3011F703735008FDE40 /* LoggingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C9D3001F703735008FDE40 /* LoggingMiddleware.swift */; };
 		58DB04A31F54D7F2005CC850 /* SeptaSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58ACEAE31F3A9A9B00DC2836 /* SeptaSchedule.framework */; };
 		58DB04A51F558DD0005CC850 /* SearchRoutesModalHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DB04A41F558DD0005CC850 /* SearchRoutesModalHeaderViewController.swift */; };
 		58DB10F41F3B8CCF00191AED /* ScheduleDataReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DB10F31F3B8CCF00191AED /* ScheduleDataReducer.swift */; };
@@ -868,6 +869,7 @@
 		58C2A0601F3895E000F0D6CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRequest.swift; sourceTree = "<group>"; };
 		58C2A0681F38AA1B00F0D6CA /* ScheduleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleData.swift; sourceTree = "<group>"; };
+		58C9D3001F703735008FDE40 /* LoggingMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingMiddleware.swift; sourceTree = "<group>"; };
 		58D9C3F01F3335BB002BE2E8 /* Septa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Septa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D9C4071F3335BB002BE2E8 /* iSEPTATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iSEPTATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D9C40D1F3335BB002BE2E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1133,6 +1135,7 @@
 		58290E511F372F27000CCF3C /* App State */ = {
 			isa = PBXGroup;
 			children = (
+				58C9D2FD1F703716008FDE40 /* Middleware */,
 				58FBBFA21F6581FD00B7A4DA /* Database */,
 				58EB8D271F5D90A40028A487 /* NextToArrive */,
 				678D26C21F5CC49200D140CC /* Favorites */,
@@ -1839,6 +1842,14 @@
 				588F27F91F39E15500D62425 /* StateObjects */,
 			);
 			path = Schedule;
+			sourceTree = "<group>";
+		};
+		58C9D2FD1F703716008FDE40 /* Middleware */ = {
+			isa = PBXGroup;
+			children = (
+				58C9D3001F703735008FDE40 /* LoggingMiddleware.swift */,
+			);
+			path = Middleware;
 			sourceTree = "<group>";
 		};
 		58D5D22A1F6098160016C382 /* Maps */ = {
@@ -2629,6 +2640,7 @@
 				674FDBC71F577D3B00CA67D2 /* Route+Icon.swift in Sources */,
 				587BC0501F6EDF1D00B92BB6 /* AlertRequest.swift in Sources */,
 				58248B771F6D8F6C00DA2D65 /* HalfSheetAnimationIn.swift in Sources */,
+				58C9D3011F703735008FDE40 /* LoggingMiddleware.swift in Sources */,
 				58F80D431F421C1F0089501A /* SelectStopNavigationController.swift in Sources */,
 				58658D1B1F53135100E67B4E /* AddressCell.swift in Sources */,
 				67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */,

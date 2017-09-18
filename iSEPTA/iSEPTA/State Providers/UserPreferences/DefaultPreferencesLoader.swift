@@ -29,16 +29,16 @@ class DefaultPreferencesLoader {
         return NSDictionary(contentsOf: url) as? [String: AnyObject]
     }
 
-    func generateDefaultUserPreferenceState() throws -> UserPreferenceState {
-        return UserPreferenceState()
+    func generateDefaultUserPreferenceState() -> UserPreferenceState {
+        return UserPreferenceState(defaultsLoaded: true, startupTransitMode: startupTransitMode(), startupNavigationController: startupNavigationController(), databaseVersion: 0)
     }
 
-    fileprivate func startupNavigationController() throws -> NavigationController {
+    fileprivate func startupNavigationController() -> NavigationController {
 
         return NavigationController.nextToArrive
     }
 
-    fileprivate func startupTransitMode() throws -> TransitMode {
+    fileprivate func startupTransitMode() -> TransitMode {
         return TransitMode.bus
     }
 }

@@ -214,7 +214,7 @@ TextFieldWrapper</string>
                                             <constraint firstAttribute="height" constant="110" placeholder="YES" id="niJ-3b-7Qz"/>
                                         </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save your SEPTA trips as a favorite to get immediate access to the Next to Arrive transit, and schedules." textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjp-LN-3DT" userLabel="InfoLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save your SEPTA trips as a favorite to get immediate access to the Next to Arrive transit, and schedules." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjp-LN-3DT" userLabel="InfoLabel">
                                         <rect key="frame" x="38" y="128" width="299" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                         <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
