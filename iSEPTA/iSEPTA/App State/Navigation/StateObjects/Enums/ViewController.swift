@@ -23,6 +23,10 @@ enum ViewController: String, Equatable {
     case noFavoritesViewController
     case editFavoriteViewController
 
+    // Alerts
+    case alertsViewController
+    case alertDetailViewController
+
     func storyboardIdentifier() -> String {
         switch self {
         case .selectSchedules:
@@ -47,6 +51,10 @@ enum ViewController: String, Equatable {
             return "favorites"
         case .editFavoriteViewController:
             return "favorites"
+        case .alertsViewController:
+            return "alerts"
+        case .alertDetailViewController:
+            return "alerts"
         }
     }
 

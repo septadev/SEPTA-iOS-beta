@@ -7,7 +7,12 @@ import SeptaSchedule
 enum TargetForScheduleAction {
     case schedules
     case nextToArrive
-    case both
+    case alerts
+    case all
+
+    func includesMe(_ targetForScheduleAction: TargetForScheduleAction) -> Bool {
+        return self == .all || self == targetForScheduleAction
+    }
 }
 
 protocol ScheduleAction: SeptaAction {

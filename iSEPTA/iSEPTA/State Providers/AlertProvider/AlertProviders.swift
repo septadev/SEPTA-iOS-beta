@@ -34,21 +34,20 @@ class AlertProvider {
     }
 
     func updateAlertsIfNeeded() {
-        var quickMap = [QuickMap]()
+        var alertsByTransitModeThenRoute = makeNewAlertsByTransitModeThenRoute()
+
+        let mapper = MapFromAlerts.sharedInstance
         if shouldAttemptToUpdateAlerts() {
             client.getAlerts(route: "").then { alerts -> Void in
                 if let alerts = alerts?.alerts {
                     for rawAlert in alerts {
-                        if let mappingResult = self.mapRestAlert(alert: rawAlert) {
-                            quickMap.append(mappingResult)
+                        if let septaAlert = self.mapRestAlert(alert: rawAlert),
+                            let quickMaps = mapper.mapAlert(mappableAlert: rawAlert) {
+                            for quickMap in quickMaps {
+                                alertsByTransitModeThenRoute[quickMap.transitMode]?[quickMap.routeId] = septaAlert
+                            }
                         }
                     }
-                    var alertsByTransitModeThenRoute = AlertsByTransitModeThenRoute()
-                    alertsByTransitModeThenRoute[.bus] = self.mapToTransitMode(.bus, quickMap: quickMap)
-                    alertsByTransitModeThenRoute[.rail] = self.mapToTransitMode(.rail, quickMap: quickMap)
-                    alertsByTransitModeThenRoute[.subway] = self.mapToTransitMode(.subway, quickMap: quickMap)
-                    alertsByTransitModeThenRoute[.trolley] = self.mapToTransitMode(.trolley, quickMap: quickMap)
-                    alertsByTransitModeThenRoute[.nhsl] = self.mapToTransitMode(.nhsl, quickMap: quickMap)
 
                     let action = NewAlertsRetrieved(alertsByTransitModeThenRoute: alertsByTransitModeThenRoute)
                     store.dispatch(action)
@@ -59,27 +58,21 @@ class AlertProvider {
         }
     }
 
-    func mapToTransitMode(_ transitMode: TransitMode, quickMap: [QuickMap]) -> [String: SeptaAlert] {
-        let filteredAlerts = quickMap.filter { $0.transitMode == transitMode }
-        let result: [String: SeptaAlert] = filteredAlerts.reduce([String: SeptaAlert]()) {
-            result, quickmap in
-            var result = result
-            result[quickmap.routeId] = quickmap.septaAlert
-            return result
+    func makeNewAlertsByTransitModeThenRoute() -> AlertsByTransitModeThenRoute {
+        var alertsByTransitModeThenRoute = AlertsByTransitModeThenRoute()
+        for transitMode in TransitMode.displayOrder() {
+            alertsByTransitModeThenRoute[transitMode] = [String: SeptaAlert]()
         }
-        return result
+        return alertsByTransitModeThenRoute
     }
 
-    func mapRestAlert(alert: Alert) -> QuickMap? {
+    func mapRestAlert(alert: Alert) -> SeptaAlert? {
         guard
-            let transitModeString = alert.mode,
-            let transitMode = TransitMode.convertFromTransitMode(transitModeString),
-            let routeId = alert.route_name,
             let advisory = alert.advisory,
             let weather = alert.snow,
             let detour = alert.detour,
             let alert = alert.alert else { return nil }
-        return QuickMap(transitMode: transitMode, routeId: routeId, septaAlert: SeptaAlert(advisory: advisory, alert: alert, detour: detour, weather: weather))
+        return SeptaAlert(advisory: advisory, alert: alert, detour: detour, weather: weather)
     }
 
     func shouldAttemptToUpdateAlerts() -> Bool {

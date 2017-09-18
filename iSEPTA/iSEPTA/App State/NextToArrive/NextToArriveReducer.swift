@@ -13,7 +13,7 @@ struct NextToArriveReducer {
     static func main(action: Action, state: NextToArriveState?) -> NextToArriveState {
         if let state = state {
             switch action {
-            case let action as ScheduleAction where action.targetForScheduleAction != .schedules :
+            case let action as ScheduleAction where action.targetForScheduleAction.includesMe(.nextToArrive) :
                 return reduceScheduleAction(action: action, state: state)
             case let action as NextToArriveAction:
                 return reduceNextToArriveAction(action: action, state: state)

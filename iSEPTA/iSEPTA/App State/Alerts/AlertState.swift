@@ -8,6 +8,7 @@
 
 import Foundation
 import SeptaSchedule
+import SeptaRest
 
 typealias AlertsByTransitModeThenRoute = [TransitMode: [String: SeptaAlert]]
 
@@ -15,10 +16,14 @@ struct AlertState {
     // transitMode/RouteId/SeptaAlert
     let alertDict: AlertsByTransitModeThenRoute
     let lastUpdated: Date
+    let scheduleState: ScheduleState
+    let alertDetails: [AlertDetails_Alert]
 
-    init(alertDict: AlertsByTransitModeThenRoute = [TransitMode: [String: SeptaAlert]](), lastUpdated: Date = Date.distantPast) {
+    init(alertDict: AlertsByTransitModeThenRoute = [TransitMode: [String: SeptaAlert]](), scheduleState: ScheduleState = ScheduleState(), lastUpdated: Date = Date.distantPast, alertDetails: [AlertDetails_Alert] = [AlertDetails_Alert]()) {
         self.alertDict = alertDict
         self.lastUpdated = lastUpdated
+        self.scheduleState = scheduleState
+        self.alertDetails = alertDetails
     }
 }
 

@@ -13,26 +13,44 @@ struct AlertReducer {
 
     static func main(action: Action, state: AlertState?) -> AlertState {
         if let state = state {
-            guard let action = action as? AlertAction else { return state }
-            return reduceAlertActions(action: action, state: state)
+            switch action {
+            case let action as ScheduleAction where action.targetForScheduleAction.includesMe(.alerts) :
+                return reduceScheduleAction(action: action, state: state)
+            case let action as AlertAction:
+                return reduceAlertActions(action: action, state: state)
+            default:
+                return state
+            }
+
         } else {
             return AlertState()
         }
     }
 
+    static func reduceScheduleAction(action: ScheduleAction, state: AlertState) -> AlertState {
+        let scheduleState = ScheduleReducer.main(action: action, state: state.scheduleState)
+        return AlertState(alertDict: state.alertDict, scheduleState: scheduleState, lastUpdated: state.lastUpdated)
+    }
+
     static func reduceAlertActions(action: AlertAction, state: AlertState) -> AlertState {
-        var newPref = state
+        var newState = state
         switch action {
         case let action as NewAlertsRetrieved:
-            newPref = reduceNewAlertsRetrieved(action: action, state: state)
+            newState = reduceNewAlertsRetrieved(action: action, state: state)
+        case let action as AlertDetailsLoaded:
+            newState = reduceAlertDetailsLoaded(action: action, state: state)
         default:
             break
         }
 
-        return newPref
+        return newState
     }
 
-    static func reduceNewAlertsRetrieved(action: NewAlertsRetrieved, state _: AlertState) -> AlertState {
-        return AlertState(alertDict: action.alertsByTransitModeThenRoute, lastUpdated: Date())
+    static func reduceNewAlertsRetrieved(action: NewAlertsRetrieved, state: AlertState) -> AlertState {
+        return AlertState(alertDict: action.alertsByTransitModeThenRoute, scheduleState: state.scheduleState, lastUpdated: Date(), alertDetails: state.alertDetails)
+    }
+
+    static func reduceAlertDetailsLoaded(action: AlertDetailsLoaded, state: AlertState) -> AlertState {
+        return AlertState(alertDict: state.alertDict, scheduleState: state.scheduleState, lastUpdated: state.lastUpdated, alertDetails: action.alertDetails)
     }
 }

@@ -13,9 +13,9 @@ public class AlertDetails_Alert: Mappable {
 
     var route_id: String?
     var route_name: String?
-    var message: String?
-    var advisory_message: String?
-    var detour: Detour?
+public    var message: String?
+ public   var advisory_message: String?
+ public   var detour: Detour?
     var last_updated: String?
     var snow: Bool?
 

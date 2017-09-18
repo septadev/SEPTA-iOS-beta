@@ -12,6 +12,8 @@ extension AppState {
     func targetForScheduleActions() -> TargetForScheduleAction {
         if store.state.navigationState.activeNavigationController == .schedules {
             return .schedules
+        } else if store.state.navigationState.activeNavigationController == .alerts {
+            return .alerts
         } else {
             return .nextToArrive
         }

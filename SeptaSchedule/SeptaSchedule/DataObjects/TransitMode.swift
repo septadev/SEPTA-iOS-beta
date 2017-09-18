@@ -3,9 +3,9 @@
 import Foundation
 
 @objc public enum TransitMode: Int, Codable {
-    case bus
-    case rail
-    case subway
-    case nhsl
-    case trolley
+    case bus = 0
+    case rail = 1
+    case subway = 2
+    case nhsl = 3
+    case trolley = 4
 }

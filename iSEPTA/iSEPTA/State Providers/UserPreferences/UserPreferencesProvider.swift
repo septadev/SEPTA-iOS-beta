@@ -68,7 +68,7 @@ class UserPreferencesProvider: StoreSubscriber, UserPreferencesProviderProtocol 
 
     func dispatchStartupTransitMode() {
         guard let transitMode = currentState?.startupTransitMode else { return }
-        let action = TransitModeSelected(targetForScheduleAction: .both, transitMode: transitMode, description: "Loading from user defaults")
+        let action = TransitModeSelected(targetForScheduleAction: .all, transitMode: transitMode, description: "Loading from user defaults")
         store.dispatch(action)
     }
 

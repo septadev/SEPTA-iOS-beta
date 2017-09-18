@@ -117,7 +117,14 @@ extension ScheduleTransitModesToolBarViewController: SubscriberUnsubscriber {
                     $0.scheduleState.scheduleRequest.transitMode
                 }.skipRepeats { $0 == $1 }
             }
-        } else {
+        } else if targetForScheduleAction == .alerts {
+            store.subscribe(self) { subscription in
+                subscription.select {
+                    $0.alertState.scheduleState.scheduleRequest.transitMode
+                }.skipRepeats { $0 == $1 }
+            }
+
+        } else if targetForScheduleAction == .nextToArrive {
             store.subscribe(self) { subscription in
                 subscription.select {
                     $0.nextToArriveState.scheduleState.scheduleRequest.transitMode

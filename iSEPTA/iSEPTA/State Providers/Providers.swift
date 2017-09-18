@@ -12,6 +12,8 @@ class StateProviders {
     let nextToArriveScheduleDataProvider: NextToArriveScheduleDataProvider
     let nextToArriveProvider: NextToArriveProvider
     let favoritesNextToArriveProvider: FavoritesNextToArriveProvider
+    let alertScheduleDataProvider: AlertScheduleDataProvider
+    let alertDetailProvider: AlertDetailProvider
 
     init(preferenceProvider: UserPreferencesProviderProtocol = UserPreferencesProvider.sharedInstance,
          scheduleProvider: ScheduleDataProvider = ScheduleDataProvider.sharedInstance,
@@ -21,7 +23,9 @@ class StateProviders {
          favoritesProvider: FavoritesProvider = FavoritesProvider.sharedInstance,
          nextToArriveScheduleDataProvider: NextToArriveScheduleDataProvider = NextToArriveScheduleDataProvider.sharedInstance,
          nextToArriveProvider: NextToArriveProvider = NextToArriveProvider.sharedInstance,
-         favoritesNextToArriveProvider: FavoritesNextToArriveProvider = FavoritesNextToArriveProvider.sharedInstance
+         favoritesNextToArriveProvider: FavoritesNextToArriveProvider = FavoritesNextToArriveProvider.sharedInstance,
+         alertScheduleDataProvider: AlertScheduleDataProvider = AlertScheduleDataProvider.sharedInstance,
+         alertDetailProvider: AlertDetailProvider = AlertDetailProvider.sharedInstance
 
     ) {
         self.preferenceProvider = preferenceProvider
@@ -33,5 +37,7 @@ class StateProviders {
         self.nextToArriveScheduleDataProvider = nextToArriveScheduleDataProvider
         self.nextToArriveProvider = nextToArriveProvider
         self.favoritesNextToArriveProvider = favoritesNextToArriveProvider
+        self.alertScheduleDataProvider = alertScheduleDataProvider
+        self.alertDetailProvider = alertDetailProvider
     }
 }

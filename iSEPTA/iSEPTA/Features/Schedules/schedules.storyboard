@@ -227,7 +227,7 @@ TableViewWrapper</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaJ-Ig-ASV">
-                            <rect key="frame" x="207" y="10" width="33" height="27"/>
+                            <rect key="frame" x="207" y="10.5" width="33" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Reset">
                                 <color key="titleColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -329,7 +329,7 @@ TableViewWrapper</string>
                                                     <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mCg-hU-RGp" id="EF9-Ow-ydw">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="751" text="44 Route" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om0-j5-VdR" userLabel="RouteShortName">
@@ -1110,7 +1110,7 @@ TitleViewTop</string>
         <!--Transit Mode Toolbar-->
         <scene sceneID="6r3-DF-WcU">
             <objects>
-                <viewController title="Transit Mode Toolbar" automaticallyAdjustsScrollViewInsets="NO" id="zb9-QJ-YIl" customClass="ScheduleTransitModesToolBarViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="transitModeToolbar" title="Transit Mode Toolbar" automaticallyAdjustsScrollViewInsets="NO" id="zb9-QJ-YIl" customClass="ScheduleTransitModesToolBarViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BiL-t2-ODt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

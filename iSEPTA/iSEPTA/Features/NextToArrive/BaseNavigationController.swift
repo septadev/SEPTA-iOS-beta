@@ -12,7 +12,7 @@ import UIKit
 class BaseNavigationController: UINavigationController {
     var currentStackState = NavigationStackState()
 
-    @IBOutlet var stateProvider: NextToArriveNavigationControllerStateProvider!
+    @IBOutlet var stateProvider: NavigationControllerBaseStateProvider!
     lazy var slideInTransitioningDelegate = SlideInPresentationManager()
 
     func newStackState(_ newStackState: NavigationStackState) {

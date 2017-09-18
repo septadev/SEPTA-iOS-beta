@@ -87,6 +87,16 @@ extension TransitMode {
         }
     }
 
+    public func alertDetailTitle() -> String {
+        switch self {
+        case .bus: return "System Status: Bus"
+        case .rail: return "System Status: Regional Rail"
+        case .subway: return "System Status: Subway"
+        case .nhsl: return "System Status: NHSL"
+        case .trolley: return "System Status: Trolley"
+        }
+    }
+
     public func selectRoutePlaceholderText() -> String {
         switch self {
         case .rail: return "Select Line"
@@ -184,6 +194,16 @@ extension TransitMode {
         }
     }
 
+    public func systemStatusTitle() -> String {
+        switch self {
+        case .rail: return "Regional Rail Status"
+        case .subway : return "Subway Status"
+        case .bus: return "Bus Status"
+        case .trolley :return "Trolley Status"
+        case .nhsl: return "NHSL Status"
+        }
+    }
+
     public func favoritesIcon() -> UIImage? {
         let imageName: String
         switch self {
@@ -259,10 +279,15 @@ extension TransitMode {
     }
 
     public static func currentTransitMode() -> TransitMode! {
-        if store.state.targetForScheduleActions() == .schedules {
+        let target = store.state.targetForScheduleActions()
+        if target == .schedules {
             return store.state.scheduleState.scheduleRequest.transitMode
-        } else {
+        } else if target == .nextToArrive {
             return store.state.nextToArriveState.scheduleState.scheduleRequest.transitMode
+        } else if target == .alerts {
+            return store.state.alertState.scheduleState.scheduleRequest.transitMode
+        } else {
+            return TransitMode.rail
         }
     }
 

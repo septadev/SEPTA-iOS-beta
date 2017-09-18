@@ -107,6 +107,11 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
             store.subscribe(self) {
                 $0.select { $0.scheduleState.scheduleData.availableRoutes }.skipRepeats { $0 == $1 }
             }
+        } else if targetForScheduleAction == .alerts {
+            store.subscribe(self) {
+                $0.select { $0.alertState.scheduleState.scheduleData.availableRoutes }.skipRepeats { $0 == $1 }
+            }
+
         } else if targetForScheduleAction == .nextToArrive {
             store.subscribe(self) {
                 $0.select { $0.nextToArriveState.scheduleState.scheduleData.availableRoutes }.skipRepeats { $0 == $1 }

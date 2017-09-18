@@ -58,6 +58,11 @@
 		5825319A1F407D380088D056 /* UserDefaultsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582531991F407D380088D056 /* UserDefaultsLoader.swift */; };
 		5825319C1F408C2D0088D056 /* UserPreferencesStatePersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5825319B1F408C2D0088D056 /* UserPreferencesStatePersister.swift */; };
 		5825319E1F40940B0088D056 /* UserPreferencesProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5825319D1F40940B0088D056 /* UserPreferencesProviderProtocol.swift */; };
+		582741151F6F37F300AAF513 /* AlertDetailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582741141F6F37F300AAF513 /* AlertDetailButton.swift */; };
+		582741191F6F3A3B00AAF513 /* AlertDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582741181F6F3A3B00AAF513 /* AlertDetailCell.swift */; };
+		5827411B1F6F3A6E00AAF513 /* AlertDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5827411A1F6F3A6E00AAF513 /* AlertDetailCell.xib */; };
+		5827411D1F6F45BB00AAF513 /* PinkAlertHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5827411C1F6F45BB00AAF513 /* PinkAlertHeaderView.swift */; };
+		5827411F1F6F5AC800AAF513 /* AlertState_AlertDetailsWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5827411E1F6F5AC800AAF513 /* AlertState_AlertDetailsWatcher.swift */; };
 		5828C7F51F6445B40046435A /* LAN.kml in Resources */ = {isa = PBXBuildFile; fileRef = 5828C7F21F6445B30046435A /* LAN.kml */; };
 		5828C7F71F6451180046435A /* VehicleLocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5828C7F61F6451180046435A /* VehicleLocationAnnotation.swift */; };
 		58290E411F372B51000CCF3C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58290E401F372B51000CCF3C /* AppState.swift */; };
@@ -107,7 +112,6 @@
 		5844CA1F1F3BD9B700651223 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5844CA1E1F3BD9B700651223 /* NavigationState.swift */; };
 		58470C091F3F276000F3C9B5 /* NumberFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58470C081F3F276000F3C9B5 /* NumberFormatters.swift */; };
 		58490E401F55F84F007DBCA1 /* SeptaRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; };
-		58490E421F55F899007DBCA1 /* AlertProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E411F55F899007DBCA1 /* AlertProviders.swift */; };
 		58490E451F55F8FF007DBCA1 /* SeptaAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E441F55F8FF007DBCA1 /* SeptaAlert.swift */; };
 		58490E471F55F98B007DBCA1 /* AlertState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E461F55F98B007DBCA1 /* AlertState.swift */; };
 		58490E491F56019B007DBCA1 /* AlertReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E481F56019B007DBCA1 /* AlertReducer.swift */; };
@@ -122,6 +126,17 @@
 		586C1CED1F69A7E10023607C /* DatabaseLoadingModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1CEC1F69A7E10023607C /* DatabaseLoadingModalViewController.swift */; };
 		586C1CF11F69B3EE0023607C /* DatabaseMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1CF01F69B3EE0023607C /* DatabaseMover.swift */; };
 		586DFEC51F505482004BC972 /* CurvedTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586DFEC41F505482004BC972 /* CurvedTopView.swift */; };
+		587BC0441F6ED63900B92BB6 /* MapToAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587BC0431F6ED63900B92BB6 /* MapToAlerts.swift */; };
+		587BC0481F6ED66700B92BB6 /* MapFromAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587BC0471F6ED66700B92BB6 /* MapFromAlerts.swift */; };
+		587BC04A1F6ED70900B92BB6 /* QuickMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587BC0491F6ED70900B92BB6 /* QuickMap.swift */; };
+		587BC04C1F6EDD6E00B92BB6 /* TransitModeToolbar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 587BC04B1F6EDD6E00B92BB6 /* TransitModeToolbar.storyboard */; };
+		587BC04E1F6EDE0D00B92BB6 /* AlertsTransitModeToolbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587BC04D1F6EDE0D00B92BB6 /* AlertsTransitModeToolbarViewController.swift */; };
+		587BC0501F6EDF1D00B92BB6 /* AlertRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587BC04F1F6EDF1D00B92BB6 /* AlertRequest.swift */; };
+		587BC0521F6EE71400B92BB6 /* AlertScheduleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587BC0511F6EE71400B92BB6 /* AlertScheduleDataProvider.swift */; };
+		587BC0541F6EE86000B92BB6 /* AlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587BC0531F6EE86000B92BB6 /* AlertsViewController.swift */; };
+		587BC0561F6EE8AF00B92BB6 /* AlertsTransitModeToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587BC0551F6EE8AF00B92BB6 /* AlertsTransitModeToolBar.swift */; };
+		587BC0581F6EEBBD00B92BB6 /* AlertsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587BC0571F6EEBBD00B92BB6 /* AlertsViewModel.swift */; };
+		587BC05A1F6EECCC00B92BB6 /* AlertState_ScheduleState_ScheduleRequestWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587BC0591F6EECCC00B92BB6 /* AlertState_ScheduleState_ScheduleRequestWatcher.swift */; };
 		5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880C19A1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift */; };
 		588F27F01F39DD7B00D62425 /* UserPreferenceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27EF1F39DD7B00D62425 /* UserPreferenceState.swift */; };
 		588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27F31F39E05A00D62425 /* PreferenceReducers.swift */; };
@@ -133,6 +148,13 @@
 		589A89DE1F52E7E8007329DB /* ScheduleStopEditReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A89DD1F52E7E8007329DB /* ScheduleStopEditReducer.swift */; };
 		589A89E01F5304D6007329DB /* SelectAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A89DF1F5304D5007329DB /* SelectAddressViewModel.swift */; };
 		589BCC321F3D5068002FAEDE /* SchedulesPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589BCC311F3D5068002FAEDE /* SchedulesPresentationController.swift */; };
+		58A26D951F6EFECC005A70D3 /* AlertsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26D941F6EFECC005A70D3 /* AlertsNavigationController.swift */; };
+		58A26D991F6F10F8005A70D3 /* AlertNavigationControllerStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26D981F6F10F8005A70D3 /* AlertNavigationControllerStateProvider.swift */; };
+		58A26D9B1F6F221E005A70D3 /* AlertDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26D9A1F6F221E005A70D3 /* AlertDetailViewController.swift */; };
+		58A26D9D1F6F2790005A70D3 /* Route+AlertState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26D9C1F6F2790005A70D3 /* Route+AlertState.swift */; };
+		58A26D9F1F6F27F8005A70D3 /* AlertState_ScheduleState_ScheduleRequest_SelectedRouteExistsWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26D9E1F6F27F8005A70D3 /* AlertState_ScheduleState_ScheduleRequest_SelectedRouteExistsWatcher.swift */; };
+		58A26DA21F6F283E005A70D3 /* AlertDetailProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26DA11F6F283E005A70D3 /* AlertDetailProvider.swift */; };
+		58A26DA41F6F30B2005A70D3 /* Route+Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26DA31F6F30B2005A70D3 /* Route+Displayable.swift */; };
 		58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA01F33B1120062A546 /* SelectStopViewModel.swift */; };
 		58B1FFD61F42EB2500AD8620 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B1FFD41F42EB2400AD8620 /* MapKit.framework */; };
 		58B2778B1F629FAA00663507 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B2778A1F629FAA00663507 /* DummyData.swift */; };
@@ -348,6 +370,9 @@
 		58F444FC1F3D335400A93208 /* SeptaAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F444FB1F3D335400A93208 /* SeptaAction.swift */; };
 		58F80D431F421C1F0089501A /* SelectStopNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F80D421F421C1F0089501A /* SelectStopNavigationController.swift */; };
 		58F80D451F421C4B0089501A /* SelectStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F80D441F421C4B0089501A /* SelectStopViewController.swift */; };
+		58FB264A1F6EC42F00F17048 /* AlertProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FB26451F6EC42F00F17048 /* AlertProviders.swift */; };
+		58FB264B1F6EC42F00F17048 /* DbAlertsMappedToWebAlerts.json in Resources */ = {isa = PBXBuildFile; fileRef = 58FB26461F6EC42F00F17048 /* DbAlertsMappedToWebAlerts.json */; };
+		58FB264C1F6EC42F00F17048 /* WebAlertsRoutesMappedToDBRoutes.json in Resources */ = {isa = PBXBuildFile; fileRef = 58FB26471F6EC42F00F17048 /* WebAlertsRoutesMappedToDBRoutes.json */; };
 		58FBB6681F58590F00E6532B /* Route+Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBB6671F58590F00E6532B /* Route+Title.swift */; };
 		58FBB66A1F58717500E6532B /* SeptaTabBarImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBB6691F58717500E6532B /* SeptaTabBarImages.swift */; };
 		58FBB66C1F5885D800E6532B /* VerticalDottedTripGraphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBB66B1F5885D800E6532B /* VerticalDottedTripGraphic.swift */; };
@@ -557,6 +582,11 @@
 		582531991F407D380088D056 /* UserDefaultsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsLoader.swift; sourceTree = "<group>"; };
 		5825319B1F408C2D0088D056 /* UserPreferencesStatePersister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesStatePersister.swift; sourceTree = "<group>"; };
 		5825319D1F40940B0088D056 /* UserPreferencesProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesProviderProtocol.swift; sourceTree = "<group>"; };
+		582741141F6F37F300AAF513 /* AlertDetailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailButton.swift; sourceTree = "<group>"; };
+		582741181F6F3A3B00AAF513 /* AlertDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailCell.swift; sourceTree = "<group>"; };
+		5827411A1F6F3A6E00AAF513 /* AlertDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertDetailCell.xib; sourceTree = "<group>"; };
+		5827411C1F6F45BB00AAF513 /* PinkAlertHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinkAlertHeaderView.swift; sourceTree = "<group>"; };
+		5827411E1F6F5AC800AAF513 /* AlertState_AlertDetailsWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState_AlertDetailsWatcher.swift; sourceTree = "<group>"; };
 		5828C7F21F6445B30046435A /* LAN.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LAN.kml; sourceTree = "<group>"; };
 		5828C7F61F6451180046435A /* VehicleLocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleLocationAnnotation.swift; sourceTree = "<group>"; };
 		58290E401F372B51000CCF3C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -615,7 +645,6 @@
 		58470C081F3F276000F3C9B5 /* NumberFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatters.swift; sourceTree = "<group>"; };
 		58470C0A1F3F2AD500F3C9B5 /* StateLogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateLogEntry.swift; sourceTree = "<group>"; };
 		58490E361F55F6F9007DBCA1 /* SeptaRest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SeptaRest.xcodeproj; path = ../SeptaRest/SeptaRest.xcodeproj; sourceTree = "<group>"; };
-		58490E411F55F899007DBCA1 /* AlertProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertProviders.swift; sourceTree = "<group>"; };
 		58490E441F55F8FF007DBCA1 /* SeptaAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaAlert.swift; sourceTree = "<group>"; };
 		58490E461F55F98B007DBCA1 /* AlertState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState.swift; sourceTree = "<group>"; };
 		58490E481F56019B007DBCA1 /* AlertReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertReducer.swift; sourceTree = "<group>"; };
@@ -637,6 +666,17 @@
 		586C1CF01F69B3EE0023607C /* DatabaseMover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseMover.swift; sourceTree = "<group>"; };
 		586DFEC41F505482004BC972 /* CurvedTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedTopView.swift; sourceTree = "<group>"; };
 		5870CCDD1F54C05A004E61A9 /* SeptaSchedule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaSchedule.framework; path = "Build/Products/Debug-iphonesimulator/SeptaSchedule.framework"; sourceTree = "<group>"; };
+		587BC0431F6ED63900B92BB6 /* MapToAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapToAlerts.swift; sourceTree = "<group>"; };
+		587BC0471F6ED66700B92BB6 /* MapFromAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFromAlerts.swift; sourceTree = "<group>"; };
+		587BC0491F6ED70900B92BB6 /* QuickMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickMap.swift; sourceTree = "<group>"; };
+		587BC04B1F6EDD6E00B92BB6 /* TransitModeToolbar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransitModeToolbar.storyboard; sourceTree = "<group>"; };
+		587BC04D1F6EDE0D00B92BB6 /* AlertsTransitModeToolbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsTransitModeToolbarViewController.swift; sourceTree = "<group>"; };
+		587BC04F1F6EDF1D00B92BB6 /* AlertRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRequest.swift; sourceTree = "<group>"; };
+		587BC0511F6EE71400B92BB6 /* AlertScheduleDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertScheduleDataProvider.swift; sourceTree = "<group>"; };
+		587BC0531F6EE86000B92BB6 /* AlertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsViewController.swift; sourceTree = "<group>"; };
+		587BC0551F6EE8AF00B92BB6 /* AlertsTransitModeToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsTransitModeToolBar.swift; sourceTree = "<group>"; };
+		587BC0571F6EEBBD00B92BB6 /* AlertsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsViewModel.swift; sourceTree = "<group>"; };
+		587BC0591F6EECCC00B92BB6 /* AlertState_ScheduleState_ScheduleRequestWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState_ScheduleState_ScheduleRequestWatcher.swift; sourceTree = "<group>"; };
 		5880C19A1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRequestReducer.swift; sourceTree = "<group>"; };
 		5880C19C1F3B702500337DB2 /* Answers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Answers.framework; sourceTree = "<group>"; };
 		588F27EF1F39DD7B00D62425 /* UserPreferenceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferenceState.swift; sourceTree = "<group>"; };
@@ -649,6 +689,13 @@
 		589A89DD1F52E7E8007329DB /* ScheduleStopEditReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStopEditReducer.swift; sourceTree = "<group>"; };
 		589A89DF1F5304D5007329DB /* SelectAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAddressViewModel.swift; sourceTree = "<group>"; };
 		589BCC311F3D5068002FAEDE /* SchedulesPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesPresentationController.swift; sourceTree = "<group>"; };
+		58A26D941F6EFECC005A70D3 /* AlertsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsNavigationController.swift; sourceTree = "<group>"; };
+		58A26D981F6F10F8005A70D3 /* AlertNavigationControllerStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertNavigationControllerStateProvider.swift; sourceTree = "<group>"; };
+		58A26D9A1F6F221E005A70D3 /* AlertDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailViewController.swift; sourceTree = "<group>"; };
+		58A26D9C1F6F2790005A70D3 /* Route+AlertState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+AlertState.swift"; sourceTree = "<group>"; };
+		58A26D9E1F6F27F8005A70D3 /* AlertState_ScheduleState_ScheduleRequest_SelectedRouteExistsWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState_ScheduleState_ScheduleRequest_SelectedRouteExistsWatcher.swift; sourceTree = "<group>"; };
+		58A26DA11F6F283E005A70D3 /* AlertDetailProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailProvider.swift; sourceTree = "<group>"; };
+		58A26DA31F6F30B2005A70D3 /* Route+Displayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Displayable.swift"; sourceTree = "<group>"; };
 		58ACEADD1F3A9A9B00DC2836 /* SeptaSchedule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SeptaSchedule.xcodeproj; path = ../SeptaSchedule/SeptaSchedule.xcodeproj; sourceTree = "<group>"; };
 		58B1FFD41F42EB2400AD8620 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		58B2778A1F629FAA00663507 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
@@ -868,6 +915,9 @@
 		58F444FB1F3D335400A93208 /* SeptaAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaAction.swift; sourceTree = "<group>"; };
 		58F80D421F421C1F0089501A /* SelectStopNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopNavigationController.swift; sourceTree = "<group>"; };
 		58F80D441F421C4B0089501A /* SelectStopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopViewController.swift; sourceTree = "<group>"; };
+		58FB26451F6EC42F00F17048 /* AlertProviders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertProviders.swift; sourceTree = "<group>"; };
+		58FB26461F6EC42F00F17048 /* DbAlertsMappedToWebAlerts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DbAlertsMappedToWebAlerts.json; sourceTree = "<group>"; };
+		58FB26471F6EC42F00F17048 /* WebAlertsRoutesMappedToDBRoutes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WebAlertsRoutesMappedToDBRoutes.json; sourceTree = "<group>"; };
 		58FBB6671F58590F00E6532B /* Route+Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Title.swift"; sourceTree = "<group>"; };
 		58FBB6691F58717500E6532B /* SeptaTabBarImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaTabBarImages.swift; sourceTree = "<group>"; };
 		58FBB66B1F5885D800E6532B /* VerticalDottedTripGraphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalDottedTripGraphic.swift; sourceTree = "<group>"; };
@@ -1021,6 +1071,9 @@
 				58248B6B1F6D5B6900DA2D65 /* FavoritesState_FavoritesExistWatcher.swift */,
 				58B5B1041F6DB00000A3DAFB /* FavoritesState_FavoritesWatcher.swift */,
 				58248B7C1F6D992900DA2D65 /* FavoriteToEditWatcher.swift */,
+				587BC0591F6EECCC00B92BB6 /* AlertState_ScheduleState_ScheduleRequestWatcher.swift */,
+				58A26D9E1F6F27F8005A70D3 /* AlertState_ScheduleState_ScheduleRequest_SelectedRouteExistsWatcher.swift */,
+				5827411E1F6F5AC800AAF513 /* AlertState_AlertDetailsWatcher.swift */,
 			);
 			path = "State Watchers";
 			sourceTree = "<group>";
@@ -1136,6 +1189,9 @@
 				679924041F6E01BD00FD5691 /* MoreButton.swift */,
 				58248B6F1F6D6C3800DA2D65 /* SaveFavoriteButton.swift */,
 				58248B711F6D77A100DA2D65 /* DeleteFavoriteButton.swift */,
+				587BC04B1F6EDD6E00B92BB6 /* TransitModeToolbar.storyboard */,
+				582741141F6F37F300AAF513 /* AlertDetailButton.swift */,
+				5827411C1F6F45BB00AAF513 /* PinkAlertHeaderView.swift */,
 			);
 			path = "Common Views";
 			sourceTree = "<group>";
@@ -1179,7 +1235,16 @@
 			isa = PBXGroup;
 			children = (
 				582F4E881F33B1120062A546 /* Alert.swift */,
+				58A26D981F6F10F8005A70D3 /* AlertNavigationControllerStateProvider.swift */,
+				58A26D9A1F6F221E005A70D3 /* AlertDetailViewController.swift */,
 				582F4E891F33B1120062A546 /* alerts.storyboard */,
+				587BC04D1F6EDE0D00B92BB6 /* AlertsTransitModeToolbarViewController.swift */,
+				587BC0531F6EE86000B92BB6 /* AlertsViewController.swift */,
+				582741181F6F3A3B00AAF513 /* AlertDetailCell.swift */,
+				5827411A1F6F3A6E00AAF513 /* AlertDetailCell.xib */,
+				587BC0571F6EEBBD00B92BB6 /* AlertsViewModel.swift */,
+				58A26D941F6EFECC005A70D3 /* AlertsNavigationController.swift */,
+				587BC0551F6EE8AF00B92BB6 /* AlertsTransitModeToolBar.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -1356,10 +1421,10 @@
 		5840D6E11F37E9E300C8CB76 /* State Providers */ = {
 			isa = PBXGroup;
 			children = (
+				58FB26441F6EC42F00F17048 /* AlertProvider */,
 				58EB8D341F5D99310028A487 /* ScheduleDataProviders */,
 				58B8920A1F38C27700BFFEFA /* UserPreferences */,
 				5840D6E81F37EE6500C8CB76 /* Providers.swift */,
-				58490E411F55F899007DBCA1 /* AlertProviders.swift */,
 				678F05231F5B7B6E00CC4D3C /* AddressProvider.swift */,
 				678F052F1F5B918300CC4D3C /* LocationProvider.swift */,
 				585303C91F69C73D00145D87 /* Favorites */,
@@ -1376,6 +1441,7 @@
 				5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */,
 				67F757AE1F486BB600D3A4EE /* TransitModeToolBarView.xib */,
 				67F757B01F486F0600D3A4EE /* TransitModeDisplayable.swift */,
+				58A26DA31F6F30B2005A70D3 /* Route+Displayable.swift */,
 				67C567301F5989D900FF6203 /* TransitAlertView.xib */,
 				67C567321F598A0400FF6203 /* TransitAlertView.swift */,
 				67C567341F598C7900FF6203 /* SeptaAlertsViewController.swift */,
@@ -1398,6 +1464,8 @@
 			children = (
 				58490E441F55F8FF007DBCA1 /* SeptaAlert.swift */,
 				58490E461F55F98B007DBCA1 /* AlertState.swift */,
+				58A26D9C1F6F2790005A70D3 /* Route+AlertState.swift */,
+				587BC04F1F6EDF1D00B92BB6 /* AlertRequest.swift */,
 				58490E481F56019B007DBCA1 /* AlertReducer.swift */,
 				58490E4A1F560226007DBCA1 /* AlertActions.swift */,
 			);
@@ -1534,6 +1602,14 @@
 				5867464E1F35D483000F0D32 /* SelectStopsViewModelTests.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		58A26DA01F6F282B005A70D3 /* AlertDetail */ = {
+			isa = PBXGroup;
+			children = (
+				58A26DA11F6F283E005A70D3 /* AlertDetailProvider.swift */,
+			);
+			path = AlertDetail;
 			sourceTree = "<group>";
 		};
 		58ACEADE1F3A9A9B00DC2836 /* Products */ = {
@@ -1951,11 +2027,26 @@
 			isa = PBXGroup;
 			children = (
 				5840D6E41F37EA1900C8CB76 /* ScheduleDataProvider.swift */,
+				587BC0511F6EE71400B92BB6 /* AlertScheduleDataProvider.swift */,
 				58EB8D301F5D94640028A487 /* BaseScheduleDataProvider.swift */,
 				58FBBFAB1F658D3500B7A4DA /* ScheduleProviderDatabaseStateWatcher.swift */,
 				58EB8D321F5D98320028A487 /* NextToArriveScheduleDataProvider.swift */,
 			);
 			path = ScheduleDataProviders;
+			sourceTree = "<group>";
+		};
+		58FB26441F6EC42F00F17048 /* AlertProvider */ = {
+			isa = PBXGroup;
+			children = (
+				58A26DA01F6F282B005A70D3 /* AlertDetail */,
+				58FB26451F6EC42F00F17048 /* AlertProviders.swift */,
+				587BC0431F6ED63900B92BB6 /* MapToAlerts.swift */,
+				587BC0471F6ED66700B92BB6 /* MapFromAlerts.swift */,
+				587BC0491F6ED70900B92BB6 /* QuickMap.swift */,
+				58FB26461F6EC42F00F17048 /* DbAlertsMappedToWebAlerts.json */,
+				58FB26471F6EC42F00F17048 /* WebAlertsRoutesMappedToDBRoutes.json */,
+			);
+			path = AlertProvider;
 			sourceTree = "<group>";
 		};
 		58FBBFA21F6581FD00B7A4DA /* Database */ = {
@@ -2257,6 +2348,7 @@
 				58B278531F62AAD500663507 /* 16.kml in Resources */,
 				58B2787B1F62AAD500663507 /* 47M.kml in Resources */,
 				58B278631F62AAD500663507 /* 27.kml in Resources */,
+				5827411B1F6F3A6E00AAF513 /* AlertDetailCell.xib in Resources */,
 				582F4EC01F33B1120062A546 /* alerts.storyboard in Resources */,
 				58B278601F62AAD500663507 /* 24.kml in Resources */,
 				58B278A51F62AAD500663507 /* 98.kml in Resources */,
@@ -2306,6 +2398,7 @@
 				58B278511F62AAD500663507 /* 15B.kml in Resources */,
 				58B278731F62AAD500663507 /* 4.kml in Resources */,
 				58B278521F62AAD500663507 /* 15T.kml in Resources */,
+				58FB264C1F6EC42F00F17048 /* WebAlertsRoutesMappedToDBRoutes.json in Resources */,
 				58B278BC1F62AAD500663507 /* regionalrail.kml in Resources */,
 				58B278821F62AAD500663507 /* 55.kml in Resources */,
 				58B278771F62AAD500663507 /* 44.kml in Resources */,
@@ -2314,6 +2407,7 @@
 				58B278901F62AAD500663507 /* 7.kml in Resources */,
 				58B2782D1F62AAD500663507 /* 102.kml in Resources */,
 				58B2783C1F62AAD500663507 /* 117.kml in Resources */,
+				58FB264B1F6EC42F00F17048 /* DbAlertsMappedToWebAlerts.json in Resources */,
 				58B278951F62AAD500663507 /* 78.kml in Resources */,
 				58B2785E1F62AAD500663507 /* 22.kml in Resources */,
 				58B278651F62AAD500663507 /* 29.kml in Resources */,
@@ -2387,6 +2481,7 @@
 				58B278A61F62AAD500663507 /* 99.kml in Resources */,
 				58B278541F62AAD500663507 /* 17.kml in Resources */,
 				58B2782E1F62AAD500663507 /* 103.kml in Resources */,
+				587BC04C1F6EDD6E00B92BB6 /* TransitModeToolbar.storyboard in Resources */,
 				58B2789B1F62AAD500663507 /* 89.kml in Resources */,
 				582F4EDB1F33B1120062A546 /* Assets.xcassets in Resources */,
 				580128061F6B1D13006B6DB8 /* FavoriteTripCell.xib in Resources */,
@@ -2464,6 +2559,7 @@
 				671A192F1F66A3D500C8EEDA /* NextToArriveFavoritesIconController.swift in Sources */,
 				5825319A1F407D380088D056 /* UserDefaultsLoader.swift in Sources */,
 				582F4EDD1F33B1120062A546 /* UpdateableFromViewModel.swift in Sources */,
+				5827411F1F6F5AC800AAF513 /* AlertState_AlertDetailsWatcher.swift in Sources */,
 				58EB8D1F1F5D8A650028A487 /* BaseNavigationController+Styling.swift in Sources */,
 				58E33F201F61494700C74B7C /* File.swift in Sources */,
 				58EB8D211F5D8C270028A487 /* NextToArriveSelectTripViewModel.swift in Sources */,
@@ -2473,14 +2569,17 @@
 				582F4ED31F33B1120062A546 /* SelectStopRow.swift in Sources */,
 				582F4EBC1F33B1120062A546 /* DateFormatters.swift in Sources */,
 				580A35671F6A255F000FCA82 /* FavoriteTripCell.swift in Sources */,
+				58A26D9B1F6F221E005A70D3 /* AlertDetailViewController.swift in Sources */,
 				678DAAA41F6728B100EB6EE8 /* NextToArriveTripsTableViewController.swift in Sources */,
 				5801280C1F6BEF67006B6DB8 /* NoFavoriteTransitModeView.swift in Sources */,
 				678DAAB91F6748BE00EB6EE8 /* TripHeaderView.swift in Sources */,
 				580A35611F6A12C0000FCA82 /* FavoritesViewModel.swift in Sources */,
+				582741191F6F3A3B00AAF513 /* AlertDetailCell.swift in Sources */,
 				58EB8D171F5D7D630028A487 /* NextToArriveSelectTripViewController.swift in Sources */,
 				580128081F6B26D2006B6DB8 /* RoundedShadowView.swift in Sources */,
 				678F05331F5BFFC900CC4D3C /* LocationState.swift in Sources */,
 				582F4EC81F33B1120062A546 /* RouteTableViewCell.swift in Sources */,
+				587BC04E1F6EDE0D00B92BB6 /* AlertsTransitModeToolbarViewController.swift in Sources */,
 				67075FC21F578578008BB38C /* ScheduleUpdateMode.swift in Sources */,
 				58248B6C1F6D5B6900DA2D65 /* FavoritesState_FavoritesExistWatcher.swift in Sources */,
 				676355031F5E998200CA7EAB /* SelectSchedulesRowDisplayModel.swift in Sources */,
@@ -2497,6 +2596,7 @@
 				5840D6EE1F37F63800C8CB76 /* TransitModeToolbarView.swift in Sources */,
 				582531981F40707C0088D056 /* DefaultPreferencesLoader.swift in Sources */,
 				58FBB66E1F58AAC000E6532B /* AlertViewGradientBackgroundView.swift in Sources */,
+				58A26D9F1F6F27F8005A70D3 /* AlertState_ScheduleState_ScheduleRequest_SelectedRouteExistsWatcher.swift in Sources */,
 				58B892151F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift in Sources */,
 				582F4ECC1F33B1120062A546 /* ScheduleTableViewCell.swift in Sources */,
 				58B5B1051F6DB00000A3DAFB /* FavoritesState_FavoritesWatcher.swift in Sources */,
@@ -2510,6 +2610,7 @@
 				582F4ED21F33B1120062A546 /* SelectStopCellType.swift in Sources */,
 				582F4EBD1F33B1120062A546 /* SingleStringCell.swift in Sources */,
 				58EB8D311F5D94640028A487 /* BaseScheduleDataProvider.swift in Sources */,
+				587BC05A1F6EECCC00B92BB6 /* AlertState_ScheduleState_ScheduleRequestWatcher.swift in Sources */,
 				582F4EBF1F33B1120062A546 /* Alert.swift in Sources */,
 				585303CF1F69CAC600145D87 /* NextToArriveMapper.swift in Sources */,
 				582F4EC51F33B1120062A546 /* NextToArriveViewController.swift in Sources */,
@@ -2519,11 +2620,14 @@
 				58490E491F56019B007DBCA1 /* AlertReducer.swift in Sources */,
 				67F757AC1F48582700D3A4EE /* UIColor+Util.swift in Sources */,
 				671A19241F661F8F00C8EEDA /* SwipeGestureRecognizerToggle.swift in Sources */,
+				582741151F6F37F300AAF513 /* AlertDetailButton.swift in Sources */,
 				678F053B1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift in Sources */,
 				5840D6E71F37EAEF00C8CB76 /* UserPreferencesKeys.swift in Sources */,
 				582F4EDF1F33B1120062A546 /* DatabaseStateWatcher.swift in Sources */,
 				58DD1A921F60078D002532DC /* NextToArriveRowDisplayModel.swift in Sources */,
+				587BC0561F6EE8AF00B92BB6 /* AlertsTransitModeToolBar.swift in Sources */,
 				674FDBC71F577D3B00CA67D2 /* Route+Icon.swift in Sources */,
+				587BC0501F6EDF1D00B92BB6 /* AlertRequest.swift in Sources */,
 				58248B771F6D8F6C00DA2D65 /* HalfSheetAnimationIn.swift in Sources */,
 				58F80D431F421C1F0089501A /* SelectStopNavigationController.swift in Sources */,
 				58658D1B1F53135100E67B4E /* AddressCell.swift in Sources */,
@@ -2539,9 +2643,11 @@
 				58248B7D1F6D992900DA2D65 /* FavoriteToEditWatcher.swift in Sources */,
 				582F4ED81F33B1120062A546 /* SelectSchedulesViewController.swift in Sources */,
 				58B2778B1F629FAA00663507 /* DummyData.swift in Sources */,
+				587BC0441F6ED63900B92BB6 /* MapToAlerts.swift in Sources */,
 				58FBB66A1F58717500E6532B /* SeptaTabBarImages.swift in Sources */,
 				58126F711F631CB200A6E187 /* NextToArriveEndpointsViewModel.swift in Sources */,
 				58E33F141F61425600C74B7C /* NextToArriveProvider.swift in Sources */,
+				587BC0581F6EEBBD00B92BB6 /* AlertsViewModel.swift in Sources */,
 				671A19201F6613A600C8EEDA /* ConstraintsToggle.swift in Sources */,
 				580128121F6C055B006B6DB8 /* RedButton.swift in Sources */,
 				5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */,
@@ -2575,6 +2681,7 @@
 				58EB8D131F5D79C10028A487 /* NextToArriveNavigationControllerStateProvider.swift in Sources */,
 				5840D6E51F37EA1900C8CB76 /* ScheduleDataProvider.swift in Sources */,
 				58EB8D231F5D8C6B0028A487 /* BaseNonModalViewController.swift in Sources */,
+				587BC0521F6EE71400B92BB6 /* AlertScheduleDataProvider.swift in Sources */,
 				58EB8D1D1F5D85F50028A487 /* NavigationControllerBaseStateProvider.swift in Sources */,
 				589A89E01F5304D6007329DB /* SelectAddressViewModel.swift in Sources */,
 				678DAAA21F6706E300EB6EE8 /* NextToArriveTripGrouper.swift in Sources */,
@@ -2582,12 +2689,14 @@
 				5814AA841F43589E00DF774A /* TripScheduleViewModel.swift in Sources */,
 				58490E471F55F98B007DBCA1 /* AlertState.swift in Sources */,
 				5814AA8A1F4359D000DF774A /* TripleTextDisplayable.swift in Sources */,
+				587BC0481F6ED66700B92BB6 /* MapFromAlerts.swift in Sources */,
 				58DB04A51F558DD0005CC850 /* SearchRoutesModalHeaderViewController.swift in Sources */,
 				58E33F281F61651400C74B7C /* TransitType+TransitMode.swift in Sources */,
 				58E33F0E1F6098FE00C74B7C /* NextToArriveMapViewController.swift in Sources */,
 				58E33F181F61453000C74B7C /* NextToArriveTrip.swift in Sources */,
 				5828C7F71F6451180046435A /* VehicleLocationAnnotation.swift in Sources */,
 				58EB8D1A1F5D7F350028A487 /* NextToArriveSelectTripStateProvider.swift in Sources */,
+				5827411D1F6F45BB00AAF513 /* PinkAlertHeaderView.swift in Sources */,
 				58DD1A861F5F148F002532DC /* NoRouteNeededCell.swift in Sources */,
 				58658D1E1F53298B00E67B4E /* DisplayAddress.swift in Sources */,
 				67A65BFC1F5AEBB20068428E /* NextToArriveButton.swift in Sources */,
@@ -2595,8 +2704,10 @@
 				58F80D451F421C4B0089501A /* SelectStopViewController.swift in Sources */,
 				678D26CC1F5CDB4200D140CC /* Septa+Images.swift in Sources */,
 				5840D6D71F37728B00C8CB76 /* NavigationController.swift in Sources */,
+				58A26DA21F6F283E005A70D3 /* AlertDetailProvider.swift in Sources */,
 				58C2A0691F38AA1B00F0D6CA /* ScheduleData.swift in Sources */,
 				67075FC81F57866D008BB38C /* ScheduleRouteState.swift in Sources */,
+				587BC0541F6EE86000B92BB6 /* AlertsViewController.swift in Sources */,
 				58248B791F6D8F9200DA2D65 /* HalfSheetAnimationOut.swift in Sources */,
 				58290E531F372F36000CCF3C /* ScheduleState.swift in Sources */,
 				5840D6E31F37E9FB00C8CB76 /* UserPreferencesProvider.swift in Sources */,
@@ -2605,15 +2716,17 @@
 				678DAAA01F67067500EB6EE8 /* NextToArriveNonConnectivingViewModel.swift in Sources */,
 				58C2A0611F38964E00F0D6CA /* ViewController.swift in Sources */,
 				58DB10F41F3B8CCF00191AED /* ScheduleDataReducer.swift in Sources */,
+				58A26D9D1F6F2790005A70D3 /* Route+AlertState.swift in Sources */,
 				582F4ED61F33B1120062A546 /* SelectStopsViewElement.swift in Sources */,
 				678D26CA1F5CC83900D140CC /* FavoritesProvider.swift in Sources */,
-				58490E421F55F899007DBCA1 /* AlertProviders.swift in Sources */,
 				589BCC321F3D5068002FAEDE /* SchedulesPresentationController.swift in Sources */,
 				586DFEC51F505482004BC972 /* CurvedTopView.swift in Sources */,
 				580A355B1F6A0E84000FCA82 /* FavoritesNavigationController.swift in Sources */,
 				581DA54A1F3BE1C8006AEC39 /* IdentifiableController.swift in Sources */,
 				58EB8D2D1F5D927E0028A487 /* NextToArriveScheduleReducer.swift in Sources */,
 				67C5672F1F59862600FF6203 /* ReverseTripButton.swift in Sources */,
+				587BC04A1F6ED70900B92BB6 /* QuickMap.swift in Sources */,
+				58A26D951F6EFECC005A70D3 /* AlertsNavigationController.swift in Sources */,
 				67C567351F598C7900FF6203 /* SeptaAlertsViewController.swift in Sources */,
 				589A89DE1F52E7E8007329DB /* ScheduleStopEditReducer.swift in Sources */,
 				58EB8D331F5D98320028A487 /* NextToArriveScheduleDataProvider.swift in Sources */,
@@ -2626,6 +2739,7 @@
 				5801280E1F6BF2DF006B6DB8 /* NoFavoriteViewController.swift in Sources */,
 				58FBBFA41F65821000B7A4DA /* DatabaseReducer.swift in Sources */,
 				58290E411F372B51000CCF3C /* AppState.swift in Sources */,
+				58FB264A1F6EC42F00F17048 /* AlertProviders.swift in Sources */,
 				5825319E1F40940B0088D056 /* UserPreferencesProviderProtocol.swift in Sources */,
 				58FBB6681F58590F00E6532B /* Route+Title.swift in Sources */,
 				589A89DB1F52E6A9007329DB /* ScheduleStopEdit.swift in Sources */,
@@ -2670,6 +2784,7 @@
 				58248B751F6D8AA800DA2D65 /* HalfSheetPresentationCoordinator.swift in Sources */,
 				58DD1A8C1F6006D5002532DC /* NextToArriveViewModel+RouteCell.swift in Sources */,
 				5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */,
+				58A26DA41F6F30B2005A70D3 /* Route+Displayable.swift in Sources */,
 				58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */,
 				581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */,
 				586C1CF11F69B3EE0023607C /* DatabaseMover.swift in Sources */,
@@ -2685,6 +2800,7 @@
 				58EB8D151F5D7CD20028A487 /* BaseNavigationController.swift in Sources */,
 				589A89D71F50BB73007329DB /* SelectStopCell.swift in Sources */,
 				6749A4711F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift in Sources */,
+				58A26D991F6F10F8005A70D3 /* AlertNavigationControllerStateProvider.swift in Sources */,
 				674FDBC51F57390D00CA67D2 /* Route+Color.swift in Sources */,
 				58126F6D1F631C5100A6E187 /* RouteDrawable.swift in Sources */,
 				58248B701F6D6C3800DA2D65 /* SaveFavoriteButton.swift in Sources */,

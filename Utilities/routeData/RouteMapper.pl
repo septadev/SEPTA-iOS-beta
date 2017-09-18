@@ -17,29 +17,60 @@ my $mapperText = read_file('webAlertsToAppStateMap.json');
 my $mapper     = decode_json($mapperText);
 $mapper = $mapper->{mode};
 
+my $newMapperText = read_file('WebAlertsRoutesMappedToDBRoutes.json');
+my $newMapper     = decode_json($newMapperText);
+
+
 my $webAlertModes = {};
 
-my $newMapper = {};
-my $newMapperMode = $newMapper->{mode} = {};
+my $transitModeMapper = {};
+for ((0..4)){
+	my $transitMode = $_;
+	my $transitModeHash = {};
 
+	for (keys %$newMapper){
+		my $modeKey = $_;
+		my $modeValue = $newMapper->{$modeKey};
+		for (keys %$modeValue){
+			my $routeKey = $_;
+			my $routeValue = $modeValue->{$routeKey};
+			my $dbRouteId = $routeValue->{dbRouteId};
+			my $transitModes = $routeValue->{transitModes};
+			
+			if (grep {$_ == $transitMode} @$transitModes ) {
+				$transitModeHash->{$dbRouteId} = $routeKey;
 
-
-for (keys %$mapper){
-	my $key = $_;
-	my $mode = $mapper->{$key};
-	my $newTransitHash = $newMapperMode->{$key} = {};
-	my $defaultTransitMode = $mode->{transitMode};
-	my $maps = $mode->{mapFromAlertRouteToDbRoute};
-	for (keys %$maps){
-		my $routeKey = $_;
-		my $dbRouteId = $maps->{$routeKey};
-		$newTransitHash->{$routeKey} = {transitModes=>[$defaultTransitMode], dbRouteId=>$dbRouteId};
+			}
+		}
 	}
+
+	 $transitModeMapper->{$transitMode} = $transitModeHash;
 }
 
-say Dumper $newMapper;
-my $newMapperJson = encode_json $newMapper;
-write_file "WebAlertsRoutesMappedToDBRoutes.json", $newMapperJson;
+say Dumper $transitModeMapper;
+my $transitModeMapperJson = encode_json $transitModeMapper;
+write_file "DbAlertsMappedToWebAlerts.json", $transitModeMapperJson;
+
+sub buildNewMapper {
+
+    my $newMapper = {};
+    my $newMapperMode = $newMapper->{mode} = {};
+
+    for ( keys %$mapper ) {
+        my $key                = $_;
+        my $mode               = $mapper->{$key};
+        my $newTransitHash     = $newMapperMode->{$key} = {};
+        my $defaultTransitMode = $mode->{transitMode};
+        my $maps               = $mode->{mapFromAlertRouteToDbRoute};
+        for ( keys %$maps ) {
+            my $routeKey  = $_;
+            my $dbRouteId = $maps->{$routeKey};
+            $newTransitHash->{$routeKey} = { transitModes => [$defaultTransitMode], dbRouteId => $dbRouteId };
+        }
+    }
+    my $newMapperJson = encode_json $newMapper;
+    write_file "WebAlertsRoutesMappedToDBRoutes.json", $newMapperJson;
+}
 
 sub buildWebAlertModes {
     for (@$webAlerts) {

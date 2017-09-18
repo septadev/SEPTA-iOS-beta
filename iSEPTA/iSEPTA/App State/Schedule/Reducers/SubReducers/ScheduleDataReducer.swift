@@ -34,14 +34,15 @@ struct ScheduleDataReducer {
         return newScheduleData
     }
 
-    static func reduceTransitModeSelected(action _: TransitModeSelected, scheduleData: ScheduleData) -> ScheduleData {
+    static func reduceTransitModeSelected(action _: TransitModeSelected, scheduleData _: ScheduleData) -> ScheduleData {
+
         let newScheduleData = ScheduleData()
         return newScheduleData
     }
 
     // MARK: - Clearing Data
 
-    static func reduceClearRoutes(action _: ClearRoutes, scheduleData _: ScheduleData) -> ScheduleData {
+    static func reduceClearRoutes(action _: ClearRoutes, scheduleData: ScheduleData) -> ScheduleData {
         let newScheduleData = ScheduleData(availableRoutes: ScheduleRouteState(),
                                            availableStarts: ScheduleStopState(),
                                            availableStops: ScheduleStopState(),

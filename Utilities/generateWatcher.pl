@@ -4,9 +4,9 @@ use String::Util  ':all';
 use Modern::Perl;
 use Data::Dumper; 
 
-my $type = q| ScheduleRequest   |;
+my $type = q| [AlertDetails_Alert]   |;
 
-my $keyPath = q|  scheduleState.scheduleRequest |;
+my $keyPath = q|  alertState.alertDetails |;
 
 
 

@@ -17,7 +17,7 @@ struct ScheduleStateReducer {
     }
 
     static func reduceScheduleState(action: Action, state: ScheduleState) -> ScheduleState {
-        if let action = action as? ScheduleAction, action.targetForScheduleAction != .nextToArrive {
+        if let action = action as? ScheduleAction, action.targetForScheduleAction.includesMe(.schedules) {
             return ScheduleReducer.main(action: action, state: state)
         } else {
             return state
