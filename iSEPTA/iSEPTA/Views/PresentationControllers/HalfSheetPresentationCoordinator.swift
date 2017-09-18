@@ -12,8 +12,15 @@ import UIKit
 class HalfSizePresentationController: UIPresentationController {
 
     override var frameOfPresentedViewInContainerView: CGRect {
+        var safeAreaTop: CGFloat = 0
+        if #available(iOS 11.0, *) {
+            safeAreaTop = presentingViewController.view.safeAreaInsets.top
+        } else {
+            safeAreaTop = presentingViewController.topLayoutGuide.length
+        }
+
         guard let containerView = containerView else { return CGRect(x: 0, y: 0, width: 0, height: 0) }
-        return CGRect(x: 0, y: 0, width: containerView.bounds.width, height: 299 + 20)
+        return CGRect(x: 0, y: 0, width: containerView.bounds.width, height: 299 + safeAreaTop)
     }
 
     var dimmingView: UIView!

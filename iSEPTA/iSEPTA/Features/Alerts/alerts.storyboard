@@ -10,35 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Alerts View Controller-->
-        <scene sceneID="Cgv-q6-fmo">
-            <objects>
-                <tableViewController title="Alerts View Controller" id="k0u-z8-Y1Q" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="LRf-aA-phj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="fi5-uz-VUD">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fi5-uz-VUD" id="mKh-i0-847">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="k0u-z8-Y1Q" id="Im2-Tl-SNB"/>
-                            <outlet property="delegate" destination="k0u-z8-Y1Q" id="2pF-LW-Gcx"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Alerts" id="udE-dK-n3j"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BBM-t8-pLx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-481" y="871"/>
-        </scene>
         <!--Nav Controller-->
         <scene sceneID="Vrp-xT-nhV">
             <objects>
@@ -299,7 +270,7 @@ TableViewWrapper</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p72-Km-5YN">
-                            <rect key="frame" x="207" y="10.5" width="33" height="27"/>
+                            <rect key="frame" x="207" y="10" width="33" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Reset">
                                 <color key="titleColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
