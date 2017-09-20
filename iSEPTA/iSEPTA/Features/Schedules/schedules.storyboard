@@ -13,7 +13,7 @@
         <!--Schedules-->
         <scene sceneID="9Tf-Ia-A2O">
             <objects>
-                <viewController title="Schedules" automaticallyAdjustsScrollViewInsets="NO" id="G8I-06-w6m" customClass="SelectSchedulesViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="selectSchedules" title="Schedules" automaticallyAdjustsScrollViewInsets="NO" id="G8I-06-w6m" customClass="SelectSchedulesViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pKm-2F-CDF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -578,7 +578,7 @@ TableViewWrapper</string>
                                                     <action selector="segmentedControlValueChanged:" destination="9ZE-6T-hsR" eventType="valueChanged" id="QsN-yl-0u9"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="72" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zf9-bi-BCi">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="72" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zf9-bi-BCi">
                                                 <rect key="frame" x="0.0" y="173" width="357" height="311"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
@@ -1082,7 +1082,7 @@ TitleViewTop</string>
             </objects>
             <point key="canvasLocation" x="3407" y="681"/>
         </scene>
-        <!--Nav Controller Scene-->
+        <!--Navigation Controller-->
         <scene sceneID="83K-FD-2cf">
             <objects>
                 <navigationController title="Nav Controller Scene" id="Flo-rT-aez" customClass="SchedulesNavigationController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
@@ -1100,10 +1100,16 @@ TitleViewTop</string>
                         </connections>
                     </navigationBar>
                     <connections>
+                        <outlet property="stateProvider" destination="Z8d-WV-W5R" id="v9z-ff-7cP"/>
                         <segue destination="G8I-06-w6m" kind="relationship" relationship="rootViewController" id="ysr-1u-zxJ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZi-KV-b8v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="Z8d-WV-W5R" userLabel="StateProvider" customClass="SchedulesNavigationControllerStateProvider" customModule="Septa" customModuleProvider="target">
+                    <connections>
+                        <outlet property="navigationController" destination="Flo-rT-aez" id="3fj-Lo-ZTw"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="-1892" y="221"/>
         </scene>

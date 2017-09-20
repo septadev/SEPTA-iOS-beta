@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 import SeptaSchedule
 
-class NoFavoritesViewController: UIViewController {
+class NoFavoritesViewController: UIViewController, IdentifiableController {
+    let viewController: ViewController = .noFavoritesViewController
 
     @IBOutlet weak var infoLabel: UILabel! {
         didSet {

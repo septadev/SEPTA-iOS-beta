@@ -5,7 +5,7 @@ import UIKit
 
 protocol IdentifiableController {
 
-    static var viewController: ViewController { get set }
+    var viewController: ViewController { get }
 }
 
 extension IdentifiableController where Self: UIViewController {}

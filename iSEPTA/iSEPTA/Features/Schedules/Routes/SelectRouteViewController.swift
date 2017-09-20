@@ -10,7 +10,7 @@ class SelectRouteViewController: UIViewController, IdentifiableController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
     let routeCellId = "routeCell"
-    static var viewController: ViewController = .routesViewController
+    let viewController: ViewController = .routesViewController
 
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == "embedHeader" {

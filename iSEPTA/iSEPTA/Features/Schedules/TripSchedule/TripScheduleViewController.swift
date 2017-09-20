@@ -5,7 +5,7 @@ import SeptaSchedule
 import ReSwift
 
 class TripScheduleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController {
-
+    let viewController: ViewController = .tripScheduleController
     func displayErrorMessage(message: String, shouldDismissAfterDisplay: Bool = false) {
         UIAlert.presentOKAlertFrom(viewController: self,
                                    withTitle: "View Trips Error",
@@ -64,7 +64,6 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     let route = store.state.scheduleState.scheduleRequest.selectedRoute!
 
-    static var viewController: ViewController = .tripScheduleController
     @IBOutlet weak var startingPoint: UILabel!
     @IBOutlet weak var endingPoint: UILabel!
     @IBOutlet weak var tableViewFooter: UIView!
@@ -164,6 +163,15 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         septaAlertsViewController.setTransitMode(transitMode, route: route)
     }
 
+    override func didMove(toParentViewController parent: UIViewController?) {
+        super.didMove(toParentViewController: parent)
+
+        if parent == navigationController?.parent {
+            let action = UserPoppedViewController(description: "TripScheduleViewController has been popped")
+            store.dispatch(action)
+        }
+    }
+
     override func viewDidLayoutSubviews() {
         if !septaAlertsViewController.hasAlerts {
             scheduleTypeTopWhenAlerts.isActive = false
@@ -222,15 +230,6 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
             activityIndicator.startAnimating()
         } else if viewHasAppeared && !shouldBeAnimatingActivityIndicator {
             activityIndicator.stopAnimating()
-        }
-    }
-
-    override func didMove(toParentViewController parent: UIViewController?) {
-        super.didMove(toParentViewController: parent)
-
-        if parent == navigationController?.parent {
-            let action = UserPoppedViewController(description: "TripScheduleViewController has been popped")
-            store.dispatch(action)
         }
     }
 

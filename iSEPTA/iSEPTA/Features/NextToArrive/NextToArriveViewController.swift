@@ -5,7 +5,7 @@ import ReSwift
 import SeptaSchedule
 
 class NextToArriveViewController: BaseNonModalViewController, IdentifiableController {
-
+    let viewController: ViewController = .selectSchedules
     @IBOutlet var buttons: [UIButton]!
     @IBOutlet var section0View: UIView!
     @IBOutlet var section1View: UIView!
@@ -20,7 +20,6 @@ class NextToArriveViewController: BaseNonModalViewController, IdentifiableContro
 
     let buttonRow = 3
 
-    static var viewController: ViewController = .selectSchedules
     var formIsComplete = false
     var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
 

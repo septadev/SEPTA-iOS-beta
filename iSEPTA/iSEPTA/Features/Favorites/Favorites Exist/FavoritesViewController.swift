@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 
-class FavoritesViewController: UIViewController {
+class FavoritesViewController: UIViewController, IdentifiableController {
+    let viewController: ViewController = .favoritesViewController
+
     @IBOutlet weak var tableView: UITableView!
     var timer: Timer?
     var viewModel: FavoritesViewModel!

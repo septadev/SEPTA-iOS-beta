@@ -12,7 +12,7 @@ import UIKit
 class NextToArriveDetailViewController: UIViewController, IdentifiableController, UIGestureRecognizerDelegate {
     @IBOutlet var infoViewHeightCollapsedConstraint: NSLayoutConstraint!
     @IBOutlet var infoViewHeightExpandedConstraint: NSLayoutConstraint!
-
+    let viewController: ViewController = .nextToArriveDetailController
     var nextToArriveFavoritesController: NextToArriveFavoritesIconController!
 
     @IBOutlet weak var favoritesButton: UIButton! {
@@ -35,7 +35,6 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
     }
 
     @IBOutlet weak var tripView: UIView!
-    static var viewController: ViewController = .nextToArriveDetailController
 
     var constraintsToggle: ConstraintsToggle!
     var gestureRecognizerToggle: SwipeGestureRecognizerToggle!

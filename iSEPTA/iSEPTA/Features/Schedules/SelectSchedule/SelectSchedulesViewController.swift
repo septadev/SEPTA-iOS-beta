@@ -19,7 +19,7 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
     @IBOutlet weak var tableViewWrapper: UIView!
 
     // MARK: - Properties
-    static var viewController: ViewController = .selectSchedules
+    let viewController: ViewController = .selectSchedules
     let buttonRow = 3
     var formIsComplete = false
     var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }

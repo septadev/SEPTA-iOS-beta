@@ -14,7 +14,7 @@ class SelectStopNavigationController: UINavigationController, IdentifiableContro
     typealias StoreSubscriberStateType = [NavigationController: NavigationStackState]?
 
     static var navController: NavigationController = NavigationController.selectStop
-    static var viewController: ViewController = .selectStopNavigationController
+    let viewController: ViewController = .selectStopNavigationController
 
     let myStoryboard = UIStoryboard(name: NavigationController.schedules.storyboard(), bundle: Bundle.main)
     var lastStackState = NavigationStackState()

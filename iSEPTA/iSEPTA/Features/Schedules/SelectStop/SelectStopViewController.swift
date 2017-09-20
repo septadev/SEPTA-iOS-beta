@@ -12,7 +12,7 @@ import ReSwift
 
 class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableController {
     typealias StoreSubscriberStateType = ScheduleStopEdit?
-    static var viewController: ViewController = .selectStopController
+    let viewController: ViewController = .selectStopController
 
     @IBOutlet var selectAddressRelativeStopViewModel: SelectAddressRelativeStopViewModel!
     @IBOutlet var selectAddressViewModel: SelectAddressViewModel!

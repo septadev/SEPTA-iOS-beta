@@ -11,7 +11,9 @@ import UIKit
 import SeptaSchedule
 import SeptaRest
 
-class AlertDetailViewController: UIViewController {
+class AlertDetailViewController: UIViewController, IdentifiableController {
+    let viewController: ViewController = .alertDetailViewController
+
     let watcher = AlertState_AlertDetailsWatcher()
     var alertDetails = [AlertDetails_Alert]() {
         didSet {
@@ -66,6 +68,15 @@ class AlertDetailViewController: UIViewController {
         view.backgroundColor = SeptaColor.navBarBlue
         navigationController?.navigationBar.configureBackButton()
         setTitle()
+    }
+
+    override func didMove(toParentViewController parent: UIViewController?) {
+        super.didMove(toParentViewController: parent)
+
+        if parent == navigationController?.parent {
+            let action = UserPoppedViewController(description: "TripScheduleViewController has been popped")
+            store.dispatch(action)
+        }
     }
 
     func setTitle() {

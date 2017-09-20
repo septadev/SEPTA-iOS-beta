@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 
-class EditFavoriteViewController: UIViewController, UITextFieldDelegate {
+class EditFavoriteViewController: UIViewController, UITextFieldDelegate, IdentifiableController {
+    let viewController: ViewController = .editFavoriteViewController
+
     var favoriteToEdit: Favorite?
 
     override func awakeFromNib() {
