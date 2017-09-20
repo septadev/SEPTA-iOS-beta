@@ -13,14 +13,14 @@ class AlertsViewModel {
     let cellId = "singleStringcell"
     var delegate: UpdateableFromViewModel! {
         didSet {
-            scheduleRequestWatcher.delegate = self
+            scheduleRequestWatcher?.delegate = self
         }
     }
 
     weak var schedulesDelegate: SchedulesViewModelDelegate?
     var transitMode: TransitMode!
     var cellModel: CellModel!
-    let scheduleRequestWatcher: AlertState_ScheduleState_ScheduleRequestWatcher
+    let scheduleRequestWatcher: BaseScheduleRequestWatcher?
 
     var scheduleRequest: ScheduleRequest? {
         didSet {
@@ -34,7 +34,7 @@ class AlertsViewModel {
     }
 
     init() {
-        scheduleRequestWatcher = AlertState_ScheduleState_ScheduleRequestWatcher()
+        scheduleRequestWatcher = store.state.watcherForScheduleActions()
     }
 }
 
@@ -91,8 +91,8 @@ extension AlertsViewModel { // Table View
     }
 }
 
-extension AlertsViewModel: AlertState_ScheduleState_ScheduleRequestWatcherDelegate {
-    func alertState_ScheduleState_ScheduleRequestUpdated(scheduleRequest: ScheduleRequest) {
+extension AlertsViewModel: ScheduleRequestWatcherDelegate {
+    func scheduleRequestUpdated(scheduleRequest: ScheduleRequest) {
         self.transitMode = scheduleRequest.transitMode
         self.scheduleRequest = scheduleRequest
         delegate.viewModelUpdated()

@@ -70,7 +70,7 @@ struct FavoritesReducer {
     }
 
     static func reduceCancelFavoriteEdit(action _: CancelFavoriteEdit, state: FavoritesState) -> FavoritesState {
-        return FavoritesState(favorites: state.favorites,  scheduleRequest: state.scheduleRequest)
+        return FavoritesState(favorites: state.favorites, scheduleRequest: state.scheduleRequest)
     }
 
     static func reduceRemoveFavorite(action: RemoveFavorite, state: FavoritesState) -> FavoritesState {

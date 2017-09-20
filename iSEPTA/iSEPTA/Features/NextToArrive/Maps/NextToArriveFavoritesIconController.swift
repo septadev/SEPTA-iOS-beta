@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 import ReSwift
 
-class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelegate, NextToArriveState_ScheduleState_ScheduleRequestWatcherDelegate {
+class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelegate, ScheduleRequestWatcherDelegate {
 
     var favoritesButton: UIButton! {
         didSet {
             setUpTargetAndActionForButton()
             favoritesWatcher.delegate = self
-            scheduleRequestWatcher.delegate = self
+            scheduleRequestWatcher?.delegate = self
         }
     }
 
@@ -25,16 +25,13 @@ class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelega
         }
     }
 
-    var scheduleRequestWatcher: NextToArriveState_ScheduleState_ScheduleRequestWatcher! {
-        didSet {
-        }
-    }
+    var scheduleRequestWatcher: BaseScheduleRequestWatcher?
 
     var currentScheduleRequest: ScheduleRequest?
     var currentFavorite: Favorite?
 
     init() {
-        scheduleRequestWatcher = NextToArriveState_ScheduleState_ScheduleRequestWatcher()
+        scheduleRequestWatcher = store.state.watcherForScheduleActions()
         favoritesWatcher = FavoritesState_FavoritesWatcher()
     }
 
@@ -44,7 +41,7 @@ class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelega
         updateFavoritesNavBarIcon()
     }
 
-    func nextToArriveState_ScheduleState_ScheduleRequestUpdated(scheduleRequest: ScheduleRequest) {
+    func scheduleRequestUpdated(scheduleRequest: ScheduleRequest) {
         currentScheduleRequest = scheduleRequest
         currentFavorite = scheduleRequest.locateInFavorites()
         updateFavoritesNavBarIcon()

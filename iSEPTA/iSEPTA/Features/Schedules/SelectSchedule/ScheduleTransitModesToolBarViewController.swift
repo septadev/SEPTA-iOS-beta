@@ -16,7 +16,7 @@ class ScheduleTransitModesToolBarViewController: UIViewController, StoreSubscrib
     @IBOutlet var scrollbar: UIScrollView!
     @IBOutlet weak var stackView: UIStackView!
     var currentTransitMode: TransitMode?
-    var targetForScheduleAction: TargetForScheduleAction { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
     var transitModesToolbarElements = [TransitModeToolbarView]()
 
     override func viewDidLoad() {

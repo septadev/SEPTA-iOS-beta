@@ -16,7 +16,7 @@ class SelectAddressViewModel: NSObject, StoreSubscriber {
     typealias StoreSubscriberStateType = AddressLookupState
     @IBOutlet weak var selectStopViewController: UpdateableFromViewModel?
     let cellId = "addressCell"
-    var targetForScheduleAction: TargetForScheduleAction { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
     var addresses = [DisplayAddress]()
     var filterString = ""
 

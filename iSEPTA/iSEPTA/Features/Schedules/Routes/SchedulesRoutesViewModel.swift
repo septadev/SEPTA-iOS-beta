@@ -6,7 +6,7 @@ import ReSwift
 
 class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
     typealias StoreSubscriberStateType = ScheduleRouteState
-    var targetForScheduleAction = store.state.targetForScheduleActions()
+    var targetForScheduleAction: TargetForScheduleAction! = store.state.targetForScheduleActions()
     let transitMode = TransitMode.currentTransitMode()!
     let alerts = store.state.alertState.alertDict
     @IBOutlet weak var selectRoutesViewController: UpdateableFromViewModel?

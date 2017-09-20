@@ -21,7 +21,7 @@ class NextToArriveViewModel: NSObject, StoreSubscriber {
     var scheduleRequest: ScheduleRequest?
     var transitMode: TransitMode!
 
-    var targetForScheduleAction: TargetForScheduleAction { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
 
     fileprivate var selectRouteRowDisplayModel: NextToArriveRowDisplayModel?
     fileprivate var selectStartRowDisplayModel: NextToArriveRowDisplayModel?

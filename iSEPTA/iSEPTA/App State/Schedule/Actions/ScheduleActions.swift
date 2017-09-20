@@ -4,17 +4,6 @@ import Foundation
 import ReSwift
 import SeptaSchedule
 
-enum TargetForScheduleAction {
-    case schedules
-    case nextToArrive
-    case alerts
-    case all
-
-    func includesMe(_ targetForScheduleAction: TargetForScheduleAction) -> Bool {
-        return self == .all || self == targetForScheduleAction
-    }
-}
-
 protocol ScheduleAction: SeptaAction {
     var targetForScheduleAction: TargetForScheduleAction { get }
 }

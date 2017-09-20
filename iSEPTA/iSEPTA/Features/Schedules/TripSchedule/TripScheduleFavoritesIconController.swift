@@ -11,7 +11,7 @@ import UIKit
 import ReSwift
 import SeptaSchedule
 
-class TripScheduleFavoritesIconController: FavoritesState_FavoritesWatcherDelegate, ScheduleState_ScheduleRequestWatcherDelegate {
+class TripScheduleFavoritesIconController: FavoritesState_FavoritesWatcherDelegate, ScheduleRequestWatcherDelegate {
 
     var favoritesButton: UIButton! {
         didSet {
@@ -21,7 +21,7 @@ class TripScheduleFavoritesIconController: FavoritesState_FavoritesWatcherDelega
         }
     }
 
-    let scheduleRequestWatcher: ScheduleState_ScheduleRequestWatcher?
+    let scheduleRequestWatcher: BaseScheduleRequestWatcher?
     let favoritesWatcher: FavoritesState_FavoritesWatcher?
 
     var currentScheduleRequest: ScheduleRequest!
@@ -29,7 +29,7 @@ class TripScheduleFavoritesIconController: FavoritesState_FavoritesWatcherDelega
 
     init(favoritesButton: UIButton) {
         self.favoritesButton = favoritesButton
-        scheduleRequestWatcher = ScheduleState_ScheduleRequestWatcher()
+        scheduleRequestWatcher = store.state.watcherForScheduleActions()
         favoritesWatcher = FavoritesState_FavoritesWatcher()
     }
 
@@ -39,7 +39,7 @@ class TripScheduleFavoritesIconController: FavoritesState_FavoritesWatcherDelega
         updateFavoritesNavBarIcon()
     }
 
-    func scheduleState_ScheduleRequestUpdated(scheduleRequest: ScheduleRequest) {
+    func scheduleRequestUpdated(scheduleRequest: ScheduleRequest) {
         currentScheduleRequest = scheduleRequest
         currentFavorite = currentScheduleRequest.locateInFavorites()
         updateFavoritesNavBarIcon()

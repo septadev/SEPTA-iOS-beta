@@ -25,7 +25,7 @@ class AlertsViewController: UIViewController {
     let buttonRow = 1
 
     var formIsComplete = false
-    var targetForScheduleAction: TargetForScheduleAction { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
 
     var viewModel: AlertsViewModel!
 

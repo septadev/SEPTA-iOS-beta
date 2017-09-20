@@ -17,7 +17,7 @@ class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber {
 
     @IBOutlet weak var selectStopViewController: UpdateableFromViewModel?
 
-    var targetForScheduleAction: TargetForScheduleAction { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
     var stopsWithDistance = [StopWithDistance]()
     let cellId = "relativeStopCell"
     var scheduleStopEdit = ScheduleStopEdit()
