@@ -143,6 +143,7 @@
 		588D805F1F72B23D00EE1983 /* TargetForScheduleActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D805E1F72B23D00EE1983 /* TargetForScheduleActions.swift */; };
 		588D80611F72B56100EE1983 /* AlertState_ScheduleState_ScheduleRequestWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D80601F72B56100EE1983 /* AlertState_ScheduleState_ScheduleRequestWatcher.swift */; };
 		588D80631F72BDCC00EE1983 /* AlertState_ScheduleState_ScheduleRequest_SelectedRouteExistsWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D80621F72BDCC00EE1983 /* AlertState_ScheduleState_ScheduleRequest_SelectedRouteExistsWatcher.swift */; };
+		588D80651F72C08000EE1983 /* Favorite+ScheduleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D80641F72C08000EE1983 /* Favorite+ScheduleRequest.swift */; };
 		588F27F01F39DD7B00D62425 /* UserPreferenceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27EF1F39DD7B00D62425 /* UserPreferenceState.swift */; };
 		588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27F31F39E05A00D62425 /* PreferenceReducers.swift */; };
 		588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27F61F39E0BF00D62425 /* UserPreferenceActions.swift */; };
@@ -688,6 +689,7 @@
 		588D805E1F72B23D00EE1983 /* TargetForScheduleActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetForScheduleActions.swift; sourceTree = "<group>"; };
 		588D80601F72B56100EE1983 /* AlertState_ScheduleState_ScheduleRequestWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState_ScheduleState_ScheduleRequestWatcher.swift; sourceTree = "<group>"; };
 		588D80621F72BDCC00EE1983 /* AlertState_ScheduleState_ScheduleRequest_SelectedRouteExistsWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertState_ScheduleState_ScheduleRequest_SelectedRouteExistsWatcher.swift; path = "iSEPTA/State Watchers/AlertState_ScheduleState_ScheduleRequest_SelectedRouteExistsWatcher.swift"; sourceTree = SOURCE_ROOT; };
+		588D80641F72C08000EE1983 /* Favorite+ScheduleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+ScheduleRequest.swift"; sourceTree = "<group>"; };
 		588F27EF1F39DD7B00D62425 /* UserPreferenceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferenceState.swift; sourceTree = "<group>"; };
 		588F27F31F39E05A00D62425 /* PreferenceReducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceReducers.swift; sourceTree = "<group>"; };
 		588F27F61F39E0BF00D62425 /* UserPreferenceActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferenceActions.swift; sourceTree = "<group>"; };
@@ -1551,6 +1553,7 @@
 				67075FC51F57860E008BB38C /* ScheduleTripState.swift */,
 				67075FC71F57866D008BB38C /* ScheduleRouteState.swift */,
 				67C567261F59695900FF6203 /* Favorite.swift */,
+				588D80641F72C08000EE1983 /* Favorite+ScheduleRequest.swift */,
 				67C5672A1F596E0700FF6203 /* ErrorObjects.swift */,
 			);
 			path = StateObjects;
@@ -2831,6 +2834,7 @@
 				58EB8D151F5D7CD20028A487 /* BaseNavigationController.swift in Sources */,
 				589A89D71F50BB73007329DB /* SelectStopCell.swift in Sources */,
 				6749A4711F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift in Sources */,
+				588D80651F72C08000EE1983 /* Favorite+ScheduleRequest.swift in Sources */,
 				58A26D991F6F10F8005A70D3 /* AlertNavigationControllerStateProvider.swift in Sources */,
 				674FDBC51F57390D00CA67D2 /* Route+Color.swift in Sources */,
 				588D80591F72AAA800EE1983 /* FavoriteState_ScheduleRequestWatcher.swift in Sources */,
