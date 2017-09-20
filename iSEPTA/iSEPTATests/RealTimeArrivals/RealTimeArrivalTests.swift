@@ -27,8 +27,7 @@ extension ScheduleRequest {
                                selectedRoute: Route.dummyRoute(routeId: routeId),
                                selectedStart: Stop.dummyStop(stopId: startId),
                                selectedEnd: Stop.dummyStop(stopId: stopId),
-                               scheduleType: .weekday, reverseStops: false,
-                               databaseIsLoaded: true)
+                               scheduleType: .weekday, reverseStops: false)
     }
 }
 
@@ -69,7 +68,7 @@ class RealTimeArrivalTests: XCTestCase {
                 XCTAssertNotNil(startStop)
                 XCTAssertNotNil(endStop)
                 if let startStop = startStop, let endStop = endStop {
-                    let nextToArriveTrip = NextToArriveTrip(startStop: startStop, endStop: endStop, vehicleLocation: vehicleLocation, connectionLocation: connectionLocation)
+                    let nextToArriveTrip = NextToArriveTrip(startStop: startStop, endStop: endStop, vehicleLocation: vehicleLocation!, connectionLocation: connectionLocation)
                     trips.append(nextToArriveTrip)
                 }
                 XCTAssertTrue(trips.count > 0)
@@ -97,7 +96,7 @@ class RealTimeArrivalTests: XCTestCase {
                 XCTAssertNotNil(startStop)
                 XCTAssertNotNil(endStop)
                 if let startStop = startStop, let endStop = endStop {
-                    let nextToArriveTrip = NextToArriveTrip(startStop: startStop, endStop: endStop, vehicleLocation: vehicleLocation, connectionLocation: connectionLocation)
+                    let nextToArriveTrip = NextToArriveTrip(startStop: startStop, endStop: endStop, vehicleLocation: vehicleLocation!, connectionLocation: connectionLocation)
                     trips.append(nextToArriveTrip)
                 }
                 XCTAssertTrue(trips.count > 0)
@@ -126,8 +125,8 @@ class RealTimeArrivalTests: XCTestCase {
             let departureTime = formatter.date(from: departureTimeString) else {
             return nil
         }
-        return NextToArriveStop(routeId: a.orig_line_route_id,
-                                routeName: a.orig_line_route_name,
+        return NextToArriveStop(routeId: a.orig_line_route_id!,
+                                routeName: a.orig_line_route_name!,
                                 tripId: Int(a.orig_line_trip_id ?? ""),
                                 arrivalTime: arrivalTime,
                                 departureTime: departureTime,
@@ -145,8 +144,8 @@ class RealTimeArrivalTests: XCTestCase {
             let departureTime = formatter.date(from: departureTimeString) else {
             return nil
         }
-        return NextToArriveStop(routeId: a.term_line_route_id,
-                                routeName: a.term_line_route_name,
+        return NextToArriveStop(routeId: a.term_line_route_id!,
+                                routeName: a.term_line_route_name!,
                                 tripId: Int(a.term_line_trip_id ?? ""),
                                 arrivalTime: arrivalTime,
                                 departureTime: departureTime,
@@ -158,12 +157,12 @@ class RealTimeArrivalTests: XCTestCase {
 
     func mapVehicleLocation(realTimeArrival a: RealTimeArrival) -> VehicleLocation? {
         var firstLegLocation = CLLocationCoordinate2D()
-        if let location = mapCoordinateFromString(latString: a.vehicle_lat, lonString: a.vehicle_lon) {
+        if let location = mapCoordinateFromString(latString: String(describing: a.vehicle_lat), lonString: String(describing: a.vehicle_lon)) {
             firstLegLocation = location
-        } else if let location = mapCoordinateFromString(latString: a.orig_vehicle_lat, lonString: a.orig_vehicle_lon) {
+        } else if let location = mapCoordinateFromString(latString: String(describing: a.orig_vehicle_lat), lonString: String(describing: a.orig_vehicle_lon)) {
             firstLegLocation = location
         }
-        var secondLegLocation = mapCoordinateFromString(latString: a.term_vehicle_lat, lonString: a.term_vehicle_lon) ?? CLLocationCoordinate2D()
+        let secondLegLocation = mapCoordinateFromString(latString: String(describing: a.term_vehicle_lat), lonString: String(describing: a.term_vehicle_lon)) ?? CLLocationCoordinate2D()
 
         return VehicleLocation(firstLegLocation: firstLegLocation, secondLegLocation: secondLegLocation)
     }

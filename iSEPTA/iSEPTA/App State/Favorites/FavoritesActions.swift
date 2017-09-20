@@ -44,3 +44,8 @@ struct UpdateFavorite: FavoritesAction {
     let favorite: Favorite
     let description: String
 }
+
+struct CreateNextToArriveFavorite: FavoritesAction {
+    let favorite: Favorite
+    let description = "Move Favorite to Next to Arrive Favorite"
+}

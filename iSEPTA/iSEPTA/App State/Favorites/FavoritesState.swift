@@ -12,8 +12,9 @@ import SeptaSchedule
 struct FavoritesState: Codable {
     let favorites: [Favorite]
     var favoriteToEdit: Favorite?
+    var nextToArriveFavorite: Favorite?
     var hasFavoriteToEdit: Bool { return favoriteToEdit != nil }
-    var scheduleRequest: ScheduleRequest
+    var hasNextToArriveFavorite: Bool { return nextToArriveFavorite != nil }
     var favoritesExist: Bool { return favorites.count > 0 }
     var favoritesToUpdate: Set<Favorite> {
         return Set(favorites.filter { $0.refreshDataRequested && $0.nextToArriveUpdateStatus != .dataLoading })
@@ -22,9 +23,8 @@ struct FavoritesState: Codable {
         Set(favorites.filter { $0.nextToArriveUpdateStatus == .dataLoadedSuccessfully })
     }
 
-    init(favorites: [Favorite] = [Favorite](), scheduleRequest: ScheduleRequest = ScheduleRequest()) {
+    init(favorites: [Favorite] = [Favorite]()) {
         self.favorites = favorites
-        self.scheduleRequest = scheduleRequest
     }
 
     enum CodingKeys: String, CodingKey {
@@ -35,7 +35,6 @@ struct FavoritesState: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self) // defining our (keyed) container
 
         favorites = try container.decode([Favorite].self, forKey: .favorites)
-        scheduleRequest = ScheduleRequest()
     }
 
     public func encode(to encoder: Encoder) throws {

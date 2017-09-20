@@ -11,8 +11,5 @@ import Foundation
 class FavoriteState_ScheduleRequestWatcher: BaseScheduleRequestWatcher {
 
     override func subscribe() {
-        store.subscribe(self) {
-            $0.select { $0.favoritesState.scheduleRequest }
-        }
     }
 }

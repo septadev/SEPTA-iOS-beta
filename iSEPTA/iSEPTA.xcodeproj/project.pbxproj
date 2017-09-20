@@ -3090,7 +3090,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Septa.app/Septa";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iSEPTA.app/iSEPTA";
 			};
 			name = Debug;
 		};
@@ -3109,7 +3109,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "iSEPTATests/iSEPTATests-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Septa.app/Septa";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iSEPTA.app/iSEPTA";
 			};
 			name = Release;
 		};
