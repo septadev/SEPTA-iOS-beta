@@ -19,15 +19,7 @@ class NextToArriveViewModel: NSObject, StoreSubscriber {
     @IBOutlet weak var schedulesDelegate: SchedulesViewModelDelegate?
     typealias StoreSubscriberStateType = ScheduleRequest
     var scheduleRequest: ScheduleRequest?
-    var transitMode: TransitMode! {
-        didSet {
-            let target = store.state.targetForScheduleActions()
-            //            if transitMode == .rail {
-            //                let action = LoadAllRailRoutes()
-            //                store.dispatch(action)
-            //            }
-        }
-    }
+    var transitMode: TransitMode!
 
     var targetForScheduleAction: TargetForScheduleAction { return store.state.targetForScheduleActions() }
 

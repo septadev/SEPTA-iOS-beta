@@ -28,16 +28,13 @@ class UserDefaultsLoader {
     }
 
     fileprivate func loadPreloadedDefaults(completion: @escaping (UserPreferenceState?, Error?) -> Void) {
-        var returnError: Error?
+        let returnError: Error? = nil
         var preferenceState: UserPreferenceState?
-        do { let loader = DefaultPreferencesLoader.sharedInstance
+        let loader = DefaultPreferencesLoader.sharedInstance
 
-            preferenceState = try loader.generateDefaultUserPreferenceState()
-            setValue(true, forKey: .defaultsLoaded)
-            UserPreferencesStatePersister.sharedInstance.persistPreferenceState(preferenceState)
-        } catch {
-            returnError = error
-        }
+        preferenceState = loader.generateDefaultUserPreferenceState()
+        setValue(true, forKey: .defaultsLoaded)
+        UserPreferencesStatePersister.sharedInstance.persistPreferenceState(preferenceState)
 
         DispatchQueue.main.async {
             completion(preferenceState, returnError)

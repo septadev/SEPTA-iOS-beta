@@ -13,8 +13,10 @@ import Crashlytics
 let loggingMiddleware: Middleware<Any> = { _, _ in { next in
     return { action in
         if let action = action as? SeptaAction {
-            print(action.description)
-            Answers.logCustomEvent(withName: action.description, customAttributes: nil)
+            if let action = action as? NavigationAction {
+                Answers.logCustomEvent(withName: action.description, customAttributes: nil)
+            }
+            CLSLogv(action.description, getVaList([]))
         }
 
         return next(action)

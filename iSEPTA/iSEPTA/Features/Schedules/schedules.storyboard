@@ -945,7 +945,7 @@ TitleViewTop</string>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="nhz-5x-m1w">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="S4P-TT-Ydz">
+                        <barButtonItem key="rightBarButtonItem" style="done" id="S4P-TT-Ydz">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fVP-sM-g0P">
                                 <rect key="frame" x="337" y="11" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

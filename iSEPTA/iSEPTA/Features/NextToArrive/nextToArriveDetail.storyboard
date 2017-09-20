@@ -67,7 +67,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Next To Arrive" id="hQX-Wc-MEI">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="favoriteNavBarOff" style="done" id="yu0-pI-RYt">
+                        <barButtonItem key="rightBarButtonItem" image="favoriteNavBarOff" style="done" id="yu0-pI-RYt">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1Ec-bf-5Na">
                                 <rect key="frame" x="337" y="11" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

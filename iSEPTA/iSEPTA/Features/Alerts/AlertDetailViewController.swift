@@ -152,9 +152,7 @@ extension AlertDetailViewController {
         cell.alertImage.image = UIImage(named: "alertAlert")
         cell.advisoryLabel.text = "Service Alerts"
         cell.disabledAdvisoryLabel.text = "No Service Alerts"
-        if let first = alertDetails.first, let advisoryMessage = first.message, advisoryMessage.count > 0,
-
-            let attributedString = advisoryMessage.htmlAttributedString {
+        if let first = alertDetails.first, let advisoryMessage = first.message, advisoryMessage.count > 0 {
             cell.setEnabled(true)
             cell.textView.text = advisoryMessage
         } else {

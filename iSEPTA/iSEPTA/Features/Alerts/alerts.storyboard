@@ -31,7 +31,7 @@
         <!--System Status-->
         <scene sceneID="39l-5W-cz3">
             <objects>
-                <viewController storyboardIdentifier="nextToArriveController" title="System Status" automaticallyAdjustsScrollViewInsets="NO" id="yd4-r5-v37" customClass="AlertsViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="alertsViewController" title="System Status" automaticallyAdjustsScrollViewInsets="NO" id="yd4-r5-v37" customClass="AlertsViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J95-WP-GTw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -411,7 +411,7 @@ TableViewWrapper</string>
                     <viewLayoutGuide key="safeArea" id="jJF-h2-wec"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="1626" y="444"/>
+            <point key="canvasLocation" x="1388" y="-576"/>
         </scene>
     </scenes>
     <resources>

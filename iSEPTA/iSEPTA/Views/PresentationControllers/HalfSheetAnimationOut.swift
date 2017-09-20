@@ -16,7 +16,6 @@ class HalfSheetAnimationOut: NSObject, UIViewControllerAnimatedTransitioning {
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let fromViewController = transitionContext.viewController(forKey: .from)!
-        let toViewController = transitionContext.viewController(forKey: .to)!
         let fromView = fromViewController.view!
         let duration = transitionDuration(using: transitionContext)
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseIn, animations: {

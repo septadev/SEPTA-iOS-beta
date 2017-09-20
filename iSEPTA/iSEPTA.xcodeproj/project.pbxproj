@@ -426,7 +426,6 @@
 		678DAAA21F6706E300EB6EE8 /* NextToArriveTripGrouper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DAAA11F6706E300EB6EE8 /* NextToArriveTripGrouper.swift */; };
 		678DAAA41F6728B100EB6EE8 /* NextToArriveTripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DAAA31F6728B100EB6EE8 /* NextToArriveTripsTableViewController.swift */; };
 		678DAAA61F67291400EB6EE8 /* NextToArriveTripsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678DAAA51F67291400EB6EE8 /* NextToArriveTripsViewModel.swift */; };
-		678DAAA81F67294500EB6EE8 /* NextToArriveTrips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 678DAAA71F67294500EB6EE8 /* NextToArriveTrips.storyboard */; };
 		678DAAAB1F67458500EB6EE8 /* NoConnectionSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 678DAAAA1F67458500EB6EE8 /* NoConnectionSectionHeader.xib */; };
 		678DAAAF1F6745A900EB6EE8 /* NoConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 678DAAAE1F6745A900EB6EE8 /* NoConnectionCell.xib */; };
 		678DAAB31F67475200EB6EE8 /* ConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 678DAAB21F67475200EB6EE8 /* ConnectionCell.xib */; };
@@ -870,7 +869,7 @@
 		58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRequest.swift; sourceTree = "<group>"; };
 		58C2A0681F38AA1B00F0D6CA /* ScheduleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleData.swift; sourceTree = "<group>"; };
 		58C9D3001F703735008FDE40 /* LoggingMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingMiddleware.swift; sourceTree = "<group>"; };
-		58D9C3F01F3335BB002BE2E8 /* Septa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Septa.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		58D9C3F01F3335BB002BE2E8 /* iSEPTA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSEPTA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D9C4071F3335BB002BE2E8 /* iSEPTATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iSEPTATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D9C40D1F3335BB002BE2E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58DB04A41F558DD0005CC850 /* SearchRoutesModalHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRoutesModalHeaderViewController.swift; sourceTree = "<group>"; };
@@ -969,7 +968,6 @@
 		678DAAA11F6706E300EB6EE8 /* NextToArriveTripGrouper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveTripGrouper.swift; sourceTree = "<group>"; };
 		678DAAA31F6728B100EB6EE8 /* NextToArriveTripsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveTripsTableViewController.swift; sourceTree = "<group>"; };
 		678DAAA51F67291400EB6EE8 /* NextToArriveTripsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveTripsViewModel.swift; sourceTree = "<group>"; };
-		678DAAA71F67294500EB6EE8 /* NextToArriveTrips.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NextToArriveTrips.storyboard; sourceTree = "<group>"; };
 		678DAAAA1F67458500EB6EE8 /* NoConnectionSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoConnectionSectionHeader.xib; sourceTree = "<group>"; };
 		678DAAAE1F6745A900EB6EE8 /* NoConnectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoConnectionCell.xib; sourceTree = "<group>"; };
 		678DAAB21F67475200EB6EE8 /* ConnectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionCell.xib; sourceTree = "<group>"; };
@@ -1888,7 +1886,7 @@
 		58D9C3F11F3335BB002BE2E8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				58D9C3F01F3335BB002BE2E8 /* Septa.app */,
+				58D9C3F01F3335BB002BE2E8 /* iSEPTA.app */,
 				58D9C4071F3335BB002BE2E8 /* iSEPTATests.xctest */,
 			);
 			name = Products;
@@ -2080,7 +2078,6 @@
 				678DAAA11F6706E300EB6EE8 /* NextToArriveTripGrouper.swift */,
 				678DAAA31F6728B100EB6EE8 /* NextToArriveTripsTableViewController.swift */,
 				678DAAA51F67291400EB6EE8 /* NextToArriveTripsViewModel.swift */,
-				678DAAA71F67294500EB6EE8 /* NextToArriveTrips.storyboard */,
 				678DAAA91F67453C00EB6EE8 /* Views */,
 			);
 			path = ScheduleInfo;
@@ -2202,7 +2199,7 @@
 			);
 			name = iSEPTA;
 			productName = iSEPTA;
-			productReference = 58D9C3F01F3335BB002BE2E8 /* Septa.app */;
+			productReference = 58D9C3F01F3335BB002BE2E8 /* iSEPTA.app */;
 			productType = "com.apple.product-type.application";
 		};
 		58D9C4061F3335BB002BE2E8 /* iSEPTATests */ = {
@@ -2310,7 +2307,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				678DAAA81F67294500EB6EE8 /* NextToArriveTrips.storyboard in Resources */,
 				58B278981F62AAD500663507 /* 80.kml in Resources */,
 				58B278931F62AAD500663507 /* 75.kml in Resources */,
 				58B278B31F62AAD500663507 /* LucyGold.kml in Resources */,
@@ -2998,7 +2994,6 @@
 					$SRCROOT/../Carthage/Build/iOS,
 					"$(inherited)",
 					$SRCROOT,
-					"/Users/mbroski/Code/Septa/Septa2/iSEPTA/Build/Products/Release-iphoneos",
 					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator",
 				);
 				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
@@ -3008,7 +3003,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA.beta;
 				PRODUCT_MODULE_NAME = Septa;
-				PRODUCT_NAME = Septa;
+				PRODUCT_NAME = iSEPTA;
 				PROVISIONING_PROFILE = "12113721-876f-4ac2-bd31-7b2686d7a339";
 				PROVISIONING_PROFILE_SPECIFIER = CapTechBetaTesting;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3041,7 +3036,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA.beta;
 				PRODUCT_MODULE_NAME = Septa;
-				PRODUCT_NAME = Septa;
+				PRODUCT_NAME = iSEPTA;
 				PROVISIONING_PROFILE = "e8f99a1f-7b28-4307-b225-0aab2947e61a";
 				PROVISIONING_PROFILE_SPECIFIER = CapTechBetaTesting;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
