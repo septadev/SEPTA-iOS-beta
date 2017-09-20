@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import ReSwift
 
-class FavoritesNavigationController: UINavigationController, FavoritesState_FavoritesExistWatcherDelegate {
+class FavoritesNavigationController: BaseNavigationController, FavoritesState_FavoritesExistWatcherDelegate {
     typealias StoreSubscriberStateType = Bool
     var favoritesWatcher: FavoritesState_FavoritesExistWatcher!
 
@@ -29,27 +29,18 @@ class FavoritesNavigationController: UINavigationController, FavoritesState_Favo
     }
 
     func showFavoritesController() {
-        let controller = loadViewController(.favoritesViewController)
-        makeRootViewController(controller)
+
+        initializeNavStackState(viewController: .favoritesViewController)
     }
 
     func showNoFavoritesViewController() {
 
-        let controller = loadViewController(.noFavoritesViewController)
-        makeRootViewController(controller)
+        initializeNavStackState(viewController: .noFavoritesViewController)
     }
 
-    func makeRootViewController(_ viewController: UIViewController) {
-        viewControllers = [viewController]
-    }
-
-    func loadViewController(_ viewController: ViewController) -> UIViewController {
-        let storyboard = retrieveStoryboardForViewController(viewController)
-        return storyboard.instantiateViewController(withIdentifier: viewController.rawValue)
-    }
-
-    func retrieveStoryboardForViewController(_ viewController: ViewController) -> UIStoryboard {
-        let storyboardString = viewController.storyboardIdentifier()
-        return UIStoryboard(name: storyboardString, bundle: Bundle.main)
+    func initializeNavStackState(viewController: ViewController) {
+        let navigationStackState = NavigationStackState(viewControllers: [viewController], modalViewController: nil)
+        let action = InitializeNavigationState(navigationController: .favorites, navigationStackState: navigationStackState, description: "Initialiazing Favorites nav stack state")
+        store.dispatch(action)
     }
 }

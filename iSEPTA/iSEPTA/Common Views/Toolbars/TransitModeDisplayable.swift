@@ -259,7 +259,7 @@ extension TransitMode {
         }
         guard let image = UIImage(named: imageName), let cgImage = image.cgImage else { return nil }
 
-        return UIImage(cgImage: cgImage, scale: 3, orientation: image.imageOrientation)
+        return UIImage(cgImage: cgImage, scale: 2, orientation: image.imageOrientation)
     }
 
     public func scheduleTypeSegments() -> [ScheduleType] {

@@ -126,6 +126,7 @@
 		586C1CED1F69A7E10023607C /* DatabaseLoadingModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1CEC1F69A7E10023607C /* DatabaseLoadingModalViewController.swift */; };
 		586C1CF11F69B3EE0023607C /* DatabaseMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1CF01F69B3EE0023607C /* DatabaseMover.swift */; };
 		586DFEC51F505482004BC972 /* CurvedTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586DFEC41F505482004BC972 /* CurvedTopView.swift */; };
+		5876DF731F72DEB4006C61FE /* FavoritesNavigationControllerStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5876DF721F72DEB4006C61FE /* FavoritesNavigationControllerStateProvider.swift */; };
 		587BC0441F6ED63900B92BB6 /* MapToAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587BC0431F6ED63900B92BB6 /* MapToAlerts.swift */; };
 		587BC0481F6ED66700B92BB6 /* MapFromAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587BC0471F6ED66700B92BB6 /* MapFromAlerts.swift */; };
 		587BC04A1F6ED70900B92BB6 /* QuickMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587BC0491F6ED70900B92BB6 /* QuickMap.swift */; };
@@ -671,6 +672,7 @@
 		586C1CF01F69B3EE0023607C /* DatabaseMover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseMover.swift; sourceTree = "<group>"; };
 		586DFEC41F505482004BC972 /* CurvedTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedTopView.swift; sourceTree = "<group>"; };
 		5870CCDD1F54C05A004E61A9 /* SeptaSchedule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaSchedule.framework; path = "Build/Products/Debug-iphonesimulator/SeptaSchedule.framework"; sourceTree = "<group>"; };
+		5876DF721F72DEB4006C61FE /* FavoritesNavigationControllerStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesNavigationControllerStateProvider.swift; sourceTree = "<group>"; };
 		587BC0431F6ED63900B92BB6 /* MapToAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapToAlerts.swift; sourceTree = "<group>"; };
 		587BC0471F6ED66700B92BB6 /* MapFromAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFromAlerts.swift; sourceTree = "<group>"; };
 		587BC0491F6ED70900B92BB6 /* QuickMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickMap.swift; sourceTree = "<group>"; };
@@ -2032,6 +2034,7 @@
 				58EB8D0E1F5D79530028A487 /* NextToArriveNavigationController.swift */,
 				58EB8D121F5D79C10028A487 /* NextToArriveNavigationControllerStateProvider.swift */,
 				58EB8D1C1F5D85F50028A487 /* NavigationControllerBaseStateProvider.swift */,
+				5876DF721F72DEB4006C61FE /* FavoritesNavigationControllerStateProvider.swift */,
 			);
 			path = NavigationController;
 			sourceTree = "<group>";
@@ -2798,6 +2801,7 @@
 				67EA2B631F51AB8700C0567A /* StopEditSearchMode.swift in Sources */,
 				58126F751F640F8600A6E187 /* NextToArriveUpdateStatus.swift in Sources */,
 				58248B7B1F6D8FB400DA2D65 /* ViewControllerTransitioningDelegate.swift in Sources */,
+				5876DF731F72DEB4006C61FE /* FavoritesNavigationControllerStateProvider.swift in Sources */,
 				588D80631F72BDCC00EE1983 /* AlertState_ScheduleState_ScheduleRequest_SelectedRouteExistsWatcher.swift in Sources */,
 				58DD1A8E1F600715002532DC /* NextToArriveViewModel+StartCell.swift in Sources */,
 				5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */,

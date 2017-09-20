@@ -71,6 +71,11 @@ enum ViewController: String, Equatable {
         }
     }
 
+    func instantiateViewController() -> UIViewController {
+        let storyboard = UIStoryboard(name: storyboardIdentifier(), bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: rawValue)
+    }
+
     func presentationController(presentedViewController: UIViewController, presenting: UIViewController?) -> UIPresentationController? {
         switch self {
         case .editFavoriteViewController:

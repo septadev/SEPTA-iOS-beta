@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Nav Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="6kW-a0-5Q5">
             <objects>
                 <navigationController storyboardIdentifier="favorites" title="Nav Controller" id="PgU-tC-Xbs" customClass="FavoritesNavigationController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
@@ -25,10 +25,15 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="vRw-wL-43T" kind="relationship" relationship="rootViewController" id="jLJ-Ag-d4k"/>
+                        <outlet property="stateProvider" destination="AgJ-Rd-oao" id="pr1-Xl-syS"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="82y-4E-6Ev" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="AgJ-Rd-oao" userLabel="StateProvider" customClass="FavoritesNavigationControllerStateProvider" customModule="Septa" customModuleProvider="target">
+                    <connections>
+                        <outlet property="navigationController" destination="PgU-tC-Xbs" id="szd-6n-l2g"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="-362" y="72"/>
         </scene>
