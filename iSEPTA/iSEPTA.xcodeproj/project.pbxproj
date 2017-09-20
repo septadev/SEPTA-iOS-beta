@@ -408,7 +408,7 @@
 		674FDBC71F577D3B00CA67D2 /* Route+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674FDBC61F577D3B00CA67D2 /* Route+Icon.swift */; };
 		676354FD1F5E255A00CA7EAB /* FilterableRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676354FC1F5E255A00CA7EAB /* FilterableRoute.swift */; };
 		676354FF1F5E2C2C00CA7EAB /* FilterableStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676354FE1F5E2C2C00CA7EAB /* FilterableStop.swift */; };
-		676355011F5E326800CA7EAB /* AppState+Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676355001F5E326800CA7EAB /* AppState+Context.swift */; };
+		676355011F5E326800CA7EAB /* AppState+TargetForScheduleActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676355001F5E326800CA7EAB /* AppState+TargetForScheduleActions.swift */; };
 		676355031F5E998200CA7EAB /* SelectSchedulesRowDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676355021F5E998200CA7EAB /* SelectSchedulesRowDisplayModel.swift */; };
 		676355051F5E9A0300CA7EAB /* SchedulesViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676355041F5E9A0300CA7EAB /* SchedulesViewModelDelegate.swift */; };
 		676355071F5EAD5900CA7EAB /* SubscriberUnsubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676355061F5EAD5900CA7EAB /* SubscriberUnsubscriber.swift */; };
@@ -950,7 +950,7 @@
 		674FDBC61F577D3B00CA67D2 /* Route+Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Icon.swift"; sourceTree = "<group>"; };
 		676354FC1F5E255A00CA7EAB /* FilterableRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterableRoute.swift; sourceTree = "<group>"; };
 		676354FE1F5E2C2C00CA7EAB /* FilterableStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterableStop.swift; sourceTree = "<group>"; };
-		676355001F5E326800CA7EAB /* AppState+Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState+Context.swift"; sourceTree = "<group>"; };
+		676355001F5E326800CA7EAB /* AppState+TargetForScheduleActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState+TargetForScheduleActions.swift"; sourceTree = "<group>"; };
 		676355021F5E998200CA7EAB /* SelectSchedulesRowDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSchedulesRowDisplayModel.swift; sourceTree = "<group>"; };
 		676355041F5E9A0300CA7EAB /* SchedulesViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesViewModelDelegate.swift; sourceTree = "<group>"; };
 		676355061F5EAD5900CA7EAB /* SubscriberUnsubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriberUnsubscriber.swift; sourceTree = "<group>"; };
@@ -1942,7 +1942,7 @@
 				58290E431F372BB9000CCF3C /* AppStateReducer.swift */,
 				58F444FB1F3D335400A93208 /* SeptaAction.swift */,
 				676355061F5EAD5900CA7EAB /* SubscriberUnsubscriber.swift */,
-				676355001F5E326800CA7EAB /* AppState+Context.swift */,
+				676355001F5E326800CA7EAB /* AppState+TargetForScheduleActions.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -2659,7 +2659,7 @@
 				671A19201F6613A600C8EEDA /* ConstraintsToggle.swift in Sources */,
 				580128121F6C055B006B6DB8 /* RedButton.swift in Sources */,
 				5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */,
-				676355011F5E326800CA7EAB /* AppState+Context.swift in Sources */,
+				676355011F5E326800CA7EAB /* AppState+TargetForScheduleActions.swift in Sources */,
 				58126F671F631C0800A6E187 /* ColorPointAnnotation.swift in Sources */,
 				58FBB66C1F5885D800E6532B /* VerticalDottedTripGraphic.swift in Sources */,
 				6716090B1F676F2300941D2C /* ConnectionView.swift in Sources */,
