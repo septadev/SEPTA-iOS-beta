@@ -27,11 +27,23 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
     }
 
     func subscribe() {
+        guard let target = store.state.targetForScheduleActions() else { return }
 
-        store.subscribe(self) {
-            $0.select {
-                $0.nextToArriveState.nextToArriveTrips
-            }.skipRepeats { $0 == $1 }
+        switch target {
+        case .nextToArrive:
+            store.subscribe(self) {
+                $0.select {
+                    $0.nextToArriveState.nextToArriveTrips
+                }.skipRepeats { $0 == $1 }
+            }
+        case .favorites:
+            store.subscribe(self) {
+                $0.select {
+                    $0.favoritesState.nextToArriveTrips
+                }.skipRepeats { $0 == $1 }
+            }
+        default:
+            break
         }
     }
 
@@ -45,13 +57,18 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
 
     func newState(state: StoreSubscriberStateType) {
         let trips = state
-        //        guard let firstTrip = trips.first, let delegate = delegate else { return }
-        //        let routeIds = [firstTrip.startStop.routeId, firstTrip.endStop.routeId].flatMap { $0 }
-        //        let uniqueRouteIds = Array(Set(routeIds))
-        //        for routeId in uniqueRouteIds {
-        //            delegate.drawRoute(routeId: routeId)
-        //        }
-        if store.state.nextToArriveState.nextToArriveUpdateStatus == .dataLoadedSuccessfully {
+
+        guard let target = store.state.targetForScheduleActions() else { return }
+        let updateStatus: NextToArriveUpdateStatus
+        switch target {
+        case .nextToArrive:
+            updateStatus = store.state.nextToArriveState.nextToArriveUpdateStatus
+        case .favorites:
+            updateStatus = store.state.favoritesState.nextToArriveUpdateStatus
+        default:
+            updateStatus = .idle
+        }
+        if updateStatus == .dataLoadedSuccessfully {
             let startVehicles: [CLLocationCoordinate2D?] = trips.map { $0.vehicleLocation.firstLegLocation }
             let endVehicles: [CLLocationCoordinate2D?] = trips.map { $0.vehicleLocation.secondLegLocation }
             let allVehicles = startVehicles + endVehicles

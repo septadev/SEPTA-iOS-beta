@@ -49,13 +49,29 @@ extension NextToArriveInfoViewController { // refresh timer
     }
 
     func initTimer() {
-        //        timer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(oneMinuteTimerFired(timer:)), userInfo: nil, repeats: true)
+
+        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(oneMinuteTimerFired(timer:)), userInfo: nil, repeats: true)
     }
 
     @objc func oneMinuteTimerFired(timer _: Timer) {
+
         millisecondsToDelayTableReload = 5000
-        let action = NextToArriveRefreshDataRequested(refreshUpdateRequested: true)
-        store.dispatch(action)
+        guard let target = store.state.targetForScheduleActions() else { return }
+
+        switch target {
+        case .nextToArrive:
+            let action = NextToArriveRefreshDataRequested(refreshUpdateRequested: true)
+            store.dispatch(action)
+        case .favorites:
+            let favoriteId = store.state.favoritesState.nextToArriveFavoriteId
+            guard let nextToArriveFavoriteId = favoriteId,
+                var matchingFavorite = store.state.favoritesState.favorites.filter({ $0.favoriteId == nextToArriveFavoriteId }).first else { return }
+            matchingFavorite.refreshDataRequested = true
+            let action = UpdateFavorite(favorite: matchingFavorite, description: "Refresh Next to arrive for favorite")
+            store.dispatch(action)
+        default:
+            break
+        }
     }
 }
 

@@ -76,10 +76,24 @@ class NextToArriveTripViewModel: StoreSubscriber {
 extension NextToArriveTripViewModel: SubscriberUnsubscriber {
 
     func subscribe() {
-        store.subscribe(self) {
-            $0.select {
-                $0.nextToArriveState.scheduleState.scheduleRequest
-            }.skipRepeats { $0 == $1 }
+
+        guard let target = store.state.targetForScheduleActions() else { return }
+
+        switch target {
+        case .nextToArrive:
+            store.subscribe(self) {
+                $0.select {
+                    $0.nextToArriveState.scheduleState.scheduleRequest
+                }.skipRepeats { $0 == $1 }
+            }
+        case .favorites:
+            store.subscribe(self) {
+                $0.select {
+                    $0.favoritesState.nextToArriveScheduleRequest
+                }.skipRepeats { $0 == $1 }
+            }
+        default:
+            break
         }
     }
 

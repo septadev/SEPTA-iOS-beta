@@ -12,10 +12,30 @@ import SeptaSchedule
 struct FavoritesState: Codable {
     let favorites: [Favorite]
     var favoriteToEdit: Favorite?
-    var nextToArriveFavorite: Favorite?
+    var nextToArriveFavoriteId: String?
     var hasFavoriteToEdit: Bool { return favoriteToEdit != nil }
-    var hasNextToArriveFavorite: Bool { return nextToArriveFavorite != nil }
+
     var favoritesExist: Bool { return favorites.count > 0 }
+    var nextToArriveTrips: [NextToArriveTrip] {
+        guard let nextToArriveFavoriteId = self.nextToArriveFavoriteId,
+            let matchingFavorite = favorites.filter({ $0.favoriteId == nextToArriveFavoriteId }).first
+        else { return [NextToArriveTrip]() }
+        return matchingFavorite.nextToArriveTrips
+    }
+
+    var nextToArriveUpdateStatus: NextToArriveUpdateStatus {
+        guard let nextToArriveFavoriteId = self.nextToArriveFavoriteId,
+            let matchingFavorite = favorites.filter({ $0.favoriteId == nextToArriveFavoriteId }).first
+        else { return .idle }
+        return matchingFavorite.nextToArriveUpdateStatus
+    }
+
+    var nextToArriveScheduleRequest: ScheduleRequest {
+        guard let nextToArriveFavoriteId = self.nextToArriveFavoriteId,
+            let matchingFavorite = favorites.filter({ $0.favoriteId == nextToArriveFavoriteId }).first
+        else { return ScheduleRequest() }
+        return matchingFavorite.scheduleRequest()
+    }
     var favoritesToUpdate: Set<Favorite> {
         return Set(favorites.filter { $0.refreshDataRequested && $0.nextToArriveUpdateStatus != .dataLoading })
     }

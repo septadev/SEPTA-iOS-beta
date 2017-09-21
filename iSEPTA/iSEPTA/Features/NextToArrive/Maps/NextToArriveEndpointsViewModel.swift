@@ -22,10 +22,23 @@ class NextToArriveMapEndpointsViewModel: StoreSubscriber {
 
     func subscribe() {
 
-        store.subscribe(self) {
-            $0.select {
-                $0.nextToArriveState.scheduleState.scheduleRequest
+        guard let target = store.state.targetForScheduleActions() else { return }
+
+        switch target {
+        case .nextToArrive:
+            store.subscribe(self) {
+                $0.select {
+                    $0.nextToArriveState.scheduleState.scheduleRequest
+                }
             }
+        case .favorites:
+            store.subscribe(self) {
+                $0.select {
+                    $0.favoritesState.nextToArriveScheduleRequest
+                }
+            }
+        default:
+            break
         }
     }
 

@@ -34,10 +34,24 @@ class NextToArriveInfoViewModel: BaseNextToArriveInfoViewModel, StoreSubscriber,
     }
 
     override func subscribe() {
-        store.subscribe(self) {
-            $0.select {
-                $0.nextToArriveState.nextToArriveTrips
-            }.skipRepeats { $0 == $1 }
+
+        guard let target = store.state.targetForScheduleActions() else { return }
+
+        switch target {
+        case .nextToArrive:
+            store.subscribe(self) {
+                $0.select {
+                    $0.nextToArriveState.nextToArriveTrips
+                }.skipRepeats { $0 == $1 }
+            }
+        case .favorites:
+            store.subscribe(self) {
+                $0.select {
+                    $0.favoritesState.nextToArriveTrips
+                }.skipRepeats { $0 == $1 }
+            }
+        default:
+            break
         }
     }
 

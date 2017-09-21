@@ -27,8 +27,12 @@ class FavoriteTripCell: UITableViewCell {
 
     @IBAction func moreButtonTapped(_: Any) {
         guard let currentFavorite = currentFavorite else { return }
-        let action = EditFavorite(favorite: currentFavorite)
-        store.dispatch(action)
+
+        let dataAction = CreateNextToArriveFavorite(favorite: currentFavorite)
+        store.dispatch(dataAction)
+
+        let navigationAction = PushViewController(viewController: .nextToArriveDetailController, description: "Displaying Next to arrive for a favorite")
+        store.dispatch(navigationAction)
     }
 
     func styleWhiteViews(_ views: [UIView]) {
