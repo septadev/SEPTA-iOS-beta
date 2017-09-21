@@ -36,7 +36,8 @@ class SelectStopNavigationController: UINavigationController, IdentifiableContro
 
         guard let newState = state,
             let newStackState = newState[.selectStop], newStackState != lastStackState else { return }
-        guard let existingViewControllers = currentNavigationStackState.viewControllers, let newViewControllers = newStackState.viewControllers else { return }
+        let existingViewControllers = currentNavigationStackState.viewControllers
+        let newViewControllers = newStackState.viewControllers
         if newViewControllers.count > existingViewControllers.count {
             guard let nextViewController = newViewControllers.last else { return }
             let viewController = myStoryboard.instantiateViewController(withIdentifier: nextViewController.rawValue)

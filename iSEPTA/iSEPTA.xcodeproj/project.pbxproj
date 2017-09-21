@@ -394,6 +394,10 @@
 		67075FC41F57858C008BB38C /* ScheduleStopState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC31F57858C008BB38C /* ScheduleStopState.swift */; };
 		67075FC61F57860E008BB38C /* ScheduleTripState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC51F57860E008BB38C /* ScheduleTripState.swift */; };
 		67075FC81F57866D008BB38C /* ScheduleRouteState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC71F57866D008BB38C /* ScheduleRouteState.swift */; };
+		6708C2721F73ADEB00922D8E /* NavigationViewControllerStateToNavigationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6708C2711F73ADEB00922D8E /* NavigationViewControllerStateToNavigationEvent.swift */; };
+		6708C2771F73AE3F00922D8E /* NavigationViewControllerStateToNavigationEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6708C2761F73AE3F00922D8E /* NavigationViewControllerStateToNavigationEventTests.swift */; };
+		6708C2791F73B7C200922D8E /* NavigationModalStateToNavigationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6708C2781F73B7C200922D8E /* NavigationModalStateToNavigationEvent.swift */; };
+		6708C27B1F73BABA00922D8E /* NavigationModalStateToNavigationEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6708C27A1F73BABA00922D8E /* NavigationModalStateToNavigationEventTests.swift */; };
 		671609031F6766FF00941D2C /* TripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671609021F6766FF00941D2C /* TripView.swift */; };
 		671609071F67671F00941D2C /* TripView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 671609061F67671F00941D2C /* TripView.xib */; };
 		671609091F676F1300941D2C /* ConnectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 671609081F676F1300941D2C /* ConnectionView.xib */; };
@@ -946,6 +950,10 @@
 		67075FC31F57858C008BB38C /* ScheduleStopState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStopState.swift; sourceTree = "<group>"; };
 		67075FC51F57860E008BB38C /* ScheduleTripState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTripState.swift; sourceTree = "<group>"; };
 		67075FC71F57866D008BB38C /* ScheduleRouteState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRouteState.swift; sourceTree = "<group>"; };
+		6708C2711F73ADEB00922D8E /* NavigationViewControllerStateToNavigationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewControllerStateToNavigationEvent.swift; sourceTree = "<group>"; };
+		6708C2761F73AE3F00922D8E /* NavigationViewControllerStateToNavigationEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewControllerStateToNavigationEventTests.swift; sourceTree = "<group>"; };
+		6708C2781F73B7C200922D8E /* NavigationModalStateToNavigationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModalStateToNavigationEvent.swift; sourceTree = "<group>"; };
+		6708C27A1F73BABA00922D8E /* NavigationModalStateToNavigationEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModalStateToNavigationEventTests.swift; sourceTree = "<group>"; };
 		671609021F6766FF00941D2C /* TripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripView.swift; sourceTree = "<group>"; };
 		671609061F67671F00941D2C /* TripView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripView.xib; sourceTree = "<group>"; };
 		671609081F676F1300941D2C /* ConnectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionView.xib; sourceTree = "<group>"; };
@@ -1308,6 +1316,8 @@
 				58DD1A911F60078D002532DC /* NextToArriveRowDisplayModel.swift */,
 				58EB8D221F5D8C6B0028A487 /* BaseNonModalViewController.swift */,
 				58EB8D141F5D7CD20028A487 /* BaseNavigationController.swift */,
+				6708C2711F73ADEB00922D8E /* NavigationViewControllerStateToNavigationEvent.swift */,
+				6708C2781F73B7C200922D8E /* NavigationModalStateToNavigationEvent.swift */,
 				58EB8D1E1F5D8A650028A487 /* BaseNavigationController+Styling.swift */,
 			);
 			path = NextToArrive;
@@ -1944,6 +1954,7 @@
 		58D9C40A1F3335BB002BE2E8 /* iSEPTATests */ = {
 			isa = PBXGroup;
 			children = (
+				6708C2751F73AE2A00922D8E /* NavigationState */,
 				58E33F291F6169E000C74B7C /* RealTimeArrivals */,
 				588F28031F39E2D600D62425 /* ViewModel */,
 				588F27FF1F39E29200D62425 /* App State */,
@@ -2097,6 +2108,15 @@
 				58FBBFA51F65823600B7A4DA /* DatabaseActions.swift */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		6708C2751F73AE2A00922D8E /* NavigationState */ = {
+			isa = PBXGroup;
+			children = (
+				6708C2761F73AE3F00922D8E /* NavigationViewControllerStateToNavigationEventTests.swift */,
+				6708C27A1F73BABA00922D8E /* NavigationModalStateToNavigationEventTests.swift */,
+			);
+			path = NavigationState;
 			sourceTree = "<group>";
 		};
 		671A19271F66383900C8EEDA /* ScheduleInfo */ = {
@@ -2704,6 +2724,7 @@
 				678DAAB51F67478900EB6EE8 /* ConnectionCell.swift in Sources */,
 				58126F6B1F631C3100A6E187 /* RouteOverlay.swift in Sources */,
 				67EA2B611F518CA600C0567A /* SearchModalHeaderDelegate.swift in Sources */,
+				6708C2791F73B7C200922D8E /* NavigationModalStateToNavigationEvent.swift in Sources */,
 				678F05371F5BFFDC00CC4D3C /* LocationReducer.swift in Sources */,
 				5814AA891F4359CC00DF774A /* SingleStringDisplayable.swift in Sources */,
 				678D26CE1F5CE4A500D140CC /* TripScheduleFavoritesIconController.swift in Sources */,
@@ -2757,6 +2778,7 @@
 				67F757B71F488A5E00D3A4EE /* BlueGradientBackgroundView.swift in Sources */,
 				58B2778F1F62A9C900663507 /* KML.swift in Sources */,
 				678DAAA01F67067500EB6EE8 /* NextToArriveNonConnectivingViewModel.swift in Sources */,
+				6708C2721F73ADEB00922D8E /* NavigationViewControllerStateToNavigationEvent.swift in Sources */,
 				58C2A0611F38964E00F0D6CA /* ViewController.swift in Sources */,
 				58DB10F41F3B8CCF00191AED /* ScheduleDataReducer.swift in Sources */,
 				58A26D9D1F6F2790005A70D3 /* Route+AlertState.swift in Sources */,
@@ -2859,6 +2881,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6708C27B1F73BABA00922D8E /* NavigationModalStateToNavigationEventTests.swift in Sources */,
+				6708C2771F73AE3F00922D8E /* NavigationViewControllerStateToNavigationEventTests.swift in Sources */,
 				58E33F2B1F6169EE00C74B7C /* RealTimeArrivalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

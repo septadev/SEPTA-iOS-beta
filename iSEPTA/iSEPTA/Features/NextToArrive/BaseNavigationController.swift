@@ -9,145 +9,108 @@
 import Foundation
 import UIKit
 
-enum NavigationActionNeeded {
-  case noActionNeeded
-  case  initializingViewState
-  case     presentModal
-  case     dismissModal
-  case      push
-  case      pop
-  case     rebuildNeeded
-  case     systemPop
-
-}
-
 class BaseNavigationController: UINavigationController {
     var currentStackState = NavigationStackState()
-
-    var currentControllers : [ViewController] {
-        return currentStackState.viewControllers ?? [ViewController]()
-    }
-
-
 
     @IBOutlet var stateProvider: NavigationControllerBaseStateProvider!
     lazy var slideInTransitioningDelegate = SlideInPresentationManager()
 
     func newStackState(_ newStackState: NavigationStackState) {
-        guard newStackState != currentStackState else { return }
 
-        let navigationActionNeeded = determineNavigationActionNeeded(newStackState)
-
-        switch navigationActionNeeded {
-            case presentModal: presentModal(stackState: newStackState)
-
-            case dismissModal: dismissModal()
-
-            case push:
-
-
-
-        }
-        if let modal = newStackState.modalViewController {
-
-        }
-        if let _ = currentStackState.modalViewController, newStackState.modalViewController == nil {
-            dismiss(animated: true, completion: nil)
-            slideInTransitioningDelegate = SlideInPresentationManager()
-        }
-
-        if let newViewControllers = newStackState.viewControllers,
-            let lastNewViewController = newViewControllers.last,
-            let currentViewControllers = currentStackState.viewControllers {
-            let uiControllersCount = viewControllers.count
-
-            if uiControllersCount > newViewControllers.count {
-                popViewController(animated: true)
-            } else if uiControllersCount < newViewControllers.count {
-                let newViewController = lastNewViewController.instantiateViewController()
-                pushViewController(newViewController, animated: true)
-            } else if uiControllersCount == newViewControllers.count && currentViewControllers != newViewControllers {
-                rebuildViewControllerStack(newViewControllers: newStackState.viewControllers)
-            }
-        }
-
-        if viewControllers.count == 0 {
-            rebuildViewControllerStack(newViewControllers: newStackState.viewControllers)
-        }
-
+        handleModalState(newModalViewController: newStackState.modalViewController)
+        handleViewControllerState(newControllers: newStackState.viewControllers)
         currentStackState = newStackState
     }
 
+    func handleModalState(newModalViewController: ViewController?) {
+        let model = NavigationModalStateToNavigationEvent(currentModal: currentStackState.modalViewController, newModal: newModalViewController)
+        switch model.determineNecessaryStateAction() {
+        case .noActionNeeded:
+            break
+        case let .presentModal(viewController):
+            presentModal(viewController: viewController)
+        case .dismissModal:
+            dismissModal()
+        case let .dismissThenPresent(viewController):
+            dismissModal()
+            presentModal(viewController: viewController)
+        }
+    }
 
-    func presentModal(stackState: NavigationStackState) {
-        guard let modal = stackState.modalViewController else { return }
-        let modalViewController = modal.instantiateViewController()
-            modalViewController.modalPresentationStyle = .custom
-            modalViewController.transitioningDelegate = slideInTransitioningDelegate
-            present(modalViewController, animated: true)
+    func handleViewControllerState(newControllers: [ViewController]) {
 
+        let displayControllers = mapDisplayControllers()
+        let model = NavigationViewControllerStateToNavigationEvent(currentControllers: currentStackState.viewControllers, newControllers: newControllers, displayControllers: displayControllers)
+
+        switch model.determineNecessaryStateAction() {
+        case .noActionNeeded:
+            break
+        case let .rootViewController(viewController):
+            setRootViewController(viewController: viewController)
+        case let .push(viewController):
+            pushController(viewController: viewController)
+        case .pop:
+            popController()
+        case .systemPop:
+            break
+        case let .replaceViewStack(viewControllers):
+            replaceViewStack(viewControllers: viewControllers)
+        case let .appendToViewStack(viewControllers):
+            appendToViewStack(viewControllers: viewControllers)
+        case let .truncateViewStack(truncateLength):
+            truncateViewStack(truncateLength: truncateLength)
+        }
+    }
+
+    func mapDisplayControllers() -> [ViewController] {
+        guard let identifiableControllers = viewControllers as? [IdentifiableController] else { fatalError("All view controllers must be identifiable") }
+        return identifiableControllers.map { $0.viewController }
+    }
+
+    func setRootViewController(viewController: ViewController) {
+        let uiViewController = viewController.instantiateViewController()
+        viewControllers = [uiViewController]
+    }
+
+    func presentModal(viewController: ViewController) {
+
+        let uiViewController = viewController.instantiateViewController()
+        uiViewController.modalPresentationStyle = .custom
+        uiViewController.transitioningDelegate = slideInTransitioningDelegate
+        present(uiViewController, animated: true)
     }
 
     func dismissModal() {
         dismiss(animated: true, completion: nil)
     }
 
-    func pushViewController(stackState: NavigationStackState){
-        guard let viewControllers = stackState.viewControllers, lastViewController = viewControllers.last else { return }
-        let uiViewController = lastViewController.instantiateViewController()
+    func pushController(viewController: ViewController) {
+        let uiViewController = viewController.instantiateViewController()
         pushViewController(uiViewController, animated: true)
-
     }
 
-    func popViewController(stackState: NavigationStackState){
+    func popController() {
         popViewController(animated: true)
-
     }
 
-    func rebuildViewControllerStack(newViewControllers: [ViewController]) {
-        guard let identifiableControllers = self.viewControllers as? [IdentifiableController] else { return }
-        let newUIViewControllersArray =
-        for (index, element) in newViewControllers.enumerate() {
-            print("Item \(index): \(element)")
+    func replaceViewStack(viewControllers: [ViewController]) {
+        var uiViewControllers = [UIViewController]()
+        for viewController in viewControllers {
+            uiViewControllers.append(viewController.instantiateViewController())
         }
-
-
+        self.viewControllers = uiViewControllers
     }
 
-    func determineNavigationActionNeeded(newStackState: NavigationStackState) -> NavigationActionType {
-        guard let identifiableControllers = self.viewControllers as? [IdentifiableController],
-        let newStackStateViewControllers = newStackState.viewControllers else { fatalError() }
-        let currentControllers: [ViewController] = identifiableControllers.map { $0.viewController }
-
-        if identifiableControllers.count == 0 {
-            return .initializingViewState
+    func appendToViewStack(viewControllers: [ViewController]) {
+        var uiViewControllers = [UIViewController]()
+        for viewController in viewControllers {
+            uiViewControllers.append(viewController.instantiateViewController())
         }
-
-        else if currentStackState.modalViewController == nil && newStackState.modalViewController != nil {
-            return .presentModal
-        }
-
-        else if currentStackState.modalViewController != nil && newStackState.modalViewController == nil {
-            return .dismissModal
-        }
-
-        else if currentControllers == newStackStateViewControllers {
-            return .systemPop
-        }
-
-        else if currentControllers != newStackStateViewControllers && currentControllers.count < newStackStateViewControllers.count{
-            return .push
-        }
-
-         else if currentControllers != newStackStateViewControllers && currentControllers.count > newStackStateViewControllers.count {
-            return .pop
-        }
-
-
-        return .rebuildNeeded
-
-
+        self.viewControllers.append(contentsOf: uiViewControllers)
     }
 
-
+    func truncateViewStack(truncateLength: Int) {
+        let truncated = viewControllers[..<truncateLength]
+        viewControllers = Array(truncated)
+    }
 }

@@ -6,10 +6,10 @@ import ReSwift
 import SeptaSchedule
 
 struct NavigationStackState {
-    let viewControllers: [ViewController]?
+    let viewControllers: [ViewController]
     let modalViewController: ViewController?
 
-    init(viewControllers: [ViewController]? = nil, modalViewController: ViewController? = nil) {
+    init(viewControllers: [ViewController] = [ViewController](), modalViewController: ViewController? = nil) {
         self.viewControllers = viewControllers
         self.modalViewController = modalViewController
     }
@@ -19,15 +19,7 @@ extension NavigationStackState: Equatable {}
 func ==(lhs: NavigationStackState, rhs: NavigationStackState) -> Bool {
     var areEqual = true
 
-    switch (lhs.viewControllers, rhs.viewControllers) {
-    case (.none, .none):
-        areEqual = true
-    case (.some, .some):
-        areEqual = lhs.viewControllers! == rhs.viewControllers!
-    default:
-        return false
-    }
-
+    areEqual = lhs.viewControllers == rhs.viewControllers
     guard areEqual else { return false }
 
     switch (lhs.modalViewController, rhs.modalViewController) {
