@@ -16,26 +16,29 @@ struct FavoritesState: Codable {
     var hasFavoriteToEdit: Bool { return favoriteToEdit != nil }
 
     var favoritesExist: Bool { return favorites.count > 0 }
-    var nextToArriveTrips: [NextToArriveTrip] {
+
+    var nextToArriveFavorite: Favorite? {
         guard let nextToArriveFavoriteId = self.nextToArriveFavoriteId,
             let matchingFavorite = favorites.filter({ $0.favoriteId == nextToArriveFavoriteId }).first
-        else { return [NextToArriveTrip]() }
-        return matchingFavorite.nextToArriveTrips
+        else { return nil }
+        return matchingFavorite
+    }
+
+    var nextToArriveTrips: [NextToArriveTrip] {
+        guard let nextToArriveFavorite = nextToArriveFavorite else { return [NextToArriveTrip]() }
+        return nextToArriveFavorite.nextToArriveTrips
     }
 
     var nextToArriveUpdateStatus: NextToArriveUpdateStatus {
-        guard let nextToArriveFavoriteId = self.nextToArriveFavoriteId,
-            let matchingFavorite = favorites.filter({ $0.favoriteId == nextToArriveFavoriteId }).first
-        else { return .idle }
-        return matchingFavorite.nextToArriveUpdateStatus
+        guard let nextToArriveFavorite = nextToArriveFavorite else { return .idle }
+        return nextToArriveFavorite.nextToArriveUpdateStatus
     }
 
     var nextToArriveScheduleRequest: ScheduleRequest {
-        guard let nextToArriveFavoriteId = self.nextToArriveFavoriteId,
-            let matchingFavorite = favorites.filter({ $0.favoriteId == nextToArriveFavoriteId }).first
-        else { return ScheduleRequest() }
-        return matchingFavorite.scheduleRequest()
+        guard let nextToArriveFavorite = nextToArriveFavorite else { return ScheduleRequest() }
+        return nextToArriveFavorite.scheduleRequest()
     }
+
     var favoritesToUpdate: Set<Favorite> {
         return Set(favorites.filter { $0.refreshDataRequested && $0.nextToArriveUpdateStatus != .dataLoading })
     }

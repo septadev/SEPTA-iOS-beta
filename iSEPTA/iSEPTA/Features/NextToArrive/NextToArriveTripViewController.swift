@@ -25,8 +25,20 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel 
     }
 
     @IBAction func refreshButtonTapped(_: Any) {
-        let action = NextToArriveRefreshDataRequested(refreshUpdateRequested: true)
-        store.dispatch(action)
+        guard let target = store.state.targetForScheduleActions() else { return }
+
+        switch target {
+        case .nextToArrive:
+            let action = NextToArriveRefreshDataRequested(refreshUpdateRequested: true)
+            store.dispatch(action)
+        case .favorites:
+            guard var nextToArriveFavorite = store.state.favoritesState.nextToArriveFavorite else { return }
+            nextToArriveFavorite.refreshDataRequested = true
+            let favoriteAction = UpdateFavorite(favorite: nextToArriveFavorite, description: "User manually refreshed a favorite in Next to Arrive")
+            store.dispatch(favoriteAction)
+        default:
+            break
+        }
     }
 
     func viewModelUpdated() {

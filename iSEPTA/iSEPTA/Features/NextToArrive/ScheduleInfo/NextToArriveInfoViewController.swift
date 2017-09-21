@@ -13,6 +13,7 @@ class NextToArriveInfoViewController: UIViewController {
     var timer: Timer?
     @IBOutlet var upSwipeGestureRecognizer: UISwipeGestureRecognizer!
     @IBOutlet var downSwipeGestureRecognizer: UISwipeGestureRecognizer!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     @IBOutlet weak var tableView: UITableView!
     weak var nextToArriveDetailViewController: NextToArriveDetailViewController?
@@ -50,12 +51,12 @@ extension NextToArriveInfoViewController { // refresh timer
 
     func initTimer() {
 
-        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(oneMinuteTimerFired(timer:)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(oneMinuteTimerFired(timer:)), userInfo: nil, repeats: true)
     }
 
     @objc func oneMinuteTimerFired(timer _: Timer) {
 
-        millisecondsToDelayTableReload = 5000
+        millisecondsToDelayTableReload = 1000
         guard let target = store.state.targetForScheduleActions() else { return }
 
         switch target {
@@ -110,10 +111,12 @@ extension NextToArriveInfoViewController: UITableViewDataSource, UITableViewDele
 
 extension NextToArriveInfoViewController: UpdateableFromViewModel {
     func viewModelUpdated() {
+        activityIndicator.startAnimating()
         pendingRequestWorkItem?.cancel()
 
         // Wrap our request in a work item
         let requestWorkItem = DispatchWorkItem { [weak self] in
+            self?.activityIndicator.stopAnimating()
             self?.tableView.reloadData()
             print("Reload data")
         }

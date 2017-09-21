@@ -135,21 +135,27 @@
                                     <outlet property="delegate" destination="GjY-a8-64h" id="a7Q-Gp-OEv"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="pto-Z2-HS1">
+                                <rect key="frame" x="177" y="158" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XWV-WF-JiF" firstAttribute="leading" secondItem="ZlA-14-XfZ" secondAttribute="leading" id="Rr4-pI-dUJ" userLabel="TableViewLeft"/>
                             <constraint firstItem="pjJ-NE-5hP" firstAttribute="top" secondItem="ZlA-14-XfZ" secondAttribute="top" id="Vfm-UM-BxE" userLabel="HeaderViewTop"/>
+                            <constraint firstItem="pto-Z2-HS1" firstAttribute="centerY" secondItem="ZlA-14-XfZ" secondAttribute="centerY" id="XfM-iI-Pfo"/>
                             <constraint firstItem="ZlA-14-XfZ" firstAttribute="trailing" secondItem="XWV-WF-JiF" secondAttribute="trailing" id="eB4-wf-v2z" userLabel="TableViewRight"/>
                             <constraint firstItem="ZlA-14-XfZ" firstAttribute="trailing" secondItem="pjJ-NE-5hP" secondAttribute="trailing" id="eas-lF-gnO" userLabel="HeaderViewRight"/>
                             <constraint firstAttribute="bottom" secondItem="XWV-WF-JiF" secondAttribute="bottom" id="edK-B2-HTd" userLabel="TableViewBottom"/>
                             <constraint firstItem="XWV-WF-JiF" firstAttribute="top" secondItem="pjJ-NE-5hP" secondAttribute="bottom" id="jTU-7r-hSK" userLabel="TableViewTop"/>
+                            <constraint firstItem="pto-Z2-HS1" firstAttribute="centerX" secondItem="ZlA-14-XfZ" secondAttribute="centerX" id="xav-n1-y8J"/>
                             <constraint firstItem="pjJ-NE-5hP" firstAttribute="leading" secondItem="ZlA-14-XfZ" secondAttribute="leading" id="xlA-hf-g9z" userLabel="HeaderViewLeft"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZlA-14-XfZ"/>
                     </view>
                     <size key="freeformSize" width="375" height="337"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="pto-Z2-HS1" id="IWY-XK-YFV"/>
                         <outlet property="downSwipeGestureRecognizer" destination="6ND-qN-wkW" id="v5t-Ff-yOl"/>
                         <outlet property="tableFooterView" destination="5ea-Zd-gT6" id="TA0-ws-O0i"/>
                         <outlet property="tableView" destination="XWV-WF-JiF" id="CEu-K8-xN1"/>
