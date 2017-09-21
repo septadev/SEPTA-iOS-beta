@@ -167,7 +167,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         super.didMove(toParentViewController: parent)
 
         if parent == navigationController?.parent {
-            let action = UserPoppedViewController(description: "TripScheduleViewController has been popped")
+            let action = UserPoppedViewController(viewController: .tripScheduleController, description: "TripScheduleViewController has been popped")
             store.dispatch(action)
         }
     }

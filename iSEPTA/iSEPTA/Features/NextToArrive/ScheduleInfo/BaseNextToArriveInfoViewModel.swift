@@ -107,6 +107,7 @@ extension BaseNextToArriveInfoViewModel { // Table View
     }
 
     func cellIdAtIndexPath(_ indexPath: IndexPath) -> String {
+        guard indexPath.section < groupedTripData.count, indexPath.row < groupedTripData[indexPath.section].count else { return CellIds.noConnectionCell.rawValue }
         let trip = groupedTripData[indexPath.section][indexPath.row]
 
         if tripHasConnection(trip: trip) {

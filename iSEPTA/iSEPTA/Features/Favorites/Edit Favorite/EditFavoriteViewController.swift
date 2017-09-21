@@ -91,6 +91,10 @@ class EditFavoriteViewController: UIViewController, UITextFieldDelegate, Identif
 
         UIAlert.presentDestructiveYesNoAlertFrom(viewController: self, withTitle: "Remove a Favorite?", message: "Would you like to remove this trip as a favorite?") {
 
+            if store.state.targetForScheduleActions() == .favorites {
+                let action = PopViewController(viewController: .nextToArriveDetailController, description: "Can't show more when there are no favorites")
+                store.dispatch(action)
+            }
             let action = RemoveFavorite(favorite: favorite)
             store.dispatch(action)
         }

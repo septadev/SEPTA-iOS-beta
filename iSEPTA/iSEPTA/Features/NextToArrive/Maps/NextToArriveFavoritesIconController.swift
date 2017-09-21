@@ -29,10 +29,7 @@ class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelega
     }
 
     func favoritesState_FavoritesUpdated(favorites _: [Favorite]) {
-        if store.state.targetForScheduleActions() == .favorites && store.state.favoritesState.nextToArriveFavoriteId == nil {
-            let action = UserPoppedViewController(description: "Can't show more when there are no favorites")
-            store.dispatch(action)
-        }
+
         guard let currentScheduleRequest = currentScheduleRequest else { return }
         currentFavorite = currentScheduleRequest.locateInFavorites()
 
@@ -75,11 +72,20 @@ class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelega
 
     func updateFavoritesNavBarIcon() {
         navigationItem.rightBarButtonItems?.removeAll()
+        if store.state.targetForScheduleActions() == .favorites {
 
-        if let _ = currentFavorite {
-            navigationItem.rightBarButtonItem = editFavoriteBarButtonItem
+            if let _ = currentFavorite {
+                navigationItem.rightBarButtonItem = editFavoriteBarButtonItem
+            } else {
+                navigationItem.rightBarButtonItem = createFavoriteBarButtonItem
+            }
         } else {
             navigationItem.rightBarButtonItem = createFavoriteBarButtonItem
+            if let _ = currentFavorite {
+                createFavoriteBarButtonItem.image = SeptaImages.favoritesEnabled
+            } else {
+                createFavoriteBarButtonItem.image = SeptaImages.favoritesNotEnabled
+            }
         }
     }
 }

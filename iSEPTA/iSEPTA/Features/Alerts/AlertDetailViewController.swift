@@ -74,7 +74,7 @@ class AlertDetailViewController: UIViewController, IdentifiableController {
         super.didMove(toParentViewController: parent)
 
         if parent == navigationController?.parent {
-            let action = UserPoppedViewController(description: "TripScheduleViewController has been popped")
+            let action = UserPoppedViewController(viewController: .alertDetailViewController, description: "TripScheduleViewController has been popped")
             store.dispatch(action)
         }
     }

@@ -82,7 +82,7 @@ struct FavoritesReducer {
     }
 
     static func reduceRemoveFavorite(action: RemoveFavorite, state: FavoritesState) -> FavoritesState {
-        let favorites = state.favorites.filter { $0 != action.favorite }
+        let favorites = state.favorites.filter { $0.favoriteId != action.favorite.favoriteId }
         var favoriteState = FavoritesState(favorites: favorites)
         favoriteState.favoriteToEdit = nil
         favoriteState.nextToArriveFavoriteId = nil

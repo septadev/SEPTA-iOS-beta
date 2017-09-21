@@ -38,11 +38,20 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
     override func viewDidLoad() {
         navigationController?.navigationBar.configureBackButton()
         view.backgroundColor = SeptaColor.navBarBlue
-        navigationItem.title = store.state.nextToArriveState.scheduleState.scheduleRequest.transitMode.nextToArriveDetailTitle()
+
         view.bringSubview(toFront: tripView)
         constraintsToggle = ConstraintsToggle(activeConstraint: infoViewHeightCollapsedConstraint, inactiveConstraint: infoViewHeightExpandedConstraint)
         gestureRecognizerToggle = SwipeGestureRecognizerToggle(activeRecognizer: upSwipeGestureRecognizer, inactiveRecognizer: downSwipeGestureRecognizer)
         configureFavoriteController()
+        configureNavigationItemTitle()
+    }
+
+    func configureNavigationItemTitle() {
+        if store.state.targetForScheduleActions() == .favorites, let favorite = store.state.favoritesState.nextToArriveFavorite {
+            navigationItem.title = favorite.favoriteName
+        } else {
+            navigationItem.title = store.state.nextToArriveState.scheduleState.scheduleRequest.transitMode.nextToArriveDetailTitle()
+        }
     }
 
     func configureFavoriteController() {
@@ -57,7 +66,7 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
         super.didMove(toParentViewController: parent)
 
         if parent == navigationController?.parent {
-            let action = UserPoppedViewController(description: "TripScheduleViewController has been popped")
+            let action = UserPoppedViewController(viewController: .nextToArriveDetailController, description: "TripScheduleViewController has been popped")
             store.dispatch(action)
         }
     }
