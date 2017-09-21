@@ -68,26 +68,33 @@ struct FavoritesReducer {
     static func reduceSaveFavorite(action: SaveFavorite, state: FavoritesState) -> FavoritesState {
         var favorites = state.favorites.filter { $0.favoriteId != action.favorite.favoriteId }
         favorites.append(action.favorite)
-        return FavoritesState(favorites: favorites)
+        var favoriteState = FavoritesState(favorites: favorites)
+        favoriteState.favoriteToEdit = nil
+        return favoriteState
     }
 
     static func reduceCancelFavoriteEdit(action _: CancelFavoriteEdit, state: FavoritesState) -> FavoritesState {
-        return FavoritesState(favorites: state.favorites)
+        var favoriteState = FavoritesState(favorites: state.favorites)
+        favoriteState.favoriteToEdit = nil
+        return favoriteState
     }
 
     static func reduceRemoveFavorite(action: RemoveFavorite, state: FavoritesState) -> FavoritesState {
         let favorites = state.favorites.filter { $0 != action.favorite }
-        return FavoritesState(favorites: favorites)
+        var favoriteState = FavoritesState(favorites: favorites)
+        favoriteState.favoriteToEdit = nil
+        return favoriteState
     }
 
     static func reduceUpdateFavorite(action: UpdateFavorite, state: FavoritesState) -> FavoritesState {
-        var favorites = state.favorites
+        guard var matchingFavorite = state.favorites.filter({ $0.favoriteId == action.favorite.favoriteId }).first else { return state }
+        matchingFavorite.nextToArriveTrips = action.favorite.nextToArriveTrips
+        matchingFavorite.nextToArriveUpdateStatus = action.favorite.nextToArriveUpdateStatus
+        matchingFavorite.refreshDataRequested = false
 
-        favorites = favorites.filter { $0.favoriteId != action.favorite.favoriteId }
-        favorites.append(action.favorite)
-        var newState = FavoritesState(favorites: favorites)
-        newState.favoriteToEdit = state.favoriteToEdit
-        return newState
+        var otherFavorites = state.favorites.filter { $0.favoriteId != matchingFavorite.favoriteId }
+        otherFavorites.append(matchingFavorite)
+        return FavoritesState(favorites: otherFavorites)
     }
 
     static func reduceCreateNextToArriveFavorite(action: CreateNextToArriveFavorite, state: FavoritesState) -> FavoritesState {

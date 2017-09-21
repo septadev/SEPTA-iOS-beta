@@ -20,7 +20,8 @@ struct FavoritesState: Codable {
         return Set(favorites.filter { $0.refreshDataRequested && $0.nextToArriveUpdateStatus != .dataLoading })
     }
     var favoritesToDisplay: Set<Favorite> { return
-        Set(favorites.filter { $0.nextToArriveUpdateStatus == .dataLoadedSuccessfully })
+        //  Set(favorites.filter { $0.nextToArriveUpdateStatus == .dataLoadedSuccessfully })
+        Set(favorites)
     }
 
     init(favorites: [Favorite] = [Favorite]()) {
