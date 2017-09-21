@@ -12,20 +12,13 @@ import ReSwift
 
 class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelegate, ScheduleRequestWatcherDelegate {
 
-    var favoritesButton: UIButton! {
-        didSet {
-            setUpTargetAndActionForButton()
-            favoritesWatcher.delegate = self
-            scheduleRequestWatcher?.delegate = self
-        }
-    }
+    var editFavoriteBarButtonItem: UIBarButtonItem!
+    var navigationItem: UINavigationItem!
+    var createFavoriteBarButtonItem: UIBarButtonItem!
 
-    var favoritesWatcher: FavoritesState_FavoritesWatcher! {
-        didSet {
-        }
-    }
+    var favoritesWatcher: FavoritesState_FavoritesWatcher!
 
-    var scheduleRequestWatcher: BaseScheduleRequestWatcher?
+    var scheduleRequestWatcher: BaseScheduleRequestWatcher!
 
     var currentScheduleRequest: ScheduleRequest?
     var currentFavorite: Favorite?
@@ -36,8 +29,13 @@ class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelega
     }
 
     func favoritesState_FavoritesUpdated(favorites _: [Favorite]) {
+        if store.state.targetForScheduleActions() == .favorites && store.state.favoritesState.nextToArriveFavoriteId == nil {
+            let action = UserPoppedViewController(description: "Can't show more when there are no favorites")
+            store.dispatch(action)
+        }
         guard let currentScheduleRequest = currentScheduleRequest else { return }
         currentFavorite = currentScheduleRequest.locateInFavorites()
+
         updateFavoritesNavBarIcon()
     }
 
@@ -47,11 +45,24 @@ class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelega
         updateFavoritesNavBarIcon()
     }
 
-    func setUpTargetAndActionForButton() {
-        favoritesButton.addTarget(self, action: #selector(NextToArriveFavoritesIconController.didTapFavoritesButton(_:)), for: UIControlEvents.touchUpInside)
+    func setUpTargets() {
+        setUpTargetAndActionForEditFavoriteButton()
+        setUpTargetAndActionForCreateFavoriteButton()
+        scheduleRequestWatcher.delegate = self
+        favoritesWatcher.delegate = self
     }
 
-    @IBAction func didTapFavoritesButton(_: UIButton) {
+    func setUpTargetAndActionForEditFavoriteButton() {
+        editFavoriteBarButtonItem.action = #selector(didTapFavoritesButton)
+        editFavoriteBarButtonItem.target = self
+    }
+
+    func setUpTargetAndActionForCreateFavoriteButton() {
+        createFavoriteBarButtonItem.action = #selector(didTapFavoritesButton)
+        createFavoriteBarButtonItem.target = self
+    }
+
+    @objc func didTapFavoritesButton() {
         if let currentFavorite = currentFavorite {
             let action = EditFavorite(favorite: currentFavorite)
             store.dispatch(action)
@@ -63,12 +74,12 @@ class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelega
     }
 
     func updateFavoritesNavBarIcon() {
-        let image: UIImage
+        navigationItem.rightBarButtonItems?.removeAll()
+
         if let _ = currentFavorite {
-            image = SeptaImages.favoritesEnabled
+            navigationItem.rightBarButtonItem = editFavoriteBarButtonItem
         } else {
-            image = SeptaImages.favoritesNotEnabled
+            navigationItem.rightBarButtonItem = createFavoriteBarButtonItem
         }
-        favoritesButton.setImage(image, for: UIControlState.normal)
     }
 }

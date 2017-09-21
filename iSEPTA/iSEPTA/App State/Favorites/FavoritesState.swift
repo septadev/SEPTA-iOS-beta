@@ -36,7 +36,7 @@ struct FavoritesState: Codable {
 
     var nextToArriveScheduleRequest: ScheduleRequest {
         guard let nextToArriveFavorite = nextToArriveFavorite else { return ScheduleRequest() }
-        return nextToArriveFavorite.scheduleRequest()
+        return nextToArriveFavorite.convertedToScheduleRequest()
     }
 
     var favoritesToUpdate: Set<Favorite> {

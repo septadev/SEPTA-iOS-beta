@@ -14,13 +14,9 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
     @IBOutlet var infoViewHeightExpandedConstraint: NSLayoutConstraint!
     let viewController: ViewController = .nextToArriveDetailController
     var nextToArriveFavoritesController: NextToArriveFavoritesIconController!
+    @IBOutlet weak var editFavoriteBarButtonItem: UIBarButtonItem!
 
-    @IBOutlet weak var favoritesButton: UIButton! {
-        didSet {
-            nextToArriveFavoritesController = NextToArriveFavoritesIconController()
-            nextToArriveFavoritesController.favoritesButton = favoritesButton
-        }
-    }
+    @IBOutlet weak var createFavoriteBarButtonItem: UIBarButtonItem!
 
     @IBOutlet var upSwipeGestureRecognizer: UISwipeGestureRecognizer! {
         didSet {
@@ -46,6 +42,15 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
         view.bringSubview(toFront: tripView)
         constraintsToggle = ConstraintsToggle(activeConstraint: infoViewHeightCollapsedConstraint, inactiveConstraint: infoViewHeightExpandedConstraint)
         gestureRecognizerToggle = SwipeGestureRecognizerToggle(activeRecognizer: upSwipeGestureRecognizer, inactiveRecognizer: downSwipeGestureRecognizer)
+        configureFavoriteController()
+    }
+
+    func configureFavoriteController() {
+        nextToArriveFavoritesController = NextToArriveFavoritesIconController()
+        nextToArriveFavoritesController.createFavoriteBarButtonItem = createFavoriteBarButtonItem
+        nextToArriveFavoritesController.editFavoriteBarButtonItem = editFavoriteBarButtonItem
+        nextToArriveFavoritesController.navigationItem = navigationItem
+        nextToArriveFavoritesController.setUpTargets()
     }
 
     override func didMove(toParentViewController parent: UIViewController?) {

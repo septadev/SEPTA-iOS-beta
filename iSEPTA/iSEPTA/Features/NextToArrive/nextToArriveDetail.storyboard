@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -67,20 +68,18 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Next To Arrive" id="hQX-Wc-MEI">
-                        <barButtonItem key="rightBarButtonItem" image="favoriteNavBarOff" style="done" id="yu0-pI-RYt">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1Ec-bf-5Na">
-                                <rect key="frame" x="337" y="11" width="22" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="favoriteNavBarOn"/>
-                            </button>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="edit" id="T8u-CP-KOb"/>
+                            <barButtonItem image="favoriteNavBarOff" id="4P4-eu-BwU" userLabel="CreateFavorite"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
-                        <outlet property="favoritesButton" destination="1Ec-bf-5Na" id="bc8-HQ-v9P"/>
+                        <outlet property="createFavoriteBarButtonItem" destination="4P4-eu-BwU" id="amf-aH-TdO"/>
+                        <outlet property="editFavoriteBarButtonItem" destination="T8u-CP-KOb" id="Jfo-GB-cpr"/>
                         <outlet property="infoViewHeightCollapsedConstraint" destination="NQ4-FL-dqQ" id="5J1-ir-PRP"/>
                         <outlet property="infoViewHeightExpandedConstraint" destination="tSY-uq-i3T" id="9ft-4v-ANC"/>
-                        <outlet property="navigationItem" destination="hQX-Wc-MEI" id="0SE-85-ymX"/>
+                        <outlet property="navigationItem" destination="hQX-Wc-MEI" id="Jn4-Wn-I4K"/>
                         <outlet property="tripView" destination="tHU-O1-qGx" id="oom-Dp-RsZ"/>
                     </connections>
                 </viewController>
@@ -290,7 +289,6 @@
     </scenes>
     <resources>
         <image name="favoriteNavBarOff" width="22" height="20"/>
-        <image name="favoriteNavBarOn" width="22" height="20"/>
         <image name="pullHandle" width="35" height="4"/>
     </resources>
 </document>

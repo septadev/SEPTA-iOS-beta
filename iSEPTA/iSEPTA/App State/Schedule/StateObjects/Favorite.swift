@@ -20,6 +20,10 @@ struct Favorite: Codable {
     var nextToArriveUpdateStatus: NextToArriveUpdateStatus
     var refreshDataRequested: Bool
 
+    var scheduleRequest: ScheduleRequest {
+        return convertedToScheduleRequest()
+    }
+
     init(favoriteId: String, favoriteName: String, transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop, nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip](), nextToArriveUpdateStatus: NextToArriveUpdateStatus = .idle, refreshDataRequested: Bool = false) {
         self.favoriteId = favoriteId
         self.favoriteName = favoriteName

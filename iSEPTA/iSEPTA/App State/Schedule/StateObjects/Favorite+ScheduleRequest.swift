@@ -11,7 +11,7 @@ import SeptaSchedule
 
 extension Favorite {
 
-    func scheduleRequest() -> ScheduleRequest {
+    func convertedToScheduleRequest() -> ScheduleRequest {
         return ScheduleRequest(transitMode: transitMode, selectedRoute: selectedRoute, selectedStart: selectedStart, selectedEnd: selectedEnd, scheduleType: nil, reverseStops: false)
     }
 }
