@@ -9,3 +9,6 @@
 /Utilities/format.log
 Carthage/Checkouts/
 Carthage/
+/SeptaSchedule/SeptaScheduleTests/PreloadedDatabase/SEPTA.sqlite
+SEPTA.sqlite
+SEPTA.zip
