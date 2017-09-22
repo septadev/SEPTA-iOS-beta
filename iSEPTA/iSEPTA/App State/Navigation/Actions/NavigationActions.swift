@@ -37,6 +37,12 @@ struct PushViewController: NavigationAction {
     let description: String
 }
 
+struct PushNonActiveViewController: NavigationAction {
+    let navigationController: NavigationController
+    let viewController: ViewController
+    let description: String
+}
+
 struct UserPoppedViewController: NavigationAction {
     let viewController: ViewController
     let description: String

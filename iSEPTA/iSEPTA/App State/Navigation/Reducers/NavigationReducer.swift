@@ -34,6 +34,8 @@ struct NavigationReducer {
             navigationState = reduceUserPoppedViewControllerAction(action: action, state: state)
         case let action as PopViewController:
             navigationState = reducePopViewController(action: action, state: state)
+        case let action as PushNonActiveViewController:
+            navigationState = reducePushNonActiveViewController(action: action, state: state)
         default:
             navigationState = state
         }
@@ -108,6 +110,17 @@ struct NavigationReducer {
         }
         navigationStackState = NavigationStackState(viewControllers: viewControllers, modalViewController: nil)
         appStackState[navigationController] = navigationStackState
+        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController)
+    }
+
+    static func reducePushNonActiveViewController(action: PushNonActiveViewController, state: NavigationState) -> NavigationState {
+        var appStackState = state.appStackState
+
+        var navigationStackState = appStackState[action.navigationController] ?? NavigationStackState()
+        var viewControllers = navigationStackState.viewControllers
+        viewControllers.append(action.viewController)
+        navigationStackState = NavigationStackState(viewControllers: viewControllers, modalViewController: nil)
+        appStackState[action.navigationController] = navigationStackState
         return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController)
     }
 }
