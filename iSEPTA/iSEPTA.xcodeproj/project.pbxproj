@@ -23,6 +23,7 @@
 		580A35651F6A1949000FCA82 /* FavoriteNextToArriveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A35641F6A1949000FCA82 /* FavoriteNextToArriveViewModel.swift */; };
 		580A35671F6A255F000FCA82 /* FavoriteTripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A35661F6A255F000FCA82 /* FavoriteTripCell.swift */; };
 		580A35691F6A2B0A000FCA82 /* FavoriteHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A35681F6A2B0A000FCA82 /* FavoriteHeaderCell.swift */; };
+		580ED6AC1F75A0A60095D714 /* RefreshNextToArriveDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580ED6AB1F75A0A60095D714 /* RefreshNextToArriveDetail.swift */; };
 		58126F671F631C0800A6E187 /* ColorPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F661F631C0800A6E187 /* ColorPointAnnotation.swift */; };
 		58126F6B1F631C3100A6E187 /* RouteOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F6A1F631C3100A6E187 /* RouteOverlay.swift */; };
 		58126F6D1F631C5100A6E187 /* RouteDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58126F6C1F631C5100A6E187 /* RouteDrawable.swift */; };
@@ -562,6 +563,7 @@
 		580A35641F6A1949000FCA82 /* FavoriteNextToArriveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNextToArriveViewModel.swift; sourceTree = "<group>"; };
 		580A35661F6A255F000FCA82 /* FavoriteTripCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTripCell.swift; sourceTree = "<group>"; };
 		580A35681F6A2B0A000FCA82 /* FavoriteHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteHeaderCell.swift; sourceTree = "<group>"; };
+		580ED6AB1F75A0A60095D714 /* RefreshNextToArriveDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshNextToArriveDetail.swift; sourceTree = "<group>"; };
 		58126F661F631C0800A6E187 /* ColorPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPointAnnotation.swift; sourceTree = "<group>"; };
 		58126F6A1F631C3100A6E187 /* RouteOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteOverlay.swift; sourceTree = "<group>"; };
 		58126F6C1F631C5100A6E187 /* RouteDrawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDrawable.swift; sourceTree = "<group>"; };
@@ -1219,6 +1221,7 @@
 				671A19251F662DF000C8EEDA /* DividerViews.swift */,
 				671609101F67F72600941D2C /* UIStackView+Util.swift */,
 				580128111F6C055B006B6DB8 /* RedButton.swift */,
+				580ED6AB1F75A0A60095D714 /* RefreshNextToArriveDetail.swift */,
 				67365AD71F75918300FC86CB /* ViewSchedulesButton.swift */,
 				5876DF761F72F7A3006C61FE /* BackButton.swift */,
 				679924041F6E01BD00FD5691 /* MoreButton.swift */,
@@ -2836,6 +2839,7 @@
 				58EB8D2D1F5D927E0028A487 /* NextToArriveScheduleReducer.swift in Sources */,
 				67C5672F1F59862600FF6203 /* ReverseTripButton.swift in Sources */,
 				587BC04A1F6ED70900B92BB6 /* QuickMap.swift in Sources */,
+				580ED6AC1F75A0A60095D714 /* RefreshNextToArriveDetail.swift in Sources */,
 				58A26D951F6EFECC005A70D3 /* AlertsNavigationController.swift in Sources */,
 				67C567351F598C7900FF6203 /* SeptaAlertsViewController.swift in Sources */,
 				589A89DE1F52E7E8007329DB /* ScheduleStopEditReducer.swift in Sources */,

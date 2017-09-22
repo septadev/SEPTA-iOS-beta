@@ -260,21 +260,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30th St Station" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rU-a0-dpY" userLabel="EndName">
-                                <rect key="frame" x="97" y="37" width="233" height="17"/>
+                                <rect key="frame" x="97" y="37" width="96" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0LH-yO-0cj" userLabel="RefreshButton">
-                                <rect key="frame" x="325" y="18" width="38" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <state key="normal" title="Refresh">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="refreshButtonTapped:" destination="0La-Ry-f7T" eventType="touchUpInside" id="geM-wB-zel"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FfQ-gZ-8tW" userLabel="Divider">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="0.19790792785234898" colorSpace="calibratedWhite"/>
@@ -282,22 +272,33 @@
                                     <constraint firstAttribute="height" constant="1" id="zgW-rK-imX"/>
                                 </constraints>
                             </view>
+                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="42j-gG-sXU" customClass="RefreshNextToArriveDetailButton" customModule="Septa" customModuleProvider="target">
+                                <rect key="frame" x="295" y="17.5" width="68" height="25"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="3r2-5w-ZVj"/>
+                                    <constraint firstAttribute="width" constant="68" id="Qe4-in-bWa"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="refreshButtonTapped:" destination="0La-Ry-f7T" eventType="touchUpInside" id="q1r-ft-5Np"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="FfQ-gZ-8tW" firstAttribute="leading" secondItem="A9e-oT-VFV" secondAttribute="leading" id="2Mi-JH-ahT" userLabel="DividerLeading"/>
-                            <constraint firstItem="8rU-a0-dpY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0LH-yO-0cj" secondAttribute="leading" constant="5" id="5qB-y5-FSR" userLabel="EndNameRight"/>
                             <constraint firstItem="8rU-a0-dpY" firstAttribute="baseline" secondItem="8Tw-Og-gvv" secondAttribute="baseline" id="89f-mr-TC7" userLabel="EndNameBaseline"/>
                             <constraint firstItem="d62-sN-tBq" firstAttribute="leading" secondItem="f3B-d9-8HH" secondAttribute="trailing" constant="3" id="CVC-SO-apg" userLabel="StartNameLeft"/>
                             <constraint firstItem="FfQ-gZ-8tW" firstAttribute="top" secondItem="A9e-oT-VFV" secondAttribute="top" id="DDG-C9-ehO" userLabel="DividerTop"/>
-                            <constraint firstItem="0LH-yO-0cj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="d62-sN-tBq" secondAttribute="trailing" constant="5" id="FKg-Yh-xG0" userLabel="StartNameRight"/>
+                            <constraint firstItem="42j-gG-sXU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="d62-sN-tBq" secondAttribute="trailing" constant="10" id="DXf-I5-BxC" userLabel="StartLabelRight"/>
+                            <constraint firstItem="42j-gG-sXU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8Tw-Og-gvv" secondAttribute="trailing" constant="10" id="JfV-tg-8c1" userLabel="EndLabelRight"/>
                             <constraint firstItem="8rU-a0-dpY" firstAttribute="leading" secondItem="8Tw-Og-gvv" secondAttribute="trailing" constant="3" id="XDS-GF-v80" userLabel="EndNameLeft"/>
                             <constraint firstItem="f3B-d9-8HH" firstAttribute="leading" secondItem="A9e-oT-VFV" secondAttribute="leading" constant="10" id="auc-G6-9C4" userLabel="StartLabelLeft"/>
-                            <constraint firstItem="0LH-yO-0cj" firstAttribute="centerY" secondItem="A9e-oT-VFV" secondAttribute="centerY" id="dcq-hX-kkt" userLabel="RefreshButtonCenterY"/>
+                            <constraint firstItem="42j-gG-sXU" firstAttribute="centerY" secondItem="Ixl-7k-2ZF" secondAttribute="centerY" id="eNU-fY-dGa" userLabel="RefreshButtonCenterY"/>
                             <constraint firstItem="d62-sN-tBq" firstAttribute="baseline" secondItem="f3B-d9-8HH" secondAttribute="baseline" id="gD0-Mx-cgd" userLabel="StartNameBaseLine"/>
                             <constraint firstItem="8Tw-Og-gvv" firstAttribute="top" secondItem="f3B-d9-8HH" secondAttribute="bottom" constant="8" id="hqF-5c-suL" userLabel="EndLabelTop"/>
                             <constraint firstItem="8Tw-Og-gvv" firstAttribute="leading" secondItem="A9e-oT-VFV" secondAttribute="leading" constant="10" id="mMN-7K-yGU" userLabel="EndLabelLeft"/>
-                            <constraint firstAttribute="trailing" secondItem="0LH-yO-0cj" secondAttribute="trailing" constant="12" id="pMn-m7-Jip" userLabel="RefreshButtonRight"/>
+                            <constraint firstItem="Ixl-7k-2ZF" firstAttribute="trailing" secondItem="42j-gG-sXU" secondAttribute="trailing" constant="12" id="thY-QA-6hu" userLabel="RefreshButtonRight"/>
                             <constraint firstAttribute="trailing" secondItem="FfQ-gZ-8tW" secondAttribute="trailing" id="wFa-Ok-WLy" userLabel="DividerRight"/>
                             <constraint firstItem="f3B-d9-8HH" firstAttribute="top" secondItem="A9e-oT-VFV" secondAttribute="top" constant="12" id="xVt-EQ-Me5" userLabel="StartLabelTop"/>
                         </constraints>
