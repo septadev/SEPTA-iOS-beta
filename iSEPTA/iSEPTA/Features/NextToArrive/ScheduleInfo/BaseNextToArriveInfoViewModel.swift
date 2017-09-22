@@ -25,10 +25,11 @@ class BaseNextToArriveInfoViewModel {
         }
     }
 
+    
     func scheduleRequest() -> ScheduleRequest {
-        return store.state.nextToArriveState.scheduleState.scheduleRequest
+        return store.state.targetForScheduleActionsScheduleRequest()
     }
-
+    
     func transitMode() -> TransitMode {
         return scheduleRequest().transitMode
     }

@@ -20,6 +20,17 @@ extension AppState {
         }
     }
 
+    func targetForScheduleActionsScheduleRequest() -> ScheduleRequest {
+        guard let targetForScheduleAction = store.state.targetForScheduleActions() else { return ScheduleRequest() }
+        switch targetForScheduleAction {
+        case .nextToArrive: return store.state.nextToArriveState.scheduleState.scheduleRequest
+        case .favorites : return store.state.favoritesState.nextToArriveScheduleRequest
+        case .alerts: return store.state.alertState.scheduleState.scheduleRequest
+        case .schedules: return store.state.scheduleState.scheduleRequest
+        default: return ScheduleRequest()
+        }
+    }
+
     func watcherForScheduleActions() -> BaseScheduleRequestWatcher? {
         switch store.state.navigationState.activeNavigationController {
         case .schedules: return ScheduleState_ScheduleRequestWatcher()

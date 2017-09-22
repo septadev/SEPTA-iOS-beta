@@ -16,7 +16,7 @@ class NextToArriveInfoViewModel: BaseNextToArriveInfoViewModel, StoreSubscriber,
     typealias StoreSubscriberStateType = [NextToArriveTrip]
 
     override func scheduleRequest() -> ScheduleRequest {
-        return store.state.nextToArriveState.scheduleState.scheduleRequest
+        return store.state.targetForScheduleActionsScheduleRequest()
     }
 
     override func transitMode() -> TransitMode {
