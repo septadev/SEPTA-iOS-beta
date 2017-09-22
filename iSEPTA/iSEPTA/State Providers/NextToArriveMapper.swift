@@ -109,7 +109,8 @@ class NextToArriveMapper {
         var fiveHours = DateComponents()
         fiveHours.hour = 5
         let fiveHoursFromNow: Date = Calendar.current.date(byAdding: .hour, value: 5, to: Date())!
-        return date > Date() && date < fiveHoursFromNow
+        let fifteenMinutesAgo: Date = Calendar.current.date(byAdding: .minute, value: -15, to: Date())!
+        return date > fifteenMinutesAgo && date < fiveHoursFromNow
     }
 
     func isValidEndDate(date: Date, connectionStationName: String?) -> Bool {

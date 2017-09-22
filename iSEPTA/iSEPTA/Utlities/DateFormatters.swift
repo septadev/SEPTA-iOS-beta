@@ -56,6 +56,14 @@ public class DateFormatters {
         let diff = calendar.dateComponents([.hour, .minute], from: rightNow, to: date)
         if let hour = diff.hour, let minute = diff.minute, hour == 0, minute == 0 {
             return "now"
+        } else if let hour = diff.hour, let minute = diff.minute, hour == 0, minute < 0 {
+            var negativeComponents = DateComponents()
+            negativeComponents.minute = -minute
+            if let durationString = durationFormatter.string(from: negativeComponents) {
+                return "\(durationString) ago"
+            } else {
+                return nil
+            }
         } else {
             return durationFormatter.string(from: diff)
         }
