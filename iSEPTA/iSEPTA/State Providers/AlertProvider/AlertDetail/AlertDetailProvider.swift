@@ -12,8 +12,8 @@ import SeptaRest
 class AlertDetailProvider {
 
     static let sharedInstance = AlertDetailProvider()
-    var watcher = AlertState_ScheduleState_ScheduleRequest_SelectedRouteExistsWatcher()
-
+    var watcher = AlertState_ScheduleState_ScheduleRequestWatcher()
+    var currentRouteId = "ZZZZZ"
     let client = SEPTAApiClient.defaultClient(url: SeptaNetwork.sharedInstance.url, apiKey: SeptaNetwork.sharedInstance.apiKey)
 
     private init() {
@@ -41,10 +41,10 @@ class AlertDetailProvider {
     }
 }
 
-extension AlertDetailProvider: AlertState_ScheduleState_ScheduleRequest_SelectedRouteExistsWatcherDelegate {
-    func alertState_ScheduleState_ScheduleRequest_SelectedRouteExistsUpdated(bool: Bool) {
-        let routeExists = bool
-        if routeExists {
+extension AlertDetailProvider: ScheduleRequestWatcherDelegate {
+    func scheduleRequestUpdated(scheduleRequest: ScheduleRequest) {
+        guard let routeId = scheduleRequest.selectedRoute?.routeId else { return }
+        if routeId != currentRouteId {
             getDetailAlert()
         }
     }
