@@ -72,11 +72,14 @@ class BaseNavigationController: UINavigationController {
         viewControllers = [uiViewController]
     }
 
-    func presentModal(viewController: ViewController) {
+    var transitionDelegate: UIViewControllerTransitioningDelegate?
 
+    func presentModal(viewController: ViewController) {
+        guard let transitionDelegate = viewController.transitioningDelegate() else { return }
+        self.transitionDelegate = transitionDelegate
         let uiViewController = viewController.instantiateViewController()
         uiViewController.modalPresentationStyle = .custom
-        uiViewController.transitioningDelegate = slideInTransitioningDelegate
+        uiViewController.transitioningDelegate = transitionDelegate
         present(uiViewController, animated: true)
     }
 

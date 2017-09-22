@@ -68,6 +68,7 @@ class AlertDetailViewController: UIViewController, IdentifiableController {
         view.backgroundColor = SeptaColor.navBarBlue
         navigationController?.navigationBar.configureBackButton()
         setTitle()
+        alertDetails = store.state.alertState.alertDetails
     }
 
     override func didMove(toParentViewController parent: UIViewController?) {
@@ -123,6 +124,10 @@ extension AlertDetailViewController: UITableViewDelegate, UITableViewDataSource 
 
 extension AlertDetailViewController: AlertState_AlertDetailsWatcherDelegate {
     func alertState_AlertDetailsUpdated(alertDetails: [AlertDetails_Alert]) {
+        if alertDetails.count == 0 {
+            print("We got a failed alert details back")
+        }
+
         self.alertDetails = alertDetails
         self.tableView.reloadData()
     }
