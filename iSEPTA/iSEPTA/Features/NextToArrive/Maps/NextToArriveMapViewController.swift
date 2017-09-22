@@ -28,6 +28,8 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
 
     override func viewWillAppear(_: Bool) {
         mapView.showAnnotations(mapView.annotations, animated: false)
+
+        mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0), animated: true)
     }
 
     @IBOutlet private weak var mapView: MKMapView! {
