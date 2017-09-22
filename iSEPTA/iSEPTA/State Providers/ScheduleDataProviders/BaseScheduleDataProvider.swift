@@ -9,7 +9,7 @@ class BaseScheduleDataProvider: StoreSubscriber {
     var currentScheduleRequest = ScheduleRequest()
 
     let targetForScheduleAction: TargetForScheduleAction
-
+    var currentTransitMode: TransitMode?
     let databaseStateWatcher: ScheduleProviderDatabaseStateWatcher
 
     init(targetForScheduleAction: TargetForScheduleAction) {
@@ -25,6 +25,7 @@ class BaseScheduleDataProvider: StoreSubscriber {
         let scheduleRequest = state
         processNewState(scheduleRequest: scheduleRequest)
         currentScheduleRequest = scheduleRequest
+        currentTransitMode = state.transitMode
     }
 
     func processNewState(scheduleRequest: ScheduleRequest) {
@@ -110,7 +111,7 @@ class BaseScheduleDataProvider: StoreSubscriber {
 
     func prerequisitesForRoutesHaveChanged(scheduleRequest: ScheduleRequest) -> Bool {
 
-        return scheduleRequest.transitMode != currentScheduleRequest.transitMode
+        return scheduleRequest.transitMode != currentScheduleRequest.transitMode || currentTransitMode == nil
     }
 
     func prerequisitesForTripStartsHaveChanged(scheduleRequest: ScheduleRequest) -> Bool {
