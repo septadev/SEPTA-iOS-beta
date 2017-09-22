@@ -156,18 +156,44 @@
                     <connections>
                         <outlet property="activityIndicator" destination="pto-Z2-HS1" id="IWY-XK-YFV"/>
                         <outlet property="downSwipeGestureRecognizer" destination="6ND-qN-wkW" id="v5t-Ff-yOl"/>
-                        <outlet property="tableFooterView" destination="5ea-Zd-gT6" id="TA0-ws-O0i"/>
+                        <outlet property="tableFooterView" destination="JqT-ir-i9a" id="TcE-Kl-yyl"/>
                         <outlet property="tableView" destination="XWV-WF-JiF" id="CEu-K8-xN1"/>
                         <outlet property="titleLabel" destination="m5N-7U-7Uy" id="zyS-C8-Mac"/>
                         <outlet property="upSwipeGestureRecognizer" destination="ACM-6Z-FqX" id="MbS-iY-xM3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jiy-sR-bTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="5ea-Zd-gT6" userLabel="TableFooterView">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="10"/>
+                <view contentMode="scaleToFill" id="JqT-ir-i9a" userLabel="NeedToSeeLaterTrains">
+                    <rect key="frame" x="0.0" y="0.0" width="400" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <viewLayoutGuide key="safeArea" id="tJI-Ps-HfJ"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need to see later trains?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3d-g1-Obc" userLabel="Label">
+                            <rect key="frame" x="19" y="12.5" width="168" height="17"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                            <color key="textColor" red="0.84313725490196079" green="0.22745098039215686" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1U-SC-g0W" userLabel="ViewSchedulesButton" customClass="ViewNextToArriveTripInSchedulesButton" customModule="Septa" customModuleProvider="target">
+                            <rect key="frame" x="237" y="6" width="140" height="30"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="VgK-rK-AEL"/>
+                                <constraint firstAttribute="width" constant="140" id="Zlq-ca-o04"/>
+                            </constraints>
+                            <connections>
+                                <action selector="viewNextToArriveInSchedulesTapped:" destination="GjY-a8-64h" eventType="touchUpInside" id="hhq-FA-uiY"/>
+                            </connections>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.96470588235294119" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="k1U-SC-g0W" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="y3d-g1-Obc" secondAttribute="trailing" constant="10" id="2cw-DT-kuc" userLabel="LabelRight"/>
+                        <constraint firstItem="y3d-g1-Obc" firstAttribute="centerY" secondItem="ARr-CL-fZV" secondAttribute="centerY" id="5If-nH-htS" userLabel="LabelCenterY"/>
+                        <constraint firstItem="y3d-g1-Obc" firstAttribute="leading" secondItem="ARr-CL-fZV" secondAttribute="leading" constant="19" id="Fz2-JS-Tnp" userLabel="LabelLeft"/>
+                        <constraint firstItem="ARr-CL-fZV" firstAttribute="trailing" secondItem="k1U-SC-g0W" secondAttribute="trailing" constant="23" id="U1b-UN-Oyl" userLabel="ViewSchedulesButtonRight"/>
+                        <constraint firstItem="k1U-SC-g0W" firstAttribute="centerY" secondItem="ARr-CL-fZV" secondAttribute="centerY" id="tGx-EO-UOU" userLabel="ViewSchedulesButtonCenterY"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="ARr-CL-fZV"/>
                 </view>
                 <swipeGestureRecognizer enabled="NO" direction="down" id="6ND-qN-wkW" userLabel="Down Swipe Gesture Recognizer"/>
                 <swipeGestureRecognizer direction="up" id="ACM-6Z-FqX" userLabel="Up Swipe Gesture Recognizer"/>

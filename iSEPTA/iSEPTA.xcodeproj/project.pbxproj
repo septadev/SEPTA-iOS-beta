@@ -416,6 +416,7 @@
 		67365ACD1F754A3200FC86CB /* SevenEightsAnimationOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67365AC51F754A3200FC86CB /* SevenEightsAnimationOut.swift */; };
 		67365ACE1F754A3200FC86CB /* SevenEightsPresentationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67365AC61F754A3200FC86CB /* SevenEightsPresentationCoordinator.swift */; };
 		67365ACF1F754A3200FC86CB /* SevenEightsTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67365AC71F754A3200FC86CB /* SevenEightsTransitioningDelegate.swift */; };
+		67365AD81F75918300FC86CB /* ViewSchedulesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67365AD71F75918300FC86CB /* ViewSchedulesButton.swift */; };
 		6749A46E1F53997D00AF6119 /* StopToSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749A46D1F53997D00AF6119 /* StopToSelect.swift */; };
 		6749A4711F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */; };
 		674FDBBF1F56E87F00CA67D2 /* SeptaRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; };
@@ -978,6 +979,7 @@
 		67365AC71F754A3200FC86CB /* SevenEightsTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SevenEightsTransitioningDelegate.swift; sourceTree = "<group>"; };
 		67365AD51F757B5200FC86CB /* bgTrolleyImage@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "bgTrolleyImage@2x.jpg"; path = "../../../../downloadedAssets/bgTrolleyImage@2x.jpg"; sourceTree = "<group>"; };
 		67365AD61F757B5300FC86CB /* bgTrolleyImage@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "bgTrolleyImage@3x.jpg"; path = "../../../../downloadedAssets/bgTrolleyImage@3x.jpg"; sourceTree = "<group>"; };
+		67365AD71F75918300FC86CB /* ViewSchedulesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSchedulesButton.swift; sourceTree = "<group>"; };
 		6749A46D1F53997D00AF6119 /* StopToSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopToSelect.swift; sourceTree = "<group>"; };
 		6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAddressRelativeStopViewModel.swift; sourceTree = "<group>"; };
 		674FDBC41F57390D00CA67D2 /* Route+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Color.swift"; sourceTree = "<group>"; };
@@ -1217,6 +1219,7 @@
 				671A19251F662DF000C8EEDA /* DividerViews.swift */,
 				671609101F67F72600941D2C /* UIStackView+Util.swift */,
 				580128111F6C055B006B6DB8 /* RedButton.swift */,
+				67365AD71F75918300FC86CB /* ViewSchedulesButton.swift */,
 				5876DF761F72F7A3006C61FE /* BackButton.swift */,
 				679924041F6E01BD00FD5691 /* MoreButton.swift */,
 				58248B6F1F6D6C3800DA2D65 /* SaveFavoriteButton.swift */,
@@ -2792,6 +2795,7 @@
 				678DAAA21F6706E300EB6EE8 /* NextToArriveTripGrouper.swift in Sources */,
 				67C567331F598A0400FF6203 /* TransitAlertView.swift in Sources */,
 				5814AA841F43589E00DF774A /* TripScheduleViewModel.swift in Sources */,
+				67365AD81F75918300FC86CB /* ViewSchedulesButton.swift in Sources */,
 				67365ACA1F754A3200FC86CB /* HalfSheetPresentationCoordinator.swift in Sources */,
 				58490E471F55F98B007DBCA1 /* AlertState.swift in Sources */,
 				5814AA8A1F4359D000DF774A /* TripleTextDisplayable.swift in Sources */,

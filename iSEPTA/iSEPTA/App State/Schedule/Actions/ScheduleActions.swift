@@ -138,3 +138,9 @@ struct LoadAllRailRoutes: ScheduleAction {
     let description = "For next to arrive the user will need access to all rail routes"
     let targetForScheduleAction = TargetForScheduleAction.nextToArrive
 }
+
+struct AddScheduleRequestToSchedules: ScheduleAction {
+    let scheduleRequest: ScheduleRequest
+    let description = "Load Up Next to Arrive data in Schedules"
+    let targetForScheduleAction = TargetForScheduleAction.schedules
+}

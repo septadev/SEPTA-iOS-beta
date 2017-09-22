@@ -37,6 +37,20 @@ class NextToArriveInfoViewController: UIViewController {
 
         viewModel.delegate = self
         titleLabel.text = viewModel.viewTitle()
+        tableView.tableFooterView = tableFooterView
+    }
+
+    @IBAction func viewNextToArriveInSchedulesTapped(_: Any) {
+        let moveScheduleRequest = AddScheduleRequestToSchedules(
+            scheduleRequest: store.state.targetForScheduleActionsScheduleRequest()
+        )
+        store.dispatch(moveScheduleRequest)
+
+        let pushAction = PushNonActiveViewController(navigationController: .schedules, viewController: .tripScheduleController, description: "Viewing Schedules from Next To Arrive")
+        store.dispatch(pushAction)
+
+        let switchTabAction = SwitchTabs(activeNavigationController: .schedules, description: "Navigating to Schedules from Next to Arrive")
+        store.dispatch(switchTabAction)
     }
 }
 
