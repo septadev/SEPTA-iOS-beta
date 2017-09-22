@@ -64,7 +64,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
     var modalTransitioningDelegate: UIViewControllerTransitioningDelegate!
     func presentEditFavoritModal() {
 
-        modalTransitioningDelegate = ViewControllerTransitioningDelegate(viewController: .editFavoriteViewController)
+        modalTransitioningDelegate = ViewController.editFavoriteViewController.transitioningDelegate()
         if let viewController: UIViewController = ViewController.editFavoriteViewController.instantiateViewController() {
             viewController.modalPresentationStyle = .custom
             viewController.transitioningDelegate = modalTransitioningDelegate

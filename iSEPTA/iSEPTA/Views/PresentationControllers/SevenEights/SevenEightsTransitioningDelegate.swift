@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ViewControllerTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
+class SevenEightsTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
     let viewController: ViewController
     init(viewController: ViewController) {
         self.viewController = viewController
@@ -21,10 +21,10 @@ class ViewControllerTransitioningDelegate: NSObject, UIViewControllerTransitioni
     }
 
     func animationController(forPresented _: UIViewController, presenting _: UIViewController, source _: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return HalfSheetAnimationIn()
+        return SevenEightsAnimationIn()
     }
 
     func animationController(forDismissed _: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return HalfSheetAnimationOut()
+        return SevenEightsAnimationOut()
     }
 }

@@ -80,6 +80,19 @@ enum ViewController: String, Equatable {
         switch self {
         case .editFavoriteViewController:
             return HalfSizePresentationController(presentedViewController: presentedViewController, presenting: presenting)
+        case .routesViewController, .selectStartController, .selectStopController, .selectStopNavigationController:
+            return SevenEightsPresentationController(presentedViewController: presentedViewController, presenting: presenting)
+
+        default: return nil
+        }
+    }
+
+    func transitioningDelegate() -> UIViewControllerTransitioningDelegate? {
+        switch self {
+        case .editFavoriteViewController:
+            return HalfSheetTransitioningDelegate(viewController: self)
+        case .routesViewController, .selectStartController, .selectStopController, .selectStopNavigationController:
+            return SevenEightsTransitioningDelegate(viewController: self)
         default: return nil
         }
     }

@@ -29,7 +29,7 @@ struct AlertReducer {
 
     static func reduceScheduleAction(action: ScheduleAction, state: AlertState) -> AlertState {
         let scheduleState = ScheduleReducer.main(action: action, state: state.scheduleState)
-        return AlertState(alertDict: state.alertDict, scheduleState: scheduleState, lastUpdated: state.lastUpdated)
+        return AlertState(alertDict: state.alertDict, scheduleState: scheduleState, lastUpdated: state.lastUpdated, alertDetails: state.alertDetails)
     }
 
     static func reduceAlertActions(action: AlertAction, state: AlertState) -> AlertState {
@@ -51,6 +51,7 @@ struct AlertReducer {
     }
 
     static func reduceAlertDetailsLoaded(action: AlertDetailsLoaded, state: AlertState) -> AlertState {
+
         return AlertState(alertDict: state.alertDict, scheduleState: state.scheduleState, lastUpdated: state.lastUpdated, alertDetails: action.alertDetails)
     }
 }
