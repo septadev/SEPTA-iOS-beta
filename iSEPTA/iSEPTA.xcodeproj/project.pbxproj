@@ -976,6 +976,8 @@
 		67365AC51F754A3200FC86CB /* SevenEightsAnimationOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SevenEightsAnimationOut.swift; sourceTree = "<group>"; };
 		67365AC61F754A3200FC86CB /* SevenEightsPresentationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SevenEightsPresentationCoordinator.swift; sourceTree = "<group>"; };
 		67365AC71F754A3200FC86CB /* SevenEightsTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SevenEightsTransitioningDelegate.swift; sourceTree = "<group>"; };
+		67365AD51F757B5200FC86CB /* bgTrolleyImage@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "bgTrolleyImage@2x.jpg"; path = "../../../../downloadedAssets/bgTrolleyImage@2x.jpg"; sourceTree = "<group>"; };
+		67365AD61F757B5300FC86CB /* bgTrolleyImage@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "bgTrolleyImage@3x.jpg"; path = "../../../../downloadedAssets/bgTrolleyImage@3x.jpg"; sourceTree = "<group>"; };
 		6749A46D1F53997D00AF6119 /* StopToSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopToSelect.swift; sourceTree = "<group>"; };
 		6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAddressRelativeStopViewModel.swift; sourceTree = "<group>"; };
 		674FDBC41F57390D00CA67D2 /* Route+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Color.swift"; sourceTree = "<group>"; };
@@ -1191,6 +1193,7 @@
 		582F4E811F33B1120062A546 /* Common Views */ = {
 			isa = PBXGroup;
 			children = (
+				67365AD21F757AE600FC86CB /* LaunchScreen */,
 				58248B731F6D8AA800DA2D65 /* PresentationControllers */,
 				580128071F6B26D2006B6DB8 /* RoundedShadowView.swift */,
 				586DFEC41F505482004BC972 /* CurvedTopView.swift */,
@@ -2161,6 +2164,15 @@
 				67365AC71F754A3200FC86CB /* SevenEightsTransitioningDelegate.swift */,
 			);
 			path = SevenEights;
+			sourceTree = "<group>";
+		};
+		67365AD21F757AE600FC86CB /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				67365AD51F757B5200FC86CB /* bgTrolleyImage@2x.jpg */,
+				67365AD61F757B5300FC86CB /* bgTrolleyImage@3x.jpg */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 		678D26C21F5CC49200D140CC /* Favorites */ = {
