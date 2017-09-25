@@ -8,9 +8,10 @@
 
 import Foundation
 import UIKit
+import SeptaSchedule
 
 protocol AlertViewDelegate: AnyObject {
-    func didTapAlertView(nextToArriveStop: NextToArriveStop)
+    func didTapAlertView(nextToArriveStop: NextToArriveStop, transitMode: TransitMode)
 }
 
 @IBDesignable
@@ -24,10 +25,11 @@ class TripHeaderView: UIView {
 
     weak var alertViewDelegate: AlertViewDelegate?
     var nextToArriveStop: NextToArriveStop!
+    var transitMode: TransitMode!
 
     @IBAction func didTapAlertView(_: Any) {
         if alertStackView.subviews.count > 0 {
-            alertViewDelegate?.didTapAlertView(nextToArriveStop: nextToArriveStop)
+            alertViewDelegate?.didTapAlertView(nextToArriveStop: nextToArriveStop, transitMode: transitMode)
         }
     }
 
