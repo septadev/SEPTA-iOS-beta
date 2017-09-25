@@ -169,11 +169,8 @@ class RealTimeArrivalTests: XCTestCase {
 
     func mapConnectionStation(realTimeArrival a: RealTimeArrival) -> NextToArriveConnectionStation? {
         guard let stopName = a.connection_station_name else { return nil }
-        var stopId: Int?
-        if let stopIdString = a.connection_station_id, let stopIdInt = Int(stopIdString) {
-            stopId = stopIdInt
-        }
-        return NextToArriveConnectionStation(stopId: stopId, stopName: stopName)
+
+        return NextToArriveConnectionStation(stopId: a.connection_station_id, stopName: stopName)
     }
 
     func mapCoordinateFromString(latString: String?, lonString: String?) -> CLLocationCoordinate2D? {

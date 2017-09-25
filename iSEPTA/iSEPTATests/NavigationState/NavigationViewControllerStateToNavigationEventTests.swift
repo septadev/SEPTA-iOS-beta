@@ -139,4 +139,19 @@ class NavigationViewControllerStateToNavigationEventTests: XCTestCase {
             XCTFail("Incorrect state returned \(result)")
         }
     }
+
+    func testNextToArrive_DetailVisible() {
+        let currentControllers: [ViewController] = [.nextToArriveController, .nextToArriveDetailController]
+        let displayControllers: [ViewController] = [.nextToArriveController, .nextToArriveDetailController]
+        let newControllers: [ViewController] = [.nextToArriveController, .nextToArriveDetailController]
+        let model = NavigationViewControllerStateToNavigationEvent(currentControllers: currentControllers, newControllers: newControllers, displayControllers: displayControllers)
+
+        let result = model.determineNecessaryStateAction()
+        switch result {
+        case .noActionNeeded:
+            XCTAssertTrue(true)
+        default:
+            XCTFail("Incorrect state returned \(result)")
+        }
+    }
 }
