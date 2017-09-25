@@ -24,8 +24,6 @@ class AlertDetailViewController: UIViewController, IdentifiableController {
     let cellId = "alertDetailCell"
     @IBOutlet weak var routeNameLabel: UILabel! {
         didSet {
-            guard let route = route else { return }
-            routeNameLabel.text = route.routeAlertTitle()
         }
     }
 
@@ -44,10 +42,15 @@ class AlertDetailViewController: UIViewController, IdentifiableController {
 
     @IBOutlet weak var pillView: UIView! {
         didSet {
-            guard let route = route else { return }
-            pillView.layer.cornerRadius = 5
-            pillView.backgroundColor = Route.colorForRoute(route, transitMode: transitMode)
         }
+    }
+
+    func updateHeaderViews() {
+        guard let route = route else { return }
+        pillView.layer.cornerRadius = 5
+        pillView.backgroundColor = Route.colorForRoute(route, transitMode: transitMode)
+        routeNameLabel.text = route.routeAlertTitle()
+        navigationItem.title = transitMode.alertDetailTitle()
     }
 
     var transitMode: TransitMode {
@@ -66,14 +69,14 @@ class AlertDetailViewController: UIViewController, IdentifiableController {
         super.viewDidLoad()
         watcher.delegate = self
         view.backgroundColor = SeptaColor.navBarBlue
-        navigationController?.navigationBar.configureBackButton()
+
         setTitle()
         alertDetails = store.state.alertState.alertDetails
     }
 
     override func didMove(toParentViewController parent: UIViewController?) {
         super.didMove(toParentViewController: parent)
-
+        navigationController?.navigationBar.configureBackButton()
         if parent == navigationController?.parent {
             let action = UserPoppedViewController(viewController: .alertDetailViewController, description: "TripScheduleViewController has been popped")
             store.dispatch(action)
@@ -127,7 +130,7 @@ extension AlertDetailViewController: AlertState_AlertDetailsWatcherDelegate {
         if alertDetails.count == 0 {
             print("We got a failed alert details back")
         }
-
+        updateHeaderViews()
         self.alertDetails = alertDetails
         self.tableView.reloadData()
     }

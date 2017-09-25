@@ -36,7 +36,7 @@ import ObjectMapper
 
 public class RealTimeArrival: Mappable {
 
- public  var connection_station_id: String?
+ public  var connection_station_id: Int?
   public var connection_station_name: String?
   public var orig_arrival_time: String?
   public var orig_delay_minutes: Int?

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BaseNavigationController: UINavigationController {
+class BaseNavigationController: UINavigationController, UINavigationControllerDelegate {
     var currentStackState = NavigationStackState()
 
     @IBOutlet var stateProvider: NavigationControllerBaseStateProvider!
@@ -115,5 +115,16 @@ class BaseNavigationController: UINavigationController {
     func truncateViewStack(truncateLength: Int) {
         let truncated = viewControllers[..<truncateLength]
         viewControllers = Array(truncated)
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        delegate = self
+    }
+
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated _: Bool) {
+        navigationController.navigationBar.tintColor = UIColor.white
+        let item = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
+        viewController.navigationItem.backBarButtonItem = item
     }
 }

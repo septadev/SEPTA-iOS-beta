@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -42,7 +43,14 @@
                             </constraints>
                         </view>
                     </subviews>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="2EP-ra-GL2" appends="YES" id="Elu-7D-78M"/>
+                    </connections>
                 </stackView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="FNg-qi-ele">
+                    <rect key="frame" x="198" y="17" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -51,18 +59,26 @@
                 <constraint firstItem="AJ1-G3-QIM" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="KHP-PT-vO3" userLabel="LineNameTop"/>
                 <constraint firstItem="QfJ-z8-RqF" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="LQf-xc-aVk" userLabel="PillViewCenterY"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HCf-Ad-m91" secondAttribute="trailing" id="VMH-TM-XMr" userLabel="AlertViewRight"/>
+                <constraint firstItem="FNg-qi-ele" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="b42-tn-BC6"/>
                 <constraint firstItem="AJ1-G3-QIM" firstAttribute="leading" secondItem="QfJ-z8-RqF" secondAttribute="trailing" constant="5" id="jaK-st-cEa" userLabel="LineNameLeft"/>
                 <constraint firstItem="AJ1-G3-QIM" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="lPx-mv-4Pn" userLabel="LineNameCenterY"/>
+                <constraint firstItem="FNg-qi-ele" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="sRk-n9-vkH"/>
                 <constraint firstItem="QfJ-z8-RqF" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ty2-le-8Ig" userLabel="PillViewLeft"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="activityIndicator" destination="FNg-qi-ele" id="otC-6B-aFk"/>
                 <outlet property="alertStackView" destination="HCf-Ad-m91" id="ZS3-V5-uDD"/>
                 <outlet property="lineNameLabel" destination="AJ1-G3-QIM" id="vyu-Zr-nee"/>
                 <outlet property="pillView" destination="QfJ-z8-RqF" id="TYP-rz-qVw"/>
             </connections>
             <point key="canvasLocation" x="29.5" y="-260"/>
         </view>
+        <tapGestureRecognizer id="2EP-ra-GL2">
+            <connections>
+                <action selector="didTapAlertView:" destination="iN0-l3-epB" id="XrY-8d-yP7"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

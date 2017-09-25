@@ -14,7 +14,6 @@ struct NextToArriveStop {
     let routeId: String
     let routeName: String
     let tripId: Int?
-
     let arrivalTime: Date
     let departureTime: Date
     let lastStopId: Int?

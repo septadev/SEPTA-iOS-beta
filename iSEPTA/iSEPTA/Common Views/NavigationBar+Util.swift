@@ -12,9 +12,9 @@ import UIKit
 
 extension UINavigationBar {
     func configureBackButton() {
-        tintColor = UIColor.white
-        if let topItem = topItem {
-            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        }
+        //        tintColor = UIColor.white
+        //        if let topItem = topItem {
+        //            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        //        }
     }
 }

@@ -28,8 +28,8 @@ struct ScheduleRequestReducer {
             newScheduleRequest = reduceResetSchedule(action: action, scheduleRequest: scheduleRequest)
         case let action as LoadAllRailRoutes:
             newScheduleRequest = reduceLoadAllRailRoutes(action: action, scheduleRequest: scheduleRequest)
-        case let action as AddScheduleRequestToSchedules:
-            newScheduleRequest = reduceAddScheduleRequestToSchedules(action: action, scheduleRequest: scheduleRequest)
+        case let action as CopyScheduleRequestToTargetForScheduleAction:
+            newScheduleRequest = reduceCopyScheduleRequestToTargetForScheduleAction(action: action, scheduleRequest: scheduleRequest)
         default:
             newScheduleRequest = scheduleRequest
         }
@@ -72,7 +72,7 @@ struct ScheduleRequestReducer {
         return ScheduleRequest(transitMode: scheduleRequest.transitMode, selectedRoute: Route.allRailRoutesRoute(), selectedStart: nil, selectedEnd: nil, scheduleType: scheduleRequest.transitMode.defaultScheduleType(), reverseStops: false)
     }
 
-    static func reduceAddScheduleRequestToSchedules(action: AddScheduleRequestToSchedules, scheduleRequest _: ScheduleRequest) -> ScheduleRequest {
+    static func reduceCopyScheduleRequestToTargetForScheduleAction(action: CopyScheduleRequestToTargetForScheduleAction, scheduleRequest _: ScheduleRequest) -> ScheduleRequest {
         return action.scheduleRequest
     }
 }

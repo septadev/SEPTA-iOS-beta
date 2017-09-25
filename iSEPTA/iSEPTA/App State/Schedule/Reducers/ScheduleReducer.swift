@@ -41,6 +41,8 @@ struct ScheduleReducer {
             scheduleState = reduceTripReverse(action: action, state: state)
         case let action as DatabaseLoaded:
             scheduleState = reduceDatabaseLoaded(action: action, state: state)
+        case let action as CopyScheduleStateToTargetForScheduleAction:
+            scheduleState = reduceCopyScheduleStateToTargetForScheduleAction(action: action, state: state)
         default:
             scheduleState = ScheduleState(
                 scheduleRequest: Req.reduceRequest(action: action, scheduleRequest: scheduleState.scheduleRequest),
@@ -61,5 +63,9 @@ struct ScheduleReducer {
 
     static func reduceDatabaseLoaded(action _: DatabaseLoaded, state: ScheduleState) -> ScheduleState {
         return ScheduleState(scheduleRequest: state.scheduleRequest, scheduleData: state.scheduleData, scheduleStopEdit: state.scheduleStopEdit)
+    }
+
+    static func reduceCopyScheduleStateToTargetForScheduleAction(action: CopyScheduleStateToTargetForScheduleAction, state _: ScheduleState) -> ScheduleState {
+        return action.scheduleState
     }
 }

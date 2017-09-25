@@ -139,8 +139,14 @@ struct LoadAllRailRoutes: ScheduleAction {
     let targetForScheduleAction = TargetForScheduleAction.nextToArrive
 }
 
-struct AddScheduleRequestToSchedules: ScheduleAction {
+struct CopyScheduleRequestToTargetForScheduleAction: ScheduleAction {
+    let targetForScheduleAction: TargetForScheduleAction
     let scheduleRequest: ScheduleRequest
-    let description = "Load Up Next to Arrive data in Schedules"
-    let targetForScheduleAction = TargetForScheduleAction.schedules
+    let description: String
+}
+
+struct CopyScheduleStateToTargetForScheduleAction: ScheduleAction {
+    let targetForScheduleAction: TargetForScheduleAction
+    let scheduleState: ScheduleState
+    let description: String
 }
