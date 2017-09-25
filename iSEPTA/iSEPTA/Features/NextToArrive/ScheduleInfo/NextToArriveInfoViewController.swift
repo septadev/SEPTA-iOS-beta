@@ -41,16 +41,14 @@ class NextToArriveInfoViewController: UIViewController {
     }
 
     @IBAction func viewNextToArriveInSchedulesTapped(_: Any) {
-        let moveScheduleRequest = AddScheduleRequestToSchedules(
-            scheduleRequest: store.state.targetForScheduleActionsScheduleRequest()
-        )
-        store.dispatch(moveScheduleRequest)
+        guard let firstNextToArriveTrip = viewModel.firstTrip() else { return }
+        if viewModel.transitMode() == .rail {
+            activityIndicator.startAnimating()
+            Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(twoSecondTimerFired(timer:)), userInfo: nil, repeats: true)
+        }
 
-        let pushAction = PushNonActiveViewController(navigationController: .schedules, viewController: .tripScheduleController, description: "Viewing Schedules from Next To Arrive")
-        store.dispatch(pushAction)
-
-        let switchTabAction = SwitchTabs(activeNavigationController: .schedules, description: "Navigating to Schedules from Next to Arrive")
-        store.dispatch(switchTabAction)
+        let action = NavigateToSchedulesFromNextToArrive(nextToArriveTrip: firstNextToArriveTrip)
+        store.dispatch(action)
     }
 }
 
@@ -66,6 +64,11 @@ extension NextToArriveInfoViewController { // refresh timer
     func initTimer() {
 
         timer = Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(oneMinuteTimerFired(timer:)), userInfo: nil, repeats: true)
+    }
+
+    @objc func twoSecondTimerFired(timer: Timer) {
+        timer.invalidate()
+        activityIndicator.stopAnimating()
     }
 
     @objc func oneMinuteTimerFired(timer _: Timer) {

@@ -25,6 +25,14 @@ class BaseNextToArriveInfoViewModel {
         }
     }
 
+    func firstTrip() -> NextToArriveTrip? {
+        if let firstRoute = groupedTripData.first, let firstTrip = firstRoute.first {
+            return firstTrip
+        } else {
+            return nil
+        }
+    }
+
     func scheduleRequest() -> ScheduleRequest {
         return store.state.targetForScheduleActionsScheduleRequest()
     }
