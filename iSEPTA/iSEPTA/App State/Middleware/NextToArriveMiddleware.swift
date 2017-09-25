@@ -90,9 +90,9 @@ class NextToArriveMiddleware {
     }
 
     static func generateActionsToNavigateToAlertDetailsFromNextToArrive(action: NavigateToAlertDetailsFromNextToArrive) {
-        let scheduleRequest = store.state.targetForScheduleActionsScheduleRequest()
+        let scheduleRequest = action.scheduleRequest
         let scheduleStateBuilder = NextToArriveMiddlewareScheduleStateBuilder.sharedInstance
-        scheduleStateBuilder.updateScheduleStateInAlerts(nextToArriveTrip: action.nextToArriveStop, scheduleRequest: scheduleRequest)
+        scheduleStateBuilder.updateScheduleStateInAlerts(nextToArriveStop: action.nextToArriveStop, scheduleRequest: scheduleRequest)
 
         let switchTabsAction = SwitchTabs(activeNavigationController: .alerts, description: "Switching Tabs to Alert details after importing schedule state")
         store.dispatch(switchTabsAction)

@@ -22,6 +22,7 @@ struct NavigateToAlertDetailsFromSchedules: NextToArriveMiddlewareAction {
 }
 
 struct NavigateToAlertDetailsFromNextToArrive: NextToArriveMiddlewareAction {
+    let scheduleRequest: ScheduleRequest
     let nextToArriveStop: NextToArriveStop
     let description = "Navigate to Alert Details From Next To Arrive"
 }

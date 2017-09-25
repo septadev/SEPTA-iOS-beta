@@ -96,12 +96,16 @@ extension BaseNextToArriveInfoViewModel { // Section Headers
         let alert = alerts[transitMode()]?[routeId]
         tripHeaderView.alertStackView.addAlert(alert)
         tripHeaderView.alertViewDelegate = self
-        tripHeaderView.nextToArriveTrip = firstTripInSection
+        tripHeaderView.nextToArriveStop = firstTripInSection.startStop
     }
 
-    func didTapAlertView(nextToArriveTrip: NextToArriveTrip) {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
-            let action = NavigateToAlertDetailsFromNextToArrive(nextToArriveTrip: nextToArriveTrip)
+    func didTapAlertView(nextToArriveStop: NextToArriveStop) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+            let transitMode = self.transitMode()
+            print(transitMode)
+            let action = NavigateToAlertDetailsFromNextToArrive(
+                scheduleRequest: self.scheduleRequest(),
+                nextToArriveStop: nextToArriveStop)
             store.dispatch(action)
         })
     }
@@ -112,7 +116,7 @@ extension BaseNextToArriveInfoViewModel { // Section Headers
         tripHeaderView.pillView.backgroundColor = Route.colorForRouteId(routeId, transitMode: transitMode())
         tripHeaderView.lineNameLabel.text = firstTripInSection.startStop.routeName
         tripHeaderView.alertViewDelegate = self
-        tripHeaderView.nextToArriveTrip = firstTripInSection
+        tripHeaderView.nextToArriveStop = firstTripInSection.startStop
         let alert = alerts[transitMode()]?[routeId]
         tripHeaderView.alertStackView.addAlert(alert)
     }
@@ -198,11 +202,11 @@ extension BaseNextToArriveInfoViewModel { // Table View
         styleTripHeaderView(tripHeaderView: cell.endConnectionView.tripHeaderView, forStop: trip.endStop, trip: trip)
     }
 
-    func styleTripHeaderView(tripHeaderView: TripHeaderView, forStop stop: NextToArriveStop, trip: NextToArriveTrip) {
+    func styleTripHeaderView(tripHeaderView: TripHeaderView, forStop stop: NextToArriveStop, trip _: NextToArriveTrip) {
         tripHeaderView.pillView.backgroundColor = Route.colorForRouteId(stop.routeId, transitMode: transitMode())
         tripHeaderView.lineNameLabel.text = stop.routeName
         tripHeaderView.alertViewDelegate = self
-        tripHeaderView.nextToArriveTrip = trip
+        tripHeaderView.nextToArriveStop = stop
         let alert = alerts[transitMode()]?[stop.routeId]
         tripHeaderView.alertStackView.addAlert(alert)
     }
