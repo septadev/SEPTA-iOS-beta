@@ -11,7 +11,7 @@ import ReSwift
 import UIKit
 import SeptaSchedule
 
-class BaseNextToArriveInfoViewModel {
+class BaseNextToArriveInfoViewModel: AlertViewDelegate {
     enum CellIds: String {
         case noConnectionCell
         case connectionCell
@@ -95,6 +95,15 @@ extension BaseNextToArriveInfoViewModel { // Section Headers
         tripHeaderView.lineNameLabel.text = firstTripInSection.startStop.routeName
         let alert = alerts[transitMode()]?[routeId]
         tripHeaderView.alertStackView.addAlert(alert)
+        tripHeaderView.alertViewDelegate = self
+        tripHeaderView.nextToArriveTrip = firstTripInSection
+    }
+
+    func didTapAlertView(nextToArriveTrip: NextToArriveTrip) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
+            let action = NavigateToAlertDetailsFromNextToArrive(nextToArriveTrip: nextToArriveTrip)
+            store.dispatch(action)
+        })
     }
 
     func configureSectionHeader(firstTripInSection: NextToArriveTrip, headerView: NoConnectionSectionHeader) {
@@ -102,6 +111,8 @@ extension BaseNextToArriveInfoViewModel { // Section Headers
         guard let tripHeaderView = headerView.tripHeaderView else { return }
         tripHeaderView.pillView.backgroundColor = Route.colorForRouteId(routeId, transitMode: transitMode())
         tripHeaderView.lineNameLabel.text = firstTripInSection.startStop.routeName
+        tripHeaderView.alertViewDelegate = self
+        tripHeaderView.nextToArriveTrip = firstTripInSection
         let alert = alerts[transitMode()]?[routeId]
         tripHeaderView.alertStackView.addAlert(alert)
     }
@@ -183,13 +194,15 @@ extension BaseNextToArriveInfoViewModel { // Table View
         let connectionStation = trip.connectionLocation?.stopName ?? ""
         cell.connectionLabel.text = "Connect @\(connectionStation)"
 
-        styleTripHeaderView(tripHeaderView: cell.startConnectionView.tripHeaderView, forStop: trip.startStop)
-        styleTripHeaderView(tripHeaderView: cell.endConnectionView.tripHeaderView, forStop: trip.endStop)
+        styleTripHeaderView(tripHeaderView: cell.startConnectionView.tripHeaderView, forStop: trip.startStop, trip: trip)
+        styleTripHeaderView(tripHeaderView: cell.endConnectionView.tripHeaderView, forStop: trip.endStop, trip: trip)
     }
 
-    func styleTripHeaderView(tripHeaderView: TripHeaderView, forStop stop: NextToArriveStop) {
+    func styleTripHeaderView(tripHeaderView: TripHeaderView, forStop stop: NextToArriveStop, trip: NextToArriveTrip) {
         tripHeaderView.pillView.backgroundColor = Route.colorForRouteId(stop.routeId, transitMode: transitMode())
         tripHeaderView.lineNameLabel.text = stop.routeName
+        tripHeaderView.alertViewDelegate = self
+        tripHeaderView.nextToArriveTrip = trip
         let alert = alerts[transitMode()]?[stop.routeId]
         tripHeaderView.alertStackView.addAlert(alert)
     }

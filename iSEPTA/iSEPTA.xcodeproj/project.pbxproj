@@ -420,7 +420,7 @@
 		67365AD81F75918300FC86CB /* ViewSchedulesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67365AD71F75918300FC86CB /* ViewSchedulesButton.swift */; };
 		67365ADF1F76932600FC86CB /* NextToArriveMiddlewareActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67365ADE1F76932600FC86CB /* NextToArriveMiddlewareActions.swift */; };
 		67365AE11F7693DD00FC86CB /* NextToArriveMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67365AE01F7693DD00FC86CB /* NextToArriveMiddleware.swift */; };
-		67365AE51F7874F500FC86CB /* NextToArriveRailScheduleRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67365AE41F7874F500FC86CB /* NextToArriveRailScheduleRequestBuilder.swift */; };
+		67365AE51F7874F500FC86CB /* NextToArriveMiddlewareScheduleRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67365AE41F7874F500FC86CB /* NextToArriveMiddlewareScheduleRequestBuilder.swift */; };
 		6749A46E1F53997D00AF6119 /* StopToSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749A46D1F53997D00AF6119 /* StopToSelect.swift */; };
 		6749A4711F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */; };
 		674FDBBF1F56E87F00CA67D2 /* SeptaRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; };
@@ -473,6 +473,7 @@
 		67C567331F598A0400FF6203 /* TransitAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C567321F598A0400FF6203 /* TransitAlertView.swift */; };
 		67C567351F598C7900FF6203 /* SeptaAlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C567341F598C7900FF6203 /* SeptaAlertsViewController.swift */; };
 		67C567371F598D7A00FF6203 /* TransitAlerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67C567361F598D7A00FF6203 /* TransitAlerts.storyboard */; };
+		67DDC7D21F79263C002FECE2 /* NextToArriveMiddlewareScheduleStateBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DDC7D11F79263C002FECE2 /* NextToArriveMiddlewareScheduleStateBuilder.swift */; };
 		67EA2B5D1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B5C1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift */; };
 		67EA2B611F518CA600C0567A /* SearchModalHeaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B601F518CA600C0567A /* SearchModalHeaderDelegate.swift */; };
 		67EA2B631F51AB8700C0567A /* StopEditSearchMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B621F51AB8700C0567A /* StopEditSearchMode.swift */; };
@@ -987,7 +988,7 @@
 		67365AD71F75918300FC86CB /* ViewSchedulesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSchedulesButton.swift; sourceTree = "<group>"; };
 		67365ADE1F76932600FC86CB /* NextToArriveMiddlewareActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveMiddlewareActions.swift; sourceTree = "<group>"; };
 		67365AE01F7693DD00FC86CB /* NextToArriveMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveMiddleware.swift; sourceTree = "<group>"; };
-		67365AE41F7874F500FC86CB /* NextToArriveRailScheduleRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveRailScheduleRequestBuilder.swift; sourceTree = "<group>"; };
+		67365AE41F7874F500FC86CB /* NextToArriveMiddlewareScheduleRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveMiddlewareScheduleRequestBuilder.swift; sourceTree = "<group>"; };
 		6749A46D1F53997D00AF6119 /* StopToSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopToSelect.swift; sourceTree = "<group>"; };
 		6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAddressRelativeStopViewModel.swift; sourceTree = "<group>"; };
 		674FDBC41F57390D00CA67D2 /* Route+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Color.swift"; sourceTree = "<group>"; };
@@ -1038,6 +1039,7 @@
 		67C567321F598A0400FF6203 /* TransitAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitAlertView.swift; sourceTree = "<group>"; };
 		67C567341F598C7900FF6203 /* SeptaAlertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaAlertsViewController.swift; sourceTree = "<group>"; };
 		67C567361F598D7A00FF6203 /* TransitAlerts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransitAlerts.storyboard; sourceTree = "<group>"; };
+		67DDC7D11F79263C002FECE2 /* NextToArriveMiddlewareScheduleStateBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveMiddlewareScheduleStateBuilder.swift; sourceTree = "<group>"; };
 		67EA2B5C1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStopsModalHeaderViewController.swift; sourceTree = "<group>"; };
 		67EA2B601F518CA600C0567A /* SearchModalHeaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModalHeaderDelegate.swift; sourceTree = "<group>"; };
 		67EA2B621F51AB8700C0567A /* StopEditSearchMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopEditSearchMode.swift; sourceTree = "<group>"; };
@@ -1203,6 +1205,12 @@
 		582F4E811F33B1120062A546 /* Common Views */ = {
 			isa = PBXGroup;
 			children = (
+				58EB8D221F5D8C6B0028A487 /* BaseNonModalViewController.swift */,
+				6708C2711F73ADEB00922D8E /* NavigationViewControllerStateToNavigationEvent.swift */,
+				58EB8D1C1F5D85F50028A487 /* NavigationControllerBaseStateProvider.swift */,
+				6708C2781F73B7C200922D8E /* NavigationModalStateToNavigationEvent.swift */,
+				58EB8D141F5D7CD20028A487 /* BaseNavigationController.swift */,
+				58EB8D1E1F5D8A650028A487 /* BaseNavigationController+Styling.swift */,
 				67365AD21F757AE600FC86CB /* LaunchScreen */,
 				58248B731F6D8AA800DA2D65 /* PresentationControllers */,
 				580128071F6B26D2006B6DB8 /* RoundedShadowView.swift */,
@@ -1335,11 +1343,6 @@
 				58B2778A1F629FAA00663507 /* DummyData.swift */,
 				58DD1A931F6007F9002532DC /* NextToArriveViewModel */,
 				58DD1A911F60078D002532DC /* NextToArriveRowDisplayModel.swift */,
-				58EB8D221F5D8C6B0028A487 /* BaseNonModalViewController.swift */,
-				58EB8D141F5D7CD20028A487 /* BaseNavigationController.swift */,
-				6708C2711F73ADEB00922D8E /* NavigationViewControllerStateToNavigationEvent.swift */,
-				6708C2781F73B7C200922D8E /* NavigationModalStateToNavigationEvent.swift */,
-				58EB8D1E1F5D8A650028A487 /* BaseNavigationController+Styling.swift */,
 			);
 			path = NextToArrive;
 			sourceTree = "<group>";
@@ -1911,7 +1914,8 @@
 				58C9D3001F703735008FDE40 /* LoggingMiddleware.swift */,
 				67365ADE1F76932600FC86CB /* NextToArriveMiddlewareActions.swift */,
 				67365AE01F7693DD00FC86CB /* NextToArriveMiddleware.swift */,
-				67365AE41F7874F500FC86CB /* NextToArriveRailScheduleRequestBuilder.swift */,
+				67365AE41F7874F500FC86CB /* NextToArriveMiddlewareScheduleRequestBuilder.swift */,
+				67DDC7D11F79263C002FECE2 /* NextToArriveMiddlewareScheduleStateBuilder.swift */,
 			);
 			path = Middleware;
 			sourceTree = "<group>";
@@ -2075,7 +2079,6 @@
 			children = (
 				58EB8D0E1F5D79530028A487 /* NextToArriveNavigationController.swift */,
 				58EB8D121F5D79C10028A487 /* NextToArriveNavigationControllerStateProvider.swift */,
-				58EB8D1C1F5D85F50028A487 /* NavigationControllerBaseStateProvider.swift */,
 			);
 			path = NavigationController;
 			sourceTree = "<group>";
@@ -2826,6 +2829,7 @@
 				58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */,
 				58F80D451F421C4B0089501A /* SelectStopViewController.swift in Sources */,
 				678D26CC1F5CDB4200D140CC /* Septa+Images.swift in Sources */,
+				67DDC7D21F79263C002FECE2 /* NextToArriveMiddlewareScheduleStateBuilder.swift in Sources */,
 				5840D6D71F37728B00C8CB76 /* NavigationController.swift in Sources */,
 				58A26DA21F6F283E005A70D3 /* AlertDetailProvider.swift in Sources */,
 				58C2A0691F38AA1B00F0D6CA /* ScheduleData.swift in Sources */,
@@ -2835,7 +2839,7 @@
 				5840D6E31F37E9FB00C8CB76 /* UserPreferencesProvider.swift in Sources */,
 				67F757B71F488A5E00D3A4EE /* BlueGradientBackgroundView.swift in Sources */,
 				58B2778F1F62A9C900663507 /* KML.swift in Sources */,
-				67365AE51F7874F500FC86CB /* NextToArriveRailScheduleRequestBuilder.swift in Sources */,
+				67365AE51F7874F500FC86CB /* NextToArriveMiddlewareScheduleRequestBuilder.swift in Sources */,
 				678DAAA01F67067500EB6EE8 /* NextToArriveNonConnectivingViewModel.swift in Sources */,
 				6708C2721F73ADEB00922D8E /* NavigationViewControllerStateToNavigationEvent.swift in Sources */,
 				58C2A0611F38964E00F0D6CA /* ViewController.swift in Sources */,

@@ -144,3 +144,9 @@ struct CopyScheduleRequestToTargetForScheduleAction: ScheduleAction {
     let scheduleRequest: ScheduleRequest
     let description: String
 }
+
+struct CopyScheduleStateToTargetForScheduleAction: ScheduleAction {
+    let targetForScheduleAction: TargetForScheduleAction
+    let scheduleState: ScheduleState
+    let description: String
+}

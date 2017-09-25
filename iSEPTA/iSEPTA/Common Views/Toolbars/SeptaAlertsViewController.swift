@@ -15,8 +15,13 @@ class SeptaAlertsViewController: UIViewController {
     @IBOutlet weak var alertStackView: UIStackView!
 
     let alertsDict = store.state.alertState.alertDict
+    var alertsCount: Int = 0
+    var transitMode: TransitMode?
+    var route: Route?
 
     public func setTransitMode(_ transitMode: TransitMode, route: Route) {
+        self.transitMode = transitMode
+        self.route = route
         if let alert = alertsDict[transitMode]?[route.routeId] {
             configureAlerts(alert: alert)
         } else {
@@ -25,9 +30,18 @@ class SeptaAlertsViewController: UIViewController {
         }
     }
 
+    @IBAction func didTapAlertView(_: Any) {
+        if alertsCount > 0 {
+            let action = NavigateToAlertDetailsFromSchedules(scheduleState: store.state.scheduleState)
+            store.dispatch(action)
+        }
+    }
+
     private func configureAlerts(alert: SeptaAlert) {
         let alertViewElements = alert.alertViewElements()
+        alertsCount = alertViewElements.count
         for element in alertViewElements {
+
             let alertView = loadAlertView()
             alertView.alertIcon.image = element.image
             alertView.alertLabel.text = element.text

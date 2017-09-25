@@ -114,6 +114,7 @@ extension NextToArriveInfoViewController: UITableViewDataSource, UITableViewDele
         guard let viewId = viewModel.viewIdForSection(section),
             let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: viewId) else { return nil }
         viewModel.configureSectionHeader(view: headerView, forSection: section)
+
         return headerView
     }
 

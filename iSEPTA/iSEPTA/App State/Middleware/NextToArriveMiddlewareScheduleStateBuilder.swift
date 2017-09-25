@@ -9,22 +9,22 @@
 import Foundation
 import SeptaSchedule
 
-class NextToArriveRailScheduleRequestBuilder {
-    static let sharedInstance = NextToArriveRailScheduleRequestBuilder()
+class NextToArriveMiddlewareScheduleStateBuilder {
+    static let sharedInstance = NextToArriveMiddlewareScheduleStateBuilder()
     private init() {}
 
-    let targetForScheduleAction: TargetForScheduleAction = .schedules
+    let targetForScheduleAction: TargetForScheduleAction = .alerts
 
-    func updateScheduleRequestInSchedules(nextToArriveTrip: NextToArriveTrip, scheduleRequest: ScheduleRequest) {
+    func updateScheduleStateInAlerts(nextToArriveStop: NextToArriveStop, scheduleRequest: ScheduleRequest) {
         if scheduleRequest.transitMode == .rail {
             setRoute(nextToArriveTrip: nextToArriveTrip, scheduleRequest: scheduleRequest)
         } else {
-            copyScheduleRequestToSchedules(scheduleRequest: scheduleRequest)
+            copyScheduleRequestToAlerts(scheduleRequest: scheduleRequest)
         }
     }
 
-    private func setRoute(nextToArriveTrip: NextToArriveTrip, scheduleRequest: ScheduleRequest) {
-        let routeId = nextToArriveTrip.startStop.routeId
+    private func setRoute(nextToArriveStop: NextToArriveStop, scheduleRequest: ScheduleRequest) {
+        let routeId = nextToArriveStop.routeId
         RoutesCommand.sharedInstance.routes(forTransitMode: .rail) { [weak self] routes, _ in
             guard let strongSelf = self else { return }
             let routes = routes ?? [Route]()
@@ -47,7 +47,7 @@ class NextToArriveRailScheduleRequestBuilder {
         if let connectionStopId = nextToArriveTrip.connectionLocation?.stopId {
             setSelectedTripEndForConnectionLocation(connectionStopId: connectionStopId, scheduleRequest: scheduleRequest)
         } else {
-            copyScheduleRequestToSchedules(scheduleRequest: scheduleRequest)
+            copyScheduleRequestToAlerts(scheduleRequest: scheduleRequest)
         }
     }
 
@@ -65,13 +65,14 @@ class NextToArriveRailScheduleRequestBuilder {
                     scheduleType: scheduleRequest.scheduleType,
                     reverseStops: scheduleRequest.reverseStops)
 
-                strongSelf.copyScheduleRequestToSchedules(scheduleRequest: tripEndUpdatedScheduleRequest)
+                strongSelf.copyScheduleRequestToAlerts(scheduleRequest: tripEndUpdatedScheduleRequest)
             }
         }
     }
 
-    func copyScheduleRequestToSchedules(scheduleRequest: ScheduleRequest) {
-        let copyAction = CopyScheduleRequestToTargetForScheduleAction(targetForScheduleAction: targetForScheduleAction, scheduleRequest: scheduleRequest, description: "Copying a rail schedule Request from Next To Arrive To Schedules")
+    func copyScheduleRequestToAlerts(scheduleRequest: ScheduleRequest) {
+        let scheduleState = ScheduleState(scheduleRequest: scheduleRequest, scheduleData: ScheduleData(), scheduleStopEdit: ScheduleStopEdit())
+        let copyAction = CopyScheduleStateToTargetForScheduleAction(targetForScheduleAction: .alerts, scheduleState: scheduleState, description: "Copying Schedule State to Alerts")
         store.dispatch(copyAction)
     }
 }

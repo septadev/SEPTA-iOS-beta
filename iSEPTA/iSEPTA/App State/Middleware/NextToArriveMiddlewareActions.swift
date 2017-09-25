@@ -15,3 +15,13 @@ struct NavigateToSchedulesFromNextToArrive: NextToArriveMiddlewareAction {
     let nextToArriveTrip: NextToArriveTrip
     let description = "Navigate to SchedulesFromNextToArrive"
 }
+
+struct NavigateToAlertDetailsFromSchedules: NextToArriveMiddlewareAction {
+    let scheduleState: ScheduleState
+    let description = "Navigate to Alert Details From Schedules"
+}
+
+struct NavigateToAlertDetailsFromNextToArrive: NextToArriveMiddlewareAction {
+    let nextToArriveStop: NextToArriveStop
+    let description = "Navigate to Alert Details From Next To Arrive"
+}

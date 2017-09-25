@@ -29,6 +29,10 @@ class NextToArriveMiddleware {
             generateActionsToNavigateToNextToArriveFromSchedules(action: action)
         case let action as NavigateToSchedulesFromNextToArrive:
             generateActionsToNavigateToSchedulesFromNextToArrive(action: action)
+        case let action as NavigateToAlertDetailsFromSchedules:
+            generateActionsToNavigateToAlertDetailsFromSchedules(action: action)
+        case let action as NavigateToAlertDetailsFromNextToArrive:
+            generateActionsToNavigateToAlertDetailsFromNextToArrive(action: action)
         default:
             break
         }
@@ -53,7 +57,7 @@ class NextToArriveMiddleware {
     static func generateActionsToNavigateToSchedulesFromNextToArrive(action: NavigateToSchedulesFromNextToArrive) {
 
         let scheduleRequest = store.state.targetForScheduleActionsScheduleRequest()
-        let builder = NextToArriveRailScheduleRequestBuilder.sharedInstance
+        let builder = NextToArriveMiddlewareScheduleRequestBuilder.sharedInstance
         builder.updateScheduleRequestInSchedules(nextToArriveTrip: action.nextToArriveTrip, scheduleRequest: scheduleRequest)
 
         let delayTime: Double = scheduleRequest.transitMode == .rail ? 2 : 0
@@ -67,6 +71,35 @@ class NextToArriveMiddleware {
             let switchTabsAction = SwitchTabs(activeNavigationController: .schedules, description: "Switching Tabs to Next to Arrive From Schedules")
             store.dispatch(switchTabsAction)
         }
+    }
+
+    static func generateActionsToNavigateToAlertDetailsFromSchedules(action: NavigateToAlertDetailsFromSchedules) {
+        let switchTabsAction = SwitchTabs(activeNavigationController: .alerts, description: "Switching Tabs to Alert details after importing schedule state")
+        store.dispatch(switchTabsAction)
+
+        let copyScheduleState = CopyScheduleStateToTargetForScheduleAction(
+            targetForScheduleAction: .alerts,
+            scheduleState: action.scheduleState,
+            description: "Importing Schedule State into alerts"
+        )
+        store.dispatch(copyScheduleState)
+
+        let navigationStackState = buildNavigationStackState(viewControllers: [.alertsViewController, .alertDetailViewController])
+        let viewStackAction = InitializeNavigationState(navigationController: .alerts, navigationStackState: navigationStackState, description: "Setting Navigation Stack State with imported schedule state")
+        store.dispatch(viewStackAction)
+    }
+
+    static func generateActionsToNavigateToAlertDetailsFromNextToArrive(action: NavigateToAlertDetailsFromNextToArrive) {
+        let scheduleRequest = store.state.targetForScheduleActionsScheduleRequest()
+        let scheduleStateBuilder = NextToArriveMiddlewareScheduleStateBuilder.sharedInstance
+        scheduleStateBuilder.updateScheduleStateInAlerts(nextToArriveTrip: action.nextToArriveStop, scheduleRequest: scheduleRequest)
+
+        let switchTabsAction = SwitchTabs(activeNavigationController: .alerts, description: "Switching Tabs to Alert details after importing schedule state")
+        store.dispatch(switchTabsAction)
+
+        let navigationStackState = buildNavigationStackState(viewControllers: [.alertsViewController, .alertDetailViewController])
+        let viewStackAction = InitializeNavigationState(navigationController: .alerts, navigationStackState: navigationStackState, description: "Setting Navigation Stack State with imported schedule state")
+        store.dispatch(viewStackAction)
     }
 
     static func buildNavigationStackState(viewControllers: [ViewController]) -> NavigationStackState {

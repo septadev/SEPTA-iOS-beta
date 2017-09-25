@@ -25,11 +25,15 @@ class AlertsViewModel {
     var scheduleRequest: ScheduleRequest? {
         didSet {
             cellModel = configureSelectRouteDisplayModel()
-            if let _ = scheduleRequest?.selectedRoute {
-                schedulesDelegate?.formIsComplete(true)
-            } else {
-                schedulesDelegate?.formIsComplete(false)
-            }
+            formIsCompleteUpdateNeeded()
+        }
+    }
+
+    func formIsCompleteUpdateNeeded() {
+        if let _ = scheduleRequest?.selectedRoute {
+            schedulesDelegate?.formIsComplete(true)
+        } else {
+            schedulesDelegate?.formIsComplete(false)
         }
     }
 

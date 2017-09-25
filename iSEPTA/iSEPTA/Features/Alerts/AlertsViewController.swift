@@ -46,6 +46,7 @@ class AlertsViewController: UIViewController, IdentifiableController {
         UIView.addSurroundShadow(toView: tableViewWrapper)
 
         updateHeaderLabels()
+
         super.viewDidLoad()
     }
 
@@ -54,6 +55,11 @@ class AlertsViewController: UIViewController, IdentifiableController {
 
         navBar.shadowImage = UIImage()
         navBar.setBackgroundImage(UIImage(), for: .default)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.formIsCompleteUpdateNeeded()
     }
 
     @IBAction func resetSearch(_: Any) {
