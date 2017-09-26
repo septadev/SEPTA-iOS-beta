@@ -64,6 +64,12 @@
 		58902EF41F41ED7C00DE6F64 /* TripStartSQLQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58902EF31F41ED7C00DE6F64 /* TripStartSQLQuery.swift */; };
 		58902EF71F41EFBC00DE6F64 /* busTripStart.sql in Resources */ = {isa = PBXBuildFile; fileRef = 58902EF51F41EFAB00DE6F64 /* busTripStart.sql */; };
 		58902EF91F41F09900DE6F64 /* railTripStart.sql in Resources */ = {isa = PBXBuildFile; fileRef = 58902EF81F41F09900DE6F64 /* railTripStart.sql */; };
+		5893BD9E1F7A74C600300849 /* RailRouteFromStopsCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5893BD9D1F7A74C600300849 /* RailRouteFromStopsCommand.swift */; };
+		5893BDA01F7A74D700300849 /* RailRouteFromStopsSQLQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5893BD9F1F7A74D700300849 /* RailRouteFromStopsSQLQuery.swift */; };
+		5893BDA21F7A769200300849 /* railRoutesFromStops.sql in Resources */ = {isa = PBXBuildFile; fileRef = 5893BDA11F7A769200300849 /* railRoutesFromStops.sql */; };
+		58C7E14E1F7A9C6500C133C5 /* FindStopSQLQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7E14D1F7A9C6500C133C5 /* FindStopSQLQuery.swift */; };
+		58C7E1501F7A9CAC00C133C5 /* FindStopSQLCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7E14F1F7A9CAC00C133C5 /* FindStopSQLCommand.swift */; };
+		58C7E1521F7A9D1E00C133C5 /* findStop.sql in Resources */ = {isa = PBXBuildFile; fileRef = 58C7E1511F7A9D1E00C133C5 /* findStop.sql */; };
 		58D9C42D1F3336C6002BE2E8 /* SeptaSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58D9C4231F3336C6002BE2E8 /* SeptaSchedule.framework */; };
 		58DCA0971F3E291F002F08CF /* RoutesCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DCA0961F3E291F002F08CF /* RoutesCommand.swift */; };
 		58DCA0991F3E2944002F08CF /* CommandError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DCA0981F3E2944002F08CF /* CommandError.swift */; };
@@ -171,6 +177,12 @@
 		58902EF31F41ED7C00DE6F64 /* TripStartSQLQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripStartSQLQuery.swift; sourceTree = "<group>"; };
 		58902EF51F41EFAB00DE6F64 /* busTripStart.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = busTripStart.sql; sourceTree = "<group>"; };
 		58902EF81F41F09900DE6F64 /* railTripStart.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = railTripStart.sql; sourceTree = "<group>"; };
+		5893BD9D1F7A74C600300849 /* RailRouteFromStopsCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailRouteFromStopsCommand.swift; sourceTree = "<group>"; };
+		5893BD9F1F7A74D700300849 /* RailRouteFromStopsSQLQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailRouteFromStopsSQLQuery.swift; sourceTree = "<group>"; };
+		5893BDA11F7A769200300849 /* railRoutesFromStops.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = railRoutesFromStops.sql; sourceTree = "<group>"; };
+		58C7E14D1F7A9C6500C133C5 /* FindStopSQLQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindStopSQLQuery.swift; sourceTree = "<group>"; };
+		58C7E14F1F7A9CAC00C133C5 /* FindStopSQLCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindStopSQLCommand.swift; sourceTree = "<group>"; };
+		58C7E1511F7A9D1E00C133C5 /* findStop.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = findStop.sql; sourceTree = "<group>"; };
 		58D9C4231F3336C6002BE2E8 /* SeptaSchedule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SeptaSchedule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D9C42C1F3336C6002BE2E8 /* SeptaScheduleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeptaScheduleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D9C4331F3336C6002BE2E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -282,6 +294,8 @@
 		582F4EF51F33B1370062A546 /* Commands */ = {
 			isa = PBXGroup;
 			children = (
+				58C7E14B1F7A9A5900C133C5 /* FindStop */,
+				5893BD9B1F7A74A400300849 /* RailRouteFromStops */,
 				58F253691F4139BB0075C8AD /* Common */,
 				58DCA09A1F3E2A4C002F08CF /* Routes */,
 				58F2536A1F4139FA0075C8AD /* TripStart */,
@@ -450,6 +464,42 @@
 				5868897E1F42978A00B2920A /* busTripEnd.sql */,
 				586889801F42979B00B2920A /* railTripEnd.sql */,
 				58DD1A941F6011A3002532DC /* allRailEnds.sql */,
+			);
+			path = sql;
+			sourceTree = "<group>";
+		};
+		5893BD9B1F7A74A400300849 /* RailRouteFromStops */ = {
+			isa = PBXGroup;
+			children = (
+				5893BD9C1F7A74B000300849 /* sql */,
+				5893BD9D1F7A74C600300849 /* RailRouteFromStopsCommand.swift */,
+				5893BD9F1F7A74D700300849 /* RailRouteFromStopsSQLQuery.swift */,
+			);
+			path = RailRouteFromStops;
+			sourceTree = "<group>";
+		};
+		5893BD9C1F7A74B000300849 /* sql */ = {
+			isa = PBXGroup;
+			children = (
+				5893BDA11F7A769200300849 /* railRoutesFromStops.sql */,
+			);
+			path = sql;
+			sourceTree = "<group>";
+		};
+		58C7E14B1F7A9A5900C133C5 /* FindStop */ = {
+			isa = PBXGroup;
+			children = (
+				58C7E14C1F7A9A6500C133C5 /* sql */,
+				58C7E14D1F7A9C6500C133C5 /* FindStopSQLQuery.swift */,
+				58C7E14F1F7A9CAC00C133C5 /* FindStopSQLCommand.swift */,
+			);
+			path = FindStop;
+			sourceTree = "<group>";
+		};
+		58C7E14C1F7A9A6500C133C5 /* sql */ = {
+			isa = PBXGroup;
+			children = (
+				58C7E1511F7A9D1E00C133C5 /* findStop.sql */,
 			);
 			path = sql;
 			sourceTree = "<group>";
@@ -702,6 +752,7 @@
 				5854E2061F45FDA50030E3E6 /* railTripStopReverse.sql in Resources */,
 				58902EF71F41EFBC00DE6F64 /* busTripStart.sql in Resources */,
 				6789F0011F44894100BD26B1 /* railTripSchedule.sql in Resources */,
+				5893BDA21F7A769200300849 /* railRoutesFromStops.sql in Resources */,
 				58DD1A951F6011A3002532DC /* allRailEnds.sql in Resources */,
 				5868897F1F42978A00B2920A /* busTripEnd.sql in Resources */,
 				5854E2051F45FDA00030E3E6 /* busTripStopReverse.sql in Resources */,
@@ -711,6 +762,7 @@
 				58DD1A8A1F5F7824002532DC /* allRailStarts.sql in Resources */,
 				581C3BD11F46889F00C3198C /* railReverseRoute.sql in Resources */,
 				5854E20E1F4604AF0030E3E6 /* busTripReverse.sql in Resources */,
+				58C7E1521F7A9D1E00C133C5 /* findStop.sql in Resources */,
 				581C3BCF1F46884400C3198C /* railStopsByStopId.sql in Resources */,
 				5809EDFE1F4385EB00BBECFF /* busTripSchedule.sql in Resources */,
 			);
@@ -746,7 +798,9 @@
 				586889851F4297CE00B2920A /* TripEndSQLQuery.swift in Sources */,
 				5854E2021F45D9D20030E3E6 /* StopReverseSQLQuery.swift in Sources */,
 				582F4F1C1F33B1370062A546 /* SQLCommandTemplate.swift in Sources */,
+				58C7E14E1F7A9C6500C133C5 /* FindStopSQLQuery.swift in Sources */,
 				584AC8771F4383A90040C1B4 /* TripScheduleCommand.swift in Sources */,
+				58C7E1501F7A9CAC00C133C5 /* FindStopSQLCommand.swift in Sources */,
 				5854E20A1F4604800030E3E6 /* TripReverseCommand.swift in Sources */,
 				5867AC551F46421800370254 /* StopsByStopIdCommand.swift in Sources */,
 				5854E2111F4612650030E3E6 /* TripStopId.swift in Sources */,
@@ -756,6 +810,7 @@
 				58FBBFA81F6585B100B7A4DA /* DatabaseState.swift in Sources */,
 				5809EE051F4389F400BBECFF /* RoutesSQLQuery.swift in Sources */,
 				58DCA0971F3E291F002F08CF /* RoutesCommand.swift in Sources */,
+				5893BD9E1F7A74C600300849 /* RailRouteFromStopsCommand.swift in Sources */,
 				5854E1FC1F45D9910030E3E6 /* StopReverseCommand.swift in Sources */,
 				58DCA0991F3E2944002F08CF /* CommandError.swift in Sources */,
 				582F4F121F33B1370062A546 /* Trip.swift in Sources */,
@@ -766,6 +821,7 @@
 				586889831F4297B400B2920A /* TripEndCommand.swift in Sources */,
 				5809EE021F43883900BBECFF /* TransitMode.swift in Sources */,
 				582F4F101F33B1370062A546 /* Route.swift in Sources */,
+				5893BDA01F7A74D700300849 /* RailRouteFromStopsSQLQuery.swift in Sources */,
 				582F4F0E1F33B1370062A546 /* DatabaseFileManager.swift in Sources */,
 				582F4F111F33B1370062A546 /* Stop.swift in Sources */,
 				58DD1A881F5F73FA002532DC /* AllRoutes.swift in Sources */,

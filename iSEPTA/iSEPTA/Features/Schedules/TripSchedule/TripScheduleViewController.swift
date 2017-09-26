@@ -58,11 +58,13 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet weak var shadowView: UIView!
 
-    let scheduleRequest = store.state.scheduleState.scheduleRequest
+    var scheduleRequest: ScheduleRequest { return store.state.scheduleState.scheduleRequest }
 
-    let transitMode = store.state.scheduleState.scheduleRequest.transitMode
+    var transitMode: TransitMode { return scheduleRequest.transitMode }
 
-    let route = store.state.scheduleState.scheduleRequest.selectedRoute!
+    var route: Route {
+        return scheduleRequest.selectedRoute ??
+            Route(routeId: "", routeShortName: "", routeLongName: "", routeDirectionCode: .inbound) }
 
     @IBOutlet weak var startingPoint: UILabel!
     @IBOutlet weak var endingPoint: UILabel!

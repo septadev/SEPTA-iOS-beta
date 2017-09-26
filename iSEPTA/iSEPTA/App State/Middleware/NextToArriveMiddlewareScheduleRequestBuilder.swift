@@ -24,8 +24,11 @@ class NextToArriveMiddlewareScheduleRequestBuilder {
     }
 
     private func setRoute(nextToArriveTrip: NextToArriveTrip, scheduleRequest: ScheduleRequest) {
+        guard let selectedStart = scheduleRequest.selectedStart, let selectedEnd = scheduleRequest.selectedEnd else { return }
         let routeId = nextToArriveTrip.startStop.routeId
-        RoutesCommand.sharedInstance.routes(forTransitMode: .rail) { [weak self] routes, _ in
+        let startStopId = selectedStart.stopId
+        let endStopId = determineEndingStopId(nextToArriveTrip: nextToArriveTrip, selectedEnd: selectedEnd)
+        RailRouteFromStopsCommand.sharedInstance.routes(routeId: routeId, startStopId: startStopId, endStopId: endStopId) { [weak self] routes, _ in
             guard let strongSelf = self else { return }
             let routes = routes ?? [Route]()
             if let route = routes.filter({ $0.routeId == routeId }).first {
@@ -38,25 +41,27 @@ class NextToArriveMiddlewareScheduleRequestBuilder {
                     scheduleType: .mondayThroughThursday,
                     reverseStops: false)
 
-                strongSelf.setSelectedTripEnd(nextToArriveTrip: nextToArriveTrip, scheduleRequest: routeUpdatedScheduleRequest)
+                strongSelf.setSelectedEnd(nextToArriveTrip: nextToArriveTrip, scheduleRequest: routeUpdatedScheduleRequest)
             }
         }
     }
 
-    private func setSelectedTripEnd(nextToArriveTrip: NextToArriveTrip, scheduleRequest: ScheduleRequest) {
-        if let connectionStopId = nextToArriveTrip.connectionLocation?.stopId {
-            setSelectedTripEndForConnectionLocation(connectionStopId: connectionStopId, scheduleRequest: scheduleRequest)
-        } else {
+    private func setSelectedEnd(nextToArriveTrip: NextToArriveTrip, scheduleRequest: ScheduleRequest) {
+        guard let selectedEnd = scheduleRequest.selectedEnd else { return }
+        let endStopId = determineEndingStopId(nextToArriveTrip: nextToArriveTrip, selectedEnd: selectedEnd)
+
+        if endStopId == selectedEnd.stopId {
             copyScheduleRequestToSchedules(scheduleRequest: scheduleRequest)
+        } else {
+            findSelectedEndStop(stopId: endStopId, scheduleRequest: scheduleRequest)
         }
     }
 
-    private func setSelectedTripEndForConnectionLocation(connectionStopId: Int, scheduleRequest: ScheduleRequest) {
-        guard let selectedRoute = scheduleRequest.selectedRoute, let selectedStart = scheduleRequest.selectedStart else { return }
-        TripEndCommand.sharedInstance.stops(forTransitMode: .rail, forRoute: selectedRoute, tripStart: selectedStart) { [weak self] stops, _ in
+    private func findSelectedEndStop(stopId: Int, scheduleRequest: ScheduleRequest) {
+        FindStopCommand.sharedInstance.stops(forTransitMode: scheduleRequest.transitMode, forStopId: stopId) { [weak self] stops, _ in
             guard let strongSelf = self else { return }
             let stops = stops ?? [Stop]()
-            if let connectionStop = stops.filter({ $0.stopId == connectionStopId }).first {
+            if let connectionStop = stops.first {
                 let tripEndUpdatedScheduleRequest = ScheduleRequest(
                     transitMode: scheduleRequest.transitMode,
                     selectedRoute: scheduleRequest.selectedRoute,
@@ -67,6 +72,14 @@ class NextToArriveMiddlewareScheduleRequestBuilder {
 
                 strongSelf.copyScheduleRequestToSchedules(scheduleRequest: tripEndUpdatedScheduleRequest)
             }
+        }
+    }
+
+    private func determineEndingStopId(nextToArriveTrip: NextToArriveTrip, selectedEnd: Stop) -> Int {
+        if let connectionStopId = nextToArriveTrip.connectionLocation?.stopId {
+            return connectionStopId
+        } else {
+            return selectedEnd.stopId
         }
     }
 
