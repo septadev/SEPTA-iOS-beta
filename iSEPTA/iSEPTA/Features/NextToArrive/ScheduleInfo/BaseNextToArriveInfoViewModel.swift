@@ -224,7 +224,13 @@ extension BaseNextToArriveInfoViewModel { // Table View
 
     func generateTimeToDeparture(stop: NextToArriveStop) -> String? {
         let sortedDates = [stop.arrivalTime, stop.departureTime].sorted()
-        return DateFormatters.formatTimeFromNow(date: sortedDates[0])
+        var firstDate = sortedDates[0]
+        if let delayMinutes = stop.delayMinutes {
+            var components = DateComponents()
+            components.minute = delayMinutes
+            firstDate = Calendar.current.date(byAdding: components, to: firstDate)!
+        }
+        return DateFormatters.formatTimeFromNow(date: firstDate)
     }
 
     func generateOnTimeString(stop: NextToArriveStop, hasVehicleLocation: Bool) -> String? {

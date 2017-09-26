@@ -50,22 +50,17 @@ public class DateFormatters {
         return "\(startString) - \(endString)"
     }
 
-    static func formatTimeFromNow(date: Date) -> String? {
-        let rightNow = Date()
+    static func formatTimeFromNow(date comparisonDate: Date) -> String? {
         let calendar = Calendar.current
-        let diff = calendar.dateComponents([.hour, .minute], from: rightNow, to: date)
-        if let hour = diff.hour, let minute = diff.minute, hour == 0, minute == 0 {
+        let nonSeconds: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute]
+        let rightNowComponents = calendar.dateComponents(nonSeconds, from: Date())
+        let comparisonDateComponents = calendar.dateComponents(nonSeconds, from: comparisonDate)
+        let diffComponents = calendar.dateComponents(nonSeconds, from: rightNowComponents, to: comparisonDateComponents)
+
+        if let hour = diffComponents.hour, let minute = diffComponents.minute, hour == 0, minute <= 0 {
             return "now"
-        } else if let hour = diff.hour, let minute = diff.minute, hour == 0, minute < 0 {
-            var negativeComponents = DateComponents()
-            negativeComponents.minute = -minute
-            if let durationString = durationFormatter.string(from: negativeComponents) {
-                return "\(durationString) ago"
-            } else {
-                return nil
-            }
         } else {
-            return durationFormatter.string(from: diff)
+            return durationFormatter.string(from: diffComponents)
         }
     }
 }
