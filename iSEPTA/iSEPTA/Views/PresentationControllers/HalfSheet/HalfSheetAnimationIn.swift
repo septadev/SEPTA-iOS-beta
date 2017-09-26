@@ -11,7 +11,7 @@ import UIKit
 
 class HalfSheetAnimationIn: NSObject, UIViewControllerAnimatedTransitioning {
     func transitionDuration(using _: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.15
+        return 0.40
     }
 
     var presenting = true
@@ -23,6 +23,7 @@ class HalfSheetAnimationIn: NSObject, UIViewControllerAnimatedTransitioning {
         let container = transitionContext.containerView
 
         let finalFrame = transitionContext.finalFrame(for: toViewController)
+
         let startingFrame = finalFrame.offsetBy(dx: 0, dy: -finalFrame.height)
         toView.frame = startingFrame
         container.addSubview(toView)
