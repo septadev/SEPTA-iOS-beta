@@ -35,7 +35,8 @@ class NextToArriveMapper {
                                 lastStopId: Int(a.orig_last_stop_id ?? ""),
                                 lastStopName: a.orig_last_stop_name,
                                 delayMinutes: a.orig_delay_minutes,
-                                direction: RouteDirectionCode.fromNetwork(a.orig_line_direction ?? ""))
+                                direction: RouteDirectionCode.fromNetwork(a.orig_line_direction ?? ""),
+                                vehicleLocationCoordinate: buildStartLocationCoordinate(realTimeArrival: a))
     }
 
     func mapEnd(realTimeArrival a: RealTimeArrival) -> NextToArriveStop? {
@@ -51,6 +52,7 @@ class NextToArriveMapper {
             isValidEndDate(date: departureTime, connectionStationName: a.connection_station_name) else {
             return nil
         }
+
         return NextToArriveStop(routeId: routeId,
                                 routeName: routeName,
                                 tripId: Int(a.term_line_trip_id ?? ""),
@@ -59,10 +61,27 @@ class NextToArriveMapper {
                                 lastStopId: Int(a.term_last_stop_id ?? ""),
                                 lastStopName: a.term_last_stop_name,
                                 delayMinutes: a.term_delay_minutes,
-                                direction: RouteDirectionCode.fromNetwork(a.term_line_direction ?? ""))
+                                direction: RouteDirectionCode.fromNetwork(a.term_line_direction ?? ""),
+                                vehicleLocationCoordinate: buildEndLocationCoordinate(realTimeArrival: a))
     }
 
-    func mapVehicleLocation(realTimeArrival a: RealTimeArrival) -> VehicleLocation {
+    func buildStartLocationCoordinate(realTimeArrival a: RealTimeArrival) -> CLLocationCoordinate2D? {
+        if let lat = a.orig_vehicle_lat, let lon = a.orig_vehicle_lon {
+            return CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        } else {
+            return nil
+        }
+    }
+
+    func buildEndLocationCoordinate(realTimeArrival a: RealTimeArrival) -> CLLocationCoordinate2D? {
+        if let lat = a.term_vehicle_lat, let lon = a.term_vehicle_lon {
+            return CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        } else {
+            return nil
+        }
+    }
+
+    func mapVehicleLocation(realTimeArrival a: RealTimeArrival) -> TripVehicleLocations {
         var firstLegLocation: CLLocationCoordinate2D?
         if let location = mapCoordinateFromString(a.vehicle_lat, a.vehicle_lon) {
             firstLegLocation = location
@@ -70,8 +89,9 @@ class NextToArriveMapper {
             firstLegLocation = location
         }
         let secondLegLocation = mapCoordinateFromString(a.term_vehicle_lat, a.term_vehicle_lon)
-
-        return VehicleLocation(firstLegLocation: firstLegLocation, secondLegLocation: secondLegLocation)
+        let firstLegVehicleLocation = VehicleLocation(location: firstLegLocation)
+        let secondLegVehicleLocation = VehicleLocation(location: secondLegLocation)
+        return TripVehicleLocations(firstLegLocation: firstLegVehicleLocation, secondLegLocation: secondLegVehicleLocation)
     }
 
     func mapConnectionStation(realTimeArrival a: RealTimeArrival) -> NextToArriveConnectionStation? {

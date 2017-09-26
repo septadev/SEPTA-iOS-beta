@@ -155,7 +155,7 @@ class RealTimeArrivalTests: XCTestCase {
                                 direction: RouteDirectionCode.fromNetwork(a.term_line_direction ?? ""))
     }
 
-    func mapVehicleLocation(realTimeArrival a: RealTimeArrival) -> VehicleLocation? {
+    func mapVehicleLocation(realTimeArrival a: RealTimeArrival) -> TripVehicleLocations? {
         var firstLegLocation = CLLocationCoordinate2D()
         if let location = mapCoordinateFromString(latString: String(describing: a.vehicle_lat), lonString: String(describing: a.vehicle_lon)) {
             firstLegLocation = location
@@ -164,7 +164,7 @@ class RealTimeArrivalTests: XCTestCase {
         }
         let secondLegLocation = mapCoordinateFromString(latString: String(describing: a.term_vehicle_lat), lonString: String(describing: a.term_vehicle_lon)) ?? CLLocationCoordinate2D()
 
-        return VehicleLocation(firstLegLocation: firstLegLocation, secondLegLocation: secondLegLocation)
+        return TripVehicleLocations(firstLegLocation: firstLegLocation, secondLegLocation: secondLegLocation)
     }
 
     func mapConnectionStation(realTimeArrival a: RealTimeArrival) -> NextToArriveConnectionStation? {

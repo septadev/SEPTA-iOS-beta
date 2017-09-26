@@ -55,6 +55,7 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
         unsubscribe()
     }
 
+    var currentTrips = [NextToArriveTrip]()
     func newState(state: StoreSubscriberStateType) {
         let trips = state
 
@@ -69,16 +70,24 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
             updateStatus = .idle
         }
         if updateStatus == .dataLoadedSuccessfully {
-            let startVehicles: [CLLocationCoordinate2D?] = trips.map { $0.vehicleLocation.firstLegLocation }
-            let endVehicles: [CLLocationCoordinate2D?] = trips.map { $0.vehicleLocation.secondLegLocation }
-            let allVehicles = startVehicles + endVehicles
-            let nonOptionalVehicles: [CLLocationCoordinate2D] = allVehicles.flatMap { $0 }
 
             let allRouteIds = NextToArriveGrouper.filterRoutesToMap(trips: trips, requestRouteId: requestedRoutedId)
 
             delegate.drawRoutes(routeIds: allRouteIds)
-            delegate.drawVehicleLocations(nonOptionalVehicles)
+            handleVehicleLocations(trips: trips)
         }
+        currentTrips = trips
+    }
+
+    func handleVehicleLocations(trips: [NextToArriveTrip]) {
+        let allCurrentStops = currentTrips.map({ $0.startStop }) + currentTrips.map({ $0.endStop })
+        var allNewStops = trips.map({ $0.startStop }) + trips.map({ $0.endStop })
+        allNewStops = allNewStops.filter { $0.vehicleLocationCoordinate != nil }
+        let vehicleLocations: [VehicleLocation] = allNewStops.map { newStop in
+            let currentLocationCoordinate = allCurrentStops.filter({ $0.tripId == newStop.tripId }).first?.vehicleLocationCoordinate
+            return VehicleLocation(location: newStop.vehicleLocationCoordinate, lastLocation: currentLocationCoordinate)
+        }
+        delegate.drawVehicleLocations(vehicleLocations)
     }
 }
 

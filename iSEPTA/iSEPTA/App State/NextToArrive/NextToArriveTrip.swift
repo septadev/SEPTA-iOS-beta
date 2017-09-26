@@ -12,10 +12,10 @@ import CoreLocation
 struct NextToArriveTrip {
     let startStop: NextToArriveStop
     let endStop: NextToArriveStop
-    let vehicleLocation: VehicleLocation
+    let vehicleLocation: TripVehicleLocations
     let connectionLocation: NextToArriveConnectionStation?
 
-    init(startStop: NextToArriveStop, endStop: NextToArriveStop, vehicleLocation: VehicleLocation, connectionLocation: NextToArriveConnectionStation?) {
+    init(startStop: NextToArriveStop, endStop: NextToArriveStop, vehicleLocation: TripVehicleLocations, connectionLocation: NextToArriveConnectionStation?) {
         self.startStop = startStop
         self.endStop = endStop
         self.vehicleLocation = vehicleLocation

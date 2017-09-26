@@ -10,4 +10,8 @@ import Foundation
 import MapKit
 
 class VehicleLocationAnnotation: MKPointAnnotation {
+    let vehicleLocation: VehicleLocation
+    init(vehicleLocation: VehicleLocation) {
+        self.vehicleLocation = vehicleLocation
+    }
 }

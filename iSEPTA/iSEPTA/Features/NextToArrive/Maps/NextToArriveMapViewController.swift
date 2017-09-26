@@ -37,11 +37,12 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
             addOverlaysToMap()
             addScheduleRequestToMap()
             drawVehicleLocations()
+            mapView.isRotateEnabled = false
         }
     }
 
     var vehiclesAnnotationsAdded = [VehicleLocationAnnotation]()
-    private var vehiclesToAdd = [CLLocationCoordinate2D]() {
+    private var vehiclesToAdd = [VehicleLocation]() {
         didSet {
             guard let _ = mapView else { return }
             clearExistingVehicleLocations()
@@ -103,19 +104,20 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         mapView.addAnnotation(annotation)
     }
 
-    func drawVehicleLocations(_ vehicleLocations: [CLLocationCoordinate2D]) {
+    func drawVehicleLocations(_ vehicleLocations: [VehicleLocation]) {
         self.vehiclesToAdd = vehicleLocations
     }
 
     func drawVehicleLocations() {
         for vehicle in vehiclesToAdd {
-            drawVehicle(coordinate: vehicle)
+            drawVehicle(vehicle)
         }
     }
 
-    func drawVehicle(coordinate: CLLocationCoordinate2D) {
-        let annotation = VehicleLocationAnnotation()
-        annotation.coordinate = coordinate
+    func drawVehicle(_ vehicleLocation: VehicleLocation) {
+        guard let location = vehicleLocation.location else { return }
+        let annotation = VehicleLocationAnnotation(vehicleLocation: vehicleLocation)
+        annotation.coordinate = location
 
         mapView.addAnnotation(annotation)
         vehiclesAnnotationsAdded.append(annotation)
@@ -202,6 +204,12 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
             return buildNewVehicleAnnotationView(annotation: annotation, vehicleViewId: vehicleId)
         }
         vehicleView.annotation = annotation
+        if let bearing = annotation.vehicleLocation.bearing {
+            let startingTransform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+            let transformForBearing = startingTransform.rotated(by: CGFloat(bearing))
+            vehicleView.transform = transformForBearing
+            //            vehicleView.transform = CGAffineTransform(rotationAngle: CGFloat(bearing))
+        }
         return vehicleView
     }
 

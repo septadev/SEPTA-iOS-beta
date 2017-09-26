@@ -13,5 +13,5 @@ import CoreLocation
 protocol RouteDrawable: AnyObject {
     func drawRoutes(routeIds: [String])
     func drawTrip(scheduleRequest: ScheduleRequest)
-    func drawVehicleLocations(_ vehicleLocations: [CLLocationCoordinate2D])
+    func drawVehicleLocations(_ vehicleLocations: [VehicleLocation])
 }
