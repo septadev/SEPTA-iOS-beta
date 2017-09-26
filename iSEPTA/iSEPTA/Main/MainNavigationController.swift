@@ -46,12 +46,6 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         }
     }
 
-    override var selectedIndex: Int {
-        didSet {
-            print(selectedIndex)
-        }
-    }
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
