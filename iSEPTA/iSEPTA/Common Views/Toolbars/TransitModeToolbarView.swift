@@ -28,7 +28,7 @@ class TransitModeToolbarView: UIView {
     }
 
     func highlightedSize(_ highlighted: Bool) -> CGFloat {
-        return highlighted ? 30 : 15
+        return highlighted ? 40 : 20
     }
 
     var transitMode: TransitMode = .bus {

@@ -51,16 +51,16 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QJl-X0-CgW" userLabel="Toolbar">
-                                <rect key="frame" x="0.0" y="65" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="65" width="375" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="vwV-37-aFE" userLabel="toolbarHeight"/>
+                                    <constraint firstAttribute="height" constant="60" id="vwV-37-aFE" userLabel="toolbarHeight"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="QkO-Ty-yTA" kind="embed" id="O50-Pt-7sR"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vho-Fp-seE" userLabel="GradientView" customClass="BlueGradientBackgroundView" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="115" width="375" height="503"/>
+                                <rect key="frame" x="0.0" y="125" width="375" height="493"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Regional Rail Schedules" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DV2-DW-kcH" userLabel="TransitModeSchedules">
                                         <rect key="frame" x="11" y="14" width="355" height="24"/>
@@ -354,19 +354,19 @@ TableViewWrapper</string>
             <objects>
                 <viewController title="Transit Mode Toolbar" automaticallyAdjustsScrollViewInsets="NO" id="QkO-Ty-yTA" customClass="ScheduleTransitModesToolBarViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MvO-RR-Q5a">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYj-Yq-17F" userLabel="ToolbarScollView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieU-od-pmL">
-                                        <rect key="frame" x="0.0" y="0.0" width="460" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="460" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="460" placeholder="YES" id="MS4-kw-cOD" userLabel="TempWidth"/>
-                                            <constraint firstAttribute="height" constant="50" id="ucs-g8-kfu" userLabel="StackViewHeight"/>
+                                            <constraint firstAttribute="height" constant="60" id="ucs-g8-kfu" userLabel="StackViewHeight"/>
                                         </constraints>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="BZD-Qr-LFE" appends="YES" id="bmW-2c-ywO"/>
@@ -377,7 +377,7 @@ TableViewWrapper</string>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ieU-od-pmL" secondAttribute="trailing" id="7Ny-CL-2HR" userLabel="StackViewRight"/>
                                     <constraint firstItem="ieU-od-pmL" firstAttribute="leading" secondItem="HYj-Yq-17F" secondAttribute="leading" id="Czg-p0-yud" userLabel="StackViewLeft"/>
-                                    <constraint firstAttribute="height" constant="50" id="TRp-km-c6q"/>
+                                    <constraint firstAttribute="height" constant="60" id="TRp-km-c6q"/>
                                     <constraint firstItem="ieU-od-pmL" firstAttribute="top" secondItem="HYj-Yq-17F" secondAttribute="top" id="Vcl-hs-s0X" userLabel="StackViewTop"/>
                                     <constraint firstAttribute="bottom" secondItem="ieU-od-pmL" secondAttribute="bottom" id="cRm-zv-WhI" userLabel="StackViewBottom"/>
                                 </constraints>
