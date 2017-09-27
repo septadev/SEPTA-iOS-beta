@@ -26,16 +26,16 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qxS-RK-Hb9" userLabel="Toolbar">
-                                <rect key="frame" x="0.0" y="65" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="65" width="375" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="uDf-pF-twq" userLabel="toolbarHeight"/>
+                                    <constraint firstAttribute="height" constant="60" id="uDf-pF-twq" userLabel="toolbarHeight"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="zb9-QJ-YIl" kind="embed" id="r9L-Qz-PAU"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ob2-7I-l1n" userLabel="GradientView" customClass="BlueGradientBackgroundView" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="115" width="375" height="503"/>
+                                <rect key="frame" x="0.0" y="125" width="375" height="493"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Regional Rail Schedules" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pfb-N7-O3a" userLabel="TransitModeSchedules">
                                         <rect key="frame" x="11" y="14" width="355" height="24"/>
@@ -227,7 +227,7 @@ TableViewWrapper</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaJ-Ig-ASV">
-                            <rect key="frame" x="207" y="10" width="33" height="27"/>
+                            <rect key="frame" x="207" y="10.5" width="33" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Reset">
                                 <color key="titleColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -1118,18 +1118,18 @@ TitleViewTop</string>
             <objects>
                 <viewController storyboardIdentifier="transitModeToolbar" title="Transit Mode Toolbar" automaticallyAdjustsScrollViewInsets="NO" id="zb9-QJ-YIl" customClass="ScheduleTransitModesToolBarViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BiL-t2-ODt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DcS-hm-WiD" userLabel="ToolbarScollView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5f-ZN-wAj">
-                                        <rect key="frame" x="0.0" y="0.0" width="460" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="460" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="EVy-qK-zqw" userLabel="StackViewHeight"/>
+                                            <constraint firstAttribute="height" constant="60" id="EVy-qK-zqw" userLabel="StackViewHeight"/>
                                             <constraint firstAttribute="width" constant="460" placeholder="YES" id="hh5-Z4-YWu" userLabel="TempWidth"/>
                                         </constraints>
                                         <connections>
@@ -1142,7 +1142,7 @@ TitleViewTop</string>
                                     <constraint firstItem="d5f-ZN-wAj" firstAttribute="leading" secondItem="DcS-hm-WiD" secondAttribute="leading" id="85c-e2-A7X" userLabel="StackViewLeft"/>
                                     <constraint firstAttribute="bottom" secondItem="d5f-ZN-wAj" secondAttribute="bottom" id="Xt8-Pp-TKe" userLabel="StackViewBottom"/>
                                     <constraint firstItem="d5f-ZN-wAj" firstAttribute="top" secondItem="DcS-hm-WiD" secondAttribute="top" id="Z90-ZS-o7X" userLabel="StackViewTop"/>
-                                    <constraint firstAttribute="height" constant="50" id="uuW-91-oOg"/>
+                                    <constraint firstAttribute="height" constant="60" id="uuW-91-oOg"/>
                                     <constraint firstAttribute="trailing" secondItem="d5f-ZN-wAj" secondAttribute="trailing" id="vNf-cR-9jD" userLabel="StackViewRight"/>
                                 </constraints>
                             </scrollView>

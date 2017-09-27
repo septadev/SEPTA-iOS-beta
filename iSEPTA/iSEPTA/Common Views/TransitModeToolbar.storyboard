@@ -19,15 +19,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odB-9m-SvO" userLabel="ToolbarScollView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="60"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rzz-fa-ver">
-                                        <rect key="frame" x="0.0" y="0.0" width="460" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="460" height="60"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="460" placeholder="YES" id="i2k-9B-Sq6" userLabel="TempWidth"/>
-                                            <constraint firstAttribute="height" constant="50" id="j1q-YZ-g21" userLabel="StackViewHeight"/>
+                                            <constraint firstAttribute="height" constant="60" id="j1q-YZ-g21" userLabel="StackViewHeight"/>
                                         </constraints>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="0U2-aF-5Qw" appends="YES" id="XsY-0Z-Elu"/>
@@ -36,7 +36,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="8BX-Tu-ABA"/>
+                                    <constraint firstAttribute="height" constant="60" id="8BX-Tu-ABA"/>
                                     <constraint firstItem="Rzz-fa-ver" firstAttribute="leading" secondItem="odB-9m-SvO" secondAttribute="leading" id="Amb-g0-cv9" userLabel="StackViewLeft"/>
                                     <constraint firstAttribute="trailing" secondItem="Rzz-fa-ver" secondAttribute="trailing" id="LUJ-Ek-7bA" userLabel="StackViewRight"/>
                                     <constraint firstAttribute="bottom" secondItem="Rzz-fa-ver" secondAttribute="bottom" id="cED-Ni-MMU" userLabel="StackViewBottom"/>

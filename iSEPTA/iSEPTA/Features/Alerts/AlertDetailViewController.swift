@@ -47,7 +47,7 @@ class AlertDetailViewController: UIViewController, IdentifiableController {
 
     func updateHeaderViews() {
         guard let route = route else { return }
-        pillView.layer.cornerRadius = 5
+        pillView.layer.cornerRadius = 7
         pillView.backgroundColor = Route.colorForRoute(route, transitMode: transitMode)
         routeNameLabel.text = route.routeAlertTitle()
         navigationItem.title = transitMode.alertDetailTitle()

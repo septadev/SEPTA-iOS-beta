@@ -44,16 +44,16 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ke2-s8-CtN" userLabel="Toolbar">
-                                <rect key="frame" x="0.0" y="65" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="65" width="375" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Js2-Sz-ECB" userLabel="toolbarHeight"/>
+                                    <constraint firstAttribute="height" constant="60" id="Js2-Sz-ECB" userLabel="toolbarHeight"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="Wm7-P3-rGi" kind="embed" id="rFe-pc-Qc8"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hD-AH-evl" userLabel="GradientView" customClass="BlueGradientBackgroundView" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="115" width="375" height="503"/>
+                                <rect key="frame" x="0.0" y="125" width="375" height="493"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Regional Rail Schedules" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1GD-nr-m8r" userLabel="TransitModeSchedules">
                                         <rect key="frame" x="11" y="14" width="355" height="24"/>
