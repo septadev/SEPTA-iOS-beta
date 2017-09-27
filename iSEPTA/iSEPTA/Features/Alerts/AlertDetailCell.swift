@@ -11,6 +11,7 @@ import UIKit
 
 protocol AlertDetailCellDelegate: AnyObject {
     func didTapButton(sectionNumber: Int)
+    func constraintsChanged(sectionNumber: Int)
 }
 
 class AlertDetailCell: UITableViewCell {
@@ -30,9 +31,9 @@ class AlertDetailCell: UITableViewCell {
     var openState: Bool = false
 
     @IBAction func actionButtonTapped(_: Any) {
-
-        calculateFittingSize()
         delegate?.didTapButton(sectionNumber: sectionNumber)
+        calculateFittingSize()
+        delegate?.constraintsChanged(sectionNumber: sectionNumber)
     }
 
     func calculateFittingSize() {
@@ -53,11 +54,23 @@ class AlertDetailCell: UITableViewCell {
         setNeedsLayout()
     }
 
+    var fittingHeight: CGFloat {
+        if actionButton.isOpen {
+            let windowWidth = UIScreen.main.bounds.width - 50
+            let sizeThatFitsTextView = textView.sizeThatFits(CGSize(width: windowWidth, height: CGFloat(MAXFLOAT)))
+            let heightOfText = sizeThatFitsTextView.height
+            return heightOfText + 75
+        } else {
+            return 75
+        }
+    }
+
     func setEnabled(_ enabled: Bool) {
         disabledAdvisoryLabel.isHidden = enabled
         advisoryLabel.isHidden = !enabled
         actionButton.isEnabled = enabled
         pinkHeaderView.enabled = enabled
+        setNeedsLayout()
     }
 
     override func awakeFromNib() {

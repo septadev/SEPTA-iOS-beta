@@ -68,11 +68,14 @@ extension AlertsViewModel { // Table View
         switch cell {
         case let cell as SingleStringCell:
             cell.setLabelText(cellModel.text)
+            cell.searchIcon.image = UIImage(named: "selectRouteAccessory")
+            cell.shouldFill = true
         case let cell as RouteSelectedTableViewCell:
             guard let selectedRoute = scheduleRequest?.selectedRoute else { return }
             cell.routeIdLabel.text = "\(selectedRoute.routeId):"
             cell.routeShortNameLabel.text = cellModel.text
             cell.pillView.backgroundColor = cellModel.pillColor
+
         default: break
         }
     }

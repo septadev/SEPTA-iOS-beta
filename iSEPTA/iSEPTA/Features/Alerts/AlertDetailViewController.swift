@@ -40,6 +40,11 @@ class AlertDetailViewController: UIViewController, IdentifiableController {
         }
     }
 
+    var advisoryCell: AlertDetailCell?
+    var alertCell: AlertDetailCell?
+    var detourCell: AlertDetailCell?
+    var weatherCell: AlertDetailCell?
+
     @IBOutlet weak var pillView: UIView! {
         didSet {
         }
@@ -103,6 +108,37 @@ extension AlertDetailViewController: UITableViewDelegate, UITableViewDataSource 
         return 5
     }
 
+    //    func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    //
+    //        switch indexPath.section {
+    //        case 0:
+    //            if let advisoryCell = advisoryCell {
+    //                return advisoryCell.fittingHeight
+    //            } else {
+    //                return 75
+    //            }
+    //        case 1:
+    //            if let alertCell = alertCell {
+    //                return alertCell.fittingHeight
+    //            } else {
+    //                return 75
+    //            }
+    //        case 2:
+    //            if let detourCell = detourCell {
+    //                return detourCell.fittingHeight
+    //            } else {
+    //                return 75
+    //            }
+    //        case 3:
+    //            if let weatherCell = weatherCell {
+    //                return weatherCell.fittingHeight
+    //            } else {
+    //                return 75
+    //            }
+    //        default: return 0
+    //        }
+    //    }
+
     func tableView(_: UITableView, viewForFooterInSection _: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 5))
         view.backgroundColor = UIColor.clear
@@ -114,10 +150,30 @@ extension AlertDetailViewController: UITableViewDelegate, UITableViewDataSource 
         cell.sectionNumber = indexPath.section
         cell.delegate = self
         switch indexPath.section {
-        case 0: configureForServiceAdvisories(cell: cell)
-        case 1: configureForServiceAlerts(cell: cell)
-        case 2: configureForDetours(cell: cell)
-        case 3: configureForWeather(cell: cell)
+        case 0:
+            if let advisoryCell = advisoryCell {
+                return advisoryCell
+            } else {
+                configureForServiceAdvisories(cell: cell)
+            }
+        case 1:
+            if let alertCell = alertCell {
+                return alertCell
+            } else {
+                configureForServiceAlerts(cell: cell)
+            }
+        case 2:
+            if let detourCell = detourCell {
+                return detourCell
+            } else {
+                configureForDetours(cell: cell)
+            }
+        case 3:
+            if let weatherCell = weatherCell {
+                return weatherCell
+            } else {
+                configureForWeather(cell: cell)
+            }
         default: break
         }
 
@@ -167,6 +223,7 @@ extension AlertDetailViewController {
             cell.textView.text = nil
             cell.setEnabled(false)
         }
+        advisoryCell = cell
     }
 
     func configureForServiceAlerts(cell: AlertDetailCell) {
@@ -181,6 +238,7 @@ extension AlertDetailViewController {
             cell.textView.text = nil
             cell.setEnabled(false)
         }
+        alertCell = cell
     }
 
     func configureForDetours(cell: AlertDetailCell) {
@@ -195,19 +253,18 @@ extension AlertDetailViewController {
             cell.textView.text = nil
             cell.setEnabled(false)
         }
+        detourCell = cell
     }
 
     func configureForWeather(cell: AlertDetailCell) {
+
         cell.alertImage.image = UIImage(named: "weatherAlert")
         cell.advisoryLabel.text = "Weather Alerts"
         cell.disabledAdvisoryLabel.text = "No Weather Alerts"
-        //        if let first = alertDetails.first, let advisoryMessage = first.snow, advisoryMessage.count > 0 {
-        //            cell.setEnabled(true)
-        //            cell.textView.text = advisoryMessage
-        //        } else {
+
         cell.textView.text = nil
         cell.setEnabled(false)
-        //        }
+        weatherCell = cell
     }
 
     func renderMessage(alertDetails: [AlertDetails_Alert], filter: ((AlertDetails_Alert) -> String?)) -> NSAttributedString? {
@@ -226,6 +283,10 @@ extension AlertDetailViewController {
 
 extension AlertDetailViewController: AlertDetailCellDelegate {
     func didTapButton(sectionNumber _: Int) {
-        self.tableView.reloadData()
+        tableView.beginUpdates()
+    }
+
+    func constraintsChanged(sectionNumber _: Int) {
+        tableView.endUpdates()
     }
 }
