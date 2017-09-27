@@ -20,17 +20,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tHU-O1-qGx" userLabel="tripView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="65"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="QnL-zp-lB6"/>
+                                    <constraint firstAttribute="height" constant="65" id="QnL-zp-lB6"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="0La-Ry-f7T" kind="embed" id="dhB-qc-isg"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sea-lE-H6m" userLabel="mapView">
-                                <rect key="frame" x="0.0" y="124" width="375" height="432"/>
+                                <rect key="frame" x="0.0" y="129" width="375" height="427"/>
                                 <connections>
                                     <segue destination="rct-ch-dKT" kind="embed" id="Yl0-TR-k5C"/>
                                 </connections>
@@ -80,10 +80,12 @@
                         <outlet property="infoViewHeightCollapsedConstraint" destination="NQ4-FL-dqQ" id="5J1-ir-PRP"/>
                         <outlet property="infoViewHeightExpandedConstraint" destination="tSY-uq-i3T" id="9ft-4v-ANC"/>
                         <outlet property="navigationItem" destination="hQX-Wc-MEI" id="Jn4-Wn-I4K"/>
+                        <outlet property="nextToArriveInfoTableScrollableToggle" destination="Llb-ge-2dX" id="3Sl-1k-Gxj"/>
                         <outlet property="tripView" destination="tHU-O1-qGx" id="oom-Dp-RsZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HAO-bO-wcr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="Llb-ge-2dX" customClass="ScrollableTableViewToggle" customModule="Septa" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="-543" y="61"/>
         </scene>
@@ -238,29 +240,29 @@
             <objects>
                 <viewController id="0La-Ry-f7T" customClass="NextToArriveTripViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A9e-oT-VFV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Start:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3B-d9-8HH" userLabel="StartLabel">
-                                <rect key="frame" x="10" y="12" width="40" height="17"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <rect key="frame" x="10" y="12" width="44.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jefferson Station" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d62-sN-tBq" userLabel="StartName">
-                                <rect key="frame" x="53" y="12" width="109" height="17"/>
+                                <rect key="frame" x="57.5" y="13.5" width="109" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Destination:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Tw-Og-gvv" userLabel="EndLabel">
-                                <rect key="frame" x="10" y="37" width="84" height="17"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <rect key="frame" x="10" y="39.5" width="94.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30th St Station" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rU-a0-dpY" userLabel="EndName">
-                                <rect key="frame" x="97" y="37" width="96" height="17"/>
+                                <rect key="frame" x="107.5" y="41" width="96" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -273,11 +275,11 @@
                                 </constraints>
                             </view>
                             <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="42j-gG-sXU" customClass="RefreshNextToArriveDetailButton" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="295" y="17.5" width="68" height="25"/>
+                                <rect key="frame" x="288" y="20" width="75" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="3r2-5w-ZVj"/>
-                                    <constraint firstAttribute="width" constant="68" id="Qe4-in-bWa"/>
+                                    <constraint firstAttribute="width" constant="75" id="Qe4-in-bWa"/>
                                 </constraints>
                                 <connections>
                                     <action selector="refreshButtonTapped:" destination="0La-Ry-f7T" eventType="touchUpInside" id="q1r-ft-5Np"/>
@@ -288,6 +290,7 @@
                         <constraints>
                             <constraint firstItem="FfQ-gZ-8tW" firstAttribute="leading" secondItem="A9e-oT-VFV" secondAttribute="leading" id="2Mi-JH-ahT" userLabel="DividerLeading"/>
                             <constraint firstItem="8rU-a0-dpY" firstAttribute="baseline" secondItem="8Tw-Og-gvv" secondAttribute="baseline" id="89f-mr-TC7" userLabel="EndNameBaseline"/>
+                            <constraint firstItem="42j-gG-sXU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8rU-a0-dpY" secondAttribute="trailing" constant="10" id="8nB-Aa-PfP" userLabel="EndNameRight"/>
                             <constraint firstItem="d62-sN-tBq" firstAttribute="leading" secondItem="f3B-d9-8HH" secondAttribute="trailing" constant="3" id="CVC-SO-apg" userLabel="StartNameLeft"/>
                             <constraint firstItem="FfQ-gZ-8tW" firstAttribute="top" secondItem="A9e-oT-VFV" secondAttribute="top" id="DDG-C9-ehO" userLabel="DividerTop"/>
                             <constraint firstItem="42j-gG-sXU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="d62-sN-tBq" secondAttribute="trailing" constant="10" id="DXf-I5-BxC" userLabel="StartLabelRight"/>

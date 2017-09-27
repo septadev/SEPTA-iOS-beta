@@ -34,6 +34,7 @@
 		5814AA841F43589E00DF774A /* TripScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9B1F33B1120062A546 /* TripScheduleViewModel.swift */; };
 		5814AA891F4359CC00DF774A /* SingleStringDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5814AA861F4358D000DF774A /* SingleStringDisplayable.swift */; };
 		5814AA8A1F4359D000DF774A /* TripleTextDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5814AA851F4358D000DF774A /* TripleTextDisplayable.swift */; };
+		5816AB731F7C10CD00210C07 /* ScrollableTableViewToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5816AB721F7C10CD00210C07 /* ScrollableTableViewToggle.swift */; };
 		581804BB1F3F8051002184E3 /* LoggingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581804BA1F3F8051002184E3 /* LoggingError.swift */; };
 		581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581804BC1F3F838B002184E3 /* CodableAppState.swift */; };
 		58195FF01F3FA1C90053B3D3 /* PresentModal.json in Resources */ = {isa = PBXBuildFile; fileRef = 58195FEC1F3FA1480053B3D3 /* PresentModal.json */; };
@@ -578,6 +579,7 @@
 		58126F761F64127B00A6E187 /* NextToArrivePrerequisiteStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArrivePrerequisiteStatus.swift; sourceTree = "<group>"; };
 		5814AA851F4358D000DF774A /* TripleTextDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripleTextDisplayable.swift; sourceTree = "<group>"; };
 		5814AA861F4358D000DF774A /* SingleStringDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleStringDisplayable.swift; sourceTree = "<group>"; };
+		5816AB721F7C10CD00210C07 /* ScrollableTableViewToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableTableViewToggle.swift; sourceTree = "<group>"; };
 		581804BA1F3F8051002184E3 /* LoggingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingError.swift; sourceTree = "<group>"; };
 		581804BC1F3F838B002184E3 /* CodableAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableAppState.swift; sourceTree = "<group>"; };
 		581804C31F3F8DFE002184E3 /* NavigationReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationReducerTests.swift; sourceTree = "<group>"; };
@@ -1235,6 +1237,7 @@
 				58EB8D241F5D8EE80028A487 /* BaseNavigationBar.swift */,
 				58E54E231F65A40100E9B66D /* NavigationBar+Util.swift */,
 				671A191F1F6613A600C8EEDA /* ConstraintsToggle.swift */,
+				5816AB721F7C10CD00210C07 /* ScrollableTableViewToggle.swift */,
 				671A19231F661F8F00C8EEDA /* SwipeGestureRecognizerToggle.swift */,
 				671A19251F662DF000C8EEDA /* DividerViews.swift */,
 				671609101F67F72600941D2C /* UIStackView+Util.swift */,
@@ -2816,6 +2819,7 @@
 				678DAAA21F6706E300EB6EE8 /* NextToArriveTripGrouper.swift in Sources */,
 				67C567331F598A0400FF6203 /* TransitAlertView.swift in Sources */,
 				5814AA841F43589E00DF774A /* TripScheduleViewModel.swift in Sources */,
+				5816AB731F7C10CD00210C07 /* ScrollableTableViewToggle.swift in Sources */,
 				67365AD81F75918300FC86CB /* ViewSchedulesButton.swift in Sources */,
 				67365ACA1F754A3200FC86CB /* HalfSheetPresentationCoordinator.swift in Sources */,
 				58490E471F55F98B007DBCA1 /* AlertState.swift in Sources */,

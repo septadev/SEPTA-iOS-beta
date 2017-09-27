@@ -227,7 +227,7 @@ TableViewWrapper</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaJ-Ig-ASV">
-                            <rect key="frame" x="207" y="10.5" width="33" height="27"/>
+                            <rect key="frame" x="207" y="10" width="33" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Reset">
                                 <color key="titleColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -1470,7 +1470,8 @@ SearchTextBox</string>
                                                     <constraint firstAttribute="width" constant="20" id="6IA-KV-rdO"/>
                                                     <constraint firstAttribute="height" constant="20" id="Ji0-5r-usZ"/>
                                                 </constraints>
-                                                <state key="normal" title="L" image="LocationLookup"/>
+                                                <state key="normal" title="L" image="LocationLookupInactive"/>
+                                                <state key="highlighted" image="LocationLookupInactive"/>
                                                 <connections>
                                                     <action selector="SearchByLocation:" destination="gOh-OW-Svi" eventType="touchUpInside" id="1yO-8u-TZm"/>
                                                 </connections>
@@ -1706,7 +1707,7 @@ SearchTextBox</string>
         </scene>
     </scenes>
     <resources>
-        <image name="LocationLookup" width="30" height="27"/>
+        <image name="LocationLookupInactive" width="20" height="19"/>
         <image name="SearchIcon" width="17" height="17"/>
         <image name="favoriteNavBarOff" width="22" height="20"/>
         <image name="schedulesTabbar" width="21" height="22"/>

@@ -10,9 +10,12 @@ import Foundation
 import UIKit
 
 class NextToArriveDetailViewController: UIViewController, IdentifiableController, UIGestureRecognizerDelegate {
-    @IBOutlet var infoViewHeightCollapsedConstraint: NSLayoutConstraint!
-    @IBOutlet var infoViewHeightExpandedConstraint: NSLayoutConstraint!
     let viewController: ViewController = .nextToArriveDetailController
+
+    @IBOutlet var infoViewHeightCollapsedConstraint: NSLayoutConstraint!
+    @IBOutlet var nextToArriveInfoTableScrollableToggle: ScrollableTableViewToggle!
+    @IBOutlet var infoViewHeightExpandedConstraint: NSLayoutConstraint!
+
     var nextToArriveFavoritesController: NextToArriveFavoritesIconController!
     @IBOutlet weak var editFavoriteBarButtonItem: UIBarButtonItem!
 
@@ -44,6 +47,16 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
         gestureRecognizerToggle = SwipeGestureRecognizerToggle(activeRecognizer: upSwipeGestureRecognizer, inactiveRecognizer: downSwipeGestureRecognizer)
         configureFavoriteController()
         configureNavigationItemTitle()
+
+        configureScrollableTableView()
+    }
+
+    func configureScrollableTableView() {
+
+        guard let tableView = nextToArriveInfoViewController?.tableView else { return }
+        nextToArriveInfoTableScrollableToggle = ScrollableTableViewToggle()
+        nextToArriveInfoTableScrollableToggle.tableView = tableView
+        nextToArriveInfoTableScrollableToggle.shouldScroll = false
     }
 
     func configureNavigationItemTitle() {
@@ -74,10 +87,14 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
     func toggleMapHeight() {
         constraintsToggle = constraintsToggle.toggleConstraints(inView: view)
         gestureRecognizerToggle = gestureRecognizerToggle.toggleRecognizers()
+        nextToArriveInfoTableScrollableToggle.toggleTableViewScrolling()
     }
+
+    weak var nextToArriveInfoViewController: NextToArriveInfoViewController?
 
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         guard let infoViewController = segue.destination as? NextToArriveInfoViewController else { return }
+        self.nextToArriveInfoViewController = infoViewController
         infoViewController.nextToArriveDetailViewController = self
     }
 
