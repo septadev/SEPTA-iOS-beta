@@ -204,7 +204,7 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
             return buildNewVehicleAnnotationView(annotation: annotation, vehicleViewId: vehicleId)
         }
         vehicleView.annotation = annotation
-        if let bearing = annotation.vehicleLocation.bearing {
+        if annotation.vehicleLocation.isMoving, let bearing = annotation.vehicleLocation.bearing {
             let startingTransform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
             let transformForBearing = startingTransform.rotated(by: CGFloat(bearing))
             vehicleView.transform = transformForBearing

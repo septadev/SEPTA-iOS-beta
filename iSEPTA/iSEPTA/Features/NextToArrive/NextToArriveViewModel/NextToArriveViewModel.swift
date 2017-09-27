@@ -14,12 +14,23 @@ import SeptaSchedule
 typealias CellModel = NextToArriveRowDisplayModel
 
 class NextToArriveViewModel: NSObject, StoreSubscriber {
+    typealias StoreSubscriberStateType = ScheduleRequest
 
+    @IBOutlet weak var view: UIView!
     @IBOutlet weak var nextToArriveViewController: UpdateableFromViewModel?
     @IBOutlet weak var schedulesDelegate: SchedulesViewModelDelegate?
-    typealias StoreSubscriberStateType = ScheduleRequest
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     var scheduleRequest: ScheduleRequest?
-    var transitMode: TransitMode!
+
+    var transitMode: TransitMode! {
+        didSet {
+            guard let heightConstraint = tableViewHeightConstraint,
+                let view = view else { return }
+            let tableViewHeight: CGFloat = transitMode == .rail ? 237 : 277
+            heightConstraint.constant = tableViewHeight
+            view.setNeedsLayout()
+        }
+    }
 
     var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
 
@@ -74,9 +85,10 @@ extension NextToArriveViewModel {
     func heightForSectionHeader(atRow row: Int) -> CGFloat {
         switch row {
         case 0:
-            return transitMode == .rail ? 10 : 37
-        case 1, 3: return 21
+            return transitMode == .rail ? 0 : 37
+        case 1: return 15
         case 2: return 11
+        case 3: return 21
         default: return 0
         }
     }

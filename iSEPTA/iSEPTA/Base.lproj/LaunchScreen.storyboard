@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,21 +19,21 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trolley-splash.png" translatesAutoresizingMaskIntoConstraints="NO" id="BAv-6J-lG1">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <color key="backgroundColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the SEPTA iOS App" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIo-Jj-NjI" userLabel="Welcome">
-                                <rect key="frame" x="47" y="454.5" width="281" height="68"/>
+                                <rect key="frame" x="40" y="342.5" width="240" height="68"/>
                                 <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="29"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for participating in the beta testing phase" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nr9-k3-wyR" userLabel="Thanks">
-                                <rect key="frame" x="94" y="547.5" width="187.5" height="19.5"/>
+                                <rect key="frame" x="80" y="435.5" width="160" height="19.5"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -43,12 +43,12 @@
                         <constraints>
                             <constraint firstItem="nr9-k3-wyR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="54g-IS-ybg" userLabel="ThanksCenterX"/>
                             <constraint firstItem="IIo-Jj-NjI" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="6Gd-v0-9gr" userLabel="WelcomeCenterX"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="nr9-k3-wyR" secondAttribute="bottom" constant="100" id="7ky-NK-i21" userLabel="ThanksBottom"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="nr9-k3-wyR" secondAttribute="bottom" constant="25" id="Fiu-ja-sSF" userLabel="ThanksBottom"/>
                             <constraint firstItem="BAv-6J-lG1" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Qkh-FA-wjr" userLabel="splashLeft"/>
                             <constraint firstItem="IIo-Jj-NjI" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.75" id="cSR-7r-UnT" userLabel="WelcomeWidth"/>
                             <constraint firstItem="BAv-6J-lG1" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="gFx-L6-D2Q" userLabel="splashTop"/>
                             <constraint firstAttribute="trailing" secondItem="BAv-6J-lG1" secondAttribute="trailing" id="hrN-Ck-afk" userLabel="splashRight"/>
-                            <constraint firstItem="nr9-k3-wyR" firstAttribute="top" secondItem="IIo-Jj-NjI" secondAttribute="bottom" constant="25" id="hyI-bD-Wrc" userLabel="ThanksBottom"/>
+                            <constraint firstItem="nr9-k3-wyR" firstAttribute="top" secondItem="IIo-Jj-NjI" secondAttribute="bottom" constant="25" id="hyI-bD-Wrc" userLabel="WelcomeBottom"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="BAv-6J-lG1" secondAttribute="bottom" id="iP0-qo-yGT" userLabel="splashBottom"/>
                             <constraint firstItem="nr9-k3-wyR" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.5" id="poh-AG-zUB" userLabel="ThanksWidth"/>
                         </constraints>

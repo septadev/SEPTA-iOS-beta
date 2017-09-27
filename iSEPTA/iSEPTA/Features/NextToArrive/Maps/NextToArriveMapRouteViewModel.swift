@@ -75,8 +75,8 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
 
             delegate.drawRoutes(routeIds: allRouteIds)
             handleVehicleLocations(trips: trips)
+            currentTrips = trips
         }
-        currentTrips = trips
     }
 
     func handleVehicleLocations(trips: [NextToArriveTrip]) {
@@ -84,7 +84,11 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
         var allNewStops = trips.map({ $0.startStop }) + trips.map({ $0.endStop })
         allNewStops = allNewStops.filter { $0.vehicleLocationCoordinate != nil }
         let vehicleLocations: [VehicleLocation] = allNewStops.map { newStop in
-            let currentLocationCoordinate = allCurrentStops.filter({ $0.tripId == newStop.tripId }).first?.vehicleLocationCoordinate
+            let currentLocationCoordinate = allCurrentStops.filter({
+                guard let tripId = $0.tripId, let newStopTripId = newStop.tripId else { return false }
+                return tripId == newStopTripId
+
+            }).first?.vehicleLocationCoordinate
             return VehicleLocation(location: newStop.vehicleLocationCoordinate, lastLocation: currentLocationCoordinate)
         }
         delegate.drawVehicleLocations(vehicleLocations)

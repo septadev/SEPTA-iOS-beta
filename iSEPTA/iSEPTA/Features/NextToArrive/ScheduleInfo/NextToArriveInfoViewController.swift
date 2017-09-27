@@ -19,7 +19,11 @@ class NextToArriveInfoViewController: UIViewController {
     weak var nextToArriveDetailViewController: NextToArriveDetailViewController?
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet var tableFooterView: UIView!
+    @IBOutlet var tableFooterView: UIView! {
+        didSet {
+            tableFooterView.isHidden = true
+        }
+    }
 
     private var pendingRequestWorkItem: DispatchWorkItem?
 
@@ -129,12 +133,14 @@ extension NextToArriveInfoViewController: UITableViewDataSource, UITableViewDele
 
 extension NextToArriveInfoViewController: UpdateableFromViewModel {
     func viewModelUpdated() {
+
         activityIndicator.startAnimating()
         pendingRequestWorkItem?.cancel()
 
         // Wrap our request in a work item
         let requestWorkItem = DispatchWorkItem { [weak self] in
             self?.activityIndicator.stopAnimating()
+            self?.tableView.tableFooterView?.isHidden = self?.viewModel.numberOfSections() == 0
             self?.tableView.reloadData()
             print("Reload data")
         }

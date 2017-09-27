@@ -78,7 +78,7 @@
                                                     <constraint firstAttribute="height" constant="277" id="jH8-Tf-LBm"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="singleStringCell" id="ZHM-cg-SkL" customClass="SingleStringCell" customModule="Septa" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="singleStringCell" rowHeight="44" id="ZHM-cg-SkL" customClass="SingleStringCell" customModule="Septa" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="324" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZHM-cg-SkL" id="jb9-RV-C8z">
@@ -112,15 +112,15 @@
                                                             <outlet property="searchIcon" destination="C2E-hl-W2l" id="5Lz-Az-4ti"/>
                                                         </connections>
                                                     </tableViewCell>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="routeSelectedCell" rowHeight="60" id="v1p-EH-RXw" customClass="RouteSelectedTableViewCell" customModule="Septa" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="72" width="324" height="60"/>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="routeSelectedCell" rowHeight="44" id="v1p-EH-RXw" customClass="RouteSelectedTableViewCell" customModule="Septa" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="72" width="324" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v1p-EH-RXw" id="ah4-bf-4C1">
-                                                            <rect key="frame" x="0.0" y="0.0" width="324" height="60"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="324" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZtP-qJ-xQu" userLabel="Pill">
-                                                                    <rect key="frame" x="8" y="27" width="17" height="7"/>
+                                                                    <rect key="frame" x="8" y="18.5" width="17" height="7"/>
                                                                     <color key="backgroundColor" red="1" green="0.12214555959999999" blue="0.19503632169999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="7" id="WmO-rW-P7l"/>
@@ -128,19 +128,19 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dln-oV-toD" userLabel="RouteId">
-                                                                    <rect key="frame" x="30" y="21.5" width="16.5" height="18"/>
+                                                                    <rect key="frame" x="30" y="13" width="16.5" height="18"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="248" text="to Front-Market" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALv-sl-vn7" userLabel="routeShortName">
-                                                                    <rect key="frame" x="49.5" y="21.5" width="231.5" height="18"/>
+                                                                    <rect key="frame" x="49.5" y="13" width="231.5" height="18"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectRouteAccessory" translatesAutoresizingMaskIntoConstraints="NO" id="bQt-jI-ehs" userLabel="Icon">
-                                                                    <rect key="frame" x="286" y="23.5" width="26" height="13"/>
+                                                                    <rect key="frame" x="286" y="15.5" width="26" height="13"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="13.199999999999999" id="Pqm-0G-RDo"/>
                                                                         <constraint firstAttribute="width" constant="26" id="vjq-B4-IBv"/>
@@ -166,21 +166,21 @@
                                                         </connections>
                                                     </tableViewCell>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="noRouteNeeded" id="sav-jC-59q" userLabel="NoRouteNeededCell" customClass="NoRouteNeededCell" customModule="Septa" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="132" width="324" height="44"/>
+                                                        <rect key="frame" x="0.0" y="116" width="324" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sav-jC-59q" id="ssx-lu-FiU">
                                                             <rect key="frame" x="0.0" y="0.0" width="324" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a start and destination to view the next trains to arrive for that route." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTq-Mk-IZ7">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="324" height="44"/>
+                                                                    <rect key="frame" x="0.0" y="15" width="324" height="29"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" red="0.42745098039215684" green="0.42745098039215684" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="zTq-Mk-IZ7" firstAttribute="top" secondItem="ssx-lu-FiU" secondAttribute="top" id="1W5-hF-CQb"/>
+                                                                <constraint firstItem="zTq-Mk-IZ7" firstAttribute="top" secondItem="ssx-lu-FiU" secondAttribute="top" constant="15" id="1W5-hF-CQb"/>
                                                                 <constraint firstAttribute="bottom" secondItem="zTq-Mk-IZ7" secondAttribute="bottom" id="e9R-VU-8gz"/>
                                                                 <constraint firstAttribute="trailing" secondItem="zTq-Mk-IZ7" secondAttribute="trailing" id="j4Q-bO-qWR"/>
                                                                 <constraint firstItem="zTq-Mk-IZ7" firstAttribute="leading" secondItem="ssx-lu-FiU" secondAttribute="leading" id="kr6-YW-9n9"/>
@@ -190,8 +190,8 @@
                                                             <outlet property="label" destination="zTq-Mk-IZ7" id="89S-P3-JNI"/>
                                                         </connections>
                                                     </tableViewCell>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="buttonViewCell" id="X6G-Tw-gEe" userLabel="ButtonViewCell" customClass="ButtonViewCell" customModule="Septa" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="176" width="324" height="44"/>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="buttonViewCell" rowHeight="44" id="X6G-Tw-gEe" userLabel="ButtonViewCell" customClass="ButtonViewCell" customModule="Septa" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="160" width="324" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X6G-Tw-gEe" id="8Rl-fK-5QR">
                                                             <rect key="frame" x="0.0" y="0.0" width="324" height="44"/>
@@ -251,8 +251,6 @@ TableViewWrapper</string>
                         <outlet property="section1View" destination="kbb-1w-ntt" id="kZ4-ap-b5h"/>
                         <outlet property="sectionHeaderLabel" destination="Zii-AI-Kei" id="1O2-jf-Tcr"/>
                         <outlet property="tableView" destination="Qzl-fi-EUm" id="lOH-dC-9b8"/>
-                        <outlet property="tableViewFooter" destination="cVD-02-CcX" id="0IX-a4-kPp"/>
-                        <outlet property="tableViewHeader" destination="P8d-ph-M7m" id="sJY-ay-Jvk"/>
                         <outlet property="tableViewWrapper" destination="sFO-Tz-lzW" id="Rd9-CO-Mcy"/>
                         <outlet property="viewModel" destination="oNq-b9-Hbj" id="5nD-Tg-a7C"/>
                         <outletCollection property="buttons" destination="8vc-EI-vAS" collectionClass="NSMutableArray" id="Dsr-lA-nsF"/>
@@ -278,7 +276,7 @@ TableViewWrapper</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5l-jy-fMz">
-                            <rect key="frame" x="207" y="10" width="33" height="27"/>
+                            <rect key="frame" x="207" y="10.5" width="33" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Reset">
                                 <color key="titleColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -288,7 +286,6 @@ TableViewWrapper</string>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="Zii-AI-Kei" firstAttribute="top" secondItem="fb3-zv-iRO" secondAttribute="top" constant="16" id="805-BL-oA5" userLabel="TransitModeLabelTop"/>
                         <constraint firstItem="fb3-zv-iRO" firstAttribute="trailing" secondItem="Zii-AI-Kei" secondAttribute="trailing" constant="5" id="F8n-JH-CBG" userLabel="TransitModeNameRight"/>
@@ -302,6 +299,8 @@ TableViewWrapper</string>
                     <connections>
                         <outlet property="nextToArriveViewController" destination="93K-JI-5OU" id="a8C-sD-4hi"/>
                         <outlet property="schedulesDelegate" destination="93K-JI-5OU" id="Cbo-vq-jwr"/>
+                        <outlet property="tableViewHeightConstraint" destination="jH8-Tf-LBm" id="9gp-5L-QGd"/>
+                        <outlet property="view" destination="MKb-P9-J1z" id="vns-3j-jz0"/>
                     </connections>
                 </customObject>
                 <view contentMode="scaleToFill" id="kbb-1w-ntt" userLabel="TableViewSection1">

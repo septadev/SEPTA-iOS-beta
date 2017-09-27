@@ -20,7 +20,14 @@ struct VehicleLocation {
 
     var bearing: Double?
 
-    mutating func setBearing(location: CLLocationCoordinate2D, lastLocation: CLLocationCoordinate2D) -> Double {
+    var distanceCovered: Double?
+
+    var isMoving: Bool {
+        guard let distanceCovered = distanceCovered else { return false }
+        return distanceCovered > 50
+    }
+
+    func setBearing(location: CLLocationCoordinate2D, lastLocation: CLLocationCoordinate2D) -> Double {
 
         func degreesToRadians(_ degrees: Double) -> Double { return degrees * Double.pi / 180.0 }
         func radiansToDegrees(_ radians: Double) -> Double { return radians * 180.0 / Double.pi }
@@ -39,11 +46,18 @@ struct VehicleLocation {
         return radiansBearing
     }
 
+    func calculateDistanceCovered(location: CLLocationCoordinate2D, lastLocation: CLLocationCoordinate2D) -> Double {
+        let currentCLLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
+        let lastCLLocation = CLLocation(latitude: lastLocation.latitude, longitude: lastLocation.longitude)
+        return currentCLLocation.distance(from: lastCLLocation)
+    }
+
     init(location: CLLocationCoordinate2D?, lastLocation: CLLocationCoordinate2D? = nil) {
         self.location = location
         self.lastLocation = lastLocation
         if let location = location, let lastLocation = lastLocation {
             bearing = setBearing(location: location, lastLocation: lastLocation)
+            distanceCovered = calculateDistanceCovered(location: location, lastLocation: lastLocation)
         }
     }
 }
