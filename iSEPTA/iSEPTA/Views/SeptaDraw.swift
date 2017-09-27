@@ -1022,6 +1022,29 @@ public class SeptaDraw: NSObject {
         rectanglePath.fill()
     }
 
+    @objc public dynamic class func drawCurvedTopView(frame: CGRect = CGRect(x: 0, y: 0, width: 90, height: 43)) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()!
+
+        //// Color Declarations
+        let white = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
+
+        //// Shadow Declarations
+        let curvedTopViewShadow = NSShadow()
+        curvedTopViewShadow.shadowColor = UIColor.black.withAlphaComponent(0.2)
+        curvedTopViewShadow.shadowOffset = CGSize(width: 0, height: 0)
+        curvedTopViewShadow.shadowBlurRadius = 4
+
+        //// Rectangle Drawing
+        let rectanglePath = UIBezierPath(roundedRect: CGRect(x: frame.minX, y: frame.minY + 4, width: frame.width, height: frame.height - 4), byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 15, height: 15))
+        rectanglePath.close()
+        context.saveGState()
+        context.setShadow(offset: curvedTopViewShadow.shadowOffset, blur: curvedTopViewShadow.shadowBlurRadius, color: (curvedTopViewShadow.shadowColor as! UIColor).cgColor)
+        white.setFill()
+        rectanglePath.fill()
+        context.restoreGState()
+    }
+
     @objc public dynamic class func drawAlertView(alertViewFrame: CGRect = CGRect(x: 0, y: 0, width: 100, height: 100)) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!

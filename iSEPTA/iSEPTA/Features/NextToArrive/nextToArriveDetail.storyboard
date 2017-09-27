@@ -97,11 +97,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="337"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjJ-NE-5hP" userLabel="HeaderView" customClass="CurvedTopView" customModule="Septa" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjJ-NE-5hP" userLabel="HeaderView" customClass="CurvedTopInfoView" customModule="Septa" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
                                 <subviews>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pullHandle" translatesAutoresizingMaskIntoConstraints="NO" id="w8Z-do-EH3" userLabel="SliderView">
-                                        <rect key="frame" x="169.5" y="11" width="35" height="4"/>
+                                        <rect key="frame" x="169.5" y="15" width="35" height="4"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="4" id="Bjd-GO-xNK"/>
                                             <constraint firstAttribute="width" constant="35" id="NWH-3z-jer"/>
@@ -114,12 +114,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="62" id="0wH-CM-Zsv" userLabel="HeaderViewTop"/>
+                                    <constraint firstAttribute="height" constant="62" id="0wH-CM-Zsv" userLabel="HeaderViewHeight"/>
                                     <constraint firstItem="m5N-7U-7Uy" firstAttribute="centerX" secondItem="pjJ-NE-5hP" secondAttribute="centerX" id="FWC-zC-VNO" userLabel="titleCenterX"/>
-                                    <constraint firstItem="w8Z-do-EH3" firstAttribute="top" secondItem="pjJ-NE-5hP" secondAttribute="top" constant="11" id="S2h-hu-LgY" userLabel="SliderViewTop"/>
+                                    <constraint firstItem="w8Z-do-EH3" firstAttribute="top" secondItem="pjJ-NE-5hP" secondAttribute="top" constant="15" id="S2h-hu-LgY" userLabel="SliderViewTop"/>
                                     <constraint firstItem="w8Z-do-EH3" firstAttribute="centerX" secondItem="pjJ-NE-5hP" secondAttribute="centerX" id="m9A-gy-clU" userLabel="SliderViewCenterX"/>
                                     <constraint firstItem="m5N-7U-7Uy" firstAttribute="top" secondItem="pjJ-NE-5hP" secondAttribute="top" constant="32" id="rnp-zY-ETk" userLabel="TitleTop"/>
                                 </constraints>
@@ -128,7 +128,7 @@
                                     <outletCollection property="gestureRecognizers" destination="ACM-6Z-FqX" appends="YES" id="aJf-3H-GEh"/>
                                 </connections>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XWV-WF-JiF">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="XWV-WF-JiF">
                                 <rect key="frame" x="0.0" y="62" width="375" height="275"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
