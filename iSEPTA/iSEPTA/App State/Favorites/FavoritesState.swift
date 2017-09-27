@@ -14,7 +14,9 @@ struct FavoritesState: Codable {
     var favoriteToEdit: Favorite?
     var nextToArriveFavoriteId: String?
     var hasFavoriteToEdit: Bool { return favoriteToEdit != nil }
-
+    var saveableFavorites: [String] {
+        return favorites.map { $0.favoriteId + $0.favoriteName }
+    }
     var favoritesExist: Bool { return favorites.count > 0 }
 
     var nextToArriveFavorite: Favorite? {

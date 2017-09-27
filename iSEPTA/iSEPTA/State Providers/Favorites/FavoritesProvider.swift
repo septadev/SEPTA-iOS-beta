@@ -18,37 +18,22 @@ enum FavoritesError: Error {
     case couldNotCreateFavoritesFile
 }
 
-class FavoritesProvider: StoreSubscriber, FavoritesState_FavoriteToEditWatcherDelegate {
-
-    typealias StoreSubscriberStateType = FavoritesState
+class FavoritesProvider: FavoriteState_SaveableFavoritesWatcherDelegate {
 
     static let sharedInstance = FavoritesProvider()
 
     let fileManager = FileManager.default
     var initialLoadFavoritesFromDiskHasCompleted = false
 
-    var favoriteToEditWatcher: FavoritesState_FavoriteToEditWatcher?
+    var favoriteToSaveWatcher = FavoriteState_SaveableFavoritesWatcher()
 
     private init() {
         retrieveFavoritesFromDisk()
-        subscribe()
-
-        favoriteToEditWatcher = FavoritesState_FavoriteToEditWatcher(delegate: self)
-
-        let app = UIApplication.shared
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.appLosingFocus(notification:)),
-                                               name: NSNotification.Name.UIApplicationWillResignActive,
-                                               object: app)
+        favoriteToSaveWatcher.delegate = self
     }
 
-    @objc func appLosingFocus(notification _: NSNotification) {
-        guard let currentFavoriteState = self.currentFavoriteState else { return }
-        writeFavoritesToFile(state: currentFavoriteState)
-    }
-
-    func favoritesState_FavoriteToEditUpdated(favorite _: Favorite?) {
-        guard let currentFavoriteState = currentFavoriteState else { return }
+    func favoriteState_SaveableFavoritesUpdated(saveableFavorites _: [String]) {
+        writeFavoritesToFile(state: store.state.favoritesState)
     }
 
     func retrieveFavoritesFromDisk() {
@@ -79,31 +64,6 @@ class FavoritesProvider: StoreSubscriber, FavoritesState_FavoriteToEditWatcherDe
             }
         }
         initialLoadFavoritesFromDiskHasCompleted = true
-    }
-
-    func subscribe() {
-        store.subscribe(self) {
-            $0.select {
-                $0.favoritesState
-            }.skipRepeats { $0 == $1 }
-        }
-    }
-
-    deinit {
-        unsubscribe()
-    }
-
-    private func unsubscribe() {
-        store.unsubscribe(self)
-    }
-
-    var currentFavoriteState: FavoritesState?
-    func newState(state: FavoritesState) {
-        currentFavoriteState = state
-    }
-
-    func setStartupNavController(state _: FavoritesState) {
-        // TODO: When there are favorites the startup controller should be set here.
     }
 
     func writeFavoritesToFile(state: FavoritesState) {

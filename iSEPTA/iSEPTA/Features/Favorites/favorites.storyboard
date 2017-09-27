@@ -249,7 +249,7 @@ TextFieldWrapper</string>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find a trip then use the favorite icon to add it to your Favorites." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMX-YF-FRn" userLabel="Instructions">
-                                                <rect key="frame" x="31" y="0.0" width="260.5" height="38.5"/>
+                                                <rect key="frame" x="31" y="0.0" width="261" height="38.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                 <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -276,7 +276,7 @@ TextFieldWrapper</string>
                                     <constraint firstItem="WJk-bn-WxX" firstAttribute="leading" secondItem="Pq0-g0-inS" secondAttribute="leading" constant="38" id="ULQ-va-ZMc" userLabel="ButtonLeft"/>
                                     <constraint firstAttribute="trailing" secondItem="qyh-wj-euK" secondAttribute="trailing" constant="38" id="ULY-jC-Iii" userLabel="InstructionsRight"/>
                                     <constraint firstAttribute="trailing" secondItem="WJk-bn-WxX" secondAttribute="trailing" constant="38" id="l3G-Br-2us" userLabel="ButtonRight"/>
-                                    <constraint firstAttribute="trailing" secondItem="t0e-qD-eXK" secondAttribute="trailing" constant="38" id="nFf-bU-5OC" userLabel="StackViewLeft"/>
+                                    <constraint firstAttribute="trailing" secondItem="t0e-qD-eXK" secondAttribute="trailing" constant="40" id="nFf-bU-5OC" userLabel="StackViewLeft"/>
                                     <constraint firstItem="t0e-qD-eXK" firstAttribute="leading" secondItem="Pq0-g0-inS" secondAttribute="leading" constant="40" id="pCc-A5-7jW" userLabel="StackViewRight"/>
                                     <constraint firstItem="qyh-wj-euK" firstAttribute="top" secondItem="Pq0-g0-inS" secondAttribute="top" constant="219" id="qhb-Tr-qVx" userLabel="InstructionsTop"/>
                                     <constraint firstItem="hjp-LN-3DT" firstAttribute="leading" secondItem="Pq0-g0-inS" secondAttribute="leading" constant="38" id="yIF-TE-xbb" userLabel="InfoLabelLeft"/>

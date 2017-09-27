@@ -109,6 +109,7 @@
 		5840D6EE1F37F63800C8CB76 /* TransitModeToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */; };
 		5844CA1F1F3BD9B700651223 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5844CA1E1F3BD9B700651223 /* NavigationState.swift */; };
 		584528BB1F7C27C000E68D8F /* CurvedTopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584528BA1F7C27C000E68D8F /* CurvedTopInfoView.swift */; };
+		584528BF1F7C316500E68D8F /* FavoritesToSaveWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584528BE1F7C316500E68D8F /* FavoritesToSaveWatcher.swift */; };
 		58470C091F3F276000F3C9B5 /* NumberFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58470C081F3F276000F3C9B5 /* NumberFormatters.swift */; };
 		58490E401F55F84F007DBCA1 /* SeptaRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; };
 		58490E451F55F8FF007DBCA1 /* SeptaAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E441F55F8FF007DBCA1 /* SeptaAlert.swift */; };
@@ -665,6 +666,7 @@
 		5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitModeToolbarView.swift; sourceTree = "<group>"; };
 		5844CA1E1F3BD9B700651223 /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
 		584528BA1F7C27C000E68D8F /* CurvedTopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedTopInfoView.swift; sourceTree = "<group>"; };
+		584528BE1F7C316500E68D8F /* FavoritesToSaveWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesToSaveWatcher.swift; sourceTree = "<group>"; };
 		58470C061F3F1EF300F3C9B5 /* StateLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateLogger.swift; sourceTree = "<group>"; };
 		58470C081F3F276000F3C9B5 /* NumberFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatters.swift; sourceTree = "<group>"; };
 		58470C0A1F3F2AD500F3C9B5 /* StateLogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateLogEntry.swift; sourceTree = "<group>"; };
@@ -1123,6 +1125,7 @@
 				58248B6B1F6D5B6900DA2D65 /* FavoritesState_FavoritesExistWatcher.swift */,
 				58B5B1041F6DB00000A3DAFB /* FavoritesState_FavoritesWatcher.swift */,
 				58248B7C1F6D992900DA2D65 /* FavoriteToEditWatcher.swift */,
+				584528BE1F7C316500E68D8F /* FavoritesToSaveWatcher.swift */,
 				5827411E1F6F5AC800AAF513 /* AlertState_AlertDetailsWatcher.swift */,
 			);
 			path = "State Watchers";
@@ -2870,6 +2873,7 @@
 				587BC04A1F6ED70900B92BB6 /* QuickMap.swift in Sources */,
 				580ED6AC1F75A0A60095D714 /* RefreshNextToArriveDetail.swift in Sources */,
 				58A26D951F6EFECC005A70D3 /* AlertsNavigationController.swift in Sources */,
+				584528BF1F7C316500E68D8F /* FavoritesToSaveWatcher.swift in Sources */,
 				67C567351F598C7900FF6203 /* SeptaAlertsViewController.swift in Sources */,
 				589A89DE1F52E7E8007329DB /* ScheduleStopEditReducer.swift in Sources */,
 				58EB8D331F5D98320028A487 /* NextToArriveScheduleDataProvider.swift in Sources */,

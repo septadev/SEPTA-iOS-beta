@@ -4,9 +4,9 @@ use String::Util  ':all';
 use Modern::Perl;
 use Data::Dumper; 
 
-my $type = q| [AlertDetails_Alert]   |;
+my $type = q| [String]   |;
 
-my $keyPath = q|  alertState.alertDetails |;
+my $keyPath = q|  favoriteState.saveableFavorites |;
 
 
 
