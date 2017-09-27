@@ -825,8 +825,8 @@ public class SeptaDraw: NSObject {
         bezier6Path.fill()
 
         //// Text Drawing
-        let textRect = CGRect(x: 29.33, y: 9, width: 90.33, height: 13.57)
-        let textTextContent = "View Schedules"
+        let textRect = CGRect(x: 29.33, y: 9, width: 106.21, height: 13.57)
+        let textTextContent = "View Schedules »"
         let textStyle = NSMutableParagraphStyle()
         textStyle.alignment = .left
         let textFontAttributes = [
@@ -840,15 +840,6 @@ public class SeptaDraw: NSObject {
         context.clip(to: textRect)
         textTextContent.draw(in: CGRect(x: textRect.minX, y: textRect.minY + (textRect.height - textTextHeight) / 2, width: textRect.width, height: textTextHeight), withAttributes: textFontAttributes)
         context.restoreGState()
-
-        //// Bezier 5 Drawing
-        let bezier5Path = UIBezierPath()
-        bezier5Path.move(to: CGPoint(x: 125.33, y: 7))
-        bezier5Path.addLine(to: CGPoint(x: 133.78, y: 15.45))
-        bezier5Path.addLine(to: CGPoint(x: 125.33, y: 23.9))
-        blueTextColor.setStroke()
-        bezier5Path.lineWidth = 1
-        bezier5Path.stroke()
 
         //// Rectangle 3 Drawing
         let rectangle3Path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 140, height: 30), cornerRadius: 3)
