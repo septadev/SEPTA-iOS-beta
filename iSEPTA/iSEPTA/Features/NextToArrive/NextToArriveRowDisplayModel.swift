@@ -18,6 +18,7 @@ struct NextToArriveRowDisplayModel {
     let pillColor: UIColor?
     let showSearchIcon: Bool
     let fontWeight: UIFont.Weight
+    let searchIconName: String
 
     init(text: String? = nil,
          cellId: String,
@@ -26,7 +27,8 @@ struct NextToArriveRowDisplayModel {
          targetController: ViewController? = nil,
          pillColor: UIColor? = nil,
          showSearchIcon: Bool = false,
-         fontWeight: UIFont.Weight = UIFont.Weight.regular) {
+         fontWeight: UIFont.Weight = UIFont.Weight.regular,
+         searchIconName: String = "SearchIcon") {
         self.text = text
         self.cellId = cellId
         self.shouldFillCell = shouldFillCell
@@ -35,5 +37,6 @@ struct NextToArriveRowDisplayModel {
         self.pillColor = pillColor
         self.showSearchIcon = showSearchIcon
         self.fontWeight = fontWeight
+        self.searchIconName = searchIconName
     }
 }

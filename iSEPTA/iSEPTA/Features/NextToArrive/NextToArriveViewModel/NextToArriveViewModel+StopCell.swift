@@ -33,7 +33,7 @@ extension NextToArriveViewModel {
         return CellModel(
             text: transitMode.endingStopName(),
             cellId: "singleStringCell",
-            shouldFillCell: false,
+            shouldFillCell: true,
             isSelectable: false,
             targetController: .selectStopController,
             showSearchIcon: true,
@@ -44,7 +44,7 @@ extension NextToArriveViewModel {
         return CellModel(
             text: transitMode.endingStopName(),
             cellId: "singleStringCell",
-            shouldFillCell: false,
+            shouldFillCell: true,
             isSelectable: false,
             targetController: .selectStopController,
             showSearchIcon: true,
@@ -55,7 +55,7 @@ extension NextToArriveViewModel {
         return CellModel(
             text: transitMode.endingStopName(),
             cellId: "singleStringCell",
-            shouldFillCell: false,
+            shouldFillCell: true,
             isSelectable: true,
             targetController: .selectStopController,
             showSearchIcon: true,
@@ -66,7 +66,7 @@ extension NextToArriveViewModel {
         return CellModel(
             text: end.stopName,
             cellId: "singleStringCell",
-            shouldFillCell: false,
+            shouldFillCell: true,
             isSelectable: true,
             targetController: .selectStopController,
             showSearchIcon: true,

@@ -119,6 +119,9 @@ extension NextToArriveViewModel {
             cell.setEnabled(rowModel.isSelectable)
             cell.setShouldFill(rowModel.shouldFillCell)
             cell.searchIcon.isHidden = !rowModel.showSearchIcon
+            let image = UIImage(named: rowModel.searchIconName)
+            cell.searchIcon.image = image
+            cell.searchIcon.isHidden = false
 
         } else if let cell = cell as? RouteSelectedTableViewCell, let selectedRoute = scheduleRequest?.selectedRoute {
             cell.routeIdLabel.text = "\(selectedRoute.routeId):"

@@ -35,22 +35,24 @@ extension NextToArriveViewModel {
         return CellModel(
             text: transitMode.selectRoutePlaceholderText(),
             cellId: "singleStringCell",
-            shouldFillCell: false,
+            shouldFillCell: true,
             isSelectable: true,
             targetController: .routesViewController,
             showSearchIcon: false,
-            fontWeight: UIFont.Weight.regular)
+            fontWeight: UIFont.Weight.regular,
+            searchIconName: "selectRouteAccessory")
     }
 
     func configureRouteForNonRail_RouteDefined(route: Route) -> NextToArriveRowDisplayModel {
         return CellModel(
             text: route.routeLongName,
             cellId: "singleStringCell",
-            shouldFillCell: false,
+            shouldFillCell: true,
             isSelectable: true,
             targetController: .routesViewController,
             pillColor: Route.colorForRoute(route, transitMode: transitMode),
-            showSearchIcon: true,
-            fontWeight: UIFont.Weight.medium)
+            showSearchIcon: false,
+            fontWeight: UIFont.Weight.medium,
+            searchIconName: "selectRouteAccessory")
     }
 }

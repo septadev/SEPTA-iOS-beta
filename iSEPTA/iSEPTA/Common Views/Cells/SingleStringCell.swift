@@ -3,7 +3,12 @@
 import UIKit
 
 class SingleStringCell: UITableViewCell, SingleStringDisplayable {
-    var shouldFill: Bool = false
+    var shouldFill: Bool = false {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+
     var enabled: Bool = false
     @IBOutlet weak var label: UILabel!
     func setTextColor(_ color: UIColor) {
