@@ -50,7 +50,7 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1V-36-rgy" userLabel="ActionButton" customClass="AlertDetailButton" customModule="Septa" customModuleProvider="target">
                                 <rect key="frame" x="524" y="18" width="24" height="24"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="5KJ-Jg-scV"/>
                                     <constraint firstAttribute="width" constant="24" id="XEn-Ey-Eyy"/>

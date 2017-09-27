@@ -23,7 +23,7 @@ class ConstraintsToggle: NSObject {
         inactiveConstraint.isActive = true
         view.setNeedsLayout()
 
-        UIView.animate(withDuration: 0.35) {
+        UIView.animate(withDuration: 0.20) {
             view.layoutIfNeeded()
         }
         return ConstraintsToggle(activeConstraint: inactiveConstraint, inactiveConstraint: activeConstraint)
