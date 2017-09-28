@@ -26,7 +26,8 @@ class NextToArriveViewModel: NSObject, StoreSubscriber {
         didSet {
             guard let heightConstraint = tableViewHeightConstraint,
                 let view = view else { return }
-            let tableViewHeight: CGFloat = transitMode == .rail ? 237 : 277
+            let tableViewHeight: CGFloat = transitMode == .rail ? 240
+                : 277
             heightConstraint.constant = tableViewHeight
             view.setNeedsLayout()
         }
