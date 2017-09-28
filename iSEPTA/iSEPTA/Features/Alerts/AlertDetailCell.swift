@@ -39,7 +39,7 @@ class AlertDetailCell: UITableViewCell {
     func calculateFittingSize() {
 
         if !openState {
-            let windowWidth = UIScreen.main.bounds.width - 50
+            let windowWidth = UIScreen.main.bounds.width - 30
             let sizeThatFitsTextView = textView.sizeThatFits(CGSize(width: windowWidth, height: CGFloat(MAXFLOAT)))
             let heightOfText = sizeThatFitsTextView.height
 
