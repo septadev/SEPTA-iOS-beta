@@ -27,6 +27,9 @@ enum ViewController: String, Equatable {
     case alertsViewController
     case alertDetailViewController
 
+    // fares
+    case faresViewController
+
     func storyboardIdentifier() -> String {
         switch self {
         case .selectSchedules:
@@ -55,6 +58,8 @@ enum ViewController: String, Equatable {
             return "alerts"
         case .alertDetailViewController:
             return "alerts"
+        case .faresViewController:
+            return "fares"
         }
     }
 

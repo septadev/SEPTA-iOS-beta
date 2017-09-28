@@ -1,63 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Whg-Nj-8kF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Whg-Nj-8kF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Fares View Controller-->
-        <scene sceneID="Egi-MF-MkD">
-            <objects>
-                <tableViewController title="Fares View Controller" id="Rm4-hF-sQZ" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Fks-Dn-FNk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="LpR-vY-g9C">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LpR-vY-g9C" id="wfA-ud-3Rr">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Rm4-hF-sQZ" id="l2f-my-JhB"/>
-                            <outlet property="delegate" destination="Rm4-hF-sQZ" id="9bG-nR-CkT"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Fares" id="jYA-1d-wOi"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QiN-oV-8oa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="668" y="51"/>
-        </scene>
         <!--Nav Controller-->
         <scene sceneID="5d6-HP-zMS">
             <objects>
-                <navigationController title="Nav Controller" id="Whg-Nj-8kF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Fares" image="Fare" landscapeImage="Fare" id="xH1-oO-nkH"/>
+                <navigationController title="Nav Controller" id="Whg-Nj-8kF" customClass="FaresNavigationController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Fares" id="xH1-oO-nkH"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="u1j-he-2V4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Rm4-hF-sQZ" kind="relationship" relationship="rootViewController" id="RYU-px-l8b"/>
+                        <segue destination="gDc-tf-bp4" kind="relationship" relationship="rootViewController" id="gJu-1I-hid"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWX-SE-JWL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-284" y="51"/>
         </scene>
+        <!--Fares View Controller-->
+        <scene sceneID="rQS-8l-89H">
+            <objects>
+                <viewController storyboardIdentifier="faresViewController" id="gDc-tf-bp4" customClass="FaresViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cgq-9f-EOQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1cv-2f-oav" customClass="BlueGradientBackgroundView" customModule="Septa" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C97-Jr-6e6">
+                                        <rect key="frame" x="15" y="51" width="345" height="460"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTh-VK-VLP" userLabel="ConventView">
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="472"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLY-Yb-9Oj" userLabel="FaresInset">
+                                                        <rect key="frame" x="0.0" y="0.0" width="345" height="300"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fares" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oS-J0-LdD">
+                                                                <rect key="frame" x="151.5" y="139" width="42" height="21"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="300" id="5Pd-rT-zU3"/>
+                                                            <constraint firstItem="7oS-J0-LdD" firstAttribute="centerY" secondItem="HLY-Yb-9Oj" secondAttribute="centerY" id="FoP-n0-4b2"/>
+                                                            <constraint firstItem="7oS-J0-LdD" firstAttribute="centerX" secondItem="HLY-Yb-9Oj" secondAttribute="centerX" id="Rav-rY-MWH"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zP1-l6-tY6" userLabel="PassPerks">
+                                                        <rect key="frame" x="0.0" y="172" width="345" height="300"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pass Perks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zUN-OD-9Ac">
+                                                                <rect key="frame" x="131" y="139" width="83" height="21"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstItem="zUN-OD-9Ac" firstAttribute="centerY" secondItem="zP1-l6-tY6" secondAttribute="centerY" id="4nG-hJ-xOZ"/>
+                                                            <constraint firstAttribute="height" constant="300" id="NIz-uE-E5n"/>
+                                                            <constraint firstItem="zUN-OD-9Ac" firstAttribute="centerX" secondItem="zP1-l6-tY6" secondAttribute="centerX" id="dUr-DF-vMr"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="zP1-l6-tY6" firstAttribute="leading" secondItem="wTh-VK-VLP" secondAttribute="leading" id="4lO-Y0-JuA" userLabel="PassPerksLeft"/>
+                                                    <constraint firstAttribute="trailing" secondItem="zP1-l6-tY6" secondAttribute="trailing" id="CQD-gn-3G4" userLabel="PassPerksRight"/>
+                                                    <constraint firstAttribute="bottom" secondItem="zP1-l6-tY6" secondAttribute="bottom" id="FQv-p7-Shg" userLabel="PassPerksBottom"/>
+                                                    <constraint firstItem="HLY-Yb-9Oj" firstAttribute="leading" secondItem="wTh-VK-VLP" secondAttribute="leading" id="Ikv-wk-EHJ" userLabel="FaresInsetLeft"/>
+                                                    <constraint firstAttribute="trailing" secondItem="HLY-Yb-9Oj" secondAttribute="trailing" id="J1x-vg-gXT" userLabel="FaresInsetRight"/>
+                                                    <constraint firstItem="zP1-l6-tY6" firstAttribute="top" secondItem="HLY-Yb-9Oj" secondAttribute="bottom" constant="-128" id="LD9-3h-mwZ" userLabel="PassPerksTop"/>
+                                                    <constraint firstItem="HLY-Yb-9Oj" firstAttribute="top" secondItem="wTh-VK-VLP" secondAttribute="top" id="Wbb-gA-xWn" userLabel="FaresInsetTop"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="wTh-VK-VLP" secondAttribute="trailing" id="0SO-Gh-UlX" userLabel="ContentViewRight"/>
+                                            <constraint firstItem="wTh-VK-VLP" firstAttribute="top" secondItem="C97-Jr-6e6" secondAttribute="top" id="YN1-eX-d0P" userLabel="ContentViewTop"/>
+                                            <constraint firstAttribute="bottom" secondItem="wTh-VK-VLP" secondAttribute="bottom" id="ihM-Uk-Reo" userLabel="ContentViewBottom"/>
+                                            <constraint firstItem="wTh-VK-VLP" firstAttribute="width" secondItem="C97-Jr-6e6" secondAttribute="width" id="tM8-Sw-taF" userLabel="ScrollViewWidth"/>
+                                            <constraint firstItem="wTh-VK-VLP" firstAttribute="leading" secondItem="C97-Jr-6e6" secondAttribute="leading" id="vfT-aX-2Vi" userLabel="ContentViewLeft"/>
+                                        </constraints>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="C97-Jr-6e6" firstAttribute="top" secondItem="1cv-2f-oav" secondAttribute="top" constant="51" id="5Ln-Q5-pgb" userLabel="ScrollViewTop"/>
+                                    <constraint firstItem="C97-Jr-6e6" firstAttribute="leading" secondItem="1cv-2f-oav" secondAttribute="leading" constant="15" id="M5c-Xy-HZD" userLabel="ScrollViewLeft"/>
+                                    <constraint firstAttribute="trailing" secondItem="C97-Jr-6e6" secondAttribute="trailing" constant="15" id="RNI-fc-lao" userLabel="ScrollViewRight"/>
+                                    <constraint firstAttribute="bottom" secondItem="C97-Jr-6e6" secondAttribute="bottom" constant="43" id="wSG-lE-ea8" userLabel="ScrollViewBottom"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vcf-HD-FsE" firstAttribute="bottom" secondItem="1cv-2f-oav" secondAttribute="bottom" id="TWK-Na-FUD"/>
+                            <constraint firstItem="1cv-2f-oav" firstAttribute="top" secondItem="vcf-HD-FsE" secondAttribute="top" id="Xv1-Lm-W8k"/>
+                            <constraint firstItem="vcf-HD-FsE" firstAttribute="trailing" secondItem="1cv-2f-oav" secondAttribute="trailing" id="YNI-Cu-k0h"/>
+                            <constraint firstItem="1cv-2f-oav" firstAttribute="leading" secondItem="vcf-HD-FsE" secondAttribute="leading" id="ob3-a3-C9S"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vcf-HD-FsE"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jhh-Cr-Iaj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FCa-jC-M3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="606" y="9"/>
+        </scene>
     </scenes>
-    <resources>
-        <image name="Fare" width="40" height="30"/>
-    </resources>
 </document>

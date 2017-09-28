@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FarePaymentModeView" customModule="Septa" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="439" height="166"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SM1-TX-urm" userLabel="Icon">
+                    <rect key="frame" x="0.0" y="0.0" width="54" height="33"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="33" placeholder="YES" id="k3E-mM-ELO"/>
+                        <constraint firstAttribute="width" constant="54" placeholder="YES" id="oEa-eX-FK8"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rW6-Mr-sk0" userLabel="Title">
+                    <rect key="frame" x="75" y="0.0" width="35" height="17"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                    <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFb-oi-zy8" userLabel="Description">
+                    <rect key="frame" x="75" y="22" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="DFb-oi-zy8" firstAttribute="leading" secondItem="rW6-Mr-sk0" secondAttribute="leading" id="5Uh-qt-4mm" userLabel="DescriptionLeft"/>
+                <constraint firstItem="rW6-Mr-sk0" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="8UR-o5-w3H" userLabel="TitleTop"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="DFb-oi-zy8" secondAttribute="bottom" id="Yfn-5i-GgU" userLabel="DescriptionBottom"/>
+                <constraint firstItem="DFb-oi-zy8" firstAttribute="top" secondItem="rW6-Mr-sk0" secondAttribute="bottom" constant="5" id="eke-9f-QsT" userLabel="DescriptionTop"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rW6-Mr-sk0" secondAttribute="trailing" id="kU1-Xv-14E" userLabel="TitleRight"/>
+                <constraint firstItem="rW6-Mr-sk0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="75" id="rkf-pZ-XVJ" userLabel="TitleLeft"/>
+                <constraint firstItem="SM1-TX-urm" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="sHK-wl-Ouq" userLabel="IconTop"/>
+                <constraint firstItem="SM1-TX-urm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="v0G-RO-bOc" userLabel="IconLeft"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="58.5" y="-199"/>
+        </view>
+    </objects>
+</document>

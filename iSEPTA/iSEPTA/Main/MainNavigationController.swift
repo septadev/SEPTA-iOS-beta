@@ -42,6 +42,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         case 1: return .favorites
         case 2: return .alerts
         case 3: return .schedules
+        case 4: return .fares
         default: return .schedules
         }
     }

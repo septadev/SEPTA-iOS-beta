@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,6 +30,7 @@
                         <segue destination="qmq-TR-XWA" kind="relationship" relationship="viewControllers" id="zzu-XL-3gi"/>
                         <segue destination="OXS-27-l5H" kind="relationship" relationship="viewControllers" id="3QR-K3-X6f"/>
                         <segue destination="WtU-1P-0Ou" kind="presentation" identifier="showDatabaseLoadingModal" id="KWE-od-UAl"/>
+                        <segue destination="Xf6-Zg-AmF" kind="relationship" relationship="viewControllers" id="r6S-lP-m8R"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -100,6 +101,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tiu-Cr-Ueb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="193" y="175"/>
+        </scene>
+        <!--fares-->
+        <scene sceneID="unZ-EK-kKN">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="fares" storyboardName="fares" id="Xf6-Zg-AmF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="x39-eh-bNk"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nZd-NA-CDH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-284" y="437"/>
         </scene>
         <!--schedules-->
         <scene sceneID="bOK-QK-MO6">

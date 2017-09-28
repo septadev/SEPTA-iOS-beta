@@ -8,6 +8,7 @@ import Foundation
     case alerts
     case schedules
     case selectStop
+    case fares
 
     func tabIndex() -> Int {
         switch self {
@@ -16,6 +17,7 @@ import Foundation
         case .alerts : return 2
         case .schedules : return 3
         case .selectStop: return 3
+        case .fares: return 4
         }
     }
 
@@ -26,6 +28,7 @@ import Foundation
         case .alerts : return "alerts"
         case .schedules : return "schedules"
         case .selectStop: return "schedules"
+        case .fares: return "fares"
         }
     }
 }
