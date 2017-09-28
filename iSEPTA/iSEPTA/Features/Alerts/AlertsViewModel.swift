@@ -70,6 +70,7 @@ extension AlertsViewModel { // Table View
             cell.setLabelText(cellModel.text)
             cell.searchIcon.image = UIImage(named: "selectRouteAccessory")
             cell.shouldFill = true
+            cell.enabled = true
         case let cell as RouteSelectedTableViewCell:
             guard let selectedRoute = scheduleRequest?.selectedRoute else { return }
             cell.routeIdLabel.text = "\(selectedRoute.routeId):"

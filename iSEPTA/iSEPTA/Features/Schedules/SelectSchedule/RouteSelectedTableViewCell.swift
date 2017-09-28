@@ -14,6 +14,6 @@ class RouteSelectedTableViewCell: UITableViewCell {
     }
 
     override func draw(_ rect: CGRect) {
-        SeptaDraw.drawBlueGradientCell(frame: rect, shouldFill: false, enabled: true)
+        SeptaDraw.drawBlueGradientCell(frame: rect, shouldFill: true, enabled: true)
     }
 }

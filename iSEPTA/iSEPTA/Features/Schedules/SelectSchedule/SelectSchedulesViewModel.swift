@@ -90,7 +90,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
                 pillColor = transitModeColor
             }
         }
-        return SelectSchedulesRowDisplayModel(text: text, shouldFillCell: false, isSelectable: isSelectable, targetController: .routesViewController, pillColor: pillColor)
+        return SelectSchedulesRowDisplayModel(text: text, shouldFillCell: true, isSelectable: isSelectable, targetController: .routesViewController, pillColor: pillColor, searchIconName: "selectRouteAccessory")
     }
 
     func configureSelectStartDisplayModel() -> SelectSchedulesRowDisplayModel {
@@ -140,6 +140,7 @@ class SelectSchedulesViewModel: StoreSubscriber {
             cell.setEnabled(rowModel.isSelectable)
             cell.setShouldFill(rowModel.shouldFillCell)
             cell.searchIcon.isHidden = !rowModel.showSearchIcon
+            cell.searchIcon.image = UIImage(named: rowModel.searchIconName)
         } else if let cell = cell as? RouteSelectedTableViewCell, let selectedRoute = scheduleRequest?.selectedRoute {
             cell.routeIdLabel.text = "\(selectedRoute.routeId):"
             cell.routeShortNameLabel.text = rowModel.text
