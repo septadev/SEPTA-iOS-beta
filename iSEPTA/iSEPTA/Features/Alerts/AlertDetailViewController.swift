@@ -45,10 +45,14 @@ class AlertDetailViewController: UIViewController, IdentifiableController {
     var detourCell: AlertDetailCell?
     var weatherCell: AlertDetailCell?
 
-    @IBOutlet weak var pillView: UIView! {
-        didSet {
-        }
+    override func viewDidDisappear(_: Bool) {
+        advisoryCell = nil
+        alertCell = nil
+        detourCell = nil
+        weatherCell = nil
     }
+
+    @IBOutlet weak var pillView: UIView!
 
     func updateHeaderViews() {
         guard let route = route else { return }
