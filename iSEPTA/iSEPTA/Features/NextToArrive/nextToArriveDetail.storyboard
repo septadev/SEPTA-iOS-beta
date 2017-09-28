@@ -128,7 +128,7 @@
                                     <outletCollection property="gestureRecognizers" destination="ACM-6Z-FqX" appends="YES" id="aJf-3H-GEh"/>
                                 </connections>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="XWV-WF-JiF">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XWV-WF-JiF">
                                 <rect key="frame" x="0.0" y="62" width="375" height="275"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -176,7 +176,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1U-SC-g0W" userLabel="ViewSchedulesButton" customClass="ViewNextToArriveTripInSchedulesButton" customModule="Septa" customModuleProvider="target">
-                            <rect key="frame" x="258" y="6" width="130" height="30"/>
+                            <rect key="frame" x="253" y="6" width="130" height="30"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="VgK-rK-AEL"/>
@@ -192,7 +192,7 @@
                         <constraint firstItem="k1U-SC-g0W" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="y3d-g1-Obc" secondAttribute="trailing" constant="10" id="2cw-DT-kuc" userLabel="LabelRight"/>
                         <constraint firstItem="y3d-g1-Obc" firstAttribute="centerY" secondItem="ARr-CL-fZV" secondAttribute="centerY" id="5If-nH-htS" userLabel="LabelCenterY"/>
                         <constraint firstItem="y3d-g1-Obc" firstAttribute="leading" secondItem="ARr-CL-fZV" secondAttribute="leading" constant="19" id="Fz2-JS-Tnp" userLabel="LabelLeft"/>
-                        <constraint firstItem="ARr-CL-fZV" firstAttribute="trailing" secondItem="k1U-SC-g0W" secondAttribute="trailing" constant="12" id="U1b-UN-Oyl" userLabel="ViewSchedulesButtonRight"/>
+                        <constraint firstItem="ARr-CL-fZV" firstAttribute="trailing" secondItem="k1U-SC-g0W" secondAttribute="trailing" constant="17" id="U1b-UN-Oyl" userLabel="ViewSchedulesButtonRight"/>
                         <constraint firstItem="k1U-SC-g0W" firstAttribute="centerY" secondItem="ARr-CL-fZV" secondAttribute="centerY" id="tGx-EO-UOU" userLabel="ViewSchedulesButtonCenterY"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="ARr-CL-fZV"/>

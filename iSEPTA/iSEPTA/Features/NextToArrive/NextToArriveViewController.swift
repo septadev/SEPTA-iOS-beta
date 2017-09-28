@@ -38,6 +38,7 @@ class NextToArriveViewController: BaseNonModalViewController, IdentifiableContro
         UIView.addSurroundShadow(toView: tableViewWrapper)
 
         updateHeaderLabels()
+        viewModel.updateTableViewHeight()
         super.viewDidLoad()
     }
 

@@ -33,6 +33,13 @@ class NextToArriveViewModel: NSObject, StoreSubscriber {
         }
     }
 
+    func updateTableViewHeight() {
+        let tableViewHeight: CGFloat = transitMode == .rail ? 240
+            : 277
+        tableViewHeightConstraint.constant = tableViewHeight
+        view.setNeedsLayout()
+    }
+
     var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
 
     fileprivate var selectRouteRowDisplayModel: NextToArriveRowDisplayModel?
