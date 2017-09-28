@@ -12,7 +12,7 @@ extension IdentifiableController where Self: UIViewController {}
 
 protocol IdentifiableNavController: class {
 
-    static var navController: NavigationController { get set }
+    var navController: NavigationController { get }
 }
 
 extension IdentifiableNavController where Self: UINavigationController {}

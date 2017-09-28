@@ -13,7 +13,7 @@ import ReSwift
 class SelectStopNavigationController: UINavigationController, IdentifiableController, IdentifiableNavController, StoreSubscriber {
     typealias StoreSubscriberStateType = [NavigationController: NavigationStackState]?
 
-    static var navController: NavigationController = NavigationController.selectStop
+    var navController: NavigationController = NavigationController.selectStop
     let viewController: ViewController = .selectStopNavigationController
 
     let myStoryboard = UIStoryboard(name: NavigationController.schedules.storyboard(), bundle: Bundle.main)

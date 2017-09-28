@@ -11,4 +11,33 @@ import UIKit
 
 class FaresViewController: UIViewController, IdentifiableController {
     var viewController: ViewController = .faresViewController
+
+    @IBOutlet weak var faresStackView: UIStackView!
+    @IBAction func redButtonTapped(_: Any) {
+    }
+
+    @IBOutlet var redButtonView: UIView!
+
+    @IBOutlet weak var faresWhiteInsetView: UIView!
+    var faresViewModel: FaresViewModel!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = SeptaColor.navBarBlue
+        faresViewModel = FaresViewModel()
+        loadFaresStackView()
+        UIView.addSurroundShadow(toView: faresWhiteInsetView, withCornerRadius: 0)
+    }
+
+    func loadFaresStackView() {
+        for item in faresViewModel.items {
+
+            guard let paymentView = Bundle.main.loadNibNamed("FarePaymentModeView", owner: nil, options: nil)?.first as? FarePaymentModeView else { continue }
+            paymentView.icon.image = UIImage(named: item.imageName)
+            paymentView.title.text = item.title
+            paymentView.descriptionLabel.attributedText = item.description
+            faresStackView.addArrangedSubview(paymentView)
+        }
+        faresStackView.addArrangedSubview(redButtonView)
+    }
 }

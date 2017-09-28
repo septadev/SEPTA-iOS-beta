@@ -28,7 +28,7 @@
             </objects>
             <point key="canvasLocation" x="-284" y="51"/>
         </scene>
-        <!--Fares View Controller-->
+        <!--Fares-->
         <scene sceneID="rQS-8l-89H">
             <objects>
                 <viewController storyboardIdentifier="faresViewController" id="gDc-tf-bp4" customClass="FaresViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
@@ -39,34 +39,50 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1cv-2f-oav" customClass="BlueGradientBackgroundView" customModule="Septa" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C97-Jr-6e6">
-                                        <rect key="frame" x="15" y="51" width="345" height="460"/>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C97-Jr-6e6">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="511"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTh-VK-VLP" userLabel="ConventView">
-                                                <rect key="frame" x="0.0" y="0.0" width="345" height="472"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="625"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLY-Yb-9Oj" userLabel="FaresInset">
-                                                        <rect key="frame" x="0.0" y="0.0" width="345" height="300"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fares" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oS-J0-LdD">
-                                                                <rect key="frame" x="151.5" y="139" width="42" height="21"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEPTA Fares" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oS-J0-LdD">
+                                                                <rect key="frame" x="16" y="15" width="118.5" height="24"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                                <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxs-ex-Wyz" userLabel="WhiteBackingView">
+                                                                <rect key="frame" x="15" y="50" width="345" height="225"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </view>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="pP1-RC-Zks">
+                                                                <rect key="frame" x="15" y="50" width="345" height="225"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </stackView>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="300" id="5Pd-rT-zU3"/>
-                                                            <constraint firstItem="7oS-J0-LdD" firstAttribute="centerY" secondItem="HLY-Yb-9Oj" secondAttribute="centerY" id="FoP-n0-4b2"/>
-                                                            <constraint firstItem="7oS-J0-LdD" firstAttribute="centerX" secondItem="HLY-Yb-9Oj" secondAttribute="centerX" id="Rav-rY-MWH"/>
+                                                            <constraint firstItem="pP1-RC-Zks" firstAttribute="height" secondItem="gxs-ex-Wyz" secondAttribute="height" id="3cI-1u-V6J" userLabel="WhiteBackingViewHeight"/>
+                                                            <constraint firstAttribute="height" constant="300" placeholder="YES" id="5Pd-rT-zU3"/>
+                                                            <constraint firstItem="pP1-RC-Zks" firstAttribute="leading" secondItem="gxs-ex-Wyz" secondAttribute="leading" id="6Zv-hq-dAN" userLabel="WhiteBackingViewLeft"/>
+                                                            <constraint firstItem="pP1-RC-Zks" firstAttribute="leading" secondItem="HLY-Yb-9Oj" secondAttribute="leading" constant="15" id="Kos-CT-TZo" userLabel="StackViewLeft"/>
+                                                            <constraint firstItem="7oS-J0-LdD" firstAttribute="leading" secondItem="HLY-Yb-9Oj" secondAttribute="leading" constant="16" id="dBJ-NB-HfZ" userLabel="FaresLabelLeft"/>
+                                                            <constraint firstItem="pP1-RC-Zks" firstAttribute="top" secondItem="gxs-ex-Wyz" secondAttribute="top" id="dgp-5h-fPr" userLabel="WhiteBackingViewTop"/>
+                                                            <constraint firstItem="pP1-RC-Zks" firstAttribute="width" secondItem="gxs-ex-Wyz" secondAttribute="width" id="iWe-yC-YUC" userLabel="WhiteBackingViewWidth"/>
+                                                            <constraint firstAttribute="bottom" secondItem="pP1-RC-Zks" secondAttribute="bottom" constant="25" id="s9R-lj-oXq" userLabel="StackViewBottom"/>
+                                                            <constraint firstAttribute="trailing" secondItem="pP1-RC-Zks" secondAttribute="trailing" constant="15" id="sY9-XQ-o1t" userLabel="StackViewRight"/>
+                                                            <constraint firstItem="pP1-RC-Zks" firstAttribute="top" secondItem="HLY-Yb-9Oj" secondAttribute="top" constant="50" id="w4S-Mv-cEF" userLabel="FaresStackViewTop"/>
+                                                            <constraint firstItem="7oS-J0-LdD" firstAttribute="top" secondItem="HLY-Yb-9Oj" secondAttribute="top" constant="15" id="xyY-m4-iJZ" userLabel="FaresLabelTop"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zP1-l6-tY6" userLabel="PassPerks">
-                                                        <rect key="frame" x="0.0" y="172" width="345" height="300"/>
+                                                        <rect key="frame" x="0.0" y="325" width="375" height="300"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pass Perks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zUN-OD-9Ac">
-                                                                <rect key="frame" x="131" y="139" width="83" height="21"/>
+                                                                <rect key="frame" x="146" y="139" width="83" height="21"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -80,14 +96,14 @@
                                                         </constraints>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="zP1-l6-tY6" firstAttribute="leading" secondItem="wTh-VK-VLP" secondAttribute="leading" id="4lO-Y0-JuA" userLabel="PassPerksLeft"/>
                                                     <constraint firstAttribute="trailing" secondItem="zP1-l6-tY6" secondAttribute="trailing" id="CQD-gn-3G4" userLabel="PassPerksRight"/>
                                                     <constraint firstAttribute="bottom" secondItem="zP1-l6-tY6" secondAttribute="bottom" id="FQv-p7-Shg" userLabel="PassPerksBottom"/>
                                                     <constraint firstItem="HLY-Yb-9Oj" firstAttribute="leading" secondItem="wTh-VK-VLP" secondAttribute="leading" id="Ikv-wk-EHJ" userLabel="FaresInsetLeft"/>
                                                     <constraint firstAttribute="trailing" secondItem="HLY-Yb-9Oj" secondAttribute="trailing" id="J1x-vg-gXT" userLabel="FaresInsetRight"/>
-                                                    <constraint firstItem="zP1-l6-tY6" firstAttribute="top" secondItem="HLY-Yb-9Oj" secondAttribute="bottom" constant="-128" id="LD9-3h-mwZ" userLabel="PassPerksTop"/>
+                                                    <constraint firstItem="zP1-l6-tY6" firstAttribute="top" secondItem="HLY-Yb-9Oj" secondAttribute="bottom" constant="25" id="LD9-3h-mwZ" userLabel="PassPerksTop"/>
                                                     <constraint firstItem="HLY-Yb-9Oj" firstAttribute="top" secondItem="wTh-VK-VLP" secondAttribute="top" id="Wbb-gA-xWn" userLabel="FaresInsetTop"/>
                                                 </constraints>
                                             </view>
@@ -103,9 +119,9 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="C97-Jr-6e6" firstAttribute="top" secondItem="1cv-2f-oav" secondAttribute="top" constant="51" id="5Ln-Q5-pgb" userLabel="ScrollViewTop"/>
-                                    <constraint firstItem="C97-Jr-6e6" firstAttribute="leading" secondItem="1cv-2f-oav" secondAttribute="leading" constant="15" id="M5c-Xy-HZD" userLabel="ScrollViewLeft"/>
-                                    <constraint firstAttribute="trailing" secondItem="C97-Jr-6e6" secondAttribute="trailing" constant="15" id="RNI-fc-lao" userLabel="ScrollViewRight"/>
+                                    <constraint firstItem="C97-Jr-6e6" firstAttribute="top" secondItem="1cv-2f-oav" secondAttribute="top" id="5Ln-Q5-pgb" userLabel="ScrollViewTop"/>
+                                    <constraint firstItem="C97-Jr-6e6" firstAttribute="leading" secondItem="1cv-2f-oav" secondAttribute="leading" id="M5c-Xy-HZD" userLabel="ScrollViewLeft"/>
+                                    <constraint firstAttribute="trailing" secondItem="C97-Jr-6e6" secondAttribute="trailing" id="RNI-fc-lao" userLabel="ScrollViewRight"/>
                                     <constraint firstAttribute="bottom" secondItem="C97-Jr-6e6" secondAttribute="bottom" constant="43" id="wSG-lE-ea8" userLabel="ScrollViewBottom"/>
                                 </constraints>
                             </view>
@@ -119,9 +135,41 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vcf-HD-FsE"/>
                     </view>
-                    <navigationItem key="navigationItem" id="jhh-Cr-Iaj"/>
+                    <navigationItem key="navigationItem" title="Fares" id="jhh-Cr-Iaj"/>
+                    <connections>
+                        <outlet property="faresStackView" destination="pP1-RC-Zks" id="hgL-Nl-E0Q"/>
+                        <outlet property="faresWhiteInsetView" destination="gxs-ex-Wyz" id="PfS-1N-Xy5"/>
+                        <outlet property="redButtonView" destination="hJe-Qx-yfF" id="KWa-Qy-mfR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FCa-jC-M3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="hJe-Qx-yfF" userLabel="RedButtonView">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmm-Cy-goV" userLabel="RedButton" customClass="RedButton" customModule="Septa" customModuleProvider="target">
+                            <rect key="frame" x="15" y="44" width="210" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="SBH-9M-Akp"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="buttonTitle" value="More About SEPTA Fares"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="redButtonTapped:" destination="gDc-tf-bp4" eventType="touchUpInside" id="qOp-z2-b3m"/>
+                            </connections>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="fmm-Cy-goV" firstAttribute="leading" secondItem="iDB-95-xhy" secondAttribute="leading" constant="15" id="4Ja-7N-iBm" userLabel="RedButtonViewLeft"/>
+                        <constraint firstItem="fmm-Cy-goV" firstAttribute="top" secondItem="iDB-95-xhy" secondAttribute="top" priority="999" constant="20" id="5Iu-hq-l8m" userLabel="RedButtonViewTop"/>
+                        <constraint firstItem="iDB-95-xhy" firstAttribute="trailing" secondItem="fmm-Cy-goV" secondAttribute="trailing" constant="15" id="O6y-uO-zxN" userLabel="RedButtonViewRight"/>
+                        <constraint firstItem="fmm-Cy-goV" firstAttribute="centerY" secondItem="iDB-95-xhy" secondAttribute="centerY" id="dUb-xb-aZS" userLabel="RedButtonViewCenterY"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="iDB-95-xhy"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="606" y="9"/>
         </scene>

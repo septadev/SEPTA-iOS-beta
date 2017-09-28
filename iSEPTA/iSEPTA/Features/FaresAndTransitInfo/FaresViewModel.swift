@@ -9,11 +9,14 @@
 import Foundation
 import UIKit
 
-class FaresViewModel: NSObject {
+class FaresViewModel {
     var items: [FaresPaymentModeViewModel]!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    init() {
+        buildItems()
+    }
+
+    func buildItems() {
         items = [
             buildSeptaKeyPaymentMode(),
             buildCashPaymentMode(),

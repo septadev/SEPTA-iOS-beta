@@ -11,6 +11,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
     var favoritestoEditWatcher: FavoritesState_FavoriteToEditWatcher?
     override func awakeFromNib() {
         super.awakeFromNib()
+        delegate = self
         favoritestoEditWatcher = FavoritesState_FavoriteToEditWatcher(delegate: self)
     }
 
@@ -42,7 +43,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         case 1: return .favorites
         case 2: return .alerts
         case 3: return .schedules
-        case 4: return .fares
+        case 4: return .more
         default: return .schedules
         }
     }

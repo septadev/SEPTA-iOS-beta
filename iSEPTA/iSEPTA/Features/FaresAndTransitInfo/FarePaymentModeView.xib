@@ -17,38 +17,44 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SM1-TX-urm" userLabel="Icon">
-                    <rect key="frame" x="0.0" y="0.0" width="54" height="33"/>
+                    <rect key="frame" x="21" y="26" width="54" height="33"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="33" placeholder="YES" id="k3E-mM-ELO"/>
                         <constraint firstAttribute="width" constant="54" placeholder="YES" id="oEa-eX-FK8"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rW6-Mr-sk0" userLabel="Title">
-                    <rect key="frame" x="75" y="0.0" width="35" height="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rW6-Mr-sk0" userLabel="Title">
+                    <rect key="frame" x="96" y="23" width="35" height="126.5"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                     <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFb-oi-zy8" userLabel="Description">
-                    <rect key="frame" x="75" y="22" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFb-oi-zy8" userLabel="Description">
+                    <rect key="frame" x="96" y="151.5" width="323" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="DFb-oi-zy8" firstAttribute="leading" secondItem="rW6-Mr-sk0" secondAttribute="leading" id="5Uh-qt-4mm" userLabel="DescriptionLeft"/>
-                <constraint firstItem="rW6-Mr-sk0" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="8UR-o5-w3H" userLabel="TitleTop"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="DFb-oi-zy8" secondAttribute="bottom" id="Yfn-5i-GgU" userLabel="DescriptionBottom"/>
-                <constraint firstItem="DFb-oi-zy8" firstAttribute="top" secondItem="rW6-Mr-sk0" secondAttribute="bottom" constant="5" id="eke-9f-QsT" userLabel="DescriptionTop"/>
+                <constraint firstItem="rW6-Mr-sk0" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="23" id="8UR-o5-w3H" userLabel="TitleTop"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="DFb-oi-zy8" secondAttribute="bottom" priority="999" id="Yfn-5i-GgU" userLabel="DescriptionBottom"/>
+                <constraint firstItem="DFb-oi-zy8" firstAttribute="top" secondItem="rW6-Mr-sk0" secondAttribute="bottom" constant="2" id="eke-9f-QsT" userLabel="DescriptionTop"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rW6-Mr-sk0" secondAttribute="trailing" id="kU1-Xv-14E" userLabel="TitleRight"/>
-                <constraint firstItem="rW6-Mr-sk0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="75" id="rkf-pZ-XVJ" userLabel="TitleLeft"/>
-                <constraint firstItem="SM1-TX-urm" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="sHK-wl-Ouq" userLabel="IconTop"/>
-                <constraint firstItem="SM1-TX-urm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="v0G-RO-bOc" userLabel="IconLeft"/>
+                <constraint firstItem="rW6-Mr-sk0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="96" id="rkf-pZ-XVJ" userLabel="TitleLeft"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="DFb-oi-zy8" secondAttribute="trailing" constant="20" id="sDF-yO-0Wu" userLabel="DescriptionRight"/>
+                <constraint firstItem="SM1-TX-urm" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="26" id="sHK-wl-Ouq" userLabel="IconTop"/>
+                <constraint firstItem="SM1-TX-urm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="21" id="v0G-RO-bOc" userLabel="IconLeft"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="DFb-oi-zy8" id="d8g-If-VUL"/>
+                <outlet property="icon" destination="SM1-TX-urm" id="WJG-e4-osg"/>
+                <outlet property="title" destination="rW6-Mr-sk0" id="V1R-aD-rKh"/>
+            </connections>
             <point key="canvasLocation" x="58.5" y="-199"/>
         </view>
     </objects>
