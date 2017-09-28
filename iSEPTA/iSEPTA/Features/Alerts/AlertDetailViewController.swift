@@ -108,37 +108,6 @@ extension AlertDetailViewController: UITableViewDelegate, UITableViewDataSource 
         return 5
     }
 
-    //    func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    //
-    //        switch indexPath.section {
-    //        case 0:
-    //            if let advisoryCell = advisoryCell {
-    //                return advisoryCell.fittingHeight
-    //            } else {
-    //                return 75
-    //            }
-    //        case 1:
-    //            if let alertCell = alertCell {
-    //                return alertCell.fittingHeight
-    //            } else {
-    //                return 75
-    //            }
-    //        case 2:
-    //            if let detourCell = detourCell {
-    //                return detourCell.fittingHeight
-    //            } else {
-    //                return 75
-    //            }
-    //        case 3:
-    //            if let weatherCell = weatherCell {
-    //                return weatherCell.fittingHeight
-    //            } else {
-    //                return 75
-    //            }
-    //        default: return 0
-    //        }
-    //    }
-
     func tableView(_: UITableView, viewForFooterInSection _: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 5))
         view.backgroundColor = UIColor.clear
@@ -146,31 +115,35 @@ extension AlertDetailViewController: UITableViewDelegate, UITableViewDataSource 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? AlertDetailCell else { return UITableViewCell() }
+        guard var cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? AlertDetailCell else { return UITableViewCell() }
         cell.sectionNumber = indexPath.section
         cell.delegate = self
         switch indexPath.section {
         case 0:
             if let advisoryCell = advisoryCell {
-                return advisoryCell
+                configureForServiceAdvisories(cell: advisoryCell)
+                cell = advisoryCell
             } else {
                 configureForServiceAdvisories(cell: cell)
             }
         case 1:
             if let alertCell = alertCell {
-                return alertCell
+                configureForServiceAlerts(cell: alertCell)
+                cell = alertCell
             } else {
                 configureForServiceAlerts(cell: cell)
             }
         case 2:
             if let detourCell = detourCell {
-                return detourCell
+                configureForDetours(cell: detourCell)
+                cell = detourCell
             } else {
                 configureForDetours(cell: cell)
             }
         case 3:
             if let weatherCell = weatherCell {
-                return weatherCell
+                configureForWeather(cell: weatherCell)
+                cell = weatherCell
             } else {
                 configureForWeather(cell: cell)
             }
