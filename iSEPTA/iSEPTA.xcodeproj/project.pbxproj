@@ -491,6 +491,8 @@
 		67C567331F598A0400FF6203 /* TransitAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C567321F598A0400FF6203 /* TransitAlertView.swift */; };
 		67C567351F598C7900FF6203 /* SeptaAlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C567341F598C7900FF6203 /* SeptaAlertsViewController.swift */; };
 		67C567371F598D7A00FF6203 /* TransitAlerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67C567361F598D7A00FF6203 /* TransitAlerts.storyboard */; };
+		67D2F7911F7E43BC00E0FF32 /* DarkBlueGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D2F7901F7E43BC00E0FF32 /* DarkBlueGradient.swift */; };
+		67D2F7951F7E4C8700E0FF32 /* webView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67D2F7941F7E4C8700E0FF32 /* webView.storyboard */; };
 		67DDC7D21F79263C002FECE2 /* NextToArriveMiddlewareScheduleStateBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DDC7D11F79263C002FECE2 /* NextToArriveMiddlewareScheduleStateBuilder.swift */; };
 		67EA2B5D1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B5C1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift */; };
 		67EA2B611F518CA600C0567A /* SearchModalHeaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B601F518CA600C0567A /* SearchModalHeaderDelegate.swift */; };
@@ -1076,6 +1078,8 @@
 		67C567321F598A0400FF6203 /* TransitAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitAlertView.swift; sourceTree = "<group>"; };
 		67C567341F598C7900FF6203 /* SeptaAlertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaAlertsViewController.swift; sourceTree = "<group>"; };
 		67C567361F598D7A00FF6203 /* TransitAlerts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransitAlerts.storyboard; sourceTree = "<group>"; };
+		67D2F7901F7E43BC00E0FF32 /* DarkBlueGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkBlueGradient.swift; sourceTree = "<group>"; };
+		67D2F7941F7E4C8700E0FF32 /* webView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = webView.storyboard; sourceTree = "<group>"; };
 		67DDC7D11F79263C002FECE2 /* NextToArriveMiddlewareScheduleStateBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveMiddlewareScheduleStateBuilder.swift; sourceTree = "<group>"; };
 		67EA2B5C1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStopsModalHeaderViewController.swift; sourceTree = "<group>"; };
 		67EA2B601F518CA600C0567A /* SearchModalHeaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModalHeaderDelegate.swift; sourceTree = "<group>"; };
@@ -1263,6 +1267,7 @@
 				67F757B21F48729C00D3A4EE /* UIView+Util.swift */,
 				67F757B61F488A5E00D3A4EE /* BlueGradientBackgroundView.swift */,
 				5801280F1F6BFC9F006B6DB8 /* NavBarShadowView.swift */,
+				67D2F7941F7E4C8700E0FF32 /* webView.storyboard */,
 				67A3857A1F7D5BA7002E01E0 /* UIViewController+Shadows.swift */,
 				67EA2B621F51AB8700C0567A /* StopEditSearchMode.swift */,
 				58FBB6691F58717500E6532B /* SeptaTabBarImages.swift */,
@@ -1277,6 +1282,7 @@
 				671A19251F662DF000C8EEDA /* DividerViews.swift */,
 				671609101F67F72600941D2C /* UIStackView+Util.swift */,
 				580128111F6C055B006B6DB8 /* RedButton.swift */,
+				67D2F7901F7E43BC00E0FF32 /* DarkBlueGradient.swift */,
 				580ED6AB1F75A0A60095D714 /* RefreshNextToArriveDetail.swift */,
 				67365AD71F75918300FC86CB /* ViewSchedulesButton.swift */,
 				5876DF761F72F7A3006C61FE /* BackButton.swift */,
@@ -2549,6 +2555,7 @@
 				58B278351F62AAD500663507 /* 11.kml in Resources */,
 				58B2782A1F62AAD500663507 /* 1.kml in Resources */,
 				58B278341F62AAD500663507 /* 109.kml in Resources */,
+				67D2F7951F7E4C8700E0FF32 /* webView.storyboard in Resources */,
 				58B2784F1F62AAD500663507 /* 15.kml in Resources */,
 				58B278761F62AAD500663507 /* 43.kml in Resources */,
 				58B2786C1F62AAD500663507 /* 33.kml in Resources */,
@@ -2812,6 +2819,7 @@
 				588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */,
 				58490E491F56019B007DBCA1 /* AlertReducer.swift in Sources */,
 				67F757AC1F48582700D3A4EE /* UIColor+Util.swift in Sources */,
+				67D2F7911F7E43BC00E0FF32 /* DarkBlueGradient.swift in Sources */,
 				671A19241F661F8F00C8EEDA /* SwipeGestureRecognizerToggle.swift in Sources */,
 				582741151F6F37F300AAF513 /* AlertDetailButton.swift in Sources */,
 				678F053B1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift in Sources */,

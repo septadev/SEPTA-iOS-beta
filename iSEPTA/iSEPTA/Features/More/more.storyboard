@@ -52,14 +52,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c5f-SB-Iy4">
-                                                    <rect key="frame" x="19" y="23" width="20" height="20"/>
+                                                    <rect key="frame" x="18" y="23" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" placeholder="YES" id="fPL-60-IUM"/>
                                                         <constraint firstAttribute="width" constant="20" placeholder="YES" id="rMr-x6-1fa"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fares" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97l-N9-PTa">
-                                                    <rect key="frame" x="64" y="25" width="36" height="17"/>
+                                                    <rect key="frame" x="55" y="25" width="36" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -67,8 +67,8 @@
                                             </subviews>
                                             <color key="tintColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="c5f-SB-Iy4" firstAttribute="leading" secondItem="92J-yX-oS4" secondAttribute="leading" constant="19" id="Gzj-gd-3OY" userLabel="imageViewleft"/>
-                                                <constraint firstItem="97l-N9-PTa" firstAttribute="leading" secondItem="c5f-SB-Iy4" secondAttribute="trailing" constant="25" id="H8F-LQ-hKa" userLabel="LabelLeft"/>
+                                                <constraint firstItem="97l-N9-PTa" firstAttribute="leading" secondItem="92J-yX-oS4" secondAttribute="leading" constant="55" id="1Hy-6b-QPB" userLabel="MoreLabelLeft"/>
+                                                <constraint firstItem="97l-N9-PTa" firstAttribute="leading" secondItem="c5f-SB-Iy4" secondAttribute="trailing" constant="17" id="VCE-07-mrg" userLabel="ImageRight"/>
                                                 <constraint firstItem="c5f-SB-Iy4" firstAttribute="centerY" secondItem="92J-yX-oS4" secondAttribute="centerY" id="jLh-jg-AEq" userLabel="imageViewCenterY"/>
                                                 <constraint firstItem="97l-N9-PTa" firstAttribute="centerY" secondItem="92J-yX-oS4" secondAttribute="centerY" id="kcy-bg-yT7" userLabel="LabelCenterY"/>
                                             </constraints>

@@ -16,9 +16,10 @@ class FaresViewController: UIViewController, IdentifiableController {
     @IBAction func redButtonTapped(_: Any) {
     }
 
-    @IBOutlet var redButtonView: UIView!
+    @IBOutlet var moreAboutSEPTAFaresButton: UIView!
 
     @IBOutlet weak var faresWhiteInsetView: UIView!
+    @IBOutlet weak var passPerksInsetView: UIView!
     var faresViewModel: FaresViewModel!
 
     override func viewDidLoad() {
@@ -27,6 +28,10 @@ class FaresViewController: UIViewController, IdentifiableController {
         faresViewModel = FaresViewModel()
         loadFaresStackView()
         UIView.addSurroundShadow(toView: faresWhiteInsetView, withCornerRadius: 0)
+        UIView.addSurroundShadow(toView: passPerksInsetView, withCornerRadius: 0)
+    }
+
+    @IBAction func moreAboutPassPerksTapped(_: Any) {
     }
 
     func loadFaresStackView() {
@@ -38,6 +43,6 @@ class FaresViewController: UIViewController, IdentifiableController {
             paymentView.descriptionLabel.attributedText = item.description
             faresStackView.addArrangedSubview(paymentView)
         }
-        faresStackView.addArrangedSubview(redButtonView)
+        faresStackView.addArrangedSubview(moreAboutSEPTAFaresButton)
     }
 }
