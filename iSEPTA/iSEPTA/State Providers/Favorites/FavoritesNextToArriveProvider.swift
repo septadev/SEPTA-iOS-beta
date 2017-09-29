@@ -28,6 +28,9 @@ class FavoritesNextToArriveProvider: StoreSubscriber {
         subscribe()
     }
 
+    func startTimer() {
+    }
+
     deinit {
         unsubscribe()
     }
