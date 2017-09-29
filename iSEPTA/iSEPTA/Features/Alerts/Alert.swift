@@ -45,6 +45,6 @@ class UIAlert {
     }
 
     static func presentComingSoonAlertFrom(_ viewController: UIViewController) {
-        presentOKAlertFrom(viewController: viewController, withTitle: "Septa", message: "This cool feature is coming soon!")
+        presentOKAlertFrom(viewController: viewController, withTitle: "SEPTA iOS", message: "This cool feature is coming soon!")
     }
 }

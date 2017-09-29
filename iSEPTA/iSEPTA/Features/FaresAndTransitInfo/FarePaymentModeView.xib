@@ -31,9 +31,13 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFb-oi-zy8" userLabel="Description">
                     <rect key="frame" x="96" y="151.5" width="323" height="14.5"/>
+                    <gestureRecognizers/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="oH0-WB-4dL" appends="YES" id="fH6-jp-0Q6"/>
+                    </connections>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -53,9 +57,15 @@
             <connections>
                 <outlet property="descriptionLabel" destination="DFb-oi-zy8" id="d8g-If-VUL"/>
                 <outlet property="icon" destination="SM1-TX-urm" id="WJG-e4-osg"/>
+                <outlet property="tapGestureRecognizer" destination="oH0-WB-4dL" id="fWB-so-4R2"/>
                 <outlet property="title" destination="rW6-Mr-sk0" id="V1R-aD-rKh"/>
             </connections>
             <point key="canvasLocation" x="58.5" y="-199"/>
         </view>
+        <tapGestureRecognizer enabled="NO" id="oH0-WB-4dL">
+            <connections>
+                <action selector="didTapDescription:" destination="iN0-l3-epB" id="osL-7B-daD"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

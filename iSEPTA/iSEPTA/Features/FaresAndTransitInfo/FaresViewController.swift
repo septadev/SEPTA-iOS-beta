@@ -41,6 +41,11 @@ class FaresViewController: UIViewController, IdentifiableController {
     }
 
     @IBAction func moreAboutPassPerksTapped(_: Any) {
+        guard let septaUrlInfo = urlManager.info(forPage: .passPerks) else { return }
+        let moreAction = DisplayURL(septaUrlInfo: septaUrlInfo)
+        store.dispatch(moreAction)
+        let pushAction = PushViewController(viewController: .webViewController, description: "Showing Fares Web View")
+        store.dispatch(pushAction)
     }
 
     func loadFaresStackView() {
@@ -50,6 +55,7 @@ class FaresViewController: UIViewController, IdentifiableController {
             paymentView.icon.image = UIImage(named: item.imageName)
             paymentView.title.text = item.title
             paymentView.descriptionLabel.attributedText = item.description
+            paymentView.septaUrlInfo = item.septaUrlInfo
             faresStackView.addArrangedSubview(paymentView)
         }
         faresStackView.addArrangedSubview(moreAboutSEPTAFaresButton)

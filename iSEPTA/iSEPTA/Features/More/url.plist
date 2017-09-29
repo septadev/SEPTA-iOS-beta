@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>passPerks</key>
+	<string>http://iseptaphilly.com/perks</string>
 	<key>map</key>
 	<string>https://www.septa.org/maps/pdf/click-map.pdf</string>
 	<key>fares</key>

@@ -37,11 +37,16 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
         return cell
     }
 
-    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
 
             let pushAction = PushViewController(viewController: .faresViewController, description: "Will View Fares")
             store.dispatch(pushAction)
+        } else {
+            UIAlert.presentComingSoonAlertFrom(self)
         }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
+            tableView.deselectRow(at: indexPath, animated: true)
+        })
     }
 }

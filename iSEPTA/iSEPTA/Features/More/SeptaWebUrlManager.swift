@@ -12,6 +12,7 @@ enum SEPTAWebPage {
     case map
     case fares
     case septaKey
+    case passPerks
 }
 
 class SeptaWebUrlManager {
@@ -41,6 +42,7 @@ class SeptaWebUrlManager {
         case .map: urlString = urls.map
         case .fares: urlString = urls.fares
         case .septaKey: urlString = urls.septaKey
+        case .passPerks: urlString = urls.passPerks
         }
         guard let string = urlString else { return nil }
         return URL(string: string)
@@ -51,6 +53,7 @@ class SeptaWebUrlManager {
         case .map: return "SEPTA Map"
         case .fares: return "More Fares Information"
         case .septaKey: return "SEPTA Key"
+        case .passPerks: return "PASS Perks"
         }
     }
 
@@ -58,5 +61,6 @@ class SeptaWebUrlManager {
         let map: String
         let fares: String
         let septaKey: String
+        let passPerks: String
     }
 }

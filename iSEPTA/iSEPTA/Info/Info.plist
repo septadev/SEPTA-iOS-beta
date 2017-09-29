@@ -6,6 +6,13 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>iseptaphilly.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>septa.org</key>
 			<dict>
 				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
