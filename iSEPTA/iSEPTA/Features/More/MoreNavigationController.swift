@@ -26,7 +26,7 @@ class MoreNavigationController: BaseNavigationController, IdentifiableNavControl
     func initializeNavStackState() {
         currentStackState = NavigationStackState(viewControllers: [.moreViewController], modalViewController: nil)
 
-        let action = InitializeNavigationState(navigationController: .alerts, navigationStackState: currentStackState, description: "Initializing stack state for more")
+        let action = InitializeNavigationState(navigationController: .more, navigationStackState: currentStackState, description: "Initializing stack state for more")
         store.dispatch(action)
     }
 }

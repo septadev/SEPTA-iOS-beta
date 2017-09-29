@@ -11,6 +11,6 @@ import Foundation
 protocol MoreAction: SeptaAction {}
 
 struct DisplayURL: MoreAction {
-    let url: URL
+    let septaUrlInfo: SeptaUrlInfo
     let description: String = "User views URL"
 }

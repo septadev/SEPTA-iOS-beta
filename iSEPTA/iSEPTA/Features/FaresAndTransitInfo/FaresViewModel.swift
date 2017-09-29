@@ -16,6 +16,8 @@ class FaresViewModel {
         buildItems()
     }
 
+    let urlManager = SeptaWebUrlManager.sharedInstance
+
     func buildItems() {
         items = [
             buildSeptaKeyPaymentMode(),
@@ -39,7 +41,9 @@ class FaresViewModel {
         return FaresPaymentModeViewModel(
             imageName: "septaKeyIcon",
             title: "SEPTA Key",
-            description: attributedString)
+            description: attributedString,
+            septaUrlInfo: urlManager.info(forPage: .septaKey)
+        )
     }
 
     func buildCashPaymentMode() -> FaresPaymentModeViewModel {
@@ -50,7 +54,9 @@ class FaresViewModel {
         return FaresPaymentModeViewModel(
             imageName: "cashIcon",
             title: "Cash",
-            description: attributedString)
+            description: attributedString,
+
+            septaUrlInfo: nil)
     }
 
     func buildTokenPaymentMode() -> FaresPaymentModeViewModel {
@@ -61,55 +67,68 @@ class FaresViewModel {
         return FaresPaymentModeViewModel(
             imageName: "tokenIcon",
             title: "Token",
-            description: attributedString)
+            description: attributedString,
+
+            septaUrlInfo: nil)
     }
 
     func buildTransPassPaymentMode() -> FaresPaymentModeViewModel {
         let attributedString = NSMutableAttributedString(string: "Weekly: $25.50\nMonthly: $96.50\nLoad Pass on SEPTA Key Card")
         attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 12.0, weight: UIFont.Weight.bold), range: NSRange(location: 8, length: 6))
         attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 12.0, weight: UIFont.Weight.bold), range: NSRange(location: 24, length: 6))
+
         return FaresPaymentModeViewModel(
             imageName: "weeklyIcon",
             title: "TransPass",
-            description: attributedString)
+            description: attributedString,
+
+            septaUrlInfo: nil)
     }
 
     func buildTrailPassPaymentMode() -> FaresPaymentModeViewModel {
         let attributedString = NSMutableAttributedString(string: "Weekly and Monthly TrailPasses\nPrice varies by Zone.")
         attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 12.0, weight: UIFont.Weight.bold), range: NSRange(location: 31, length: 12))
+
         return FaresPaymentModeViewModel(
             imageName: "trailPassIcon",
             title: "TrailPass",
-            description: attributedString)
+            description: attributedString,
+            septaUrlInfo: nil)
     }
 
     func buildCrossCountryPaymentMode() -> FaresPaymentModeViewModel {
         let attributedString = NSMutableAttributedString(string: "Weekly Cross Country Pass: $30.75\nMonthly Cross Country Pass: $115.00")
         attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 12.0, weight: UIFont.Weight.bold), range: NSRange(location: 27, length: 6))
         attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 12.0, weight: UIFont.Weight.bold), range: NSRange(location: 62, length: 7))
+
         return FaresPaymentModeViewModel(
             imageName: "crossCountryIcon",
             title: "Cross County Pass",
-            description: attributedString)
+            description: attributedString,
+            septaUrlInfo: nil)
     }
 
     func buildOneDayConveniencePassPaymentMode() -> FaresPaymentModeViewModel {
         let attributedString = NSMutableAttributedString(string: "Pass: $8.00 - good for 8 rides on any Transit route (not valid on Regional Rail)")
         attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 12.0, weight: UIFont.Weight.bold), range: NSRange(location: 6, length: 5))
         attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 12.0, weight: UIFont.Weight.bold), range: NSRange(location: 23, length: 7))
+
         return FaresPaymentModeViewModel(
             imageName: "oneDayIcon",
             title: "One Day Convenience Pass",
-            description: attributedString)
+            description: attributedString,
+            septaUrlInfo: nil)
     }
 
     func buildOneDayIndependencePassPaymentMode() -> FaresPaymentModeViewModel {
         let attributedString = NSMutableAttributedString(string: "One Day Individual: $13.00\nOne Day Family: $30.00")
         attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 12.0, weight: UIFont.Weight.bold), range: NSRange(location: 20, length: 6))
         attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 12.0, weight: UIFont.Weight.bold), range: NSRange(location: 43, length: 6))
+
         return FaresPaymentModeViewModel(
             imageName: "independenceIcon",
             title: "One Day Independence Pass",
-            description: attributedString)
+            description: attributedString,
+            septaUrlInfo: nil)
     }
 }

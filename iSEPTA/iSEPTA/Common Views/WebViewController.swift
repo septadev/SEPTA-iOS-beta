@@ -11,14 +11,27 @@ import UIKit
 import WebKit
 
 class WebViewController: UIViewController, IdentifiableController {
-
+var viewController: ViewController = .webViewController
     var webView: WKWebView!
 
     override func viewDidLoad() {
+        view.backgroundColor = SeptaColor.navBarBlue
         super.viewDidLoad()
         webView = WKWebView(frame: view.frame)
-        view.pinSubview(webView)
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(webView)
+        view.pinSubviewToNavBarBottom(webView, topLayoutGuide: topLayoutGuide)
+        loadURL()
+        navigationController?.navigationBar.configureBackButton()
     }
 
-    var viewController: ViewController = .webViewController
+    func loadURL() {
+        if let info = store.state.moreState.septaUrlInfo {
+            let request = URLRequest(url: info.url)
+            webView.load(request)
+            title = info.title
+        }
+    }
+
+    
 }

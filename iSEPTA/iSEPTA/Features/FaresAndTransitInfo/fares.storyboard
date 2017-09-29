@@ -210,6 +210,9 @@
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="buttonTitle" value="More About SEPTA Fares"/>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="moreAboutSeptaFaresTapped:" destination="gDc-tf-bp4" eventType="touchUpInside" id="hZC-37-CcL"/>
+                            </connections>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

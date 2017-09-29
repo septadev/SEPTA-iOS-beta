@@ -13,4 +13,5 @@ struct FaresPaymentModeViewModel {
     let imageName: String
     let title: String
     let description: NSAttributedString
+    let septaUrlInfo: SeptaUrlInfo?
 }

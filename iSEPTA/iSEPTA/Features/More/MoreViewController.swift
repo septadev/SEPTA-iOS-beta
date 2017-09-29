@@ -39,9 +39,9 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            let faresController: ViewController = .faresViewController
-            let uiController: FaresViewController = faresController.instantiateViewController()!
-            navigationController?.pushViewController(uiController, animated: true)
+
+            let pushAction = PushViewController(viewController: .faresViewController, description: "Will View Fares")
+            store.dispatch(pushAction)
         }
     }
 }

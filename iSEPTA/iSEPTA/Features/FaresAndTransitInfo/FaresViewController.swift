@@ -11,9 +11,18 @@ import UIKit
 
 class FaresViewController: UIViewController, IdentifiableController {
     var viewController: ViewController = .faresViewController
-
+    var urlManager = SeptaWebUrlManager.sharedInstance
     @IBOutlet weak var faresStackView: UIStackView!
     @IBAction func redButtonTapped(_: Any) {
+    }
+
+    @IBAction func moreAboutSeptaFaresTapped(_: Any) {
+        if let info = urlManager.info(forPage: .fares) {
+            let moreAction = DisplayURL(septaUrlInfo: info)
+            store.dispatch(moreAction)
+            let pushAction = PushViewController(viewController: .webViewController, description: "Showing Fares Web View")
+            store.dispatch(pushAction)
+        }
     }
 
     @IBOutlet var moreAboutSEPTAFaresButton: UIView!

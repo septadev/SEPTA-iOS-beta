@@ -3,6 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>map</key>
-	<string>http://www.septa.org/maps/pdf/click-map.pdf</string>
+	<string>https://www.septa.org/maps/pdf/click-map.pdf</string>
+	<key>fares</key>
+	<string>http://septa.org/m/fares/ticket/</string>
+	<key>septaKey</key>
+	<string>http://www.septa.org/key/</string>
 </dict>
 </plist>

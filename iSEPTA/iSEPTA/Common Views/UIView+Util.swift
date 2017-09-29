@@ -64,4 +64,18 @@ extension UIView {
         let vertical = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[subview]-0-|", options: [], metrics: nil, views: viewsDict)
         NSLayoutConstraint.activate(horiz + vertical)
     }
+
+    func pinSubviewToNavBarBottom(_ subview: UIView, topLayoutGuide: UILayoutSupport) {
+        var viewsDict: [String: Any] = ["subview": subview]
+
+        // Check swift version and add appropriate piece to the view dictionary
+        if #available(iOS 11, *) {
+            viewsDict["topGuide"] = safeAreaLayoutGuide.topAnchor
+        } else {
+            viewsDict["topGuide"] = topLayoutGuide
+        }
+        let horiz = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[subview]-0-|", options: [], metrics: nil, views: viewsDict)
+        let vertical = NSLayoutConstraint.constraints(withVisualFormat: "V:|-64-[subview]-0-|", options: [], metrics: nil, views: viewsDict)
+        NSLayoutConstraint.activate(horiz + vertical)
+    }
 }

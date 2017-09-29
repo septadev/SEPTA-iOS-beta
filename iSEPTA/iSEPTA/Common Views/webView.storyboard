@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Web View Controller-->
+        <!--Title-->
         <scene sceneID="sVa-mt-JxP">
             <objects>
                 <viewController storyboardIdentifier="webViewController" id="trD-CD-dsf" customClass="WebViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,6 +20,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="6WU-xp-8mm"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="hQQ-xY-pr8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eva-hT-Lmh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

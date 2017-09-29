@@ -3,16 +3,9 @@ use Data::Dumper;
 
 my $struct = q |
 
-struct MoreState: Equatable {
-    let url: URL?
-
-    init(url: URL? = nil){
-        self.url = url
-    }
-
+struct MoreState {
+  let  septaUrlInfo: SeptaUrlInfo?
 }
-
-
 
 
 	|;

@@ -154,7 +154,7 @@
 		5892DDF21F3AAA5C000BA54B /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5892DDF01F3AAA5C000BA54B /* Fabric.framework */; };
 		5893970C1F7E60D900F3D2F8 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5893970B1F7E60D900F3D2F8 /* WebViewController.swift */; };
 		589397101F7E623D00F3D2F8 /* url.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5893970F1F7E623D00F3D2F8 /* url.plist */; };
-		589397121F7E64B900F3D2F8 /* SeptaUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589397111F7E64B900F3D2F8 /* SeptaUrl.swift */; };
+		589397121F7E64B900F3D2F8 /* SeptaWebUrlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589397111F7E64B900F3D2F8 /* SeptaWebUrlManager.swift */; };
 		589397141F7E677600F3D2F8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 589397131F7E677600F3D2F8 /* WebKit.framework */; };
 		589397171F7E698500F3D2F8 /* MoreState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589397161F7E698500F3D2F8 /* MoreState.swift */; };
 		589397191F7E6A5000F3D2F8 /* MoreReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589397181F7E6A5000F3D2F8 /* MoreReducer.swift */; };
@@ -500,6 +500,7 @@
 		67C567371F598D7A00FF6203 /* TransitAlerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67C567361F598D7A00FF6203 /* TransitAlerts.storyboard */; };
 		67D2F7911F7E43BC00E0FF32 /* DarkBlueGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D2F7901F7E43BC00E0FF32 /* DarkBlueGradient.swift */; };
 		67D2F7951F7E4C8700E0FF32 /* webView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67D2F7941F7E4C8700E0FF32 /* webView.storyboard */; };
+		67D693521F7E8509007FE86E /* SeptaUrlInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D693511F7E8509007FE86E /* SeptaUrlInfo.swift */; };
 		67DDC7D21F79263C002FECE2 /* NextToArriveMiddlewareScheduleStateBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DDC7D11F79263C002FECE2 /* NextToArriveMiddlewareScheduleStateBuilder.swift */; };
 		67EA2B5D1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B5C1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift */; };
 		67EA2B611F518CA600C0567A /* SearchModalHeaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B601F518CA600C0567A /* SearchModalHeaderDelegate.swift */; };
@@ -744,7 +745,7 @@
 		5892DDF01F3AAA5C000BA54B /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		5893970B1F7E60D900F3D2F8 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		5893970F1F7E623D00F3D2F8 /* url.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = url.plist; sourceTree = "<group>"; };
-		589397111F7E64B900F3D2F8 /* SeptaUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaUrl.swift; sourceTree = "<group>"; };
+		589397111F7E64B900F3D2F8 /* SeptaWebUrlManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaWebUrlManager.swift; sourceTree = "<group>"; };
 		589397131F7E677600F3D2F8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		589397161F7E698500F3D2F8 /* MoreState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreState.swift; sourceTree = "<group>"; };
 		589397181F7E6A5000F3D2F8 /* MoreReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreReducer.swift; sourceTree = "<group>"; };
@@ -1094,6 +1095,7 @@
 		67C567361F598D7A00FF6203 /* TransitAlerts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransitAlerts.storyboard; sourceTree = "<group>"; };
 		67D2F7901F7E43BC00E0FF32 /* DarkBlueGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkBlueGradient.swift; sourceTree = "<group>"; };
 		67D2F7941F7E4C8700E0FF32 /* webView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = webView.storyboard; sourceTree = "<group>"; };
+		67D693511F7E8509007FE86E /* SeptaUrlInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaUrlInfo.swift; sourceTree = "<group>"; };
 		67DDC7D11F79263C002FECE2 /* NextToArriveMiddlewareScheduleStateBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveMiddlewareScheduleStateBuilder.swift; sourceTree = "<group>"; };
 		67EA2B5C1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStopsModalHeaderViewController.swift; sourceTree = "<group>"; };
 		67EA2B601F518CA600C0567A /* SearchModalHeaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModalHeaderDelegate.swift; sourceTree = "<group>"; };
@@ -2285,7 +2287,8 @@
 				67A385761F7D4752002E01E0 /* MoreViewModel.swift */,
 				676B7DA01F7D18B90052F016 /* MoreNavigationControllerStateProvider.swift */,
 				676B7D9E1F7D189E0052F016 /* more.storyboard */,
-				589397111F7E64B900F3D2F8 /* SeptaUrl.swift */,
+				589397111F7E64B900F3D2F8 /* SeptaWebUrlManager.swift */,
+				67D693511F7E8509007FE86E /* SeptaUrlInfo.swift */,
 				67A385721F7D4402002E01E0 /* MoreTableViewCell.swift */,
 				5893970F1F7E623D00F3D2F8 /* url.plist */,
 			);
@@ -2848,7 +2851,7 @@
 				585303CF1F69CAC600145D87 /* NextToArriveMapper.swift in Sources */,
 				582F4EC51F33B1120062A546 /* NextToArriveViewController.swift in Sources */,
 				58B5B1091F6DBFFF00A3DAFB /* ScheduleState_ScheduleRequestWatcher.swift in Sources */,
-				589397121F7E64B900F3D2F8 /* SeptaUrl.swift in Sources */,
+				589397121F7E64B900F3D2F8 /* SeptaWebUrlManager.swift in Sources */,
 				671A19291F66385100C8EEDA /* NoConnectionCell.swift in Sources */,
 				588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */,
 				58490E491F56019B007DBCA1 /* AlertReducer.swift in Sources */,
@@ -3013,6 +3016,7 @@
 				676B7DA11F7D18B90052F016 /* MoreNavigationControllerStateProvider.swift in Sources */,
 				588D805D1F72AAF300EE1983 /* BaseScheduleRequestWatcher.swift in Sources */,
 				678DAA9E1F67065F00EB6EE8 /* NextToArriveConnectingViewModel.swift in Sources */,
+				67D693521F7E8509007FE86E /* SeptaUrlInfo.swift in Sources */,
 				58E33F1A1F6145C000C74B7C /* NextToArriveConnectionStation.swift in Sources */,
 				678D26BF1F5C414800D140CC /* LocationServicesListener.swift in Sources */,
 				6716090F1F67ECE100941D2C /* NoConnectionUIHeaderFooterView.swift in Sources */,

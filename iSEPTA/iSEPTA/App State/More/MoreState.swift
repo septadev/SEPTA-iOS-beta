@@ -10,10 +10,9 @@ import Foundation
 import SeptaSchedule
 
 struct MoreState {
-    let url: URL?
-
-    init(url: URL? = nil) {
-        self.url = url
+    let septaUrlInfo: SeptaUrlInfo?
+    init(septaUrlInfo: SeptaUrlInfo? = nil) {
+        self.septaUrlInfo = septaUrlInfo
     }
 }
 
@@ -21,7 +20,7 @@ extension MoreState: Equatable {}
 func ==(lhs: MoreState, rhs: MoreState) -> Bool {
     var areEqual = true
 
-    areEqual = Optionals.optionalCompare(currentValue: lhs.url, newValue: rhs.url).equalityResult()
+    areEqual = Optionals.optionalCompare(currentValue: lhs.septaUrlInfo, newValue: rhs.septaUrlInfo).equalityResult()
     guard areEqual else { return false }
 
     return areEqual
