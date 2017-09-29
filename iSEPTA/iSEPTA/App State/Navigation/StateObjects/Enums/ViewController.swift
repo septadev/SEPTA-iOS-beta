@@ -33,6 +33,7 @@ enum ViewController: String, Equatable {
     // more
     case moreNavigationController
     case moreViewController
+    case webViewController
 
     func storyboardIdentifier() -> String {
         switch self {
@@ -68,6 +69,8 @@ enum ViewController: String, Equatable {
             return "more"
         case .moreViewController:
             return "more"
+        case .webViewController:
+            return "webView"
         }
     }
 

@@ -3,13 +3,15 @@ use Data::Dumper;
 
 my $struct = q |
 
-struct FavoritesState: Codable {
-    let favorites: [Favorite]
-    var lastFavoriteUpdated: Favorite?
+struct MoreState: Equatable {
+    let url: URL?
 
-    init(favorites: [Favorite] = [Favorite]()) {
-        self.favorites = favorites
+    init(url: URL? = nil){
+        self.url = url
     }
+
+}
+
 
 
 

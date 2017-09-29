@@ -54,10 +54,14 @@ extension UIView {
         guard let subview = Bundle.main.loadNibNamed(nibName, owner: nil, options: nil)?.first as? T else { return nil }
         subview.translatesAutoresizingMaskIntoConstraints = false
         addSubview(subview)
+        pinSubview(subview)
+        return subview
+    }
+
+    func pinSubview(_ subview: UIView) {
         let viewsDict = ["subview": subview]
         let horiz = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[subview]-0-|", options: [], metrics: nil, views: viewsDict)
         let vertical = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[subview]-0-|", options: [], metrics: nil, views: viewsDict)
         NSLayoutConstraint.activate(horiz + vertical)
-        return subview
     }
 }

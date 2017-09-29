@@ -18,7 +18,8 @@ class AppStateReducer {
             locationState: LocationReducer.main(action: action, state: state?.locationState),
             favoriteState: FavoritesReducer.main(action: action, state: state?.favoritesState),
             nextToArriveState: NextToArriveReducer.main(action: action, state: state?.nextToArriveState),
-            databaseState: DatabaseReducer.main(action: action, state: state?.databaseState)
+            databaseState: DatabaseReducer.main(action: action, state: state?.databaseState),
+            moreState: MoreReducer.main(action: action, state: state?.moreState)
         )
 
         return appState

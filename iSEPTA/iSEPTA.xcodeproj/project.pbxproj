@@ -152,6 +152,13 @@
 		588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588F27F61F39E0BF00D62425 /* UserPreferenceActions.swift */; };
 		5892DDF11F3AAA5C000BA54B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5892DDEF1F3AAA5C000BA54B /* Crashlytics.framework */; };
 		5892DDF21F3AAA5C000BA54B /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5892DDF01F3AAA5C000BA54B /* Fabric.framework */; };
+		5893970C1F7E60D900F3D2F8 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5893970B1F7E60D900F3D2F8 /* WebViewController.swift */; };
+		589397101F7E623D00F3D2F8 /* url.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5893970F1F7E623D00F3D2F8 /* url.plist */; };
+		589397121F7E64B900F3D2F8 /* SeptaUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589397111F7E64B900F3D2F8 /* SeptaUrl.swift */; };
+		589397141F7E677600F3D2F8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 589397131F7E677600F3D2F8 /* WebKit.framework */; };
+		589397171F7E698500F3D2F8 /* MoreState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589397161F7E698500F3D2F8 /* MoreState.swift */; };
+		589397191F7E6A5000F3D2F8 /* MoreReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589397181F7E6A5000F3D2F8 /* MoreReducer.swift */; };
+		5893971B1F7E6A5900F3D2F8 /* MoreActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5893971A1F7E6A5900F3D2F8 /* MoreActions.swift */; };
 		589A89D71F50BB73007329DB /* SelectStopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A89D61F50BB73007329DB /* SelectStopCell.swift */; };
 		589A89DB1F52E6A9007329DB /* ScheduleStopEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A89DA1F52E6A9007329DB /* ScheduleStopEdit.swift */; };
 		589A89DE1F52E7E8007329DB /* ScheduleStopEditReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A89DD1F52E7E8007329DB /* ScheduleStopEditReducer.swift */; };
@@ -351,7 +358,7 @@
 		58E33F1A1F6145C000C74B7C /* NextToArriveConnectionStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F191F6145C000C74B7C /* NextToArriveConnectionStation.swift */; };
 		58E33F1C1F61473800C74B7C /* TripVehicleLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F1B1F61473800C74B7C /* TripVehicleLocations.swift */; };
 		58E33F1E1F6147DE00C74B7C /* CLLocationCoordinate2D+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F1D1F6147DE00C74B7C /* CLLocationCoordinate2D+Equatable.swift */; };
-		58E33F201F61494700C74B7C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F1F1F61494700C74B7C /* File.swift */; };
+		58E33F201F61494700C74B7C /* NextToArriveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F1F1F61494700C74B7C /* NextToArriveService.swift */; };
 		58E33F221F615EC100C74B7C /* NextToArriveScheduleRequestWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F211F615EC100C74B7C /* NextToArriveScheduleRequestWatcher.swift */; };
 		58E33F241F61615900C74B7C /* network.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58E33F231F61615900C74B7C /* network.plist */; };
 		58E33F261F61619500C74B7C /* SeptaNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F251F61619500C74B7C /* SeptaNetwork.swift */; };
@@ -735,6 +742,13 @@
 		588F27F61F39E0BF00D62425 /* UserPreferenceActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferenceActions.swift; sourceTree = "<group>"; };
 		5892DDEF1F3AAA5C000BA54B /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		5892DDF01F3AAA5C000BA54B /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		5893970B1F7E60D900F3D2F8 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		5893970F1F7E623D00F3D2F8 /* url.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = url.plist; sourceTree = "<group>"; };
+		589397111F7E64B900F3D2F8 /* SeptaUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaUrl.swift; sourceTree = "<group>"; };
+		589397131F7E677600F3D2F8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		589397161F7E698500F3D2F8 /* MoreState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreState.swift; sourceTree = "<group>"; };
+		589397181F7E6A5000F3D2F8 /* MoreReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreReducer.swift; sourceTree = "<group>"; };
+		5893971A1F7E6A5900F3D2F8 /* MoreActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreActions.swift; sourceTree = "<group>"; };
 		589A89D61F50BB73007329DB /* SelectStopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopCell.swift; sourceTree = "<group>"; };
 		589A89DA1F52E6A9007329DB /* ScheduleStopEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStopEdit.swift; sourceTree = "<group>"; };
 		589A89DD1F52E7E8007329DB /* ScheduleStopEditReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStopEditReducer.swift; sourceTree = "<group>"; };
@@ -941,7 +955,7 @@
 		58E33F191F6145C000C74B7C /* NextToArriveConnectionStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveConnectionStation.swift; sourceTree = "<group>"; };
 		58E33F1B1F61473800C74B7C /* TripVehicleLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripVehicleLocations.swift; sourceTree = "<group>"; };
 		58E33F1D1F6147DE00C74B7C /* CLLocationCoordinate2D+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Equatable.swift"; sourceTree = "<group>"; };
-		58E33F1F1F61494700C74B7C /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		58E33F1F1F61494700C74B7C /* NextToArriveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveService.swift; sourceTree = "<group>"; };
 		58E33F211F615EC100C74B7C /* NextToArriveScheduleRequestWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveScheduleRequestWatcher.swift; sourceTree = "<group>"; };
 		58E33F231F61615900C74B7C /* network.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = network.plist; sourceTree = "<group>"; };
 		58E33F251F61619500C74B7C /* SeptaNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaNetwork.swift; sourceTree = "<group>"; };
@@ -1097,6 +1111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				589397141F7E677600F3D2F8 /* WebKit.framework in Frameworks */,
 				674FDBBF1F56E87F00CA67D2 /* SeptaRest.framework in Frameworks */,
 				58490E401F55F84F007DBCA1 /* SeptaRest.framework in Frameworks */,
 				58B1FFD61F42EB2500AD8620 /* MapKit.framework in Frameworks */,
@@ -1216,6 +1231,7 @@
 		58290E511F372F27000CCF3C /* App State */ = {
 			isa = PBXGroup;
 			children = (
+				589397151F7E697700F3D2F8 /* More */,
 				58C9D2FD1F703716008FDE40 /* Middleware */,
 				58FBBFA21F6581FD00B7A4DA /* Database */,
 				58EB8D271F5D90A40028A487 /* NextToArrive */,
@@ -1268,6 +1284,7 @@
 				67F757B61F488A5E00D3A4EE /* BlueGradientBackgroundView.swift */,
 				5801280F1F6BFC9F006B6DB8 /* NavBarShadowView.swift */,
 				67D2F7941F7E4C8700E0FF32 /* webView.storyboard */,
+				5893970B1F7E60D900F3D2F8 /* WebViewController.swift */,
 				67A3857A1F7D5BA7002E01E0 /* UIViewController+Shadows.swift */,
 				67EA2B621F51AB8700C0567A /* StopEditSearchMode.swift */,
 				58FBB6691F58717500E6532B /* SeptaTabBarImages.swift */,
@@ -1724,6 +1741,16 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		589397151F7E697700F3D2F8 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				589397161F7E698500F3D2F8 /* MoreState.swift */,
+				589397181F7E6A5000F3D2F8 /* MoreReducer.swift */,
+				5893971A1F7E6A5900F3D2F8 /* MoreActions.swift */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
 		58A26DA01F6F282B005A70D3 /* AlertDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -2051,6 +2078,7 @@
 		58D9C4161F33362C002BE2E8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				589397131F7E677600F3D2F8 /* WebKit.framework */,
 				5870CCDD1F54C05A004E61A9 /* SeptaSchedule.framework */,
 				5867AC3B1F46249700370254 /* ReSwift.framework */,
 				5867AC391F46249700370254 /* SQLite.framework */,
@@ -2149,7 +2177,7 @@
 				58EB8D2C1F5D927E0028A487 /* NextToArriveScheduleReducer.swift */,
 				58E33F171F61453000C74B7C /* NextToArriveTrip.swift */,
 				58E33F271F61651400C74B7C /* TransitType+TransitMode.swift */,
-				58E33F1F1F61494700C74B7C /* File.swift */,
+				58E33F1F1F61494700C74B7C /* NextToArriveService.swift */,
 				58E33F1B1F61473800C74B7C /* TripVehicleLocations.swift */,
 				58C7E1551F7AC3C000C133C5 /* VehicleLocation.swift */,
 				58E33F191F6145C000C74B7C /* NextToArriveConnectionStation.swift */,
@@ -2257,7 +2285,9 @@
 				67A385761F7D4752002E01E0 /* MoreViewModel.swift */,
 				676B7DA01F7D18B90052F016 /* MoreNavigationControllerStateProvider.swift */,
 				676B7D9E1F7D189E0052F016 /* more.storyboard */,
+				589397111F7E64B900F3D2F8 /* SeptaUrl.swift */,
 				67A385721F7D4402002E01E0 /* MoreTableViewCell.swift */,
+				5893970F1F7E623D00F3D2F8 /* url.plist */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -2648,6 +2678,7 @@
 				58B2789E1F62AAD500663507 /* 91.kml in Resources */,
 				58B278B01F62AAD500663507 /* J.kml in Resources */,
 				58B2787C1F62AAD500663507 /* 48.kml in Resources */,
+				589397101F7E623D00F3D2F8 /* url.plist in Resources */,
 				58B278BB1F62AAD500663507 /* R.kml in Resources */,
 				58B2788A1F62AAD500663507 /* 62.kml in Resources */,
 				58B278A11F62AAD500663507 /* 94.kml in Resources */,
@@ -2760,7 +2791,7 @@
 				582F4EDD1F33B1120062A546 /* UpdateableFromViewModel.swift in Sources */,
 				5827411F1F6F5AC800AAF513 /* AlertState_AlertDetailsWatcher.swift in Sources */,
 				58EB8D1F1F5D8A650028A487 /* BaseNavigationController+Styling.swift in Sources */,
-				58E33F201F61494700C74B7C /* File.swift in Sources */,
+				58E33F201F61494700C74B7C /* NextToArriveService.swift in Sources */,
 				67365ACF1F754A3200FC86CB /* SevenEightsTransitioningDelegate.swift in Sources */,
 				58EB8D211F5D8C270028A487 /* NextToArriveSelectTripViewModel.swift in Sources */,
 				671A192D1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift in Sources */,
@@ -2769,6 +2800,7 @@
 				588D805F1F72B23D00EE1983 /* TargetForScheduleActions.swift in Sources */,
 				582F4ED31F33B1120062A546 /* SelectStopRow.swift in Sources */,
 				582F4EBC1F33B1120062A546 /* DateFormatters.swift in Sources */,
+				5893971B1F7E6A5900F3D2F8 /* MoreActions.swift in Sources */,
 				580A35671F6A255F000FCA82 /* FavoriteTripCell.swift in Sources */,
 				58A26D9B1F6F221E005A70D3 /* AlertDetailViewController.swift in Sources */,
 				678DAAA41F6728B100EB6EE8 /* NextToArriveTripsTableViewController.swift in Sources */,
@@ -2793,6 +2825,7 @@
 				67F757B51F488A4400D3A4EE /* SeptaDraw.swift in Sources */,
 				582F4ED11F33B1120062A546 /* SelectedStopType.swift in Sources */,
 				678F05291F5B7BE400CC4D3C /* AddressLookupState.swift in Sources */,
+				589397171F7E698500F3D2F8 /* MoreState.swift in Sources */,
 				67075FC61F57860E008BB38C /* ScheduleTripState.swift in Sources */,
 				5840D6D31F376D9C00C8CB76 /* MainNavigationController.swift in Sources */,
 				5840D6EE1F37F63800C8CB76 /* TransitModeToolbarView.swift in Sources */,
@@ -2815,6 +2848,7 @@
 				585303CF1F69CAC600145D87 /* NextToArriveMapper.swift in Sources */,
 				582F4EC51F33B1120062A546 /* NextToArriveViewController.swift in Sources */,
 				58B5B1091F6DBFFF00A3DAFB /* ScheduleState_ScheduleRequestWatcher.swift in Sources */,
+				589397121F7E64B900F3D2F8 /* SeptaUrl.swift in Sources */,
 				671A19291F66385100C8EEDA /* NoConnectionCell.swift in Sources */,
 				588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */,
 				58490E491F56019B007DBCA1 /* AlertReducer.swift in Sources */,
@@ -2830,6 +2864,7 @@
 				674FDBC71F577D3B00CA67D2 /* Route+Icon.swift in Sources */,
 				587BC0501F6EDF1D00B92BB6 /* AlertRequest.swift in Sources */,
 				58C9D3011F703735008FDE40 /* LoggingMiddleware.swift in Sources */,
+				589397191F7E6A5000F3D2F8 /* MoreReducer.swift in Sources */,
 				676B7D8C1F7D01390052F016 /* FaresPaymentModeViewModel.swift in Sources */,
 				58F80D431F421C1F0089501A /* SelectStopNavigationController.swift in Sources */,
 				58658D1B1F53135100E67B4E /* AddressCell.swift in Sources */,
@@ -3024,6 +3059,7 @@
 				588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */,
 				676B7D841F7CFA270052F016 /* FaresViewController.swift in Sources */,
 				58EB8D291F5D90CD0028A487 /* NextToArriveState.swift in Sources */,
+				5893970C1F7E60D900F3D2F8 /* WebViewController.swift in Sources */,
 				583523991F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift in Sources */,
 				67A385771F7D4752002E01E0 /* MoreViewModel.swift in Sources */,
 				67BC3F8D1F66AD4E001F9FE3 /* NoConnectionSectionHeader.swift in Sources */,
