@@ -65,7 +65,7 @@ extension UIView {
         NSLayoutConstraint.activate(horiz + vertical)
     }
 
-    func pinSubviewToNavBarBottom(_ subview: UIView, topLayoutGuide: UILayoutSupport) {
+    func pinSubviewTopToNavBarBottom(_ subview: UIView, topLayoutGuide: UILayoutSupport) {
         var viewsDict: [String: Any] = ["subview": subview]
 
         // Check swift version and add appropriate piece to the view dictionary

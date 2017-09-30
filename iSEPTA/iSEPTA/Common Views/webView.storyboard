@@ -17,10 +17,23 @@
                     <view key="view" contentMode="scaleToFill" id="oEY-mq-yrY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="GbP-fK-EF8">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GbP-fK-EF8" firstAttribute="centerY" secondItem="6WU-xp-8mm" secondAttribute="centerY" id="8gA-3u-1E7"/>
+                            <constraint firstItem="GbP-fK-EF8" firstAttribute="centerX" secondItem="6WU-xp-8mm" secondAttribute="centerX" id="Osu-0p-gHL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6WU-xp-8mm"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="hQQ-xY-pr8"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="GbP-fK-EF8" id="gQ9-jT-fGd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eva-hT-Lmh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,19 +10,31 @@ import Foundation
 import UIKit
 import WebKit
 
-class WebViewController: UIViewController, IdentifiableController {
+class WebViewController: UIViewController, IdentifiableController, WKNavigationDelegate {
     var viewController: ViewController = .webViewController
     var webView: WKWebView!
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     override func viewDidLoad() {
         view.backgroundColor = SeptaColor.navBarBlue
         super.viewDidLoad()
-        webView = WKWebView(frame: view.frame)
-        webView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(webView)
-        view.pinSubviewToNavBarBottom(webView, topLayoutGuide: topLayoutGuide)
+        
+        configureWebView()
+        configureActivityIndicator()
         loadURL()
         navigationController?.navigationBar.configureBackButton()
+    }
+    
+    func configureWebView() {
+    webView = WKWebView(frame: view.frame)
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.navigationDelegate = self
+        view.addSubview(webView)
+        view.pinSubviewTopToNavBarBottom(webView, topLayoutGuide: topLayoutGuide)
+    }
+    
+    func configureActivityIndicator() {
+        view.bringSubview(toFront: activityIndicator)
     }
 
     func loadURL() {
@@ -31,5 +43,9 @@ class WebViewController: UIViewController, IdentifiableController {
             webView.load(request)
             title = septaConnection.title()
         }
+    }
+
+    func webView(_: WKWebView, didFinish _: WKNavigation!) {
+        activityIndicator.stopAnimating()
     }
 }
