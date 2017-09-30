@@ -23,8 +23,8 @@ struct MoreReducer {
     static func reduceMoreAction(action: MoreAction, state: MoreState) -> MoreState {
         var moreState = state
         switch action {
-        case let action as DisplayURL:
-            moreState = reduceDisplayURL(action: action, state: state)
+        case let action as UpdateSeptaConnection:
+            moreState = reduceUpdateSeptaConnection(action: action, state: state)
         default:
             break
         }
@@ -32,7 +32,7 @@ struct MoreReducer {
         return moreState
     }
 
-    static func reduceDisplayURL(action: DisplayURL, state _: MoreState) -> MoreState {
+    static func reduceUpdateSeptaConnection(action: UpdateSeptaConnection, state _: MoreState) -> MoreState {
         return MoreState(septaConnection: action.septaConnection)
     }
 }

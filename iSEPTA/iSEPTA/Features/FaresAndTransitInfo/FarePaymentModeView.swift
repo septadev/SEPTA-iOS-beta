@@ -25,9 +25,7 @@ class FarePaymentModeView: UIView {
 
     @IBAction func didTapDescription(_: Any) {
         guard let septaConnection = septaConnection else { return }
-        let moreAction = DisplayURL(septaConnection: septaConnection)
+        let moreAction = MakeSeptaConnection(septaConnection: septaConnection)
         store.dispatch(moreAction)
-        let pushAction = PushViewController(viewController: .webViewController, description: "Showing Fares Web View")
-        store.dispatch(pushAction)
     }
 }

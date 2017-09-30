@@ -14,7 +14,7 @@ enum SEPTAConnection {
     case septaKey
     case passPerks
     case phone
-    case tdd
+    case tddTTY
     case twitter
     case facebook
     case comment
@@ -29,7 +29,7 @@ enum SEPTAConnection {
         case .septaKey: urlString = urls.septaKey
         case .passPerks: urlString = urls.passPerks
         case .phone: urlString = urls.phone
-        case .tdd: urlString = urls.tdd
+        case .tddTTY: urlString = urls.tdd
         case .twitter: urlString = urls.twitter
         case .facebook: urlString = urls.facebook
         case .comment: urlString = urls.comment
@@ -46,7 +46,7 @@ enum SEPTAConnection {
         case .septaKey: return "SEPTA Key"
         case .passPerks: return "PASS Perks"
         case .phone: return "Call"
-        case .tdd: return "TDD/TTY"
+        case .tddTTY: return "TDD/TTY"
         case .twitter: return "@SEPTA_SOCIAL"
         case .facebook: return "SEPTA Facebook"
         case .comment: return "Send us a comment"
@@ -58,14 +58,14 @@ enum SEPTAConnection {
         switch self {
 
         case .phone: return "(215)-580-7800"
-        case .tdd: return "(215)-580-7853"
+        case .tddTTY: return "(215)-580-7853"
         default: return nil
         }
     }
 
     func urlConnectionMode() -> URLConnectionMode {
         switch self {
-        case .phone, .tdd: return .outsideApp
+        case .phone, .tddTTY: return .outsideApp
         default: return .withinApp
         }
     }

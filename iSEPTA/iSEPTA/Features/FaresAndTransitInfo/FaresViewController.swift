@@ -18,11 +18,8 @@ class FaresViewController: UIViewController, IdentifiableController {
 
     @IBAction func moreAboutSeptaFaresTapped(_: Any) {
 
-        let moreAction = DisplayURL(septaConnection: .fares)
+        let moreAction = MakeSeptaConnection(septaConnection: .fares)
         store.dispatch(moreAction)
-
-        let pushAction = PushViewController(viewController: .webViewController, description: "Showing Fares Web View")
-        store.dispatch(pushAction)
     }
 
     @IBOutlet var moreAboutSEPTAFaresButton: UIView!
@@ -41,7 +38,7 @@ class FaresViewController: UIViewController, IdentifiableController {
     }
 
     @IBAction func moreAboutPassPerksTapped(_: Any) {
-        let moreAction = DisplayURL(septaConnection: .passPerks)
+        let moreAction = MakeSeptaConnection(septaConnection: .passPerks)
         store.dispatch(moreAction)
 
         let pushAction = PushViewController(viewController: .webViewController, description: "Showing Fares Web View")

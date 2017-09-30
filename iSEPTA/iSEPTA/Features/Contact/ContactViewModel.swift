@@ -28,7 +28,7 @@ class ContactViewModel {
     private let TTYCall: ContactPoint = {
         ContactPoint(
             imageName: "TTYIcon",
-            septaConnection: .tdd,
+            septaConnection: .tddTTY,
             showChevron: false)
     }()
 

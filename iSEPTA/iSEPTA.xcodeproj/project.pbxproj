@@ -513,6 +513,8 @@
 		67F028A01F7EE3C20032F99C /* ContactPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F0289F1F7EE3C20032F99C /* ContactPoint.swift */; };
 		67F028A21F7EE44D0032F99C /* URLConnectionMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F028A11F7EE44D0032F99C /* URLConnectionMode.swift */; };
 		67F028A51F7FCA050032F99C /* SeptaUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F028A41F7FCA050032F99C /* SeptaUrls.swift */; };
+		67F028AA1F7FD5570032F99C /* SEPTAConnectionMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F028A91F7FD5570032F99C /* SEPTAConnectionMiddleware.swift */; };
+		67F028AC1F7FD5B40032F99C /* SeptaConnectionActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F028AB1F7FD5B40032F99C /* SeptaConnectionActions.swift */; };
 		67F757AC1F48582700D3A4EE /* UIColor+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F757AB1F48582700D3A4EE /* UIColor+Util.swift */; };
 		67F757AF1F486BB600D3A4EE /* TransitModeToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F757AE1F486BB600D3A4EE /* TransitModeToolBarView.xib */; };
 		67F757B11F486F0600D3A4EE /* TransitModeDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F757B01F486F0600D3A4EE /* TransitModeDisplayable.swift */; };
@@ -1116,6 +1118,8 @@
 		67F0289F1F7EE3C20032F99C /* ContactPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPoint.swift; sourceTree = "<group>"; };
 		67F028A11F7EE44D0032F99C /* URLConnectionMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConnectionMode.swift; sourceTree = "<group>"; };
 		67F028A41F7FCA050032F99C /* SeptaUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaUrls.swift; sourceTree = "<group>"; };
+		67F028A91F7FD5570032F99C /* SEPTAConnectionMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEPTAConnectionMiddleware.swift; sourceTree = "<group>"; };
+		67F028AB1F7FD5B40032F99C /* SeptaConnectionActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaConnectionActions.swift; sourceTree = "<group>"; };
 		67F757AB1F48582700D3A4EE /* UIColor+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Util.swift"; sourceTree = "<group>"; };
 		67F757AE1F486BB600D3A4EE /* TransitModeToolBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransitModeToolBarView.xib; sourceTree = "<group>"; };
 		67F757B01F486F0600D3A4EE /* TransitModeDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitModeDisplayable.swift; sourceTree = "<group>"; };
@@ -2016,11 +2020,9 @@
 		58C9D2FD1F703716008FDE40 /* Middleware */ = {
 			isa = PBXGroup;
 			children = (
+				67F028A81F7FD5370032F99C /* Septa Connection */,
 				58C9D3001F703735008FDE40 /* LoggingMiddleware.swift */,
-				67365ADE1F76932600FC86CB /* NextToArriveMiddlewareActions.swift */,
-				67365AE01F7693DD00FC86CB /* NextToArriveMiddleware.swift */,
-				67365AE41F7874F500FC86CB /* NextToArriveMiddlewareScheduleRequestBuilder.swift */,
-				67DDC7D11F79263C002FECE2 /* NextToArriveMiddlewareScheduleStateBuilder.swift */,
+				67F028A71F7FD5270032F99C /* Next To Arrive */,
 			);
 			path = Middleware;
 			sourceTree = "<group>";
@@ -2436,6 +2438,26 @@
 				67F028A31F7FC2E50032F99C /* URLs */,
 			);
 			path = SeptaConnection;
+			sourceTree = "<group>";
+		};
+		67F028A71F7FD5270032F99C /* Next To Arrive */ = {
+			isa = PBXGroup;
+			children = (
+				67365ADE1F76932600FC86CB /* NextToArriveMiddlewareActions.swift */,
+				67365AE01F7693DD00FC86CB /* NextToArriveMiddleware.swift */,
+				67365AE41F7874F500FC86CB /* NextToArriveMiddlewareScheduleRequestBuilder.swift */,
+				67DDC7D11F79263C002FECE2 /* NextToArriveMiddlewareScheduleStateBuilder.swift */,
+			);
+			path = "Next To Arrive";
+			sourceTree = "<group>";
+		};
+		67F028A81F7FD5370032F99C /* Septa Connection */ = {
+			isa = PBXGroup;
+			children = (
+				67F028A91F7FD5570032F99C /* SEPTAConnectionMiddleware.swift */,
+				67F028AB1F7FD5B40032F99C /* SeptaConnectionActions.swift */,
+			);
+			path = "Septa Connection";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3038,6 +3060,7 @@
 				581DA54F1F3BF102006AEC39 /* ViewTransitionType.swift in Sources */,
 				58248B661F6D575A00DA2D65 /* BaseWatcher.swift in Sources */,
 				678DAAA61F67291400EB6EE8 /* NextToArriveTripsViewModel.swift in Sources */,
+				67F028AA1F7FD5570032F99C /* SEPTAConnectionMiddleware.swift in Sources */,
 				58E33F1C1F61473800C74B7C /* TripVehicleLocations.swift in Sources */,
 				586C1CED1F69A7E10023607C /* DatabaseLoadingModalViewController.swift in Sources */,
 				5840D6E01F37E5FB00C8CB76 /* ScheduleReducer.swift in Sources */,
@@ -3122,6 +3145,7 @@
 				589A89D71F50BB73007329DB /* SelectStopCell.swift in Sources */,
 				6749A4711F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift in Sources */,
 				676B7DA31F7D18E50052F016 /* MoreViewController.swift in Sources */,
+				67F028AC1F7FD5B40032F99C /* SeptaConnectionActions.swift in Sources */,
 				588D80651F72C08000EE1983 /* Favorite+ScheduleRequest.swift in Sources */,
 				58A26D991F6F10F8005A70D3 /* AlertNavigationControllerStateProvider.swift in Sources */,
 				674FDBC51F57390D00CA67D2 /* Route+Color.swift in Sources */,
