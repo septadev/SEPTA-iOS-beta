@@ -11,18 +11,18 @@ import UIKit
 
 class FaresViewController: UIViewController, IdentifiableController {
     var viewController: ViewController = .faresViewController
-    var urlManager = SeptaWebUrlManager.sharedInstance
+
     @IBOutlet weak var faresStackView: UIStackView!
     @IBAction func redButtonTapped(_: Any) {
     }
 
     @IBAction func moreAboutSeptaFaresTapped(_: Any) {
-        if let info = urlManager.info(forPage: .fares) {
-            let moreAction = DisplayURL(septaUrlInfo: info)
-            store.dispatch(moreAction)
-            let pushAction = PushViewController(viewController: .webViewController, description: "Showing Fares Web View")
-            store.dispatch(pushAction)
-        }
+
+        let moreAction = DisplayURL(septaConnection: .fares)
+        store.dispatch(moreAction)
+
+        let pushAction = PushViewController(viewController: .webViewController, description: "Showing Fares Web View")
+        store.dispatch(pushAction)
     }
 
     @IBOutlet var moreAboutSEPTAFaresButton: UIView!
@@ -41,9 +41,9 @@ class FaresViewController: UIViewController, IdentifiableController {
     }
 
     @IBAction func moreAboutPassPerksTapped(_: Any) {
-        guard let septaUrlInfo = urlManager.info(forPage: .passPerks) else { return }
-        let moreAction = DisplayURL(septaUrlInfo: septaUrlInfo)
+        let moreAction = DisplayURL(septaConnection: .passPerks)
         store.dispatch(moreAction)
+
         let pushAction = PushViewController(viewController: .webViewController, description: "Showing Fares Web View")
         store.dispatch(pushAction)
     }
@@ -55,7 +55,7 @@ class FaresViewController: UIViewController, IdentifiableController {
             paymentView.icon.image = UIImage(named: item.imageName)
             paymentView.title.text = item.title
             paymentView.descriptionLabel.attributedText = item.description
-            paymentView.septaUrlInfo = item.septaUrlInfo
+            paymentView.septaConnection = item.septaConnection
             faresStackView.addArrangedSubview(paymentView)
         }
         faresStackView.addArrangedSubview(moreAboutSEPTAFaresButton)

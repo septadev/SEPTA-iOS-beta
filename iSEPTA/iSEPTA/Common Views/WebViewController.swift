@@ -11,7 +11,7 @@ import UIKit
 import WebKit
 
 class WebViewController: UIViewController, IdentifiableController {
-var viewController: ViewController = .webViewController
+    var viewController: ViewController = .webViewController
     var webView: WKWebView!
 
     override func viewDidLoad() {
@@ -26,12 +26,10 @@ var viewController: ViewController = .webViewController
     }
 
     func loadURL() {
-        if let info = store.state.moreState.septaUrlInfo {
-            let request = URLRequest(url: info.url)
+        if let septaConnection = store.state.moreState.septaConnection {
+            let request = URLRequest(url: septaConnection.url())
             webView.load(request)
-            title = info.title
+            title = septaConnection.title()
         }
     }
-
-    
 }

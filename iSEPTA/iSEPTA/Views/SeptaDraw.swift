@@ -89,7 +89,7 @@ public class SeptaDraw: NSObject {
         context.restoreGState()
     }
 
-    @objc public dynamic class func drawRedButton(frame: CGRect = CGRect(x: 0, y: 0, width: 125, height: 46), redButtonText: String = "Button Text", enabled: Bool = true, buttonHighlighted: Bool = true) {
+    @objc public dynamic class func drawRedButton(frame: CGRect = CGRect(x: 0, y: 0, width: 125, height: 46), redButtonText: String = "Button Text", enabled: Bool = true, buttonHighlighted: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -169,7 +169,13 @@ public class SeptaDraw: NSObject {
 
         //// Color Declarations
         let fillColor = UIColor(red: 0.078, green: 0.294, blue: 0.533, alpha: 1.000)
-        let tripCanvasColor = UIColor(red: 0.078, green: 0.294, blue: 0.533, alpha: 1.000)
+        let strokeColor = UIColor(red: 0.078, green: 0.294, blue: 0.533, alpha: 1.000)
+        var strokeColorHueComponent: CGFloat = 1
+        var strokeColorSaturationComponent: CGFloat = 1
+        var strokeColorBrightnessComponent: CGFloat = 1
+        strokeColor.getHue(&strokeColorHueComponent, saturation: &strokeColorSaturationComponent, brightness: &strokeColorBrightnessComponent, alpha: nil)
+
+        let tripCanvasColor = UIColor(hue: 0.919, saturation: strokeColorSaturationComponent, brightness: strokeColorBrightnessComponent, alpha: strokeColor.cgColor.alpha)
 
         //// Subframes
         let destinationMarker: CGRect = CGRect(x: frame.minX + 0.5, y: frame.minY + frame.height - 15, width: 9, height: 14)
@@ -354,7 +360,7 @@ public class SeptaDraw: NSObject {
         context.restoreGState()
     }
 
-    @objc public dynamic class func drawSaveButton(frame: CGRect = CGRect(x: 0, y: 0, width: 50, height: 25), enabled: Bool = true, buttonHighlighted: Bool = true) {
+    @objc public dynamic class func drawSaveButton(frame: CGRect = CGRect(x: 0, y: 0, width: 50, height: 25), enabled: Bool = true, buttonHighlighted: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -404,7 +410,7 @@ public class SeptaDraw: NSObject {
         saveButtonShadowPath.fill()
     }
 
-    @objc public dynamic class func drawDeleteFavorite(frame: CGRect = CGRect(x: 0, y: 0, width: 150, height: 25), enabled: Bool = true, buttonHighlighted: Bool = true) {
+    @objc public dynamic class func drawDeleteFavorite(frame: CGRect = CGRect(x: 0, y: 0, width: 150, height: 25), enabled: Bool = true, buttonHighlighted: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -454,7 +460,7 @@ public class SeptaDraw: NSObject {
         saveButtonShadowPath.fill()
     }
 
-    @objc public dynamic class func drawMoreButton(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 43, height: 22), resizing: ResizingBehavior = .aspectFit, buttonHighlighted: Bool = true) {
+    @objc public dynamic class func drawMoreButton(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 43, height: 22), resizing: ResizingBehavior = .aspectFit, buttonHighlighted: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -506,7 +512,7 @@ public class SeptaDraw: NSObject {
         context.restoreGState()
     }
 
-    @objc public dynamic class func drawAlertButton(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 24, height: 24), resizing: ResizingBehavior = .aspectFit, enabled: Bool = true, buttonHighlighted: Bool = true, isOpen: Bool = false) {
+    @objc public dynamic class func drawAlertButton(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 24, height: 24), resizing: ResizingBehavior = .aspectFit, enabled: Bool = true, buttonHighlighted: Bool = false, isOpen: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -628,7 +634,7 @@ public class SeptaDraw: NSObject {
         context.restoreGState()
     }
 
-    @objc public dynamic class func drawViewNextToArriveTripInSchedules(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 130, height: 30), resizing: ResizingBehavior = .aspectFit, buttonHighlighted: Bool = true) {
+    @objc public dynamic class func drawViewNextToArriveTripInSchedules(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 130, height: 30), resizing: ResizingBehavior = .aspectFit, buttonHighlighted: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -849,7 +855,7 @@ public class SeptaDraw: NSObject {
         context.restoreGState()
     }
 
-    @objc public dynamic class func drawRefreshNextToArriveButton(frame: CGRect = CGRect(x: 0, y: 0, width: 75, height: 25), buttonHighlighted: Bool = true) {
+    @objc public dynamic class func drawRefreshNextToArriveButton(frame: CGRect = CGRect(x: 0, y: 0, width: 75, height: 25), buttonHighlighted: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -978,7 +984,7 @@ public class SeptaDraw: NSObject {
         rectanglePath.fill()
     }
 
-    @objc public dynamic class func drawRefreshNextToArriveButton2(frame: CGRect = CGRect(x: 0, y: 0, width: 68, height: 25), buttonHighlighted: Bool = true) {
+    @objc public dynamic class func drawRefreshNextToArriveButton2(frame: CGRect = CGRect(x: 0, y: 0, width: 68, height: 25), buttonHighlighted: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -1067,7 +1073,7 @@ public class SeptaDraw: NSObject {
         context.restoreGState()
     }
 
-    @objc public dynamic class func drawReverseTripButton(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 70, height: 30), resizing: ResizingBehavior = .aspectFit, buttonHighlighted: Bool = true) {
+    @objc public dynamic class func drawReverseTripButton(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 70, height: 30), resizing: ResizingBehavior = .aspectFit, buttonHighlighted: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -1234,7 +1240,7 @@ public class SeptaDraw: NSObject {
         context.restoreGState()
     }
 
-    @objc public dynamic class func drawNextToArriveButton(buttonFrame: CGRect = CGRect(x: 0, y: -0, width: 250, height: 100), buttonHighlighted: Bool = true) {
+    @objc public dynamic class func drawNextToArriveButton(buttonFrame: CGRect = CGRect(x: 0, y: -0, width: 250, height: 100), buttonHighlighted: Bool = false) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         // This non-generic function dramatically improves compilation times of complex expressions.
@@ -1391,7 +1397,13 @@ public class SeptaDraw: NSObject {
 
     @objc public dynamic class func drawConnectingDiamondStationView(frame: CGRect = CGRect(x: 0, y: 0, width: 10, height: 10)) {
         //// Color Declarations
-        let tripCanvasColor = UIColor(red: 0.078, green: 0.294, blue: 0.533, alpha: 1.000)
+        let strokeColor = UIColor(red: 0.078, green: 0.294, blue: 0.533, alpha: 1.000)
+        var strokeColorHueComponent: CGFloat = 1
+        var strokeColorSaturationComponent: CGFloat = 1
+        var strokeColorBrightnessComponent: CGFloat = 1
+        strokeColor.getHue(&strokeColorHueComponent, saturation: &strokeColorSaturationComponent, brightness: &strokeColorBrightnessComponent, alpha: nil)
+
+        let tripCanvasColor = UIColor(hue: 0.919, saturation: strokeColorSaturationComponent, brightness: strokeColorBrightnessComponent, alpha: strokeColor.cgColor.alpha)
 
         //// Bezier Drawing
         let bezierPath = UIBezierPath()
@@ -1471,6 +1483,59 @@ public class SeptaDraw: NSObject {
         connectingDividerColor.setStroke()
         bezierPath.lineWidth = 1
         bezierPath.stroke()
+    }
+
+    @objc public dynamic class func drawBigBlueChevron(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 11, height: 18), resizing: ResizingBehavior = .aspectFit) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()!
+
+        //// Resize to Target Frame
+        context.saveGState()
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 11, height: 18), target: targetFrame)
+        context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
+        context.scaleBy(x: resizedFrame.width / 11, y: resizedFrame.height / 18)
+
+        //// Color Declarations
+        let blueTextColor = UIColor(red: 0.078, green: 0.294, blue: 0.533, alpha: 1.000)
+
+        //// Bezier Drawing
+        let bezierPath = UIBezierPath()
+        bezierPath.move(to: CGPoint(x: 0.75, y: 0.75))
+        bezierPath.addLine(to: CGPoint(x: 9, y: 9))
+        bezierPath.addLine(to: CGPoint(x: 0.75, y: 17.25))
+        blueTextColor.setStroke()
+        bezierPath.lineWidth = 2
+        bezierPath.stroke()
+
+        context.restoreGState()
+    }
+
+    @objc public dynamic class func drawCustomerServiceCell(frame: CGRect = CGRect(x: 0, y: 0, width: 100, height: 60), buttonHighlighted: Bool = false) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()!
+        // This non-generic function dramatically improves compilation times of complex expressions.
+        func fastFloor(_ x: CGFloat) -> CGFloat { return floor(x) }
+
+        //// Color Declarations
+        let buttonHighlight = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.078)
+        let buttonDefault = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.000)
+
+        //// Variable Declarations
+        let buttonHighlightedColor = buttonHighlighted ? buttonHighlight : buttonDefault
+
+        //// Symbol Drawing
+        let symbolRect = CGRect(x: frame.minX + frame.width - 26, y: frame.minY + fastFloor((frame.height - 18) * 0.50003 + 0.5) + 0, width: 11, height: 18)
+        context.saveGState()
+        context.clip(to: symbolRect)
+        context.translateBy(x: symbolRect.minX, y: symbolRect.minY)
+
+        SeptaDraw.drawBigBlueChevron(frame: CGRect(origin: .zero, size: symbolRect.size), resizing: .stretch)
+        context.restoreGState()
+
+        //// Highlight Drawing
+        let highlightPath = UIBezierPath(rect: CGRect(x: frame.minX + fastFloor((frame.width) * 0.00000 + 0.5), y: frame.minY + fastFloor((frame.height) * -0.01663 + 0.5) + 0, width: frame.width - fastFloor((frame.width) * 0.00000 + 0.5), height: frame.height - fastFloor((frame.height) * -0.01663 + 0.5)))
+        buttonHighlightedColor.setFill()
+        highlightPath.fill()
     }
 
     @objc(SeptaDrawResizingBehavior)

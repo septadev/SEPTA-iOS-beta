@@ -33,6 +33,6 @@ struct MoreReducer {
     }
 
     static func reduceDisplayURL(action: DisplayURL, state _: MoreState) -> MoreState {
-        return MoreState(septaUrlInfo: action.septaUrlInfo)
+        return MoreState(septaConnection: action.septaConnection)
     }
 }

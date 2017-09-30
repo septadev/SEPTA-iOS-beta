@@ -154,7 +154,7 @@
 		5892DDF21F3AAA5C000BA54B /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5892DDF01F3AAA5C000BA54B /* Fabric.framework */; };
 		5893970C1F7E60D900F3D2F8 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5893970B1F7E60D900F3D2F8 /* WebViewController.swift */; };
 		589397101F7E623D00F3D2F8 /* url.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5893970F1F7E623D00F3D2F8 /* url.plist */; };
-		589397121F7E64B900F3D2F8 /* SeptaWebUrlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589397111F7E64B900F3D2F8 /* SeptaWebUrlManager.swift */; };
+		589397121F7E64B900F3D2F8 /* SEPTAURLProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589397111F7E64B900F3D2F8 /* SEPTAURLProvider.swift */; };
 		589397141F7E677600F3D2F8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 589397131F7E677600F3D2F8 /* WebKit.framework */; };
 		589397171F7E698500F3D2F8 /* MoreState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589397161F7E698500F3D2F8 /* MoreState.swift */; };
 		589397191F7E6A5000F3D2F8 /* MoreReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589397181F7E6A5000F3D2F8 /* MoreReducer.swift */; };
@@ -500,11 +500,19 @@
 		67C567371F598D7A00FF6203 /* TransitAlerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67C567361F598D7A00FF6203 /* TransitAlerts.storyboard */; };
 		67D2F7911F7E43BC00E0FF32 /* DarkBlueGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D2F7901F7E43BC00E0FF32 /* DarkBlueGradient.swift */; };
 		67D2F7951F7E4C8700E0FF32 /* webView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67D2F7941F7E4C8700E0FF32 /* webView.storyboard */; };
-		67D693521F7E8509007FE86E /* SeptaUrlInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D693511F7E8509007FE86E /* SeptaUrlInfo.swift */; };
+		67D693521F7E8509007FE86E /* SEPTAConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D693511F7E8509007FE86E /* SEPTAConnection.swift */; };
 		67DDC7D21F79263C002FECE2 /* NextToArriveMiddlewareScheduleStateBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DDC7D11F79263C002FECE2 /* NextToArriveMiddlewareScheduleStateBuilder.swift */; };
 		67EA2B5D1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B5C1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift */; };
 		67EA2B611F518CA600C0567A /* SearchModalHeaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B601F518CA600C0567A /* SearchModalHeaderDelegate.swift */; };
 		67EA2B631F51AB8700C0567A /* StopEditSearchMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B621F51AB8700C0567A /* StopEditSearchMode.swift */; };
+		67F028961F7ED0460032F99C /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F028951F7ED0460032F99C /* ContactViewController.swift */; };
+		67F028981F7ED2780032F99C /* BigBlueChevron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F028971F7ED2780032F99C /* BigBlueChevron.swift */; };
+		67F0289A1F7EDA100032F99C /* CustomerServiceControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F028991F7EDA100032F99C /* CustomerServiceControl.swift */; };
+		67F0289C1F7EE10B0032F99C /* CustomerServiceControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F0289B1F7EE10B0032F99C /* CustomerServiceControl.xib */; };
+		67F0289E1F7EE3B40032F99C /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F0289D1F7EE3B40032F99C /* ContactViewModel.swift */; };
+		67F028A01F7EE3C20032F99C /* ContactPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F0289F1F7EE3C20032F99C /* ContactPoint.swift */; };
+		67F028A21F7EE44D0032F99C /* URLConnectionMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F028A11F7EE44D0032F99C /* URLConnectionMode.swift */; };
+		67F028A51F7FCA050032F99C /* SeptaUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F028A41F7FCA050032F99C /* SeptaUrls.swift */; };
 		67F757AC1F48582700D3A4EE /* UIColor+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F757AB1F48582700D3A4EE /* UIColor+Util.swift */; };
 		67F757AF1F486BB600D3A4EE /* TransitModeToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F757AE1F486BB600D3A4EE /* TransitModeToolBarView.xib */; };
 		67F757B11F486F0600D3A4EE /* TransitModeDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F757B01F486F0600D3A4EE /* TransitModeDisplayable.swift */; };
@@ -745,7 +753,7 @@
 		5892DDF01F3AAA5C000BA54B /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		5893970B1F7E60D900F3D2F8 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		5893970F1F7E623D00F3D2F8 /* url.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = url.plist; sourceTree = "<group>"; };
-		589397111F7E64B900F3D2F8 /* SeptaWebUrlManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaWebUrlManager.swift; sourceTree = "<group>"; };
+		589397111F7E64B900F3D2F8 /* SEPTAURLProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEPTAURLProvider.swift; sourceTree = "<group>"; };
 		589397131F7E677600F3D2F8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		589397161F7E698500F3D2F8 /* MoreState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreState.swift; sourceTree = "<group>"; };
 		589397181F7E6A5000F3D2F8 /* MoreReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreReducer.swift; sourceTree = "<group>"; };
@@ -1095,11 +1103,19 @@
 		67C567361F598D7A00FF6203 /* TransitAlerts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransitAlerts.storyboard; sourceTree = "<group>"; };
 		67D2F7901F7E43BC00E0FF32 /* DarkBlueGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkBlueGradient.swift; sourceTree = "<group>"; };
 		67D2F7941F7E4C8700E0FF32 /* webView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = webView.storyboard; sourceTree = "<group>"; };
-		67D693511F7E8509007FE86E /* SeptaUrlInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaUrlInfo.swift; sourceTree = "<group>"; };
+		67D693511F7E8509007FE86E /* SEPTAConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEPTAConnection.swift; sourceTree = "<group>"; };
 		67DDC7D11F79263C002FECE2 /* NextToArriveMiddlewareScheduleStateBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveMiddlewareScheduleStateBuilder.swift; sourceTree = "<group>"; };
 		67EA2B5C1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStopsModalHeaderViewController.swift; sourceTree = "<group>"; };
 		67EA2B601F518CA600C0567A /* SearchModalHeaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModalHeaderDelegate.swift; sourceTree = "<group>"; };
 		67EA2B621F51AB8700C0567A /* StopEditSearchMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopEditSearchMode.swift; sourceTree = "<group>"; };
+		67F028951F7ED0460032F99C /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		67F028971F7ED2780032F99C /* BigBlueChevron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBlueChevron.swift; sourceTree = "<group>"; };
+		67F028991F7EDA100032F99C /* CustomerServiceControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerServiceControl.swift; sourceTree = "<group>"; };
+		67F0289B1F7EE10B0032F99C /* CustomerServiceControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerServiceControl.xib; sourceTree = "<group>"; };
+		67F0289D1F7EE3B40032F99C /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
+		67F0289F1F7EE3C20032F99C /* ContactPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPoint.swift; sourceTree = "<group>"; };
+		67F028A11F7EE44D0032F99C /* URLConnectionMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConnectionMode.swift; sourceTree = "<group>"; };
+		67F028A41F7FCA050032F99C /* SeptaUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaUrls.swift; sourceTree = "<group>"; };
 		67F757AB1F48582700D3A4EE /* UIColor+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Util.swift"; sourceTree = "<group>"; };
 		67F757AE1F486BB600D3A4EE /* TransitModeToolBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransitModeToolBarView.xib; sourceTree = "<group>"; };
 		67F757B01F486F0600D3A4EE /* TransitModeDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitModeDisplayable.swift; sourceTree = "<group>"; };
@@ -1301,6 +1317,7 @@
 				671A19251F662DF000C8EEDA /* DividerViews.swift */,
 				671609101F67F72600941D2C /* UIStackView+Util.swift */,
 				580128111F6C055B006B6DB8 /* RedButton.swift */,
+				67F028971F7ED2780032F99C /* BigBlueChevron.swift */,
 				67D2F7901F7E43BC00E0FF32 /* DarkBlueGradient.swift */,
 				580ED6AB1F75A0A60095D714 /* RefreshNextToArriveDetail.swift */,
 				67365AD71F75918300FC86CB /* ViewSchedulesButton.swift */,
@@ -1372,7 +1389,12 @@
 		582F4E8A1F33B1120062A546 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				67F028991F7EDA100032F99C /* CustomerServiceControl.swift */,
+				67F0289B1F7EE10B0032F99C /* CustomerServiceControl.xib */,
 				582F4E8B1F33B1120062A546 /* contact.storyboard */,
+				67F028951F7ED0460032F99C /* ContactViewController.swift */,
+				67F0289D1F7EE3B40032F99C /* ContactViewModel.swift */,
+				67F0289F1F7EE3C20032F99C /* ContactPoint.swift */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -2282,15 +2304,13 @@
 		676B7D991F7D18560052F016 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				67F028A61F7FCA370032F99C /* SeptaConnection */,
 				676B7D9C1F7D186B0052F016 /* MoreNavigationController.swift */,
 				676B7DA21F7D18E50052F016 /* MoreViewController.swift */,
 				67A385761F7D4752002E01E0 /* MoreViewModel.swift */,
 				676B7DA01F7D18B90052F016 /* MoreNavigationControllerStateProvider.swift */,
 				676B7D9E1F7D189E0052F016 /* more.storyboard */,
-				589397111F7E64B900F3D2F8 /* SeptaWebUrlManager.swift */,
-				67D693511F7E8509007FE86E /* SeptaUrlInfo.swift */,
 				67A385721F7D4402002E01E0 /* MoreTableViewCell.swift */,
-				5893970F1F7E623D00F3D2F8 /* url.plist */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -2396,6 +2416,26 @@
 				67A3857F1F7D7690002E01E0 /* StartupViewController.swift */,
 			);
 			path = Startup;
+			sourceTree = "<group>";
+		};
+		67F028A31F7FC2E50032F99C /* URLs */ = {
+			isa = PBXGroup;
+			children = (
+				5893970F1F7E623D00F3D2F8 /* url.plist */,
+				589397111F7E64B900F3D2F8 /* SEPTAURLProvider.swift */,
+				67F028A41F7FCA050032F99C /* SeptaUrls.swift */,
+			);
+			path = URLs;
+			sourceTree = "<group>";
+		};
+		67F028A61F7FCA370032F99C /* SeptaConnection */ = {
+			isa = PBXGroup;
+			children = (
+				67F028A11F7EE44D0032F99C /* URLConnectionMode.swift */,
+				67D693511F7E8509007FE86E /* SEPTAConnection.swift */,
+				67F028A31F7FC2E50032F99C /* URLs */,
+			);
+			path = SeptaConnection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2543,6 +2583,7 @@
 				58B278571F62AAD500663507 /* 2.kml in Resources */,
 				58B278A31F62AAD500663507 /* 96.kml in Resources */,
 				58B278691F62AAD500663507 /* 310.kml in Resources */,
+				67F0289C1F7EE10B0032F99C /* CustomerServiceControl.xib in Resources */,
 				678DAAAB1F67458500EB6EE8 /* NoConnectionSectionHeader.xib in Resources */,
 				58B2786B1F62AAD500663507 /* 32.kml in Resources */,
 				58B278401F62AAD500663507 /* 120.kml in Resources */,
@@ -2844,6 +2885,7 @@
 				58248B641F6D573000DA2D65 /* NextToArriveState_ScheduleState_ScheduleRequestWatcher.swift in Sources */,
 				5863DB5A1F6C6B6700FC0F1F /* FavoritesExistWatcher.swift in Sources */,
 				671A19261F662DF000C8EEDA /* DividerViews.swift in Sources */,
+				67F028A51F7FCA050032F99C /* SeptaUrls.swift in Sources */,
 				582F4ED21F33B1120062A546 /* SelectStopCellType.swift in Sources */,
 				582F4EBD1F33B1120062A546 /* SingleStringCell.swift in Sources */,
 				58EB8D311F5D94640028A487 /* BaseScheduleDataProvider.swift in Sources */,
@@ -2851,7 +2893,7 @@
 				585303CF1F69CAC600145D87 /* NextToArriveMapper.swift in Sources */,
 				582F4EC51F33B1120062A546 /* NextToArriveViewController.swift in Sources */,
 				58B5B1091F6DBFFF00A3DAFB /* ScheduleState_ScheduleRequestWatcher.swift in Sources */,
-				589397121F7E64B900F3D2F8 /* SeptaWebUrlManager.swift in Sources */,
+				589397121F7E64B900F3D2F8 /* SEPTAURLProvider.swift in Sources */,
 				671A19291F66385100C8EEDA /* NoConnectionCell.swift in Sources */,
 				588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */,
 				58490E491F56019B007DBCA1 /* AlertReducer.swift in Sources */,
@@ -2900,6 +2942,7 @@
 				6716090B1F676F2300941D2C /* ConnectionView.swift in Sources */,
 				5876DF771F72F7A3006C61FE /* BackButton.swift in Sources */,
 				67365ACC1F754A3200FC86CB /* SevenEightsAnimationIn.swift in Sources */,
+				67F028961F7ED0460032F99C /* ContactViewController.swift in Sources */,
 				671609111F67F72600941D2C /* UIStackView+Util.swift in Sources */,
 				580A35651F6A1949000FCA82 /* FavoriteNextToArriveViewModel.swift in Sources */,
 				58E54E241F65A40100E9B66D /* NavigationBar+Util.swift in Sources */,
@@ -2921,6 +2964,7 @@
 				582F4EC71F33B1120062A546 /* SchedulesRoutesViewModel.swift in Sources */,
 				588D805B1F72AABF00EE1983 /* ScheduleRequestWatcherDelegate.swift in Sources */,
 				6716090D1F67765500941D2C /* NextToArriveDiamond.swift in Sources */,
+				67F0289A1F7EDA100032F99C /* CustomerServiceControl.swift in Sources */,
 				678F05301F5B918300CC4D3C /* LocationProvider.swift in Sources */,
 				5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift in Sources */,
 				67F757B11F486F0600D3A4EE /* TransitModeDisplayable.swift in Sources */,
@@ -2932,6 +2976,7 @@
 				587BC0521F6EE71400B92BB6 /* AlertScheduleDataProvider.swift in Sources */,
 				58EB8D1D1F5D85F50028A487 /* NavigationControllerBaseStateProvider.swift in Sources */,
 				589A89E01F5304D6007329DB /* SelectAddressViewModel.swift in Sources */,
+				67F028A21F7EE44D0032F99C /* URLConnectionMode.swift in Sources */,
 				678DAAA21F6706E300EB6EE8 /* NextToArriveTripGrouper.swift in Sources */,
 				676B7D8E1F7D01950052F016 /* FaresViewModel.swift in Sources */,
 				67C567331F598A0400FF6203 /* TransitAlertView.swift in Sources */,
@@ -2957,6 +3002,7 @@
 				58F80D451F421C4B0089501A /* SelectStopViewController.swift in Sources */,
 				678D26CC1F5CDB4200D140CC /* Septa+Images.swift in Sources */,
 				67DDC7D21F79263C002FECE2 /* NextToArriveMiddlewareScheduleStateBuilder.swift in Sources */,
+				67F028981F7ED2780032F99C /* BigBlueChevron.swift in Sources */,
 				5840D6D71F37728B00C8CB76 /* NavigationController.swift in Sources */,
 				58A26DA21F6F283E005A70D3 /* AlertDetailProvider.swift in Sources */,
 				58C2A0691F38AA1B00F0D6CA /* ScheduleData.swift in Sources */,
@@ -2995,6 +3041,7 @@
 				58E33F1C1F61473800C74B7C /* TripVehicleLocations.swift in Sources */,
 				586C1CED1F69A7E10023607C /* DatabaseLoadingModalViewController.swift in Sources */,
 				5840D6E01F37E5FB00C8CB76 /* ScheduleReducer.swift in Sources */,
+				67F028A01F7EE3C20032F99C /* ContactPoint.swift in Sources */,
 				5801280E1F6BF2DF006B6DB8 /* NoFavoriteViewController.swift in Sources */,
 				58FBBFA41F65821000B7A4DA /* DatabaseReducer.swift in Sources */,
 				58290E411F372B51000CCF3C /* AppState.swift in Sources */,
@@ -3016,7 +3063,8 @@
 				676B7DA11F7D18B90052F016 /* MoreNavigationControllerStateProvider.swift in Sources */,
 				588D805D1F72AAF300EE1983 /* BaseScheduleRequestWatcher.swift in Sources */,
 				678DAA9E1F67065F00EB6EE8 /* NextToArriveConnectingViewModel.swift in Sources */,
-				67D693521F7E8509007FE86E /* SeptaUrlInfo.swift in Sources */,
+				67F0289E1F7EE3B40032F99C /* ContactViewModel.swift in Sources */,
+				67D693521F7E8509007FE86E /* SEPTAConnection.swift in Sources */,
 				58E33F1A1F6145C000C74B7C /* NextToArriveConnectionStation.swift in Sources */,
 				678D26BF1F5C414800D140CC /* LocationServicesListener.swift in Sources */,
 				6716090F1F67ECE100941D2C /* NoConnectionUIHeaderFooterView.swift in Sources */,

@@ -1,60 +1,217 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lL1-2R-9vv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Contacts View Controller-->
-        <scene sceneID="rUk-4f-qSt">
+        <!--Connect with SEPTA-->
+        <scene sceneID="qj9-Ni-2Dk">
             <objects>
-                <tableViewController title="Contacts View Controller" id="krv-A6-LbQ" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Iye-Px-lR6">
+                <viewController storyboardIdentifier="faresViewController" id="MLf-0b-RoB" customClass="ContactViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lb1-3Q-JJF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aGl-Mp-9PD" customClass="BlueGradientBackgroundView" customModule="Septa" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have a problem, suggestion, question or want to follow us? Connect with us through our channels below." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3aW-Q3-1RZ" userLabel="Intro">
+                                        <rect key="frame" x="20" y="18" width="335" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipe-wB-W8z">
+                                        <rect key="frame" x="0.0" y="56.5" width="375" height="547.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lTf-jL-n5X" userLabel="ContentView">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="612"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TCs-Nf-G6B" userLabel="CustomerServiceInset">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aTV-g0-ydP" userLabel="WhiteBackingView">
+                                                                <rect key="frame" x="15" y="50" width="345" height="250"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </view>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="bHE-Yv-Iwe">
+                                                                <rect key="frame" x="15" y="50" width="345" height="250"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstItem="bHE-Yv-Iwe" firstAttribute="leading" secondItem="aTV-g0-ydP" secondAttribute="leading" id="3sb-RA-xpO" userLabel="WhiteBackingViewLeft"/>
+                                                            <constraint firstAttribute="bottom" secondItem="bHE-Yv-Iwe" secondAttribute="bottom" id="5nG-Uv-5Es" userLabel="StackViewBottom"/>
+                                                            <constraint firstItem="bHE-Yv-Iwe" firstAttribute="height" secondItem="aTV-g0-ydP" secondAttribute="height" id="AgT-OW-Smj" userLabel="WhiteBackingViewHeight"/>
+                                                            <constraint firstAttribute="trailing" secondItem="bHE-Yv-Iwe" secondAttribute="trailing" constant="15" id="Aog-OG-jIi" userLabel="StackViewRight"/>
+                                                            <constraint firstItem="bHE-Yv-Iwe" firstAttribute="width" secondItem="aTV-g0-ydP" secondAttribute="width" id="Doz-WO-YKq" userLabel="WhiteBackingViewWidth"/>
+                                                            <constraint firstAttribute="height" constant="300" placeholder="YES" id="Sgd-QJ-ZiU"/>
+                                                            <constraint firstItem="bHE-Yv-Iwe" firstAttribute="top" secondItem="TCs-Nf-G6B" secondAttribute="top" constant="50" id="Zlj-st-4jV" userLabel="FaresStackViewTop"/>
+                                                            <constraint firstItem="bHE-Yv-Iwe" firstAttribute="top" secondItem="aTV-g0-ydP" secondAttribute="top" id="djt-7x-NdA" userLabel="WhiteBackingViewTop"/>
+                                                            <constraint firstItem="bHE-Yv-Iwe" firstAttribute="leading" secondItem="TCs-Nf-G6B" secondAttribute="leading" constant="15" id="vll-Na-z6a" userLabel="StackViewLeft"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D8F-st-KiJ" userLabel="SocialMedia">
+                                                        <rect key="frame" x="15" y="315" width="345" height="297"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="adI-cj-JwT" userLabel="BlueHeader" customClass="DarkGradientBlueView" customModule="Septa" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="345" height="89"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="psstPerks" translatesAutoresizingMaskIntoConstraints="NO" id="vSQ-ff-dVX" userLabel="logo">
+                                                                        <rect key="frame" x="-163" y="0.0" width="486" height="89"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="89" id="OLl-PX-VLY"/>
+                                                                    <constraint firstItem="vSQ-ff-dVX" firstAttribute="top" secondItem="adI-cj-JwT" secondAttribute="top" id="c6H-o5-azX" userLabel="LogoTop"/>
+                                                                    <constraint firstItem="vSQ-ff-dVX" firstAttribute="height" secondItem="adI-cj-JwT" secondAttribute="height" id="kxQ-p6-keH" userLabel="LogoHeight"/>
+                                                                    <constraint firstItem="vSQ-ff-dVX" firstAttribute="leading" secondItem="adI-cj-JwT" secondAttribute="leading" constant="-163" id="xbg-78-RKJ" userLabel="LogoLeft"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Pass Perks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXl-5j-2or" userLabel="Title">
+                                                                <rect key="frame" x="15" y="106" width="93.5" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                <color key="textColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Perks for all!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wh-I2-EAG" userLabel="TagLine">
+                                                                <rect key="frame" x="15" y="133" width="70.5" height="14.5"/>
+                                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTq-0f-flF" userLabel="Description">
+                                                                <rect key="frame" x="15" y="152.5" width="315" height="74.5"/>
+                                                                <string key="text">Did you know your SEPTA Pass, and now your SEPTA Key, gets you discounts on food, drink, museums, sports, shops and more? Use your valid SEPTA Key, TrailPass, TransPass, or One Day Independence Pass and receive discounts to any of our Perks Partners.</string>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <color key="textColor" red="0.42745098040000001" green="0.42745098040000001" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bi-Dj-Yxp" userLabel="RedButton" customClass="RedButton" customModule="Septa" customModuleProvider="target">
+                                                                <rect key="frame" x="15" y="242" width="310" height="40"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="sd6-vK-zMZ"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonTitle" value="Learn More"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="moreAboutPassPerksTapped:" destination="MLf-0b-RoB" eventType="touchUpInside" id="V8y-93-aOt"/>
+                                                                </connections>
+                                                            </view>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="7bi-Dj-Yxp" secondAttribute="bottom" constant="15" id="00F-GD-Ayg" userLabel="RedButtonBottom"/>
+                                                            <constraint firstItem="7bi-Dj-Yxp" firstAttribute="leading" secondItem="D8F-st-KiJ" secondAttribute="leading" constant="15" id="Fz0-jg-Qn9" userLabel="RedButtonLeft"/>
+                                                            <constraint firstItem="RXl-5j-2or" firstAttribute="top" secondItem="adI-cj-JwT" secondAttribute="bottom" constant="17" id="G27-nE-Cgg" userLabel="TitleTop"/>
+                                                            <constraint firstItem="RXl-5j-2or" firstAttribute="leading" secondItem="D8F-st-KiJ" secondAttribute="leading" constant="15" id="GcC-MJ-ZAN" userLabel="TitleLeft"/>
+                                                            <constraint firstAttribute="trailing" secondItem="7bi-Dj-Yxp" secondAttribute="trailing" constant="20" id="Htc-iV-ycg" userLabel="RedButtonRight"/>
+                                                            <constraint firstItem="7wh-I2-EAG" firstAttribute="leading" secondItem="D8F-st-KiJ" secondAttribute="leading" constant="15" id="K34-eA-mPY" userLabel="TagLineLeft"/>
+                                                            <constraint firstItem="7wh-I2-EAG" firstAttribute="top" secondItem="RXl-5j-2or" secondAttribute="bottom" constant="3" id="bHI-hb-aIj" userLabel="TagLineTop"/>
+                                                            <constraint firstAttribute="height" constant="297" placeholder="YES" id="buD-WF-WhO"/>
+                                                            <constraint firstItem="adI-cj-JwT" firstAttribute="leading" secondItem="D8F-st-KiJ" secondAttribute="leading" id="dh2-aa-L5h" userLabel="BlueHeaderLeft"/>
+                                                            <constraint firstItem="7bi-Dj-Yxp" firstAttribute="top" secondItem="yTq-0f-flF" secondAttribute="bottom" constant="15" id="eqX-7r-8Dw" userLabel="RedButtonTop"/>
+                                                            <constraint firstItem="yTq-0f-flF" firstAttribute="leading" secondItem="D8F-st-KiJ" secondAttribute="leading" constant="15" id="hEb-3g-bQ8" userLabel="DescriptionLeft"/>
+                                                            <constraint firstAttribute="trailing" secondItem="yTq-0f-flF" secondAttribute="trailing" constant="15" id="mAW-s5-wjB" userLabel="DescriptionRight"/>
+                                                            <constraint firstItem="adI-cj-JwT" firstAttribute="top" secondItem="D8F-st-KiJ" secondAttribute="top" id="mDQ-nz-ErP" userLabel="BlueHeaderTop"/>
+                                                            <constraint firstItem="yTq-0f-flF" firstAttribute="top" secondItem="7wh-I2-EAG" secondAttribute="bottom" constant="5" id="sRT-oy-0B1" userLabel="DescriptionTop"/>
+                                                            <constraint firstAttribute="trailing" secondItem="adI-cj-JwT" secondAttribute="trailing" id="zaO-E0-mdi" userLabel="BlueHeaderRight"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="D8F-st-KiJ" secondAttribute="trailing" constant="15" id="2h9-4G-bG6" userLabel="PassPerksRight"/>
+                                                    <constraint firstItem="TCs-Nf-G6B" firstAttribute="leading" secondItem="lTf-jL-n5X" secondAttribute="leading" id="D9P-QN-5ez" userLabel="FaresInsetLeft"/>
+                                                    <constraint firstAttribute="bottom" secondItem="D8F-st-KiJ" secondAttribute="bottom" id="JUj-nQ-D6R" userLabel="PassPerksBottom"/>
+                                                    <constraint firstAttribute="trailing" secondItem="TCs-Nf-G6B" secondAttribute="trailing" id="Ka2-Mv-DCz" userLabel="FaresInsetRight"/>
+                                                    <constraint firstItem="D8F-st-KiJ" firstAttribute="top" secondItem="TCs-Nf-G6B" secondAttribute="bottom" constant="15" id="iPZ-s2-w8D" userLabel="PassPerksTop"/>
+                                                    <constraint firstItem="TCs-Nf-G6B" firstAttribute="top" secondItem="lTf-jL-n5X" secondAttribute="top" id="oW3-xj-jQl" userLabel="FaresInsetTop"/>
+                                                    <constraint firstItem="D8F-st-KiJ" firstAttribute="leading" secondItem="lTf-jL-n5X" secondAttribute="leading" constant="15" id="vun-fn-CsY" userLabel="PassPerksLeft"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="lTf-jL-n5X" secondAttribute="bottom" id="EJQ-hY-s3u" userLabel="ContentViewBottom"/>
+                                            <constraint firstItem="lTf-jL-n5X" firstAttribute="width" secondItem="Ipe-wB-W8z" secondAttribute="width" id="dYr-NT-rVU" userLabel="ScrollViewWidth"/>
+                                            <constraint firstAttribute="trailing" secondItem="lTf-jL-n5X" secondAttribute="trailing" id="jw5-ee-bu0" userLabel="ContentViewRight"/>
+                                            <constraint firstItem="lTf-jL-n5X" firstAttribute="top" secondItem="Ipe-wB-W8z" secondAttribute="top" id="mAI-u7-98i" userLabel="ContentViewTop"/>
+                                            <constraint firstItem="lTf-jL-n5X" firstAttribute="leading" secondItem="Ipe-wB-W8z" secondAttribute="leading" id="qqe-oP-MSv" userLabel="ContentViewLeft"/>
+                                        </constraints>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Ipe-wB-W8z" firstAttribute="leading" secondItem="aGl-Mp-9PD" secondAttribute="leading" id="GyA-9N-CVC" userLabel="ScrollViewLeft"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ipe-wB-W8z" secondAttribute="bottom" constant="43" id="Hek-gW-tdf" userLabel="ScrollViewBottom"/>
+                                    <constraint firstAttribute="trailing" secondItem="3aW-Q3-1RZ" secondAttribute="trailing" constant="20" id="TcM-2C-g3u" userLabel="IntroRight"/>
+                                    <constraint firstItem="3aW-Q3-1RZ" firstAttribute="top" secondItem="aGl-Mp-9PD" secondAttribute="top" constant="18" id="efu-9K-SEj" userLabel="IntroTop"/>
+                                    <constraint firstItem="Ipe-wB-W8z" firstAttribute="top" secondItem="3aW-Q3-1RZ" secondAttribute="bottom" constant="19" id="lX7-U0-Yaj" userLabel="ScrollViewTop"/>
+                                    <constraint firstItem="3aW-Q3-1RZ" firstAttribute="leading" secondItem="aGl-Mp-9PD" secondAttribute="leading" constant="20" id="wS5-9B-em5" userLabel="IntroLeft"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ipe-wB-W8z" secondAttribute="trailing" id="wX3-Kr-pd5" userLabel="ScrollViewRight"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="foV-Qy-JOP">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="foV-Qy-JOP" id="HRT-f0-nXv">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="krv-A6-LbQ" id="a8B-iq-fW5"/>
-                            <outlet property="delegate" destination="krv-A6-LbQ" id="SB7-7a-pmh"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Contact Us" id="sOE-DG-5CU"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fnR-bk-q9g" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="540" y="90"/>
-        </scene>
-        <!--Nav Controller-->
-        <scene sceneID="lVW-Wg-h1j">
-            <objects>
-                <navigationController title="Nav Controller" id="lL1-2R-9vv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Contact" id="Svs-UP-gfU"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TZ4-I5-xvb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
+                        <constraints>
+                            <constraint firstItem="Ede-10-3lF" firstAttribute="bottom" secondItem="aGl-Mp-9PD" secondAttribute="bottom" id="8Yy-S1-6Yl"/>
+                            <constraint firstItem="Ede-10-3lF" firstAttribute="trailing" secondItem="aGl-Mp-9PD" secondAttribute="trailing" id="GfM-vK-wAo"/>
+                            <constraint firstItem="aGl-Mp-9PD" firstAttribute="leading" secondItem="Ede-10-3lF" secondAttribute="leading" id="QrG-FJ-pPG"/>
+                            <constraint firstItem="aGl-Mp-9PD" firstAttribute="top" secondItem="Ede-10-3lF" secondAttribute="top" id="r8m-qg-sEI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ede-10-3lF"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Connect with SEPTA" id="db6-2v-OVY"/>
                     <connections>
-                        <segue destination="krv-A6-LbQ" kind="relationship" relationship="rootViewController" id="Ea7-vJ-kHd"/>
+                        <outlet property="faresStackView" destination="bHE-Yv-Iwe" id="zK6-rS-K6d"/>
+                        <outlet property="faresWhiteInsetView" destination="aTV-g0-ydP" id="XK0-54-gEQ"/>
+                        <outlet property="moreAboutSEPTAFaresButton" destination="UgT-Cg-bAF" id="bLC-rM-zr0"/>
+                        <outlet property="passPerksInsetView" destination="D8F-st-KiJ" id="6pz-Ce-Fxr"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="m1K-jI-f7R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="alR-dO-5eE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="UgT-Cg-bAF" userLabel="RedButtonView">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jxN-Rj-tyt" userLabel="RedButton" customClass="RedButton" customModule="Septa" customModuleProvider="target">
+                            <rect key="frame" x="15" y="44" width="210" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="IIz-bv-7ab"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="buttonTitle" value="More About SEPTA Fares"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="moreAboutSeptaFaresTapped:" destination="MLf-0b-RoB" eventType="touchUpInside" id="4HJ-3i-PpU"/>
+                            </connections>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="jxN-Rj-tyt" firstAttribute="leading" secondItem="eBb-Br-2qV" secondAttribute="leading" constant="15" id="DBl-VY-b91" userLabel="RedButtonViewLeft"/>
+                        <constraint firstItem="jxN-Rj-tyt" firstAttribute="top" secondItem="eBb-Br-2qV" secondAttribute="top" priority="999" constant="20" id="E1b-2u-mdl" userLabel="RedButtonViewTop"/>
+                        <constraint firstItem="eBb-Br-2qV" firstAttribute="trailing" secondItem="jxN-Rj-tyt" secondAttribute="trailing" constant="15" id="eK7-vO-flG" userLabel="RedButtonViewRight"/>
+                        <constraint firstItem="jxN-Rj-tyt" firstAttribute="centerY" secondItem="eBb-Br-2qV" secondAttribute="centerY" id="wOp-so-qls" userLabel="RedButtonViewCenterY"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="eBb-Br-2qV"/>
+                </view>
             </objects>
-            <point key="canvasLocation" x="-412" y="90"/>
+            <point key="canvasLocation" x="605.60000000000002" y="8.5457271364317844"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="psstPerks" width="486" height="286"/>
+    </resources>
 </document>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomerServiceControl" customModule="Septa" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="420" height="88"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8AH-yv-8ci" userLabel="Icon">
+                    <rect key="frame" x="15" y="31.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="0WX-E5-yA1"/>
+                        <constraint firstAttribute="height" constant="25" id="GEH-Nv-obR"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call For a Ride Now!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfg-nN-qDN" userLabel="ConnectLabel">
+                    <rect key="frame" x="51" y="33.5" width="159.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                    <color key="textColor" red="0.078431372550000003" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tm-H6-ESo" userLabel="PhoneNumber">
+                    <rect key="frame" x="214.5" y="33" width="114.5" height="21"/>
+                    <attributedString key="attributedText">
+                        <fragment content="804-647-0920">
+                            <attributes>
+                                <color key="NSColor" red="0.035294117647058823" green="0.73333333333333328" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="18" name="SanFranciscoText-Light"/>
+                                <font key="NSOriginalFont" size="18" name="Helvetica"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                <integer key="NSUnderline" value="1"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="8AH-yv-8ci" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="1Jk-wr-tAx" userLabel="IconLeft"/>
+                <constraint firstItem="Xfg-nN-qDN" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="230-aS-RAu" userLabel="ConnectLabelCenterY"/>
+                <constraint firstItem="8AH-yv-8ci" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="DKY-Zh-A5G" userLabel="IconCenterY"/>
+                <constraint firstItem="0tm-H6-ESo" firstAttribute="baseline" secondItem="Xfg-nN-qDN" secondAttribute="baseline" id="MJx-Sm-TKD" userLabel="PhoneNumberBaseline"/>
+                <constraint firstItem="0tm-H6-ESo" firstAttribute="leading" secondItem="Xfg-nN-qDN" secondAttribute="trailing" constant="4" id="dRV-79-2Ff" userLabel="PhoneNumberLeft"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0tm-H6-ESo" secondAttribute="trailing" constant="20" id="gMG-ny-MI6" userLabel="PhoneNumberRight"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xfg-nN-qDN" secondAttribute="trailing" constant="15" id="nQb-Dz-sWw" userLabel="ConnectLabelRight"/>
+                <constraint firstItem="Xfg-nN-qDN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="51" id="qGY-lM-8pW" userLabel="ConnectLabelLeft"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="connectLabelText" destination="Xfg-nN-qDN" id="QED-Qt-IaL"/>
+                <outlet property="iconImageView" destination="8AH-yv-8ci" id="CaT-M8-Whz"/>
+                <outlet property="phoneNumberLabel" destination="0tm-H6-ESo" id="VbD-Ig-hRJ"/>
+            </connections>
+            <point key="canvasLocation" x="47" y="-238"/>
+        </view>
+    </objects>
+</document>

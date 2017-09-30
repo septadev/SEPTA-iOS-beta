@@ -36,9 +36,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moreMain" translatesAutoresizingMaskIntoConstraints="NO" id="08v-D8-f2X">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moreMain" translatesAutoresizingMaskIntoConstraints="NO" id="08v-D8-f2X">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="263"/>
                                 <color key="backgroundColor" red="0.13333333333333333" green="0.32549019607843138" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="263" id="2S0-eB-gCy"/>
+                                </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s1Y-2q-CwI">
                                 <rect key="frame" x="0.0" y="263" width="375" height="291"/>
@@ -99,6 +102,9 @@
                         <viewLayoutGuide key="safeArea" id="ChW-pP-B9M"/>
                     </view>
                     <navigationItem key="navigationItem" title="More" id="sFw-fk-YoF"/>
+                    <connections>
+                        <outlet property="imageView" destination="08v-D8-f2X" id="DV1-2b-UOd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jlS-mx-EeG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

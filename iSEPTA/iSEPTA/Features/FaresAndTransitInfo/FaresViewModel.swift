@@ -16,8 +16,6 @@ class FaresViewModel {
         buildItems()
     }
 
-    let urlManager = SeptaWebUrlManager.sharedInstance
-
     func buildItems() {
         items = [
             buildSeptaKeyPaymentMode(),
@@ -42,7 +40,7 @@ class FaresViewModel {
             imageName: "septaKeyIcon",
             title: "SEPTA Key",
             description: attributedString,
-            septaUrlInfo: urlManager.info(forPage: .septaKey)
+            septaConnection: .septaKey
         )
     }
 
@@ -56,7 +54,7 @@ class FaresViewModel {
             title: "Cash",
             description: attributedString,
 
-            septaUrlInfo: nil)
+            septaConnection: nil)
     }
 
     func buildTokenPaymentMode() -> FaresPaymentModeViewModel {
@@ -69,7 +67,7 @@ class FaresViewModel {
             title: "Token",
             description: attributedString,
 
-            septaUrlInfo: nil)
+            septaConnection: nil)
     }
 
     func buildTransPassPaymentMode() -> FaresPaymentModeViewModel {
@@ -82,7 +80,7 @@ class FaresViewModel {
             title: "TransPass",
             description: attributedString,
 
-            septaUrlInfo: nil)
+            septaConnection: nil)
     }
 
     func buildTrailPassPaymentMode() -> FaresPaymentModeViewModel {
@@ -93,7 +91,7 @@ class FaresViewModel {
             imageName: "trailPassIcon",
             title: "TrailPass",
             description: attributedString,
-            septaUrlInfo: nil)
+            septaConnection: nil)
     }
 
     func buildCrossCountryPaymentMode() -> FaresPaymentModeViewModel {
@@ -105,7 +103,7 @@ class FaresViewModel {
             imageName: "crossCountryIcon",
             title: "Cross County Pass",
             description: attributedString,
-            septaUrlInfo: nil)
+            septaConnection: nil)
     }
 
     func buildOneDayConveniencePassPaymentMode() -> FaresPaymentModeViewModel {
@@ -117,7 +115,7 @@ class FaresViewModel {
             imageName: "oneDayIcon",
             title: "One Day Convenience Pass",
             description: attributedString,
-            septaUrlInfo: nil)
+            septaConnection: nil)
     }
 
     func buildOneDayIndependencePassPaymentMode() -> FaresPaymentModeViewModel {
@@ -129,6 +127,6 @@ class FaresViewModel {
             imageName: "independenceIcon",
             title: "One Day Independence Pass",
             description: attributedString,
-            septaUrlInfo: nil)
+            septaConnection: nil)
     }
 }

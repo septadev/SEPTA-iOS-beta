@@ -11,9 +11,11 @@ import Foundation
 struct SeptaUrlInfo {
     let url: URL
     let title: String
-    init(url: URL, title: String) {
+    let urlConnectionMode: URLConnectionMode
+    init(url: URL, title: String, urlConnectionMode: URLConnectionMode) {
         self.url = url
         self.title = title
+        self.urlConnectionMode = urlConnectionMode
     }
 }
 
@@ -25,6 +27,9 @@ func ==(lhs: SeptaUrlInfo, rhs: SeptaUrlInfo) -> Bool {
     guard areEqual else { return false }
 
     areEqual = lhs.title == rhs.title
+    guard areEqual else { return false }
+
+    areEqual = lhs.urlConnectionMode == rhs.urlConnectionMode
     guard areEqual else { return false }
 
     return areEqual

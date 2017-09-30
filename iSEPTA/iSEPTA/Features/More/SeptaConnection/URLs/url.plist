@@ -2,8 +2,20 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>comment</key>
+	<string>http://www3.septa.org/customerservice/</string>
+	<key>twitter</key>
+	<string>http://www.septa.org/alert/twitter.html</string>
+	<key>chat</key>
+	<string>http://www.septa.org/cs/chat/index.html</string>
+	<key>facebook</key>
+	<string>https://www.facebook.com/septaphilly</string>
 	<key>passPerks</key>
 	<string>http://iseptaphilly.com/perks</string>
+	<key>tdd</key>
+	<string>tel://2155807853</string>
+	<key>phone</key>
+	<string>tel://2155807800</string>
 	<key>map</key>
 	<string>https://www.septa.org/maps/pdf/click-map.pdf</string>
 	<key>fares</key>

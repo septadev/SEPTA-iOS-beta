@@ -18,6 +18,12 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
         view.backgroundColor = SeptaColor.navBarBlue
     }
 
+    @IBOutlet weak var imageView: UIImageView! {
+        didSet {
+            imageView.backgroundColor = SeptaColor.navBarBlue
+        }
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         viewModel = MoreViewModel()
