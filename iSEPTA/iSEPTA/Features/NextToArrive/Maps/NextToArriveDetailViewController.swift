@@ -77,11 +77,7 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
 
     override func didMove(toParentViewController parent: UIViewController?) {
         super.didMove(toParentViewController: parent)
-
-        if parent == navigationController?.parent {
-            let action = UserPoppedViewController(viewController: .nextToArriveDetailController, description: "TripScheduleViewController has been popped")
-            store.dispatch(action)
-        }
+        backButtonPopped(toParentViewController: parent)
     }
 
     func toggleMapHeight() {

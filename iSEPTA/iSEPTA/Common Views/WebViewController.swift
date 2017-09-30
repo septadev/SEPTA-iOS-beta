@@ -18,21 +18,21 @@ class WebViewController: UIViewController, IdentifiableController, WKNavigationD
     override func viewDidLoad() {
         view.backgroundColor = SeptaColor.navBarBlue
         super.viewDidLoad()
-        
+
         configureWebView()
         configureActivityIndicator()
         loadURL()
         navigationController?.navigationBar.configureBackButton()
     }
-    
+
     func configureWebView() {
-    webView = WKWebView(frame: view.frame)
+        webView = WKWebView(frame: view.frame)
         webView.translatesAutoresizingMaskIntoConstraints = false
         webView.navigationDelegate = self
         view.addSubview(webView)
         view.pinSubviewTopToNavBarBottom(webView, topLayoutGuide: topLayoutGuide)
     }
-    
+
     func configureActivityIndicator() {
         view.bringSubview(toFront: activityIndicator)
     }
@@ -47,5 +47,10 @@ class WebViewController: UIViewController, IdentifiableController, WKNavigationD
 
     func webView(_: WKWebView, didFinish _: WKNavigation!) {
         activityIndicator.stopAnimating()
+    }
+
+    override func didMove(toParentViewController parent: UIViewController?) {
+        super.didMove(toParentViewController: parent)
+        backButtonPopped(toParentViewController: parent)
     }
 }

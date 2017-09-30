@@ -85,11 +85,7 @@ class AlertDetailViewController: UIViewController, IdentifiableController {
 
     override func didMove(toParentViewController parent: UIViewController?) {
         super.didMove(toParentViewController: parent)
-        navigationController?.navigationBar.configureBackButton()
-        if parent == navigationController?.parent {
-            let action = UserPoppedViewController(viewController: .alertDetailViewController, description: "TripScheduleViewController has been popped")
-            store.dispatch(action)
-        }
+        backButtonPopped(toParentViewController: parent)
     }
 
     func setTitle() {

@@ -40,9 +40,6 @@ class FaresViewController: UIViewController, IdentifiableController {
     @IBAction func moreAboutPassPerksTapped(_: Any) {
         let moreAction = MakeSeptaConnection(septaConnection: .passPerks)
         store.dispatch(moreAction)
-
-        let pushAction = PushViewController(viewController: .webViewController, description: "Showing Fares Web View")
-        store.dispatch(pushAction)
     }
 
     func loadFaresStackView() {

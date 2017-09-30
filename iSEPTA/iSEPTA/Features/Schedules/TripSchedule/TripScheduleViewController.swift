@@ -165,11 +165,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     override func didMove(toParentViewController parent: UIViewController?) {
         super.didMove(toParentViewController: parent)
-
-        if parent == navigationController?.parent {
-            let action = UserPoppedViewController(viewController: .tripScheduleController, description: "TripScheduleViewController has been popped")
-            store.dispatch(action)
-        }
+        backButtonPopped(toParentViewController: parent)
     }
 
     override func viewDidLayoutSubviews() {
