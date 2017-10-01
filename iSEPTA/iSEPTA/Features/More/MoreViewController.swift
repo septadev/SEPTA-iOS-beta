@@ -48,6 +48,12 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
         case 0:
             let pushAction = PushViewController(viewController: .faresViewController, description: "Will View Fares")
             store.dispatch(pushAction)
+        case 1:
+            let mapConnection = MakeSeptaConnection(septaConnection: .map)
+            store.dispatch(mapConnection)
+        case 2:
+            let commentConnection = MakeSeptaConnection(septaConnection: .events)
+            store.dispatch(commentConnection)
         case 3:
             let pushAction = PushViewController(viewController: .contactViewController, description: "Will View How to Contact SEPTA")
             store.dispatch(pushAction)

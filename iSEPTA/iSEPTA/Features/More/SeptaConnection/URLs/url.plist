@@ -4,6 +4,8 @@
 <dict>
 	<key>comment</key>
 	<string>http://www3.septa.org/customerservice/</string>
+	<key>events</key>
+	<string>http://www.septa.org/events/</string>
 	<key>twitter</key>
 	<string>http://www.septa.org/alert/twitter.html</string>
 	<key>chat</key>

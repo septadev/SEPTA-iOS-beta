@@ -19,4 +19,5 @@ struct SeptaUrls: Decodable {
     let twitter: String
     let comment: String
     let chat: String
+    let events: String
 }

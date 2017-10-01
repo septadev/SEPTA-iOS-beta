@@ -19,6 +19,7 @@ enum SEPTAConnection {
     case facebook
     case comment
     case chat
+    case events
 
     func url() -> URL! {
         guard let urls = SEPTAUrlProvider.sharedInstance.urls else { return nil }
@@ -34,6 +35,7 @@ enum SEPTAConnection {
         case .facebook: urlString = urls.facebook
         case .comment: urlString = urls.comment
         case .chat: urlString = urls.chat
+        case .events: urlString = urls.events
         }
         guard let string = urlString else { return nil }
         return URL(string: string)
@@ -51,6 +53,7 @@ enum SEPTAConnection {
         case .facebook: return "SEPTA Facebook"
         case .comment: return "Send us a comment"
         case .chat: return "Live Chat"
+        case .events: return "Upcoming Events"
         }
     }
 
