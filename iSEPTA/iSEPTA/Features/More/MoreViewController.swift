@@ -44,13 +44,17 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-
+        switch indexPath.row {
+        case 0:
             let pushAction = PushViewController(viewController: .faresViewController, description: "Will View Fares")
             store.dispatch(pushAction)
-        } else {
+        case 3:
+            let pushAction = PushViewController(viewController: .contactViewController, description: "Will View How to Contact SEPTA")
+            store.dispatch(pushAction)
+        default:
             UIAlert.presentComingSoonAlertFrom(self)
         }
+
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
             tableView.deselectRow(at: indexPath, animated: true)
         })

@@ -30,7 +30,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tm-H6-ESo" userLabel="PhoneNumber">
-                    <rect key="frame" x="214.5" y="33" width="114.5" height="21"/>
+                    <rect key="frame" x="217.5" y="33" width="114.5" height="21"/>
                     <attributedString key="attributedText">
                         <fragment content="804-647-0920">
                             <attributes>
@@ -45,13 +45,13 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="8AH-yv-8ci" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="1Jk-wr-tAx" userLabel="IconLeft"/>
                 <constraint firstItem="Xfg-nN-qDN" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="230-aS-RAu" userLabel="ConnectLabelCenterY"/>
                 <constraint firstItem="8AH-yv-8ci" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="DKY-Zh-A5G" userLabel="IconCenterY"/>
                 <constraint firstItem="0tm-H6-ESo" firstAttribute="baseline" secondItem="Xfg-nN-qDN" secondAttribute="baseline" id="MJx-Sm-TKD" userLabel="PhoneNumberBaseline"/>
-                <constraint firstItem="0tm-H6-ESo" firstAttribute="leading" secondItem="Xfg-nN-qDN" secondAttribute="trailing" constant="4" id="dRV-79-2Ff" userLabel="PhoneNumberLeft"/>
+                <constraint firstItem="0tm-H6-ESo" firstAttribute="leading" secondItem="Xfg-nN-qDN" secondAttribute="trailing" constant="7" id="dRV-79-2Ff" userLabel="PhoneNumberLeft"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0tm-H6-ESo" secondAttribute="trailing" constant="20" id="gMG-ny-MI6" userLabel="PhoneNumberRight"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xfg-nN-qDN" secondAttribute="trailing" constant="15" id="nQb-Dz-sWw" userLabel="ConnectLabelRight"/>
                 <constraint firstItem="Xfg-nN-qDN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="51" id="qGY-lM-8pW" userLabel="ConnectLabelLeft"/>

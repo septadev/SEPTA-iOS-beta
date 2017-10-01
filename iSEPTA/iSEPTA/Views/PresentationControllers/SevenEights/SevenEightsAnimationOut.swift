@@ -11,7 +11,7 @@ import UIKit
 
 class SevenEightsAnimationOut: NSObject, UIViewControllerAnimatedTransitioning {
     func transitionDuration(using _: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.25
+        return 0.2
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {

@@ -420,6 +420,7 @@
 		671A192B1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A192A1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift */; };
 		671A192D1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A192C1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift */; };
 		671A192F1F66A3D500C8EEDA /* NextToArriveFavoritesIconController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A192E1F66A3D500C8EEDA /* NextToArriveFavoritesIconController.swift */; };
+		6731A1D41F812074000320E1 /* ConnectGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6731A1D31F812074000320E1 /* ConnectGradientView.swift */; };
 		67365AC81F754A3200FC86CB /* HalfSheetAnimationIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67365ABF1F754A3200FC86CB /* HalfSheetAnimationIn.swift */; };
 		67365AC91F754A3200FC86CB /* HalfSheetAnimationOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67365AC01F754A3200FC86CB /* HalfSheetAnimationOut.swift */; };
 		67365ACA1F754A3200FC86CB /* HalfSheetPresentationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67365AC11F754A3200FC86CB /* HalfSheetPresentationCoordinator.swift */; };
@@ -1025,6 +1026,7 @@
 		671A192A1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextToArriveInfoViewController.swift; sourceTree = "<group>"; };
 		671A192C1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveInfoViewModel.swift; sourceTree = "<group>"; };
 		671A192E1F66A3D500C8EEDA /* NextToArriveFavoritesIconController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveFavoritesIconController.swift; sourceTree = "<group>"; };
+		6731A1D31F812074000320E1 /* ConnectGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectGradientView.swift; sourceTree = "<group>"; };
 		67365ABF1F754A3200FC86CB /* HalfSheetAnimationIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfSheetAnimationIn.swift; sourceTree = "<group>"; };
 		67365AC01F754A3200FC86CB /* HalfSheetAnimationOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfSheetAnimationOut.swift; sourceTree = "<group>"; };
 		67365AC11F754A3200FC86CB /* HalfSheetPresentationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfSheetPresentationCoordinator.swift; sourceTree = "<group>"; };
@@ -1321,6 +1323,7 @@
 				671A19251F662DF000C8EEDA /* DividerViews.swift */,
 				671609101F67F72600941D2C /* UIStackView+Util.swift */,
 				580128111F6C055B006B6DB8 /* RedButton.swift */,
+				6731A1D31F812074000320E1 /* ConnectGradientView.swift */,
 				67F028971F7ED2780032F99C /* BigBlueChevron.swift */,
 				67D2F7901F7E43BC00E0FF32 /* DarkBlueGradient.swift */,
 				580ED6AB1F75A0A60095D714 /* RefreshNextToArriveDetail.swift */,
@@ -2870,6 +2873,7 @@
 				580A35671F6A255F000FCA82 /* FavoriteTripCell.swift in Sources */,
 				58A26D9B1F6F221E005A70D3 /* AlertDetailViewController.swift in Sources */,
 				678DAAA41F6728B100EB6EE8 /* NextToArriveTripsTableViewController.swift in Sources */,
+				6731A1D41F812074000320E1 /* ConnectGradientView.swift in Sources */,
 				5801280C1F6BEF67006B6DB8 /* NoFavoriteTransitModeView.swift in Sources */,
 				678DAAB91F6748BE00EB6EE8 /* TripHeaderView.swift in Sources */,
 				580A35611F6A12C0000FCA82 /* FavoritesViewModel.swift in Sources */,

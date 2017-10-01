@@ -38,9 +38,8 @@ class SevenEightsPresentationController: UIPresentationController {
     }
 
     @objc func dimmingViewTapped(_: UITapGestureRecognizer) {
-        let action = CancelFavoriteEdit()
+        let action = DismissModal(description: "Dismissing modal by clicking in the dimming view")
         store.dispatch(action)
-        presentingViewController.dismiss(animated: true, completion: nil)
     }
 
     override func presentationTransitionWillBegin() {

@@ -12,31 +12,55 @@ import UIKit
 @IBDesignable
 class CustomerServiceControl: UIControl {
 
-    var buttonHighlighted = false
+    var controlHighlighted = false
 
     @IBOutlet weak var iconImageView: UIImageView!
 
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var connectLabelText: UILabel!
+    var septaConnection: SEPTAConnection?
+    var showChevron: Bool = false
 
-    override func draw(_ rect: CGRect) {
-        SeptaDraw.drawCustomerServiceCell(frame: rect, buttonHighlighted: buttonHighlighted)
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: UIViewNoIntrinsicMetric, height: 44)
     }
 
-    override func awakeFromNib() {
-        layer.masksToBounds = false
+    override func draw(_ rect: CGRect) {
+        SeptaDraw.drawCustomerServiceCell(frame: rect, buttonHighlighted: controlHighlighted, showChevron: showChevron)
+    }
+
+    func displayContactPoint(_ contactPoint: ContactPoint) {
+        iconImageView.image = UIImage(named: contactPoint.imageName)
+        connectLabelText.text = contactPoint.septaConnection?.title()
+        phoneNumberLabel.text = contactPoint.septaConnection?.formattedLink()
+        showChevron = contactPoint.showChevron
+        septaConnection = contactPoint.septaConnection
+        setNeedsDisplay()
     }
 
     override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         super.beginTracking(touch, with: event)
-        buttonHighlighted = true
+        controlHighlighted = true
         setNeedsDisplay()
+        makeSeptaConnection()
         return true
+    }
+
+    private func makeSeptaConnection() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25) { [weak self] in
+            guard let strongSelf = self, let septaConnection = strongSelf.septaConnection else { return }
+
+            let action = MakeSeptaConnection(septaConnection: septaConnection)
+            store.dispatch(action)
+
+            strongSelf.controlHighlighted = false
+            strongSelf.setNeedsDisplay()
+        }
     }
 
     override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
         super.endTracking(touch, with: event)
-        buttonHighlighted = false
+        controlHighlighted = false
         setNeedsDisplay()
     }
 }
