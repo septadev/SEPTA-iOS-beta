@@ -223,7 +223,7 @@ TableViewWrapper</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaJ-Ig-ASV">
-                            <rect key="frame" x="207" y="10.5" width="33" height="27"/>
+                            <rect key="frame" x="207" y="10" width="33" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Reset">
                                 <color key="titleColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -492,7 +492,7 @@ TableViewWrapper</string>
                                                 <rect key="frame" x="10" y="17" width="337" height="49"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R3N-JS-aaK" userLabel="DottedLineView" customClass="VerticalDottedTripGraphic" customModule="Septa" customModuleProvider="target">
-                                                        <rect key="frame" x="2" y="0.0" width="12" height="49"/>
+                                                        <rect key="frame" x="2" y="2" width="12" height="47"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="12" id="RjH-Gr-kus" userLabel="DottedLineViewWidth"/>
@@ -544,7 +544,7 @@ TableViewWrapper</string>
                                                     <constraint firstItem="vBq-EB-EcZ" firstAttribute="centerY" secondItem="drm-u7-yWJ" secondAttribute="centerY" id="789-uG-MQe" userLabel="ReverseTripCenterY"/>
                                                     <constraint firstAttribute="bottom" secondItem="R3N-JS-aaK" secondAttribute="bottom" id="8sr-qp-22e" userLabel="DottedLineViewBottom"/>
                                                     <constraint firstItem="vBq-EB-EcZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="s9c-AY-wQ2" secondAttribute="trailing" constant="15" id="EpM-45-vDG" userLabel="DestinationStopRight"/>
-                                                    <constraint firstItem="R3N-JS-aaK" firstAttribute="top" secondItem="drm-u7-yWJ" secondAttribute="top" id="Imv-zN-3p0" userLabel="DottedLineViewTop"/>
+                                                    <constraint firstItem="R3N-JS-aaK" firstAttribute="top" secondItem="drm-u7-yWJ" secondAttribute="top" constant="2" id="Imv-zN-3p0" userLabel="DottedLineViewTop"/>
                                                     <constraint firstItem="vBq-EB-EcZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ake-6Y-gpx" secondAttribute="trailing" constant="15" id="JzT-fV-XOm" userLabel="StartingStopRight"/>
                                                     <constraint firstItem="s9c-AY-wQ2" firstAttribute="leading" secondItem="drm-u7-yWJ" secondAttribute="leading" constant="22" id="Te8-JV-alM" userLabel="DestinationStopLeft"/>
                                                     <constraint firstItem="ake-6Y-gpx" firstAttribute="leading" secondItem="drm-u7-yWJ" secondAttribute="leading" constant="22" id="f2e-h7-Iei" userLabel="StartingStopLeft"/>
