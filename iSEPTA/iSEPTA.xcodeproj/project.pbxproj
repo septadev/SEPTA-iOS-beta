@@ -120,6 +120,8 @@
 		585303CD1F69C74F00145D87 /* FavoritesNextToArriveProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585303CC1F69C74F00145D87 /* FavoritesNextToArriveProvider.swift */; };
 		585303CF1F69CAC600145D87 /* NextToArriveMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585303CE1F69CAC500145D87 /* NextToArriveMapper.swift */; };
 		585572861F39499D004ABCD6 /* Color+Septa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585572841F3948D3004ABCD6 /* Color+Septa.swift */; };
+		585760AB1F82A1BC00A340DB /* NextToArriveNoResultsAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585760AA1F82A1BC00A340DB /* NextToArriveNoResultsAlert.swift */; };
+		585760AD1F82A31F00A340DB /* NextToArriveState_NextToArriveUpdateStatusWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585760AC1F82A31F00A340DB /* NextToArriveState_NextToArriveUpdateStatusWatcher.swift */; };
 		5863DB5A1F6C6B6700FC0F1F /* FavoritesExistWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5863DB591F6C6B6700FC0F1F /* FavoritesExistWatcher.swift */; };
 		58658D1B1F53135100E67B4E /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58658D1A1F53135100E67B4E /* AddressCell.swift */; };
 		58658D1E1F53298B00E67B4E /* DisplayAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58658D1D1F53298B00E67B4E /* DisplayAddress.swift */; };
@@ -714,6 +716,8 @@
 		585303CE1F69CAC500145D87 /* NextToArriveMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveMapper.swift; sourceTree = "<group>"; };
 		585572841F3948D3004ABCD6 /* Color+Septa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Septa.swift"; sourceTree = "<group>"; };
 		585572881F395990004ABCD6 /* MockSingleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSingleCell.swift; sourceTree = "<group>"; };
+		585760AA1F82A1BC00A340DB /* NextToArriveNoResultsAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveNoResultsAlert.swift; sourceTree = "<group>"; };
+		585760AC1F82A31F00A340DB /* NextToArriveState_NextToArriveUpdateStatusWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveState_NextToArriveUpdateStatusWatcher.swift; sourceTree = "<group>"; };
 		5863DB591F6C6B6700FC0F1F /* FavoritesExistWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesExistWatcher.swift; sourceTree = "<group>"; };
 		58658D1A1F53135100E67B4E /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
 		58658D1D1F53298B00E67B4E /* DisplayAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAddress.swift; sourceTree = "<group>"; };
@@ -1194,6 +1198,7 @@
 				588D80571F72AA8900EE1983 /* Schedule Request */,
 				58248B651F6D575A00DA2D65 /* BaseWatcher.swift */,
 				58248B6B1F6D5B6900DA2D65 /* FavoritesState_FavoritesExistWatcher.swift */,
+				585760AC1F82A31F00A340DB /* NextToArriveState_NextToArriveUpdateStatusWatcher.swift */,
 				58B5B1041F6DB00000A3DAFB /* FavoritesState_FavoritesWatcher.swift */,
 				58248B7C1F6D992900DA2D65 /* FavoriteToEditWatcher.swift */,
 				584528BE1F7C316500E68D8F /* FavoritesToSaveWatcher.swift */,
@@ -2043,6 +2048,7 @@
 				58126F661F631C0800A6E187 /* ColorPointAnnotation.swift */,
 				5828C7F61F6451180046435A /* VehicleLocationAnnotation.swift */,
 				58E33F111F60998F00C74B7C /* NextToArriveDetailViewController.swift */,
+				585760AA1F82A1BC00A340DB /* NextToArriveNoResultsAlert.swift */,
 				671A192E1F66A3D500C8EEDA /* NextToArriveFavoritesIconController.swift */,
 			);
 			path = Maps;
@@ -2959,6 +2965,7 @@
 				58126F711F631CB200A6E187 /* NextToArriveEndpointsViewModel.swift in Sources */,
 				58E33F141F61425600C74B7C /* NextToArriveProvider.swift in Sources */,
 				587BC0581F6EEBBD00B92BB6 /* AlertsViewModel.swift in Sources */,
+				585760AB1F82A1BC00A340DB /* NextToArriveNoResultsAlert.swift in Sources */,
 				671A19201F6613A600C8EEDA /* ConstraintsToggle.swift in Sources */,
 				580128121F6C055B006B6DB8 /* RedButton.swift in Sources */,
 				5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */,
@@ -3155,6 +3162,7 @@
 				674FDBC51F57390D00CA67D2 /* Route+Color.swift in Sources */,
 				588D80591F72AAA800EE1983 /* FavoriteState_ScheduleRequestWatcher.swift in Sources */,
 				58126F6D1F631C5100A6E187 /* RouteDrawable.swift in Sources */,
+				585760AD1F82A31F00A340DB /* NextToArriveState_NextToArriveUpdateStatusWatcher.swift in Sources */,
 				58248B701F6D6C3800DA2D65 /* SaveFavoriteButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

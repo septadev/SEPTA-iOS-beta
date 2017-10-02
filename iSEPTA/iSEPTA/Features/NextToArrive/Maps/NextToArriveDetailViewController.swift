@@ -38,6 +38,8 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
     var constraintsToggle: ConstraintsToggle!
     var gestureRecognizerToggle: SwipeGestureRecognizerToggle!
 
+    var errorWatcher: NextToArriveNoResultsAlert?
+
     override func viewDidLoad() {
         navigationController?.navigationBar.configureBackButton()
         view.backgroundColor = SeptaColor.navBarBlue
@@ -49,6 +51,7 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
         configureNavigationItemTitle()
 
         configureScrollableTableView()
+        errorWatcher = NextToArriveNoResultsAlert(viewController: self)
     }
 
     func configureScrollableTableView() {

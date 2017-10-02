@@ -93,7 +93,7 @@ struct FavoritesReducer {
         guard var matchingFavorite = state.favorites.filter({ $0.favoriteId == action.favorite.favoriteId }).first else { return state }
         matchingFavorite.nextToArriveTrips = action.favorite.nextToArriveTrips
         matchingFavorite.nextToArriveUpdateStatus = action.favorite.nextToArriveUpdateStatus
-        matchingFavorite.refreshDataRequested = action.favorite.refreshDataRequested
+        matchingFavorite.refreshDataRequested = false
 
         var otherFavorites = state.favorites.filter { $0.favoriteId != matchingFavorite.favoriteId }
         otherFavorites.append(matchingFavorite)

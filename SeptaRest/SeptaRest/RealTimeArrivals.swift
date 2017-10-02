@@ -14,7 +14,7 @@ public class RealTimeArrivals: RestResponse {
     var origin: Int?
     var destination: Int?
     var type: String?
-    var route: String?
+ public   var route: String?
     var results: Int?
  public     var arrivals: [RealTimeArrival]?
 

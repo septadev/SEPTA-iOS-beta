@@ -76,11 +76,18 @@ class FavoritesNextToArriveProvider: StoreSubscriber {
 
         client.getRealTimeArrivals(originId: originId, destinationId: destinationId, transitType: transitType, route: routeId).then { realTimeArrivals -> Void in
             guard let arrivals = realTimeArrivals?.arrivals else { return }
+            if arrivals.count == 0 {
+                throw NextToArriveError.noResultsReturned
+            }
             completion?(arrivals, favorite)
 
         }.catch { error in
             print(error.localizedDescription)
-            self.reportUpdatedFavoriteStatus(favorite: favorite, status: .dataLoadingError)
+            if let _ = error as? NextToArriveError {
+                self.reportUpdatedFavoriteStatus(favorite: favorite, status: .noResultsReturned)
+            } else {
+                self.reportUpdatedFavoriteStatus(favorite: favorite, status: .dataLoadingError)
+            }
         }
     }
 

@@ -13,4 +13,9 @@ enum NextToArriveUpdateStatus {
     case dataLoading
     case dataLoadedSuccessfully
     case dataLoadingError
+    case noResultsReturned
+}
+
+enum NextToArriveError: Error {
+    case noResultsReturned
 }

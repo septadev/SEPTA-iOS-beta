@@ -61,12 +61,20 @@ class NextToArriveProvider: StoreSubscriber {
         let routeId = scheduleRequest.transitMode == .rail ? nil : scheduleRequest.selectedRoute?.routeId
 
         client.getRealTimeArrivals(originId: originId, destinationId: destinationId, transitType: transitType, route: routeId).then { realTimeArrivals -> Void in
+
             guard let arrivals = realTimeArrivals?.arrivals else { return }
+            if arrivals.count == 0 {
+                throw NextToArriveError.noResultsReturned
+            }
             completion?(arrivals)
 
         }.catch { error in
             print(error.localizedDescription)
-            self.reportStatus(.dataLoadingError)
+            if let _ = error as? NextToArriveError {
+                self.reportStatus(.noResultsReturned)
+            } else {
+                self.reportStatus(.dataLoadingError)
+            }
         }
     }
 
