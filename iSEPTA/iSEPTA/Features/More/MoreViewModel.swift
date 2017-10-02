@@ -31,7 +31,7 @@ class MoreViewModel {
     }
 
     func configureSubwayMapCell(cell: MoreTableViewCell) {
-        cell.moreLabel.text = "Subway Map"
+        cell.moreLabel.text = "System Map"
         cell.moreImageView.image = UIImage(named: "subwayMapCell")
     }
 
