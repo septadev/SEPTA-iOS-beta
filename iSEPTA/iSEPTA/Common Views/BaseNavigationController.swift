@@ -113,6 +113,7 @@ class BaseNavigationController: UINavigationController, UINavigationControllerDe
     }
 
     func truncateViewStack(truncateLength: Int) {
+        guard viewControllers.count < truncateLength else { return }
         let truncated = viewControllers[..<truncateLength]
         viewControllers = Array(truncated)
     }

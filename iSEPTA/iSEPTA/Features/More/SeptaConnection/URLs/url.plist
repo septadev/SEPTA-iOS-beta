@@ -2,27 +2,27 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>comment</key>
-	<string>http://www3.septa.org/customerservice/</string>
-	<key>events</key>
-	<string>http://www.septa.org/events/</string>
-	<key>twitter</key>
-	<string>http://www.septa.org/alert/twitter.html</string>
 	<key>chat</key>
-	<string>http://www.septa.org/cs/chat/index.html</string>
+	<string>https://customerservice.septa.org/chat/phplive.php?d=0&amp;pg=aHBocDovL3d3dy5zZXB0YS5vcmcvY3MvY2hhdC9pbmRleC5odG1s&amp;tl=U0VQVEEgfCBMaXZlIENoYXQgfCBJbnRlcmFjdGl2ZSBPbmxpbmUgQ29udmVyc2F0aW9u&amp;js_name=&amp;js_email=&amp;custom=&amp;u=1506955109321&amp;token=7e746cfeecfcd08d949c744f7fb2d2d1</string>
+	<key>comment</key>
+	<string>http://www3.septa.org/customerservice/VeritasFormMobile/</string>
+	<key>events</key>
+	<string>http://www.septa.org/service/special-events-mobile.html</string>
 	<key>facebook</key>
 	<string>https://www.facebook.com/septaphilly</string>
-	<key>passPerks</key>
-	<string>http://iseptaphilly.com/perks</string>
-	<key>tdd</key>
-	<string>tel://2155807853</string>
-	<key>phone</key>
-	<string>tel://2155807800</string>
-	<key>map</key>
-	<string>https://www.septa.org/maps/pdf/click-map.pdf</string>
 	<key>fares</key>
 	<string>http://septa.org/m/fares/ticket/</string>
+	<key>map</key>
+	<string>https://www.septa.org/maps/pdf/click-map.pdf</string>
+	<key>passPerks</key>
+	<string>http://iseptaphilly.com/perks</string>
+	<key>phone</key>
+	<string>tel://2155807800</string>
 	<key>septaKey</key>
-	<string>http://www.septa.org/key/</string>
+	<string>http://www.septa.org/key/index.html</string>
+	<key>tdd</key>
+	<string>tel://2155807853</string>
+	<key>twitter</key>
+	<string>http://www.septa.org/alert/twitter.html</string>
 </dict>
 </plist>
