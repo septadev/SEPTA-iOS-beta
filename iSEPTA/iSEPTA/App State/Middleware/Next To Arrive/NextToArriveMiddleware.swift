@@ -60,7 +60,7 @@ class NextToArriveMiddleware {
         let builder = NextToArriveMiddlewareScheduleRequestBuilder.sharedInstance
         builder.updateScheduleRequestInSchedules(nextToArriveTrip: action.nextToArriveTrip, scheduleRequest: scheduleRequest)
 
-        let delayTime: Double = scheduleRequest.transitMode == .rail ? 2 : 0
+        let delayTime: Double = scheduleRequest.transitMode == .rail ? 2 : 0.5
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayTime) {
 
