@@ -34,18 +34,17 @@ import ReSwift
         typealias formatters = DateFormatters
         let trip = availableTrips[row]
         if let departureDate = trip.departureDate,
-
             let depatureString = formatters.timeFormatter.string(for: departureDate),
             let arrivalDate = trip.arrivalDate,
             let arrivalString = formatters.timeFormatter.string(for: arrivalDate),
             let durationString = formatters.durationFormatter.string(for: trip.tripDuration) {
 
-            // displayable.setTripText(text: String(trip.tripId))
             displayable.setDepartText(text: depatureString)
             displayable.setArriveText(text: arrivalString)
             displayable.setDurationText(text: durationString)
             displayable.setVehicleTitle(text: transitMode.vehicleNumberTitle())
             displayable.setVehicleText(text: trip.blockId)
+            displayable.hideVehicleTitle(trip.blockId.count == 0)
         }
     }
 
