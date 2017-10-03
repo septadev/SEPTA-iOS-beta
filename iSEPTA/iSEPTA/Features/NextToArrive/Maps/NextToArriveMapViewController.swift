@@ -26,6 +26,11 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         nextToArriveMapEndpointsViewModel.delegate = self
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mapView.tintColor = SeptaColor.navBarBlue
+    }
+
     override func viewWillAppear(_: Bool) {
         mapView.showAnnotations(mapView.annotations, animated: false)
 
