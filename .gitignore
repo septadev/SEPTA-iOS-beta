@@ -12,3 +12,4 @@ Carthage/
 /SeptaSchedule/SeptaScheduleTests/PreloadedDatabase/SEPTA.sqlite
 SEPTA.sqlite
 SEPTA.zip
+/iSEPTA/.idea
