@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>chat</key>
-	<string>https://customerservice.septa.org/chat/phplive.php?d=0&amp;pg=aHBocDovL3d3dy5zZXB0YS5vcmcvY3MvY2hhdC9pbmRleC5odG1s&amp;tl=U0VQVEEgfCBMaXZlIENoYXQgfCBJbnRlcmFjdGl2ZSBPbmxpbmUgQ29udmVyc2F0aW9u&amp;js_name=&amp;js_email=&amp;custom=&amp;u=1506955109321&amp;token=7e746cfeecfcd08d949c744f7fb2d2d1</string>
+	<string>https://customerservice.septa.org/chat/phplive.php?d=0&amp;onpage=livechatimagelink&amp;title=Live+Chat+Direct+Link</string>
 	<key>comment</key>
 	<string>http://www3.septa.org/customerservice/VeritasFormMobile/</string>
 	<key>events</key>

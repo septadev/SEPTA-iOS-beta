@@ -32,6 +32,11 @@ struct AlertDetailsLoaded: AlertAction {
     let description = "New Alerts have been retrieved"
 }
 
+struct GenericAlertDetailsLoaded: AlertAction {
+    let genericAlertDetails: [AlertDetails_Alert]
+    let description = "New Alerts have been retrieved"
+}
+
 struct ResetAlertRequest: AlertAction {
     let description = "Clear out alertRequest Info"
 }

@@ -78,13 +78,13 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="324" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAX-zD-fO3">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAX-zD-fO3">
                                                                     <rect key="frame" x="11" y="13" width="279" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="SearchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ECp-eG-9YG" userLabel="Searchicon">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SearchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ECp-eG-9YG" userLabel="Searchicon">
                                                                     <rect key="frame" x="295" y="13.5" width="17" height="17"/>
                                                                 </imageView>
                                                             </subviews>
@@ -204,12 +204,34 @@
                                         <string key="userLabel">
 TableViewWrapper</string>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mFK-jg-0FA" userLabel="GenericAlertsTableViewWrapper">
+                                        <rect key="frame" x="15" y="231" width="345" height="60"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p58-dc-ihh">
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="60"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="U3J-nT-6ur"/>
+                                                </constraints>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="p58-dc-ihh" secondAttribute="trailing" id="3HD-U8-nW3" userLabel="TableViewRight"/>
+                                            <constraint firstItem="p58-dc-ihh" firstAttribute="leading" secondItem="mFK-jg-0FA" secondAttribute="leading" id="FuT-Jb-D6m" userLabel="TableViewLeft"/>
+                                            <constraint firstItem="p58-dc-ihh" firstAttribute="top" secondItem="mFK-jg-0FA" secondAttribute="top" id="Pnd-7r-gzp" userLabel="TableViewTop"/>
+                                            <constraint firstAttribute="bottom" secondItem="p58-dc-ihh" secondAttribute="bottom" id="dT4-R8-JWS" userLabel="TableViewBottom"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.12214555959999999" blue="0.19503632169999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="1GD-nr-m8r" secondAttribute="trailing" constant="9" id="1TT-dm-007" userLabel="TransitModeSchedulesRight"/>
                                     <constraint firstItem="1GD-nr-m8r" firstAttribute="top" secondItem="5hD-AH-evl" secondAttribute="top" constant="14" id="38m-dz-jFi" userLabel="TransitModeSchedulesTop"/>
+                                    <constraint firstItem="mFK-jg-0FA" firstAttribute="leading" secondItem="5hD-AH-evl" secondAttribute="leading" constant="15" id="5Jh-S0-BNd" userLabel="GenericAlertsWrapperLeft"/>
+                                    <constraint firstAttribute="trailing" secondItem="mFK-jg-0FA" secondAttribute="trailing" constant="15" id="P2a-E9-cai" userLabel="GenericAlertsWrapperRight"/>
                                     <constraint firstItem="hlB-df-wLC" firstAttribute="leading" secondItem="5hD-AH-evl" secondAttribute="leading" constant="10" id="bDo-tG-BE8" userLabel="TableViewWrapperLeft"/>
+                                    <constraint firstItem="mFK-jg-0FA" firstAttribute="top" secondItem="hlB-df-wLC" secondAttribute="bottom" constant="25" id="uhF-1d-Yw8" userLabel="GenericAlertsWrapperTop"/>
                                     <constraint firstItem="1GD-nr-m8r" firstAttribute="leading" secondItem="5hD-AH-evl" secondAttribute="leading" constant="11" id="wzd-4d-gB6" userLabel="TransitModeSchedulesLeft"/>
                                     <constraint firstAttribute="trailing" secondItem="hlB-df-wLC" secondAttribute="trailing" constant="11" id="x5L-qY-jlq" userLabel="TableViewWrapperRight"/>
                                     <constraint firstItem="hlB-df-wLC" firstAttribute="top" secondItem="5hD-AH-evl" secondAttribute="top" constant="50" id="y6k-Pc-5vl" userLabel="TableViewWrapperTop"/>
@@ -235,6 +257,8 @@ TableViewWrapper</string>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="buttonView" destination="X65-2S-sYu" id="Xbs-Ow-CvZ"/>
+                        <outlet property="genericAlertsTableView" destination="p58-dc-ihh" id="XTw-Vw-87V"/>
+                        <outlet property="genericAlertsTableViewWrapper" destination="mFK-jg-0FA" id="AQR-zk-aJt"/>
                         <outlet property="scheduleLabel" destination="1GD-nr-m8r" id="HxH-l0-t3j"/>
                         <outlet property="section0View" destination="VYG-qk-CB6" id="Hk9-zh-dvm"/>
                         <outlet property="section1View" destination="WSP-tE-0e4" id="gXx-Qk-u4a"/>
@@ -242,7 +266,7 @@ TableViewWrapper</string>
                         <outlet property="tableView" destination="XRa-WJ-dEl" id="ueN-yV-CCG"/>
                         <outlet property="tableViewFooter" destination="Hhk-5s-xoT" id="2m6-Gh-4We"/>
                         <outlet property="tableViewHeader" destination="q87-sA-024" id="pg1-gm-xBJ"/>
-                        <outlet property="tableViewWrapper" destination="hlB-df-wLC" id="hhY-0c-hKA"/>
+                        <outlet property="tableViewWrapperView" destination="hlB-df-wLC" id="ig3-QS-Aig"/>
                         <outletCollection property="buttons" destination="SmR-Bl-UeK" collectionClass="NSMutableArray" id="m38-nI-4LV"/>
                         <outletCollection property="buttons" destination="SmR-Bl-UeK" collectionClass="NSMutableArray" id="AmQ-qW-yo9"/>
                         <outletCollection property="buttons" destination="s8N-AV-jC4" collectionClass="NSMutableArray" id="SgW-Xb-Zun"/>
@@ -266,7 +290,7 @@ TableViewWrapper</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p72-Km-5YN">
-                            <rect key="frame" x="207" y="10.5" width="33" height="27"/>
+                            <rect key="frame" x="207" y="10" width="33" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Reset">
                                 <color key="titleColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>

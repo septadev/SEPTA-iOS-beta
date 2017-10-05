@@ -23,15 +23,17 @@ class AlertsViewController: UIViewController, IdentifiableController {
     @IBOutlet weak var sectionHeaderLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewWrapperView: UIView!
+    @IBOutlet weak var genericAlertsTableViewWrapper: UIView!
 
+    @IBOutlet weak var genericAlertsTableView: UITableView!
     let buttonRow = 1
 
     var formIsComplete = false
     var targetForScheduleAction: TargetForScheduleAction! {
         return store.state.targetForScheduleActions()
     }
-    var viewModel: AlertsViewModel!
 
+    var viewModel: AlertsViewModel!
 
     @IBAction func resetButtonTapped(_: Any) {
         store.dispatch(ResetSchedule(targetForScheduleAction: targetForScheduleAction))
@@ -150,7 +152,6 @@ extension AlertsViewController: UpdateableFromViewModel {
 
     func updateActivityIndicator(animating _: Bool) {
     }
-
 
     func displayErrorMessage(message: String, shouldDismissAfterDisplay _: Bool = false) {
         UIAlert.presentOKAlertFrom(viewController: self, withTitle: "Select Schedule", message: message)
