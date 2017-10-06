@@ -49,11 +49,11 @@ extension TransitMode {
 
     public func routeTitle() -> String {
         switch self {
-        case .bus: return "Bus Route"
+        case .bus: return "Route"
         case .rail: return "Rail Line"
-        case .subway: return "Subway Line"
-        case .nhsl: return "NHSL Line"
-        case .trolley: return "Trolley Line"
+        case .subway: return "Line"
+        case .nhsl: return "Line"
+        case .trolley: return "Line"
         }
     }
 
@@ -99,21 +99,21 @@ extension TransitMode {
 
     public func selectRoutePlaceholderText() -> String {
         switch self {
-        case .rail: return "Select Line"
+        case .rail, .subway, .trolley: return "Select Line"
         default: return "Select Route"
         }
     }
 
     public func startingStopName() -> String {
         switch self {
-        case .rail: return "Starting Station"
+        case .rail, .nhsl: return "Starting Station"
         default: return "Starting Stop"
         }
     }
 
     public func endingStopName() -> String {
         switch self {
-        case .rail: return "Destination Station"
+        case .rail, .nhsl: return "Destination Station"
         default: return "Destination Stop"
         }
     }

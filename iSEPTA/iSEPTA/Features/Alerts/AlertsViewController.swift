@@ -22,12 +22,24 @@ class AlertsViewController: UIViewController, IdentifiableController {
     @IBOutlet weak var scheduleLabel: UILabel!
     @IBOutlet weak var sectionHeaderLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tableViewWrapper: UIView!
+    @IBOutlet weak var tableViewWrapperView: UIView!
+    var alertDetailCellView: AlertDetailCellView!
 
+    var alertState_HasGenericAlertsWatcher: AlertState_HasGenericAlertsWatcher!
+
+    @IBOutlet weak var genericAlertsTableViewWrapper: UIView! {
+        didSet {
+            alertDetailCellView = genericAlertsTableViewWrapper.awakeInsertAndPinSubview(nibName: "AlertDetailsCellView")
+        }
+    }
+
+    @IBOutlet weak var genericAlertsTableView: UITableView!
     let buttonRow = 1
 
     var formIsComplete = false
-    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! {
+        return store.state.targetForScheduleActions()
+    }
 
     var viewModel: AlertsViewModel!
 
@@ -36,6 +48,7 @@ class AlertsViewController: UIViewController, IdentifiableController {
     }
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         viewModel = AlertsViewModel()
         viewModel.delegate = self
         viewModel.schedulesDelegate = self
@@ -43,15 +56,19 @@ class AlertsViewController: UIViewController, IdentifiableController {
         tableView.tableFooterView = tableViewFooter
 
         buttonView.isHidden = true
-        UIView.addSurroundShadow(toView: tableViewWrapper)
+        UIView.addSurroundShadow(toView: tableViewWrapperView)
 
         updateHeaderLabels()
 
-        super.viewDidLoad()
+        alertDetailCellView.isGenericAlert = true
+        alertState_HasGenericAlertsWatcher = AlertState_HasGenericAlertsWatcher()
+        alertState_HasGenericAlertsWatcher.delegate = self
     }
 
     override func viewWillAppear(_: Bool) {
-        guard let navBar = navigationController?.navigationBar else { return }
+        guard let navBar = navigationController?.navigationBar else {
+            return
+        }
 
         navBar.shadowImage = UIImage()
         navBar.setBackgroundImage(UIImage(), for: .default)
@@ -92,7 +109,9 @@ extension AlertsViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
 
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "buttonViewCell", for: indexPath) as? ButtonViewCell else { return ButtonViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "buttonViewCell", for: indexPath) as? ButtonViewCell else {
+                return ButtonViewCell()
+            }
             cell.buttonText = "View Status"
             cell.enabled = formIsComplete
             return cell
@@ -135,7 +154,9 @@ extension AlertsViewController: UITableViewDelegate, UITableViewDataSource {
 extension AlertsViewController: UpdateableFromViewModel {
 
     func viewModelUpdated() {
-        guard let tableView = tableView else { return }
+        guard let tableView = tableView else {
+            return
+        }
         updateHeaderLabels()
         tableView.reloadData()
     }
@@ -151,8 +172,16 @@ extension AlertsViewController: UpdateableFromViewModel {
 extension AlertsViewController: SchedulesViewModelDelegate {
 
     func formIsComplete(_ isComplete: Bool) {
-        guard let tableView = tableView else { return }
+        guard let tableView = tableView else {
+            return
+        }
         formIsComplete = isComplete
         tableView.reloadData()
+    }
+}
+
+extension AlertsViewController: AlertState_HasGenericAlertsWatcherDelegate {
+    func alertState_HasGenericAlertsUpdated(bool hasAlerts: Bool) {
+        genericAlertsTableViewWrapper.isHidden = !hasAlerts
     }
 }

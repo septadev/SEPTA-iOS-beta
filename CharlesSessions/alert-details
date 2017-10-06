@@ -1,0 +1,33 @@
+{
+  "route" : "bus_route_1",
+  "route_name" : "1",
+  "results" : 2,
+  "alerts" : [
+ {
+     "message" : "",
+    "advisory_message" : "<div class=\"fares_container\">\n\t\t\t\t <h3 class=\"separated\">Temporary Relocation of Transit Stops for Routes 1, 14, 20, and 50<\/h3>\n\t\t\t\t <p class=\"desc separated\">Continuing through October 2017<\/p>\n\t\t\t\t <p>Due to construction, the following stops will be temporarily relocated. Please continue to check System Status for any updates or additional changes to boarding locations.<\/p>\n<p><span style=\"font-size: small;\"><strong>Northbound:<\/strong><\/span><\/p>\n<table style=\"width: 470px; height: 176px;\" border=\"0\">\n<tbody>\n<tr>\n<td style=\"text-align: left;\"><strong>Current Stop<\/strong><\/td>\n<td style=\"text-align: left;\"><strong>New Boarding Location<\/strong><\/td>\n<\/tr>\n<tr>\n<td>Cottman &amp; Roosevelt<br \/><\/td>\n<td>St. Vincent &amp; Roosevelt <br \/><\/td>\n<\/tr>\n<tr>\n<td>Rhawn &amp; Roosevelt<br \/><\/td>\n<td>Loney &amp; Roosevelt <br \/><\/td>\n<\/tr>\n<tr>\n<td>Welsh &amp; Roosevelt<br \/><\/td>\n<td>Woodward &amp; Roosevelt<\/td>\n<\/tr>\n<tr>\n<td>Grant &amp; Roosevelt<\/td>\n<td>Boards in front of the Chick-fil-A<\/td>\n<\/tr>\n<tr>\n<td>Red Lion &amp; Roosevelt<br \/><\/td>\n<td>Boards at far side stop<br \/><\/td>\n<\/tr>\n<\/tbody>\n<\/table>\n<p><span style=\"font-size: small;\"><strong>Southbound:<\/strong><\/span><\/p>\n<table style=\"width: 475px; height: 206px;\" border=\"0\">\n<tbody>\n<tr>\n<td style=\"text-align: left;\"><strong>Current Stop<\/strong><\/td>\n<td style=\"text-align: left;\"><strong>New Boarding Location<\/strong><\/td>\n<\/tr>\n<tr>\n<td>Red Lion &amp; Roosevelt<br \/><\/td>\n<td>Graymont &amp; Roosevelt<br \/><\/td>\n<\/tr>\n<tr>\n<td>Grant &amp; Roosevelt<br \/><\/td>\n<td>Murray &amp; Roosevelt<br \/><\/td>\n<\/tr>\n<tr>\n<td>Welsh &amp; Roosevelt<br \/><\/td>\n<td>Far side, in front of gas station<br \/><\/td>\n<\/tr>\n<tr>\n<td>Rhawn &amp; Roosevelt<br \/><\/td>\n<td>Stanwood &amp; Roosevelt<br \/><\/td>\n<\/tr>\n<tr>\n<td>Cottman &amp; Roosevelt<br \/><\/td>\n<td>Far side stop<br \/><\/td>\n<\/tr>\n<\/tbody>\n<\/table>\n<p>Please look for posted signs for additional boarding information.<\/p>\n\t\t\t <\/div>",
+    "detour" : {
+      "message" : "24 hours - 7days<br>Byberry\/Evans Trips<br>NB via Roosevelt Blvd<br>Terminate and take recovery <br>before entrance ramp PA63<br>West Woodhaven Rd",
+      "start_location" : "Roosevelt Blvd & PA63",
+      "start_date_time" : "9/1/2017  12:02 AM",
+      "end_date_time" : "11/7/2017   4:30 AM",
+      "reason" : "Construction "
+    },
+    "last_updated" : "2017-08-06 15:08:38.980",
+    "snow" : false
+  } 
+, {
+     "message" : "",
+    "advisory_message" : "<div class=\"fares_container\">\n\t\t\t\t <h3 class=\"separated\">Temporary Relocation of Transit Stops for Routes 1, 14, 20, and 50<\/h3>\n\t\t\t\t <p class=\"desc separated\">Continuing through October 2017<\/p>\n\t\t\t\t <p>Due to construction, the following stops will be temporarily relocated. Please continue to check System Status for any updates or additional changes to boarding locations.<\/p>\n<p><span style=\"font-size: small;\"><strong>Northbound:<\/strong><\/span><\/p>\n<table style=\"width: 470px; height: 176px;\" border=\"0\">\n<tbody>\n<tr>\n<td style=\"text-align: left;\"><strong>Current Stop<\/strong><\/td>\n<td style=\"text-align: left;\"><strong>New Boarding Location<\/strong><\/td>\n<\/tr>\n<tr>\n<td>Cottman &amp; Roosevelt<br \/><\/td>\n<td>St. Vincent &amp; Roosevelt <br \/><\/td>\n<\/tr>\n<tr>\n<td>Rhawn &amp; Roosevelt<br \/><\/td>\n<td>Loney &amp; Roosevelt <br \/><\/td>\n<\/tr>\n<tr>\n<td>Welsh &amp; Roosevelt<br \/><\/td>\n<td>Woodward &amp; Roosevelt<\/td>\n<\/tr>\n<tr>\n<td>Grant &amp; Roosevelt<\/td>\n<td>Boards in front of the Chick-fil-A<\/td>\n<\/tr>\n<tr>\n<td>Red Lion &amp; Roosevelt<br \/><\/td>\n<td>Boards at far side stop<br \/><\/td>\n<\/tr>\n<\/tbody>\n<\/table>\n<p><span style=\"font-size: small;\"><strong>Southbound:<\/strong><\/span><\/p>\n<table style=\"width: 475px; height: 206px;\" border=\"0\">\n<tbody>\n<tr>\n<td style=\"text-align: left;\"><strong>Current Stop<\/strong><\/td>\n<td style=\"text-align: left;\"><strong>New Boarding Location<\/strong><\/td>\n<\/tr>\n<tr>\n<td>Red Lion &amp; Roosevelt<br \/><\/td>\n<td>Graymont &amp; Roosevelt<br \/><\/td>\n<\/tr>\n<tr>\n<td>Grant &amp; Roosevelt<br \/><\/td>\n<td>Murray &amp; Roosevelt<br \/><\/td>\n<\/tr>\n<tr>\n<td>Welsh &amp; Roosevelt<br \/><\/td>\n<td>Far side, in front of gas station<br \/><\/td>\n<\/tr>\n<tr>\n<td>Rhawn &amp; Roosevelt<br \/><\/td>\n<td>Stanwood &amp; Roosevelt<br \/><\/td>\n<\/tr>\n<tr>\n<td>Cottman &amp; Roosevelt<br \/><\/td>\n<td>Far side stop<br \/><\/td>\n<\/tr>\n<\/tbody>\n<\/table>\n<p>Please look for posted signs for additional boarding information.<\/p>\n\t\t\t <\/div>",
+    "detour" : {
+      "message" : "(Byberry\/Evans trips only)<br>24 hours - 7 days<br>SB via Roosevelt Blvd<br>R - Entrance Ramp to PA63 <br>Woodhaven Expressway<br>R - Rt 1South ramp <br>entrance; Rt 1South<br>Reg Rt",
+      "start_location" : "Roosevelt Blvd & PA63",
+      "start_date_time" : "9/1/2017  12:03 AM",
+      "end_date_time" : "11/7/2017   4:30 AM",
+      "reason" : "Construction "
+    },
+    "last_updated" : "2017-08-06 15:08:38.980",
+    "snow" : false
+  } 
+  ]
+}

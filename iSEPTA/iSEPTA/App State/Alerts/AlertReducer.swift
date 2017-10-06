@@ -39,6 +39,8 @@ struct AlertReducer {
             newState = reduceNewAlertsRetrieved(action: action, state: state)
         case let action as AlertDetailsLoaded:
             newState = reduceAlertDetailsLoaded(action: action, state: state)
+        case let action as GenericAlertDetailsLoaded:
+            newState = reduceGenericAlertDetailsLoaded(action: action, state: state)
         default:
             break
         }
@@ -47,11 +49,16 @@ struct AlertReducer {
     }
 
     static func reduceNewAlertsRetrieved(action: NewAlertsRetrieved, state: AlertState) -> AlertState {
-        return AlertState(alertDict: action.alertsByTransitModeThenRoute, scheduleState: state.scheduleState, lastUpdated: Date(), alertDetails: state.alertDetails)
+        return AlertState(alertDict: action.alertsByTransitModeThenRoute, scheduleState: state.scheduleState, lastUpdated: Date(), alertDetails: state.alertDetails, genericAlertDetails: state.genericAlertDetails)
     }
 
     static func reduceAlertDetailsLoaded(action: AlertDetailsLoaded, state: AlertState) -> AlertState {
 
-        return AlertState(alertDict: state.alertDict, scheduleState: state.scheduleState, lastUpdated: state.lastUpdated, alertDetails: action.alertDetails)
+        return AlertState(alertDict: state.alertDict, scheduleState: state.scheduleState, lastUpdated: state.lastUpdated, alertDetails: action.alertDetails, genericAlertDetails: state.genericAlertDetails)
+    }
+
+    static func reduceGenericAlertDetailsLoaded(action: GenericAlertDetailsLoaded, state: AlertState) -> AlertState {
+
+        return AlertState(alertDict: state.alertDict, scheduleState: state.scheduleState, lastUpdated: state.lastUpdated, alertDetails: state.alertDetails, genericAlertDetails: action.genericAlertDetails)
     }
 }

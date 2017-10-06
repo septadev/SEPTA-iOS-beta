@@ -18,12 +18,15 @@ struct AlertState {
     let lastUpdated: Date
     let scheduleState: ScheduleState
     let alertDetails: [AlertDetails_Alert]
+    let genericAlertDetails: [AlertDetails_Alert]
+    var hasGenericAlerts: Bool { return genericAlertDetails.count > 0 }
 
-    init(alertDict: AlertsByTransitModeThenRoute = [TransitMode: [String: SeptaAlert]](), scheduleState: ScheduleState = ScheduleState(), lastUpdated: Date = Date.distantPast, alertDetails: [AlertDetails_Alert] = [AlertDetails_Alert]()) {
+    init(alertDict: AlertsByTransitModeThenRoute = [TransitMode: [String: SeptaAlert]](), scheduleState: ScheduleState = ScheduleState(), lastUpdated: Date = Date.distantPast, alertDetails: [AlertDetails_Alert] = [AlertDetails_Alert](), genericAlertDetails: [AlertDetails_Alert] = [AlertDetails_Alert]()) {
         self.alertDict = alertDict
         self.lastUpdated = lastUpdated
         self.scheduleState = scheduleState
         self.alertDetails = alertDetails
+        self.genericAlertDetails = genericAlertDetails
     }
 }
 

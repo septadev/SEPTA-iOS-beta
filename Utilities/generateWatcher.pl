@@ -4,9 +4,9 @@ use String::Util  ':all';
 use Modern::Perl;
 use Data::Dumper; 
 
-my $type = q| NextToArriveUpdateStatus   |;
+my $type = q| Bool   |;
 
-my $keyPath = q|  favoriteState.nextToArriveFavorite.nextToArriveUpdateStatus |;
+my $keyPath = q|  alertState.hasGenericAlerts |;
 
 
 

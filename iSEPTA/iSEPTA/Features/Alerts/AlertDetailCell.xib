@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,110 +16,7 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oiN-k9-f0q" id="ogY-IY-EOk">
                 <rect key="frame" x="0.0" y="0.0" width="573" height="572.5"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVV-fO-eg2" userLabel="ShadowView" customClass="RoundedSurroundShadowedCellView" customModule="Septa" customModuleProvider="target">
-                        <rect key="frame" x="5" y="10" width="563" height="557.5"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bOG-Az-79L" userLabel="Content">
-                        <rect key="frame" x="5" y="10" width="563" height="557.5"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hB1-cX-INc" userLabel="PinkView" customClass="PinkAlertHeaderView" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="563" height="60"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Service Alerts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ViK-g6-EHM" userLabel="DisabledAdvisoryLabel">
-                                        <rect key="frame" x="54" y="20" width="124" height="19.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
-                                        <color key="textColor" red="0.42745098039215684" green="0.42745098039215684" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service Advisories: 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ll4-Kv-QIu" userLabel="AdvisoryLabel">
-                                        <rect key="frame" x="54" y="20" width="156.5" height="19.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="ViK-g6-EHM" firstAttribute="centerY" secondItem="hB1-cX-INc" secondAttribute="centerY" id="1tl-xC-8He" userLabel="DisabledAdvisoryLabelCenterY"/>
-                                    <constraint firstItem="Ll4-Kv-QIu" firstAttribute="centerY" secondItem="hB1-cX-INc" secondAttribute="centerY" id="7y8-JS-zxU" userLabel="AdvisoryLabelCenterY"/>
-                                    <constraint firstAttribute="height" constant="60" id="c46-RE-GKE" userLabel="PinkViewHeight"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1V-36-rgy" userLabel="ActionButton" customClass="AlertDetailButton" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="524" y="18" width="24" height="24"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="5KJ-Jg-scV"/>
-                                    <constraint firstAttribute="width" constant="24" id="XEn-Ey-Eyy"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="actionButtonTapped:" destination="oiN-k9-f0q" eventType="touchUpInside" id="Z1C-J8-2nz"/>
-                                </connections>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kzr-eF-j5l" userLabel="AlertImage">
-                                <rect key="frame" x="15" y="15" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="dSm-bE-cLH"/>
-                                    <constraint firstAttribute="height" constant="30" id="k1N-rI-GrX"/>
-                                </constraints>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TIc-1D-Kl3">
-                                <rect key="frame" x="0.0" y="60" width="563" height="497.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="999" constant="497.5" id="FXP-Iv-NR2"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="J1V-36-rgy" secondAttribute="trailing" constant="15" id="49Q-PZ-aMG" userLabel="ActionButtonRight"/>
-                            <constraint firstItem="Ll4-Kv-QIu" firstAttribute="leading" secondItem="kzr-eF-j5l" secondAttribute="trailing" constant="9" id="CA6-KA-S1E" userLabel="AdvisoryLabelLeft"/>
-                            <constraint firstItem="kzr-eF-j5l" firstAttribute="centerY" secondItem="hB1-cX-INc" secondAttribute="centerY" id="FUZ-sK-g7h" userLabel="AlertImageCenterY"/>
-                            <constraint firstItem="J1V-36-rgy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ViK-g6-EHM" secondAttribute="trailing" constant="10" id="FpJ-BS-Ozo" userLabel="DisabledAdvisoryLabelRight"/>
-                            <constraint firstItem="TIc-1D-Kl3" firstAttribute="leading" secondItem="bOG-Az-79L" secondAttribute="leading" id="GN5-oc-Lez" userLabel="TextViewLeft"/>
-                            <constraint firstItem="J1V-36-rgy" firstAttribute="top" secondItem="bOG-Az-79L" secondAttribute="top" constant="18" id="KFf-td-D1X" userLabel="ActionButtontop"/>
-                            <constraint firstItem="J1V-36-rgy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ll4-Kv-QIu" secondAttribute="trailing" constant="10" id="LWI-yz-ZBn" userLabel="AdvisoryLabelRight"/>
-                            <constraint firstItem="kzr-eF-j5l" firstAttribute="leading" secondItem="bOG-Az-79L" secondAttribute="leading" constant="15" id="Uoc-Md-XfF" userLabel="AlertImageLeft"/>
-                            <constraint firstItem="ViK-g6-EHM" firstAttribute="leading" secondItem="kzr-eF-j5l" secondAttribute="trailing" constant="9" id="WX3-j6-Hpx" userLabel="DisabledAdvisoryLabelLeft"/>
-                            <constraint firstItem="hB1-cX-INc" firstAttribute="leading" secondItem="bOG-Az-79L" secondAttribute="leading" id="XEz-MU-ggF" userLabel="PinkViewLeft"/>
-                            <constraint firstItem="hB1-cX-INc" firstAttribute="top" secondItem="bOG-Az-79L" secondAttribute="top" id="XT7-6G-TqL" userLabel="PinkViewTop"/>
-                            <constraint firstAttribute="trailing" secondItem="TIc-1D-Kl3" secondAttribute="trailing" id="dM6-cW-3HO" userLabel="TextViewRight"/>
-                            <constraint firstItem="J1V-36-rgy" firstAttribute="centerY" secondItem="hB1-cX-INc" secondAttribute="centerY" id="djn-uF-LZT" userLabel="PinkViewCenterY"/>
-                            <constraint firstAttribute="trailing" secondItem="hB1-cX-INc" secondAttribute="trailing" id="kEU-z1-3Oe" userLabel="PinkViewright"/>
-                            <constraint firstItem="TIc-1D-Kl3" firstAttribute="top" secondItem="hB1-cX-INc" secondAttribute="bottom" id="mAS-nI-f44" userLabel="TextViewTop"/>
-                            <constraint firstAttribute="bottom" secondItem="TIc-1D-Kl3" secondAttribute="bottom" id="vSD-CY-5Jz" userLabel="TextViewBottom"/>
-                        </constraints>
-                    </view>
-                </subviews>
-                <constraints>
-                    <constraint firstItem="cVV-fO-eg2" firstAttribute="top" secondItem="ogY-IY-EOk" secondAttribute="top" constant="10" id="2uf-XX-hHS" userLabel="ShadowViewTop"/>
-                    <constraint firstAttribute="bottom" secondItem="bOG-Az-79L" secondAttribute="bottom" constant="5" id="RoY-fy-MB8" userLabel="contentBottom"/>
-                    <constraint firstAttribute="trailing" secondItem="cVV-fO-eg2" secondAttribute="trailing" constant="5" id="Xy9-FF-lcW" userLabel="ShadowViewRight"/>
-                    <constraint firstItem="cVV-fO-eg2" firstAttribute="leading" secondItem="ogY-IY-EOk" secondAttribute="leading" constant="5" id="ZsU-Jc-JEc" userLabel="ShadowViewLeft"/>
-                    <constraint firstItem="bOG-Az-79L" firstAttribute="leading" secondItem="ogY-IY-EOk" secondAttribute="leading" constant="5" id="fUk-wr-LhS" userLabel="ContentLeft"/>
-                    <constraint firstAttribute="trailing" secondItem="bOG-Az-79L" secondAttribute="trailing" constant="5" id="gmx-Kc-7nK" userLabel="ContentRight"/>
-                    <constraint firstItem="bOG-Az-79L" firstAttribute="top" secondItem="ogY-IY-EOk" secondAttribute="top" constant="10" id="l98-iF-vw3" userLabel="ContentTop"/>
-                    <constraint firstAttribute="bottom" secondItem="cVV-fO-eg2" secondAttribute="bottom" constant="5" id="m2z-kW-hM3" userLabel="ShadowViewBottom"/>
-                </constraints>
             </tableViewCellContentView>
-            <connections>
-                <outlet property="actionButton" destination="J1V-36-rgy" id="CKN-XM-7Aw"/>
-                <outlet property="advisoryLabel" destination="Ll4-Kv-QIu" id="EVj-9F-nuq"/>
-                <outlet property="alertImage" destination="kzr-eF-j5l" id="uBb-TL-J6L"/>
-                <outlet property="content" destination="bOG-Az-79L" id="nj0-lg-h4P"/>
-                <outlet property="disabledAdvisoryLabel" destination="ViK-g6-EHM" id="EpC-At-rbr"/>
-                <outlet property="pinkHeaderView" destination="hB1-cX-INc" id="frz-Ft-XPq"/>
-                <outlet property="shadowView" destination="cVV-fO-eg2" id="bjY-dH-F0x"/>
-                <outlet property="textView" destination="TIc-1D-Kl3" id="TdK-9F-7ob"/>
-                <outlet property="textViewHeightContraints" destination="FXP-Iv-NR2" id="Gh3-8M-Vbm"/>
-            </connections>
             <point key="canvasLocation" x="528" y="35"/>
         </tableViewCell>
     </objects>
