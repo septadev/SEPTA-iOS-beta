@@ -124,6 +124,9 @@
 		585760AD1F82A31F00A340DB /* NextToArriveState_NextToArriveUpdateStatusWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585760AC1F82A31F00A340DB /* NextToArriveState_NextToArriveUpdateStatusWatcher.swift */; };
 		585CEBD21F867661006DCC67 /* AlertDetailsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585CEBD11F867661006DCC67 /* AlertDetailsCellView.xib */; };
 		585CEBD41F8676D9006DCC67 /* AlertDetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CEBD31F8676D9006DCC67 /* AlertDetailCellView.swift */; };
+		585CEBD61F869E2D006DCC67 /* AlertState_HasGenericAlertsWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CEBD51F869E2D006DCC67 /* AlertState_HasGenericAlertsWatcher.swift */; };
+		585CEBD81F86A023006DCC67 /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CEBD71F86A023006DCC67 /* String+HTML.swift */; };
+		585CEBDA1F86A0AE006DCC67 /* AlertDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CEBD91F86A0AE006DCC67 /* AlertDetailsViewModel.swift */; };
 		5863DB5A1F6C6B6700FC0F1F /* FavoritesExistWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5863DB591F6C6B6700FC0F1F /* FavoritesExistWatcher.swift */; };
 		58658D1B1F53135100E67B4E /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58658D1A1F53135100E67B4E /* AddressCell.swift */; };
 		58658D1E1F53298B00E67B4E /* DisplayAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58658D1D1F53298B00E67B4E /* DisplayAddress.swift */; };
@@ -723,6 +726,9 @@
 		585760AC1F82A31F00A340DB /* NextToArriveState_NextToArriveUpdateStatusWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveState_NextToArriveUpdateStatusWatcher.swift; sourceTree = "<group>"; };
 		585CEBD11F867661006DCC67 /* AlertDetailsCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertDetailsCellView.xib; sourceTree = "<group>"; };
 		585CEBD31F8676D9006DCC67 /* AlertDetailCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailCellView.swift; sourceTree = "<group>"; };
+		585CEBD51F869E2D006DCC67 /* AlertState_HasGenericAlertsWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState_HasGenericAlertsWatcher.swift; sourceTree = "<group>"; };
+		585CEBD71F86A023006DCC67 /* String+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTML.swift"; sourceTree = "<group>"; };
+		585CEBD91F86A0AE006DCC67 /* AlertDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailsViewModel.swift; sourceTree = "<group>"; };
 		5863DB591F6C6B6700FC0F1F /* FavoritesExistWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesExistWatcher.swift; sourceTree = "<group>"; };
 		58658D1A1F53135100E67B4E /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
 		58658D1D1F53298B00E67B4E /* DisplayAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAddress.swift; sourceTree = "<group>"; };
@@ -1209,6 +1215,7 @@
 				58248B7C1F6D992900DA2D65 /* FavoriteToEditWatcher.swift */,
 				584528BE1F7C316500E68D8F /* FavoritesToSaveWatcher.swift */,
 				5827411E1F6F5AC800AAF513 /* AlertState_AlertDetailsWatcher.swift */,
+				585CEBD51F869E2D006DCC67 /* AlertState_HasGenericAlertsWatcher.swift */,
 			);
 			path = "State Watchers";
 			sourceTree = "<group>";
@@ -1346,6 +1353,7 @@
 				587BC04B1F6EDD6E00B92BB6 /* TransitModeToolbar.storyboard */,
 				582741141F6F37F300AAF513 /* AlertDetailButton.swift */,
 				5827411C1F6F45BB00AAF513 /* PinkAlertHeaderView.swift */,
+				585CEBD71F86A023006DCC67 /* String+HTML.swift */,
 			);
 			path = "Common Views";
 			sourceTree = "<group>";
@@ -1391,6 +1399,7 @@
 			children = (
 				585CEBD11F867661006DCC67 /* AlertDetailsCellView.xib */,
 				585CEBD31F8676D9006DCC67 /* AlertDetailCellView.swift */,
+				585CEBD91F86A0AE006DCC67 /* AlertDetailsViewModel.swift */,
 				582F4E881F33B1120062A546 /* Alert.swift */,
 				58A26D981F6F10F8005A70D3 /* AlertNavigationControllerStateProvider.swift */,
 				58A26D9A1F6F221E005A70D3 /* AlertDetailViewController.swift */,
@@ -2970,6 +2979,7 @@
 				58248B7D1F6D992900DA2D65 /* FavoriteToEditWatcher.swift in Sources */,
 				588D80611F72B56100EE1983 /* AlertState_ScheduleState_ScheduleRequestWatcher.swift in Sources */,
 				582F4ED81F33B1120062A546 /* SelectSchedulesViewController.swift in Sources */,
+				585CEBD61F869E2D006DCC67 /* AlertState_HasGenericAlertsWatcher.swift in Sources */,
 				58B2778B1F629FAA00663507 /* DummyData.swift in Sources */,
 				587BC0441F6ED63900B92BB6 /* MapToAlerts.swift in Sources */,
 				58FBB66A1F58717500E6532B /* SeptaTabBarImages.swift in Sources */,
@@ -3030,6 +3040,7 @@
 				67365ACA1F754A3200FC86CB /* HalfSheetPresentationCoordinator.swift in Sources */,
 				58490E471F55F98B007DBCA1 /* AlertState.swift in Sources */,
 				5814AA8A1F4359D000DF774A /* TripleTextDisplayable.swift in Sources */,
+				585CEBD81F86A023006DCC67 /* String+HTML.swift in Sources */,
 				587BC0481F6ED66700B92BB6 /* MapFromAlerts.swift in Sources */,
 				58DB04A51F558DD0005CC850 /* SearchRoutesModalHeaderViewController.swift in Sources */,
 				67A3857B1F7D5BA7002E01E0 /* UIViewController+Shadows.swift in Sources */,
@@ -3101,6 +3112,7 @@
 				58DB10F81F3B8DB400191AED /* NavigationReducer.swift in Sources */,
 				584AC8731F437DDB0040C1B4 /* TripScheduleViewController.swift in Sources */,
 				678F05391F5BFFE500CC4D3C /* LocationActions.swift in Sources */,
+				585CEBDA1F86A0AE006DCC67 /* AlertDetailsViewModel.swift in Sources */,
 				676B7D8A1F7CFA8A0052F016 /* FarePaymentModeView.swift in Sources */,
 				58E33F121F60998F00C74B7C /* NextToArriveDetailViewController.swift in Sources */,
 				678D26C41F5CC4A400D140CC /* FavoritesState.swift in Sources */,

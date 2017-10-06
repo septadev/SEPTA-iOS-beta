@@ -19,6 +19,7 @@ class GenericAlertDetailProvider {
 
     private init() {
         timer = Timer.scheduledTimer(timeInterval: 60 * 5, target: self, selector: #selector(timerFired(timer:)), userInfo: nil, repeats: true)
+        getGenericAlert()
     }
 
     @objc func timerFired(timer _: Timer) {

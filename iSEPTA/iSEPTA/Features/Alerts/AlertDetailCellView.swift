@@ -14,14 +14,51 @@ class AlertDetailCellView: UIView {
     var sectionNumber: Int!
     weak var delegate: AlertDetailCellDelegate?
 
-    @IBOutlet weak var shadowView: UIView!
-    @IBOutlet weak var content: UIView!
+    @IBOutlet weak var shadowView: UIView! {
+        didSet {
+            styleWhiteViews([shadowView])
+        }
+    }
+
+    @IBOutlet var advisoryLabelLeft_GenericConstraint: NSLayoutConstraint!
+    @IBOutlet var AdvisoryLabelLeft_NonGenericConstraint: NSLayoutConstraint!
+    @IBOutlet weak var content: UIView! {
+        didSet {
+            styleWhiteViews([content])
+        }
+    }
+
+    var isGenericAlert = false {
+        didSet {
+            if isGenericAlert {
+                AdvisoryLabelLeft_NonGenericConstraint.isActive = false
+                advisoryLabelLeft_GenericConstraint.isActive = true
+                alertImage.isHidden = true
+                advisoryLabel.text = "General Septa Alert"
+                let alertDetails = store.state.alertState.genericAlertDetails
+                let message = AlertDetailsViewModel.renderMessage(alertDetails: alertDetails) { return $0.advisory_message }
+                textView.attributedText = message
+                setEnabled(true)
+            } else {
+                advisoryLabelLeft_GenericConstraint.isActive = false
+                AdvisoryLabelLeft_NonGenericConstraint.isActive = true
+                alertImage.isHidden = false
+            }
+            setNeedsLayout()
+        }
+    }
+
     @IBOutlet weak var disabledAdvisoryLabel: UILabel!
     @IBOutlet weak var advisoryLabel: UILabel!
     @IBOutlet weak var actionButton: AlertDetailButton!
 
     @IBOutlet weak var pinkHeaderView: PinkAlertHeaderView!
-    @IBOutlet weak var textViewHeightContraints: NSLayoutConstraint!
+    @IBOutlet weak var textViewHeightContraints: NSLayoutConstraint! {
+        didSet {
+            textViewHeightContraints.constant = 0
+        }
+    }
+
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var alertImage: UIImageView!
 
@@ -71,9 +108,13 @@ class AlertDetailCellView: UIView {
     }
 
     override func awakeFromNib() {
-        textViewHeightContraints.constant = 0
-        styleClearViews([self])
-        styleWhiteViews([shadowView, content])
+        super.awakeFromNib()
+        advisoryLabelLeft_GenericConstraint.isActive = false
+        AdvisoryLabelLeft_NonGenericConstraint.isActive = true
+    }
+
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
     }
 
     func styleWhiteViews(_ views: [UIView]) {

@@ -33,8 +33,8 @@
                                     <color key="textColor" red="0.42745098040000001" green="0.42745098040000001" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service Advisories: 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rn-0F-qbn" userLabel="AdvisoryLabel">
-                                    <rect key="frame" x="54" y="20" width="156.5" height="19.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service Advisories: 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rn-0F-qbn" userLabel="AdvisoryLabel">
+                                    <rect key="frame" x="15" y="20" width="156.5" height="19.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -43,6 +43,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="E7C-6Z-Gsi" userLabel="PinkViewHeight"/>
+                                <constraint firstItem="7rn-0F-qbn" firstAttribute="leading" secondItem="bEc-zl-79l" secondAttribute="leading" constant="15" id="RZa-36-Mu4" userLabel="AdvisoryLabelLeft_GenericAlertOnly"/>
                                 <constraint firstItem="7rn-0F-qbn" firstAttribute="centerY" secondItem="bEc-zl-79l" secondAttribute="centerY" id="gIv-0O-4CQ" userLabel="AdvisoryLabelCenterY"/>
                                 <constraint firstItem="gbk-d1-epW" firstAttribute="centerY" secondItem="bEc-zl-79l" secondAttribute="centerY" id="kuH-fG-E6h" userLabel="DisabledAdvisoryLabelCenterY"/>
                             </constraints>
@@ -82,7 +83,7 @@
                         <constraint firstItem="XEF-UP-jxi" firstAttribute="centerY" secondItem="bEc-zl-79l" secondAttribute="centerY" id="2sd-kk-r8z" userLabel="PinkViewCenterY"/>
                         <constraint firstItem="d1u-hI-1RZ" firstAttribute="centerY" secondItem="bEc-zl-79l" secondAttribute="centerY" id="J0t-v5-Xi1" userLabel="AlertImageCenterY"/>
                         <constraint firstAttribute="trailing" secondItem="XEF-UP-jxi" secondAttribute="trailing" constant="15" id="LtO-NQ-x62" userLabel="ActionButtonRight"/>
-                        <constraint firstItem="7rn-0F-qbn" firstAttribute="leading" secondItem="d1u-hI-1RZ" secondAttribute="trailing" constant="9" id="Oka-o3-FFc" userLabel="AdvisoryLabelLeft"/>
+                        <constraint firstItem="7rn-0F-qbn" firstAttribute="leading" secondItem="d1u-hI-1RZ" secondAttribute="trailing" constant="9" id="Oka-o3-FFc" userLabel="AdvisoryLabelLeft_NonGeneric"/>
                         <constraint firstItem="gAs-7Q-4TI" firstAttribute="top" secondItem="bEc-zl-79l" secondAttribute="bottom" id="TdB-Ok-qdf" userLabel="TextViewTop"/>
                         <constraint firstItem="bEc-zl-79l" firstAttribute="leading" secondItem="Yof-w1-0Jw" secondAttribute="leading" id="XdD-M6-WrH" userLabel="PinkViewLeft"/>
                         <constraint firstAttribute="trailing" secondItem="bEc-zl-79l" secondAttribute="trailing" id="ZhK-db-TQz" userLabel="PinkViewright"/>
@@ -112,8 +113,10 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="AdvisoryLabelLeft_NonGenericConstraint" destination="Oka-o3-FFc" id="iwE-wx-zfh"/>
                 <outlet property="actionButton" destination="XEF-UP-jxi" id="fEe-T7-5ek"/>
                 <outlet property="advisoryLabel" destination="7rn-0F-qbn" id="IaE-od-ZN3"/>
+                <outlet property="advisoryLabelLeft_GenericConstraint" destination="RZa-36-Mu4" id="78u-w1-r88"/>
                 <outlet property="alertImage" destination="d1u-hI-1RZ" id="dpG-r9-9zS"/>
                 <outlet property="content" destination="Yof-w1-0Jw" id="rc8-hS-Edx"/>
                 <outlet property="disabledAdvisoryLabel" destination="gbk-d1-epW" id="cWv-xe-ruE"/>

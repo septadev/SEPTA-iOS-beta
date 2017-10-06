@@ -204,23 +204,11 @@
                                         <string key="userLabel">
 TableViewWrapper</string>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mFK-jg-0FA" userLabel="GenericAlertsTableViewWrapper">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mFK-jg-0FA" userLabel="AlertDetailCellview">
                                         <rect key="frame" x="15" y="231" width="345" height="60"/>
-                                        <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p58-dc-ihh">
-                                                <rect key="frame" x="0.0" y="0.0" width="345" height="60"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="U3J-nT-6ur"/>
-                                                </constraints>
-                                            </tableView>
-                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="p58-dc-ihh" secondAttribute="trailing" id="3HD-U8-nW3" userLabel="TableViewRight"/>
-                                            <constraint firstItem="p58-dc-ihh" firstAttribute="leading" secondItem="mFK-jg-0FA" secondAttribute="leading" id="FuT-Jb-D6m" userLabel="TableViewLeft"/>
-                                            <constraint firstItem="p58-dc-ihh" firstAttribute="top" secondItem="mFK-jg-0FA" secondAttribute="top" id="Pnd-7r-gzp" userLabel="TableViewTop"/>
-                                            <constraint firstAttribute="bottom" secondItem="p58-dc-ihh" secondAttribute="bottom" id="dT4-R8-JWS" userLabel="TableViewBottom"/>
+                                            <constraint firstAttribute="height" constant="60" placeholder="YES" id="sIQ-Tv-UJH"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -257,7 +245,6 @@ TableViewWrapper</string>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="buttonView" destination="X65-2S-sYu" id="Xbs-Ow-CvZ"/>
-                        <outlet property="genericAlertsTableView" destination="p58-dc-ihh" id="XTw-Vw-87V"/>
                         <outlet property="genericAlertsTableViewWrapper" destination="mFK-jg-0FA" id="AQR-zk-aJt"/>
                         <outlet property="scheduleLabel" destination="1GD-nr-m8r" id="HxH-l0-t3j"/>
                         <outlet property="section0View" destination="VYG-qk-CB6" id="Hk9-zh-dvm"/>
@@ -290,7 +277,7 @@ TableViewWrapper</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p72-Km-5YN">
-                            <rect key="frame" x="207" y="10" width="33" height="27"/>
+                            <rect key="frame" x="207" y="10.5" width="33" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Reset">
                                 <color key="titleColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>

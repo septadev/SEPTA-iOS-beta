@@ -165,22 +165,6 @@ extension AlertDetailViewController: AlertState_AlertDetailsWatcherDelegate {
     }
 }
 
-private extension String {
-
-    var htmlAttributedString: NSAttributedString? {
-        let htmlString = "<html>\(self)</html>"
-        do {
-            guard let data = htmlString.data(using: .utf8) else { return nil }
-            return try NSAttributedString(data: data, options: [
-                NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html,
-            ], documentAttributes: nil)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-        return nil
-    }
-}
-
 extension AlertDetailViewController {
 
     func configureForServiceAdvisories(cell: AlertDetailCell) {
@@ -188,7 +172,7 @@ extension AlertDetailViewController {
         cell.alertImage.image = UIImage(named: "advisoryAlert")
         cell.advisoryLabel.text = "Service Advisories"
         cell.disabledAdvisoryLabel.text = "No Service Advisories"
-        let message = renderMessage(alertDetails: alertDetails) { return $0.advisory_message }
+        let message = AlertDetailsViewModel.renderMessage(alertDetails: alertDetails) { return $0.advisory_message }
         if let message = message {
             cell.setEnabled(true)
             cell.textView.attributedText = message
@@ -203,7 +187,7 @@ extension AlertDetailViewController {
         cell.alertImage.image = UIImage(named: "alertAlert")
         cell.advisoryLabel.text = "Service Alerts"
         cell.disabledAdvisoryLabel.text = "No Service Alerts"
-        let message = renderMessage(alertDetails: alertDetails) { return $0.message }
+        let message = AlertDetailsViewModel.renderMessage(alertDetails: alertDetails) { return $0.message }
         if let message = message {
             cell.setEnabled(true)
             cell.textView.attributedText = message
@@ -218,7 +202,7 @@ extension AlertDetailViewController {
         cell.alertImage.image = UIImage(named: "detourAlert")
         cell.advisoryLabel.text = "Active Detours"
         cell.disabledAdvisoryLabel.text = "No Active Detours"
-        let message = renderMessage(alertDetails: alertDetails) { return $0.detour?.message }
+        let message = AlertDetailsViewModel.renderMessage(alertDetails: alertDetails) { return $0.detour?.message }
         if let message = message {
             cell.setEnabled(true)
             cell.textView.attributedText = message
@@ -238,19 +222,6 @@ extension AlertDetailViewController {
         cell.textView.text = nil
         cell.setEnabled(false)
         weatherCell = cell
-    }
-
-    func renderMessage(alertDetails: [AlertDetails_Alert], filter: ((AlertDetails_Alert) -> String?)) -> NSAttributedString? {
-        let message: String = alertDetails.filter({
-            guard let message = filter($0) else { return false }
-            return message.count > 0
-        }).map({ filter($0)! }).joined(separator: "")
-
-        if message.count > 0 {
-            return message.htmlAttributedString
-        } else {
-            return nil
-        }
     }
 }
 

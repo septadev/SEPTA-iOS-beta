@@ -23,7 +23,15 @@ class AlertsViewController: UIViewController, IdentifiableController {
     @IBOutlet weak var sectionHeaderLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewWrapperView: UIView!
-    @IBOutlet weak var genericAlertsTableViewWrapper: UIView!
+    var alertDetailCellView: AlertDetailCellView!
+
+    var alertState_HasGenericAlertsWatcher: AlertState_HasGenericAlertsWatcher!
+
+    @IBOutlet weak var genericAlertsTableViewWrapper: UIView! {
+        didSet {
+            alertDetailCellView = genericAlertsTableViewWrapper.awakeInsertAndPinSubview(nibName: "AlertDetailsCellView")
+        }
+    }
 
     @IBOutlet weak var genericAlertsTableView: UITableView!
     let buttonRow = 1
@@ -40,6 +48,7 @@ class AlertsViewController: UIViewController, IdentifiableController {
     }
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         viewModel = AlertsViewModel()
         viewModel.delegate = self
         viewModel.schedulesDelegate = self
@@ -51,7 +60,9 @@ class AlertsViewController: UIViewController, IdentifiableController {
 
         updateHeaderLabels()
 
-        super.viewDidLoad()
+        alertDetailCellView.isGenericAlert = true
+        alertState_HasGenericAlertsWatcher = AlertState_HasGenericAlertsWatcher()
+        alertState_HasGenericAlertsWatcher.delegate = self
     }
 
     override func viewWillAppear(_: Bool) {
@@ -166,5 +177,11 @@ extension AlertsViewController: SchedulesViewModelDelegate {
         }
         formIsComplete = isComplete
         tableView.reloadData()
+    }
+}
+
+extension AlertsViewController: AlertState_HasGenericAlertsWatcherDelegate {
+    func alertState_HasGenericAlertsUpdated(bool hasAlerts: Bool) {
+        genericAlertsTableViewWrapper.isHidden = !hasAlerts
     }
 }

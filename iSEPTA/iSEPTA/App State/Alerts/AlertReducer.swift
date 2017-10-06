@@ -39,6 +39,8 @@ struct AlertReducer {
             newState = reduceNewAlertsRetrieved(action: action, state: state)
         case let action as AlertDetailsLoaded:
             newState = reduceAlertDetailsLoaded(action: action, state: state)
+        case let action as GenericAlertDetailsLoaded:
+            newState = reduceGenericAlertDetailsLoaded(action: action, state: state)
         default:
             break
         }
