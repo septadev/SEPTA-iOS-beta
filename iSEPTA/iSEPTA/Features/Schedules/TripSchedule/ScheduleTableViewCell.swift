@@ -10,6 +10,7 @@ protocol ScheduleDisplayable {
     func setDurationText(text: String)
     func setVehicleTitle(text: String)
     func setVehicleText(text: String)
+    func hideVehicleTitle(_ isHiden: Bool)
 }
 
 class ScheduleTableViewCell: UITableViewCell, ScheduleDisplayable {
@@ -43,5 +44,9 @@ class ScheduleTableViewCell: UITableViewCell, ScheduleDisplayable {
 
     func setVehicleText(text: String) {
         vehicleLabel.text = text
+    }
+
+    func hideVehicleTitle(_: Bool) {
+        vehicleTitleLabel.isHidden = isHidden
     }
 }
