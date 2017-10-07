@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<?charles serialisation-version='2.0' ?>
+<mapLocal>
+  <toolEnabled>true</toolEnabled>
+  <mappings>
+    <mapLocalMapping>
+      <sourceLocation>
+        <protocol>https</protocol>
+        <path>/prod/alert-details</path>
+      </sourceLocation>
+      <dest>/Users/mbroski/Code/Septa/Septa2/CharlesSessions/prod/alert-details.json</dest>
+      <enabled>true</enabled>
+      <caseSensitive>false</caseSensitive>
+    </mapLocalMapping>
+    <mapLocalMapping>
+      <sourceLocation>
+        <protocol>https</protocol>
+        <host>vnjb5kvq2b.execute-api.us-east-1.amazonaws.com</host>
+        <port>443</port>
+        <path>/prod/realtimearrivals</path>
+      </sourceLocation>
+      <dest>/Users/mbroski/Code/Septa/Septa2/CharlesSessions/prod/realTimeArrivals.json</dest>
+      <enabled>true</enabled>
+      <caseSensitive>true</caseSensitive>
+    </mapLocalMapping>
+  </mappings>
+</mapLocal>
