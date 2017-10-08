@@ -44,7 +44,7 @@ extension FavoritesViewController { // refresh timer
     }
 
     func initTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(oneMinuteTimerFired(timer:)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(oneMinuteTimerFired(timer:)), userInfo: nil, repeats: true)
     }
 
     @objc func oneMinuteTimerFired(timer _: Timer) {
@@ -56,7 +56,7 @@ extension FavoritesViewController { // refresh timer
         let _: [Favorite] = store.state.favoritesState.favorites.filter({ $0.nextToArriveUpdateStatus != .dataLoading }).map {
             var favorite = $0
             favorite.refreshDataRequested = true
-            let action = UpdateFavorite(favorite: favorite, description: "Timer based request to update this favorite")
+            let action = RequestFavoriteNextToArriveUpdate(favorite: favorite, description: "Timer based request to update this favorite")
             store.dispatch(action)
             return favorite
         }

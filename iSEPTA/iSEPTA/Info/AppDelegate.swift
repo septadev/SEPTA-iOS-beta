@@ -10,7 +10,7 @@ import Crashlytics
 let store = Store<AppState>(
     reducer: AppStateReducer.mainReducer,
     state: nil,
-    middleware: [loggingMiddleware, nextToArriveMiddleware, septaConnectionMiddleware]
+    middleware: [loggingMiddleware, nextToArriveMiddleware, septaConnectionMiddleware, favoritesMiddleware]
 )
 
 var stateProviders = StateProviders()

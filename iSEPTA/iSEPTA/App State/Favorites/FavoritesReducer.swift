@@ -29,16 +29,18 @@ struct FavoritesReducer {
             favoritesState = reduceAddFavorite(action: action, state: state)
         case let action as EditFavorite:
             favoritesState = reduceEditFavorite(action: action, state: state)
-        case let action as SaveFavorite:
+        case let action as SaveEditedFavorite:
             favoritesState = reduceSaveFavorite(action: action, state: state)
         case let action as CancelFavoriteEdit:
             favoritesState = reduceCancelFavoriteEdit(action: action, state: state)
-        case let action as RemoveFavorite:
+        case let action as RemoveEditedFavorite:
             favoritesState = reduceRemoveFavorite(action: action, state: state)
         case let action as UpdateFavorite:
             favoritesState = reduceUpdateFavorite(action: action, state: state)
         case let action as CreateNextToArriveFavorite:
             favoritesState = reduceCreateNextToArriveFavorite(action: action, state: state)
+        case let action as RequestFavoriteNextToArriveUpdate:
+            favoritesState = reduceRequestFavoriteNextToArriveUpdate(action: action, state: state)
         default:
             break
         }
@@ -65,7 +67,7 @@ struct FavoritesReducer {
         return favoriteState
     }
 
-    static func reduceSaveFavorite(action: SaveFavorite, state: FavoritesState) -> FavoritesState {
+    static func reduceSaveFavorite(action: SaveEditedFavorite, state: FavoritesState) -> FavoritesState {
         var favorites = state.favorites.filter { $0.favoriteId != action.favorite.favoriteId }
         favorites.append(action.favorite)
         var favoriteState = FavoritesState(favorites: favorites)
@@ -81,7 +83,7 @@ struct FavoritesReducer {
         return favoriteState
     }
 
-    static func reduceRemoveFavorite(action: RemoveFavorite, state: FavoritesState) -> FavoritesState {
+    static func reduceRemoveFavorite(action: RemoveEditedFavorite, state: FavoritesState) -> FavoritesState {
         let favorites = state.favorites.filter { $0.favoriteId != action.favorite.favoriteId }
         var favoriteState = FavoritesState(favorites: favorites)
         favoriteState.favoriteToEdit = nil
@@ -100,6 +102,17 @@ struct FavoritesReducer {
         var favoriteState = FavoritesState(favorites: otherFavorites)
         favoriteState.nextToArriveFavoriteId = state.nextToArriveFavoriteId
         favoriteState.favoriteToEdit = state.favoriteToEdit
+        return favoriteState
+    }
+
+    static func reduceRequestFavoriteNextToArriveUpdate(action: RequestFavoriteNextToArriveUpdate, state: FavoritesState) -> FavoritesState {
+        guard var matchingFavorite = state.favorites.filter({ $0.favoriteId == action.favorite.favoriteId }).first else { return state }
+        matchingFavorite.refreshDataRequested = true
+
+        var mutatingFavoritesArray = state.favorites.filter { $0.favoriteId != matchingFavorite.favoriteId }
+        mutatingFavoritesArray.append(matchingFavorite)
+        var favoriteState = state
+        favoriteState.favorites = mutatingFavoritesArray
         return favoriteState
     }
 

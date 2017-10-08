@@ -8,8 +8,10 @@
 
 import Foundation
 import UIKit
+import SeptaRest
 
-class AlertDetailCellView: UIView {
+class AlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherDelegate {
+    var openState: Bool = false
 
     var sectionNumber: Int!
     weak var delegate: AlertDetailCellDelegate?
@@ -17,42 +19,52 @@ class AlertDetailCellView: UIView {
     @IBOutlet weak var shadowView: UIView! {
         didSet {
             styleWhiteViews([shadowView])
+            shadowView.layer.cornerRadius = 4
         }
     }
 
-    @IBOutlet var advisoryLabelLeft_GenericConstraint: NSLayoutConstraint!
-    @IBOutlet var AdvisoryLabelLeft_NonGenericConstraint: NSLayoutConstraint!
+    var pinkAlertHeaderView: PinkAlertHeaderView!
+    @IBOutlet weak var pinkWrapperView: UIView! {
+        didSet {
+            pinkAlertHeaderView = pinkWrapperView.awakeInsertAndPinSubview(nibName: "PinkAlertHeaderView")
+            pinkAlertHeaderView.actionButton.addTarget(self, action: #selector(actionButtonTapped(_:)), for: .touchUpInside)
+        }
+    }
+
+    var alertImage: UIImageView { return pinkAlertHeaderView.alertImageView }
+
+    var disabledAdvisoryLabel: UILabel { return pinkAlertHeaderView.disabledAdvisoryLabel }
+
+    var advisoryLabel: UILabel { return pinkAlertHeaderView.advisoryLabel }
+
+    var genericAlertDetailsWatcher: AlertState_GenericAlertDetailsWatcher?
+
     @IBOutlet weak var content: UIView! {
         didSet {
             styleWhiteViews([content])
+            content.layer.cornerRadius = 4
+            content.layer.masksToBounds = true
         }
     }
 
-    var isGenericAlert = false {
+    var isGenericAlert: Bool = false {
+
         didSet {
+            pinkAlertHeaderView.isGenericAlert = isGenericAlert
+
+            textView.isScrollEnabled = isGenericAlert
             if isGenericAlert {
-                AdvisoryLabelLeft_NonGenericConstraint.isActive = false
-                advisoryLabelLeft_GenericConstraint.isActive = true
-                alertImage.isHidden = true
-                advisoryLabel.text = "General Septa Alert"
-                let alertDetails = store.state.alertState.genericAlertDetails
-                let message = AlertDetailsViewModel.renderMessage(alertDetails: alertDetails) { return $0.advisory_message }
-                textView.attributedText = message
-                setEnabled(true)
-            } else {
-                advisoryLabelLeft_GenericConstraint.isActive = false
-                AdvisoryLabelLeft_NonGenericConstraint.isActive = true
-                alertImage.isHidden = false
+                genericAlertDetailsWatcher = AlertState_GenericAlertDetailsWatcher()
+                genericAlertDetailsWatcher?.delegate = self
             }
-            setNeedsLayout()
         }
     }
 
-    @IBOutlet weak var disabledAdvisoryLabel: UILabel!
-    @IBOutlet weak var advisoryLabel: UILabel!
-    @IBOutlet weak var actionButton: AlertDetailButton!
+    func alertState_GenericAlertDetailsUpdated(alertDetails: [AlertDetails_Alert]) {
+        let message = AlertDetailsViewModel.renderMessage(alertDetails: alertDetails) { return $0.message }
+        textView.attributedText = message
+    }
 
-    @IBOutlet weak var pinkHeaderView: PinkAlertHeaderView!
     @IBOutlet weak var textViewHeightContraints: NSLayoutConstraint! {
         didSet {
             textViewHeightContraints.constant = 0
@@ -60,11 +72,8 @@ class AlertDetailCellView: UIView {
     }
 
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var alertImage: UIImageView!
 
-    var openState: Bool = false
-
-    @IBAction func actionButtonTapped(_: Any) {
+    @objc @IBAction func actionButtonTapped(_: Any) {
         delegate?.didTapButton(sectionNumber: sectionNumber)
         calculateFittingSize()
         delegate?.constraintsChanged(sectionNumber: sectionNumber)
@@ -78,18 +87,18 @@ class AlertDetailCellView: UIView {
             let heightOfText = sizeThatFitsTextView.height
 
             textViewHeightContraints.constant = heightOfText
-            actionButton.isOpen = true
+            pinkAlertHeaderView.actionButton.isOpen = true
             openState = true
         } else {
             textViewHeightContraints.constant = 0
-            actionButton.isOpen = false
+            pinkAlertHeaderView.actionButton.isOpen = false
             openState = false
         }
         setNeedsLayout()
     }
 
     var fittingHeight: CGFloat {
-        if actionButton.isOpen {
+        if pinkAlertHeaderView.actionButton.isOpen {
             let windowWidth = UIScreen.main.bounds.width - 50
             let sizeThatFitsTextView = textView.sizeThatFits(CGSize(width: windowWidth, height: CGFloat(MAXFLOAT)))
             let heightOfText = sizeThatFitsTextView.height
@@ -100,27 +109,12 @@ class AlertDetailCellView: UIView {
     }
 
     func setEnabled(_ enabled: Bool) {
-        disabledAdvisoryLabel.isHidden = enabled
-        advisoryLabel.isHidden = !enabled
-        actionButton.isEnabled = enabled
-        pinkHeaderView.enabled = enabled
-        setNeedsLayout()
-    }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        advisoryLabelLeft_GenericConstraint.isActive = false
-        AdvisoryLabelLeft_NonGenericConstraint.isActive = true
-    }
-
-    override func didMoveToSuperview() {
-        super.didMoveToSuperview()
+        pinkAlertHeaderView.enabled = enabled
     }
 
     func styleWhiteViews(_ views: [UIView]) {
         for view in views {
             view.backgroundColor = UIColor.white
-            view.layer.cornerRadius = 4
         }
     }
 

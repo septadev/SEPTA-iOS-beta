@@ -4,9 +4,9 @@ use String::Util  ':all';
 use Modern::Perl;
 use Data::Dumper; 
 
-my $type = q| Bool   |;
+my $type = q| [AlertDetails_Alert]   |;
 
-my $keyPath = q|  alertState.hasGenericAlerts |;
+my $keyPath = q|  alertState.genericAlertDetails |;
 
 
 

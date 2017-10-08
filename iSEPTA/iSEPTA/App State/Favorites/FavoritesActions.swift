@@ -25,7 +25,7 @@ struct EditFavorite: FavoritesAction {
     let description = "User wants to edit a favorite"
 }
 
-struct SaveFavorite: FavoritesAction {
+struct SaveEditedFavorite: FavoritesAction {
     let favorite: Favorite
     let description = "User adds a Favorite"
 }
@@ -35,12 +35,17 @@ struct CancelFavoriteEdit: FavoritesAction {
     let description = "User cancels an edit Favorite action"
 }
 
-struct RemoveFavorite: FavoritesAction {
+struct RemoveEditedFavorite: FavoritesAction {
     let favorite: Favorite
     let description = "User removes a favorite"
 }
 
 struct UpdateFavorite: FavoritesAction {
+    let favorite: Favorite
+    let description: String
+}
+
+struct RequestFavoriteNextToArriveUpdate: FavoritesAction {
     let favorite: Favorite
     let description: String
 }

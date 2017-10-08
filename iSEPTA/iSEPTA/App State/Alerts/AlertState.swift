@@ -19,7 +19,7 @@ struct AlertState {
     let scheduleState: ScheduleState
     let alertDetails: [AlertDetails_Alert]
     let genericAlertDetails: [AlertDetails_Alert]
-    var hasGenericAlerts: Bool { return genericAlertDetails.count > 0 }
+    var hasGenericAlerts: Bool { return AlertDetailsViewModel.hasGenericMessage(alertDetails: genericAlertDetails) }
 
     init(alertDict: AlertsByTransitModeThenRoute = [TransitMode: [String: SeptaAlert]](), scheduleState: ScheduleState = ScheduleState(), lastUpdated: Date = Date.distantPast, alertDetails: [AlertDetails_Alert] = [AlertDetails_Alert](), genericAlertDetails: [AlertDetails_Alert] = [AlertDetails_Alert]()) {
         self.alertDict = alertDict

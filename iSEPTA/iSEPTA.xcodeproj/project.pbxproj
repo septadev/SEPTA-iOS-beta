@@ -109,7 +109,6 @@
 		5840D6EE1F37F63800C8CB76 /* TransitModeToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */; };
 		5844CA1F1F3BD9B700651223 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5844CA1E1F3BD9B700651223 /* NavigationState.swift */; };
 		584528BB1F7C27C000E68D8F /* CurvedTopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584528BA1F7C27C000E68D8F /* CurvedTopInfoView.swift */; };
-		584528BF1F7C316500E68D8F /* FavoritesToSaveWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584528BE1F7C316500E68D8F /* FavoritesToSaveWatcher.swift */; };
 		58470C091F3F276000F3C9B5 /* NumberFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58470C081F3F276000F3C9B5 /* NumberFormatters.swift */; };
 		58490E401F55F84F007DBCA1 /* SeptaRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; };
 		58490E451F55F8FF007DBCA1 /* SeptaAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E441F55F8FF007DBCA1 /* SeptaAlert.swift */; };
@@ -414,6 +413,9 @@
 		6708C2771F73AE3F00922D8E /* NavigationViewControllerStateToNavigationEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6708C2761F73AE3F00922D8E /* NavigationViewControllerStateToNavigationEventTests.swift */; };
 		6708C2791F73B7C200922D8E /* NavigationModalStateToNavigationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6708C2781F73B7C200922D8E /* NavigationModalStateToNavigationEvent.swift */; };
 		6708C27B1F73BABA00922D8E /* NavigationModalStateToNavigationEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6708C27A1F73BABA00922D8E /* NavigationModalStateToNavigationEventTests.swift */; };
+		670C59DE1F8920E900CAE1AC /* AlertState_GenericAlertDetailsWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C59DD1F8920E900CAE1AC /* AlertState_GenericAlertDetailsWatcher.swift */; };
+		670C59E31F8A5CEE00CAE1AC /* FavoritesMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C59E21F8A5CEE00CAE1AC /* FavoritesMiddleware.swift */; };
+		670C59E51F8A5D2700CAE1AC /* FavoritesMiddlewareActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C59E41F8A5D2700CAE1AC /* FavoritesMiddlewareActions.swift */; };
 		671609031F6766FF00941D2C /* TripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671609021F6766FF00941D2C /* TripView.swift */; };
 		671609071F67671F00941D2C /* TripView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 671609061F67671F00941D2C /* TripView.xib */; };
 		671609091F676F1300941D2C /* ConnectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 671609081F676F1300941D2C /* ConnectionView.xib */; };
@@ -464,6 +466,7 @@
 		676B7D9F1F7D189E0052F016 /* more.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 676B7D9E1F7D189E0052F016 /* more.storyboard */; };
 		676B7DA11F7D18B90052F016 /* MoreNavigationControllerStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B7DA01F7D18B90052F016 /* MoreNavigationControllerStateProvider.swift */; };
 		676B7DA31F7D18E50052F016 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B7DA21F7D18E50052F016 /* MoreViewController.swift */; };
+		677FC7131F87DA82007596EA /* PinkAlertHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 677FC7121F87DA82007596EA /* PinkAlertHeaderView.xib */; };
 		678D26BF1F5C414800D140CC /* LocationServicesListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26BE1F5C414800D140CC /* LocationServicesListener.swift */; };
 		678D26C41F5CC4A400D140CC /* FavoritesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26C31F5CC4A400D140CC /* FavoritesState.swift */; };
 		678D26C61F5CC52300D140CC /* FavoritesReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D26C51F5CC52300D140CC /* FavoritesReducer.swift */; };
@@ -709,7 +712,6 @@
 		5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitModeToolbarView.swift; sourceTree = "<group>"; };
 		5844CA1E1F3BD9B700651223 /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
 		584528BA1F7C27C000E68D8F /* CurvedTopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedTopInfoView.swift; sourceTree = "<group>"; };
-		584528BE1F7C316500E68D8F /* FavoritesToSaveWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesToSaveWatcher.swift; sourceTree = "<group>"; };
 		58470C061F3F1EF300F3C9B5 /* StateLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateLogger.swift; sourceTree = "<group>"; };
 		58470C081F3F276000F3C9B5 /* NumberFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatters.swift; sourceTree = "<group>"; };
 		58470C0A1F3F2AD500F3C9B5 /* StateLogEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateLogEntry.swift; sourceTree = "<group>"; };
@@ -1028,6 +1030,9 @@
 		6708C2761F73AE3F00922D8E /* NavigationViewControllerStateToNavigationEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewControllerStateToNavigationEventTests.swift; sourceTree = "<group>"; };
 		6708C2781F73B7C200922D8E /* NavigationModalStateToNavigationEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModalStateToNavigationEvent.swift; sourceTree = "<group>"; };
 		6708C27A1F73BABA00922D8E /* NavigationModalStateToNavigationEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModalStateToNavigationEventTests.swift; sourceTree = "<group>"; };
+		670C59DD1F8920E900CAE1AC /* AlertState_GenericAlertDetailsWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState_GenericAlertDetailsWatcher.swift; sourceTree = "<group>"; };
+		670C59E21F8A5CEE00CAE1AC /* FavoritesMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesMiddleware.swift; sourceTree = "<group>"; };
+		670C59E41F8A5D2700CAE1AC /* FavoritesMiddlewareActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesMiddlewareActions.swift; sourceTree = "<group>"; };
 		671609021F6766FF00941D2C /* TripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripView.swift; sourceTree = "<group>"; };
 		671609061F67671F00941D2C /* TripView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripView.xib; sourceTree = "<group>"; };
 		671609081F676F1300941D2C /* ConnectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionView.xib; sourceTree = "<group>"; };
@@ -1078,6 +1083,7 @@
 		676B7D9E1F7D189E0052F016 /* more.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = more.storyboard; sourceTree = "<group>"; };
 		676B7DA01F7D18B90052F016 /* MoreNavigationControllerStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreNavigationControllerStateProvider.swift; sourceTree = "<group>"; };
 		676B7DA21F7D18E50052F016 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		677FC7121F87DA82007596EA /* PinkAlertHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PinkAlertHeaderView.xib; sourceTree = "<group>"; };
 		678D26BE1F5C414800D140CC /* LocationServicesListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServicesListener.swift; sourceTree = "<group>"; };
 		678D26C31F5CC4A400D140CC /* FavoritesState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesState.swift; sourceTree = "<group>"; };
 		678D26C51F5CC52300D140CC /* FavoritesReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesReducer.swift; sourceTree = "<group>"; };
@@ -1211,9 +1217,9 @@
 				58248B651F6D575A00DA2D65 /* BaseWatcher.swift */,
 				58248B6B1F6D5B6900DA2D65 /* FavoritesState_FavoritesExistWatcher.swift */,
 				585760AC1F82A31F00A340DB /* NextToArriveState_NextToArriveUpdateStatusWatcher.swift */,
+				670C59DD1F8920E900CAE1AC /* AlertState_GenericAlertDetailsWatcher.swift */,
 				58B5B1041F6DB00000A3DAFB /* FavoritesState_FavoritesWatcher.swift */,
 				58248B7C1F6D992900DA2D65 /* FavoriteToEditWatcher.swift */,
-				584528BE1F7C316500E68D8F /* FavoritesToSaveWatcher.swift */,
 				5827411E1F6F5AC800AAF513 /* AlertState_AlertDetailsWatcher.swift */,
 				585CEBD51F869E2D006DCC67 /* AlertState_HasGenericAlertsWatcher.swift */,
 			);
@@ -1351,8 +1357,6 @@
 				58248B6F1F6D6C3800DA2D65 /* SaveFavoriteButton.swift */,
 				58248B711F6D77A100DA2D65 /* DeleteFavoriteButton.swift */,
 				587BC04B1F6EDD6E00B92BB6 /* TransitModeToolbar.storyboard */,
-				582741141F6F37F300AAF513 /* AlertDetailButton.swift */,
-				5827411C1F6F45BB00AAF513 /* PinkAlertHeaderView.swift */,
 				585CEBD71F86A023006DCC67 /* String+HTML.swift */,
 			);
 			path = "Common Views";
@@ -1397,8 +1401,8 @@
 		582F4E871F33B1120062A546 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
-				585CEBD11F867661006DCC67 /* AlertDetailsCellView.xib */,
-				585CEBD31F8676D9006DCC67 /* AlertDetailCellView.swift */,
+				677FC7141F87DA9A007596EA /* PinkView */,
+				677FC7151F87E099007596EA /* CellView */,
 				585CEBD91F86A0AE006DCC67 /* AlertDetailsViewModel.swift */,
 				582F4E881F33B1120062A546 /* Alert.swift */,
 				58A26D981F6F10F8005A70D3 /* AlertNavigationControllerStateProvider.swift */,
@@ -2046,6 +2050,7 @@
 		58C9D2FD1F703716008FDE40 /* Middleware */ = {
 			isa = PBXGroup;
 			children = (
+				670C59E11F8A5CD400CAE1AC /* Favorites */,
 				67F028A81F7FD5370032F99C /* Septa Connection */,
 				58C9D3001F703735008FDE40 /* LoggingMiddleware.swift */,
 				67F028A71F7FD5270032F99C /* Next To Arrive */,
@@ -2283,6 +2288,15 @@
 			path = NavigationState;
 			sourceTree = "<group>";
 		};
+		670C59E11F8A5CD400CAE1AC /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				670C59E21F8A5CEE00CAE1AC /* FavoritesMiddleware.swift */,
+				670C59E41F8A5D2700CAE1AC /* FavoritesMiddlewareActions.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
 		671A19271F66383900C8EEDA /* ScheduleInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -2342,6 +2356,25 @@
 				67A385721F7D4402002E01E0 /* MoreTableViewCell.swift */,
 			);
 			path = More;
+			sourceTree = "<group>";
+		};
+		677FC7141F87DA9A007596EA /* PinkView */ = {
+			isa = PBXGroup;
+			children = (
+				677FC7121F87DA82007596EA /* PinkAlertHeaderView.xib */,
+				5827411C1F6F45BB00AAF513 /* PinkAlertHeaderView.swift */,
+				582741141F6F37F300AAF513 /* AlertDetailButton.swift */,
+			);
+			path = PinkView;
+			sourceTree = "<group>";
+		};
+		677FC7151F87E099007596EA /* CellView */ = {
+			isa = PBXGroup;
+			children = (
+				585CEBD11F867661006DCC67 /* AlertDetailsCellView.xib */,
+				585CEBD31F8676D9006DCC67 /* AlertDetailCellView.swift */,
+			);
+			path = CellView;
 			sourceTree = "<group>";
 		};
 		678D26C21F5CC49200D140CC /* Favorites */ = {
@@ -2693,6 +2726,7 @@
 				58B2783F1F62AAD500663507 /* 12.kml in Resources */,
 				58B278371F62AAD500663507 /* 111.kml in Resources */,
 				58B278B51F62AAD500663507 /* MED.kml in Resources */,
+				677FC7131F87DA82007596EA /* PinkAlertHeaderView.xib in Resources */,
 				58B278911F62AAD500663507 /* 70.kml in Resources */,
 				58B278AB1F62AAD500663507 /* CHW.kml in Resources */,
 				58B278A01F62AAD500663507 /* 93.kml in Resources */,
@@ -2945,6 +2979,7 @@
 				582F4EC51F33B1120062A546 /* NextToArriveViewController.swift in Sources */,
 				58B5B1091F6DBFFF00A3DAFB /* ScheduleState_ScheduleRequestWatcher.swift in Sources */,
 				589397121F7E64B900F3D2F8 /* SEPTAURLProvider.swift in Sources */,
+				670C59DE1F8920E900CAE1AC /* AlertState_GenericAlertDetailsWatcher.swift in Sources */,
 				671A19291F66385100C8EEDA /* NoConnectionCell.swift in Sources */,
 				588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */,
 				58490E491F56019B007DBCA1 /* AlertReducer.swift in Sources */,
@@ -2990,6 +3025,7 @@
 				671A19201F6613A600C8EEDA /* ConstraintsToggle.swift in Sources */,
 				580128121F6C055B006B6DB8 /* RedButton.swift in Sources */,
 				5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */,
+				670C59E51F8A5D2700CAE1AC /* FavoritesMiddlewareActions.swift in Sources */,
 				676355011F5E326800CA7EAB /* AppState+TargetForScheduleActions.swift in Sources */,
 				58126F671F631C0800A6E187 /* ColorPointAnnotation.swift in Sources */,
 				58FBB66C1F5885D800E6532B /* VerticalDottedTripGraphic.swift in Sources */,
@@ -3086,7 +3122,6 @@
 				587BC04A1F6ED70900B92BB6 /* QuickMap.swift in Sources */,
 				580ED6AC1F75A0A60095D714 /* RefreshNextToArriveDetail.swift in Sources */,
 				58A26D951F6EFECC005A70D3 /* AlertsNavigationController.swift in Sources */,
-				584528BF1F7C316500E68D8F /* FavoritesToSaveWatcher.swift in Sources */,
 				67C567351F598C7900FF6203 /* SeptaAlertsViewController.swift in Sources */,
 				589A89DE1F52E7E8007329DB /* ScheduleStopEditReducer.swift in Sources */,
 				58EB8D331F5D98320028A487 /* NextToArriveScheduleDataProvider.swift in Sources */,
@@ -3170,6 +3205,7 @@
 				676B7D841F7CFA270052F016 /* FaresViewController.swift in Sources */,
 				58EB8D291F5D90CD0028A487 /* NextToArriveState.swift in Sources */,
 				5893970C1F7E60D900F3D2F8 /* WebViewController.swift in Sources */,
+				670C59E31F8A5CEE00CAE1AC /* FavoritesMiddleware.swift in Sources */,
 				583523991F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift in Sources */,
 				67A385771F7D4752002E01E0 /* MoreViewModel.swift in Sources */,
 				67BC3F8D1F66AD4E001F9FE3 /* NoConnectionSectionHeader.swift in Sources */,

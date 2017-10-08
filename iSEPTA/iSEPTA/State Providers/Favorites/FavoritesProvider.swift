@@ -18,22 +18,15 @@ enum FavoritesError: Error {
     case couldNotCreateFavoritesFile
 }
 
-class FavoritesProvider: FavoriteState_SaveableFavoritesWatcherDelegate {
+class FavoritesProvider {
 
     static let sharedInstance = FavoritesProvider()
 
     let fileManager = FileManager.default
     var initialLoadFavoritesFromDiskHasCompleted = false
 
-    var favoriteToSaveWatcher = FavoriteState_SaveableFavoritesWatcher()
-
     private init() {
         retrieveFavoritesFromDisk()
-        favoriteToSaveWatcher.delegate = self
-    }
-
-    func favoriteState_SaveableFavoritesUpdated(saveableFavorites _: [String]) {
-        writeFavoritesToFile(state: store.state.favoritesState)
     }
 
     func retrieveFavoritesFromDisk() {
