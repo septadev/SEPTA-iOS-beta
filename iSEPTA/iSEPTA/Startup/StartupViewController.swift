@@ -13,11 +13,8 @@ class StartupViewController: UIViewController {
     @IBOutlet weak var buildNumber: UILabel!
 
     override func viewDidLoad() {
-        if let buildNumberText = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String {
-            buildNumber.text = "Build Number \(buildNumberText)"
-        } else {
-            buildNumber.text = ""
-        }
+        let buildNumberText = AppInfoProvider.buildNumber()
+        buildNumber.text = "Build Number \(buildNumberText)"
     }
 
     override func viewDidAppear(_ animated: Bool) {

@@ -418,9 +418,11 @@
 		670C59E51F8A5D2700CAE1AC /* FavoritesMiddlewareActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C59E41F8A5D2700CAE1AC /* FavoritesMiddlewareActions.swift */; };
 		670C59ED1F8A66F700CAE1AC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C59EC1F8A66F700CAE1AC /* AboutViewController.swift */; };
 		670C59EF1F8A67FA00CAE1AC /* about.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 670C59EE1F8A67FA00CAE1AC /* about.storyboard */; };
-		670C59F11F8A6DA500CAE1AC /* BlueGradientHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C59F01F8A6DA500CAE1AC /* BlueGradientHeader.swift */; };
+		670C59F11F8A6DA500CAE1AC /* BlueGradientTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C59F01F8A6DA500CAE1AC /* BlueGradientTitleView.swift */; };
 		670C59F31F8A6F3A00CAE1AC /* AppInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 670C59F21F8A6F3A00CAE1AC /* AppInfoView.xib */; };
 		670C59F51F8A712900CAE1AC /* AppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C59F41F8A712900CAE1AC /* AppInfoView.swift */; };
+		670C59F71F8A91CF00CAE1AC /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C59F61F8A91CF00CAE1AC /* AboutViewModel.swift */; };
+		670C59F91F8A941700CAE1AC /* AppInfoProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C59F81F8A941700CAE1AC /* AppInfoProvider.swift */; };
 		671609031F6766FF00941D2C /* TripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671609021F6766FF00941D2C /* TripView.swift */; };
 		671609071F67671F00941D2C /* TripView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 671609061F67671F00941D2C /* TripView.xib */; };
 		671609091F676F1300941D2C /* ConnectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 671609081F676F1300941D2C /* ConnectionView.xib */; };
@@ -1040,9 +1042,11 @@
 		670C59E41F8A5D2700CAE1AC /* FavoritesMiddlewareActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesMiddlewareActions.swift; sourceTree = "<group>"; };
 		670C59EC1F8A66F700CAE1AC /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		670C59EE1F8A67FA00CAE1AC /* about.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = about.storyboard; sourceTree = "<group>"; };
-		670C59F01F8A6DA500CAE1AC /* BlueGradientHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueGradientHeader.swift; sourceTree = "<group>"; };
+		670C59F01F8A6DA500CAE1AC /* BlueGradientTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueGradientTitleView.swift; sourceTree = "<group>"; };
 		670C59F21F8A6F3A00CAE1AC /* AppInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppInfoView.xib; sourceTree = "<group>"; };
 		670C59F41F8A712900CAE1AC /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
+		670C59F61F8A91CF00CAE1AC /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
+		670C59F81F8A941700CAE1AC /* AppInfoProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoProvider.swift; sourceTree = "<group>"; };
 		671609021F6766FF00941D2C /* TripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripView.swift; sourceTree = "<group>"; };
 		671609061F67671F00941D2C /* TripView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripView.xib; sourceTree = "<group>"; };
 		671609081F676F1300941D2C /* ConnectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionView.xib; sourceTree = "<group>"; };
@@ -1346,7 +1350,7 @@
 				58FBB66D1F58AAC000E6532B /* AlertViewGradientBackgroundView.swift */,
 				678D26CB1F5CDB4200D140CC /* Septa+Images.swift */,
 				58EB8D241F5D8EE80028A487 /* BaseNavigationBar.swift */,
-				670C59F01F8A6DA500CAE1AC /* BlueGradientHeader.swift */,
+				670C59F01F8A6DA500CAE1AC /* BlueGradientTitleView.swift */,
 				58E54E231F65A40100E9B66D /* NavigationBar+Util.swift */,
 				671A191F1F6613A600C8EEDA /* ConstraintsToggle.swift */,
 				5816AB721F7C10CD00210C07 /* ScrollableTableViewToggle.swift */,
@@ -2158,6 +2162,7 @@
 			children = (
 				58290E401F372B51000CCF3C /* AppState.swift */,
 				581804BC1F3F838B002184E3 /* CodableAppState.swift */,
+				670C59F81F8A941700CAE1AC /* AppInfoProvider.swift */,
 				58290E431F372BB9000CCF3C /* AppStateReducer.swift */,
 				58F444FB1F3D335400A93208 /* SeptaAction.swift */,
 				676355061F5EAD5900CA7EAB /* SubscriberUnsubscriber.swift */,
@@ -2308,6 +2313,7 @@
 			isa = PBXGroup;
 			children = (
 				670C59EC1F8A66F700CAE1AC /* AboutViewController.swift */,
+				670C59F61F8A91CF00CAE1AC /* AboutViewModel.swift */,
 				670C59F21F8A6F3A00CAE1AC /* AppInfoView.xib */,
 				670C59F41F8A712900CAE1AC /* AppInfoView.swift */,
 				670C59EE1F8A67FA00CAE1AC /* about.storyboard */,
@@ -3095,6 +3101,7 @@
 				678D26CE1F5CE4A500D140CC /* TripScheduleFavoritesIconController.swift in Sources */,
 				58E33F261F61619500C74B7C /* SeptaNetwork.swift in Sources */,
 				58BE70731F6A4E5A00D12479 /* CellConnectionView.swift in Sources */,
+				670C59F71F8A91CF00CAE1AC /* AboutViewModel.swift in Sources */,
 				67A385731F7D4402002E01E0 /* MoreTableViewCell.swift in Sources */,
 				676354FF1F5E2C2C00CA7EAB /* FilterableStop.swift in Sources */,
 				67F757B31F48729C00D3A4EE /* UIView+Util.swift in Sources */,
@@ -3196,7 +3203,7 @@
 				58E33F221F615EC100C74B7C /* NextToArriveScheduleRequestWatcher.swift in Sources */,
 				58DB10F81F3B8DB400191AED /* NavigationReducer.swift in Sources */,
 				584AC8731F437DDB0040C1B4 /* TripScheduleViewController.swift in Sources */,
-				670C59F11F8A6DA500CAE1AC /* BlueGradientHeader.swift in Sources */,
+				670C59F11F8A6DA500CAE1AC /* BlueGradientTitleView.swift in Sources */,
 				678F05391F5BFFE500CC4D3C /* LocationActions.swift in Sources */,
 				585CEBDA1F86A0AE006DCC67 /* AlertDetailsViewModel.swift in Sources */,
 				676B7D8A1F7CFA8A0052F016 /* FarePaymentModeView.swift in Sources */,
@@ -3247,6 +3254,7 @@
 				58490E451F55F8FF007DBCA1 /* SeptaAlert.swift in Sources */,
 				58DD1A8C1F6006D5002532DC /* NextToArriveViewModel+RouteCell.swift in Sources */,
 				5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */,
+				670C59F91F8A941700CAE1AC /* AppInfoProvider.swift in Sources */,
 				58A26DA41F6F30B2005A70D3 /* Route+Displayable.swift in Sources */,
 				58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */,
 				581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */,

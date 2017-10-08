@@ -57,11 +57,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="66"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c5f-SB-Iy4">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c5f-SB-Iy4">
                                                     <rect key="frame" x="18" y="23" width="20" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="20" placeholder="YES" id="fPL-60-IUM"/>
-                                                        <constraint firstAttribute="width" constant="20" placeholder="YES" id="rMr-x6-1fa"/>
+                                                        <constraint firstAttribute="height" constant="20" id="fPL-60-IUM"/>
+                                                        <constraint firstAttribute="width" constant="20" id="rMr-x6-1fa"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fares" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97l-N9-PTa">

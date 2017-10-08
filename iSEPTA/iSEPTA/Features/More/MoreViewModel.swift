@@ -12,7 +12,7 @@ import UIKit
 class MoreViewModel {
 
     func numberOfRows() -> Int {
-        return 4
+        return 5
     }
 
     func configureCell(cell: MoreTableViewCell, indexPath: IndexPath) {
@@ -21,6 +21,7 @@ class MoreViewModel {
         case 1: configureSubwayMapCell(cell: cell)
         case 2: configureEventsCell(cell: cell)
         case 3: configureConnectCell(cell: cell)
+        case 4: configureAboutCell(cell: cell)
         default: break
         }
     }
@@ -43,5 +44,10 @@ class MoreViewModel {
     func configureConnectCell(cell: MoreTableViewCell) {
         cell.moreLabel.text = "Connect with SEPTA"
         cell.moreImageView.image = UIImage(named: "connectCell")
+    }
+
+    func configureAboutCell(cell: MoreTableViewCell) {
+        cell.moreLabel.text = "About the SEPTA App"
+        cell.moreImageView.image = UIImage(named: "Icon-40")
     }
 }

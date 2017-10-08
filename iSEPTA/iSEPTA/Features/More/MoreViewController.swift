@@ -34,7 +34,7 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return 4
+        return 5
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,6 +56,9 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
             store.dispatch(commentConnection)
         case 3:
             let pushAction = PushViewController(viewController: .contactViewController, description: "Will View How to Contact SEPTA")
+            store.dispatch(pushAction)
+        case 4:
+            let pushAction = PushViewController(viewController: .aboutViewController, description: "About the Septa App")
             store.dispatch(pushAction)
         default:
             UIAlert.presentComingSoonAlertFrom(self)

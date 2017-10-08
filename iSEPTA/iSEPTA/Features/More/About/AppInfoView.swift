@@ -15,7 +15,7 @@ class AppInfoView: UIView {
     @IBOutlet private weak var valueLabel: UILabel!
 
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIViewNoIntrinsicMetric, height: 20)
+        return CGSize(width: UIViewNoIntrinsicMetric, height: 25)
     }
 
     func setKeyText(_ text: String) {

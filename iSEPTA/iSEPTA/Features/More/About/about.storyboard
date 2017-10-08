@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--About View Controller-->
+        <!--About SEPTA-->
         <scene sceneID="yhJ-Nn-Vzw">
             <objects>
-                <viewController id="FJg-ee-WeD" customClass="AboutViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="aboutViewController" id="FJg-ee-WeD" customClass="AboutViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o6h-ta-DVD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,9 +49,9 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PEm-6f-8Wd" userLabel="AppInformationView">
-                                        <rect key="frame" x="15" y="85" width="345" height="208"/>
+                                        <rect key="frame" x="15" y="85" width="345" height="228"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="36D-QG-PzW" userLabel="titleView" customClass="BlueGradientHeaderView" customModule="Septa" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="36D-QG-PzW" userLabel="titleView" customClass="BlueGradientTitleView" customModule="Septa" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="51"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2S-k5-BQr">
@@ -70,28 +70,34 @@ titleLabel</string>
                                                     <constraint firstItem="g2S-k5-BQr" firstAttribute="centerY" secondItem="36D-QG-PzW" secondAttribute="centerY" id="tov-lf-03j" userLabel="TitleLabelCenterY"/>
                                                 </constraints>
                                             </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Uh8-cF-F4P" userLabel="InfoViewStackView">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Uh8-cF-F4P" userLabel="InfoViewStackView">
                                                 <rect key="frame" x="15" y="66" width="315" height="72"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="72" placeholder="YES" id="Yq5-Pm-wEH"/>
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Uf-rj-xUR" userLabel="RedButton" customClass="RedButton" customModule="Septa" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="153" width="330" height="40"/>
+                                                <rect key="frame" x="15" y="173" width="315" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="bo3-2c-Y0k"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonTitle" value="Provide App Feedback"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="redButtonTapped:" destination="FJg-ee-WeD" eventType="touchUpInside" id="Kff-ge-8jb"/>
+                                                </connections>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="7Uf-rj-xUR" firstAttribute="leading" secondItem="PEm-6f-8Wd" secondAttribute="leading" id="6s8-MD-mvY" userLabel="RedButtonLeft"/>
+                                            <constraint firstItem="7Uf-rj-xUR" firstAttribute="leading" secondItem="PEm-6f-8Wd" secondAttribute="leading" constant="15" id="6s8-MD-mvY" userLabel="RedButtonLeft"/>
                                             <constraint firstAttribute="trailing" secondItem="Uh8-cF-F4P" secondAttribute="trailing" constant="15" id="6sx-oC-bdY" userLabel="InfoViewStackViewRight"/>
                                             <constraint firstItem="Uh8-cF-F4P" firstAttribute="top" secondItem="36D-QG-PzW" secondAttribute="bottom" constant="15" id="LP1-3K-iwQ" userLabel="InfoViewStackViewTop"/>
                                             <constraint firstItem="Uh8-cF-F4P" firstAttribute="leading" secondItem="PEm-6f-8Wd" secondAttribute="leading" constant="15" id="SJE-Xj-hBz" userLabel="InfoViewStackViewLeft"/>
                                             <constraint firstItem="36D-QG-PzW" firstAttribute="top" secondItem="PEm-6f-8Wd" secondAttribute="top" id="YiC-X9-El7" userLabel="TitleViewTop"/>
-                                            <constraint firstItem="7Uf-rj-xUR" firstAttribute="top" secondItem="Uh8-cF-F4P" secondAttribute="bottom" constant="15" id="bbd-Si-WMp" userLabel="RedButtonTop"/>
+                                            <constraint firstItem="7Uf-rj-xUR" firstAttribute="top" secondItem="Uh8-cF-F4P" secondAttribute="bottom" constant="35" id="bbd-Si-WMp" userLabel="RedButtonTop"/>
                                             <constraint firstAttribute="bottom" secondItem="7Uf-rj-xUR" secondAttribute="bottom" constant="15" id="qa2-8G-82i" userLabel="RedButtonBottom"/>
                                             <constraint firstItem="36D-QG-PzW" firstAttribute="leading" secondItem="PEm-6f-8Wd" secondAttribute="leading" id="rAE-7V-xeu" userLabel="TitleViewLeft"/>
                                             <constraint firstAttribute="trailing" secondItem="7Uf-rj-xUR" secondAttribute="trailing" constant="15" id="tKS-Lp-9Kj" userLabel="RedButtonRight"/>
@@ -119,6 +125,11 @@ titleLabel</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BZk-8Q-RD4"/>
                     </view>
+                    <navigationItem key="navigationItem" title="About SEPTA" id="EHH-EE-NqK"/>
+                    <connections>
+                        <outlet property="appInfoStackView" destination="Uh8-cF-F4P" id="N3s-As-PKZ"/>
+                        <outlet property="appInformationView" destination="PEm-6f-8Wd" id="p8b-6d-C6x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v1x-LV-J8d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

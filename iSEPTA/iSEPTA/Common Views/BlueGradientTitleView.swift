@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 @IBDesignable
-class BlueGradientHeaderView: UIView {
+class BlueGradientTitleView: UIView {
 
     override func draw(_ rect: CGRect) {
-        SeptaDraw.drawBlueGradientView(frame: rect)
+        SeptaDraw.drawBlueGradientTitleView(frame: rect)
     }
 }

@@ -43,6 +43,13 @@ public class DateFormatters {
         return formatter
     }()
 
+    static var uiDateTimeFormatter: DateFormatter = {
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "M/d/yyyy h:mm a"
+        return formatter
+    }()
+
     static func formatDurationString(startDate: Date, endDate: Date) -> String? {
         let startString = DateFormatters.hourMinuteFormatter.string(from: startDate)
         let endString = DateFormatters.hourMinuteFormatter.string(from: endDate)
