@@ -52,6 +52,13 @@ public class SEPTAApiClient: NSObject {
         return httpClient!.get(route: .RealTimeArrivals, parameters: param)
     }
 
+    public func getRealTimeRailArrivalDetail(tripId: String) -> Promise<NextToArriveRailDetails?> {
+
+        let param = ["id": tripId] as [String: AnyObject]
+
+        return httpClient!.get(route: .RealTimeArrivalDetail, parameters: param)
+    }
+
     public func getTransitRoutes(route: String) -> Promise<TransitRoutes?> {
 
         let param = ["route": route] as [String: AnyObject]

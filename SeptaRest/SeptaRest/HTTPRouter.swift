@@ -16,6 +16,7 @@ public enum HTTPRouter {
     case AlertDetails
     case Arrivals
     case RealTimeArrivals
+    case RealTimeArrivalDetail
     case TransitRoutes
     case TrainRoutes
 
@@ -32,6 +33,8 @@ public enum HTTPRouter {
                 return "arrivals"
             case .RealTimeArrivals:
                 return "realtimearrivals"
+            case .RealTimeArrivalDetail:
+                return "realtimearrivals/details"
             case .TransitRoutes:
                 return "transitroutes"
             case .TrainRoutes:
