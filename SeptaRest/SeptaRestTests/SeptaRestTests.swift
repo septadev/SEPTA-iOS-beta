@@ -29,21 +29,21 @@ class SeptaRestTests: XCTestCase {
         }
     }
 
-//    func testArrivals() {
-//        let expectation = self.expectation(description: "Should Return")
-//        client.getArrivals(origin: "Gravers", destination:"Chestnut Hill East").then { arrivals -> Void in
-//            print(arrivals)
-//            expectation.fulfill()
-//        }.catch { err in
-//            print(err)
-//        }
-//
-//        waitForExpectations(timeout: 10) { error in
-//            print(error?.localizedDescription)
-//        }
-//    }
+    //    func testArrivals() {
+    //        let expectation = self.expectation(description: "Should Return")
+    //        client.getArrivals(origin: "Gravers", destination:"Chestnut Hill East").then { arrivals -> Void in
+    //            print(arrivals)
+    //            expectation.fulfill()
+    //        }.catch { err in
+    //            print(err)
+    //        }
+    //
+    //        waitForExpectations(timeout: 10) { error in
+    //            print(error?.localizedDescription)
+    //        }
+    //    }
 
-    func testRealTimeArrivals(){
+    func testRealTimeArrivals() {
         let expectation = self.expectation(description: "Should Return")
 
         client.getRealTimeArrivals(originId: "90719", destinationId: "90720", transitType: .RAIL, route: nil).then { arrivals -> Void in
@@ -51,14 +51,14 @@ class SeptaRestTests: XCTestCase {
             expectation.fulfill()
         }
 
-         waitForExpectations(timeout: 10) { error in
+        waitForExpectations(timeout: 10) { error in
             print(error?.localizedDescription)
         }
     }
 
     func testRoutes() {
         let expectation = self.expectation(description: "Should Return")
-        client.getTransitRoutes(route:"44").then { transitRoutes -> Void in
+        client.getTransitRoutes(route: "44").then { transitRoutes -> Void in
             print(transitRoutes)
         }.catch { err in
             print(err)

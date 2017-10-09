@@ -13,7 +13,7 @@ public class AlertDetails: RestResponse {
 
     var route: String?
     var routeName: String?
-  public  var alerts: [AlertDetails_Alert]?
+    public var alerts: [AlertDetails_Alert]?
     var results: Int?
 
     public override func mapping(map: Map) {

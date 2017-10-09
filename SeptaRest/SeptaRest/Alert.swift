@@ -11,16 +11,16 @@ import ObjectMapper
 
 public class Alert: Mappable {
 
- public  var route_id: String?
- public  var route_name: String?
- public  var mode: String?
- public  var advisory: Bool?
- public  var detour: Bool?
- public  var alert: Bool?
- public  var suspended: Bool?
- public  var last_updated: String?
- public  var snow: Bool?
- public  var description: String?
+    public var route_id: String?
+    public var route_name: String?
+    public var mode: String?
+    public var advisory: Bool?
+    public var detour: Bool?
+    public var alert: Bool?
+    public var suspended: Bool?
+    public var last_updated: String?
+    public var snow: Bool?
+    public var description: String?
 
     public required init?(map _: Map) {
     }

@@ -11,7 +11,7 @@ import ObjectMapper
 
 public class Detour: Mappable {
 
- public   var message: String?
+    public var message: String?
     var start_location: String?
     var start_date_time: String?
     var end_date_time: String?

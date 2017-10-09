@@ -33,6 +33,8 @@
 		58490E321F55E3C0007DBCA1 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58490E2B1F55D72C007DBCA1 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		58490E331F55E3C0007DBCA1 /* ObjectMapper.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58490E2C1F55D72C007DBCA1 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		58490E341F55E3C0007DBCA1 /* PromiseKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58490E2D1F55D72C007DBCA1 /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		585CEBE01F8BD770006DCC67 /* RealTimeRailArrivalsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CEBDF1F8BD770006DCC67 /* RealTimeRailArrivalsDetail.swift */; };
+		585CEBE21F8C007F006DCC67 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58490E2C1F55D72C007DBCA1 /* ObjectMapper.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,7 @@
 		58490E2B1F55D72C007DBCA1 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		58490E2C1F55D72C007DBCA1 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = ../Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		58490E2D1F55D72C007DBCA1 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = ../Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
+		585CEBDF1F8BD770006DCC67 /* RealTimeRailArrivalsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeRailArrivalsDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				585CEBE21F8C007F006DCC67 /* ObjectMapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +124,7 @@
 				58490DEB1F55D5D1007DBCA1 /* SeptaRest */,
 				58490DF61F55D5D1007DBCA1 /* SeptaRestTests */,
 				58490DEA1F55D5D1007DBCA1 /* Products */,
+				585CEBE11F8C007F006DCC67 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -146,6 +151,7 @@
 				58490E151F55D637007DBCA1 /* ErrorResult.swift */,
 				58490E081F55D636007DBCA1 /* HTTPRouter.swift */,
 				58490E161F55D637007DBCA1 /* RealTimeArrival.swift */,
+				585CEBDF1F8BD770006DCC67 /* RealTimeRailArrivalsDetail.swift */,
 				58490E0C1F55D637007DBCA1 /* RealTimeArrivals.swift */,
 				58490E041F55D636007DBCA1 /* RestResponse.swift */,
 				58490E0F1F55D637007DBCA1 /* SEPTAApiClient.swift */,
@@ -168,6 +174,13 @@
 				58490DF91F55D5D1007DBCA1 /* Info.plist */,
 			);
 			path = SeptaRestTests;
+			sourceTree = "<group>";
+		};
+		585CEBE11F8C007F006DCC67 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,6 +308,7 @@
 				58490E241F55D638007DBCA1 /* Alert.swift in Sources */,
 				58490E201F55D638007DBCA1 /* RealTimeArrivals.swift in Sources */,
 				58490E171F55D638007DBCA1 /* Arrivals.swift in Sources */,
+				585CEBE01F8BD770006DCC67 /* RealTimeRailArrivalsDetail.swift in Sources */,
 				58490E251F55D638007DBCA1 /* Detour.swift in Sources */,
 				58490E191F55D638007DBCA1 /* TransitType.swift in Sources */,
 				58490E231F55D638007DBCA1 /* SEPTAApiClient.swift in Sources */,
@@ -448,7 +462,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$SRCROOT/../Carthage/Build/iOS/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$SRCROOT/../Carthage/Build/iOS/**",
+					/Users/mbroski/Code/Septa/Septa2/Carthage/Build/iOS/ObjectMapper.framework,
+				);
+				HEADER_SEARCH_PATHS = "$SRCROOT/../Carthage/Build/iOS/**";
 				INFOPLIST_FILE = SeptaRest/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -474,7 +492,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "$SRCROOT/../Carthage/Build/iOS/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$SRCROOT/../Carthage/Build/iOS/**",
+					/Users/mbroski/Code/Septa/Septa2/Carthage/Build/iOS/ObjectMapper.framework,
+				);
+				HEADER_SEARCH_PATHS = "$SRCROOT/../Carthage/Build/iOS/**";
 				INFOPLIST_FILE = SeptaRest/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;

@@ -11,8 +11,8 @@ import ObjectMapper
 
 public class Alerts: RestResponse {
 
- public    var alerts: [Alert]?
-public     var results: Int?
+    public var alerts: [Alert]?
+    public var results: Int?
 
     public override func mapping(map: Map) {
 
