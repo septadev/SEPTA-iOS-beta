@@ -70,7 +70,6 @@
 		582F4EBB1F33B1120062A546 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E7E1F33B1120062A546 /* AppDelegate.swift */; };
 		582F4EBC1F33B1120062A546 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E801F33B1120062A546 /* DateFormatters.swift */; };
 		582F4EBD1F33B1120062A546 /* SingleStringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E831F33B1120062A546 /* SingleStringCell.swift */; };
-		582F4EBE1F33B1120062A546 /* about.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4E861F33B1120062A546 /* about.storyboard */; };
 		582F4EBF1F33B1120062A546 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E881F33B1120062A546 /* Alert.swift */; };
 		582F4EC01F33B1120062A546 /* alerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4E891F33B1120062A546 /* alerts.storyboard */; };
 		582F4EC11F33B1120062A546 /* contact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4E8B1F33B1120062A546 /* contact.storyboard */; };
@@ -674,7 +673,6 @@
 		582F4E7E1F33B1120062A546 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		582F4E801F33B1120062A546 /* DateFormatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		582F4E831F33B1120062A546 /* SingleStringCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleStringCell.swift; sourceTree = "<group>"; };
-		582F4E861F33B1120062A546 /* about.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = about.storyboard; sourceTree = "<group>"; };
 		582F4E881F33B1120062A546 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		582F4E891F33B1120062A546 /* alerts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = alerts.storyboard; sourceTree = "<group>"; };
 		582F4E8B1F33B1120062A546 /* contact.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = contact.storyboard; sourceTree = "<group>"; };
@@ -1389,7 +1387,6 @@
 			isa = PBXGroup;
 			children = (
 				676B7D991F7D18560052F016 /* More */,
-				582F4E851F33B1120062A546 /* About */,
 				582F4E871F33B1120062A546 /* Alerts */,
 				582F4E8A1F33B1120062A546 /* Contact */,
 				582F4E8C1F33B1120062A546 /* FaresAndTransitInfo */,
@@ -1399,14 +1396,6 @@
 				582F4EAB1F33B1120062A546 /* Settings */,
 			);
 			path = Features;
-			sourceTree = "<group>";
-		};
-		582F4E851F33B1120062A546 /* About */ = {
-			isa = PBXGroup;
-			children = (
-				582F4E861F33B1120062A546 /* about.storyboard */,
-			);
-			path = About;
 			sourceTree = "<group>";
 		};
 		582F4E871F33B1120062A546 /* Alerts */ = {
@@ -2734,7 +2723,6 @@
 				5801280A1F6BEF01006B6DB8 /* NoFavoriteTransitModeView.xib in Resources */,
 				58B2785A1F62AAD500663507 /* 204.kml in Resources */,
 				671609071F67671F00941D2C /* TripView.xib in Resources */,
-				582F4EBE1F33B1120062A546 /* about.storyboard in Resources */,
 				671609091F676F1300941D2C /* ConnectionView.xib in Resources */,
 				58B278B61F62AAD500663507 /* MFL.kml in Resources */,
 				58B2789F1F62AAD500663507 /* 92.kml in Resources */,
