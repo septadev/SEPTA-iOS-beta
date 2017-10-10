@@ -7,32 +7,23 @@ my $className = "NextToArriveDetails";
 
 my $raw = q|
 {
-    "tripid": "774",
-    "destination": "Chestnut H East",
-    "details": {
-        "tripid": "774",
-        "latitude": 40.002131166667,
-        "longitude": -75.1420705,
-        "line": "Trenton",
-        "track": "",
-        "trackChange": "",
-        "speed": "56.3 MPH",
-        "direction": "North",
-        "service": "LOCAL",
-        "source": "Trenton",
-        "nextstop": {
-            "station": "North Philadelphia",
-            "delay": 5
-        },
-        "destination": {
-            "station": "Chestnut H East",
-            "delay": 5
-        },
-        "consist": ["165", "166"]
-    },
-    "results": 1
+  "route": "22",
+  "vehicleid": "8513",
+  "details": {
+    "tripid": "995286",
+    "latitude": 40.038754,
+    "longitude": -75.143875,
+    "line": "22",
+    "vehicleid": "8513",
+    "blockid": "3244",
+    "direction": "SouthBound",
+    "destination": {
+      "station": "Olney Transportation Center",
+      "delay": 0
+    }
+  },
+  "results": 1
 }
-
 |;
 
 my $hash       = decode_json($raw);

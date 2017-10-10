@@ -77,6 +77,32 @@ class SeptaRestTests: XCTestCase {
         }
     }
 
+    func testRealTimeBusArrivalDetail() {
+        let expectation = self.expectation(description: "Should Return")
+
+        client.getRealTimeArrivals(originId: "15473", destinationId: "809", transitType: .BUS, route: "22").then { arrivals -> Void in
+            XCTAssertNotNil(arrivals, "Did not get back arrivals")
+            guard let arrivals = arrivals,
+                let arrivalList = arrivals.arrivals,
+                let firstItem = arrivalList.first,
+                let tripId = firstItem.orig_line_trip_id,
+                let routeId = firstItem.orig_line_route_id,
+                let vehicleId = firstItem.orig_vehicle_id else {
+                return
+            }
+            self.client.getRealTimeBusArrivalDetail(tripId: vehicleId, routeId: routeId).then { details -> Void in
+                XCTAssertNotNil(details, "Did not get back arrivals")
+                expectation.fulfill()
+            }.catch { error in
+                print(error.localizedDescription)
+            }
+        }
+
+        waitForExpectations(timeout: 10000) { error in
+            print(error?.localizedDescription)
+        }
+    }
+
     func testRoutes() {
         let expectation = self.expectation(description: "Should Return")
         client.getTransitRoutes(route: "44").then { transitRoutes -> Void in

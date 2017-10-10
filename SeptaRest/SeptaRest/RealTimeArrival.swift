@@ -62,7 +62,7 @@ public class RealTimeArrival: Mappable {
     public var orig_vehicle_lon: Double?
     public var term_vehicle_lat: Double?
     public var term_vehicle_lon: Double?
-
+    public var orig_vehicle_id: String?
     public required init?(map _: Map) {
     }
 
@@ -94,5 +94,6 @@ public class RealTimeArrival: Mappable {
         orig_vehicle_lon <- map["orig_vehicle_lon"]
         term_vehicle_lat <- map["term_vehicle_lat"]
         term_vehicle_lon <- map["term_vehicle_lon"]
+        orig_vehicle_id <- map["orig_vehicle_id"]
     }
 }
