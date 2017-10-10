@@ -59,7 +59,7 @@ class FavoritesNextToArriveProvider: StoreSubscriber {
         store.dispatch(action)
     }
 
-    func retrieveNextToArrive(favorite: Favorite, completion: (([RealTimeArrival], Favorite) -> Void)?) {
+    func retrieveNextToArrive(favorite: Favorite, completion: (([RealTimeArrival], Favorite, TransitMode) -> Void)?) {
         let transitType = TransitType.fromTransitMode(favorite.transitMode)
         let startId = favorite.selectedStart.stopId
         let stopId = favorite.selectedEnd.stopId
@@ -76,7 +76,7 @@ class FavoritesNextToArriveProvider: StoreSubscriber {
             if arrivals.count == 0 {
                 throw NextToArriveError.noResultsReturned
             }
-            completion?(arrivals, favorite)
+            completion?(arrivals, favorite, favorite.transitMode)
 
         }.catch { error in
             print(error.localizedDescription)
@@ -88,12 +88,12 @@ class FavoritesNextToArriveProvider: StoreSubscriber {
         }
     }
 
-    func mapArrivals(realTimeArrivals: [RealTimeArrival], favorite: Favorite) {
+    func mapArrivals(realTimeArrivals: [RealTimeArrival], favorite: Favorite, transitMode: TransitMode) {
 
         var nextToArriveTrips = [NextToArriveTrip]()
         for realTimeArrival in realTimeArrivals {
-            let startStop = mapper.mapStart(realTimeArrival: realTimeArrival)
-            let endStop = mapper.mapEnd(realTimeArrival: realTimeArrival)
+            let startStop = mapper.mapStart(realTimeArrival: realTimeArrival, transitMode: transitMode)
+            let endStop = mapper.mapEnd(realTimeArrival: realTimeArrival, transitMode: transitMode)
             let vehicleLocation = mapper.mapVehicleLocation(realTimeArrival: realTimeArrival)
             let connectionLocation = mapper.mapConnectionStation(realTimeArrival: realTimeArrival)
 

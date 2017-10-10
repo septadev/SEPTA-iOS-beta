@@ -50,7 +50,7 @@ class NextToArriveProvider: StoreSubscriber {
         store.dispatch(updateAction)
     }
 
-    func retrieveNextToArrive(scheduleRequest: ScheduleRequest, completion: (([RealTimeArrival]) -> Void)?) {
+    func retrieveNextToArrive(scheduleRequest: ScheduleRequest, completion: (([RealTimeArrival], TransitMode) -> Void)?) {
         guard
             let startId = scheduleRequest.selectedStart?.stopId,
             let stopId = scheduleRequest.selectedEnd?.stopId else { return }
@@ -66,7 +66,7 @@ class NextToArriveProvider: StoreSubscriber {
             if arrivals.count == 0 {
                 throw NextToArriveError.noResultsReturned
             }
-            completion?(arrivals)
+            completion?(arrivals, scheduleRequest.transitMode)
 
         }.catch { error in
             print(error.localizedDescription)
@@ -78,17 +78,23 @@ class NextToArriveProvider: StoreSubscriber {
         }
     }
 
-    func mapArrivals(realTimeArrivals: [RealTimeArrival]) {
+    func mapArrivals(realTimeArrivals: [RealTimeArrival], transitMode: TransitMode) {
 
         var nextToArriveTrips = [NextToArriveTrip]()
         for realTimeArrival in realTimeArrivals {
-            let startStop = mapper.mapStart(realTimeArrival: realTimeArrival)
-            let endStop = mapper.mapEnd(realTimeArrival: realTimeArrival)
+            let startStop = mapper.mapStart(realTimeArrival: realTimeArrival, transitMode: transitMode)
+            let endStop = mapper.mapEnd(realTimeArrival: realTimeArrival, transitMode: transitMode)
             let vehicleLocation = mapper.mapVehicleLocation(realTimeArrival: realTimeArrival)
             let connectionLocation = mapper.mapConnectionStation(realTimeArrival: realTimeArrival)
 
             if let startStop = startStop, let endStop = endStop {
-                let nextToArriveTrip = NextToArriveTrip(startStop: startStop, endStop: endStop, vehicleLocation: vehicleLocation, connectionLocation: connectionLocation)
+
+                let nextToArriveTrip = NextToArriveTrip(
+                    startStop: startStop,
+                    endStop: endStop,
+                    vehicleLocation: vehicleLocation,
+                    connectionLocation: connectionLocation)
+
                 nextToArriveTrips.append(nextToArriveTrip)
             }
         }

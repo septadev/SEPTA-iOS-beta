@@ -22,8 +22,9 @@ struct NextToArriveStop {
     let delayMinutes: Int?
     let direction: RouteDirectionCode?
     let vehicleLocationCoordinate: CLLocationCoordinate2D?
+    let vehicleIds: [String]?
 
-    init(routeId: String, routeName: String, tripId: Int?, arrivalTime: Date, departureTime: Date, lastStopId: Int?, lastStopName: String?, delayMinutes: Int?, direction: RouteDirectionCode?, vehicleLocationCoordinate: CLLocationCoordinate2D?) {
+    init(routeId: String, routeName: String, tripId: Int?, arrivalTime: Date, departureTime: Date, lastStopId: Int?, lastStopName: String?, delayMinutes: Int?, direction: RouteDirectionCode?, vehicleLocationCoordinate: CLLocationCoordinate2D?, vehicleIds: [String]?) {
         self.routeId = routeId
         self.routeName = routeName
         self.tripId = tripId
@@ -35,6 +36,7 @@ struct NextToArriveStop {
         self.delayMinutes = delayMinutes
         self.direction = direction
         self.vehicleLocationCoordinate = vehicleLocationCoordinate
+        self.vehicleIds = vehicleIds
     }
 }
 

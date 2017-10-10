@@ -14,7 +14,7 @@ import CoreLocation
 
 class NextToArriveMapper {
 
-    func mapStart(realTimeArrival a: RealTimeArrival) -> NextToArriveStop? {
+    func mapStart(realTimeArrival a: RealTimeArrival, transitMode: TransitMode) -> NextToArriveStop? {
         let formatter = DateFormatters.networkFormatter
         guard
             let routeId = a.orig_line_route_id,
@@ -27,6 +27,7 @@ class NextToArriveMapper {
             isValidStartDate(date: departureTime) else {
             return nil
         }
+
         return NextToArriveStop(routeId: routeId,
                                 routeName: routeName,
                                 tripId: Int(a.orig_line_trip_id ?? ""),
@@ -36,10 +37,11 @@ class NextToArriveMapper {
                                 lastStopName: a.orig_last_stop_name,
                                 delayMinutes: a.orig_delay_minutes,
                                 direction: RouteDirectionCode.fromNetwork(a.orig_line_direction ?? ""),
-                                vehicleLocationCoordinate: buildStartLocationCoordinate(realTimeArrival: a))
+                                vehicleLocationCoordinate: buildStartLocationCoordinate(realTimeArrival: a),
+                                vehicleIds: mapVehicleIds(stopToSelect: .starts, realTimeArrival: a, transitMode: transitMode))
     }
 
-    func mapEnd(realTimeArrival a: RealTimeArrival) -> NextToArriveStop? {
+    func mapEnd(realTimeArrival a: RealTimeArrival, transitMode: TransitMode) -> NextToArriveStop? {
         let formatter = DateFormatters.networkFormatter
         guard
             let routeId = a.term_line_route_id,
@@ -62,7 +64,8 @@ class NextToArriveMapper {
                                 lastStopName: a.term_last_stop_name,
                                 delayMinutes: a.term_delay_minutes,
                                 direction: RouteDirectionCode.fromNetwork(a.term_line_direction ?? ""),
-                                vehicleLocationCoordinate: buildEndLocationCoordinate(realTimeArrival: a))
+                                vehicleLocationCoordinate: buildEndLocationCoordinate(realTimeArrival: a),
+                                vehicleIds: mapVehicleIds(stopToSelect: .ends, realTimeArrival: a, transitMode: transitMode))
     }
 
     func buildStartLocationCoordinate(realTimeArrival a: RealTimeArrival) -> CLLocationCoordinate2D? {
@@ -98,6 +101,23 @@ class NextToArriveMapper {
         guard let stopName = a.connection_station_name else { return nil }
 
         return NextToArriveConnectionStation(stopId: a.connection_station_id, stopName: stopName)
+    }
+
+    func mapVehicleIds(stopToSelect: StopToSelect, realTimeArrival a: RealTimeArrival, transitMode: TransitMode) -> [String]? {
+
+        let useVehicleId = transitMode == .bus || transitMode == .nhsl
+        let useConsist = transitMode == .rail
+
+        switch (useVehicleId, useConsist, stopToSelect, a.orig_vehicle_id) {
+        case (true, false, let stopToSelect, let vehicleId) where vehicleId != .none && stopToSelect == .starts :
+            return [vehicleId!]
+        case (false, true, let stopToSelect, _) where stopToSelect == .starts :
+            return a.consist
+        case (false, true, let stopToSelect, _) where stopToSelect == .ends :
+            return a.term_consist
+        default:
+            return nil
+        }
     }
 
     func mapCoordinateFromString(_ latDouble: Double?, _ lonDouble: Double?) -> CLLocationCoordinate2D? {
