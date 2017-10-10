@@ -7,38 +7,31 @@ my $className = "NextToArriveDetails";
 
 my $raw = q|
 {
-  "tripid": "6307",
-  "destination": "90410",
-  "details": {
-    "tripid": "6307",
-    "latitude": 40.260512,
-    "longitude": -74.813757166667,
-    "line": "West Trenton",
-    "track": "",
-    "trackChange": "",
-    "speed": "0 MPH",
-    "direction": "South",
-    "service": "LOCAL",
-    "source": "West Trenton",
-    "nextstop": {
-      "station": "West Trenton",
-      "arrival_time": "2017-10-09T14:59:00.000Z",
-      "delay": 1
+    "tripid": "774",
+    "destination": "Chestnut H East",
+    "details": {
+        "tripid": "774",
+        "latitude": 40.002131166667,
+        "longitude": -75.1420705,
+        "line": "Trenton",
+        "track": "",
+        "trackChange": "",
+        "speed": "56.3 MPH",
+        "direction": "North",
+        "service": "LOCAL",
+        "source": "Trenton",
+        "nextstop": {
+            "station": "North Philadelphia",
+            "delay": 5
+        },
+        "destination": {
+            "station": "Chestnut H East",
+            "delay": 5
+        },
+        "consist": ["165", "166"]
     },
-    "destination": {
-      "station": "Jenkintown-Wyncote",
-      "arrival_time": "2017-10-09T15:43:00.000Z",
-      "delay": 1
-    },
-    "consist": [
-      "146",
-      "145"
-    ]
-  },
-  "results": 1,
-  "test": false
+    "results": 1
 }
-
 
 |;
 
@@ -107,7 +100,7 @@ sub buildClass {
             	$penKey = "";
             }
 
-            say "var $penKey$lastKey: $type?";
+            say "public var $penKey$lastKey: $type?";
             $_->{varName} = "$penKey$lastKey";
         }
     }

@@ -67,8 +67,8 @@ class SimpleRestClient: NSObject {
                 if let error = response.result.error {
                     reject(error) // network error
                 } else {
-
-                    if let apiResponse = Mapper<T>().map(JSONObject: response.result.value) {
+                    let mapper = Mapper<T>()
+                    if let apiResponse = mapper.map(JSONObject: response.result.value) {
                         let status = apiResponse as? RestResponse
 
                         if status != nil && status!.success {

@@ -9,13 +9,12 @@
 import Foundation
 import ObjectMapper
 
-public class NextToArriveRailDetails: Mappable {
-    public var destinationArrival_time: Date?
-    public var nextstopArrival_time: Date?
-    public var consist: [Int]?
-    public var destinationDelay: Int?
+public class NextToArriveRailDetails: RestResponse {
+
+    public var consist: [String]?
     public var nextstopDelay: Int?
-    public var destination: Int?
+    public var destinationDelay: Int?
+    public var destination: String?
     public var direction: String?
     public var latitude: Double?
     public var line: String?
@@ -24,38 +23,38 @@ public class NextToArriveRailDetails: Mappable {
     public var service: String?
     public var source: String?
     public var speed: String?
-    public var destinationStation: String?
     public var nextstopStation: String?
+    public var destinationStation: String?
     public var track: String?
     public var trackChange: String?
     public var tripid: String?
 
-    public required init?(map _: Map) {
-    }
+    public override func mapping(map: Map) {
 
-    public func mapping(map _: Map) {
+        super.mapping(map: map)
 
-        //        consist <- map["details.consist"]
-        //        tripid <- map["details.tripid"]
-        //        direction <- map["details.direction"]
-        //        service <- map["details.service"]
-        //        trackChange <- map["details.trackChange"]
-        //        destinationArrival_time <- map["details.destination.arrival_time"]
-        //        destinationStation <- map["details.destination.station"]
-        //        destinationDelay <- map["details.destination.delay"]
-        //
-        //        speed <- map["details.speed"]
-        //        nextstopArrival_time <- map["details.nextstop.arrival_time"]
-        //        nextstopStation <- map["details.nextstop.station"]
-        //        nextstopDelay <- map["details.nextstop.delay"]
-        //
-        //        line <- map["details.line"]
-        //        latitude <- map["details.latitude"]
-        //        source <- map["details.source"]
-        //        track <- map["details.track"]
-        //        longitude <- map["details.longitude"]
+        if map["tripid"].isKeyPresent {
+            success = true
+        }
 
-        //        tripid <- map["tripid"]
-        //        results <- map["results"]
+        trackChange <- map["details.trackChange"]
+        source <- map["details.source"]
+        track <- map["details.track"]
+        nextstopDelay <- map["details.nextstop.delay"]
+        nextstopStation <- map["details.nextstop.station"]
+
+        longitude <- map["details.longitude"]
+        line <- map["details.line"]
+        consist <- map["details.consist"]
+        speed <- map["details.speed"]
+        service <- map["details.service"]
+        direction <- map["details.direction"]
+        destinationStation <- map["details.destination.station"]
+        destinationDelay <- map["details.destination.delay"]
+
+        tripid <- map["details.tripid"]
+        latitude <- map["details.latitude"]
+
+        destination <- map["destination"]
     }
 }

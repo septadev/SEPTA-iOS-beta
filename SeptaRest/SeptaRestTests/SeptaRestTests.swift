@@ -72,7 +72,7 @@ class SeptaRestTests: XCTestCase {
             }
         }
 
-        waitForExpectations(timeout: 10) { error in
+        waitForExpectations(timeout: 10000) { error in
             print(error?.localizedDescription)
         }
     }
