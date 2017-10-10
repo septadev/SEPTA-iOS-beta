@@ -34,7 +34,7 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel 
         case .favorites:
             guard var nextToArriveFavorite = store.state.favoritesState.nextToArriveFavorite else { return }
             nextToArriveFavorite.refreshDataRequested = true
-            let favoriteAction = UpdateFavorite(favorite: nextToArriveFavorite, description: "User manually refreshed a favorite in Next to Arrive")
+            let favoriteAction = RequestFavoriteNextToArriveUpdate(favorite: nextToArriveFavorite, description: "User manually refreshed a favorite in Next to Arrive")
             store.dispatch(favoriteAction)
         default:
             break

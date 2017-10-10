@@ -89,7 +89,7 @@ extension NextToArriveInfoViewController { // refresh timer
             guard let nextToArriveFavoriteId = favoriteId,
                 var matchingFavorite = store.state.favoritesState.favorites.filter({ $0.favoriteId == nextToArriveFavoriteId }).first else { return }
             matchingFavorite.refreshDataRequested = true
-            let action = UpdateFavorite(favorite: matchingFavorite, description: "Refresh Next to arrive for favorite")
+            let action = RequestFavoriteNextToArriveUpdate(favorite: matchingFavorite, description: "Refresh Next to arrive for favorite")
             store.dispatch(action)
         default:
             break
