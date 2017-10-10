@@ -38,7 +38,9 @@ class NextToArriveMapper {
                                 delayMinutes: a.orig_delay_minutes,
                                 direction: RouteDirectionCode.fromNetwork(a.orig_line_direction ?? ""),
                                 vehicleLocationCoordinate: buildStartLocationCoordinate(realTimeArrival: a),
-                                vehicleIds: mapVehicleIds(stopToSelect: .starts, realTimeArrival: a, transitMode: transitMode))
+                                vehicleIds: mapVehicleIds(stopToSelect: .starts, realTimeArrival: a, transitMode: transitMode),
+                                hasRealTimeData: a.orig_realtime
+        )
     }
 
     func mapEnd(realTimeArrival a: RealTimeArrival, transitMode: TransitMode) -> NextToArriveStop? {
@@ -65,7 +67,9 @@ class NextToArriveMapper {
                                 delayMinutes: a.term_delay_minutes,
                                 direction: RouteDirectionCode.fromNetwork(a.term_line_direction ?? ""),
                                 vehicleLocationCoordinate: buildEndLocationCoordinate(realTimeArrival: a),
-                                vehicleIds: mapVehicleIds(stopToSelect: .ends, realTimeArrival: a, transitMode: transitMode))
+                                vehicleIds: mapVehicleIds(stopToSelect: .ends, realTimeArrival: a, transitMode: transitMode),
+                                hasRealTimeData: a.term_realtime
+        )
     }
 
     func buildStartLocationCoordinate(realTimeArrival a: RealTimeArrival) -> CLLocationCoordinate2D? {

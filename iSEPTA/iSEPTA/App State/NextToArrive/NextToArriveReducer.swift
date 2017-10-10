@@ -49,6 +49,8 @@ struct NextToArriveReducer {
             state = reduceViewScheduleData(action: action, state: state)
         case let action as InsertNextToArriveScheduleRequest:
             state = reduceInsertNextToArriveScheduleRequest(action: action, state: state)
+        case let action as UpdateNextToArriveDetail:
+            state = reduceUpdateNextToArriveDetail(action: action, state: state)
         default:
             break
         }
@@ -79,5 +81,29 @@ struct NextToArriveReducer {
     static func reduceInsertNextToArriveScheduleRequest(action: InsertNextToArriveScheduleRequest, state: NextToArriveState) -> NextToArriveState {
         let scheduleState = ScheduleState(scheduleRequest: action.scheduleRequest, scheduleData: ScheduleData(), scheduleStopEdit: ScheduleStopEdit())
         return NextToArriveState(scheduleState: scheduleState, nextToArriveTrips: state.nextToArriveTrips)
+    }
+
+    static func reduceUpdateNextToArriveDetail(action: UpdateNextToArriveDetail, state: NextToArriveState) -> NextToArriveState {
+        guard let tripId = action.realTimeArrivalDetail.tripid else { return state }
+
+        var newTrips = [NextToArriveTrip]()
+        for trip in state.nextToArriveTrips {
+            let start = trip.startStop
+            if let startTripId = trip.startStop.tripId, startTripId == tripId {
+                let newStart = NextToArriveStop(routeId: start.routeId, routeName: start.routeName, tripId: start.tripId, arrivalTime: start.arrivalTime, departureTime: start.departureTime, lastStopId: start.lastStopId, lastStopName: start.lastStopName, delayMinutes: start.delayMinutes, direction: start.direction, vehicleLocationCoordinate: start.vehicleLocationCoordinate, vehicleIds: start.vehicleIds, hasRealTimeData: start.hasRealTimeData)
+
+                let newTrip = NextToArriveTrip(startStop: newStart, endStop: trip.endStop, vehicleLocation: trip.vehicleLocation, connectionLocation: trip.connectionLocation)
+                newTrips.append(newTrip)
+            } else if let endTripId = trip.endStop.tripId, endTripId == tripId {
+                let newEnd = NextToArriveStop(routeId: start.routeId, routeName: start.routeName, tripId: start.tripId, arrivalTime: start.arrivalTime, departureTime: start.departureTime, lastStopId: start.lastStopId, lastStopName: start.lastStopName, delayMinutes: start.delayMinutes, direction: start.direction, vehicleLocationCoordinate: start.vehicleLocationCoordinate, vehicleIds: start.vehicleIds, hasRealTimeData: start.hasRealTimeData)
+
+                let newTrip = NextToArriveTrip(startStop: trip.startStop, endStop: newEnd, vehicleLocation: trip.vehicleLocation, connectionLocation: trip.connectionLocation)
+                newTrips.append(newTrip)
+            } else {
+                newTrips.append(trip)
+            }
+        }
+
+        return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: newTrips)
     }
 }

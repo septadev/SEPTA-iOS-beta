@@ -32,7 +32,7 @@
 import Foundation
 import ObjectMapper
 
-public class NextToArriveBusDetails: RestResponse {
+public class NextToArriveBusDetails: RestResponse, RealTimeArrivalDetail {
 
     public var blockid: String?
     public var destinationDelay: Int?
@@ -43,7 +43,7 @@ public class NextToArriveBusDetails: RestResponse {
     public var longitude: Double?
     public var results: Int?
     public var route: String?
-    public var tripid: String?
+    public var tripid: Int?
     public var vehicleid: String?
 
     public override func mapping(map: Map) {
@@ -63,7 +63,9 @@ public class NextToArriveBusDetails: RestResponse {
         longitude <- map["details.longitude"]
         results <- map["results"]
         route <- map["route"]
-        tripid <- map["details.tripid"]
+        var tripIdString = ""
+        tripIdString <- map["details.tripid"]
+        tripid = Int(tripIdString)
         vehicleid <- map["details.vehicleid"]
     }
 }

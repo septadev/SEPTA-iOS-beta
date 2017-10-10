@@ -36,6 +36,7 @@
 		585CEBE01F8BD770006DCC67 /* RealTimeRailArrivalsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CEBDF1F8BD770006DCC67 /* RealTimeRailArrivalsDetail.swift */; };
 		585CEBE21F8C007F006DCC67 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58490E2C1F55D72C007DBCA1 /* ObjectMapper.framework */; };
 		585CEBE81F8C132A006DCC67 /* RealtimeBusArrivalsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CEBE71F8C132A006DCC67 /* RealtimeBusArrivalsDetail.swift */; };
+		586852D81F8D247A0081C1CC /* RealTimeArrivalDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586852D71F8D247A0081C1CC /* RealTimeArrivalDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		58490E2D1F55D72C007DBCA1 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = ../Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		585CEBDF1F8BD770006DCC67 /* RealTimeRailArrivalsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeRailArrivalsDetail.swift; sourceTree = "<group>"; };
 		585CEBE71F8C132A006DCC67 /* RealtimeBusArrivalsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeBusArrivalsDetail.swift; sourceTree = "<group>"; };
+		586852D71F8D247A0081C1CC /* RealTimeArrivalDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeArrivalDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				58490E161F55D637007DBCA1 /* RealTimeArrival.swift */,
 				585CEBDF1F8BD770006DCC67 /* RealTimeRailArrivalsDetail.swift */,
 				585CEBE71F8C132A006DCC67 /* RealtimeBusArrivalsDetail.swift */,
+				586852D71F8D247A0081C1CC /* RealTimeArrivalDetail.swift */,
 				58490E0C1F55D637007DBCA1 /* RealTimeArrivals.swift */,
 				58490E041F55D636007DBCA1 /* RestResponse.swift */,
 				58490E0F1F55D637007DBCA1 /* SEPTAApiClient.swift */,
@@ -305,6 +308,7 @@
 				585CEBE81F8C132A006DCC67 /* RealtimeBusArrivalsDetail.swift in Sources */,
 				58490E181F55D638007DBCA1 /* RestResponse.swift in Sources */,
 				58490E1A1F55D638007DBCA1 /* TransitRoute.swift in Sources */,
+				586852D81F8D247A0081C1CC /* RealTimeArrivalDetail.swift in Sources */,
 				58490E1E1F55D638007DBCA1 /* Alerts.swift in Sources */,
 				58490E211F55D638007DBCA1 /* TransitRoutes.swift in Sources */,
 				58490E281F55D638007DBCA1 /* Arrival.swift in Sources */,

@@ -128,6 +128,8 @@
 		5863DB5A1F6C6B6700FC0F1F /* FavoritesExistWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5863DB591F6C6B6700FC0F1F /* FavoritesExistWatcher.swift */; };
 		58658D1B1F53135100E67B4E /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58658D1A1F53135100E67B4E /* AddressCell.swift */; };
 		58658D1E1F53298B00E67B4E /* DisplayAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58658D1D1F53298B00E67B4E /* DisplayAddress.swift */; };
+		586852DA1F8D49280081C1CC /* NextToArriveDetailProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586852D91F8D49280081C1CC /* NextToArriveDetailProvider.swift */; };
+		586852DE1F8D49830081C1CC /* TransitMode+NextToArriveDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586852DD1F8D49830081C1CC /* TransitMode+NextToArriveDetail.swift */; };
 		586C1CED1F69A7E10023607C /* DatabaseLoadingModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1CEC1F69A7E10023607C /* DatabaseLoadingModalViewController.swift */; };
 		586C1CF11F69B3EE0023607C /* DatabaseMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1CF01F69B3EE0023607C /* DatabaseMover.swift */; };
 		586DFEC51F505482004BC972 /* CurvedTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586DFEC41F505482004BC972 /* CurvedTopView.swift */; };
@@ -745,6 +747,8 @@
 		5867AC391F46249700370254 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = ../Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
 		5867AC3B1F46249700370254 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = ../Carthage/Build/iOS/ReSwift.framework; sourceTree = "<group>"; };
 		5867AC3C1F46249800370254 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = ../Carthage/Build/iOS/Zip.framework; sourceTree = "<group>"; };
+		586852D91F8D49280081C1CC /* NextToArriveDetailProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveDetailProvider.swift; sourceTree = "<group>"; };
+		586852DD1F8D49830081C1CC /* TransitMode+NextToArriveDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransitMode+NextToArriveDetail.swift"; sourceTree = "<group>"; };
 		586C1CEC1F69A7E10023607C /* DatabaseLoadingModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseLoadingModalViewController.swift; sourceTree = "<group>"; };
 		586C1CF01F69B3EE0023607C /* DatabaseMover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseMover.swift; sourceTree = "<group>"; };
 		586DFEC41F505482004BC972 /* CurvedTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedTopView.swift; sourceTree = "<group>"; };
@@ -1608,7 +1612,9 @@
 				678F052F1F5B918300CC4D3C /* LocationProvider.swift */,
 				585303C91F69C73D00145D87 /* Favorites */,
 				58E33F131F61425600C74B7C /* NextToArriveProvider.swift */,
+				586852DD1F8D49830081C1CC /* TransitMode+NextToArriveDetail.swift */,
 				585303CE1F69CAC500145D87 /* NextToArriveMapper.swift */,
+				586852D91F8D49280081C1CC /* NextToArriveDetailProvider.swift */,
 				58E33F211F615EC100C74B7C /* NextToArriveScheduleRequestWatcher.swift */,
 			);
 			path = "State Providers";
@@ -3023,6 +3029,7 @@
 				58B5B1091F6DBFFF00A3DAFB /* ScheduleState_ScheduleRequestWatcher.swift in Sources */,
 				589397121F7E64B900F3D2F8 /* SEPTAURLProvider.swift in Sources */,
 				670C59DE1F8920E900CAE1AC /* AlertState_GenericAlertDetailsWatcher.swift in Sources */,
+				586852DA1F8D49280081C1CC /* NextToArriveDetailProvider.swift in Sources */,
 				671A19291F66385100C8EEDA /* NoConnectionCell.swift in Sources */,
 				588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */,
 				58490E491F56019B007DBCA1 /* AlertReducer.swift in Sources */,
@@ -3199,6 +3206,7 @@
 				678D26C41F5CC4A400D140CC /* FavoritesState.swift in Sources */,
 				58290E501F372DDC000CCF3C /* NavigationActions.swift in Sources */,
 				676B7DA11F7D18B90052F016 /* MoreNavigationControllerStateProvider.swift in Sources */,
+				586852DE1F8D49830081C1CC /* TransitMode+NextToArriveDetail.swift in Sources */,
 				588D805D1F72AAF300EE1983 /* BaseScheduleRequestWatcher.swift in Sources */,
 				678DAA9E1F67065F00EB6EE8 /* NextToArriveConnectingViewModel.swift in Sources */,
 				67F0289E1F7EE3B40032F99C /* ContactViewModel.swift in Sources */,

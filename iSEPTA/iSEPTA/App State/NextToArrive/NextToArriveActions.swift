@@ -4,6 +4,7 @@
 import Foundation
 import ReSwift
 import SeptaSchedule
+import SeptaRest
 
 protocol NextToArriveAction: SeptaAction {}
 
@@ -26,6 +27,11 @@ struct UpdateNextToArriveStatusAndData: NextToArriveAction {
     let nextToArriveTrips: [NextToArriveTrip]
     let refreshDataRequested: Bool
     let description = "Provider reporting on the status of the update"
+}
+
+struct UpdateNextToArriveDetail: NextToArriveAction {
+    let realTimeArrivalDetail: RealTimeArrivalDetail
+    let description: String
 }
 
 struct ViewScheduleDataInNextToArrive: NextToArriveAction {

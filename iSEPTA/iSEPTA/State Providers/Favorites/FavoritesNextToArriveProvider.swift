@@ -24,6 +24,8 @@ class FavoritesNextToArriveProvider: StoreSubscriber {
 
     let scheduleRequestWatcher = NextToArriveScheduleRequestWatcher()
 
+    let nextToArriveDetailProvider = NextToArriveDetailProvider()
+
     private init() {
         subscribe()
     }
@@ -100,6 +102,7 @@ class FavoritesNextToArriveProvider: StoreSubscriber {
             if let startStop = startStop, let endStop = endStop {
                 let nextToArriveTrip = NextToArriveTrip(startStop: startStop, endStop: endStop, vehicleLocation: vehicleLocation, connectionLocation: connectionLocation)
                 nextToArriveTrips.append(nextToArriveTrip)
+                nextToArriveDetailProvider.retrieveNextToArriveDetail(nextToArriveTrip: nextToArriveTrip, transitMode: transitMode)
             }
         }
         reportSuccessfullyUpdatedFavorite(favorite: favorite, nextToArriveTrips: nextToArriveTrips)

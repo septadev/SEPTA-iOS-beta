@@ -65,6 +65,8 @@ public class RealTimeArrival: Mappable {
     public var orig_vehicle_id: String?
     public var consist: [String]?
     public var term_consist: [String]?
+    public var orig_realtime: Bool?
+    public var term_realtime: Bool?
 
     public required init?(map _: Map) {
     }
@@ -100,5 +102,8 @@ public class RealTimeArrival: Mappable {
         orig_vehicle_id <- map["orig_vehicle_id"]
         consist <- map["consist"]
         term_consist <- map["term_consist"]
+
+        orig_realtime <- map["orig_realtime"]
+        term_realtime <- map["term_realtime"]
     }
 }

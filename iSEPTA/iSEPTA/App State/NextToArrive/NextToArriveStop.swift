@@ -9,6 +9,7 @@
 import Foundation
 import SeptaSchedule
 import CoreLocation
+import SeptaRest
 
 struct NextToArriveStop {
 
@@ -23,8 +24,10 @@ struct NextToArriveStop {
     let direction: RouteDirectionCode?
     let vehicleLocationCoordinate: CLLocationCoordinate2D?
     let vehicleIds: [String]?
+    var nextToArriveDetail: RealTimeArrivalDetail?
+    let hasRealTimeData: Bool
 
-    init(routeId: String, routeName: String, tripId: Int?, arrivalTime: Date, departureTime: Date, lastStopId: Int?, lastStopName: String?, delayMinutes: Int?, direction: RouteDirectionCode?, vehicleLocationCoordinate: CLLocationCoordinate2D?, vehicleIds: [String]?) {
+    init(routeId: String, routeName: String, tripId: Int?, arrivalTime: Date, departureTime: Date, lastStopId: Int?, lastStopName: String?, delayMinutes: Int?, direction: RouteDirectionCode?, vehicleLocationCoordinate: CLLocationCoordinate2D?, vehicleIds: [String]?, hasRealTimeData: Bool?) {
         self.routeId = routeId
         self.routeName = routeName
         self.tripId = tripId
@@ -37,6 +40,11 @@ struct NextToArriveStop {
         self.direction = direction
         self.vehicleLocationCoordinate = vehicleLocationCoordinate
         self.vehicleIds = vehicleIds
+        if let hasRealTimeData = hasRealTimeData {
+            self.hasRealTimeData = hasRealTimeData
+        } else {
+            self.hasRealTimeData = false
+        }
     }
 }
 

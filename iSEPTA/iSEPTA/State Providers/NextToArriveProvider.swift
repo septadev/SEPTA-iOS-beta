@@ -24,6 +24,8 @@ class NextToArriveProvider: StoreSubscriber {
 
     let scheduleRequestWatcher = NextToArriveScheduleRequestWatcher()
 
+    let nextToArriveDetailProvider = NextToArriveDetailProvider()
+
     private init() {
 
         subscribe()
@@ -96,6 +98,7 @@ class NextToArriveProvider: StoreSubscriber {
                     connectionLocation: connectionLocation)
 
                 nextToArriveTrips.append(nextToArriveTrip)
+                nextToArriveDetailProvider.retrieveNextToArriveDetail(nextToArriveTrip: nextToArriveTrip, transitMode: transitMode)
             }
         }
         reportStatus(.dataLoadedSuccessfully, nextToArriveTrips: nextToArriveTrips)
