@@ -18,10 +18,23 @@ class TripView: UIView {
         }
     }
 
+    @IBAction func didTapView(_: Any) {
+        guard !chevronView.isHidden else { return }
+        backgroundColor = SeptaColor.buttonHighlight
+        connectionView?.backgroundColor = SeptaColor.buttonHighlight
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+            self.backgroundColor = UIColor.white
+            self.connectionView?.backgroundColor = UIColor.white
+        })
+    }
+
+    @IBOutlet weak var chevronView: LittleBlueChevronButton!
     @IBOutlet weak var departingWhenLabel: UILabel!
     @IBOutlet weak var startStopLabel: UILabel!
     @IBOutlet weak var onTimeLabel: UILabel!
     @IBOutlet weak var endStopLabel: UILabel!
+
+    weak var connectionView: ConnectionView?
 
     override var intrinsicContentSize: CGSize {
         return CGSize(width: UIViewNoIntrinsicMetric, height: 58)

@@ -172,6 +172,7 @@ extension BaseNextToArriveInfoViewModel { // Table View
         tripView.onTimeLabel.text = generateOnTimeString(stop: trip.startStop, hasVehicleLocation: hasVehicleLocation)
         tripView.onTimeLabel.textColor = generateOnTimeColor(stop: trip.startStop, hasVehicleLocation: hasVehicleLocation)
         tripView.endStopLabel.text = generateLastStopName(stop: trip.startStop)
+        tripView.chevronView.isHidden = !trip.startStop.hasRealTimeData
         tripView.departingBox.layer.borderColor = generateDepartingBoxColor(stop: trip.startStop)
     }
 
@@ -184,6 +185,7 @@ extension BaseNextToArriveInfoViewModel { // Table View
         firstLegTripView.onTimeLabel.text = generateOnTimeString(stop: trip.startStop, hasVehicleLocation: startHasVehicleLocation)
         firstLegTripView.onTimeLabel.textColor = generateOnTimeColor(stop: trip.startStop, hasVehicleLocation: startHasVehicleLocation)
         firstLegTripView.endStopLabel.text = generateLastStopName(stop: trip.startStop)
+        firstLegTripView.chevronView.isHidden = !trip.startStop.hasRealTimeData
         firstLegTripView.departingBox.layer.borderColor = generateDepartingBoxColor(stop: trip.startStop)
 
         let secondLegTripView = cell.endConnectionView.tripView!
@@ -193,6 +195,7 @@ extension BaseNextToArriveInfoViewModel { // Table View
         secondLegTripView.onTimeLabel.text = generateOnTimeString(stop: trip.endStop, hasVehicleLocation: endHasVehicleLocation)
         secondLegTripView.onTimeLabel.textColor = generateOnTimeColor(stop: trip.endStop, hasVehicleLocation: endHasVehicleLocation)
         secondLegTripView.endStopLabel.text = generateLastStopName(stop: trip.endStop)
+        secondLegTripView.chevronView.isHidden = !trip.endStop.hasRealTimeData
         secondLegTripView.departingBox.layer.borderColor = generateDepartingBoxColor(stop: trip.endStop)
 
         let connectionStation = trip.connectionLocation?.stopName ?? ""

@@ -15,6 +15,8 @@ class ConnectionView: UIView {
     @IBOutlet var headerViewWrapper: UIView! {
         didSet {
             tripHeaderView = headerViewWrapper.awakeInsertAndPinSubview(nibName: "TripHeaderView")
+            tripHeaderView.backgroundColor = UIColor.clear
+            headerViewWrapper.backgroundColor = UIColor.clear
         }
     }
 
@@ -22,6 +24,7 @@ class ConnectionView: UIView {
     @IBOutlet var tripViewWrapper: UIView! {
         didSet {
             tripView = tripViewWrapper.awakeInsertAndPinSubview(nibName: "TripView")
+            tripView.connectionView = self
         }
     }
 }
