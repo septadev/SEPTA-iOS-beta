@@ -96,10 +96,11 @@ class FavoritesNextToArriveProvider: StoreSubscriber {
         for realTimeArrival in realTimeArrivals {
             let startStop = mapper.mapStart(realTimeArrival: realTimeArrival, transitMode: transitMode)
             let endStop = mapper.mapEnd(realTimeArrival: realTimeArrival, transitMode: transitMode)
-            let vehicleLocation = mapper.mapVehicleLocation(realTimeArrival: realTimeArrival)
+
             let connectionLocation = mapper.mapConnectionStation(realTimeArrival: realTimeArrival)
 
             if let startStop = startStop, let endStop = endStop {
+                let vehicleLocation = mapper.mapVehicleLocation(realTimeArrival: realTimeArrival, startStop: startStop, endStop: endStop)
                 let nextToArriveTrip = NextToArriveTrip(startStop: startStop, endStop: endStop, vehicleLocation: vehicleLocation, connectionLocation: connectionLocation)
                 nextToArriveTrips.append(nextToArriveTrip)
                 nextToArriveDetailProvider.retrieveNextToArriveDetail(favorite: favorite, nextToArriveTrip: nextToArriveTrip, transitMode: transitMode)

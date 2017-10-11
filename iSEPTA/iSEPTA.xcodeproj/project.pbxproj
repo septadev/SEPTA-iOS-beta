@@ -504,6 +504,8 @@
 		678F05391F5BFFE500CC4D3C /* LocationActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F05381F5BFFE500CC4D3C /* LocationActions.swift */; };
 		678F053B1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F053A1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift */; };
 		679924051F6E01BD00FD5691 /* MoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679924041F6E01BD00FD5691 /* MoreButton.swift */; };
+		67A33DDD1F8DCA2400D82802 /* MapVehicleCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A33DDC1F8DCA2400D82802 /* MapVehicleCalloutView.swift */; };
+		67A33DE11F8DCA3600D82802 /* MapVehicleCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67A33DE01F8DCA3600D82802 /* MapVehicleCalloutView.xib */; };
 		67A385731F7D4402002E01E0 /* MoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A385721F7D4402002E01E0 /* MoreTableViewCell.swift */; };
 		67A385771F7D4752002E01E0 /* MoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A385761F7D4752002E01E0 /* MoreViewModel.swift */; };
 		67A3857B1F7D5BA7002E01E0 /* UIViewController+Shadows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A3857A1F7D5BA7002E01E0 /* UIViewController+Shadows.swift */; };
@@ -1130,6 +1132,8 @@
 		678F05381F5BFFE500CC4D3C /* LocationActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationActions.swift; sourceTree = "<group>"; };
 		678F053A1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupSearchMode.swift; sourceTree = "<group>"; };
 		679924041F6E01BD00FD5691 /* MoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreButton.swift; sourceTree = "<group>"; };
+		67A33DDC1F8DCA2400D82802 /* MapVehicleCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVehicleCalloutView.swift; sourceTree = "<group>"; };
+		67A33DE01F8DCA3600D82802 /* MapVehicleCalloutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapVehicleCalloutView.xib; sourceTree = "<group>"; };
 		67A385721F7D4402002E01E0 /* MoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewCell.swift; sourceTree = "<group>"; };
 		67A385761F7D4752002E01E0 /* MoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewModel.swift; sourceTree = "<group>"; };
 		67A3857A1F7D5BA7002E01E0 /* UIViewController+Shadows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Shadows.swift"; sourceTree = "<group>"; };
@@ -2073,6 +2077,8 @@
 				58B277901F62AAD500663507 /* kml */,
 				58B2778E1F62A9C800663507 /* KML.swift */,
 				58E33F0D1F6098FE00C74B7C /* NextToArriveMapViewController.swift */,
+				67A33DDC1F8DCA2400D82802 /* MapVehicleCalloutView.swift */,
+				67A33DE01F8DCA3600D82802 /* MapVehicleCalloutView.xib */,
 				58126F701F631CB200A6E187 /* NextToArriveEndpointsViewModel.swift */,
 				58126F6E1F631C8300A6E187 /* NextToArriveMapRouteViewModel.swift */,
 				58126F6C1F631C5100A6E187 /* RouteDrawable.swift */,
@@ -2812,6 +2818,7 @@
 				582F4EDE1F33B1120062A546 /* Main.storyboard in Resources */,
 				58B278311F62AAD500663507 /* 106.kml in Resources */,
 				58B278901F62AAD500663507 /* 7.kml in Resources */,
+				67A33DE11F8DCA3600D82802 /* MapVehicleCalloutView.xib in Resources */,
 				58B2782D1F62AAD500663507 /* 102.kml in Resources */,
 				58B2783C1F62AAD500663507 /* 117.kml in Resources */,
 				58FB264B1F6EC42F00F17048 /* DbAlertsMappedToWebAlerts.json in Resources */,
@@ -3206,6 +3213,7 @@
 				678F05391F5BFFE500CC4D3C /* LocationActions.swift in Sources */,
 				585CEBDA1F86A0AE006DCC67 /* AlertDetailsViewModel.swift in Sources */,
 				676B7D8A1F7CFA8A0052F016 /* FarePaymentModeView.swift in Sources */,
+				67A33DDD1F8DCA2400D82802 /* MapVehicleCalloutView.swift in Sources */,
 				58E33F121F60998F00C74B7C /* NextToArriveDetailViewController.swift in Sources */,
 				678D26C41F5CC4A400D140CC /* FavoritesState.swift in Sources */,
 				58290E501F372DDC000CCF3C /* NavigationActions.swift in Sources */,

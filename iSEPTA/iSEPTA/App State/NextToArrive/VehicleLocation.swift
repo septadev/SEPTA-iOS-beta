@@ -13,6 +13,7 @@ import SeptaSchedule
 struct VehicleLocation {
 
     let location: CLLocationCoordinate2D?
+    let nextToArriveStop: NextToArriveStop
     var lastLocation: CLLocationCoordinate2D? {
         didSet {
         }
@@ -52,9 +53,10 @@ struct VehicleLocation {
         return currentCLLocation.distance(from: lastCLLocation)
     }
 
-    init(location: CLLocationCoordinate2D?, lastLocation: CLLocationCoordinate2D? = nil) {
+    init(location: CLLocationCoordinate2D?, lastLocation: CLLocationCoordinate2D? = nil, nextToArriveStop: NextToArriveStop) {
         self.location = location
         self.lastLocation = lastLocation
+        self.nextToArriveStop = nextToArriveStop
         if let location = location, let lastLocation = lastLocation {
             bearing = setBearing(location: location, lastLocation: lastLocation)
             distanceCovered = calculateDistanceCovered(location: location, lastLocation: lastLocation)

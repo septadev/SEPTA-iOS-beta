@@ -89,7 +89,7 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
                 return tripId == newStopTripId
 
             }).first?.vehicleLocationCoordinate
-            return VehicleLocation(location: newStop.vehicleLocationCoordinate, lastLocation: currentLocationCoordinate)
+            return VehicleLocation(location: newStop.vehicleLocationCoordinate, lastLocation: currentLocationCoordinate, nextToArriveStop: newStop)
         }
         delegate.drawVehicleLocations(vehicleLocations)
     }

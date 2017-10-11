@@ -88,7 +88,7 @@ class NextToArriveMapper {
         }
     }
 
-    func mapVehicleLocation(realTimeArrival a: RealTimeArrival) -> TripVehicleLocations {
+    func mapVehicleLocation(realTimeArrival a: RealTimeArrival, startStop: NextToArriveStop, endStop: NextToArriveStop) -> TripVehicleLocations {
         var firstLegLocation: CLLocationCoordinate2D?
         if let location = mapCoordinateFromString(a.vehicle_lat, a.vehicle_lon) {
             firstLegLocation = location
@@ -96,8 +96,8 @@ class NextToArriveMapper {
             firstLegLocation = location
         }
         let secondLegLocation = mapCoordinateFromString(a.term_vehicle_lat, a.term_vehicle_lon)
-        let firstLegVehicleLocation = VehicleLocation(location: firstLegLocation)
-        let secondLegVehicleLocation = VehicleLocation(location: secondLegLocation)
+        let firstLegVehicleLocation = VehicleLocation(location: firstLegLocation, nextToArriveStop: startStop)
+        let secondLegVehicleLocation = VehicleLocation(location: secondLegLocation, nextToArriveStop: endStop)
         return TripVehicleLocations(firstLegLocation: firstLegVehicleLocation, secondLegLocation: secondLegVehicleLocation)
     }
 

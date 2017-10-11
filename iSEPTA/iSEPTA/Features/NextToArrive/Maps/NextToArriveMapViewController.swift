@@ -12,6 +12,7 @@ import UIKit
 import MapKit
 import SeptaSchedule
 import ReSwift
+import SeptaRest
 
 class NextToArriveMapViewController: UIViewController, RouteDrawable {
 
@@ -123,10 +124,14 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         guard let location = vehicleLocation.location else { return }
         let annotation = VehicleLocationAnnotation(vehicleLocation: vehicleLocation)
         annotation.coordinate = location
-
+        
         mapView.addAnnotation(annotation)
         vehiclesAnnotationsAdded.append(annotation)
     }
+    
+    
+    
+    
 
     func clearExistingVehicleLocations() {
         mapView.removeAnnotations(vehiclesAnnotationsAdded)
@@ -178,7 +183,7 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
         case let annotation as ColorPointAnnotation:
             return retrievePinAnnogationView(annotation: annotation)
         case let annotation as VehicleLocationAnnotation:
-            return retrieveVehicleAnnogationView(annotation: annotation)
+            return retrieveVehicleAnnotationView(annotation: annotation)
         default:
             return nil
         }
@@ -203,23 +208,68 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
         return pinView
     }
 
-    func retrieveVehicleAnnogationView(annotation: VehicleLocationAnnotation) -> MKAnnotationView {
+    func retrieveVehicleAnnotationView(annotation: VehicleLocationAnnotation) -> MKAnnotationView {
         let vehicleId = "vehicle"
-        guard let vehicleView = mapView.dequeueReusableAnnotationView(withIdentifier: vehicleId) else {
-            return buildNewVehicleAnnotationView(annotation: annotation, vehicleViewId: vehicleId)
+        let annotationView: MKAnnotationView
+        if let vehicleView = mapView.dequeueReusableAnnotationView(withIdentifier: vehicleId){
+            annotationView = vehicleView
+        } else {
+            annotationView = buildNewVehicleAnnotationView(annotation: annotation, vehicleViewId: vehicleId)
         }
-        vehicleView.annotation = annotation
+        
+        buildVehicleTitle(vehicleLocation: annotation.vehicleLocation, calloutView: annotationView.detailCalloutAccessoryView)
+        annotationView.annotation = annotation
         //        if annotation.vehicleLocation.isMoving, let bearing = annotation.vehicleLocation.bearing {
         //            let startingTransform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
         //            let transformForBearing = startingTransform.rotated(by: CGFloat(bearing))
         //            //            vehicleView.transform = transformForBearing
         //        }
-        return vehicleView
+        return annotationView
+    }
+    
+    func buildVehicleTitle(vehicleLocation: VehicleLocation, calloutView: UIView?) {
+        guard let calloutView = calloutView as? MapVehicleCalloutView  else { return }
+        
+        if let detail = vehicleLocation.nextToArriveStop.nextToArriveDetail as? NextToArriveRailDetails,
+            let consist = detail.consist, let destination = detail.destination, let delay = detail.destinationDelay, let tripId = detail.tripid {
+                let countString = String(consist.count)
+                let delayString = buildDelayString(delay:delay)
+                calloutView.label1.text = "Train: #\(tripId) to \(destination)"
+                calloutView.label2.text = "Status: \(delayString)"
+                calloutView.label3.text = "# of Train Cars: \(countString)"
+            }
+        if let detail = vehicleLocation.nextToArriveStop.nextToArriveDetail as? NextToArriveBusDetails,
+            let vehicleId = detail.vehicleid, let destination = detail.destinationStation, let delay = detail.destinationDelay, let blockId = detail.blockid {
+            
+                let delayString = buildDelayString(delay:delay)
+                calloutView.label1.text = "Block ID: \(blockId) to \(destination)"
+                calloutView.label2.text = "Vehicle Number: \(vehicleId)"
+                calloutView.label3.text = "Status: \(delayString)"
+            
+            }
+        
+    }
+    
+    func buildDelayString(delay: Int) -> String {
+        let delayString: String
+                switch delay {
+                    case let delay where delay < 0:
+                    delayString = "Status: \(delay) min early"
+                    case 0:
+                    delayString = "Status: On Time"
+                    case  let delay where delay > 0:
+                    delayString = "Status: \(delay) min late"
+                    default:
+                    delayString = ""
+                }
+        return delayString
     }
 
     func buildNewVehicleAnnotationView(annotation: VehicleLocationAnnotation, vehicleViewId: String) -> MKAnnotationView {
         let vehicleView = MKAnnotationView(annotation: annotation, reuseIdentifier: vehicleViewId)
         vehicleView.image = scheduleRequest?.transitMode.mapPin()
+        vehicleView.canShowCallout = true
+        vehicleView.detailCalloutAccessoryView = UIView.loadNibView(nibName: "MapVehicleCalloutView")!
         return vehicleView
     }
 
