@@ -46,5 +46,5 @@ struct SeptaColor {
 
     static let editFavoriteBlue = UIColor.toPercent(34, 83, 145, 1)
 
-    static let buttonHighlight = UIColor.toPercent(210, 210, 210, 1)
+    static let buttonHighlight = UIColor.toPercent(230, 230, 230, 1)
 }

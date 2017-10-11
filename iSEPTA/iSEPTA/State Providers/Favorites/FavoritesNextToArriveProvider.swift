@@ -102,7 +102,7 @@ class FavoritesNextToArriveProvider: StoreSubscriber {
             if let startStop = startStop, let endStop = endStop {
                 let nextToArriveTrip = NextToArriveTrip(startStop: startStop, endStop: endStop, vehicleLocation: vehicleLocation, connectionLocation: connectionLocation)
                 nextToArriveTrips.append(nextToArriveTrip)
-                nextToArriveDetailProvider.retrieveNextToArriveDetail(nextToArriveTrip: nextToArriveTrip, transitMode: transitMode)
+                nextToArriveDetailProvider.retrieveNextToArriveDetail(favorite: favorite, nextToArriveTrip: nextToArriveTrip, transitMode: transitMode)
             }
         }
         reportSuccessfullyUpdatedFavorite(favorite: favorite, nextToArriveTrips: nextToArriveTrips)

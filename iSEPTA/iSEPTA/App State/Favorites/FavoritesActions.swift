@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SeptaRest
 
 protocol FavoritesAction: SeptaAction {}
 
@@ -47,6 +48,13 @@ struct UpdateFavorite: FavoritesAction {
 
 struct RequestFavoriteNextToArriveUpdate: FavoritesAction {
     let favorite: Favorite
+    let description: String
+}
+
+struct UpdateNextToArriveDetailForFavorite: FavoritesAction {
+    let favoriteId: String
+    let tripId: Int
+    let realTimeArrivalDetail: RealTimeArrivalDetail
     let description: String
 }
 
