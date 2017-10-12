@@ -3,10 +3,9 @@ use Data::Dumper;
 
 my $struct = q |
 
-struct MoreState {
-  let  septaUrlInfo: SeptaUrlInfo?
-}
-
+struct TripDetailState {
+    let tripDetails: NextToArriveStop?
+    
 
 	|;
 

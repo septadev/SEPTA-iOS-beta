@@ -22,15 +22,15 @@ class TripView: UIView {
         guard !chevronView.isHidden else { return }
         backgroundColor = SeptaColor.buttonHighlight
         connectionView?.backgroundColor = SeptaColor.buttonHighlight
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
             self.backgroundColor = UIColor.white
             self.connectionView?.backgroundColor = UIColor.white
-            if let rootViewController = self.window?.rootViewController {
-                UIAlert.presentComingSoonAlertFrom(rootViewController)
-            }
+            let action = ShowTripDetails(nextToArriveStop: self.nextToArriveStop)
+            store.dispatch(action)
         })
     }
 
+    var nextToArriveStop: NextToArriveStop!
     @IBOutlet weak var chevronView: LittleBlueChevronButton!
     @IBOutlet weak var departingWhenLabel: UILabel!
     @IBOutlet weak var startStopLabel: UILabel!

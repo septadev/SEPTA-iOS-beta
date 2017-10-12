@@ -175,6 +175,7 @@ extension BaseNextToArriveInfoViewModel { // Table View
         tripView.endStopLabel.text = generateLastStopName(stop: trip.startStop)
         tripView.chevronView.isHidden = !trip.startStop.hasRealTimeData
         tripView.departingBox.layer.borderColor = generateDepartingBoxColor(stop: trip.startStop)
+        tripView.nextToArriveStop = trip.startStop
     }
 
     func configureConnectionCell(cell: ConnectionCellDisplayable, forTrip trip: NextToArriveTrip) {
@@ -188,6 +189,7 @@ extension BaseNextToArriveInfoViewModel { // Table View
         firstLegTripView.endStopLabel.text = generateLastStopName(stop: trip.startStop)
         firstLegTripView.chevronView.isHidden = !trip.startStop.hasRealTimeData
         firstLegTripView.departingBox.layer.borderColor = generateDepartingBoxColor(stop: trip.startStop)
+        firstLegTripView.nextToArriveStop = trip.startStop
 
         let secondLegTripView = cell.endConnectionView.tripView!
         let endHasVehicleLocation = trip.vehicleLocation.secondLegLocation != nil
@@ -198,6 +200,7 @@ extension BaseNextToArriveInfoViewModel { // Table View
         secondLegTripView.endStopLabel.text = generateLastStopName(stop: trip.endStop)
         secondLegTripView.chevronView.isHidden = !trip.endStop.hasRealTimeData
         secondLegTripView.departingBox.layer.borderColor = generateDepartingBoxColor(stop: trip.endStop)
+        secondLegTripView.nextToArriveStop = trip.endStop
 
         let connectionStation = trip.connectionLocation?.stopName ?? ""
         cell.connectionLabel.text = "Connect @\(connectionStation)"

@@ -28,7 +28,8 @@ class NextToArriveMapper {
             return nil
         }
 
-        return NextToArriveStop(routeId: routeId,
+        return NextToArriveStop(transitMode: transitMode,
+                                routeId: routeId,
                                 routeName: routeName,
                                 tripId: Int(a.orig_line_trip_id ?? ""),
                                 arrivalTime: arrivalTime,
@@ -58,7 +59,8 @@ class NextToArriveMapper {
             return nil
         }
 
-        return NextToArriveStop(routeId: routeId,
+        return NextToArriveStop(transitMode: transitMode,
+                                routeId: routeId,
                                 routeName: routeName,
                                 tripId: Int(a.term_line_trip_id ?? ""),
                                 arrivalTime: arrivalTime,

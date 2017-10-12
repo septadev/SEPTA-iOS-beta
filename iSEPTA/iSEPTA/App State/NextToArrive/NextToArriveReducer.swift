@@ -89,14 +89,16 @@ struct NextToArriveReducer {
         var newTrips = [NextToArriveTrip]()
         for trip in state.nextToArriveTrips {
             let start = trip.startStop
+            let transitMode = state.scheduleState.scheduleRequest.transitMode
             if let startTripId = trip.startStop.tripId, startTripId == tripId {
-                var newStart = NextToArriveStop(routeId: start.routeId, routeName: start.routeName, tripId: start.tripId, arrivalTime: start.arrivalTime, departureTime: start.departureTime, lastStopId: start.lastStopId, lastStopName: start.lastStopName, delayMinutes: start.delayMinutes, direction: start.direction, vehicleLocationCoordinate: start.vehicleLocationCoordinate, vehicleIds: start.vehicleIds, hasRealTimeData: start.hasRealTimeData, service: start.service)
-                newStart.nextToArriveDetail = action.realTimeArrivalDetail
+                var newStart = NextToArriveStop(transitMode: transitMode, routeId: start.routeId, routeName: start.routeName, tripId: start.tripId, arrivalTime: start.arrivalTime, departureTime: start.departureTime, lastStopId: start.lastStopId, lastStopName: start.lastStopName, delayMinutes: start.delayMinutes, direction: start.direction, vehicleLocationCoordinate: start.vehicleLocationCoordinate, vehicleIds: start.vehicleIds, hasRealTimeData: start.hasRealTimeData, service: start.service)
+                newStart.addRealTimeData(nextToArriveDetail: action.realTimeArrivalDetail)
                 let newTrip = NextToArriveTrip(startStop: newStart, endStop: trip.endStop, vehicleLocation: trip.vehicleLocation, connectionLocation: trip.connectionLocation)
                 newTrips.append(newTrip)
             } else if let endTripId = trip.endStop.tripId, endTripId == tripId {
-                var newEnd = NextToArriveStop(routeId: start.routeId, routeName: start.routeName, tripId: start.tripId, arrivalTime: start.arrivalTime, departureTime: start.departureTime, lastStopId: start.lastStopId, lastStopName: start.lastStopName, delayMinutes: start.delayMinutes, direction: start.direction, vehicleLocationCoordinate: start.vehicleLocationCoordinate, vehicleIds: start.vehicleIds, hasRealTimeData: start.hasRealTimeData, service: start.service)
-                newEnd.nextToArriveDetail = action.realTimeArrivalDetail
+                var newEnd = NextToArriveStop(transitMode: transitMode, routeId: start.routeId, routeName: start.routeName, tripId: start.tripId, arrivalTime: start.arrivalTime, departureTime: start.departureTime, lastStopId: start.lastStopId, lastStopName: start.lastStopName, delayMinutes: start.delayMinutes, direction: start.direction, vehicleLocationCoordinate: start.vehicleLocationCoordinate, vehicleIds: start.vehicleIds, hasRealTimeData: start.hasRealTimeData, service: start.service)
+                newEnd.addRealTimeData(nextToArriveDetail: action.realTimeArrivalDetail)
+
                 let newTrip = NextToArriveTrip(startStop: trip.startStop, endStop: newEnd, vehicleLocation: trip.vehicleLocation, connectionLocation: trip.connectionLocation)
                 newTrips.append(newTrip)
             } else {

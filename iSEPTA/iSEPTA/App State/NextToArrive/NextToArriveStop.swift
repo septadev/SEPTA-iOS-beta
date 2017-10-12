@@ -12,23 +12,25 @@ import CoreLocation
 import SeptaRest
 
 struct NextToArriveStop {
-    let updatedTime = Date()
+    let transitMode: TransitMode
+    var updatedTime = Date()
     let routeId: String
     let routeName: String
     let tripId: Int?
     let arrivalTime: Date
     let departureTime: Date
-    let lastStopId: Int?
-    let lastStopName: String?
-    let delayMinutes: Int?
+    var lastStopId: Int?
+    var lastStopName: String?
+    var delayMinutes: Int?
     let direction: RouteDirectionCode?
-    let vehicleLocationCoordinate: CLLocationCoordinate2D?
-    let vehicleIds: [String]?
-    var nextToArriveDetail: RealTimeArrivalDetail?
+    var vehicleLocationCoordinate: CLLocationCoordinate2D?
+    var vehicleIds: [String]?
+    private(set) var nextToArriveDetail: RealTimeArrivalDetail?
     let hasRealTimeData: Bool
     var service: String?
 
-    init(routeId: String, routeName: String, tripId: Int?, arrivalTime: Date, departureTime: Date, lastStopId: Int?, lastStopName: String?, delayMinutes: Int?, direction: RouteDirectionCode?, vehicleLocationCoordinate: CLLocationCoordinate2D?, vehicleIds: [String]?, hasRealTimeData: Bool?, service: String?) {
+    init(transitMode: TransitMode, routeId: String, routeName: String, tripId: Int?, arrivalTime: Date, departureTime: Date, lastStopId: Int?, lastStopName: String?, delayMinutes: Int?, direction: RouteDirectionCode?, vehicleLocationCoordinate: CLLocationCoordinate2D?, vehicleIds: [String]?, hasRealTimeData: Bool?, service: String?) {
+        self.transitMode = transitMode
         self.routeId = routeId
         self.routeName = routeName
         self.tripId = tripId
@@ -47,6 +49,16 @@ struct NextToArriveStop {
             self.hasRealTimeData = false
         }
         self.service = service
+    }
+
+    mutating func addRealTimeData(nextToArriveDetail: RealTimeArrivalDetail?) {
+        self.nextToArriveDetail = nextToArriveDetail
+        updatedTime = Date()
+        guard let detail = nextToArriveDetail else { return }
+
+        if let newLat = detail.latitude, let newLon = detail.longitude {
+            vehicleLocationCoordinate = CLLocationCoordinate2D(latitude: newLat, longitude: newLon)
+        }
     }
 }
 

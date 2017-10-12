@@ -35,6 +35,9 @@ enum ViewController: String, Equatable {
     case contactViewController
     case aboutViewController
 
+    // trip detials
+    case tripDetailViewController
+
     func storyboardIdentifier() -> String {
         switch self {
         case .selectSchedules:
@@ -75,6 +78,8 @@ enum ViewController: String, Equatable {
             return "contact"
         case .aboutViewController :
             return "about"
+        case .tripDetailViewController :
+            return "tripDetail"
         }
     }
 
