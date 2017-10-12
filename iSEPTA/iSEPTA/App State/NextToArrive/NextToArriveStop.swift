@@ -12,7 +12,7 @@ import CoreLocation
 import SeptaRest
 
 struct NextToArriveStop {
-
+    let updatedTime = Date()
     let routeId: String
     let routeName: String
     let tripId: Int?
@@ -52,13 +52,5 @@ struct NextToArriveStop {
 
 extension NextToArriveStop: Equatable {}
 func ==(lhs: NextToArriveStop, rhs: NextToArriveStop) -> Bool {
-    var areEqual = true
-
-    areEqual = lhs.arrivalTime == rhs.arrivalTime
-    guard areEqual else { return false }
-
-    areEqual = lhs.departureTime == rhs.departureTime
-    guard areEqual else { return false }
-
-    return areEqual
+    return lhs.updatedTime != rhs.updatedTime
 }

@@ -143,7 +143,6 @@ extension NextToArriveInfoViewController: UpdateableFromViewModel {
             self?.tableView.tableFooterView?.isHidden = self?.viewModel.numberOfSections() == 0
             self?.tableView.reloadData()
             //            self?.tableView.tableFooterView?.isHidden = false
-            print("Reload data")
         }
 
         // Save the new work item and execute it after 250 ms

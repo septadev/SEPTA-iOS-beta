@@ -35,8 +35,11 @@ struct FavoritesReducer {
             favoritesState = reduceCancelFavoriteEdit(action: action, state: state)
         case let action as RemoveEditedFavorite:
             favoritesState = reduceRemoveFavorite(action: action, state: state)
-        case let action as UpdateFavorite:
-            favoritesState = reduceUpdateFavorite(action: action, state: state)
+
+        case let action as UpdateFavoriteNextToArriveTrips:
+            favoritesState = reduceUpdateFavoriteNextToArriveTrips(action: action, state: state)
+        case let action as UpdateFavoriteNextToArriveUpdateStatus:
+            favoritesState = reduceUpdateFavoriteNextToArriveUpdateStatus(action: action, state: state)
         case let action as CreateNextToArriveFavorite:
             favoritesState = reduceCreateNextToArriveFavorite(action: action, state: state)
         case let action as RequestFavoriteNextToArriveUpdate:
@@ -51,84 +54,77 @@ struct FavoritesReducer {
     }
 
     static func reduceLoadFavorites(action: LoadFavorites, state: FavoritesState) -> FavoritesState {
-        var newState = FavoritesState(favorites: action.favorites)
-        newState.favoriteToEdit = state.favoriteToEdit
-
-        return newState
+        return FavoritesState(favorites: action.favorites,
+                              favoriteToEdit: state.favoriteToEdit,
+                              nextToArriveFavoriteId: state.nextToArriveFavoriteId)
     }
 
     static func reduceAddFavorite(action: AddFavorite, state: FavoritesState) -> FavoritesState {
-        var newState = state
-        newState.favoriteToEdit = action.favorite
-        return newState
+        return FavoritesState(favorites: state.favorites,
+                              favoriteToEdit: action.favorite,
+                              nextToArriveFavoriteId: state.nextToArriveFavoriteId)
     }
 
     static func reduceEditFavorite(action: EditFavorite, state: FavoritesState) -> FavoritesState {
-        var favoriteState = state
-        favoriteState.favoriteToEdit = action.favorite
-        return favoriteState
+        return FavoritesState(favorites: state.favorites,
+                              favoriteToEdit: action.favorite,
+                              nextToArriveFavoriteId: state.nextToArriveFavoriteId)
     }
 
     static func reduceSaveFavorite(action: SaveEditedFavorite, state: FavoritesState) -> FavoritesState {
-        var favorites = state.favorites.filter { $0.favoriteId != action.favorite.favoriteId }
-        favorites.append(action.favorite)
-        var favoriteState = FavoritesState(favorites: favorites)
-        favoriteState.favoriteToEdit = nil
-        favoriteState.nextToArriveFavoriteId = state.nextToArriveFavoriteId
-        return favoriteState
+        return FavoritesState(favorites: replaceFavorite(action.favorite, state: state),
+                              favoriteToEdit: nil,
+                              nextToArriveFavoriteId: state.nextToArriveFavoriteId)
     }
 
     static func reduceCancelFavoriteEdit(action _: CancelFavoriteEdit, state: FavoritesState) -> FavoritesState {
-        var favoriteState = FavoritesState(favorites: state.favorites)
-        favoriteState.favoriteToEdit = nil
-        favoriteState.nextToArriveFavoriteId = state.nextToArriveFavoriteId
-        return favoriteState
+        return FavoritesState(favorites: state.favorites,
+                              favoriteToEdit: nil,
+                              nextToArriveFavoriteId: state.nextToArriveFavoriteId)
     }
 
     static func reduceRemoveFavorite(action: RemoveEditedFavorite, state: FavoritesState) -> FavoritesState {
-        let favorites = state.favorites.filter { $0.favoriteId != action.favorite.favoriteId }
-        var favoriteState = FavoritesState(favorites: favorites)
-        favoriteState.favoriteToEdit = nil
-        favoriteState.nextToArriveFavoriteId = nil
-        return favoriteState
+        return FavoritesState(favorites: removeFavorite(action.favorite, state: state),
+                              favoriteToEdit: nil,
+                              nextToArriveFavoriteId: state.nextToArriveFavoriteId)
     }
 
-    static func reduceUpdateFavorite(action: UpdateFavorite, state: FavoritesState) -> FavoritesState {
-        //        guard var matchingFavorite = state.favorites.filter({ $0.favoriteId == action.favorite.favoriteId }).first else { return state }
-        //        matchingFavorite.nextToArriveTrips = action.favorite.nextToArriveTrips
-        //        matchingFavorite.nextToArriveUpdateStatus = action.favorite.nextToArriveUpdateStatus
-        //        matchingFavorite.refreshDataRequested = false
+    static func reduceUpdateFavoriteNextToArriveTrips(action: UpdateFavoriteNextToArriveTrips, state: FavoritesState) -> FavoritesState {
+        let updatedFavorites = updateFavoriteWithNextToArriveTrips(favoriteId: action.favoriteId, nextToArriveTrips: action.nextToArriveTrips, state: state)
 
-        var otherFavorites = state.favorites.filter { $0.favoriteId != action.favorite.favoriteId }
-        otherFavorites.append(action.favorite)
-        var favoriteState = FavoritesState(favorites: otherFavorites)
-        favoriteState.nextToArriveFavoriteId = state.nextToArriveFavoriteId
-        favoriteState.favoriteToEdit = state.favoriteToEdit
-        return favoriteState
+        return FavoritesState(favorites: updatedFavorites,
+                              favoriteToEdit: state.favoriteToEdit,
+                              nextToArriveFavoriteId: state.nextToArriveFavoriteId)
+    }
+
+    static func reduceUpdateFavoriteNextToArriveUpdateStatus(action: UpdateFavoriteNextToArriveUpdateStatus, state: FavoritesState) -> FavoritesState {
+
+        let updatedFavorites = updateFavoriteWithNextToArriveStatus(favoriteId: action.favoriteId, nextToArriveUpdateStatus: action.nextToArriveUpdateStatus, state: state)
+
+        return FavoritesState(favorites: updatedFavorites,
+                              favoriteToEdit: state.favoriteToEdit,
+                              nextToArriveFavoriteId: state.nextToArriveFavoriteId)
     }
 
     static func reduceRequestFavoriteNextToArriveUpdate(action: RequestFavoriteNextToArriveUpdate, state: FavoritesState) -> FavoritesState {
-        guard var matchingFavorite = state.favorites.filter({ $0.favoriteId == action.favorite.favoriteId }).first else { return state }
-        matchingFavorite.refreshDataRequested = true
+        let updatedFavorites = updateFavoriteWithDataRefresh(favoriteId: action.favorite.favoriteId, refreshDataRequested: true, state: state)
 
-        var mutatingFavoritesArray = state.favorites.filter { $0.favoriteId != matchingFavorite.favoriteId }
-        mutatingFavoritesArray.append(matchingFavorite)
-        var favoriteState = state
-        favoriteState.favorites = mutatingFavoritesArray
-        return favoriteState
+        return FavoritesState(favorites: updatedFavorites,
+                              favoriteToEdit: state.favoriteToEdit,
+                              nextToArriveFavoriteId: state.nextToArriveFavoriteId)
     }
 
     static func reduceCreateNextToArriveFavorite(action: CreateNextToArriveFavorite, state: FavoritesState) -> FavoritesState {
-        var newState = state
-        newState.nextToArriveFavoriteId = action.favorite.favoriteId
-        return newState
+        return FavoritesState(favorites: state.favorites,
+                              favoriteToEdit: state.favoriteToEdit,
+                              nextToArriveFavoriteId: action.favorite.favoriteId)
     }
 
     static func reduceUpdateNextToArriveDetailForFavorite(action: UpdateNextToArriveDetailForFavorite, state: FavoritesState) -> FavoritesState {
 
-        guard let matchingFavorite = state.favorites.filter({ $0.favoriteId == action.favoriteId }).first else { return state }
-        var newState = state
-        var newFavorites = state.favorites.filter { $0.favoriteId != matchingFavorite.favoriteId }
+        guard let matchingFavorite = matchingFavoriteForId(action.favoriteId, state: state) else { return state }
+
+        var newFavorites = nonMatchingFavoriteForId(action.favoriteId, state: state)
         var newTrips = [NextToArriveTrip]()
         for trip in matchingFavorite.nextToArriveTrips {
             let start = trip.startStop
@@ -147,8 +143,62 @@ struct FavoritesReducer {
             }
         }
         newFavorites.append(matchingFavorite)
-        newState.favorites = newFavorites
 
-        return newState
+        return FavoritesState(favorites: newFavorites,
+                              favoriteToEdit: state.favoriteToEdit,
+                              nextToArriveFavoriteId: state.nextToArriveFavoriteId)
+    }
+
+    static func matchingFavoriteForId(_ favoriteId: String, state: FavoritesState) -> Favorite? {
+        guard let matchingFavorite = state.favorites.filter({ $0.favoriteId == favoriteId }).first else { return nil }
+        return matchingFavorite
+    }
+
+    static func nonMatchingFavoriteForId(_ favoriteId: String, state: FavoritesState) -> [Favorite] {
+        return state.favorites.filter { $0.favoriteId != favoriteId }
+    }
+
+    static func replaceFavorite(_ favorite: Favorite, state: FavoritesState) -> [Favorite] {
+        var otherFavorites = state.favorites.filter { $0.favoriteId != favorite.favoriteId }
+        otherFavorites.append(favorite)
+        return otherFavorites
+    }
+
+    static func removeFavorite(_ favorite: Favorite, state: FavoritesState) -> [Favorite] {
+        return state.favorites.filter { $0.favoriteId != favorite.favoriteId }
+    }
+
+    static func updateFavoriteWithNextToArriveTrips(favoriteId: String, nextToArriveTrips: [NextToArriveTrip], state: FavoritesState) -> [Favorite] {
+        guard let matchingFavorite = matchingFavoriteForId(favoriteId, state: state) else { return state.favorites }
+        var otherFavorites = nonMatchingFavoriteForId(favoriteId, state: state)
+        let updatedFavorite = updateFavoriteWithNextToArriveTrips(favorite: matchingFavorite, nextToArriveTrips: nextToArriveTrips)
+        otherFavorites.append(updatedFavorite)
+        return otherFavorites
+    }
+
+    static func updateFavoriteWithNextToArriveTrips(favorite: Favorite, nextToArriveTrips: [NextToArriveTrip]) -> Favorite {
+        var updatedFavorite = favorite
+        updatedFavorite.nextToArriveTrips = nextToArriveTrips
+        updatedFavorite.nextToArriveUpdateStatus = .dataLoadedSuccessfully
+        updatedFavorite.refreshDataRequested = false
+        return updatedFavorite
+    }
+
+    static func updateFavoriteWithNextToArriveStatus(favoriteId: String, nextToArriveUpdateStatus: NextToArriveUpdateStatus, state: FavoritesState) -> [Favorite] {
+        guard var matchingFavorite = matchingFavoriteForId(favoriteId, state: state) else { return state.favorites }
+        matchingFavorite.nextToArriveUpdateStatus = nextToArriveUpdateStatus
+        var otherFavorites = nonMatchingFavoriteForId(favoriteId, state: state)
+
+        otherFavorites.append(matchingFavorite)
+        return otherFavorites
+    }
+
+    static func updateFavoriteWithDataRefresh(favoriteId: String, refreshDataRequested: Bool, state: FavoritesState) -> [Favorite] {
+        guard var matchingFavorite = matchingFavoriteForId(favoriteId, state: state) else { return state.favorites }
+        matchingFavorite.refreshDataRequested = refreshDataRequested
+        var otherFavorites = nonMatchingFavoriteForId(favoriteId, state: state)
+
+        otherFavorites.append(matchingFavorite)
+        return otherFavorites
     }
 }

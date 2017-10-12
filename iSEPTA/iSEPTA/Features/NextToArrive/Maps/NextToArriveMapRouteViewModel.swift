@@ -34,13 +34,17 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
             store.subscribe(self) {
                 $0.select {
                     $0.nextToArriveState.nextToArriveTrips
-                }.skipRepeats { $0 == $1 }
+                }.skipRepeats({ (_, _) -> Bool in
+                    false
+                })
             }
         case .favorites:
             store.subscribe(self) {
                 $0.select {
                     $0.favoritesState.nextToArriveTrips
-                }.skipRepeats { $0 == $1 }
+                }.skipRepeats({ (_, _) -> Bool in
+                    false
+                })
             }
         default:
             break

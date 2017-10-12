@@ -41,9 +41,16 @@ struct RemoveEditedFavorite: FavoritesAction {
     let description = "User removes a favorite"
 }
 
-struct UpdateFavorite: FavoritesAction {
-    let favorite: Favorite
-    let description: String
+struct UpdateFavoriteNextToArriveTrips: FavoritesAction {
+    let favoriteId: String
+    let nextToArriveTrips: [NextToArriveTrip]
+    let description = "Updating Favorite Next To Arrive Trips"
+}
+
+struct UpdateFavoriteNextToArriveUpdateStatus: FavoritesAction {
+    let favoriteId: String
+    let nextToArriveUpdateStatus: NextToArriveUpdateStatus
+    let description = "Updating Favorite Next To Arrive Trips"
 }
 
 struct RequestFavoriteNextToArriveUpdate: FavoritesAction {

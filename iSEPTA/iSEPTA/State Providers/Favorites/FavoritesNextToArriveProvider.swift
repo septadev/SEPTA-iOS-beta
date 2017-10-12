@@ -46,18 +46,13 @@ class FavoritesNextToArriveProvider: StoreSubscriber {
     }
 
     func reportSuccessfullyUpdatedFavorite(favorite: Favorite, nextToArriveTrips: [NextToArriveTrip]) {
-        var favorite = favorite
-        favorite.nextToArriveTrips = nextToArriveTrips
-        favorite.nextToArriveUpdateStatus = .dataLoadedSuccessfully
-        favorite.refreshDataRequested = false
-        let updateAction = UpdateFavorite(favorite: favorite, description: "Updating favorite \(favorite.favoriteId) next to arrive")
+
+        let updateAction = UpdateFavoriteNextToArriveTrips(favoriteId: favorite.favoriteId, nextToArriveTrips: nextToArriveTrips)
         store.dispatch(updateAction)
     }
 
-    func reportUpdatedFavoriteStatus(favorite existing: Favorite, status: NextToArriveUpdateStatus) {
-        var updatedFavorite = existing
-        updatedFavorite.nextToArriveUpdateStatus = status
-        let action = UpdateFavorite(favorite: updatedFavorite, description: "Updating favorite \(updatedFavorite.favoriteId) status")
+    func reportUpdatedFavoriteStatus(favorite: Favorite, status: NextToArriveUpdateStatus) {
+        let action = UpdateFavoriteNextToArriveUpdateStatus(favoriteId: favorite.favoriteId, nextToArriveUpdateStatus: status)
         store.dispatch(action)
     }
 

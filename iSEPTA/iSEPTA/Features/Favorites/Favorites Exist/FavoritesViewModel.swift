@@ -28,7 +28,6 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
         self.tableView = tableView
         self.tableView.backgroundColor = UIColor.clear
         registerViews(tableView: tableView)
-        subscribe()
     }
 
     func registerViews(tableView: UITableView) {
@@ -51,7 +50,10 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
         store.subscribe(self) {
             $0.select {
                 $0.favoritesState.favoritesToDisplay
+            }.skipRepeats({ (_, _) -> Bool in
+                false
             }
+            )
         }
     }
 

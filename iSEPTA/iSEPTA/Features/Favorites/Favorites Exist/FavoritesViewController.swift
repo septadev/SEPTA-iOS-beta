@@ -39,8 +39,14 @@ extension FavoritesViewController { // refresh timer
         refreshNextToArriveForAllFavorites()
     }
 
+    override func viewWillAppear(_: Bool) {
+        viewModel.subscribe()
+        tableView.contentOffset = CGPoint(x: 0, y: 0)
+    }
+
     override func viewWillDisappear(_: Bool) {
         timer?.invalidate()
+        viewModel.unsubscribe()
     }
 
     func initTimer() {
@@ -103,7 +109,6 @@ extension FavoritesViewController: UpdateableFromViewModel {
             tableView.reloadData()
             tableView.layoutIfNeeded()
             tableView.contentOffset = offset
-            print("Reload data")
         }
 
         // Save the new work item and execute it after 250 ms

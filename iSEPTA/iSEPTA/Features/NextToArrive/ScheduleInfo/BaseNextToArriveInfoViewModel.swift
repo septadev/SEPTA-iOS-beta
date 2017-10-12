@@ -18,7 +18,8 @@ class BaseNextToArriveInfoViewModel: AlertViewDelegate {
         case noConnectionSectionHeader
     }
 
-    let alerts = store.state.alertState.alertDict
+    var alerts: AlertsByTransitModeThenRoute { return store.state.alertState.alertDict }
+
     var groupedTripData = [[NextToArriveTrip]]() {
         didSet {
             delegate.viewModelUpdated()
