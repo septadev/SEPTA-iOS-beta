@@ -4,7 +4,6 @@ import MessageUI
 import XCTest
 import UIKit
 
-
 class MessageUITests: XCTestCase {
     var rootvc: UIViewController!
 

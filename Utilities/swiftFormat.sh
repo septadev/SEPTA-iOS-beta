@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
+cd /Volumes/Docs/markbroski/Code/SEPTA-iOS
 
-log="./../Utilities/format.log"
-pwd > $log
-/usr/local/bin/swiftformat . >> "$log"
-/usr/local/bin/swiftformat ./../SeptaSchedule/ >> "$log"
-/usr/local/bin/swiftformat ./../SeptaRest/ >> "$log"
-echo "run complete $(date)" >> "$log"
+/usr/local/bin/swiftformat ./iSEPTA/
+/usr/local/bin/swiftformat ./SeptaSchedule/ 
+/usr/local/bin/swiftformat ./SeptaRest/ 
+

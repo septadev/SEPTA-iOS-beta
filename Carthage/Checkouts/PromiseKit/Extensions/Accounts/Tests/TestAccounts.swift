@@ -10,7 +10,7 @@ class Test_ACAccountStore_Swift: XCTestCase {
         let ex = expectation(description: "")
 
         class MockAccountStore: ACAccountStore {
-            override func renewCredentials(for account: ACAccount!, completion: ACAccountStoreCredentialRenewalHandler!) {
+            override func renewCredentials(for _: ACAccount!, completion: ACAccountStoreCredentialRenewalHandler!) {
                 completion(.renewed, nil)
             }
         }
@@ -25,7 +25,7 @@ class Test_ACAccountStore_Swift: XCTestCase {
 
     func test_requestAccessToAccountsWithType() {
         class MockAccountStore: ACAccountStore {
-            override func requestAccessToAccounts(with accountType: ACAccountType!, options: [AnyHashable : Any]! = [:], completion: ACAccountStoreRequestAccessCompletionHandler!) {
+            override func requestAccessToAccounts(with _: ACAccountType!, options _: [AnyHashable: Any]! = [:], completion: ACAccountStoreRequestAccessCompletionHandler!) {
                 completion(true, nil)
             }
         }
@@ -42,7 +42,7 @@ class Test_ACAccountStore_Swift: XCTestCase {
 
     func test_saveAccount() {
         class MockAccountStore: ACAccountStore {
-            override func saveAccount(_ account: ACAccount!, withCompletionHandler completionHandler: ACAccountStoreSaveCompletionHandler!) {
+            override func saveAccount(_: ACAccount!, withCompletionHandler completionHandler: ACAccountStoreSaveCompletionHandler!) {
                 completionHandler(true, nil)
             }
         }
@@ -57,7 +57,7 @@ class Test_ACAccountStore_Swift: XCTestCase {
 
     func test_removeAccount() {
         class MockAccountStore: ACAccountStore {
-            override func removeAccount(_ account: ACAccount!, withCompletionHandler completionHandler: ACAccountStoreSaveCompletionHandler!) {
+            override func removeAccount(_: ACAccount!, withCompletionHandler completionHandler: ACAccountStoreSaveCompletionHandler!) {
                 completionHandler(true, nil)
             }
         }

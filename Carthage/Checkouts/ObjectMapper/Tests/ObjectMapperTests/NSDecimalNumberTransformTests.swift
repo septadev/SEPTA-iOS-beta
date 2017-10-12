@@ -67,12 +67,10 @@ class NSDecimalNumberType: Mappable {
     var doubleString: NSDecimalNumber?
     var decimalString: NSDecimalNumber?
 
-    init(){
-
+    init() {
     }
 
-    required init?(map: Map){
-
+    required init?(map _: Map) {
     }
 
     func mapping(map: Map) {

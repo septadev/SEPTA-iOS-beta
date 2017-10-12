@@ -5,10 +5,9 @@ import PlaygroundSupport
 // Then select `PromiseKit.playground` from inside Xcode.
 import PromiseKit
 
-
 func promise3() -> Promise<Int> {
     return after(seconds: 1).then {
-        return 3
+        3
     }
 }
 
@@ -19,10 +18,10 @@ firstly {
 }.then { _ in
     promise3()
 }.then {
-    print($0)  // => 3
+    print($0) // => 3
 }.always {
     // always happens
-}.catch { error in
+}.catch { _ in
     // only happens for errors
 }
 

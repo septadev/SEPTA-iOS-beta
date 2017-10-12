@@ -1,7 +1,7 @@
 import XCTest
 import SQLite
 
-class SetterTests : XCTestCase {
+class SetterTests: XCTestCase {
 
     func test_setterAssignmentOperator_buildsSetter() {
         AssertSQL("\"int\" = \"int\"", int <- int)
@@ -133,5 +133,4 @@ class SetterTests : XCTestCase {
         AssertSQL("\"int\" = (\"int\" - 1)", int--)
         AssertSQL("\"intOptional\" = (\"intOptional\" - 1)", intOptional--)
     }
-
 }

@@ -8,7 +8,7 @@
 
 import EventKit
 #if !COCOAPODS
-import PromiseKit
+    import PromiseKit
 #endif
 
 /// Errors representing PromiseKit EventKit failures
@@ -34,11 +34,11 @@ public enum EventKitError: Error, CustomStringConvertible {
 
  To import `EKEventStore`:
 
-     pod "PromiseKit/EventKit"
+ pod "PromiseKit/EventKit"
 
  And then in your sources:
 
-     import PromiseKit
+ import PromiseKit
 
  - Returns: A promise that fulfills with the EKEventStore.
  */

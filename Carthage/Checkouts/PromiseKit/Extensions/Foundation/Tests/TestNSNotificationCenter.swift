@@ -10,7 +10,7 @@ class NSNotificationCenterTests: XCTestCase {
 
         NotificationCenter.default.observe(once: PMKTestNotification).then { value -> Void in
             XCTAssertEqual(value.count, 1)
-            //FIXME XCTAssert(value["a"] == (1 as Any?))
+            // FIXME: XCTAssert(value["a"] == (1 as Any?))
             ex.fulfill()
         }
 

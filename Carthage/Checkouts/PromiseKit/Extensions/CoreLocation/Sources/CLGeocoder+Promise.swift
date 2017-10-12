@@ -1,18 +1,18 @@
 import CoreLocation.CLGeocoder
 #if !COCOAPODS
-import PromiseKit
+    import PromiseKit
 #endif
 
 /**
  To import the `CLGeocoder` category:
 
-    use_frameworks!
-    pod "PromiseKit/CoreLocation"
+ use_frameworks!
+ pod "PromiseKit/CoreLocation"
 
  And then in your sources:
 
-    import PromiseKit
-*/
+ import PromiseKit
+ */
 extension CLGeocoder {
     /// Submits a reverse-geocoding request for the specified location.
     public func reverseGeocode(location: CLLocation) -> PlacemarkPromise {
@@ -44,18 +44,18 @@ extension CLGeocoder {
 }
 
 // Xcode 8 beta 6 doesn't import CLError as Swift.Error
-//extension CLError: CancellableError {
+// extension CLError: CancellableError {
 //    public var isCancelled: Bool {
 //        return self == .geocodeCanceled
 //    }
-//}
+// }
 
 /// A promise that returns the first CLPlacemark from an array of results.
 public class PlacemarkPromise: Promise<CLPlacemark> {
 
     /// Returns all CLPlacemarks rather than just the first
     public func asArray() -> Promise<[CLPlacemark]> {
-        return then(on: zalgo) { _ in return self.placemarks }
+        return then(on: zalgo) { _ in self.placemarks }
     }
 
     private var placemarks: [CLPlacemark]!

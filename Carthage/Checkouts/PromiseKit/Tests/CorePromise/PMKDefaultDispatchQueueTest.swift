@@ -12,7 +12,6 @@ import XCTest
 
 private enum Error: Swift.Error { case dummy }
 
-
 class PMKDefaultDispatchQueueTest: XCTestCase {
 
     let myQueue = DispatchQueue(label: "myQueue")

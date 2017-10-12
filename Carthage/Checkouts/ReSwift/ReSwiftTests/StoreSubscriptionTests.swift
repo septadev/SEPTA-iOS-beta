@@ -87,6 +87,7 @@ class StoreSubscriptionTests: XCTestCase {
         // Only a single further state update, since latest subscription skips repeated values.
         XCTAssertEqual(subscriber.receivedStates.count, 3)
     }
+
     /**
      it dispatches initial value upon subscription
      */

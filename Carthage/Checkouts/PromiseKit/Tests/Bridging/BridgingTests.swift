@@ -101,7 +101,7 @@ class BridgingTests: XCTestCase {
     func testCanAlwaysOffAnyPromise() {
         let ex = expectation(description: "")
 
-        PMKDummyAnyPromise_YES().then { obj -> Void in
+        PMKDummyAnyPromise_YES().then { _ -> Void in
             ex.fulfill()
         }
 
@@ -110,7 +110,7 @@ class BridgingTests: XCTestCase {
 
     func testCanCatchOffAnyPromise() {
         let ex = expectation(description: "")
-        PMKDummyAnyPromise_Error().catch { err in
+        PMKDummyAnyPromise_Error().catch { _ in
             ex.fulfill()
         }
         waitForExpectations(timeout: 1)
@@ -125,7 +125,7 @@ class BridgingTests: XCTestCase {
         let ex = expectation(description: "")
         firstly {
             PMKDummyAnyPromise_Error()
-        }.catch { error in
+        }.catch { _ in
             ex.fulfill()
         }
         waitForExpectations(timeout: 1)
@@ -146,7 +146,7 @@ class BridgingTests: XCTestCase {
 
         // AnyPromise.then { return x }
 
-        let input = after(seconds: 0).then{ 1 }
+        let input = after(seconds: 0).then { 1 }
 
         AnyPromise(input).then { obj -> Int in
             XCTAssertEqual(obj as? Int, 1)
@@ -164,12 +164,12 @@ class BridgingTests: XCTestCase {
 
         // AnyPromise.then { return AnyPromise }
 
-        let input = after(seconds: 0).then{ 1 }
+        let input = after(seconds: 0).then { 1 }
 
         AnyPromise(input).then { obj -> AnyPromise in
             XCTAssertEqual(obj as? Int, 1)
-            return AnyPromise(after(seconds: 0).then{ 2 })
-        }.then { obj -> Void  in
+            return AnyPromise(after(seconds: 0).then { 2 })
+        }.then { obj -> Void in
             XCTAssertEqual(obj as? Int, 2)
             ex.fulfill()
         }
@@ -182,12 +182,12 @@ class BridgingTests: XCTestCase {
 
         // AnyPromise.then { return Promise<Int> }
 
-        let input = after(seconds: 0).then{ 1 }
+        let input = after(seconds: 0).then { 1 }
 
         AnyPromise(input).then { obj -> Promise<Int> in
             XCTAssertEqual(obj as? Int, 1)
-            return after(seconds: 0).then{ 2 }
-        }.then { value -> Void  in
+            return after(seconds: 0).then { 2 }
+        }.then { value -> Void in
             XCTAssertEqual(value, 2)
             ex.fulfill()
         }
@@ -195,12 +195,11 @@ class BridgingTests: XCTestCase {
         waitForExpectations(timeout: 1, handler: nil)
     }
 
-
     // can return AnyPromise (that fulfills) in then handler
     func test4() {
         let ex = expectation(description: "")
         Promise(value: 1).then { _ -> AnyPromise in
-            return AnyPromise(after(seconds: 0).then{ 1 })
+            return AnyPromise(after(seconds: 0).then { 1 })
         }.then { x -> Void in
             XCTAssertEqual(x as? Int, 1)
             ex.fulfill()
@@ -213,9 +212,9 @@ class BridgingTests: XCTestCase {
         let ex = expectation(description: "")
 
         Promise(value: 1).then { _ -> AnyPromise in
-            let promise = after(interval: .milliseconds(100)).then{ throw Error.dummy }
+            let promise = after(interval: .milliseconds(100)).then { throw Error.dummy }
             return AnyPromise(promise)
-        }.catch { err in
+        }.catch { _ in
             ex.fulfill()
         }
         waitForExpectations(timeout: 1, handler: nil)

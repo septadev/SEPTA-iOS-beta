@@ -4,13 +4,13 @@ import PromiseKit
 /**
  To import the `PHPhotoLibrary` category:
 
-    use_frameworks!
-    pod "PromiseKit/Photos"
+ use_frameworks!
+ pod "PromiseKit/Photos"
 
  And then in your sources:
 
-    import PromiseKit
-*/
+ import PromiseKit
+ */
 extension PHPhotoLibrary {
     /**
      - Returns: A promise that fulfills with the user’s authorization

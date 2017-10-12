@@ -1,7 +1,7 @@
 import XCTest
 import SQLite
 
-class AggregateFunctionsTests : XCTestCase {
+class AggregateFunctionsTests: XCTestCase {
 
     func test_distinct_prependsExpressionsWithDistinctKeyword() {
         AssertSQL("DISTINCT \"int\"", int.distinct)
@@ -64,5 +64,4 @@ class AggregateFunctionsTests : XCTestCase {
     func test_count_withStar_wrapsStarWithCountFunction() {
         AssertSQL("count(*)", count(*))
     }
-
 }

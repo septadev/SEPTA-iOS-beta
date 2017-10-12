@@ -18,7 +18,7 @@ import Foundation
  It is recommended that you define your own types that conform to `Action` - if you want to be able
  to serialize your custom action types, you can implement `StandardActionConvertible` which will
  make it possible to generate a `StandardAction` from your typed action - the best of both worlds!
-*/
+ */
 public struct StandardAction: Action {
     /// A String that identifies the type of this `StandardAction`
     public let type: String
@@ -34,7 +34,7 @@ public struct StandardAction: Action {
      - parameter type:          String representation of the Action type
      - parameter payload:       Payload convertable to JSON
      - parameter isTypedAction: Is Action a subclassed type
-    */
+     */
     public init(type: String, payload: [String: AnyObject]? = nil, isTypedAction: Bool = false) {
         self.type = type
         self.payload = payload
@@ -53,18 +53,20 @@ extension StandardAction: Coding {
 
     public init?(dictionary: [String: AnyObject]) {
         guard let type = dictionary[typeKey] as? String,
-          let isTypedAction = dictionary[isTypedActionKey] as? Bool else { return nil }
+            let isTypedAction = dictionary[isTypedActionKey] as? Bool else { return nil }
         self.type = type
-        self.payload = dictionary[payloadKey] as? [String: AnyObject]
+        payload = dictionary[payloadKey] as? [String: AnyObject]
         self.isTypedAction = isTypedAction
     }
 
     public var dictionaryRepresentation: [String: AnyObject] {
         let payload: AnyObject = self.payload as AnyObject? ?? reSwiftNull as AnyObject
 
-        return [typeKey: type as NSString,
-                payloadKey: payload,
-                isTypedActionKey: isTypedAction as NSNumber]
+        return [
+            typeKey: type as NSString,
+            payloadKey: payload,
+            isTypedActionKey: isTypedAction as NSNumber,
+        ]
     }
 }
 
@@ -81,14 +83,14 @@ public protocol StandardActionConvertible: Action {
 
      ```
      init(_ standardAction: StandardAction) {
-        self.twitterUser = decode(standardAction.payload!["twitterUser"]!)
+     self.twitterUser = decode(standardAction.payload!["twitterUser"]!)
      }
      ```
 
-    - Note: If you, as most developers, only use action serialization/deserialization during
+     - Note: If you, as most developers, only use action serialization/deserialization during
      development, you can feel free to use the unsafe `!` operator.
-    */
-    init (_ standardAction: StandardAction)
+     */
+    init(_ standardAction: StandardAction)
 
     /**
      Use the information from your custom action to generate a `StandardAction`. The `type` of the
@@ -100,20 +102,20 @@ public protocol StandardActionConvertible: Action {
 
      ```
      func toStandardAction() -> StandardAction {
-        let payload = ["twitterUser": encode(self.twitterUser)]
+     let payload = ["twitterUser": encode(self.twitterUser)]
 
-        return StandardAction(type: SearchTwitterScene.SetSelectedTwitterUser.type,
-            payload: payload, isTypedAction: true)
+     return StandardAction(type: SearchTwitterScene.SetSelectedTwitterUser.type,
+     payload: payload, isTypedAction: true)
      }
      ```
 
-    */
+     */
     func toStandardAction() -> StandardAction
 }
 
 /// All actions that want to be able to be dispatched to a store need to conform to this protocol
 /// Currently it is just a marker protocol with no requirements.
-public protocol Action { }
+public protocol Action {}
 
 /// Initial Action that is dispatched as soon as the store is created.
 /// Reducers respond to this action by configuring their intial state.

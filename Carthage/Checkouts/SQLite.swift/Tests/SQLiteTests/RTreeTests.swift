@@ -1,7 +1,7 @@
 import XCTest
 import SQLite
 
-class RTreeTests : XCTestCase {
+class RTreeTests: XCTestCase {
 
     func test_create_onVirtualTable_withRTree_createVirtualTableExpression() {
         XCTAssertEqual(
@@ -13,5 +13,4 @@ class RTreeTests : XCTestCase {
             virtualTable.create(.RTree(int64, (double, double), (double, double)))
         )
     }
-
 }

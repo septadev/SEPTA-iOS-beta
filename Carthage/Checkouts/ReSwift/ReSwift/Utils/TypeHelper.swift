@@ -16,21 +16,21 @@ import Foundation
  - parameter state: A generic state type that will be casted to `SpecificStateType`.
  - parameter function: The `handleAction` method.
  - returns: A `StateType` from `handleAction` or the original `StateType` if it cannot be
-            casted to `SpecificStateType`.
+ casted to `SpecificStateType`.
  */
 @discardableResult
 func withSpecificTypes<SpecificStateType, Action>(
-        _ action: Action,
-        state genericStateType: StateType?,
-        function: (_ action: Action, _ state: SpecificStateType?) -> SpecificStateType
-    ) -> StateType {
-        guard let genericStateType = genericStateType else {
-            return function(action, nil) as! StateType
-        }
+    _ action: Action,
+    state genericStateType: StateType?,
+    function: (_ action: Action, _ state: SpecificStateType?) -> SpecificStateType
+) -> StateType {
+    guard let genericStateType = genericStateType else {
+        return function(action, nil) as! StateType
+    }
 
-        guard let specificStateType = genericStateType as? SpecificStateType else {
-            return genericStateType
-        }
+    guard let specificStateType = genericStateType as? SpecificStateType else {
+        return genericStateType
+    }
 
-        return function(action, specificStateType) as! StateType
+    return function(action, specificStateType) as! StateType
 }

@@ -1,24 +1,24 @@
 import StoreKit
 #if !COCOAPODS
-import PromiseKit
+    import PromiseKit
 #endif
 
 /**
  To import the `SKRequest` category:
 
-    use_frameworks!
-    pod "PromiseKit/StoreKit"
+ use_frameworks!
+ pod "PromiseKit/StoreKit"
 
  And then in your sources:
 
-    import PromiseKit
-*/
+ import PromiseKit
+ */
 extension SKProductsRequest {
     /**
      Sends the request to the Apple App Store.
 
      - Returns: A promise that fulfills if the request succeeds.
-    */
+     */
     public func promise() -> Promise<SKProductsResponse> {
         let proxy = SKDelegate()
         delegate = proxy
@@ -28,25 +28,24 @@ extension SKProductsRequest {
     }
 }
 
-
 fileprivate class SKDelegate: NSObject, SKProductsRequestDelegate {
     let (promise, fulfill, reject) = Promise<SKProductsResponse>.pending()
     var retainCycle: SKDelegate?
 
-    @objc fileprivate func request(_ request: SKRequest, didFailWithError error: Error) {
+    @objc fileprivate func request(_: SKRequest, didFailWithError error: Error) {
         reject(error)
         retainCycle = nil
     }
 
-    @objc fileprivate func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+    @objc fileprivate func productsRequest(_: SKProductsRequest, didReceive response: SKProductsResponse) {
         fulfill(response)
         retainCycle = nil
     }
 
-#if swift(>=3.2)
-#else
-    @objc override class func initialize() {
-        NSError.registerCancelledErrorDomain(SKErrorDomain, code: SKError.Code.paymentCancelled.rawValue)
-    }
-#endif
+    #if swift(>=3.2)
+    #else
+        @objc override class func initialize() {
+            NSError.registerCancelledErrorDomain(SKErrorDomain, code: SKError.Code.paymentCancelled.rawValue)
+        }
+    #endif
 }

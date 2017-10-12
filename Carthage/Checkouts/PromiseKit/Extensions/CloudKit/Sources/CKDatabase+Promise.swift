@@ -1,18 +1,18 @@
 import CloudKit.CKDatabase
 #if !COCOAPODS
-import PromiseKit
+    import PromiseKit
 #endif
 
 /**
  To import the `CKDatabase` category:
 
-    use_frameworks!
-    pod "PromiseKit/CloudKit"
- 
+ use_frameworks!
+ pod "PromiseKit/CloudKit"
+
  And then in your sources:
 
-    @import PromiseKit;
-*/
+ @import PromiseKit;
+ */
 extension CKDatabase {
     /// Fetches one record asynchronously from the current database.
     public func fetch(withRecordID recordID: CKRecordID) -> Promise<CKRecord> {
@@ -23,6 +23,7 @@ extension CKDatabase {
     public func fetch(withRecordZoneID recordZoneID: CKRecordZoneID) -> Promise<CKRecordZone> {
         return PromiseKit.wrap { fetch(withRecordZoneID: recordZoneID, completionHandler: $0) }
     }
+
     /// Fetches all record zones asynchronously from the current database.
     public func fetchAllRecordZones() -> Promise<[CKRecordZone]> {
         return PromiseKit.wrap { fetchAllRecordZones(completionHandler: $0) }
@@ -56,29 +57,29 @@ extension CKDatabase {
     /// Fetches the record for the current user.
     public func fetchUserRecord(_ container: CKContainer = CKContainer.default()) -> Promise<CKRecord> {
         return container.fetchUserRecordID().then(on: zalgo) { uid -> Promise<CKRecord> in
-            return self.fetch(withRecordID: uid)
+            self.fetch(withRecordID: uid)
         }
     }
 
-#if !os(watchOS)
-    /// Fetches one record zone asynchronously from the current database.
-    public func fetch(withSubscriptionID subscriptionID: String) -> Promise<CKSubscription> {
-        return PromiseKit.wrap { fetch(withSubscriptionID: subscriptionID, completionHandler: $0) }
-    }
+    #if !os(watchOS)
+        /// Fetches one record zone asynchronously from the current database.
+        public func fetch(withSubscriptionID subscriptionID: String) -> Promise<CKSubscription> {
+            return PromiseKit.wrap { fetch(withSubscriptionID: subscriptionID, completionHandler: $0) }
+        }
 
-    /// Fetches all subscription objects asynchronously from the current database.
-    public func fetchAllSubscriptions() -> Promise<[CKSubscription]> {
-        return PromiseKit.wrap { fetchAllSubscriptions(completionHandler: $0) }
-    }
+        /// Fetches all subscription objects asynchronously from the current database.
+        public func fetchAllSubscriptions() -> Promise<[CKSubscription]> {
+            return PromiseKit.wrap { fetchAllSubscriptions(completionHandler: $0) }
+        }
 
-    /// Saves one subscription object asynchronously to the current database.
-    public func save(_ subscription: CKSubscription) -> Promise<CKSubscription> {
-        return PromiseKit.wrap { save(subscription, completionHandler: $0) }
-    }
+        /// Saves one subscription object asynchronously to the current database.
+        public func save(_ subscription: CKSubscription) -> Promise<CKSubscription> {
+            return PromiseKit.wrap { save(subscription, completionHandler: $0) }
+        }
 
-    /// Delete one subscription object asynchronously from the current database.
-    public func delete(withSubscriptionID subscriptionID: String) -> Promise<String> {
-        return PromiseKit.wrap { delete(withSubscriptionID: subscriptionID, completionHandler: $0) }
-    }
-#endif
+        /// Delete one subscription object asynchronously from the current database.
+        public func delete(withSubscriptionID subscriptionID: String) -> Promise<String> {
+            return PromiseKit.wrap { delete(withSubscriptionID: subscriptionID, completionHandler: $0) }
+        }
+    #endif
 }

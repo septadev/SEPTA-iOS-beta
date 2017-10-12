@@ -32,87 +32,87 @@ import ObjectMapper
 
 class NullableKeysFromJSONTests: XCTestCase {
 
-	let fullJSONString = "{\"firstName\": \"John\", \"lastName\": \"Doe\", \"team\": \"Broncos\", \"age\": 25, \"address\": {\"street\": \"Nothing Ave\", \"number\": 101, \"city\": \"Los Angeles\"} }"
-	let nullJSONString = "{\"firstName\": \"John\", \"lastName\": null, \"team\": \"Broncos\", \"age\": null, \"address\": {\"street\": \"Nothing Ave\", \"number\": 101, \"city\": null} }"
-	let absentJSONString = "{\"firstName\": \"John\", \"team\": \"Broncos\", \"address\": {\"street\": \"Nothing Ave\", \"number\": 102} }"
+    let fullJSONString = "{\"firstName\": \"John\", \"lastName\": \"Doe\", \"team\": \"Broncos\", \"age\": 25, \"address\": {\"street\": \"Nothing Ave\", \"number\": 101, \"city\": \"Los Angeles\"} }"
+    let nullJSONString = "{\"firstName\": \"John\", \"lastName\": null, \"team\": \"Broncos\", \"age\": null, \"address\": {\"street\": \"Nothing Ave\", \"number\": 101, \"city\": null} }"
+    let absentJSONString = "{\"firstName\": \"John\", \"team\": \"Broncos\", \"address\": {\"street\": \"Nothing Ave\", \"number\": 102} }"
 
-	let mapper = Mapper<Player>()
+    let mapper = Mapper<Player>()
 
     override func setUp() {
         super.setUp()
-		// Put setup code here. This method is called before the invocation of each test method in the class.
+        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-    
+
     func testMapperNullifiesValues() {
-		guard let player = mapper.map(JSONString: fullJSONString) else {
-			XCTFail("Mapping failed")
-			return
-		}
+        guard let player = mapper.map(JSONString: fullJSONString) else {
+            XCTFail("Mapping failed")
+            return
+        }
 
-		XCTAssertNotNil(player.lastName)
-		XCTAssertNotNil(player.age)
-		XCTAssertNotNil(player.address?.city)
+        XCTAssertNotNil(player.lastName)
+        XCTAssertNotNil(player.age)
+        XCTAssertNotNil(player.address?.city)
 
-		_ = mapper.map(JSONString: nullJSONString, toObject: player)
+        _ = mapper.map(JSONString: nullJSONString, toObject: player)
 
-		XCTAssertNotNil(player.firstName)
-		XCTAssertNil(player.lastName)
-		XCTAssertNil(player.age)
-		XCTAssertNil(player.address?.city)
+        XCTAssertNotNil(player.firstName)
+        XCTAssertNil(player.lastName)
+        XCTAssertNil(player.age)
+        XCTAssertNil(player.address?.city)
     }
 
-	func testMapperAbsentValues() {
-		guard let player = mapper.map(JSONString: fullJSONString) else {
-			XCTFail("Mapping failed")
-			return
-		}
+    func testMapperAbsentValues() {
+        guard let player = mapper.map(JSONString: fullJSONString) else {
+            XCTFail("Mapping failed")
+            return
+        }
 
-		XCTAssertNotNil(player.lastName)
-		XCTAssertNotNil(player.age)
-		XCTAssertNotNil(player.address?.city)
+        XCTAssertNotNil(player.lastName)
+        XCTAssertNotNil(player.age)
+        XCTAssertNotNil(player.address?.city)
 
-		_ = mapper.map(JSONString: absentJSONString, toObject: player)
+        _ = mapper.map(JSONString: absentJSONString, toObject: player)
 
-		XCTAssertNotNil(player.firstName)
-		XCTAssertNotNil(player.lastName)
-		XCTAssertNotNil(player.age)
-		XCTAssertNotNil(player.address?.city)
-		XCTAssertEqual(player.address?.number, 102)
-	}
+        XCTAssertNotNil(player.firstName)
+        XCTAssertNotNil(player.lastName)
+        XCTAssertNotNil(player.age)
+        XCTAssertNotNil(player.address?.city)
+        XCTAssertEqual(player.address?.number, 102)
+    }
 }
 
-class Player: Mappable  {
-	var firstName: String?
-	var lastName: String?
-	var team: String?
-	var age: Int?
-	var address: Address?
+class Player: Mappable {
+    var firstName: String?
+    var lastName: String?
+    var team: String?
+    var age: Int?
+    var address: Address?
 
-	required init?(map: Map){
-		mapping(map: map)
-	}
+    required init?(map: Map) {
+        mapping(map: map)
+    }
 
-	func mapping(map: Map) {
-		firstName <- map["firstName"]
-		lastName <- map["lastName"]
-		team <- map["team"]
-		age <- map["age"]
-		address <- map["address"]
-	}
+    func mapping(map: Map) {
+        firstName <- map["firstName"]
+        lastName <- map["lastName"]
+        team <- map["team"]
+        age <- map["age"]
+        address <- map["address"]
+    }
 }
 
 class Address: Mappable {
-	var street: String?
-	var number: Int?
-	var city: String?
+    var street: String?
+    var number: Int?
+    var city: String?
 
-	required init?(map: Map){
-		mapping(map: map)
-	}
+    required init?(map: Map) {
+        mapping(map: map)
+    }
 
-	func mapping(map: Map) {
-		street <- map["street"]
-		number <- map["number"]
-		city <- map["city"]
-	}
+    func mapping(map: Map) {
+        street <- map["street"]
+        number <- map["number"]
+        city <- map["city"]
+    }
 }

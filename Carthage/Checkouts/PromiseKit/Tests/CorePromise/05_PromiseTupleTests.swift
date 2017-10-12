@@ -23,7 +23,7 @@ class PromiseTupleTests: XCTestCase {
     func testThenReturningTriplePromisesTuple() {
         let ex = expectation(description: "promise tuple values returned")
 
-        getPromises() { a, b, c, _, _, first in
+        getPromises { a, b, c, _, _, first in
             first.then { () -> (Promise<Bool>, Promise<Int>, Promise<String>) in
                 return (a, b, c)
             }.then { aVal, bVal, cVal -> Void in
@@ -40,7 +40,7 @@ class PromiseTupleTests: XCTestCase {
     func testThenReturningQuadruplePromisesTuple() {
         let ex = expectation(description: "promise tuple values returned")
 
-        getPromises() { a, b, c, d, _, first in
+        getPromises { a, b, c, d, _, first in
             first.then { () -> (Promise<Bool>, Promise<Int>, Promise<String>, Promise<(Int, Int)>) in
                 return (a, b, c, d)
             }.then { (boolean, integer, string, integerTuple) -> Void in
@@ -97,28 +97,28 @@ class PromiseTupleTests: XCTestCase {
     func testThenDoublePromisesTupleFail() {
         testThenNtuplePromisesFail { after, success, err in
             after.then { (err, success) }
-                 .then { (_: Any, _: Any) in () } // hint to compiler, that tuple version of `then` shall be used
+                .then { (_: Any, _: Any) in () } // hint to compiler, that tuple version of `then` shall be used
         }
     }
 
     func testThenTriplePromisesTupleFail() {
         testThenNtuplePromisesFail { after, success, err in
             after.then { (success, err, success) }
-                 .then { (_: Any, _: Any, _: Any) in () }
+                .then { (_: Any, _: Any, _: Any) in () }
         }
     }
 
     func testThenQuadruplePromisesTupleFail() {
         testThenNtuplePromisesFail { after, success, err in
             after.then { (err, err, err, success) }
-                 .then { (_: Any, _: Any, _: Any, _: Any) in () }
+                .then { (_: Any, _: Any, _: Any, _: Any) in () }
         }
     }
 
     func testThenQuintuplePromisesTupleFail() {
         testThenNtuplePromisesFail { after, success, err in
             after.then { (success, success, err, err, success) }
-                 .then { (_: Any, _: Any, _: Any, _: Any, _: Any) in () }
+                .then { (_: Any, _: Any, _: Any, _: Any, _: Any) in () }
         }
     }
 
@@ -192,7 +192,6 @@ class PromiseTupleTests: XCTestCase {
         waitForExpectations(timeout: 1, handler: nil)
     }
 
-
     func testFirstlyReturningQuintuplePromisesTuple() {
 
         let ex = expectation(description: "promise tuple values returned")
@@ -209,7 +208,6 @@ class PromiseTupleTests: XCTestCase {
                 XCTAssertEqual(eVal, e.value)
                 ex.fulfill()
             }
-
         }
 
         waitForExpectations(timeout: 1, handler: nil)
@@ -233,25 +231,25 @@ class PromiseTupleTests: XCTestCase {
     }
 
     func testFirstlyDoublePromisesTupleFail() {
-        testFirstlyNtuplePromisesFail { after, success, err in
+        testFirstlyNtuplePromisesFail { _, success, err in
             firstly { (err, success) }.then { (_: Any, _: Any) in () }
         }
     }
 
     func testFirstlyTriplePromisesTupleFail() {
-        testFirstlyNtuplePromisesFail { after, success, err in
+        testFirstlyNtuplePromisesFail { _, success, err in
             firstly { (success, err, success) }.then { (_: Any, _: Any, _: Any) in () }
         }
     }
 
     func testFirstlyQuadruplePromisesTupleFail() {
-        testFirstlyNtuplePromisesFail { after, success, err in
+        testFirstlyNtuplePromisesFail { _, success, err in
             firstly { (err, err, err, success) }.then { (_: Any, _: Any, _: Any, _: Any) in () }
         }
     }
 
     func testFirstlyQuintuplePromisesTupleFail() {
-        testFirstlyNtuplePromisesFail { after, success, err in
+        testFirstlyNtuplePromisesFail { _, success, err in
             firstly { (success, success, err, err, success) }.then { (_: Any, _: Any, _: Any, _: Any, _: Any) in () }
         }
     }

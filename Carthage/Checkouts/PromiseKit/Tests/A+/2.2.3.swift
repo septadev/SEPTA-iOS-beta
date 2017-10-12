@@ -7,7 +7,7 @@ class Test223: XCTestCase {
             describe("2.2.3.1: it must be called after `promise` is rejected, with `promise`’s rejection reason as its first argument.") {
                 testRejected { promise, expectation, sentinel in
                     promise.catch { error in
-                        if case Error.sentinel(let value) = error {
+                        if case let Error.sentinel(value) = error {
                             XCTAssertEqual(value, sentinel)
                         } else {
                             XCTFail()
@@ -34,7 +34,7 @@ class Test223: XCTestCase {
                 }
             }
             describe("2.2.3.3: it must not be called more than once.") {
-                specify("already-rejected") { d, expectation in
+                specify("already-rejected") { _, expectation in
                     var timesCalled = 0
                     Promise<Int>(error: Error.dummy).catch { _ in
                         XCTAssertEqual(++timesCalled, 1)
@@ -46,19 +46,19 @@ class Test223: XCTestCase {
                 }
                 specify("trying to reject a pending promise more than once, immediately") { d, expectation in
                     var timesCalled = 0
-                    d.promise.catch{_ in expectation.fulfill() }
+                    d.promise.catch { _ in expectation.fulfill() }
                     d.reject(Error.dummy)
                     d.reject(Error.dummy)
                 }
                 specify("trying to reject a pending promise more than once, delayed") { d, expectation in
-                    d.promise.catch{_ in expectation.fulfill() }
+                    d.promise.catch { _ in expectation.fulfill() }
                     after(ticks: 1) {
                         d.reject(Error.dummy)
                         d.reject(Error.dummy)
                     }
                 }
                 specify("trying to reject a pending promise more than once, immediately then delayed") { d, expectation in
-                    d.promise.catch{_ in expectation.fulfill() }
+                    d.promise.catch { _ in expectation.fulfill() }
                     d.reject(Error.dummy)
                     after(ticks: 1) {
                         d.reject(Error.dummy)
@@ -69,13 +69,13 @@ class Test223: XCTestCase {
                     var ex = (expectation, mk(), mk(), mk())
 
                     do {
-                        d.promise.catch{ _ in ex.0.fulfill() }
+                        d.promise.catch { _ in ex.0.fulfill() }
                     }
                     after(ticks: 1) {
-                        d.promise.catch{ _ in ex.1.fulfill() }
+                        d.promise.catch { _ in ex.1.fulfill() }
                     }
                     after(ticks: 2) {
-                        d.promise.catch{ _ in ex.2.fulfill() }
+                        d.promise.catch { _ in ex.2.fulfill() }
                     }
                     after(ticks: 3) {
                         d.reject(Error.dummy)
@@ -84,9 +84,9 @@ class Test223: XCTestCase {
                 }
                 specify("when `then` is interleaved with rejection") { d, expectation in
                     var ex = (expectation, self.expectation(description: ""))
-                    d.promise.catch{ _ in ex.0.fulfill() }
+                    d.promise.catch { _ in ex.0.fulfill() }
                     d.reject(Error.dummy)
-                    d.promise.catch{ _ in ex.1.fulfill() }
+                    d.promise.catch { _ in ex.1.fulfill() }
                 }
             }
         }

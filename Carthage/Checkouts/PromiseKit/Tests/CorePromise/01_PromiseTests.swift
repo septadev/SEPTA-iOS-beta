@@ -65,7 +65,7 @@ class PromiseTests: XCTestCase {
     }
 
     func testCannotFulfillWithError() {
-        let foo = Promise { fulfill, reject in
+        let foo = Promise { fulfill, _ in
             fulfill(Error.dummy)
         }
 
@@ -76,12 +76,12 @@ class PromiseTests: XCTestCase {
         let bad = Promise(value: ()).then { Error.dummy }
     }
 
-#if swift(>=3.1)
-    func testCanMakeVoidPromise() {
-        let promise = Promise()
-        XCTAssert(promise.value is Optional<Void>)
-    }
-#endif
+    #if swift(>=3.1)
+        func testCanMakeVoidPromise() {
+            let promise = Promise()
+            XCTAssert(promise.value is Optional<Void>)
+        }
+    #endif
 }
 
 private enum Error: Swift.Error {

@@ -1,7 +1,7 @@
 import XCTest
 import SQLite
 
-class FTS4Tests : XCTestCase {
+class FTS4Tests: XCTestCase {
 
     func test_create_onVirtualTable_withFTS4_compilesCreateVirtualTableExpression() {
         XCTAssertEqual(
@@ -41,10 +41,9 @@ class FTS4Tests : XCTestCase {
         AssertSQL("SELECT * FROM \"virtual_table\" WHERE (\"virtual_table\" MATCH \"string\")", virtualTable.match(string) as QueryType)
         AssertSQL("SELECT * FROM \"virtual_table\" WHERE (\"virtual_table\" MATCH \"stringOptional\")", virtualTable.match(stringOptional) as QueryType)
     }
-
 }
 
-class FTS4ConfigTests : XCTestCase {
+class FTS4ConfigTests: XCTestCase {
     var config: FTS4Config!
 
     override func setUp() {
@@ -79,7 +78,7 @@ class FTS4ConfigTests : XCTestCase {
     func test_external_content_view() {
         XCTAssertEqual(
             "CREATE VIRTUAL TABLE \"virtual_table\" USING fts4(content=\"view\")",
-            sql(config.externalContent(_view )))
+            sql(config.externalContent(_view)))
     }
 
     func test_external_content_virtual_table() {
@@ -144,7 +143,7 @@ class FTS4ConfigTests : XCTestCase {
 
     func test_config_uncompress() {
         XCTAssertEqual(
-           "CREATE VIRTUAL TABLE \"virtual_table\" USING fts4(uncompress=\"uncompress_foo\")",
+            "CREATE VIRTUAL TABLE \"virtual_table\" USING fts4(uncompress=\"uncompress_foo\")",
             sql(config.uncompress("uncompress_foo")))
     }
 
@@ -175,34 +174,34 @@ class FTS4ConfigTests : XCTestCase {
     }
 }
 
-class FTS4IntegrationTests : SQLiteTestCase {
-#if !SQLITE_SWIFT_STANDALONE && !SQLITE_SWIFT_SQLCIPHER
-    func test_registerTokenizer_registersTokenizer() {
-        let emails = VirtualTable("emails")
-        let subject = Expression<String?>("subject")
-        let body = Expression<String?>("body")
+class FTS4IntegrationTests: SQLiteTestCase {
+    #if !SQLITE_SWIFT_STANDALONE && !SQLITE_SWIFT_SQLCIPHER
+        func test_registerTokenizer_registersTokenizer() {
+            let emails = VirtualTable("emails")
+            let subject = Expression<String?>("subject")
+            let body = Expression<String?>("body")
 
-        let locale = CFLocaleCopyCurrent()
-        let tokenizerName = "tokenizer"
-        let tokenizer = CFStringTokenizerCreate(nil, "" as CFString!, CFRangeMake(0, 0), UInt(kCFStringTokenizerUnitWord), locale)
-        try! db.registerTokenizer(tokenizerName) { string in
-            CFStringTokenizerSetString(tokenizer, string as CFString, CFRangeMake(0, CFStringGetLength(string as CFString)))
-            if CFStringTokenizerAdvanceToNextToken(tokenizer).isEmpty {
-                return nil
+            let locale = CFLocaleCopyCurrent()
+            let tokenizerName = "tokenizer"
+            let tokenizer = CFStringTokenizerCreate(nil, "" as CFString!, CFRangeMake(0, 0), UInt(kCFStringTokenizerUnitWord), locale)
+            try! db.registerTokenizer(tokenizerName) { string in
+                CFStringTokenizerSetString(tokenizer, string as CFString, CFRangeMake(0, CFStringGetLength(string as CFString)))
+                if CFStringTokenizerAdvanceToNextToken(tokenizer).isEmpty {
+                    return nil
+                }
+                let range = CFStringTokenizerGetCurrentTokenRange(tokenizer)
+                let input = CFStringCreateWithSubstring(kCFAllocatorDefault, string as CFString, range)!
+                let token = CFStringCreateMutableCopy(nil, range.length, input)!
+                CFStringLowercase(token, locale)
+                CFStringTransform(token, nil, kCFStringTransformStripDiacritics, false)
+                return (token as String, string.range(of: input as String)!)
             }
-            let range = CFStringTokenizerGetCurrentTokenRange(tokenizer)
-            let input = CFStringCreateWithSubstring(kCFAllocatorDefault, string as CFString, range)!
-            let token = CFStringCreateMutableCopy(nil, range.length, input)!
-            CFStringLowercase(token, locale)
-            CFStringTransform(token, nil, kCFStringTransformStripDiacritics, false)
-            return (token as String, string.range(of: input as String)!)
+
+            try! db.run(emails.create(.FTS4([subject, body], tokenize: .Custom(tokenizerName))))
+            AssertSQL("CREATE VIRTUAL TABLE \"emails\" USING fts4(\"subject\", \"body\", tokenize=\"SQLite.swift\" \"tokenizer\")")
+
+            try! _ = db.run(emails.insert(subject <- "Aún más cáfe!"))
+            XCTAssertEqual(1, try! db.scalar(emails.filter(emails.match("aun")).count))
         }
-
-        try! db.run(emails.create(.FTS4([subject, body], tokenize: .Custom(tokenizerName))))
-        AssertSQL("CREATE VIRTUAL TABLE \"emails\" USING fts4(\"subject\", \"body\", tokenize=\"SQLite.swift\" \"tokenizer\")")
-
-        try! _ = db.run(emails.insert(subject <- "Aún más cáfe!"))
-        XCTAssertEqual(1, try! db.scalar(emails.filter(emails.match("aun")).count))
-    }
-#endif
+    #endif
 }

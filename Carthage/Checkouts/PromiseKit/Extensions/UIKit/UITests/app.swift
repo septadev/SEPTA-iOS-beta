@@ -6,7 +6,7 @@ import UIKit
 class App: UITableViewController, UIApplicationDelegate {
     var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]? = nil) -> Bool {
+    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]? = nil) -> Bool {
         window!.rootViewController = self
         window!.backgroundColor = UIColor.purple
         window!.makeKeyAndVisible()
@@ -14,11 +14,11 @@ class App: UITableViewController, UIApplicationDelegate {
         return true
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return Row.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = Row(indexPath)?.description
         return cell
@@ -40,34 +40,34 @@ class App: UITableViewController, UIApplicationDelegate {
     }
 
     private func success() {
-        self.testSuceededButton.isEnabled = true
+        testSuceededButton.isEnabled = true
     }
 
-#if !os(tvOS)
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch Row(indexPath)! {
-        case .ImagePickerCancel:
-            let p: Promise<UIImage> = promise(UIImagePickerController())
-            p.catch(policy: .allErrors) { error in
-                guard (error as! CancellableError).isCancelled else { abort() }
-                self.success()
-            }
-            p.catch { error in
-                abort()
-            }
-        case .ImagePickerEditImage:
-            let picker = UIImagePickerController()
-            picker.allowsEditing = true
-            _ = promise(picker).then { (img: UIImage) in
-                self.success()
-            }
-        case .ImagePickerPickImage:
-            _ = promise(UIImagePickerController()).then { (image: UIImage) in
-                self.success()
+    #if !os(tvOS)
+        override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+            switch Row(indexPath)! {
+            case .ImagePickerCancel:
+                let p: Promise<UIImage> = promise(UIImagePickerController())
+                p.catch(policy: .allErrors) { error in
+                    guard (error as! CancellableError).isCancelled else { abort() }
+                    self.success()
+                }
+                p.catch { _ in
+                    abort()
+                }
+            case .ImagePickerEditImage:
+                let picker = UIImagePickerController()
+                picker.allowsEditing = true
+                _ = promise(picker).then { (_: UIImage) in
+                    self.success()
+                }
+            case .ImagePickerPickImage:
+                _ = promise(UIImagePickerController()).then { (_: UIImage) in
+                    self.success()
+                }
             }
         }
-    }
-#endif
+    #endif
 }
 
 enum Row: Int {

@@ -1,7 +1,7 @@
 import XCTest
 import SQLite
 
-class SchemaTests : XCTestCase {
+class SchemaTests: XCTestCase {
 
     func test_drop_compilesDropTableExpression() {
         XCTAssertEqual("DROP TABLE \"table\"", table.drop())
@@ -29,7 +29,7 @@ class SchemaTests : XCTestCase {
                 "\"int64Optional\" INTEGER, " +
                 "\"string\" TEXT NOT NULL, " +
                 "\"stringOptional\" TEXT" +
-            ")",
+                ")",
             table.create { t in
                 t.column(data)
                 t.column(dataOptional)
@@ -780,5 +780,4 @@ class SchemaTests : XCTestCase {
             VirtualTable("old").rename(virtualTable)
         )
     }
-
 }

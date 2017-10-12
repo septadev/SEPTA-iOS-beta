@@ -35,8 +35,8 @@ class SubscriptionBox<State> {
             transformedSubscription.observe { _, newState in
                 self.subscriber?._newState(state: newState as Any)
             }
-        // If we haven't received a transformed subscription, we forward all values
-        // from the original subscription.
+            // If we haven't received a transformed subscription, we forward all values
+            // from the original subscription.
         } else {
             originalSubscription.observe { _, newState in
                 self.subscriber?._newState(state: newState as Any)
@@ -48,7 +48,7 @@ class SubscriptionBox<State> {
         // We pass all new values through the original subscription, which accepts
         // values of type `<State>`. If present, transformed subscriptions will
         // receive this update and transform it before passing it on to the subscriber.
-        self.originalSubscription.newValues(oldState: oldState, newState: newState)
+        originalSubscription.newValues(oldState: oldState, newState: newState)
     }
 }
 
@@ -60,8 +60,7 @@ public class Subscription<State> {
 
     private func _select<Substate>(
         _ selector: @escaping (State) -> Substate
-        ) -> Subscription<Substate>
-    {
+    ) -> Subscription<Substate> {
         return Subscription<Substate> { sink in
             self.observe { oldState, newState in
                 sink(oldState.map(selector) ?? nil, newState.map(selector) ?? nil)
@@ -75,9 +74,8 @@ public class Subscription<State> {
     /// - parameter selector: A closure that maps a state to a selected substate
     public func select<Substate>(
         _ selector: @escaping (State) -> Substate
-        ) -> Subscription<Substate>
-    {
-        return self._select(selector)
+    ) -> Subscription<Substate> {
+        return _select(selector)
     }
 
     /// Provides a subscription that selects a substate of the state of the original subscription.
@@ -85,9 +83,8 @@ public class Subscription<State> {
     /// - parameter selector: A closure that maps a state to a selected substate
     public func select<Substate: Equatable>(
         _ selector: @escaping (State) -> Substate
-        ) -> Subscription<Substate>
-    {
-        return self._select(selector).skipRepeats()
+    ) -> Subscription<Substate> {
+        return _select(selector).skipRepeats()
     }
 
     /// Provides a subscription that skips certain state updates of the original subscription.
@@ -128,7 +125,7 @@ public class Subscription<State> {
 
     /// Sends new values over this subscription. Observers will be notified of these new values.
     func newValues(oldState: State?, newState: State?) {
-        self.observer?(oldState, newState)
+        observer?(oldState, newState)
     }
 
     /// A caller can observe new values of this subscription through the provided closure.
@@ -139,7 +136,7 @@ public class Subscription<State> {
 }
 
 extension Subscription where State: Equatable {
-    public func skipRepeats() -> Subscription<State>{
-        return self.skipRepeats(==)
+    public func skipRepeats() -> Subscription<State> {
+        return skipRepeats(==)
     }
 }

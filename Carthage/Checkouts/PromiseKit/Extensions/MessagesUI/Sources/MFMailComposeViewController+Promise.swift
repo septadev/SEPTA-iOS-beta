@@ -1,22 +1,22 @@
 import MessageUI.MFMailComposeViewController
 import UIKit.UIViewController
 #if !COCOAPODS
-import PromiseKit
+    import PromiseKit
 #endif
 
 /**
  To import this `UIViewController` category:
 
-    use_frameworks!
-    pod "PromiseKit/MessageUI"
+ use_frameworks!
+ pod "PromiseKit/MessageUI"
 
  And then in your sources:
 
-    import PromiseKit
-*/
+ import PromiseKit
+ */
 extension UIViewController {
     /// Presents the message view controller and resolves with the user action.
-    public func promise(_ vc: MFMailComposeViewController, animated: Bool = true, completion:(() -> Void)? = nil) -> Promise<MFMailComposeResult> {
+    public func promise(_ vc: MFMailComposeViewController, animated: Bool = true, completion: (() -> Void)? = nil) -> Promise<MFMailComposeResult> {
         let proxy = PMKMailComposeViewControllerDelegate()
         proxy.retainCycle = proxy
         vc.mailComposeDelegate = proxy
@@ -44,7 +44,7 @@ extension MFMailComposeViewController {
                 return false
             }
         }
-        
+
         public var description: String {
             switch self {
             case .failed:
@@ -52,7 +52,6 @@ extension MFMailComposeViewController {
             case .cancelled:
                 return "The mail was cancelled"
             }
-                
         }
     }
 }
@@ -62,7 +61,7 @@ private class PMKMailComposeViewControllerDelegate: NSObject, MFMailComposeViewC
     let (promise, fulfill, reject) = Promise<MFMailComposeResult>.pending()
     var retainCycle: NSObject?
 
-    @objc func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+    @objc func mailComposeController(_: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         defer { retainCycle = nil }
 
         if let error = error {

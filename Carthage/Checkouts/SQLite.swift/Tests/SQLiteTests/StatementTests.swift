@@ -1,7 +1,7 @@
 import XCTest
 import SQLite
 
-class StatementTests : SQLiteTestCase {
+class StatementTests: SQLiteTestCase {
     override func setUp() {
         super.setUp()
         CreateUsersTable()

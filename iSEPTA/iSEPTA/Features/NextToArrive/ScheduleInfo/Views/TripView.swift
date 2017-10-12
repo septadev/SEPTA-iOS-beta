@@ -25,6 +25,9 @@ class TripView: UIView {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
             self.backgroundColor = UIColor.white
             self.connectionView?.backgroundColor = UIColor.white
+            if let rootViewController = self.window?.rootViewController {
+                UIAlert.presentComingSoonAlertFrom(rootViewController)
+            }
         })
     }
 

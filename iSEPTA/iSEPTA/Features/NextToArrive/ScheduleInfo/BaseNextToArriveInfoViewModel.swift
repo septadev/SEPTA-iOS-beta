@@ -236,27 +236,23 @@ extension BaseNextToArriveInfoViewModel { // Table View
         return DateFormatters.formatTimeFromNow(date: firstDate)
     }
 
-    func generateOnTimeString(stop: NextToArriveStop, hasVehicleLocation: Bool) -> String? {
-        guard let tripDelayMinutes = stop.delayMinutes else { return "Scheduled" }
+    func generateOnTimeString(stop: NextToArriveStop, hasVehicleLocation _: Bool) -> String? {
+        guard let tripDelayMinutes = stop.delayMinutes, stop.hasRealTimeData else { return "Scheduled" }
         let delayString = String(tripDelayMinutes)
         if tripDelayMinutes > 0 {
             return "\(delayString) min late"
-        } else if hasVehicleLocation {
-            return "On Time"
         } else {
-            return "Scheduled"
+            return "On Time"
         }
     }
 
-    func generateOnTimeColor(stop: NextToArriveStop, hasVehicleLocation: Bool) -> UIColor {
-        guard let tripDelayMinutes = stop.delayMinutes else { return SeptaColor.transitIsScheduled }
+    func generateOnTimeColor(stop: NextToArriveStop, hasVehicleLocation _: Bool) -> UIColor {
+        guard let tripDelayMinutes = stop.delayMinutes, stop.hasRealTimeData else { return SeptaColor.transitIsScheduled }
 
         if tripDelayMinutes > 0 {
             return SeptaColor.transitIsLate
-        } else if hasVehicleLocation {
-            return SeptaColor.transitOnTime
         } else {
-            return SeptaColor.transitIsScheduled
+            return SeptaColor.transitOnTime
         }
     }
 

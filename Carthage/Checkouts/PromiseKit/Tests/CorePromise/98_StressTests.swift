@@ -5,7 +5,7 @@ class StressTests: XCTestCase {
     func testThenDataRace() {
         let e1 = expectation(description: "")
 
-        //will crash if then doesn't protect handlers
+        // will crash if then doesn't protect handlers
         stressDataRace(expectation: e1, stressFunction: { promise in
             promise.then { s -> Void in
                 XCTAssertEqual("ok", s)
@@ -19,9 +19,9 @@ class StressTests: XCTestCase {
     func testThensAreSequentialForLongTime() {
         var values = [Int]()
         let ex = expectation(description: "")
-        var promise = DispatchQueue.global().promise{ 0 }
+        var promise = DispatchQueue.global().promise { 0 }
         let N = 1000
-        for x in 1..<N {
+        for x in 1 ..< N {
             promise = promise.then { y -> Promise<Int> in
                 values.append(y)
                 XCTAssertEqual(x - 1, y)
@@ -30,7 +30,7 @@ class StressTests: XCTestCase {
         }
         promise.then { x -> Void in
             values.append(x)
-            XCTAssertEqual(values, (0..<N).map{ $0 })
+            XCTAssertEqual(values, (0 ..< N).map { $0 })
             ex.fulfill()
         }
         waitForExpectations(timeout: 10, handler: nil)
@@ -39,14 +39,14 @@ class StressTests: XCTestCase {
     func testZalgoDataRace() {
         let e1 = expectation(description: "")
 
-        //will crash if zalgo doesn't protect handlers
+        // will crash if zalgo doesn't protect handlers
         stressDataRace(expectation: e1, stressFunction: { promise in
             promise.then(on: zalgo) { s -> Void in
                 XCTAssertEqual("ok", s)
                 return
             }
-            }, fulfill: {
-                return "ok"
+        }, fulfill: {
+            "ok"
         })
 
         waitForExpectations(timeout: 10, handler: nil)
@@ -61,10 +61,10 @@ private func stressDataRace<T: Equatable>(expectation e1: XCTestExpectation, ite
     let group = DispatchGroup()
     let queue = DispatchQueue(label: "the.domain.of.Zalgo", attributes: .concurrent)
 
-    for _ in 0..<iterations {
+    for _ in 0 ..< iterations {
         let (promise, fulfill, _) = Promise<T>.pending()
 
-        DispatchQueue.concurrentPerform(iterations: stressFactor) { n in
+        DispatchQueue.concurrentPerform(iterations: stressFactor) { _ in
             stressFunction(promise)
         }
 

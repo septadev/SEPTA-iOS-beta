@@ -2,7 +2,7 @@ import PromiseKit
 import XCTest
 
 enum Error: Swift.Error {
-    case dummy  // we reject with this when we don't intend to test against it
+    case dummy // we reject with this when we don't intend to test against it
     case sentinel(UInt32)
 }
 
@@ -91,20 +91,19 @@ extension XCTestCase {
         }
     }
 
-
-/////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////
 
     private func mkspecify(_ numberOfExpectations: Int, file: StaticString, line: UInt, body: @escaping (Promise<UInt32>, [XCTestExpectation], UInt32) -> Void) -> (String, _ feed: (UInt32) -> (Promise<UInt32>, () -> Void)) -> Void {
         return { desc, feed in
             let value = arc4random()
             let (promise, executeAfter) = feed(value)
-            let expectations = (1...numberOfExpectations).map {
+            let expectations = (1 ... numberOfExpectations).map {
                 self.expectation(description: "\(desc) (\($0))")
             }
             body(promise, expectations, value)
-            
+
             executeAfter()
-            
+
             self.waitForExpectations(timeout: timeout) { err in
                 if let _ = err {
                     XCTFail("timed out: \(desc)", file: file, line: line)

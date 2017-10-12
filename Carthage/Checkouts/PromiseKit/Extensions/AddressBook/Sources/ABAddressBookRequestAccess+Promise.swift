@@ -2,7 +2,7 @@ import Foundation.NSError
 import CoreFoundation
 import AddressBook
 #if !COCOAPODS
-import PromiseKit
+    import PromiseKit
 #endif
 
 public enum AddressBookError: Error {
@@ -27,18 +27,18 @@ public enum AddressBookError: Error {
 
  To import `ABAddressBookRequestAccess`:
 
-    use_frameworks!
-    pod "PromiseKit/AddressBook"
+ use_frameworks!
+ pod "PromiseKit/AddressBook"
 
  And then in your sources:
 
-    import PromiseKit
+ import PromiseKit
 
  @return A promise that fulfills with the ABAuthorizationStatus.
-*/
+ */
 public func ABAddressBookRequestAccess() -> Promise<ABAuthorizationStatus> {
     return ABAddressBookRequestAccess().then(on: zalgo) { (_, _) -> ABAuthorizationStatus in
-        return ABAddressBookGetAuthorizationStatus()
+        ABAddressBookGetAuthorizationStatus()
     }
 }
 
@@ -47,14 +47,14 @@ public func ABAddressBookRequestAccess() -> Promise<ABAuthorizationStatus> {
 
  To import `ABAddressBookRequestAccess`:
 
-    pod "PromiseKit/AddressBook"
+ pod "PromiseKit/AddressBook"
 
  And then in your sources:
 
-    import PromiseKit
+ import PromiseKit
 
  @return A promise that fulfills with the ABAddressBook instance if access was granted.
-*/
+ */
 public func ABAddressBookRequestAccess() -> Promise<ABAddressBook> {
     return ABAddressBookRequestAccess().then(on: zalgo) { granted, book -> Promise<ABAddressBook> in
         guard granted else {
@@ -84,7 +84,7 @@ extension NSError {
 }
 
 private func ABAddressBookRequestAccess() -> Promise<(Bool, ABAddressBook)> {
-    var error: Unmanaged<CFError>? = nil
+    var error: Unmanaged<CFError>?
     guard let ubook = ABAddressBookCreateWithOptions(nil, &error) else {
         return Promise(error: NSError(CFError: error!.takeRetainedValue()))
     }

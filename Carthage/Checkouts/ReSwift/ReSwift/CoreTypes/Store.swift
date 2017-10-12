@@ -23,7 +23,7 @@ open class Store<State: StateType>: StoreType {
     // TODO: Setter should not be public; need way for store enhancers to modify appState anyway
     // swiftlint:enable todo
 
-    /*private (set)*/ public var state: State! {
+    /* private (set) */ public var state: State! {
         didSet {
             subscriptions = subscriptions.filter { $0.subscriber != nil }
             subscriptions.forEach {
@@ -48,17 +48,17 @@ open class Store<State: StateType>: StoreType {
         self.reducer = reducer
 
         // Wrap the dispatch function with all middlewares
-        self.dispatchFunction = middleware
+        dispatchFunction = middleware
             .reversed()
             .reduce({ [unowned self] action in
-                return self._defaultDispatch(action: action)
+                self._defaultDispatch(action: action)
             }) { dispatchFunction, middleware in
                 // If the store get's deinitialized before the middleware is complete; drop
                 // the action without dispatching.
                 let dispatch: (Action) -> Void = { [weak self] in self?.dispatch($0) }
                 let getState = { [weak self] in self?.state }
                 return middleware(dispatch, getState)(dispatchFunction)
-        }
+            }
 
         if let state = state {
             self.state = state
@@ -69,13 +69,12 @@ open class Store<State: StateType>: StoreType {
 
     open func subscribe<S: StoreSubscriber>(_ subscriber: S)
         where S.StoreSubscriberStateType == State {
-            _ = subscribe(subscriber, transform: nil)
+        _ = subscribe(subscriber, transform: nil)
     }
 
     open func subscribe<SelectedState, S: StoreSubscriber>(
         _ subscriber: S, transform: ((Subscription<State>) -> Subscription<SelectedState>)?
-    ) where S.StoreSubscriberStateType == SelectedState
-    {
+    ) where S.StoreSubscriberStateType == SelectedState {
         // If the same subscriber is already registered with the store, replace the existing
         // subscription with the new one.
         if let index = subscriptions.index(where: { $0.subscriber === subscriber }) {
@@ -102,7 +101,7 @@ open class Store<State: StateType>: StoreType {
     }
 
     open func unsubscribe(_ subscriber: AnyStoreSubscriber) {
-        if let index = subscriptions.index(where: { return $0.subscriber === subscriber }) {
+        if let index = subscriptions.index(where: { $0.subscriber === subscriber }) {
             subscriptions.remove(at: index)
         }
     }
@@ -112,9 +111,9 @@ open class Store<State: StateType>: StoreType {
         guard !isDispatching else {
             raiseFatalError(
                 "ReSwift:ConcurrentMutationError- Action has been dispatched while" +
-                " a previous action is action is being processed. A reducer" +
-                " is dispatching an action, or ReSwift is used in a concurrent context" +
-                " (e.g. from multiple threads)."
+                    " a previous action is action is being processed. A reducer" +
+                    " is dispatching an action, or ReSwift is used in a concurrent context" +
+                    " (e.g. from multiple threads)."
             )
         }
 
@@ -167,6 +166,6 @@ open class Store<State: StateType>: StoreType {
 extension Store where State: Equatable {
     open func subscribe<S: StoreSubscriber>(_ subscriber: S)
         where S.StoreSubscriberStateType == State {
-            _ = subscribe(subscriber, transform: { $0.skipRepeats() })
+        _ = subscribe(subscriber, transform: { $0.skipRepeats() })
     }
 }

@@ -33,7 +33,6 @@ extension SLRequest {
     }
 }
 
-
 import ObjectiveC
 
 func swizzle(_ foo: AnyClass, _ from: Selector, isClassMethod: Bool = false, body: () -> Void) {

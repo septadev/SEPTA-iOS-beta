@@ -6,7 +6,7 @@ class Test224: XCTestCase {
         describe("2.2.4: `onFulfilled` or `onRejected` must not be called until the execution context stack contains only platform code.") {
 
             describe("`then` returns before the promise becomes fulfilled or rejected") {
-                testFulfilled { promise, expectation, dummy in
+                testFulfilled { promise, expectation, _ in
                     var thenHasReturned = false
                     promise.then { _ -> Void in
                         XCTAssert(thenHasReturned)
@@ -14,15 +14,14 @@ class Test224: XCTestCase {
                     }
                     thenHasReturned = true
                 }
-                testRejected { promise, expectation, memo in
+                testRejected { promise, expectation, _ in
                     var catchHasReturned = false
-                    promise.catch { _->() in
+                    promise.catch { _ -> Void in
                         XCTAssert(catchHasReturned)
                         expectation.fulfill()
                     }
                     catchHasReturned = true
                 }
-
             }
 
             describe("Clean-stack execution ordering tests (fulfillment case)") {
@@ -69,7 +68,7 @@ class Test224: XCTestCase {
                         firstOnRejectedFinished = true
                     }
                 }
-                
+
                 specify("when the promise is fulfilled asynchronously") { d, expectation in
                     var firstStackFinished = false
 
@@ -104,7 +103,7 @@ class Test224: XCTestCase {
                     }
                     XCTAssertFalse(onRejectedCalled)
                 }
-                specify("when `onRejected` is added inside an `onFulfilled`") { d, expectation in
+                specify("when `onRejected` is added inside an `onFulfilled`") { _, expectation in
                     var promise1 = Promise(value: ())
                     var promise2 = Promise<Void>(error: Error.dummy)
                     var firstOnFulfilledFinished = false
@@ -117,9 +116,9 @@ class Test224: XCTestCase {
                         firstOnFulfilledFinished = true
                     }
                 }
-                specify("when one `onRejected` is added inside another `onRejected`") { d, expectation in
+                specify("when one `onRejected` is added inside another `onRejected`") { _, expectation in
                     var promise = Promise<Void>(error: Error.dummy)
-                    var firstOnRejectedFinished = false;
+                    var firstOnRejectedFinished = false
 
                     promise.catch { _ in
                         promise.catch { _ in

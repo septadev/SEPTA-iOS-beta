@@ -11,8 +11,8 @@ class Test232: XCTestCase {
                 }
 
                 testPromiseResolution(factory: xFactory) { promise, expectation in
-                    var wasFulfilled = false;
-                    var wasRejected = false;
+                    var wasFulfilled = false
+                    var wasRejected = false
 
                     promise.test(onFulfilled: { wasFulfilled = true }, onRejected: { wasRejected = true })
 
@@ -69,7 +69,7 @@ class Test232: XCTestCase {
 
                     testPromiseResolution(factory: xFactory) { promise, expectation in
                         promise.catch { err in
-                            if case Error.sentinel(let value) = err, value == sentinel {
+                            if case let Error.sentinel(value) = err, value == sentinel {
                                 expectation.fulfill()
                             }
                         }
@@ -88,7 +88,7 @@ class Test232: XCTestCase {
 
                     testPromiseResolution(factory: xFactory) { promise, expectation in
                         promise.catch { err in
-                            if case Error.sentinel(let value) = err, value == sentinel {
+                            if case let Error.sentinel(value) = err, value == sentinel {
                                 expectation.fulfill()
                             }
                         }
@@ -99,16 +99,15 @@ class Test232: XCTestCase {
     }
 }
 
-
 /////////////////////////////////////////////////////////////////////////
 
 extension Test232 {
     fileprivate func testPromiseResolution(factory: @escaping () -> Promise<UInt32>, line: UInt = #line, test: (Promise<UInt32>, XCTestExpectation) -> Void) {
-        specify("via return from a fulfilled promise", file: #file, line: line) { d, expectation in
+        specify("via return from a fulfilled promise", file: #file, line: line) { _, expectation in
             let promise = Promise(value: arc4random()).then { _ in factory() }
             test(promise, expectation)
         }
-        specify("via return from a rejected promise", file: #file, line: line) { d, expectation in
+        specify("via return from a rejected promise", file: #file, line: line) { _, expectation in
             let promise: Promise<UInt32> = Promise(error: Error.dummy).recover { _ in factory() }
             test(promise, expectation)
         }

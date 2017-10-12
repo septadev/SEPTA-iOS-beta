@@ -64,7 +64,7 @@ class StoreSubscriberTests: XCTestCase {
             $0.select {
                 $0.testValue
             }.skipRepeats {
-                return $0 == $1
+                $0 == $1
             }
         }
 
@@ -156,7 +156,6 @@ class StoreSubscriberTests: XCTestCase {
         XCTAssertEqual(subscriber.receivedValue.testValue, "Initial")
         XCTAssertEqual(subscriber.newStateCallCount, 1)
     }
-
 }
 
 class TestFilteredSubscriber<T>: StoreSubscriber {
@@ -167,7 +166,6 @@ class TestFilteredSubscriber<T>: StoreSubscriber {
         receivedValue = state
         newStateCallCount += 1
     }
-
 }
 
 /**

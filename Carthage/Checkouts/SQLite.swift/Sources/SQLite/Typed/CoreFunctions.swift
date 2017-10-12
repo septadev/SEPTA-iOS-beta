@@ -24,8 +24,7 @@
 
 import Foundation
 
-
-extension ExpressionType where UnderlyingType : Number {
+extension ExpressionType where UnderlyingType: Number {
 
     /// Builds a copy of the expression wrapped with the `abs` function.
     ///
@@ -34,13 +33,12 @@ extension ExpressionType where UnderlyingType : Number {
     ///     // abs("x")
     ///
     /// - Returns: A copy of the expression wrapped with the `abs` function.
-    public var absoluteValue : Expression<UnderlyingType> {
+    public var absoluteValue: Expression<UnderlyingType> {
         return "abs".wrap(self)
     }
-
 }
 
-extension ExpressionType where UnderlyingType : _OptionalType, UnderlyingType.WrappedType : Number {
+extension ExpressionType where UnderlyingType: _OptionalType, UnderlyingType.WrappedType: Number {
 
     /// Builds a copy of the expression wrapped with the `abs` function.
     ///
@@ -49,10 +47,9 @@ extension ExpressionType where UnderlyingType : _OptionalType, UnderlyingType.Wr
     ///     // abs("x")
     ///
     /// - Returns: A copy of the expression wrapped with the `abs` function.
-    public var absoluteValue : Expression<UnderlyingType> {
+    public var absoluteValue: Expression<UnderlyingType> {
         return "abs".wrap(self)
     }
-
 }
 
 extension ExpressionType where UnderlyingType == Double {
@@ -72,7 +69,6 @@ extension ExpressionType where UnderlyingType == Double {
         }
         return wrap([self, Int(precision)])
     }
-
 }
 
 extension ExpressionType where UnderlyingType == Double? {
@@ -92,10 +88,9 @@ extension ExpressionType where UnderlyingType == Double? {
         }
         return wrap([self, Int(precision)])
     }
-
 }
 
-extension ExpressionType where UnderlyingType : Value, UnderlyingType.Datatype == Int64 {
+extension ExpressionType where UnderlyingType: Value, UnderlyingType.Datatype == Int64 {
 
     /// Builds an expression representing the `random` function.
     ///
@@ -106,7 +101,6 @@ extension ExpressionType where UnderlyingType : Value, UnderlyingType.Datatype =
     public static func random() -> Expression<UnderlyingType> {
         return "random".wrap([])
     }
-
 }
 
 extension ExpressionType where UnderlyingType == Data {
@@ -119,7 +113,7 @@ extension ExpressionType where UnderlyingType == Data {
     /// - Parameter length: Length in bytes.
     ///
     /// - Returns: An expression calling the `randomblob` function.
-    public static func random(_ length: Int) -> Expression<UnderlyingType> {
+    public static func random(_: Int) -> Expression<UnderlyingType> {
         return "randomblob".wrap([])
     }
 
@@ -131,7 +125,7 @@ extension ExpressionType where UnderlyingType == Data {
     /// - Parameter length: Length in bytes.
     ///
     /// - Returns: An expression calling the `zeroblob` function.
-    public static func allZeros(_ length: Int) -> Expression<UnderlyingType> {
+    public static func allZeros(_: Int) -> Expression<UnderlyingType> {
         return "zeroblob".wrap([])
     }
 
@@ -145,7 +139,6 @@ extension ExpressionType where UnderlyingType == Data {
     public var length: Expression<Int> {
         return wrap(self)
     }
-
 }
 
 extension ExpressionType where UnderlyingType == Data? {
@@ -160,7 +153,6 @@ extension ExpressionType where UnderlyingType == Data? {
     public var length: Expression<Int?> {
         return wrap(self)
     }
-
 }
 
 extension ExpressionType where UnderlyingType == String {
@@ -385,7 +377,6 @@ extension ExpressionType where UnderlyingType == String {
     public subscript(range: Range<Int>) -> Expression<UnderlyingType> {
         return substring(range.lowerBound, length: range.upperBound - range.lowerBound)
     }
-
 }
 
 extension ExpressionType where UnderlyingType == String? {
@@ -447,7 +438,7 @@ extension ExpressionType where UnderlyingType == String? {
         }
         return Expression("(\(template) LIKE ? ESCAPE ?)", bindings + [pattern, String(character)])
     }
-    
+
     /// Builds a copy of the expression appended with a `LIKE` query against the
     /// given pattern.
     ///
@@ -634,10 +625,9 @@ extension ExpressionType where UnderlyingType == String? {
     public subscript(range: Range<Int>) -> Expression<UnderlyingType> {
         return substring(range.lowerBound, length: range.upperBound - range.lowerBound)
     }
-
 }
 
-extension Collection where Iterator.Element : Value, IndexDistance == Int {
+extension Collection where Iterator.Element: Value, IndexDistance == Int {
 
     /// Builds a copy of the expression prepended with an `IN` check against the
     /// collection.
@@ -670,11 +660,10 @@ extension Collection where Iterator.Element : Value, IndexDistance == Int {
         let templates = [String](repeating: "?", count: count).joined(separator: ", ")
         return "IN".infix(expression, Expression<Void>("(\(templates))", map { $0.datatypeValue }))
     }
-
 }
 
 extension String {
-    
+
     /// Builds a copy of the expression appended with a `LIKE` query against the
     /// given pattern.
     ///
@@ -699,7 +688,6 @@ extension String {
         let like: Expression<Bool> = "LIKE".infix(self, pattern, wrap: false)
         return Expression("(\(like.template) ESCAPE ?)", like.bindings + [String(character)])
     }
-
 }
 
 /// Builds a copy of the given expressions wrapped with the `ifnull` function.
@@ -717,7 +705,7 @@ extension String {
 ///
 /// - Returns: A copy of the given expressions wrapped with the `ifnull`
 ///   function.
-public func ??<V : Value>(optional: Expression<V?>, defaultValue: V) -> Expression<V> {
+public func ??<V: Value>(optional: Expression<V?>, defaultValue: V) -> Expression<V> {
     return "ifnull".wrap([optional, defaultValue])
 }
 
@@ -737,7 +725,7 @@ public func ??<V : Value>(optional: Expression<V?>, defaultValue: V) -> Expressi
 ///
 /// - Returns: A copy of the given expressions wrapped with the `ifnull`
 ///   function.
-public func ??<V : Value>(optional: Expression<V?>, defaultValue: Expression<V>) -> Expression<V> {
+public func ??<V: Value>(optional: Expression<V?>, defaultValue: Expression<V>) -> Expression<V> {
     return "ifnull".wrap([optional, defaultValue])
 }
 
@@ -757,6 +745,6 @@ public func ??<V : Value>(optional: Expression<V?>, defaultValue: Expression<V>)
 ///
 /// - Returns: A copy of the given expressions wrapped with the `ifnull`
 ///   function.
-public func ??<V : Value>(optional: Expression<V?>, defaultValue: Expression<V?>) -> Expression<V> {
+public func ??<V: Value>(optional: Expression<V?>, defaultValue: Expression<V?>) -> Expression<V> {
     return "ifnull".wrap([optional, defaultValue])
 }

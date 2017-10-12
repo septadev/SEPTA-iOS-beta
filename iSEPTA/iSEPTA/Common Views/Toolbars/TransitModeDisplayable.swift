@@ -262,6 +262,19 @@ extension TransitMode {
         return UIImage(cgImage: cgImage, scale: 2.5, orientation: image.imageOrientation)
     }
 
+    func mapTitle() -> String {
+        let title: String
+        switch self {
+        case .rail: title = "Train View"
+        case .subway : title = "Subway View"
+        case .bus: title = "Bus View"
+        case .trolley :title = "Trolley View"
+        case .nhsl:title = "NHSL View"
+        }
+
+        return title
+    }
+
     public func scheduleTypeSegments() -> [ScheduleType] {
         switch self {
         case .rail : return [.mondayThroughThursday, .friday, .saturday, .sunday]

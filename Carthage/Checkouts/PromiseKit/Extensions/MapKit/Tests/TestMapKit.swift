@@ -23,7 +23,6 @@ class Test_MKDirections_Swift: XCTestCase {
         waitForExpectations(timeout: 1, handler: nil)
     }
 
-
     func test_ETA_response() {
         let ex = expectation(description: "")
 
@@ -34,13 +33,12 @@ class Test_MKDirections_Swift: XCTestCase {
         }
 
         let rq = MKDirectionsRequest()
-        MockDirections(request: rq).calculateETA().then { (rsp: MKETAResponse) in
+        MockDirections(request: rq).calculateETA().then { (_: MKETAResponse) in
             ex.fulfill()
         }
 
         waitForExpectations(timeout: 1, handler: nil)
     }
-
 }
 
 class Test_MKSnapshotter_Swift: XCTestCase {

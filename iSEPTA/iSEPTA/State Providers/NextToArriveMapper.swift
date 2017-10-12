@@ -39,7 +39,8 @@ class NextToArriveMapper {
                                 direction: RouteDirectionCode.fromNetwork(a.orig_line_direction ?? ""),
                                 vehicleLocationCoordinate: buildStartLocationCoordinate(realTimeArrival: a),
                                 vehicleIds: mapVehicleIds(stopToSelect: .starts, realTimeArrival: a, transitMode: transitMode),
-                                hasRealTimeData: a.orig_realtime
+                                hasRealTimeData: a.orig_realtime,
+                                service: a.orig_line_service
         )
     }
 
@@ -68,7 +69,8 @@ class NextToArriveMapper {
                                 direction: RouteDirectionCode.fromNetwork(a.term_line_direction ?? ""),
                                 vehicleLocationCoordinate: buildEndLocationCoordinate(realTimeArrival: a),
                                 vehicleIds: mapVehicleIds(stopToSelect: .ends, realTimeArrival: a, transitMode: transitMode),
-                                hasRealTimeData: a.term_realtime
+                                hasRealTimeData: a.term_realtime,
+                                service: a.term_line_service
         )
     }
 
@@ -109,8 +111,8 @@ class NextToArriveMapper {
 
     func mapVehicleIds(stopToSelect: StopToSelect, realTimeArrival a: RealTimeArrival, transitMode: TransitMode) -> [String]? {
 
-        let useVehicleId = transitMode == .bus || transitMode == .nhsl
-        let useConsist = transitMode == .rail
+        let useVehicleId = transitMode.useBusForDetails()
+        let useConsist = transitMode.useRailForDetails()
 
         switch (useVehicleId, useConsist, stopToSelect, a.orig_vehicle_id) {
         case (true, false, let stopToSelect, let vehicleId) where vehicleId != .none && stopToSelect == .starts :

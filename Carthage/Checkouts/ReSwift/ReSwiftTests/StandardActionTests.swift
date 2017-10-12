@@ -24,14 +24,13 @@ class StandardActionInitTests: XCTestCase {
      it can be initialized with a type and a payload
      */
     func testInitWithTypeAndPayload() {
-        let action = StandardAction(type:"Test", payload: ["testKey": 5 as AnyObject])
+        let action = StandardAction(type: "Test", payload: ["testKey": 5 as AnyObject])
 
         let payload = action.payload!["testKey"]! as! Int
 
         XCTAssertEqual(payload, 5)
         XCTAssertEqual(action.type, "Test")
     }
-
 }
 
 class StandardActionInitSerializationTests: XCTestCase {
@@ -43,7 +42,7 @@ class StandardActionInitSerializationTests: XCTestCase {
         let actionDictionary: [String: AnyObject] = [
             "type": "TestType" as AnyObject,
             "payload": "ReSwift_Null" as AnyObject,
-            "isTypedAction": true as AnyObject
+            "isTypedAction": true as AnyObject,
         ]
 
         let action = StandardAction(dictionary: actionDictionary)
@@ -57,8 +56,8 @@ class StandardActionInitSerializationTests: XCTestCase {
      it can convert an action to a dictionary
      */
     func testConvertActionToDict() {
-        let action = StandardAction(type:"Test", payload: ["testKey": 5 as AnyObject],
-            isTypedAction: true)
+        let action = StandardAction(type: "Test", payload: ["testKey": 5 as AnyObject],
+                                    isTypedAction: true)
 
         let dictionary = action.dictionaryRepresentation
 
@@ -75,7 +74,7 @@ class StandardActionInitSerializationTests: XCTestCase {
      it can serialize / deserialize actions with payload and without custom type
      */
     func testWithPayloadWithoutCustomType() {
-        let action = StandardAction(type:"Test", payload: ["testKey": 5 as AnyObject])
+        let action = StandardAction(type: "Test", payload: ["testKey": 5 as AnyObject])
         let dictionary = action.dictionaryRepresentation
 
         let deserializedAction = StandardAction(dictionary: dictionary)
@@ -90,8 +89,8 @@ class StandardActionInitSerializationTests: XCTestCase {
      it can serialize / deserialize actions with payload and with custom type
      */
     func testWithPayloadAndCustomType() {
-        let action = StandardAction(type:"Test", payload: ["testKey": 5 as AnyObject],
-                        isTypedAction: true)
+        let action = StandardAction(type: "Test", payload: ["testKey": 5 as AnyObject],
+                                    isTypedAction: true)
         let dictionary = action.dictionaryRepresentation
 
         let deserializedAction = StandardAction(dictionary: dictionary)
@@ -107,7 +106,7 @@ class StandardActionInitSerializationTests: XCTestCase {
      it can serialize / deserialize actions without payload and without custom type
      */
     func testWithoutPayloadOrCustomType() {
-        let action = StandardAction(type:"Test", payload: nil)
+        let action = StandardAction(type: "Test", payload: nil)
         let dictionary = action.dictionaryRepresentation
 
         let deserializedAction = StandardAction(dictionary: dictionary)
@@ -120,8 +119,8 @@ class StandardActionInitSerializationTests: XCTestCase {
      it can serialize / deserialize actions without payload and with custom type
      */
     func testWithoutPayloadWithCustomType() {
-        let action = StandardAction(type:"Test", payload: nil,
-            isTypedAction: true)
+        let action = StandardAction(type: "Test", payload: nil,
+                                    isTypedAction: true)
         let dictionary = action.dictionaryRepresentation
 
         let deserializedAction = StandardAction(dictionary: dictionary)
@@ -159,7 +158,6 @@ class StandardActionConvertibleInit: XCTestCase {
 
         XCTAssertEqual(action.value, "10")
     }
-
 }
 
 class StandardActionConvertibleTests: XCTestCase {

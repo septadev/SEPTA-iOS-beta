@@ -124,6 +124,13 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         guard let location = vehicleLocation.location else { return }
         let annotation = VehicleLocationAnnotation(vehicleLocation: vehicleLocation)
         annotation.coordinate = location
+        if #available(iOS 11.0, *) {
+           annotation.title = nil
+        } else {
+            if let transitMode = scheduleRequest?.transitMode  {
+           annotation.title = transitMode.mapTitle()
+           }
+        }
         
         mapView.addAnnotation(annotation)
         vehiclesAnnotationsAdded.append(annotation)
@@ -228,7 +235,7 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
     }
     
     func buildVehicleTitle(vehicleLocation: VehicleLocation, calloutView: UIView?) {
-        guard let calloutView = calloutView as? MapVehicleCalloutView  else { return }
+        guard let calloutView = calloutView as? MapVehicleCalloutView , let transitMode = scheduleRequest?.transitMode else { return }
         
         if let detail = vehicleLocation.nextToArriveStop.nextToArriveDetail as? NextToArriveRailDetails,
             let consist = detail.consist, let destination = detail.destination, let delay = detail.destinationDelay, let tripId = detail.tripid {
@@ -237,6 +244,7 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
                 calloutView.label1.text = "Train: #\(tripId) to \(destination)"
                 calloutView.label2.text = "Status: \(delayString)"
                 calloutView.label3.text = "# of Train Cars: \(countString)"
+                return
             }
         if let detail = vehicleLocation.nextToArriveStop.nextToArriveDetail as? NextToArriveBusDetails,
             let vehicleId = detail.vehicleid, let destination = detail.destinationStation, let delay = detail.destinationDelay, let blockId = detail.blockid {
@@ -245,8 +253,59 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
                 calloutView.label1.text = "Block ID: \(blockId) to \(destination)"
                 calloutView.label2.text = "Vehicle Number: \(vehicleId)"
                 calloutView.label3.text = "Status: \(delayString)"
-            
+                return
             }
+        let stop = vehicleLocation.nextToArriveStop
+        
+        if transitMode.useBusForDetails(){
+           if let lastStopName = stop.lastStopName {
+                calloutView.label1.text = "#\(stop.routeId):  to \(lastStopName)"
+           } else {
+                calloutView.label1.text = ""
+           }
+           
+           if let vehicleIds = stop.vehicleIds, let firstVehicle = vehicleIds.first {
+                calloutView.label2.text = "Vehicle Number: \(firstVehicle)"
+           } else {
+                calloutView.label3.text = "Vehicle Number not available"
+           }
+           
+           if let delay = stop.delayMinutes {
+                let delayString = buildDelayString(delay:delay)
+                calloutView.label3.text = "Status: \(delayString)"
+           } else {
+                calloutView.label3.text = "Status: No Realtime data"
+           }
+            return
+        }
+        
+           if transitMode.useRailForDetails(){
+           if let  tripId = stop.tripId , let lastStopName = stop.lastStopName{
+                calloutView.label1.text = "Train: #\(tripId) to \(lastStopName)"
+           } else {
+                calloutView.label1.text = ""
+           }
+           
+        if let delay = stop.delayMinutes {
+                let delayString = buildDelayString(delay:delay)
+                calloutView.label2.text = "Status: \(delayString)"
+           } else {
+                calloutView.label2.text = "Status: No Realtime data"
+           }
+           
+           if let vehicleIds = stop.vehicleIds {
+                calloutView.label3.text = "# of Train Cars: \(vehicleIds.count)"
+           } else {
+                calloutView.label3.text = "# of Train Cars: unknown"
+           }
+           
+         return
+        
+        }
+        
+          calloutView.label1.text = ""
+                calloutView.label2.text = ""
+                calloutView.label3.text = ""
         
     }
     
@@ -273,7 +332,7 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
         return vehicleView
     }
 
-    func mapView(_: MKMapView, didSelect _: MKAnnotationView) {
+    func mapView(_: MKMapView, didSelect annotationView: MKAnnotationView) {
         print("User Selected a pin")
     }
 

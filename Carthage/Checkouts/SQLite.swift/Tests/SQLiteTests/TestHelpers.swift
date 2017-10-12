@@ -1,15 +1,15 @@
 import XCTest
 @testable import SQLite
 
-class SQLiteTestCase : XCTestCase {
-    private var trace:[String: Int]!
-    var db:Connection!
+class SQLiteTestCase: XCTestCase {
+    private var trace: [String: Int]!
+    var db: Connection!
     let users = Table("users")
 
     override func setUp() {
         super.setUp()
         db = try! Connection()
-        trace = [String:Int]()
+        trace = [String: Int]()
 
         db.trace { SQL in
             print(SQL)
@@ -19,16 +19,16 @@ class SQLiteTestCase : XCTestCase {
 
     func CreateUsersTable() {
         try! db.execute("""
-            CREATE TABLE users (
-                id INTEGER PRIMARY KEY,
-                email TEXT NOT NULL UNIQUE,
-                age INTEGER,
-                salary REAL,
-                admin BOOLEAN NOT NULL DEFAULT 0 CHECK (admin IN (0, 1)),
-                manager_id INTEGER,
-                FOREIGN KEY(manager_id) REFERENCES users(id)
-            )
-            """
+        CREATE TABLE users (
+            id INTEGER PRIMARY KEY,
+            email TEXT NOT NULL UNIQUE,
+            age INTEGER,
+            salary REAL,
+            admin BOOLEAN NOT NULL DEFAULT 0 CHECK (admin IN (0, 1)),
+            manager_id INTEGER,
+            FOREIGN KEY(manager_id) REFERENCES users(id)
+        )
+        """
         )
     }
 
@@ -61,18 +61,17 @@ class SQLiteTestCase : XCTestCase {
         if let count = trace[SQL] { trace[SQL] = count - 1 }
     }
 
-//    func AssertSQL(SQL: String, _ query: Query, _ message: String? = nil, file: String = __FILE__, line: UInt = __LINE__) {
-//        for _ in query {}
-//        AssertSQL(SQL, 1, message, file: file, line: line)
-//        if let count = trace[SQL] { trace[SQL] = count - 1 }
-//    }
+    //    func AssertSQL(SQL: String, _ query: Query, _ message: String? = nil, file: String = __FILE__, line: UInt = __LINE__) {
+    //        for _ in query {}
+    //        AssertSQL(SQL, 1, message, file: file, line: line)
+    //        if let count = trace[SQL] { trace[SQL] = count - 1 }
+    //    }
 
     func async(expect description: String = "async", timeout: Double = 5, block: (@escaping () -> Void) -> Void) {
         let expectation = self.expectation(description: description)
         block({ expectation.fulfill() })
         waitForExpectations(timeout: timeout, handler: nil)
     }
-
 }
 
 let bool = Expression<Bool>("bool")

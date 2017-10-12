@@ -16,6 +16,6 @@ extension TransitMode {
     }
 
     func useBusForDetails() -> Bool {
-        return [.bus, .nhsl].contains(self)
+        return [.bus, .nhsl, .trolley].contains(self)
     }
 }

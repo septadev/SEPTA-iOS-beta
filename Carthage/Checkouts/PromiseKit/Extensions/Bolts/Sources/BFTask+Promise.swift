@@ -21,8 +21,8 @@ extension Promise {
     }
 }
 
-//FIXME won’t compile with Xcode 8 beta 4
-//extension BFTask {
+// FIXME: won’t compile with Xcode 8 beta 4
+// extension BFTask {
 //    public func then<U>(on q: DispatchQueue = PMKDefaultDispatchQueue(), body: (ResultType) -> U) -> Promise<U> {
 //        return Promise { fulfill, reject in
 //            self.continue({ task in
@@ -37,8 +37,8 @@ extension Promise {
 //            })
 //        }
 //    }
-//}
+// }
 
 #if !COCOAPODS
-import PromiseKit
+    import PromiseKit
 #endif
