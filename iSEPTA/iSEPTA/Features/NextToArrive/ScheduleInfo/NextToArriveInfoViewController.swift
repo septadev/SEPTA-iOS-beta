@@ -142,7 +142,7 @@ extension NextToArriveInfoViewController: UpdateableFromViewModel {
             self?.activityIndicator.stopAnimating()
             self?.tableView.tableFooterView?.isHidden = self?.viewModel.numberOfSections() == 0
             self?.tableView.reloadData()
-            self?.tableView.tableFooterView?.isHidden = false
+            //            self?.tableView.tableFooterView?.isHidden = false
             print("Reload data")
         }
 

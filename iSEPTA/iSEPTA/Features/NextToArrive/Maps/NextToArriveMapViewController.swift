@@ -242,7 +242,7 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
                 let countString = String(consist.count)
                 let delayString = buildDelayString(delay:delay)
                 calloutView.label1.text = "Train: #\(tripId) to \(destination)"
-                calloutView.label2.text = "Status: \(delayString)"
+                calloutView.label2.text = delayString
                 calloutView.label3.text = "# of Train Cars: \(countString)"
                 return
             }
@@ -252,7 +252,7 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
                 let delayString = buildDelayString(delay:delay)
                 calloutView.label1.text = "Block ID: \(blockId) to \(destination)"
                 calloutView.label2.text = "Vehicle Number: \(vehicleId)"
-                calloutView.label3.text = "Status: \(delayString)"
+                calloutView.label3.text = delayString
                 return
             }
         let stop = vehicleLocation.nextToArriveStop
@@ -272,7 +272,7 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
            
            if let delay = stop.delayMinutes {
                 let delayString = buildDelayString(delay:delay)
-                calloutView.label3.text = "Status: \(delayString)"
+                calloutView.label3.text = delayString
            } else {
                 calloutView.label3.text = "Status: No Realtime data"
            }
@@ -288,7 +288,7 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
            
         if let delay = stop.delayMinutes {
                 let delayString = buildDelayString(delay:delay)
-                calloutView.label2.text = "Status: \(delayString)"
+                calloutView.label2.text = delayString
            } else {
                 calloutView.label2.text = "Status: No Realtime data"
            }

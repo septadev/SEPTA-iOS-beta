@@ -94,13 +94,13 @@ struct FavoritesReducer {
     }
 
     static func reduceUpdateFavorite(action: UpdateFavorite, state: FavoritesState) -> FavoritesState {
-        guard var matchingFavorite = state.favorites.filter({ $0.favoriteId == action.favorite.favoriteId }).first else { return state }
-        matchingFavorite.nextToArriveTrips = action.favorite.nextToArriveTrips
-        matchingFavorite.nextToArriveUpdateStatus = action.favorite.nextToArriveUpdateStatus
-        matchingFavorite.refreshDataRequested = false
+        //        guard var matchingFavorite = state.favorites.filter({ $0.favoriteId == action.favorite.favoriteId }).first else { return state }
+        //        matchingFavorite.nextToArriveTrips = action.favorite.nextToArriveTrips
+        //        matchingFavorite.nextToArriveUpdateStatus = action.favorite.nextToArriveUpdateStatus
+        //        matchingFavorite.refreshDataRequested = false
 
-        var otherFavorites = state.favorites.filter { $0.favoriteId != matchingFavorite.favoriteId }
-        otherFavorites.append(matchingFavorite)
+        var otherFavorites = state.favorites.filter { $0.favoriteId != action.favorite.favoriteId }
+        otherFavorites.append(action.favorite)
         var favoriteState = FavoritesState(favorites: otherFavorites)
         favoriteState.nextToArriveFavoriteId = state.nextToArriveFavoriteId
         favoriteState.favoriteToEdit = state.favoriteToEdit
