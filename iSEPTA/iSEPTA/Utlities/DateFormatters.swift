@@ -50,6 +50,13 @@ public class DateFormatters {
         return formatter
     }()
 
+    static var uiDateFormatter: DateFormatter = {
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "M/d/yyyy"
+        return formatter
+    }()
+
     static func formatDurationString(startDate: Date, endDate: Date) -> String? {
         let startString = DateFormatters.hourMinuteFormatter.string(from: startDate)
         let endString = DateFormatters.hourMinuteFormatter.string(from: endDate)

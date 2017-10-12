@@ -27,7 +27,7 @@ class AboutViewModel {
         viewItems.append(AboutViewModelItem(title: "Build Number:", value: AppInfoProvider.buildNumber()))
 
         let lastScheduleUpdate = AppInfoProvider.lastDatabaseUpdate()
-        let lastScheduleUpdateString = DateFormatters.uiDateTimeFormatter.string(from: lastScheduleUpdate)
-        viewItems.append(AboutViewModelItem(title: "Last Schedule Update:", value: lastScheduleUpdateString))
+        let lastScheduleUpdateString = DateFormatters.uiDateFormatter.string(from: lastScheduleUpdate)
+        viewItems.append(AboutViewModelItem(title: "Schedule Updated:", value: lastScheduleUpdateString))
     }
 }
