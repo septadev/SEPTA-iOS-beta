@@ -63,22 +63,40 @@
             </objects>
             <point key="canvasLocation" x="128.80000000000001" y="83.208395802098963"/>
         </scene>
-        <!--View Controller-->
+        <!--Map Controller-->
         <scene sceneID="TnE-Wq-PMI">
             <objects>
                 <viewController id="rLf-ds-PN2" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zM5-X6-HpV" customClass="TripDetailInfoViewController">
+                    <view key="view" contentMode="scaleToFill" id="zM5-X6-HpV" customClass="TripDetailMapViewController">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="327"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="V33-1W-Z10">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="327"/>
+                                <connections>
+                                    <outlet property="delegate" destination="zM5-X6-HpV" id="16j-TT-cPw"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aqT-SH-RCm" firstAttribute="bottom" secondItem="V33-1W-Z10" secondAttribute="bottom" id="2Jz-Sj-SiW"/>
+                            <constraint firstItem="V33-1W-Z10" firstAttribute="leading" secondItem="aqT-SH-RCm" secondAttribute="leading" id="6Jn-oa-ZWY"/>
+                            <constraint firstItem="aqT-SH-RCm" firstAttribute="trailing" secondItem="V33-1W-Z10" secondAttribute="trailing" id="jkz-rS-lL1"/>
+                            <constraint firstItem="V33-1W-Z10" firstAttribute="top" secondItem="aqT-SH-RCm" secondAttribute="top" id="m7j-03-FPt"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aqT-SH-RCm"/>
+                        <connections>
+                            <outlet property="mapView" destination="V33-1W-Z10" id="CEl-ta-oa9"/>
+                        </connections>
                     </view>
+                    <navigationItem key="navigationItem" title="Map Controller" id="DX8-8p-99f"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M9X-Hy-3WD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="103" y="687"/>
         </scene>
-        <!--Title-->
+        <!--Trip Info-->
         <scene sceneID="hb8-O1-D5q">
             <objects>
                 <viewController id="0Oe-hL-0SR" customClass="TripDetailInfoViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
@@ -249,7 +267,7 @@ CenteringView</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jK5-KM-nHx"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="Sbm-XG-ngi"/>
+                    <navigationItem key="navigationItem" title="Trip Info" id="Sbm-XG-ngi"/>
                     <connections>
                         <outlet property="DelayLabel" destination="j4f-KK-PvE" id="dHn-Ck-9Iz"/>
                         <outlet property="delayBoxView" destination="z9I-3L-gKl" id="nlS-Tw-bp2"/>

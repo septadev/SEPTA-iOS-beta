@@ -94,6 +94,7 @@
 		582F4EDE1F33B1120062A546 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EB41F33B1120062A546 /* Main.storyboard */; };
 		582F4EDF1F33B1120062A546 /* DatabaseStateWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EB61F33B1120062A546 /* DatabaseStateWatcher.swift */; };
 		582F4EE01F33B1120062A546 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EB81F33B1120062A546 /* LaunchScreen.storyboard */; };
+		58326F921F9090A000E4A78A /* TripDetailMapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58326F911F9090A000E4A78A /* TripDetailMapViewDelegate.swift */; };
 		583523991F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583523981F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift */; };
 		58406EB51F3A9C0E00E6E04D /* SeptaSchedule.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58ACEAE31F3A9A9B00DC2836 /* SeptaSchedule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5840D6D31F376D9C00C8CB76 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6D21F376D9C00C8CB76 /* MainNavigationController.swift */; };
@@ -726,6 +727,7 @@
 		582F4EB61F33B1120062A546 /* DatabaseStateWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseStateWatcher.swift; sourceTree = "<group>"; };
 		582F4EB91F33B1120062A546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		582F4F241F33B2400062A546 /* Septa-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Septa-Bridging-Header.h"; sourceTree = "<group>"; };
+		58326F911F9090A000E4A78A /* TripDetailMapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailMapViewDelegate.swift; sourceTree = "<group>"; };
 		583523981F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTransitModesToolBarViewController.swift; sourceTree = "<group>"; };
 		5840D6D21F376D9C00C8CB76 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		5840D6D41F376E5E00C8CB76 /* NavigationStackState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackState.swift; sourceTree = "<group>"; };
@@ -2501,6 +2503,7 @@
 			isa = PBXGroup;
 			children = (
 				6789B7791F8FDFE7008C6DCA /* TripDetailMapViewController.swift */,
+				58326F911F9090A000E4A78A /* TripDetailMapViewDelegate.swift */,
 				6789B77B1F8FDFF7008C6DCA /* TripDetailMapViewModel.swift */,
 			);
 			path = map;
@@ -3191,6 +3194,7 @@
 				67365ACC1F754A3200FC86CB /* SevenEightsAnimationIn.swift in Sources */,
 				67F028961F7ED0460032F99C /* ContactViewController.swift in Sources */,
 				671609111F67F72600941D2C /* UIStackView+Util.swift in Sources */,
+				58326F921F9090A000E4A78A /* TripDetailMapViewDelegate.swift in Sources */,
 				580A35651F6A1949000FCA82 /* FavoriteNextToArriveViewModel.swift in Sources */,
 				58E54E241F65A40100E9B66D /* NavigationBar+Util.swift in Sources */,
 				586852E01F8D4F470081C1CC /* LittleBlueChevronButton.swift in Sources */,
