@@ -87,6 +87,16 @@ extension TransitMode {
         }
     }
 
+    public func tripDetailTitle() -> String {
+        switch self {
+        case .bus: return "Bus Detail"
+        case .rail: return "Regional Rail Detail"
+        case .subway: return "Subway Detail"
+        case .nhsl: return "NHSL Detail"
+        case .trolley: return "Trolley Detail"
+        }
+    }
+
     public func alertDetailTitle() -> String {
         switch self {
         case .bus: return "System Status: Bus"
@@ -226,6 +236,10 @@ extension TransitMode {
         case .nhsl: imageName = "nhslNoFavorite"
         }
         return UIImage(named: imageName)
+    }
+
+    public func tripDetailIcon() -> UIImage? {
+        return noFavoriteIcon()
     }
 
     public static func convertFromTransitMode(_ type: String) -> TransitMode? {

@@ -13,6 +13,8 @@ class TripDetailStateProvider: TripDetailState_TripDetailsExistWatcherDelegate {
     let client = SEPTAApiClient.defaultClient(url: SeptaNetwork.sharedInstance.url, apiKey: SeptaNetwork.sharedInstance.apiKey)
 
     let watcher = TripDetailState_TripDetailsExistWatcher()
+
+    static let sharedInstance: TripDetailStateProvider = TripDetailStateProvider()
     var timer: Timer?
 
     init() {

@@ -47,9 +47,13 @@ extension UIStackView {
 
     func clearSubviews() {
         for subview in arrangedSubviews {
-            removeArrangedSubview(subview)
-            subview.removeFromSuperview()
+            removeSubview(subview: subview)
         }
+    }
+
+    func removeSubview(subview: UIView) {
+        removeArrangedSubview(subview)
+        subview.removeFromSuperview()
     }
 
     func awakeInsertArrangedView<T>(nibName: String) -> T? where T: UIView {

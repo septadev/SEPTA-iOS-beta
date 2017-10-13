@@ -14,3 +14,8 @@ struct UpdateTripDetails: TripDetailAction {
     let tripDetails: NextToArriveStop
     let description: String = "Updating Trip Details"
 }
+
+struct ClearTripDetails: TripDetailAction {
+
+    let description: String = "Clear out Trip Details"
+}

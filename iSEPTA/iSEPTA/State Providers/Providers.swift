@@ -15,6 +15,7 @@ class StateProviders {
     let alertScheduleDataProvider: AlertScheduleDataProvider
     let alertDetailProvider: AlertDetailProvider
     let genericAlertDetailProvider: GenericAlertDetailProvider
+    let tripDetailStateProvider: TripDetailStateProvider
 
     init(preferenceProvider: UserPreferencesProviderProtocol = UserPreferencesProvider.sharedInstance,
          scheduleProvider: ScheduleDataProvider = ScheduleDataProvider.sharedInstance,
@@ -27,7 +28,8 @@ class StateProviders {
          favoritesNextToArriveProvider: FavoritesNextToArriveProvider = FavoritesNextToArriveProvider.sharedInstance,
          alertScheduleDataProvider: AlertScheduleDataProvider = AlertScheduleDataProvider.sharedInstance,
          alertDetailProvider: AlertDetailProvider = AlertDetailProvider.sharedInstance,
-         genericAlertDetailProvider: GenericAlertDetailProvider = GenericAlertDetailProvider.sharedInstance
+         genericAlertDetailProvider: GenericAlertDetailProvider = GenericAlertDetailProvider.sharedInstance,
+         tripDetailStateProvider: TripDetailStateProvider = TripDetailStateProvider.sharedInstance
 
     ) {
         self.preferenceProvider = preferenceProvider
@@ -42,5 +44,6 @@ class StateProviders {
         self.alertScheduleDataProvider = alertScheduleDataProvider
         self.alertDetailProvider = alertDetailProvider
         self.genericAlertDetailProvider = genericAlertDetailProvider
+        self.tripDetailStateProvider = tripDetailStateProvider
     }
 }

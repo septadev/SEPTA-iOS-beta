@@ -26,7 +26,6 @@
  },
  "results": 1
  }
-
  */
 
 import Foundation

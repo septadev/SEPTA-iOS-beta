@@ -186,11 +186,12 @@ struct FavoritesReducer {
     }
 
     static func updateFavoriteWithNextToArriveStatus(favoriteId: String, nextToArriveUpdateStatus: NextToArriveUpdateStatus, state: FavoritesState) -> [Favorite] {
-        guard var matchingFavorite = matchingFavoriteForId(favoriteId, state: state) else { return state.favorites }
-        matchingFavorite.nextToArriveUpdateStatus = nextToArriveUpdateStatus
+        guard var updatedFavorite = matchingFavoriteForId(favoriteId, state: state) else { return state.favorites }
+        updatedFavorite.nextToArriveUpdateStatus = nextToArriveUpdateStatus
+        updatedFavorite.refreshDataRequested = false
         var otherFavorites = nonMatchingFavoriteForId(favoriteId, state: state)
 
-        otherFavorites.append(matchingFavorite)
+        otherFavorites.append(updatedFavorite)
         return otherFavorites
     }
 

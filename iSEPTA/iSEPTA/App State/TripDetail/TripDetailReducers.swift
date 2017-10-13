@@ -24,7 +24,9 @@ struct TripDetailReducer {
         var newState = state
         switch action {
         case let action as UpdateTripDetails:
-            newState = reduceUpdateSeptaConnection(action: action, state: state)
+            newState = reduceUpdateTripDetails(action: action, state: state)
+        case let action as ClearTripDetails:
+            newState = reduceClearTripDetails(action: action, state: state)
         default:
             break
         }
@@ -32,7 +34,11 @@ struct TripDetailReducer {
         return newState
     }
 
-    static func reduceUpdateSeptaConnection(action: UpdateTripDetails, state _: TripDetailState) -> TripDetailState {
+    static func reduceUpdateTripDetails(action: UpdateTripDetails, state _: TripDetailState) -> TripDetailState {
         return TripDetailState(tripDetails: action.tripDetails)
+    }
+
+    static func reduceClearTripDetails(action: ClearTripDetails, state _: TripDetailState) -> TripDetailState {
+        return TripDetailState()
     }
 }

@@ -13,9 +13,16 @@ class TripDetailViewController: UIViewController, IdentifiableController {
 
     let viewController = ViewController.tripDetailViewController
 
-    @IBOutlet weak var label: UILabel!
+    var tripDetails: NextToArriveStop? { return store.state.tripDetailState.tripDetails }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        label.text = store.state.tripDetailState.tripDetails?.routeName
+        view.backgroundColor = SeptaColor.navBarBlue
+        guard let tripDetails = tripDetails else { return }
+    }
+
+    override func viewWillDisappear(_: Bool) {
+        let action = ClearTripDetails()
+        store.dispatch(action)
     }
 }

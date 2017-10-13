@@ -171,6 +171,7 @@
 		589A89DB1F52E6A9007329DB /* ScheduleStopEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A89DA1F52E6A9007329DB /* ScheduleStopEdit.swift */; };
 		589A89DE1F52E7E8007329DB /* ScheduleStopEditReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A89DD1F52E7E8007329DB /* ScheduleStopEditReducer.swift */; };
 		589A89E01F5304D6007329DB /* SelectAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A89DF1F5304D5007329DB /* SelectAddressViewModel.swift */; };
+		589A919B1F905CA6009B49E0 /* TripDetailState_TripDetailWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A919A1F905CA6009B49E0 /* TripDetailState_TripDetailWatcher.swift */; };
 		589BCC321F3D5068002FAEDE /* SchedulesPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589BCC311F3D5068002FAEDE /* SchedulesPresentationController.swift */; };
 		58A26D951F6EFECC005A70D3 /* AlertsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26D941F6EFECC005A70D3 /* AlertsNavigationController.swift */; };
 		58A26D991F6F10F8005A70D3 /* AlertNavigationControllerStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26D981F6F10F8005A70D3 /* AlertNavigationControllerStateProvider.swift */; };
@@ -808,6 +809,7 @@
 		589A89DA1F52E6A9007329DB /* ScheduleStopEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStopEdit.swift; sourceTree = "<group>"; };
 		589A89DD1F52E7E8007329DB /* ScheduleStopEditReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStopEditReducer.swift; sourceTree = "<group>"; };
 		589A89DF1F5304D5007329DB /* SelectAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAddressViewModel.swift; sourceTree = "<group>"; };
+		589A919A1F905CA6009B49E0 /* TripDetailState_TripDetailWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailState_TripDetailWatcher.swift; sourceTree = "<group>"; };
 		589BCC311F3D5068002FAEDE /* SchedulesPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesPresentationController.swift; sourceTree = "<group>"; };
 		58A26D941F6EFECC005A70D3 /* AlertsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsNavigationController.swift; sourceTree = "<group>"; };
 		58A26D981F6F10F8005A70D3 /* AlertNavigationControllerStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertNavigationControllerStateProvider.swift; sourceTree = "<group>"; };
@@ -1267,6 +1269,7 @@
 				588D80571F72AA8900EE1983 /* Schedule Request */,
 				58248B651F6D575A00DA2D65 /* BaseWatcher.swift */,
 				6789B78D1F8FF7E6008C6DCA /* TripDetailState_TripDetailsExistWatcher.swift */,
+				589A919A1F905CA6009B49E0 /* TripDetailState_TripDetailWatcher.swift */,
 			);
 			path = "State Watchers";
 			sourceTree = "<group>";
@@ -3365,6 +3368,7 @@
 				676B7D841F7CFA270052F016 /* FaresViewController.swift in Sources */,
 				58EB8D291F5D90CD0028A487 /* NextToArriveState.swift in Sources */,
 				5893970C1F7E60D900F3D2F8 /* WebViewController.swift in Sources */,
+				589A919B1F905CA6009B49E0 /* TripDetailState_TripDetailWatcher.swift in Sources */,
 				670C59E31F8A5CEE00CAE1AC /* FavoritesMiddleware.swift in Sources */,
 				583523991F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift in Sources */,
 				67A385771F7D4752002E01E0 /* MoreViewModel.swift in Sources */,
