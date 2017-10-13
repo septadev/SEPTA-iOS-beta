@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -63,15 +63,15 @@
             </objects>
             <point key="canvasLocation" x="128.80000000000001" y="83.208395802098963"/>
         </scene>
-        <!--Map Controller-->
+        <!--Trip Detail Map View Controller-->
         <scene sceneID="TnE-Wq-PMI">
             <objects>
-                <viewController id="rLf-ds-PN2" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zM5-X6-HpV" customClass="TripDetailMapViewController">
+                <viewController id="rLf-ds-PN2" customClass="TripDetailMapViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zM5-X6-HpV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="327"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="V33-1W-Z10">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V33-1W-Z10">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="327"/>
                                 <connections>
                                     <outlet property="delegate" destination="zM5-X6-HpV" id="16j-TT-cPw"/>
@@ -86,17 +86,16 @@
                             <constraint firstItem="V33-1W-Z10" firstAttribute="top" secondItem="aqT-SH-RCm" secondAttribute="top" id="m7j-03-FPt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aqT-SH-RCm"/>
-                        <connections>
-                            <outlet property="mapView" destination="V33-1W-Z10" id="CEl-ta-oa9"/>
-                        </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Map Controller" id="DX8-8p-99f"/>
+                    <connections>
+                        <outlet property="mapView" destination="V33-1W-Z10" id="OII-9A-uYQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M9X-Hy-3WD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="103" y="687"/>
         </scene>
-        <!--Trip Info-->
+        <!--Trip Detail Info View Controller-->
         <scene sceneID="hb8-O1-D5q">
             <objects>
                 <viewController id="0Oe-hL-0SR" customClass="TripDetailInfoViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
@@ -267,7 +266,6 @@ CenteringView</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jK5-KM-nHx"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Trip Info" id="Sbm-XG-ngi"/>
                     <connections>
                         <outlet property="DelayLabel" destination="j4f-KK-PvE" id="dHn-Ck-9Iz"/>
                         <outlet property="delayBoxView" destination="z9I-3L-gKl" id="nlS-Tw-bp2"/>
