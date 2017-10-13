@@ -21,7 +21,7 @@ class TripDetailMapViewController: UIViewController, TripDetailState_TripDetails
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.delegate = mapViewDelegate
+        mapView.delegate = nil
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +39,8 @@ class TripDetailMapViewController: UIViewController, TripDetailState_TripDetails
     func tripDetailState_TripDetailsUpdated(nextToArriveStop: NextToArriveStop) {
         drawRoute(routeId: nextToArriveStop.routeId)
         drawVehicle(nextToArriveStop: nextToArriveStop)
+        mapViewDelegate.tripDetails = nextToArriveStop
+        mapView.delegate = mapViewDelegate
     }
 
     var routeHasBeenAdded = false
