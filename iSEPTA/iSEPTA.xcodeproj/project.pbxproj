@@ -172,6 +172,9 @@
 		589A89DE1F52E7E8007329DB /* ScheduleStopEditReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A89DD1F52E7E8007329DB /* ScheduleStopEditReducer.swift */; };
 		589A89E01F5304D6007329DB /* SelectAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A89DF1F5304D5007329DB /* SelectAddressViewModel.swift */; };
 		589A919B1F905CA6009B49E0 /* TripDetailState_TripDetailWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A919A1F905CA6009B49E0 /* TripDetailState_TripDetailWatcher.swift */; };
+		589A919F1F907052009B49E0 /* TripDetailItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589A919E1F907052009B49E0 /* TripDetailItemView.xib */; };
+		589A91A11F907061009B49E0 /* TripDetailItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A91A01F907061009B49E0 /* TripDetailItemView.swift */; };
+		589A91A31F907FEC009B49E0 /* Route+Twitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A91A21F907FEC009B49E0 /* Route+Twitter.swift */; };
 		589BCC321F3D5068002FAEDE /* SchedulesPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589BCC311F3D5068002FAEDE /* SchedulesPresentationController.swift */; };
 		58A26D951F6EFECC005A70D3 /* AlertsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26D941F6EFECC005A70D3 /* AlertsNavigationController.swift */; };
 		58A26D991F6F10F8005A70D3 /* AlertNavigationControllerStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26D981F6F10F8005A70D3 /* AlertNavigationControllerStateProvider.swift */; };
@@ -810,6 +813,9 @@
 		589A89DD1F52E7E8007329DB /* ScheduleStopEditReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStopEditReducer.swift; sourceTree = "<group>"; };
 		589A89DF1F5304D5007329DB /* SelectAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAddressViewModel.swift; sourceTree = "<group>"; };
 		589A919A1F905CA6009B49E0 /* TripDetailState_TripDetailWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailState_TripDetailWatcher.swift; sourceTree = "<group>"; };
+		589A919E1F907052009B49E0 /* TripDetailItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripDetailItemView.xib; sourceTree = "<group>"; };
+		589A91A01F907061009B49E0 /* TripDetailItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailItemView.swift; sourceTree = "<group>"; };
+		589A91A21F907FEC009B49E0 /* Route+Twitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Twitter.swift"; sourceTree = "<group>"; };
 		589BCC311F3D5068002FAEDE /* SchedulesPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesPresentationController.swift; sourceTree = "<group>"; };
 		58A26D941F6EFECC005A70D3 /* AlertsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsNavigationController.swift; sourceTree = "<group>"; };
 		58A26D981F6F10F8005A70D3 /* AlertNavigationControllerStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertNavigationControllerStateProvider.swift; sourceTree = "<group>"; };
@@ -1765,6 +1771,7 @@
 				674FDBC41F57390D00CA67D2 /* Route+Color.swift */,
 				674FDBC61F577D3B00CA67D2 /* Route+Icon.swift */,
 				58FBB6671F58590F00E6532B /* Route+Title.swift */,
+				589A91A21F907FEC009B49E0 /* Route+Twitter.swift */,
 				67075FC11F578578008BB38C /* ScheduleUpdateMode.swift */,
 				67075FC31F57858C008BB38C /* ScheduleStopState.swift */,
 				67075FC51F57860E008BB38C /* ScheduleTripState.swift */,
@@ -2483,6 +2490,8 @@
 			isa = PBXGroup;
 			children = (
 				6789B7761F8FDFC8008C6DCA /* TripDetailInfoViewController.swift */,
+				589A91A01F907061009B49E0 /* TripDetailItemView.swift */,
+				589A919E1F907052009B49E0 /* TripDetailItemView.xib */,
 				6789B77D1F8FE00D008C6DCA /* NextToArriveDetailInfoViewModel.swift */,
 			);
 			path = Info;
@@ -2910,6 +2919,7 @@
 				58B278651F62AAD500663507 /* 29.kml in Resources */,
 				58B278491F62AAD500663507 /* 130.kml in Resources */,
 				58B278561F62AAD500663507 /* 19.kml in Resources */,
+				589A919F1F907052009B49E0 /* TripDetailItemView.xib in Resources */,
 				58B2785D1F62AAD500663507 /* 21.kml in Resources */,
 				58B2785F1F62AAD500663507 /* 23.kml in Resources */,
 				582F4EC31F33B1120062A546 /* favorites.storyboard in Resources */,
@@ -3161,6 +3171,7 @@
 				582F4ED81F33B1120062A546 /* SelectSchedulesViewController.swift in Sources */,
 				585CEBD61F869E2D006DCC67 /* AlertState_HasGenericAlertsWatcher.swift in Sources */,
 				58B2778B1F629FAA00663507 /* DummyData.swift in Sources */,
+				589A91A31F907FEC009B49E0 /* Route+Twitter.swift in Sources */,
 				587BC0441F6ED63900B92BB6 /* MapToAlerts.swift in Sources */,
 				58FBB66A1F58717500E6532B /* SeptaTabBarImages.swift in Sources */,
 				58126F711F631CB200A6E187 /* NextToArriveEndpointsViewModel.swift in Sources */,
@@ -3372,6 +3383,7 @@
 				670C59E31F8A5CEE00CAE1AC /* FavoritesMiddleware.swift in Sources */,
 				583523991F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift in Sources */,
 				67A385771F7D4752002E01E0 /* MoreViewModel.swift in Sources */,
+				589A91A11F907061009B49E0 /* TripDetailItemView.swift in Sources */,
 				67BC3F8D1F66AD4E001F9FE3 /* NoConnectionSectionHeader.swift in Sources */,
 				58248B6E1F6D6A3800DA2D65 /* EditFavoriteViewController.swift in Sources */,
 				676354FD1F5E255A00CA7EAB /* FilterableRoute.swift in Sources */,

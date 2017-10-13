@@ -59,6 +59,12 @@ struct NextToArriveStop {
         if let newLat = detail.latitude, let newLon = detail.longitude {
             vehicleLocationCoordinate = CLLocationCoordinate2D(latitude: newLat, longitude: newLon)
         }
+
+        if let railDetails = nextToArriveDetail as? NextToArriveRailDetails {
+            if let vehicleIds = railDetails.consist {
+                self.vehicleIds = vehicleIds
+            }
+        }
     }
 }
 

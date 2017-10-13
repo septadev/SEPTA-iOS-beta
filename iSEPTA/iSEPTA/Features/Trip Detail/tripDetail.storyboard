@@ -71,6 +71,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="327"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="aqT-SH-RCm"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M9X-Hy-3WD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -187,7 +188,7 @@ CenteringView</string>
                                                 <rect key="frame" x="0.0" y="190" width="345" height="0.0"/>
                                                 <color key="backgroundColor" red="0.28296557405239142" green="0.60414880514144897" blue="0.29739047626719484" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" id="puM-CX-zET"/>
+                                                    <constraint firstAttribute="height" placeholder="YES" id="puM-CX-zET"/>
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jf5-Lj-Zbe" userLabel="TwitterView">
@@ -200,22 +201,19 @@ CenteringView</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@SEPTA_PAO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hzg-nl-ORu" userLabel="Handle">
-                                                        <rect key="frame" x="227.5" y="14" width="81.5" height="14.5"/>
+                                                        <rect key="frame" x="232.5" y="14" width="81.5" height="14.5"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                         <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitterIcon" translatesAutoresizingMaskIntoConstraints="NO" id="A0V-Kn-5QL" userLabel="TwitterImage">
-                                                        <rect key="frame" x="314" y="5.5" width="31" height="31"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="31" id="3Ie-me-3hv"/>
-                                                            <constraint firstAttribute="height" constant="31" id="i6e-eP-uE0"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="319" y="12.5" width="21" height="17"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.92156862745098034" green="0.94117647058823528" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="A0V-Kn-5QL" secondAttribute="trailing" id="D2K-6R-omm" userLabel="TwitterImageRight"/>
+                                                    <constraint firstAttribute="trailing" secondItem="A0V-Kn-5QL" secondAttribute="trailing" constant="5" id="D2K-6R-omm" userLabel="TwitterImageRight"/>
                                                     <constraint firstItem="A0V-Kn-5QL" firstAttribute="centerY" secondItem="jf5-Lj-Zbe" secondAttribute="centerY" id="RYy-dj-G2r" userLabel="TwitterImageCenterY"/>
                                                     <constraint firstItem="6Yb-1i-cXX" firstAttribute="baseline" secondItem="Hzg-nl-ORu" secondAttribute="baseline" id="Tgs-am-gVR" userLabel="FollowUsBaseline"/>
                                                     <constraint firstAttribute="height" constant="42" id="Uy3-Za-0h0"/>
@@ -223,6 +221,9 @@ CenteringView</string>
                                                     <constraint firstItem="Hzg-nl-ORu" firstAttribute="centerY" secondItem="jf5-Lj-Zbe" secondAttribute="centerY" id="myt-Gs-wIa" userLabel="HandleCenterY"/>
                                                     <constraint firstItem="A0V-Kn-5QL" firstAttribute="leading" secondItem="Hzg-nl-ORu" secondAttribute="trailing" constant="5" id="oFT-5D-0wX" userLabel="HandleRight"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="o7D-Y6-Yv3" appends="YES" id="rJz-wP-BxC"/>
+                                                </connections>
                                             </view>
                                         </subviews>
                                     </stackView>
@@ -246,6 +247,7 @@ CenteringView</string>
                             <constraint firstAttribute="trailing" secondItem="Kor-ht-1DO" secondAttribute="trailing" id="XB1-bR-tRU" userLabel="SubtleBarRight"/>
                             <constraint firstItem="Kor-ht-1DO" firstAttribute="leading" secondItem="dWb-ZV-M90" secondAttribute="leading" id="m1z-zf-VVh" userLabel="SubtleBarLeft"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="jK5-KM-nHx"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="Sbm-XG-ngi"/>
                     <connections>
@@ -258,9 +260,15 @@ CenteringView</string>
                         <outlet property="stackView" destination="R0Z-eT-oBg" id="Fm2-TX-FRU"/>
                         <outlet property="transitModeIcon" destination="tSO-cL-Mq6" id="xFT-eh-7AQ"/>
                         <outlet property="twitterHandleLabel" destination="Hzg-nl-ORu" id="rVK-qn-6RJ"/>
+                        <outlet property="twitterView" destination="jf5-Lj-Zbe" id="FSE-Sm-bKU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GZ0-zc-DLW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="o7D-Y6-Yv3">
+                    <connections>
+                        <action selector="userTappedTwitter:" destination="0Oe-hL-0SR" id="6yl-pX-xA2"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="858" y="83"/>
         </scene>
