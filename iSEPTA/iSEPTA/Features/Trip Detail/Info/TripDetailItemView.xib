@@ -13,23 +13,23 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TripDetailItemView" customModule="Septa" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="16"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Route" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cF1-Wa-yvu" userLabel="Header">
-                    <rect key="frame" x="0.0" y="8" width="37.5" height="17"/>
+                    <rect key="frame" x="0.0" y="-1" width="37.5" height="17"/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="1 to Parx Casino" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4sp-ty-fiB" userLabel="Value">
-                    <rect key="frame" x="216" y="0.0" width="110" height="25"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="1 to Parx Casino" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4sp-ty-fiB" userLabel="Value">
+                    <rect key="frame" x="216" y="0.0" width="110" height="16"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,2,3,4," textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nkb-qL-cQg" userLabel="LightLabel">
-                    <rect key="frame" x="329" y="8" width="46" height="17"/>
+                    <rect key="frame" x="329" y="-1" width="46" height="17"/>
                     <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
                     <color key="textColor" red="0.42745098039215684" green="0.42745098039215684" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>

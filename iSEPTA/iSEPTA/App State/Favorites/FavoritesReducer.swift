@@ -122,20 +122,21 @@ struct FavoritesReducer {
 
     static func reduceUpdateNextToArriveDetailForFavorite(action: UpdateNextToArriveDetailForFavorite, state: FavoritesState) -> FavoritesState {
 
-        guard let matchingFavorite = matchingFavoriteForId(action.favoriteId, state: state) else { return state }
+        guard var matchingFavorite = matchingFavoriteForId(action.favoriteId, state: state) else { return state }
 
         var newFavorites = nonMatchingFavoriteForId(action.favoriteId, state: state)
         var newTrips = [NextToArriveTrip]()
         for trip in matchingFavorite.nextToArriveTrips {
             let start = trip.startStop
-            let transitMode = matchingFavorite.transitMode
-            if let startTripId = trip.startStop.tripId, startTripId == action.tripId {
-                var newStart = NextToArriveStop(transitMode: transitMode, routeId: start.routeId, routeName: start.routeName, tripId: start.tripId, arrivalTime: start.arrivalTime, departureTime: start.departureTime, lastStopId: start.lastStopId, lastStopName: start.lastStopName, delayMinutes: start.delayMinutes, direction: start.direction, vehicleLocationCoordinate: start.vehicleLocationCoordinate, vehicleIds: start.vehicleIds, hasRealTimeData: true, service: start.service)
+            let end = trip.endStop
+
+            if let startTripId = start.tripId, startTripId == action.tripId {
+                var newStart = start
                 newStart.addRealTimeData(nextToArriveDetail: action.realTimeArrivalDetail)
                 let newTrip = NextToArriveTrip(startStop: newStart, endStop: trip.endStop, vehicleLocation: trip.vehicleLocation, connectionLocation: trip.connectionLocation)
                 newTrips.append(newTrip)
-            } else if let endTripId = trip.endStop.tripId, endTripId == action.tripId {
-                var newEnd = NextToArriveStop(transitMode: transitMode, routeId: start.routeId, routeName: start.routeName, tripId: start.tripId, arrivalTime: start.arrivalTime, departureTime: start.departureTime, lastStopId: start.lastStopId, lastStopName: start.lastStopName, delayMinutes: start.delayMinutes, direction: start.direction, vehicleLocationCoordinate: start.vehicleLocationCoordinate, vehicleIds: start.vehicleIds, hasRealTimeData: true, service: start.service)
+            } else if let endTripId = end.tripId, endTripId == action.tripId {
+                var newEnd = end
                 newEnd.addRealTimeData(nextToArriveDetail: action.realTimeArrivalDetail)
                 let newTrip = NextToArriveTrip(startStop: trip.startStop, endStop: newEnd, vehicleLocation: trip.vehicleLocation, connectionLocation: trip.connectionLocation)
                 newTrips.append(newTrip)
@@ -143,6 +144,7 @@ struct FavoritesReducer {
                 newTrips.append(trip)
             }
         }
+        matchingFavorite.nextToArriveTrips = newTrips
         newFavorites.append(matchingFavorite)
 
         return FavoritesState(favorites: newFavorites,

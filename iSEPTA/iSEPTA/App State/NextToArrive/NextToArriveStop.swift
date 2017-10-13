@@ -26,7 +26,7 @@ struct NextToArriveStop {
     var vehicleLocationCoordinate: CLLocationCoordinate2D?
     var vehicleIds: [String]?
     private(set) var nextToArriveDetail: RealTimeArrivalDetail?
-    let hasRealTimeData: Bool
+    var hasRealTimeData: Bool
     var service: String?
 
     init(transitMode: TransitMode, routeId: String, routeName: String, tripId: Int?, arrivalTime: Date, departureTime: Date, lastStopId: Int?, lastStopName: String?, delayMinutes: Int?, direction: RouteDirectionCode?, vehicleLocationCoordinate: CLLocationCoordinate2D?, vehicleIds: [String]?, hasRealTimeData: Bool?, service: String?) {

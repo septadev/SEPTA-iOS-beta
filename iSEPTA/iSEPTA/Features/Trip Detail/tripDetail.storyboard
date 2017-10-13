@@ -115,20 +115,20 @@
                                 <rect key="frame" x="0.0" y="3" width="375" height="273"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="R0Z-eT-oBg">
-                                        <rect key="frame" x="15" y="0.0" width="345" height="222"/>
+                                        <rect key="frame" x="15" y="0.0" width="345" height="212"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y5x-qq-cih">
-                                                <rect key="frame" x="0.0" y="0.0" width="345" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="50"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="railNoFavorite" translatesAutoresizingMaskIntoConstraints="NO" id="tSO-cL-Mq6" userLabel="RouteIcon">
-                                                        <rect key="frame" x="0.0" y="15" width="19" height="30"/>
+                                                        <rect key="frame" x="0.0" y="10" width="19" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="19" id="GdU-B8-pDT"/>
                                                             <constraint firstAttribute="height" constant="30" id="o8c-Zx-4fg"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#546 to 30th Street Station" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="so5-c7-C4k" userLabel="RouteLabel">
-                                                        <rect key="frame" x="33" y="20" width="214.5" height="19.5"/>
+                                                        <rect key="frame" x="33" y="15" width="214.5" height="19.5"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                         <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -141,13 +141,13 @@
                                                     <constraint firstItem="so5-c7-C4k" firstAttribute="leading" secondItem="y5x-qq-cih" secondAttribute="leading" constant="33" id="LRF-tv-c0i" userLabel="RouteLabelLeft"/>
                                                     <constraint firstItem="tSO-cL-Mq6" firstAttribute="leading" secondItem="y5x-qq-cih" secondAttribute="leading" id="Vgs-ZD-Gkp" userLabel="RouteIconLeft"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="so5-c7-C4k" secondAttribute="trailing" constant="10" id="sJf-vT-UyM" userLabel="RouteLabelRight"/>
-                                                    <constraint firstAttribute="height" constant="60" id="wXR-Y4-Mi8"/>
+                                                    <constraint firstAttribute="height" constant="50" id="wXR-Y4-Mi8"/>
                                                 </constraints>
                                                 <string key="userLabel">
 HeaderView</string>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IM5-CB-d8D" userLabel="NextStopView">
-                                                <rect key="frame" x="0.0" y="70" width="345" height="40"/>
+                                                <rect key="frame" x="0.0" y="60" width="345" height="40"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lSE-hb-CK1">
                                                         <rect key="frame" x="78" y="11.5" width="189.5" height="17"/>
@@ -186,7 +186,7 @@ CenteringView</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9I-3L-gKl" userLabel="DelayView">
-                                                <rect key="frame" x="0.0" y="120" width="345" height="40"/>
+                                                <rect key="frame" x="0.0" y="110" width="345" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 Min Late" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4f-KK-PvE" userLabel="DelayLabel">
                                                         <rect key="frame" x="136.5" y="11.5" width="72" height="17"/>
@@ -202,15 +202,15 @@ CenteringView</string>
                                                     <constraint firstAttribute="height" constant="40" id="WIq-k7-Trb"/>
                                                 </constraints>
                                             </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="lFO-zq-3iG" userLabel="InfoStackView">
-                                                <rect key="frame" x="0.0" y="170" width="345" height="0.0"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="lFO-zq-3iG" userLabel="InfoStackView">
+                                                <rect key="frame" x="0.0" y="160" width="345" height="0.0"/>
                                                 <color key="backgroundColor" red="0.28296557405239142" green="0.60414880514144897" blue="0.29739047626719484" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" placeholder="YES" id="puM-CX-zET"/>
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jf5-Lj-Zbe" userLabel="TwitterView">
-                                                <rect key="frame" x="0.0" y="180" width="345" height="42"/>
+                                                <rect key="frame" x="0.0" y="170" width="345" height="42"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow Us!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yb-1i-cXX" userLabel="FollowUs">
                                                         <rect key="frame" x="12" y="12" width="65.5" height="17"/>
