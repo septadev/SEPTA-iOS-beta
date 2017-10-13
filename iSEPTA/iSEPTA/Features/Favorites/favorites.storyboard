@@ -227,6 +227,7 @@ TextFieldWrapper</string>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJk-bn-WxX" customClass="RedButton" customModule="Septa" customModuleProvider="target">
                                         <rect key="frame" x="38" y="304" width="299" height="40"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Will Navigate to Next To Arrive to select a favorite." label="Add a Favorite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="D2i-IB-KZC"/>
                                         </constraints>

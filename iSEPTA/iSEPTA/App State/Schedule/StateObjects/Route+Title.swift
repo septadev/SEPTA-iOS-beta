@@ -19,8 +19,8 @@ extension Route {
 
         case "BSL": return "Broad Street Line"
         case "BSO": return "Broad Street Overnight"
-        case "MFL": return "Market Frankfort Line"
-        case "MFO": return "Market Frankfort Overnight"
+        case "MFL": return "Market Frankford Line"
+        case "MFO": return "Market Frankford Overnight"
         case "NHSL": return "Norristown High Speed Line"
         default: return nil
         }

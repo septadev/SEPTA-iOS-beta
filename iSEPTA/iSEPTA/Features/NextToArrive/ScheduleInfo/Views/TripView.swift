@@ -22,11 +22,13 @@ class TripView: UIView {
         guard !chevronView.isHidden else { return }
         backgroundColor = SeptaColor.buttonHighlight
         connectionView?.backgroundColor = SeptaColor.buttonHighlight
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+        isUserInteractionEnabled = false
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.15, execute: {
             self.backgroundColor = UIColor.white
             self.connectionView?.backgroundColor = UIColor.white
             let action = ShowTripDetails(nextToArriveStop: self.nextToArriveStop)
             store.dispatch(action)
+            self.isUserInteractionEnabled = true
         })
     }
 

@@ -19,10 +19,16 @@ class TripDetailViewController: UIViewController, IdentifiableController {
         super.viewDidLoad()
         view.backgroundColor = SeptaColor.navBarBlue
         guard let tripDetails = tripDetails else { return }
+        navigationItem.title = tripDetails.transitMode.tripDetailTitle()
     }
 
     override func viewWillDisappear(_: Bool) {
         let action = ClearTripDetails()
         store.dispatch(action)
+    }
+
+    override func didMove(toParentViewController parent: UIViewController?) {
+        super.didMove(toParentViewController: parent)
+        backButtonPopped(toParentViewController: parent)
     }
 }

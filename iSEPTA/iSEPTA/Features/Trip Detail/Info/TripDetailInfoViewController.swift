@@ -51,7 +51,7 @@ class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetail
         } else if let busDetails = nextToArriveStop.nextToArriveDetail as? NextToArriveBusDetails {
             configureHeaderViewForBus(busDetails: busDetails)
             configureDelayViewForBus(busDetails: busDetails)
-            configureNextStopViewForBus(busDetails: busDetails)
+            configureCarsForBus(busDetails: busDetails)
         } else {
             configureHeaderViewForNoDetail(nextToArriveStop: nextToArriveStop)
             configureDelayViewForNoDetail(nextToArriveStop: nextToArriveStop)
@@ -61,6 +61,7 @@ class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetail
         if nextToArriveStop.transitMode.useRailForDetails() {
 
         } else if nextToArriveStop.transitMode.useBusForDetails() {
+            configureNextStopViewForBus()
         }
     }
 
@@ -109,14 +110,14 @@ class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetail
     // MARK: - Next Stop View
 
     func configureNextStopViewForRail(railDetails: NextToArriveRailDetails) {
-        if let destinationStation = railDetails.destinationStation {
-            nextStopStationNameLabel.text = destinationStation
+        if let nextstopStation = railDetails.nextstopStation {
+            nextStopStationNameLabel.text = nextstopStation
         } else {
             nextStopStationNameLabel.text = "No data available"
         }
     }
 
-    func configureNextStopViewForBus(busDetails _: NextToArriveBusDetails) {
+    func configureNextStopViewForBus() {
         infoStackView.removeSubview(subview: nextStopView)
     }
 
@@ -154,6 +155,22 @@ class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetail
         itemView.lightLabel.text = vehicleIds.joined(separator: ", ")
 
         infoStackView.addArrangedSubview(itemView)
+    }
+
+    func configureCarsForBus(busDetails: NextToArriveBusDetails) {
+        if let vehicleId = busDetails.vehicleid {
+            let itemView = newItemView()
+            itemView.headerLabel.text = "Vehicle Number:"
+            itemView.valueLabel.text = vehicleId
+            infoStackView.addArrangedSubview(itemView)
+        }
+
+        if let blockId = busDetails.blockid {
+            let itemView = newItemView()
+            itemView.headerLabel.text = "Block Number:"
+            itemView.valueLabel.text = blockId
+            infoStackView.addArrangedSubview(itemView)
+        }
     }
 
     func configureService(nextToArriveStop: NextToArriveStop) {

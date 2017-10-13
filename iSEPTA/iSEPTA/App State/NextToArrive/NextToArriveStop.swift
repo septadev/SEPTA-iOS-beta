@@ -64,6 +64,15 @@ struct NextToArriveStop {
             if let vehicleIds = railDetails.consist {
                 self.vehicleIds = vehicleIds
             }
+            if let lastStopName = railDetails.destinationStation {
+                self.lastStopName = lastStopName
+            }
+        }
+
+        if let busDetails = nextToArriveDetail as? NextToArriveBusDetails {
+            if let lastStopName = busDetails.destinationStation {
+                self.lastStopName = lastStopName
+            }
         }
     }
 }

@@ -36,6 +36,8 @@ class TransitModeToolbarView: UIView {
             transitModeIconImageView.image = UIImage(named: transitMode.imageName())
             transitModeIconImageView.highlightedImage = UIImage(named: transitMode.highlightedImageName())
             transitModeLabel.text = transitMode.name()
+            isAccessibilityElement = true
+            accessibilityLabel = transitMode.name()
         }
     }
 }
