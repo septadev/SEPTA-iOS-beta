@@ -31,7 +31,7 @@ class TripHeaderView: UIView {
     @IBAction func didTapAlertView(_: Any) {
         if alertStackView.subviews.count > 0 {
 
-            Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(twoSecondTimerFired(timer:)), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(twoSecondTimerFired(timer:)), userInfo: nil, repeats: false)
             activityIndicator.startAnimating()
             alertViewDelegate?.didTapAlertView(nextToArriveStop: nextToArriveStop, transitMode: transitMode)
         }

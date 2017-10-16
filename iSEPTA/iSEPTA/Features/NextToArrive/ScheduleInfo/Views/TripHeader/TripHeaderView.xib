@@ -44,9 +44,6 @@
                         </view>
                     </subviews>
                     <gestureRecognizers/>
-                    <connections>
-                        <outletCollection property="gestureRecognizers" destination="2EP-ra-GL2" appends="YES" id="Elu-7D-78M"/>
-                    </connections>
                 </stackView>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="FNg-qi-ele">
                     <rect key="frame" x="198" y="17" width="20" height="20"/>
@@ -72,6 +69,7 @@
                 <outlet property="alertStackView" destination="HCf-Ad-m91" id="ZS3-V5-uDD"/>
                 <outlet property="lineNameLabel" destination="AJ1-G3-QIM" id="vyu-Zr-nee"/>
                 <outlet property="pillView" destination="QfJ-z8-RqF" id="TYP-rz-qVw"/>
+                <outletCollection property="gestureRecognizers" destination="2EP-ra-GL2" appends="YES" id="jlH-6j-8vN"/>
             </connections>
             <point key="canvasLocation" x="29.5" y="-260"/>
         </view>
