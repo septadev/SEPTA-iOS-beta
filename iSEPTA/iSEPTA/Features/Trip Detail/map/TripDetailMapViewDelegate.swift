@@ -35,13 +35,19 @@ class TripDetailMapViewDelegate: NSObject, MKMapViewDelegate {
         }
     }
 
-    func retrieveVehicleAnnotationView(annotation: VehicleLocationAnnotation, mapView: MKMapView) -> MKAnnotationView {
+    func retrieveVehicleAnnotationView(annotation: VehicleLocationAnnotation, mapView: MKMapView) -> MKAnnotationView? {
         let vehicleId = "vehicle"
         let annotationView: MKAnnotationView
         if let vehicleView = mapView.dequeueReusableAnnotationView(withIdentifier: vehicleId){
             annotationView = vehicleView
         } else {
-            annotationView = buildNewVehicleAnnotationView(annotation: annotation, vehicleViewId: vehicleId)
+            let maybeAnnotionView = buildNewVehicleAnnotationView(annotation: annotation, vehicleViewId: vehicleId)
+            if let newAnnotionView = maybeAnnotionView {
+                annotationView = newAnnotionView
+            } else {
+                return nil
+            }
+            
         }
 
         buildVehicleTitle(vehicleLocation: annotation.vehicleLocation, calloutView: annotationView.detailCalloutAccessoryView)
@@ -144,8 +150,8 @@ class TripDetailMapViewDelegate: NSObject, MKMapViewDelegate {
         return delayString
     }
 
-    func buildNewVehicleAnnotationView(annotation: VehicleLocationAnnotation, vehicleViewId: String) -> MKAnnotationView {
-        guard let transitMode = tripDetails?.transitMode else { return MKAnnotationView() }
+    func buildNewVehicleAnnotationView(annotation: VehicleLocationAnnotation, vehicleViewId: String) -> MKAnnotationView? {
+        let transitMode = annotation.vehicleLocation.nextToArriveStop.transitMode
         let vehicleView = MKAnnotationView(annotation: annotation, reuseIdentifier: vehicleViewId)
         vehicleView.image = transitMode.mapPin()
         vehicleView.canShowCallout = true

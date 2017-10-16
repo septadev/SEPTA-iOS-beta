@@ -13,7 +13,11 @@ import SeptaSchedule
 
 class TripDetailMapViewController: UIViewController, TripDetailState_TripDetailsWatcherDelegate {
 
-    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var mapView: MKMapView! {
+        didSet {
+            mapView.tintColor = SeptaColor.navBarBlue
+        }
+    }
 
     var tripDetailWatcher: TripDetailState_TripDetailsWatcher?
     var vehiclesAnnotationsAdded = [VehicleLocationAnnotation]()
@@ -21,7 +25,7 @@ class TripDetailMapViewController: UIViewController, TripDetailState_TripDetails
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.delegate = nil
+        mapView.delegate = mapViewDelegate
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -37,10 +41,10 @@ class TripDetailMapViewController: UIViewController, TripDetailState_TripDetails
     }
 
     func tripDetailState_TripDetailsUpdated(nextToArriveStop: NextToArriveStop) {
+
         drawRoute(routeId: nextToArriveStop.routeId)
         drawVehicle(nextToArriveStop: nextToArriveStop)
         mapViewDelegate.tripDetails = nextToArriveStop
-        mapView.delegate = mapViewDelegate
     }
 
     var routeHasBeenAdded = false
