@@ -241,7 +241,7 @@ extension BaseNextToArriveInfoViewModel { // Table View
     }
 
     func generateOnTimeString(stop: NextToArriveStop, hasVehicleLocation _: Bool) -> String? {
-        guard let tripDelayMinutes = stop.delayMinutes, stop.hasRealTimeData else { return "Scheduled" }
+        guard let tripDelayMinutes = stop.delayMinutes else { return "Scheduled" }
         let delayString = String(tripDelayMinutes)
         if tripDelayMinutes > 0 {
             return "\(delayString) min late"
