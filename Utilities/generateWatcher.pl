@@ -4,9 +4,9 @@ use String::Util  ':all';
 use Modern::Perl;
 use Data::Dumper; 
 
-my $type = q| Bool   |;
+my $type = q| Favorite?   |;
 
-my $keyPath = q|  tripDetailState.tripDetailsExist |;
+my $keyPath = q|  favoriteState.nextToArriveFavorite |;
 
 
 

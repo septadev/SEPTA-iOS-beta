@@ -354,6 +354,7 @@
 		58C2A0691F38AA1B00F0D6CA /* ScheduleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0681F38AA1B00F0D6CA /* ScheduleData.swift */; };
 		58C7E1561F7AC3C000C133C5 /* VehicleLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7E1551F7AC3C000C133C5 /* VehicleLocation.swift */; };
 		58C9D3011F703735008FDE40 /* LoggingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C9D3001F703735008FDE40 /* LoggingMiddleware.swift */; };
+		58CBEE871F953B5A00F26A15 /* FavoriteState_NextToArriveFavoriteWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CBEE861F953B5A00F26A15 /* FavoriteState_NextToArriveFavoriteWatcher.swift */; };
 		58DB04A31F54D7F2005CC850 /* SeptaSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58ACEAE31F3A9A9B00DC2836 /* SeptaSchedule.framework */; };
 		58DB04A51F558DD0005CC850 /* SearchRoutesModalHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DB04A41F558DD0005CC850 /* SearchRoutesModalHeaderViewController.swift */; };
 		58DB10F41F3B8CCF00191AED /* ScheduleDataReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DB10F31F3B8CCF00191AED /* ScheduleDataReducer.swift */; };
@@ -1001,6 +1002,7 @@
 		58C7E1481F7A982000C133C5 /* trolley-splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trolley-splash.png"; sourceTree = "<group>"; };
 		58C7E1551F7AC3C000C133C5 /* VehicleLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleLocation.swift; sourceTree = "<group>"; };
 		58C9D3001F703735008FDE40 /* LoggingMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingMiddleware.swift; sourceTree = "<group>"; };
+		58CBEE861F953B5A00F26A15 /* FavoriteState_NextToArriveFavoriteWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteState_NextToArriveFavoriteWatcher.swift; sourceTree = "<group>"; };
 		58D9C3F01F3335BB002BE2E8 /* iSEPTA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSEPTA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D9C4071F3335BB002BE2E8 /* iSEPTATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iSEPTATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D9C40D1F3335BB002BE2E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -2374,6 +2376,7 @@
 				58248B6B1F6D5B6900DA2D65 /* FavoritesState_FavoritesExistWatcher.swift */,
 				58B5B1041F6DB00000A3DAFB /* FavoritesState_FavoritesWatcher.swift */,
 				58248B7C1F6D992900DA2D65 /* FavoriteToEditWatcher.swift */,
+				58CBEE861F953B5A00F26A15 /* FavoriteState_NextToArriveFavoriteWatcher.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -3376,6 +3379,7 @@
 				58A26DA41F6F30B2005A70D3 /* Route+Displayable.swift in Sources */,
 				58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */,
 				581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */,
+				58CBEE871F953B5A00F26A15 /* FavoriteState_NextToArriveFavoriteWatcher.swift in Sources */,
 				586C1CF11F69B3EE0023607C /* DatabaseMover.swift in Sources */,
 				679924051F6E01BD00FD5691 /* MoreButton.swift in Sources */,
 				580A35691F6A2B0A000FCA82 /* FavoriteHeaderCell.swift in Sources */,

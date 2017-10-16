@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-class NextToArriveDetailViewController: UIViewController, IdentifiableController, UIGestureRecognizerDelegate {
+class NextToArriveDetailViewController: UIViewController, IdentifiableController, UIGestureRecognizerDelegate, FavoriteState_NextToArriveFavoriteWatcherDelegate {
     let viewController: ViewController = .nextToArriveDetailController
-
+    var nextToArriveFavoriteWatcher: FavoriteState_NextToArriveFavoriteWatcher?
     @IBOutlet var infoViewHeightCollapsedConstraint: NSLayoutConstraint!
     @IBOutlet var nextToArriveInfoTableScrollableToggle: ScrollableTableViewToggle!
     @IBOutlet var infoViewHeightExpandedConstraint: NSLayoutConstraint!
@@ -63,10 +63,17 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
     }
 
     func configureNavigationItemTitle() {
-        if store.state.targetForScheduleActions() == .favorites, let favorite = store.state.favoritesState.nextToArriveFavorite {
-            navigationItem.title = favorite.favoriteName
+        if store.state.targetForScheduleActions() == .favorites {
+            nextToArriveFavoriteWatcher = FavoriteState_NextToArriveFavoriteWatcher()
+            nextToArriveFavoriteWatcher?.delegate = self
         } else {
             navigationItem.title = store.state.nextToArriveState.scheduleState.scheduleRequest.transitMode.nextToArriveDetailTitle()
+        }
+    }
+
+    func favoriteState_NextToArriveFavoriteUpdated(favorite: Favorite?) {
+        if let favorite = favorite {
+            navigationItem.title = favorite.favoriteName
         }
     }
 
