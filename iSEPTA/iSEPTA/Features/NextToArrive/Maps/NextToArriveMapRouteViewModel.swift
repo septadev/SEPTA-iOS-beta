@@ -84,18 +84,25 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
     }
 
     func handleVehicleLocations(trips: [NextToArriveTrip]) {
-        let allCurrentStops = currentTrips.map({ $0.startStop }) + currentTrips.map({ $0.endStop })
-        var allNewStops = trips.map({ $0.startStop }) + trips.map({ $0.endStop })
-        allNewStops = allNewStops.filter { $0.vehicleLocationCoordinate != nil }
-        let vehicleLocations: [VehicleLocation] = allNewStops.map { newStop in
-            let currentLocationCoordinate = allCurrentStops.filter({
-                guard let tripId = $0.tripId, let newStopTripId = newStop.tripId else { return false }
-                return tripId == newStopTripId
-
-            }).first?.vehicleLocationCoordinate
-            return VehicleLocation(location: newStop.vehicleLocationCoordinate, lastLocation: currentLocationCoordinate, nextToArriveStop: newStop)
+        let connectionTrips = trips.filter {
+            guard let startTripId = $0.startStop.tripId, let endTripId = $0.endStop.tripId else { return false }
+            return startTripId != endTripId
         }
-        delegate.drawVehicleLocations(vehicleLocations)
+        let noConnectionTrips = trips.filter {
+            guard let startTripId = $0.startStop.tripId, let endTripId = $0.endStop.tripId else { return false }
+            return startTripId == endTripId
+        }
+
+        let tripLegs =
+            connectionTrips.map { $0.startStop }
+            + connectionTrips.map { $0.endStop }
+            + noConnectionTrips.map { $0.startStop }
+
+        let mappableVehicles: [VehicleLocation] = tripLegs
+            .filter({ $0.vehicleLocationCoordinate != nil })
+            .map { return VehicleLocation(location: $0.vehicleLocationCoordinate!, nextToArriveStop: $0) }
+
+        delegate.drawVehicleLocations(mappableVehicles)
     }
 }
 

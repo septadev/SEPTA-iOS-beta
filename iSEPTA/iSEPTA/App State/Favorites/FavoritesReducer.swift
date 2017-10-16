@@ -127,22 +127,17 @@ struct FavoritesReducer {
         var newFavorites = nonMatchingFavoriteForId(action.favoriteId, state: state)
         var newTrips = [NextToArriveTrip]()
         for trip in matchingFavorite.nextToArriveTrips {
-            let start = trip.startStop
-            let end = trip.endStop
+            var start = trip.startStop
+            var end = trip.endStop
 
             if let startTripId = start.tripId, startTripId == action.tripId {
-                var newStart = start
-                newStart.addRealTimeData(nextToArriveDetail: action.realTimeArrivalDetail)
-                let newTrip = NextToArriveTrip(startStop: newStart, endStop: trip.endStop, vehicleLocation: trip.vehicleLocation, connectionLocation: trip.connectionLocation)
-                newTrips.append(newTrip)
+                start.addRealTimeData(nextToArriveDetail: action.realTimeArrivalDetail)
             } else if let endTripId = end.tripId, endTripId == action.tripId {
-                var newEnd = end
-                newEnd.addRealTimeData(nextToArriveDetail: action.realTimeArrivalDetail)
-                let newTrip = NextToArriveTrip(startStop: trip.startStop, endStop: newEnd, vehicleLocation: trip.vehicleLocation, connectionLocation: trip.connectionLocation)
-                newTrips.append(newTrip)
-            } else {
-                newTrips.append(trip)
+                end.addRealTimeData(nextToArriveDetail: action.realTimeArrivalDetail)
             }
+
+            let newTrip = NextToArriveTrip(startStop: start, endStop: end, vehicleLocation: trip.vehicleLocation, connectionLocation: trip.connectionLocation)
+            newTrips.append(newTrip)
         }
         matchingFavorite.nextToArriveTrips = newTrips
         newFavorites.append(matchingFavorite)
