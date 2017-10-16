@@ -30,6 +30,8 @@ class ScheduleTransitModesToolBarViewController: UIViewController, StoreSubscrib
         for transitMode in TransitMode.displayOrder() {
             let toolbarView: TransitModeToolbarView = UIView.instanceFromNib(named: "TransitModeToolBarView")
             toolbarView.transitMode = transitMode
+            toolbarView.isAccessibilityElement = true
+            toolbarView.accessibilityLabel = transitMode.name()
             transitModesToolbarElements.append(toolbarView)
             stackView.addArrangedSubview(toolbarView)
         }

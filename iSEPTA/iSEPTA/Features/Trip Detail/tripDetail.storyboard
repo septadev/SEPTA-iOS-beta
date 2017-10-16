@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -63,7 +63,7 @@
             </objects>
             <point key="canvasLocation" x="128.80000000000001" y="83.208395802098963"/>
         </scene>
-        <!--Trip Detail Map View Controller-->
+        <!--Map Controller-->
         <scene sceneID="TnE-Wq-PMI">
             <objects>
                 <viewController id="rLf-ds-PN2" customClass="TripDetailMapViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
@@ -71,7 +71,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="327"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V33-1W-Z10">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="V33-1W-Z10">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="327"/>
                                 <connections>
                                     <outlet property="delegate" destination="zM5-X6-HpV" id="16j-TT-cPw"/>
@@ -87,15 +87,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aqT-SH-RCm"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Map Controller" id="DX8-8p-99f"/>
                     <connections>
-                        <outlet property="mapView" destination="V33-1W-Z10" id="OII-9A-uYQ"/>
+                        <outlet property="mapView" destination="V33-1W-Z10" id="pzE-YD-oGV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M9X-Hy-3WD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="103" y="687"/>
         </scene>
-        <!--Trip Detail Info View Controller-->
+        <!--Trip Info-->
         <scene sceneID="hb8-O1-D5q">
             <objects>
                 <viewController id="0Oe-hL-0SR" customClass="TripDetailInfoViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
@@ -114,7 +115,7 @@
                                 <rect key="frame" x="0.0" y="3" width="375" height="273"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="R0Z-eT-oBg">
-                                        <rect key="frame" x="15" y="0.0" width="345" height="242"/>
+                                        <rect key="frame" x="15" y="0.0" width="345" height="222"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y5x-qq-cih">
                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="60"/>
@@ -146,10 +147,10 @@
 HeaderView</string>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IM5-CB-d8D" userLabel="NextStopView">
-                                                <rect key="frame" x="0.0" y="70" width="345" height="60"/>
+                                                <rect key="frame" x="0.0" y="70" width="345" height="40"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lSE-hb-CK1">
-                                                        <rect key="frame" x="78" y="21.5" width="189.5" height="17"/>
+                                                        <rect key="frame" x="78" y="11.5" width="189.5" height="17"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Stop:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9A-Wx-uXH" userLabel="NextStop">
                                                                 <rect key="frame" x="0.0" y="-0.5" width="67" height="17"/>
@@ -179,13 +180,13 @@ CenteringView</string>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="0.089999999999999997" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="50N-1q-o5z" userLabel="NextStopHeight"/>
+                                                    <constraint firstAttribute="height" constant="40" id="50N-1q-o5z" userLabel="NextStopHeight"/>
                                                     <constraint firstItem="lSE-hb-CK1" firstAttribute="centerY" secondItem="IM5-CB-d8D" secondAttribute="centerY" id="jwK-8h-KnL" userLabel="CenteringViewCenterY"/>
                                                     <constraint firstItem="lSE-hb-CK1" firstAttribute="centerX" secondItem="IM5-CB-d8D" secondAttribute="centerX" id="xUv-if-7AB" userLabel="CenteringViewCenter"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9I-3L-gKl" userLabel="DelayView">
-                                                <rect key="frame" x="0.0" y="140" width="345" height="40"/>
+                                                <rect key="frame" x="0.0" y="120" width="345" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 Min Late" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4f-KK-PvE" userLabel="DelayLabel">
                                                         <rect key="frame" x="136.5" y="11.5" width="72" height="17"/>
@@ -202,14 +203,14 @@ CenteringView</string>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="lFO-zq-3iG" userLabel="InfoStackView">
-                                                <rect key="frame" x="0.0" y="190" width="345" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="170" width="345" height="0.0"/>
                                                 <color key="backgroundColor" red="0.28296557405239142" green="0.60414880514144897" blue="0.29739047626719484" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" placeholder="YES" id="puM-CX-zET"/>
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jf5-Lj-Zbe" userLabel="TwitterView">
-                                                <rect key="frame" x="0.0" y="200" width="345" height="42"/>
+                                                <rect key="frame" x="0.0" y="180" width="345" height="42"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow Us!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yb-1i-cXX" userLabel="FollowUs">
                                                         <rect key="frame" x="12" y="12" width="65.5" height="17"/>
@@ -266,6 +267,7 @@ CenteringView</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jK5-KM-nHx"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Trip Info" id="Sbm-XG-ngi"/>
                     <connections>
                         <outlet property="DelayLabel" destination="j4f-KK-PvE" id="dHn-Ck-9Iz"/>
                         <outlet property="delayBoxView" destination="z9I-3L-gKl" id="nlS-Tw-bp2"/>

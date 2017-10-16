@@ -52,7 +52,6 @@ class TripDetailMapViewController: UIViewController, TripDetailState_TripDetails
         guard !routeHasBeenAdded else { return }
         guard let url = locateKMLFile(routeId: routeId) else { return }
         parseKMLForRoute(url: url, routeId: routeId)
-        routeHasBeenAdded = true
     }
 
     func parseKMLForRoute(url: URL, routeId: String) {
@@ -61,6 +60,7 @@ class TripDetailMapViewController: UIViewController, TripDetailState_TripDetails
             guard let overlays = kml.overlays as? [KMLOverlayPolyline] else { return }
             if let routeOverlays = self?.mapOverlaysToRouteOverlays(routeId: routeId, overlays: overlays) {
                 self?.mapView.addOverlays(routeOverlays)
+                self?.routeHasBeenAdded = true
             }
         }
     }
@@ -98,13 +98,19 @@ class TripDetailMapViewController: UIViewController, TripDetailState_TripDetails
 
         mapView.addAnnotation(annotation)
         vehiclesAnnotationsAdded.append(annotation)
-        showAnotations()
+
+        let visibleMapRect = mapView.visibleMapRect
+        let annotationPoint = MKMapPointForCoordinate(annotation.coordinate)
+        let annotationRect = MKMapRect(origin: annotationPoint, size: MKMapSize(width: 1, height: 1))
+        if !MKMapRectContainsRect(visibleMapRect, annotationRect) {
+            showAnotations()
+        }
     }
 
     func showAnotations() {
         mapView.showAnnotations(mapView.annotations, animated: true)
 
-        mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0), animated: true)
+        //        mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0), animated: true)
     }
 
     func clearExistingVehicleLocations() {

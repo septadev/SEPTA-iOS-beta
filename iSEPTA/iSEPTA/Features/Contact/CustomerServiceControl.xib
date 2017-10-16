@@ -30,12 +30,12 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tm-H6-ESo" userLabel="PhoneNumber">
-                    <rect key="frame" x="217.5" y="33" width="114.5" height="21"/>
+                    <rect key="frame" x="217.5" y="33" width="125" height="21"/>
                     <attributedString key="attributedText">
                         <fragment content="804-647-0920">
                             <attributes>
                                 <color key="NSColor" red="0.035294117647058823" green="0.73333333333333328" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
-                                <font key="NSFont" size="18" name="SanFranciscoText-Light"/>
+                                <font key="NSFont" metaFont="system" size="18"/>
                                 <font key="NSOriginalFont" size="18" name="Helvetica"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 <integer key="NSUnderline" value="1"/>
