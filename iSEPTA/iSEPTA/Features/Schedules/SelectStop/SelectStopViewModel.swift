@@ -151,7 +151,7 @@ extension SelectStopViewModel: UITextFieldDelegate {
         filteredStops = allFilterableStops.filter {
             guard filterString.characters.count > 0 else { return true }
 
-            return $0.filterString.contains(filterString)
+            return $0.filterstringComponents.filter({ $0.starts(with: filterString) }).count > 0
         }
         DispatchQueue.main.async { [weak self] in
             guard let strongSelf = self else { return }

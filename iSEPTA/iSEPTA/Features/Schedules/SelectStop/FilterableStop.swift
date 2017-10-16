@@ -11,6 +11,10 @@ import SeptaSchedule
 
 struct FilterableStop {
     let filterString: String
+    var filterstringComponents: [String] {
+        return filterString.components(separatedBy: " ")
+    }
+
     let sortString: String
     let stop: Stop
 

@@ -11,6 +11,10 @@ import SeptaSchedule
 
 struct FilterableRoute {
     let filterString: String
+    var filterstringComponents: [String] {
+        return filterString.components(separatedBy: " ")
+    }
+
     let sortString: String
     let route: Route
 
@@ -26,7 +30,7 @@ struct FilterableRoute {
         } else {
             sortString = "z\(route.routeId)"
         }
-        filterString = (route.routeId + route.routeLongName).lowercased()
+        filterString = (route.routeId + " " + route.routeShortName).lowercased()
         self.route = route
     }
 }

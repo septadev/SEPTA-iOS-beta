@@ -11,10 +11,13 @@ import SeptaSchedule
 
 extension Route {
     public func shortNameOverrideForRoute(transitMode: TransitMode) -> String? {
-
-        if transitMode == .bus {
+        switch transitMode {
+        case .bus, .trolley:
             return "\(routeId): \(routeShortName)"
+        default:
+            break
         }
+
         switch routeId {
 
         case "BSL": return "Broad Street Line"
