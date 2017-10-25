@@ -36,7 +36,13 @@ class TripView: UIView {
     @IBOutlet weak var chevronView: LittleBlueChevronButton!
     @IBOutlet weak var departingWhenLabel: UILabel!
     @IBOutlet weak var startStopLabel: UILabel!
-    @IBOutlet weak var onTimeLabel: UILabel!
+    @IBOutlet weak var onTimeLabel: UILabel! {
+        
+        didSet {
+            onTimeLabel.text = "Scheduled"
+            
+        }
+    }
     @IBOutlet weak var endStopLabel: UILabel!
 
     weak var connectionView: ConnectionView?
