@@ -30,7 +30,25 @@ class FavoritesViewController: UIViewController, IdentifiableController {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 18))
         footerView.backgroundColor = UIColor.clear
         tableView.tableFooterView = footerView
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(navigateToNextToArrive))
     }
+    
+@objc    func navigateToNextToArrive(){
+    let stackState = NavigationStackState(viewControllers: [.nextToArriveController], modalViewController: nil)
+    
+    let viewStackAction = InitializeNavigationState(navigationController: .nextToArrive, navigationStackState: stackState, description: "Setting Navigation Stack State prior to moving from favorites to Next To Arrive")
+    store.dispatch(viewStackAction)
+    
+    
+    let action = SwitchTabs(activeNavigationController: .nextToArrive, description: "Jumping to Next To Arrive From Favorites")
+        store.dispatch(action )
+    
+   
+    
+        
+    }
+    
+    
 }
 
 extension FavoritesViewController { // refresh timer
