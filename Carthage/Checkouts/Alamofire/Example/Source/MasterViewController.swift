@@ -29,7 +29,7 @@ class MasterViewController: UITableViewController {
 
     @IBOutlet weak var titleImageView: UIImageView!
 
-    var detailViewController: DetailViewController?
+    var detailViewController: DetailViewController? = nil
     var objects = NSMutableArray()
 
     // MARK: - View Lifecycle
@@ -48,7 +48,8 @@ class MasterViewController: UITableViewController {
 
             if
                 let navigationController = controllers.last as? UINavigationController,
-                let topViewController = navigationController.topViewController as? DetailViewController {
+                let topViewController = navigationController.topViewController as? DetailViewController
+            {
                 detailViewController = topViewController
             }
         }
@@ -56,10 +57,11 @@ class MasterViewController: UITableViewController {
 
     // MARK: - UIStoryboardSegue
 
-    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if
             let navigationController = segue.destination as? UINavigationController,
-            let detailViewController = navigationController.topViewController as? DetailViewController {
+            let detailViewController = navigationController.topViewController as? DetailViewController
+        {
             func requestForSegue(_ segue: UIStoryboardSegue) -> Request? {
                 switch segue.identifier! {
                 case "GET":
@@ -92,3 +94,4 @@ class MasterViewController: UITableViewController {
         }
     }
 }
+

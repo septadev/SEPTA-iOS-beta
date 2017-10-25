@@ -5,7 +5,7 @@ internal func dispatchAsync(execute work: @escaping @convention(block) () -> Swi
 }
 
 internal func dispatchUserInitiatedAsync
-(execute work: @escaping @convention(block) () -> Swift.Void) {
+    (execute work: @escaping @convention(block) () -> Swift.Void) {
     DispatchQueue.global(qos: .userInitiated).async(execute: work)
 }
 

@@ -5,6 +5,7 @@ import UIKit
 
 private let dummy = 1_234_765
 
+
 class UIViewControllerTests: XCTestCase {
 
     func test_rejects_if_vc_has_no_promise_property() {
@@ -74,7 +75,7 @@ class UIViewControllerTests: XCTestCase {
         let ex = expectation(description: "")
         let nc = UINavigationController()
         let my = MockViewController()
-        my.promise = after(interval: 0.1).then { dummy }
+        my.promise = after(interval: 0.1).then{ dummy }
         nc.viewControllers = [my]
         rootvc.promise(nc, animate: []).then { (x: Int) -> Void in
             XCTAssertTrue(my.appeared)
@@ -85,12 +86,14 @@ class UIViewControllerTests: XCTestCase {
     }
 }
 
+
+
 private class MockViewController: UIViewController, Promisable {
-    @objc var promise: AnyObject!
+    @objc var promise: AnyObject! = nil
 
     var appeared = false
 
-    fileprivate override func viewDidAppear(_: Bool) {
+    fileprivate override func viewDidAppear(_ animated: Bool) {
         appeared = true
     }
 }

@@ -18,37 +18,37 @@ class UIImagePickerControllerTests: XCTestCase {
         XCTAssertFalse(value)
     }
 
-    #if !os(tvOS)
-        func test_rejects_when_cancelled() {
-            let app = XCUIApplication()
-            let table = app.tables
-            table.cells.staticTexts["1"].tap()
-            table.cells.element(boundBy: 0).tap()
-            app.navigationBars.buttons["Cancel"].tap()
+#if !os(tvOS)
+    func test_rejects_when_cancelled() {
+        let app = XCUIApplication()
+        let table = app.tables
+        table.cells.staticTexts["1"].tap()
+        table.cells.element(boundBy: 0).tap()
+        app.navigationBars.buttons["Cancel"].tap()
 
-            XCTAssertTrue(value)
-        }
+        XCTAssertTrue(value)
+    }
 
-        func test_fulfills_with_edited_image() {
-            let app = XCUIApplication()
-            app.tables.cells.staticTexts["2"].tap()
-            app.tables.children(matching: .cell).element(boundBy: 1).tap()
-            app.collectionViews.children(matching: .cell).element(boundBy: 0).tap()
+    func test_fulfills_with_edited_image() {
+        let app = XCUIApplication()
+        app.tables.cells.staticTexts["2"].tap()
+        app.tables.children(matching: .cell).element(boundBy: 1).tap()
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).tap()
 
-            // XCUITesting fails to tap this button, hence this test disabled
-            app.buttons["Choose"].tap()
+        // XCUITesting fails to tap this button, hence this test disabled
+        app.buttons["Choose"].tap()
 
-            XCTAssertTrue(value)
-        }
+        XCTAssertTrue(value)
+    }
 
-        func test_fulfills_with_image() {
-            let app = XCUIApplication()
-            let tablesQuery = app.tables
-            tablesQuery.staticTexts["3"].tap()
-            tablesQuery.children(matching: .cell).element(boundBy: 1).tap()
-            app.collectionViews.children(matching: .cell).element(boundBy: 0).tap()
+    func test_fulfills_with_image() {
+        let app = XCUIApplication()
+        let tablesQuery = app.tables
+        tablesQuery.staticTexts["3"].tap()
+        tablesQuery.children(matching: .cell).element(boundBy: 1).tap()
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).tap()
 
-            XCTAssertTrue(value)
-        }
-    #endif
+        XCTAssertTrue(value)
+    }
+#endif
 }

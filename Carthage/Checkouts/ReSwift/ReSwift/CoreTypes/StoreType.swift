@@ -48,8 +48,8 @@ public protocol StoreType: DispatchingStoreType {
 
      - parameter subscriber: Subscriber that will receive store updates
      - parameter transform: A closure that receives a simple subscription and can return a
-     transformed subscription. Subscriptions can be transformed to only select a subset of the
-     state, or to skip certain state updates.
+       transformed subscription. Subscriptions can be transformed to only select a subset of the
+       state, or to skip certain state updates.
      */
     func subscribe<SelectedState, S: StoreSubscriber>(
         _ subscriber: S, transform: ((Subscription<State>) -> Subscription<SelectedState>)?
@@ -76,14 +76,14 @@ public protocol StoreType: DispatchingStoreType {
 
      ```
      func deleteNote(noteID: Int) -> ActionCreator {
-     return { state, store in
-     // only delete note if editing is enabled
-     if (state.editingEnabled == true) {
-     return NoteDataAction.DeleteNote(noteID)
-     } else {
-     return nil
-     }
-     }
+        return { state, store in
+            // only delete note if editing is enabled
+            if (state.editingEnabled == true) {
+                return NoteDataAction.DeleteNote(noteID)
+            } else {
+                return nil
+            }
+        }
      }
      ```
 
@@ -134,14 +134,14 @@ public protocol StoreType: DispatchingStoreType {
 
      ```
      func deleteNote(noteID: Int) -> ActionCreator {
-     return { state, store in
-     // only delete note if editing is enabled
-     if (state.editingEnabled == true) {
-     return NoteDataAction.DeleteNote(noteID)
-     } else {
-     return nil
-     }
-     }
+        return { state, store in
+            // only delete note if editing is enabled
+            if (state.editingEnabled == true) {
+                return NoteDataAction.DeleteNote(noteID)
+            } else {
+                return nil
+            }
+        }
      }
      ```
 

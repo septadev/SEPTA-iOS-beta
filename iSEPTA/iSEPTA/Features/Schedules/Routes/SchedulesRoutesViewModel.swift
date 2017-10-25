@@ -91,7 +91,7 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
         guard let allFilterableRoutes = allFilterableRoutes, let swiftRange = Range(range, in: filterString) else { return false }
         filterString = filterString.replacingCharacters(in: swiftRange, with: replacementString.lowercased())
         filteredRoutes = allFilterableRoutes.filter {
-            guard filterString.characters.count > 0 else { return true }
+            guard filterString.count > 0 else { return true }
 
             return $0.filterstringComponents.filter({ $0.starts(with: filterString) }).count > 0
         }

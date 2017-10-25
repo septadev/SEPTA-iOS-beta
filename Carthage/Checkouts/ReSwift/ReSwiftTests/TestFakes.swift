@@ -39,7 +39,7 @@ struct TestCustomAppState: StateType {
     }
 
     init(substateValue value: Int = 0) {
-        substate = TestCustomSubstate(value: value)
+        self.substate = TestCustomSubstate(value: value)
     }
 
     struct TestCustomSubstate {
@@ -52,18 +52,19 @@ struct SetValueAction: StandardActionConvertible {
     let value: Int
     static let type = "SetValueAction"
 
-    init(_ value: Int) {
+    init (_ value: Int) {
         self.value = value
     }
 
     init(_ standardAction: StandardAction) {
-        value = standardAction.payload!["value"] as! Int
+        self.value = standardAction.payload!["value"] as! Int
     }
 
     func toStandardAction() -> StandardAction {
         return StandardAction(type: SetValueAction.type, payload: ["value": value as AnyObject],
-                              isTypedAction: true)
+                                isTypedAction: true)
     }
+
 }
 
 struct SetValueStringAction: StandardActionConvertible {
@@ -71,12 +72,12 @@ struct SetValueStringAction: StandardActionConvertible {
     var value: String
     static let type = "SetValueStringAction"
 
-    init(_ value: String) {
+    init (_ value: String) {
         self.value = value
     }
 
     init(_ standardAction: StandardAction) {
-        value = standardAction.payload!["value"] as! String
+        self.value = standardAction.payload!["value"] as! String
     }
 
     func toStandardAction() -> StandardAction {
@@ -84,6 +85,7 @@ struct SetValueStringAction: StandardActionConvertible {
                               payload: ["value": value as AnyObject],
                               isTypedAction: true)
     }
+
 }
 
 struct SetCustomSubstateAction: StandardActionConvertible {
@@ -91,12 +93,12 @@ struct SetCustomSubstateAction: StandardActionConvertible {
     var value: Int
     static let type = "SetCustomSubstateAction"
 
-    init(_ value: Int) {
+    init (_ value: Int) {
         self.value = value
     }
 
     init(_ standardAction: StandardAction) {
-        value = standardAction.payload!["value"] as! Int
+        self.value = standardAction.payload!["value"] as! Int
     }
 
     func toStandardAction() -> StandardAction {
@@ -167,7 +169,7 @@ class DispatchingSubscriber: StoreSubscriber {
         // Test if we've already dispatched this action to
         // avoid endless recursion
         if state.testValue != 5 {
-            store.dispatch(SetValueAction(5))
+            self.store.dispatch(SetValueAction(5))
         }
     }
 }

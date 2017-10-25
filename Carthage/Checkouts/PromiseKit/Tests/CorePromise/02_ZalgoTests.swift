@@ -11,19 +11,19 @@ class ZalgoTests: XCTestCase {
     }
 
     func test2() {
-        let p1 = Promise(value: 1).then(on: zalgo) { _ in
+        let p1 = Promise(value: 1).then(on: zalgo) { x in
             return 2
         }
         XCTAssertEqual(p1.value!, 2)
-
+        
         var x = 0
-
+        
         let (p2, f, _) = Promise<Int>.pending()
         p2.then(on: zalgo) { _ in
             x = 1
         }
         XCTAssertEqual(x, 0)
-
+        
         f(1)
         XCTAssertEqual(x, 1)
     }

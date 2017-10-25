@@ -9,62 +9,66 @@
 import XCTest
 import ReSwift
 
-let firstMiddleware: Middleware<StateType> = { _, _ in { next in
-    return { action in
+let firstMiddleware: Middleware<StateType> = { dispatch, getState in
+    return { next in
+        return { action in
 
-        if var action = action as? SetValueStringAction {
-            action.value += " First Middleware"
-            return next(action)
-        } else {
+            if var action = action as? SetValueStringAction {
+                action.value += " First Middleware"
+                return next(action)
+            } else {
+                return next(action)
+            }
+        }
+    }
+}
+
+let secondMiddleware: Middleware<StateType> = { dispatch, getState in
+    return { next in
+        return { action in
+
+            if var action = action as? SetValueStringAction {
+                action.value += " Second Middleware"
+                return next(action)
+            } else {
+                return next(action)
+            }
+        }
+    }
+}
+
+let dispatchingMiddleware: Middleware<StateType> = { dispatch, getState in
+    return { next in
+        return { action in
+
+            if var action = action as? SetValueAction {
+                dispatch(SetValueStringAction("\(action.value)"))
+            }
+
             return next(action)
         }
     }
 }
-}
 
-let secondMiddleware: Middleware<StateType> = { _, _ in { next in
-    return { action in
+let stateAccessingMiddleware: Middleware<TestStringAppState> = { dispatch, getState in
+    return { next in
+        return { action in
 
-        if var action = action as? SetValueStringAction {
-            action.value += " Second Middleware"
+            let appState = getState(),
+                stringAction = action as? SetValueStringAction
+
+            // avoid endless recursion by checking if we've dispatched exactly this action
+            if appState?.testValue == "OK" && stringAction?.value != "Not OK" {
+                // dispatch a new action
+                dispatch(SetValueStringAction("Not OK"))
+
+                // and swallow the current one
+                return next(StandardAction(type: "No-Op-Action"))
+            }
+
             return next(action)
-        } else {
-            return next(action)
         }
     }
-}
-}
-
-let dispatchingMiddleware: Middleware<StateType> = { dispatch, _ in { next in
-    return { action in
-
-        if var action = action as? SetValueAction {
-            dispatch(SetValueStringAction("\(action.value)"))
-        }
-
-        return next(action)
-    }
-}
-}
-
-let stateAccessingMiddleware: Middleware<TestStringAppState> = { dispatch, getState in { next in
-    return { action in
-
-        let appState = getState(),
-            stringAction = action as? SetValueStringAction
-
-        // avoid endless recursion by checking if we've dispatched exactly this action
-        if appState?.testValue == "OK" && stringAction?.value != "Not OK" {
-            // dispatch a new action
-            dispatch(SetValueStringAction("Not OK"))
-
-            // and swallow the current one
-            return next(StandardAction(type: "No-Op-Action"))
-        }
-
-        return next(action)
-    }
-}
 }
 
 // swiftlint:disable function_body_length
@@ -76,8 +80,8 @@ class StoreMiddlewareTests: XCTestCase {
     func testDecorateDispatch() {
         let reducer = TestValueStringReducer()
         let store = Store<TestStringAppState>(reducer: reducer.handleAction,
-                                              state: TestStringAppState(),
-                                              middleware: [firstMiddleware, secondMiddleware])
+            state: TestStringAppState(),
+            middleware: [firstMiddleware, secondMiddleware])
 
         let subscriber = TestStoreSubscriber<TestStringAppState>()
         store.subscribe(subscriber)
@@ -94,8 +98,8 @@ class StoreMiddlewareTests: XCTestCase {
     func testCanDispatch() {
         let reducer = TestValueStringReducer()
         let store = Store<TestStringAppState>(reducer: reducer.handleAction,
-                                              state: TestStringAppState(),
-                                              middleware: [firstMiddleware, secondMiddleware, dispatchingMiddleware])
+            state: TestStringAppState(),
+            middleware: [firstMiddleware, secondMiddleware, dispatchingMiddleware])
 
         let subscriber = TestStoreSubscriber<TestStringAppState>()
         store.subscribe(subscriber)
@@ -115,7 +119,7 @@ class StoreMiddlewareTests: XCTestCase {
         state.testValue = "OK"
 
         let store = Store<TestStringAppState>(reducer: reducer.handleAction, state: state,
-                                              middleware: [stateAccessingMiddleware])
+            middleware: [stateAccessingMiddleware])
 
         store.dispatch(SetValueStringAction("Action That Won't Go Through"))
 

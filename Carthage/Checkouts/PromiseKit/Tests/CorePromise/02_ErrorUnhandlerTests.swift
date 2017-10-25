@@ -4,8 +4,8 @@ import XCTest
 class ErrorUnhandlerTests: XCTestCase {
 
     func testHandlerIsCalledIfErrorIsNotHandled() {
-        twice { _, ex in
-            InjectedErrorUnhandler = { _ in
+        twice { promise, ex in
+            InjectedErrorUnhandler = { err in
                 ex.fulfill()
             }
         }
@@ -19,10 +19,10 @@ class ErrorUnhandlerTests: XCTestCase {
 
     func testHandlerIsNotCalledIfErrorIsCaught() {
         twice { promise, ex in
-            InjectedErrorUnhandler = { _ in
+            InjectedErrorUnhandler = { err in
                 XCTFail()
             }
-            promise.catch { _ in
+            promise.catch { error in
                 ex.fulfill()
             }
         }
@@ -30,10 +30,10 @@ class ErrorUnhandlerTests: XCTestCase {
 
     func testHandlerIsNotCalledIfErrorIsRecovered() {
         twice { promise, ex in
-            InjectedErrorUnhandler = { _ in
+            InjectedErrorUnhandler = { err in
                 XCTFail()
             }
-            _ = promise.recover { _ -> Promise<Int> in
+            _ = promise.recover { error -> Promise<Int> in
                 return Promise(value: 1)
             }.always {
                 ex.fulfill()
@@ -43,7 +43,7 @@ class ErrorUnhandlerTests: XCTestCase {
 
     func testHandlerIsStillCalledIfErrorIsNotRecovered() {
         twice { promise, ex in
-            InjectedErrorUnhandler = { _ in
+            InjectedErrorUnhandler = { err in
                 ex.fulfill()
             }
             _ = promise.recover { error -> Int in
@@ -54,10 +54,10 @@ class ErrorUnhandlerTests: XCTestCase {
 
     func testHandlerIsCalledOnceIfRecoveryFailsWithADifferentError() {
         twice { promise, ex in
-            InjectedErrorUnhandler = { _ in
+            InjectedErrorUnhandler = { err in
                 ex.fulfill()
             }
-            promise.recover { _ -> Promise<Int> in
+            promise.recover { error -> Promise<Int> in
                 firstly { throw Error.dummy }
             }
         }
@@ -67,16 +67,16 @@ class ErrorUnhandlerTests: XCTestCase {
         twice { promise, ex2 in
             let ex1 = expectation(description: "")
 
-            InjectedErrorUnhandler = { _ in
+            InjectedErrorUnhandler = { err in
                 XCTFail()
             }
             promise.recover { error -> Int in
                 throw error
-            }.then { _ in
+            }.then { x in
                 XCTFail()
             }.always {
                 ex1.fulfill()
-            }.catch { _ in
+            }.catch { err in
                 ex2.fulfill()
             }
         }
@@ -87,7 +87,7 @@ class ErrorUnhandlerTests: XCTestCase {
             case test
         }
 
-        InjectedErrorUnhandler = { _ in
+        InjectedErrorUnhandler = { err in
             XCTFail()
         }
 
@@ -101,7 +101,7 @@ class ErrorUnhandlerTests: XCTestCase {
         after(interval: .milliseconds(100)).then { _ -> Void in r(Error.test); ex1.fulfill() }
         after(interval: .milliseconds(150)).then { _ -> Void in r(Error.test); ex2.fulfill() }.always(execute: ex3.fulfill)
 
-        p.catch { _ in
+        p.catch { error in
             ex4.fulfill()
         }
 
@@ -111,7 +111,7 @@ class ErrorUnhandlerTests: XCTestCase {
     func testPassThrough() {
         let ex = expectation(description: "")
 
-        InjectedErrorUnhandler = { _ in
+        InjectedErrorUnhandler = { err in
             ex.fulfill()
         }
 
@@ -133,7 +133,7 @@ class ErrorUnhandlerTests: XCTestCase {
             case test
         }
 
-        InjectedErrorUnhandler = { _ in
+        InjectedErrorUnhandler = { err in
             XCTFail()
         }
 
@@ -147,7 +147,7 @@ class ErrorUnhandlerTests: XCTestCase {
 
         let anyp = AnyPromise(p)
 
-        p.catch { _ in
+        p.catch { err in
             ex1.fulfill()
         }
 
@@ -156,7 +156,8 @@ class ErrorUnhandlerTests: XCTestCase {
         print(anyp)
     }
 
-    // MARK: helpers
+
+//MARK: helpers
 
     private func twice(body: (Promise<Int>, XCTestExpectation) -> Void) {
         autoreleasepool {
@@ -176,6 +177,7 @@ class ErrorUnhandlerTests: XCTestCase {
         }
         waitForExpectations(timeout: 1)
     }
+
 }
 
 private enum Error: Swift.Error {

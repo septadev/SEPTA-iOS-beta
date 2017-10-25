@@ -56,7 +56,7 @@ class AddressLookupProvider: StoreSubscriber {
     }
 
     func shouldLookupByString(state: AddressLookupState) -> Bool {
-        return state.addressLookupSearchMode == .byString && state.searchString.characters.count > 3
+        return state.addressLookupSearchMode == .byString && state.searchString.count > 3
     }
 
     func shouldLookupByCoordinates(state: AddressLookupState) -> Bool {

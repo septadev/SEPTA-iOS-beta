@@ -3,7 +3,7 @@ public enum CatchPolicy {
     case allErrors
 }
 
-func PMKUnhandledErrorHandler(_: Error)
+func PMKUnhandledErrorHandler(_ error: Error)
 {}
 
 import class Dispatch.DispatchQueue

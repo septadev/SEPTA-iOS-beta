@@ -20,7 +20,7 @@ internal func raiseFatalError(_ message: @autoclosure () -> String = "",
     Assertions.fatalErrorClosure(message(), file, line)
     repeat {
         RunLoop.current.run()
-    } while true
+    } while (true)
 }
 
 /// Stores custom assertions closures, by default it points to Swift functions. But test target can

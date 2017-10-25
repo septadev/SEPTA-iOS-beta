@@ -1,5 +1,6 @@
 import XCTest
 import SQLite
 
-class ValueTests: XCTestCase {
+class ValueTests : XCTestCase {
+
 }

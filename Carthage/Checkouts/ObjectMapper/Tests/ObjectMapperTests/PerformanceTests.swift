@@ -31,141 +31,144 @@ import XCTest
 import ObjectMapper
 
 class PerformanceTests: XCTestCase {
-
-    let JSONTestString: String = {
-        let subObjectJSON = "{\"string\":\"This is a string\", \"int\": 12,\"double\":12.27,\"float\":12.3212, \"bool\":false, \"arr\":[ \"bla\", true, 42 ], \"dict\":{ \"key1\" : \"value1\", \"key2\" : false, \"key3\" : 142 } }"
-
-        let objectJSONString = "{\"string\":\"This is a string\", \"int\": 12,\"double\":12.27,\"float\":12.3212, \"bool\":false, \"arr\":[ \"bla\", true, 42 ], \"dict\":{ \"key1\" : \"value1\", \"key2\" : false, \"key3\" : 142 }, \"object\": \(subObjectJSON), \"objects\":{ \"key1\": \(subObjectJSON), \"key2\": \(subObjectJSON)}}"
-
-        var JSONString = "["
-        for _ in 0 ... 1000 {
-            JSONString += "\(objectJSONString),"
-        }
-        JSONString += "\(objectJSONString)]"
-        return JSONString
-    }()
-
+	
+	let JSONTestString: String = {
+		let subObjectJSON = "{\"string\":\"This is a string\", \"int\": 12,\"double\":12.27,\"float\":12.3212, \"bool\":false, \"arr\":[ \"bla\", true, 42 ], \"dict\":{ \"key1\" : \"value1\", \"key2\" : false, \"key3\" : 142 } }"
+		
+		let objectJSONString = "{\"string\":\"This is a string\", \"int\": 12,\"double\":12.27,\"float\":12.3212, \"bool\":false, \"arr\":[ \"bla\", true, 42 ], \"dict\":{ \"key1\" : \"value1\", \"key2\" : false, \"key3\" : 142 }, \"object\": \(subObjectJSON), \"objects\":{ \"key1\": \(subObjectJSON), \"key2\": \(subObjectJSON)}}"
+		
+		var JSONString = "["
+		for _ in 0...1000 {
+			JSONString += "\(objectJSONString),"
+		}
+		JSONString += "\(objectJSONString)]"
+		return JSONString
+	}()
+	
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-
+    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
 
     func testPerformance() {
-        measure {
+        self.measure {
             // Put the code you want to measure the time of here.
-            _ = Mapper<PerformanceMappableObject>().mapArray(JSONString: self.JSONTestString)
+			_ = Mapper<PerformanceMappableObject>().mapArray(JSONString: self.JSONTestString)
         }
     }
-
-    func testPerformanceCluster() {
-        measure {
-            // Put the code you want to measure the time of here.
-            _ = Mapper<PerformanceStaticMappableObject>().mapArray(JSONString: self.JSONTestString)
-        }
-    }
-
-    func testPerformanceImmutable() {
-        measure {
-            _ = try? Mapper<PerformanceImmutableMappableObject>().mapArray(JSONString: self.JSONTestString)
-        }
-    }
+	
+	func testPerformanceCluster() {
+		self.measure {
+			// Put the code you want to measure the time of here.
+			_ = Mapper<PerformanceStaticMappableObject>().mapArray(JSONString: self.JSONTestString)
+		}
+	}
+	
+	func testPerformanceImmutable() {
+		self.measure {
+			_ = try? Mapper<PerformanceImmutableMappableObject>().mapArray(JSONString: self.JSONTestString)
+		}
+	}
 }
 
 class PerformanceMappableObject: Mappable {
-
-    var string: String?
-    var int: Int?
-    var double: Double?
-    var float: Float?
-    var bool: Bool?
-    var array: [Any]?
-    var dictionary: [String: Any]?
-    var object: PerformanceMappableObject?
-    var objects: [PerformanceMappableObject]?
-
-    required init?(map _: Map) {
-    }
-
-    func mapping(map: Map) {
-        string <- map["string"]
-        int <- map["int"]
-        double <- map["double"]
-        float <- map["float"]
-        bool <- map["bool"]
-        array <- map["array"]
-        dictionary <- map["dictionary"]
-        object <- map["object"]
-        objects <- map["objects"]
-    }
+	
+	var string: String?
+	var int: Int?
+	var double: Double?
+	var float: Float?
+	var bool: Bool?
+	var array: [Any]?
+	var dictionary: [String: Any]?
+	var object: PerformanceMappableObject?
+	var objects: [PerformanceMappableObject]?
+	
+	required init?(map: Map){
+		
+	}
+	
+	func mapping(map: Map) {
+		string		<- map["string"]
+		int			<- map["int"]
+		double		<- map["double"]
+		float		<- map["float"]
+		bool		<- map["bool"]
+		array		<- map["array"]
+		dictionary	<- map["dictionary"]
+		object		<- map["object"]
+		objects		<- map["objects"]
+	}
 }
 
 class PerformanceStaticMappableObject: StaticMappable {
-
-    var string: String?
-    var int: Int?
-    var double: Double?
-    var float: Float?
-    var bool: Bool?
-    var array: [Any]?
-    var dictionary: [String: Any]?
-    var object: PerformanceStaticMappableObject?
-    var objects: [PerformanceStaticMappableObject]?
-
-    static func objectForMapping(map _: Map) -> BaseMappable? {
-        return PerformanceStaticMappableObject()
-    }
-
-    func mapping(map: Map) {
-        string <- map["string"]
-        int <- map["int"]
-        double <- map["double"]
-        float <- map["float"]
-        bool <- map["bool"]
-        array <- map["array"]
-        dictionary <- map["dictionary"]
-        object <- map["object"]
-        objects <- map["objects"]
-    }
+	
+	var string: String?
+	var int: Int?
+	var double: Double?
+	var float: Float?
+	var bool: Bool?
+	var array: [Any]?
+	var dictionary: [String: Any]?
+	var object: PerformanceStaticMappableObject?
+	var objects: [PerformanceStaticMappableObject]?
+	
+	static func objectForMapping(map: Map) -> BaseMappable? {
+		return PerformanceStaticMappableObject()
+	}
+	
+	func mapping(map: Map) {
+		string		<- map["string"]
+		int			<- map["int"]
+		double		<- map["double"]
+		float		<- map["float"]
+		bool		<- map["bool"]
+		array		<- map["array"]
+		dictionary	<- map["dictionary"]
+		object		<- map["object"]
+		objects		<- map["objects"]
+	}
 }
 
 class PerformanceImmutableMappableObject: ImmutableMappable {
+	
+	let string: String?
+	let int: Int?
+	let double: Double?
+	let float: Float?
+	let bool: Bool?
+	let array: [Any]?
+	let dictionary: [String: Any]?
+	let object: PerformanceImmutableMappableObject?
+	let objects: [PerformanceImmutableMappableObject]?
 
-    let string: String?
-    let int: Int?
-    let double: Double?
-    let float: Float?
-    let bool: Bool?
-    let array: [Any]?
-    let dictionary: [String: Any]?
-    let object: PerformanceImmutableMappableObject?
-    let objects: [PerformanceImmutableMappableObject]?
-
-    required init(map: Map) throws {
-        string = try map.value("string")
-        int = try map.value("int")
-        double = try map.value("double")
-        float = try map.value("float")
-        bool = try map.value("bool")
-        array = try map.value("array")
-        dictionary = try map.value("dictionary")
-        object = try map.value("object")
-        objects = try map.value("objects")
-    }
-
-    func mapping(map: Map) {
-        string >>> map["string"]
-        int >>> map["int"]
-        double >>> map["double"]
-        float >>> map["float"]
-        bool >>> map["bool"]
-        array >>> map["array"]
-        dictionary >>> map["dictionary"]
-        object >>> map["object"]
-        objects >>> map["objects"]
-    }
+	required init(map: Map) throws {
+		string = try map.value("string")
+		int = try map.value("int")
+		double = try map.value("double")
+		float = try map.value("float")
+		bool = try map.value("bool")
+		array = try map.value("array")
+		dictionary = try map.value("dictionary")
+		object = try map.value("object")
+		objects = try map.value("objects")
+	}
+	
+	func mapping(map: Map) {
+		string		>>> map["string"]
+		int			>>> map["int"]
+		double		>>> map["double"]
+		float		>>> map["float"]
+		bool		>>> map["bool"]
+		array		>>> map["array"]
+		dictionary	>>> map["dictionary"]
+		object		>>> map["object"]
+		objects		>>> map["objects"]
+	}
 }
+
+

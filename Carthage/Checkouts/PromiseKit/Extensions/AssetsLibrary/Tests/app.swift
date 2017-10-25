@@ -9,7 +9,7 @@ class App: UITableViewController, UIApplicationDelegate {
     var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
     let testSuceededSwitch = UISwitch()
 
-    func application(_: UIApplication, willFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]? = nil) -> Bool {
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         window!.rootViewController = self
         window!.backgroundColor = UIColor.purple
         window!.makeKeyAndVisible()
@@ -21,18 +21,18 @@ class App: UITableViewController, UIApplicationDelegate {
         view.addSubview(testSuceededSwitch)
     }
 
-    override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
 
-    override func tableView(_: UITableView, cellForRowAt _: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = "1"
         return cell
     }
 
-    override func tableView(_: UITableView, didSelectRowAt _: IndexPath) {
-        _ = promise(UIImagePickerController()).then { (_: NSData) in
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        _ = promise(UIImagePickerController()).then { (data: NSData) in
             self.testSuceededSwitch.isOn = true
         }
     }
