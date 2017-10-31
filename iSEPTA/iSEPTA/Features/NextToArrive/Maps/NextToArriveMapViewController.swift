@@ -44,6 +44,8 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
             addScheduleRequestToMap()
             drawVehicleLocations()
             mapView.isRotateEnabled = false
+            mapView.isAccessibilityElement = false
+            mapView.accessibilityElementsHidden = true
         }
     }
 
@@ -313,7 +315,7 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
         let delayString: String
                 switch delay {
                     case let delay where delay < 0:
-                    delayString = "Status: \(delay) min early"
+                    delayString = "Status: \(abs(delay)) min early"
                     case 0:
                     delayString = "Status: On Time"
                     case  let delay where delay > 0:
@@ -326,6 +328,8 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
 
     func buildNewVehicleAnnotationView(annotation: VehicleLocationAnnotation, vehicleViewId: String) -> MKAnnotationView {
         let vehicleView = MKAnnotationView(annotation: annotation, reuseIdentifier: vehicleViewId)
+        vehicleView.accessibilityElementsHidden = false
+        vehicleView.accessibilityLabel = "Tap this pin to see vehicle information"
         vehicleView.image = scheduleRequest?.transitMode.mapPin()
         vehicleView.canShowCallout = true
         vehicleView.detailCalloutAccessoryView = UIView.loadNibView(nibName: "MapVehicleCalloutView")!

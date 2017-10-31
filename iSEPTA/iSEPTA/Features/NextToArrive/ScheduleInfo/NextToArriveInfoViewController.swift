@@ -10,11 +10,13 @@ import Foundation
 import UIKit
 
 class NextToArriveInfoViewController: UIViewController {
+    @IBOutlet weak var slider: UIImageView!
     var timer: Timer?
     @IBOutlet var upSwipeGestureRecognizer: UISwipeGestureRecognizer!
     @IBOutlet var downSwipeGestureRecognizer: UISwipeGestureRecognizer!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
+    @IBOutlet weak var headerView: CurvedTopInfoView!
     @IBOutlet weak var tableView: UITableView!
     weak var nextToArriveDetailViewController: NextToArriveDetailViewController?
 
@@ -34,7 +36,7 @@ class NextToArriveInfoViewController: UIViewController {
 
         nextToArriveDetailViewController?.upSwipeGestureRecognizer = upSwipeGestureRecognizer
         nextToArriveDetailViewController?.downSwipeGestureRecognizer = downSwipeGestureRecognizer
-
+        nextToArriveDetailViewController?.infoHeaderView = headerView
         viewModel = NextToArriveInfoViewModel()
         viewModel.registerViews(tableView: tableView)
         tableView.allowsSelection = false

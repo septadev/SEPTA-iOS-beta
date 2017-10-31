@@ -18,7 +18,7 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
 
     var nextToArriveFavoritesController: NextToArriveFavoritesIconController!
     @IBOutlet weak var editFavoriteBarButtonItem: UIBarButtonItem!
-
+    weak var infoHeaderView: UIView?
     @IBOutlet weak var createFavoriteBarButtonItem: UIBarButtonItem!
 
     @IBOutlet var upSwipeGestureRecognizer: UISwipeGestureRecognizer! {

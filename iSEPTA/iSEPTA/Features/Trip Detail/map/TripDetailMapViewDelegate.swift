@@ -139,7 +139,7 @@ class TripDetailMapViewDelegate: NSObject, MKMapViewDelegate {
         let delayString: String
                 switch delay {
                     case let delay where delay < 0:
-                    delayString = "Status: \(delay) min early"
+                    delayString = "Status: \(abs(delay)) min early"
                     case 0:
                     delayString = "Status: On Time"
                     case  let delay where delay > 0:

@@ -102,6 +102,9 @@
                                 <subviews>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pullHandle" translatesAutoresizingMaskIntoConstraints="NO" id="w8Z-do-EH3" userLabel="SliderView">
                                         <rect key="frame" x="169.5" y="15" width="35" height="4"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="4" id="Bjd-GO-xNK"/>
                                             <constraint firstAttribute="width" constant="35" id="NWH-3z-jer"/>
@@ -158,6 +161,8 @@
                     <connections>
                         <outlet property="activityIndicator" destination="pto-Z2-HS1" id="IWY-XK-YFV"/>
                         <outlet property="downSwipeGestureRecognizer" destination="6ND-qN-wkW" id="v5t-Ff-yOl"/>
+                        <outlet property="headerView" destination="pjJ-NE-5hP" id="nHq-5N-a4R"/>
+                        <outlet property="slider" destination="w8Z-do-EH3" id="Phf-GL-vKA"/>
                         <outlet property="tableFooterView" destination="JqT-ir-i9a" id="TcE-Kl-yyl"/>
                         <outlet property="tableView" destination="XWV-WF-JiF" id="CEu-K8-xN1"/>
                         <outlet property="titleLabel" destination="m5N-7U-7Uy" id="zyS-C8-Mac"/>
