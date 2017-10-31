@@ -623,7 +623,7 @@ open class KMLDocument: KMLElement {
 // MARK: - Private extensions
 
 private extension String {
-    func subString(_ from: Int) -> String {
+    func subString(_: Int) -> String {
         return self
     }
 }

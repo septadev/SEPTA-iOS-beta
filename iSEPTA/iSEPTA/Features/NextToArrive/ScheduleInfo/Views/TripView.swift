@@ -37,12 +37,12 @@ class TripView: UIView {
     @IBOutlet weak var departingWhenLabel: UILabel!
     @IBOutlet weak var startStopLabel: UILabel!
     @IBOutlet weak var onTimeLabel: UILabel! {
-        
+
         didSet {
             onTimeLabel.text = "Scheduled"
-            
         }
     }
+
     @IBOutlet weak var endStopLabel: UILabel!
 
     weak var connectionView: ConnectionView?

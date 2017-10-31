@@ -71,7 +71,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="r0o-VE-tqY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="Sjm-xm-GhX"/>
+                    <navigationItem key="navigationItem" title="Favorites" id="Sjm-xm-GhX"/>
                     <connections>
                         <outlet property="tableView" destination="pJh-WZ-kY4" id="I2q-z3-qv7"/>
                     </connections>
