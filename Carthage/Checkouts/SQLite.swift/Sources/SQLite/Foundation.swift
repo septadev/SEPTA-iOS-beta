@@ -24,7 +24,7 @@
 
 import Foundation
 
-extension Data: Value {
+extension Data : Value {
 
     public static var declaredDatatype: String {
         return Blob.declaredDatatype
@@ -36,12 +36,13 @@ extension Data: Value {
 
     public var datatypeValue: Blob {
         return withUnsafeBytes { (pointer: UnsafePointer<UInt8>) -> Blob in
-            Blob(bytes: pointer, length: count)
+            return Blob(bytes: pointer, length: count)
         }
     }
+
 }
 
-extension Date: Value {
+extension Date : Value {
 
     public static var declaredDatatype: String {
         return String.declaredDatatype
@@ -54,6 +55,7 @@ extension Date: Value {
     public var datatypeValue: String {
         return dateFormatter.string(from: self)
     }
+
 }
 
 /// A global date formatter used to serialize and deserialize `NSDate` objects.

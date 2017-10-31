@@ -40,8 +40,8 @@ class StoreDispatchTests: XCTestCase {
     func testAcceptsActionCreators() {
         store.dispatch(SetValueAction(5))
 
-        let doubleValueActionCreator: Store<TestAppState>.ActionCreator = { state, _ in
-            SetValueAction(state.testValue! * 2)
+        let doubleValueActionCreator: Store<TestAppState>.ActionCreator = { state, store in
+            return SetValueAction(state.testValue! * 2)
         }
 
         store.dispatch(doubleValueActionCreator)
@@ -61,12 +61,12 @@ class StoreDispatchTests: XCTestCase {
             dispatchAsync {
                 // Provide the callback with an action creator
                 callback { _, _ in
-                    SetValueAction(5)
+                    return SetValueAction(5)
                 }
             }
         }
 
-        let subscriber = CallbackSubscriber { [unowned self] _ in
+        let subscriber = CallbackSubscriber { [unowned self] state in
             if self.store.state.testValue != nil {
                 XCTAssertEqual(self.store.state.testValue, 5)
                 asyncExpectation.fulfill()
@@ -93,7 +93,7 @@ class StoreDispatchTests: XCTestCase {
             dispatchAsync {
                 // Provide the callback with an action creator
                 callback { _, _ in
-                    SetValueAction(5)
+                    return SetValueAction(5)
                 }
             }
         }
@@ -117,7 +117,7 @@ class StoreDispatchTests: XCTestCase {
 class DispatchingReducer: XCTestCase {
     var store: Store<TestAppState>?
 
-    func handleAction(action _: Action, state: TestAppState?) -> TestAppState {
+    func handleAction(action: Action, state: TestAppState?) -> TestAppState {
         expectFatalError {
             self.store?.dispatch(SetValueAction(20))
         }

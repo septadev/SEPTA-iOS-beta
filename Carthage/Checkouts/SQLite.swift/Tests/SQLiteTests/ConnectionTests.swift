@@ -4,16 +4,16 @@ import Dispatch
 @testable import SQLite
 
 #if SQLITE_SWIFT_STANDALONE
-    import sqlite3
+import sqlite3
 #elseif SQLITE_SWIFT_SQLCIPHER
-    import SQLCipher
+import SQLCipher
 #elseif os(Linux)
-    import CSQLite
+import CSQLite
 #else
-    import SQLite3
+import SQLite3
 #endif
 
-class ConnectionTests: SQLiteTestCase {
+class ConnectionTests : SQLiteTestCase {
 
     override func setUp() {
         super.setUp()
@@ -71,7 +71,7 @@ class ConnectionTests: SQLiteTestCase {
         XCTAssertThrowsError(
             try db.run("INSERT INTO \"users\" (email, age, admin) values ('invalid@example.com', 12, 'invalid')")
         ) { error in
-            if case let SQLite.Result.error(_, code, _) = error {
+            if case SQLite.Result.error(_, let code, _) = error {
                 XCTAssertEqual(SQLITE_CONSTRAINT, code)
             } else {
                 XCTFail("expected error")
@@ -157,7 +157,7 @@ class ConnectionTests: SQLiteTestCase {
 
     func test_transaction_rollsBackTransactionsIfCommitsFail() {
         let sqliteVersion = String(describing: try! db.scalar("SELECT sqlite_version()")!)
-            .split(separator: ".").flatMap { Int($0) }
+                .split(separator: ".").flatMap { Int($0) }
         // PRAGMA defer_foreign_keys only supported in SQLite >= 3.8.0
         guard sqliteVersion[0] == 3 && sqliteVersion[1] >= 8 else {
             NSLog("skipping test for SQLite version \(sqliteVersion)")
@@ -211,7 +211,7 @@ class ConnectionTests: SQLiteTestCase {
     }
 
     func test_savepoint_beginsAndCommitsSavepoints() {
-        let db: Connection = self.db
+        let db:Connection = self.db
 
         try! db.savepoint("1") {
             try db.savepoint("2") {
@@ -229,7 +229,7 @@ class ConnectionTests: SQLiteTestCase {
     }
 
     func test_savepoint_beginsAndRollsSavepointsBack() {
-        let db: Connection = self.db
+        let db:Connection = self.db
         let stmt = try! db.prepare("INSERT INTO users (email) VALUES (?)", "alice@example.com")
 
         do {
@@ -391,7 +391,7 @@ class ConnectionTests: SQLiteTestCase {
         let nReaders = 5
         var reads = Array(repeating: 0, count: nReaders)
         var finished = false
-        for index in 0 ..< nReaders {
+        for index in 0..<nReaders {
             queue.async {
                 while !finished {
                     _ = try! conn.scalar("SELECT value FROM test")
@@ -406,7 +406,8 @@ class ConnectionTests: SQLiteTestCase {
     }
 }
 
-class ResultTests: XCTestCase {
+
+class ResultTests : XCTestCase {
     let connection = try! Connection(.inMemory)
 
     func test_init_with_ok_code_returns_nil() {
@@ -422,8 +423,8 @@ class ResultTests: XCTestCase {
     }
 
     func test_init_with_other_code_returns_error() {
-        if case let .some(.error(message, code, statement)) =
-            Result(errorCode: SQLITE_MISUSE, connection: connection, statement: nil) {
+        if case .some(.error(let message, let code, let statement)) =
+            Result(errorCode: SQLITE_MISUSE, connection: connection, statement: nil)  {
             XCTAssertEqual("not an error", message)
             XCTAssertEqual(SQLITE_MISUSE, code)
             XCTAssertNil(statement)
@@ -435,12 +436,12 @@ class ResultTests: XCTestCase {
 
     func test_description_contains_error_code() {
         XCTAssertEqual("not an error (code: 21)",
-                       Result(errorCode: SQLITE_MISUSE, connection: connection, statement: nil)?.description)
+            Result(errorCode: SQLITE_MISUSE, connection: connection, statement: nil)?.description)
     }
 
     func test_description_contains_statement_and_error_code() {
         let statement = try! Statement(connection, "SELECT 1")
         XCTAssertEqual("not an error (SELECT 1) (code: 21)",
-                       Result(errorCode: SQLITE_MISUSE, connection: connection, statement: statement)?.description)
+            Result(errorCode: SQLITE_MISUSE, connection: connection, statement: statement)?.description)
     }
 }

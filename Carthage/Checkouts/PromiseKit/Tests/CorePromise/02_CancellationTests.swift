@@ -8,8 +8,8 @@ class CancellationTests: XCTestCase {
             let ex1 = expectation(description: "")
 
             InjectedErrorUnhandler = { err in
-                XCTAssertTrue(err.isCancelledError)
-                XCTAssertTrue((err as? CancellableError)?.isCancelled ?? false)
+                XCTAssertTrue(err.isCancelledError);
+                XCTAssertTrue((err as? CancellableError)?.isCancelled ?? false);
                 ex1.fulfill()
             }
 
@@ -45,7 +45,7 @@ class CancellationTests: XCTestCase {
             let ex2 = expectation(description: "")
 
             InjectedErrorUnhandler = { err in
-                XCTAssertTrue(err.isCancelledError)
+                XCTAssertTrue(err.isCancelledError);
                 ex2.fulfill()
             }
 
@@ -70,7 +70,7 @@ class CancellationTests: XCTestCase {
 
         after(seconds: 0).then { _ in
             throw NSError(domain: PMKErrorDomain, code: PMKOperationCancelled, userInfo: nil)
-        }.catch(policy: .allErrors) { _ in
+        }.catch(policy: .allErrors) { err in
             ex.fulfill()
         }
 
@@ -81,7 +81,7 @@ class CancellationTests: XCTestCase {
         let ex = expectation(description: "")
 
         InjectedErrorUnhandler = { err in
-            XCTAssertTrue(err.isCancelledError)
+            XCTAssertTrue(err.isCancelledError);
             ex.fulfill()
         }
 
@@ -98,7 +98,7 @@ class CancellationTests: XCTestCase {
         let ex = expectation(description: "")
 
         InjectedErrorUnhandler = { err in
-            XCTAssertTrue(err.isCancelledError)
+            XCTAssertTrue(err.isCancelledError);
             ex.fulfill()
         }
 
@@ -115,7 +115,7 @@ class CancellationTests: XCTestCase {
         let ex = expectation(description: "")
 
         InjectedErrorUnhandler = { err in
-            XCTAssertTrue(err.isCancelledError)
+            XCTAssertTrue(err.isCancelledError);
             ex.fulfill()
         }
 
@@ -142,8 +142,8 @@ private enum Error: CancellableError {
 
     var isCancelled: Bool {
         switch self {
-        case .dummy: return false
-        case .cancel: return true
+            case .dummy: return false
+            case .cancel: return true
         }
     }
 }

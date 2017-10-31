@@ -6,11 +6,11 @@ extension XCTestCase {
         return UIApplication.shared.keyWindow!.rootViewController!
     }
 
-    open override func setUp() {
+    override open func setUp() {
         UIApplication.shared.keyWindow!.rootViewController = UIViewController()
     }
 
-    open override func tearDown() {
+    override open func tearDown() {
         UIApplication.shared.keyWindow!.rootViewController = nil
     }
 }

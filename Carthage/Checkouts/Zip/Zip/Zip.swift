@@ -17,7 +17,7 @@ public enum ZipError: Error {
     case unzipFail
     /// Zip fail
     case zipFail
-
+    
     /// User readable description
     public var description: String {
         switch self {
@@ -50,56 +50,56 @@ public enum ZipCompression: Int {
 
 /// Zip class
 public class Zip {
-
+    
     /**
      Set of vaild file extensions
      */
     internal static var customFileExtensions: Set<String> = []
-
+    
     // MARK: Lifecycle
-
+    
     /**
      Init
-
+     
      - returns: Zip object
      */
-    public init() {
+    public init () {
     }
-
+    
     // MARK: Unzip
-
+    
     /**
      Unzip file
-
+     
      - parameter zipFilePath: Local file path of zipped file. NSURL.
      - parameter destination: Local file path to unzip to. NSURL.
      - parameter overwrite:   Overwrite bool.
      - parameter password:    Optional password if file is protected.
      - parameter progress: A progress closure called after unzipping each file in the archive. Double value betweem 0 and 1.
-
+     
      - throws: Error if unzipping fails or if fail is not found. Can be printed with a description variable.
-
+     
      - notes: Supports implicit progress composition
      */
-
-    public class func unzipFile(_ zipFilePath: URL, destination: URL, overwrite: Bool, password: String?, progress: ((_ progress: Double) -> Void)? = nil, fileOutputHandler: ((_ unzippedFile: URL) -> Void)? = nil) throws {
-
+    
+    public class func unzipFile(_ zipFilePath: URL, destination: URL, overwrite: Bool, password: String?, progress: ((_ progress: Double) -> ())? = nil, fileOutputHandler: ((_ unzippedFile: URL) -> Void)? = nil) throws {
+        
         // File manager
         let fileManager = FileManager.default
-
+        
         // Check whether a zip file exists at path.
         let path = zipFilePath.path
-
+        
         if fileManager.fileExists(atPath: path) == false || fileExtensionIsInvalid(zipFilePath.pathExtension) {
             throw ZipError.fileNotFound
         }
-
+        
         // Unzip set up
         var ret: Int32 = 0
         var crc_ret: Int32 = 0
         let bufferSize: UInt32 = 4096
         var buffer = Array<CUnsignedChar>(repeating: 0, count: Int(bufferSize))
-
+        
         // Progress handler set up
         var totalSize: Double = 0.0
         var currentPosition: Double = 0.0
@@ -107,12 +107,12 @@ public class Zip {
         if let attributeFileSize = fileAttributes[FileAttributeKey.size] as? Double {
             totalSize += attributeFileSize
         }
-
+        
         let progressTracker = Progress(totalUnitCount: Int64(totalSize))
         progressTracker.isCancellable = false
         progressTracker.isPausable = false
         progressTracker.kind = ProgressKind.file
-
+        
         // Begin unzipping
         let zip = unzOpen64(path)
         defer {
@@ -124,8 +124,9 @@ public class Zip {
         repeat {
             if let cPassword = password?.cString(using: String.Encoding.ascii) {
                 ret = unzOpenCurrentFilePassword(zip, cPassword)
-            } else {
-                ret = unzOpenCurrentFile(zip)
+            }
+            else {
+                ret = unzOpenCurrentFile(zip);
             }
             if ret != UNZ_OK {
                 throw ZipError.unzipFail
@@ -139,22 +140,22 @@ public class Zip {
             }
             currentPosition += Double(fileInfo.compressed_size)
             let fileNameSize = Int(fileInfo.size_filename) + 1
-            // let fileName = UnsafeMutablePointer<CChar>(allocatingCapacity: fileNameSize)
+            //let fileName = UnsafeMutablePointer<CChar>(allocatingCapacity: fileNameSize)
             let fileName = UnsafeMutablePointer<CChar>.allocate(capacity: fileNameSize)
 
             unzGetCurrentFileInfo64(zip, &fileInfo, fileName, UInt(fileNameSize), nil, 0, nil, 0)
             fileName[Int(fileInfo.size_filename)] = 0
 
             var pathString = String(cString: fileName)
-
+            
             guard pathString.characters.count > 0 else {
                 throw ZipError.unzipFail
             }
 
             var isDirectory = false
-            let fileInfoSizeFileName = Int(fileInfo.size_filename - 1)
-            if fileName[fileInfoSizeFileName] == "/".cString(using: String.Encoding.utf8)?.first || fileName[fileInfoSizeFileName] == "\\".cString(using: String.Encoding.utf8)?.first {
-                isDirectory = true
+            let fileInfoSizeFileName = Int(fileInfo.size_filename-1)
+            if (fileName[fileInfoSizeFileName] == "/".cString(using: String.Encoding.utf8)?.first || fileName[fileInfoSizeFileName] == "\\".cString(using: String.Encoding.utf8)?.first) {
+                isDirectory = true;
             }
             free(fileName)
             if pathString.rangeOfCharacter(from: CharacterSet(charactersIn: "/\\")) != nil {
@@ -165,15 +166,14 @@ public class Zip {
 
             let creationDate = Date()
 
-            let directoryAttributes = [
-                FileAttributeKey.creationDate: creationDate,
-                FileAttributeKey.modificationDate: creationDate,
-            ]
+            let directoryAttributes = [FileAttributeKey.creationDate : creationDate,
+                                       FileAttributeKey.modificationDate : creationDate]
 
             do {
                 if isDirectory {
                     try fileManager.createDirectory(atPath: fullPath, withIntermediateDirectories: true, attributes: directoryAttributes)
-                } else {
+                }
+                else {
                     let parentDirectory = (fullPath as NSString).deletingLastPathComponent
                     try fileManager.createDirectory(atPath: parentDirectory, withIntermediateDirectories: true, attributes: directoryAttributes)
                 }
@@ -193,7 +193,8 @@ public class Zip {
                         throw ZipError.unzipFail
                     }
                     writeBytes += UInt64(readBytes)
-                } else {
+                }
+                else {
                     break
                 }
             }
@@ -207,13 +208,13 @@ public class Zip {
                 throw ZipError.unzipFail
             }
 
-            // Set file permissions from current fileInfo
+            //Set file permissions from current fileInfo
             if fileInfo.external_fa != 0 {
                 let permissions = (fileInfo.external_fa >> 16) & 0x1FF
-                // We will devifne a valid permission range between Owner read only to full access
+                //We will devifne a valid permission range between Owner read only to full access
                 if permissions >= 0o400 && permissions <= 0o777 {
                     do {
-                        try fileManager.setAttributes([.posixPermissions: permissions], ofItemAtPath: fullPath)
+                        try fileManager.setAttributes([.posixPermissions : permissions], ofItemAtPath: fullPath)
                     } catch {
                         print("Failed to set permissions to file \(fullPath), error: \(error)")
                     }
@@ -221,58 +222,60 @@ public class Zip {
             }
 
             ret = unzGoToNextFile(zip)
-
+            
             // Update progress handler
-            if let progressHandler = progress {
-                progressHandler((currentPosition / totalSize))
+            if let progressHandler = progress{
+                progressHandler((currentPosition/totalSize))
             }
-
+            
             if let fileHandler = fileOutputHandler,
                 let fileUrl = URL(string: fullPath) {
                 fileHandler(fileUrl)
             }
-
+            
             progressTracker.completedUnitCount = Int64(currentPosition)
-
+            
         } while (ret == UNZ_OK && ret != UNZ_END_OF_LIST_OF_FILE)
-
+        
         // Completed. Update progress handler.
-        if let progressHandler = progress {
+        if let progressHandler = progress{
             progressHandler(1.0)
         }
-
+        
         progressTracker.completedUnitCount = Int64(totalSize)
+        
     }
-
+    
     // MARK: Zip
-
+    
+    
     /**
      Zip files.
-
+     
      - parameter paths:       Array of NSURL filepaths.
      - parameter zipFilePath: Destination NSURL, should lead to a .zip filepath.
      - parameter password:    Password string. Optional.
      - parameter compression: Compression strategy
      - parameter progress: A progress closure called after unzipping each file in the archive. Double value betweem 0 and 1.
-
+     
      - throws: Error if zipping fails.
-
+     
      - notes: Supports implicit progress composition
      */
-    public class func zipFiles(paths: [URL], zipFilePath: URL, password: String?, compression: ZipCompression = .DefaultCompression, progress: ((_ progress: Double) -> Void)?) throws {
-
+    public class func zipFiles(paths: [URL], zipFilePath: URL, password: String?, compression: ZipCompression = .DefaultCompression, progress: ((_ progress: Double) -> ())?) throws {
+        
         // File manager
         let fileManager = FileManager.default
-
+        
         // Check whether a zip file exists at path.
         let destinationPath = zipFilePath.path
-
+        
         // Process zip paths
         let processedPaths = ZipUtilities().processZipPaths(paths)
-
+        
         // Zip set up
         let chunkSize: Int = 16384
-
+        
         // Progress handler set up
         var currentPosition: Double = 0.0
         var totalSize: Double = 0.0
@@ -285,14 +288,15 @@ public class Zip {
                 if let fileSize = fileSize {
                     totalSize += fileSize
                 }
-            } catch {}
+            }
+            catch {}
         }
-
+        
         let progressTracker = Progress(totalUnitCount: Int64(totalSize))
         progressTracker.isCancellable = false
         progressTracker.isPausable = false
         progressTracker.kind = ProgressKind.file
-
+        
         // Begin Zipping
         let zip = zipOpen(destinationPath, APPEND_STATUS_CREATE)
         for path in processedPaths {
@@ -320,86 +324,90 @@ public class Zip {
                     if let fileSize = fileAttributes[FileAttributeKey.size] as? Double {
                         currentPosition += fileSize
                     }
-                } catch {}
+                }
+                catch {}
                 let buffer = malloc(chunkSize)
                 if let password = password, let fileName = fileName {
-                    zipOpenNewFileInZip3(zip, fileName, &zipInfo, nil, 0, nil, 0, nil, Z_DEFLATED, compression.minizipCompression, 0, -MAX_WBITS, DEF_MEM_LEVEL, Z_DEFAULT_STRATEGY, password, 0)
-                } else if let fileName = fileName {
-                    zipOpenNewFileInZip3(zip, fileName, &zipInfo, nil, 0, nil, 0, nil, Z_DEFLATED, compression.minizipCompression, 0, -MAX_WBITS, DEF_MEM_LEVEL, Z_DEFAULT_STRATEGY, nil, 0)
-                } else {
+                    zipOpenNewFileInZip3(zip, fileName, &zipInfo, nil, 0, nil, 0, nil,Z_DEFLATED, compression.minizipCompression, 0, -MAX_WBITS, DEF_MEM_LEVEL, Z_DEFAULT_STRATEGY, password, 0)
+                }
+                else if let fileName = fileName {
+                    zipOpenNewFileInZip3(zip, fileName, &zipInfo, nil, 0, nil, 0, nil,Z_DEFLATED, compression.minizipCompression, 0, -MAX_WBITS, DEF_MEM_LEVEL, Z_DEFAULT_STRATEGY, nil, 0)
+                }
+                else {
                     throw ZipError.zipFail
                 }
                 var length: Int = 0
-                while feof(input) == 0 {
+                while (feof(input) == 0) {
                     length = fread(buffer, 1, chunkSize, input)
                     zipWriteInFileInZip(zip, buffer, UInt32(length))
                 }
-
+                
                 // Update progress handler
-                if let progressHandler = progress {
-                    progressHandler((currentPosition / totalSize))
+                if let progressHandler = progress{
+                    progressHandler((currentPosition/totalSize))
                 }
-
+                
                 progressTracker.completedUnitCount = Int64(currentPosition)
-
+                
                 zipCloseFileInZip(zip)
                 free(buffer)
                 fclose(input)
             }
         }
         zipClose(zip, nil)
-
+        
         // Completed. Update progress handler.
-        if let progressHandler = progress {
+        if let progressHandler = progress{
             progressHandler(1.0)
         }
-
+        
         progressTracker.completedUnitCount = Int64(totalSize)
     }
-
+    
     /**
      Check if file extension is invalid.
-
+     
      - parameter fileExtension: A file extension.
-
+     
      - returns: false if the extension is a valid file extension, otherwise true.
      */
     internal class func fileExtensionIsInvalid(_ fileExtension: String?) -> Bool {
-
+        
         guard let fileExtension = fileExtension else { return true }
-
+        
         return !isValidFileExtension(fileExtension)
     }
-
+    
     /**
      Add a file extension to the set of custom file extensions
-
+     
      - parameter fileExtension: A file extension.
      */
     public class func addCustomFileExtension(_ fileExtension: String) {
         customFileExtensions.insert(fileExtension)
     }
-
+    
     /**
      Remove a file extension from the set of custom file extensions
-
+     
      - parameter fileExtension: A file extension.
      */
     public class func removeCustomFileExtension(_ fileExtension: String) {
         customFileExtensions.remove(fileExtension)
     }
-
+    
     /**
      Check if a specific file extension is valid
-
+     
      - parameter fileExtension: A file extension.
-
+     
      - returns: true if the extension valid, otherwise false.
      */
     public class func isValidFileExtension(_ fileExtension: String) -> Bool {
-
+        
         let validFileExtensions: Set<String> = customFileExtensions.union(["zip", "cbz"])
-
+        
         return validFileExtensions.contains(fileExtension)
     }
+    
 }

@@ -9,7 +9,7 @@ class UITest_SLComposeViewController_Swift: PMKiOSUITestCase {
 
         app.alerts.buttons["Cancel"].tap()
 
-        sleep(3) // takes longer than usual (this may only pass when you look at it)
+        sleep(3)  // takes longer than usual (this may only pass when you look at it)
 
         XCTAssertTrue(value)
     }

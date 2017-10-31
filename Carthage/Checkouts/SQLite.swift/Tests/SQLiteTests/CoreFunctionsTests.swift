@@ -1,7 +1,7 @@
 import XCTest
 @testable import SQLite
 
-class CoreFunctionsTests: XCTestCase {
+class CoreFunctionsTests : XCTestCase {
 
     func test_round_wrapsDoubleExpressionsWithRoundFunction() {
         AssertSQL("round(\"double\")", double.round())
@@ -37,13 +37,13 @@ class CoreFunctionsTests: XCTestCase {
 
         AssertSQL("(\"string\" LIKE '%\\%' ESCAPE '\\')", string.like("%\\%", escape: "\\"))
         AssertSQL("(\"stringOptional\" LIKE '_\\_' ESCAPE '\\')", stringOptional.like("_\\_", escape: "\\"))
-
+        
         AssertSQL("(\"string\" LIKE \"a\")", string.like(Expression<String>("a")))
         AssertSQL("(\"stringOptional\" LIKE \"a\")", stringOptional.like(Expression<String>("a")))
-
+        
         AssertSQL("(\"string\" LIKE \"a\" ESCAPE '\\')", string.like(Expression<String>("a"), escape: "\\"))
         AssertSQL("(\"stringOptional\" LIKE \"a\" ESCAPE '\\')", stringOptional.like(Expression<String>("a"), escape: "\\"))
-
+        
         AssertSQL("('string' LIKE \"a\")", "string".like(Expression<String>("a")))
         AssertSQL("('string' LIKE \"a\" ESCAPE '\\')", "string".like(Expression<String>("a"), escape: "\\"))
     }
@@ -110,8 +110,8 @@ class CoreFunctionsTests: XCTestCase {
     }
 
     func test_subscriptWithRange_wrapsStringWithSubstrFunction() {
-        AssertSQL("substr(\"string\", 1, 2)", string[1 ..< 3])
-        AssertSQL("substr(\"stringOptional\", 2, 1)", stringOptional[2 ..< 3])
+        AssertSQL("substr(\"string\", 1, 2)", string[1..<3])
+        AssertSQL("substr(\"stringOptional\", 2, 1)", stringOptional[2..<3])
     }
 
     func test_nilCoalescingOperator_wrapsOptionalsWithIfnullFunction() {
@@ -141,4 +141,5 @@ class CoreFunctionsTests: XCTestCase {
         AssertSQL("(\"string\" IN ('hello', 'world'))", ["hello", "world"].contains(string))
         AssertSQL("(\"stringOptional\" IN ('hello', 'world'))", ["hello", "world"].contains(stringOptional))
     }
+
 }

@@ -19,7 +19,7 @@ class WhenTests: XCTestCase {
         let p3 = Promise(value: 3)
         let p4 = Promise(value: 4)
 
-        when(fulfilled: [p1, p2, p3, p4]).then { (x: [Int]) -> Void in
+        when(fulfilled: [p1, p2, p3, p4]).then { (x: [Int])->() in
             XCTAssertEqual(x[0], 1)
             XCTAssertEqual(x[1], 2)
             XCTAssertEqual(x[2], 3)
@@ -34,7 +34,7 @@ class WhenTests: XCTestCase {
         let e1 = expectation(description: "")
         let p1 = Promise(value: 1)
         let p2 = Promise(value: "abc")
-        when(fulfilled: p1, p2).then { x, y -> Void in
+        when(fulfilled: p1, p2).then{ x, y -> Void in
             XCTAssertEqual(x, 1)
             XCTAssertEqual(y, "abc")
             e1.fulfill()
@@ -92,28 +92,28 @@ class WhenTests: XCTestCase {
 
     func testVoid() {
         let e1 = expectation(description: "")
-        let p1 = Promise(value: 1).then { _ -> Void in }
-        let p2 = Promise(value: 2).then { _ -> Void in }
-        let p3 = Promise(value: 3).then { _ -> Void in }
-        let p4 = Promise(value: 4).then { _ -> Void in }
+        let p1 = Promise(value: 1).then { x -> Void in }
+        let p2 = Promise(value: 2).then { x -> Void in }
+        let p3 = Promise(value: 3).then { x -> Void in }
+        let p4 = Promise(value: 4).then { x -> Void in }
 
         when(fulfilled: p1, p2, p3, p4).then(execute: e1.fulfill)
 
         waitForExpectations(timeout: 1, handler: nil)
     }
-
+    
     func testRejected() {
         enum Error: Swift.Error { case dummy }
 
         let e1 = expectation(description: "")
-        let p1 = after(interval: .milliseconds(100)).then { true }
-        let p2 = after(interval: .milliseconds(200)).then { throw Error.dummy }
+        let p1 = after(interval: .milliseconds(100)).then{ true }
+        let p2 = after(interval: .milliseconds(200)).then{ throw Error.dummy }
         let p3 = Promise(value: false)
-
+            
         when(fulfilled: p1, p2, p3).catch { _ in
             e1.fulfill()
         }
-
+        
         waitForExpectations(timeout: 1, handler: nil)
     }
 
@@ -136,7 +136,7 @@ class WhenTests: XCTestCase {
         }
 
         progress.resignCurrent()
-
+        
         waitForExpectations(timeout: 1, handler: nil)
     }
 
@@ -186,14 +186,14 @@ class WhenTests: XCTestCase {
             case test
         }
 
-        InjectedErrorUnhandler = { _ in
+        InjectedErrorUnhandler = { error in
             XCTFail()
         }
 
         let ex = expectation(description: "")
         let p1 = Promise<Void>(error: Error.test)
         let p2 = after(interval: .milliseconds(100))
-        when(fulfilled: p1, p2).then { XCTFail() }.catch { error in
+        when(fulfilled: p1, p2).then{ XCTFail() }.catch { error in
             XCTAssertTrue(error as? Error == Error.test)
             ex.fulfill()
         }
@@ -207,7 +207,7 @@ class WhenTests: XCTestCase {
             case straggler
         }
 
-        InjectedErrorUnhandler = { _ in
+        InjectedErrorUnhandler = { error in
             XCTFail()
         }
 

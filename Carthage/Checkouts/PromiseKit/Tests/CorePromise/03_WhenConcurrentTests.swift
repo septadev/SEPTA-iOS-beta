@@ -6,7 +6,7 @@ class WhenConcurrentTestCase_Swift: XCTestCase {
     func testWhen() {
         let e = expectation(description: "")
 
-        var numbers = (0 ..< 42).makeIterator()
+        var numbers = (0..<42).makeIterator()
         let squareNumbers = numbers.map { $0 * $0 }
 
         let generator = AnyIterator<Promise<Int>> {
@@ -15,7 +15,7 @@ class WhenConcurrentTestCase_Swift: XCTestCase {
             }
 
             return after(interval: .milliseconds(10)).then {
-                number * number
+                return number * number
             }
         }
 
@@ -41,7 +41,7 @@ class WhenConcurrentTestCase_Swift: XCTestCase {
                 if numbers.count == 0 {
                     e.fulfill()
                 }
-            }
+        }
 
         waitForExpectations(timeout: 1, handler: nil)
     }
@@ -57,7 +57,7 @@ class WhenConcurrentTestCase_Swift: XCTestCase {
 
         let e = expectation(description: "")
 
-        var numbers = (-expectedErrorIndex ..< expectedErrorIndex).makeIterator()
+        var numbers = (-expectedErrorIndex..<expectedErrorIndex).makeIterator()
 
         let generator = AnyIterator<Promise<Int>> {
             guard let number = numbers.next() else {
@@ -69,7 +69,7 @@ class WhenConcurrentTestCase_Swift: XCTestCase {
                     return Promise(error: expectedError)
                 }
 
-                return Promise(value: 100_500 / number)
+                return Promise(value: 100500 / number)
             }
         }
 
@@ -94,7 +94,7 @@ class WhenConcurrentTestCase_Swift: XCTestCase {
 
         let e = expectation(description: "")
 
-        var numbers = (0 ..< 42).makeIterator()
+        var numbers = (0..<42).makeIterator()
 
         let generator = AnyIterator<Promise<Int>> {
             currentConcurrently += 1
@@ -111,11 +111,11 @@ class WhenConcurrentTestCase_Swift: XCTestCase {
         }
 
         when(fulfilled: generator, concurrently: expectedConcurrently)
-            .then { _ -> Void in
+            .then { numbers -> Void in
                 if expectedConcurrently == maxConcurrently {
                     e.fulfill()
                 }
-            }
+        }
 
         waitForExpectations(timeout: 3)
     }
@@ -158,7 +158,7 @@ class WhenConcurrentTestCase_Swift: XCTestCase {
 
         when(fulfilled: generator, concurrently: 1).then {
             XCTFail("\($0)")
-        }.catch { _ in
+        }.catch { error in
             ex.fulfill()
         }
 

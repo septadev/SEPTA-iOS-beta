@@ -44,7 +44,7 @@ public enum HTTPRouter {
             }
         }()
 
-        if HTTPRouter.baseURLString.characters.last != "/" {
+        if HTTPRouter.baseURLString.last != "/" {
             HTTPRouter.baseURLString = HTTPRouter.baseURLString + "/"
         }
 

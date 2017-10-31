@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,7 +30,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ltc-W3-eIu" userLabel="TitleView">
                                                         <rect key="frame" x="15" y="13" width="290" height="57"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Official App of SEPTA" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PNv-Zq-aIH" userLabel="TitleLabel">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Official App of SEPTA" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PNv-Zq-aIH" userLabel="TitleLabel">
                                                                 <rect key="frame" x="0.0" y="16" width="227" height="24"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -154,7 +154,7 @@ titleLabel</string>
                                                                     <fragment content="Analytics and Crash Reporting:  Fabric.  ">
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="14" name="SFProDisplay-Light"/>
+                                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                                             <real key="NSKern" value="0.0"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                                 <tabStops/>
@@ -165,7 +165,7 @@ titleLabel</string>
                                                                     <fragment content="https://fabric.io/home">
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.0" green="0.0" blue="0.93332999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="14" name="SFProDisplay-Light"/>
+                                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                                             <real key="NSKern" value="0.0"/>
                                                                             <url key="NSLink" string="https://fabric.io/home"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
@@ -182,7 +182,7 @@ titleLabel</string>
 Unidirectional Data Flow Architecture: ReSwift.  </string>
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="14" name="SFProDisplay-Light"/>
+                                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                                             <real key="NSKern" value="0.0"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                                 <tabStops/>
@@ -193,7 +193,7 @@ Unidirectional Data Flow Architecture: ReSwift.  </string>
                                                                     <fragment content="https://github.com/ReSwift/ReSwift">
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.0" green="0.0" blue="0.93332999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="14" name="SFProDisplay-Light"/>
+                                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                                             <real key="NSKern" value="0.0"/>
                                                                             <url key="NSLink" string="https://github.com/ReSwift/ReSwift"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
@@ -210,7 +210,7 @@ Unidirectional Data Flow Architecture: ReSwift.  </string>
 Database: SQLite.  </string>
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="14" name="SFProDisplay-Light"/>
+                                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                                             <real key="NSKern" value="0.0"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                                 <tabStops/>
@@ -221,7 +221,7 @@ Database: SQLite.  </string>
                                                                     <fragment content="https://www.sqlite.org/">
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.0" green="0.0" blue="0.93332999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="14" name="SFProDisplay-Light"/>
+                                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                                             <real key="NSKern" value="0.0"/>
                                                                             <url key="NSLink" string="https://www.sqlite.org/"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
@@ -238,7 +238,7 @@ Database: SQLite.  </string>
 Database Access Layer.  Sqlite.  </string>
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="14" name="SFProDisplay-Light"/>
+                                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                                             <real key="NSKern" value="0.0"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                                 <tabStops/>
@@ -249,7 +249,7 @@ Database Access Layer.  Sqlite.  </string>
                                                                     <fragment content="https://github.com/stephencelis/SQLite.swift">
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.0" green="0.0" blue="0.93332999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="14" name="SFProDisplay-Light"/>
+                                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                                             <real key="NSKern" value="0.0"/>
                                                                             <url key="NSLink" string="https://github.com/stephencelis/SQLite.swift"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
@@ -266,7 +266,7 @@ Database Access Layer.  Sqlite.  </string>
 Dependency Management: Carthage.  </string>
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="14" name="SFProDisplay-Light"/>
+                                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                                             <real key="NSKern" value="0.0"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                                 <tabStops/>
@@ -277,7 +277,7 @@ Dependency Management: Carthage.  </string>
                                                                     <fragment content="https://github.com/Carthage/Carthage">
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.0" green="0.0" blue="0.93332999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="14" name="SFProDisplay-Light"/>
+                                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                                             <real key="NSKern" value="0.0"/>
                                                                             <url key="NSLink" string="https://github.com/Carthage/Carthage"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
@@ -294,7 +294,7 @@ Dependency Management: Carthage.  </string>
 File Compression: Zip.  </string>
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="14" name="SFProDisplay-Light"/>
+                                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                                             <real key="NSKern" value="0.0"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                                 <tabStops/>
@@ -305,7 +305,7 @@ File Compression: Zip.  </string>
                                                                     <fragment content="https://github.com/marmelroy/Zip">
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.0" green="0.0" blue="0.93332999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="14" name="SFProDisplay-Light"/>
+                                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                                             <real key="NSKern" value="0.0"/>
                                                                             <url key="NSLink" string="https://github.com/marmelroy/Zip"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
@@ -322,7 +322,7 @@ File Compression: Zip.  </string>
 Networking Stack. AlamoFire.  </string>
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="14" name="SFProDisplay-Light"/>
+                                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                                             <real key="NSKern" value="0.0"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                                 <tabStops/>
@@ -333,7 +333,7 @@ Networking Stack. AlamoFire.  </string>
                                                                     <fragment content="https://github.com/Alamofire/Alamofire">
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.0" green="0.0" blue="0.93332999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="14" name="SFProDisplay-Light"/>
+                                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                                             <real key="NSKern" value="0.0"/>
                                                                             <url key="NSLink" string="https://github.com/Alamofire/Alamofire"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
@@ -350,7 +350,7 @@ Networking Stack. AlamoFire.  </string>
 Promise Library.  </string>
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="14" name="SFProDisplay-Light"/>
+                                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                                             <real key="NSKern" value="0.0"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                                 <tabStops/>
@@ -361,7 +361,7 @@ Promise Library.  </string>
                                                                     <fragment content="https://github.com/khanlou/Promise">
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.0" green="0.0" blue="0.93332999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="14" name="SFProDisplay-Light"/>
+                                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                                             <real key="NSKern" value="0.0"/>
                                                                             <url key="NSLink" string="https://github.com/khanlou/Promise"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
@@ -378,7 +378,7 @@ Promise Library.  </string>
 XML parsing.  AEXML.  </string>
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="14" name="SFProDisplay-Light"/>
+                                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                                             <real key="NSKern" value="0.0"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                                 <tabStops/>
@@ -389,7 +389,7 @@ XML parsing.  AEXML.  </string>
                                                                     <fragment content="https://github.com/tadija/AEXML">
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.0" green="0.0" blue="0.93332999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="14" name="SFProDisplay-Light"/>
+                                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                                             <real key="NSKern" value="0.0"/>
                                                                             <url key="NSLink" string="https://github.com/tadija/AEXML"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
@@ -406,7 +406,7 @@ XML parsing.  AEXML.  </string>
 KML parsing. Asus4/KML  </string>
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="14" name="SFProDisplay-Light"/>
+                                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                                             <real key="NSKern" value="0.0"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                                 <tabStops/>
@@ -417,7 +417,7 @@ KML parsing. Asus4/KML  </string>
                                                                     <fragment content="https://github.com/asus4/Kml.swift">
                                                                         <attributes>
                                                                             <color key="NSColor" red="0.0" green="0.0" blue="0.93332999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            <font key="NSFont" size="14" name="SFProDisplay-Light"/>
+                                                                            <font key="NSFont" metaFont="system" size="14"/>
                                                                             <real key="NSKern" value="0.0"/>
                                                                             <url key="NSLink" string="https://github.com/asus4/Kml.swift"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">

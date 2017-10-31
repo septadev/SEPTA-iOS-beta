@@ -1,6 +1,6 @@
 import StoreKit
 #if !COCOAPODS
-    import PromiseKit
+import PromiseKit
 #endif
 
 extension SKPayment {
@@ -13,7 +13,7 @@ fileprivate class PaymentObserver: NSObject, SKPaymentTransactionObserver {
     let (promise, fulfill, reject) = Promise<SKPaymentTransaction>.pending()
     let payment: SKPayment
     var retainCycle: PaymentObserver?
-
+    
     init(payment: SKPayment) {
         self.payment = payment
         super.init()
@@ -21,7 +21,7 @@ fileprivate class PaymentObserver: NSObject, SKPaymentTransactionObserver {
         SKPaymentQueue.default().add(payment)
         retainCycle = self
     }
-
+    
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         guard let transaction = transactions.first(where: { $0.payment == payment }) else {
             return

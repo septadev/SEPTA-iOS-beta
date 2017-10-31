@@ -149,7 +149,7 @@ extension SelectStopViewModel: UITextFieldDelegate {
         filterString = filterString.replacingCharacters(in: swiftRange, with: replacementString.lowercased())
 
         filteredStops = allFilterableStops.filter {
-            guard filterString.characters.count > 0 else { return true }
+            guard filterString.count > 0 else { return true }
 
             return $0.filterstringComponents.filter({ $0.starts(with: filterString) }).count > 0
         }

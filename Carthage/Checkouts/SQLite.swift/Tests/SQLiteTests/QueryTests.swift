@@ -1,16 +1,16 @@
 import XCTest
 #if SQLITE_SWIFT_STANDALONE
-    import sqlite3
+import sqlite3
 #elseif SQLITE_SWIFT_SQLCIPHER
-    import SQLCipher
+import SQLCipher
 #elseif os(Linux)
-    import CSQLite
+import CSQLite
 #else
-    import SQLite3
+import SQLite3
 #endif
 @testable import SQLite
 
-class QueryTests: XCTestCase {
+class QueryTests : XCTestCase {
 
     let users = Table("users")
     let id = Expression<Int64>("id")
@@ -88,8 +88,8 @@ class QueryTests: XCTestCase {
     func test_join_whenChained_compilesAggregateJoinClause() {
         AssertSQL(
             "SELECT * FROM \"users\" " +
-                "INNER JOIN \"posts\" ON (\"posts\".\"user_id\" = \"users\".\"id\") " +
-                "INNER JOIN \"categories\" ON (\"categories\".\"id\" = \"posts\".\"category_id\")",
+            "INNER JOIN \"posts\" ON (\"posts\".\"user_id\" = \"users\".\"id\") " +
+            "INNER JOIN \"categories\" ON (\"categories\".\"id\" = \"posts\".\"category_id\")",
             users.join(posts, on: posts[userId] == users[id]).join(categories, on: categories[id] == posts[categoryId])
         )
     }
@@ -135,7 +135,7 @@ class QueryTests: XCTestCase {
 
     func test_group_withSingleExpressionName_compilesGroupClause() {
         AssertSQL("SELECT * FROM \"users\" GROUP BY \"age\"",
-                  users.group(age))
+            users.group(age))
     }
 
     func test_group_withVariadicExpressionNames_compilesGroupClause() {
@@ -171,7 +171,7 @@ class QueryTests: XCTestCase {
     }
 
     func test_order_withExpressionAndSortDirection_compilesOrderClause() {
-        //        AssertSQL("SELECT * FROM \"users\" ORDER BY \"age\" DESC, \"email\" ASC", users.order(age.desc, email.asc))
+//        AssertSQL("SELECT * FROM \"users\" ORDER BY \"age\" DESC, \"email\" ASC", users.order(age.desc, email.asc))
     }
 
     func test_order_whenChained_resetsOrderClause() {
@@ -179,11 +179,11 @@ class QueryTests: XCTestCase {
     }
 
     func test_reverse_withoutOrder_ordersByRowIdDescending() {
-        //        AssertSQL("SELECT * FROM \"users\" ORDER BY \"ROWID\" DESC", users.reverse())
+//        AssertSQL("SELECT * FROM \"users\" ORDER BY \"ROWID\" DESC", users.reverse())
     }
 
     func test_reverse_withOrder_reversesOrder() {
-        //        AssertSQL("SELECT * FROM \"users\" ORDER BY \"age\" DESC, \"email\" ASC", users.order(age, email.desc).reverse())
+//        AssertSQL("SELECT * FROM \"users\" ORDER BY \"age\" DESC, \"email\" ASC", users.order(age, email.desc).reverse())
     }
 
     func test_limit_compilesLimitClause() {
@@ -215,7 +215,7 @@ class QueryTests: XCTestCase {
 
         AssertSQL(
             "SELECT * FROM \"users\" " +
-                "INNER JOIN \"users\" AS \"managers\" ON (\"managers\".\"id\" = \"users\".\"manager_id\")",
+            "INNER JOIN \"users\" AS \"managers\" ON (\"managers\".\"id\" = \"users\".\"manager_id\")",
             users.join(managers, on: managers[id] == users[managerId])
         )
     }
@@ -371,9 +371,10 @@ class QueryTests: XCTestCase {
 
         AssertSQL("SELECT * FROM \"attached\".\"table\"", table)
     }
+
 }
 
-class QueryIntegrationTests: SQLiteTestCase {
+class QueryIntegrationTests : SQLiteTestCase {
 
     let id = Expression<Int64>("id")
     let email = Expression<String>("email")
@@ -412,7 +413,7 @@ class QueryIntegrationTests: SQLiteTestCase {
         let names = ["a", "b", "c"]
         try! InsertUsers(names)
 
-        let emails = try! db.prepare("select email from users", []).map { $0[0] as! String }
+        let emails = try! db.prepare("select email from users", []).map { $0[0] as! String  }
 
         XCTAssertEqual(names.map({ "\($0)@example.com" }), emails.sorted())
     }
@@ -491,24 +492,24 @@ class QueryIntegrationTests: SQLiteTestCase {
         let changes = try! db.run(users.delete())
         XCTAssertEqual(0, changes)
     }
-
+    
     func test_union() throws {
         let expectedIDs = [
             try db.run(users.insert(email <- "alice@example.com")),
-            try db.run(users.insert(email <- "sally@example.com")),
+            try db.run(users.insert(email <- "sally@example.com"))
         ]
-
+        
         let query1 = users.filter(email == "alice@example.com")
         let query2 = users.filter(email == "sally@example.com")
-
+        
         let actualIDs = try db.prepare(query1.union(query2)).map { $0[id] }
         XCTAssertEqual(expectedIDs, actualIDs)
-
+        
         let query3 = users.select(users[*], Expression<Int>(literal: "1 AS weight")).filter(email == "sally@example.com")
         let query4 = users.select(users[*], Expression<Int>(literal: "2 AS weight")).filter(email == "alice@example.com")
-
+        
         print(query3.union(query4).order(Expression<Int>(literal: "weight")).asSQL())
-
+        
         let orderedIDs = try db.prepare(query3.union(query4).order(Expression<Int>(literal: "weight"), email)).map { $0[id] }
         XCTAssertEqual(Array(expectedIDs.reversed()), orderedIDs)
     }
@@ -519,7 +520,7 @@ class QueryIntegrationTests: SQLiteTestCase {
         let row = try! db.pluck(users.filter(email == "alice@example.com"))!
 
         XCTAssertThrowsError(try row.get(doesNotExist)) { error in
-            if case let QueryError.noSuchColumn(name, _) = error {
+            if case QueryError.noSuchColumn(let name, _) = error {
                 XCTAssertEqual("\"doesNotExist\"", name)
             } else {
                 XCTFail("unexpected error: \(error)")

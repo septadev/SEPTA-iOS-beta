@@ -110,7 +110,6 @@
 		5844CA1F1F3BD9B700651223 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5844CA1E1F3BD9B700651223 /* NavigationState.swift */; };
 		584528BB1F7C27C000E68D8F /* CurvedTopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584528BA1F7C27C000E68D8F /* CurvedTopInfoView.swift */; };
 		58470C091F3F276000F3C9B5 /* NumberFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58470C081F3F276000F3C9B5 /* NumberFormatters.swift */; };
-		58490E401F55F84F007DBCA1 /* SeptaRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; };
 		58490E451F55F8FF007DBCA1 /* SeptaAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E441F55F8FF007DBCA1 /* SeptaAlert.swift */; };
 		58490E471F55F98B007DBCA1 /* AlertState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E461F55F98B007DBCA1 /* AlertState.swift */; };
 		58490E491F56019B007DBCA1 /* AlertReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E481F56019B007DBCA1 /* AlertReducer.swift */; };
@@ -1219,7 +1218,6 @@
 			files = (
 				589397141F7E677600F3D2F8 /* WebKit.framework in Frameworks */,
 				674FDBBF1F56E87F00CA67D2 /* SeptaRest.framework in Frameworks */,
-				58490E401F55F84F007DBCA1 /* SeptaRest.framework in Frameworks */,
 				58B1FFD61F42EB2500AD8620 /* MapKit.framework in Frameworks */,
 				58DB04A31F54D7F2005CC850 /* SeptaSchedule.framework in Frameworks */,
 				5892DDF11F3AAA5C000BA54B /* Crashlytics.framework in Frameworks */,
@@ -2724,7 +2722,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Mark Broski";
 				TargetAttributes = {
 					58D9C3EF1F3335BB002BE2E8 = {
@@ -3592,12 +3590,11 @@
 					$SRCROOT/../Carthage/Build/iOS,
 					"$(inherited)",
 					$SRCROOT,
-					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator",
 				);
 				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
+				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA.beta;
 				PRODUCT_MODULE_NAME = Septa;
@@ -3625,7 +3622,6 @@
 					$SRCROOT/../Carthage/Build/iOS,
 					"$(inherited)",
 					$SRCROOT,
-					"$(PROJECT_DIR)/Build/Products/Debug-iphonesimulator",
 				);
 				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;

@@ -28,7 +28,7 @@ class NSObjectTests: XCTestCase {
             func innerScope() {
                 killme = NSObject()
                 after(life: killme).then { _ -> Void in
-                    // …
+                    //…
                     ex.fulfill()
                 }
             }

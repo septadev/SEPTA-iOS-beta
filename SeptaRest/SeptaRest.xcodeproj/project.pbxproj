@@ -470,10 +470,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$SRCROOT/../Carthage/Build/iOS/**",
-					/Users/mbroski/Code/Septa/Septa2/Carthage/Build/iOS/ObjectMapper.framework,
-				);
+				FRAMEWORK_SEARCH_PATHS = "$SRCROOT/../Carthage/Build/iOS/**";
 				HEADER_SEARCH_PATHS = "$SRCROOT/../Carthage/Build/iOS/**";
 				INFOPLIST_FILE = SeptaRest/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -500,10 +497,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$SRCROOT/../Carthage/Build/iOS/**",
-					/Users/mbroski/Code/Septa/Septa2/Carthage/Build/iOS/ObjectMapper.framework,
-				);
+				FRAMEWORK_SEARCH_PATHS = "$SRCROOT/../Carthage/Build/iOS/**";
 				HEADER_SEARCH_PATHS = "$SRCROOT/../Carthage/Build/iOS/**";
 				INFOPLIST_FILE = SeptaRest/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

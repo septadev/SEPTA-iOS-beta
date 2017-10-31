@@ -1,18 +1,18 @@
 import Accounts
 #if !COCOAPODS
-    import PromiseKit
+import PromiseKit
 #endif
 
 /**
  To import the `ACAccountStore` category:
 
- use_frameworks!
- pod "PromiseKit/ACAccountStore"
+    use_frameworks!
+    pod "PromiseKit/ACAccountStore"
 
  And then in your sources:
 
- import PromiseKit
- */
+    import PromiseKit
+*/
 extension ACAccountStore {
     /// Renews account credentials when the credentials are no longer valid.
     public func renewCredentials(for account: ACAccount) -> Promise<ACAccountCredentialRenewResult> {

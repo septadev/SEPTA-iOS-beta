@@ -53,7 +53,7 @@ public extension XCTestCase {
         cleanUp: @escaping () -> Void) {
 
         let asyncExpectation = futureExpectation(withDescription: funcName + "-Expectation")
-        var assertionMessage: String?
+        var assertionMessage: String? = nil
 
         function { (message) -> Void in
             assertionMessage = message
@@ -75,6 +75,5 @@ public extension XCTestCase {
             }
         }
     }
-
     // swiftlint:enable function_parameter_count
 }

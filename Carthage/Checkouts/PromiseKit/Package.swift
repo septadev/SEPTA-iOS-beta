@@ -17,6 +17,6 @@ let package = Package(
         "Sources/AnyPromise+Private.h",
         "Sources/AnyPromise.h",
         "Sources/PromiseKit.h",
-        "Tests",
+        "Tests"
     ]
 )

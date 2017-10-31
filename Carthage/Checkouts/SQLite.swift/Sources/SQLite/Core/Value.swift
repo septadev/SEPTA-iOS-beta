@@ -29,22 +29,23 @@
 ///   protocol, instead.
 public protocol Binding {}
 
-public protocol Number: Binding {}
+public protocol Number : Binding {}
 
-public protocol Value: Expressible { // extensions cannot have inheritance clauses
+public protocol Value : Expressible { // extensions cannot have inheritance clauses
 
     associatedtype ValueType = Self
 
-    associatedtype Datatype: Binding
+    associatedtype Datatype : Binding
 
     static var declaredDatatype: String { get }
 
     static func fromDatatypeValue(_ datatypeValue: Datatype) -> ValueType
 
     var datatypeValue: Datatype { get }
+
 }
 
-extension Double: Number, Value {
+extension Double : Number, Value {
 
     public static let declaredDatatype = "REAL"
 
@@ -55,9 +56,10 @@ extension Double: Number, Value {
     public var datatypeValue: Double {
         return self
     }
+
 }
 
-extension Int64: Number, Value {
+extension Int64 : Number, Value {
 
     public static let declaredDatatype = "INTEGER"
 
@@ -68,9 +70,10 @@ extension Int64: Number, Value {
     public var datatypeValue: Int64 {
         return self
     }
+
 }
 
-extension String: Binding, Value {
+extension String : Binding, Value {
 
     public static let declaredDatatype = "TEXT"
 
@@ -81,9 +84,10 @@ extension String: Binding, Value {
     public var datatypeValue: String {
         return self
     }
+
 }
 
-extension Blob: Binding, Value {
+extension Blob : Binding, Value {
 
     public static let declaredDatatype = "BLOB"
 
@@ -94,11 +98,12 @@ extension Blob: Binding, Value {
     public var datatypeValue: Blob {
         return self
     }
+
 }
 
 // MARK: -
 
-extension Bool: Binding, Value {
+extension Bool : Binding, Value {
 
     public static var declaredDatatype = Int64.declaredDatatype
 
@@ -109,9 +114,10 @@ extension Bool: Binding, Value {
     public var datatypeValue: Int64 {
         return self ? 1 : 0
     }
+
 }
 
-extension Int: Number, Value {
+extension Int : Number, Value {
 
     public static var declaredDatatype = Int64.declaredDatatype
 
@@ -122,4 +128,5 @@ extension Int: Number, Value {
     public var datatypeValue: Int64 {
         return Int64(self)
     }
+
 }

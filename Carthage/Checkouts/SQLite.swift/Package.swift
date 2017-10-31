@@ -7,7 +7,7 @@ let package = Package(
     targets: [
         .target(name: "SQLite", dependencies: ["SQLiteObjc"]),
         .target(name: "SQLiteObjc"),
-        .testTarget(name: "SQLiteTests", dependencies: ["SQLite"], path: "Tests/SQLiteTests"),
+        .testTarget(name: "SQLiteTests", dependencies: ["SQLite"], path: "Tests/SQLiteTests")
     ],
     swiftLanguageVersions: [4]
 )
@@ -18,7 +18,7 @@ let package = Package(
         .target(name: "SQLite", exclude: ["Extensions/FTS4.swift", "Extensions/FTS5.swift"]),
         .testTarget(name: "SQLiteTests", dependencies: ["SQLite"], path: "Tests/SQLiteTests", exclude: [
             "FTS4Tests.swift",
-            "FTS5Tests.swift",
-        ]),
+            "FTS5Tests.swift"
+        ])
     ]
 #endif

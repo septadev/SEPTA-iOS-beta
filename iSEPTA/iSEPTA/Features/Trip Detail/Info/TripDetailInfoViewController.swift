@@ -68,12 +68,12 @@ class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetail
     // MARK: - Header View
 
     func configureHeaderViewForRail(railDetails: NextToArriveRailDetails) {
-        guard let tripId = railDetails.tripid, let destinationStation = railDetails.destinationStation, destinationStation.characters.count > 0 else { return }
+        guard let tripId = railDetails.tripid, let destinationStation = railDetails.destinationStation, destinationStation.count > 0 else { return }
         routeLabel.text = "#\(tripId) to \(destinationStation)"
     }
 
     func configureHeaderViewForBus(busDetails: NextToArriveBusDetails) {
-        guard let blockId = busDetails.blockid, let line = busDetails.line, let destinationStation = busDetails.destinationStation, destinationStation.characters.count > 0 else { return }
+        guard let blockId = busDetails.blockid, let line = busDetails.line, let destinationStation = busDetails.destinationStation, destinationStation.count > 0 else { return }
         routeLabel.text = "#\(blockId) on \(line) to \(destinationStation)"
     }
 
@@ -137,7 +137,7 @@ class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetail
     // MARK: - Origination  -- Destination
 
     func configureDestination(nextToArriveStop: NextToArriveStop) {
-        guard let lastStopName = nextToArriveStop.lastStopName, lastStopName.characters.count > 0 else { return }
+        guard let lastStopName = nextToArriveStop.lastStopName, lastStopName.count > 0 else { return }
         let itemView = newItemView()
         itemView.headerLabel.text = "Destination:"
         itemView.valueLabel.text = lastStopName
