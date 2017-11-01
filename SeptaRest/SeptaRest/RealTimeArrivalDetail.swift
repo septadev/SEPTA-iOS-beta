@@ -13,4 +13,5 @@ public protocol RealTimeArrivalDetail {
     var latitude: Double? { get }
     var longitude: Double? { get }
     var line: String? { get }
+    var destinationDelay: Int? { get }
 }
