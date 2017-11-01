@@ -94,6 +94,7 @@
 		582F4EDE1F33B1120062A546 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EB41F33B1120062A546 /* Main.storyboard */; };
 		582F4EDF1F33B1120062A546 /* DatabaseStateWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EB61F33B1120062A546 /* DatabaseStateWatcher.swift */; };
 		582F4EE01F33B1120062A546 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582F4EB81F33B1120062A546 /* LaunchScreen.storyboard */; };
+		583162121FA9BF45002B8D8C /* NextToArriveStop+DelayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583162111FA9BF45002B8D8C /* NextToArriveStop+DelayString.swift */; };
 		58326F921F9090A000E4A78A /* TripDetailMapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58326F911F9090A000E4A78A /* TripDetailMapViewDelegate.swift */; };
 		583523991F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583523981F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift */; };
 		58406EB51F3A9C0E00E6E04D /* SeptaSchedule.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58ACEAE31F3A9A9B00DC2836 /* SeptaSchedule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -727,6 +728,7 @@
 		582F4EB61F33B1120062A546 /* DatabaseStateWatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseStateWatcher.swift; sourceTree = "<group>"; };
 		582F4EB91F33B1120062A546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		582F4F241F33B2400062A546 /* Septa-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Septa-Bridging-Header.h"; sourceTree = "<group>"; };
+		583162111FA9BF45002B8D8C /* NextToArriveStop+DelayString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NextToArriveStop+DelayString.swift"; sourceTree = "<group>"; };
 		58326F911F9090A000E4A78A /* TripDetailMapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailMapViewDelegate.swift; sourceTree = "<group>"; };
 		583523981F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTransitModesToolBarViewController.swift; sourceTree = "<group>"; };
 		5840D6D21F376D9C00C8CB76 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
@@ -2299,6 +2301,7 @@
 				58C7E1551F7AC3C000C133C5 /* VehicleLocation.swift */,
 				58E33F191F6145C000C74B7C /* NextToArriveConnectionStation.swift */,
 				58E33F151F6143E000C74B7C /* NextToArriveStop.swift */,
+				583162111FA9BF45002B8D8C /* NextToArriveStop+DelayString.swift */,
 			);
 			path = NextToArrive;
 			sourceTree = "<group>";
@@ -3266,6 +3269,7 @@
 				58C2A0691F38AA1B00F0D6CA /* ScheduleData.swift in Sources */,
 				67075FC81F57866D008BB38C /* ScheduleRouteState.swift in Sources */,
 				6789B7771F8FDFC8008C6DCA /* TripDetailInfoViewController.swift in Sources */,
+				583162121FA9BF45002B8D8C /* NextToArriveStop+DelayString.swift in Sources */,
 				587BC0541F6EE86000B92BB6 /* AlertsViewController.swift in Sources */,
 				58290E531F372F36000CCF3C /* ScheduleState.swift in Sources */,
 				5840D6E31F37E9FB00C8CB76 /* UserPreferencesProvider.swift in Sources */,
