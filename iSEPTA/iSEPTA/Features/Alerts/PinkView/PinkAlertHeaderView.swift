@@ -45,7 +45,7 @@ class PinkAlertHeaderView: UIView {
             disabledAdvisoryLabel.isHidden = enabled
             advisoryLabel.isHidden = !enabled
             actionButton.isEnabled = enabled
-            setNeedsLayout()
+            setNeedsDisplay()
         }
     }
 

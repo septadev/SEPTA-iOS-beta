@@ -51,4 +51,8 @@ class AlertDetailCell: UITableViewCell {
     func setEnabled(_ enabled: Bool) {
         cellView.setEnabled(enabled)
     }
+
+    func setOpenState(_ open: Bool) {
+        cellView.openState = open
+    }
 }
