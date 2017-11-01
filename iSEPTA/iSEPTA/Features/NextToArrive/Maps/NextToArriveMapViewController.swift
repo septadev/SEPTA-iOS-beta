@@ -127,20 +127,16 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         let annotation = VehicleLocationAnnotation(vehicleLocation: vehicleLocation)
         annotation.coordinate = location
         if #available(iOS 11.0, *) {
-           annotation.title = nil
+            annotation.title = nil
         } else {
-            if let transitMode = scheduleRequest?.transitMode  {
-           annotation.title = transitMode.mapTitle()
-           }
+            if let transitMode = scheduleRequest?.transitMode {
+                annotation.title = transitMode.mapTitle()
+            }
         }
-        
+
         mapView.addAnnotation(annotation)
         vehiclesAnnotationsAdded.append(annotation)
     }
-    
-    
-    
-    
 
     func clearExistingVehicleLocations() {
         mapView.removeAnnotations(vehiclesAnnotationsAdded)
@@ -220,110 +216,18 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
     func retrieveVehicleAnnotationView(annotation: VehicleLocationAnnotation) -> MKAnnotationView {
         let vehicleId = "vehicle"
         let annotationView: MKAnnotationView
-        if let vehicleView = mapView.dequeueReusableAnnotationView(withIdentifier: vehicleId){
+        if let vehicleView = mapView.dequeueReusableAnnotationView(withIdentifier: vehicleId) {
             annotationView = vehicleView
         } else {
             annotationView = buildNewVehicleAnnotationView(annotation: annotation, vehicleViewId: vehicleId)
         }
-        
-        buildVehicleTitle(vehicleLocation: annotation.vehicleLocation, calloutView: annotationView.detailCalloutAccessoryView)
+
+        if let calloutAccessoryView = annotationView.detailCalloutAccessoryView as? MapVehicleCalloutView {
+            calloutAccessoryView.buildCalloutView(vehicleLocation: annotation.vehicleLocation)
+        }
         annotationView.annotation = annotation
-        //        if annotation.vehicleLocation.isMoving, let bearing = annotation.vehicleLocation.bearing {
-        //            let startingTransform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
-        //            let transformForBearing = startingTransform.rotated(by: CGFloat(bearing))
-        //            //            vehicleView.transform = transformForBearing
-        //        }
+
         return annotationView
-    }
-    
-    func buildVehicleTitle(vehicleLocation: VehicleLocation, calloutView: UIView?) {
-        guard let calloutView = calloutView as? MapVehicleCalloutView , let transitMode = scheduleRequest?.transitMode else { return }
-        
-        if let detail = vehicleLocation.nextToArriveStop.nextToArriveDetail as? NextToArriveRailDetails,
-            let consist = detail.consist, let destination = detail.destination, let delay = detail.destinationDelay, let tripId = detail.tripid {
-                let countString = String(consist.count)
-                let delayString = buildDelayString(delay:delay)
-                calloutView.label1.text = "Train: #\(tripId) to \(destination)"
-                calloutView.label2.text = delayString
-                calloutView.label3.text = "# of Train Cars: \(countString)"
-                return
-            }
-        if let detail = vehicleLocation.nextToArriveStop.nextToArriveDetail as? NextToArriveBusDetails,
-            let vehicleId = detail.vehicleid, let destination = detail.destinationStation, let delay = detail.destinationDelay, let blockId = detail.blockid {
-            
-                let delayString = buildDelayString(delay:delay)
-                calloutView.label1.text = "Block ID: \(blockId) to \(destination)"
-                calloutView.label2.text = "Vehicle Number: \(vehicleId)"
-                calloutView.label3.text = delayString
-                return
-            }
-        let stop = vehicleLocation.nextToArriveStop
-        
-        if transitMode.useBusForDetails(){
-           if let lastStopName = stop.lastStopName {
-                calloutView.label1.text = "#\(stop.routeId):  to \(lastStopName)"
-           } else {
-                calloutView.label1.text = ""
-           }
-           
-           if let vehicleIds = stop.vehicleIds, let firstVehicle = vehicleIds.first {
-                calloutView.label2.text = "Vehicle Number: \(firstVehicle)"
-           } else {
-                calloutView.label3.text = "Vehicle Number not available"
-           }
-           
-           if let delay = stop.delayMinutes {
-                let delayString = buildDelayString(delay:delay)
-                calloutView.label3.text = delayString
-           } else {
-                calloutView.label3.text = "Status: No Realtime data"
-           }
-            return
-        }
-        
-           if transitMode.useRailForDetails(){
-           if let  tripId = stop.tripId , let lastStopName = stop.lastStopName{
-                calloutView.label1.text = "Train: #\(tripId) to \(lastStopName)"
-           } else {
-                calloutView.label1.text = ""
-           }
-           
-        if let delay = stop.delayMinutes {
-                let delayString = buildDelayString(delay:delay)
-                calloutView.label2.text = delayString
-           } else {
-                calloutView.label2.text = "Status: No Realtime data"
-           }
-           
-           if let vehicleIds = stop.vehicleIds {
-                calloutView.label3.text = "# of Train Cars: \(vehicleIds.count)"
-           } else {
-                calloutView.label3.text = "# of Train Cars: unknown"
-           }
-           
-         return
-        
-        }
-        
-          calloutView.label1.text = ""
-                calloutView.label2.text = ""
-                calloutView.label3.text = ""
-        
-    }
-    
-    func buildDelayString(delay: Int) -> String {
-        let delayString: String
-                switch delay {
-                    case let delay where delay < 0:
-                    delayString = "Status: \(abs(delay)) min early"
-                    case 0:
-                    delayString = "Status: On Time"
-                    case  let delay where delay > 0:
-                    delayString = "Status: \(delay) min late"
-                    default:
-                    delayString = ""
-                }
-        return delayString
     }
 
     func buildNewVehicleAnnotationView(annotation: VehicleLocationAnnotation, vehicleViewId: String) -> MKAnnotationView {
@@ -336,7 +240,7 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
         return vehicleView
     }
 
-    func mapView(_: MKMapView, didSelect annotationView: MKAnnotationView) {
+    func mapView(_: MKMapView, didSelect _: MKAnnotationView) {
         print("User Selected a pin")
     }
 

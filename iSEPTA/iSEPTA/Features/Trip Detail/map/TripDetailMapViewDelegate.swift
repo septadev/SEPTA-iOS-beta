@@ -38,7 +38,7 @@ class TripDetailMapViewDelegate: NSObject, MKMapViewDelegate {
     func retrieveVehicleAnnotationView(annotation: VehicleLocationAnnotation, mapView: MKMapView) -> MKAnnotationView? {
         let vehicleId = "vehicle"
         let annotationView: MKAnnotationView
-        if let vehicleView = mapView.dequeueReusableAnnotationView(withIdentifier: vehicleId){
+        if let vehicleView = mapView.dequeueReusableAnnotationView(withIdentifier: vehicleId) {
             annotationView = vehicleView
         } else {
             let maybeAnnotionView = buildNewVehicleAnnotationView(annotation: annotation, vehicleViewId: vehicleId)
@@ -47,107 +47,106 @@ class TripDetailMapViewDelegate: NSObject, MKMapViewDelegate {
             } else {
                 return nil
             }
-            
         }
 
-        buildVehicleTitle(vehicleLocation: annotation.vehicleLocation, calloutView: annotationView.detailCalloutAccessoryView)
+        if let calloutAccessoryView = annotationView.detailCalloutAccessoryView as? MapVehicleCalloutView {
+            calloutAccessoryView.buildCalloutView(vehicleLocation: annotation.vehicleLocation)
+        }
+
         annotationView.annotation = annotation
-        //        if annotation.vehicleLocation.isMoving, let bearing = annotation.vehicleLocation.bearing {
-        //            let startingTransform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
-        //            let transformForBearing = startingTransform.rotated(by: CGFloat(bearing))
-        //            //            vehicleView.transform = transformForBearing
-        //        }
+
         return annotationView
     }
 
     func buildVehicleTitle(vehicleLocation: VehicleLocation, calloutView: UIView?) {
-        guard let calloutView = calloutView as? MapVehicleCalloutView , let transitMode = tripDetails?.transitMode else { return }
+        guard let calloutView = calloutView as? MapVehicleCalloutView else { return }
+
+        let nextToArriveStop = vehicleLocation.nextToArriveStop
+
+        let transitMode = nextToArriveStop.transitMode
 
         if let detail = vehicleLocation.nextToArriveStop.nextToArriveDetail as? NextToArriveRailDetails,
-            let consist = detail.consist, let destination = detail.destination, let delay = detail.destinationDelay, let tripId = detail.tripid {
-                let countString = String(consist.count)
-                let delayString = buildDelayString(delay:delay)
-                calloutView.label1.text = "Train: #\(tripId) to \(destination)"
-                calloutView.label2.text = delayString
-                calloutView.label3.text = "# of Train Cars: \(countString)"
-                return
-            }
+            let consist = detail.consist, let destination = detail.destination, let tripId = detail.tripid {
+            let countString = String(consist.count)
+            calloutView.label1.text = "Train: #\(tripId) to \(destination)"
+            configureDelayLabel(nextToArriveStop: nextToArriveStop, label: calloutView.label2)
+            calloutView.label3.text = "# of Train Cars: \(countString)"
+            return
+        }
         if let detail = vehicleLocation.nextToArriveStop.nextToArriveDetail as? NextToArriveBusDetails,
-            let vehicleId = detail.vehicleid, let destination = detail.destinationStation, let delay = detail.destinationDelay, let blockId = detail.blockid {
+            let vehicleId = detail.vehicleid, let destination = detail.destinationStation, let blockId = detail.blockid {
 
-                let delayString = buildDelayString(delay:delay)
-                calloutView.label1.text = "Block ID: \(blockId) to \(destination)"
-                calloutView.label2.text = "Vehicle Number: \(vehicleId)"
-                calloutView.label3.text = delayString
-                return
-            }
-        let stop = vehicleLocation.nextToArriveStop
-
-        if transitMode.useBusForDetails(){
-           if let lastStopName = stop.lastStopName {
-                calloutView.label1.text = "#\(stop.routeId):  to \(lastStopName)"
-           } else {
-                calloutView.label1.text = ""
-           }
-
-           if let vehicleIds = stop.vehicleIds, let firstVehicle = vehicleIds.first {
-                calloutView.label2.text = "Vehicle Number: \(firstVehicle)"
-           } else {
-                calloutView.label3.text = "Vehicle Number not available"
-           }
-
-           if let delay = stop.delayMinutes {
-                let delayString = buildDelayString(delay:delay)
-                calloutView.label3.text = delayString
-           } else {
-                calloutView.label3.text = "Status: No Realtime data"
-           }
+            calloutView.label1.text = "Block ID: \(blockId) to \(destination)"
+            calloutView.label2.text = "Vehicle Number: \(vehicleId)"
+            configureDelayLabel(nextToArriveStop: nextToArriveStop, label: calloutView.label3)
             return
         }
 
-           if transitMode.useRailForDetails(){
-           if let  tripId = stop.tripId , let lastStopName = stop.lastStopName{
-                calloutView.label1.text = "Train: #\(tripId) to \(lastStopName)"
-           } else {
-                calloutView.label1.text = ""
-           }
+        if transitMode.useBusForDetails() {
 
-        if let delay = stop.delayMinutes {
-                let delayString = buildDelayString(delay:delay)
-                calloutView.label2.text = delayString
-           } else {
-                calloutView.label2.text = "Status: No Realtime data"
-           }
+            configureBusToLastStopLabel(nextToArriveStop: nextToArriveStop, label: calloutView.label1)
 
-           if let vehicleIds = stop.vehicleIds {
-                calloutView.label3.text = "# of Train Cars: \(vehicleIds.count)"
-           } else {
-                calloutView.label3.text = "# of Train Cars: unknown"
-           }
+            configureBusVehicleIDLabel(nextToArriveStop: nextToArriveStop, label: calloutView.label2)
 
-         return
-
+            configureDelayLabel(nextToArriveStop: nextToArriveStop, label: calloutView.label3)
+            return
         }
 
-          calloutView.label1.text = ""
-                calloutView.label2.text = ""
-                calloutView.label3.text = ""
+        if transitMode.useRailForDetails() {
 
+            configureTrainToLastStopLabel(nextToArriveStop: nextToArriveStop, label: calloutView.label1)
+
+            configureDelayLabel(nextToArriveStop: nextToArriveStop, label: calloutView.label2)
+
+            configureRailVehicleIDLabel(nextToArriveStop: nextToArriveStop, label: calloutView.label3)
+
+            return
+        }
+
+        calloutView.label1.text = ""
+        calloutView.label2.text = ""
+        calloutView.label3.text = ""
     }
 
-    func buildDelayString(delay: Int) -> String {
-        let delayString: String
-                switch delay {
-                    case let delay where delay < 0:
-                    delayString = "Status: \(abs(delay)) min early"
-                    case 0:
-                    delayString = "Status: On Time"
-                    case  let delay where delay > 0:
-                    delayString = "Status: \(delay) min late"
-                    default:
-                    delayString = ""
-                }
-        return delayString
+    func configureDelayLabel(nextToArriveStop: NextToArriveStop, label: UILabel) {
+        let delayString = nextToArriveStop.generateDelayString()
+        if let delayString = delayString {
+            label.text = delayString
+        } else {
+            label.text = "Status: No Realtime data"
+        }
+    }
+
+    func configureTrainToLastStopLabel(nextToArriveStop: NextToArriveStop, label: UILabel) {
+        if let tripId = nextToArriveStop.tripId, let lastStopName = nextToArriveStop.lastStopName {
+            label.text = "Train: #\(tripId) to \(lastStopName)"
+        } else {
+            label.text = ""
+        }
+    }
+
+    func configureBusToLastStopLabel(nextToArriveStop: NextToArriveStop, label: UILabel) {
+        if let lastStopName = nextToArriveStop.lastStopName {
+            label.text = "#\(nextToArriveStop.routeId):  to \(lastStopName)"
+        } else {
+            label.text = ""
+        }
+    }
+
+    func configureBusVehicleIDLabel(nextToArriveStop: NextToArriveStop, label: UILabel) {
+        if let vehicleIds = nextToArriveStop.vehicleIds, let firstVehicle = vehicleIds.first {
+            label.text = "Vehicle Number: \(firstVehicle)"
+        } else {
+            label.text = "Vehicle Number not available"
+        }
+    }
+
+    func configureRailVehicleIDLabel(nextToArriveStop: NextToArriveStop, label: UILabel) {
+        if let vehicleIds = nextToArriveStop.vehicleIds {
+            label.text = "# of Train Cars: \(vehicleIds.count)"
+        } else {
+            label.text = "# of Train Cars: unknown"
+        }
     }
 
     func buildNewVehicleAnnotationView(annotation: VehicleLocationAnnotation, vehicleViewId: String) -> MKAnnotationView? {
@@ -159,7 +158,7 @@ class TripDetailMapViewDelegate: NSObject, MKMapViewDelegate {
         return vehicleView
     }
 
-    func mapView(_: MKMapView, didSelect annotationView: MKAnnotationView) {
+    func mapView(_: MKMapView, didSelect _: MKAnnotationView) {
         print("User Selected a pin")
     }
 

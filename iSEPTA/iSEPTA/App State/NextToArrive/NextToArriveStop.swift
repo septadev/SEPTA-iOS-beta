@@ -60,7 +60,7 @@ struct NextToArriveStop {
             vehicleLocationCoordinate = CLLocationCoordinate2D(latitude: newLat, longitude: newLon)
         }
 
-        if let delayMinutes = nextToArriveDetail.destinationDelay {
+        if let delayMinutes = detail.destinationDelay {
             self.delayMinutes = delayMinutes
         }
 
@@ -74,6 +74,9 @@ struct NextToArriveStop {
         }
 
         if let busDetails = nextToArriveDetail as? NextToArriveBusDetails {
+            if let vehicleId = busDetails.vehicleid {
+                vehicleIds = [vehicleId]
+            }
             if let lastStopName = busDetails.destinationStation {
                 self.lastStopName = lastStopName
             }

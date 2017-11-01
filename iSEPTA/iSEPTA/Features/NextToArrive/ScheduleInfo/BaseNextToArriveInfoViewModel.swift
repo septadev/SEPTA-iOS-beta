@@ -241,13 +241,7 @@ extension BaseNextToArriveInfoViewModel { // Table View
     }
 
     func generateOnTimeString(stop: NextToArriveStop, hasVehicleLocation _: Bool) -> String? {
-        guard let tripDelayMinutes = stop.delayMinutes, stop.hasRealTimeData else { return "Scheduled" }
-        let delayString = String(tripDelayMinutes)
-        if tripDelayMinutes > 0 {
-            return "\(delayString) min late"
-        } else {
-            return "On Time"
-        }
+        return stop.generateDelayString()
     }
 
     func generateOnTimeColor(stop: NextToArriveStop, hasVehicleLocation _: Bool) -> UIColor {

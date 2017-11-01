@@ -10,91 +10,27 @@ import Foundation
 
 extension NextToArriveStop {
     func generateDelayString() -> String? {
-        let absoluteDelay = abs(delay)
-        let delayString: String
-                switch delay {
+        let defaultString = "Scheduled"
+        guard hasRealTimeData else { return defaultString }
+
+        guard let delayMinutes = delayMinutes else { return defaultString }
+
+        let delayString: String?
+                switch delayMinutes {
                     case let delay where delay < 0:
+                    let absoluteDelay = abs(delay)
                     delayString = "Status: \(absoluteDelay) min early"
+
                     case 0:
                     delayString = "Status: On Time"
+
                     case  let delay where delay > 0:
                     delayString = "Status: \(delay) min late"
+
                     default:
-                    delayString = ""
+                    delayString = defaultString
                 }
         return delayString
     }
-
-    private func determineDelay() -> Int? {
-
-
-
-    if let detail = nextToArriveDetail as? NextToArriveRailDetails, let delay = detail.destinationDelay {
-
-                return delay
-            }
-        if let detail = nextToArriveDetail as? NextToArriveBusDetails,
-            let delay = detail.destinationDelay {
-
-                let delayString = buildDelayString(delay:delay)
-                calloutView.label1.text = "Block ID: \(blockId) to \(destination)"
-                calloutView.label2.text = "Vehicle Number: \(vehicleId)"
-                calloutView.label3.text = delayString
-                return
-            }
-        let stop = vehicleLocation.nextToArriveStop
-
-        if transitMode.useBusForDetails(){
-           if let lastStopName = stop.lastStopName {
-                calloutView.label1.text = "#\(stop.routeId):  to \(lastStopName)"
-           } else {
-                calloutView.label1.text = ""
-           }
-
-           if let vehicleIds = stop.vehicleIds, let firstVehicle = vehicleIds.first {
-                calloutView.label2.text = "Vehicle Number: \(firstVehicle)"
-           } else {
-                calloutView.label3.text = "Vehicle Number not available"
-           }
-
-           if let delay = stop.delayMinutes {
-                let delayString = buildDelayString(delay:delay)
-                calloutView.label3.text = delayString
-           } else {
-                calloutView.label3.text = "Status: No Realtime data"
-           }
-            return
-        }
-
-           if transitMode.useRailForDetails(){
-           if let  tripId = stop.tripId , let lastStopName = stop.lastStopName{
-                calloutView.label1.text = "Train: #\(tripId) to \(lastStopName)"
-           } else {
-                calloutView.label1.text = ""
-           }
-
-        if let delay = stop.delayMinutes {
-                let delayString = buildDelayString(delay:delay)
-                calloutView.label2.text = delayString
-           } else {
-                calloutView.label2.text = "Status: No Realtime data"
-           }
-
-           if let vehicleIds = stop.vehicleIds {
-                calloutView.label3.text = "# of Train Cars: \(vehicleIds.count)"
-           } else {
-                calloutView.label3.text = "# of Train Cars: unknown"
-           }
-
-         return
-
-        }
-
-          calloutView.label1.text = ""
-                calloutView.label2.text = ""
-                calloutView.label3.text = ""
-
-    }
-
 
 }

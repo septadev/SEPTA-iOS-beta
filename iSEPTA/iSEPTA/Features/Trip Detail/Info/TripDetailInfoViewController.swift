@@ -41,20 +41,18 @@ class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetail
         configureRoute(nextToArriveStop: nextToArriveStop)
         configureDestination(nextToArriveStop: nextToArriveStop)
         configureTwitter(nextToArriveStop: nextToArriveStop)
+        configureDelayView(nextToArriveStop: nextToArriveStop)
 
         if let railDetails = nextToArriveStop.nextToArriveDetail as? NextToArriveRailDetails {
             configureHeaderViewForRail(railDetails: railDetails)
-            configureDelayViewForRail(railDetails: railDetails)
             configureNextStopViewForRail(railDetails: railDetails)
             configureCars(nextToArriveStop: nextToArriveStop)
             configureService(nextToArriveStop: nextToArriveStop)
         } else if let busDetails = nextToArriveStop.nextToArriveDetail as? NextToArriveBusDetails {
             configureHeaderViewForBus(busDetails: busDetails)
-            configureDelayViewForBus(busDetails: busDetails)
             configureCarsForBus(busDetails: busDetails)
         } else {
             configureHeaderViewForNoDetail(nextToArriveStop: nextToArriveStop)
-            configureDelayViewForNoDetail(nextToArriveStop: nextToArriveStop)
             configureNextStopViewForNoDetail(nextToArriveStop: nextToArriveStop)
         }
 
@@ -84,21 +82,9 @@ class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetail
 
     // MARK: - Delay View
 
-    func configureDelayViewForRail(railDetails: NextToArriveRailDetails) {
-        configureDelayView(delayMinutes: railDetails.destinationDelay)
-    }
-
-    func configureDelayViewForBus(busDetails: NextToArriveBusDetails) {
-        configureDelayView(delayMinutes: busDetails.destinationDelay)
-    }
-
-    func configureDelayViewForNoDetail(nextToArriveStop: NextToArriveStop) {
-        configureDelayView(delayMinutes: nextToArriveStop.delayMinutes)
-    }
-
-    func configureDelayView(delayMinutes: Int?) {
-        let color = generateOnTimeColor(delayMinutes: delayMinutes)
-        delayLabel.text = generateOnTimeString(delayMinutes: delayMinutes)
+    func configureDelayView(nextToArriveStop: NextToArriveStop) {
+        let color = generateOnTimeColor(delayMinutes: nextToArriveStop.delayMinutes)
+        delayLabel.text = nextToArriveStop.generateDelayString()
         delayLabel.textColor = color
         delayBoxView.layer.borderWidth = 1
         delayBoxView.layer.borderColor = color.cgColor
@@ -224,16 +210,6 @@ class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetail
     }
 
     func configureIcone() {
-    }
-
-    func generateOnTimeString(delayMinutes: Int?) -> String? {
-        guard let delayMinutes = delayMinutes else { return "No Real Time Data" }
-        let delayString = String(delayMinutes)
-        if delayMinutes > 0 {
-            return "\(delayString) min late"
-        } else {
-            return "On Time"
-        }
     }
 
     func generateOnTimeColor(delayMinutes: Int?) -> UIColor {
