@@ -85,18 +85,15 @@ class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetail
     // MARK: - Delay View
 
     func configureDelayViewForRail(railDetails: NextToArriveRailDetails) {
-        guard let delayMinutes = railDetails.destinationDelay else { return }
-        configureDelayView(delayMinutes: delayMinutes)
+        configureDelayView(delayMinutes: railDetails.destinationDelay)
     }
 
     func configureDelayViewForBus(busDetails: NextToArriveBusDetails) {
-        guard let delayMinutes = busDetails.destinationDelay else { return }
-        configureDelayView(delayMinutes: delayMinutes)
+        configureDelayView(delayMinutes: busDetails.destinationDelay)
     }
 
     func configureDelayViewForNoDetail(nextToArriveStop: NextToArriveStop) {
-        guard let delayMinutes = nextToArriveStop.delayMinutes else { return }
-        configureDelayView(delayMinutes: delayMinutes)
+        configureDelayView(delayMinutes: nextToArriveStop.delayMinutes)
     }
 
     func configureDelayView(delayMinutes: Int?) {
