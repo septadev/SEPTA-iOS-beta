@@ -21,6 +21,8 @@ class NextToArriveNoResultsAlert: NextToArriveUpdateStatusWatcherDelegate {
 
     var favoriteWatcher: NextToArriveFavorite_NextToArriveUpdateStatusWatcher?
 
+    var hasShowAlertsOnce: Bool = false
+
     init(viewController: UIViewController) {
         self.viewController = viewController
         let target = store.state.targetForScheduleActions()
@@ -34,17 +36,15 @@ class NextToArriveNoResultsAlert: NextToArriveUpdateStatusWatcherDelegate {
     }
 
     func nextToArriveUpdateStatusUpdated(nextToArriveUpdateStatus: NextToArriveUpdateStatus) {
-        guard let controller = viewController as? IdentifiableController else { return }
+        guard !hasShowAlertsOnce else { return }
         if nextToArriveUpdateStatus == .dataLoadingError {
             UIAlert.presentOKAlertFrom(viewController: viewController, withTitle: title, message: errorMessage) {
-                let popAction = PopViewController(viewController: controller.viewController, description: "Popping because no NTA results retrieved")
-                store.dispatch(popAction)
+                self.hasShowAlertsOnce = true
             }
         }
         if nextToArriveUpdateStatus == .noResultsReturned {
             UIAlert.presentOKAlertFrom(viewController: viewController, withTitle: title, message: noResultsMessage) {
-                let popAction = PopViewController(viewController: controller.viewController, description: "Popping because no NTA results retrieved")
-                store.dispatch(popAction)
+                self.hasShowAlertsOnce = true
             }
         }
     }
