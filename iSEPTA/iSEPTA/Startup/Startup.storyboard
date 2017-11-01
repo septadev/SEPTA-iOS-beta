@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trolley-splash.png" translatesAutoresizingMaskIntoConstraints="NO" id="YBe-oB-rMw">
+                            <imageView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trolley-splash" translatesAutoresizingMaskIntoConstraints="NO" id="YBe-oB-rMw">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
@@ -45,11 +45,20 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeptaLogoTrademark" highlightedImage="SeptaLogoTrademark" translatesAutoresizingMaskIntoConstraints="NO" id="Ycs-cw-c6u" userLabel="Logo">
+                                <rect key="frame" x="110.5" y="263.5" width="154" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="154" id="ELH-d1-qh9"/>
+                                    <constraint firstAttribute="height" constant="160" id="cLt-Vu-hz5"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Ycs-cw-c6u" firstAttribute="centerY" secondItem="y9C-gI-PKw" secondAttribute="centerY" id="0MK-bA-RMW"/>
                             <constraint firstItem="bz5-JX-XrU" firstAttribute="width" secondItem="ih7-Rt-nFq" secondAttribute="width" multiplier="0.75" id="2GS-CO-Qb9" userLabel="WelcomeWidth"/>
                             <constraint firstItem="bz5-JX-XrU" firstAttribute="centerX" secondItem="ih7-Rt-nFq" secondAttribute="centerX" id="3kK-NB-XbT" userLabel="WelcomeCenterX"/>
+                            <constraint firstItem="Ycs-cw-c6u" firstAttribute="centerX" secondItem="y9C-gI-PKw" secondAttribute="centerX" id="6k5-Fo-oxF"/>
                             <constraint firstItem="YBe-oB-rMw" firstAttribute="top" secondItem="ih7-Rt-nFq" secondAttribute="top" id="KGv-oR-rSd" userLabel="splashTop"/>
                             <constraint firstItem="kb4-wn-sdA" firstAttribute="top" secondItem="S5y-jE-vJV" secondAttribute="bottom" constant="15" id="NnY-M3-gUU" userLabel="ThanksBottom"/>
                             <constraint firstItem="S5y-jE-vJV" firstAttribute="top" secondItem="bz5-JX-XrU" secondAttribute="bottom" constant="25" id="Q6T-sF-DnM" userLabel="WelcomeBottom"/>
@@ -73,6 +82,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="trolley-splash.png" width="750" height="1334"/>
+        <image name="SeptaLogoTrademark" width="154" height="150"/>
+        <image name="trolley-splash" width="375" height="667"/>
     </resources>
 </document>

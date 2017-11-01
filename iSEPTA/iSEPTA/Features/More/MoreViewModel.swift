@@ -48,6 +48,6 @@ class MoreViewModel {
 
     func configureAboutCell(cell: MoreTableViewCell) {
         cell.moreLabel.text = "About the SEPTA App"
-        cell.moreImageView.image = UIImage(named: "Icon-40")
+        cell.moreImageView.image = UIImage(named: "AboutTheApp")
     }
 }

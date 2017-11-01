@@ -2,26 +2,20 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "bgTrolleyImage.jpg",
+      "filename" : "septaLogo.pdf",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "bgTrolleyImage@2x.jpg",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "bgTrolleyImage@3x.jpg",
       "scale" : "3x"
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
-  },
-  "properties" : {
-    "compression-type" : "lossy",
-    "template-rendering-intent" : "original"
   }
 }

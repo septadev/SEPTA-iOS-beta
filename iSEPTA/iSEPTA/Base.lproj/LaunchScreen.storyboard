@@ -21,8 +21,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trolley-splash.png" highlightedImage="trolley-splash.png" translatesAutoresizingMaskIntoConstraints="NO" id="awN-Rt-1Qc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trolley-splash" highlightedImage="trolley-splash" translatesAutoresizingMaskIntoConstraints="NO" id="awN-Rt-1Qc">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeptaLogoTrademark" highlightedImage="SeptaLogoTrademark" translatesAutoresizingMaskIntoConstraints="NO" id="smv-BL-ejV" userLabel="Logo">
+                                <rect key="frame" x="83" y="165" width="154" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Dmy-wr-K29"/>
+                                    <constraint firstAttribute="width" constant="154" id="UVr-NF-Dpz"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.13333333333333333" green="0.32549019607843138" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
@@ -30,6 +37,8 @@
                             <constraint firstAttribute="trailing" secondItem="awN-Rt-1Qc" secondAttribute="trailing" id="20i-ee-WrZ"/>
                             <constraint firstItem="LrC-n1-4YP" firstAttribute="top" secondItem="awN-Rt-1Qc" secondAttribute="bottom" id="9Ct-HR-nnP"/>
                             <constraint firstItem="awN-Rt-1Qc" firstAttribute="top" secondItem="AN9-fI-jax" secondAttribute="top" id="YOX-DE-xqO"/>
+                            <constraint firstItem="smv-BL-ejV" firstAttribute="centerX" secondItem="AN9-fI-jax" secondAttribute="centerX" id="Yau-3B-7ay"/>
+                            <constraint firstItem="smv-BL-ejV" firstAttribute="centerY" secondItem="AN9-fI-jax" secondAttribute="centerY" id="dQN-uD-CMk"/>
                             <constraint firstItem="awN-Rt-1Qc" firstAttribute="leading" secondItem="AN9-fI-jax" secondAttribute="leading" id="okC-pT-Eot"/>
                         </constraints>
                     </view>
@@ -39,6 +48,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="trolley-splash.png" width="750" height="1334"/>
+        <image name="SeptaLogoTrademark" width="154" height="150"/>
+        <image name="trolley-splash" width="375" height="667"/>
     </resources>
 </document>
