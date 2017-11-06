@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>databaseVersion</key>
-	<integer>3</integer>
+	<integer>4</integer>
 	<key>url</key>
 	<string>https://vnjb5kvq2b.execute-api.us-east-1.amazonaws.com/prod</string>
 	<key>apiKey</key>
