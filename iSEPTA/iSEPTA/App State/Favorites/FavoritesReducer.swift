@@ -186,7 +186,7 @@ struct FavoritesReducer {
         guard var updatedFavorite = matchingFavoriteForId(favoriteId, state: state) else { return state.favorites }
         updatedFavorite.nextToArriveUpdateStatus = nextToArriveUpdateStatus
         updatedFavorite.refreshDataRequested = false
-        if nextToArriveUpdateStatus == .noResultsReturned {
+        if nextToArriveUpdateStatus == .noResultsReturned || nextToArriveUpdateStatus == .dataLoadingError {
             updatedFavorite.nextToArriveTrips = [NextToArriveTrip]()
         }
         var otherFavorites = nonMatchingFavoriteForId(favoriteId, state: state)
