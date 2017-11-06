@@ -45,7 +45,14 @@ class TripScheduleSQLQuery: SQLQueryProtocol {
                 serviceId = "32"
             }
         } else {
-            serviceId = String(scheduleType.rawValue)
+            switch scheduleType {
+            case .saturday:
+                serviceId = "1"
+            case .sunday:
+                serviceId = "64"
+            default:
+                serviceId = "8"
+            }
         }
 
         self.transitMode = transitMode

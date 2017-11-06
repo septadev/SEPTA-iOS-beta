@@ -90,6 +90,9 @@ CREATE INDEX trips_bus_route_id_index
 CREATE INDEX trips_rail_route_id_trip_id_index
   ON trips_rail (route_id, trip_id);
 
+CREATE INDEX trips_rail_trip_id_route_id_index 
+  ON trips_rail (trip_id, route_id);
+
 -- routes-bus
 
 CREATE INDEX routes_bus_route_id_index
@@ -111,6 +114,11 @@ CREATE INDEX reverseStopSearch_stop_id_reverse_stop_id_index
 CREATE INDEX bus_stop_directions_Route_index
   ON bus_stop_directions (Route);
 
+-- stop times rail
 
+CREATE INDEX stop_times_rail_trip_id_stop_id_stop_sequence_index 
+  ON stop_times_rail (trip_id, stop_id, stop_sequence);
+CREATE INDEX stop_times_rail_stop_id_trip_id_index 
+  ON stop_times_rail (stop_id, trip_id);
 
 VACUUM;
