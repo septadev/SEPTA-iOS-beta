@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
 extension NextToArriveStop {
-    func generateDelayString() -> String? {
+    func generateDelayString(prefixString: String) -> String? {
         let defaultString = "Scheduled"
         guard hasRealTimeData else { return defaultString }
 
@@ -19,18 +20,41 @@ extension NextToArriveStop {
                 switch delayMinutes {
                     case let delay where delay < 0:
                     let absoluteDelay = abs(delay)
-                    delayString = "Status: \(absoluteDelay) min early"
+                    delayString = "\(prefixString)\(absoluteDelay) min early"
 
                     case 0:
-                    delayString = "Status: On Time"
+                    delayString = "\(prefixString)On Time"
 
                     case  let delay where delay > 0:
-                    delayString = "Status: \(delay) min late"
+                    delayString = "\(prefixString)\(delay) min late"
 
                     default:
                     delayString = defaultString
                 }
         return delayString
+    }
+    
+    func generateTimeToDepartureString() -> String? {
+        let sortedDates = [self.arrivalTime, self.departureTime].sorted()
+        var firstDate = sortedDates[0]
+        if let delayMinutes = self.delayMinutes, hasRealTimeData {
+            var components = DateComponents()
+            components.minute = delayMinutes
+            firstDate = Calendar.current.date(byAdding: components, to: firstDate)!
+        }
+        return DateFormatters.formatTimeFromNow(date: firstDate)
+    }
+
+    
+
+    func generateOnTimeColor() -> UIColor {
+        guard let tripDelayMinutes = self.delayMinutes, self.hasRealTimeData else { return SeptaColor.transitIsScheduled }
+
+        if tripDelayMinutes > 0 {
+            return SeptaColor.transitIsLate
+        } else {
+            return SeptaColor.transitOnTime
+        }
     }
 
 }

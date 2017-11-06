@@ -83,11 +83,11 @@ class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetail
     // MARK: - Delay View
 
     func configureDelayView(nextToArriveStop: NextToArriveStop) {
-        let color = generateOnTimeColor(delayMinutes: nextToArriveStop.delayMinutes)
-        delayLabel.text = nextToArriveStop.generateDelayString()
-        delayLabel.textColor = color
+        let onTimeColor = nextToArriveStop.generateOnTimeColor()
+        delayLabel.text = nextToArriveStop.generateDelayString(prefixString: "")
+        delayLabel.textColor = onTimeColor
         delayBoxView.layer.borderWidth = 1
-        delayBoxView.layer.borderColor = color.cgColor
+        delayBoxView.layer.borderColor = onTimeColor.cgColor
     }
 
     // MARK: - Next Stop View

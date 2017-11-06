@@ -109,7 +109,7 @@ class TripDetailMapViewDelegate: NSObject, MKMapViewDelegate {
     }
 
     func configureDelayLabel(nextToArriveStop: NextToArriveStop, label: UILabel) {
-        let delayString = nextToArriveStop.generateDelayString()
+        let delayString = nextToArriveStop.generateDelayString(prefixString: "Status: ")
         if let delayString = delayString {
             label.text = delayString
         } else {
