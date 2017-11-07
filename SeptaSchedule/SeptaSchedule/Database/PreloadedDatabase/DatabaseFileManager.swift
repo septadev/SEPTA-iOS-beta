@@ -53,13 +53,17 @@ public class DatabaseFileManager {
             guard let strongSelf = self else { return }
             do {
                 guard let preloadedURL = strongSelf.preloadedZippedDatabaseURL else { throw DatabaseFileManagerError.NoPreloadedDatabase }
-                guard let documentsURL = strongSelf.documentDirectoryURL else { throw DatabaseFileManagerError.NoDocumentsDirectory }
+                guard var documentsURL = strongSelf.documentDirectoryURL else { throw DatabaseFileManagerError.NoDocumentsDirectory }
+
                 try Zip.unzipFile(preloadedURL, destination: documentsURL, overwrite: true, password: nil, progress: { (progress) -> Void in
                     if progress == 1 {
                         strongSelf.updateState(databaseState: .loaded)
                         print("database unzip is complete")
                     }
                 })
+                var resourceValues: URLResourceValues = URLResourceValues()
+                resourceValues.isExcludedFromBackup = true
+                try documentsURL.setResourceValues(resourceValues)
             } catch {
                 print(error.localizedDescription)
                 strongSelf.updateState(databaseState: .error)
