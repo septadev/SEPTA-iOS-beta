@@ -175,15 +175,6 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
 
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-    }
-
-    override func updateViewConstraints() {
-
-        super.updateViewConstraints()
-    }
-
     func configureSegementedControl() {
         segmentedControl.removeAllSegments()
         scheduleTypeSegments = transitMode.scheduleTypeSegments()
