@@ -115,11 +115,9 @@ extension FavoritesViewController: UpdateableFromViewModel {
         // Wrap our request in a work item
         let requestWorkItem = DispatchWorkItem { [weak self] in
             guard let strongSelf = self, let tableView = strongSelf.tableView else { return }
-            let offset = tableView.contentOffset
 
             tableView.reloadData()
             tableView.layoutIfNeeded()
-            tableView.contentOffset = offset
         }
 
         // Save the new work item and execute it after 250 ms
