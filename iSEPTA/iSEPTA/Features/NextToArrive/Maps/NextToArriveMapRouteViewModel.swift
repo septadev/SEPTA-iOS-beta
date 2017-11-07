@@ -9,6 +9,7 @@
 import Foundation
 import ReSwift
 import CoreLocation
+import SeptaSchedule
 
 class NextToArriveMapRouteViewModel: StoreSubscriber {
     typealias StoreSubscriberStateType = [NextToArriveTrip]
@@ -59,6 +60,19 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
         unsubscribe()
     }
 
+    var transitMode: TransitMode? {
+        guard let target = store.state.targetForScheduleActions() else { return nil }
+
+        switch target {
+        case .nextToArrive:
+            return store.state.nextToArriveState.scheduleState.scheduleRequest.transitMode
+        case .favorites:
+            return store.state.favoritesState.nextToArriveFavorite?.scheduleRequest.transitMode
+        default:
+            return nil
+        }
+    }
+
     var currentTrips = [NextToArriveTrip]()
     func newState(state: StoreSubscriberStateType) {
         let trips = state
@@ -74,8 +88,11 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
             updateStatus = .idle
         }
         if updateStatus == .dataLoadedSuccessfully {
-
-            let allRouteIds = NextToArriveGrouper.filterRoutesToMap(trips: trips, requestRouteId: requestedRoutedId)
+            var nextToArriveTransitMode: TransitMode = .rail
+            if let transitMode = self.transitMode {
+                nextToArriveTransitMode = transitMode
+            }
+            let allRouteIds = NextToArriveGrouper.filterRoutesToMap(transitMode: nextToArriveTransitMode, trips: trips, requestRouteId: requestedRoutedId)
 
             delegate.drawRoutes(routeIds: allRouteIds)
             handleVehicleLocations(trips: trips)
