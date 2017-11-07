@@ -11,7 +11,7 @@ import UIKit
 import SeptaRest
 
 class AlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherDelegate {
-    var openState: Bool = false
+    private var openState: Bool = false
 
     var sectionNumber: Int!
     weak var delegate: AlertDetailCellDelegate?
@@ -75,25 +75,33 @@ class AlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherDelegate
 
     @objc @IBAction func actionButtonTapped(_: Any) {
         delegate?.didTapButton(sectionNumber: sectionNumber)
-        calculateFittingSize()
+        toggleOpenState()
         delegate?.constraintsChanged(sectionNumber: sectionNumber)
     }
 
-    func calculateFittingSize() {
+    func toggleOpenState() {
 
         if !openState {
-            let windowWidth = UIScreen.main.bounds.width - 30
-            let sizeThatFitsTextView = textView.sizeThatFits(CGSize(width: windowWidth, height: CGFloat(MAXFLOAT)))
-            let heightOfText = sizeThatFitsTextView.height
-
-            textViewHeightContraints.constant = heightOfText
-            pinkAlertHeaderView.actionButton.isOpen = true
-            openState = true
+            setOpenState()
         } else {
-            textViewHeightContraints.constant = 0
-            pinkAlertHeaderView.actionButton.isOpen = false
-            openState = false
+            setClosedState()
         }
+    }
+
+    private func setClosedState() {
+        textViewHeightContraints.constant = 0
+        pinkAlertHeaderView.actionButton.isOpen = false
+        openState = false
+        setNeedsLayout()
+    }
+    private func setOpenState() {
+        let windowWidth = UIScreen.main.bounds.width - 30
+        let sizeThatFitsTextView = textView.sizeThatFits(CGSize(width: windowWidth, height: CGFloat(MAXFLOAT)))
+        let heightOfText = sizeThatFitsTextView.height
+
+        textViewHeightContraints.constant = heightOfText
+        pinkAlertHeaderView.actionButton.isOpen = true
+        openState = true
         setNeedsLayout()
     }
 
@@ -110,6 +118,10 @@ class AlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherDelegate
 
     func setEnabled(_ enabled: Bool) {
         pinkAlertHeaderView.enabled = enabled
+    }
+
+    func initializeCellAsClosed() {
+        setClosedState()
     }
 
     func styleWhiteViews(_ views: [UIView]) {

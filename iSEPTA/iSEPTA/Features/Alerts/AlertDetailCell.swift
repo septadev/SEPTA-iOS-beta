@@ -52,7 +52,7 @@ class AlertDetailCell: UITableViewCell {
         cellView.setEnabled(enabled)
     }
 
-    func setOpenState(_ open: Bool) {
-        cellView.openState = open
+    func initializeCellAsClosed() {
+        cellView.initializeCellAsClosed()
     }
 }

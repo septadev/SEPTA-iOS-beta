@@ -16,6 +16,11 @@ struct NavigateToSchedulesFromNextToArrive: NextToArriveMiddlewareAction {
     let description = "Navigate to SchedulesFromNextToArrive"
 }
 
+struct NavigateToSchedulesFromNextToArriveScheduleRequest: NextToArriveMiddlewareAction {
+    let scheduleRequest: ScheduleRequest
+    let description = "Navigate to SchedulesFromNextToArrive schedule request"
+}
+
 struct NavigateToAlertDetailsFromSchedules: NextToArriveMiddlewareAction {
     let scheduleState: ScheduleState
     let description = "Navigate to Alert Details From Schedules"

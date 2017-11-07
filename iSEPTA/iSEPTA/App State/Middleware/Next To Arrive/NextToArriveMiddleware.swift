@@ -33,6 +33,8 @@ class NextToArriveMiddleware {
             generateActionsToNavigateToAlertDetailsFromSchedules(action: action)
         case let action as NavigateToAlertDetailsFromNextToArrive:
             generateActionsToNavigateToAlertDetailsFromNextToArrive(action: action)
+        case let action as NavigateToSchedulesFromNextToArriveScheduleRequest:
+            generateActionsToNavigateToSchedulesFromNextToArriveScheduleRequest(action: action)
         default:
             break
         }
@@ -71,6 +73,19 @@ class NextToArriveMiddleware {
             let switchTabsAction = SwitchTabs(activeNavigationController: .schedules, description: "Switching Tabs to Next to Arrive From Schedules")
             store.dispatch(switchTabsAction)
         }
+    }
+
+    static func generateActionsToNavigateToSchedulesFromNextToArriveScheduleRequest(action: NavigateToSchedulesFromNextToArriveScheduleRequest) {
+
+        let builder = NextToArriveMiddlewareScheduleRequestBuilder.sharedInstance
+        builder.copyScheduleRequestToSchedules(scheduleRequest: action.scheduleRequest)
+
+        let navigationStackState = buildNavigationStackState(viewControllers: [.selectSchedules, .tripScheduleController])
+        let viewStackAction = InitializeNavigationState(navigationController: .schedules, navigationStackState: navigationStackState, description: "Setting Navigation Stack State prior to moving from Next To Arrive to Schedules")
+        store.dispatch(viewStackAction)
+
+        let switchTabsAction = SwitchTabs(activeNavigationController: .schedules, description: "Switching Tabs to Next to Arrive From Schedules")
+        store.dispatch(switchTabsAction)
     }
 
     static func generateActionsToNavigateToAlertDetailsFromSchedules(action: NavigateToAlertDetailsFromSchedules) {

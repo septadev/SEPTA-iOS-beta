@@ -40,6 +40,13 @@ struct NavigationReducer {
             navigationState = state
         }
 
+        if let nextToArriveState = state.appStackState[.nextToArrive] {
+            let viewControllers = nextToArriveState.viewControllers
+            for viewController in viewControllers {
+                print(viewController.rawValue)
+            }
+        }
+
         return navigationState
     }
 

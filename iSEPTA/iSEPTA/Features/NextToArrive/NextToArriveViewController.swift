@@ -5,7 +5,7 @@ import ReSwift
 import SeptaSchedule
 
 class NextToArriveViewController: BaseNonModalViewController, IdentifiableController {
-    let viewController: ViewController = .selectSchedules
+    let viewController: ViewController = .nextToArriveController
     @IBOutlet var buttons: [UIButton]!
     @IBOutlet var section0View: UIView!
     @IBOutlet var section1View: UIView!

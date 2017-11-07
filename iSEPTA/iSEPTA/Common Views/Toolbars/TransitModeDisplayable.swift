@@ -102,6 +102,16 @@ extension TransitMode {
         }
     }
 
+    public func needToSeeLaterVehiclesString() -> String {
+        switch self {
+        case .bus: return "Need to see later buses?"
+        case .rail: return "Need to see later trains?"
+        case .subway: return "Need to see later trains?"
+        case .nhsl: return "Need to see later trains?"
+        case .trolley: return "Need to see later trolleys?"
+        }
+    }
+
     public func alertDetailTitle() -> String {
         switch self {
         case .bus: return "System Status: Bus"

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -162,6 +162,7 @@
                         <outlet property="activityIndicator" destination="pto-Z2-HS1" id="IWY-XK-YFV"/>
                         <outlet property="downSwipeGestureRecognizer" destination="6ND-qN-wkW" id="v5t-Ff-yOl"/>
                         <outlet property="headerView" destination="pjJ-NE-5hP" id="nHq-5N-a4R"/>
+                        <outlet property="needToSeeLaterTrainsLabel" destination="y3d-g1-Obc" id="OO7-oj-w7V"/>
                         <outlet property="slider" destination="w8Z-do-EH3" id="Phf-GL-vKA"/>
                         <outlet property="tableFooterView" destination="JqT-ir-i9a" id="TcE-Kl-yyl"/>
                         <outlet property="tableView" destination="XWV-WF-JiF" id="CEu-K8-xN1"/>
@@ -174,7 +175,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="400" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need to see later trains?" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3d-g1-Obc" userLabel="Label">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need to see later trains?" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3d-g1-Obc" userLabel="NeedToSeeLaterTrains">
                             <rect key="frame" x="19" y="12.5" width="168" height="17"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                             <color key="textColor" red="0.84313725490196079" green="0.22745098039215686" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>

@@ -16,6 +16,7 @@ class NextToArriveInfoViewController: UIViewController {
     @IBOutlet var downSwipeGestureRecognizer: UISwipeGestureRecognizer!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
+    @IBOutlet weak var needToSeeLaterTrainsLabel: UILabel!
     @IBOutlet weak var headerView: CurvedTopInfoView!
     @IBOutlet weak var tableView: UITableView!
     weak var nextToArriveDetailViewController: NextToArriveDetailViewController?
@@ -44,13 +45,21 @@ class NextToArriveInfoViewController: UIViewController {
         viewModel.delegate = self
         titleLabel.text = viewModel.viewTitle()
         tableView.tableFooterView = tableFooterView
+
+        needToSeeLaterTrainsLabel.text = viewModel.transitMode().needToSeeLaterVehiclesString()
     }
 
     @IBAction func viewNextToArriveInSchedulesTapped(_: Any) {
-        guard let firstNextToArriveTrip = viewModel.firstTrip() else { return }
+        guard let firstNextToArriveTrip = viewModel.firstTrip() else {
+            let scheduleRequest = viewModel.scheduleRequest()
+            let action = NavigateToSchedulesFromNextToArriveScheduleRequest(scheduleRequest: scheduleRequest)
+            store.dispatch(action)
+            return
+        }
+
         if viewModel.transitMode() == .rail {
             activityIndicator.startAnimating()
-            Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(twoSecondTimerFired(timer:)), userInfo: nil, repeats: true)
+            Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(twoSecondTimerFired(timer:)), userInfo: nil, repeats: true)
         }
 
         let action = NavigateToSchedulesFromNextToArrive(nextToArriveTrip: firstNextToArriveTrip)
@@ -142,9 +151,9 @@ extension NextToArriveInfoViewController: UpdateableFromViewModel {
         // Wrap our request in a work item
         let requestWorkItem = DispatchWorkItem { [weak self] in
             self?.activityIndicator.stopAnimating()
-            self?.tableView.tableFooterView?.isHidden = self?.viewModel.numberOfSections() == 0
+            self?.tableView.tableFooterView?.isHidden = true
             self?.tableView.reloadData()
-            //            self?.tableView.tableFooterView?.isHidden = false
+            self?.tableView.tableFooterView?.isHidden = false
         }
 
         // Save the new work item and execute it after 250 ms

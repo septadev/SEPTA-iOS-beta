@@ -118,7 +118,7 @@ extension AlertDetailViewController: UITableViewDelegate, UITableViewDataSource 
         guard var cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? AlertDetailCell else { return UITableViewCell() }
         cell.sectionNumber = indexPath.section
         cell.delegate = self
-        cell.setOpenState(false)
+        cell.initializeCellAsClosed()
         cell.setEnabled(false)
         switch indexPath.section {
         case 0:

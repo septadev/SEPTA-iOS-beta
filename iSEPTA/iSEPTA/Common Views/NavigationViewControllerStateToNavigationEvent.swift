@@ -34,37 +34,26 @@ class NavigationViewControllerStateToNavigationEvent {
     }
 
     func determineNecessaryStateAction() -> ViewControllerStackEventNeeded {
-        guard let lastNewController = newControllers.last else { return .noActionNeeded }
+        var result: ViewControllerStackEventNeeded = .noActionNeeded
+        guard let lastNewController = newControllers.last else { return result }
 
         if shouldSetRootViewController() {
-            return .rootViewController(lastNewController)
+            result = .rootViewController(lastNewController)
+        } else if didSystemPopOccur() {
+            result = .systemPop
+        } else if shouldPush() {
+            result = .push(lastNewController)
+        } else if shouldPop() {
+            result = .pop
+        } else if shouldReplaceViewStack() {
+            result = .replaceViewStack(newControllers)
+        } else if let controllersToAppend = findControllersToAppend() {
+            result = .appendToViewStack(controllersToAppend)
+        } else if let controllersToTrim = findControllersToTrim() {
+            result = .truncateViewStack(controllersToTrim)
         }
 
-        if didSystemPopOccur() {
-            return .systemPop
-        }
-
-        if shouldPush() {
-            return .push(lastNewController)
-        }
-
-        if shouldPop() {
-            return .pop
-        }
-
-        if shouldReplaceViewStack() {
-            return .replaceViewStack(newControllers)
-        }
-
-        if let controllersToAppend = findControllersToAppend() {
-            return .appendToViewStack(controllersToAppend)
-        }
-
-        if let controllersToTrim = findControllersToTrim() {
-            return .truncateViewStack(controllersToTrim)
-        }
-
-        return .noActionNeeded
+        return result
     }
 
     private func didSystemPopOccur() -> Bool {
