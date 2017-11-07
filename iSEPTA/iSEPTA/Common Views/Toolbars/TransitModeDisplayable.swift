@@ -67,8 +67,13 @@ extension TransitMode {
         }
     }
 
-    public func vehicleNumberTitle() -> String {
-        switch self {
+    public func vehicleNumberTitle(route: Route) -> String {
+        var transitMode = self
+        if ["MFO", "BSO"].contains(route.routeId) {
+            transitMode = .bus
+        }
+
+        switch transitMode {
         case .bus: return "Bus #"
         case .rail: return "Train #"
         case .subway: return "Train #"

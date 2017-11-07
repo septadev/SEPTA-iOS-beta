@@ -19,8 +19,8 @@ class ScheduleTableViewCell: UITableViewCell, ScheduleDisplayable {
     @IBOutlet private weak var departLabel: UILabel!
     @IBOutlet private weak var arriveLabel: UILabel!
     @IBOutlet private weak var durationLabel: UILabel!
-    @IBOutlet weak var vehicleTitleLabel: UILabel!
-    @IBOutlet weak var vehicleLabel: UILabel!
+    @IBOutlet private weak var vehicleTitleLabel: UILabel!
+    @IBOutlet private weak var vehicleLabel: UILabel!
 
     func setTripText(text: String) {
         tripLabel.text = text

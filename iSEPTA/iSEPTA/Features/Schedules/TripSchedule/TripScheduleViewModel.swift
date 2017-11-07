@@ -9,7 +9,7 @@ import ReSwift
     @IBOutlet weak var tripScheduleViewController: UpdateableFromViewModel!
 
     let transitMode = store.state.scheduleState.scheduleRequest.transitMode
-
+    let route = store.state.scheduleState.scheduleRequest.selectedRoute
     var scheduleRequest = store.state.scheduleState.scheduleRequest
     private var availableTrips: [Trip]? {
         didSet {
@@ -30,7 +30,7 @@ import ReSwift
     }
 
     func makeTripDisplayable(displayable: ScheduleDisplayable, atRow row: Int) {
-        guard let availableTrips = availableTrips else { return }
+        guard let availableTrips = availableTrips, let route = route else { return }
         typealias formatters = DateFormatters
         let trip = availableTrips[row]
         if let departureDate = trip.departureDate,
@@ -42,9 +42,8 @@ import ReSwift
             displayable.setDepartText(text: depatureString)
             displayable.setArriveText(text: arrivalString)
             displayable.setDurationText(text: durationString)
-            displayable.setVehicleTitle(text: transitMode.vehicleNumberTitle())
+            displayable.setVehicleTitle(text: transitMode.vehicleNumberTitle(route: route))
             displayable.setVehicleText(text: trip.blockId)
-            displayable.hideVehicleTitle(trip.blockId.count == 0)
         }
     }
 
