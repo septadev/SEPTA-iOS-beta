@@ -12,9 +12,20 @@ import ReSwift
 
 class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelegate, ScheduleRequestWatcherDelegate {
 
-    var editFavoriteBarButtonItem: UIBarButtonItem!
+    var editFavoriteBarButtonItem: UIBarButtonItem! {
+        didSet {
+
+            editFavoriteBarButtonItem.accessibilityLabel = "Edit Favorite"
+        }
+    }
+
     var navigationItem: UINavigationItem!
-    var createFavoriteBarButtonItem: UIBarButtonItem!
+    var createFavoriteBarButtonItem: UIBarButtonItem! {
+        didSet {
+
+            createFavoriteBarButtonItem.accessibilityLabel = "Create Favorite"
+        }
+    }
 
     var favoritesWatcher: FavoritesState_FavoritesWatcher!
 
@@ -76,6 +87,7 @@ class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelega
 
             if let _ = currentFavorite {
                 navigationItem.rightBarButtonItem = editFavoriteBarButtonItem
+
             } else {
                 navigationItem.rightBarButtonItem = createFavoriteBarButtonItem
             }
@@ -83,6 +95,7 @@ class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelega
             navigationItem.rightBarButtonItem = createFavoriteBarButtonItem
             if let _ = currentFavorite {
                 createFavoriteBarButtonItem.image = SeptaImages.favoritesEnabled
+
             } else {
                 createFavoriteBarButtonItem.image = SeptaImages.favoritesNotEnabled
             }

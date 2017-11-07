@@ -90,6 +90,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Vx-eO-NoD" userLabel="CloseButton">
                                 <rect key="frame" x="344" y="40" width="17" height="17"/>
+                                <accessibility key="accessibilityConfiguration" label="Cancel Edit Favorite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="17" id="9Lx-gg-b2V"/>
                                     <constraint firstAttribute="height" constant="17" id="S6X-n8-3BW"/>
@@ -129,12 +130,16 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office Commute" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5a-jq-uAA" userLabel="ExistingFavoriteName">
                                 <rect key="frame" x="134" y="40" width="108.5" height="17"/>
+                                <accessibility key="accessibilityConfiguration" label="Favorite Name"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Favorite Trip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xvt-J7-pv3" userLabel="EditFavoriteTrip">
                                 <rect key="frame" x="17" y="75" width="343" height="24"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>

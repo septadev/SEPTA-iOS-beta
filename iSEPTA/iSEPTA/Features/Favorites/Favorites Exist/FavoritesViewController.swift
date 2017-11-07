@@ -30,7 +30,10 @@ class FavoritesViewController: UIViewController, IdentifiableController {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 18))
         footerView.backgroundColor = UIColor.clear
         tableView.tableFooterView = footerView
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(navigateToNextToArrive))
+        let addFavoriteBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(navigateToNextToArrive))
+        addFavoriteBarButtonItem.accessibilityLabel = "Add Favorite"
+        navigationItem.rightBarButtonItem = addFavoriteBarButtonItem
+
     }
 
     @objc func navigateToNextToArrive() {
