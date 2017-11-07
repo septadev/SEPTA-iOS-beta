@@ -12,8 +12,9 @@ import SeptaRest
 class AlertDetailsViewModel {
 
     static func hasGenericMessage(alertDetails: [AlertDetails_Alert]) -> Bool {
-        let message = renderMessage(alertDetails: alertDetails) { return $0.message }
-        return message != nil
+        let messages = alertDetails.map({ $0.message }) + alertDetails.map({ $0.advisory_message })
+        let nonNilMessages = messages.flatMap({ $0 }).filter { $0.count > 0 }
+        return nonNilMessages.count > 0
     }
 
     static func renderMessage(alertDetails: [AlertDetails_Alert], filter: ((AlertDetails_Alert) -> String?)) -> NSAttributedString? {
