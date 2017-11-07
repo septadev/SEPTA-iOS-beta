@@ -17,23 +17,19 @@ extension NextToArriveStop {
         guard let delayMinutes = delayMinutes else { return defaultString }
 
         let delayString: String?
-                switch delayMinutes {
-                    case let delay where delay < 0:
-                    let absoluteDelay = abs(delay)
-                    delayString = "\(prefixString)\(absoluteDelay) min early"
+        switch delayMinutes {
+        case let delay where delay <= 0:
+            delayString = "\(prefixString)On Time"
 
-                    case 0:
-                    delayString = "\(prefixString)On Time"
+        case let delay where delay > 0:
+            delayString = "\(prefixString)\(delay) min late"
 
-                    case  let delay where delay > 0:
-                    delayString = "\(prefixString)\(delay) min late"
-
-                    default:
-                    delayString = defaultString
-                }
+        default:
+            delayString = defaultString
+        }
         return delayString
     }
-    
+
     func generateTimeToDepartureString() -> String? {
         let sortedDates = [self.arrivalTime, self.departureTime].sorted()
         var firstDate = sortedDates[0]
@@ -45,8 +41,6 @@ extension NextToArriveStop {
         return DateFormatters.formatTimeFromNow(date: firstDate)
     }
 
-    
-
     func generateOnTimeColor() -> UIColor {
         guard let tripDelayMinutes = self.delayMinutes, self.hasRealTimeData else { return SeptaColor.transitIsScheduled }
 
@@ -56,5 +50,4 @@ extension NextToArriveStop {
             return SeptaColor.transitOnTime
         }
     }
-
 }

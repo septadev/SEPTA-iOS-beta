@@ -98,7 +98,7 @@ class NextToArriveMiddleware {
         store.dispatch(switchTabsAction)
 
         let navigationStackState = buildNavigationStackState(viewControllers: [.alertsViewController, .alertDetailViewController])
-        let viewStackAction = InitializeNavigationState(navigationController: .alerts, navigationStackState: navigationStackState, description: "Setting Navigation Stack State with imported schedule state")
+        let viewStackAction = InitializeNavigationState(navigationController: .alerts, navigationStackState: navigationStackState, description: "Setting Navigation Stack to show alert details")
         store.dispatch(viewStackAction)
     }
 

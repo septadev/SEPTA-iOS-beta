@@ -102,7 +102,7 @@ extension BaseNextToArriveInfoViewModel { // Section Headers
     }
 
     func didTapAlertView(nextToArriveStop: NextToArriveStop, transitMode: TransitMode) {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25, execute: {
             let action = NavigateToAlertDetailsFromNextToArrive(
                 scheduleRequest: ScheduleRequest(transitMode: transitMode, selectedRoute: self.scheduleRequest().selectedRoute),
                 nextToArriveStop: nextToArriveStop)

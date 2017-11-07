@@ -12,10 +12,10 @@ extension IdentifiableController where Self: UIViewController {
 
     func backButtonPopped(toParentViewController _: UIViewController?) {
 
-        //        if parent == navigationController?.parent {
-        //            let action = UserPoppedViewController(viewController: viewController, description: "view controller has been popped by the back Button")
-        //            //            store.dispatch(action)
-        //        }
+        if parent == navigationController?.parent {
+            let action = UserPoppedViewController(viewController: viewController, description: "view controller has been popped by the back Button")
+            store.dispatch(action)
+        }
     }
 }
 
