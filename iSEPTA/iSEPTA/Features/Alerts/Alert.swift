@@ -48,12 +48,13 @@ class UIAlert {
         // create the alert
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
 
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive) { _ in
-            completion?()
-        })
         alert.addAction(UIAlertAction(title: "View Schedules", style: UIAlertActionStyle.default) { _ in
             let action = SwitchTabs(activeNavigationController: .schedules, description: "Jump to Schedules after error in next to arrive")
             store.dispatch(action)
+        })
+
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
+            completion?()
         })
 
         // show the alert
