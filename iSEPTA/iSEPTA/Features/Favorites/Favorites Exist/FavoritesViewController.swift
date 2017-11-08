@@ -33,7 +33,6 @@ class FavoritesViewController: UIViewController, IdentifiableController {
         let addFavoriteBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(navigateToNextToArrive))
         addFavoriteBarButtonItem.accessibilityLabel = "Add Favorite"
         navigationItem.rightBarButtonItem = addFavoriteBarButtonItem
-
     }
 
     @objc func navigateToNextToArrive() {
