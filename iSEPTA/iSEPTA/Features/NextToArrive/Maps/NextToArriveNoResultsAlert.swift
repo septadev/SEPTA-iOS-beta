@@ -38,12 +38,12 @@ class NextToArriveNoResultsAlert: NextToArriveUpdateStatusWatcherDelegate {
     func nextToArriveUpdateStatusUpdated(nextToArriveUpdateStatus: NextToArriveUpdateStatus) {
         guard !hasShowAlertsOnce else { return }
         if nextToArriveUpdateStatus == .dataLoadingError {
-            UIAlert.presentOKAlertFrom(viewController: viewController, withTitle: title, message: errorMessage) {
+            UIAlert.presentOKJumpToSchedulesAlert(viewController: viewController, withTitle: title, message: errorMessage) {
                 self.hasShowAlertsOnce = true
             }
         }
         if nextToArriveUpdateStatus == .noResultsReturned {
-            UIAlert.presentOKAlertFrom(viewController: viewController, withTitle: title, message: noResultsMessage) {
+            UIAlert.presentOKJumpToSchedulesAlert(viewController: viewController, withTitle: title, message: noResultsMessage) {
                 self.hasShowAlertsOnce = true
             }
         }

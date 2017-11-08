@@ -19,12 +19,11 @@ public enum ScheduleType: Int, Codable {
         }
     }
 
-   public static func defaultScheduleType(transitMode:TransitMode) -> ScheduleType {
-         if transitMode == .rail {
-               return .mondayThroughThursday
-            } else {
-                return .weekday
-            }
-
+    public static func defaultScheduleType(transitMode: TransitMode) -> ScheduleType {
+        if transitMode == .rail {
+            return .mondayThroughThursday
+        } else {
+            return .weekday
+        }
     }
 }

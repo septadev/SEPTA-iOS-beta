@@ -44,6 +44,22 @@ class UIAlert {
         viewController.present(alert, animated: true, completion: nil)
     }
 
+    static func presentOKJumpToSchedulesAlert(viewController: UIViewController, withTitle title: String, message: String, completion: (() -> Void)? = nil) {
+        // create the alert
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive) { _ in
+            completion?()
+        })
+        alert.addAction(UIAlertAction(title: "View Schedules", style: UIAlertActionStyle.default) { _ in
+            let action = SwitchTabs(activeNavigationController: .schedules, description: "Jump to Schedules after error in next to arrive")
+            store.dispatch(action)
+        })
+
+        // show the alert
+        viewController.present(alert, animated: true, completion: nil)
+    }
+
     static func presentComingSoonAlertFrom(_ viewController: UIViewController) {
         presentOKAlertFrom(viewController: viewController, withTitle: "SEPTA iOS", message: "This cool feature is coming soon!")
     }
