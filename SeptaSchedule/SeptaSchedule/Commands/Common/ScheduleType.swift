@@ -18,4 +18,13 @@ public enum ScheduleType: Int, Codable {
         case .mondayThroughThursday: return "Mon-Thur"
         }
     }
+
+   public static func defaultScheduleType(transitMode:TransitMode) -> ScheduleType {
+         if transitMode == .rail {
+               return .mondayThroughThursday
+            } else {
+                return .weekday
+            }
+
+    }
 }

@@ -17,8 +17,13 @@ struct ScheduleRequest {
         self.selectedRoute = selectedRoute
         self.selectedStart = selectedStart
         self.selectedEnd = selectedEnd
-        self.scheduleType = scheduleType
+
         self.reverseStops = reverseStops
+        if scheduleType == nil {
+            self.scheduleType = ScheduleType.defaultScheduleType(transitMode: transitMode)
+        } else {
+            self.scheduleType = scheduleType
+        }
     }
 }
 
