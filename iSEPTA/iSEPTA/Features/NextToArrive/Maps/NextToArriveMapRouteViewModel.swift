@@ -23,7 +23,16 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
     let nextToArriveMapRouteViewModelErrorWatcher = NextToArriveMapRouteViewModelErrorWatcher()
 
     var requestedRoutedId: String? {
-        return store.state.nextToArriveState.scheduleState.scheduleRequest.selectedRoute?.routeId
+        guard let target = store.state.targetForScheduleActions() else { return nil }
+
+        switch target {
+        case .nextToArrive:
+            return store.state.nextToArriveState.scheduleState.scheduleRequest.selectedRoute?.routeId
+        case .favorites:
+            return store.state.favoritesState.nextToArriveFavorite?.scheduleRequest.selectedRoute?.routeId
+        default:
+            return nil
+        }
     }
 
     func subscribe() {
@@ -75,12 +84,13 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
         }
         if updateStatus == .dataLoadedSuccessfully {
 
-            let allRouteIds = NextToArriveGrouper.filterRoutesToMap(trips: trips, requestRouteId: requestedRoutedId)
-
-            delegate.drawRoutes(routeIds: allRouteIds)
             handleVehicleLocations(trips: trips)
             currentTrips = trips
         }
+
+        let allRouteIds = NextToArriveGrouper.filterRoutesToMap(trips: trips, requestRouteId: requestedRoutedId)
+
+        delegate.drawRoutes(routeIds: allRouteIds)
     }
 
     func handleVehicleLocations(trips: [NextToArriveTrip]) {
