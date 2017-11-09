@@ -75,7 +75,7 @@ struct NextToArriveReducer {
     }
 
     static func reduceViewScheduleData(action _: ViewScheduleDataInNextToArrive, state: NextToArriveState) -> NextToArriveState {
-        return NextToArriveState(scheduleState: store.state.scheduleState, nextToArriveTrips: state.nextToArriveTrips)
+        return NextToArriveState(scheduleState: store.state.scheduleState, nextToArriveTrips: [NextToArriveTrip]())
     }
 
     static func reduceInsertNextToArriveScheduleRequest(action: InsertNextToArriveScheduleRequest, state: NextToArriveState) -> NextToArriveState {
