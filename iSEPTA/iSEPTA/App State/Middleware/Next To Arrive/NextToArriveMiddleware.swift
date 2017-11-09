@@ -48,8 +48,12 @@ class NextToArriveMiddleware {
             description: "Copying Schedule Request from schedules to Next To Arrive")
         store.dispatch(copyScheduleRequest)
 
-        let navigationStackState = buildNavigationStackState(viewControllers: [.nextToArriveController, .nextToArriveDetailController])
-        let viewStackAction = InitializeNavigationState(navigationController: .nextToArrive, navigationStackState: navigationStackState, description: "Setting Navigation Stack State prior to moving from schedules to Next To Arrive")
+        var navigationStackState = buildNavigationStackState(viewControllers: [.nextToArriveController])
+        var viewStackAction = InitializeNavigationState(navigationController: .nextToArrive, navigationStackState: navigationStackState, description: "Setting Navigation Stack State prior to moving from schedules to Next To Arrive")
+        store.dispatch(viewStackAction)
+
+        navigationStackState = buildNavigationStackState(viewControllers: [.nextToArriveController, .nextToArriveDetailController])
+        viewStackAction = InitializeNavigationState(navigationController: .nextToArrive, navigationStackState: navigationStackState, description: "Setting Navigation Stack State prior to moving from schedules to Next To Arrive")
         store.dispatch(viewStackAction)
 
         let switchTabsAction = SwitchTabs(activeNavigationController: .nextToArrive, description: "Switching Tabs to Next to Arrive From Schedules")
