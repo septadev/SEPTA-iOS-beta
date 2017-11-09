@@ -73,7 +73,6 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
         let trips = state
 
         guard let target = store.state.targetForScheduleActions() else { return }
-        let updateStatus: NextToArriveUpdateStatus
         switch target {
         case .nextToArrive:
             updateStatus = store.state.nextToArriveState.nextToArriveUpdateStatus
@@ -82,15 +81,12 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
         default:
             updateStatus = .idle
         }
-        if updateStatus == .dataLoadedSuccessfully {
-
-            handleVehicleLocations(trips: trips)
-            currentTrips = trips
-        }
 
         let allRouteIds = NextToArriveGrouper.filterRoutesToMap(trips: trips, requestRouteId: requestedRoutedId)
 
         delegate.drawRoutes(routeIds: allRouteIds)
+        handleVehicleLocations(trips: trips)
+        currentTrips = trips
     }
 
     func handleVehicleLocations(trips: [NextToArriveTrip]) {
