@@ -22,6 +22,7 @@ class FavoritesViewController: UIViewController, IdentifiableController {
     override func viewDidLoad() {
         view.backgroundColor = SeptaColor.navBarBlue
         viewModel = FavoritesViewModel(delegate: self, tableView: tableView)
+        tableView.isAccessibilityElement = true
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension

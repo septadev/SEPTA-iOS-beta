@@ -78,6 +78,7 @@ extension FavoritesViewModel { // table loading
         favoriteTripCell.currentFavorite = favoriteViewModel.favorite
         guard let stackView = favoriteTripCell.stackView else { return }
         stackView.clearSubviews()
+        stackView.accessibilityLabel = "Upcoming Trips"
 
         // stackView.addArrangedSubview(headerCell.contentView)
 

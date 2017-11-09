@@ -24,7 +24,6 @@ class FavoriteTripCell: UITableViewCell {
 
         styleClearViews([self, contentView])
         styleWhiteViews([shadowView, content])
-        accessibilityElements = headerAccessibilityElements
     }
 
     @IBAction func moreButtonTapped(_: Any) {

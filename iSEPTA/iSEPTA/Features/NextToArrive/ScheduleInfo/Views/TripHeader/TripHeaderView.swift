@@ -17,7 +17,8 @@ protocol AlertViewDelegate: AnyObject {
 @IBDesignable
 class TripHeaderView: UIView {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-
+    @IBOutlet weak var lineNameLabel: UILabel!
+    @IBOutlet weak var alertStackView: UIStackView!
     @IBOutlet weak var pillView: UIView! {
         didSet {
             pillView.layer.cornerRadius = 4
@@ -41,7 +42,4 @@ class TripHeaderView: UIView {
         activityIndicator.stopAnimating()
         timer.invalidate()
     }
-
-    @IBOutlet weak var lineNameLabel: UILabel!
-    @IBOutlet weak var alertStackView: UIStackView!
 }

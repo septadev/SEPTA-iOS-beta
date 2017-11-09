@@ -97,6 +97,9 @@
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <accessibility key="accessibilityConfiguration">
+                <bool key="isElement" value="YES"/>
+            </accessibility>
             <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="GMc-n1-8zy" firstAttribute="centerY" secondItem="5Fu-JC-ETZ" secondAttribute="centerY" id="1bc-GG-rGj" userLabel="ChevronCenterY"/>

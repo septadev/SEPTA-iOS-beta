@@ -94,6 +94,7 @@ extension BaseNextToArriveInfoViewModel { // Section Headers
         let routeId = firstTripInSection.startStop.routeId
         tripHeaderView.pillView.backgroundColor = Route.colorForRouteId(routeId, transitMode: transitMode())
         tripHeaderView.lineNameLabel.text = firstTripInSection.startStop.routeName
+        tripHeaderView.accessibilityLabel = firstTripInSection.startStop.routeName
         let alert = alerts[transitMode()]?[routeId]
         tripHeaderView.alertStackView.addAlert(alert)
         tripHeaderView.alertViewDelegate = self
@@ -115,6 +116,7 @@ extension BaseNextToArriveInfoViewModel { // Section Headers
         guard let tripHeaderView = headerView.tripHeaderView else { return }
         tripHeaderView.pillView.backgroundColor = Route.colorForRouteId(routeId, transitMode: transitMode())
         tripHeaderView.lineNameLabel.text = firstTripInSection.startStop.routeName
+        tripHeaderView.accessibilityLabel = firstTripInSection.startStop.routeName
         tripHeaderView.alertViewDelegate = self
         tripHeaderView.nextToArriveStop = firstTripInSection.startStop
         tripHeaderView.transitMode = transitMode()
@@ -175,6 +177,13 @@ extension BaseNextToArriveInfoViewModel { // Table View
         tripView.chevronView.isHidden = !trip.startStop.hasRealTimeData
         tripView.departingBox.layer.borderColor = trip.startStop.generateOnTimeColor().cgColor
         tripView.nextToArriveStop = trip.startStop
+
+        if let onTimeText = tripView.onTimeLabel.text,
+            let departingWhen = tripView.departingWhenLabel.text,
+            let scheduledTime = tripView.startStopLabel.text,
+            let endStopLabel = tripView.endStopLabel.text {
+            tripView.accessibilityLabel = "\(endStopLabel).  On Time Status: \(onTimeText).  Departing: \(departingWhen).  Scheduled Depature and Arrival: \(scheduledTime)"
+        }
     }
 
     func configureConnectionCell(cell: ConnectionCellDisplayable, forTrip trip: NextToArriveTrip) {
@@ -190,6 +199,13 @@ extension BaseNextToArriveInfoViewModel { // Table View
         firstLegTripView.departingBox.layer.borderColor = trip.startStop.generateOnTimeColor().cgColor
         firstLegTripView.nextToArriveStop = trip.startStop
 
+        if let onTimeText = firstLegTripView.onTimeLabel.text,
+            let departingWhen = firstLegTripView.departingWhenLabel.text,
+            let scheduledTime = firstLegTripView.startStopLabel.text,
+            let endStopLabel = firstLegTripView.endStopLabel.text {
+            firstLegTripView.accessibilityLabel = "\(endStopLabel).  On Time Status: \(onTimeText).  Departing: \(departingWhen).  Scheduled Depature and Arrival: \(scheduledTime)"
+        }
+
         let secondLegTripView = cell.endConnectionView.tripView!
 
         secondLegTripView.startStopLabel.text = generateTimeString(stop: trip.endStop)
@@ -201,6 +217,13 @@ extension BaseNextToArriveInfoViewModel { // Table View
         secondLegTripView.departingBox.layer.borderColor = trip.endStop.generateOnTimeColor().cgColor
         secondLegTripView.nextToArriveStop = trip.endStop
 
+        if let onTimeText = secondLegTripView.onTimeLabel.text,
+            let departingWhen = secondLegTripView.departingWhenLabel.text,
+            let scheduledTime = secondLegTripView.startStopLabel.text,
+            let endStopLabel = secondLegTripView.endStopLabel.text {
+            firstLegTripView.accessibilityLabel = "\(endStopLabel).  On Time Status: \(onTimeText).  Departing: \(departingWhen).  Scheduled Depature and Arrival: \(scheduledTime)"
+        }
+
         let connectionStation = trip.connectionLocation?.stopName ?? ""
         cell.connectionLabel.text = "Connect @\(connectionStation)"
 
@@ -211,6 +234,7 @@ extension BaseNextToArriveInfoViewModel { // Table View
     func styleTripHeaderView(tripHeaderView: TripHeaderView, forStop stop: NextToArriveStop, trip _: NextToArriveTrip) {
         tripHeaderView.pillView.backgroundColor = Route.colorForRouteId(stop.routeId, transitMode: transitMode())
         tripHeaderView.lineNameLabel.text = stop.routeName
+        tripHeaderView.accessibilityLabel = stop.routeName
         tripHeaderView.alertViewDelegate = self
         tripHeaderView.nextToArriveStop = stop
         tripHeaderView.transitMode = transitMode()

@@ -73,14 +73,6 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
         let trips = state
 
         guard let target = store.state.targetForScheduleActions() else { return }
-        switch target {
-        case .nextToArrive:
-            updateStatus = store.state.nextToArriveState.nextToArriveUpdateStatus
-        case .favorites:
-            updateStatus = store.state.favoritesState.nextToArriveUpdateStatus
-        default:
-            updateStatus = .idle
-        }
 
         let allRouteIds = NextToArriveGrouper.filterRoutesToMap(trips: trips, requestRouteId: requestedRoutedId)
 
