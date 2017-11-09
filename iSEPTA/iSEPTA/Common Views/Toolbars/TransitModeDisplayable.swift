@@ -122,6 +122,16 @@ extension TransitMode {
         }
     }
 
+    public func favoriteName() -> String {
+        switch self {
+        case .bus: return "Bus Favorite"
+        case .rail: return "Regional Rail Favorite"
+        case .subway: return "Subway Favorite"
+        case .nhsl: return "NHSL favorite"
+        case .trolley: return "Trolley Favorite"
+        }
+    }
+
     public func selectRoutePlaceholderText() -> String {
         switch self {
         case .rail, .subway, .trolley: return "Select Line"

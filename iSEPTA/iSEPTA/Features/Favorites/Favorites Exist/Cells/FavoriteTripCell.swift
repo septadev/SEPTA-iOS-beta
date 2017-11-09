@@ -17,12 +17,14 @@ class FavoriteTripCell: UITableViewCell {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var favoriteNameLabel: UILabel!
 
+    @IBOutlet var headerAccessibilityElements: [UIView]!
     var currentFavorite: Favorite?
 
     override func awakeFromNib() {
 
         styleClearViews([self, contentView])
         styleWhiteViews([shadowView, content])
+        accessibilityElements = headerAccessibilityElements
     }
 
     @IBAction func moreButtonTapped(_: Any) {

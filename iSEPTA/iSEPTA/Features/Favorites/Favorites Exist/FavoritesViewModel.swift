@@ -73,6 +73,7 @@ extension FavoritesViewModel { // table loading
 
         let favoriteViewModel = favoriteViewModels[indexPath.section]
         favoriteTripCell.favoriteIcon.image = favoriteViewModel.transitMode().favoritesIcon()
+        favoriteTripCell.favoriteIcon.accessibilityLabel = favoriteViewModel.favorite.transitMode.favoriteName()
         favoriteTripCell.favoriteNameLabel.text = favoriteViewModel.favorite.favoriteName
         favoriteTripCell.currentFavorite = favoriteViewModel.favorite
         guard let stackView = favoriteTripCell.stackView else { return }

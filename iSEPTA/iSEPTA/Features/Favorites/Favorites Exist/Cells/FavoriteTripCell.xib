@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -33,6 +33,9 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="busFavorite" translatesAutoresizingMaskIntoConstraints="NO" id="NjI-te-plL">
                                         <rect key="frame" x="0.0" y="1" width="35" height="35"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="8XJ-7E-esn"/>
                                             <constraint firstAttribute="height" constant="35" id="Av6-4w-89b"/>
@@ -42,6 +45,7 @@ IconView</string>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office Commute" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wF3-Zs-MQV" userLabel="TitleLabel">
                                         <rect key="frame" x="42" y="9" width="131" height="19.5"/>
+                                        <accessibility key="accessibilityConfiguration" label="Favorite Name"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="16"/>
                                         <color key="textColor" red="0.10588235294117647" green="0.30588235294117649" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -60,9 +64,13 @@ IconView</string>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="8j1-4I-RG0">
                                 <rect key="frame" x="0.0" y="57" width="595" height="136.5"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zzC-Kp-dJV">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zzC-Kp-dJV" userLabel="TripView">
                                         <rect key="frame" x="0.0" y="0.0" width="595" height="33.5"/>
                                         <color key="backgroundColor" red="0.36901968439999999" green="0.62583249809999997" blue="0.27395910649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" label="Trip Details">
+                                            <accessibilityTraits key="traits" staticText="YES"/>
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33.5" id="u4k-LI-jRw"/>
                                         </constraints>
@@ -70,6 +78,10 @@ IconView</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w4O-yn-vnR">
                                         <rect key="frame" x="0.0" y="36.5" width="595" height="100"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration" label="Upcoming Trips">
+                                            <accessibilityTraits key="traits" staticText="YES"/>
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="rSt-FY-ZKg"/>
                                         </constraints>
@@ -80,6 +92,10 @@ IconView</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ql1-55-mOK" userLabel="MoreButton" customClass="MoreButton" customModule="Septa" customModuleProvider="target">
                                 <rect key="frame" x="533" y="18" width="45" height="22"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" label="See Next To Arrive For This favorite">
+                                    <accessibilityTraits key="traits" button="YES"/>
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="IYz-er-4cz"/>
                                     <constraint firstAttribute="width" constant="45" id="k7Q-eL-zOz"/>
@@ -121,6 +137,9 @@ IconView</string>
                 <outlet property="favoriteNameLabel" destination="wF3-Zs-MQV" id="aJN-cN-0UT"/>
                 <outlet property="shadowView" destination="H4L-ex-I4m" id="DV6-RE-FZp"/>
                 <outlet property="stackView" destination="8j1-4I-RG0" id="7qs-i3-eRT"/>
+                <outletCollection property="headerAccessibilityElements" destination="wF3-Zs-MQV" collectionClass="NSMutableArray" id="ihD-9b-WyG"/>
+                <outletCollection property="headerAccessibilityElements" destination="ql1-55-mOK" collectionClass="NSMutableArray" id="TBB-oi-Wox"/>
+                <outletCollection property="headerAccessibilityElements" destination="NjI-te-plL" collectionClass="NSMutableArray" id="dec-PG-lb7"/>
             </connections>
             <point key="canvasLocation" x="-10.5" y="-160.5"/>
         </tableViewCell>
