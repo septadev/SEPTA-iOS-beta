@@ -48,7 +48,7 @@ class UIAlert {
         // create the alert
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
 
-        alert.addAction(UIAlertAction(title: "View Schedules", style: UIAlertActionStyle.default) { _ in
+        alert.addAction(UIAlertAction(title: "Go to Schedules", style: UIAlertActionStyle.default) { _ in
             let action = SwitchTabs(activeNavigationController: .schedules, description: "Jump to Schedules after error in next to arrive")
             store.dispatch(action)
         })

@@ -13,9 +13,7 @@ class NextToArriveNoResultsAlert: NextToArriveUpdateStatusWatcherDelegate {
     weak var viewController: UIViewController!
     let title = "Unable to Show Results"
 
-    let errorMessage = "An error has occurred. Please try your request again. If this error continues, please contact SEPTA to let us know."
-
-    let noResultsMessage = "No Next to Arrive results were returned.  The system may be down temporarily.  If this continues, please contact SEPTA to let us know."
+    let errorMessage = "This may be due to a poor network connection or the real time data is temporarily unavailable, please try again later."
 
     var nextToArriveWatcher: NextToArriveState_NextToArriveUpdateStatusWatcher?
 
@@ -43,7 +41,7 @@ class NextToArriveNoResultsAlert: NextToArriveUpdateStatusWatcherDelegate {
             }
         }
         if nextToArriveUpdateStatus == .noResultsReturned {
-            UIAlert.presentOKJumpToSchedulesAlert(viewController: viewController, withTitle: title, message: noResultsMessage) {
+            UIAlert.presentOKJumpToSchedulesAlert(viewController: viewController, withTitle: title, message: errorMessage) {
                 self.hasShowAlertsOnce = true
             }
         }
