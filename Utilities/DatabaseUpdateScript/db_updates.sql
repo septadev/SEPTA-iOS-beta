@@ -12,9 +12,9 @@ VALUES ('AIR', 90401, 90007, 'to Center City Philadelphia', '0');
 INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
 VALUES ('AIR', 90007, 90401, 'to Philadelphia International Airport', '1');
 INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('CHE', 90007, 90720, 'to Chestnut Hill East', '0');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('CHE', 90720, 90007, 'to Center City Philadelphia', '1');
+VALUES ('CHE', 90004, 90720, 'to Chestnut Hill East', '0');
+INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id) 
+VALUES ('CHE', 90720, 90004, 'to Center City Philadelphia', '1');
 INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
 VALUES ('CHW', 90801, 90007, 'to Center City Philadelphia', '0');
 INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
