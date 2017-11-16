@@ -25,6 +25,6 @@
 	<key>twitter</key>
 	<string>http://www.septa.org/alert/twitter.html</string>
 	<key>trainView</key>
-	<string>http://54.84.17.20:8081/regionalRail</string>
+	<string>https://realtime.septa.org/regionalrail</string>
 </dict>
 </plist>
