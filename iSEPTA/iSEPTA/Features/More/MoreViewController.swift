@@ -34,7 +34,7 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return 6
+        return 7
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -52,15 +52,18 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
             let mapConnection = MakeSeptaConnection(septaConnection: .map)
             store.dispatch(mapConnection)
         case 2:
-            let mapConnection = MakeSeptaConnection(septaConnection: .trainView)
+            let mapConnection = MakeSeptaConnection(septaConnection: .transitView)
             store.dispatch(mapConnection)
         case 3:
+            let mapConnection = MakeSeptaConnection(septaConnection: .trainView)
+            store.dispatch(mapConnection)
+        case 4:
             let commentConnection = MakeSeptaConnection(septaConnection: .events)
             store.dispatch(commentConnection)
-        case 4:
+        case 5:
             let pushAction = PushViewController(viewController: .contactViewController, description: "Will View How to Contact SEPTA")
             store.dispatch(pushAction)
-        case 5:
+        case 6:
             let pushAction = PushViewController(viewController: .aboutViewController, description: "About the Septa App")
             store.dispatch(pushAction)
         default:

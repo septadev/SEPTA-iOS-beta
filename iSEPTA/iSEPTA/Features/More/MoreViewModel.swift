@@ -12,17 +12,18 @@ import UIKit
 class MoreViewModel {
 
     func numberOfRows() -> Int {
-        return 6
+        return 7
     }
 
     func configureCell(cell: MoreTableViewCell, indexPath: IndexPath) {
         switch indexPath.row {
         case 0: configureFaresCell(cell: cell)
         case 1: configureSubwayMapCell(cell: cell)
-        case 2: configureTrainViewCell(cell: cell)
-        case 3: configureEventsCell(cell: cell)
-        case 4: configureConnectCell(cell: cell)
-        case 5: configureAboutCell(cell: cell)
+        case 2: configureTransitViewCell(cell:cell)
+        case 3: configureTrainViewCell(cell: cell)
+        case 4: configureEventsCell(cell: cell)
+        case 5: configureConnectCell(cell: cell)
+        case 6: configureAboutCell(cell: cell)
         default: break
         }
     }
@@ -36,9 +37,14 @@ class MoreViewModel {
         cell.moreLabel.text = "System Map"
         cell.moreImageView.image = UIImage(named: "subwayMapCell")
     }
+    
+    func configureTransitViewCell(cell: MoreTableViewCell) {
+        cell.moreLabel.text = "TransitView"
+        cell.moreImageView.image = UIImage(named: "subwayMapCell")
+    }
 
     func configureTrainViewCell(cell: MoreTableViewCell) {
-        cell.moreLabel.text = "Trainview"
+        cell.moreLabel.text = "TrainView"
         cell.moreImageView.image = UIImage(named: "subwayMapCell")
     }
 

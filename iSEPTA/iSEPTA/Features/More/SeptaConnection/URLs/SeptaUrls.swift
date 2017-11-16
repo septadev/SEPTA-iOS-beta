@@ -21,4 +21,5 @@ struct SeptaUrls: Decodable {
     let chat: String
     let events: String
     let trainView: String
+    let transitView: String
 }

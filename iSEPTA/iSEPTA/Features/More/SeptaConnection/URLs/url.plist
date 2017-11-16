@@ -26,5 +26,7 @@
 	<string>http://www.septa.org/alert/twitter.html</string>
 	<key>trainView</key>
 	<string>https://realtime.septa.org/regionalrail</string>
+	<key>transitView</key>
+	<string>https://realtime.septa.org/bus_trolley</string>
 </dict>
 </plist>
