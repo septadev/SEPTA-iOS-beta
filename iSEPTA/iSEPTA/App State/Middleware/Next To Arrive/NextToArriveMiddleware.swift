@@ -112,8 +112,6 @@ class NextToArriveMiddleware {
         let scheduleRequest = action.scheduleRequest
         let scheduleStateBuilder = NextToArriveMiddlewareScheduleStateBuilder.sharedInstance
         scheduleStateBuilder.updateScheduleStateInAlerts(nextToArriveStop: action.nextToArriveStop, scheduleRequest: scheduleRequest)
-
-      
     }
 
     static func buildNavigationStackState(viewControllers: [ViewController]) -> NavigationStackState {

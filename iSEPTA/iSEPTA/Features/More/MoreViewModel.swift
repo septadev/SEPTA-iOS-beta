@@ -19,7 +19,7 @@ class MoreViewModel {
         switch indexPath.row {
         case 0: configureFaresCell(cell: cell)
         case 1: configureSubwayMapCell(cell: cell)
-        case 2: configureTransitViewCell(cell:cell)
+        case 2: configureTransitViewCell(cell: cell)
         case 3: configureTrainViewCell(cell: cell)
         case 4: configureEventsCell(cell: cell)
         case 5: configureConnectCell(cell: cell)
@@ -37,7 +37,7 @@ class MoreViewModel {
         cell.moreLabel.text = "System Map"
         cell.moreImageView.image = UIImage(named: "subwayMapCell")
     }
-    
+
     func configureTransitViewCell(cell: MoreTableViewCell) {
         cell.moreLabel.text = "TransitView"
         cell.moreImageView.image = UIImage(named: "subwayMapCell")
