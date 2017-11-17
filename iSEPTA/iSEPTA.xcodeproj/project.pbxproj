@@ -3065,7 +3065,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PROJECT_DIR}/Fabric.framework/run\" 573b4f7ab920a4fcd9f2da4d08fae80cefad40fe ee0c297d8103d2326ae8b9b2ebfe34df4f517b2d85ad6183b2fef9aad7cc7119\n\n";
+			shellScript = "plist=${PROJECT_DIR}/iSEPTA/Info/network.plist\ncrash1=$(/usr/libexec/PlistBuddy -c \"print :crashlytics1\" $plist)\ncrash2=$(/usr/libexec/PlistBuddy -c \"print :crashlytics2\" $plist)\n\"${PROJECT_DIR}/Fabric.framework/run\" $crash1 $crash2\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
