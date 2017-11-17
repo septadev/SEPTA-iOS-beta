@@ -13,7 +13,7 @@ import SeptaSchedule
 
 typealias CellModel = NextToArriveRowDisplayModel
 
-class NextToArriveViewModel: NSObject, StoreSubscriber {
+class NextToArriveViewModel: NSObject, StoreSubscriber, LastCellDelegate {
     typealias StoreSubscriberStateType = ScheduleRequest
 
     @IBOutlet weak var view: UIView!
@@ -22,21 +22,13 @@ class NextToArriveViewModel: NSObject, StoreSubscriber {
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     var scheduleRequest: ScheduleRequest?
 
-    var transitMode: TransitMode! {
-        didSet {
-            guard let heightConstraint = tableViewHeightConstraint,
-                let view = view else { return }
-            let tableViewHeight: CGFloat = transitMode == .rail ? 240
-                : 277
-            heightConstraint.constant = tableViewHeight
-            view.setNeedsLayout()
-        }
-    }
+    var transitMode: TransitMode! 
 
-    func updateTableViewHeight() {
-        let tableViewHeight: CGFloat = transitMode == .rail ? 240
-            : 277
-        tableViewHeightConstraint.constant = tableViewHeight
+    func lastCellBottomSet(bottom: CGFloat) {
+        let bottomWithBorder = bottom + 15
+        if bottomWithBorder != tableViewHeightConstraint.constant {
+            tableViewHeightConstraint.constant = bottomWithBorder
+        }
         view.setNeedsLayout()
     }
 

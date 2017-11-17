@@ -38,7 +38,6 @@ class NextToArriveViewController: BaseNonModalViewController, IdentifiableContro
         UIView.addSurroundShadow(toView: tableViewWrapper)
 
         updateHeaderLabels()
-        viewModel.updateTableViewHeight()
         super.viewDidLoad()
     }
 
@@ -82,6 +81,7 @@ extension NextToArriveViewController: UITableViewDelegate, UITableViewDataSource
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "buttonViewCell", for: indexPath) as? ButtonViewCell else { return ButtonViewCell() }
             cell.buttonText = SeptaString.NextToArriveTitle
             cell.enabled = formIsComplete
+            cell.lastCellDelegate = viewModel
             return cell
         }
     }
