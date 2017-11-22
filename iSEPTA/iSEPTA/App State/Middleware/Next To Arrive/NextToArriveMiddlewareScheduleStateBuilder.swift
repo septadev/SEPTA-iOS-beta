@@ -16,29 +16,18 @@ class NextToArriveMiddlewareScheduleStateBuilder {
     let targetForScheduleAction: TargetForScheduleAction = .alerts
 
     func updateScheduleStateInAlerts(nextToArriveStop: NextToArriveStop, scheduleRequest: ScheduleRequest) {
-        if scheduleRequest.transitMode == .rail {
-            setRoute(nextToArriveStop: nextToArriveStop, scheduleRequest: scheduleRequest)
-        } else {
-            copyScheduleStateToAlerts(scheduleRequest: scheduleRequest)
-
-            let switchTabsAction = SwitchTabs(activeNavigationController: .alerts, description: "Switching Tabs to Alert details after importing schedule state")
-            store.dispatch(switchTabsAction)
-
-            let navigationStackState = buildNavigationStackState(viewControllers: [.alertsViewController, .alertDetailViewController])
-            let viewStackAction = InitializeNavigationState(navigationController: .alerts, navigationStackState: navigationStackState, description: "Setting Navigation Stack to show alert details")
-            store.dispatch(viewStackAction)
-        }
+        setRoute(nextToArriveStop: nextToArriveStop, scheduleRequest: scheduleRequest)
     }
 
     private func setRoute(nextToArriveStop: NextToArriveStop, scheduleRequest: ScheduleRequest) {
         let routeId = nextToArriveStop.routeId
-        RoutesCommand.sharedInstance.routes(forTransitMode: .rail) { [weak self] routes, _ in
+        RoutesCommand.sharedInstance.routes(forTransitMode: nextToArriveStop.transitMode) { [weak self] routes, _ in
             guard let strongSelf = self else { return }
             let routes = routes ?? [Route]()
             if let route = routes.filter({ $0.routeId == routeId }).first {
 
                 let routeUpdatedScheduleRequest = ScheduleRequest(
-                    transitMode: .rail,
+                    transitMode: nextToArriveStop.transitMode,
                     selectedRoute: route,
                     selectedStart: scheduleRequest.selectedStart,
                     selectedEnd: scheduleRequest.selectedEnd,
@@ -49,6 +38,7 @@ class NextToArriveMiddlewareScheduleStateBuilder {
             }
         }
     }
+
 
     func copyScheduleStateToAlerts(scheduleRequest: ScheduleRequest) {
         let scheduleState = ScheduleState(scheduleRequest: scheduleRequest, scheduleData: ScheduleData(), scheduleStopEdit: ScheduleStopEdit())

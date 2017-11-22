@@ -22,7 +22,7 @@ class NextToArriveViewModel: NSObject, StoreSubscriber, LastCellDelegate {
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     var scheduleRequest: ScheduleRequest?
 
-    var transitMode: TransitMode! 
+    var transitMode: TransitMode!
 
     func lastCellBottomSet(bottom: CGFloat) {
         let bottomWithBorder = bottom + 15
