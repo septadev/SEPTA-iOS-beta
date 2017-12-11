@@ -7,7 +7,7 @@
 	<key>crashlytics1</key>
 	<string>bc2dd85ee4bc4580ad7a7e2819d8402ff8595c61</string>
 	<key>databaseVersion</key>
-	<integer>10</integer>
+	<integer>11</integer>
 	<key>databaseChange</key>
 	<string>Handle Glenside combined</string>
 	<key>url</key>
