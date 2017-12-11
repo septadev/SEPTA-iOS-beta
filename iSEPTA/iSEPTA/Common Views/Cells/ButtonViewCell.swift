@@ -11,13 +11,17 @@ import UIKit
 
 class ButtonViewCell: UITableViewCell {
     weak var lastCellDelegate: LastCellDelegate?
-    var buttonText: String = ""
+    var buttonText: String = "" {
+        didSet {
+            updateAccessibilityAttributes()
+        }
+    }
+
     override func draw(_ rect: CGRect) {
         SeptaDraw.drawRedButton(frame: rect, redButtonText: buttonText, enabled: enabled)
     }
 
     @objc override var frame: CGRect {
-
         didSet {
             updateLastCellDelegate()
         }
@@ -31,7 +35,17 @@ class ButtonViewCell: UITableViewCell {
 
     var enabled: Bool = false {
         didSet {
+            updateAccessibilityAttributes()
             setNeedsDisplay()
+        }
+    }
+
+    private func updateAccessibilityAttributes() {
+        accessibilityLabel = buttonText
+        accessibilityTraits = UIAccessibilityTraitButton
+
+        if !enabled {
+            accessibilityTraits |= UIAccessibilityTraitNotEnabled
         }
     }
 }
