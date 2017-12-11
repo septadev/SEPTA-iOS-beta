@@ -4,6 +4,7 @@
 
 **/xcuserdata/
 
+/Carthage
 /Carthage/Build/
 /iSEPTA/Build
 /Utilities/format.log
@@ -14,3 +15,4 @@ SEPTA.sqlite
 SEPTA.zip
 /iSEPTA/.idea
 /iSEPTA/iSEPTA/Info/network.plist
+/Cartfile.resolved
