@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>crashlytics2</key>
+	<string>412eaf908c240c175463c362fd45421f584b44539ee8ca4ff93e57243573f805</string>
+	<key>crashlytics1</key>
+	<string>bc2dd85ee4bc4580ad7a7e2819d8402ff8595c61</string>
+	<key>databaseVersion</key>
+	<integer>7</integer>
+	<key>databaseChange</key>
+	<string>Update with latest dababase</string>
+	<key>url</key>
+	<string>https://vnjb5kvq2b.execute-api.us-east-1.amazonaws.com/prod</string>
+	<key>apiKey</key>
+	<string>S0XFfcawkb54IMFnAGctQajLNUK7QxNfoi4zgaD4</string>
+</dict>
+</plist>
