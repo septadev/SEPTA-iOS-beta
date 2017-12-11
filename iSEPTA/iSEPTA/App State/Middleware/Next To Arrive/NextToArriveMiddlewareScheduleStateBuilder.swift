@@ -39,7 +39,6 @@ class NextToArriveMiddlewareScheduleStateBuilder {
         }
     }
 
-
     func copyScheduleStateToAlerts(scheduleRequest: ScheduleRequest) {
         let scheduleState = ScheduleState(scheduleRequest: scheduleRequest, scheduleData: ScheduleData(), scheduleStopEdit: ScheduleStopEdit())
         let copyAction = CopyScheduleStateToTargetForScheduleAction(targetForScheduleAction: .alerts, scheduleState: scheduleState, description: "Copying Schedule State to Alerts")
