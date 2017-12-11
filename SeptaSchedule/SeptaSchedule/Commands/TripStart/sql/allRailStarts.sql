@@ -19,3 +19,5 @@ from
 
 GROUP BY S.stop_id, S.stop_name, S.stop_lat, S.stop_lon;
 ;
+
+

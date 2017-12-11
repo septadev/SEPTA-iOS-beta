@@ -7,9 +7,9 @@
 	<key>crashlytics1</key>
 	<string>bc2dd85ee4bc4580ad7a7e2819d8402ff8595c61</string>
 	<key>databaseVersion</key>
-	<integer>7</integer>
+	<integer>10</integer>
 	<key>databaseChange</key>
-	<string>Update with latest dababase</string>
+	<string>Handle Glenside combined</string>
 	<key>url</key>
 	<string>https://vnjb5kvq2b.execute-api.us-east-1.amazonaws.com/prod</string>
 	<key>apiKey</key>
