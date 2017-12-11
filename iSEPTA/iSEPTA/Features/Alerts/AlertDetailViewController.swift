@@ -204,7 +204,7 @@ extension AlertDetailViewController {
         cell.alertImage.image = UIImage(named: "detourAlert")
         cell.advisoryLabel.text = "Active Detours"
         cell.disabledAdvisoryLabel.text = "No Active Detours"
-        let message = AlertDetailsViewModel.renderMessage(alertDetails: alertDetails) { return $0.detour?.message }
+        let message = AlertDetailsViewModel.renderMessage(alertDetails: alertDetails) { return $0.detour?.wrappedMessage }
         if let message = message {
             cell.setEnabled(true)
             cell.textView.attributedText = message
