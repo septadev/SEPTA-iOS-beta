@@ -80,9 +80,9 @@ class NextToArriveInfoViewController: UIViewController {
             let action = UIAccessibilityCustomAction(name: name, target: viewController, selector: #selector(NextToArriveDetailViewController.toggleMapHeight))
             slider.accessibilityCustomActions = [action]
 
-//            let margin = slider.frame.width / 2
-//            let largerRect = CGRect(x: slider.frame.origin.x - margin, y: slider.frame.origin.y - margin, width: slider.frame.width + 2 * margin, height: slider.frame.height + 2 * margin)
-//            slider.accessibilityFrame = UIAccessibilityConvertFrameToScreenCoordinates(largerRect, slider.superview!)
+            //            let margin = slider.frame.width / 2
+            //            let largerRect = CGRect(x: slider.frame.origin.x - margin, y: slider.frame.origin.y - margin, width: slider.frame.width + 2 * margin, height: slider.frame.height + 2 * margin)
+            //            slider.accessibilityFrame = UIAccessibilityConvertFrameToScreenCoordinates(largerRect, slider.superview!)
         }
     }
 }

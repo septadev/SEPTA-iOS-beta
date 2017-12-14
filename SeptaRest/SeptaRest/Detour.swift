@@ -30,7 +30,7 @@ public class Detour: Mappable {
     }
 
     public var wrappedMessage: String? {
-        guard let message = message else { return nil }
+        guard let message = message, message.count > 0 else { return nil }
 
         var result: String = ""
 
