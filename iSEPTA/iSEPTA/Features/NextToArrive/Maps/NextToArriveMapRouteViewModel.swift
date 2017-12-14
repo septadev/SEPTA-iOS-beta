@@ -72,7 +72,7 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
     func newState(state: StoreSubscriberStateType) {
         let trips = state
 
-        guard let target = store.state.targetForScheduleActions() else { return }
+        guard let _ = store.state.targetForScheduleActions() else { return }
 
         let allRouteIds = NextToArriveGrouper.filterRoutesToMap(trips: trips, requestRouteId: requestedRoutedId)
 
