@@ -548,6 +548,10 @@
 		67EA2B5D1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B5C1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift */; };
 		67EA2B611F518CA600C0567A /* SearchModalHeaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B601F518CA600C0567A /* SearchModalHeaderDelegate.swift */; };
 		67EA2B631F51AB8700C0567A /* StopEditSearchMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EA2B621F51AB8700C0567A /* StopEditSearchMode.swift */; };
+		67EF6D631FE2DBAA00245E0F /* HolidayScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EF6D5D1FE2DBAA00245E0F /* HolidayScheduleViewController.swift */; };
+		67EF6D641FE2DBAA00245E0F /* HolidaySchedule.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67EF6D5E1FE2DBAA00245E0F /* HolidaySchedule.xib */; };
+		67EF6D651FE2DBAA00245E0F /* holidaySchedule.json in Resources */ = {isa = PBXBuildFile; fileRef = 67EF6D5F1FE2DBAA00245E0F /* holidaySchedule.json */; };
+		67EF6D661FE2DBAA00245E0F /* HolidaySchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EF6D601FE2DBAA00245E0F /* HolidaySchedule.swift */; };
 		67F028961F7ED0460032F99C /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F028951F7ED0460032F99C /* ContactViewController.swift */; };
 		67F028981F7ED2780032F99C /* BigBlueChevron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F028971F7ED2780032F99C /* BigBlueChevron.swift */; };
 		67F0289A1F7EDA100032F99C /* CustomerServiceControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F028991F7EDA100032F99C /* CustomerServiceControl.swift */; };
@@ -1197,6 +1201,10 @@
 		67EA2B5C1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStopsModalHeaderViewController.swift; sourceTree = "<group>"; };
 		67EA2B601F518CA600C0567A /* SearchModalHeaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModalHeaderDelegate.swift; sourceTree = "<group>"; };
 		67EA2B621F51AB8700C0567A /* StopEditSearchMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopEditSearchMode.swift; sourceTree = "<group>"; };
+		67EF6D5D1FE2DBAA00245E0F /* HolidayScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolidayScheduleViewController.swift; sourceTree = "<group>"; };
+		67EF6D5E1FE2DBAA00245E0F /* HolidaySchedule.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HolidaySchedule.xib; sourceTree = "<group>"; };
+		67EF6D5F1FE2DBAA00245E0F /* holidaySchedule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = holidaySchedule.json; sourceTree = "<group>"; };
+		67EF6D601FE2DBAA00245E0F /* HolidaySchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolidaySchedule.swift; sourceTree = "<group>"; };
 		67F028951F7ED0460032F99C /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		67F028971F7ED2780032F99C /* BigBlueChevron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBlueChevron.swift; sourceTree = "<group>"; };
 		67F028991F7EDA100032F99C /* CustomerServiceControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerServiceControl.swift; sourceTree = "<group>"; };
@@ -1534,6 +1542,7 @@
 		582F4E931F33B1120062A546 /* Schedules */ = {
 			isa = PBXGroup;
 			children = (
+				67EF6D5C1FE2DBAA00245E0F /* Holidays */,
 				58B18B0D1F42424C00A7F163 /* SelectSchedule */,
 				582F4E941F33B1120062A546 /* Routes */,
 				582F4E9E1F33B1120062A546 /* SelectStop */,
@@ -2638,6 +2647,17 @@
 			path = Startup;
 			sourceTree = "<group>";
 		};
+		67EF6D5C1FE2DBAA00245E0F /* Holidays */ = {
+			isa = PBXGroup;
+			children = (
+				67EF6D5D1FE2DBAA00245E0F /* HolidayScheduleViewController.swift */,
+				67EF6D5E1FE2DBAA00245E0F /* HolidaySchedule.xib */,
+				67EF6D5F1FE2DBAA00245E0F /* holidaySchedule.json */,
+				67EF6D601FE2DBAA00245E0F /* HolidaySchedule.swift */,
+			);
+			path = Holidays;
+			sourceTree = "<group>";
+		};
 		67F028A31F7FC2E50032F99C /* URLs */ = {
 			isa = PBXGroup;
 			children = (
@@ -2971,6 +2991,7 @@
 				58B278BB1F62AAD500663507 /* R.kml in Resources */,
 				58B2788A1F62AAD500663507 /* 62.kml in Resources */,
 				58B278A11F62AAD500663507 /* 94.kml in Resources */,
+				67EF6D651FE2DBAA00245E0F /* holidaySchedule.json in Resources */,
 				582531951F406E790088D056 /* DefaultPreferences.plist in Resources */,
 				58B278961F62AAD500663507 /* 79.kml in Resources */,
 				58B278AF1F62AAD500663507 /* H.kml in Resources */,
@@ -3006,6 +3027,7 @@
 				582F4EDB1F33B1120062A546 /* Assets.xcassets in Resources */,
 				580128061F6B1D13006B6DB8 /* FavoriteTripCell.xib in Resources */,
 				582F4ED91F33B1120062A546 /* settings.storyboard in Resources */,
+				67EF6D641FE2DBAA00245E0F /* HolidaySchedule.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3167,6 +3189,7 @@
 				58658D1B1F53135100E67B4E /* AddressCell.swift in Sources */,
 				67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */,
 				67A385801F7D7690002E01E0 /* StartupViewController.swift in Sources */,
+				67EF6D661FE2DBAA00245E0F /* HolidaySchedule.swift in Sources */,
 				676355071F5EAD5900CA7EAB /* SubscriberUnsubscriber.swift in Sources */,
 				58EB8D251F5D8EE80028A487 /* BaseNavigationBar.swift in Sources */,
 				5840D6D51F376E5E00C8CB76 /* NavigationStackState.swift in Sources */,
@@ -3402,6 +3425,7 @@
 				58248B6E1F6D6A3800DA2D65 /* EditFavoriteViewController.swift in Sources */,
 				676354FD1F5E255A00CA7EAB /* FilterableRoute.swift in Sources */,
 				58B892171F38F7E700BFFEFA /* Strings.swift in Sources */,
+				67EF6D631FE2DBAA00245E0F /* HolidayScheduleViewController.swift in Sources */,
 				58EB8D151F5D7CD20028A487 /* BaseNavigationController.swift in Sources */,
 				589A89D71F50BB73007329DB /* SelectStopCell.swift in Sources */,
 				6749A4711F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift in Sources */,
