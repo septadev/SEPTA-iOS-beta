@@ -30,6 +30,8 @@ public class Detour: Mappable {
     }
 
     public var wrappedMessage: String? {
+        guard let message = message else { return nil }
+
         var result: String = ""
 
         if let start_location = start_location {
@@ -47,11 +49,9 @@ public class Detour: Mappable {
             result += "<p><b>Reason:</b> \(reason)</p>"
         }
 
-        if let message = message {
-            result += "<p><b>Details:</b> \(message)</p>"
+        result += "<p><b>Details:</b> \(message)</p>"
 
-            result += "<p>------------------------------------</p>"
-        }
+        result += "<p>------------------------------------</p>"
 
         return result
     }
