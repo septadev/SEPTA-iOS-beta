@@ -43,6 +43,13 @@ public class DateFormatters {
         return formatter
     }()
 
+    static var ymdFormatter: DateFormatter = {
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+
     static var uiDateTimeFormatter: DateFormatter = {
 
         let formatter = DateFormatter()

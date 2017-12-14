@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <viewController id="vl0-rS-MOL" customClass="HolidayScheduleViewController" customModule="Septa" customModuleProvider="target">
+            <view key="view" contentMode="scaleToFill" id="AzA-xG-Ohu">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8X9-qt-VZj">
+                        <rect key="frame" x="311" y="35" width="39" height="30"/>
+                        <state key="normal" title="Close"/>
+                        <connections>
+                            <action selector="closeButtonTapped:" destination="vl0-rS-MOL" eventType="touchUpInside" id="ewP-ew-oAW"/>
+                        </connections>
+                    </button>
+                    <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="onZ-WR-lRx">
+                        <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </webView>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="wZ8-eq-1Wn" firstAttribute="trailing" secondItem="8X9-qt-VZj" secondAttribute="trailing" constant="25" id="I2b-G7-Em8" userLabel="CloseRight"/>
+                    <constraint firstItem="wZ8-eq-1Wn" firstAttribute="bottom" secondItem="onZ-WR-lRx" secondAttribute="bottom" id="Kiz-y9-mie" userLabel="WebViewBottom"/>
+                    <constraint firstItem="onZ-WR-lRx" firstAttribute="top" secondItem="wZ8-eq-1Wn" secondAttribute="top" constant="40" id="V3d-3q-ATM" userLabel="WebViewTop"/>
+                    <constraint firstItem="wZ8-eq-1Wn" firstAttribute="trailing" secondItem="onZ-WR-lRx" secondAttribute="trailing" id="lzE-QZ-8ah" userLabel="WebViewRight"/>
+                    <constraint firstItem="8X9-qt-VZj" firstAttribute="top" secondItem="wZ8-eq-1Wn" secondAttribute="top" constant="15" id="ofF-5Y-2ge"/>
+                    <constraint firstItem="onZ-WR-lRx" firstAttribute="leading" secondItem="wZ8-eq-1Wn" secondAttribute="leading" id="yE5-0Z-P1F" userLabel="WebViewLeft"/>
+                </constraints>
+                <viewLayoutGuide key="safeArea" id="wZ8-eq-1Wn"/>
+            </view>
+            <connections>
+                <outlet property="uiWebView" destination="onZ-WR-lRx" id="iQS-QL-nd8"/>
+            </connections>
+            <point key="canvasLocation" x="-275" y="56"/>
+        </viewController>
+    </objects>
+</document>

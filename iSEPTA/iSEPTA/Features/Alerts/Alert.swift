@@ -64,4 +64,31 @@ class UIAlert {
     static func presentComingSoonAlertFrom(_ viewController: UIViewController) {
         presentOKAlertFrom(viewController: viewController, withTitle: "SEPTA iOS", message: "This cool feature is coming soon!")
     }
+
+    static func presentHolidayAlertFrom(viewController: UIViewController, holidaySchedule: HolidaySchedule) {
+
+        guard let message = holidaySchedule.holidayMessage(),
+            let onlineSchedules = holidaySchedule.onlineHolidaySchedules(),
+            let onlineScheduleController = Bundle.main.loadNibNamed("HolidaySchedule", owner: nil, options: nil)?.first as? HolidayScheduleViewController else { return }
+
+        let alert = UIAlertController(title: "Holiday Schedule", message: message, preferredStyle: UIAlertControllerStyle.alert)
+
+        alert.addAction(UIAlertAction(title: "Switch to Next To Arrive", style: UIAlertActionStyle.default) { _ in
+            let action = SwitchTabs(activeNavigationController: .nextToArrive, description: "Holiday Schedules")
+            store.dispatch(action)
+        }
+        )
+        for onlineSchedule in onlineSchedules {
+            alert.addAction(UIAlertAction(title: onlineSchedule.label, style: UIAlertActionStyle.default) { _ in
+                let request = URLRequest(url: onlineSchedule.url)
+                onlineScheduleController.uiWebView.loadRequest(request)
+                viewController.present(onlineScheduleController, animated: true, completion: nil)
+            })
+        }
+
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in }
+        )
+
+        viewController.present(alert, animated: true, completion: nil)
+    }
 }

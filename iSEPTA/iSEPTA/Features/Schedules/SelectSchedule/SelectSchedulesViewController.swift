@@ -18,6 +18,18 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewWrapper: UIView!
 
+    @IBOutlet weak var mockDateTextField: UITextField!
+
+    @IBAction func evalMockDateTapped(_: Any) {
+        let formatter = DateFormatters.ymdFormatter
+        if var holidaySchedule = holidaySchedule, let text = mockDateTextField.text, let date = formatter.date(from: text) {
+            holidaySchedule.setReferenceDate(date)
+            if holidaySchedule.holidayMessage() != nil {
+                UIAlert.presentHolidayAlertFrom(viewController: self, holidaySchedule: holidaySchedule)
+            }
+        }
+    }
+
     // MARK: - Properties
     let viewController: ViewController = .selectSchedules
     let buttonRow = 3
@@ -26,6 +38,7 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
     let cellId = "singleStringCell"
     let buttonCellId = "buttonViewCell"
     var viewModel: SelectSchedulesViewModel!
+    var holidaySchedule: HolidaySchedule?
 
     override func viewDidLoad() {
         viewModel = SelectSchedulesViewModel(delegate: self)
@@ -35,6 +48,7 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
         viewModel.schedulesDelegate = self
         buttonView.isHidden = true
         UIView.addSurroundShadow(toView: tableViewWrapper)
+        holidaySchedule = HolidaySchedule.buildHolidaySchedule()
     }
 
     override func viewWillAppear(_: Bool) {
@@ -43,6 +57,15 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
         navBar.shadowImage = UIImage()
         navBar.setBackgroundImage(UIImage(), for: .default)
         viewModel.subscribe()
+    }
+
+    override func viewDidAppear(_: Bool) {
+        if let holidaySchedule = holidaySchedule {
+
+            if holidaySchedule.holidayMessage() != nil {
+                UIAlert.presentHolidayAlertFrom(viewController: self, holidaySchedule: holidaySchedule)
+            }
+        }
     }
 
     override func viewWillDisappear(_: Bool) {
