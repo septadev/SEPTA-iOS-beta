@@ -90,10 +90,11 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
         backButtonPopped(toParentViewController: parent)
     }
 
-    func toggleMapHeight() {
+    @objc func toggleMapHeight() {
         constraintsToggle = constraintsToggle.toggleConstraints(inView: view)
         gestureRecognizerToggle = gestureRecognizerToggle.toggleRecognizers()
         nextToArriveInfoTableScrollableToggle.toggleTableViewScrolling()
+        nextToArriveInfoViewController?.updateSliderAccessibility()
     }
 
     weak var nextToArriveInfoViewController: NextToArriveInfoViewController?

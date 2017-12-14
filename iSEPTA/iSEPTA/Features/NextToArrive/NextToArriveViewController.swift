@@ -119,6 +119,7 @@ extension NextToArriveViewController: UITableViewDelegate, UITableViewDataSource
 
     func updateHeaderLabels() {
         scheduleLabel.text = viewModel.scheduleTitle()
+        scheduleLabel.accessibilityTraits = UIAccessibilityTraitHeader
         sectionHeaderLabel.text = viewModel.transitModeTitle()
     }
 }
