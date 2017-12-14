@@ -128,6 +128,11 @@ extension NextToArriveViewModel {
             cell.routeShortNameLabel.text = rowModel.text
             cell.pillView.backgroundColor = rowModel.pillColor
         }
+
+        cell.accessibilityTraits = UIAccessibilityTraitSearchField
+        if !rowModel.isSelectable {
+            cell.accessibilityTraits |= UIAccessibilityTraitNotEnabled
+        }
     }
 
     func changeFontWeight(font currentFont: UIFont, weight: UIFont.Weight) -> UIFont {
