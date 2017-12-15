@@ -30,7 +30,7 @@ extension NextToArriveStop {
         return delayString
     }
 
-    func generateTimeToDepartureString() -> String? {
+    private func generateTimeToDeparture() -> Date {
         let sortedDates = [self.arrivalTime, self.departureTime].sorted()
         var firstDate = sortedDates[0]
         if let delayMinutes = self.delayMinutes, hasRealTimeData {
@@ -38,7 +38,21 @@ extension NextToArriveStop {
             components.minute = delayMinutes
             firstDate = Calendar.current.date(byAdding: components, to: firstDate)!
         }
+        return firstDate
+    }
+
+    func generateTimeToDepartureString() -> String? {
+        let firstDate = generateTimeToDeparture()
         return DateFormatters.formatTimeFromNow(date: firstDate)
+    }
+
+    func generateTimeToDepartureAccessibilityString() -> String? {
+        let firstDate = generateTimeToDeparture()
+        let originalUnitsStyle = DateFormatters.durationFormatter.unitsStyle
+        DateFormatters.durationFormatter.unitsStyle = .full
+        let accessibilityString = DateFormatters.formatTimeFromNow(date: firstDate)
+        DateFormatters.durationFormatter.unitsStyle = originalUnitsStyle
+        return accessibilityString
     }
 
     func generateOnTimeColor() -> UIColor {

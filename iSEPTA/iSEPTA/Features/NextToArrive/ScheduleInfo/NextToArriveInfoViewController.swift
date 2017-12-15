@@ -44,6 +44,7 @@ class NextToArriveInfoViewController: UIViewController {
 
         viewModel.delegate = self
         titleLabel.text = viewModel.viewTitle()
+        titleLabel.accessibilityTraits = UIAccessibilityTraitHeader
         tableView.tableFooterView = tableFooterView
 
         needToSeeLaterTrainsLabel.text = viewModel.transitMode().needToSeeLaterVehiclesString()
