@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,24 +15,29 @@
             <objects>
                 <viewController storyboardIdentifier="tripDetailViewController" id="Ipr-0X-Mb4" customClass="TripDetailViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ser-kc-t0w">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Id-DY-3xE" userLabel="MapView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="327"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="414"/>
                                 <connections>
                                     <segue destination="rLf-ds-PN2" kind="embed" id="R2l-Y3-5ng"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pie-7c-6ue" userLabel="ShadowView" customClass="NavBarShadowView" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="6DD-X7-nJ8"/>
+                                    <constraint firstAttribute="height" constant="64" placeholder="YES" id="6DD-X7-nJ8"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="6DD-X7-nJ8"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Os-2x-QGh" userLabel="InfoView">
-                                <rect key="frame" x="0.0" y="391" width="375" height="276"/>
+                                <rect key="frame" x="0.0" y="502" width="375" height="276"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="276" id="h6c-wv-KJn"/>
                                 </constraints>
@@ -44,6 +49,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="pie-7c-6ue" firstAttribute="leading" secondItem="Iwu-zm-0jC" secondAttribute="leading" id="1Lx-hz-F7b" userLabel="navBarShadowLeft"/>
+                            <constraint firstItem="pie-7c-6ue" firstAttribute="bottom" secondItem="Iwu-zm-0jC" secondAttribute="top" constant="20" id="9Md-24-18m"/>
                             <constraint firstItem="pie-7c-6ue" firstAttribute="top" secondItem="Ser-kc-t0w" secondAttribute="top" id="HPK-ut-BM5" userLabel="NavBarShadowTop"/>
                             <constraint firstItem="0Os-2x-QGh" firstAttribute="leading" secondItem="Iwu-zm-0jC" secondAttribute="leading" id="JtL-lS-l0D" userLabel="InfoViewLeft"/>
                             <constraint firstItem="Iwu-zm-0jC" firstAttribute="trailing" secondItem="8Id-DY-3xE" secondAttribute="trailing" id="KvB-w0-d7V" userLabel="MapViewRight"/>
@@ -68,11 +74,11 @@
             <objects>
                 <viewController id="rLf-ds-PN2" customClass="TripDetailMapViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zM5-X6-HpV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="327"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="V33-1W-Z10">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="327"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="336"/>
                                 <connections>
                                     <outlet property="delegate" destination="zM5-X6-HpV" id="16j-TT-cPw"/>
                                 </connections>
@@ -128,7 +134,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#546 to 30th Street Station" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="so5-c7-C4k" userLabel="RouteLabel">
-                                                        <rect key="frame" x="33" y="15" width="214.5" height="19.5"/>
+                                                        <rect key="frame" x="33.000000000000014" y="14.999999999999998" width="214.33333333333337" height="19.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                         <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -150,16 +156,16 @@ HeaderView</string>
                                                 <rect key="frame" x="0.0" y="60" width="345" height="40"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lSE-hb-CK1">
-                                                        <rect key="frame" x="78" y="11.5" width="189.5" height="17"/>
+                                                        <rect key="frame" x="77.999999999999986" y="11.666666666666671" width="189.66666666666663" height="17"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Stop:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9A-Wx-uXH" userLabel="NextStop">
-                                                                <rect key="frame" x="0.0" y="-0.5" width="67" height="17"/>
+                                                                <rect key="frame" x="0.0" y="-0.6666666666666714" width="67" height="17"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jefferson Station" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0y-F3-a1O" userLabel="StationName">
-                                                                <rect key="frame" x="70" y="0.0" width="119.5" height="17"/>
+                                                                <rect key="frame" x="70" y="0.0" width="119.66666666666669" height="17"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -189,7 +195,7 @@ CenteringView</string>
                                                 <rect key="frame" x="0.0" y="110" width="345" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 Min Late" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4f-KK-PvE" userLabel="DelayLabel">
-                                                        <rect key="frame" x="136.5" y="11.5" width="72" height="17"/>
+                                                        <rect key="frame" x="137" y="11.666666666666671" width="71.666666666666686" height="17"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                         <color key="textColor" red="0.60414880514144897" green="0.12870540201244104" blue="0.087611872373433208" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -213,19 +219,19 @@ CenteringView</string>
                                                 <rect key="frame" x="0.0" y="170" width="345" height="42"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow Us!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yb-1i-cXX" userLabel="FollowUs">
-                                                        <rect key="frame" x="12" y="12" width="65.5" height="17"/>
+                                                        <rect key="frame" x="12" y="12" width="65.666666666666671" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                         <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@SEPTA_PAO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hzg-nl-ORu" userLabel="Handle">
-                                                        <rect key="frame" x="232.5" y="14" width="81.5" height="14.5"/>
+                                                        <rect key="frame" x="232.33333333333334" y="14" width="81.666666666666657" height="14.333333333333336"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                         <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitterIcon" translatesAutoresizingMaskIntoConstraints="NO" id="A0V-Kn-5QL" userLabel="TwitterImage">
-                                                        <rect key="frame" x="319" y="12.5" width="21" height="17"/>
+                                                        <rect key="frame" x="319" y="12.666666666666657" width="21" height="17"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.92156862745098034" green="0.94117647058823528" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
