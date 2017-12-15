@@ -94,7 +94,7 @@ extension BaseNextToArriveInfoViewModel { // Section Headers
         let routeId = firstTripInSection.startStop.routeId
         tripHeaderView.pillView.backgroundColor = Route.colorForRouteId(routeId, transitMode: transitMode())
         tripHeaderView.lineNameLabel.text = firstTripInSection.startStop.routeName
-        tripHeaderView.accessibilityLabel = firstTripInSection.startStop.routeName
+        view.accessibilityLabel = firstTripInSection.startStop.routeName
         let alert = alerts[transitMode()]?[routeId]
         tripHeaderView.alertStackView.addAlert(alert)
         tripHeaderView.alertViewDelegate = self
