@@ -179,7 +179,7 @@ extension BaseNextToArriveInfoViewModel { // Table View
         tripView.nextToArriveStop = trip.startStop
 
         if let onTimeText = tripView.onTimeLabel.text,
-            let departingWhen = tripView.departingWhenLabel.text,
+            let departingWhen = trip.startStop.generateTimeToDepartureAccessibilityString(),
             let scheduledTime = tripView.startStopLabel.text,
             let endStopLabel = tripView.endStopLabel.text {
             tripView.accessibilityLabel = "\(endStopLabel).  On Time Status: \(onTimeText).  Departing: \(departingWhen).  Scheduled Depature and Arrival: \(scheduledTime)"
