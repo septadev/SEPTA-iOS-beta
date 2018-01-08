@@ -4,62 +4,6 @@ SEPTA-iOS
 Source Code for the SEPTA iOS App
 
 
-Quick Starter Guide:
-===================
-
- * Clone the repository 
- * Run install.sh (requires an Internet connection, and 5-10 minutes)
- * Launch iSEPTA.xcworkspace/ and start coding
-
-
-
-Issues:
-======
-
-  * If install.sh has failed, there could be a couple of issues.  
-
-  It runs the following bare-bones scripts:
-    - getImages.sh
-    - getGTFS.sh
-    - buildDB.sh
-
-  getImages.sh pulls the sanitized images from the SEPTA-iOS-beta-images repository that this iOS project needs to work.
-
-  getGTFS.sh uses wget to download the latest GTFS file from SEPTA.  The files are then uncompressed and moved to the gtfs/ directory.
-
-  buildDB.sh runs a perl script that takes the GTFS, throws out the data that isn't necessary and builds a sqlite database that the app needs to run.  Once the database, SEPTA.sqlite, has been generated, it is moved into the database/ directory.
-
-
-Note: the Perl script (create_database.pl) uses the following libraries:
-
-  - DBI;
-  - POSIX;
-  - GIS::Distance;
-
-
-If you don't have them (or are not sure if you do), type the following:
-
-    perl -eshell -MCPAN   
-
-(This might need to be run as sudo)
-
-
-Then install each one individually be typing:
-
-  - install DBI
-  - install POSIX
-  - install GIS::Distance
-  
-  
-
-About the Images:
-================
-
-  * While the source code is licensed under the GPL v3, the images used by the app are not.  Replacements images have been made available to ensure the app can be compiled and run without issue.  When time permits, I can make less eye-piercing and happy replacements available.
-
-The images can be found in this repository: https://github.com/septadev/SEPTA-iOS-beta-images.  Once downloaded, create an images directory in the SEPTA-iOS-beta repository and copy the files from SEPTA-iOS-beta-images into there.
-
-Then launch iSEPTA.xcworkspace and enjoy.
 
 
 Copyright and Trademark Notice
