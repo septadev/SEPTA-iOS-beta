@@ -1,68 +1,68 @@
-CREATE TABLE routes_rail_boundaries
-(
-  route_id          TEXT,
-  lineStart_stop_id INT,
-  lineEnd_stop_id   INT,
-  terminus_name     TEXT,
-  direction_id      TEXT
-);
-
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('AIR', 90401, 90007, 'to Center City Philadelphia', '0');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('AIR', 90007, 90401, 'to Philadelphia International Airport', '1');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('CHE', 90004, 90720, 'to Chestnut Hill East', '0');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id) 
-VALUES ('CHE', 90720, 90004, 'to Center City Philadelphia', '1');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('CHW', 90801, 90007, 'to Center City Philadelphia', '0');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('CHW', 90007, 90801, 'to Chestnut Hill West', '1');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('CYN', 90001, 90005, 'to Center City Philadelphia', '0');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('CYN', 90005, 90001, 'to Cynwyd', '1');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('FOX', 90004, 90815, 'to Fox Chase', '0');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('FOX', 90815, 90004, 'to Center City Philadelphia', '1');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('GC', 90406, 90538, 'to Glenside', '0');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('GC', 90538, 90406, 'to Center City Philadelphia', '1');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('LAN', 90004, 90538, 'to Doylestown', '0');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('LAN', 90538, 90004, 'to Center City Philadelphia', '1');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('NOR', 90406, 90228, 'to Norristown', '0');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('NOR', 90228, 90406, 'to Center City Philadelphia', '1');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('MED', 90301, 90007, 'to Center City Philadelphia', '0');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('MED', 90007, 90301, 'to Elwyn', '1');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('PAO', 90501, 90007, 'to Center City Philadelphia', '0');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('PAO', 90007, 90501, 'to Thorndale', '1');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('TRE', 90701, 90007, 'to Center City Philadelphia', '0');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('TRE', 90007, 90701, 'to Trenton', '1');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('WAR', 90406, 90417, 'to Warminster', '0');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('WAR', 90417, 90406, 'to Center City Philadelphia', '1');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('WTR', 90406, 90327, 'to West Trenton', '0');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('WTR', 90327, 90406, 'to Center City Philadelphia', '1');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('WIL', 90201, 90007, 'to Center City Philadelphia', '0');
-INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
-VALUES ('WIL', 90007, 90201, 'to Wilmington & Newark, DE', '1');
+-- CREATE TABLE routes_rail_boundaries
+-- (
+--   route_id          TEXT,
+--   lineStart_stop_id INT,
+--   lineEnd_stop_id   INT,
+--   terminus_name     TEXT,
+--   direction_id      TEXT
+-- );
+--
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('AIR', 90401, 90007, 'to Center City Philadelphia', '0');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('AIR', 90007, 90401, 'to Philadelphia International Airport', '1');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('CHE', 90004, 90720, 'to Chestnut Hill East', '0');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('CHE', 90720, 90004, 'to Center City Philadelphia', '1');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('CHW', 90801, 90007, 'to Center City Philadelphia', '0');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('CHW', 90007, 90801, 'to Chestnut Hill West', '1');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('CYN', 90001, 90005, 'to Center City Philadelphia', '0');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('CYN', 90005, 90001, 'to Cynwyd', '1');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('FOX', 90004, 90815, 'to Fox Chase', '0');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('FOX', 90815, 90004, 'to Center City Philadelphia', '1');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('GC', 90406, 90538, 'to Glenside', '0');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('GC', 90538, 90406, 'to Center City Philadelphia', '1');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('LAN', 90004, 90538, 'to Doylestown', '0');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('LAN', 90538, 90004, 'to Center City Philadelphia', '1');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('NOR', 90406, 90228, 'to Norristown', '0');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('NOR', 90228, 90406, 'to Center City Philadelphia', '1');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('MED', 90301, 90007, 'to Center City Philadelphia', '0');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('MED', 90007, 90301, 'to Elwyn', '1');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('PAO', 90501, 90007, 'to Center City Philadelphia', '0');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('PAO', 90007, 90501, 'to Thorndale', '1');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('TRE', 90701, 90007, 'to Center City Philadelphia', '0');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('TRE', 90007, 90701, 'to Trenton', '1');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('WAR', 90406, 90417, 'to Warminster', '0');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('WAR', 90417, 90406, 'to Center City Philadelphia', '1');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('WTR', 90406, 90327, 'to West Trenton', '0');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('WTR', 90327, 90406, 'to Center City Philadelphia', '1');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('WIL', 90201, 90007, 'to Center City Philadelphia', '0');
+-- INSERT INTO routes_rail_boundaries (route_id, lineStart_stop_id, lineEnd_stop_id, terminus_name, direction_id)
+-- VALUES ('WIL', 90007, 90201, 'to Wilmington & Newark, DE', '1');
 
 --   stop_times_bus
 DROP INDEX tripBUSIDX;

@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.5</string>
+	<string>2.0.7</string>
 	<key>CFBundleVersion</key>
-	<string>120</string>
+	<string>122</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -84,6 +84,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>lastDatabaseUpdate</key>
-	<date>2017-08-01T17:19:00Z</date>
+	<date>2017-01-10T18:19:00Z</date>
 </dict>
 </plist>
