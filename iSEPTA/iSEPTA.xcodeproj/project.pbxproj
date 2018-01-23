@@ -1714,8 +1714,8 @@
 		58490E431F55F8F0007DBCA1 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
-				58490E441F55F8FF007DBCA1 /* SeptaAlert.swift */,
 				58490E461F55F98B007DBCA1 /* AlertState.swift */,
+				58490E441F55F8FF007DBCA1 /* SeptaAlert.swift */,
 				6776F671201757A3001FD5B2 /* AlertDetails+Alert.swift */,
 				58A26D9C1F6F2790005A70D3 /* Route+AlertState.swift */,
 				587BC04F1F6EDF1D00B92BB6 /* AlertRequest.swift */,
