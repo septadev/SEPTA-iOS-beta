@@ -6,8 +6,8 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 import SeptaSchedule
 
 struct VehicleLocation {
@@ -65,7 +65,7 @@ struct VehicleLocation {
 }
 
 extension VehicleLocation: Equatable {}
-func ==(lhs: VehicleLocation, rhs: VehicleLocation) -> Bool {
+func == (lhs: VehicleLocation, rhs: VehicleLocation) -> Bool {
     var areEqual = true
 
     areEqual = Optionals.optionalCompare(currentValue: lhs.location, newValue: rhs.location).equalityResult()

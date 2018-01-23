@@ -101,13 +101,14 @@ extension AlertsViewModel { // Table View
 
 extension AlertsViewModel: ScheduleRequestWatcherDelegate {
     func scheduleRequestUpdated(scheduleRequest: ScheduleRequest) {
-        self.transitMode = scheduleRequest.transitMode
+        transitMode = scheduleRequest.transitMode
         self.scheduleRequest = scheduleRequest
         delegate.viewModelUpdated()
     }
 }
 
 extension AlertsViewModel {
+
     // MARK: -  configure routes
 
     func configureSelectRouteDisplayModel() -> NextToArriveRowDisplayModel {

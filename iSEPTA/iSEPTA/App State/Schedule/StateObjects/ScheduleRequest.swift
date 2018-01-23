@@ -28,7 +28,7 @@ struct ScheduleRequest {
 }
 
 extension ScheduleRequest: Equatable {}
-func ==(lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
+func == (lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
     var areEqual = true
 
     areEqual = Optionals.optionalCompare(currentValue: lhs.transitMode, newValue: rhs.transitMode).equalityResult()

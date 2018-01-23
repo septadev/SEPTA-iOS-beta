@@ -7,13 +7,13 @@
 //
 
 import Foundation
-import UIKit
 import ReSwift
+import UIKit
 
 class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel {
 
-    @IBOutlet weak var startLabel: UILabel!
-    @IBOutlet weak var endLabel: UILabel!
+    @IBOutlet var startLabel: UILabel!
+    @IBOutlet var endLabel: UILabel!
 
     let viewModel = NextToArriveTripViewModel()
 

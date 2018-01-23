@@ -18,22 +18,22 @@ class AlertsViewController: UIViewController, IdentifiableController {
     @IBOutlet var sectionHeaders: [UIView]!
     @IBOutlet var tableViewFooter: UIView!
     @IBOutlet var tableViewHeader: UIView!
-    @IBOutlet weak var buttonView: UIView!
-    @IBOutlet weak var scheduleLabel: UILabel!
-    @IBOutlet weak var sectionHeaderLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tableViewWrapperView: UIView!
+    @IBOutlet var buttonView: UIView!
+    @IBOutlet var scheduleLabel: UILabel!
+    @IBOutlet var sectionHeaderLabel: UILabel!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var tableViewWrapperView: UIView!
     var alertDetailCellView: AlertDetailCellView!
 
     var alertState_HasGenericAlertsWatcher: AlertState_HasGenericAlertsWatcher!
 
-    @IBOutlet weak var genericAlertsTableViewWrapper: UIView! {
+    @IBOutlet var genericAlertsTableViewWrapper: UIView! {
         didSet {
             alertDetailCellView = genericAlertsTableViewWrapper.awakeInsertAndPinSubview(nibName: "AlertDetailsCellView")
         }
     }
 
-    @IBOutlet weak var genericAlertsTableView: UITableView!
+    @IBOutlet var genericAlertsTableView: UITableView!
     let buttonRow = 1
 
     var formIsComplete = false

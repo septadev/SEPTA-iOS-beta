@@ -12,11 +12,11 @@ import UIKit
 class ContactViewController: UIViewController, IdentifiableController {
     var viewController: ViewController = .contactViewController
 
-    @IBOutlet weak var customerServiceStackView: UIStackView!
+    @IBOutlet var customerServiceStackView: UIStackView!
 
-    @IBOutlet weak var socialMediaInsetView: UIView!
-    @IBOutlet weak var customerServiceInsetView: UIView!
-    @IBOutlet weak var socialMediaStackView: UIStackView!
+    @IBOutlet var socialMediaInsetView: UIView!
+    @IBOutlet var customerServiceInsetView: UIView!
+    @IBOutlet var socialMediaStackView: UIStackView!
     var viewModel: ContactViewModel!
 
     override func viewDidLoad() {

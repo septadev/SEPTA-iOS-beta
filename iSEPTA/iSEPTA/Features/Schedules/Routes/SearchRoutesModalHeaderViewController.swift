@@ -7,20 +7,20 @@
 //
 
 import Foundation
-import UIKit
-import SeptaSchedule
 import ReSwift
+import SeptaSchedule
+import UIKit
 
 class SearchRoutesModalHeaderViewController: UIViewController {
 
-    @IBOutlet weak var dismissIcon: UIView!
-    @IBOutlet weak var searchByTextView: UIView!
+    @IBOutlet var dismissIcon: UIView!
+    @IBOutlet var searchByTextView: UIView!
     var textFieldDelegate: UITextFieldDelegate!
     weak var delegate: SearchModalHeaderDelegate?
 
     var transitMode = TransitMode.currentTransitMode()!
 
-    @IBOutlet weak var textField: UITextField! {
+    @IBOutlet var textField: UITextField! {
         didSet {
             textField.delegate = textFieldDelegate
             textField.isEnabled = true
@@ -39,6 +39,7 @@ class SearchRoutesModalHeaderViewController: UIViewController {
     }
 
     // MARK: - Initial Layout
+
     override func viewDidLoad() {
         super.viewDidLoad()
         addCornersAndBorders()
@@ -46,6 +47,7 @@ class SearchRoutesModalHeaderViewController: UIViewController {
     }
 
     // MARK: - View Life Cycle
+
     @IBAction func didTapDismiss(_: Any) {
         delegate?.dismissModal()
     }

@@ -6,9 +6,9 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
+import CoreLocation
 import Foundation
 import ReSwift
-import CoreLocation
 
 class NextToArriveMapRouteViewModel: StoreSubscriber {
     typealias StoreSubscriberStateType = [NextToArriveTrip]

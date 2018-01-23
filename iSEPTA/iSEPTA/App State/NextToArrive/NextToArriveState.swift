@@ -32,7 +32,7 @@ struct NextToArriveState {
 }
 
 extension NextToArriveState: Equatable {}
-func ==(lhs: NextToArriveState, rhs: NextToArriveState) -> Bool {
+func == (lhs: NextToArriveState, rhs: NextToArriveState) -> Bool {
     var areEqual = true
 
     areEqual = lhs.scheduleState == rhs.scheduleState

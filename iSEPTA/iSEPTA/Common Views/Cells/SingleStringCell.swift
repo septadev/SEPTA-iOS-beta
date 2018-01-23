@@ -10,12 +10,12 @@ class SingleStringCell: UITableViewCell, SingleStringDisplayable {
     }
 
     var enabled: Bool = false
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet var label: UILabel!
     func setTextColor(_ color: UIColor) {
         label.textColor = color
     }
 
-    @IBOutlet weak var searchIcon: UIImageView!
+    @IBOutlet var searchIcon: UIImageView!
     func setLabelText(_ text: String?) {
         label.text = text
     }

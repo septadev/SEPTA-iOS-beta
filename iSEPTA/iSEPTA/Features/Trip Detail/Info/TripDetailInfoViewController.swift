@@ -8,8 +8,8 @@
 
 import Foundation
 import SeptaRest
-import UIKit
 import SeptaSchedule
+import UIKit
 
 class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetailsWatcherDelegate {
 
@@ -190,21 +190,21 @@ class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetail
         return itemView
     }
 
-    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet var stackView: UIStackView!
 
-    @IBOutlet weak var transitModeIcon: UIImageView!
+    @IBOutlet var transitModeIcon: UIImageView!
 
-    @IBOutlet weak var routeLabel: UILabel!
+    @IBOutlet var routeLabel: UILabel!
 
-    @IBOutlet weak var nextStopStationNameLabel: UILabel!
+    @IBOutlet var nextStopStationNameLabel: UILabel!
 
-    @IBOutlet weak var twitterHandleLabel: UILabel!
-    @IBOutlet weak var infoStackView: UIStackView!
-    @IBOutlet weak var delayBoxView: UIView!
+    @IBOutlet var twitterHandleLabel: UILabel!
+    @IBOutlet var infoStackView: UIStackView!
+    @IBOutlet var delayBoxView: UIView!
     @IBOutlet var nextStopView: UIView!
-    @IBOutlet weak var delayLabel: UILabel!
+    @IBOutlet var delayLabel: UILabel!
 
-    @IBOutlet weak var twitterView: UIView!
+    @IBOutlet var twitterView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
     }

@@ -19,7 +19,7 @@ struct ScheduleTripState {
 }
 
 extension ScheduleTripState: Equatable {}
-func ==(lhs: ScheduleTripState, rhs: ScheduleTripState) -> Bool {
+func == (lhs: ScheduleTripState, rhs: ScheduleTripState) -> Bool {
     var areEqual = true
 
     areEqual = lhs.trips == rhs.trips

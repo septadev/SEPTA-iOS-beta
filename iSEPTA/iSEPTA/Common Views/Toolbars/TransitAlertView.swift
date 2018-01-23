@@ -11,7 +11,7 @@ import UIKit
 
 class TransitAlertView: UIView {
 
-    @IBOutlet weak var alertLabel: UILabel!
+    @IBOutlet var alertLabel: UILabel!
 
-    @IBOutlet weak var alertIcon: UIImageView!
+    @IBOutlet var alertIcon: UIImageView!
 }

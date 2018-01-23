@@ -8,10 +8,11 @@
 
 import Foundation
 import ReSwift
-import UIKit
 import SeptaSchedule
+import UIKit
 
 extension NextToArriveViewModel {
+
     // MARK: -  configure routes
 
     func configureSelectRouteDisplayModel() -> NextToArriveRowDisplayModel {

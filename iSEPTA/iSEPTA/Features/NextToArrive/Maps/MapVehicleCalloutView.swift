@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 class MapVehicleCalloutView: UIView {
-    @IBOutlet weak var label1: UILabel!
-    @IBOutlet weak var label2: UILabel!
-    @IBOutlet weak var label3: UILabel!
+    @IBOutlet var label1: UILabel!
+    @IBOutlet var label2: UILabel!
+    @IBOutlet var label3: UILabel!
 
     func buildCalloutView(vehicleLocation: VehicleLocation) {
 

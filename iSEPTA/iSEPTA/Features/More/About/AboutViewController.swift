@@ -12,22 +12,22 @@ import UIKit
 class AboutViewController: UIViewController, IdentifiableController, UITextViewDelegate {
     var viewController: ViewController = .aboutViewController
     var openState: Bool = false
-    @IBOutlet weak var attributionsView: UIView!
-    @IBOutlet weak var attributionsLabel: UILabel!
-    @IBOutlet weak var appInformationView: UIView!
-    @IBOutlet weak var appInfoStackView: UIStackView!
+    @IBOutlet var attributionsView: UIView!
+    @IBOutlet var attributionsLabel: UILabel!
+    @IBOutlet var appInformationView: UIView!
+    @IBOutlet var appInfoStackView: UIStackView!
 
-    @IBOutlet weak var plusButton: AlertDetailButton!
+    @IBOutlet var plusButton: AlertDetailButton!
 
-    @IBOutlet weak var licenseTextViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var licenseTextView: UITextView! {
+    @IBOutlet var licenseTextViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var licenseTextView: UITextView! {
         didSet {
             licenseTextView.delegate = self
         }
     }
 
-    @IBOutlet weak var attributionsHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var attributionsTextView: UITextView! {
+    @IBOutlet var attributionsHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var attributionsTextView: UITextView! {
         didSet {
             attributionsTextView.delegate = self
         }

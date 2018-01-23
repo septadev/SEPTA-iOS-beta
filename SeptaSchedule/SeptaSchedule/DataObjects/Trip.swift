@@ -42,7 +42,7 @@ public struct Trip {
 }
 
 extension Trip: Equatable {}
-public func ==(lhs: Trip, rhs: Trip) -> Bool {
+public func == (lhs: Trip, rhs: Trip) -> Bool {
     var areEqual = true
 
     areEqual = lhs.departureInt == rhs.departureInt

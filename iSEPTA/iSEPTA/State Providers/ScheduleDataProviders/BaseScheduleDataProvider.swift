@@ -131,6 +131,7 @@ class BaseScheduleDataProvider: StoreSubscriber {
     }
 
     // MARK: - Clear out existing data
+
     func clearRoutes() {
         DispatchQueue.main.async {
             store.dispatch(ClearRoutes(targetForScheduleAction: self.targetForScheduleAction))

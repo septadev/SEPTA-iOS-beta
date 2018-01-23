@@ -14,7 +14,7 @@ struct AlertReducer {
     static func main(action: Action, state: AlertState?) -> AlertState {
         if let state = state {
             switch action {
-            case let action as ScheduleAction where action.targetForScheduleAction.includesMe(.alerts) :
+            case let action as ScheduleAction where action.targetForScheduleAction.includesMe(.alerts):
                 return reduceScheduleAction(action: action, state: state)
             case let action as AlertAction:
                 return reduceAlertActions(action: action, state: state)

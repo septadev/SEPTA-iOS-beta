@@ -10,18 +10,18 @@ import Foundation
 import UIKit
 
 class NextToArriveInfoViewController: UIViewController {
-    @IBOutlet weak var slider: UIImageView!
+    @IBOutlet var slider: UIImageView!
     var timer: Timer?
     @IBOutlet var upSwipeGestureRecognizer: UISwipeGestureRecognizer!
     @IBOutlet var downSwipeGestureRecognizer: UISwipeGestureRecognizer!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
-    @IBOutlet weak var needToSeeLaterTrainsLabel: UILabel!
-    @IBOutlet weak var headerView: CurvedTopInfoView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var needToSeeLaterTrainsLabel: UILabel!
+    @IBOutlet var headerView: CurvedTopInfoView!
+    @IBOutlet var tableView: UITableView!
     weak var nextToArriveDetailViewController: NextToArriveDetailViewController?
 
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
     @IBOutlet var tableFooterView: UIView! {
         didSet {
             tableFooterView.isHidden = true

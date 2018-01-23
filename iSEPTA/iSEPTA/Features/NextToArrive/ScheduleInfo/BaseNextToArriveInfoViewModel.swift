@@ -8,8 +8,8 @@
 
 import Foundation
 import ReSwift
-import UIKit
 import SeptaSchedule
+import UIKit
 
 class BaseNextToArriveInfoViewModel: AlertViewDelegate {
     enum CellIds: String {
@@ -159,7 +159,7 @@ extension BaseNextToArriveInfoViewModel { // Table View
             configureNoConnectionCell(cell: cell, forTrip: trip)
         case let cell as ConnectionCellDisplayable:
             configureConnectionCell(cell: cell, forTrip: trip)
-        default:break
+        default: break
         }
     }
 

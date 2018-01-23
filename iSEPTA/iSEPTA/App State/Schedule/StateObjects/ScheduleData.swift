@@ -22,7 +22,7 @@ struct ScheduleData {
 }
 
 extension ScheduleData: Equatable {}
-func ==(lhs: ScheduleData, rhs: ScheduleData) -> Bool {
+func == (lhs: ScheduleData, rhs: ScheduleData) -> Bool {
     var areEqual = true
 
     areEqual = lhs.availableRoutes == rhs.availableRoutes

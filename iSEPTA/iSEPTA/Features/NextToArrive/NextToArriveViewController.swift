@@ -1,8 +1,8 @@
 // Septa. 2017
 
-import UIKit
 import ReSwift
 import SeptaSchedule
+import UIKit
 
 class NextToArriveViewController: BaseNonModalViewController, IdentifiableController {
     let viewController: ViewController = .nextToArriveController
@@ -12,11 +12,11 @@ class NextToArriveViewController: BaseNonModalViewController, IdentifiableContro
     @IBOutlet var sectionHeaders: [UIView]!
     @IBOutlet var tableViewFooter: UIView!
     @IBOutlet var tableViewHeader: UIView!
-    @IBOutlet weak var buttonView: UIView!
-    @IBOutlet weak var scheduleLabel: UILabel!
-    @IBOutlet weak var sectionHeaderLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tableViewWrapper: UIView!
+    @IBOutlet var buttonView: UIView!
+    @IBOutlet var scheduleLabel: UILabel!
+    @IBOutlet var sectionHeaderLabel: UILabel!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var tableViewWrapper: UIView!
 
     let buttonRow = 3
 

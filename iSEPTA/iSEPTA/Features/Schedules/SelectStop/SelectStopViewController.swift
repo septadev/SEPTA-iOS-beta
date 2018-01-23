@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import UIKit
 import ReSwift
+import UIKit
 
 class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableController {
     typealias StoreSubscriberStateType = ScheduleStopEdit?
@@ -16,10 +16,10 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
 
     @IBOutlet var selectAddressRelativeStopViewModel: SelectAddressRelativeStopViewModel!
     @IBOutlet var selectAddressViewModel: SelectAddressViewModel!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
-    @IBOutlet weak var stopsViewModel: SelectStopViewModel! {
+    @IBOutlet var stopsViewModel: SelectStopViewModel! {
         didSet {
             headerViewController?.textField.delegate = stopsViewModel
         }

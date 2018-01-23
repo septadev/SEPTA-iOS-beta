@@ -76,6 +76,7 @@ struct ScheduleDataReducer {
     }
 
     // MARK: - Loading Data
+
     static func reduceRoutesLoaded(action: RoutesLoaded, scheduleData: ScheduleData) -> ScheduleData {
         let newScheduleData = ScheduleData(availableRoutes: ScheduleRouteState(routes: action.routes, updateMode: .loadValues),
                                            availableStarts: scheduleData.availableStarts,

@@ -19,7 +19,7 @@ struct TripDetailState {
 }
 
 extension TripDetailState: Equatable {}
-func ==(lhs: TripDetailState, rhs: TripDetailState) -> Bool {
+func == (lhs: TripDetailState, rhs: TripDetailState) -> Bool {
     var areEqual = true
 
     areEqual = Optionals.optionalCompare(currentValue: lhs.tripDetails, newValue: rhs.tripDetails).equalityResult()

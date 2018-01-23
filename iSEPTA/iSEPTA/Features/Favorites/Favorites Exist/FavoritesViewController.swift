@@ -12,7 +12,7 @@ import UIKit
 class FavoritesViewController: UIViewController, IdentifiableController {
     let viewController: ViewController = .favoritesViewController
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
     var timer: Timer?
     var viewModel: FavoritesViewModel!
     private var pendingRequestWorkItem: DispatchWorkItem?

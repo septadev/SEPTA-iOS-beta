@@ -9,7 +9,7 @@
 import Foundation
 class AlertNavigationControllerStateProvider: NavigationControllerBaseStateProvider {
 
-    @IBOutlet weak var navigationController: BaseNavigationController!
+    @IBOutlet var navigationController: BaseNavigationController!
 
     override func newState(state: StoreSubscriberStateType) {
         guard let newState = state, let newStackState = newState[.alerts] else { return }

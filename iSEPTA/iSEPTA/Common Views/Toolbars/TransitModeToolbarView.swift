@@ -1,17 +1,17 @@
 // Septa. 2017
 
 import Foundation
-import UIKit
 import SeptaSchedule
+import UIKit
 
 @IBDesignable
 class TransitModeToolbarView: UIView {
 
-    @IBOutlet private weak var transitModeIconImageView: UIImageView!
-    @IBOutlet private weak var transitModeLabel: UILabel!
+    @IBOutlet private var transitModeIconImageView: UIImageView!
+    @IBOutlet private var transitModeLabel: UILabel!
 
-    @IBOutlet weak var iconHeightContraint: NSLayoutConstraint!
-    @IBOutlet weak var iconWidthContraint: NSLayoutConstraint!
+    @IBOutlet var iconHeightContraint: NSLayoutConstraint!
+    @IBOutlet var iconWidthContraint: NSLayoutConstraint!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -6,8 +6,8 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 import SeptaSchedule
 
 struct LocationState {
@@ -28,7 +28,7 @@ struct LocationState {
 }
 
 extension LocationState: Equatable {}
-func ==(lhs: LocationState, rhs: LocationState) -> Bool {
+func == (lhs: LocationState, rhs: LocationState) -> Bool {
     var areEqual = true
 
     areEqual = lhs.userHasRequestedLocationState == rhs.userHasRequestedLocationState

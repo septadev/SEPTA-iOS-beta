@@ -18,7 +18,7 @@ struct UserPreferenceState {
 }
 
 extension UserPreferenceState: Equatable {}
-func ==(lhs: UserPreferenceState, rhs: UserPreferenceState) -> Bool {
+func == (lhs: UserPreferenceState, rhs: UserPreferenceState) -> Bool {
     var areEqual = true
 
     areEqual = lhs.defaultsLoaded == rhs.defaultsLoaded

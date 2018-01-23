@@ -19,7 +19,7 @@ struct NextToArriveConnectionStation {
 }
 
 extension NextToArriveConnectionStation: Equatable {}
-func ==(lhs: NextToArriveConnectionStation, rhs: NextToArriveConnectionStation) -> Bool {
+func == (lhs: NextToArriveConnectionStation, rhs: NextToArriveConnectionStation) -> Bool {
     var areEqual = true
 
     areEqual = lhs.stopName == rhs.stopName

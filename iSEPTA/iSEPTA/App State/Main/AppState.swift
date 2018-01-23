@@ -33,7 +33,7 @@ struct AppState: StateType {
 }
 
 extension AppState: Equatable {}
-func ==(lhs: AppState, rhs: AppState) -> Bool {
+func == (lhs: AppState, rhs: AppState) -> Bool {
     var areEqual = true
 
     areEqual = lhs.navigationState == rhs.navigationState

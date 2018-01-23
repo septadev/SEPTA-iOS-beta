@@ -17,7 +17,7 @@ struct MoreState {
 }
 
 extension MoreState: Equatable {}
-func ==(lhs: MoreState, rhs: MoreState) -> Bool {
+func == (lhs: MoreState, rhs: MoreState) -> Bool {
     var areEqual = true
 
     areEqual = Optionals.optionalCompare(currentValue: lhs.septaConnection, newValue: rhs.septaConnection).equalityResult()

@@ -1,12 +1,12 @@
 // Septa. 2017
 
 import Foundation
-import SeptaSchedule
 import ReSwift
+import SeptaSchedule
 
 @objc class TripScheduleViewModel: NSObject, StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleTripState
-    @IBOutlet weak var tripScheduleViewController: UpdateableFromViewModel!
+    @IBOutlet var tripScheduleViewController: UpdateableFromViewModel!
 
     let transitMode = store.state.scheduleState.scheduleRequest.transitMode
     let route = store.state.scheduleState.scheduleRequest.selectedRoute

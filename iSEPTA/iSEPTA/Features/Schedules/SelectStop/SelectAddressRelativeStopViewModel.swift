@@ -6,16 +6,16 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
+import CoreLocation
 import Foundation
+import ReSwift
 import SeptaSchedule
 import UIKit
-import ReSwift
-import CoreLocation
 
 class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleStopEdit?
 
-    @IBOutlet weak var selectStopViewController: UpdateableFromViewModel?
+    @IBOutlet var selectStopViewController: UpdateableFromViewModel?
 
     var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
     var stopsWithDistance = [StopWithDistance]()

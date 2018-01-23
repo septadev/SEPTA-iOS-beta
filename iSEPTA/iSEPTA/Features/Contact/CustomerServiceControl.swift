@@ -14,10 +14,10 @@ class CustomerServiceControl: UIControl {
 
     var controlHighlighted = false
 
-    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet var iconImageView: UIImageView!
 
-    @IBOutlet weak var phoneNumberLabel: UILabel!
-    @IBOutlet weak var connectLabelText: UILabel!
+    @IBOutlet var phoneNumberLabel: UILabel!
+    @IBOutlet var connectLabelText: UILabel!
     var septaConnection: SEPTAConnection?
     var showChevron: Bool = false
 

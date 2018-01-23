@@ -6,13 +6,13 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
-import Foundation
 import AEXML
-import UIKit
+import Foundation
 import MapKit
-import SeptaSchedule
 import ReSwift
 import SeptaRest
+import SeptaSchedule
+import UIKit
 
 class NextToArriveMapViewController: UIViewController, RouteDrawable {
 
@@ -38,7 +38,7 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0), animated: true)
     }
 
-    @IBOutlet private weak var mapView: MKMapView! {
+    @IBOutlet private var mapView: MKMapView! {
         didSet {
             addOverlaysToMap()
             addScheduleRequestToMap()
@@ -113,7 +113,7 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
     }
 
     func drawVehicleLocations(_ vehicleLocations: [VehicleLocation]) {
-        self.vehiclesToAdd = vehicleLocations
+        vehiclesToAdd = vehicleLocations
     }
 
     func drawVehicleLocations() {

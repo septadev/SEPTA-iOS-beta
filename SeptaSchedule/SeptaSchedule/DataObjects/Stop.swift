@@ -70,7 +70,7 @@ extension Stop: Hashable {
 }
 
 extension Stop: Equatable {}
-public func ==(lhs: Stop, rhs: Stop) -> Bool {
+public func == (lhs: Stop, rhs: Stop) -> Bool {
     var areEqual = true
 
     if lhs.stopId == rhs.stopId {

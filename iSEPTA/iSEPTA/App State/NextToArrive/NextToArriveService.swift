@@ -18,7 +18,7 @@ struct NextToArriveService {
 }
 
 extension NextToArriveService: Equatable {}
-func ==(lhs: NextToArriveService, rhs: NextToArriveService) -> Bool {
+func == (lhs: NextToArriveService, rhs: NextToArriveService) -> Bool {
     var areEqual = true
 
     areEqual = lhs.service == rhs.service

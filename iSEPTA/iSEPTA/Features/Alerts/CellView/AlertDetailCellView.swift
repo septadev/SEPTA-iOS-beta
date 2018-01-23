@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import UIKit
 import SeptaRest
+import UIKit
 
 class AlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherDelegate {
     private var openState: Bool = false
@@ -16,7 +16,7 @@ class AlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherDelegate
     var sectionNumber: Int!
     weak var delegate: AlertDetailCellDelegate?
 
-    @IBOutlet weak var shadowView: UIView! {
+    @IBOutlet var shadowView: UIView! {
         didSet {
             styleWhiteViews([shadowView])
             shadowView.layer.cornerRadius = 4
@@ -24,7 +24,7 @@ class AlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherDelegate
     }
 
     var pinkAlertHeaderView: PinkAlertHeaderView!
-    @IBOutlet weak var pinkWrapperView: UIView! {
+    @IBOutlet var pinkWrapperView: UIView! {
         didSet {
             pinkAlertHeaderView = pinkWrapperView.awakeInsertAndPinSubview(nibName: "PinkAlertHeaderView")
             pinkAlertHeaderView.actionButton.addTarget(self, action: #selector(actionButtonTapped(_:)), for: .touchUpInside)
@@ -39,7 +39,7 @@ class AlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherDelegate
 
     var genericAlertDetailsWatcher: AlertState_GenericAlertDetailsWatcher?
 
-    @IBOutlet weak var content: UIView! {
+    @IBOutlet var content: UIView! {
         didSet {
             styleWhiteViews([content])
             content.layer.cornerRadius = 4
@@ -65,13 +65,13 @@ class AlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherDelegate
         textView.attributedText = message
     }
 
-    @IBOutlet weak var textViewHeightContraints: NSLayoutConstraint! {
+    @IBOutlet var textViewHeightContraints: NSLayoutConstraint! {
         didSet {
             textViewHeightContraints.constant = 0
         }
     }
 
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet var textView: UITextView!
 
     @objc @IBAction func actionButtonTapped(_: Any) {
         delegate?.didTapButton(sectionNumber: sectionNumber)

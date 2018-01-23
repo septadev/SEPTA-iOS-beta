@@ -1,7 +1,7 @@
 // Septa. 2017
 
-import UIKit
 import SeptaSchedule
+import UIKit
 
 enum RouteType {
     case rail
@@ -13,7 +13,7 @@ class SelectStopsViewController: UITableViewController, UpdateableFromViewModel 
     let showSheduleSegueId = "showSchedule"
 
     @IBOutlet var footerView: UIView!
-    @IBOutlet weak var viewSchedulesButton: UIButton!
+    @IBOutlet var viewSchedulesButton: UIButton!
 
     @IBOutlet var resetSearch: UIBarButtonItem!
     var viewModel: SelectStopsViewModel!

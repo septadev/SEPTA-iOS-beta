@@ -6,15 +6,15 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
-import Foundation
-import UIKit
 import CoreLocation
-import SeptaSchedule
+import Foundation
 import ReSwift
+import SeptaSchedule
+import UIKit
 
 class SelectAddressViewModel: NSObject, StoreSubscriber {
     typealias StoreSubscriberStateType = AddressLookupState
-    @IBOutlet weak var selectStopViewController: UpdateableFromViewModel?
+    @IBOutlet var selectStopViewController: UpdateableFromViewModel?
     let cellId = "addressCell"
     var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
     var addresses = [DisplayAddress]()

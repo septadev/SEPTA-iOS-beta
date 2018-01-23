@@ -1,14 +1,14 @@
 // Septa. 2017
 
-import UIKit
-import SeptaSchedule
 import ReSwift
+import SeptaSchedule
+import UIKit
 
 class SelectRouteViewController: UIViewController, IdentifiableController {
     @IBOutlet var viewModel: RoutesViewModel!
-    @IBOutlet weak var searchTextBox: UITextField!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet var searchTextBox: UITextField!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var titleLabel: UILabel!
     let routeCellId = "routeCell"
     let viewController: ViewController = .routesViewController
 

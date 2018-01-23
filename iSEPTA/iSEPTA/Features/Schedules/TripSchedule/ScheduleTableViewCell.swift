@@ -15,12 +15,12 @@ protocol ScheduleDisplayable {
 
 class ScheduleTableViewCell: UITableViewCell, ScheduleDisplayable {
 
-    @IBOutlet private weak var tripLabel: UILabel!
-    @IBOutlet private weak var departLabel: UILabel!
-    @IBOutlet private weak var arriveLabel: UILabel!
-    @IBOutlet private weak var durationLabel: UILabel!
-    @IBOutlet private weak var vehicleTitleLabel: UILabel!
-    @IBOutlet private weak var vehicleLabel: UILabel!
+    @IBOutlet private var tripLabel: UILabel!
+    @IBOutlet private var departLabel: UILabel!
+    @IBOutlet private var arriveLabel: UILabel!
+    @IBOutlet private var durationLabel: UILabel!
+    @IBOutlet private var vehicleTitleLabel: UILabel!
+    @IBOutlet private var vehicleLabel: UILabel!
 
     func setTripText(text: String) {
         tripLabel.text = text

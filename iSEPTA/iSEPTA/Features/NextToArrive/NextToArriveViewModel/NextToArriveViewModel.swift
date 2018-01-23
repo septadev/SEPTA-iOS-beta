@@ -8,18 +8,18 @@
 
 import Foundation
 import ReSwift
-import UIKit
 import SeptaSchedule
+import UIKit
 
 typealias CellModel = NextToArriveRowDisplayModel
 
 class NextToArriveViewModel: NSObject, StoreSubscriber, LastCellDelegate {
     typealias StoreSubscriberStateType = ScheduleRequest
 
-    @IBOutlet weak var view: UIView!
-    @IBOutlet weak var nextToArriveViewController: UpdateableFromViewModel?
-    @IBOutlet weak var schedulesDelegate: SchedulesViewModelDelegate?
-    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var view: UIView!
+    @IBOutlet var nextToArriveViewController: UpdateableFromViewModel?
+    @IBOutlet var schedulesDelegate: SchedulesViewModelDelegate?
+    @IBOutlet var tableViewHeightConstraint: NSLayoutConstraint!
     var scheduleRequest: ScheduleRequest?
 
     var transitMode: TransitMode!
@@ -71,6 +71,7 @@ class NextToArriveViewModel: NSObject, StoreSubscriber, LastCellDelegate {
 }
 
 // MARK: -  Loading table view cells
+
 extension NextToArriveViewModel {
 
     func shouldDisplayBlankSectionHeaderForSection(_ section: Int) -> Bool {

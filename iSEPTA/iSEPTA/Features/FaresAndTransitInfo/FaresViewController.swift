@@ -12,7 +12,7 @@ import UIKit
 class FaresViewController: UIViewController, IdentifiableController {
     var viewController: ViewController = .faresViewController
 
-    @IBOutlet weak var faresStackView: UIStackView!
+    @IBOutlet var faresStackView: UIStackView!
     @IBAction func redButtonTapped(_: Any) {
     }
 
@@ -24,8 +24,8 @@ class FaresViewController: UIViewController, IdentifiableController {
 
     @IBOutlet var moreAboutSEPTAFaresButton: UIView!
 
-    @IBOutlet weak var faresWhiteInsetView: UIView!
-    @IBOutlet weak var passPerksInsetView: UIView!
+    @IBOutlet var faresWhiteInsetView: UIView!
+    @IBOutlet var passPerksInsetView: UIView!
     var faresViewModel: FaresViewModel!
 
     override func viewDidLoad() {

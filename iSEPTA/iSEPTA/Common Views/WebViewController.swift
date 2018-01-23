@@ -14,7 +14,7 @@ class WebViewController: UIViewController, IdentifiableController, WKNavigationD
     var viewController: ViewController = .webViewController
     var webView: WKWebView!
 
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     override func viewDidLoad() {
         view.backgroundColor = SeptaColor.navBarBlue
         super.viewDidLoad()

@@ -22,7 +22,7 @@ struct ScheduleStopEdit {
 }
 
 extension ScheduleStopEdit: Equatable {}
-func ==(lhs: ScheduleStopEdit, rhs: ScheduleStopEdit) -> Bool {
+func == (lhs: ScheduleStopEdit, rhs: ScheduleStopEdit) -> Bool {
     var areEqual = true
 
     areEqual = lhs.stopToEdit == rhs.stopToEdit

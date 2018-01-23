@@ -1,24 +1,26 @@
 // Septa. 2017
 
-import UIKit
-import SeptaSchedule
 import ReSwift
+import SeptaSchedule
+import UIKit
 
 class SelectSchedulesViewController: UIViewController, IdentifiableController {
+
     // MARK: - Outlets
+
     @IBOutlet var buttons: [UIButton]!
     @IBOutlet var section0View: UIView!
     @IBOutlet var section1View: UIView!
     @IBOutlet var sectionHeaders: [UIView]!
     @IBOutlet var tableViewFooter: UIView!
     @IBOutlet var tableViewHeader: UIView!
-    @IBOutlet weak var buttonView: UIView!
-    @IBOutlet weak var scheduleLabel: UILabel!
-    @IBOutlet weak var sectionHeaderLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tableViewWrapper: UIView!
+    @IBOutlet var buttonView: UIView!
+    @IBOutlet var scheduleLabel: UILabel!
+    @IBOutlet var sectionHeaderLabel: UILabel!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var tableViewWrapper: UIView!
 
-    @IBOutlet weak var mockDateTextField: UITextField!
+    @IBOutlet var mockDateTextField: UITextField!
 
     @IBAction func evalMockDateTapped(_: Any) {
         let formatter = DateFormatters.ymdFormatter
@@ -31,6 +33,7 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
     }
 
     // MARK: - Properties
+
     let viewController: ViewController = .selectSchedules
     let buttonRow = 3
     var formIsComplete = false

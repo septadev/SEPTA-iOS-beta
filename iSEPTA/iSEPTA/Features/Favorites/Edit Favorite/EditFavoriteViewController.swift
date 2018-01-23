@@ -23,18 +23,18 @@ class EditFavoriteViewController: UIViewController, UITextFieldDelegate, Identif
         return store.state.favoritesState.favorites.contains(favoriteToEdit)
     }
 
-    @IBOutlet weak var deleteFavoriteButton: DeleteFavoriteButton! {
+    @IBOutlet var deleteFavoriteButton: DeleteFavoriteButton! {
         didSet {
             deleteFavoriteButton.isEnabled = favoriteHasBeenSaved
         }
     }
 
-    @IBOutlet weak var existingFavoriteTitleLabel: UILabel!
-    @IBOutlet weak var textField: UITextField! {
+    @IBOutlet var existingFavoriteTitleLabel: UILabel!
+    @IBOutlet var textField: UITextField! {
         didSet { textField.delegate = self }
     }
 
-    @IBOutlet weak var saveButton: SaveFavoriteButton!
+    @IBOutlet var saveButton: SaveFavoriteButton!
 
     @IBAction func closeButtonTapped(_: Any) {
         view.resignFirstResponder()

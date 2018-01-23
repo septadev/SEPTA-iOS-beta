@@ -11,7 +11,7 @@ import UIKit
 import WebKit
 
 class HolidayScheduleViewController: UIViewController {
-    @IBOutlet weak var uiWebView: UIWebView!
+    @IBOutlet var uiWebView: UIWebView!
 
     @IBAction func closeButtonTapped(_: Any) {
         presentingViewController?.dismiss(animated: true, completion: nil)

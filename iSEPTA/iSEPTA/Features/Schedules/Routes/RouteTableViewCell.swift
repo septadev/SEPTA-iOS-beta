@@ -10,13 +10,13 @@ protocol RouteCellDisplayable {
 }
 
 class RouteTableViewCell: UITableViewCell, RouteCellDisplayable {
-    @IBOutlet private weak var routeShortNameLabel: UILabel!
-    @IBOutlet private weak var routeLongNameLabel: UILabel!
-    @IBOutlet private weak var iconImageView: UIImageView!
+    @IBOutlet private var routeShortNameLabel: UILabel!
+    @IBOutlet private var routeLongNameLabel: UILabel!
+    @IBOutlet private var iconImageView: UIImageView!
 
     var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
 
-    @IBOutlet weak var stackView: UIStackView! {
+    @IBOutlet var stackView: UIStackView! {
         didSet {
             stackView.isExclusiveTouch = true
         }

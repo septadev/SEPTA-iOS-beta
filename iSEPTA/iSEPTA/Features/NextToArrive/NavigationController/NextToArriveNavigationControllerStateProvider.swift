@@ -7,12 +7,12 @@
 //
 
 import Foundation
-import UIKit
 import ReSwift
+import UIKit
 
 class NextToArriveNavigationControllerStateProvider: NavigationControllerBaseStateProvider {
 
-    @IBOutlet weak var navigationController: BaseNavigationController!
+    @IBOutlet var navigationController: BaseNavigationController!
 
     override func newState(state: StoreSubscriberStateType) {
         guard let newState = state, let newStackState = newState[.nextToArrive] else { return }

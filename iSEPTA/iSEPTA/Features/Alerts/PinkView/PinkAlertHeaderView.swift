@@ -12,12 +12,12 @@ import UIKit
 @IBDesignable
 class PinkAlertHeaderView: UIView {
     @IBInspectable
-    @IBOutlet weak var disabledAdvisoryLabel: UILabel!
-    @IBOutlet weak var advisoryLabel: UILabel!
-    @IBOutlet weak var alertImageView: UIImageView!
+    @IBOutlet var disabledAdvisoryLabel: UILabel!
+    @IBOutlet var advisoryLabel: UILabel!
+    @IBOutlet var alertImageView: UIImageView!
 
-    @IBOutlet weak var advisoryLabelLeftConstraint: NSLayoutConstraint!
-    @IBOutlet weak var actionButton: AlertDetailButton!
+    @IBOutlet var advisoryLabelLeftConstraint: NSLayoutConstraint!
+    @IBOutlet var actionButton: AlertDetailButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()

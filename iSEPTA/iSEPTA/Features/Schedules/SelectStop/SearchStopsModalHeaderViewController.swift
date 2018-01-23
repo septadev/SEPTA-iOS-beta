@@ -7,23 +7,23 @@
 //
 
 import Foundation
-import UIKit
-import SeptaSchedule
 import ReSwift
+import SeptaSchedule
+import UIKit
 
 class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleStopEdit?
 
     @IBOutlet var resetTextBoxGestureRecognizer: UITapGestureRecognizer!
-    @IBOutlet weak var dismissIcon: UIView!
-    @IBOutlet weak var searchByLocationButton: UIButton!
-    @IBOutlet weak var searchByTextView: UIView!
-    @IBOutlet weak var searchView: UIView!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var selectNearbyLabel: UILabel!
-    @IBOutlet weak var viewHeightConstraintForAddress: NSLayoutConstraint!
-    @IBOutlet weak var viewHeightConstraintForStops: NSLayoutConstraint!
-    @IBOutlet weak var textField: UITextField! {
+    @IBOutlet var dismissIcon: UIView!
+    @IBOutlet var searchByLocationButton: UIButton!
+    @IBOutlet var searchByTextView: UIView!
+    @IBOutlet var searchView: UIView!
+    @IBOutlet var segmentedControl: UISegmentedControl!
+    @IBOutlet var selectNearbyLabel: UILabel!
+    @IBOutlet var viewHeightConstraintForAddress: NSLayoutConstraint!
+    @IBOutlet var viewHeightConstraintForStops: NSLayoutConstraint!
+    @IBOutlet var textField: UITextField! {
         didSet {
             textField.delegate = textFieldDelegate
         }
@@ -92,6 +92,7 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber {
     }
 
     // MARK: - Search Mode
+
     var searchMode: StopEditSearchMode! {
         didSet {
             if oldValue != searchMode {
@@ -126,6 +127,7 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber {
     }
 
     // MARK: - Initial Layout
+
     override func viewDidLoad() {
         super.viewDidLoad()
         subscribe()
@@ -137,6 +139,7 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber {
     }
 
     // MARK: - View Life Cycle
+
     @IBAction func didTapDismiss(_: Any) {
         delegate?.dismissModal()
     }

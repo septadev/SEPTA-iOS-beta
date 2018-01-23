@@ -1,11 +1,10 @@
 // Septa. 2017
 
-import UIKit
+import Crashlytics
+import Fabric
 import ReSwift
 import SeptaSchedule
-
-import Fabric
-import Crashlytics
+import UIKit
 
 let store = Store<AppState>(
     reducer: AppStateReducer.mainReducer,

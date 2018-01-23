@@ -6,8 +6,8 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 
 extension CLLocationCoordinate2D: Equatable {}
 
@@ -18,7 +18,7 @@ extension CLLocationCoordinate2D {
     }
 }
 
-public func ==(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+public func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
     var areEqual = true
 
     areEqual = lhs.latitude == rhs.latitude

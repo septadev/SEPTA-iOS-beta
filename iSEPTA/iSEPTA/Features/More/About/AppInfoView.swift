@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 class AppInfoView: UIView {
-    @IBOutlet private weak var keyLabel: UILabel!
+    @IBOutlet private var keyLabel: UILabel!
 
-    @IBOutlet private weak var valueLabel: UILabel!
+    @IBOutlet private var valueLabel: UILabel!
 
     override var intrinsicContentSize: CGSize {
         return CGSize(width: UIViewNoIntrinsicMetric, height: 25)

@@ -7,12 +7,12 @@
 //
 
 import Foundation
-import UIKit
 import SeptaSchedule
+import UIKit
 
 class SeptaAlertsViewController: UIViewController {
 
-    @IBOutlet weak var alertStackView: UIStackView!
+    @IBOutlet var alertStackView: UIStackView!
 
     let alertsDict = store.state.alertState.alertDict
     var alertsCount: Int = 0

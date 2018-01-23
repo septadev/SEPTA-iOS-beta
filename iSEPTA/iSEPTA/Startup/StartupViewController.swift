@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class StartupViewController: UIViewController {
-    @IBOutlet weak var buildNumber: UILabel!
+    @IBOutlet var buildNumber: UILabel!
 
     override func viewDidLoad() {
         let buildNumberText = AppInfoProvider.buildNumber()

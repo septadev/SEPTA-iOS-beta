@@ -1,9 +1,9 @@
 // Septa. 2017
 
 import Foundation
-import UIKit
 import ReSwift
 import SeptaSchedule
+import UIKit
 
 struct NavigationStackState {
     let viewControllers: [ViewController]
@@ -16,7 +16,7 @@ struct NavigationStackState {
 }
 
 extension NavigationStackState: Equatable {}
-func ==(lhs: NavigationStackState, rhs: NavigationStackState) -> Bool {
+func == (lhs: NavigationStackState, rhs: NavigationStackState) -> Bool {
     var areEqual = true
 
     areEqual = lhs.viewControllers == rhs.viewControllers

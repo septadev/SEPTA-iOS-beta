@@ -1,18 +1,23 @@
 // Septa. 2017
 
 import Foundation
-import UIKit
 import ReSwift
+import SeptaRest
 import SeptaSchedule
+import UIKit
 
-class MainNavigationController: UITabBarController, UITabBarControllerDelegate, StoreSubscriber, FavoritesState_FavoriteToEditWatcherDelegate {
+class MainNavigationController: UITabBarController, UITabBarControllerDelegate, StoreSubscriber, FavoritesState_FavoriteToEditWatcherDelegate, AlertState_GenericAlertDetailsWatcherDelegate {
 
     typealias StoreSubscriberStateType = NavigationController
     var favoritestoEditWatcher: FavoritesState_FavoriteToEditWatcher?
+    var genericAlertsWatcher: AlertState_GenericAlertDetailsWatcher?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         delegate = self
         favoritestoEditWatcher = FavoritesState_FavoriteToEditWatcher(delegate: self)
+        genericAlertsWatcher = AlertState_GenericAlertDetailsWatcher()
+        genericAlertsWatcher?.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -74,5 +79,18 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         } else if let _ = presentedViewController, favorite == nil {
             dismiss(animated: true, completion: nil)
         }
+    }
+
+    func alertState_GenericAlertDetailsUpdated(alertDetails: [AlertDetails_Alert]) {
+        let activeAlerts = alertDetails.filter({ $0.isActiveAlert() })
+        guard let alertsTabBarItem = self.tabBar.items?[2] else { return }
+
+        let badgeValue: String?
+        if activeAlerts.count > 0 {
+            badgeValue = "!"
+        } else {
+            badgeValue = nil
+        }
+        alertsTabBarItem.badgeValue = badgeValue
     }
 }

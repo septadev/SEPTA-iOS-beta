@@ -11,7 +11,7 @@ import UIKit
 
 class TripView: UIView {
 
-    @IBOutlet weak var departingBox: UIView! {
+    @IBOutlet var departingBox: UIView! {
         didSet {
             departingBox.layer.cornerRadius = 2.0
             departingBox.layer.borderWidth = 1.0
@@ -33,17 +33,17 @@ class TripView: UIView {
     }
 
     var nextToArriveStop: NextToArriveStop!
-    @IBOutlet weak var chevronView: LittleBlueChevronButton!
-    @IBOutlet weak var departingWhenLabel: UILabel!
-    @IBOutlet weak var startStopLabel: UILabel!
-    @IBOutlet weak var onTimeLabel: UILabel! {
+    @IBOutlet var chevronView: LittleBlueChevronButton!
+    @IBOutlet var departingWhenLabel: UILabel!
+    @IBOutlet var startStopLabel: UILabel!
+    @IBOutlet var onTimeLabel: UILabel! {
 
         didSet {
             onTimeLabel.text = "Scheduled"
         }
     }
 
-    @IBOutlet weak var endStopLabel: UILabel!
+    @IBOutlet var endStopLabel: UILabel!
 
     weak var connectionView: ConnectionView?
 

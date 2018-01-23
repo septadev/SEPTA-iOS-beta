@@ -7,14 +7,14 @@
 //
 
 import Foundation
-import UIKit
 import ReSwift
 import SeptaSchedule
+import UIKit
 
 class ScheduleTransitModesToolBarViewController: UIViewController, StoreSubscriber {
     typealias StoreSubscriberStateType = TransitMode?
     @IBOutlet var scrollbar: UIScrollView!
-    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet var stackView: UIStackView!
     var currentTransitMode: TransitMode?
     var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
     var transitModesToolbarElements = [TransitModeToolbarView]()

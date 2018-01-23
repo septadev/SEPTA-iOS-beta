@@ -6,8 +6,8 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 
 struct DisplayAddress {
     let street: String
@@ -22,7 +22,7 @@ struct DisplayAddress {
 }
 
 extension DisplayAddress: Equatable {}
-func ==(lhs: DisplayAddress, rhs: DisplayAddress) -> Bool {
+func == (lhs: DisplayAddress, rhs: DisplayAddress) -> Bool {
     var areEqual = true
 
     areEqual = lhs.street == rhs.street

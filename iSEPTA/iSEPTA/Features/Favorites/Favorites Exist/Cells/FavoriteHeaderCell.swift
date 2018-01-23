@@ -11,6 +11,6 @@ import UIKit
 
 class FavoriteHeaderCell: UITableViewCell {
 
-    @IBOutlet weak var favoriteIcon: UIImageView!
-    @IBOutlet weak var favoriteName: UILabel!
+    @IBOutlet var favoriteIcon: UIImageView!
+    @IBOutlet var favoriteName: UILabel!
 }

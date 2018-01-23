@@ -17,9 +17,9 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
     @IBOutlet var infoViewHeightExpandedConstraint: NSLayoutConstraint!
 
     var nextToArriveFavoritesController: NextToArriveFavoritesIconController!
-    @IBOutlet weak var editFavoriteBarButtonItem: UIBarButtonItem!
+    @IBOutlet var editFavoriteBarButtonItem: UIBarButtonItem!
     weak var infoHeaderView: UIView?
-    @IBOutlet weak var createFavoriteBarButtonItem: UIBarButtonItem!
+    @IBOutlet var createFavoriteBarButtonItem: UIBarButtonItem!
 
     @IBOutlet var upSwipeGestureRecognizer: UISwipeGestureRecognizer! {
         didSet {
@@ -33,7 +33,7 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
         }
     }
 
-    @IBOutlet weak var tripView: UIView!
+    @IBOutlet var tripView: UIView!
 
     var constraintsToggle: ConstraintsToggle!
     var gestureRecognizerToggle: SwipeGestureRecognizerToggle!
@@ -101,7 +101,7 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
 
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         guard let infoViewController = segue.destination as? NextToArriveInfoViewController else { return }
-        self.nextToArriveInfoViewController = infoViewController
+        nextToArriveInfoViewController = infoViewController
         infoViewController.nextToArriveDetailViewController = self
     }
 

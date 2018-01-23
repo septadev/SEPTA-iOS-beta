@@ -14,7 +14,7 @@ class SelectStopCell: UITableViewCell {
     var shouldFill: Bool = false
     var enabled: Bool = false
 
-    @IBOutlet weak var distanceLabel: UILabel! {
+    @IBOutlet var distanceLabel: UILabel! {
         didSet {
             distanceLabel.isHidden = true
         }

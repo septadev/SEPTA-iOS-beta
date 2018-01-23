@@ -5,9 +5,9 @@
 //  Copyright (c) 2015 asus4. All rights reserved.
 //
 
+import AEXML
 import Foundation
 import MapKit
-import AEXML
 
 /**
  KML format information
@@ -55,6 +55,7 @@ public struct KMLConfig {
 }
 
 // MARK: - Base classes
+
 open class KMLElement {
 
     open var name: String = ""

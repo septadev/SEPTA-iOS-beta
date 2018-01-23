@@ -6,8 +6,8 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 
 struct NextToArriveTrip {
     let startStop: NextToArriveStop
@@ -24,7 +24,7 @@ struct NextToArriveTrip {
 }
 
 extension NextToArriveTrip: Equatable {}
-func ==(lhs: NextToArriveTrip, rhs: NextToArriveTrip) -> Bool {
+func == (lhs: NextToArriveTrip, rhs: NextToArriveTrip) -> Bool {
     var areEqual = true
 
     areEqual = lhs.startStop == rhs.startStop

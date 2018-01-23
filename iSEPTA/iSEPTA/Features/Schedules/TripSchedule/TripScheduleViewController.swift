@@ -1,8 +1,8 @@
 // Septa. 2017
 
-import UIKit
-import SeptaSchedule
 import ReSwift
+import SeptaSchedule
+import UIKit
 
 class TripScheduleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController {
     let viewController: ViewController = .tripScheduleController
@@ -19,14 +19,14 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     var tripScheduleFavoritesIconController: TripScheduleFavoritesIconController!
 
-    @IBOutlet weak var favoritesButton: UIButton! {
+    @IBOutlet var favoritesButton: UIButton! {
         didSet {
             tripScheduleFavoritesIconController = TripScheduleFavoritesIconController(favoritesButton: favoritesButton)
             tripScheduleFavoritesIconController.favoritesButton = favoritesButton
         }
     }
 
-    @IBOutlet weak var routeIcon: UIImageView! {
+    @IBOutlet var routeIcon: UIImageView! {
         didSet {
             routeIcon.image = route.iconForRoute(transitMode: transitMode)
         }
@@ -34,21 +34,21 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet var scheduleTypeTopWhenAlerts: NSLayoutConstraint!
     @IBOutlet var scheduleTypeTopWhenNoAlerts: NSLayoutConstraint!
-    @IBOutlet weak var transitAlertViews: UIView!
+    @IBOutlet var transitAlertViews: UIView!
 
-    @IBOutlet weak var routeShortNameLabel: UILabel! {
+    @IBOutlet var routeShortNameLabel: UILabel! {
         didSet {
             routeShortNameLabel.text = route.routeShortName
         }
     }
 
-    @IBOutlet weak var routeLongNameLabel: UILabel! {
+    @IBOutlet var routeLongNameLabel: UILabel! {
         didSet {
             routeLongNameLabel.text = route.routeLongName
         }
     }
 
-    @IBOutlet weak var insetWhiteView: UIView! {
+    @IBOutlet var insetWhiteView: UIView! {
         didSet {
             UIView.addSurroundShadow(toView: insetWhiteView, withCornerRadius: 4)
         }
@@ -56,7 +56,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     var septaAlertsViewController: SeptaAlertsViewController!
 
-    @IBOutlet weak var shadowView: UIView!
+    @IBOutlet var shadowView: UIView!
 
     var scheduleRequest: ScheduleRequest { return store.state.scheduleState.scheduleRequest }
 
@@ -66,16 +66,16 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         return scheduleRequest.selectedRoute ??
             Route(routeId: "", routeShortName: "", routeLongName: "", routeDirectionCode: .inbound) }
 
-    @IBOutlet weak var startingPoint: UILabel!
-    @IBOutlet weak var endingPoint: UILabel!
-    @IBOutlet weak var tableViewFooter: UIView!
+    @IBOutlet var startingPoint: UILabel!
+    @IBOutlet var endingPoint: UILabel!
+    @IBOutlet var tableViewFooter: UIView!
     var defaultColor: UIColor!
     @IBOutlet var viewModel: TripScheduleViewModel!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var weekdayBarButtonItem: UIBarButtonItem!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var weekdayBarButtonItem: UIBarButtonItem!
 
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var segmentedControl: UISegmentedControl!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var header: UIView!
 
     @IBAction func navigateToNextToArrive(_: Any) {
@@ -106,7 +106,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         store.dispatch(ReverseStops(targetForScheduleAction: targetForScheduleAction))
     }
 
-    @IBOutlet weak var reverseStopsButton: ReverseTripButton!
+    @IBOutlet var reverseStopsButton: ReverseTripButton!
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         let rowCount = viewModel.numberOfRows()

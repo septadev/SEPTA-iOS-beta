@@ -6,10 +6,10 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
-import Foundation
-import SeptaSchedule
 import CoreLocation
+import Foundation
 import SeptaRest
+import SeptaSchedule
 
 struct NextToArriveStop {
     let transitMode: TransitMode
@@ -85,6 +85,6 @@ struct NextToArriveStop {
 }
 
 extension NextToArriveStop: Equatable {}
-func ==(lhs: NextToArriveStop, rhs: NextToArriveStop) -> Bool {
+func == (lhs: NextToArriveStop, rhs: NextToArriveStop) -> Bool {
     return lhs.updatedTime != rhs.updatedTime
 }

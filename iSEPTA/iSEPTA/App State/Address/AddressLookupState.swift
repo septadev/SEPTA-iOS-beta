@@ -6,8 +6,8 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 
 struct AddressLookupState {
     let addressLookupSearchMode: AddressLookupSearchMode
@@ -29,7 +29,7 @@ struct AddressLookupState {
 }
 
 extension AddressLookupState: Equatable {}
-func ==(lhs: AddressLookupState, rhs: AddressLookupState) -> Bool {
+func == (lhs: AddressLookupState, rhs: AddressLookupState) -> Bool {
     var areEqual = true
 
     areEqual = lhs.addressLookupSearchMode == rhs.addressLookupSearchMode

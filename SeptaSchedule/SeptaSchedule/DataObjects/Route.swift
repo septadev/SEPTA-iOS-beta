@@ -52,7 +52,7 @@ extension Route: Hashable {
 }
 
 extension Route: Equatable {}
-public func ==(lhs: Route, rhs: Route) -> Bool {
+public func == (lhs: Route, rhs: Route) -> Bool {
     var areEqual = true
 
     if lhs.routeId == rhs.routeId {

@@ -192,9 +192,9 @@ extension TransitMode {
     public func colorForPill() -> UIColor? {
         switch self {
         case .rail: return nil
-        case .subway : return nil
+        case .subway: return nil
         case .bus: return SeptaColor.busColor
-        case .trolley :return SeptaColor.trolleylColor
+        case .trolley: return SeptaColor.trolleylColor
         case .nhsl: return SeptaColor.nhslColor
         }
     }
@@ -202,9 +202,9 @@ extension TransitMode {
     public func nextToArriveTitle() -> String {
         switch self {
         case .rail: return "Regional Rail"
-        case .subway : return "Subway"
+        case .subway: return "Subway"
         case .bus: return "Bus"
-        case .trolley :return "Trolley"
+        case .trolley: return "Trolley"
         case .nhsl: return "NHSL"
         }
     }
@@ -212,9 +212,9 @@ extension TransitMode {
     public func nextToArriveDetailTitle() -> String {
         switch self {
         case .rail: return "Next to Arrive: Regional Rail"
-        case .subway : return "Next to Arrive: Subway"
+        case .subway: return "Next to Arrive: Subway"
         case .bus: return "Next to Arrive: Bus"
-        case .trolley :return "Next to Arrive: Trolley"
+        case .trolley: return "Next to Arrive: Trolley"
         case .nhsl: return "Next to Arrive: NHSL"
         }
     }
@@ -222,9 +222,9 @@ extension TransitMode {
     public func nextToArriveInfoDetailTitle() -> String {
         switch self {
         case .rail: return "Next Trains To Arrive"
-        case .subway : return "Next Trains to Arrive"
+        case .subway: return "Next Trains to Arrive"
         case .bus: return "Next Buses to Arrive"
-        case .trolley :return "Next Trolleys to Arrive"
+        case .trolley: return "Next Trolleys to Arrive"
         case .nhsl: return "Next Trains To Arrive"
         }
     }
@@ -232,9 +232,9 @@ extension TransitMode {
     public func systemStatusTitle() -> String {
         switch self {
         case .rail: return "Regional Rail Status"
-        case .subway : return "Subway Status"
+        case .subway: return "Subway Status"
         case .bus: return "Bus Status"
-        case .trolley :return "Trolley Status"
+        case .trolley: return "Trolley Status"
         case .nhsl: return "NHSL Status"
         }
     }
@@ -243,9 +243,9 @@ extension TransitMode {
         let imageName: String
         switch self {
         case .rail: imageName = "railFavorite"
-        case .subway : imageName = "subwayFavorite"
+        case .subway: imageName = "subwayFavorite"
         case .bus: imageName = "busFavorite"
-        case .trolley : imageName = "trolleyFavorite"
+        case .trolley: imageName = "trolleyFavorite"
         case .nhsl: imageName = "nhslFavorite"
         }
         return UIImage(named: imageName)
@@ -255,9 +255,9 @@ extension TransitMode {
         let imageName: String
         switch self {
         case .rail: imageName = "railNoFavorite"
-        case .subway : imageName = "subwayNoFavorite"
+        case .subway: imageName = "subwayNoFavorite"
         case .bus: imageName = "busNoFavorite"
-        case .trolley : imageName = "trolleyNoFavorite"
+        case .trolley: imageName = "trolleyNoFavorite"
         case .nhsl: imageName = "nhslNoFavorite"
         }
         return UIImage(named: imageName)
@@ -291,10 +291,10 @@ extension TransitMode {
         let imageName: String
         switch self {
         case .rail: imageName = "RailPin"
-        case .subway : imageName = "SubwayPin"
+        case .subway: imageName = "SubwayPin"
         case .bus: imageName = "BusPin"
-        case .trolley :imageName = "TrolleyPin"
-        case .nhsl:imageName = "NHSLPin"
+        case .trolley: imageName = "TrolleyPin"
+        case .nhsl: imageName = "NHSLPin"
         }
         guard let image = UIImage(named: imageName), let cgImage = image.cgImage else { return nil }
 
@@ -305,10 +305,10 @@ extension TransitMode {
         let title: String
         switch self {
         case .rail: title = "Train View"
-        case .subway : title = "Subway View"
+        case .subway: title = "Subway View"
         case .bus: title = "Bus View"
-        case .trolley :title = "Trolley View"
-        case .nhsl:title = "NHSL View"
+        case .trolley: title = "Trolley View"
+        case .nhsl: title = "NHSL View"
         }
 
         return title
@@ -316,7 +316,7 @@ extension TransitMode {
 
     public func scheduleTypeSegments() -> [ScheduleType] {
         switch self {
-        case .rail : return [.mondayThroughThursday, .friday, .saturday, .sunday]
+        case .rail: return [.mondayThroughThursday, .friday, .saturday, .sunday]
         default:
             return [.weekday, .saturday, .sunday]
         }
@@ -324,7 +324,7 @@ extension TransitMode {
 
     public func defaultScheduleType() -> ScheduleType {
         switch self {
-        case .rail : return .mondayThroughThursday
+        case .rail: return .mondayThroughThursday
         default:
             return .weekday
         }

@@ -18,20 +18,20 @@ protocol ConnectionCellDisplayable {
 class ConnectionCell: UITableViewCell, ConnectionCellDisplayable {
 
     var startConnectionView: ConnectionView!
-    @IBOutlet weak var startConnectionViewWrapper: UIView! {
+    @IBOutlet var startConnectionViewWrapper: UIView! {
         didSet {
             startConnectionView = startConnectionViewWrapper.awakeInsertAndPinSubview(nibName: "ConnectionView")
         }
     }
 
     var endConnectionView: ConnectionView!
-    @IBOutlet weak var endConnectionViewWrapper: UIView! {
+    @IBOutlet var endConnectionViewWrapper: UIView! {
         didSet {
             endConnectionView = endConnectionViewWrapper.awakeInsertAndPinSubview(nibName: "ConnectionView")
         }
     }
 
-    @IBOutlet weak var connectionLabel: UILabel!
+    @IBOutlet var connectionLabel: UILabel!
 }
 
 class BlueGradientView: UIView {

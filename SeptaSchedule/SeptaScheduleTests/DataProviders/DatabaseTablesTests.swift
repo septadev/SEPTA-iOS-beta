@@ -1,9 +1,8 @@
 // Septa. 2017
 
 import Foundation
-
-import XCTest
 @testable import SeptaSchedule
+import XCTest
 
 class DatabaseTablesTest: XCTestCase {
 

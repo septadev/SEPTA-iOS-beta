@@ -6,11 +6,11 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
+import CoreLocation
 import Foundation
+import ReSwift
 import SeptaRest
 import SeptaSchedule
-import ReSwift
-import CoreLocation
 
 class NextToArriveMapper {
 
@@ -117,11 +117,11 @@ class NextToArriveMapper {
         let useConsist = transitMode.useRailForDetails()
 
         switch (useVehicleId, useConsist, stopToSelect, a.orig_vehicle_id) {
-        case (true, false, let stopToSelect, let vehicleId) where vehicleId != .none && stopToSelect == .starts :
+        case (true, false, let stopToSelect, let vehicleId) where vehicleId != .none && stopToSelect == .starts:
             return [vehicleId!]
-        case (false, true, let stopToSelect, _) where stopToSelect == .starts :
+        case (false, true, let stopToSelect, _) where stopToSelect == .starts:
             return a.consist
-        case (false, true, let stopToSelect, _) where stopToSelect == .ends :
+        case (false, true, let stopToSelect, _) where stopToSelect == .ends:
             return a.term_consist
         default:
             return nil

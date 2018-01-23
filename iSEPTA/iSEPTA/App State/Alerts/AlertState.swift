@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import SeptaSchedule
 import SeptaRest
+import SeptaSchedule
 
 typealias AlertsByTransitModeThenRoute = [TransitMode: [String: SeptaAlert]]
 
@@ -31,7 +31,7 @@ struct AlertState {
 }
 
 extension AlertState: Equatable {}
-func ==(lhs: AlertState, rhs: AlertState) -> Bool {
+func == (lhs: AlertState, rhs: AlertState) -> Bool {
     var areEqual = true
 
     areEqual = lhs.lastUpdated == rhs.lastUpdated

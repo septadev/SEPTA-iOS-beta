@@ -72,7 +72,7 @@ struct FavoritesState: Codable {
 }
 
 extension FavoritesState: Equatable {}
-func ==(lhs: FavoritesState, rhs: FavoritesState) -> Bool {
+func == (lhs: FavoritesState, rhs: FavoritesState) -> Bool {
     var areEqual = true
 
     areEqual = lhs.favorites == rhs.favorites

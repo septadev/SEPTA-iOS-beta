@@ -10,7 +10,7 @@ public struct TripStopId {
 }
 
 extension TripStopId: Equatable {}
-public func ==(lhs: TripStopId, rhs: TripStopId) -> Bool {
+public func == (lhs: TripStopId, rhs: TripStopId) -> Bool {
     var areEqual = true
 
     if lhs.start == rhs.start {

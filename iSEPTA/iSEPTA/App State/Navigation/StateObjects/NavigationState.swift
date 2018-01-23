@@ -16,7 +16,7 @@ struct NavigationState {
 }
 
 extension NavigationState: Equatable {}
-func ==(lhs: NavigationState, rhs: NavigationState) -> Bool {
+func == (lhs: NavigationState, rhs: NavigationState) -> Bool {
     var areEqual = true
 
     areEqual = lhs.appStackState == rhs.appStackState

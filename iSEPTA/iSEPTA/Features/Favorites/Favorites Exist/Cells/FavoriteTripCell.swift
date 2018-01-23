@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 
 class FavoriteTripCell: UITableViewCell {
-    @IBOutlet weak var content: UIView!
+    @IBOutlet var content: UIView!
 
-    @IBOutlet weak var shadowView: UIView!
-    @IBOutlet weak var favoriteIcon: UIImageView!
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var favoriteNameLabel: UILabel!
+    @IBOutlet var shadowView: UIView!
+    @IBOutlet var favoriteIcon: UIImageView!
+    @IBOutlet var stackView: UIStackView!
+    @IBOutlet var favoriteNameLabel: UILabel!
 
     @IBOutlet var headerAccessibilityElements: [UIView]!
     var currentFavorite: Favorite?

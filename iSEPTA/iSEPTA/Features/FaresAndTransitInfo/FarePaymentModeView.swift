@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 class FarePaymentModeView: UIView {
-    @IBOutlet weak var icon: UIImageView!
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet var icon: UIImageView!
+    @IBOutlet var title: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
 
-    @IBOutlet weak var tapGestureRecognizer: UITapGestureRecognizer!
+    @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
     var septaConnection: SEPTAConnection? {
         didSet {
             guard let _ = septaConnection else { return }

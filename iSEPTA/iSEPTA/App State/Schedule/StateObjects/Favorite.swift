@@ -87,7 +87,7 @@ extension Favorite: Hashable {
 }
 
 extension Favorite: Equatable {}
-func ==(lhs: Favorite, rhs: Favorite) -> Bool {
+func == (lhs: Favorite, rhs: Favorite) -> Bool {
     var areEqual = true
 
     areEqual = lhs.favoriteId == rhs.favoriteId
@@ -120,7 +120,7 @@ func ==(lhs: Favorite, rhs: Favorite) -> Bool {
     return areEqual
 }
 
-func ==(lhs: Favorite, rhs: ScheduleRequest) -> Bool {
+func == (lhs: Favorite, rhs: ScheduleRequest) -> Bool {
     let scheduleRequestTransitMode = rhs.transitMode
     guard
         let scheduleRequestSelectedRoute = rhs.selectedRoute,
@@ -143,6 +143,6 @@ func ==(lhs: Favorite, rhs: ScheduleRequest) -> Bool {
     return areEqual
 }
 
-func ==(lhs: ScheduleRequest, rhs: Favorite) -> Bool {
+func == (lhs: ScheduleRequest, rhs: Favorite) -> Bool {
     return rhs == lhs
 }

@@ -20,7 +20,7 @@ struct ScheduleRouteState {
 }
 
 extension ScheduleRouteState: Equatable {}
-func ==(lhs: ScheduleRouteState, rhs: ScheduleRouteState) -> Bool {
+func == (lhs: ScheduleRouteState, rhs: ScheduleRouteState) -> Bool {
     var areEqual = true
 
     areEqual = lhs.routes == rhs.routes

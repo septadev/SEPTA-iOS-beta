@@ -11,7 +11,7 @@ import UIKit
 
 class AddressCell: UITableViewCell {
 
-    @IBOutlet weak var streetAddressLabel: UILabel!
+    @IBOutlet var streetAddressLabel: UILabel!
 
-    @IBOutlet weak var CSZLabel: UILabel!
+    @IBOutlet var CSZLabel: UILabel!
 }

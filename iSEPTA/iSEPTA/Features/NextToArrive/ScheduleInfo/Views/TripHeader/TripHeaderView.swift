@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import UIKit
 import SeptaSchedule
+import UIKit
 
 protocol AlertViewDelegate: AnyObject {
     func didTapAlertView(nextToArriveStop: NextToArriveStop, transitMode: TransitMode)
@@ -16,10 +16,10 @@ protocol AlertViewDelegate: AnyObject {
 
 @IBDesignable
 class TripHeaderView: UIView {
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var lineNameLabel: UILabel!
-    @IBOutlet weak var alertStackView: UIStackView!
-    @IBOutlet weak var pillView: UIView! {
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var lineNameLabel: UILabel!
+    @IBOutlet var alertStackView: UIStackView!
+    @IBOutlet var pillView: UIView! {
         didSet {
             pillView.layer.cornerRadius = 4
         }

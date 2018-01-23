@@ -7,14 +7,14 @@
 //
 
 import Foundation
-import UIKit
 import SeptaSchedule
+import UIKit
 
 @IBDesignable
 class NoFavoriteTransitModeView: UIView {
 
-    @IBOutlet weak var transitModeIcon: UIImageView!
-    @IBOutlet weak var transitModeName: UILabel!
+    @IBOutlet var transitModeIcon: UIImageView!
+    @IBOutlet var transitModeName: UILabel!
 
     var transitMode: TransitMode! {
         didSet {

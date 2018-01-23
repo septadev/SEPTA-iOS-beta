@@ -14,8 +14,8 @@ import Foundation
         switch self {
         case .nextToArrive: return 0
         case .favorites: return 1
-        case .alerts : return 2
-        case .schedules : return 3
+        case .alerts: return 2
+        case .schedules: return 3
         case .selectStop: return 3
         case .more: return 4
         }
@@ -25,8 +25,8 @@ import Foundation
         switch self {
         case .nextToArrive: return "nextToArrive"
         case .favorites: return "favorites"
-        case .alerts : return "alerts"
-        case .schedules : return "schedules"
+        case .alerts: return "alerts"
+        case .schedules: return "schedules"
         case .selectStop: return "schedules"
         case .more: return "more"
         }

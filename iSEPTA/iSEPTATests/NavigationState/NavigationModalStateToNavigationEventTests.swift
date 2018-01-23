@@ -2,9 +2,8 @@
 
 // SEPTA.org, created on 9/21/2017.
 
-import XCTest
-
 @testable import Septa
+import XCTest
 
 /// NavigationViewControllerStateToNavigationEvent purpose: How to react when the view controller state changes
 class NavigationModalStateToNavigationEventTests: XCTestCase {

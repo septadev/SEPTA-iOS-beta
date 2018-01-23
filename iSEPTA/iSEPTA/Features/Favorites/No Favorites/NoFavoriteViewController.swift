@@ -7,13 +7,13 @@
 //
 
 import Foundation
-import UIKit
 import SeptaSchedule
+import UIKit
 
 class NoFavoritesViewController: UIViewController, IdentifiableController {
     let viewController: ViewController = .noFavoritesViewController
 
-    @IBOutlet weak var infoLabel: UILabel! {
+    @IBOutlet var infoLabel: UILabel! {
         didSet {
             let attributedString = NSMutableAttributedString(string: SeptaString.NoFavoritesInfo)
             attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 16.0, weight: UIFont.Weight.bold), range: NSRange(location: 43, length: 16))
@@ -26,7 +26,7 @@ class NoFavoritesViewController: UIViewController, IdentifiableController {
         store.dispatch(action)
     }
 
-    @IBOutlet weak var iconStackView: UIStackView! {
+    @IBOutlet var iconStackView: UIStackView! {
         didSet {
             for transitMode in TransitMode.displayOrder() {
                 guard let noTransitModeView: NoFavoriteTransitModeView = UIView.loadNibView(nibName: "NoFavoriteTransitModeView") else { return }

@@ -10,7 +10,7 @@ import Foundation
 
 class SchedulesNavigationControllerStateProvider: NavigationControllerBaseStateProvider {
 
-    @IBOutlet weak var navigationController: BaseNavigationController!
+    @IBOutlet var navigationController: BaseNavigationController!
 
     override func newState(state: StoreSubscriberStateType) {
         guard let newState = state, let newStackState = newState[.schedules] else { return }

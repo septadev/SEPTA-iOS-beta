@@ -1,12 +1,12 @@
 // Septa. 2017
 
-import UIKit
 import SeptaSchedule
+import UIKit
 
 class TransitModesViewController: UIViewController {
-    @IBOutlet weak var transitModeView: UIView!
+    @IBOutlet var transitModeView: UIView!
 
-    @IBOutlet weak var scrollbar: UIScrollView!
+    @IBOutlet var scrollbar: UIScrollView!
 
     @IBOutlet var transitModesToolbarElements: [TransitModeToolbarView]!
     override func viewDidLoad() {

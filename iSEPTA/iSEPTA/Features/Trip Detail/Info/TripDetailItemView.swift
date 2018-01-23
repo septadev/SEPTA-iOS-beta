@@ -11,7 +11,7 @@ import UIKit
 
 class TripDetailItemView: UIView {
 
-    @IBOutlet weak var lightLabel: UILabel! {
+    @IBOutlet var lightLabel: UILabel! {
         didSet {
             lightLabel.text = ""
         }

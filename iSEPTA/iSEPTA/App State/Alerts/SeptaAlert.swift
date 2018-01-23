@@ -76,7 +76,7 @@ struct SeptaAlert {
 }
 
 extension SeptaAlert: Equatable {}
-func ==(lhs: SeptaAlert, rhs: SeptaAlert) -> Bool {
+func == (lhs: SeptaAlert, rhs: SeptaAlert) -> Bool {
     var areEqual = true
 
     areEqual = lhs.advisory == rhs.advisory

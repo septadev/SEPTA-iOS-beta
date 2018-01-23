@@ -1,15 +1,15 @@
 // Septa. 2017
 
 import Foundation
-import SeptaSchedule
 import ReSwift
+import SeptaSchedule
 
 class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
     typealias StoreSubscriberStateType = ScheduleRouteState
     var targetForScheduleAction: TargetForScheduleAction! = store.state.targetForScheduleActions()
     let transitMode = TransitMode.currentTransitMode()!
     let alerts = store.state.alertState.alertDict
-    @IBOutlet weak var selectRoutesViewController: UpdateableFromViewModel?
+    @IBOutlet var selectRoutesViewController: UpdateableFromViewModel?
 
     var allRoutes: [Route]? {
         didSet {

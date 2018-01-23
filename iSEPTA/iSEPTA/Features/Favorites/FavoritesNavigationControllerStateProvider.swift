@@ -10,7 +10,7 @@ import Foundation
 
 class FavoritesNavigationControllerStateProvider: NavigationControllerBaseStateProvider {
 
-    @IBOutlet weak var navigationController: BaseNavigationController!
+    @IBOutlet var navigationController: BaseNavigationController!
 
     override func newState(state: StoreSubscriberStateType) {
         guard let newState = state, let newStackState = newState[.favorites] else { return }

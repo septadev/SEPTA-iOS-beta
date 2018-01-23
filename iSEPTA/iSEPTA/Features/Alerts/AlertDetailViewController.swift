@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import UIKit
-import SeptaSchedule
 import SeptaRest
+import SeptaSchedule
+import UIKit
 
 class AlertDetailViewController: UIViewController, IdentifiableController {
     let viewController: ViewController = .alertDetailViewController
@@ -22,12 +22,12 @@ class AlertDetailViewController: UIViewController, IdentifiableController {
     }
 
     let cellId = "alertDetailCell"
-    @IBOutlet weak var routeNameLabel: UILabel! {
+    @IBOutlet var routeNameLabel: UILabel! {
         didSet {
         }
     }
 
-    @IBOutlet weak var tableView: UITableView! {
+    @IBOutlet var tableView: UITableView! {
         didSet {
             tableView.delegate = self
             tableView.dataSource = self
@@ -52,7 +52,7 @@ class AlertDetailViewController: UIViewController, IdentifiableController {
         weatherCell = nil
     }
 
-    @IBOutlet weak var pillView: UIView!
+    @IBOutlet var pillView: UIView!
 
     func updateHeaderViews() {
         guard let route = route else { return }
@@ -163,7 +163,7 @@ extension AlertDetailViewController: AlertState_AlertDetailsWatcherDelegate {
         }
         updateHeaderViews()
         self.alertDetails = alertDetails
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
 }
 

@@ -20,7 +20,7 @@ struct SeptaUrlInfo {
 }
 
 extension SeptaUrlInfo: Equatable {}
-func ==(lhs: SeptaUrlInfo, rhs: SeptaUrlInfo) -> Bool {
+func == (lhs: SeptaUrlInfo, rhs: SeptaUrlInfo) -> Bool {
     var areEqual = true
 
     areEqual = lhs.url == rhs.url

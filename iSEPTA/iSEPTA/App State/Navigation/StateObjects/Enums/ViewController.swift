@@ -74,11 +74,11 @@ enum ViewController: String, Equatable {
             return "more"
         case .webViewController:
             return "webView"
-        case .contactViewController :
+        case .contactViewController:
             return "contact"
-        case .aboutViewController :
+        case .aboutViewController:
             return "about"
-        case .tripDetailViewController :
+        case .tripDetailViewController:
             return "tripDetail"
         }
     }
