@@ -12,6 +12,8 @@ struct SeptaNetwork {
     let url: String
     let apiKey: String
     let databaseVersion: Int
+    let genericAlertName: String
+    let appAlertName: String
 
     private init() {
         let path = Bundle.main.path(forResource: "network", ofType: "plist")!
@@ -21,6 +23,8 @@ struct SeptaNetwork {
         let apiKey = dict["apiKey"] as! String
         url = urlString
         self.apiKey = apiKey
+        genericAlertName = dict["genericAlertName"] as! String
+        appAlertName = dict["appAlertName"] as! String
     }
 
     static let sharedInstance = SeptaNetwork()

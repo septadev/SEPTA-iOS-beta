@@ -14,5 +14,9 @@
 	<string>https://vnjb5kvq2b.execute-api.us-east-1.amazonaws.com/prod</string>
 	<key>apiKey</key>
 	<string>S0XFfcawkb54IMFnAGctQajLNUK7QxNfoi4zgaD4</string>
+	<key>genericAlertName</key>
+	<string>generic</string>
+	<key>appAlertName</key>
+	<string>APP</string>
 </dict>
 </plist>

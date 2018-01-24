@@ -19,14 +19,23 @@ struct AlertState {
     let scheduleState: ScheduleState
     let alertDetails: [AlertDetails_Alert]
     let genericAlertDetails: [AlertDetails_Alert]
-    var hasGenericAlerts: Bool { return AlertDetailsViewModel.hasGenericMessage(alertDetails: genericAlertDetails) }
+    let appAlertDetails: [AlertDetails_Alert]
+    var hasGenericAlerts: Bool { return hasActiveAlerts(alertDetails: genericAlertDetails) }
+    var hasAppAlerts: Bool { return hasActiveAlerts(alertDetails: appAlertDetails) }
+    var hasGenericOrAppAlerts: Bool { return hasGenericAlerts || hasAppAlerts }
 
-    init(alertDict: AlertsByTransitModeThenRoute = [TransitMode: [String: SeptaAlert]](), scheduleState: ScheduleState = ScheduleState(), lastUpdated: Date = Date.distantPast, alertDetails: [AlertDetails_Alert] = [AlertDetails_Alert](), genericAlertDetails: [AlertDetails_Alert] = [AlertDetails_Alert]()) {
+    init(alertDict: AlertsByTransitModeThenRoute = [TransitMode: [String: SeptaAlert]](), scheduleState: ScheduleState = ScheduleState(), lastUpdated: Date = Date.distantPast, alertDetails: [AlertDetails_Alert] = [AlertDetails_Alert](), genericAlertDetails: [AlertDetails_Alert] = [AlertDetails_Alert](), appAlertDetails: [AlertDetails_Alert] = [AlertDetails_Alert]()) {
         self.alertDict = alertDict
         self.lastUpdated = lastUpdated
         self.scheduleState = scheduleState
         self.alertDetails = alertDetails
         self.genericAlertDetails = genericAlertDetails
+        self.appAlertDetails = appAlertDetails
+    }
+
+    func hasActiveAlerts(alertDetails: [AlertDetails_Alert]) -> Bool {
+        let messages: [String?] = alertDetails.map { $0.message }
+        return messages.filter({ !$0.isBlank }).count > 0
     }
 }
 

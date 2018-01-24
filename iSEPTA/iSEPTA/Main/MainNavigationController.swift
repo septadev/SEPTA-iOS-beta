@@ -16,8 +16,6 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         super.awakeFromNib()
         delegate = self
         favoritestoEditWatcher = FavoritesState_FavoriteToEditWatcher(delegate: self)
-        genericAlertsWatcher = AlertState_HasGenericAlertsWatcher()
-        genericAlertsWatcher?.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -60,6 +58,9 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
                 self?.performSegue(withIdentifier: "showDatabaseLoadingModal", sender: self)
             }
         }
+
+        genericAlertsWatcher = AlertState_HasGenericAlertsWatcher()
+        genericAlertsWatcher?.delegate = self
     }
 
     var modalTransitioningDelegate: UIViewControllerTransitioningDelegate!

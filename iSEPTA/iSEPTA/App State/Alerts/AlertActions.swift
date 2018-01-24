@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import SeptaSchedule
 import SeptaRest
+import SeptaSchedule
 
 protocol AlertAction: SeptaAction {}
 
@@ -34,7 +34,12 @@ struct AlertDetailsLoaded: AlertAction {
 
 struct GenericAlertDetailsLoaded: AlertAction {
     let genericAlertDetails: [AlertDetails_Alert]
-    let description = "New Alerts have been retrieved"
+    let description = "New Generic Alerts have been retrieved"
+}
+
+struct AppAlertDetailsLoaded: AlertAction {
+    let appAlertDetails: [AlertDetails_Alert]
+    let description = "New App Alerts have been retrieved"
 }
 
 struct ResetAlertRequest: AlertAction {
