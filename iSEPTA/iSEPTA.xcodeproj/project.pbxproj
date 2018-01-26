@@ -482,6 +482,7 @@
 		676B7DA11F7D18B90052F016 /* MoreNavigationControllerStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B7DA01F7D18B90052F016 /* MoreNavigationControllerStateProvider.swift */; };
 		676B7DA31F7D18E50052F016 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B7DA21F7D18E50052F016 /* MoreViewController.swift */; };
 		6770284F201BD004007282EF /* AlertDetailCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6770284C201BD004007282EF /* AlertDetailCellView.xib */; };
+		67702851201BD633007282EF /* ModalAlertProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67702850201BD633007282EF /* ModalAlertProvider.swift */; };
 		6776F672201757A3001FD5B2 /* AlertDetails+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6776F671201757A3001FD5B2 /* AlertDetails+Alert.swift */; };
 		6776F67620175801001FD5B2 /* String+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6776F67520175801001FD5B2 /* String+Util.swift */; };
 		6776F678201B32EA001FD5B2 /* AlertState_HasAppAlertsWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6776F677201B32EA001FD5B2 /* AlertState_HasAppAlertsWatcher.swift */; };
@@ -1141,6 +1142,7 @@
 		676B7DA01F7D18B90052F016 /* MoreNavigationControllerStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreNavigationControllerStateProvider.swift; sourceTree = "<group>"; };
 		676B7DA21F7D18E50052F016 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		6770284C201BD004007282EF /* AlertDetailCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertDetailCellView.xib; sourceTree = "<group>"; };
+		67702850201BD633007282EF /* ModalAlertProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalAlertProvider.swift; sourceTree = "<group>"; };
 		6776F671201757A3001FD5B2 /* AlertDetails+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertDetails+Alert.swift"; sourceTree = "<group>"; };
 		6776F67520175801001FD5B2 /* String+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Util.swift"; sourceTree = "<group>"; };
 		6776F677201B32EA001FD5B2 /* AlertState_HasAppAlertsWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState_HasAppAlertsWatcher.swift; sourceTree = "<group>"; };
@@ -2349,6 +2351,7 @@
 			children = (
 				58A26DA01F6F282B005A70D3 /* AlertDetail */,
 				58FB26451F6EC42F00F17048 /* AlertProviders.swift */,
+				67702850201BD633007282EF /* ModalAlertProvider.swift */,
 				587BC0431F6ED63900B92BB6 /* MapToAlerts.swift */,
 				587BC0471F6ED66700B92BB6 /* MapFromAlerts.swift */,
 				587BC0491F6ED70900B92BB6 /* QuickMap.swift */,
@@ -3222,6 +3225,7 @@
 				588D80611F72B56100EE1983 /* AlertState_ScheduleState_ScheduleRequestWatcher.swift in Sources */,
 				582F4ED81F33B1120062A546 /* SelectSchedulesViewController.swift in Sources */,
 				585CEBD61F869E2D006DCC67 /* AlertState_HasGenericAlertsWatcher.swift in Sources */,
+				67702851201BD633007282EF /* ModalAlertProvider.swift in Sources */,
 				58B2778B1F629FAA00663507 /* DummyData.swift in Sources */,
 				589A91A31F907FEC009B49E0 /* Route+Twitter.swift in Sources */,
 				587BC0441F6ED63900B92BB6 /* MapToAlerts.swift in Sources */,

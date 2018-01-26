@@ -105,7 +105,7 @@ class GenericAlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherD
 
     @IBOutlet var textView: UITextView! {
         didSet {
-            textView.isScrollEnabled = true
+            textView.isScrollEnabled = false
         }
     }
 
@@ -141,17 +141,6 @@ class GenericAlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherD
         openState = true
         setNeedsLayout()
     }
-
-    //    var fittingHeight: CGFloat {
-    //        if pinkAlertHeaderView.actionButton.isOpen {
-    //            let windowWidth = UIScreen.main.bounds.width - 30
-    //            let sizeThatFitsTextView = textView.sizeThatFits(CGSize(width: windowWidth, height: CGFloat(MAXFLOAT)))
-    //            let heightOfText = sizeThatFitsTextView.height
-    //            return heightOfText
-    //        } else {
-    //            return 15
-    //        }
-    //    }
 
     func setEnabled(_ enabled: Bool) {
         pinkAlertHeaderView.enabled = enabled
