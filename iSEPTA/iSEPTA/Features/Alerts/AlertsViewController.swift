@@ -23,15 +23,27 @@ class AlertsViewController: UIViewController, IdentifiableController {
     @IBOutlet var sectionHeaderLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var tableViewWrapperView: UIView!
-    var alertDetailCellView: AlertDetailCellView!
+    var genericAlertDetailCellView: GenericAlertDetailCellView!
+    var appAlertDetailCellView: GenericAlertDetailCellView!
 
     var alertState_HasGenericAlertsWatcher: AlertState_HasGenericAlertsWatcher!
+    var alertState_HasAppAlertsWatcher: AlertState_HasAppAlertsWatcher!
 
     @IBOutlet var genericAlertsTableViewWrapper: UIView! {
         didSet {
-            alertDetailCellView = genericAlertsTableViewWrapper.awakeInsertAndPinSubview(nibName: "AlertDetailsCellView")
+            genericAlertDetailCellView = genericAlertsTableViewWrapper.awakeInsertAndPinSubview(nibName: "GenericAlertDetailsCellView")
+            appAlertDetailCellView.genericAlertType = .genericAlert
         }
     }
+
+    @IBOutlet var appAlertsTableViewWrapper: UIView! {
+        didSet {
+            appAlertDetailCellView = appAlertsTableViewWrapper.awakeInsertAndPinSubview(nibName: "GenericAlertDetailsCellView")
+            appAlertDetailCellView.genericAlertType = .appAlert
+        }
+    }
+
+    @IBOutlet var appAlertsTopConstraintToGenericAlertsView: NSLayoutConstraint!
 
     @IBOutlet var genericAlertsTableView: UITableView!
     let buttonRow = 1
@@ -60,9 +72,12 @@ class AlertsViewController: UIViewController, IdentifiableController {
 
         updateHeaderLabels()
 
-        alertDetailCellView.isGenericAlert = true
+        genericAlertDetailCellView.isGenericAlert = true
         alertState_HasGenericAlertsWatcher = AlertState_HasGenericAlertsWatcher()
         alertState_HasGenericAlertsWatcher.delegate = self
+
+        alertState_HasAppAlertsWatcher = AlertState_HasAppAlertsWatcher()
+        alertState_HasAppAlertsWatcher.delegate = self
     }
 
     override func viewWillAppear(_: Bool) {
@@ -183,5 +198,14 @@ extension AlertsViewController: SchedulesViewModelDelegate {
 extension AlertsViewController: AlertState_HasGenericAlertsWatcherDelegate {
     func alertState_HasGenericAlertsUpdated(bool hasAlerts: Bool) {
         genericAlertsTableViewWrapper.isHidden = !hasAlerts
+        appAlertsTopConstraintToGenericAlertsView.isActive = hasAlerts
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
+    }
+}
+
+extension AlertsViewController: AlertState_HasAppAlertsWatcherDelegate {
+    func alertState_HasAppAlertsUpdated(bool hasAlerts: Bool) {
+        appAlertsTableViewWrapper.isHidden = !hasAlerts
     }
 }

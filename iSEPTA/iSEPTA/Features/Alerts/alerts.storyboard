@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="x8l-QY-ofs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="x8l-QY-ofs">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -211,15 +211,26 @@ TableViewWrapper</string>
                                             <constraint firstAttribute="height" constant="60" placeholder="YES" id="sIQ-Tv-UJH"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="odm-cU-Bg7" userLabel="AppAlertDetailCellView">
+                                        <rect key="frame" x="10" y="286" width="355" height="60"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" placeholder="YES" id="l2b-B8-jsL"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.12214555959999999" blue="0.19503632169999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="odm-cU-Bg7" secondAttribute="trailing" constant="10" id="1Bx-hq-OGi" userLabel="AppAlertDetailCellViewRight"/>
                                     <constraint firstAttribute="trailing" secondItem="1GD-nr-m8r" secondAttribute="trailing" constant="9" id="1TT-dm-007" userLabel="TransitModeSchedulesRight"/>
                                     <constraint firstItem="1GD-nr-m8r" firstAttribute="top" secondItem="5hD-AH-evl" secondAttribute="top" constant="14" id="38m-dz-jFi" userLabel="TransitModeSchedulesTop"/>
                                     <constraint firstItem="mFK-jg-0FA" firstAttribute="leading" secondItem="5hD-AH-evl" secondAttribute="leading" constant="10" id="5Jh-S0-BNd" userLabel="GenericAlertsWrapperLeft"/>
+                                    <constraint firstItem="odm-cU-Bg7" firstAttribute="leading" secondItem="5hD-AH-evl" secondAttribute="leading" constant="10" id="CTX-Wi-Dg0" userLabel="AppAlertDetailCellViewLeft"/>
                                     <constraint firstAttribute="trailing" secondItem="mFK-jg-0FA" secondAttribute="trailing" constant="10" id="P2a-E9-cai" userLabel="GenericAlertsWrapperRight"/>
+                                    <constraint firstItem="mFK-jg-0FA" firstAttribute="bottom" secondItem="odm-cU-Bg7" secondAttribute="top" constant="10" id="Ymr-nv-u7W" userLabel="AppAlertDetailCellViewMarginToAlertDetailCellView"/>
                                     <constraint firstItem="hlB-df-wLC" firstAttribute="leading" secondItem="5hD-AH-evl" secondAttribute="leading" constant="10" id="bDo-tG-BE8" userLabel="TableViewWrapperLeft"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="mFK-jg-0FA" secondAttribute="bottom" id="ekb-tY-hIs" userLabel="AlertDetailViewBottom"/>
+                                    <constraint firstItem="odm-cU-Bg7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hlB-df-wLC" secondAttribute="bottom" constant="10" id="fl1-ZZ-Re7" userLabel="AppAlertDetailCellViewMarginToTableView"/>
                                     <constraint firstItem="mFK-jg-0FA" firstAttribute="top" secondItem="hlB-df-wLC" secondAttribute="bottom" constant="30" id="uhF-1d-Yw8" userLabel="GenericAlertsWrapperTop"/>
                                     <constraint firstItem="1GD-nr-m8r" firstAttribute="leading" secondItem="5hD-AH-evl" secondAttribute="leading" constant="11" id="wzd-4d-gB6" userLabel="TransitModeSchedulesLeft"/>
                                     <constraint firstAttribute="trailing" secondItem="hlB-df-wLC" secondAttribute="trailing" constant="11" id="x5L-qY-jlq" userLabel="TableViewWrapperRight"/>
@@ -245,6 +256,8 @@ TableViewWrapper</string>
                     <navigationItem key="navigationItem" title="System Status" largeTitleDisplayMode="never" id="75X-7d-Igp"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="appAlertsTableViewWrapper" destination="odm-cU-Bg7" id="qmh-t4-EPY"/>
+                        <outlet property="appAlertsTopConstraintToGenericAlertsView" destination="Ymr-nv-u7W" id="HZu-oP-a6u"/>
                         <outlet property="buttonView" destination="X65-2S-sYu" id="Xbs-Ow-CvZ"/>
                         <outlet property="genericAlertsTableViewWrapper" destination="mFK-jg-0FA" id="AQR-zk-aJt"/>
                         <outlet property="scheduleLabel" destination="1GD-nr-m8r" id="HxH-l0-t3j"/>
@@ -278,7 +291,7 @@ TableViewWrapper</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p72-Km-5YN">
-                            <rect key="frame" x="207" y="10.5" width="33" height="27"/>
+                            <rect key="frame" x="207" y="10" width="33" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Reset">
                                 <color key="titleColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>

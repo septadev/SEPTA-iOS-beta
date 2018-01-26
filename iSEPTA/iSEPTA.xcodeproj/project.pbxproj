@@ -121,8 +121,8 @@
 		585572861F39499D004ABCD6 /* Color+Septa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585572841F3948D3004ABCD6 /* Color+Septa.swift */; };
 		585760AB1F82A1BC00A340DB /* NextToArriveNoResultsAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585760AA1F82A1BC00A340DB /* NextToArriveNoResultsAlert.swift */; };
 		585760AD1F82A31F00A340DB /* NextToArriveState_NextToArriveUpdateStatusWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585760AC1F82A31F00A340DB /* NextToArriveState_NextToArriveUpdateStatusWatcher.swift */; };
-		585CEBD21F867661006DCC67 /* AlertDetailsCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585CEBD11F867661006DCC67 /* AlertDetailsCellView.xib */; };
-		585CEBD41F8676D9006DCC67 /* AlertDetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CEBD31F8676D9006DCC67 /* AlertDetailCellView.swift */; };
+		585CEBD21F867661006DCC67 /* GenericAlertDetailCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 585CEBD11F867661006DCC67 /* GenericAlertDetailCellView.xib */; };
+		585CEBD41F8676D9006DCC67 /* GenericAlertDetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CEBD31F8676D9006DCC67 /* GenericAlertDetailCellView.swift */; };
 		585CEBD61F869E2D006DCC67 /* AlertState_HasGenericAlertsWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CEBD51F869E2D006DCC67 /* AlertState_HasGenericAlertsWatcher.swift */; };
 		585CEBD81F86A023006DCC67 /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CEBD71F86A023006DCC67 /* String+HTML.swift */; };
 		585CEBDA1F86A0AE006DCC67 /* AlertDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CEBD91F86A0AE006DCC67 /* AlertDetailsViewModel.swift */; };
@@ -483,6 +483,9 @@
 		676B7DA31F7D18E50052F016 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B7DA21F7D18E50052F016 /* MoreViewController.swift */; };
 		6776F672201757A3001FD5B2 /* AlertDetails+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6776F671201757A3001FD5B2 /* AlertDetails+Alert.swift */; };
 		6776F67620175801001FD5B2 /* String+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6776F67520175801001FD5B2 /* String+Util.swift */; };
+		6776F678201B32EA001FD5B2 /* AlertState_HasAppAlertsWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6776F677201B32EA001FD5B2 /* AlertState_HasAppAlertsWatcher.swift */; };
+		6776F67C201B358A001FD5B2 /* AlertState_AppAlertDetailsWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6776F67B201B358A001FD5B2 /* AlertState_AppAlertDetailsWatcher.swift */; };
+		6776F67E201B4078001FD5B2 /* AlertState_HasGenericOrAppAlertsWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6776F67D201B4078001FD5B2 /* AlertState_HasGenericOrAppAlertsWatcher.swift */; };
 		677FC7131F87DA82007596EA /* PinkAlertHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 677FC7121F87DA82007596EA /* PinkAlertHeaderView.xib */; };
 		6789B7721F8FDF7A008C6DCA /* tripDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6789B7711F8FDF7A008C6DCA /* tripDetail.storyboard */; };
 		6789B7751F8FDFAF008C6DCA /* TripDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6789B7741F8FDFAF008C6DCA /* TripDetailViewController.swift */; };
@@ -764,8 +767,8 @@
 		585572881F395990004ABCD6 /* MockSingleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSingleCell.swift; sourceTree = "<group>"; };
 		585760AA1F82A1BC00A340DB /* NextToArriveNoResultsAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveNoResultsAlert.swift; sourceTree = "<group>"; };
 		585760AC1F82A31F00A340DB /* NextToArriveState_NextToArriveUpdateStatusWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveState_NextToArriveUpdateStatusWatcher.swift; sourceTree = "<group>"; };
-		585CEBD11F867661006DCC67 /* AlertDetailsCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertDetailsCellView.xib; sourceTree = "<group>"; };
-		585CEBD31F8676D9006DCC67 /* AlertDetailCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailCellView.swift; sourceTree = "<group>"; };
+		585CEBD11F867661006DCC67 /* GenericAlertDetailCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenericAlertDetailCellView.xib; sourceTree = "<group>"; };
+		585CEBD31F8676D9006DCC67 /* GenericAlertDetailCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAlertDetailCellView.swift; sourceTree = "<group>"; };
 		585CEBD51F869E2D006DCC67 /* AlertState_HasGenericAlertsWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState_HasGenericAlertsWatcher.swift; sourceTree = "<group>"; };
 		585CEBD71F86A023006DCC67 /* String+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTML.swift"; sourceTree = "<group>"; };
 		585CEBD91F86A0AE006DCC67 /* AlertDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -1138,6 +1141,9 @@
 		676B7DA21F7D18E50052F016 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		6776F671201757A3001FD5B2 /* AlertDetails+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertDetails+Alert.swift"; sourceTree = "<group>"; };
 		6776F67520175801001FD5B2 /* String+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Util.swift"; sourceTree = "<group>"; };
+		6776F677201B32EA001FD5B2 /* AlertState_HasAppAlertsWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState_HasAppAlertsWatcher.swift; sourceTree = "<group>"; };
+		6776F67B201B358A001FD5B2 /* AlertState_AppAlertDetailsWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState_AppAlertDetailsWatcher.swift; sourceTree = "<group>"; };
+		6776F67D201B4078001FD5B2 /* AlertState_HasGenericOrAppAlertsWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState_HasGenericOrAppAlertsWatcher.swift; sourceTree = "<group>"; };
 		677FC7121F87DA82007596EA /* PinkAlertHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PinkAlertHeaderView.xib; sourceTree = "<group>"; };
 		6789B7711F8FDF7A008C6DCA /* tripDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = tripDetail.storyboard; sourceTree = "<group>"; };
 		6789B7741F8FDFAF008C6DCA /* TripDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailViewController.swift; sourceTree = "<group>"; };
@@ -2404,8 +2410,11 @@
 			isa = PBXGroup;
 			children = (
 				670C59DD1F8920E900CAE1AC /* AlertState_GenericAlertDetailsWatcher.swift */,
+				6776F67B201B358A001FD5B2 /* AlertState_AppAlertDetailsWatcher.swift */,
 				5827411E1F6F5AC800AAF513 /* AlertState_AlertDetailsWatcher.swift */,
 				585CEBD51F869E2D006DCC67 /* AlertState_HasGenericAlertsWatcher.swift */,
+				6776F67D201B4078001FD5B2 /* AlertState_HasGenericOrAppAlertsWatcher.swift */,
+				6776F677201B32EA001FD5B2 /* AlertState_HasAppAlertsWatcher.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -2493,8 +2502,8 @@
 		677FC7151F87E099007596EA /* CellView */ = {
 			isa = PBXGroup;
 			children = (
-				585CEBD11F867661006DCC67 /* AlertDetailsCellView.xib */,
-				585CEBD31F8676D9006DCC67 /* AlertDetailCellView.swift */,
+				585CEBD11F867661006DCC67 /* GenericAlertDetailCellView.xib */,
+				585CEBD31F8676D9006DCC67 /* GenericAlertDetailCellView.swift */,
 			);
 			path = CellView;
 			sourceTree = "<group>";
@@ -2979,7 +2988,7 @@
 				58B278331F62AAD500663507 /* 108.kml in Resources */,
 				58B278301F62AAD500663507 /* 105.kml in Resources */,
 				58B278501F62AAD500663507 /* 150.kml in Resources */,
-				585CEBD21F867661006DCC67 /* AlertDetailsCellView.xib in Resources */,
+				585CEBD21F867661006DCC67 /* GenericAlertDetailCellView.xib in Resources */,
 				67C567371F598D7A00FF6203 /* TransitAlerts.storyboard in Resources */,
 				58B2785B1F62AAD500663507 /* 205.kml in Resources */,
 				58B278681F62AAD500663507 /* 31.kml in Resources */,
@@ -3188,7 +3197,7 @@
 				674FDBC71F577D3B00CA67D2 /* Route+Icon.swift in Sources */,
 				587BC0501F6EDF1D00B92BB6 /* AlertRequest.swift in Sources */,
 				58C9D3011F703735008FDE40 /* LoggingMiddleware.swift in Sources */,
-				585CEBD41F8676D9006DCC67 /* AlertDetailCellView.swift in Sources */,
+				585CEBD41F8676D9006DCC67 /* GenericAlertDetailCellView.swift in Sources */,
 				589397191F7E6A5000F3D2F8 /* MoreReducer.swift in Sources */,
 				676B7D8C1F7D01390052F016 /* FaresPaymentModeViewModel.swift in Sources */,
 				58F80D431F421C1F0089501A /* SelectStopNavigationController.swift in Sources */,
@@ -3234,6 +3243,7 @@
 				580A35651F6A1949000FCA82 /* FavoriteNextToArriveViewModel.swift in Sources */,
 				58E54E241F65A40100E9B66D /* NavigationBar+Util.swift in Sources */,
 				586852E01F8D4F470081C1CC /* LittleBlueChevronButton.swift in Sources */,
+				6776F67E201B4078001FD5B2 /* AlertState_HasGenericOrAppAlertsWatcher.swift in Sources */,
 				58DD1A901F600758002532DC /* NextToArriveViewModel+StopCell.swift in Sources */,
 				678DAAB51F67478900EB6EE8 /* ConnectionCell.swift in Sources */,
 				58126F6B1F631C3100A6E187 /* RouteOverlay.swift in Sources */,
@@ -3365,6 +3375,7 @@
 				58290E501F372DDC000CCF3C /* NavigationActions.swift in Sources */,
 				676B7DA11F7D18B90052F016 /* MoreNavigationControllerStateProvider.swift in Sources */,
 				586852DE1F8D49830081C1CC /* TransitMode+NextToArriveDetail.swift in Sources */,
+				6776F67C201B358A001FD5B2 /* AlertState_AppAlertDetailsWatcher.swift in Sources */,
 				588D805D1F72AAF300EE1983 /* BaseScheduleRequestWatcher.swift in Sources */,
 				678DAA9E1F67065F00EB6EE8 /* NextToArriveConnectingViewModel.swift in Sources */,
 				67F0289E1F7EE3B40032F99C /* ContactViewModel.swift in Sources */,
@@ -3425,6 +3436,7 @@
 				58EB8D291F5D90CD0028A487 /* NextToArriveState.swift in Sources */,
 				5893970C1F7E60D900F3D2F8 /* WebViewController.swift in Sources */,
 				589A919B1F905CA6009B49E0 /* TripDetailState_TripDetailWatcher.swift in Sources */,
+				6776F678201B32EA001FD5B2 /* AlertState_HasAppAlertsWatcher.swift in Sources */,
 				670C59E31F8A5CEE00CAE1AC /* FavoritesMiddleware.swift in Sources */,
 				583523991F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift in Sources */,
 				67A385771F7D4752002E01E0 /* MoreViewModel.swift in Sources */,

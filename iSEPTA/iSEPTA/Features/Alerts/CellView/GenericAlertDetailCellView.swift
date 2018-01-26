@@ -10,7 +10,13 @@ import Foundation
 import SeptaRest
 import UIKit
 
-class AlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherDelegate {
+enum GenericAlertType {
+    case genericAlert
+    case appAlert
+}
+
+class GenericAlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherDelegate,
+    AlertState_AppAlertDetailsWatcherDelegate {
     private var openState: Bool = false
 
     var sectionNumber: Int!
@@ -24,11 +30,30 @@ class AlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherDelegate
     }
 
     var pinkAlertHeaderView: PinkAlertHeaderView!
+
     @IBOutlet var pinkWrapperView: UIView! {
         didSet {
             pinkAlertHeaderView = pinkWrapperView.awakeInsertAndPinSubview(nibName: "PinkAlertHeaderView")
             pinkAlertHeaderView.actionButton.addTarget(self, action: #selector(actionButtonTapped(_:)), for: .touchUpInside)
+            pinkAlertHeaderView.enabled = true
         }
+    }
+
+    var genericAlertType: GenericAlertType = .genericAlert {
+        didSet {
+            switch genericAlertType {
+            case .genericAlert: configureForGenericAlert()
+            case .appAlert: configureForAppAlert()
+            }
+        }
+    }
+
+    func configureForGenericAlert() {
+        pinkAlertHeaderView.advisoryLabel.text = "General Alert"
+    }
+
+    func configureForAppAlert() {
+        pinkAlertHeaderView.advisoryLabel.text = "Mobile App Alert"
     }
 
     var alertImage: UIImageView { return pinkAlertHeaderView.alertImageView }
@@ -61,6 +86,11 @@ class AlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherDelegate
     }
 
     func alertState_GenericAlertDetailsUpdated(alertDetails: [AlertDetails_Alert]) {
+        let message = AlertDetailsViewModel.renderMessage(alertDetails: alertDetails) { return $0.message }
+        textView.attributedText = message
+    }
+
+    func alertState_AppAlertDetailsUpdated(alertDetails: [AlertDetails_Alert]) {
         let message = AlertDetailsViewModel.renderMessage(alertDetails: alertDetails) { return $0.message }
         textView.attributedText = message
     }

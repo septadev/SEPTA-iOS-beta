@@ -6,11 +6,11 @@ import SeptaRest
 import SeptaSchedule
 import UIKit
 
-class MainNavigationController: UITabBarController, UITabBarControllerDelegate, StoreSubscriber, FavoritesState_FavoriteToEditWatcherDelegate, AlertState_HasGenericAlertsWatcherDelegate {
+class MainNavigationController: UITabBarController, UITabBarControllerDelegate, StoreSubscriber, FavoritesState_FavoriteToEditWatcherDelegate, AlertState_HasGenericOrAppAlertsWatcherDelegate {
 
     typealias StoreSubscriberStateType = NavigationController
     var favoritestoEditWatcher: FavoritesState_FavoriteToEditWatcher?
-    var genericAlertsWatcher: AlertState_HasGenericAlertsWatcher?
+    var genericAlertsWatcher: AlertState_HasGenericOrAppAlertsWatcher?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -59,7 +59,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
             }
         }
 
-        genericAlertsWatcher = AlertState_HasGenericAlertsWatcher()
+        genericAlertsWatcher = AlertState_HasGenericOrAppAlertsWatcher()
         genericAlertsWatcher?.delegate = self
     }
 
@@ -82,7 +82,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         }
     }
 
-    func alertState_HasGenericAlertsUpdated(bool hasAlerts: Bool) {
+    func alertState_HasGenericOrAppAlertsUpdated(bool hasAlerts: Bool) {
         guard let alertsTabBarItem = self.tabBar.items?[2] else { return }
         alertsTabBarItem.badgeValue = hasAlerts ? "!" : nil
     }

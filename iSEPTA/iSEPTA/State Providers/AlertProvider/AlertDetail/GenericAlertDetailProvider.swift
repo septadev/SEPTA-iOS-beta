@@ -47,6 +47,8 @@ class GenericAlertDetailProvider {
                 store.dispatch(action)
             }
         }.catch { err in
+            let action = AppAlertDetailsLoaded(appAlertDetails: [AlertDetails_Alert]())
+            store.dispatch(action)
             print(err)
         }
     }
