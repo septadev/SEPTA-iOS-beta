@@ -36,6 +36,7 @@ class GenericAlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherD
             pinkAlertHeaderView = pinkWrapperView.awakeInsertAndPinSubview(nibName: "PinkAlertHeaderView")
             pinkAlertHeaderView.actionButton.addTarget(self, action: #selector(actionButtonTapped(_:)), for: .touchUpInside)
             pinkAlertHeaderView.enabled = true
+            pinkAlertHeaderView.isGenericAlert = true
         }
     }
 
@@ -49,11 +50,15 @@ class GenericAlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherD
     }
 
     func configureForGenericAlert() {
-        pinkAlertHeaderView.advisoryLabel.text = "General Alert"
+        pinkAlertHeaderView.advisoryLabel.text = "General SEPTA Alert"
+        alertState_GenericAlertDetailsWatcher = AlertState_GenericAlertDetailsWatcher()
+        alertState_GenericAlertDetailsWatcher?.delegate = self
     }
 
     func configureForAppAlert() {
         pinkAlertHeaderView.advisoryLabel.text = "Mobile App Alert"
+        alertState_AppAlertDetailsWatcher = AlertState_AppAlertDetailsWatcher()
+        alertState_AppAlertDetailsWatcher?.delegate = self
     }
 
     var alertImage: UIImageView { return pinkAlertHeaderView.alertImageView }
@@ -62,7 +67,8 @@ class GenericAlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherD
 
     var advisoryLabel: UILabel { return pinkAlertHeaderView.advisoryLabel }
 
-    var genericAlertDetailsWatcher: AlertState_GenericAlertDetailsWatcher?
+    var alertState_GenericAlertDetailsWatcher: AlertState_GenericAlertDetailsWatcher?
+    var alertState_AppAlertDetailsWatcher: AlertState_AppAlertDetailsWatcher?
 
     @IBOutlet var content: UIView! {
         didSet {
@@ -72,27 +78,23 @@ class GenericAlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherD
         }
     }
 
-    var isGenericAlert: Bool = false {
+    var isGenericAlert: Bool = true {
 
         didSet {
             pinkAlertHeaderView.isGenericAlert = isGenericAlert
-
-            textView.isScrollEnabled = isGenericAlert
-            if isGenericAlert {
-                genericAlertDetailsWatcher = AlertState_GenericAlertDetailsWatcher()
-                genericAlertDetailsWatcher?.delegate = self
-            }
         }
     }
 
     func alertState_GenericAlertDetailsUpdated(alertDetails: [AlertDetails_Alert]) {
         let message = AlertDetailsViewModel.renderMessage(alertDetails: alertDetails) { return $0.message }
         textView.attributedText = message
+        textView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
     }
 
     func alertState_AppAlertDetailsUpdated(alertDetails: [AlertDetails_Alert]) {
         let message = AlertDetailsViewModel.renderMessage(alertDetails: alertDetails) { return $0.message }
         textView.attributedText = message
+        textView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
     }
 
     @IBOutlet var textViewHeightContraints: NSLayoutConstraint! {
@@ -101,7 +103,11 @@ class GenericAlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherD
         }
     }
 
-    @IBOutlet var textView: UITextView!
+    @IBOutlet var textView: UITextView! {
+        didSet {
+            textView.isScrollEnabled = true
+        }
+    }
 
     @objc @IBAction func actionButtonTapped(_: Any) {
         delegate?.didTapButton(sectionNumber: sectionNumber)
@@ -125,26 +131,27 @@ class GenericAlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherD
         setNeedsLayout()
     }
     private func setOpenState() {
-        let windowWidth = UIScreen.main.bounds.width - 30
+        let windowWidth = textView.frame.size.width
         let sizeThatFitsTextView = textView.sizeThatFits(CGSize(width: windowWidth, height: CGFloat(MAXFLOAT)))
         let heightOfText = sizeThatFitsTextView.height
 
         textViewHeightContraints.constant = heightOfText
+        textView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
         pinkAlertHeaderView.actionButton.isOpen = true
         openState = true
         setNeedsLayout()
     }
 
-    var fittingHeight: CGFloat {
-        if pinkAlertHeaderView.actionButton.isOpen {
-            let windowWidth = UIScreen.main.bounds.width - 50
-            let sizeThatFitsTextView = textView.sizeThatFits(CGSize(width: windowWidth, height: CGFloat(MAXFLOAT)))
-            let heightOfText = sizeThatFitsTextView.height
-            return heightOfText + 75
-        } else {
-            return 75
-        }
-    }
+    //    var fittingHeight: CGFloat {
+    //        if pinkAlertHeaderView.actionButton.isOpen {
+    //            let windowWidth = UIScreen.main.bounds.width - 30
+    //            let sizeThatFitsTextView = textView.sizeThatFits(CGSize(width: windowWidth, height: CGFloat(MAXFLOAT)))
+    //            let heightOfText = sizeThatFitsTextView.height
+    //            return heightOfText
+    //        } else {
+    //            return 15
+    //        }
+    //    }
 
     func setEnabled(_ enabled: Bool) {
         pinkAlertHeaderView.enabled = enabled

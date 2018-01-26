@@ -31,14 +31,14 @@ class AlertsViewController: UIViewController, IdentifiableController {
 
     @IBOutlet var genericAlertsTableViewWrapper: UIView! {
         didSet {
-            genericAlertDetailCellView = genericAlertsTableViewWrapper.awakeInsertAndPinSubview(nibName: "GenericAlertDetailsCellView")
-            appAlertDetailCellView.genericAlertType = .genericAlert
+            genericAlertDetailCellView = genericAlertsTableViewWrapper.awakeInsertAndPinSubview(nibName: "GenericAlertDetailCellView")
+            genericAlertDetailCellView.genericAlertType = .genericAlert
         }
     }
 
     @IBOutlet var appAlertsTableViewWrapper: UIView! {
         didSet {
-            appAlertDetailCellView = appAlertsTableViewWrapper.awakeInsertAndPinSubview(nibName: "GenericAlertDetailsCellView")
+            appAlertDetailCellView = appAlertsTableViewWrapper.awakeInsertAndPinSubview(nibName: "GenericAlertDetailCellView")
             appAlertDetailCellView.genericAlertType = .appAlert
         }
     }

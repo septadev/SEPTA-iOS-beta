@@ -204,18 +204,20 @@
                                         <string key="userLabel">
 TableViewWrapper</string>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mFK-jg-0FA" userLabel="AlertDetailCellview">
-                                        <rect key="frame" x="10" y="236" width="355" height="60"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mFK-jg-0FA">
+                                        <rect key="frame" x="10" y="216" width="355" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" placeholder="YES" id="sIQ-Tv-UJH"/>
+                                            <constraint firstAttribute="height" constant="40" placeholder="YES" id="sIQ-Tv-UJH"/>
                                         </constraints>
+                                        <string key="userLabel">
+GenericAlertCellView</string>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="odm-cU-Bg7" userLabel="AppAlertDetailCellView">
-                                        <rect key="frame" x="10" y="286" width="355" height="60"/>
+                                        <rect key="frame" x="10" y="266" width="355" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" placeholder="YES" id="l2b-B8-jsL"/>
+                                            <constraint firstAttribute="height" constant="40" placeholder="YES" id="l2b-B8-jsL"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -227,11 +229,11 @@ TableViewWrapper</string>
                                     <constraint firstItem="mFK-jg-0FA" firstAttribute="leading" secondItem="5hD-AH-evl" secondAttribute="leading" constant="10" id="5Jh-S0-BNd" userLabel="GenericAlertsWrapperLeft"/>
                                     <constraint firstItem="odm-cU-Bg7" firstAttribute="leading" secondItem="5hD-AH-evl" secondAttribute="leading" constant="10" id="CTX-Wi-Dg0" userLabel="AppAlertDetailCellViewLeft"/>
                                     <constraint firstAttribute="trailing" secondItem="mFK-jg-0FA" secondAttribute="trailing" constant="10" id="P2a-E9-cai" userLabel="GenericAlertsWrapperRight"/>
-                                    <constraint firstItem="mFK-jg-0FA" firstAttribute="bottom" secondItem="odm-cU-Bg7" secondAttribute="top" constant="10" id="Ymr-nv-u7W" userLabel="AppAlertDetailCellViewMarginToAlertDetailCellView"/>
+                                    <constraint firstItem="odm-cU-Bg7" firstAttribute="top" secondItem="mFK-jg-0FA" secondAttribute="bottom" constant="10" id="Ymr-nv-u7W" userLabel="AppAlertDetailCellViewMarginToAlertDetailCellView"/>
                                     <constraint firstItem="hlB-df-wLC" firstAttribute="leading" secondItem="5hD-AH-evl" secondAttribute="leading" constant="10" id="bDo-tG-BE8" userLabel="TableViewWrapperLeft"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="mFK-jg-0FA" secondAttribute="bottom" id="ekb-tY-hIs" userLabel="AlertDetailViewBottom"/>
                                     <constraint firstItem="odm-cU-Bg7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hlB-df-wLC" secondAttribute="bottom" constant="10" id="fl1-ZZ-Re7" userLabel="AppAlertDetailCellViewMarginToTableView"/>
-                                    <constraint firstItem="mFK-jg-0FA" firstAttribute="top" secondItem="hlB-df-wLC" secondAttribute="bottom" constant="30" id="uhF-1d-Yw8" userLabel="GenericAlertsWrapperTop"/>
+                                    <constraint firstItem="mFK-jg-0FA" firstAttribute="top" secondItem="hlB-df-wLC" secondAttribute="bottom" constant="10" id="uhF-1d-Yw8" userLabel="GenericAlertsWrapperTop"/>
                                     <constraint firstItem="1GD-nr-m8r" firstAttribute="leading" secondItem="5hD-AH-evl" secondAttribute="leading" constant="11" id="wzd-4d-gB6" userLabel="TransitModeSchedulesLeft"/>
                                     <constraint firstAttribute="trailing" secondItem="hlB-df-wLC" secondAttribute="trailing" constant="11" id="x5L-qY-jlq" userLabel="TableViewWrapperRight"/>
                                     <constraint firstItem="hlB-df-wLC" firstAttribute="top" secondItem="5hD-AH-evl" secondAttribute="top" constant="50" id="y6k-Pc-5vl" userLabel="TableViewWrapperTop"/>

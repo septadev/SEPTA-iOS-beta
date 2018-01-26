@@ -28,7 +28,7 @@ class PinkAlertHeaderView: UIView {
             if isGenericAlert {
                 advisoryLabelLeftConstraint.constant = 15
                 alertImageView.isHidden = true
-                advisoryLabel.text = "General Septa Alert"
+                // advisoryLabel.text = "General SEPTA Alert"
 
                 enabled = true
             } else {

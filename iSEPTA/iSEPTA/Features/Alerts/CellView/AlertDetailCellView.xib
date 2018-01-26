@@ -26,15 +26,15 @@
                     <rect key="frame" x="5" y="25" width="365" height="637"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bEc-zl-79l" userLabel="PinkWrapperView">
-                            <rect key="frame" x="0.0" y="0.0" width="365" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="365" height="60"/>
                             <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <accessibility key="accessibilityConfiguration" identifier="PinkView"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="E7C-6Z-Gsi" userLabel="PinkViewHeight"/>
+                                <constraint firstAttribute="height" constant="60" id="E7C-6Z-Gsi" userLabel="PinkViewHeight"/>
                             </constraints>
                         </view>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gAs-7Q-4TI">
-                            <rect key="frame" x="0.0" y="40" width="365" height="597"/>
+                            <rect key="frame" x="0.0" y="60" width="365" height="577"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="999" constant="497.5" id="oT7-P7-0zl" userLabel="TextViewHeight"/>

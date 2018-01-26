@@ -20,7 +20,7 @@ class AlertDetailCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        cellView = contentView.awakeInsertAndPinSubview(nibName: "AlertDetailsCellView")
+        cellView = contentView.awakeInsertAndPinSubview(nibName: "AlertDetailCellView")
         backgroundColor = UIColor.clear
         contentView.backgroundColor = UIColor.clear
     }

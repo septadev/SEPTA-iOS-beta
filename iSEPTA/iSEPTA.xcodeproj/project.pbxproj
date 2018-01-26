@@ -481,6 +481,7 @@
 		676B7D9F1F7D189E0052F016 /* more.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 676B7D9E1F7D189E0052F016 /* more.storyboard */; };
 		676B7DA11F7D18B90052F016 /* MoreNavigationControllerStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B7DA01F7D18B90052F016 /* MoreNavigationControllerStateProvider.swift */; };
 		676B7DA31F7D18E50052F016 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676B7DA21F7D18E50052F016 /* MoreViewController.swift */; };
+		6770284F201BD004007282EF /* AlertDetailCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6770284C201BD004007282EF /* AlertDetailCellView.xib */; };
 		6776F672201757A3001FD5B2 /* AlertDetails+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6776F671201757A3001FD5B2 /* AlertDetails+Alert.swift */; };
 		6776F67620175801001FD5B2 /* String+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6776F67520175801001FD5B2 /* String+Util.swift */; };
 		6776F678201B32EA001FD5B2 /* AlertState_HasAppAlertsWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6776F677201B32EA001FD5B2 /* AlertState_HasAppAlertsWatcher.swift */; };
@@ -1139,6 +1140,7 @@
 		676B7D9E1F7D189E0052F016 /* more.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = more.storyboard; sourceTree = "<group>"; };
 		676B7DA01F7D18B90052F016 /* MoreNavigationControllerStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreNavigationControllerStateProvider.swift; sourceTree = "<group>"; };
 		676B7DA21F7D18E50052F016 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		6770284C201BD004007282EF /* AlertDetailCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertDetailCellView.xib; sourceTree = "<group>"; };
 		6776F671201757A3001FD5B2 /* AlertDetails+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertDetails+Alert.swift"; sourceTree = "<group>"; };
 		6776F67520175801001FD5B2 /* String+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Util.swift"; sourceTree = "<group>"; };
 		6776F677201B32EA001FD5B2 /* AlertState_HasAppAlertsWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState_HasAppAlertsWatcher.swift; sourceTree = "<group>"; };
@@ -2502,6 +2504,7 @@
 		677FC7151F87E099007596EA /* CellView */ = {
 			isa = PBXGroup;
 			children = (
+				6770284C201BD004007282EF /* AlertDetailCellView.xib */,
 				585CEBD11F867661006DCC67 /* GenericAlertDetailCellView.xib */,
 				585CEBD31F8676D9006DCC67 /* GenericAlertDetailCellView.swift */,
 			);
@@ -2845,6 +2848,7 @@
 			files = (
 				67A3857E1F7D7664002E01E0 /* Startup.storyboard in Resources */,
 				58B278981F62AAD500663507 /* 80.kml in Resources */,
+				6770284F201BD004007282EF /* AlertDetailCellView.xib in Resources */,
 				58B278931F62AAD500663507 /* 75.kml in Resources */,
 				58B278B31F62AAD500663507 /* LucyGold.kml in Resources */,
 				58B2787F1F62AAD500663507 /* 52.kml in Resources */,

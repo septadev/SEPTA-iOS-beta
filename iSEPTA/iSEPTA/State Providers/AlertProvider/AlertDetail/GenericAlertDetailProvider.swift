@@ -20,7 +20,7 @@ class GenericAlertDetailProvider {
     let client = SEPTAApiClient.defaultClient(url: SeptaNetwork.sharedInstance.url, apiKey: SeptaNetwork.sharedInstance.apiKey)
 
     private init() {
-        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(timerFired(timer:)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(timerFired(timer:)), userInfo: nil, repeats: true)
         getGenericAlert()
     }
 
