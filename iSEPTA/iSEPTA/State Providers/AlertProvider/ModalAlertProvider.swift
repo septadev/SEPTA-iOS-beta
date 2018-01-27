@@ -72,17 +72,6 @@ class ModalAlertProvider {
         return SeptaAlert(advisory: advisory, alert: alert, detour: detour, weather: weather)
     }
 
-    func shouldDisplayAlertModal(messageText _: String) -> Bool {
-        let defaults = UserDefaults.standard
-        if let lastMessageDisplayed = defaults.string(forKey: "lastMessageDisplayed"),
-            let lastMessageDisplayedDate = defaults.object(forKey: "lastMessageDisplayedDate") as? Date {
-
-        } else {
-
-            return true
-        }
-    }
-
     func stripTimeComponentFromDate(date: Date) -> Date {
         let components = Calendar.current.dateComponents([.year, .month, .day], from: date)
         if let strippedDate = Calendar.current.date(from: components) {

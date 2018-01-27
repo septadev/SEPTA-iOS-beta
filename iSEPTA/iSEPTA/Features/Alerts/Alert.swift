@@ -91,4 +91,18 @@ class UIAlert {
 
         viewController.present(alert, animated: true, completion: nil)
     }
+
+    static func presentAttributedOKAlertFrom(viewController: UIViewController, withTitle title: String, attributedString: NSAttributedString, completion: (() -> Void)? = nil) {
+        // create the alert
+
+        let alert = UIAlertController(title: title, message: attributedString.string, preferredStyle: UIAlertControllerStyle.alert)
+
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
+            completion?()
+        })
+
+        // show the alert
+        viewController.present(alert, animated: true, completion: nil)
+    }
 }

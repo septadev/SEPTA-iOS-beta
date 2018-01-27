@@ -6,7 +6,7 @@ use Data::Dumper;
 
 my $type = q| Bool   |;
 
-my $keyPath = q|  alertState.hasGenericOrAppAlerts |;
+my $keyPath = q|  alertState.modalAlertsDisplayed |;
 
 
 

@@ -6,11 +6,12 @@ import SeptaRest
 import SeptaSchedule
 import UIKit
 
-class MainNavigationController: UITabBarController, UITabBarControllerDelegate, StoreSubscriber, FavoritesState_FavoriteToEditWatcherDelegate, AlertState_HasGenericOrAppAlertsWatcherDelegate {
+class MainNavigationController: UITabBarController, UITabBarControllerDelegate, StoreSubscriber, FavoritesState_FavoriteToEditWatcherDelegate, AlertState_HasGenericOrAppAlertsWatcherDelegate, AlertState_ModalAlertsDisplayedWatcherDelegate {
 
     typealias StoreSubscriberStateType = NavigationController
     var favoritestoEditWatcher: FavoritesState_FavoriteToEditWatcher?
     var genericAlertsWatcher: AlertState_HasGenericOrAppAlertsWatcher?
+    var modalAlertsDisplayedWatcher: AlertState_ModalAlertsDisplayedWatcher?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -61,6 +62,9 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
 
         genericAlertsWatcher = AlertState_HasGenericOrAppAlertsWatcher()
         genericAlertsWatcher?.delegate = self
+
+        modalAlertsDisplayedWatcher = AlertState_ModalAlertsDisplayedWatcher()
+        modalAlertsDisplayedWatcher?.delegate = self
     }
 
     var modalTransitioningDelegate: UIViewControllerTransitioningDelegate!
@@ -85,5 +89,29 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
     func alertState_HasGenericOrAppAlertsUpdated(bool hasAlerts: Bool) {
         guard let alertsTabBarItem = self.tabBar.items?[2] else { return }
         alertsTabBarItem.badgeValue = hasAlerts ? "!" : nil
+    }
+
+    func alertState_ModalAlertsDisplayedUpdated(modalAlertsDisplayed: Bool) {
+        let alertState = store.state.alertState
+
+        if alertState.hasGenericAlerts && !modalAlertsDisplayed {
+            let message = AlertDetailsViewModel.renderMessage(alertDetails: alertState.genericAlertDetails) { return $0.message }
+            if let message = message {
+                UIAlert.presentAttributedOKAlertFrom(viewController: self, withTitle: "General SEPTA Alert", attributedString: message) {
+                    let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: true)
+                    store.dispatch(action)
+                }
+            }
+        }
+
+        if alertState.hasAppAlerts && !modalAlertsDisplayed {
+            let message = AlertDetailsViewModel.renderMessage(alertDetails: alertState.appAlertDetails) { return $0.message }
+            if let message = message {
+                UIAlert.presentAttributedOKAlertFrom(viewController: self, withTitle: "Mobile App Alert", attributedString: message) {
+                    let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: true)
+                    store.dispatch(action)
+                }
+            }
+        }
     }
 }

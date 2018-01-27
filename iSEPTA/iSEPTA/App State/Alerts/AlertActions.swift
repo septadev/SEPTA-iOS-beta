@@ -45,3 +45,8 @@ struct AppAlertDetailsLoaded: AlertAction {
 struct ResetAlertRequest: AlertAction {
     let description = "Clear out alertRequest Info"
 }
+
+struct ResetModalAlertsDisplayed: AlertAction {
+    let modalAlertsDisplayed: Bool
+    let description = "Setting modal Alerts Displayed"
+}
