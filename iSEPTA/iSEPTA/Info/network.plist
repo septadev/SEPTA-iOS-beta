@@ -10,6 +10,8 @@
 	<integer>12</integer>
 	<key>databaseChange</key>
 	<string>January Schedule 2018</string>
+	<key>databaseUpdateDate</key>
+	<date>2018-01-27T12:50:46Z</date>
 	<key>url</key>
 	<string>https://vnjb5kvq2b.execute-api.us-east-1.amazonaws.com/prod</string>
 	<key>apiKey</key>
@@ -18,5 +20,11 @@
 	<string>generic</string>
 	<key>appAlertName</key>
 	<string>APP</string>
+	<key>genericAlertEnvironment</key>
+	<string>test</string>
+	<key>genericAlertTestHost</key>
+	<string>https://apitest.septa.org</string>
+	<key>genericAlertTestPath</key>
+	<string>api/Alerts/get_alert_data_test.php</string>
 </dict>
 </plist>

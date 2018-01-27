@@ -22,6 +22,8 @@ public class AlertDetails_Alert: Mappable {
     public required init?(map _: Map) {
     }
 
+    public init() {}
+
     public func mapping(map: Map) {
 
         route_id <- map["route_id"]

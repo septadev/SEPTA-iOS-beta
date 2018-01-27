@@ -2,6 +2,8 @@
 
 import Foundation
 
+protocol StateProvider: class {}
+
 class StateProviders {
     let preferenceProvider: UserPreferencesProviderProtocol
     let scheduleProvider: ScheduleDataProvider
@@ -14,7 +16,7 @@ class StateProviders {
     let favoritesNextToArriveProvider: FavoritesNextToArriveProvider
     let alertScheduleDataProvider: AlertScheduleDataProvider
     let alertDetailProvider: AlertDetailProvider
-    let genericAlertDetailProvider: GenericAlertDetailProvider
+    let genericAlertDetailProvider: StateProvider
     let tripDetailStateProvider: TripDetailStateProvider
 
     init(preferenceProvider: UserPreferencesProviderProtocol = UserPreferencesProvider.sharedInstance,
@@ -28,7 +30,7 @@ class StateProviders {
          favoritesNextToArriveProvider: FavoritesNextToArriveProvider = FavoritesNextToArriveProvider.sharedInstance,
          alertScheduleDataProvider: AlertScheduleDataProvider = AlertScheduleDataProvider.sharedInstance,
          alertDetailProvider: AlertDetailProvider = AlertDetailProvider.sharedInstance,
-         genericAlertDetailProvider: GenericAlertDetailProvider = GenericAlertDetailProvider.sharedInstance,
+         genericAlertDetailProvider: StateProvider = GenericAlertDetailProviderFactory.generateProvider(),
          tripDetailStateProvider: TripDetailStateProvider = TripDetailStateProvider.sharedInstance
 
     ) {

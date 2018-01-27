@@ -9,7 +9,7 @@
 import Foundation
 import SeptaRest
 
-class GenericAlertDetailProvider {
+class GenericAlertDetailProvider: StateProvider {
 
     static let sharedInstance = GenericAlertDetailProvider()
     let genericRouteId = SeptaNetwork.sharedInstance.genericAlertName
@@ -20,8 +20,9 @@ class GenericAlertDetailProvider {
     let client = SEPTAApiClient.defaultClient(url: SeptaNetwork.sharedInstance.url, apiKey: SeptaNetwork.sharedInstance.apiKey)
 
     private init() {
-        timer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(timerFired(timer:)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 60 * 15, target: self, selector: #selector(timerFired(timer:)), userInfo: nil, repeats: true)
         getGenericAlert()
+        getAppAlerts()
     }
 
     @objc func timerFired(timer _: Timer) {
