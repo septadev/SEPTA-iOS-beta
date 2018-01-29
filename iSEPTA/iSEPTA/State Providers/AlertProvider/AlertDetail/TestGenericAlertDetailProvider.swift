@@ -84,13 +84,17 @@ class TestGenericAlertDetailProvider: StateProvider {
     }
 
     fileprivate func updateGenericAlerts(genericAlertDetails: [AlertDetails_Alert]) {
-        let action = GenericAlertDetailsLoaded(genericAlertDetails: genericAlertDetails)
-        store.dispatch(action)
+        DispatchQueue.main.async {
+            let action = GenericAlertDetailsLoaded(genericAlertDetails: genericAlertDetails)
+            store.dispatch(action)
+        }
     }
 
     fileprivate func updateAppAlerts(appAlertDetails: [AlertDetails_Alert]) {
-        let action = AppAlertDetailsLoaded(appAlertDetails: appAlertDetails)
-        store.dispatch(action)
+        DispatchQueue.main.async {
+            let action = AppAlertDetailsLoaded(appAlertDetails: appAlertDetails)
+            store.dispatch(action)
+        }
     }
 
     /// helper classes

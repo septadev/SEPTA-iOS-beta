@@ -98,6 +98,10 @@ class UIAlert {
         let alert = UIAlertController(title: title, message: attributedString.string, preferredStyle: UIAlertControllerStyle.alert)
 
         // add an action (button)
+        alert.addAction(UIAlertAction(title: "More Details", style: UIAlertActionStyle.default) { _ in
+            let action = SwitchTabs(activeNavigationController: .alerts, description: "Jumping to Alerts Screen Generic Alert")
+            store.dispatch(action)
+        })
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
             completion?()
         })
