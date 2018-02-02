@@ -23,8 +23,17 @@ class AlertsViewController: UIViewController, IdentifiableController {
     @IBOutlet var sectionHeaderLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var tableViewWrapperView: UIView!
-    var genericAlertDetailCellView: GenericAlertDetailCellView!
-    var appAlertDetailCellView: GenericAlertDetailCellView!
+    var genericAlertDetailCellView: GenericAlertDetailCellView! {
+        didSet {
+            genericAlertDetailCellView.pinkViewHeight.constant = 60
+        }
+    }
+
+    var appAlertDetailCellView: GenericAlertDetailCellView! {
+        didSet {
+            appAlertDetailCellView.pinkViewHeight.constant = 60
+        }
+    }
 
     var alertState_HasGenericAlertsWatcher: AlertState_HasGenericAlertsWatcher!
     var alertState_HasAppAlertsWatcher: AlertState_HasAppAlertsWatcher!

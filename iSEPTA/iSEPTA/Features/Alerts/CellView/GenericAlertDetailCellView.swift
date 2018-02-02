@@ -19,6 +19,7 @@ class GenericAlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherD
     AlertState_AppAlertDetailsWatcherDelegate {
     private var openState: Bool = false
 
+    @IBOutlet weak var pinkViewHeight: NSLayoutConstraint!
     var sectionNumber: Int!
     weak var delegate: AlertDetailCellDelegate?
 

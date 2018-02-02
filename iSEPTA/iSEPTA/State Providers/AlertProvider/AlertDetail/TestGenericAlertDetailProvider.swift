@@ -22,7 +22,7 @@ class TestGenericAlertDetailProvider: StateProvider {
     fileprivate var timer: Timer?
 
     private init() {
-        timer = Timer.scheduledTimer(timeInterval: 10 * 60, target: self, selector: #selector(timerFired(timer:)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(timerFired(timer:)), userInfo: nil, repeats: true)
         getGenericAlert()
         getAppAlerts()
     }
@@ -85,7 +85,6 @@ class TestGenericAlertDetailProvider: StateProvider {
 
     fileprivate func updateGenericAlerts(genericAlertDetails: [AlertDetails_Alert]) {
         DispatchQueue.main.async {
-
             let action = GenericAlertDetailsLoaded(genericAlertDetails: genericAlertDetails)
             store.dispatch(action)
         }

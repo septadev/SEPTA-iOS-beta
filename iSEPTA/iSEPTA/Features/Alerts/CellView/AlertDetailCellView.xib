@@ -78,6 +78,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="content" destination="Yof-w1-0Jw" id="rc8-hS-Edx"/>
+                <outlet property="pinkViewHeight" destination="E7C-6Z-Gsi" id="zS4-s0-1jj"/>
                 <outlet property="pinkWrapperView" destination="bEc-zl-79l" id="LcI-zc-YFn"/>
                 <outlet property="shadowView" destination="Bqq-hf-gB7" id="b5U-ms-qRT"/>
                 <outlet property="textView" destination="gAs-7Q-4TI" id="lJt-lH-Z0Z"/>
