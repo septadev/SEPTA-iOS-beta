@@ -39,7 +39,9 @@ struct AlertReducer {
                           scheduleState: scheduleState,
                           lastUpdated: state.lastUpdated,
                           alertDetails: state.alertDetails,
-                          genericAlertDetails: state.genericAlertDetails)
+                          genericAlertDetails: state.genericAlertDetails,
+                          appAlertDetails: state.appAlertDetails,
+                          modalAlertsDisplayed: state.modalAlertsDisplayed)
     }
 
     static func reduceAlertActions(action: AlertAction,
