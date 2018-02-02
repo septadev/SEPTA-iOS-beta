@@ -21,7 +21,9 @@
 	<key>appAlertName</key>
 	<string>APP</string>
 	<key>genericAlertEnvironment</key>
-	<string>test</string>
+	<string>prod</string>
+	<key>genericAlertEnvironment Desc</key>
+	<string>should be either &apos;prod&apos; or &apos;test&apos;</string>
 	<key>genericAlertTestHost</key>
 	<string>https://apitest.septa.org</string>
 	<key>genericAlertTestPath</key>
