@@ -93,6 +93,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
 
     func alertState_ModalAlertsDisplayedUpdated(modalAlertsDisplayed: Bool) {
         let alertState = store.state.alertState
+        guard store.state.databaseState == .loaded else { return }
 
         if alertState.hasGenericAlerts && alertState.hasAppAlerts && !modalAlertsDisplayed {
             guard let genericMessage = AlertDetailsViewModel.renderMessage(alertDetails: alertState.genericAlertDetails, filter: { $0.message }),
