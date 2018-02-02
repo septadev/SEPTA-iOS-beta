@@ -1021,7 +1021,7 @@
 		58C7E1551F7AC3C000C133C5 /* VehicleLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleLocation.swift; sourceTree = "<group>"; };
 		58C9D3001F703735008FDE40 /* LoggingMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingMiddleware.swift; sourceTree = "<group>"; };
 		58CBEE861F953B5A00F26A15 /* FavoriteState_NextToArriveFavoriteWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteState_NextToArriveFavoriteWatcher.swift; sourceTree = "<group>"; };
-		58D9C3F01F3335BB002BE2E8 /* SEPTA Beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SEPTA Beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		58D9C3F01F3335BB002BE2E8 /* SEPTA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SEPTA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D9C4071F3335BB002BE2E8 /* iSEPTATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iSEPTATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D9C40D1F3335BB002BE2E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58DB04A41F558DD0005CC850 /* SearchRoutesModalHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRoutesModalHeaderViewController.swift; sourceTree = "<group>"; };
@@ -2196,7 +2196,7 @@
 		58D9C3F11F3335BB002BE2E8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				58D9C3F01F3335BB002BE2E8 /* SEPTA Beta.app */,
+				58D9C3F01F3335BB002BE2E8 /* SEPTA.app */,
 				58D9C4071F3335BB002BE2E8 /* iSEPTATests.xctest */,
 			);
 			name = Products;
@@ -2756,7 +2756,7 @@
 			);
 			name = iSEPTA;
 			productName = iSEPTA;
-			productReference = 58D9C3F01F3335BB002BE2E8 /* SEPTA Beta.app */;
+			productReference = 58D9C3F01F3335BB002BE2E8 /* SEPTA.app */;
 			productType = "com.apple.product-type.application";
 		};
 		58D9C4061F3335BB002BE2E8 /* iSEPTATests */ = {
@@ -3678,7 +3678,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
 				PRODUCT_MODULE_NAME = Septa;
-				PRODUCT_NAME = "SEPTA Beta";
+				PRODUCT_NAME = SEPTA;
 				PROVISIONING_PROFILE = "4bcfbc4c-7a3e-41dc-9d59-0258196ee678";
 				PROVISIONING_PROFILE_SPECIFIER = CapTechBetaTesting;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -3710,7 +3710,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
 				PRODUCT_MODULE_NAME = Septa;
-				PRODUCT_NAME = "SEPTA Beta";
+				PRODUCT_NAME = SEPTA;
 				PROVISIONING_PROFILE = "e8f99a1f-7b28-4307-b225-0aab2947e61a";
 				PROVISIONING_PROFILE_SPECIFIER = CapTechBetaTesting;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
