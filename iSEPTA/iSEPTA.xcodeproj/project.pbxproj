@@ -1286,13 +1286,6 @@
 			path = Info;
 			sourceTree = "<group>";
 		};
-		581804C21F3F8DE5002184E3 /* Navigation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Navigation;
-			sourceTree = "<group>";
-		};
 		58195FEA1F3FA05D0053B3D3 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1887,7 +1880,6 @@
 		588F28031F39E2D600D62425 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				581804C21F3F8DE5002184E3 /* Navigation */,
 				5867463E1F35D483000F0D32 /* RoutesViewModelTests.swift */,
 				5867464E1F35D483000F0D32 /* SelectStopsViewModelTests.swift */,
 			);
