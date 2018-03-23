@@ -2782,7 +2782,7 @@
 					58D9C3EF1F3335BB002BE2E8 = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					58D9C4061F3335BB002BE2E8 = {
 						CreatedOnToolsVersion = 9.0;
@@ -3653,8 +3653,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				ENABLE_BITCODE = NO;
@@ -3668,11 +3668,11 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA.beta;
+				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
 				PRODUCT_MODULE_NAME = Septa;
 				PRODUCT_NAME = SEPTA;
-				PROVISIONING_PROFILE = "0f65dc47-125a-4833-be21-7df5dd853b80";
-				PROVISIONING_PROFILE_SPECIFIER = CapTechBetaTesting;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3686,8 +3686,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3700,11 +3700,11 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA.beta;
+				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
 				PRODUCT_MODULE_NAME = Septa;
 				PRODUCT_NAME = SEPTA;
-				PROVISIONING_PROFILE = "e8f99a1f-7b28-4307-b225-0aab2947e61a";
-				PROVISIONING_PROFILE_SPECIFIER = CapTechBetaTesting;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
