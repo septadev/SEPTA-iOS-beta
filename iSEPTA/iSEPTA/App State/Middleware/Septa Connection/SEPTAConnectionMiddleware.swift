@@ -10,7 +10,7 @@ import Foundation
 import ReSwift
 import UIKit
 
-let septaConnectionMiddleware: Middleware<Any> = { _, _ in { next in
+let septaConnectionMiddleware: Middleware<AppState> = { _, _ in { next in
     return { action in
         if let action = action as? SeptaAction {
             if let action = action as? SeptaConnectionAction {

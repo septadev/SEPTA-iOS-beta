@@ -9,7 +9,7 @@
 import Foundation
 import ReSwift
 
-let nextToArriveMiddleware: Middleware<Any> = { _, _ in { next in
+let nextToArriveMiddleware: Middleware<AppState> = { _, _ in { next in
     return { action in
         if let action = action as? NextToArriveMiddlewareAction {
             NextToArriveMiddleware.generateActions(action: action)

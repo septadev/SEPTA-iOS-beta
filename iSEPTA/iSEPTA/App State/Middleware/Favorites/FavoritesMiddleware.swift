@@ -9,7 +9,7 @@
 import Foundation
 import ReSwift
 
-let favoritesMiddleware: Middleware<Any> = { _, _ in { next in
+let favoritesMiddleware: Middleware<AppState> = { _, _ in { next in
     return { action in
         if let action = action as? SeptaAction {
             if let action = action as? FavoritesMiddlewareAction {

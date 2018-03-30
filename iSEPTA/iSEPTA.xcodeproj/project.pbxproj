@@ -543,6 +543,11 @@
 		67A3857E1F7D7664002E01E0 /* Startup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67A3857D1F7D7664002E01E0 /* Startup.storyboard */; };
 		67A385801F7D7690002E01E0 /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A3857F1F7D7690002E01E0 /* StartupViewController.swift */; };
 		67A65BFC1F5AEBB20068428E /* NextToArriveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A65BFB1F5AEBB20068428E /* NextToArriveButton.swift */; };
+		67AD43FC206ECE9B0046531C /* 96.kml in Resources */ = {isa = PBXBuildFile; fileRef = 67AD43F5206ECE9A0046531C /* 96.kml */; };
+		67AD43FD206ECE9B0046531C /* 73.kml in Resources */ = {isa = PBXBuildFile; fileRef = 67AD43F8206ECE9B0046531C /* 73.kml */; };
+		67AD43FE206ECE9B0046531C /* 11.kml in Resources */ = {isa = PBXBuildFile; fileRef = 67AD43F9206ECE9B0046531C /* 11.kml */; };
+		67AD43FF206ECE9B0046531C /* 36b.kml in Resources */ = {isa = PBXBuildFile; fileRef = 67AD43FA206ECE9B0046531C /* 36b.kml */; };
+		67AD4400206ECE9B0046531C /* 66.kml in Resources */ = {isa = PBXBuildFile; fileRef = 67AD43FB206ECE9B0046531C /* 66.kml */; };
 		67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B511801F499E8F000E3065 /* ButtonViewCell.swift */; };
 		67BC3F8D1F66AD4E001F9FE3 /* NoConnectionSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BC3F8C1F66AD4E001F9FE3 /* NoConnectionSectionHeader.swift */; };
 		67C567271F59695900FF6203 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C567261F59695900FF6203 /* Favorite.swift */; };
@@ -1208,6 +1213,11 @@
 		67A3857D1F7D7664002E01E0 /* Startup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Startup.storyboard; sourceTree = "<group>"; };
 		67A3857F1F7D7690002E01E0 /* StartupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
 		67A65BFB1F5AEBB20068428E /* NextToArriveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveButton.swift; sourceTree = "<group>"; };
+		67AD43F5206ECE9A0046531C /* 96.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 96.kml; path = "../../../../../../../../Library/Group Containers/2E337YPCZY.airmail/Library/Application Support/it.bloop.airmail2/Airmail/General/Tmp/newKMLs 2/96.kml"; sourceTree = "<group>"; };
+		67AD43F8206ECE9B0046531C /* 73.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 73.kml; path = "../../../../../../../../Library/Group Containers/2E337YPCZY.airmail/Library/Application Support/it.bloop.airmail2/Airmail/General/Tmp/newKMLs 2/73.kml"; sourceTree = "<group>"; };
+		67AD43F9206ECE9B0046531C /* 11.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 11.kml; path = "../../../../../../../../Library/Group Containers/2E337YPCZY.airmail/Library/Application Support/it.bloop.airmail2/Airmail/General/Tmp/newKMLs 2/11.kml"; sourceTree = "<group>"; };
+		67AD43FA206ECE9B0046531C /* 36b.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 36b.kml; sourceTree = "<group>"; };
+		67AD43FB206ECE9B0046531C /* 66.kml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 66.kml; path = "../../../../../../../../Library/Group Containers/2E337YPCZY.airmail/Library/Application Support/it.bloop.airmail2/Airmail/General/Tmp/newKMLs 2/66.kml"; sourceTree = "<group>"; };
 		67B511801F499E8F000E3065 /* ButtonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewCell.swift; sourceTree = "<group>"; };
 		67BC3F8C1F66AD4E001F9FE3 /* NoConnectionSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionSectionHeader.swift; sourceTree = "<group>"; };
 		67C567261F59695900FF6203 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
@@ -1934,6 +1944,11 @@
 		58B277901F62AAD500663507 /* kml */ = {
 			isa = PBXGroup;
 			children = (
+				67AD43F9206ECE9B0046531C /* 11.kml */,
+				67AD43FA206ECE9B0046531C /* 36b.kml */,
+				67AD43FB206ECE9B0046531C /* 66.kml */,
+				67AD43F8206ECE9B0046531C /* 73.kml */,
+				67AD43F5206ECE9A0046531C /* 96.kml */,
 				58B277911F62AAD500663507 /* 1.kml */,
 				58B277921F62AAD500663507 /* 10.kml */,
 				58B277931F62AAD500663507 /* 101.kml */,
@@ -2879,6 +2894,7 @@
 				582F4EC21F33B1120062A546 /* fares.storyboard in Resources */,
 				58B2786D1F62AAD500663507 /* 34.kml in Resources */,
 				58B278671F62AAD500663507 /* 30.kml in Resources */,
+				67AD43FD206ECE9B0046531C /* 73.kml in Resources */,
 				58E33F241F61615900C74B7C /* network.plist in Resources */,
 				58B278421F62AAD500663507 /* 124.kml in Resources */,
 				58B2784E1F62AAD500663507 /* 14.kml in Resources */,
@@ -2893,6 +2909,7 @@
 				58B2789F1F62AAD500663507 /* 92.kml in Resources */,
 				58B2788F1F62AAD500663507 /* 68.kml in Resources */,
 				58B2787A1F62AAD500663507 /* 47.kml in Resources */,
+				67AD43FF206ECE9B0046531C /* 36b.kml in Resources */,
 				58B2783A1F62AAD500663507 /* 114.kml in Resources */,
 				58B278B21F62AAD500663507 /* L.kml in Resources */,
 				676B7D9F1F7D189E0052F016 /* more.storyboard in Resources */,
@@ -2921,6 +2938,7 @@
 				58B2784F1F62AAD500663507 /* 15.kml in Resources */,
 				58B278761F62AAD500663507 /* 43.kml in Resources */,
 				58B2786C1F62AAD500663507 /* 33.kml in Resources */,
+				67AD43FC206ECE9B0046531C /* 96.kml in Resources */,
 				58B2783E1F62AAD500663507 /* 119.kml in Resources */,
 				58B278A71F62AAD500663507 /* AIR.kml in Resources */,
 				58B278801F62AAD500663507 /* 53.kml in Resources */,
@@ -2980,6 +2998,7 @@
 				58B278561F62AAD500663507 /* 19.kml in Resources */,
 				589A919F1F907052009B49E0 /* TripDetailItemView.xib in Resources */,
 				58B2785D1F62AAD500663507 /* 21.kml in Resources */,
+				67AD43FE206ECE9B0046531C /* 11.kml in Resources */,
 				58B2785F1F62AAD500663507 /* 23.kml in Resources */,
 				582F4EC31F33B1120062A546 /* favorites.storyboard in Resources */,
 				58B278551F62AAD500663507 /* 18.kml in Resources */,
@@ -3010,6 +3029,7 @@
 				58B278B71F62AAD500663507 /* MFO.kml in Resources */,
 				58B278461F62AAD500663507 /* 128.kml in Resources */,
 				58B2783D1F62AAD500663507 /* 118.kml in Resources */,
+				67AD4400206ECE9B0046531C /* 66.kml in Resources */,
 				58B278A81F62AAD500663507 /* BSL.kml in Resources */,
 				58B2786A1F62AAD500663507 /* 311.kml in Resources */,
 				58B278C01F62AAD500663507 /* WIL.kml in Resources */,

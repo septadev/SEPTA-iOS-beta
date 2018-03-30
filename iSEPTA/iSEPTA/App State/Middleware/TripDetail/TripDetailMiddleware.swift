@@ -9,7 +9,7 @@
 import Foundation
 import ReSwift
 
-let tripDetailMiddleware: Middleware<Any> = { _, _ in { next in
+let tripDetailMiddleware: Middleware<AppState> = { _, _ in { next in
     return { action in
         if let action = action as? SeptaAction {
             if let action = action as? TripDetailMiddlewareAction {

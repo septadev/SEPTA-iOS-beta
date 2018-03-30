@@ -10,7 +10,7 @@ import Foundation
 import ReSwift
 import Crashlytics
 
-let loggingMiddleware: Middleware<Any> = { _, _ in { next in
+let loggingMiddleware: Middleware<AppState> = { _, _ in { next in
     return { action in
         if let action = action as? SeptaAction {
             if let action = action as? NavigationAction {

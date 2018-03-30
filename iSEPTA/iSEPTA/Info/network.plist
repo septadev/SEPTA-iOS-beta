@@ -7,11 +7,11 @@
 	<key>crashlytics1</key>
 	<string>bc2dd85ee4bc4580ad7a7e2819d8402ff8595c61</string>
 	<key>databaseVersion</key>
-	<integer>22</integer>
+	<integer>23</integer>
 	<key>databaseChange</key>
-	<string>March 22, 2018 Schedule Update</string>
+	<string>March 30, 2018 Schedule Update</string>
 	<key>databaseUpdateDate</key>
-	<date>2018-03-22T11:50:46Z</date>
+	<date>2018-03-30T20:01:54Z</date>
 	<key>url</key>
 	<string>https://vnjb5kvq2b.execute-api.us-east-1.amazonaws.com/prod</string>
 	<key>apiKey</key>
