@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+    <Document>
+        <name>36.kml</name>
+        <Schema name="rt1_schema" id="rt1_schema">
+            <SimpleField type="int" name="FID"><displayName>FID</displayName>
+            </SimpleField>
+            <SimpleField type="int" name="ET_ID"><displayName>ET_ID</displayName>
+            </SimpleField>
+            <SimpleField type="string" name="LINE"><displayName>LINE</displayName>
+            </SimpleField>
+            <SimpleField type="double" name="route_id"><displayName>route_id</displayName>
+            </SimpleField>
+            <SimpleField type="string" name="FIRST_ro_2"><displayName>FIRST_ro_2</displayName>
+            </SimpleField>
+            <SimpleField type="double" name="FIRST_ro_1"><displayName>FIRST_ro_1</displayName>
+            </SimpleField>
+        </Schema>
+        <Style id="rt1">
+            <IconStyle>
+                <color>bfffffff</color>
+                <scale>0.8</scale>
+                <Icon>
+                    <href>http://maps.google.com/mapfiles/kml/shapes/info-i.png</href>
+                </Icon>
+            </IconStyle>
+            <LineStyle>
+                <color>ff00078c</color>
+            </LineStyle>
+        </Style>
+
 <Placemark>
 	<name>120</name>
 	<Style>
@@ -121,4 +150,5 @@
 		</LineString>
 	</MultiGeometry>
 </Placemark>
+</Document>
 </kml>
