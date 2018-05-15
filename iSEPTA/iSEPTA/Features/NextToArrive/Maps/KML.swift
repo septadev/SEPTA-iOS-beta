@@ -234,9 +234,9 @@ open class KMLPolyStyle: KMLColorStyleGroup, KMLApplyStyle {
         for child: AEXMLElement in element.children {
             switch child.name {
             case "fill":
-                fill = child.bool!
+                fill = child.bool ?? true
             case "outline":
-                outline = child.bool!
+                outline = child.bool ?? true
             default:
                 break
             }
