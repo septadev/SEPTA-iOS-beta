@@ -1,0 +1,148 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "BaseCommand"
+provides-nominal:
+- "13SeptaSchedule11BaseCommandC"
+provides-member:
+- ["13SeptaSchedule11BaseCommandC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "AssignmentPrecedence"
+- "BaseCommand"
+- "Connection"
+- !private "DispatchQueue"
+- "Error"
+- !private "SQLCommandError"
+- !private "SQLCommandTemplate"
+- !private "SQLConnection"
+- "SQLQueryProtocol"
+- "Statement"
+- "String"
+- "Void"
+- !private "print"
+depends-member:
+- ["13SeptaSchedule11BaseCommandC", "Connection"]
+- !private ["13SeptaSchedule11BaseCommandC", "DispatchQueue"]
+- ["13SeptaSchedule11BaseCommandC", "Error"]
+- !private ["13SeptaSchedule11BaseCommandC", "SQLCommandError"]
+- !private ["13SeptaSchedule11BaseCommandC", "SQLCommandTemplate"]
+- !private ["13SeptaSchedule11BaseCommandC", "SQLConnection"]
+- ["13SeptaSchedule11BaseCommandC", "SQLQueryProtocol"]
+- ["13SeptaSchedule11BaseCommandC", "Statement"]
+- ["13SeptaSchedule11BaseCommandC", "String"]
+- ["13SeptaSchedule11BaseCommandC", "Void"]
+- ["13SeptaSchedule11BaseCommandC", "deinit"]
+- ["13SeptaSchedule11BaseCommandC", "getCommandString"]
+- ["13SeptaSchedule11BaseCommandC", "getConnection"]
+- ["13SeptaSchedule11BaseCommandC", "init"]
+- !private ["13SeptaSchedule11BaseCommandC", "print"]
+- ["13SeptaSchedule11BaseCommandC", "retrieveResults"]
+- !private ["s7CVarArgP", "async"]
+- !private ["s7CVarArgP", "global"]
+- !private ["s7CVarArgP", "main"]
+- !private ["6SQLite10ConnectionC", "prepare"]
+- !private ["s28CustomDebugStringConvertibleP", "async"]
+- !private ["s28CustomDebugStringConvertibleP", "global"]
+- !private ["s28CustomDebugStringConvertibleP", "main"]
+- !private ["s23CustomStringConvertibleP", "async"]
+- !private ["s23CustomStringConvertibleP", "global"]
+- !private ["s23CustomStringConvertibleP", "main"]
+- !private ["s23CustomStringConvertibleP", "prepare"]
+- !private ["So14DispatchObjectC", "async"]
+- !private ["So14DispatchObjectC", "global"]
+- !private ["So14DispatchObjectC", "main"]
+- !private ["So13DispatchQueueC", "async"]
+- !private ["So13DispatchQueueC", "global"]
+- !private ["So13DispatchQueueC", "main"]
+- !private ["s9EquatableP", "async"]
+- !private ["s9EquatableP", "global"]
+- !private ["s9EquatableP", "main"]
+- !private ["s9EquatableP", "noCommand"]
+- !private ["s9EquatableP", "noConnection"]
+- !private ["s9EquatableP", "userInitiated"]
+- !private ["s5ErrorP", "noCommand"]
+- !private ["s5ErrorP", "noConnection"]
+- !private ["s8HashableP", "async"]
+- !private ["s8HashableP", "global"]
+- !private ["s8HashableP", "main"]
+- !private ["s8HashableP", "noCommand"]
+- !private ["s8HashableP", "noConnection"]
+- !private ["s8HashableP", "userInitiated"]
+- !private ["So8NSObjectC", "async"]
+- !private ["So8NSObjectC", "global"]
+- !private ["So8NSObjectC", "main"]
+- !private ["So16NSObjectProtocolP", "async"]
+- !private ["So16NSObjectProtocolP", "global"]
+- !private ["So16NSObjectProtocolP", "main"]
+- !private ["So9OS_objectC", "async"]
+- !private ["So9OS_objectC", "global"]
+- !private ["So9OS_objectC", "main"]
+- !private ["8Dispatch0A3QoSV0B6SClassO", "userInitiated"]
+- !private ["13SeptaSchedule15SQLCommandErrorO", "deinit"]
+- !private ["13SeptaSchedule15SQLCommandErrorO", "noCommand"]
+- !private ["13SeptaSchedule15SQLCommandErrorO", "noConnection"]
+- !private ["13SeptaSchedule18SQLCommandTemplateC", "commandString"]
+- !private ["13SeptaSchedule18SQLCommandTemplateC", "init"]
+- !private ["13SeptaSchedule13SQLConnectionC", "sqlConnection"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "async"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "global"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "main"]
+depends-nominal:
+- "13SeptaSchedule11BaseCommandC"
+- !private "s7CVarArgP"
+- !private "6SQLite10ConnectionC"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s23CustomStringConvertibleP"
+- !private "So14DispatchObjectC"
+- !private "So13DispatchQueueC"
+- !private "s9EquatableP"
+- !private "s5ErrorP"
+- !private "s8HashableP"
+- !private "So8NSObjectC"
+- !private "So16NSObjectProtocolP"
+- !private "So9OS_objectC"
+- !private "8Dispatch0A3QoSV0B6SClassO"
+- !private "13SeptaSchedule15SQLCommandErrorO"
+- !private "13SeptaSchedule18SQLCommandTemplateC"
+- !private "13SeptaSchedule13SQLConnectionC"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.apinotesc"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Modules/SQLite.swiftmodule/arm64.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/Zip.framework/Modules/Zip.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/QuartzCore.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Metal.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/SwiftOnoneSupport.swiftmodule"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Headers/sqlite3.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/SeptaSchedule/SeptaSchedule.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Headers/SQLite.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Headers/SQLite-Bridging.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/Zip.framework/Headers/Zip.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Headers/SQLite-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/Zip.framework/Headers/Zip-Swift.h"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/Build/Intermediates.noindex/SeptaSchedule.build/Release-iphoneos/SeptaSchedule.build/unextended-module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/Zip/Zip/minizip/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/SQLite.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/../Carthage/Build/iOS/Zip.framework/Modules/module.modulemap"
+- "/Users/mbroski/Code/Septa/Septa2/Carthage/Checkouts/SQLite.swift/CocoaPods/iphoneos/module.modulemap"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "e6c1956f9b86ebbda3169ac03afd4eed"

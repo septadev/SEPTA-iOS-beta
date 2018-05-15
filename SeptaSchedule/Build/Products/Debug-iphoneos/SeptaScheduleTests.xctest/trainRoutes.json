@@ -1,0 +1,86 @@
+[
+  {
+    "route_id": "AIR",
+    "route_short_name": "Airport Line",
+    "route_long_name": "Airport Line",
+    "dircode": "0"
+  },
+  {
+    "route_id": "CHE",
+    "route_short_name": "Chestnut Hill East Line",
+    "route_long_name": "Chestnut Hill East Line",
+    "dircode": "0"
+  },
+  {
+    "route_id": "CHW",
+    "route_short_name": "Chestnut Hill West Line",
+    "route_long_name": "Chestnut Hill West Line",
+    "dircode": "0"
+  },
+  {
+    "route_id": "LAN",
+    "route_short_name": "Lansdale/Doylestown Line",
+    "route_long_name": "Lansdale/Doylestown Line",
+    "dircode": "0"
+  },
+  {
+    "route_id": "MED",
+    "route_short_name": "Media/Elwyn Line",
+    "route_long_name": "Media/Elwyn Line",
+    "dircode": "0"
+  },
+  {
+    "route_id": "FOX",
+    "route_short_name": "Fox Chase Line",
+    "route_long_name": "Fox Chase Line",
+    "dircode": "0"
+  },
+  {
+    "route_id": "NOR",
+    "route_short_name": "Manayunk/Norristown Line",
+    "route_long_name": "Manayunk/Norristown Line",
+    "dircode": "0"
+  },
+  {
+    "route_id": "PAO",
+    "route_short_name": "Paoli/Thorndale Line",
+    "route_long_name": "Paoli/Thorndale Line",
+    "dircode": "0"
+  },
+  {
+    "route_id": "CYN",
+    "route_short_name": "Cynwyd Line",
+    "route_long_name": "Cynwyd Line",
+    "dircode": "0"
+  },
+  {
+    "route_id": "TRE",
+    "route_short_name": "Trenton Line",
+    "route_long_name": "Trenton Line",
+    "dircode": "0"
+  },
+  {
+    "route_id": "WAR",
+    "route_short_name": "Warminster Line",
+    "route_long_name": "Warminster Line",
+    "dircode": "0"
+  },
+  {
+    "route_id": "WIL",
+    "route_short_name": "Wilmington/Newark Line",
+    "route_long_name": "Wilmington/Newark Line",
+    "dircode": "0"
+  },
+  {
+    "route_id": "WTR",
+    "route_short_name": "West Trenton Line",
+    "route_long_name": "West Trenton Line",
+    "dircode": "0"
+  },
+  {
+    "route_id": "GC",
+    "route_short_name": "Glenside Combined",
+    "route_long_name": "Glenside Combined",
+    "dircode": "0"
+  }
+]

@@ -1,0 +1,1 @@
+select count(*) from stop_times_bus ST where ST

@@ -1,0 +1,6 @@
+version: "Apple Swift version 4.0 (swiftlang-900.0.63.10 clang-900.0.36)"
+options: "98ca9d9acbc7cfa6d3c2c6da08980f90"
+build_time: [1504029900, 671768000]
+inputs:
+  "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/SeptaScheduleTests/Main.swift": [1502026285, 0]
+  "/Users/mbroski/Code/Septa/Septa2/SeptaSchedule/SeptaScheduleTests/CommandTests/StopReverseCommandTest/StopReverseCommandTest.swift": [1503008274, 0]

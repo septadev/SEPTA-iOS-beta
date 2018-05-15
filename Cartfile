@@ -1,0 +1,7 @@
+github "marmelroy/Zip"
+github "stephencelis/SQLite.swift" ~> 0.11.3
+github "Alamofire/Alamofire" ~> 4.4
+github "ReSwift/ReSwift"
+github "mxcl/PromiseKit" ~> 4.4
+github "Hearst-DD/ObjectMapper" ~> 2.2
+github "tadija/AEXML"

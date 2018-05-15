@@ -1,0 +1,5 @@
+lane :beta do
+  gym(scheme: "iSEPTA",
+     
+      include_bitcode: true)
+end

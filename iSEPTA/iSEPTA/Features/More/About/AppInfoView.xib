@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AppInfoView" customModule="Septa" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="374" height="35"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="App Version:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYS-LL-CMK" userLabel="KeyLabel">
+                    <rect key="frame" x="0.0" y="9.5" width="81" height="17"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                    <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.0.0" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UrU-A8-0t2" userLabel="ValueLabel">
+                    <rect key="frame" x="83" y="9.5" width="34" height="17"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                    <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="bYS-LL-CMK" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="Acj-3a-4PD" userLabel="keyLabelCenterY"/>
+                <constraint firstItem="bYS-LL-CMK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="DGc-5w-uLn" userLabel="keyLabelLeft"/>
+                <constraint firstItem="UrU-A8-0t2" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="9.5" id="Lrx-8i-mxB"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="UrU-A8-0t2" secondAttribute="bottom" constant="8.5" id="XpN-1x-Ccl"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UrU-A8-0t2" secondAttribute="trailing" constant="10" id="dM3-Rf-nMI" userLabel="valuelabelRight"/>
+                <constraint firstItem="UrU-A8-0t2" firstAttribute="baseline" secondItem="bYS-LL-CMK" secondAttribute="baseline" id="idK-4D-kxf" userLabel="labelBaseline"/>
+                <constraint firstItem="UrU-A8-0t2" firstAttribute="leading" secondItem="bYS-LL-CMK" secondAttribute="trailing" constant="2" id="sZa-V4-Va5" userLabel="ValuelabelLeft"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="keyLabel" destination="bYS-LL-CMK" id="gY1-7i-PK0"/>
+                <outlet property="valueLabel" destination="UrU-A8-0t2" id="yJ2-Xm-h2I"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="-263.5"/>
+        </view>
+    </objects>
+</document>

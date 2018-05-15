@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TripHeaderView" customModule="Septa" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="385" height="42"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QfJ-z8-RqF" userLabel="PillView">
+                    <rect key="frame" x="0.0" y="17.5" width="16" height="7"/>
+                    <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="7" id="Ljf-09-2et"/>
+                        <constraint firstAttribute="width" constant="16" id="Mjc-u5-tdN"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="Xwp-Gl-fvT"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Paoli / Thorndale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJ1-G3-QIM" userLabel="LineName">
+                    <rect key="frame" x="21" y="0.0" width="345" height="42"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HCf-Ad-m91" userLabel="AlertView">
+                    <rect key="frame" x="371" y="14" width="14" height="14"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tlP-ui-msQ" userLabel="TempView">
+                            <rect key="frame" x="0.0" y="0.0" width="14" height="14"/>
+                            <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="14" id="KeU-xi-Gin"/>
+                                <constraint firstAttribute="height" constant="14" id="sWr-VR-F3m"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <gestureRecognizers/>
+                </stackView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="FNg-qi-ele">
+                    <rect key="frame" x="198" y="17" width="20" height="20"/>
+                </activityIndicatorView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <accessibility key="accessibilityConfiguration">
+                <bool key="isElement" value="YES"/>
+            </accessibility>
+            <constraints>
+                <constraint firstItem="HCf-Ad-m91" firstAttribute="leading" secondItem="AJ1-G3-QIM" secondAttribute="trailing" constant="5" id="EXG-ce-oEZ" userLabel="AlertViewLeft"/>
+                <constraint firstItem="HCf-Ad-m91" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="JhR-vh-0c4" userLabel="AlertViewCenterY"/>
+                <constraint firstItem="AJ1-G3-QIM" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="KHP-PT-vO3" userLabel="LineNameTop"/>
+                <constraint firstItem="QfJ-z8-RqF" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="LQf-xc-aVk" userLabel="PillViewCenterY"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HCf-Ad-m91" secondAttribute="trailing" id="VMH-TM-XMr" userLabel="AlertViewRight"/>
+                <constraint firstItem="FNg-qi-ele" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="b42-tn-BC6"/>
+                <constraint firstItem="AJ1-G3-QIM" firstAttribute="leading" secondItem="QfJ-z8-RqF" secondAttribute="trailing" constant="5" id="jaK-st-cEa" userLabel="LineNameLeft"/>
+                <constraint firstItem="AJ1-G3-QIM" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="lPx-mv-4Pn" userLabel="LineNameCenterY"/>
+                <constraint firstItem="FNg-qi-ele" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="sRk-n9-vkH"/>
+                <constraint firstItem="QfJ-z8-RqF" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ty2-le-8Ig" userLabel="PillViewLeft"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="activityIndicator" destination="FNg-qi-ele" id="otC-6B-aFk"/>
+                <outlet property="alertStackView" destination="HCf-Ad-m91" id="ZS3-V5-uDD"/>
+                <outlet property="lineNameLabel" destination="AJ1-G3-QIM" id="vyu-Zr-nee"/>
+                <outlet property="pillView" destination="QfJ-z8-RqF" id="TYP-rz-qVw"/>
+                <outletCollection property="gestureRecognizers" destination="2EP-ra-GL2" appends="YES" id="jlH-6j-8vN"/>
+            </connections>
+            <point key="canvasLocation" x="29.5" y="-260"/>
+        </view>
+        <tapGestureRecognizer id="2EP-ra-GL2">
+            <connections>
+                <action selector="didTapAlertView:" destination="iN0-l3-epB" id="XrY-8d-yP7"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+</document>

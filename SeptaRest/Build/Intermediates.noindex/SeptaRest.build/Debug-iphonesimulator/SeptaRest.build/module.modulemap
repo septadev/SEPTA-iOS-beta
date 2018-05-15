@@ -1,0 +1,11 @@
+framework module SeptaRest {
+  umbrella header "SeptaRest.h"
+
+  export *
+  module * { export * }
+}
+
+module SeptaRest.Swift {
+    header "SeptaRest-Swift.h"
+    requires objc
+}

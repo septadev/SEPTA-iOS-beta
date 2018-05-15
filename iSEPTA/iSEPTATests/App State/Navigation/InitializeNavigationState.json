@@ -1,0 +1,54 @@
+{
+  "stateAfter": {
+    "preferenceState": {
+
+    },
+    "navigationState": {
+      "selectedTab": 2,
+      "appStackState": [
+        "schedules",
+        {
+          "viewControllers": [
+            "selectSchedules"
+          ]
+        }
+      ]
+    },
+    "scheduleState": {
+      "scheduleData": {
+
+      },
+      "scheduleRequest": {
+        "transitMode": "bus",
+        "onlyOneRouteAvailable": false
+      }
+    }
+  },
+  "stateBefore": {
+    "preferenceState": {
+
+    },
+    "navigationState": {
+      "selectedTab": 2
+    },
+    "scheduleState": {
+      "scheduleData": {
+
+      },
+      "scheduleRequest": {
+        "transitMode": "bus",
+        "onlyOneRouteAvailable": false
+      }
+    }
+  },
+  "actionName": "InitializeNavigationState",
+  "action": {
+    "navigationController": "schedules",
+    "description": "Initialing schedule nav state",
+    "navigationStackState": {
+      "viewControllers": [
+        "selectSchedules"
+      ]
+    }
+  }
+}

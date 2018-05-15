@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TripDetailItemView" customModule="Septa" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="16"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Route" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cF1-Wa-yvu" userLabel="Header">
+                    <rect key="frame" x="0.0" y="-1" width="37.5" height="17"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="1 to Parx Casino" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4sp-ty-fiB" userLabel="Value">
+                    <rect key="frame" x="216" y="0.0" width="110" height="16"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,2,3,4," textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nkb-qL-cQg" userLabel="LightLabel">
+                    <rect key="frame" x="329" y="-1" width="46" height="17"/>
+                    <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                    <color key="textColor" red="0.42745098039215684" green="0.42745098039215684" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Nkb-qL-cQg" firstAttribute="leading" secondItem="4sp-ty-fiB" secondAttribute="trailing" constant="3" id="3a8-CO-EMQ" userLabel="ValueLabelRight"/>
+                <constraint firstItem="cF1-Wa-yvu" firstAttribute="leading" relation="lessThanOrEqual" secondItem="4sp-ty-fiB" secondAttribute="trailing" constant="5" id="Ej6-Fb-TVr" userLabel="ValueRight"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="4sp-ty-fiB" secondAttribute="bottom" id="cK4-1o-cv2" userLabel="ValueBottom"/>
+                <constraint firstItem="Nkb-qL-cQg" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="dXo-Bx-Nct" userLabel="LightLabelRight"/>
+                <constraint firstItem="cF1-Wa-yvu" firstAttribute="baseline" secondItem="4sp-ty-fiB" secondAttribute="baseline" id="kou-ws-uxY" userLabel="HeaderBaseline"/>
+                <constraint firstItem="4sp-ty-fiB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="mi1-ke-WLA" userLabel="ValueTop"/>
+                <constraint firstItem="4sp-ty-fiB" firstAttribute="baseline" secondItem="Nkb-qL-cQg" secondAttribute="baseline" id="yd6-st-fM0" userLabel="LightLabelBaseline"/>
+                <constraint firstItem="cF1-Wa-yvu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="z8x-kI-apW" userLabel="HeaderLeading"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="headerLabel" destination="cF1-Wa-yvu" id="keH-ax-AvB"/>
+                <outlet property="lightLabel" destination="Nkb-qL-cQg" id="IZV-dE-8Ng"/>
+                <outlet property="valueLabel" destination="4sp-ty-fiB" id="Wxq-gi-yBN"/>
+            </connections>
+        </view>
+    </objects>
+</document>

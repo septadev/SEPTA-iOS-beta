@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GenericAlertDetailCellView" customModule="Septa" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bqq-hf-gB7" userLabel="ShadowView" customClass="RoundedSurroundShadowedCellView" customModule="Septa" customModuleProvider="target">
+                    <rect key="frame" x="5" y="5" width="365" height="657"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <accessibility key="accessibilityConfiguration" identifier="ShadowView"/>
+                    <viewLayoutGuide key="safeArea" id="TKA-i7-0FX"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yof-w1-0Jw" userLabel="Content">
+                    <rect key="frame" x="5" y="25" width="365" height="637"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bEc-zl-79l" userLabel="PinkWrapperView">
+                            <rect key="frame" x="0.0" y="0.0" width="365" height="40"/>
+                            <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <accessibility key="accessibilityConfiguration" identifier="PinkView"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="E7C-6Z-Gsi" userLabel="PinkViewHeight"/>
+                            </constraints>
+                        </view>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gAs-7Q-4TI">
+                            <rect key="frame" x="0.0" y="40" width="365" height="597"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" priority="999" constant="497.5" id="oT7-P7-0zl" userLabel="TextViewHeight"/>
+                            </constraints>
+                            <attributedString key="attributedText">
+                                <fragment content="Lorem ipsum dolor sit er elit lamet, ">
+                                    <attributes>
+                                        <font key="NSFont" metaFont="system" size="14"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <accessibility key="accessibilityConfiguration" identifier="ContentView"/>
+                    <constraints>
+                        <constraint firstItem="gAs-7Q-4TI" firstAttribute="top" secondItem="bEc-zl-79l" secondAttribute="bottom" id="6XO-y5-oqf" userLabel="TextViewTop"/>
+                        <constraint firstItem="6Ps-zi-y4F" firstAttribute="bottom" secondItem="gAs-7Q-4TI" secondAttribute="bottom" id="Hf0-Q9-p3Z" userLabel="TextViewBottom"/>
+                        <constraint firstItem="bEc-zl-79l" firstAttribute="leading" secondItem="Yof-w1-0Jw" secondAttribute="leading" id="XdD-M6-WrH" userLabel="PinkViewLeft"/>
+                        <constraint firstAttribute="trailing" secondItem="bEc-zl-79l" secondAttribute="trailing" id="ZhK-db-TQz" userLabel="PinkViewright"/>
+                        <constraint firstItem="bEc-zl-79l" firstAttribute="top" secondItem="Yof-w1-0Jw" secondAttribute="top" id="gpK-ae-TFS" userLabel="PinkViewTop"/>
+                        <constraint firstItem="6Ps-zi-y4F" firstAttribute="trailing" secondItem="gAs-7Q-4TI" secondAttribute="trailing" id="ngU-nc-m7r" userLabel="TextViewRight"/>
+                        <constraint firstItem="gAs-7Q-4TI" firstAttribute="leading" secondItem="6Ps-zi-y4F" secondAttribute="leading" id="rnK-4u-ZK6" userLabel="TextViewLeft"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="6Ps-zi-y4F"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Bqq-hf-gB7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="38A-C1-KFg" userLabel="ShadowViewLeft"/>
+                <constraint firstAttribute="trailing" secondItem="Bqq-hf-gB7" secondAttribute="trailing" constant="5" id="6IB-bQ-h4r" userLabel="ShadowViewRight"/>
+                <constraint firstItem="Yof-w1-0Jw" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="XuV-9u-k0U" userLabel="ContentTop"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Yof-w1-0Jw" secondAttribute="trailing" constant="5" id="YK7-SB-n8o" userLabel="ContentRight"/>
+                <constraint firstItem="Yof-w1-0Jw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="aGT-5X-Pfb" userLabel="ContentLeft"/>
+                <constraint firstAttribute="bottom" secondItem="Bqq-hf-gB7" secondAttribute="bottom" constant="5" id="bxA-1l-O9N" userLabel="ShadowViewBottom"/>
+                <constraint firstItem="Bqq-hf-gB7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="cDb-lU-gJt" userLabel="ShadowViewTop"/>
+                <constraint firstAttribute="bottom" secondItem="Yof-w1-0Jw" secondAttribute="bottom" constant="5" id="k4A-vw-dyP" userLabel="ContentBottom"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="content" destination="Yof-w1-0Jw" id="rc8-hS-Edx"/>
+                <outlet property="pinkViewHeight" destination="E7C-6Z-Gsi" id="hgK-g8-SDu"/>
+                <outlet property="pinkWrapperView" destination="bEc-zl-79l" id="LcI-zc-YFn"/>
+                <outlet property="shadowView" destination="Bqq-hf-gB7" id="b5U-ms-qRT"/>
+                <outlet property="textView" destination="gAs-7Q-4TI" id="lJt-lH-Z0Z"/>
+                <outlet property="textViewHeightContraints" destination="oT7-P7-0zl" id="TPw-gx-WeF"/>
+            </connections>
+            <point key="canvasLocation" x="14" y="83"/>
+        </view>
+    </objects>
+</document>

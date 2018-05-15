@@ -1,0 +1,303 @@
+
+[
+  {
+    "stopId": 90004,
+    "stopName": "30th Street Station",
+    "stopLatitude": 39.9566667,
+    "stopLongitude": -75.1816667,
+    "wheelchairBoarding": 1,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 1
+  },
+  {
+    "stopId": 90005,
+    "stopName": "Suburban Station",
+    "stopLatitude": 39.9538889,
+    "stopLongitude": -75.1677778,
+    "wheelchairBoarding": 1,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 1
+  },
+  {
+    "stopId": 90006,
+    "stopName": "Jefferson Station",
+    "stopLatitude": 39.9525,
+    "stopLongitude": -75.1580556,
+    "wheelchairBoarding": 1,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 1
+  },
+  {
+    "stopId": 90007,
+    "stopName": "Temple University",
+    "stopLatitude": 39.9813889,
+    "stopLongitude": -75.1494444,
+    "wheelchairBoarding": 1,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 1
+  },
+  {
+    "stopId": 90009,
+    "stopName": "Wayne Junction",
+    "stopLatitude": 40.0222222,
+    "stopLongitude": -75.16,
+    "wheelchairBoarding": 0,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 0
+  },
+  {
+    "stopId": 90701,
+    "stopName": "Trenton",
+    "stopLatitude": 40.2177778,
+    "stopLongitude": -74.755,
+    "wheelchairBoarding": 1,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 0
+  },
+  {
+    "stopId": 90702,
+    "stopName": "Levittown-Tullytown",
+    "stopLatitude": 40.1402778,
+    "stopLongitude": -74.8169444,
+    "wheelchairBoarding": 0,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 0
+  },
+  {
+    "stopId": 90703,
+    "stopName": "Bristol",
+    "stopLatitude": 40.1047222,
+    "stopLongitude": -74.8547222,
+    "wheelchairBoarding": 0,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 0
+  },
+  {
+    "stopId": 90704,
+    "stopName": "Croydon",
+    "stopLatitude": 40.0936111,
+    "stopLongitude": -74.9066667,
+    "wheelchairBoarding": 1,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 0
+  },
+  {
+    "stopId": 90706,
+    "stopName": "Cornwells Heights",
+    "stopLatitude": 40.0716667,
+    "stopLongitude": -74.9522222,
+    "wheelchairBoarding": 1,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 0
+  },
+  {
+    "stopId": 90707,
+    "stopName": "Torresdale",
+    "stopLatitude": 40.0544444,
+    "stopLongitude": -74.9844444,
+    "wheelchairBoarding": 0,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 0
+  },
+  {
+    "stopId": 90708,
+    "stopName": "Holmesburg Jct",
+    "stopLatitude": 40.0327778,
+    "stopLongitude": -75.0236111,
+    "wheelchairBoarding": 0,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 0
+  },
+  {
+    "stopId": 90709,
+    "stopName": "Tacony",
+    "stopLatitude": 40.0233333,
+    "stopLongitude": -75.0388889,
+    "wheelchairBoarding": 0,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 0
+  },
+  {
+    "stopId": 90710,
+    "stopName": "Bridesburg",
+    "stopLatitude": 40.0105556,
+    "stopLongitude": -75.0697222,
+    "wheelchairBoarding": 0,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 0
+  },
+  {
+    "stopId": 90711,
+    "stopName": "North Philadelphia Amtrak",
+    "stopLatitude": 39.9972222,
+    "stopLongitude": -75.155,
+    "wheelchairBoarding": 0,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 0
+  },
+  {
+    "stopId": 90801,
+    "stopName": "Chestnut Hill West",
+    "stopLatitude": 40.0763889,
+    "stopLongitude": -75.2083333,
+    "wheelchairBoarding": 1,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 1
+  },
+  {
+    "stopId": 90802,
+    "stopName": "Highland",
+    "stopLatitude": 40.0705556,
+    "stopLongitude": -75.2111111,
+    "wheelchairBoarding": 0,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 1
+  },
+  {
+    "stopId": 90803,
+    "stopName": "St. Martins",
+    "stopLatitude": 40.0658333,
+    "stopLongitude": -75.2044444,
+    "wheelchairBoarding": 0,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 1
+  },
+  {
+    "stopId": 90804,
+    "stopName": "Allen Lane",
+    "stopLatitude": 40.0575,
+    "stopLongitude": -75.1947222,
+    "wheelchairBoarding": 1,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 1
+  },
+  {
+    "stopId": 90805,
+    "stopName": "Carpenter",
+    "stopLatitude": 40.0511111,
+    "stopLongitude": -75.1913889,
+    "wheelchairBoarding": 0,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 1
+  },
+  {
+    "stopId": 90806,
+    "stopName": "Upsal",
+    "stopLatitude": 40.0425,
+    "stopLongitude": -75.19,
+    "wheelchairBoarding": 0,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 1
+  },
+  {
+    "stopId": 90807,
+    "stopName": "Tulpehocken",
+    "stopLatitude": 40.0352778,
+    "stopLongitude": -75.1869444,
+    "wheelchairBoarding": 0,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 1
+  },
+  {
+    "stopId": 90808,
+    "stopName": "Chelten Avenue",
+    "stopLatitude": 40.03,
+    "stopLongitude": -75.1808333,
+    "wheelchairBoarding": 0,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 1
+  },
+  {
+    "stopId": 90809,
+    "stopName": "Queen Lane",
+    "stopLatitude": 40.0233333,
+    "stopLongitude": -75.1780556,
+    "wheelchairBoarding": 1,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 1
+  },
+  {
+    "stopId": 90810,
+    "stopName": "North Philadelphia",
+    "stopLatitude": 39.9977778,
+    "stopLongitude": -75.1563889,
+    "wheelchairBoarding": 0,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 1
+  },
+  {
+    "stopId": 90811,
+    "stopName": "Olney",
+    "stopLatitude": 40.0333333,
+    "stopLongitude": -75.1227778,
+    "wheelchairBoarding": 1,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 1
+  },
+  {
+    "stopId": 90812,
+    "stopName": "Lawndale",
+    "stopLatitude": 40.0513889,
+    "stopLongitude": -75.1030556,
+    "wheelchairBoarding": 1,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 1
+  },
+  {
+    "stopId": 90813,
+    "stopName": "Cheltenham",
+    "stopLatitude": 40.0580556,
+    "stopLongitude": -75.0927778,
+    "wheelchairBoarding": 1,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 1
+  },
+  {
+    "stopId": 90814,
+    "stopName": "Ryers",
+    "stopLatitude": 40.0641667,
+    "stopLongitude": -75.0863889,
+    "wheelchairBoarding": 1,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 1
+  },
+  {
+    "stopId": 90815,
+    "stopName": "Fox Chase",
+    "stopLatitude": 40.0763889,
+    "stopLongitude": -75.0833333,
+    "wheelchairBoarding": 1,
+    "weekdayService": 1,
+    "saturdayService": 0,
+    "sundayService": 1
+  }
+]

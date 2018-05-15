@@ -1,0 +1,22 @@
+{
+  "railHolidayMessage": "Holiday schedule is currently in effect. Use Next to Arrive to display the current holiday schedule. Or visit SEPTA online.",
+  "otherHolidayMessage": "Modified weekday schedule is currently in effect for Bus, Trolley, Subway and NHSL. Use Next to Arrive to display the current schedule. Or visit SEPTA online.",
+  "otherHolidayUrl": "http://www.septa.org/schedules/modified-mobile",
+  "otherHolidayUrlLabel": "Online: Transit Schedules",
+  "railHolidayUrl": "http://septa.org/schedules/rail/special/holidays-mobile.html",
+  "railHolidayUrlLabel": "Online: Regional Rail Schedules",
+  "SEPTAUrl": "http://www.septa.org/",
+  "SEPTAUrlLabel": "Go to Septa.org",
+  "otherHolidays": [
+    "2017-12-26",
+    "2017-12-27",
+    "2017-12-28",
+    "2017-12-29",
+    "2018-01-15",
+    "2018-02-19"
+  ],
+  "railHolidays": [
+    "2017-12-25",
+    "2018-01-01"
+  ]
+}

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IrW-ye-tbM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Septa Alerts View Controller-->
+        <scene sceneID="lgR-QS-Hwe">
+            <objects>
+                <viewController id="IrW-ye-tbM" customClass="SeptaAlertsViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dqv-Ze-ueL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ac7-UP-bkg" userLabel="AlertDetails" customClass="AlertViewGradientBackgroundView" customModule="Septa" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90W-oS-w9B">
+                                        <rect key="frame" x="15" y="7" width="66.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="xjI-lB-dNz" userLabel="AlertStackView">
+                                        <rect key="frame" x="16" y="27.5" width="42" height="20"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="nxz-We-q7L"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="oxn-NG-6op" appends="YES" id="cld-0E-Jdm"/>
+                                        </connections>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="90W-oS-w9B" firstAttribute="leading" secondItem="Ac7-UP-bkg" secondAttribute="leading" constant="15" id="6Yn-hE-yhS" userLabel="LineStatusLabelLeft"/>
+                                    <constraint firstItem="xjI-lB-dNz" firstAttribute="top" secondItem="90W-oS-w9B" secondAttribute="bottom" constant="6" id="Gka-C1-dn4" userLabel="StackViewTop"/>
+                                    <constraint firstItem="xjI-lB-dNz" firstAttribute="leading" secondItem="Ac7-UP-bkg" secondAttribute="leading" constant="15" id="OBi-fb-wNY" userLabel="StackViewLeft"/>
+                                    <constraint firstAttribute="height" constant="56" id="PUC-KD-FZr"/>
+                                    <constraint firstItem="90W-oS-w9B" firstAttribute="top" secondItem="Ac7-UP-bkg" secondAttribute="top" constant="7" id="Urt-Bl-JQe" userLabel="LineStatusLabelTop"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xjI-lB-dNz" secondAttribute="trailing" id="iLm-UI-5WY" userLabel="StackViewright"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DTJ-qF-S3e" firstAttribute="bottom" secondItem="Ac7-UP-bkg" secondAttribute="bottom" id="AKJ-Dr-5dt"/>
+                            <constraint firstItem="Ac7-UP-bkg" firstAttribute="leading" secondItem="DTJ-qF-S3e" secondAttribute="leading" id="G6m-5t-MeW"/>
+                            <constraint firstItem="Ac7-UP-bkg" firstAttribute="trailing" secondItem="DTJ-qF-S3e" secondAttribute="trailing" id="pAM-fX-JtU"/>
+                            <constraint firstItem="Ac7-UP-bkg" firstAttribute="top" secondItem="DTJ-qF-S3e" secondAttribute="top" id="umS-Uq-3Cd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DTJ-qF-S3e"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="56"/>
+                    <connections>
+                        <outlet property="alertStackView" destination="xjI-lB-dNz" id="9Sw-Ak-Fa6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a8n-2F-fpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="oxn-NG-6op">
+                    <connections>
+                        <action selector="didTapAlertView:" destination="IrW-ye-tbM" id="YL1-Mm-jBn"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="250" y="-77"/>
+        </scene>
+    </scenes>
+</document>

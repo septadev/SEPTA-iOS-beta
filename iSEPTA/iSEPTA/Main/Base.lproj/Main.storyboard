@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main Navigation Controller-->
+        <scene sceneID="yl2-sM-qoP">
+            <objects>
+                <tabBarController title="Main Navigation Controller" id="49e-Tb-3d3" customClass="MainNavigationController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBar>
+                    <connections>
+                        <outlet property="tabBar" destination="W28-zg-YXA" id="ebL-4e-7yf"/>
+                        <segue destination="cDR-Cr-lMG" kind="relationship" relationship="viewControllers" id="kx7-62-A0Y"/>
+                        <segue destination="Gxk-as-jii" kind="relationship" relationship="viewControllers" id="ldv-fL-KE5"/>
+                        <segue destination="qmq-TR-XWA" kind="relationship" relationship="viewControllers" id="zzu-XL-3gi"/>
+                        <segue destination="OXS-27-l5H" kind="relationship" relationship="viewControllers" id="3QR-K3-X6f"/>
+                        <segue destination="WtU-1P-0Ou" kind="presentation" identifier="showDatabaseLoadingModal" id="KWE-od-UAl"/>
+                        <segue destination="Xf6-Zg-AmF" kind="relationship" relationship="viewControllers" id="0DI-e4-XEu"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-703" y="-56"/>
+        </scene>
+        <!--favorites-->
+        <scene sceneID="PKQ-fu-0Re">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="favorites" storyboardName="favorites" id="Gxk-as-jii" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="F2" landscapeImage="F2" id="OKB-ex-8WC"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r7O-kb-ybw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1028" y="438"/>
+        </scene>
+        <!--nextToArrive-->
+        <scene sceneID="THr-Fu-ScB">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="nextToArrive" storyboardName="nextToArrive" id="cDR-Cr-lMG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Next To Arrive" image="NextToArrive" landscapeImage="NextToArrive" selectedImage="favoriteTabbar" id="zb7-2Z-SO8"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="31l-2Z-phW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1364" y="438"/>
+        </scene>
+        <!--Database Loading Modal View Controller-->
+        <scene sceneID="ZbO-La-h1E">
+            <objects>
+                <viewController storyboardIdentifier="thanksForWaiting" id="WtU-1P-0Ou" customClass="DatabaseLoadingModalViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wk8-nU-Nc9"/>
+                        <viewControllerLayoutGuide type="bottom" id="oqc-t5-Ukw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cLW-Ts-NC9" customClass="BlueGradientBackgroundView" customModule="Septa" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just a moment please" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSW-um-9XK" userLabel="Title">
+                                <rect key="frame" x="70.5" y="224.5" width="179.5" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4J2-WA-JPH">
+                                <rect key="frame" x="141.5" y="265.5" width="37" height="37"/>
+                                <color key="color" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please give the app a few moments to upgrade our transit database.  " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F0t-u4-3Ds" userLabel="Detail">
+                                <rect key="frame" x="80" y="322.5" width="160" height="72"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="F0t-u4-3Ds" firstAttribute="width" secondItem="cLW-Ts-NC9" secondAttribute="width" multiplier="0.5" id="9hv-H7-EJY" userLabel="DetailWidth"/>
+                            <constraint firstItem="F0t-u4-3Ds" firstAttribute="centerX" secondItem="4J2-WA-JPH" secondAttribute="centerX" id="HGz-rC-ZO5" userLabel="DetailCenterX"/>
+                            <constraint firstItem="fSW-um-9XK" firstAttribute="centerX" secondItem="cLW-Ts-NC9" secondAttribute="centerX" id="Hc0-ZG-ZV9" userLabel="TitleCenterX"/>
+                            <constraint firstItem="4J2-WA-JPH" firstAttribute="top" secondItem="fSW-um-9XK" secondAttribute="bottom" constant="20" id="JVs-wR-Gxd" userLabel="TitleTop"/>
+                            <constraint firstItem="F0t-u4-3Ds" firstAttribute="top" secondItem="4J2-WA-JPH" secondAttribute="bottom" constant="20" id="PRQ-D8-Hrk" userLabel="DetailTop"/>
+                            <constraint firstItem="4J2-WA-JPH" firstAttribute="centerX" secondItem="cLW-Ts-NC9" secondAttribute="centerX" id="sYv-Dq-Cqe" userLabel="ActivityIndicatorCenterX"/>
+                            <constraint firstItem="4J2-WA-JPH" firstAttribute="centerY" secondItem="cLW-Ts-NC9" secondAttribute="centerY" id="yAB-dv-evd" userLabel="ActivityIndicatorCenterY"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tiu-Cr-Ueb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="193" y="175"/>
+        </scene>
+        <!--more-->
+        <scene sceneID="unZ-EK-kKN">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="more" storyboardName="more" id="Xf6-Zg-AmF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="More" image="moreTabbar" selectedImage="moreTabbarSelected" id="x39-eh-bNk"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nZd-NA-CDH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-355" y="374"/>
+        </scene>
+        <!--schedules-->
+        <scene sceneID="bOK-QK-MO6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="schedules" id="OXS-27-l5H" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Schedules" id="CDM-Ka-iMA"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z76-PP-txj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-572" y="431"/>
+        </scene>
+        <!--alerts-->
+        <scene sceneID="ze7-Pw-FQa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="alerts" id="qmq-TR-XWA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="rZh-rx-vn8"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EQL-Pb-chQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-792" y="431"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="F2" width="26" height="26"/>
+        <image name="NextToArrive" width="34" height="34"/>
+        <image name="favoriteTabbar" width="22" height="20"/>
+        <image name="moreTabbar" width="20" height="17"/>
+        <image name="moreTabbarSelected" width="20" height="17"/>
+    </resources>
+</document>

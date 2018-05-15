@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteTripCell" id="3AG-3O-URg" customClass="FavoriteTripCell" customModule="Septa" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="605" height="205"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3AG-3O-URg" id="UY2-Ca-Sh5">
+                <rect key="frame" x="0.0" y="0.0" width="605" height="204.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H4L-ex-I4m" userLabel="ShadowView" customClass="RoundedSurroundShadowedCellView" customModule="Septa" customModuleProvider="target">
+                        <rect key="frame" x="5" y="10" width="595" height="200.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="200.5" placeholder="YES" id="Csg-CY-DeB"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="27g-iu-NbY" userLabel="Content">
+                        <rect key="frame" x="5" y="10" width="595" height="200.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqs-q6-yyu" userLabel="CellHeader">
+                                <rect key="frame" x="14" y="11" width="509" height="36"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="busFavorite" translatesAutoresizingMaskIntoConstraints="NO" id="NjI-te-plL">
+                                        <rect key="frame" x="0.0" y="1" width="35" height="35"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="8XJ-7E-esn"/>
+                                            <constraint firstAttribute="height" constant="35" id="Av6-4w-89b"/>
+                                        </constraints>
+                                        <string key="userLabel">
+IconView</string>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office Commute" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wF3-Zs-MQV" userLabel="TitleLabel">
+                                        <rect key="frame" x="42" y="9" width="131" height="19.5"/>
+                                        <accessibility key="accessibilityConfiguration" label="Favorite Name"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="16"/>
+                                        <color key="textColor" red="0.10588235294117647" green="0.30588235294117649" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="wF3-Zs-MQV" firstAttribute="centerY" secondItem="eqs-q6-yyu" secondAttribute="centerY" id="Nhh-Tr-FUu" userLabel="TitleLabelCenterY"/>
+                                    <constraint firstItem="wF3-Zs-MQV" firstAttribute="leading" secondItem="NjI-te-plL" secondAttribute="trailing" constant="7" id="PjB-Dm-cJX" userLabel="LabelLeft"/>
+                                    <constraint firstAttribute="bottom" secondItem="NjI-te-plL" secondAttribute="bottom" id="Z6S-sE-aV2" userLabel="IconViewBottom"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wF3-Zs-MQV" secondAttribute="trailing" constant="15" id="fdB-JE-Uu7" userLabel="LabelRight"/>
+                                    <constraint firstItem="NjI-te-plL" firstAttribute="top" secondItem="eqs-q6-yyu" secondAttribute="top" constant="1" id="mgf-wG-2aX" userLabel="IconViewTop"/>
+                                    <constraint firstItem="NjI-te-plL" firstAttribute="leading" secondItem="eqs-q6-yyu" secondAttribute="leading" id="zlF-CY-vYc" userLabel="IconViewLeft"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="8j1-4I-RG0">
+                                <rect key="frame" x="0.0" y="57" width="595" height="136.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zzC-Kp-dJV" userLabel="TripView">
+                                        <rect key="frame" x="0.0" y="0.0" width="595" height="33.5"/>
+                                        <color key="backgroundColor" red="0.36901968439999999" green="0.62583249809999997" blue="0.27395910649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" label="Trip Details">
+                                            <accessibilityTraits key="traits" staticText="YES"/>
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="33.5" id="u4k-LI-jRw"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w4O-yn-vnR">
+                                        <rect key="frame" x="0.0" y="36.5" width="595" height="100"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration" label="Upcoming Trips">
+                                            <accessibilityTraits key="traits" staticText="YES"/>
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="rSt-FY-ZKg"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.36901968442455318" green="0.62583249807357788" blue="0.27395910647073296" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ql1-55-mOK" userLabel="MoreButton" customClass="MoreButton" customModule="Septa" customModuleProvider="target">
+                                <rect key="frame" x="533" y="18" width="45" height="22"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" label="See Next To Arrive For This favorite">
+                                    <accessibilityTraits key="traits" button="YES"/>
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="IYz-er-4cz"/>
+                                    <constraint firstAttribute="width" constant="45" id="k7Q-eL-zOz"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="moreButtonTapped:" destination="3AG-3O-URg" eventType="touchUpInside" id="mRS-tK-Rwf"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ql1-55-mOK" secondAttribute="trailing" constant="17" id="1rh-7Z-rhS" userLabel="MoreButtonRight"/>
+                            <constraint firstItem="ql1-55-mOK" firstAttribute="leading" secondItem="eqs-q6-yyu" secondAttribute="trailing" constant="10" id="40z-jc-7CD" userLabel="CellHeaderRight"/>
+                            <constraint firstAttribute="trailing" secondItem="8j1-4I-RG0" secondAttribute="trailing" id="AUC-b9-SJN" userLabel="StackViewRight"/>
+                            <constraint firstItem="8j1-4I-RG0" firstAttribute="leading" secondItem="27g-iu-NbY" secondAttribute="leading" id="RL7-oM-BgN" userLabel="StackViewLeft"/>
+                            <constraint firstItem="eqs-q6-yyu" firstAttribute="top" secondItem="27g-iu-NbY" secondAttribute="top" constant="11" id="WNs-Jh-LJ7" userLabel="CellHeaderTop"/>
+                            <constraint firstItem="ql1-55-mOK" firstAttribute="top" secondItem="27g-iu-NbY" secondAttribute="top" constant="18" id="ayi-PV-W2K" userLabel="MoreButtonTop"/>
+                            <constraint firstAttribute="height" constant="200.5" placeholder="YES" id="dbZ-4c-EzD"/>
+                            <constraint firstAttribute="bottom" secondItem="8j1-4I-RG0" secondAttribute="bottom" priority="999" constant="10" id="eRn-i3-jGE" userLabel="StackViewBottom"/>
+                            <constraint firstItem="eqs-q6-yyu" firstAttribute="leading" secondItem="27g-iu-NbY" secondAttribute="leading" constant="14" id="hLd-f0-txB" userLabel="CellHeaderLeft"/>
+                            <constraint firstItem="8j1-4I-RG0" firstAttribute="top" secondItem="eqs-q6-yyu" secondAttribute="bottom" constant="10" id="kN9-VL-OgO" userLabel="StackViewTop"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="H4L-ex-I4m" firstAttribute="leading" secondItem="UY2-Ca-Sh5" secondAttribute="leading" constant="5" id="4KV-0R-eYc" userLabel="ShadowViewLeft"/>
+                    <constraint firstAttribute="bottom" secondItem="27g-iu-NbY" secondAttribute="bottom" constant="5" id="4fS-it-etA" userLabel="ContentBottom"/>
+                    <constraint firstAttribute="trailing" secondItem="H4L-ex-I4m" secondAttribute="trailing" constant="5" id="7mT-xz-Pgd" userLabel="ShadowViewRight"/>
+                    <constraint firstItem="H4L-ex-I4m" firstAttribute="top" secondItem="UY2-Ca-Sh5" secondAttribute="top" constant="10" id="Aq9-5D-whI" userLabel="ShadowViewTop"/>
+                    <constraint firstItem="27g-iu-NbY" firstAttribute="top" secondItem="UY2-Ca-Sh5" secondAttribute="top" constant="10" id="XnQ-vD-hXy" userLabel="ContentTop"/>
+                    <constraint firstAttribute="bottom" secondItem="H4L-ex-I4m" secondAttribute="bottom" constant="5" id="XxA-HU-bCd" userLabel="ShadViewBottom"/>
+                    <constraint firstItem="27g-iu-NbY" firstAttribute="leading" secondItem="UY2-Ca-Sh5" secondAttribute="leading" constant="5" id="mlI-U7-fcy" userLabel="ContentLeft"/>
+                    <constraint firstAttribute="trailing" secondItem="27g-iu-NbY" secondAttribute="trailing" constant="5" id="vT9-Vx-XuY" userLabel="ContentRight"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="content" destination="27g-iu-NbY" id="TcZ-lB-2XV"/>
+                <outlet property="favoriteIcon" destination="NjI-te-plL" id="bIT-rh-pev"/>
+                <outlet property="favoriteNameLabel" destination="wF3-Zs-MQV" id="aJN-cN-0UT"/>
+                <outlet property="shadowView" destination="H4L-ex-I4m" id="DV6-RE-FZp"/>
+                <outlet property="stackView" destination="8j1-4I-RG0" id="7qs-i3-eRT"/>
+                <outletCollection property="headerAccessibilityElements" destination="wF3-Zs-MQV" collectionClass="NSMutableArray" id="ihD-9b-WyG"/>
+                <outletCollection property="headerAccessibilityElements" destination="ql1-55-mOK" collectionClass="NSMutableArray" id="TBB-oi-Wox"/>
+                <outletCollection property="headerAccessibilityElements" destination="NjI-te-plL" collectionClass="NSMutableArray" id="dec-PG-lb7"/>
+            </connections>
+            <point key="canvasLocation" x="-10.5" y="-160.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="busFavorite" width="37" height="37"/>
+    </resources>
+</document>

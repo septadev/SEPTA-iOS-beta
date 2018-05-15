@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>crashlytics2</key>
+	<string>412eaf908c240c175463c362fd45421f584b44539ee8ca4ff93e57243573f805</string>
+	<key>crashlytics1</key>
+	<string>bc2dd85ee4bc4580ad7a7e2819d8402ff8595c61</string>
+	<key>databaseVersion</key>
+	<integer>25</integer>
+	<key>databaseChange</key>
+	<string>April 27, 2018 Schedule Update</string>
+	<key>databaseUpdateDate</key>
+	<date>2018-04-27T20:01:54Z</date>
+	<key>url</key>
+	<string>https://vnjb5kvq2b.execute-api.us-east-1.amazonaws.com/prod</string>
+	<key>apiKey</key>
+	<string>S0XFfcawkb54IMFnAGctQajLNUK7QxNfoi4zgaD4</string>
+	<key>genericAlertName</key>
+	<string>generic</string>
+	<key>appAlertName</key>
+	<string>APP</string>
+	<key>genericAlertEnvironment</key>
+	<string>prod</string>
+	<key>genericAlertEnvironment Desc</key>
+	<string>should be either &apos;prod&apos; or &apos;test&apos;</string>
+	<key>genericAlertTestHost</key>
+	<string>https://apitest.septa.org</string>
+	<key>genericAlertTestPath</key>
+	<string>api/Alerts/get_alert_data_test.php</string>
+</dict>
+</plist>

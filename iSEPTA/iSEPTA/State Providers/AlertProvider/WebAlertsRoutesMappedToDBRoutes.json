@@ -1,0 +1,916 @@
+{
+  "MARKET/ FRANKFORD": {
+    "rr_route_mfl": {
+      "dbRouteId": "MFL",
+      "transitModes": [
+        2
+      ]
+    },
+    "rr_route_mfo": {
+      "dbRouteId": "MFO",
+      "transitModes": [
+        0,
+        2
+      ]
+    }
+  },
+  "BUS": {
+    "bus_route_94": {
+      "dbRouteId": "94",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_37": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "37"
+    },
+    "bus_route_119": {
+      "dbRouteId": "119",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_111": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "111"
+    },
+    "bus_route_55": {
+      "dbRouteId": "55",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_40": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "40"
+    },
+    "bus_route_5": {
+      "dbRouteId": "5",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_K": {
+      "dbRouteId": "K",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_139": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "139"
+    },
+    "bus_route_109": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "109"
+    },
+    "bus_route_3": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "3"
+    },
+    "bus_route_77": {
+      "dbRouteId": "77",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_50": {
+      "dbRouteId": "50",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_103": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "103"
+    },
+    "bus_route_133": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "133"
+    },
+    "bus_route_29": {
+      "dbRouteId": "29",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_68": {
+      "dbRouteId": "68",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_24": {
+      "dbRouteId": "24",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_22": {
+      "dbRouteId": "22",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_99": {
+      "dbRouteId": "99",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_G": {
+      "dbRouteId": "G",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_95": {
+      "dbRouteId": "95",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_80": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "80"
+    },
+    "bus_route_47": {
+      "dbRouteId": "47",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_128": {
+      "dbRouteId": "128",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_J": {
+      "dbRouteId": "J",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_1": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "1"
+    },
+    "bus_route_61": {
+      "dbRouteId": "61",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_67": {
+      "dbRouteId": "67",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_39": {
+      "dbRouteId": "39",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_17": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "17"
+    },
+    "bus_route_118": {
+      "dbRouteId": "118",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_60": {
+      "dbRouteId": "60",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_112": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "112"
+    },
+    "bus_route_35": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "35"
+    },
+    "bus_route_104": {
+      "dbRouteId": "104",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_58": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "58"
+    },
+    "bus_route_XH": {
+      "dbRouteId": "XH",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_114": {
+      "dbRouteId": "114",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_54": {
+      "dbRouteId": "54",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_27": {
+      "dbRouteId": "27",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_14": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "14"
+    },
+    "bus_route_33": {
+      "dbRouteId": "33",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_48": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "48"
+    },
+    "bus_route_R": {
+      "dbRouteId": "R",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_28": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "28"
+    },
+    "bus_route_59": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "59"
+    },
+    "bus_route_53": {
+      "dbRouteId": "53",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_38": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "38"
+    },
+    "bus_route_18": {
+      "dbRouteId": "18",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_129": {
+      "dbRouteId": "129",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_96": {
+      "dbRouteId": "96",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_46": {
+      "dbRouteId": "46",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_64": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "64"
+    },
+    "bus_route_204": {
+      "dbRouteId": "204",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_21": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "21"
+    },
+    "bus_route_110": {
+      "dbRouteId": "110",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_25": {
+      "dbRouteId": "25",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_19": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "19"
+    },
+    "bus_route_127": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "127"
+    },
+    "bus_route_65": {
+      "dbRouteId": "65",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_23": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "23"
+    },
+    "bus_route_126": {
+      "dbRouteId": "126",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_62": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "62"
+    },
+    "bus_route_93": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "93"
+    },
+    "bus_route_4": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "4"
+    },
+    "bus_route_8": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "8"
+    },
+    "bus_route_9": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "9"
+    },
+    "bus_route_88": {
+      "dbRouteId": "88",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_73": {
+      "dbRouteId": "73",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_56": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "56"
+    },
+    "bus_route_130": {
+      "dbRouteId": "130",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_2": {
+      "dbRouteId": "2",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_107": {
+      "dbRouteId": "107",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_H": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "H"
+    },
+    "bus_route_120": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "120"
+    },
+    "bus_route_16": {
+      "dbRouteId": "16",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_150": {
+      "dbRouteId": "150",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_31": {
+      "dbRouteId": "31",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_206": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "206"
+    },
+    "bus_route_105": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "105"
+    },
+    "bus_route_311": {
+      "dbRouteId": "311",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_124": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "124"
+    },
+    "bus_route_108": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "108"
+    },
+    "bus_route_44": {
+      "dbRouteId": "44",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_42": {
+      "dbRouteId": "42",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_90": {
+      "dbRouteId": "90",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_57": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "57"
+    },
+    "bus_route_52": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "52"
+    },
+    "bus_route_131": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "131"
+    },
+    "bus_route_79": {
+      "dbRouteId": "79",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_12": {
+      "dbRouteId": "12",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_66": {
+      "dbRouteId": "66",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_84": {
+      "dbRouteId": "84",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_32": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "32"
+    },
+    "bus_route_205": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "205"
+    },
+    "bus_route_201": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "201"
+    },
+    "bus_route_98": {
+      "dbRouteId": "98",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_106": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "106"
+    },
+    "bus_route_310": {
+      "dbRouteId": "310",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_26": {
+      "dbRouteId": "26",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_20": {
+      "dbRouteId": "20",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_70": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "70"
+    },
+    "bus_route_47M": {
+      "dbRouteId": "47M",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_30": {
+      "dbRouteId": "30",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_97": {
+      "dbRouteId": "97",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_91": {
+      "dbRouteId": "91",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_78": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "78"
+    },
+    "bus_route_132": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "132"
+    },
+    "bus_route_75": {
+      "dbRouteId": "75",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_LUCY": {
+      "dbRouteId": "LUCY",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_7": {
+      "dbRouteId": "7",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_92": {
+      "dbRouteId": "92",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_125": {
+      "dbRouteId": "125",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_117": {
+      "dbRouteId": "117",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_6": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "6"
+    },
+    "bus_route_L": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "L"
+    },
+    "bus_route_113": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "113"
+    },
+    "bus_route_43": {
+      "dbRouteId": "43",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_115": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "115"
+    },
+    "bus_route_123": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "123"
+    },
+    "bus_route_45": {
+      "dbRouteId": "45",
+      "transitModes": [
+        0
+      ]
+    },
+    "bus_route_89": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "89"
+    }
+  },
+  "NORRISTOWN HIGH SPEED LINE": {
+    "rr_route_nhsl": {
+      "transitModes": [
+        3
+      ],
+      "dbRouteId": "NHSL"
+    }
+  },
+  "BROAD STREET LINE": {
+    "rr_route_bsl": {
+      "transitModes": [
+        2,
+        0
+      ],
+      "dbRouteId": "BSL"
+    },
+    "rr_route_bso": {
+      "transitModes": [
+        0
+      ],
+      "dbRouteId": "BSO"
+    }
+  },
+  "TROLLEY": {
+    "trolley_route_102": {
+      "transitModes": [
+        4
+      ],
+      "dbRouteId": "102"
+    },
+    "trolley_route_36": {
+      "dbRouteId": "36",
+      "transitModes": [
+        4
+      ]
+    },
+    "trolley_route_34": {
+      "dbRouteId": "34",
+      "transitModes": [
+        4
+      ]
+    },
+    "trolley_route_11": {
+      "dbRouteId": "11",
+      "transitModes": [
+        4
+      ]
+    },
+    "trolley_route_101": {
+      "dbRouteId": "101",
+      "transitModes": [
+        4
+      ]
+    },
+    "trolley_route_10": {
+      "dbRouteId": "10",
+      "transitModes": [
+        4
+      ]
+    },
+    "trolley_route_15": {
+      "dbRouteId": "15",
+      "transitModes": [
+        4
+      ]
+    },
+    "trolley_route_13": {
+      "dbRouteId": "13",
+      "transitModes": [
+        4
+      ]
+    }
+  },
+  "REGIONAL RAIL": {
+    "rr_route_med": {
+      "transitModes": [
+        1
+      ],
+      "dbRouteId": "MED"
+    },
+    "rr_route_landdoy": {
+      "dbRouteId": "LAN",
+      "transitModes": [
+        1
+      ]
+    },
+    "rr_route_fxc": {
+      "transitModes": [
+        1
+      ],
+      "dbRouteId": "FOX"
+    },
+    "rr_route_pao": {
+      "dbRouteId": "PAO",
+      "transitModes": [
+        1
+      ]
+    },
+    "rr_route_gc": {
+      "dbRouteId": "GC",
+      "transitModes": [
+        1
+      ]
+    },
+    "rr_route_chw": {
+      "dbRouteId": "CHW",
+      "transitModes": [
+        1
+      ]
+    },
+    "rr_route_wtren": {
+      "transitModes": [
+        1
+      ],
+      "dbRouteId": "WTR"
+    },
+    "rr_route_che": {
+      "transitModes": [
+        1
+      ],
+      "dbRouteId": "CHE"
+    },
+    "rr_route_warm": {
+      "transitModes": [
+        1
+      ],
+      "dbRouteId": "WAR"
+    },
+    "rr_route_nor": {
+      "transitModes": [
+        1
+      ],
+      "dbRouteId": "NOR"
+    },
+    "rr_route_apt": {
+      "dbRouteId": "AIR",
+      "transitModes": [
+        1
+      ]
+    },
+    "rr_route_trent": {
+      "transitModes": [
+        1
+      ],
+      "dbRouteId": "TRE"
+    },
+    "rr_route_cyn": {
+      "transitModes": [
+        1
+      ],
+      "dbRouteId": "CYN"
+    },
+    "rr_route_wilm": {
+      "transitModes": [
+        1
+      ],
+      "dbRouteId": "WIL"
+    }
+  }
+}

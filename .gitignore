@@ -1,28 +1,20 @@
-v#Can ignore specific files
-*.sqlite
-*.txt
-*.csv
+
 *.DS_Store
-*.pid
-*.log
-*.zip
 
-build/
-*.pbxuser
-!default.pbxuser
-*.mode1v3
-!default.mode1v3
-*.mode2v3
-!default.mode2v3
-*.perspectivev3
-!default.perspectivev3
-*.xcworkspace
-!default.xcworkspace
-xcuserdata
-profile
-*.moved-aside
-DerivedData
 
-gtfs/gitraw
-#images/
-iSEPTA/*
+**/xcuserdata/
+
+/Carthage
+/Carthage/Build/
+/iSEPTA/Build
+/Utilities/format.log
+Carthage/Checkouts/
+Carthage/
+/SeptaSchedule/SeptaScheduleTests/PreloadedDatabase/SEPTA.sqlite
+SEPTA.sqlite
+SEPTA.zip
+/iSEPTA/.idea
+/iSEPTA/iSEPTA/Info/network.plist
+/Cartfile.resolved
+/SEPTA.sublime-workspace
+/iSEPTA/DerivedData

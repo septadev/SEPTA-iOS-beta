@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5Qk-VV-jzK">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--More-->
+        <scene sceneID="k3d-rp-OWf">
+            <objects>
+                <navigationController id="5Qk-VV-jzK" customClass="MoreNavigationController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="More" image="moreTabbar" selectedImage="moreTabbarSelected" id="qNp-5f-yf9"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="bWS-Y0-eCT">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="iby-fd-pyB" kind="relationship" relationship="rootViewController" id="2qA-kd-h4z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vaf-na-7zK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-719" y="169"/>
+        </scene>
+        <!--More-->
+        <scene sceneID="d9Q-6B-2AW">
+            <objects>
+                <viewController storyboardIdentifier="moreViewController" id="iby-fd-pyB" customClass="MoreViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5XW-As-KX4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moreMain" translatesAutoresizingMaskIntoConstraints="NO" id="08v-D8-f2X">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="263"/>
+                                <color key="backgroundColor" red="0.13333333333333333" green="0.32549019607843138" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="263" id="2S0-eB-gCy"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeptaLogoTrademark" translatesAutoresizingMaskIntoConstraints="NO" id="nKY-ep-E7A">
+                                <rect key="frame" x="15" y="178" width="71" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="a9y-Ag-A1A"/>
+                                    <constraint firstAttribute="width" constant="71" id="oGA-ya-ZrE"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s1Y-2q-CwI">
+                                <rect key="frame" x="0.0" y="263" width="375" height="291"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="moreCell" rowHeight="66" id="FB1-oT-2td" customClass="MoreTableViewCell" customModule="Septa" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="66"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FB1-oT-2td" id="92J-yX-oS4">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="66"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c5f-SB-Iy4">
+                                                    <rect key="frame" x="18" y="23" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="fPL-60-IUM"/>
+                                                        <constraint firstAttribute="width" constant="20" id="rMr-x6-1fa"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fares" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97l-N9-PTa">
+                                                    <rect key="frame" x="55" y="25" width="36" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="tintColor" red="0.54901960780000003" green="0.54901960780000003" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="97l-N9-PTa" firstAttribute="leading" secondItem="92J-yX-oS4" secondAttribute="leading" constant="55" id="1Hy-6b-QPB" userLabel="MoreLabelLeft"/>
+                                                <constraint firstItem="97l-N9-PTa" firstAttribute="leading" secondItem="c5f-SB-Iy4" secondAttribute="trailing" constant="17" id="VCE-07-mrg" userLabel="ImageRight"/>
+                                                <constraint firstItem="c5f-SB-Iy4" firstAttribute="centerY" secondItem="92J-yX-oS4" secondAttribute="centerY" id="jLh-jg-AEq" userLabel="imageViewCenterY"/>
+                                                <constraint firstItem="97l-N9-PTa" firstAttribute="centerY" secondItem="92J-yX-oS4" secondAttribute="centerY" id="kcy-bg-yT7" userLabel="LabelCenterY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="tintColor" red="1" green="0.0" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="moreImageView" destination="c5f-SB-Iy4" id="tPj-cV-1Vj"/>
+                                            <outlet property="moreLabel" destination="97l-N9-PTa" id="UMV-qr-fR0"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="iby-fd-pyB" id="EkF-k9-bXP"/>
+                                    <outlet property="delegate" destination="iby-fd-pyB" id="wyy-w9-xLr"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="08v-D8-f2X" firstAttribute="leading" secondItem="ChW-pP-B9M" secondAttribute="leading" id="3hy-WC-cti" userLabel="imageLeft"/>
+                            <constraint firstItem="08v-D8-f2X" firstAttribute="bottom" secondItem="nKY-ep-E7A" secondAttribute="bottom" constant="13" id="4gJ-w5-6Kf" userLabel="LogoBottom"/>
+                            <constraint firstItem="ChW-pP-B9M" firstAttribute="trailing" secondItem="08v-D8-f2X" secondAttribute="trailing" id="Au6-dY-Ya2" userLabel="imageRight"/>
+                            <constraint firstItem="nKY-ep-E7A" firstAttribute="leading" secondItem="08v-D8-f2X" secondAttribute="leading" constant="15" id="Fg4-sI-QLt" userLabel="LogoLeft"/>
+                            <constraint firstItem="ChW-pP-B9M" firstAttribute="trailing" secondItem="s1Y-2q-CwI" secondAttribute="trailing" id="QGI-fW-3N9" userLabel="tableViewRight"/>
+                            <constraint firstItem="08v-D8-f2X" firstAttribute="top" secondItem="ChW-pP-B9M" secondAttribute="top" id="WoN-I1-MgS" userLabel="imageTop"/>
+                            <constraint firstItem="ChW-pP-B9M" firstAttribute="bottom" secondItem="s1Y-2q-CwI" secondAttribute="bottom" id="pFZ-bJ-Vpq" userLabel="TableViewbottom"/>
+                            <constraint firstItem="s1Y-2q-CwI" firstAttribute="leading" secondItem="ChW-pP-B9M" secondAttribute="leading" id="yHw-ax-llw" userLabel="TableViewLeft"/>
+                            <constraint firstItem="s1Y-2q-CwI" firstAttribute="top" secondItem="08v-D8-f2X" secondAttribute="bottom" id="z4O-lV-QOk" userLabel="TableViewtop"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ChW-pP-B9M"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="More" id="sFw-fk-YoF"/>
+                    <connections>
+                        <outlet property="imageView" destination="08v-D8-f2X" id="DV1-2b-UOd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jlS-mx-EeG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="119" y="287"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="SeptaLogoTrademark" width="154" height="150"/>
+        <image name="moreMain" width="375" height="240"/>
+        <image name="moreTabbar" width="20" height="20"/>
+        <image name="moreTabbarSelected" width="20" height="20"/>
+    </resources>
+</document>
