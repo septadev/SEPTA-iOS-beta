@@ -65,12 +65,10 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
 extension FavoritesViewModel { // table loading
 
     func numberOfRows() -> Int {
-
         return favoriteViewModels.count
     }
 
     func configureTripCell(favoriteTripCell: FavoriteTripCell, indexPath: IndexPath) {
-
         let favoriteViewModel = favoriteViewModels[indexPath.section]
         favoriteTripCell.favoriteIcon.image = favoriteViewModel.transitMode().favoritesIcon()
         favoriteTripCell.favoriteIcon.accessibilityLabel = favoriteViewModel.favorite.transitMode.favoriteName()
@@ -80,9 +78,9 @@ extension FavoritesViewModel { // table loading
         stackView.clearSubviews()
         stackView.accessibilityLabel = "Upcoming Trips"
 
-        // stackView.addArrangedSubview(headerCell.contentView)
-
-        configureTrips(favoriteViewModel: favoriteViewModel, stackView: stackView, indexPath: indexPath)
+        if !favoriteViewModel.favorite.collapsed {
+            configureTrips(favoriteViewModel: favoriteViewModel, stackView: stackView, indexPath: indexPath)
+        }
     }
 
     func configureTrips(favoriteViewModel: FavoriteNextToArriveViewModel, stackView: UIStackView, indexPath _: IndexPath) {

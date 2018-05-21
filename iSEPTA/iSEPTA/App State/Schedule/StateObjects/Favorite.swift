@@ -19,12 +19,13 @@ struct Favorite: Codable {
     var nextToArriveTrips: [NextToArriveTrip]
     var nextToArriveUpdateStatus: NextToArriveUpdateStatus
     var refreshDataRequested: Bool
+    var collapsed: Bool
 
     var scheduleRequest: ScheduleRequest {
         return convertedToScheduleRequest()
     }
 
-    init(favoriteId: String, favoriteName: String, transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop, nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip](), nextToArriveUpdateStatus: NextToArriveUpdateStatus = .idle, refreshDataRequested: Bool = false) {
+    init(favoriteId: String, favoriteName: String, transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop, nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip](), nextToArriveUpdateStatus: NextToArriveUpdateStatus = .idle, refreshDataRequested: Bool = false, collapsed: Bool = false) {
         self.favoriteId = favoriteId
         self.favoriteName = favoriteName
         self.transitMode = transitMode
@@ -34,6 +35,7 @@ struct Favorite: Codable {
         self.nextToArriveTrips = nextToArriveTrips
         self.nextToArriveUpdateStatus = nextToArriveUpdateStatus
         self.refreshDataRequested = refreshDataRequested
+        self.collapsed = collapsed
     }
 
     enum CodingKeys: String, CodingKey {
@@ -43,6 +45,7 @@ struct Favorite: Codable {
         case selectedRoute
         case selectedStart
         case selectedEnd
+        case collapsed
     }
 
     public init(from decoder: Decoder) throws {
@@ -64,6 +67,12 @@ struct Favorite: Codable {
         } else {
             favoriteName = "\(selectedRoute.routeId): \(selectedStart.stopName) to \(selectedEnd.stopName)"
         }
+        
+        if let collapsed = try container.decode(Bool?.self, forKey: .collapsed) {
+            self.collapsed = collapsed
+        } else {
+            self.collapsed = false
+        }
         nextToArriveTrips = [NextToArriveTrip]()
         nextToArriveUpdateStatus = .idle
         refreshDataRequested = true
@@ -77,6 +86,7 @@ struct Favorite: Codable {
         try container.encode(selectedRoute, forKey: .selectedRoute)
         try container.encode(selectedStart, forKey: .selectedStart)
         try container.encode(selectedEnd, forKey: .selectedEnd)
+        try container.encode(collapsed, forKey: .collapsed)
     }
 }
 
@@ -117,6 +127,9 @@ func == (lhs: Favorite, rhs: Favorite) -> Bool {
     areEqual = lhs.refreshDataRequested == rhs.refreshDataRequested
     guard areEqual else { return false }
 
+    areEqual = lhs.collapsed == rhs.collapsed
+    guard areEqual else { return false }
+    
     return areEqual
 }
 

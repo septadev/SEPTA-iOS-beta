@@ -105,7 +105,8 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let tripCell = tableView.dequeueReusableCell(withIdentifier: "favoriteTripCell") as? FavoriteTripCell else { return UITableViewCell() }
         viewModel.configureTripCell(favoriteTripCell: tripCell, indexPath: indexPath)
-
+        tripCell.delegate = self
+        
         return tripCell
     }
 }
@@ -132,5 +133,15 @@ extension FavoritesViewController: UpdateableFromViewModel {
     }
 
     func displayErrorMessage(message _: String, shouldDismissAfterDisplay _: Bool) {
+    }
+}
+
+extension FavoritesViewController: FavoriteTripCellDelegate {
+    func favoriteCellToggled(cell: FavoriteTripCell) {
+        guard var favorite = cell.currentFavorite else { return }
+        favorite.collapsed = !favorite.collapsed
+        
+        let action = SaveFavorite(favorite: favorite)
+        store.dispatch(action)
     }
 }
