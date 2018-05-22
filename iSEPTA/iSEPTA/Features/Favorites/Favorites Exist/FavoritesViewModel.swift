@@ -119,6 +119,15 @@ extension FavoritesViewModel { // table loading
         let connectionView: CellConnectionView! = stackView.awakeInsertArrangedView(nibName: "CellConnectionView")
         favoriteViewModel.configureConnectionCell(cell: connectionView, forTrip: trip)
     }
+    
+    func favorite(at indexPath: IndexPath) -> Favorite {
+        return self.favoriteViewModels[indexPath.section].favorite
+    }
+    
+    func remove(favorite: Favorite) {
+        let action = RemoveFavorite(favorite: favorite)
+        store.dispatch(action)
+    }
 }
 
 class FavoritesViewModelDelegate: UpdateableFromViewModel {
