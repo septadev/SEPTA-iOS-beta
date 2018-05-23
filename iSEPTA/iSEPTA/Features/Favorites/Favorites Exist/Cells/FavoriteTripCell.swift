@@ -16,14 +16,28 @@ class FavoriteTripCell: UITableViewCell {
     @IBOutlet var favoriteIcon: UIImageView!
     @IBOutlet var stackView: UIStackView!
     @IBOutlet var favoriteNameLabel: UILabel!
-
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var chevron: UIImageView!
     @IBOutlet var headerAccessibilityElements: [UIView]!
-    var currentFavorite: Favorite?
+    
+    var delegate: FavoriteTripCellDelegate?
+    
+    var currentFavorite: Favorite? {
+        didSet {
+            if let fav = currentFavorite {
+                if fav.collapsed {
+                    chevron.image = UIImage(named: "chevronRight")
+                } else {
+                    chevron.image = UIImage(named: "chevronDown")
+                }
+            }
+        }
+    }
 
     override func awakeFromNib() {
-
         styleClearViews([self, contentView])
         styleWhiteViews([shadowView, content])
+        headerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(headerTapped(sender:))))
     }
 
     @IBAction func moreButtonTapped(_: Any) {
@@ -34,6 +48,10 @@ class FavoriteTripCell: UITableViewCell {
 
         let navigationAction = PushViewController(viewController: .nextToArriveDetailController, description: "Displaying Next to arrive for a favorite")
         store.dispatch(navigationAction)
+    }
+    
+    @objc func headerTapped(sender: UITapGestureRecognizer) {
+        self.delegate?.favoriteCellToggled(cell: self)
     }
 
     func styleWhiteViews(_ views: [UIView]) {
@@ -48,4 +66,8 @@ class FavoriteTripCell: UITableViewCell {
             view.backgroundColor = UIColor.clear
         }
     }
+}
+
+protocol FavoriteTripCellDelegate {
+    func favoriteCellToggled(cell: FavoriteTripCell)
 }

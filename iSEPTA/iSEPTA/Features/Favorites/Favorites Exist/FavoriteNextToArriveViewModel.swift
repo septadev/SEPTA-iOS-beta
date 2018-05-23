@@ -11,7 +11,7 @@ import UIKit
 import SeptaSchedule
 
 class FavoriteNextToArriveViewModel: BaseNextToArriveInfoViewModel {
-    let favorite: Favorite
+    var favorite: Favorite
     init(favorite: Favorite, delegate: UpdateableFromViewModel) {
         self.favorite = favorite
         super.init()
