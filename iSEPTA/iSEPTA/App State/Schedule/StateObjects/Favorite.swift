@@ -20,12 +20,13 @@ struct Favorite: Codable {
     var nextToArriveUpdateStatus: NextToArriveUpdateStatus
     var refreshDataRequested: Bool
     var collapsed: Bool
+    var sortOrder: Int
 
     var scheduleRequest: ScheduleRequest {
         return convertedToScheduleRequest()
     }
 
-    init(favoriteId: String, favoriteName: String, transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop, nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip](), nextToArriveUpdateStatus: NextToArriveUpdateStatus = .idle, refreshDataRequested: Bool = false, collapsed: Bool = false) {
+    init(favoriteId: String, favoriteName: String, transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop, nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip](), nextToArriveUpdateStatus: NextToArriveUpdateStatus = .idle, refreshDataRequested: Bool = false, collapsed: Bool = false, sortOrder: Int = 0) {
         self.favoriteId = favoriteId
         self.favoriteName = favoriteName
         self.transitMode = transitMode
@@ -36,6 +37,7 @@ struct Favorite: Codable {
         self.nextToArriveUpdateStatus = nextToArriveUpdateStatus
         self.refreshDataRequested = refreshDataRequested
         self.collapsed = collapsed
+        self.sortOrder = sortOrder
     }
 
     enum CodingKeys: String, CodingKey {
@@ -46,6 +48,7 @@ struct Favorite: Codable {
         case selectedStart
         case selectedEnd
         case collapsed
+        case sortOrder
     }
 
     public init(from decoder: Decoder) throws {
@@ -73,6 +76,13 @@ struct Favorite: Codable {
         } else {
             self.collapsed = false
         }
+        
+        if let sortOrder = try container.decode(Int?.self, forKey: .sortOrder) {
+            self.sortOrder = sortOrder
+        } else {
+            self.sortOrder = 0
+        }
+        
         nextToArriveTrips = [NextToArriveTrip]()
         nextToArriveUpdateStatus = .idle
         refreshDataRequested = true
@@ -87,6 +97,7 @@ struct Favorite: Codable {
         try container.encode(selectedStart, forKey: .selectedStart)
         try container.encode(selectedEnd, forKey: .selectedEnd)
         try container.encode(collapsed, forKey: .collapsed)
+        try container.encode(sortOrder, forKey: .sortOrder)
     }
 }
 
@@ -128,6 +139,9 @@ func == (lhs: Favorite, rhs: Favorite) -> Bool {
     guard areEqual else { return false }
 
     areEqual = lhs.collapsed == rhs.collapsed
+    guard areEqual else { return false }
+    
+    areEqual = lhs.sortOrder == rhs.sortOrder
     guard areEqual else { return false }
     
     return areEqual

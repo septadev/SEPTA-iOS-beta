@@ -41,7 +41,7 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
         let favoritesToDisplay = Array(state)
 
         favoriteViewModels = favoritesToDisplay.map { FavoriteNextToArriveViewModel(favorite: $0, delegate: favoriteDelegate) }
-        favoriteViewModels.sort { $0.favorite.favoriteName < $1.favorite.favoriteName }
+        favoriteViewModels.sort { $0.favorite.sortOrder < $1.favorite.sortOrder }
 
         delegate.viewModelUpdated()
     }
@@ -121,7 +121,38 @@ extension FavoritesViewModel { // table loading
     }
     
     func favorite(at indexPath: IndexPath) -> Favorite {
-        return self.favoriteViewModels[indexPath.section].favorite
+        return favoriteViewModel(at: indexPath).favorite
+    }
+    
+    func favoriteViewModel(at indexPath: IndexPath) -> FavoriteNextToArriveViewModel {
+        return self.favoriteViewModels[indexPath.section]
+    }
+    
+    func moveFavorite(from source: IndexPath, to destination: IndexPath) {
+        var evicted = false // Has the favorite previously in the destination spot been moved out
+        var movedIn = false // Has the favorite being moved been places in it's new spot
+        let movingUp = source.section > destination.section // Are favorites being pushed up or down?
+        
+        // Loop through all favorites and figure it's new spot
+        for (index, fvm) in favoriteViewModels.enumerated() {
+            if index == destination.section {
+                // This favorite is in the spot where the moved favorite is going. Push it up or down
+                fvm.favorite.sortOrder = destination.section + (movingUp ? 1 : -1)
+                evicted = true
+            } else if index == source.section {
+                // This is the favorite being moved
+                fvm.favorite.sortOrder = destination.section
+                movedIn = true
+            } else if (movingUp && evicted && !movedIn) || (!movingUp && movedIn && !evicted) {
+                // This is a favorite that is affected by the move
+                fvm.favorite.sortOrder = index + (movingUp ? 1 : -1)
+            } else {
+                // This favorite wasn't affected but let's make sure it's order is correct
+                fvm.favorite.sortOrder = index
+            }
+            // Favorite has it's new place, save it.
+            store.dispatch(SaveFavorite(favorite: fvm.favorite))
+        }
     }
     
     func remove(favorite: Favorite) {

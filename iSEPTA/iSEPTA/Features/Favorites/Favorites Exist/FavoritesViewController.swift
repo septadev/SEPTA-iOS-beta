@@ -138,6 +138,10 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        viewModel.moveFavorite(from: sourceIndexPath, to: destinationIndexPath)
+    }
 }
 
 extension FavoritesViewController: UpdateableFromViewModel {
