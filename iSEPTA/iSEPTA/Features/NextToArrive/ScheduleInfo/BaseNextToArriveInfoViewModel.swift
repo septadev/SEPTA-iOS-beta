@@ -174,7 +174,6 @@ extension BaseNextToArriveInfoViewModel { // Table View
         tripView.onTimeLabel.text = trip.startStop.generateDelayString(prefixString: "")
         tripView.onTimeLabel.textColor = trip.startStop.generateOnTimeColor()
         tripView.endStopLabel.text = generateLastStopName(stop: trip.startStop)
-        tripView.chevronView.isHidden = !trip.startStop.hasRealTimeData
         tripView.departingBox.layer.borderColor = trip.startStop.generateOnTimeColor().cgColor
         tripView.nextToArriveStop = trip.startStop
 
@@ -195,7 +194,6 @@ extension BaseNextToArriveInfoViewModel { // Table View
         firstLegTripView.onTimeLabel.text = trip.startStop.generateDelayString(prefixString: "")
         firstLegTripView.onTimeLabel.textColor = trip.startStop.generateOnTimeColor()
         firstLegTripView.endStopLabel.text = generateLastStopName(stop: trip.startStop)
-        firstLegTripView.chevronView.isHidden = !trip.startStop.hasRealTimeData
         firstLegTripView.departingBox.layer.borderColor = trip.startStop.generateOnTimeColor().cgColor
         firstLegTripView.nextToArriveStop = trip.startStop
 
@@ -213,7 +211,6 @@ extension BaseNextToArriveInfoViewModel { // Table View
         secondLegTripView.onTimeLabel.text = trip.endStop.generateDelayString(prefixString: "")
         secondLegTripView.onTimeLabel.textColor = trip.endStop.generateOnTimeColor()
         secondLegTripView.endStopLabel.text = generateLastStopName(stop: trip.endStop)
-        secondLegTripView.chevronView.isHidden = !trip.endStop.hasRealTimeData
         secondLegTripView.departingBox.layer.borderColor = trip.endStop.generateOnTimeColor().cgColor
         secondLegTripView.nextToArriveStop = trip.endStop
 

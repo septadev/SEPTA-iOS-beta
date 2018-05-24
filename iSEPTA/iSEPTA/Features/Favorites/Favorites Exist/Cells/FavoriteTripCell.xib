@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="595" height="60"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="busFavorite" translatesAutoresizingMaskIntoConstraints="NO" id="NjI-te-plL">
-                                        <rect key="frame" x="14" y="12.5" width="35" height="35"/>
+                                        <rect key="frame" x="14" y="18.5" width="35" height="35"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <bool key="isElement" value="YES"/>
                                         </accessibility>
@@ -44,14 +44,14 @@
 IconView</string>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office Commute" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wF3-Zs-MQV" userLabel="TitleLabel">
-                                        <rect key="frame" x="56" y="21" width="509" height="19.5"/>
+                                        <rect key="frame" x="56" y="29" width="509" height="15.5"/>
                                         <accessibility key="accessibilityConfiguration" label="Favorite Name"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="16"/>
                                         <color key="textColor" red="0.10588235294117647" green="0.30588235294117649" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevronDown" translatesAutoresizingMaskIntoConstraints="NO" id="wMH-zc-aT9">
-                                        <rect key="frame" x="565" y="15" width="30" height="30"/>
+                                        <rect key="frame" x="565" y="21" width="30" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Hpx-Hs-3df"/>
@@ -62,12 +62,13 @@ IconView</string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="wF3-Zs-MQV" firstAttribute="centerY" secondItem="eqs-q6-yyu" secondAttribute="centerY" id="Nhh-Tr-FUu" userLabel="TitleLabelCenterY"/>
+                                    <constraint firstItem="wF3-Zs-MQV" firstAttribute="top" secondItem="wMH-zc-aT9" secondAttribute="bottom" constant="-22" id="Leq-UQ-VlU"/>
                                     <constraint firstAttribute="trailing" secondItem="wMH-zc-aT9" secondAttribute="trailing" id="OgF-sg-nDh"/>
                                     <constraint firstItem="wF3-Zs-MQV" firstAttribute="leading" secondItem="NjI-te-plL" secondAttribute="trailing" constant="7" id="PjB-Dm-cJX" userLabel="LabelLeft"/>
-                                    <constraint firstItem="wMH-zc-aT9" firstAttribute="centerY" secondItem="eqs-q6-yyu" secondAttribute="centerY" id="Rh7-F2-5QI"/>
                                     <constraint firstAttribute="height" constant="60" id="THD-TT-Bnw"/>
-                                    <constraint firstItem="NjI-te-plL" firstAttribute="centerY" secondItem="eqs-q6-yyu" secondAttribute="centerY" id="Zln-Gl-Md7"/>
+                                    <constraint firstItem="wMH-zc-aT9" firstAttribute="centerY" secondItem="NjI-te-plL" secondAttribute="centerY" id="Tgj-Z3-t0P"/>
+                                    <constraint firstItem="wF3-Zs-MQV" firstAttribute="centerY" secondItem="NjI-te-plL" secondAttribute="centerY" id="UAI-Ml-HNo"/>
+                                    <constraint firstItem="NjI-te-plL" firstAttribute="centerY" secondItem="eqs-q6-yyu" secondAttribute="centerY" constant="6" id="Zln-Gl-Md7"/>
                                     <constraint firstItem="wMH-zc-aT9" firstAttribute="leading" secondItem="wF3-Zs-MQV" secondAttribute="trailing" id="ysU-lv-bSV"/>
                                     <constraint firstItem="NjI-te-plL" firstAttribute="leading" secondItem="eqs-q6-yyu" secondAttribute="leading" constant="14" id="zlF-CY-vYc" userLabel="IconViewLeft"/>
                                 </constraints>

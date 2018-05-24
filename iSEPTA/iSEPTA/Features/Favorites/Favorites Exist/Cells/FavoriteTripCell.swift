@@ -38,9 +38,10 @@ class FavoriteTripCell: UITableViewCell {
         styleClearViews([self, contentView])
         styleWhiteViews([shadowView, content])
         headerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(headerTapped(sender:))))
+        stackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showNextToArrive(_:))))
     }
 
-    @IBAction func moreButtonTapped(_: Any) {
+    @objc func showNextToArrive(_: Any) {
         guard let currentFavorite = currentFavorite else { return }
 
         let dataAction = CreateNextToArriveFavorite(favorite: currentFavorite)

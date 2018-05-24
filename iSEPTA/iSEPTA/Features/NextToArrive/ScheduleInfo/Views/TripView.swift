@@ -18,22 +18,7 @@ class TripView: UIView {
         }
     }
 
-    @IBAction func didTapView(_: Any) {
-        guard !chevronView.isHidden else { return }
-        backgroundColor = SeptaColor.buttonHighlight
-        connectionView?.backgroundColor = SeptaColor.buttonHighlight
-        isUserInteractionEnabled = false
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.15, execute: {
-            self.backgroundColor = UIColor.white
-            self.connectionView?.backgroundColor = UIColor.white
-            let action = ShowTripDetails(nextToArriveStop: self.nextToArriveStop)
-            store.dispatch(action)
-            self.isUserInteractionEnabled = true
-        })
-    }
-
     var nextToArriveStop: NextToArriveStop!
-    @IBOutlet var chevronView: LittleBlueChevronButton!
     @IBOutlet var departingWhenLabel: UILabel!
     @IBOutlet var startStopLabel: UILabel!
     @IBOutlet var onTimeLabel: UILabel! {
