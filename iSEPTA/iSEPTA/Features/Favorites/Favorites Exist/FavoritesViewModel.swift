@@ -130,7 +130,7 @@ extension FavoritesViewModel { // table loading
     
     func moveFavorite(from source: IndexPath, to destination: IndexPath) {
         var evicted = false // Has the favorite previously in the destination spot been moved out
-        var movedIn = false // Has the favorite being moved been places in it's new spot
+        var movedIn = false // Has the favorite being moved been placed in it's new spot
         let movingUp = source.section > destination.section // Are favorites being pushed up or down?
         
         // Loop through all favorites and figure it's new spot
