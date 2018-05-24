@@ -59,27 +59,43 @@ struct Favorite: Codable {
         selectedStart = try container.decode(Stop.self, forKey: .selectedStart)
         selectedEnd = try container.decode(Stop.self, forKey: .selectedEnd)
 
-        if let favoriteId = try container.decode(String?.self, forKey: .favoriteId) {
-            self.favoriteId = favoriteId
-        } else {
-            favoriteId = UUID().uuidString
+        do {
+            if let favoriteId = try container.decode(String?.self, forKey: .favoriteId) {
+                self.favoriteId = favoriteId
+            } else {
+                self.favoriteId = UUID().uuidString
+            }
+        } catch {
+            self.favoriteId = UUID().uuidString
         }
 
-        if let favoriteName = try container.decode(String?.self, forKey: .favoriteName) {
-            self.favoriteName = favoriteName
-        } else {
-            favoriteName = "\(selectedRoute.routeId): \(selectedStart.stopName) to \(selectedEnd.stopName)"
+        do {
+            if let favoriteName = try container.decode(String?.self, forKey: .favoriteName) {
+                self.favoriteName = favoriteName
+            } else {
+                self.favoriteName = "\(selectedRoute.routeId): \(selectedStart.stopName) to \(selectedEnd.stopName)"
+            }
+        } catch {
+            self.favoriteName = "\(selectedRoute.routeId): \(selectedStart.stopName) to \(selectedEnd.stopName)"
         }
         
-        if let collapsed = try container.decode(Bool?.self, forKey: .collapsed) {
-            self.collapsed = collapsed
-        } else {
+        do {
+            if let collapsed = try container.decode(Bool?.self, forKey: .collapsed) {
+                self.collapsed = collapsed
+            } else {
+                self.collapsed = false
+            }
+        } catch {
             self.collapsed = false
         }
         
-        if let sortOrder = try container.decode(Int?.self, forKey: .sortOrder) {
-            self.sortOrder = sortOrder
-        } else {
+        do {
+            if let sortOrder = try container.decode(Int?.self, forKey: .sortOrder) {
+                self.sortOrder = sortOrder
+            } else {
+                self.sortOrder = 0
+            }
+        } catch {
             self.sortOrder = 0
         }
         
