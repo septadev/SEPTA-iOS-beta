@@ -59,44 +59,33 @@ struct Favorite: Codable {
         selectedStart = try container.decode(Stop.self, forKey: .selectedStart)
         selectedEnd = try container.decode(Stop.self, forKey: .selectedEnd)
 
+        
+        let defaultId = UUID().uuidString
         do {
-            if let favoriteId = try container.decode(String?.self, forKey: .favoriteId) {
-                self.favoriteId = favoriteId
-            } else {
-                self.favoriteId = UUID().uuidString
-            }
+            favoriteId = try container.decode(String?.self, forKey: .favoriteId) ?? defaultId
         } catch {
-            self.favoriteId = UUID().uuidString
+            favoriteId = defaultId
         }
 
+        let defaultName = "\(selectedRoute.routeId): \(selectedStart.stopName) to \(selectedEnd.stopName)"
         do {
-            if let favoriteName = try container.decode(String?.self, forKey: .favoriteName) {
-                self.favoriteName = favoriteName
-            } else {
-                self.favoriteName = "\(selectedRoute.routeId): \(selectedStart.stopName) to \(selectedEnd.stopName)"
-            }
+            favoriteName = try container.decode(String?.self, forKey: .favoriteName) ?? defaultName
         } catch {
-            self.favoriteName = "\(selectedRoute.routeId): \(selectedStart.stopName) to \(selectedEnd.stopName)"
+            favoriteName = defaultName
         }
         
+        let defaultCollapsed = false
         do {
-            if let collapsed = try container.decode(Bool?.self, forKey: .collapsed) {
-                self.collapsed = collapsed
-            } else {
-                self.collapsed = false
-            }
+            collapsed = try container.decode(Bool?.self, forKey: .collapsed) ?? defaultCollapsed
         } catch {
-            self.collapsed = false
+            self.collapsed = defaultCollapsed
         }
         
+        let defaultOrder = 0
         do {
-            if let sortOrder = try container.decode(Int?.self, forKey: .sortOrder) {
-                self.sortOrder = sortOrder
-            } else {
-                self.sortOrder = 0
-            }
+            sortOrder = try container.decode(Int?.self, forKey: .sortOrder) ?? defaultOrder
         } catch {
-            self.sortOrder = 0
+            self.sortOrder = defaultOrder
         }
         
         nextToArriveTrips = [NextToArriveTrip]()
