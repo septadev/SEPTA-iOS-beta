@@ -50,6 +50,16 @@ IconView</string>
                                         <color key="textColor" red="0.10588235294117647" green="0.30588235294117649" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Schedules »" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="he4-sN-G3d">
+                                        <rect key="frame" x="486" y="28.5" width="101" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="101" id="4uO-TA-Nhj"/>
+                                            <constraint firstAttribute="height" constant="15" id="s2Z-AZ-mq4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevronDown" translatesAutoresizingMaskIntoConstraints="NO" id="wMH-zc-aT9">
                                         <rect key="frame" x="565" y="21" width="30" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -62,12 +72,14 @@ IconView</string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
+                                    <constraint firstItem="he4-sN-G3d" firstAttribute="centerY" secondItem="NjI-te-plL" secondAttribute="centerY" id="EsG-3T-Qr5"/>
                                     <constraint firstItem="wF3-Zs-MQV" firstAttribute="top" secondItem="wMH-zc-aT9" secondAttribute="bottom" constant="-22" id="Leq-UQ-VlU"/>
                                     <constraint firstAttribute="trailing" secondItem="wMH-zc-aT9" secondAttribute="trailing" id="OgF-sg-nDh"/>
                                     <constraint firstItem="wF3-Zs-MQV" firstAttribute="leading" secondItem="NjI-te-plL" secondAttribute="trailing" constant="7" id="PjB-Dm-cJX" userLabel="LabelLeft"/>
                                     <constraint firstAttribute="height" constant="60" id="THD-TT-Bnw"/>
                                     <constraint firstItem="wMH-zc-aT9" firstAttribute="centerY" secondItem="NjI-te-plL" secondAttribute="centerY" id="Tgj-Z3-t0P"/>
                                     <constraint firstItem="wF3-Zs-MQV" firstAttribute="centerY" secondItem="NjI-te-plL" secondAttribute="centerY" id="UAI-Ml-HNo"/>
+                                    <constraint firstAttribute="trailing" secondItem="he4-sN-G3d" secondAttribute="trailing" constant="8" id="Yu3-TJ-c7K"/>
                                     <constraint firstItem="NjI-te-plL" firstAttribute="centerY" secondItem="eqs-q6-yyu" secondAttribute="centerY" constant="6" id="Zln-Gl-Md7"/>
                                     <constraint firstItem="wMH-zc-aT9" firstAttribute="leading" secondItem="wF3-Zs-MQV" secondAttribute="trailing" id="ysU-lv-bSV"/>
                                     <constraint firstItem="NjI-te-plL" firstAttribute="leading" secondItem="eqs-q6-yyu" secondAttribute="leading" constant="14" id="zlF-CY-vYc" userLabel="IconViewLeft"/>
@@ -134,6 +146,8 @@ IconView</string>
                 <outlet property="headerView" destination="eqs-q6-yyu" id="RS6-4J-kW5"/>
                 <outlet property="shadowView" destination="H4L-ex-I4m" id="DV6-RE-FZp"/>
                 <outlet property="stackView" destination="8j1-4I-RG0" id="7qs-i3-eRT"/>
+                <outlet property="titleLabelTrailing" destination="ysU-lv-bSV" id="AXg-16-agu"/>
+                <outlet property="viewSchedules" destination="he4-sN-G3d" id="YaC-B3-ZAW"/>
                 <outletCollection property="headerAccessibilityElements" destination="wF3-Zs-MQV" collectionClass="NSMutableArray" id="ihD-9b-WyG"/>
                 <outletCollection property="headerAccessibilityElements" destination="NjI-te-plL" collectionClass="NSMutableArray" id="dec-PG-lb7"/>
             </connections>

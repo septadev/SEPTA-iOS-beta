@@ -40,6 +40,10 @@ class FavoriteNextToArriveViewModel: BaseNextToArriveInfoViewModel {
     func viewTitle() -> String {
         return scheduleRequest().transitMode.nextToArriveInfoDetailTitle()
     }
+    
+    func ntaUnavailable() -> Bool {
+        return self.groupedTripData.count < 1
+    }
 
     override func subscribe() {
     }

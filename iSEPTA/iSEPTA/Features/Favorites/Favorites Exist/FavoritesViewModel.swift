@@ -73,6 +73,9 @@ extension FavoritesViewModel { // table loading
         favoriteTripCell.favoriteIcon.accessibilityLabel = favoriteViewModel.favorite.transitMode.favoriteName()
         favoriteTripCell.favoriteNameLabel.text = favoriteViewModel.favorite.favoriteName
         favoriteTripCell.currentFavorite = favoriteViewModel.favorite
+        if favoriteViewModel.ntaUnavailable() {
+            favoriteTripCell.configureForShowSchedule()
+        }
         guard let stackView = favoriteTripCell.stackView else { return }
         stackView.clearSubviews()
         stackView.accessibilityLabel = "Upcoming Trips"

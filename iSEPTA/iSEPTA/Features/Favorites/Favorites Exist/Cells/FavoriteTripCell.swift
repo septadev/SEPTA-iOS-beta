@@ -19,8 +19,11 @@ class FavoriteTripCell: UITableViewCell {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var chevron: UIImageView!
     @IBOutlet var headerAccessibilityElements: [UIView]!
+    @IBOutlet weak var viewSchedules: UILabel!
+    @IBOutlet weak var titleLabelTrailing: NSLayoutConstraint!
     
     var delegate: FavoriteTripCellDelegate?
+    var hasNtaData: Bool = true
     
     var currentFavorite: Favorite? {
         didSet {
@@ -37,6 +40,8 @@ class FavoriteTripCell: UITableViewCell {
     override func awakeFromNib() {
         styleClearViews([self, contentView])
         styleWhiteViews([shadowView, content])
+        chevron.isHidden = !hasNtaData
+        viewSchedules.isHidden = hasNtaData
         headerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(headerTapped(sender:))))
         stackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showNextToArrive(_:))))
     }
@@ -52,7 +57,12 @@ class FavoriteTripCell: UITableViewCell {
     }
     
     @objc func headerTapped(sender: UITapGestureRecognizer) {
-        self.delegate?.favoriteCellToggled(cell: self)
+        if hasNtaData {
+            self.delegate?.favoriteCellToggled(cell: self)
+        } else {
+            let action = SwitchTabs(activeNavigationController: .schedules, description: "Jump to Schedules from favorite")
+            store.dispatch(action)
+        }
     }
 
     func styleWhiteViews(_ views: [UIView]) {
@@ -66,6 +76,13 @@ class FavoriteTripCell: UITableViewCell {
         for view in views {
             view.backgroundColor = UIColor.clear
         }
+    }
+    
+    func configureForShowSchedule() {
+        hasNtaData = false
+        chevron.isHidden = !hasNtaData
+        viewSchedules.isHidden = hasNtaData
+        titleLabelTrailing.constant = viewSchedules.frame.size.width - 10
     }
 }
 
