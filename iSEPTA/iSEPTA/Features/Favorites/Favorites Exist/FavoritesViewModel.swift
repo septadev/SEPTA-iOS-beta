@@ -52,8 +52,7 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
                 $0.favoritesState.favoritesToDisplay
             }.skipRepeats({ (_, _) -> Bool in
                 false
-            }
-            )
+            })
         }
     }
 
@@ -78,6 +77,11 @@ extension FavoritesViewModel { // table loading
         stackView.clearSubviews()
         stackView.accessibilityLabel = "Upcoming Trips"
 
+        if favoriteViewModel.favorite.sortOrder == Favorite.defaultSortOrder {
+            // favorite has default sort order, update it to current position
+            favoriteViewModel.favorite.sortOrder = indexPath.section
+            store.dispatch(SaveFavorite(favorite: favoriteViewModel.favorite))
+        }
         if !favoriteViewModel.favorite.collapsed {
             configureTrips(favoriteViewModel: favoriteViewModel, stackView: stackView, indexPath: indexPath)
         }

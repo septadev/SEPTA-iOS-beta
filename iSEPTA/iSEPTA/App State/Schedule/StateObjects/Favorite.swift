@@ -21,12 +21,14 @@ struct Favorite: Codable {
     var refreshDataRequested: Bool
     var collapsed: Bool
     var sortOrder: Int
+    
+    static let defaultSortOrder = 999
 
     var scheduleRequest: ScheduleRequest {
         return convertedToScheduleRequest()
     }
 
-    init(favoriteId: String, favoriteName: String, transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop, nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip](), nextToArriveUpdateStatus: NextToArriveUpdateStatus = .idle, refreshDataRequested: Bool = false, collapsed: Bool = false, sortOrder: Int = 0) {
+    init(favoriteId: String, favoriteName: String, transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop, nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip](), nextToArriveUpdateStatus: NextToArriveUpdateStatus = .idle, refreshDataRequested: Bool = false, collapsed: Bool = false, sortOrder: Int = Favorite.defaultSortOrder) {
         self.favoriteId = favoriteId
         self.favoriteName = favoriteName
         self.transitMode = transitMode
@@ -81,11 +83,10 @@ struct Favorite: Codable {
             self.collapsed = defaultCollapsed
         }
         
-        let defaultOrder = 0
         do {
-            sortOrder = try container.decode(Int?.self, forKey: .sortOrder) ?? defaultOrder
+            sortOrder = try container.decode(Int?.self, forKey: .sortOrder) ?? Favorite.defaultSortOrder
         } catch {
-            self.sortOrder = defaultOrder
+            self.sortOrder = Favorite.defaultSortOrder
         }
         
         nextToArriveTrips = [NextToArriveTrip]()
