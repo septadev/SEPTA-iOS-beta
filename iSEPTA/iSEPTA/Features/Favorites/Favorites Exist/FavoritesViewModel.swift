@@ -22,6 +22,7 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
     let delegate: UpdateableFromViewModel
     let tableView: UITableView!
     let favoriteDelegate = FavoritesViewModelDelegate()
+    var collapseForEditMode = false
 
     init(delegate: UpdateableFromViewModel = FavoritesViewModelDelegate(), tableView: UITableView) {
         self.delegate = delegate
@@ -85,7 +86,7 @@ extension FavoritesViewModel { // table loading
             favoriteViewModel.favorite.sortOrder = indexPath.section
             store.dispatch(SaveFavorite(favorite: favoriteViewModel.favorite))
         }
-        if !favoriteViewModel.favorite.collapsed {
+        if !favoriteViewModel.favorite.collapsed && !collapseForEditMode {
             configureTrips(favoriteViewModel: favoriteViewModel, stackView: stackView, indexPath: indexPath)
         }
     }

@@ -56,8 +56,11 @@ class FavoritesViewController: UIViewController, IdentifiableController {
     }
     
     @objc func toggleEditMode(sender: UIBarButtonItem) {
-        tableView.setEditing(sender == editBarButtonItem, animated: true)
-        navigationItem.rightBarButtonItem = sender == editBarButtonItem ? doneBarButtonItem : editBarButtonItem
+        let willEdit = sender == editBarButtonItem
+        viewModel.collapseForEditMode = willEdit
+        tableView.reloadData()
+        tableView.setEditing(willEdit, animated: true)
+        navigationItem.rightBarButtonItem = willEdit ? doneBarButtonItem : editBarButtonItem
     }
 }
 
