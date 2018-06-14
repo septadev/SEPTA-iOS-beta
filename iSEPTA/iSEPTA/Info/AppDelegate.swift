@@ -16,7 +16,9 @@ var stateProviders = StateProviders()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    let databaseMover = DatabaseMover()
+    
+    let databaseUpdateManager = DatabaseUpdateManager()
+    
     var window: UIWindow? {
         didSet {
         }
@@ -28,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         stateProviders.preferenceProvider.subscribe()
 
+        databaseUpdateManager.appLaunched()
+        
         return true
     }
 
@@ -42,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        databaseUpdateManager.appLaunched()
     }
 
     func applicationDidBecomeActive(_: UIApplication) {

@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E2A006220CFF61A00E97BAF /* DatabaseUpdateState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A006120CFF61A00E97BAF /* DatabaseUpdateState.swift */; };
+		0E2A006520CFF88900E97BAF /* DatabaseUpdateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A006420CFF88900E97BAF /* DatabaseUpdateReducer.swift */; };
+		0E2A006820CFFAFA00E97BAF /* DatabaseUpdateActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A006720CFFAFA00E97BAF /* DatabaseUpdateActions.swift */; };
+		0E313BB020BEFCB7002EFD34 /* DatabaseUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E313BAF20BEFCB7002EFD34 /* DatabaseUpdater.swift */; };
+		0E32580E20C07E030074FF38 /* septa_database_update.sql in Resources */ = {isa = PBXBuildFile; fileRef = 0E32580B20C07E030074FF38 /* septa_database_update.sql */; };
+		0E4328E320D02C6400FBD805 /* DatabaseUpdateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4328E220D02C6400FBD805 /* DatabaseUpdateProvider.swift */; };
+		0E4328E620D04AC800FBD805 /* DatabaseUpdateWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4328E520D04AC800FBD805 /* DatabaseUpdateWatcher.swift */; };
+		0E4328E820D060DF00FBD805 /* DatabaseDownloadProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4328E720D060DF00FBD805 /* DatabaseDownloadProvider.swift */; };
+		0E4328EA20D12CD400FBD805 /* DatabaseDownloadedWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4328E920D12CD400FBD805 /* DatabaseDownloadedWatcher.swift */; };
+		0E64472220D27A7600A99E2D /* DatabaseUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64472120D27A7600A99E2D /* DatabaseUpdateManager.swift */; };
 		5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */; };
 		580128061F6B1D13006B6DB8 /* FavoriteTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580128031F6B1D13006B6DB8 /* FavoriteTripCell.xib */; };
 		580128081F6B26D2006B6DB8 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580128071F6B26D2006B6DB8 /* RoundedShadowView.swift */; };
@@ -132,7 +142,6 @@
 		586852DE1F8D49830081C1CC /* TransitMode+NextToArriveDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586852DD1F8D49830081C1CC /* TransitMode+NextToArriveDetail.swift */; };
 		586852E01F8D4F470081C1CC /* LittleBlueChevronButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586852DF1F8D4F470081C1CC /* LittleBlueChevronButton.swift */; };
 		586C1CED1F69A7E10023607C /* DatabaseLoadingModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1CEC1F69A7E10023607C /* DatabaseLoadingModalViewController.swift */; };
-		586C1CF11F69B3EE0023607C /* DatabaseMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1CF01F69B3EE0023607C /* DatabaseMover.swift */; };
 		586DFEC51F505482004BC972 /* CurvedTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586DFEC41F505482004BC972 /* CurvedTopView.swift */; };
 		5876DF731F72DEB4006C61FE /* FavoritesNavigationControllerStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5876DF721F72DEB4006C61FE /* FavoritesNavigationControllerStateProvider.swift */; };
 		5876DF751F72EC25006C61FE /* SchedulesNavigationControllerStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5876DF741F72EC25006C61FE /* SchedulesNavigationControllerStateProvider.swift */; };
@@ -650,6 +659,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0E2A006120CFF61A00E97BAF /* DatabaseUpdateState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateState.swift; sourceTree = "<group>"; };
+		0E2A006420CFF88900E97BAF /* DatabaseUpdateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateReducer.swift; sourceTree = "<group>"; };
+		0E2A006720CFFAFA00E97BAF /* DatabaseUpdateActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateActions.swift; sourceTree = "<group>"; };
+		0E313BAF20BEFCB7002EFD34 /* DatabaseUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdater.swift; sourceTree = "<group>"; };
+		0E32580B20C07E030074FF38 /* septa_database_update.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = septa_database_update.sql; sourceTree = "<group>"; };
+		0E4328E220D02C6400FBD805 /* DatabaseUpdateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateProvider.swift; sourceTree = "<group>"; };
+		0E4328E520D04AC800FBD805 /* DatabaseUpdateWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateWatcher.swift; sourceTree = "<group>"; };
+		0E4328E720D060DF00FBD805 /* DatabaseDownloadProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseDownloadProvider.swift; sourceTree = "<group>"; };
+		0E4328E920D12CD400FBD805 /* DatabaseDownloadedWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseDownloadedWatcher.swift; sourceTree = "<group>"; };
+		0E64472120D27A7600A99E2D /* DatabaseUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateManager.swift; sourceTree = "<group>"; };
 		5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectedTableViewCell.swift; sourceTree = "<group>"; };
 		580128031F6B1D13006B6DB8 /* FavoriteTripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteTripCell.xib; sourceTree = "<group>"; };
 		580128071F6B26D2006B6DB8 /* RoundedShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundedShadowView.swift; path = iSEPTA/Views/RoundedShadowView.swift; sourceTree = SOURCE_ROOT; };
@@ -792,7 +811,6 @@
 		586852DD1F8D49830081C1CC /* TransitMode+NextToArriveDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransitMode+NextToArriveDetail.swift"; sourceTree = "<group>"; };
 		586852DF1F8D4F470081C1CC /* LittleBlueChevronButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LittleBlueChevronButton.swift; sourceTree = "<group>"; };
 		586C1CEC1F69A7E10023607C /* DatabaseLoadingModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseLoadingModalViewController.swift; sourceTree = "<group>"; };
-		586C1CF01F69B3EE0023607C /* DatabaseMover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseMover.swift; sourceTree = "<group>"; };
 		586DFEC41F505482004BC972 /* CurvedTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedTopView.swift; sourceTree = "<group>"; };
 		5870CCDD1F54C05A004E61A9 /* SeptaSchedule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaSchedule.framework; path = "Build/Products/Debug-iphonesimulator/SeptaSchedule.framework"; sourceTree = "<group>"; };
 		5876DF721F72DEB4006C61FE /* FavoritesNavigationControllerStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesNavigationControllerStateProvider.swift; sourceTree = "<group>"; };
@@ -1275,15 +1293,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E2A005A20CFECF300E97BAF /* Database Providers */ = {
+			isa = PBXGroup;
+			children = (
+				0E4328E220D02C6400FBD805 /* DatabaseUpdateProvider.swift */,
+				0E4328E720D060DF00FBD805 /* DatabaseDownloadProvider.swift */,
+			);
+			path = "Database Providers";
+			sourceTree = "<group>";
+		};
+		0E4328E420D04AB500FBD805 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				0E4328E520D04AC800FBD805 /* DatabaseUpdateWatcher.swift */,
+				0E4328E920D12CD400FBD805 /* DatabaseDownloadedWatcher.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		580041F81F3504D800691FDC /* Info */ = {
 			isa = PBXGroup;
 			children = (
 				582F4EAD1F33B1120062A546 /* Info.plist */,
 				582F4F241F33B2400062A546 /* Septa-Bridging-Header.h */,
 				582F4E7E1F33B1120062A546 /* AppDelegate.swift */,
-				586C1CF01F69B3EE0023607C /* DatabaseMover.swift */,
 				58E33F231F61615900C74B7C /* network.plist */,
 				58E33F251F61619500C74B7C /* SeptaNetwork.swift */,
+				0E313BAF20BEFCB7002EFD34 /* DatabaseUpdater.swift */,
+				0E64472120D27A7600A99E2D /* DatabaseUpdateManager.swift */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -1302,6 +1339,7 @@
 		58248B601F6D570C00DA2D65 /* State Watchers */ = {
 			isa = PBXGroup;
 			children = (
+				0E4328E420D04AB500FBD805 /* Database */,
 				670C59E91F8A667B00CAE1AC /* NextToArrive */,
 				670C59E81F8A666800CAE1AC /* Alerts */,
 				670C59E71F8A665400CAE1AC /* Favorites */,
@@ -1670,6 +1708,7 @@
 				5840D6D21F376D9C00C8CB76 /* MainNavigationController.swift */,
 				58B892161F38F7E700BFFEFA /* Strings.swift */,
 				586C1CEC1F69A7E10023607C /* DatabaseLoadingModalViewController.swift */,
+				0E32580B20C07E030074FF38 /* septa_database_update.sql */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1685,6 +1724,7 @@
 		5840D6E11F37E9E300C8CB76 /* State Providers */ = {
 			isa = PBXGroup;
 			children = (
+				0E2A005A20CFECF300E97BAF /* Database Providers */,
 				58FB26441F6EC42F00F17048 /* AlertProvider */,
 				58EB8D341F5D99310028A487 /* ScheduleDataProviders */,
 				58B8920A1F38C27700BFFEFA /* UserPreferences */,
@@ -2374,6 +2414,9 @@
 			children = (
 				58FBBFA31F65821000B7A4DA /* DatabaseReducer.swift */,
 				58FBBFA51F65823600B7A4DA /* DatabaseActions.swift */,
+				0E2A006120CFF61A00E97BAF /* DatabaseUpdateState.swift */,
+				0E2A006420CFF88900E97BAF /* DatabaseUpdateReducer.swift */,
+				0E2A006720CFFAFA00E97BAF /* DatabaseUpdateActions.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -2918,6 +2961,7 @@
 				677E04C920727C9D00B16C09 /* 39.kml in Resources */,
 				677E052120727C9D00B16C09 /* 132.kml in Resources */,
 				582F4EC01F33B1120062A546 /* alerts.storyboard in Resources */,
+				0E32580E20C07E030074FF38 /* septa_database_update.sql in Resources */,
 				677E054120727C9D00B16C09 /* 75.kml in Resources */,
 				677E04F020727C9D00B16C09 /* 70.kml in Resources */,
 				677E054820727C9D00B16C09 /* WTR.kml in Resources */,
@@ -3245,6 +3289,7 @@
 				58FBB66A1F58717500E6532B /* SeptaTabBarImages.swift in Sources */,
 				58126F711F631CB200A6E187 /* NextToArriveEndpointsViewModel.swift in Sources */,
 				58E33F141F61425600C74B7C /* NextToArriveProvider.swift in Sources */,
+				0E2A006520CFF88900E97BAF /* DatabaseUpdateReducer.swift in Sources */,
 				587BC0581F6EEBBD00B92BB6 /* AlertsViewModel.swift in Sources */,
 				585760AB1F82A1BC00A340DB /* NextToArriveNoResultsAlert.swift in Sources */,
 				671A19201F6613A600C8EEDA /* ConstraintsToggle.swift in Sources */,
@@ -3252,6 +3297,7 @@
 				5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */,
 				6789B7811F8FEE17008C6DCA /* TripDetailState.swift in Sources */,
 				670C59E51F8A5D2700CAE1AC /* FavoritesMiddlewareActions.swift in Sources */,
+				0E4328E620D04AC800FBD805 /* DatabaseUpdateWatcher.swift in Sources */,
 				676355011F5E326800CA7EAB /* AppState+TargetForScheduleActions.swift in Sources */,
 				58126F671F631C0800A6E187 /* ColorPointAnnotation.swift in Sources */,
 				58FBB66C1F5885D800E6532B /* VerticalDottedTripGraphic.swift in Sources */,
@@ -3290,6 +3336,7 @@
 				67F757B11F486F0600D3A4EE /* TransitModeDisplayable.swift in Sources */,
 				6789B7881F8FF1B7008C6DCA /* TripDetailMiddleware.swift in Sources */,
 				58248B721F6D77A100DA2D65 /* DeleteFavoriteButton.swift in Sources */,
+				0E4328EA20D12CD400FBD805 /* DatabaseDownloadedWatcher.swift in Sources */,
 				58EB8D2B1F5D92170028A487 /* NextToArriveReducer.swift in Sources */,
 				58EB8D131F5D79C10028A487 /* NextToArriveNavigationControllerStateProvider.swift in Sources */,
 				5840D6E51F37EA1900C8CB76 /* ScheduleDataProvider.swift in Sources */,
@@ -3325,6 +3372,7 @@
 				67A65BFC1F5AEBB20068428E /* NextToArriveButton.swift in Sources */,
 				6789B7751F8FDFAF008C6DCA /* TripDetailViewController.swift in Sources */,
 				58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */,
+				0E64472220D27A7600A99E2D /* DatabaseUpdateManager.swift in Sources */,
 				6776F68C201CAECB001FD5B2 /* NetworkingExtensions.swift in Sources */,
 				58F80D451F421C4B0089501A /* SelectStopViewController.swift in Sources */,
 				678D26CC1F5CDB4200D140CC /* Septa+Images.swift in Sources */,
@@ -3352,6 +3400,7 @@
 				582F4ED61F33B1120062A546 /* SelectStopsViewElement.swift in Sources */,
 				678D26CA1F5CC83900D140CC /* FavoritesProvider.swift in Sources */,
 				67365ADF1F76932600FC86CB /* NextToArriveMiddlewareActions.swift in Sources */,
+				0E4328E820D060DF00FBD805 /* DatabaseDownloadProvider.swift in Sources */,
 				589BCC321F3D5068002FAEDE /* SchedulesPresentationController.swift in Sources */,
 				586DFEC51F505482004BC972 /* CurvedTopView.swift in Sources */,
 				580A355B1F6A0E84000FCA82 /* FavoritesNavigationController.swift in Sources */,
@@ -3368,6 +3417,7 @@
 				58248B661F6D575A00DA2D65 /* BaseWatcher.swift in Sources */,
 				678DAAA61F67291400EB6EE8 /* NextToArriveTripsViewModel.swift in Sources */,
 				67F028AA1F7FD5570032F99C /* SEPTAConnectionMiddleware.swift in Sources */,
+				0E4328E320D02C6400FBD805 /* DatabaseUpdateProvider.swift in Sources */,
 				58E33F1C1F61473800C74B7C /* TripVehicleLocations.swift in Sources */,
 				586C1CED1F69A7E10023607C /* DatabaseLoadingModalViewController.swift in Sources */,
 				670C59F51F8A712900CAE1AC /* AppInfoView.swift in Sources */,
@@ -3428,6 +3478,7 @@
 				67365ACE1F754A3200FC86CB /* SevenEightsPresentationCoordinator.swift in Sources */,
 				670C59ED1F8A66F700CAE1AC /* AboutViewController.swift in Sources */,
 				580128101F6BFC9F006B6DB8 /* NavBarShadowView.swift in Sources */,
+				0E2A006220CFF61A00E97BAF /* DatabaseUpdateState.swift in Sources */,
 				580A35631F6A1374000FCA82 /* BaseNextToArriveInfoViewModel.swift in Sources */,
 				58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */,
 				580A355F1F6A0F9B000FCA82 /* FavoritesViewController.swift in Sources */,
@@ -3435,6 +3486,7 @@
 				58EB8D0F1F5D79530028A487 /* NextToArriveNavigationController.swift in Sources */,
 				58F444FC1F3D335400A93208 /* SeptaAction.swift in Sources */,
 				678F052C1F5B7CEC00CC4D3C /* AddressLookupReducer.swift in Sources */,
+				0E2A006820CFFAFA00E97BAF /* DatabaseUpdateActions.swift in Sources */,
 				6789B7851F8FEF8C008C6DCA /* TripDetailReducers.swift in Sources */,
 				6776F682201C0D05001FD5B2 /* AlertState_ModalAlertsDisplayedWatcher.swift in Sources */,
 				67365AC81F754A3200FC86CB /* HalfSheetAnimationIn.swift in Sources */,
@@ -3452,7 +3504,6 @@
 				58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */,
 				581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */,
 				58CBEE871F953B5A00F26A15 /* FavoriteState_NextToArriveFavoriteWatcher.swift in Sources */,
-				586C1CF11F69B3EE0023607C /* DatabaseMover.swift in Sources */,
 				679924051F6E01BD00FD5691 /* MoreButton.swift in Sources */,
 				580A35691F6A2B0A000FCA82 /* FavoriteHeaderCell.swift in Sources */,
 				588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */,
@@ -3469,6 +3520,7 @@
 				58248B6E1F6D6A3800DA2D65 /* EditFavoriteViewController.swift in Sources */,
 				676354FD1F5E255A00CA7EAB /* FilterableRoute.swift in Sources */,
 				58B892171F38F7E700BFFEFA /* Strings.swift in Sources */,
+				0E313BB020BEFCB7002EFD34 /* DatabaseUpdater.swift in Sources */,
 				67EF6D631FE2DBAA00245E0F /* HolidayScheduleViewController.swift in Sources */,
 				58EB8D151F5D7CD20028A487 /* BaseNavigationController.swift in Sources */,
 				589A89D71F50BB73007329DB /* SelectStopCell.swift in Sources */,
