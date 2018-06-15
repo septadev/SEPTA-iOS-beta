@@ -13,16 +13,22 @@ class DatabaseUpdateManager {
     
     let databaseFileManager = DatabaseFileManager()
     
-    func appLaunched() {
+    func appLaunched(coldStart: Bool) {
         databaseFileManager.delegate = self
         
-        // Check to see if initial db unzip was done
+        if coldStart {
+            // On a cold start, there should never be an update in progress
+            // In case a upate was in progress and for whatever reason was interrupted,
+            // make sure we can still check for updates
+            databaseFileManager.setDatabaseUpdateInProgress(inProgress: false)
+        }
+        
         if databaseFileManager.appHasASQLiteFile() {
+            //TODO add long func to document why I'm doing this
             store.dispatch(NewDatabaseState(databaseState: .loaded))
             databaseFileManager.removeOldDatabases()
             store.dispatch(CheckForDatabaseUpdate())
         } else {
-            // If not, do it. When finished, check for db updates
             databaseFileManager.unzipFileToDocumentsDirectory()
         }
         

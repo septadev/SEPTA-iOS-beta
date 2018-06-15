@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         stateProviders.preferenceProvider.subscribe()
 
-        databaseUpdateManager.appLaunched()
+        databaseUpdateManager.appLaunched(coldStart: true)
         
         return true
     }
@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_: UIApplication) {
-        databaseUpdateManager.appLaunched()
+        databaseUpdateManager.appLaunched(coldStart: false)
     }
 
     func applicationDidBecomeActive(_: UIApplication) {

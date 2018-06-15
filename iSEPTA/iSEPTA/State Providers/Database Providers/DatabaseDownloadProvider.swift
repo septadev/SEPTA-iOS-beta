@@ -17,6 +17,8 @@ class DatabaseDownloadProvider {
         store.subscribe(self) {
             $0.select {
                 $0.databaseUpdateState
+            }.skipRepeats {
+                $0 == $1
             }
         }
     }
