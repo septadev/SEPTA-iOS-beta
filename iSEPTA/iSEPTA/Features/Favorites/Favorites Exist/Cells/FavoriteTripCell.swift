@@ -29,9 +29,9 @@ class FavoriteTripCell: UITableViewCell {
         didSet {
             if let fav = currentFavorite {
                 if fav.collapsed {
-                    chevron.image = UIImage(named: "chevronRight")
+                    chevron.image = UIImage(named: "arrow-up")
                 } else {
-                    chevron.image = UIImage(named: "chevronDown")
+                    chevron.image = UIImage(named: "arrow-down")
                 }
             }
         }

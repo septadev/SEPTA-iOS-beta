@@ -44,14 +44,17 @@
 IconView</string>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office Commute" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wF3-Zs-MQV" userLabel="TitleLabel">
-                                        <rect key="frame" x="56" y="29" width="509" height="15.5"/>
+                                        <rect key="frame" x="56" y="26" width="502" height="20"/>
                                         <accessibility key="accessibilityConfiguration" label="Favorite Name"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="Dcd-l7-4YL"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="16"/>
                                         <color key="textColor" red="0.10588235294117647" green="0.30588235294117649" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Schedules »" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="he4-sN-G3d">
-                                        <rect key="frame" x="486" y="28.5" width="101" height="15"/>
+                                        <rect key="frame" x="480" y="28.5" width="101" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="101" id="4uO-TA-Nhj"/>
                                             <constraint firstAttribute="height" constant="15" id="s2Z-AZ-mq4"/>
@@ -60,8 +63,8 @@ IconView</string>
                                         <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevronDown" translatesAutoresizingMaskIntoConstraints="NO" id="wMH-zc-aT9">
-                                        <rect key="frame" x="565" y="21" width="30" height="30"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow-down" translatesAutoresizingMaskIntoConstraints="NO" id="wMH-zc-aT9">
+                                        <rect key="frame" x="558" y="21.5" width="30" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Hpx-Hs-3df"/>
@@ -74,16 +77,21 @@ IconView</string>
                                 <constraints>
                                     <constraint firstItem="he4-sN-G3d" firstAttribute="centerY" secondItem="NjI-te-plL" secondAttribute="centerY" id="EsG-3T-Qr5"/>
                                     <constraint firstItem="wF3-Zs-MQV" firstAttribute="top" secondItem="wMH-zc-aT9" secondAttribute="bottom" constant="-22" id="Leq-UQ-VlU"/>
-                                    <constraint firstAttribute="trailing" secondItem="wMH-zc-aT9" secondAttribute="trailing" id="OgF-sg-nDh"/>
+                                    <constraint firstAttribute="trailing" secondItem="wMH-zc-aT9" secondAttribute="trailing" constant="7" id="OgF-sg-nDh"/>
                                     <constraint firstItem="wF3-Zs-MQV" firstAttribute="leading" secondItem="NjI-te-plL" secondAttribute="trailing" constant="7" id="PjB-Dm-cJX" userLabel="LabelLeft"/>
                                     <constraint firstAttribute="height" constant="60" id="THD-TT-Bnw"/>
                                     <constraint firstItem="wMH-zc-aT9" firstAttribute="centerY" secondItem="NjI-te-plL" secondAttribute="centerY" id="Tgj-Z3-t0P"/>
                                     <constraint firstItem="wF3-Zs-MQV" firstAttribute="centerY" secondItem="NjI-te-plL" secondAttribute="centerY" id="UAI-Ml-HNo"/>
-                                    <constraint firstAttribute="trailing" secondItem="he4-sN-G3d" secondAttribute="trailing" constant="8" id="Yu3-TJ-c7K"/>
+                                    <constraint firstAttribute="trailing" secondItem="he4-sN-G3d" secondAttribute="trailing" constant="14" id="Yu3-TJ-c7K"/>
                                     <constraint firstItem="NjI-te-plL" firstAttribute="centerY" secondItem="eqs-q6-yyu" secondAttribute="centerY" constant="6" id="Zln-Gl-Md7"/>
                                     <constraint firstItem="wMH-zc-aT9" firstAttribute="leading" secondItem="wF3-Zs-MQV" secondAttribute="trailing" id="ysU-lv-bSV"/>
                                     <constraint firstItem="NjI-te-plL" firstAttribute="leading" secondItem="eqs-q6-yyu" secondAttribute="leading" constant="14" id="zlF-CY-vYc" userLabel="IconViewLeft"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Leq-UQ-VlU"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="8j1-4I-RG0">
                                 <rect key="frame" x="0.0" y="60" width="595" height="136.5"/>
@@ -155,7 +163,7 @@ IconView</string>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="arrow-down" width="13" height="8"/>
         <image name="busFavorite" width="37" height="37"/>
-        <image name="chevronDown" width="13" height="8"/>
     </resources>
 </document>
