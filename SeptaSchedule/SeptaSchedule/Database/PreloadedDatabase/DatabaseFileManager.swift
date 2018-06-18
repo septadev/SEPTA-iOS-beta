@@ -13,6 +13,7 @@ public class DatabaseFileManager {
     fileprivate let currentDatabaseNameKey = "currentDatabaseKey"
     fileprivate let currentDatabaseVersionKey = "currentDatabaseVersionKey"
     fileprivate let databaseUpdateInProgressKey = "databaseUpdateInProgressKey"
+    fileprivate let databaseUpdateDateKey = "databaseUpdateDateKey"
     
     fileprivate let bundle = Bundle(for: DatabaseFileManager.self)
     fileprivate let defaultDatabaseName = "SEPTA.sqlite"
@@ -71,6 +72,14 @@ public class DatabaseFileManager {
     
     public func updateCurrentDatabase(dbURL: URL) {
         defaults.set(dbURL.lastPathComponent, forKey: currentDatabaseNameKey)
+    }
+    
+    public func updateDatabaseUpdateDate(updateDate: String) {
+        defaults.set(updateDate, forKey: databaseUpdateDateKey)
+    }
+    
+    public func databaseUpdateDate() -> String {
+        return defaults.string(forKey: databaseUpdateDateKey) ?? ""
     }
     
     public func updateCurrentDatabaseVersion(version: Int) {

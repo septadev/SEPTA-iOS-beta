@@ -25,11 +25,8 @@ class AboutViewModel {
         viewItems = [AboutViewModelItem]()
         viewItems.append(AboutViewModelItem(title: "App Version:", value: AppInfoProvider.versionNumber()))
         viewItems.append(AboutViewModelItem(title: "Build Number:", value: AppInfoProvider.buildNumber()))
-
-        let lastScheduleUpdate = SeptaNetwork.sharedInstance.databaseUpdateDate
-        let lastScheduleUpdateString = DateFormatters.uiDateFormatter.string(from: lastScheduleUpdate)
-        viewItems.append(AboutViewModelItem(title: "Schedule Updated:", value: lastScheduleUpdateString))
-
+        viewItems.append(AboutViewModelItem(title: "Schedule Updated:", value: AppInfoProvider.databaseUpdateDate()))
+        viewItems.append(AboutViewModelItem(title: "Schedule Version:", value: AppInfoProvider.databaseVersionNumber()))
         viewItems.append(AboutViewModelItem(title: "Generic Alerts Source:", value: SeptaNetwork.sharedInstance.genericAlertEnvironment.rawValue))
     }
 }

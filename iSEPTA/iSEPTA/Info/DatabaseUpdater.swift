@@ -83,6 +83,7 @@ class DatabaseUpdater {
                         if self.applyScriptToDatabase(file: outputURL) {
                             self.databaseFileManager.updateCurrentDatabase(dbURL: outputURL)
                             self.databaseFileManager.updateCurrentDatabaseVersion(version: latestDb.version)
+                            self.databaseFileManager.updateDatabaseUpdateDate(updateDate: latestDb.updateDate)
                             DispatchQueue.main.async {
                                 store.dispatch(DatabaseUpdateDownloaded())
                             }
