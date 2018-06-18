@@ -119,6 +119,8 @@ extension FavoritesViewModel { // table loading
     func configureTrip(favoriteViewModel: FavoriteNextToArriveViewModel, trip: NextToArriveTrip, stackView: UIStackView) {
 
         let tripView: TripView! = stackView.awakeInsertArrangedView(nibName: "TripView")
+        tripView.isInteractive = false
+        tripView.setNeedsDisplay()
         favoriteViewModel.configureTripView(tripView: tripView, forTrip: trip)
     }
 

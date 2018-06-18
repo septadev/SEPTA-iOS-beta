@@ -17,10 +17,10 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EFo-Ny-r4U" userLabel="DepartingView">
-                    <rect key="frame" x="289" y="8" width="74" height="42"/>
+                    <rect key="frame" x="277" y="8" width="81" height="42"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEPARTING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRp-aO-xV4" userLabel="Departing">
-                            <rect key="frame" x="8" y="7.5" width="57.5" height="12"/>
+                            <rect key="frame" x="11.5" y="7.5" width="57.5" height="12"/>
                             <accessibility key="accessibilityConfiguration">
                                 <bool key="isElement" value="NO"/>
                             </accessibility>
@@ -29,7 +29,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="42 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ag-sb-qIU" userLabel="DepartingWhen">
-                            <rect key="frame" x="16.5" y="20.5" width="41.5" height="14.5"/>
+                            <rect key="frame" x="20" y="20.5" width="41.5" height="14.5"/>
                             <accessibility key="accessibilityConfiguration" hint="Departing in"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                             <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -38,7 +38,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="74" id="6Nm-Rf-Lk4"/>
+                        <constraint firstAttribute="width" constant="81" id="6Nm-Rf-Lk4"/>
                         <constraint firstItem="oRp-aO-xV4" firstAttribute="centerX" secondItem="EFo-Ny-r4U" secondAttribute="centerX" id="TAw-1F-Thj" userLabel="DepartingCenterX"/>
                         <constraint firstAttribute="height" constant="42" id="UPt-kd-9mV"/>
                         <constraint firstItem="2Ag-sb-qIU" firstAttribute="top" secondItem="oRp-aO-xV4" secondAttribute="bottom" constant="1" id="g1H-Jy-3O8" userLabel="DepartingWhenTop"/>
@@ -87,6 +87,14 @@
                         <constraint firstAttribute="trailing" secondItem="AUO-LI-a43" secondAttribute="trailing" id="oB7-9f-suJ" userLabel="StartStopLabelRight"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GMc-n1-8zy" userLabel="Chevron" customClass="LittleBlueChevronButton" customModule="Septa" customModuleProvider="target">
+                    <rect key="frame" x="358" y="18" width="22" height="22"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="22" id="9Pv-HB-0bM"/>
+                        <constraint firstAttribute="height" constant="22" id="dSL-8t-18p"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <accessibility key="accessibilityConfiguration">
@@ -94,23 +102,34 @@
             </accessibility>
             <gestureRecognizers/>
             <constraints>
+                <constraint firstItem="GMc-n1-8zy" firstAttribute="centerY" secondItem="5Fu-JC-ETZ" secondAttribute="centerY" id="1bc-GG-rGj" userLabel="ChevronCenterY"/>
                 <constraint firstItem="5Fu-JC-ETZ" firstAttribute="bottom" secondItem="EFo-Ny-r4U" secondAttribute="bottom" constant="8" id="3gl-3X-Uua" userLabel="DepartingViewBottom"/>
                 <constraint firstItem="EFo-Ny-r4U" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RUy-UC-P8X" secondAttribute="trailing" constant="10" id="Eti-eV-tM9" userLabel="LabelBoxRight"/>
                 <constraint firstItem="EFo-Ny-r4U" firstAttribute="top" secondItem="5Fu-JC-ETZ" secondAttribute="top" constant="8" id="FMk-iT-fiX" userLabel="DepartingViewTop"/>
+                <constraint firstItem="GMc-n1-8zy" firstAttribute="leading" secondItem="EFo-Ny-r4U" secondAttribute="trailing" id="Ptp-d3-CwB" userLabel="DepartingViewRight"/>
                 <constraint firstItem="RUy-UC-P8X" firstAttribute="centerY" secondItem="5Fu-JC-ETZ" secondAttribute="centerY" id="aBi-VJ-RJO" userLabel="LabelBoxCenterY"/>
-                <constraint firstItem="5Fu-JC-ETZ" firstAttribute="trailing" secondItem="EFo-Ny-r4U" secondAttribute="trailing" constant="17" id="faK-P8-rRJ"/>
+                <constraint firstItem="GMc-n1-8zy" firstAttribute="trailing" secondItem="5Fu-JC-ETZ" secondAttribute="trailing" id="cST-4E-lpc" userLabel="ChevronRight"/>
                 <constraint firstItem="RUy-UC-P8X" firstAttribute="leading" secondItem="5Fu-JC-ETZ" secondAttribute="leading" constant="17" id="feO-3T-ejp" userLabel="LabelBoxLeft"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="5Fu-JC-ETZ"/>
             <connections>
+                <outlet property="chevronView" destination="GMc-n1-8zy" id="4qI-Pb-spk"/>
                 <outlet property="departingBox" destination="EFo-Ny-r4U" id="mLx-iw-gTa"/>
+                <outlet property="departingViewTrailingConstraint" destination="Ptp-d3-CwB" id="gkJ-bX-ab8"/>
                 <outlet property="departingWhenLabel" destination="2Ag-sb-qIU" id="4DB-8n-RBi"/>
                 <outlet property="endStopLabel" destination="WW2-8i-ztR" id="R5N-0q-x3e"/>
                 <outlet property="onTimeLabel" destination="3ju-XO-Vsu" id="ZSp-ME-upC"/>
                 <outlet property="startStopLabel" destination="AUO-LI-a43" id="wKg-Zo-u4b"/>
+                <outlet property="tapGestureRecognizer" destination="ZU4-K5-4QX" id="QYy-pD-Wi4"/>
+                <outletCollection property="gestureRecognizers" destination="ZU4-K5-4QX" appends="YES" id="115-Sq-E1s"/>
             </connections>
             <point key="canvasLocation" x="11" y="-221"/>
         </view>
+        <tapGestureRecognizer id="ZU4-K5-4QX">
+            <connections>
+                <action selector="didTapView:" destination="h1Q-tf-smI" id="ifo-oF-x7p"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>
