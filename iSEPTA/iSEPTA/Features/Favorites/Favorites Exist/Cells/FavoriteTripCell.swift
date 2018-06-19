@@ -78,11 +78,11 @@ class FavoriteTripCell: UITableViewCell {
         }
     }
     
-    func configureForShowSchedule() {
-        hasNtaData = false
-        chevron.isHidden = !hasNtaData
-        viewSchedules.isHidden = hasNtaData
-        titleLabelTrailing.constant = viewSchedules.frame.size.width - 10
+    func configureBasedOnScheduleAvailability(scheduleDataAvailable: Bool) {
+        hasNtaData = !scheduleDataAvailable
+        chevron.isHidden = scheduleDataAvailable
+        viewSchedules.isHidden = !scheduleDataAvailable
+        titleLabelTrailing.constant = scheduleDataAvailable ? viewSchedules.frame.size.width - 10 : 0
     }
 }
 
