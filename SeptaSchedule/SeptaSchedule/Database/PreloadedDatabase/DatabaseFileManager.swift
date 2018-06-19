@@ -30,17 +30,17 @@ public class DatabaseFileManager {
         fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
     }()
 
-    lazy var databaseURL: URL? = {
+    var databaseFileExistsInDocumentsDirectory: Bool {
+        guard let url = databaseURL() else { return false }
+        return fileManager.fileExists(atPath: url.path)
+    }
+    
+    public func databaseURL() -> URL? {
         if let currentDB = defaults.string(forKey: currentDatabaseNameKey) {
             return documentDirectoryURL?.appendingPathComponent(currentDB)
         } else {
             return documentDirectoryURL?.appendingPathComponent(defaultDatabaseName)
         }
-    }()
-
-    var databaseFileExistsInDocumentsDirectory: Bool {
-        guard let url = databaseURL else { return false }
-        return fileManager.fileExists(atPath: url.path)
     }
 
     public func unzipFileToDocumentsDirectory() {
@@ -99,7 +99,7 @@ public class DatabaseFileManager {
     }
     
     public func removeOldDatabases() {
-        guard let currentDatabase = self.databaseURL else { return }
+        guard let currentDatabase = self.databaseURL() else { return }
         
         let allSqliteFiles = allUserSqliteFiles()
         for file in allSqliteFiles {
