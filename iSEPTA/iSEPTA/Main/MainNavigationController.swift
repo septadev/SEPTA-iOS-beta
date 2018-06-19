@@ -57,7 +57,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-            if store.state.databaseState != .loaded {
+            if store.state.databaseState == .loading {
                 self?.performSegue(withIdentifier: "showDatabaseLoadingModal", sender: self)
             }
         }

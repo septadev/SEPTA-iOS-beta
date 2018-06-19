@@ -103,7 +103,7 @@ public class DatabaseFileManager {
         
         let allSqliteFiles = allUserSqliteFiles()
         for file in allSqliteFiles {
-            if file != currentDatabase {
+            if file.lastPathComponent != currentDatabase.lastPathComponent {
                 do {
                     try fileManager.removeItem(at: file)
                 } catch {
