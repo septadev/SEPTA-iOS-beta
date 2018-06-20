@@ -152,7 +152,7 @@ extension MainNavigationController: DatabaseUpdateWatcherDelegate {
         })
         alert.addAction(downloadAction)
         alert.addAction(laterAction)
-        self.present(alert, animated: true, completion: nil)
+        alert.show()
     }
 }
 
@@ -160,7 +160,7 @@ extension MainNavigationController: DatabaseDownloadedWatcherDelegate {
     func databaseDownloadComplete() {
         let alert = UIAlertController(title: "Schedule download complete", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        alert.show()
         let dbFileManager = DatabaseFileManager()
         dbFileManager.setDatabaseUpdateInProgress(inProgress: false)
         store.dispatch(DatabaseUpToDate())

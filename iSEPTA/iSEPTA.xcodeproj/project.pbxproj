@@ -17,6 +17,7 @@
 		0E4328E820D060DF00FBD805 /* DatabaseDownloadProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4328E720D060DF00FBD805 /* DatabaseDownloadProvider.swift */; };
 		0E4328EA20D12CD400FBD805 /* DatabaseDownloadedWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4328E920D12CD400FBD805 /* DatabaseDownloadedWatcher.swift */; };
 		0E64472220D27A7600A99E2D /* DatabaseUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64472120D27A7600A99E2D /* DatabaseUpdateManager.swift */; };
+		0EA1FF9020DA9E37007A9A91 /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA1FF8F20DA9E37007A9A91 /* UIAlertControllerExtensions.swift */; };
 		5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */; };
 		580128061F6B1D13006B6DB8 /* FavoriteTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580128031F6B1D13006B6DB8 /* FavoriteTripCell.xib */; };
 		580128081F6B26D2006B6DB8 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580128071F6B26D2006B6DB8 /* RoundedShadowView.swift */; };
@@ -669,6 +670,7 @@
 		0E4328E720D060DF00FBD805 /* DatabaseDownloadProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseDownloadProvider.swift; sourceTree = "<group>"; };
 		0E4328E920D12CD400FBD805 /* DatabaseDownloadedWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseDownloadedWatcher.swift; sourceTree = "<group>"; };
 		0E64472120D27A7600A99E2D /* DatabaseUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateManager.swift; sourceTree = "<group>"; };
+		0EA1FF8F20DA9E37007A9A91 /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtensions.swift; sourceTree = "<group>"; };
 		5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectedTableViewCell.swift; sourceTree = "<group>"; };
 		580128031F6B1D13006B6DB8 /* FavoriteTripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteTripCell.xib; sourceTree = "<group>"; };
 		580128071F6B26D2006B6DB8 /* RoundedShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundedShadowView.swift; path = iSEPTA/Views/RoundedShadowView.swift; sourceTree = SOURCE_ROOT; };
@@ -1432,6 +1434,7 @@
 				58470C0A1F3F2AD500F3C9B5 /* StateLogEntry.swift */,
 				581804BA1F3F8051002184E3 /* LoggingError.swift */,
 				58E33F1D1F6147DE00C74B7C /* CLLocationCoordinate2D+Equatable.swift */,
+				0EA1FF8F20DA9E37007A9A91 /* UIAlertControllerExtensions.swift */,
 			);
 			path = Utlities;
 			sourceTree = "<group>";
@@ -3429,6 +3432,7 @@
 				58290E411F372B51000CCF3C /* AppState.swift in Sources */,
 				676B7D9D1F7D186B0052F016 /* MoreNavigationController.swift in Sources */,
 				58FB264A1F6EC42F00F17048 /* AlertProviders.swift in Sources */,
+				0EA1FF9020DA9E37007A9A91 /* UIAlertControllerExtensions.swift in Sources */,
 				5825319E1F40940B0088D056 /* UserPreferencesProviderProtocol.swift in Sources */,
 				67365ACD1F754A3200FC86CB /* SevenEightsAnimationOut.swift in Sources */,
 				58FBB6681F58590F00E6532B /* Route+Title.swift in Sources */,
