@@ -23,17 +23,22 @@ class DatabaseUpdater {
     
     func checkForUpdates() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
         guard let url = URL(string: "https://s3.amazonaws.com/mobiledb.septa.org/latest/latestDb.json") else { return }
+        
         let checkTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
             DispatchQueue.main.async {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
+            
             guard error == nil else {
                 if let error = error {
                     print("Error checking for database update: \(error)")
                 }
                 return
             }
+            
             guard let data = data else {
                 print("No data returned while checking for database update")
                 return
@@ -42,9 +47,24 @@ class DatabaseUpdater {
             do {
                 let decoder = JSONDecoder()
                 let latestDb = try decoder.decode(DatabaseUpdate.self, from: data)
-                if latestDb.version > self.databaseFileManager.currentDatabaseVersion() {
+                self.compareAgainstLocalDatabase(latestDatabase: latestDb)
+            } catch {
+                print("Error decoding json response")
+            }
+        }
+        checkTask.resume()
+    }
+    
+    private func compareAgainstLocalDatabase(latestDatabase: DatabaseUpdate) {
+        DatabaseVersionSQLCommand.sharedInstance.version { (versions, error) in
+            guard error == nil else {
+                print("Error retrieving database version: \(error.debugDescription)")
+                return
+            }
+            if let versions = versions, versions.count == 1 {
+                if latestDatabase.version > versions[0] {
                     DispatchQueue.main.async {
-                        store.dispatch(DatabaseUpdateAvailable(databaseUpdate: latestDb))
+                        store.dispatch(DatabaseUpdateAvailable(databaseUpdate: latestDatabase))
                     }
                 } else {
                     let dbFileManager = DatabaseFileManager()
@@ -53,11 +73,8 @@ class DatabaseUpdater {
                         store.dispatch(DatabaseUpToDate())
                     }
                 }
-            } catch {
-                print("Error decoding json response")
             }
         }
-        checkTask.resume()
     }
     
     func performDownload(latestDb: DatabaseUpdate) {
