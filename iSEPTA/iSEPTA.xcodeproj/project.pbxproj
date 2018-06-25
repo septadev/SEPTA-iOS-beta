@@ -12,6 +12,7 @@
 		0E2A006820CFFAFA00E97BAF /* DatabaseUpdateActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A006720CFFAFA00E97BAF /* DatabaseUpdateActions.swift */; };
 		0E313BB020BEFCB7002EFD34 /* DatabaseUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E313BAF20BEFCB7002EFD34 /* DatabaseUpdater.swift */; };
 		0E32580E20C07E030074FF38 /* septa_database_update.sql in Resources */ = {isa = PBXBuildFile; fileRef = 0E32580B20C07E030074FF38 /* septa_database_update.sql */; };
+		0E39082E20E1268900E94D53 /* InAppReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E39082D20E1268900E94D53 /* InAppReview.swift */; };
 		0E4328E320D02C6400FBD805 /* DatabaseUpdateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4328E220D02C6400FBD805 /* DatabaseUpdateProvider.swift */; };
 		0E4328E620D04AC800FBD805 /* DatabaseUpdateWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4328E520D04AC800FBD805 /* DatabaseUpdateWatcher.swift */; };
 		0E4328E820D060DF00FBD805 /* DatabaseDownloadProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4328E720D060DF00FBD805 /* DatabaseDownloadProvider.swift */; };
@@ -665,6 +666,7 @@
 		0E2A006720CFFAFA00E97BAF /* DatabaseUpdateActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateActions.swift; sourceTree = "<group>"; };
 		0E313BAF20BEFCB7002EFD34 /* DatabaseUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdater.swift; sourceTree = "<group>"; };
 		0E32580B20C07E030074FF38 /* septa_database_update.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = septa_database_update.sql; sourceTree = "<group>"; };
+		0E39082D20E1268900E94D53 /* InAppReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppReview.swift; sourceTree = "<group>"; };
 		0E4328E220D02C6400FBD805 /* DatabaseUpdateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateProvider.swift; sourceTree = "<group>"; };
 		0E4328E520D04AC800FBD805 /* DatabaseUpdateWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateWatcher.swift; sourceTree = "<group>"; };
 		0E4328E720D060DF00FBD805 /* DatabaseDownloadProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseDownloadProvider.swift; sourceTree = "<group>"; };
@@ -1435,6 +1437,7 @@
 				581804BA1F3F8051002184E3 /* LoggingError.swift */,
 				58E33F1D1F6147DE00C74B7C /* CLLocationCoordinate2D+Equatable.swift */,
 				0EA1FF8F20DA9E37007A9A91 /* UIAlertControllerExtensions.swift */,
+				0E39082D20E1268900E94D53 /* InAppReview.swift */,
 			);
 			path = Utlities;
 			sourceTree = "<group>";
@@ -3488,6 +3491,7 @@
 				580A355F1F6A0F9B000FCA82 /* FavoritesViewController.swift in Sources */,
 				58E33F161F6143E000C74B7C /* NextToArriveStop.swift in Sources */,
 				58EB8D0F1F5D79530028A487 /* NextToArriveNavigationController.swift in Sources */,
+				0E39082E20E1268900E94D53 /* InAppReview.swift in Sources */,
 				58F444FC1F3D335400A93208 /* SeptaAction.swift in Sources */,
 				678F052C1F5B7CEC00CC4D3C /* AddressLookupReducer.swift in Sources */,
 				0E2A006820CFFAFA00E97BAF /* DatabaseUpdateActions.swift in Sources */,

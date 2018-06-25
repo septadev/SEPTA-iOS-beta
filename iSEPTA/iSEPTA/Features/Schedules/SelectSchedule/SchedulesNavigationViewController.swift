@@ -15,6 +15,11 @@ class SchedulesNavigationController: BaseNavigationController {
         stateProvider.subscribe()
         super.stateProvider = stateProvider
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let inAppReview = InAppReview()
+        inAppReview.promptIfAppropriate()
+    }
 
     func initializeNavStackState() {
         currentStackState = NavigationStackState(viewControllers: [.selectSchedules], modalViewController: nil)

@@ -47,6 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_: UIApplication) {
         databaseUpdateManager.appLaunched(coldStart: false)
+        let inAppReview = InAppReview()
+        inAppReview.appLaunched()
     }
 
     func applicationDidBecomeActive(_: UIApplication) {
