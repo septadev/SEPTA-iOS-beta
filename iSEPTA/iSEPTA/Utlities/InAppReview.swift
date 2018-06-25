@@ -17,8 +17,8 @@ struct InAppReview {
     let forceAppReviewResetAppliedKey = "forceAppReviewResetAppliedKey"
     let infoPlistResetAppReviewKey = "resetAppReview"
     static let crashReportedKey = "crashReportedKey"
-    let minimumLaunchCount = 20
-    let maximumPostCrashCount = 15
+    let minimumLaunchCount = 5
+    let maximumPostCrashCount = 1
     let defaults = UserDefaults.standard
     
     // MARK: - Public functions

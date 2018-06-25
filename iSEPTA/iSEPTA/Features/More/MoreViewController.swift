@@ -8,9 +8,12 @@
 
 import Foundation
 import UIKit
+import Crashlytics
+
 class MoreViewController: UIViewController, IdentifiableController, UITableViewDelegate, UITableViewDataSource {
     let cellId = "moreCell"
     let viewController: ViewController = .moreViewController
+    var tapCrashCount = 0
 
     var viewModel: MoreViewModel!
 
@@ -21,6 +24,8 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
     @IBOutlet var imageView: UIImageView! {
         didSet {
             imageView.backgroundColor = SeptaColor.navBarBlue
+            imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTap(_:))))
+            imageView.isUserInteractionEnabled = true
         }
     }
 
@@ -73,5 +78,13 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
             tableView.deselectRow(at: indexPath, animated: true)
         })
+    }
+    
+    @objc func imageTap(_ sender: UITapGestureRecognizer) {
+        if tapCrashCount == 10 {
+            Crashlytics.sharedInstance().crash()
+        } else {
+            tapCrashCount += 1
+        }
     }
 }
