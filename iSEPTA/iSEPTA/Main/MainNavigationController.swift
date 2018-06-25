@@ -68,8 +68,12 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         modalAlertsDisplayedWatcher = AlertState_ModalAlertsDisplayedWatcher()
         modalAlertsDisplayedWatcher?.delegate = self
         
-        databaseUpdateWatcher = DatabaseUpdateWatcher(delegate: self)
-        databaseDownloadedWatcher = DatabaseDownloadedWatcher(delegate: self)
+        if databaseUpdateWatcher == nil {
+            databaseUpdateWatcher = DatabaseUpdateWatcher(delegate: self)
+        }
+        if databaseDownloadedWatcher == nil {
+            databaseDownloadedWatcher = DatabaseDownloadedWatcher(delegate: self)
+        }
     }
 
     var modalTransitioningDelegate: UIViewControllerTransitioningDelegate!
