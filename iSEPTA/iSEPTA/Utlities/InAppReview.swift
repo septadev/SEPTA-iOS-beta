@@ -16,13 +16,17 @@ struct InAppReview {
     let reviewRequestedKey = "reviewRequestedKey"
     let forceAppReviewResetAppliedKey = "forceAppReviewResetAppliedKey"
     let infoPlistResetAppReviewKey = "resetAppReview"
+    static let crashReportedKey = "crashReportedKey"
     let minimumLaunchCount = 20
+    let maximumPostCrashCount = 15
     let defaults = UserDefaults.standard
     
     // MARK: - Public functions
     
     func appLaunched() {
-        if shouldForceResetAppReviewState() {
+        if crashWasReported() {
+            adjustForCrash()
+        } else if shouldForceResetAppReviewState() {
             resetReviewCount()
         } else {
             incrementLaunchCount()
@@ -65,5 +69,16 @@ struct InAppReview {
             return reset && !resetAlreadyApplied
         }
         return false
+    }
+    
+    private func crashWasReported() -> Bool {
+        return defaults.bool(forKey: InAppReview.crashReportedKey)
+    }
+    
+    private func adjustForCrash() {
+        defaults.set(false, forKey: InAppReview.crashReportedKey)
+        if appLaunchCount() > maximumPostCrashCount {
+            defaults.set(maximumPostCrashCount, forKey: launchCountKey)
+        }
     }
 }
