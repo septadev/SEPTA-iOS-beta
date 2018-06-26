@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E39083E20E2805200E94D53 /* SEPTA.zip in Resources */ = {isa = PBXBuildFile; fileRef = 0E39083D20E2805200E94D53 /* SEPTA.zip */; };
 		0E71221720DAD5330035F635 /* DatabaseVersionSQLQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E71221620DAD5330035F635 /* DatabaseVersionSQLQuery.swift */; };
 		0E71221920DAD69A0035F635 /* DatabaseVersionSQLCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E71221820DAD69A0035F635 /* DatabaseVersionSQLCommand.swift */; };
 		0E71221C20DAD6BE0035F635 /* databaseVersion.sql in Resources */ = {isa = PBXBuildFile; fileRef = 0E71221B20DAD6BE0035F635 /* databaseVersion.sql */; };
-		0E9526E620ADC660007B827B /* SEPTA.zip in Resources */ = {isa = PBXBuildFile; fileRef = 0E9526E520ADC660007B827B /* SEPTA.zip */; };
 		5807CD981F461A8D00896B18 /* StopReverseCommandTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5807CD961F46176200896B18 /* StopReverseCommandTest.swift */; };
 		5809EDFE1F4385EB00BBECFF /* busTripSchedule.sql in Resources */ = {isa = PBXBuildFile; fileRef = 5809EDFD1F4385EB00BBECFF /* busTripSchedule.sql */; };
 		5809EE021F43883900BBECFF /* TransitMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DCA0941F3E280C002F08CF /* TransitMode.swift */; };
@@ -116,10 +116,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0E39083D20E2805200E94D53 /* SEPTA.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = SEPTA.zip; sourceTree = "<group>"; };
 		0E71221620DAD5330035F635 /* DatabaseVersionSQLQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseVersionSQLQuery.swift; sourceTree = "<group>"; };
 		0E71221820DAD69A0035F635 /* DatabaseVersionSQLCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseVersionSQLCommand.swift; sourceTree = "<group>"; };
 		0E71221B20DAD6BE0035F635 /* databaseVersion.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = databaseVersion.sql; sourceTree = "<group>"; };
-		0E9526E520ADC660007B827B /* SEPTA.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = SEPTA.zip; sourceTree = "<group>"; };
 		5807CD961F46176200896B18 /* StopReverseCommandTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopReverseCommandTest.swift; sourceTree = "<group>"; };
 		5809EDFD1F4385EB00BBECFF /* busTripSchedule.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = busTripSchedule.sql; sourceTree = "<group>"; };
 		5809EE041F4389F300BBECFF /* RoutesSQLQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesSQLQuery.swift; sourceTree = "<group>"; };
@@ -292,7 +292,7 @@
 		582F4EEE1F33B1370062A546 /* PreloadedDatabase */ = {
 			isa = PBXGroup;
 			children = (
-				0E9526E520ADC660007B827B /* SEPTA.zip */,
+				0E39083D20E2805200E94D53 /* SEPTA.zip */,
 				582F4EEF1F33B1370062A546 /* DatabaseFileManager.swift */,
 				58FBBFA71F6585B100B7A4DA /* DatabaseState.swift */,
 				58FBBFA91F6585E700B7A4DA /* DatabaseStateDelegate.swift */,
@@ -769,7 +769,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E9526E620ADC660007B827B /* SEPTA.zip in Resources */,
 				5867AC531F4641D800370254 /* busStopsByStopId.sql in Resources */,
 				0E71221C20DAD6BE0035F635 /* databaseVersion.sql in Resources */,
 				5825318C1F3FCD490088D056 /* busRoute.sql in Resources */,
@@ -781,6 +780,7 @@
 				6789F0011F44894100BD26B1 /* railTripSchedule.sql in Resources */,
 				5893BDA21F7A769200300849 /* railRoutesFromStops.sql in Resources */,
 				58DD1A951F6011A3002532DC /* allRailEnds.sql in Resources */,
+				0E39083E20E2805200E94D53 /* SEPTA.zip in Resources */,
 				5868897F1F42978A00B2920A /* busTripEnd.sql in Resources */,
 				5854E2051F45FDA00030E3E6 /* busTripStopReverse.sql in Resources */,
 				5825318B1F3FCD490088D056 /* railRoute.sql in Resources */,
