@@ -124,6 +124,15 @@ public class DatabaseFileManager {
                     if progress == 1 {
                         strongSelf.updateState(databaseState: .loaded)
                         print("database unzip is complete")
+                        
+                        // Set database version property
+                        DatabaseVersionSQLCommand.sharedInstance.version(completion: { (versions, error) in
+                            guard error == nil else { return }
+                            if let versions = versions, versions.count == 1 {
+                                let dbVersion = versions[0]
+                                strongSelf.updateCurrentDatabaseVersion(version: dbVersion)
+                            }
+                        })
                     }
                 })
                 var resourceValues: URLResourceValues = URLResourceValues()
