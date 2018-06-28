@@ -1,5 +1,6 @@
 SELECT
   S.stop_id                   stopId,
+  RRS.sequence                stop_sequence,
   S.stop_name                 stopName,
   cast(S.stop_lat AS DECIMAL) stopLatitude,
   cast(S.stop_lon AS DECIMAL) stopLongitude,

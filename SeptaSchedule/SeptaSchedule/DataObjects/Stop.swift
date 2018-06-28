@@ -4,6 +4,7 @@ import Foundation
 
 public struct Stop: Codable {
     public let stopId: Int
+    public let sequence: Int
     public let stopName: String
     public let stopLatitude: Double
     public let stopLongitude: Double
@@ -12,8 +13,9 @@ public struct Stop: Codable {
     public let saturdayService: Bool
     public let sundayService: Bool
 
-    public init(stopId: Int, stopName: String, stopLatitude: Double, stopLongitude: Double, wheelchairBoarding: Bool, weekdayService: Bool, saturdayService: Bool, sundayService: Bool) {
+    public init(stopId: Int, sequence: Int, stopName: String, stopLatitude: Double, stopLongitude: Double, wheelchairBoarding: Bool, weekdayService: Bool, saturdayService: Bool, sundayService: Bool) {
         self.stopId = stopId
+        self.sequence = sequence
         self.stopName = stopName
         self.stopLatitude = stopLatitude
         self.stopLongitude = stopLongitude
@@ -25,6 +27,7 @@ public struct Stop: Codable {
 
     enum CodingKeys: String, CodingKey {
         case stopId
+        case sequence
         case stopName
         case stopLatitude
         case stopLongitude
@@ -48,6 +51,8 @@ public struct Stop: Codable {
         saturdayService = saturdayServiceInt == 1
         let sundayServiceInt = try container.decode(Int.self, forKey: .sundayService)
         sundayService = sundayServiceInt == 1
+        let sequenceInt = try? container.decode(Int.self, forKey: .sequence)
+        sequence = sequenceInt ?? 0
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -60,6 +65,7 @@ public struct Stop: Codable {
         try container.encode(weekdayService ? 1 : 0, forKey: .weekdayService)
         try container.encode(saturdayService ? 1 : 0, forKey: .saturdayService)
         try container.encode(sundayService ? 1 : 0, forKey: .sundayService)
+        try container.encode(sequence, forKey: .sequence)
     }
 }
 

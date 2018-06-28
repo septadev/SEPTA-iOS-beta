@@ -18,4 +18,8 @@ protocol SearchModalHeaderDelegate: AnyObject {
     func dismissModal()
 
     func updateActivityIndicator(animating: Bool)
+    
+    func sortAlphaTapped(direction: SortOrder)
+    
+    func sortByStopOrderTapped()
 }

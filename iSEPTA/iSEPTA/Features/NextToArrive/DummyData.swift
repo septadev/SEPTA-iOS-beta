@@ -18,7 +18,7 @@ extension Route {
 extension Stop {
     static func dummyStop(stopId: Int) -> Stop {
 
-        return Stop(stopId: stopId, stopName: "", stopLatitude: 0, stopLongitude: 0, wheelchairBoarding: false, weekdayService: false, saturdayService: false, sundayService: false)
+        return Stop(stopId: stopId, sequence: 1, stopName: "", stopLatitude: 0, stopLongitude: 0, wheelchairBoarding: false, weekdayService: false, saturdayService: false, sundayService: false)
     }
 }
 

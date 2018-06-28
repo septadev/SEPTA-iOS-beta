@@ -68,4 +68,8 @@ extension SelectRouteViewController: SearchModalHeaderDelegate {
 
     func updateActivityIndicator(animating _: Bool) {
     }
+    
+    func sortAlphaTapped(direction: SortOrder) {}
+    
+    func sortByStopOrderTapped() {}
 }

@@ -21,8 +21,9 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber {
     @IBOutlet var searchView: UIView!
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var selectNearbyLabel: UILabel!
-    @IBOutlet var viewHeightConstraintForAddress: NSLayoutConstraint!
-    @IBOutlet var viewHeightConstraintForStops: NSLayoutConstraint!
+    @IBOutlet weak var alphaSortButton: StopSortOrderButton!
+    @IBOutlet weak var stopOrderSortButton: StopSortOrderButton!
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet var textField: UITextField! {
         didSet {
             textField.delegate = textFieldDelegate
@@ -97,29 +98,23 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber {
         didSet {
             if oldValue != searchMode {
                 store.dispatch(StopSearchModeChanged(targetForScheduleAction: targetForScheduleAction, searchMode: searchMode))
-                toggleHeightConstraintsForSearchMode()
+                selectNearbyLabel.isHidden = self.searchMode != .directLookupWithAddress
                 updateTextFieldPlaceholderText()
             }
+            if searchMode == .directLookup {
+                adjustViewHeight(expanded: true)
+                sortButtonsShouldBeVisible(showButtons: true)
+            }
+            if searchMode == .byAddress {
+                adjustViewHeight(expanded: false)
+                sortButtonsShouldBeVisible(showButtons: false)
+            }
+            if searchMode == .directLookupWithAddress {
+                adjustViewHeight(expanded: true)
+                sortButtonsShouldBeVisible(showButtons: false)
+            }
+            
         }
-    }
-
-    func toggleHeightConstraintsForSearchMode() {
-        switch searchMode {
-        case .directLookup, .byAddress:
-            viewHeightConstraintForAddress.isActive = false
-            viewHeightConstraintForStops.isActive = true
-
-        default:
-            viewHeightConstraintForStops.isActive = false
-            viewHeightConstraintForAddress.isActive = true
-        }
-        searchView.setNeedsLayout()
-
-        delegate?.animatedLayoutNeeded(block: {
-
-        }, completion: {
-            self.selectNearbyLabel.isHidden = self.searchMode != .directLookupWithAddress
-        })
     }
 
     func updateTextFieldPlaceholderText() {
@@ -132,10 +127,80 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber {
         super.viewDidLoad()
         subscribe()
         addCornersAndBorders()
-
+        
+        let activeTab = store.state.navigationState.activeNavigationController
+        if activeTab == .nextToArrive && transitMode == .rail {
+            sortButtonsShouldBeVisible(showButtons: false)
+            adjustViewHeight(expanded: false)
+        } else {
+            initSortButtons()
+            adjustViewHeight(expanded: true)
+        }
+        
         view.translatesAutoresizingMaskIntoConstraints = false
         selectNearbyLabel.text = transitMode.addressSearchPrompt()
         selectNearbyLabel.isHidden = true
+    }
+    
+    private func adjustViewHeight(expanded: Bool) {
+        heightConstraint.constant = expanded ? 168 : 121
+    }
+    
+    private func sortButtonsShouldBeVisible(showButtons: Bool) {
+        alphaSortButton.isHidden = !showButtons
+        stopOrderSortButton.isHidden = !showButtons
+    }
+    
+    private func initSortButtons() {
+        alphaSortButton.buttonImage.image = UIImage(named: "alphaSortIcon")
+        stopOrderSortButton.buttonImage.image = UIImage(named: "clipboardIcon")
+        
+        let stopSortGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleStopSortTap(_:)))
+        stopOrderSortButton.addGestureRecognizer(stopSortGestureRecognizer)
+        let alphaSortGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleAlphaSortTap(_:)))
+        alphaSortButton.addGestureRecognizer(alphaSortGestureRecognizer)
+    }
+    
+    @objc private func handleStopSortTap(_ sender: UITapGestureRecognizer) {
+        activateStopSortButton()
+        delegate?.sortByStopOrderTapped()
+    }
+    
+    @objc private func handleAlphaSortTap(_ sender: UITapGestureRecognizer) {
+        activateAlphaSortButton()
+        delegate?.sortAlphaTapped(direction: alphaSortButton.order)
+    }
+    
+    func activateStopSortButton() {
+        stopOrderSortButton.active = true
+        alphaSortButton.active = false
+    }
+    
+    func activateAlphaSortButton() {
+        stopOrderSortButton.active = false
+        if alphaSortButton.active {
+            if alphaSortButton.order == .alphaAscending {
+                alphaSortButton.order = .alphaDescending
+                alphaSortButton.buttonImage.image = UIImage(named: "alphaSortIconReverse")
+            } else {
+                alphaSortButton.order = .alphaAscending
+                alphaSortButton.buttonImage.image = UIImage(named: "alphaSortIcon")
+            }
+        }
+        alphaSortButton.active = true
+    }
+    
+    func activateButton(from sortOrder: SortOrder) {
+        switch sortOrder {
+        case .alphaAscending:
+            alphaSortButton.active = false
+            activateAlphaSortButton()
+        case .alphaDescending:
+            alphaSortButton.active = true
+            activateAlphaSortButton()
+        case .stopSequence:
+            activateStopSortButton()
+        }
     }
 
     // MARK: - View Life Cycle
