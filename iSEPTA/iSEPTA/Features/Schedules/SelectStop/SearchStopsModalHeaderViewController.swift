@@ -128,6 +128,12 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber {
         subscribe()
         addCornersAndBorders()
         
+        view.translatesAutoresizingMaskIntoConstraints = false
+        selectNearbyLabel.text = transitMode.addressSearchPrompt()
+        selectNearbyLabel.isHidden = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let activeTab = store.state.navigationState.activeNavigationController
         if activeTab == .nextToArrive && transitMode == .rail {
             sortButtonsShouldBeVisible(showButtons: false)
@@ -136,10 +142,6 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber {
             initSortButtons()
             adjustViewHeight(expanded: true)
         }
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        selectNearbyLabel.text = transitMode.addressSearchPrompt()
-        selectNearbyLabel.isHidden = true
     }
     
     private func adjustViewHeight(expanded: Bool) {
