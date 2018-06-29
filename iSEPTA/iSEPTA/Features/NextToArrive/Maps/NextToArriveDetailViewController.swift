@@ -20,7 +20,8 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
     @IBOutlet var editFavoriteBarButtonItem: UIBarButtonItem!
     weak var infoHeaderView: UIView?
     @IBOutlet var createFavoriteBarButtonItem: UIBarButtonItem!
-
+    @IBOutlet weak var refreshBarButtonItem: UIBarButtonItem!
+    
     @IBOutlet var upSwipeGestureRecognizer: UISwipeGestureRecognizer! {
         didSet {
             upSwipeGestureRecognizer.addTarget(self, action: #selector(NextToArriveDetailViewController.swipeAction(_:)))
@@ -81,6 +82,7 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
         nextToArriveFavoritesController = NextToArriveFavoritesIconController()
         nextToArriveFavoritesController.createFavoriteBarButtonItem = createFavoriteBarButtonItem
         nextToArriveFavoritesController.editFavoriteBarButtonItem = editFavoriteBarButtonItem
+        nextToArriveFavoritesController.refreshBarButtonItem = refreshBarButtonItem
         nextToArriveFavoritesController.navigationItem = navigationItem
         nextToArriveFavoritesController.setUpTargets()
     }

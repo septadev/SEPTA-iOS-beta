@@ -26,6 +26,12 @@ class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelega
             createFavoriteBarButtonItem.accessibilityLabel = "Create Favorite"
         }
     }
+    
+    var refreshBarButtonItem: UIBarButtonItem! {
+        didSet {
+            refreshBarButtonItem.accessibilityLabel = "Refresh"
+        }
+    }
 
     var favoritesWatcher: FavoritesState_FavoritesWatcher!
 
@@ -86,13 +92,13 @@ class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelega
         if store.state.targetForScheduleActions() == .favorites {
 
             if let _ = currentFavorite {
-                navigationItem.rightBarButtonItem = editFavoriteBarButtonItem
+                navigationItem.rightBarButtonItems = [editFavoriteBarButtonItem, refreshBarButtonItem]
 
             } else {
-                navigationItem.rightBarButtonItem = createFavoriteBarButtonItem
+                navigationItem.rightBarButtonItems = [createFavoriteBarButtonItem, refreshBarButtonItem]
             }
         } else {
-            navigationItem.rightBarButtonItem = createFavoriteBarButtonItem
+            navigationItem.rightBarButtonItems = [createFavoriteBarButtonItem, refreshBarButtonItem]
             if let _ = currentFavorite {
                 createFavoriteBarButtonItem.image = SeptaImages.favoritesEnabled
 
