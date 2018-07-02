@@ -24,23 +24,6 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel 
         view.addStandardDropShadow()
     }
 
-    @IBAction func refreshButtonTapped(_: Any) {
-        guard let target = store.state.targetForScheduleActions() else { return }
-
-        switch target {
-        case .nextToArrive:
-            let action = NextToArriveRefreshDataRequested(refreshUpdateRequested: true)
-            store.dispatch(action)
-        case .favorites:
-            guard var nextToArriveFavorite = store.state.favoritesState.nextToArriveFavorite else { return }
-            nextToArriveFavorite.refreshDataRequested = true
-            let favoriteAction = RequestFavoriteNextToArriveUpdate(favorite: nextToArriveFavorite, description: "User manually refreshed a favorite in Next to Arrive")
-            store.dispatch(favoriteAction)
-        default:
-            break
-        }
-    }
-
     func viewModelUpdated() {
         startLabel.text = viewModel.startName()
         endLabel.text = viewModel.endName()
