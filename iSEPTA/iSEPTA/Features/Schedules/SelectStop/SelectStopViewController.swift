@@ -114,7 +114,9 @@ extension SelectStopViewController: SubscriberUnsubscriber {
         if let preferredSortOrder = UserDefaults.standard.string(forKey: sortOrderUserPreferenceKey),
            let sortOrder = SortOrder(rawValue: preferredSortOrder) {
             stopsViewModel.sortOrder = sortOrder
-            headerViewController?.activateButton(from: sortOrder)
+            DispatchQueue.main.async {
+                self.headerViewController?.activateButton(for: sortOrder)
+            }
         }
     }
 

@@ -169,7 +169,12 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber {
     }
     
     @objc private func handleAlphaSortTap(_ sender: UITapGestureRecognizer) {
-        activateAlphaSortButton()
+        if alphaSortButton.active {
+            handleAlphaButtonSwap()
+        } else {
+            alphaSortButton.active = true
+            stopOrderSortButton.active = false
+        }
         delegate?.sortAlphaTapped(direction: alphaSortButton.order)
     }
     
@@ -178,28 +183,33 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber {
         alphaSortButton.active = false
     }
     
-    func activateAlphaSortButton() {
-        stopOrderSortButton.active = false
-        if alphaSortButton.active {
-            if alphaSortButton.order == .alphaAscending {
-                alphaSortButton.order = .alphaDescending
-                alphaSortButton.buttonImage.image = UIImage(named: "alphaSortIconReverse")
-            } else {
-                alphaSortButton.order = .alphaAscending
-                alphaSortButton.buttonImage.image = UIImage(named: "alphaSortIcon")
-            }
+    private func handleAlphaButtonSwap() {
+        if alphaSortButton.order == .alphaAscending {
+            activateAlphaSortButtonDescending()
+        } else {
+            activateAlphaSortButtonAscending()
         }
-        alphaSortButton.active = true
     }
     
-    func activateButton(from sortOrder: SortOrder) {
+    private func activateAlphaSortButtonAscending() {
+        alphaSortButton.active = true
+        alphaSortButton.order = .alphaAscending
+        alphaSortButton.buttonImage.image = UIImage(named: "alphaSortIcon")
+        stopOrderSortButton.active = false
+    }
+    
+    private func activateAlphaSortButtonDescending() {
+        alphaSortButton.active = true
+        alphaSortButton.order = .alphaDescending
+        alphaSortButton.buttonImage.image = UIImage(named: "alphaSortIconReverse")
+    }
+    
+    func activateButton(for sortOrder: SortOrder) {
         switch sortOrder {
         case .alphaAscending:
-            alphaSortButton.active = false
-            activateAlphaSortButton()
+            activateAlphaSortButtonAscending()
         case .alphaDescending:
-            alphaSortButton.active = true
-            activateAlphaSortButton()
+            activateAlphaSortButtonDescending()
         case .stopSequence:
             activateStopSortButton()
         }
