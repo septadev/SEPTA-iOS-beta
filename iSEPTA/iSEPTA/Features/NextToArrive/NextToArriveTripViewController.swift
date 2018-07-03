@@ -14,19 +14,31 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel 
 
     @IBOutlet var startLabel: UILabel!
     @IBOutlet var endLabel: UILabel!
-
+    @IBOutlet weak var swapRouteImage: UIImageView! {
+        didSet {
+            swapRouteImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.swapRoutes(_:))))
+        }
+    }
+    
     let viewModel = NextToArriveTripViewModel()
 
     override func viewDidLoad() {
         viewModel.delegate = self
         view.backgroundColor = SeptaColor.navBarBlue
-
         view.addStandardDropShadow()
     }
 
     func viewModelUpdated() {
         startLabel.text = viewModel.startName()
         endLabel.text = viewModel.endName()
+        self.swapRouteImage.alpha = 1.0
+    }
+    
+    @objc func swapRoutes(_ sender: UITapGestureRecognizer) {
+        self.swapRouteImage.alpha = 0.5
+        if let target = store.state.targetForScheduleActions() {
+            store.dispatch(ReverseStops(targetForScheduleAction: target))
+        }
     }
 
     func updateActivityIndicator(animating _: Bool) {
