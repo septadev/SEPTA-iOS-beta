@@ -193,6 +193,8 @@
 		58A26D9D1F6F2790005A70D3 /* Route+AlertState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26D9C1F6F2790005A70D3 /* Route+AlertState.swift */; };
 		58A26DA21F6F283E005A70D3 /* AlertDetailProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26DA11F6F283E005A70D3 /* AlertDetailProvider.swift */; };
 		58A26DA41F6F30B2005A70D3 /* Route+Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26DA31F6F30B2005A70D3 /* Route+Displayable.swift */; };
+		58AF5FE420F3D9EA00620484 /* NextToArriveState_ReverseTripWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF5FE320F3D9EA00620484 /* NextToArriveState_ReverseTripWatcher.swift */; };
+		58AF5FE820F3DC8D00620484 /* NextToArriveReverseTripStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF5FE720F3DC8D00620484 /* NextToArriveReverseTripStatus.swift */; };
 		58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA01F33B1120062A546 /* SelectStopViewModel.swift */; };
 		58B1FFD61F42EB2500AD8620 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B1FFD41F42EB2400AD8620 /* MapKit.framework */; };
 		58B2361C1F85559C00251E9A /* GenericAlertDetailProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B2361B1F85559B00251E9A /* GenericAlertDetailProvider.swift */; };
@@ -867,6 +869,8 @@
 		58A26DA11F6F283E005A70D3 /* AlertDetailProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailProvider.swift; sourceTree = "<group>"; };
 		58A26DA31F6F30B2005A70D3 /* Route+Displayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Displayable.swift"; sourceTree = "<group>"; };
 		58ACEADD1F3A9A9B00DC2836 /* SeptaSchedule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SeptaSchedule.xcodeproj; path = ../SeptaSchedule/SeptaSchedule.xcodeproj; sourceTree = "<group>"; };
+		58AF5FE320F3D9EA00620484 /* NextToArriveState_ReverseTripWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveState_ReverseTripWatcher.swift; sourceTree = "<group>"; };
+		58AF5FE720F3DC8D00620484 /* NextToArriveReverseTripStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveReverseTripStatus.swift; sourceTree = "<group>"; };
 		58B1FFD41F42EB2400AD8620 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		58B2361B1F85559B00251E9A /* GenericAlertDetailProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAlertDetailProvider.swift; sourceTree = "<group>"; };
 		58B2778A1F629FAA00663507 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
@@ -2371,6 +2375,7 @@
 			isa = PBXGroup;
 			children = (
 				58EB8D281F5D90CD0028A487 /* NextToArriveState.swift */,
+				58AF5FE720F3DC8D00620484 /* NextToArriveReverseTripStatus.swift */,
 				58EB8D2A1F5D92170028A487 /* NextToArriveReducer.swift */,
 				58EB8D2E1F5D92A20028A487 /* NextToArriveActions.swift */,
 				58126F741F640F8600A6E187 /* NextToArriveUpdateStatus.swift */,
@@ -2486,6 +2491,7 @@
 			isa = PBXGroup;
 			children = (
 				585760AC1F82A31F00A340DB /* NextToArriveState_NextToArriveUpdateStatusWatcher.swift */,
+				58AF5FE320F3D9EA00620484 /* NextToArriveState_ReverseTripWatcher.swift */,
 			);
 			path = NextToArrive;
 			sourceTree = "<group>";
@@ -3200,6 +3206,7 @@
 				580A35671F6A255F000FCA82 /* FavoriteTripCell.swift in Sources */,
 				58A26D9B1F6F221E005A70D3 /* AlertDetailViewController.swift in Sources */,
 				678DAAA41F6728B100EB6EE8 /* NextToArriveTripsTableViewController.swift in Sources */,
+				58AF5FE420F3D9EA00620484 /* NextToArriveState_ReverseTripWatcher.swift in Sources */,
 				6731A1D41F812074000320E1 /* ConnectGradientView.swift in Sources */,
 				5801280C1F6BEF67006B6DB8 /* NoFavoriteTransitModeView.swift in Sources */,
 				678DAAB91F6748BE00EB6EE8 /* TripHeaderView.swift in Sources */,
@@ -3347,6 +3354,7 @@
 				58EB8D131F5D79C10028A487 /* NextToArriveNavigationControllerStateProvider.swift in Sources */,
 				5840D6E51F37EA1900C8CB76 /* ScheduleDataProvider.swift in Sources */,
 				58EB8D231F5D8C6B0028A487 /* BaseNonModalViewController.swift in Sources */,
+				58AF5FE820F3DC8D00620484 /* NextToArriveReverseTripStatus.swift in Sources */,
 				587BC0521F6EE71400B92BB6 /* AlertScheduleDataProvider.swift in Sources */,
 				58EB8D1D1F5D85F50028A487 /* NavigationControllerBaseStateProvider.swift in Sources */,
 				589A89E01F5304D6007329DB /* SelectAddressViewModel.swift in Sources */,

@@ -16,10 +16,10 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel 
     @IBOutlet var endLabel: UILabel!
     @IBOutlet weak var swapRouteImage: UIImageView! {
         didSet {
-            swapRouteImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.swapRoutes(_:))))
+            swapRouteImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(swapRoutes(_:))))
         }
     }
-    
+
     let viewModel = NextToArriveTripViewModel()
 
     override func viewDidLoad() {
@@ -31,14 +31,20 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel 
     func viewModelUpdated() {
         startLabel.text = viewModel.startName()
         endLabel.text = viewModel.endName()
-        self.swapRouteImage.alpha = 1.0
+        swapRouteImage.alpha = 1.0
     }
-    
-    @objc func swapRoutes(_ sender: UITapGestureRecognizer) {
-        self.swapRouteImage.alpha = 0.5
-        if let target = store.state.targetForScheduleActions() {
-            store.dispatch(ReverseStops(targetForScheduleAction: target))
-        }
+
+    @objc func swapRoutes(_: UITapGestureRecognizer) {
+        swapRouteImage.alpha = 0.5
+        //        if let target = store.state.targetForScheduleActions() {
+        //            let reversedScheduleRequest = viewModel.scheduleRequest
+        //
+        //        }
+        guard let scheduleRequest = viewModel.scheduleRequest else { return }
+
+        let reversedScheduleRequest = scheduleRequest.reversedScheduleRequest()
+        let reversedScheduleRequestAction = InsertNextToArriveScheduleRequest(scheduleRequest: reversedScheduleRequest)
+        store.dispatch(reversedScheduleRequestAction)
     }
 
     func updateActivityIndicator(animating _: Bool) {
