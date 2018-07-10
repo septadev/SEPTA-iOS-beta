@@ -10,19 +10,16 @@ import SeptaSchedule
 
 struct TransitViewState {
     let availableRoutes: [TransitRoute]
-    let selectedRoutes: [TransitRoute]
+    let transitViewModel: TransitViewModel
     
-    init(availableRoutes: [TransitRoute] = [], selectedRoutes: [TransitRoute] = []) {
+    init(availableRoutes: [TransitRoute] = [], transitViewModel: TransitViewModel = TransitViewModel()) {
         self.availableRoutes = availableRoutes
-        self.selectedRoutes = selectedRoutes
+        self.transitViewModel = transitViewModel
     }
 }
 
 extension TransitViewState: Equatable {}
 func == (lhs: TransitViewState, rhs: TransitViewState) -> Bool {
-    
-    return
-        (lhs.availableRoutes == rhs.availableRoutes) &&
-        (lhs.selectedRoutes == rhs.selectedRoutes)
-    
+    return (lhs.availableRoutes == rhs.availableRoutes) &&
+            (lhs.transitViewModel == rhs.transitViewModel)
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReSwift
 
 class TransitViewRouteViewController: UIViewController {
 
@@ -25,9 +26,24 @@ class TransitViewRouteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.subscribe()
         viewModel.updateableFromViewModelController = self
     }
 
+}
+
+extension TransitViewRouteViewController: StoreSubscriber {
+    typealias StoreSubscriberStateType = TransitViewModel
+    
+    func subscribe() {
+        store.subscribe(self) {
+            $0.select { $0.transitViewState.transitViewModel }.skipRepeats { $0 == $1 }
+        }
+    }
+    
+    func newState(state: StoreSubscriberStateType) {
+        viewModel.slotBeingChanged = state.slotBeingChanged
+    }
 }
 
 extension TransitViewRouteViewController: UITableViewDataSource, UITableViewDelegate {

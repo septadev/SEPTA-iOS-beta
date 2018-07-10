@@ -11,10 +11,14 @@ import SeptaSchedule
 
 class TransitViewSelectionViewModel: StoreSubscriber {
     
-    typealias StoreSubscriberStateType = [TransitRoute]
+    typealias StoreSubscriberStateType = TransitViewModel
     
     weak var delegate: UpdateableFromViewModel?
-    var selectedRoutes: [TransitRoute]?
+    
+    var firstRoute: TransitRoute?
+    var secondRoute: TransitRoute?
+    var thirdRoute: TransitRoute?
+    var selectedSlot: TransitViewRouteSlot?
     
     init(delegate: UpdateableFromViewModel) {
         self.delegate = delegate
@@ -24,43 +28,76 @@ class TransitViewSelectionViewModel: StoreSubscriber {
     func subscribe() {
         store.subscribe(self) {
             $0.select {
-                $0.transitViewState.selectedRoutes
+                $0.transitViewState.transitViewModel
             }
         }
     }
     
     func newState(state: StoreSubscriberStateType) {
-        selectedRoutes = state
+        firstRoute = state.firstRoute
+        secondRoute = state.secondRoute
+        thirdRoute = state.thirdRoute
         delegate?.viewModelUpdated()
     }
     
     func cellFor(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        guard let routes = selectedRoutes else { return UITableViewCell() }
         let row = indexPath.section
         
-        if row == 3 {
+        switch row {
+        case 0:
+            if let route = firstRoute {
+                return constructRouteSelectedCell(tableView: tableView, indexPath: indexPath, route: route)
+            } else {
+                return constructEmptyRouteCell(tableView: tableView, indexPath: indexPath, enabled: true)
+            }
+        case 1:
+            if let route = secondRoute {
+                return constructRouteSelectedCell(tableView: tableView, indexPath: indexPath, route: route)
+            } else {
+                return constructEmptyRouteCell(tableView: tableView, indexPath: indexPath, enabled: firstRoute != nil)
+            }
+        case 2:
+            if let route = thirdRoute {
+                return constructRouteSelectedCell(tableView: tableView, indexPath: indexPath, route: route)
+            } else {
+                return constructEmptyRouteCell(tableView: tableView, indexPath: indexPath, enabled: secondRoute != nil)
+            }
+        case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "buttonViewCell", for: indexPath) as! ButtonViewCell
             cell.buttonText = "View Map"
-            cell.enabled = routes.count > 0
+            cell.enabled = firstRoute != nil
             return cell
-        }
-        
-        if row < routes.count {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "routeSelectedCell", for: indexPath) as! RouteSelectedTableViewCell
-            let route = routes[row]
-            cell.routeIdLabel.text = "\(route.routeId):"
-            cell.routeShortNameLabel.text = route.routeLongName
-            cell.pillView.backgroundColor = Route.colorForRouteId(route.routeId, transitMode: route.mode())
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "singleStringCell", for: indexPath) as! SingleStringCell
-            cell.setEnabled(row == routes.count)
-            return cell
+        default:
+            return UITableViewCell()
         }
     }
     
+    private func constructEmptyRouteCell(tableView: UITableView, indexPath: IndexPath, enabled: Bool) -> SingleStringCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "singleStringCell", for: indexPath) as! SingleStringCell
+        cell.setEnabled(enabled)
+        return cell
+    }
+    
+    private func constructRouteSelectedCell(tableView: UITableView, indexPath: IndexPath, route: TransitRoute) -> RouteSelectedTableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "routeSelectedCell", for: indexPath) as! RouteSelectedTableViewCell
+        cell.routeIdLabel.text = "\(route.routeId):"
+        cell.routeShortNameLabel.text = route.routeLongName
+        cell.pillView.backgroundColor = Route.colorForRouteId(route.routeId, transitMode: route.mode())
+        return cell
+    }
+    
     func canSelectRow(row: Int) -> Bool {
-        guard let routes = selectedRoutes else { return false }
-        return row <= routes.count
+        switch row {
+        case 0:
+            return true
+        case 1:
+            return firstRoute != nil
+        case 2:
+            return secondRoute != nil
+        case 3:
+            return firstRoute != nil
+        default:
+            return false
+        }
     }
 }

@@ -21,20 +21,24 @@ struct TransitViewReducer {
         guard let action = action as? TransitViewAction else { return state }
         
         if let action = action as? TransitViewRoutesLoaded {
-            return TransitViewState(availableRoutes: action.routes, selectedRoutes: state.selectedRoutes)
+            return TransitViewState(availableRoutes: action.routes, transitViewModel: state.transitViewModel)
         }
         
         if let action = action as? TransitViewRouteSelected {
-            if state.selectedRoutes.count == 3 {
-                return state
-            }
-            var selectedRoutes = state.selectedRoutes
-            selectedRoutes.append(action.route)
-            return TransitViewState(availableRoutes: state.availableRoutes, selectedRoutes: selectedRoutes)
+            let first = action.slot == .first ? action.route : state.transitViewModel.firstRoute
+            let second = action.slot == .second ? action.route : state.transitViewModel.secondRoute
+            let third = action.slot == .third ? action.route : state.transitViewModel.thirdRoute
+            let model = TransitViewModel(firstRoute: first, secondRoute: second, thirdRoute: third, slotBeingChanged: state.transitViewModel.slotBeingChanged)
+            return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: model)
         }
         
         if action is ResetTransitView {
-            return TransitViewState(availableRoutes: state.availableRoutes, selectedRoutes: [])
+            return TransitViewState(availableRoutes: state.availableRoutes)
+        }
+        
+        if let action = action as? TransitViewSlotChange {
+            let model = TransitViewModel(firstRoute: state.transitViewModel.firstRoute, secondRoute: state.transitViewModel.secondRoute, thirdRoute: state.transitViewModel.thirdRoute, slotBeingChanged: action.slot)
+            return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: model)
         }
         
         return state

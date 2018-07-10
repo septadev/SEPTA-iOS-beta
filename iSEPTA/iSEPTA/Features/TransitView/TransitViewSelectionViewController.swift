@@ -67,8 +67,21 @@ extension TransitViewSelectionViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section < 3 {
-            let action = PresentModal(viewController: .transitViewSelectRouteViewController, description: "User wishes to pick a TransitView route")
-            store.dispatch(action)
+            var slot: TransitViewRouteSlot
+            switch indexPath.section {
+            case 0:
+                slot = .first
+            case 1:
+                slot = .second
+            case 2:
+                slot = .third
+            default:
+                return
+            }
+            let slotAction = TransitViewSlotChange(slot: slot, description: "User wishes to change TransitView slot route")
+            store.dispatch(slotAction)
+            let modalAction = PresentModal(viewController: .transitViewSelectRouteViewController, description: "User wishes to pick a TransitView route")
+            store.dispatch(modalAction)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }

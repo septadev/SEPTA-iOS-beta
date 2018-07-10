@@ -15,6 +15,8 @@ class TransitViewRoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate
 
     var updateableFromViewModelController: UpdateableFromViewModel?
     
+    var slotBeingChanged: TransitViewRouteSlot?
+    
     var allRoutes: [TransitRoute]? {
         didSet {
             guard let allRoutes = allRoutes else { return }
@@ -73,12 +75,12 @@ class TransitViewRoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate
     }
     
     func rowSelected(row: Int) {
-        guard let filteredRoutes = filteredRoutes, row < filteredRoutes.count else { return }
+        guard let filteredRoutes = filteredRoutes, row < filteredRoutes.count, let slot = slotBeingChanged else { return }
         let route = filteredRoutes[row].route
         
-        let action = TransitViewRouteSelected(route: route, description: "TransitView route selected")
+        let action = TransitViewRouteSelected(slot: slot, route: route, description: "TransitView route selected")
         store.dispatch(action)
-        let dismissAction = DismissModal(description: "TransitView route selectoin should be dismissed")
+        let dismissAction = DismissModal(description: "TransitView route selection should be dismissed")
         store.dispatch(dismissAction)
     }
     

@@ -17,10 +17,16 @@ struct TransitViewRoutesLoaded: TransitViewAction {
 }
 
 struct TransitViewRouteSelected: TransitViewAction {
+    let slot: TransitViewRouteSlot
     let route: TransitRoute
     let description: String
 }
 
 struct ResetTransitView: TransitViewAction {
+    let description: String
+}
+
+struct TransitViewSlotChange: TransitViewAction {
+    let slot: TransitViewRouteSlot
     let description: String
 }
