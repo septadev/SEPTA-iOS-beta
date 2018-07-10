@@ -19,6 +19,18 @@
 		0E4328E820D060DF00FBD805 /* DatabaseDownloadProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4328E720D060DF00FBD805 /* DatabaseDownloadProvider.swift */; };
 		0E4328EA20D12CD400FBD805 /* DatabaseDownloadedWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4328E920D12CD400FBD805 /* DatabaseDownloadedWatcher.swift */; };
 		0E64472220D27A7600A99E2D /* DatabaseUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64472120D27A7600A99E2D /* DatabaseUpdateManager.swift */; };
+		0E8E60C820EC0D9A00AB08FE /* TransitView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E8E60C720EC0D9A00AB08FE /* TransitView.storyboard */; };
+		0E8E60CA20EC109200AB08FE /* TransitViewSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E60C920EC109200AB08FE /* TransitViewSelectionViewController.swift */; };
+		0E8E60CC20EE8D1300AB08FE /* RouteSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E60CB20EE8D1300AB08FE /* RouteSelectionCell.swift */; };
+		0E8E60CE20EF9AA400AB08FE /* TransitViewRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E60CD20EF9AA400AB08FE /* TransitViewRouteViewController.swift */; };
+		0E8E60D220EFAF4C00AB08FE /* TransitViewRoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E60D120EFAF4C00AB08FE /* TransitViewRoutesViewModel.swift */; };
+		0E8E60D720EFBCE300AB08FE /* TransitViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E60D620EFBCE300AB08FE /* TransitViewState.swift */; };
+		0E8E60D920EFBDD600AB08FE /* TransitViewReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E60D820EFBDD600AB08FE /* TransitViewReducer.swift */; };
+		0E8E60E320EFF37D00AB08FE /* TransitViewDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E60E220EFF37D00AB08FE /* TransitViewDataProvider.swift */; };
+		0E8E60E520EFF7B100AB08FE /* TransitViewActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E60E420EFF7B100AB08FE /* TransitViewActions.swift */; };
+		0E8E60E920F006F900AB08FE /* FilterableTransitRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E60E820F006F900AB08FE /* FilterableTransitRoute.swift */; };
+		0E8E60EE20F00B9E00AB08FE /* RouteIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E60ED20F00B9E00AB08FE /* RouteIcon.swift */; };
+		0E8E610020F3E3DF00AB08FE /* TransitViewSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E60FF20F3E3DF00AB08FE /* TransitViewSelectionViewModel.swift */; };
 		0EA1FF9020DA9E37007A9A91 /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA1FF8F20DA9E37007A9A91 /* UIAlertControllerExtensions.swift */; };
 		5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */; };
 		580128061F6B1D13006B6DB8 /* FavoriteTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580128031F6B1D13006B6DB8 /* FavoriteTripCell.xib */; };
@@ -321,7 +333,6 @@
 		674FDBBF1F56E87F00CA67D2 /* SeptaRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; };
 		674FDBC01F56E87F00CA67D2 /* SeptaRest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		674FDBC51F57390D00CA67D2 /* Route+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674FDBC41F57390D00CA67D2 /* Route+Color.swift */; };
-		674FDBC71F577D3B00CA67D2 /* Route+Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674FDBC61F577D3B00CA67D2 /* Route+Icon.swift */; };
 		676354FD1F5E255A00CA7EAB /* FilterableRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676354FC1F5E255A00CA7EAB /* FilterableRoute.swift */; };
 		676354FF1F5E2C2C00CA7EAB /* FilterableStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676354FE1F5E2C2C00CA7EAB /* FilterableStop.swift */; };
 		676355011F5E326800CA7EAB /* AppState+TargetForScheduleActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676355001F5E326800CA7EAB /* AppState+TargetForScheduleActions.swift */; };
@@ -674,6 +685,18 @@
 		0E4328E720D060DF00FBD805 /* DatabaseDownloadProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseDownloadProvider.swift; sourceTree = "<group>"; };
 		0E4328E920D12CD400FBD805 /* DatabaseDownloadedWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseDownloadedWatcher.swift; sourceTree = "<group>"; };
 		0E64472120D27A7600A99E2D /* DatabaseUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateManager.swift; sourceTree = "<group>"; };
+		0E8E60C720EC0D9A00AB08FE /* TransitView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransitView.storyboard; sourceTree = "<group>"; };
+		0E8E60C920EC109200AB08FE /* TransitViewSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewSelectionViewController.swift; sourceTree = "<group>"; };
+		0E8E60CB20EE8D1300AB08FE /* RouteSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSelectionCell.swift; sourceTree = "<group>"; };
+		0E8E60CD20EF9AA400AB08FE /* TransitViewRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewRouteViewController.swift; sourceTree = "<group>"; };
+		0E8E60D120EFAF4C00AB08FE /* TransitViewRoutesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewRoutesViewModel.swift; sourceTree = "<group>"; };
+		0E8E60D620EFBCE300AB08FE /* TransitViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewState.swift; sourceTree = "<group>"; };
+		0E8E60D820EFBDD600AB08FE /* TransitViewReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewReducer.swift; sourceTree = "<group>"; };
+		0E8E60E220EFF37D00AB08FE /* TransitViewDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewDataProvider.swift; sourceTree = "<group>"; };
+		0E8E60E420EFF7B100AB08FE /* TransitViewActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewActions.swift; sourceTree = "<group>"; };
+		0E8E60E820F006F900AB08FE /* FilterableTransitRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterableTransitRoute.swift; sourceTree = "<group>"; };
+		0E8E60ED20F00B9E00AB08FE /* RouteIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteIcon.swift; sourceTree = "<group>"; };
+		0E8E60FF20F3E3DF00AB08FE /* TransitViewSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewSelectionViewModel.swift; sourceTree = "<group>"; };
 		0EA1FF8F20DA9E37007A9A91 /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtensions.swift; sourceTree = "<group>"; };
 		5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectedTableViewCell.swift; sourceTree = "<group>"; };
 		580128031F6B1D13006B6DB8 /* FavoriteTripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteTripCell.xib; sourceTree = "<group>"; };
@@ -999,7 +1022,6 @@
 		6749A46D1F53997D00AF6119 /* StopToSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopToSelect.swift; sourceTree = "<group>"; };
 		6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAddressRelativeStopViewModel.swift; sourceTree = "<group>"; };
 		674FDBC41F57390D00CA67D2 /* Route+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Color.swift"; sourceTree = "<group>"; };
-		674FDBC61F577D3B00CA67D2 /* Route+Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Icon.swift"; sourceTree = "<group>"; };
 		676354FC1F5E255A00CA7EAB /* FilterableRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterableRoute.swift; sourceTree = "<group>"; };
 		676354FE1F5E2C2C00CA7EAB /* FilterableStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterableStop.swift; sourceTree = "<group>"; };
 		676355001F5E326800CA7EAB /* AppState+TargetForScheduleActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState+TargetForScheduleActions.swift"; sourceTree = "<group>"; };
@@ -1317,6 +1339,38 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		0E8E60C620EC0D3700AB08FE /* TransitView */ = {
+			isa = PBXGroup;
+			children = (
+				0E8E60C720EC0D9A00AB08FE /* TransitView.storyboard */,
+				0E8E60C920EC109200AB08FE /* TransitViewSelectionViewController.swift */,
+				0E8E60FF20F3E3DF00AB08FE /* TransitViewSelectionViewModel.swift */,
+				0E8E60CB20EE8D1300AB08FE /* RouteSelectionCell.swift */,
+				0E8E60EA20F0085C00AB08FE /* Select Route */,
+			);
+			path = TransitView;
+			sourceTree = "<group>";
+		};
+		0E8E60D520EFBCD100AB08FE /* TransitView */ = {
+			isa = PBXGroup;
+			children = (
+				0E8E60D620EFBCE300AB08FE /* TransitViewState.swift */,
+				0E8E60D820EFBDD600AB08FE /* TransitViewReducer.swift */,
+				0E8E60E420EFF7B100AB08FE /* TransitViewActions.swift */,
+			);
+			path = TransitView;
+			sourceTree = "<group>";
+		};
+		0E8E60EA20F0085C00AB08FE /* Select Route */ = {
+			isa = PBXGroup;
+			children = (
+				0E8E60CD20EF9AA400AB08FE /* TransitViewRouteViewController.swift */,
+				0E8E60D120EFAF4C00AB08FE /* TransitViewRoutesViewModel.swift */,
+				0E8E60E820F006F900AB08FE /* FilterableTransitRoute.swift */,
+			);
+			path = "Select Route";
+			sourceTree = "<group>";
+		};
 		580041F81F3504D800691FDC /* Info */ = {
 			isa = PBXGroup;
 			children = (
@@ -1419,6 +1473,7 @@
 				678F05311F5BFFB000CC4D3C /* Location */,
 				678F05271F5B7BA900CC4D3C /* Address */,
 				58490E431F55F8F0007DBCA1 /* Alerts */,
+				0E8E60D520EFBCD100AB08FE /* TransitView */,
 				58DB10EF1F3B889700191AED /* Main */,
 				58C2A05F1F38955E00F0D6CA /* Schedule */,
 				58C2A05A1F3892E300F0D6CA /* Navigation */,
@@ -1440,6 +1495,7 @@
 				58E33F1D1F6147DE00C74B7C /* CLLocationCoordinate2D+Equatable.swift */,
 				0EA1FF8F20DA9E37007A9A91 /* UIAlertControllerExtensions.swift */,
 				0E39082D20E1268900E94D53 /* InAppReview.swift */,
+				0E8E60ED20F00B9E00AB08FE /* RouteIcon.swift */,
 			);
 			path = Utlities;
 			sourceTree = "<group>";
@@ -1523,6 +1579,7 @@
 				582F4E8E1F33B1120062A546 /* Favorites */,
 				582F4E901F33B1120062A546 /* NextToArrive */,
 				582F4E931F33B1120062A546 /* Schedules */,
+				0E8E60C620EC0D3700AB08FE /* TransitView */,
 				582F4EAB1F33B1120062A546 /* Settings */,
 			);
 			path = Features;
@@ -1748,6 +1805,7 @@
 				586852D91F8D49280081C1CC /* NextToArriveDetailProvider.swift */,
 				58E33F211F615EC100C74B7C /* NextToArriveScheduleRequestWatcher.swift */,
 				6789B78B1F8FF728008C6DCA /* TripDetailStateProvider.swift */,
+				0E8E60E220EFF37D00AB08FE /* TransitViewDataProvider.swift */,
 			);
 			path = "State Providers";
 			sourceTree = "<group>";
@@ -1856,7 +1914,6 @@
 				58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */,
 				589A89DA1F52E6A9007329DB /* ScheduleStopEdit.swift */,
 				674FDBC41F57390D00CA67D2 /* Route+Color.swift */,
-				674FDBC61F577D3B00CA67D2 /* Route+Icon.swift */,
 				58FBB6671F58590F00E6532B /* Route+Title.swift */,
 				589A91A21F907FEC009B49E0 /* Route+Twitter.swift */,
 				67075FC11F578578008BB38C /* ScheduleUpdateMode.swift */,
@@ -3044,6 +3101,7 @@
 				677E04C120727C9D00B16C09 /* 118.kml in Resources */,
 				677E051020727C9D00B16C09 /* 124.kml in Resources */,
 				677E052020727C9D00B16C09 /* 112.kml in Resources */,
+				0E8E60C820EC0D9A00AB08FE /* TransitView.storyboard in Resources */,
 				58C182041F34C5B6002748E9 /* Localizeable.strings in Resources */,
 				582F4EC11F33B1120062A546 /* contact.storyboard in Resources */,
 				585CEBD21F867661006DCC67 /* GenericAlertDetailCellView.xib in Resources */,
@@ -3258,6 +3316,7 @@
 				588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */,
 				58490E491F56019B007DBCA1 /* AlertReducer.swift in Sources */,
 				67F757AC1F48582700D3A4EE /* UIColor+Util.swift in Sources */,
+				0E8E60CC20EE8D1300AB08FE /* RouteSelectionCell.swift in Sources */,
 				67D2F7911F7E43BC00E0FF32 /* DarkBlueGradient.swift in Sources */,
 				671A19241F661F8F00C8EEDA /* SwipeGestureRecognizerToggle.swift in Sources */,
 				582741151F6F37F300AAF513 /* AlertDetailButton.swift in Sources */,
@@ -3266,7 +3325,6 @@
 				582F4EDF1F33B1120062A546 /* DatabaseStateWatcher.swift in Sources */,
 				58DD1A921F60078D002532DC /* NextToArriveRowDisplayModel.swift in Sources */,
 				587BC0561F6EE8AF00B92BB6 /* AlertsTransitModeToolBar.swift in Sources */,
-				674FDBC71F577D3B00CA67D2 /* Route+Icon.swift in Sources */,
 				587BC0501F6EDF1D00B92BB6 /* AlertRequest.swift in Sources */,
 				58C9D3011F703735008FDE40 /* LoggingMiddleware.swift in Sources */,
 				585CEBD41F8676D9006DCC67 /* GenericAlertDetailCellView.swift in Sources */,
@@ -3274,6 +3332,7 @@
 				676B7D8C1F7D01390052F016 /* FaresPaymentModeViewModel.swift in Sources */,
 				58F80D431F421C1F0089501A /* SelectStopNavigationController.swift in Sources */,
 				58658D1B1F53135100E67B4E /* AddressCell.swift in Sources */,
+				0E8E60CE20EF9AA400AB08FE /* TransitViewRouteViewController.swift in Sources */,
 				67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */,
 				67A385801F7D7690002E01E0 /* StartupViewController.swift in Sources */,
 				67EF6D661FE2DBAA00245E0F /* HolidaySchedule.swift in Sources */,
@@ -3294,6 +3353,7 @@
 				67702851201BD633007282EF /* ModalAlertProvider.swift in Sources */,
 				58B2778B1F629FAA00663507 /* DummyData.swift in Sources */,
 				589A91A31F907FEC009B49E0 /* Route+Twitter.swift in Sources */,
+				0E8E60D220EFAF4C00AB08FE /* TransitViewRoutesViewModel.swift in Sources */,
 				587BC0441F6ED63900B92BB6 /* MapToAlerts.swift in Sources */,
 				58FBB66A1F58717500E6532B /* SeptaTabBarImages.swift in Sources */,
 				58126F711F631CB200A6E187 /* NextToArriveEndpointsViewModel.swift in Sources */,
@@ -3333,6 +3393,7 @@
 				670C59F71F8A91CF00CAE1AC /* AboutViewModel.swift in Sources */,
 				67A385731F7D4402002E01E0 /* MoreTableViewCell.swift in Sources */,
 				676354FF1F5E2C2C00CA7EAB /* FilterableStop.swift in Sources */,
+				0E8E60E920F006F900AB08FE /* FilterableTransitRoute.swift in Sources */,
 				67F757B31F48729C00D3A4EE /* UIView+Util.swift in Sources */,
 				58126F6F1F631C8300A6E187 /* NextToArriveMapRouteViewModel.swift in Sources */,
 				67C567271F59695900FF6203 /* Favorite.swift in Sources */,
@@ -3359,6 +3420,7 @@
 				676B7D8E1F7D01950052F016 /* FaresViewModel.swift in Sources */,
 				67C567331F598A0400FF6203 /* TransitAlertView.swift in Sources */,
 				5814AA841F43589E00DF774A /* TripScheduleViewModel.swift in Sources */,
+				0E8E60CA20EC109200AB08FE /* TransitViewSelectionViewController.swift in Sources */,
 				5816AB731F7C10CD00210C07 /* ScrollableTableViewToggle.swift in Sources */,
 				67365AD81F75918300FC86CB /* ViewSchedulesButton.swift in Sources */,
 				67365ACA1F754A3200FC86CB /* HalfSheetPresentationCoordinator.swift in Sources */,
@@ -3366,6 +3428,7 @@
 				5814AA8A1F4359D000DF774A /* TripleTextDisplayable.swift in Sources */,
 				585CEBD81F86A023006DCC67 /* String+HTML.swift in Sources */,
 				587BC0481F6ED66700B92BB6 /* MapFromAlerts.swift in Sources */,
+				0E8E60D720EFBCE300AB08FE /* TransitViewState.swift in Sources */,
 				58DB04A51F558DD0005CC850 /* SearchRoutesModalHeaderViewController.swift in Sources */,
 				67A3857B1F7D5BA7002E01E0 /* UIViewController+Shadows.swift in Sources */,
 				58E33F281F61651400C74B7C /* TransitType+TransitMode.swift in Sources */,
@@ -3461,6 +3524,7 @@
 				588D805D1F72AAF300EE1983 /* BaseScheduleRequestWatcher.swift in Sources */,
 				678DAA9E1F67065F00EB6EE8 /* NextToArriveConnectingViewModel.swift in Sources */,
 				67F0289E1F7EE3B40032F99C /* ContactViewModel.swift in Sources */,
+				0E8E60E520EFF7B100AB08FE /* TransitViewActions.swift in Sources */,
 				67D693521F7E8509007FE86E /* SEPTAConnection.swift in Sources */,
 				58E33F1A1F6145C000C74B7C /* NextToArriveConnectionStation.swift in Sources */,
 				6789B78A1F8FF1C7008C6DCA /* tripDetailMiddlewareActions.swift in Sources */,
@@ -3483,6 +3547,7 @@
 				5876DF731F72DEB4006C61FE /* FavoritesNavigationControllerStateProvider.swift in Sources */,
 				588D80631F72BDCC00EE1983 /* AlertState_ScheduleState_ScheduleRequest_SelectedRouteExistsWatcher.swift in Sources */,
 				58DD1A8E1F600715002532DC /* NextToArriveViewModel+StartCell.swift in Sources */,
+				0E8E60E320EFF37D00AB08FE /* TransitViewDataProvider.swift in Sources */,
 				5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */,
 				671A192B1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift in Sources */,
 				67365ACE1F754A3200FC86CB /* SevenEightsPresentationCoordinator.swift in Sources */,
@@ -3493,6 +3558,7 @@
 				58C181FF1F34C557002748E9 /* Storyboards.swift in Sources */,
 				580A355F1F6A0F9B000FCA82 /* FavoritesViewController.swift in Sources */,
 				58E33F161F6143E000C74B7C /* NextToArriveStop.swift in Sources */,
+				0E8E610020F3E3DF00AB08FE /* TransitViewSelectionViewModel.swift in Sources */,
 				58EB8D0F1F5D79530028A487 /* NextToArriveNavigationController.swift in Sources */,
 				0E39082E20E1268900E94D53 /* InAppReview.swift in Sources */,
 				58F444FC1F3D335400A93208 /* SeptaAction.swift in Sources */,
@@ -3520,6 +3586,7 @@
 				588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */,
 				676B7D841F7CFA270052F016 /* FaresViewController.swift in Sources */,
 				58EB8D291F5D90CD0028A487 /* NextToArriveState.swift in Sources */,
+				0E8E60EE20F00B9E00AB08FE /* RouteIcon.swift in Sources */,
 				5893970C1F7E60D900F3D2F8 /* WebViewController.swift in Sources */,
 				589A919B1F905CA6009B49E0 /* TripDetailState_TripDetailWatcher.swift in Sources */,
 				6776F678201B32EA001FD5B2 /* AlertState_HasAppAlertsWatcher.swift in Sources */,
@@ -3528,6 +3595,7 @@
 				67A385771F7D4752002E01E0 /* MoreViewModel.swift in Sources */,
 				589A91A11F907061009B49E0 /* TripDetailItemView.swift in Sources */,
 				67BC3F8D1F66AD4E001F9FE3 /* NoConnectionSectionHeader.swift in Sources */,
+				0E8E60D920EFBDD600AB08FE /* TransitViewReducer.swift in Sources */,
 				58248B6E1F6D6A3800DA2D65 /* EditFavoriteViewController.swift in Sources */,
 				676354FD1F5E255A00CA7EAB /* FilterableRoute.swift in Sources */,
 				58B892171F38F7E700BFFEFA /* Strings.swift in Sources */,

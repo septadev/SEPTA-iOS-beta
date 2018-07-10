@@ -37,6 +37,10 @@ enum ViewController: String, Equatable {
 
     // trip detials
     case tripDetailViewController
+    
+    // TransitView
+    case transitViewSelectionViewController
+    case transitViewSelectRouteViewController
 
     func storyboardIdentifier() -> String {
         switch self {
@@ -80,6 +84,10 @@ enum ViewController: String, Equatable {
             return "about"
         case .tripDetailViewController:
             return "tripDetail"
+        case .transitViewSelectionViewController:
+            return "TransitView"
+        case .transitViewSelectRouteViewController:
+            return "TransitView"
         }
     }
 
@@ -116,7 +124,7 @@ enum ViewController: String, Equatable {
         switch self {
         case .editFavoriteViewController:
             return HalfSheetTransitioningDelegate(viewController: self)
-        case .moreNavigationController, .routesViewController, .selectStartController, .selectStopController, .selectStopNavigationController:
+        case .moreNavigationController, .routesViewController, .selectStartController, .selectStopController, .selectStopNavigationController, .transitViewSelectRouteViewController:
             return SevenEightsTransitioningDelegate(viewController: self)
         default: return nil
         }

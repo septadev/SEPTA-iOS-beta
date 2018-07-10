@@ -1,0 +1,44 @@
+//
+//  TransitViewDataProvider.swift
+//  iSEPTA
+//
+//  Created by Mike Mannix on 7/6/18.
+//  Copyright © 2018 Mark Broski. All rights reserved.
+//
+
+import ReSwift
+import SeptaSchedule
+
+class TransitViewDataProvider: StoreSubscriber {
+    
+    static let sharedInstance = TransitViewDataProvider()
+    
+    typealias StoreSubscriberStateType = TransitViewState
+    
+    init() {
+        subscribe()
+    }
+    
+    func subscribe() {
+        store.subscribe(self) {
+            $0.select { $0.transitViewState }.skipRepeats { $0 == $1}
+        }
+    }
+    
+    func newState(state: StoreSubscriberStateType) {
+        retrieveTransitViewRoutes()
+    }
+    
+    func retrieveTransitViewRoutes() {
+        TransitRoutesCommand.sharedInstance.routes { (routes, error) in
+            let routes = routes ?? [TransitRoute]()
+            let action = TransitViewRoutesLoaded(routes: routes, description: "TransitView routes loaded from database")
+            store.dispatch(action)
+        }
+    }
+    
+    deinit {
+        store.unsubscribe(self)
+    }
+}
+
