@@ -21,7 +21,6 @@
 		0E64472220D27A7600A99E2D /* DatabaseUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64472120D27A7600A99E2D /* DatabaseUpdateManager.swift */; };
 		0E8E60C820EC0D9A00AB08FE /* TransitView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E8E60C720EC0D9A00AB08FE /* TransitView.storyboard */; };
 		0E8E60CA20EC109200AB08FE /* TransitViewSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E60C920EC109200AB08FE /* TransitViewSelectionViewController.swift */; };
-		0E8E60CC20EE8D1300AB08FE /* RouteSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E60CB20EE8D1300AB08FE /* RouteSelectionCell.swift */; };
 		0E8E60CE20EF9AA400AB08FE /* TransitViewRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E60CD20EF9AA400AB08FE /* TransitViewRouteViewController.swift */; };
 		0E8E60D220EFAF4C00AB08FE /* TransitViewRoutesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E60D120EFAF4C00AB08FE /* TransitViewRoutesViewModel.swift */; };
 		0E8E60D720EFBCE300AB08FE /* TransitViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E60D620EFBCE300AB08FE /* TransitViewState.swift */; };
@@ -687,7 +686,6 @@
 		0E64472120D27A7600A99E2D /* DatabaseUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateManager.swift; sourceTree = "<group>"; };
 		0E8E60C720EC0D9A00AB08FE /* TransitView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransitView.storyboard; sourceTree = "<group>"; };
 		0E8E60C920EC109200AB08FE /* TransitViewSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewSelectionViewController.swift; sourceTree = "<group>"; };
-		0E8E60CB20EE8D1300AB08FE /* RouteSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSelectionCell.swift; sourceTree = "<group>"; };
 		0E8E60CD20EF9AA400AB08FE /* TransitViewRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewRouteViewController.swift; sourceTree = "<group>"; };
 		0E8E60D120EFAF4C00AB08FE /* TransitViewRoutesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewRoutesViewModel.swift; sourceTree = "<group>"; };
 		0E8E60D620EFBCE300AB08FE /* TransitViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewState.swift; sourceTree = "<group>"; };
@@ -1345,7 +1343,6 @@
 				0E8E60C720EC0D9A00AB08FE /* TransitView.storyboard */,
 				0E8E60C920EC109200AB08FE /* TransitViewSelectionViewController.swift */,
 				0E8E60FF20F3E3DF00AB08FE /* TransitViewSelectionViewModel.swift */,
-				0E8E60CB20EE8D1300AB08FE /* RouteSelectionCell.swift */,
 				0E8E60EA20F0085C00AB08FE /* Select Route */,
 			);
 			path = TransitView;
@@ -3316,7 +3313,6 @@
 				588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */,
 				58490E491F56019B007DBCA1 /* AlertReducer.swift in Sources */,
 				67F757AC1F48582700D3A4EE /* UIColor+Util.swift in Sources */,
-				0E8E60CC20EE8D1300AB08FE /* RouteSelectionCell.swift in Sources */,
 				67D2F7911F7E43BC00E0FF32 /* DarkBlueGradient.swift in Sources */,
 				671A19241F661F8F00C8EEDA /* SwipeGestureRecognizerToggle.swift in Sources */,
 				582741151F6F37F300AAF513 /* AlertDetailButton.swift in Sources */,
