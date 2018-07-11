@@ -80,7 +80,7 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
     }
 
     override func viewWillAppear(_: Bool) {
-        mapView.showAnnotations(mapView.annotations, animated: false)
+        showAllAnnotations()
         mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0), animated: true)
     }
 
@@ -106,13 +106,12 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         mapView.addOverlays(overlaysToAdd)
     }
 
-    func drawRoutes(routeIds _: [String]) {
-
-        //        self.routeIds = routeIds
-        //        for routeId in routeIds {
-        //            guard let url = locateKMLFile(routeId: routeId) else { return }
-        //            parseKMLForRoute(url: url, routeId: routeId)
-        //        }
+    func drawRoutes(routeIds: [String]) {
+        self.routeIds = routeIds
+        for routeId in routeIds {
+            guard let url = locateKMLFile(routeId: routeId) else { return }
+            parseKMLForRoute(url: url, routeId: routeId)
+        }
     }
 
     /// When we get a schedule we need to update
@@ -126,13 +125,13 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         guard let mapView = mapView else { return }
 
         mapView.removeAnnotations(stops)
+        stops.removeAll()
     }
 
     func addScheduleRequestToMap() {
         guard let mappableScheduleRequest = mappableScheduleRequest else { return }
         addStopToMap(stop: mappableScheduleRequest.selectedStart, colorPointAnnotationType: ColorPointAnnotationType.start)
         addStopToMap(stop: mappableScheduleRequest.selectedEnd, colorPointAnnotationType: ColorPointAnnotationType.end)
-        showAllAnnotations()
     }
 
     func addStopToMap(stop: Stop, colorPointAnnotationType: ColorPointAnnotationType) {
@@ -150,16 +149,8 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         // mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0), animated: true)
     }
 
-    func drawVehicleLocations(_: [VehicleLocation]) {
-        //        vehiclesToAdd = vehicleLocations
-        //
-        //        if !scheduleRequestAddedToMap {
-        //            addScheduleRequestToMap()
-        //        }
-        //
-        //        if !routesHaveBeenAdded{
-        //            drawRoutes(routeIds: self.routeIds)
-        //        }
+    func drawVehicleLocations(_ vehicleLocations: [VehicleLocation]) {
+        vehiclesToAdd = vehicleLocations
     }
 
     func drawVehicleLocations() {
