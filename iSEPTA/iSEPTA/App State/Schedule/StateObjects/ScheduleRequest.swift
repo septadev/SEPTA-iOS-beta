@@ -48,9 +48,9 @@ extension ScheduleRequest {
         let favorites = store.state.favoritesState.favorites
         if let favorite = favorites.filter({
             $0.transitMode == transitMode &&
-                $0.selectedRoute == selectedRoute &&
-                $0.selectedStart == selectedStart &&
-                $0.selectedEnd == selectedEnd }).first {
+                $0.selectedRoute.routeId == selectedRoute.routeId &&
+                $0.selectedStart.stopId == selectedStart.stopId &&
+                $0.selectedEnd.stopId == selectedEnd.stopId }).first {
             return favorite
         } else {
             return nil
