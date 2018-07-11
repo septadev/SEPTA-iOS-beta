@@ -3,7 +3,7 @@
 import Foundation
 import SeptaSchedule
 
-struct ScheduleRequest {
+struct ScheduleRequest: Equatable {
 
     let transitMode: TransitMode
     let selectedRoute: Route?
@@ -25,31 +25,6 @@ struct ScheduleRequest {
             self.scheduleType = scheduleType
         }
     }
-}
-
-extension ScheduleRequest: Equatable {}
-func == (lhs: ScheduleRequest, rhs: ScheduleRequest) -> Bool {
-    var areEqual = true
-
-    areEqual = Optionals.optionalCompare(currentValue: lhs.transitMode, newValue: rhs.transitMode).equalityResult()
-    guard areEqual else { return false }
-
-    areEqual = Optionals.optionalCompare(currentValue: lhs.selectedRoute, newValue: rhs.selectedRoute).equalityResult()
-    guard areEqual else { return false }
-
-    areEqual = Optionals.optionalCompare(currentValue: lhs.selectedStart, newValue: rhs.selectedStart).equalityResult()
-    guard areEqual else { return false }
-
-    areEqual = Optionals.optionalCompare(currentValue: lhs.selectedEnd, newValue: rhs.selectedEnd).equalityResult()
-    guard areEqual else { return false }
-
-    areEqual = Optionals.optionalCompare(currentValue: lhs.scheduleType, newValue: rhs.scheduleType).equalityResult()
-    guard areEqual else { return false }
-
-    areEqual = lhs.reverseStops == rhs.reverseStops
-    guard areEqual else { return false }
-
-    return areEqual
 }
 
 extension ScheduleRequest {
@@ -80,5 +55,15 @@ extension ScheduleRequest {
         } else {
             return nil
         }
+    }
+
+    func reversedScheduleRequest() -> ScheduleRequest {
+        let newSelectedStart = selectedStart
+        let newSelectedEnd = selectedEnd
+        let newTransitMode = transitMode
+        let newSelectedRoute = selectedRoute
+        let newScheduleType = scheduleType
+        let newReverseStops = true
+        return ScheduleRequest(transitMode: newTransitMode, selectedRoute: newSelectedRoute, selectedStart: newSelectedStart, selectedEnd: newSelectedEnd, scheduleType: newScheduleType, reverseStops: newReverseStops)
     }
 }

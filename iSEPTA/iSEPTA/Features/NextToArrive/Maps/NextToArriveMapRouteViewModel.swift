@@ -35,6 +35,7 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
         }
     }
 
+
     func subscribe() {
         guard let target = store.state.targetForScheduleActions() else { return }
 

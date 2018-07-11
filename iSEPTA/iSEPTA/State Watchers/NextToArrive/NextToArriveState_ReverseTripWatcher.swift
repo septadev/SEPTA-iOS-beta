@@ -9,7 +9,7 @@
 import Foundation
 import ReSwift
 
-protocol NextToArriveReverseTripWatcher: AnyObject {
+protocol NextToArriveReverseTripWatcherDelegate: AnyObject {
     func nextToArriveReverseTripStatusChanged(status: NextToArriveReverseTripStatus)
 }
 
@@ -17,11 +17,7 @@ class NextToArriveState_ReverseTripWatcher: BaseWatcher, StoreSubscriber {
 
     typealias StoreSubscriberStateType = NextToArriveReverseTripStatus
 
-    weak var delegate: NextToArriveReverseTripWatcher? {
-        didSet {
-            subscribe()
-        }
-    }
+    weak var delegate: NextToArriveReverseTripWatcherDelegate? 
 
     func subscribe() {
         store.subscribe(self) {
@@ -34,23 +30,3 @@ class NextToArriveState_ReverseTripWatcher: BaseWatcher, StoreSubscriber {
     }
 }
 
-// class NextToArriveFavorite_ReverseTripWatcher: BaseWatcher, StoreSubscriber {
-//
-//    typealias StoreSubscriberStateType = Bool
-//
-//    weak var delegate: NextToArriveReverseTripWatcher? {
-//        didSet {
-//            subscribe()
-//        }
-//    }
-//
-//    func subscribe() {
-//        //        store.subscribe(self) {
-//        //            //$0.select { $0.favoritesState.nextToArriveFavorite. }
-//        //        }
-//    }
-//
-//    func newState(state: StoreSubscriberStateType) {
-//        delegate?.nextToArriveReverseTripChanged(isReversed: state)
-//    }
-// }

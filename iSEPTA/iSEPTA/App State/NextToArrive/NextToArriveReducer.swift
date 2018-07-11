@@ -51,6 +51,8 @@ struct NextToArriveReducer {
             state = reduceInsertNextToArriveScheduleRequest(action: action, state: state)
         case let action as UpdateNextToArriveDetail:
             state = reduceUpdateNextToArriveDetail(action: action, state: state)
+        case let action as UpdateNextToArriveReverseTripStatus:
+            state = reduceUpdateNextToArriveReverseTripStatus(action: action, state: state)
         default:
             break
         }
@@ -107,5 +109,16 @@ struct NextToArriveReducer {
         }
 
         return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: newTrips)
+    }
+
+    static func reduceUpdateNextToArriveReverseTripStatus(action: UpdateNextToArriveReverseTripStatus, state: NextToArriveState) -> NextToArriveState {
+
+        return NextToArriveState(scheduleState: state.scheduleState,
+                                 nextToArriveTrips: state.nextToArriveTrips,
+                                 nextToArrivePrerequisiteStatus: state.nextToArrivePrerequisiteStatus,
+                                 nextToArriveUpdateStatus: state.nextToArriveUpdateStatus,
+                                 refreshDataRequested: state.refreshDataRequested,
+                                 reverseTripStatus: action.nextToArriveReverseTripStatus
+        )
     }
 }

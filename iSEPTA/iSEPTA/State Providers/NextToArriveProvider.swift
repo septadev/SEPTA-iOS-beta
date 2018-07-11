@@ -12,11 +12,12 @@ import SeptaSchedule
 import ReSwift
 import CoreLocation
 
-class NextToArriveProvider: StoreSubscriber {
+class NextToArriveProvider: StoreSubscriber, NextToArriveReverseTripWatcherDelegate {
 
     typealias StoreSubscriberStateType = Bool
 
     let mapper = NextToArriveMapper()
+    let reverseTripWatcher = NextToArriveState_ReverseTripWatcher()
 
     static let sharedInstance = NextToArriveProvider()
 
@@ -25,6 +26,8 @@ class NextToArriveProvider: StoreSubscriber {
     let scheduleRequestWatcher = NextToArriveScheduleRequestWatcher()
 
     let nextToArriveDetailProvider = NextToArriveDetailProvider()
+
+    var nextToArriveReverseTripStatus: NextToArriveReverseTripStatus = .noReverse
 
     private init() {
 
@@ -35,13 +38,17 @@ class NextToArriveProvider: StoreSubscriber {
         unsubscribe()
     }
 
+    func nextToArriveReverseTripStatusChanged(status: NextToArriveReverseTripStatus) {
+        nextToArriveReverseTripStatus = status
+    }
+
     var scheduleRequest: ScheduleRequest { return store.state.nextToArriveState.scheduleState.scheduleRequest }
     var nextToArriveUpdateStatus: NextToArriveUpdateStatus { return store.state.nextToArriveState.nextToArriveUpdateStatus }
 
     func newState(state: Bool) {
         let refreshDataRequested = state
 
-        if refreshDataRequested && nextToArriveUpdateStatus != .dataLoading {
+        if refreshDataRequested && nextToArriveUpdateStatus != .dataLoading && nextToArriveReverseTripStatus != NextToArriveReverseTripStatus.willReverse{
             reportStatus(.dataLoading)
             retrieveNextToArrive(scheduleRequest: scheduleRequest, completion: mapArrivals)
         }

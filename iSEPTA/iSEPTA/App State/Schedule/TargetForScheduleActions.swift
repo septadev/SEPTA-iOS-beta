@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TargetForScheduleAction {
+enum TargetForScheduleAction: Equatable {
     case schedules
     case nextToArrive
     case alerts

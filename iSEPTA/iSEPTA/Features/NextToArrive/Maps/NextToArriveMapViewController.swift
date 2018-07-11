@@ -14,10 +14,45 @@ import SeptaRest
 import SeptaSchedule
 import UIKit
 
+struct MappableScheduleRequest: Equatable {
+    let transitMode: TransitMode
+    let selectedStart: Stop
+    let selectedEnd: Stop
+    init?(scheduleRequest: ScheduleRequest?) {
+        guard let scheduleRequest = scheduleRequest,
+            let selectedStart = scheduleRequest.selectedStart,
+            let selectedEnd = scheduleRequest.selectedEnd else { return nil }
+
+        transitMode = scheduleRequest.transitMode
+        self.selectedStart = selectedStart
+        self.selectedEnd = selectedEnd
+    }
+}
+
+/// Draws the current next to arrive view on a map.
+/// Three things need to be drawn here: 1) starting and ending pins, 2) the routes, 3) the vehicles
 class NextToArriveMapViewController: UIViewController, RouteDrawable {
 
     var nextToArriveMapRouteViewModel: NextToArriveMapRouteViewModel!
     var nextToArriveMapEndpointsViewModel: NextToArriveMapEndpointsViewModel!
+
+    /// These annotations are for the begin and the ending stops on the map.
+    var stops = [ColorPointAnnotation]()
+
+    /// These annotations are for vehicles that have been added to the map
+    var vehiclesAnnotationsAdded = [VehicleLocationAnnotation]()
+
+    /// These are for the routes that have been added to the map
+    var routeIds = [String]()
+
+    private var mappableScheduleRequest: MappableScheduleRequest? {
+        didSet {
+            if oldValue != mappableScheduleRequest && mappableScheduleRequest != nil {
+                removeScheduleRequestFromMap()
+                addScheduleRequestToMap()
+            }
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,17 +62,7 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         nextToArriveMapEndpointsViewModel.delegate = self
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        mapView.tintColor = SeptaColor.navBarBlue
-    }
-
-    override func viewWillAppear(_: Bool) {
-        mapView.showAnnotations(mapView.annotations, animated: false)
-
-        mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0), animated: true)
-    }
-
+    /// We need to wait for the mapView to load before we try to add anything to it.
     @IBOutlet private var mapView: MKMapView! {
         didSet {
             addOverlaysToMap()
@@ -49,7 +74,16 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         }
     }
 
-    var vehiclesAnnotationsAdded = [VehicleLocationAnnotation]()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mapView.tintColor = SeptaColor.navBarBlue
+    }
+
+    override func viewWillAppear(_: Bool) {
+        mapView.showAnnotations(mapView.annotations, animated: false)
+        mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0), animated: true)
+    }
+
     private var vehiclesToAdd = [VehicleLocation]() {
         didSet {
             guard let _ = mapView else { return }
@@ -68,52 +102,64 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         }
     }
 
-    private var scheduleRequest: ScheduleRequest? {
-        didSet {
-            guard let _ = mapView else { return }
-            addScheduleRequestToMap()
-        }
-    }
-
     func addOverlaysToMap() {
         mapView.addOverlays(overlaysToAdd)
     }
 
-    var routesHaveBeenAdded = false
-    func drawRoutes(routeIds: [String]) {
-        guard !routesHaveBeenAdded else { return }
-        for routeId in routeIds {
-            guard let url = locateKMLFile(routeId: routeId) else { return }
-            parseKMLForRoute(url: url, routeId: routeId)
-            routesHaveBeenAdded = true
-        }
+    func drawRoutes(routeIds _: [String]) {
+
+        //        self.routeIds = routeIds
+        //        for routeId in routeIds {
+        //            guard let url = locateKMLFile(routeId: routeId) else { return }
+        //            parseKMLForRoute(url: url, routeId: routeId)
+        //        }
     }
 
+    /// When we get a schedule we need to update
     func drawTrip(scheduleRequest: ScheduleRequest) {
-        if self.scheduleRequest == nil {
-            self.scheduleRequest = scheduleRequest
-        }
+        mappableScheduleRequest = MappableScheduleRequest(scheduleRequest: scheduleRequest)
+    }
+
+    // MARK: - Schedule Request
+
+    func removeScheduleRequestFromMap() {
+        guard let mapView = mapView else { return }
+
+        mapView.removeAnnotations(stops)
     }
 
     func addScheduleRequestToMap() {
-        guard let scheduleRequest = scheduleRequest,
-            let selectedStart = scheduleRequest.selectedStart,
-            let selectedEnd = scheduleRequest.selectedEnd else { return }
-        addStopToMap(stop: selectedStart, pinColor: UIColor.green)
-        addStopToMap(stop: selectedEnd, pinColor: UIColor.red)
+        guard let mappableScheduleRequest = mappableScheduleRequest else { return }
+        addStopToMap(stop: mappableScheduleRequest.selectedStart, colorPointAnnotationType: ColorPointAnnotationType.start)
+        addStopToMap(stop: mappableScheduleRequest.selectedEnd, colorPointAnnotationType: ColorPointAnnotationType.end)
+        showAllAnnotations()
     }
 
-    var stops = [ColorPointAnnotation]()
-    func addStopToMap(stop: Stop, pinColor: UIColor) {
-        let annotation = ColorPointAnnotation(pinColor: pinColor)
+    func addStopToMap(stop: Stop, colorPointAnnotationType: ColorPointAnnotationType) {
+        guard let mapView = mapView else { return }
+        let annotation = ColorPointAnnotation(colorPointAnnotationType: colorPointAnnotationType)
         annotation.coordinate = CLLocationCoordinate2D(latitude: stop.stopLatitude, longitude: stop.stopLongitude)
         annotation.title = stop.stopName
         stops.append(annotation)
         mapView.addAnnotation(annotation)
     }
 
-    func drawVehicleLocations(_ vehicleLocations: [VehicleLocation]) {
-        vehiclesToAdd = vehicleLocations
+    func showAllAnnotations() {
+        guard let mapView = mapView else { return }
+        mapView.showAnnotations(mapView.annotations, animated: false)
+        // mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0), animated: true)
+    }
+
+    func drawVehicleLocations(_: [VehicleLocation]) {
+        //        vehiclesToAdd = vehicleLocations
+        //
+        //        if !scheduleRequestAddedToMap {
+        //            addScheduleRequestToMap()
+        //        }
+        //
+        //        if !routesHaveBeenAdded{
+        //            drawRoutes(routeIds: self.routeIds)
+        //        }
     }
 
     func drawVehicleLocations() {
@@ -129,7 +175,7 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         if #available(iOS 11.0, *) {
             annotation.title = nil
         } else {
-            if let transitMode = scheduleRequest?.transitMode {
+            if let transitMode = mappableScheduleRequest?.transitMode {
                 annotation.title = transitMode.mapTitle()
             }
         }
@@ -169,6 +215,14 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
             return routeOverlay
         }
     }
+
+    func removeAllAnnotations() {
+
+        let annotations = mapView.annotations.filter {
+            $0 !== self.mapView.userLocation
+        }
+        mapView.removeAnnotations(annotations)
+    }
 }
 
 extension NextToArriveMapViewController: MKMapViewDelegate {
@@ -195,7 +249,7 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
     }
 
     func retrievePinAnnogationView(annotation: ColorPointAnnotation) -> MKAnnotationView {
-        let pinViewId = "pin"
+        let pinViewId = annotation.colorPointAnnotationType.rawValue
         guard let pinView = mapView.dequeueReusableAnnotationView(withIdentifier: pinViewId) as? MKPinAnnotationView else {
             return buildNewPinAnnotationView(annotation: annotation, pinViewId: pinViewId)
         }
@@ -209,7 +263,7 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
         pinView.animatesDrop = true
         pinView.isEnabled = true
         pinView.isSelected = true
-        pinView.pinTintColor = annotation.pinColor
+        pinView.pinTintColor = annotation.colorPointAnnotationType.pinColor()
         return pinView
     }
 
@@ -234,7 +288,7 @@ extension NextToArriveMapViewController: MKMapViewDelegate {
         let vehicleView = MKAnnotationView(annotation: annotation, reuseIdentifier: vehicleViewId)
         vehicleView.accessibilityElementsHidden = false
         vehicleView.accessibilityLabel = "Tap this pin to see vehicle information"
-        vehicleView.image = scheduleRequest?.transitMode.mapPin()
+        vehicleView.image = mappableScheduleRequest?.transitMode.mapPin()
         vehicleView.canShowCallout = true
         vehicleView.detailCalloutAccessoryView = UIView.loadNibView(nibName: "MapVehicleCalloutView")!
         return vehicleView

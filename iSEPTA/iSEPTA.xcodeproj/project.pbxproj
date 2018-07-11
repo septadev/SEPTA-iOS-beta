@@ -195,6 +195,7 @@
 		58A26DA41F6F30B2005A70D3 /* Route+Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26DA31F6F30B2005A70D3 /* Route+Displayable.swift */; };
 		58AF5FE420F3D9EA00620484 /* NextToArriveState_ReverseTripWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF5FE320F3D9EA00620484 /* NextToArriveState_ReverseTripWatcher.swift */; };
 		58AF5FE820F3DC8D00620484 /* NextToArriveReverseTripStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF5FE720F3DC8D00620484 /* NextToArriveReverseTripStatus.swift */; };
+		58AF5FEA20F4F1FF00620484 /* NextToArriveReverseTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF5FE920F4F1FF00620484 /* NextToArriveReverseTrip.swift */; };
 		58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4EA01F33B1120062A546 /* SelectStopViewModel.swift */; };
 		58B1FFD61F42EB2500AD8620 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B1FFD41F42EB2400AD8620 /* MapKit.framework */; };
 		58B2361C1F85559C00251E9A /* GenericAlertDetailProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B2361B1F85559B00251E9A /* GenericAlertDetailProvider.swift */; };
@@ -871,6 +872,7 @@
 		58ACEADD1F3A9A9B00DC2836 /* SeptaSchedule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SeptaSchedule.xcodeproj; path = ../SeptaSchedule/SeptaSchedule.xcodeproj; sourceTree = "<group>"; };
 		58AF5FE320F3D9EA00620484 /* NextToArriveState_ReverseTripWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveState_ReverseTripWatcher.swift; sourceTree = "<group>"; };
 		58AF5FE720F3DC8D00620484 /* NextToArriveReverseTripStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveReverseTripStatus.swift; sourceTree = "<group>"; };
+		58AF5FE920F4F1FF00620484 /* NextToArriveReverseTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveReverseTrip.swift; sourceTree = "<group>"; };
 		58B1FFD41F42EB2400AD8620 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		58B2361B1F85559B00251E9A /* GenericAlertDetailProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAlertDetailProvider.swift; sourceTree = "<group>"; };
 		58B2778A1F629FAA00663507 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
@@ -1598,6 +1600,7 @@
 				582F4E911F33B1120062A546 /* nextToArrive.storyboard */,
 				582F4E921F33B1120062A546 /* NextToArriveViewController.swift */,
 				58E54E1F1F65977100E9B66D /* NextToArriveTripViewController.swift */,
+				58AF5FE920F4F1FF00620484 /* NextToArriveReverseTrip.swift */,
 				67D9486A1FBEF95100D78CF9 /* LastCellDelegate.swift */,
 				58B2778A1F629FAA00663507 /* DummyData.swift */,
 				58DD1A931F6007F9002532DC /* NextToArriveViewModel */,
@@ -3339,6 +3342,7 @@
 				676354FF1F5E2C2C00CA7EAB /* FilterableStop.swift in Sources */,
 				67F757B31F48729C00D3A4EE /* UIView+Util.swift in Sources */,
 				58126F6F1F631C8300A6E187 /* NextToArriveMapRouteViewModel.swift in Sources */,
+				58AF5FEA20F4F1FF00620484 /* NextToArriveReverseTrip.swift in Sources */,
 				67C567271F59695900FF6203 /* Favorite.swift in Sources */,
 				582F4EC71F33B1120062A546 /* SchedulesRoutesViewModel.swift in Sources */,
 				588D805B1F72AABF00EE1983 /* ScheduleRequestWatcherDelegate.swift in Sources */,

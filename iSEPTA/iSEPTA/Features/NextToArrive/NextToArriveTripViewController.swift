@@ -9,9 +9,9 @@
 import Foundation
 import ReSwift
 import UIKit
+import SeptaSchedule
 
-class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel {
-
+class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel, NextToArriveReverseTripDelegate {
     @IBOutlet var startLabel: UILabel!
     @IBOutlet var endLabel: UILabel!
     @IBOutlet weak var swapRouteImage: UIImageView! {
@@ -21,6 +21,7 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel 
     }
 
     let viewModel = NextToArriveTripViewModel()
+    var nextToArriveReverseTrip: NextToArriveReverseTrip?
 
     override func viewDidLoad() {
         viewModel.delegate = self
@@ -31,20 +32,25 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel 
     func viewModelUpdated() {
         startLabel.text = viewModel.startName()
         endLabel.text = viewModel.endName()
-        swapRouteImage.alpha = 1.0
     }
 
     @objc func swapRoutes(_: UITapGestureRecognizer) {
         swapRouteImage.alpha = 0.5
-        //        if let target = store.state.targetForScheduleActions() {
-        //            let reversedScheduleRequest = viewModel.scheduleRequest
-        //
-        //        }
-        guard let scheduleRequest = viewModel.scheduleRequest else { return }
 
-        let reversedScheduleRequest = scheduleRequest.reversedScheduleRequest()
-        let reversedScheduleRequestAction = InsertNextToArriveScheduleRequest(scheduleRequest: reversedScheduleRequest)
-        store.dispatch(reversedScheduleRequestAction)
+        initializeReverseTrip()
+    }
+
+    func initializeReverseTrip() {
+
+        if let scheduleRequest = viewModel.scheduleRequest, let target = viewModel.target, swapRouteImage.isUserInteractionEnabled {
+            nextToArriveReverseTrip = NextToArriveReverseTrip(target: target, scheduleRequest: scheduleRequest, delegate: self)
+            nextToArriveReverseTrip?.reverseNextToArrive()
+        }
+    }
+
+    func tripReverseCompleted() {
+        swapRouteImage.alpha = 1.0
+        swapRouteImage.isUserInteractionEnabled = true
     }
 
     func updateActivityIndicator(animating _: Bool) {
@@ -64,8 +70,10 @@ class NextToArriveTripViewModel: StoreSubscriber {
     }
 
     var scheduleRequest: ScheduleRequest?
+    var target: TargetForScheduleAction?
     func newState(state: ScheduleRequest) {
         scheduleRequest = state
+        guard let _ = state.selectedStart, let _ = state.selectedEnd else { return }
         delegate?.viewModelUpdated()
     }
 
@@ -91,7 +99,7 @@ extension NextToArriveTripViewModel: SubscriberUnsubscriber {
     func subscribe() {
 
         guard let target = store.state.targetForScheduleActions() else { return }
-
+        self.target = target
         switch target {
         case .nextToArrive:
             store.subscribe(self) {

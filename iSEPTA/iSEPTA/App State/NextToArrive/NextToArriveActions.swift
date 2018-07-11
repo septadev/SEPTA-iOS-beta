@@ -43,3 +43,9 @@ struct InsertNextToArriveScheduleRequest: NextToArriveAction {
     let scheduleRequest: ScheduleRequest
     let description = "force a new schedule request into NTA"
 }
+
+struct UpdateNextToArriveReverseTripStatus: NextToArriveAction {
+    let nextToArriveReverseTripStatus: NextToArriveReverseTripStatus
+    let description = "Dispatch this action to change the status for trip reversal for next to arrive."
+
+}
