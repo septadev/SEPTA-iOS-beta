@@ -106,11 +106,22 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
         mapView.addOverlays(overlaysToAdd)
     }
 
-    func drawRoutes(routeIds: [String]) {
-        self.routeIds = routeIds
-        for routeId in routeIds {
+    func drawRoutes(routeIds newRouteIds: [String]) {
+
+        let routeIdsToAdd = newRouteIds.filter { !routeIds.contains($0) }
+        let routeIdsToRemove = routeIds.filter { !newRouteIds.contains($0) }
+        routeIds.append(contentsOf: routeIdsToAdd)
+
+        for routeId in routeIdsToAdd {
             guard let url = locateKMLFile(routeId: routeId) else { return }
             parseKMLForRoute(url: url, routeId: routeId)
+        }
+
+        guard let mapView = mapView else { return }
+        for overlay in mapView.overlays {
+            if let overlay = overlay as? RouteOverlay, let routeId = overlay.routeId, routeIdsToRemove.contains(routeId) {
+                mapView.remove(overlay)
+            }
         }
     }
 
@@ -182,10 +193,10 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
 
     func parseKMLForRoute(url: URL, routeId: String) {
         print("Beginning to parse")
-        KMLDocument.parse(url) { [unowned self] kml in
-            guard let overlays = kml.overlays as? [KMLOverlayPolyline] else { return }
-            let routeOverlays = self.mapOverlaysToRouteOverlays(routeId: routeId, overlays: overlays)
-            self.overlaysToAdd = self.overlaysToAdd + routeOverlays
+        KMLDocument.parse(url) { [weak self] kml in
+            guard let strongSelf = self, let overlays = kml.overlays as? [KMLOverlayPolyline] else { return }
+            let routeOverlays = strongSelf.mapOverlaysToRouteOverlays(routeId: routeId, overlays: overlays)
+            strongSelf.overlaysToAdd = strongSelf.overlaysToAdd + routeOverlays
         }
     }
 
