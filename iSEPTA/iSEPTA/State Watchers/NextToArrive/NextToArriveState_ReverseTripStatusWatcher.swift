@@ -13,7 +13,7 @@ protocol NextToArriveReverseTripWatcherDelegate: AnyObject {
     func nextToArriveReverseTripStatusChanged(status: NextToArriveReverseTripStatus)
 }
 
-class NextToArriveState_ReverseTripWatcher: BaseWatcher, StoreSubscriber {
+class NextToArriveState_ReverseTripStatusWatcher: BaseWatcher, StoreSubscriber {
 
     typealias StoreSubscriberStateType = NextToArriveReverseTripStatus
 

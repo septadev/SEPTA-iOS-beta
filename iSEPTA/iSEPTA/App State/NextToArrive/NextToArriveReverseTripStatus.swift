@@ -10,6 +10,14 @@ import Foundation
 
 enum NextToArriveReverseTripStatus {
     case noReverse
-    case willReverse
     case didReverse
+
+    func toggle() -> NextToArriveReverseTripStatus {
+        let result: NextToArriveReverseTripStatus
+        switch self {
+            case .noReverse: result = .didReverse
+            case .didReverse: result = .noReverse
+        }
+        return result
+    }
 }

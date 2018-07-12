@@ -23,11 +23,19 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel,
     let viewModel = NextToArriveTripViewModel()
     var nextToArriveReverseTrip: NextToArriveReverseTrip?
     var favoriteNextToArriveReverseTrip: FavoriteNextToArriveReverseTrip?
+    var reverseTripStatusWatcher: NextToArriveState_ReverseTripStatusWatcher?
 
     override func viewDidLoad() {
         viewModel.delegate = self
         view.backgroundColor = SeptaColor.navBarBlue
         view.addStandardDropShadow()
+        undoReversedFavorites()
+        watchForReverseTripStatusChanges()
+    }
+
+    func undoReversedFavorites() {
+        store.dispatch(UndoReversedFavorite())
+        store.dispatch(RemoveNextToArriveReverseTripStatus())
     }
 
     func viewModelUpdated() {
@@ -36,7 +44,6 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel,
     }
 
     @objc func swapRoutes(_: UITapGestureRecognizer) {
-        swapRouteImage.alpha = 0.5
 
         if store.state.targetForScheduleActions() == .nextToArrive {
             initializeReverseTripForNextToArrive()
@@ -54,20 +61,12 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel,
     }
 
     func initializeReverseTripForFavorites() {
-        guard let scheduleRequest = viewModel.scheduleRequest, let target = viewModel.target, swapRouteImage.isUserInteractionEnabled else { return }
-        let status = store.state.favoritesState.nextToArriveReverseTripStatus
-
-        if status == .noReverse {
-            favoriteNextToArriveReverseTrip = FavoriteNextToArriveReverseTrip(target: target, scheduleRequest: scheduleRequest, delegate: self)
-            favoriteNextToArriveReverseTrip?.reverseNextToArrive()
-        } else if status == .didReverse {
-            let action = UpdateFavoriteNextToArriveReverseTripStatus(nextToArriveReverseTripStatus: .noReverse)
-            store.dispatch(action)
-        }
+        guard let scheduleRequest = viewModel.scheduleRequest, swapRouteImage.isUserInteractionEnabled else { return }
+        favoriteNextToArriveReverseTrip = FavoriteNextToArriveReverseTrip(scheduleRequest: scheduleRequest, delegate: self)
+        favoriteNextToArriveReverseTrip?.reverseFavorite()
     }
 
     func tripReverseCompleted() {
-        swapRouteImage.alpha = 1.0
         swapRouteImage.isUserInteractionEnabled = true
     }
 
@@ -77,10 +76,42 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel,
     func displayErrorMessage(message _: String, shouldDismissAfterDisplay _: Bool) {
     }
 
+
+}
+
+extension NextToArriveTripViewController: NextToArriveReverseTripWatcherDelegate {
+
+    func watchForReverseTripStatusChanges() {
+        guard let target = store.state.targetForScheduleActions() else { return }
+        var watcher: NextToArriveState_ReverseTripStatusWatcher?
+        switch target {
+        case .nextToArrive:
+            watcher = NextToArriveState_ReverseTripStatusWatcher()
+        case .favorites:
+            watcher = FavoriteState_NextToArriveReverseTripStatusWatcher()
+        default:
+            watcher = nil
+        }
+        watcher?.delegate = self
+        watcher?.subscribe()
+        reverseTripStatusWatcher = watcher
+    }
+
+    func nextToArriveReverseTripStatusChanged(status: NextToArriveReverseTripStatus) {
+        switch status {
+        case .noReverse:
+            swapRouteImage.alpha = 1
+        case .didReverse:
+            swapRouteImage.alpha = 0.5
+        }
+    }
+
 }
 
 class NextToArriveTripViewModel: StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleRequest
+
+    var reverseTripStatusWatcher: NextToArriveState_ReverseTripStatusWatcher?
 
     weak var delegate: UpdateableFromViewModel? {
         didSet {
@@ -132,6 +163,7 @@ extension NextToArriveTripViewModel: SubscriberUnsubscriber {
                     $0.favoritesState.nextToArriveScheduleRequest
                 }.skipRepeats { $0 == $1 }
             }
+
         default:
             break
         }

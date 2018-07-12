@@ -28,7 +28,10 @@ struct NextToArriveReducer {
 
     static func reduceScheduleAction(action: ScheduleAction, state: NextToArriveState) -> NextToArriveState {
         let scheduleState = ScheduleReducer.main(action: action, state: state.scheduleState)
-        return NextToArriveState(scheduleState: scheduleState, nextToArriveTrips: state.nextToArriveTrips)
+
+        var newState = state
+        newState.scheduleState = scheduleState
+        return newState
     }
 
     static func reduceNextToArriveAction(action: NextToArriveAction, state: NextToArriveState) -> NextToArriveState {
@@ -51,8 +54,10 @@ struct NextToArriveReducer {
             state = reduceInsertNextToArriveScheduleRequest(action: action, state: state)
         case let action as UpdateNextToArriveDetail:
             state = reduceUpdateNextToArriveDetail(action: action, state: state)
-        case let action as UpdateNextToArriveReverseTripStatus:
-            state = reduceUpdateNextToArriveReverseTripStatus(action: action, state: state)
+        case let action as ToggleNextToArriveReverseTripStatus:
+            state = reduceToggleNextToArriveReverseTripStatus(action: action, state: state)
+        case let action as RemoveNextToArriveReverseTripStatus:
+            state = reduceRemoveNextToArriveReverseTripStatus(action: action, state: state)
         default:
             break
         }
@@ -61,28 +66,46 @@ struct NextToArriveReducer {
     }
 
     static func reduceNextToArrivePrerequisteStatusChanged(action: NextToArrivePrerequisteStatusChanged, state: NextToArriveState) -> NextToArriveState {
-        return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: state.nextToArriveTrips, nextToArrivePrerequisiteStatus: action.newStatus, nextToArriveUpdateStatus: state.nextToArriveUpdateStatus, refreshDataRequested: state.refreshDataRequested)
+        var newState = state
+        newState.nextToArrivePrerequisiteStatus = action.newStatus
+        return newState
     }
 
     static func reduceClearNextToArriveData(action _: ClearNextToArriveData, state: NextToArriveState) -> NextToArriveState {
-        return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: [NextToArriveTrip](), nextToArrivePrerequisiteStatus: state.nextToArrivePrerequisiteStatus, nextToArriveUpdateStatus: state.nextToArriveUpdateStatus, refreshDataRequested: state.refreshDataRequested)
+        var newState = state
+        newState.nextToArriveTrips = [NextToArriveTrip]()
+        return newState
     }
 
     static func reduceNextToArriveRefreshDataRequested(action: NextToArriveRefreshDataRequested, state: NextToArriveState) -> NextToArriveState {
-        return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: state.nextToArriveTrips, nextToArrivePrerequisiteStatus: state.nextToArrivePrerequisiteStatus, nextToArriveUpdateStatus: state.nextToArriveUpdateStatus, refreshDataRequested: action.refreshUpdateRequested)
+        var newState = state
+        newState.refreshDataRequested = action.refreshUpdateRequested
+        return newState
     }
 
     static func reduceUpdateNextToArriveStatusAndData(action: UpdateNextToArriveStatusAndData, state: NextToArriveState) -> NextToArriveState {
-        return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: action.nextToArriveTrips, nextToArrivePrerequisiteStatus: state.nextToArrivePrerequisiteStatus, nextToArriveUpdateStatus: action.nextToArriveUpdateStatus, refreshDataRequested: action.refreshDataRequested)
+        var newState = state
+        newState.nextToArriveTrips = action.nextToArriveTrips
+        newState.nextToArriveUpdateStatus = action.nextToArriveUpdateStatus
+        newState.refreshDataRequested = action.refreshDataRequested
+        return newState
     }
 
     static func reduceViewScheduleData(action _: ViewScheduleDataInNextToArrive, state: NextToArriveState) -> NextToArriveState {
-        return NextToArriveState(scheduleState: store.state.scheduleState, nextToArriveTrips: [NextToArriveTrip]())
+        var newState = NextToArriveState()
+        newState.scheduleState = store.state.scheduleState
+        newState.refreshDataRequested = true
+        return newState
     }
 
     static func reduceInsertNextToArriveScheduleRequest(action: InsertNextToArriveScheduleRequest, state: NextToArriveState) -> NextToArriveState {
-        let scheduleState = ScheduleState(scheduleRequest: action.scheduleRequest, scheduleData: ScheduleData(), scheduleStopEdit: ScheduleStopEdit())
-        return NextToArriveState(scheduleState: scheduleState, nextToArriveTrips: state.nextToArriveTrips)
+        var scheduleState = ScheduleState()
+        scheduleState.scheduleRequest = action.scheduleRequest
+
+        var newState = NextToArriveState()
+        newState.scheduleState = scheduleState
+        newState.refreshDataRequested = true
+        return newState
     }
 
     static func reduceUpdateNextToArriveDetail(action: UpdateNextToArriveDetail, state: NextToArriveState) -> NextToArriveState {
@@ -108,17 +131,20 @@ struct NextToArriveReducer {
             }
         }
 
-        return NextToArriveState(scheduleState: state.scheduleState, nextToArriveTrips: newTrips)
+        var newState = state
+        newState.nextToArriveTrips = newTrips
+        return newState
     }
 
-    static func reduceUpdateNextToArriveReverseTripStatus(action: UpdateNextToArriveReverseTripStatus, state: NextToArriveState) -> NextToArriveState {
+    static func reduceToggleNextToArriveReverseTripStatus(action: ToggleNextToArriveReverseTripStatus, state: NextToArriveState) -> NextToArriveState {
+        var newState = state
+        newState.reverseTripStatus = state.reverseTripStatus.toggle()
+        return newState
+    }
 
-        return NextToArriveState(scheduleState: state.scheduleState,
-                                 nextToArriveTrips: state.nextToArriveTrips,
-                                 nextToArrivePrerequisiteStatus: state.nextToArrivePrerequisiteStatus,
-                                 nextToArriveUpdateStatus: state.nextToArriveUpdateStatus,
-                                 refreshDataRequested: state.refreshDataRequested,
-                                 reverseTripStatus: action.nextToArriveReverseTripStatus
-        )
+    static func reduceRemoveNextToArriveReverseTripStatus(action: RemoveNextToArriveReverseTripStatus, state: NextToArriveState) -> NextToArriveState {
+        var newState = state
+        newState.reverseTripStatus = .noReverse
+        return newState
     }
 }

@@ -4,14 +4,14 @@ use String::Util  ':all';
 use Modern::Perl;
 use Data::Dumper; 
 
-my $type = q| Bool   |;
+my $type = q| NextToArriveReverseTripStatus   |;
 
-my $keyPath = q|  alertState.modalAlertsDisplayed |;
+my $keyPath = q|  favoriteState.nextToArriveReverseTripStatus |;
 
 
 
 my $template = q |
-// Septa. 2017
+// Septa. 2018
 
 import SeptaSchedule
 import ReSwift

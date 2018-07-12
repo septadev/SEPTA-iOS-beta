@@ -17,7 +17,7 @@ class NextToArriveProvider: StoreSubscriber, NextToArriveReverseTripWatcherDeleg
     typealias StoreSubscriberStateType = Bool
 
     let mapper = NextToArriveMapper()
-    let reverseTripWatcher = NextToArriveState_ReverseTripWatcher()
+    let reverseTripWatcher = NextToArriveState_ReverseTripStatusWatcher()
 
     static let sharedInstance = NextToArriveProvider()
 
@@ -48,7 +48,7 @@ class NextToArriveProvider: StoreSubscriber, NextToArriveReverseTripWatcherDeleg
     func newState(state: Bool) {
         let refreshDataRequested = state
 
-        if refreshDataRequested && nextToArriveUpdateStatus != .dataLoading && nextToArriveReverseTripStatus != NextToArriveReverseTripStatus.willReverse{
+        if refreshDataRequested && nextToArriveUpdateStatus != .dataLoading {
             reportStatus(.dataLoading)
             retrieveNextToArrive(scheduleRequest: scheduleRequest, completion: mapArrivals)
         }

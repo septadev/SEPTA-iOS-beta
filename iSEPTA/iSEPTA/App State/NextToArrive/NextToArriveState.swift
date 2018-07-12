@@ -10,13 +10,13 @@ import Foundation
 import SeptaSchedule
 
 struct NextToArriveState: Equatable {
-    let scheduleState: ScheduleState
-    let nextToArriveTrips: [NextToArriveTrip]
-    let nextToArrivePrerequisiteStatus: NextToArrivePrerequisiteStatus
-    let nextToArriveUpdateStatus: NextToArriveUpdateStatus
+    var scheduleState: ScheduleState
+    var nextToArriveTrips: [NextToArriveTrip]
+    var nextToArrivePrerequisiteStatus: NextToArrivePrerequisiteStatus
+    var nextToArriveUpdateStatus: NextToArriveUpdateStatus
 
-    let refreshDataRequested: Bool
-    let reverseTripStatus: NextToArriveReverseTripStatus
+    var refreshDataRequested: Bool
+    var reverseTripStatus: NextToArriveReverseTripStatus
 
     init(scheduleState: ScheduleState = ScheduleState(),
          nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip](),

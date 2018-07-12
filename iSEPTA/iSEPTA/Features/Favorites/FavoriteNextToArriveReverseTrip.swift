@@ -13,34 +13,32 @@ import SeptaSchedule
 /// Responsible for reversing a trip for Next To Arrive.
 class FavoriteNextToArriveReverseTrip {
     fileprivate let scheduleRequest: ScheduleRequest
-    fileprivate let target: TargetForScheduleAction
     fileprivate let transitMode: TransitMode
     fileprivate weak var delegate: NextToArriveReverseTripDelegate?
     fileprivate var reversedScheduleRequest: ScheduleRequest = ScheduleRequest()
 
-    init(target: TargetForScheduleAction, scheduleRequest: ScheduleRequest, delegate: NextToArriveReverseTripDelegate) {
-        self.target = target
+    init(scheduleRequest: ScheduleRequest, delegate: NextToArriveReverseTripDelegate) {
         self.scheduleRequest = scheduleRequest
         transitMode = scheduleRequest.transitMode
         self.delegate = delegate
         reversedScheduleRequest = ScheduleRequest(transitMode: scheduleRequest.transitMode)
     }
 
-
-
-    func reverseNextToArrive() {
-        updateStatus(status: .willReverse)
-        triggerNextToArriveReversalState(nextToArriveReverseTripStatus: .willReverse)
-        if transitMode == .rail {
-            reverseRouteForRail()
+    func reverseFavorite() {
+        if store.state.favoritesState.nextToArriveReverseTripStatus == .noReverse {
+            if transitMode == .rail {
+                reverseRouteForRail()
+            } else {
+                reverseRouteForNonRail()
+            }
         } else {
-            reverseRouteForNonRail()
+            store.dispatch(UndoReversedFavorite())
         }
     }
 
     fileprivate func reverseRouteForRail() {
         self.reversedScheduleRequest = ScheduleRequest(transitMode: transitMode, selectedRoute: Route.allRailRoutesRoute())
-        reverseStops(target: target)
+        reverseStops()
     }
 
     /// We're going into the database to find the one route going in the opposite direction
@@ -48,18 +46,15 @@ class FavoriteNextToArriveReverseTrip {
         let transitMode = scheduleRequest.transitMode
         guard let selectedRoute = scheduleRequest.selectedRoute else { return }
         ReverseRouteCommand.sharedInstance.reverseRoute(forTransitMode: transitMode, route: selectedRoute) { [weak self] routes, _ in
-            guard let target = self?.target, let scheduleRequest = self?.scheduleRequest,
-                let routes = routes, let route = routes.first else { return }
+            guard let routes = routes, let route = routes.first else { return }
                 self?.reversedScheduleRequest = ScheduleRequest(transitMode: transitMode, selectedRoute: route)
-
-
-            self?.reverseStops(target: target)
+                self?.reverseStops()
         }
     }
 
     /// Again we go into the database to find the stops on the other side of the street.  So the starting stop becomes the ending stop,
     /// and vice versa.
-    fileprivate func reverseStops(target: TargetForScheduleAction) {
+    fileprivate func reverseStops() {
 
         guard let selectedStartId = scheduleRequest.selectedStart?.stopId,
             let selectedEndId = scheduleRequest.selectedEnd?.stopId else { return }
@@ -67,53 +62,49 @@ class FavoriteNextToArriveReverseTrip {
         StopReverseCommand.sharedInstance.reverseStops(forTransitMode: transitMode, tripStopId: tripStopId) { [weak self] tripStopIds, _ in
             guard let tripStopIds = tripStopIds, let tripStopId = tripStopIds.first else { return }
 
-            self?.loadAvailableTripStarts(target: target, tripStopId: tripStopId)
+            self?.loadAvailableTripStarts(tripStopId: tripStopId)
+
         }
     }
 
-    /// Now we load available trip ends for the given starting position.
-    fileprivate func loadAvailableTripStarts(target: TargetForScheduleAction, tripStopId: TripStopId) {
+    /// Now we load available trip starts for the given starting position.
+    fileprivate func loadAvailableTripStarts(tripStopId: TripStopId) {
         FindStopCommand.sharedInstance.stops(forTransitMode: transitMode, forStopId: tripStopId.start) { [weak self] stops, _ in
             guard let rsr = self?.reversedScheduleRequest, let stops = stops, let firstStop = stops.first else { return }
 
             self?.reversedScheduleRequest = ScheduleRequest(transitMode: rsr.transitMode, selectedRoute: rsr.selectedRoute, selectedStart: firstStop)
 
-            self?.loadAvailableTripEnds(target: target, tripStopId: tripStopId)
+            self?.loadAvailableTripEnds(tripStopId: tripStopId)
         }
     }
 
-    fileprivate func loadAvailableTripEnds(target: TargetForScheduleAction, tripStopId: TripStopId) {
+    fileprivate func loadAvailableTripEnds(tripStopId: TripStopId) {
         FindStopCommand.sharedInstance.stops(forTransitMode: transitMode, forStopId: tripStopId.end) { [weak self] stops, _ in
             guard let rsr = self?.reversedScheduleRequest, let stops = stops, let firstStop = stops.first else { return }
 
             self?.reversedScheduleRequest = ScheduleRequest(transitMode: rsr.transitMode, selectedRoute: rsr.selectedRoute, selectedStart: rsr.selectedStart, selectedEnd: firstStop)
-            self?.submitReversedScheduleRequest()
-            self?.updateStatus(status: .didReverse)
+
+            self?.uploadReversedFavorite()
             self?.reverseCompleted()
         }
     }
 
-    fileprivate func triggerRefreshForNextToArrive() {
-        let refreshDataAction = NextToArriveRefreshDataRequested(refreshUpdateRequested: true)
-        store.dispatch(refreshDataAction)
-    }
-
-    fileprivate func triggerNextToArriveReversalState(nextToArriveReverseTripStatus: NextToArriveReverseTripStatus) {
-        let action = UpdateNextToArriveReverseTripStatus(nextToArriveReverseTripStatus: nextToArriveReverseTripStatus)
+    fileprivate func uploadReversedFavorite() {
+        guard let favorite = reversedScheduleRequest.convertedToFavorite(favoriteId: Favorite.reversedFavoriteId) else { return }
+        let action = UploadReversedFavorite(favorite:favorite)
         store.dispatch(action)
     }
+
 
     fileprivate func reverseCompleted() {
         delegate?.tripReverseCompleted()
     }
 
     fileprivate func updateStatus(status: NextToArriveReverseTripStatus){
-        let action = UpdateFavoriteNextToArriveReverseTripStatus(nextToArriveReverseTripStatus: status)
-        store.dispatch(action)
+
     }
 
      fileprivate func submitReversedScheduleRequest(){
-        let action = UpdateFavoriteReverseTripScheduleRequest(reverseTripScheduleRequest: reversedScheduleRequest)
-        store.dispatch(action)
+
     }
 }

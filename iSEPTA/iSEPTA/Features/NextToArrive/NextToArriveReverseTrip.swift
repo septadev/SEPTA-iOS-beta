@@ -30,7 +30,6 @@ class NextToArriveReverseTrip {
     }
 
     func reverseNextToArrive() {
-        triggerNextToArriveReversalState(nextToArriveReverseTripStatus: .willReverse)
         if transitMode == .rail {
             reverseRouteForRail()
         } else {
@@ -88,7 +87,7 @@ class NextToArriveReverseTrip {
             let tripEndSelectedAction = TripEndSelected(targetForScheduleAction: target, selectedEnd: firstStop)
             store.dispatch(tripEndSelectedAction)
 
-            self?.triggerNextToArriveReversalState(nextToArriveReverseTripStatus: .didReverse)
+            self?.triggerNextToArriveReversalState()
             self?.triggerRefreshForNextToArrive()
             self?.reverseCompleted()
         }
@@ -99,8 +98,8 @@ class NextToArriveReverseTrip {
         store.dispatch(refreshDataAction)
     }
 
-    fileprivate func triggerNextToArriveReversalState(nextToArriveReverseTripStatus: NextToArriveReverseTripStatus) {
-        let action = UpdateNextToArriveReverseTripStatus(nextToArriveReverseTripStatus: nextToArriveReverseTripStatus)
+    fileprivate func triggerNextToArriveReversalState() {
+        let action = ToggleNextToArriveReverseTripStatus()
         store.dispatch(action)
     }
 

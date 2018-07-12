@@ -9,50 +9,54 @@
 import Foundation
 import SeptaSchedule
 
-struct FavoritesState: Codable {
-    let favorites: [Favorite]
-    let favoriteToEdit: Favorite?
-    let nextToArriveFavoriteId: String?
+struct FavoritesState: Codable, Equatable {
+    var favorites: [Favorite]
+    var favoriteToEdit: Favorite?
+
+    var nextToArriveFavoriteId: String? = nil
+    var reversedNextToArriveFavoriteId: String? = nil
 
     var hasFavoriteToEdit: Bool { return favoriteToEdit != nil }
     var favoritesExist: Bool { return favorites.count > 0 }
 
-    var nextToArriveFavorite: Favorite? {
-        guard let nextToArriveFavoriteId = self.nextToArriveFavoriteId,
-            let matchingFavorite = favorites.filter({ $0.favoriteId == nextToArriveFavoriteId }).first
-        else { return nil }
-        return matchingFavorite
-    }
-
     var nextToArriveReverseTripStatus = NextToArriveReverseTripStatus.noReverse
+
     var nextToArriveTrips: [NextToArriveTrip] {
         guard let nextToArriveFavorite = nextToArriveFavorite else { return [NextToArriveTrip]() }
         return nextToArriveFavorite.nextToArriveTrips
     }
-
-    var reversedNextToArriveTrips = [NextToArriveTrip]()
-    var reversedNextToArriveScheduleRequest = ScheduleRequest()
 
     var nextToArriveUpdateStatus: NextToArriveUpdateStatus {
         guard let nextToArriveFavorite = nextToArriveFavorite else { return .idle }
         return nextToArriveFavorite.nextToArriveUpdateStatus
     }
 
+    var nextToArriveFavorite: Favorite? {
+        if nextToArriveReverseTripStatus != .didReverse {
+            return locateFavorite(favoriteId: nextToArriveFavoriteId)
+        } else {
+            return locateFavorite(favoriteId: reversedNextToArriveFavoriteId)
+        }
+    }
+
+    func locateFavorite(favoriteId: String?) -> Favorite? {
+        guard let favoriteId = favoriteId,
+            let matchingFavorite = favorites.filter({ $0.favoriteId == favoriteId }).first else { return nil }
+        return matchingFavorite
+    }
+
     var nextToArriveScheduleRequest: ScheduleRequest {
         guard let nextToArriveFavorite = nextToArriveFavorite else { return ScheduleRequest() }
-        if nextToArriveReverseTripStatus != .didReverse {
-            return nextToArriveFavorite.convertedToScheduleRequest()
-        } else {
-            return reversedNextToArriveScheduleRequest
-        }
+        return nextToArriveFavorite.convertedToScheduleRequest()
     }
 
     var favoritesToUpdate: Set<Favorite> {
         return Set(favorites.filter { $0.refreshDataRequested && $0.nextToArriveUpdateStatus != .dataLoading })
     }
-    var favoritesToDisplay: Set<Favorite> { return
-        //  Set(favorites.filter { $0.nextToArriveUpdateStatus == .dataLoadedSuccessfully })
-        Set(favorites)
+
+    var favoritesToDisplay: Set<Favorite> {
+        let filteredFavorites = favorites.filter { $0.favoriteId != Favorite.reversedFavoriteId }
+        return Set(filteredFavorites)
     }
 
     init(favorites: [Favorite] = [Favorite](), favoriteToEdit: Favorite? = nil, nextToArriveFavoriteId: String? = nil) {
@@ -79,24 +83,6 @@ struct FavoritesState: Codable {
     }
 }
 
-extension FavoritesState: Equatable {}
-func == (lhs: FavoritesState, rhs: FavoritesState) -> Bool {
-    var areEqual = true
-
-    areEqual = lhs.favorites == rhs.favorites
-    guard areEqual else { return false }
-
-    areEqual = lhs.favoritesExist == rhs.favoritesExist
-    guard areEqual else { return false }
-
-    areEqual = lhs.favoritesToDisplay == rhs.favoritesToDisplay
-    guard areEqual else { return false }
-
-    areEqual = lhs.favoritesToUpdate == rhs.favoritesToUpdate
-    guard areEqual else { return false }
-
-    return areEqual
-}
 
 extension FavoritesState {
     func favoriteForScheduleRequest(_ scheduleRequest: ScheduleRequest) -> Favorite? {
