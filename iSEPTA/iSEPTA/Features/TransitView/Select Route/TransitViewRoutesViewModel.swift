@@ -84,6 +84,23 @@ class TransitViewRoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate
         store.dispatch(dismissAction)
     }
     
+    var filterString = ""
+    func textField(_: UITextField, shouldChangeCharactersIn range: NSRange, replacementString: String) -> Bool {
+        guard let allFilterableRoutes = allFilterableRoutes, let filterRange = Range(range, in: filterString) else { return false }
+        filterString = filterString.replacingCharacters(in: filterRange, with: replacementString.lowercased())
+        filteredRoutes = allFilterableRoutes.filter {
+            guard filterString.count > 0 else { return true }
+            
+            return $0.filterstringComponents.filter({ $0.starts(with: filterString) }).count > 0
+        }
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else { return }
+            
+            strongSelf.updateableFromViewModelController?.viewModelUpdated()
+        }
+        return true
+    }
+    
     deinit {
         store.unsubscribe(self)
     }

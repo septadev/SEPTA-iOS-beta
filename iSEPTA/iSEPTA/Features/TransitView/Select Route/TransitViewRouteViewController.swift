@@ -19,7 +19,7 @@ class TransitViewRouteViewController: UIViewController {
         if segue.identifier == "embedHeader" {
             if let headerViewController = segue.destination as? SearchRoutesModalHeaderViewController {
                 headerViewController.delegate = self
-                headerViewController.textFieldDelegate = self
+                headerViewController.textFieldDelegate = viewModel
             }
         }
     }
@@ -92,9 +92,5 @@ extension TransitViewRouteViewController: UpdateableFromViewModel {
     func displayErrorMessage(message: String, shouldDismissAfterDisplay: Bool) {
         print(message)
     }
-    
-}
-
-extension TransitViewRouteViewController: UITextFieldDelegate {
     
 }
