@@ -1,10 +1,18 @@
 {
-	"folders":
-	[
-		{
-			"path": ".",
-            "folder_exclude_patterns": [".vscode", "Carthage", 
-                "Charles", "CharlesSessions", "Paw", "betTesters"]
-		}
-	]
+  "folders": [
+    {
+      "path": ".",
+      "folder_exclude_patterns": [
+        ".vscode",
+        "Carthage",
+        "Charles",
+        "CharlesSessions",
+        "Paw",
+        "betTesters",
+        "Build",
+        "*.framework",
+        "*.xcodeproj"
+      ]
+    }
+  ]
 }
