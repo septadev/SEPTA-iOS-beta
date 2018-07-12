@@ -29,12 +29,12 @@ struct ScheduleRequest: Equatable {
 
 extension ScheduleRequest {
 
-    func convertedToFavorite() -> Favorite? {
+    func convertedToFavorite(favoriteId: String? = nil) -> Favorite? {
         guard
             let selectedRoute = selectedRoute,
             let selectedStart = selectedStart,
             let selectedEnd = selectedEnd else { return nil }
-        let favoriteId = UUID().uuidString
+        let favoriteId = favoriteId ?? UUID().uuidString
         let routeName = selectedRoute.routeId == Route.allRailRoutesRouteId() ? "Rail" : selectedRoute.routeId
         let favoriteName = "\(routeName): \(selectedStart.stopName) to \(selectedEnd.stopName)"
         return Favorite(favoriteId: favoriteId, favoriteName: favoriteName, transitMode: transitMode, selectedRoute: selectedRoute, selectedStart: selectedStart, selectedEnd: selectedEnd, nextToArriveTrips: [NextToArriveTrip](), nextToArriveUpdateStatus: .idle, refreshDataRequested: true)

@@ -243,6 +243,7 @@
 		58E33F2D1F6171AE00C74B7C /* SeptaSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58ACEAE31F3A9A9B00DC2836 /* SeptaSchedule.framework */; };
 		58E54E201F65977100E9B66D /* NextToArriveTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E54E1F1F65977100E9B66D /* NextToArriveTripViewController.swift */; };
 		58E54E241F65A40100E9B66D /* NavigationBar+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E54E231F65A40100E9B66D /* NavigationBar+Util.swift */; };
+		58E80FEE20F685D5000E419A /* FavoriteNextToArriveReverseTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E80FED20F685D5000E419A /* FavoriteNextToArriveReverseTrip.swift */; };
 		58EB8D0F1F5D79530028A487 /* NextToArriveNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB8D0E1F5D79530028A487 /* NextToArriveNavigationController.swift */; };
 		58EB8D131F5D79C10028A487 /* NextToArriveNavigationControllerStateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB8D121F5D79C10028A487 /* NextToArriveNavigationControllerStateProvider.swift */; };
 		58EB8D151F5D7CD20028A487 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB8D141F5D7CD20028A487 /* BaseNavigationController.swift */; };
@@ -924,6 +925,7 @@
 		58E33F2A1F6169EE00C74B7C /* RealTimeArrivalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeArrivalTests.swift; sourceTree = "<group>"; };
 		58E54E1F1F65977100E9B66D /* NextToArriveTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveTripViewController.swift; sourceTree = "<group>"; };
 		58E54E231F65A40100E9B66D /* NavigationBar+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationBar+Util.swift"; sourceTree = "<group>"; };
+		58E80FED20F685D5000E419A /* FavoriteNextToArriveReverseTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNextToArriveReverseTrip.swift; sourceTree = "<group>"; };
 		58EB8D0E1F5D79530028A487 /* NextToArriveNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveNavigationController.swift; sourceTree = "<group>"; };
 		58EB8D121F5D79C10028A487 /* NextToArriveNavigationControllerStateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveNavigationControllerStateProvider.swift; sourceTree = "<group>"; };
 		58EB8D141F5D7CD20028A487 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
@@ -1585,6 +1587,7 @@
 				58248B681F6D59A700DA2D65 /* No Favorites */,
 				58248B671F6D598A00DA2D65 /* Edit Favorite */,
 				582F4E8F1F33B1120062A546 /* favorites.storyboard */,
+				58E80FED20F685D5000E419A /* FavoriteNextToArriveReverseTrip.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -3524,6 +3527,7 @@
 				581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */,
 				58CBEE871F953B5A00F26A15 /* FavoriteState_NextToArriveFavoriteWatcher.swift in Sources */,
 				679924051F6E01BD00FD5691 /* MoreButton.swift in Sources */,
+				58E80FEE20F685D5000E419A /* FavoriteNextToArriveReverseTrip.swift in Sources */,
 				580A35691F6A2B0A000FCA82 /* FavoriteHeaderCell.swift in Sources */,
 				588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */,
 				676B7D841F7CFA270052F016 /* FaresViewController.swift in Sources */,

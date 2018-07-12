@@ -21,6 +21,8 @@ struct Favorite: Codable {
     var refreshDataRequested: Bool
     var collapsed: Bool
     var sortOrder: Int
+
+    static var reversedFavoriteId: String = "ReversedFavorite"
     
     static let defaultSortOrder = 999
 

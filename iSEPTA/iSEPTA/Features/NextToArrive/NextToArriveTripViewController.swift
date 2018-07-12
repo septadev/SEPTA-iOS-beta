@@ -22,6 +22,7 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel,
 
     let viewModel = NextToArriveTripViewModel()
     var nextToArriveReverseTrip: NextToArriveReverseTrip?
+    var favoriteNextToArriveReverseTrip: FavoriteNextToArriveReverseTrip?
 
     override func viewDidLoad() {
         viewModel.delegate = self
@@ -37,14 +38,31 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel,
     @objc func swapRoutes(_: UITapGestureRecognizer) {
         swapRouteImage.alpha = 0.5
 
-        initializeReverseTrip()
+        if store.state.targetForScheduleActions() == .nextToArrive {
+            initializeReverseTripForNextToArrive()
+        } else {
+            initializeReverseTripForFavorites()
+        }
     }
 
-    func initializeReverseTrip() {
+    func initializeReverseTripForNextToArrive() {
 
         if let scheduleRequest = viewModel.scheduleRequest, let target = viewModel.target, swapRouteImage.isUserInteractionEnabled {
             nextToArriveReverseTrip = NextToArriveReverseTrip(target: target, scheduleRequest: scheduleRequest, delegate: self)
             nextToArriveReverseTrip?.reverseNextToArrive()
+        }
+    }
+
+    func initializeReverseTripForFavorites() {
+        guard let scheduleRequest = viewModel.scheduleRequest, let target = viewModel.target, swapRouteImage.isUserInteractionEnabled else { return }
+        let status = store.state.favoritesState.nextToArriveReverseTripStatus
+
+        if status == .noReverse {
+            favoriteNextToArriveReverseTrip = FavoriteNextToArriveReverseTrip(target: target, scheduleRequest: scheduleRequest, delegate: self)
+            favoriteNextToArriveReverseTrip?.reverseNextToArrive()
+        } else if status == .didReverse {
+            let action = UpdateFavoriteNextToArriveReverseTripStatus(nextToArriveReverseTripStatus: .noReverse)
+            store.dispatch(action)
         }
     }
 
@@ -58,6 +76,7 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel,
 
     func displayErrorMessage(message _: String, shouldDismissAfterDisplay _: Bool) {
     }
+
 }
 
 class NextToArriveTripViewModel: StoreSubscriber {

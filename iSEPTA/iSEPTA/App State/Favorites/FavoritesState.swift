@@ -24,10 +24,14 @@ struct FavoritesState: Codable {
         return matchingFavorite
     }
 
+    var nextToArriveReverseTripStatus = NextToArriveReverseTripStatus.noReverse
     var nextToArriveTrips: [NextToArriveTrip] {
         guard let nextToArriveFavorite = nextToArriveFavorite else { return [NextToArriveTrip]() }
         return nextToArriveFavorite.nextToArriveTrips
     }
+
+    var reversedNextToArriveTrips = [NextToArriveTrip]()
+    var reversedNextToArriveScheduleRequest = ScheduleRequest()
 
     var nextToArriveUpdateStatus: NextToArriveUpdateStatus {
         guard let nextToArriveFavorite = nextToArriveFavorite else { return .idle }
@@ -36,7 +40,11 @@ struct FavoritesState: Codable {
 
     var nextToArriveScheduleRequest: ScheduleRequest {
         guard let nextToArriveFavorite = nextToArriveFavorite else { return ScheduleRequest() }
-        return nextToArriveFavorite.convertedToScheduleRequest()
+        if nextToArriveReverseTripStatus != .didReverse {
+            return nextToArriveFavorite.convertedToScheduleRequest()
+        } else {
+            return reversedNextToArriveScheduleRequest
+        }
     }
 
     var favoritesToUpdate: Set<Favorite> {
