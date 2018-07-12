@@ -36,6 +36,10 @@ class TransitViewMapRouteViewModel: StoreSubscriber {
         delegate?.drawRoutes(routeIds: uniqueRoutes)
         delegate?.drawVehicleLocations(locations: state)
     }
+    
+    deinit {
+        store.unsubscribe(self)
+    }
 }
 
 protocol TransitViewMapDataProviderDelegate {

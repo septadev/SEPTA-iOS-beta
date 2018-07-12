@@ -100,4 +100,8 @@ class TransitViewSelectionViewModel: StoreSubscriber {
             return false
         }
     }
+    
+    deinit {
+        store.unsubscribe(self)
+    }
 }

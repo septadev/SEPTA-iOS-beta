@@ -30,6 +30,9 @@ class TransitViewRouteViewController: UIViewController {
         viewModel.updateableFromViewModelController = self
     }
 
+    deinit {
+        store.unsubscribe(self)
+    }
 }
 
 extension TransitViewRouteViewController: StoreSubscriber {
