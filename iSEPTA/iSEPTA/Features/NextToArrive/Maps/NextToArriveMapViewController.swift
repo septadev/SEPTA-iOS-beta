@@ -103,25 +103,18 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
     }
 
     func addOverlaysToMap() {
+        guard let mapView = mapView else { return }
         mapView.addOverlays(overlaysToAdd)
     }
 
     func drawRoutes(routeIds newRouteIds: [String]) {
 
         let routeIdsToAdd = newRouteIds.filter { !routeIds.contains($0) }
-        let routeIdsToRemove = routeIds.filter { !newRouteIds.contains($0) }
         routeIds.append(contentsOf: routeIdsToAdd)
 
         for routeId in routeIdsToAdd {
             guard let url = locateKMLFile(routeId: routeId) else { return }
             parseKMLForRoute(url: url, routeId: routeId)
-        }
-
-        guard let mapView = mapView else { return }
-        for overlay in mapView.overlays {
-            if let overlay = overlay as? RouteOverlay, let routeId = overlay.routeId, routeIdsToRemove.contains(routeId) {
-                mapView.remove(overlay)
-            }
         }
     }
 

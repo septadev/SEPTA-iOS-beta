@@ -17,7 +17,7 @@ class NextToArriveGrouper {
         if let requestRouteId = requestRouteId, requestRouteId != Route.allRailRoutesRoute().routeId {
             allRouteIds.append(requestRouteId)
         }
-        return Array(Set(allRouteIds.flatMap { $0 }))
+        return Array(Set(allRouteIds.compactMap { $0 }))
     }
 
     static func buildNextToArriveTripSections(trips: [NextToArriveTrip]) -> [[NextToArriveTrip]] {
