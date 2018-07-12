@@ -5,16 +5,12 @@ import Foundation
 public struct TransitRoute: Codable {
     public let routeId: String
     public let routeType: String
-    public let routeShortName: String
-    public let routeLongName: String
-    public let routeDirectionCode: RouteDirectionCode
+    public let routeName: String
     
-    public init(routeId: String, routeType: String, routeShortName: String, routeLongName: String, routeDirectionCode: RouteDirectionCode) {
+    public init(routeId: String, routeType: String, routeName: String) {
         self.routeId = routeId
         self.routeType = routeType
-        self.routeShortName = routeShortName
-        self.routeLongName = routeLongName
-        self.routeDirectionCode = routeDirectionCode
+        self.routeName = routeName
     }
     
     public func mode() -> TransitMode {
@@ -27,38 +23,27 @@ public struct TransitRoute: Codable {
     }
     
     public var hashValue: Int {
-        return routeId.hashValue * routeDirectionCode.rawValue.hashValue
+        return routeId.hashValue
     }
     
     enum CodingKeys: String, CodingKey {
         case routeId
         case routeType
-        case routeShortName
-        case routeLongName
-        case routeDirectionCode
+        case routeName
     }
     
     public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self) // defining our (keyed) container
+        let container = try decoder.container(keyedBy: CodingKeys.self)
         routeId = try container.decode(String.self, forKey: .routeId)
         routeType = try container.decode(String.self, forKey: .routeType)
-        routeShortName = try container.decode(String.self, forKey: .routeShortName)
-        routeLongName = try container.decode(String.self, forKey: .routeLongName)
-        let routeDirectionCodeInt = try container.decode(Int.self, forKey: .routeDirectionCode)
-        if let routeDirectionCode = RouteDirectionCode(rawValue: routeDirectionCodeInt) {
-            self.routeDirectionCode = routeDirectionCode
-        } else {
-            throw CodableError.decodingKeyNotFound
-        }
+        routeName = try container.decode(String.self, forKey: .routeName)
     }
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(routeId, forKey: .routeId)
         try container.encode(routeType, forKey: .routeType)
-        try container.encode(routeShortName, forKey: .routeShortName)
-        try container.encode(routeLongName, forKey: .routeLongName)
-        try container.encode(routeDirectionCode.rawValue, forKey: .routeDirectionCode)
+        try container.encode(routeName, forKey: .routeName)
     }
 }
 
@@ -83,21 +68,7 @@ public func == (lhs: TransitRoute, rhs: TransitRoute) -> Bool {
     }
     guard areEqual else { return false }
     
-    if lhs.routeShortName == rhs.routeShortName {
-        areEqual = true
-    } else {
-        areEqual = false
-    }
-    guard areEqual else { return false }
-    
-    if lhs.routeLongName == rhs.routeLongName {
-        areEqual = true
-    } else {
-        areEqual = false
-    }
-    guard areEqual else { return false }
-    
-    if lhs.routeDirectionCode == rhs.routeDirectionCode {
+    if lhs.routeName == rhs.routeName {
         areEqual = true
     } else {
         areEqual = false

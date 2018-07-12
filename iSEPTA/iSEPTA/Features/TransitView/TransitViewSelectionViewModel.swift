@@ -81,7 +81,7 @@ class TransitViewSelectionViewModel: StoreSubscriber {
     private func constructRouteSelectedCell(tableView: UITableView, indexPath: IndexPath, route: TransitRoute) -> RouteSelectedTableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "routeSelectedCell", for: indexPath) as! RouteSelectedTableViewCell
         cell.routeIdLabel.text = "\(route.routeId):"
-        cell.routeShortNameLabel.text = route.routeLongName
+        cell.routeShortNameLabel.text = route.routeName
         cell.pillView.backgroundColor = Route.colorForRouteId(route.routeId, transitMode: route.mode())
         return cell
     }

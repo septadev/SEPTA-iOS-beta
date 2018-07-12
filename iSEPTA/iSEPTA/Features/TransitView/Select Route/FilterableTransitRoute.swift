@@ -26,11 +26,11 @@ struct FilterableTransitRoute {
     
     init(route: TransitRoute) {
         if let routeInt = Int(route.routeId), let routeString = FilterableTransitRoute.routeNumberFormatter.string(from: NSNumber(value: routeInt)) {
-            sortString = routeString + String(route.routeDirectionCode.rawValue)
+            sortString = routeString
         } else {
             sortString = "z\(route.routeId)"
         }
-        filterString = (route.routeId + " " + route.routeShortName).lowercased()
+        filterString = (route.routeId + " " + route.routeName).lowercased()
         self.route = route
     }
 }

@@ -65,9 +65,9 @@ class TransitViewRoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate
     func configure(cell: RouteTableViewCell, atRow row: Int) {
         guard let filteredRoutes = filteredRoutes, row < filteredRoutes.count else { return }
         let route = filteredRoutes[row].route
-        cell.setShortName(text: "\(route.routeId): \(route.routeShortName)")
+        cell.setShortName(text: "\(route.routeId): \(route.routeName)")
         
-        cell.setLongName(text: route.routeLongName)
+//        cell.setLongName(text: route.routeLongName)
         
         if let routeImage = RouteIcon.get(for: route.routeId, transitMode: route.mode()) {
             cell.setIcon(image: routeImage)
