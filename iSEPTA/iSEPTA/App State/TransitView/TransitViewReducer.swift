@@ -13,11 +13,11 @@ struct TransitViewReducer {
         if let state = state {
             return reduceTransitViewState(action: action, state: state)
         } else {
-            return TransitViewState()
+            return TransitViewState(availableRoutes: [], transitViewModel: TransitViewModel(), locations: [], refreshRoutes: true, refreshVehicleLocations: false)
         }
     }
     
-    static func reduceTransitViewState(action: Action, state: TransitViewState) -> TransitViewState {
+    private static func reduceTransitViewState(action: Action, state: TransitViewState) -> TransitViewState {
         guard let action = action as? TransitViewAction else { return state }
         
         if let action = action as? TransitViewRoutesLoaded {
@@ -25,11 +25,7 @@ struct TransitViewReducer {
         }
         
         if let action = action as? TransitViewRouteSelected {
-            let first = action.slot == .first ? action.route : state.transitViewModel.firstRoute
-            let second = action.slot == .second ? action.route : state.transitViewModel.secondRoute
-            let third = action.slot == .third ? action.route : state.transitViewModel.thirdRoute
-            let model = TransitViewModel(firstRoute: first, secondRoute: second, thirdRoute: third, slotBeingChanged: state.transitViewModel.slotBeingChanged)
-            return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: model)
+            return reduceTransitViewRouteSelected(action: action, state: state)
         }
         
         if action is ResetTransitView {
@@ -41,6 +37,22 @@ struct TransitViewReducer {
             return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: model)
         }
         
+        if action is RefreshTransitViewVehicleLocationData {
+            return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: state.transitViewModel, locations: state.vehicleLocations, refreshVehicleLocations: true)
+        }
+        
+        if let action = action as? TransitViewRouteLocationsDownloaded {
+            return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: state.transitViewModel, locations: action.locations)
+        }
+        
         return state
+    }
+    
+    private static func reduceTransitViewRouteSelected(action: TransitViewRouteSelected, state: TransitViewState) -> TransitViewState {
+        let first = action.slot == .first ? action.route : state.transitViewModel.firstRoute
+        let second = action.slot == .second ? action.route : state.transitViewModel.secondRoute
+        let third = action.slot == .third ? action.route : state.transitViewModel.thirdRoute
+        let model = TransitViewModel(firstRoute: first, secondRoute: second, thirdRoute: third, slotBeingChanged: state.transitViewModel.slotBeingChanged)
+        return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: model)
     }
 }

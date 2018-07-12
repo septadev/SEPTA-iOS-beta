@@ -30,3 +30,12 @@ struct TransitViewSlotChange: TransitViewAction {
     let slot: TransitViewRouteSlot
     let description: String
 }
+
+struct RefreshTransitViewVehicleLocationData: TransitViewAction {
+    let description: String
+}
+
+struct TransitViewRouteLocationsDownloaded: TransitViewAction {
+    let locations: [TransitViewVehicleLocation]
+    let description: String
+}

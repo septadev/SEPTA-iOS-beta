@@ -13,7 +13,7 @@ class TransitViewDataProvider: StoreSubscriber {
     
     static let sharedInstance = TransitViewDataProvider()
     
-    typealias StoreSubscriberStateType = TransitViewState
+    typealias StoreSubscriberStateType = Bool
     
     init() {
         subscribe()
@@ -21,12 +21,14 @@ class TransitViewDataProvider: StoreSubscriber {
     
     func subscribe() {
         store.subscribe(self) {
-            $0.select { $0.transitViewState }.skipRepeats { $0 == $1}
+            $0.select { $0.transitViewState.refreshTransitViewRoutes }.skipRepeats { $0 == $1}
         }
     }
     
     func newState(state: StoreSubscriberStateType) {
-        retrieveTransitViewRoutes()
+        if state {
+            retrieveTransitViewRoutes()
+        }
     }
     
     func retrieveTransitViewRoutes() {

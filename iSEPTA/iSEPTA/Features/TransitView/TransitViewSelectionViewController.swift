@@ -82,6 +82,10 @@ extension TransitViewSelectionViewController: UITableViewDelegate {
             store.dispatch(slotAction)
             let modalAction = PresentModal(viewController: .transitViewSelectRouteViewController, description: "User wishes to pick a TransitView route")
             store.dispatch(modalAction)
+        } else if indexPath.section == 3 {
+            store.dispatch(RefreshTransitViewVehicleLocationData(description: "Request refresh of TransitView vehicle location data"))
+            let pushAction = PushViewController(viewController: .transitViewMap, description: "Will view TransitView map")
+            store.dispatch(pushAction)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }

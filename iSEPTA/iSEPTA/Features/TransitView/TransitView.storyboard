@@ -331,6 +331,43 @@
             </objects>
             <point key="canvasLocation" x="1618" y="215"/>
         </scene>
+        <!--TransitView-->
+        <scene sceneID="H2f-Kk-Twi">
+            <objects>
+                <viewController storyboardIdentifier="transitViewMap" id="UGl-dH-gKu" customClass="TransitViewOverviewViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Ya-Wm-KRS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DuL-pL-R8v">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <connections>
+                                    <segue destination="dTh-FH-vYV" kind="embed" id="xrQ-9I-NhW"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DuL-pL-R8v" firstAttribute="leading" secondItem="feT-ge-QQN" secondAttribute="leading" id="0zi-pf-3JD"/>
+                            <constraint firstItem="feT-ge-QQN" firstAttribute="trailing" secondItem="DuL-pL-R8v" secondAttribute="trailing" id="U3V-I9-wcb"/>
+                            <constraint firstItem="DuL-pL-R8v" firstAttribute="top" secondItem="feT-ge-QQN" secondAttribute="top" id="gyv-KH-n9I"/>
+                            <constraint firstItem="feT-ge-QQN" firstAttribute="bottom" secondItem="DuL-pL-R8v" secondAttribute="bottom" id="yus-AK-sO6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="feT-ge-QQN"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="TransitView" id="mG6-PT-Jo1">
+                        <barButtonItem key="rightBarButtonItem" image="refreshIcon" id="Vhi-2y-NQZ">
+                            <connections>
+                                <action selector="refreshTransitViewData:" destination="UGl-dH-gKu" id="ng7-9x-Ftb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z8z-0b-Krx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2460" y="215"/>
+        </scene>
         <!--Search Routes Modal Header View Controller-->
         <scene sceneID="2SB-8O-GWe">
             <objects>
@@ -454,9 +491,41 @@ SearchTextBox</string>
             </objects>
             <point key="canvasLocation" x="1617" y="-226"/>
         </scene>
+        <!--Transit View Map View Controller-->
+        <scene sceneID="Dzg-yT-aQW">
+            <objects>
+                <viewController id="dTh-FH-vYV" customClass="TransitViewMapViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wcd-bH-62Z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QPo-Ph-wri">
+                                <rect key="frame" x="0.0" y="20" width="375" height="583"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dTh-FH-vYV" id="fYo-J5-MVy"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="QPo-Ph-wri" secondAttribute="trailing" id="8Ia-fX-UHP"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="QPo-Ph-wri" secondAttribute="bottom" id="GaT-6c-aix"/>
+                            <constraint firstItem="QPo-Ph-wri" firstAttribute="top" secondItem="wcd-bH-62Z" secondAttribute="topMargin" id="QcM-dp-Mhc"/>
+                            <constraint firstItem="QPo-Ph-wri" firstAttribute="leading" secondItem="wcd-bH-62Z" secondAttribute="leading" id="thg-np-9nG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="QPo-Ph-wri" id="0MY-Rh-9LU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gSf-LZ-ERF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3289" y="215"/>
+        </scene>
     </scenes>
     <resources>
         <image name="SearchIcon" width="17" height="17"/>
+        <image name="refreshIcon" width="19" height="19"/>
         <image name="selectRouteAccessory" width="26" height="14"/>
     </resources>
 </document>

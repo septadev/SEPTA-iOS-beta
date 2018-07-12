@@ -19,6 +19,7 @@ class StateProviders {
     let genericAlertDetailProvider: StateProvider
     let tripDetailStateProvider: TripDetailStateProvider
     let transitViewDataProvider: TransitViewDataProvider
+    let transitViewVehicleLocationDataProvider: TransitViewVehicleLocationDataProvider
     let databaseUpdateProvider: DatabaseUpdateProvider
     let databaseDownloadProvider: DatabaseDownloadProvider
 
@@ -36,6 +37,7 @@ class StateProviders {
          genericAlertDetailProvider: StateProvider = GenericAlertDetailProviderFactory.generateProvider(),
          tripDetailStateProvider: TripDetailStateProvider = TripDetailStateProvider.sharedInstance,
          transitViewDataProvider: TransitViewDataProvider = TransitViewDataProvider.sharedInstance,
+         transitViewVehicleLocationDataProvider: TransitViewVehicleLocationDataProvider = TransitViewVehicleLocationDataProvider.sharedInstance,
          databaseUpdateProvider: DatabaseUpdateProvider = DatabaseUpdateProvider.sharedInstance,
          databaseDownloadProvider: DatabaseDownloadProvider = DatabaseDownloadProvider.sharedInstance
     ) {
@@ -53,6 +55,7 @@ class StateProviders {
         self.genericAlertDetailProvider = genericAlertDetailProvider
         self.tripDetailStateProvider = tripDetailStateProvider
         self.transitViewDataProvider = transitViewDataProvider
+        self.transitViewVehicleLocationDataProvider = transitViewVehicleLocationDataProvider
         self.databaseUpdateProvider = databaseUpdateProvider
         self.databaseDownloadProvider = databaseDownloadProvider
     }

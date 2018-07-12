@@ -41,6 +41,7 @@ enum ViewController: String, Equatable {
     // TransitView
     case transitViewSelectionViewController
     case transitViewSelectRouteViewController
+    case transitViewMap
 
     func storyboardIdentifier() -> String {
         switch self {
@@ -87,6 +88,8 @@ enum ViewController: String, Equatable {
         case .transitViewSelectionViewController:
             return "TransitView"
         case .transitViewSelectRouteViewController:
+            return "TransitView"
+        case .transitViewMap:
             return "TransitView"
         }
     }
