@@ -16,7 +16,9 @@ var stateProviders = StateProviders()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    let databaseMover = DatabaseMover()
+    
+    let databaseUpdateManager = DatabaseUpdateManager()
+    
     var window: UIWindow? {
         didSet {
         }
@@ -24,10 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+        Crashlytics.sharedInstance().delegate = self
         Fabric.with([Crashlytics.self, Answers.self])
 
         stateProviders.preferenceProvider.subscribe()
 
+        databaseUpdateManager.appLaunched(coldStart: true)
+        
         return true
     }
 
@@ -42,7 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        databaseUpdateManager.appLaunched(coldStart: false)
+        let inAppReview = InAppReview()
+        inAppReview.appLaunched()
     }
 
     func applicationDidBecomeActive(_: UIApplication) {
@@ -53,5 +60,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
+    }
+}
+
+extension AppDelegate: CrashlyticsDelegate {
+    func crashlyticsDidDetectReport(forLastExecution report: CLSReport, completionHandler: @escaping (Bool) -> Void) {
+        UserDefaults.standard.set(true, forKey: InAppReview.crashReportedKey)
+        completionHandler(true)
     }
 }

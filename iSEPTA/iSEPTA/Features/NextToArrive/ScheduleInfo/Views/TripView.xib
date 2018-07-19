@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -116,10 +116,12 @@
             <connections>
                 <outlet property="chevronView" destination="GMc-n1-8zy" id="4qI-Pb-spk"/>
                 <outlet property="departingBox" destination="EFo-Ny-r4U" id="mLx-iw-gTa"/>
+                <outlet property="departingViewTrailingConstraint" destination="Ptp-d3-CwB" id="gkJ-bX-ab8"/>
                 <outlet property="departingWhenLabel" destination="2Ag-sb-qIU" id="4DB-8n-RBi"/>
                 <outlet property="endStopLabel" destination="WW2-8i-ztR" id="R5N-0q-x3e"/>
                 <outlet property="onTimeLabel" destination="3ju-XO-Vsu" id="ZSp-ME-upC"/>
                 <outlet property="startStopLabel" destination="AUO-LI-a43" id="wKg-Zo-u4b"/>
+                <outlet property="tapGestureRecognizer" destination="ZU4-K5-4QX" id="QYy-pD-Wi4"/>
                 <outletCollection property="gestureRecognizers" destination="ZU4-K5-4QX" appends="YES" id="115-Sq-E1s"/>
             </connections>
             <point key="canvasLocation" x="11" y="-221"/>

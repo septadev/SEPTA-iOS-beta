@@ -12,6 +12,8 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
     var favoritestoEditWatcher: FavoritesState_FavoriteToEditWatcher?
     var genericAlertsWatcher: AlertState_HasGenericOrAppAlertsWatcher?
     var modalAlertsDisplayedWatcher: AlertState_ModalAlertsDisplayedWatcher?
+    var databaseUpdateWatcher: DatabaseUpdateWatcher?
+    var databaseDownloadedWatcher: DatabaseDownloadedWatcher?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -55,7 +57,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-            if store.state.databaseState != .loaded {
+            if store.state.databaseState == .loading {
                 self?.performSegue(withIdentifier: "showDatabaseLoadingModal", sender: self)
             }
         }
@@ -65,6 +67,13 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
 
         modalAlertsDisplayedWatcher = AlertState_ModalAlertsDisplayedWatcher()
         modalAlertsDisplayedWatcher?.delegate = self
+        
+        if databaseUpdateWatcher == nil {
+            databaseUpdateWatcher = DatabaseUpdateWatcher(delegate: self)
+        }
+        if databaseDownloadedWatcher == nil {
+            databaseDownloadedWatcher = DatabaseDownloadedWatcher(delegate: self)
+        }
     }
 
     var modalTransitioningDelegate: UIViewControllerTransitioningDelegate!
@@ -131,5 +140,33 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
                 }
             }
         }
+    }
+}
+
+extension MainNavigationController: DatabaseUpdateWatcherDelegate {
+    func databaseUpdateAvailable() {
+        let alert = UIAlertController(title: "There are new schedules available", message: "Would you like to download them now?", preferredStyle: .alert)
+        let downloadAction = UIAlertAction(title: "Yes", style: .default, handler: { (_) in
+            store.dispatch(DownloadDatabaseUpdate())
+        })
+        let laterAction = UIAlertAction(title: "Remind me later", style: .default, handler: { (_) in
+            let dbFileManager = DatabaseFileManager()
+            dbFileManager.setDatabaseUpdateInProgress(inProgress: false)
+            store.dispatch(DatabaseUpToDate())
+        })
+        alert.addAction(downloadAction)
+        alert.addAction(laterAction)
+        alert.show()
+    }
+}
+
+extension MainNavigationController: DatabaseDownloadedWatcherDelegate {
+    func databaseDownloadComplete() {
+        let alert = UIAlertController(title: "Schedule download complete", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.show()
+        let dbFileManager = DatabaseFileManager()
+        dbFileManager.setDatabaseUpdateInProgress(inProgress: false)
+        store.dispatch(DatabaseUpToDate())
     }
 }

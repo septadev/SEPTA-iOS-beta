@@ -13,11 +13,15 @@ class FavoritesViewController: UIViewController, IdentifiableController {
     let viewController: ViewController = .favoritesViewController
 
     @IBOutlet var tableView: UITableView!
+    
+    private var pendingRequestWorkItem: DispatchWorkItem?
+    
     var timer: Timer?
     var viewModel: FavoritesViewModel!
-    private var pendingRequestWorkItem: DispatchWorkItem?
-
     var millisecondsToDelayTableReload = 100
+    
+    var editBarButtonItem = UIBarButtonItem()
+    var doneBarButtonItem = UIBarButtonItem()
 
     override func viewDidLoad() {
         view.backgroundColor = SeptaColor.navBarBlue
@@ -31,9 +35,14 @@ class FavoritesViewController: UIViewController, IdentifiableController {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 18))
         footerView.backgroundColor = UIColor.clear
         tableView.tableFooterView = footerView
-        let addFavoriteBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(navigateToNextToArrive))
+        let addFavoriteBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(navigateToNextToArrive))
         addFavoriteBarButtonItem.accessibilityLabel = "Add Favorite"
-        navigationItem.rightBarButtonItem = addFavoriteBarButtonItem
+        navigationItem.leftBarButtonItem = addFavoriteBarButtonItem
+        editBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(toggleEditMode(sender:)))
+        editBarButtonItem.accessibilityLabel = "Edit Favorites"
+        doneBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(toggleEditMode(sender:)))
+        doneBarButtonItem.accessibilityLabel = "Done Editing"
+        navigationItem.rightBarButtonItem = editBarButtonItem
     }
 
     @objc func navigateToNextToArrive() {
@@ -44,6 +53,14 @@ class FavoritesViewController: UIViewController, IdentifiableController {
 
         let action = SwitchTabs(activeNavigationController: .nextToArrive, description: "Jumping to Next To Arrive From Favorites")
         store.dispatch(action)
+    }
+    
+    @objc func toggleEditMode(sender: UIBarButtonItem) {
+        let willEdit = sender == editBarButtonItem
+        viewModel.collapseForEditMode = willEdit
+        tableView.reloadData()
+        tableView.setEditing(willEdit, animated: true)
+        navigationItem.rightBarButtonItem = willEdit ? doneBarButtonItem : editBarButtonItem
     }
 }
 
@@ -105,8 +122,28 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let tripCell = tableView.dequeueReusableCell(withIdentifier: "favoriteTripCell") as? FavoriteTripCell else { return UITableViewCell() }
         viewModel.configureTripCell(favoriteTripCell: tripCell, indexPath: indexPath)
-
+        tripCell.delegate = self
+        
         return tripCell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        let favorite = viewModel.favorite(at: indexPath)
+        let alert = UIAlertController(title: "Are you sure?", message: "Are you sure you want to delete \(favorite.favoriteName)?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
+            self.viewModel.remove(favorite: favorite)
+            self.tableView.reloadData()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        viewModel.moveFavorite(from: sourceIndexPath, to: destinationIndexPath)
     }
 }
 
@@ -132,5 +169,17 @@ extension FavoritesViewController: UpdateableFromViewModel {
     }
 
     func displayErrorMessage(message _: String, shouldDismissAfterDisplay _: Bool) {
+    }
+}
+
+extension FavoritesViewController: FavoriteTripCellDelegate {
+    func favoriteCellToggled(cell: FavoriteTripCell) {
+        guard var favorite = cell.currentFavorite else { return }
+        favorite.collapsed = !favorite.collapsed
+        
+        let action = SaveFavorite(favorite: favorite)
+        store.dispatch(action)
+        
+        tableView.reloadData()
     }
 }

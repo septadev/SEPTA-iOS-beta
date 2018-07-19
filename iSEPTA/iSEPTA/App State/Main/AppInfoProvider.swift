@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import SeptaSchedule
+
 class AppInfoProvider {
 
     static func buildNumber() -> String {
@@ -19,6 +21,23 @@ class AppInfoProvider {
 
     static func lastDatabaseUpdate() -> Date {
         return valueForKey("lastDatabaseUpdate")
+    }
+    
+    static func databaseVersionNumber() -> String {
+        let dbFileManager = DatabaseFileManager()
+        return String(dbFileManager.currentDatabaseVersion())
+    }
+    
+    static func databaseUpdateDate() -> String {
+        let dbFileManager = DatabaseFileManager()
+        let updateDate = dbFileManager.databaseUpdateDate()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ssZZZZZ"
+        if let formattedDate = formatter.date(from: updateDate) {
+            formatter.dateFormat = "MM/dd/yyyy"
+            return formatter.string(from: formattedDate)
+        }
+        return updateDate
     }
 
     private static func valueForKey<T>(_ key: String) -> T {

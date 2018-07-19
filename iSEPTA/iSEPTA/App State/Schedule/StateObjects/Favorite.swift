@@ -19,12 +19,16 @@ struct Favorite: Codable {
     var nextToArriveTrips: [NextToArriveTrip]
     var nextToArriveUpdateStatus: NextToArriveUpdateStatus
     var refreshDataRequested: Bool
+    var collapsed: Bool
+    var sortOrder: Int
+    
+    static let defaultSortOrder = 999
 
     var scheduleRequest: ScheduleRequest {
         return convertedToScheduleRequest()
     }
 
-    init(favoriteId: String, favoriteName: String, transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop, nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip](), nextToArriveUpdateStatus: NextToArriveUpdateStatus = .idle, refreshDataRequested: Bool = false) {
+    init(favoriteId: String, favoriteName: String, transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop, nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip](), nextToArriveUpdateStatus: NextToArriveUpdateStatus = .idle, refreshDataRequested: Bool = false, collapsed: Bool = false, sortOrder: Int = Favorite.defaultSortOrder) {
         self.favoriteId = favoriteId
         self.favoriteName = favoriteName
         self.transitMode = transitMode
@@ -34,6 +38,8 @@ struct Favorite: Codable {
         self.nextToArriveTrips = nextToArriveTrips
         self.nextToArriveUpdateStatus = nextToArriveUpdateStatus
         self.refreshDataRequested = refreshDataRequested
+        self.collapsed = collapsed
+        self.sortOrder = sortOrder
     }
 
     enum CodingKeys: String, CodingKey {
@@ -43,6 +49,8 @@ struct Favorite: Codable {
         case selectedRoute
         case selectedStart
         case selectedEnd
+        case collapsed
+        case sortOrder
     }
 
     public init(from decoder: Decoder) throws {
@@ -53,17 +61,34 @@ struct Favorite: Codable {
         selectedStart = try container.decode(Stop.self, forKey: .selectedStart)
         selectedEnd = try container.decode(Stop.self, forKey: .selectedEnd)
 
-        if let favoriteId = try container.decode(String?.self, forKey: .favoriteId) {
-            self.favoriteId = favoriteId
-        } else {
-            favoriteId = UUID().uuidString
+        
+        let defaultId = UUID().uuidString
+        do {
+            favoriteId = try container.decode(String?.self, forKey: .favoriteId) ?? defaultId
+        } catch {
+            favoriteId = defaultId
         }
 
-        if let favoriteName = try container.decode(String?.self, forKey: .favoriteName) {
-            self.favoriteName = favoriteName
-        } else {
-            favoriteName = "\(selectedRoute.routeId): \(selectedStart.stopName) to \(selectedEnd.stopName)"
+        let defaultName = "\(selectedRoute.routeId): \(selectedStart.stopName) to \(selectedEnd.stopName)"
+        do {
+            favoriteName = try container.decode(String?.self, forKey: .favoriteName) ?? defaultName
+        } catch {
+            favoriteName = defaultName
         }
+        
+        let defaultCollapsed = false
+        do {
+            collapsed = try container.decode(Bool?.self, forKey: .collapsed) ?? defaultCollapsed
+        } catch {
+            self.collapsed = defaultCollapsed
+        }
+        
+        do {
+            sortOrder = try container.decode(Int?.self, forKey: .sortOrder) ?? Favorite.defaultSortOrder
+        } catch {
+            self.sortOrder = Favorite.defaultSortOrder
+        }
+        
         nextToArriveTrips = [NextToArriveTrip]()
         nextToArriveUpdateStatus = .idle
         refreshDataRequested = true
@@ -77,6 +102,8 @@ struct Favorite: Codable {
         try container.encode(selectedRoute, forKey: .selectedRoute)
         try container.encode(selectedStart, forKey: .selectedStart)
         try container.encode(selectedEnd, forKey: .selectedEnd)
+        try container.encode(collapsed, forKey: .collapsed)
+        try container.encode(sortOrder, forKey: .sortOrder)
     }
 }
 
@@ -117,6 +144,12 @@ func == (lhs: Favorite, rhs: Favorite) -> Bool {
     areEqual = lhs.refreshDataRequested == rhs.refreshDataRequested
     guard areEqual else { return false }
 
+    areEqual = lhs.collapsed == rhs.collapsed
+    guard areEqual else { return false }
+    
+    areEqual = lhs.sortOrder == rhs.sortOrder
+    guard areEqual else { return false }
+    
     return areEqual
 }
 

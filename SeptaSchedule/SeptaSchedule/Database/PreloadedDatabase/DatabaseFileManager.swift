@@ -10,9 +10,15 @@ enum DatabaseFileManagerError: Error {
 
 public class DatabaseFileManager {
 
+    fileprivate let currentDatabaseNameKey = "currentDatabaseKey"
+    fileprivate let currentDatabaseVersionKey = "currentDatabaseVersionKey"
+    fileprivate let databaseUpdateInProgressKey = "databaseUpdateInProgressKey"
+    fileprivate let databaseUpdateDateKey = "databaseUpdateDateKey"
+    
     fileprivate let bundle = Bundle(for: DatabaseFileManager.self)
-    fileprivate let databaseName = "SEPTA.sqlite"
+    fileprivate let defaultDatabaseName = "SEPTA.sqlite"
     let fileManager = FileManager.default
+    let defaults = UserDefaults.standard
 
     public weak var delegate: DatabaseStateDelegate?
 
@@ -24,31 +30,90 @@ public class DatabaseFileManager {
         fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
     }()
 
-    lazy var databaseURL: URL? = {
-        documentDirectoryURL?.appendingPathComponent(databaseName)
-    }()
-
     var databaseFileExistsInDocumentsDirectory: Bool {
-        guard let url = databaseURL else { return false }
+        guard let url = databaseURL() else { return false }
         return fileManager.fileExists(atPath: url.path)
     }
-
-    public func unzipFileToDocumentsDirectoryIfNecessary(forceUpdate: Bool = false) {
-
-        if databaseFileExistsInDocumentsDirectory && !forceUpdate {
-            updateState(databaseState: .loaded)
-            print("No need to move database")
+    
+    public func databaseURL() -> URL? {
+        if let currentDB = defaults.string(forKey: currentDatabaseNameKey) {
+            return documentDirectoryURL?.appendingPathComponent(currentDB)
         } else {
-            updateState(databaseState: .loading)
-            print("database will be moving")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-                self?.moveDatabase()
-            }
+            return documentDirectoryURL?.appendingPathComponent(defaultDatabaseName)
         }
     }
 
-    private func moveDatabase() {
+    public func unzipFileToDocumentsDirectory() {
+        updateState(databaseState: .loading)
+        print("database will be moving")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+            self?.moveDatabase()
+        }
+    }
+    
+    public func appHasASQLiteFile() -> Bool {
+        return allUserSqliteFiles().count > 0
+    }
+    
+    private func allUserSqliteFiles() -> [URL] {
+        var allSqliteFiles: [URL] = []
+        
+        guard let docDirUrl = documentDirectoryURL else { return allSqliteFiles }
+        do {
+            let directoryContents = try fileManager.contentsOfDirectory(at: docDirUrl, includingPropertiesForKeys: nil, options: [])
+            allSqliteFiles = directoryContents.filter {
+                $0.pathExtension == "sqlite"
+            }
+        } catch {
+            // 😞
+        }
+        return allSqliteFiles
+    }
+    
+    public func updateCurrentDatabase(dbURL: URL) {
+        defaults.set(dbURL.lastPathComponent, forKey: currentDatabaseNameKey)
+    }
+    
+    public func updateDatabaseUpdateDate(updateDate: String) {
+        defaults.set(updateDate, forKey: databaseUpdateDateKey)
+    }
+    
+    public func databaseUpdateDate() -> String {
+        return defaults.string(forKey: databaseUpdateDateKey) ?? ""
+    }
+    
+    public func updateCurrentDatabaseVersion(version: Int) {
+        defaults.set(version, forKey: currentDatabaseVersionKey)
+    }
+    
+    public func currentDatabaseVersion() -> Int {
+        return defaults.integer(forKey: currentDatabaseVersionKey)
+    }
+    
+    public func isDatabaseUpdateInProgress() -> Bool {
+        return defaults.bool(forKey: databaseUpdateInProgressKey)
+    }
 
+    public func setDatabaseUpdateInProgress(inProgress: Bool) {
+        defaults.set(inProgress, forKey: databaseUpdateInProgressKey)
+    }
+    
+    public func removeOldDatabases() {
+        guard let currentDatabase = self.databaseURL() else { return }
+        
+        let allSqliteFiles = allUserSqliteFiles()
+        for file in allSqliteFiles {
+            if file.lastPathComponent != currentDatabase.lastPathComponent {
+                do {
+                    try fileManager.removeItem(at: file)
+                } catch {
+                    // ¯\_(ツ)_/¯
+                }
+            }
+        }
+    }
+    
+    private func moveDatabase() {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let strongSelf = self else { return }
             do {
