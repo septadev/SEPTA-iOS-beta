@@ -12,11 +12,12 @@ import SeptaSchedule
 import ReSwift
 import CoreLocation
 
-class NextToArriveProvider: StoreSubscriber {
+class NextToArriveProvider: StoreSubscriber, NextToArriveReverseTripWatcherDelegate {
 
     typealias StoreSubscriberStateType = Bool
 
     let mapper = NextToArriveMapper()
+    let reverseTripWatcher = NextToArriveState_ReverseTripStatusWatcher()
 
     static let sharedInstance = NextToArriveProvider()
 
@@ -26,6 +27,8 @@ class NextToArriveProvider: StoreSubscriber {
 
     let nextToArriveDetailProvider = NextToArriveDetailProvider()
 
+    var nextToArriveReverseTripStatus: NextToArriveReverseTripStatus = .noReverse
+
     private init() {
 
         subscribe()
@@ -33,6 +36,10 @@ class NextToArriveProvider: StoreSubscriber {
 
     deinit {
         unsubscribe()
+    }
+
+    func nextToArriveReverseTripStatusChanged(status: NextToArriveReverseTripStatus) {
+        nextToArriveReverseTripStatus = status
     }
 
     var scheduleRequest: ScheduleRequest { return store.state.nextToArriveState.scheduleState.scheduleRequest }

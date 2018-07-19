@@ -69,3 +69,12 @@ struct CreateNextToArriveFavorite: FavoritesAction {
     let favorite: Favorite
     let description = "Move Favorite to Next to Arrive Favorite"
 }
+
+struct UploadReversedFavorite: FavoritesAction {
+    let favorite: Favorite 
+    let description = "Uploading a reversed favorite"
+}
+
+struct UndoReversedFavorite: FavoritesAction {
+    let description = "Undoing a Reversed Favorite"
+}

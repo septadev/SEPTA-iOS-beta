@@ -122,6 +122,7 @@ extension NextToArriveViewController: UITableViewDelegate, UITableViewDataSource
         scheduleLabel.accessibilityTraits = UIAccessibilityTraitHeader
         sectionHeaderLabel.text = viewModel.transitModeTitle()
     }
+
 }
 
 extension NextToArriveViewController: UpdateableFromViewModel {
