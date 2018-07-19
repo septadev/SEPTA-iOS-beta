@@ -57,8 +57,8 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
             let mapConnection = MakeSeptaConnection(septaConnection: .map)
             store.dispatch(mapConnection)
         case 2:
-            let mapConnection = MakeSeptaConnection(septaConnection: .transitView)
-            store.dispatch(mapConnection)
+            let pushAction = PushViewController(viewController: .transitViewSelectionViewController, description: "Will view TransitView")
+            store.dispatch(pushAction)
         case 3:
             let mapConnection = MakeSeptaConnection(septaConnection: .trainView)
             store.dispatch(mapConnection)

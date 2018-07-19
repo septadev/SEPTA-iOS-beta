@@ -40,12 +40,12 @@ class MoreViewModel {
 
     func configureTransitViewCell(cell: MoreTableViewCell) {
         cell.moreLabel.text = "TransitView"
-        cell.moreImageView.image = UIImage(named: "subwayMapCell")
+        cell.moreImageView.image = UIImage(named: "transitviewIcon")
     }
 
     func configureTrainViewCell(cell: MoreTableViewCell) {
         cell.moreLabel.text = "TrainView"
-        cell.moreImageView.image = UIImage(named: "subwayMapCell")
+        cell.moreImageView.image = UIImage(named: "trainView")
     }
 
     func configureEventsCell(cell: MoreTableViewCell) {

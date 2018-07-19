@@ -21,6 +21,7 @@ class AppStateReducer {
             tripDetailState: TripDetailReducer.main(action: action, state: state?.tripDetailState),
             databaseState: DatabaseReducer.main(action: action, state: state?.databaseState),
             moreState: MoreReducer.main(action: action, state: state?.moreState),
+            transitViewState: TransitViewReducer.main(action: action, state: state?.transitViewState),
             databaseUpdateState: DatabaseUpdateReducer.main(action: action, state: state?.databaseUpdateState)
         )
 

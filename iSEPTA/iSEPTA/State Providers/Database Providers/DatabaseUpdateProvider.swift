@@ -23,6 +23,10 @@ class DatabaseUpdateProvider {
             }
         }
     }
+    
+    deinit {
+        store.unsubscribe(self)
+    }
 
 }
 
