@@ -21,6 +21,13 @@ class RouteTableViewCell: UITableViewCell, RouteCellDisplayable {
             stackView.isExclusiveTouch = true
         }
     }
+    
+    var enabled: Bool = true {
+        didSet {
+            routeShortNameLabel.textColor = enabled ? .black : SeptaColor.disabledText
+            routeLongNameLabel.textColor = enabled ? .darkGray : SeptaColor.disabledText
+        }
+    }
 
     func setShortName(text: String) {
         routeShortNameLabel.text = text

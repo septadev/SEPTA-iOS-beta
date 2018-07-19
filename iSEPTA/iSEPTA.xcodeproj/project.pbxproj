@@ -14,8 +14,14 @@
 		0E2DCAD720F672BD0086F400 /* TransitViewVehicleAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2DCAD620F672BD0086F400 /* TransitViewVehicleAnnotation.swift */; };
 		0E2DCAD920F6755A0086F400 /* TransitViewVehicleLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2DCAD820F6755A0086F400 /* TransitViewVehicleLocation.swift */; };
 		0E2DCADB20F688200086F400 /* TransitViewVehicleLocationDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2DCADA20F688200086F400 /* TransitViewVehicleLocationDataProvider.swift */; };
+		0E2DCAE920F902230086F400 /* TransitViewVehiclePin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2DCAE820F902230086F400 /* TransitViewVehiclePin.swift */; };
 		0E313BB020BEFCB7002EFD34 /* DatabaseUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E313BAF20BEFCB7002EFD34 /* DatabaseUpdater.swift */; };
 		0E32580E20C07E030074FF38 /* septa_database_update.sql in Resources */ = {isa = PBXBuildFile; fileRef = 0E32580B20C07E030074FF38 /* septa_database_update.sql */; };
+		0E36308720FFAE2A00980EB6 /* TransitViewVehicleCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E36308620FFAE2A00980EB6 /* TransitViewVehicleCalloutView.swift */; };
+		0E36308920FFAE5100980EB6 /* TransitViewVehicleCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E36308820FFAE5100980EB6 /* TransitViewVehicleCalloutView.xib */; };
+		0E36308B20FFB20E00980EB6 /* NSMutableAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E36308A20FFB20E00980EB6 /* NSMutableAttributedStringExtensions.swift */; };
+		0E36308D21001DB300980EB6 /* TransitRouteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E36308C21001DB300980EB6 /* TransitRouteCardView.swift */; };
+		0E36308F21001DC500980EB6 /* TransitRouteCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E36308E21001DC500980EB6 /* TransitRouteCardView.xib */; };
 		0E39082E20E1268900E94D53 /* InAppReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E39082D20E1268900E94D53 /* InAppReview.swift */; };
 		0E39084C20E2E7B100E94D53 /* StopSortOrderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E39084B20E2E7B100E94D53 /* StopSortOrderButton.swift */; };
 		0E4328E320D02C6400FBD805 /* DatabaseUpdateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4328E220D02C6400FBD805 /* DatabaseUpdateProvider.swift */; };
@@ -686,8 +692,14 @@
 		0E2DCAD620F672BD0086F400 /* TransitViewVehicleAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewVehicleAnnotation.swift; sourceTree = "<group>"; };
 		0E2DCAD820F6755A0086F400 /* TransitViewVehicleLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewVehicleLocation.swift; sourceTree = "<group>"; };
 		0E2DCADA20F688200086F400 /* TransitViewVehicleLocationDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewVehicleLocationDataProvider.swift; sourceTree = "<group>"; };
+		0E2DCAE820F902230086F400 /* TransitViewVehiclePin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewVehiclePin.swift; sourceTree = "<group>"; };
 		0E313BAF20BEFCB7002EFD34 /* DatabaseUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdater.swift; sourceTree = "<group>"; };
 		0E32580B20C07E030074FF38 /* septa_database_update.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = septa_database_update.sql; sourceTree = "<group>"; };
+		0E36308620FFAE2A00980EB6 /* TransitViewVehicleCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewVehicleCalloutView.swift; sourceTree = "<group>"; };
+		0E36308820FFAE5100980EB6 /* TransitViewVehicleCalloutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransitViewVehicleCalloutView.xib; sourceTree = "<group>"; };
+		0E36308A20FFB20E00980EB6 /* NSMutableAttributedStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExtensions.swift; sourceTree = "<group>"; };
+		0E36308C21001DB300980EB6 /* TransitRouteCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitRouteCardView.swift; sourceTree = "<group>"; };
+		0E36308E21001DC500980EB6 /* TransitRouteCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransitRouteCardView.xib; sourceTree = "<group>"; };
 		0E39082D20E1268900E94D53 /* InAppReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppReview.swift; sourceTree = "<group>"; };
 		0E39084B20E2E7B100E94D53 /* StopSortOrderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSortOrderButton.swift; sourceTree = "<group>"; };
 		0E4328E220D02C6400FBD805 /* DatabaseUpdateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateProvider.swift; sourceTree = "<group>"; };
@@ -1392,6 +1404,11 @@
 				0E2DCAD220F64C5D0086F400 /* TransitViewMapRouteViewModel.swift */,
 				0E2DCAD620F672BD0086F400 /* TransitViewVehicleAnnotation.swift */,
 				0E2DCAD820F6755A0086F400 /* TransitViewVehicleLocation.swift */,
+				0E36308C21001DB300980EB6 /* TransitRouteCardView.swift */,
+				0E36308E21001DC500980EB6 /* TransitRouteCardView.xib */,
+				0E2DCAE820F902230086F400 /* TransitViewVehiclePin.swift */,
+				0E36308620FFAE2A00980EB6 /* TransitViewVehicleCalloutView.swift */,
+				0E36308820FFAE5100980EB6 /* TransitViewVehicleCalloutView.xib */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -1521,6 +1538,7 @@
 				0EA1FF8F20DA9E37007A9A91 /* UIAlertControllerExtensions.swift */,
 				0E39082D20E1268900E94D53 /* InAppReview.swift */,
 				0E8E60ED20F00B9E00AB08FE /* RouteIcon.swift */,
+				0E36308A20FFB20E00980EB6 /* NSMutableAttributedStringExtensions.swift */,
 			);
 			path = Utlities;
 			sourceTree = "<group>";
@@ -3051,6 +3069,7 @@
 				677E04D320727C9D00B16C09 /* 21.kml in Resources */,
 				677E050A20727C9D00B16C09 /* LucyGreen.kml in Resources */,
 				677E04C920727C9D00B16C09 /* 39.kml in Resources */,
+				0E36308920FFAE5100980EB6 /* TransitViewVehicleCalloutView.xib in Resources */,
 				677E052120727C9D00B16C09 /* 132.kml in Resources */,
 				582F4EC01F33B1120062A546 /* alerts.storyboard in Resources */,
 				0E32580E20C07E030074FF38 /* septa_database_update.sql in Resources */,
@@ -3195,6 +3214,7 @@
 				677E053E20727C9D00B16C09 /* 206.kml in Resources */,
 				677E050420727C9D00B16C09 /* 52.kml in Resources */,
 				582F4ED91F33B1120062A546 /* settings.storyboard in Resources */,
+				0E36308F21001DC500980EB6 /* TransitRouteCardView.xib in Resources */,
 				677E04F720727C9D00B16C09 /* 58.kml in Resources */,
 				677E04EC20727C9D00B16C09 /* 119.kml in Resources */,
 				67EF6D641FE2DBAA00245E0F /* HolidaySchedule.xib in Resources */,
@@ -3410,6 +3430,7 @@
 				586852E01F8D4F470081C1CC /* LittleBlueChevronButton.swift in Sources */,
 				6776F67E201B4078001FD5B2 /* AlertState_HasGenericOrAppAlertsWatcher.swift in Sources */,
 				58DD1A901F600758002532DC /* NextToArriveViewModel+StopCell.swift in Sources */,
+				0E36308D21001DB300980EB6 /* TransitRouteCardView.swift in Sources */,
 				678DAAB51F67478900EB6EE8 /* ConnectionCell.swift in Sources */,
 				58126F6B1F631C3100A6E187 /* RouteOverlay.swift in Sources */,
 				67EA2B611F518CA600C0567A /* SearchModalHeaderDelegate.swift in Sources */,
@@ -3462,7 +3483,9 @@
 				67A3857B1F7D5BA7002E01E0 /* UIViewController+Shadows.swift in Sources */,
 				58E33F281F61651400C74B7C /* TransitType+TransitMode.swift in Sources */,
 				58E33F0E1F6098FE00C74B7C /* NextToArriveMapViewController.swift in Sources */,
+				0E2DCAE920F902230086F400 /* TransitViewVehiclePin.swift in Sources */,
 				58E33F181F61453000C74B7C /* NextToArriveTrip.swift in Sources */,
+				0E36308B20FFB20E00980EB6 /* NSMutableAttributedStringExtensions.swift in Sources */,
 				6789B78E1F8FF7E6008C6DCA /* TripDetailState_TripDetailsExistWatcher.swift in Sources */,
 				5828C7F71F6451180046435A /* VehicleLocationAnnotation.swift in Sources */,
 				58EB8D1A1F5D7F350028A487 /* NextToArriveSelectTripStateProvider.swift in Sources */,
@@ -3540,6 +3563,7 @@
 				584528BB1F7C27C000E68D8F /* CurvedTopInfoView.swift in Sources */,
 				58E33F221F615EC100C74B7C /* NextToArriveScheduleRequestWatcher.swift in Sources */,
 				58DB10F81F3B8DB400191AED /* NavigationReducer.swift in Sources */,
+				0E36308720FFAE2A00980EB6 /* TransitViewVehicleCalloutView.swift in Sources */,
 				584AC8731F437DDB0040C1B4 /* TripScheduleViewController.swift in Sources */,
 				670C59F11F8A6DA500CAE1AC /* BlueGradientTitleView.swift in Sources */,
 				678F05391F5BFFE500CC4D3C /* LocationActions.swift in Sources */,
@@ -3832,7 +3856,7 @@
 					$SRCROOT,
 				);
 				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				ONLY_ACTIVE_ARCH = YES;
@@ -3864,7 +3888,7 @@
 					$SRCROOT,
 				);
 				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				ONLY_ACTIVE_ARCH = YES;

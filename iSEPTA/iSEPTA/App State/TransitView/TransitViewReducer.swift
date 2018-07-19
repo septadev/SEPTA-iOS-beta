@@ -7,6 +7,7 @@
 //
 
 import ReSwift
+import SeptaSchedule
 
 struct TransitViewReducer {
     static func main(action: Action, state: TransitViewState?) -> TransitViewState {
@@ -38,11 +39,15 @@ struct TransitViewReducer {
         }
         
         if action is RefreshTransitViewVehicleLocationData {
-            return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: state.transitViewModel, locations: state.vehicleLocations, refreshVehicleLocations: true)
+            return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: state.transitViewModel, locations: [], refreshRoutes: true, refreshVehicleLocations: true)
         }
         
         if let action = action as? TransitViewRouteLocationsDownloaded {
             return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: state.transitViewModel, locations: action.locations)
+        }
+        
+        if let action = action as? TransitViewRemoveRoute {
+            return reduceRemoveRouteAction(action: action, state: state)
         }
         
         return state
@@ -54,5 +59,38 @@ struct TransitViewReducer {
         let third = action.slot == .third ? action.route : state.transitViewModel.thirdRoute
         let model = TransitViewModel(firstRoute: first, secondRoute: second, thirdRoute: third, slotBeingChanged: state.transitViewModel.slotBeingChanged)
         return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: model)
+    }
+    
+    private static func reduceRemoveRouteAction(action: TransitViewRemoveRoute, state: TransitViewState) -> TransitViewState {
+        let deletedRoute = action.route
+        
+        var model = state.transitViewModel
+        if let firstRoute = model.firstRoute, firstRoute == deletedRoute {
+            model = deleteRouteFromModel(slot: .first, model: model)
+        }
+        if let secondRoute = model.secondRoute, secondRoute == deletedRoute {
+            model = deleteRouteFromModel(slot: .second, model: model)
+        }
+        if let thirdRoute = model.thirdRoute, thirdRoute == deletedRoute {
+            model = deleteRouteFromModel(slot: .third, model: model)
+        }
+        
+        return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: model, locations: state.vehicleLocations, refreshRoutes: state.refreshTransitViewRoutes, refreshVehicleLocations: state.refreshVehicleLocationData)
+    }
+    
+    private static func deleteRouteFromModel(slot: TransitViewRouteSlot, model: TransitViewModel) -> TransitViewModel {
+        switch slot {
+        case .first:
+            // Shift second and third route forward (if they exist) to prevent a gap
+            let newFirst = model.secondRoute
+            let newSecond = model.thirdRoute
+            return TransitViewModel(firstRoute: newFirst, secondRoute: newSecond, thirdRoute: nil, slotBeingChanged: nil)
+        case .second:
+            // Shift third route forward (if it exists) to prevent a gap
+            let newSecond = model.thirdRoute
+            return TransitViewModel(firstRoute: model.firstRoute, secondRoute: newSecond, thirdRoute: nil, slotBeingChanged: nil)
+        case .third:
+            return TransitViewModel(firstRoute: model.firstRoute, secondRoute: model.secondRoute, thirdRoute: nil, slotBeingChanged: nil)
+        }
     }
 }

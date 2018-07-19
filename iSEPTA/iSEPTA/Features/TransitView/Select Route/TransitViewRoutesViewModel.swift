@@ -14,8 +14,8 @@ class TransitViewRoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate
     typealias StoreSubscriberStateType = TransitViewState
 
     var updateableFromViewModelController: UpdateableFromViewModel?
-    
     var slotBeingChanged: TransitViewRouteSlot?
+    var selectedRoutes: [TransitRoute] = []
     
     var allRoutes: [TransitRoute]? {
         didSet {
@@ -55,6 +55,15 @@ class TransitViewRoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate
     
     func newState(state: TransitViewState) {
         allRoutes = state.availableRoutes
+        if let route = state.transitViewModel.firstRoute {
+            selectedRoutes.append(route)
+        }
+        if let route = state.transitViewModel.secondRoute {
+            selectedRoutes.append(route)
+        }
+        if let route = state.transitViewModel.thirdRoute {
+            selectedRoutes.append(route)
+        }
     }
 
     func numberOfRows() -> Int {
@@ -67,11 +76,18 @@ class TransitViewRoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate
         let route = filteredRoutes[row].route
         cell.setShortName(text: "\(route.routeId): \(route.routeName)")
         
-//        cell.setLongName(text: route.routeLongName)
+        cell.enabled = !selectedRoutes.contains(route)
         
         if let routeImage = RouteIcon.get(for: route.routeId, transitMode: route.mode()) {
             cell.setIcon(image: routeImage)
         }
+    }
+    
+    func shouldHighlight(row: Int) -> Bool {
+        guard let routes = filteredRoutes, row < routes.count else { return true }
+        let route = routes[row].route
+        print("selected routes count: \(selectedRoutes.count)")
+        return !selectedRoutes.contains(route)
     }
     
     func rowSelected(row: Int) {

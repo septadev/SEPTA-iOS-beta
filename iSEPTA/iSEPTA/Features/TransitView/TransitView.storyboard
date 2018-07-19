@@ -505,17 +505,68 @@ SearchTextBox</string>
                                     <outlet property="delegate" destination="dTh-FH-vYV" id="fYo-J5-MVy"/>
                                 </connections>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQc-wW-oHS">
+                                <rect key="frame" x="0.0" y="453" width="375" height="150"/>
+                                <subviews>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addNew" translatesAutoresizingMaskIntoConstraints="NO" id="HFG-sK-U1d">
+                                        <rect key="frame" x="330" y="18" width="38" height="38"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="38" id="Npj-KZ-YZu"/>
+                                            <constraint firstAttribute="height" constant="38" id="Zi8-aX-cKE"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6vH-E8-ku5">
+                                        <rect key="frame" x="0.0" y="56" width="375" height="94"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z95-n3-6fX" customClass="TransitRouteCardView" customModule="Septa" customModuleProvider="target">
+                                                <rect key="frame" x="8" y="8" width="114.5" height="78"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n6c-Bh-dZt" customClass="TransitRouteCardView" customModule="Septa" customModuleProvider="target">
+                                                <rect key="frame" x="130.5" y="8" width="114" height="78"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nwE-gn-4t5" customClass="TransitRouteCardView" customModule="Septa" customModuleProvider="target">
+                                                <rect key="frame" x="252.5" y="8" width="114.5" height="78"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="94" id="7Gq-GS-2zk"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="HFG-sK-U1d" secondAttribute="trailing" constant="7" id="Ibr-yc-SaE"/>
+                                    <constraint firstItem="6vH-E8-ku5" firstAttribute="leading" secondItem="cQc-wW-oHS" secondAttribute="leading" id="LLN-A1-h01"/>
+                                    <constraint firstAttribute="trailing" secondItem="6vH-E8-ku5" secondAttribute="trailing" id="Qpo-AW-jv9"/>
+                                    <constraint firstAttribute="bottom" secondItem="6vH-E8-ku5" secondAttribute="bottom" id="XfC-vg-6KB"/>
+                                    <constraint firstItem="6vH-E8-ku5" firstAttribute="top" secondItem="HFG-sK-U1d" secondAttribute="bottom" id="afn-t4-dcS"/>
+                                    <constraint firstAttribute="height" constant="150" id="dhr-B5-gRc"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="cQc-wW-oHS" firstAttribute="leading" secondItem="wcd-bH-62Z" secondAttribute="leading" id="2pN-nF-QCn"/>
                             <constraint firstAttribute="trailing" secondItem="QPo-Ph-wri" secondAttribute="trailing" id="8Ia-fX-UHP"/>
                             <constraint firstAttribute="bottomMargin" secondItem="QPo-Ph-wri" secondAttribute="bottom" id="GaT-6c-aix"/>
                             <constraint firstItem="QPo-Ph-wri" firstAttribute="top" secondItem="wcd-bH-62Z" secondAttribute="topMargin" id="QcM-dp-Mhc"/>
+                            <constraint firstAttribute="bottom" secondItem="cQc-wW-oHS" secondAttribute="bottom" id="dW6-Sr-ef0"/>
+                            <constraint firstAttribute="trailing" secondItem="cQc-wW-oHS" secondAttribute="trailing" id="n4o-Sa-4Ae"/>
                             <constraint firstItem="QPo-Ph-wri" firstAttribute="leading" secondItem="wcd-bH-62Z" secondAttribute="leading" id="thg-np-9nG"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="HDt-cv-Srw"/>
                     </view>
                     <connections>
+                        <outlet property="addRouteImage" destination="HFG-sK-U1d" id="JaM-di-F9P"/>
                         <outlet property="mapView" destination="QPo-Ph-wri" id="0MY-Rh-9LU"/>
+                        <outlet property="route1" destination="nwE-gn-4t5" id="PX7-8N-ogE"/>
+                        <outlet property="route2" destination="n6c-Bh-dZt" id="M91-Ss-YWU"/>
+                        <outlet property="route3" destination="Z95-n3-6fX" id="NMk-CX-rgd"/>
+                        <outlet property="routeCardStackView" destination="6vH-E8-ku5" id="5qG-97-7c6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gSf-LZ-ERF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -525,6 +576,7 @@ SearchTextBox</string>
     </scenes>
     <resources>
         <image name="SearchIcon" width="17" height="17"/>
+        <image name="addNew" width="38" height="38"/>
         <image name="refreshIcon" width="19" height="19"/>
         <image name="selectRouteAccessory" width="26" height="14"/>
     </resources>

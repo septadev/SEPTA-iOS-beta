@@ -66,6 +66,10 @@ extension TransitViewRouteViewController: UITableViewDataSource, UITableViewDele
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.rowSelected(row: indexPath.row)
     }
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return viewModel.shouldHighlight(row: indexPath.row)
+    }
 }
 
 extension TransitViewRouteViewController: SearchModalHeaderDelegate {

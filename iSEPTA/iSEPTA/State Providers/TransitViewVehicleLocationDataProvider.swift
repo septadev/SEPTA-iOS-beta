@@ -114,7 +114,7 @@ class TransitViewVehicleLocationDataProvider: StoreSubscriber {
                         mode = thirdRoute.mode()
                     }
                     
-                    let location = TransitViewVehicleLocation(coordinate: coordinate, mode: mode, routeId: routeId)
+                    let location = TransitViewVehicleLocation(coordinate: coordinate, mode: mode, routeId: routeId, vehicleId: vehicle.VehicleID, heading: vehicle.heading, block: vehicle.BlockID, late: vehicle.late, destination: vehicle.destination)
                     vehicleLocations.append(location)
                 }
             }

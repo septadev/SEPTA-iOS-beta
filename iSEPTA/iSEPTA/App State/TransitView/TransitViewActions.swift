@@ -39,3 +39,8 @@ struct TransitViewRouteLocationsDownloaded: TransitViewAction {
     let locations: [TransitViewVehicleLocation]
     let description: String
 }
+
+struct TransitViewRemoveRoute: TransitViewAction {
+    let route: TransitRoute
+    let description: String
+}

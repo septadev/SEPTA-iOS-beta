@@ -13,6 +13,11 @@ struct TransitViewVehicleLocation {
     let coordinate: CLLocationCoordinate2D
     let mode: TransitMode
     let routeId: String
+    let vehicleId: String
+    let heading: Int
+    let block: String
+    let late: Int
+    let destination: String
 }
 
 extension TransitViewVehicleLocation: Equatable {}
