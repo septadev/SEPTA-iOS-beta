@@ -43,6 +43,16 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
 
     func newState(state: StoreSubscriberStateType) {
         allRoutes = state.routes
+        if targetForScheduleAction == .schedules {
+            // For schedules, only show one option per route rather than one for each direction.
+            if let routes = allRoutes {
+                var routeDict: [String:Route] = [:]
+                for r in routes {
+                    routeDict[r.routeId] = r
+                }
+                allRoutes = Array(routeDict.values)
+            }
+        }
         if state.updateMode == .loadValues && state.routes.count == 0 {
             selectRoutesViewController?.displayErrorMessage(message: SeptaString.NoRoutesAvailable, shouldDismissAfterDisplay: true)
         }
