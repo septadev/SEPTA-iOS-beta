@@ -37,7 +37,7 @@ class TransitViewVehicleCalloutView: UIView {
             return "on time"
         }
         if late < 0 {
-            return "\(late) min early"
+            return "\(abs(late)) min early"
         } else {
             return "\(late) min late"
         }
