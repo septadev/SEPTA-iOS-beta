@@ -200,8 +200,8 @@ extension TransitViewMapViewController: MKMapViewDelegate {
     func mapView(_: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let transitAnnotation = annotation as? TransitViewVehicleAnnotation else { return nil }
         
-        var annotationView: MKAnnotationView
-        if let reusableView = mapView.dequeueReusableAnnotationView(withIdentifier: transitAnnotation.annotationId) {
+        var annotationView: TransitViewAnnotationView
+        if let reusableView = mapView.dequeueReusableAnnotationView(withIdentifier: transitAnnotation.annotationId) as? TransitViewAnnotationView {
             annotationView = reusableView
         } else {
             annotationView = buildNewAnnotationView(annotation: transitAnnotation)
@@ -211,18 +211,20 @@ extension TransitViewMapViewController: MKMapViewDelegate {
         if let selectedRoute = self.selectedRoute, selectedRoute.routeId == transitAnnotation.location.routeId {
             activeRoute = true
         }
+        annotationView.canShowCallout = activeRoute
+        annotationView.isActiveRoute = activeRoute
         annotationView.image = TransitViewVehiclePin.generate(mode: transitAnnotation.location.mode, direction: transitAnnotation.location.heading, active: activeRoute)
         
         if let calloutAccessoryView = annotationView.detailCalloutAccessoryView as? TransitViewVehicleCalloutView {
             calloutAccessoryView.vehicleLocation = transitAnnotation.location
         }
-        
         annotationView.annotation = annotation
         return annotationView
     }
     
-    func buildNewAnnotationView(annotation: TransitViewVehicleAnnotation) -> MKAnnotationView {
-        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotation.annotationId)
+    func buildNewAnnotationView(annotation: TransitViewVehicleAnnotation) -> TransitViewAnnotationView {
+        let annotationView = TransitViewAnnotationView(annotation: annotation, reuseIdentifier: annotation.annotationId)
+        annotationView.delegate = self
         annotationView.accessibilityElementsHidden = false
         annotationView.accessibilityLabel = "Tap this pin to see vehicle information"
         annotationView.canShowCallout = true
@@ -262,3 +264,10 @@ extension TransitViewMapViewController: TransitRouteCardDelegate {
         refreshRoutes()
     }
 }
+
+extension TransitViewMapViewController: TransitViewAnnotationViewDelegate {
+    func activateRoute(routeId: String) {
+        cardTapped(routeId: routeId)
+    }
+}
+

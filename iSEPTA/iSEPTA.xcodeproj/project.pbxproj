@@ -22,6 +22,7 @@
 		0E36308B20FFB20E00980EB6 /* NSMutableAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E36308A20FFB20E00980EB6 /* NSMutableAttributedStringExtensions.swift */; };
 		0E36308D21001DB300980EB6 /* TransitRouteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E36308C21001DB300980EB6 /* TransitRouteCardView.swift */; };
 		0E36308F21001DC500980EB6 /* TransitRouteCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E36308E21001DC500980EB6 /* TransitRouteCardView.xib */; };
+		0E3630B32102118800980EB6 /* TransitViewAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3630B22102118800980EB6 /* TransitViewAnnotationView.swift */; };
 		0E39082E20E1268900E94D53 /* InAppReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E39082D20E1268900E94D53 /* InAppReview.swift */; };
 		0E39084C20E2E7B100E94D53 /* StopSortOrderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E39084B20E2E7B100E94D53 /* StopSortOrderButton.swift */; };
 		0E4328E320D02C6400FBD805 /* DatabaseUpdateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4328E220D02C6400FBD805 /* DatabaseUpdateProvider.swift */; };
@@ -704,6 +705,7 @@
 		0E36308A20FFB20E00980EB6 /* NSMutableAttributedStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExtensions.swift; sourceTree = "<group>"; };
 		0E36308C21001DB300980EB6 /* TransitRouteCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitRouteCardView.swift; sourceTree = "<group>"; };
 		0E36308E21001DC500980EB6 /* TransitRouteCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransitRouteCardView.xib; sourceTree = "<group>"; };
+		0E3630B22102118800980EB6 /* TransitViewAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewAnnotationView.swift; sourceTree = "<group>"; };
 		0E39082D20E1268900E94D53 /* InAppReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppReview.swift; sourceTree = "<group>"; };
 		0E39084B20E2E7B100E94D53 /* StopSortOrderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSortOrderButton.swift; sourceTree = "<group>"; };
 		0E4328E220D02C6400FBD805 /* DatabaseUpdateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateProvider.swift; sourceTree = "<group>"; };
@@ -1417,6 +1419,7 @@
 				0E2DCAE820F902230086F400 /* TransitViewVehiclePin.swift */,
 				0E36308620FFAE2A00980EB6 /* TransitViewVehicleCalloutView.swift */,
 				0E36308820FFAE5100980EB6 /* TransitViewVehicleCalloutView.xib */,
+				0E3630B22102118800980EB6 /* TransitViewAnnotationView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -3640,6 +3643,7 @@
 				67365AC81F754A3200FC86CB /* HalfSheetAnimationIn.swift in Sources */,
 				678D26C81F5CC54900D140CC /* FavoritesActions.swift in Sources */,
 				582F4EC61F33B1120062A546 /* SelectRouteViewController.swift in Sources */,
+				0E3630B32102118800980EB6 /* TransitViewAnnotationView.swift in Sources */,
 				678F05241F5B7B6E00CC4D3C /* AddressProvider.swift in Sources */,
 				67365AC91F754A3200FC86CB /* HalfSheetAnimationOut.swift in Sources */,
 				67EA2B5D1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift in Sources */,
