@@ -14,9 +14,7 @@ func == (lhs: TransitMode, rhs: TransitMode) -> Bool {
 }
 
 extension TransitMode {
-
     func imageName() -> String {
-
         switch self {
         case .bus:
             return "busFinalIconWhite"
@@ -32,7 +30,6 @@ extension TransitMode {
     }
 
     func highlightedImageName() -> String {
-
         switch self {
         case .bus:
             return "busActiveFinal"
@@ -175,7 +172,6 @@ extension TransitMode {
     }
 
     public func cellImage() -> UIImage? {
-
         switch self {
         case .bus: return UIImage(named: "BUS_Line")
         case .rail: return nil

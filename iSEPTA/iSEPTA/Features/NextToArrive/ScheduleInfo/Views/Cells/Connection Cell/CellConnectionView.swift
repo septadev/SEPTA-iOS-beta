@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class CellConnectionView: UIView, ConnectionCellDisplayable {
-
     var startConnectionView: ConnectionView!
     @IBOutlet var startConnectionViewWrapper: UIView! {
         didSet {

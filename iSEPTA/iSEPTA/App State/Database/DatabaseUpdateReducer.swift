@@ -7,15 +7,14 @@
 //
 
 import Foundation
-import SeptaSchedule
 import ReSwift
+import SeptaSchedule
 
 struct DatabaseUpdateReducer {
-    
     static func main(action: Action, state: DatabaseUpdateState?) -> DatabaseUpdateState {
         guard let state = state else { return DatabaseUpdateState(status: .upToDate, databaseUpdate: nil) }
         guard let action = action as? DatabaseUpdateAction else { return state }
-        
+
         if action is CheckForDatabaseUpdate {
             return DatabaseUpdateState(status: .checkForUpdate, databaseUpdate: nil)
         }
@@ -31,7 +30,7 @@ struct DatabaseUpdateReducer {
         if action is DatabaseUpToDate {
             return DatabaseUpdateState(status: .upToDate, databaseUpdate: nil)
         }
-        
+
         return state
     }
 }

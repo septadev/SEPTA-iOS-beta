@@ -10,51 +10,49 @@ import UIKit
 
 @IBDesignable
 class StopSortOrderButton: UIView {
-
     var active = false {
         didSet {
             self.layer.borderColor = SeptaColor.stopOrderButtonBlue.cgColor
             self.backgroundColor = active ? SeptaColor.stopOrderButtonBlue : .clear
         }
     }
-    
+
     let buttonImage = UIImageView()
     var order: SortOrder = .alphaAscending
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
-    
+
     private func commonInit() {
         buttonImage.image = UIImage(named: "clipboardIcon")
         buttonImage.contentMode = .center
-        
+
         addImageViewToButtonImage()
-        
-        self.layer.borderWidth = 1.2
-        self.active = false
+
+        layer.borderWidth = 1.2
+        active = false
     }
-    
+
     private func addImageViewToButtonImage() {
-        self.addSubview(buttonImage)
+        addSubview(buttonImage)
         buttonImage.translatesAutoresizingMaskIntoConstraints = false
         let x = NSLayoutConstraint(item: buttonImage, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
         let y = NSLayoutConstraint(item: buttonImage, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0)
         let w = NSLayoutConstraint(item: buttonImage, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 1, constant: 0)
         let h = NSLayoutConstraint(item: buttonImage, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 1, constant: 0)
-        self.addConstraints([x, y, w, h])
+        addConstraints([x, y, w, h])
     }
-    
 }
 
 public enum SortOrder: String {
-    case alphaAscending = "alphaAscending"
-    case alphaDescending = "alphaDescending"
-    case stopSequence = "stopSequence"
+    case alphaAscending
+    case alphaDescending
+    case stopSequence
 }

@@ -12,7 +12,6 @@ import SeptaSchedule
 import UIKit
 
 class SearchRoutesModalHeaderViewController: UIViewController {
-
     @IBOutlet var dismissIcon: UIView!
     @IBOutlet var searchByTextView: UIView!
     var textFieldDelegate: UITextFieldDelegate!

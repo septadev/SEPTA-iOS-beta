@@ -32,7 +32,6 @@ class NextToArriveMiddlewareScheduleRequestBuilder {
             guard let strongSelf = self else { return }
             let routes = routes ?? [Route]()
             if let route = routes.filter({ $0.routeId == routeId }).first {
-
                 let routeUpdatedScheduleRequest = ScheduleRequest(
                     transitMode: .rail,
                     selectedRoute: route,

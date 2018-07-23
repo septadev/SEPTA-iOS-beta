@@ -8,7 +8,6 @@
 
 import Foundation
 class MoreNavigationControllerStateProvider: NavigationControllerBaseStateProvider {
-
     @IBOutlet var navigationController: BaseNavigationController!
 
     override func newState(state: StoreSubscriberStateType) {

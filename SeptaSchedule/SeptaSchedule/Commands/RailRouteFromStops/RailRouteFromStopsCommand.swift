@@ -18,7 +18,6 @@ public class RailRouteFromStopsCommand: BaseCommand {
         retrieveResults(sqlQuery: sqlQuery, userCompletion: completion) { (statement) -> [Route] in
             var routes = [Route]()
             for row in statement {
-
                 if
                     let col0 = row[0], let routeId = col0 as? String,
                     let col1 = row[1], let routeShortName = col1 as? String,

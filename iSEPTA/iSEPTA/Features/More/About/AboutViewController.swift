@@ -97,7 +97,6 @@ class AboutViewController: UIViewController, IdentifiableController, UITextViewD
     }
 
     func textView(_: UITextView, shouldInteractWith URL: URL, in _: NSRange) -> Bool {
-
         return true
     }
 

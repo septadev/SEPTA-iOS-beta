@@ -9,11 +9,9 @@
 import Foundation
 
 struct ScheduleStopEditReducer {
-
     static func reduceStopEdit(action: ScheduleAction, scheduleStopEdit: ScheduleStopEdit) -> ScheduleStopEdit {
         var newScheduleStopEdit: ScheduleStopEdit
         switch action {
-
         case let action as CurrentStopToEdit:
             newScheduleStopEdit = reduceCurrentStopToEdit(action: action, scheduleStopEdit: scheduleStopEdit)
         case let action as StopSearchModeChanged:

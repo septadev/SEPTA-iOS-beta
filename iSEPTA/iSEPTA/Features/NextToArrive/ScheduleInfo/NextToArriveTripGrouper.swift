@@ -7,11 +7,10 @@
 //
 
 import Foundation
-import UIKit
 import SeptaSchedule
+import UIKit
 
 class NextToArriveGrouper {
-
     static func filterRoutesToMap(trips: [NextToArriveTrip], requestRouteId: String?) -> [String] {
         var allRouteIds: [String] = (trips.map { $0.startStop.routeId }) + (trips.map { $0.endStop.routeId })
         if let requestRouteId = requestRouteId, requestRouteId != Route.allRailRoutesRoute().routeId {
@@ -25,7 +24,6 @@ class NextToArriveGrouper {
         var tripSections = [[NextToArriveTrip]]()
         var lastTrip: NextToArriveTrip?
         for trip in sortedTrips {
-
             if tripHasConnectionStation(trip: trip) ||
                 tripHasConnectionStation(trip: lastTrip) ||
                 routeIdsHaveChanged(a: lastTrip, b: trip) {
@@ -41,7 +39,6 @@ class NextToArriveGrouper {
     }
 
     static func routeIdsHaveChanged(a: NextToArriveTrip?, b: NextToArriveTrip?) -> Bool {
-
         if let a = a, let b = b {
             return a.startStop.routeId != b.startStop.routeId
         } else {

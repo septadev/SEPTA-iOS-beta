@@ -40,7 +40,6 @@ class ContactViewController: UIViewController, IdentifiableController {
 
     func configureStackView(_ stackView: UIStackView, withContactPoints contactPoints: [ContactPoint]) {
         for contactPoint in contactPoints {
-
             guard let customerServiceControl = Bundle.main.loadNibNamed("CustomerServiceControl", owner: nil, options: nil)?.first as? CustomerServiceControl else { return }
             customerServiceControl.displayContactPoint(contactPoint)
             stackView.addArrangedSubview(customerServiceControl)

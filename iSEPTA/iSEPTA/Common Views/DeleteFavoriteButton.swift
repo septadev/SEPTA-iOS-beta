@@ -9,11 +9,9 @@ import UIKit
 
 @IBDesignable
 class DeleteFavoriteButton: UIControl {
-
     var buttonHighlighted = false
 
     override func draw(_ rect: CGRect) {
-
         SeptaDraw.drawDeleteFavorite(frame: rect, enabled: isEnabled, buttonHighlighted: buttonHighlighted)
     }
 
@@ -30,7 +28,6 @@ class DeleteFavoriteButton: UIControl {
     }
 
     override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-
         super.beginTracking(touch, with: event)
         buttonHighlighted = true
         setNeedsDisplay()

@@ -1,15 +1,14 @@
 
 // Septa. 2017
 
-import SeptaSchedule
 import ReSwift
+import SeptaSchedule
 
 protocol AlertState_HasGenericAlertsWatcherDelegate: AnyObject {
     func alertState_HasGenericAlertsUpdated(bool: Bool)
 }
 
 class AlertState_HasGenericAlertsWatcher: BaseWatcher, StoreSubscriber {
-
     typealias StoreSubscriberStateType = Bool
 
     weak var delegate: AlertState_HasGenericAlertsWatcherDelegate? {

@@ -11,7 +11,6 @@ import SeptaSchedule
 import UIKit
 
 extension Route {
-
     func colorForRoute() -> UIColor? {
         return Route.colorForRouteId(routeId: routeId)
     }

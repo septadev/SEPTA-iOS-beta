@@ -35,7 +35,6 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
         }
     }
 
-
     func subscribe() {
         guard let target = store.state.targetForScheduleActions() else { return }
 
@@ -115,7 +114,6 @@ class NextToArriveMapRouteViewModelErrorWatcher: StoreSubscriber {
     }
 
     func subscribe() {
-
         store.subscribe(self) {
             $0.select {
                 $0.nextToArriveState.nextToArriveUpdateStatus
@@ -132,7 +130,6 @@ class NextToArriveMapRouteViewModelErrorWatcher: StoreSubscriber {
     }
 
     func newState(state: StoreSubscriberStateType) {
-
         if state == .dataLoadingError {
             //            if let routeId = store.state.nextToArriveState.scheduleState.scheduleRequest.selectedRoute?.routeId {
             //

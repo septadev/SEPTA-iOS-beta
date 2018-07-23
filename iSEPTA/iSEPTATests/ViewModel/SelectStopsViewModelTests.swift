@@ -3,14 +3,13 @@
 // Septa. 2017
 // SEPTA.org, created on 8/7/2017.
 
-import XCTest
 import ReSwift
 @testable import Septa
 import SeptaSchedule
+import XCTest
 
 /// SelectScheduleViewModelTests purpose: Verify that the view model updates schedules properly
 class SelectScheduleViewModelTests: XCTestCase {
-
     enum TableRow: Int {
         case selectRoute = 0
         case selectStart = 1

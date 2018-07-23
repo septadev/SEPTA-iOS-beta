@@ -4,7 +4,6 @@ import Foundation
 import UIKit
 
 class UIAlert {
-
     static func presentOKAlertFrom(viewController: UIViewController, withTitle title: String, message: String, completion: (() -> Void)? = nil) {
         // create the alert
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
@@ -66,7 +65,6 @@ class UIAlert {
     }
 
     static func presentHolidayAlertFrom(viewController: UIViewController, holidaySchedule: HolidaySchedule) {
-
         guard let message = holidaySchedule.holidayMessage(),
             let onlineSchedules = holidaySchedule.onlineHolidaySchedules(),
             let onlineScheduleController = Bundle.main.loadNibNamed("HolidaySchedule", owner: nil, options: nil)?.first as? HolidayScheduleViewController else { return }

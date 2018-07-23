@@ -9,11 +9,9 @@ import UIKit
 
 @IBDesignable
 class SaveFavoriteButton: UIControl {
-
     var buttonHighlighted = false
 
     override func draw(_ rect: CGRect) {
-
         SeptaDraw.drawSaveButton(frame: rect, enabled: isEnabled, buttonHighlighted: buttonHighlighted)
     }
 

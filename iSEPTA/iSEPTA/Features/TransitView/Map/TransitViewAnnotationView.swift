@@ -9,22 +9,21 @@
 import MapKit
 
 class TransitViewAnnotationView: MKAnnotationView {
- 
     var delegate: TransitViewAnnotationViewDelegate?
     var routeId: String?
     var isActiveRoute: Bool = true
-    
+
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         if let vehicleAnnotation = annotation as? TransitViewVehicleAnnotation {
             routeId = vehicleAnnotation.location.routeId
         }
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         if selected {
             // Allow selected only if this view is for the active route
@@ -40,7 +39,6 @@ class TransitViewAnnotationView: MKAnnotationView {
         }
     }
 }
-
 
 protocol TransitViewAnnotationViewDelegate {
     func activateRoute(routeId: String)

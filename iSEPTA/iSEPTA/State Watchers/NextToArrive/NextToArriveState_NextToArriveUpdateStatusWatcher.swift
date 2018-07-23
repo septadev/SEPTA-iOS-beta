@@ -1,15 +1,14 @@
 
 // Septa. 2017
 
-import SeptaSchedule
 import ReSwift
+import SeptaSchedule
 
 protocol NextToArriveUpdateStatusWatcherDelegate: AnyObject {
     func nextToArriveUpdateStatusUpdated(nextToArriveUpdateStatus: NextToArriveUpdateStatus)
 }
 
 class NextToArriveState_NextToArriveUpdateStatusWatcher: BaseWatcher, StoreSubscriber {
-
     typealias StoreSubscriberStateType = NextToArriveUpdateStatus
 
     weak var delegate: NextToArriveUpdateStatusWatcherDelegate? {
@@ -30,7 +29,6 @@ class NextToArriveState_NextToArriveUpdateStatusWatcher: BaseWatcher, StoreSubsc
 }
 
 class NextToArriveFavorite_NextToArriveUpdateStatusWatcher: BaseWatcher, StoreSubscriber {
-
     typealias StoreSubscriberStateType = NextToArriveUpdateStatus?
 
     weak var delegate: NextToArriveUpdateStatusWatcherDelegate? {

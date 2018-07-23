@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class NavBarShadowView: UIView {
-
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = SeptaColor.navBarBlue

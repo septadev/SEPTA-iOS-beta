@@ -11,16 +11,16 @@ import UIKit
 extension NSMutableAttributedString {
     @discardableResult func bold(_ text: String, _ font: UIFont = UIFont.boldSystemFont(ofSize: 14)) -> NSMutableAttributedString {
         let attrs: [NSAttributedStringKey: Any] = [.font: font]
-        let boldString = NSMutableAttributedString(string:text, attributes: attrs)
+        let boldString = NSMutableAttributedString(string: text, attributes: attrs)
         append(boldString)
-        
+
         return self
     }
-    
+
     @discardableResult func normal(_ text: String) -> NSMutableAttributedString {
         let normal = NSAttributedString(string: text)
         append(normal)
-        
+
         return self
     }
 }

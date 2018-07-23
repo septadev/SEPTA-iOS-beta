@@ -7,7 +7,6 @@ import SeptaSchedule
 import UIKit
 
 class MainNavigationController: UITabBarController, UITabBarControllerDelegate, StoreSubscriber, FavoritesState_FavoriteToEditWatcherDelegate, AlertState_HasGenericOrAppAlertsWatcherDelegate, AlertState_ModalAlertsDisplayedWatcherDelegate {
-
     typealias StoreSubscriberStateType = NavigationController
     var favoritestoEditWatcher: FavoritesState_FavoriteToEditWatcher?
     var genericAlertsWatcher: AlertState_HasGenericOrAppAlertsWatcher?
@@ -67,7 +66,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
 
         modalAlertsDisplayedWatcher = AlertState_ModalAlertsDisplayedWatcher()
         modalAlertsDisplayedWatcher?.delegate = self
-        
+
         if databaseUpdateWatcher == nil {
             databaseUpdateWatcher = DatabaseUpdateWatcher(delegate: self)
         }
@@ -78,7 +77,6 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
 
     var modalTransitioningDelegate: UIViewControllerTransitioningDelegate!
     func presentEditFavoritModal() {
-
         modalTransitioningDelegate = ViewController.editFavoriteViewController.transitioningDelegate()
         if let viewController: UIViewController = ViewController.editFavoriteViewController.instantiateViewController() {
             viewController.modalPresentationStyle = .custom
@@ -146,10 +144,10 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
 extension MainNavigationController: DatabaseUpdateWatcherDelegate {
     func databaseUpdateAvailable() {
         let alert = UIAlertController(title: "There are new schedules available", message: "Would you like to download them now?", preferredStyle: .alert)
-        let downloadAction = UIAlertAction(title: "Yes", style: .default, handler: { (_) in
+        let downloadAction = UIAlertAction(title: "Yes", style: .default, handler: { _ in
             store.dispatch(DownloadDatabaseUpdate())
         })
-        let laterAction = UIAlertAction(title: "Remind me later", style: .default, handler: { (_) in
+        let laterAction = UIAlertAction(title: "Remind me later", style: .default, handler: { _ in
             let dbFileManager = DatabaseFileManager()
             dbFileManager.setDatabaseUpdateInProgress(inProgress: false)
             store.dispatch(DatabaseUpToDate())

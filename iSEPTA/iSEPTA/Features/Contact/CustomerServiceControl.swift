@@ -11,7 +11,6 @@ import UIKit
 
 @IBDesignable
 class CustomerServiceControl: UIControl {
-
     var controlHighlighted = false
 
     @IBOutlet var iconImageView: UIImageView!

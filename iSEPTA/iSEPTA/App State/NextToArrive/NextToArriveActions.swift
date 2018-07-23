@@ -3,8 +3,8 @@
 
 import Foundation
 import ReSwift
-import SeptaSchedule
 import SeptaRest
+import SeptaSchedule
 
 protocol NextToArriveAction: SeptaAction {}
 
@@ -35,7 +35,6 @@ struct UpdateNextToArriveDetail: NextToArriveAction {
 }
 
 struct ViewScheduleDataInNextToArrive: NextToArriveAction {
-
     let description = "Jumping from schedules to next to arrive"
 }
 

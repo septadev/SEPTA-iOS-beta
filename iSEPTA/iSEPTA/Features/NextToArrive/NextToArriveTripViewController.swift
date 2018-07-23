@@ -8,13 +8,13 @@
 
 import Foundation
 import ReSwift
-import UIKit
 import SeptaSchedule
+import UIKit
 
 class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel, NextToArriveReverseTripDelegate {
     @IBOutlet var startLabel: UILabel!
     @IBOutlet var endLabel: UILabel!
-    @IBOutlet weak var swapRouteImage: UIImageView! {
+    @IBOutlet var swapRouteImage: UIImageView! {
         didSet {
             swapRouteImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(swapRoutes(_:))))
         }
@@ -44,7 +44,6 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel,
     }
 
     @objc func swapRoutes(_: UITapGestureRecognizer) {
-
         if store.state.targetForScheduleActions() == .nextToArrive {
             initializeReverseTripForNextToArrive()
         } else {
@@ -53,7 +52,6 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel,
     }
 
     func initializeReverseTripForNextToArrive() {
-
         if let scheduleRequest = viewModel.scheduleRequest, let target = viewModel.target, swapRouteImage.isUserInteractionEnabled {
             nextToArriveReverseTrip = NextToArriveReverseTrip(target: target, scheduleRequest: scheduleRequest, delegate: self)
             nextToArriveReverseTrip?.reverseNextToArrive()
@@ -75,12 +73,9 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel,
 
     func displayErrorMessage(message _: String, shouldDismissAfterDisplay _: Bool) {
     }
-
-
 }
 
 extension NextToArriveTripViewController: NextToArriveReverseTripWatcherDelegate {
-
     func watchForReverseTripStatusChanges() {
         guard let target = store.state.targetForScheduleActions() else { return }
         var watcher: NextToArriveState_ReverseTripStatusWatcher?
@@ -105,7 +100,6 @@ extension NextToArriveTripViewController: NextToArriveReverseTripWatcherDelegate
             swapRouteImage.alpha = 0.5
         }
     }
-
 }
 
 class NextToArriveTripViewModel: StoreSubscriber {
@@ -145,9 +139,7 @@ class NextToArriveTripViewModel: StoreSubscriber {
 }
 
 extension NextToArriveTripViewModel: SubscriberUnsubscriber {
-
     func subscribe() {
-
         guard let target = store.state.targetForScheduleActions() else { return }
         self.target = target
         switch target {

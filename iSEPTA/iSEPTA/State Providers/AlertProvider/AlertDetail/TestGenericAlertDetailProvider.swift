@@ -69,7 +69,6 @@ class TestGenericAlertDetailProvider: StateProvider {
     fileprivate func mapResponse(data: Data, alertDetailsCompletion: AlertDetailsCompletion) throws {
         if let jsonArray = try? JSONSerialization.jsonObject(with: data, options: []) as! [[String: Any]],
             let messages = extractMessages(jsonArray: jsonArray) {
-
             generateAlertDetails(messages: messages, alertDetailsCompletion: alertDetailsCompletion)
         }
     }

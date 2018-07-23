@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import UIKit
 import ReSwift
+import UIKit
 
 class FavoritesNavigationController: BaseNavigationController, FavoritesState_FavoritesExistWatcherDelegate {
     typealias StoreSubscriberStateType = Bool
@@ -29,12 +29,10 @@ class FavoritesNavigationController: BaseNavigationController, FavoritesState_Fa
     }
 
     func showFavoritesController() {
-
         initializeNavStackState(viewController: .favoritesViewController)
     }
 
     func showNoFavoritesViewController() {
-
         initializeNavStackState(viewController: .noFavoritesViewController)
     }
 

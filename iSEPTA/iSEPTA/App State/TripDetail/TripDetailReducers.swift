@@ -10,7 +10,6 @@ import Foundation
 import ReSwift
 
 struct TripDetailReducer {
-
     static func main(action: Action, state: TripDetailState?) -> TripDetailState {
         if let state = state {
             guard let action = action as? TripDetailAction else { return state }

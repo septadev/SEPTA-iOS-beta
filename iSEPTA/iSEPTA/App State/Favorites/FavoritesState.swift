@@ -83,7 +83,6 @@ struct FavoritesState: Codable, Equatable {
     }
 }
 
-
 extension FavoritesState {
     func favoriteForScheduleRequest(_ scheduleRequest: ScheduleRequest) -> Favorite? {
         return favorites.filter({ $0 == scheduleRequest }).first

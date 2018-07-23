@@ -34,7 +34,6 @@ class DefaultPreferencesLoader {
     }
 
     fileprivate func startupNavigationController() -> NavigationController {
-
         return NavigationController.nextToArrive
     }
 

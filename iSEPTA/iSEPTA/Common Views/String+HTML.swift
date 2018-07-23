@@ -9,7 +9,6 @@
 import Foundation
 
 extension String {
-
     var htmlAttributedString: NSAttributedString? {
         let htmlString = "<html>\(self)</html>"
         do {

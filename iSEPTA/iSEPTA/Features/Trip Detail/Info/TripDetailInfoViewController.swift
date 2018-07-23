@@ -12,7 +12,6 @@ import SeptaSchedule
 import UIKit
 
 class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetailsWatcherDelegate {
-
     var tripDetailWatcher: TripDetailState_TripDetailsWatcher?
 
     override func viewWillAppear(_ animated: Bool) {
@@ -57,7 +56,6 @@ class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetail
         }
 
         if nextToArriveStop.transitMode.useRailForDetails() {
-
         } else if nextToArriveStop.transitMode.useBusForDetails() {
             configureNextStopViewForBus()
         }

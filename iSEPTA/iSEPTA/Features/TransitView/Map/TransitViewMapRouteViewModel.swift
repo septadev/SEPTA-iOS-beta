@@ -7,19 +7,18 @@
 //
 
 import MapKit
-import SeptaSchedule
 import ReSwift
+import SeptaSchedule
 
 class TransitViewMapRouteViewModel: StoreSubscriber {
-    
     typealias StoreSubscriberStateType = [TransitViewVehicleLocation]
-    
+
     var delegate: TransitViewMapDataProviderDelegate? {
         didSet {
             subscribe()
         }
     }
-    
+
     private func subscribe() {
         store.subscribe(self) {
             $0.select {
@@ -29,14 +28,14 @@ class TransitViewMapRouteViewModel: StoreSubscriber {
             }
         }
     }
-    
+
     func newState(state: StoreSubscriberStateType) {
         let routes = state.map { $0.routeId }
         let uniqueRoutes = Array(Set(routes))
         delegate?.drawRoutes(routeIds: uniqueRoutes)
         delegate?.drawVehicleLocations(locations: state)
     }
-    
+
     deinit {
         store.unsubscribe(self)
     }

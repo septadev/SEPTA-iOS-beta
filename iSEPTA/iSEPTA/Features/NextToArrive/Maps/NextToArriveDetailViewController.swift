@@ -20,8 +20,8 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
     @IBOutlet var editFavoriteBarButtonItem: UIBarButtonItem!
     weak var infoHeaderView: UIView?
     @IBOutlet var createFavoriteBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var refreshBarButtonItem: UIBarButtonItem!
-    
+    @IBOutlet var refreshBarButtonItem: UIBarButtonItem!
+
     @IBOutlet var upSwipeGestureRecognizer: UISwipeGestureRecognizer! {
         didSet {
             upSwipeGestureRecognizer.addTarget(self, action: #selector(NextToArriveDetailViewController.swipeAction(_:)))
@@ -56,7 +56,6 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
     }
 
     func configureScrollableTableView() {
-
         guard let tableView = nextToArriveInfoViewController?.tableView else { return }
         nextToArriveInfoTableScrollableToggle = ScrollableTableViewToggle()
         nextToArriveInfoTableScrollableToggle.tableView = tableView
@@ -72,9 +71,9 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
         }
     }
 
-    @IBAction func refreshButtonTapped(_ sender: Any) {
+    @IBAction func refreshButtonTapped(_: Any) {
         guard let target = store.state.targetForScheduleActions() else { return }
-        
+
         switch target {
         case .nextToArrive:
             let action = NextToArriveRefreshDataRequested(refreshUpdateRequested: true)
@@ -88,7 +87,7 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
             break
         }
     }
-    
+
     func favoriteState_NextToArriveFavoriteUpdated(favorite: Favorite?) {
         if let favorite = favorite {
             navigationItem.title = favorite.favoriteName
@@ -125,7 +124,6 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
     }
 
     @IBAction func swipeAction(_: UISwipeGestureRecognizer) {
-
         toggleMapHeight()
     }
 

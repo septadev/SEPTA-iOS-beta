@@ -10,7 +10,6 @@ import Foundation
 import SeptaSchedule
 
 extension Favorite {
-
     func convertedToScheduleRequest() -> ScheduleRequest {
         return ScheduleRequest(transitMode: transitMode, selectedRoute: selectedRoute, selectedStart: selectedStart, selectedEnd: selectedEnd, scheduleType: nil, reverseStops: false)
     }

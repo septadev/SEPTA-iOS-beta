@@ -7,12 +7,11 @@
 //
 
 import Foundation
-import UIKit
 import ReSwift
 import SeptaSchedule
+import UIKit
 
 class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
-
     typealias StoreSubscriberStateType = Set<Favorite>
 
     enum CellIds: String {
@@ -63,7 +62,6 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
 }
 
 extension FavoritesViewModel { // table loading
-
     func numberOfRows() -> Int {
         return favoriteViewModels.count
     }
@@ -90,11 +88,9 @@ extension FavoritesViewModel { // table loading
     }
 
     func configureTrips(favoriteViewModel: FavoriteNextToArriveViewModel, stackView: UIStackView, indexPath _: IndexPath) {
-
         for tripsByRoute in favoriteViewModel.groupedTripData {
             guard let firstTripInSection = tripsByRoute.first else { continue }
             if !favoriteViewModel.tripHasConnection(trip: firstTripInSection) {
-
                 let headerView: NoConnectionSectionHeader! = stackView.awakeInsertArrangedView(nibName: "NoConnectionSectionHeader")
                 favoriteViewModel.configureSectionHeader(firstTripInSection: firstTripInSection, headerView: headerView)
 
@@ -115,7 +111,6 @@ extension FavoritesViewModel { // table loading
     }
 
     func configureTrip(favoriteViewModel: FavoriteNextToArriveViewModel, trip: NextToArriveTrip, stackView: UIStackView) {
-
         let tripView: TripView! = stackView.awakeInsertArrangedView(nibName: "TripView")
         tripView.isInteractive = false
         tripView.setNeedsDisplay()
@@ -123,24 +118,23 @@ extension FavoritesViewModel { // table loading
     }
 
     func configureConnectingTrip(favoriteViewModel: FavoriteNextToArriveViewModel, trip: NextToArriveTrip, stackView: UIStackView) {
-
         let connectionView: CellConnectionView! = stackView.awakeInsertArrangedView(nibName: "CellConnectionView")
         favoriteViewModel.configureConnectionCell(cell: connectionView, forTrip: trip)
     }
-    
+
     func favorite(at indexPath: IndexPath) -> Favorite {
         return favoriteViewModel(at: indexPath).favorite
     }
-    
+
     func favoriteViewModel(at indexPath: IndexPath) -> FavoriteNextToArriveViewModel {
-        return self.favoriteViewModels[indexPath.section]
+        return favoriteViewModels[indexPath.section]
     }
-    
+
     func moveFavorite(from source: IndexPath, to destination: IndexPath) {
         var evicted = false // Has the favorite previously in the destination spot been moved out
         var movedIn = false // Has the favorite being moved been placed in it's new spot
         let movingUp = source.section > destination.section // Are favorites being pushed up or down?
-        
+
         // Loop through all favorites and figure it's new spot
         for (index, fvm) in favoriteViewModels.enumerated() {
             if index == destination.section {
@@ -162,7 +156,7 @@ extension FavoritesViewModel { // table loading
             store.dispatch(SaveFavorite(favorite: fvm.favorite))
         }
     }
-    
+
     func remove(favorite: Favorite) {
         let action = RemoveFavorite(favorite: favorite)
         store.dispatch(action)

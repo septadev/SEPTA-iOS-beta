@@ -10,7 +10,6 @@ import Foundation
 import ObjectMapper
 
 public class TrainRoute: Mappable {
-
     var latitude: Float?
     var longitude: Float?
     var number: String?
@@ -26,7 +25,6 @@ public class TrainRoute: Mappable {
     }
 
     public func mapping(map: Map) {
-
         latitude <- map["latitude"]
         longitude <- map["longitude"]
         number <- map["number"]

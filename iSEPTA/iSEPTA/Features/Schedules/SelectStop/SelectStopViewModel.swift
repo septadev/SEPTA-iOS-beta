@@ -11,13 +11,13 @@ class SelectStopViewModel: NSObject, StoreSubscriber {
     @IBOutlet var selectStopViewController: UpdateableFromViewModel?
     var filterString = ""
     let cellId = "stopCell"
-    
+
     var sortOrder: SortOrder = .alphaAscending {
         didSet {
             filteredStops = sortStops(stops: filteredStops)
         }
     }
-    
+
     var stopToSelect: StopToSelect = .starts {
         didSet {
             subscribe()
@@ -44,16 +44,16 @@ class SelectStopViewModel: NSObject, StoreSubscriber {
             selectStopViewController?.viewModelUpdated()
         }
     }
-    
+
     private func sortStops(stops: [FilterableStop]?) -> [FilterableStop] {
         guard let stops = stops else { return [] }
-        
+
         if store.state.navigationState.activeNavigationController == .nextToArrive && TransitMode.currentTransitMode() == .rail {
             return stops.sorted {
                 $0.stop.stopName < $1.stop.stopName
             }
         }
-        
+
         switch sortOrder {
         case .alphaAscending:
             return stops.sorted {
@@ -168,14 +168,12 @@ extension SelectStopViewModel: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SelectStopViewModel: UITextFieldDelegate {
-
     func textField(_: UITextField, shouldChangeCharactersIn range: NSRange, replacementString: String) -> Bool {
-
         guard let allFilterableStops = allFilterableStops, let swiftRange = Range(range, in: filterString) else { return false }
         filterString = filterString.replacingCharacters(in: swiftRange, with: replacementString.lowercased())
 
         let allFilterableStopsSorted = sortStops(stops: allFilterableStops)
-        
+
         filteredStops = allFilterableStopsSorted.filter {
             guard filterString.count > 0 else { return true }
             return $0.filterstringComponents.filter({ $0.starts(with: filterString) }).count > 0

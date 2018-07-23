@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 protocol SearchModalHeaderDelegate: AnyObject {
-
     func animatedLayoutNeeded(block: @escaping (() -> Void), completion: @escaping (() -> Void))
 
     func layoutNeeded()
@@ -18,8 +17,8 @@ protocol SearchModalHeaderDelegate: AnyObject {
     func dismissModal()
 
     func updateActivityIndicator(animating: Bool)
-    
+
     func sortAlphaTapped(direction: SortOrder)
-    
+
     func sortByStopOrderTapped()
 }

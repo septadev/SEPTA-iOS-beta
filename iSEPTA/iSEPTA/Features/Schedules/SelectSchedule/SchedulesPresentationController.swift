@@ -7,7 +7,6 @@ class SlideInPresentationManager: NSObject, UIViewControllerTransitioningDelegat
     func presentationController(forPresented: UIViewController,
                                 presenting: UIViewController?,
                                 source _: UIViewController) -> UIPresentationController? {
-
         return SchedulesPresentationController(presentedViewController: forPresented, presenting: presenting)
     }
 }
@@ -35,7 +34,6 @@ class SchedulesPresentationController: UIPresentationController {
     }
 
     override func presentationTransitionWillBegin() {
-
         containerView?.insertSubview(dimmingView, at: 0)
 
         NSLayoutConstraint.activate(
@@ -76,7 +74,6 @@ class SchedulesPresentationController: UIPresentationController {
     }
 
     override var frameOfPresentedViewInContainerView: CGRect {
-
         var frame: CGRect = .zero
         frame.origin = CGPoint(x: 0, y: topMargin)
         frame.size = size(forChildContentContainer: presentedViewController,

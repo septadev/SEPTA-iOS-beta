@@ -10,7 +10,6 @@ import Foundation
 import ObjectMapper
 
 public class RestResponse: Mappable {
-
     var success: Bool = false
     var error: Error?
 
@@ -18,7 +17,6 @@ public class RestResponse: Mappable {
     }
 
     public func mapping(map: Map) {
-
         error <- map["message"]
     }
 }

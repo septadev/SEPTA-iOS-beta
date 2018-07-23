@@ -98,7 +98,7 @@ struct NextToArriveReducer {
         return newState
     }
 
-    static func reduceInsertNextToArriveScheduleRequest(action: InsertNextToArriveScheduleRequest, state: NextToArriveState) -> NextToArriveState {
+    static func reduceInsertNextToArriveScheduleRequest(action: InsertNextToArriveScheduleRequest, state _: NextToArriveState) -> NextToArriveState {
         var scheduleState = ScheduleState()
         scheduleState.scheduleRequest = action.scheduleRequest
 
@@ -136,13 +136,13 @@ struct NextToArriveReducer {
         return newState
     }
 
-    static func reduceToggleNextToArriveReverseTripStatus(action: ToggleNextToArriveReverseTripStatus, state: NextToArriveState) -> NextToArriveState {
+    static func reduceToggleNextToArriveReverseTripStatus(action _: ToggleNextToArriveReverseTripStatus, state: NextToArriveState) -> NextToArriveState {
         var newState = state
         newState.reverseTripStatus = state.reverseTripStatus.toggle()
         return newState
     }
 
-    static func reduceRemoveNextToArriveReverseTripStatus(action: RemoveNextToArriveReverseTripStatus, state: NextToArriveState) -> NextToArriveState {
+    static func reduceRemoveNextToArriveReverseTripStatus(action _: RemoveNextToArriveReverseTripStatus, state: NextToArriveState) -> NextToArriveState {
         var newState = state
         newState.reverseTripStatus = .noReverse
         return newState

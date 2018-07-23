@@ -8,11 +8,10 @@
 
 import Foundation
 import ReSwift
-import UIKit
 import SeptaSchedule
+import UIKit
 
 class DatabaseLoadingModalViewController: UIViewController, StoreSubscriber {
-
     typealias StoreSubscriberStateType = DatabaseState
 
     override func awakeFromNib() {

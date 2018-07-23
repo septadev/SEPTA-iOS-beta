@@ -14,7 +14,6 @@ struct AboutViewModelItem {
 }
 
 class AboutViewModel {
-
     var viewItems: [AboutViewModelItem]!
 
     init() {

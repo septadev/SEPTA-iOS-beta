@@ -11,7 +11,6 @@ import UIKit
 
 @IBDesignable
 class RedButton: UIControl {
-
     @IBInspectable
     var buttonTitle: String?
     var buttonHighlighted = false

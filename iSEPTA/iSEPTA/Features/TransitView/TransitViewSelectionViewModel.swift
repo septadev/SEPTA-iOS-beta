@@ -10,21 +10,20 @@ import ReSwift
 import SeptaSchedule
 
 class TransitViewSelectionViewModel: StoreSubscriber {
-    
     typealias StoreSubscriberStateType = TransitViewModel
-    
+
     weak var delegate: UpdateableFromViewModel?
-    
+
     var firstRoute: TransitRoute?
     var secondRoute: TransitRoute?
     var thirdRoute: TransitRoute?
     var selectedSlot: TransitViewRouteSlot?
-    
+
     init(delegate: UpdateableFromViewModel) {
         self.delegate = delegate
         subscribe()
     }
-    
+
     func subscribe() {
         store.subscribe(self) {
             $0.select {
@@ -32,17 +31,17 @@ class TransitViewSelectionViewModel: StoreSubscriber {
             }
         }
     }
-    
+
     func newState(state: StoreSubscriberStateType) {
         firstRoute = state.firstRoute
         secondRoute = state.secondRoute
         thirdRoute = state.thirdRoute
         delegate?.viewModelUpdated()
     }
-    
+
     func cellFor(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.section
-        
+
         switch row {
         case 0:
             if let route = firstRoute {
@@ -71,13 +70,13 @@ class TransitViewSelectionViewModel: StoreSubscriber {
             return UITableViewCell()
         }
     }
-    
+
     private func constructEmptyRouteCell(tableView: UITableView, indexPath: IndexPath, enabled: Bool) -> SingleStringCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "singleStringCell", for: indexPath) as! SingleStringCell
         cell.setEnabled(enabled)
         return cell
     }
-    
+
     private func constructRouteSelectedCell(tableView: UITableView, indexPath: IndexPath, route: TransitRoute) -> RouteSelectedTableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "routeSelectedCell", for: indexPath) as! RouteSelectedTableViewCell
         cell.routeIdLabel.text = "\(route.routeId):"
@@ -85,7 +84,7 @@ class TransitViewSelectionViewModel: StoreSubscriber {
         cell.pillView.backgroundColor = Route.colorForRouteId(route.routeId, transitMode: route.mode())
         return cell
     }
-    
+
     func canSelectRow(row: Int) -> Bool {
         switch row {
         case 0:
@@ -100,7 +99,7 @@ class TransitViewSelectionViewModel: StoreSubscriber {
             return false
         }
     }
-    
+
     deinit {
         store.unsubscribe(self)
     }

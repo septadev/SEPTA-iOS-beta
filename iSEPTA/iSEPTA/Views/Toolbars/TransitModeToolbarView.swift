@@ -5,7 +5,6 @@ import UIKit
 
 @IBDesignable
 class TransitModeToolbarView: UIView {
-
     @IBInspectable var highlighted: Bool = false
     @IBInspectable var title: String = "TransitMode"
     @IBInspectable var id: String = "bus"

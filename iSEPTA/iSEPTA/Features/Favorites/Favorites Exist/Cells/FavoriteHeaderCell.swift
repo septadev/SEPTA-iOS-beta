@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class FavoriteHeaderCell: UITableViewCell {
-
     @IBOutlet var favoriteIcon: UIImageView!
     @IBOutlet var favoriteName: UILabel!
 }

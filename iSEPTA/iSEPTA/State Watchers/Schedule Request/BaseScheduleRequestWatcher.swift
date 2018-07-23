@@ -10,7 +10,6 @@ import Foundation
 import ReSwift
 
 class BaseScheduleRequestWatcher: BaseWatcher, StoreSubscriber {
-
     typealias StoreSubscriberStateType = ScheduleRequest
 
     weak var delegate: ScheduleRequestWatcherDelegate? {

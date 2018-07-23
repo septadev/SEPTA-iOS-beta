@@ -11,7 +11,6 @@ import ReSwift
 import SeptaRest
 
 struct AlertReducer {
-
     static func main(action: Action,
                      state: AlertState?) -> AlertState {
         if let state = state {
@@ -83,7 +82,6 @@ struct AlertReducer {
 
     static func reduceAlertDetailsLoaded(action: AlertDetailsLoaded,
                                          state: AlertState) -> AlertState {
-
         return AlertState(alertDict: state.alertDict,
                           scheduleState: state.scheduleState,
                           lastUpdated: state.lastUpdated,
@@ -95,7 +93,6 @@ struct AlertReducer {
 
     static func reduceGenericAlertDetailsLoaded(action: GenericAlertDetailsLoaded,
                                                 state: AlertState) -> AlertState {
-
         return AlertState(alertDict: state.alertDict,
                           scheduleState: state.scheduleState,
                           lastUpdated: state.lastUpdated,
@@ -107,7 +104,6 @@ struct AlertReducer {
 
     static func reduceAppAlertDetailsLoaded(action: AppAlertDetailsLoaded,
                                             state: AlertState) -> AlertState {
-
         return AlertState(alertDict: state.alertDict,
                           scheduleState: state.scheduleState,
                           lastUpdated: state.lastUpdated,

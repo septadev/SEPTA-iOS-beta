@@ -1,11 +1,10 @@
 // Septa. 2017
 
 import Foundation
-import XCTest
 @testable import SeptaSchedule
+import XCTest
 
 class RoutesCommandTests: XCTestCase {
-
     let decoder = JSONDecoder()
 
     func testTrainRoutes_NotNil() {

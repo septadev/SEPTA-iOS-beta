@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class ScrollableTableViewToggle: NSObject {
-
     @IBOutlet var tableView: UITableView!
     var shouldScroll: Bool = false {
         didSet {

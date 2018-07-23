@@ -11,7 +11,6 @@ import ReSwift
 import SeptaSchedule
 
 class NextToArriveScheduleRequestWatcher: StoreSubscriber {
-
     typealias StoreSubscriberStateType = ScheduleRequest
     init() {
         subscribe()
@@ -68,7 +67,6 @@ class NextToArriveScheduleRequestWatcher: StoreSubscriber {
 }
 
 extension NextToArriveScheduleRequestWatcher: SubscriberUnsubscriber {
-
     func unsubscribe() {
         store.unsubscribe(self)
     }

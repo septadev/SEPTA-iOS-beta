@@ -11,7 +11,6 @@ import SeptaSchedule
 import UIKit
 
 class SeptaAlertsViewController: UIViewController {
-
     @IBOutlet var alertStackView: UIStackView!
 
     let alertsDict = store.state.alertState.alertDict
@@ -41,7 +40,6 @@ class SeptaAlertsViewController: UIViewController {
         let alertViewElements = alert.alertViewElements()
         alertsCount = alertViewElements.count
         for element in alertViewElements {
-
             let alertView = loadAlertView()
             alertView.alertIcon.image = element.image
             alertView.alertLabel.text = element.text

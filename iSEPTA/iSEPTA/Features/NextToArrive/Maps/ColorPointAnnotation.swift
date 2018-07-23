@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import UIKit
 import MapKit
+import UIKit
 
 enum ColorPointAnnotationType: String {
     case start
@@ -23,7 +23,6 @@ enum ColorPointAnnotationType: String {
 }
 
 class ColorPointAnnotation: MKPointAnnotation {
-
     let colorPointAnnotationType: ColorPointAnnotationType
 
     init(colorPointAnnotationType: ColorPointAnnotationType) {

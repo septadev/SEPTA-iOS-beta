@@ -9,7 +9,6 @@
 import Foundation
 
 public enum TransitType {
-
     case RAIL
     case BUS
     case TROLLEY

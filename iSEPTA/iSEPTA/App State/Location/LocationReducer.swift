@@ -6,13 +6,11 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
-import Foundation
+import CoreLocation
 import Foundation
 import ReSwift
-import CoreLocation
 
 struct LocationReducer {
-
     static func main(action: Action, state: LocationState?) -> LocationState {
         if let state = state {
             guard let action = action as? LocationAction else { return state }

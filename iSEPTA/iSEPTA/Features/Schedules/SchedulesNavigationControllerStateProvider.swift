@@ -9,7 +9,6 @@
 import Foundation
 
 class SchedulesNavigationControllerStateProvider: NavigationControllerBaseStateProvider {
-
     @IBOutlet var navigationController: BaseNavigationController!
 
     override func newState(state: StoreSubscriberStateType) {

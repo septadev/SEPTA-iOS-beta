@@ -9,7 +9,6 @@
 import Foundation
 
 class BaseWatcher {
-
     deinit {
         unsubscribe()
     }

@@ -6,12 +6,11 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
+import Foundation
 import ReSwift
 
 class LocationProvider: NSObject, StoreSubscriber, CLLocationManagerDelegate {
-
     typealias StoreSubscriberStateType = LocationState
 
     static let sharedInstance = LocationProvider()

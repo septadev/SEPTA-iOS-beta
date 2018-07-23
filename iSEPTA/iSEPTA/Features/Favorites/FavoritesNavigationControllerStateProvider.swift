@@ -9,7 +9,6 @@
 import Foundation
 
 class FavoritesNavigationControllerStateProvider: NavigationControllerBaseStateProvider {
-
     @IBOutlet var navigationController: BaseNavigationController!
 
     override func newState(state: StoreSubscriberStateType) {

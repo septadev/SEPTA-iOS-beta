@@ -6,23 +6,22 @@
 //  Copyright © 2018 Mark Broski. All rights reserved.
 //
 
-import ReSwift
-import SeptaSchedule
-import SeptaRest
 import MapKit
+import ReSwift
+import SeptaRest
+import SeptaSchedule
 
 class TransitViewVehicleLocationDataProvider: StoreSubscriber {
-    
     static let sharedInstance = TransitViewVehicleLocationDataProvider()
-    
+
     typealias StoreSubscriberStateType = Bool
-    
+
     let client = SEPTAApiClient.defaultClient(url: SeptaNetwork.sharedInstance.url, apiKey: SeptaNetwork.sharedInstance.apiKey)
-    
+
     init() {
         subscribe()
     }
-    
+
     private func subscribe() {
         store.subscribe(self) {
             $0.select {
@@ -30,13 +29,13 @@ class TransitViewVehicleLocationDataProvider: StoreSubscriber {
             }
         }
     }
-    
+
     func newState(state: StoreSubscriberStateType) {
         if state {
             refreshVehicleLocationData()
         }
     }
-    
+
     private func refreshVehicleLocationData() {
         var routeIds: [String] = []
         let model = store.state.transitViewState.transitViewModel
@@ -53,24 +52,24 @@ class TransitViewVehicleLocationDataProvider: StoreSubscriber {
             downloadVehicleLocationData(routeIds: routeIds, model: model)
         }
     }
-    
+
     private func downloadVehicleLocationData(routeIds: [String], model: TransitViewModel) {
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
         }
-        
+
         let urlString = urlWithRouteIds(routeIds: routeIds)
         guard let url = URL(string: urlString) else { return }
-        
-        let downloadTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            
+
+        let downloadTask = URLSession.shared.dataTask(with: url) { data, _, error in
+
             DispatchQueue.main.async {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
-            
+
             guard error == nil else { return }
             guard let data = data else { return }
-           
+
             do {
                 let decoder = JSONDecoder()
                 let routeData = try decoder.decode(TransitViewRouteData.self, from: data)
@@ -82,21 +81,19 @@ class TransitViewVehicleLocationDataProvider: StoreSubscriber {
             } catch {
                 print("Error: \(error)")
             }
-            
         }
         downloadTask.resume()
-        
     }
-    
+
     private func urlWithRouteIds(routeIds: [String]) -> String {
         var urlString = "http://apitest.septa.org/api/TransitViewAll/index.php?routes="
         for route in routeIds {
-        urlString.append("\(route),")
+            urlString.append("\(route),")
         }
         urlString.removeLast() // remove last comma
         return urlString
     }
-    
+
     private func convertToVehicleLocations(_ routeData: TransitViewRouteData, model: TransitViewModel) -> [TransitViewVehicleLocation] {
         var vehicleLocations: [TransitViewVehicleLocation] = []
         for route in routeData.routes {
@@ -113,7 +110,7 @@ class TransitViewVehicleLocationDataProvider: StoreSubscriber {
                     } else if let thirdRoute = model.thirdRoute, thirdRoute.routeId == routeId {
                         mode = thirdRoute.mode()
                     }
-                    
+
                     let location = TransitViewVehicleLocation(coordinate: coordinate, mode: mode, routeId: routeId, vehicleId: vehicle.VehicleID, heading: vehicle.heading, block: vehicle.BlockID, late: vehicle.late, destination: vehicle.destination)
                     vehicleLocations.append(location)
                 }
@@ -121,15 +118,14 @@ class TransitViewVehicleLocationDataProvider: StoreSubscriber {
         }
         return vehicleLocations
     }
-    
+
     deinit {
         store.unsubscribe(self)
     }
 }
 
-
 struct TransitViewRouteData: Codable {
-    let routes: [[String:[TransitRouteVehicle]]]
+    let routes: [[String: [TransitRouteVehicle]]]
 }
 
 struct TransitRouteVehicle: Codable {

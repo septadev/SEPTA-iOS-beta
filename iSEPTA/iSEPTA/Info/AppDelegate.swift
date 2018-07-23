@@ -16,23 +16,21 @@ var stateProviders = StateProviders()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
     let databaseUpdateManager = DatabaseUpdateManager()
-    
+
     var window: UIWindow? {
         didSet {
         }
     }
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
         Crashlytics.sharedInstance().delegate = self
         Fabric.with([Crashlytics.self, Answers.self])
 
         stateProviders.preferenceProvider.subscribe()
 
         databaseUpdateManager.appLaunched(coldStart: true)
-        
+
         return true
     }
 
@@ -64,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate: CrashlyticsDelegate {
-    func crashlyticsDidDetectReport(forLastExecution report: CLSReport, completionHandler: @escaping (Bool) -> Void) {
+    func crashlyticsDidDetectReport(forLastExecution _: CLSReport, completionHandler: @escaping (Bool) -> Void) {
         UserDefaults.standard.set(true, forKey: InAppReview.crashReportedKey)
         completionHandler(true)
     }

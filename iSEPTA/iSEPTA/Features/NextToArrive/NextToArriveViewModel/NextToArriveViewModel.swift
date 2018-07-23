@@ -49,7 +49,6 @@ class NextToArriveViewModel: NSObject, StoreSubscriber, LastCellDelegate {
     }
 
     func buildDisplayModel() {
-
         displayModel = [
             configureSelectRouteDisplayModel(),
             configureSelectStartDisplayModel(),
@@ -73,9 +72,7 @@ class NextToArriveViewModel: NSObject, StoreSubscriber, LastCellDelegate {
 // MARK: -  Loading table view cells
 
 extension NextToArriveViewModel {
-
     func shouldDisplayBlankSectionHeaderForSection(_ section: Int) -> Bool {
-
         if section == 0 && transitMode != .rail {
             return false
         } else {

@@ -16,15 +16,15 @@ class FavoriteTripCell: UITableViewCell {
     @IBOutlet var favoriteIcon: UIImageView!
     @IBOutlet var stackView: UIStackView!
     @IBOutlet var favoriteNameLabel: UILabel!
-    @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var chevron: UIImageView!
+    @IBOutlet var headerView: UIView!
+    @IBOutlet var chevron: UIImageView!
     @IBOutlet var headerAccessibilityElements: [UIView]!
-    @IBOutlet weak var viewSchedules: UILabel!
-    @IBOutlet weak var titleLabelTrailing: NSLayoutConstraint!
-    
+    @IBOutlet var viewSchedules: UILabel!
+    @IBOutlet var titleLabelTrailing: NSLayoutConstraint!
+
     var delegate: FavoriteTripCellDelegate?
     var hasNtaData: Bool = true
-    
+
     var currentFavorite: Favorite? {
         didSet {
             if let fav = currentFavorite {
@@ -55,10 +55,10 @@ class FavoriteTripCell: UITableViewCell {
         let navigationAction = PushViewController(viewController: .nextToArriveDetailController, description: "Displaying Next to arrive for a favorite")
         store.dispatch(navigationAction)
     }
-    
-    @objc func headerTapped(sender: UITapGestureRecognizer) {
+
+    @objc func headerTapped(sender _: UITapGestureRecognizer) {
         if hasNtaData {
-            self.delegate?.favoriteCellToggled(cell: self)
+            delegate?.favoriteCellToggled(cell: self)
         } else {
             let action = SwitchTabs(activeNavigationController: .schedules, description: "Jump to Schedules from favorite")
             store.dispatch(action)
@@ -77,7 +77,7 @@ class FavoriteTripCell: UITableViewCell {
             view.backgroundColor = UIColor.clear
         }
     }
-    
+
     func configureBasedOnScheduleAvailability(scheduleDataAvailable: Bool) {
         hasNtaData = !scheduleDataAvailable
         chevron.isHidden = scheduleDataAvailable

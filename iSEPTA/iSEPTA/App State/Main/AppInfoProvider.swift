@@ -10,7 +10,6 @@ import Foundation
 import SeptaSchedule
 
 class AppInfoProvider {
-
     static func buildNumber() -> String {
         return valueForKey("CFBundleVersion")
     }
@@ -22,12 +21,12 @@ class AppInfoProvider {
     static func lastDatabaseUpdate() -> Date {
         return valueForKey("lastDatabaseUpdate")
     }
-    
+
     static func databaseVersionNumber() -> String {
         let dbFileManager = DatabaseFileManager()
         return String(dbFileManager.currentDatabaseVersion())
     }
-    
+
     static func databaseUpdateDate() -> String {
         let dbFileManager = DatabaseFileManager()
         let updateDate = dbFileManager.databaseUpdateDate()

@@ -9,8 +9,6 @@
 import Foundation
 
 class TransitRoutesSQLQuery: SQLQueryProtocol {
-    
     var sqlBindings: [[String]] = []
-    var fileName = "transitRoutes"    
-    
+    var fileName = "transitRoutes"
 }

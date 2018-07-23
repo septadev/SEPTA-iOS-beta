@@ -3,7 +3,6 @@
 import UIKit
 
 protocol ScheduleDisplayable {
-
     func setTripText(text: String)
     func setDepartText(text: String)
     func setArriveText(text: String)
@@ -14,7 +13,6 @@ protocol ScheduleDisplayable {
 }
 
 class ScheduleTableViewCell: UITableViewCell, ScheduleDisplayable {
-
     @IBOutlet private var tripLabel: UILabel!
     @IBOutlet private var departLabel: UILabel!
     @IBOutlet private var arriveLabel: UILabel!

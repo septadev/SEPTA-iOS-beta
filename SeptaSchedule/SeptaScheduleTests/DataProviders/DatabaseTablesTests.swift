@@ -5,7 +5,6 @@ import Foundation
 import XCTest
 
 class DatabaseTablesTest: XCTestCase {
-
     func testNames() {
         XCTAssertEqual(DatabaseTables.stopsRail, "stops_rail")
         XCTAssertEqual(DatabaseTables.stopsBus, "stops_bus")

@@ -5,7 +5,6 @@ import ReSwift
 import SeptaSchedule
 
 class ScheduleDataProvider: BaseScheduleDataProvider {
-
     static let sharedInstance = ScheduleDataProvider()
 
     init() {

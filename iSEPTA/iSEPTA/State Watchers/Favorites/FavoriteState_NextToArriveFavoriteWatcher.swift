@@ -1,15 +1,14 @@
 
 // Septa. 2017
 
-import SeptaSchedule
 import ReSwift
+import SeptaSchedule
 
 protocol FavoriteState_NextToArriveFavoriteWatcherDelegate: AnyObject {
     func favoriteState_NextToArriveFavoriteUpdated(favorite: Favorite?)
 }
 
 class FavoriteState_NextToArriveFavoriteWatcher: BaseWatcher, StoreSubscriber {
-
     typealias StoreSubscriberStateType = Favorite?
 
     weak var delegate: FavoriteState_NextToArriveFavoriteWatcherDelegate? {

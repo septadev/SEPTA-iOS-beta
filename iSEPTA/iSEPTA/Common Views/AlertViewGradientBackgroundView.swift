@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 @IBDesignable
 class AlertViewGradientBackgroundView: UIView {
-
     override func draw(_ rect: CGRect) {
         SeptaDraw.drawAlertView(alertViewFrame: rect)
     }

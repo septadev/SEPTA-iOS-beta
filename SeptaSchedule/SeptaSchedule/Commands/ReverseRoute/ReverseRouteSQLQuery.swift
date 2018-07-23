@@ -13,7 +13,6 @@ class ReverseRouteSQLQuery: SQLQueryProtocol {
     let routeId: String
 
     var sqlBindings: [[String]] {
-
         return [[":route_id", routeId], [":direction_id", direction_id]]
     }
 

@@ -14,16 +14,16 @@ struct FilterableTransitRoute {
     var filterstringComponents: [String] {
         return filterString.components(separatedBy: " ")
     }
-    
+
     let sortString: String
     let route: TransitRoute
-    
+
     static var routeNumberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.positiveFormat = "0000"
         return formatter
     }()
-    
+
     init(route: TransitRoute) {
         if let routeInt = Int(route.routeId), let routeString = FilterableTransitRoute.routeNumberFormatter.string(from: NSNumber(value: routeInt)) {
             sortString = routeString

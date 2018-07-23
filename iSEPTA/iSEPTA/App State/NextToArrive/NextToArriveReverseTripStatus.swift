@@ -15,8 +15,8 @@ enum NextToArriveReverseTripStatus {
     func toggle() -> NextToArriveReverseTripStatus {
         let result: NextToArriveReverseTripStatus
         switch self {
-            case .noReverse: result = .didReverse
-            case .didReverse: result = .noReverse
+        case .noReverse: result = .didReverse
+        case .didReverse: result = .noReverse
         }
         return result
     }
