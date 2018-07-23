@@ -61,13 +61,15 @@ class FavoritesProvider {
 
     func writeFavoritesToFile(state: FavoritesState) {
         guard initialLoadFavoritesFromDiskHasCompleted else { return }
+
+        let favoritesToWriteToDisk = filterFavoritesToWriteToDisk(favorites: state.favorites)
         DispatchQueue.global(qos: .background).async { [weak self] in
 
             do {
                 if let targetURL = self?.favoritesFileURL,
                     let tempURL = self?.tempFavoritesFileURL,
                     let fileManager = self?.fileManager {
-                    let jsonData = try JSONEncoder().encode(state.favorites)
+                    let jsonData = try JSONEncoder().encode(favoritesToWriteToDisk)
                     fileManager.createFile(atPath: tempURL.path, contents: jsonData, attributes: nil)
                     _ = try fileManager.replaceItemAt(targetURL, withItemAt: tempURL)
                     print("copy favorites to \(targetURL.path) was successful")
@@ -76,6 +78,10 @@ class FavoritesProvider {
                 print(error.localizedDescription)
             }
         }
+    }
+
+    fileprivate func filterFavoritesToWriteToDisk(favorites: [Favorite]) -> [Favorite] {
+        return favorites.filter { $0.favoriteId != Favorite.reversedFavoriteId }
     }
 
     fileprivate lazy var documentDirectoryURL: URL? = {

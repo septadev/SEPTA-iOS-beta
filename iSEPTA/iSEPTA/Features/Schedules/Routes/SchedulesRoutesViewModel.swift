@@ -43,6 +43,16 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
 
     func newState(state: StoreSubscriberStateType) {
         allRoutes = state.routes
+        if targetForScheduleAction == .alerts {
+            // For schedules, only show one option per route rather than one for each direction.
+            if let routes = allRoutes {
+                var routeDict: [String:Route] = [:]
+                for r in routes {
+                    routeDict[r.routeId] = r
+                }
+                allRoutes = Array(routeDict.values)
+            }
+        }
         if state.updateMode == .loadValues && state.routes.count == 0 {
             selectRoutesViewController?.displayErrorMessage(message: SeptaString.NoRoutesAvailable, shouldDismissAfterDisplay: true)
         }
@@ -59,7 +69,7 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
 
         displayable.setLongName(text: route.routeLongName)
 
-        if let routeImage = route.iconForRoute(transitMode: transitMode) {
+        if let routeImage = RouteIcon.get(for: route.routeId, transitMode: transitMode) {
             displayable.setIcon(image: routeImage)
         }
         let alert = alerts[transitMode]?[route.routeId]

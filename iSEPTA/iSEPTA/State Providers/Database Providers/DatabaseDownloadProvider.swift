@@ -22,6 +22,10 @@ class DatabaseDownloadProvider {
             }
         }
     }
+    
+    deinit {
+        store.unsubscribe(self)
+    }
 }
 
 extension DatabaseDownloadProvider: StoreSubscriber {

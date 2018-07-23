@@ -28,7 +28,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet var routeIcon: UIImageView! {
         didSet {
-            routeIcon.image = route.iconForRoute(transitMode: transitMode)
+            routeIcon.image = RouteIcon.get(for: route.routeId, transitMode: transitMode)
         }
     }
 

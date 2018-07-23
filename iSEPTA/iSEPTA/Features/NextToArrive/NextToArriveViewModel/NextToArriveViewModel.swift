@@ -168,14 +168,6 @@ extension NextToArriveViewModel: SubscriberUnsubscriber {
         subscribe()
     }
 
-    //    func insertDummyScheduleRequest() {
-    //        let deadlineTime = DispatchTime.now() + .seconds(3)
-    //        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
-    //            let action = InsertNextToArriveScheduleRequest(scheduleRequest: self.scheduleRequest_rail)
-    //            store.dispatch(action)
-    //        }
-    //    }
-
     func subscribe() {
         store.subscribe(self) {
             $0.select {

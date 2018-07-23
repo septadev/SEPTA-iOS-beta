@@ -11,6 +11,9 @@ struct SeptaColor {
     static let viewShadowColor = UIColor.toPercent(0, 0, 0, 0.2)
     static let navBarShadowColor = UIColor.toPercent(0, 0, 0, 0.41)
     static let enabledCellBorder = UIColor.toPercent(132, 162, 194, 1)
+    static let transitViewRouteCardDividerBlue = UIColor.toPercent(103, 142, 195, 1)
+    static let transitViewActiveRoute = UIColor.toPercent(78, 158, 244, 1)
+    static let transitViewInactiveRoute = UIColor.toPercent(151, 151, 151, 1)
 
     static let segmentBlue = UIColor.toPercent(20, 75, 136, 1)
     static let subSegmentBlue = UIColor.toPercent(132, 162, 194, 1)

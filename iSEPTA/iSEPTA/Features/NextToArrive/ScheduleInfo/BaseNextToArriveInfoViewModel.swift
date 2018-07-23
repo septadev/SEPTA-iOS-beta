@@ -55,6 +55,10 @@ class BaseNextToArriveInfoViewModel: AlertViewDelegate {
         tableView.register(UINib(nibName: "ConnectionCell", bundle: nil), forCellReuseIdentifier: CellIds.connectionCell.rawValue)
         tableView.register(NoConnectionUIHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: CellIds.noConnectionSectionHeader.rawValue)
     }
+
+    func tripDetailIsAvailable(forTrip trip: NextToArriveTrip) -> Bool {
+        return trip.startStop.hasRealTimeData
+    }
 }
 
 extension BaseNextToArriveInfoViewModel { // Section Headers
@@ -161,7 +165,7 @@ extension BaseNextToArriveInfoViewModel { // Table View
             configureConnectionCell(cell: cell, forTrip: trip)
         default: break
         }
-    }
+    }  
 
     func configureNoConnectionCell(cell: NoConnectionCellDisplayable, forTrip trip: NextToArriveTrip) {
         let tripView = cell.tripView!
@@ -176,6 +180,7 @@ extension BaseNextToArriveInfoViewModel { // Table View
         tripView.endStopLabel.text = generateLastStopName(stop: trip.startStop)
         tripView.departingBox.layer.borderColor = trip.startStop.generateOnTimeColor().cgColor
         tripView.nextToArriveStop = trip.startStop
+        tripView.isInteractive = tripDetailIsAvailable(forTrip: trip)
 
         if let onTimeText = tripView.onTimeLabel.text,
             let departingWhen = trip.startStop.generateTimeToDepartureAccessibilityString(),
@@ -196,6 +201,7 @@ extension BaseNextToArriveInfoViewModel { // Table View
         firstLegTripView.endStopLabel.text = generateLastStopName(stop: trip.startStop)
         firstLegTripView.departingBox.layer.borderColor = trip.startStop.generateOnTimeColor().cgColor
         firstLegTripView.nextToArriveStop = trip.startStop
+        firstLegTripView.isInteractive = tripDetailIsAvailable(forTrip: trip)
 
         if let onTimeText = firstLegTripView.onTimeLabel.text,
             let departingWhen = firstLegTripView.departingWhenLabel.text,
@@ -213,6 +219,7 @@ extension BaseNextToArriveInfoViewModel { // Table View
         secondLegTripView.endStopLabel.text = generateLastStopName(stop: trip.endStop)
         secondLegTripView.departingBox.layer.borderColor = trip.endStop.generateOnTimeColor().cgColor
         secondLegTripView.nextToArriveStop = trip.endStop
+        secondLegTripView.isInteractive = tripDetailIsAvailable(forTrip: trip)
 
         if let onTimeText = secondLegTripView.onTimeLabel.text,
             let departingWhen = secondLegTripView.departingWhenLabel.text,
