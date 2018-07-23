@@ -10,7 +10,6 @@ import Foundation
 import ObjectMapper
 
 public class RealTimeArrivals: RestResponse {
-
     var origin: Int?
     var destination: Int?
     var type: String?
@@ -19,7 +18,6 @@ public class RealTimeArrivals: RestResponse {
     public var arrivals: [RealTimeArrival]?
 
     public override func mapping(map: Map) {
-
         super.mapping(map: map)
 
         if map["arrivals"].isKeyPresent {

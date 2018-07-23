@@ -9,7 +9,6 @@
 import Foundation
 public typealias TripScheduleCommandCompletion = ([Trip]?, Error?) -> Void
 public class TripScheduleCommand: BaseCommand {
-
     public static let sharedInstance = TripScheduleCommand()
 
     public func tripSchedules(forTransitMode transitMode: TransitMode, route: Route, selectedStart: Stop, selectedEnd: Stop, scheduleType: ScheduleType, completion: @escaping TripScheduleCommandCompletion) {

@@ -6,19 +6,17 @@
 //
 //
 
-import Foundation
-import PromiseKit
 import Alamofire
+import Foundation
 import ObjectMapper
+import PromiseKit
 
 class SimpleRestClient: NSObject {
-
     private var url: String
     private var apiKey: String?
     private var headers: HTTPHeaders?
 
     private init(url: String, apiKey: String?) {
-
         self.url = url
         HTTPRouter.baseURLString = url
 
@@ -53,7 +51,6 @@ class SimpleRestClient: NSObject {
     }
 
     private func httpRequest<T: Mappable>(method: HTTPMethod, route: HTTPRouter, parameters: [String: AnyObject]? = nil) -> Promise<T?> {
-
         return Promise<T?> { (fulfill, reject) -> Void in
 
             func parsingError(erroString _: String) -> NSError {

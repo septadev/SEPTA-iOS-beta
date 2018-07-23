@@ -46,7 +46,7 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
         if targetForScheduleAction == .alerts {
             // For schedules, only show one option per route rather than one for each direction.
             if let routes = allRoutes {
-                var routeDict: [String:Route] = [:]
+                var routeDict: [String: Route] = [:]
                 for r in routes {
                     routeDict[r.routeId] = r
                 }
@@ -97,7 +97,6 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
 
     var filterString = ""
     func textField(_: UITextField, shouldChangeCharactersIn range: NSRange, replacementString: String) -> Bool {
-
         guard let allFilterableRoutes = allFilterableRoutes, let swiftRange = Range(range, in: filterString) else { return false }
         filterString = filterString.replacingCharacters(in: swiftRange, with: replacementString.lowercased())
         filteredRoutes = allFilterableRoutes.filter {

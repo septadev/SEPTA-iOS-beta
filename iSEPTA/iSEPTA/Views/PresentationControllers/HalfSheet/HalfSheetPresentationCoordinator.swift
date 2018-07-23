@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class HalfSizePresentationController: UIPresentationController {
-
     override var frameOfPresentedViewInContainerView: CGRect {
         var safeAreaTop: CGFloat = 0
         if #available(iOS 11.0, *) {

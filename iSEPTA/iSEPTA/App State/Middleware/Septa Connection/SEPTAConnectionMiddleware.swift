@@ -23,7 +23,6 @@ let septaConnectionMiddleware: Middleware<AppState> = { _, _ in { next in
 }
 
 class SeptaConnectionMiddleware {
-
     static func generateActions(action: SeptaConnectionAction) {
         switch action {
         case let action as MakeSeptaConnection:
@@ -35,7 +34,6 @@ class SeptaConnectionMiddleware {
     }
 
     static func generateActionsToMakeSeptaConnection(action: MakeSeptaConnection) {
-
         let septaConnection = action.septaConnection
 
         if septaConnection.urlConnectionMode() == .withinApp {

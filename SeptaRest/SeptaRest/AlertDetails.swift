@@ -10,14 +10,12 @@ import Foundation
 import ObjectMapper
 
 public class AlertDetails: RestResponse {
-
     var route: String?
     var routeName: String?
     public var alerts: [AlertDetails_Alert]?
     var results: Int?
 
     public override func mapping(map: Map) {
-
         super.mapping(map: map)
 
         if map["alerts"].isKeyPresent {

@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class TripDetailItemView: UIView {
-
     @IBOutlet var lightLabel: UILabel! {
         didSet {
             lightLabel.text = ""

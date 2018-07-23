@@ -11,7 +11,6 @@ import ReSwift
 import SeptaSchedule
 
 class NextToArriveScheduleDataProvider: BaseScheduleDataProvider {
-
     static let sharedInstance = NextToArriveScheduleDataProvider()
 
     init() {

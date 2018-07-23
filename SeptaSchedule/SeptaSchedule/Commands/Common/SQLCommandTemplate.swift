@@ -3,7 +3,6 @@
 import Foundation
 
 class SQLCommandTemplate {
-
     let bundle = Bundle(for: BaseCommand.self)
 
     func commandString(forSQLQuery sqlQuery: SQLQueryProtocol) throws -> String? {

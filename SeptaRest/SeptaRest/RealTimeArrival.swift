@@ -35,7 +35,6 @@ import ObjectMapper
  */
 
 public class RealTimeArrival: Mappable {
-
     public var connection_station_id: Int?
     public var connection_station_name: String?
     public var orig_arrival_time: String?
@@ -74,7 +73,6 @@ public class RealTimeArrival: Mappable {
     }
 
     public func mapping(map: Map) {
-
         orig_line_route_id <- map["orig_line_route_id"]
         orig_line_route_name <- map["orig_line_route_name"]
         term_line_route_id <- map["term_line_route_id"]

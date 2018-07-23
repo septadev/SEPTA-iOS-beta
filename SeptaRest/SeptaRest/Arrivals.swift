@@ -10,14 +10,12 @@ import Foundation
 import ObjectMapper
 
 public class Arrivals: RestResponse {
-
     var origin: String?
     var destination: String?
     var results: Int?
     var arrivals: [Arrival]?
 
     public override func mapping(map: Map) {
-
         super.mapping(map: map)
 
         if map["arrivals"].isKeyPresent {

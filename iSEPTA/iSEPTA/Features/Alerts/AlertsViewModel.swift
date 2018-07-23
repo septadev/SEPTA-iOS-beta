@@ -112,7 +112,6 @@ extension AlertsViewModel {
     // MARK: -  configure routes
 
     func configureSelectRouteDisplayModel() -> NextToArriveRowDisplayModel {
-
         let cellModel: CellModel
         if let route = scheduleRequest?.selectedRoute {
             cellModel = configureRoute_RouteDefined(route: route)

@@ -7,7 +7,6 @@ import SeptaSchedule
 protocol NextToArriveMiddlewareAction: SeptaAction {}
 
 struct NavigateToNextToArriveFromSchedules: NextToArriveMiddlewareAction {
-
     let description = "Navigate to Next To Arrive From Schedules"
 }
 

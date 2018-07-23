@@ -10,7 +10,6 @@ import Foundation
 import SeptaSchedule
 
 extension TransitMode {
-
     func useRailForDetails() -> Bool {
         return [.rail].contains(self)
     }

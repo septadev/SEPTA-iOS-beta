@@ -6,10 +6,10 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
+import CoreLocation
 import Foundation
 import ReSwift
 import SeptaSchedule
-import CoreLocation
 
 class NextToArriveMapEndpointsViewModel: StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleRequest
@@ -21,7 +21,6 @@ class NextToArriveMapEndpointsViewModel: StoreSubscriber {
     }
 
     func subscribe() {
-
         guard let target = store.state.targetForScheduleActions() else { return }
 
         switch target {

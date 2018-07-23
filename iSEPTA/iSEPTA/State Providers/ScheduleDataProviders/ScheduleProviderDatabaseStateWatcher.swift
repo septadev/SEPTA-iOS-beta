@@ -11,7 +11,6 @@ import ReSwift
 import SeptaSchedule
 
 class ScheduleProviderDatabaseStateWatcher: StoreSubscriber {
-
     typealias StoreSubscriberStateType = DatabaseState
 
     weak var delegate: BaseScheduleDataProvider?

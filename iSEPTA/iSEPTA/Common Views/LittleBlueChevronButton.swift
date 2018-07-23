@@ -11,7 +11,6 @@ import UIKit
 
 @IBDesignable
 class LittleBlueChevronButton: UIControl {
-
     var buttonHighlighted = false
 
     override func draw(_ rect: CGRect) {

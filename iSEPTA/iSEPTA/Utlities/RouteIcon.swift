@@ -10,7 +10,6 @@ import SeptaSchedule
 import UIKit
 
 struct RouteIcon {
-    
     static func forRoute(routeId: String) -> UIImage? {
         switch routeId {
         case "AIR": return UIImage(named: "AIR_Line")
@@ -27,15 +26,15 @@ struct RouteIcon {
         case "WIL": return UIImage(named: "WIL_Line")
         case "WTR": return UIImage(named: "WTR_Line")
         case "GC": return UIImage(named: "GC_Line")
-            
+
         case "MFO", "BSO": return UIImage(named: "BUS_Line")
         case "MFL": return UIImage(named: "MF_Line")
         case "BSL": return UIImage(named: "BSL_Line")
-            
+
         default: return nil
         }
     }
-    
+
     static func get(for routeId: String, transitMode: TransitMode) -> UIImage? {
         if let routeImage = RouteIcon.forRoute(routeId: routeId) {
             return routeImage

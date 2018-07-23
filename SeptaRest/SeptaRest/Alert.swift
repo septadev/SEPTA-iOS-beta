@@ -10,7 +10,6 @@ import Foundation
 import ObjectMapper
 
 public class Alert: Mappable {
-
     public var route_id: String?
     public var route_name: String?
     public var mode: String?
@@ -26,7 +25,6 @@ public class Alert: Mappable {
     }
 
     public func mapping(map: Map) {
-
         route_id <- map["route_id"]
         route_name <- map["route_name"]
         mode <- map["mode"]

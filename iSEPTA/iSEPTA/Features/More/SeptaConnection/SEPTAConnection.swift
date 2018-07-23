@@ -65,7 +65,6 @@ enum SEPTAConnection {
 
     func formattedLink() -> String? {
         switch self {
-
         case .phone: return "(215)-580-7800"
         case .tddTTY: return "(215)-580-7853"
         default: return nil

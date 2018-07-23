@@ -16,7 +16,6 @@ extension NextToArriveViewModel {
     // MARK: -  configure routes
 
     func configureSelectRouteDisplayModel() -> NextToArriveRowDisplayModel {
-
         let cellModel: CellModel
         if transitMode == .rail {
             cellModel = configureRouteForRail()

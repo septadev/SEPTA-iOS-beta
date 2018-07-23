@@ -16,7 +16,6 @@ class BaseNavigationController: UINavigationController, UINavigationControllerDe
     lazy var slideInTransitioningDelegate = SlideInPresentationManager()
 
     func newStackState(_ newStackState: NavigationStackState) {
-
         handleModalState(newModalViewController: newStackState.modalViewController)
         handleViewControllerState(newControllers: newStackState.viewControllers)
         currentStackState = newStackState
@@ -38,7 +37,6 @@ class BaseNavigationController: UINavigationController, UINavigationControllerDe
     }
 
     func handleViewControllerState(newControllers: [ViewController]) {
-
         let displayControllers = mapDisplayControllers()
         let model = NavigationViewControllerStateToNavigationEvent(currentControllers: currentStackState.viewControllers, newControllers: newControllers, displayControllers: displayControllers)
 

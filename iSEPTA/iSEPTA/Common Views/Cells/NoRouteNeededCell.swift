@@ -9,7 +9,6 @@
 import UIKit
 
 class NoRouteNeededCell: UITableViewCell, SingleStringDisplayable {
-
     @IBOutlet var label: UILabel!
     func setTextColor(_ color: UIColor) {
         label.textColor = color

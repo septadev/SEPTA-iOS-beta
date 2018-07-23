@@ -22,7 +22,6 @@ let tripDetailMiddleware: Middleware<AppState> = { _, _ in { next in
 }
 
 class TripDetailMiddleware {
-
     static func generateActions(action: TripDetailMiddlewareAction) {
         switch action {
         case let action as ShowTripDetails:

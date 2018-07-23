@@ -5,11 +5,9 @@ import ReSwift
 import SeptaSchedule
 
 struct ScheduleRequestReducer {
-
     static func reduceRequest(action: ScheduleAction, scheduleRequest: ScheduleRequest) -> ScheduleRequest {
         var newScheduleRequest: ScheduleRequest
         switch action {
-
         case let action as TransitModeSelected:
             newScheduleRequest = reduceTransitModeSelected(action: action, scheduleRequest: scheduleRequest)
         case let action as RouteSelected:

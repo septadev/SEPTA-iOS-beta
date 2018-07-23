@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class RoundedSurroundShadowedCellView: UIView {
-
     override func awakeFromNib() {
         super.awakeFromNib()
         layer.masksToBounds = false
@@ -27,7 +26,6 @@ class RoundedSurroundShadowedCellView: UIView {
     var shadowOpacity: Float = 0.23
 
     private func setupShadow() {
-
         layer.shadowOffset = shadowOffset
         layer.shadowRadius = layerCornerRadius
         layer.shadowOpacity = shadowOpacity

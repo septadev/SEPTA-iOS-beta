@@ -9,12 +9,11 @@ enum DatabaseFileManagerError: Error {
 }
 
 public class DatabaseFileManager {
-
     fileprivate let currentDatabaseNameKey = "currentDatabaseKey"
     fileprivate let currentDatabaseVersionKey = "currentDatabaseVersionKey"
     fileprivate let databaseUpdateInProgressKey = "databaseUpdateInProgressKey"
     fileprivate let databaseUpdateDateKey = "databaseUpdateDateKey"
-    
+
     fileprivate let bundle = Bundle(for: DatabaseFileManager.self)
     fileprivate let defaultDatabaseName = "SEPTA.sqlite"
     let fileManager = FileManager.default
@@ -34,7 +33,7 @@ public class DatabaseFileManager {
         guard let url = databaseURL() else { return false }
         return fileManager.fileExists(atPath: url.path)
     }
-    
+
     public func databaseURL() -> URL? {
         if let currentDB = defaults.string(forKey: currentDatabaseNameKey) {
             return documentDirectoryURL?.appendingPathComponent(currentDB)
@@ -50,14 +49,14 @@ public class DatabaseFileManager {
             self?.moveDatabase()
         }
     }
-    
+
     public func appHasASQLiteFile() -> Bool {
         return allUserSqliteFiles().count > 0
     }
-    
+
     private func allUserSqliteFiles() -> [URL] {
         var allSqliteFiles: [URL] = []
-        
+
         guard let docDirUrl = documentDirectoryURL else { return allSqliteFiles }
         do {
             let directoryContents = try fileManager.contentsOfDirectory(at: docDirUrl, includingPropertiesForKeys: nil, options: [])
@@ -69,27 +68,27 @@ public class DatabaseFileManager {
         }
         return allSqliteFiles
     }
-    
+
     public func updateCurrentDatabase(dbURL: URL) {
         defaults.set(dbURL.lastPathComponent, forKey: currentDatabaseNameKey)
     }
-    
+
     public func updateDatabaseUpdateDate(updateDate: String) {
         defaults.set(updateDate, forKey: databaseUpdateDateKey)
     }
-    
+
     public func databaseUpdateDate() -> String {
         return defaults.string(forKey: databaseUpdateDateKey) ?? ""
     }
-    
+
     public func updateCurrentDatabaseVersion(version: Int) {
         defaults.set(version, forKey: currentDatabaseVersionKey)
     }
-    
+
     public func currentDatabaseVersion() -> Int {
         return defaults.integer(forKey: currentDatabaseVersionKey)
     }
-    
+
     public func isDatabaseUpdateInProgress() -> Bool {
         return defaults.bool(forKey: databaseUpdateInProgressKey)
     }
@@ -97,10 +96,10 @@ public class DatabaseFileManager {
     public func setDatabaseUpdateInProgress(inProgress: Bool) {
         defaults.set(inProgress, forKey: databaseUpdateInProgressKey)
     }
-    
+
     public func removeOldDatabases() {
         guard let currentDatabase = self.databaseURL() else { return }
-        
+
         let allSqliteFiles = allUserSqliteFiles()
         for file in allSqliteFiles {
             if file.lastPathComponent != currentDatabase.lastPathComponent {
@@ -112,7 +111,7 @@ public class DatabaseFileManager {
             }
         }
     }
-    
+
     private func moveDatabase() {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let strongSelf = self else { return }
@@ -124,9 +123,9 @@ public class DatabaseFileManager {
                     if progress == 1 {
                         strongSelf.updateState(databaseState: .loaded)
                         print("database unzip is complete")
-                        
+
                         // Set database version property
-                        DatabaseVersionSQLCommand.sharedInstance.version(completion: { (versions, error) in
+                        DatabaseVersionSQLCommand.sharedInstance.version(completion: { versions, error in
                             guard error == nil else { return }
                             if let versions = versions, versions.count == 1 {
                                 let dbVersion = versions[0]

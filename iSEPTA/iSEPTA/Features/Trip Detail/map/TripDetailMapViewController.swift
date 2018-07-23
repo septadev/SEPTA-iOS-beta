@@ -7,12 +7,11 @@
 //
 
 import Foundation
-import UIKit
 import MapKit
 import SeptaSchedule
+import UIKit
 
 class TripDetailMapViewController: UIViewController, TripDetailState_TripDetailsWatcherDelegate {
-
     @IBOutlet var mapView: MKMapView! {
         didSet {
             mapView.tintColor = SeptaColor.navBarBlue
@@ -41,7 +40,6 @@ class TripDetailMapViewController: UIViewController, TripDetailState_TripDetails
     }
 
     func tripDetailState_TripDetailsUpdated(nextToArriveStop: NextToArriveStop) {
-
         drawRoute(routeId: nextToArriveStop.routeId)
         drawVehicle(nextToArriveStop: nextToArriveStop)
         mapViewDelegate.tripDetails = nextToArriveStop

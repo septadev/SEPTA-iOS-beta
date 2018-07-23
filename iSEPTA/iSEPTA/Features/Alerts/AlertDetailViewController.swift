@@ -89,13 +89,11 @@ class AlertDetailViewController: UIViewController, IdentifiableController {
     }
 
     func setTitle() {
-
         navigationItem.title = transitMode.alertDetailTitle()
     }
 }
 
 extension AlertDetailViewController: UITableViewDelegate, UITableViewDataSource {
-
     func numberOfSections(in _: UITableView) -> Int {
         return 4
     }
@@ -168,9 +166,7 @@ extension AlertDetailViewController: AlertState_AlertDetailsWatcherDelegate {
 }
 
 extension AlertDetailViewController {
-
     func configureForServiceAdvisories(cell: AlertDetailCell) {
-
         cell.alertImage.image = UIImage(named: "advisoryAlert")
         cell.advisoryLabel.text = "Service Advisories"
         cell.disabledAdvisoryLabel.text = "No Service Advisories"
@@ -216,7 +212,6 @@ extension AlertDetailViewController {
     }
 
     func configureForWeather(cell: AlertDetailCell) {
-
         cell.alertImage.image = UIImage(named: "weatherAlert")
         cell.advisoryLabel.text = "Weather Alerts"
         cell.disabledAdvisoryLabel.text = "No Weather Alerts"

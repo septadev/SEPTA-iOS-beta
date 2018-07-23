@@ -72,10 +72,10 @@ func == (lhs: AppState, rhs: AppState) -> Bool {
 
     areEqual = lhs.moreState == rhs.moreState
     guard areEqual else { return false }
-    
+
     areEqual = lhs.transitViewState == rhs.transitViewState
     guard areEqual else { return false }
-    
+
     areEqual = lhs.databaseUpdateState == rhs.databaseUpdateState
     guard areEqual else { return false }
 

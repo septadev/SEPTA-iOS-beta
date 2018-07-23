@@ -37,7 +37,7 @@ class FavoriteNextToArriveReverseTrip {
     }
 
     fileprivate func reverseRouteForRail() {
-        self.reversedScheduleRequest = ScheduleRequest(transitMode: transitMode, selectedRoute: Route.allRailRoutesRoute())
+        reversedScheduleRequest = ScheduleRequest(transitMode: transitMode, selectedRoute: Route.allRailRoutesRoute())
         reverseStops()
     }
 
@@ -47,15 +47,14 @@ class FavoriteNextToArriveReverseTrip {
         guard let selectedRoute = scheduleRequest.selectedRoute else { return }
         ReverseRouteCommand.sharedInstance.reverseRoute(forTransitMode: transitMode, route: selectedRoute) { [weak self] routes, _ in
             guard let routes = routes, let route = routes.first else { return }
-                self?.reversedScheduleRequest = ScheduleRequest(transitMode: transitMode, selectedRoute: route)
-                self?.reverseStops()
+            self?.reversedScheduleRequest = ScheduleRequest(transitMode: transitMode, selectedRoute: route)
+            self?.reverseStops()
         }
     }
 
     /// Again we go into the database to find the stops on the other side of the street.  So the starting stop becomes the ending stop,
     /// and vice versa.
     fileprivate func reverseStops() {
-
         guard let selectedStartId = scheduleRequest.selectedStart?.stopId,
             let selectedEndId = scheduleRequest.selectedEnd?.stopId else { return }
         let tripStopId = TripStopId(start: selectedStartId, end: selectedEndId)
@@ -63,7 +62,6 @@ class FavoriteNextToArriveReverseTrip {
             guard let tripStopIds = tripStopIds, let tripStopId = tripStopIds.first else { return }
 
             self?.loadAvailableTripStarts(tripStopId: tripStopId)
-
         }
     }
 
@@ -91,20 +89,17 @@ class FavoriteNextToArriveReverseTrip {
 
     fileprivate func uploadReversedFavorite() {
         guard let favorite = reversedScheduleRequest.convertedToFavorite(favoriteId: Favorite.reversedFavoriteId) else { return }
-        let action = UploadReversedFavorite(favorite:favorite)
+        let action = UploadReversedFavorite(favorite: favorite)
         store.dispatch(action)
     }
-
 
     fileprivate func reverseCompleted() {
         delegate?.tripReverseCompleted()
     }
 
-    fileprivate func updateStatus(status: NextToArriveReverseTripStatus){
-
+    fileprivate func updateStatus(status _: NextToArriveReverseTripStatus) {
     }
 
-     fileprivate func submitReversedScheduleRequest(){
-
+    fileprivate func submitReversedScheduleRequest() {
     }
 }

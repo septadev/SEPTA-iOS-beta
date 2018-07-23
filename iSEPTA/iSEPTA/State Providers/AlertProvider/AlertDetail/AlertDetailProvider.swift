@@ -10,7 +10,6 @@ import Foundation
 import SeptaRest
 
 class AlertDetailProvider {
-
     static let sharedInstance = AlertDetailProvider()
     var watcher = AlertState_ScheduleState_ScheduleRequestWatcher()
     var currentRouteId = "ZZZZZ"

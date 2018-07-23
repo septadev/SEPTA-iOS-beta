@@ -9,7 +9,6 @@
 import Foundation
 
 public class TripReverseCommand: BaseCommand {
-
     public static let sharedInstance = TripReverseCommand()
 
     public func reverseTrip(forTransitMode transitMode: TransitMode, tripStopId: TripStopId, scheduleType: ScheduleType, completion: @escaping TripScheduleCommandCompletion) {
@@ -22,7 +21,6 @@ public class TripReverseCommand: BaseCommand {
                     let col1 = row[1], let arrivalInt = col1 as? Int64,
                     let col2 = row[2], let blockId = col2 as? String,
                     let col3 = row[3], let tripId = col3 as? String {
-
                     let trip = Trip(tripId: tripId, departureInt: Int(departureInt), arrivalInt: Int(arrivalInt), blockId: blockId)
                     trips.append(trip)
                 }

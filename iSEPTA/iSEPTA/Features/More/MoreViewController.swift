@@ -6,9 +6,9 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
+import Crashlytics
 import Foundation
 import UIKit
-import Crashlytics
 
 class MoreViewController: UIViewController, IdentifiableController, UITableViewDelegate, UITableViewDataSource {
     let cellId = "moreCell"
@@ -79,8 +79,8 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
             tableView.deselectRow(at: indexPath, animated: true)
         })
     }
-    
-    @objc func imageTap(_ sender: UITapGestureRecognizer) {
+
+    @objc func imageTap(_: UITapGestureRecognizer) {
         if tapCrashCount == 10 {
             Crashlytics.sharedInstance().crash()
         } else {

@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class AddressCell: UITableViewCell {
-
     @IBOutlet var streetAddressLabel: UILabel!
 
     @IBOutlet var CSZLabel: UILabel!

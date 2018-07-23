@@ -1,11 +1,10 @@
 // Septa. 2017
 
-import XCTest
 @testable import SeptaSchedule
+import XCTest
 
 /// SQLStringTests purpose: Validate that sql strings can be returned from the bundle
 class SQLStringsTests: XCTestCase {
-
     let bundle = Bundle(for: SQLCommandTemplate.self)
     let fileManager = FileManager.default
     let commandStrings = SQLCommandTemplate()

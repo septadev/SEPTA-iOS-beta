@@ -13,7 +13,7 @@ import UIKit
 class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableController {
     typealias StoreSubscriberStateType = ScheduleStopEdit?
     let viewController: ViewController = .selectStopController
-    
+
     let sortOrderUserPreferenceKey = "sortOrderUserPreferenceKey"
 
     @IBOutlet var selectAddressRelativeStopViewModel: SelectAddressRelativeStopViewModel!
@@ -107,12 +107,11 @@ extension SelectStopViewController: UpdateableFromViewModel {
 }
 
 extension SelectStopViewController: SubscriberUnsubscriber {
-
     override func viewWillAppear(_: Bool) {
         subscribe()
-        
+
         if let preferredSortOrder = UserDefaults.standard.string(forKey: sortOrderUserPreferenceKey),
-           let sortOrder = SortOrder(rawValue: preferredSortOrder) {
+            let sortOrder = SortOrder(rawValue: preferredSortOrder) {
             stopsViewModel.sortOrder = sortOrder
             DispatchQueue.main.async {
                 self.headerViewController?.activateButton(for: sortOrder)
@@ -157,12 +156,12 @@ extension SelectStopViewController: SearchModalHeaderDelegate {
             stopsViewModel.sortOrder = .alphaAscending
         }
     }
-    
+
     func sortByStopOrderTapped() {
         UserDefaults.standard.set(SortOrder.stopSequence.rawValue, forKey: sortOrderUserPreferenceKey)
         stopsViewModel.sortOrder = .stopSequence
     }
-    
+
     func animatedLayoutNeeded(block: @escaping (() -> Void), completion: @escaping (() -> Void)) {
         UIView.animate(withDuration: 0.25, animations: {
             block()
@@ -178,7 +177,6 @@ extension SelectStopViewController: SearchModalHeaderDelegate {
     }
 
     func dismissModal() {
-
         let dismissAction = DismissModal(description: "Stop should be dismissed")
         store.dispatch(dismissAction)
     }

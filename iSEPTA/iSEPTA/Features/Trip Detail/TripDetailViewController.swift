@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class TripDetailViewController: UIViewController, IdentifiableController {
-
     let viewController = ViewController.tripDetailViewController
 
     var tripDetails: NextToArriveStop? { return store.state.tripDetailState.tripDetails }

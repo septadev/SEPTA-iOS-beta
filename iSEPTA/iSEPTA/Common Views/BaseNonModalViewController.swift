@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class BaseNonModalViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = SeptaColor.navBarBlue

@@ -4,7 +4,6 @@ import Foundation
 import SeptaSchedule
 
 struct ScheduleRequest: Equatable {
-
     let transitMode: TransitMode
     let selectedRoute: Route?
     let selectedStart: Stop?
@@ -28,7 +27,6 @@ struct ScheduleRequest: Equatable {
 }
 
 extension ScheduleRequest {
-
     func convertedToFavorite(favoriteId: String? = nil) -> Favorite? {
         guard
             let selectedRoute = selectedRoute,

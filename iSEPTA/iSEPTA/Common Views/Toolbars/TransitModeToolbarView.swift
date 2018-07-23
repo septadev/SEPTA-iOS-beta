@@ -6,7 +6,6 @@ import UIKit
 
 @IBDesignable
 class TransitModeToolbarView: UIView {
-
     @IBOutlet private var transitModeIconImageView: UIImageView!
     @IBOutlet private var transitModeLabel: UILabel!
 

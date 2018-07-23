@@ -38,7 +38,6 @@ import SeptaSchedule
             let arrivalDate = trip.arrivalDate,
             let arrivalString = formatters.timeFormatter.string(for: arrivalDate),
             let durationString = formatters.durationFormatter.string(for: trip.tripDuration) {
-
             displayable.setDepartText(text: depatureString)
             displayable.setArriveText(text: arrivalString)
             displayable.setDurationText(text: durationString)
@@ -56,7 +55,6 @@ import SeptaSchedule
     }
 
     func newState(state: StoreSubscriberStateType) {
-
         if state.updateMode == .loadValues && state.trips.count == 0 {
             tripScheduleViewController?.displayErrorMessage(message: SeptaString.NoTripsAvailable, shouldDismissAfterDisplay: false)
             tripScheduleViewController?.updateActivityIndicator(animating: false)

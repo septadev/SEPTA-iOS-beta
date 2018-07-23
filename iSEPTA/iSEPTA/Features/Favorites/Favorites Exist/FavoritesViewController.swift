@@ -13,13 +13,13 @@ class FavoritesViewController: UIViewController, IdentifiableController {
     let viewController: ViewController = .favoritesViewController
 
     @IBOutlet var tableView: UITableView!
-    
+
     private var pendingRequestWorkItem: DispatchWorkItem?
-    
+
     var timer: Timer?
     var viewModel: FavoritesViewModel!
     var millisecondsToDelayTableReload = 100
-    
+
     var editBarButtonItem = UIBarButtonItem()
     var doneBarButtonItem = UIBarButtonItem()
 
@@ -54,7 +54,7 @@ class FavoritesViewController: UIViewController, IdentifiableController {
         let action = SwitchTabs(activeNavigationController: .nextToArrive, description: "Jumping to Next To Arrive From Favorites")
         store.dispatch(action)
     }
-    
+
     @objc func toggleEditMode(sender: UIBarButtonItem) {
         let willEdit = sender == editBarButtonItem
         viewModel.collapseForEditMode = willEdit
@@ -123,32 +123,31 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
         guard let tripCell = tableView.dequeueReusableCell(withIdentifier: "favoriteTripCell") as? FavoriteTripCell else { return UITableViewCell() }
         viewModel.configureTripCell(favoriteTripCell: tripCell, indexPath: indexPath)
         tripCell.delegate = self
-        
+
         return tripCell
     }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+
+    func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {
         return true
     }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+
+    func tableView(_: UITableView, commit _: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         let favorite = viewModel.favorite(at: indexPath)
         let alert = UIAlertController(title: "Are you sure?", message: "Are you sure you want to delete \(favorite.favoriteName)?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
             self.viewModel.remove(favorite: favorite)
             self.tableView.reloadData()
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
-    
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+
+    func tableView(_: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         viewModel.moveFavorite(from: sourceIndexPath, to: destinationIndexPath)
     }
 }
 
 extension FavoritesViewController: UpdateableFromViewModel {
-
     func viewModelUpdated() {
         pendingRequestWorkItem?.cancel()
 
@@ -176,10 +175,10 @@ extension FavoritesViewController: FavoriteTripCellDelegate {
     func favoriteCellToggled(cell: FavoriteTripCell) {
         guard var favorite = cell.currentFavorite else { return }
         favorite.collapsed = !favorite.collapsed
-        
+
         let action = SaveFavorite(favorite: favorite)
         store.dispatch(action)
-        
+
         tableView.reloadData()
     }
 }

@@ -12,7 +12,6 @@
 import UIKit
 
 public class SeptaDraw: NSObject {
-
     //// Drawing Methods
 
     @objc public dynamic class func drawBlueGradientView(frame: CGRect = CGRect(x: 17, y: 49, width: 106, height: 59)) {

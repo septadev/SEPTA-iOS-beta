@@ -10,7 +10,6 @@ protocol AlertState_AppAlertDetailsWatcherDelegate: AnyObject {
 }
 
 class AlertState_AppAlertDetailsWatcher: BaseWatcher, StoreSubscriber {
-
     typealias StoreSubscriberStateType = [AlertDetails_Alert]
 
     weak var delegate: AlertState_AppAlertDetailsWatcherDelegate? {

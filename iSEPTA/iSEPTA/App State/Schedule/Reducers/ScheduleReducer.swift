@@ -26,7 +26,6 @@ struct ScheduleStateReducer {
 }
 
 struct ScheduleReducer {
-
     static func main(action: Action, state: ScheduleState?) -> ScheduleState {
         let scheduleState = state ?? ScheduleState()
 

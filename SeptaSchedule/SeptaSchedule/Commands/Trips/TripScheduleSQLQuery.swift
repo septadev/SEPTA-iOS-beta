@@ -16,7 +16,6 @@ class TripScheduleSQLQuery: SQLQueryProtocol {
     let routeDirecctionCodeString: String
 
     var sqlBindings: [[String]] {
-
         return [[":start_stop_id", startId], [":end_stop_id", stopId], [":service_id", serviceId], [":direction_id", routeDirecctionCodeString]]
     }
 

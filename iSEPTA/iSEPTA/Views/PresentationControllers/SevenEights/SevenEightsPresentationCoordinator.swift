@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class SevenEightsPresentationController: UIPresentationController {
-
     override var frameOfPresentedViewInContainerView: CGRect {
         var safeAreaTop: CGFloat
         if #available(iOS 11.0, *) {

@@ -10,7 +10,6 @@ import Foundation
 import ReSwift
 
 struct FavoritesReducer {
-
     static func main(action: Action, state: FavoritesState?) -> FavoritesState {
         if let state = state {
             guard let action = action as? FavoritesAction else { return state }
@@ -132,7 +131,6 @@ struct FavoritesReducer {
     }
 
     static func reduceUpdateNextToArriveDetailForFavorite(action: UpdateNextToArriveDetailForFavorite, state: FavoritesState) -> FavoritesState {
-
         guard var matchingFavorite = matchingFavoriteForId(action.favoriteId, state: state) else { return state }
 
         var newFavorites = nonMatchingFavoriteForId(action.favoriteId, state: state)
@@ -159,9 +157,7 @@ struct FavoritesReducer {
     }
 
     static func reduceUploadReversedFavorite(action: UploadReversedFavorite, state: FavoritesState) -> FavoritesState {
-
         var reversedFavorite = action.favorite
-
 
         if let matchingFavorite = matchingExistingFavoriteForReversedFavorite(favorite: reversedFavorite, state: state) {
             reversedFavorite = matchingFavorite
@@ -175,7 +171,7 @@ struct FavoritesReducer {
         return newState
     }
 
-    static func reduceUndoReversedFavorite(action: UndoReversedFavorite, state: FavoritesState) -> FavoritesState {
+    static func reduceUndoReversedFavorite(action _: UndoReversedFavorite, state: FavoritesState) -> FavoritesState {
         var newState = state
         newState.nextToArriveReverseTripStatus = .noReverse
         newState.reversedNextToArriveFavoriteId = nil
@@ -193,9 +189,9 @@ struct FavoritesReducer {
     static func matchingExistingFavoriteForReversedFavorite(favorite: Favorite, state: FavoritesState) -> Favorite? {
         guard let matchingFavorite = state.favorites.filter({
             $0.favoriteId != Favorite.reversedFavoriteId &&
-            $0.selectedStart.stopId == favorite.selectedStart.stopId &&
-            $0.selectedRoute.routeId == favorite.selectedRoute.routeId &&
-            $0.selectedEnd.stopId == favorite.selectedEnd.stopId
+                $0.selectedStart.stopId == favorite.selectedStart.stopId &&
+                $0.selectedRoute.routeId == favorite.selectedRoute.routeId &&
+                $0.selectedEnd.stopId == favorite.selectedEnd.stopId
         }).first else { return nil }
         return matchingFavorite
     }

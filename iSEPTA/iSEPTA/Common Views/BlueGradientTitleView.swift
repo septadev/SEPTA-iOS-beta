@@ -11,7 +11,6 @@ import UIKit
 
 @IBDesignable
 class BlueGradientTitleView: UIView {
-
     override func draw(_ rect: CGRect) {
         SeptaDraw.drawBlueGradientTitleView(frame: rect)
     }

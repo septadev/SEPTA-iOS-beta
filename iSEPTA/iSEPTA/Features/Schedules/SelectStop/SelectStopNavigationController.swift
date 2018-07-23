@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import UIKit
 import ReSwift
+import UIKit
 
 class SelectStopNavigationController: UINavigationController, IdentifiableController, IdentifiableNavController, StoreSubscriber {
     typealias StoreSubscriberStateType = [NavigationController: NavigationStackState]?
@@ -33,7 +33,6 @@ class SelectStopNavigationController: UINavigationController, IdentifiableContro
     }
 
     func newState(state: StoreSubscriberStateType) {
-
         guard let newState = state,
             let newStackState = newState[.selectStop], newStackState != lastStackState else { return }
         let existingViewControllers = currentNavigationStackState.viewControllers
@@ -50,7 +49,6 @@ class SelectStopNavigationController: UINavigationController, IdentifiableContro
     }
 
     func subscribe() {
-
         store.subscribe(self) {
             $0.select {
                 $0.navigationState.appStackState

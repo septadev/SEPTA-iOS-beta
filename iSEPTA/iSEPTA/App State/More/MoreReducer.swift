@@ -10,7 +10,6 @@ import Foundation
 import ReSwift
 
 struct MoreReducer {
-
     static func main(action: Action, state: MoreState?) -> MoreState {
         if let state = state {
             guard let action = action as? MoreAction else { return state }

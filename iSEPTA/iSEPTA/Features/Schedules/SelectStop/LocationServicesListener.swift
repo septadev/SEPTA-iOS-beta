@@ -31,7 +31,6 @@ class LocationServicesListener: StoreSubscriber {
 }
 
 extension LocationServicesListener: SubscriberUnsubscriber {
-
     func subscribe() {
         store.subscribe(self) {
             $0.select {

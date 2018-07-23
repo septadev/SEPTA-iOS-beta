@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class BaseNavigationBar: UINavigationBar {
-
     override func awakeFromNib() {
         backgroundColor = UIColor.clear
         isTranslucent = true

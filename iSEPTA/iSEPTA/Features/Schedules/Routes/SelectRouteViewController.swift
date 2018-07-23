@@ -61,15 +61,14 @@ extension SelectRouteViewController: SearchModalHeaderDelegate {
     }
 
     func dismissModal() {
-
         let dismissAction = DismissModal(description: "Route should be dismissed")
         store.dispatch(dismissAction)
     }
 
     func updateActivityIndicator(animating _: Bool) {
     }
-    
-    func sortAlphaTapped(direction: SortOrder) {}
-    
+
+    func sortAlphaTapped(direction _: SortOrder) {}
+
     func sortByStopOrderTapped() {}
 }

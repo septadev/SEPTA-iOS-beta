@@ -4,7 +4,6 @@ import Foundation
 import SeptaSchedule
 
 struct ScheduleState {
-
     var scheduleRequest: ScheduleRequest
     var scheduleData: ScheduleData
     var scheduleStopEdit: ScheduleStopEdit

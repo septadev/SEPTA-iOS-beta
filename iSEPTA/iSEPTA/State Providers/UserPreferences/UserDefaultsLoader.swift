@@ -15,7 +15,6 @@ class UserDefaultsLoader {
     private init() {}
 
     func loadDefaults(completion: @escaping (UserPreferenceState?, Error?) -> Void) {
-
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let strongSelf = self else { return }
             let defaultsLoaded = strongSelf.bool(forKey: .defaultsLoaded)
@@ -42,7 +41,6 @@ class UserDefaultsLoader {
     }
 
     fileprivate func loadDevicePersistedDefaults(completion: @escaping (UserPreferenceState?, Error?) -> Void) {
-
         let defaultPreferenceState = UserPreferenceState()
 
         let defaultsLoaded = true

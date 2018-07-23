@@ -10,7 +10,6 @@ import Foundation
 import ObjectMapper
 
 public class NextToArriveRailDetails: RestResponse, RealTimeArrivalDetail {
-
     public var consist: [String]?
     public var nextstopDelay: Int?
     public var destinationDelay: Int?
@@ -30,7 +29,6 @@ public class NextToArriveRailDetails: RestResponse, RealTimeArrivalDetail {
     public var tripid: Int?
 
     public override func mapping(map: Map) {
-
         super.mapping(map: map)
 
         if map["tripid"].isKeyPresent {

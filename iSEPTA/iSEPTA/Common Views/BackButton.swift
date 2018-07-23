@@ -11,7 +11,6 @@ import UIKit
 
 @IBDesignable
 class BackButton: UIControl {
-
     @IBInspectable
 
     var buttonHighlighted = false

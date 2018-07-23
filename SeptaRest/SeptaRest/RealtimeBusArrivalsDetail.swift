@@ -32,7 +32,6 @@ import Foundation
 import ObjectMapper
 
 public class NextToArriveBusDetails: RestResponse, RealTimeArrivalDetail {
-
     public var blockid: String?
     public var destinationDelay: Int?
     public var destinationStation: String?
@@ -46,7 +45,6 @@ public class NextToArriveBusDetails: RestResponse, RealTimeArrivalDetail {
     public var vehicleid: String?
 
     public override func mapping(map: Map) {
-
         super.mapping(map: map)
 
         if map["vehicleid"].isKeyPresent {

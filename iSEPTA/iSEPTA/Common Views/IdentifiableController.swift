@@ -4,12 +4,10 @@ import Foundation
 import UIKit
 
 protocol IdentifiableController {
-
     var viewController: ViewController { get }
 }
 
 extension IdentifiableController where Self: UIViewController {
-
     func backButtonPopped(toParentViewController parent: UIViewController?) {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.15, execute: {
             if parent == nil {
@@ -21,7 +19,6 @@ extension IdentifiableController where Self: UIViewController {
 }
 
 protocol IdentifiableNavController: class {
-
     var navController: NavigationController { get }
 }
 

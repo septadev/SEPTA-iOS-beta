@@ -4,6 +4,5 @@ import Foundation
 import ReSwift
 
 protocol SeptaAction: Action {
-
     var description: String { get }
 }
