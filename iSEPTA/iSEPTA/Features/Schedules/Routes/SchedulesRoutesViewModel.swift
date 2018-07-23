@@ -43,7 +43,7 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
 
     func newState(state: StoreSubscriberStateType) {
         allRoutes = state.routes
-        if targetForScheduleAction == .schedules {
+        if targetForScheduleAction == .alerts {
             // For schedules, only show one option per route rather than one for each direction.
             if let routes = allRoutes {
                 var routeDict: [String:Route] = [:]
