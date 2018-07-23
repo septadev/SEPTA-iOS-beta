@@ -9,7 +9,6 @@
 import Foundation
 
 public enum HTTPRouter {
-
     static var baseURLString = ""
 
     case Alerts

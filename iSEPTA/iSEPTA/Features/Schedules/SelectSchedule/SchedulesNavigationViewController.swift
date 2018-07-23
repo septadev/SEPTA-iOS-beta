@@ -1,9 +1,9 @@
 // Septa. 2017
 
 import Foundation
-import UIKit
 import ReSwift
 import SeptaSchedule
+import UIKit
 
 class SchedulesNavigationController: BaseNavigationController {
     override func viewDidLoad() {
@@ -15,8 +15,8 @@ class SchedulesNavigationController: BaseNavigationController {
         stateProvider.subscribe()
         super.stateProvider = stateProvider
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
+
+    override func viewDidAppear(_: Bool) {
         let inAppReview = InAppReview()
         inAppReview.promptIfAppropriate()
     }

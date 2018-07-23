@@ -7,11 +7,10 @@
 //
 
 import Foundation
-import SeptaSchedule
 import ReSwift
+import SeptaSchedule
 
 struct DatabaseReducer {
-
     static func main(action: Action, state: DatabaseState?) -> DatabaseState {
         if let state = state {
             guard let action = action as? DatabaseAction else { return state }

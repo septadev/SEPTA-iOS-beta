@@ -15,7 +15,6 @@ protocol AlertDetailCellDelegate: AnyObject {
 }
 
 class AlertDetailCell: UITableViewCell {
-
     var cellView: GenericAlertDetailCellView!
 
     override func awakeFromNib() {

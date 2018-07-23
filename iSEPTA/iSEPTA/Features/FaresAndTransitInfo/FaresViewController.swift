@@ -17,7 +17,6 @@ class FaresViewController: UIViewController, IdentifiableController {
     }
 
     @IBAction func moreAboutSeptaFaresTapped(_: Any) {
-
         let moreAction = MakeSeptaConnection(septaConnection: .fares)
         store.dispatch(moreAction)
     }
@@ -44,7 +43,6 @@ class FaresViewController: UIViewController, IdentifiableController {
 
     func loadFaresStackView() {
         for item in faresViewModel.items {
-
             guard let paymentView = Bundle.main.loadNibNamed("FarePaymentModeView", owner: nil, options: nil)?.first as? FarePaymentModeView else { continue }
             paymentView.icon.image = UIImage(named: item.imageName)
             paymentView.title.text = item.title

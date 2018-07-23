@@ -3,7 +3,6 @@ import ReSwift
 import SeptaSchedule
 
 class AlertScheduleDataProvider: BaseScheduleDataProvider {
-
     static let sharedInstance = AlertScheduleDataProvider()
 
     init() {

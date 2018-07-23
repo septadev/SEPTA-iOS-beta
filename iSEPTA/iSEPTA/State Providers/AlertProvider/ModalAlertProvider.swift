@@ -11,7 +11,6 @@ import SeptaRest
 import SeptaSchedule
 
 class ModalAlertProvider {
-
     static let sharedInstance = ModalAlertProvider()
     let calendar = Calendar.current
     var timer: Timer?

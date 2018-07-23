@@ -10,7 +10,6 @@ import Foundation
 import ObjectMapper
 
 public class Arrival: Mappable {
-
     var number: String?
     var line: String?
     var departure_time: String?
@@ -22,7 +21,6 @@ public class Arrival: Mappable {
     }
 
     public func mapping(map: Map) {
-
         number <- map["number"]
         line <- map["line"]
         departure_time <- map["departure_time"]

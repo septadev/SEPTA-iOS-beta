@@ -6,8 +6,8 @@
 //  Copyright © 2018 Mark Broski. All rights reserved.
 //
 
-import SeptaSchedule
 import ReSwift
+import SeptaSchedule
 
 protocol DatabaseDownloadedWatcherDelegate: AnyObject {
     func databaseDownloadComplete()
@@ -15,13 +15,13 @@ protocol DatabaseDownloadedWatcherDelegate: AnyObject {
 
 class DatabaseDownloadedWatcher: BaseWatcher {
     weak var delegate: DatabaseDownloadedWatcherDelegate?
-    
+
     init(delegate: DatabaseDownloadedWatcherDelegate) {
         super.init()
         self.delegate = delegate
         subscribe()
     }
-    
+
     private func subscribe() {
         store.subscribe(self) {
             $0.select {
@@ -33,7 +33,7 @@ class DatabaseDownloadedWatcher: BaseWatcher {
 
 extension DatabaseDownloadedWatcher: StoreSubscriber {
     typealias StoreSubscriberStateType = DatabaseUpdateState
-    
+
     func newState(state: DatabaseUpdateState) {
         if state.status == .updateDownloaded {
             delegate?.databaseDownloadComplete()

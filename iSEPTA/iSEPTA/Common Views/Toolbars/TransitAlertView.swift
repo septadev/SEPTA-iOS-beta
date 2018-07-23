@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class TransitAlertView: UIView {
-
     @IBOutlet var alertLabel: UILabel!
 
     @IBOutlet var alertIcon: UIImageView!

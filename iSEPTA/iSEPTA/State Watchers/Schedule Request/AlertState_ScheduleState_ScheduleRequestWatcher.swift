@@ -8,7 +8,6 @@
 
 import Foundation
 class AlertState_ScheduleState_ScheduleRequestWatcher: BaseScheduleRequestWatcher {
-
     override func subscribe() {
         store.subscribe(self) {
             $0.select { $0.alertState.scheduleState.scheduleRequest }

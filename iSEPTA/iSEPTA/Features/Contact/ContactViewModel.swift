@@ -9,7 +9,6 @@
 import Foundation
 
 class ContactViewModel {
-
     func customerServiceOptions() -> [ContactPoint] {
         return [phoneCall, TTYCall, comment, chat]
     }

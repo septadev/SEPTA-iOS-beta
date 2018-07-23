@@ -16,6 +16,5 @@ struct UpdateTripDetails: TripDetailAction {
 }
 
 struct ClearTripDetails: TripDetailAction {
-
     let description: String = "Clear out Trip Details"
 }

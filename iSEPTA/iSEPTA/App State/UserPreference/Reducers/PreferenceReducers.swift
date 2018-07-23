@@ -4,9 +4,7 @@ import Foundation
 import ReSwift
 
 struct UserPreferencesReducer {
-
     static func main(action: Action, state: UserPreferenceState?) -> UserPreferenceState {
-
         if let state = state {
             guard let action = action as? UserPreferencesAction else { return state }
 

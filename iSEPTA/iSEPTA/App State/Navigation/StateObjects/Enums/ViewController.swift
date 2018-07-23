@@ -37,7 +37,7 @@ enum ViewController: String, Equatable {
 
     // trip detials
     case tripDetailViewController
-    
+
     // TransitView
     case transitViewSelectionViewController
     case transitViewSelectRouteViewController

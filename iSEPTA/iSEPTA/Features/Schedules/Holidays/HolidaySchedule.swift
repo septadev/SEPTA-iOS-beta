@@ -14,7 +14,6 @@ struct OnlineHolidaySchedule {
 }
 
 struct HolidaySchedule: Decodable {
-
     enum SeptaHolidayDecodingError: Error {
         case badUrl
     }
@@ -118,7 +117,6 @@ struct HolidaySchedule: Decodable {
             let otherHolidayUrl = URL(string: otherHolidayUrlString),
             let railHolidayUrl = URL(string: railHolidayUrlString),
             let septaUrl = URL(string: SEPTAUrlString) {
-
             septaOnlineSchedule = OnlineHolidaySchedule(label: SEPTAUrlLabel, url: septaUrl)
             railOnlineSchedule = OnlineHolidaySchedule(label: railHolidayUrlLabel, url: railHolidayUrl)
             otherOnlineSchedule = OnlineHolidaySchedule(label: otherHolidayUrlLabel, url: otherHolidayUrl)

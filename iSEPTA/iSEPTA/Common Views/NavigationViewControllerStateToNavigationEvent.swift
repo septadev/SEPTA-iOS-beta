@@ -69,7 +69,6 @@ class NavigationViewControllerStateToNavigationEvent {
     }
 
     private func shouldPop() -> Bool {
-
         return currentControllers.count - newControllers.count == 1 && newControllers.count == commonControllers.count
     }
 
@@ -78,7 +77,6 @@ class NavigationViewControllerStateToNavigationEvent {
     }
 
     private func findCommonControllers(currentControllers: [ViewController], newControllers: [ViewController]) -> [ViewController] {
-
         let minSize = min(currentControllers.count, newControllers.count)
         let trimmedCurrent = currentControllers[..<minSize]
         let trimmedNew = newControllers[..<minSize]

@@ -10,7 +10,6 @@ import Foundation
 
 extension AppState {
     func targetForScheduleActions() -> TargetForScheduleAction? {
-
         switch store.state.navigationState.activeNavigationController {
         case .schedules: return .schedules
         case .alerts: return .alerts

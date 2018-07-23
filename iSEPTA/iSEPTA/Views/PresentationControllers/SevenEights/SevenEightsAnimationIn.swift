@@ -29,7 +29,6 @@ class SevenEightsAnimationIn: NSObject, UIViewControllerAnimatedTransitioning {
 
         let duration = transitionDuration(using: transitionContext)
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseInOut, animations: {
-
             toView.frame = transitionContext.finalFrame(for: toViewController)
         }, completion: { _ in
 

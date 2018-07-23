@@ -6,22 +6,19 @@
 //  Copyright © 2018 Mark Broski. All rights reserved.
 //
 
-import UIKit
 import SeptaSchedule
+import UIKit
 
 class TransitViewOverviewViewController: UIViewController, IdentifiableController {
-
     var viewController: ViewController = .transitViewMap
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.backgroundColor = SeptaColor.navBarBlue
     }
 
-    
-    @IBAction func refreshTransitViewData(_ sender: Any) {
+    @IBAction func refreshTransitViewData(_: Any) {
         store.dispatch(RefreshTransitViewVehicleLocationData(description: "Request refresh of TransitView vehicle location data"))
     }
-    
 }

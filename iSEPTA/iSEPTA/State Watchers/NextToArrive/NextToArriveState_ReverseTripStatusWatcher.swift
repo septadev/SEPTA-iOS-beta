@@ -14,10 +14,9 @@ protocol NextToArriveReverseTripWatcherDelegate: AnyObject {
 }
 
 class NextToArriveState_ReverseTripStatusWatcher: BaseWatcher, StoreSubscriber {
-
     typealias StoreSubscriberStateType = NextToArriveReverseTripStatus
 
-    weak var delegate: NextToArriveReverseTripWatcherDelegate? 
+    weak var delegate: NextToArriveReverseTripWatcherDelegate?
 
     func subscribe() {
         store.subscribe(self) {
@@ -29,4 +28,3 @@ class NextToArriveState_ReverseTripStatusWatcher: BaseWatcher, StoreSubscriber {
         delegate?.nextToArriveReverseTripStatusChanged(status: state)
     }
 }
-

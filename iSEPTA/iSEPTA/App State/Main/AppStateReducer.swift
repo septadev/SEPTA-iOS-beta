@@ -8,7 +8,6 @@ class AppStateReducer {
     static let encoder = JSONEncoder()
 
     class func mainReducer(action: Action, state: AppState?) -> AppState {
-
         let appState = AppState(
             navigationState: NavigationReducer.main(action: action, state: state?.navigationState),
             scheduleState: ScheduleStateReducer.main(action: action, state: state?.scheduleState),

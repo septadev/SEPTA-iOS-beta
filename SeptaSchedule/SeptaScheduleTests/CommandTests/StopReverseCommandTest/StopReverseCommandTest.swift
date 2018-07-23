@@ -6,11 +6,10 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
-import XCTest
 @testable import SeptaSchedule
+import XCTest
 
 class StopReverseCommandTest: XCTestCase {
-
     func testRouteReverse() {
         let expectation = self.expectation(description: "Should Return")
         let startingTripStopId = TripStopId(start: 3076, end: 2673)

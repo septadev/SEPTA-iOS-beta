@@ -5,7 +5,6 @@ import ReSwift
 
 struct NavigationReducer {
     static func main(action: Action, state: NavigationState?) -> NavigationState {
-
         if let state = state {
             guard let action = action as? NavigationAction else { return state }
 
@@ -17,7 +16,6 @@ struct NavigationReducer {
     }
 
     static func reduceNavigationActions(action: NavigationAction, state: NavigationState) -> NavigationState {
-
         var navigationState: NavigationState
         switch action {
         case let action as InitializeNavigationState:

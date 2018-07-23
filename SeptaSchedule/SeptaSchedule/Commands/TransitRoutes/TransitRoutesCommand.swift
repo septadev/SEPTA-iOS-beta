@@ -9,10 +9,9 @@
 import Foundation
 
 public class TransitRoutesCommand: BaseCommand {
-    
     public typealias TransitRoutesCommandCompletion = ([TransitRoute]?, Error?) -> Void
     public static let sharedInstance = TransitRoutesCommand()
-    
+
     public func routes(completion: @escaping TransitRoutesCommandCompletion) {
         let sqlQuery = TransitRoutesSQLQuery()
         retrieveResults(sqlQuery: sqlQuery, userCompletion: completion) { (statement) -> [TransitRoute] in

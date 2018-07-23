@@ -32,7 +32,6 @@ struct MappableScheduleRequest: Equatable {
 /// Draws the current next to arrive view on a map.
 /// Three things need to be drawn here: 1) starting and ending pins, 2) the routes, 3) the vehicles
 class NextToArriveMapViewController: UIViewController, RouteDrawable {
-
     var nextToArriveMapRouteViewModel: NextToArriveMapRouteViewModel!
     var nextToArriveMapEndpointsViewModel: NextToArriveMapEndpointsViewModel!
 
@@ -94,7 +93,6 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
     }
 
     private var overlaysToAdd = [MKOverlay]() {
-
         didSet {
             guard let _ = mapView else { return }
             addOverlaysToMap()
@@ -108,7 +106,6 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
     }
 
     func drawRoutes(routeIds newRouteIds: [String]) {
-
         let routeIdsToAdd = newRouteIds.filter { !routeIds.contains($0) }
         routeIds.append(contentsOf: routeIdsToAdd)
 
@@ -212,7 +209,6 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
     }
 
     func removeAllAnnotations() {
-
         let annotations = mapView.annotations.filter {
             $0 !== self.mapView.userLocation
         }
@@ -221,7 +217,6 @@ class NextToArriveMapViewController: UIViewController, RouteDrawable {
 }
 
 extension NextToArriveMapViewController: MKMapViewDelegate {
-
     func mapView(_: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         guard let routeOverlay = overlay as? RouteOverlay, let routeId = routeOverlay.routeId else { return MKOverlayRenderer(overlay: overlay) }
         let renderer: MKPolylineRenderer = MKPolylineRenderer(polyline: routeOverlay)

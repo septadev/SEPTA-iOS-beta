@@ -4,7 +4,6 @@ import Foundation
 import SeptaSchedule
 
 struct ScheduleDataReducer {
-
     static func reduceData(action: ScheduleAction, scheduleData: ScheduleData) -> ScheduleData {
         var newScheduleData = scheduleData
 
@@ -35,7 +34,6 @@ struct ScheduleDataReducer {
     }
 
     static func reduceTransitModeSelected(action _: TransitModeSelected, scheduleData _: ScheduleData) -> ScheduleData {
-
         let newScheduleData = ScheduleData()
         return newScheduleData
     }
@@ -67,7 +65,6 @@ struct ScheduleDataReducer {
     }
 
     static func reduceClearTrips(action _: ClearTrips, scheduleData: ScheduleData) -> ScheduleData {
-
         let newScheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
                                            availableStarts: scheduleData.availableStarts,
                                            availableStops: scheduleData.availableStops,
@@ -86,7 +83,6 @@ struct ScheduleDataReducer {
     }
 
     static func reduceTripStartsLoaded(action: TripStartsLoaded, scheduleData: ScheduleData) -> ScheduleData {
-
         let newScheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
                                            availableStarts: ScheduleStopState(stops: action.availableStarts, updateMode: .loadValues),
                                            availableStops: scheduleData.availableStops,
@@ -95,7 +91,6 @@ struct ScheduleDataReducer {
     }
 
     static func reduceTripEndsLoaded(action: TripEndsLoaded, scheduleData: ScheduleData) -> ScheduleData {
-
         let newScheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
                                            availableStarts: scheduleData.availableStarts,
                                            availableStops: ScheduleStopState(stops: action.availableStops, updateMode: .loadValues),
@@ -104,7 +99,6 @@ struct ScheduleDataReducer {
     }
 
     static func reduceTripLoaded(action: TripsLoaded, scheduleData: ScheduleData) -> ScheduleData {
-
         let newScheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
                                            availableStarts: scheduleData.availableStarts,
                                            availableStops: scheduleData.availableStops,

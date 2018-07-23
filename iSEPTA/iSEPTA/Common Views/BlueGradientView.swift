@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 class BlueGradientView: UIView {
-
     override func draw(_ rect: CGRect) {
         SeptaDraw.drawConnectingGradientView(frame: rect)
     }

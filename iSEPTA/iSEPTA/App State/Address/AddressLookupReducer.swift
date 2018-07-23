@@ -6,12 +6,11 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
+import CoreLocation
 import Foundation
 import ReSwift
-import CoreLocation
 
 struct AddressLookupReducer {
-
     static func main(action: Action, state: AddressLookupState?) -> AddressLookupState {
         if let state = state {
             guard let action = action as? AddressLookupAction else { return state }

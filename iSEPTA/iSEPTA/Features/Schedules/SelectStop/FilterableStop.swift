@@ -19,7 +19,6 @@ struct FilterableStop {
     let stop: Stop
 
     init(stop: Stop) {
-
         filterString = "\(stop.stopName.lowercased())_\(stop.stopId)"
         sortString = stop.stopName.lowercased()
         self.stop = stop

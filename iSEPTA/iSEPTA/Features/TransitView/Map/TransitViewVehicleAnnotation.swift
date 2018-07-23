@@ -11,9 +11,9 @@ import SeptaSchedule
 
 class TransitViewVehicleAnnotation: MKPointAnnotation {
     let annotationId = "transitViewAnnotation"
-    
+
     let location: TransitViewVehicleLocation
-    
+
     init(location: TransitViewVehicleLocation) {
         self.location = location
     }

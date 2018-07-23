@@ -11,7 +11,6 @@ import UIKit
 
 @IBDesignable
 class CurvedTopInfoView: UIView {
-
     override func awakeFromNib() {
         super.awakeFromNib()
         layer.masksToBounds = false

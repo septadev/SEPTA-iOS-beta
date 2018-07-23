@@ -16,7 +16,6 @@ protocol ConnectionCellDisplayable {
 }
 
 class ConnectionCell: UITableViewCell, ConnectionCellDisplayable {
-
     var startConnectionView: ConnectionView!
     @IBOutlet var startConnectionViewWrapper: UIView! {
         didSet {
@@ -35,7 +34,6 @@ class ConnectionCell: UITableViewCell, ConnectionCellDisplayable {
 }
 
 class BlueGradientView: UIView {
-
     override func draw(_ rect: CGRect) {
         SeptaDraw.drawConnectingGradientView(frame: rect)
     }

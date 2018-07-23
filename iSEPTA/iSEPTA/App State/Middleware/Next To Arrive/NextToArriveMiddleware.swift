@@ -14,7 +14,6 @@ let nextToArriveMiddleware: Middleware<AppState> = { _, _ in { next in
         if let action = action as? NextToArriveMiddlewareAction {
             NextToArriveMiddleware.generateActions(action: action)
         } else {
-
             return next(action)
         }
     }
@@ -22,7 +21,6 @@ let nextToArriveMiddleware: Middleware<AppState> = { _, _ in { next in
 }
 
 class NextToArriveMiddleware {
-
     static func generateActions(action: NextToArriveMiddlewareAction) {
         switch action {
         case let action as NavigateToNextToArriveFromSchedules:
@@ -41,7 +39,6 @@ class NextToArriveMiddleware {
     }
 
     static func generateActionsToNavigateToNextToArriveFromSchedules(action _: NavigateToNextToArriveFromSchedules) {
-
         let copyScheduleRequest = CopyScheduleRequestToTargetForScheduleAction(
             targetForScheduleAction: .nextToArrive,
             scheduleRequest: store.state.scheduleState.scheduleRequest,
@@ -61,7 +58,6 @@ class NextToArriveMiddleware {
     }
 
     static func generateActionsToNavigateToSchedulesFromNextToArrive(action: NavigateToSchedulesFromNextToArrive) {
-
         let scheduleRequest = store.state.targetForScheduleActionsScheduleRequest()
         let builder = NextToArriveMiddlewareScheduleRequestBuilder.sharedInstance
         builder.updateScheduleRequestInSchedules(nextToArriveTrip: action.nextToArriveTrip, scheduleRequest: scheduleRequest)
@@ -69,7 +65,6 @@ class NextToArriveMiddleware {
         let delayTime: Double = scheduleRequest.transitMode == .rail ? 2 : 0.5
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayTime) {
-
             let navigationStackState = buildNavigationStackState(viewControllers: [.selectSchedules, .tripScheduleController])
             let viewStackAction = InitializeNavigationState(navigationController: .schedules, navigationStackState: navigationStackState, description: "Setting Navigation Stack State prior to moving from Next To Arrive to Schedules")
             store.dispatch(viewStackAction)
@@ -80,7 +75,6 @@ class NextToArriveMiddleware {
     }
 
     static func generateActionsToNavigateToSchedulesFromNextToArriveScheduleRequest(action: NavigateToSchedulesFromNextToArriveScheduleRequest) {
-
         let builder = NextToArriveMiddlewareScheduleRequestBuilder.sharedInstance
         builder.copyScheduleRequestToSchedules(scheduleRequest: action.scheduleRequest)
 

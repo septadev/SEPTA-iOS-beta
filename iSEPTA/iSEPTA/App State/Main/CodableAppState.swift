@@ -3,7 +3,6 @@
 import Foundation
 
 extension AppState {
-
     enum AppStateKeys: String, CodingKey {
         case navigationState
         case scheduleState

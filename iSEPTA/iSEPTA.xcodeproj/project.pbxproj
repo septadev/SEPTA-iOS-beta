@@ -2910,6 +2910,7 @@
 				585F585A1F3377EF00D3ED6C /* Copy Carthage Frameworks */,
 				58552F9B1F335272008C1886 /* CopyFiles */,
 				5892DDE71F3AA3CA000BA54B /* Crashlytics */,
+				5803C357210660B800BFAE7A /* Swift Format */,
 			);
 			buildRules = (
 			);
@@ -3252,6 +3253,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5803C357210660B800BFAE7A /* Swift Format */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Format";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftformat >/dev/null; then\n  . $SRCROOT/../Utilities/swiftFormat.sh\nelse\n    echo \"warning: swiftformat not installed, download from https://github.com/nicklockwood/SwiftFormat or brew install swiftformat\"\nfi";
+		};
 		585F585A1F3377EF00D3ED6C /* Copy Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

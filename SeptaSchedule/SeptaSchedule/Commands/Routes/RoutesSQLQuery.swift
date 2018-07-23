@@ -12,7 +12,6 @@ class RoutesSQLQuery: SQLQueryProtocol {
     let transitMode: TransitMode
 
     public var sqlBindings: [[String]] {
-
         switch transitMode {
         case .bus:
             return [[":route_id", " R.route_id not in ( 'BSO', 'BSL', 'MFL' ) "], [":route_type", " R.route_type = 3"]]

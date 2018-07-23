@@ -10,7 +10,6 @@ import Foundation
 import SeptaRest
 
 class GenericAlertDetailProvider: StateProvider {
-
     static let sharedInstance = GenericAlertDetailProvider()
     let genericRouteId = SeptaNetwork.sharedInstance.genericAlertName
     let appAlertName = SeptaNetwork.sharedInstance.appAlertName

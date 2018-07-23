@@ -11,7 +11,6 @@ import ReSwift
 import UIKit
 
 class NextToArriveNavigationControllerStateProvider: NavigationControllerBaseStateProvider {
-
     @IBOutlet var navigationController: BaseNavigationController!
 
     override func newState(state: StoreSubscriberStateType) {

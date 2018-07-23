@@ -1,11 +1,10 @@
 // Septa. 2017
 
-import XCTest
 @testable import SeptaSchedule
+import XCTest
 
 /// SQLConnectionTests purpose: Verifies that we can make a connection to the database
 class SQLConnectionTests: XCTestCase {
-
     func testConnectionWhenThereIsNoDatabase() {
         let testFileManager = DatabaseFileManagerTests()
         testFileManager.deleteDatabaseIfItExists()

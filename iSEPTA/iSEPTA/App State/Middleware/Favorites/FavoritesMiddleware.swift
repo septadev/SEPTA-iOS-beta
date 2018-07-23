@@ -22,7 +22,6 @@ let favoritesMiddleware: Middleware<AppState> = { _, _ in { next in
 }
 
 class FavoritesMiddleware {
-
     static func generateActions(action: FavoritesMiddlewareAction) {
         switch action {
         case let action as SaveFavorite:

@@ -61,9 +61,7 @@ public func == (lhs: Trip, rhs: Trip) -> Bool {
 }
 
 private extension Int {
-
     func toDataComponents() -> DateComponents {
-
         let minute = self % 100
         let hour = (self - minute) / 100
 

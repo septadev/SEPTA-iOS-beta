@@ -24,7 +24,6 @@ class NavigationModalStateToNavigationEvent {
     }
 
     func determineNecessaryStateAction() -> ModalEventNeeded {
-
         switch (currentModal, newModal) {
         case (.some, nil):
             return .dismissModal

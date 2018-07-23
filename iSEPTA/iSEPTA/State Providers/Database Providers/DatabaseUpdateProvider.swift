@@ -11,9 +11,8 @@ import ReSwift
 import SeptaSchedule
 
 class DatabaseUpdateProvider {
-    
     static let sharedInstance = DatabaseUpdateProvider()
-    
+
     private init() {
         store.subscribe(self) {
             $0.select {
@@ -23,16 +22,15 @@ class DatabaseUpdateProvider {
             }
         }
     }
-    
+
     deinit {
         store.unsubscribe(self)
     }
-
 }
 
 extension DatabaseUpdateProvider: StoreSubscriber {
     typealias StoreSubscriberStateType = DatabaseUpdateState
-    
+
     func newState(state: DatabaseUpdateState) {
         if state.status == .checkForUpdate {
             let dbFileManager = DatabaseFileManager()

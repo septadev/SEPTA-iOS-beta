@@ -9,7 +9,6 @@ protocol AlertState_HasAppAlertsWatcherDelegate: AnyObject {
 }
 
 class AlertState_HasAppAlertsWatcher: BaseWatcher, StoreSubscriber {
-
     typealias StoreSubscriberStateType = Bool
 
     weak var delegate: AlertState_HasAppAlertsWatcherDelegate? {

@@ -9,18 +9,17 @@
 import SeptaSchedule
 
 struct TransitViewVehiclePin {
-    
     static func generate(mode: TransitMode, direction: Int, active: Bool) -> UIImage {
         guard let backgroundImage = directionImage(direction: direction, active: active) else { return UIImage() }
         guard let modeImage = imageForMode(mode: mode, active: active) else { return backgroundImage }
         guard let finalImage = layerImages(background: backgroundImage, foreground: modeImage) else { return backgroundImage }
         return finalImage
     }
-    
+
     private static func directionImage(direction: Int, active: Bool) -> UIImage? {
         let color = active ? "blue" : "gray"
         var angle = ""
-        
+
         if direction > 337 || direction <= 22 {
             angle = "0"
         } else if direction > 22 && direction <= 67 {
@@ -40,7 +39,7 @@ struct TransitViewVehiclePin {
         }
         return UIImage(named: "rotate_bg_\(color)-\(angle)")
     }
-    
+
     private static func imageForMode(mode: TransitMode, active: Bool) -> UIImage? {
         var modeImage: UIImage?
         if mode == .bus {
@@ -50,7 +49,7 @@ struct TransitViewVehiclePin {
         }
         return modeImage
     }
-    
+
     private static func layerImages(background: UIImage, foreground: UIImage) -> UIImage? {
         let bgSize = background.size
         UIGraphicsBeginImageContextWithOptions(bgSize, false, 0.0)

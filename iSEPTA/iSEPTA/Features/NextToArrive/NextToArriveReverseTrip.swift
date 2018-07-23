@@ -7,13 +7,12 @@
 //
 
 import Foundation
-import SeptaSchedule
 import ReSwift
+import SeptaSchedule
 
 protocol NextToArriveReverseTripDelegate: class {
     func tripReverseCompleted()
 }
-
 
 /// Responsible for reversing a trip for Next To Arrive.
 class NextToArriveReverseTrip {
@@ -59,7 +58,6 @@ class NextToArriveReverseTrip {
     /// Again we go into the database to find the stops on the other side of the street.  So the starting stop becomes the ending stop,
     /// and vice versa.
     fileprivate func reverseStops(target: TargetForScheduleAction, scheduleRequest: ScheduleRequest) {
-
         guard let selectedStartId = scheduleRequest.selectedStart?.stopId,
             let selectedEndId = scheduleRequest.selectedEnd?.stopId else { return }
         let tripStopId = TripStopId(start: selectedStartId, end: selectedEndId)

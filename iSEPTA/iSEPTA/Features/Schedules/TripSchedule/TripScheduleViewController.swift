@@ -127,7 +127,6 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-
         guard let scheduleType = mapSegmentsToScheduleType(segmentedControl: sender) else { return }
         dispatchScheduleTypeAction(scheduleType)
     }
@@ -180,7 +179,6 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         scheduleTypeSegments = transitMode.scheduleTypeSegments()
         let reversedSegments = scheduleTypeSegments.reversed()
         for scheduleType in reversedSegments {
-
             segmentedControl.insertSegment(withTitle: scheduleType.stringForSegments(), at: 0, animated: false)
         }
         segmentedControl.selectedSegmentIndex = 0

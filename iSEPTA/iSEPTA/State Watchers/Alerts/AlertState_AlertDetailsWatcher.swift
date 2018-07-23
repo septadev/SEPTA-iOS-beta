@@ -8,16 +8,15 @@
 
 // Septa. 2017
 
-import SeptaSchedule
 import ReSwift
 import SeptaRest
+import SeptaSchedule
 
 protocol AlertState_AlertDetailsWatcherDelegate: AnyObject {
     func alertState_AlertDetailsUpdated(alertDetails: [AlertDetails_Alert])
 }
 
 class AlertState_AlertDetailsWatcher: BaseWatcher, StoreSubscriber {
-
     typealias StoreSubscriberStateType = [AlertDetails_Alert]
 
     weak var delegate: AlertState_AlertDetailsWatcherDelegate? {

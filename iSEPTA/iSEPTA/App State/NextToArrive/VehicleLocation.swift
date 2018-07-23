@@ -11,7 +11,6 @@ import Foundation
 import SeptaSchedule
 
 struct VehicleLocation {
-
     let location: CLLocationCoordinate2D?
     let nextToArriveStop: NextToArriveStop
     var lastLocation: CLLocationCoordinate2D? {
@@ -29,7 +28,6 @@ struct VehicleLocation {
     }
 
     func setBearing(location: CLLocationCoordinate2D, lastLocation: CLLocationCoordinate2D) -> Double {
-
         func degreesToRadians(_ degrees: Double) -> Double { return degrees * Double.pi / 180.0 }
         func radiansToDegrees(_ radians: Double) -> Double { return radians * 180.0 / Double.pi }
 

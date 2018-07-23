@@ -7,10 +7,9 @@
 //
 
 import Foundation
-import UIKit
 import MapKit
+import UIKit
 
 class RouteOverlay: KMLOverlayPolyline {
-
     var routeId: String?
 }

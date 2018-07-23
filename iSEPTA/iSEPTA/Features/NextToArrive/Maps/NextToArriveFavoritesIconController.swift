@@ -7,14 +7,12 @@
 //
 
 import Foundation
-import UIKit
 import ReSwift
+import UIKit
 
 class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelegate, ScheduleRequestWatcherDelegate {
-
     var editFavoriteBarButtonItem: UIBarButtonItem! {
         didSet {
-
             editFavoriteBarButtonItem.accessibilityLabel = "Edit Favorite"
         }
     }
@@ -22,11 +20,10 @@ class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelega
     var navigationItem: UINavigationItem!
     var createFavoriteBarButtonItem: UIBarButtonItem! {
         didSet {
-
             createFavoriteBarButtonItem.accessibilityLabel = "Create Favorite"
         }
     }
-    
+
     var refreshBarButtonItem: UIBarButtonItem! {
         didSet {
             refreshBarButtonItem.accessibilityLabel = "Refresh"
@@ -46,7 +43,6 @@ class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelega
     }
 
     func favoritesState_FavoritesUpdated(favorites _: [Favorite]) {
-
         guard let currentScheduleRequest = currentScheduleRequest else { return }
         currentFavorite = currentScheduleRequest.locateInFavorites()
 
@@ -90,7 +86,6 @@ class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelega
     func updateFavoritesNavBarIcon() {
         navigationItem.rightBarButtonItems?.removeAll()
         if store.state.targetForScheduleActions() == .favorites {
-
             if let currentFavorite = currentFavorite, currentFavorite.favoriteId != Favorite.reversedFavoriteId {
                 navigationItem.rightBarButtonItems = [editFavoriteBarButtonItem, refreshBarButtonItem]
 

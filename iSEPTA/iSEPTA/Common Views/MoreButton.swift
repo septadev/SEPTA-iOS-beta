@@ -11,13 +11,11 @@ import UIKit
 
 @IBDesignable
 class MoreButton: UIControl {
-
     @IBInspectable
 
     var buttonHighlighted = false
 
     override func draw(_ rect: CGRect) {
-
         SeptaDraw.drawMoreButton(frame: rect, buttonHighlighted: buttonHighlighted)
     }
 

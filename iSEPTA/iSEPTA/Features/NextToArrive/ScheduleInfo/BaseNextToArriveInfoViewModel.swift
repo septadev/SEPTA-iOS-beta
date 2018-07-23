@@ -62,7 +62,6 @@ class BaseNextToArriveInfoViewModel: AlertViewDelegate {
 }
 
 extension BaseNextToArriveInfoViewModel { // Section Headers
-
     func numberOfSections() -> Int {
         return groupedTripData.count
     }
@@ -130,7 +129,6 @@ extension BaseNextToArriveInfoViewModel { // Section Headers
 }
 
 extension BaseNextToArriveInfoViewModel { // Table View
-
     func numberOfRows(forSection section: Int) -> Int {
         guard section < groupedTripData.count else { return 0 }
         return groupedTripData[section].count
@@ -165,7 +163,7 @@ extension BaseNextToArriveInfoViewModel { // Table View
             configureConnectionCell(cell: cell, forTrip: trip)
         default: break
         }
-    }  
+    }
 
     func configureNoConnectionCell(cell: NoConnectionCellDisplayable, forTrip trip: NextToArriveTrip) {
         let tripView = cell.tripView!
@@ -191,7 +189,6 @@ extension BaseNextToArriveInfoViewModel { // Table View
     }
 
     func configureConnectionCell(cell: ConnectionCellDisplayable, forTrip trip: NextToArriveTrip) {
-
         let firstLegTripView = cell.startConnectionView.tripView!
 
         firstLegTripView.startStopLabel.text = generateTimeString(stop: trip.startStop)

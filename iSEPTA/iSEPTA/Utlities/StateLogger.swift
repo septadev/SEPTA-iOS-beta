@@ -47,7 +47,6 @@ public class StateLogger {
     }
 
     fileprivate func encodeLog(_ actionLog: StateLogEntry) throws -> Data {
-
         return try encoder.encode(actionLog)
     }
 

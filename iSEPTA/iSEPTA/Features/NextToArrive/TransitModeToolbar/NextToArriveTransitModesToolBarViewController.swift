@@ -10,14 +10,12 @@ import Foundation
 import UIKit
 
 class NextToArriveTransitModesToolBarViewController: BaseTransitModesToolbarViewController {
-
     override func awakeFromNib() {
         targetForScheduleAction = TargetForScheduleAction.nextToArrive
         super.awakeFromNib()
     }
 
     override func subscribe() {
-
         store.subscribe(self) { subscription in
             subscription.select {
                 $0.nextToArriveState.scheduleState.scheduleRequest.transitMode

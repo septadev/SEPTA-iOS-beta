@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 extension BaseNavigationController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.backgroundColor = UIColor.clear

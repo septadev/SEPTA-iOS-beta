@@ -57,7 +57,6 @@ public struct KMLConfig {
 // MARK: - Base classes
 
 open class KMLElement {
-
     open var name: String = ""
     open var children: [KMLElement] = []
 
@@ -82,7 +81,6 @@ open class KMLElement {
     static let regex = try! NSRegularExpression(pattern: "([-\\d\\.]+),([-\\d\\.]+)", options: [])
 
     class func parseCoordinates(_ element: AEXMLElement) -> [CLLocationCoordinate2D] {
-
         let coordinatesString = element.string
         let components = coordinatesString.components(separatedBy: NSCharacterSet.whitespacesAndNewlines)
         let coordinateStrings: [String] = components.filter { !$0.isEmpty }
@@ -154,7 +152,6 @@ protocol KMLApplyStyle {
 }
 
 open class KMLStyle: KMLElement, KMLApplyStyle {
-
     open var styleId: String = ""
     open var polyStyle: KMLPolyStyle?
     open var lineStyle: KMLLineStyle?
@@ -183,7 +180,6 @@ open class KMLStyle: KMLElement, KMLApplyStyle {
 }
 
 open class KMLStyleMap: KMLStyle {
-
     var pairs: [String: String]
     var pairsRef: [String: KMLStyle] = [:]
     var normalStyle: KMLStyle? {
@@ -333,7 +329,6 @@ open class KMLMultiGeometry: KMLElement {
 }
 
 open class KMLPolygon: KMLElement {
-
     open var tessellate: Bool = false
     open var coordinates: [CLLocationCoordinate2D]
     open var outerBoundaryCoordinates: [CLLocationCoordinate2D] = []
@@ -358,7 +353,6 @@ open class KMLPolygon: KMLElement {
 }
 
 open class KMLLineString: KMLElement {
-
     open var tessellate: Bool = false
     open var coordinates: [CLLocationCoordinate2D] = []
 
@@ -378,7 +372,6 @@ open class KMLLineString: KMLElement {
 }
 
 open class KMLPoint: KMLElement {
-
     open var coordinates: CLLocationCoordinate2D = CLLocationCoordinate2DMake(0, 0)
 
     public required init(_ element: AEXMLElement) {
@@ -468,7 +461,6 @@ open class KMLOverlayPolygon: MKPolygon, KMLOverlay {
 }
 
 open class KMLOverlayPolyline: MKPolyline, KMLOverlay {
-
     open var style: KMLStyle?
 
     open func renderer() -> MKOverlayRenderer {
@@ -557,7 +549,6 @@ open class KMLDocument: KMLElement {
 
     fileprivate func initOverlay() {
         for placemark: KMLPlacemark in placemarks {
-
             var overlays: [KMLOverlay] = []
 
             let polygons: [KMLPolygon] = placemark.findElements(KMLPolygon.self)

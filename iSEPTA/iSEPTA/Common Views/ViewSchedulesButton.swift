@@ -11,13 +11,11 @@ import UIKit
 
 @IBDesignable
 class ViewNextToArriveTripInSchedulesButton: UIControl {
-
     @IBInspectable
 
     var buttonHighlighted = false
 
     override func draw(_ rect: CGRect) {
-
         SeptaDraw.drawViewNextToArriveTripInSchedules(frame: rect, resizing: .center, buttonHighlighted: buttonHighlighted)
     }
 

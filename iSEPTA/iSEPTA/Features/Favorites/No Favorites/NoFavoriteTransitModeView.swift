@@ -12,7 +12,6 @@ import UIKit
 
 @IBDesignable
 class NoFavoriteTransitModeView: UIView {
-
     @IBOutlet var transitModeIcon: UIImageView!
     @IBOutlet var transitModeName: UILabel!
 

@@ -16,7 +16,6 @@ class HalfSheetTransitioningDelegate: NSObject, UIViewControllerTransitioningDel
     }
 
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source _: UIViewController) -> UIPresentationController? {
-
         return viewController.presentationController(presentedViewController: presented, presenting: presenting)
     }
 

@@ -19,7 +19,6 @@ extension Route {
         }
 
         switch routeId {
-
         case "BSL": return "Broad Street Line"
         case "BSO": return "Broad Street Overnight"
         case "MFL": return "Market Frankford Line"

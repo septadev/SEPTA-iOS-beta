@@ -1,11 +1,10 @@
 // Septa. 2017
 
-import XCTest
 @testable import SeptaSchedule
+import XCTest
 
 ///  TripTests purpose: Verify that the conversion to components works correctly.
 class TripTests: XCTestCase {
-
     /// Verify that the components are created correctly
     func testCreationOfDateComponents() {
         let trip = Trip(departureInt: 1400, arrivalInt: 1427)

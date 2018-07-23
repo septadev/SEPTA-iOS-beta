@@ -6,14 +6,13 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
+import CoreLocation
 import Foundation
+import ReSwift
 import SeptaRest
 import SeptaSchedule
-import ReSwift
-import CoreLocation
 
 class FavoritesNextToArriveProvider: StoreSubscriber {
-
     typealias StoreSubscriberStateType = Set<Favorite>
 
     let mapper = NextToArriveMapper()
@@ -46,7 +45,6 @@ class FavoritesNextToArriveProvider: StoreSubscriber {
     }
 
     func reportSuccessfullyUpdatedFavorite(favorite: Favorite, nextToArriveTrips: [NextToArriveTrip]) {
-
         let updateAction = UpdateFavoriteNextToArriveTrips(favoriteId: favorite.favoriteId, nextToArriveTrips: nextToArriveTrips)
         store.dispatch(updateAction)
     }
@@ -86,7 +84,6 @@ class FavoritesNextToArriveProvider: StoreSubscriber {
     }
 
     func mapArrivals(realTimeArrivals: [RealTimeArrival], favorite: Favorite, transitMode: TransitMode) {
-
         var nextToArriveTrips = [NextToArriveTrip]()
         for realTimeArrival in realTimeArrivals {
             let startStop = mapper.mapStart(realTimeArrival: realTimeArrival, transitMode: transitMode)

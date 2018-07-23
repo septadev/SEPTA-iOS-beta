@@ -23,7 +23,7 @@ struct Favorite: Codable {
     var sortOrder: Int
 
     static var reversedFavoriteId: String = "ReversedFavorite"
-    
+
     static let defaultSortOrder = 999
 
     var scheduleRequest: ScheduleRequest {
@@ -63,7 +63,6 @@ struct Favorite: Codable {
         selectedStart = try container.decode(Stop.self, forKey: .selectedStart)
         selectedEnd = try container.decode(Stop.self, forKey: .selectedEnd)
 
-        
         let defaultId = UUID().uuidString
         do {
             favoriteId = try container.decode(String?.self, forKey: .favoriteId) ?? defaultId
@@ -77,20 +76,20 @@ struct Favorite: Codable {
         } catch {
             favoriteName = defaultName
         }
-        
+
         let defaultCollapsed = false
         do {
             collapsed = try container.decode(Bool?.self, forKey: .collapsed) ?? defaultCollapsed
         } catch {
-            self.collapsed = defaultCollapsed
+            collapsed = defaultCollapsed
         }
-        
+
         do {
             sortOrder = try container.decode(Int?.self, forKey: .sortOrder) ?? Favorite.defaultSortOrder
         } catch {
-            self.sortOrder = Favorite.defaultSortOrder
+            sortOrder = Favorite.defaultSortOrder
         }
-        
+
         nextToArriveTrips = [NextToArriveTrip]()
         nextToArriveUpdateStatus = .idle
         refreshDataRequested = true
@@ -148,10 +147,10 @@ func == (lhs: Favorite, rhs: Favorite) -> Bool {
 
     areEqual = lhs.collapsed == rhs.collapsed
     guard areEqual else { return false }
-    
+
     areEqual = lhs.sortOrder == rhs.sortOrder
     guard areEqual else { return false }
-    
+
     return areEqual
 }
 

@@ -14,7 +14,6 @@ class StopReverseSQLQuery: SQLQueryProtocol {
     let end_stop_id: String
 
     var sqlBindings: [[String]] {
-
         return [[":start_stop_id", start_stop_id], [":end_stop_id", end_stop_id]]
     }
 

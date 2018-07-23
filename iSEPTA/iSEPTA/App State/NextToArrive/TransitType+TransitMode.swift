@@ -11,7 +11,6 @@ import SeptaRest
 import SeptaSchedule
 
 extension TransitType {
-
     static func fromTransitMode(_ transitMode: TransitMode) -> TransitType {
         switch transitMode {
         case .bus:

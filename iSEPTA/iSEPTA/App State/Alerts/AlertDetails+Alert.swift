@@ -10,7 +10,6 @@ import Foundation
 import SeptaRest
 
 extension AlertDetails_Alert {
-
     func isActiveAlert() -> Bool {
         return !(message.isBlank && advisory_message.isBlank)
     }

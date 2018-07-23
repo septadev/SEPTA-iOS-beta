@@ -28,7 +28,6 @@ class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber {
         let stops = retrieveStops()
 
         if let placemark = state.selectedAddress?.placemark, let location = placemark.location {
-
             let unsortedStopsWithDistance: [StopWithDistance] = stops.map { stop in
 
                 let stopCoordinates = CLLocation(latitude: stop.stopLatitude, longitude: stop.stopLongitude)
@@ -70,7 +69,6 @@ class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber {
 }
 
 extension SelectAddressRelativeStopViewModel: UITableViewDataSource, UITableViewDelegate {
-
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return stopsWithDistance.count
     }
@@ -83,7 +81,6 @@ extension SelectAddressRelativeStopViewModel: UITableViewDataSource, UITableView
     }
 
     func configureCell(_ cell: SelectStopCell, atRow row: Int) {
-
         guard row < stopsWithDistance.count else { return }
         let stopWithDistance = stopsWithDistance[row]
 
@@ -93,7 +90,6 @@ extension SelectAddressRelativeStopViewModel: UITableViewDataSource, UITableView
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         guard indexPath.row < stopsWithDistance.count else { return }
         let stopWithDistance = stopsWithDistance[indexPath.row]
         if scheduleStopEdit.stopToEdit == .starts {

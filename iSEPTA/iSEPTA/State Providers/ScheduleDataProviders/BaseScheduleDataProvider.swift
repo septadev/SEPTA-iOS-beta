@@ -41,7 +41,6 @@ class BaseScheduleDataProvider: StoreSubscriber {
         let prereqsChanged = prerequisitesForRoutesHaveChanged(scheduleRequest: scheduleRequest)
 
         if prereqsExist && prereqsChanged {
-
             retrieveAvailableRoutes(scheduleRequest: scheduleRequest)
         }
     }
@@ -51,7 +50,6 @@ class BaseScheduleDataProvider: StoreSubscriber {
         let prereqsChanged = prerequisitesForTripStartsHaveChanged(scheduleRequest: scheduleRequest)
 
         if prereqsExist && prereqsChanged {
-
             retrieveStartingStopsForRoute(scheduleRequest: scheduleRequest)
         }
     }
@@ -61,7 +59,6 @@ class BaseScheduleDataProvider: StoreSubscriber {
         let prereqsChanged = prerequisitesForTripEndsHaveChanged(scheduleRequest: scheduleRequest)
 
         if prereqsExist && prereqsChanged {
-
             retrieveEndingStopsForRoute(scheduleRequest: scheduleRequest)
         }
     }
@@ -71,7 +68,6 @@ class BaseScheduleDataProvider: StoreSubscriber {
         let prereqsChanged = prerequisitesForTripsHaveChanged(scheduleRequest: scheduleRequest)
 
         if prereqsExist && prereqsChanged {
-
             retrieveTripsForRoute(scheduleRequest: scheduleRequest)
         }
     }
@@ -110,7 +106,6 @@ class BaseScheduleDataProvider: StoreSubscriber {
     // MARK: -  Prerequisites Have Changed
 
     func prerequisitesForRoutesHaveChanged(scheduleRequest: ScheduleRequest) -> Bool {
-
         return scheduleRequest.transitMode != currentScheduleRequest.transitMode || currentTransitMode == nil
     }
 

@@ -15,13 +15,11 @@ class MapVehicleCalloutView: UIView {
     @IBOutlet var label3: UILabel!
 
     func buildCalloutView(vehicleLocation: VehicleLocation) {
-
         let nextToArriveStop = vehicleLocation.nextToArriveStop
 
         let transitMode = nextToArriveStop.transitMode
 
         if transitMode.useBusForDetails() {
-
             configureBusToLastStopLabel(nextToArriveStop: nextToArriveStop, label: label1)
 
             configureBusVehicleIDLabel(nextToArriveStop: nextToArriveStop, label: label2)
@@ -31,7 +29,6 @@ class MapVehicleCalloutView: UIView {
         }
 
         if transitMode.useRailForDetails() {
-
             configureTrainToLastStopLabel(nextToArriveStop: nextToArriveStop, label: label1)
 
             configureDelayLabel(nextToArriveStop: nextToArriveStop, label: label2)

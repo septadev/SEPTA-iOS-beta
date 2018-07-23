@@ -52,6 +52,6 @@ struct SeptaColor {
     static let buttonHighlight = UIColor.toPercent(230, 230, 230, 1)
 
     static let twitterBackground = UIColor.toPercent(235, 240, 245, 1)
-    
+
     static let stopOrderButtonBlue = UIColor.toPercent(173, 207, 244, 1)
 }

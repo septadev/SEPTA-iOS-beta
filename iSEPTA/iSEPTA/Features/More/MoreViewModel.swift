@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class MoreViewModel {
-
     func numberOfRows() -> Int {
         return 7
     }

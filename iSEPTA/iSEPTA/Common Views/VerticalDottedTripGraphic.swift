@@ -11,7 +11,6 @@ import UIKit
 
 @IBDesignable
 class VerticalDottedTripGraphic: UIView {
-
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         SeptaDraw.drawVerticalDottedTripGraphic(frame: rect)

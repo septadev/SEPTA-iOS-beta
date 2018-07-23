@@ -9,14 +9,10 @@
 import Foundation
 import ReSwift
 
-
 class FavoriteState_NextToArriveReverseTripStatusWatcher: NextToArriveState_ReverseTripStatusWatcher {
     override func subscribe() {
         store.subscribe(self) {
-            $0.select { $0.favoritesState.nextToArriveReverseTripStatus}
+            $0.select { $0.favoritesState.nextToArriveReverseTripStatus }
         }
     }
 }
-
-
-

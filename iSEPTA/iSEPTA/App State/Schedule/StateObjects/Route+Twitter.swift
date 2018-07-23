@@ -11,7 +11,6 @@ import SeptaSchedule
 
 extension Route {
     public static func twiterHandleForRouteId(routeId: String, transitMode: TransitMode) -> String? {
-
         if transitMode == .bus {
             return "@SEPTA_Bus"
         }
@@ -49,7 +48,6 @@ extension Route {
             }
         }
         switch routeId {
-
         case "BSL": return "@SEPTA_BSL"
         case "BSO": return "@SEPTA_Bus"
         case "MFL": return "@SEPTA_MFL"

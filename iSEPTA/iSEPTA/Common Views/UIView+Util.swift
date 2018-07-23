@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 extension UIView {
-
     class func instanceFromNib<T>(named name: String) -> T {
         return UINib(nibName: name, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! T
     }

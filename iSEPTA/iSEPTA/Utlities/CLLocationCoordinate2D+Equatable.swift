@@ -12,7 +12,6 @@ import Foundation
 extension CLLocationCoordinate2D: Equatable {}
 
 extension CLLocationCoordinate2D {
-
     func isEmpty() -> Bool {
         return self == CLLocationCoordinate2D()
     }
