@@ -24,6 +24,7 @@ class UserPreferencesStatePersister {
             strongSelf.setTransitMode(state: state)
             strongSelf.setStartupNavigationControllder(state: state)
             strongSelf.setDatabaseVersion(state: state)
+            strongSelf.setPushNotificationPreference(state: state)
             strongSelf.defaults.synchronize()
         }
     }
@@ -38,6 +39,11 @@ class UserPreferencesStatePersister {
 
     func setDatabaseVersion(state: UserPreferenceState) {
         set(state.databaseVersion, forKey: .databaseVersion)
+    }
+
+    func setPushNotificationPreference(state:UserPreferenceState){
+        let data = try? JSONEncoder().encode(state.pushNotificationPreferenceState  )
+        set(data, forKey: .pushNotifiation)
     }
 
     private func set(_ value: Any?, forKey key: UserPreferencesKeys) {

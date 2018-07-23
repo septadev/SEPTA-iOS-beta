@@ -30,7 +30,7 @@ class DefaultPreferencesLoader {
     }
 
     func generateDefaultUserPreferenceState() -> UserPreferenceState {
-        return UserPreferenceState(defaultsLoaded: true, startupTransitMode: startupTransitMode(), startupNavigationController: startupNavigationController(), databaseVersion: 0)
+        return UserPreferenceState(defaultsLoaded: true, startupTransitMode: startupTransitMode(), startupNavigationController: startupNavigationController(), databaseVersion: 0, pushNotificationPreferenceState: PushNotificationPreferenceState())
     }
 
     fileprivate func startupNavigationController() -> NavigationController {
