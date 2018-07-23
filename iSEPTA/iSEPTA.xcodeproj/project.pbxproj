@@ -152,6 +152,10 @@
 		58490E491F56019B007DBCA1 /* AlertReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E481F56019B007DBCA1 /* AlertReducer.swift */; };
 		58490E4B1F560226007DBCA1 /* AlertActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E4A1F560226007DBCA1 /* AlertActions.swift */; };
 		584AC8731F437DDB0040C1B4 /* TripScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9A1F33B1120062A546 /* TripScheduleViewController.swift */; };
+		584D54D32106103500EB773C /* PushNotificationPreferenceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584D54D22106103500EB773C /* PushNotificationPreferenceState.swift */; };
+		584D54D5210610DE00EB773C /* RangeBounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584D54D4210610DE00EB773C /* RangeBounds.swift */; };
+		584D54D72106112000EB773C /* DaysOfWeekOptionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584D54D62106112000EB773C /* DaysOfWeekOptionSet.swift */; };
+		584D54D9210612AD00EB773C /* PushNotificationPreferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584D54D8210612AD00EB773C /* PushNotificationPreferenceTests.swift */; };
 		585303CD1F69C74F00145D87 /* FavoritesNextToArriveProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585303CC1F69C74F00145D87 /* FavoritesNextToArriveProvider.swift */; };
 		585303CF1F69CAC600145D87 /* NextToArriveMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585303CE1F69CAC500145D87 /* NextToArriveMapper.swift */; };
 		585572861F39499D004ABCD6 /* Color+Septa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585572841F3948D3004ABCD6 /* Color+Septa.swift */; };
@@ -264,7 +268,6 @@
 		58E33F241F61615900C74B7C /* network.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58E33F231F61615900C74B7C /* network.plist */; };
 		58E33F261F61619500C74B7C /* SeptaNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F251F61619500C74B7C /* SeptaNetwork.swift */; };
 		58E33F281F61651400C74B7C /* TransitType+TransitMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F271F61651400C74B7C /* TransitType+TransitMode.swift */; };
-		58E33F2B1F6169EE00C74B7C /* RealTimeArrivalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F2A1F6169EE00C74B7C /* RealTimeArrivalTests.swift */; };
 		58E33F2C1F6171AE00C74B7C /* SeptaRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; };
 		58E33F2D1F6171AE00C74B7C /* SeptaSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58ACEAE31F3A9A9B00DC2836 /* SeptaSchedule.framework */; };
 		58E54E201F65977100E9B66D /* NextToArriveTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E54E1F1F65977100E9B66D /* NextToArriveTripViewController.swift */; };
@@ -845,6 +848,10 @@
 		58490E461F55F98B007DBCA1 /* AlertState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState.swift; sourceTree = "<group>"; };
 		58490E481F56019B007DBCA1 /* AlertReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertReducer.swift; sourceTree = "<group>"; };
 		58490E4A1F560226007DBCA1 /* AlertActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertActions.swift; sourceTree = "<group>"; };
+		584D54D22106103500EB773C /* PushNotificationPreferenceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationPreferenceState.swift; sourceTree = "<group>"; };
+		584D54D4210610DE00EB773C /* RangeBounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeBounds.swift; sourceTree = "<group>"; };
+		584D54D62106112000EB773C /* DaysOfWeekOptionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysOfWeekOptionSet.swift; sourceTree = "<group>"; };
+		584D54D8210612AD00EB773C /* PushNotificationPreferenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationPreferenceTests.swift; sourceTree = "<group>"; };
 		585303CC1F69C74F00145D87 /* FavoritesNextToArriveProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesNextToArriveProvider.swift; sourceTree = "<group>"; };
 		585303CE1F69CAC500145D87 /* NextToArriveMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveMapper.swift; sourceTree = "<group>"; };
 		585572841F3948D3004ABCD6 /* Color+Septa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Septa.swift"; sourceTree = "<group>"; };
@@ -973,7 +980,6 @@
 		58E33F231F61615900C74B7C /* network.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = network.plist; sourceTree = "<group>"; };
 		58E33F251F61619500C74B7C /* SeptaNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaNetwork.swift; sourceTree = "<group>"; };
 		58E33F271F61651400C74B7C /* TransitType+TransitMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransitType+TransitMode.swift"; sourceTree = "<group>"; };
-		58E33F2A1F6169EE00C74B7C /* RealTimeArrivalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeArrivalTests.swift; sourceTree = "<group>"; };
 		58E54E1F1F65977100E9B66D /* NextToArriveTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveTripViewController.swift; sourceTree = "<group>"; };
 		58E54E231F65A40100E9B66D /* NavigationBar+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationBar+Util.swift"; sourceTree = "<group>"; };
 		58E80FED20F685D5000E419A /* FavoriteNextToArriveReverseTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNextToArriveReverseTrip.swift; sourceTree = "<group>"; };
@@ -1634,6 +1640,7 @@
 				582F4E931F33B1120062A546 /* Schedules */,
 				0E8E60C620EC0D3700AB08FE /* TransitView */,
 				582F4EAB1F33B1120062A546 /* Settings */,
+				584D54D121060F2F00EB773C /* Push Notifications */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -1902,6 +1909,24 @@
 				58490E4A1F560226007DBCA1 /* AlertActions.swift */,
 			);
 			path = Alerts;
+			sourceTree = "<group>";
+		};
+		584D54D02106064400EB773C /* Push Notifications */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Push Notifications";
+			sourceTree = "<group>";
+		};
+		584D54D121060F2F00EB773C /* Push Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				584D54D22106103500EB773C /* PushNotificationPreferenceState.swift */,
+				584D54D4210610DE00EB773C /* RangeBounds.swift */,
+				584D54D62106112000EB773C /* DaysOfWeekOptionSet.swift */,
+				584D54D8210612AD00EB773C /* PushNotificationPreferenceTests.swift */,
+			);
+			path = "Push Notifications";
 			sourceTree = "<group>";
 		};
 		585303C91F69C73D00145D87 /* Favorites */ = {
@@ -2380,6 +2405,7 @@
 		58D9C40A1F3335BB002BE2E8 /* iSEPTATests */ = {
 			isa = PBXGroup;
 			children = (
+				584D54D02106064400EB773C /* Push Notifications */,
 				6708C2751F73AE2A00922D8E /* NavigationState */,
 				58E33F291F6169E000C74B7C /* RealTimeArrivals */,
 				588F28031F39E2D600D62425 /* ViewModel */,
@@ -2459,7 +2485,6 @@
 		58E33F291F6169E000C74B7C /* RealTimeArrivals */ = {
 			isa = PBXGroup;
 			children = (
-				58E33F2A1F6169EE00C74B7C /* RealTimeArrivalTests.swift */,
 			);
 			path = RealTimeArrivals;
 			sourceTree = "<group>";
@@ -3529,6 +3554,7 @@
 				58658D1E1F53298B00E67B4E /* DisplayAddress.swift in Sources */,
 				67A65BFC1F5AEBB20068428E /* NextToArriveButton.swift in Sources */,
 				6789B7751F8FDFAF008C6DCA /* TripDetailViewController.swift in Sources */,
+				584D54D32106103500EB773C /* PushNotificationPreferenceState.swift in Sources */,
 				58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */,
 				0E2DCAD320F64C5D0086F400 /* TransitViewMapRouteViewModel.swift in Sources */,
 				0E64472220D27A7600A99E2D /* DatabaseUpdateManager.swift in Sources */,
@@ -3582,6 +3608,7 @@
 				5840D6E01F37E5FB00C8CB76 /* ScheduleReducer.swift in Sources */,
 				67F028A01F7EE3C20032F99C /* ContactPoint.swift in Sources */,
 				6789B7831F8FEF7C008C6DCA /* TripDetailActions.swift in Sources */,
+				584D54D72106112000EB773C /* DaysOfWeekOptionSet.swift in Sources */,
 				5801280E1F6BF2DF006B6DB8 /* NoFavoriteViewController.swift in Sources */,
 				58FBBFA41F65821000B7A4DA /* DatabaseReducer.swift in Sources */,
 				58290E411F372B51000CCF3C /* AppState.swift in Sources */,
@@ -3655,6 +3682,7 @@
 				0E2A006820CFFAFA00E97BAF /* DatabaseUpdateActions.swift in Sources */,
 				6789B7851F8FEF8C008C6DCA /* TripDetailReducers.swift in Sources */,
 				6776F682201C0D05001FD5B2 /* AlertState_ModalAlertsDisplayedWatcher.swift in Sources */,
+				584D54D5210610DE00EB773C /* RangeBounds.swift in Sources */,
 				67365AC81F754A3200FC86CB /* HalfSheetAnimationIn.swift in Sources */,
 				678D26C81F5CC54900D140CC /* FavoritesActions.swift in Sources */,
 				582F4EC61F33B1120062A546 /* SelectRouteViewController.swift in Sources */,
@@ -3713,8 +3741,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6708C27B1F73BABA00922D8E /* NavigationModalStateToNavigationEventTests.swift in Sources */,
+				584D54D9210612AD00EB773C /* PushNotificationPreferenceTests.swift in Sources */,
 				6708C2771F73AE3F00922D8E /* NavigationViewControllerStateToNavigationEventTests.swift in Sources */,
-				58E33F2B1F6169EE00C74B7C /* RealTimeArrivalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3800,6 +3828,11 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					$SRCROOT/../Carthage/Build/iOS,
+					"$(inherited)",
+					$SRCROOT,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -3857,6 +3890,11 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					$SRCROOT/../Carthage/Build/iOS,
+					"$(inherited)",
+					$SRCROOT,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -3885,11 +3923,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					$SRCROOT/../Carthage/Build/iOS,
-					"$(inherited)",
-					$SRCROOT,
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3917,11 +3951,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					$SRCROOT/../Carthage/Build/iOS,
-					"$(inherited)",
-					$SRCROOT,
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -3946,7 +3976,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = L636S9JLLY;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/**";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iSEPTATests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTATests;
@@ -3955,7 +3985,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iSEPTA.app/iSEPTA";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SEPTA.app/SEPTA";
 			};
 			name = Debug;
 		};
@@ -3966,7 +3996,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = L636S9JLLY;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/**";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iSEPTATests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTATests;
@@ -3974,7 +4004,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "iSEPTATests/iSEPTATests-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iSEPTA.app/iSEPTA";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SEPTA.app/SEPTA";
 			};
 			name = Release;
 		};

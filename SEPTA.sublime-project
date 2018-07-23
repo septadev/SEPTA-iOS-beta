@@ -14,5 +14,16 @@
         "*.xcodeproj"
       ]
     }
-  ]
+  ],
+   "build_systems":
+    [
+       {
+            "name": "Swift Script",
+            "working_dir": "$project_path",
+            "cmd": ["bash", "Utilities/Swift Scripts/runScript.sh", "$file", ""],
+            "file_regex": "^([^:]+):([^:]+):([^:]+):(.+)"
+            
+        }
+        
+    ]
 }
