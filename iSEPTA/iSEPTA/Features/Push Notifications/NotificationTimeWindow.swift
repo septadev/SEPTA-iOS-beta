@@ -29,4 +29,3 @@ struct NotificationTimeWindow: Codable, Equatable {
         return range.contains(minutesSinceMidnight.minutes)
     }
 }
-

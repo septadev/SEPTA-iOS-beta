@@ -53,7 +53,7 @@ struct UserPreferencesReducer {
         return userPreferenceState
     }
 
-     static func reduceUpdatePushNotificationPreferenceState(action: UpdatePushNotificationPreferenceState, state: UserPreferenceState) -> UserPreferenceState {
+    static func reduceUpdatePushNotificationPreferenceState(action: UpdatePushNotificationPreferenceState, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
         userPreferenceState.pushNotificationPreferenceState = action.pushNotificationPreferenceState
         return userPreferenceState

@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 /// given a date, stores the minutes of that date since midignt
 struct MinutesSinceMidnight: Codable, Equatable {
     /// The number of minutes since midnight

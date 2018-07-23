@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import SeptaSchedule
 import ReSwift
+import SeptaSchedule
 
 class UserPreferencesStatePersister {
     let defaults = UserDefaults.standard
@@ -41,8 +41,8 @@ class UserPreferencesStatePersister {
         set(state.databaseVersion, forKey: .databaseVersion)
     }
 
-    func setPushNotificationPreference(state:UserPreferenceState){
-        let data = try? JSONEncoder().encode(state.pushNotificationPreferenceState  )
+    func setPushNotificationPreference(state: UserPreferenceState) {
+        let data = try? JSONEncoder().encode(state.pushNotificationPreferenceState)
         set(data, forKey: .pushNotifiation)
     }
 

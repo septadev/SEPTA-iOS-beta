@@ -18,4 +18,3 @@ struct UserPreferenceState: Equatable {
         self.pushNotificationPreferenceState = pushNotificationPreferenceState
     }
 }
-

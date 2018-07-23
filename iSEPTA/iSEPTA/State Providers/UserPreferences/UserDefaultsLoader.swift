@@ -88,9 +88,9 @@ class UserDefaultsLoader {
         return defaults.string(forKey: key.rawValue)
     }
 
-    fileprivate func decodable<T>(forKey key: UserPreferencesKeys) -> T? where T:Decodable {
-        guard let data =  defaults.data(forKey: key.rawValue),
-        let jsonData = try? JSONDecoder().decode(T.self, from: data) else { return nil }
+    fileprivate func decodable<T>(forKey key: UserPreferencesKeys) -> T? where T: Decodable {
+        guard let data = defaults.data(forKey: key.rawValue),
+            let jsonData = try? JSONDecoder().decode(T.self, from: data) else { return nil }
         return jsonData
     }
 
