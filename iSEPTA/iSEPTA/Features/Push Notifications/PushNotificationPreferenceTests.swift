@@ -195,6 +195,58 @@ class PushNotificationPreferenceTests: XCTestCase {
         XCTAssertEqual(expectedResult, actualResult)
     }
 
+    func testPushNotificationStatePersistence() {
+        let startTime = dateFromHourMinute(hour: 7, minute: 30)
+        let endTime = dateFromHourMinute(hour: 9, minute: 30)
+
+        let timeWindow = NotificationTimeWindow(startTime: startTime, endTime: endTime)!
+
+        let daysOfWeek: DaysOfWeekOptionSet = [.wednesday] // will no longer match fridays
+
+        let routeIds = ["44", "37"]
+
+        var preferenceState = PushNotificationPreferenceState()
+        preferenceState.notificationTimeWindows = [timeWindow]
+        preferenceState.daysOfWeek = daysOfWeek
+        preferenceState.routeIds = routeIds
+
+        let action = UpdatePushNotificationPreferenceState(pushNotificationPreferenceState: preferenceState)
+        store.dispatch(action)
+
+        let newPreferenceState = store.state.preferenceState.pushNotificationPreferenceState
+        XCTAssertEqual(preferenceState, newPreferenceState)
+    }
+
+    func testPushNotificationStatePersistence2() {
+        let startTime = dateFromHourMinute(hour: 7, minute: 30)
+        let endTime = dateFromHourMinute(hour: 9, minute: 30)
+
+        let timeWindow = NotificationTimeWindow(startTime: startTime, endTime: endTime)!
+
+        let daysOfWeek: DaysOfWeekOptionSet = [.wednesday, .tuesday] // will no longer match fridays
+
+        let routeIds = ["44", "54545"]
+
+        var preferenceState = PushNotificationPreferenceState()
+        preferenceState.notificationTimeWindows = [timeWindow]
+        preferenceState.daysOfWeek = daysOfWeek
+        preferenceState.routeIds = routeIds
+
+        let action = UpdatePushNotificationPreferenceState(pushNotificationPreferenceState: preferenceState)
+        store.dispatch(action)
+
+        let expectation = XCTestExpectation(description: "Wait for defaults to get written")
+
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
+            let data: Data = UserDefaults.standard.data(forKey: UserPreferencesKeys.pushNotifiation.rawValue)!
+            let newPreferenceState = try! JSONDecoder().decode(PushNotificationPreferenceState.self, from: data)
+            XCTAssertEqual(preferenceState, newPreferenceState)
+            expectation.fulfill()
+        })
+
+        wait(for: [expectation], timeout: 2)
+    }
+
     func dateFromHourMinute(hour: Int, minute: Int) -> Date {
         let testDateComponents = DateComponents(hour: hour, minute: minute)
         return calendar.date(from: testDateComponents)!

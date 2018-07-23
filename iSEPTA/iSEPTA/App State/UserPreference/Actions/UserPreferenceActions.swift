@@ -25,3 +25,8 @@ struct NewStartupController: UserPreferencesAction {
     let navigationController: NavigationController
     let description = "New Startup Controller should be saved to prefs"
 }
+
+struct UpdatePushNotificationPreferenceState: UserPreferencesAction {
+    let pushNotificationPreferenceState: PushNotificationPreferenceState
+    let description = "A new preference state for push notifications has been set"
+}
