@@ -240,7 +240,6 @@
 		58E33F241F61615900C74B7C /* network.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58E33F231F61615900C74B7C /* network.plist */; };
 		58E33F261F61619500C74B7C /* SeptaNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F251F61619500C74B7C /* SeptaNetwork.swift */; };
 		58E33F281F61651400C74B7C /* TransitType+TransitMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F271F61651400C74B7C /* TransitType+TransitMode.swift */; };
-		58E33F2B1F6169EE00C74B7C /* RealTimeArrivalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F2A1F6169EE00C74B7C /* RealTimeArrivalTests.swift */; };
 		58E33F2C1F6171AE00C74B7C /* SeptaRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; };
 		58E33F2D1F6171AE00C74B7C /* SeptaSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58ACEAE31F3A9A9B00DC2836 /* SeptaSchedule.framework */; };
 		58E54E201F65977100E9B66D /* NextToArriveTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E54E1F1F65977100E9B66D /* NextToArriveTripViewController.swift */; };
@@ -925,7 +924,6 @@
 		58E33F231F61615900C74B7C /* network.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = network.plist; sourceTree = "<group>"; };
 		58E33F251F61619500C74B7C /* SeptaNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaNetwork.swift; sourceTree = "<group>"; };
 		58E33F271F61651400C74B7C /* TransitType+TransitMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransitType+TransitMode.swift"; sourceTree = "<group>"; };
-		58E33F2A1F6169EE00C74B7C /* RealTimeArrivalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeArrivalTests.swift; sourceTree = "<group>"; };
 		58E54E1F1F65977100E9B66D /* NextToArriveTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveTripViewController.swift; sourceTree = "<group>"; };
 		58E54E231F65A40100E9B66D /* NavigationBar+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationBar+Util.swift"; sourceTree = "<group>"; };
 		58EB8D0E1F5D79530028A487 /* NextToArriveNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveNavigationController.swift; sourceTree = "<group>"; };
@@ -2374,7 +2372,6 @@
 		58E33F291F6169E000C74B7C /* RealTimeArrivals */ = {
 			isa = PBXGroup;
 			children = (
-				58E33F2A1F6169EE00C74B7C /* RealTimeArrivalTests.swift */,
 			);
 			path = RealTimeArrivals;
 			sourceTree = "<group>";
@@ -3602,7 +3599,6 @@
 				6708C27B1F73BABA00922D8E /* NavigationModalStateToNavigationEventTests.swift in Sources */,
 				584D54D9210612AD00EB773C /* PushNotificationPreferenceTests.swift in Sources */,
 				6708C2771F73AE3F00922D8E /* NavigationViewControllerStateToNavigationEventTests.swift in Sources */,
-				58E33F2B1F6169EE00C74B7C /* RealTimeArrivalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
