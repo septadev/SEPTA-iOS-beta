@@ -16,6 +16,8 @@ class TransitViewRoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate
     var slotBeingChanged: TransitViewRouteSlot?
     var selectedRoutes: [TransitRoute] = []
 
+    let alerts = store.state.alertState.alertDict
+
     var allRoutes: [TransitRoute]? {
         didSet {
             guard let allRoutes = allRoutes else { return }
@@ -80,6 +82,9 @@ class TransitViewRoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate
         if let routeImage = RouteIcon.get(for: route.routeId, transitMode: route.mode()) {
             cell.setIcon(image: routeImage)
         }
+
+        let alert = alerts[route.mode()]?[route.routeId]
+        cell.addAlert(alert)
     }
 
     func shouldHighlight(row: Int) -> Bool {
