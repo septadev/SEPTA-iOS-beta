@@ -179,6 +179,17 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
         mapView.removeOverlays(mapView.overlays)
         store.dispatch(RefreshTransitViewVehicleLocationData(description: "Request refresh of TransitView vehicle location data"))
     }
+
+    private func activateRouteById(routeId: String) {
+        for route in [route1, route2, route3] {
+            if let route = route, let vm = route.viewModel {
+                route.enabled = vm.routeId == routeId
+                if vm.routeId == routeId {
+                    selectedRoute = route.viewModel
+                }
+            }
+        }
+    }
 }
 
 extension TransitViewMapViewController: MKMapViewDelegate {
@@ -211,6 +222,7 @@ extension TransitViewMapViewController: MKMapViewDelegate {
             activeRoute = true
         }
         annotationView.canShowCallout = activeRoute
+        annotationView.routeId = transitAnnotation.location.routeId
         annotationView.isActiveRoute = activeRoute
         annotationView.image = TransitViewVehiclePin.generate(mode: transitAnnotation.location.mode, direction: transitAnnotation.location.heading, active: activeRoute)
 
@@ -251,20 +263,34 @@ extension TransitViewMapViewController: TransitRouteCardDelegate {
     func cardTapped(routeId: String) {
         guard let selectedRoute = selectedRoute, selectedRoute.routeId != routeId else { return }
 
-        for route in [route1, route2, route3] {
-            if let route = route {
-                route.enabled = route.viewModel?.routeId == routeId
-                if route.viewModel?.routeId == routeId {
-                    self.selectedRoute = route.viewModel
-                }
-            }
-        }
+        activateRouteById(routeId: routeId)
         refreshRoutes()
     }
 }
 
 extension TransitViewMapViewController: TransitViewAnnotationViewDelegate {
     func activateRoute(routeId: String) {
-        cardTapped(routeId: routeId)
+        // Set new active route ID
+        activateRouteById(routeId: routeId)
+
+        // Clear old overlays
+        mapView.removeOverlays(mapView.overlays)
+        routesHaveBeenAdded = false
+
+        // Add overlays back
+        var routeIds: [String] = []
+        for route in [route1, route2, route3] {
+            if let route = route, let vm = route.viewModel {
+                routeIds.append(vm.routeId)
+            }
+        }
+        drawRoutes(routeIds: routeIds)
+
+        // Clear old annotations
+        let previouslyAddedAnnotations = vehicleAnnotationsAdded.map { $0.location }
+        clearExistingVehicleLocations()
+        
+        // Add annotations back
+        vehiclesToAdd = previouslyAddedAnnotations
     }
 }
