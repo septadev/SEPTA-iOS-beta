@@ -17,6 +17,7 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
     var viewModel = TransitViewMapRouteViewModel()
     var routesHaveBeenAdded = false
     var selectedRoute: TransitRoute?
+    var updateMap = true
 
     @IBOutlet var mapView: MKMapView! {
         didSet {
@@ -114,8 +115,13 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
             guard let _ = mapView else { return }
             clearExistingVehicleLocations()
             drawVehicleLocations()
-            mapView.showAnnotations(mapView.annotations, animated: false)
-            mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0), animated: true)
+            if updateMap {
+                mapView.showAnnotations(mapView.annotations, animated: false)
+                mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0), animated: true)
+            }
+            if !updateMap {
+                updateMap = true
+            }
             vehiclesToAdd.removeAll()
         }
     }
@@ -270,6 +276,9 @@ extension TransitViewMapViewController: TransitRouteCardDelegate {
 
 extension TransitViewMapViewController: TransitViewAnnotationViewDelegate {
     func activateRoute(routeId: String) {
+        // Just switching active route, so don't update the whole map
+        updateMap = false
+
         // Set new active route ID
         activateRouteById(routeId: routeId)
 
@@ -289,7 +298,7 @@ extension TransitViewMapViewController: TransitViewAnnotationViewDelegate {
         // Clear old annotations
         let previouslyAddedAnnotations = vehicleAnnotationsAdded.map { $0.location }
         clearExistingVehicleLocations()
-        
+
         // Add annotations back
         vehiclesToAdd = previouslyAddedAnnotations
     }
