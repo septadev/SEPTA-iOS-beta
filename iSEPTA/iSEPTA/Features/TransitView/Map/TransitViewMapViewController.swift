@@ -16,8 +16,19 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
 
     var viewModel = TransitViewMapRouteViewModel()
     var routesHaveBeenAdded = false
-    var selectedRoute: TransitRoute?
     var updateMap = true
+
+    let alerts = store.state.alertState.alertDict
+
+    var selectedRoute: TransitRoute? {
+        didSet {
+            for route in [route1, route2, route3] {
+                if let route = route, let vm = route.viewModel {
+                    route.alertsAreInteractive = vm == selectedRoute
+                }
+            }
+        }
+    }
 
     @IBOutlet var mapView: MKMapView! {
         didSet {
@@ -63,11 +74,22 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
     }
 
     func newState(state: StoreSubscriberStateType) {
-        route1.viewModel = state.firstRoute
+        configureRouteCards(model: state)
+        toggleAddRouteButton(enabled: route3.viewModel == nil)
+        if route1.viewModel == nil && route2.viewModel == nil && route3.viewModel == nil {
+            // No routes! Back we go.
+            navigationController?.popViewController(animated: true)
+        } else {
+            refreshRoutes()
+        }
+    }
+
+    private func configureRouteCards(model: TransitViewModel) {
+        route1.viewModel = model.firstRoute
         route1.delegate = self
-        route2.viewModel = state.secondRoute
+        route2.viewModel = model.secondRoute
         route2.delegate = self
-        route3.viewModel = state.thirdRoute
+        route3.viewModel = model.thirdRoute
         route3.delegate = self
 
         if route1.viewModel != nil {
@@ -75,13 +97,14 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
             route1.enabled = true
             selectedRoute = route1.viewModel
         }
-        toggleAddRouteButton(enabled: route3.viewModel == nil)
 
-        if route1.viewModel == nil && route2.viewModel == nil && route3.viewModel == nil {
-            // No routes! Back we go.
-            navigationController?.popViewController(animated: true)
-        } else {
-            refreshRoutes()
+        // Configure route alerts
+        for route in [route1, route2, route3] {
+            if let route = route, let vm = route.viewModel {
+                let routeAlert = alerts[vm.mode()]?[vm.routeId]
+                route.addAlert(routeAlert)
+                route.alertsAreInteractive = route.enabled
+            }
         }
     }
 
