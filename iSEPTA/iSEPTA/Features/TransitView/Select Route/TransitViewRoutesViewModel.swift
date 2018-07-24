@@ -83,6 +83,8 @@ class TransitViewRoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate
             cell.setIcon(image: routeImage)
         }
 
+        // Configure alerts
+        cell.alertsAreInteractive = false // Alert icons are informative only
         let alert = alerts[route.mode()]?[route.routeId]
         cell.addAlert(alert)
     }
