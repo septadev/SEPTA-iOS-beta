@@ -8,8 +8,15 @@
 
 import Foundation
 import SeptaSchedule
+
+enum FavoriteType: String, Codable {
+    case nextToArrive
+    case transitView
+}
+
 // TODO: create a parallel favorite data array so that we aren't writing favorites to disk so much
 struct Favorite: Codable {
+    var favoriteType: FavoriteType
     var favoriteId: String
     var favoriteName: String
     var transitMode: TransitMode
@@ -18,6 +25,7 @@ struct Favorite: Codable {
     var selectedEnd: Stop
     var nextToArriveTrips: [NextToArriveTrip]
     var nextToArriveUpdateStatus: NextToArriveUpdateStatus
+    var transitViewRoutes: [TransitRoute]
     var refreshDataRequested: Bool
     var collapsed: Bool
     var sortOrder: Int
@@ -30,7 +38,8 @@ struct Favorite: Codable {
         return convertedToScheduleRequest()
     }
 
-    init(favoriteId: String, favoriteName: String, transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop, nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip](), nextToArriveUpdateStatus: NextToArriveUpdateStatus = .idle, refreshDataRequested: Bool = false, collapsed: Bool = false, sortOrder: Int = Favorite.defaultSortOrder) {
+    init(favoriteType: FavoriteType, favoriteId: String, favoriteName: String, transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop, nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip](), nextToArriveUpdateStatus: NextToArriveUpdateStatus = .idle, transitViewRoutes: [TransitRoute] = [], refreshDataRequested: Bool = false, collapsed: Bool = false, sortOrder: Int = Favorite.defaultSortOrder) {
+        self.favoriteType = favoriteType
         self.favoriteId = favoriteId
         self.favoriteName = favoriteName
         self.transitMode = transitMode
@@ -39,12 +48,14 @@ struct Favorite: Codable {
         self.selectedEnd = selectedEnd
         self.nextToArriveTrips = nextToArriveTrips
         self.nextToArriveUpdateStatus = nextToArriveUpdateStatus
+        self.transitViewRoutes = transitViewRoutes
         self.refreshDataRequested = refreshDataRequested
         self.collapsed = collapsed
         self.sortOrder = sortOrder
     }
 
     enum CodingKeys: String, CodingKey {
+        case favoriteType
         case favoriteId
         case favoriteName
         case transitMode
@@ -53,6 +64,7 @@ struct Favorite: Codable {
         case selectedEnd
         case collapsed
         case sortOrder
+        case transitViewRoutes
     }
 
     public init(from decoder: Decoder) throws {
@@ -90,6 +102,22 @@ struct Favorite: Codable {
             sortOrder = Favorite.defaultSortOrder
         }
 
+        do {
+            transitViewRoutes = try container.decode([TransitRoute]?.self, forKey: .transitViewRoutes) ?? []
+        } catch {
+            transitViewRoutes = []
+        }
+
+        var defaultFavoriteType: FavoriteType = .nextToArrive
+        if transitViewRoutes.count > 0 {
+            defaultFavoriteType = .transitView
+        }
+        do {
+            favoriteType = try container.decode(FavoriteType?.self, forKey: .favoriteType) ?? defaultFavoriteType
+        } catch {
+            favoriteType = defaultFavoriteType
+        }
+
         nextToArriveTrips = [NextToArriveTrip]()
         nextToArriveUpdateStatus = .idle
         refreshDataRequested = true
@@ -97,6 +125,7 @@ struct Favorite: Codable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(favoriteType, forKey: .favoriteType)
         try container.encode(favoriteId, forKey: .favoriteId)
         try container.encode(favoriteName, forKey: .favoriteName)
         try container.encode(transitMode, forKey: .transitMode)
@@ -105,6 +134,7 @@ struct Favorite: Codable {
         try container.encode(selectedEnd, forKey: .selectedEnd)
         try container.encode(collapsed, forKey: .collapsed)
         try container.encode(sortOrder, forKey: .sortOrder)
+        try container.encode(transitViewRoutes, forKey: .transitViewRoutes)
     }
 }
 
@@ -149,6 +179,12 @@ func == (lhs: Favorite, rhs: Favorite) -> Bool {
     guard areEqual else { return false }
 
     areEqual = lhs.sortOrder == rhs.sortOrder
+    guard areEqual else { return false }
+
+    areEqual = lhs.favoriteType == rhs.favoriteType
+    guard areEqual else { return false }
+
+    areEqual = lhs.transitViewRoutes == rhs.transitViewRoutes
     guard areEqual else { return false }
 
     return areEqual
