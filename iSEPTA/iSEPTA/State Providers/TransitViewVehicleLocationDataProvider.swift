@@ -58,11 +58,8 @@ class TransitViewVehicleLocationDataProvider: StoreSubscriber {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
         }
 
-        let urlString = urlWithRouteIds(routeIds: routeIds)
-        guard let url = URL(string: urlString) else { return }
-
-        let downloadTask = URLSession.shared.dataTask(with: url) { data, _, error in
-
+        let service = TransitViewService()
+        let downloadTask = service.transitViewDataTask(for: routeIds) { data, _, error in
             DispatchQueue.main.async {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
@@ -83,15 +80,6 @@ class TransitViewVehicleLocationDataProvider: StoreSubscriber {
             }
         }
         downloadTask.resume()
-    }
-
-    private func urlWithRouteIds(routeIds: [String]) -> String {
-        var urlString = "http://apitest.septa.org/api/TransitViewAll/index.php?routes="
-        for route in routeIds {
-            urlString.append("\(route),")
-        }
-        urlString.removeLast() // remove last comma
-        return urlString
     }
 
     private func convertToVehicleLocations(_ routeData: TransitViewRouteData, model: TransitViewModel) -> [TransitViewVehicleLocation] {

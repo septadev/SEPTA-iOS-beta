@@ -23,6 +23,7 @@
 		0E36308D21001DB300980EB6 /* TransitRouteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E36308C21001DB300980EB6 /* TransitRouteCardView.swift */; };
 		0E36308F21001DC500980EB6 /* TransitRouteCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E36308E21001DC500980EB6 /* TransitRouteCardView.xib */; };
 		0E3630B32102118800980EB6 /* TransitViewAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3630B22102118800980EB6 /* TransitViewAnnotationView.swift */; };
+		0E3630D62108A41100980EB6 /* TransitViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3630D52108A41100980EB6 /* TransitViewService.swift */; };
 		0E39082E20E1268900E94D53 /* InAppReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E39082D20E1268900E94D53 /* InAppReview.swift */; };
 		0E39084C20E2E7B100E94D53 /* StopSortOrderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E39084B20E2E7B100E94D53 /* StopSortOrderButton.swift */; };
 		0E4328E320D02C6400FBD805 /* DatabaseUpdateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4328E220D02C6400FBD805 /* DatabaseUpdateProvider.swift */; };
@@ -709,6 +710,7 @@
 		0E36308C21001DB300980EB6 /* TransitRouteCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitRouteCardView.swift; sourceTree = "<group>"; };
 		0E36308E21001DC500980EB6 /* TransitRouteCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransitRouteCardView.xib; sourceTree = "<group>"; };
 		0E3630B22102118800980EB6 /* TransitViewAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewAnnotationView.swift; sourceTree = "<group>"; };
+		0E3630D52108A41100980EB6 /* TransitViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewService.swift; sourceTree = "<group>"; };
 		0E39082D20E1268900E94D53 /* InAppReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppReview.swift; sourceTree = "<group>"; };
 		0E39084B20E2E7B100E94D53 /* StopSortOrderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSortOrderButton.swift; sourceTree = "<group>"; };
 		0E4328E220D02C6400FBD805 /* DatabaseUpdateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateProvider.swift; sourceTree = "<group>"; };
@@ -1368,6 +1370,14 @@
 				0E4328E720D060DF00FBD805 /* DatabaseDownloadProvider.swift */,
 			);
 			path = "Database Providers";
+			sourceTree = "<group>";
+		};
+		0E3630D42108A3F300980EB6 /* Network Services */ = {
+			isa = PBXGroup;
+			children = (
+				0E3630D52108A41100980EB6 /* TransitViewService.swift */,
+			);
+			path = "Network Services";
 			sourceTree = "<group>";
 		};
 		0E4328E420D04AB500FBD805 /* Database */ = {
@@ -2398,6 +2408,7 @@
 				582F4EB31F33B1120062A546 /* Main */,
 				582F4E7F1F33B1120062A546 /* Utlities */,
 				582F4E811F33B1120062A546 /* Common Views */,
+				0E3630D42108A3F300980EB6 /* Network Services */,
 			);
 			path = iSEPTA;
 			sourceTree = "<group>";
@@ -3503,6 +3514,7 @@
 				0E8E60E920F006F900AB08FE /* FilterableTransitRoute.swift in Sources */,
 				67F757B31F48729C00D3A4EE /* UIView+Util.swift in Sources */,
 				58126F6F1F631C8300A6E187 /* NextToArriveMapRouteViewModel.swift in Sources */,
+				0E3630D62108A41100980EB6 /* TransitViewService.swift in Sources */,
 				58AF5FEA20F4F1FF00620484 /* NextToArriveReverseTrip.swift in Sources */,
 				67C567271F59695900FF6203 /* Favorite.swift in Sources */,
 				582F4EC71F33B1120062A546 /* SchedulesRoutesViewModel.swift in Sources */,
