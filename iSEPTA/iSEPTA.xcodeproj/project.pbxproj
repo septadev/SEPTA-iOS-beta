@@ -54,6 +54,7 @@
 		5801280E1F6BF2DF006B6DB8 /* NoFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5801280D1F6BF2DF006B6DB8 /* NoFavoriteViewController.swift */; };
 		580128101F6BFC9F006B6DB8 /* NavBarShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5801280F1F6BFC9F006B6DB8 /* NavBarShadowView.swift */; };
 		580128121F6C055B006B6DB8 /* RedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580128111F6C055B006B6DB8 /* RedButton.swift */; };
+		5803C35F2106634900BFAE7A /* MinutesSinceMidnight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C35E2106634900BFAE7A /* MinutesSinceMidnight.swift */; };
 		5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */; };
 		580A355B1F6A0E84000FCA82 /* FavoritesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A355A1F6A0E84000FCA82 /* FavoritesNavigationController.swift */; };
 		580A355F1F6A0F9B000FCA82 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A355E1F6A0F9B000FCA82 /* FavoritesViewController.swift */; };
@@ -154,7 +155,7 @@
 		58490E4B1F560226007DBCA1 /* AlertActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E4A1F560226007DBCA1 /* AlertActions.swift */; };
 		584AC8731F437DDB0040C1B4 /* TripScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F4E9A1F33B1120062A546 /* TripScheduleViewController.swift */; };
 		584D54D32106103500EB773C /* PushNotificationPreferenceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584D54D22106103500EB773C /* PushNotificationPreferenceState.swift */; };
-		584D54D5210610DE00EB773C /* RangeBounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584D54D4210610DE00EB773C /* RangeBounds.swift */; };
+		584D54D5210610DE00EB773C /* NotificationTimeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584D54D4210610DE00EB773C /* NotificationTimeWindow.swift */; };
 		584D54D72106112000EB773C /* DaysOfWeekOptionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584D54D62106112000EB773C /* DaysOfWeekOptionSet.swift */; };
 		584D54D9210612AD00EB773C /* PushNotificationPreferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584D54D8210612AD00EB773C /* PushNotificationPreferenceTests.swift */; };
 		585303CD1F69C74F00145D87 /* FavoritesNextToArriveProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585303CC1F69C74F00145D87 /* FavoritesNextToArriveProvider.swift */; };
@@ -741,6 +742,7 @@
 		5801280D1F6BF2DF006B6DB8 /* NoFavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoFavoriteViewController.swift; sourceTree = "<group>"; };
 		5801280F1F6BFC9F006B6DB8 /* NavBarShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarShadowView.swift; sourceTree = "<group>"; };
 		580128111F6C055B006B6DB8 /* RedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedButton.swift; sourceTree = "<group>"; };
+		5803C35E2106634900BFAE7A /* MinutesSinceMidnight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinutesSinceMidnight.swift; sourceTree = "<group>"; };
 		580A355A1F6A0E84000FCA82 /* FavoritesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesNavigationController.swift; sourceTree = "<group>"; };
 		580A355E1F6A0F9B000FCA82 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		580A35601F6A12C0000FCA82 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
@@ -851,7 +853,7 @@
 		58490E481F56019B007DBCA1 /* AlertReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertReducer.swift; sourceTree = "<group>"; };
 		58490E4A1F560226007DBCA1 /* AlertActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertActions.swift; sourceTree = "<group>"; };
 		584D54D22106103500EB773C /* PushNotificationPreferenceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationPreferenceState.swift; sourceTree = "<group>"; };
-		584D54D4210610DE00EB773C /* RangeBounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeBounds.swift; sourceTree = "<group>"; };
+		584D54D4210610DE00EB773C /* NotificationTimeWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTimeWindow.swift; sourceTree = "<group>"; };
 		584D54D62106112000EB773C /* DaysOfWeekOptionSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysOfWeekOptionSet.swift; sourceTree = "<group>"; };
 		584D54D8210612AD00EB773C /* PushNotificationPreferenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationPreferenceTests.swift; sourceTree = "<group>"; };
 		585303CC1F69C74F00145D87 /* FavoritesNextToArriveProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesNextToArriveProvider.swift; sourceTree = "<group>"; };
@@ -1932,7 +1934,8 @@
 			isa = PBXGroup;
 			children = (
 				584D54D22106103500EB773C /* PushNotificationPreferenceState.swift */,
-				584D54D4210610DE00EB773C /* RangeBounds.swift */,
+				584D54D4210610DE00EB773C /* NotificationTimeWindow.swift */,
+				5803C35E2106634900BFAE7A /* MinutesSinceMidnight.swift */,
 				584D54D62106112000EB773C /* DaysOfWeekOptionSet.swift */,
 				584D54D8210612AD00EB773C /* PushNotificationPreferenceTests.swift */,
 			);
@@ -3555,6 +3558,7 @@
 				58E33F281F61651400C74B7C /* TransitType+TransitMode.swift in Sources */,
 				58E33F0E1F6098FE00C74B7C /* NextToArriveMapViewController.swift in Sources */,
 				0E2DCAE920F902230086F400 /* TransitViewVehiclePin.swift in Sources */,
+				5803C35F2106634900BFAE7A /* MinutesSinceMidnight.swift in Sources */,
 				58E33F181F61453000C74B7C /* NextToArriveTrip.swift in Sources */,
 				0E36308B20FFB20E00980EB6 /* NSMutableAttributedStringExtensions.swift in Sources */,
 				6789B78E1F8FF7E6008C6DCA /* TripDetailState_TripDetailsExistWatcher.swift in Sources */,
@@ -3694,7 +3698,7 @@
 				0E2A006820CFFAFA00E97BAF /* DatabaseUpdateActions.swift in Sources */,
 				6789B7851F8FEF8C008C6DCA /* TripDetailReducers.swift in Sources */,
 				6776F682201C0D05001FD5B2 /* AlertState_ModalAlertsDisplayedWatcher.swift in Sources */,
-				584D54D5210610DE00EB773C /* RangeBounds.swift in Sources */,
+				584D54D5210610DE00EB773C /* NotificationTimeWindow.swift in Sources */,
 				67365AC81F754A3200FC86CB /* HalfSheetAnimationIn.swift in Sources */,
 				678D26C81F5CC54900D140CC /* FavoritesActions.swift in Sources */,
 				582F4EC61F33B1120062A546 /* SelectRouteViewController.swift in Sources */,

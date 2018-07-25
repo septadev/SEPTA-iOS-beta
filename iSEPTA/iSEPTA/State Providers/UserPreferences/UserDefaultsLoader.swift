@@ -47,8 +47,9 @@ class UserDefaultsLoader {
         let startupTransitMode = retrieveStartupTransitMode() ?? defaultPreferenceState.startupTransitMode
         let startupNavigationController = retrieveStartupNavigationController() ?? defaultPreferenceState.startupNavigationController
         let databaseVersion = retrieveDatabaseVersion() ?? defaultPreferenceState.databaseVersion
+        let pushNotificationPreferenceState = retrievePushNotifications() ?? PushNotificationPreferenceState()
 
-        let retrievedPreferenceState = UserPreferenceState(defaultsLoaded: defaultsLoaded, startupTransitMode: startupTransitMode, startupNavigationController: startupNavigationController, databaseVersion: databaseVersion)
+        let retrievedPreferenceState = UserPreferenceState(defaultsLoaded: defaultsLoaded, startupTransitMode: startupTransitMode, startupNavigationController: startupNavigationController, databaseVersion: databaseVersion, pushNotificationPreferenceState: pushNotificationPreferenceState)
 
         DispatchQueue.main.async {
             completion(retrievedPreferenceState, nil)
@@ -71,6 +72,10 @@ class UserDefaultsLoader {
         return intValue
     }
 
+    fileprivate func retrievePushNotifications() -> PushNotificationPreferenceState? {
+        return decodable(forKey: .pushNotifiation)
+    }
+
     fileprivate func bool(forKey key: UserPreferencesKeys) -> Bool {
         return defaults.bool(forKey: key.rawValue)
     }
@@ -81,6 +86,12 @@ class UserDefaultsLoader {
 
     fileprivate func array(forKey key: UserPreferencesKeys) -> String? {
         return defaults.string(forKey: key.rawValue)
+    }
+
+    fileprivate func decodable<T>(forKey key: UserPreferencesKeys) -> T? where T: Decodable {
+        guard let data = defaults.data(forKey: key.rawValue),
+            let jsonData = try? JSONDecoder().decode(T.self, from: data) else { return nil }
+        return jsonData
     }
 
     fileprivate func int(forKey key: UserPreferencesKeys) -> Int? {

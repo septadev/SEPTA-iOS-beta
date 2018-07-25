@@ -3,35 +3,18 @@
 import Foundation
 import SeptaSchedule
 
-struct UserPreferenceState {
+struct UserPreferenceState: Equatable {
     var defaultsLoaded: Bool
     var startupTransitMode: TransitMode
     var startupNavigationController: NavigationController
     var databaseVersion: Int
+    var pushNotificationPreferenceState: PushNotificationPreferenceState
 
-    init(defaultsLoaded: Bool = false, startupTransitMode: TransitMode = .bus, startupNavigationController: NavigationController = .nextToArrive, databaseVersion: Int = 0) {
+    init(defaultsLoaded: Bool = false, startupTransitMode: TransitMode = .bus, startupNavigationController: NavigationController = .nextToArrive, databaseVersion: Int = 0, pushNotificationPreferenceState: PushNotificationPreferenceState = PushNotificationPreferenceState()) {
         self.defaultsLoaded = defaultsLoaded
         self.startupTransitMode = startupTransitMode
         self.startupNavigationController = startupNavigationController
         self.databaseVersion = databaseVersion
+        self.pushNotificationPreferenceState = pushNotificationPreferenceState
     }
-}
-
-extension UserPreferenceState: Equatable {}
-func == (lhs: UserPreferenceState, rhs: UserPreferenceState) -> Bool {
-    var areEqual = true
-
-    areEqual = lhs.defaultsLoaded == rhs.defaultsLoaded
-    guard areEqual else { return false }
-
-    areEqual = lhs.startupTransitMode == rhs.startupTransitMode
-    guard areEqual else { return false }
-
-    areEqual = lhs.startupNavigationController == rhs.startupNavigationController
-    guard areEqual else { return false }
-
-    areEqual = lhs.databaseVersion == rhs.databaseVersion
-    guard areEqual else { return false }
-
-    return areEqual
 }

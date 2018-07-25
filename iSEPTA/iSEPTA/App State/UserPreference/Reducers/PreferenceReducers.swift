@@ -26,6 +26,8 @@ struct UserPreferencesReducer {
             newPref = reducePreferencesDatabaseLoaded(action: action, state: state)
         case let action as NewStartupController:
             newPref = reduceNewStartupController(action: action, state: state)
+        case let action as UpdatePushNotificationPreferenceState:
+            newPref = reduceUpdatePushNotificationPreferenceState(action: action, state: state)
         default:
             break
         }
@@ -48,6 +50,12 @@ struct UserPreferencesReducer {
     static func reduceNewStartupController(action: NewStartupController, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
         userPreferenceState.startupNavigationController = action.navigationController
+        return userPreferenceState
+    }
+
+    static func reduceUpdatePushNotificationPreferenceState(action: UpdatePushNotificationPreferenceState, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.pushNotificationPreferenceState = action.pushNotificationPreferenceState
         return userPreferenceState
     }
 }
