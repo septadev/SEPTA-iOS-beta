@@ -20,7 +20,12 @@ class TransitRouteCardView: UIView {
     @IBOutlet var modeImage: UIImageView!
     @IBOutlet var routeIdLabel: UILabel!
     @IBOutlet var dividerLine: UIView!
-    @IBOutlet var alertStackView: UIStackView!
+
+    @IBOutlet var alertStackView: UIStackView! {
+        didSet {
+            alertStackView.isExclusiveTouch = true
+        }
+    }
 
     @IBOutlet var tappableDeleteView: UIView! {
         didSet {
@@ -49,6 +54,7 @@ class TransitRouteCardView: UIView {
     }
 
     var delegate: TransitRouteCardDelegate?
+    var alertsAreInteractive = true
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -60,12 +66,19 @@ class TransitRouteCardView: UIView {
         setup()
     }
 
+    func addAlert(_ alert: SeptaAlert?) {
+        alertStackView.addAlert(alert)
+    }
+
     private func setup() {
         loadFromNib()
         alpha = 0 // Hide initially
         cornerRadius = 5
         layer.borderWidth = 1
         addStandardDropShadow()
+
+        let alertsTappedGesture = UITapGestureRecognizer(target: self, action: #selector(alertsTapped(gr:)))
+        alertStackView.addGestureRecognizer(alertsTappedGesture)
     }
 
     private func loadFromNib() {
@@ -89,6 +102,14 @@ class TransitRouteCardView: UIView {
             store.dispatch(TransitViewRemoveRoute(route: route, description: "User wishes to remove a TransitView route from the map"))
         }))
         alert.show()
+    }
+
+    @objc func alertsTapped(gr: UITapGestureRecognizer) {
+        if alertsAreInteractive {
+            gr.cancelsTouchesInView = true
+            let switchTabsAction = SwitchTabs(activeNavigationController: .alerts, description: "User tapped on alert from TransitView")
+            store.dispatch(switchTabsAction)
+        }
     }
 }
 

@@ -68,17 +68,19 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XeV-DB-cPU">
                     <rect key="frame" x="9" y="55" width="123" height="16"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pGA-B5-U1l">
-                            <rect key="frame" x="0.0" y="0.0" width="123" height="16"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="pGA-B5-U1l">
+                            <rect key="frame" x="50.5" y="0.0" width="22" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="22" placeholder="YES" id="rrq-9b-hml"/>
+                            </constraints>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="pGA-B5-U1l" secondAttribute="bottom" id="2CC-uQ-RUc"/>
-                        <constraint firstAttribute="trailing" secondItem="pGA-B5-U1l" secondAttribute="trailing" id="5qr-Qv-dQD"/>
+                        <constraint firstItem="pGA-B5-U1l" firstAttribute="centerX" secondItem="XeV-DB-cPU" secondAttribute="centerX" id="a9O-46-mCA"/>
                         <constraint firstAttribute="height" constant="16" id="h5b-Jy-EzH"/>
                         <constraint firstItem="pGA-B5-U1l" firstAttribute="top" secondItem="XeV-DB-cPU" secondAttribute="top" id="io9-XA-gMH"/>
-                        <constraint firstItem="pGA-B5-U1l" firstAttribute="leading" secondItem="XeV-DB-cPU" secondAttribute="leading" id="ugl-G1-kUd"/>
                     </constraints>
                 </view>
             </subviews>

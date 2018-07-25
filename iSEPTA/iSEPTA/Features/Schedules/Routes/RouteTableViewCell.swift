@@ -14,6 +14,8 @@ class RouteTableViewCell: UITableViewCell, RouteCellDisplayable {
     @IBOutlet private var routeLongNameLabel: UILabel!
     @IBOutlet private var iconImageView: UIImageView!
 
+    var alertsAreInteractive: Bool = true
+
     var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
 
     @IBOutlet var stackView: UIStackView! {
@@ -52,10 +54,12 @@ class RouteTableViewCell: UITableViewCell, RouteCellDisplayable {
     }
 
     @objc func gestureReognizerTapped(gr: UITapGestureRecognizer) {
-        gr.cancelsTouchesInView = true
-        let dismissModalAction = DismissModal(description: "Dismissing the modal to switch tabs")
-        store.dispatch(dismissModalAction)
-        let switchTabsAction = SwitchTabs(activeNavigationController: .alerts, description: "User tapped on alert")
-        store.dispatch(switchTabsAction)
+        if alertsAreInteractive {
+            gr.cancelsTouchesInView = true
+            let dismissModalAction = DismissModal(description: "Dismissing the modal to switch tabs")
+            store.dispatch(dismissModalAction)
+            let switchTabsAction = SwitchTabs(activeNavigationController: .alerts, description: "User tapped on alert")
+            store.dispatch(switchTabsAction)
+        }
     }
 }

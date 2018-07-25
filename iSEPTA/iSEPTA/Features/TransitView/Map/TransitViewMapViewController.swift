@@ -16,7 +16,19 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
 
     var viewModel = TransitViewMapRouteViewModel()
     var routesHaveBeenAdded = false
-    var selectedRoute: TransitRoute?
+    var updateMap = true
+
+    let alerts = store.state.alertState.alertDict
+
+    var selectedRoute: TransitRoute? {
+        didSet {
+            for route in [route1, route2, route3] {
+                if let route = route, let vm = route.viewModel {
+                    route.alertsAreInteractive = vm == selectedRoute
+                }
+            }
+        }
+    }
 
     @IBOutlet var mapView: MKMapView! {
         didSet {
@@ -62,11 +74,22 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
     }
 
     func newState(state: StoreSubscriberStateType) {
-        route1.viewModel = state.firstRoute
+        configureRouteCards(model: state)
+        toggleAddRouteButton(enabled: route3.viewModel == nil)
+        if route1.viewModel == nil && route2.viewModel == nil && route3.viewModel == nil {
+            // No routes! Back we go.
+            navigationController?.popViewController(animated: true)
+        } else {
+            refreshRoutes()
+        }
+    }
+
+    private func configureRouteCards(model: TransitViewModel) {
+        route1.viewModel = model.firstRoute
         route1.delegate = self
-        route2.viewModel = state.secondRoute
+        route2.viewModel = model.secondRoute
         route2.delegate = self
-        route3.viewModel = state.thirdRoute
+        route3.viewModel = model.thirdRoute
         route3.delegate = self
 
         if route1.viewModel != nil {
@@ -74,13 +97,14 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
             route1.enabled = true
             selectedRoute = route1.viewModel
         }
-        toggleAddRouteButton(enabled: route3.viewModel == nil)
 
-        if route1.viewModel == nil && route2.viewModel == nil && route3.viewModel == nil {
-            // No routes! Back we go.
-            navigationController?.popViewController(animated: true)
-        } else {
-            refreshRoutes()
+        // Configure route alerts
+        for route in [route1, route2, route3] {
+            if let route = route, let vm = route.viewModel {
+                let routeAlert = alerts[vm.mode()]?[vm.routeId]
+                route.addAlert(routeAlert)
+                route.alertsAreInteractive = route.enabled
+            }
         }
     }
 
@@ -114,8 +138,13 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
             guard let _ = mapView else { return }
             clearExistingVehicleLocations()
             drawVehicleLocations()
-            mapView.showAnnotations(mapView.annotations, animated: false)
-            mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0), animated: true)
+            if updateMap {
+                mapView.showAnnotations(mapView.annotations, animated: false)
+                mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0), animated: true)
+            }
+            if !updateMap {
+                updateMap = true
+            }
             vehiclesToAdd.removeAll()
         }
     }
@@ -179,6 +208,17 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
         mapView.removeOverlays(mapView.overlays)
         store.dispatch(RefreshTransitViewVehicleLocationData(description: "Request refresh of TransitView vehicle location data"))
     }
+
+    private func activateRouteById(routeId: String) {
+        for route in [route1, route2, route3] {
+            if let route = route, let vm = route.viewModel {
+                route.enabled = vm.routeId == routeId
+                if vm.routeId == routeId {
+                    selectedRoute = route.viewModel
+                }
+            }
+        }
+    }
 }
 
 extension TransitViewMapViewController: MKMapViewDelegate {
@@ -211,6 +251,7 @@ extension TransitViewMapViewController: MKMapViewDelegate {
             activeRoute = true
         }
         annotationView.canShowCallout = activeRoute
+        annotationView.routeId = transitAnnotation.location.routeId
         annotationView.isActiveRoute = activeRoute
         annotationView.image = TransitViewVehiclePin.generate(mode: transitAnnotation.location.mode, direction: transitAnnotation.location.heading, active: activeRoute)
 
@@ -251,20 +292,37 @@ extension TransitViewMapViewController: TransitRouteCardDelegate {
     func cardTapped(routeId: String) {
         guard let selectedRoute = selectedRoute, selectedRoute.routeId != routeId else { return }
 
-        for route in [route1, route2, route3] {
-            if let route = route {
-                route.enabled = route.viewModel?.routeId == routeId
-                if route.viewModel?.routeId == routeId {
-                    self.selectedRoute = route.viewModel
-                }
-            }
-        }
+        activateRouteById(routeId: routeId)
         refreshRoutes()
     }
 }
 
 extension TransitViewMapViewController: TransitViewAnnotationViewDelegate {
     func activateRoute(routeId: String) {
-        cardTapped(routeId: routeId)
+        // Just switching active route, so don't update the whole map
+        updateMap = false
+
+        // Set new active route ID
+        activateRouteById(routeId: routeId)
+
+        // Clear old overlays
+        mapView.removeOverlays(mapView.overlays)
+        routesHaveBeenAdded = false
+
+        // Add overlays back
+        var routeIds: [String] = []
+        for route in [route1, route2, route3] {
+            if let route = route, let vm = route.viewModel {
+                routeIds.append(vm.routeId)
+            }
+        }
+        drawRoutes(routeIds: routeIds)
+
+        // Clear old annotations
+        let previouslyAddedAnnotations = vehicleAnnotationsAdded.map { $0.location }
+        clearExistingVehicleLocations()
+
+        // Add annotations back
+        vehiclesToAdd = previouslyAddedAnnotations
     }
 }
