@@ -92,7 +92,7 @@ extension FavoritesViewModel { // table loading
 
     func configureTransitViewCell(cell: FavoriteTransitViewCell, indexPath: IndexPath) {
         let viewModel = favoriteViewModels[indexPath.section]
-        cell.modeImage.image = viewModel.transitMode().favoritesIcon()
+        cell.favorite = viewModel.favorite
         cell.titleLabel.text = viewModel.favorite.favoriteName
     }
 

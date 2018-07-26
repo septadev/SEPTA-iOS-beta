@@ -44,3 +44,8 @@ struct TransitViewRemoveRoute: TransitViewAction {
     let route: TransitRoute
     let description: String
 }
+
+struct TransitViewFavoriteSelected: TransitViewAction {
+    let favorite: Favorite
+    let description: String
+}

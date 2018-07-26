@@ -50,6 +50,10 @@ struct TransitViewReducer {
             return reduceRemoveRouteAction(action: action, state: state)
         }
 
+        if let action = action as? TransitViewFavoriteSelected {
+            return reduceTransitViewFavoriteSelected(action: action, state: state)
+        }
+
         return state
     }
 
@@ -92,5 +96,23 @@ struct TransitViewReducer {
         case .third:
             return TransitViewModel(firstRoute: model.firstRoute, secondRoute: model.secondRoute, thirdRoute: nil, slotBeingChanged: nil)
         }
+    }
+
+    private static func reduceTransitViewFavoriteSelected(action: TransitViewFavoriteSelected, state: TransitViewState) -> TransitViewState {
+        let routes = action.favorite.transitViewRoutes
+        var r1: TransitRoute?
+        var r2: TransitRoute?
+        var r3: TransitRoute?
+        for (index, element) in routes.enumerated() {
+            if index == 0 {
+                r1 = element
+            } else if index == 1 {
+                r2 = element
+            } else {
+                r3 = element
+            }
+        }
+        let model = TransitViewModel(firstRoute: r1, secondRoute: r2, thirdRoute: r3, slotBeingChanged: state.transitViewModel.slotBeingChanged)
+        return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: model, locations: state.vehicleLocations, refreshRoutes: false, refreshVehicleLocations: true)
     }
 }
