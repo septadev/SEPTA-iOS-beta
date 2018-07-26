@@ -12,6 +12,9 @@ import UIKit
 class TransitViewOverviewViewController: UIViewController, IdentifiableController {
     var viewController: ViewController = .transitViewMap
 
+    @IBOutlet var favoriteBarButton: UIBarButtonItem!
+    var mapViewController: TransitViewMapViewController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,5 +23,17 @@ class TransitViewOverviewViewController: UIViewController, IdentifiableControlle
 
     @IBAction func refreshTransitViewData(_: Any) {
         store.dispatch(RefreshTransitViewVehicleLocationData(description: "Request refresh of TransitView vehicle location data"))
+    }
+
+    @IBAction func favoriteButtonTapped(_: Any) {
+        mapViewController?.favoriteButtonTapped()
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
+        if segue.identifier == "embedMapViewController" {
+            if let mapViewController = segue.destination as? TransitViewMapViewController {
+                self.mapViewController = mapViewController
+            }
+        }
     }
 }

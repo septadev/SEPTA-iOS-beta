@@ -17,6 +17,7 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
     var viewModel = TransitViewMapRouteViewModel()
     var routesHaveBeenAdded = false
     var updateMap = true
+    var transitRoutes: [TransitRoute] = []
 
     let alerts = store.state.alertState.alertDict
 
@@ -75,13 +76,45 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
 
     func newState(state: StoreSubscriberStateType) {
         configureRouteCards(model: state)
+
         toggleAddRouteButton(enabled: route3.viewModel == nil)
+
+        for route in [route1.viewModel, route2.viewModel, route3.viewModel] {
+            if let route = route {
+                transitRoutes.append(route)
+            }
+        }
+
         if route1.viewModel == nil && route2.viewModel == nil && route3.viewModel == nil {
             // No routes! Back we go.
             navigationController?.popViewController(animated: true)
         } else {
             refreshRoutes()
         }
+    }
+
+    func favoriteButtonTapped() {
+        var favoriteName = ""
+        var busCount = 0
+        var trolleyCount = 0
+        for route in transitRoutes {
+            if favoriteName != "" {
+                favoriteName.append(", ")
+            }
+            let modeName = route.mode() == .bus ? "Bus" : "Trolley"
+            favoriteName.append("\(route.routeId) \(modeName)")
+            if route.mode() == .bus {
+                busCount += 1
+            } else {
+                trolleyCount += 1
+            }
+        }
+
+        let mode: TransitMode = busCount >= trolleyCount ? .bus : .trolley
+
+        let newFavorite = Favorite(favoriteType: .transitView, favoriteId: UUID().uuidString, favoriteName: favoriteName, transitMode: mode, selectedRoute: Favorite.emptyRoute, selectedStart: Favorite.emptyStop, selectedEnd: Favorite.emptyStop, transitViewRoutes: transitRoutes)
+        let action = AddFavorite(favorite: newFavorite)
+        store.dispatch(action)
     }
 
     private func configureRouteCards(model: TransitViewModel) {
@@ -310,13 +343,7 @@ extension TransitViewMapViewController: TransitViewAnnotationViewDelegate {
         routesHaveBeenAdded = false
 
         // Add overlays back
-        var routeIds: [String] = []
-        for route in [route1, route2, route3] {
-            if let route = route, let vm = route.viewModel {
-                routeIds.append(vm.routeId)
-            }
-        }
-        drawRoutes(routeIds: routeIds)
+        drawRoutes(routeIds: transitRoutes.map { $0.routeId })
 
         // Clear old annotations
         let previouslyAddedAnnotations = vehicleAnnotationsAdded.map { $0.location }

@@ -136,6 +136,9 @@ struct Favorite: Codable {
         try container.encode(sortOrder, forKey: .sortOrder)
         try container.encode(transitViewRoutes, forKey: .transitViewRoutes)
     }
+
+    public static let emptyRoute = Route(routeId: "", routeShortName: "", routeLongName: "", routeDirectionCode: .inbound)
+    public static let emptyStop = Stop(stopId: 0, sequence: 0, stopName: "", stopLatitude: 0, stopLongitude: 0, wheelchairBoarding: false, weekdayService: false, saturdayService: false, sundayService: false)
 }
 
 extension Favorite: Hashable {

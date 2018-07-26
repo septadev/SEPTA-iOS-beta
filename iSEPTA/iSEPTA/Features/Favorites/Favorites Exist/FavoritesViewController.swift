@@ -120,11 +120,19 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let tripCell = tableView.dequeueReusableCell(withIdentifier: "favoriteTripCell") as? FavoriteTripCell else { return UITableViewCell() }
-        viewModel.configureTripCell(favoriteTripCell: tripCell, indexPath: indexPath)
-        tripCell.delegate = self
+        let favoriteType = viewModel.favoriteViewModels[indexPath.section].favorite.favoriteType
 
-        return tripCell
+        switch favoriteType {
+        case .nextToArrive:
+            guard let tripCell = tableView.dequeueReusableCell(withIdentifier: "favoriteTripCell") as? FavoriteTripCell else { return UITableViewCell() }
+            viewModel.configureNtaTripCell(favoriteTripCell: tripCell, indexPath: indexPath)
+            tripCell.delegate = self
+            return tripCell
+        case .transitView:
+            guard let tripCell = tableView.dequeueReusableCell(withIdentifier: "favoriteTransitViewCell") as? FavoriteTransitViewCell else { return UITableViewCell() }
+            viewModel.configureTransitViewCell(cell: tripCell, indexPath: indexPath)
+            return tripCell
+        }
     }
 
     func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {

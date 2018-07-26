@@ -16,6 +16,7 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
 
     enum CellIds: String {
         case favoriteTripCell
+        case favoriteTransitViewCell
     }
 
     let delegate: UpdateableFromViewModel
@@ -31,8 +32,10 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
     }
 
     func registerViews(tableView: UITableView) {
-        let nib = UINib(nibName: "FavoriteTripCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: CellIds.favoriteTripCell.rawValue)
+        let favTripNib = UINib(nibName: "FavoriteTripCell", bundle: nil)
+        tableView.register(favTripNib, forCellReuseIdentifier: CellIds.favoriteTripCell.rawValue)
+        let favTransitViewNib = UINib(nibName: "FavoriteTransitViewCell", bundle: nil)
+        tableView.register(favTransitViewNib, forCellReuseIdentifier: CellIds.favoriteTransitViewCell.rawValue)
     }
 
     var favoriteViewModels = [FavoriteNextToArriveViewModel]()
@@ -66,7 +69,7 @@ extension FavoritesViewModel { // table loading
         return favoriteViewModels.count
     }
 
-    func configureTripCell(favoriteTripCell: FavoriteTripCell, indexPath: IndexPath) {
+    func configureNtaTripCell(favoriteTripCell: FavoriteTripCell, indexPath: IndexPath) {
         let favoriteViewModel = favoriteViewModels[indexPath.section]
         favoriteTripCell.favoriteIcon.image = favoriteViewModel.transitMode().favoritesIcon()
         favoriteTripCell.favoriteIcon.accessibilityLabel = favoriteViewModel.favorite.transitMode.favoriteName()
@@ -85,6 +88,12 @@ extension FavoritesViewModel { // table loading
         if !favoriteViewModel.favorite.collapsed && !collapseForEditMode {
             configureTrips(favoriteViewModel: favoriteViewModel, stackView: stackView, indexPath: indexPath)
         }
+    }
+
+    func configureTransitViewCell(cell: FavoriteTransitViewCell, indexPath: IndexPath) {
+        let viewModel = favoriteViewModels[indexPath.section]
+        cell.modeImage.image = viewModel.transitMode().favoritesIcon()
+        cell.titleLabel.text = viewModel.favorite.favoriteName
     }
 
     func configureTrips(favoriteViewModel: FavoriteNextToArriveViewModel, stackView: UIStackView, indexPath _: IndexPath) {
