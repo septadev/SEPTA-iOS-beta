@@ -78,6 +78,13 @@ class ManagePushNotificationsViewModel: ToggleCellDelegate {
         return cellsViewModel[indexPath.section][indexPath.row]
     }
 
+    func didSelectRowAtIndexPath(indexPath: IndexPath) {
+        guard isIndexPathValid(indexPath),
+            let cellViewModel = cellsViewModel?[indexPath.section][indexPath.row] as? PushCellViewModel else { return }
+        let action = PushViewController(viewController: cellViewModel.viewControllerToPush, description: "Customizining Push Notification")
+        store.dispatch(action)
+    }
+
     private func isIndexPathValid(_ indexPath: IndexPath) -> Bool {
         guard let cellsViewModel = cellsViewModel, indexPath.section < cellsViewModel.count, indexPath.row < cellsViewModel[indexPath.section].count else { return false }
         return true
@@ -120,9 +127,9 @@ class ManagePushNotificationsViewModel: ToggleCellDelegate {
             [
                 PushCellViewModel(
                     headerText: Strings.customNotificationsHeader,
-                    viewControllerToPush: .moreViewController,
+                    viewControllerToPush: .customPushNotificationsController,
                     rowIdentifier: .viewCustomNotifications,
-                    action: PushViewController(viewController: .moreViewController, description: "Push More View Controller")),
+                    action: PushViewController(viewController: .customPushNotificationsController, description: "Push More View Controller")),
             ],
         ]
         return cellsViewModel

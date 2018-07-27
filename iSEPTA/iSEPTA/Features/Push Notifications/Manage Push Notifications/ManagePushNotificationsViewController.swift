@@ -98,4 +98,9 @@ class ManagePushNotificationsViewController: UITableViewController, Identifiable
         guard let viewModel = viewModel else { return false }
         return viewModel.shouldHighlightRowAtIndexPath(indexPath: indexPath)
     }
+
+    override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let viewModel = viewModel else { return }
+        viewModel.didSelectRowAtIndexPath(indexPath: indexPath)
+    }
 }

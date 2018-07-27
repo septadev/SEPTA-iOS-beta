@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XibView" customModule="Septa" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomPushNotificationsTimeframeView" customModule="Septa" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timeframe 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQc-M7-bJd" userLabel="TimeframeLabel">
+                    <rect key="frame" x="144.5" y="15" width="86" height="17"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgf-Lf-114" userLabel="StartNameLabel">
+                    <rect key="frame" x="63.5" y="42" width="36" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61s-KI-MOi" userLabel="StartValueLabel">
+                    <rect key="frame" x="111.5" y="42" width="38" height="17"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                    <color key="textColor" red="0.10588235294117647" green="0.30588235294117649" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghQ-Wh-D9S" userLabel="CenteringView">
+                    <rect key="frame" x="149.5" y="35" width="76" height="25"/>
+                    <color key="backgroundColor" red="1" green="0.96728127850000001" blue="0.35519992830000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="76" id="HWm-Xa-FBA"/>
+                        <constraint firstAttribute="height" constant="25" id="xPu-b6-Np4"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTW-76-Mec" userLabel="UntilNameLabel">
+                    <rect key="frame" x="225.5" y="42" width="36" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYO-ee-O2B" userLabel="UntilValueLabel">
+                    <rect key="frame" x="273.5" y="42" width="38" height="17"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                    <color key="textColor" red="0.10588235294117647" green="0.30588235294117649" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ghQ-Wh-D9S" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="0h4-XM-x89" userLabel="CenteringViewCenterX"/>
+                <constraint firstItem="61s-KI-MOi" firstAttribute="leading" secondItem="Sgf-Lf-114" secondAttribute="trailing" constant="12" id="5sx-g7-O7W" userLabel="StartNameRight"/>
+                <constraint firstItem="aTW-76-Mec" firstAttribute="baseline" secondItem="Sgf-Lf-114" secondAttribute="baseline" id="AJZ-rX-Bad" userLabel="UntilNameBaseLine"/>
+                <constraint firstItem="Sgf-Lf-114" firstAttribute="baseline" secondItem="wYO-ee-O2B" secondAttribute="baseline" id="ByD-ez-9UW" userLabel="UntilValueBaseLine"/>
+                <constraint firstItem="ghQ-Wh-D9S" firstAttribute="leading" secondItem="61s-KI-MOi" secondAttribute="trailing" id="HLj-Gk-XCO" userLabel="StartValueRight"/>
+                <constraint firstItem="wYO-ee-O2B" firstAttribute="leading" secondItem="aTW-76-Mec" secondAttribute="trailing" constant="12" id="M9G-Ei-thr" userLabel="UntilValueLeft"/>
+                <constraint firstItem="EQc-M7-bJd" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="15" id="gpI-Dt-PwY" userLabel="TimeframeLabelTop"/>
+                <constraint firstItem="aTW-76-Mec" firstAttribute="leading" secondItem="ghQ-Wh-D9S" secondAttribute="trailing" id="hdI-Ff-k9X" userLabel="UntilNameLeft"/>
+                <constraint firstItem="Sgf-Lf-114" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="42" id="iwc-pe-aho" userLabel="StartNameTop"/>
+                <constraint firstItem="EQc-M7-bJd" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="o0B-Ko-cys" userLabel="TimeframeLabelCenterX"/>
+                <constraint firstItem="ghQ-Wh-D9S" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" constant="10" id="o1X-2k-ebC" userLabel="CenteringViewCenterY"/>
+                <constraint firstItem="Sgf-Lf-114" firstAttribute="baseline" secondItem="61s-KI-MOi" secondAttribute="baseline" id="vJC-sf-zUk" userLabel="StartValueBaseLine"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="startValueLabel" destination="61s-KI-MOi" id="uCg-T3-Che"/>
+                <outlet property="timeframeLabel" destination="EQc-M7-bJd" id="OfZ-P3-Pxj"/>
+                <outlet property="untilValueLabel" destination="wYO-ee-O2B" id="Jnm-MD-onT"/>
+            </connections>
+            <point key="canvasLocation" x="-95" y="-134"/>
+        </view>
+    </objects>
+</document>
