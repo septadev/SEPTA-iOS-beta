@@ -17,9 +17,19 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
     var viewModel = TransitViewMapRouteViewModel()
     var routesHaveBeenAdded = false
     var updateMap = true
-    var transitRoutes: [TransitRoute] = []
+    var transitRoutes: [TransitRoute] = [] {
+        didSet {
+            if transitRoutes.count > 0 {
+                toggleFavoriteButton()
+            }
+        }
+    }
+
+    var currentFavorite: Favorite?
 
     let alerts = store.state.alertState.alertDict
+
+    var delegate: TransitViewMapDelegate?
 
     var selectedRoute: TransitRoute? {
         didSet {
@@ -79,6 +89,7 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
 
         toggleAddRouteButton(enabled: route3.viewModel == nil)
 
+        transitRoutes = []
         for route in [route1.viewModel, route2.viewModel, route3.viewModel] {
             if let route = route {
                 transitRoutes.append(route)
@@ -94,27 +105,28 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
     }
 
     func favoriteButtonTapped() {
+        if let currentFavorite = currentFavorite {
+            let action = EditFavorite(favorite: currentFavorite)
+            store.dispatch(action)
+        } else {
+            let newFavorite = createNewFavorite()
+            currentFavorite = newFavorite
+            let action = AddFavorite(favorite: newFavorite)
+            store.dispatch(action)
+        }
+    }
+
+    private func createNewFavorite() -> Favorite {
         var favoriteName = ""
-        var busCount = 0
-        var trolleyCount = 0
         for route in transitRoutes {
             if favoriteName != "" {
                 favoriteName.append(", ")
             }
             let modeName = route.mode() == .bus ? "Bus" : "Trolley"
             favoriteName.append("\(route.routeId) \(modeName)")
-            if route.mode() == .bus {
-                busCount += 1
-            } else {
-                trolleyCount += 1
-            }
         }
 
-        let mode: TransitMode = busCount >= trolleyCount ? .bus : .trolley
-
-        let newFavorite = Favorite(favoriteType: .transitView, favoriteId: UUID().uuidString, favoriteName: favoriteName, transitMode: mode, selectedRoute: Favorite.emptyRoute, selectedStart: Favorite.emptyStop, selectedEnd: Favorite.emptyStop, transitViewRoutes: transitRoutes)
-        let action = AddFavorite(favorite: newFavorite)
-        store.dispatch(action)
+        return Favorite(favoriteType: .transitView, favoriteId: UUID().uuidString, favoriteName: favoriteName, transitMode: .bus, selectedRoute: Favorite.emptyRoute, selectedStart: Favorite.emptyStop, selectedEnd: Favorite.emptyStop, transitViewRoutes: transitRoutes)
     }
 
     private func configureRouteCards(model: TransitViewModel) {
@@ -139,6 +151,33 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
                 route.alertsAreInteractive = route.enabled
             }
         }
+    }
+
+    private func toggleFavoriteButton() {
+        var thisIsAFavorite = false
+        let transitViewFavorites = store.state.favoritesState.favorites.filter { $0.favoriteType == .transitView }
+
+        for fav in transitViewFavorites {
+            thisIsAFavorite = amITheSameAsThisFavorite(favorite: fav)
+            if thisIsAFavorite {
+                currentFavorite = fav
+                break
+            }
+        }
+
+        delegate?.selectionIsAFavorite(isAFavorite: thisIsAFavorite)
+    }
+
+    private func amITheSameAsThisFavorite(favorite: Favorite) -> Bool {
+        if transitRoutes.count != favorite.transitViewRoutes.count {
+            return false
+        }
+        for route in favorite.transitViewRoutes {
+            if !transitRoutes.contains(route) {
+                return false
+            }
+        }
+        return true
     }
 
     @objc func addRouteButtonTapped(_: UITapGestureRecognizer) {
@@ -352,4 +391,8 @@ extension TransitViewMapViewController: TransitViewAnnotationViewDelegate {
         // Add annotations back
         vehiclesToAdd = previouslyAddedAnnotations
     }
+}
+
+protocol TransitViewMapDelegate {
+    func selectionIsAFavorite(isAFavorite: Bool)
 }

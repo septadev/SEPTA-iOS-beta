@@ -13,6 +13,9 @@ class TransitViewOverviewViewController: UIViewController, IdentifiableControlle
     var viewController: ViewController = .transitViewMap
 
     @IBOutlet var favoriteBarButton: UIBarButtonItem!
+    @IBOutlet var editFavoriteBarButton: UIBarButtonItem!
+    @IBOutlet var refreshBarButton: UIBarButtonItem!
+
     var mapViewController: TransitViewMapViewController?
 
     override func viewDidLoad() {
@@ -33,7 +36,19 @@ class TransitViewOverviewViewController: UIViewController, IdentifiableControlle
         if segue.identifier == "embedMapViewController" {
             if let mapViewController = segue.destination as? TransitViewMapViewController {
                 self.mapViewController = mapViewController
+                mapViewController.delegate = self
             }
+        }
+    }
+}
+
+extension TransitViewOverviewViewController: TransitViewMapDelegate {
+    func selectionIsAFavorite(isAFavorite: Bool) {
+        navigationItem.rightBarButtonItems?.removeAll()
+        if isAFavorite {
+            navigationItem.rightBarButtonItems = [editFavoriteBarButton, refreshBarButton]
+        } else {
+            navigationItem.rightBarButtonItems = [favoriteBarButton, refreshBarButton]
         }
     }
 }

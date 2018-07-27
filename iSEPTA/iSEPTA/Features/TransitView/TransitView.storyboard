@@ -363,6 +363,11 @@
                                     <action selector="favoriteButtonTapped:" destination="UGl-dH-gKu" id="uuK-2S-EHP"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem title="Edit" id="eYS-d1-qr2">
+                                <connections>
+                                    <action selector="favoriteButtonTapped:" destination="UGl-dH-gKu" id="zTk-fM-l9b"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem image="refreshIcon" id="Vhi-2y-NQZ" userLabel="Refresh Button Item">
                                 <connections>
                                     <action selector="refreshTransitViewData:" destination="UGl-dH-gKu" id="ng7-9x-Ftb"/>
@@ -372,7 +377,9 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
+                        <outlet property="editFavoriteBarButton" destination="eYS-d1-qr2" id="quu-9O-aYd"/>
                         <outlet property="favoriteBarButton" destination="hml-a6-Qjc" id="ZVm-nX-KDu"/>
+                        <outlet property="refreshBarButton" destination="Vhi-2y-NQZ" id="PRC-NI-5C1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z8z-0b-Krx" userLabel="First Responder" sceneMemberID="firstResponder"/>
