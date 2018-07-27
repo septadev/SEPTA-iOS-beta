@@ -23,6 +23,7 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
     let tableView: UITableView!
     let favoriteDelegate = FavoritesViewModelDelegate()
     var collapseForEditMode = false
+    let alerts = store.state.alertState.alertDict
 
     init(delegate: UpdateableFromViewModel = FavoritesViewModelDelegate(), tableView: UITableView) {
         self.delegate = delegate
@@ -94,6 +95,20 @@ extension FavoritesViewModel { // table loading
         let viewModel = favoriteViewModels[indexPath.section]
         cell.favorite = viewModel.favorite
         cell.titleLabel.text = viewModel.favorite.favoriteName
+
+        var advisory = false
+        var alert = false
+        var detour = false
+        var weather = false
+        for transitRoute in viewModel.favorite.transitViewRoutes {
+            let routeAlerts = alerts[transitRoute.mode()]?[transitRoute.routeId]
+            advisory = routeAlerts?.advisory ?? false
+            alert = routeAlerts?.alert ?? false
+            detour = routeAlerts?.detour ?? false
+            weather = routeAlerts?.weather ?? false
+        }
+        let transitViewAlert = SeptaAlert(advisory: advisory, alert: alert, detour: detour, weather: weather)
+        cell.addAlert(transitViewAlert)
     }
 
     func configureTrips(favoriteViewModel: FavoriteNextToArriveViewModel, stackView: UIStackView, indexPath _: IndexPath) {

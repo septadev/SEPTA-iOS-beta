@@ -13,6 +13,11 @@ class FavoriteTransitViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var shadowView: RoundedSurroundShadowedCellView!
     @IBOutlet var content: UIView!
+    @IBOutlet var alertsStackView: UIStackView! {
+        didSet {
+            alertsStackView.isExclusiveTouch = true
+        }
+    }
 
     var favorite: Favorite?
 
@@ -36,6 +41,10 @@ class FavoriteTransitViewCell: UITableViewCell {
         for view in views {
             view.backgroundColor = UIColor.clear
         }
+    }
+
+    func addAlert(_ alert: SeptaAlert?) {
+        alertsStackView.addAlert(alert)
     }
 
     @objc func goToTransitView(_: Any) {
