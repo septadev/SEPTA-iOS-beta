@@ -361,6 +361,7 @@
 		674FDBBF1F56E87F00CA67D2 /* SeptaRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; };
 		674FDBC01F56E87F00CA67D2 /* SeptaRest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		674FDBC51F57390D00CA67D2 /* Route+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674FDBC41F57390D00CA67D2 /* Route+Color.swift */; };
+		675C9DBD210B2CAB003B2AC7 /* ManagePushNotificationsFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 675C9DBC210B2CAB003B2AC7 /* ManagePushNotificationsFooterView.xib */; };
 		676354FD1F5E255A00CA7EAB /* FilterableRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676354FC1F5E255A00CA7EAB /* FilterableRoute.swift */; };
 		676354FF1F5E2C2C00CA7EAB /* FilterableStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676354FE1F5E2C2C00CA7EAB /* FilterableStop.swift */; };
 		676355011F5E326800CA7EAB /* AppState+TargetForScheduleActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676355001F5E326800CA7EAB /* AppState+TargetForScheduleActions.swift */; };
@@ -1078,6 +1079,7 @@
 		6749A46D1F53997D00AF6119 /* StopToSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopToSelect.swift; sourceTree = "<group>"; };
 		6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAddressRelativeStopViewModel.swift; sourceTree = "<group>"; };
 		674FDBC41F57390D00CA67D2 /* Route+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Color.swift"; sourceTree = "<group>"; };
+		675C9DBC210B2CAB003B2AC7 /* ManagePushNotificationsFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManagePushNotificationsFooterView.xib; sourceTree = "<group>"; };
 		676354FC1F5E255A00CA7EAB /* FilterableRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterableRoute.swift; sourceTree = "<group>"; };
 		676354FE1F5E2C2C00CA7EAB /* FilterableStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterableStop.swift; sourceTree = "<group>"; };
 		676355001F5E326800CA7EAB /* AppState+TargetForScheduleActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState+TargetForScheduleActions.swift"; sourceTree = "<group>"; };
@@ -1944,6 +1946,7 @@
 				584D54D8210612AD00EB773C /* PushNotificationPreferenceTests.swift */,
 				5803C362210A4FD400BFAE7A /* PushNotifications.storyboard */,
 				5803C36C210A66CA00BFAE7A /* ManagePushNotificationsHeaderView.xib */,
+				675C9DBC210B2CAB003B2AC7 /* ManagePushNotificationsFooterView.xib */,
 				5803C36A210A65AC00BFAE7A /* ManagePushNotificationsHeaderView.swift */,
 				5803C366210A4FF800BFAE7A /* ManagePushNotificationsViewController.swift */,
 				5803C36E210A6B2F00BFAE7A /* ManagePushNotificationsToggleCell.swift */,
@@ -3198,6 +3201,7 @@
 				677E04D120727C9D00B16C09 /* 60.kml in Resources */,
 				677E04CD20727C9D00B16C09 /* MED.kml in Resources */,
 				677E052620727C9D00B16C09 /* 19.kml in Resources */,
+				675C9DBD210B2CAB003B2AC7 /* ManagePushNotificationsFooterView.xib in Resources */,
 				677E052A20727C9D00B16C09 /* 45.kml in Resources */,
 				589A919F1F907052009B49E0 /* TripDetailItemView.xib in Resources */,
 				677E04E820727C9D00B16C09 /* 53.kml in Resources */,

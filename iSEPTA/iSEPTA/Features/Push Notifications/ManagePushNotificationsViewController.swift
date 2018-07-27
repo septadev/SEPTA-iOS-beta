@@ -20,13 +20,23 @@ class ManagePushNotificationsViewController: UITableViewController, Identifiable
     struct Keys {
         static let tableHeaderViewNib = "ManagePushNotificationsHeaderView"
         static let tableHeaderViewId = "TableSectionHeader"
+        static let footerView = "ManagePushNotificationsFooterView"
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = SeptaColor.navBarBlue
+        navigationController?.navigationBar.configureBackButton()
         viewModel = ManagePushNotificationsViewModel()
         let nib = UINib(nibName: Keys.tableHeaderViewNib, bundle: nil)
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: Keys.tableHeaderViewId)
+        loadFooterView()
+    }
+
+    func loadFooterView() {
+        guard let footerView = Bundle.main.loadNibNamed(Keys.footerView, owner: self, options: nil)?.first as? UIView else { return }
+
+        tableView.tableFooterView = footerView
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +47,11 @@ class ManagePushNotificationsViewController: UITableViewController, Identifiable
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         store.unsubscribe(self)
+    }
+
+    override func didMove(toParentViewController parent: UIViewController?) {
+        super.didMove(toParentViewController: parent)
+        backButtonPopped(toParentViewController: parent)
     }
 
     func subscribe() {

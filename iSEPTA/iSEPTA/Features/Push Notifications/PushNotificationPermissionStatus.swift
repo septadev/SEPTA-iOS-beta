@@ -13,5 +13,3 @@ struct PushNotificationPermissionStatus: Codable, Equatable {
     var authorizationStateInSettings = PushNotificationAuthorizationState.notDetermined
     var authorizationStateInApp = PushNotificationAuthorizationState.notDetermined
 }
-
-
