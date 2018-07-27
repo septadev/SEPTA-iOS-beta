@@ -12,17 +12,25 @@ struct TransitViewState {
     let availableRoutes: [TransitRoute]
     let transitViewModel: TransitViewModel
     let vehicleLocations: [TransitViewVehicleLocation]
+    let routeSlotBeingChanged: TransitViewRouteSlot?
 
     let refreshTransitViewRoutes: Bool
     let refreshVehicleLocationData: Bool
 
-    init(availableRoutes: [TransitRoute] = [], transitViewModel: TransitViewModel = TransitViewModel(), locations: [TransitViewVehicleLocation] = [], refreshRoutes: Bool = false, refreshVehicleLocations: Bool = false) {
+    init(availableRoutes: [TransitRoute] = [], transitViewModel: TransitViewModel = TransitViewModel(), locations: [TransitViewVehicleLocation] = [], routeSlotBeingChanged: TransitViewRouteSlot = .first, refreshRoutes: Bool = false, refreshVehicleLocations: Bool = false) {
         self.availableRoutes = availableRoutes
         self.transitViewModel = transitViewModel
         vehicleLocations = locations
+        self.routeSlotBeingChanged = routeSlotBeingChanged
         refreshTransitViewRoutes = refreshRoutes
         refreshVehicleLocationData = refreshVehicleLocations
     }
+}
+
+enum TransitViewRouteSlot: Int {
+    case first = 1
+    case second = 2
+    case third = 3
 }
 
 extension TransitViewState: Equatable {}
