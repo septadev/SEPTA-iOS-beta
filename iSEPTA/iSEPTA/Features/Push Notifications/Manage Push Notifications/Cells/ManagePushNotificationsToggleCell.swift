@@ -10,14 +10,20 @@ import Foundation
 import UIKit
 
 class ManagePushNotificationsToggleCell: UITableViewCell, ManagePushNotificationsCell {
+    var rowIdentifier: ManagePushNotificationsViewModel.RowIdentifier = .notDetermined
+
     @IBOutlet var titleLabel: UILabel!
 
     @IBOutlet var descriptionLabel: UILabel!
 
     @IBOutlet var toggleSwitch: UISwitch!
 
-    @IBAction func toggleValueChanged(_: Any) {
-    }
+    var action: ToggleSwitchAction?
 
-    var action: SeptaAction?
+    weak var delegate: ToggleCellDelegate?
+
+    @IBAction func toggleValueChanged(_: Any) {
+        guard let delegate = delegate else { return }
+        delegate.toggleChanged(rowIdentifier: rowIdentifier, isOn: toggleSwitch.isOn)
+    }
 }

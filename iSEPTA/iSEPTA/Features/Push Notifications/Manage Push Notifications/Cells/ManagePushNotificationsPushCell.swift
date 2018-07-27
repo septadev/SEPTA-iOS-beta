@@ -9,12 +9,8 @@
 import Foundation
 import UIKit
 
-protocol ManagePushNotificationsCell where Self: UITableViewCell {
-    var action: SeptaAction? { get set }
-}
-
 class ManagePushNotificationsPushCell: UITableViewCell, ManagePushNotificationsCell {
     @IBOutlet var titleLabel: UILabel!
 
-    var action: SeptaAction?
+    var rowIdentifier: ManagePushNotificationsViewModel.RowIdentifier = .notDetermined
 }

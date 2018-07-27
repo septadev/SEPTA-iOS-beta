@@ -28,8 +28,16 @@ struct UserPreferencesReducer {
             newPref = reduceNewStartupController(action: action, state: state)
         case let action as UpdatePushNotificationPreferenceState:
             newPref = reduceUpdatePushNotificationPreferenceState(action: action, state: state)
+        case let action as UserWantsToSubscribeToPushNotifications:
+            newPref = reduceUserWantsToSubscribeToPushNotifications(action: action, state: state)
+        case let action as UserWantsToSubscribeToSpecialAnnouncements:
+            newPref = reduceUserWantsToSubscribeToSpecialAnnouncements(action: action, state: state)
+        case let action as UserWantsToSubscribeToOverideDoNotDisturb:
+            newPref = reduceUserWantsToSubscribeToOverideDoNotDisturb(action: action, state: state)
+        case let action as UpdateSystemAuthorizationStatusForPushNotifications:
+            newPref = reduceUpdateSystemAuthorizationStatusForPushNotifications(action: action, state: state)
         default:
-            break
+            fatalError("You passed in an action for which there is no reducer")
         }
 
         return newPref
@@ -56,6 +64,30 @@ struct UserPreferencesReducer {
     static func reduceUpdatePushNotificationPreferenceState(action: UpdatePushNotificationPreferenceState, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
         userPreferenceState.pushNotificationPreferenceState = action.pushNotificationPreferenceState
+        return userPreferenceState
+    }
+
+    static func reduceUserWantsToSubscribeToPushNotifications(action: UserWantsToSubscribeToPushNotifications, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.pushNotificationPreferenceState.userWantsToEnablePushNotifications = action.boolValue
+        return userPreferenceState
+    }
+
+    static func reduceUserWantsToSubscribeToSpecialAnnouncements(action: UserWantsToSubscribeToSpecialAnnouncements, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.pushNotificationPreferenceState.userWantsToReceiveSpecialAnnoucements = action.boolValue
+        return userPreferenceState
+    }
+
+    static func reduceUserWantsToSubscribeToOverideDoNotDisturb(action: UserWantsToSubscribeToOverideDoNotDisturb, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.pushNotificationPreferenceState.userWantToReceiveNotificationsEvenWhenDoNotDisturbIsOn = action.boolValue
+        return userPreferenceState
+    }
+
+    static func reduceUpdateSystemAuthorizationStatusForPushNotifications(action: UpdateSystemAuthorizationStatusForPushNotifications, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.pushNotificationPreferenceState.systemAuthorizationStatusForNotifications = action.authorizationStatus
         return userPreferenceState
     }
 }

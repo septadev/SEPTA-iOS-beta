@@ -17,6 +17,8 @@ class ManagePushNotificationsViewController: UITableViewController, Identifiable
 
     var viewModel: ManagePushNotificationsViewModel?
 
+    let systemStatusResolver = PushNotificationSystemStatusResolver()
+
     struct Keys {
         static let tableHeaderViewNib = "ManagePushNotificationsHeaderView"
         static let tableHeaderViewId = "TableSectionHeader"
@@ -88,6 +90,12 @@ class ManagePushNotificationsViewController: UITableViewController, Identifiable
             let cellViewModel = viewModel.cellViewModelForRowAtIndexPath(indexPath: indexPath),
             let cell = tableView.dequeueReusableCell(withIdentifier: cellViewModel.cellIdentifier) as? ManagePushNotificationsCell else { return UITableViewCell() }
         cellViewModel.configureCell(cell: cell)
+
         return cell as! UITableViewCell
+    }
+
+    override func tableView(_: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        guard let viewModel = viewModel else { return false }
+        return viewModel.shouldHighlightRowAtIndexPath(indexPath: indexPath)
     }
 }

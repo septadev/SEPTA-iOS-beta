@@ -25,7 +25,7 @@ struct PushNotificationPreferenceState: Codable, Equatable {
     var userWantsToEnablePushNotifications: Bool = false
 
     /// Whether or not the OS thinks the user has authorized notifications
-    var systemAuthorizationStatusForNotifications: Bool = false
+    var systemAuthorizationStatusForNotifications: PushNotificationAuthorizationState = .notDetermined
 
     /// Whether or not the user wants to receive SEPTA special announcements
     var userWantsToReceiveSpecialAnnoucements: Bool = false
