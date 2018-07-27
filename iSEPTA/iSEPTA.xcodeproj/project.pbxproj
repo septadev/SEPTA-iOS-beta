@@ -54,6 +54,13 @@
 		580128101F6BFC9F006B6DB8 /* NavBarShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5801280F1F6BFC9F006B6DB8 /* NavBarShadowView.swift */; };
 		580128121F6C055B006B6DB8 /* RedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580128111F6C055B006B6DB8 /* RedButton.swift */; };
 		5803C35F2106634900BFAE7A /* MinutesSinceMidnight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C35E2106634900BFAE7A /* MinutesSinceMidnight.swift */; };
+		5803C363210A4FD400BFAE7A /* PushNotifications.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5803C362210A4FD400BFAE7A /* PushNotifications.storyboard */; };
+		5803C367210A4FF800BFAE7A /* ManagePushNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C366210A4FF800BFAE7A /* ManagePushNotificationsViewController.swift */; };
+		5803C369210A531100BFAE7A /* ManagePushNotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C368210A531100BFAE7A /* ManagePushNotificationsViewModel.swift */; };
+		5803C36B210A65AC00BFAE7A /* ManagePushNotificationsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C36A210A65AC00BFAE7A /* ManagePushNotificationsHeaderView.swift */; };
+		5803C36D210A66CA00BFAE7A /* ManagePushNotificationsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5803C36C210A66CA00BFAE7A /* ManagePushNotificationsHeaderView.xib */; };
+		5803C36F210A6B2F00BFAE7A /* ManagePushNotificationsToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C36E210A6B2F00BFAE7A /* ManagePushNotificationsToggleCell.swift */; };
+		5803C371210A6B5900BFAE7A /* ManagePushNotificationsPushCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C370210A6B5900BFAE7A /* ManagePushNotificationsPushCell.swift */; };
 		5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */; };
 		580A355B1F6A0E84000FCA82 /* FavoritesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A355A1F6A0E84000FCA82 /* FavoritesNavigationController.swift */; };
 		580A355F1F6A0F9B000FCA82 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A355E1F6A0F9B000FCA82 /* FavoritesViewController.swift */; };
@@ -741,6 +748,13 @@
 		5801280F1F6BFC9F006B6DB8 /* NavBarShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarShadowView.swift; sourceTree = "<group>"; };
 		580128111F6C055B006B6DB8 /* RedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedButton.swift; sourceTree = "<group>"; };
 		5803C35E2106634900BFAE7A /* MinutesSinceMidnight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinutesSinceMidnight.swift; sourceTree = "<group>"; };
+		5803C362210A4FD400BFAE7A /* PushNotifications.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PushNotifications.storyboard; sourceTree = "<group>"; };
+		5803C366210A4FF800BFAE7A /* ManagePushNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePushNotificationsViewController.swift; sourceTree = "<group>"; };
+		5803C368210A531100BFAE7A /* ManagePushNotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePushNotificationsViewModel.swift; sourceTree = "<group>"; };
+		5803C36A210A65AC00BFAE7A /* ManagePushNotificationsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePushNotificationsHeaderView.swift; sourceTree = "<group>"; };
+		5803C36C210A66CA00BFAE7A /* ManagePushNotificationsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManagePushNotificationsHeaderView.xib; sourceTree = "<group>"; };
+		5803C36E210A6B2F00BFAE7A /* ManagePushNotificationsToggleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePushNotificationsToggleCell.swift; sourceTree = "<group>"; };
+		5803C370210A6B5900BFAE7A /* ManagePushNotificationsPushCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePushNotificationsPushCell.swift; sourceTree = "<group>"; };
 		580A355A1F6A0E84000FCA82 /* FavoritesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesNavigationController.swift; sourceTree = "<group>"; };
 		580A355E1F6A0F9B000FCA82 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		580A35601F6A12C0000FCA82 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
@@ -1928,6 +1942,13 @@
 				5803C35E2106634900BFAE7A /* MinutesSinceMidnight.swift */,
 				584D54D62106112000EB773C /* DaysOfWeekOptionSet.swift */,
 				584D54D8210612AD00EB773C /* PushNotificationPreferenceTests.swift */,
+				5803C362210A4FD400BFAE7A /* PushNotifications.storyboard */,
+				5803C36C210A66CA00BFAE7A /* ManagePushNotificationsHeaderView.xib */,
+				5803C36A210A65AC00BFAE7A /* ManagePushNotificationsHeaderView.swift */,
+				5803C366210A4FF800BFAE7A /* ManagePushNotificationsViewController.swift */,
+				5803C36E210A6B2F00BFAE7A /* ManagePushNotificationsToggleCell.swift */,
+				5803C370210A6B5900BFAE7A /* ManagePushNotificationsPushCell.swift */,
+				5803C368210A531100BFAE7A /* ManagePushNotificationsViewModel.swift */,
 			);
 			path = "Push Notifications";
 			sourceTree = "<group>";
@@ -3069,6 +3090,7 @@
 				677E050E20727C9D00B16C09 /* 36B.kml in Resources */,
 				677E051820727C9D00B16C09 /* regionalrail.kml in Resources */,
 				678DAAB31F67475200EB6EE8 /* ConnectionCell.xib in Resources */,
+				5803C36D210A66CA00BFAE7A /* ManagePushNotificationsHeaderView.xib in Resources */,
 				677E054A20727C9D00B16C09 /* 25.kml in Resources */,
 				677E051520727C9D00B16C09 /* NHSL.kml in Resources */,
 				677E053420727C9D00B16C09 /* 78.kml in Resources */,
@@ -3157,6 +3179,7 @@
 				677E04ED20727C9D00B16C09 /* 15.kml in Resources */,
 				677E050920727C9D00B16C09 /* K.kml in Resources */,
 				677E04C520727C9D00B16C09 /* 59.kml in Resources */,
+				5803C363210A4FD400BFAE7A /* PushNotifications.storyboard in Resources */,
 				676B7D881F7CFA770052F016 /* FarePaymentModeView.xib in Resources */,
 				58FB264C1F6EC42F00F17048 /* WebAlertsRoutesMappedToDBRoutes.json in Resources */,
 				677E04F320727C9D00B16C09 /* 128.kml in Resources */,
@@ -3360,6 +3383,7 @@
 				6776F686201CAA82001FD5B2 /* TestGenericAlertDetailProvider.swift in Sources */,
 				585303CD1F69C74F00145D87 /* FavoritesNextToArriveProvider.swift in Sources */,
 				588D805F1F72B23D00EE1983 /* TargetForScheduleActions.swift in Sources */,
+				5803C367210A4FF800BFAE7A /* ManagePushNotificationsViewController.swift in Sources */,
 				0E2DCAD720F672BD0086F400 /* TransitViewVehicleAnnotation.swift in Sources */,
 				582F4ED31F33B1120062A546 /* SelectStopRow.swift in Sources */,
 				582F4EBC1F33B1120062A546 /* DateFormatters.swift in Sources */,
@@ -3490,8 +3514,10 @@
 				586852E01F8D4F470081C1CC /* LittleBlueChevronButton.swift in Sources */,
 				6776F67E201B4078001FD5B2 /* AlertState_HasGenericOrAppAlertsWatcher.swift in Sources */,
 				58DD1A901F600758002532DC /* NextToArriveViewModel+StopCell.swift in Sources */,
+				5803C371210A6B5900BFAE7A /* ManagePushNotificationsPushCell.swift in Sources */,
 				0E36308D21001DB300980EB6 /* TransitRouteCardView.swift in Sources */,
 				678DAAB51F67478900EB6EE8 /* ConnectionCell.swift in Sources */,
+				5803C36B210A65AC00BFAE7A /* ManagePushNotificationsHeaderView.swift in Sources */,
 				58126F6B1F631C3100A6E187 /* RouteOverlay.swift in Sources */,
 				67EA2B611F518CA600C0567A /* SearchModalHeaderDelegate.swift in Sources */,
 				6708C2791F73B7C200922D8E /* NavigationModalStateToNavigationEvent.swift in Sources */,
@@ -3613,6 +3639,7 @@
 				67F028A01F7EE3C20032F99C /* ContactPoint.swift in Sources */,
 				6789B7831F8FEF7C008C6DCA /* TripDetailActions.swift in Sources */,
 				584D54D72106112000EB773C /* DaysOfWeekOptionSet.swift in Sources */,
+				5803C369210A531100BFAE7A /* ManagePushNotificationsViewModel.swift in Sources */,
 				5801280E1F6BF2DF006B6DB8 /* NoFavoriteViewController.swift in Sources */,
 				58FBBFA41F65821000B7A4DA /* DatabaseReducer.swift in Sources */,
 				58290E411F372B51000CCF3C /* AppState.swift in Sources */,
@@ -3710,6 +3737,7 @@
 				676B7D841F7CFA270052F016 /* FaresViewController.swift in Sources */,
 				58EB8D291F5D90CD0028A487 /* NextToArriveState.swift in Sources */,
 				0E8E60EE20F00B9E00AB08FE /* RouteIcon.swift in Sources */,
+				5803C36F210A6B2F00BFAE7A /* ManagePushNotificationsToggleCell.swift in Sources */,
 				5893970C1F7E60D900F3D2F8 /* WebViewController.swift in Sources */,
 				589A919B1F905CA6009B49E0 /* TripDetailState_TripDetailWatcher.swift in Sources */,
 				6776F678201B32EA001FD5B2 /* AlertState_HasAppAlertsWatcher.swift in Sources */,

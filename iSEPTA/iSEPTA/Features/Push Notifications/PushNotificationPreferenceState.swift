@@ -21,10 +21,23 @@ struct PushNotificationPreferenceState: Codable, Equatable {
     /// The routes for which the user has subscribed to notifications
     var routeIds: [String] = [String]()
 
+    /// Does the user want to receive notifications
+    var userWantsToEnablePushNotifications: Bool = false
+
+    /// Whether or not the OS thinks the user has authorized notifications
+    var systemAuthorizationStatusForNotifications: Bool = false
+
+    /// Whether or not the user wants to receive SEPTA special announcements
+    var userWantsToReceiveSpecialAnnoucements: Bool = false
+
+    /// User Views SEPTA Notifications as priority that should override Do Not Disturb on the device
+    var userWantToReceiveNotificationsEvenWhenDoNotDisturbIsOn: Bool = false
+
     /// This method indicates whether a push notification should be fired
     /// based on the user preferences described in this class.  Note that
     /// those preferences do not include whether or not the user has authorized
     /// push notifications in the first place.  That needs to be checked separately
+    /// TODO we will probably want to move this method someplace else
     func userShouldReceiveNotification(atDate date: Date, forRouteId selectedRouteId: String) -> Bool {
         let timeWindowsMatches = notificationTimeWindows.map { $0.dateFitsInRange(date: date) }
         return
