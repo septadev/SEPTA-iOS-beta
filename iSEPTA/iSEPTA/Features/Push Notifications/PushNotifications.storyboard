@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -112,27 +113,36 @@ service, weather alerts and special events</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wEv-U8-Kwz" customClass="XibView" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="56" y="240" width="240" height="128"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ijX-Je-crA">
+                                <rect key="frame" x="75" y="66" width="240" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nmk-f6-dFS" userLabel="Label">
+                                        <rect key="frame" x="99" y="60" width="206" height="17"/>
+                                        <string key="text">Set notifications days and times
+for all transportation modes</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" name="Black87Color"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="CustomPushNotificationsTimeframeView"/>
-                                </userDefinedRuntimeAttributes>
+                                <constraints>
+                                    <constraint firstItem="Nmk-f6-dFS" firstAttribute="leading" secondItem="ijX-Je-crA" secondAttribute="leading" constant="79" id="FPv-YB-31J" userLabel="LabelLeft"/>
+                                    <constraint firstItem="Nmk-f6-dFS" firstAttribute="centerY" secondItem="ijX-Je-crA" secondAttribute="centerY" id="W00-w9-c6h" userLabel="LabelCenterY"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nmk-f6-dFS" secondAttribute="trailing" constant="80" id="pr6-O9-RON" userLabel="LabelRight"/>
+                                </constraints>
+                                <string key="userLabel">
+Instructions</string>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p06-eX-Ivj" customClass="XibView" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="67" y="74" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="CustomPushNotificationsTimeframeView"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EOq-CP-ejv">
+                                <rect key="frame" x="87" y="427" width="110" height="200"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="wEv-U8-Kwz" firstAttribute="centerY" secondItem="u7P-zg-R7a" secondAttribute="centerY" id="728-3f-g31"/>
-                            <constraint firstItem="u7P-zg-R7a" firstAttribute="trailing" secondItem="wEv-U8-Kwz" secondAttribute="trailing" id="SmL-Fz-3x8"/>
-                            <constraint firstItem="wEv-U8-Kwz" firstAttribute="leading" secondItem="u7P-zg-R7a" secondAttribute="leading" id="YF1-Vx-NxF"/>
+                            <constraint firstItem="EOq-CP-ejv" firstAttribute="top" secondItem="u7P-zg-R7a" secondAttribute="top" constant="407" id="OGv-wG-AK3"/>
+                            <constraint firstItem="EOq-CP-ejv" firstAttribute="leading" secondItem="u7P-zg-R7a" secondAttribute="leading" constant="87" id="RnQ-Jp-0Hz"/>
+                            <constraint firstItem="u7P-zg-R7a" firstAttribute="trailing" secondItem="EOq-CP-ejv" secondAttribute="trailing" constant="178" id="pme-YE-qBl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="u7P-zg-R7a"/>
                     </view>
@@ -142,4 +152,9 @@ service, weather alerts and special events</string>
             <point key="canvasLocation" x="-394" y="102"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="Black87Color">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.87000000476837158" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

@@ -16,7 +16,6 @@ class CustomPushNotificationsViewController: BaseNonModalViewController, StoreSu
     var viewController: ViewController = .customPushNotificationsController
     var viewModel: CustomPushNotificationsViewModel = CustomPushNotificationsViewModel()
 
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribe()
