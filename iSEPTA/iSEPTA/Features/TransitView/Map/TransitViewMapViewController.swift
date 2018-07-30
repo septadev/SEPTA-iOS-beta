@@ -113,6 +113,7 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
             currentFavorite = newFavorite
             let action = AddFavorite(favorite: newFavorite)
             store.dispatch(action)
+            delegate?.selectionIsAFavorite(isAFavorite: true)
         }
     }
 
