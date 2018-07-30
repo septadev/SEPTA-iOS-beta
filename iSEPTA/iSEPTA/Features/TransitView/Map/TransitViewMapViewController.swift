@@ -365,8 +365,7 @@ extension TransitViewMapViewController: TransitRouteCardDelegate {
     func cardTapped(routeId: String) {
         guard let selectedRoute = selectedRoute, selectedRoute.routeId != routeId else { return }
 
-        activateRouteById(routeId: routeId)
-        refreshRoutes()
+        activateRoute(routeId: routeId)
     }
 }
 
