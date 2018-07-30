@@ -50,7 +50,7 @@ class MoreViewModel {
 
     func configurePerksCell(cell: MoreTableViewCell) {
         cell.moreLabel.text = "Perks"
-        cell.moreImageView.image = UIImage(named: "faresCell")
+        cell.moreImageView.image = UIImage(named: "perksIcon")
     }
 
     func configureEventsCell(cell: MoreTableViewCell) {
