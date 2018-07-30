@@ -39,7 +39,7 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return 8
+        return 7
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,12 +66,9 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
             let pushAction = PushViewController(viewController: .perksViewController, description: "Will view pass perks")
             store.dispatch(pushAction)
         case 5:
-            let commentConnection = MakeSeptaConnection(septaConnection: .events)
-            store.dispatch(commentConnection)
-        case 6:
             let pushAction = PushViewController(viewController: .contactViewController, description: "Will View How to Contact SEPTA")
             store.dispatch(pushAction)
-        case 7:
+        case 6:
             let pushAction = PushViewController(viewController: .aboutViewController, description: "About the Septa App")
             store.dispatch(pushAction)
         default:

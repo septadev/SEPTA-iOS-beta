@@ -19,7 +19,6 @@ enum SEPTAConnection {
     case facebook
     case comment
     case chat
-    case events
     case trainView
     case transitView
 
@@ -37,7 +36,6 @@ enum SEPTAConnection {
         case .facebook: urlString = urls.facebook
         case .comment: urlString = urls.comment
         case .chat: urlString = urls.chat
-        case .events: urlString = urls.events
         case .trainView: urlString = urls.trainView
         case .transitView: urlString = urls.transitView
         }
@@ -57,7 +55,6 @@ enum SEPTAConnection {
         case .facebook: return "SEPTA Facebook"
         case .comment: return "Send us a comment"
         case .chat: return "Live Chat"
-        case .events: return "Upcoming Events"
         case .trainView: return "TrainView"
         case .transitView: return "TransitView"
         }
