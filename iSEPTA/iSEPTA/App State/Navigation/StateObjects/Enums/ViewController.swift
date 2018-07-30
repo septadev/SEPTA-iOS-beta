@@ -32,6 +32,7 @@ enum ViewController: String, Equatable {
     case moreViewController
     case webViewController
     case faresViewController
+    case perksViewController
     case contactViewController
     case aboutViewController
 
@@ -91,6 +92,8 @@ enum ViewController: String, Equatable {
             return "TransitView"
         case .transitViewMap:
             return "TransitView"
+        case .perksViewController:
+            return "perks"
         }
     }
 
