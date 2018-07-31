@@ -38,6 +38,8 @@ struct UserPreferencesReducer {
             newPref = reduceUpdateSystemAuthorizationStatusForPushNotifications(action: action, state: state)
         case let action as UpdateDaysOfTheWeekForPushNotifications:
             newPref = reduceUpdateDaysOfTheWeekForPushNotifications(action: action, state: state)
+        case let action as UpdatePushNotificationTimeframe:
+            newPref = reduceUpdatePushNotificationTimeframe(action: action, state: state)
         default:
             fatalError("You passed in an action for which there is no reducer")
         }
@@ -101,5 +103,9 @@ struct UserPreferencesReducer {
             userPreferenceState.pushNotificationPreferenceState.daysOfWeek.remove(action.dayOfWeek)
         }
         return userPreferenceState
+    }
+
+    static func reduceUpdatePushNotificationTimeframe(action: UpdatePushNotificationTimeframe, state: UserPreferenceState) -> UserPreferenceState {
+        return action.block(state)
     }
 }

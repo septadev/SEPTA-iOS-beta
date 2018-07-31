@@ -60,3 +60,8 @@ struct UpdateDaysOfTheWeekForPushNotifications: UserPreferencesAction {
     let isActivated: Bool
     let description = "Toggling a particular day of the week for notifications"
 }
+
+struct UpdatePushNotificationTimeframe: UserPreferencesAction {
+    let description = "Updating a timeframe"
+    let block: (UserPreferenceState) -> UserPreferenceState
+}

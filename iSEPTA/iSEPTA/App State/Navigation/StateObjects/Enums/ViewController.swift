@@ -38,6 +38,7 @@ enum ViewController: String, Equatable {
     // push
     case managePushNotficationsController
     case customPushNotificationsController
+    case timeOfDayPickerController
 
     // trip detials
     case tripDetailViewController
@@ -99,6 +100,8 @@ enum ViewController: String, Equatable {
             return "PushNotifications"
         case .customPushNotificationsController:
             return "PushNotifications"
+        case .timeOfDayPickerController:
+            return "PushNotifications"
         }
     }
 
@@ -126,7 +129,8 @@ enum ViewController: String, Equatable {
             return HalfSizePresentationController(presentedViewController: presentedViewController, presenting: presenting)
         case .moreNavigationController, .routesViewController, .selectStartController, .selectStopController, .selectStopNavigationController:
             return SevenEightsPresentationController(presentedViewController: presentedViewController, presenting: presenting)
-
+        case .timeOfDayPickerController:
+            return DatePickerPresentationController(presentedViewController: presentedViewController, presenting: presenting)
         default: return nil
         }
     }
@@ -137,6 +141,8 @@ enum ViewController: String, Equatable {
             return HalfSheetTransitioningDelegate(viewController: self)
         case .moreNavigationController, .routesViewController, .selectStartController, .selectStopController, .selectStopNavigationController, .transitViewSelectRouteViewController:
             return SevenEightsTransitioningDelegate(viewController: self)
+        case .timeOfDayPickerController:
+            return DatePickerTransitioningDelegate(viewController: self)
         default: return nil
         }
     }
@@ -145,6 +151,8 @@ enum ViewController: String, Equatable {
         switch self {
         case .editFavoriteViewController:
             return HalfSheetAnimationIn()
+        case .timeOfDayPickerController:
+            return DatePickerAnimationIn()
         default: return nil
         }
     }
@@ -153,6 +161,8 @@ enum ViewController: String, Equatable {
         switch self {
         case .editFavoriteViewController:
             return HalfSheetAnimationOut()
+        case .timeOfDayPickerController:
+            return DatePickerAnimationOut()
         default: return nil
         }
     }

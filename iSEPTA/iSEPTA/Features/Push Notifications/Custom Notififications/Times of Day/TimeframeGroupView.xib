@@ -12,8 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XibView" customModule="Septa" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomPushNotificationsSelectTimeframeView" customModule="Septa" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="408" height="325"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TimeframeGroupView" customModule="Septa" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="408" height="447"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3mN-9i-UkA">
@@ -23,21 +23,21 @@
                             <rect key="frame" x="0.0" y="0.0" width="408" height="76"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="CustomPushNotificationsTimeframeView"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TimeframeView"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="76" translatesAutoresizingMaskIntoConstraints="NO" id="Md4-lC-7Xh" userLabel="Time frame 2" customClass="XibView" customModule="Septa" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="76" width="408" height="76"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="CustomPushNotificationsTimeframeView"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TimeframeView"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="25" translatesAutoresizingMaskIntoConstraints="NO" id="2WQ-wD-Lfl" userLabel="AddTimeFrameButton" customClass="XibView" customModule="Septa" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="152" width="408" height="25"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="AddTimeFrameButton"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="AddTimeframeButton"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
@@ -58,7 +58,7 @@
                 <outlet property="timeFrame1Wrapper" destination="CDC-z1-VqO" id="wE7-kT-xUY"/>
                 <outlet property="timeFrame2Wrapper" destination="Md4-lC-7Xh" id="KAx-Wi-IuB"/>
             </connections>
-            <point key="canvasLocation" x="3" y="-288.5"/>
+            <point key="canvasLocation" x="3" y="-289"/>
         </view>
     </objects>
 </document>

@@ -12,15 +12,15 @@ import UIKit
 
 typealias TimeWindows = [NotificationTimeWindow]
 
-class CustomPushNotificationsSelectTimeframeView: UIView, StoreSubscriber {
+class TimeframeGroupView: UIView, StoreSubscriber {
     typealias StoreSubscriberStateType = TimeWindows
 
     @IBOutlet var stackView: UIStackView!
 
-    var timeFrame1: CustomPushNotificationsTimeframeView!
+    var timeFrame1: TimeframeView!
     @IBOutlet var timeFrame1Wrapper: XibView!
 
-    var timeFrame2: CustomPushNotificationsTimeframeView!
+    var timeFrame2: TimeframeView!
     @IBOutlet var timeFrame2Wrapper: XibView!
 
     @IBOutlet var addTimeFrameWrapper: XibView!
@@ -28,10 +28,10 @@ class CustomPushNotificationsSelectTimeframeView: UIView, StoreSubscriber {
     override func willMove(toSuperview superview: UIView?) {
         guard let _ = superview else { return }
         super.willMove(toSuperview: superview)
-        if let timeframeView = timeFrame1Wrapper.contentView as? CustomPushNotificationsTimeframeView {
+        if let timeframeView = timeFrame1Wrapper.contentView as? TimeframeView {
             timeFrame1 = timeframeView
         }
-        if let timeframeView = timeFrame2Wrapper.contentView as? CustomPushNotificationsTimeframeView {
+        if let timeframeView = timeFrame2Wrapper.contentView as? TimeframeView {
             timeFrame2 = timeframeView
         }
         if let button = addTimeFrameWrapper.contentView as? UIButton {
@@ -58,15 +58,9 @@ class CustomPushNotificationsSelectTimeframeView: UIView, StoreSubscriber {
         switch timeWindows.count {
         case 0: fatalError("Default time windows are not configured Correctly.")
         case 1:
-            stackView.addArrangedSubview(timeFrame1Wrapper)
-            timeFrame1.setTimeWindow(index: 1, timeWindow: timeWindows[0])
-            stackView.addArrangedSubview(addTimeFrameWrapper)
-
-        case 2:
-            stackView.addArrangedSubview(timeFrame1Wrapper)
-            timeFrame1.setTimeWindow(index: 1, timeWindow: timeWindows[0])
-            stackView.addArrangedSubview(timeFrame2Wrapper)
-            timeFrame2.setTimeWindow(index: 2, timeWindow: timeWindows[1])
+            timeFrame1.setTimeFrameIndex(index: 0)
+            stackView.addArrangedSubview(timeFrame1)
+        case 2: break
 
         default: break
         }

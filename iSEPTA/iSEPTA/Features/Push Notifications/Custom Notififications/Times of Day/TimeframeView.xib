@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XibView" customModule="Septa" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomPushNotificationsTimeframeView" customModule="Septa" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TimeframeView" customModule="Septa" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -30,10 +30,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="103" placeholderIntrinsicHeight="16" translatesAutoresizingMaskIntoConstraints="NO" id="mqT-1C-lDB" userLabel="StartOfFrame" customClass="XibView" customModule="Septa" customModuleProvider="target">
-                    <rect key="frame" x="62" y="34" width="110.5" height="24"/>
+                    <rect key="frame" x="62" y="34" width="110.5" height="44"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TimeOfDayView"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TimeframeBoundaryView"/>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="57p-WY-g0n">
@@ -47,10 +47,10 @@
 CenteringView</string>
                 </view>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="112" placeholderIntrinsicHeight="16" translatesAutoresizingMaskIntoConstraints="NO" id="TPw-aW-LHw" userLabel="EndOfFrame" customClass="XibView" customModule="Septa" customModuleProvider="target">
-                    <rect key="frame" x="202.5" y="34" width="112" height="24"/>
+                    <rect key="frame" x="202.5" y="34" width="112" height="44"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TimeOfDayView"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TimeframeBoundaryView"/>
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>

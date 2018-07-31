@@ -104,6 +104,52 @@ service, weather alerts and special events</string>
             </objects>
             <point key="canvasLocation" x="590" y="230"/>
         </scene>
+        <!--Select Time Of Day View Controller-->
+        <scene sceneID="ZDb-Ec-5mh">
+            <objects>
+                <viewController storyboardIdentifier="timeOfDayPickerController" id="Cq4-y2-qhD" customClass="SelectTimeOfDayViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="42P-n4-n0g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="cfI-aW-GST">
+                                <rect key="frame" x="0.0" y="64" width="375" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="554756775.27788401">
+                                    <!--2018-07-31 19:06:15 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="datePickerValueChanged:" destination="Cq4-y2-qhD" eventType="valueChanged" id="RhK-cc-Naw"/>
+                                </connections>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFy-BJ-eCC">
+                                <rect key="frame" x="323" y="35" width="37" height="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneButtonTapped:" destination="Cq4-y2-qhD" eventType="touchUpInside" id="JQI-Hw-jsM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GFy-BJ-eCC" firstAttribute="top" secondItem="euz-PY-QPP" secondAttribute="top" constant="15" id="A32-yC-yzm"/>
+                            <constraint firstItem="euz-PY-QPP" firstAttribute="trailing" secondItem="GFy-BJ-eCC" secondAttribute="trailing" constant="15" id="J8w-QU-qws"/>
+                            <constraint firstItem="cfI-aW-GST" firstAttribute="trailing" secondItem="euz-PY-QPP" secondAttribute="trailing" id="Kp1-lJ-CAY"/>
+                            <constraint firstItem="cfI-aW-GST" firstAttribute="leading" secondItem="euz-PY-QPP" secondAttribute="leading" id="OBd-Kw-Isq"/>
+                            <constraint firstItem="cfI-aW-GST" firstAttribute="top" secondItem="euz-PY-QPP" secondAttribute="top" constant="44" id="UBI-qa-pbh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="euz-PY-QPP"/>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="datePicker" destination="cfI-aW-GST" id="IHC-0f-o5G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jhc-cL-9MO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2034" y="246"/>
+        </scene>
         <!--My Notifications-->
         <scene sceneID="56i-Y5-iTP">
             <objects>
@@ -153,10 +199,10 @@ Instructions</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="76" translatesAutoresizingMaskIntoConstraints="NO" id="u1s-NC-tMh" userLabel="SelectFimeFrameView" customClass="XibView" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="270" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="270" width="375" height="76"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="CustomPushNotificationsSelectTimeframeView"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TimeframeGroupView"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>

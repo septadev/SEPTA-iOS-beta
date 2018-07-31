@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XibView" customModule="Septa" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TimeOfDayView" customModule="Septa" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TimeframeBoundaryView" customModule="Septa" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="112" height="16"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -30,6 +30,7 @@
                 </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="e5k-UV-dn0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="O5H-f5-qyE" userLabel="HeadingLeft"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Pt3-aY-iah" secondAttribute="bottom" id="cAb-g3-pTb" userLabel="ValueBottom"/>
@@ -45,8 +46,14 @@
             <connections>
                 <outlet property="headingLabel" destination="e5k-UV-dn0" id="Yu4-wj-a9E"/>
                 <outlet property="timeOfDayLabel" destination="Pt3-aY-iah" id="y45-IH-KyB"/>
+                <outletCollection property="gestureRecognizers" destination="PKP-u9-Qbx" appends="YES" id="IMS-gP-gvz"/>
             </connections>
             <point key="canvasLocation" x="-50" y="43"/>
         </view>
+        <tapGestureRecognizer id="PKP-u9-Qbx">
+            <connections>
+                <action selector="timeOfDayViewTapped:" destination="iN0-l3-epB" id="6i2-Yt-iv6"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>
