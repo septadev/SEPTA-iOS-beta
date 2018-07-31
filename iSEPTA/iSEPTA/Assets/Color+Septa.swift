@@ -54,4 +54,58 @@ struct SeptaColor {
     static let twitterBackground = UIColor.toPercent(235, 240, 245, 1)
 
     static let stopOrderButtonBlue = UIColor.toPercent(173, 207, 244, 1)
+
+    static let black87 = UIColor.toPercent(0, 0, 0, 0.87)
+    static let blue_27_78_142 = UIColor.toPercent(27, 78, 142, 1)
+    static let gray_198 = UIColor.toPercent(198, 198, 198, 1)
+
+    static func colorFromString(_ string: String) -> UIColor {
+        switch string {
+        case "disabledText": return disabledText
+        case "enabledText": return enabledText
+        case "navBarBlue": return navBarBlue
+        case "white20": return white20
+        case "viewShadowColor": return viewShadowColor
+        case "navBarShadowColor": return navBarShadowColor
+        case "enabledCellBorder": return enabledCellBorder
+        case "transitViewRouteCardDividerBlue": return transitViewRouteCardDividerBlue
+        case "transitViewActiveRoute": return transitViewActiveRoute
+        case "transitViewInactiveRoute": return transitViewInactiveRoute
+        case "segmentBlue": return segmentBlue
+        case "subSegmentBlue": return subSegmentBlue
+        case "nhslColor": return nhslColor
+        case "busColor": return busColor
+        case "bslColor": return bslColor
+        case "mflColor": return mflColor
+        case "trolleylColor": return trolleylColor
+        case "railColor": return railColor
+        case "AIR_RailLineColor": return AIR_RailLineColor
+        case "CHE_RailLineColor": return CHE_RailLineColor
+        case "CHW_RailLineColor": return CHW_RailLineColor
+        case "LAN_RailLineColor": return LAN_RailLineColor
+        case "MED_RailLineColor": return MED_RailLineColor
+        case "FOX_RailLineColor": return FOX_RailLineColor
+        case "NOR_RailLineColor": return NOR_RailLineColor
+        case "PAO_RailLineColor": return PAO_RailLineColor
+        case "CYN_RailLineColor": return CYN_RailLineColor
+        case "TRE_RailLineColor": return TRE_RailLineColor
+        case "WAR_RailLineColor": return WAR_RailLineColor
+        case "WIL_RailLineColor": return WIL_RailLineColor
+        case "WTR_RailLineColor": return WTR_RailLineColor
+        case "GC_RailLineColor": return GC_RailLineColor
+        case "transitIsLate": return transitIsLate
+        case "transitOnTime": return transitOnTime
+        case "transitIsScheduled": return transitIsScheduled
+        case "departingOnTime": return departingOnTime
+        case "departingBoundaryOnTime": return departingBoundaryOnTime
+        case "departingBoundaryLate": return departingBoundaryLate
+        case "editFavoriteBlue": return editFavoriteBlue
+        case "buttonHighlight": return buttonHighlight
+        case "twitterBackground": return twitterBackground
+        case "stopOrderButtonBlue": return stopOrderButtonBlue
+        case "black87": return black87
+        case "blue_27_78_142": return blue_27_78_142
+        default: return UIColor.black
+        }
+    }
 }

@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,101 +16,71 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timeframe 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQc-M7-bJd" userLabel="TimeframeLabel">
-                    <rect key="frame" x="144.5" y="15" width="86" height="17"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                    <color key="textColor" name="Black87Color"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgf-Lf-114" userLabel="StartNameLabel">
-                    <rect key="frame" x="63.5" y="42" width="36" height="17"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" name="Black87Color"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61s-KI-MOi" userLabel="StartValueLabel">
-                    <rect key="frame" x="111.5" y="42" width="38" height="17"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                    <color key="textColor" name="SEPTABlueColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghQ-Wh-D9S" userLabel="CenteringView">
-                    <rect key="frame" x="149.5" y="35" width="76" height="25"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nin-Bz-CCU" userLabel="Divider">
+                    <rect key="frame" x="19" y="0.0" width="320" height="1"/>
+                    <color key="backgroundColor" red="0.60414880510000002" green="0.128705402" blue="0.087611872369999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="76" id="HWm-Xa-FBA"/>
-                        <constraint firstAttribute="height" constant="25" id="xPu-b6-Np4"/>
+                        <constraint firstAttribute="height" constant="1" id="ZWz-8E-Y8E" userLabel="DividerHeight"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTW-76-Mec" userLabel="UntilNameLabel">
-                    <rect key="frame" x="225.5" y="42" width="36" height="17"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" name="Black87Color"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYO-ee-O2B" userLabel="UntilValueLabel">
-                    <rect key="frame" x="273.5" y="42" width="38" height="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timeframe 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1i-sm-UX7">
+                    <rect key="frame" x="145" y="9" width="85.5" height="17"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                    <color key="textColor" name="SEPTABlueColor"/>
+                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="closeTimeFrame" translatesAutoresizingMaskIntoConstraints="NO" id="HFN-DD-Emk">
-                    <rect key="frame" x="320" y="10" width="17" height="17"/>
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="103" placeholderIntrinsicHeight="16" translatesAutoresizingMaskIntoConstraints="NO" id="mqT-1C-lDB" userLabel="StartOfFrame" customClass="XibView" customModule="Septa" customModuleProvider="target">
+                    <rect key="frame" x="62" y="34" width="110.5" height="24"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TimeOfDayView"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="57p-WY-g0n">
+                    <rect key="frame" x="172.5" y="60" width="30" height="15"/>
+                    <color key="backgroundColor" red="1" green="0.96728127850000001" blue="0.35519992830000002" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="17" id="rrQ-1q-6Zt"/>
-                        <constraint firstAttribute="width" constant="17" id="sJF-Xf-42f"/>
+                        <constraint firstAttribute="height" constant="15" id="HZZ-38-CSU" userLabel="CenteringViewHeight"/>
+                        <constraint firstAttribute="width" constant="30" id="TMV-Nq-mZe" userLabel="CenteringViewWidth"/>
                     </constraints>
-                </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iow-Ly-6Hp" userLabel="DividerLine">
-                    <rect key="frame" x="-19" y="0.0" width="358" height="1"/>
-                    <color key="backgroundColor" name="LightGray198Color"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="e2x-3N-RHY"/>
-                    </constraints>
+                    <string key="userLabel">
+CenteringView</string>
+                </view>
+                <view contentMode="scaleToFill" placeholderIntrinsicWidth="112" placeholderIntrinsicHeight="16" translatesAutoresizingMaskIntoConstraints="NO" id="TPw-aW-LHw" userLabel="EndOfFrame" customClass="XibView" customModule="Septa" customModuleProvider="target">
+                    <rect key="frame" x="202.5" y="34" width="112" height="24"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TimeOfDayView"/>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="ghQ-Wh-D9S" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="0h4-XM-x89" userLabel="CenteringViewCenterX"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HFN-DD-Emk" secondAttribute="trailing" constant="38" id="3fd-HS-Vks" userLabel="CloseTimeFrameRight"/>
-                <constraint firstItem="61s-KI-MOi" firstAttribute="leading" secondItem="Sgf-Lf-114" secondAttribute="trailing" constant="12" id="5sx-g7-O7W" userLabel="StartNameRight"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Iow-Ly-6Hp" secondAttribute="trailing" constant="36" id="9MO-uT-2Wb" userLabel="DividerTrailing"/>
-                <constraint firstItem="aTW-76-Mec" firstAttribute="baseline" secondItem="Sgf-Lf-114" secondAttribute="baseline" id="AJZ-rX-Bad" userLabel="UntilNameBaseLine"/>
-                <constraint firstItem="Sgf-Lf-114" firstAttribute="baseline" secondItem="wYO-ee-O2B" secondAttribute="baseline" id="ByD-ez-9UW" userLabel="UntilValueBaseLine"/>
-                <constraint firstItem="ghQ-Wh-D9S" firstAttribute="leading" secondItem="61s-KI-MOi" secondAttribute="trailing" id="HLj-Gk-XCO" userLabel="StartValueRight"/>
-                <constraint firstItem="wYO-ee-O2B" firstAttribute="leading" secondItem="aTW-76-Mec" secondAttribute="trailing" constant="12" id="M9G-Ei-thr" userLabel="UntilValueLeft"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="leading" secondItem="Iow-Ly-6Hp" secondAttribute="leading" constant="19" id="Mwd-gK-7aa" userLabel="DividerLeading"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="Iow-Ly-6Hp" secondAttribute="top" id="dO6-pf-sI8" userLabel="DividerTop"/>
-                <constraint firstItem="EQc-M7-bJd" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="15" id="gpI-Dt-PwY" userLabel="TimeframeLabelTop"/>
-                <constraint firstItem="aTW-76-Mec" firstAttribute="leading" secondItem="ghQ-Wh-D9S" secondAttribute="trailing" id="hdI-Ff-k9X" userLabel="UntilNameLeft"/>
-                <constraint firstItem="Sgf-Lf-114" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="42" id="iwc-pe-aho" userLabel="StartNameTop"/>
-                <constraint firstItem="EQc-M7-bJd" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="o0B-Ko-cys" userLabel="TimeframeLabelCenterX"/>
-                <constraint firstItem="ghQ-Wh-D9S" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" constant="10" id="o1X-2k-ebC" userLabel="CenteringViewCenterY"/>
-                <constraint firstItem="Sgf-Lf-114" firstAttribute="baseline" secondItem="61s-KI-MOi" secondAttribute="baseline" id="vJC-sf-zUk" userLabel="StartValueBaseLine"/>
-                <constraint firstItem="HFN-DD-Emk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="vlI-Vn-9Tm" userLabel="closeTimeFrameTop"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="Nin-Bz-CCU" secondAttribute="top" id="D2T-wn-znj" userLabel="DividerTop"/>
+                <constraint firstItem="57p-WY-g0n" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="OVX-z4-rzR">
+                    <string key="userLabel">
+CenteringViewCenterX</string>
+                </constraint>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Nin-Bz-CCU" secondAttribute="trailing" constant="36" id="TSI-35-0Ky" userLabel="DividerRight"/>
+                <constraint firstItem="i1i-sm-UX7" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Td9-jx-Z2e" userLabel="TimeframeCenterX"/>
+                <constraint firstItem="TPw-aW-LHw" firstAttribute="top" secondItem="mqT-1C-lDB" secondAttribute="top" id="Wd1-vH-P4Q" userLabel="EndOfFrameTop"/>
+                <constraint firstItem="Nin-Bz-CCU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="YZy-Qd-Gdb" userLabel="DividerLeft"/>
+                <constraint firstItem="i1i-sm-UX7" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="9" id="ZaN-5y-dli" userLabel="TimeFrameTop"/>
+                <constraint firstItem="TPw-aW-LHw" firstAttribute="leading" secondItem="57p-WY-g0n" secondAttribute="trailing" id="cu6-sv-mMO" userLabel="EndOfFrameLeft"/>
+                <constraint firstItem="57p-WY-g0n" firstAttribute="leading" secondItem="mqT-1C-lDB" secondAttribute="trailing" id="jAd-Do-DY6" userLabel="StartOfFrameRight"/>
+                <constraint firstItem="mqT-1C-lDB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="34" id="jfE-Rr-YQc" userLabel="StartTop"/>
+                <constraint firstItem="57p-WY-g0n" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="ofu-Th-w3T" userLabel="CenteringViewBottom"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="startValueLabel" destination="61s-KI-MOi" id="uCg-T3-Che"/>
-                <outlet property="timeframeLabel" destination="EQc-M7-bJd" id="OfZ-P3-Pxj"/>
-                <outlet property="untilValueLabel" destination="wYO-ee-O2B" id="Jnm-MD-onT"/>
+                <outlet property="centeringView" destination="57p-WY-g0n" id="xy4-xp-hgY"/>
+                <outlet property="dividerView" destination="Nin-Bz-CCU" id="vp1-xd-Cn0"/>
+                <outlet property="timeframeLabel" destination="i1i-sm-UX7" id="8IO-AM-soo"/>
             </connections>
-            <point key="canvasLocation" x="-95" y="-134"/>
+            <point key="canvasLocation" x="88.5" y="-64"/>
         </view>
     </objects>
-    <resources>
-        <image name="closeTimeFrame" width="17" height="17"/>
-        <namedColor name="Black87Color">
-            <color red="0.0" green="0.0" blue="0.0" alpha="0.87000000476837158" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="LightGray198Color">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="SEPTABlueColor">
-            <color red="0.10588235294117647" green="0.30588235294117649" blue="0.55686274509803924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>

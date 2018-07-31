@@ -68,9 +68,14 @@
 		5803C382210B9BC800BFAE7A /* CustomNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C381210B9BC800BFAE7A /* CustomNotifications.swift */; };
 		5803C385210B9C2E00BFAE7A /* CustomPushNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C384210B9C2E00BFAE7A /* CustomPushNotificationsViewController.swift */; };
 		5803C387210B9D9C00BFAE7A /* CustomPushNotificationsTimeframeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C386210B9D9C00BFAE7A /* CustomPushNotificationsTimeframeView.swift */; };
-		5803C389210B9DCA00BFAE7A /* CustomPushNotificationsTimeframeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5803C388210B9DCA00BFAE7A /* CustomPushNotificationsTimeframeView.xib */; };
 		5803C38B210BAC7800BFAE7A /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C38A210BAC7800BFAE7A /* XibView.swift */; };
 		5803C38D210BBD4700BFAE7A /* CustomPushNotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C38C210BBD4700BFAE7A /* CustomPushNotificationsViewModel.swift */; };
+		5805C827210F8CAA00A35613 /* TimeOfDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805C826210F8CAA00A35613 /* TimeOfDayView.swift */; };
+		5805C829210FA71000A35613 /* WeekOfDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805C828210FA71000A35613 /* WeekOfDayView.swift */; };
+		5805C82B210FA72000A35613 /* WeekOfDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5805C82A210FA72000A35613 /* WeekOfDayView.xib */; };
+		58088E1B210F80B60068E771 /* NSRange+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58088E1A210F80B60068E771 /* NSRange+Util.swift */; };
+		58088E1D210F84530068E771 /* CustomPushNotificationsTimeframeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58088E1C210F84530068E771 /* CustomPushNotificationsTimeframeView.xib */; };
+		58088E1F210F86890068E771 /* TimeOfDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58088E1E210F86890068E771 /* TimeOfDayView.xib */; };
 		5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */; };
 		580A355B1F6A0E84000FCA82 /* FavoritesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A355A1F6A0E84000FCA82 /* FavoritesNavigationController.swift */; };
 		580A355F1F6A0F9B000FCA82 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A355E1F6A0F9B000FCA82 /* FavoritesViewController.swift */; };
@@ -99,6 +104,10 @@
 		58195FF41F3FA1C90053B3D3 /* RouteSelected.json in Resources */ = {isa = PBXBuildFile; fileRef = 58195FEE1F3FA1790053B3D3 /* RouteSelected.json */; };
 		581DA54A1F3BE1C8006AEC39 /* IdentifiableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581DA5491F3BE1C8006AEC39 /* IdentifiableController.swift */; };
 		581DA54F1F3BF102006AEC39 /* ViewTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581DA54E1F3BF102006AEC39 /* ViewTransitionType.swift */; };
+		5820CB38210F3D4600782275 /* AttributedString+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5820CB37210F3D4600782275 /* AttributedString+Util.swift */; };
+		5820CB3C210F4AC200782275 /* CustomPushNotificationsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5820CB3B210F4AC200782275 /* CustomPushNotificationsHeaderView.swift */; };
+		5820CB3E210F4AD300782275 /* CustomPushNotificationsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5820CB3D210F4AD300782275 /* CustomPushNotificationsHeaderView.xib */; };
+		5820CB44210F4E4000782275 /* UILabel+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5820CB43210F4E4000782275 /* UILabel+Util.swift */; };
 		58248B641F6D573000DA2D65 /* NextToArriveState_ScheduleState_ScheduleRequestWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B631F6D573000DA2D65 /* NextToArriveState_ScheduleState_ScheduleRequestWatcher.swift */; };
 		58248B661F6D575A00DA2D65 /* BaseWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B651F6D575A00DA2D65 /* BaseWatcher.swift */; };
 		58248B6C1F6D5B6900DA2D65 /* FavoritesState_FavoritesExistWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B6B1F6D5B6900DA2D65 /* FavoritesState_FavoritesExistWatcher.swift */; };
@@ -773,9 +782,14 @@
 		5803C381210B9BC800BFAE7A /* CustomNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNotifications.swift; sourceTree = "<group>"; };
 		5803C384210B9C2E00BFAE7A /* CustomPushNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushNotificationsViewController.swift; sourceTree = "<group>"; };
 		5803C386210B9D9C00BFAE7A /* CustomPushNotificationsTimeframeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushNotificationsTimeframeView.swift; sourceTree = "<group>"; };
-		5803C388210B9DCA00BFAE7A /* CustomPushNotificationsTimeframeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPushNotificationsTimeframeView.xib; sourceTree = "<group>"; };
 		5803C38A210BAC7800BFAE7A /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		5803C38C210BBD4700BFAE7A /* CustomPushNotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushNotificationsViewModel.swift; sourceTree = "<group>"; };
+		5805C826210F8CAA00A35613 /* TimeOfDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayView.swift; sourceTree = "<group>"; };
+		5805C828210FA71000A35613 /* WeekOfDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekOfDayView.swift; sourceTree = "<group>"; };
+		5805C82A210FA72000A35613 /* WeekOfDayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekOfDayView.xib; sourceTree = "<group>"; };
+		58088E1A210F80B60068E771 /* NSRange+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRange+Util.swift"; sourceTree = "<group>"; };
+		58088E1C210F84530068E771 /* CustomPushNotificationsTimeframeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPushNotificationsTimeframeView.xib; sourceTree = "<group>"; };
+		58088E1E210F86890068E771 /* TimeOfDayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeOfDayView.xib; sourceTree = "<group>"; };
 		580A355A1F6A0E84000FCA82 /* FavoritesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesNavigationController.swift; sourceTree = "<group>"; };
 		580A355E1F6A0F9B000FCA82 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		580A35601F6A12C0000FCA82 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
@@ -805,6 +819,10 @@
 		58195FEF1F3FA1830053B3D3 /* TransitModeSelected.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TransitModeSelected.json; sourceTree = "<group>"; };
 		581DA5491F3BE1C8006AEC39 /* IdentifiableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableController.swift; sourceTree = "<group>"; };
 		581DA54E1F3BF102006AEC39 /* ViewTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransitionType.swift; sourceTree = "<group>"; };
+		5820CB37210F3D4600782275 /* AttributedString+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributedString+Util.swift"; sourceTree = "<group>"; };
+		5820CB3B210F4AC200782275 /* CustomPushNotificationsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushNotificationsHeaderView.swift; sourceTree = "<group>"; };
+		5820CB3D210F4AD300782275 /* CustomPushNotificationsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPushNotificationsHeaderView.xib; sourceTree = "<group>"; };
+		5820CB43210F4E4000782275 /* UILabel+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Util.swift"; sourceTree = "<group>"; };
 		58248B631F6D573000DA2D65 /* NextToArriveState_ScheduleState_ScheduleRequestWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveState_ScheduleState_ScheduleRequestWatcher.swift; sourceTree = "<group>"; };
 		58248B651F6D575A00DA2D65 /* BaseWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWatcher.swift; sourceTree = "<group>"; };
 		58248B6B1F6D5B6900DA2D65 /* FavoritesState_FavoritesExistWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesState_FavoritesExistWatcher.swift; sourceTree = "<group>"; };
@@ -1523,7 +1541,13 @@
 				5803C384210B9C2E00BFAE7A /* CustomPushNotificationsViewController.swift */,
 				5803C38C210BBD4700BFAE7A /* CustomPushNotificationsViewModel.swift */,
 				5803C386210B9D9C00BFAE7A /* CustomPushNotificationsTimeframeView.swift */,
-				5803C388210B9DCA00BFAE7A /* CustomPushNotificationsTimeframeView.xib */,
+				58088E1C210F84530068E771 /* CustomPushNotificationsTimeframeView.xib */,
+				58088E1E210F86890068E771 /* TimeOfDayView.xib */,
+				5805C826210F8CAA00A35613 /* TimeOfDayView.swift */,
+				5805C828210FA71000A35613 /* WeekOfDayView.swift */,
+				5805C82A210FA72000A35613 /* WeekOfDayView.xib */,
+				5820CB3B210F4AC200782275 /* CustomPushNotificationsHeaderView.swift */,
+				5820CB3D210F4AD300782275 /* CustomPushNotificationsHeaderView.xib */,
 			);
 			path = "Custom Notififications";
 			sourceTree = "<group>";
@@ -1638,6 +1662,7 @@
 				58E33F1D1F6147DE00C74B7C /* CLLocationCoordinate2D+Equatable.swift */,
 				0EA1FF8F20DA9E37007A9A91 /* UIAlertControllerExtensions.swift */,
 				0E39082D20E1268900E94D53 /* InAppReview.swift */,
+				5820CB37210F3D4600782275 /* AttributedString+Util.swift */,
 				0E8E60ED20F00B9E00AB08FE /* RouteIcon.swift */,
 				0E36308A20FFB20E00980EB6 /* NSMutableAttributedStringExtensions.swift */,
 				5803C38A210BAC7800BFAE7A /* XibView.swift */,
@@ -1677,6 +1702,8 @@
 				58FBB66B1F5885D800E6532B /* VerticalDottedTripGraphic.swift */,
 				58FBB66D1F58AAC000E6532B /* AlertViewGradientBackgroundView.swift */,
 				678D26CB1F5CDB4200D140CC /* Septa+Images.swift */,
+				5820CB43210F4E4000782275 /* UILabel+Util.swift */,
+				58088E1A210F80B60068E771 /* NSRange+Util.swift */,
 				58EB8D241F5D8EE80028A487 /* BaseNavigationBar.swift */,
 				670C59F01F8A6DA500CAE1AC /* BlueGradientTitleView.swift */,
 				58E54E231F65A40100E9B66D /* NavigationBar+Util.swift */,
@@ -3143,7 +3170,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				677E050D20727C9D00B16C09 /* 17.kml in Resources */,
-				5803C389210B9DCA00BFAE7A /* CustomPushNotificationsTimeframeView.xib in Resources */,
 				677E04E620727C9D00B16C09 /* 18.kml in Resources */,
 				677E053B20727C9D00B16C09 /* 28.kml in Resources */,
 				677E04D920727C9D00B16C09 /* G.kml in Resources */,
@@ -3179,6 +3205,7 @@
 				677E04BD20727C9D00B16C09 /* 5.kml in Resources */,
 				676B7D9F1F7D189E0052F016 /* more.storyboard in Resources */,
 				677E051120727C9D00B16C09 /* CHW.kml in Resources */,
+				5820CB3E210F4AD300782275 /* CustomPushNotificationsHeaderView.xib in Resources */,
 				677E054B20727C9D00B16C09 /* 36.kml in Resources */,
 				677E04F920727C9D00B16C09 /* 68.kml in Resources */,
 				677E054220727C9D00B16C09 /* 35.kml in Resources */,
@@ -3336,12 +3363,15 @@
 				582F4EDB1F33B1120062A546 /* Assets.xcassets in Resources */,
 				677E051A20727C9D00B16C09 /* 80.kml in Resources */,
 				677E052320727C9D00B16C09 /* 12.kml in Resources */,
+				58088E1D210F84530068E771 /* CustomPushNotificationsTimeframeView.xib in Resources */,
 				677E04FA20727C9D00B16C09 /* 204.kml in Resources */,
+				58088E1F210F86890068E771 /* TimeOfDayView.xib in Resources */,
 				677E054020727C9D00B16C09 /* WCS.kml in Resources */,
 				677E054F20727C9D00B16C09 /* 30.kml in Resources */,
 				677E050520727C9D00B16C09 /* 15T.kml in Resources */,
 				677E04CF20727C9D00B16C09 /* 56.kml in Resources */,
 				580128061F6B1D13006B6DB8 /* FavoriteTripCell.xib in Resources */,
+				5805C82B210FA72000A35613 /* WeekOfDayView.xib in Resources */,
 				677E04C020727C9D00B16C09 /* 64.kml in Resources */,
 				677E04DC20727C9D00B16C09 /* CYN.kml in Resources */,
 				677E04FF20727C9D00B16C09 /* 96.kml in Resources */,
@@ -3454,6 +3484,7 @@
 				0E2DCAD720F672BD0086F400 /* TransitViewVehicleAnnotation.swift in Sources */,
 				582F4ED31F33B1120062A546 /* SelectStopRow.swift in Sources */,
 				582F4EBC1F33B1120062A546 /* DateFormatters.swift in Sources */,
+				58088E1B210F80B60068E771 /* NSRange+Util.swift in Sources */,
 				5893971B1F7E6A5900F3D2F8 /* MoreActions.swift in Sources */,
 				580A35671F6A255F000FCA82 /* FavoriteTripCell.swift in Sources */,
 				58A26D9B1F6F221E005A70D3 /* AlertDetailViewController.swift in Sources */,
@@ -3538,6 +3569,7 @@
 				67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */,
 				67A385801F7D7690002E01E0 /* StartupViewController.swift in Sources */,
 				67EF6D661FE2DBAA00245E0F /* HolidaySchedule.swift in Sources */,
+				5820CB3C210F4AC200782275 /* CustomPushNotificationsHeaderView.swift in Sources */,
 				676355071F5EAD5900CA7EAB /* SubscriberUnsubscriber.swift in Sources */,
 				58EB8D251F5D8EE80028A487 /* BaseNavigationBar.swift in Sources */,
 				5840D6D51F376E5E00C8CB76 /* NavigationStackState.swift in Sources */,
@@ -3632,6 +3664,7 @@
 				0E8E60CA20EC109200AB08FE /* TransitViewSelectionViewController.swift in Sources */,
 				5816AB731F7C10CD00210C07 /* ScrollableTableViewToggle.swift in Sources */,
 				67365AD81F75918300FC86CB /* ViewSchedulesButton.swift in Sources */,
+				5820CB44210F4E4000782275 /* UILabel+Util.swift in Sources */,
 				67365ACA1F754A3200FC86CB /* HalfSheetPresentationCoordinator.swift in Sources */,
 				58490E471F55F98B007DBCA1 /* AlertState.swift in Sources */,
 				5814AA8A1F4359D000DF774A /* TripleTextDisplayable.swift in Sources */,
@@ -3760,6 +3793,7 @@
 				58C2A0591F3812D600F0D6CA /* ScheduleActions.swift in Sources */,
 				5825319C1F408C2D0088D056 /* UserPreferencesStatePersister.swift in Sources */,
 				676355051F5E9A0300CA7EAB /* SchedulesViewModelDelegate.swift in Sources */,
+				5820CB38210F3D4600782275 /* AttributedString+Util.swift in Sources */,
 				67C5672B1F596E0700FF6203 /* ErrorObjects.swift in Sources */,
 				58490E4B1F560226007DBCA1 /* AlertActions.swift in Sources */,
 				58E54E201F65977100E9B66D /* NextToArriveTripViewController.swift in Sources */,
@@ -3805,6 +3839,7 @@
 				58A26DA41F6F30B2005A70D3 /* Route+Displayable.swift in Sources */,
 				58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */,
 				581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */,
+				5805C829210FA71000A35613 /* WeekOfDayView.swift in Sources */,
 				58CBEE871F953B5A00F26A15 /* FavoriteState_NextToArriveFavoriteWatcher.swift in Sources */,
 				679924051F6E01BD00FD5691 /* MoreButton.swift in Sources */,
 				58E80FEE20F685D5000E419A /* FavoriteNextToArriveReverseTrip.swift in Sources */,
@@ -3813,6 +3848,7 @@
 				676B7D841F7CFA270052F016 /* FaresViewController.swift in Sources */,
 				58EB8D291F5D90CD0028A487 /* NextToArriveState.swift in Sources */,
 				0E8E60EE20F00B9E00AB08FE /* RouteIcon.swift in Sources */,
+				5805C827210F8CAA00A35613 /* TimeOfDayView.swift in Sources */,
 				5803C36F210A6B2F00BFAE7A /* ManagePushNotificationsToggleCell.swift in Sources */,
 				5893970C1F7E60D900F3D2F8 /* WebViewController.swift in Sources */,
 				589A919B1F905CA6009B49E0 /* TripDetailState_TripDetailWatcher.swift in Sources */,
@@ -4033,7 +4069,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				ONLY_ACTIVE_ARCH = YES;
@@ -4061,7 +4097,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				ONLY_ACTIVE_ARCH = YES;

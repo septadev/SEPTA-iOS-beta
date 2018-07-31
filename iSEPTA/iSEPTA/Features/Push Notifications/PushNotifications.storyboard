@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -103,25 +102,30 @@ service, weather alerts and special events</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qpN-rY-llQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationItem title="Manage Notifications" id="K0o-Kl-hlV"/>
             </objects>
-            <point key="canvasLocation" x="276" y="232.53373313343329"/>
+            <point key="canvasLocation" x="590" y="230"/>
         </scene>
-        <!--Custom Push Notifications View Controller-->
+        <!--My Notifications-->
         <scene sceneID="56i-Y5-iTP">
             <objects>
-                <viewController storyboardIdentifier="customPushNotificationsController" id="4uH-74-e5F" customClass="CustomPushNotificationsViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="customPushNotificationsController" title="My Notifications" id="4uH-74-e5F" customClass="CustomPushNotificationsViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jbb-R4-NI8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ijX-Je-crA">
-                                <rect key="frame" x="75" y="66" width="240" height="128"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ijX-Je-crA">
+                                <rect key="frame" x="0.0" y="64" width="375" height="80"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nmk-f6-dFS" userLabel="Label">
-                                        <rect key="frame" x="99" y="60" width="206" height="17"/>
-                                        <string key="text">Set notifications days and times
-for all transportation modes</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" name="Black87Color"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nmk-f6-dFS" userLabel="Label">
+                                        <rect key="frame" x="79" y="20" width="216" height="40"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Set notifications days and times for all transportation modes">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" metaFont="system" size="14"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="20" maximumLineHeight="20" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -130,31 +134,61 @@ for all transportation modes</string>
                                     <constraint firstItem="Nmk-f6-dFS" firstAttribute="leading" secondItem="ijX-Je-crA" secondAttribute="leading" constant="79" id="FPv-YB-31J" userLabel="LabelLeft"/>
                                     <constraint firstItem="Nmk-f6-dFS" firstAttribute="centerY" secondItem="ijX-Je-crA" secondAttribute="centerY" id="W00-w9-c6h" userLabel="LabelCenterY"/>
                                     <constraint firstAttribute="trailing" secondItem="Nmk-f6-dFS" secondAttribute="trailing" constant="80" id="pr6-O9-RON" userLabel="LabelRight"/>
+                                    <constraint firstAttribute="height" constant="80" id="tkN-E8-cdE" userLabel="InstructionsHeight"/>
                                 </constraints>
                                 <string key="userLabel">
 Instructions</string>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EOq-CP-ejv">
-                                <rect key="frame" x="87" y="427" width="110" height="200"/>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="mqY-Qu-S7k" userLabel="DayOfWeekView" customClass="XibView" customModule="Septa" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="144" width="375" height="128"/>
+                                <color key="backgroundColor" red="1" green="0.96728127850000001" blue="0.35519992830000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="WeekOfDayView"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EOq-CP-ejv">
+                                <rect key="frame" x="0.0" y="272" width="375" height="256"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mom-iv-nic" userLabel="timeFrameView1" customClass="XibView" customModule="Septa" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="CustomPushNotificationsTimeframeView"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ngG-lq-LlX" userLabel="timeFrameView2" customClass="XibView" customModule="Septa" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="128" width="375" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="CustomPushNotificationsTimeframeView"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="EOq-CP-ejv" firstAttribute="top" secondItem="u7P-zg-R7a" secondAttribute="top" constant="407" id="OGv-wG-AK3"/>
-                            <constraint firstItem="EOq-CP-ejv" firstAttribute="leading" secondItem="u7P-zg-R7a" secondAttribute="leading" constant="87" id="RnQ-Jp-0Hz"/>
-                            <constraint firstItem="u7P-zg-R7a" firstAttribute="trailing" secondItem="EOq-CP-ejv" secondAttribute="trailing" constant="178" id="pme-YE-qBl"/>
+                            <constraint firstItem="u7P-zg-R7a" firstAttribute="trailing" secondItem="mqY-Qu-S7k" secondAttribute="trailing" id="9ET-xv-Vhm" userLabel="DayOfWeekViewRight"/>
+                            <constraint firstItem="mqY-Qu-S7k" firstAttribute="top" secondItem="ijX-Je-crA" secondAttribute="bottom" id="CFV-eA-lWh" userLabel="DayOfWeekViewTop"/>
+                            <constraint firstItem="ijX-Je-crA" firstAttribute="top" secondItem="u7P-zg-R7a" secondAttribute="top" id="GH2-HX-FT4" userLabel="InstructionsTop"/>
+                            <constraint firstItem="u7P-zg-R7a" firstAttribute="trailing" secondItem="ijX-Je-crA" secondAttribute="trailing" id="GWu-qD-Wak" userLabel="Instructionsright"/>
+                            <constraint firstItem="mqY-Qu-S7k" firstAttribute="leading" secondItem="u7P-zg-R7a" secondAttribute="leading" id="IjN-Wh-MTR" userLabel="DayOfWeekViewLeft"/>
+                            <constraint firstItem="EOq-CP-ejv" firstAttribute="leading" secondItem="u7P-zg-R7a" secondAttribute="leading" id="RnQ-Jp-0Hz" userLabel="InstructionsLeft"/>
+                            <constraint firstItem="EOq-CP-ejv" firstAttribute="top" secondItem="mqY-Qu-S7k" secondAttribute="bottom" id="fD6-bu-HQa" userLabel="StackViewTop"/>
+                            <constraint firstItem="ijX-Je-crA" firstAttribute="leading" secondItem="u7P-zg-R7a" secondAttribute="leading" id="hHS-uL-t0C" userLabel="InstructionsLeft"/>
+                            <constraint firstItem="u7P-zg-R7a" firstAttribute="trailing" secondItem="EOq-CP-ejv" secondAttribute="trailing" id="pme-YE-qBl" userLabel="StackViewRight"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="u7P-zg-R7a"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="instructionsLabel" destination="Nmk-f6-dFS" id="BjB-8A-B6x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oju-dI-HTA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-394" y="102"/>
+            <point key="canvasLocation" x="-569" y="99"/>
         </scene>
     </scenes>
-    <resources>
-        <namedColor name="Black87Color">
-            <color red="0.0" green="0.0" blue="0.0" alpha="0.87000000476837158" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>

@@ -13,6 +13,20 @@ import UIKit
 class CustomPushNotificationsViewController: BaseNonModalViewController, StoreSubscriber, IdentifiableController {
     typealias StoreSubscriberStateType = PushNotificationPreferenceState
 
+    @IBOutlet var instructionsLabel: UILabel! {
+        didSet {
+            guard let text = instructionsLabel.text else { return }
+            instructionsLabel.attributedText = text.attributed(
+                fontSize: 14,
+                fontWeight: .regular,
+                textColor: SeptaColor.black87,
+                alignment: .center,
+                kerning: 0.1,
+                lineHeight: 20
+            )
+        }
+    }
+
     var viewController: ViewController = .customPushNotificationsController
     var viewModel: CustomPushNotificationsViewModel = CustomPushNotificationsViewModel()
 
