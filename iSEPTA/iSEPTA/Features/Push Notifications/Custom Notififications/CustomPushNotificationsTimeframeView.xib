@@ -24,7 +24,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timeframe 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1i-sm-UX7">
-                    <rect key="frame" x="145" y="9" width="85.5" height="17"/>
+                    <rect key="frame" x="145" y="5" width="85.5" height="17"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -65,7 +65,7 @@ CenteringViewCenterX</string>
                 <constraint firstItem="i1i-sm-UX7" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Td9-jx-Z2e" userLabel="TimeframeCenterX"/>
                 <constraint firstItem="TPw-aW-LHw" firstAttribute="top" secondItem="mqT-1C-lDB" secondAttribute="top" id="Wd1-vH-P4Q" userLabel="EndOfFrameTop"/>
                 <constraint firstItem="Nin-Bz-CCU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="YZy-Qd-Gdb" userLabel="DividerLeft"/>
-                <constraint firstItem="i1i-sm-UX7" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="9" id="ZaN-5y-dli" userLabel="TimeFrameTop"/>
+                <constraint firstItem="i1i-sm-UX7" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="ZaN-5y-dli" userLabel="TimeFrameTop"/>
                 <constraint firstItem="TPw-aW-LHw" firstAttribute="leading" secondItem="57p-WY-g0n" secondAttribute="trailing" id="cu6-sv-mMO" userLabel="EndOfFrameLeft"/>
                 <constraint firstItem="57p-WY-g0n" firstAttribute="leading" secondItem="mqT-1C-lDB" secondAttribute="trailing" id="jAd-Do-DY6" userLabel="StartOfFrameRight"/>
                 <constraint firstItem="mqT-1C-lDB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="34" id="jfE-Rr-YQc" userLabel="StartTop"/>

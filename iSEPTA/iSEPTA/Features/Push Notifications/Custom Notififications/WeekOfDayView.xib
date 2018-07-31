@@ -23,29 +23,29 @@
                         <constraint firstAttribute="height" constant="1" id="9eM-Be-RDi"/>
                     </constraints>
                 </view>
-                <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="sWC-JP-TFR">
-                    <rect key="frame" x="38" y="11" width="283" height="31"/>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="sWC-JP-TFR">
+                    <rect key="frame" x="32" y="11" width="295" height="31"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sunday_Off" highlightedImage="Sunday_On" translatesAutoresizingMaskIntoConstraints="NO" id="AUM-KO-jeI">
                             <rect key="frame" x="0.0" y="0.0" width="31" height="31"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Monday_Off" highlightedImage="Monday_On" translatesAutoresizingMaskIntoConstraints="NO" id="QsC-V4-ovs">
-                            <rect key="frame" x="42" y="0.0" width="31" height="31"/>
+                            <rect key="frame" x="44" y="0.0" width="31" height="31"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tuesday_Off" highlightedImage="Tuesday_On" translatesAutoresizingMaskIntoConstraints="NO" id="24B-vg-pL0">
-                            <rect key="frame" x="84" y="0.0" width="31" height="31"/>
+                            <rect key="frame" x="88" y="0.0" width="31" height="31"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wednesday_Off" highlightedImage="Wednesday_On" translatesAutoresizingMaskIntoConstraints="NO" id="RPT-lP-jOF">
-                            <rect key="frame" x="126" y="0.0" width="31" height="31"/>
+                            <rect key="frame" x="132" y="0.0" width="31" height="31"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Thursday_Off" highlightedImage="Thursday_On" translatesAutoresizingMaskIntoConstraints="NO" id="mID-p2-oxD">
-                            <rect key="frame" x="168" y="0.0" width="31" height="31"/>
+                            <rect key="frame" x="176" y="0.0" width="31" height="31"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Friday_Off" highlightedImage="Friday_On" translatesAutoresizingMaskIntoConstraints="NO" id="RSW-wt-07v">
-                            <rect key="frame" x="210" y="0.0" width="31" height="31"/>
+                            <rect key="frame" x="220" y="0.0" width="31" height="31"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Saturday_Off" highlightedImage="Saturday_On" translatesAutoresizingMaskIntoConstraints="NO" id="oug-u4-DCC">
-                            <rect key="frame" x="252" y="0.0" width="31" height="31"/>
+                            <rect key="frame" x="264" y="0.0" width="31" height="31"/>
                         </imageView>
                     </subviews>
                     <constraints>
