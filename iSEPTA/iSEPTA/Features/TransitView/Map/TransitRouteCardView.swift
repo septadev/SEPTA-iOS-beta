@@ -107,8 +107,21 @@ class TransitRouteCardView: UIView {
     @objc func alertsTapped(gr: UITapGestureRecognizer) {
         if alertsAreInteractive {
             gr.cancelsTouchesInView = true
+
+            guard let vm = viewModel else { return }
+
+            // Switch the the alerts tab
             let switchTabsAction = SwitchTabs(activeNavigationController: .alerts, description: "User tapped on alert from TransitView")
             store.dispatch(switchTabsAction)
+
+            // Select the target route
+            let route = Route(routeId: vm.routeId, routeShortName: vm.routeName, routeLongName: vm.routeName, routeDirectionCode: .inbound)
+            let selectRouteAction = RouteSelected(targetForScheduleAction: .alerts, selectedRoute: route)
+            store.dispatch(selectRouteAction)
+
+            // Show the route alert detail
+            let alertDetailAction = PushViewController(viewController: .alertDetailViewController, description: "Show Trip Schedule")
+            store.dispatch(alertDetailAction)
         }
     }
 }

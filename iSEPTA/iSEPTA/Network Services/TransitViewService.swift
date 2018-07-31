@@ -21,11 +21,7 @@ class TransitViewService {
     }
 
     private func urlWithRouteIds(routeIds: [String]) -> String {
-        var url = "\(network.url)/transitviewall?routes="
-        for route in routeIds {
-            url.append("\(route),")
-        }
-        url.removeLast() // remove last comma
+        let url = "\(network.url)/transitviewall?routes=\(routeIds.joined(separator: ","))"
         return url
     }
 }

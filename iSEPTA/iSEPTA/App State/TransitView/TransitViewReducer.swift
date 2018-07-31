@@ -22,7 +22,7 @@ struct TransitViewReducer {
         guard let action = action as? TransitViewAction else { return state }
 
         if let action = action as? TransitViewRoutesLoaded {
-            return TransitViewState(availableRoutes: action.routes, transitViewModel: state.transitViewModel)
+            return TransitViewState(availableRoutes: action.routes, transitViewModel: state.transitViewModel, locations: state.vehicleLocations, refreshRoutes: state.refreshTransitViewRoutes, refreshVehicleLocations: state.refreshVehicleLocationData)
         }
 
         if let action = action as? TransitViewRouteSelected {
@@ -34,20 +34,23 @@ struct TransitViewReducer {
         }
 
         if let action = action as? TransitViewSlotChange {
-            let model = TransitViewModel(firstRoute: state.transitViewModel.firstRoute, secondRoute: state.transitViewModel.secondRoute, thirdRoute: state.transitViewModel.thirdRoute, slotBeingChanged: action.slot)
-            return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: model)
+            return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: state.transitViewModel, locations: state.vehicleLocations, routeSlotBeingChanged: action.slot, refreshRoutes: state.refreshTransitViewRoutes, refreshVehicleLocations: state.refreshVehicleLocationData)
         }
 
         if action is RefreshTransitViewVehicleLocationData {
-            return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: state.transitViewModel, locations: [], refreshRoutes: true, refreshVehicleLocations: true)
+            return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: state.transitViewModel, locations: state.vehicleLocations, refreshRoutes: state.refreshTransitViewRoutes, refreshVehicleLocations: true)
         }
 
         if let action = action as? TransitViewRouteLocationsDownloaded {
-            return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: state.transitViewModel, locations: action.locations)
+            return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: state.transitViewModel, locations: action.locations, refreshRoutes: state.refreshTransitViewRoutes, refreshVehicleLocations: false)
         }
 
         if let action = action as? TransitViewRemoveRoute {
             return reduceRemoveRouteAction(action: action, state: state)
+        }
+
+        if let action = action as? TransitViewFavoriteSelected {
+            return reduceTransitViewFavoriteSelected(action: action, state: state)
         }
 
         return state
@@ -57,8 +60,8 @@ struct TransitViewReducer {
         let first = action.slot == .first ? action.route : state.transitViewModel.firstRoute
         let second = action.slot == .second ? action.route : state.transitViewModel.secondRoute
         let third = action.slot == .third ? action.route : state.transitViewModel.thirdRoute
-        let model = TransitViewModel(firstRoute: first, secondRoute: second, thirdRoute: third, slotBeingChanged: state.transitViewModel.slotBeingChanged)
-        return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: model)
+        let model = TransitViewModel(firstRoute: first, secondRoute: second, thirdRoute: third)
+        return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: model, locations: state.vehicleLocations, refreshRoutes: state.refreshTransitViewRoutes, refreshVehicleLocations: state.refreshVehicleLocationData)
     }
 
     private static func reduceRemoveRouteAction(action: TransitViewRemoveRoute, state: TransitViewState) -> TransitViewState {
@@ -75,7 +78,7 @@ struct TransitViewReducer {
             model = deleteRouteFromModel(slot: .third, model: model)
         }
 
-        return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: model, locations: state.vehicleLocations, refreshRoutes: state.refreshTransitViewRoutes, refreshVehicleLocations: state.refreshVehicleLocationData)
+        return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: model, locations: state.vehicleLocations, refreshRoutes: false, refreshVehicleLocations: false)
     }
 
     private static func deleteRouteFromModel(slot: TransitViewRouteSlot, model: TransitViewModel) -> TransitViewModel {
@@ -84,13 +87,31 @@ struct TransitViewReducer {
             // Shift second and third route forward (if they exist) to prevent a gap
             let newFirst = model.secondRoute
             let newSecond = model.thirdRoute
-            return TransitViewModel(firstRoute: newFirst, secondRoute: newSecond, thirdRoute: nil, slotBeingChanged: nil)
+            return TransitViewModel(firstRoute: newFirst, secondRoute: newSecond, thirdRoute: nil)
         case .second:
             // Shift third route forward (if it exists) to prevent a gap
             let newSecond = model.thirdRoute
-            return TransitViewModel(firstRoute: model.firstRoute, secondRoute: newSecond, thirdRoute: nil, slotBeingChanged: nil)
+            return TransitViewModel(firstRoute: model.firstRoute, secondRoute: newSecond, thirdRoute: nil)
         case .third:
-            return TransitViewModel(firstRoute: model.firstRoute, secondRoute: model.secondRoute, thirdRoute: nil, slotBeingChanged: nil)
+            return TransitViewModel(firstRoute: model.firstRoute, secondRoute: model.secondRoute, thirdRoute: nil)
         }
+    }
+
+    private static func reduceTransitViewFavoriteSelected(action: TransitViewFavoriteSelected, state: TransitViewState) -> TransitViewState {
+        let routes = action.favorite.transitViewRoutes
+        var r1: TransitRoute?
+        var r2: TransitRoute?
+        var r3: TransitRoute?
+        for (index, element) in routes.enumerated() {
+            if index == 0 {
+                r1 = element
+            } else if index == 1 {
+                r2 = element
+            } else {
+                r3 = element
+            }
+        }
+        let model = TransitViewModel(firstRoute: r1, secondRoute: r2, thirdRoute: r3)
+        return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: model, locations: state.vehicleLocations, refreshRoutes: false, refreshVehicleLocations: false)
     }
 }

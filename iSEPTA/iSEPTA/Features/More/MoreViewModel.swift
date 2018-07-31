@@ -20,7 +20,7 @@ class MoreViewModel {
         case 1: configureSubwayMapCell(cell: cell)
         case 2: configureTransitViewCell(cell: cell)
         case 3: configureTrainViewCell(cell: cell)
-        case 4: configureEventsCell(cell: cell)
+        case 4: configurePerksCell(cell: cell)
         case 5: configureConnectCell(cell: cell)
         case 6: configureAboutCell(cell: cell)
         default: break
@@ -47,9 +47,9 @@ class MoreViewModel {
         cell.moreImageView.image = UIImage(named: "trainView")
     }
 
-    func configureEventsCell(cell: MoreTableViewCell) {
-        cell.moreLabel.text = "Events"
-        cell.moreImageView.image = UIImage(named: "eventsCell")
+    func configurePerksCell(cell: MoreTableViewCell) {
+        cell.moreLabel.text = "Perks"
+        cell.moreImageView.image = UIImage(named: "perksIcon")
     }
 
     func configureConnectCell(cell: MoreTableViewCell) {

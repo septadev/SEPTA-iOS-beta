@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +25,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTh-VK-VLP" userLabel="ConventView">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="612"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="315"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLY-Yb-9Oj" userLabel="FaresInset">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
@@ -60,85 +60,12 @@
                                                             <constraint firstItem="7oS-J0-LdD" firstAttribute="top" secondItem="HLY-Yb-9Oj" secondAttribute="top" constant="15" id="xyY-m4-iJZ" userLabel="FaresLabelTop"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zP1-l6-tY6" userLabel="PassPerks">
-                                                        <rect key="frame" x="15" y="315" width="345" height="297"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1wi-UG-PRq" userLabel="BlueHeader" customClass="DarkGradientBlueView" customModule="Septa" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="345" height="89"/>
-                                                                <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="psstPerks" translatesAutoresizingMaskIntoConstraints="NO" id="fQv-7R-izw" userLabel="logo">
-                                                                        <rect key="frame" x="-163" y="0.0" width="486" height="89"/>
-                                                                    </imageView>
-                                                                </subviews>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="fQv-7R-izw" firstAttribute="top" secondItem="1wi-UG-PRq" secondAttribute="top" id="NbQ-BB-Xhc" userLabel="LogoTop"/>
-                                                                    <constraint firstItem="fQv-7R-izw" firstAttribute="leading" secondItem="1wi-UG-PRq" secondAttribute="leading" constant="-163" id="UTK-FA-dVb" userLabel="LogoLeft"/>
-                                                                    <constraint firstAttribute="height" constant="89" id="aCb-80-wsH"/>
-                                                                    <constraint firstItem="fQv-7R-izw" firstAttribute="height" secondItem="1wi-UG-PRq" secondAttribute="height" id="rNR-bh-OBq" userLabel="LogoHeight"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Pass Perks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zUN-OD-9Ac" userLabel="Title">
-                                                                <rect key="frame" x="15" y="106" width="93.5" height="24"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Perks for all!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOM-oe-nWd" userLabel="TagLine">
-                                                                <rect key="frame" x="15" y="133" width="70.5" height="14.5"/>
-                                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jke-pe-Btw" userLabel="Description">
-                                                                <rect key="frame" x="15" y="152.5" width="315" height="74.5"/>
-                                                                <string key="text">Did you know your SEPTA Pass, and now your SEPTA Key, gets you discounts on food, drink, museums, sports, shops and more? Use your valid SEPTA Key, TrailPass, TransPass, or One Day Independence Pass and receive discounts to any of our Perks Partners.</string>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                <color key="textColor" red="0.42745098039215684" green="0.42745098039215684" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="06L-Uf-MNH" userLabel="RedButton" customClass="RedButton" customModule="Septa" customModuleProvider="target">
-                                                                <rect key="frame" x="15" y="242" width="310" height="40"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="40" id="l7T-l0-djJ"/>
-                                                                </constraints>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonTitle" value="Learn More"/>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="moreAboutPassPerksTapped:" destination="gDc-tf-bp4" eventType="touchUpInside" id="FOk-DV-nI8"/>
-                                                                </connections>
-                                                            </view>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstItem="UOM-oe-nWd" firstAttribute="leading" secondItem="zP1-l6-tY6" secondAttribute="leading" constant="15" id="0Je-sM-Pef" userLabel="TagLineLeft"/>
-                                                            <constraint firstItem="1wi-UG-PRq" firstAttribute="leading" secondItem="zP1-l6-tY6" secondAttribute="leading" id="2tg-Ga-UGe" userLabel="BlueHeaderLeft"/>
-                                                            <constraint firstItem="06L-Uf-MNH" firstAttribute="leading" secondItem="zP1-l6-tY6" secondAttribute="leading" constant="15" id="52D-LU-m1f" userLabel="RedButtonLeft"/>
-                                                            <constraint firstAttribute="trailing" secondItem="1wi-UG-PRq" secondAttribute="trailing" id="65F-Ar-Pz3" userLabel="BlueHeaderRight"/>
-                                                            <constraint firstItem="jke-pe-Btw" firstAttribute="leading" secondItem="zP1-l6-tY6" secondAttribute="leading" constant="15" id="7uu-QE-b5h" userLabel="DescriptionLeft"/>
-                                                            <constraint firstAttribute="trailing" secondItem="jke-pe-Btw" secondAttribute="trailing" constant="15" id="BqZ-S5-fdr" userLabel="DescriptionRight"/>
-                                                            <constraint firstAttribute="bottom" secondItem="06L-Uf-MNH" secondAttribute="bottom" constant="15" id="Cbp-Qu-56E" userLabel="RedButtonBottom"/>
-                                                            <constraint firstItem="06L-Uf-MNH" firstAttribute="top" secondItem="jke-pe-Btw" secondAttribute="bottom" constant="15" id="IC4-An-dp9" userLabel="RedButtonTop"/>
-                                                            <constraint firstItem="zUN-OD-9Ac" firstAttribute="top" secondItem="1wi-UG-PRq" secondAttribute="bottom" constant="17" id="JvF-ed-gwd" userLabel="TitleTop"/>
-                                                            <constraint firstAttribute="height" constant="297" placeholder="YES" id="NIz-uE-E5n"/>
-                                                            <constraint firstAttribute="trailing" secondItem="06L-Uf-MNH" secondAttribute="trailing" constant="20" id="Ndt-C2-JSn" userLabel="RedButtonRight"/>
-                                                            <constraint firstItem="1wi-UG-PRq" firstAttribute="top" secondItem="zP1-l6-tY6" secondAttribute="top" id="jOv-x5-ZOi" userLabel="BlueHeaderTop"/>
-                                                            <constraint firstItem="jke-pe-Btw" firstAttribute="top" secondItem="UOM-oe-nWd" secondAttribute="bottom" constant="5" id="sj2-4I-hvj" userLabel="DescriptionTop"/>
-                                                            <constraint firstItem="UOM-oe-nWd" firstAttribute="top" secondItem="zUN-OD-9Ac" secondAttribute="bottom" constant="3" id="una-p9-nSb" userLabel="TagLineTop"/>
-                                                            <constraint firstItem="zUN-OD-9Ac" firstAttribute="leading" secondItem="zP1-l6-tY6" secondAttribute="leading" constant="15" id="vqj-hU-mmA" userLabel="TitleLeft"/>
-                                                        </constraints>
-                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="zP1-l6-tY6" firstAttribute="leading" secondItem="wTh-VK-VLP" secondAttribute="leading" constant="15" id="4lO-Y0-JuA" userLabel="PassPerksLeft"/>
-                                                    <constraint firstAttribute="trailing" secondItem="zP1-l6-tY6" secondAttribute="trailing" constant="15" id="CQD-gn-3G4" userLabel="PassPerksRight"/>
-                                                    <constraint firstAttribute="bottom" secondItem="zP1-l6-tY6" secondAttribute="bottom" id="FQv-p7-Shg" userLabel="PassPerksBottom"/>
                                                     <constraint firstItem="HLY-Yb-9Oj" firstAttribute="leading" secondItem="wTh-VK-VLP" secondAttribute="leading" id="Ikv-wk-EHJ" userLabel="FaresInsetLeft"/>
                                                     <constraint firstAttribute="trailing" secondItem="HLY-Yb-9Oj" secondAttribute="trailing" id="J1x-vg-gXT" userLabel="FaresInsetRight"/>
-                                                    <constraint firstItem="zP1-l6-tY6" firstAttribute="top" secondItem="HLY-Yb-9Oj" secondAttribute="bottom" constant="15" id="LD9-3h-mwZ" userLabel="PassPerksTop"/>
+                                                    <constraint firstAttribute="bottom" secondItem="HLY-Yb-9Oj" secondAttribute="bottom" constant="15" id="VXi-yT-yyf"/>
                                                     <constraint firstItem="HLY-Yb-9Oj" firstAttribute="top" secondItem="wTh-VK-VLP" secondAttribute="top" id="Wbb-gA-xWn" userLabel="FaresInsetTop"/>
                                                 </constraints>
                                             </view>
@@ -175,7 +102,6 @@
                         <outlet property="faresStackView" destination="pP1-RC-Zks" id="hgL-Nl-E0Q"/>
                         <outlet property="faresWhiteInsetView" destination="gxs-ex-Wyz" id="PfS-1N-Xy5"/>
                         <outlet property="moreAboutSEPTAFaresButton" destination="hJe-Qx-yfF" id="8Pv-nQ-Q8Z"/>
-                        <outlet property="passPerksInsetView" destination="zP1-l6-tY6" id="4EP-9z-4nn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FCa-jC-M3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -210,7 +136,4 @@
             <point key="canvasLocation" x="605.60000000000002" y="8.5457271364317844"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="psstPerks" width="486" height="286"/>
-    </resources>
 </document>

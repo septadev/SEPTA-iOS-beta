@@ -92,6 +92,12 @@ class EditFavoriteViewController: UIViewController, UITextFieldDelegate, Identif
                 let action = PopViewController(viewController: .nextToArriveDetailController, description: "Can't show more when there are no favorites")
                 store.dispatch(action)
             }
+            if favorite.favoriteType == .transitView {
+                self.view.resignFirstResponder()
+                store.dispatch(CancelFavoriteEdit())
+                let action = PopViewController(viewController: .favoritesViewController, description: "Deleting TransitView favorite goes back to favorites")
+                store.dispatch(action)
+            }
             let action = RemoveFavorite(favorite: favorite)
             store.dispatch(action)
         }

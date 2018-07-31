@@ -30,6 +30,8 @@
 		0E4328E620D04AC800FBD805 /* DatabaseUpdateWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4328E520D04AC800FBD805 /* DatabaseUpdateWatcher.swift */; };
 		0E4328E820D060DF00FBD805 /* DatabaseDownloadProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4328E720D060DF00FBD805 /* DatabaseDownloadProvider.swift */; };
 		0E4328EA20D12CD400FBD805 /* DatabaseDownloadedWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4328E920D12CD400FBD805 /* DatabaseDownloadedWatcher.swift */; };
+		0E605959210F5B0300533A3C /* perks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E605958210F5B0300533A3C /* perks.storyboard */; };
+		0E60595B210F5B4A00533A3C /* PerksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E60595A210F5B4A00533A3C /* PerksViewController.swift */; };
 		0E64472220D27A7600A99E2D /* DatabaseUpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64472120D27A7600A99E2D /* DatabaseUpdateManager.swift */; };
 		0E8E60C820EC0D9A00AB08FE /* TransitView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E8E60C720EC0D9A00AB08FE /* TransitView.storyboard */; };
 		0E8E60CA20EC109200AB08FE /* TransitViewSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E60C920EC109200AB08FE /* TransitViewSelectionViewController.swift */; };
@@ -46,6 +48,8 @@
 		0E8E610720F538F500AB08FE /* TransitViewMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E610620F538F500AB08FE /* TransitViewMapViewController.swift */; };
 		0E8E610920F53C4200AB08FE /* TransitViewOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E610820F53C4200AB08FE /* TransitViewOverviewViewController.swift */; };
 		0EA1FF9020DA9E37007A9A91 /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA1FF8F20DA9E37007A9A91 /* UIAlertControllerExtensions.swift */; };
+		0EB1942221090AA800077C99 /* FavoriteTransitViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1942021090AA800077C99 /* FavoriteTransitViewCell.swift */; };
+		0EB1942321090AA800077C99 /* FavoriteTransitViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EB1942121090AA800077C99 /* FavoriteTransitViewCell.xib */; };
 		5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */; };
 		580128061F6B1D13006B6DB8 /* FavoriteTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580128031F6B1D13006B6DB8 /* FavoriteTripCell.xib */; };
 		580128081F6B26D2006B6DB8 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580128071F6B26D2006B6DB8 /* RoundedShadowView.swift */; };
@@ -718,6 +722,8 @@
 		0E4328E520D04AC800FBD805 /* DatabaseUpdateWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateWatcher.swift; sourceTree = "<group>"; };
 		0E4328E720D060DF00FBD805 /* DatabaseDownloadProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseDownloadProvider.swift; sourceTree = "<group>"; };
 		0E4328E920D12CD400FBD805 /* DatabaseDownloadedWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseDownloadedWatcher.swift; sourceTree = "<group>"; };
+		0E605958210F5B0300533A3C /* perks.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = perks.storyboard; sourceTree = "<group>"; };
+		0E60595A210F5B4A00533A3C /* PerksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerksViewController.swift; sourceTree = "<group>"; };
 		0E64472120D27A7600A99E2D /* DatabaseUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateManager.swift; sourceTree = "<group>"; };
 		0E8E60C720EC0D9A00AB08FE /* TransitView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransitView.storyboard; sourceTree = "<group>"; };
 		0E8E60C920EC109200AB08FE /* TransitViewSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewSelectionViewController.swift; sourceTree = "<group>"; };
@@ -734,6 +740,8 @@
 		0E8E610620F538F500AB08FE /* TransitViewMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewMapViewController.swift; sourceTree = "<group>"; };
 		0E8E610820F53C4200AB08FE /* TransitViewOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewOverviewViewController.swift; sourceTree = "<group>"; };
 		0EA1FF8F20DA9E37007A9A91 /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtensions.swift; sourceTree = "<group>"; };
+		0EB1942021090AA800077C99 /* FavoriteTransitViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTransitViewCell.swift; sourceTree = "<group>"; };
+		0EB1942121090AA800077C99 /* FavoriteTransitViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTransitViewCell.xib; sourceTree = "<group>"; };
 		5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectedTableViewCell.swift; sourceTree = "<group>"; };
 		580128031F6B1D13006B6DB8 /* FavoriteTripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteTripCell.xib; sourceTree = "<group>"; };
 		580128071F6B26D2006B6DB8 /* RoundedShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundedShadowView.swift; path = iSEPTA/Views/RoundedShadowView.swift; sourceTree = SOURCE_ROOT; };
@@ -1391,6 +1399,15 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		0E605955210F5AD600533A3C /* Perks */ = {
+			isa = PBXGroup;
+			children = (
+				0E605958210F5B0300533A3C /* perks.storyboard */,
+				0E60595A210F5B4A00533A3C /* PerksViewController.swift */,
+			);
+			path = Perks;
+			sourceTree = "<group>";
+		};
 		0E8E60C620EC0D3700AB08FE /* TransitView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1506,6 +1523,8 @@
 				580A35681F6A2B0A000FCA82 /* FavoriteHeaderCell.swift */,
 				580128031F6B1D13006B6DB8 /* FavoriteTripCell.xib */,
 				580A35661F6A255F000FCA82 /* FavoriteTripCell.swift */,
+				0EB1942021090AA800077C99 /* FavoriteTransitViewCell.swift */,
+				0EB1942121090AA800077C99 /* FavoriteTransitViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1647,6 +1666,7 @@
 				582F4E871F33B1120062A546 /* Alerts */,
 				582F4E8A1F33B1120062A546 /* Contact */,
 				582F4E8C1F33B1120062A546 /* FaresAndTransitInfo */,
+				0E605955210F5AD600533A3C /* Perks */,
 				582F4E8E1F33B1120062A546 /* Favorites */,
 				582F4E901F33B1120062A546 /* NextToArrive */,
 				582F4E931F33B1120062A546 /* Schedules */,
@@ -3175,7 +3195,9 @@
 				677E04E120727C9D00B16C09 /* 110.kml in Resources */,
 				677E04D220727C9D00B16C09 /* 23.kml in Resources */,
 				677E052E20727C9D00B16C09 /* WIL.kml in Resources */,
+				0E605959210F5B0300533A3C /* perks.storyboard in Resources */,
 				677E054620727C9D00B16C09 /* 26.kml in Resources */,
+				0EB1942321090AA800077C99 /* FavoriteTransitViewCell.xib in Resources */,
 				677E04FD20727C9D00B16C09 /* 61.kml in Resources */,
 				582F4EDE1F33B1120062A546 /* Main.storyboard in Resources */,
 				677E053020727C9D00B16C09 /* 84.kml in Resources */,
@@ -3651,6 +3673,7 @@
 				678D26C41F5CC4A400D140CC /* FavoritesState.swift in Sources */,
 				58290E501F372DDC000CCF3C /* NavigationActions.swift in Sources */,
 				676B7DA11F7D18B90052F016 /* MoreNavigationControllerStateProvider.swift in Sources */,
+				0E60595B210F5B4A00533A3C /* PerksViewController.swift in Sources */,
 				586852DE1F8D49830081C1CC /* TransitMode+NextToArriveDetail.swift in Sources */,
 				6776F67C201B358A001FD5B2 /* AlertState_AppAlertDetailsWatcher.swift in Sources */,
 				588D805D1F72AAF300EE1983 /* BaseScheduleRequestWatcher.swift in Sources */,
@@ -3708,6 +3731,7 @@
 				67EA2B5D1F50F23C00C0567A /* SearchStopsModalHeaderViewController.swift in Sources */,
 				58490E451F55F8FF007DBCA1 /* SeptaAlert.swift in Sources */,
 				6776F68A201CAB11001FD5B2 /* ProviderEnvironment.swift in Sources */,
+				0EB1942221090AA800077C99 /* FavoriteTransitViewCell.swift in Sources */,
 				58DD1A8C1F6006D5002532DC /* NextToArriveViewModel+RouteCell.swift in Sources */,
 				5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */,
 				670C59F91F8A941700CAE1AC /* AppInfoProvider.swift in Sources */,
@@ -3941,7 +3965,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				ONLY_ACTIVE_ARCH = YES;
@@ -3969,7 +3993,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				ONLY_ACTIVE_ARCH = YES;
