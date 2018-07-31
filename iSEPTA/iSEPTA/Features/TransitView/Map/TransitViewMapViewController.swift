@@ -30,6 +30,7 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
     let alerts = store.state.alertState.alertDict
 
     var delegate: TransitViewMapDelegate?
+    var timer: Timer?
 
     var selectedRoute: TransitRoute? {
         didSet {
@@ -72,6 +73,25 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
         subscribe()
         mapView.showAnnotations(mapView.annotations, animated: false)
         mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0), animated: true)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        initTimer()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        timer?.invalidate()
+    }
+
+    private func initTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(timerFired(timer:)), userInfo: nil, repeats: true)
+    }
+
+    @objc func timerFired(timer _: Timer) {
+        updateMap = false
+        refreshRoutes()
     }
 
     func subscribe() {
