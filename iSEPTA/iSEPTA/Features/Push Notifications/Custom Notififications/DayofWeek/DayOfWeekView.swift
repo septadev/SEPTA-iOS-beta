@@ -10,28 +10,6 @@ import Foundation
 import ReSwift
 import UIKit
 
-class DayOfWeekImageView: UIImageView {
-    var dayOfWeek: DaysOfWeekOptionSet {
-        switch dayOfWeekString {
-        case "unknown": return DaysOfWeekOptionSet.unknown
-        case "monday": return DaysOfWeekOptionSet.monday
-        case "tuesday": return DaysOfWeekOptionSet.tuesday
-        case "wednesday": return DaysOfWeekOptionSet.wednesday
-        case "thursday": return DaysOfWeekOptionSet.thursday
-        case "friday": return DaysOfWeekOptionSet.friday
-        case "saturday": return DaysOfWeekOptionSet.saturday
-        case "sunday": return DaysOfWeekOptionSet.sunday
-        default: return DaysOfWeekOptionSet.unknown
-        }
-    }
-
-    func respondToState(selectedDaysOfWeek: DaysOfWeekOptionSet) {
-        isHighlighted = selectedDaysOfWeek.contains(dayOfWeek)
-    }
-
-    @IBInspectable var dayOfWeekString: String = "unknown"
-}
-
 class DayOfWeekView: UIView, StoreSubscriber {
     typealias StoreSubscriberStateType = DaysOfWeekOptionSet
 

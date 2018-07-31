@@ -38,4 +38,8 @@ struct DaysOfWeekOptionSet: OptionSet, Codable, Equatable {
         default: return .unknown
         }
     }
+
+    static func mondayThroughFriday() -> DaysOfWeekOptionSet {
+        return [.monday, .tuesday, .wednesday, .thursday, .friday]
+    }
 }

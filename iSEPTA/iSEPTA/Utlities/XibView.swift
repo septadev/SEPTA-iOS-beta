@@ -20,6 +20,7 @@ class XibView: UIView {
     }
 
     var contentView: UIView?
+
     func xibSetup() {
         guard let view = loadViewFromNib() else { return }
         positionView(view: view)

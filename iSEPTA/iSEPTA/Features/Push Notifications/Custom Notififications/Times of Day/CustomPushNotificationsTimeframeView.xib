@@ -78,6 +78,8 @@ CenteringViewCenterX</string>
             <connections>
                 <outlet property="centeringView" destination="57p-WY-g0n" id="xy4-xp-hgY"/>
                 <outlet property="dividerView" destination="Nin-Bz-CCU" id="vp1-xd-Cn0"/>
+                <outlet property="endOfDay" destination="TPw-aW-LHw" id="RIX-70-kBW"/>
+                <outlet property="startOfDay" destination="mqT-1C-lDB" id="rmq-DA-pP3"/>
                 <outlet property="timeframeLabel" destination="i1i-sm-UX7" id="8IO-AM-soo"/>
             </connections>
             <point key="canvasLocation" x="88.5" y="-64"/>

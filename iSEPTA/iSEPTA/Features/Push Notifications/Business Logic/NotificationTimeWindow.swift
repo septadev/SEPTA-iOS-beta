@@ -23,9 +23,18 @@ struct NotificationTimeWindow: Codable, Equatable {
         self.endMinute = endMinute
     }
 
+    private init(startMinute: Int, endMinute: Int) {
+        self.startMinute = MinutesSinceMidnight(startMinute)
+        self.endMinute = MinutesSinceMidnight(endMinute)
+    }
+
     func dateFitsInRange(date: Date) -> Bool? {
         let range = startMinute.minutes ... endMinute.minutes
         guard let minutesSinceMidnight = MinutesSinceMidnight(date: date) else { return nil }
         return range.contains(minutesSinceMidnight.minutes)
+    }
+
+    static func defaultValue() -> NotificationTimeWindow { // 442, 553
+        return NotificationTimeWindow(startMinute: 7 * 60 + 12, endMinute: 9 * 60 + 13)
     }
 }

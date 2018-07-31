@@ -58,6 +58,7 @@ struct SeptaColor {
     static let black87 = UIColor.toPercent(0, 0, 0, 0.87)
     static let blue_27_78_142 = UIColor.toPercent(27, 78, 142, 1)
     static let gray_198 = UIColor.toPercent(198, 198, 198, 1)
+    static let blue_20_75_136 = UIColor.toPercent(20, 75, 136, 1)
 
     static func colorFromString(_ string: String) -> UIColor {
         switch string {

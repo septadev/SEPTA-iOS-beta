@@ -26,6 +26,10 @@ struct MinutesSinceMidnight: Codable, Equatable {
         self.minutes = minutes
     }
 
+    init(_ minutes: Int) {
+        self.minutes = minutes
+    }
+
     private static func minutesSinceMidnightComponents(date: Date) -> DateComponents {
         let calendar = Calendar.current
         let minuteOfDayComponents = calendar.dateComponents([.hour, .minute], from: date)
