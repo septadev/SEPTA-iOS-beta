@@ -71,8 +71,8 @@
 		5803C38B210BAC7800BFAE7A /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C38A210BAC7800BFAE7A /* XibView.swift */; };
 		5803C38D210BBD4700BFAE7A /* CustomPushNotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C38C210BBD4700BFAE7A /* CustomPushNotificationsViewModel.swift */; };
 		5805C827210F8CAA00A35613 /* TimeOfDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805C826210F8CAA00A35613 /* TimeOfDayView.swift */; };
-		5805C829210FA71000A35613 /* WeekOfDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805C828210FA71000A35613 /* WeekOfDayView.swift */; };
-		5805C82B210FA72000A35613 /* WeekOfDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5805C82A210FA72000A35613 /* WeekOfDayView.xib */; };
+		5805C829210FA71000A35613 /* DayOfWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805C828210FA71000A35613 /* DayOfWeekView.swift */; };
+		5805C82B210FA72000A35613 /* DayOfWeekView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5805C82A210FA72000A35613 /* DayOfWeekView.xib */; };
 		58088E1B210F80B60068E771 /* NSRange+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58088E1A210F80B60068E771 /* NSRange+Util.swift */; };
 		58088E1D210F84530068E771 /* CustomPushNotificationsTimeframeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58088E1C210F84530068E771 /* CustomPushNotificationsTimeframeView.xib */; };
 		58088E1F210F86890068E771 /* TimeOfDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58088E1E210F86890068E771 /* TimeOfDayView.xib */; };
@@ -785,8 +785,8 @@
 		5803C38A210BAC7800BFAE7A /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		5803C38C210BBD4700BFAE7A /* CustomPushNotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushNotificationsViewModel.swift; sourceTree = "<group>"; };
 		5805C826210F8CAA00A35613 /* TimeOfDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayView.swift; sourceTree = "<group>"; };
-		5805C828210FA71000A35613 /* WeekOfDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekOfDayView.swift; sourceTree = "<group>"; };
-		5805C82A210FA72000A35613 /* WeekOfDayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekOfDayView.xib; sourceTree = "<group>"; };
+		5805C828210FA71000A35613 /* DayOfWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekView.swift; sourceTree = "<group>"; };
+		5805C82A210FA72000A35613 /* DayOfWeekView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayOfWeekView.xib; sourceTree = "<group>"; };
 		58088E1A210F80B60068E771 /* NSRange+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRange+Util.swift"; sourceTree = "<group>"; };
 		58088E1C210F84530068E771 /* CustomPushNotificationsTimeframeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPushNotificationsTimeframeView.xib; sourceTree = "<group>"; };
 		58088E1E210F86890068E771 /* TimeOfDayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeOfDayView.xib; sourceTree = "<group>"; };
@@ -1544,8 +1544,8 @@
 				58088E1C210F84530068E771 /* CustomPushNotificationsTimeframeView.xib */,
 				58088E1E210F86890068E771 /* TimeOfDayView.xib */,
 				5805C826210F8CAA00A35613 /* TimeOfDayView.swift */,
-				5805C828210FA71000A35613 /* WeekOfDayView.swift */,
-				5805C82A210FA72000A35613 /* WeekOfDayView.xib */,
+				5805C828210FA71000A35613 /* DayOfWeekView.swift */,
+				5805C82A210FA72000A35613 /* DayOfWeekView.xib */,
 				5820CB3B210F4AC200782275 /* CustomPushNotificationsHeaderView.swift */,
 				5820CB3D210F4AD300782275 /* CustomPushNotificationsHeaderView.xib */,
 			);
@@ -3371,7 +3371,7 @@
 				677E050520727C9D00B16C09 /* 15T.kml in Resources */,
 				677E04CF20727C9D00B16C09 /* 56.kml in Resources */,
 				580128061F6B1D13006B6DB8 /* FavoriteTripCell.xib in Resources */,
-				5805C82B210FA72000A35613 /* WeekOfDayView.xib in Resources */,
+				5805C82B210FA72000A35613 /* DayOfWeekView.xib in Resources */,
 				677E04C020727C9D00B16C09 /* 64.kml in Resources */,
 				677E04DC20727C9D00B16C09 /* CYN.kml in Resources */,
 				677E04FF20727C9D00B16C09 /* 96.kml in Resources */,
@@ -3839,7 +3839,7 @@
 				58A26DA41F6F30B2005A70D3 /* Route+Displayable.swift in Sources */,
 				58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */,
 				581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */,
-				5805C829210FA71000A35613 /* WeekOfDayView.swift in Sources */,
+				5805C829210FA71000A35613 /* DayOfWeekView.swift in Sources */,
 				58CBEE871F953B5A00F26A15 /* FavoriteState_NextToArriveFavoriteWatcher.swift in Sources */,
 				679924051F6E01BD00FD5691 /* MoreButton.swift in Sources */,
 				58E80FEE20F685D5000E419A /* FavoriteNextToArriveReverseTrip.swift in Sources */,

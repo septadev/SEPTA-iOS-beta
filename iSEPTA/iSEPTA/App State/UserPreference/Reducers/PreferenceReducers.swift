@@ -36,6 +36,8 @@ struct UserPreferencesReducer {
             newPref = reduceUserWantsToSubscribeToOverideDoNotDisturb(action: action, state: state)
         case let action as UpdateSystemAuthorizationStatusForPushNotifications:
             newPref = reduceUpdateSystemAuthorizationStatusForPushNotifications(action: action, state: state)
+        case let action as UpdateDaysOfTheWeekForPushNotifications:
+            newPref = reduceUpdateDaysOfTheWeekForPushNotifications(action: action, state: state)
         default:
             fatalError("You passed in an action for which there is no reducer")
         }
@@ -88,6 +90,16 @@ struct UserPreferencesReducer {
     static func reduceUpdateSystemAuthorizationStatusForPushNotifications(action: UpdateSystemAuthorizationStatusForPushNotifications, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
         userPreferenceState.pushNotificationPreferenceState.systemAuthorizationStatusForNotifications = action.authorizationStatus
+        return userPreferenceState
+    }
+
+    static func reduceUpdateDaysOfTheWeekForPushNotifications(action: UpdateDaysOfTheWeekForPushNotifications, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        if action.isActivated {
+            userPreferenceState.pushNotificationPreferenceState.daysOfWeek.insert(action.dayOfWeek)
+        } else {
+            userPreferenceState.pushNotificationPreferenceState.daysOfWeek.remove(action.dayOfWeek)
+        }
         return userPreferenceState
     }
 }

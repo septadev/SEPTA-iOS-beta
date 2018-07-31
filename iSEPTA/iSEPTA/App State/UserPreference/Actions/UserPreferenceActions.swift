@@ -54,3 +54,9 @@ struct UpdateSystemAuthorizationStatusForPushNotifications: UserPreferencesActio
     let authorizationStatus: PushNotificationAuthorizationState
     let description = "Authorization Status for Push Notifications"
 }
+
+struct UpdateDaysOfTheWeekForPushNotifications: UserPreferencesAction {
+    let dayOfWeek: DaysOfWeekOptionSet
+    let isActivated: Bool
+    let description = "Toggling a particular day of the week for notifications"
+}
