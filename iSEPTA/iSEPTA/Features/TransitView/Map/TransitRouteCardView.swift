@@ -39,7 +39,7 @@ class TransitRouteCardView: UIView {
         didSet {
             alpha = viewModel == nil ? 0 : 1
             enabled = false
-            routeIdLabel.text = viewModel?.routeId
+            routeIdLabel.text = adjustRouteId(routeId: viewModel?.routeId)
             modeImage.image = viewModel?.mode() == .trolley ? UIImage(named: "trolleyWhiteFinal") : UIImage(named: "busWhiteFinal")
         }
     }
@@ -122,6 +122,20 @@ class TransitRouteCardView: UIView {
             // Show the route alert detail
             let alertDetailAction = PushViewController(viewController: .alertDetailViewController, description: "Show Trip Schedule")
             store.dispatch(alertDetailAction)
+        }
+    }
+
+    private func adjustRouteId(routeId: String?) -> String? {
+        // Some unfortunate hard coding of long route ID's
+        switch routeId {
+        case "BLVDDIR":
+            return "BLVD"
+        case "LUCYGO":
+            return "LUGO"
+        case "LUCYGR":
+            return "LUGR"
+        default:
+            return routeId
         }
     }
 }
