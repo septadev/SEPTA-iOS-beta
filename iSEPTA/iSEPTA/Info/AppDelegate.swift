@@ -2,9 +2,12 @@
 
 import Crashlytics
 import Fabric
+import Firebase
+import NotificationCenter
 import ReSwift
 import SeptaSchedule
 import UIKit
+import UserNotifications
 
 let store = Store<AppState>(
     reducer: AppStateReducer.mainReducer,
@@ -23,13 +26,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Crashlytics.sharedInstance().delegate = self
         Fabric.with([Crashlytics.self, Answers.self])
 
         stateProviders.preferenceProvider.subscribe()
 
         databaseUpdateManager.appLaunched(coldStart: true)
+
+        FirebaseApp.configure()
+
+        UNUserNotificationCenter.current().delegate = self
+
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: { _, _ in })
+
+        application.registerForRemoteNotifications()
 
         return true
     }
@@ -66,4 +80,7 @@ extension AppDelegate: CrashlyticsDelegate {
         UserDefaults.standard.set(true, forKey: InAppReview.crashReportedKey)
         completionHandler(true)
     }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
 }
