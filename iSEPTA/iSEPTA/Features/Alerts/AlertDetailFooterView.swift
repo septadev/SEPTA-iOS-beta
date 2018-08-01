@@ -1,0 +1,62 @@
+//
+//  AlertDetailFooterView.swift
+//  iSEPTA
+//
+//  Created by Mark Broski on 8/1/18.
+//  Copyright © 2018 Mark Broski. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+class AlertDetailFooterView: UIView {
+    @IBOutlet var subscribeLabel: UILabel! {
+        didSet {
+            guard let text = subscribeLabel.text else { return }
+            subscribeLabel.attributedText = text.attributed(
+                fontSize: 14,
+                fontWeight: .bold
+            )
+        }
+    }
+
+    @IBOutlet var dividerLabel: UIView! {
+        didSet {
+            dividerLabel.backgroundColor = SeptaColor.gray_135
+        }
+    }
+
+    @IBOutlet var viewPreferencesButton: UIButton! {
+        didSet {
+            guard let text = viewPreferencesButton.titleLabel?.text else { return }
+            let attributedText = text.attributed(
+                fontSize: 12,
+                fontWeight: .regular,
+                textColor: SeptaColor.blue_20_75_136,
+                alignment: .left,
+                kerning: 0.2,
+                lineHeight: nil
+            )
+            viewPreferencesButton.setAttributedTitle(attributedText, for: .normal)
+        }
+    }
+
+    @IBOutlet var viewPreferencesLabel: UILabel! {
+        didSet {
+            guard let text = viewPreferencesLabel.text else { return }
+            viewPreferencesLabel.attributedText = text.attributed(
+                fontSize: 12,
+                fontWeight: .bold,
+                textColor: SeptaColor.blue_20_75_136,
+                alignment: .left,
+                kerning: 0.2,
+                lineHeight: nil
+            )
+        }
+    }
+
+    @IBAction func userTappedOnViewNotificationPreferences(_: Any) {
+        store.dispatch(SwitchTabs(activeNavigationController: .more, description: "User wants to view preferences"))
+        store.dispatch(PushViewController(viewController: .managePushNotficationsController, description: "Show Push Notifications"))
+    }
+}

@@ -250,6 +250,8 @@
 		58A26D9D1F6F2790005A70D3 /* Route+AlertState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26D9C1F6F2790005A70D3 /* Route+AlertState.swift */; };
 		58A26DA21F6F283E005A70D3 /* AlertDetailProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26DA11F6F283E005A70D3 /* AlertDetailProvider.swift */; };
 		58A26DA41F6F30B2005A70D3 /* Route+Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26DA31F6F30B2005A70D3 /* Route+Displayable.swift */; };
+		58AC62882111F73700E4EA0A /* AlertDetailFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58AC62872111F73700E4EA0A /* AlertDetailFooterView.xib */; };
+		58AC628C2111F7EC00E4EA0A /* AlertDetailFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AC628B2111F7EC00E4EA0A /* AlertDetailFooterView.swift */; };
 		58AF5FE420F3D9EA00620484 /* NextToArriveState_ReverseTripStatusWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF5FE320F3D9EA00620484 /* NextToArriveState_ReverseTripStatusWatcher.swift */; };
 		58AF5FE820F3DC8D00620484 /* NextToArriveReverseTripStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF5FE720F3DC8D00620484 /* NextToArriveReverseTripStatus.swift */; };
 		58AF5FEA20F4F1FF00620484 /* NextToArriveReverseTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF5FE920F4F1FF00620484 /* NextToArriveReverseTrip.swift */; };
@@ -993,6 +995,8 @@
 		58A26D9C1F6F2790005A70D3 /* Route+AlertState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+AlertState.swift"; sourceTree = "<group>"; };
 		58A26DA11F6F283E005A70D3 /* AlertDetailProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailProvider.swift; sourceTree = "<group>"; };
 		58A26DA31F6F30B2005A70D3 /* Route+Displayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Displayable.swift"; sourceTree = "<group>"; };
+		58AC62872111F73700E4EA0A /* AlertDetailFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertDetailFooterView.xib; sourceTree = "<group>"; };
+		58AC628B2111F7EC00E4EA0A /* AlertDetailFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailFooterView.swift; sourceTree = "<group>"; };
 		58ACEADD1F3A9A9B00DC2836 /* SeptaSchedule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SeptaSchedule.xcodeproj; path = ../SeptaSchedule/SeptaSchedule.xcodeproj; sourceTree = "<group>"; };
 		58AF5FE320F3D9EA00620484 /* NextToArriveState_ReverseTripStatusWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveState_ReverseTripStatusWatcher.swift; sourceTree = "<group>"; };
 		58AF5FE720F3DC8D00620484 /* NextToArriveReverseTripStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveReverseTripStatus.swift; sourceTree = "<group>"; };
@@ -1784,6 +1788,8 @@
 				582F4E881F33B1120062A546 /* Alert.swift */,
 				58A26D981F6F10F8005A70D3 /* AlertNavigationControllerStateProvider.swift */,
 				58A26D9A1F6F221E005A70D3 /* AlertDetailViewController.swift */,
+				58AC62872111F73700E4EA0A /* AlertDetailFooterView.xib */,
+				58AC628B2111F7EC00E4EA0A /* AlertDetailFooterView.swift */,
 				582F4E891F33B1120062A546 /* alerts.storyboard */,
 				587BC04D1F6EDE0D00B92BB6 /* AlertsTransitModeToolbarViewController.swift */,
 				587BC0531F6EE86000B92BB6 /* AlertsViewController.swift */,
@@ -3438,6 +3444,7 @@
 				58088E1D210F84530068E771 /* TimeframeView.xib in Resources */,
 				677E04FA20727C9D00B16C09 /* 204.kml in Resources */,
 				58088E1F210F86890068E771 /* TimeframeBoundaryView.xib in Resources */,
+				58AC62882111F73700E4EA0A /* AlertDetailFooterView.xib in Resources */,
 				677E054020727C9D00B16C09 /* WCS.kml in Resources */,
 				677E054F20727C9D00B16C09 /* 30.kml in Resources */,
 				677E050520727C9D00B16C09 /* 15T.kml in Resources */,
@@ -3871,6 +3878,7 @@
 				5825319C1F408C2D0088D056 /* UserPreferencesStatePersister.swift in Sources */,
 				676355051F5E9A0300CA7EAB /* SchedulesViewModelDelegate.swift in Sources */,
 				5820CB38210F3D4600782275 /* AttributedString+Util.swift in Sources */,
+				58AC628C2111F7EC00E4EA0A /* AlertDetailFooterView.swift in Sources */,
 				67C5672B1F596E0700FF6203 /* ErrorObjects.swift in Sources */,
 				58490E4B1F560226007DBCA1 /* AlertActions.swift in Sources */,
 				58E54E201F65977100E9B66D /* NextToArriveTripViewController.swift in Sources */,

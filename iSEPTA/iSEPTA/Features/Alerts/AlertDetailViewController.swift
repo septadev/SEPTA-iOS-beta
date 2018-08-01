@@ -81,6 +81,9 @@ class AlertDetailViewController: UIViewController, IdentifiableController {
 
         setTitle()
         alertDetails = store.state.alertState.alertDetails
+
+        let alertDetailFooterView: AlertDetailFooterView = UIView.instanceFromNib(named: "AlertDetailFooterView")
+        tableView.tableFooterView = alertDetailFooterView
     }
 
     override func didMove(toParentViewController parent: UIViewController?) {
