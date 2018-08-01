@@ -10,48 +10,29 @@ import Foundation
 import ReSwift
 import UIKit
 
-class CustomPushNotificationsViewController: BaseNonModalViewController, StoreSubscriber, IdentifiableController {
-    typealias StoreSubscriberStateType = PushNotificationPreferenceState
-
-    @IBOutlet var instructionsLabel: UILabel! {
-        didSet {
-            guard let text = instructionsLabel.text else { return }
-            instructionsLabel.attributedText = text.attributed(
-                fontSize: 14,
-                fontWeight: .regular,
-                textColor: SeptaColor.black87,
-                alignment: .center,
-                kerning: 0.1,
-                lineHeight: 20
-            )
-        }
-    }
-
+class CustomPushNotificationsViewController: UITableViewController, IdentifiableController {
     var viewController: ViewController = .customPushNotificationsController
-    var viewModel: CustomPushNotificationsViewModel = CustomPushNotificationsViewModel()
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        subscribe()
+    var headerView: UIView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        headerView = UIView.instanceFromNib(named: "MyNotificationsHeaderView")
+        tableView.tableHeaderView = headerView
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        store.unsubscribe(self)
+    override func numberOfSections(in _: UITableView) -> Int {
+        return 1
     }
 
-    func newState(state: StoreSubscriberStateType) {
-        viewModel.stateUpdated(state)
+    override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        return 20
     }
 
-    func subscribe() {
-        store.subscribe(self) {
-            $0.select { $0.preferenceState.pushNotificationPreferenceState }
-        }
-    }
-
-    override func didMove(toParentViewController parent: UIViewController?) {
-        super.didMove(toParentViewController: parent)
-        backButtonPopped(toParentViewController: parent)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        cell.textLabel?.text = "\(indexPath.row)"
+        return cell
     }
 }

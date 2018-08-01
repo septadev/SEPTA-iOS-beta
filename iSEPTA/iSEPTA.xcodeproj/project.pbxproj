@@ -253,6 +253,10 @@
 		58AC62882111F73700E4EA0A /* AlertDetailFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58AC62872111F73700E4EA0A /* AlertDetailFooterView.xib */; };
 		58AC628C2111F7EC00E4EA0A /* AlertDetailFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AC628B2111F7EC00E4EA0A /* AlertDetailFooterView.swift */; };
 		58AC628E2112335400E4EA0A /* PushNotificationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AC628D2112335400E4EA0A /* PushNotificationRoute.swift */; };
+		58AC629021123F8100E4EA0A /* MyNotificationsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AC628F21123F8100E4EA0A /* MyNotificationsHeaderView.swift */; };
+		58AC629221123F9200E4EA0A /* MyNotificationsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58AC629121123F9200E4EA0A /* MyNotificationsHeaderView.xib */; };
+		58AC629421124AAE00E4EA0A /* InstructionsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58AC629321124AAE00E4EA0A /* InstructionsHeaderView.xib */; };
+		58AC629621124ACA00E4EA0A /* InstructionsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AC629521124ACA00E4EA0A /* InstructionsHeaderView.swift */; };
 		58AF5FE420F3D9EA00620484 /* NextToArriveState_ReverseTripStatusWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF5FE320F3D9EA00620484 /* NextToArriveState_ReverseTripStatusWatcher.swift */; };
 		58AF5FE820F3DC8D00620484 /* NextToArriveReverseTripStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF5FE720F3DC8D00620484 /* NextToArriveReverseTripStatus.swift */; };
 		58AF5FEA20F4F1FF00620484 /* NextToArriveReverseTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF5FE920F4F1FF00620484 /* NextToArriveReverseTrip.swift */; };
@@ -999,6 +1003,10 @@
 		58AC62872111F73700E4EA0A /* AlertDetailFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertDetailFooterView.xib; sourceTree = "<group>"; };
 		58AC628B2111F7EC00E4EA0A /* AlertDetailFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailFooterView.swift; sourceTree = "<group>"; };
 		58AC628D2112335400E4EA0A /* PushNotificationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationRoute.swift; sourceTree = "<group>"; };
+		58AC628F21123F8100E4EA0A /* MyNotificationsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotificationsHeaderView.swift; sourceTree = "<group>"; };
+		58AC629121123F9200E4EA0A /* MyNotificationsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyNotificationsHeaderView.xib; sourceTree = "<group>"; };
+		58AC629321124AAE00E4EA0A /* InstructionsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstructionsHeaderView.xib; sourceTree = "<group>"; };
+		58AC629521124ACA00E4EA0A /* InstructionsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsHeaderView.swift; sourceTree = "<group>"; };
 		58ACEADD1F3A9A9B00DC2836 /* SeptaSchedule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SeptaSchedule.xcodeproj; path = ../SeptaSchedule/SeptaSchedule.xcodeproj; sourceTree = "<group>"; };
 		58AF5FE320F3D9EA00620484 /* NextToArriveState_ReverseTripStatusWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveState_ReverseTripStatusWatcher.swift; sourceTree = "<group>"; };
 		58AF5FE720F3DC8D00620484 /* NextToArriveReverseTripStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveReverseTripStatus.swift; sourceTree = "<group>"; };
@@ -1566,6 +1574,10 @@
 			isa = PBXGroup;
 			children = (
 				5803C362210A4FD400BFAE7A /* PushNotifications.storyboard */,
+				58AC628F21123F8100E4EA0A /* MyNotificationsHeaderView.swift */,
+				58AC629121123F9200E4EA0A /* MyNotificationsHeaderView.xib */,
+				58AC629321124AAE00E4EA0A /* InstructionsHeaderView.xib */,
+				58AC629521124ACA00E4EA0A /* InstructionsHeaderView.swift */,
 				5803C384210B9C2E00BFAE7A /* CustomPushNotificationsViewController.swift */,
 				5803C38C210BBD4700BFAE7A /* CustomPushNotificationsViewModel.swift */,
 				672DF2502110B58500FD8C1D /* Times of Day */,
@@ -3359,6 +3371,7 @@
 				677E04BE20727C9D00B16C09 /* 106.kml in Resources */,
 				677E04E120727C9D00B16C09 /* 110.kml in Resources */,
 				677E04D220727C9D00B16C09 /* 23.kml in Resources */,
+				58AC629221123F9200E4EA0A /* MyNotificationsHeaderView.xib in Resources */,
 				677E052E20727C9D00B16C09 /* WIL.kml in Resources */,
 				677E054620727C9D00B16C09 /* 26.kml in Resources */,
 				677E04FD20727C9D00B16C09 /* 61.kml in Resources */,
@@ -3445,6 +3458,7 @@
 				677E051A20727C9D00B16C09 /* 80.kml in Resources */,
 				677E052320727C9D00B16C09 /* 12.kml in Resources */,
 				58088E1D210F84530068E771 /* TimeframeView.xib in Resources */,
+				58AC629421124AAE00E4EA0A /* InstructionsHeaderView.xib in Resources */,
 				677E04FA20727C9D00B16C09 /* 204.kml in Resources */,
 				58088E1F210F86890068E771 /* TimeframeBoundaryView.xib in Resources */,
 				58AC62882111F73700E4EA0A /* AlertDetailFooterView.xib in Resources */,
@@ -3745,6 +3759,7 @@
 				678DAAA21F6706E300EB6EE8 /* NextToArriveTripGrouper.swift in Sources */,
 				676B7D8E1F7D01950052F016 /* FaresViewModel.swift in Sources */,
 				67C567331F598A0400FF6203 /* TransitAlertView.swift in Sources */,
+				58AC629621124ACA00E4EA0A /* InstructionsHeaderView.swift in Sources */,
 				5814AA841F43589E00DF774A /* TripScheduleViewModel.swift in Sources */,
 				0E8E60CA20EC109200AB08FE /* TransitViewSelectionViewController.swift in Sources */,
 				5816AB731F7C10CD00210C07 /* ScrollableTableViewToggle.swift in Sources */,
@@ -3952,6 +3967,7 @@
 				67BC3F8D1F66AD4E001F9FE3 /* NoConnectionSectionHeader.swift in Sources */,
 				0E8E60D920EFBDD600AB08FE /* TransitViewReducer.swift in Sources */,
 				58248B6E1F6D6A3800DA2D65 /* EditFavoriteViewController.swift in Sources */,
+				58AC629021123F8100E4EA0A /* MyNotificationsHeaderView.swift in Sources */,
 				676354FD1F5E255A00CA7EAB /* FilterableRoute.swift in Sources */,
 				58B892171F38F7E700BFFEFA /* Strings.swift in Sources */,
 				0E313BB020BEFCB7002EFD34 /* DatabaseUpdater.swift in Sources */,
