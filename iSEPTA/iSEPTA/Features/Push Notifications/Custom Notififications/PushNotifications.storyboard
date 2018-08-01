@@ -199,7 +199,7 @@ Instructions</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="76" translatesAutoresizingMaskIntoConstraints="NO" id="u1s-NC-tMh" userLabel="SelectFimeFrameView" customClass="XibView" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="270" width="375" height="76"/>
+                                <rect key="frame" x="0.0" y="270" width="375" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TimeframeGroupView"/>

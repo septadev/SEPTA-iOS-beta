@@ -12,8 +12,12 @@ import UIKit
 
 typealias TimeWindows = [NotificationTimeWindow]
 
-class TimeframeGroupView: UIView, StoreSubscriber {
-    typealias StoreSubscriberStateType = TimeWindows
+protocol DeleteTimeFrameDelegate: class {
+    func deleteTimeframe(index: Int)
+}
+
+class TimeframeGroupView: UIView, StoreSubscriber, DeleteTimeFrameDelegate {
+    typealias StoreSubscriberStateType = Int
 
     @IBOutlet var stackView: UIStackView!
 
@@ -23,6 +27,7 @@ class TimeframeGroupView: UIView, StoreSubscriber {
     var timeFrame2: TimeframeView!
     @IBOutlet var timeFrame2Wrapper: XibView!
 
+    var addTimeframeButton: UIButton!
     @IBOutlet var addTimeFrameWrapper: XibView!
 
     override func willMove(toSuperview superview: UIView?) {
@@ -30,11 +35,17 @@ class TimeframeGroupView: UIView, StoreSubscriber {
         super.willMove(toSuperview: superview)
         if let timeframeView = timeFrame1Wrapper.contentView as? TimeframeView {
             timeFrame1 = timeframeView
+            timeFrame1.configureSubscriptions(index: 0)
+            timeFrame1.subscribe()
+            timeFrame1.deleteTimeFrameDelegate = self
         }
         if let timeframeView = timeFrame2Wrapper.contentView as? TimeframeView {
             timeFrame2 = timeframeView
+            timeFrame2.configureSubscriptions(index: 1)
+            timeFrame2.deleteTimeFrameDelegate = self
         }
         if let button = addTimeFrameWrapper.contentView as? UIButton {
+            addTimeframeButton = button
             button.addTarget(self, action: #selector(addTimeFrameButtonTapped(sender:)), for: .touchUpInside)
         }
         subscribe()
@@ -42,26 +53,40 @@ class TimeframeGroupView: UIView, StoreSubscriber {
 
     func subscribe() {
         store.subscribe(self) {
-            $0.select { $0.preferenceState.pushNotificationPreferenceState.notificationTimeWindows }
+            $0.select { $0.preferenceState.pushNotificationPreferenceState.notificationTimeWindows.count }
         }
     }
 
     @objc func addTimeFrameButtonTapped(sender _: UIButton) {
+        let action = InsertNewPushTimeframe()
+        store.dispatch(action)
     }
 
-    func newState(state: TimeWindows) {
+    func newState(state: Int) {
         stackView.clearSubviews()
-        arrangeViewsBasedOnTimeWindowsCount(timeWindows: state)
+        arrangeViewsBasedOnTimeWindowsCount(count: state)
+        if state == 2 {
+            timeFrame2.subscribe()
+            timeFrame1.closeTimeFrameButton.isHidden = false
+        }
     }
 
-    func arrangeViewsBasedOnTimeWindowsCount(timeWindows: TimeWindows) {
-        switch timeWindows.count {
+    func deleteTimeframe(index: Int) {
+        timeFrame2.unsubscribe()
+        timeFrame1.closeTimeFrameButton.isHidden = true
+        let action = DeleteTimeframe(index: index)
+        store.dispatch(action)
+    }
+
+    func arrangeViewsBasedOnTimeWindowsCount(count: Int) {
+        switch count {
         case 0: fatalError("Default time windows are not configured Correctly.")
         case 1:
-            timeFrame1.setTimeFrameIndex(index: 0)
             stackView.addArrangedSubview(timeFrame1)
-        case 2: break
-
+            stackView.addArrangedSubview(addTimeframeButton)
+        case 2:
+            stackView.addArrangedSubview(timeFrame1)
+            stackView.addArrangedSubview(timeFrame2)
         default: break
         }
     }

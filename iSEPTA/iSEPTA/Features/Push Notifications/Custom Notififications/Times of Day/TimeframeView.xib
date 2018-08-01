@@ -30,7 +30,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="103" placeholderIntrinsicHeight="16" translatesAutoresizingMaskIntoConstraints="NO" id="mqT-1C-lDB" userLabel="StartOfFrame" customClass="XibView" customModule="Septa" customModuleProvider="target">
-                    <rect key="frame" x="62" y="34" width="110.5" height="44"/>
+                    <rect key="frame" x="69.5" y="34" width="103" height="16"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TimeframeBoundaryView"/>
@@ -47,12 +47,19 @@
 CenteringView</string>
                 </view>
                 <view contentMode="scaleToFill" placeholderIntrinsicWidth="112" placeholderIntrinsicHeight="16" translatesAutoresizingMaskIntoConstraints="NO" id="TPw-aW-LHw" userLabel="EndOfFrame" customClass="XibView" customModule="Septa" customModuleProvider="target">
-                    <rect key="frame" x="202.5" y="34" width="112" height="44"/>
+                    <rect key="frame" x="202.5" y="34" width="112" height="16"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TimeframeBoundaryView"/>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLT-Qf-5y7">
+                    <rect key="frame" x="358" y="0.0" width="17" height="18"/>
+                    <state key="normal" backgroundImage="closeTimeFrame"/>
+                    <connections>
+                        <action selector="closeTimeframeButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Axp-Hf-rhM"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -61,6 +68,7 @@ CenteringView</string>
                     <string key="userLabel">
 CenteringViewCenterX</string>
                 </constraint>
+                <constraint firstItem="tLT-Qf-5y7" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="PRd-JY-Se0" userLabel="CloseButtonTop"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Nin-Bz-CCU" secondAttribute="trailing" constant="36" id="TSI-35-0Ky" userLabel="DividerRight"/>
                 <constraint firstItem="i1i-sm-UX7" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Td9-jx-Z2e" userLabel="TimeframeCenterX"/>
                 <constraint firstItem="TPw-aW-LHw" firstAttribute="top" secondItem="mqT-1C-lDB" secondAttribute="top" id="Wd1-vH-P4Q" userLabel="EndOfFrameTop"/>
@@ -70,6 +78,7 @@ CenteringViewCenterX</string>
                 <constraint firstItem="57p-WY-g0n" firstAttribute="leading" secondItem="mqT-1C-lDB" secondAttribute="trailing" id="jAd-Do-DY6" userLabel="StartOfFrameRight"/>
                 <constraint firstItem="mqT-1C-lDB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="34" id="jfE-Rr-YQc" userLabel="StartTop"/>
                 <constraint firstItem="57p-WY-g0n" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="ofu-Th-w3T" userLabel="CenteringViewBottom"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tLT-Qf-5y7" secondAttribute="trailing" id="q80-uE-0fA" userLabel="CloseButtonRight"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
@@ -77,6 +86,7 @@ CenteringViewCenterX</string>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="centeringView" destination="57p-WY-g0n" id="xy4-xp-hgY"/>
+                <outlet property="closeTimeFrameButton" destination="tLT-Qf-5y7" id="tFC-bU-X3Y"/>
                 <outlet property="dividerView" destination="Nin-Bz-CCU" id="vp1-xd-Cn0"/>
                 <outlet property="endOfDay" destination="TPw-aW-LHw" id="RIX-70-kBW"/>
                 <outlet property="startOfDay" destination="mqT-1C-lDB" id="rmq-DA-pP3"/>
@@ -85,4 +95,7 @@ CenteringViewCenterX</string>
             <point key="canvasLocation" x="88.5" y="-64"/>
         </view>
     </objects>
+    <resources>
+        <image name="closeTimeFrame" width="17" height="17"/>
+    </resources>
 </document>

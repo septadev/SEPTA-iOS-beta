@@ -65,3 +65,12 @@ struct UpdatePushNotificationTimeframe: UserPreferencesAction {
     let description = "Updating a timeframe"
     let block: (UserPreferenceState) -> UserPreferenceState
 }
+
+struct InsertNewPushTimeframe: UserPreferencesAction {
+    let description = "Adding a new time frame"
+}
+
+struct DeleteTimeframe: UserPreferencesAction {
+    let index: Int
+    let description = "Deleting a new time frame"
+}

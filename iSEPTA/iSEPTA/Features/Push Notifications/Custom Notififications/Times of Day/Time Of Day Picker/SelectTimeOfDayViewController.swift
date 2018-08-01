@@ -19,6 +19,9 @@ class SelectTimeOfDayViewController: UIViewController, IdentifiableController, S
 
     static var actionTarget: ((Date) -> Void)? // Action to take when the value changes
 
+    static var minimumDateRequirement: Date?
+    static var maximumDateRequirement: Date?
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribe()
@@ -53,5 +56,7 @@ class SelectTimeOfDayViewController: UIViewController, IdentifiableController, S
     func newState(state: StoreSubscriberStateType) {
         guard let date = state.timeOnlyDate else { return }
         datePicker.setDate(date, animated: false)
+        datePicker.minimumDate = SelectTimeOfDayViewController.minimumDateRequirement?.addingTimeInterval(60 * 15)
+        datePicker.maximumDate = SelectTimeOfDayViewController.maximumDateRequirement?.addingTimeInterval(-60 * 15)
     }
 }

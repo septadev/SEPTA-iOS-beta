@@ -12,35 +12,41 @@ import UIKit
 
 typealias MinutesSinceMidnightSubscription = (AppState) -> MinutesSinceMidnight
 
+enum TimeFrameBoundaryType {
+    case start
+    case end
+}
+
 class TimeframeBoundaryView: UIView, StoreSubscriber {
     var timeFrameIndex: Int = 0
 
     typealias StoreSubscriberStateType = MinutesSinceMidnight
 
-    var notYetSubscribed = true
-
     @IBAction func timeOfDayViewTapped(_: Any) {
         let action = PresentModal(viewController: .timeOfDayPickerController, description: "Getting read to pick a date")
         SelectTimeOfDayViewController.subscriptonTarget = subscriptonTarget
         SelectTimeOfDayViewController.actionTarget = actionTarget
-
+        delegate.willEditTimeOfDay(boundaryType: timeFrameBoundaryType)
         store.dispatch(action)
     }
 
     /// where in the state tree should the subscribption be made
-    var subscriptonTarget: MinutesSinceMidnightSubscription? {
-        didSet {
-            guard let subscriptionTarget = subscriptonTarget else { return }
-            if notYetSubscribed {
-                store.subscribe(self, transform: { $0.select(subscriptionTarget) })
+    var subscriptonTarget: MinutesSinceMidnightSubscription?
 
-                notYetSubscribed = false
-            }
-        }
+    func subscribe() {
+        guard let subscriptionTarget = subscriptonTarget else { return }
+        store.subscribe(self, transform: { $0.select(subscriptionTarget) })
+    }
+
+    func unsubscribe() {
+        store.unsubscribe(self)
     }
 
     /// where in the state tree should the subscribption be made
     var actionTarget: ((Date) -> Void)?
+
+    var timeFrameBoundaryType: TimeFrameBoundaryType!
+    weak var delegate: TimeframeBoundaryViewDelegate!
 
     @IBOutlet var headingLabel: UILabel! {
         didSet {
@@ -94,5 +100,9 @@ class TimeframeBoundaryView: UIView, StoreSubscriber {
 
     override var intrinsicContentSize: CGSize {
         return CGSize(width: UIViewNoIntrinsicMetric, height: 44)
+    }
+
+    deinit {
+        unsubscribe()
     }
 }

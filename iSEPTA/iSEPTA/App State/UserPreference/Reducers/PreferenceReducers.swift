@@ -40,6 +40,10 @@ struct UserPreferencesReducer {
             newPref = reduceUpdateDaysOfTheWeekForPushNotifications(action: action, state: state)
         case let action as UpdatePushNotificationTimeframe:
             newPref = reduceUpdatePushNotificationTimeframe(action: action, state: state)
+        case let action as InsertNewPushTimeframe:
+            newPref = reduceInsertNewPushTimeframe(action: action, state: state)
+        case let action as DeleteTimeframe:
+            newPref = reduceDeleteTimeframe(action: action, state: state)
         default:
             fatalError("You passed in an action for which there is no reducer")
         }
@@ -106,6 +110,30 @@ struct UserPreferencesReducer {
     }
 
     static func reduceUpdatePushNotificationTimeframe(action: UpdatePushNotificationTimeframe, state: UserPreferenceState) -> UserPreferenceState {
-        return action.block(state)
+        var userPreferenceState = action.block(state)
+//        let notificationTimeWindows: [NotificationTimeWindow] = userPreferenceState.pushNotificationPreferenceState.notificationTimeWindows.map({
+//            var timeWindow = $0
+//            if timeWindow.startMinute.minutes > timeWindow.endMinute.minutes {
+//                let startMinute = timeWindow.startMinute
+//                timeWindow.startMinute = timeWindow.endMinute
+//                timeWindow.endMinute = startMinute
+//            }
+//            return timeWindow
+//        }).sorted { $0.startMinute.minutes < $1.startMinute.minutes }
+//
+//        userPreferenceState.pushNotificationPreferenceState.notificationTimeWindows = notificationTimeWindows
+        return userPreferenceState
+    }
+
+    static func reduceInsertNewPushTimeframe(action _: InsertNewPushTimeframe, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.pushNotificationPreferenceState.notificationTimeWindows.append(NotificationTimeWindow.defaultValue())
+        return userPreferenceState
+    }
+
+    static func reduceDeleteTimeframe(action: DeleteTimeframe, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.pushNotificationPreferenceState.notificationTimeWindows.remove(at: action.index)
+        return userPreferenceState
     }
 }
