@@ -32,6 +32,7 @@ class ManagePushNotificationsViewController: UITableViewController, Identifiable
         viewModel = ManagePushNotificationsViewModel()
         let nib = UINib(nibName: Keys.tableHeaderViewNib, bundle: nil)
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: Keys.tableHeaderViewId)
+
         loadFooterView()
     }
 

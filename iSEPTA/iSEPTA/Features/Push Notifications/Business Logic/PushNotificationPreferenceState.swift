@@ -19,7 +19,7 @@ struct PushNotificationPreferenceState: Codable, Equatable {
     var daysOfWeek: DaysOfWeekOptionSet = DaysOfWeekOptionSet.mondayThroughFriday()
 
     /// The routes for which the user has subscribed to notifications
-    var routeIds: [String] = [String]()
+    var routeIds: [PushNotificationRoute] = [PushNotificationRoute]()
 
     /// Does the user want to receive notifications
     var userWantsToEnablePushNotifications: Bool = false
@@ -38,10 +38,10 @@ struct PushNotificationPreferenceState: Codable, Equatable {
     /// those preferences do not include whether or not the user has authorized
     /// push notifications in the first place.  That needs to be checked separately
     /// TODO we will probably want to move this method someplace else
-    func userShouldReceiveNotification(atDate date: Date, forRouteId selectedRouteId: String) -> Bool {
+    func userShouldReceiveNotification(atDate date: Date, pushNotificationRoute: PushNotificationRoute) -> Bool {
         let timeWindowsMatches = notificationTimeWindows.map { $0.dateFitsInRange(date: date) }
         return
-            routeIds.contains(selectedRouteId) &&
+            routeIds.contains(pushNotificationRoute) &&
             daysOfWeek.matchesDate(date) &&
             timeWindowsMatches.contains(true)
     }
