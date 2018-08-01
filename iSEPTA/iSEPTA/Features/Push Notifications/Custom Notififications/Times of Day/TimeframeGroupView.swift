@@ -27,7 +27,7 @@ class TimeframeGroupView: UIView, StoreSubscriber, DeleteTimeFrameDelegate {
     var timeFrame2: TimeframeView!
     @IBOutlet var timeFrame2Wrapper: XibView!
 
-    var addTimeframeButton: UIButton!
+    var addTimeframeButtonView: AddTimeframeButtonView!
     @IBOutlet var addTimeFrameWrapper: XibView!
 
     override func willMove(toSuperview superview: UIView?) {
@@ -44,9 +44,10 @@ class TimeframeGroupView: UIView, StoreSubscriber, DeleteTimeFrameDelegate {
             timeFrame2.configureSubscriptions(index: 1)
             timeFrame2.deleteTimeFrameDelegate = self
         }
-        if let button = addTimeFrameWrapper.contentView as? UIButton {
-            addTimeframeButton = button
-            button.addTarget(self, action: #selector(addTimeFrameButtonTapped(sender:)), for: .touchUpInside)
+        if let buttonView = addTimeFrameWrapper.contentView as? AddTimeframeButtonView {
+            addTimeframeButtonView = buttonView
+            addTimeframeButtonView.addTimeFrameButton.addTarget(self, action: #selector(addTimeFrameButtonTapped(sender:)), for: .touchUpInside)
+            addTimeframeButtonView.addTimeFrameButton.setTitleColor(SeptaColor.blue_20_75_136, for: .normal)
         }
         subscribe()
     }
@@ -83,7 +84,7 @@ class TimeframeGroupView: UIView, StoreSubscriber, DeleteTimeFrameDelegate {
         case 0: fatalError("Default time windows are not configured Correctly.")
         case 1:
             stackView.addArrangedSubview(timeFrame1)
-            stackView.addArrangedSubview(addTimeframeButton)
+            stackView.addArrangedSubview(addTimeframeButtonView)
         case 2:
             stackView.addArrangedSubview(timeFrame1)
             stackView.addArrangedSubview(timeFrame2)

@@ -610,8 +610,8 @@
 		678F05391F5BFFE500CC4D3C /* LocationActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F05381F5BFFE500CC4D3C /* LocationActions.swift */; };
 		678F053B1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F053A1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift */; };
 		679924051F6E01BD00FD5691 /* MoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679924041F6E01BD00FD5691 /* MoreButton.swift */; };
-		67A0DD1B2110BE5F001EAE15 /* AddTimeframeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A0DD1A2110BE5F001EAE15 /* AddTimeframeButton.swift */; };
-		67A0DD1D2110BEF8001EAE15 /* AddTimeframeButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67A0DD1C2110BEF8001EAE15 /* AddTimeframeButton.xib */; };
+		679BC9D22111509C00F666BA /* AddTimeframeButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679BC9D12111509C00F666BA /* AddTimeframeButtonView.xib */; };
+		679BC9D4211150C600F666BA /* AddTimeframeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679BC9D3211150C600F666BA /* AddTimeframeButtonView.swift */; };
 		67A0DD202110E9FB001EAE15 /* SelectTimeOfDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A0DD1F2110E9FB001EAE15 /* SelectTimeOfDayViewController.swift */; };
 		67A0DD262110EC28001EAE15 /* DatePickerAnimationIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A0DD222110EC28001EAE15 /* DatePickerAnimationIn.swift */; };
 		67A0DD272110EC28001EAE15 /* DatePickerAnimationOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A0DD232110EC28001EAE15 /* DatePickerAnimationOut.swift */; };
@@ -1357,8 +1357,8 @@
 		678F05381F5BFFE500CC4D3C /* LocationActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationActions.swift; sourceTree = "<group>"; };
 		678F053A1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupSearchMode.swift; sourceTree = "<group>"; };
 		679924041F6E01BD00FD5691 /* MoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreButton.swift; sourceTree = "<group>"; };
-		67A0DD1A2110BE5F001EAE15 /* AddTimeframeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeframeButton.swift; sourceTree = "<group>"; };
-		67A0DD1C2110BEF8001EAE15 /* AddTimeframeButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTimeframeButton.xib; sourceTree = "<group>"; };
+		679BC9D12111509C00F666BA /* AddTimeframeButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTimeframeButtonView.xib; sourceTree = "<group>"; };
+		679BC9D3211150C600F666BA /* AddTimeframeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeframeButtonView.swift; sourceTree = "<group>"; };
 		67A0DD1F2110E9FB001EAE15 /* SelectTimeOfDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTimeOfDayViewController.swift; sourceTree = "<group>"; };
 		67A0DD222110EC28001EAE15 /* DatePickerAnimationIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerAnimationIn.swift; sourceTree = "<group>"; };
 		67A0DD232110EC28001EAE15 /* DatePickerAnimationOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerAnimationOut.swift; sourceTree = "<group>"; };
@@ -2802,8 +2802,7 @@
 				58088E1C210F84530068E771 /* TimeframeView.xib */,
 				5805C826210F8CAA00A35613 /* TimeframeBoundaryView.swift */,
 				58088E1E210F86890068E771 /* TimeframeBoundaryView.xib */,
-				67A0DD1A2110BE5F001EAE15 /* AddTimeframeButton.swift */,
-				67A0DD1C2110BEF8001EAE15 /* AddTimeframeButton.xib */,
+				679BC9CE2111508200F666BA /* Add Time Frame */,
 				67A0DD1E2110E9DD001EAE15 /* Time Of Day Picker */,
 			);
 			path = "Times of Day";
@@ -3019,6 +3018,15 @@
 				678F05381F5BFFE500CC4D3C /* LocationActions.swift */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		679BC9CE2111508200F666BA /* Add Time Frame */ = {
+			isa = PBXGroup;
+			children = (
+				679BC9D12111509C00F666BA /* AddTimeframeButtonView.xib */,
+				679BC9D3211150C600F666BA /* AddTimeframeButtonView.swift */,
+			);
+			path = "Add Time Frame";
 			sourceTree = "<group>";
 		};
 		67A0DD1E2110E9DD001EAE15 /* Time Of Day Picker */ = {
@@ -3244,6 +3252,7 @@
 				677E050E20727C9D00B16C09 /* 36B.kml in Resources */,
 				677E051820727C9D00B16C09 /* regionalrail.kml in Resources */,
 				678DAAB31F67475200EB6EE8 /* ConnectionCell.xib in Resources */,
+				679BC9D22111509C00F666BA /* AddTimeframeButtonView.xib in Resources */,
 				5803C36D210A66CA00BFAE7A /* ManagePushNotificationsHeaderView.xib in Resources */,
 				677E054A20727C9D00B16C09 /* 25.kml in Resources */,
 				677E051520727C9D00B16C09 /* NHSL.kml in Resources */,
@@ -3290,7 +3299,6 @@
 				677E04D320727C9D00B16C09 /* 21.kml in Resources */,
 				677E050A20727C9D00B16C09 /* LucyGreen.kml in Resources */,
 				677E04C920727C9D00B16C09 /* 39.kml in Resources */,
-				67A0DD1D2110BEF8001EAE15 /* AddTimeframeButton.xib in Resources */,
 				0E36308920FFAE5100980EB6 /* TransitViewVehicleCalloutView.xib in Resources */,
 				677E052120727C9D00B16C09 /* 132.kml in Resources */,
 				582F4EC01F33B1120062A546 /* alerts.storyboard in Resources */,
@@ -3571,6 +3579,7 @@
 				58126F771F64127B00A6E187 /* NextToArrivePrerequisiteStatus.swift in Sources */,
 				58FBBFAC1F658D3500B7A4DA /* ScheduleProviderDatabaseStateWatcher.swift in Sources */,
 				676355091F5EB2C700CA7EAB /* StopWithDistance.swift in Sources */,
+				679BC9D4211150C600F666BA /* AddTimeframeButtonView.swift in Sources */,
 				5876DF751F72EC25006C61FE /* SchedulesNavigationControllerStateProvider.swift in Sources */,
 				678F052E1F5B7D3E00CC4D3C /* AddressLookupActions.swift in Sources */,
 				671609031F6766FF00941D2C /* TripView.swift in Sources */,
@@ -3935,7 +3944,6 @@
 				58B892171F38F7E700BFFEFA /* Strings.swift in Sources */,
 				0E313BB020BEFCB7002EFD34 /* DatabaseUpdater.swift in Sources */,
 				67EF6D631FE2DBAA00245E0F /* HolidayScheduleViewController.swift in Sources */,
-				67A0DD1B2110BE5F001EAE15 /* AddTimeframeButton.swift in Sources */,
 				58EB8D151F5D7CD20028A487 /* BaseNavigationController.swift in Sources */,
 				589A89D71F50BB73007329DB /* SelectStopCell.swift in Sources */,
 				6749A4711F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift in Sources */,

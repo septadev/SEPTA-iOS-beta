@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3mN-9i-UkA">
-                    <rect key="frame" x="0.0" y="0.0" width="408" height="177"/>
+                    <rect key="frame" x="0.0" y="0.0" width="408" height="217"/>
                     <subviews>
                         <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="76" translatesAutoresizingMaskIntoConstraints="NO" id="CDC-z1-VqO" userLabel="Timeframe 1" customClass="XibView" customModule="Septa" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="408" height="76"/>
@@ -33,11 +33,11 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TimeframeView"/>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="25" translatesAutoresizingMaskIntoConstraints="NO" id="2WQ-wD-Lfl" userLabel="AddTimeFrameButton" customClass="XibView" customModule="Septa" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="152" width="408" height="25"/>
+                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="2WQ-wD-Lfl" userLabel="AddTimeFrameButton" customClass="XibView" customModule="Septa" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="152" width="408" height="65"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="AddTimeframeButton"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="AddTimeframeButtonView"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
@@ -53,7 +53,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="addTimeFrameWrapper" destination="2WQ-wD-Lfl" id="xLh-G4-Nh0"/>
+                <outlet property="addTimeFrameWrapper" destination="2WQ-wD-Lfl" id="rxg-Zb-D2p"/>
                 <outlet property="stackView" destination="3mN-9i-UkA" id="42O-Us-APB"/>
                 <outlet property="timeFrame1Wrapper" destination="CDC-z1-VqO" id="wE7-kT-xUY"/>
                 <outlet property="timeFrame2Wrapper" destination="Md4-lC-7Xh" id="KAx-Wi-IuB"/>

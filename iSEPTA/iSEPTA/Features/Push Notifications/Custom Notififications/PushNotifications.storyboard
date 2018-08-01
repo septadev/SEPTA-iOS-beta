@@ -68,11 +68,11 @@ service, weather alerts and special events</string>
                                     <outlet property="toggleSwitch" destination="xf0-E5-c9P" id="JKn-Wz-RlC"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="push" rowHeight="46" id="ZCf-Q2-Gga" customClass="ManagePushNotificationsPushCell" customModule="Septa" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="push" rowHeight="46" id="ZCf-Q2-Gga" customClass="ManagePushNotificationsPushCell" customModule="Septa" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZCf-Q2-Gga" id="2F6-Fs-KdP">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="45.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="45.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titleLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQa-vh-Vr0">
@@ -199,7 +199,7 @@ Instructions</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="76" translatesAutoresizingMaskIntoConstraints="NO" id="u1s-NC-tMh" userLabel="SelectFimeFrameView" customClass="XibView" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="270" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="270" width="375" height="140"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TimeframeGroupView"/>

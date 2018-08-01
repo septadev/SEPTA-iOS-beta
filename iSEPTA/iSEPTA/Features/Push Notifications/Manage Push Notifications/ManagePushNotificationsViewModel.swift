@@ -154,6 +154,7 @@ class ManagePushNotificationsViewModel: ToggleCellDelegate {
         func configureCell(cell: ManagePushNotificationsCell) {
             guard let cell = cell as? ManagePushNotificationsPushCell else { return }
             cell.titleLabel.text = headerText
+            cell.accessoryType = .disclosureIndicator
             cell.rowIdentifier = rowIdentifier
         }
     }
