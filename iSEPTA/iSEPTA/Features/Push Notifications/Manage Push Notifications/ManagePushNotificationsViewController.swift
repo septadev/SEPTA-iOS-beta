@@ -77,8 +77,12 @@ class ManagePushNotificationsViewController: UITableViewController, Identifiable
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: Keys.tableHeaderViewId)
             as? ManagePushNotificationsHeaderView else { return nil }
-        headerView.titleLabel.text = viewModel?.sectionHeaderText(forSection: section)
+        headerView.titleLabel.attributedText = viewModel?.sectionHeaderText(forSection: section)
         return headerView
+    }
+
+    override func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
+        return 37
     }
 
     override func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {

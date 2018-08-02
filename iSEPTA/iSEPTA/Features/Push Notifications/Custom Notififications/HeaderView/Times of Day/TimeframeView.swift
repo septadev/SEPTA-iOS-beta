@@ -95,10 +95,12 @@ class TimeframeView: UIView, TimeframeBoundaryViewDelegate {
     }
 
     func configureStartSubscription(index: Int) {
-        guard let startView = startOfDay.contentView as? TimeframeBoundaryView else { return }
+        let timeWindows = store.state.preferenceState.pushNotificationPreferenceState.notificationTimeWindows
+        guard index < timeWindows.count, let startView = startOfDay.contentView as? TimeframeBoundaryView else { return }
         startView.timeFrameBoundaryType = .start
         startView.delegate = self
         startView.setHeadingLabel(text: "Start:")
+
         startView.subscriptonTarget = { $0.preferenceState.pushNotificationPreferenceState.notificationTimeWindows[index].startMinute }
         startView.actionTarget = { date in
             guard let minutesSinceMidnight = MinutesSinceMidnight(date: date) else { return }
@@ -113,7 +115,8 @@ class TimeframeView: UIView, TimeframeBoundaryViewDelegate {
     }
 
     private func configureEndSubscription(index: Int) {
-        guard let endView = endOfDay.contentView as? TimeframeBoundaryView else { return }
+        let timeWindows = store.state.preferenceState.pushNotificationPreferenceState.notificationTimeWindows
+        guard index < timeWindows.count, let endView = endOfDay.contentView as? TimeframeBoundaryView else { return }
         endView.timeFrameBoundaryType = .end
         endView.delegate = self
         endView.setHeadingLabel(text: "Until:")

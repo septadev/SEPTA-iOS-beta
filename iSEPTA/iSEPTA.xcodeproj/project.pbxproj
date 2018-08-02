@@ -1568,6 +1568,7 @@
 		5803C378210B60F100BFAE7A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				5803C36A210A65AC00BFAE7A /* ManagePushNotificationsHeaderView.swift */,
 				5803C36E210A6B2F00BFAE7A /* ManagePushNotificationsToggleCell.swift */,
 				5803C370210A6B5900BFAE7A /* ManagePushNotificationsPushCell.swift */,
 				5803C374210B60DD00BFAE7A /* ManagePushNotificationsCell.swift */,
@@ -1581,7 +1582,6 @@
 				5803C378210B60F100BFAE7A /* Cells */,
 				5803C36C210A66CA00BFAE7A /* ManagePushNotificationsHeaderView.xib */,
 				675C9DBC210B2CAB003B2AC7 /* ManagePushNotificationsFooterView.xib */,
-				5803C36A210A65AC00BFAE7A /* ManagePushNotificationsHeaderView.swift */,
 				5803C366210A4FF800BFAE7A /* ManagePushNotificationsViewController.swift */,
 				5803C368210A531100BFAE7A /* ManagePushNotificationsViewModel.swift */,
 			);

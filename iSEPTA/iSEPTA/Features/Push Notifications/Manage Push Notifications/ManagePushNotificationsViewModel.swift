@@ -40,7 +40,7 @@ class ManagePushNotificationsViewModel: ToggleCellDelegate {
 
     private struct Strings {
         static let globalNotifications = "GLOBAL SETTINGS"
-        static let myNotifications = "My Notifications"
+        static let myNotifications = "MY NOTIFICATIONS"
         static let enableNotificationsHeader = "Enable Notifications"
         static let enableNotificationsDetail = "Always show notifications from this app"
         static let specialAnnouncementsHeader = "Special SEPTA Announcements"
@@ -59,12 +59,15 @@ class ManagePushNotificationsViewModel: ToggleCellDelegate {
         return cellsViewModel[section].count
     }
 
-    func sectionHeaderText(forSection section: Int) -> String? {
+    func sectionHeaderText(forSection section: Int) -> NSAttributedString? {
+        var text = ""
         switch section {
-        case 0: return "GLOBAL SETTINGS"
-        case 1: return "My Notifications"
+        case 0: text = Strings.globalNotifications
+        case 1: text = Strings.myNotifications
         default: return nil
         }
+
+        return text.attributed(fontSize: 13, fontWeight: .regular, textColor: SeptaColor.black50, alignment: .left, kerning: -0.1, lineHeight: 18)
     }
 
     func shouldHighlightRowAtIndexPath(indexPath: IndexPath) -> Bool {
@@ -111,11 +114,6 @@ class ManagePushNotificationsViewModel: ToggleCellDelegate {
                     rowIdentifier: .specialSeptaAnnouncements,
                     action: UserWantsToSubscribeToSpecialAnnouncements(),
                     delegate: self),
-                PushCellViewModel(
-                    headerText: Strings.systemNotificationHeader,
-                    viewControllerToPush: .moreViewController,
-                    rowIdentifier: .systemNotificationSettings,
-                    action: PushViewController(viewController: .moreViewController, description: "Push More View Controller")),
                 ToggleSwitchViewModel(
                     headerText: Strings.treatAsPriorityHeader,
                     detailText: Strings.treatAsPriorityDetail,
