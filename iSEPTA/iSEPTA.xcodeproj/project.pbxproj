@@ -70,6 +70,27 @@
 		580128101F6BFC9F006B6DB8 /* NavBarShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5801280F1F6BFC9F006B6DB8 /* NavBarShadowView.swift */; };
 		580128121F6C055B006B6DB8 /* RedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580128111F6C055B006B6DB8 /* RedButton.swift */; };
 		5803C35F2106634900BFAE7A /* MinutesSinceMidnight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C35E2106634900BFAE7A /* MinutesSinceMidnight.swift */; };
+		5803C363210A4FD400BFAE7A /* PushNotifications.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5803C362210A4FD400BFAE7A /* PushNotifications.storyboard */; };
+		5803C367210A4FF800BFAE7A /* ManagePushNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C366210A4FF800BFAE7A /* ManagePushNotificationsViewController.swift */; };
+		5803C369210A531100BFAE7A /* ManagePushNotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C368210A531100BFAE7A /* ManagePushNotificationsViewModel.swift */; };
+		5803C36B210A65AC00BFAE7A /* ManagePushNotificationsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C36A210A65AC00BFAE7A /* ManagePushNotificationsHeaderView.swift */; };
+		5803C36D210A66CA00BFAE7A /* ManagePushNotificationsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5803C36C210A66CA00BFAE7A /* ManagePushNotificationsHeaderView.xib */; };
+		5803C36F210A6B2F00BFAE7A /* ManagePushNotificationsToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C36E210A6B2F00BFAE7A /* ManagePushNotificationsToggleCell.swift */; };
+		5803C371210A6B5900BFAE7A /* ManagePushNotificationsPushCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C370210A6B5900BFAE7A /* ManagePushNotificationsPushCell.swift */; };
+		5803C375210B60DD00BFAE7A /* ManagePushNotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C374210B60DD00BFAE7A /* ManagePushNotificationsCell.swift */; };
+		5803C37C210B619F00BFAE7A /* PushNotificationSystemStatusResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C37B210B619F00BFAE7A /* PushNotificationSystemStatusResolver.swift */; };
+		5803C37E210B64EF00BFAE7A /* PushNotificationAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C37D210B64EF00BFAE7A /* PushNotificationAuthorizationStatus.swift */; };
+		5803C380210B6DC600BFAE7A /* PushNotificationUserPreferenceResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C37F210B6DC600BFAE7A /* PushNotificationUserPreferenceResolver.swift */; };
+		5803C382210B9BC800BFAE7A /* CustomNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C381210B9BC800BFAE7A /* CustomNotifications.swift */; };
+		5803C385210B9C2E00BFAE7A /* CustomPushNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C384210B9C2E00BFAE7A /* CustomPushNotificationsViewController.swift */; };
+		5803C387210B9D9C00BFAE7A /* TimeframeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C386210B9D9C00BFAE7A /* TimeframeView.swift */; };
+		5803C38B210BAC7800BFAE7A /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C38A210BAC7800BFAE7A /* XibView.swift */; };
+		5805C827210F8CAA00A35613 /* TimeframeBoundaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805C826210F8CAA00A35613 /* TimeframeBoundaryView.swift */; };
+		5805C829210FA71000A35613 /* DayOfWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805C828210FA71000A35613 /* DayOfWeekView.swift */; };
+		5805C82B210FA72000A35613 /* DayOfWeekView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5805C82A210FA72000A35613 /* DayOfWeekView.xib */; };
+		58088E1B210F80B60068E771 /* NSRange+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58088E1A210F80B60068E771 /* NSRange+Util.swift */; };
+		58088E1D210F84530068E771 /* TimeframeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58088E1C210F84530068E771 /* TimeframeView.xib */; };
+		58088E1F210F86890068E771 /* TimeframeBoundaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58088E1E210F86890068E771 /* TimeframeBoundaryView.xib */; };
 		5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C2A0661F38A75700F0D6CA /* ScheduleRequest.swift */; };
 		580A355B1F6A0E84000FCA82 /* FavoritesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A355A1F6A0E84000FCA82 /* FavoritesNavigationController.swift */; };
 		580A355F1F6A0F9B000FCA82 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580A355E1F6A0F9B000FCA82 /* FavoritesViewController.swift */; };
@@ -98,6 +119,10 @@
 		58195FF41F3FA1C90053B3D3 /* RouteSelected.json in Resources */ = {isa = PBXBuildFile; fileRef = 58195FEE1F3FA1790053B3D3 /* RouteSelected.json */; };
 		581DA54A1F3BE1C8006AEC39 /* IdentifiableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581DA5491F3BE1C8006AEC39 /* IdentifiableController.swift */; };
 		581DA54F1F3BF102006AEC39 /* ViewTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581DA54E1F3BF102006AEC39 /* ViewTransitionType.swift */; };
+		5820CB38210F3D4600782275 /* AttributedString+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5820CB37210F3D4600782275 /* AttributedString+Util.swift */; };
+		5820CB3C210F4AC200782275 /* AddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5820CB3B210F4AC200782275 /* AddEditView.swift */; };
+		5820CB3E210F4AD300782275 /* AddEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5820CB3D210F4AD300782275 /* AddEditView.xib */; };
+		5820CB44210F4E4000782275 /* UILabel+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5820CB43210F4E4000782275 /* UILabel+Util.swift */; };
 		58248B641F6D573000DA2D65 /* NextToArriveState_ScheduleState_ScheduleRequestWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B631F6D573000DA2D65 /* NextToArriveState_ScheduleState_ScheduleRequestWatcher.swift */; };
 		58248B661F6D575A00DA2D65 /* BaseWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B651F6D575A00DA2D65 /* BaseWatcher.swift */; };
 		58248B6C1F6D5B6900DA2D65 /* FavoritesState_FavoritesExistWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B6B1F6D5B6900DA2D65 /* FavoritesState_FavoritesExistWatcher.swift */; };
@@ -240,6 +265,13 @@
 		58A26D9D1F6F2790005A70D3 /* Route+AlertState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26D9C1F6F2790005A70D3 /* Route+AlertState.swift */; };
 		58A26DA21F6F283E005A70D3 /* AlertDetailProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26DA11F6F283E005A70D3 /* AlertDetailProvider.swift */; };
 		58A26DA41F6F30B2005A70D3 /* Route+Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26DA31F6F30B2005A70D3 /* Route+Displayable.swift */; };
+		58AC62882111F73700E4EA0A /* AlertDetailFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58AC62872111F73700E4EA0A /* AlertDetailFooterView.xib */; };
+		58AC628C2111F7EC00E4EA0A /* AlertDetailFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AC628B2111F7EC00E4EA0A /* AlertDetailFooterView.swift */; };
+		58AC628E2112335400E4EA0A /* PushNotificationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AC628D2112335400E4EA0A /* PushNotificationRoute.swift */; };
+		58AC629021123F8100E4EA0A /* MyNotificationsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AC628F21123F8100E4EA0A /* MyNotificationsHeaderView.swift */; };
+		58AC629221123F9200E4EA0A /* MyNotificationsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58AC629121123F9200E4EA0A /* MyNotificationsHeaderView.xib */; };
+		58AC629421124AAE00E4EA0A /* InstructionsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58AC629321124AAE00E4EA0A /* InstructionsHeaderView.xib */; };
+		58AC629621124ACA00E4EA0A /* InstructionsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AC629521124ACA00E4EA0A /* InstructionsHeaderView.swift */; };
 		58AF5FE420F3D9EA00620484 /* NextToArriveState_ReverseTripStatusWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF5FE320F3D9EA00620484 /* NextToArriveState_ReverseTripStatusWatcher.swift */; };
 		58AF5FE820F3DC8D00620484 /* NextToArriveReverseTripStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF5FE720F3DC8D00620484 /* NextToArriveReverseTripStatus.swift */; };
 		58AF5FEA20F4F1FF00620484 /* NextToArriveReverseTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AF5FE920F4F1FF00620484 /* NextToArriveReverseTrip.swift */; };
@@ -352,6 +384,9 @@
 		671A192B1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A192A1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift */; };
 		671A192D1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A192C1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift */; };
 		671A192F1F66A3D500C8EEDA /* NextToArriveFavoritesIconController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A192E1F66A3D500C8EEDA /* NextToArriveFavoritesIconController.swift */; };
+		672DF24C2110B4D700FD8C1D /* DayOfWeekImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DF24B2110B4D700FD8C1D /* DayOfWeekImageView.swift */; };
+		672DF2522110B59C00FD8C1D /* TimeframeGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DF2512110B59C00FD8C1D /* TimeframeGroupView.swift */; };
+		672DF2542110B5C000FD8C1D /* TimeframeGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 672DF2532110B5C000FD8C1D /* TimeframeGroupView.xib */; };
 		6731A1D41F812074000320E1 /* ConnectGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6731A1D31F812074000320E1 /* ConnectGradientView.swift */; };
 		67365AC81F754A3200FC86CB /* HalfSheetAnimationIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67365ABF1F754A3200FC86CB /* HalfSheetAnimationIn.swift */; };
 		67365AC91F754A3200FC86CB /* HalfSheetAnimationOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67365AC01F754A3200FC86CB /* HalfSheetAnimationOut.swift */; };
@@ -370,6 +405,7 @@
 		674FDBBF1F56E87F00CA67D2 /* SeptaRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; };
 		674FDBC01F56E87F00CA67D2 /* SeptaRest.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		674FDBC51F57390D00CA67D2 /* Route+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674FDBC41F57390D00CA67D2 /* Route+Color.swift */; };
+		675C9DBD210B2CAB003B2AC7 /* ManagePushNotificationsFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 675C9DBC210B2CAB003B2AC7 /* ManagePushNotificationsFooterView.xib */; };
 		676354FD1F5E255A00CA7EAB /* FilterableRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676354FC1F5E255A00CA7EAB /* FilterableRoute.swift */; };
 		676354FF1F5E2C2C00CA7EAB /* FilterableStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676354FE1F5E2C2C00CA7EAB /* FilterableStop.swift */; };
 		676355011F5E326800CA7EAB /* AppState+TargetForScheduleActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676355001F5E326800CA7EAB /* AppState+TargetForScheduleActions.swift */; };
@@ -596,6 +632,16 @@
 		678F05391F5BFFE500CC4D3C /* LocationActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F05381F5BFFE500CC4D3C /* LocationActions.swift */; };
 		678F053B1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678F053A1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift */; };
 		679924051F6E01BD00FD5691 /* MoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679924041F6E01BD00FD5691 /* MoreButton.swift */; };
+		679BC9D22111509C00F666BA /* AddTimeframeButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679BC9D12111509C00F666BA /* AddTimeframeButtonView.xib */; };
+		679BC9D4211150C600F666BA /* AddTimeframeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679BC9D3211150C600F666BA /* AddTimeframeButtonView.swift */; };
+		679BC9DE21129CA800F666BA /* PushNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679BC9DD21129CA800F666BA /* PushNotificationTableViewCell.swift */; };
+		679BC9E021129CBC00F666BA /* PushNotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679BC9DF21129CBC00F666BA /* PushNotificationTableViewCell.xib */; };
+		679BC9E22112A40900F666BA /* CustomPushNotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679BC9E12112A40900F666BA /* CustomPushNotificationsViewModel.swift */; };
+		67A0DD202110E9FB001EAE15 /* SelectTimeOfDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A0DD1F2110E9FB001EAE15 /* SelectTimeOfDayViewController.swift */; };
+		67A0DD262110EC28001EAE15 /* DatePickerAnimationIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A0DD222110EC28001EAE15 /* DatePickerAnimationIn.swift */; };
+		67A0DD272110EC28001EAE15 /* DatePickerAnimationOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A0DD232110EC28001EAE15 /* DatePickerAnimationOut.swift */; };
+		67A0DD282110EC28001EAE15 /* DatePickerPresentationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A0DD242110EC28001EAE15 /* DatePickerPresentationCoordinator.swift */; };
+		67A0DD292110EC28001EAE15 /* DatePickerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A0DD252110EC28001EAE15 /* DatePickerTransitioningDelegate.swift */; };
 		67A33DDD1F8DCA2400D82802 /* MapVehicleCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A33DDC1F8DCA2400D82802 /* MapVehicleCalloutView.swift */; };
 		67A33DE11F8DCA3600D82802 /* MapVehicleCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67A33DE01F8DCA3600D82802 /* MapVehicleCalloutView.xib */; };
 		67A385731F7D4402002E01E0 /* MoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A385721F7D4402002E01E0 /* MoreTableViewCell.swift */; };
@@ -778,6 +824,27 @@
 		5801280F1F6BFC9F006B6DB8 /* NavBarShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarShadowView.swift; sourceTree = "<group>"; };
 		580128111F6C055B006B6DB8 /* RedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedButton.swift; sourceTree = "<group>"; };
 		5803C35E2106634900BFAE7A /* MinutesSinceMidnight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinutesSinceMidnight.swift; sourceTree = "<group>"; };
+		5803C362210A4FD400BFAE7A /* PushNotifications.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PushNotifications.storyboard; sourceTree = "<group>"; };
+		5803C366210A4FF800BFAE7A /* ManagePushNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePushNotificationsViewController.swift; sourceTree = "<group>"; };
+		5803C368210A531100BFAE7A /* ManagePushNotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePushNotificationsViewModel.swift; sourceTree = "<group>"; };
+		5803C36A210A65AC00BFAE7A /* ManagePushNotificationsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePushNotificationsHeaderView.swift; sourceTree = "<group>"; };
+		5803C36C210A66CA00BFAE7A /* ManagePushNotificationsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManagePushNotificationsHeaderView.xib; sourceTree = "<group>"; };
+		5803C36E210A6B2F00BFAE7A /* ManagePushNotificationsToggleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePushNotificationsToggleCell.swift; sourceTree = "<group>"; };
+		5803C370210A6B5900BFAE7A /* ManagePushNotificationsPushCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePushNotificationsPushCell.swift; sourceTree = "<group>"; };
+		5803C374210B60DD00BFAE7A /* ManagePushNotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePushNotificationsCell.swift; sourceTree = "<group>"; };
+		5803C37B210B619F00BFAE7A /* PushNotificationSystemStatusResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSystemStatusResolver.swift; sourceTree = "<group>"; };
+		5803C37D210B64EF00BFAE7A /* PushNotificationAuthorizationStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationAuthorizationStatus.swift; sourceTree = "<group>"; };
+		5803C37F210B6DC600BFAE7A /* PushNotificationUserPreferenceResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationUserPreferenceResolver.swift; sourceTree = "<group>"; };
+		5803C381210B9BC800BFAE7A /* CustomNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNotifications.swift; sourceTree = "<group>"; };
+		5803C384210B9C2E00BFAE7A /* CustomPushNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushNotificationsViewController.swift; sourceTree = "<group>"; };
+		5803C386210B9D9C00BFAE7A /* TimeframeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeframeView.swift; sourceTree = "<group>"; };
+		5803C38A210BAC7800BFAE7A /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
+		5805C826210F8CAA00A35613 /* TimeframeBoundaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeframeBoundaryView.swift; sourceTree = "<group>"; };
+		5805C828210FA71000A35613 /* DayOfWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekView.swift; sourceTree = "<group>"; };
+		5805C82A210FA72000A35613 /* DayOfWeekView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayOfWeekView.xib; sourceTree = "<group>"; };
+		58088E1A210F80B60068E771 /* NSRange+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRange+Util.swift"; sourceTree = "<group>"; };
+		58088E1C210F84530068E771 /* TimeframeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeframeView.xib; sourceTree = "<group>"; };
+		58088E1E210F86890068E771 /* TimeframeBoundaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeframeBoundaryView.xib; sourceTree = "<group>"; };
 		580A355A1F6A0E84000FCA82 /* FavoritesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesNavigationController.swift; sourceTree = "<group>"; };
 		580A355E1F6A0F9B000FCA82 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		580A35601F6A12C0000FCA82 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
@@ -807,6 +874,10 @@
 		58195FEF1F3FA1830053B3D3 /* TransitModeSelected.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TransitModeSelected.json; sourceTree = "<group>"; };
 		581DA5491F3BE1C8006AEC39 /* IdentifiableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableController.swift; sourceTree = "<group>"; };
 		581DA54E1F3BF102006AEC39 /* ViewTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransitionType.swift; sourceTree = "<group>"; };
+		5820CB37210F3D4600782275 /* AttributedString+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributedString+Util.swift"; sourceTree = "<group>"; };
+		5820CB3B210F4AC200782275 /* AddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditView.swift; sourceTree = "<group>"; };
+		5820CB3D210F4AD300782275 /* AddEditView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddEditView.xib; sourceTree = "<group>"; };
+		5820CB43210F4E4000782275 /* UILabel+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Util.swift"; sourceTree = "<group>"; };
 		58248B631F6D573000DA2D65 /* NextToArriveState_ScheduleState_ScheduleRequestWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveState_ScheduleState_ScheduleRequestWatcher.swift; sourceTree = "<group>"; };
 		58248B651F6D575A00DA2D65 /* BaseWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWatcher.swift; sourceTree = "<group>"; };
 		58248B6B1F6D5B6900DA2D65 /* FavoritesState_FavoritesExistWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesState_FavoritesExistWatcher.swift; sourceTree = "<group>"; };
@@ -967,6 +1038,13 @@
 		58A26D9C1F6F2790005A70D3 /* Route+AlertState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+AlertState.swift"; sourceTree = "<group>"; };
 		58A26DA11F6F283E005A70D3 /* AlertDetailProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailProvider.swift; sourceTree = "<group>"; };
 		58A26DA31F6F30B2005A70D3 /* Route+Displayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Displayable.swift"; sourceTree = "<group>"; };
+		58AC62872111F73700E4EA0A /* AlertDetailFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertDetailFooterView.xib; sourceTree = "<group>"; };
+		58AC628B2111F7EC00E4EA0A /* AlertDetailFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailFooterView.swift; sourceTree = "<group>"; };
+		58AC628D2112335400E4EA0A /* PushNotificationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationRoute.swift; sourceTree = "<group>"; };
+		58AC628F21123F8100E4EA0A /* MyNotificationsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotificationsHeaderView.swift; sourceTree = "<group>"; };
+		58AC629121123F9200E4EA0A /* MyNotificationsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyNotificationsHeaderView.xib; sourceTree = "<group>"; };
+		58AC629321124AAE00E4EA0A /* InstructionsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstructionsHeaderView.xib; sourceTree = "<group>"; };
+		58AC629521124ACA00E4EA0A /* InstructionsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsHeaderView.swift; sourceTree = "<group>"; };
 		58ACEADD1F3A9A9B00DC2836 /* SeptaSchedule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SeptaSchedule.xcodeproj; path = ../SeptaSchedule/SeptaSchedule.xcodeproj; sourceTree = "<group>"; };
 		58AF5FE320F3D9EA00620484 /* NextToArriveState_ReverseTripStatusWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveState_ReverseTripStatusWatcher.swift; sourceTree = "<group>"; };
 		58AF5FE720F3DC8D00620484 /* NextToArriveReverseTripStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveReverseTripStatus.swift; sourceTree = "<group>"; };
@@ -1083,6 +1161,9 @@
 		671A192A1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextToArriveInfoViewController.swift; sourceTree = "<group>"; };
 		671A192C1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveInfoViewModel.swift; sourceTree = "<group>"; };
 		671A192E1F66A3D500C8EEDA /* NextToArriveFavoritesIconController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveFavoritesIconController.swift; sourceTree = "<group>"; };
+		672DF24B2110B4D700FD8C1D /* DayOfWeekImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekImageView.swift; sourceTree = "<group>"; };
+		672DF2512110B59C00FD8C1D /* TimeframeGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeframeGroupView.swift; sourceTree = "<group>"; };
+		672DF2532110B5C000FD8C1D /* TimeframeGroupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeframeGroupView.xib; sourceTree = "<group>"; };
 		6731A1D31F812074000320E1 /* ConnectGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectGradientView.swift; sourceTree = "<group>"; };
 		67365ABF1F754A3200FC86CB /* HalfSheetAnimationIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfSheetAnimationIn.swift; sourceTree = "<group>"; };
 		67365AC01F754A3200FC86CB /* HalfSheetAnimationOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfSheetAnimationOut.swift; sourceTree = "<group>"; };
@@ -1101,6 +1182,7 @@
 		6749A46D1F53997D00AF6119 /* StopToSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopToSelect.swift; sourceTree = "<group>"; };
 		6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAddressRelativeStopViewModel.swift; sourceTree = "<group>"; };
 		674FDBC41F57390D00CA67D2 /* Route+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Color.swift"; sourceTree = "<group>"; };
+		675C9DBC210B2CAB003B2AC7 /* ManagePushNotificationsFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManagePushNotificationsFooterView.xib; sourceTree = "<group>"; };
 		676354FC1F5E255A00CA7EAB /* FilterableRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterableRoute.swift; sourceTree = "<group>"; };
 		676354FE1F5E2C2C00CA7EAB /* FilterableStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterableStop.swift; sourceTree = "<group>"; };
 		676355001F5E326800CA7EAB /* AppState+TargetForScheduleActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState+TargetForScheduleActions.swift"; sourceTree = "<group>"; };
@@ -1327,6 +1409,16 @@
 		678F05381F5BFFE500CC4D3C /* LocationActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationActions.swift; sourceTree = "<group>"; };
 		678F053A1F5C2A6600CC4D3C /* AddressLookupSearchMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLookupSearchMode.swift; sourceTree = "<group>"; };
 		679924041F6E01BD00FD5691 /* MoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreButton.swift; sourceTree = "<group>"; };
+		679BC9D12111509C00F666BA /* AddTimeframeButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTimeframeButtonView.xib; sourceTree = "<group>"; };
+		679BC9D3211150C600F666BA /* AddTimeframeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeframeButtonView.swift; sourceTree = "<group>"; };
+		679BC9DD21129CA800F666BA /* PushNotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationTableViewCell.swift; sourceTree = "<group>"; };
+		679BC9DF21129CBC00F666BA /* PushNotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PushNotificationTableViewCell.xib; sourceTree = "<group>"; };
+		679BC9E12112A40900F666BA /* CustomPushNotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushNotificationsViewModel.swift; sourceTree = "<group>"; };
+		67A0DD1F2110E9FB001EAE15 /* SelectTimeOfDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTimeOfDayViewController.swift; sourceTree = "<group>"; };
+		67A0DD222110EC28001EAE15 /* DatePickerAnimationIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerAnimationIn.swift; sourceTree = "<group>"; };
+		67A0DD232110EC28001EAE15 /* DatePickerAnimationOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerAnimationOut.swift; sourceTree = "<group>"; };
+		67A0DD242110EC28001EAE15 /* DatePickerPresentationCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerPresentationCoordinator.swift; sourceTree = "<group>"; };
+		67A0DD252110EC28001EAE15 /* DatePickerTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTransitioningDelegate.swift; sourceTree = "<group>"; };
 		67A33DDC1F8DCA2400D82802 /* MapVehicleCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVehicleCalloutView.swift; sourceTree = "<group>"; };
 		67A33DE01F8DCA3600D82802 /* MapVehicleCalloutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapVehicleCalloutView.xib; sourceTree = "<group>"; };
 		67A385721F7D4402002E01E0 /* MoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewCell.swift; sourceTree = "<group>"; };
@@ -1518,6 +1610,54 @@
 			path = Info;
 			sourceTree = "<group>";
 		};
+		5803C378210B60F100BFAE7A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5803C36E210A6B2F00BFAE7A /* ManagePushNotificationsToggleCell.swift */,
+				5803C370210A6B5900BFAE7A /* ManagePushNotificationsPushCell.swift */,
+				5803C374210B60DD00BFAE7A /* ManagePushNotificationsCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		5803C379210B610500BFAE7A /* Manage Push Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				5803C378210B60F100BFAE7A /* Cells */,
+				5803C36C210A66CA00BFAE7A /* ManagePushNotificationsHeaderView.xib */,
+				675C9DBC210B2CAB003B2AC7 /* ManagePushNotificationsFooterView.xib */,
+				5803C36A210A65AC00BFAE7A /* ManagePushNotificationsHeaderView.swift */,
+				5803C366210A4FF800BFAE7A /* ManagePushNotificationsViewController.swift */,
+				5803C368210A531100BFAE7A /* ManagePushNotificationsViewModel.swift */,
+			);
+			path = "Manage Push Notifications";
+			sourceTree = "<group>";
+		};
+		5803C37A210B612900BFAE7A /* Business Logic */ = {
+			isa = PBXGroup;
+			children = (
+				584D54D22106103500EB773C /* PushNotificationPreferenceState.swift */,
+				58AC628D2112335400E4EA0A /* PushNotificationRoute.swift */,
+				584D54D4210610DE00EB773C /* NotificationTimeWindow.swift */,
+				5803C35E2106634900BFAE7A /* MinutesSinceMidnight.swift */,
+				584D54D62106112000EB773C /* DaysOfWeekOptionSet.swift */,
+				584D54D8210612AD00EB773C /* PushNotificationPreferenceTests.swift */,
+			);
+			path = "Business Logic";
+			sourceTree = "<group>";
+		};
+		5803C383210B9BCD00BFAE7A /* Custom Notififications */ = {
+			isa = PBXGroup;
+			children = (
+				679BC9DC21129C9200F666BA /* Cells */,
+				5803C362210A4FD400BFAE7A /* PushNotifications.storyboard */,
+				679BC9D92112842200F666BA /* HeaderView */,
+				5803C384210B9C2E00BFAE7A /* CustomPushNotificationsViewController.swift */,
+				679BC9E12112A40900F666BA /* CustomPushNotificationsViewModel.swift */,
+			);
+			path = "Custom Notififications";
+			sourceTree = "<group>";
+		};
 		58195FEA1F3FA05D0053B3D3 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1589,6 +1729,7 @@
 		58248B731F6D8AA800DA2D65 /* PresentationControllers */ = {
 			isa = PBXGroup;
 			children = (
+				67A0DD212110EC28001EAE15 /* DatePicker */,
 				67365ABE1F754A3200FC86CB /* HalfSheet */,
 				67365AC31F754A3200FC86CB /* SevenEights */,
 			);
@@ -1630,6 +1771,7 @@
 				58E33F1D1F6147DE00C74B7C /* CLLocationCoordinate2D+Equatable.swift */,
 				0EA1FF8F20DA9E37007A9A91 /* UIAlertControllerExtensions.swift */,
 				0E39082D20E1268900E94D53 /* InAppReview.swift */,
+				5820CB37210F3D4600782275 /* AttributedString+Util.swift */,
 				0E8E60ED20F00B9E00AB08FE /* RouteIcon.swift */,
 				0E36308A20FFB20E00980EB6 /* NSMutableAttributedStringExtensions.swift */,
 				0E2777FB211249EA00507CFE /* NotificationsManager.swift */,
@@ -1669,6 +1811,8 @@
 				58FBB66B1F5885D800E6532B /* VerticalDottedTripGraphic.swift */,
 				58FBB66D1F58AAC000E6532B /* AlertViewGradientBackgroundView.swift */,
 				678D26CB1F5CDB4200D140CC /* Septa+Images.swift */,
+				5820CB43210F4E4000782275 /* UILabel+Util.swift */,
+				58088E1A210F80B60068E771 /* NSRange+Util.swift */,
 				58EB8D241F5D8EE80028A487 /* BaseNavigationBar.swift */,
 				670C59F01F8A6DA500CAE1AC /* BlueGradientTitleView.swift */,
 				58E54E231F65A40100E9B66D /* NavigationBar+Util.swift */,
@@ -1732,6 +1876,8 @@
 				582F4E881F33B1120062A546 /* Alert.swift */,
 				58A26D981F6F10F8005A70D3 /* AlertNavigationControllerStateProvider.swift */,
 				58A26D9A1F6F221E005A70D3 /* AlertDetailViewController.swift */,
+				58AC62872111F73700E4EA0A /* AlertDetailFooterView.xib */,
+				58AC628B2111F7EC00E4EA0A /* AlertDetailFooterView.swift */,
 				582F4E891F33B1120062A546 /* alerts.storyboard */,
 				587BC04D1F6EDE0D00B92BB6 /* AlertsTransitModeToolbarViewController.swift */,
 				587BC0531F6EE86000B92BB6 /* AlertsViewController.swift */,
@@ -2002,11 +2148,13 @@
 		584D54D121060F2F00EB773C /* Push Notifications */ = {
 			isa = PBXGroup;
 			children = (
-				584D54D22106103500EB773C /* PushNotificationPreferenceState.swift */,
-				584D54D4210610DE00EB773C /* NotificationTimeWindow.swift */,
-				5803C35E2106634900BFAE7A /* MinutesSinceMidnight.swift */,
-				584D54D62106112000EB773C /* DaysOfWeekOptionSet.swift */,
-				584D54D8210612AD00EB773C /* PushNotificationPreferenceTests.swift */,
+				5803C383210B9BCD00BFAE7A /* Custom Notififications */,
+				5803C37D210B64EF00BFAE7A /* PushNotificationAuthorizationStatus.swift */,
+				5803C37A210B612900BFAE7A /* Business Logic */,
+				5803C379210B610500BFAE7A /* Manage Push Notifications */,
+				5803C37B210B619F00BFAE7A /* PushNotificationSystemStatusResolver.swift */,
+				5803C37F210B6DC600BFAE7A /* PushNotificationUserPreferenceResolver.swift */,
+				5803C381210B9BC800BFAE7A /* CustomNotifications.swift */,
 			);
 			path = "Push Notifications";
 			sourceTree = "<group>";
@@ -2744,6 +2892,31 @@
 			path = ScheduleInfo;
 			sourceTree = "<group>";
 		};
+		672DF24F2110B50100FD8C1D /* DayofWeek */ = {
+			isa = PBXGroup;
+			children = (
+				672DF24B2110B4D700FD8C1D /* DayOfWeekImageView.swift */,
+				5805C828210FA71000A35613 /* DayOfWeekView.swift */,
+				5805C82A210FA72000A35613 /* DayOfWeekView.xib */,
+			);
+			path = DayofWeek;
+			sourceTree = "<group>";
+		};
+		672DF2502110B58500FD8C1D /* Times of Day */ = {
+			isa = PBXGroup;
+			children = (
+				672DF2512110B59C00FD8C1D /* TimeframeGroupView.swift */,
+				672DF2532110B5C000FD8C1D /* TimeframeGroupView.xib */,
+				5803C386210B9D9C00BFAE7A /* TimeframeView.swift */,
+				58088E1C210F84530068E771 /* TimeframeView.xib */,
+				5805C826210F8CAA00A35613 /* TimeframeBoundaryView.swift */,
+				58088E1E210F86890068E771 /* TimeframeBoundaryView.xib */,
+				679BC9CE2111508200F666BA /* Add Time Frame */,
+				67A0DD1E2110E9DD001EAE15 /* Time Of Day Picker */,
+			);
+			path = "Times of Day";
+			sourceTree = "<group>";
+		};
 		67365ABE1F754A3200FC86CB /* HalfSheet */ = {
 			isa = PBXGroup;
 			children = (
@@ -2956,6 +3129,74 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
+		679BC9CE2111508200F666BA /* Add Time Frame */ = {
+			isa = PBXGroup;
+			children = (
+				679BC9D12111509C00F666BA /* AddTimeframeButtonView.xib */,
+				679BC9D3211150C600F666BA /* AddTimeframeButtonView.swift */,
+			);
+			path = "Add Time Frame";
+			sourceTree = "<group>";
+		};
+		679BC9D92112842200F666BA /* HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				58AC628F21123F8100E4EA0A /* MyNotificationsHeaderView.swift */,
+				58AC629121123F9200E4EA0A /* MyNotificationsHeaderView.xib */,
+				679BC9DA2112845600F666BA /* Instructions */,
+				672DF24F2110B50100FD8C1D /* DayofWeek */,
+				672DF2502110B58500FD8C1D /* Times of Day */,
+				679BC9DB2112881900F666BA /* AddEditView */,
+			);
+			path = HeaderView;
+			sourceTree = "<group>";
+		};
+		679BC9DA2112845600F666BA /* Instructions */ = {
+			isa = PBXGroup;
+			children = (
+				58AC629321124AAE00E4EA0A /* InstructionsHeaderView.xib */,
+				58AC629521124ACA00E4EA0A /* InstructionsHeaderView.swift */,
+			);
+			path = Instructions;
+			sourceTree = "<group>";
+		};
+		679BC9DB2112881900F666BA /* AddEditView */ = {
+			isa = PBXGroup;
+			children = (
+				5820CB3B210F4AC200782275 /* AddEditView.swift */,
+				5820CB3D210F4AD300782275 /* AddEditView.xib */,
+			);
+			path = AddEditView;
+			sourceTree = "<group>";
+		};
+		679BC9DC21129C9200F666BA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				679BC9DD21129CA800F666BA /* PushNotificationTableViewCell.swift */,
+				679BC9DF21129CBC00F666BA /* PushNotificationTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		67A0DD1E2110E9DD001EAE15 /* Time Of Day Picker */ = {
+			isa = PBXGroup;
+			children = (
+				67A0DD1F2110E9FB001EAE15 /* SelectTimeOfDayViewController.swift */,
+			);
+			path = "Time Of Day Picker";
+			sourceTree = "<group>";
+		};
+		67A0DD212110EC28001EAE15 /* DatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				67A0DD222110EC28001EAE15 /* DatePickerAnimationIn.swift */,
+				67A0DD232110EC28001EAE15 /* DatePickerAnimationOut.swift */,
+				67A0DD242110EC28001EAE15 /* DatePickerPresentationCoordinator.swift */,
+				67A0DD252110EC28001EAE15 /* DatePickerTransitioningDelegate.swift */,
+			);
+			path = DatePicker;
+			sourceTree = "<group>";
+		};
 		67A3857C1F7D764D002E01E0 /* Startup */ = {
 			isa = PBXGroup;
 			children = (
@@ -3165,6 +3406,8 @@
 				677E050E20727C9D00B16C09 /* 36B.kml in Resources */,
 				677E051820727C9D00B16C09 /* regionalrail.kml in Resources */,
 				678DAAB31F67475200EB6EE8 /* ConnectionCell.xib in Resources */,
+				679BC9D22111509C00F666BA /* AddTimeframeButtonView.xib in Resources */,
+				5803C36D210A66CA00BFAE7A /* ManagePushNotificationsHeaderView.xib in Resources */,
 				677E054A20727C9D00B16C09 /* 25.kml in Resources */,
 				677E051520727C9D00B16C09 /* NHSL.kml in Resources */,
 				677E053420727C9D00B16C09 /* 78.kml in Resources */,
@@ -3188,9 +3431,11 @@
 				677E04BD20727C9D00B16C09 /* 5.kml in Resources */,
 				676B7D9F1F7D189E0052F016 /* more.storyboard in Resources */,
 				677E051120727C9D00B16C09 /* CHW.kml in Resources */,
+				5820CB3E210F4AD300782275 /* AddEditView.xib in Resources */,
 				677E054B20727C9D00B16C09 /* 36.kml in Resources */,
 				677E04F920727C9D00B16C09 /* 68.kml in Resources */,
 				677E054220727C9D00B16C09 /* 35.kml in Resources */,
+				679BC9E021129CBC00F666BA /* PushNotificationTableViewCell.xib in Resources */,
 				677E04C620727C9D00B16C09 /* 32.kml in Resources */,
 				677E04EB20727C9D00B16C09 /* 108.kml in Resources */,
 				67F757AF1F486BB600D3A4EE /* TransitModeToolBarView.xib in Resources */,
@@ -3254,12 +3499,14 @@
 				677E04ED20727C9D00B16C09 /* 15.kml in Resources */,
 				677E050920727C9D00B16C09 /* K.kml in Resources */,
 				677E04C520727C9D00B16C09 /* 59.kml in Resources */,
+				5803C363210A4FD400BFAE7A /* PushNotifications.storyboard in Resources */,
 				676B7D881F7CFA770052F016 /* FarePaymentModeView.xib in Resources */,
 				58FB264C1F6EC42F00F17048 /* WebAlertsRoutesMappedToDBRoutes.json in Resources */,
 				677E04F320727C9D00B16C09 /* 128.kml in Resources */,
 				677E04BE20727C9D00B16C09 /* 106.kml in Resources */,
 				677E04E120727C9D00B16C09 /* 110.kml in Resources */,
 				677E04D220727C9D00B16C09 /* 23.kml in Resources */,
+				58AC629221123F9200E4EA0A /* MyNotificationsHeaderView.xib in Resources */,
 				677E052E20727C9D00B16C09 /* WIL.kml in Resources */,
 				0E605959210F5B0300533A3C /* perks.storyboard in Resources */,
 				677E054620727C9D00B16C09 /* 26.kml in Resources */,
@@ -3274,6 +3521,7 @@
 				677E04D120727C9D00B16C09 /* 60.kml in Resources */,
 				677E04CD20727C9D00B16C09 /* MED.kml in Resources */,
 				677E052620727C9D00B16C09 /* 19.kml in Resources */,
+				675C9DBD210B2CAB003B2AC7 /* ManagePushNotificationsFooterView.xib in Resources */,
 				677E052A20727C9D00B16C09 /* 45.kml in Resources */,
 				589A919F1F907052009B49E0 /* TripDetailItemView.xib in Resources */,
 				677E04E820727C9D00B16C09 /* 53.kml in Resources */,
@@ -3326,6 +3574,7 @@
 				678DAAAF1F6745A900EB6EE8 /* NoConnectionCell.xib in Resources */,
 				677E04D720727C9D00B16C09 /* 6.kml in Resources */,
 				670C59EF1F8A67FA00CAE1AC /* about.storyboard in Resources */,
+				672DF2542110B5C000FD8C1D /* TimeframeGroupView.xib in Resources */,
 				677E050820727C9D00B16C09 /* 62.kml in Resources */,
 				677E050620727C9D00B16C09 /* 7.kml in Resources */,
 				677E04F420727C9D00B16C09 /* 33.kml in Resources */,
@@ -3345,12 +3594,17 @@
 				582F4EDB1F33B1120062A546 /* Assets.xcassets in Resources */,
 				677E051A20727C9D00B16C09 /* 80.kml in Resources */,
 				677E052320727C9D00B16C09 /* 12.kml in Resources */,
+				58088E1D210F84530068E771 /* TimeframeView.xib in Resources */,
+				58AC629421124AAE00E4EA0A /* InstructionsHeaderView.xib in Resources */,
 				677E04FA20727C9D00B16C09 /* 204.kml in Resources */,
+				58088E1F210F86890068E771 /* TimeframeBoundaryView.xib in Resources */,
+				58AC62882111F73700E4EA0A /* AlertDetailFooterView.xib in Resources */,
 				677E054020727C9D00B16C09 /* WCS.kml in Resources */,
 				677E054F20727C9D00B16C09 /* 30.kml in Resources */,
 				677E050520727C9D00B16C09 /* 15T.kml in Resources */,
 				677E04CF20727C9D00B16C09 /* 56.kml in Resources */,
 				580128061F6B1D13006B6DB8 /* FavoriteTripCell.xib in Resources */,
+				5805C82B210FA72000A35613 /* DayOfWeekView.xib in Resources */,
 				677E04C020727C9D00B16C09 /* 64.kml in Resources */,
 				677E04DC20727C9D00B16C09 /* CYN.kml in Resources */,
 				677E04FF20727C9D00B16C09 /* 96.kml in Resources */,
@@ -3460,9 +3714,11 @@
 				585303CD1F69C74F00145D87 /* FavoritesNextToArriveProvider.swift in Sources */,
 				0E2777FC211249EA00507CFE /* NotificationsManager.swift in Sources */,
 				588D805F1F72B23D00EE1983 /* TargetForScheduleActions.swift in Sources */,
+				5803C367210A4FF800BFAE7A /* ManagePushNotificationsViewController.swift in Sources */,
 				0E2DCAD720F672BD0086F400 /* TransitViewVehicleAnnotation.swift in Sources */,
 				582F4ED31F33B1120062A546 /* SelectStopRow.swift in Sources */,
 				582F4EBC1F33B1120062A546 /* DateFormatters.swift in Sources */,
+				58088E1B210F80B60068E771 /* NSRange+Util.swift in Sources */,
 				5893971B1F7E6A5900F3D2F8 /* MoreActions.swift in Sources */,
 				580A35671F6A255F000FCA82 /* FavoriteTripCell.swift in Sources */,
 				58A26D9B1F6F221E005A70D3 /* AlertDetailViewController.swift in Sources */,
@@ -3485,15 +3741,18 @@
 				58126F771F64127B00A6E187 /* NextToArrivePrerequisiteStatus.swift in Sources */,
 				58FBBFAC1F658D3500B7A4DA /* ScheduleProviderDatabaseStateWatcher.swift in Sources */,
 				676355091F5EB2C700CA7EAB /* StopWithDistance.swift in Sources */,
+				679BC9D4211150C600F666BA /* AddTimeframeButtonView.swift in Sources */,
 				5876DF751F72EC25006C61FE /* SchedulesNavigationControllerStateProvider.swift in Sources */,
 				678F052E1F5B7D3E00CC4D3C /* AddressLookupActions.swift in Sources */,
 				671609031F6766FF00941D2C /* TripView.swift in Sources */,
 				67F757B51F488A4400D3A4EE /* SeptaDraw.swift in Sources */,
 				589262EE20F7B07200EE6820 /* FavoriteState_NextToArriveReverseTripStatusWatcher.swift in Sources */,
 				582F4ED11F33B1120062A546 /* SelectedStopType.swift in Sources */,
+				5803C380210B6DC600BFAE7A /* PushNotificationUserPreferenceResolver.swift in Sources */,
 				678F05291F5B7BE400CC4D3C /* AddressLookupState.swift in Sources */,
 				589397171F7E698500F3D2F8 /* MoreState.swift in Sources */,
 				67075FC61F57860E008BB38C /* ScheduleTripState.swift in Sources */,
+				5803C375210B60DD00BFAE7A /* ManagePushNotificationsCell.swift in Sources */,
 				5840D6D31F376D9C00C8CB76 /* MainNavigationController.swift in Sources */,
 				5840D6EE1F37F63800C8CB76 /* TransitModeToolbarView.swift in Sources */,
 				582531981F40707C0088D056 /* DefaultPreferencesLoader.swift in Sources */,
@@ -3522,6 +3781,7 @@
 				670C59DE1F8920E900CAE1AC /* AlertState_GenericAlertDetailsWatcher.swift in Sources */,
 				586852DA1F8D49280081C1CC /* NextToArriveDetailProvider.swift in Sources */,
 				671A19291F66385100C8EEDA /* NoConnectionCell.swift in Sources */,
+				67A0DD292110EC28001EAE15 /* DatePickerTransitioningDelegate.swift in Sources */,
 				588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */,
 				58490E491F56019B007DBCA1 /* AlertReducer.swift in Sources */,
 				67F757AC1F48582700D3A4EE /* UIColor+Util.swift in Sources */,
@@ -3545,6 +3805,7 @@
 				67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */,
 				67A385801F7D7690002E01E0 /* StartupViewController.swift in Sources */,
 				67EF6D661FE2DBAA00245E0F /* HolidaySchedule.swift in Sources */,
+				5820CB3C210F4AC200782275 /* AddEditView.swift in Sources */,
 				676355071F5EAD5900CA7EAB /* SubscriberUnsubscriber.swift in Sources */,
 				58EB8D251F5D8EE80028A487 /* BaseNavigationBar.swift in Sources */,
 				5840D6D51F376E5E00C8CB76 /* NavigationStackState.swift in Sources */,
@@ -3567,10 +3828,12 @@
 				58FBB66A1F58717500E6532B /* SeptaTabBarImages.swift in Sources */,
 				58126F711F631CB200A6E187 /* NextToArriveEndpointsViewModel.swift in Sources */,
 				58E33F141F61425600C74B7C /* NextToArriveProvider.swift in Sources */,
+				5803C385210B9C2E00BFAE7A /* CustomPushNotificationsViewController.swift in Sources */,
 				0E2A006520CFF88900E97BAF /* DatabaseUpdateReducer.swift in Sources */,
 				587BC0581F6EEBBD00B92BB6 /* AlertsViewModel.swift in Sources */,
 				585760AB1F82A1BC00A340DB /* NextToArriveNoResultsAlert.swift in Sources */,
 				671A19201F6613A600C8EEDA /* ConstraintsToggle.swift in Sources */,
+				679BC9DE21129CA800F666BA /* PushNotificationTableViewCell.swift in Sources */,
 				580128121F6C055B006B6DB8 /* RedButton.swift in Sources */,
 				5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */,
 				6789B7811F8FEE17008C6DCA /* TripDetailState.swift in Sources */,
@@ -3588,10 +3851,13 @@
 				580A35651F6A1949000FCA82 /* FavoriteNextToArriveViewModel.swift in Sources */,
 				58E54E241F65A40100E9B66D /* NavigationBar+Util.swift in Sources */,
 				586852E01F8D4F470081C1CC /* LittleBlueChevronButton.swift in Sources */,
+				5803C38B210BAC7800BFAE7A /* XibView.swift in Sources */,
 				6776F67E201B4078001FD5B2 /* AlertState_HasGenericOrAppAlertsWatcher.swift in Sources */,
 				58DD1A901F600758002532DC /* NextToArriveViewModel+StopCell.swift in Sources */,
+				5803C371210A6B5900BFAE7A /* ManagePushNotificationsPushCell.swift in Sources */,
 				0E36308D21001DB300980EB6 /* TransitRouteCardView.swift in Sources */,
 				678DAAB51F67478900EB6EE8 /* ConnectionCell.swift in Sources */,
+				5803C36B210A65AC00BFAE7A /* ManagePushNotificationsHeaderView.swift in Sources */,
 				58126F6B1F631C3100A6E187 /* RouteOverlay.swift in Sources */,
 				67EA2B611F518CA600C0567A /* SearchModalHeaderDelegate.swift in Sources */,
 				6708C2791F73B7C200922D8E /* NavigationModalStateToNavigationEvent.swift in Sources */,
@@ -3615,8 +3881,10 @@
 				67F0289A1F7EDA100032F99C /* CustomerServiceControl.swift in Sources */,
 				678F05301F5B918300CC4D3C /* LocationProvider.swift in Sources */,
 				5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift in Sources */,
+				679BC9E22112A40900F666BA /* CustomPushNotificationsViewModel.swift in Sources */,
 				67F757B11F486F0600D3A4EE /* TransitModeDisplayable.swift in Sources */,
 				6789B7881F8FF1B7008C6DCA /* TripDetailMiddleware.swift in Sources */,
+				672DF2522110B59C00FD8C1D /* TimeframeGroupView.swift in Sources */,
 				58248B721F6D77A100DA2D65 /* DeleteFavoriteButton.swift in Sources */,
 				0E4328EA20D12CD400FBD805 /* DatabaseDownloadedWatcher.swift in Sources */,
 				58EB8D2B1F5D92170028A487 /* NextToArriveReducer.swift in Sources */,
@@ -3632,13 +3900,16 @@
 				678DAAA21F6706E300EB6EE8 /* NextToArriveTripGrouper.swift in Sources */,
 				676B7D8E1F7D01950052F016 /* FaresViewModel.swift in Sources */,
 				67C567331F598A0400FF6203 /* TransitAlertView.swift in Sources */,
+				58AC629621124ACA00E4EA0A /* InstructionsHeaderView.swift in Sources */,
 				5814AA841F43589E00DF774A /* TripScheduleViewModel.swift in Sources */,
 				0E8E60CA20EC109200AB08FE /* TransitViewSelectionViewController.swift in Sources */,
 				5816AB731F7C10CD00210C07 /* ScrollableTableViewToggle.swift in Sources */,
 				67365AD81F75918300FC86CB /* ViewSchedulesButton.swift in Sources */,
+				5820CB44210F4E4000782275 /* UILabel+Util.swift in Sources */,
 				67365ACA1F754A3200FC86CB /* HalfSheetPresentationCoordinator.swift in Sources */,
 				58490E471F55F98B007DBCA1 /* AlertState.swift in Sources */,
 				5814AA8A1F4359D000DF774A /* TripleTextDisplayable.swift in Sources */,
+				672DF24C2110B4D700FD8C1D /* DayOfWeekImageView.swift in Sources */,
 				585CEBD81F86A023006DCC67 /* String+HTML.swift in Sources */,
 				587BC0481F6ED66700B92BB6 /* MapFromAlerts.swift in Sources */,
 				0E8E60D720EFBCE300AB08FE /* TransitViewState.swift in Sources */,
@@ -3659,6 +3930,7 @@
 				58658D1E1F53298B00E67B4E /* DisplayAddress.swift in Sources */,
 				67A65BFC1F5AEBB20068428E /* NextToArriveButton.swift in Sources */,
 				6789B7751F8FDFAF008C6DCA /* TripDetailViewController.swift in Sources */,
+				5803C387210B9D9C00BFAE7A /* TimeframeView.swift in Sources */,
 				584D54D32106103500EB773C /* PushNotificationPreferenceState.swift in Sources */,
 				58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */,
 				0E2DCAD320F64C5D0086F400 /* TransitViewMapRouteViewModel.swift in Sources */,
@@ -3671,6 +3943,7 @@
 				5840D6D71F37728B00C8CB76 /* NavigationController.swift in Sources */,
 				58A26DA21F6F283E005A70D3 /* AlertDetailProvider.swift in Sources */,
 				58C2A0691F38AA1B00F0D6CA /* ScheduleData.swift in Sources */,
+				58AC628E2112335400E4EA0A /* PushNotificationRoute.swift in Sources */,
 				67075FC81F57866D008BB38C /* ScheduleRouteState.swift in Sources */,
 				6789B7771F8FDFC8008C6DCA /* TripDetailInfoViewController.swift in Sources */,
 				583162121FA9BF45002B8D8C /* NextToArriveStop+DelayString.swift in Sources */,
@@ -3708,12 +3981,15 @@
 				67F028AA1F7FD5570032F99C /* SEPTAConnectionMiddleware.swift in Sources */,
 				0E4328E320D02C6400FBD805 /* DatabaseUpdateProvider.swift in Sources */,
 				58E33F1C1F61473800C74B7C /* TripVehicleLocations.swift in Sources */,
+				5803C37C210B619F00BFAE7A /* PushNotificationSystemStatusResolver.swift in Sources */,
+				5803C37E210B64EF00BFAE7A /* PushNotificationAuthorizationStatus.swift in Sources */,
 				586C1CED1F69A7E10023607C /* DatabaseLoadingModalViewController.swift in Sources */,
 				670C59F51F8A712900CAE1AC /* AppInfoView.swift in Sources */,
 				5840D6E01F37E5FB00C8CB76 /* ScheduleReducer.swift in Sources */,
 				67F028A01F7EE3C20032F99C /* ContactPoint.swift in Sources */,
 				6789B7831F8FEF7C008C6DCA /* TripDetailActions.swift in Sources */,
 				584D54D72106112000EB773C /* DaysOfWeekOptionSet.swift in Sources */,
+				5803C369210A531100BFAE7A /* ManagePushNotificationsViewModel.swift in Sources */,
 				5801280E1F6BF2DF006B6DB8 /* NoFavoriteViewController.swift in Sources */,
 				58FBBFA41F65821000B7A4DA /* DatabaseReducer.swift in Sources */,
 				58290E411F372B51000CCF3C /* AppState.swift in Sources */,
@@ -3723,6 +3999,7 @@
 				5825319E1F40940B0088D056 /* UserPreferencesProviderProtocol.swift in Sources */,
 				67365ACD1F754A3200FC86CB /* SevenEightsAnimationOut.swift in Sources */,
 				0E8E610920F53C4200AB08FE /* TransitViewOverviewViewController.swift in Sources */,
+				67A0DD272110EC28001EAE15 /* DatePickerAnimationOut.swift in Sources */,
 				58FBB6681F58590F00E6532B /* Route+Title.swift in Sources */,
 				589A89DB1F52E6A9007329DB /* ScheduleStopEdit.swift in Sources */,
 				584528BB1F7C27C000E68D8F /* CurvedTopInfoView.swift in Sources */,
@@ -3760,6 +4037,8 @@
 				58C2A0591F3812D600F0D6CA /* ScheduleActions.swift in Sources */,
 				5825319C1F408C2D0088D056 /* UserPreferencesStatePersister.swift in Sources */,
 				676355051F5E9A0300CA7EAB /* SchedulesViewModelDelegate.swift in Sources */,
+				5820CB38210F3D4600782275 /* AttributedString+Util.swift in Sources */,
+				58AC628C2111F7EC00E4EA0A /* AlertDetailFooterView.swift in Sources */,
 				67C5672B1F596E0700FF6203 /* ErrorObjects.swift in Sources */,
 				58490E4B1F560226007DBCA1 /* AlertActions.swift in Sources */,
 				58E54E201F65977100E9B66D /* NextToArriveTripViewController.swift in Sources */,
@@ -3782,10 +4061,12 @@
 				58E33F161F6143E000C74B7C /* NextToArriveStop.swift in Sources */,
 				0E8E610020F3E3DF00AB08FE /* TransitViewSelectionViewModel.swift in Sources */,
 				58EB8D0F1F5D79530028A487 /* NextToArriveNavigationController.swift in Sources */,
+				67A0DD202110E9FB001EAE15 /* SelectTimeOfDayViewController.swift in Sources */,
 				0E39082E20E1268900E94D53 /* InAppReview.swift in Sources */,
 				58F444FC1F3D335400A93208 /* SeptaAction.swift in Sources */,
 				678F052C1F5B7CEC00CC4D3C /* AddressLookupReducer.swift in Sources */,
 				0E2A006820CFFAFA00E97BAF /* DatabaseUpdateActions.swift in Sources */,
+				5803C382210B9BC800BFAE7A /* CustomNotifications.swift in Sources */,
 				6789B7851F8FEF8C008C6DCA /* TripDetailReducers.swift in Sources */,
 				6776F682201C0D05001FD5B2 /* AlertState_ModalAlertsDisplayedWatcher.swift in Sources */,
 				584D54D5210610DE00EB773C /* NotificationTimeWindow.swift in Sources */,
@@ -3805,14 +4086,19 @@
 				58A26DA41F6F30B2005A70D3 /* Route+Displayable.swift in Sources */,
 				58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */,
 				581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */,
+				5805C829210FA71000A35613 /* DayOfWeekView.swift in Sources */,
 				58CBEE871F953B5A00F26A15 /* FavoriteState_NextToArriveFavoriteWatcher.swift in Sources */,
 				679924051F6E01BD00FD5691 /* MoreButton.swift in Sources */,
 				58E80FEE20F685D5000E419A /* FavoriteNextToArriveReverseTrip.swift in Sources */,
 				580A35691F6A2B0A000FCA82 /* FavoriteHeaderCell.swift in Sources */,
 				588F27F41F39E05A00D62425 /* PreferenceReducers.swift in Sources */,
 				676B7D841F7CFA270052F016 /* FaresViewController.swift in Sources */,
+				67A0DD282110EC28001EAE15 /* DatePickerPresentationCoordinator.swift in Sources */,
 				58EB8D291F5D90CD0028A487 /* NextToArriveState.swift in Sources */,
 				0E8E60EE20F00B9E00AB08FE /* RouteIcon.swift in Sources */,
+				67A0DD262110EC28001EAE15 /* DatePickerAnimationIn.swift in Sources */,
+				5805C827210F8CAA00A35613 /* TimeframeBoundaryView.swift in Sources */,
+				5803C36F210A6B2F00BFAE7A /* ManagePushNotificationsToggleCell.swift in Sources */,
 				5893970C1F7E60D900F3D2F8 /* WebViewController.swift in Sources */,
 				589A919B1F905CA6009B49E0 /* TripDetailState_TripDetailWatcher.swift in Sources */,
 				6776F678201B32EA001FD5B2 /* AlertState_HasAppAlertsWatcher.swift in Sources */,
@@ -3823,6 +4109,7 @@
 				67BC3F8D1F66AD4E001F9FE3 /* NoConnectionSectionHeader.swift in Sources */,
 				0E8E60D920EFBDD600AB08FE /* TransitViewReducer.swift in Sources */,
 				58248B6E1F6D6A3800DA2D65 /* EditFavoriteViewController.swift in Sources */,
+				58AC629021123F8100E4EA0A /* MyNotificationsHeaderView.swift in Sources */,
 				676354FD1F5E255A00CA7EAB /* FilterableRoute.swift in Sources */,
 				58B892171F38F7E700BFFEFA /* Strings.swift in Sources */,
 				0E313BB020BEFCB7002EFD34 /* DatabaseUpdater.swift in Sources */,

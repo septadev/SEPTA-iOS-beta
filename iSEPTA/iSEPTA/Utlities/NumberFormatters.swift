@@ -9,6 +9,12 @@ public class NumberFormatters {
         return formatter
     }()
 
+    static var floatFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.positiveFormat = "0.0"
+        return formatter
+    }()
+
     static var metersToMilesFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 2

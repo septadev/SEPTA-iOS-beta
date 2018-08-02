@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MyNotificationsHeaderView" customModule="Septa">
+            <rect key="frame" x="0.0" y="0.0" width="701" height="310"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2dD-vL-74C">
+                    <rect key="frame" x="0.0" y="0.0" width="701" height="310"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="78" translatesAutoresizingMaskIntoConstraints="NO" id="c1i-1N-515" userLabel="InstructionsView" customClass="XibView" customModule="Septa" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="701" height="76"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="InstructionsHeaderView"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="32" translatesAutoresizingMaskIntoConstraints="NO" id="8w3-YD-RnE" userLabel="DayOfWeekView" customClass="XibView" customModule="Septa" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="76" width="701" height="54"/>
+                            <color key="backgroundColor" red="1" green="0.96728127850000001" blue="0.35519992830000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <viewLayoutGuide key="safeArea" id="oCX-ph-Q9E"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="DayOfWeekView"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="76" translatesAutoresizingMaskIntoConstraints="NO" id="Zvb-iN-Ipj" userLabel="TimeFrameGroupView" customClass="XibView" customModule="Septa" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="130" width="701" height="76"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <viewLayoutGuide key="safeArea" id="Nff-sx-C5m"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TimeframeGroupView"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ljb-Ex-pIU" userLabel="AddEditView" customClass="XibView" customModule="Septa" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="206" width="701" height="104"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="AddEditView"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="2dD-vL-74C" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="6Ug-Wr-rsR" userLabel="StackVioewRight"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2dD-vL-74C" secondAttribute="bottom" id="FW3-D8-hAB"/>
+                <constraint firstItem="2dD-vL-74C" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="KHi-9a-y6X" userLabel="StackViewLeft"/>
+                <constraint firstItem="2dD-vL-74C" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ZWT-Ul-EIi" userLabel="StackViewTop"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="addEditViewWrapper" destination="ljb-Ex-pIU" id="oAR-e9-rBw"/>
+            </connections>
+            <point key="canvasLocation" x="87.5" y="-491"/>
+        </view>
+    </objects>
+</document>
