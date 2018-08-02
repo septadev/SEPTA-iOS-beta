@@ -36,7 +36,7 @@
                     </connections>
                 </switch>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6m-Hn-JIa" userLabel="ViewPreferences">
-                    <rect key="frame" x="13" y="58" width="300" height="95"/>
+                    <rect key="frame" x="13" y="58" width="194" height="95"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <state key="normal" title="View notification preferences &gt;     ">
                         <color key="titleColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -48,7 +48,7 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="J6m-Hn-JIa" secondAttribute="trailing" constant="80" id="0xf-K3-wlD" userLabel="ViewPreferencesRight"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="J6m-Hn-JIa" secondAttribute="trailing" constant="80" id="0xf-K3-wlD" userLabel="ViewPreferencesRight"/>
                 <constraint firstItem="9TU-M7-Vgm" firstAttribute="top" secondItem="n2c-sI-u9z" secondAttribute="bottom" constant="16" id="3QX-WU-JdO" userLabel="SubscribeTop"/>
                 <constraint firstItem="J6m-Hn-JIa" firstAttribute="top" secondItem="9TU-M7-Vgm" secondAttribute="bottom" constant="3" id="7hO-gi-hY6" userLabel="ViewPreferencesTop"/>
                 <constraint firstItem="n2c-sI-u9z" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="21" id="7tQ-Ik-WAq" userLabel="DividerTop"/>

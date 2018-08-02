@@ -38,18 +38,17 @@ class AlertDetailFooterView: UIView {
 
     @IBOutlet var pushNotificationToggleView: UISwitch!
 
-    @IBOutlet var subscribeLabel: UILabel!
-//    {
-//        didSet {
-//            guard let text = subscribeLabel.text else { return }
-//            subscribeLabel.attributedText = text.attributed(
-//                fontSize: 14,
-//                fontWeight: .bold
-//            )
-//            subscribeLabel.preferredMaxLayoutWidth = UIScreen.main.bounds.width - 93
-//            subscribeLabel.setNeedsLayout()
-//        }
-//    }
+    @IBOutlet var subscribeLabel: UILabel! {
+        didSet {
+            guard let text = subscribeLabel.text else { return }
+            subscribeLabel.attributedText = text.attributed(
+                fontSize: 14,
+                fontWeight: .bold
+            )
+            subscribeLabel.preferredMaxLayoutWidth = UIScreen.main.bounds.width - 93
+            subscribeLabel.setNeedsLayout()
+        }
+    }
 
     @IBOutlet var dividerLabel: UIView! {
         didSet {
