@@ -16,6 +16,7 @@ let store = Store<AppState>(
 )
 
 var stateProviders = StateProviders()
+var notificationsManager = NotificationsManager()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -34,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         databaseUpdateManager.appLaunched(coldStart: true)
 
-        FirebaseApp.configure()
+        notificationsManager.configure()
 
         UNUserNotificationCenter.current().delegate = self
 
@@ -83,4 +84,7 @@ extension AppDelegate: CrashlyticsDelegate {
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
+    func application(_: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler _: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+    }
 }

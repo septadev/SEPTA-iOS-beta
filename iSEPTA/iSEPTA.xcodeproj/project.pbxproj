@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E2777FC211249EA00507CFE /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2777FB211249EA00507CFE /* NotificationsManager.swift */; };
 		0E2A006220CFF61A00E97BAF /* DatabaseUpdateState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A006120CFF61A00E97BAF /* DatabaseUpdateState.swift */; };
 		0E2A006520CFF88900E97BAF /* DatabaseUpdateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A006420CFF88900E97BAF /* DatabaseUpdateReducer.swift */; };
 		0E2A006820CFFAFA00E97BAF /* DatabaseUpdateActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A006720CFFAFA00E97BAF /* DatabaseUpdateActions.swift */; };
@@ -711,6 +712,7 @@
 /* Begin PBXFileReference section */
 		0E2777F9211238F900507CFE /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		0E2777FA2112390600507CFE /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		0E2777FB211249EA00507CFE /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		0E2A006120CFF61A00E97BAF /* DatabaseUpdateState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateState.swift; sourceTree = "<group>"; };
 		0E2A006420CFF88900E97BAF /* DatabaseUpdateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateReducer.swift; sourceTree = "<group>"; };
 		0E2A006720CFFAFA00E97BAF /* DatabaseUpdateActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateActions.swift; sourceTree = "<group>"; };
@@ -1630,6 +1632,7 @@
 				0E39082D20E1268900E94D53 /* InAppReview.swift */,
 				0E8E60ED20F00B9E00AB08FE /* RouteIcon.swift */,
 				0E36308A20FFB20E00980EB6 /* NSMutableAttributedStringExtensions.swift */,
+				0E2777FB211249EA00507CFE /* NotificationsManager.swift */,
 			);
 			path = Utlities;
 			sourceTree = "<group>";
@@ -3455,6 +3458,7 @@
 				678D26C61F5CC52300D140CC /* FavoritesReducer.swift in Sources */,
 				6776F686201CAA82001FD5B2 /* TestGenericAlertDetailProvider.swift in Sources */,
 				585303CD1F69C74F00145D87 /* FavoritesNextToArriveProvider.swift in Sources */,
+				0E2777FC211249EA00507CFE /* NotificationsManager.swift in Sources */,
 				588D805F1F72B23D00EE1983 /* TargetForScheduleActions.swift in Sources */,
 				0E2DCAD720F672BD0086F400 /* TransitViewVehicleAnnotation.swift in Sources */,
 				582F4ED31F33B1120062A546 /* SelectStopRow.swift in Sources */,
