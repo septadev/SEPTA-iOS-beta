@@ -74,3 +74,18 @@ struct DeleteTimeframe: UserPreferencesAction {
     let index: Int
     let description = "Deleting a new time frame"
 }
+
+struct AddPushNotificationRoute: UserPreferencesAction {
+    let route: PushNotificationRoute
+    let description = "Adding a push Notification Route"
+}
+
+struct RemovePushNotificationRoute: UserPreferencesAction {
+    let route: PushNotificationRoute
+    let description = "Adding a push Notification Route"
+}
+
+struct UpdatePushNotificationRoute: UserPreferencesAction {
+    let route: PushNotificationRoute
+    let description = "Adding a push Notification Route"
+}

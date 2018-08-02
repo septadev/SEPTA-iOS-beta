@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyi-zh-g9W" userLabel="Instructions">
-                    <rect key="frame" x="36" y="35" width="220" height="61"/>
+                    <rect key="frame" x="36" y="18" width="220" height="94"/>
                     <string key="text">Set notifications days and times
 for all transportation modes</string>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -33,12 +33,16 @@ for all transportation modes</string>
             <constraints>
                 <constraint firstItem="zyi-zh-g9W" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="2nZ-KW-C82" userLabel="InstructionsLeft"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zyi-zh-g9W" secondAttribute="trailing" constant="51" id="d2l-jf-0Tg" userLabel="InstructionsRight"/>
-                <constraint firstItem="zyi-zh-g9W" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="rGQ-je-mLY" userLabel="CenterY"/>
+                <constraint firstItem="zyi-zh-g9W" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="18" id="dH5-mi-MNZ" userLabel="InstructionsTop"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="zyi-zh-g9W" secondAttribute="bottom" constant="18" id="sIn-nT-WnB" userLabel="InstructionsBottom"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="instructionsLabel" destination="zyi-zh-g9W" id="Jza-oO-R0d"/>
+            </connections>
             <point key="canvasLocation" x="-9.5" y="-217"/>
         </view>
     </objects>

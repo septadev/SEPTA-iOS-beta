@@ -44,6 +44,12 @@ struct UserPreferencesReducer {
             newPref = reduceInsertNewPushTimeframe(action: action, state: state)
         case let action as DeleteTimeframe:
             newPref = reduceDeleteTimeframe(action: action, state: state)
+        case let action as AddPushNotificationRoute:
+            newPref = reduceAddPushNotificationRoute(action: action, state: state)
+        case let action as RemovePushNotificationRoute:
+            newPref = reduceRemovePushNotificationRoute(action: action, state: state)
+        case let action as UpdatePushNotificationRoute:
+            newPref = reduceUpdatePushNotificationRoute(action: action, state: state)
         default:
             fatalError("You passed in an action for which there is no reducer")
         }
@@ -110,19 +116,7 @@ struct UserPreferencesReducer {
     }
 
     static func reduceUpdatePushNotificationTimeframe(action: UpdatePushNotificationTimeframe, state: UserPreferenceState) -> UserPreferenceState {
-        var userPreferenceState = action.block(state)
-//        let notificationTimeWindows: [NotificationTimeWindow] = userPreferenceState.pushNotificationPreferenceState.notificationTimeWindows.map({
-//            var timeWindow = $0
-//            if timeWindow.startMinute.minutes > timeWindow.endMinute.minutes {
-//                let startMinute = timeWindow.startMinute
-//                timeWindow.startMinute = timeWindow.endMinute
-//                timeWindow.endMinute = startMinute
-//            }
-//            return timeWindow
-//        }).sorted { $0.startMinute.minutes < $1.startMinute.minutes }
-//
-//        userPreferenceState.pushNotificationPreferenceState.notificationTimeWindows = notificationTimeWindows
-        return userPreferenceState
+        return action.block(state)
     }
 
     static func reduceInsertNewPushTimeframe(action _: InsertNewPushTimeframe, state: UserPreferenceState) -> UserPreferenceState {
@@ -134,6 +128,33 @@ struct UserPreferencesReducer {
     static func reduceDeleteTimeframe(action: DeleteTimeframe, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
         userPreferenceState.pushNotificationPreferenceState.notificationTimeWindows.remove(at: action.index)
+        return userPreferenceState
+    }
+
+    static func reduceAddPushNotificationRoute(action: AddPushNotificationRoute, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        var routeIds = userPreferenceState.pushNotificationPreferenceState.routeIds
+        if !routeIds.contains(action.route) {
+            routeIds.append(action.route)
+        }
+        userPreferenceState.pushNotificationPreferenceState.routeIds = routeIds
+        return userPreferenceState
+    }
+
+    static func reduceRemovePushNotificationRoute(action: RemovePushNotificationRoute, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        var routeIds = userPreferenceState.pushNotificationPreferenceState.routeIds
+        routeIds = routeIds.filter { $0 != action.route }
+        userPreferenceState.pushNotificationPreferenceState.routeIds = routeIds
+        return userPreferenceState
+    }
+
+    static func reduceUpdatePushNotificationRoute(action: UpdatePushNotificationRoute, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        var routeIds = userPreferenceState.pushNotificationPreferenceState.routeIds
+        guard let index = routeIds.index(of: action.route) else { return userPreferenceState }
+        routeIds[index] = action.route
+        userPreferenceState.pushNotificationPreferenceState.routeIds = routeIds
         return userPreferenceState
     }
 }

@@ -7,9 +7,35 @@
 //
 
 import Foundation
+import SeptaSchedule
 import UIKit
 
 class AlertDetailFooterView: UIView {
+    var pushNotificationRoute: PushNotificationRoute? {
+        didSet {
+            guard let route = pushNotificationRoute else { return }
+            pushNotificationToggleView.isOn = store.state.preferenceState.pushNotificationPreferenceState.routeIds.contains(route)
+        }
+    }
+
+    @IBAction func toggleNotificationsValueChanged(_ sender: UISwitch) {
+        guard let route = pushNotificationRoute else { return }
+        if sender.isOn {
+            store.dispatch(AddPushNotificationRoute(route: route))
+        } else {
+            store.dispatch(RemovePushNotificationRoute(route: route))
+        }
+    }
+
+    @IBAction func userTappedOnViewNotificationPreferences(_: Any) {
+        store.dispatch(SwitchTabs(activeNavigationController: .more, description: "User wants to view preferences"))
+        let navigationStackState = NavigationStackState(viewControllers: [.moreViewController, .managePushNotficationsController], modalViewController: nil)
+        let action = InitializeNavigationState(navigationController: .more, navigationStackState: navigationStackState, description: "Deep Linking into More")
+        store.dispatch(action)
+    }
+
+    @IBOutlet var pushNotificationToggleView: UISwitch!
+
     @IBOutlet var subscribeLabel: UILabel! {
         didSet {
             guard let text = subscribeLabel.text else { return }
@@ -53,12 +79,5 @@ class AlertDetailFooterView: UIView {
                 lineHeight: nil
             )
         }
-    }
-
-    @IBAction func userTappedOnViewNotificationPreferences(_: Any) {
-        store.dispatch(SwitchTabs(activeNavigationController: .more, description: "User wants to view preferences"))
-        let navigationStackState = NavigationStackState(viewControllers: [.moreViewController, .managePushNotficationsController], modalViewController: nil)
-        let action = InitializeNavigationState(navigationController: .more, navigationStackState: navigationStackState, description: "Deep Linking into More")
-        store.dispatch(action)
     }
 }

@@ -17,24 +17,24 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3mN-9i-UkA">
-                    <rect key="frame" x="0.0" y="0.0" width="408" height="217"/>
+                    <rect key="frame" x="0.0" y="0.0" width="408" height="447"/>
                     <subviews>
-                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="76" translatesAutoresizingMaskIntoConstraints="NO" id="CDC-z1-VqO" userLabel="Timeframe 1" customClass="XibView" customModule="Septa" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="408" height="76"/>
+                        <view contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="76" translatesAutoresizingMaskIntoConstraints="NO" id="CDC-z1-VqO" userLabel="Timeframe 1" customClass="XibView" customModule="Septa" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="408" height="306"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TimeframeView"/>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="76" translatesAutoresizingMaskIntoConstraints="NO" id="Md4-lC-7Xh" userLabel="Time frame 2" customClass="XibView" customModule="Septa" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="76" width="408" height="76"/>
+                        <view contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="76" translatesAutoresizingMaskIntoConstraints="NO" id="Md4-lC-7Xh" userLabel="Time frame 2" customClass="XibView" customModule="Septa" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="306" width="408" height="76"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="TimeframeView"/>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="2WQ-wD-Lfl" userLabel="AddTimeFrameButton" customClass="XibView" customModule="Septa" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="152" width="408" height="65"/>
+                        <view contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="65" translatesAutoresizingMaskIntoConstraints="NO" id="2WQ-wD-Lfl" userLabel="AddTimeFrameButton" customClass="XibView" customModule="Septa" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="382" width="408" height="65"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="nibName" value="AddTimeframeButtonView"/>
@@ -46,7 +46,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="3mN-9i-UkA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="7Mp-6g-4sb"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3mN-9i-UkA" secondAttribute="bottom" id="BmK-MG-ssV"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="3mN-9i-UkA" secondAttribute="bottom" id="BmK-MG-ssV"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3mN-9i-UkA" secondAttribute="trailing" id="Hyf-Z0-0Zs"/>
                 <constraint firstItem="3mN-9i-UkA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Y36-GN-biC"/>
             </constraints>

@@ -69,7 +69,6 @@
 		5803C385210B9C2E00BFAE7A /* CustomPushNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C384210B9C2E00BFAE7A /* CustomPushNotificationsViewController.swift */; };
 		5803C387210B9D9C00BFAE7A /* TimeframeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C386210B9D9C00BFAE7A /* TimeframeView.swift */; };
 		5803C38B210BAC7800BFAE7A /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C38A210BAC7800BFAE7A /* XibView.swift */; };
-		5803C38D210BBD4700BFAE7A /* CustomPushNotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C38C210BBD4700BFAE7A /* CustomPushNotificationsViewModel.swift */; };
 		5805C827210F8CAA00A35613 /* TimeframeBoundaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805C826210F8CAA00A35613 /* TimeframeBoundaryView.swift */; };
 		5805C829210FA71000A35613 /* DayOfWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805C828210FA71000A35613 /* DayOfWeekView.swift */; };
 		5805C82B210FA72000A35613 /* DayOfWeekView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5805C82A210FA72000A35613 /* DayOfWeekView.xib */; };
@@ -105,8 +104,8 @@
 		581DA54A1F3BE1C8006AEC39 /* IdentifiableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581DA5491F3BE1C8006AEC39 /* IdentifiableController.swift */; };
 		581DA54F1F3BF102006AEC39 /* ViewTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581DA54E1F3BF102006AEC39 /* ViewTransitionType.swift */; };
 		5820CB38210F3D4600782275 /* AttributedString+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5820CB37210F3D4600782275 /* AttributedString+Util.swift */; };
-		5820CB3C210F4AC200782275 /* CustomPushNotificationsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5820CB3B210F4AC200782275 /* CustomPushNotificationsHeaderView.swift */; };
-		5820CB3E210F4AD300782275 /* CustomPushNotificationsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5820CB3D210F4AD300782275 /* CustomPushNotificationsHeaderView.xib */; };
+		5820CB3C210F4AC200782275 /* AddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5820CB3B210F4AC200782275 /* AddEditView.swift */; };
+		5820CB3E210F4AD300782275 /* AddEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5820CB3D210F4AD300782275 /* AddEditView.xib */; };
 		5820CB44210F4E4000782275 /* UILabel+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5820CB43210F4E4000782275 /* UILabel+Util.swift */; };
 		58248B641F6D573000DA2D65 /* NextToArriveState_ScheduleState_ScheduleRequestWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B631F6D573000DA2D65 /* NextToArriveState_ScheduleState_ScheduleRequestWatcher.swift */; };
 		58248B661F6D575A00DA2D65 /* BaseWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B651F6D575A00DA2D65 /* BaseWatcher.swift */; };
@@ -619,6 +618,9 @@
 		679924051F6E01BD00FD5691 /* MoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679924041F6E01BD00FD5691 /* MoreButton.swift */; };
 		679BC9D22111509C00F666BA /* AddTimeframeButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679BC9D12111509C00F666BA /* AddTimeframeButtonView.xib */; };
 		679BC9D4211150C600F666BA /* AddTimeframeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679BC9D3211150C600F666BA /* AddTimeframeButtonView.swift */; };
+		679BC9DE21129CA800F666BA /* PushNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679BC9DD21129CA800F666BA /* PushNotificationTableViewCell.swift */; };
+		679BC9E021129CBC00F666BA /* PushNotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679BC9DF21129CBC00F666BA /* PushNotificationTableViewCell.xib */; };
+		679BC9E22112A40900F666BA /* CustomPushNotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679BC9E12112A40900F666BA /* CustomPushNotificationsViewModel.swift */; };
 		67A0DD202110E9FB001EAE15 /* SelectTimeOfDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A0DD1F2110E9FB001EAE15 /* SelectTimeOfDayViewController.swift */; };
 		67A0DD262110EC28001EAE15 /* DatePickerAnimationIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A0DD222110EC28001EAE15 /* DatePickerAnimationIn.swift */; };
 		67A0DD272110EC28001EAE15 /* DatePickerAnimationOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A0DD232110EC28001EAE15 /* DatePickerAnimationOut.swift */; };
@@ -800,7 +802,6 @@
 		5803C384210B9C2E00BFAE7A /* CustomPushNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushNotificationsViewController.swift; sourceTree = "<group>"; };
 		5803C386210B9D9C00BFAE7A /* TimeframeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeframeView.swift; sourceTree = "<group>"; };
 		5803C38A210BAC7800BFAE7A /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
-		5803C38C210BBD4700BFAE7A /* CustomPushNotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushNotificationsViewModel.swift; sourceTree = "<group>"; };
 		5805C826210F8CAA00A35613 /* TimeframeBoundaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeframeBoundaryView.swift; sourceTree = "<group>"; };
 		5805C828210FA71000A35613 /* DayOfWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekView.swift; sourceTree = "<group>"; };
 		5805C82A210FA72000A35613 /* DayOfWeekView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayOfWeekView.xib; sourceTree = "<group>"; };
@@ -837,8 +838,8 @@
 		581DA5491F3BE1C8006AEC39 /* IdentifiableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableController.swift; sourceTree = "<group>"; };
 		581DA54E1F3BF102006AEC39 /* ViewTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransitionType.swift; sourceTree = "<group>"; };
 		5820CB37210F3D4600782275 /* AttributedString+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributedString+Util.swift"; sourceTree = "<group>"; };
-		5820CB3B210F4AC200782275 /* CustomPushNotificationsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushNotificationsHeaderView.swift; sourceTree = "<group>"; };
-		5820CB3D210F4AD300782275 /* CustomPushNotificationsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPushNotificationsHeaderView.xib; sourceTree = "<group>"; };
+		5820CB3B210F4AC200782275 /* AddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditView.swift; sourceTree = "<group>"; };
+		5820CB3D210F4AD300782275 /* AddEditView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddEditView.xib; sourceTree = "<group>"; };
 		5820CB43210F4E4000782275 /* UILabel+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Util.swift"; sourceTree = "<group>"; };
 		58248B631F6D573000DA2D65 /* NextToArriveState_ScheduleState_ScheduleRequestWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveState_ScheduleState_ScheduleRequestWatcher.swift; sourceTree = "<group>"; };
 		58248B651F6D575A00DA2D65 /* BaseWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWatcher.swift; sourceTree = "<group>"; };
@@ -1373,6 +1374,9 @@
 		679924041F6E01BD00FD5691 /* MoreButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreButton.swift; sourceTree = "<group>"; };
 		679BC9D12111509C00F666BA /* AddTimeframeButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTimeframeButtonView.xib; sourceTree = "<group>"; };
 		679BC9D3211150C600F666BA /* AddTimeframeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeframeButtonView.swift; sourceTree = "<group>"; };
+		679BC9DD21129CA800F666BA /* PushNotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationTableViewCell.swift; sourceTree = "<group>"; };
+		679BC9DF21129CBC00F666BA /* PushNotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PushNotificationTableViewCell.xib; sourceTree = "<group>"; };
+		679BC9E12112A40900F666BA /* CustomPushNotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushNotificationsViewModel.swift; sourceTree = "<group>"; };
 		67A0DD1F2110E9FB001EAE15 /* SelectTimeOfDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTimeOfDayViewController.swift; sourceTree = "<group>"; };
 		67A0DD222110EC28001EAE15 /* DatePickerAnimationIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerAnimationIn.swift; sourceTree = "<group>"; };
 		67A0DD232110EC28001EAE15 /* DatePickerAnimationOut.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerAnimationOut.swift; sourceTree = "<group>"; };
@@ -1573,17 +1577,11 @@
 		5803C383210B9BCD00BFAE7A /* Custom Notififications */ = {
 			isa = PBXGroup;
 			children = (
+				679BC9DC21129C9200F666BA /* Cells */,
 				5803C362210A4FD400BFAE7A /* PushNotifications.storyboard */,
-				58AC628F21123F8100E4EA0A /* MyNotificationsHeaderView.swift */,
-				58AC629121123F9200E4EA0A /* MyNotificationsHeaderView.xib */,
-				58AC629321124AAE00E4EA0A /* InstructionsHeaderView.xib */,
-				58AC629521124ACA00E4EA0A /* InstructionsHeaderView.swift */,
+				679BC9D92112842200F666BA /* HeaderView */,
 				5803C384210B9C2E00BFAE7A /* CustomPushNotificationsViewController.swift */,
-				5803C38C210BBD4700BFAE7A /* CustomPushNotificationsViewModel.swift */,
-				672DF2502110B58500FD8C1D /* Times of Day */,
-				672DF24F2110B50100FD8C1D /* DayofWeek */,
-				5820CB3B210F4AC200782275 /* CustomPushNotificationsHeaderView.swift */,
-				5820CB3D210F4AD300782275 /* CustomPushNotificationsHeaderView.xib */,
+				679BC9E12112A40900F666BA /* CustomPushNotificationsViewModel.swift */,
 			);
 			path = "Custom Notififications";
 			sourceTree = "<group>";
@@ -3050,6 +3048,46 @@
 			path = "Add Time Frame";
 			sourceTree = "<group>";
 		};
+		679BC9D92112842200F666BA /* HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				58AC628F21123F8100E4EA0A /* MyNotificationsHeaderView.swift */,
+				58AC629121123F9200E4EA0A /* MyNotificationsHeaderView.xib */,
+				679BC9DA2112845600F666BA /* Instructions */,
+				672DF24F2110B50100FD8C1D /* DayofWeek */,
+				672DF2502110B58500FD8C1D /* Times of Day */,
+				679BC9DB2112881900F666BA /* AddEditView */,
+			);
+			path = HeaderView;
+			sourceTree = "<group>";
+		};
+		679BC9DA2112845600F666BA /* Instructions */ = {
+			isa = PBXGroup;
+			children = (
+				58AC629321124AAE00E4EA0A /* InstructionsHeaderView.xib */,
+				58AC629521124ACA00E4EA0A /* InstructionsHeaderView.swift */,
+			);
+			path = Instructions;
+			sourceTree = "<group>";
+		};
+		679BC9DB2112881900F666BA /* AddEditView */ = {
+			isa = PBXGroup;
+			children = (
+				5820CB3B210F4AC200782275 /* AddEditView.swift */,
+				5820CB3D210F4AD300782275 /* AddEditView.xib */,
+			);
+			path = AddEditView;
+			sourceTree = "<group>";
+		};
+		679BC9DC21129C9200F666BA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				679BC9DD21129CA800F666BA /* PushNotificationTableViewCell.swift */,
+				679BC9DF21129CBC00F666BA /* PushNotificationTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		67A0DD1E2110E9DD001EAE15 /* Time Of Day Picker */ = {
 			isa = PBXGroup;
 			children = (
@@ -3297,10 +3335,11 @@
 				677E04BD20727C9D00B16C09 /* 5.kml in Resources */,
 				676B7D9F1F7D189E0052F016 /* more.storyboard in Resources */,
 				677E051120727C9D00B16C09 /* CHW.kml in Resources */,
-				5820CB3E210F4AD300782275 /* CustomPushNotificationsHeaderView.xib in Resources */,
+				5820CB3E210F4AD300782275 /* AddEditView.xib in Resources */,
 				677E054B20727C9D00B16C09 /* 36.kml in Resources */,
 				677E04F920727C9D00B16C09 /* 68.kml in Resources */,
 				677E054220727C9D00B16C09 /* 35.kml in Resources */,
+				679BC9E021129CBC00F666BA /* PushNotificationTableViewCell.xib in Resources */,
 				677E04C620727C9D00B16C09 /* 32.kml in Resources */,
 				677E04EB20727C9D00B16C09 /* 108.kml in Resources */,
 				67F757AF1F486BB600D3A4EE /* TransitModeToolBarView.xib in Resources */,
@@ -3667,7 +3706,7 @@
 				67B511811F499E8F000E3065 /* ButtonViewCell.swift in Sources */,
 				67A385801F7D7690002E01E0 /* StartupViewController.swift in Sources */,
 				67EF6D661FE2DBAA00245E0F /* HolidaySchedule.swift in Sources */,
-				5820CB3C210F4AC200782275 /* CustomPushNotificationsHeaderView.swift in Sources */,
+				5820CB3C210F4AC200782275 /* AddEditView.swift in Sources */,
 				676355071F5EAD5900CA7EAB /* SubscriberUnsubscriber.swift in Sources */,
 				58EB8D251F5D8EE80028A487 /* BaseNavigationBar.swift in Sources */,
 				5840D6D51F376E5E00C8CB76 /* NavigationStackState.swift in Sources */,
@@ -3695,6 +3734,7 @@
 				587BC0581F6EEBBD00B92BB6 /* AlertsViewModel.swift in Sources */,
 				585760AB1F82A1BC00A340DB /* NextToArriveNoResultsAlert.swift in Sources */,
 				671A19201F6613A600C8EEDA /* ConstraintsToggle.swift in Sources */,
+				679BC9DE21129CA800F666BA /* PushNotificationTableViewCell.swift in Sources */,
 				580128121F6C055B006B6DB8 /* RedButton.swift in Sources */,
 				5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */,
 				6789B7811F8FEE17008C6DCA /* TripDetailState.swift in Sources */,
@@ -3741,6 +3781,7 @@
 				67F0289A1F7EDA100032F99C /* CustomerServiceControl.swift in Sources */,
 				678F05301F5B918300CC4D3C /* LocationProvider.swift in Sources */,
 				5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift in Sources */,
+				679BC9E22112A40900F666BA /* CustomPushNotificationsViewModel.swift in Sources */,
 				67F757B11F486F0600D3A4EE /* TransitModeDisplayable.swift in Sources */,
 				6789B7881F8FF1B7008C6DCA /* TripDetailMiddleware.swift in Sources */,
 				672DF2522110B59C00FD8C1D /* TimeframeGroupView.swift in Sources */,
@@ -3789,7 +3830,6 @@
 				58658D1E1F53298B00E67B4E /* DisplayAddress.swift in Sources */,
 				67A65BFC1F5AEBB20068428E /* NextToArriveButton.swift in Sources */,
 				6789B7751F8FDFAF008C6DCA /* TripDetailViewController.swift in Sources */,
-				5803C38D210BBD4700BFAE7A /* CustomPushNotificationsViewModel.swift in Sources */,
 				5803C387210B9D9C00BFAE7A /* TimeframeView.swift in Sources */,
 				584D54D32106103500EB773C /* PushNotificationPreferenceState.swift in Sources */,
 				58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */,

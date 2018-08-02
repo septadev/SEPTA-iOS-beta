@@ -2,16 +2,25 @@
 //  CustomPushNotificationsViewModel.swift
 //  iSEPTA
 //
-//  Created by Mark Broski on 7/27/18.
+//  Created by Mark Broski on 8/1/18.
 //  Copyright © 2018 Mark Broski. All rights reserved.
 //
 
 import Foundation
 import ReSwift
-import UIKit
+import SeptaSchedule
 
 class CustomPushNotificationsViewModel {
-    func stateUpdated(_ state: PushNotificationPreferenceState) {
-        _ = state
+    var routes = [PushNotificationRoute]()
+
+    func numberOfRows() -> Int {
+        return routes.count
+    }
+
+    func configureCellAtRow(cell: PushNotificationTableViewCell, row: Int) {
+        guard row < routes.count else { return }
+        let route = routes[row]
+
+        cell.pushNotificationRoute = route
     }
 }

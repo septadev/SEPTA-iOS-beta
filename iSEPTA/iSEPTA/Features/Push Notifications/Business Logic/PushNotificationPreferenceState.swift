@@ -41,7 +41,7 @@ struct PushNotificationPreferenceState: Codable, Equatable {
     func userShouldReceiveNotification(atDate date: Date, pushNotificationRoute: PushNotificationRoute) -> Bool {
         let timeWindowsMatches = notificationTimeWindows.map { $0.dateFitsInRange(date: date) }
         return
-            routeIds.contains(pushNotificationRoute) &&
+            routeIds.filter({ $0.isEnabled }).contains(pushNotificationRoute) &&
             daysOfWeek.matchesDate(date) &&
             timeWindowsMatches.contains(true)
     }

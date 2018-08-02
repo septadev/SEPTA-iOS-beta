@@ -29,7 +29,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="44" translatesAutoresizingMaskIntoConstraints="NO" id="mqT-1C-lDB" userLabel="StartOfFrame" customClass="XibView" customModule="Septa" customModuleProvider="target">
+                <view contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="44" translatesAutoresizingMaskIntoConstraints="NO" id="mqT-1C-lDB" userLabel="StartOfFrame" customClass="XibView" customModule="Septa" customModuleProvider="target">
                     <rect key="frame" x="62" y="23" width="110.5" height="44"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
@@ -46,7 +46,7 @@
                     <string key="userLabel">
 CenteringView</string>
                 </view>
-                <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="44" translatesAutoresizingMaskIntoConstraints="NO" id="TPw-aW-LHw" userLabel="EndOfFrame" customClass="XibView" customModule="Septa" customModuleProvider="target">
+                <view contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="44" translatesAutoresizingMaskIntoConstraints="NO" id="TPw-aW-LHw" userLabel="EndOfFrame" customClass="XibView" customModule="Septa" customModuleProvider="target">
                     <rect key="frame" x="202.5" y="23" width="110.5" height="44"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>

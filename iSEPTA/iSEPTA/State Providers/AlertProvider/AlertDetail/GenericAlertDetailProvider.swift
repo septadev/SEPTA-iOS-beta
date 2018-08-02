@@ -44,11 +44,15 @@ class GenericAlertDetailProvider: StateProvider {
         client.getAlertDetails(routeName: appAlertName).then { alertDetails -> Void in
             if let appAlertDetails = alertDetails?.alerts {
                 let action = AppAlertDetailsLoaded(appAlertDetails: appAlertDetails)
-                store.dispatch(action)
+                DispatchQueue.main.async {
+                    store.dispatch(action)
+                }
             }
         }.catch { err in
             let action = AppAlertDetailsLoaded(appAlertDetails: [AlertDetails_Alert]())
-            store.dispatch(action)
+            DispatchQueue.main.async {
+                store.dispatch(action)
+            }
             print(err)
         }
     }

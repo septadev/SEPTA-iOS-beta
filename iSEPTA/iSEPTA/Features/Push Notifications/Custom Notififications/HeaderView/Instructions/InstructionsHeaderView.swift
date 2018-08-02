@@ -23,8 +23,4 @@ class InstructionsHeaderView: UIView {
             )
         }
     }
-
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIViewNoIntrinsicMetric, height: 780)
-    }
 }
