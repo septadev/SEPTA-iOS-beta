@@ -102,4 +102,10 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
         viewModel.routes.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
     }
+
+    override func willMove(toParentViewController parent: UIViewController?) {
+        if parent == nil {
+            isCurrentlyEditing(false)
+        }
+    }
 }
