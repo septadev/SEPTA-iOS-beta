@@ -5,6 +5,7 @@ import Fabric
 import ReSwift
 import SeptaSchedule
 import UIKit
+import UserNotifications
 
 let store = Store<AppState>(
     reducer: AppStateReducer.mainReducer,
@@ -53,6 +54,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_: UIApplication) {
         let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: false)
         store.dispatch(action)
+
+        updateCurrentPushNotificationAuthorizationStatus()
+    }
+
+    func updateCurrentPushNotificationAuthorizationStatus() {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            let status = PushNotificationAuthorizationState(status: settings.authorizationStatus)
+            let action = UpdateSystemAuthorizationStatusForPushNotifications(authorizationStatus: status)
+            DispatchQueue.main.async {
+                store.dispatch(action)
+            }
+        }
     }
 
     func applicationWillTerminate(_: UIApplication) {

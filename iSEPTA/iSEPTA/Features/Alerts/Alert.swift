@@ -107,4 +107,24 @@ class UIAlert {
         // show the alert
         viewController.present(alert, animated: true, completion: nil)
     }
+
+    static func presentNavigationToSettingsNeededAlertFrom(viewController: UIViewController, withTitle title: String, message: String, completion: (() -> Void)? = nil) {
+        // create the alert
+
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "Go To Settings", style: UIAlertActionStyle.default) { _ in
+            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else { return }
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: nil)
+            }
+        })
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
+            completion?()
+        })
+
+        // show the alert
+        viewController.present(alert, animated: true, completion: nil)
+    }
 }

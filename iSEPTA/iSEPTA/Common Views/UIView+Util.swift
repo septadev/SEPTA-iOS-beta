@@ -11,7 +11,8 @@ import UIKit
 
 extension UIView {
     class func instanceFromNib<T>(named name: String) -> T {
-        return UINib(nibName: name, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! T
+        let view = UINib(nibName: name, bundle: nil).instantiate(withOwner: nil, options: nil)[0]
+        return view as! T
     }
 
     class func addSurroundShadow(toView view: UIView, withCornerRadius radius: CGFloat = 9) {
@@ -31,6 +32,7 @@ extension UIView {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 3.0)
         layer.shadowRadius = 4.0
+
         layer.shadowOpacity = 0.41
         layer.masksToBounds = false
     }

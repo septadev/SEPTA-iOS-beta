@@ -14,10 +14,9 @@ import UIKit
 class AlertDetailViewController: UIViewController, IdentifiableController {
     let viewController: ViewController = .alertDetailViewController
 
-    let watcher = AlertState_AlertDetailsWatcher()
+    var watcher: AlertState_AlertDetailsWatcher!
     var alertDetails = [AlertDetails_Alert]() {
         didSet {
-            tableView.reloadData()
         }
     }
 
@@ -74,13 +73,38 @@ class AlertDetailViewController: UIViewController, IdentifiableController {
         return scheduleRequest.selectedRoute
     }
 
+    var alertDetailFooterView: AlertDetailFooterView! {
+        didSet {
+            guard let view = alertDetailFooterView else { return }
+            view.translatesAutoresizingMaskIntoConstraints = false
+            alertDetailFooterViewFooterCell = UITableViewCell(style: .default, reuseIdentifier: "footerCell")
+            alertDetailFooterViewFooterCell.contentView.addSubview(view)
+            alertDetailFooterViewFooterCell.contentView.pinSubview(view)
+            alertDetailFooterViewFooterCell.backgroundColor = UIColor.clear
+        }
+    }
+
+    var alertDetailFooterViewFooterCell: UITableViewCell!
     override func viewDidLoad() {
         super.viewDidLoad()
-        watcher.delegate = self
+
         view.backgroundColor = SeptaColor.navBarBlue
 
         setTitle()
         alertDetails = store.state.alertState.alertDetails
+
+        configureFooterViewData()
+
+        watcher = AlertState_AlertDetailsWatcher()
+        watcher.delegate = self
+    }
+
+    func configureFooterViewData() {
+        alertDetailFooterView = UIView.instanceFromNib(named: "AlertDetailFooterView")
+        guard let route = route else { return }
+        let routeId = route.routeId
+        let routeName = route.shortNameOverrideForRoute(transitMode: transitMode) ?? route.routeShortName
+        alertDetailFooterView.pushNotificationRoute = PushNotificationRoute(routeId: routeId, routeName: routeName, transitMode: transitMode)
     }
 
     override func didMove(toParentViewController parent: UIViewController?) {
@@ -95,7 +119,7 @@ class AlertDetailViewController: UIViewController, IdentifiableController {
 
 extension AlertDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in _: UITableView) -> Int {
-        return 4
+        return 5
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -147,6 +171,8 @@ extension AlertDetailViewController: UITableViewDelegate, UITableViewDataSource 
             } else {
                 configureForWeather(cell: cell)
             }
+        case 4:
+            return alertDetailFooterViewFooterCell
         default: break
         }
 

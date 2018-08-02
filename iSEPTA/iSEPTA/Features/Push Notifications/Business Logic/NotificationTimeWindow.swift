@@ -12,9 +12,9 @@ import Foundation
 /// The end represents the end of a range.
 /// This struct exists because `ClosedRange` does not conform to `Codable`.
 struct NotificationTimeWindow: Codable, Equatable {
-    let startMinute: MinutesSinceMidnight
+    var startMinute: MinutesSinceMidnight
 
-    let endMinute: MinutesSinceMidnight
+    var endMinute: MinutesSinceMidnight
 
     init?(startTime: Date, endTime: Date) {
         guard let startMinute = MinutesSinceMidnight(date: startTime),
@@ -23,9 +23,18 @@ struct NotificationTimeWindow: Codable, Equatable {
         self.endMinute = endMinute
     }
 
+    private init(startMinute: Int, endMinute: Int) {
+        self.startMinute = MinutesSinceMidnight(startMinute)
+        self.endMinute = MinutesSinceMidnight(endMinute)
+    }
+
     func dateFitsInRange(date: Date) -> Bool? {
         let range = startMinute.minutes ... endMinute.minutes
         guard let minutesSinceMidnight = MinutesSinceMidnight(date: date) else { return nil }
         return range.contains(minutesSinceMidnight.minutes)
+    }
+
+    static func defaultValue() -> NotificationTimeWindow { // 442, 553
+        return NotificationTimeWindow(startMinute: 7 * 60, endMinute: 9 * 60)
     }
 }
