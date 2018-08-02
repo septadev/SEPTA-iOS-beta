@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R2Y-FG-QoK" userLabel="dividerView">
-                    <rect key="frame" x="19" y="0.0" width="321" height="1"/>
+                    <rect key="frame" x="19" y="0.0" width="304" height="1"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="9eM-Be-RDi"/>
@@ -108,7 +108,7 @@
                 <constraint firstItem="R2Y-FG-QoK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Jma-iy-hJl" userLabel="DividerViewTop"/>
                 <constraint firstItem="sWC-JP-TFR" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="ciZ-iG-CtP" userLabel="StackViewCenterY"/>
                 <constraint firstItem="R2Y-FG-QoK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="19" id="mxN-de-QIK" userLabel="DividerViewLeft"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="R2Y-FG-QoK" secondAttribute="trailing" constant="19" id="r4t-NZ-TAF" userLabel="DividerViewRight"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="R2Y-FG-QoK" secondAttribute="trailing" constant="36" id="r4t-NZ-TAF" userLabel="DividerViewRight"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
