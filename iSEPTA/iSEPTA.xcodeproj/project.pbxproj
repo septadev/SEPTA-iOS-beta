@@ -1596,6 +1596,14 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		0EE61AE421138AF00010EBF7 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				5803C38A210BAC7800BFAE7A /* XibView.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		580041F81F3504D800691FDC /* Info */ = {
 			isa = PBXGroup;
 			children = (
@@ -2612,6 +2620,7 @@
 				58D9C40A1F3335BB002BE2E8 /* iSEPTATests */,
 				58D9C3F11F3335BB002BE2E8 /* Products */,
 				58D9C4161F33362C002BE2E8 /* Frameworks */,
+				0EE61AE421138AF00010EBF7 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
