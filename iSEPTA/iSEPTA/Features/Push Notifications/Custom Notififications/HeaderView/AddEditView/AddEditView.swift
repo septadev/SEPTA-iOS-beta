@@ -9,7 +9,13 @@
 import Foundation
 import UIKit
 
+protocol CustomNotificationEditDelegate: class {
+    func isCurrentlyEditing(_ isCurrentlyEditing: Bool)
+}
+
 class AddEditView: UIView {
+    var isCurrentlyEditing: Bool = false
+
     @IBOutlet var myNotificationsLabel: UILabel! {
         didSet {
             guard let text = myNotificationsLabel.text else { return }
@@ -24,14 +30,20 @@ class AddEditView: UIView {
         }
     }
 
+    weak var editDelegate: CustomNotificationEditDelegate?
+
     @IBOutlet var dividerView: UIView! { didSet { dividerView.backgroundColor = SeptaColor.gray_198 } }
 
-    @IBOutlet var addButton: UIButton! { didSet { styleButton(button: addButton) } }
+    @IBOutlet var addButton: UIButton! { didSet { styleButton(button: addButton, text: "Add") } }
 
-    @IBOutlet var doneButon: UIButton! { didSet { styleButton(button: doneButon) } }
+    @IBOutlet var editButton: UIButton! { didSet { styleButton(button: editButton, text: "Edit") } }
 
-    func styleButton(button: UIButton) {
-        guard let text = button.titleLabel?.text else { return }
+    @IBAction func editButtonTapped(_: Any) {
+        isCurrentlyEditing = !isCurrentlyEditing
+        styleButton(button: editButton, text: isCurrentlyEditing ? "Done" : "Edit")
+        editDelegate?.isCurrentlyEditing(isCurrentlyEditing)
+    }
+    func styleButton(button: UIButton, text: String) {
         let attributedText = text.attributed(
             fontSize: 15,
             fontWeight: .regular,

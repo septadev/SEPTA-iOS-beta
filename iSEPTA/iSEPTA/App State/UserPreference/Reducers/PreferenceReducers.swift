@@ -62,11 +62,16 @@ struct UserPreferencesReducer {
     }
 
     static func reduceNewTransitModeAction(action: NewTransitModeAction, state: UserPreferenceState) -> UserPreferenceState {
-        return UserPreferenceState(defaultsLoaded: state.defaultsLoaded, startupTransitMode: action.transitMode, startupNavigationController: state.startupNavigationController, databaseVersion: state.databaseVersion)
+        var newState = state
+        newState.startupTransitMode = action.transitMode
+        return newState
     }
 
     static func reducePreferencesDatabaseLoaded(action: PreferencesDatabaseLoaded, state: UserPreferenceState) -> UserPreferenceState {
-        return UserPreferenceState(defaultsLoaded: state.defaultsLoaded, startupTransitMode: state.startupTransitMode, startupNavigationController: state.startupNavigationController, databaseVersion: action.databaseVersion)
+        var newState = state
+        newState.databaseVersion = action.databaseVersion
+
+        return newState
     }
 
     static func reduceNewStartupController(action: NewStartupController, state: UserPreferenceState) -> UserPreferenceState {
@@ -134,9 +139,7 @@ struct UserPreferencesReducer {
     static func reduceAddPushNotificationRoute(action: AddPushNotificationRoute, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
         var routeIds = userPreferenceState.pushNotificationPreferenceState.routeIds
-        if !routeIds.contains(action.route) {
-            routeIds.append(action.route)
-        }
+        routeIds.append(action.route)
         userPreferenceState.pushNotificationPreferenceState.routeIds = routeIds
         return userPreferenceState
     }
@@ -144,7 +147,11 @@ struct UserPreferencesReducer {
     static func reduceRemovePushNotificationRoute(action: RemovePushNotificationRoute, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
         var routeIds = userPreferenceState.pushNotificationPreferenceState.routeIds
-        routeIds = routeIds.filter { $0 != action.route }
+        for route in action.routes {
+            if let index = routeIds.indexOfRoute(route: route) {
+                routeIds.remove(at: index)
+            }
+        }
         userPreferenceState.pushNotificationPreferenceState.routeIds = routeIds
         return userPreferenceState
     }
@@ -152,8 +159,9 @@ struct UserPreferencesReducer {
     static func reduceUpdatePushNotificationRoute(action: UpdatePushNotificationRoute, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
         var routeIds = userPreferenceState.pushNotificationPreferenceState.routeIds
-        guard let index = routeIds.index(of: action.route) else { return userPreferenceState }
-        routeIds[index] = action.route
+        if let index = routeIds.indexOfRoute(route: action.route) {
+            routeIds[index] = action.route
+        }
         userPreferenceState.pushNotificationPreferenceState.routeIds = routeIds
         return userPreferenceState
     }

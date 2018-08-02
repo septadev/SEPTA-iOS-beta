@@ -23,14 +23,14 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mH4-0F-DJd" userLabel="Divider">
-                    <rect key="frame" x="150" y="25.5" width="88" height="1"/>
+                    <rect key="frame" x="150" y="25.5" width="95" height="1"/>
                     <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="fBo-Tv-XmS"/>
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="6Ym-Ud-2AY">
-                    <rect key="frame" x="248" y="9" width="85" height="30"/>
+                    <rect key="frame" x="255" y="9" width="78" height="30"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9h-CI-U4q" userLabel="Add">
                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -43,8 +43,11 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4C-sd-Vzl" userLabel="Edit">
-                            <rect key="frame" x="48" y="0.0" width="37" height="30"/>
-                            <state key="normal" title="Done"/>
+                            <rect key="frame" x="48" y="0.0" width="30" height="30"/>
+                            <state key="normal" title="Edit"/>
+                            <connections>
+                                <action selector="editButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="qK8-zq-hMC"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>
@@ -66,7 +69,7 @@
             <connections>
                 <outlet property="addButton" destination="N9h-CI-U4q" id="Y5m-Xs-z8i"/>
                 <outlet property="dividerView" destination="mH4-0F-DJd" id="Ov9-cE-Oqv"/>
-                <outlet property="doneButon" destination="O4C-sd-Vzl" id="Ex8-An-7eq"/>
+                <outlet property="editButton" destination="O4C-sd-Vzl" id="1Yc-l0-x37"/>
                 <outlet property="myNotificationsLabel" destination="3ZJ-bc-vpJ" id="SZy-LZ-xIt"/>
             </connections>
             <point key="canvasLocation" x="117" y="-163"/>

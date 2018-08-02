@@ -23,7 +23,7 @@ class AlertDetailFooterView: UIView {
         if sender.isOn {
             store.dispatch(AddPushNotificationRoute(route: route))
         } else {
-            store.dispatch(RemovePushNotificationRoute(route: route))
+            store.dispatch(RemovePushNotificationRoute(routes: [route]))
         }
     }
 

@@ -81,7 +81,7 @@ struct AddPushNotificationRoute: UserPreferencesAction {
 }
 
 struct RemovePushNotificationRoute: UserPreferencesAction {
-    let route: PushNotificationRoute
+    let routes: [PushNotificationRoute]
     let description = "Adding a push Notification Route"
 }
 

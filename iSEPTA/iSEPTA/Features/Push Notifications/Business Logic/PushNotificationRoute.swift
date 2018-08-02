@@ -22,3 +22,9 @@ struct PushNotificationRoute: Codable, Equatable {
         self.routeName = routeName
     }
 }
+
+extension Array where Iterator.Element == PushNotificationRoute {
+    func indexOfRoute(route: PushNotificationRoute) -> Int? {
+        return index(where: { $0.routeId == route.routeId && $0.transitMode == route.transitMode })
+    }
+}

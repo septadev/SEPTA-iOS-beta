@@ -83,10 +83,11 @@ class AlertDetailViewController: UIViewController, IdentifiableController {
         alertDetails = store.state.alertState.alertDetails
 
         let alertDetailFooterView: AlertDetailFooterView = UIView.instanceFromNib(named: "AlertDetailFooterView")
+        guard let route = route else { return }
+        let routeId = route.routeId
+        let routeName = route.shortNameOverrideForRoute(transitMode: transitMode) ?? route.routeShortName
+        alertDetailFooterView.pushNotificationRoute = PushNotificationRoute(routeId: routeId, routeName: routeName, transitMode: transitMode)
 
-        if let routeId = route?.routeId, let routeName = route?.routeShortName {
-            alertDetailFooterView.pushNotificationRoute = PushNotificationRoute(routeId: routeId, routeName: routeName, transitMode: transitMode)
-        }
         tableView.tableFooterView = alertDetailFooterView
     }
 

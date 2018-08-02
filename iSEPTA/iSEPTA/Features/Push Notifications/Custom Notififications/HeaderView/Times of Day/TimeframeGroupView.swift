@@ -69,6 +69,8 @@ class TimeframeGroupView: UIView, StoreSubscriber, DeleteTimeFrameDelegate {
         if state == 2 {
             timeFrame2.subscribe()
             timeFrame1.closeTimeFrameButton.isHidden = false
+        } else {
+            timeFrame1.closeTimeFrameButton.isHidden = true
         }
     }
 

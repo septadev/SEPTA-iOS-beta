@@ -10,4 +10,5 @@ import Foundation
 import UIKit
 
 class MyNotificationsHeaderView: UIView {
+    @IBOutlet var addEditViewWrapper: XibView!
 }
