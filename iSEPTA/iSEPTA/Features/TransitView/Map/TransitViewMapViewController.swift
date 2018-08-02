@@ -16,7 +16,31 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
 
     var viewModel = TransitViewMapRouteViewModel()
     var routesHaveBeenAdded = false
-    var selectedRoute: TransitRoute?
+    var updateMap = true
+    var transitRoutes: [TransitRoute] = [] {
+        didSet {
+            if transitRoutes.count > 0 {
+                toggleFavoriteButton()
+            }
+        }
+    }
+
+    var currentFavorite: Favorite?
+
+    let alerts = store.state.alertState.alertDict
+
+    var delegate: TransitViewMapDelegate?
+    var timer: Timer?
+
+    var selectedRoute: TransitRoute? {
+        didSet {
+            for route in [route1, route2, route3] {
+                if let route = route, let vm = route.viewModel {
+                    route.alertsAreInteractive = vm == selectedRoute
+                }
+            }
+        }
+    }
 
     @IBOutlet var mapView: MKMapView! {
         didSet {
@@ -51,6 +75,25 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
         mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0), animated: true)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        initTimer()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        timer?.invalidate()
+    }
+
+    private func initTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(timerFired(timer:)), userInfo: nil, repeats: true)
+    }
+
+    @objc func timerFired(timer _: Timer) {
+        updateMap = false
+        refreshRoutes()
+    }
+
     func subscribe() {
         store.subscribe(self) {
             $0.select {
@@ -62,19 +105,16 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
     }
 
     func newState(state: StoreSubscriberStateType) {
-        route1.viewModel = state.firstRoute
-        route1.delegate = self
-        route2.viewModel = state.secondRoute
-        route2.delegate = self
-        route3.viewModel = state.thirdRoute
-        route3.delegate = self
+        configureRouteCards(model: state)
 
-        if route1.viewModel != nil {
-            // Default to first route enabled
-            route1.enabled = true
-            selectedRoute = route1.viewModel
-        }
         toggleAddRouteButton(enabled: route3.viewModel == nil)
+
+        transitRoutes = []
+        for route in [route1.viewModel, route2.viewModel, route3.viewModel] {
+            if let route = route {
+                transitRoutes.append(route)
+            }
+        }
 
         if route1.viewModel == nil && route2.viewModel == nil && route3.viewModel == nil {
             // No routes! Back we go.
@@ -82,6 +122,83 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
         } else {
             refreshRoutes()
         }
+    }
+
+    func favoriteButtonTapped() {
+        if let currentFavorite = currentFavorite {
+            let action = EditFavorite(favorite: currentFavorite)
+            store.dispatch(action)
+        } else {
+            let newFavorite = createNewFavorite()
+            currentFavorite = newFavorite
+            let action = AddFavorite(favorite: newFavorite)
+            store.dispatch(action)
+            delegate?.selectionIsAFavorite(isAFavorite: true)
+        }
+    }
+
+    private func createNewFavorite() -> Favorite {
+        var favoriteName = ""
+        for route in transitRoutes {
+            if favoriteName != "" {
+                favoriteName.append(", ")
+            }
+            let modeName = route.mode() == .bus ? "Bus" : "Trolley"
+            favoriteName.append("\(route.routeId) \(modeName)")
+        }
+
+        return Favorite(favoriteType: .transitView, favoriteId: UUID().uuidString, favoriteName: favoriteName, transitMode: .bus, selectedRoute: Favorite.emptyRoute, selectedStart: Favorite.emptyStop, selectedEnd: Favorite.emptyStop, transitViewRoutes: transitRoutes)
+    }
+
+    private func configureRouteCards(model: TransitViewModel) {
+        route1.viewModel = model.firstRoute
+        route1.delegate = self
+        route2.viewModel = model.secondRoute
+        route2.delegate = self
+        route3.viewModel = model.thirdRoute
+        route3.delegate = self
+
+        if route1.viewModel != nil {
+            // Default to first route enabled
+            route1.enabled = true
+            selectedRoute = route1.viewModel
+        }
+
+        // Configure route alerts
+        for route in [route1, route2, route3] {
+            if let route = route, let vm = route.viewModel {
+                let routeAlert = alerts[vm.mode()]?[vm.routeId]
+                route.addAlert(routeAlert)
+                route.alertsAreInteractive = route.enabled
+            }
+        }
+    }
+
+    private func toggleFavoriteButton() {
+        var thisIsAFavorite = false
+        let transitViewFavorites = store.state.favoritesState.favorites.filter { $0.favoriteType == .transitView }
+
+        for fav in transitViewFavorites {
+            thisIsAFavorite = amITheSameAsThisFavorite(favorite: fav)
+            if thisIsAFavorite {
+                currentFavorite = fav
+                break
+            }
+        }
+
+        delegate?.selectionIsAFavorite(isAFavorite: thisIsAFavorite)
+    }
+
+    private func amITheSameAsThisFavorite(favorite: Favorite) -> Bool {
+        if transitRoutes.count != favorite.transitViewRoutes.count {
+            return false
+        }
+        for route in favorite.transitViewRoutes {
+            if !transitRoutes.contains(route) {
+                return false
+            }
+        }
+        return true
     }
 
     @objc func addRouteButtonTapped(_: UITapGestureRecognizer) {
@@ -114,8 +231,13 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
             guard let _ = mapView else { return }
             clearExistingVehicleLocations()
             drawVehicleLocations()
-            mapView.showAnnotations(mapView.annotations, animated: false)
-            mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0), animated: true)
+            if updateMap {
+                mapView.showAnnotations(mapView.annotations, animated: false)
+                mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0), animated: true)
+            }
+            if !updateMap {
+                updateMap = true
+            }
             vehiclesToAdd.removeAll()
         }
     }
@@ -179,6 +301,17 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
         mapView.removeOverlays(mapView.overlays)
         store.dispatch(RefreshTransitViewVehicleLocationData(description: "Request refresh of TransitView vehicle location data"))
     }
+
+    private func activateRouteById(routeId: String) {
+        for route in [route1, route2, route3] {
+            if let route = route, let vm = route.viewModel {
+                route.enabled = vm.routeId == routeId
+                if vm.routeId == routeId {
+                    selectedRoute = route.viewModel
+                }
+            }
+        }
+    }
 }
 
 extension TransitViewMapViewController: MKMapViewDelegate {
@@ -211,6 +344,7 @@ extension TransitViewMapViewController: MKMapViewDelegate {
             activeRoute = true
         }
         annotationView.canShowCallout = activeRoute
+        annotationView.routeId = transitAnnotation.location.routeId
         annotationView.isActiveRoute = activeRoute
         annotationView.image = TransitViewVehiclePin.generate(mode: transitAnnotation.location.mode, direction: transitAnnotation.location.heading, active: activeRoute)
 
@@ -251,20 +385,34 @@ extension TransitViewMapViewController: TransitRouteCardDelegate {
     func cardTapped(routeId: String) {
         guard let selectedRoute = selectedRoute, selectedRoute.routeId != routeId else { return }
 
-        for route in [route1, route2, route3] {
-            if let route = route {
-                route.enabled = route.viewModel?.routeId == routeId
-                if route.viewModel?.routeId == routeId {
-                    self.selectedRoute = route.viewModel
-                }
-            }
-        }
-        refreshRoutes()
+        activateRoute(routeId: routeId)
     }
 }
 
 extension TransitViewMapViewController: TransitViewAnnotationViewDelegate {
     func activateRoute(routeId: String) {
-        cardTapped(routeId: routeId)
+        // Just switching active route, so don't update the whole map
+        updateMap = false
+
+        // Set new active route ID
+        activateRouteById(routeId: routeId)
+
+        // Clear old overlays
+        mapView.removeOverlays(mapView.overlays)
+        routesHaveBeenAdded = false
+
+        // Add overlays back
+        drawRoutes(routeIds: transitRoutes.map { $0.routeId })
+
+        // Clear old annotations
+        let previouslyAddedAnnotations = vehicleAnnotationsAdded.map { $0.location }
+        clearExistingVehicleLocations()
+
+        // Add annotations back
+        vehiclesToAdd = previouslyAddedAnnotations
     }
+}
+
+protocol TransitViewMapDelegate {
+    func selectionIsAFavorite(isAFavorite: Bool)
 }

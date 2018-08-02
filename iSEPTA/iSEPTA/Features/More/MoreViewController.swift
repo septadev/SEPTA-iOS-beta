@@ -69,6 +69,9 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
             let commentConnection = MakeSeptaConnection(septaConnection: .events)
             store.dispatch(commentConnection)
         case 6:
+            let pushAction = PushViewController(viewController: .perksViewController, description: "Will view pass perks")
+            store.dispatch(pushAction)
+        case 5:
             let pushAction = PushViewController(viewController: .contactViewController, description: "Will View How to Contact SEPTA")
             store.dispatch(pushAction)
         case 7:

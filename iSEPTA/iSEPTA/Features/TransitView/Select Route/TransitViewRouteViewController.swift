@@ -35,16 +35,16 @@ class TransitViewRouteViewController: UIViewController {
 }
 
 extension TransitViewRouteViewController: StoreSubscriber {
-    typealias StoreSubscriberStateType = TransitViewModel
+    typealias StoreSubscriberStateType = TransitViewRouteSlot?
 
     func subscribe() {
         store.subscribe(self) {
-            $0.select { $0.transitViewState.transitViewModel }.skipRepeats { $0 == $1 }
+            $0.select { $0.transitViewState.routeSlotBeingChanged }.skipRepeats { $0 == $1 }
         }
     }
 
     func newState(state: StoreSubscriberStateType) {
-        viewModel.slotBeingChanged = state.slotBeingChanged
+        viewModel.slotBeingChanged = state
     }
 }
 

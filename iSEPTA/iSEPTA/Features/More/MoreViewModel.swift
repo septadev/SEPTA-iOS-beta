@@ -1,4 +1,5 @@
 //
+//
 //  MoreViewModel.swift
 //  iSEPTA
 //
@@ -21,7 +22,7 @@ class MoreViewModel {
         case 2: configureTransitViewCell(cell: cell)
         case 3: configureTrainViewCell(cell: cell)
         case 4: configurePushNotificationsCell(cell: cell)
-        case 5: configureEventsCell(cell: cell)
+        case 5: configurePerksCell(cell: cell)
         case 6: configureConnectCell(cell: cell)
         case 7: configureAboutCell(cell: cell)
         default: break
@@ -56,6 +57,10 @@ class MoreViewModel {
     func configureEventsCell(cell: MoreTableViewCell) {
         cell.moreLabel.text = "Events"
         cell.moreImageView.image = UIImage(named: "eventsCell")
+	
+    func configurePerksCell(cell: MoreTableViewCell) {
+        cell.moreLabel.text = "Perks"
+        cell.moreImageView.image = UIImage(named: "perksIcon")
     }
 
     func configureConnectCell(cell: MoreTableViewCell) {

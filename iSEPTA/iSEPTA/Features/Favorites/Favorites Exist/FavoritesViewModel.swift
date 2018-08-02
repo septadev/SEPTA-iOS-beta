@@ -16,12 +16,14 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
 
     enum CellIds: String {
         case favoriteTripCell
+        case favoriteTransitViewCell
     }
 
     let delegate: UpdateableFromViewModel
     let tableView: UITableView!
     let favoriteDelegate = FavoritesViewModelDelegate()
     var collapseForEditMode = false
+    let alerts = store.state.alertState.alertDict
 
     init(delegate: UpdateableFromViewModel = FavoritesViewModelDelegate(), tableView: UITableView) {
         self.delegate = delegate
@@ -31,8 +33,10 @@ class FavoritesViewModel: StoreSubscriber, SubscriberUnsubscriber {
     }
 
     func registerViews(tableView: UITableView) {
-        let nib = UINib(nibName: "FavoriteTripCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: CellIds.favoriteTripCell.rawValue)
+        let favTripNib = UINib(nibName: "FavoriteTripCell", bundle: nil)
+        tableView.register(favTripNib, forCellReuseIdentifier: CellIds.favoriteTripCell.rawValue)
+        let favTransitViewNib = UINib(nibName: "FavoriteTransitViewCell", bundle: nil)
+        tableView.register(favTransitViewNib, forCellReuseIdentifier: CellIds.favoriteTransitViewCell.rawValue)
     }
 
     var favoriteViewModels = [FavoriteNextToArriveViewModel]()
@@ -66,7 +70,7 @@ extension FavoritesViewModel { // table loading
         return favoriteViewModels.count
     }
 
-    func configureTripCell(favoriteTripCell: FavoriteTripCell, indexPath: IndexPath) {
+    func configureNtaTripCell(favoriteTripCell: FavoriteTripCell, indexPath: IndexPath) {
         let favoriteViewModel = favoriteViewModels[indexPath.section]
         favoriteTripCell.favoriteIcon.image = favoriteViewModel.transitMode().favoritesIcon()
         favoriteTripCell.favoriteIcon.accessibilityLabel = favoriteViewModel.favorite.transitMode.favoriteName()
@@ -85,6 +89,26 @@ extension FavoritesViewModel { // table loading
         if !favoriteViewModel.favorite.collapsed && !collapseForEditMode {
             configureTrips(favoriteViewModel: favoriteViewModel, stackView: stackView, indexPath: indexPath)
         }
+    }
+
+    func configureTransitViewCell(cell: FavoriteTransitViewCell, indexPath: IndexPath) {
+        let viewModel = favoriteViewModels[indexPath.section]
+        cell.favorite = viewModel.favorite
+        cell.titleLabel.text = viewModel.favorite.favoriteName
+
+        var advisory = false
+        var alert = false
+        var detour = false
+        var weather = false
+        for transitRoute in viewModel.favorite.transitViewRoutes {
+            let routeAlerts = alerts[transitRoute.mode()]?[transitRoute.routeId]
+            advisory = routeAlerts?.advisory ?? false
+            alert = routeAlerts?.alert ?? false
+            detour = routeAlerts?.detour ?? false
+            weather = routeAlerts?.weather ?? false
+        }
+        let transitViewAlert = SeptaAlert(advisory: advisory, alert: alert, detour: detour, weather: weather)
+        cell.addAlert(transitViewAlert)
     }
 
     func configureTrips(favoriteViewModel: FavoriteNextToArriveViewModel, stackView: UIStackView, indexPath _: IndexPath) {

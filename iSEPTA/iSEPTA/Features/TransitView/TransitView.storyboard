@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -342,7 +343,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DuL-pL-R8v">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <connections>
-                                    <segue destination="dTh-FH-vYV" kind="embed" id="xrQ-9I-NhW"/>
+                                    <segue destination="dTh-FH-vYV" kind="embed" identifier="embedMapViewController" id="xrQ-9I-NhW"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -356,13 +357,30 @@
                         <viewLayoutGuide key="safeArea" id="feT-ge-QQN"/>
                     </view>
                     <navigationItem key="navigationItem" title="TransitView" id="mG6-PT-Jo1">
-                        <barButtonItem key="rightBarButtonItem" image="refreshIcon" id="Vhi-2y-NQZ">
-                            <connections>
-                                <action selector="refreshTransitViewData:" destination="UGl-dH-gKu" id="ng7-9x-Ftb"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="favoriteNavBarOff" id="hml-a6-Qjc" userLabel="Favorite Button Item">
+                                <connections>
+                                    <action selector="favoriteButtonTapped:" destination="UGl-dH-gKu" id="uuK-2S-EHP"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Edit" id="eYS-d1-qr2">
+                                <connections>
+                                    <action selector="favoriteButtonTapped:" destination="UGl-dH-gKu" id="zTk-fM-l9b"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="refreshIcon" id="Vhi-2y-NQZ" userLabel="Refresh Button Item">
+                                <connections>
+                                    <action selector="refreshTransitViewData:" destination="UGl-dH-gKu" id="ng7-9x-Ftb"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <connections>
+                        <outlet property="editFavoriteBarButton" destination="eYS-d1-qr2" id="quu-9O-aYd"/>
+                        <outlet property="favoriteBarButton" destination="hml-a6-Qjc" id="ZVm-nX-KDu"/>
+                        <outlet property="refreshBarButton" destination="Vhi-2y-NQZ" id="PRC-NI-5C1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z8z-0b-Krx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -565,6 +583,7 @@ SearchTextBox</string>
     <resources>
         <image name="SearchIcon" width="17" height="17"/>
         <image name="addNew" width="38" height="38"/>
+        <image name="favoriteNavBarOff" width="22" height="20"/>
         <image name="refreshIcon" width="19" height="19"/>
         <image name="selectRouteAccessory" width="26" height="14"/>
     </resources>

@@ -35,7 +35,7 @@ extension ScheduleRequest {
         let favoriteId = favoriteId ?? UUID().uuidString
         let routeName = selectedRoute.routeId == Route.allRailRoutesRouteId() ? "Rail" : selectedRoute.routeId
         let favoriteName = "\(routeName): \(selectedStart.stopName) to \(selectedEnd.stopName)"
-        return Favorite(favoriteId: favoriteId, favoriteName: favoriteName, transitMode: transitMode, selectedRoute: selectedRoute, selectedStart: selectedStart, selectedEnd: selectedEnd, nextToArriveTrips: [NextToArriveTrip](), nextToArriveUpdateStatus: .idle, refreshDataRequested: true)
+        return Favorite(favoriteType: .nextToArrive, favoriteId: favoriteId, favoriteName: favoriteName, transitMode: transitMode, selectedRoute: selectedRoute, selectedStart: selectedStart, selectedEnd: selectedEnd, nextToArriveTrips: [NextToArriveTrip](), nextToArriveUpdateStatus: .idle, refreshDataRequested: true)
     }
 
     func locateInFavorites() -> Favorite? {
