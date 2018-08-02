@@ -56,6 +56,7 @@ struct SeptaColor {
     static let stopOrderButtonBlue = UIColor.toPercent(173, 207, 244, 1)
 
     static let black87 = UIColor.toPercent(0, 0, 0, 0.87)
+    static let black50 = UIColor.toPercent(0, 0, 0, 0.50)
     static let blue_27_78_142 = UIColor.toPercent(27, 78, 142, 1)
     static let gray_198 = UIColor.toPercent(198, 198, 198, 1)
     static let gray_135 = UIColor.toPercent(135, 135, 135, 1)
