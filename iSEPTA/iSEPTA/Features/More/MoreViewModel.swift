@@ -1,5 +1,4 @@
 //
-//
 //  MoreViewModel.swift
 //  iSEPTA
 //
@@ -54,10 +53,6 @@ class MoreViewModel {
         cell.moreImageView.image = UIImage(named: "pushNotificationIcon")
     }
 
-    func configureEventsCell(cell: MoreTableViewCell) {
-        cell.moreLabel.text = "Events"
-        cell.moreImageView.image = UIImage(named: "eventsCell")
-	
     func configurePerksCell(cell: MoreTableViewCell) {
         cell.moreLabel.text = "Perks"
         cell.moreImageView.image = UIImage(named: "perksIcon")
