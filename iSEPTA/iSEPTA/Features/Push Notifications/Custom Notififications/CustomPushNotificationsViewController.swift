@@ -34,6 +34,7 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
         containerView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
         containerView.topAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
         tableView.register(UINib(nibName: "PushNotificationTableViewCell", bundle: nil), forCellReuseIdentifier: "pushCell")
+        tableView.allowsMultipleSelectionDuringEditing = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -107,5 +108,9 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
         if parent == nil {
             isCurrentlyEditing(false)
         }
+    }
+
+    override func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {
+        return true
     }
 }
