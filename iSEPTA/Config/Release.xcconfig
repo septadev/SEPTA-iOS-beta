@@ -7,3 +7,4 @@
 //
 
 APP_ICON = AppIconRelease
+APS_ENV = production

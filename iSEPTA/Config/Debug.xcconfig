@@ -7,3 +7,4 @@
 //
 
 APP_ICON = AppIconDebug
+APS_ENV = development
