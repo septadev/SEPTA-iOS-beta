@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E2777FC211249EA00507CFE /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2777FB211249EA00507CFE /* NotificationsManager.swift */; };
 		0E2A006220CFF61A00E97BAF /* DatabaseUpdateState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A006120CFF61A00E97BAF /* DatabaseUpdateState.swift */; };
 		0E2A006520CFF88900E97BAF /* DatabaseUpdateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A006420CFF88900E97BAF /* DatabaseUpdateReducer.swift */; };
 		0E2A006820CFFAFA00E97BAF /* DatabaseUpdateActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A006720CFFAFA00E97BAF /* DatabaseUpdateActions.swift */; };
@@ -24,6 +25,7 @@
 		0E36308F21001DC500980EB6 /* TransitRouteCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E36308E21001DC500980EB6 /* TransitRouteCardView.xib */; };
 		0E3630B32102118800980EB6 /* TransitViewAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3630B22102118800980EB6 /* TransitViewAnnotationView.swift */; };
 		0E3630D62108A41100980EB6 /* TransitViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3630D52108A41100980EB6 /* TransitViewService.swift */; };
+		0E372163211392E4004B14E4 /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E372160211392E3004B14E4 /* XibView.swift */; };
 		0E39082E20E1268900E94D53 /* InAppReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E39082D20E1268900E94D53 /* InAppReview.swift */; };
 		0E39084C20E2E7B100E94D53 /* StopSortOrderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E39084B20E2E7B100E94D53 /* StopSortOrderButton.swift */; };
 		0E4328E320D02C6400FBD805 /* DatabaseUpdateProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4328E220D02C6400FBD805 /* DatabaseUpdateProvider.swift */; };
@@ -50,6 +52,17 @@
 		0EA1FF9020DA9E37007A9A91 /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA1FF8F20DA9E37007A9A91 /* UIAlertControllerExtensions.swift */; };
 		0EB1942221090AA800077C99 /* FavoriteTransitViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1942021090AA800077C99 /* FavoriteTransitViewCell.swift */; };
 		0EB1942321090AA800077C99 /* FavoriteTransitViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EB1942121090AA800077C99 /* FavoriteTransitViewCell.xib */; };
+		0EE428D42114D4C500EBF6FE /* SeptaNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE428D32114D4C500EBF6FE /* SeptaNotification.swift */; };
+		0EFEACFF2110D84600F3A368 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEACF62110D84400F3A368 /* FirebaseInstanceID.framework */; };
+		0EFEAD002110D84600F3A368 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEACF92110D84500F3A368 /* FirebaseAnalytics.framework */; };
+		0EFEAD012110D84600F3A368 /* FirebaseNanoPB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEACFA2110D84500F3A368 /* FirebaseNanoPB.framework */; };
+		0EFEAD022110D84600F3A368 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEACFB2110D84500F3A368 /* FirebaseCore.framework */; };
+		0EFEAD032110D84600F3A368 /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEACFC2110D84500F3A368 /* GoogleToolboxForMac.framework */; };
+		0EFEAD042110D84600F3A368 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEACFD2110D84600F3A368 /* nanopb.framework */; };
+		0EFEAD052110D84600F3A368 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEACFE2110D84600F3A368 /* FirebaseCoreDiagnostics.framework */; };
+		0EFEAD082110D86700F3A368 /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEAD062110D86700F3A368 /* Protobuf.framework */; };
+		0EFEAD092110D86700F3A368 /* FirebaseMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEAD072110D86700F3A368 /* FirebaseMessaging.framework */; };
+		0EFEAD0D2110DC1700F3A368 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0EFEAD0C2110DC1700F3A368 /* GoogleService-Info.plist */; };
 		5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */; };
 		580128061F6B1D13006B6DB8 /* FavoriteTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580128031F6B1D13006B6DB8 /* FavoriteTripCell.xib */; };
 		580128081F6B26D2006B6DB8 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580128071F6B26D2006B6DB8 /* RoundedShadowView.swift */; };
@@ -73,7 +86,6 @@
 		5803C382210B9BC800BFAE7A /* CustomNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C381210B9BC800BFAE7A /* CustomNotifications.swift */; };
 		5803C385210B9C2E00BFAE7A /* CustomPushNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C384210B9C2E00BFAE7A /* CustomPushNotificationsViewController.swift */; };
 		5803C387210B9D9C00BFAE7A /* TimeframeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C386210B9D9C00BFAE7A /* TimeframeView.swift */; };
-		5803C38B210BAC7800BFAE7A /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5803C38A210BAC7800BFAE7A /* XibView.swift */; };
 		5805C827210F8CAA00A35613 /* TimeframeBoundaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805C826210F8CAA00A35613 /* TimeframeBoundaryView.swift */; };
 		5805C829210FA71000A35613 /* DayOfWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805C828210FA71000A35613 /* DayOfWeekView.swift */; };
 		5805C82B210FA72000A35613 /* DayOfWeekView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5805C82A210FA72000A35613 /* DayOfWeekView.xib */; };
@@ -747,6 +759,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0E2777F9211238F900507CFE /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		0E2777FA2112390600507CFE /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		0E2777FB211249EA00507CFE /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		0E2A006120CFF61A00E97BAF /* DatabaseUpdateState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateState.swift; sourceTree = "<group>"; };
 		0E2A006420CFF88900E97BAF /* DatabaseUpdateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateReducer.swift; sourceTree = "<group>"; };
 		0E2A006720CFFAFA00E97BAF /* DatabaseUpdateActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateActions.swift; sourceTree = "<group>"; };
@@ -764,6 +779,7 @@
 		0E36308E21001DC500980EB6 /* TransitRouteCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransitRouteCardView.xib; sourceTree = "<group>"; };
 		0E3630B22102118800980EB6 /* TransitViewAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewAnnotationView.swift; sourceTree = "<group>"; };
 		0E3630D52108A41100980EB6 /* TransitViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewService.swift; sourceTree = "<group>"; };
+		0E372160211392E3004B14E4 /* XibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		0E39082D20E1268900E94D53 /* InAppReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppReview.swift; sourceTree = "<group>"; };
 		0E39084B20E2E7B100E94D53 /* StopSortOrderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSortOrderButton.swift; sourceTree = "<group>"; };
 		0E4328E220D02C6400FBD805 /* DatabaseUpdateProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateProvider.swift; sourceTree = "<group>"; };
@@ -790,6 +806,20 @@
 		0EA1FF8F20DA9E37007A9A91 /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtensions.swift; sourceTree = "<group>"; };
 		0EB1942021090AA800077C99 /* FavoriteTransitViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTransitViewCell.swift; sourceTree = "<group>"; };
 		0EB1942121090AA800077C99 /* FavoriteTransitViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTransitViewCell.xib; sourceTree = "<group>"; };
+		0EE428D32114D4C500EBF6FE /* SeptaNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaNotification.swift; sourceTree = "<group>"; };
+		0EFEACF62110D84400F3A368 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		0EFEACF92110D84500F3A368 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		0EFEACFA2110D84500F3A368 /* FirebaseNanoPB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseNanoPB.framework; sourceTree = "<group>"; };
+		0EFEACFB2110D84500F3A368 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = "<group>"; };
+		0EFEACFC2110D84500F3A368 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = "<group>"; };
+		0EFEACFD2110D84600F3A368 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = nanopb.framework; sourceTree = "<group>"; };
+		0EFEACFE2110D84600F3A368 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
+		0EFEAD062110D86700F3A368 /* Protobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Protobuf.framework; sourceTree = "<group>"; };
+		0EFEAD072110D86700F3A368 /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseMessaging.framework; sourceTree = "<group>"; };
+		0EFEAD0A2110D96500F3A368 /* Firebase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
+		0EFEAD0B2110D99900F3A368 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		0EFEAD0C2110DC1700F3A368 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0EFEAD0E2110DE1000F3A368 /* SEPTA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SEPTA.entitlements; sourceTree = "<group>"; };
 		5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectedTableViewCell.swift; sourceTree = "<group>"; };
 		580128031F6B1D13006B6DB8 /* FavoriteTripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteTripCell.xib; sourceTree = "<group>"; };
 		580128071F6B26D2006B6DB8 /* RoundedShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundedShadowView.swift; path = iSEPTA/Views/RoundedShadowView.swift; sourceTree = SOURCE_ROOT; };
@@ -813,7 +843,6 @@
 		5803C381210B9BC800BFAE7A /* CustomNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNotifications.swift; sourceTree = "<group>"; };
 		5803C384210B9C2E00BFAE7A /* CustomPushNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushNotificationsViewController.swift; sourceTree = "<group>"; };
 		5803C386210B9D9C00BFAE7A /* TimeframeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeframeView.swift; sourceTree = "<group>"; };
-		5803C38A210BAC7800BFAE7A /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		5805C826210F8CAA00A35613 /* TimeframeBoundaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeframeBoundaryView.swift; sourceTree = "<group>"; };
 		5805C828210FA71000A35613 /* DayOfWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekView.swift; sourceTree = "<group>"; };
 		5805C82A210FA72000A35613 /* DayOfWeekView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayOfWeekView.xib; sourceTree = "<group>"; };
@@ -1448,11 +1477,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EFEAD012110D84600F3A368 /* FirebaseNanoPB.framework in Frameworks */,
+				0EFEAD052110D84600F3A368 /* FirebaseCoreDiagnostics.framework in Frameworks */,
+				0EFEAD002110D84600F3A368 /* FirebaseAnalytics.framework in Frameworks */,
 				589397141F7E677600F3D2F8 /* WebKit.framework in Frameworks */,
 				674FDBBF1F56E87F00CA67D2 /* SeptaRest.framework in Frameworks */,
 				58B1FFD61F42EB2500AD8620 /* MapKit.framework in Frameworks */,
+				0EFEAD092110D86700F3A368 /* FirebaseMessaging.framework in Frameworks */,
+				0EFEAD032110D84600F3A368 /* GoogleToolboxForMac.framework in Frameworks */,
 				58DB04A31F54D7F2005CC850 /* SeptaSchedule.framework in Frameworks */,
+				0EFEAD022110D84600F3A368 /* FirebaseCore.framework in Frameworks */,
+				0EFEAD082110D86700F3A368 /* Protobuf.framework in Frameworks */,
+				0EFEACFF2110D84600F3A368 /* FirebaseInstanceID.framework in Frameworks */,
 				5892DDF11F3AAA5C000BA54B /* Crashlytics.framework in Frameworks */,
+				0EFEAD042110D84600F3A368 /* nanopb.framework in Frameworks */,
 				5892DDF21F3AAA5C000BA54B /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1469,6 +1507,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E2777F6211238EB00507CFE /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				0E2777F9211238F900507CFE /* Release.xcconfig */,
+				0E2777FA2112390600507CFE /* Debug.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		0E2A005A20CFECF300E97BAF /* Database Providers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1553,6 +1600,15 @@
 				0E3630B22102118800980EB6 /* TransitViewAnnotationView.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		0EE428D02114D41E00EBF6FE /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				0E2777FB211249EA00507CFE /* NotificationsManager.swift */,
+				0EE428D32114D4C500EBF6FE /* SeptaNotification.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		580041F81F3504D800691FDC /* Info */ = {
@@ -1733,7 +1789,7 @@
 				5820CB37210F3D4600782275 /* AttributedString+Util.swift */,
 				0E8E60ED20F00B9E00AB08FE /* RouteIcon.swift */,
 				0E36308A20FFB20E00980EB6 /* NSMutableAttributedStringExtensions.swift */,
-				5803C38A210BAC7800BFAE7A /* XibView.swift */,
+				0E372160211392E3004B14E4 /* XibView.swift */,
 			);
 			path = Utlities;
 			sourceTree = "<group>";
@@ -2013,6 +2069,9 @@
 		582F4EB31F33B1120062A546 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				0EFEAD0B2110D99900F3A368 /* module.modulemap */,
+				0EFEAD0A2110D96500F3A368 /* Firebase.h */,
+				0EFEAD0C2110DC1700F3A368 /* GoogleService-Info.plist */,
 				58C181FE1F34C557002748E9 /* Storyboards.swift */,
 				582F4EB41F33B1120062A546 /* Main.storyboard */,
 				582F4EB61F33B1120062A546 /* DatabaseStateWatcher.swift */,
@@ -2551,11 +2610,21 @@
 		58D9C3E71F3335BB002BE2E8 = {
 			isa = PBXGroup;
 			children = (
+				0E2777F6211238EB00507CFE /* Config */,
 				58490E361F55F6F9007DBCA1 /* SeptaRest.xcodeproj */,
 				58ACEADD1F3A9A9B00DC2836 /* SeptaSchedule.xcodeproj */,
 				5880C19C1F3B702500337DB2 /* Answers.framework */,
 				5892DDEF1F3AAA5C000BA54B /* Crashlytics.framework */,
 				5892DDF01F3AAA5C000BA54B /* Fabric.framework */,
+				0EFEACF92110D84500F3A368 /* FirebaseAnalytics.framework */,
+				0EFEACFB2110D84500F3A368 /* FirebaseCore.framework */,
+				0EFEACFE2110D84600F3A368 /* FirebaseCoreDiagnostics.framework */,
+				0EFEACF62110D84400F3A368 /* FirebaseInstanceID.framework */,
+				0EFEACFA2110D84500F3A368 /* FirebaseNanoPB.framework */,
+				0EFEAD072110D86700F3A368 /* FirebaseMessaging.framework */,
+				0EFEAD062110D86700F3A368 /* Protobuf.framework */,
+				0EFEACFC2110D84500F3A368 /* GoogleToolboxForMac.framework */,
+				0EFEACFD2110D84600F3A368 /* nanopb.framework */,
 				58D9C3F21F3335BB002BE2E8 /* iSEPTA */,
 				58D9C40A1F3335BB002BE2E8 /* iSEPTATests */,
 				58D9C3F11F3335BB002BE2E8 /* Products */,
@@ -2575,6 +2644,7 @@
 		58D9C3F21F3335BB002BE2E8 /* iSEPTA */ = {
 			isa = PBXGroup;
 			children = (
+				0EFEAD0E2110DE1000F3A368 /* SEPTA.entitlements */,
 				67A3857C1F7D764D002E01E0 /* Startup */,
 				58248B601F6D570C00DA2D65 /* State Watchers */,
 				5840D6E11F37E9E300C8CB76 /* State Providers */,
@@ -2584,6 +2654,7 @@
 				582F4EB71F33B1120062A546 /* Base.lproj */,
 				582F4E841F33B1120062A546 /* Features */,
 				582F4EB31F33B1120062A546 /* Main */,
+				0EE428D02114D41E00EBF6FE /* Notifications */,
 				582F4E7F1F33B1120062A546 /* Utlities */,
 				582F4E811F33B1120062A546 /* Common Views */,
 				0E3630D42108A3F300980EB6 /* Network Services */,
@@ -3270,6 +3341,11 @@
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					58D9C4061F3335BB002BE2E8 = {
 						CreatedOnToolsVersion = 9.0;
@@ -3375,6 +3451,7 @@
 				677E054320727C9D00B16C09 /* 105.kml in Resources */,
 				671609071F67671F00941D2C /* TripView.xib in Resources */,
 				677E04F220727C9D00B16C09 /* 67.kml in Resources */,
+				0EFEAD0D2110DC1700F3A368 /* GoogleService-Info.plist in Resources */,
 				671609091F676F1300941D2C /* ConnectionView.xib in Resources */,
 				677E050220727C9D00B16C09 /* 1.kml in Resources */,
 				677E04BD20727C9D00B16C09 /* 5.kml in Resources */,
@@ -3661,6 +3738,7 @@
 				678D26C61F5CC52300D140CC /* FavoritesReducer.swift in Sources */,
 				6776F686201CAA82001FD5B2 /* TestGenericAlertDetailProvider.swift in Sources */,
 				585303CD1F69C74F00145D87 /* FavoritesNextToArriveProvider.swift in Sources */,
+				0E2777FC211249EA00507CFE /* NotificationsManager.swift in Sources */,
 				588D805F1F72B23D00EE1983 /* TargetForScheduleActions.swift in Sources */,
 				5803C367210A4FF800BFAE7A /* ManagePushNotificationsViewController.swift in Sources */,
 				0E2DCAD720F672BD0086F400 /* TransitViewVehicleAnnotation.swift in Sources */,
@@ -3799,7 +3877,6 @@
 				580A35651F6A1949000FCA82 /* FavoriteNextToArriveViewModel.swift in Sources */,
 				58E54E241F65A40100E9B66D /* NavigationBar+Util.swift in Sources */,
 				586852E01F8D4F470081C1CC /* LittleBlueChevronButton.swift in Sources */,
-				5803C38B210BAC7800BFAE7A /* XibView.swift in Sources */,
 				6776F67E201B4078001FD5B2 /* AlertState_HasGenericOrAppAlertsWatcher.swift in Sources */,
 				58DD1A901F600758002532DC /* NextToArriveViewModel+StopCell.swift in Sources */,
 				5803C371210A6B5900BFAE7A /* ManagePushNotificationsPushCell.swift in Sources */,
@@ -4036,6 +4113,7 @@
 				58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */,
 				581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */,
 				5805C829210FA71000A35613 /* DayOfWeekView.swift in Sources */,
+				0EE428D42114D4C500EBF6FE /* SeptaNotification.swift in Sources */,
 				58CBEE871F953B5A00F26A15 /* FavoriteState_NextToArriveFavoriteWatcher.swift in Sources */,
 				679924051F6E01BD00FD5691 /* MoreButton.swift in Sources */,
 				58E80FEE20F685D5000E419A /* FavoriteNextToArriveReverseTrip.swift in Sources */,
@@ -4045,6 +4123,7 @@
 				67A0DD282110EC28001EAE15 /* DatePickerPresentationCoordinator.swift in Sources */,
 				58EB8D291F5D90CD0028A487 /* NextToArriveState.swift in Sources */,
 				0E8E60EE20F00B9E00AB08FE /* RouteIcon.swift in Sources */,
+				0E372163211392E4004B14E4 /* XibView.swift in Sources */,
 				67A0DD262110EC28001EAE15 /* DatePickerAnimationIn.swift in Sources */,
 				5805C827210F8CAA00A35613 /* TimeframeBoundaryView.swift in Sources */,
 				5803C36F210A6B2F00BFAE7A /* ManagePushNotificationsToggleCell.swift in Sources */,
@@ -4140,6 +4219,7 @@
 /* Begin XCBuildConfiguration section */
 		58D9C40E1F3335BB002BE2E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E2777FA2112390600507CFE /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -4202,6 +4282,7 @@
 		};
 		58D9C40F1F3335BB002BE2E8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E2777F9211238F900507CFE /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -4257,22 +4338,28 @@
 		};
 		58D9C4111F3335BB002BE2E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E2777FA2112390600507CFE /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "$(APP_ICON)";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = iSEPTA/SEPTA.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA.beta;
 				PRODUCT_MODULE_NAME = Septa;
 				PRODUCT_NAME = SEPTA;
@@ -4286,21 +4373,27 @@
 		};
 		58D9C4121F3335BB002BE2E8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E2777F9211238F900507CFE /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "$(APP_ICON)";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = iSEPTA/SEPTA.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L636S9JLLY;
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA.beta;
 				PRODUCT_MODULE_NAME = Septa;
 				PRODUCT_NAME = SEPTA;
@@ -4314,6 +4407,7 @@
 		};
 		58D9C4141F3335BB002BE2E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E2777FA2112390600507CFE /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -4335,6 +4429,7 @@
 		};
 		58D9C4151F3335BB002BE2E8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E2777F9211238F900507CFE /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

@@ -2,6 +2,8 @@
 
 import Crashlytics
 import Fabric
+import Firebase
+import NotificationCenter
 import ReSwift
 import SeptaSchedule
 import UIKit
@@ -24,13 +26,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Crashlytics.sharedInstance().delegate = self
         Fabric.with([Crashlytics.self, Answers.self])
 
         stateProviders.preferenceProvider.subscribe()
 
         databaseUpdateManager.appLaunched(coldStart: true)
+
+        Messaging.messaging().delegate = self
+        NotificationsManager.configure()
+        UNUserNotificationCenter.current().delegate = self
+
+        // TODO: Remove -------------------------------------------------------
+//        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+//        UNUserNotificationCenter.current().requestAuthorization(
+//            options: authOptions,
+//            completionHandler: { _, _ in })
+//        application.registerForRemoteNotifications()
+        // --------------------------------------------------------------------
 
         return true
     }
@@ -78,5 +92,18 @@ extension AppDelegate: CrashlyticsDelegate {
     func crashlyticsDidDetectReport(forLastExecution _: CLSReport, completionHandler: @escaping (Bool) -> Void) {
         UserDefaults.standard.set(true, forKey: InAppReview.crashReportedKey)
         completionHandler(true)
+    }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func application(_: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler _: @escaping (UIBackgroundFetchResult) -> Void) {
+        NotificationsManager.handleRemoteNotification(info: userInfo)
+    }
+}
+
+extension AppDelegate: MessagingDelegate {
+    func messaging(_: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        UserDefaults.standard.setValue(fcmToken, forKey: NotificationsManager.fcmTokenKey)
+//        try! NotificationsManager.subscribeToSpecialAnnouncements()
     }
 }
