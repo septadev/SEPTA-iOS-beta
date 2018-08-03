@@ -70,7 +70,7 @@ class PushNotificationMiddleware {
 
         case .notDetermined:
             let actionOnFail = RemovePushNotificationRoute(routes: [action.route], viewController: action.viewController)
-            requestAuthorization(actionOnSuccess: nil, actionOnFail: actionOnFail, dispatch: dispatch, next: next)
+            requestAuthorization(actionOnSuccess: action, actionOnFail: actionOnFail, dispatch: dispatch, next: next)
         }
     }
 
@@ -103,7 +103,7 @@ class PushNotificationMiddleware {
     static func reducePushCustomizePushNotifications(action: PushViewController, authorizationStatus: PushNotificationAuthorizationState, dispatch: @escaping DispatchFunction, next: @escaping DispatchFunction) {
         switch authorizationStatus {
         case .authorized:
-            dispatch(action)
+            next(action)
         case .denied:
 
             UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: nil, completion: nil)
@@ -121,17 +121,17 @@ class PushNotificationMiddleware {
             if error == nil {
                 DispatchQueue.main.async {
                     if granted {
-                        dispatch(UpdateSystemAuthorizationStatusForPushNotifications(authorizationStatus: .authorized))
+                        next(UpdateSystemAuthorizationStatusForPushNotifications(authorizationStatus: .authorized))
                         if let actionOnSuccess = actionOnSuccess {
-                            next(actionOnSuccess)
+                            dispatch(actionOnSuccess)
                         }
+                        UIApplication.shared.registerForRemoteNotifications()
                     } else {
                         dispatch(UpdateSystemAuthorizationStatusForPushNotifications(authorizationStatus: .denied))
                         if let actionOnFail = actionOnFail {
                             dispatch(actionOnFail)
                         }
                     }
-                    UIApplication.shared.registerForRemoteNotifications()
                 }
             }
         }
