@@ -59,7 +59,8 @@ class TimeframeGroupView: UIView, StoreSubscriber, DeleteTimeFrameDelegate {
     }
 
     @objc func addTimeFrameButtonTapped(sender _: UIButton) {
-        let action = InsertNewPushTimeframe()
+        guard let viewController = UIResponder.parentViewController(forView: self) else { return }
+        let action = InsertNewPushTimeframe(viewController: viewController)
         store.dispatch(action)
     }
 
@@ -77,7 +78,8 @@ class TimeframeGroupView: UIView, StoreSubscriber, DeleteTimeFrameDelegate {
     func deleteTimeframe(index: Int) {
         timeFrame2.unsubscribe()
         timeFrame1.closeTimeFrameButton.isHidden = true
-        let action = DeleteTimeframe(index: index)
+        guard let viewController = UIResponder.parentViewController(forView: self) else { return }
+        let action = DeleteTimeframe(index: index, viewController: viewController)
         store.dispatch(action)
     }
 

@@ -8,6 +8,7 @@
 
 import Foundation
 import ReSwift
+import UIKit
 
 protocol ManagePushNotificationsCellViewModel {
     var cellIdentifier: String { get }
@@ -23,6 +24,12 @@ protocol ToggleCellDelegate: class {
 
 class ManagePushNotificationsViewModel: ToggleCellDelegate {
     private var cellsViewModel: [[ManagePushNotificationsCellViewModel]]?
+
+    weak var viewController: UIViewController?
+
+    init(viewController: UIViewController) {
+        self.viewController = viewController
+    }
 
     enum RowIdentifier {
         case notDetermined
@@ -98,6 +105,7 @@ class ManagePushNotificationsViewModel: ToggleCellDelegate {
     }
 
     private func buildCellsArray(state: PushNotificationPreferenceState) -> [[ManagePushNotificationsCellViewModel]] {
+        guard let viewController = viewController else { return [[ManagePushNotificationsCellViewModel]]() }
         let cellsViewModel: [[ManagePushNotificationsCellViewModel]] = [
             [
                 ToggleSwitchViewModel(
@@ -105,21 +113,21 @@ class ManagePushNotificationsViewModel: ToggleCellDelegate {
                     detailText: Strings.enableNotificationsDetail,
                     switchPositionOn: state.userWantsToEnablePushNotifications,
                     rowIdentifier: .enableNotifications,
-                    action: UserWantsToSubscribeToPushNotifications(),
+                    action: UserWantsToSubscribeToPushNotifications(viewController: viewController),
                     delegate: self),
                 ToggleSwitchViewModel(
                     headerText: Strings.specialAnnouncementsHeader,
                     detailText: Strings.specialAnnouncementsDetail,
                     switchPositionOn: state.userWantsToReceiveSpecialAnnoucements,
                     rowIdentifier: .specialSeptaAnnouncements,
-                    action: UserWantsToSubscribeToSpecialAnnouncements(),
+                    action: UserWantsToSubscribeToSpecialAnnouncements(viewController: viewController),
                     delegate: self),
                 ToggleSwitchViewModel(
                     headerText: Strings.treatAsPriorityHeader,
                     detailText: Strings.treatAsPriorityDetail,
                     switchPositionOn: state.userWantToReceiveNotificationsEvenWhenDoNotDisturbIsOn,
                     rowIdentifier: .treatAsPriority,
-                    action: UserWantsToSubscribeToOverideDoNotDisturb(),
+                    action: UserWantsToSubscribeToOverideDoNotDisturb(viewController: viewController),
                     delegate: self),
             ],
             [

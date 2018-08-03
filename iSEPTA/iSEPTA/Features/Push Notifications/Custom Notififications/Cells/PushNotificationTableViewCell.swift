@@ -28,7 +28,8 @@ class PushNotificationTableViewCell: UITableViewCell {
     @IBAction func toggleSwitchChanged(_ sender: UISwitch) {
         guard let route = pushNotificationRoute else { return }
         let newRoute = PushNotificationRoute(routeId: route.routeId, routeName: route.routeName, transitMode: route.transitMode, isEnabled: sender.isOn)
-        store.dispatch(UpdatePushNotificationRoute(route: newRoute))
+        guard let viewController = UIResponder.parentViewController(forView: self) else { return }
+        store.dispatch(UpdatePushNotificationRoute(route: newRoute, viewController: viewController))
     }
 
     var routeNameText: String? {

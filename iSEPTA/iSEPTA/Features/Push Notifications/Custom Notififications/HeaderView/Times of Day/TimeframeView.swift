@@ -109,7 +109,8 @@ class TimeframeView: UIView, TimeframeBoundaryViewDelegate {
                 newState.pushNotificationPreferenceState.notificationTimeWindows[index].startMinute = minutesSinceMidnight
                 return newState
             }
-            let action = UpdatePushNotificationTimeframe(block: block)
+            guard let viewController = UIResponder.parentViewController(forView: self) else { return }
+            let action = UpdatePushNotificationTimeframe(viewController: viewController, block: block)
             store.dispatch(action)
         }
     }
@@ -129,7 +130,8 @@ class TimeframeView: UIView, TimeframeBoundaryViewDelegate {
                 newState.pushNotificationPreferenceState.notificationTimeWindows[index].endMinute = minutesSinceMidnight
                 return newState
             }
-            let action = UpdatePushNotificationTimeframe(block: block)
+            guard let viewController = UIResponder.parentViewController(forView: self) else { return }
+            let action = UpdatePushNotificationTimeframe(viewController: viewController, block: block)
             store.dispatch(action)
         }
     }

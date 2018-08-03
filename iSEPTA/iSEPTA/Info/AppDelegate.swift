@@ -12,7 +12,7 @@ import UserNotifications
 let store = Store<AppState>(
     reducer: AppStateReducer.mainReducer,
     state: nil,
-    middleware: [loggingMiddleware, nextToArriveMiddleware, septaConnectionMiddleware, favoritesMiddleware, tripDetailMiddleware]
+    middleware: [loggingMiddleware, nextToArriveMiddleware, septaConnectionMiddleware, favoritesMiddleware, tripDetailMiddleware, pushNotificationsMiddleware]
 )
 
 var stateProviders = StateProviders()

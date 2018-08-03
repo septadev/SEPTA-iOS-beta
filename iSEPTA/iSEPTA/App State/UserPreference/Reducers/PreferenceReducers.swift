@@ -50,6 +50,8 @@ struct UserPreferencesReducer {
             newPref = reduceRemovePushNotificationRoute(action: action, state: state)
         case let action as UpdatePushNotificationRoute:
             newPref = reduceUpdatePushNotificationRoute(action: action, state: state)
+        case let action as RemoveAllPushNotificationRoutes:
+            newPref = reduceRemoveAllPushNotificationRoutes(action: action, state: state)
         default:
             fatalError("You passed in an action for which there is no reducer")
         }
@@ -80,11 +82,15 @@ struct UserPreferencesReducer {
         return userPreferenceState
     }
 
+    // MARK: -  Called only by Unit Tests
+
     static func reduceUpdatePushNotificationPreferenceState(action: UpdatePushNotificationPreferenceState, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
         userPreferenceState.pushNotificationPreferenceState = action.pushNotificationPreferenceState
         return userPreferenceState
     }
+
+    // Subscription Type
 
     static func reduceUserWantsToSubscribeToPushNotifications(action: UserWantsToSubscribeToPushNotifications, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
@@ -110,6 +116,8 @@ struct UserPreferencesReducer {
         return userPreferenceState
     }
 
+    // MARK: - Days of the Week
+
     static func reduceUpdateDaysOfTheWeekForPushNotifications(action: UpdateDaysOfTheWeekForPushNotifications, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
         if action.isActivated {
@@ -119,6 +127,8 @@ struct UserPreferencesReducer {
         }
         return userPreferenceState
     }
+
+    // MARK: - Time Frames
 
     static func reduceUpdatePushNotificationTimeframe(action: UpdatePushNotificationTimeframe, state: UserPreferenceState) -> UserPreferenceState {
         return action.block(state)
@@ -135,6 +145,8 @@ struct UserPreferencesReducer {
         userPreferenceState.pushNotificationPreferenceState.notificationTimeWindows.remove(at: action.index)
         return userPreferenceState
     }
+
+    // MARK: - Routes
 
     static func reduceAddPushNotificationRoute(action: AddPushNotificationRoute, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
@@ -163,6 +175,12 @@ struct UserPreferencesReducer {
             routeIds[index] = action.route
         }
         userPreferenceState.pushNotificationPreferenceState.routeIds = routeIds
+        return userPreferenceState
+    }
+
+    static func reduceRemoveAllPushNotificationRoutes(action _: RemoveAllPushNotificationRoutes, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.pushNotificationPreferenceState.routeIds = [PushNotificationRoute]()
         return userPreferenceState
     }
 }

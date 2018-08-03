@@ -22,7 +22,7 @@ class AddEditView: UIView {
             myNotificationsLabel.attributedText = text.attributed(
                 fontSize: 13,
                 fontWeight: .regular,
-                textColor: SeptaColor.gray_198,
+                textColor: SeptaColor.black50,
                 alignment: .center,
                 kerning: -0.1,
                 lineHeight: 18

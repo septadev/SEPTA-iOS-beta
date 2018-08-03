@@ -7,24 +7,29 @@
 //
 
 import Foundation
+import ReSwift
 import SeptaSchedule
 import UIKit
 
-class AlertDetailFooterView: UIView {
+class AlertDetailFooterView: UIView, StoreSubscriber {
+    typealias StoreSubscriberStateType = [PushNotificationRoute]
+
     var pushNotificationRoute: PushNotificationRoute? {
         didSet {
-            guard let route = pushNotificationRoute else { return }
-            pushNotificationToggleView.isOn = store.state.preferenceState.pushNotificationPreferenceState.routeIds.contains(route)
+            store.subscribe(self) {
+                $0.select { $0.preferenceState.pushNotificationPreferenceState.routeIds }
+            }
         }
     }
 
     @IBAction func toggleNotificationsValueChanged(_ sender: UISwitch) {
         guard let route = pushNotificationRoute else { return }
+        guard let viewController = UIResponder.parentViewController(forView: self) else { return }
         DispatchQueue.main.async {
             if sender.isOn {
-                store.dispatch(AddPushNotificationRoute(route: route))
+                store.dispatch(AddPushNotificationRoute(route: route, viewController: viewController))
             } else {
-                store.dispatch(RemovePushNotificationRoute(routes: [route]))
+                store.dispatch(RemovePushNotificationRoute(routes: [route], viewController: viewController))
             }
         }
     }
@@ -34,6 +39,19 @@ class AlertDetailFooterView: UIView {
         let navigationStackState = NavigationStackState(viewControllers: [.moreViewController, .managePushNotficationsController], modalViewController: nil)
         let action = InitializeNavigationState(navigationController: .more, navigationStackState: navigationStackState, description: "Deep Linking into More")
         store.dispatch(action)
+    }
+
+    func newState(state: StoreSubscriberStateType) {
+        guard let route = pushNotificationRoute else { return }
+        if let _ = state.first(where: { $0.routeId == route.routeId }) {
+            pushNotificationToggleView.isOn = true
+        } else {
+            pushNotificationToggleView.isOn = false
+        }
+    }
+
+    deinit {
+        store.unsubscribe(self)
     }
 
     @IBOutlet var pushNotificationToggleView: UISwitch!
