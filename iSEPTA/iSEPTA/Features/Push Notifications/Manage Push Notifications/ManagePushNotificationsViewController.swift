@@ -17,8 +17,6 @@ class ManagePushNotificationsViewController: UITableViewController, Identifiable
 
     var viewModel: ManagePushNotificationsViewModel?
 
-    let systemStatusResolver = PushNotificationSystemStatusResolver()
-
     struct Keys {
         static let tableHeaderViewNib = "ManagePushNotificationsHeaderView"
         static let tableHeaderViewId = "TableSectionHeader"
@@ -29,7 +27,7 @@ class ManagePushNotificationsViewController: UITableViewController, Identifiable
         super.viewDidLoad()
         view.backgroundColor = SeptaColor.navBarBlue
         navigationController?.navigationBar.configureBackButton()
-        viewModel = ManagePushNotificationsViewModel()
+        viewModel = ManagePushNotificationsViewModel(viewController: self)
         let nib = UINib(nibName: Keys.tableHeaderViewNib, bundle: nil)
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: Keys.tableHeaderViewId)
 

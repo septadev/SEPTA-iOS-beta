@@ -43,7 +43,7 @@ class UserPreferencesStatePersister {
 
     func setPushNotificationPreference(state: UserPreferenceState) {
         let data = try? JSONEncoder().encode(state.pushNotificationPreferenceState)
-        set(data, forKey: .pushNotifiation)
+        set(data, forKey: .pushNotificationPreferenceState)
     }
 
     private func set(_ value: Any?, forKey key: UserPreferencesKeys) {

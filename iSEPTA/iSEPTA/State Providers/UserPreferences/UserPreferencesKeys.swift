@@ -8,5 +8,5 @@ enum UserPreferencesKeys: String {
     case defaultsLoaded
     case startupNavigationController
     case databaseVersion
-    case pushNotifiation
+    case pushNotificationPreferenceState
 }

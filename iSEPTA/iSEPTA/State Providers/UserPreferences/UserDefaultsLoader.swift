@@ -73,7 +73,7 @@ class UserDefaultsLoader {
     }
 
     fileprivate func retrievePushNotifications() -> PushNotificationPreferenceState? {
-        return decodable(forKey: .pushNotifiation)
+        return decodable(forKey: .pushNotificationPreferenceState)
     }
 
     fileprivate func bool(forKey key: UserPreferencesKeys) -> Bool {

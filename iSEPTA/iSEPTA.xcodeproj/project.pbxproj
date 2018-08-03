@@ -287,6 +287,8 @@
 		58DB04A51F558DD0005CC850 /* SearchRoutesModalHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DB04A41F558DD0005CC850 /* SearchRoutesModalHeaderViewController.swift */; };
 		58DB10F41F3B8CCF00191AED /* ScheduleDataReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DB10F31F3B8CCF00191AED /* ScheduleDataReducer.swift */; };
 		58DB10F81F3B8DB400191AED /* NavigationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DB10F71F3B8DB400191AED /* NavigationReducer.swift */; };
+		58DBF57A2114777600ADCB68 /* PushNotificationMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DBF5792114777600ADCB68 /* PushNotificationMiddleware.swift */; };
+		58DBF57C2114789100ADCB68 /* UIResponder+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DBF57B2114789100ADCB68 /* UIResponder+Util.swift */; };
 		58DD1A821F5EEB46002532DC /* NextToArriveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD1A811F5EEB46002532DC /* NextToArriveViewModel.swift */; };
 		58DD1A861F5F148F002532DC /* NoRouteNeededCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD1A851F5F148F002532DC /* NoRouteNeededCell.swift */; };
 		58DD1A8C1F6006D5002532DC /* NextToArriveViewModel+RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD1A8B1F6006D5002532DC /* NextToArriveViewModel+RouteCell.swift */; };
@@ -1051,6 +1053,8 @@
 		58DB04A41F558DD0005CC850 /* SearchRoutesModalHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRoutesModalHeaderViewController.swift; sourceTree = "<group>"; };
 		58DB10F31F3B8CCF00191AED /* ScheduleDataReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDataReducer.swift; sourceTree = "<group>"; };
 		58DB10F71F3B8DB400191AED /* NavigationReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationReducer.swift; sourceTree = "<group>"; };
+		58DBF5792114777600ADCB68 /* PushNotificationMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationMiddleware.swift; sourceTree = "<group>"; };
+		58DBF57B2114789100ADCB68 /* UIResponder+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Util.swift"; sourceTree = "<group>"; };
 		58DD1A811F5EEB46002532DC /* NextToArriveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveViewModel.swift; sourceTree = "<group>"; };
 		58DD1A851F5F148F002532DC /* NoRouteNeededCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoRouteNeededCell.swift; sourceTree = "<group>"; };
 		58DD1A8B1F6006D5002532DC /* NextToArriveViewModel+RouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NextToArriveViewModel+RouteCell.swift"; sourceTree = "<group>"; };
@@ -1755,6 +1759,7 @@
 				582F4E821F33B1120062A546 /* Cells */,
 				581DA5491F3BE1C8006AEC39 /* IdentifiableController.swift */,
 				67F757B21F48729C00D3A4EE /* UIView+Util.swift */,
+				58DBF57B2114789100ADCB68 /* UIResponder+Util.swift */,
 				67F757B61F488A5E00D3A4EE /* BlueGradientBackgroundView.swift */,
 				5801280F1F6BFC9F006B6DB8 /* NavBarShadowView.swift */,
 				67D2F7941F7E4C8700E0FF32 /* webView.storyboard */,
@@ -2512,6 +2517,7 @@
 		58C9D2FD1F703716008FDE40 /* Middleware */ = {
 			isa = PBXGroup;
 			children = (
+				58DBF5762114776000ADCB68 /* PushNotifications */,
 				6789B7861F8FF19A008C6DCA /* TripDetail */,
 				670C59E11F8A5CD400CAE1AC /* Favorites */,
 				67F028A81F7FD5370032F99C /* Septa Connection */,
@@ -2652,6 +2658,14 @@
 				58DB10F71F3B8DB400191AED /* NavigationReducer.swift */,
 			);
 			path = Reducers;
+			sourceTree = "<group>";
+		};
+		58DBF5762114776000ADCB68 /* PushNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				58DBF5792114777600ADCB68 /* PushNotificationMiddleware.swift */,
+			);
+			path = PushNotifications;
 			sourceTree = "<group>";
 		};
 		58DD1A931F6007F9002532DC /* NextToArriveViewModel */ = {
@@ -3938,6 +3952,7 @@
 				589A89DB1F52E6A9007329DB /* ScheduleStopEdit.swift in Sources */,
 				584528BB1F7C27C000E68D8F /* CurvedTopInfoView.swift in Sources */,
 				58E33F221F615EC100C74B7C /* NextToArriveScheduleRequestWatcher.swift in Sources */,
+				58DBF57A2114777600ADCB68 /* PushNotificationMiddleware.swift in Sources */,
 				58DB10F81F3B8DB400191AED /* NavigationReducer.swift in Sources */,
 				0E36308720FFAE2A00980EB6 /* TransitViewVehicleCalloutView.swift in Sources */,
 				584AC8731F437DDB0040C1B4 /* TripScheduleViewController.swift in Sources */,
@@ -4035,6 +4050,7 @@
 				5803C36F210A6B2F00BFAE7A /* ManagePushNotificationsToggleCell.swift in Sources */,
 				5893970C1F7E60D900F3D2F8 /* WebViewController.swift in Sources */,
 				589A919B1F905CA6009B49E0 /* TripDetailState_TripDetailWatcher.swift in Sources */,
+				58DBF57C2114789100ADCB68 /* UIResponder+Util.swift in Sources */,
 				6776F678201B32EA001FD5B2 /* AlertState_HasAppAlertsWatcher.swift in Sources */,
 				670C59E31F8A5CEE00CAE1AC /* FavoritesMiddleware.swift in Sources */,
 				583523991F5DAFCB00F95FC8 /* ScheduleTransitModesToolBarViewController.swift in Sources */,

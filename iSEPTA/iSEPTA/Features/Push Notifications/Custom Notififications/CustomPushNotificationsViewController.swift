@@ -46,6 +46,7 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        isCurrentlyEditing(false)
         store.unsubscribe(self)
     }
 
@@ -68,8 +69,8 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
     func isCurrentlyEditing(_ editing: Bool) {
         tableView.setEditing(editing, animated: true)
 
-        if !editing {
-            let action = RemovePushNotificationRoute(routes: rowsToDelete)
+        if !editing && rowsToDelete.count > 0 {
+            let action = RemovePushNotificationRoute(routes: rowsToDelete, viewController: self)
             store.dispatch(action)
             rowsToDelete.removeAll()
         }
@@ -105,9 +106,7 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
     }
 
     override func willMove(toParentViewController parent: UIViewController?) {
-        if parent == nil {
-            isCurrentlyEditing(false)
-        }
+        backButtonPopped(toParentViewController: parent)
     }
 
     override func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {

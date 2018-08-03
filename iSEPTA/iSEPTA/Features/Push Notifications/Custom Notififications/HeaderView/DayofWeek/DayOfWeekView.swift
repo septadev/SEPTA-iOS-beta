@@ -42,7 +42,8 @@ class DayOfWeekView: UIView, StoreSubscriber {
     }
 
     func submitAction(dayOfWeekView: DayOfWeekImageView) {
-        let action = UpdateDaysOfTheWeekForPushNotifications(dayOfWeek: dayOfWeekView.dayOfWeek, isActivated: dayOfWeekView.isHighlighted)
+        guard let viewController = UIResponder.parentViewController(forView: self) else { return }
+        let action = UpdateDaysOfTheWeekForPushNotifications(dayOfWeek: dayOfWeekView.dayOfWeek, isActivated: dayOfWeekView.isHighlighted, viewController: viewController)
         store.dispatch(action)
     }
 

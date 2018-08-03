@@ -23,7 +23,8 @@ class TimeframeBoundaryView: UIView, StoreSubscriber {
     typealias StoreSubscriberStateType = MinutesSinceMidnight
 
     @IBAction func timeOfDayViewTapped(_: Any) {
-        let action = PresentModal(viewController: .timeOfDayPickerController, description: "Getting read to pick a date")
+        guard let delegate = delegate else { return }
+        let action = PresentModal(viewController: .timeOfDayPickerController, description: "Getting ready to pick a date")
         SelectTimeOfDayViewController.subscriptonTarget = subscriptonTarget
         SelectTimeOfDayViewController.actionTarget = actionTarget
         delegate.willEditTimeOfDay(boundaryType: timeFrameBoundaryType)
@@ -46,7 +47,7 @@ class TimeframeBoundaryView: UIView, StoreSubscriber {
     var actionTarget: ((Date) -> Void)?
 
     var timeFrameBoundaryType: TimeFrameBoundaryType!
-    weak var delegate: TimeframeBoundaryViewDelegate!
+    weak var delegate: TimeframeBoundaryViewDelegate?
 
     @IBOutlet var headingLabel: UILabel! {
         didSet {

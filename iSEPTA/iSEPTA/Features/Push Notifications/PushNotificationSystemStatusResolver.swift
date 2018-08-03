@@ -24,18 +24,18 @@ class PushNotificationSystemStatusResolver: StoreSubscriber {
         }
     }
 
-    func newState(state: StoreSubscriberStateType) {
-        switch state {
-        case .notDetermined, .denied: disableNotificationDetails()
-        default: break
-        }
+    func newState(state _: StoreSubscriberStateType) {
+//        switch state {
+//        case .notDetermined, .denied: disableNotificationDetails()
+//        default: break
+//        }
     }
 
-    func disableNotificationDetails() {
-        store.dispatch(UserWantsToSubscribeToPushNotifications())
-        store.dispatch(UserWantsToSubscribeToSpecialAnnouncements())
-        store.dispatch(UserWantsToSubscribeToOverideDoNotDisturb())
-    }
+//    func disableNotificationDetails() {
+//        store.dispatch(UserWantsToSubscribeToPushNotifications())
+//        store.dispatch(UserWantsToSubscribeToSpecialAnnouncements())
+//        store.dispatch(UserWantsToSubscribeToOverideDoNotDisturb())
+//    }
 
     deinit {
         store.unsubscribe(self)

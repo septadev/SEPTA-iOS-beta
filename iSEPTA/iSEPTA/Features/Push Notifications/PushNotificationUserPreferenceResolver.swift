@@ -35,11 +35,11 @@ class PushNotificationUserPreferenceResolver: StoreSubscriber {
             granted, _ in
             guard let viewController = self?.viewController else { return }
             if !granted {
-                UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: viewController, withTitle: "Push Notification Authorization", message: "You need to go to Settings>Notification to enable push notifications for the SEPTA app") {
-                    var action = UserWantsToSubscribeToPushNotifications()
-                    action.boolValue = false
-                    store.dispatch(action)
-                }
+//                UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: viewController, withTitle: "Push Notification Authorization", message: "You need to go to Settings>Notification to enable push notifications for the SEPTA app") {
+//
+//                    action.boolValue = false
+//                    store.dispatch(action)
+//                }
             }
         }
     }
