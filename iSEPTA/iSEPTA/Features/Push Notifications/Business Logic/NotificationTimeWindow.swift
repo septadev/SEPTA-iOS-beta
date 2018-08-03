@@ -37,4 +37,8 @@ struct NotificationTimeWindow: Codable, Equatable {
     static func defaultValue() -> NotificationTimeWindow { // 442, 553
         return NotificationTimeWindow(startMinute: 7 * 60, endMinute: 9 * 60)
     }
+
+    static func defaultValue2() -> NotificationTimeWindow { // 442, 553
+        return NotificationTimeWindow(startMinute: 16 * 60, endMinute: 19 * 60)
+    }
 }
