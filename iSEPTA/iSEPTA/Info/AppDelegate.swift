@@ -16,7 +16,6 @@ let store = Store<AppState>(
 )
 
 var stateProviders = StateProviders()
-var notificationsManager = NotificationsManager()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,16 +34,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         databaseUpdateManager.appLaunched(coldStart: true)
 
-        notificationsManager.configure()
-
+        Messaging.messaging().delegate = self
+        NotificationsManager.configure()
         UNUserNotificationCenter.current().delegate = self
 
-        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-        UNUserNotificationCenter.current().requestAuthorization(
-            options: authOptions,
-            completionHandler: { _, _ in })
-
-        application.registerForRemoteNotifications()
+        // TODO: Remove -------------------------------------------------------
+//        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+//        UNUserNotificationCenter.current().requestAuthorization(
+//            options: authOptions,
+//            completionHandler: { _, _ in })
+//        application.registerForRemoteNotifications()
+        // --------------------------------------------------------------------
 
         return true
     }
@@ -97,6 +97,13 @@ extension AppDelegate: CrashlyticsDelegate {
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     func application(_: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler _: @escaping (UIBackgroundFetchResult) -> Void) {
-        
+        NotificationsManager.handleRemoteNotification(info: userInfo)
+    }
+}
+
+extension AppDelegate: MessagingDelegate {
+    func messaging(_: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        UserDefaults.standard.setValue(fcmToken, forKey: NotificationsManager.fcmTokenKey)
+//        try! NotificationsManager.subscribeToSpecialAnnouncements()
     }
 }

@@ -52,6 +52,7 @@
 		0EA1FF9020DA9E37007A9A91 /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA1FF8F20DA9E37007A9A91 /* UIAlertControllerExtensions.swift */; };
 		0EB1942221090AA800077C99 /* FavoriteTransitViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1942021090AA800077C99 /* FavoriteTransitViewCell.swift */; };
 		0EB1942321090AA800077C99 /* FavoriteTransitViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EB1942121090AA800077C99 /* FavoriteTransitViewCell.xib */; };
+		0EE428D42114D4C500EBF6FE /* SeptaNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE428D32114D4C500EBF6FE /* SeptaNotification.swift */; };
 		0EFEACFF2110D84600F3A368 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEACF62110D84400F3A368 /* FirebaseInstanceID.framework */; };
 		0EFEAD002110D84600F3A368 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEACF92110D84500F3A368 /* FirebaseAnalytics.framework */; };
 		0EFEAD012110D84600F3A368 /* FirebaseNanoPB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEACFA2110D84500F3A368 /* FirebaseNanoPB.framework */; };
@@ -805,6 +806,7 @@
 		0EA1FF8F20DA9E37007A9A91 /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtensions.swift; sourceTree = "<group>"; };
 		0EB1942021090AA800077C99 /* FavoriteTransitViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTransitViewCell.swift; sourceTree = "<group>"; };
 		0EB1942121090AA800077C99 /* FavoriteTransitViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTransitViewCell.xib; sourceTree = "<group>"; };
+		0EE428D32114D4C500EBF6FE /* SeptaNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaNotification.swift; sourceTree = "<group>"; };
 		0EFEACF62110D84400F3A368 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		0EFEACF92110D84500F3A368 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		0EFEACFA2110D84500F3A368 /* FirebaseNanoPB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseNanoPB.framework; sourceTree = "<group>"; };
@@ -1600,6 +1602,15 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		0EE428D02114D41E00EBF6FE /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				0E2777FB211249EA00507CFE /* NotificationsManager.swift */,
+				0EE428D32114D4C500EBF6FE /* SeptaNotification.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		580041F81F3504D800691FDC /* Info */ = {
 			isa = PBXGroup;
 			children = (
@@ -1778,7 +1789,6 @@
 				5820CB37210F3D4600782275 /* AttributedString+Util.swift */,
 				0E8E60ED20F00B9E00AB08FE /* RouteIcon.swift */,
 				0E36308A20FFB20E00980EB6 /* NSMutableAttributedStringExtensions.swift */,
-				0E2777FB211249EA00507CFE /* NotificationsManager.swift */,
 				0E372160211392E3004B14E4 /* XibView.swift */,
 			);
 			path = Utlities;
@@ -2644,6 +2654,7 @@
 				582F4EB71F33B1120062A546 /* Base.lproj */,
 				582F4E841F33B1120062A546 /* Features */,
 				582F4EB31F33B1120062A546 /* Main */,
+				0EE428D02114D41E00EBF6FE /* Notifications */,
 				582F4E7F1F33B1120062A546 /* Utlities */,
 				582F4E811F33B1120062A546 /* Common Views */,
 				0E3630D42108A3F300980EB6 /* Network Services */,
@@ -4102,6 +4113,7 @@
 				58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */,
 				581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */,
 				5805C829210FA71000A35613 /* DayOfWeekView.swift in Sources */,
+				0EE428D42114D4C500EBF6FE /* SeptaNotification.swift in Sources */,
 				58CBEE871F953B5A00F26A15 /* FavoriteState_NextToArriveFavoriteWatcher.swift in Sources */,
 				679924051F6E01BD00FD5691 /* MoreButton.swift in Sources */,
 				58E80FEE20F685D5000E419A /* FavoriteNextToArriveReverseTrip.swift in Sources */,
