@@ -6,9 +6,9 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
+import Crashlytics
 import Foundation
 import ReSwift
-import Crashlytics
 
 let loggingMiddleware: Middleware<AppState> = { _, _ in { next in
     return { action in

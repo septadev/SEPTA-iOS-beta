@@ -31,13 +31,13 @@ class PushNotificationMiddleware {
         case let action as AddPushNotificationRoute:
             next(action)
             reduceAddPushNotificationRoute(action: action, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
-         case let action as AddPushNotificationRoute:
+        case let action as AddPushNotificationRoute:
             next(action)
             reduceAddPushNotificationRoute(action: action, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
-         case let action as RemovePushNotificationRoute:
+        case let action as RemovePushNotificationRoute:
             next(action)
             unregisterRoutes(routeIds: action.routes, state: state)
-         case let action as RemoveAllPushNotificationRoutes:
+        case let action as RemoveAllPushNotificationRoutes:
             next(action)
             unregisterRoutes(routeIds: nil, state: state)
         case let action as UserWantsToSubscribeToSpecialAnnouncements:
@@ -139,7 +139,7 @@ class PushNotificationMiddleware {
                         }
                         UIApplication.shared.registerForRemoteNotifications()
                         if let actionOnSuccess = actionOnSuccess as? AddPushNotificationRoute {
-                            subscribeWithoutThrows(routeId: action.route.routeId)
+                            subscribeWithoutThrows(routeId: actionOnSuccess.route.routeId)
                         }
                     } else {
                         dispatch(UpdateSystemAuthorizationStatusForPushNotifications(authorizationStatus: .denied))
@@ -151,48 +151,42 @@ class PushNotificationMiddleware {
             }
         }
     }
-    
-    static func unregisterRoutes(routeIds: [PushNotificationRoute]?, state: PushNotificationPreferenceState){
-        var routes = routeIds ?? state.routeIds
+
+    static func unregisterRoutes(routeIds: [PushNotificationRoute]?, state: PushNotificationPreferenceState) {
+        let routes = routeIds ?? state.routeIds
         for route in routes {
             unSubscribeWithoutThrows(routeId: route.routeId)
         }
     }
-    
-    static func subscribeWithoutThrows(routeId: String){
+
+    static func subscribeWithoutThrows(routeId: String) {
         do {
-            try NotificationManager.subscribe(routeId: routeId)
+            try NotificationsManager.subscribe(routeId: routeId)
 
         } catch {
-            print ( error.localizedDescription)
+            print(error.localizedDescription)
         }
-    
     }
 
-    static func unSubscribeWithoutThrows(routeId: String){
+    static func unSubscribeWithoutThrows(routeId: String) {
         do {
-            try NotificationManager.unsubscribe(routeId: routeId)
+            try NotificationsManager.unsubscribe(routeId: routeId)
 
         } catch {
-            print ( error.localizedDescription)
+            print(error.localizedDescription)
         }
-
     }
-    
-     static func subscribeToSpecialAnnouncements(boolValue: Bool){
+
+    static func subscribeToSpecialAnnouncements(boolValue isOn: Bool) {
         do {
             if isOn {
-            try NotificationManager.subscribeToSpecialAnnouncements()
+                try NotificationsManager.subscribeToSpecialAnnouncements()
             } else {
-                 try NotificationManager.unSubscribeToSpecialAnnouncements()
+                try NotificationsManager.unSubscribeToSpecialAnnouncements()
             }
 
         } catch {
-            print ( error.localizedDescription)
+            print(error.localizedDescription)
         }
-
     }
-    
-    
-
 }
