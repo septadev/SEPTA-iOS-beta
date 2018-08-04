@@ -16,6 +16,9 @@ let loggingMiddleware: Middleware<AppState> = { _, _ in { next in
             if let action = action as? NavigationAction {
                 Answers.logCustomEvent(withName: action.description, customAttributes: nil)
             }
+            if let action = action as? UserPreferencesAction {
+                Answers.logCustomEvent(withName: action.description, customAttributes: nil)
+            }
             CLSLogv(action.description, getVaList([]))
         }
 
