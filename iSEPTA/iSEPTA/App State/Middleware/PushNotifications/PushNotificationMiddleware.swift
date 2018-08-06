@@ -74,7 +74,7 @@ class PushNotificationMiddleware {
         switch authorizationStatus {
         case .authorized:
             subscribeWithoutThrows(routeId: action.route.routeId)
-
+            dispatch(UserWantsToSubscribeToPushNotifications(viewController: nil, boolValue: true))
         case .denied:
             UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: action.viewController, completion: {
                 dispatch(RemovePushNotificationRoute(routes: [action.route], viewController: action.viewController))
@@ -108,6 +108,9 @@ class PushNotificationMiddleware {
         } else {
             if let _ = action as? UserWantsToSubscribeToPushNotifications {
                 UIApplication.shared.unregisterForRemoteNotifications()
+                dispatch(RemoveAllPushNotificationRoutes())
+                dispatch(UserWantsToSubscribeToSpecialAnnouncements(viewController: nil, boolValue: false))
+                dispatch(UserWantsToSubscribeToOverideDoNotDisturb(viewController: nil, boolValue: false))
             }
         }
     }
