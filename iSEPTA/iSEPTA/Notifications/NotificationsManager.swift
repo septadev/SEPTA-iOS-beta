@@ -9,6 +9,7 @@
 import Firebase
 import FirebaseMessaging
 import Foundation
+import SeptaSchedule
 import UserNotifications
 
 struct NotificationsManager {
@@ -65,22 +66,56 @@ struct NotificationsManager {
 
         guard let type = payload.type,
             let msg = payload.message,
-            let expireDate = payload.expires else { return }
+            let expireDate = payload.expires,
+            let notificationPreference = decodeUserPushNotificationPreference() else { return }
 
         if expireDate < Date() {
+            // Notification has expired, don't show
             return
         }
 
-        var routeId = ""
-        if type != .specialAnnouncement {
-            if payload.routeId == nil {
-                return
-            } else {
-                routeId = payload.routeId!
+        if type == .specialAnnouncement {
+            if notificationPreference.userWantsToReceiveSpecialAnnoucements {
+                let title = buildTitle(for: .specialAnnouncement, routeId: "")
+                displayNotification(title: title, message: msg)
             }
+            return
         }
-        let title = buildTitle(for: type, routeId: routeId)
-        displayNotification(title: title, message: msg)
+
+        // For notificatoins that are not Special Announcements, route ID and route type are required
+        guard let routeId = payload.routeId,
+            let routeType = payload.routeType else { return }
+
+        let transitMode = transitModeFromRouteType(routeType: routeType)
+        if notificationPreference.userShouldReceiveNotification(atDate: Date(), routeId: routeId, transitMode: transitMode) {
+            let title = buildTitle(for: type, routeId: routeId)
+            displayNotification(title: title, message: msg)
+        }
+    }
+
+    private static func transitModeFromRouteType(routeType: RouteType) -> TransitMode {
+        switch routeType {
+        case .bus:
+            return TransitMode.bus
+        case .rail:
+            return TransitMode.rail
+        case .trolley:
+            return TransitMode.trolley
+        case .subway:
+            return TransitMode.subway
+        case .nhsl:
+            return TransitMode.nhsl
+        }
+    }
+
+    private static func decodeUserPushNotificationPreference() -> PushNotificationPreferenceState? {
+        let defaults = UserDefaults.standard
+        let preferenceKey = UserPreferencesKeys.pushNotificationPreferenceState.rawValue
+        if let data = defaults.data(forKey: preferenceKey),
+            let jsonData = try? JSONDecoder().decode(PushNotificationPreferenceState.self, from: data) {
+            return jsonData
+        }
+        return nil
     }
 
     private static func displayNotification(title: String, message: String) {
