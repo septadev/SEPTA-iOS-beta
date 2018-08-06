@@ -86,14 +86,14 @@ extension AppDelegate: CrashlyticsDelegate {
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
-    func application(_: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler _: @escaping (UIBackgroundFetchResult) -> Void) {
+    func application(_: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         NotificationsManager.handleRemoteNotification(info: userInfo)
+        completionHandler(.newData)
     }
 }
 
 extension AppDelegate: MessagingDelegate {
     func messaging(_: Messaging, didReceiveRegistrationToken fcmToken: String) {
         UserDefaults.standard.setValue(fcmToken, forKey: NotificationsManager.fcmTokenKey)
-//        try! NotificationsManager.subscribeToSpecialAnnouncements()
     }
 }
