@@ -68,6 +68,7 @@ class TimeframeGroupView: UIView, StoreSubscriber, DeleteTimeFrameDelegate {
         stackView.clearSubviews()
         arrangeViewsBasedOnTimeWindowsCount(count: state)
         if state == 2 {
+            timeFrame2.configureSubscriptions(index: 1)
             timeFrame2.subscribe()
             timeFrame1.closeTimeFrameButton.isHidden = false
         } else {

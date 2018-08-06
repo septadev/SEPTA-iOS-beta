@@ -168,10 +168,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     override func viewDidLayoutSubviews() {
-        if !septaAlertsViewController.hasAlerts {
-            scheduleTypeTopWhenAlerts.isActive = false
-            scheduleTypeTopWhenNoAlerts.isActive = true
-        }
+        super.viewDidLayoutSubviews()
     }
 
     func configureSegementedControl() {
