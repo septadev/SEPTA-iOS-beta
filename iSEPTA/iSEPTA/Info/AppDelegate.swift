@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().delegate = self
         NotificationsManager.configure()
         UNUserNotificationCenter.current().delegate = self
-
+        updateCurrentPushNotificationAuthorizationStatus()
         return true
     }
 
@@ -55,9 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         databaseUpdateManager.appLaunched(coldStart: false)
         let inAppReview = InAppReview()
         inAppReview.appLaunched()
-    }
 
-    func applicationDidBecomeActive(_: UIApplication) {
         let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: false)
         store.dispatch(action)
 
