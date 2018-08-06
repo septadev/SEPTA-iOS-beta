@@ -64,32 +64,32 @@ struct NotificationsManager {
     static func handleRemoteNotification(info: [AnyHashable: Any]) {
         let payload = SeptaNotification(payload: info)
 
-        guard let type = payload.type,
+        guard let notificationType = payload.type,
             let msg = payload.message,
             let expireDate = payload.expires,
             let notificationPreference = decodeUserPushNotificationPreference() else { return }
 
-        if expireDate < Date() {
-            // Notification has expired, don't show
-            return
-        }
-
-        if type == .specialAnnouncement {
+        if notificationType == .specialAnnouncement {
             if notificationPreference.userWantsToReceiveSpecialAnnoucements {
                 let title = buildTitle(for: .specialAnnouncement, routeId: "")
                 displayNotification(title: title, message: msg)
             }
-            return
-        }
+        } else {
+            // For notifications that are not Special Announcements, route ID and route type are required
+            guard let routeId = payload.routeId,
+                let routeType = payload.routeType else { return }
 
-        // For notificatoins that are not Special Announcements, route ID and route type are required
-        guard let routeId = payload.routeId,
-            let routeType = payload.routeType else { return }
+            // We only pay attention to expiration date for rail delays
+            if routeType == .rail && notificationType == .delay && expireDate < Date() {
+                // Notification has expired, don't show
+                return
+            }
 
-        let transitMode = transitModeFromRouteType(routeType: routeType)
-        if notificationPreference.userShouldReceiveNotification(atDate: Date(), routeId: routeId, transitMode: transitMode) {
-            let title = buildTitle(for: type, routeId: routeId)
-            displayNotification(title: title, message: msg)
+            let mode = transitModeFromRouteType(routeType: routeType)
+            if notificationPreference.userShouldReceiveNotification(atDate: Date(), routeId: routeId, transitMode: mode) {
+                let title = buildTitle(for: notificationType, routeId: routeId)
+                displayNotification(title: title, message: msg)
+            }
         }
     }
 
