@@ -38,14 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationsManager.configure()
         UNUserNotificationCenter.current().delegate = self
 
-        // TODO: Remove -------------------------------------------------------
-//        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-//        UNUserNotificationCenter.current().requestAuthorization(
-//            options: authOptions,
-//            completionHandler: { _, _ in })
-//        application.registerForRemoteNotifications()
-        // --------------------------------------------------------------------
-
         return true
     }
 

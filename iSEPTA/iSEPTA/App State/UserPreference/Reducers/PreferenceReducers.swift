@@ -136,7 +136,7 @@ struct UserPreferencesReducer {
 
     static func reduceInsertNewPushTimeframe(action _: InsertNewPushTimeframe, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
-        userPreferenceState.pushNotificationPreferenceState.notificationTimeWindows.append(NotificationTimeWindow.defaultValue2())
+        userPreferenceState.pushNotificationPreferenceState.notificationTimeWindows.append(NotificationTimeWindow.defaultAfternoonWindow())
         return userPreferenceState
     }
 
