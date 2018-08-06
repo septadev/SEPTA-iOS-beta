@@ -13,7 +13,7 @@ struct PushNotificationPreferenceState: Codable, Equatable {
     /// For example:  [[start: 360, end: 720], [start: 900, end: 960]] means
     /// that the user wants to receive notifications between 6 AM and 12 PM.
     /// and from 5 - 6 PM.
-    var notificationTimeWindows: [NotificationTimeWindow] = [NotificationTimeWindow.defaultValue()]
+    var notificationTimeWindows: [NotificationTimeWindow] = [NotificationTimeWindow.defaultMorningWindow()]
 
     /// An OptionSet that allows users to the days of the week on which they wish to receive notifications.
     var daysOfWeek: DaysOfWeekOptionSet = DaysOfWeekOptionSet.mondayThroughFriday()
