@@ -52,11 +52,7 @@ class AddEditView: UIView {
         button.setAttributedTitle(attributedText, for: .normal)
     }
     @IBAction func AddButtonTapped(_: Any) {
-        let navigationState = NavigationStackState(viewControllers: [.alertsViewController], modalViewController: nil)
-        let navigationAction = InitializeNavigationState(navigationController: .alerts, navigationStackState: navigationState, description: "Initializing state")
-        store.dispatch(navigationAction)
-
-        let action = SwitchTabs(activeNavigationController: .alerts, description: "Adding a route to push notifications")
+        let action = SwitchTabs(activeNavigationController: .alerts, description: "Switching over to Alerts View Controller")
         store.dispatch(action)
     }
 
