@@ -29,10 +29,7 @@ class PushNotificationMiddleware {
             next(action)
             reduceUpdateSystemAuthorizationStatusForPushNotifications(action: action, state: state, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
         case let action as AddPushNotificationRoute:
-            next(action)
-            reduceAddPushNotificationRoute(action: action, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
-        case let action as AddPushNotificationRoute:
-            next(action)
+
             reduceAddPushNotificationRoute(action: action, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
         case let action as RemovePushNotificationRoute:
             next(action)
@@ -43,6 +40,11 @@ class PushNotificationMiddleware {
         case let action as UserWantsToSubscribeToSpecialAnnouncements:
             next(action)
             subscribeToSpecialAnnouncements(boolValue: action.boolValue)
+            reduceAddPushNotificationFeature(action: action, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
+        case let action as UserWantsToSubscribeToOverideDoNotDisturb:
+            next(action)
+            subscribeToDoNotDisturb(boolValue: action.boolValue)
+            reduceAddPushNotificationFeature(action: action, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
         case let action as ToggleSwitchAction:
             next(action)
             reduceAddPushNotificationFeature(action: action, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
@@ -74,8 +76,10 @@ class PushNotificationMiddleware {
         switch authorizationStatus {
         case .authorized:
             subscribeWithoutThrows(routeId: action.route.routeId)
+            next(action)
             dispatch(UserWantsToSubscribeToPushNotifications(viewController: nil, boolValue: true))
         case .denied:
+
             UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: action.viewController, completion: {
                 dispatch(RemovePushNotificationRoute(routes: [action.route], viewController: action.viewController))
             })
@@ -90,7 +94,7 @@ class PushNotificationMiddleware {
         var reversedAction = action
         reversedAction.boolValue = !action.boolValue
 
-        if action.boolValue {
+        if action.boolValue { // Toggle switch turned on
             switch authorizationStatus {
             case .authorized:
                 break // No need to do anything, the action has already been allowed through
@@ -105,7 +109,7 @@ class PushNotificationMiddleware {
                 requestAuthorization(actionOnSuccess: nil, actionOnFail: reversedAction, dispatch: dispatch, next: next)
             }
 
-        } else {
+        } else { // Toggle switch turned off
             if let _ = action as? UserWantsToSubscribeToPushNotifications {
                 UIApplication.shared.unregisterForRemoteNotifications()
                 dispatch(RemoveAllPushNotificationRoutes())
@@ -191,5 +195,8 @@ class PushNotificationMiddleware {
         } catch {
             print(error.localizedDescription)
         }
+    }
+
+    static func subscribeToDoNotDisturb(boolValue _: Bool) {
     }
 }

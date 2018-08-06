@@ -106,4 +106,8 @@ class ManagePushNotificationsViewController: UITableViewController, Identifiable
         guard let viewModel = viewModel else { return }
         viewModel.didSelectRowAtIndexPath(indexPath: indexPath)
     }
+
+    override func willMove(toParentViewController parent: UIViewController?) {
+        backButtonPopped(toParentViewController: parent)
+    }
 }

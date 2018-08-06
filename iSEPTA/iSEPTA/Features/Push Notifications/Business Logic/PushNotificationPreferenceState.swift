@@ -42,7 +42,7 @@ struct PushNotificationPreferenceState: Codable, Equatable {
     func userShouldReceiveNotification(atDate date: Date, routeId: String, transitMode: TransitMode) -> Bool {
         let timeWindowsMatches = notificationTimeWindows.map { $0.dateFitsInRange(date: date) }
         return
-            routeIds.filter({ $0.isEnabled && $0.routeId == routeId && $0.transitMode == transitMode}).count == 1 &&
+            routeIds.filter({ $0.isEnabled && $0.routeId == routeId && $0.transitMode == transitMode }).count == 1 &&
             daysOfWeek.matchesDate(date) &&
             timeWindowsMatches.contains(true)
     }
