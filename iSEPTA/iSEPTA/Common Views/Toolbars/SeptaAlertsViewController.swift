@@ -158,7 +158,7 @@ class SeptaAlertsViewController: UIViewController, StoreSubscriber {
         }
 
         func newState(state: PushNotificationRoute?) {
-            uiSwitch.isOn = state != nil
+            uiSwitch.isOn = state?.isEnabled ?? false
         }
     }
 }

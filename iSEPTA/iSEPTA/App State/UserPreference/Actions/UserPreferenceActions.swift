@@ -43,10 +43,12 @@ struct UpdatePushNotificationPreferenceState: UserPreferencesAction {
 struct UserWantsToSubscribeToPushNotifications: UserPreferencesAction, PushNotificationAuthorizatonRequired, ToggleSwitchAction {
     let viewController: UIViewController?
     var boolValue: Bool = false
+    let alsoEnableRoutes: Bool
     let description = "Toggling Push Notification preference State"
-    init(viewController: UIViewController?, boolValue: Bool = false) {
+    init(viewController: UIViewController?, boolValue: Bool = false, alsoEnableRoutes: Bool = true) {
         self.viewController = viewController
         self.boolValue = boolValue
+        self.alsoEnableRoutes = alsoEnableRoutes
     }
 }
 

@@ -14,8 +14,6 @@ import UIKit
 class AlertDetailFooterView: UIView, StoreSubscriber {
     typealias StoreSubscriberStateType = [PushNotificationRoute]
 
-    var routeExistsInState = false
-
     var pushNotificationRoute: PushNotificationRoute? {
         didSet {
             store.subscribe(self) {
@@ -44,10 +42,8 @@ class AlertDetailFooterView: UIView, StoreSubscriber {
         if let routeIndex = state.indexOfRoute(route: route) {
             let route = state[routeIndex]
             pushNotificationToggleView.isOn = route.isEnabled
-            routeExistsInState = true
         } else {
             pushNotificationToggleView.isOn = false
-            routeExistsInState = false
         }
     }
 

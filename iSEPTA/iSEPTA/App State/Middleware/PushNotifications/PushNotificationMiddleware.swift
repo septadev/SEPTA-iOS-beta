@@ -75,7 +75,9 @@ class PushNotificationMiddleware {
             switch authorizationStatus {
             case .authorized:
                 UIApplication.shared.registerForRemoteNotifications()
-                dispatch(ToggleAllPushNotificationRoutes(boolValue: true))
+                if action.alsoEnableRoutes {
+                    dispatch(ToggleAllPushNotificationRoutes(boolValue: true))
+                }
                 dispatch(UserWantsToSubscribeToSpecialAnnouncements(viewController: action.viewController, boolValue: true, sender: "reduceSubscribeToPushNotifications"))
             case .denied:
                 UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: action.viewController, completion: {
@@ -166,8 +168,8 @@ class PushNotificationMiddleware {
         switch authorizationStatus {
         case .authorized:
             updateRouteSubscription(route: action.route)
-            if !state.userWantsToEnablePushNotifications {
-                dispatch(UserWantsToSubscribeToPushNotifications(viewController: nil, boolValue: true))
+            if action.route.isEnabled && !state.userWantsToEnablePushNotifications {
+                UIAlert.presentEnableAllRoutes(viewController: action.viewController, pushNotificationRoute: action.route)
             }
         case .denied:
             UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: action.viewController, completion: {
