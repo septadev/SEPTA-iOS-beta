@@ -46,12 +46,13 @@ class NextToArriveMiddlewareScheduleStateBuilder {
         let switchTabsAction = SwitchTabs(activeNavigationController: .alerts, description: "Switching Tabs to Alert details after importing schedule state")
         store.dispatch(switchTabsAction)
 
-        let navigationStackState = buildNavigationStackState(viewControllers: [.alertsViewController, .alertDetailViewController])
-        let viewStackAction = InitializeNavigationState(navigationController: .alerts, navigationStackState: navigationStackState, description: "Setting Navigation Stack to show alert details")
-        store.dispatch(viewStackAction)
+//        let navigationStackState = buildNavigationStackState(viewControllers: [.alertsViewController, .alertDetailViewController])
+        //: BroskiDo
+//        let viewStackAction = InitializeNavigationState(navigationController: .alerts, navigationStackState: navigationStackState, description: "Setting Navigation Stack to show alert details")
+//        store.dispatch(viewStackAction)
     }
 
-    func buildNavigationStackState(viewControllers: [ViewController]) -> NavigationStackState {
-        return NavigationStackState(viewControllers: viewControllers, modalViewController: nil)
-    }
+//    func buildNavigationStackState(viewControllers: [ViewController]) -> NavigationStackState {
+//        return NavigationStackState(viewControllers: viewControllers, modalViewController: nil)
+//    }
 }

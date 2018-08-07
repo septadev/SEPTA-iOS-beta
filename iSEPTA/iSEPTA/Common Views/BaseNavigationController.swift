@@ -7,57 +7,54 @@
 //
 
 import Foundation
+import ReSwift
 import UIKit
 
-class BaseNavigationController: UINavigationController, UINavigationControllerDelegate {
-    var currentStackState = NavigationStackState()
+class BaseNavigationController: UINavigationController, UINavigationControllerDelegate, StoreSubscriber {
+    typealias StoreSubscriberStateType = NavigationStackState?
 
-    @IBOutlet var stateProvider: NavigationControllerBaseStateProvider!
-    lazy var slideInTransitioningDelegate = SlideInPresentationManager()
+    var transitionDelegate: UIViewControllerTransitioningDelegate?
 
-    func newStackState(_ newStackState: NavigationStackState) {
-        handleModalState(newModalViewController: newStackState.modalViewController)
-        handleViewControllerState(newControllers: newStackState.viewControllers)
-        currentStackState = newStackState
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        subscribe()
+
+        super.viewDidLoad()
+        navigationBar.backgroundColor = UIColor.clear
+        navigationBar.isTranslucent = true
+        navigationBar.barStyle = .black
+        navigationBar.shadowImage = UIImage()
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
 
-    func handleModalState(newModalViewController: ViewController?) {
-        let model = NavigationModalStateToNavigationEvent(currentModal: currentStackState.modalViewController, newModal: newModalViewController)
-        switch model.determineNecessaryStateAction() {
-        case .noActionNeeded:
-            break
-        case let .presentModal(viewController):
-            presentModal(viewController: viewController)
-        case .dismissModal:
-            dismissModal()
-        case let .dismissThenPresent(viewController):
-            dismissModal()
-            presentModal(viewController: viewController)
-        }
+    func subscribe() {
+        // handled by subclasses
     }
 
-    func handleViewControllerState(newControllers: [ViewController]) {
-        let displayControllers = mapDisplayControllers()
-        let model = NavigationViewControllerStateToNavigationEvent(currentControllers: currentStackState.viewControllers, newControllers: newControllers, displayControllers: displayControllers)
+    func newState(state: StoreSubscriberStateType) {
+        guard let navAction = state else { return }
+        presentModal(presentModal: navAction.presentModal)
+        dismissModal(dismissModal: navAction.dismissModal)
+        pushController(pushViewController: navAction.pushViewController)
+        popController(popViewController: navAction.popViewController)
+    }
 
-        switch model.determineNecessaryStateAction() {
-        case .noActionNeeded:
-            break
-        case let .rootViewController(viewController):
-            setRootViewController(viewController: viewController)
-        case let .push(viewController):
-            pushController(viewController: viewController)
-        case .pop:
-            popController()
-        case .systemPop:
-            break
-        case let .replaceViewStack(viewControllers):
-            replaceViewStack(viewControllers: viewControllers)
-        case let .appendToViewStack(viewControllers):
-            appendToViewStack(viewControllers: viewControllers)
-        case let .truncateViewStack(truncateLength):
-            truncateViewStack(truncateLength: truncateLength)
+    deinit {
+        store.unsubscribe(self)
+    }
+
+    func getCurrentModalState() -> ViewController? {
+        let presented = presentedViewController
+        guard let modal = presented as? IdentifiableController else { return nil }
+        return modal.viewController
+    }
+
+    func getCurrentViewControllerStack() -> [ViewController]? {
+        let identifiableControllers: [ViewController?] = viewControllers.map {
+            guard let identifiableController = $0 as? IdentifiableController else { return nil }
+            return identifiableController.viewController
         }
+        return identifiableControllers.compactMap { $0 }
     }
 
     func mapDisplayControllers() -> [ViewController] {
@@ -70,28 +67,36 @@ class BaseNavigationController: UINavigationController, UINavigationControllerDe
         viewControllers = [uiViewController]
     }
 
-    var transitionDelegate: UIViewControllerTransitioningDelegate?
-
-    func presentModal(viewController: ViewController) {
+    func presentModal(presentModal: PresentModal?) {
+        guard let presentModal = presentModal else { return }
+        let viewController = presentModal.viewController
         guard let transitionDelegate = viewController.transitioningDelegate() else { return }
         self.transitionDelegate = transitionDelegate
         let uiViewController = viewController.instantiateViewController()
         uiViewController.modalPresentationStyle = .custom
         uiViewController.transitioningDelegate = transitionDelegate
         present(uiViewController, animated: true)
+        store.dispatch(PresentModalHandled())
     }
 
-    func dismissModal() {
+    func dismissModal(dismissModal: DismissModal?) {
+        guard let _ = dismissModal else { return }
         dismiss(animated: true, completion: nil)
+        store.dispatch(DismissModalHandled())
     }
 
-    func pushController(viewController: ViewController) {
+    func pushController(pushViewController: PushViewController?) {
+        guard let pushViewController = pushViewController else { return }
+        let viewController = pushViewController.viewController
         let uiViewController = viewController.instantiateViewController()
-        pushViewController(uiViewController, animated: true)
+        super.pushViewController(uiViewController, animated: true)
+        store.dispatch(PushViewControllerHandled())
     }
 
-    func popController() {
-        popViewController(animated: true)
+    func popController(popViewController: PopViewController?) {
+        guard let _ = popViewController else { return }
+        super.popViewController(animated: true)
+        store.dispatch(PopViewControllerHandled())
     }
 
     func replaceViewStack(viewControllers: [ViewController]) {

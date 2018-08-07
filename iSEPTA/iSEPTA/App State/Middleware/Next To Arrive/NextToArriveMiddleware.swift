@@ -45,16 +45,18 @@ class NextToArriveMiddleware {
             description: "Copying Schedule Request from schedules to Next To Arrive")
         store.dispatch(copyScheduleRequest)
 
-        var navigationStackState = buildNavigationStackState(viewControllers: [.nextToArriveController])
-        var viewStackAction = InitializeNavigationState(navigationController: .nextToArrive, navigationStackState: navigationStackState, description: "Setting Navigation Stack State prior to moving from schedules to Next To Arrive")
-        store.dispatch(viewStackAction)
-
-        navigationStackState = buildNavigationStackState(viewControllers: [.nextToArriveController, .nextToArriveDetailController])
-        viewStackAction = InitializeNavigationState(navigationController: .nextToArrive, navigationStackState: navigationStackState, description: "Setting Navigation Stack State prior to moving from schedules to Next To Arrive")
-        store.dispatch(viewStackAction)
-
-        let switchTabsAction = SwitchTabs(activeNavigationController: .nextToArrive, description: "Switching Tabs to Next to Arrive From Schedules")
-        store.dispatch(switchTabsAction)
+//        var navigationStackState = buildNavigationStackState(viewControllers: [.nextToArriveController])
+//        //:BroskiDo
+        ////        var viewStackAction = InitializeNavigationState(navigationController: .nextToArrive, navigationStackState: navigationStackState, description: "Setting Navigation Stack State prior to moving from schedules to Next To Arrive")
+        ////        store.dispatch(viewStackAction)
+//
+//        navigationStackState = buildNavigationStackState(viewControllers: [.nextToArriveController, .nextToArriveDetailController])
+        ////        viewStackAction = InitializeNavigationState(navigationController: .nextToArrive, navigationStackState: navigationStackState, description: "Setting Navigation Stack State prior to moving from schedules to Next To Arrive")
+//        //:BroskiDo
+        ////        store.dispatch(viewStackAction)
+//
+//        let switchTabsAction = SwitchTabs(activeNavigationController: .nextToArrive, description: "Switching Tabs to Next to Arrive From Schedules")
+//        store.dispatch(switchTabsAction)
     }
 
     static func generateActionsToNavigateToSchedulesFromNextToArrive(action: NavigateToSchedulesFromNextToArrive) {
@@ -65,9 +67,10 @@ class NextToArriveMiddleware {
         let delayTime: Double = scheduleRequest.transitMode == .rail ? 2 : 0.5
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayTime) {
-            let navigationStackState = buildNavigationStackState(viewControllers: [.selectSchedules, .tripScheduleController])
-            let viewStackAction = InitializeNavigationState(navigationController: .schedules, navigationStackState: navigationStackState, description: "Setting Navigation Stack State prior to moving from Next To Arrive to Schedules")
-            store.dispatch(viewStackAction)
+//            let navigationStackState = buildNavigationStackState(viewControllers: [.selectSchedules, .tripScheduleController])
+            //: BroskiDo
+//            let viewStackAction = InitializeNavigationState(navigationController: .schedules, navigationStackState: navigationStackState, description: "Setting Navigation Stack State prior to moving from Next To Arrive to Schedules")
+//            store.dispatch(viewStackAction)
 
             let switchTabsAction = SwitchTabs(activeNavigationController: .schedules, description: "Switching Tabs to Next to Arrive From Schedules")
             store.dispatch(switchTabsAction)
@@ -78,9 +81,10 @@ class NextToArriveMiddleware {
         let builder = NextToArriveMiddlewareScheduleRequestBuilder.sharedInstance
         builder.copyScheduleRequestToSchedules(scheduleRequest: action.scheduleRequest)
 
-        let navigationStackState = buildNavigationStackState(viewControllers: [.selectSchedules, .tripScheduleController])
-        let viewStackAction = InitializeNavigationState(navigationController: .schedules, navigationStackState: navigationStackState, description: "Setting Navigation Stack State prior to moving from Next To Arrive to Schedules")
-        store.dispatch(viewStackAction)
+//        let navigationStackState = buildNavigationStackState(viewControllers: [.selectSchedules, .tripScheduleController])
+        //: BroskiDo
+//        let viewStackAction = InitializeNavigationState(navigationController: .schedules, navigationStackState: navigationStackState, description: "Setting Navigation Stack State prior to moving from Next To Arrive to Schedules")
+//        store.dispatch(viewStackAction)
 
         let switchTabsAction = SwitchTabs(activeNavigationController: .schedules, description: "Switching Tabs to Next to Arrive From Schedules")
         store.dispatch(switchTabsAction)
@@ -97,9 +101,10 @@ class NextToArriveMiddleware {
         )
         store.dispatch(copyScheduleState)
 
-        let navigationStackState = buildNavigationStackState(viewControllers: [.alertsViewController, .alertDetailViewController])
-        let viewStackAction = InitializeNavigationState(navigationController: .alerts, navigationStackState: navigationStackState, description: "Setting Navigation Stack State with imported schedule state")
-        store.dispatch(viewStackAction)
+//        let navigationStackState = buildNavigationStackState(viewControllers: [.alertsViewController, .alertDetailViewController])
+        //: BroskiDo
+//        let viewStackAction = InitializeNavigationState(navigationController: .alerts, navigationStackState: navigationStackState, description: "Setting Navigation Stack State with imported schedule state")
+//        store.dispatch(viewStackAction)
     }
 
     static func generateActionsToNavigateToAlertDetailsFromNextToArrive(action: NavigateToAlertDetailsFromNextToArrive) {
@@ -108,7 +113,8 @@ class NextToArriveMiddleware {
         scheduleStateBuilder.updateScheduleStateInAlerts(nextToArriveStop: action.nextToArriveStop, scheduleRequest: scheduleRequest)
     }
 
-    static func buildNavigationStackState(viewControllers: [ViewController]) -> NavigationStackState {
-        return NavigationStackState(viewControllers: viewControllers, modalViewController: nil)
-    }
+//    static func buildNavigationStackState(viewControllers: [ViewController]) -> NavigationStackState {
+//
+//      //  return NavigationStackState(viewControllers: viewControllers, modalViewController: nil)
+//    }
 }

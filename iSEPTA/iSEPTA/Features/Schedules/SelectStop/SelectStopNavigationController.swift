@@ -27,23 +27,25 @@ class SelectStopNavigationController: UINavigationController, IdentifiableContro
     }
 
     func initializeNavStackState() {
-        currentNavigationStackState = NavigationStackState(viewControllers: [.selectStopController], modalViewController: nil)
-        let action = InitializeNavigationState(navigationController: .selectStop, navigationStackState: currentNavigationStackState, description: "Initialing Select Stop nav state")
-        store.dispatch(action)
+        //: BroskiDo
+//        currentNavigationStackState = NavigationStackState(viewControllers: [.selectStopController], modalViewController: nil)
+//        let action = InitializeNavigationState(navigationController: .selectStop, navigationStackState: currentNavigationStackState, description: "Initialing Select Stop nav state")
+//        store.dispatch(action)
     }
 
     func newState(state: StoreSubscriberStateType) {
         guard let newState = state,
             let newStackState = newState[.selectStop], newStackState != lastStackState else { return }
-        let existingViewControllers = currentNavigationStackState.viewControllers
-        let newViewControllers = newStackState.viewControllers
-        if newViewControllers.count > existingViewControllers.count {
-            guard let nextViewController = newViewControllers.last else { return }
-            let viewController = myStoryboard.instantiateViewController(withIdentifier: nextViewController.rawValue)
-            pushViewController(viewController, animated: true)
-        } else {
-            popViewController(animated: true)
-        }
+        //: BroskiDo
+//        let existingViewControllers = currentNavigationStackState.viewControllers
+//        let newViewControllers = newStackState.viewControllers
+//        if newViewControllers.count > existingViewControllers.count {
+//            guard let nextViewController = newViewControllers.last else { return }
+//            let viewController = myStoryboard.instantiateViewController(withIdentifier: nextViewController.rawValue)
+//            pushViewController(viewController, animated: true)
+//        } else {
+//            popViewController(animated: true)
+//        }
 
         currentNavigationStackState = newStackState
     }

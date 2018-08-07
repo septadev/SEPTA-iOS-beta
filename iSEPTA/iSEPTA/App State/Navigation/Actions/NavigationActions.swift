@@ -6,50 +6,48 @@ import UIKit
 
 protocol NavigationAction: SeptaAction {}
 
-struct InitializeNavigationState: NavigationAction {
-    let navigationController: NavigationController
-    let navigationStackState: NavigationStackState
-    let description: String
-}
-
-struct TransitionView: NavigationAction {
-    let navigationController: NavigationController
-    let viewController: ViewController?
-    let viewTransitionType: ViewTransitionType
-    let description: String
-}
+// struct InitializeNavigationState: NavigationAction {
+//    let navigationController: NavigationController
+//    let navigationStackState: NavigationStackState
+//    let description: String
+// }
 
 struct SwitchTabs: NavigationAction {
     let activeNavigationController: NavigationController
     let description: String
 }
 
-struct DismissModal: NavigationAction {
+struct DismissModal: NavigationAction, Equatable {
     let description: String
 }
 
-struct PresentModal: NavigationAction {
+struct DismissModalHandled: NavigationAction, Equatable {
+    let description = "Navigation Controller Has Dismissed Modal"
+}
+
+struct PresentModal: NavigationAction, Equatable {
     let viewController: ViewController
     let description: String
 }
 
-struct PushViewController: NavigationAction {
+struct PresentModalHandled: NavigationAction, Equatable {
+    let description = "Navigation Controller Has Presented Modal"
+}
+
+struct PushViewController: NavigationAction, Equatable {
     let viewController: ViewController
     let description: String
 }
 
-struct PushNonActiveViewController: NavigationAction {
-    let navigationController: NavigationController
+struct PushViewControllerHandled: NavigationAction, Equatable {
+    let description = "Navigation Controller Has Pushed Controller"
+}
+
+struct PopViewController: NavigationAction, Equatable {
     let viewController: ViewController
     let description: String
 }
 
-// struct UserPoppedViewController: NavigationAction {
-//    let viewController: ViewController
-//    let description: String
-// }
-
-struct PopViewController: NavigationAction {
-    let viewController: ViewController
-    let description: String
+struct PopViewControllerHandled: NavigationAction, Equatable {
+    let description = "Navigation Controller Has Popped Controller"
 }

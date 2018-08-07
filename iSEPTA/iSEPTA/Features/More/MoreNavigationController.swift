@@ -16,17 +16,11 @@ class MoreNavigationController: BaseNavigationController, IdentifiableNavControl
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = SeptaColor.navBarBlue
-        initializeNavStackState()
-        let stateProvider = MoreNavigationControllerStateProvider()
-        stateProvider.navigationController = self
-        stateProvider.subscribe()
-        super.stateProvider = stateProvider
     }
 
-    func initializeNavStackState() {
-        currentStackState = NavigationStackState(viewControllers: [.moreViewController], modalViewController: nil)
-
-        let action = InitializeNavigationState(navigationController: .more, navigationStackState: currentStackState, description: "Initializing stack state for more")
-        store.dispatch(action)
+    override func subscribe() {
+        store.subscribe(self) {
+            $0.select { $0.navigationState.appStackState[.more] }
+        }
     }
 }

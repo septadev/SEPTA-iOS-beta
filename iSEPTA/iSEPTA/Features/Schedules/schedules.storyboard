@@ -244,7 +244,7 @@ TableViewWrapper</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaJ-Ig-ASV">
-                            <rect key="frame" x="207" y="10" width="33" height="27"/>
+                            <rect key="frame" x="207" y="10.5" width="33" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Reset">
                                 <color key="titleColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -1099,7 +1099,7 @@ TitleViewTop</string>
             </objects>
             <point key="canvasLocation" x="3407" y="681"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav Controller Scene-->
         <scene sceneID="83K-FD-2cf">
             <objects>
                 <navigationController title="Nav Controller Scene" id="Flo-rT-aez" customClass="SchedulesNavigationController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
@@ -1117,16 +1117,10 @@ TitleViewTop</string>
                         </connections>
                     </navigationBar>
                     <connections>
-                        <outlet property="stateProvider" destination="Z8d-WV-W5R" id="v9z-ff-7cP"/>
                         <segue destination="G8I-06-w6m" kind="relationship" relationship="rootViewController" id="ysr-1u-zxJ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZi-KV-b8v" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="Z8d-WV-W5R" userLabel="StateProvider" customClass="SchedulesNavigationControllerStateProvider" customModule="Septa" customModuleProvider="target">
-                    <connections>
-                        <outlet property="navigationController" destination="Flo-rT-aez" id="3fj-Lo-ZTw"/>
-                    </connections>
-                </customObject>
             </objects>
             <point key="canvasLocation" x="-1892" y="221"/>
         </scene>

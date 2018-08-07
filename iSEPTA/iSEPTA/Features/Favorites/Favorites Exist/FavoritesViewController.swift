@@ -46,13 +46,14 @@ class FavoritesViewController: UIViewController, IdentifiableController {
     }
 
     @objc func navigateToNextToArrive() {
-        let stackState = NavigationStackState(viewControllers: [.nextToArriveController], modalViewController: nil)
-
-        let viewStackAction = InitializeNavigationState(navigationController: .nextToArrive, navigationStackState: stackState, description: "Setting Navigation Stack State prior to moving from favorites to Next To Arrive")
-        store.dispatch(viewStackAction)
-
-        let action = SwitchTabs(activeNavigationController: .nextToArrive, description: "Jumping to Next To Arrive From Favorites")
-        store.dispatch(action)
+        //: BroskiDo
+//        let stackState = NavigationStackState(viewControllers: [.nextToArriveController], modalViewController: nil)
+//
+//        let viewStackAction = InitializeNavigationState(navigationController: .nextToArrive, navigationStackState: stackState, description: "Setting Navigation Stack State prior to moving from favorites to Next To Arrive")
+//        store.dispatch(viewStackAction)
+//
+//        let action = SwitchTabs(activeNavigationController: .nextToArrive, description: "Jumping to Next To Arrive From Favorites")
+//        store.dispatch(action)
     }
 
     @objc func toggleEditMode(sender: UIBarButtonItem) {

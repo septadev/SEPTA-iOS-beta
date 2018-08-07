@@ -13,13 +13,11 @@ class NextToArriveNavigationController: BaseNavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = SeptaColor.navBarBlue
-        initializeNavStackState()
     }
 
-    func initializeNavStackState() {
-        currentStackState = NavigationStackState(viewControllers: [.nextToArriveController], modalViewController: nil)
-
-        let action = InitializeNavigationState(navigationController: .nextToArrive, navigationStackState: currentStackState, description: "Initializing stack state for next to arrive")
-        store.dispatch(action)
+    override func subscribe() {
+        store.subscribe(self) {
+            $0.select { $0.navigationState.appStackState[.nextToArrive] }
+        }
     }
 }
