@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SeptaNotification {
+struct SeptaNotification: Codable, Equatable {
     let type: NotificationType?
     let routeId: String?
     let message: String?
@@ -47,14 +47,14 @@ struct SeptaNotification {
     }
 }
 
-enum NotificationType: String {
+enum NotificationType: String, Codable, Equatable {
     case specialAnnouncement = "SPECIAL_ANNOUNCEMENT"
     case detour = "DETOUR"
     case alert = "ALERT"
     case delay = "DELAY"
 }
 
-enum RouteType: String {
+enum RouteType: String, Codable, Equatable {
     case rail = "RAIL"
     case bus = "BUS"
     case trolley = "TROLLEY"
@@ -62,7 +62,7 @@ enum RouteType: String {
     case nhsl = "NHSL"
 }
 
-enum DelayType: String {
+enum DelayType: String, Codable, Equatable {
     case actual = "ACTUAL"
     case estimated = "ESTIMATED"
 }

@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Crashlytics.sharedInstance().delegate = self
         Fabric.with([Crashlytics.self, Answers.self])
 
@@ -38,6 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationsManager.configure()
         UNUserNotificationCenter.current().delegate = self
         updateCurrentPushNotificationAuthorizationStatus()
+
+        if let userInfo = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
+            processNotificationTap(userInfo: userInfo)
+        }
+
         return true
     }
 
@@ -76,6 +81,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
     }
+
+    private func processNotificationTap(userInfo: [AnyHashable: Any]) {
+        let payload = SeptaNotification(payload: userInfo)
+        if let notificationType = payload.type, notificationType == .delay {
+            let action = DelayNotificationTapped(payload: payload, description: "User tapped on rail delay notification")
+            store.dispatch(action)
+        }
+    }
 }
 
 extension AppDelegate: CrashlyticsDelegate {
@@ -89,6 +102,17 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func application(_: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         NotificationsManager.handleRemoteNotification(info: userInfo)
         completionHandler(.newData)
+    }
+
+    func userNotificationCenter(_: UNUserNotificationCenter, willPresent _: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        // Show alert if app is in the foreground
+        completionHandler(.alert)
+    }
+
+    func userNotificationCenter(_: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        processNotificationTap(userInfo: userInfo)
+        completionHandler()
     }
 }
 
