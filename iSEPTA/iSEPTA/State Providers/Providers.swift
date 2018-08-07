@@ -22,6 +22,7 @@ class StateProviders {
     let transitViewVehicleLocationDataProvider: TransitViewVehicleLocationDataProvider
     let databaseUpdateProvider: DatabaseUpdateProvider
     let databaseDownloadProvider: DatabaseDownloadProvider
+    let notificationProvider: NotificationProvider
 
     init(preferenceProvider: UserPreferencesProviderProtocol = UserPreferencesProvider.sharedInstance,
          scheduleProvider: ScheduleDataProvider = ScheduleDataProvider.sharedInstance,
@@ -39,7 +40,8 @@ class StateProviders {
          transitViewDataProvider: TransitViewDataProvider = TransitViewDataProvider.sharedInstance,
          transitViewVehicleLocationDataProvider: TransitViewVehicleLocationDataProvider = TransitViewVehicleLocationDataProvider.sharedInstance,
          databaseUpdateProvider: DatabaseUpdateProvider = DatabaseUpdateProvider.sharedInstance,
-         databaseDownloadProvider: DatabaseDownloadProvider = DatabaseDownloadProvider.sharedInstance
+         databaseDownloadProvider: DatabaseDownloadProvider = DatabaseDownloadProvider.sharedInstance,
+         notificationProvider: NotificationProvider = NotificationProvider.sharedInstance
     ) {
         self.preferenceProvider = preferenceProvider
         self.scheduleProvider = scheduleProvider
@@ -58,5 +60,6 @@ class StateProviders {
         self.transitViewVehicleLocationDataProvider = transitViewVehicleLocationDataProvider
         self.databaseUpdateProvider = databaseUpdateProvider
         self.databaseDownloadProvider = databaseDownloadProvider
+        self.notificationProvider = notificationProvider
     }
 }

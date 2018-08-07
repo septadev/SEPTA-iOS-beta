@@ -50,6 +50,10 @@
 		0E8E610720F538F500AB08FE /* TransitViewMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E610620F538F500AB08FE /* TransitViewMapViewController.swift */; };
 		0E8E610920F53C4200AB08FE /* TransitViewOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E610820F53C4200AB08FE /* TransitViewOverviewViewController.swift */; };
 		0EA1FF9020DA9E37007A9A91 /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA1FF8F20DA9E37007A9A91 /* UIAlertControllerExtensions.swift */; };
+		0EAE68C1211A1B910092C104 /* NotificationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE68C0211A1B910092C104 /* NotificationState.swift */; };
+		0EAE68C3211A1CE30092C104 /* NotificationActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE68C2211A1CE30092C104 /* NotificationActions.swift */; };
+		0EAE68C5211A1D320092C104 /* NotificationReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE68C4211A1D320092C104 /* NotificationReducer.swift */; };
+		0EAE68C7211A201B0092C104 /* NotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE68C6211A201B0092C104 /* NotificationProvider.swift */; };
 		0EB1942221090AA800077C99 /* FavoriteTransitViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1942021090AA800077C99 /* FavoriteTransitViewCell.swift */; };
 		0EB1942321090AA800077C99 /* FavoriteTransitViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EB1942121090AA800077C99 /* FavoriteTransitViewCell.xib */; };
 		0EE428D42114D4C500EBF6FE /* SeptaNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE428D32114D4C500EBF6FE /* SeptaNotification.swift */; };
@@ -797,6 +801,10 @@
 		0E8E610620F538F500AB08FE /* TransitViewMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewMapViewController.swift; sourceTree = "<group>"; };
 		0E8E610820F53C4200AB08FE /* TransitViewOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitViewOverviewViewController.swift; sourceTree = "<group>"; };
 		0EA1FF8F20DA9E37007A9A91 /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtensions.swift; sourceTree = "<group>"; };
+		0EAE68C0211A1B910092C104 /* NotificationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationState.swift; sourceTree = "<group>"; };
+		0EAE68C2211A1CE30092C104 /* NotificationActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationActions.swift; sourceTree = "<group>"; };
+		0EAE68C4211A1D320092C104 /* NotificationReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationReducer.swift; sourceTree = "<group>"; };
+		0EAE68C6211A201B0092C104 /* NotificationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationProvider.swift; sourceTree = "<group>"; };
 		0EB1942021090AA800077C99 /* FavoriteTransitViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTransitViewCell.swift; sourceTree = "<group>"; };
 		0EB1942121090AA800077C99 /* FavoriteTransitViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTransitViewCell.xib; sourceTree = "<group>"; };
 		0EE428D32114D4C500EBF6FE /* SeptaNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaNotification.swift; sourceTree = "<group>"; };
@@ -1588,6 +1596,16 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		0EAE68BD211A1B6D0092C104 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				0EAE68C0211A1B910092C104 /* NotificationState.swift */,
+				0EAE68C2211A1CE30092C104 /* NotificationActions.swift */,
+				0EAE68C4211A1D320092C104 /* NotificationReducer.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		0EE428D02114D41E00EBF6FE /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -1752,6 +1770,7 @@
 				58490E431F55F8F0007DBCA1 /* Alerts */,
 				0E8E60D520EFBCD100AB08FE /* TransitView */,
 				58DB10EF1F3B889700191AED /* Main */,
+				0EAE68BD211A1B6D0092C104 /* Notification */,
 				58C2A05F1F38955E00F0D6CA /* Schedule */,
 				58C2A05A1F3892E300F0D6CA /* Navigation */,
 				588F27F11F39DDBF00D62425 /* UserPreference */,
@@ -2093,6 +2112,7 @@
 				6789B78B1F8FF728008C6DCA /* TripDetailStateProvider.swift */,
 				0E8E60E220EFF37D00AB08FE /* TransitViewDataProvider.swift */,
 				0E2DCADA20F688200086F400 /* TransitViewVehicleLocationDataProvider.swift */,
+				0EAE68C6211A201B0092C104 /* NotificationProvider.swift */,
 			);
 			path = "State Providers";
 			sourceTree = "<group>";
@@ -3725,6 +3745,7 @@
 				5803C367210A4FF800BFAE7A /* ManagePushNotificationsViewController.swift in Sources */,
 				0E2DCAD720F672BD0086F400 /* TransitViewVehicleAnnotation.swift in Sources */,
 				582F4ED31F33B1120062A546 /* SelectStopRow.swift in Sources */,
+				0EAE68C7211A201B0092C104 /* NotificationProvider.swift in Sources */,
 				582F4EBC1F33B1120062A546 /* DateFormatters.swift in Sources */,
 				58088E1B210F80B60068E771 /* NSRange+Util.swift in Sources */,
 				5893971B1F7E6A5900F3D2F8 /* MoreActions.swift in Sources */,
@@ -3967,6 +3988,7 @@
 				678D26CA1F5CC83900D140CC /* FavoritesProvider.swift in Sources */,
 				67365ADF1F76932600FC86CB /* NextToArriveMiddlewareActions.swift in Sources */,
 				0E4328E820D060DF00FBD805 /* DatabaseDownloadProvider.swift in Sources */,
+				0EAE68C3211A1CE30092C104 /* NotificationActions.swift in Sources */,
 				589BCC321F3D5068002FAEDE /* SchedulesPresentationController.swift in Sources */,
 				586DFEC51F505482004BC972 /* CurvedTopView.swift in Sources */,
 				580A355B1F6A0E84000FCA82 /* FavoritesNavigationController.swift in Sources */,
@@ -3995,6 +4017,7 @@
 				5803C369210A531100BFAE7A /* ManagePushNotificationsViewModel.swift in Sources */,
 				5801280E1F6BF2DF006B6DB8 /* NoFavoriteViewController.swift in Sources */,
 				58FBBFA41F65821000B7A4DA /* DatabaseReducer.swift in Sources */,
+				0EAE68C1211A1B910092C104 /* NotificationState.swift in Sources */,
 				58290E411F372B51000CCF3C /* AppState.swift in Sources */,
 				676B7D9D1F7D186B0052F016 /* MoreNavigationController.swift in Sources */,
 				58FB264A1F6EC42F00F17048 /* AlertProviders.swift in Sources */,
@@ -4118,6 +4141,7 @@
 				676354FD1F5E255A00CA7EAB /* FilterableRoute.swift in Sources */,
 				58B892171F38F7E700BFFEFA /* Strings.swift in Sources */,
 				0E313BB020BEFCB7002EFD34 /* DatabaseUpdater.swift in Sources */,
+				0EAE68C5211A1D320092C104 /* NotificationReducer.swift in Sources */,
 				67EF6D631FE2DBAA00245E0F /* HolidayScheduleViewController.swift in Sources */,
 				58EB8D151F5D7CD20028A487 /* BaseNavigationController.swift in Sources */,
 				589A89D71F50BB73007329DB /* SelectStopCell.swift in Sources */,
