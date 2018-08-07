@@ -162,11 +162,6 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         septaAlertsViewController.setTransitMode(transitMode, route: route)
     }
 
-    override func didMove(toParentViewController parent: UIViewController?) {
-        super.didMove(toParentViewController: parent)
-        backButtonPopped(toParentViewController: parent)
-    }
-
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }

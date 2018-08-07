@@ -50,11 +50,6 @@ class ManagePushNotificationsViewController: UITableViewController, Identifiable
         store.unsubscribe(self)
     }
 
-    override func didMove(toParentViewController parent: UIViewController?) {
-        super.didMove(toParentViewController: parent)
-        backButtonPopped(toParentViewController: parent)
-    }
-
     func subscribe() {
         store.subscribe(self) {
             $0.select { $0.preferenceState.pushNotificationPreferenceState }
@@ -105,9 +100,5 @@ class ManagePushNotificationsViewController: UITableViewController, Identifiable
     override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let viewModel = viewModel else { return }
         viewModel.didSelectRowAtIndexPath(indexPath: indexPath)
-    }
-
-    override func willMove(toParentViewController parent: UIViewController?) {
-        backButtonPopped(toParentViewController: parent)
     }
 }

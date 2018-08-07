@@ -48,9 +48,4 @@ class WebViewController: UIViewController, IdentifiableController, WKNavigationD
     func webView(_: WKWebView, didFinish _: WKNavigation!) {
         activityIndicator.stopAnimating()
     }
-
-    override func didMove(toParentViewController parent: UIViewController?) {
-        super.didMove(toParentViewController: parent)
-        backButtonPopped(toParentViewController: parent)
-    }
 }

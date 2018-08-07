@@ -25,9 +25,4 @@ class TripDetailViewController: UIViewController, IdentifiableController {
         let action = ClearTripDetails()
         store.dispatch(action)
     }
-
-    override func didMove(toParentViewController parent: UIViewController?) {
-        super.didMove(toParentViewController: parent)
-        backButtonPopped(toParentViewController: parent)
-    }
 }

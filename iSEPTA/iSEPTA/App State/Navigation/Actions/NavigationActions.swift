@@ -44,10 +44,10 @@ struct PushNonActiveViewController: NavigationAction {
     let description: String
 }
 
-struct UserPoppedViewController: NavigationAction {
-    let viewController: ViewController
-    let description: String
-}
+// struct UserPoppedViewController: NavigationAction {
+//    let viewController: ViewController
+//    let description: String
+// }
 
 struct PopViewController: NavigationAction {
     let viewController: ViewController

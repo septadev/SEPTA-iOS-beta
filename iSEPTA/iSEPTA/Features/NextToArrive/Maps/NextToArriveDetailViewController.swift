@@ -103,11 +103,6 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
         nextToArriveFavoritesController.setUpTargets()
     }
 
-    override func didMove(toParentViewController parent: UIViewController?) {
-        super.didMove(toParentViewController: parent)
-        backButtonPopped(toParentViewController: parent)
-    }
-
     @objc func toggleMapHeight() {
         constraintsToggle = constraintsToggle.toggleConstraints(inView: view)
         gestureRecognizerToggle = gestureRecognizerToggle.toggleRecognizers()

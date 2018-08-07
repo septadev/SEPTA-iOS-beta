@@ -28,8 +28,6 @@ struct NavigationReducer {
             navigationState = reduceDismissModalAction(action: action, state: state)
         case let action as PushViewController:
             navigationState = reducePushViewControllerAction(action: action, state: state)
-        case let action as UserPoppedViewController:
-            navigationState = reduceUserPoppedViewControllerAction(action: action, state: state)
         case let action as PopViewController:
             navigationState = reducePopViewController(action: action, state: state)
         case let action as PushNonActiveViewController:
@@ -86,20 +84,6 @@ struct NavigationReducer {
         var navigationStackState = appStackState[navigationController] ?? NavigationStackState()
         var viewControllers = navigationStackState.viewControllers
         viewControllers.append(action.viewController)
-        navigationStackState = NavigationStackState(viewControllers: viewControllers, modalViewController: nil)
-        appStackState[navigationController] = navigationStackState
-        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController)
-    }
-
-    static func reduceUserPoppedViewControllerAction(action: UserPoppedViewController, state: NavigationState) -> NavigationState {
-        var appStackState = state.appStackState
-        let navigationController = store.state.navigationState.activeNavigationController
-        var navigationStackState = appStackState[navigationController] ?? NavigationStackState()
-        var viewControllers = navigationStackState.viewControllers
-        if let lastViewController = viewControllers.last, lastViewController == action.viewController {
-            viewControllers.removeLast()
-        }
-
         navigationStackState = NavigationStackState(viewControllers: viewControllers, modalViewController: nil)
         appStackState[navigationController] = navigationStackState
         return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController)
