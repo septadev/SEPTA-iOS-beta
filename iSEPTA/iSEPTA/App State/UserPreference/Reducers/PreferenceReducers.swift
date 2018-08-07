@@ -50,8 +50,8 @@ struct UserPreferencesReducer {
             newPref = reduceRemovePushNotificationRoute(action: action, state: state)
         case let action as UpdatePushNotificationRoute:
             newPref = reduceUpdatePushNotificationRoute(action: action, state: state)
-        case let action as RemoveAllPushNotificationRoutes:
-            newPref = reduceRemoveAllPushNotificationRoutes(action: action, state: state)
+        case let action as ToggleAllPushNotificationRoutes:
+            newPref = reduceToggleAllPushNotificationRoutes(action: action, state: state)
         default:
             fatalError("You passed in an action for which there is no reducer")
         }
@@ -173,14 +173,21 @@ struct UserPreferencesReducer {
         var routeIds = userPreferenceState.pushNotificationPreferenceState.routeIds
         if let index = routeIds.indexOfRoute(route: action.route) {
             routeIds[index] = action.route
+        } else {
+            routeIds.append(action.route)
         }
         userPreferenceState.pushNotificationPreferenceState.routeIds = routeIds
         return userPreferenceState
     }
 
-    static func reduceRemoveAllPushNotificationRoutes(action _: RemoveAllPushNotificationRoutes, state: UserPreferenceState) -> UserPreferenceState {
+    static func reduceToggleAllPushNotificationRoutes(action: ToggleAllPushNotificationRoutes, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
-        userPreferenceState.pushNotificationPreferenceState.routeIds = [PushNotificationRoute]()
+        let routeIds: [PushNotificationRoute] = userPreferenceState.pushNotificationPreferenceState.routeIds.map {
+            var route = $0
+            route.isEnabled = action.boolValue
+            return route
+        }
+        userPreferenceState.pushNotificationPreferenceState.routeIds = routeIds
         return userPreferenceState
     }
 }

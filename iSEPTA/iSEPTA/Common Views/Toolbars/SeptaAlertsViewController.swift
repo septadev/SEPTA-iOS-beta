@@ -148,12 +148,13 @@ class SeptaAlertsViewController: UIViewController, StoreSubscriber {
         @IBAction func pushNotificationValueChanged(sender: UISwitch) {
             guard let viewController = viewController else { return }
             DispatchQueue.main.async {
-                if sender.isOn {
-                    store.dispatch(AddPushNotificationRoute(route: self.pushNotificationRoute, viewController: viewController))
-                } else {
-                    store.dispatch(RemovePushNotificationRoute(routes: [self.pushNotificationRoute], viewController: viewController))
-                }
+                var route = self.pushNotificationRoute
+                route.isEnabled = sender.isOn
+                store.dispatch(UpdatePushNotificationRoute(route: route, viewController: viewController))
             }
+        }
+
+        @IBAction func toggleNotificationsValueChanged(_: UISwitch) {
         }
 
         func newState(state: PushNotificationRoute?) {

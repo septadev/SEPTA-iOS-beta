@@ -54,8 +54,11 @@ struct UserWantsToSubscribeToSpecialAnnouncements: UserPreferencesAction, PushNo
     let viewController: UIViewController?
     var boolValue: Bool = false
     let description = "Toggling Wants to Receive Special Announcements"
-    init(viewController: UIViewController?, boolValue _: Bool = false) {
+    var sender: String
+    init(viewController: UIViewController?, boolValue: Bool = false, sender: String = "DefaultSender") {
         self.viewController = viewController
+        self.sender = sender
+        self.boolValue = boolValue
     }
 }
 
@@ -115,6 +118,7 @@ struct UpdatePushNotificationRoute: UserPreferencesAction, PushNotificationAutho
     let description = "Adding a push Notification Route"
 }
 
-struct RemoveAllPushNotificationRoutes: UserPreferencesAction {
-    let description = "Removing all push notification Routes"
+struct ToggleAllPushNotificationRoutes: UserPreferencesAction {
+    var boolValue: Bool
+    let description = "Disabling all push notification Routes"
 }

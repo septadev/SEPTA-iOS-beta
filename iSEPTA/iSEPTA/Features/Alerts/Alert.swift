@@ -128,4 +128,24 @@ class UIAlert {
         // show the alert
         viewController.present(alert, animated: true, completion: nil)
     }
+
+    static func presentEnableAllRoutes(viewController: UIViewController?, pushNotificationRoute: PushNotificationRoute) {
+        // create the alert
+        guard let viewController = viewController ?? UIApplication.shared.keyWindow?.rootViewController else { return }
+        let alert = UIAlertController(title: "SEPTA", message: "Push Notifications are not enabled for the app.  Do you want to re-enabled all your routes?", preferredStyle: UIAlertControllerStyle.alert)
+
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "Enable All Routes", style: UIAlertActionStyle.default) { _ in
+            store.dispatch(ToggleAllPushNotificationRoutes(boolValue: true))
+
+        })
+        alert.addAction(UIAlertAction(title: "Just This Route", style: UIAlertActionStyle.cancel) { _ in
+            var route = pushNotificationRoute
+            route.isEnabled = true
+            store.dispatch(UpdatePushNotificationRoute(route: route, viewController: viewController))
+        })
+
+        // show the alert
+        viewController.present(alert, animated: true, completion: nil)
+    }
 }
