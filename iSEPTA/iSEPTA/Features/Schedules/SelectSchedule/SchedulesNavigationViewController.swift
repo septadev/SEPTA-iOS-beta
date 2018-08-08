@@ -30,6 +30,8 @@ class SchedulesNavigationController: BaseNavigationController {
         switch resetViewState.viewController {
         case .tripScheduleController:
             viewControllers = retrieveOrInstantiate(viewControllers: [.selectSchedules, .tripScheduleController])
+        case .selectSchedules:
+            viewControllers = retrieveOrInstantiate(viewControllers: [.selectSchedules])
         default: break
         }
 

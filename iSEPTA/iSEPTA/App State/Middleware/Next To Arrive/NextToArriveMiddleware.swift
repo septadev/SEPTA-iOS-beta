@@ -8,6 +8,7 @@
 
 import Foundation
 import ReSwift
+import SeptaSchedule
 
 let nextToArriveMiddleware: Middleware<AppState> = { _, _ in { next in
     return { action in
@@ -48,19 +49,21 @@ class NextToArriveMiddleware {
         navigateToNextToArrive()
     }
 
+    /// This action gets called when there is next to arrive data
     static func generateActionsToNavigateToSchedulesFromNextToArrive(action: NavigateToSchedulesFromNextToArrive) {
         let scheduleRequest = store.state.targetForScheduleActionsScheduleRequest()
         let builder = NextToArriveMiddlewareScheduleRequestBuilder.sharedInstance
         builder.updateScheduleRequestInSchedules(nextToArriveTrip: action.nextToArriveTrip, scheduleRequest: scheduleRequest)
-
-        navigateToSchedules()
+        switchTabsToSchedules()
+        navigateToSchedules(routeId: scheduleRequest.selectedRoute?.routeId)
     }
 
+    /// This action gets called when there is no Next to arrive Data
     static func generateActionsToNavigateToSchedulesFromNextToArriveScheduleRequest(action: NavigateToSchedulesFromNextToArriveScheduleRequest) {
         let builder = NextToArriveMiddlewareScheduleRequestBuilder.sharedInstance
         builder.copyScheduleRequestToSchedules(scheduleRequest: action.scheduleRequest)
-
-        navigateToSchedules()
+        switchTabsToSchedules()
+        navigateToSchedules(routeId: action.scheduleRequest.selectedRoute?.routeId)
     }
 
     static func generateActionsToNavigateToAlertDetailsFromSchedules(action: NavigateToAlertDetailsFromSchedules) {
@@ -90,11 +93,11 @@ class NextToArriveMiddleware {
         store.dispatch(resetViewStateAction)
     }
 
-    static func navigateToSchedules() {
-        let switchTabsAction = SwitchTabs(activeNavigationController: .schedules, description: "Switching Tabs to Next to Arrive From Schedules")
-        store.dispatch(switchTabsAction)
+    static func navigateToSchedules(routeId: String?) {
+        guard let routeId = routeId else { return }
 
-        let resetViewStateAction = ResetViewState(viewController: .tripScheduleController, description: "Deep linking into Schedules from Next To Arrive")
+        let viewController: ViewController = routeId == Route.allRailRoutesRouteId() ? .selectSchedules : .tripScheduleController
+        let resetViewStateAction = ResetViewState(viewController: viewController, description: "Deep linking into Schedules from Next To Arrive")
         store.dispatch(resetViewStateAction)
     }
 
@@ -104,5 +107,10 @@ class NextToArriveMiddleware {
 
         let resetViewStateAction = ResetViewState(viewController: .nextToArriveDetailController, description: "Navigating to Next to Arrive Detail from Schedules")
         store.dispatch(resetViewStateAction)
+    }
+
+    static func switchTabsToSchedules() {
+        let switchTabsAction = SwitchTabs(activeNavigationController: .schedules, description: "Switching Tabs to Next to Arrive From Schedules")
+        store.dispatch(switchTabsAction)
     }
 }

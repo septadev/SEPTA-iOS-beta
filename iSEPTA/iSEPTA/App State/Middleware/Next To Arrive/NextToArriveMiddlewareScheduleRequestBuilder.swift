@@ -83,6 +83,10 @@ class NextToArriveMiddlewareScheduleRequestBuilder {
     }
 
     func copyScheduleRequestToSchedules(scheduleRequest: ScheduleRequest) {
+        var scheduleRequest = scheduleRequest
+        if scheduleRequest.selectedRoute?.routeId == Route.allRailRoutesRouteId() {
+            scheduleRequest = ScheduleRequest(transitMode: .rail, selectedRoute: nil, selectedStart: nil, selectedEnd: nil, scheduleType: nil, reverseStops: false)
+        }
         let copyAction = CopyScheduleRequestToTargetForScheduleAction(targetForScheduleAction: targetForScheduleAction, scheduleRequest: scheduleRequest, description: "Copying a rail schedule Request from Next To Arrive To Schedules")
         store.dispatch(copyAction)
     }
