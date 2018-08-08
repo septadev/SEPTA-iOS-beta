@@ -110,7 +110,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ChW-pP-B9M"/>
                     </view>
-                    <navigationItem key="navigationItem" title="More" id="sFw-fk-YoF"/>
+                    <navigationItem key="navigationItem" title="More" id="sFw-fk-YoF">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Daz-Pp-opU"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="08v-D8-f2X" id="DV1-2b-UOd"/>
                     </connections>

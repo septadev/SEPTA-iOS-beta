@@ -10,4 +10,5 @@ struct NavigationStackState: Equatable {
     var presentModal: PresentModal?
     var pushViewController: PushViewController?
     var popViewController: PopViewController?
+    var resetViewState: ResetViewState?
 }

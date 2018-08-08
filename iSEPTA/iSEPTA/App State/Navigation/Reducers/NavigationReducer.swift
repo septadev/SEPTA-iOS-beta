@@ -36,6 +36,10 @@ struct NavigationReducer {
             navigationState = reducePushViewControllerHandled(action: action, state: state)
         case let action as PopViewControllerHandled:
             navigationState = reducePopViewControllerHandled(action: action, state: state)
+        case let action as ResetViewState:
+            navigationState = reduceResetViewState(action: action, state: state)
+        case let action as ResetViewStateHandled:
+            navigationState = reduceResetViewStateHandled(action: action, state: state)
         default:
             navigationState = state
         }
@@ -122,6 +126,26 @@ struct NavigationReducer {
         let navigationController = store.state.navigationState.activeNavigationController
         var navigationStackState = appStackState[navigationController] ?? NavigationStackState()
         navigationStackState.popViewController = nil
+
+        appStackState[navigationController] = navigationStackState
+        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController)
+    }
+
+    static func reduceResetViewState(action: ResetViewState, state: NavigationState) -> NavigationState {
+        var appStackState = state.appStackState
+        let navigationController = store.state.navigationState.activeNavigationController
+        var navigationStackState = appStackState[navigationController] ?? NavigationStackState()
+        navigationStackState.resetViewState = action
+
+        appStackState[navigationController] = navigationStackState
+        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController)
+    }
+
+    static func reduceResetViewStateHandled(action _: ResetViewStateHandled, state: NavigationState) -> NavigationState {
+        var appStackState = state.appStackState
+        let navigationController = store.state.navigationState.activeNavigationController
+        var navigationStackState = appStackState[navigationController] ?? NavigationStackState()
+        navigationStackState.resetViewState = nil
 
         appStackState[navigationController] = navigationStackState
         return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController)

@@ -51,3 +51,12 @@ struct PopViewController: NavigationAction, Equatable {
 struct PopViewControllerHandled: NavigationAction, Equatable {
     let description = "Navigation Controller Has Popped Controller"
 }
+
+struct ResetViewState: NavigationAction, Equatable {
+    let viewController: ViewController
+    let description: String
+}
+
+struct ResetViewStateHandled: NavigationAction, Equatable {
+    let description = "Navigation View State has been reset"
+}

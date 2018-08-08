@@ -37,6 +37,7 @@ class BaseNavigationController: UINavigationController, UINavigationControllerDe
         dismissModal(dismissModal: navAction.dismissModal)
         pushController(pushViewController: navAction.pushViewController)
         popController(popViewController: navAction.popViewController)
+        resetViewState(resetViewState: navAction.resetViewState)
     }
 
     deinit {
@@ -105,6 +106,24 @@ class BaseNavigationController: UINavigationController, UINavigationControllerDe
             uiViewControllers.append(viewController.instantiateViewController())
         }
         self.viewControllers = uiViewControllers
+    }
+
+    func retrieveOrInstantiate(viewControllers: [ViewController]) -> [UIViewController] {
+        return viewControllers.map { ivc in
+            if let matchingViewController = self.viewControllers.first(where: { vc in
+                guard let vc = vc as? IdentifiableController, vc.viewController == ivc else { return false }
+                return true
+            }
+            ) {
+                return matchingViewController
+            } else {
+                return ivc.instantiateViewController()
+            }
+        }
+    }
+
+    func resetViewState(resetViewState _: ResetViewState?) {
+        // overriden by base classes
     }
 
     func appendToViewStack(viewControllers: [ViewController]) {

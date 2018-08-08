@@ -33,7 +33,7 @@ class AlertDetailFooterView: UIView, StoreSubscriber {
 
     @IBAction func userTappedOnViewNotificationPreferences(_: Any) {
         store.dispatch(SwitchTabs(activeNavigationController: .more, description: "User wants to view preferences"))
-        let action = SwitchTabs(activeNavigationController: .more, description: "Switching over to More View Controller")
+        let action = ResetViewState(viewController: .customPushNotificationsController, description: "Navigating to Push Notifications from Alerts")
         store.dispatch(action)
     }
 
