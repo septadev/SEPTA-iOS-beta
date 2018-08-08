@@ -53,7 +53,11 @@ class AddEditView: UIView {
     }
     @IBAction func AddButtonTapped(_: Any) {
         let action = SwitchTabs(activeNavigationController: .alerts, description: "Switching over to Alerts View Controller")
+
         store.dispatch(action)
+
+        let viewStack = ResetViewState(viewController: .alertsViewController, description: "Navigating to Alerts from Customize Push Notifications")
+        store.dispatch(viewStack)
     }
 
     override var intrinsicContentSize: CGSize {

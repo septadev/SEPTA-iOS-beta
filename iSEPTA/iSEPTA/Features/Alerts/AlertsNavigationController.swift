@@ -29,6 +29,8 @@ class AlertsNavigationController: BaseNavigationController {
         switch resetViewState.viewController {
         case .alertDetailViewController:
             viewControllers = retrieveOrInstantiate(viewControllers: [.alertsViewController, .alertDetailViewController])
+        case .alertsViewController:
+            viewControllers = retrieveOrInstantiate(viewControllers: [.alertsViewController])
         default: break
         }
 
