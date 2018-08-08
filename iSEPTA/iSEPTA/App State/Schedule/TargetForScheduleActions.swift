@@ -9,6 +9,7 @@
 import Foundation
 
 enum TargetForScheduleAction: Equatable {
+    case none
     case schedules
     case nextToArrive
     case alerts

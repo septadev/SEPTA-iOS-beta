@@ -15,7 +15,7 @@ extension AppState {
         case .alerts: return .alerts
         case .nextToArrive: return .nextToArrive
         case .favorites: return .favorites
-        default: return nil
+        default: return .none
         }
     }
 
@@ -27,6 +27,17 @@ extension AppState {
         case .alerts: return store.state.alertState.scheduleState.scheduleRequest
         case .schedules: return store.state.scheduleState.scheduleRequest
         default: return ScheduleRequest()
+        }
+    }
+
+    func targetForScheduleActionsScheduleData() -> ScheduleData? {
+        guard let targetForScheduleAction = store.state.targetForScheduleActions() else { return nil }
+        switch targetForScheduleAction {
+        case .nextToArrive: return store.state.nextToArriveState.scheduleState.scheduleData
+        case .favorites: return nil
+        case .alerts: return store.state.alertState.scheduleState.scheduleData
+        case .schedules: return store.state.scheduleState.scheduleData
+        default: return nil
         }
     }
 

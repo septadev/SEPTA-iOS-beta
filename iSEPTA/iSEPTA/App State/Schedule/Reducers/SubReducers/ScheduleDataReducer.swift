@@ -40,69 +40,51 @@ struct ScheduleDataReducer {
 
     // MARK: - Clearing Data
 
-    static func reduceClearRoutes(action _: ClearRoutes, scheduleData: ScheduleData) -> ScheduleData {
-        let newScheduleData = ScheduleData(availableRoutes: ScheduleRouteState(),
-                                           availableStarts: ScheduleStopState(),
-                                           availableStops: ScheduleStopState(),
-                                           availableTrips: ScheduleTripState())
-        return newScheduleData
+    static func reduceClearRoutes(action _: ClearRoutes, scheduleData _: ScheduleData) -> ScheduleData {
+        return ScheduleData()
     }
 
     static func reduceClearTripStarts(action _: ClearTripStarts, scheduleData: ScheduleData) -> ScheduleData {
-        let newScheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
-                                           availableStarts: ScheduleStopState(),
-                                           availableStops: ScheduleStopState(),
-                                           availableTrips: ScheduleTripState())
+        var newScheduleData = scheduleData
+        newScheduleData.availableStarts = ScheduleStopState()
         return newScheduleData
     }
 
     static func reduceClearTripEnds(action _: ClearTripEnds, scheduleData: ScheduleData) -> ScheduleData {
-        let newScheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
-                                           availableStarts: scheduleData.availableStarts,
-                                           availableStops: ScheduleStopState(),
-                                           availableTrips: ScheduleTripState())
+        var newScheduleData = scheduleData
+        newScheduleData.availableStops = ScheduleStopState()
         return newScheduleData
     }
 
     static func reduceClearTrips(action _: ClearTrips, scheduleData: ScheduleData) -> ScheduleData {
-        let newScheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
-                                           availableStarts: scheduleData.availableStarts,
-                                           availableStops: scheduleData.availableStops,
-                                           availableTrips: ScheduleTripState())
+        var newScheduleData = scheduleData
+        newScheduleData.availableTrips = ScheduleTripState()
         return newScheduleData
     }
 
     // MARK: - Loading Data
 
     static func reduceRoutesLoaded(action: RoutesLoaded, scheduleData: ScheduleData) -> ScheduleData {
-        let newScheduleData = ScheduleData(availableRoutes: ScheduleRouteState(routes: action.routes, updateMode: .loadValues),
-                                           availableStarts: scheduleData.availableStarts,
-                                           availableStops: scheduleData.availableStops,
-                                           availableTrips: scheduleData.availableTrips)
+        var newScheduleData = scheduleData
+        newScheduleData.availableRoutes = ScheduleRouteState(routes: action.routes, updateMode: .loadValues)
         return newScheduleData
     }
 
     static func reduceTripStartsLoaded(action: TripStartsLoaded, scheduleData: ScheduleData) -> ScheduleData {
-        let newScheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
-                                           availableStarts: ScheduleStopState(stops: action.availableStarts, updateMode: .loadValues),
-                                           availableStops: scheduleData.availableStops,
-                                           availableTrips: scheduleData.availableTrips)
+        var newScheduleData = scheduleData
+        newScheduleData.availableStarts = ScheduleStopState(stops: action.availableStarts, updateMode: .loadValues)
         return newScheduleData
     }
 
     static func reduceTripEndsLoaded(action: TripEndsLoaded, scheduleData: ScheduleData) -> ScheduleData {
-        let newScheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
-                                           availableStarts: scheduleData.availableStarts,
-                                           availableStops: ScheduleStopState(stops: action.availableStops, updateMode: .loadValues),
-                                           availableTrips: scheduleData.availableTrips)
+        var newScheduleData = scheduleData
+        newScheduleData.availableStops = ScheduleStopState(stops: action.availableStops, updateMode: .loadValues)
         return newScheduleData
     }
 
     static func reduceTripLoaded(action: TripsLoaded, scheduleData: ScheduleData) -> ScheduleData {
-        let newScheduleData = ScheduleData(availableRoutes: scheduleData.availableRoutes,
-                                           availableStarts: scheduleData.availableStarts,
-                                           availableStops: scheduleData.availableStops,
-                                           availableTrips: ScheduleTripState(trips: action.availableTrips, updateMode: .loadValues))
+        var newScheduleData = scheduleData
+        newScheduleData.availableTrips = ScheduleTripState(trips: action.availableTrips, updateMode: .loadValues)
         return newScheduleData
     }
 }

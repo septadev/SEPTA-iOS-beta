@@ -261,6 +261,7 @@
 		589A919F1F907052009B49E0 /* TripDetailItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589A919E1F907052009B49E0 /* TripDetailItemView.xib */; };
 		589A91A11F907061009B49E0 /* TripDetailItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A91A01F907061009B49E0 /* TripDetailItemView.swift */; };
 		589A91A31F907FEC009B49E0 /* Route+Twitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589A91A21F907FEC009B49E0 /* Route+Twitter.swift */; };
+		589AA5F4211B5DF4008CBD3C /* TargetForScheduleActionWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589AA5F3211B5DF4008CBD3C /* TargetForScheduleActionWatcher.swift */; };
 		589BCC321F3D5068002FAEDE /* SchedulesPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589BCC311F3D5068002FAEDE /* SchedulesPresentationController.swift */; };
 		58A26D951F6EFECC005A70D3 /* AlertsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26D941F6EFECC005A70D3 /* AlertsNavigationController.swift */; };
 		58A26D9B1F6F221E005A70D3 /* AlertDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A26D9A1F6F221E005A70D3 /* AlertDetailViewController.swift */; };
@@ -1034,6 +1035,7 @@
 		589A919E1F907052009B49E0 /* TripDetailItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripDetailItemView.xib; sourceTree = "<group>"; };
 		589A91A01F907061009B49E0 /* TripDetailItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailItemView.swift; sourceTree = "<group>"; };
 		589A91A21F907FEC009B49E0 /* Route+Twitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Twitter.swift"; sourceTree = "<group>"; };
+		589AA5F3211B5DF4008CBD3C /* TargetForScheduleActionWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetForScheduleActionWatcher.swift; sourceTree = "<group>"; };
 		589BCC311F3D5068002FAEDE /* SchedulesPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesPresentationController.swift; sourceTree = "<group>"; };
 		58A26D941F6EFECC005A70D3 /* AlertsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsNavigationController.swift; sourceTree = "<group>"; };
 		58A26D9A1F6F221E005A70D3 /* AlertDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailViewController.swift; sourceTree = "<group>"; };
@@ -2190,6 +2192,7 @@
 			children = (
 				58248B631F6D573000DA2D65 /* NextToArriveState_ScheduleState_ScheduleRequestWatcher.swift */,
 				58B5B1081F6DBFFF00A3DAFB /* ScheduleState_ScheduleRequestWatcher.swift */,
+				589AA5F3211B5DF4008CBD3C /* TargetForScheduleActionWatcher.swift */,
 				588D80581F72AAA800EE1983 /* FavoriteState_ScheduleRequestWatcher.swift */,
 				588D80601F72B56100EE1983 /* AlertState_ScheduleState_ScheduleRequestWatcher.swift */,
 				588D80621F72BDCC00EE1983 /* AlertState_ScheduleState_ScheduleRequest_SelectedRouteExistsWatcher.swift */,
@@ -3962,6 +3965,7 @@
 				0E64472220D27A7600A99E2D /* DatabaseUpdateManager.swift in Sources */,
 				6776F68C201CAECB001FD5B2 /* NetworkingExtensions.swift in Sources */,
 				58F80D451F421C4B0089501A /* SelectStopViewController.swift in Sources */,
+				589AA5F4211B5DF4008CBD3C /* TargetForScheduleActionWatcher.swift in Sources */,
 				678D26CC1F5CDB4200D140CC /* Septa+Images.swift in Sources */,
 				67DDC7D21F79263C002FECE2 /* NextToArriveMiddlewareScheduleStateBuilder.swift in Sources */,
 				67F028981F7ED2780032F99C /* BigBlueChevron.swift in Sources */,
