@@ -20,4 +20,22 @@ class NextToArriveNavigationController: BaseNavigationController {
             $0.select { $0.navigationState.appStackState[.nextToArrive] }
         }
     }
+
+    override func resetViewState(resetViewState: ResetViewState?) {
+        guard let resetViewState = resetViewState else { return }
+
+        var viewControllers = [UIViewController]()
+
+        switch resetViewState.viewController {
+        case .nextToArriveController:
+            viewControllers = retrieveOrInstantiate(viewControllers: [.nextToArriveController])
+        case .nextToArriveDetailController:
+            viewControllers = retrieveOrInstantiate(viewControllers: [.nextToArriveController, .nextToArriveDetailController])
+        default: break
+        }
+
+        self.viewControllers = viewControllers
+
+        store.dispatch(ResetViewStateHandled())
+    }
 }

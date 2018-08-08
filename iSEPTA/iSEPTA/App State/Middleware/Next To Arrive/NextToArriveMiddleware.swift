@@ -45,18 +45,7 @@ class NextToArriveMiddleware {
             description: "Copying Schedule Request from schedules to Next To Arrive")
         store.dispatch(copyScheduleRequest)
 
-//        var navigationStackState = buildNavigationStackState(viewControllers: [.nextToArriveController])
-//        //:BroskiDo
-        ////        var viewStackAction = InitializeNavigationState(navigationController: .nextToArrive, navigationStackState: navigationStackState, description: "Setting Navigation Stack State prior to moving from schedules to Next To Arrive")
-        ////        store.dispatch(viewStackAction)
-//
-//        navigationStackState = buildNavigationStackState(viewControllers: [.nextToArriveController, .nextToArriveDetailController])
-        ////        viewStackAction = InitializeNavigationState(navigationController: .nextToArrive, navigationStackState: navigationStackState, description: "Setting Navigation Stack State prior to moving from schedules to Next To Arrive")
-//        //:BroskiDo
-        ////        store.dispatch(viewStackAction)
-//
-//        let switchTabsAction = SwitchTabs(activeNavigationController: .nextToArrive, description: "Switching Tabs to Next to Arrive From Schedules")
-//        store.dispatch(switchTabsAction)
+        navigateToNextToArrive()
     }
 
     static func generateActionsToNavigateToSchedulesFromNextToArrive(action: NavigateToSchedulesFromNextToArrive) {
@@ -64,36 +53,17 @@ class NextToArriveMiddleware {
         let builder = NextToArriveMiddlewareScheduleRequestBuilder.sharedInstance
         builder.updateScheduleRequestInSchedules(nextToArriveTrip: action.nextToArriveTrip, scheduleRequest: scheduleRequest)
 
-        let delayTime: Double = scheduleRequest.transitMode == .rail ? 2 : 0.5
-
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayTime) {
-//            let navigationStackState = buildNavigationStackState(viewControllers: [.selectSchedules, .tripScheduleController])
-            //: BroskiDo
-//            let viewStackAction = InitializeNavigationState(navigationController: .schedules, navigationStackState: navigationStackState, description: "Setting Navigation Stack State prior to moving from Next To Arrive to Schedules")
-//            store.dispatch(viewStackAction)
-
-            let switchTabsAction = SwitchTabs(activeNavigationController: .schedules, description: "Switching Tabs to Next to Arrive From Schedules")
-            store.dispatch(switchTabsAction)
-        }
+        navigateToSchedules()
     }
 
     static func generateActionsToNavigateToSchedulesFromNextToArriveScheduleRequest(action: NavigateToSchedulesFromNextToArriveScheduleRequest) {
         let builder = NextToArriveMiddlewareScheduleRequestBuilder.sharedInstance
         builder.copyScheduleRequestToSchedules(scheduleRequest: action.scheduleRequest)
 
-//        let navigationStackState = buildNavigationStackState(viewControllers: [.selectSchedules, .tripScheduleController])
-        //: BroskiDo
-//        let viewStackAction = InitializeNavigationState(navigationController: .schedules, navigationStackState: navigationStackState, description: "Setting Navigation Stack State prior to moving from Next To Arrive to Schedules")
-//        store.dispatch(viewStackAction)
-
-        let switchTabsAction = SwitchTabs(activeNavigationController: .schedules, description: "Switching Tabs to Next to Arrive From Schedules")
-        store.dispatch(switchTabsAction)
+        navigateToSchedules()
     }
 
     static func generateActionsToNavigateToAlertDetailsFromSchedules(action: NavigateToAlertDetailsFromSchedules) {
-        let switchTabsAction = SwitchTabs(activeNavigationController: .alerts, description: "Switching Tabs to Alert details after importing schedule state")
-        store.dispatch(switchTabsAction)
-
         let copyScheduleState = CopyScheduleStateToTargetForScheduleAction(
             targetForScheduleAction: .alerts,
             scheduleState: action.scheduleState,
@@ -101,20 +71,38 @@ class NextToArriveMiddleware {
         )
         store.dispatch(copyScheduleState)
 
-//        let navigationStackState = buildNavigationStackState(viewControllers: [.alertsViewController, .alertDetailViewController])
-        //: BroskiDo
-//        let viewStackAction = InitializeNavigationState(navigationController: .alerts, navigationStackState: navigationStackState, description: "Setting Navigation Stack State with imported schedule state")
-//        store.dispatch(viewStackAction)
+        navigateToAlertDetails()
     }
 
     static func generateActionsToNavigateToAlertDetailsFromNextToArrive(action: NavigateToAlertDetailsFromNextToArrive) {
         let scheduleRequest = action.scheduleRequest
         let scheduleStateBuilder = NextToArriveMiddlewareScheduleStateBuilder.sharedInstance
         scheduleStateBuilder.updateScheduleStateInAlerts(nextToArriveStop: action.nextToArriveStop, scheduleRequest: scheduleRequest)
+
+        navigateToAlertDetails()
     }
 
-//    static func buildNavigationStackState(viewControllers: [ViewController]) -> NavigationStackState {
-//
-//      //  return NavigationStackState(viewControllers: viewControllers, modalViewController: nil)
-//    }
+    static func navigateToAlertDetails() {
+        let switchTabsAction = SwitchTabs(activeNavigationController: .alerts, description: "Switching Tabs to Alert details after importing schedule state")
+        store.dispatch(switchTabsAction)
+
+        let resetViewStateAction = ResetViewState(viewController: .alertDetailViewController, description: "Deep linking into Schedules from Next To Arrive")
+        store.dispatch(resetViewStateAction)
+    }
+
+    static func navigateToSchedules() {
+        let switchTabsAction = SwitchTabs(activeNavigationController: .schedules, description: "Switching Tabs to Next to Arrive From Schedules")
+        store.dispatch(switchTabsAction)
+
+        let resetViewStateAction = ResetViewState(viewController: .tripScheduleController, description: "Deep linking into Schedules from Next To Arrive")
+        store.dispatch(resetViewStateAction)
+    }
+
+    static func navigateToNextToArrive() {
+        let switchTabsAction = SwitchTabs(activeNavigationController: .nextToArrive, description: "Switching Tabs to Next to Arrive From Schedules")
+        store.dispatch(switchTabsAction)
+
+        let resetViewStateAction = ResetViewState(viewController: .nextToArriveDetailController, description: "Navigating to Next to Arrive Detail from Schedules")
+        store.dispatch(resetViewStateAction)
+    }
 }

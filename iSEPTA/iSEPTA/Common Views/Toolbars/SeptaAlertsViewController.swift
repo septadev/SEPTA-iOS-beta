@@ -94,10 +94,8 @@ class SeptaAlertsViewController: UIViewController, StoreSubscriber {
     @IBOutlet var weatherImageView: UIImageView!
 
     @IBAction func didTapAlertView(_: Any) {
-        if alertsCount > 0 {
-            let action = NavigateToAlertDetailsFromSchedules(scheduleState: store.state.scheduleState)
-            store.dispatch(action)
-        }
+        let action = NavigateToAlertDetailsFromSchedules(scheduleState: store.state.scheduleState)
+        store.dispatch(action)
     }
 
     func newState(state: StoreSubscriberStateType) {
