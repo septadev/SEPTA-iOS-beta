@@ -162,8 +162,9 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         septaAlertsViewController.setTransitMode(transitMode, route: route)
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
     }
 
     func configureSegementedControl() {

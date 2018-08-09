@@ -161,7 +161,6 @@ extension NextToArriveViewModel {
 extension NextToArriveViewModel: SubscriberUnsubscriber {
     override func awakeFromNib() {
         super.awakeFromNib()
-        //    insertDummyScheduleRequest()
         subscribe()
     }
 

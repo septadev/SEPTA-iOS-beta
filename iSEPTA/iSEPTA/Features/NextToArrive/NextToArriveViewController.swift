@@ -45,6 +45,12 @@ class NextToArriveViewController: BaseNonModalViewController, IdentifiableContro
 
         navBar.shadowImage = UIImage()
         navBar.setBackgroundImage(UIImage(), for: .default)
+        viewModel.subscribe()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.unsubscribe()
     }
 
     @IBAction func resetSearch(_: Any) {
