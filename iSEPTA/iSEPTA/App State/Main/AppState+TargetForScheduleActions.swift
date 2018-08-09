@@ -9,7 +9,7 @@
 import Foundation
 
 extension AppState {
-    func targetForScheduleActions() -> TargetForScheduleAction? {
+    func currentTargetForScheduleActions() -> TargetForScheduleAction? {
         switch store.state.navigationState.activeNavigationController {
         case .schedules: return .schedules
         case .alerts: return .alerts
@@ -19,25 +19,14 @@ extension AppState {
         }
     }
 
-    func targetForScheduleActionsScheduleRequest() -> ScheduleRequest {
-        guard let targetForScheduleAction = store.state.targetForScheduleActions() else { return ScheduleRequest() }
+    func currentTargetForScheduleActionsScheduleRequest() -> ScheduleRequest {
+        guard let targetForScheduleAction = store.state.currentTargetForScheduleActions() else { return ScheduleRequest() }
         switch targetForScheduleAction {
         case .nextToArrive: return store.state.nextToArriveState.scheduleState.scheduleRequest
         case .favorites: return store.state.favoritesState.nextToArriveScheduleRequest
         case .alerts: return store.state.alertState.scheduleState.scheduleRequest
         case .schedules: return store.state.scheduleState.scheduleRequest
         default: return ScheduleRequest()
-        }
-    }
-
-    func targetForScheduleActionsScheduleData() -> ScheduleData? {
-        guard let targetForScheduleAction = store.state.targetForScheduleActions() else { return nil }
-        switch targetForScheduleAction {
-        case .nextToArrive: return store.state.nextToArriveState.scheduleState.scheduleData
-        case .favorites: return nil
-        case .alerts: return store.state.alertState.scheduleState.scheduleData
-        case .schedules: return store.state.scheduleState.scheduleData
-        default: return nil
         }
     }
 

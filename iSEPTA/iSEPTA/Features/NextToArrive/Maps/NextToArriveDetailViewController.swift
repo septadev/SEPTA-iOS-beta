@@ -63,7 +63,7 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
     }
 
     func configureNavigationItemTitle() {
-        if store.state.targetForScheduleActions() == .favorites {
+        if store.state.currentTargetForScheduleActions() == .favorites {
             nextToArriveFavoriteWatcher = FavoriteState_NextToArriveFavoriteWatcher()
             nextToArriveFavoriteWatcher?.delegate = self
         } else {
@@ -72,7 +72,7 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
     }
 
     @IBAction func refreshButtonTapped(_: Any) {
-        guard let target = store.state.targetForScheduleActions() else { return }
+        guard let target = store.state.currentTargetForScheduleActions() else { return }
 
         switch target {
         case .nextToArrive:

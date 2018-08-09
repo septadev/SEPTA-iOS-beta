@@ -7,7 +7,7 @@ import UIKit
 
 class SelectStopViewModel: NSObject, StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleStopState
-    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! { return store.state.currentTargetForScheduleActions() }
     @IBOutlet var selectStopViewController: UpdateableFromViewModel?
     var filterString = ""
     let cellId = "stopCell"

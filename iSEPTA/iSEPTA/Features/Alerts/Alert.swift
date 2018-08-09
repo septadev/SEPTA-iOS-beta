@@ -48,7 +48,7 @@ class UIAlert {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
 
         alert.addAction(UIAlertAction(title: "Go to Schedules", style: UIAlertActionStyle.default) { _ in
-            let action = NavigateToSchedulesFromNextToArriveScheduleRequest(scheduleRequest: store.state.targetForScheduleActionsScheduleRequest())
+            let action = NavigateToSchedulesFromNextToArriveScheduleRequest(scheduleRequest: store.state.currentTargetForScheduleActionsScheduleRequest())
             store.dispatch(action)
         })
 

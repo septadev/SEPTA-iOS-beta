@@ -29,7 +29,7 @@ class TargetForScheduleActionWatcher: StoreSubscriber {
     }
 
     func newState(state _: StoreSubscriberStateType) {
-        guard let newTarget = store.state.targetForScheduleActions() else { return }
+        guard let newTarget = store.state.currentTargetForScheduleActions() else { return }
         delegate?.targetForScheduleActionUpdated(target: newTarget)
     }
 

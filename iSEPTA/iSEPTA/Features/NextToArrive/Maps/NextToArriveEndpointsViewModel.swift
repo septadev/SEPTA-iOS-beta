@@ -21,7 +21,7 @@ class NextToArriveMapEndpointsViewModel: StoreSubscriber {
     }
 
     func subscribe() {
-        guard let target = store.state.targetForScheduleActions() else { return }
+        guard let target = store.state.currentTargetForScheduleActions() else { return }
 
         switch target {
         case .nextToArrive:

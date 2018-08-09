@@ -135,7 +135,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         return scheduleTypeSegments[segmentedControl.selectedSegmentIndex]
     }
 
-    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! { return store.state.currentTargetForScheduleActions() }
     func dispatchScheduleTypeAction(_ scheduleType: ScheduleType) {
         store.dispatch(ClearTrips(targetForScheduleAction: targetForScheduleAction))
 

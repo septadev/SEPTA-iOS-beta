@@ -107,7 +107,7 @@ extension NextToArriveInfoViewController { // refresh timer
 
     @objc func oneMinuteTimerFired(timer _: Timer) {
         millisecondsToDelayTableReload = 1000
-        guard let target = store.state.targetForScheduleActions() else { return }
+        guard let target = store.state.currentTargetForScheduleActions() else { return }
 
         switch target {
         case .nextToArrive:

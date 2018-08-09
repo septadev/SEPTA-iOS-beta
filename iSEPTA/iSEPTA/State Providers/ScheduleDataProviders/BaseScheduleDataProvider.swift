@@ -8,25 +8,35 @@ class BaseScheduleDataProvider: StoreSubscriber, TargetForScheduleActionWatcherD
     typealias StoreSubscriberStateType = ScheduleRequest
     var currentScheduleRequest = ScheduleRequest()
 
-    let myTargetForAcheduleAction: TargetForScheduleAction
+    let myTargetForScheduleAction: TargetForScheduleAction
     var currentTransitMode: TransitMode?
-    let databaseStateWatcher: ScheduleProviderDatabaseStateWatcher
+    let databaseStateWatcher = DatabaseStateWatcher()
+
+    var databaseState: DatabaseState = .notLoaded {
+        didSet {
+            guard let currentTarget = store.state.currentTargetForScheduleActions() else { return }
+            targetForScheduleActionUpdated(target: currentTarget)
+        }
+    }
 
     let targetForScheduleActionWatcher = TargetForScheduleActionWatcher()
 
     init(targetForScheduleAction: TargetForScheduleAction) {
-        myTargetForAcheduleAction = targetForScheduleAction
-        databaseStateWatcher = ScheduleProviderDatabaseStateWatcher()
+        myTargetForScheduleAction = targetForScheduleAction
         databaseStateWatcher.delegate = self
         targetForScheduleActionWatcher.delegate = self
     }
 
     func targetForScheduleActionUpdated(target: TargetForScheduleAction) {
-        if target == myTargetForAcheduleAction {
+        if target == myTargetForScheduleAction && databaseState == .loaded {
             subscribe()
         } else {
             unsubscribe()
         }
+    }
+
+    func databaseStateUpdated(_ databaseState: DatabaseState) {
+        self.databaseState = databaseState
     }
 
     func subscribe() {
@@ -134,25 +144,25 @@ class BaseScheduleDataProvider: StoreSubscriber, TargetForScheduleActionWatcherD
 
     func clearRoutes() {
         DispatchQueue.main.async {
-            store.dispatch(ClearRoutes(targetForScheduleAction: self.myTargetForAcheduleAction))
+            store.dispatch(ClearRoutes(targetForScheduleAction: self.myTargetForScheduleAction))
         }
     }
 
     func clearStartingStops() {
         DispatchQueue.main.async {
-            store.dispatch(ClearTripStarts(targetForScheduleAction: self.myTargetForAcheduleAction))
+            store.dispatch(ClearTripStarts(targetForScheduleAction: self.myTargetForScheduleAction))
         }
     }
 
     func clearEndingStops() {
         DispatchQueue.main.async {
-            store.dispatch(ClearTripEnds(targetForScheduleAction: self.myTargetForAcheduleAction))
+            store.dispatch(ClearTripEnds(targetForScheduleAction: self.myTargetForScheduleAction))
         }
     }
 
     func clearTrips() {
         DispatchQueue.main.async {
-            store.dispatch(ClearTrips(targetForScheduleAction: self.myTargetForAcheduleAction))
+            store.dispatch(ClearTrips(targetForScheduleAction: self.myTargetForScheduleAction))
         }
     }
 
@@ -162,7 +172,7 @@ class BaseScheduleDataProvider: StoreSubscriber, TargetForScheduleActionWatcherD
         clearRoutes()
         RoutesCommand.sharedInstance.routes(forTransitMode: scheduleRequest.transitMode) { routes, error in
             let routes = routes ?? [Route]()
-            let routesLoadedAction = RoutesLoaded(targetForScheduleAction: self.myTargetForAcheduleAction, routes: routes, error: error?.localizedDescription)
+            let routesLoadedAction = RoutesLoaded(targetForScheduleAction: self.myTargetForScheduleAction, routes: routes, error: error?.localizedDescription)
             store.dispatch(routesLoadedAction)
         }
     }
@@ -171,7 +181,7 @@ class BaseScheduleDataProvider: StoreSubscriber, TargetForScheduleActionWatcherD
         clearStartingStops()
         TripStartCommand.sharedInstance.stops(forTransitMode: scheduleRequest.transitMode, forRoute: scheduleRequest.selectedRoute!) { stops, error in
             let stops = stops ?? [Stop]()
-            let action = TripStartsLoaded(targetForScheduleAction: self.myTargetForAcheduleAction, availableStarts: stops, error: error?.localizedDescription)
+            let action = TripStartsLoaded(targetForScheduleAction: self.myTargetForScheduleAction, availableStarts: stops, error: error?.localizedDescription)
             store.dispatch(action)
         }
     }
@@ -180,7 +190,7 @@ class BaseScheduleDataProvider: StoreSubscriber, TargetForScheduleActionWatcherD
         clearEndingStops()
         TripEndCommand.sharedInstance.stops(forTransitMode: scheduleRequest.transitMode, forRoute: scheduleRequest.selectedRoute!, tripStart: scheduleRequest.selectedStart!) { stops, error in
             let stops = stops ?? [Stop]()
-            let action = TripEndsLoaded(targetForScheduleAction: self.myTargetForAcheduleAction, availableStops: stops, error: error?.localizedDescription)
+            let action = TripEndsLoaded(targetForScheduleAction: self.myTargetForScheduleAction, availableStops: stops, error: error?.localizedDescription)
             store.dispatch(action)
         }
     }
@@ -189,7 +199,7 @@ class BaseScheduleDataProvider: StoreSubscriber, TargetForScheduleActionWatcherD
         clearTrips()
         TripScheduleCommand.sharedInstance.tripSchedules(forTransitMode: scheduleRequest.transitMode, route: scheduleRequest.selectedRoute!, selectedStart: scheduleRequest.selectedStart!, selectedEnd: scheduleRequest.selectedEnd!, scheduleType: scheduleRequest.scheduleType!) { trips, error in
             let trips = trips ?? [Trip]()
-            let action = TripsLoaded(targetForScheduleAction: self.myTargetForAcheduleAction, availableTrips: trips, error: error?.localizedDescription)
+            let action = TripsLoaded(targetForScheduleAction: self.myTargetForScheduleAction, availableTrips: trips, error: error?.localizedDescription)
             store.dispatch(action)
         }
     }
@@ -217,7 +227,7 @@ class BaseScheduleDataProvider: StoreSubscriber, TargetForScheduleActionWatcherD
                     ReverseRouteCommand.sharedInstance.reverseRoute(forTransitMode: transitMode, route: selectedRoute) { routes, error in
                         guard let routes = routes, let newRoute = routes.first else { return }
                         let newScheduleRequest = ScheduleRequest(transitMode: transitMode, selectedRoute: newRoute, selectedStart: newStart, selectedEnd: newEnd, scheduleType: scheduleType, reverseStops: false)
-                        let action = ReverseLoaded(targetForScheduleAction: self.myTargetForAcheduleAction, scheduleRequest: newScheduleRequest, trips: reversedTrips, error: error?.localizedDescription)
+                        let action = ReverseLoaded(targetForScheduleAction: self.myTargetForScheduleAction, scheduleRequest: newScheduleRequest, trips: reversedTrips, error: error?.localizedDescription)
                         store.dispatch(action)
                     }
                 }

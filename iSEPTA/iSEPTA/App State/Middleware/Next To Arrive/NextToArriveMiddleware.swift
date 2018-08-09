@@ -51,7 +51,7 @@ class NextToArriveMiddleware {
 
     /// This action gets called when there is next to arrive data
     static func generateActionsToNavigateToSchedulesFromNextToArrive(action: NavigateToSchedulesFromNextToArrive) {
-        let scheduleRequest = store.state.targetForScheduleActionsScheduleRequest()
+        let scheduleRequest = store.state.currentTargetForScheduleActionsScheduleRequest()
         let builder = NextToArriveMiddlewareScheduleRequestBuilder.sharedInstance
         builder.updateScheduleRequestInSchedules(nextToArriveTrip: action.nextToArriveTrip, scheduleRequest: scheduleRequest)
         switchTabsToSchedules()
@@ -105,7 +105,7 @@ class NextToArriveMiddleware {
         let switchTabsAction = SwitchTabs(activeNavigationController: .nextToArrive, description: "Switching Tabs to Next to Arrive From Schedules")
         store.dispatch(switchTabsAction)
 
-        let resetViewStateAction = ResetViewState(viewController: .nextToArriveDetailController, description: "Navigating to Next to Arrive Detail from Schedules")
+        let resetViewStateAction = ResetViewState(viewController: .nextToArriveController, description: "Navigating to Next to Arrive Detail from Schedules")
         store.dispatch(resetViewStateAction)
     }
 

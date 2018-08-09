@@ -35,7 +35,7 @@ class BaseNextToArriveInfoViewModel: AlertViewDelegate {
     }
 
     func scheduleRequest() -> ScheduleRequest {
-        return store.state.targetForScheduleActionsScheduleRequest()
+        return store.state.currentTargetForScheduleActionsScheduleRequest()
     }
 
     func transitMode() -> TransitMode {

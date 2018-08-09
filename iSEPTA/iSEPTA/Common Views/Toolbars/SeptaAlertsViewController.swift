@@ -78,12 +78,6 @@ class SeptaAlertsViewController: UIViewController, StoreSubscriber {
     }
 
     func configureConstraints() {
-        if UIScreen.main.bounds.size.width < 375 {
-            NSLayoutConstraint.deactivate(constraintsForWidePhone)
-            NSLayoutConstraint.activate(contraintsForNarrowPhone)
-            view.setNeedsLayout()
-            view.layoutIfNeeded()
-        }
     }
 
     @IBOutlet var advisoryImageView: UIImageView!

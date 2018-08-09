@@ -59,7 +59,7 @@ class AlertsViewController: UIViewController, IdentifiableController {
 
     var formIsComplete = false
     var targetForScheduleAction: TargetForScheduleAction! {
-        return store.state.targetForScheduleActions()
+        return store.state.currentTargetForScheduleActions()
     }
 
     var viewModel: AlertsViewModel!

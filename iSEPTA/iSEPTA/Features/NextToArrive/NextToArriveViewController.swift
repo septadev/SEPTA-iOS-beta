@@ -21,7 +21,7 @@ class NextToArriveViewController: BaseNonModalViewController, IdentifiableContro
     let buttonRow = 3
 
     var formIsComplete = false
-    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! { return store.state.currentTargetForScheduleActions() }
 
     @IBOutlet var viewModel: NextToArriveViewModel!
 

@@ -354,7 +354,6 @@
 		58FBB66E1F58AAC000E6532B /* AlertViewGradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBB66D1F58AAC000E6532B /* AlertViewGradientBackgroundView.swift */; };
 		58FBBFA41F65821000B7A4DA /* DatabaseReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBBFA31F65821000B7A4DA /* DatabaseReducer.swift */; };
 		58FBBFA61F65823600B7A4DA /* DatabaseActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBBFA51F65823600B7A4DA /* DatabaseActions.swift */; };
-		58FBBFAC1F658D3500B7A4DA /* ScheduleProviderDatabaseStateWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBBFAB1F658D3500B7A4DA /* ScheduleProviderDatabaseStateWatcher.swift */; };
 		58FC9D9D1F3F9CB0004269DE /* InitializeNavigationState.json in Resources */ = {isa = PBXBuildFile; fileRef = 581804C51F3F8F19002184E3 /* InitializeNavigationState.json */; };
 		67075FC21F578578008BB38C /* ScheduleUpdateMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC11F578578008BB38C /* ScheduleUpdateMode.swift */; };
 		67075FC41F57858C008BB38C /* ScheduleStopState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC31F57858C008BB38C /* ScheduleStopState.swift */; };
@@ -1133,7 +1132,6 @@
 		58FBB66D1F58AAC000E6532B /* AlertViewGradientBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewGradientBackgroundView.swift; sourceTree = "<group>"; };
 		58FBBFA31F65821000B7A4DA /* DatabaseReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseReducer.swift; sourceTree = "<group>"; };
 		58FBBFA51F65823600B7A4DA /* DatabaseActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseActions.swift; sourceTree = "<group>"; };
-		58FBBFAB1F658D3500B7A4DA /* ScheduleProviderDatabaseStateWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleProviderDatabaseStateWatcher.swift; sourceTree = "<group>"; };
 		67075FC11F578578008BB38C /* ScheduleUpdateMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleUpdateMode.swift; sourceTree = "<group>"; };
 		67075FC31F57858C008BB38C /* ScheduleStopState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStopState.swift; sourceTree = "<group>"; };
 		67075FC51F57860E008BB38C /* ScheduleTripState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTripState.swift; sourceTree = "<group>"; };
@@ -2807,7 +2805,6 @@
 				5840D6E41F37EA1900C8CB76 /* ScheduleDataProvider.swift */,
 				587BC0511F6EE71400B92BB6 /* AlertScheduleDataProvider.swift */,
 				58EB8D301F5D94640028A487 /* BaseScheduleDataProvider.swift */,
-				58FBBFAB1F658D3500B7A4DA /* ScheduleProviderDatabaseStateWatcher.swift */,
 				58EB8D321F5D98320028A487 /* NextToArriveScheduleDataProvider.swift */,
 			);
 			path = ScheduleDataProviders;
@@ -3771,7 +3768,6 @@
 				58248B6C1F6D5B6900DA2D65 /* FavoritesState_FavoritesExistWatcher.swift in Sources */,
 				676355031F5E998200CA7EAB /* SelectSchedulesRowDisplayModel.swift in Sources */,
 				58126F771F64127B00A6E187 /* NextToArrivePrerequisiteStatus.swift in Sources */,
-				58FBBFAC1F658D3500B7A4DA /* ScheduleProviderDatabaseStateWatcher.swift in Sources */,
 				676355091F5EB2C700CA7EAB /* StopWithDistance.swift in Sources */,
 				679BC9D4211150C600F666BA /* AddTimeframeButtonView.swift in Sources */,
 				678F052E1F5B7D3E00CC4D3C /* AddressLookupActions.swift in Sources */,
