@@ -83,11 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func processNotificationTap(userInfo: [AnyHashable: Any]) {
-        let payload = SeptaNotification(payload: userInfo)
-        if let notificationType = payload.type, notificationType == .delay {
-            let action = DelayNotificationTapped(payload: payload, description: "User tapped on rail delay notification")
-            store.dispatch(action)
-        }
+        NotificationsManager.handleTap(info: userInfo)
     }
 }
 
@@ -118,6 +114,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
 extension AppDelegate: MessagingDelegate {
     func messaging(_: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        UserDefaults.standard.setValue(fcmToken, forKey: NotificationsManager.fcmTokenKey)
+        UserDefaults.standard.setValue(fcmToken, forKey: NotificationsManager.Keys.fcmTokenKey)
     }
 }

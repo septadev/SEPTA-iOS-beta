@@ -32,6 +32,8 @@ class NextToArriveMiddleware {
             generateActionsToNavigateToAlertDetailsFromSchedules(action: action)
         case let action as NavigateToAlertDetailsFromNextToArrive:
             generateActionsToNavigateToAlertDetailsFromNextToArrive(action: action)
+        case let action as NavigateToAlertDetailsFromNotification:
+            generateActionsToNavigateToAlertDetailsFromNotifification(action: action)
         case let action as NavigateToSchedulesFromNextToArriveScheduleRequest:
             generateActionsToNavigateToSchedulesFromNextToArriveScheduleRequest(action: action)
         default:
@@ -67,6 +69,17 @@ class NextToArriveMiddleware {
     }
 
     static func generateActionsToNavigateToAlertDetailsFromSchedules(action: NavigateToAlertDetailsFromSchedules) {
+        let copyScheduleState = CopyScheduleStateToTargetForScheduleAction(
+            targetForScheduleAction: .alerts,
+            scheduleState: action.scheduleState,
+            description: "Importing Schedule State into alerts"
+        )
+        store.dispatch(copyScheduleState)
+
+        navigateToAlertDetails()
+    }
+
+    static func generateActionsToNavigateToAlertDetailsFromNotifification(action: NavigateToAlertDetailsFromNotification) {
         let copyScheduleState = CopyScheduleStateToTargetForScheduleAction(
             targetForScheduleAction: .alerts,
             scheduleState: action.scheduleState,

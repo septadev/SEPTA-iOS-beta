@@ -19,14 +19,14 @@ struct NotificationReducer {
         }
     }
 
-    static func reduceNotificationAction(action: NotificationAction, state: NotificationState) -> NotificationState {
-        var notificationState = state
-        switch action {
-        case let action as DelayNotificationTapped:
-            notificationState.payload = action.payload
-        default:
-            break
-        }
-        return notificationState
+    static func reduceNotificationAction(action _: NotificationAction, state: NotificationState) -> NotificationState {
+//        var notificationState = state
+//        switch action {
+//        case let action as DelayNotificationTapped:
+//            notificationState.payload = action.payload
+//        default:
+//            break
+//        }
+        return state
     }
 }

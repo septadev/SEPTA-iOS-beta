@@ -23,15 +23,15 @@ class NotificationProvider: StoreSubscriber {
     }
 
     func subscribe() {
-        store.subscribe(self) {
-            $0.select { $0.notificationState.payload }.skipRepeats { $0 == $1 }
-        }
+//        store.subscribe(self) {
+//            $0.select { $0.notificationState.payload }.skipRepeats { $0 == $1 }
+//        }
     }
 
-    func newState(state: StoreSubscriberStateType) {
-        if let vehicleId = state?.vehicleId, let routeId = state?.routeId {
-            retrieveRealTimeRailDetail(vehicleId: vehicleId, routeId: routeId)
-        }
+    func newState(state _: StoreSubscriberStateType) {
+//        if let vehicleId = state?.vehicleId, let routeId = state?.routeId {
+//            retrieveRealTimeRailDetail(vehicleId: vehicleId, routeId: routeId)
+//        }
     }
 
     func retrieveRealTimeRailDetail(vehicleId: String, routeId: String) {

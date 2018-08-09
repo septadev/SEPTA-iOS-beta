@@ -31,12 +31,6 @@ public class DateFormatters {
         return formatter
     }()
 
-    static var hourMinuteFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a"
-        return formatter
-    }()
-
     static var ymdFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -46,6 +40,12 @@ public class DateFormatters {
     static var uiDateTimeFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "M/d/yyyy h:mm a"
+        return formatter
+    }()
+
+    static var hourMinuteFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
         return formatter
     }()
 

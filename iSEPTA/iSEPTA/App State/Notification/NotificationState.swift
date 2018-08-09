@@ -10,9 +10,9 @@ import Foundation
 import SeptaSchedule
 
 struct NotificationState: Codable, Equatable {
-    var payload: SeptaNotification?
+    var payload: String?
 
-    init(payload: SeptaNotification? = nil) {
+    init(payload: String? = nil) {
         self.payload = payload
     }
 }
