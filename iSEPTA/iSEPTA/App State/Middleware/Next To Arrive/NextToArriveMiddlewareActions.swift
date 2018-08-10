@@ -26,7 +26,12 @@ struct NavigateToAlertDetailsFromSchedules: NextToArriveMiddlewareAction {
 }
 
 struct NavigateToAlertDetailsFromNotification: NextToArriveMiddlewareAction {
-    let scheduleState: ScheduleState
+    let notification: SeptaAlertDetourNotification
+    let description = "Navigate to Alert Details From a Push Notification"
+}
+
+struct NavigateToNextToArriveFromDelayNotification: NextToArriveMiddlewareAction {
+    let notification: SeptaDelayNotification
     let description = "Navigate to Alert Details From a Push Notification"
 }
 

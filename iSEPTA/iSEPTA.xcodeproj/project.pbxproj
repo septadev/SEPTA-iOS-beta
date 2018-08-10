@@ -135,6 +135,7 @@
 		58248B701F6D6C3800DA2D65 /* SaveFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B6F1F6D6C3800DA2D65 /* SaveFavoriteButton.swift */; };
 		58248B721F6D77A100DA2D65 /* DeleteFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B711F6D77A100DA2D65 /* DeleteFavoriteButton.swift */; };
 		58248B7D1F6D992900DA2D65 /* FavoriteToEditWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B7C1F6D992900DA2D65 /* FavoriteToEditWatcher.swift */; };
+		58252234211CE1E000CAB9E6 /* NotificationsManager+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58252233211CE1E000CAB9E6 /* NotificationsManager+Mock.swift */; };
 		582531951F406E790088D056 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 582531941F406E790088D056 /* DefaultPreferences.plist */; };
 		582531981F40707C0088D056 /* DefaultPreferencesLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582531971F40707C0088D056 /* DefaultPreferencesLoader.swift */; };
 		5825319A1F407D380088D056 /* UserDefaultsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582531991F407D380088D056 /* UserDefaultsLoader.swift */; };
@@ -895,6 +896,7 @@
 		58248B6F1F6D6C3800DA2D65 /* SaveFavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFavoriteButton.swift; sourceTree = "<group>"; };
 		58248B711F6D77A100DA2D65 /* DeleteFavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFavoriteButton.swift; sourceTree = "<group>"; };
 		58248B7C1F6D992900DA2D65 /* FavoriteToEditWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteToEditWatcher.swift; sourceTree = "<group>"; };
+		58252233211CE1E000CAB9E6 /* NotificationsManager+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationsManager+Mock.swift"; sourceTree = "<group>"; };
 		582531941F406E790088D056 /* DefaultPreferences.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
 		582531971F40707C0088D056 /* DefaultPreferencesLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPreferencesLoader.swift; sourceTree = "<group>"; };
 		582531991F407D380088D056 /* UserDefaultsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsLoader.swift; sourceTree = "<group>"; };
@@ -1620,6 +1622,7 @@
 			isa = PBXGroup;
 			children = (
 				0E2777FB211249EA00507CFE /* NotificationsManager.swift */,
+				58252233211CE1E000CAB9E6 /* NotificationsManager+Mock.swift */,
 				5862859B211CC3EE00F4F012 /* NotificationManager+RemoteNotifications.swift */,
 				5862859D211CCBAF00F4F012 /* NotificationsManager+DeepLinking.swift */,
 				58628599211CC2C700F4F012 /* NotificationManager+Codable.swift */,
@@ -4028,6 +4031,7 @@
 				5803C37E210B64EF00BFAE7A /* PushNotificationAuthorizationStatus.swift in Sources */,
 				586C1CED1F69A7E10023607C /* DatabaseLoadingModalViewController.swift in Sources */,
 				670C59F51F8A712900CAE1AC /* AppInfoView.swift in Sources */,
+				58252234211CE1E000CAB9E6 /* NotificationsManager+Mock.swift in Sources */,
 				5840D6E01F37E5FB00C8CB76 /* ScheduleReducer.swift in Sources */,
 				67F028A01F7EE3C20032F99C /* ContactPoint.swift in Sources */,
 				6789B7831F8FEF7C008C6DCA /* TripDetailActions.swift in Sources */,

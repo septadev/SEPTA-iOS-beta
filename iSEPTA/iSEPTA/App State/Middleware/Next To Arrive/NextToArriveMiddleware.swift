@@ -36,6 +36,8 @@ class NextToArriveMiddleware {
             generateActionsToNavigateToAlertDetailsFromNotifification(action: action)
         case let action as NavigateToSchedulesFromNextToArriveScheduleRequest:
             generateActionsToNavigateToSchedulesFromNextToArriveScheduleRequest(action: action)
+        case let action as NavigateToNextToArriveFromDelayNotification:
+            generateActionsToNavigateToNextToArriveFromDelayNotification(action: action)
         default:
             break
         }
@@ -80,14 +82,22 @@ class NextToArriveMiddleware {
     }
 
     static func generateActionsToNavigateToAlertDetailsFromNotifification(action: NavigateToAlertDetailsFromNotification) {
-        let copyScheduleState = CopyScheduleStateToTargetForScheduleAction(
-            targetForScheduleAction: .alerts,
-            scheduleState: action.scheduleState,
-            description: "Importing Schedule State into alerts"
-        )
-        store.dispatch(copyScheduleState)
+        let transitMode = action.notification.transitMode
+        let routeId = action.notification.routeId
+        RoutesCommand.sharedInstance.routes(forTransitMode: transitMode) { routes, _ in
+            guard let route = routes?.first(where: { $0.routeId == routeId }) else { return }
 
-        navigateToAlertDetails()
+            let scheduleRequest = ScheduleRequest(transitMode: transitMode, selectedRoute: route)
+            let scheduleState = ScheduleState(scheduleRequest: scheduleRequest, scheduleData: ScheduleData(), scheduleStopEdit: ScheduleStopEdit())
+
+            let action = CopyScheduleStateToTargetForScheduleAction(
+                targetForScheduleAction: .alerts,
+                scheduleState: scheduleState,
+                description: "Importing Schedule State into alerts"
+            )
+            store.dispatch(action)
+            navigateToAlertDetails()
+        }
     }
 
     static func generateActionsToNavigateToAlertDetailsFromNextToArrive(action: NavigateToAlertDetailsFromNextToArrive) {
@@ -96,6 +106,28 @@ class NextToArriveMiddleware {
         scheduleStateBuilder.updateScheduleStateInAlerts(nextToArriveStop: action.nextToArriveStop, scheduleRequest: scheduleRequest)
 
         navigateToAlertDetails()
+    }
+
+    static func generateActionsToNavigateToNextToArriveFromDelayNotification(action: NavigateToNextToArriveFromDelayNotification) {
+        let notif = action.notification
+        RoutesCommand.sharedInstance.routes(forTransitMode: .rail) { routes, _ in
+            guard let routes = routes,
+                let selectedRoute = routes.first(where: { $0.routeId == notif.routeId }) else { return }
+
+            StopsForDelayNotification.sharedInstance.stops(routeId: notif.routeId, tripId: notif.vehicleId, date: Date(), endStopId: notif.destinationStopId) { stops, _ in
+                guard let stops = stops, stops.count == 2 else { return }
+
+                let scheduleRequest = ScheduleRequest(transitMode: notif.transitMode, selectedRoute: selectedRoute, selectedStart: stops[0], selectedEnd: stops[1], scheduleType: nil, reverseStops: false)
+
+                let action = CopyScheduleRequestToTargetForScheduleAction(targetForScheduleAction: .nextToArrive, scheduleRequest: scheduleRequest, description: "Jumping to Next To Arrive from a delay notification")
+                store.dispatch(action)
+
+                store.dispatch(SwitchTabs(activeNavigationController: .nextToArrive, description: "Switching Tabs to NTA to show a delay notification"))
+
+                let navigationAction = ResetViewState(viewController: .nextToArriveDetailController, description: "Navigating to Next To Arrive Detail")
+                store.dispatch(navigationAction)
+            }
+        }
     }
 
     static func navigateToAlertDetails() {

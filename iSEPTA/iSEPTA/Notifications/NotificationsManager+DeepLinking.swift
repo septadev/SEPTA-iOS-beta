@@ -16,26 +16,35 @@ extension NotificationsManager {
 
         switch notificationType {
         case .alert, .detour:
-            guard let data = info[Keys.notificationKey] as? Data,
-
-                let alertDetailNotification = try? decoder.decode(SeptaAlertDetourNotification.self, from: data) else { return }
-
-            findRouteAndDeepLink(notification: alertDetailNotification)
-
+            guard let alertDetourNotification = decodeAlertDetourNotification(info: info) else { return }
+            navigateToAlertDetails(notification: alertDetourNotification)
+        case .delay:
+            guard let delayNotification = decodeDelayNotification(info: info) else { return }
+            navigateToNextToArrive(notification: delayNotification)
         default:
             break
         }
     }
 
-    static func findRouteAndDeepLink(notification: SeptaAlertDetourNotification) {
-        let transitMode = notification.transitMode
-        RoutesCommand.sharedInstance.routes(forTransitMode: transitMode) { routes, _ in
-            guard let route = routes?.first(where: { $0.routeId == notification.routeId }) else { return }
+    static func decodeAlertDetourNotification(info: PayLoad) -> SeptaAlertDetourNotification? {
+        guard let data = info[Keys.notificationKey] as? Data,
+            let alertDetailNotification = try? decoder.decode(SeptaAlertDetourNotification.self, from: data) else { return nil }
+        return alertDetailNotification
+    }
 
-            let scheduleRequest = ScheduleRequest(transitMode: transitMode, selectedRoute: route)
-            let scheduleState = ScheduleState(scheduleRequest: scheduleRequest, scheduleData: ScheduleData(), scheduleStopEdit: ScheduleStopEdit())
-            let action = NavigateToAlertDetailsFromNotification(scheduleState: scheduleState)
-            store.dispatch(action)
-        }
+    static func navigateToAlertDetails(notification: SeptaAlertDetourNotification) {
+        let action = NavigateToAlertDetailsFromNotification(notification: notification)
+        store.dispatch(action)
+    }
+
+    static func decodeDelayNotification(info: PayLoad) -> SeptaDelayNotification? {
+        guard let data = info[Keys.notificationKey] as? Data,
+            let delayNotification = try? decoder.decode(SeptaDelayNotification.self, from: data) else { return nil }
+        return delayNotification
+    }
+
+    static func navigateToNextToArrive(notification: SeptaDelayNotification) {
+        let action = NavigateToNextToArriveFromDelayNotification(notification: notification)
+        store.dispatch(action)
     }
 }

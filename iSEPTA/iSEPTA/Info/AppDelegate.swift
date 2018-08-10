@@ -43,8 +43,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             processNotificationTap(userInfo: userInfo)
         }
 
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+
+            self?.mockNotificationRequest.sendRequest()
+        }
+
         return true
     }
+
+    let mockNotificationRequest = RealTimeMockRequest()
 
     func applicationWillResignActive(_: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -108,6 +115,10 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
         processNotificationTap(userInfo: userInfo)
+
+        DispatchQueue.main.async { [weak self] in
+            self?.processNotificationTap(userInfo: userInfo)
+        }
         completionHandler()
     }
 }
