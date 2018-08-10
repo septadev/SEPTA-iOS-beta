@@ -32,6 +32,8 @@ class MoreNavigationController: BaseNavigationController, IdentifiableNavControl
         switch resetViewState.viewController {
         case .customPushNotificationsController:
             viewControllers = retrieveOrInstantiate(viewControllers: [.moreViewController, .managePushNotficationsController, .customPushNotificationsController])
+        case .managePushNotficationsController:
+            viewControllers = retrieveOrInstantiate(viewControllers: [.moreViewController, .managePushNotficationsController])
         default: break
         }
 
