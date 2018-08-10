@@ -8,16 +8,17 @@
 
 import Foundation
 import UIKit
-// var keepAlive = true
 class RealTimeMockRequest {
-//     static var networkFormatter: DateFormatter = {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-//        return formatter
-//    }()
     func sendRequest() {
         let session = URLSession.shared
-        let url = URL(string: "https://vnjb5kvq2b.execute-api.us-east-1.amazonaws.com/prod/realtimearrivals?destination=90806&origin=90707&type=RAIL")!
+//        90324    Langhorne
+        // 90326    Yardley
+        // 90317    Meadowbrook
+        // 90409    Elkins Park
+
+        let begin = "90409" //
+        let end = "90326"
+        let url = URL(string: "https://vnjb5kvq2b.execute-api.us-east-1.amazonaws.com/prod/realtimearrivals?destination=\(end)&origin=\(begin)&type=RAIL")!
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -38,7 +39,6 @@ class RealTimeMockRequest {
             } catch {
                 print(error.localizedDescription)
             }
-//            keepAlive = false
         })
         task.resume()
         session.finishTasksAndInvalidate()
@@ -66,12 +66,3 @@ class RealTimeMockRequest {
         }
     }
 }
-
-// let request = RealTimeMockRequest()
-// request.sendRequest()
-//
-// let runLoop = RunLoop.current
-// while keepAlive &&
-//    runLoop.run(mode:RunLoopMode.defaultRunLoopMode, before: Date(timeIntervalSinceNow: 0.1)) {
-//    // Run, run, run
-// }

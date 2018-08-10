@@ -39,10 +39,10 @@ struct PushNotificationPreferenceState: Codable, Equatable {
     /// those preferences do not include whether or not the user has authorized
     /// push notifications in the first place.  That needs to be checked separately
     /// TODO we will probably want to move this method someplace else
-    func userShouldReceiveNotification(atDate date: Date, routeId: String, transitMode: TransitMode) -> Bool {
+    func userShouldReceiveNotification(atDate date: Date, routeId _: String, transitMode _: TransitMode) -> Bool {
         let timeWindowsMatches = notificationTimeWindows.map { $0.dateFitsInRange(date: date) }
         return
-            routeIds.filter({ $0.isEnabled && $0.routeId == routeId && $0.transitMode == transitMode }).count == 1 &&
+//            routeIds.filter({ $0.isEnabled && $0.routeId == routeId && $0.transitMode == transitMode }).count == 1 &&
             daysOfWeek.matchesDate(date) &&
             timeWindowsMatches.contains(true)
     }

@@ -66,9 +66,8 @@ FROM (
          ON T.service_id = C.service_id
          JOIN stops_rail S
          ON ST.stop_id = S.stop_id
-       WHERE block_id = ':trip_id' AND T.route_id = ':route_id' AND T.service_id IN (SELECT service_id
-       FROM calendar_rail
-       WHERE days & :days)
+       WHERE block_id = ':trip_id' AND T.route_id = ':route_id'
+       AND T.service_id IN (SELECT service_id FROM calendar_rail WHERE days & :days)
        ORDER BY stop_sequence
        LIMIT 1) S
 

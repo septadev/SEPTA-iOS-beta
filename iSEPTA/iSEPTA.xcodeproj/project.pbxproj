@@ -136,6 +136,7 @@
 		58248B721F6D77A100DA2D65 /* DeleteFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B711F6D77A100DA2D65 /* DeleteFavoriteButton.swift */; };
 		58248B7D1F6D992900DA2D65 /* FavoriteToEditWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58248B7C1F6D992900DA2D65 /* FavoriteToEditWatcher.swift */; };
 		58252234211CE1E000CAB9E6 /* NotificationsManager+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58252233211CE1E000CAB9E6 /* NotificationsManager+Mock.swift */; };
+		58252242211E08D700CAB9E6 /* NextToArriveDetailForDelayNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58252241211E08D700CAB9E6 /* NextToArriveDetailForDelayNotification.swift */; };
 		582531951F406E790088D056 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 582531941F406E790088D056 /* DefaultPreferences.plist */; };
 		582531981F40707C0088D056 /* DefaultPreferencesLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582531971F40707C0088D056 /* DefaultPreferencesLoader.swift */; };
 		5825319A1F407D380088D056 /* UserDefaultsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582531991F407D380088D056 /* UserDefaultsLoader.swift */; };
@@ -897,6 +898,7 @@
 		58248B711F6D77A100DA2D65 /* DeleteFavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFavoriteButton.swift; sourceTree = "<group>"; };
 		58248B7C1F6D992900DA2D65 /* FavoriteToEditWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteToEditWatcher.swift; sourceTree = "<group>"; };
 		58252233211CE1E000CAB9E6 /* NotificationsManager+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationsManager+Mock.swift"; sourceTree = "<group>"; };
+		58252241211E08D700CAB9E6 /* NextToArriveDetailForDelayNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveDetailForDelayNotification.swift; sourceTree = "<group>"; };
 		582531941F406E790088D056 /* DefaultPreferences.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
 		582531971F40707C0088D056 /* DefaultPreferencesLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPreferencesLoader.swift; sourceTree = "<group>"; };
 		582531991F407D380088D056 /* UserDefaultsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsLoader.swift; sourceTree = "<group>"; };
@@ -1628,6 +1630,7 @@
 				58628599211CC2C700F4F012 /* NotificationManager+Codable.swift */,
 				58628597211CBD0800F4F012 /* NotificationManager+Subscriptions.swift */,
 				0EE428D32114D4C500EBF6FE /* SeptaNotification.swift */,
+				58252241211E08D700CAB9E6 /* NextToArriveDetailForDelayNotification.swift */,
 				58628593211C92DA00F4F012 /* TransitMode+Notifications.swift */,
 			);
 			path = Notifications;
@@ -3827,6 +3830,7 @@
 				670C59DE1F8920E900CAE1AC /* AlertState_GenericAlertDetailsWatcher.swift in Sources */,
 				586852DA1F8D49280081C1CC /* NextToArriveDetailProvider.swift in Sources */,
 				671A19291F66385100C8EEDA /* NoConnectionCell.swift in Sources */,
+				58252242211E08D700CAB9E6 /* NextToArriveDetailForDelayNotification.swift in Sources */,
 				67A0DD292110EC28001EAE15 /* DatePickerTransitioningDelegate.swift in Sources */,
 				588F27F71F39E0BF00D62425 /* UserPreferenceActions.swift in Sources */,
 				58490E491F56019B007DBCA1 /* AlertReducer.swift in Sources */,

@@ -122,10 +122,14 @@ class NextToArriveMiddleware {
                 let action = CopyScheduleRequestToTargetForScheduleAction(targetForScheduleAction: .nextToArrive, scheduleRequest: scheduleRequest, description: "Jumping to Next To Arrive from a delay notification")
                 store.dispatch(action)
 
+                let refreshAction = NextToArriveRefreshDataRequested(refreshUpdateRequested: true)
+                store.dispatch(refreshAction)
+
                 store.dispatch(SwitchTabs(activeNavigationController: .nextToArrive, description: "Switching Tabs to NTA to show a delay notification"))
 
-                let navigationAction = ResetViewState(viewController: .nextToArriveDetailController, description: "Navigating to Next To Arrive Detail")
-                store.dispatch(navigationAction)
+                store.dispatch(ResetViewState(viewController: .nextToArriveDetailController, description: "Heading to Next to Arrive"))
+
+                NextToArriveDetailForDelayNotification.sharedInstance.waitForRealTimeData(routeId: notif.routeId, tripId: notif.vehicleId)
             }
         }
     }
