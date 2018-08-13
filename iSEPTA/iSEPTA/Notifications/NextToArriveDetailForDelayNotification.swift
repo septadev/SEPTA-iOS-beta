@@ -13,16 +13,13 @@ class NextToArriveDetailForDelayNotification: StoreSubscriber {
     typealias StoreSubscriberStateType = [NextToArriveTrip]
     public static let sharedInstance = NextToArriveDetailForDelayNotification()
 
-    var timer: Timer?
-    var tripId: Int = 0
-    var routeId: String = ""
+    var tripIdInt: Int = 0
 
     private init() {}
 
-    func waitForRealTimeData(routeId _: String, tripId: String) {
+    func waitForRealTimeData(tripId: String) {
         guard let tripIdInt = Int(tripId) else { return }
-        self.tripId = tripIdInt
-        startTimer()
+        self.tripIdInt = tripIdInt
         subscribe()
     }
 
@@ -32,19 +29,19 @@ class NextToArriveDetailForDelayNotification: StoreSubscriber {
         }
     }
 
-    func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(tenSecondTimerFired(timer:)), userInfo: nil, repeats: true)
-    }
-
     func newState(state: StoreSubscriberStateType) {
-        let trips: [NextToArriveStop] = state.map({ $0.startStop }) + state.map({ $0.endStop })
-        if let matchingStop = trips.first(where: { $0.tripId == self.tripId && $0.routeId == self.routeId }) {
-            let action = ShowTripDetails(nextToArriveStop: matchingStop)
-            store.dispatch(action)
-        }
-    }
+        let trips = state
 
-    @objc func tenSecondTimerFired(timer _: Timer) {
-        store.unsubscribe(self)
+        let allstops = trips.map({ $0.startStop }) + trips.map({ $0.endStop })
+
+        let matchingStop = allstops.first(where: {
+            guard let tripIdInt = $0.tripId else { return false }
+            return tripIdInt == self.tripIdInt
+        })
+
+        if let matchingStop = matchingStop, matchingStop.nextToArriveDetail != nil {
+            store.dispatch(ShowTripDetails(nextToArriveStop: matchingStop))
+            store.unsubscribe(self)
+        }
     }
 }

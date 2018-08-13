@@ -7,18 +7,16 @@
 //
 
 import Foundation
+import SeptaSchedule
 import UIKit
+
 class RealTimeMockRequest {
+    let tripId = "826"
+
     func sendRequest() {
         let session = URLSession.shared
-//        90324    Langhorne
-        // 90326    Yardley
-        // 90317    Meadowbrook
-        // 90409    Elkins Park
 
-        let begin = "90409" //
-        let end = "90326"
-        let url = URL(string: "https://vnjb5kvq2b.execute-api.us-east-1.amazonaws.com/prod/realtimearrivals?destination=\(end)&origin=\(begin)&type=RAIL")!
+        let url = URL(string: "https://vnjb5kvq2b.execute-api.us-east-1.amazonaws.com/prod/realtimearrivals/details?id=\(tripId)")!
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -33,9 +31,8 @@ class RealTimeMockRequest {
             do {
                 let json = try JSONSerialization.jsonObject(with: data)
                 guard let jsonDict = json as? [String: Any],
-                    let arrivals = jsonDict["arrivals"] as? [[String: Any]],
-                    let firstArrival = arrivals.first else { return }
-                strongSelf.mapResponse(firstArrival: firstArrival)
+                    let details = jsonDict["details"] as? [String: Any] else { return }
+                strongSelf.mapResponse(details: details)
             } catch {
                 print(error.localizedDescription)
             }
@@ -44,25 +41,39 @@ class RealTimeMockRequest {
         session.finishTasksAndInvalidate()
     }
 
-    func mapResponse(firstArrival: [String: Any]) {
-        guard let vehicleId = firstArrival["orig_line_trip_id"] as? String,
-            let routeId = firstArrival["orig_line_route_id"] as? String,
-            let destinationStopIdInt = firstArrival["orig_last_stop_id"] as? Int else { return }
+    func mapResponse(details: [String: Any]) {
+        guard let tripId = details["tripid"] as? String,
+            let nextStop = details["nextstop"] as? [String: Any],
+            let nextStopName = nextStop["station"] as? String,
+            let nextStopDelay = nextStop["delay"] as? Int,
+            let destination = details["destination"] as? [String: Any],
+            let destinationStopName = destination["station"] as? String,
+            let destinationStopDelay = destination["delay"] as? Int,
+            let routeName = details["line"] as? String else {
+            print(details)
+            return
+        }
 
-        let dict: [String: String] = [
-            "notificationType": "DELAY",
-            "routeId": routeId,
-            "message": "There is a super long delay on \(routeId) that will keep you busy for a long time",
-            "routeType": "RAIL",
-            "vehicleId": vehicleId,
-            "destinationStopId": String(destinationStopIdInt),
-            "delayType": "ACTUAL",
-            "expires": DateFormatters.networkFormatter.string(from: Date().addingTimeInterval(60 * 60 * 3)),
-        ]
+        let lsdlkjsdf = nextStop
 
-        DispatchQueue.main.async {
-            guard let delegate = UIApplication.shared.delegate as? AppDelegate else { return }
-            delegate.application(UIApplication.shared, didReceiveRemoteNotification: dict, fetchCompletionHandler: { _ in })
+        FindStopByStopNameCommand.sharedInstance.stop(stopName: destinationStopName) { [weak self] stops, _ in
+            guard let strongSelf = self, let stops = stops, let firstStop = stops.first else { return }
+
+            let dict: [String: String] = [
+                "notificationType": "DELAY",
+                "routeId": "PAO",
+                "message": "Route \(routeName), Trip \(tripId): Next Stop is \(nextStopName) with delay \(nextStopDelay); Destination \(destinationStopName) with delay \(destinationStopDelay)",
+                "routeType": "RAIL",
+                "vehicleId": String(strongSelf.tripId),
+                "destinationStopId": String(firstStop.stopId),
+                "delayType": "ACTUAL",
+                "expires": DateFormatters.networkFormatter.string(from: Date().addingTimeInterval(60 * 60 * 3)),
+            ]
+
+            DispatchQueue.main.async {
+                guard let delegate = UIApplication.shared.delegate as? AppDelegate else { return }
+                delegate.application(UIApplication.shared, didReceiveRemoteNotification: dict, fetchCompletionHandler: { _ in })
+            }
         }
     }
 }

@@ -7,14 +7,14 @@
 //
 import Foundation
 
-public class StopsForDelayNotification: BaseCommand {
-    public typealias StopsForDelayNotificationCompletion = ([Stop]?, Error?) -> Void
-    public static let sharedInstance = StopsForDelayNotification()
+public class FindStopByStopNameCommand: BaseCommand {
+    public typealias FindStopByStopNameCommandCompletion = ([Stop]?, Error?) -> Void
+    public static let sharedInstance = FindStopByStopNameCommand()
 
     public override init() {}
 
-    public func stops(routeId: String, tripId: String, date: Date, endStopId: String, completion: @escaping StopsForDelayNotificationCompletion) {
-        let sqlQuery = StopsForDelayNotificationSQLQuery(routeId: routeId, tripId: tripId, date: date, endStopId: endStopId)
+    public func stop(stopName: String, completion: @escaping FindStopByStopNameCommandCompletion) {
+        let sqlQuery = FindStopByStopNameSQLQuery(stopName: stopName)
         retrieveResults(sqlQuery: sqlQuery, userCompletion: completion) { (statement) -> [Stop] in
             var stops = [Stop]()
             for row in statement {

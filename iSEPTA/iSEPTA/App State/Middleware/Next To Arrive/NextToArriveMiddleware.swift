@@ -8,6 +8,7 @@
 
 import Foundation
 import ReSwift
+import SeptaRest
 import SeptaSchedule
 
 let nextToArriveMiddleware: Middleware<AppState> = { _, _ in { next in
@@ -110,27 +111,40 @@ class NextToArriveMiddleware {
 
     static func generateActionsToNavigateToNextToArriveFromDelayNotification(action: NavigateToNextToArriveFromDelayNotification) {
         let notif = action.notification
-        RoutesCommand.sharedInstance.routes(forTransitMode: .rail) { routes, _ in
-            guard let routes = routes,
-                let selectedRoute = routes.first(where: { $0.routeId == notif.routeId }) else { return }
+        let tripId = notif.vehicleId
+        guard notif.expires > Date() else { return }
+        let client = SEPTAApiClient.defaultClient(url: SeptaNetwork.sharedInstance.url, apiKey: SeptaNetwork.sharedInstance.apiKey)
 
-            StopsForDelayNotification.sharedInstance.stops(routeId: notif.routeId, tripId: notif.vehicleId, date: Date(), endStopId: notif.destinationStopId) { stops, _ in
-                guard let stops = stops, stops.count == 2 else { return }
+        client.getRealTimeRailArrivalDetail(tripId: tripId).then { details -> Void in
+            guard let details = details,
+                let destinationStation = details.destinationStation,
+                let nextStopStation = details.nextstopStation else { return }
 
-                let scheduleRequest = ScheduleRequest(transitMode: notif.transitMode, selectedRoute: selectedRoute, selectedStart: stops[0], selectedEnd: stops[1], scheduleType: nil, reverseStops: false)
+            FindStopByStopNameCommand.sharedInstance.stop(stopName: destinationStation) { stops, _ in
+                guard let stops = stops, let destinationStop = stops.first else { return }
 
-                let action = CopyScheduleRequestToTargetForScheduleAction(targetForScheduleAction: .nextToArrive, scheduleRequest: scheduleRequest, description: "Jumping to Next To Arrive from a delay notification")
-                store.dispatch(action)
+                FindStopByStopNameCommand.sharedInstance.stop(stopName: nextStopStation) { stops, _ in
+                    guard let stops = stops, let nextStop = stops.first else { return }
 
-                let refreshAction = NextToArriveRefreshDataRequested(refreshUpdateRequested: true)
-                store.dispatch(refreshAction)
+                    let selectedRoute = Route.allRailRoutesRoute()
 
-                store.dispatch(SwitchTabs(activeNavigationController: .nextToArrive, description: "Switching Tabs to NTA to show a delay notification"))
+                    let scheduleRequest = ScheduleRequest(transitMode: .rail, selectedRoute: selectedRoute, selectedStart: nextStop, selectedEnd: destinationStop)
 
-                store.dispatch(ResetViewState(viewController: .nextToArriveDetailController, description: "Heading to Next to Arrive"))
+                    let copyScheduleAction = CopyScheduleRequestToTargetForScheduleAction(targetForScheduleAction: .nextToArrive, scheduleRequest: scheduleRequest, description: "Handling a delay Notification")
+                    store.dispatch(copyScheduleAction)
 
-                NextToArriveDetailForDelayNotification.sharedInstance.waitForRealTimeData(routeId: notif.routeId, tripId: notif.vehicleId)
+                    let switchTabsAction = SwitchTabs(activeNavigationController: .nextToArrive, description: "Switching to Next to Arrive from a delay notification")
+                    store.dispatch(switchTabsAction)
+
+                    let resetViewState = ResetViewState(viewController: .nextToArriveDetailController, description: "loading up trip detail")
+                    store.dispatch(resetViewState)
+
+                    NextToArriveDetailForDelayNotification.sharedInstance.waitForRealTimeData(tripId: tripId)
+                }
             }
+
+        }.catch { error in
+            print(error.localizedDescription)
         }
     }
 
