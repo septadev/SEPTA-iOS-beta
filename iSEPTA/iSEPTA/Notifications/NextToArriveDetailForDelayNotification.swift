@@ -40,7 +40,11 @@ class NextToArriveDetailForDelayNotification: StoreSubscriber {
         })
 
         if let matchingStop = matchingStop, matchingStop.nextToArriveDetail != nil {
-            store.dispatch(ShowTripDetails(nextToArriveStop: matchingStop))
+            let action = UpdateTripDetails(tripDetails: matchingStop)
+            store.dispatch(action)
+            let resetViewState = ResetViewState(viewController: .tripDetailViewController, description: "loading up trip detail")
+            store.dispatch(resetViewState)
+
             store.unsubscribe(self)
         }
     }

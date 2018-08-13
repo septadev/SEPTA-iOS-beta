@@ -34,9 +34,11 @@ class NextToArriveScheduleDataProvider: BaseScheduleDataProvider {
     }
 
     override func processSelectedRoute(scheduleRequest: ScheduleRequest) {
-        let routes = store.state.nextToArriveState.scheduleState.scheduleData.availableRoutes.routes
-        if routes.count == 0 {
-            retrieveAvailableRoutes(scheduleRequest: scheduleRequest)
+        if store.state.nextToArriveState.scheduleState.scheduleRequest.transitMode != .rail {
+            let routes = store.state.nextToArriveState.scheduleState.scheduleData.availableRoutes
+            if routes.routes.count == 0 {
+                retrieveAvailableRoutes(scheduleRequest: scheduleRequest)
+            }
         }
     }
 

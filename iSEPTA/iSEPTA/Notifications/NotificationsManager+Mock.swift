@@ -11,7 +11,7 @@ import SeptaSchedule
 import UIKit
 
 class RealTimeMockRequest {
-    let tripId = "826"
+    let tripId = "828"
 
     func sendRequest() {
         let session = URLSession.shared
@@ -53,8 +53,6 @@ class RealTimeMockRequest {
             print(details)
             return
         }
-
-        let lsdlkjsdf = nextStop
 
         FindStopByStopNameCommand.sharedInstance.stop(stopName: destinationStopName) { [weak self] stops, _ in
             guard let strongSelf = self, let stops = stops, let firstStop = stops.first else { return }

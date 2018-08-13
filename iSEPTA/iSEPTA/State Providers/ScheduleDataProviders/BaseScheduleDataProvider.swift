@@ -32,9 +32,6 @@ class BaseScheduleDataProvider: StoreSubscriber, TargetForScheduleActionWatcherD
             subscribe()
         } else {
             unsubscribe()
-            store.dispatch(ClearRoutes(targetForScheduleAction: myTargetForScheduleAction))
-            store.dispatch(ClearTripStarts(targetForScheduleAction: myTargetForScheduleAction))
-            store.dispatch(ClearTripEnds(targetForScheduleAction: myTargetForScheduleAction))
         }
     }
 
