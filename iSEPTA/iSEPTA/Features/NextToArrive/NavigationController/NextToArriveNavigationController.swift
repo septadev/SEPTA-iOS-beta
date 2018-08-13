@@ -30,9 +30,12 @@ class NextToArriveNavigationController: BaseNavigationController {
         case .nextToArriveController:
             viewControllers = retrieveOrInstantiate(viewControllers: [.nextToArriveController])
         case .nextToArriveDetailController:
-            viewControllers = retrieveOrInstantiate(viewControllers: [.nextToArriveController, .nextToArriveDetailController])
+            let nextToArriveDetail = ViewController.nextToArriveDetailController.instantiateViewController()
+            viewControllers = retrieveOrInstantiate(viewControllers: [.nextToArriveController]) + [nextToArriveDetail]
         case .tripDetailViewController:
-            viewControllers = retrieveOrInstantiate(viewControllers: [.nextToArriveController, .nextToArriveDetailController, .tripDetailViewController])
+            let nextToArriveDetail = ViewController.nextToArriveDetailController.instantiateViewController()
+            let tripDetail = ViewController.tripDetailViewController.instantiateViewController()
+            viewControllers = retrieveOrInstantiate(viewControllers: [.nextToArriveController]) + [nextToArriveDetail, tripDetail]
         default: break
         }
 
