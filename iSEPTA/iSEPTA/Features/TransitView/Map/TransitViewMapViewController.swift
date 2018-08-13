@@ -39,6 +39,9 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
                     route.alertsAreInteractive = vm == selectedRoute
                 }
             }
+            if let selectedRouteId = selectedRoute?.routeId {
+                updateOverlays(for: selectedRouteId)
+            }
         }
     }
 
@@ -312,6 +315,19 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
             }
         }
     }
+
+    private func updateOverlays(for selectedRouteId: String) {
+        for overlay in mapView.overlays {
+            if let overlay = overlay as? RouteOverlay, let renderer = mapView.renderer(for: overlay) as? MKPolylineRenderer {
+                if overlay.routeId == selectedRouteId {
+                    renderer.strokeColor = SeptaColor.transitViewActiveRoute
+                } else {
+                    renderer.strokeColor = SeptaColor.transitViewInactiveRoute
+                }
+                renderer.invalidatePath()
+            }
+        }
+    }
 }
 
 extension TransitViewMapViewController: MKMapViewDelegate {
@@ -396,13 +412,6 @@ extension TransitViewMapViewController: TransitViewAnnotationViewDelegate {
 
         // Set new active route ID
         activateRouteById(routeId: routeId)
-
-        // Clear old overlays
-        mapView.removeOverlays(mapView.overlays)
-        routesHaveBeenAdded = false
-
-        // Add overlays back
-        drawRoutes(routeIds: transitRoutes.map { $0.routeId })
 
         // Clear old annotations
         let previouslyAddedAnnotations = vehicleAnnotationsAdded.map { $0.location }
