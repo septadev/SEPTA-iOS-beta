@@ -15,12 +15,18 @@ class NextToArriveDetailForDelayNotification: StoreSubscriber {
 
     var tripIdInt: Int = 0
 
+    var timer: Timer?
+
     private init() {}
 
     func waitForRealTimeData(tripId: String) {
         guard let tripIdInt = Int(tripId) else { return }
         self.tripIdInt = tripIdInt
         subscribe()
+        timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { timer in
+            timer.invalidate()
+            store.unsubscribe(self)
+        })
     }
 
     func subscribe() {
