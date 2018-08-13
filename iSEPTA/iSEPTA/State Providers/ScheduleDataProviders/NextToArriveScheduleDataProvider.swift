@@ -33,6 +33,13 @@ class NextToArriveScheduleDataProvider: BaseScheduleDataProvider {
         return scheduleRequest.selectedRoute != nil
     }
 
+    override func processSelectedRoute(scheduleRequest: ScheduleRequest) {
+        let routes = store.state.nextToArriveState.scheduleState.scheduleData.availableRoutes.routes
+        if routes.count == 0 {
+            retrieveAvailableRoutes(scheduleRequest: scheduleRequest)
+        }
+    }
+
     deinit {
         print("Next to arrive schedule data provider will vanish")
     }

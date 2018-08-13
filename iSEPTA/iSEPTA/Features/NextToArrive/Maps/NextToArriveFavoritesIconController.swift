@@ -85,7 +85,7 @@ class NextToArriveFavoritesIconController: FavoritesState_FavoritesWatcherDelega
 
     func updateFavoritesNavBarIcon() {
         navigationItem.rightBarButtonItems?.removeAll()
-        if store.state.targetForScheduleActions() == .favorites {
+        if store.state.currentTargetForScheduleActions() == .favorites {
             if let currentFavorite = currentFavorite, currentFavorite.favoriteId != Favorite.reversedFavoriteId {
                 navigationItem.rightBarButtonItems = [editFavoriteBarButtonItem, refreshBarButtonItem]
 

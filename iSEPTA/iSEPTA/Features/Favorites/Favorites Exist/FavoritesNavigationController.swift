@@ -28,17 +28,17 @@ class FavoritesNavigationController: BaseNavigationController, FavoritesState_Fa
         }
     }
 
+    override func subscribe() {
+        store.subscribe(self) {
+            $0.select { $0.navigationState.appStackState[.favorites] }
+        }
+    }
+
     func showFavoritesController() {
-        initializeNavStackState(viewController: .favoritesViewController)
+        setRootViewController(viewController: .favoritesViewController)
     }
 
     func showNoFavoritesViewController() {
-        initializeNavStackState(viewController: .noFavoritesViewController)
-    }
-
-    func initializeNavStackState(viewController: ViewController) {
-        let navigationStackState = NavigationStackState(viewControllers: [viewController], modalViewController: nil)
-        let action = InitializeNavigationState(navigationController: .favorites, navigationStackState: navigationStackState, description: "Initialiazing Favorites nav stack state")
-        store.dispatch(action)
+        setRootViewController(viewController: .noFavoritesViewController)
     }
 }

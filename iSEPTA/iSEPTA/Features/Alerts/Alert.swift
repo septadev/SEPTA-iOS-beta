@@ -48,7 +48,7 @@ class UIAlert {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
 
         alert.addAction(UIAlertAction(title: "Go to Schedules", style: UIAlertActionStyle.default) { _ in
-            let action = SwitchTabs(activeNavigationController: .schedules, description: "Jump to Schedules after error in next to arrive")
+            let action = NavigateToSchedulesFromNextToArriveScheduleRequest(scheduleRequest: store.state.currentTargetForScheduleActionsScheduleRequest())
             store.dispatch(action)
         })
 
@@ -125,6 +125,22 @@ class UIAlert {
             completion?()
         })
 
+        // show the alert
+        viewController.present(alert, animated: true, completion: nil)
+    }
+
+    static func presentEnableAllRoutes(viewController: UIViewController?, pushNotificationRoute _: PushNotificationRoute) {
+        // create the alert
+        guard let viewController = viewController ?? UIApplication.shared.keyWindow?.rootViewController else { return }
+        let alert = UIAlertController(title: "SEPTA", message: "Push Notifications are not enabled for the app.  Do you want to re-enabled all your routes?", preferredStyle: UIAlertControllerStyle.alert)
+
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "Enable All Routes", style: UIAlertActionStyle.default) { _ in
+            store.dispatch(UserWantsToSubscribeToPushNotifications(viewController: viewController, boolValue: true))
+        })
+        alert.addAction(UIAlertAction(title: "Just This Route", style: UIAlertActionStyle.default) { _ in
+            store.dispatch(UserWantsToSubscribeToPushNotifications(viewController: viewController, boolValue: true, alsoEnableRoutes: false))
+        })
         // show the alert
         viewController.present(alert, animated: true, completion: nil)
     }

@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="ML2-hE-GXd">
+                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="ML2-hE-GXd">
                             <rect key="frame" x="0.0" y="103" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -39,6 +39,9 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="My Notifications" id="Ijc-29-8VP">
+                        <barButtonItem key="backBarButtonItem" title=" " id="a6F-bw-8gW"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OeB-UQ-S0e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -132,6 +135,9 @@ service, weather alerts and special events</string>
                             <outlet property="delegate" destination="5Oc-gt-YBb" id="bGa-iE-7t1"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Manage Notifications" id="UI8-eS-czy">
+                        <barButtonItem key="backBarButtonItem" title=" " id="8kX-wi-RYN"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qpN-rY-llQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

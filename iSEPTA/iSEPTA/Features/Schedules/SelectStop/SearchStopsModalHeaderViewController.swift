@@ -33,7 +33,7 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber {
     weak var delegate: SearchModalHeaderDelegate?
     var textFieldDelegate: UITextFieldDelegate!
     var transitMode: TransitMode! = TransitMode.currentTransitMode()
-    var targetForScheduleAction: TargetForScheduleAction! = store.state.targetForScheduleActions()
+    var targetForScheduleAction: TargetForScheduleAction! = store.state.currentTargetForScheduleActions()
 
     @IBAction func userTappedSearchByStops(_: Any) {
         if searchMode == .directLookupWithAddress {

@@ -24,97 +24,185 @@ let pushNotificationsMiddleware: Middleware<AppState> = { dispatch, getState in 
 
 class PushNotificationMiddleware {
     static func reduce(action: SeptaAction, state: PushNotificationPreferenceState, authorizationStatus: PushNotificationAuthorizationState, dispatch: @escaping DispatchFunction, next: @escaping DispatchFunction) {
-        switch action {
-        case let action as UpdateSystemAuthorizationStatusForPushNotifications:
-            next(action)
-            reduceUpdateSystemAuthorizationStatusForPushNotifications(action: action, state: state, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
-        case let action as AddPushNotificationRoute:
-            next(action)
-            reduceAddPushNotificationRoute(action: action, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
-        case let action as ToggleSwitchAction:
-            next(action)
-            reduceAddPushNotificationFeature(action: action, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
-        case let action as PushViewController where action.viewController == .customPushNotificationsController:
-            reducePushCustomizePushNotifications(action: action, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
-        default:
+        if let action = action as? UserPreferencesAction {
+            next(action) // we let the action go through and reverse it later if needed
+            switch action {
+            case let action as UpdateSystemAuthorizationStatusForPushNotifications:
+                reduceUpdateSystemAuthorizationStatusForPushNotifications(action: action, state: state, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
+            case let action as AddPushNotificationRoute:
+                reduceAddPushNotificationRoute(action: action, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
+            case let action as RemovePushNotificationRoute:
+                unregisterRoutes(routeIds: action.routes, state: state)
+            case _ as ToggleAllPushNotificationRoutes:
+                unregisterRoutes(routeIds: nil, state: state)
+            case let action as UpdatePushNotificationRoute:
+                reduceUpdatePushNotificationRoute(action: action, state: state, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
+            case let action as UserWantsToSubscribeToPushNotifications:
+                reduceSubscribeToPushNotifications(action: action, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
+            case let action as UserWantsToSubscribeToSpecialAnnouncements:
+                reduceSubscribeToSpecialAnnouncements(action: action, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
+            case let action as UserWantsToSubscribeToOverideDoNotDisturb:
+                reduceOverrideDoNotDisturb(action: action, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
+
+            default:
+                break
+            }
+        } else if let action = action as? PushViewController, action.viewController == .customPushNotificationsController {
+            reducePushViewController(action: action, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
+        } else {
             next(action)
         }
     }
 
     static func reduceUpdateSystemAuthorizationStatusForPushNotifications(action: UpdateSystemAuthorizationStatusForPushNotifications, state _: PushNotificationPreferenceState, authorizationStatus: PushNotificationAuthorizationState, dispatch: @escaping DispatchFunction, next: @escaping DispatchFunction) {
-        if action.authorizationStatus != authorizationStatus {
+        if action.authorizationStatus != authorizationStatus { // only act if the authorization status has changed
             switch action.authorizationStatus {
             case .authorized:
                 dispatch(UserWantsToSubscribeToPushNotifications(viewController: nil, boolValue: true))
-
-            case .denied:
+            case .denied, .notDetermined:
                 dispatch(UserWantsToSubscribeToPushNotifications(viewController: nil, boolValue: false))
                 dispatch(UserWantsToSubscribeToSpecialAnnouncements(viewController: nil, boolValue: false))
                 dispatch(UserWantsToSubscribeToOverideDoNotDisturb(viewController: nil, boolValue: false))
-                dispatch(RemoveAllPushNotificationRoutes())
-            case .notDetermined:
-                break
+                dispatch(ToggleAllPushNotificationRoutes(boolValue: false))
             }
+        }
+    }
+
+    static func reduceSubscribeToPushNotifications(action: UserWantsToSubscribeToPushNotifications, authorizationStatus: PushNotificationAuthorizationState, dispatch: @escaping DispatchFunction, next: @escaping DispatchFunction) {
+        var reversedAction = action
+        reversedAction.boolValue = !action.boolValue
+        if action.boolValue { // Toggle On
+            switch authorizationStatus {
+            case .authorized:
+                UIApplication.shared.registerForRemoteNotifications()
+                if action.alsoEnableRoutes {
+                    dispatch(ToggleAllPushNotificationRoutes(boolValue: true))
+                }
+                dispatch(UserWantsToSubscribeToSpecialAnnouncements(viewController: action.viewController, boolValue: true, sender: "reduceSubscribeToPushNotifications"))
+            case .denied:
+                UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: action.viewController, completion: {
+                    dispatch(reversedAction)
+                })
+            case .notDetermined:
+                requestAuthorization(onSuccess: {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }, onFail: {
+                    dispatch(reversedAction)
+                }, dispatch: dispatch, next: next)
+            }
+        } else { // Toggle Off
+            dispatch(UserWantsToSubscribeToSpecialAnnouncements(viewController: nil, boolValue: false))
+            dispatch(UserWantsToSubscribeToOverideDoNotDisturb(viewController: nil, boolValue: false))
+            dispatch(ToggleAllPushNotificationRoutes(boolValue: false))
+            UIApplication.shared.unregisterForRemoteNotifications()
+        }
+    }
+
+    static func reduceSubscribeToSpecialAnnouncements(action: UserWantsToSubscribeToSpecialAnnouncements, authorizationStatus: PushNotificationAuthorizationState, dispatch: @escaping DispatchFunction, next: @escaping DispatchFunction) {
+        var reversedAction = action
+        reversedAction.boolValue = !action.boolValue
+        if action.boolValue { // Toggle On
+            switch authorizationStatus {
+            case .authorized:
+                subscribeToSpecialAnnouncements(boolValue: true)
+            case .denied:
+                UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: action.viewController, completion: {
+                    dispatch(reversedAction)
+                })
+            case .notDetermined:
+                requestAuthorization(onSuccess: {
+                    subscribeToSpecialAnnouncements(boolValue: true)
+                }, onFail: {
+                    dispatch(reversedAction)
+                }, dispatch: dispatch, next: next)
+            }
+        } else { // Toggle Off
+            subscribeToSpecialAnnouncements(boolValue: false)
+        }
+    }
+
+    static func reduceOverrideDoNotDisturb(action: UserWantsToSubscribeToOverideDoNotDisturb, authorizationStatus: PushNotificationAuthorizationState, dispatch: @escaping DispatchFunction, next: @escaping DispatchFunction) {
+        var reversedAction = action
+        reversedAction.boolValue = !action.boolValue
+        if action.boolValue { // Toggle On
+            switch authorizationStatus {
+            case .authorized:
+                subscribeToDoNotDisturb(boolValue: action.boolValue)
+            case .denied:
+                UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: action.viewController, completion: {
+                    dispatch(reversedAction)
+                })
+            case .notDetermined:
+                requestAuthorization(
+                    onSuccess: {
+                        subscribeToDoNotDisturb(boolValue: action.boolValue)
+                    }, onFail: {
+                        dispatch(reversedAction)
+                }, dispatch: dispatch, next: next)
+            }
+        } else { // Toggle Off
+            // Nothing to do here
         }
     }
 
     static func reduceAddPushNotificationRoute(action: AddPushNotificationRoute, authorizationStatus: PushNotificationAuthorizationState, dispatch: @escaping DispatchFunction, next: @escaping DispatchFunction) {
         switch authorizationStatus {
         case .authorized:
-            break // No need to do anything, the action has already been allowed through
-
+            subscribeWithoutThrows(routeId: action.route.routeId)
+            dispatch(UserWantsToSubscribeToPushNotifications(viewController: nil, boolValue: true))
         case .denied:
             UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: action.viewController, completion: {
                 dispatch(RemovePushNotificationRoute(routes: [action.route], viewController: action.viewController))
             })
-
         case .notDetermined:
-            let actionOnFail = RemovePushNotificationRoute(routes: [action.route], viewController: action.viewController)
-            requestAuthorization(actionOnSuccess: nil, actionOnFail: actionOnFail, dispatch: dispatch, next: next)
+            requestAuthorization(
+                onSuccess: {
+                    subscribeWithoutThrows(routeId: action.route.routeId)
+                }, onFail: {
+                    dispatch(RemovePushNotificationRoute(routes: [action.route], viewController: nil))
+            }, dispatch: dispatch, next: next)
         }
     }
 
-    static func reduceAddPushNotificationFeature(action: ToggleSwitchAction, authorizationStatus: PushNotificationAuthorizationState, dispatch: @escaping DispatchFunction, next: @escaping DispatchFunction) {
-        var reversedAction = action
-        reversedAction.boolValue = !action.boolValue
-
-        if action.boolValue {
-            switch authorizationStatus {
-            case .authorized:
-                break // No need to do anything, the action has already been allowed through
-
-            case .denied:
-                UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: action.viewController, completion: {
-                    dispatch(reversedAction)
-                })
-
-            case .notDetermined:
-
-                requestAuthorization(actionOnSuccess: nil, actionOnFail: reversedAction, dispatch: dispatch, next: next)
-            }
-
-        } else {
-            if let _ = action as? UserWantsToSubscribeToPushNotifications {
-                UIApplication.shared.unregisterForRemoteNotifications()
-            }
-        }
-    }
-
-    static func reducePushCustomizePushNotifications(action: PushViewController, authorizationStatus: PushNotificationAuthorizationState, dispatch: @escaping DispatchFunction, next: @escaping DispatchFunction) {
+    static func reduceUpdatePushNotificationRoute(action: UpdatePushNotificationRoute, state: PushNotificationPreferenceState, authorizationStatus: PushNotificationAuthorizationState, dispatch: @escaping DispatchFunction, next: @escaping DispatchFunction) {
         switch authorizationStatus {
         case .authorized:
-            dispatch(action)
+            updateRouteSubscription(route: action.route)
+            if action.route.isEnabled && !state.userWantsToEnablePushNotifications {
+                UIAlert.presentEnableAllRoutes(viewController: action.viewController, pushNotificationRoute: action.route)
+            }
+        case .denied:
+            UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: action.viewController, completion: {
+                dispatch(RemovePushNotificationRoute(routes: [action.route], viewController: action.viewController))
+            })
+        case .notDetermined:
+            requestAuthorization(
+                onSuccess: {
+                    updateRouteSubscription(route: action.route)
+                }, onFail: {
+                    dispatch(RemovePushNotificationRoute(routes: [action.route], viewController: nil))
+            }, dispatch: dispatch, next: next)
+        }
+    }
+
+    static func reducePushViewController(action: PushViewController, authorizationStatus: PushNotificationAuthorizationState, dispatch: @escaping DispatchFunction, next: @escaping DispatchFunction) {
+        switch authorizationStatus {
+        case .authorized:
+            next(action)
         case .denied:
 
             UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: nil, completion: nil)
 
         case .notDetermined:
-
-            requestAuthorization(actionOnSuccess: action, actionOnFail: nil, dispatch: dispatch, next: next)
+            requestAuthorization(
+                onSuccess: {
+                    next(action)
+                }, onFail: {
+            }, dispatch: dispatch, next: next)
         }
     }
 
-    static func requestAuthorization(actionOnSuccess: SeptaAction?, actionOnFail: SeptaAction?, dispatch: @escaping DispatchFunction, next: @escaping DispatchFunction) {
+    static func requestAuthorization(onSuccess: (() -> Void)?, onFail: (() -> Void)?, dispatch: @escaping DispatchFunction, next _: @escaping DispatchFunction) {
         let center = UNUserNotificationCenter.current()
 
         center.requestAuthorization(options: [.sound, .alert, .badge]) { granted, error in
@@ -122,18 +210,67 @@ class PushNotificationMiddleware {
                 DispatchQueue.main.async {
                     if granted {
                         dispatch(UpdateSystemAuthorizationStatusForPushNotifications(authorizationStatus: .authorized))
-                        if let actionOnSuccess = actionOnSuccess {
-                            next(actionOnSuccess)
-                        }
+                        onSuccess?()
                     } else {
                         dispatch(UpdateSystemAuthorizationStatusForPushNotifications(authorizationStatus: .denied))
-                        if let actionOnFail = actionOnFail {
-                            dispatch(actionOnFail)
-                        }
+                        onFail?()
                     }
-                    UIApplication.shared.registerForRemoteNotifications()
                 }
             }
         }
+    }
+
+    static func unregisterRoutes(routeIds: [PushNotificationRoute]?, state: PushNotificationPreferenceState) {
+        let routes = routeIds ?? state.routeIds
+        for route in routes {
+            unSubscribeWithoutThrows(routeId: route.routeId)
+        }
+    }
+
+    static func updateRouteSubscription(route: PushNotificationRoute) {
+        do {
+            if route.isEnabled {
+                try NotificationsManager.subscribe(routeId: route.routeId)
+            } else {
+                try NotificationsManager.unsubscribe(routeId: route.routeId)
+            }
+
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    static func subscribeWithoutThrows(routeId: String) {
+        do {
+            try NotificationsManager.subscribe(routeId: routeId)
+
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    static func unSubscribeWithoutThrows(routeId: String) {
+        do {
+            try NotificationsManager.unsubscribe(routeId: routeId)
+
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    static func subscribeToSpecialAnnouncements(boolValue isOn: Bool) {
+        do {
+            if isOn {
+                try NotificationsManager.subscribeToSpecialAnnouncements()
+            } else {
+                try NotificationsManager.unSubscribeToSpecialAnnouncements()
+            }
+
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    static func subscribeToDoNotDisturb(boolValue _: Bool) {
     }
 }

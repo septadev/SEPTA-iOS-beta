@@ -23,7 +23,7 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
     let nextToArriveMapRouteViewModelErrorWatcher = NextToArriveMapRouteViewModelErrorWatcher()
 
     var requestedRoutedId: String? {
-        guard let target = store.state.targetForScheduleActions() else { return nil }
+        guard let target = store.state.currentTargetForScheduleActions() else { return nil }
 
         switch target {
         case .nextToArrive:
@@ -36,7 +36,7 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
     }
 
     func subscribe() {
-        guard let target = store.state.targetForScheduleActions() else { return }
+        guard let target = store.state.currentTargetForScheduleActions() else { return }
 
         switch target {
         case .nextToArrive:
@@ -72,7 +72,7 @@ class NextToArriveMapRouteViewModel: StoreSubscriber {
     func newState(state: StoreSubscriberStateType) {
         let trips = state
 
-        guard let _ = store.state.targetForScheduleActions() else { return }
+        guard let _ = store.state.currentTargetForScheduleActions() else { return }
 
         let allRouteIds = NextToArriveGrouper.filterRoutesToMap(trips: trips, requestRouteId: requestedRoutedId)
 

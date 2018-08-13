@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Crashlytics.sharedInstance().delegate = self
         Fabric.with([Crashlytics.self, Answers.self])
 
@@ -37,17 +37,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().delegate = self
         NotificationsManager.configure()
         UNUserNotificationCenter.current().delegate = self
+        updateCurrentPushNotificationAuthorizationStatus()
 
-        // TODO: Remove -------------------------------------------------------
-//        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-//        UNUserNotificationCenter.current().requestAuthorization(
-//            options: authOptions,
-//            completionHandler: { _, _ in })
-//        application.registerForRemoteNotifications()
-        // --------------------------------------------------------------------
+        if let userInfo = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
+            processNotificationTap(userInfo: userInfo)
+        }
+
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+//
+//            self?.mockNotificationRequest.sendRequest()
+//        }
 
         return true
     }
+
+    let mockNotificationRequest = RealTimeMockRequest()
 
     func applicationWillResignActive(_: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -63,9 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         databaseUpdateManager.appLaunched(coldStart: false)
         let inAppReview = InAppReview()
         inAppReview.appLaunched()
-    }
 
-    func applicationDidBecomeActive(_: UIApplication) {
         let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: false)
         store.dispatch(action)
 
@@ -86,6 +88,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
     }
+
+    private func processNotificationTap(userInfo: [AnyHashable: Any]) {
+        NotificationsManager.handleTap(info: userInfo)
+    }
 }
 
 extension AppDelegate: CrashlyticsDelegate {
@@ -96,14 +102,29 @@ extension AppDelegate: CrashlyticsDelegate {
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
-    func application(_: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler _: @escaping (UIBackgroundFetchResult) -> Void) {
+    func application(_: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         NotificationsManager.handleRemoteNotification(info: userInfo)
+        completionHandler(.newData)
+    }
+
+    func userNotificationCenter(_: UNUserNotificationCenter, willPresent _: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        // Show alert if app is in the foreground
+        completionHandler(.alert)
+    }
+
+    func userNotificationCenter(_: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        processNotificationTap(userInfo: userInfo)
+
+        DispatchQueue.main.async { [weak self] in
+            self?.processNotificationTap(userInfo: userInfo)
+        }
+        completionHandler()
     }
 }
 
 extension AppDelegate: MessagingDelegate {
     func messaging(_: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        UserDefaults.standard.setValue(fcmToken, forKey: NotificationsManager.fcmTokenKey)
-//        try! NotificationsManager.subscribeToSpecialAnnouncements()
+        UserDefaults.standard.setValue(fcmToken, forKey: NotificationsManager.Keys.fcmTokenKey)
     }
 }

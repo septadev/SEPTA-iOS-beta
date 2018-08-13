@@ -44,7 +44,7 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel,
     }
 
     @objc func swapRoutes(_: UITapGestureRecognizer) {
-        if store.state.targetForScheduleActions() == .nextToArrive {
+        if store.state.currentTargetForScheduleActions() == .nextToArrive {
             initializeReverseTripForNextToArrive()
         } else {
             initializeReverseTripForFavorites()
@@ -77,7 +77,7 @@ class NextToArriveTripViewController: UIViewController, UpdateableFromViewModel,
 
 extension NextToArriveTripViewController: NextToArriveReverseTripWatcherDelegate {
     func watchForReverseTripStatusChanges() {
-        guard let target = store.state.targetForScheduleActions() else { return }
+        guard let target = store.state.currentTargetForScheduleActions() else { return }
         var watcher: NextToArriveState_ReverseTripStatusWatcher?
         switch target {
         case .nextToArrive:
@@ -140,7 +140,7 @@ class NextToArriveTripViewModel: StoreSubscriber {
 
 extension NextToArriveTripViewModel: SubscriberUnsubscriber {
     func subscribe() {
-        guard let target = store.state.targetForScheduleActions() else { return }
+        guard let target = store.state.currentTargetForScheduleActions() else { return }
         self.target = target
         switch target {
         case .nextToArrive:

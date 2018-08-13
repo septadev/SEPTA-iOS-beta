@@ -17,8 +17,8 @@ struct InAppReview {
     let forceAppReviewResetAppliedKey = "forceAppReviewResetAppliedKey"
     let infoPlistResetAppReviewKey = "resetAppReview"
     static let crashReportedKey = "crashReportedKey"
-    let minimumLaunchCount = 5
-    let maximumPostCrashCount = 1
+    let minimumLaunchCount = 20
+    let maximumPostCrashCount = 15
     let defaults = UserDefaults.standard
 
     // MARK: - Public functions
@@ -35,10 +35,8 @@ struct InAppReview {
 
     func promptIfAppropriate() {
         if appLaunchCount() >= minimumLaunchCount && !reviewPreviouslyRequested() {
-            if #available(iOS 10.3, *) {
-                SKStoreReviewController.requestReview()
-                defaults.set(true, forKey: reviewRequestedKey)
-            }
+            SKStoreReviewController.requestReview()
+            defaults.set(true, forKey: reviewRequestedKey)
         }
     }
 

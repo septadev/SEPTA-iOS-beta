@@ -13,7 +13,7 @@ struct PushNotificationRoute: Codable, Equatable {
     let routeId: String
     let routeName: String
     let transitMode: TransitMode
-    let isEnabled: Bool
+    var isEnabled: Bool
 
     init(routeId: String, routeName: String, transitMode: TransitMode, isEnabled: Bool = true) {
         self.routeId = routeId

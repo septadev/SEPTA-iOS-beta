@@ -32,7 +32,7 @@ class NextToArriveViewModel: NSObject, StoreSubscriber, LastCellDelegate {
         view.setNeedsLayout()
     }
 
-    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! { return store.state.currentTargetForScheduleActions() }
 
     fileprivate var selectRouteRowDisplayModel: NextToArriveRowDisplayModel?
     fileprivate var selectStartRowDisplayModel: NextToArriveRowDisplayModel?
@@ -161,7 +161,6 @@ extension NextToArriveViewModel {
 extension NextToArriveViewModel: SubscriberUnsubscriber {
     override func awakeFromNib() {
         super.awakeFromNib()
-        //    insertDummyScheduleRequest()
         subscribe()
     }
 

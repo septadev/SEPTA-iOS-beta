@@ -50,11 +50,6 @@ class ManagePushNotificationsViewController: UITableViewController, Identifiable
         store.unsubscribe(self)
     }
 
-    override func didMove(toParentViewController parent: UIViewController?) {
-        super.didMove(toParentViewController: parent)
-        backButtonPopped(toParentViewController: parent)
-    }
-
     func subscribe() {
         store.subscribe(self) {
             $0.select { $0.preferenceState.pushNotificationPreferenceState }

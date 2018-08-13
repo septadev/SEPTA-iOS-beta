@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import SeptaSchedule
 
 struct PushNotificationPreferenceState: Codable, Equatable {
     /// An array of `RangeBounds` structs.
     /// For example:  [[start: 360, end: 720], [start: 900, end: 960]] means
     /// that the user wants to receive notifications between 6 AM and 12 PM.
     /// and from 5 - 6 PM.
-    var notificationTimeWindows: [NotificationTimeWindow] = [NotificationTimeWindow.defaultValue()]
+    var notificationTimeWindows: [NotificationTimeWindow] = [NotificationTimeWindow.defaultMorningWindow()]
 
     /// An OptionSet that allows users to the days of the week on which they wish to receive notifications.
     var daysOfWeek: DaysOfWeekOptionSet = DaysOfWeekOptionSet.mondayThroughFriday()
@@ -38,10 +39,10 @@ struct PushNotificationPreferenceState: Codable, Equatable {
     /// those preferences do not include whether or not the user has authorized
     /// push notifications in the first place.  That needs to be checked separately
     /// TODO we will probably want to move this method someplace else
-    func userShouldReceiveNotification(atDate date: Date, pushNotificationRoute: PushNotificationRoute) -> Bool {
+    func userShouldReceiveNotification(atDate date: Date, routeId: String, transitMode: TransitMode) -> Bool {
         let timeWindowsMatches = notificationTimeWindows.map { $0.dateFitsInRange(date: date) }
         return
-            routeIds.filter({ $0.isEnabled }).contains(pushNotificationRoute) &&
+            routeIds.filter({ $0.isEnabled && $0.routeId == routeId && $0.transitMode == transitMode }).count == 1 &&
             daysOfWeek.matchesDate(date) &&
             timeWindowsMatches.contains(true)
     }

@@ -327,7 +327,7 @@ extension TransitMode {
     }
 
     public static func currentTransitMode() -> TransitMode! {
-        let target = store.state.targetForScheduleActions()
+        let target = store.state.currentTargetForScheduleActions()
         if target == .schedules {
             return store.state.scheduleState.scheduleRequest.transitMode
         } else if target == .nextToArrive {

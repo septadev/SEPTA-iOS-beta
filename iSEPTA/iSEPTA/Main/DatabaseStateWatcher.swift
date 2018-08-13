@@ -20,9 +20,8 @@ class DatabaseStateWatcher: StoreSubscriber {
     }
 
     func newState(state: StoreSubscriberStateType) {
-        if state == .loaded {
-            delegate?.subscribe()
-        }
+        guard let delegate = delegate else { return }
+        delegate.databaseStateUpdated(state)
     }
 
     deinit {

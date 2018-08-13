@@ -50,11 +50,9 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
         store.unsubscribe(self)
     }
 
+    var firstPass = true
     func newState(state: StoreSubscriberStateType) {
         viewModel.routes = state.routeIds
-        headerView.setNeedsLayout()
-        headerView.layoutIfNeeded()
-        tableView.tableHeaderView = nil
         tableView.tableHeaderView = headerView
         if state.routeIds.count == 0 {
             tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 100))
@@ -103,10 +101,6 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
         rowsToDelete.append(routeToDelete)
         viewModel.routes.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-    }
-
-    override func willMove(toParentViewController parent: UIViewController?) {
-        backButtonPopped(toParentViewController: parent)
     }
 
     override func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {

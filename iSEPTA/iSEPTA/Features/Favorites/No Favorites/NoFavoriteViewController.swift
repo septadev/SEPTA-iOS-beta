@@ -24,6 +24,9 @@ class NoFavoritesViewController: UIViewController, IdentifiableController {
     @IBAction func goToFavoritesTapped(_: Any) {
         let action = SwitchTabs(activeNavigationController: .nextToArrive, description: "Moving from No favorites to Next to arrive")
         store.dispatch(action)
+
+        let resetViewState = ResetViewState(viewController: .nextToArriveController, description: "Navigating to Next to Arrive from No Favorites")
+        store.dispatch(resetViewState)
     }
 
     @IBOutlet var iconStackView: UIStackView! {

@@ -15,6 +15,13 @@ class AlertScheduleDataProvider: BaseScheduleDataProvider {
         }
     }
 
+    override func processSelectedRoute(scheduleRequest: ScheduleRequest) {
+        let routes = store.state.alertState.scheduleState.scheduleData.availableRoutes.routes
+        if routes.count == 0 {
+            retrieveAvailableRoutes(scheduleRequest: scheduleRequest)
+        }
+    }
+
     deinit {
         print("Next to arrive schedule data provider will vanish")
     }

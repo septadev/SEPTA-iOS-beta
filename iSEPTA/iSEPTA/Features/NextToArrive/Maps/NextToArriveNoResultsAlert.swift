@@ -23,8 +23,8 @@ class NextToArriveNoResultsAlert: NextToArriveUpdateStatusWatcherDelegate {
 
     init(viewController: UIViewController) {
         self.viewController = viewController
-        let target = store.state.targetForScheduleActions()
-        if store.state.targetForScheduleActions() == .nextToArrive {
+        let target = store.state.currentTargetForScheduleActions()
+        if store.state.currentTargetForScheduleActions() == .nextToArrive {
             nextToArriveWatcher = NextToArriveState_NextToArriveUpdateStatusWatcher()
             nextToArriveWatcher?.delegate = self
         } else if target == .favorites {

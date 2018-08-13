@@ -5,7 +5,7 @@ import SeptaSchedule
 
 struct ScheduleRequest: Equatable {
     let transitMode: TransitMode
-    let selectedRoute: Route?
+    var selectedRoute: Route?
     let selectedStart: Stop?
     let selectedEnd: Stop?
     let scheduleType: ScheduleType?

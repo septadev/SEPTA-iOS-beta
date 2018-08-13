@@ -107,11 +107,6 @@ class AlertDetailViewController: UIViewController, IdentifiableController {
         alertDetailFooterView.pushNotificationRoute = PushNotificationRoute(routeId: routeId, routeName: routeName, transitMode: transitMode)
     }
 
-    override func didMove(toParentViewController parent: UIViewController?) {
-        super.didMove(toParentViewController: parent)
-        backButtonPopped(toParentViewController: parent)
-    }
-
     func setTitle() {
         navigationItem.title = transitMode.alertDetailTitle()
     }

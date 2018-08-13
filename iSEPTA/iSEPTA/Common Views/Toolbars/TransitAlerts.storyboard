@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IrW-ye-tbM">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IrW-ye-tbM">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,20 +15,34 @@
             <objects>
                 <viewController id="IrW-ye-tbM" customClass="SeptaAlertsViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dqv-Ze-ueL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ac7-UP-bkg" userLabel="AlertDetails" customClass="AlertViewGradientBackgroundView" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ac7-UP-bkg" userLabel="AlertDetails">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90W-oS-w9B">
-                                        <rect key="frame" x="15" y="7" width="66.5" height="14.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="xjI-lB-dNz" userLabel="AlertStackView">
-                                        <rect key="frame" x="16" y="27.5" width="42" height="20"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="xjI-lB-dNz" userLabel="AlertStackView">
+                                        <rect key="frame" x="15" y="264" width="205.5" height="20.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status Alerts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90W-oS-w9B">
+                                                <rect key="frame" x="0.0" y="3" width="79.5" height="14.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="advisoryAlert" highlightedImage="advisoryAlert" translatesAutoresizingMaskIntoConstraints="NO" id="dfN-6K-9Wh" userLabel="AdvisoryImageView">
+                                                <rect key="frame" x="88.5" y="0.0" width="30" height="20.5"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alertIconGray" highlightedImage="alertAlert" translatesAutoresizingMaskIntoConstraints="NO" id="6gk-Nm-9YL" userLabel="AlertImageView">
+                                                <rect key="frame" x="127.5" y="1.5" width="18" height="18"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detourIconGray" highlightedImage="detourAlert" translatesAutoresizingMaskIntoConstraints="NO" id="Vpi-Uj-wkd" userLabel="DetourImageView">
+                                                <rect key="frame" x="154.5" y="1" width="19" height="19"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weatherIconGray" highlightedImage="weatherAlert" translatesAutoresizingMaskIntoConstraints="NO" id="bo8-sj-5IS" userLabel="WeatherImageView">
+                                                <rect key="frame" x="182.5" y="2.5" width="23" height="16"/>
+                                            </imageView>
+                                        </subviews>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="nxz-We-q7L"/>
@@ -37,15 +51,59 @@
                                             <outletCollection property="gestureRecognizers" destination="oxn-NG-6op" appends="YES" id="cld-0E-Jdm"/>
                                         </connections>
                                     </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCR-MF-Upm" userLabel="SwitchWrapper">
+                                        <rect key="frame" x="257" y="250.5" width="52" height="47"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subscribe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4L-Qc-eVk">
+                                                <rect key="frame" x="2" y="35" width="48.5" height="12"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hVK-nu-bJK">
+                                                <rect key="frame" x="1.5" y="0.0" width="51" height="31"/>
+                                            </switch>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="hVK-nu-bJK" firstAttribute="top" secondItem="MCR-MF-Upm" secondAttribute="top" id="0ex-1d-iRI" userLabel="SwitchTopNarrow"/>
+                                            <constraint firstAttribute="bottom" secondItem="L4L-Qc-eVk" secondAttribute="bottom" id="FV7-K7-yZg" userLabel="LabelBottomNarrow"/>
+                                            <constraint firstItem="hVK-nu-bJK" firstAttribute="centerX" secondItem="MCR-MF-Upm" secondAttribute="centerX" id="QyP-nE-hF2" userLabel="SwitchCenterXNarrow"/>
+                                            <constraint firstItem="L4L-Qc-eVk" firstAttribute="centerX" secondItem="MCR-MF-Upm" secondAttribute="centerX" id="TgF-Ew-kud" userLabel="LabelCenterXNarrow"/>
+                                            <constraint firstAttribute="width" constant="52" id="jnI-Bd-D1s" userLabel="SwitchWrapperNarrow"/>
+                                            <constraint firstItem="L4L-Qc-eVk" firstAttribute="top" secondItem="hVK-nu-bJK" secondAttribute="bottom" constant="4" id="tLx-dy-GAG" userLabel="LabelTopNarrow"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0CT-zA-xq0" userLabel="TopDivider">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                        <color key="backgroundColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="GIF-vi-56e"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68s-oE-BRg" userLabel="BottomDivider">
+                                        <rect key="frame" x="0.0" y="547" width="320" height="1"/>
+                                        <color key="backgroundColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="JC9-QN-I4P"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="90W-oS-w9B" firstAttribute="leading" secondItem="Ac7-UP-bkg" secondAttribute="leading" constant="15" id="6Yn-hE-yhS" userLabel="LineStatusLabelLeft"/>
-                                    <constraint firstItem="xjI-lB-dNz" firstAttribute="top" secondItem="90W-oS-w9B" secondAttribute="bottom" constant="6" id="Gka-C1-dn4" userLabel="StackViewTop"/>
+                                    <constraint firstItem="xjI-lB-dNz" firstAttribute="centerY" secondItem="Ac7-UP-bkg" secondAttribute="centerY" id="CTC-h8-zPF" userLabel="AlertStackCenterY"/>
+                                    <constraint firstItem="0CT-zA-xq0" firstAttribute="top" secondItem="Ac7-UP-bkg" secondAttribute="top" id="FQV-S1-JZR" userLabel="TopDividerTop"/>
+                                    <constraint firstAttribute="trailing" secondItem="0CT-zA-xq0" secondAttribute="trailing" id="Mf8-iI-gc8" userLabel="TopDividerRight"/>
+                                    <constraint firstAttribute="trailing" secondItem="68s-oE-BRg" secondAttribute="trailing" id="Nzg-5P-iNG">
+                                        <string key="userLabel">
+BottomDividerRight</string>
+                                    </constraint>
+                                    <constraint firstAttribute="bottom" secondItem="68s-oE-BRg" secondAttribute="bottom" id="O6B-Ia-2Q3" userLabel="BottomDividerBottom"/>
                                     <constraint firstItem="xjI-lB-dNz" firstAttribute="leading" secondItem="Ac7-UP-bkg" secondAttribute="leading" constant="15" id="OBi-fb-wNY" userLabel="StackViewLeft"/>
-                                    <constraint firstAttribute="height" constant="56" id="PUC-KD-FZr"/>
-                                    <constraint firstItem="90W-oS-w9B" firstAttribute="top" secondItem="Ac7-UP-bkg" secondAttribute="top" constant="7" id="Urt-Bl-JQe" userLabel="LineStatusLabelTop"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xjI-lB-dNz" secondAttribute="trailing" id="iLm-UI-5WY" userLabel="StackViewright"/>
+                                    <constraint firstItem="68s-oE-BRg" firstAttribute="leading" secondItem="Ac7-UP-bkg" secondAttribute="leading" id="RZT-iv-hac" userLabel="BottomDividerLeft"/>
+                                    <constraint firstAttribute="trailing" secondItem="MCR-MF-Upm" secondAttribute="trailing" constant="11" id="jzF-qg-fiB" userLabel="WrapperRight"/>
+                                    <constraint firstItem="MCR-MF-Upm" firstAttribute="centerY" secondItem="Ac7-UP-bkg" secondAttribute="centerY" id="mDG-0R-YoZ" userLabel="WrapperCenterY"/>
+                                    <constraint firstItem="0CT-zA-xq0" firstAttribute="leading" secondItem="Ac7-UP-bkg" secondAttribute="leading" id="roU-2O-98z" userLabel="TopDividerLeft"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -58,9 +116,23 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DTJ-qF-S3e"/>
                     </view>
-                    <size key="freeformSize" width="375" height="56"/>
                     <connections>
+                        <outlet property="advisoryImageView" destination="dfN-6K-9Wh" id="LhW-8m-okV"/>
+                        <outlet property="alertImageView" destination="6gk-Nm-9YL" id="yL0-4M-v0O"/>
                         <outlet property="alertStackView" destination="xjI-lB-dNz" id="9Sw-Ak-Fa6"/>
+                        <outlet property="detourImageView" destination="Vpi-Uj-wkd" id="k3a-wl-UAl"/>
+                        <outlet property="pushNotificationSwitch" destination="hVK-nu-bJK" id="NqH-UW-byi"/>
+                        <outlet property="statusAlertLabel" destination="90W-oS-w9B" id="S4h-Fc-J1f"/>
+                        <outlet property="subscribeLabel" destination="L4L-Qc-eVk" id="T1W-az-ubz"/>
+                        <outlet property="weatherImageView" destination="bo8-sj-5IS" id="UQQ-03-Zhy"/>
+                        <outletCollection property="contraintsForNarrowPhone" destination="jnI-Bd-D1s" collectionClass="NSMutableArray" id="ZjO-gb-44Q"/>
+                        <outletCollection property="contraintsForNarrowPhone" destination="0ex-1d-iRI" collectionClass="NSMutableArray" id="KIR-pR-nie"/>
+                        <outletCollection property="contraintsForNarrowPhone" destination="FV7-K7-yZg" collectionClass="NSMutableArray" id="68C-dG-EfM"/>
+                        <outletCollection property="contraintsForNarrowPhone" destination="TgF-Ew-kud" collectionClass="NSMutableArray" id="8ld-h8-4h9"/>
+                        <outletCollection property="contraintsForNarrowPhone" destination="tLx-dy-GAG" collectionClass="NSMutableArray" id="nqf-g2-OEx"/>
+                        <outletCollection property="contraintsForNarrowPhone" destination="QyP-nE-hF2" collectionClass="NSMutableArray" id="OrT-Xg-PhD"/>
+                        <outletCollection property="dividers" destination="68s-oE-BRg" collectionClass="NSMutableArray" id="QT2-ZN-cZt"/>
+                        <outletCollection property="dividers" destination="0CT-zA-xq0" collectionClass="NSMutableArray" id="OPD-Lm-VZz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a8n-2F-fpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -70,7 +142,16 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="250" y="-77"/>
+            <point key="canvasLocation" x="249.5" y="-77"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="advisoryAlert" width="30" height="30"/>
+        <image name="alertAlert" width="28" height="28"/>
+        <image name="alertIconGray" width="18" height="18"/>
+        <image name="detourAlert" width="30" height="30"/>
+        <image name="detourIconGray" width="19" height="19"/>
+        <image name="weatherAlert" width="30" height="21"/>
+        <image name="weatherIconGray" width="23" height="16"/>
+    </resources>
 </document>

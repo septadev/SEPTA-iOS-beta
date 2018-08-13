@@ -21,7 +21,8 @@ class AppStateReducer {
             databaseState: DatabaseReducer.main(action: action, state: state?.databaseState),
             moreState: MoreReducer.main(action: action, state: state?.moreState),
             transitViewState: TransitViewReducer.main(action: action, state: state?.transitViewState),
-            databaseUpdateState: DatabaseUpdateReducer.main(action: action, state: state?.databaseUpdateState)
+            databaseUpdateState: DatabaseUpdateReducer.main(action: action, state: state?.databaseUpdateState),
+            notificationState: NotificationReducer.main(action: action, state: state?.notificationState)
         )
 
         return appState

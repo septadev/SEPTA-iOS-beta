@@ -13,13 +13,29 @@ class NextToArriveNavigationController: BaseNavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = SeptaColor.navBarBlue
-        initializeNavStackState()
     }
 
-    func initializeNavStackState() {
-        currentStackState = NavigationStackState(viewControllers: [.nextToArriveController], modalViewController: nil)
+    override func subscribe() {
+        store.subscribe(self) {
+            $0.select { $0.navigationState.appStackState[.nextToArrive] }
+        }
+    }
 
-        let action = InitializeNavigationState(navigationController: .nextToArrive, navigationStackState: currentStackState, description: "Initializing stack state for next to arrive")
-        store.dispatch(action)
+    override func resetViewState(resetViewState: ResetViewState?) {
+        guard let resetViewState = resetViewState else { return }
+
+        var viewControllers = [UIViewController]()
+
+        switch resetViewState.viewController {
+        case .nextToArriveController:
+            viewControllers = retrieveOrInstantiate(viewControllers: [.nextToArriveController])
+        case .nextToArriveDetailController:
+            viewControllers = retrieveOrInstantiate(viewControllers: [.nextToArriveController, .nextToArriveDetailController])
+        default: break
+        }
+
+        self.viewControllers = viewControllers
+
+        store.dispatch(ResetViewStateHandled())
     }
 }

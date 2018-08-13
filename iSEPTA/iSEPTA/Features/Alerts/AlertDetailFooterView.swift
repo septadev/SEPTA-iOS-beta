@@ -23,28 +23,25 @@ class AlertDetailFooterView: UIView, StoreSubscriber {
     }
 
     @IBAction func toggleNotificationsValueChanged(_ sender: UISwitch) {
-        guard let route = pushNotificationRoute else { return }
+        guard var route = pushNotificationRoute else { return }
         guard let viewController = UIResponder.parentViewController(forView: self) else { return }
         DispatchQueue.main.async {
-            if sender.isOn {
-                store.dispatch(AddPushNotificationRoute(route: route, viewController: viewController))
-            } else {
-                store.dispatch(RemovePushNotificationRoute(routes: [route], viewController: viewController))
-            }
+            route.isEnabled = sender.isOn
+            store.dispatch(UpdatePushNotificationRoute(route: route, viewController: viewController))
         }
     }
 
     @IBAction func userTappedOnViewNotificationPreferences(_: Any) {
         store.dispatch(SwitchTabs(activeNavigationController: .more, description: "User wants to view preferences"))
-        let navigationStackState = NavigationStackState(viewControllers: [.moreViewController, .managePushNotficationsController], modalViewController: nil)
-        let action = InitializeNavigationState(navigationController: .more, navigationStackState: navigationStackState, description: "Deep Linking into More")
+        let action = ResetViewState(viewController: .managePushNotficationsController, description: "Navigating to Push Notifications from Alerts")
         store.dispatch(action)
     }
 
     func newState(state: StoreSubscriberStateType) {
         guard let route = pushNotificationRoute else { return }
-        if let _ = state.first(where: { $0.routeId == route.routeId }) {
-            pushNotificationToggleView.isOn = true
+        if let routeIndex = state.indexOfRoute(route: route) {
+            let route = state[routeIndex]
+            pushNotificationToggleView.isOn = route.isEnabled
         } else {
             pushNotificationToggleView.isOn = false
         }

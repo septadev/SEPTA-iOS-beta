@@ -53,9 +53,11 @@ struct ScheduleReducer {
     }
 
     static func reduceTripReverse(action: ReverseLoaded, state: ScheduleState) -> ScheduleState {
+        var scheduleData = ScheduleData()
+        scheduleData.availableRoutes = state.scheduleData.availableRoutes
         return ScheduleState(
             scheduleRequest: action.scheduleRequest,
-            scheduleData: ScheduleData(availableRoutes: state.scheduleData.availableRoutes),
+            scheduleData: scheduleData,
             scheduleStopEdit: ScheduleStopEdit()
         )
     }

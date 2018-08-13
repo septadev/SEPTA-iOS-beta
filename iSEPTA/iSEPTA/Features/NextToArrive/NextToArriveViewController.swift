@@ -21,7 +21,7 @@ class NextToArriveViewController: BaseNonModalViewController, IdentifiableContro
     let buttonRow = 3
 
     var formIsComplete = false
-    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! { return store.state.currentTargetForScheduleActions() }
 
     @IBOutlet var viewModel: NextToArriveViewModel!
 
@@ -45,6 +45,12 @@ class NextToArriveViewController: BaseNonModalViewController, IdentifiableContro
 
         navBar.shadowImage = UIImage()
         navBar.setBackgroundImage(UIImage(), for: .default)
+        viewModel.subscribe()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.unsubscribe()
     }
 
     @IBAction func resetSearch(_: Any) {

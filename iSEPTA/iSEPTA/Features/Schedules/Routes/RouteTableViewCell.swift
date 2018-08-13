@@ -16,7 +16,7 @@ class RouteTableViewCell: UITableViewCell, RouteCellDisplayable {
 
     var alertsAreInteractive: Bool = true
 
-    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! { return store.state.currentTargetForScheduleActions() }
 
     @IBOutlet var stackView: UIStackView! {
         didSet {

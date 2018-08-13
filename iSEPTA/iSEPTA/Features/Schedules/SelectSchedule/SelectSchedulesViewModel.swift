@@ -8,7 +8,7 @@ import UIKit
 class SelectSchedulesViewModel: StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleRequest?
     var scheduleRequest: ScheduleRequest?
-    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! { return store.state.currentTargetForScheduleActions() }
     weak var delegate: UpdateableFromViewModel?
     weak var schedulesDelegate: SchedulesViewModelDelegate?
 

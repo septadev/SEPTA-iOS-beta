@@ -17,7 +17,7 @@ class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber {
 
     @IBOutlet var selectStopViewController: UpdateableFromViewModel?
 
-    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! { return store.state.currentTargetForScheduleActions() }
     var stopsWithDistance = [StopWithDistance]()
     let cellId = "relativeStopCell"
     var scheduleStopEdit = ScheduleStopEdit()
@@ -53,9 +53,9 @@ class SelectAddressRelativeStopViewModel: NSObject, StoreSubscriber {
     }
 
     func retrieveScheduleData() -> ScheduleData? {
-        if store.state.targetForScheduleActions() == .schedules {
+        if store.state.currentTargetForScheduleActions() == .schedules {
             return store.state.scheduleState.scheduleData
-        } else if store.state.targetForScheduleActions() == .nextToArrive {
+        } else if store.state.currentTargetForScheduleActions() == .nextToArrive {
             return store.state.nextToArriveState.scheduleState.scheduleData
 
         } else {

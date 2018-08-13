@@ -112,9 +112,11 @@ enum ViewController: String, Equatable {
         return UIStoryboard(name: storyboardIdentifier(), bundle: nil)
     }
 
-    func instantiateViewController<T>() -> T? {
+    func instantiateViewController<T>() -> T? where T: UIViewController {
         let storyboard = UIStoryboard(name: storyboardIdentifier(), bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: rawValue) as? T {
+            let item = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
+            viewController.navigationItem.backBarButtonItem = item
             return viewController
         } else {
             return nil

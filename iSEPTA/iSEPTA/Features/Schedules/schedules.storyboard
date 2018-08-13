@@ -208,7 +208,9 @@ TableViewWrapper</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="k7n-XP-fHe"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Schedules" largeTitleDisplayMode="never" id="fIz-Cf-6OQ"/>
+                    <navigationItem key="navigationItem" title="Schedules" largeTitleDisplayMode="never" id="fIz-Cf-6OQ">
+                        <barButtonItem key="backBarButtonItem" title=" " id="geG-X2-Pew"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="buttonView" destination="cOB-du-LRG" id="bi3-nK-egN"/>
@@ -244,7 +246,7 @@ TableViewWrapper</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaJ-Ig-ASV">
-                            <rect key="frame" x="207" y="10.5" width="33" height="27"/>
+                            <rect key="frame" x="207" y="10" width="33" height="27"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Reset">
                                 <color key="titleColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -575,16 +577,16 @@ TableViewWrapper</string>
                                                 </constraints>
                                             </view>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MBk-l9-tXz" userLabel="TransitAlerts">
-                                                <rect key="frame" x="0.0" y="76" width="357" height="56"/>
+                                                <rect key="frame" x="0.0" y="76" width="357" height="60"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="56" id="bhA-xz-9f3"/>
+                                                    <constraint firstAttribute="height" constant="60" id="bhA-xz-9f3"/>
                                                 </constraints>
                                                 <connections>
                                                     <segue destination="ZBK-ie-Ad1" kind="embed" identifier="embedTransitAlerts" id="YYa-Rh-MvS"/>
                                                 </connections>
                                             </containerView>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="d5G-1F-kch" userLabel="ScheduelType">
-                                                <rect key="frame" x="10" y="140" width="337" height="29"/>
+                                                <rect key="frame" x="10" y="144" width="337" height="29"/>
                                                 <segments>
                                                     <segment title="Weekday"/>
                                                     <segment title="Saturday"/>
@@ -596,7 +598,7 @@ TableViewWrapper</string>
                                                 </connections>
                                             </segmentedControl>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="72" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zf9-bi-BCi">
-                                                <rect key="frame" x="0.0" y="178" width="357" height="306"/>
+                                                <rect key="frame" x="0.0" y="182" width="357" height="302"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="scheduleCell" id="ffg-L2-s06" userLabel="railScheduleCell" customClass="ScheduleTableViewCell" customModule="Septa" customModuleProvider="target">
@@ -935,7 +937,7 @@ TitleViewTop</string>
                                 </constraints>
                             </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="V0h-9O-nLg">
-                                <rect key="frame" x="168.5" y="441.5" width="37" height="37"/>
+                                <rect key="frame" x="168.5" y="443.5" width="37" height="37"/>
                                 <color key="color" red="0.5490196078431373" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ua0-R8-FzE" userLabel="ShadowView" customClass="NavBarShadowView">
@@ -1099,7 +1101,7 @@ TitleViewTop</string>
             </objects>
             <point key="canvasLocation" x="3407" y="681"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav Controller Scene-->
         <scene sceneID="83K-FD-2cf">
             <objects>
                 <navigationController title="Nav Controller Scene" id="Flo-rT-aez" customClass="SchedulesNavigationController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
@@ -1117,16 +1119,10 @@ TitleViewTop</string>
                         </connections>
                     </navigationBar>
                     <connections>
-                        <outlet property="stateProvider" destination="Z8d-WV-W5R" id="v9z-ff-7cP"/>
                         <segue destination="G8I-06-w6m" kind="relationship" relationship="rootViewController" id="ysr-1u-zxJ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZi-KV-b8v" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="Z8d-WV-W5R" userLabel="StateProvider" customClass="SchedulesNavigationControllerStateProvider" customModule="Septa" customModuleProvider="target">
-                    <connections>
-                        <outlet property="navigationController" destination="Flo-rT-aez" id="3fj-Lo-ZTw"/>
-                    </connections>
-                </customObject>
             </objects>
             <point key="canvasLocation" x="-1892" y="221"/>
         </scene>

@@ -16,17 +16,29 @@ class MoreNavigationController: BaseNavigationController, IdentifiableNavControl
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = SeptaColor.navBarBlue
-        initializeNavStackState()
-        let stateProvider = MoreNavigationControllerStateProvider()
-        stateProvider.navigationController = self
-        stateProvider.subscribe()
-        super.stateProvider = stateProvider
     }
 
-    func initializeNavStackState() {
-        currentStackState = NavigationStackState(viewControllers: [.moreViewController], modalViewController: nil)
+    override func subscribe() {
+        store.subscribe(self) {
+            $0.select { $0.navigationState.appStackState[.more] }
+        }
+    }
 
-        let action = InitializeNavigationState(navigationController: .more, navigationStackState: currentStackState, description: "Initializing stack state for more")
-        store.dispatch(action)
+    override func resetViewState(resetViewState: ResetViewState?) {
+        guard let resetViewState = resetViewState else { return }
+
+        var viewControllers = [UIViewController]()
+
+        switch resetViewState.viewController {
+        case .customPushNotificationsController:
+            viewControllers = retrieveOrInstantiate(viewControllers: [.moreViewController, .managePushNotficationsController, .customPushNotificationsController])
+        case .managePushNotficationsController:
+            viewControllers = retrieveOrInstantiate(viewControllers: [.moreViewController, .managePushNotficationsController])
+        default: break
+        }
+
+        self.viewControllers = viewControllers
+
+        store.dispatch(ResetViewStateHandled())
     }
 }
