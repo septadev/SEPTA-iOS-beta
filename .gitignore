@@ -18,3 +18,4 @@ SEPTA.zip
 /Cartfile.resolved
 /SEPTA.sublime-workspace
 /iSEPTA/DerivedData
+*.sqlite
