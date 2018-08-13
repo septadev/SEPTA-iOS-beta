@@ -20,7 +20,6 @@ class FaresViewModel {
         items = [
             buildSeptaKeyPaymentMode(),
             buildCashPaymentMode(),
-            buildTokenPaymentMode(),
             buildTransPassPaymentMode(),
             buildTrailPassPaymentMode(),
             buildCrossCountryPaymentMode(),
@@ -52,19 +51,6 @@ class FaresViewModel {
         return FaresPaymentModeViewModel(
             imageName: "cashIcon",
             title: "Cash",
-            description: attributedString,
-
-            septaConnection: nil)
-    }
-
-    func buildTokenPaymentMode() -> FaresPaymentModeViewModel {
-        let attributedString = NSMutableAttributedString(string: "Tokens: $2.00 each\nTransfer: $1.00\nSEPTA Key Card Travel Wallet")
-        attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 12.0, weight: UIFont.Weight.bold), range: NSRange(location: 8, length: 10))
-        attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 12.0, weight: UIFont.Weight.bold), range: NSRange(location: 29, length: 5))
-
-        return FaresPaymentModeViewModel(
-            imageName: "tokenIcon",
-            title: "Token",
             description: attributedString,
 
             septaConnection: nil)
