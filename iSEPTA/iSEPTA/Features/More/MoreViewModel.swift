@@ -11,7 +11,7 @@ import UIKit
 
 class MoreViewModel {
     func numberOfRows() -> Int {
-        return 7
+        return 8
     }
 
     func configureCell(cell: MoreTableViewCell, indexPath: IndexPath) {
@@ -22,8 +22,9 @@ class MoreViewModel {
         case 3: configureTrainViewCell(cell: cell)
         case 4: configurePushNotificationsCell(cell: cell)
         case 5: configurePerksCell(cell: cell)
-        case 6: configureConnectCell(cell: cell)
-        case 7: configureAboutCell(cell: cell)
+        case 6: configureElertsCell(cell: cell)
+        case 7: configureConnectCell(cell: cell)
+        case 8: configureAboutCell(cell: cell)
         default: break
         }
     }
@@ -56,6 +57,11 @@ class MoreViewModel {
     func configurePerksCell(cell: MoreTableViewCell) {
         cell.moreLabel.text = "Perks"
         cell.moreImageView.image = UIImage(named: "perksIcon")
+    }
+
+    func configureElertsCell(cell: MoreTableViewCell) {
+        cell.moreLabel.text = "Report Crime or Nuisance"
+        cell.moreImageView.image = UIImage(named: "elerts")
     }
 
     func configureConnectCell(cell: MoreTableViewCell) {
