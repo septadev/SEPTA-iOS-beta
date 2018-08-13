@@ -110,6 +110,14 @@ class NextToArriveMiddleware {
     }
 
     static func generateActionsToNavigateToNextToArriveFromDelayNotification(action: NavigateToNextToArriveFromDelayNotification) {
+        let scheduleRequest = ScheduleRequest(transitMode: .rail)
+
+        let copyScheduleAction = CopyScheduleRequestToTargetForScheduleAction(targetForScheduleAction: .nextToArrive, scheduleRequest: scheduleRequest, description: "Handling a delay Notification")
+        store.dispatch(copyScheduleAction)
+
+        let switchTabsAction = SwitchTabs(activeNavigationController: .nextToArrive, description: "Switching to Next to Arrive from a delay notification")
+        store.dispatch(switchTabsAction)
+
         let notif = action.notification
         let tripId = notif.vehicleId
         guard notif.expires > Date() else { return }
@@ -132,9 +140,6 @@ class NextToArriveMiddleware {
 
                     let copyScheduleAction = CopyScheduleRequestToTargetForScheduleAction(targetForScheduleAction: .nextToArrive, scheduleRequest: scheduleRequest, description: "Handling a delay Notification")
                     store.dispatch(copyScheduleAction)
-
-                    let switchTabsAction = SwitchTabs(activeNavigationController: .nextToArrive, description: "Switching to Next to Arrive from a delay notification")
-                    store.dispatch(switchTabsAction)
 
                     let resetViewState = ResetViewState(viewController: .nextToArriveDetailController, description: "loading up trip detail")
                     store.dispatch(resetViewState)

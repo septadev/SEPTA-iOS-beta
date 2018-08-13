@@ -43,10 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             processNotificationTap(userInfo: userInfo)
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-
-            self?.mockNotificationRequest.sendRequest()
-        }
+        // For faking Notifications
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+//
+//            self?.mockNotificationRequest.sendRequest()
+//        }
 
         return true
     }
