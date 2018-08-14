@@ -9,21 +9,15 @@
 import Foundation
 import SeptaSchedule
 
-struct TripDetailState {
+struct TripDetailState: Equatable {
     let tripDetails: NextToArriveStop?
     var tripDetailsExist: Bool { return tripDetails != nil }
+    var lastUpdated: Date {
+        guard let tripDetails = tripDetails else { return Date.distantPast }
+        return tripDetails.updatedTime
+    }
 
     init(tripDetails: NextToArriveStop? = nil) {
         self.tripDetails = tripDetails
     }
-}
-
-extension TripDetailState: Equatable {}
-func == (lhs: TripDetailState, rhs: TripDetailState) -> Bool {
-    var areEqual = true
-
-    areEqual = Optionals.optionalCompare(currentValue: lhs.tripDetails, newValue: rhs.tripDetails).equalityResult()
-    guard areEqual else { return false }
-
-    return areEqual
 }

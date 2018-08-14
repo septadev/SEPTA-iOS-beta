@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_9" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,17 +15,17 @@
             <objects>
                 <viewController storyboardIdentifier="tripDetailViewController" id="Ipr-0X-Mb4" customClass="TripDetailViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ser-kc-t0w">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Id-DY-3xE" userLabel="MapView">
-                                <rect key="frame" x="0.0" y="88" width="375" height="414"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="327"/>
                                 <connections>
                                     <segue destination="rLf-ds-PN2" kind="embed" id="R2l-Y3-5ng"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pie-7c-6ue" userLabel="ShadowView" customClass="NavBarShadowView" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" placeholder="YES" id="6DD-X7-nJ8"/>
@@ -37,7 +37,7 @@
                                 </variation>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Os-2x-QGh" userLabel="InfoView">
-                                <rect key="frame" x="0.0" y="502" width="375" height="276"/>
+                                <rect key="frame" x="0.0" y="391" width="375" height="276"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="276" id="h6c-wv-KJn"/>
                                 </constraints>
@@ -69,16 +69,58 @@
             </objects>
             <point key="canvasLocation" x="128.80000000000001" y="83.208395802098963"/>
         </scene>
+        <!--Trip Detail Modal View Controller-->
+        <scene sceneID="lgL-fr-DCV">
+            <objects>
+                <viewController storyboardIdentifier="tripDetailModalController" id="hMP-gc-UQX" customClass="TripDetailModalViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5pC-Tb-tL6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M0a-9T-9QI" userLabel="ContentView">
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oy8-5A-7Xj">
+                                <rect key="frame" x="318" y="32" width="42" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeButtonTappedWithSender:" destination="hMP-gc-UQX" eventType="touchUpInside" id="k0W-A5-ETv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Sli-yn-1hS" firstAttribute="bottom" secondItem="M0a-9T-9QI" secondAttribute="bottom" id="8YZ-AR-Jvh"/>
+                            <constraint firstItem="Sli-yn-1hS" firstAttribute="trailing" secondItem="M0a-9T-9QI" secondAttribute="trailing" id="C9r-lb-cmr"/>
+                            <constraint firstItem="Sli-yn-1hS" firstAttribute="trailing" secondItem="oy8-5A-7Xj" secondAttribute="trailing" constant="15" id="EDo-c6-drP"/>
+                            <constraint firstItem="oy8-5A-7Xj" firstAttribute="top" secondItem="Sli-yn-1hS" secondAttribute="top" constant="12" id="aMW-zB-Sr3"/>
+                            <constraint firstItem="M0a-9T-9QI" firstAttribute="leading" secondItem="Sli-yn-1hS" secondAttribute="leading" id="dlF-pd-4KL"/>
+                            <constraint firstItem="M0a-9T-9QI" firstAttribute="top" secondItem="Sli-yn-1hS" secondAttribute="top" constant="50" id="ejp-f3-B4B"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Sli-yn-1hS"/>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="M0a-9T-9QI" id="QAw-J5-b4Z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Au-le-5s3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1981" y="521"/>
+        </scene>
         <!--Map Controller-->
         <scene sceneID="TnE-Wq-PMI">
             <objects>
                 <viewController id="rLf-ds-PN2" customClass="TripDetailMapViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zM5-X6-HpV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="327"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="V33-1W-Z10">
-                                <rect key="frame" x="0.0" y="44" width="375" height="336"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="327"/>
                                 <connections>
                                     <outlet property="delegate" destination="zM5-X6-HpV" id="16j-TT-cPw"/>
                                 </connections>
@@ -134,7 +176,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#546 to 30th Street Station" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="so5-c7-C4k" userLabel="RouteLabel">
-                                                        <rect key="frame" x="33.000000000000014" y="14.999999999999998" width="214.33333333333337" height="19.333333333333329"/>
+                                                        <rect key="frame" x="33" y="15" width="214.5" height="19.5"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                         <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -156,16 +198,16 @@ HeaderView</string>
                                                 <rect key="frame" x="0.0" y="60" width="345" height="40"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lSE-hb-CK1">
-                                                        <rect key="frame" x="77.999999999999986" y="11.666666666666671" width="189.66666666666663" height="17"/>
+                                                        <rect key="frame" x="78" y="11.5" width="189.5" height="17"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Stop:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9A-Wx-uXH" userLabel="NextStop">
-                                                                <rect key="frame" x="0.0" y="-0.6666666666666714" width="67" height="17"/>
+                                                                <rect key="frame" x="0.0" y="-0.5" width="67" height="17"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jefferson Station" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0y-F3-a1O" userLabel="StationName">
-                                                                <rect key="frame" x="70" y="0.0" width="119.66666666666669" height="17"/>
+                                                                <rect key="frame" x="70" y="0.0" width="119.5" height="17"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -195,7 +237,7 @@ CenteringView</string>
                                                 <rect key="frame" x="0.0" y="110" width="345" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 Min Late" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4f-KK-PvE" userLabel="DelayLabel">
-                                                        <rect key="frame" x="137" y="11.666666666666671" width="71.666666666666686" height="17"/>
+                                                        <rect key="frame" x="137" y="11.5" width="72" height="17"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                         <color key="textColor" red="0.60414880514144897" green="0.12870540201244104" blue="0.087611872373433208" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -219,19 +261,19 @@ CenteringView</string>
                                                 <rect key="frame" x="0.0" y="170" width="345" height="42"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow Us!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yb-1i-cXX" userLabel="FollowUs">
-                                                        <rect key="frame" x="12" y="12" width="65.666666666666671" height="17"/>
+                                                        <rect key="frame" x="12" y="12" width="65.5" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                         <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@SEPTA_PAO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hzg-nl-ORu" userLabel="Handle">
-                                                        <rect key="frame" x="232.33333333333334" y="14" width="81.666666666666657" height="14.333333333333336"/>
+                                                        <rect key="frame" x="232.5" y="14" width="81.5" height="14.5"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                         <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitterIcon" translatesAutoresizingMaskIntoConstraints="NO" id="A0V-Kn-5QL" userLabel="TwitterImage">
-                                                        <rect key="frame" x="319" y="12.666666666666657" width="21" height="17"/>
+                                                        <rect key="frame" x="319" y="12.5" width="21" height="17"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.92156862745098034" green="0.94117647058823528" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>

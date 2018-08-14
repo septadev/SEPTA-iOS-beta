@@ -123,16 +123,27 @@ class NextToArriveMiddleware {
         guard notif.expires > Date() else { return }
         let client = SEPTAApiClient.defaultClient(url: SeptaNetwork.sharedInstance.url, apiKey: SeptaNetwork.sharedInstance.apiKey)
 
+        func modalShortcut(details: RealTimeArrivalDetail) {
+            DispatchQueue.main.async {
+                let matchingStop = NextToArriveStop(transitMode: .rail, routeId: notif.routeId, routeName: details.line ?? "", tripId: Int(notif.vehicleId), arrivalTime: Date(), departureTime: Date(), lastStopId: nil, lastStopName: nil, delayMinutes: nil, direction: nil, vehicleLocationCoordinate: nil, vehicleIds: nil, hasRealTimeData: true, service: nil)
+                let updateAction = UpdateTripDetails(tripDetails: matchingStop)
+                store.dispatch(updateAction)
+
+                let modalAction = PresentModal(viewController: .tripDetailModalController, description: "Not enough info to display trip detail info in the flow")
+                store.dispatch(modalAction)
+            }
+        }
+
         client.getRealTimeRailArrivalDetail(tripId: tripId).then { details -> Void in
-            guard let details = details,
-                let destinationStation = details.destinationStation,
-                let nextStopStation = details.nextstopStation else { return }
+            guard let details = details else { return }
+            guard let destinationStation = details.destinationStation,
+                let nextStopStation = details.nextstopStation else { modalShortcut(details: details); return }
 
             FindStopByStopNameCommand.sharedInstance.stop(stopName: destinationStation) { stops, _ in
-                guard let stops = stops, let destinationStop = stops.first else { return }
+                guard let stops = stops, let destinationStop = stops.first else { modalShortcut(details: details); return }
 
                 FindStopByStopNameCommand.sharedInstance.stop(stopName: nextStopStation) { stops, _ in
-                    guard let stops = stops, let nextStop = stops.first else { return }
+                    guard let stops = stops, let nextStop = stops.first else { modalShortcut(details: details); return }
 
                     let selectedRoute = Route.allRailRoutesRoute()
 

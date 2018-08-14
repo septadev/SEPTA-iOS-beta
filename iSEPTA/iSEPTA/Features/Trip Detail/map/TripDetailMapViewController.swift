@@ -56,8 +56,10 @@ class TripDetailMapViewController: UIViewController, TripDetailState_TripDetails
         print("Beginning to parse")
         KMLDocument.parse(url) { [weak self] kml in
             guard let overlays = kml.overlays as? [KMLOverlayPolyline] else { return }
-            if let routeOverlays = self?.mapOverlaysToRouteOverlays(routeId: routeId, overlays: overlays) {
+            if let routeOverlays = self?.mapOverlaysToRouteOverlays(routeId: routeId, overlays: overlays), let firstOverlay = routeOverlays.first {
+                let boundingRect = firstOverlay.boundingMapRect
                 self?.mapView.addOverlays(routeOverlays)
+                self?.mapView.visibleMapRect = self!.mapView.mapRectThatFits(boundingRect, edgePadding: UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0))
                 self?.routeHasBeenAdded = true
             }
         }

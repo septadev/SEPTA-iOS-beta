@@ -9,7 +9,7 @@ protocol TripDetailState_TripDetailsWatcherDelegate: AnyObject {
 }
 
 class TripDetailState_TripDetailsWatcher: BaseWatcher, StoreSubscriber {
-    typealias StoreSubscriberStateType = NextToArriveStop?
+    typealias StoreSubscriberStateType = Date
 
     weak var delegate: TripDetailState_TripDetailsWatcherDelegate? {
         didSet {
@@ -19,12 +19,12 @@ class TripDetailState_TripDetailsWatcher: BaseWatcher, StoreSubscriber {
 
     func subscribe() {
         store.subscribe(self) {
-            $0.select { $0.tripDetailState.tripDetails }
+            $0.select { $0.tripDetailState.lastUpdated }
         }
     }
 
-    func newState(state: StoreSubscriberStateType) {
-        guard let tripDetails = state else { return }
-        delegate?.tripDetailState_TripDetailsUpdated(nextToArriveStop: tripDetails)
+    func newState(state _: StoreSubscriberStateType) {
+        guard let nextToArriveStop = store.state.tripDetailState.tripDetails else { return }
+        delegate?.tripDetailState_TripDetailsUpdated(nextToArriveStop: nextToArriveStop)
     }
 }

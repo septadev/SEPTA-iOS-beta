@@ -33,8 +33,8 @@ class PushNotificationMiddleware {
                 reduceAddPushNotificationRoute(action: action, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
             case let action as RemovePushNotificationRoute:
                 unregisterRoutes(routeIds: action.routes, state: state)
-            case _ as ToggleAllPushNotificationRoutes:
-                unregisterRoutes(routeIds: nil, state: state)
+            case let action as ToggleAllPushNotificationRoutes:
+                reduceToggleAllPushNotificationRoutes(action: action, state: state, authorizationStatus: authorizationStatus)
             case let action as UpdatePushNotificationRoute:
                 reduceUpdatePushNotificationRoute(action: action, state: state, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
             case let action as UserWantsToSubscribeToPushNotifications:
@@ -104,7 +104,7 @@ class PushNotificationMiddleware {
         if action.boolValue { // Toggle On
             switch authorizationStatus {
             case .authorized:
-                subscribeToSpecialAnnouncements(boolValue: true)
+                break //  subscribeToSpecialAnnouncements(boolValue: true)
             case .denied:
                 UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: action.viewController, completion: {
                     dispatch(reversedAction)
@@ -185,6 +185,20 @@ class PushNotificationMiddleware {
         }
     }
 
+    static func reduceToggleAllPushNotificationRoutes(action: ToggleAllPushNotificationRoutes, state: PushNotificationPreferenceState, authorizationStatus: PushNotificationAuthorizationState) {
+        if action.boolValue && authorizationStatus == .authorized { // Turn on
+            for route in state.routeIds {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                    subscribeWithoutThrows(routeId: route.routeId)
+                })
+            }
+        } else {
+            for route in state.routeIds {
+                unSubscribeWithoutThrows(routeId: route.routeId)
+            }
+        }
+    }
+
     static func reducePushViewController(action: PushViewController, authorizationStatus: PushNotificationAuthorizationState, dispatch: @escaping DispatchFunction, next: @escaping DispatchFunction) {
         switch authorizationStatus {
         case .authorized:
@@ -236,7 +250,7 @@ class PushNotificationMiddleware {
             }
 
         } catch {
-            print(error.localizedDescription)
+            print("PE: \(error.localizedDescription)")
         }
     }
 
@@ -245,7 +259,7 @@ class PushNotificationMiddleware {
             try NotificationsManager.subscribe(routeId: routeId)
 
         } catch {
-            print(error.localizedDescription)
+            print("PE: \(error.localizedDescription)")
         }
     }
 
@@ -254,7 +268,7 @@ class PushNotificationMiddleware {
             try NotificationsManager.unsubscribe(routeId: routeId)
 
         } catch {
-            print(error.localizedDescription)
+            print("PE: \(error.localizedDescription)")
         }
     }
 
@@ -267,7 +281,7 @@ class PushNotificationMiddleware {
             }
 
         } catch {
-            print(error.localizedDescription)
+            print("PE: \(error.localizedDescription)")
         }
     }
 

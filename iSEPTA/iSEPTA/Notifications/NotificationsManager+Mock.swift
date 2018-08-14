@@ -41,6 +41,27 @@ class RealTimeMockRequest {
         session.finishTasksAndInvalidate()
     }
 
+    func sendSimpleNotification() {
+        let tripId = "527"
+        let routeId = "LAN"
+
+        let dict: [String: String] = [
+            "notificationType": "DELAY",
+            "routeId": routeId,
+            "message": "ios Debugging Delay ",
+            "routeType": "RAIL",
+            "vehicleId": tripId,
+            "destinationStopId": "unknown",
+            "delayType": "ACTUAL",
+            "expires": DateFormatters.networkFormatter.string(from: Date().addingTimeInterval(60 * 60 * 3)),
+        ]
+
+        DispatchQueue.main.async {
+            guard let delegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            delegate.application(UIApplication.shared, didReceiveRemoteNotification: dict, fetchCompletionHandler: { _ in })
+        }
+    }
+
     func mapResponse(details: [String: Any]) {
         guard let tripId = details["tripid"] as? String,
             let nextStop = details["nextstop"] as? [String: Any],
