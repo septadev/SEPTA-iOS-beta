@@ -59,6 +59,8 @@ class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetail
         } else if nextToArriveStop.transitMode.useBusForDetails() {
             configureNextStopViewForBus()
         }
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
     }
 
     // MARK: - Header View

@@ -22,6 +22,7 @@ class NextToArriveNavigationController: BaseNavigationController {
     }
 
     override func resetViewState(resetViewState: ResetViewState?) {
+        super.resetViewState(resetViewState: resetViewState)
         guard let resetViewState = resetViewState else { return }
 
         var viewControllers = [UIViewController]()

@@ -123,7 +123,7 @@ class BaseNavigationController: UINavigationController, UINavigationControllerDe
     }
 
     func resetViewState(resetViewState _: ResetViewState?) {
-        // overriden by base classes
+//        dismiss(animated: false, completion: nil)
     }
 
     func appendToViewStack(viewControllers: [ViewController]) {
