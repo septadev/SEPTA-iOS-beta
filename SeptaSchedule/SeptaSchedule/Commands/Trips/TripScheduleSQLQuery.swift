@@ -10,13 +10,14 @@ import Foundation
 
 class TripScheduleSQLQuery: SQLQueryProtocol {
     let transitMode: TransitMode
+    let routeId: String
     let serviceId: String
     let startId: String
     let stopId: String
     let routeDirecctionCodeString: String
 
     var sqlBindings: [[String]] {
-        return [[":start_stop_id", startId], [":end_stop_id", stopId], [":service_id", serviceId], [":direction_id", routeDirecctionCodeString]]
+        return [[":start_stop_id", startId], [":end_stop_id", stopId], [":service_id", serviceId], [":direction_id", routeDirecctionCodeString], [":route_id", routeId]]
     }
 
     var fileName: String {
@@ -55,6 +56,7 @@ class TripScheduleSQLQuery: SQLQueryProtocol {
         }
 
         self.transitMode = transitMode
+        routeId = route.routeId
 
         startId = String(start.stopId)
         stopId = String(stop.stopId)

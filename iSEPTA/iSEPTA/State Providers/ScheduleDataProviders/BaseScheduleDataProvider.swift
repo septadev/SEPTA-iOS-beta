@@ -218,7 +218,7 @@ class BaseScheduleDataProvider: StoreSubscriber, TargetForScheduleActionWatcherD
 
         StopReverseCommand.sharedInstance.reverseStops(forTransitMode: transitMode, tripStopId: tripStopId) { tripStopIds, _ in
             guard let tripStopIds = tripStopIds, let tripStopId = tripStopIds.first else { return }
-            TripReverseCommand.sharedInstance.reverseTrip(forTransitMode: transitMode, tripStopId: tripStopId, scheduleType: scheduleType) { trips, _ in
+            TripReverseCommand.sharedInstance.reverseTrip(forTransitMode: transitMode, tripStopId: tripStopId, scheduleType: scheduleType, routeId: selectedRoute.routeId) { trips, _ in
                 guard let reversedTrips = trips else { return }
                 StopsByStopIdCommand.sharedInstance.retrieveStops(forTransitMode: transitMode, tripStopId: tripStopId) { stops, _ in
                     guard let stops = stops,
