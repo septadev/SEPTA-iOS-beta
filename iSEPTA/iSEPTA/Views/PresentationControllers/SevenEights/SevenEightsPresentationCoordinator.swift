@@ -22,7 +22,15 @@ class SevenEightsPresentationController: UIPresentationController {
 
         let height = (containerView.frame.height) - 35 - safeAreaTop
         let top = containerView.frame.height - height
-        let finalFrame = CGRect(x: 0, y: top, width: containerView.bounds.width, height: height)
+
+        var finalFrame = CGRect()
+
+        if #available(iOS 11.0, *) {
+            finalFrame = CGRect(x: 0, y: top + presentingViewController.view.safeAreaInsets.bottom, width: containerView.bounds.width, height: height)
+        } else {
+            finalFrame = CGRect(x: 0, y: top + presentingViewController.bottomLayoutGuide.length, width: containerView.bounds.width, height: height)
+        }
+
         return finalFrame
     }
 
