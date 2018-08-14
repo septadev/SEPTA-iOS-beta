@@ -14,11 +14,20 @@ class TripDetailModalViewController: UIViewController, IdentifiableController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = SeptaColor.navBarBlue
         let controller = ViewController.tripDetailViewController.instantiateViewController()
         addChildViewController(controller)
         contentView.addSubview(controller.view)
-        contentView.pinSubview(controller.view)
+        pinSubview(subview: controller.view)
+    }
+
+    func pinSubview(subview: UIView) {
+        subview.clipsToBounds = true
+        subview.translatesAutoresizingMaskIntoConstraints = false
+        subview.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -20).isActive = true
+        subview.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        subview.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        subview.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
     }
 
     @IBOutlet var contentView: UIView!

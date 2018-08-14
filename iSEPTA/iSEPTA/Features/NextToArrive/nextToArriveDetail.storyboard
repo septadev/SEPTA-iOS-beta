@@ -68,6 +68,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Next To Arrive" id="hQX-Wc-MEI">
+                        <barButtonItem key="backBarButtonItem" title=" " id="gAM-yi-3Rk"/>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="edit" id="T8u-CP-KOb"/>
                             <barButtonItem image="favoriteNavBarOff" id="4P4-eu-BwU" userLabel="CreateFavorite"/>
