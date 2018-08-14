@@ -78,7 +78,9 @@ class PushNotificationMiddleware {
                 if action.alsoEnableRoutes {
                     dispatch(ToggleAllPushNotificationRoutes(boolValue: true))
                 }
-                dispatch(UserWantsToSubscribeToSpecialAnnouncements(viewController: action.viewController, boolValue: true, sender: "reduceSubscribeToPushNotifications"))
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    dispatch(UserWantsToSubscribeToSpecialAnnouncements(viewController: action.viewController, boolValue: true, sender: "reduceSubscribeToPushNotifications"))
+                }
             case .denied:
                 UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: action.viewController, completion: {
                     dispatch(reversedAction)
