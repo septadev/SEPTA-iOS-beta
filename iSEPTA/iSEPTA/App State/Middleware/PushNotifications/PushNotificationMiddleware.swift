@@ -78,7 +78,7 @@ class PushNotificationMiddleware {
                 if action.alsoEnableRoutes {
                     dispatch(ToggleAllPushNotificationRoutes(boolValue: true))
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     dispatch(UserWantsToSubscribeToSpecialAnnouncements(viewController: action.viewController, boolValue: true, sender: "reduceSubscribeToPushNotifications"))
                 }
             case .denied:
@@ -106,7 +106,7 @@ class PushNotificationMiddleware {
         if action.boolValue { // Toggle On
             switch authorizationStatus {
             case .authorized:
-                break //  subscribeToSpecialAnnouncements(boolValue: true)
+                subscribeToSpecialAnnouncements(boolValue: true)
             case .denied:
                 UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: action.viewController, completion: {
                     dispatch(reversedAction)
@@ -190,7 +190,7 @@ class PushNotificationMiddleware {
     static func reduceToggleAllPushNotificationRoutes(action: ToggleAllPushNotificationRoutes, state: PushNotificationPreferenceState, authorizationStatus: PushNotificationAuthorizationState) {
         if action.boolValue && authorizationStatus == .authorized { // Turn on
             for route in state.routeIds {
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                     subscribeWithoutThrows(routeId: route.routeId)
                 })
             }
