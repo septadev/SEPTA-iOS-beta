@@ -11,6 +11,10 @@ import SeptaSchedule
 
 protocol TransitViewAction: SeptaAction {}
 
+struct RefreshAvailableRoutes: TransitViewAction {
+    let description: String
+}
+
 struct TransitViewRoutesLoaded: TransitViewAction {
     let routes: [TransitRoute]
     let description: String

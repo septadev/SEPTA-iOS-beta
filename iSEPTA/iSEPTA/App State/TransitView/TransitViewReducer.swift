@@ -21,8 +21,12 @@ struct TransitViewReducer {
     private static func reduceTransitViewState(action: Action, state: TransitViewState) -> TransitViewState {
         guard let action = action as? TransitViewAction else { return state }
 
+        if action is RefreshAvailableRoutes {
+            return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: state.transitViewModel, locations: state.vehicleLocations, refreshRoutes: true, refreshVehicleLocations: false)
+        }
+
         if let action = action as? TransitViewRoutesLoaded {
-            return TransitViewState(availableRoutes: action.routes, transitViewModel: state.transitViewModel, locations: state.vehicleLocations, refreshRoutes: state.refreshTransitViewRoutes, refreshVehicleLocations: state.refreshVehicleLocationData)
+            return TransitViewState(availableRoutes: action.routes, transitViewModel: state.transitViewModel, locations: state.vehicleLocations, refreshRoutes: false, refreshVehicleLocations: state.refreshVehicleLocationData)
         }
 
         if let action = action as? TransitViewRouteSelected {

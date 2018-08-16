@@ -37,8 +37,13 @@ extension DatabaseUpdateWatcher: StoreSubscriber {
     typealias StoreSubscriberStateType = DatabaseUpdateState
 
     func newState(state: DatabaseUpdateState) {
-        if state.status == .updateAvailable {
+        switch state.status {
+        case .updateAvailable:
             delegate?.databaseUpdateAvailable()
+        case .updateDownloaded:
+            store.dispatch(RefreshAvailableRoutes(description: "Refresh available TransitView routes due to database update"))
+        default:
+            return
         }
     }
 }
