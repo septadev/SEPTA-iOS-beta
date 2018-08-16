@@ -11,7 +11,7 @@ import UIKit
 
 class MoreViewModel {
     func numberOfRows() -> Int {
-        return 8
+        return 7
     }
 
     func configureCell(cell: MoreTableViewCell, indexPath: IndexPath) {
@@ -20,11 +20,11 @@ class MoreViewModel {
         case 1: configureSubwayMapCell(cell: cell)
         case 2: configureTransitViewCell(cell: cell)
         case 3: configureTrainViewCell(cell: cell)
-        case 4: configurePushNotificationsCell(cell: cell)
-        case 5: configurePerksCell(cell: cell)
-        case 6: configureElertsCell(cell: cell)
-        case 7: configureConnectCell(cell: cell)
-        case 8: configureAboutCell(cell: cell)
+        //        case 4: configurePushNotificationsCell(cell: cell)
+        case 4: configurePerksCell(cell: cell)
+        case 5: configureElertsCell(cell: cell)
+        case 6: configureConnectCell(cell: cell)
+        case 7: configureAboutCell(cell: cell)
         default: break
         }
     }

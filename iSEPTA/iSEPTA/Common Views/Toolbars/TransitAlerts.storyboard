@@ -51,7 +51,7 @@
                                             <outletCollection property="gestureRecognizers" destination="oxn-NG-6op" appends="YES" id="cld-0E-Jdm"/>
                                         </connections>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCR-MF-Upm" userLabel="SwitchWrapper">
+                                    <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCR-MF-Upm" userLabel="SwitchWrapper">
                                         <rect key="frame" x="257" y="250.5" width="52" height="47"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subscribe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4L-Qc-eVk">

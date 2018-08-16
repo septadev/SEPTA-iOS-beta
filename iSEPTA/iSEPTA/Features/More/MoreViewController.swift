@@ -39,7 +39,7 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return 9
+        return 8
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,18 +62,18 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
         case 3:
             let mapConnection = MakeSeptaConnection(septaConnection: .trainView)
             store.dispatch(mapConnection)
+        //        case 4:
+        //            let pushAction = PushViewController(viewController: .managePushNotficationsController, description: "Push Notification Preferences")
+        //            store.dispatch(pushAction)
         case 4:
-            let pushAction = PushViewController(viewController: .managePushNotficationsController, description: "Push Notification Preferences")
-            store.dispatch(pushAction)
-        case 5:
             let pushAction = PushViewController(viewController: .perksViewController, description: "Will view pass perks")
             store.dispatch(pushAction)
-        case 6:
+        case 5:
             openElerts()
-        case 7:
+        case 6:
             let pushAction = PushViewController(viewController: .contactViewController, description: "Will View How to Contact SEPTA")
             store.dispatch(pushAction)
-        case 8:
+        case 7:
             let pushAction = PushViewController(viewController: .aboutViewController, description: "About the Septa App")
             store.dispatch(pushAction)
         default:
