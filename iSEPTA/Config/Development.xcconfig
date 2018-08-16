@@ -1,0 +1,12 @@
+//
+//  Development.xcconfig
+//  iSEPTA
+//
+//  Created by Mike Mannix on 8/16/18.
+//  Copyright © 2018 Mark Broski. All rights reserved.
+//
+
+APP_ICON = AppIconDebug
+APS_ENV = development
+SEPTA_NETWORK_URL = https:/$()/dev-mobile.septa.org
+SEPTA_NETWORK_API_KEY = ZYbuUWm9O41RCzK3YQOm795h6L4hAT6yaNrwoBkD

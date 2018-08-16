@@ -57,6 +57,7 @@
 		0EB1942221090AA800077C99 /* FavoriteTransitViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1942021090AA800077C99 /* FavoriteTransitViewCell.swift */; };
 		0EB1942321090AA800077C99 /* FavoriteTransitViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EB1942121090AA800077C99 /* FavoriteTransitViewCell.xib */; };
 		0EE428D42114D4C500EBF6FE /* SeptaNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE428D32114D4C500EBF6FE /* SeptaNotification.swift */; };
+		0EEAE2672125E5FB00EBB0A1 /* network.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58E33F231F61615900C74B7C /* network.plist */; };
 		0EFEACFF2110D84600F3A368 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEACF62110D84400F3A368 /* FirebaseInstanceID.framework */; };
 		0EFEAD002110D84600F3A368 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEACF92110D84500F3A368 /* FirebaseAnalytics.framework */; };
 		0EFEAD012110D84600F3A368 /* FirebaseNanoPB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEACFA2110D84500F3A368 /* FirebaseNanoPB.framework */; };
@@ -326,7 +327,6 @@
 		58E33F1E1F6147DE00C74B7C /* CLLocationCoordinate2D+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F1D1F6147DE00C74B7C /* CLLocationCoordinate2D+Equatable.swift */; };
 		58E33F201F61494700C74B7C /* NextToArriveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F1F1F61494700C74B7C /* NextToArriveService.swift */; };
 		58E33F221F615EC100C74B7C /* NextToArriveScheduleRequestWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F211F615EC100C74B7C /* NextToArriveScheduleRequestWatcher.swift */; };
-		58E33F241F61615900C74B7C /* network.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58E33F231F61615900C74B7C /* network.plist */; };
 		58E33F261F61619500C74B7C /* SeptaNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F251F61619500C74B7C /* SeptaNetwork.swift */; };
 		58E33F281F61651400C74B7C /* TransitType+TransitMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E33F271F61651400C74B7C /* TransitType+TransitMode.swift */; };
 		58E33F2C1F6171AE00C74B7C /* SeptaRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; };
@@ -765,7 +765,6 @@
 
 /* Begin PBXFileReference section */
 		0E2777F9211238F900507CFE /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		0E2777FA2112390600507CFE /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		0E2777FB211249EA00507CFE /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		0E2A006120CFF61A00E97BAF /* DatabaseUpdateState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateState.swift; sourceTree = "<group>"; };
 		0E2A006420CFF88900E97BAF /* DatabaseUpdateReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateReducer.swift; sourceTree = "<group>"; };
@@ -791,6 +790,8 @@
 		0E4328E520D04AC800FBD805 /* DatabaseUpdateWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateWatcher.swift; sourceTree = "<group>"; };
 		0E4328E720D060DF00FBD805 /* DatabaseDownloadProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseDownloadProvider.swift; sourceTree = "<group>"; };
 		0E4328E920D12CD400FBD805 /* DatabaseDownloadedWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseDownloadedWatcher.swift; sourceTree = "<group>"; };
+		0E5964FD2125C029006877EF /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		0E5965002125C036006877EF /* QA.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = QA.xcconfig; sourceTree = "<group>"; };
 		0E605958210F5B0300533A3C /* perks.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = perks.storyboard; sourceTree = "<group>"; };
 		0E60595A210F5B4A00533A3C /* PerksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerksViewController.swift; sourceTree = "<group>"; };
 		0E64472120D27A7600A99E2D /* DatabaseUpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdateManager.swift; sourceTree = "<group>"; };
@@ -1521,7 +1522,8 @@
 			isa = PBXGroup;
 			children = (
 				0E2777F9211238F900507CFE /* Release.xcconfig */,
-				0E2777FA2112390600507CFE /* Debug.xcconfig */,
+				0E5964FD2125C029006877EF /* Development.xcconfig */,
+				0E5965002125C036006877EF /* QA.xcconfig */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -3471,7 +3473,6 @@
 				677E052B20727C9D00B16C09 /* 115.kml in Resources */,
 				582F4EC21F33B1120062A546 /* fares.storyboard in Resources */,
 				677E055120727C9D00B16C09 /* 50.kml in Resources */,
-				58E33F241F61615900C74B7C /* network.plist in Resources */,
 				5801280A1F6BEF01006B6DB8 /* NoFavoriteTransitModeView.xib in Resources */,
 				677E055520727C9D00B16C09 /* 120.kml in Resources */,
 				677E054320727C9D00B16C09 /* 105.kml in Resources */,
@@ -3483,6 +3484,7 @@
 				677E04BD20727C9D00B16C09 /* 5.kml in Resources */,
 				676B7D9F1F7D189E0052F016 /* more.storyboard in Resources */,
 				677E051120727C9D00B16C09 /* CHW.kml in Resources */,
+				0EEAE2672125E5FB00EBB0A1 /* network.plist in Resources */,
 				5820CB3E210F4AD300782275 /* AddEditView.xib in Resources */,
 				677E054B20727C9D00B16C09 /* 36.kml in Resources */,
 				677E04F920727C9D00B16C09 /* 68.kml in Resources */,
@@ -4248,9 +4250,9 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		58D9C40E1F3335BB002BE2E8 /* Debug */ = {
+		0E5965042125C107006877EF /* QA */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E2777FA2112390600507CFE /* Debug.xcconfig */;
+			baseConfigurationReference = 0E5965002125C036006877EF /* QA.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -4302,7 +4304,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -4310,7 +4312,128 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USER_HEADER_SEARCH_PATHS = $PROJECT_DIR/iSEPTA/Main/;
 			};
-			name = Debug;
+			name = QA;
+		};
+		0E5965052125C107006877EF /* QA */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E5965002125C036006877EF /* QA.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "$(APP_ICON)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = iSEPTA/SEPTA.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = L636S9JLLY;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = iSEPTA/Info/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA.beta;
+				PRODUCT_MODULE_NAME = Septa;
+				PRODUCT_NAME = SEPTA;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = QA;
+		};
+		0E5965062125C107006877EF /* QA */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E5965002125C036006877EF /* QA.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = L636S9JLLY;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = iSEPTATests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTATests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "iSEPTATests/iSEPTATests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SEPTA.app/SEPTA";
+			};
+			name = QA;
+		};
+		58D9C40E1F3335BB002BE2E8 /* Dev */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E5964FD2125C029006877EF /* Development.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					$SRCROOT/../Carthage/Build/iOS,
+					"$(inherited)",
+					$SRCROOT,
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USER_HEADER_SEARCH_PATHS = $PROJECT_DIR/iSEPTA/Main/;
+			};
+			name = Dev;
 		};
 		58D9C40F1F3335BB002BE2E8 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -4360,7 +4483,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -4369,9 +4492,9 @@
 			};
 			name = Release;
 		};
-		58D9C4111F3335BB002BE2E8 /* Debug */ = {
+		58D9C4111F3335BB002BE2E8 /* Dev */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E2777FA2112390600507CFE /* Debug.xcconfig */;
+			baseConfigurationReference = 0E5964FD2125C029006877EF /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "$(APP_ICON)";
@@ -4402,7 +4525,7 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Debug;
+			name = Dev;
 		};
 		58D9C4121F3335BB002BE2E8 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -4438,9 +4561,9 @@
 			};
 			name = Release;
 		};
-		58D9C4141F3335BB002BE2E8 /* Debug */ = {
+		58D9C4141F3335BB002BE2E8 /* Dev */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E2777FA2112390600507CFE /* Debug.xcconfig */;
+			baseConfigurationReference = 0E5964FD2125C029006877EF /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -4458,7 +4581,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SEPTA.app/SEPTA";
 			};
-			name = Debug;
+			name = Dev;
 		};
 		58D9C4151F3335BB002BE2E8 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -4486,7 +4609,8 @@
 		58D9C3EB1F3335BB002BE2E8 /* Build configuration list for PBXProject "iSEPTA" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				58D9C40E1F3335BB002BE2E8 /* Debug */,
+				58D9C40E1F3335BB002BE2E8 /* Dev */,
+				0E5965042125C107006877EF /* QA */,
 				58D9C40F1F3335BB002BE2E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4495,7 +4619,8 @@
 		58D9C4101F3335BB002BE2E8 /* Build configuration list for PBXNativeTarget "iSEPTA" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				58D9C4111F3335BB002BE2E8 /* Debug */,
+				58D9C4111F3335BB002BE2E8 /* Dev */,
+				0E5965052125C107006877EF /* QA */,
 				58D9C4121F3335BB002BE2E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -4504,7 +4629,8 @@
 		58D9C4131F3335BB002BE2E8 /* Build configuration list for PBXNativeTarget "iSEPTATests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				58D9C4141F3335BB002BE2E8 /* Debug */,
+				58D9C4141F3335BB002BE2E8 /* Dev */,
+				0E5965062125C107006877EF /* QA */,
 				58D9C4151F3335BB002BE2E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

@@ -8,3 +8,5 @@
 
 APP_ICON = AppIconRelease
 APS_ENV = production
+SEPTA_NETWORK_URL = https:/$()/prod-mobile.septa.org
+SEPTA_NETWORK_API_KEY = S0XFfcawkb54IMFnAGctQajLNUK7QxNfoi4zgaD4

@@ -22,10 +22,12 @@ struct SeptaNetwork {
     private init() {
         let path = Bundle.main.path(forResource: "network", ofType: "plist")!
         let dict = NSDictionary(contentsOfFile: path)!
-        let urlString = dict["url"] as! String
+        let urlString = Bundle.main.object(forInfoDictionaryKey: "septaUrl") as? String ?? ""
+        print(":M: \(urlString)")
         databaseVersion = dict["databaseVersion"] as! Int
         databaseUpdateDate = dict["databaseUpdateDate"] as! Date
-        let apiKey = dict["apiKey"] as! String
+        let apiKey = Bundle.main.object(forInfoDictionaryKey: "septaApiKey") as? String ?? ""
+        print(":M: \(apiKey)")
         url = urlString
         self.apiKey = apiKey
         genericAlertName = dict["genericAlertName"] as! String
