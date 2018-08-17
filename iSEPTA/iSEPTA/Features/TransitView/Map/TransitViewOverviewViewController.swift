@@ -25,7 +25,7 @@ class TransitViewOverviewViewController: UIViewController, IdentifiableControlle
     }
 
     @IBAction func refreshTransitViewData(_: Any) {
-        store.dispatch(RefreshTransitViewVehicleLocationData(description: "Request refresh of TransitView vehicle location data"))
+        store.dispatch(RefreshTransitViewVehicleLocationData(description: "Refresh TransitView vehicle location data button tapped"))
     }
 
     @IBAction func favoriteButtonTapped(_: Any) {

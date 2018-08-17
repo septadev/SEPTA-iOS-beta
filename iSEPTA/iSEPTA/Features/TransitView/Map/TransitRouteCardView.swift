@@ -100,6 +100,7 @@ class TransitRouteCardView: UIView {
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in
             store.dispatch(TransitViewRemoveRoute(route: route, description: "User wishes to remove a TransitView route from the map"))
+            self.delegate?.deleteCardTapped(routeId: route.routeId)
         }))
         alert.show()
     }
@@ -148,4 +149,5 @@ class TransitRouteCardView: UIView {
 
 protocol TransitRouteCardDelegate {
     func cardTapped(routeId: String)
+    func deleteCardTapped(routeId: String)
 }

@@ -15,7 +15,6 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
     typealias StoreSubscriberStateType = TransitViewModel
 
     var viewModel = TransitViewMapRouteViewModel()
-    var routesHaveBeenAdded = false
     var updateMap = true
     var transitRoutes: [TransitRoute] = [] {
         didSet {
@@ -44,6 +43,8 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
             }
         }
     }
+
+    var drawnRoutes: [String] = []
 
     @IBOutlet var mapView: MKMapView! {
         didSet {
@@ -94,7 +95,7 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
 
     @objc func timerFired(timer _: Timer) {
         updateMap = false
-        refreshRoutes()
+        refreshRoutes(description: "Refresh TransitView location data based on timer")
     }
 
     func subscribe() {
@@ -119,11 +120,16 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
             }
         }
 
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.removeOverlays(mapView.overlays)
+        drawnRoutes = []
+        updateMap = true
+
         if route1.viewModel == nil && route2.viewModel == nil && route3.viewModel == nil {
             // No routes! Back we go.
             navigationController?.popViewController(animated: true)
         } else {
-            refreshRoutes()
+            refreshRoutes(description: "Refresh TransitView location data based on TransitViewModel state change")
         }
     }
 
@@ -299,10 +305,8 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
         }
     }
 
-    private func refreshRoutes() {
-        routesHaveBeenAdded = false
-        mapView.removeOverlays(mapView.overlays)
-        store.dispatch(RefreshTransitViewVehicleLocationData(description: "Request refresh of TransitView vehicle location data"))
+    private func refreshRoutes(description: String) {
+        store.dispatch(RefreshTransitViewVehicleLocationData(description: description))
     }
 
     private func activateRouteById(routeId: String) {
@@ -384,11 +388,12 @@ extension TransitViewMapViewController: MKMapViewDelegate {
 
 extension TransitViewMapViewController: TransitViewMapDataProviderDelegate {
     func drawRoutes(routeIds: [String]) {
-        guard !routesHaveBeenAdded else { return }
         for routeId in routeIds {
-            guard let url = locateKMLFile(routeId: routeId) else { return }
-            parseKMLForRoute(url: url, routeId: routeId)
-            routesHaveBeenAdded = true
+            if !drawnRoutes.contains(routeId) {
+                guard let url = locateKMLFile(routeId: routeId) else { return }
+                parseKMLForRoute(url: url, routeId: routeId)
+                drawnRoutes.append(routeId)
+            }
         }
     }
 
@@ -402,6 +407,26 @@ extension TransitViewMapViewController: TransitRouteCardDelegate {
         guard let selectedRoute = selectedRoute, selectedRoute.routeId != routeId else { return }
 
         activateRoute(routeId: routeId)
+    }
+
+    func deleteCardTapped(routeId: String) {
+        if let routeIndex = drawnRoutes.index(of: routeId) {
+            for overlay in mapView.overlays {
+                if let overlay = overlay as? RouteOverlay, let overlayRouteId = overlay.routeId {
+                    if overlayRouteId == routeId {
+                        mapView.remove(overlay)
+                    }
+                }
+            }
+            for annotation in mapView.annotations {
+                if let annotation = annotation as? TransitViewVehicleAnnotation {
+                    if annotation.location.routeId == routeId {
+                        mapView.removeAnnotation(annotation)
+                    }
+                }
+            }
+            drawnRoutes.remove(at: routeIndex)
+        }
     }
 }
 
