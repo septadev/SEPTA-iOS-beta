@@ -114,6 +114,12 @@ class TransitRouteCardView: UIView {
             let switchTabsAction = SwitchTabs(activeNavigationController: .alerts, description: "User tapped on alert from TransitView")
             store.dispatch(switchTabsAction)
 
+            // Make sure the toolbar is set to the selected mode
+            if let target = store.state.currentTargetForScheduleActions(), let mode = viewModel?.mode() {
+                let action = TransitModeSelected(targetForScheduleAction: target, transitMode: mode, description: "User switched the transit mode toolbar")
+                store.dispatch(action)
+            }
+
             // Select the target route
             let route = Route(routeId: vm.routeId, routeShortName: vm.routeName, routeLongName: vm.routeName, routeDirectionCode: .inbound)
             let selectRouteAction = RouteSelected(targetForScheduleAction: .alerts, selectedRoute: route)
