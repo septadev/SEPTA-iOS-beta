@@ -48,6 +48,10 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
 
     @IBOutlet var mapView: MKMapView! {
         didSet {
+            let location = CLLocationCoordinate2D(latitude: 39.9519935, longitude: -75.1636808)
+            let span = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
+            let region = MKCoordinateRegion(center: location, span: span)
+            mapView.setRegion(region, animated: true)
             addOverlaysToMap()
             drawVehicleLocations()
             mapView.isRotateEnabled = false
@@ -86,6 +90,8 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        store.unsubscribe(self)
+        viewModel.delegate = nil
         timer?.invalidate()
     }
 
@@ -119,11 +125,6 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
                 transitRoutes.append(route)
             }
         }
-
-        mapView.removeAnnotations(mapView.annotations)
-        mapView.removeOverlays(mapView.overlays)
-        drawnRoutes = []
-        updateMap = true
 
         if route1.viewModel == nil && route2.viewModel == nil && route3.viewModel == nil {
             // No routes! Back we go.
@@ -235,21 +236,7 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
     }
 
     var vehicleAnnotationsAdded = [TransitViewVehicleAnnotation]()
-    private var vehiclesToAdd = [TransitViewVehicleLocation]() {
-        didSet {
-            guard let _ = mapView else { return }
-            clearExistingVehicleLocations()
-            drawVehicleLocations()
-            if updateMap {
-                mapView.showAnnotations(mapView.annotations, animated: false)
-                mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0), animated: true)
-            }
-            if !updateMap {
-                updateMap = true
-            }
-            vehiclesToAdd.removeAll()
-        }
-    }
+    private var vehiclesToAdd = [TransitViewVehicleLocation]()
 
     private func clearExistingVehicleLocations() {
         mapView.removeAnnotations(vehicleAnnotationsAdded)
@@ -258,6 +245,18 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
 
     private func drawVehicleLocations() {
         for vehicle in vehiclesToAdd {
+            drawVehicle(vehicle)
+        }
+        if updateMap {
+            mapView.showAnnotations(mapView.annotations, animated: false)
+            mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0), animated: true)
+        }
+        updateMap = true
+        vehiclesToAdd = []
+    }
+
+    private func addVehicleAnnotationsToMap(vehicles: [TransitViewVehicleLocation]) {
+        for vehicle in vehicles {
             drawVehicle(vehicle)
         }
     }
@@ -399,6 +398,9 @@ extension TransitViewMapViewController: TransitViewMapDataProviderDelegate {
 
     func drawVehicleLocations(locations: [TransitViewVehicleLocation]) {
         vehiclesToAdd = locations
+        if mapView != nil {
+            drawVehicleLocations()
+        }
     }
 }
 
@@ -443,7 +445,7 @@ extension TransitViewMapViewController: TransitViewAnnotationViewDelegate {
         clearExistingVehicleLocations()
 
         // Add annotations back
-        vehiclesToAdd = previouslyAddedAnnotations
+        addVehicleAnnotationsToMap(vehicles: previouslyAddedAnnotations)
     }
 }
 

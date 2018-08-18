@@ -65,7 +65,7 @@ struct TransitViewReducer {
         let second = action.slot == .second ? action.route : state.transitViewModel.secondRoute
         let third = action.slot == .third ? action.route : state.transitViewModel.thirdRoute
         let model = TransitViewModel(firstRoute: first, secondRoute: second, thirdRoute: third)
-        return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: model, locations: state.vehicleLocations, refreshRoutes: state.refreshTransitViewRoutes, refreshVehicleLocations: state.refreshVehicleLocationData)
+        return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: model, locations: [], refreshRoutes: state.refreshTransitViewRoutes, refreshVehicleLocations: state.refreshVehicleLocationData)
     }
 
     private static func reduceRemoveRouteAction(action: TransitViewRemoveRoute, state: TransitViewState) -> TransitViewState {

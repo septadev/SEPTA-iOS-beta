@@ -15,7 +15,11 @@ class TransitViewMapRouteViewModel: StoreSubscriber {
 
     var delegate: TransitViewMapDataProviderDelegate? {
         didSet {
-            subscribe()
+            if delegate == nil {
+                store.unsubscribe(self)
+            } else {
+                subscribe()
+            }
         }
     }
 
