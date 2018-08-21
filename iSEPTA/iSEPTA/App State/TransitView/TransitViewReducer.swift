@@ -116,6 +116,6 @@ struct TransitViewReducer {
             }
         }
         let model = TransitViewModel(firstRoute: r1, secondRoute: r2, thirdRoute: r3)
-        return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: model, locations: state.vehicleLocations, refreshRoutes: false, refreshVehicleLocations: false)
+        return TransitViewState(availableRoutes: state.availableRoutes, transitViewModel: model, locations: [], refreshRoutes: false, refreshVehicleLocations: false)
     }
 }
