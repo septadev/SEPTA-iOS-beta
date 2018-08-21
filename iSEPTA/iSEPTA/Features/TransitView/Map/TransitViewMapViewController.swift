@@ -336,6 +336,7 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
 }
 
 // MARK: - MKMapViewDelegate
+
 extension TransitViewMapViewController: MKMapViewDelegate {
     func mapView(_: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         guard let routeOverlay = overlay as? RouteOverlay, let routeId = routeOverlay.routeId else { return MKOverlayRenderer(overlay: overlay) }
@@ -389,6 +390,7 @@ extension TransitViewMapViewController: MKMapViewDelegate {
 }
 
 // MARK: - TransitViewMapDataProviderDelegate
+
 extension TransitViewMapViewController: TransitViewMapDataProviderDelegate {
     func drawRoutes(routeIds: [String]) {
         for routeId in routeIds {
@@ -401,6 +403,10 @@ extension TransitViewMapViewController: TransitViewMapDataProviderDelegate {
     }
 
     func drawVehicleLocations(locations: [TransitViewVehicleLocation]) {
+        // Remove all the old ones first
+        if mapView != nil {
+            mapView.removeAnnotations(mapView.annotations)
+        }
         vehiclesToAdd = locations
         if mapView != nil {
             drawVehicleLocations()
@@ -409,6 +415,7 @@ extension TransitViewMapViewController: TransitViewMapDataProviderDelegate {
 }
 
 // MARK: - TransitRouteCardDelegate
+
 extension TransitViewMapViewController: TransitRouteCardDelegate {
     func cardTapped(routeId: String) {
         guard let selectedRoute = selectedRoute, selectedRoute.routeId != routeId else { return }
@@ -438,6 +445,7 @@ extension TransitViewMapViewController: TransitRouteCardDelegate {
 }
 
 // MARK: - TransitViewAnnotationViewDelegate
+
 extension TransitViewMapViewController: TransitViewAnnotationViewDelegate {
     func activateRoute(routeId: String) {
         // Just switching active route, so don't update the whole map
@@ -456,6 +464,7 @@ extension TransitViewMapViewController: TransitViewAnnotationViewDelegate {
 }
 
 // MARK: - TransitViewMapDelegate
+
 protocol TransitViewMapDelegate {
     func selectionIsAFavorite(isAFavorite: Bool)
 }
