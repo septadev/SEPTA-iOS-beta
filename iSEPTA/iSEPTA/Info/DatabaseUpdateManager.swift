@@ -38,6 +38,7 @@ extension DatabaseUpdateManager: DatabaseStateDelegate {
         store.dispatch(action)
 
         if action.databaseState == .loaded {
+            store.dispatch(RefreshAvailableRoutes(description: "Refresh available TransitView routes due to database move complete"))
             store.dispatch(CheckForDatabaseUpdate())
         }
     }

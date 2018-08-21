@@ -436,6 +436,9 @@ extension TransitViewMapViewController: TransitRouteCardDelegate {
                 if let annotation = annotation as? TransitViewVehicleAnnotation {
                     if annotation.location.routeId == routeId {
                         mapView.removeAnnotation(annotation)
+                        if let addedAnnotationIndex = vehicleAnnotationsAdded.index(of: annotation) {
+                            vehicleAnnotationsAdded.remove(at: addedAnnotationIndex)
+                        }
                     }
                 }
             }
