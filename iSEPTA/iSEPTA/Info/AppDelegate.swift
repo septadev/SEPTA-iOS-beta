@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         databaseUpdateManager.appLaunched(coldStart: true)
 
         Messaging.messaging().delegate = self
-        NotificationsManager.configure()
+        FirebaseApp.configure()
         UNUserNotificationCenter.current().delegate = self
         updateCurrentPushNotificationAuthorizationStatus()
 
