@@ -22,6 +22,10 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save(_:)))
+        navigationItem.setRightBarButton(saveButton, animated: false)
+
         headerView = UIView.instanceFromNib(named: "MyNotificationsHeaderView")
         guard let addEditView = headerView.addEditViewWrapper.contentView as? AddEditView else { return }
         addEditView.editDelegate = self
@@ -62,6 +66,10 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
         }
 
         tableView.reloadData()
+    }
+
+    @objc func save(_: Any) {
+        store.dispatch(PostPushNotificationPreferences(boolValue: true, viewController: nil))
     }
 
     func isCurrentlyEditing(_ editing: Bool) {

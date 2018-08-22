@@ -103,11 +103,6 @@ extension AppDelegate: CrashlyticsDelegate {
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
-    func application(_: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        NotificationsManager.handleRemoteNotification(info: userInfo)
-        completionHandler(.newData)
-    }
-
     func userNotificationCenter(_: UNUserNotificationCenter, willPresent _: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         // Show alert if app is in the foreground
         completionHandler(.alert)
@@ -115,7 +110,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
     func userNotificationCenter(_: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
-        processNotificationTap(userInfo: userInfo)
 
         DispatchQueue.main.async { [weak self] in
             self?.processNotificationTap(userInfo: userInfo)

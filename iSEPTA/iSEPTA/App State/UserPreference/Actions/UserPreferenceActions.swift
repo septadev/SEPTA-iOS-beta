@@ -124,3 +124,9 @@ struct ToggleAllPushNotificationRoutes: UserPreferencesAction {
     var boolValue: Bool
     let description = "Disabling all push notification Routes"
 }
+
+struct PostPushNotificationPreferences: UserPreferencesAction, PushNotificationAuthorizatonRequired {
+    let boolValue: Bool
+    let viewController: UIViewController?
+    let description = "Save push notification preferences to backend"
+}

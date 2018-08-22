@@ -50,6 +50,8 @@ struct UserPreferencesReducer {
             newPref = reduceRemovePushNotificationRoute(action: action, state: state)
         case let action as UpdatePushNotificationRoute:
             newPref = reduceUpdatePushNotificationRoute(action: action, state: state)
+        case let action as PostPushNotificationPreferences:
+            newPref = reducePostPushNotificationPreferences(action: action, state: state)
         case let action as ToggleAllPushNotificationRoutes:
             newPref = reduceToggleAllPushNotificationRoutes(action: action, state: state)
         default:
@@ -177,6 +179,12 @@ struct UserPreferencesReducer {
             routeIds.append(action.route)
         }
         userPreferenceState.pushNotificationPreferenceState.routeIds = routeIds
+        return userPreferenceState
+    }
+
+    static func reducePostPushNotificationPreferences(action: PostPushNotificationPreferences, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.pushNotificationPreferenceState.postUserNotificationPreferences = action.boolValue
         return userPreferenceState
     }
 
