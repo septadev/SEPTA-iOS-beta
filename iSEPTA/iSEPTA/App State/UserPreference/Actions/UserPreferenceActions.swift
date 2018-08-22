@@ -93,12 +93,6 @@ struct DeleteTimeframe: UserPreferencesAction, PushNotificationAuthorizatonRequi
     let description = "Deleting a new time frame"
 }
 
-struct AddPushNotificationRoute: UserPreferencesAction, PushNotificationAuthorizatonRequired {
-    let route: PushNotificationRoute
-    let viewController: UIViewController?
-    let description = "Adding a push Notification Route"
-}
-
 struct RemovePushNotificationRoute: UserPreferencesAction, PushNotificationAuthorizatonRequired {
     let routes: [PushNotificationRoute]
     let viewController: UIViewController?

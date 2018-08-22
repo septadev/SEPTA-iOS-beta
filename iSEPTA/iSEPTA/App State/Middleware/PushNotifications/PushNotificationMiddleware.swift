@@ -29,8 +29,6 @@ class PushNotificationMiddleware {
             switch action {
             case let action as UpdateSystemAuthorizationStatusForPushNotifications:
                 reduceUpdateSystemAuthorizationStatusForPushNotifications(action: action, state: state, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
-            case let action as AddPushNotificationRoute:
-                reduceAddPushNotificationRoute(action: action, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
             case let action as UpdatePushNotificationRoute:
                 reduceUpdatePushNotificationRoute(action: action, state: state, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
             case let action as UserWantsToSubscribeToPushNotifications:
@@ -106,24 +104,6 @@ class PushNotificationMiddleware {
                     dispatch(reversedAction)
                 }, dispatch: dispatch, next: next)
             }
-        }
-    }
-
-    static func reduceAddPushNotificationRoute(action: AddPushNotificationRoute, authorizationStatus: PushNotificationAuthorizationState, dispatch: @escaping DispatchFunction, next: @escaping DispatchFunction) {
-        switch authorizationStatus {
-        case .authorized:
-            dispatch(UserWantsToSubscribeToPushNotifications(viewController: nil, boolValue: true))
-        case .denied:
-            UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: action.viewController, completion: {
-                dispatch(RemovePushNotificationRoute(routes: [action.route], viewController: action.viewController))
-            })
-        case .notDetermined:
-            requestAuthorization(
-                onSuccess: {
-                    return
-                }, onFail: {
-                    dispatch(RemovePushNotificationRoute(routes: [action.route], viewController: nil))
-            }, dispatch: dispatch, next: next)
         }
     }
 

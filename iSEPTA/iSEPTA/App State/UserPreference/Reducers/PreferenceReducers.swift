@@ -42,8 +42,6 @@ struct UserPreferencesReducer {
             newPref = reduceInsertNewPushTimeframe(action: action, state: state)
         case let action as DeleteTimeframe:
             newPref = reduceDeleteTimeframe(action: action, state: state)
-        case let action as AddPushNotificationRoute:
-            newPref = reduceAddPushNotificationRoute(action: action, state: state)
         case let action as RemovePushNotificationRoute:
             newPref = reduceRemovePushNotificationRoute(action: action, state: state)
         case let action as UpdatePushNotificationRoute:
@@ -141,14 +139,6 @@ struct UserPreferencesReducer {
     }
 
     // MARK: - Routes
-
-    static func reduceAddPushNotificationRoute(action: AddPushNotificationRoute, state: UserPreferenceState) -> UserPreferenceState {
-        var userPreferenceState = state
-        var routeIds = userPreferenceState.pushNotificationPreferenceState.routeIds
-        routeIds.append(action.route)
-        userPreferenceState.pushNotificationPreferenceState.routeIds = routeIds
-        return userPreferenceState
-    }
 
     static func reduceRemovePushNotificationRoute(action: RemovePushNotificationRoute, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
