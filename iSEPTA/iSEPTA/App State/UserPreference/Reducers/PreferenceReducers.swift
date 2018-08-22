@@ -32,8 +32,6 @@ struct UserPreferencesReducer {
             newPref = reduceUserWantsToSubscribeToPushNotifications(action: action, state: state)
         case let action as UserWantsToSubscribeToSpecialAnnouncements:
             newPref = reduceUserWantsToSubscribeToSpecialAnnouncements(action: action, state: state)
-        case let action as UserWantsToSubscribeToOverideDoNotDisturb:
-            newPref = reduceUserWantsToSubscribeToOverideDoNotDisturb(action: action, state: state)
         case let action as UpdateSystemAuthorizationStatusForPushNotifications:
             newPref = reduceUpdateSystemAuthorizationStatusForPushNotifications(action: action, state: state)
         case let action as UpdateDaysOfTheWeekForPushNotifications:
@@ -103,12 +101,6 @@ struct UserPreferencesReducer {
     static func reduceUserWantsToSubscribeToSpecialAnnouncements(action: UserWantsToSubscribeToSpecialAnnouncements, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
         userPreferenceState.pushNotificationPreferenceState.userWantsToReceiveSpecialAnnoucements = action.boolValue
-        return userPreferenceState
-    }
-
-    static func reduceUserWantsToSubscribeToOverideDoNotDisturb(action: UserWantsToSubscribeToOverideDoNotDisturb, state: UserPreferenceState) -> UserPreferenceState {
-        var userPreferenceState = state
-        userPreferenceState.pushNotificationPreferenceState.userWantToReceiveNotificationsEvenWhenDoNotDisturbIsOn = action.boolValue
         return userPreferenceState
     }
 

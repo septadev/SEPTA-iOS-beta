@@ -37,8 +37,6 @@ class PushNotificationMiddleware {
                 reduceSubscribeToPushNotifications(action: action, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
             case let action as UserWantsToSubscribeToSpecialAnnouncements:
                 reduceSubscribeToSpecialAnnouncements(action: action, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
-            case let action as UserWantsToSubscribeToOverideDoNotDisturb:
-                reduceOverrideDoNotDisturb(action: action, authorizationStatus: authorizationStatus, dispatch: dispatch, next: next)
 
             default:
                 break
@@ -58,7 +56,6 @@ class PushNotificationMiddleware {
             case .denied, .notDetermined:
                 dispatch(UserWantsToSubscribeToPushNotifications(viewController: nil, boolValue: false))
                 dispatch(UserWantsToSubscribeToSpecialAnnouncements(viewController: nil, boolValue: false))
-                dispatch(UserWantsToSubscribeToOverideDoNotDisturb(viewController: nil, boolValue: false))
                 dispatch(ToggleAllPushNotificationRoutes(boolValue: false))
             }
         }
@@ -107,28 +104,6 @@ class PushNotificationMiddleware {
                     return
                 }, onFail: {
                     dispatch(reversedAction)
-                }, dispatch: dispatch, next: next)
-            }
-        }
-    }
-
-    static func reduceOverrideDoNotDisturb(action: UserWantsToSubscribeToOverideDoNotDisturb, authorizationStatus: PushNotificationAuthorizationState, dispatch: @escaping DispatchFunction, next: @escaping DispatchFunction) {
-        var reversedAction = action
-        reversedAction.boolValue = !action.boolValue
-        if action.boolValue { // Toggle On
-            switch authorizationStatus {
-            case .authorized:
-                break
-            case .denied:
-                UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: action.viewController, completion: {
-                    dispatch(reversedAction)
-                })
-            case .notDetermined:
-                requestAuthorization(
-                    onSuccess: {
-                        return
-                    }, onFail: {
-                        dispatch(reversedAction)
                 }, dispatch: dispatch, next: next)
             }
         }

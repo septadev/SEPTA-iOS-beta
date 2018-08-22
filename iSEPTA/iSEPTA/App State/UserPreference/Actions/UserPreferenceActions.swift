@@ -64,15 +64,6 @@ struct UserWantsToSubscribeToSpecialAnnouncements: UserPreferencesAction, PushNo
     }
 }
 
-struct UserWantsToSubscribeToOverideDoNotDisturb: UserPreferencesAction, PushNotificationAuthorizatonRequired, ToggleSwitchAction {
-    let viewController: UIViewController?
-    var boolValue: Bool = false
-    let description = "Toggling Wants to ignore Do Not Disturb"
-    init(viewController: UIViewController?, boolValue _: Bool = false) {
-        self.viewController = viewController
-    }
-}
-
 struct UpdateSystemAuthorizationStatusForPushNotifications: UserPreferencesAction {
     let authorizationStatus: PushNotificationAuthorizationState
     let description = "Authorization Status for Push Notifications"

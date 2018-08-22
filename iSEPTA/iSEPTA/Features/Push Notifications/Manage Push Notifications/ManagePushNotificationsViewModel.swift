@@ -122,13 +122,6 @@ class ManagePushNotificationsViewModel: ToggleCellDelegate {
                     rowIdentifier: .specialSeptaAnnouncements,
                     action: UserWantsToSubscribeToSpecialAnnouncements(viewController: viewController),
                     delegate: self),
-                ToggleSwitchViewModel(
-                    headerText: Strings.treatAsPriorityHeader,
-                    detailText: Strings.treatAsPriorityDetail,
-                    switchPositionOn: state.userWantToReceiveNotificationsEvenWhenDoNotDisturbIsOn,
-                    rowIdentifier: .treatAsPriority,
-                    action: UserWantsToSubscribeToOverideDoNotDisturb(viewController: viewController),
-                    delegate: self),
             ],
             [
                 PushCellViewModel(
