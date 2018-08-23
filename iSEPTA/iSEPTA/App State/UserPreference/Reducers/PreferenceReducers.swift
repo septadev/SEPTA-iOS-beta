@@ -26,6 +26,8 @@ struct UserPreferencesReducer {
             newPref = reducePreferencesDatabaseLoaded(action: action, state: state)
         case let action as NewStartupController:
             newPref = reduceNewStartupController(action: action, state: state)
+        case let action as SetFirebaseTokenForPushNotificatoins:
+            newPref = reduceSetFirebaseTokenForPushNotificatoins(action: action, state: state)
         case let action as UpdatePushNotificationPreferenceState:
             newPref = reduceUpdatePushNotificationPreferenceState(action: action, state: state)
         case let action as UserWantsToSubscribeToPushNotifications:
@@ -89,6 +91,12 @@ struct UserPreferencesReducer {
     }
 
     // Subscription Type
+
+    static func reduceSetFirebaseTokenForPushNotificatoins(action: SetFirebaseTokenForPushNotificatoins, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.pushNotificationPreferenceState.firebaseToken = action.token
+        return userPreferenceState
+    }
 
     static func reduceUserWantsToSubscribeToPushNotifications(action: UserWantsToSubscribeToPushNotifications, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state

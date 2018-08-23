@@ -120,6 +120,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
 extension AppDelegate: MessagingDelegate {
     func messaging(_: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        UserDefaults.standard.setValue(fcmToken, forKey: NotificationsManager.Keys.fcmTokenKey)
+        store.dispatch(SetFirebaseTokenForPushNotificatoins(token: fcmToken, description: "New Firebase token received"))
     }
 }

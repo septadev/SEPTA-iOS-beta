@@ -39,7 +39,7 @@ struct PushNotificationPreferenceService {
 
         return PushNotificationPreferencePostBody(
             deviceId: state.deviceId,
-            regToken: "",
+            regToken: state.firebaseToken,
             specialAnnouncements: state.userWantsToReceiveSpecialAnnoucements,
             timeWindows: timeWindows,
             routeSubscriptions: routes)

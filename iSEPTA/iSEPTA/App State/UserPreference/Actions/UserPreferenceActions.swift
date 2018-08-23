@@ -40,6 +40,11 @@ struct UpdatePushNotificationPreferenceState: UserPreferencesAction {
     let description = "A new preference state for push notifications has been set"
 }
 
+struct SetFirebaseTokenForPushNotificatoins: UserPreferencesAction {
+    let token: String
+    var description = "New Firebase token received"
+}
+
 struct UserWantsToSubscribeToPushNotifications: UserPreferencesAction, PushNotificationAuthorizatonRequired, ToggleSwitchAction {
     let viewController: UIViewController?
     var boolValue: Bool = false

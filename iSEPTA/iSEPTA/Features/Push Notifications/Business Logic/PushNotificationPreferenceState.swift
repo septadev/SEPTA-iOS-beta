@@ -13,6 +13,9 @@ struct PushNotificationPreferenceState: Codable, Equatable {
     /// The UUID of this app on this device
     let deviceId = UIDevice.current.identifierForVendor?.uuidString ?? ""
 
+    /// The token provided by Firebase that is required for sending push notifications to this device
+    var firebaseToken: String = ""
+
     /// An array of `RangeBounds` structs.
     /// For example:  [[start: 360, end: 720], [start: 900, end: 960]] means
     /// that the user wants to receive notifications between 6 AM and 12 PM.
