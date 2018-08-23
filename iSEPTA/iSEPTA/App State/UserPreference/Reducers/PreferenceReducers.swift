@@ -99,6 +99,7 @@ struct UserPreferencesReducer {
     static func reduceUserWantsToSubscribeToSpecialAnnouncements(action: UserWantsToSubscribeToSpecialAnnouncements, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
         userPreferenceState.pushNotificationPreferenceState.userWantsToReceiveSpecialAnnoucements = action.boolValue
+        userPreferenceState.pushNotificationPreferenceState.postUserNotificationPreferences = true
         return userPreferenceState
     }
 
