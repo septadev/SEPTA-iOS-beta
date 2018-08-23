@@ -27,7 +27,7 @@ class AlertDetailFooterView: UIView, StoreSubscriber {
         guard let viewController = UIResponder.parentViewController(forView: self) else { return }
         DispatchQueue.main.async {
             route.isEnabled = sender.isOn
-            store.dispatch(UpdatePushNotificationRoute(route: route, viewController: viewController))
+            store.dispatch(UpdatePushNotificationRoute(route: route, postImmediately: true, viewController: viewController))
         }
     }
 

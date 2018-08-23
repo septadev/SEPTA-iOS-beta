@@ -29,7 +29,7 @@ class PushNotificationTableViewCell: UITableViewCell {
         guard let route = pushNotificationRoute else { return }
         let newRoute = PushNotificationRoute(routeId: route.routeId, routeName: route.routeName, transitMode: route.transitMode, isEnabled: sender.isOn)
         guard let viewController = UIResponder.parentViewController(forView: self) else { return }
-        store.dispatch(UpdatePushNotificationRoute(route: newRoute, viewController: viewController))
+        store.dispatch(UpdatePushNotificationRoute(route: newRoute, postImmediately: false, viewController: viewController))
     }
 
     var routeNameText: String? {

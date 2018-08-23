@@ -101,6 +101,7 @@ struct RemovePushNotificationRoute: UserPreferencesAction, PushNotificationAutho
 
 struct UpdatePushNotificationRoute: UserPreferencesAction, PushNotificationAuthorizatonRequired {
     let route: PushNotificationRoute
+    let postImmediately: Bool
     let viewController: UIViewController?
     let description = "Adding a push Notification Route"
 }

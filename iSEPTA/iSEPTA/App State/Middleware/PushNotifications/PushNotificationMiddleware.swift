@@ -69,9 +69,7 @@ class PushNotificationMiddleware {
                 if action.alsoEnableRoutes {
                     dispatch(ToggleAllPushNotificationRoutes(boolValue: true))
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    dispatch(UserWantsToSubscribeToSpecialAnnouncements(viewController: action.viewController, boolValue: true, sender: "reduceSubscribeToPushNotifications"))
-                }
+                dispatch(UserWantsToSubscribeToSpecialAnnouncements(viewController: action.viewController, boolValue: true, sender: "reduceSubscribeToPushNotifications"))
             case .denied:
                 UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: action.viewController, completion: {
                     dispatch(reversedAction)
@@ -113,6 +111,9 @@ class PushNotificationMiddleware {
             if action.route.isEnabled && !state.userWantsToEnablePushNotifications {
                 UIAlert.presentEnableAllRoutes(viewController: action.viewController, pushNotificationRoute: action.route)
             }
+            if action.postImmediately {
+                dispatch(PostPushNotificationPreferences(boolValue: true, viewController: nil))
+            }
         case .denied:
             UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: action.viewController, completion: {
                 dispatch(RemovePushNotificationRoute(routes: [action.route], viewController: action.viewController))
@@ -120,6 +121,9 @@ class PushNotificationMiddleware {
         case .notDetermined:
             requestAuthorization(
                 onSuccess: {
+                    if action.postImmediately {
+                        dispatch(PostPushNotificationPreferences(boolValue: true, viewController: nil))
+                    }
                     return
                 }, onFail: {
                     dispatch(RemovePushNotificationRoute(routes: [action.route], viewController: nil))
