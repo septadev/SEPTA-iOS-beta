@@ -26,16 +26,16 @@ struct DaysOfWeekOptionSet: OptionSet, Codable, Equatable {
         return contains(dayOfWeek)
     }
 
-    func selectedDays() -> [String] {
-        var days: [String] = []
+    func selectedDays() -> [Int] {
+        var days: [Int] = []
 
-        if contains(.sunday) { days.append("1") }
-        if contains(.monday) { days.append("2") }
-        if contains(.tuesday) { days.append("3") }
-        if contains(.wednesday) { days.append("4") }
-        if contains(.thursday) { days.append("5") }
-        if contains(.friday) { days.append("6") }
-        if contains(.saturday) { days.append("7") }
+        if contains(.sunday) { days.append(1) }
+        if contains(.monday) { days.append(2) }
+        if contains(.tuesday) { days.append(3) }
+        if contains(.wednesday) { days.append(4) }
+        if contains(.thursday) { days.append(5) }
+        if contains(.friday) { days.append(6) }
+        if contains(.saturday) { days.append(7) }
 
         return days
     }
