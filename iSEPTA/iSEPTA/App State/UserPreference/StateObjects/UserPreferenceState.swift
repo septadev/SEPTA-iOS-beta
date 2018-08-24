@@ -9,6 +9,7 @@ struct UserPreferenceState: Equatable {
     var startupNavigationController: NavigationController
     var databaseVersion: Int
     var pushNotificationPreferenceState: PushNotificationPreferenceState
+    var lastSavedPushPreferenceState: PushNotificationPreferenceState?
 
     init(defaultsLoaded: Bool = false, startupTransitMode: TransitMode = .bus, startupNavigationController: NavigationController = .nextToArrive, databaseVersion: Int = 0, pushNotificationPreferenceState: PushNotificationPreferenceState = PushNotificationPreferenceState()) {
         self.defaultsLoaded = defaultsLoaded

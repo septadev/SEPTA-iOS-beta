@@ -14,10 +14,24 @@ struct PushNotificationPreferenceService {
         if state.userWantsToEnablePushNotifications {
             postBody = convertStateToPostBody(state: state)
         } else {
-            postBody = PushNotificationPreferencePostBody(deviceId: state.deviceId, regToken: "", specialAnnouncements: false, timeWindows: nil, routeSubscriptions: nil)
+            postBody = PushNotificationPreferencePostBody(deviceId: state.deviceId, regToken: state.firebaseToken, specialAnnouncements: false, timeWindows: nil, routeSubscriptions: nil)
         }
 
-        print("Save notification preference to api: \(postBody)")
+        print(":M: making api call to save push notif pref")
+        print(":M: deviceId: \(postBody.deviceId)")
+        print(":M: token: \(postBody.regToken)")
+        print(":M: specials: \(postBody.specialAnnouncements)")
+        print(":M: routes: \(postBody.routeSubscriptions ?? [])")
+        print(":M: windows: \(postBody.timeWindows ?? [])")
+
+        store.dispatch(PushNotificationPreferenceSynchronizationSuccess())
+
+        // If success
+        //   dispatch PushNotificationPreferenceSynchronizationSuccess()
+        //     this will set syncStatus to .upToDate
+        // Else
+        //   dispatch PushNotificationPreferenceSynchronizationFail()
+        //     this will copy the lastSync'd property to pushPrefState and set syncStatus to .upToDate
     }
 
     private static func convertStateToPostBody(state: PushNotificationPreferenceState) -> PushNotificationPreferencePostBody {

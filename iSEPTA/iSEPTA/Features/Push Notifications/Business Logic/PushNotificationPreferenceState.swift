@@ -42,4 +42,12 @@ struct PushNotificationPreferenceState: Codable, Equatable {
 
     /// Whether or not the push notification preferences should be posted to the backend API
     var postUserNotificationPreferences = false
+
+    /// The current backend synchronization status of the preference state
+    var synchronizationStatus: PushNotificationPreferenceSynchronizationStatus = .pendingSave
+}
+
+enum PushNotificationPreferenceSynchronizationStatus: String, Codable {
+    case upToDate
+    case pendingSave
 }

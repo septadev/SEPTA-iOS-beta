@@ -121,3 +121,11 @@ struct PostPushNotificationPreferences: UserPreferencesAction, PushNotificationA
     let viewController: UIViewController?
     let description = "Save push notification preferences to backend"
 }
+
+struct PushNotificationPreferenceSynchronizationSuccess: UserPreferencesAction {
+    var description = "Push notification preferences were successfully saved in backend"
+}
+
+struct PushNotificationPreferenceSynchronizationFail: UserPreferencesAction {
+    var description = "Push notification preferences failed to be saved in backend"
+}

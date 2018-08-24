@@ -50,6 +50,10 @@ struct UserPreferencesReducer {
             newPref = reduceUpdatePushNotificationRoute(action: action, state: state)
         case let action as PostPushNotificationPreferences:
             newPref = reducePostPushNotificationPreferences(action: action, state: state)
+        case let action as PushNotificationPreferenceSynchronizationSuccess:
+            newPref = reducePushNotificationPreferenceSynchronizationSuccess(action: action, state: state)
+        case let action as PushNotificationPreferenceSynchronizationFail:
+            newPref = reducePushNotificationPreferenceSynchronizationFail(action: action, state: state)
         case let action as ToggleAllPushNotificationRoutes:
             newPref = reduceToggleAllPushNotificationRoutes(action: action, state: state)
         default:
@@ -94,6 +98,10 @@ struct UserPreferencesReducer {
 
     static func reduceSetFirebaseTokenForPushNotificatoins(action: SetFirebaseTokenForPushNotificatoins, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
+        if state.pushNotificationPreferenceState.synchronizationStatus == .upToDate {
+            userPreferenceState.lastSavedPushPreferenceState = state.pushNotificationPreferenceState
+            userPreferenceState.pushNotificationPreferenceState.synchronizationStatus = .pendingSave
+        }
         userPreferenceState.pushNotificationPreferenceState.firebaseToken = action.token
         return userPreferenceState
     }
@@ -101,11 +109,18 @@ struct UserPreferencesReducer {
     static func reduceUserWantsToSubscribeToPushNotifications(action: UserWantsToSubscribeToPushNotifications, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
         userPreferenceState.pushNotificationPreferenceState.userWantsToEnablePushNotifications = action.boolValue
+        if action.boolValue == true {
+            userPreferenceState.pushNotificationPreferenceState.userWantsToReceiveSpecialAnnoucements = true
+        }
         return userPreferenceState
     }
 
     static func reduceUserWantsToSubscribeToSpecialAnnouncements(action: UserWantsToSubscribeToSpecialAnnouncements, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
+        if state.pushNotificationPreferenceState.synchronizationStatus == .upToDate {
+            userPreferenceState.lastSavedPushPreferenceState = state.pushNotificationPreferenceState
+            userPreferenceState.pushNotificationPreferenceState.synchronizationStatus = .pendingSave
+        }
         userPreferenceState.pushNotificationPreferenceState.userWantsToReceiveSpecialAnnoucements = action.boolValue
         userPreferenceState.pushNotificationPreferenceState.postUserNotificationPreferences = true
         return userPreferenceState
@@ -121,6 +136,10 @@ struct UserPreferencesReducer {
 
     static func reduceUpdateDaysOfTheWeekForPushNotifications(action: UpdateDaysOfTheWeekForPushNotifications, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
+        if state.pushNotificationPreferenceState.synchronizationStatus == .upToDate {
+            userPreferenceState.lastSavedPushPreferenceState = state.pushNotificationPreferenceState
+            userPreferenceState.pushNotificationPreferenceState.synchronizationStatus = .pendingSave
+        }
         if action.isActivated {
             userPreferenceState.pushNotificationPreferenceState.daysOfWeek.insert(action.dayOfWeek)
         } else {
@@ -137,12 +156,20 @@ struct UserPreferencesReducer {
 
     static func reduceInsertNewPushTimeframe(action _: InsertNewPushTimeframe, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
+        if state.pushNotificationPreferenceState.synchronizationStatus == .upToDate {
+            userPreferenceState.lastSavedPushPreferenceState = state.pushNotificationPreferenceState
+            userPreferenceState.pushNotificationPreferenceState.synchronizationStatus = .pendingSave
+        }
         userPreferenceState.pushNotificationPreferenceState.notificationTimeWindows.append(NotificationTimeWindow.defaultAfternoonWindow())
         return userPreferenceState
     }
 
     static func reduceDeleteTimeframe(action: DeleteTimeframe, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
+        if state.pushNotificationPreferenceState.synchronizationStatus == .upToDate {
+            userPreferenceState.lastSavedPushPreferenceState = state.pushNotificationPreferenceState
+            userPreferenceState.pushNotificationPreferenceState.synchronizationStatus = .pendingSave
+        }
         userPreferenceState.pushNotificationPreferenceState.notificationTimeWindows.remove(at: action.index)
         return userPreferenceState
     }
@@ -163,6 +190,10 @@ struct UserPreferencesReducer {
 
     static func reduceUpdatePushNotificationRoute(action: UpdatePushNotificationRoute, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
+        if state.pushNotificationPreferenceState.synchronizationStatus == .upToDate {
+            userPreferenceState.lastSavedPushPreferenceState = state.pushNotificationPreferenceState
+            userPreferenceState.pushNotificationPreferenceState.synchronizationStatus = .pendingSave
+        }
         var routeIds = userPreferenceState.pushNotificationPreferenceState.routeIds
         if let index = routeIds.indexOfRoute(route: action.route) {
             routeIds[index] = action.route
@@ -179,8 +210,25 @@ struct UserPreferencesReducer {
         return userPreferenceState
     }
 
+    static func reducePushNotificationPreferenceSynchronizationSuccess(action _: PushNotificationPreferenceSynchronizationSuccess, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.pushNotificationPreferenceState.synchronizationStatus = .upToDate
+        return userPreferenceState
+    }
+
+    static func reducePushNotificationPreferenceSynchronizationFail(action _: PushNotificationPreferenceSynchronizationFail, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.pushNotificationPreferenceState = state.lastSavedPushPreferenceState ?? state.pushNotificationPreferenceState
+        userPreferenceState.pushNotificationPreferenceState.synchronizationStatus = .upToDate
+        return userPreferenceState
+    }
+
     static func reduceToggleAllPushNotificationRoutes(action: ToggleAllPushNotificationRoutes, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
+        if state.pushNotificationPreferenceState.synchronizationStatus == .upToDate {
+            userPreferenceState.lastSavedPushPreferenceState = state.pushNotificationPreferenceState
+            userPreferenceState.pushNotificationPreferenceState.synchronizationStatus = .pendingSave
+        }
         let routeIds: [PushNotificationRoute] = userPreferenceState.pushNotificationPreferenceState.routeIds.map {
             var route = $0
             route.isEnabled = action.boolValue

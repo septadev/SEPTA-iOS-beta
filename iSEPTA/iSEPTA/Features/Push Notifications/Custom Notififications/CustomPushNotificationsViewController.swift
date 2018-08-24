@@ -14,6 +14,8 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
     var viewController: ViewController = .customPushNotificationsController
     typealias StoreSubscriberStateType = PushNotificationPreferenceState
 
+    var saveButton = UIBarButtonItem()
+
     var headerView: MyNotificationsHeaderView!
     var viewModel = CustomPushNotificationsViewModel()
 
@@ -22,8 +24,7 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-
-        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save(_:)))
+        saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save(_:)))
         navigationItem.setRightBarButton(saveButton, animated: false)
 
         headerView = UIView.instanceFromNib(named: "MyNotificationsHeaderView")
@@ -56,11 +57,11 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
 
     var firstPass = true
     func newState(state: StoreSubscriberStateType) {
+        saveButton.isEnabled = state.synchronizationStatus == .pendingSave
         viewModel.routes = state.routeIds
         tableView.tableHeaderView = headerView
         if state.routeIds.count == 0 {
             tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 100))
-
         } else {
             tableView.tableFooterView = nil
         }
