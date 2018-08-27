@@ -27,9 +27,11 @@ extension NotificationsManager {
     }
 
     static func decodeAlertDetourNotification(info: PayLoad) -> SeptaAlertDetourNotification? {
-        guard let data = info[Keys.notificationKey] as? Data,
-            let alertDetailNotification = try? decoder.decode(SeptaAlertDetourNotification.self, from: data) else { return nil }
-        return alertDetailNotification
+        guard let routeId = info["routeId"] as? String,
+            let routeType = info["routeType"] as? String,
+            let mode = TransitMode.fromNotificationRouteType(routeType: routeType) else { return nil }
+
+        return SeptaAlertDetourNotification(routeId: routeId, transitMode: mode)
     }
 
     static func navigateToAlertDetails(notification: SeptaAlertDetourNotification) {

@@ -27,7 +27,7 @@ struct PushNotificationPreferenceService {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
         }
 
-        session.dataTask(with: request) { _, response, error in
+        session.dataTask(with: request) { _, _, error in
             DispatchQueue.main.async {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }

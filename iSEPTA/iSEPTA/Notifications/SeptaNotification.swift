@@ -34,35 +34,9 @@ enum AlertDetourType: String, Codable {
     case alert = "ALERT"
 }
 
-struct SeptaAlertDetourNotification: Codable, Equatable, SeptaNotification {
-    let message: String
+struct SeptaAlertDetourNotification: Codable, Equatable {
     let routeId: String
     let transitMode: TransitMode
-    let expires: Date
-    let alertDetourType: AlertDetourType
-    var title: String {
-        switch alertDetourType {
-        case .alert: return "Service Alert for Route \(routeId)"
-        case .detour: return "Detour on Route \(routeId)"
-        }
-    }
-
-    init?(info: PayLoad) {
-        guard let message = info[Keys.messageKey] as? String,
-            let routeId = info[Keys.routeIdKey] as? String,
-            let routeType = info[Keys.routeTypeKey] as? String,
-            let transitMode = TransitMode.fromNotificationRouteType(routeType: routeType),
-            let expiresString = info[Keys.expiresKey] as? String,
-            let expiresDate = DateFormatters.networkFormatter.date(from: expiresString),
-            Date() < expiresDate,
-            let notificationTypeString = info[Keys.notficationType] as? String,
-            let alertDetourType = AlertDetourType(rawValue: notificationTypeString) else { return nil }
-        self.message = message
-        self.routeId = routeId
-        self.transitMode = transitMode
-        expires = expiresDate
-        self.alertDetourType = alertDetourType
-    }
 }
 
 struct SeptaSpecialAnnouncementNotification: Codable, Equatable, SeptaNotification {
