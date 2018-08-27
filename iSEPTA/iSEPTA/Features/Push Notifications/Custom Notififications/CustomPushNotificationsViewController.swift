@@ -70,6 +70,7 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
     }
 
     @objc func save(_: Any) {
+        saveButton.isEnabled = false
         store.dispatch(PostPushNotificationPreferences(boolValue: true, viewController: nil))
     }
 
