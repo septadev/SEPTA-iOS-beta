@@ -10,7 +10,7 @@ import Foundation
 import SeptaSchedule
 
 extension NotificationsManager {
-    static func handleTap(info: PayLoad) {
+    static func handleTap(info: Payload) {
         guard let notificationTypeString = info[Keys.notificationTypeKey] as? String,
             let notificationType = NotificationType(rawValue: notificationTypeString) else { return }
 
@@ -26,12 +26,8 @@ extension NotificationsManager {
         }
     }
 
-    static func decodeAlertDetourNotification(info: PayLoad) -> SeptaAlertDetourNotification? {
-        guard let routeId = info["routeId"] as? String,
-            let routeType = info["routeType"] as? String,
-            let mode = TransitMode.fromNotificationRouteType(routeType: routeType) else { return nil }
-
-        return SeptaAlertDetourNotification(routeId: routeId, transitMode: mode)
+    static func decodeAlertDetourNotification(info: Payload) -> SeptaAlertDetourNotification? {
+        return SeptaAlertDetourNotification(info: info)
     }
 
     static func navigateToAlertDetails(notification: SeptaAlertDetourNotification) {
@@ -39,10 +35,8 @@ extension NotificationsManager {
         store.dispatch(action)
     }
 
-    static func decodeDelayNotification(info: PayLoad) -> SeptaDelayNotification? {
-        guard let data = info[Keys.notificationKey] as? Data,
-            let delayNotification = try? decoder.decode(SeptaDelayNotification.self, from: data) else { return nil }
-        return delayNotification
+    static func decodeDelayNotification(info: Payload) -> SeptaDelayNotification? {
+        return SeptaDelayNotification(info: info)
     }
 
     static func navigateToNextToArrive(notification: SeptaDelayNotification) {

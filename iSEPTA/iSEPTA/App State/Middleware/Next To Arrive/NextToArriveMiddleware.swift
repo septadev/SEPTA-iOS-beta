@@ -120,7 +120,6 @@ class NextToArriveMiddleware {
 
         let notif = action.notification
         let tripId = notif.vehicleId
-        guard notif.expires > Date() else { return }
         let client = SEPTAApiClient.defaultClient(url: SeptaNetwork.sharedInstance.url, apiKey: SeptaNetwork.sharedInstance.apiKey)
 
         func modalShortcut(details: RealTimeArrivalDetail) {

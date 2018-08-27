@@ -12,7 +12,7 @@ import Foundation
 import SeptaSchedule
 import UserNotifications
 
-public typealias PayLoad = [AnyHashable: Any]
+public typealias Payload = [AnyHashable: Any]
 
 struct NotificationsManager {
     struct Keys {
