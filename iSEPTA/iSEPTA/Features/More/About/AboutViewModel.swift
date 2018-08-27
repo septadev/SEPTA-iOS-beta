@@ -27,5 +27,6 @@ class AboutViewModel {
         viewItems.append(AboutViewModelItem(title: "Schedule Updated:", value: AppInfoProvider.databaseUpdateDate()))
         viewItems.append(AboutViewModelItem(title: "Schedule Version:", value: AppInfoProvider.databaseVersionNumber()))
         viewItems.append(AboutViewModelItem(title: "Generic Alerts Source:", value: SeptaNetwork.sharedInstance.genericAlertEnvironment.rawValue))
+        viewItems.append(AboutViewModelItem(title: "Device ID", value: store.state.preferenceState.pushNotificationPreferenceState.deviceId))
     }
 }
