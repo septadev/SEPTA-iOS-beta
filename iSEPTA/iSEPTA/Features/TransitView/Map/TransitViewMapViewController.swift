@@ -130,6 +130,7 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
             // No routes! Back we go.
             navigationController?.popViewController(animated: true)
         } else {
+            drawRoutes(routeIds: transitRoutes.map { $0.routeId })
             refreshRoutes(description: "Refresh TransitView location data based on TransitViewModel state change")
         }
     }
@@ -321,6 +322,20 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
         }
     }
 
+    private func drawRoutes(routeIds: [String]) {
+        drawnRoutes = []
+        if mapView != nil {
+            mapView.removeOverlays(mapView.overlays)
+        }
+        for routeId in routeIds {
+            if !drawnRoutes.contains(routeId) {
+                guard let url = locateKMLFile(routeId: routeId) else { return }
+                parseKMLForRoute(url: url, routeId: routeId)
+                drawnRoutes.append(routeId)
+            }
+        }
+    }
+
     private func updateOverlays(for selectedRouteId: String) {
         for overlay in mapView.overlays {
             if let overlay = overlay as? RouteOverlay, let renderer = mapView.renderer(for: overlay) as? MKPolylineRenderer {
@@ -392,16 +407,6 @@ extension TransitViewMapViewController: MKMapViewDelegate {
 // MARK: - TransitViewMapDataProviderDelegate
 
 extension TransitViewMapViewController: TransitViewMapDataProviderDelegate {
-    func drawRoutes(routeIds: [String]) {
-        for routeId in routeIds {
-            if !drawnRoutes.contains(routeId) {
-                guard let url = locateKMLFile(routeId: routeId) else { return }
-                parseKMLForRoute(url: url, routeId: routeId)
-                drawnRoutes.append(routeId)
-            }
-        }
-    }
-
     func drawVehicleLocations(locations: [TransitViewVehicleLocation]) {
         // Remove all the old ones first
         if mapView != nil {

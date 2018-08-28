@@ -34,9 +34,6 @@ class TransitViewMapRouteViewModel: StoreSubscriber {
     }
 
     func newState(state: StoreSubscriberStateType) {
-        let routes = state.map { $0.routeId }
-        let uniqueRoutes = Array(Set(routes))
-        delegate?.drawRoutes(routeIds: uniqueRoutes)
         delegate?.drawVehicleLocations(locations: state)
     }
 
@@ -46,6 +43,5 @@ class TransitViewMapRouteViewModel: StoreSubscriber {
 }
 
 protocol TransitViewMapDataProviderDelegate {
-    func drawRoutes(routeIds: [String])
     func drawVehicleLocations(locations: [TransitViewVehicleLocation])
 }
