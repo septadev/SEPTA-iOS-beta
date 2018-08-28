@@ -9,7 +9,7 @@
 import ReSwift
 
 class PushNotificationPreferenceProvider: StoreSubscriber {
-    typealias StoreSubscriberStateType = Bool
+    typealias StoreSubscriberStateType = PostNotificationPreferencesState
 
     static let sharedInstance = PushNotificationPreferenceProvider()
 
@@ -24,10 +24,10 @@ class PushNotificationPreferenceProvider: StoreSubscriber {
     }
 
     func newState(state: StoreSubscriberStateType) {
-        if state == true {
-            PushNotificationPreferenceService.post(state: store.state.preferenceState.pushNotificationPreferenceState)
+        if state.postNow == true {
+            PushNotificationPreferenceService.post(state: store.state.preferenceState.pushNotificationPreferenceState, showSuccess: state.showSuccess)
             // My job is done here, switch this back off
-            store.dispatch(PostPushNotificationPreferences(boolValue: false, viewController: nil))
+            store.dispatch(PostPushNotificationPreferences(postNow: true, showSuccess: false, viewController: nil))
         }
     }
 }

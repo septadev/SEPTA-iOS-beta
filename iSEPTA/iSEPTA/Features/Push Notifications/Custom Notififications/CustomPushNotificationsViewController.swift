@@ -24,8 +24,8 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save(_:)))
-        navigationItem.setRightBarButton(saveButton, animated: false)
+
+        configureNavBar()
 
         headerView = UIView.instanceFromNib(named: "MyNotificationsHeaderView")
         guard let addEditView = headerView.addEditViewWrapper.contentView as? AddEditView else { return }
@@ -40,6 +40,17 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
         containerView.topAnchor.constraint(equalTo: tableView.topAnchor).isActive = true
         tableView.register(UINib(nibName: "PushNotificationTableViewCell", bundle: nil), forCellReuseIdentifier: "pushCell")
         tableView.allowsMultipleSelectionDuringEditing = false
+    }
+
+    private func configureNavBar() {
+        // Left side
+        navigationItem.hidesBackButton = true
+        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(back(_:)))
+        navigationItem.leftBarButtonItem = backButton
+
+        // Right side
+        saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save(_:)))
+        navigationItem.setRightBarButton(saveButton, animated: false)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -69,9 +80,31 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
         tableView.reloadData()
     }
 
+    @objc func back(_: Any) {
+        // If changes have been made
+        if saveButton.isEnabled {
+            let alert = UIAlertController(title: "Unsaved Changes", message: "Would you like to save your modified push notification preferences?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Discard", style: .destructive, handler: { _ in
+                DispatchQueue.main.async {
+                    store.dispatch(PushNotificationPreferenceSynchronizationFail())
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { _ in
+                DispatchQueue.main.async {
+                    self.saveButton.isEnabled = false
+                    store.dispatch(PostPushNotificationPreferences(postNow: true, showSuccess: true, viewController: nil))
+                }
+            }))
+            present(alert, animated: true, completion: nil)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
+    }
+
     @objc func save(_: Any) {
         saveButton.isEnabled = false
-        store.dispatch(PostPushNotificationPreferences(boolValue: true, viewController: nil))
+        store.dispatch(PostPushNotificationPreferences(postNow: true, showSuccess: true, viewController: nil))
     }
 
     func isCurrentlyEditing(_ editing: Bool) {

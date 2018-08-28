@@ -69,7 +69,7 @@ class PushNotificationMiddleware {
                 if action.alsoEnableRoutes {
                     dispatch(ToggleAllPushNotificationRoutes(boolValue: true))
                 }
-                dispatch(PostPushNotificationPreferences(boolValue: true, viewController: nil))
+                dispatch(PostPushNotificationPreferences(postNow: true, showSuccess: false, viewController: nil))
             case .denied:
                 UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: action.viewController, completion: {
                     dispatch(reversedAction)
@@ -82,7 +82,7 @@ class PushNotificationMiddleware {
                 }, dispatch: dispatch, next: next)
             }
         } else {
-            store.dispatch(PostPushNotificationPreferences(boolValue: true, viewController: nil))
+            store.dispatch(PostPushNotificationPreferences(postNow: true, showSuccess: false, viewController: nil))
         }
     }
 
@@ -114,7 +114,7 @@ class PushNotificationMiddleware {
                 UIAlert.presentEnableAllRoutes(viewController: action.viewController, pushNotificationRoute: action.route)
             }
             if action.postImmediately {
-                dispatch(PostPushNotificationPreferences(boolValue: true, viewController: nil))
+                dispatch(PostPushNotificationPreferences(postNow: true, showSuccess: false, viewController: nil))
             }
         case .denied:
             UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: action.viewController, completion: {
@@ -124,7 +124,7 @@ class PushNotificationMiddleware {
             requestAuthorization(
                 onSuccess: {
                     if action.postImmediately {
-                        dispatch(PostPushNotificationPreferences(boolValue: true, viewController: nil))
+                        dispatch(PostPushNotificationPreferences(postNow: true, showSuccess: false, viewController: nil))
                     }
                     return
                 }, onFail: {

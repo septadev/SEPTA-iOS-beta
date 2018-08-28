@@ -41,7 +41,7 @@ struct PushNotificationPreferenceState: Codable, Equatable {
     var userWantToReceiveNotificationsEvenWhenDoNotDisturbIsOn: Bool = false
 
     /// Whether or not the push notification preferences should be posted to the backend API
-    var postUserNotificationPreferences = false
+    var postUserNotificationPreferences = PostNotificationPreferencesState(postNow: false, showSuccess: false)
 
     /// The current backend synchronization status of the preference state
     var synchronizationStatus: PushNotificationPreferenceSynchronizationStatus = .pendingSave
@@ -50,4 +50,9 @@ struct PushNotificationPreferenceState: Codable, Equatable {
 enum PushNotificationPreferenceSynchronizationStatus: String, Codable {
     case upToDate
     case pendingSave
+}
+
+struct PostNotificationPreferencesState: Codable, Equatable {
+    let postNow: Bool
+    let showSuccess: Bool
 }

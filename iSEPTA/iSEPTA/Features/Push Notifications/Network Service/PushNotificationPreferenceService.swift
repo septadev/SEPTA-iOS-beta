@@ -9,7 +9,7 @@
 import UIKit
 
 struct PushNotificationPreferenceService {
-    static func post(state: PushNotificationPreferenceState) {
+    static func post(state: PushNotificationPreferenceState, showSuccess: Bool) {
         let body = postBody(state: state)
 
         guard let baseUrl = Bundle.main.object(forInfoDictionaryKey: "septaBaseUrl") as? String,
@@ -33,10 +33,18 @@ struct PushNotificationPreferenceService {
             }
             if error != nil {
                 DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "There was an error saving push notification preferences.", message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    alert.show()
                     store.dispatch(PushNotificationPreferenceSynchronizationFail())
                 }
             } else {
                 DispatchQueue.main.async {
+                    if showSuccess {
+                        let alert = UIAlertController(title: "Push notification preferences saved.", message: nil, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        alert.show()
+                    }
                     store.dispatch(PushNotificationPreferenceSynchronizationSuccess())
                 }
             }
