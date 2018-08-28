@@ -16,6 +16,8 @@ class AlertDetailFooterView: UIView, StoreSubscriber {
 
     var pushNotificationRoute: PushNotificationRoute? {
         didSet {
+            // Glendale Combined is "unsubscribable"
+            isHidden = pushNotificationRoute?.routeId == "GC"
             store.subscribe(self) {
                 $0.select { $0.preferenceState.pushNotificationPreferenceState.routeIds }
             }

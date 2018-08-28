@@ -69,6 +69,11 @@ class SeptaAlertsViewController: UIViewController, StoreSubscriber {
         configureAlerts(alert: alert)
 
         guard let uiSwitch = pushNotificationSwitch else { return }
+
+        let routeIsGC = route.routeId == "GC"
+        uiSwitch.isHidden = routeIsGC
+        subscribeLabel.isHidden = routeIsGC
+
         pushNotificationSubsciber = PushNotificationSubscriber(transitMode: transitMode, route: route, uiSwitch: uiSwitch, viewController: self)
     }
 
