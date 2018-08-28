@@ -45,6 +45,7 @@ struct PushNotificationPreferenceService {
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         alert.show()
                     }
+                    PushNotificationKeepAlive.preferencesSaved()
                     store.dispatch(PushNotificationPreferenceSynchronizationSuccess())
                 }
             }

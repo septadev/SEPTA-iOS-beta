@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E17CDCD2135B7DD00D8CD5A /* PushNotificationKeepAlive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E17CDCC2135B7DD00D8CD5A /* PushNotificationKeepAlive.swift */; };
 		0E2777FC211249EA00507CFE /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2777FB211249EA00507CFE /* NotificationsManager.swift */; };
 		0E2A006220CFF61A00E97BAF /* DatabaseUpdateState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A006120CFF61A00E97BAF /* DatabaseUpdateState.swift */; };
 		0E2A006520CFF88900E97BAF /* DatabaseUpdateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A006420CFF88900E97BAF /* DatabaseUpdateReducer.swift */; };
@@ -765,6 +766,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0E17CDCC2135B7DD00D8CD5A /* PushNotificationKeepAlive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationKeepAlive.swift; sourceTree = "<group>"; };
 		0E2777F9211238F900507CFE /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		0E2777FA2112390600507CFE /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		0E2777FB211249EA00507CFE /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
@@ -2206,6 +2208,7 @@
 				5803C37B210B619F00BFAE7A /* PushNotificationSystemStatusResolver.swift */,
 				5803C37F210B6DC600BFAE7A /* PushNotificationUserPreferenceResolver.swift */,
 				5803C381210B9BC800BFAE7A /* CustomNotifications.swift */,
+				0E17CDCC2135B7DD00D8CD5A /* PushNotificationKeepAlive.swift */,
 			);
 			path = "Push Notifications";
 			sourceTree = "<group>";
@@ -4199,6 +4202,7 @@
 				58126F6D1F631C5100A6E187 /* RouteDrawable.swift in Sources */,
 				585760AD1F82A31F00A340DB /* NextToArriveState_NextToArriveUpdateStatusWatcher.swift in Sources */,
 				58248B701F6D6C3800DA2D65 /* SaveFavoriteButton.swift in Sources */,
+				0E17CDCD2135B7DD00D8CD5A /* PushNotificationKeepAlive.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

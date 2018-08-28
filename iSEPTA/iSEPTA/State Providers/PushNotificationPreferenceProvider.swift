@@ -27,7 +27,7 @@ class PushNotificationPreferenceProvider: StoreSubscriber {
         if state.postNow == true {
             PushNotificationPreferenceService.post(state: store.state.preferenceState.pushNotificationPreferenceState, showSuccess: state.showSuccess)
             // My job is done here, switch this back off
-            store.dispatch(PostPushNotificationPreferences(postNow: true, showSuccess: false, viewController: nil))
+            store.dispatch(PostPushNotificationPreferences(postNow: false, showSuccess: false, viewController: nil))
         }
     }
 }

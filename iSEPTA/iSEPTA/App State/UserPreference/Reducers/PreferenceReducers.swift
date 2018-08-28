@@ -122,7 +122,7 @@ struct UserPreferencesReducer {
             userPreferenceState.pushNotificationPreferenceState.synchronizationStatus = .pendingSave
         }
         userPreferenceState.pushNotificationPreferenceState.userWantsToReceiveSpecialAnnoucements = action.boolValue
-        userPreferenceState.pushNotificationPreferenceState.postUserNotificationPreferences = PostNotificationPreferencesState(postNow: true, showSuccess: false)
+        userPreferenceState.pushNotificationPreferenceState.postUserNotificationPreferences.postNow = true
         return userPreferenceState
     }
 
@@ -206,7 +206,8 @@ struct UserPreferencesReducer {
 
     static func reducePostPushNotificationPreferences(action: PostPushNotificationPreferences, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
-        userPreferenceState.pushNotificationPreferenceState.postUserNotificationPreferences = PostNotificationPreferencesState(postNow: action.postNow, showSuccess: action.showSuccess)
+        userPreferenceState.pushNotificationPreferenceState.postUserNotificationPreferences.postNow = action.postNow
+        userPreferenceState.pushNotificationPreferenceState.postUserNotificationPreferences.showSuccess = action.showSuccess
         return userPreferenceState
     }
 
