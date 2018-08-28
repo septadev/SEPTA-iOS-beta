@@ -14,7 +14,6 @@ protocol NoConnectionUIHeaderFooterViewDisplayable {
 }
 
 class NoConnectionUIHeaderFooterView: UITableViewHeaderFooterView, NoConnectionUIHeaderFooterViewDisplayable {
-
     var noConnectionSectionHeader: NoConnectionSectionHeader!
     override func awakeFromNib() {
     }

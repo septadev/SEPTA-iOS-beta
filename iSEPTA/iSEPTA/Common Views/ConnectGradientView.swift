@@ -11,7 +11,6 @@ import UIKit
 
 @IBDesignable
 class ConnectGradientView: UIView {
-
     override func draw(_ rect: CGRect) {
         SeptaDraw.drawConnectGradientView(frame: rect)
     }

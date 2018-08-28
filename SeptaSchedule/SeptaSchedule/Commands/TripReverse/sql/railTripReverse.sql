@@ -18,7 +18,7 @@ T.block_id
       ON S.stop_id = ST.stop_id
       JOIN trips_rail T
       ON ST.trip_id = T.trip_id
-    WHERE S.stop_id = :start_stop_id AND T.direction_id = 1 AND T.service_id = :service_id) NewStart
+    WHERE S.stop_id = :start_stop_id and T.route_id = ':route_id' AND T.direction_id = 1 AND T.service_id = :service_id) NewStart
   JOIN
   (SELECT
     S.stop_id,
@@ -29,5 +29,5 @@ T.block_id
     ON S.stop_id = ST.stop_id
     JOIN trips_rail T
     ON ST.trip_id = T.trip_id
-  WHERE S.stop_id = :end_stop_id AND T.direction_id = 1 AND T.service_id = :service_id) NewEnd
+  WHERE S.stop_id = :end_stop_id and T.route_id = ':route_id' AND T.direction_id = 1 AND T.service_id = :service_id) NewEnd
   ON NewStart.trip_id = NewEnd.trip_id;

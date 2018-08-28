@@ -3,8 +3,8 @@
 
 import Foundation
 import ReSwift
-import SeptaSchedule
 import SeptaRest
+import SeptaSchedule
 
 protocol NextToArriveAction: SeptaAction {}
 
@@ -35,11 +35,18 @@ struct UpdateNextToArriveDetail: NextToArriveAction {
 }
 
 struct ViewScheduleDataInNextToArrive: NextToArriveAction {
-
     let description = "Jumping from schedules to next to arrive"
 }
 
 struct InsertNextToArriveScheduleRequest: NextToArriveAction {
     let scheduleRequest: ScheduleRequest
     let description = "force a new schedule request into NTA"
+}
+
+struct ToggleNextToArriveReverseTripStatus: NextToArriveAction {
+    let description = "Dispatch this action to change the status for trip reversal for next to arrive."
+}
+
+struct RemoveNextToArriveReverseTripStatus: NextToArriveAction {
+    let description = "Next To Arrive Status should be in the .noReverse state"
 }

@@ -7,14 +7,26 @@
 //
 
 import Foundation
-import UIKit
 import MapKit
+import UIKit
+
+enum ColorPointAnnotationType: String {
+    case start
+    case end
+
+    func pinColor() -> UIColor {
+        switch self {
+        case .start: return UIColor.green
+        case .end: return UIColor.red
+        }
+    }
+}
 
 class ColorPointAnnotation: MKPointAnnotation {
-    var pinColor: UIColor
+    let colorPointAnnotationType: ColorPointAnnotationType
 
-    init(pinColor: UIColor) {
-        self.pinColor = pinColor
+    init(colorPointAnnotationType: ColorPointAnnotationType) {
+        self.colorPointAnnotationType = colorPointAnnotationType
         super.init()
     }
 }

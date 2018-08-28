@@ -6,17 +6,17 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
+import CoreLocation
 import Foundation
+import ReSwift
 import SeptaRest
 import SeptaSchedule
-import ReSwift
-import CoreLocation
 
-class NextToArriveProvider: StoreSubscriber {
-
+class NextToArriveProvider: StoreSubscriber, NextToArriveReverseTripWatcherDelegate {
     typealias StoreSubscriberStateType = Bool
 
     let mapper = NextToArriveMapper()
+    let reverseTripWatcher = NextToArriveState_ReverseTripStatusWatcher()
 
     static let sharedInstance = NextToArriveProvider()
 
@@ -26,13 +26,18 @@ class NextToArriveProvider: StoreSubscriber {
 
     let nextToArriveDetailProvider = NextToArriveDetailProvider()
 
-    private init() {
+    var nextToArriveReverseTripStatus: NextToArriveReverseTripStatus = .noReverse
 
+    private init() {
         subscribe()
     }
 
     deinit {
         unsubscribe()
+    }
+
+    func nextToArriveReverseTripStatusChanged(status: NextToArriveReverseTripStatus) {
+        nextToArriveReverseTripStatus = status
     }
 
     var scheduleRequest: ScheduleRequest { return store.state.nextToArriveState.scheduleState.scheduleRequest }
@@ -81,7 +86,6 @@ class NextToArriveProvider: StoreSubscriber {
     }
 
     func mapArrivals(realTimeArrivals: [RealTimeArrival], transitMode: TransitMode) {
-
         var nextToArriveTrips = [NextToArriveTrip]()
         for realTimeArrival in realTimeArrivals {
             let startStop = mapper.mapStart(realTimeArrival: realTimeArrival, transitMode: transitMode)

@@ -83,16 +83,19 @@ class EditFavoriteViewController: UIViewController, UITextFieldDelegate, Identif
     }
 
     override func viewDidAppear(_: Bool) {
-
         textField.becomeFirstResponder()
     }
 
     func requestPermissionToRemoveFavorite(favorite: Favorite) {
-
         UIAlert.presentDestructiveYesNoAlertFrom(viewController: self, withTitle: "Remove a Favorite?", message: "Would you like to remove this trip as a favorite?") {
-
-            if store.state.targetForScheduleActions() == .favorites {
+            if store.state.currentTargetForScheduleActions() == .favorites {
                 let action = PopViewController(viewController: .nextToArriveDetailController, description: "Can't show more when there are no favorites")
+                store.dispatch(action)
+            }
+            if favorite.favoriteType == .transitView {
+                self.view.resignFirstResponder()
+                store.dispatch(CancelFavoriteEdit())
+                let action = PopViewController(viewController: .favoritesViewController, description: "Deleting TransitView favorite goes back to favorites")
                 store.dispatch(action)
             }
             let action = RemoveFavorite(favorite: favorite)

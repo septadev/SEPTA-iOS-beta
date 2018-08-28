@@ -2,6 +2,7 @@
 
 SELECT
   S.stop_id stopId,
+  ST.stop_sequence stopSequence,
   S.stop_name stopName,
   cast (S.stop_lat as decimal) stopLatitude,
   cast (S.stop_lon as decimal) stopLongitude,

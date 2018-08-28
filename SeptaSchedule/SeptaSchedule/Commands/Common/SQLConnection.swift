@@ -4,7 +4,6 @@ import Foundation
 import SQLite
 
 class SQLConnection {
-
     class func sqlConnection() throws -> Connection? {
         let fileManager = DatabaseFileManager()
 

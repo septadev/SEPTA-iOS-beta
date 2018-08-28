@@ -3,7 +3,6 @@ import ReSwift
 import SeptaSchedule
 
 class AlertScheduleDataProvider: BaseScheduleDataProvider {
-
     static let sharedInstance = AlertScheduleDataProvider()
 
     init() {
@@ -13,6 +12,13 @@ class AlertScheduleDataProvider: BaseScheduleDataProvider {
     override func subscribe() {
         store.subscribe(self) {
             $0.select { $0.alertState.scheduleState.scheduleRequest }.skipRepeats { $0 == $1 }
+        }
+    }
+
+    override func processSelectedRoute(scheduleRequest: ScheduleRequest) {
+        let routes = store.state.alertState.scheduleState.scheduleData.availableRoutes.routes
+        if routes.count == 0 {
+            retrieveAvailableRoutes(scheduleRequest: scheduleRequest)
         }
     }
 

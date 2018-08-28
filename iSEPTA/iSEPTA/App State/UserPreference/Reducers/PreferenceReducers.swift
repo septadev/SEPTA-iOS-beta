@@ -4,9 +4,7 @@ import Foundation
 import ReSwift
 
 struct UserPreferencesReducer {
-
     static func main(action: Action, state: UserPreferenceState?) -> UserPreferenceState {
-
         if let state = state {
             guard let action = action as? UserPreferencesAction else { return state }
 
@@ -28,8 +26,34 @@ struct UserPreferencesReducer {
             newPref = reducePreferencesDatabaseLoaded(action: action, state: state)
         case let action as NewStartupController:
             newPref = reduceNewStartupController(action: action, state: state)
+        case let action as UpdatePushNotificationPreferenceState:
+            newPref = reduceUpdatePushNotificationPreferenceState(action: action, state: state)
+        case let action as UserWantsToSubscribeToPushNotifications:
+            newPref = reduceUserWantsToSubscribeToPushNotifications(action: action, state: state)
+        case let action as UserWantsToSubscribeToSpecialAnnouncements:
+            newPref = reduceUserWantsToSubscribeToSpecialAnnouncements(action: action, state: state)
+        case let action as UserWantsToSubscribeToOverideDoNotDisturb:
+            newPref = reduceUserWantsToSubscribeToOverideDoNotDisturb(action: action, state: state)
+        case let action as UpdateSystemAuthorizationStatusForPushNotifications:
+            newPref = reduceUpdateSystemAuthorizationStatusForPushNotifications(action: action, state: state)
+        case let action as UpdateDaysOfTheWeekForPushNotifications:
+            newPref = reduceUpdateDaysOfTheWeekForPushNotifications(action: action, state: state)
+        case let action as UpdatePushNotificationTimeframe:
+            newPref = reduceUpdatePushNotificationTimeframe(action: action, state: state)
+        case let action as InsertNewPushTimeframe:
+            newPref = reduceInsertNewPushTimeframe(action: action, state: state)
+        case let action as DeleteTimeframe:
+            newPref = reduceDeleteTimeframe(action: action, state: state)
+        case let action as AddPushNotificationRoute:
+            newPref = reduceAddPushNotificationRoute(action: action, state: state)
+        case let action as RemovePushNotificationRoute:
+            newPref = reduceRemovePushNotificationRoute(action: action, state: state)
+        case let action as UpdatePushNotificationRoute:
+            newPref = reduceUpdatePushNotificationRoute(action: action, state: state)
+        case let action as ToggleAllPushNotificationRoutes:
+            newPref = reduceToggleAllPushNotificationRoutes(action: action, state: state)
         default:
-            break
+            fatalError("You passed in an action for which there is no reducer")
         }
 
         return newPref
@@ -40,16 +64,130 @@ struct UserPreferencesReducer {
     }
 
     static func reduceNewTransitModeAction(action: NewTransitModeAction, state: UserPreferenceState) -> UserPreferenceState {
-        return UserPreferenceState(defaultsLoaded: state.defaultsLoaded, startupTransitMode: action.transitMode, startupNavigationController: state.startupNavigationController, databaseVersion: state.databaseVersion)
+        var newState = state
+        newState.startupTransitMode = action.transitMode
+        return newState
     }
 
     static func reducePreferencesDatabaseLoaded(action: PreferencesDatabaseLoaded, state: UserPreferenceState) -> UserPreferenceState {
-        return UserPreferenceState(defaultsLoaded: state.defaultsLoaded, startupTransitMode: state.startupTransitMode, startupNavigationController: state.startupNavigationController, databaseVersion: action.databaseVersion)
+        var newState = state
+        newState.databaseVersion = action.databaseVersion
+
+        return newState
     }
 
     static func reduceNewStartupController(action: NewStartupController, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
         userPreferenceState.startupNavigationController = action.navigationController
+        return userPreferenceState
+    }
+
+    // MARK: -  Called only by Unit Tests
+
+    static func reduceUpdatePushNotificationPreferenceState(action: UpdatePushNotificationPreferenceState, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.pushNotificationPreferenceState = action.pushNotificationPreferenceState
+        return userPreferenceState
+    }
+
+    // Subscription Type
+
+    static func reduceUserWantsToSubscribeToPushNotifications(action: UserWantsToSubscribeToPushNotifications, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.pushNotificationPreferenceState.userWantsToEnablePushNotifications = action.boolValue
+        return userPreferenceState
+    }
+
+    static func reduceUserWantsToSubscribeToSpecialAnnouncements(action: UserWantsToSubscribeToSpecialAnnouncements, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.pushNotificationPreferenceState.userWantsToReceiveSpecialAnnoucements = action.boolValue
+        return userPreferenceState
+    }
+
+    static func reduceUserWantsToSubscribeToOverideDoNotDisturb(action: UserWantsToSubscribeToOverideDoNotDisturb, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.pushNotificationPreferenceState.userWantToReceiveNotificationsEvenWhenDoNotDisturbIsOn = action.boolValue
+        return userPreferenceState
+    }
+
+    static func reduceUpdateSystemAuthorizationStatusForPushNotifications(action: UpdateSystemAuthorizationStatusForPushNotifications, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.pushNotificationPreferenceState.systemAuthorizationStatusForNotifications = action.authorizationStatus
+        return userPreferenceState
+    }
+
+    // MARK: - Days of the Week
+
+    static func reduceUpdateDaysOfTheWeekForPushNotifications(action: UpdateDaysOfTheWeekForPushNotifications, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        if action.isActivated {
+            userPreferenceState.pushNotificationPreferenceState.daysOfWeek.insert(action.dayOfWeek)
+        } else {
+            userPreferenceState.pushNotificationPreferenceState.daysOfWeek.remove(action.dayOfWeek)
+        }
+        return userPreferenceState
+    }
+
+    // MARK: - Time Frames
+
+    static func reduceUpdatePushNotificationTimeframe(action: UpdatePushNotificationTimeframe, state: UserPreferenceState) -> UserPreferenceState {
+        return action.block(state)
+    }
+
+    static func reduceInsertNewPushTimeframe(action _: InsertNewPushTimeframe, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.pushNotificationPreferenceState.notificationTimeWindows.append(NotificationTimeWindow.defaultAfternoonWindow())
+        return userPreferenceState
+    }
+
+    static func reduceDeleteTimeframe(action: DeleteTimeframe, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.pushNotificationPreferenceState.notificationTimeWindows.remove(at: action.index)
+        return userPreferenceState
+    }
+
+    // MARK: - Routes
+
+    static func reduceAddPushNotificationRoute(action: AddPushNotificationRoute, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        var routeIds = userPreferenceState.pushNotificationPreferenceState.routeIds
+        routeIds.append(action.route)
+        userPreferenceState.pushNotificationPreferenceState.routeIds = routeIds
+        return userPreferenceState
+    }
+
+    static func reduceRemovePushNotificationRoute(action: RemovePushNotificationRoute, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        var routeIds = userPreferenceState.pushNotificationPreferenceState.routeIds
+        for route in action.routes {
+            if let index = routeIds.indexOfRoute(route: route) {
+                routeIds.remove(at: index)
+            }
+        }
+        userPreferenceState.pushNotificationPreferenceState.routeIds = routeIds
+        return userPreferenceState
+    }
+
+    static func reduceUpdatePushNotificationRoute(action: UpdatePushNotificationRoute, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        var routeIds = userPreferenceState.pushNotificationPreferenceState.routeIds
+        if let index = routeIds.indexOfRoute(route: action.route) {
+            routeIds[index] = action.route
+        } else {
+            routeIds.append(action.route)
+        }
+        userPreferenceState.pushNotificationPreferenceState.routeIds = routeIds
+        return userPreferenceState
+    }
+
+    static func reduceToggleAllPushNotificationRoutes(action: ToggleAllPushNotificationRoutes, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        let routeIds: [PushNotificationRoute] = userPreferenceState.pushNotificationPreferenceState.routeIds.map {
+            var route = $0
+            route.isEnabled = action.boolValue
+            return route
+        }
+        userPreferenceState.pushNotificationPreferenceState.routeIds = routeIds
         return userPreferenceState
     }
 }

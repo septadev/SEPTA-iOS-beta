@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="x8l-QY-ofs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="x8l-QY-ofs">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -189,7 +189,7 @@
                                                                         <rect key="frame" x="0.0" y="176" width="324" height="44"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UbF-PL-mf1" id="2UT-dl-JOF">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="324" height="44"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="324" height="43.5"/>
                                                                             <autoresizingMask key="autoresizingMask"/>
                                                                         </tableViewCellContentView>
                                                                     </tableViewCell>
@@ -278,7 +278,9 @@ GenericAlertCellView</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OOQ-CT-OFV"/>
                     </view>
-                    <navigationItem key="navigationItem" title="System Status" largeTitleDisplayMode="never" id="75X-7d-Igp"/>
+                    <navigationItem key="navigationItem" title="System Status" id="FnF-Pt-xKZ">
+                        <barButtonItem key="backBarButtonItem" title=" " id="EFd-FP-XVA"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="appAlertsTableViewWrapper" destination="odm-cU-Bg7" id="qmh-t4-EPY"/>

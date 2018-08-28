@@ -25,7 +25,6 @@ class NextToArriveMiddlewareScheduleStateBuilder {
             guard let strongSelf = self else { return }
             let routes = routes ?? [Route]()
             if let route = routes.filter({ $0.routeId == routeId }).first {
-
                 let routeUpdatedScheduleRequest = ScheduleRequest(
                     transitMode: nextToArriveStop.transitMode,
                     selectedRoute: route,
@@ -43,16 +42,5 @@ class NextToArriveMiddlewareScheduleStateBuilder {
         let scheduleState = ScheduleState(scheduleRequest: scheduleRequest, scheduleData: ScheduleData(), scheduleStopEdit: ScheduleStopEdit())
         let copyAction = CopyScheduleStateToTargetForScheduleAction(targetForScheduleAction: .alerts, scheduleState: scheduleState, description: "Copying Schedule State to Alerts")
         store.dispatch(copyAction)
-
-        let switchTabsAction = SwitchTabs(activeNavigationController: .alerts, description: "Switching Tabs to Alert details after importing schedule state")
-        store.dispatch(switchTabsAction)
-
-        let navigationStackState = buildNavigationStackState(viewControllers: [.alertsViewController, .alertDetailViewController])
-        let viewStackAction = InitializeNavigationState(navigationController: .alerts, navigationStackState: navigationStackState, description: "Setting Navigation Stack to show alert details")
-        store.dispatch(viewStackAction)
-    }
-
-    func buildNavigationStackState(viewControllers: [ViewController]) -> NavigationStackState {
-        return NavigationStackState(viewControllers: viewControllers, modalViewController: nil)
     }
 }

@@ -32,7 +32,7 @@ class NextToArriveViewModel: NSObject, StoreSubscriber, LastCellDelegate {
         view.setNeedsLayout()
     }
 
-    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! { return store.state.currentTargetForScheduleActions() }
 
     fileprivate var selectRouteRowDisplayModel: NextToArriveRowDisplayModel?
     fileprivate var selectStartRowDisplayModel: NextToArriveRowDisplayModel?
@@ -49,7 +49,6 @@ class NextToArriveViewModel: NSObject, StoreSubscriber, LastCellDelegate {
     }
 
     func buildDisplayModel() {
-
         displayModel = [
             configureSelectRouteDisplayModel(),
             configureSelectStartDisplayModel(),
@@ -73,9 +72,7 @@ class NextToArriveViewModel: NSObject, StoreSubscriber, LastCellDelegate {
 // MARK: -  Loading table view cells
 
 extension NextToArriveViewModel {
-
     func shouldDisplayBlankSectionHeaderForSection(_ section: Int) -> Bool {
-
         if section == 0 && transitMode != .rail {
             return false
         } else {
@@ -164,17 +161,8 @@ extension NextToArriveViewModel {
 extension NextToArriveViewModel: SubscriberUnsubscriber {
     override func awakeFromNib() {
         super.awakeFromNib()
-        //    insertDummyScheduleRequest()
         subscribe()
     }
-
-    //    func insertDummyScheduleRequest() {
-    //        let deadlineTime = DispatchTime.now() + .seconds(3)
-    //        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
-    //            let action = InsertNextToArriveScheduleRequest(scheduleRequest: self.scheduleRequest_rail)
-    //            store.dispatch(action)
-    //        }
-    //    }
 
     func subscribe() {
         store.subscribe(self) {

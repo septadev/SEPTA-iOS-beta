@@ -8,11 +8,10 @@
 
 import Foundation
 import MapKit
-import SeptaSchedule
 import SeptaRest
+import SeptaSchedule
 
 class TripDetailMapViewDelegate: NSObject, MKMapViewDelegate {
-
     var tripDetails: NextToArriveStop?
 
     func mapView(_: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -27,7 +26,6 @@ class TripDetailMapViewDelegate: NSObject, MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         switch annotation {
-
         case let annotation as VehicleLocationAnnotation:
             return retrieveVehicleAnnotationView(annotation: annotation, mapView: mapView)
         default:
@@ -75,7 +73,6 @@ class TripDetailMapViewDelegate: NSObject, MKMapViewDelegate {
         }
         if let detail = vehicleLocation.nextToArriveStop.nextToArriveDetail as? NextToArriveBusDetails,
             let vehicleId = detail.vehicleid, let destination = detail.destinationStation, let blockId = detail.blockid {
-
             calloutView.label1.text = "Block ID: \(blockId) to \(destination)"
             calloutView.label2.text = "Vehicle Number: \(vehicleId)"
             configureDelayLabel(nextToArriveStop: nextToArriveStop, label: calloutView.label3)
@@ -83,7 +80,6 @@ class TripDetailMapViewDelegate: NSObject, MKMapViewDelegate {
         }
 
         if transitMode.useBusForDetails() {
-
             configureBusToLastStopLabel(nextToArriveStop: nextToArriveStop, label: calloutView.label1)
 
             configureBusVehicleIDLabel(nextToArriveStop: nextToArriveStop, label: calloutView.label2)
@@ -93,7 +89,6 @@ class TripDetailMapViewDelegate: NSObject, MKMapViewDelegate {
         }
 
         if transitMode.useRailForDetails() {
-
             configureTrainToLastStopLabel(nextToArriveStop: nextToArriveStop, label: calloutView.label1)
 
             configureDelayLabel(nextToArriveStop: nextToArriveStop, label: calloutView.label2)

@@ -16,7 +16,7 @@ class ScheduleTransitModesToolBarViewController: UIViewController, StoreSubscrib
     @IBOutlet var scrollbar: UIScrollView!
     @IBOutlet var stackView: UIStackView!
     var currentTransitMode: TransitMode?
-    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! { return store.state.currentTargetForScheduleActions() }
     var transitModesToolbarElements = [TransitModeToolbarView]()
 
     override func viewDidLoad() {
@@ -38,7 +38,6 @@ class ScheduleTransitModesToolBarViewController: UIViewController, StoreSubscrib
     }
 
     func intializeToolbar(transitMode: TransitMode) {
-
         for toolbarItem in transitModesToolbarElements {
             toolbarItem.highlighted = toolbarItem.transitMode == transitMode
         }
@@ -74,12 +73,10 @@ class ScheduleTransitModesToolBarViewController: UIViewController, StoreSubscrib
     }
 
     @IBAction func ToolbarTapped(_ sender: UITapGestureRecognizer) {
-
         guard !scrollbar.isDragging || !scrollbar.isDecelerating else { return }
         let pt = sender.location(in: sender.view)
         _ = transitModesToolbarElements.map { $0.highlighted = false }
         let hitToolbar = transitModesToolbarElements.filter {
-
             let contains = $0.frame.contains(pt)
             return contains
         }.first

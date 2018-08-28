@@ -7,10 +7,16 @@ import UIKit
 
 class SelectStopViewModel: NSObject, StoreSubscriber {
     typealias StoreSubscriberStateType = ScheduleStopState
-    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! { return store.state.currentTargetForScheduleActions() }
     @IBOutlet var selectStopViewController: UpdateableFromViewModel?
     var filterString = ""
     let cellId = "stopCell"
+
+    var sortOrder: SortOrder = .alphaAscending {
+        didSet {
+            filteredStops = sortStops(stops: filteredStops)
+        }
+    }
 
     var stopToSelect: StopToSelect = .starts {
         didSet {
@@ -29,17 +35,38 @@ class SelectStopViewModel: NSObject, StoreSubscriber {
 
     fileprivate var allFilterableStops: [FilterableStop]? {
         didSet {
-            filteredStops = allFilterableStops
+            filteredStops = sortStops(stops: allFilterableStops)
         }
     }
 
     var filteredStops: [FilterableStop]? {
         didSet {
-            guard let filteredStops = filteredStops else { return }
-            self.filteredStops = filteredStops.sorted {
-                $0.sortString < $1.sortString
-            }
             selectStopViewController?.viewModelUpdated()
+        }
+    }
+
+    private func sortStops(stops: [FilterableStop]?) -> [FilterableStop] {
+        guard let stops = stops else { return [] }
+
+        if store.state.navigationState.activeNavigationController == .nextToArrive && TransitMode.currentTransitMode() == .rail {
+            return stops.sorted {
+                $0.stop.stopName < $1.stop.stopName
+            }
+        }
+
+        switch sortOrder {
+        case .alphaAscending:
+            return stops.sorted {
+                $0.stop.stopName < $1.stop.stopName
+            }
+        case .alphaDescending:
+            return stops.sorted {
+                $0.stop.stopName > $1.stop.stopName
+            }
+        case .stopSequence:
+            return stops.sorted {
+                $0.stop.sequence < $1.stop.sequence
+            }
         }
     }
 
@@ -141,15 +168,14 @@ extension SelectStopViewModel: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SelectStopViewModel: UITextFieldDelegate {
-
     func textField(_: UITextField, shouldChangeCharactersIn range: NSRange, replacementString: String) -> Bool {
-
         guard let allFilterableStops = allFilterableStops, let swiftRange = Range(range, in: filterString) else { return false }
         filterString = filterString.replacingCharacters(in: swiftRange, with: replacementString.lowercased())
 
-        filteredStops = allFilterableStops.filter {
-            guard filterString.count > 0 else { return true }
+        let allFilterableStopsSorted = sortStops(stops: allFilterableStops)
 
+        filteredStops = allFilterableStopsSorted.filter {
+            guard filterString.count > 0 else { return true }
             return $0.filterstringComponents.filter({ $0.starts(with: filterString) }).count > 0
         }
         DispatchQueue.main.async { [weak self] in

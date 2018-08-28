@@ -11,7 +11,6 @@ import SeptaRest
 import SeptaSchedule
 
 class AlertProvider {
-
     static let sharedInstance = AlertProvider()
     let calendar = Calendar.current
     var timer: Timer?
@@ -23,7 +22,6 @@ class AlertProvider {
     }
 
     @objc func oneMinuteTimerFired(timer _: Timer) {
-
         updateAlertsIfNeeded()
     }
 

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4lt-fc-Rad">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4lt-fc-Rad">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Nav Controller-->
         <scene sceneID="8lQ-ax-JJ9">
             <objects>
                 <navigationController title="Nav Controller" id="4lt-fc-Rad" customClass="NextToArriveNavigationController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,16 +22,10 @@
                         <color key="backgroundColor" red="0.13333333333333333" green="0.32549019607843138" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
-                        <outlet property="stateProvider" destination="ag4-fI-gKN" id="W5F-Kf-fqf"/>
                         <segue destination="93K-JI-5OU" kind="relationship" relationship="rootViewController" id="ZXT-Sd-Rck"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="irk-yA-FP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="ag4-fI-gKN" userLabel="StateProvider" customClass="NextToArriveNavigationControllerStateProvider" customModule="Septa" customModuleProvider="target">
-                    <connections>
-                        <outlet property="navigationController" destination="4lt-fc-Rad" id="SaW-yo-PPY"/>
-                    </connections>
-                </customObject>
             </objects>
             <point key="canvasLocation" x="-812" y="30"/>
         </scene>
@@ -238,7 +232,7 @@ TableViewWrapper</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="etV-gq-qSc"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Next To Arrive" largeTitleDisplayMode="never" id="iR4-GE-qjt"/>
+                    <navigationItem key="navigationItem" title="Next To Arrive" largeTitleDisplayMode="never" id="p4E-p9-9Mt"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="buttonView" destination="OM7-Ed-SBl" id="Ir6-Zt-hZT"/>
@@ -272,7 +266,7 @@ TableViewWrapper</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5l-jy-fMz">
-                            <rect key="frame" x="207" y="10" width="33" height="27"/>
+                            <rect key="frame" x="207" y="10.5" width="33" height="27"/>
                             <accessibility key="accessibilityConfiguration" hint="Clear Start and End Stops" label="Reset Selection"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <state key="normal" title="Reset">

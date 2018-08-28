@@ -9,7 +9,6 @@ protocol AlertState_ModalAlertsDisplayedWatcherDelegate: AnyObject {
 }
 
 class AlertState_ModalAlertsDisplayedWatcher: BaseWatcher, StoreSubscriber {
-
     typealias StoreSubscriberStateType = Bool
 
     weak var delegate: AlertState_ModalAlertsDisplayedWatcherDelegate? {

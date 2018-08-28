@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class MoreTableViewCell: UITableViewCell {
-
     @IBOutlet var moreImageView: UIImageView!
 
     @IBOutlet var moreLabel: UILabel!

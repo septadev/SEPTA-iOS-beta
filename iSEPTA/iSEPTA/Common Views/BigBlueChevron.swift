@@ -11,7 +11,6 @@ import UIKit
 
 @IBDesignable
 class BigBlueChevron: UIView {
-
     override var intrinsicContentSize: CGSize { return CGSize(width: 9, height: 18) }
 
     override func draw(_ rect: CGRect) {

@@ -10,9 +10,8 @@ import Foundation
 import ReSwift
 
 class DatabaseDownloadProvider {
-    
     static let sharedInstance = DatabaseDownloadProvider()
-    
+
     private init() {
         store.subscribe(self) {
             $0.select {
@@ -22,11 +21,15 @@ class DatabaseDownloadProvider {
             }
         }
     }
+
+    deinit {
+        store.unsubscribe(self)
+    }
 }
 
 extension DatabaseDownloadProvider: StoreSubscriber {
     typealias StoreSubscriberStateType = DatabaseUpdateState
-    
+
     func newState(state: DatabaseUpdateState) {
         if state.status == .downloadUpdate, let dbUpdate = state.databaseUpdate {
             let updater = DatabaseUpdater()

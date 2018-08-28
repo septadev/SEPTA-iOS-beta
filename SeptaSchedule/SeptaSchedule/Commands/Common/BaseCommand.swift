@@ -4,7 +4,6 @@ import Foundation
 import SQLite
 
 public class BaseCommand {
-
     func retrieveResults<T>(sqlQuery: SQLQueryProtocol, userCompletion: @escaping ([T]?, Error?) -> Void, resultsMapper mapper: @escaping (Statement) -> [T]) {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             guard let strongSelf = self else { return }

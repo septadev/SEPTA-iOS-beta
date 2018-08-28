@@ -2,14 +2,13 @@
 
 import Foundation
 import ReSwift
-import UIKit
 import SeptaSchedule
+import UIKit
 
 class SelectSchedulesViewModel: StoreSubscriber {
-
     typealias StoreSubscriberStateType = ScheduleRequest?
     var scheduleRequest: ScheduleRequest?
-    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! { return store.state.currentTargetForScheduleActions() }
     weak var delegate: UpdateableFromViewModel?
     weak var schedulesDelegate: SchedulesViewModelDelegate?
 
@@ -55,7 +54,6 @@ class SelectSchedulesViewModel: StoreSubscriber {
     }
 
     func buildDisplayModel() {
-
         displayModel = [
             configureSelectRouteDisplayModel(),
             configureSelectStartDisplayModel(),
@@ -69,7 +67,6 @@ class SelectSchedulesViewModel: StoreSubscriber {
     }
 
     func cellIdForRow(_ row: Int) -> String {
-
         if row == 0 && scheduleRequest?.selectedRoute != nil {
             return "routeSelectedCell"
         } else {

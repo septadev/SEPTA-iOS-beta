@@ -8,15 +8,14 @@
 
 import Foundation
 import ReSwift
-import UIKit
 import SeptaSchedule
+import UIKit
 
 class NextToArriveInfoViewModel: BaseNextToArriveInfoViewModel, StoreSubscriber, SubscriberUnsubscriber {
-
     typealias StoreSubscriberStateType = [NextToArriveTrip]
 
     override func scheduleRequest() -> ScheduleRequest {
-        return store.state.targetForScheduleActionsScheduleRequest()
+        return store.state.currentTargetForScheduleActionsScheduleRequest()
     }
 
     override func transitMode() -> TransitMode {
@@ -34,8 +33,7 @@ class NextToArriveInfoViewModel: BaseNextToArriveInfoViewModel, StoreSubscriber,
     }
 
     override func subscribe() {
-
-        guard let target = store.state.targetForScheduleActions() else { return }
+        guard let target = store.state.currentTargetForScheduleActions() else { return }
 
         switch target {
         case .nextToArrive:

@@ -8,11 +8,10 @@
 
 import Foundation
 import ReSwift
-import UIKit
 import SeptaSchedule
+import UIKit
 
 extension NextToArriveViewModel {
-
     func configureSelectStartDisplayModel() -> NextToArriveRowDisplayModel {
         let cellModel: CellModel
         if let route = scheduleRequest?.selectedRoute, let start = scheduleRequest?.selectedStart {

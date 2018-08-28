@@ -1,30 +1,42 @@
 // Septa. 2017
 
 import Foundation
-import UIKit
 import ReSwift
 import SeptaSchedule
+import UIKit
 
 class SchedulesNavigationController: BaseNavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = SeptaColor.navBarBlue
-        initializeNavStackState()
-        let stateProvider = SchedulesNavigationControllerStateProvider()
-        stateProvider.navigationController = self
-        stateProvider.subscribe()
-        super.stateProvider = stateProvider
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
+
+    override func viewDidAppear(_: Bool) {
         let inAppReview = InAppReview()
         inAppReview.promptIfAppropriate()
     }
 
-    func initializeNavStackState() {
-        currentStackState = NavigationStackState(viewControllers: [.selectSchedules], modalViewController: nil)
+    override func subscribe() {
+        store.subscribe(self) {
+            $0.select { $0.navigationState.appStackState[.schedules] }
+        }
+    }
 
-        let action = InitializeNavigationState(navigationController: .schedules, navigationStackState: currentStackState, description: "Initializing stack state for Schedules")
-        store.dispatch(action)
+    override func resetViewState(resetViewState: ResetViewState?) {
+        guard let resetViewState = resetViewState else { return }
+
+        var viewControllers = [UIViewController]()
+
+        switch resetViewState.viewController {
+        case .tripScheduleController:
+            viewControllers = retrieveOrInstantiate(viewControllers: [.selectSchedules, .tripScheduleController])
+        case .selectSchedules:
+            viewControllers = retrieveOrInstantiate(viewControllers: [.selectSchedules])
+        default: break
+        }
+
+        self.viewControllers = viewControllers
+
+        store.dispatch(ResetViewStateHandled())
     }
 }

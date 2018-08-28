@@ -1,10 +1,29 @@
 {
-	"folders":
-	[
-		{
-			"path": ".",
-            "folder_exclude_patterns": [".vscode", "Carthage", 
-                "Charles", "CharlesSessions", "Paw", "betTesters"]
-		}
-	]
+  "folders": [
+    {
+      "path": ".",
+      "folder_exclude_patterns": [
+        ".vscode",
+        "Carthage",
+        "Charles",
+        "CharlesSessions",
+        "Paw",
+        "betTesters",
+        "Build",
+        "*.framework",
+        "*.xcodeproj"
+      ]
+    }
+  ],
+   "build_systems":
+    [
+       {
+            "name": "Swift Script",
+            "working_dir": "$project_path",
+            "cmd": ["bash", "Utilities/Swift Scripts/runScript.sh", "$file", ""],
+            "file_regex": "^([^:]+):([^:]+):([^:]+):(.+)"
+            
+        }
+        
+    ]
 }

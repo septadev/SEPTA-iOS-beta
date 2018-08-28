@@ -7,7 +7,6 @@ import SeptaSchedule
 protocol NextToArriveMiddlewareAction: SeptaAction {}
 
 struct NavigateToNextToArriveFromSchedules: NextToArriveMiddlewareAction {
-
     let description = "Navigate to Next To Arrive From Schedules"
 }
 
@@ -24,6 +23,16 @@ struct NavigateToSchedulesFromNextToArriveScheduleRequest: NextToArriveMiddlewar
 struct NavigateToAlertDetailsFromSchedules: NextToArriveMiddlewareAction {
     let scheduleState: ScheduleState
     let description = "Navigate to Alert Details From Schedules"
+}
+
+struct NavigateToAlertDetailsFromNotification: NextToArriveMiddlewareAction {
+    let notification: SeptaAlertDetourNotification
+    let description = "Navigate to Alert Details From a Push Notification"
+}
+
+struct NavigateToNextToArriveFromDelayNotification: NextToArriveMiddlewareAction {
+    let notification: SeptaDelayNotification
+    let description = "Navigate to Alert Details From a Push Notification"
 }
 
 struct NavigateToAlertDetailsFromNextToArrive: NextToArriveMiddlewareAction {

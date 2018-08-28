@@ -13,7 +13,6 @@ import SeptaRest
 import SeptaSchedule
 
 class NextToArriveMapper {
-
     func mapStart(realTimeArrival a: RealTimeArrival, transitMode: TransitMode) -> NextToArriveStop? {
         let formatter = DateFormatters.networkFormatter
         guard
@@ -112,7 +111,6 @@ class NextToArriveMapper {
     }
 
     func mapVehicleIds(stopToSelect: StopToSelect, realTimeArrival a: RealTimeArrival, transitMode: TransitMode) -> [String]? {
-
         let useVehicleId = transitMode.useBusForDetails()
         let useConsist = transitMode.useRailForDetails()
 
@@ -150,7 +148,6 @@ class NextToArriveMapper {
     }
 
     func isValidStartDate(date: Date) -> Bool {
-
         var fiveHours = DateComponents()
         fiveHours.hour = 5
         let fiveHoursFromNow: Date = Calendar.current.date(byAdding: .hour, value: 5, to: Date())!

@@ -9,7 +9,6 @@
 import Foundation
 
 class GenericAlertDetailProviderFactory {
-
     static func generateProvider() -> StateProvider {
         switch SeptaNetwork.sharedInstance.genericAlertEnvironment {
         case .prod: return GenericAlertDetailProvider.sharedInstance

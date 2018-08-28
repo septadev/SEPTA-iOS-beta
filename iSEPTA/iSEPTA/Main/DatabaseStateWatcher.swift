@@ -1,11 +1,10 @@
 // Septa. 2017
 
-import UIKit
-import SeptaSchedule
 import ReSwift
+import SeptaSchedule
+import UIKit
 
 class DatabaseStateWatcher: StoreSubscriber {
-
     typealias StoreSubscriberStateType = DatabaseState
 
     weak var delegate: BaseScheduleDataProvider?
@@ -21,9 +20,8 @@ class DatabaseStateWatcher: StoreSubscriber {
     }
 
     func newState(state: StoreSubscriberStateType) {
-        if state == .loaded {
-            delegate?.subscribe()
-        }
+        guard let delegate = delegate else { return }
+        delegate.databaseStateUpdated(state)
     }
 
     deinit {

@@ -3,7 +3,6 @@
 import Foundation
 
 @objc protocol UpdateableFromViewModel: AnyObject {
-
     func viewModelUpdated()
 
     func updateActivityIndicator(animating: Bool)

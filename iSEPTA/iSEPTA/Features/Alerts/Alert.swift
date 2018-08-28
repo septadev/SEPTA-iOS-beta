@@ -4,7 +4,6 @@ import Foundation
 import UIKit
 
 class UIAlert {
-
     static func presentOKAlertFrom(viewController: UIViewController, withTitle title: String, message: String, completion: (() -> Void)? = nil) {
         // create the alert
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
@@ -49,7 +48,7 @@ class UIAlert {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
 
         alert.addAction(UIAlertAction(title: "Go to Schedules", style: UIAlertActionStyle.default) { _ in
-            let action = SwitchTabs(activeNavigationController: .schedules, description: "Jump to Schedules after error in next to arrive")
+            let action = NavigateToSchedulesFromNextToArriveScheduleRequest(scheduleRequest: store.state.currentTargetForScheduleActionsScheduleRequest())
             store.dispatch(action)
         })
 
@@ -66,7 +65,6 @@ class UIAlert {
     }
 
     static func presentHolidayAlertFrom(viewController: UIViewController, holidaySchedule: HolidaySchedule) {
-
         guard let message = holidaySchedule.holidayMessage(),
             let onlineSchedules = holidaySchedule.onlineHolidaySchedules(),
             let onlineScheduleController = Bundle.main.loadNibNamed("HolidaySchedule", owner: nil, options: nil)?.first as? HolidayScheduleViewController else { return }
@@ -106,6 +104,43 @@ class UIAlert {
             completion?()
         })
 
+        // show the alert
+        viewController.present(alert, animated: true, completion: nil)
+    }
+
+    static func presentNavigationToSettingsNeededAlertFrom(viewController: UIViewController?, completion: (() -> Void)? = nil) {
+        // create the alert
+        guard let viewController = viewController ?? UIApplication.shared.keyWindow?.rootViewController else { return }
+        let alert = UIAlertController(title: "Action Required", message: "In order to receive notifications, you must enable that feature for SEPTA in the Settings App", preferredStyle: UIAlertControllerStyle.alert)
+
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "Go To Settings", style: UIAlertActionStyle.default) { _ in
+            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else { return }
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: nil)
+            }
+            completion?()
+        })
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
+            completion?()
+        })
+
+        // show the alert
+        viewController.present(alert, animated: true, completion: nil)
+    }
+
+    static func presentEnableAllRoutes(viewController: UIViewController?, pushNotificationRoute _: PushNotificationRoute) {
+        // create the alert
+        guard let viewController = viewController ?? UIApplication.shared.keyWindow?.rootViewController else { return }
+        let alert = UIAlertController(title: "SEPTA", message: "Push Notifications are not enabled for the app.  Do you want to re-enabled all your routes?", preferredStyle: UIAlertControllerStyle.alert)
+
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "Enable All Routes", style: UIAlertActionStyle.default) { _ in
+            store.dispatch(UserWantsToSubscribeToPushNotifications(viewController: viewController, boolValue: true))
+        })
+        alert.addAction(UIAlertAction(title: "Just This Route", style: UIAlertActionStyle.default) { _ in
+            store.dispatch(UserWantsToSubscribeToPushNotifications(viewController: viewController, boolValue: true, alsoEnableRoutes: false))
+        })
         // show the alert
         viewController.present(alert, animated: true, completion: nil)
     }

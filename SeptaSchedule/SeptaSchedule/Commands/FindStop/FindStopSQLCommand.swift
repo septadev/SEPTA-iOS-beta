@@ -33,7 +33,7 @@ public class FindStopCommand: BaseCommand {
                     let weekdayService = weekdayServiceInt == 1
                     let saturdayService = saturdayServiceInt == 1
                     let sundayService = sundayServiceInt == 1
-                    let stop = Stop(stopId: stopId, stopName: stopName, stopLatitude: stopLatitude, stopLongitude: stopLongitude, wheelchairBoarding: wheelchairBoarding, weekdayService: weekdayService, saturdayService: saturdayService, sundayService: sundayService)
+                    let stop = Stop(stopId: stopId, sequence: 1, stopName: stopName, stopLatitude: stopLatitude, stopLongitude: stopLongitude, wheelchairBoarding: wheelchairBoarding, weekdayService: weekdayService, saturdayService: saturdayService, sundayService: sundayService)
                     stops.append(stop)
                 }
             }

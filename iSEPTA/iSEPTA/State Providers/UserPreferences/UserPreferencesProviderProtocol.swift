@@ -9,6 +9,5 @@
 import Foundation
 
 protocol UserPreferencesProviderProtocol {
-
     func subscribe()
 }

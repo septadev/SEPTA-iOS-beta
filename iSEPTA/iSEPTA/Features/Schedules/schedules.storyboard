@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Flo-rT-aez">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Flo-rT-aez">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -208,7 +208,9 @@ TableViewWrapper</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="k7n-XP-fHe"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Schedules" largeTitleDisplayMode="never" id="fIz-Cf-6OQ"/>
+                    <navigationItem key="navigationItem" title="Schedules" largeTitleDisplayMode="never" id="fIz-Cf-6OQ">
+                        <barButtonItem key="backBarButtonItem" title=" " id="geG-X2-Pew"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="buttonView" destination="cOB-du-LRG" id="bi3-nK-egN"/>
@@ -575,16 +577,16 @@ TableViewWrapper</string>
                                                 </constraints>
                                             </view>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MBk-l9-tXz" userLabel="TransitAlerts">
-                                                <rect key="frame" x="0.0" y="76" width="357" height="56"/>
+                                                <rect key="frame" x="0.0" y="76" width="357" height="60"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="56" id="bhA-xz-9f3"/>
+                                                    <constraint firstAttribute="height" constant="60" id="bhA-xz-9f3"/>
                                                 </constraints>
                                                 <connections>
                                                     <segue destination="ZBK-ie-Ad1" kind="embed" identifier="embedTransitAlerts" id="YYa-Rh-MvS"/>
                                                 </connections>
                                             </containerView>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="d5G-1F-kch" userLabel="ScheduelType">
-                                                <rect key="frame" x="10" y="140" width="337" height="29"/>
+                                                <rect key="frame" x="10" y="144" width="337" height="29"/>
                                                 <segments>
                                                     <segment title="Weekday"/>
                                                     <segment title="Saturday"/>
@@ -596,7 +598,7 @@ TableViewWrapper</string>
                                                 </connections>
                                             </segmentedControl>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="72" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zf9-bi-BCi">
-                                                <rect key="frame" x="0.0" y="178" width="357" height="306"/>
+                                                <rect key="frame" x="0.0" y="182" width="357" height="302"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="scheduleCell" id="ffg-L2-s06" userLabel="railScheduleCell" customClass="ScheduleTableViewCell" customModule="Septa" customModuleProvider="target">
@@ -935,7 +937,7 @@ TitleViewTop</string>
                                 </constraints>
                             </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="V0h-9O-nLg">
-                                <rect key="frame" x="168.5" y="441.5" width="37" height="37"/>
+                                <rect key="frame" x="168.5" y="443.5" width="37" height="37"/>
                                 <color key="color" red="0.5490196078431373" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ua0-R8-FzE" userLabel="ShadowView" customClass="NavBarShadowView">
@@ -1099,7 +1101,7 @@ TitleViewTop</string>
             </objects>
             <point key="canvasLocation" x="3407" y="681"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav Controller Scene-->
         <scene sceneID="83K-FD-2cf">
             <objects>
                 <navigationController title="Nav Controller Scene" id="Flo-rT-aez" customClass="SchedulesNavigationController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
@@ -1117,16 +1119,10 @@ TitleViewTop</string>
                         </connections>
                     </navigationBar>
                     <connections>
-                        <outlet property="stateProvider" destination="Z8d-WV-W5R" id="v9z-ff-7cP"/>
                         <segue destination="G8I-06-w6m" kind="relationship" relationship="rootViewController" id="ysr-1u-zxJ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZi-KV-b8v" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="Z8d-WV-W5R" userLabel="StateProvider" customClass="SchedulesNavigationControllerStateProvider" customModule="Septa" customModuleProvider="target">
-                    <connections>
-                        <outlet property="navigationController" destination="Flo-rT-aez" id="3fj-Lo-ZTw"/>
-                    </connections>
-                </customObject>
             </objects>
             <point key="canvasLocation" x="-1892" y="221"/>
         </scene>
@@ -1201,17 +1197,17 @@ TitleViewTop</string>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etJ-OH-PkF" userLabel="SearchView">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="168"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="121" placeholder="YES" id="CSK-OX-lZ2" userLabel="SearchViewHeight"/>
+                                                <constraint firstAttribute="height" constant="168" placeholder="YES" id="CSK-OX-lZ2" userLabel="SearchViewHeight"/>
                                             </constraints>
                                             <connections>
                                                 <segue destination="gOh-OW-Svi" kind="embed" identifier="embedHeader" id="x0k-eT-tQL"/>
                                             </connections>
                                         </containerView>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="140" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ICn-d3-5wr">
-                                            <rect key="frame" x="0.0" y="121" width="375" height="526"/>
+                                            <rect key="frame" x="0.0" y="168" width="375" height="479"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <prototypes>
                                                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="stopCell" rowHeight="68" id="wrn-eA-jgn" userLabel="stopCell" customClass="SelectStopCell" customModule="Septa" customModuleProvider="target">
@@ -1365,7 +1361,7 @@ TitleViewTop</string>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="fEJ-bC-2Y5">
-                                <rect key="frame" x="168.5" y="385.5" width="37" height="37"/>
+                                <rect key="frame" x="168.5" y="409" width="37" height="37"/>
                                 <color key="color" red="0.5490196078431373" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                         </subviews>
@@ -1418,11 +1414,11 @@ TitleViewTop</string>
             <objects>
                 <viewController storyboardIdentifier="SearchStopsByViewController" id="gOh-OW-Svi" customClass="SearchStopsModalHeaderViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FoR-GN-4Jb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="168"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNI-mk-YGB" userLabel="SearchView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="168"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7nN-gG-h58" userLabel="DismissView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="28"/>
@@ -1463,7 +1459,7 @@ TitleViewTop</string>
                                         </connections>
                                     </segmentedControl>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dt3-Pb-w7Y" userLabel="SearchByText">
-                                        <rect key="frame" x="11" y="73" width="353" height="36"/>
+                                        <rect key="frame" x="11" y="70" width="353" height="36"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SearchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="vb4-Bo-S2n" userLabel="SearchIcon">
                                                 <rect key="frame" x="8" y="9.5" width="17" height="17"/>
@@ -1511,19 +1507,56 @@ SearchTextBox</string>
                                             <outletCollection property="gestureRecognizers" destination="joG-sX-gAY" appends="YES" id="xDh-dL-Tji"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Clu-4h-zwi" userLabel="Divider">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OOL-By-4Zv" userLabel="Divider Top">
                                         <rect key="frame" x="0.0" y="120" width="375" height="1"/>
+                                        <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="OB5-jt-FZC" userLabel="Dividerheight"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Nearby Station" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7k-b0-CdL">
+                                        <rect key="frame" x="12" y="134.5" width="168.5" height="19.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19.5" id="I0T-NP-dg3"/>
+                                            <constraint firstAttribute="width" constant="168.5" id="UIg-Qb-rX6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m52-xo-HaI" customClass="StopSortOrderButton" customModule="Septa" customModuleProvider="target">
+                                        <rect key="frame" x="248" y="125" width="53" height="38"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="53" id="PTH-Dw-c22"/>
+                                            <constraint firstAttribute="height" constant="38" id="bbr-AX-PGR"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z02-Eh-IO5" customClass="StopSortOrderButton" customModule="Septa" customModuleProvider="target">
+                                        <rect key="frame" x="305" y="125" width="53" height="38"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="38" id="6iE-4W-Sx1"/>
+                                            <constraint firstAttribute="width" constant="53" id="eNe-U3-1g4"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Clu-4h-zwi" userLabel="Divider Bot">
+                                        <rect key="frame" x="0.0" y="167" width="375" height="1"/>
                                         <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="bhN-Ds-Red" userLabel="Dividerheight"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Nearby Station" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7k-b0-CdL">
-                                        <rect key="frame" x="12" y="119" width="351" height="19.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                        <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration" identifier="SearchView" label="SearchView"/>
@@ -1531,28 +1564,28 @@ SearchTextBox</string>
                                 <constraints>
                                     <constraint firstItem="rS7-En-2sJ" firstAttribute="top" secondItem="7nN-gG-h58" secondAttribute="bottom" id="0ed-aq-GZg" userLabel="SearchModeTop"/>
                                     <constraint firstAttribute="trailing" secondItem="Clu-4h-zwi" secondAttribute="trailing" id="2Sn-aE-o1f" userLabel="DividerRight"/>
+                                    <constraint firstItem="bnv-m2-pE9" firstAttribute="trailing" secondItem="OOL-By-4Zv" secondAttribute="trailing" id="3Cs-gX-EFg"/>
                                     <constraint firstItem="7nN-gG-h58" firstAttribute="leading" secondItem="bNI-mk-YGB" secondAttribute="leading" id="59s-e7-UuD" userLabel="DismissViewLeft"/>
+                                    <constraint firstItem="bnv-m2-pE9" firstAttribute="trailing" secondItem="Z02-Eh-IO5" secondAttribute="trailing" constant="17" id="6jP-AU-5yZ"/>
                                     <constraint firstItem="dt3-Pb-w7Y" firstAttribute="leading" secondItem="bNI-mk-YGB" secondAttribute="leading" constant="11" id="968-nr-Yhv" userLabel="SearchByTextLeft"/>
-                                    <constraint firstItem="L7k-b0-CdL" firstAttribute="top" secondItem="bnv-m2-pE9" secondAttribute="top" constant="119" id="Dqj-4e-fFc" userLabel="SelectNearbyLabelTop"/>
-                                    <constraint firstAttribute="height" constant="121" id="I6p-N4-ZO9" userLabel="HeightForStops"/>
+                                    <constraint firstItem="OOL-By-4Zv" firstAttribute="top" secondItem="dt3-Pb-w7Y" secondAttribute="bottom" constant="14" id="DVe-7e-gpa"/>
+                                    <constraint firstItem="m52-xo-HaI" firstAttribute="centerY" secondItem="Z02-Eh-IO5" secondAttribute="centerY" id="GRE-rx-E7O"/>
+                                    <constraint firstItem="Z02-Eh-IO5" firstAttribute="top" secondItem="OOL-By-4Zv" secondAttribute="bottom" constant="4" id="GhU-oM-Kmh"/>
+                                    <constraint firstAttribute="height" constant="168" id="I6p-N4-ZO9" userLabel="HeightForStops"/>
+                                    <constraint firstItem="Z02-Eh-IO5" firstAttribute="leading" secondItem="m52-xo-HaI" secondAttribute="trailing" constant="4" id="IS1-FZ-zNI"/>
                                     <constraint firstAttribute="trailing" secondItem="dt3-Pb-w7Y" secondAttribute="trailing" constant="11" id="S0D-XI-tad" userLabel="SearchByTextRight"/>
-                                    <constraint firstAttribute="height" constant="151" id="VTR-cS-2Tz" userLabel="heightForAddress"/>
+                                    <constraint firstItem="L7k-b0-CdL" firstAttribute="centerY" secondItem="m52-xo-HaI" secondAttribute="centerY" id="W9w-mp-WL3"/>
+                                    <constraint firstItem="OOL-By-4Zv" firstAttribute="leading" secondItem="bnv-m2-pE9" secondAttribute="leading" id="aGj-XT-VNr"/>
                                     <constraint firstItem="7nN-gG-h58" firstAttribute="top" secondItem="bNI-mk-YGB" secondAttribute="top" id="cVa-Nh-Cd8" userLabel="DismissViewtop"/>
-                                    <constraint firstItem="dt3-Pb-w7Y" firstAttribute="top" secondItem="rS7-En-2sJ" secondAttribute="bottom" constant="17" id="gA0-td-8Qh" userLabel="SearchByTextTop"/>
+                                    <constraint firstItem="dt3-Pb-w7Y" firstAttribute="top" secondItem="rS7-En-2sJ" secondAttribute="bottom" constant="14" id="gA0-td-8Qh" userLabel="SearchByTextTop"/>
                                     <constraint firstAttribute="bottom" secondItem="Clu-4h-zwi" secondAttribute="bottom" id="gY3-cj-cRM" userLabel="DividerBottom"/>
                                     <constraint firstItem="Clu-4h-zwi" firstAttribute="leading" secondItem="bNI-mk-YGB" secondAttribute="leading" id="ge7-2w-xfv" userLabel="DividerLeft"/>
                                     <constraint firstAttribute="trailing" secondItem="7nN-gG-h58" secondAttribute="trailing" id="hQF-z2-p5j" userLabel="DismissViewRight"/>
-                                    <constraint firstItem="bnv-m2-pE9" firstAttribute="trailing" secondItem="L7k-b0-CdL" secondAttribute="trailing" constant="12" id="j7o-0H-l2o" userLabel="SelectNearbyLabelRight"/>
                                     <constraint firstItem="L7k-b0-CdL" firstAttribute="leading" secondItem="bnv-m2-pE9" secondAttribute="leading" constant="12" id="k8r-hi-gVE" userLabel="SelectNearbyLabelLeft"/>
                                     <constraint firstItem="rS7-En-2sJ" firstAttribute="leading" secondItem="bNI-mk-YGB" secondAttribute="leading" constant="11" id="wWL-We-hOh" userLabel="SearchModeLeft"/>
                                     <constraint firstAttribute="trailing" secondItem="rS7-En-2sJ" secondAttribute="trailing" constant="11" id="z84-nL-rBs" userLabel="SearchModeRight"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="bnv-m2-pE9"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="VTR-cS-2Tz"/>
-                                    </mask>
-                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1564,18 +1597,19 @@ SearchTextBox</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="b5p-AH-fxq"/>
                     </view>
-                    <size key="freeformSize" width="375" height="121"/>
+                    <size key="freeformSize" width="375" height="168"/>
                     <connections>
+                        <outlet property="alphaSortButton" destination="m52-xo-HaI" id="6QU-YH-bI8"/>
                         <outlet property="dismissIcon" destination="lHK-2s-TQT" id="6JC-XF-P9X"/>
+                        <outlet property="heightConstraint" destination="I6p-N4-ZO9" id="34a-jB-jRM"/>
                         <outlet property="resetTextBoxGestureRecognizer" destination="joG-sX-gAY" id="TiU-Lj-SsL"/>
                         <outlet property="searchByLocationButton" destination="gv4-52-NvY" id="d7e-IR-Uo9"/>
                         <outlet property="searchByTextView" destination="dt3-Pb-w7Y" id="Rk7-D1-3Dq"/>
                         <outlet property="searchView" destination="bNI-mk-YGB" id="L0V-jA-FVd"/>
                         <outlet property="segmentedControl" destination="rS7-En-2sJ" id="oGT-VZ-K0i"/>
                         <outlet property="selectNearbyLabel" destination="L7k-b0-CdL" id="rQY-mO-xSd"/>
+                        <outlet property="stopOrderSortButton" destination="Z02-Eh-IO5" id="uLf-8B-AvC"/>
                         <outlet property="textField" destination="B7Q-Zl-LKP" id="mVI-Om-oct"/>
-                        <outlet property="viewHeightConstraintForAddress" destination="VTR-cS-2Tz" id="7ks-Xp-t7p"/>
-                        <outlet property="viewHeightConstraintForStops" destination="I6p-N4-ZO9" id="k0T-y2-L0v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eod-vm-ubd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1604,11 +1638,11 @@ SearchTextBox</string>
             <objects>
                 <viewController storyboardIdentifier="SearchRoutesByViewController" id="sw4-Eu-qy3" customClass="SearchRoutesModalHeaderViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tHz-25-yvB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="122"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84d-k0-Omc" userLabel="SearchView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="122"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CDa-yr-Cxc" userLabel="DismissView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="28"/>
@@ -1638,7 +1672,7 @@ SearchTextBox</string>
                                         <rect key="frame" x="11" y="28" width="353" height="36"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SearchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qis-sk-A6z" userLabel="SearchIcon">
-                                                <rect key="frame" x="8" y="9.5" width="17" height="17"/>
+                                                <rect key="frame" x="8" y="10" width="17" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="17" id="Txd-zj-mo9"/>
                                                     <constraint firstAttribute="height" constant="17" id="lgx-hd-Aji"/>
@@ -1666,8 +1700,8 @@ SearchTextBox</string>
                                             <constraint firstAttribute="height" constant="36" id="muI-Py-MaB" userLabel="SearchByText"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LJP-Ry-oou" userLabel="Divider">
-                                        <rect key="frame" x="0.0" y="73" width="375" height="1"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LJP-Ry-oou" userLabel="Bottom Divider">
+                                        <rect key="frame" x="0.0" y="121" width="375" height="1"/>
                                         <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Ovm-Lg-XoI" userLabel="Dividerheight"/>
@@ -1683,10 +1717,10 @@ SearchTextBox</string>
                                     <constraint firstAttribute="trailing" secondItem="CDa-yr-Cxc" secondAttribute="trailing" id="KQl-y1-hsw" userLabel="DismissViewRight"/>
                                     <constraint firstItem="C4h-m6-WDE" firstAttribute="leading" secondItem="84d-k0-Omc" secondAttribute="leading" constant="11" id="LFt-sv-iE9" userLabel="SearchByTextLeft"/>
                                     <constraint firstAttribute="bottom" secondItem="LJP-Ry-oou" secondAttribute="bottom" id="S1l-w0-xjP" userLabel="DividerBottom"/>
-                                    <constraint firstAttribute="bottom" secondItem="C4h-m6-WDE" secondAttribute="bottom" constant="10" id="UO0-yP-YMX" userLabel="SearchByTextBottom"/>
                                     <constraint firstItem="C4h-m6-WDE" firstAttribute="top" secondItem="CDa-yr-Cxc" secondAttribute="bottom" id="aff-vA-q1J" userLabel="SearchbyTextTop"/>
                                     <constraint firstItem="CDa-yr-Cxc" firstAttribute="top" secondItem="84d-k0-Omc" secondAttribute="top" id="jcK-G3-14x" userLabel="DismissViewtop"/>
                                     <constraint firstItem="CDa-yr-Cxc" firstAttribute="leading" secondItem="84d-k0-Omc" secondAttribute="leading" id="ndK-5T-zos" userLabel="DismissViewLeft"/>
+                                    <constraint firstAttribute="height" constant="122" id="tVg-wj-L5n"/>
                                     <constraint firstAttribute="trailing" secondItem="C4h-m6-WDE" secondAttribute="trailing" constant="11" id="urt-mV-Sya" userLabel="SearchByTextRight"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="1U2-2C-xvX"/>
@@ -1701,7 +1735,7 @@ SearchTextBox</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Unk-NJ-Rlj"/>
                     </view>
-                    <size key="freeformSize" width="375" height="74"/>
+                    <size key="freeformSize" width="375" height="122"/>
                     <connections>
                         <outlet property="dismissIcon" destination="0xY-NB-ZzH" id="dAc-ke-a7N"/>
                         <outlet property="searchByTextView" destination="C4h-m6-WDE" id="WJl-qJ-k9v"/>
@@ -1720,7 +1754,7 @@ SearchTextBox</string>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="244" y="-508"/>
+            <point key="canvasLocation" x="244" y="-508.24587706146929"/>
         </scene>
     </scenes>
     <resources>

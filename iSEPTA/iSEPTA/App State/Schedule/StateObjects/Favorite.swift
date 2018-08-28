@@ -8,27 +8,38 @@
 
 import Foundation
 import SeptaSchedule
+
+enum FavoriteType: String, Codable {
+    case nextToArrive
+    case transitView
+}
+
 // TODO: create a parallel favorite data array so that we aren't writing favorites to disk so much
 struct Favorite: Codable {
-    let favoriteId: String
+    var favoriteType: FavoriteType
+    var favoriteId: String
     var favoriteName: String
-    let transitMode: TransitMode
-    let selectedRoute: Route
-    let selectedStart: Stop
-    let selectedEnd: Stop
+    var transitMode: TransitMode
+    var selectedRoute: Route
+    var selectedStart: Stop
+    var selectedEnd: Stop
     var nextToArriveTrips: [NextToArriveTrip]
     var nextToArriveUpdateStatus: NextToArriveUpdateStatus
+    var transitViewRoutes: [TransitRoute]
     var refreshDataRequested: Bool
     var collapsed: Bool
     var sortOrder: Int
-    
+
+    static var reversedFavoriteId: String = "ReversedFavorite"
+
     static let defaultSortOrder = 999
 
     var scheduleRequest: ScheduleRequest {
         return convertedToScheduleRequest()
     }
 
-    init(favoriteId: String, favoriteName: String, transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop, nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip](), nextToArriveUpdateStatus: NextToArriveUpdateStatus = .idle, refreshDataRequested: Bool = false, collapsed: Bool = false, sortOrder: Int = Favorite.defaultSortOrder) {
+    init(favoriteType: FavoriteType, favoriteId: String, favoriteName: String, transitMode: TransitMode, selectedRoute: Route, selectedStart: Stop, selectedEnd: Stop, nextToArriveTrips: [NextToArriveTrip] = [NextToArriveTrip](), nextToArriveUpdateStatus: NextToArriveUpdateStatus = .idle, transitViewRoutes: [TransitRoute] = [], refreshDataRequested: Bool = false, collapsed: Bool = false, sortOrder: Int = Favorite.defaultSortOrder) {
+        self.favoriteType = favoriteType
         self.favoriteId = favoriteId
         self.favoriteName = favoriteName
         self.transitMode = transitMode
@@ -37,12 +48,14 @@ struct Favorite: Codable {
         self.selectedEnd = selectedEnd
         self.nextToArriveTrips = nextToArriveTrips
         self.nextToArriveUpdateStatus = nextToArriveUpdateStatus
+        self.transitViewRoutes = transitViewRoutes
         self.refreshDataRequested = refreshDataRequested
         self.collapsed = collapsed
         self.sortOrder = sortOrder
     }
 
     enum CodingKeys: String, CodingKey {
+        case favoriteType
         case favoriteId
         case favoriteName
         case transitMode
@@ -51,6 +64,7 @@ struct Favorite: Codable {
         case selectedEnd
         case collapsed
         case sortOrder
+        case transitViewRoutes
     }
 
     public init(from decoder: Decoder) throws {
@@ -61,7 +75,6 @@ struct Favorite: Codable {
         selectedStart = try container.decode(Stop.self, forKey: .selectedStart)
         selectedEnd = try container.decode(Stop.self, forKey: .selectedEnd)
 
-        
         let defaultId = UUID().uuidString
         do {
             favoriteId = try container.decode(String?.self, forKey: .favoriteId) ?? defaultId
@@ -75,20 +88,36 @@ struct Favorite: Codable {
         } catch {
             favoriteName = defaultName
         }
-        
+
         let defaultCollapsed = false
         do {
             collapsed = try container.decode(Bool?.self, forKey: .collapsed) ?? defaultCollapsed
         } catch {
-            self.collapsed = defaultCollapsed
+            collapsed = defaultCollapsed
         }
-        
+
         do {
             sortOrder = try container.decode(Int?.self, forKey: .sortOrder) ?? Favorite.defaultSortOrder
         } catch {
-            self.sortOrder = Favorite.defaultSortOrder
+            sortOrder = Favorite.defaultSortOrder
         }
-        
+
+        do {
+            transitViewRoutes = try container.decode([TransitRoute]?.self, forKey: .transitViewRoutes) ?? []
+        } catch {
+            transitViewRoutes = []
+        }
+
+        var defaultFavoriteType: FavoriteType = .nextToArrive
+        if transitViewRoutes.count > 0 {
+            defaultFavoriteType = .transitView
+        }
+        do {
+            favoriteType = try container.decode(FavoriteType?.self, forKey: .favoriteType) ?? defaultFavoriteType
+        } catch {
+            favoriteType = defaultFavoriteType
+        }
+
         nextToArriveTrips = [NextToArriveTrip]()
         nextToArriveUpdateStatus = .idle
         refreshDataRequested = true
@@ -96,6 +125,7 @@ struct Favorite: Codable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(favoriteType, forKey: .favoriteType)
         try container.encode(favoriteId, forKey: .favoriteId)
         try container.encode(favoriteName, forKey: .favoriteName)
         try container.encode(transitMode, forKey: .transitMode)
@@ -104,7 +134,11 @@ struct Favorite: Codable {
         try container.encode(selectedEnd, forKey: .selectedEnd)
         try container.encode(collapsed, forKey: .collapsed)
         try container.encode(sortOrder, forKey: .sortOrder)
+        try container.encode(transitViewRoutes, forKey: .transitViewRoutes)
     }
+
+    public static let emptyRoute = Route(routeId: "", routeShortName: "", routeLongName: "", routeDirectionCode: .inbound)
+    public static let emptyStop = Stop(stopId: 0, sequence: 0, stopName: "", stopLatitude: 0, stopLongitude: 0, wheelchairBoarding: false, weekdayService: false, saturdayService: false, sundayService: false)
 }
 
 extension Favorite: Hashable {
@@ -146,10 +180,16 @@ func == (lhs: Favorite, rhs: Favorite) -> Bool {
 
     areEqual = lhs.collapsed == rhs.collapsed
     guard areEqual else { return false }
-    
+
     areEqual = lhs.sortOrder == rhs.sortOrder
     guard areEqual else { return false }
-    
+
+    areEqual = lhs.favoriteType == rhs.favoriteType
+    guard areEqual else { return false }
+
+    areEqual = lhs.transitViewRoutes == rhs.transitViewRoutes
+    guard areEqual else { return false }
+
     return areEqual
 }
 

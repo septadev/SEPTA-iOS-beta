@@ -21,7 +21,7 @@ class NextToArriveViewController: BaseNonModalViewController, IdentifiableContro
     let buttonRow = 3
 
     var formIsComplete = false
-    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! { return store.state.currentTargetForScheduleActions() }
 
     @IBOutlet var viewModel: NextToArriveViewModel!
 
@@ -30,7 +30,6 @@ class NextToArriveViewController: BaseNonModalViewController, IdentifiableContro
     }
 
     override func viewDidLoad() {
-
         view.backgroundColor = SeptaColor.navBarBlue
         tableView.tableFooterView = tableViewFooter
 
@@ -46,6 +45,12 @@ class NextToArriveViewController: BaseNonModalViewController, IdentifiableContro
 
         navBar.shadowImage = UIImage()
         navBar.setBackgroundImage(UIImage(), for: .default)
+        viewModel.subscribe()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.unsubscribe()
     }
 
     @IBAction func resetSearch(_: Any) {
@@ -60,7 +65,6 @@ class NextToArriveViewController: BaseNonModalViewController, IdentifiableContro
 }
 
 extension NextToArriveViewController: UITableViewDelegate, UITableViewDataSource {
-
     func numberOfSections(in _: UITableView) -> Int {
         return viewModel.numberOfRows()
     }
@@ -70,7 +74,6 @@ extension NextToArriveViewController: UITableViewDelegate, UITableViewDataSource
     }
 
     func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         if indexPath.section < buttonRow {
             let cellId = viewModel.cellIdForRow(indexPath.section)
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
@@ -87,7 +90,6 @@ extension NextToArriveViewController: UITableViewDelegate, UITableViewDataSource
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         if indexPath.section < buttonRow {
             viewModel.rowSelected(indexPath.section)
 
@@ -125,7 +127,6 @@ extension NextToArriveViewController: UITableViewDelegate, UITableViewDataSource
 }
 
 extension NextToArriveViewController: UpdateableFromViewModel {
-
     func viewModelUpdated() {
         guard let tableView = tableView else { return }
         updateHeaderLabels()
@@ -141,7 +142,6 @@ extension NextToArriveViewController: UpdateableFromViewModel {
 }
 
 extension NextToArriveViewController: SchedulesViewModelDelegate {
-
     func formIsComplete(_ isComplete: Bool) {
         guard let tableView = tableView else { return }
         formIsComplete = isComplete

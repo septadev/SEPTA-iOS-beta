@@ -10,13 +10,4 @@ import Foundation
 import UIKit
 
 extension BaseNavigationController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationBar.backgroundColor = UIColor.clear
-        navigationBar.isTranslucent = true
-        navigationBar.barStyle = .black
-        navigationBar.shadowImage = UIImage()
-        navigationBar.setBackgroundImage(UIImage(), for: .default)
-    }
 }

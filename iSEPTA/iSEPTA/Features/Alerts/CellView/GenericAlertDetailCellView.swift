@@ -80,7 +80,6 @@ class GenericAlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherD
     }
 
     var isGenericAlert: Bool = true {
-
         didSet {
             pinkAlertHeaderView.isGenericAlert = isGenericAlert
         }
@@ -117,7 +116,6 @@ class GenericAlertDetailCellView: UIView, AlertState_GenericAlertDetailsWatcherD
     }
 
     func toggleOpenState() {
-
         if !openState {
             setOpenState()
         } else {

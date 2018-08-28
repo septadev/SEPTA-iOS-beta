@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import UIKit
 import ReSwift
+import UIKit
 
 class FavoritesNavigationController: BaseNavigationController, FavoritesState_FavoritesExistWatcherDelegate {
     typealias StoreSubscriberStateType = Bool
@@ -28,19 +28,17 @@ class FavoritesNavigationController: BaseNavigationController, FavoritesState_Fa
         }
     }
 
-    func showFavoritesController() {
+    override func subscribe() {
+        store.subscribe(self) {
+            $0.select { $0.navigationState.appStackState[.favorites] }
+        }
+    }
 
-        initializeNavStackState(viewController: .favoritesViewController)
+    func showFavoritesController() {
+        setRootViewController(viewController: .favoritesViewController)
     }
 
     func showNoFavoritesViewController() {
-
-        initializeNavStackState(viewController: .noFavoritesViewController)
-    }
-
-    func initializeNavStackState(viewController: ViewController) {
-        let navigationStackState = NavigationStackState(viewControllers: [viewController], modalViewController: nil)
-        let action = InitializeNavigationState(navigationController: .favorites, navigationStackState: navigationStackState, description: "Initialiazing Favorites nav stack state")
-        store.dispatch(action)
+        setRootViewController(viewController: .noFavoritesViewController)
     }
 }

@@ -12,7 +12,6 @@ public class ErrorResult: NSError {
     var error: Error?
 
     init(errorFromAPI: Error?) {
-
         let userInfo: [String: AnyObject] = {
             if let err = errorFromAPI {
                 return ["apiError": err]

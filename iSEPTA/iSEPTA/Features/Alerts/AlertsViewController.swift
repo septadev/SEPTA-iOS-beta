@@ -59,7 +59,7 @@ class AlertsViewController: UIViewController, IdentifiableController {
 
     var formIsComplete = false
     var targetForScheduleAction: TargetForScheduleAction! {
-        return store.state.targetForScheduleActions()
+        return store.state.currentTargetForScheduleActions()
     }
 
     var viewModel: AlertsViewModel!
@@ -115,7 +115,6 @@ class AlertsViewController: UIViewController, IdentifiableController {
 }
 
 extension AlertsViewController: UITableViewDelegate, UITableViewDataSource {
-
     func numberOfSections(in _: UITableView) -> Int {
         return 2
     }
@@ -125,7 +124,6 @@ extension AlertsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         if indexPath.section < buttonRow {
             let cellId = viewModel.cellIdForRow(indexPath.section)
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
@@ -143,7 +141,6 @@ extension AlertsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         if indexPath.section < buttonRow {
             viewModel.rowSelected(indexPath.section)
 
@@ -176,7 +173,6 @@ extension AlertsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension AlertsViewController: UpdateableFromViewModel {
-
     func viewModelUpdated() {
         guard let tableView = tableView else {
             return
@@ -194,7 +190,6 @@ extension AlertsViewController: UpdateableFromViewModel {
 }
 
 extension AlertsViewController: SchedulesViewModelDelegate {
-
     func formIsComplete(_ isComplete: Bool) {
         guard let tableView = tableView else {
             return

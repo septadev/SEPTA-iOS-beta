@@ -7,12 +7,11 @@
 //
 
 import Foundation
-import UIKit
 import ReSwift
 import SeptaSchedule
+import UIKit
 
 class TripScheduleFavoritesIconController: FavoritesState_FavoritesWatcherDelegate, ScheduleRequestWatcherDelegate {
-
     var favoritesButton: UIButton! {
         didSet {
             setUpTargetAndActionForButton()

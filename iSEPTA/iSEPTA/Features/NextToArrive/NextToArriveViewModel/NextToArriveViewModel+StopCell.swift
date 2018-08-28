@@ -7,13 +7,11 @@
 //
 
 import Foundation
-import Foundation
 import ReSwift
 import SeptaSchedule
 import UIKit
 
 extension NextToArriveViewModel {
-
     func configureSelectEndDisplayModel() -> NextToArriveRowDisplayModel {
         let cellModel: CellModel
         if let route = scheduleRequest?.selectedRoute, let start = scheduleRequest?.selectedStart, let end = scheduleRequest?.selectedEnd {

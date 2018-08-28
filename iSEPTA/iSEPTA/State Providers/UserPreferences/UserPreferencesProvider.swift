@@ -14,7 +14,6 @@ class UserPreferencesProvider: StoreSubscriber, UserPreferencesProviderProtocol 
     private init() {}
 
     func subscribe() {
-
         store.subscribe(self) {
             $0.select {
                 $0.preferenceState

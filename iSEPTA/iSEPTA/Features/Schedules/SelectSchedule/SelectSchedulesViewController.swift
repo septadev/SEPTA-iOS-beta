@@ -37,7 +37,7 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
     let viewController: ViewController = .selectSchedules
     let buttonRow = 3
     var formIsComplete = false
-    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! { return store.state.currentTargetForScheduleActions() }
     let cellId = "singleStringCell"
     let buttonCellId = "buttonViewCell"
     var viewModel: SelectSchedulesViewModel!
@@ -64,7 +64,6 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
 
     override func viewDidAppear(_: Bool) {
         if let holidaySchedule = holidaySchedule {
-
             if holidaySchedule.holidayMessage() != nil {
                 UIAlert.presentHolidayAlertFrom(viewController: self, holidaySchedule: holidaySchedule)
             }
@@ -83,7 +82,6 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
     }
 
     func ViewSchedulesButtonTapped() {
-
         let action = PushViewController(viewController: .tripScheduleController, description: "Show Trip Schedule")
         store.dispatch(action)
     }
@@ -103,7 +101,6 @@ extension SelectSchedulesViewController: UITableViewDelegate, UITableViewDataSou
     }
 
     func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         if indexPath.section < buttonRow {
             let cellId = viewModel.cellIdForRow(indexPath.section)
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
@@ -119,7 +116,6 @@ extension SelectSchedulesViewController: UITableViewDelegate, UITableViewDataSou
     }
 
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         if indexPath.section < buttonRow {
             viewModel.rowSelected(indexPath.section)
 
@@ -143,7 +139,6 @@ extension SelectSchedulesViewController: UITableViewDelegate, UITableViewDataSou
     }
 
     func tableView(_: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-
         switch section {
         case 0: return 37
         case 1, 3: return 21
@@ -154,7 +149,6 @@ extension SelectSchedulesViewController: UITableViewDelegate, UITableViewDataSou
 }
 
 extension SelectSchedulesViewController: UpdateableFromViewModel {
-
     func updateActivityIndicator(animating _: Bool) {
     }
 
@@ -170,7 +164,6 @@ extension SelectSchedulesViewController: UpdateableFromViewModel {
 }
 
 extension SelectSchedulesViewController: SchedulesViewModelDelegate {
-
     func formIsComplete(_ isComplete: Bool) {
         formIsComplete = isComplete
         tableView.reloadData()

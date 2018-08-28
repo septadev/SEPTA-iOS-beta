@@ -11,7 +11,6 @@ import ReSwift
 import SeptaSchedule
 
 class NextToArriveScheduleDataProvider: BaseScheduleDataProvider {
-
     static let sharedInstance = NextToArriveScheduleDataProvider()
 
     init() {
@@ -32,6 +31,15 @@ class NextToArriveScheduleDataProvider: BaseScheduleDataProvider {
             retrieveAvailableRoutes(scheduleRequest: scheduleRequest)
         }
         return scheduleRequest.selectedRoute != nil
+    }
+
+    override func processSelectedRoute(scheduleRequest: ScheduleRequest) {
+        if store.state.nextToArriveState.scheduleState.scheduleRequest.transitMode != .rail {
+            let routes = store.state.nextToArriveState.scheduleState.scheduleData.availableRoutes
+            if routes.routes.count == 0 {
+                retrieveAvailableRoutes(scheduleRequest: scheduleRequest)
+            }
+        }
     }
 
     deinit {

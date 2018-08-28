@@ -14,6 +14,8 @@ class SelectStopViewController: UIViewController, StoreSubscriber, IdentifiableC
     typealias StoreSubscriberStateType = ScheduleStopEdit?
     let viewController: ViewController = .selectStopController
 
+    let sortOrderUserPreferenceKey = "sortOrderUserPreferenceKey"
+
     @IBOutlet var selectAddressRelativeStopViewModel: SelectAddressRelativeStopViewModel!
     @IBOutlet var selectAddressViewModel: SelectAddressViewModel!
     @IBOutlet var tableView: UITableView!
@@ -105,9 +107,16 @@ extension SelectStopViewController: UpdateableFromViewModel {
 }
 
 extension SelectStopViewController: SubscriberUnsubscriber {
-
     override func viewWillAppear(_: Bool) {
         subscribe()
+
+        if let preferredSortOrder = UserDefaults.standard.string(forKey: sortOrderUserPreferenceKey),
+            let sortOrder = SortOrder(rawValue: preferredSortOrder) {
+            stopsViewModel.sortOrder = sortOrder
+            DispatchQueue.main.async {
+                self.headerViewController?.activateButton(for: sortOrder)
+            }
+        }
     }
 
     func subscribe() {
@@ -136,6 +145,23 @@ extension SelectStopViewController: SubscriberUnsubscriber {
 }
 
 extension SelectStopViewController: SearchModalHeaderDelegate {
+    func sortAlphaTapped(direction: SortOrder) {
+        UserDefaults.standard.set(direction.rawValue, forKey: sortOrderUserPreferenceKey)
+        switch direction {
+        case .alphaAscending:
+            stopsViewModel.sortOrder = .alphaAscending
+        case .alphaDescending:
+            stopsViewModel.sortOrder = .alphaDescending
+        default:
+            stopsViewModel.sortOrder = .alphaAscending
+        }
+    }
+
+    func sortByStopOrderTapped() {
+        UserDefaults.standard.set(SortOrder.stopSequence.rawValue, forKey: sortOrderUserPreferenceKey)
+        stopsViewModel.sortOrder = .stopSequence
+    }
+
     func animatedLayoutNeeded(block: @escaping (() -> Void), completion: @escaping (() -> Void)) {
         UIView.animate(withDuration: 0.25, animations: {
             block()
@@ -151,7 +177,6 @@ extension SelectStopViewController: SearchModalHeaderDelegate {
     }
 
     func dismissModal() {
-
         let dismissAction = DismissModal(description: "Stop should be dismissed")
         store.dispatch(dismissAction)
     }

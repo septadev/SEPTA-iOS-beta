@@ -20,6 +20,7 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
     @IBOutlet var editFavoriteBarButtonItem: UIBarButtonItem!
     weak var infoHeaderView: UIView?
     @IBOutlet var createFavoriteBarButtonItem: UIBarButtonItem!
+    @IBOutlet var refreshBarButtonItem: UIBarButtonItem!
 
     @IBOutlet var upSwipeGestureRecognizer: UISwipeGestureRecognizer! {
         didSet {
@@ -55,7 +56,6 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
     }
 
     func configureScrollableTableView() {
-
         guard let tableView = nextToArriveInfoViewController?.tableView else { return }
         nextToArriveInfoTableScrollableToggle = ScrollableTableViewToggle()
         nextToArriveInfoTableScrollableToggle.tableView = tableView
@@ -63,11 +63,28 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
     }
 
     func configureNavigationItemTitle() {
-        if store.state.targetForScheduleActions() == .favorites {
+        if store.state.currentTargetForScheduleActions() == .favorites {
             nextToArriveFavoriteWatcher = FavoriteState_NextToArriveFavoriteWatcher()
             nextToArriveFavoriteWatcher?.delegate = self
         } else {
             navigationItem.title = store.state.nextToArriveState.scheduleState.scheduleRequest.transitMode.nextToArriveDetailTitle()
+        }
+    }
+
+    @IBAction func refreshButtonTapped(_: Any) {
+        guard let target = store.state.currentTargetForScheduleActions() else { return }
+
+        switch target {
+        case .nextToArrive:
+            let action = NextToArriveRefreshDataRequested(refreshUpdateRequested: true)
+            store.dispatch(action)
+        case .favorites:
+            guard var nextToArriveFavorite = store.state.favoritesState.nextToArriveFavorite else { return }
+            nextToArriveFavorite.refreshDataRequested = true
+            let favoriteAction = RequestFavoriteNextToArriveUpdate(favorite: nextToArriveFavorite, description: "User manually refreshed a favorite in Next to Arrive")
+            store.dispatch(favoriteAction)
+        default:
+            break
         }
     }
 
@@ -81,13 +98,9 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
         nextToArriveFavoritesController = NextToArriveFavoritesIconController()
         nextToArriveFavoritesController.createFavoriteBarButtonItem = createFavoriteBarButtonItem
         nextToArriveFavoritesController.editFavoriteBarButtonItem = editFavoriteBarButtonItem
+        nextToArriveFavoritesController.refreshBarButtonItem = refreshBarButtonItem
         nextToArriveFavoritesController.navigationItem = navigationItem
         nextToArriveFavoritesController.setUpTargets()
-    }
-
-    override func didMove(toParentViewController parent: UIViewController?) {
-        super.didMove(toParentViewController: parent)
-        backButtonPopped(toParentViewController: parent)
     }
 
     @objc func toggleMapHeight() {
@@ -106,7 +119,6 @@ class NextToArriveDetailViewController: UIViewController, IdentifiableController
     }
 
     @IBAction func swipeAction(_: UISwipeGestureRecognizer) {
-
         toggleMapHeight()
     }
 

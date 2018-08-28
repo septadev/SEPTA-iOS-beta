@@ -28,7 +28,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet var routeIcon: UIImageView! {
         didSet {
-            routeIcon.image = route.iconForRoute(transitMode: transitMode)
+            routeIcon.image = RouteIcon.get(for: route.routeId, transitMode: transitMode)
         }
     }
 
@@ -127,7 +127,6 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-
         guard let scheduleType = mapSegmentsToScheduleType(segmentedControl: sender) else { return }
         dispatchScheduleTypeAction(scheduleType)
     }
@@ -136,7 +135,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         return scheduleTypeSegments[segmentedControl.selectedSegmentIndex]
     }
 
-    var targetForScheduleAction: TargetForScheduleAction! { return store.state.targetForScheduleActions() }
+    var targetForScheduleAction: TargetForScheduleAction! { return store.state.currentTargetForScheduleActions() }
     func dispatchScheduleTypeAction(_ scheduleType: ScheduleType) {
         store.dispatch(ClearTrips(targetForScheduleAction: targetForScheduleAction))
 
@@ -163,16 +162,9 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         septaAlertsViewController.setTransitMode(transitMode, route: route)
     }
 
-    override func didMove(toParentViewController parent: UIViewController?) {
-        super.didMove(toParentViewController: parent)
-        backButtonPopped(toParentViewController: parent)
-    }
-
-    override func viewDidLayoutSubviews() {
-        if !septaAlertsViewController.hasAlerts {
-            scheduleTypeTopWhenAlerts.isActive = false
-            scheduleTypeTopWhenNoAlerts.isActive = true
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
     }
 
     func configureSegementedControl() {
@@ -180,7 +172,6 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         scheduleTypeSegments = transitMode.scheduleTypeSegments()
         let reversedSegments = scheduleTypeSegments.reversed()
         for scheduleType in reversedSegments {
-
             segmentedControl.insertSegment(withTitle: scheduleType.stringForSegments(), at: 0, animated: false)
         }
         segmentedControl.selectedSegmentIndex = 0

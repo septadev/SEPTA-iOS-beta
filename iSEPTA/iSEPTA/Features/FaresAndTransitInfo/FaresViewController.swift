@@ -17,7 +17,6 @@ class FaresViewController: UIViewController, IdentifiableController {
     }
 
     @IBAction func moreAboutSeptaFaresTapped(_: Any) {
-
         let moreAction = MakeSeptaConnection(septaConnection: .fares)
         store.dispatch(moreAction)
     }
@@ -25,7 +24,6 @@ class FaresViewController: UIViewController, IdentifiableController {
     @IBOutlet var moreAboutSEPTAFaresButton: UIView!
 
     @IBOutlet var faresWhiteInsetView: UIView!
-    @IBOutlet var passPerksInsetView: UIView!
     var faresViewModel: FaresViewModel!
 
     override func viewDidLoad() {
@@ -34,17 +32,10 @@ class FaresViewController: UIViewController, IdentifiableController {
         faresViewModel = FaresViewModel()
         loadFaresStackView()
         UIView.addSurroundShadow(toView: faresWhiteInsetView, withCornerRadius: 0)
-        UIView.addSurroundShadow(toView: passPerksInsetView, withCornerRadius: 0)
-    }
-
-    @IBAction func moreAboutPassPerksTapped(_: Any) {
-        let moreAction = MakeSeptaConnection(septaConnection: .passPerks)
-        store.dispatch(moreAction)
     }
 
     func loadFaresStackView() {
         for item in faresViewModel.items {
-
             guard let paymentView = Bundle.main.loadNibNamed("FarePaymentModeView", owner: nil, options: nil)?.first as? FarePaymentModeView else { continue }
             paymentView.icon.image = UIImage(named: item.imageName)
             paymentView.title.text = item.title

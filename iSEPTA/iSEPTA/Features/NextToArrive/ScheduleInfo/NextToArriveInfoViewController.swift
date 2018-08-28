@@ -34,7 +34,6 @@ class NextToArriveInfoViewController: UIViewController {
     var viewModel: NextToArriveInfoViewModel!
 
     override func viewDidLoad() {
-
         nextToArriveDetailViewController?.upSwipeGestureRecognizer = upSwipeGestureRecognizer
         nextToArriveDetailViewController?.downSwipeGestureRecognizer = downSwipeGestureRecognizer
         nextToArriveDetailViewController?.infoHeaderView = headerView
@@ -98,7 +97,6 @@ extension NextToArriveInfoViewController { // refresh timer
     }
 
     func initTimer() {
-
         timer = Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(oneMinuteTimerFired(timer:)), userInfo: nil, repeats: true)
     }
 
@@ -108,9 +106,8 @@ extension NextToArriveInfoViewController { // refresh timer
     }
 
     @objc func oneMinuteTimerFired(timer _: Timer) {
-
         millisecondsToDelayTableReload = 1000
-        guard let target = store.state.targetForScheduleActions() else { return }
+        guard let target = store.state.currentTargetForScheduleActions() else { return }
 
         switch target {
         case .nextToArrive:
@@ -130,7 +127,6 @@ extension NextToArriveInfoViewController { // refresh timer
 }
 
 extension NextToArriveInfoViewController: UITableViewDataSource, UITableViewDelegate {
-
     func numberOfSections(in _: UITableView) -> Int {
         return viewModel.numberOfSections()
     }
@@ -165,7 +161,6 @@ extension NextToArriveInfoViewController: UITableViewDataSource, UITableViewDele
 
 extension NextToArriveInfoViewController: UpdateableFromViewModel {
     func viewModelUpdated() {
-
         activityIndicator.startAnimating()
         pendingRequestWorkItem?.cancel()
 

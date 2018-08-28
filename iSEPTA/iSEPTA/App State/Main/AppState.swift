@@ -16,9 +16,11 @@ struct AppState: StateType {
     let tripDetailState: TripDetailState
     let databaseState: DatabaseState
     let moreState: MoreState
+    let transitViewState: TransitViewState
     let databaseUpdateState: DatabaseUpdateState
+    let notificationState: NotificationState
 
-    init(navigationState: NavigationState, scheduleState: ScheduleState, preferenceState: UserPreferenceState, alertState: AlertState, addressLookupState: AddressLookupState, locationState: LocationState, favoriteState: FavoritesState, nextToArriveState: NextToArriveState, tripDetailState: TripDetailState, databaseState: DatabaseState, moreState: MoreState, databaseUpdateState: DatabaseUpdateState) {
+    init(navigationState: NavigationState, scheduleState: ScheduleState, preferenceState: UserPreferenceState, alertState: AlertState, addressLookupState: AddressLookupState, locationState: LocationState, favoriteState: FavoritesState, nextToArriveState: NextToArriveState, tripDetailState: TripDetailState, databaseState: DatabaseState, moreState: MoreState, transitViewState: TransitViewState, databaseUpdateState: DatabaseUpdateState, notificationState: NotificationState) {
         self.navigationState = navigationState
         self.scheduleState = scheduleState
         self.preferenceState = preferenceState
@@ -30,7 +32,9 @@ struct AppState: StateType {
         self.tripDetailState = tripDetailState
         self.databaseState = databaseState
         self.moreState = moreState
+        self.transitViewState = transitViewState
         self.databaseUpdateState = databaseUpdateState
+        self.notificationState = notificationState
     }
 }
 
@@ -70,8 +74,14 @@ func == (lhs: AppState, rhs: AppState) -> Bool {
 
     areEqual = lhs.moreState == rhs.moreState
     guard areEqual else { return false }
-    
+
+    areEqual = lhs.transitViewState == rhs.transitViewState
+    guard areEqual else { return false }
+
     areEqual = lhs.databaseUpdateState == rhs.databaseUpdateState
+    guard areEqual else { return false }
+
+    areEqual = lhs.notificationState == rhs.notificationState
     guard areEqual else { return false }
 
     return areEqual

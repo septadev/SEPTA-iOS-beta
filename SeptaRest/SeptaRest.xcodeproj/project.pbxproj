@@ -13,14 +13,12 @@
 		58490E171F55D638007DBCA1 /* Arrivals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E031F55D636007DBCA1 /* Arrivals.swift */; };
 		58490E181F55D638007DBCA1 /* RestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E041F55D636007DBCA1 /* RestResponse.swift */; };
 		58490E191F55D638007DBCA1 /* TransitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E051F55D636007DBCA1 /* TransitType.swift */; };
-		58490E1A1F55D638007DBCA1 /* TransitRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E061F55D636007DBCA1 /* TransitRoute.swift */; };
 		58490E1B1F55D638007DBCA1 /* TrainRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E071F55D636007DBCA1 /* TrainRoute.swift */; };
 		58490E1C1F55D638007DBCA1 /* HTTPRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E081F55D636007DBCA1 /* HTTPRouter.swift */; };
 		58490E1D1F55D638007DBCA1 /* SimpleRestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E091F55D637007DBCA1 /* SimpleRestClient.swift */; };
 		58490E1E1F55D638007DBCA1 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E0A1F55D637007DBCA1 /* Alerts.swift */; };
 		58490E1F1F55D638007DBCA1 /* TrainRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E0B1F55D637007DBCA1 /* TrainRoutes.swift */; };
 		58490E201F55D638007DBCA1 /* RealTimeArrivals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E0C1F55D637007DBCA1 /* RealTimeArrivals.swift */; };
-		58490E211F55D638007DBCA1 /* TransitRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E0D1F55D637007DBCA1 /* TransitRoutes.swift */; };
 		58490E221F55D638007DBCA1 /* AlertDetails_Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E0E1F55D637007DBCA1 /* AlertDetails_Alert.swift */; };
 		58490E231F55D638007DBCA1 /* SEPTAApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E0F1F55D637007DBCA1 /* SEPTAApiClient.swift */; };
 		58490E241F55D638007DBCA1 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58490E101F55D637007DBCA1 /* Alert.swift */; };
@@ -74,14 +72,12 @@
 		58490E031F55D636007DBCA1 /* Arrivals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arrivals.swift; sourceTree = "<group>"; };
 		58490E041F55D636007DBCA1 /* RestResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestResponse.swift; sourceTree = "<group>"; };
 		58490E051F55D636007DBCA1 /* TransitType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitType.swift; sourceTree = "<group>"; };
-		58490E061F55D636007DBCA1 /* TransitRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitRoute.swift; sourceTree = "<group>"; };
 		58490E071F55D636007DBCA1 /* TrainRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainRoute.swift; sourceTree = "<group>"; };
 		58490E081F55D636007DBCA1 /* HTTPRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRouter.swift; sourceTree = "<group>"; };
 		58490E091F55D637007DBCA1 /* SimpleRestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleRestClient.swift; sourceTree = "<group>"; };
 		58490E0A1F55D637007DBCA1 /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		58490E0B1F55D637007DBCA1 /* TrainRoutes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainRoutes.swift; sourceTree = "<group>"; };
 		58490E0C1F55D637007DBCA1 /* RealTimeArrivals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealTimeArrivals.swift; sourceTree = "<group>"; };
-		58490E0D1F55D637007DBCA1 /* TransitRoutes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitRoutes.swift; sourceTree = "<group>"; };
 		58490E0E1F55D637007DBCA1 /* AlertDetails_Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertDetails_Alert.swift; sourceTree = "<group>"; };
 		58490E0F1F55D637007DBCA1 /* SEPTAApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SEPTAApiClient.swift; sourceTree = "<group>"; };
 		58490E101F55D637007DBCA1 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
@@ -164,8 +160,6 @@
 				58490E091F55D637007DBCA1 /* SimpleRestClient.swift */,
 				58490E071F55D636007DBCA1 /* TrainRoute.swift */,
 				58490E0B1F55D637007DBCA1 /* TrainRoutes.swift */,
-				58490E061F55D636007DBCA1 /* TransitRoute.swift */,
-				58490E0D1F55D637007DBCA1 /* TransitRoutes.swift */,
 				58490E051F55D636007DBCA1 /* TransitType.swift */,
 				58490DEC1F55D5D1007DBCA1 /* SeptaRest.h */,
 				58490DED1F55D5D1007DBCA1 /* Info.plist */,
@@ -307,10 +301,8 @@
 				58490E291F55D638007DBCA1 /* ErrorResult.swift in Sources */,
 				585CEBE81F8C132A006DCC67 /* RealtimeBusArrivalsDetail.swift in Sources */,
 				58490E181F55D638007DBCA1 /* RestResponse.swift in Sources */,
-				58490E1A1F55D638007DBCA1 /* TransitRoute.swift in Sources */,
 				586852D81F8D247A0081C1CC /* RealTimeArrivalDetail.swift in Sources */,
 				58490E1E1F55D638007DBCA1 /* Alerts.swift in Sources */,
-				58490E211F55D638007DBCA1 /* TransitRoutes.swift in Sources */,
 				58490E281F55D638007DBCA1 /* Arrival.swift in Sources */,
 				58490E1C1F55D638007DBCA1 /* HTTPRouter.swift in Sources */,
 				58490E241F55D638007DBCA1 /* Alert.swift in Sources */,

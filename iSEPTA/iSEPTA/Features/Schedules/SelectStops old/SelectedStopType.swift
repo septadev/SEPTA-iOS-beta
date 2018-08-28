@@ -3,7 +3,6 @@
 import Foundation
 
 enum SelectedStopType {
-
     case noStartSelected
     case noDestinationSelected
     case startSelected

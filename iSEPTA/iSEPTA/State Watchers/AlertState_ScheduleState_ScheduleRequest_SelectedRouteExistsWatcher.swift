@@ -1,15 +1,14 @@
 
 // Septa. 2017
 
-import SeptaSchedule
 import ReSwift
+import SeptaSchedule
 
 protocol AlertState_ScheduleState_ScheduleRequest_SelectedRouteExistsWatcherDelegate: AnyObject {
     func alertState_ScheduleState_ScheduleRequest_SelectedRouteExistsUpdated(bool: Bool)
 }
 
 class AlertState_ScheduleState_ScheduleRequest_SelectedRouteExistsWatcher: BaseWatcher, StoreSubscriber {
-
     typealias StoreSubscriberStateType = Bool
 
     weak var delegate: AlertState_ScheduleState_ScheduleRequest_SelectedRouteExistsWatcherDelegate? {

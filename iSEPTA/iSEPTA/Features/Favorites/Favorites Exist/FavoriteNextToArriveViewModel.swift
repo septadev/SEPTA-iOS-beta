@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import UIKit
 import SeptaSchedule
+import UIKit
 
 class FavoriteNextToArriveViewModel: BaseNextToArriveInfoViewModel {
     var favorite: Favorite
@@ -40,9 +40,13 @@ class FavoriteNextToArriveViewModel: BaseNextToArriveInfoViewModel {
     func viewTitle() -> String {
         return scheduleRequest().transitMode.nextToArriveInfoDetailTitle()
     }
-    
+
+    override func tripDetailIsAvailable(forTrip _: NextToArriveTrip) -> Bool {
+        return false
+    }
+
     func ntaUnavailable() -> Bool {
-        return self.groupedTripData.count < 1
+        return groupedTripData.count < 1
     }
 
     override func subscribe() {

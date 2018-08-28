@@ -6,9 +6,9 @@
 //  Copyright © 2017 Mark Broski. All rights reserved.
 //
 
+import Crashlytics
 import Foundation
 import UIKit
-import Crashlytics
 
 class MoreViewController: UIViewController, IdentifiableController, UITableViewDelegate, UITableViewDataSource {
     let cellId = "moreCell"
@@ -39,7 +39,7 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return 7
+        return 8
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,18 +57,23 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
             let mapConnection = MakeSeptaConnection(septaConnection: .map)
             store.dispatch(mapConnection)
         case 2:
-            let mapConnection = MakeSeptaConnection(septaConnection: .transitView)
-            store.dispatch(mapConnection)
+            let pushAction = PushViewController(viewController: .transitViewSelectionViewController, description: "Will view TransitView")
+            store.dispatch(pushAction)
         case 3:
             let mapConnection = MakeSeptaConnection(septaConnection: .trainView)
             store.dispatch(mapConnection)
+        //        case 4:
+        //            let pushAction = PushViewController(viewController: .managePushNotficationsController, description: "Push Notification Preferences")
+        //            store.dispatch(pushAction)
         case 4:
-            let commentConnection = MakeSeptaConnection(septaConnection: .events)
-            store.dispatch(commentConnection)
+            let pushAction = PushViewController(viewController: .perksViewController, description: "Will view pass perks")
+            store.dispatch(pushAction)
         case 5:
+            openElerts()
+        case 6:
             let pushAction = PushViewController(viewController: .contactViewController, description: "Will View How to Contact SEPTA")
             store.dispatch(pushAction)
-        case 6:
+        case 7:
             let pushAction = PushViewController(viewController: .aboutViewController, description: "About the Septa App")
             store.dispatch(pushAction)
         default:
@@ -79,12 +84,23 @@ class MoreViewController: UIViewController, IdentifiableController, UITableViewD
             tableView.deselectRow(at: indexPath, animated: true)
         })
     }
-    
-    @objc func imageTap(_ sender: UITapGestureRecognizer) {
+
+    @objc func imageTap(_: UITapGestureRecognizer) {
         if tapCrashCount == 10 {
             Crashlytics.sharedInstance().crash()
         } else {
             tapCrashCount += 1
+        }
+    }
+
+    private func openElerts() {
+        if let urlScheme = URL(string: "SEPTA://"),
+            let appStoreURL = URL(string: "https://itunes.apple.com/us/app/septa-transit-watch/id1231139910") {
+            if UIApplication.shared.canOpenURL(urlScheme) {
+                UIApplication.shared.open(urlScheme, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
+            }
         }
     }
 }

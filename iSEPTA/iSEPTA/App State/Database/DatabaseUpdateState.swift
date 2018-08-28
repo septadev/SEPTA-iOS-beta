@@ -19,7 +19,7 @@ enum DatabaseUpdateStatus {
 struct DatabaseUpdateState {
     let status: DatabaseUpdateStatus
     let databaseUpdate: DatabaseUpdate?
-    
+
     init(status: DatabaseUpdateStatus, databaseUpdate: DatabaseUpdate?) {
         self.status = status
         self.databaseUpdate = databaseUpdate
@@ -29,7 +29,7 @@ struct DatabaseUpdateState {
 extension DatabaseUpdateStatus: Equatable {}
 func == (lhs: DatabaseUpdateState, rhs: DatabaseUpdateState) -> Bool {
     var areEqual = true
-    
+
     areEqual = lhs.status == rhs.status
     guard areEqual else { return false }
 
