@@ -103,6 +103,7 @@ struct UserPreferencesReducer {
             userPreferenceState.pushNotificationPreferenceState.synchronizationStatus = .pendingSave
         }
         userPreferenceState.pushNotificationPreferenceState.firebaseToken = action.token
+        userPreferenceState.pushNotificationPreferenceState.postUserNotificationPreferences.postNow = true
         return userPreferenceState
     }
 
