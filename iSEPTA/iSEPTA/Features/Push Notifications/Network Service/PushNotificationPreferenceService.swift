@@ -10,6 +10,12 @@ import UIKit
 
 struct PushNotificationPreferenceService {
     static func post(state: PushNotificationPreferenceState, showSuccess: Bool) {
+        guard state.firebaseToken != ""  else {
+            showAlert(title: "Unable to register for push notifications")
+            store.dispatch(PushNotificationPreferenceSynchronizationFail())
+            return
+        }
+        
         let body = postBody(state: state)
 
         guard let baseUrl = Bundle.main.object(forInfoDictionaryKey: "septaBaseUrl") as? String,
@@ -33,23 +39,24 @@ struct PushNotificationPreferenceService {
             }
             if error != nil {
                 DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "There was an error saving push notification preferences.", message: nil, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    alert.show()
-                    store.dispatch(PushNotificationPreferenceSynchronizationFail())
+                    showAlert(title: "There was an error saving push notification preferences.")
                 }
             } else {
                 DispatchQueue.main.async {
                     if showSuccess {
-                        let alert = UIAlertController(title: "Push notification preferences saved.", message: nil, preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                        alert.show()
+                        showAlert(title: "Push notification preferences saved.")
                     }
                     PushNotificationKeepAlive.preferencesSaved()
                     store.dispatch(PushNotificationPreferenceSynchronizationSuccess())
                 }
             }
         }.resume()
+    }
+    
+    private static func showAlert(title: String) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.show()
     }
 
     private static func buildRequest(url: URL, key: String, body: Data) -> URLRequest {
