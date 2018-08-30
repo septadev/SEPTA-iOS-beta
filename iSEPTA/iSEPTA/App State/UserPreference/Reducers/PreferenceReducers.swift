@@ -179,6 +179,10 @@ struct UserPreferencesReducer {
 
     static func reduceRemovePushNotificationRoute(action: RemovePushNotificationRoute, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
+        if state.pushNotificationPreferenceState.synchronizationStatus == .upToDate {
+            userPreferenceState.lastSavedPushPreferenceState = state.pushNotificationPreferenceState
+            userPreferenceState.pushNotificationPreferenceState.synchronizationStatus = .pendingSave
+        }
         var routeIds = userPreferenceState.pushNotificationPreferenceState.routeIds
         for route in action.routes {
             if let index = routeIds.indexOfRoute(route: route) {

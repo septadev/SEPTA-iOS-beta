@@ -62,6 +62,12 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+
+        if saveButton.isEnabled {
+            // Discard pending changes
+            store.dispatch(PushNotificationPreferenceSynchronizationFail())
+        }
+
         isCurrentlyEditing(false)
         store.unsubscribe(self)
     }
@@ -141,9 +147,7 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
 
     override func tableView(_: UITableView, commit _: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         let routeToDelete = viewModel.routes[indexPath.row]
-        rowsToDelete.append(routeToDelete)
-        viewModel.routes.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        store.dispatch(RemovePushNotificationRoute(routes: [routeToDelete], viewController: self))
     }
 
     override func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {

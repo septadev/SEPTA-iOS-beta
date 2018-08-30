@@ -46,7 +46,7 @@ class ManagePushNotificationsViewController: UITableViewController, Identifiable
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillDisappear(animated)
         store.unsubscribe(self)
     }
 

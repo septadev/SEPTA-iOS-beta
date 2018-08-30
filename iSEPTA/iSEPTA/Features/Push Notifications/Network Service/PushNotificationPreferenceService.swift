@@ -10,12 +10,12 @@ import UIKit
 
 struct PushNotificationPreferenceService {
     static func post(state: PushNotificationPreferenceState, showSuccess: Bool) {
-        guard state.firebaseToken != ""  else {
+        guard state.firebaseToken != "" else {
             showAlert(title: "Unable to register for push notifications")
             store.dispatch(PushNotificationPreferenceSynchronizationFail())
             return
         }
-        
+
         let body = postBody(state: state)
 
         guard let baseUrl = Bundle.main.object(forInfoDictionaryKey: "septaBaseUrl") as? String,
@@ -52,7 +52,7 @@ struct PushNotificationPreferenceService {
             }
         }.resume()
     }
-    
+
     private static func showAlert(title: String) {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
