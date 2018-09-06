@@ -238,13 +238,7 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
         }
     }
 
-    var vehicleAnnotationsAdded = [TransitViewVehicleAnnotation]()
     private var vehiclesToAdd = [TransitViewVehicleLocation]()
-
-    private func clearExistingVehicleLocations() {
-        mapView.removeAnnotations(vehicleAnnotationsAdded)
-        vehicleAnnotationsAdded.removeAll()
-    }
 
     private func drawVehicleLocations() {
         for vehicle in vehiclesToAdd {
@@ -274,7 +268,6 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
         }
 
         mapView.addAnnotation(annotation)
-        vehicleAnnotationsAdded.append(annotation)
     }
 
     private func addOverlaysToMap() {
@@ -429,25 +422,12 @@ extension TransitViewMapViewController: TransitRouteCardDelegate {
     }
 
     func deleteCardTapped(routeId: String) {
-        if let routeIndex = drawnRoutes.index(of: routeId) {
-            for overlay in mapView.overlays {
-                if let overlay = overlay as? RouteOverlay, let overlayRouteId = overlay.routeId {
-                    if overlayRouteId == routeId {
-                        mapView.remove(overlay)
-                    }
+        for annotation in mapView.annotations {
+            if let annotation = annotation as? TransitViewVehicleAnnotation {
+                if annotation.location.routeId == routeId {
+                    mapView.removeAnnotation(annotation)
                 }
             }
-            for annotation in mapView.annotations {
-                if let annotation = annotation as? TransitViewVehicleAnnotation {
-                    if annotation.location.routeId == routeId {
-                        mapView.removeAnnotation(annotation)
-                        if let addedAnnotationIndex = vehicleAnnotationsAdded.index(of: annotation) {
-                            vehicleAnnotationsAdded.remove(at: addedAnnotationIndex)
-                        }
-                    }
-                }
-            }
-            drawnRoutes.remove(at: routeIndex)
         }
     }
 }
@@ -462,12 +442,19 @@ extension TransitViewMapViewController: TransitViewAnnotationViewDelegate {
         // Set new active route ID
         activateRouteById(routeId: routeId)
 
-        // Clear old annotations
-        let previouslyAddedAnnotations = vehicleAnnotationsAdded.map { $0.location }
-        clearExistingVehicleLocations()
+        // Get a list of vehicle annotations to be redrawn
+        var locations: [TransitViewVehicleLocation] = []
+        for mapAnnotation in mapView.annotations {
+            if let mapAnnotation = mapAnnotation as? TransitViewVehicleAnnotation {
+                locations.append(mapAnnotation.location)
+            }
+        }
+
+        // Clear the existing annotations
+        mapView.removeAnnotations(mapView.annotations)
 
         // Add annotations back
-        addVehicleAnnotationsToMap(vehicles: previouslyAddedAnnotations)
+        addVehicleAnnotationsToMap(vehicles: locations)
     }
 }
 
