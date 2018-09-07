@@ -70,7 +70,6 @@
 		0EFEAD052110D84600F3A368 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEACFE2110D84600F3A368 /* FirebaseCoreDiagnostics.framework */; };
 		0EFEAD082110D86700F3A368 /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEAD062110D86700F3A368 /* Protobuf.framework */; };
 		0EFEAD092110D86700F3A368 /* FirebaseMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEAD072110D86700F3A368 /* FirebaseMessaging.framework */; };
-		0EFEAD0D2110DC1700F3A368 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0EFEAD0C2110DC1700F3A368 /* GoogleService-Info.plist */; };
 		5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */; };
 		580128061F6B1D13006B6DB8 /* FavoriteTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580128031F6B1D13006B6DB8 /* FavoriteTripCell.xib */; };
 		580128081F6B26D2006B6DB8 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580128071F6B26D2006B6DB8 /* RoundedShadowView.swift */; };
@@ -818,6 +817,8 @@
 		0EAE68C6211A201B0092C104 /* NotificationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationProvider.swift; sourceTree = "<group>"; };
 		0EB1942021090AA800077C99 /* FavoriteTransitViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTransitViewCell.swift; sourceTree = "<group>"; };
 		0EB1942121090AA800077C99 /* FavoriteTransitViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTransitViewCell.xib; sourceTree = "<group>"; };
+		0EC0CF992142BDF9003C0D5D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0EC0CF9A2142BE25003C0D5D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0EE134C0212DD554005C2675 /* PushNotificationPreferenceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationPreferenceProvider.swift; sourceTree = "<group>"; };
 		0EE134C3212DF243005C2675 /* PushNotificationPreferenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationPreferenceService.swift; sourceTree = "<group>"; };
 		0EE134C5212DF26D005C2675 /* PostBodyObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBodyObjects.swift; sourceTree = "<group>"; };
@@ -833,7 +834,6 @@
 		0EFEAD072110D86700F3A368 /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseMessaging.framework; sourceTree = "<group>"; };
 		0EFEAD0A2110D96500F3A368 /* Firebase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
 		0EFEAD0B2110D99900F3A368 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
-		0EFEAD0C2110DC1700F3A368 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0EFEAD0E2110DE1000F3A368 /* SEPTA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SEPTA.entitlements; sourceTree = "<group>"; };
 		5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectedTableViewCell.swift; sourceTree = "<group>"; };
 		580128031F6B1D13006B6DB8 /* FavoriteTripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteTripCell.xib; sourceTree = "<group>"; };
@@ -1524,8 +1524,8 @@
 		0E2777F6211238EB00507CFE /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				0E2777F9211238F900507CFE /* Release.xcconfig */,
-				0E2777FA2112390600507CFE /* Debug.xcconfig */,
+				0EC0CF982142BD9D003C0D5D /* Debug */,
+				0EC0CF972142BD8D003C0D5D /* Release */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -1624,6 +1624,24 @@
 				0EAE68C4211A1D320092C104 /* NotificationReducer.swift */,
 			);
 			path = Notification;
+			sourceTree = "<group>";
+		};
+		0EC0CF972142BD8D003C0D5D /* Release */ = {
+			isa = PBXGroup;
+			children = (
+				0E2777F9211238F900507CFE /* Release.xcconfig */,
+				0EC0CF9A2142BE25003C0D5D /* GoogleService-Info.plist */,
+			);
+			path = Release;
+			sourceTree = "<group>";
+		};
+		0EC0CF982142BD9D003C0D5D /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				0E2777FA2112390600507CFE /* Debug.xcconfig */,
+				0EC0CF992142BDF9003C0D5D /* GoogleService-Info.plist */,
+			);
+			path = Debug;
 			sourceTree = "<group>";
 		};
 		0EE134C2212DF200005C2675 /* Network Service */ = {
@@ -2105,7 +2123,6 @@
 			children = (
 				0EFEAD0B2110D99900F3A368 /* module.modulemap */,
 				0EFEAD0A2110D96500F3A368 /* Firebase.h */,
-				0EFEAD0C2110DC1700F3A368 /* GoogleService-Info.plist */,
 				58C181FE1F34C557002748E9 /* Storyboards.swift */,
 				582F4EB41F33B1120062A546 /* Main.storyboard */,
 				582F4EB61F33B1120062A546 /* DatabaseStateWatcher.swift */,
@@ -3329,6 +3346,7 @@
 			buildPhases = (
 				58D9C3EC1F3335BB002BE2E8 /* Sources */,
 				58D9C3ED1F3335BB002BE2E8 /* Frameworks */,
+				0EC0CF9B2142BE6C003C0D5D /* Setup Firebase Environment GoogleService-Info.plist */,
 				58D9C3EE1F3335BB002BE2E8 /* Resources */,
 				585F585A1F3377EF00D3ED6C /* Copy Carthage Frameworks */,
 				58552F9B1F335272008C1886 /* CopyFiles */,
@@ -3491,7 +3509,6 @@
 				677E054320727C9D00B16C09 /* 105.kml in Resources */,
 				671609071F67671F00941D2C /* TripView.xib in Resources */,
 				677E04F220727C9D00B16C09 /* 67.kml in Resources */,
-				0EFEAD0D2110DC1700F3A368 /* GoogleService-Info.plist in Resources */,
 				671609091F676F1300941D2C /* ConnectionView.xib in Resources */,
 				677E050220727C9D00B16C09 /* 1.kml in Resources */,
 				677E04BD20727C9D00B16C09 /* 5.kml in Resources */,
@@ -3700,6 +3717,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0EC0CF9B2142BE6C003C0D5D /* Setup Firebase Environment GoogleService-Info.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Setup Firebase Environment GoogleService-Info.plist";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Name of the resource we're selectively copying\nGOOGLESERVICE_INFO_PLIST=GoogleService-Info.plist\n\n# Get references to dev and prod versions of the GoogleService-Info.plist\n# NOTE: These should only live on the file system and should NOT be part of the target (since we'll be adding them to the target manually)\nGOOGLESERVICE_INFO_DEV=${PROJECT_DIR}/Config/Debug/${GOOGLESERVICE_INFO_PLIST}\nGOOGLESERVICE_INFO_PROD=${PROJECT_DIR}/Config/Release/${GOOGLESERVICE_INFO_PLIST}\n\n# Make sure the dev version of GoogleService-Info.plist exists\necho \"Looking for ${GOOGLESERVICE_INFO_PLIST} in ${GOOGLESERVICE_INFO_DEV}\"\nif [ ! -f $GOOGLESERVICE_INFO_DEV ]\nthen\necho \"No Debug GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\nexit 1\nfi\n\n# Make sure the prod version of GoogleService-Info.plist exists\necho \"Looking for ${GOOGLESERVICE_INFO_PLIST} in ${GOOGLESERVICE_INFO_PROD}\"\nif [ ! -f $GOOGLESERVICE_INFO_PROD ]\nthen\necho \"No Release GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\nexit 1\nfi\n\n# Get a reference to the destination location for the GoogleService-Info.plist\nPLIST_DESTINATION=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\necho \"Will copy ${GOOGLESERVICE_INFO_PLIST} to final destination: ${PLIST_DESTINATION}\"\n\n# Copy over the prod GoogleService-Info.plist for Release builds\nif [ \"${CONFIGURATION}\" == \"Release\" ]\nthen\necho \"Using ${GOOGLESERVICE_INFO_PROD}\"\ncp \"${GOOGLESERVICE_INFO_PROD}\" \"${PLIST_DESTINATION}\"\nelse\necho \"Using ${GOOGLESERVICE_INFO_DEV}\"\ncp \"${GOOGLESERVICE_INFO_DEV}\" \"${PLIST_DESTINATION}\"\nfi";
+		};
 		5803C357210660B800BFAE7A /* Swift Format */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4443,7 +4474,7 @@
 				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA.beta;
+				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
 				PRODUCT_MODULE_NAME = Septa;
 				PRODUCT_NAME = SEPTA;
 				PROVISIONING_PROFILE = "";
