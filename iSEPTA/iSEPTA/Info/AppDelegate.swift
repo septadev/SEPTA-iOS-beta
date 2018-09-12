@@ -43,8 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             processNotificationTap(userInfo: userInfo)
         }
 
-        PushNotificationKeepAlive.appLaunched()
-
         // For faking Notifications
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
 //
@@ -70,8 +68,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         databaseUpdateManager.appLaunched(coldStart: false)
         let inAppReview = InAppReview()
         inAppReview.appLaunched()
-
-        PushNotificationKeepAlive.appLaunched()
 
         let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: false)
         store.dispatch(action)

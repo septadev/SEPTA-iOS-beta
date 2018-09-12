@@ -16,7 +16,7 @@ import Foundation
 struct PushNotificationKeepAlive {
     private static let pushNotificationsLastSavedDateKey = "pushNotificationsLastSavedDateKey"
 
-    static func appLaunched() {
+    static func post() {
         if let lastSave = UserDefaults.standard.object(forKey: pushNotificationsLastSavedDateKey) as? Date {
             let calendar = Calendar.current
             let componentFlags = Set<Calendar.Component>([.day])

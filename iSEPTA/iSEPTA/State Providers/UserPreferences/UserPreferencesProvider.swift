@@ -57,6 +57,7 @@ class UserPreferencesProvider: StoreSubscriber, UserPreferencesProviderProtocol 
         dispatchPreferencesRetrieved()
         dispatchStartupNavigationController()
         dispatchStartupTransitMode()
+        PushNotificationKeepAlive.post()
     }
 
     func dispatchPreferencesRetrieved() {
