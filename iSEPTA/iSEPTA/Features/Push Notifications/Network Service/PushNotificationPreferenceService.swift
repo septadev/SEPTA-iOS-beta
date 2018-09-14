@@ -11,8 +11,6 @@ import UIKit
 struct PushNotificationPreferenceService {
     static func post(state: PushNotificationPreferenceState, showSuccess: Bool) {
         guard state.firebaseToken != "" else {
-            showAlert(title: "Unable to register for push notifications")
-            store.dispatch(PushNotificationPreferenceSynchronizationFail())
             return
         }
 

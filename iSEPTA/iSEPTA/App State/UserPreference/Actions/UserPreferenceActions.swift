@@ -113,7 +113,7 @@ struct UpdatePushNotificationRoute: UserPreferencesAction, PushNotificationAutho
 
 struct ToggleAllPushNotificationRoutes: UserPreferencesAction {
     var boolValue: Bool
-    let description = "Disabling all push notification Routes"
+    let description = "Toggling all push notification Routes"
 }
 
 struct PostPushNotificationPreferences: UserPreferencesAction, PushNotificationAuthorizatonRequired {

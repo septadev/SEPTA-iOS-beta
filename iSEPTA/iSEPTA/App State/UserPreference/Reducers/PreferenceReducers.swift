@@ -64,7 +64,13 @@ struct UserPreferencesReducer {
     }
 
     static func reducePreferencesRetrievedAction(action: PreferencesRetrievedAction, state _: UserPreferenceState) -> UserPreferenceState {
-        return action.userPreferenceState
+        var newState = action.userPreferenceState
+        // Sometimes a Firebase Token comes in before defaults are loaded. If so, preserve it.
+        let existingToken = store.state.preferenceState.pushNotificationPreferenceState.firebaseToken
+        if existingToken != "" {
+            newState.pushNotificationPreferenceState.firebaseToken = existingToken
+        }
+        return newState
     }
 
     static func reduceNewTransitModeAction(action: NewTransitModeAction, state: UserPreferenceState) -> UserPreferenceState {
