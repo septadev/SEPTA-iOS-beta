@@ -9,7 +9,6 @@ class UserPreferencesProvider: StoreSubscriber, UserPreferencesProviderProtocol 
 
     var currentState: UserPreferenceState?
     let persister = UserPreferencesStatePersister.sharedInstance
-    var initialized = false
 
     static let sharedInstance = UserPreferencesProvider()
     private init() {}
@@ -31,8 +30,7 @@ class UserPreferencesProvider: StoreSubscriber, UserPreferencesProviderProtocol 
     }
 
     func newState(state: StoreSubscriberStateType) {
-        if currentState == nil && !initialized {
-            initialized = true
+        if currentState == nil {
             initializePreferenceStateFromDefaults()
         } else {
             if currentState != state {
