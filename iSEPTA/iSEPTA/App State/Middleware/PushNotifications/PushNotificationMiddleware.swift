@@ -55,6 +55,7 @@ class PushNotificationMiddleware {
                 dispatch(UserWantsToSubscribeToPushNotifications(viewController: nil, boolValue: false))
                 dispatch(UserWantsToSubscribeToSpecialAnnouncements(viewController: nil, boolValue: false))
                 dispatch(ToggleAllPushNotificationRoutes(boolValue: false))
+            default: break
             }
         }
     }
@@ -80,6 +81,7 @@ class PushNotificationMiddleware {
                 }, onFail: {
                     dispatch(reversedAction)
                 }, dispatch: dispatch, next: next)
+            default: break
             }
         } else {
             store.dispatch(PostPushNotificationPreferences(postNow: true, showSuccess: false, viewController: nil))
@@ -103,6 +105,7 @@ class PushNotificationMiddleware {
                 }, onFail: {
                     dispatch(reversedAction)
                 }, dispatch: dispatch, next: next)
+            default: break
             }
         }
     }
@@ -130,6 +133,7 @@ class PushNotificationMiddleware {
                 }, onFail: {
                     dispatch(RemovePushNotificationRoute(routes: [action.route], viewController: nil))
             }, dispatch: dispatch, next: next)
+        default: break
         }
     }
 
@@ -147,6 +151,7 @@ class PushNotificationMiddleware {
                     next(action)
                 }, onFail: {
             }, dispatch: dispatch, next: next)
+        default: break
         }
     }
 

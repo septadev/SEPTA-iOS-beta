@@ -13,12 +13,14 @@ enum PushNotificationAuthorizationState: String, Codable, Equatable {
     case notDetermined
     case denied
     case authorized
+    case provisional
 
     init(status: UNAuthorizationStatus) {
         switch status {
         case .notDetermined: self = .notDetermined
         case .denied: self = .denied
         case .authorized: self = .authorized
+        case .provisional: self = .provisional
         }
     }
 }
