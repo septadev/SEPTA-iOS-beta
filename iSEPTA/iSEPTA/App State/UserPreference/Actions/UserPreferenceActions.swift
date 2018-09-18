@@ -49,11 +49,13 @@ struct UserWantsToSubscribeToPushNotifications: UserPreferencesAction, PushNotif
     let viewController: UIViewController?
     var boolValue: Bool = false
     let alsoEnableRoutes: Bool
+    var fromAppLaunch: Bool
     let description = "Toggling Push Notification preference State"
-    init(viewController: UIViewController?, boolValue: Bool = false, alsoEnableRoutes: Bool = true) {
+    init(viewController: UIViewController?, boolValue: Bool = false, alsoEnableRoutes: Bool = true, fromAppLaunch: Bool = false) {
         self.viewController = viewController
         self.boolValue = boolValue
         self.alsoEnableRoutes = alsoEnableRoutes
+        self.fromAppLaunch = fromAppLaunch
     }
 }
 
@@ -71,6 +73,7 @@ struct UserWantsToSubscribeToSpecialAnnouncements: UserPreferencesAction, PushNo
 
 struct UpdateSystemAuthorizationStatusForPushNotifications: UserPreferencesAction {
     let authorizationStatus: PushNotificationAuthorizationState
+    var fromAppLaunch: Bool
     let description = "Authorization Status for Push Notifications"
 }
 

@@ -50,9 +50,9 @@ class PushNotificationMiddleware {
         if action.authorizationStatus != authorizationStatus { // only act if the authorization status has changed
             switch action.authorizationStatus {
             case .authorized:
-                dispatch(UserWantsToSubscribeToPushNotifications(viewController: nil, boolValue: true))
+                dispatch(UserWantsToSubscribeToPushNotifications(viewController: nil, boolValue: true, fromAppLaunch: action.fromAppLaunch))
             case .denied, .notDetermined:
-                dispatch(UserWantsToSubscribeToPushNotifications(viewController: nil, boolValue: false))
+                dispatch(UserWantsToSubscribeToPushNotifications(viewController: nil, boolValue: false, fromAppLaunch: action.fromAppLaunch))
                 dispatch(UserWantsToSubscribeToSpecialAnnouncements(viewController: nil, boolValue: false))
                 dispatch(ToggleAllPushNotificationRoutes(boolValue: false))
             }
@@ -69,7 +69,9 @@ class PushNotificationMiddleware {
                 if action.alsoEnableRoutes {
                     dispatch(ToggleAllPushNotificationRoutes(boolValue: true))
                 }
-                dispatch(PostPushNotificationPreferences(postNow: true, showSuccess: false, viewController: nil))
+                if !action.fromAppLaunch {
+                    dispatch(PostPushNotificationPreferences(postNow: true, showSuccess: false, viewController: nil))
+                }
             case .denied:
                 UIAlert.presentNavigationToSettingsNeededAlertFrom(viewController: action.viewController, completion: {
                     dispatch(reversedAction)
@@ -157,10 +159,10 @@ class PushNotificationMiddleware {
             if error == nil {
                 DispatchQueue.main.async {
                     if granted {
-                        dispatch(UpdateSystemAuthorizationStatusForPushNotifications(authorizationStatus: .authorized))
+                        dispatch(UpdateSystemAuthorizationStatusForPushNotifications(authorizationStatus: .authorized, fromAppLaunch: false))
                         onSuccess?()
                     } else {
-                        dispatch(UpdateSystemAuthorizationStatusForPushNotifications(authorizationStatus: .denied))
+                        dispatch(UpdateSystemAuthorizationStatusForPushNotifications(authorizationStatus: .denied, fromAppLaunch: false))
                         onFail?()
                     }
                 }

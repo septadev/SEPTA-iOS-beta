@@ -78,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func updateCurrentPushNotificationAuthorizationStatus() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             let status = PushNotificationAuthorizationState(status: settings.authorizationStatus)
-            let action = UpdateSystemAuthorizationStatusForPushNotifications(authorizationStatus: status)
+            let action = UpdateSystemAuthorizationStatusForPushNotifications(authorizationStatus: status, fromAppLaunch: true)
             DispatchQueue.main.async {
                 store.dispatch(action)
             }
