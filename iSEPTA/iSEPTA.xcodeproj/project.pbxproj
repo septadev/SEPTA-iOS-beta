@@ -367,8 +367,6 @@
 		67075FC41F57858C008BB38C /* ScheduleStopState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC31F57858C008BB38C /* ScheduleStopState.swift */; };
 		67075FC61F57860E008BB38C /* ScheduleTripState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC51F57860E008BB38C /* ScheduleTripState.swift */; };
 		67075FC81F57866D008BB38C /* ScheduleRouteState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC71F57866D008BB38C /* ScheduleRouteState.swift */; };
-		6708C2771F73AE3F00922D8E /* NavigationViewControllerStateToNavigationEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6708C2761F73AE3F00922D8E /* NavigationViewControllerStateToNavigationEventTests.swift */; };
-		6708C27B1F73BABA00922D8E /* NavigationModalStateToNavigationEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6708C27A1F73BABA00922D8E /* NavigationModalStateToNavigationEventTests.swift */; };
 		670C59DE1F8920E900CAE1AC /* AlertState_GenericAlertDetailsWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C59DD1F8920E900CAE1AC /* AlertState_GenericAlertDetailsWatcher.swift */; };
 		670C59E31F8A5CEE00CAE1AC /* FavoritesMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C59E21F8A5CEE00CAE1AC /* FavoritesMiddleware.swift */; };
 		670C59E51F8A5D2700CAE1AC /* FavoritesMiddlewareActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C59E41F8A5D2700CAE1AC /* FavoritesMiddlewareActions.swift */; };
@@ -1155,8 +1153,6 @@
 		67075FC31F57858C008BB38C /* ScheduleStopState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStopState.swift; sourceTree = "<group>"; };
 		67075FC51F57860E008BB38C /* ScheduleTripState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTripState.swift; sourceTree = "<group>"; };
 		67075FC71F57866D008BB38C /* ScheduleRouteState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRouteState.swift; sourceTree = "<group>"; };
-		6708C2761F73AE3F00922D8E /* NavigationViewControllerStateToNavigationEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewControllerStateToNavigationEventTests.swift; sourceTree = "<group>"; };
-		6708C27A1F73BABA00922D8E /* NavigationModalStateToNavigationEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModalStateToNavigationEventTests.swift; sourceTree = "<group>"; };
 		670C59DD1F8920E900CAE1AC /* AlertState_GenericAlertDetailsWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState_GenericAlertDetailsWatcher.swift; sourceTree = "<group>"; };
 		670C59E21F8A5CEE00CAE1AC /* FavoritesMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesMiddleware.swift; sourceTree = "<group>"; };
 		670C59E41F8A5D2700CAE1AC /* FavoritesMiddlewareActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesMiddlewareActions.swift; sourceTree = "<group>"; };
@@ -2207,13 +2203,6 @@
 			path = Alerts;
 			sourceTree = "<group>";
 		};
-		584D54D02106064400EB773C /* Push Notifications */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Push Notifications";
-			sourceTree = "<group>";
-		};
 		584D54D121060F2F00EB773C /* Push Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -2721,9 +2710,7 @@
 		58D9C40A1F3335BB002BE2E8 /* iSEPTATests */ = {
 			isa = PBXGroup;
 			children = (
-				584D54D02106064400EB773C /* Push Notifications */,
 				6708C2751F73AE2A00922D8E /* NavigationState */,
-				58E33F291F6169E000C74B7C /* RealTimeArrivals */,
 				588F28031F39E2D600D62425 /* ViewModel */,
 				588F27FF1F39E29200D62425 /* App State */,
 				58B8920B1F38C63B00BFFEFA /* MockObjects */,
@@ -2804,13 +2791,6 @@
 				58DD1A8F1F600758002532DC /* NextToArriveViewModel+StopCell.swift */,
 			);
 			path = NextToArriveViewModel;
-			sourceTree = "<group>";
-		};
-		58E33F291F6169E000C74B7C /* RealTimeArrivals */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = RealTimeArrivals;
 			sourceTree = "<group>";
 		};
 		58EB8D181F5D7ED70028A487 /* SelectTrip */ = {
@@ -2894,8 +2874,6 @@
 		6708C2751F73AE2A00922D8E /* NavigationState */ = {
 			isa = PBXGroup;
 			children = (
-				6708C2761F73AE3F00922D8E /* NavigationViewControllerStateToNavigationEventTests.swift */,
-				6708C27A1F73BABA00922D8E /* NavigationModalStateToNavigationEventTests.swift */,
 			);
 			path = NavigationState;
 			sourceTree = "<group>";
@@ -4241,9 +4219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6708C27B1F73BABA00922D8E /* NavigationModalStateToNavigationEventTests.swift in Sources */,
 				584D54D9210612AD00EB773C /* PushNotificationPreferenceTests.swift in Sources */,
-				6708C2771F73AE3F00922D8E /* NavigationViewControllerStateToNavigationEventTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
