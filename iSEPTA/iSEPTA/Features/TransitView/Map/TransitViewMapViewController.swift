@@ -57,6 +57,7 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
             mapView.isRotateEnabled = false
             mapView.isAccessibilityElement = false
             mapView.accessibilityElementsHidden = true
+            mapView.showsUserLocation = true
         }
     }
 
@@ -73,6 +74,7 @@ class TransitViewMapViewController: UIViewController, StoreSubscriber {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        store.dispatch(RequestLocation())
         viewModel.delegate = self
     }
 
@@ -403,7 +405,11 @@ extension TransitViewMapViewController: TransitViewMapDataProviderDelegate {
     func drawVehicleLocations(locations: [TransitViewVehicleLocation]) {
         // Remove all the old ones first
         if mapView != nil {
-            mapView.removeAnnotations(mapView.annotations)
+            for annotation in mapView.annotations {
+                if annotation is TransitViewVehicleAnnotation {
+                    mapView.removeAnnotation(annotation)
+                }
+            }
         }
         vehiclesToAdd = locations
         if mapView != nil {
@@ -451,7 +457,11 @@ extension TransitViewMapViewController: TransitViewAnnotationViewDelegate {
         }
 
         // Clear the existing annotations
-        mapView.removeAnnotations(mapView.annotations)
+        for annotation in mapView.annotations {
+            if annotation is TransitViewVehicleAnnotation {
+                mapView.removeAnnotation(annotation)
+            }
+        }
 
         // Add annotations back
         addVehicleAnnotationsToMap(vehicles: locations)
