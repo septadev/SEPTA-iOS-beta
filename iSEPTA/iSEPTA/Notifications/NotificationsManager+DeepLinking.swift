@@ -20,7 +20,9 @@ extension NotificationsManager {
             navigateToAlertDetails(notification: alertDetourNotification)
         case .delay:
             guard let delayNotification = decodeDelayNotification(info: info) else { return }
-            navigateToNextToArrive(notification: delayNotification)
+            if delayNotification.delayType == .actual {
+                navigateToNextToArrive(notification: delayNotification)
+            }
         default:
             break
         }
