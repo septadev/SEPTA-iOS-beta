@@ -134,7 +134,7 @@ class NextToArriveMiddleware {
         }
 
         client.getRealTimeRailArrivalDetail(tripId: tripId).then { details -> Void in
-            guard let details = details, let results = details.results, results > 0 else {
+            guard let details = details else {
                 let alert = UIAlertController(title: "This notification has expired and is no longer valid.", message: "", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 alert.show()
