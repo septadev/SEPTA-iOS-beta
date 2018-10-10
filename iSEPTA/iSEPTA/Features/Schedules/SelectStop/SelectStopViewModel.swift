@@ -169,10 +169,6 @@ extension SelectStopViewModel: UITableViewDelegate, UITableViewDataSource {
 
 extension SelectStopViewModel: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString: String) -> Bool {
-        if replacementString == "\n" {
-            textField.resignFirstResponder()
-            return false
-        }
         guard let allFilterableStops = allFilterableStops, let swiftRange = Range(range, in: filterString) else { return false }
         filterString = filterString.replacingCharacters(in: swiftRange, with: replacementString.lowercased())
 
@@ -189,5 +185,10 @@ extension SelectStopViewModel: UITextFieldDelegate {
         }
 
         return true
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
     }
 }
