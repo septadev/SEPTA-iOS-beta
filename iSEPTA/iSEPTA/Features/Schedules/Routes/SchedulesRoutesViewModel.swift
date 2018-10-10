@@ -96,7 +96,11 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
     }
 
     var filterString = ""
-    func textField(_: UITextField, shouldChangeCharactersIn range: NSRange, replacementString: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString: String) -> Bool {
+        if replacementString == "\n" {
+            textField.resignFirstResponder()
+            return false
+        }
         guard let allFilterableRoutes = allFilterableRoutes, let swiftRange = Range(range, in: filterString) else { return false }
         filterString = filterString.replacingCharacters(in: swiftRange, with: replacementString.lowercased())
         filteredRoutes = allFilterableRoutes.filter {

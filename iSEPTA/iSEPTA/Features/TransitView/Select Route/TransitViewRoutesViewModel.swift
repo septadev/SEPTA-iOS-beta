@@ -107,7 +107,11 @@ class TransitViewRoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate
     }
 
     var filterString = ""
-    func textField(_: UITextField, shouldChangeCharactersIn range: NSRange, replacementString: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString: String) -> Bool {
+        if replacementString == "\n" {
+            textField.resignFirstResponder()
+            return false
+        }
         guard let allFilterableRoutes = allFilterableRoutes, let filterRange = Range(range, in: filterString) else { return false }
         filterString = filterString.replacingCharacters(in: filterRange, with: replacementString.lowercased())
         filteredRoutes = allFilterableRoutes.filter {
