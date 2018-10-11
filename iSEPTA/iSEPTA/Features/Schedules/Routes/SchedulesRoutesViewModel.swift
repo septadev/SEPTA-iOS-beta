@@ -96,7 +96,7 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
     }
 
     var filterString = ""
-    func textField(_: UITextField, shouldChangeCharactersIn range: NSRange, replacementString: String) -> Bool {
+    func textField(_ : UITextField, shouldChangeCharactersIn range: NSRange, replacementString: String) -> Bool {
         guard let allFilterableRoutes = allFilterableRoutes, let swiftRange = Range(range, in: filterString) else { return false }
         filterString = filterString.replacingCharacters(in: swiftRange, with: replacementString.lowercased())
         filteredRoutes = allFilterableRoutes.filter {
@@ -110,6 +110,11 @@ class RoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate {
             strongSelf.selectRoutesViewController?.viewModelUpdated()
         }
         return true
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
     }
 
     func subscribe() {
