@@ -69,24 +69,6 @@ public class DatabaseFileManager {
         return allSqliteFiles
     }
 
-    public func resetCurrentDatabaseName(dbURL: URL) {
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            guard let strongSelf = self else { return }
-            // Set database name property
-            strongSelf.updateCurrentDatabase(dbURL: dbURL)
-            // Set database version property
-            DatabaseVersionSQLCommand.sharedInstance.version(completion: { versions, error in
-                guard error == nil else { return }
-                if let versions = versions, versions.count == 1 {
-                    let dbVersion = versions[0]
-                    strongSelf.updateCurrentDatabaseVersion(version: dbVersion)
-                }
-            })
-        }
-        // let databaseUpdateManager = DatabaseFileManager()
-        // store.dispatch(databaseUpdateManager.CheckForDatabaseUpdate())
-    }
-
     public func updateCurrentDatabase(dbURL: URL) {
         defaults.set(dbURL.lastPathComponent, forKey: currentDatabaseNameKey)
     }
@@ -131,6 +113,22 @@ public class DatabaseFileManager {
                     }
                 }
             }
+        }
+    }
+
+    private func resetCurrentDatabaseName(dbURL: URL) {
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let strongSelf = self else { return }
+            // Set database name property
+            strongSelf.updateCurrentDatabase(dbURL: dbURL)
+            // Set database version property
+            DatabaseVersionSQLCommand.sharedInstance.version(completion: { versions, error in
+                guard error == nil else { return }
+                if let versions = versions, versions.count == 1 {
+                    let dbVersion = versions[0]
+                    strongSelf.updateCurrentDatabaseVersion(version: dbVersion)
+                }
+            })
         }
     }
 
