@@ -104,104 +104,6 @@ class PushNotificationPreferenceTests: XCTestCase {
         XCTAssertEqual(actualResult, expectedResult)
     }
 
-    func testPushNotificationState1() {
-        let startTime = dateFromHourMinute(hour: 7, minute: 30)
-        let endTime = dateFromHourMinute(hour: 9, minute: 30)
-
-        let timeWindow = NotificationTimeWindow(startTime: startTime, endTime: endTime)!
-
-        let daysOfWeek: DaysOfWeekOptionSet = [.wednesday, .friday]
-
-        let route1 = PushNotificationRoute(routeId: "44", transitMode: "bus")
-        let route2 = PushNotificationRoute(routeId: "44", transitMode: "bus")
-        let routeIds = [route1, route2]
-
-        var preferenceState = PushNotificationPreferenceState()
-        preferenceState.notificationTimeWindows = [timeWindow]
-        preferenceState.daysOfWeek = daysOfWeek
-        preferenceState.routeIds = routeIds
-
-        let testDate = dateFromComponents(year: 2018, month: 7, day: 27, hour: 9, minute: 29) // Friday
-        let expectedResult = true
-        let actualResult = preferenceState.userShouldReceiveNotification(atDate: testDate, pushNotificationRoute: route1)
-        XCTAssertEqual(expectedResult, actualResult)
-    }
-
-    func testPushNotificationState2() {
-        let startTime = dateFromHourMinute(hour: 7, minute: 30)
-        let endTime = dateFromHourMinute(hour: 9, minute: 30)
-
-        let timeWindow = NotificationTimeWindow(startTime: startTime, endTime: endTime)!
-
-        let daysOfWeek: DaysOfWeekOptionSet = [.wednesday, .friday]
-
-        let route1 = PushNotificationRoute(routeId: "44", transitMode: "bus")
-        let route2 = PushNotificationRoute(routeId: "44", transitMode: "bus")
-        let routeIds = [route1, route2]
-
-        var preferenceState = PushNotificationPreferenceState()
-        preferenceState.notificationTimeWindows = [timeWindow]
-        preferenceState.daysOfWeek = daysOfWeek
-        preferenceState.routeIds = routeIds
-
-        let testDate = dateFromComponents(year: 2018, month: 7, day: 27, hour: 9, minute: 29) // Friday
-        let testRoute = PushNotificationRoute(routeId: "441", transitMode: "bus") /// Adding in a non matching route
-        let expectedResult = false
-        let actualResult = preferenceState.userShouldReceiveNotification(atDate: testDate, pushNotificationRoute: testRoute)
-        XCTAssertEqual(expectedResult, actualResult)
-    }
-
-    func testPushNotificationState3() {
-        let startTime1 = dateFromHourMinute(hour: 7, minute: 30)
-        let endTime1 = dateFromHourMinute(hour: 9, minute: 30)
-        let timeWindow1 = NotificationTimeWindow(startTime: startTime1, endTime: endTime1)!
-
-        let startTime2 = dateFromHourMinute(hour: 17, minute: 30)
-        let endTime2 = dateFromHourMinute(hour: 18, minute: 30)
-        let timeWindow2 = NotificationTimeWindow(startTime: startTime2, endTime: endTime2)!
-
-        let daysOfWeek: DaysOfWeekOptionSet = [.wednesday, .friday]
-
-        let route1 = PushNotificationRoute(routeId: "44", transitMode: "bus")
-        let route2 = PushNotificationRoute(routeId: "44", transitMode: "bus")
-        let routeIds = [route1, route2]
-
-        var preferenceState = PushNotificationPreferenceState()
-        preferenceState.notificationTimeWindows = [timeWindow1, timeWindow2] /// Adding multiple Time Windows
-        preferenceState.daysOfWeek = daysOfWeek
-        preferenceState.routeIds = routeIds
-
-        let testDate = dateFromComponents(year: 2018, month: 7, day: 27, hour: 17, minute: 55) // Friday
-        let testRoute = route1 /// Adding in a non matching route
-        let expectedResult = true
-        let actualResult = preferenceState.userShouldReceiveNotification(atDate: testDate, pushNotificationRoute: testRoute)
-        XCTAssertEqual(expectedResult, actualResult)
-    }
-
-    func testPushNotificationState4() {
-        let startTime = dateFromHourMinute(hour: 7, minute: 30)
-        let endTime = dateFromHourMinute(hour: 9, minute: 30)
-
-        let timeWindow = NotificationTimeWindow(startTime: startTime, endTime: endTime)!
-
-        let daysOfWeek: DaysOfWeekOptionSet = [.wednesday] // will no longer match fridays
-
-        let route1 = PushNotificationRoute(routeId: "44", transitMode: "bus")
-        let route2 = PushNotificationRoute(routeId: "44", transitMode: "bus")
-        let routeIds = [route1, route2]
-
-        var preferenceState = PushNotificationPreferenceState()
-        preferenceState.notificationTimeWindows = [timeWindow]
-        preferenceState.daysOfWeek = daysOfWeek
-        preferenceState.routeIds = routeIds
-
-        let testDate = dateFromComponents(year: 2018, month: 7, day: 27, hour: 9, minute: 29) // Friday
-        let testRoute = route2
-        let expectedResult = false
-        let actualResult = preferenceState.userShouldReceiveNotification(atDate: testDate, pushNotificationRoute: testRoute)
-        XCTAssertEqual(expectedResult, actualResult)
-    }
-
     func testPushNotificationStatePersistence() {
         let startTime = dateFromHourMinute(hour: 7, minute: 30)
         let endTime = dateFromHourMinute(hour: 9, minute: 30)
@@ -210,8 +112,8 @@ class PushNotificationPreferenceTests: XCTestCase {
 
         let daysOfWeek: DaysOfWeekOptionSet = [.wednesday] // will no longer match fridays
 
-        let route1 = PushNotificationRoute(routeId: "44", transitMode: "bus")
-        let route2 = PushNotificationRoute(routeId: "44", transitMode: "bus")
+        let route1 = PushNotificationRoute(routeId: "44", routeName: "", transitMode: .bus)
+        let route2 = PushNotificationRoute(routeId: "44", routeName: "", transitMode: .bus)
         let routeIds = [route1, route2]
 
         var preferenceState = PushNotificationPreferenceState()
@@ -234,8 +136,8 @@ class PushNotificationPreferenceTests: XCTestCase {
 
         let daysOfWeek: DaysOfWeekOptionSet = [.wednesday, .tuesday] // will no longer match fridays
 
-        let route1 = PushNotificationRoute(routeId: "44", transitMode: "bus")
-        let route2 = PushNotificationRoute(routeId: "465564", transitMode: "bus")
+        let route1 = PushNotificationRoute(routeId: "44", routeName: "Bus 44", transitMode: .bus)
+        let route2 = PushNotificationRoute(routeId: "465564", routeName: "Bus 465564", transitMode: .bus)
         let routeIds = [route1, route2]
 
         var preferenceState = PushNotificationPreferenceState()
@@ -249,7 +151,7 @@ class PushNotificationPreferenceTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Wait for defaults to get written")
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
-            let data: Data = UserDefaults.standard.data(forKey: UserPreferencesKeys.pushNotifiation.rawValue)!
+            let data: Data = UserDefaults.standard.data(forKey: UserPreferencesKeys.pushNotificationPreferenceState.rawValue)!
             let newPreferenceState = try! JSONDecoder().decode(PushNotificationPreferenceState.self, from: data)
             XCTAssertEqual(preferenceState, newPreferenceState)
             expectation.fulfill()
