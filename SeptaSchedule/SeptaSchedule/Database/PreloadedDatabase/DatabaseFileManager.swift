@@ -69,6 +69,24 @@ public class DatabaseFileManager {
         return allSqliteFiles
     }
 
+    public func resetCurrentDatabaseName(dbURL: URL) {
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let strongSelf = self else { return }
+            // Set database name property
+            strongSelf.updateCurrentDatabase(dbURL: dbURL)
+            // Set database version property
+            DatabaseVersionSQLCommand.sharedInstance.version(completion: { versions, error in
+                guard error == nil else { return }
+                if let versions = versions, versions.count == 1 {
+                    let dbVersion = versions[0]
+                    strongSelf.updateCurrentDatabaseVersion(version: dbVersion)
+                }
+            })
+        }
+        // let databaseUpdateManager = DatabaseFileManager()
+        // store.dispatch(databaseUpdateManager.CheckForDatabaseUpdate())
+    }
+
     public func updateCurrentDatabase(dbURL: URL) {
         defaults.set(dbURL.lastPathComponent, forKey: currentDatabaseNameKey)
     }
@@ -103,10 +121,14 @@ public class DatabaseFileManager {
         let allSqliteFiles = allUserSqliteFiles()
         for file in allSqliteFiles {
             if file.lastPathComponent != currentDatabase.lastPathComponent {
-                do {
-                    try fileManager.removeItem(at: file)
-                } catch {
-                    // ¯\_(ツ)_/¯
+                if allSqliteFiles.count == 1 {
+                    resetCurrentDatabaseName(dbURL: file)
+                } else {
+                    do {
+                        try fileManager.removeItem(at: file)
+                    } catch {
+                        // ¯\_(ツ)_/¯
+                    }
                 }
             }
         }
@@ -121,17 +143,9 @@ public class DatabaseFileManager {
 
                 try Zip.unzipFile(preloadedURL, destination: documentsURL, overwrite: true, password: nil, progress: { (progress) -> Void in
                     if progress == 1 {
+                        strongSelf.resetCurrentDatabaseName(dbURL: documentsURL.appendingPathComponent(strongSelf.defaultDatabaseName))
                         strongSelf.updateState(databaseState: .loaded)
                         print("database unzip is complete")
-
-                        // Set database version property
-                        DatabaseVersionSQLCommand.sharedInstance.version(completion: { versions, error in
-                            guard error == nil else { return }
-                            if let versions = versions, versions.count == 1 {
-                                let dbVersion = versions[0]
-                                strongSelf.updateCurrentDatabaseVersion(version: dbVersion)
-                            }
-                        })
                     }
                 })
                 var resourceValues: URLResourceValues = URLResourceValues()
