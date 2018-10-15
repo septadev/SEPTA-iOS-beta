@@ -134,10 +134,8 @@ class NextToArriveMiddleware {
         }
 
         client.getRealTimeRailArrivalDetail(tripId: tripId).then { details -> Void in
-            guard let details = details else {
-                let alert = UIAlertController(title: "This notification has expired and is no longer valid.", message: "", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                alert.show()
+            guard let details = details, let _ = details.tripid, let destStation = details.destinationStation, destStation.count > 0 else {
+                showExpiredAlert()
                 return
             }
 
@@ -167,6 +165,12 @@ class NextToArriveMiddleware {
         }.catch { error in
             print(error.localizedDescription)
         }
+    }
+
+    private static func showExpiredAlert() {
+        let alert = UIAlertController(title: "This notification has expired and is no longer valid.", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        alert.show()
     }
 
     static func navigateToAlertDetails() {
