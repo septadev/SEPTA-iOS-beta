@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ACS_loco" highlightedImage="ACS_loco" translatesAutoresizingMaskIntoConstraints="NO" id="awN-Rt-1Qc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locomotive_image" highlightedImage="locomotive_image" translatesAutoresizingMaskIntoConstraints="NO" id="awN-Rt-1Qc">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeptaLogoTrademark" highlightedImage="SeptaLogoTrademark" translatesAutoresizingMaskIntoConstraints="NO" id="smv-BL-ejV" userLabel="Logo">
@@ -48,7 +48,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ACS_loco" width="500" height="889"/>
         <image name="SeptaLogoTrademark" width="154" height="150"/>
+        <image name="locomotive_image" width="500" height="889"/>
     </resources>
 </document>
