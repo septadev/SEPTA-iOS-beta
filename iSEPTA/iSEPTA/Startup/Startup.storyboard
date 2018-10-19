@@ -22,10 +22,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ACS_loco" translatesAutoresizingMaskIntoConstraints="NO" id="YBe-oB-rMw">
+                            <imageView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locomotive_image" translatesAutoresizingMaskIntoConstraints="NO" id="YBe-oB-rMw">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="build Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kb4-wn-sdA">
+                                <rect key="frame" x="144.5" y="647" width="86.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SeptaLogoTrademark" highlightedImage="SeptaLogoTrademark" translatesAutoresizingMaskIntoConstraints="NO" id="Ycs-cw-c6u" userLabel="Logo">
                                 <rect key="frame" x="110.5" y="263.5" width="154" height="160"/>
                                 <constraints>
@@ -40,11 +46,16 @@
                             <constraint firstItem="Ycs-cw-c6u" firstAttribute="centerX" secondItem="y9C-gI-PKw" secondAttribute="centerX" id="6k5-Fo-oxF"/>
                             <constraint firstItem="YBe-oB-rMw" firstAttribute="top" secondItem="ih7-Rt-nFq" secondAttribute="top" id="KGv-oR-rSd" userLabel="splashTop"/>
                             <constraint firstItem="YBe-oB-rMw" firstAttribute="leading" secondItem="ih7-Rt-nFq" secondAttribute="leading" id="S5w-KH-CoO" userLabel="splashLeft"/>
+                            <constraint firstItem="y9C-gI-PKw" firstAttribute="bottom" secondItem="kb4-wn-sdA" secondAttribute="bottom" constant="3" id="eP0-Ss-NMG" userLabel="BuildNumberBottom"/>
+                            <constraint firstItem="kb4-wn-sdA" firstAttribute="centerX" secondItem="y9C-gI-PKw" secondAttribute="centerX" id="gxm-PD-pxJ" userLabel="BuildNumberCenterX"/>
                             <constraint firstAttribute="trailing" secondItem="YBe-oB-rMw" secondAttribute="trailing" id="nkF-oq-KdD" userLabel="splashRight"/>
                             <constraint firstAttribute="bottom" secondItem="YBe-oB-rMw" secondAttribute="bottom" id="qhJ-Gn-mCm" userLabel="splashBottom"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y9C-gI-PKw"/>
                     </view>
+                    <connections>
+                        <outlet property="buildNumber" destination="kb4-wn-sdA" id="2ZZ-70-nJ2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OoR-Ex-TO4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -52,7 +63,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ACS_loco" width="500" height="889"/>
         <image name="SeptaLogoTrademark" width="154" height="150"/>
+        <image name="locomotive_image" width="500" height="889"/>
     </resources>
 </document>
