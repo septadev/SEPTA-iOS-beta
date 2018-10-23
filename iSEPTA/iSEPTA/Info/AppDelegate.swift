@@ -39,16 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().delegate = self
         updateCurrentPushNotificationAuthorizationStatus()
 
-        if let userInfo = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
-            processNotificationTap(userInfo: userInfo)
-        }
-
-        // For faking Notifications
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-//
-//            self?.mockNotificationRequest.sendRequest()
-//        }
-
         return true
     }
 
