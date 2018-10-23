@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         databaseUpdateManager.appLaunched(coldStart: true)
 
         Messaging.messaging().delegate = self
-        NotificationsManager.configure()
+        FirebaseApp.configure()
         UNUserNotificationCenter.current().delegate = self
         updateCurrentPushNotificationAuthorizationStatus()
 
@@ -78,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func updateCurrentPushNotificationAuthorizationStatus() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             let status = PushNotificationAuthorizationState(status: settings.authorizationStatus)
-            let action = UpdateSystemAuthorizationStatusForPushNotifications(authorizationStatus: status)
+            let action = UpdateSystemAuthorizationStatusForPushNotifications(authorizationStatus: status, fromAppLaunch: true)
             DispatchQueue.main.async {
                 store.dispatch(action)
             }
@@ -103,11 +103,6 @@ extension AppDelegate: CrashlyticsDelegate {
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
-    func application(_: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        NotificationsManager.handleRemoteNotification(info: userInfo)
-        completionHandler(.newData)
-    }
-
     func userNotificationCenter(_: UNUserNotificationCenter, willPresent _: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         // Show alert if app is in the foreground
         completionHandler(.alert)
@@ -115,7 +110,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
     func userNotificationCenter(_: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
-        processNotificationTap(userInfo: userInfo)
 
         DispatchQueue.main.async { [weak self] in
             self?.processNotificationTap(userInfo: userInfo)
@@ -126,6 +120,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
 extension AppDelegate: MessagingDelegate {
     func messaging(_: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        UserDefaults.standard.setValue(fcmToken, forKey: NotificationsManager.Keys.fcmTokenKey)
+        store.dispatch(SetFirebaseTokenForPushNotificatoins(token: fcmToken, description: "New Firebase token received"))
     }
 }

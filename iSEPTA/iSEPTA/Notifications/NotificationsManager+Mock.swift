@@ -58,7 +58,7 @@ class RealTimeMockRequest {
 
         DispatchQueue.main.async {
             guard let delegate = UIApplication.shared.delegate as? AppDelegate else { return }
-            delegate.application(UIApplication.shared, didReceiveRemoteNotification: dict, fetchCompletionHandler: { _ in })
+//            delegate.application(UIApplication.shared, didReceiveRemoteNotification: dict, fetchCompletionHandler: { _ in })
         }
     }
 
@@ -91,7 +91,7 @@ class RealTimeMockRequest {
 
             DispatchQueue.main.async {
                 guard let delegate = UIApplication.shared.delegate as? AppDelegate else { return }
-                delegate.application(UIApplication.shared, didReceiveRemoteNotification: dict, fetchCompletionHandler: { _ in })
+//                delegate.application(UIApplication.shared, didReceiveRemoteNotification: dict, fetchCompletionHandler: { _ in })
             }
         }
     }

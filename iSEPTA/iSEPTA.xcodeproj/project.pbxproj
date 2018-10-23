@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E17CDCD2135B7DD00D8CD5A /* PushNotificationKeepAlive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E17CDCC2135B7DD00D8CD5A /* PushNotificationKeepAlive.swift */; };
 		0E2777FC211249EA00507CFE /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2777FB211249EA00507CFE /* NotificationsManager.swift */; };
 		0E2A006220CFF61A00E97BAF /* DatabaseUpdateState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A006120CFF61A00E97BAF /* DatabaseUpdateState.swift */; };
 		0E2A006520CFF88900E97BAF /* DatabaseUpdateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A006420CFF88900E97BAF /* DatabaseUpdateReducer.swift */; };
@@ -56,6 +57,9 @@
 		0EAE68C7211A201B0092C104 /* NotificationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAE68C6211A201B0092C104 /* NotificationProvider.swift */; };
 		0EB1942221090AA800077C99 /* FavoriteTransitViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB1942021090AA800077C99 /* FavoriteTransitViewCell.swift */; };
 		0EB1942321090AA800077C99 /* FavoriteTransitViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0EB1942121090AA800077C99 /* FavoriteTransitViewCell.xib */; };
+		0EE134C1212DD554005C2675 /* PushNotificationPreferenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE134C0212DD554005C2675 /* PushNotificationPreferenceProvider.swift */; };
+		0EE134C4212DF243005C2675 /* PushNotificationPreferenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE134C3212DF243005C2675 /* PushNotificationPreferenceService.swift */; };
+		0EE134C6212DF26D005C2675 /* PostBodyObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE134C5212DF26D005C2675 /* PostBodyObjects.swift */; };
 		0EE428D42114D4C500EBF6FE /* SeptaNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE428D32114D4C500EBF6FE /* SeptaNotification.swift */; };
 		0EFEACFF2110D84600F3A368 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEACF62110D84400F3A368 /* FirebaseInstanceID.framework */; };
 		0EFEAD002110D84600F3A368 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEACF92110D84500F3A368 /* FirebaseAnalytics.framework */; };
@@ -66,7 +70,6 @@
 		0EFEAD052110D84600F3A368 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEACFE2110D84600F3A368 /* FirebaseCoreDiagnostics.framework */; };
 		0EFEAD082110D86700F3A368 /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEAD062110D86700F3A368 /* Protobuf.framework */; };
 		0EFEAD092110D86700F3A368 /* FirebaseMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFEAD072110D86700F3A368 /* FirebaseMessaging.framework */; };
-		0EFEAD0D2110DC1700F3A368 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0EFEAD0C2110DC1700F3A368 /* GoogleService-Info.plist */; };
 		5800FF801F434905003AB7C0 /* RouteSelectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */; };
 		580128061F6B1D13006B6DB8 /* FavoriteTripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580128031F6B1D13006B6DB8 /* FavoriteTripCell.xib */; };
 		580128081F6B26D2006B6DB8 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580128071F6B26D2006B6DB8 /* RoundedShadowView.swift */; };
@@ -216,9 +219,7 @@
 		585CEBD81F86A023006DCC67 /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CEBD71F86A023006DCC67 /* String+HTML.swift */; };
 		585CEBDA1F86A0AE006DCC67 /* AlertDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CEBD91F86A0AE006DCC67 /* AlertDetailsViewModel.swift */; };
 		58628594211C92DA00F4F012 /* TransitMode+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58628593211C92DA00F4F012 /* TransitMode+Notifications.swift */; };
-		58628598211CBD0800F4F012 /* NotificationManager+Subscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58628597211CBD0800F4F012 /* NotificationManager+Subscriptions.swift */; };
 		5862859A211CC2C700F4F012 /* NotificationManager+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58628599211CC2C700F4F012 /* NotificationManager+Codable.swift */; };
-		5862859C211CC3EE00F4F012 /* NotificationManager+RemoteNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5862859B211CC3EE00F4F012 /* NotificationManager+RemoteNotifications.swift */; };
 		5862859E211CCBAF00F4F012 /* NotificationsManager+DeepLinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5862859D211CCBAF00F4F012 /* NotificationsManager+DeepLinking.swift */; };
 		5863DB5A1F6C6B6700FC0F1F /* FavoritesExistWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5863DB591F6C6B6700FC0F1F /* FavoritesExistWatcher.swift */; };
 		58658D1B1F53135100E67B4E /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58658D1A1F53135100E67B4E /* AddressCell.swift */; };
@@ -366,8 +367,6 @@
 		67075FC41F57858C008BB38C /* ScheduleStopState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC31F57858C008BB38C /* ScheduleStopState.swift */; };
 		67075FC61F57860E008BB38C /* ScheduleTripState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC51F57860E008BB38C /* ScheduleTripState.swift */; };
 		67075FC81F57866D008BB38C /* ScheduleRouteState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67075FC71F57866D008BB38C /* ScheduleRouteState.swift */; };
-		6708C2771F73AE3F00922D8E /* NavigationViewControllerStateToNavigationEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6708C2761F73AE3F00922D8E /* NavigationViewControllerStateToNavigationEventTests.swift */; };
-		6708C27B1F73BABA00922D8E /* NavigationModalStateToNavigationEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6708C27A1F73BABA00922D8E /* NavigationModalStateToNavigationEventTests.swift */; };
 		670C59DE1F8920E900CAE1AC /* AlertState_GenericAlertDetailsWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C59DD1F8920E900CAE1AC /* AlertState_GenericAlertDetailsWatcher.swift */; };
 		670C59E31F8A5CEE00CAE1AC /* FavoritesMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C59E21F8A5CEE00CAE1AC /* FavoritesMiddleware.swift */; };
 		670C59E51F8A5D2700CAE1AC /* FavoritesMiddlewareActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670C59E41F8A5D2700CAE1AC /* FavoritesMiddlewareActions.swift */; };
@@ -764,6 +763,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0E17CDCC2135B7DD00D8CD5A /* PushNotificationKeepAlive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationKeepAlive.swift; sourceTree = "<group>"; };
 		0E2777F9211238F900507CFE /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		0E2777FA2112390600507CFE /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		0E2777FB211249EA00507CFE /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
@@ -815,6 +815,11 @@
 		0EAE68C6211A201B0092C104 /* NotificationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationProvider.swift; sourceTree = "<group>"; };
 		0EB1942021090AA800077C99 /* FavoriteTransitViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTransitViewCell.swift; sourceTree = "<group>"; };
 		0EB1942121090AA800077C99 /* FavoriteTransitViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTransitViewCell.xib; sourceTree = "<group>"; };
+		0EC0CF992142BDF9003C0D5D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0EC0CF9A2142BE25003C0D5D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0EE134C0212DD554005C2675 /* PushNotificationPreferenceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationPreferenceProvider.swift; sourceTree = "<group>"; };
+		0EE134C3212DF243005C2675 /* PushNotificationPreferenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationPreferenceService.swift; sourceTree = "<group>"; };
+		0EE134C5212DF26D005C2675 /* PostBodyObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBodyObjects.swift; sourceTree = "<group>"; };
 		0EE428D32114D4C500EBF6FE /* SeptaNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaNotification.swift; sourceTree = "<group>"; };
 		0EFEACF62110D84400F3A368 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		0EFEACF92110D84500F3A368 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
@@ -827,7 +832,6 @@
 		0EFEAD072110D86700F3A368 /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseMessaging.framework; sourceTree = "<group>"; };
 		0EFEAD0A2110D96500F3A368 /* Firebase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
 		0EFEAD0B2110D99900F3A368 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
-		0EFEAD0C2110DC1700F3A368 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0EFEAD0E2110DE1000F3A368 /* SEPTA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SEPTA.entitlements; sourceTree = "<group>"; };
 		5800FF7E1F434905003AB7C0 /* RouteSelectedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSelectedTableViewCell.swift; sourceTree = "<group>"; };
 		580128031F6B1D13006B6DB8 /* FavoriteTripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteTripCell.xib; sourceTree = "<group>"; };
@@ -989,9 +993,7 @@
 		585CEBD71F86A023006DCC67 /* String+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+HTML.swift"; sourceTree = "<group>"; };
 		585CEBD91F86A0AE006DCC67 /* AlertDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailsViewModel.swift; sourceTree = "<group>"; };
 		58628593211C92DA00F4F012 /* TransitMode+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransitMode+Notifications.swift"; sourceTree = "<group>"; };
-		58628597211CBD0800F4F012 /* NotificationManager+Subscriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationManager+Subscriptions.swift"; sourceTree = "<group>"; };
 		58628599211CC2C700F4F012 /* NotificationManager+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationManager+Codable.swift"; sourceTree = "<group>"; };
-		5862859B211CC3EE00F4F012 /* NotificationManager+RemoteNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationManager+RemoteNotifications.swift"; sourceTree = "<group>"; };
 		5862859D211CCBAF00F4F012 /* NotificationsManager+DeepLinking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationsManager+DeepLinking.swift"; sourceTree = "<group>"; };
 		5863DB591F6C6B6700FC0F1F /* FavoritesExistWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesExistWatcher.swift; sourceTree = "<group>"; };
 		58658D1A1F53135100E67B4E /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
@@ -1151,8 +1153,6 @@
 		67075FC31F57858C008BB38C /* ScheduleStopState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStopState.swift; sourceTree = "<group>"; };
 		67075FC51F57860E008BB38C /* ScheduleTripState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTripState.swift; sourceTree = "<group>"; };
 		67075FC71F57866D008BB38C /* ScheduleRouteState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRouteState.swift; sourceTree = "<group>"; };
-		6708C2761F73AE3F00922D8E /* NavigationViewControllerStateToNavigationEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewControllerStateToNavigationEventTests.swift; sourceTree = "<group>"; };
-		6708C27A1F73BABA00922D8E /* NavigationModalStateToNavigationEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModalStateToNavigationEventTests.swift; sourceTree = "<group>"; };
 		670C59DD1F8920E900CAE1AC /* AlertState_GenericAlertDetailsWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState_GenericAlertDetailsWatcher.swift; sourceTree = "<group>"; };
 		670C59E21F8A5CEE00CAE1AC /* FavoritesMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesMiddleware.swift; sourceTree = "<group>"; };
 		670C59E41F8A5D2700CAE1AC /* FavoritesMiddlewareActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesMiddlewareActions.swift; sourceTree = "<group>"; };
@@ -1520,8 +1520,8 @@
 		0E2777F6211238EB00507CFE /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				0E2777F9211238F900507CFE /* Release.xcconfig */,
-				0E2777FA2112390600507CFE /* Debug.xcconfig */,
+				0EC0CF982142BD9D003C0D5D /* Debug */,
+				0EC0CF972142BD8D003C0D5D /* Release */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -1622,15 +1622,40 @@
 			path = Notification;
 			sourceTree = "<group>";
 		};
+		0EC0CF972142BD8D003C0D5D /* Release */ = {
+			isa = PBXGroup;
+			children = (
+				0E2777F9211238F900507CFE /* Release.xcconfig */,
+				0EC0CF9A2142BE25003C0D5D /* GoogleService-Info.plist */,
+			);
+			path = Release;
+			sourceTree = "<group>";
+		};
+		0EC0CF982142BD9D003C0D5D /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				0E2777FA2112390600507CFE /* Debug.xcconfig */,
+				0EC0CF992142BDF9003C0D5D /* GoogleService-Info.plist */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		0EE134C2212DF200005C2675 /* Network Service */ = {
+			isa = PBXGroup;
+			children = (
+				0EE134C3212DF243005C2675 /* PushNotificationPreferenceService.swift */,
+				0EE134C5212DF26D005C2675 /* PostBodyObjects.swift */,
+			);
+			path = "Network Service";
+			sourceTree = "<group>";
+		};
 		0EE428D02114D41E00EBF6FE /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
 				0E2777FB211249EA00507CFE /* NotificationsManager.swift */,
 				58252233211CE1E000CAB9E6 /* NotificationsManager+Mock.swift */,
-				5862859B211CC3EE00F4F012 /* NotificationManager+RemoteNotifications.swift */,
 				5862859D211CCBAF00F4F012 /* NotificationsManager+DeepLinking.swift */,
 				58628599211CC2C700F4F012 /* NotificationManager+Codable.swift */,
-				58628597211CBD0800F4F012 /* NotificationManager+Subscriptions.swift */,
 				0EE428D32114D4C500EBF6FE /* SeptaNotification.swift */,
 				58252241211E08D700CAB9E6 /* NextToArriveDetailForDelayNotification.swift */,
 				58628593211C92DA00F4F012 /* TransitMode+Notifications.swift */,
@@ -2094,7 +2119,6 @@
 			children = (
 				0EFEAD0B2110D99900F3A368 /* module.modulemap */,
 				0EFEAD0A2110D96500F3A368 /* Firebase.h */,
-				0EFEAD0C2110DC1700F3A368 /* GoogleService-Info.plist */,
 				58C181FE1F34C557002748E9 /* Storyboards.swift */,
 				582F4EB41F33B1120062A546 /* Main.storyboard */,
 				582F4EB61F33B1120062A546 /* DatabaseStateWatcher.swift */,
@@ -2136,6 +2160,7 @@
 				0E8E60E220EFF37D00AB08FE /* TransitViewDataProvider.swift */,
 				0E2DCADA20F688200086F400 /* TransitViewVehicleLocationDataProvider.swift */,
 				0EAE68C6211A201B0092C104 /* NotificationProvider.swift */,
+				0EE134C0212DD554005C2675 /* PushNotificationPreferenceProvider.swift */,
 			);
 			path = "State Providers";
 			sourceTree = "<group>";
@@ -2178,13 +2203,6 @@
 			path = Alerts;
 			sourceTree = "<group>";
 		};
-		584D54D02106064400EB773C /* Push Notifications */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Push Notifications";
-			sourceTree = "<group>";
-		};
 		584D54D121060F2F00EB773C /* Push Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -2192,9 +2210,11 @@
 				5803C37D210B64EF00BFAE7A /* PushNotificationAuthorizationStatus.swift */,
 				5803C37A210B612900BFAE7A /* Business Logic */,
 				5803C379210B610500BFAE7A /* Manage Push Notifications */,
+				0EE134C2212DF200005C2675 /* Network Service */,
 				5803C37B210B619F00BFAE7A /* PushNotificationSystemStatusResolver.swift */,
 				5803C37F210B6DC600BFAE7A /* PushNotificationUserPreferenceResolver.swift */,
 				5803C381210B9BC800BFAE7A /* CustomNotifications.swift */,
+				0E17CDCC2135B7DD00D8CD5A /* PushNotificationKeepAlive.swift */,
 			);
 			path = "Push Notifications";
 			sourceTree = "<group>";
@@ -2690,9 +2710,7 @@
 		58D9C40A1F3335BB002BE2E8 /* iSEPTATests */ = {
 			isa = PBXGroup;
 			children = (
-				584D54D02106064400EB773C /* Push Notifications */,
 				6708C2751F73AE2A00922D8E /* NavigationState */,
-				58E33F291F6169E000C74B7C /* RealTimeArrivals */,
 				588F28031F39E2D600D62425 /* ViewModel */,
 				588F27FF1F39E29200D62425 /* App State */,
 				58B8920B1F38C63B00BFFEFA /* MockObjects */,
@@ -2773,13 +2791,6 @@
 				58DD1A8F1F600758002532DC /* NextToArriveViewModel+StopCell.swift */,
 			);
 			path = NextToArriveViewModel;
-			sourceTree = "<group>";
-		};
-		58E33F291F6169E000C74B7C /* RealTimeArrivals */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = RealTimeArrivals;
 			sourceTree = "<group>";
 		};
 		58EB8D181F5D7ED70028A487 /* SelectTrip */ = {
@@ -2863,8 +2874,6 @@
 		6708C2751F73AE2A00922D8E /* NavigationState */ = {
 			isa = PBXGroup;
 			children = (
-				6708C2761F73AE3F00922D8E /* NavigationViewControllerStateToNavigationEventTests.swift */,
-				6708C27A1F73BABA00922D8E /* NavigationModalStateToNavigationEventTests.swift */,
 			);
 			path = NavigationState;
 			sourceTree = "<group>";
@@ -3315,6 +3324,7 @@
 			buildPhases = (
 				58D9C3EC1F3335BB002BE2E8 /* Sources */,
 				58D9C3ED1F3335BB002BE2E8 /* Frameworks */,
+				0EC0CF9B2142BE6C003C0D5D /* Setup Firebase Environment GoogleService-Info.plist */,
 				58D9C3EE1F3335BB002BE2E8 /* Resources */,
 				585F585A1F3377EF00D3ED6C /* Copy Carthage Frameworks */,
 				58552F9B1F335272008C1886 /* CopyFiles */,
@@ -3477,7 +3487,6 @@
 				677E054320727C9D00B16C09 /* 105.kml in Resources */,
 				671609071F67671F00941D2C /* TripView.xib in Resources */,
 				677E04F220727C9D00B16C09 /* 67.kml in Resources */,
-				0EFEAD0D2110DC1700F3A368 /* GoogleService-Info.plist in Resources */,
 				671609091F676F1300941D2C /* ConnectionView.xib in Resources */,
 				677E050220727C9D00B16C09 /* 1.kml in Resources */,
 				677E04BD20727C9D00B16C09 /* 5.kml in Resources */,
@@ -3686,6 +3695,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0EC0CF9B2142BE6C003C0D5D /* Setup Firebase Environment GoogleService-Info.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Setup Firebase Environment GoogleService-Info.plist";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Name of the resource we're selectively copying\nGOOGLESERVICE_INFO_PLIST=GoogleService-Info.plist\n\n# Get references to dev and prod versions of the GoogleService-Info.plist\n# NOTE: These should only live on the file system and should NOT be part of the target (since we'll be adding them to the target manually)\nGOOGLESERVICE_INFO_DEV=${PROJECT_DIR}/Config/Debug/${GOOGLESERVICE_INFO_PLIST}\nGOOGLESERVICE_INFO_PROD=${PROJECT_DIR}/Config/Release/${GOOGLESERVICE_INFO_PLIST}\n\n# Make sure the dev version of GoogleService-Info.plist exists\necho \"Looking for ${GOOGLESERVICE_INFO_PLIST} in ${GOOGLESERVICE_INFO_DEV}\"\nif [ ! -f $GOOGLESERVICE_INFO_DEV ]\nthen\necho \"No Debug GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\nexit 1\nfi\n\n# Make sure the prod version of GoogleService-Info.plist exists\necho \"Looking for ${GOOGLESERVICE_INFO_PLIST} in ${GOOGLESERVICE_INFO_PROD}\"\nif [ ! -f $GOOGLESERVICE_INFO_PROD ]\nthen\necho \"No Release GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\nexit 1\nfi\n\n# Get a reference to the destination location for the GoogleService-Info.plist\nPLIST_DESTINATION=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\necho \"Will copy ${GOOGLESERVICE_INFO_PLIST} to final destination: ${PLIST_DESTINATION}\"\n\n# Copy over the prod GoogleService-Info.plist for Release builds\nif [ \"${CONFIGURATION}\" == \"Release\" ]\nthen\necho \"Using ${GOOGLESERVICE_INFO_PROD}\"\ncp \"${GOOGLESERVICE_INFO_PROD}\" \"${PLIST_DESTINATION}\"\nelse\necho \"Using ${GOOGLESERVICE_INFO_DEV}\"\ncp \"${GOOGLESERVICE_INFO_DEV}\" \"${PLIST_DESTINATION}\"\nfi";
+		};
 		5803C357210660B800BFAE7A /* Swift Format */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3812,7 +3835,6 @@
 				58B892151F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift in Sources */,
 				6789B77C1F8FDFF8008C6DCA /* TripDetailMapViewModel.swift in Sources */,
 				582F4ECC1F33B1120062A546 /* ScheduleTableViewCell.swift in Sources */,
-				5862859C211CC3EE00F4F012 /* NotificationManager+RemoteNotifications.swift in Sources */,
 				58B5B1051F6DB00000A3DAFB /* FavoritesState_FavoritesWatcher.swift in Sources */,
 				585572861F39499D004ABCD6 /* Color+Septa.swift in Sources */,
 				582F4EBB1F33B1120062A546 /* AppDelegate.swift in Sources */,
@@ -3898,6 +3920,7 @@
 				58FBB66C1F5885D800E6532B /* VerticalDottedTripGraphic.swift in Sources */,
 				6716090B1F676F2300941D2C /* ConnectionView.swift in Sources */,
 				5876DF771F72F7A3006C61FE /* BackButton.swift in Sources */,
+				0EE134C1212DD554005C2675 /* PushNotificationPreferenceProvider.swift in Sources */,
 				67365ACC1F754A3200FC86CB /* SevenEightsAnimationIn.swift in Sources */,
 				67F028961F7ED0460032F99C /* ContactViewController.swift in Sources */,
 				671609111F67F72600941D2C /* UIStackView+Util.swift in Sources */,
@@ -3909,6 +3932,7 @@
 				58DD1A901F600758002532DC /* NextToArriveViewModel+StopCell.swift in Sources */,
 				5803C371210A6B5900BFAE7A /* ManagePushNotificationsPushCell.swift in Sources */,
 				0E36308D21001DB300980EB6 /* TransitRouteCardView.swift in Sources */,
+				0EE134C4212DF243005C2675 /* PushNotificationPreferenceService.swift in Sources */,
 				678DAAB51F67478900EB6EE8 /* ConnectionCell.swift in Sources */,
 				5803C36B210A65AC00BFAE7A /* ManagePushNotificationsHeaderView.swift in Sources */,
 				58126F6B1F631C3100A6E187 /* RouteOverlay.swift in Sources */,
@@ -3970,6 +3994,7 @@
 				58E33F0E1F6098FE00C74B7C /* NextToArriveMapViewController.swift in Sources */,
 				0E2DCAE920F902230086F400 /* TransitViewVehiclePin.swift in Sources */,
 				5803C35F2106634900BFAE7A /* MinutesSinceMidnight.swift in Sources */,
+				0EE134C6212DF26D005C2675 /* PostBodyObjects.swift in Sources */,
 				58E33F181F61453000C74B7C /* NextToArriveTrip.swift in Sources */,
 				0E36308B20FFB20E00980EB6 /* NSMutableAttributedStringExtensions.swift in Sources */,
 				6789B78E1F8FF7E6008C6DCA /* TripDetailState_TripDetailsExistWatcher.swift in Sources */,
@@ -3983,7 +4008,6 @@
 				6789B7751F8FDFAF008C6DCA /* TripDetailViewController.swift in Sources */,
 				5803C387210B9D9C00BFAE7A /* TimeframeView.swift in Sources */,
 				584D54D32106103500EB773C /* PushNotificationPreferenceState.swift in Sources */,
-				58628598211CBD0800F4F012 /* NotificationManager+Subscriptions.swift in Sources */,
 				58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */,
 				0E2DCAD320F64C5D0086F400 /* TransitViewMapRouteViewModel.swift in Sources */,
 				0E64472220D27A7600A99E2D /* DatabaseUpdateManager.swift in Sources */,
@@ -4187,6 +4211,7 @@
 				58126F6D1F631C5100A6E187 /* RouteDrawable.swift in Sources */,
 				585760AD1F82A31F00A340DB /* NextToArriveState_NextToArriveUpdateStatusWatcher.swift in Sources */,
 				58248B701F6D6C3800DA2D65 /* SaveFavoriteButton.swift in Sources */,
+				0E17CDCD2135B7DD00D8CD5A /* PushNotificationKeepAlive.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4194,9 +4219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6708C27B1F73BABA00922D8E /* NavigationModalStateToNavigationEventTests.swift in Sources */,
 				584D54D9210612AD00EB773C /* PushNotificationPreferenceTests.swift in Sources */,
-				6708C2771F73AE3F00922D8E /* NavigationViewControllerStateToNavigationEventTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4427,7 +4450,7 @@
 				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA.beta;
+				PRODUCT_BUNDLE_IDENTIFIER = org.septa.iSEPTA;
 				PRODUCT_MODULE_NAME = Septa;
 				PRODUCT_NAME = SEPTA;
 				PROVISIONING_PROFILE = "";

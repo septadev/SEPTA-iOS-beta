@@ -93,7 +93,7 @@ class AlertDetailViewController: UIViewController, IdentifiableController {
         setTitle()
         alertDetails = store.state.alertState.alertDetails
 
-//        configureFooterViewData()
+        configureFooterViewData()
 
         watcher = AlertState_AlertDetailsWatcher()
         watcher.delegate = self
@@ -114,7 +114,7 @@ class AlertDetailViewController: UIViewController, IdentifiableController {
 
 extension AlertDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in _: UITableView) -> Int {
-        return 4
+        return 5
     }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -166,8 +166,8 @@ extension AlertDetailViewController: UITableViewDelegate, UITableViewDataSource 
             } else {
                 configureForWeather(cell: cell)
             }
-        //        case 4:
-        //            return alertDetailFooterViewFooterCell
+        case 4:
+            return alertDetailFooterViewFooterCell
         default: break
         }
 

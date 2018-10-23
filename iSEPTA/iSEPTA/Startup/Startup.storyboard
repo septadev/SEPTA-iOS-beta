@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l0w-LH-hyG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l0w-LH-hyG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,24 +22,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trolley-splash" translatesAutoresizingMaskIntoConstraints="NO" id="YBe-oB-rMw">
+                            <imageView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locomotive_image" translatesAutoresizingMaskIntoConstraints="NO" id="YBe-oB-rMw">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.078431372550000003" green="0.29411764709999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the SEPTA iOS App" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bz5-JX-XrU" userLabel="Welcome">
-                                <rect key="frame" x="47" y="500.5" width="281" height="68"/>
-                                <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="29"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for participating in the beta testing phase" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5y-jE-vJV" userLabel="Thanks">
-                                <rect key="frame" x="94" y="593.5" width="187.5" height="38.5"/>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="build Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kb4-wn-sdA">
-                                <rect key="frame" x="144" y="647" width="86.5" height="17"/>
+                                <rect key="frame" x="144.5" y="647" width="86.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -56,19 +43,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ycs-cw-c6u" firstAttribute="centerY" secondItem="y9C-gI-PKw" secondAttribute="centerY" id="0MK-bA-RMW"/>
-                            <constraint firstItem="bz5-JX-XrU" firstAttribute="width" secondItem="ih7-Rt-nFq" secondAttribute="width" multiplier="0.75" id="2GS-CO-Qb9" userLabel="WelcomeWidth"/>
-                            <constraint firstItem="bz5-JX-XrU" firstAttribute="centerX" secondItem="ih7-Rt-nFq" secondAttribute="centerX" id="3kK-NB-XbT" userLabel="WelcomeCenterX"/>
                             <constraint firstItem="Ycs-cw-c6u" firstAttribute="centerX" secondItem="y9C-gI-PKw" secondAttribute="centerX" id="6k5-Fo-oxF"/>
                             <constraint firstItem="YBe-oB-rMw" firstAttribute="top" secondItem="ih7-Rt-nFq" secondAttribute="top" id="KGv-oR-rSd" userLabel="splashTop"/>
-                            <constraint firstItem="kb4-wn-sdA" firstAttribute="top" secondItem="S5y-jE-vJV" secondAttribute="bottom" constant="15" id="NnY-M3-gUU" userLabel="ThanksBottom"/>
-                            <constraint firstItem="S5y-jE-vJV" firstAttribute="top" secondItem="bz5-JX-XrU" secondAttribute="bottom" constant="25" id="Q6T-sF-DnM" userLabel="WelcomeBottom"/>
                             <constraint firstItem="YBe-oB-rMw" firstAttribute="leading" secondItem="ih7-Rt-nFq" secondAttribute="leading" id="S5w-KH-CoO" userLabel="splashLeft"/>
-                            <constraint firstItem="S5y-jE-vJV" firstAttribute="centerX" secondItem="ih7-Rt-nFq" secondAttribute="centerX" id="aXL-st-YLA" userLabel="ThanksCenterX"/>
                             <constraint firstItem="y9C-gI-PKw" firstAttribute="bottom" secondItem="kb4-wn-sdA" secondAttribute="bottom" constant="3" id="eP0-Ss-NMG" userLabel="BuildNumberBottom"/>
                             <constraint firstItem="kb4-wn-sdA" firstAttribute="centerX" secondItem="y9C-gI-PKw" secondAttribute="centerX" id="gxm-PD-pxJ" userLabel="BuildNumberCenterX"/>
                             <constraint firstAttribute="trailing" secondItem="YBe-oB-rMw" secondAttribute="trailing" id="nkF-oq-KdD" userLabel="splashRight"/>
                             <constraint firstAttribute="bottom" secondItem="YBe-oB-rMw" secondAttribute="bottom" id="qhJ-Gn-mCm" userLabel="splashBottom"/>
-                            <constraint firstItem="S5y-jE-vJV" firstAttribute="width" secondItem="ih7-Rt-nFq" secondAttribute="width" multiplier="0.5" id="vFy-j2-YCe" userLabel="ThanksWidth"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y9C-gI-PKw"/>
                     </view>
@@ -83,6 +64,6 @@
     </scenes>
     <resources>
         <image name="SeptaLogoTrademark" width="154" height="150"/>
-        <image name="trolley-splash" width="375" height="667"/>
+        <image name="locomotive_image" width="500" height="889"/>
     </resources>
 </document>

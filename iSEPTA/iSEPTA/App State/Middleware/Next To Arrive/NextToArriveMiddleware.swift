@@ -48,7 +48,8 @@ class NextToArriveMiddleware {
         let copyScheduleRequest = CopyScheduleRequestToTargetForScheduleAction(
             targetForScheduleAction: .nextToArrive,
             scheduleRequest: store.state.scheduleState.scheduleRequest,
-            description: "Copying Schedule Request from schedules to Next To Arrive")
+            description: "Copying Schedule Request from schedules to Next To Arrive"
+        )
         store.dispatch(copyScheduleRequest)
 
         navigateToNextToArrive()
@@ -120,48 +121,59 @@ class NextToArriveMiddleware {
 
         let notif = action.notification
         let tripId = notif.vehicleId
-        guard notif.expires > Date() else { return }
         let client = SEPTAApiClient.defaultClient(url: SeptaNetwork.sharedInstance.url, apiKey: SeptaNetwork.sharedInstance.apiKey)
+        // TODO: JJ
+        /* func modalShortcut(details: RealTimeArrivalDetail) {
+         DispatchQueue.main.async {
+         let matchingStop = NextToArriveStop(transitMode: .rail, routeId: notif.routeId, routeName: details.line ?? "", tripId: Int(notif.vehicleId), arrivalTime: Date(), departureTime: Date(), lastStopId: nil, lastStopName: nil, delayMinutes: nil, direction: nil, vehicleLocationCoordinate: nil, vehicleIds: nil, hasRealTimeData: true, service: nil)
+         let updateAction = UpdateTripDetails(tripDetails: matchingStop)
+         store.dispatch(updateAction)
 
-        func modalShortcut(details: RealTimeArrivalDetail) {
-            DispatchQueue.main.async {
-                let matchingStop = NextToArriveStop(transitMode: .rail, routeId: notif.routeId, routeName: details.line ?? "", tripId: Int(notif.vehicleId), arrivalTime: Date(), departureTime: Date(), lastStopId: nil, lastStopName: nil, delayMinutes: nil, direction: nil, vehicleLocationCoordinate: nil, vehicleIds: nil, hasRealTimeData: true, service: nil)
-                let updateAction = UpdateTripDetails(tripDetails: matchingStop)
-                store.dispatch(updateAction)
+         let modalAction = PresentModal(viewController: .tripDetailModalController, description: "Not enough info to display trip detail info in the flow")
+         store.dispatch(modalAction)
+         }
+         } */
 
-                let modalAction = PresentModal(viewController: .tripDetailModalController, description: "Not enough info to display trip detail info in the flow")
-                store.dispatch(modalAction)
-            }
-        }
-
-        client.getRealTimeRailArrivalDetail(tripId: tripId).then { details -> Void in
-            guard let details = details else { return }
-            guard let destinationStation = details.destinationStation,
-                let nextStopStation = details.nextstopStation else { modalShortcut(details: details); return }
-
-            FindStopByStopNameCommand.sharedInstance.stop(stopName: destinationStation) { stops, _ in
-                guard let stops = stops, let destinationStop = stops.first else { modalShortcut(details: details); return }
-
-                FindStopByStopNameCommand.sharedInstance.stop(stopName: nextStopStation) { stops, _ in
-                    guard let stops = stops, let nextStop = stops.first else { modalShortcut(details: details); return }
-
-                    let selectedRoute = Route.allRailRoutesRoute()
-
-                    let scheduleRequest = ScheduleRequest(transitMode: .rail, selectedRoute: selectedRoute, selectedStart: nextStop, selectedEnd: destinationStop)
-
-                    let copyScheduleAction = CopyScheduleRequestToTargetForScheduleAction(targetForScheduleAction: .nextToArrive, scheduleRequest: scheduleRequest, description: "Handling a delay Notification")
-                    store.dispatch(copyScheduleAction)
-
-                    let resetViewState = ResetViewState(viewController: .nextToArriveDetailController, description: "loading up trip detail")
-                    store.dispatch(resetViewState)
-
-                    NextToArriveDetailForDelayNotification.sharedInstance.waitForRealTimeData(tripId: tripId)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            client.getRealTimeRailArrivalDetail(tripId: tripId).then { details -> Void in
+                guard let details = details, let _ = details.tripid, let destStation = details.destinationStation, destStation.count > 0 else {
+                    showExpiredAlert()
+                    return
                 }
-            }
+                // TODO: JJ
+                guard let destinationStation = details.destinationStation,
+                    let nextStopStation = details.nextstopStation else { /* modalShortcut(details: details); */ return }
+                // TODO: JJ
+                FindStopByStopNameCommand.sharedInstance.stop(stopName: destinationStation) { stops, _ in
+                    guard let stops = stops, let destinationStop = stops.first else { /* modalShortcut(details: details); */ return }
+                    // TODO: JJ
+                    FindStopByStopNameCommand.sharedInstance.stop(stopName: nextStopStation) { stops, _ in
+                        guard let stops = stops, let nextStop = stops.first else { /* modalShortcut(details: details); */ return }
 
-        }.catch { error in
-            print(error.localizedDescription)
+                        let selectedRoute = Route.allRailRoutesRoute()
+
+                        let scheduleRequest = ScheduleRequest(transitMode: .rail, selectedRoute: selectedRoute, selectedStart: nextStop, selectedEnd: destinationStop)
+
+                        let copyScheduleAction = CopyScheduleRequestToTargetForScheduleAction(targetForScheduleAction: .nextToArrive, scheduleRequest: scheduleRequest, description: "Handling a delay Notification")
+                        store.dispatch(copyScheduleAction)
+
+                        let resetViewState = ResetViewState(viewController: .nextToArriveDetailController, description: "loading up trip detail")
+                        store.dispatch(resetViewState)
+
+                        NextToArriveDetailForDelayNotification.sharedInstance.waitForRealTimeData(tripId: tripId)
+                    }
+                }
+
+            }.catch { error in
+                print(error.localizedDescription)
+            }
         }
+    }
+
+    private static func showExpiredAlert() {
+        let alert = UIAlertController(title: "This notification has expired and is no longer valid.", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        alert.show()
     }
 
     static func navigateToAlertDetails() {

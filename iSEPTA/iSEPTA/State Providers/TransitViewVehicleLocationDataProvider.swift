@@ -16,8 +16,6 @@ class TransitViewVehicleLocationDataProvider: StoreSubscriber {
 
     typealias StoreSubscriberStateType = Bool
 
-    let client = SEPTAApiClient.defaultClient(url: SeptaNetwork.sharedInstance.url, apiKey: SeptaNetwork.sharedInstance.apiKey)
-
     init() {
         subscribe()
     }

@@ -50,7 +50,7 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber {
             textField.resignFirstResponder()
         }
 
-        switch searchMode {
+        switch state.searchMode {
         case .directLookup:
             textField.clearButtonMode = .never
             textField.isEnabled = true
@@ -67,7 +67,6 @@ class SearchStopsModalHeaderViewController: UIViewController, StoreSubscriber {
             textField.clearButtonMode = .always
             textField.isEnabled = false
             searchByLocationButton.isHidden = true
-        default: break
         }
     }
 

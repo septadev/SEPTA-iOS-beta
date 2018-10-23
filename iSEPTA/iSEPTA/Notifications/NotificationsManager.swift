@@ -12,13 +12,12 @@ import Foundation
 import SeptaSchedule
 import UserNotifications
 
-public typealias PayLoad = [AnyHashable: Any]
+public typealias Payload = [AnyHashable: Any]
 
 struct NotificationsManager {
     struct Keys {
         static let notificationTypeKey = "notificationType"
         static let notificationKey = "notification"
-        static let fcmTokenKey = "fcmTokenKey"
         static let septaAnnouncementTopic = "TOPIC_SEPTA_ANNOUNCEMENTS"
         static let notificationIdentifier = "SEPTALocalNotification"
     }

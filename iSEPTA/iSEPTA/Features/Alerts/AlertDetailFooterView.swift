@@ -16,6 +16,8 @@ class AlertDetailFooterView: UIView, StoreSubscriber {
 
     var pushNotificationRoute: PushNotificationRoute? {
         didSet {
+            // Glendale Combined is "unsubscribable"
+            isHidden = pushNotificationRoute?.routeId == "GC"
             store.subscribe(self) {
                 $0.select { $0.preferenceState.pushNotificationPreferenceState.routeIds }
             }
@@ -27,7 +29,7 @@ class AlertDetailFooterView: UIView, StoreSubscriber {
         guard let viewController = UIResponder.parentViewController(forView: self) else { return }
         DispatchQueue.main.async {
             route.isEnabled = sender.isOn
-            store.dispatch(UpdatePushNotificationRoute(route: route, viewController: viewController))
+            store.dispatch(UpdatePushNotificationRoute(route: route, postImmediately: true, viewController: viewController))
         }
     }
 

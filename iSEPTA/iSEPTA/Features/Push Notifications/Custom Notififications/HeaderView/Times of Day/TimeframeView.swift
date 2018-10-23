@@ -106,6 +106,10 @@ class TimeframeView: UIView, TimeframeBoundaryViewDelegate {
             guard let minutesSinceMidnight = MinutesSinceMidnight(date: date) else { return }
             let block: (UserPreferenceState) -> UserPreferenceState = {
                 var newState = $0
+                if $0.pushNotificationPreferenceState.synchronizationStatus == .upToDate {
+                    newState.lastSavedPushPreferenceState = $0.pushNotificationPreferenceState
+                    newState.pushNotificationPreferenceState.synchronizationStatus = .pendingSave
+                }
                 newState.pushNotificationPreferenceState.notificationTimeWindows[index].startMinute = minutesSinceMidnight
                 return newState
             }
@@ -127,6 +131,10 @@ class TimeframeView: UIView, TimeframeBoundaryViewDelegate {
             guard let minutesSinceMidnight = MinutesSinceMidnight(date: date) else { return }
             let block: (UserPreferenceState) -> UserPreferenceState = {
                 var newState = $0
+                if $0.pushNotificationPreferenceState.synchronizationStatus == .upToDate {
+                    newState.lastSavedPushPreferenceState = $0.pushNotificationPreferenceState
+                    newState.pushNotificationPreferenceState.synchronizationStatus = .pendingSave
+                }
                 newState.pushNotificationPreferenceState.notificationTimeWindows[index].endMinute = minutesSinceMidnight
                 return newState
             }

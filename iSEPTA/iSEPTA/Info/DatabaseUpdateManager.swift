@@ -25,6 +25,9 @@ class DatabaseUpdateManager {
         if databaseFileManager.appHasASQLiteFile() {
             store.dispatch(NewDatabaseState(databaseState: .loaded))
             databaseFileManager.removeOldDatabases()
+            // Force complete reset of schedule data for nextToArrive
+            stateProviders.nextToArriveScheduleDataProvider.unsubscribe()
+            stateProviders.nextToArriveScheduleDataProvider.subscribe()
             store.dispatch(CheckForDatabaseUpdate())
         } else {
             databaseFileManager.unzipFileToDocumentsDirectory()

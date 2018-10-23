@@ -10,6 +10,12 @@ import Foundation
 import SeptaSchedule
 
 struct PushNotificationPreferenceState: Codable, Equatable {
+    /// The UUID of this app on this device
+    let deviceId = UIDevice.current.identifierForVendor?.uuidString ?? ""
+
+    /// The token provided by Firebase that is required for sending push notifications to this device
+    var firebaseToken: String = ""
+
     /// An array of `RangeBounds` structs.
     /// For example:  [[start: 360, end: 720], [start: 900, end: 960]] means
     /// that the user wants to receive notifications between 6 AM and 12 PM.
@@ -34,16 +40,19 @@ struct PushNotificationPreferenceState: Codable, Equatable {
     /// User Views SEPTA Notifications as priority that should override Do Not Disturb on the device
     var userWantToReceiveNotificationsEvenWhenDoNotDisturbIsOn: Bool = false
 
-    /// This method indicates whether a push notification should be fired
-    /// based on the user preferences described in this class.  Note that
-    /// those preferences do not include whether or not the user has authorized
-    /// push notifications in the first place.  That needs to be checked separately
-    /// TODO we will probably want to move this method someplace else
-    func userShouldReceiveNotification(atDate date: Date, routeId: String, transitMode: TransitMode) -> Bool {
-        let timeWindowsMatches = notificationTimeWindows.map { $0.dateFitsInRange(date: date) }
-        return
-            routeIds.filter({ $0.isEnabled && $0.routeId == routeId && $0.transitMode == transitMode }).count == 1 &&
-            daysOfWeek.matchesDate(date) &&
-            timeWindowsMatches.contains(true)
-    }
+    /// Whether or not the push notification preferences should be posted to the backend API
+    var postUserNotificationPreferences: PostNotificationPreferencesState = PostNotificationPreferencesState()
+
+    /// The current backend synchronization status of the preference state
+    var synchronizationStatus: PushNotificationPreferenceSynchronizationStatus = .pendingSave
+}
+
+enum PushNotificationPreferenceSynchronizationStatus: String, Codable, Equatable {
+    case upToDate
+    case pendingSave
+}
+
+public struct PostNotificationPreferencesState: Codable, Equatable {
+    var postNow: Bool = false
+    var showSuccess: Bool = false
 }

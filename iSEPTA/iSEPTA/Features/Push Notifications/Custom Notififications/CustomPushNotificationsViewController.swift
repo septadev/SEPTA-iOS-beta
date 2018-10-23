@@ -14,6 +14,8 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
     var viewController: ViewController = .customPushNotificationsController
     typealias StoreSubscriberStateType = PushNotificationPreferenceState
 
+    var saveButton = UIBarButtonItem()
+
     var headerView: MyNotificationsHeaderView!
     var viewModel = CustomPushNotificationsViewModel()
 
@@ -22,6 +24,9 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+
+        configureNavBar()
+
         headerView = UIView.instanceFromNib(named: "MyNotificationsHeaderView")
         guard let addEditView = headerView.addEditViewWrapper.contentView as? AddEditView else { return }
         addEditView.editDelegate = self
@@ -37,6 +42,17 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
         tableView.allowsMultipleSelectionDuringEditing = false
     }
 
+    private func configureNavBar() {
+        // Left side
+        navigationItem.hidesBackButton = true
+        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(back(_:)))
+        navigationItem.leftBarButtonItem = backButton
+
+        // Right side
+        saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save(_:)))
+        navigationItem.setRightBarButton(saveButton, animated: false)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         store.subscribe(self) {
@@ -46,22 +62,55 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+
+        if saveButton.isEnabled {
+            // Discard pending changes
+            store.dispatch(PushNotificationPreferenceSynchronizationFail())
+        }
+
         isCurrentlyEditing(false)
         store.unsubscribe(self)
     }
 
     var firstPass = true
     func newState(state: StoreSubscriberStateType) {
+        saveButton.isEnabled = state.synchronizationStatus == .pendingSave
         viewModel.routes = state.routeIds
         tableView.tableHeaderView = headerView
         if state.routeIds.count == 0 {
             tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 100))
-
         } else {
             tableView.tableFooterView = nil
         }
 
         tableView.reloadData()
+    }
+
+    @objc func back(_: Any) {
+        // If changes have been made
+        if saveButton.isEnabled {
+            let alert = UIAlertController(title: "Unsaved Changes", message: "Would you like to save your modified push notification preferences?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Discard", style: .destructive, handler: { _ in
+                DispatchQueue.main.async {
+                    store.dispatch(PushNotificationPreferenceSynchronizationFail())
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { _ in
+                DispatchQueue.main.async {
+                    self.saveButton.isEnabled = false
+                    store.dispatch(PostPushNotificationPreferences(postNow: true, showSuccess: true, viewController: nil))
+                }
+            }))
+            present(alert, animated: true, completion: nil)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
+    }
+
+    @objc func save(_: Any) {
+        saveButton.isEnabled = false
+        store.dispatch(PostPushNotificationPreferences(postNow: true, showSuccess: true, viewController: nil))
     }
 
     func isCurrentlyEditing(_ editing: Bool) {
@@ -98,9 +147,7 @@ class CustomPushNotificationsViewController: UITableViewController, Identifiable
 
     override func tableView(_: UITableView, commit _: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         let routeToDelete = viewModel.routes[indexPath.row]
-        rowsToDelete.append(routeToDelete)
-        viewModel.routes.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        store.dispatch(RemovePushNotificationRoute(routes: [routeToDelete], viewController: self))
     }
 
     override func tableView(_: UITableView, canEditRowAt _: IndexPath) -> Bool {

@@ -12,12 +12,12 @@ struct TransitViewState {
     let availableRoutes: [TransitRoute]
     let transitViewModel: TransitViewModel
     let vehicleLocations: [TransitViewVehicleLocation]
-    let routeSlotBeingChanged: TransitViewRouteSlot?
+    let routeSlotBeingChanged: TransitViewRouteSlot
 
     let refreshTransitViewRoutes: Bool
     let refreshVehicleLocationData: Bool
 
-    init(availableRoutes: [TransitRoute] = [], transitViewModel: TransitViewModel = TransitViewModel(), locations: [TransitViewVehicleLocation] = [], routeSlotBeingChanged: TransitViewRouteSlot = .first, refreshRoutes: Bool = false, refreshVehicleLocations: Bool = false) {
+    init(availableRoutes: [TransitRoute] = [], transitViewModel: TransitViewModel = TransitViewModel(), locations: [TransitViewVehicleLocation] = [], routeSlotBeingChanged: TransitViewRouteSlot, refreshRoutes: Bool = false, refreshVehicleLocations: Bool = false) {
         self.availableRoutes = availableRoutes
         self.transitViewModel = transitViewModel
         vehicleLocations = locations
@@ -37,5 +37,8 @@ extension TransitViewState: Equatable {}
 func == (lhs: TransitViewState, rhs: TransitViewState) -> Bool {
     return (lhs.availableRoutes == rhs.availableRoutes) &&
         (lhs.transitViewModel == rhs.transitViewModel) &&
-        (lhs.vehicleLocations == rhs.vehicleLocations)
+        (lhs.vehicleLocations == rhs.vehicleLocations) &&
+        (lhs.routeSlotBeingChanged == rhs.routeSlotBeingChanged) &&
+        (lhs.refreshTransitViewRoutes == rhs.refreshTransitViewRoutes) &&
+        (lhs.refreshVehicleLocationData == rhs.refreshVehicleLocationData)
 }

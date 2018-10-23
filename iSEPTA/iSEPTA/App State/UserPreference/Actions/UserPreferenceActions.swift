@@ -40,15 +40,22 @@ struct UpdatePushNotificationPreferenceState: UserPreferencesAction {
     let description = "A new preference state for push notifications has been set"
 }
 
+struct SetFirebaseTokenForPushNotificatoins: UserPreferencesAction {
+    let token: String
+    var description = "New Firebase token received"
+}
+
 struct UserWantsToSubscribeToPushNotifications: UserPreferencesAction, PushNotificationAuthorizatonRequired, ToggleSwitchAction {
     let viewController: UIViewController?
     var boolValue: Bool = false
     let alsoEnableRoutes: Bool
+    var fromAppLaunch: Bool
     let description = "Toggling Push Notification preference State"
-    init(viewController: UIViewController?, boolValue: Bool = false, alsoEnableRoutes: Bool = true) {
+    init(viewController: UIViewController?, boolValue: Bool = false, alsoEnableRoutes: Bool = true, fromAppLaunch: Bool = false) {
         self.viewController = viewController
         self.boolValue = boolValue
         self.alsoEnableRoutes = alsoEnableRoutes
+        self.fromAppLaunch = fromAppLaunch
     }
 }
 
@@ -64,17 +71,9 @@ struct UserWantsToSubscribeToSpecialAnnouncements: UserPreferencesAction, PushNo
     }
 }
 
-struct UserWantsToSubscribeToOverideDoNotDisturb: UserPreferencesAction, PushNotificationAuthorizatonRequired, ToggleSwitchAction {
-    let viewController: UIViewController?
-    var boolValue: Bool = false
-    let description = "Toggling Wants to ignore Do Not Disturb"
-    init(viewController: UIViewController?, boolValue _: Bool = false) {
-        self.viewController = viewController
-    }
-}
-
 struct UpdateSystemAuthorizationStatusForPushNotifications: UserPreferencesAction {
     let authorizationStatus: PushNotificationAuthorizationState
+    var fromAppLaunch: Bool
     let description = "Authorization Status for Push Notifications"
 }
 
@@ -102,12 +101,6 @@ struct DeleteTimeframe: UserPreferencesAction, PushNotificationAuthorizatonRequi
     let description = "Deleting a new time frame"
 }
 
-struct AddPushNotificationRoute: UserPreferencesAction, PushNotificationAuthorizatonRequired {
-    let route: PushNotificationRoute
-    let viewController: UIViewController?
-    let description = "Adding a push Notification Route"
-}
-
 struct RemovePushNotificationRoute: UserPreferencesAction, PushNotificationAuthorizatonRequired {
     let routes: [PushNotificationRoute]
     let viewController: UIViewController?
@@ -116,11 +109,27 @@ struct RemovePushNotificationRoute: UserPreferencesAction, PushNotificationAutho
 
 struct UpdatePushNotificationRoute: UserPreferencesAction, PushNotificationAuthorizatonRequired {
     let route: PushNotificationRoute
+    let postImmediately: Bool
     let viewController: UIViewController?
     let description = "Adding a push Notification Route"
 }
 
 struct ToggleAllPushNotificationRoutes: UserPreferencesAction {
     var boolValue: Bool
-    let description = "Disabling all push notification Routes"
+    let description = "Toggling all push notification Routes"
+}
+
+struct PostPushNotificationPreferences: UserPreferencesAction, PushNotificationAuthorizatonRequired {
+    let postNow: Bool
+    let showSuccess: Bool
+    let viewController: UIViewController?
+    let description = "Save push notification preferences to backend"
+}
+
+struct PushNotificationPreferenceSynchronizationSuccess: UserPreferencesAction {
+    var description = "Push notification preferences were successfully saved in backend"
+}
+
+struct PushNotificationPreferenceSynchronizationFail: UserPreferencesAction {
+    var description = "Push notification preferences failed to be saved in backend"
 }
