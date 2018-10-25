@@ -133,14 +133,14 @@ class NextToArriveMiddleware {
                     let nextStopStation = details.nextstopStation else { return }
                 // TODO: JJ
                 FindStopByStopNameCommand.sharedInstance.stop(stopName: destinationStation) { stops, _ in
-                    guard let stops = stops, let destinationStop = stops.first else { /* modalShortcut(details: details); */ return }
+                    guard let stops = stops, let destinationStop = stops.first else { return }
                     // TODO: JJ
                     FindStopByStopNameCommand.sharedInstance.stop(stopName: nextStopStation) { stops, _ in
                         guard let stops = stops, let nextStop = stops.first else { return }
 
                         let selectedRoute = Route.allRailRoutesRoute()
 
-                        let scheduleRequest = ScheduleRequest(transitMode: .rail, selectedRoute: selectedRoute, selectedEnd: destinationStop)
+                        let scheduleRequest = ScheduleRequest(transitMode: .rail, selectedRoute: selectedRoute, selectedStart: nextStop, selectedEnd: destinationStop)
 
                         let copyScheduleAction = CopyScheduleRequestToTargetForScheduleAction(targetForScheduleAction: .nextToArrive, scheduleRequest: scheduleRequest, description: "Handling a delay Notification")
                         store.dispatch(copyScheduleAction)
