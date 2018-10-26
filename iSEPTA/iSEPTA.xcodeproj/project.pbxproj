@@ -665,7 +665,6 @@
 		67C567331F598A0400FF6203 /* TransitAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C567321F598A0400FF6203 /* TransitAlertView.swift */; };
 		67C567351F598C7900FF6203 /* SeptaAlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C567341F598C7900FF6203 /* SeptaAlertsViewController.swift */; };
 		67C567371F598D7A00FF6203 /* TransitAlerts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67C567361F598D7A00FF6203 /* TransitAlerts.storyboard */; };
-		67C60B2E21224D7B007EC921 /* TripDetailModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C60B2D21224D7B007EC921 /* TripDetailModalViewController.swift */; };
 		67D2F7911F7E43BC00E0FF32 /* DarkBlueGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D2F7901F7E43BC00E0FF32 /* DarkBlueGradient.swift */; };
 		67D2F7951F7E4C8700E0FF32 /* webView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67D2F7941F7E4C8700E0FF32 /* webView.storyboard */; };
 		67D693521F7E8509007FE86E /* SEPTAConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D693511F7E8509007FE86E /* SEPTAConnection.swift */; };
@@ -1451,7 +1450,6 @@
 		67C567321F598A0400FF6203 /* TransitAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitAlertView.swift; sourceTree = "<group>"; };
 		67C567341F598C7900FF6203 /* SeptaAlertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaAlertsViewController.swift; sourceTree = "<group>"; };
 		67C567361F598D7A00FF6203 /* TransitAlerts.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransitAlerts.storyboard; sourceTree = "<group>"; };
-		67C60B2D21224D7B007EC921 /* TripDetailModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailModalViewController.swift; sourceTree = "<group>"; };
 		67D2F7901F7E43BC00E0FF32 /* DarkBlueGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkBlueGradient.swift; sourceTree = "<group>"; };
 		67D2F7941F7E4C8700E0FF32 /* webView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = webView.storyboard; sourceTree = "<group>"; };
 		67D693511F7E8509007FE86E /* SEPTAConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEPTAConnection.swift; sourceTree = "<group>"; };
@@ -3047,7 +3045,6 @@
 				6789B7781F8FDFD3008C6DCA /* map */,
 				6789B7711F8FDF7A008C6DCA /* tripDetail.storyboard */,
 				6789B7741F8FDFAF008C6DCA /* TripDetailViewController.swift */,
-				67C60B2D21224D7B007EC921 /* TripDetailModalViewController.swift */,
 				6789B7731F8FDF8B008C6DCA /* Info */,
 			);
 			path = "Trip Detail";
@@ -3929,7 +3926,6 @@
 				679BC9DE21129CA800F666BA /* PushNotificationTableViewCell.swift in Sources */,
 				580128121F6C055B006B6DB8 /* RedButton.swift in Sources */,
 				5809EE061F438B7600BBECFF /* ScheduleRequest.swift in Sources */,
-				67C60B2E21224D7B007EC921 /* TripDetailModalViewController.swift in Sources */,
 				6789B7811F8FEE17008C6DCA /* TripDetailState.swift in Sources */,
 				670C59E51F8A5D2700CAE1AC /* FavoritesMiddlewareActions.swift in Sources */,
 				0E4328E620D04AC800FBD805 /* DatabaseUpdateWatcher.swift in Sources */,
