@@ -21,7 +21,6 @@ extension NotificationsManager {
         case .delay:
             guard let delayNotification = decodeDelayNotification(info: info) else { return }
             if delayNotification.delayType == .actual {
-                // TODO: JJ
                 navigateToNextToArrive(notification: delayNotification)
             }
         default:
