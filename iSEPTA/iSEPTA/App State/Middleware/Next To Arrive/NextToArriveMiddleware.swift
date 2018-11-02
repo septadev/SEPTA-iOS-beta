@@ -147,10 +147,10 @@ class NextToArriveMiddleware {
                         let copyScheduleAction = CopyScheduleRequestToTargetForScheduleAction(targetForScheduleAction: .nextToArrive, scheduleRequest: scheduleRequest, description: "Handling a delay Notification")
                         store.dispatch(copyScheduleAction)
 
-                        NextToArriveDetailForDelayNotification.sharedInstance.waitForRealTimeData(tripId: tripId)
-
                         let resetViewState = ResetViewState(viewController: .nextToArriveDetailController, description: "loading up trip detail")
                         store.dispatch(resetViewState)
+
+                        NextToArriveDetailForDelayNotification.sharedInstance.waitForRealTimeData(tripId: tripId)
                     }
                 }
 

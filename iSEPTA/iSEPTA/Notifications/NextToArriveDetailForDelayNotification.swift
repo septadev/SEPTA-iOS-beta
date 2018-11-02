@@ -23,7 +23,7 @@ class NextToArriveDetailForDelayNotification: StoreSubscriber {
         guard let tripIdInt = Int(tripId) else { return }
         self.tripIdInt = tripIdInt
         subscribe()
-        timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { timer in
+        timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: false, block: { timer in
             timer.invalidate()
             store.unsubscribe(self)
         })
