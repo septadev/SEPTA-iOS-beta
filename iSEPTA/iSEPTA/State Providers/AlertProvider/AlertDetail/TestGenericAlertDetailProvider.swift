@@ -99,13 +99,12 @@ class TestGenericAlertDetailProvider: StateProvider {
     /// helper classes
     fileprivate func extractMessages(jsonArray: [[String: Any]]) -> [String]? {
         guard let messages = jsonArray
-            .map({ $0["current_message"] })
+            .map({ $0["description"] }) // TODO: JJ current_message
             .flatMap({ $0 })
             .filter({
                 guard let string = $0 as? String else { return false }
                 return string.count > 0
-            }
-            ) as? [String] else {
+            }) as? [String] else {
             return nil
         }
         return messages
@@ -118,10 +117,12 @@ class TestGenericAlertDetailProvider: StateProvider {
     }
 
     fileprivate func buildRequest(alertName: String) -> URLRequest? {
-        guard let url = buildURL(alertName: alertName) else { return nil }
+        guard let url = buildURL(alertName: alertName),
+            let apiKey = Bundle.main.object(forInfoDictionaryKey: "septaApiKey") as? String else { return nil }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "accept")
+        request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
         return request
     }
 

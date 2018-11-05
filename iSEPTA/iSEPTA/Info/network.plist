@@ -21,12 +21,12 @@
 	<key>appAlertName</key>
 	<string>APP</string>
 	<key>genericAlertEnvironment</key>
-	<string>prod</string>
+	<string>test</string>
 	<key>genericAlertEnvironment Desc</key>
 	<string>should be either &apos;prod&apos; or &apos;test&apos;</string>
 	<key>genericAlertTestHost</key>
-	<string>https://apitest.septa.org</string>
+	<string>http://apitest.septa.org</string>
 	<key>genericAlertTestPath</key>
-	<string>api/Alerts/get_alert_data_test.php</string>
+	<string>api/Alerts-Test</string>
 </dict>
 </plist>

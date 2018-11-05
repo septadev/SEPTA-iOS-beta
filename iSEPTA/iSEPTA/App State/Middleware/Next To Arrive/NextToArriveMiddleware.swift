@@ -133,18 +133,24 @@ class NextToArriveMiddleware {
                     let nextStopStation = details.nextstopStation else { return }
 
                 FindStopByStopNameCommand.sharedInstance.stop(stopName: destinationStation) { stops, _ in
-                    guard let stops = stops, let destinationStop = stops.first else { return }
+                    guard let stops = stops, let destinationStop = stops.first else {
+                        showExpiredAlert()
+                        return
+                    }
                     FindStopByStopNameCommand.sharedInstance.stop(stopName: nextStopStation) { stops, _ in
-                        guard let stops = stops, let nextStop = stops.first else { return }
+                        guard let stops = stops, let nextStop = stops.first else {
+                            showExpiredAlert()
+                            return
+                        }
                         let selectedRoute = Route.allRailRoutesRoute()
                         let scheduleRequest = ScheduleRequest(transitMode: .rail, selectedRoute: selectedRoute, selectedStart: nextStop, selectedEnd: destinationStop)
                         let copyScheduleAction = CopyScheduleRequestToTargetForScheduleAction(targetForScheduleAction: .nextToArrive, scheduleRequest: scheduleRequest, description: "Handling a delay Notification")
                         store.dispatch(copyScheduleAction)
 
-                        NextToArriveDetailForDelayNotification.sharedInstance.waitForRealTimeData(tripId: tripId)
-
                         let resetViewState = ResetViewState(viewController: .nextToArriveDetailController, description: "loading up trip detail")
                         store.dispatch(resetViewState)
+
+                        NextToArriveDetailForDelayNotification.sharedInstance.waitForRealTimeData(tripId: tripId)
                     }
                 }
 
