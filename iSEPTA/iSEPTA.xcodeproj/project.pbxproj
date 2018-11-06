@@ -3721,7 +3721,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftformat >/dev/null; then\n  . $SRCROOT/../Utilities/swiftFormat.sh\nelse\n    echo \"warning: swiftformat not installed, download from https://github.com/nicklockwood/SwiftFormat or brew install swiftformat\"\nfi";
+			shellScript = "if which swiftformat >/dev/null; then\n  . $SRCROOT/../Utilities/swiftFormat.sh\nelse\n    echo \"warning: swiftformat not installed, download from https://github.com/nicklockwood/SwiftFormat or brew install swiftformat\"\nfi\n";
 		};
 		585F585A1F3377EF00D3ED6C /* Copy Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
