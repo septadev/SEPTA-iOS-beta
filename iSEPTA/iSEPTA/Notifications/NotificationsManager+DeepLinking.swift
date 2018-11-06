@@ -22,9 +22,8 @@ extension NotificationsManager {
             guard let delayNotification = decodeDelayNotification(info: info) else { return }
             if delayNotification.delayType == .actual {
                 // TODO: JJ might still be valid
-                //navigateToNextToArrive(notification: delayNotification)
-                let newRequest = TripDetailsRequestURLSession()
-                newRequest.sendRequestRealTimeTripsDetails(notification: delayNotification)
+                // navigateToNextToArrive(notification: delayNotification)
+                TripDetailsRequestURLSession.sharedInstance.sendRequestRealTimeTripsDetails(notification: delayNotification)
             }
         default:
             break
