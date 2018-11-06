@@ -10,3 +10,10 @@ APP_ICON = AppIconDebug
 APS_ENV = development
 SEPTA_BASE_URL = https:/$()/dev-mobile.septa.org/prod
 SEPTA_API_KEY = ZYbuUWm9O41RCzK3YQOm795h6L4hAT6yaNrwoBkD
+
+//SEPTA_BASE_URL = https:/$()/dev-mobile.septa.org
+//SEPTA_API_KEY = ZYbuUWm9O41RCzK3YQOm795h6L4hAT6yaNrwoBkD
+//SEPTA_BASE_URL = https:/$()/qa-mobile.septa.org
+//SEPTA_API_KEY = ltaLJvfFr1a0A7loyy36D5z9yPLl6h2A8dBrLRt6
+//SEPTA_BASE_URL = https:/$()/prod-mobile.septa.org
+//SEPTA_API_KEY = S0XFfcawkb54IMFnAGctQajLNUK7QxNfoi4zgaD4

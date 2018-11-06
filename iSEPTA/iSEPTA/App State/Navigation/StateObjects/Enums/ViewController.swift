@@ -43,7 +43,6 @@ enum ViewController: String, Equatable {
 
     // trip detials
     case tripDetailViewController
-    // TODO: JJ case tripDetailModalController
 
     // TransitView
     case transitViewSelectionViewController
@@ -92,8 +91,6 @@ enum ViewController: String, Equatable {
             return "about"
         case .tripDetailViewController:
             return "tripDetail"
-        // TODO: JJ case .tripDetailModalController:
-        // TODO: JJ     return "tripDetail"
         case .transitViewSelectionViewController:
             return "TransitView"
         case .transitViewSelectRouteViewController:
@@ -135,7 +132,7 @@ enum ViewController: String, Equatable {
         switch self {
         case .editFavoriteViewController:
             return HalfSizePresentationController(presentedViewController: presentedViewController, presenting: presenting)
-        case .moreNavigationController, .routesViewController, .selectStartController, .selectStopController, .selectStopNavigationController: // TODO: JJ , .tripDetailModalController:
+        case .moreNavigationController, .routesViewController, .selectStartController, .selectStopController, .selectStopNavigationController:
             return SevenEightsPresentationController(presentedViewController: presentedViewController, presenting: presenting)
         case .timeOfDayPickerController:
             return DatePickerPresentationController(presentedViewController: presentedViewController, presenting: presenting)
@@ -148,7 +145,7 @@ enum ViewController: String, Equatable {
         case .editFavoriteViewController:
             return HalfSheetTransitioningDelegate(viewController: self)
         case .moreNavigationController, .routesViewController, .selectStartController, .selectStopController, .selectStopNavigationController,
-             .transitViewSelectRouteViewController: // TODO: JJ , .tripDetailModalController:
+             .transitViewSelectRouteViewController:
             return SevenEightsTransitioningDelegate(viewController: self)
         case .timeOfDayPickerController:
             return DatePickerTransitioningDelegate(viewController: self)
