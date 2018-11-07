@@ -14,22 +14,29 @@ struct AppState: StateType {
     let favoritesState: FavoritesState
     let nextToArriveState: NextToArriveState
     let tripDetailState: TripDetailState
+    let pushNotificationTripDetailState: PushNotificationTripDetailState
     let databaseState: DatabaseState
     let moreState: MoreState
     let transitViewState: TransitViewState
     let databaseUpdateState: DatabaseUpdateState
     let notificationState: NotificationState
 
-    init(navigationState: NavigationState, scheduleState: ScheduleState, preferenceState: UserPreferenceState, alertState: AlertState, addressLookupState: AddressLookupState, locationState: LocationState, favoriteState: FavoritesState, nextToArriveState: NextToArriveState, tripDetailState: TripDetailState, databaseState: DatabaseState, moreState: MoreState, transitViewState: TransitViewState, databaseUpdateState: DatabaseUpdateState, notificationState: NotificationState) {
+    init(
+        navigationState: NavigationState, scheduleState: ScheduleState, preferenceState: UserPreferenceState, alertState: AlertState, 
+        addressLookupState: AddressLookupState, locationState: LocationState, favoriteState: FavoritesState, nextToArriveState: NextToArriveState, 
+        tripDetailState: TripDetailState, pushNotificationTripDetailState: PushNotificationTripDetailState, databaseState: DatabaseState, 
+        moreState: MoreState, transitViewState: TransitViewState, databaseUpdateState: DatabaseUpdateState, notificationState: NotificationState) {
+        
         self.navigationState = navigationState
         self.scheduleState = scheduleState
         self.preferenceState = preferenceState
         self.alertState = alertState
         self.addressLookupState = addressLookupState
         self.locationState = locationState
-        favoritesState = favoriteState
+        self.favoritesState = favoriteState
         self.nextToArriveState = nextToArriveState
         self.tripDetailState = tripDetailState
+        self.pushNotificationTripDetailState = pushNotificationTripDetailState
         self.databaseState = databaseState
         self.moreState = moreState
         self.transitViewState = transitViewState
@@ -67,6 +74,9 @@ func == (lhs: AppState, rhs: AppState) -> Bool {
     guard areEqual else { return false }
 
     areEqual = lhs.tripDetailState == rhs.tripDetailState
+    guard areEqual else { return false }
+    
+    areEqual = lhs.pushNotificationTripDetailState == rhs.pushNotificationTripDetailState
     guard areEqual else { return false }
 
     areEqual = lhs.databaseState == rhs.databaseState

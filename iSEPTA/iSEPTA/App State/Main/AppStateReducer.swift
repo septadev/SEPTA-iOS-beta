@@ -18,13 +18,14 @@ class AppStateReducer {
             favoriteState: FavoritesReducer.main(action: action, state: state?.favoritesState),
             nextToArriveState: NextToArriveReducer.main(action: action, state: state?.nextToArriveState),
             tripDetailState: TripDetailReducer.main(action: action, state: state?.tripDetailState),
+            pushNotificationTripDetailState: PushNotificationTripDetailState.main(action: action, state: state?.pushNotificationTripDetailState),
             databaseState: DatabaseReducer.main(action: action, state: state?.databaseState),
             moreState: MoreReducer.main(action: action, state: state?.moreState),
             transitViewState: TransitViewReducer.main(action: action, state: state?.transitViewState),
             databaseUpdateState: DatabaseUpdateReducer.main(action: action, state: state?.databaseUpdateState),
             notificationState: NotificationReducer.main(action: action, state: state?.notificationState)
         )
-
+        let state = AppState(navigationState: <#T##NavigationState#>, scheduleState: <#T##ScheduleState#>, preferenceState: <#T##UserPreferenceState#>, alertState: <#T##AlertState#>, addressLookupState: <#T##AddressLookupState#>, locationState: <#T##LocationState#>, favoriteState: <#T##FavoritesState#>, nextToArriveState: <#T##NextToArriveState#>, tripDetailState: <#T##TripDetailState#>, pushNotificationTripDetailState: <#T##PushNotificationTripDetailState#>, databaseState: <#T##DatabaseState#>, moreState: <#T##MoreState#>, transitViewState: <#T##TransitViewState#>, databaseUpdateState: <#T##DatabaseUpdateState#>, notificationState: <#T##NotificationState#>)
         return appState
     }
 }

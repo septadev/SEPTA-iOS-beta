@@ -391,6 +391,9 @@
 		671A192B1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A192A1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift */; };
 		671A192D1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A192C1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift */; };
 		671A192F1F66A3D500C8EEDA /* NextToArriveFavoritesIconController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671A192E1F66A3D500C8EEDA /* NextToArriveFavoritesIconController.swift */; };
+		6722CB2021922BA600EB76BE /* PushNotificationTripDetailState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722CB1F21922BA600EB76BE /* PushNotificationTripDetailState.swift */; };
+		6722CB2221922BBA00EB76BE /* PushNotificationTripDetailAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722CB2121922BBA00EB76BE /* PushNotificationTripDetailAction.swift */; };
+		6722CB2421922BCF00EB76BE /* PushNotificationTripDetailReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722CB2321922BCF00EB76BE /* PushNotificationTripDetailReducers.swift */; };
 		672DF24C2110B4D700FD8C1D /* DayOfWeekImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DF24B2110B4D700FD8C1D /* DayOfWeekImageView.swift */; };
 		672DF2522110B59C00FD8C1D /* TimeframeGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DF2512110B59C00FD8C1D /* TimeframeGroupView.swift */; };
 		672DF2542110B5C000FD8C1D /* TimeframeGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 672DF2532110B5C000FD8C1D /* TimeframeGroupView.xib */; };
@@ -1177,6 +1180,9 @@
 		671A192A1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextToArriveInfoViewController.swift; sourceTree = "<group>"; };
 		671A192C1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveInfoViewModel.swift; sourceTree = "<group>"; };
 		671A192E1F66A3D500C8EEDA /* NextToArriveFavoritesIconController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveFavoritesIconController.swift; sourceTree = "<group>"; };
+		6722CB1F21922BA600EB76BE /* PushNotificationTripDetailState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationTripDetailState.swift; sourceTree = "<group>"; };
+		6722CB2121922BBA00EB76BE /* PushNotificationTripDetailAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationTripDetailAction.swift; sourceTree = "<group>"; };
+		6722CB2321922BCF00EB76BE /* PushNotificationTripDetailReducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationTripDetailReducers.swift; sourceTree = "<group>"; };
 		672DF24B2110B4D700FD8C1D /* DayOfWeekImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekImageView.swift; sourceTree = "<group>"; };
 		672DF2512110B59C00FD8C1D /* TimeframeGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeframeGroupView.swift; sourceTree = "<group>"; };
 		672DF2532110B5C000FD8C1D /* TimeframeGroupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeframeGroupView.xib; sourceTree = "<group>"; };
@@ -1807,6 +1813,7 @@
 		58290E511F372F27000CCF3C /* App State */ = {
 			isa = PBXGroup;
 			children = (
+				6722CB1C21922B8500EB76BE /* Push Notification Trip Detail */,
 				6789B77F1F8FEE06008C6DCA /* TripDetail */,
 				589397151F7E697700F3D2F8 /* More */,
 				58C9D2FD1F703716008FDE40 /* Middleware */,
@@ -2950,6 +2957,16 @@
 			path = ScheduleInfo;
 			sourceTree = "<group>";
 		};
+		6722CB1C21922B8500EB76BE /* Push Notification Trip Detail */ = {
+			isa = PBXGroup;
+			children = (
+				6722CB1F21922BA600EB76BE /* PushNotificationTripDetailState.swift */,
+				6722CB2121922BBA00EB76BE /* PushNotificationTripDetailAction.swift */,
+				6722CB2321922BCF00EB76BE /* PushNotificationTripDetailReducers.swift */,
+			);
+			path = "Push Notification Trip Detail";
+			sourceTree = "<group>";
+		};
 		672DF24F2110B50100FD8C1D /* DayofWeek */ = {
 			isa = PBXGroup;
 			children = (
@@ -3909,6 +3926,7 @@
 				58FBBFA61F65823600B7A4DA /* DatabaseActions.swift in Sources */,
 				581804BB1F3F8051002184E3 /* LoggingError.swift in Sources */,
 				67075FC41F57858C008BB38C /* ScheduleStopState.swift in Sources */,
+				6722CB2021922BA600EB76BE /* PushNotificationTripDetailState.swift in Sources */,
 				58248B7D1F6D992900DA2D65 /* FavoriteToEditWatcher.swift in Sources */,
 				588D80611F72B56100EE1983 /* AlertState_ScheduleState_ScheduleRequestWatcher.swift in Sources */,
 				582F4ED81F33B1120062A546 /* SelectSchedulesViewController.swift in Sources */,
@@ -3996,6 +4014,7 @@
 				58AC629621124ACA00E4EA0A /* InstructionsHeaderView.swift in Sources */,
 				5814AA841F43589E00DF774A /* TripScheduleViewModel.swift in Sources */,
 				0E8E60CA20EC109200AB08FE /* TransitViewSelectionViewController.swift in Sources */,
+				6722CB2421922BCF00EB76BE /* PushNotificationTripDetailReducers.swift in Sources */,
 				5816AB731F7C10CD00210C07 /* ScrollableTableViewToggle.swift in Sources */,
 				67365AD81F75918300FC86CB /* ViewSchedulesButton.swift in Sources */,
 				5820CB44210F4E4000782275 /* UILabel+Util.swift in Sources */,
@@ -4027,6 +4046,7 @@
 				5803C387210B9D9C00BFAE7A /* TimeframeView.swift in Sources */,
 				584D54D32106103500EB773C /* PushNotificationPreferenceState.swift in Sources */,
 				58290E441F372BB9000CCF3C /* AppStateReducer.swift in Sources */,
+				6722CB2221922BBA00EB76BE /* PushNotificationTripDetailAction.swift in Sources */,
 				0E2DCAD320F64C5D0086F400 /* TransitViewMapRouteViewModel.swift in Sources */,
 				0E64472220D27A7600A99E2D /* DatabaseUpdateManager.swift in Sources */,
 				6776F68C201CAECB001FD5B2 /* NetworkingExtensions.swift in Sources */,
