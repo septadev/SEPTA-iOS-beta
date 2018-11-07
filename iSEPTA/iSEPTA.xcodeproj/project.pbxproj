@@ -293,6 +293,7 @@
 		58B2778F1F62A9C900663507 /* KML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B2778E1F62A9C800663507 /* KML.swift */; };
 		58B5B1051F6DB00000A3DAFB /* FavoritesState_FavoritesWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B5B1041F6DB00000A3DAFB /* FavoritesState_FavoritesWatcher.swift */; };
 		58B5B1091F6DBFFF00A3DAFB /* ScheduleState_ScheduleRequestWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B5B1081F6DBFFF00A3DAFB /* ScheduleState_ScheduleRequestWatcher.swift */; };
+		58B6654E219357EC0057B8DF /* PushNotificationTripDetailVehicleLocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B6654D219357EC0057B8DF /* PushNotificationTripDetailVehicleLocationAnnotation.swift */; };
 		58B892151F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892141F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift */; };
 		58B892171F38F7E700BFFEFA /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892161F38F7E700BFFEFA /* Strings.swift */; };
 		58BE70711F6A4CFB00D12479 /* CellConnectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BE70701F6A4CFB00D12479 /* CellConnectionView.xib */; };
@@ -1090,6 +1091,7 @@
 		58B2778E1F62A9C800663507 /* KML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KML.swift; sourceTree = "<group>"; };
 		58B5B1041F6DB00000A3DAFB /* FavoritesState_FavoritesWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesState_FavoritesWatcher.swift; sourceTree = "<group>"; };
 		58B5B1081F6DBFFF00A3DAFB /* ScheduleState_ScheduleRequestWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleState_ScheduleRequestWatcher.swift; sourceTree = "<group>"; };
+		58B6654D219357EC0057B8DF /* PushNotificationTripDetailVehicleLocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationTripDetailVehicleLocationAnnotation.swift; sourceTree = "<group>"; };
 		58B891C81F38B51E00BFFEFA /* ScheduleRequestReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleRequestReducerTests.swift; sourceTree = "<group>"; };
 		58B8920C1F38C64C00BFFEFA /* MockPreferenceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPreferenceProvider.swift; sourceTree = "<group>"; };
 		58B8920E1F38CBA900BFFEFA /* GenericAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAction.swift; sourceTree = "<group>"; };
@@ -3087,6 +3089,7 @@
 			children = (
 				673E10D82193110500EB8689 /* PushNotificationTripDetailMapViewController.swift */,
 				673E10D92193110500EB8689 /* PushNotificationTripDetailMapViewDelegate.swift */,
+				58B6654D219357EC0057B8DF /* PushNotificationTripDetailVehicleLocationAnnotation.swift */,
 			);
 			path = map;
 			sourceTree = "<group>";
@@ -3910,6 +3913,7 @@
 				5801280C1F6BEF67006B6DB8 /* NoFavoriteTransitModeView.swift in Sources */,
 				678DAAB91F6748BE00EB6EE8 /* TripHeaderView.swift in Sources */,
 				580A35611F6A12C0000FCA82 /* FavoritesViewModel.swift in Sources */,
+				58B6654E219357EC0057B8DF /* PushNotificationTripDetailVehicleLocationAnnotation.swift in Sources */,
 				582741191F6F3A3B00AAF513 /* AlertDetailCell.swift in Sources */,
 				58EB8D171F5D7D630028A487 /* NextToArriveSelectTripViewController.swift in Sources */,
 				580128081F6B26D2006B6DB8 /* RoundedShadowView.swift in Sources */,

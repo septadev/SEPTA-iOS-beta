@@ -11,49 +11,80 @@ import MapKit
 import SeptaSchedule
 import UIKit
 
-class PushNotificationTripDetailMapViewController: UIViewController, TripDetailState_TripDetailsWatcherDelegate {
+class PushNotificationTripDetailMapViewController: UIViewController, PushNotificationTripDetailState_PushNotificationTripDetailDataWatcherDelegate {
     @IBOutlet var mapView: MKMapView! {
         didSet {
             mapView.tintColor = SeptaColor.navBarBlue
         }
     }
 
-    var tripDetailWatcher: TripDetailState_TripDetailsWatcher?
-    var vehiclesAnnotationsAdded = [VehicleLocationAnnotation]()
-    let mapViewDelegate = TripDetailMapViewDelegate()
+    var tripDetailWatcher: PushNotificationTripDetailState_PushNotificationTripDetailDataWatcher?
+    var vehiclesAnnotationsAdded = [MKPointAnnotation]()
+    let mapViewDelegate = PushNotificationTripDetailMapViewDelegate()
+
+    var routes: [Route]? {
+        didSet {
+            drawRoute()
+        }
+    }
+    var routeId: String?
+    var lineName: String? {
+        didSet {
+            drawRoute()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = mapViewDelegate
+        loadRoutes()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tripDetailWatcher = TripDetailState_TripDetailsWatcher()
+        tripDetailWatcher = PushNotificationTripDetailState_PushNotificationTripDetailDataWatcher()
         tripDetailWatcher?.delegate = self
-        showAnotations()
+    }
+
+    func loadRoutes() {
+        RoutesCommand.sharedInstance.routes(forTransitMode: .rail) { [weak self] routes, _ in
+            guard let strongSelf = self else { return }
+            strongSelf.routes = routes
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tripDetailWatcher = nil
+        tripDetailWatcher?.unsubscribe()
     }
 
-    func tripDetailState_TripDetailsUpdated(nextToArriveStop: NextToArriveStop) {
-        drawRoute(routeId: nextToArriveStop.routeId)
-        drawVehicle(nextToArriveStop: nextToArriveStop)
-        mapViewDelegate.tripDetails = nextToArriveStop
+    func pushNotificationTripDetailState_PushNotificationTripDetailDataUpdated(pushNotificationTripDetailData data: PushNotificationTripDetailData?) {
+        guard let data = data else { return }
+        lineName = data.line
+        drawVehicle(data: data)
+//        mapViewDelegate.tripDetails = nextToArriveStop
     }
+
 
     var routeHasBeenAdded = false
-    func drawRoute(routeId: String) {
-        guard !routeHasBeenAdded else { return }
-        guard let url = locateKMLFile(routeId: routeId) else { return }
+
+    func drawRoute() {
+        guard !routeHasBeenAdded,
+        let routeId = fetchRouteId(lineName: lineName),
+        let url = locateKMLFile(routeId: routeId) else { return }
         parseKMLForRoute(url: url, routeId: routeId)
     }
 
+    func fetchRouteId(lineName: String?) -> String? {
+        guard let routes = routes,  // routes exists
+        let lineName = lineName,  // non nill was passed in
+        let matchingRoute = routes.first(where: {$0.routeShortName == "\(lineName) Line"}) else { return nil }  //matching route id exists
+        return matchingRoute.routeId
+    }
+
+
     func parseKMLForRoute(url: URL, routeId: String) {
-        print("Beginning to parse")
+        print("MB:Beginning to parse")
         KMLDocument.parse(url) { [weak self] kml in
             guard let overlays = kml.overlays as? [KMLOverlayPolyline] else { return }
             if let routeOverlays = self?.mapOverlaysToRouteOverlays(routeId: routeId, overlays: overlays), let firstOverlay = routeOverlays.first {
@@ -83,17 +114,17 @@ class PushNotificationTripDetailMapViewController: UIViewController, TripDetailS
         }
     }
 
-    func drawVehicle(nextToArriveStop: NextToArriveStop) {
-        guard let vehicleLocationCoordinate = nextToArriveStop.vehicleLocationCoordinate else { return }
+    func drawVehicle(data: PushNotificationTripDetailData) {
         clearExistingVehicleLocations()
-        let vehicleLocation = VehicleLocation(location: vehicleLocationCoordinate, nextToArriveStop: nextToArriveStop)
+        guard let lat = data.latitude, let lon = data.longitude else { return }
+        let vehicleLocationCoordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
 
-        let annotation = VehicleLocationAnnotation(vehicleLocation: vehicleLocation)
+        let annotation = PushNotificationTripDetailVehicleLocationAnnotation(tripDetailData: data)
         annotation.coordinate = vehicleLocationCoordinate
         if #available(iOS 11.0, *) {
             annotation.title = nil
         } else {
-            annotation.title = nextToArriveStop.transitMode.mapTitle()
+            annotation.title = TransitMode.rail.mapTitle()
         }
 
         mapView.addAnnotation(annotation)
@@ -105,6 +136,7 @@ class PushNotificationTripDetailMapViewController: UIViewController, TripDetailS
         if !MKMapRectContainsRect(visibleMapRect, annotationRect) {
             showAnotations()
         }
+        
     }
 
     func showAnotations() {

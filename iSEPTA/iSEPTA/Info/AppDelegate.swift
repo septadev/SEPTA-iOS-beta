@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func postFakeNotification(){
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4, execute: {
-        store.dispatch(UpdatePushNotificationTripDetailTripId(tripId: "5315"))
+        store.dispatch(UpdatePushNotificationTripDetailTripId(tripId: "449"))
         })
     }
 

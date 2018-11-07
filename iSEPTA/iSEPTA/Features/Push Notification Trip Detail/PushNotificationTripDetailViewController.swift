@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class PushNotificationTripDetailViewController: UIViewController, IdentifiableController {
-    let viewController = ViewController.tripDetailViewController
+    let viewController = ViewController.pushNotificationTripDetailViewController
 
     var tripDetails: NextToArriveStop? { return store.state.tripDetailState.tripDetails }
 
@@ -18,11 +18,10 @@ class PushNotificationTripDetailViewController: UIViewController, IdentifiableCo
         super.viewDidLoad()
         view.backgroundColor = SeptaColor.navBarBlue
         guard let tripDetails = tripDetails else { return }
-        navigationItem.title = tripDetails.transitMode.tripDetailTitle()
+        navigationItem.title = "Rail Delay Notification"
     }
 
     override func viewWillDisappear(_: Bool) {
-        let action = ClearTripDetails()
-        store.dispatch(action)
+
     }
 }

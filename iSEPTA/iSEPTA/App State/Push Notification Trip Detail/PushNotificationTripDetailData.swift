@@ -8,6 +8,7 @@
 
 import Foundation
 import SeptaRest
+import SeptaRest
 
 struct PushNotificationTripDetailData: Equatable {
     let consist: [String]?
@@ -26,6 +27,7 @@ struct PushNotificationTripDetailData: Equatable {
     let speed: String?
     let track: String?
     let trackChange: String?
+    var routeId: String?
     let tripId: String?
 
     init(
@@ -86,4 +88,6 @@ struct PushNotificationTripDetailData: Equatable {
         let tripIdInt = details.tripid ?? 0
         tripId = String(tripIdInt)
     }
+
+    
 }
