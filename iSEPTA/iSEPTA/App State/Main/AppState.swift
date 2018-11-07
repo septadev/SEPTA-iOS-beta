@@ -22,18 +22,18 @@ struct AppState: StateType {
     let notificationState: NotificationState
 
     init(
-        navigationState: NavigationState, scheduleState: ScheduleState, preferenceState: UserPreferenceState, alertState: AlertState, 
-        addressLookupState: AddressLookupState, locationState: LocationState, favoriteState: FavoritesState, nextToArriveState: NextToArriveState, 
-        tripDetailState: TripDetailState, pushNotificationTripDetailState: PushNotificationTripDetailState, databaseState: DatabaseState, 
-        moreState: MoreState, transitViewState: TransitViewState, databaseUpdateState: DatabaseUpdateState, notificationState: NotificationState) {
-        
+        navigationState: NavigationState, scheduleState: ScheduleState, preferenceState: UserPreferenceState, alertState: AlertState,
+        addressLookupState: AddressLookupState, locationState: LocationState, favoriteState: FavoritesState, nextToArriveState: NextToArriveState,
+        tripDetailState: TripDetailState, pushNotificationTripDetailState: PushNotificationTripDetailState, databaseState: DatabaseState,
+        moreState: MoreState, transitViewState: TransitViewState, databaseUpdateState: DatabaseUpdateState, notificationState: NotificationState
+    ) {
         self.navigationState = navigationState
         self.scheduleState = scheduleState
         self.preferenceState = preferenceState
         self.alertState = alertState
         self.addressLookupState = addressLookupState
         self.locationState = locationState
-        self.favoritesState = favoriteState
+        favoritesState = favoriteState
         self.nextToArriveState = nextToArriveState
         self.tripDetailState = tripDetailState
         self.pushNotificationTripDetailState = pushNotificationTripDetailState
@@ -75,7 +75,7 @@ func == (lhs: AppState, rhs: AppState) -> Bool {
 
     areEqual = lhs.tripDetailState == rhs.tripDetailState
     guard areEqual else { return false }
-    
+
     areEqual = lhs.pushNotificationTripDetailState == rhs.pushNotificationTripDetailState
     guard areEqual else { return false }
 
