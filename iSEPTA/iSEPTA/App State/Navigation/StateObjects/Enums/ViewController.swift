@@ -44,6 +44,9 @@ enum ViewController: String, Equatable {
     // trip detials
     case tripDetailViewController
 
+    // push notification trip detials
+    case pushNotificationTripDetailViewController
+
     // TransitView
     case transitViewSelectionViewController
     case transitViewSelectRouteViewController
@@ -105,6 +108,8 @@ enum ViewController: String, Equatable {
             return "PushNotifications"
         case .perksViewController:
             return "perks"
+        case .pushNotificationTripDetailViewController:
+            return "pushNotificationTripDetail"
         }
     }
 
