@@ -416,6 +416,12 @@
 		67365ADF1F76932600FC86CB /* NextToArriveMiddlewareActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67365ADE1F76932600FC86CB /* NextToArriveMiddlewareActions.swift */; };
 		67365AE11F7693DD00FC86CB /* NextToArriveMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67365AE01F7693DD00FC86CB /* NextToArriveMiddleware.swift */; };
 		67365AE51F7874F500FC86CB /* NextToArriveMiddlewareScheduleRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67365AE41F7874F500FC86CB /* NextToArriveMiddlewareScheduleRequestBuilder.swift */; };
+		673E10DE2193110500EB8689 /* PushNotificationTripDetailInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673E10D62193110500EB8689 /* PushNotificationTripDetailInfoViewController.swift */; };
+		673E10DF2193110500EB8689 /* PushNotificationTripDetailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673E10D82193110500EB8689 /* PushNotificationTripDetailMapViewController.swift */; };
+		673E10E02193110500EB8689 /* PushNotificationTripDetailMapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673E10D92193110500EB8689 /* PushNotificationTripDetailMapViewDelegate.swift */; };
+		673E10E12193110500EB8689 /* pushNotificationTripDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 673E10DA2193110500EB8689 /* pushNotificationTripDetail.storyboard */; };
+		673E10E22193110500EB8689 /* PushNotificationTripDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673E10DB2193110500EB8689 /* PushNotificationTripDetailViewController.swift */; };
+		673E10E4219313CA00EB8689 /* PushNotificationTripDetailDataWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673E10E3219313CA00EB8689 /* PushNotificationTripDetailDataWatcher.swift */; };
 		6749A46E1F53997D00AF6119 /* StopToSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749A46D1F53997D00AF6119 /* StopToSelect.swift */; };
 		6749A4711F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */; };
 		674FDBBF1F56E87F00CA67D2 /* SeptaRest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58490E3C1F55F6F9007DBCA1 /* SeptaRest.framework */; };
@@ -1213,6 +1219,12 @@
 		67365ADE1F76932600FC86CB /* NextToArriveMiddlewareActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveMiddlewareActions.swift; sourceTree = "<group>"; };
 		67365AE01F7693DD00FC86CB /* NextToArriveMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveMiddleware.swift; sourceTree = "<group>"; };
 		67365AE41F7874F500FC86CB /* NextToArriveMiddlewareScheduleRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextToArriveMiddlewareScheduleRequestBuilder.swift; sourceTree = "<group>"; };
+		673E10D62193110500EB8689 /* PushNotificationTripDetailInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationTripDetailInfoViewController.swift; sourceTree = "<group>"; };
+		673E10D82193110500EB8689 /* PushNotificationTripDetailMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationTripDetailMapViewController.swift; sourceTree = "<group>"; };
+		673E10D92193110500EB8689 /* PushNotificationTripDetailMapViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationTripDetailMapViewDelegate.swift; sourceTree = "<group>"; };
+		673E10DA2193110500EB8689 /* pushNotificationTripDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = pushNotificationTripDetail.storyboard; sourceTree = "<group>"; };
+		673E10DB2193110500EB8689 /* PushNotificationTripDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationTripDetailViewController.swift; sourceTree = "<group>"; };
+		673E10E3219313CA00EB8689 /* PushNotificationTripDetailDataWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationTripDetailDataWatcher.swift; sourceTree = "<group>"; };
 		6749A46D1F53997D00AF6119 /* StopToSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopToSelect.swift; sourceTree = "<group>"; };
 		6749A4701F539A2C00AF6119 /* SelectAddressRelativeStopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAddressRelativeStopViewModel.swift; sourceTree = "<group>"; };
 		674FDBC41F57390D00CA67D2 /* Route+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Color.swift"; sourceTree = "<group>"; };
@@ -1765,6 +1777,7 @@
 				58248B651F6D575A00DA2D65 /* BaseWatcher.swift */,
 				6789B78D1F8FF7E6008C6DCA /* TripDetailState_TripDetailsExistWatcher.swift */,
 				589A919A1F905CA6009B49E0 /* TripDetailState_TripDetailWatcher.swift */,
+				673E10E3219313CA00EB8689 /* PushNotificationTripDetailDataWatcher.swift */,
 				6722CB4D2192E61E00EB76BE /* PushNotificationTripDetailWatcher.swift */,
 			);
 			path = "State Watchers";
@@ -1938,6 +1951,7 @@
 		582F4E841F33B1120062A546 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				673E10D42193110500EB8689 /* Push Notification Trip Detail */,
 				6789B7701F8FDF60008C6DCA /* Trip Detail */,
 				676B7D991F7D18560052F016 /* More */,
 				582F4E871F33B1120062A546 /* Alerts */,
@@ -3049,6 +3063,34 @@
 			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
+		673E10D42193110500EB8689 /* Push Notification Trip Detail */ = {
+			isa = PBXGroup;
+			children = (
+				673E10D52193110500EB8689 /* Info */,
+				673E10D72193110500EB8689 /* map */,
+				673E10DA2193110500EB8689 /* pushNotificationTripDetail.storyboard */,
+				673E10DB2193110500EB8689 /* PushNotificationTripDetailViewController.swift */,
+			);
+			path = "Push Notification Trip Detail";
+			sourceTree = "<group>";
+		};
+		673E10D52193110500EB8689 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				673E10D62193110500EB8689 /* PushNotificationTripDetailInfoViewController.swift */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
+		673E10D72193110500EB8689 /* map */ = {
+			isa = PBXGroup;
+			children = (
+				673E10D82193110500EB8689 /* PushNotificationTripDetailMapViewController.swift */,
+				673E10D92193110500EB8689 /* PushNotificationTripDetailMapViewDelegate.swift */,
+			);
+			path = map;
+			sourceTree = "<group>";
+		};
 		676B7D991F7D18560052F016 /* More */ = {
 			isa = PBXGroup;
 			children = (
@@ -3622,6 +3664,7 @@
 				67A33DE11F8DCA3600D82802 /* MapVehicleCalloutView.xib in Resources */,
 				677E051920727C9D00B16C09 /* WAR.kml in Resources */,
 				58FB264B1F6EC42F00F17048 /* DbAlertsMappedToWebAlerts.json in Resources */,
+				673E10E12193110500EB8689 /* pushNotificationTripDetail.storyboard in Resources */,
 				677E04E320727C9D00B16C09 /* 27.kml in Resources */,
 				677E04D120727C9D00B16C09 /* 60.kml in Resources */,
 				677E04CD20727C9D00B16C09 /* MED.kml in Resources */,
@@ -3855,6 +3898,7 @@
 				0E2DCAD720F672BD0086F400 /* TransitViewVehicleAnnotation.swift in Sources */,
 				582F4ED31F33B1120062A546 /* SelectStopRow.swift in Sources */,
 				0EAE68C7211A201B0092C104 /* NotificationProvider.swift in Sources */,
+				673E10DF2193110500EB8689 /* PushNotificationTripDetailMapViewController.swift in Sources */,
 				582F4EBC1F33B1120062A546 /* DateFormatters.swift in Sources */,
 				58088E1B210F80B60068E771 /* NSRange+Util.swift in Sources */,
 				5893971B1F7E6A5900F3D2F8 /* MoreActions.swift in Sources */,
@@ -3891,6 +3935,7 @@
 				5803C375210B60DD00BFAE7A /* ManagePushNotificationsCell.swift in Sources */,
 				5840D6D31F376D9C00C8CB76 /* MainNavigationController.swift in Sources */,
 				5840D6EE1F37F63800C8CB76 /* TransitModeToolbarView.swift in Sources */,
+				673E10E02193110500EB8689 /* PushNotificationTripDetailMapViewDelegate.swift in Sources */,
 				582531981F40707C0088D056 /* DefaultPreferencesLoader.swift in Sources */,
 				58FBB66E1F58AAC000E6532B /* AlertViewGradientBackgroundView.swift in Sources */,
 				0E2DCAD920F6755A0086F400 /* TransitViewVehicleLocation.swift in Sources */,
@@ -4199,6 +4244,7 @@
 				58DD1A8E1F600715002532DC /* NextToArriveViewModel+StartCell.swift in Sources */,
 				0E8E60E320EFF37D00AB08FE /* TransitViewDataProvider.swift in Sources */,
 				5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */,
+				673E10E22193110500EB8689 /* PushNotificationTripDetailViewController.swift in Sources */,
 				671A192B1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift in Sources */,
 				67365ACE1F754A3200FC86CB /* SevenEightsPresentationCoordinator.swift in Sources */,
 				670C59ED1F8A66F700CAE1AC /* AboutViewController.swift in Sources */,
@@ -4236,6 +4282,7 @@
 				58A26DA41F6F30B2005A70D3 /* Route+Displayable.swift in Sources */,
 				58B18B0F1F42469000A7F163 /* SelectStopViewModel.swift in Sources */,
 				581804BD1F3F838B002184E3 /* CodableAppState.swift in Sources */,
+				673E10DE2193110500EB8689 /* PushNotificationTripDetailInfoViewController.swift in Sources */,
 				5805C829210FA71000A35613 /* DayOfWeekView.swift in Sources */,
 				0EE428D42114D4C500EBF6FE /* SeptaNotification.swift in Sources */,
 				58CBEE871F953B5A00F26A15 /* FavoriteState_NextToArriveFavoriteWatcher.swift in Sources */,
@@ -4282,6 +4329,7 @@
 				585760AD1F82A31F00A340DB /* NextToArriveState_NextToArriveUpdateStatusWatcher.swift in Sources */,
 				58248B701F6D6C3800DA2D65 /* SaveFavoriteButton.swift in Sources */,
 				0E17CDCD2135B7DD00D8CD5A /* PushNotificationKeepAlive.swift in Sources */,
+				673E10E4219313CA00EB8689 /* PushNotificationTripDetailDataWatcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

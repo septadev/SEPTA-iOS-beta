@@ -4,9 +4,9 @@ use String::Util  ':all';
 use Modern::Perl;
 use Data::Dumper; 
 
-my $type = q| NextToArriveReverseTripStatus   |;
+my $type = q| PushNotificationTripDetailData   |;
 
-my $keyPath = q|  favoriteState.nextToArriveReverseTripStatus |;
+my $keyPath = q|  pushNotificationTripDetailState.pushNotificationTripDetailData |;
 
 
 

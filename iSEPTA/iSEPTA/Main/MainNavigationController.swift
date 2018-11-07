@@ -73,6 +73,13 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         if databaseDownloadedWatcher == nil {
             databaseDownloadedWatcher = DatabaseDownloadedWatcher(delegate: self)
         }
+
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5, execute: { [weak self] in
+            guard let strongSelf = self,
+                let viewController: PushNotificationTripDetailViewController = ViewController.pushNotificationTripDetailViewController.instantiateViewController()
+            else { return }
+            strongSelf.present(viewController, animated: true, completion: nil)
+        })
     }
 
     var modalTransitioningDelegate: UIViewControllerTransitioningDelegate!
