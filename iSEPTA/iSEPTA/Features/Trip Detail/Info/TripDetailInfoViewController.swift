@@ -55,8 +55,7 @@ class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetail
             configureNextStopViewForNoDetail(nextToArriveStop: nextToArriveStop)
         }
 
-        if nextToArriveStop.transitMode.useRailForDetails() {
-        } else if nextToArriveStop.transitMode.useBusForDetails() {
+        if nextToArriveStop.transitMode.useRailForDetails() {} else if nextToArriveStop.transitMode.useBusForDetails() {
             configureNextStopViewForBus()
         }
         view.setNeedsLayout()
@@ -209,8 +208,7 @@ class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetail
         super.viewDidLoad()
     }
 
-    func configureIcone() {
-    }
+    func configureIcone() {}
 
     func generateOnTimeColor(delayMinutes: Int?) -> UIColor {
         guard let delayMinutes = delayMinutes else { return SeptaColor.transitIsScheduled }
