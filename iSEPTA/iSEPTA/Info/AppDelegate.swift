@@ -38,7 +38,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().delegate = self
         updateCurrentPushNotificationAuthorizationStatus()
 
+        postFakeNotification()
         return true
+    }
+    
+    func postFakeNotification(){
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4, execute: {
+        store.dispatch(UpdatePushNotificationTripDetailTripId(tripId: "5315"))
+        })
     }
 
     func applicationWillResignActive(_: UIApplication) {

@@ -22,7 +22,7 @@ struct UpdatePushNotificationTripDetailStatus: PushNotificationTripDetailAction 
 }
 
 struct UpdatePushNotificationTripDetailData: PushNotificationTripDetailAction {
-    let nextToArriveRailDetails: NextToArriveRailDetails
+    let pushNotificationTripDetailData: PushNotificationTripDetailData
     let description: String = "Updating Push Notification Trip Details"
 }
 

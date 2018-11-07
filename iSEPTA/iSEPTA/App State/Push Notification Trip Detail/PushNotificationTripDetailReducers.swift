@@ -51,7 +51,7 @@ struct PushNotificationTripDetailReducer {
 
     static func reduceUpdatePushNotificationTripDetailData(action: UpdatePushNotificationTripDetailData, state: PushNotificationTripDetailState) -> PushNotificationTripDetailState {
         var newState = state
-        newState.pushNotificationTripDetailData = PushNotificationTripDetailData(nextToArriveRailDetails: action.nextToArriveRailDetails)
+        newState.pushNotificationTripDetailData = action.pushNotificationTripDetailData
         newState.pushNotificationTripDetailUpdateStatus = .dataLoadedSuccessfully
         return newState
     }

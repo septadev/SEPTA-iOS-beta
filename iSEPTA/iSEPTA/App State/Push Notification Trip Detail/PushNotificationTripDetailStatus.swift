@@ -13,7 +13,9 @@ enum PushNotificationTripDetailStatus: Equatable {
     case dataLoadRequested
     case dataLoading
     case dataLoadedSuccessfully
-    case dataLoadingError
+    case dataMappedSuccessfully
+    case networkError(Int)
+    case jsonParsingError
     case noResultsReturned
 }
 
