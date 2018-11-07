@@ -9,8 +9,8 @@
 import Foundation
 import ReSwift
 
-struct TripDetailReducer {
-    static func main(action: Action, state: Tri?) -> PushNotificationTripDetailState {
+struct PushNotificationTripDetailReducer {
+    static func main(action: Action, state: PushNotificationTripDetailState?) -> PushNotificationTripDetailState {
         if let state = state {
             guard let action = action as? PushNotificationTripDetailAction else { return state }
             return reduceTripDetailAction(action: action, state: state)
@@ -22,10 +22,14 @@ struct TripDetailReducer {
     static func reduceTripDetailAction(action: PushNotificationTripDetailAction, state: PushNotificationTripDetailState) -> PushNotificationTripDetailState {
         var newState = state
         switch action {
-        case let action as UpdatePushNotificationTripDetail:
-            newState = reduceUpdateTripDetails(action: action, state: state)
-        case let action as ClearPushNotificationTripDetail:
-            newState = reduceClearTripDetails(action: action, state: state)
+        case let action as UpdatePushNotificationTripDetailTripId:
+            newState = reduceUpdatePushNotificationTripDetailTripId(action: action, state: state)
+        case let action as UpdatePushNotificationTripDetailStatus:
+            newState = reduceUpdatePushNotificationTripDetailStatus(action: action, state: state)
+        case let action as UpdatePushNotificationTripDetailData:
+            newState = reduceUpdatePushNotificationTripDetailData(action: action, state: state)
+        case let action as ClearPushNotificationTripDetailData:
+            newState = reduceClearPushNotificationTripDetailData(action: action, state: state)
         default:
             break
         }
@@ -33,11 +37,26 @@ struct TripDetailReducer {
         return newState
     }
 
-    static func reduceUpdateTripDetails(action: UpdatePushNotificationTripDetail, state _: PushNotificationTripDetailState) -> PushNotificationTripDetailState {
-        return  PushNotificationTripDetailState()
+    static func reduceUpdatePushNotificationTripDetailTripId(action: UpdatePushNotificationTripDetailTripId, state _: PushNotificationTripDetailState) -> PushNotificationTripDetailState {
+        var newState = PushNotificationTripDetailState()
+        newState.tripId = action.tripId
+        return newState
     }
 
-    static func reduceClearTripDetails(action: ClearPushNotificationTripDetail, state _: PushNotificationTripDetailState) -> PushNotificationTripDetailState {
+    static func reduceUpdatePushNotificationTripDetailStatus(action: UpdatePushNotificationTripDetailStatus, state: PushNotificationTripDetailState) -> PushNotificationTripDetailState {
+        var newState = state
+        newState.pushNotificationTripDetailUpdateStatus = action.status
+        return newState
+    }
+
+    static func reduceUpdatePushNotificationTripDetailData(action: UpdatePushNotificationTripDetailData, state: PushNotificationTripDetailState) -> PushNotificationTripDetailState {
+        var newState = state
+        newState.pushNotificationTripDetailData = PushNotificationTripDetailData(nextToArriveRailDetails: action.nextToArriveRailDetails)
+        newState.pushNotificationTripDetailUpdateStatus = .dataLoadedSuccessfully
+        return newState
+    }
+
+    static func reduceClearPushNotificationTripDetailData(action: ClearPushNotificationTripDetailData, state _: PushNotificationTripDetailState) -> PushNotificationTripDetailState {
         return PushNotificationTripDetailState()
     }
 }
