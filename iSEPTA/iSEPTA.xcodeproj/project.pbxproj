@@ -394,6 +394,8 @@
 		6722CB2021922BA600EB76BE /* PushNotificationTripDetailState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722CB1F21922BA600EB76BE /* PushNotificationTripDetailState.swift */; };
 		6722CB2221922BBA00EB76BE /* PushNotificationTripDetailAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722CB2121922BBA00EB76BE /* PushNotificationTripDetailAction.swift */; };
 		6722CB2421922BCF00EB76BE /* PushNotificationTripDetailReducers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722CB2321922BCF00EB76BE /* PushNotificationTripDetailReducers.swift */; };
+		6722CB4221927A9700EB76BE /* PushNotificationTripDetailStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722CB3E21927A9600EB76BE /* PushNotificationTripDetailStatus.swift */; };
+		6722CB4321927A9700EB76BE /* PushNotificationTripDetailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722CB4121927A9700EB76BE /* PushNotificationTripDetailData.swift */; };
 		672DF24C2110B4D700FD8C1D /* DayOfWeekImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DF24B2110B4D700FD8C1D /* DayOfWeekImageView.swift */; };
 		672DF2522110B59C00FD8C1D /* TimeframeGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672DF2512110B59C00FD8C1D /* TimeframeGroupView.swift */; };
 		672DF2542110B5C000FD8C1D /* TimeframeGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 672DF2532110B5C000FD8C1D /* TimeframeGroupView.xib */; };
@@ -1183,6 +1185,8 @@
 		6722CB1F21922BA600EB76BE /* PushNotificationTripDetailState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationTripDetailState.swift; sourceTree = "<group>"; };
 		6722CB2121922BBA00EB76BE /* PushNotificationTripDetailAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationTripDetailAction.swift; sourceTree = "<group>"; };
 		6722CB2321922BCF00EB76BE /* PushNotificationTripDetailReducers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationTripDetailReducers.swift; sourceTree = "<group>"; };
+		6722CB3E21927A9600EB76BE /* PushNotificationTripDetailStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationTripDetailStatus.swift; sourceTree = "<group>"; };
+		6722CB4121927A9700EB76BE /* PushNotificationTripDetailData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationTripDetailData.swift; sourceTree = "<group>"; };
 		672DF24B2110B4D700FD8C1D /* DayOfWeekImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekImageView.swift; sourceTree = "<group>"; };
 		672DF2512110B59C00FD8C1D /* TimeframeGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeframeGroupView.swift; sourceTree = "<group>"; };
 		672DF2532110B5C000FD8C1D /* TimeframeGroupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeframeGroupView.xib; sourceTree = "<group>"; };
@@ -2960,6 +2964,8 @@
 		6722CB1C21922B8500EB76BE /* Push Notification Trip Detail */ = {
 			isa = PBXGroup;
 			children = (
+				6722CB4121927A9700EB76BE /* PushNotificationTripDetailData.swift */,
+				6722CB3E21927A9600EB76BE /* PushNotificationTripDetailStatus.swift */,
 				6722CB1F21922BA600EB76BE /* PushNotificationTripDetailState.swift */,
 				6722CB2121922BBA00EB76BE /* PushNotificationTripDetailAction.swift */,
 				6722CB2321922BCF00EB76BE /* PushNotificationTripDetailReducers.swift */,
@@ -3739,7 +3745,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftformat >/dev/null; then\n  . $SRCROOT/../Utilities/swiftFormat.sh\nelse\n    echo \"warning: swiftformat not installed, download from https://github.com/nicklockwood/SwiftFormat or brew install swiftformat\"\nfi";
+			shellScript = "#if which swiftformat >/dev/null; then\n # . $SRCROOT/../Utilities/swiftFormat.sh\n#else\n#    echo \"warning: swiftformat not installed, download from https://github.com/nicklockwood/SwiftFormat or brew install swiftformat\"\n#fi \n";
 		};
 		585F585A1F3377EF00D3ED6C /* Copy Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3820,6 +3826,7 @@
 				58EB8D211F5D8C270028A487 /* NextToArriveSelectTripViewModel.swift in Sources */,
 				671A192D1F663A0E00C8EEDA /* NextToArriveInfoViewModel.swift in Sources */,
 				678D26C61F5CC52300D140CC /* FavoritesReducer.swift in Sources */,
+				6722CB4321927A9700EB76BE /* PushNotificationTripDetailData.swift in Sources */,
 				6776F686201CAA82001FD5B2 /* TestGenericAlertDetailProvider.swift in Sources */,
 				585303CD1F69C74F00145D87 /* FavoritesNextToArriveProvider.swift in Sources */,
 				0E2777FC211249EA00507CFE /* NotificationsManager.swift in Sources */,
@@ -4161,6 +4168,7 @@
 				67C5672B1F596E0700FF6203 /* ErrorObjects.swift in Sources */,
 				58490E4B1F560226007DBCA1 /* AlertActions.swift in Sources */,
 				58E54E201F65977100E9B66D /* NextToArriveTripViewController.swift in Sources */,
+				6722CB4221927A9700EB76BE /* PushNotificationTripDetailStatus.swift in Sources */,
 				6789B77A1F8FDFE7008C6DCA /* TripDetailMapViewController.swift in Sources */,
 				67EA2B631F51AB8700C0567A /* StopEditSearchMode.swift in Sources */,
 				58126F751F640F8600A6E187 /* NextToArriveUpdateStatus.swift in Sources */,
