@@ -53,6 +53,7 @@ struct PushNotificationTripDetailReducer {
         var newState = state
         newState.pushNotificationTripDetailData = action.pushNotificationTripDetailData
         newState.pushNotificationTripDetailUpdateStatus = .dataLoadedSuccessfully
+        newState.results = action.pushNotificationTripDetailData.results ?? 0
         return newState
     }
 

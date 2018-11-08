@@ -12,16 +12,20 @@ import UIKit
 class PushNotificationTripDetailViewController: UIViewController, IdentifiableController {
     let viewController = ViewController.pushNotificationTripDetailViewController
 
-    var tripDetails: NextToArriveStop? { return store.state.tripDetailState.tripDetails }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = SeptaColor.navBarBlue
-        guard let tripDetails = tripDetails else { return }
-        navigationItem.title = "Rail Delay Notification"
+        view.backgroundColor = UIColor.white
+
+        navigationItem.title = "Rail Delay Detail"
+
+        let barButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(closeModal(sender:)))
+        navigationItem.rightBarButtonItem = barButtonItem
+    }
+
+    @objc func closeModal(sender _: Any) {
+        store.dispatch(ClearPushNotificationTripDetailData())
     }
 
     override func viewWillDisappear(_: Bool) {
-
     }
 }

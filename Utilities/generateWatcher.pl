@@ -4,9 +4,9 @@ use String::Util  ':all';
 use Modern::Perl;
 use Data::Dumper; 
 
-my $type = q| PushNotificationTripDetailData   |;
+my $type = q| Int?   |;
 
-my $keyPath = q|  pushNotificationTripDetailState.pushNotificationTripDetailData |;
+my $keyPath = q|  pushNotificationTripDetailState.results |;
 
 
 

@@ -10,7 +10,23 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Trip Detail-->
+        <!--Base Navigation Controller-->
+        <scene sceneID="zxg-on-Xm5">
+            <objects>
+                <navigationController storyboardIdentifier="pushNotificationTripDetailNavigationController" id="dZj-eJ-jq0" customClass="BaseNavigationController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gce-yI-dXD">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Ipr-0X-Mb4" kind="relationship" relationship="rootViewController" id="9lo-Na-wJR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1NF-MH-EAS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-956" y="83"/>
+        </scene>
+        <!--Rail Delay-->
         <scene sceneID="xGg-JY-2wR">
             <objects>
                 <viewController storyboardIdentifier="pushNotificationTripDetailViewController" id="Ipr-0X-Mb4" customClass="PushNotificationTripDetailViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Id-DY-3xE" userLabel="MapView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="327"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="303"/>
                                 <connections>
                                     <segue destination="rLf-ds-PN2" kind="embed" id="R2l-Y3-5ng"/>
                                 </connections>
@@ -37,9 +53,9 @@
                                 </variation>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Os-2x-QGh" userLabel="InfoView">
-                                <rect key="frame" x="0.0" y="391" width="375" height="276"/>
+                                <rect key="frame" x="0.0" y="367" width="375" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="276" id="h6c-wv-KJn"/>
+                                    <constraint firstAttribute="height" constant="300" id="h6c-wv-KJn"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="0Oe-hL-0SR" kind="embed" id="J28-A1-wg8"/>
@@ -62,7 +78,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Iwu-zm-0jC"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Trip Detail" id="gwH-aO-iVp"/>
+                    <navigationItem key="navigationItem" title="Rail Delay" id="gwH-aO-iVp"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2qX-mZ-kuC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -74,11 +90,11 @@
             <objects>
                 <viewController storyboardIdentifier="pushnotificationTripDetailMap" id="rLf-ds-PN2" customClass="PushNotificationTripDetailMapViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zM5-X6-HpV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="327"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="303"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="V33-1W-Z10">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="327"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="303"/>
                                 <connections>
                                     <outlet property="delegate" destination="zM5-X6-HpV" id="16j-TT-cPw"/>
                                 </connections>
@@ -107,7 +123,7 @@
             <objects>
                 <viewController storyboardIdentifier="pushnotificationTripDetailInfo" id="0Oe-hL-0SR" customClass="PushNotificationTripDetailInfoViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dWb-ZV-M90">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="276"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kor-ht-1DO" userLabel="SubtleTopBar">
@@ -118,7 +134,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQU-76-V3H">
-                                <rect key="frame" x="0.0" y="3" width="375" height="273"/>
+                                <rect key="frame" x="0.0" y="3" width="375" height="297"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="R0Z-eT-oBg">
                                         <rect key="frame" x="15" y="0.0" width="345" height="212"/>

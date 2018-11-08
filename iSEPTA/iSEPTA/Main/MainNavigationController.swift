@@ -13,6 +13,9 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
     var modalAlertsDisplayedWatcher: AlertState_ModalAlertsDisplayedWatcher?
     var databaseUpdateWatcher: DatabaseUpdateWatcher?
     var databaseDownloadedWatcher: DatabaseDownloadedWatcher?
+    var pushNotificationTripDetailState_ResultsWatcher = PushNotificationTripDetailState_ResultsWatcher()
+
+    var currentlyPresentingPushNotificationTripDetail = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -74,12 +77,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
             databaseDownloadedWatcher = DatabaseDownloadedWatcher(delegate: self)
         }
 
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5, execute: { [weak self] in
-            guard let strongSelf = self,
-                let viewController: PushNotificationTripDetailViewController = ViewController.pushNotificationTripDetailViewController.instantiateViewController()
-            else { return }
-            strongSelf.present(viewController, animated: true, completion: nil)
-        })
+        pushNotificationTripDetailState_ResultsWatcher.delegate = self
     }
 
     var modalTransitioningDelegate: UIViewControllerTransitioningDelegate!
@@ -173,5 +171,20 @@ extension MainNavigationController: DatabaseDownloadedWatcherDelegate {
         let dbFileManager = DatabaseFileManager()
         dbFileManager.setDatabaseUpdateInProgress(inProgress: false)
         store.dispatch(DatabaseUpToDate())
+    }
+}
+
+extension MainNavigationController: PushNotificationTripDetailState_ResultsDelegateDelegate {
+    func pushNotificationTripDetailState_Updated(state: PushNotificationTripDetailState) {
+         if state.readyToPresent && !currentlyPresentingPushNotificationTripDetail {
+            let viewController: UIViewController = ViewController.pushNotificationTripDetailNavigationController.instantiateViewController()
+            present(viewController, animated: true, completion: nil)
+            currentlyPresentingPushNotificationTripDetail = true
+        } else if state.tripId == nil && currentlyPresentingPushNotificationTripDetail {
+            self.dismiss(animated: true, completion: nil)
+            currentlyPresentingPushNotificationTripDetail = false
+        } else if state.shouldDisplayErrorMessageInsteadOfPresenting && !currentlyPresentingPushNotificationTripDetail {
+            UIAlert.presentOKAlertFrom(viewController: self, withTitle: "Delay Notification Expired", message: "Information about the delay notification is not longer available")
+        }
     }
 }

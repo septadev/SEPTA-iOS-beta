@@ -11,12 +11,53 @@ import SeptaRest
 import SeptaSchedule
 import UIKit
 
-class PushNotificationTripDetailInfoViewController: UIViewController, TripDetailState_TripDetailsWatcherDelegate {
-    var tripDetailWatcher: TripDetailState_TripDetailsWatcher?
+class PushNotificationTripDetailInfoViewController: UIViewController, PushNotificationTripDetailState_PushNotificationTripDetailDataWatcherDelegate {
+    var tripDetailWatcher: PushNotificationTripDetailState_PushNotificationTripDetailDataWatcher?
+
+    var havePostedTwitterLink = false
+    var routes: [Route]? {
+       didSet {
+            routeId = fetchRouteId(lineName: lineName)
+        }
+    }
+
+
+    var routeId: String? {
+        didSet {
+            guard !havePostedTwitterLink, let routeId = routeId else  { return }
+            configureTwitter(routeId: routeId)
+            havePostedTwitterLink = true
+        }
+    }
+    var lineName: String?  {
+        didSet {
+            routeId = fetchRouteId(lineName: lineName)
+        }
+    }
+
+    func fetchRouteId(lineName: String?) -> String? {
+        guard let routes = routes,  // routes exists
+        let lineName = lineName,  // non nill was passed in
+        let matchingRoute = routes.first(where: {$0.routeShortName == "\(lineName) Line"}) else { return nil }  //matching route id exists
+        return matchingRoute.routeId
+    }
+
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loadRoutes()
+    }
+
+    func loadRoutes() {
+        RoutesCommand.sharedInstance.routes(forTransitMode: .rail) { [weak self] routes, _ in
+            guard let strongSelf = self else { return }
+            strongSelf.routes = routes
+        }
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tripDetailWatcher = TripDetailState_TripDetailsWatcher()
+        tripDetailWatcher = PushNotificationTripDetailState_PushNotificationTripDetailDataWatcher()
         tripDetailWatcher?.delegate = self
     }
 
@@ -25,9 +66,11 @@ class PushNotificationTripDetailInfoViewController: UIViewController, TripDetail
         tripDetailWatcher = nil
     }
 
-    func tripDetailState_TripDetailsUpdated(nextToArriveStop: NextToArriveStop) {
-        configureForTransitMode(transitMode: nextToArriveStop.transitMode)
-        configureView(nextToArriveStop: nextToArriveStop)
+    func pushNotificationTripDetailState_PushNotificationTripDetailDataUpdated(pushNotificationTripDetailData data: PushNotificationTripDetailData?) {
+        guard let data = data else { return }
+        configureForTransitMode(transitMode: .rail)
+        lineName = data.line
+        configureView(data: data)
     }
 
     func configureForTransitMode(transitMode: TransitMode) {
@@ -35,55 +78,39 @@ class PushNotificationTripDetailInfoViewController: UIViewController, TripDetail
         navigationItem.title = transitMode.tripDetailTitle()
     }
 
-    func configureView(nextToArriveStop: NextToArriveStop) {
+    func configureView(data: PushNotificationTripDetailData) {
         infoStackView.clearSubviews()
-        configureRoute(nextToArriveStop: nextToArriveStop)
-        configureDestination(nextToArriveStop: nextToArriveStop)
-        configureTwitter(nextToArriveStop: nextToArriveStop)
-        configureDelayView(nextToArriveStop: nextToArriveStop)
+        configureRoute(data: data)
+        configureDestination(data: data)
 
-        if let railDetails = nextToArriveStop.nextToArriveDetail as? NextToArriveRailDetails {
-            configureHeaderViewForRail(railDetails: railDetails)
-            configureNextStopViewForRail(railDetails: railDetails)
-            configureCars(nextToArriveStop: nextToArriveStop)
-            configureService(nextToArriveStop: nextToArriveStop)
-        } else if let busDetails = nextToArriveStop.nextToArriveDetail as? NextToArriveBusDetails {
-            configureHeaderViewForBus(busDetails: busDetails)
-            configureCarsForBus(busDetails: busDetails)
-        } else {
-            configureHeaderViewForNoDetail(nextToArriveStop: nextToArriveStop)
-            configureNextStopViewForNoDetail(nextToArriveStop: nextToArriveStop)
-        }
+        configureDelayView(data: data)
 
-        if nextToArriveStop.transitMode.useRailForDetails() {} else if nextToArriveStop.transitMode.useBusForDetails() {
-            configureNextStopViewForBus()
-        }
+        configureHeaderViewForRail(data: data)
+        configureNextStopViewForRail(data: data)
+        configureCars(data: data)
+        configureService(data: data)
+
         view.setNeedsLayout()
         view.layoutIfNeeded()
     }
 
     // MARK: - Header View
 
-    func configureHeaderViewForRail(railDetails: NextToArriveRailDetails) {
-        guard let tripId = railDetails.tripid, let destinationStation = railDetails.destinationStation, destinationStation.count > 0 else { return }
+    func configureHeaderViewForRail(data: PushNotificationTripDetailData) {
+        guard let tripId = data.tripId, let destinationStation = data.destinationStation, destinationStation.count > 0 else { return }
         routeLabel.text = "#\(tripId) to \(destinationStation)"
     }
 
-    func configureHeaderViewForBus(busDetails: NextToArriveBusDetails) {
-        guard let blockId = busDetails.blockid, let line = busDetails.line, let destinationStation = busDetails.destinationStation, destinationStation.count > 0 else { return }
-        routeLabel.text = "#\(blockId) on \(line) to \(destinationStation)"
-    }
-
-    func configureHeaderViewForNoDetail(nextToArriveStop: NextToArriveStop) {
-        guard let lastStopName = nextToArriveStop.lastStopName else { return }
-        routeLabel.text = "\(nextToArriveStop.routeName)  to \(lastStopName)"
+    func configureHeaderViewForNoDetail(data: PushNotificationTripDetailData) {
+        guard let lastStopName = data.destinationStation, let routeName = data.line else { return }
+        routeLabel.text = "\(routeName)  to \(lastStopName)"
     }
 
     // MARK: - Delay View
 
-    func configureDelayView(nextToArriveStop: NextToArriveStop) {
-        let onTimeColor = nextToArriveStop.generateOnTimeColor()
-        delayLabel.text = nextToArriveStop.generateDelayString(prefixString: "")
+    func configureDelayView(data: PushNotificationTripDetailData) {
+        let onTimeColor = data.generateOnTimeColor()
+        delayLabel.text = data.generateDelayString(prefixString: "")
         delayLabel.textColor = onTimeColor
         delayBoxView.layer.borderWidth = 1
         delayBoxView.layer.borderColor = onTimeColor.cgColor
@@ -91,35 +118,32 @@ class PushNotificationTripDetailInfoViewController: UIViewController, TripDetail
 
     // MARK: - Next Stop View
 
-    func configureNextStopViewForRail(railDetails: NextToArriveRailDetails) {
-        if let nextstopStation = railDetails.nextstopStation {
+    func configureNextStopViewForRail(data: PushNotificationTripDetailData) {
+        if let nextstopStation = data.nextstopStation {
             nextStopStationNameLabel.text = nextstopStation
         } else {
             nextStopStationNameLabel.text = "No data available"
         }
     }
 
-    func configureNextStopViewForBus() {
-        infoStackView.removeSubview(subview: nextStopView)
-    }
-
-    func configureNextStopViewForNoDetail(nextToArriveStop _: NextToArriveStop) {
+    func configureNextStopViewForNoDetail() {
         nextStopStationNameLabel.text = "No data available"
     }
 
     // MARK: - Route
 
-    func configureRoute(nextToArriveStop: NextToArriveStop) {
+    func configureRoute(data: PushNotificationTripDetailData) {
+        guard let line = data.line else { return }
         let itemView = newItemView()
-        itemView.headerLabel.text = "\(nextToArriveStop.transitMode.routeTitle()):"
-        itemView.valueLabel.text = nextToArriveStop.routeName
+        itemView.headerLabel.text = "\(TransitMode.rail.routeTitle()):"
+        itemView.valueLabel.text = line
         infoStackView.addArrangedSubview(itemView)
     }
 
     // MARK: - Origination  -- Destination
 
-    func configureDestination(nextToArriveStop: NextToArriveStop) {
-        guard let lastStopName = nextToArriveStop.lastStopName, lastStopName.count > 0 else { return }
+    func configureDestination(data: PushNotificationTripDetailData) {
+        guard let lastStopName = data.destinationStation, lastStopName.count > 0 else { return }
         let itemView = newItemView()
         itemView.headerLabel.text = "Destination:"
         itemView.valueLabel.text = lastStopName
@@ -128,8 +152,8 @@ class PushNotificationTripDetailInfoViewController: UIViewController, TripDetail
 
     // MARK: -  cars and destination
 
-    func configureCars(nextToArriveStop: NextToArriveStop) {
-        guard let vehicleIds = nextToArriveStop.vehicleIds else { return }
+    func configureCars(data: PushNotificationTripDetailData) {
+        guard let vehicleIds = data.consist else { return }
         let itemView = newItemView()
         itemView.headerLabel.text = "# Train Cars:"
         let countString = String(vehicleIds.count)
@@ -139,32 +163,16 @@ class PushNotificationTripDetailInfoViewController: UIViewController, TripDetail
         infoStackView.addArrangedSubview(itemView)
     }
 
-    func configureCarsForBus(busDetails: NextToArriveBusDetails) {
-        if let vehicleId = busDetails.vehicleid {
-            let itemView = newItemView()
-            itemView.headerLabel.text = "Vehicle Number:"
-            itemView.valueLabel.text = vehicleId
-            infoStackView.addArrangedSubview(itemView)
-        }
-
-        if let blockId = busDetails.blockid {
-            let itemView = newItemView()
-            itemView.headerLabel.text = "Block Number:"
-            itemView.valueLabel.text = blockId
-            infoStackView.addArrangedSubview(itemView)
-        }
-    }
-
-    func configureService(nextToArriveStop: NextToArriveStop) {
-        guard let service = nextToArriveStop.service else { return }
+    func configureService(data: PushNotificationTripDetailData) {
+        guard let service = data.service else { return }
         let itemView = newItemView()
         itemView.headerLabel.text = "Type:"
         itemView.valueLabel.text = service
         infoStackView.addArrangedSubview(itemView)
     }
 
-    func configureTwitter(nextToArriveStop: NextToArriveStop) {
-        twitterHandleLabel.text = Route.twiterHandleForRouteId(routeId: nextToArriveStop.routeId, transitMode: nextToArriveStop.transitMode)
+    func configureTwitter(routeId: String) {
+        twitterHandleLabel.text = Route.twiterHandleForRouteId(routeId: routeId, transitMode: .rail)
     }
 
     @IBAction func userTappedTwitter(_: Any) {
@@ -204,9 +212,6 @@ class PushNotificationTripDetailInfoViewController: UIViewController, TripDetail
     @IBOutlet var delayLabel: UILabel!
 
     @IBOutlet var twitterView: UIView!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 
     func configureIcone() {}
 

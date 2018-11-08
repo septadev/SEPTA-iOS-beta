@@ -294,6 +294,8 @@
 		58B5B1051F6DB00000A3DAFB /* FavoritesState_FavoritesWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B5B1041F6DB00000A3DAFB /* FavoritesState_FavoritesWatcher.swift */; };
 		58B5B1091F6DBFFF00A3DAFB /* ScheduleState_ScheduleRequestWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B5B1081F6DBFFF00A3DAFB /* ScheduleState_ScheduleRequestWatcher.swift */; };
 		58B6654E219357EC0057B8DF /* PushNotificationTripDetailVehicleLocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B6654D219357EC0057B8DF /* PushNotificationTripDetailVehicleLocationAnnotation.swift */; };
+		58B665522193A0390057B8DF /* PushNotificationTripDetailData+DelayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B665512193A0390057B8DF /* PushNotificationTripDetailData+DelayString.swift */; };
+		58B665542193B85B0057B8DF /* PushNotificationTripDetailResultsWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B665532193B85B0057B8DF /* PushNotificationTripDetailResultsWatcher.swift */; };
 		58B892151F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892141F38EFEA00BFFEFA /* SelectSchedulesViewModel.swift */; };
 		58B892171F38F7E700BFFEFA /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B892161F38F7E700BFFEFA /* Strings.swift */; };
 		58BE70711F6A4CFB00D12479 /* CellConnectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BE70701F6A4CFB00D12479 /* CellConnectionView.xib */; };
@@ -1092,6 +1094,8 @@
 		58B5B1041F6DB00000A3DAFB /* FavoritesState_FavoritesWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesState_FavoritesWatcher.swift; sourceTree = "<group>"; };
 		58B5B1081F6DBFFF00A3DAFB /* ScheduleState_ScheduleRequestWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleState_ScheduleRequestWatcher.swift; sourceTree = "<group>"; };
 		58B6654D219357EC0057B8DF /* PushNotificationTripDetailVehicleLocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationTripDetailVehicleLocationAnnotation.swift; sourceTree = "<group>"; };
+		58B665512193A0390057B8DF /* PushNotificationTripDetailData+DelayString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushNotificationTripDetailData+DelayString.swift"; sourceTree = "<group>"; };
+		58B665532193B85B0057B8DF /* PushNotificationTripDetailResultsWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationTripDetailResultsWatcher.swift; sourceTree = "<group>"; };
 		58B891C81F38B51E00BFFEFA /* ScheduleRequestReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleRequestReducerTests.swift; sourceTree = "<group>"; };
 		58B8920C1F38C64C00BFFEFA /* MockPreferenceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPreferenceProvider.swift; sourceTree = "<group>"; };
 		58B8920E1F38CBA900BFFEFA /* GenericAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAction.swift; sourceTree = "<group>"; };
@@ -1781,6 +1785,7 @@
 				589A919A1F905CA6009B49E0 /* TripDetailState_TripDetailWatcher.swift */,
 				673E10E3219313CA00EB8689 /* PushNotificationTripDetailDataWatcher.swift */,
 				6722CB4D2192E61E00EB76BE /* PushNotificationTripDetailWatcher.swift */,
+				58B665532193B85B0057B8DF /* PushNotificationTripDetailResultsWatcher.swift */,
 			);
 			path = "State Watchers";
 			sourceTree = "<group>";
@@ -2994,6 +2999,7 @@
 				6722CB3E21927A9600EB76BE /* PushNotificationTripDetailStatus.swift */,
 				6722CB1F21922BA600EB76BE /* PushNotificationTripDetailState.swift */,
 				6722CB2121922BBA00EB76BE /* PushNotificationTripDetailAction.swift */,
+				58B665512193A0390057B8DF /* PushNotificationTripDetailData+DelayString.swift */,
 				6722CB2321922BCF00EB76BE /* PushNotificationTripDetailReducers.swift */,
 			);
 			path = "Push Notification Trip Detail";
@@ -3926,6 +3932,7 @@
 				676355031F5E998200CA7EAB /* SelectSchedulesRowDisplayModel.swift in Sources */,
 				58126F771F64127B00A6E187 /* NextToArrivePrerequisiteStatus.swift in Sources */,
 				676355091F5EB2C700CA7EAB /* StopWithDistance.swift in Sources */,
+				58B665542193B85B0057B8DF /* PushNotificationTripDetailResultsWatcher.swift in Sources */,
 				679BC9D4211150C600F666BA /* AddTimeframeButtonView.swift in Sources */,
 				678F052E1F5B7D3E00CC4D3C /* AddressLookupActions.swift in Sources */,
 				671609031F6766FF00941D2C /* TripView.swift in Sources */,
@@ -4158,6 +4165,7 @@
 				589BCC321F3D5068002FAEDE /* SchedulesPresentationController.swift in Sources */,
 				586DFEC51F505482004BC972 /* CurvedTopView.swift in Sources */,
 				580A355B1F6A0E84000FCA82 /* FavoritesNavigationController.swift in Sources */,
+				58B665522193A0390057B8DF /* PushNotificationTripDetailData+DelayString.swift in Sources */,
 				581DA54A1F3BE1C8006AEC39 /* IdentifiableController.swift in Sources */,
 				58EB8D2D1F5D927E0028A487 /* NextToArriveScheduleReducer.swift in Sources */,
 				67C5672F1F59862600FF6203 /* ReverseTripButton.swift in Sources */,

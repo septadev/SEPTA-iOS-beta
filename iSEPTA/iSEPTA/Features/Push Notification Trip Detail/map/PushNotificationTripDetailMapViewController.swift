@@ -90,7 +90,7 @@ class PushNotificationTripDetailMapViewController: UIViewController, PushNotific
             if let routeOverlays = self?.mapOverlaysToRouteOverlays(routeId: routeId, overlays: overlays), let firstOverlay = routeOverlays.first {
                 let boundingRect = firstOverlay.boundingMapRect
                 self?.mapView.addOverlays(routeOverlays)
-                self?.mapView.visibleMapRect = self!.mapView.mapRectThatFits(boundingRect, edgePadding: UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0))
+          //      self?.mapView.visibleMapRect = self!.mapView.mapRectThatFits(boundingRect, edgePadding: UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0))
                 self?.routeHasBeenAdded = true
             }
         }
@@ -130,20 +130,11 @@ class PushNotificationTripDetailMapViewController: UIViewController, PushNotific
         mapView.addAnnotation(annotation)
         vehiclesAnnotationsAdded.append(annotation)
 
-        let visibleMapRect = mapView.visibleMapRect
-        let annotationPoint = MKMapPointForCoordinate(annotation.coordinate)
-        let annotationRect = MKMapRect(origin: annotationPoint, size: MKMapSize(width: 1, height: 1))
-        if !MKMapRectContainsRect(visibleMapRect, annotationRect) {
-            showAnotations()
-        }
-        
+
+        let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 1600, 1600)
+        mapView.setRegion(region, animated: true)
     }
 
-    func showAnotations() {
-        mapView.showAnnotations(mapView.annotations, animated: true)
-
-        //        mapView.setVisibleMapRect(mapView.visibleMapRect, edgePadding: UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0), animated: true)
-    }
 
     func clearExistingVehicleLocations() {
         mapView.removeAnnotations(vehiclesAnnotationsAdded)
