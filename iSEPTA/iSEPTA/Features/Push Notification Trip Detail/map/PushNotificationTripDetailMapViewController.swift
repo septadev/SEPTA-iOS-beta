@@ -114,6 +114,7 @@ class PushNotificationTripDetailMapViewController: UIViewController, PushNotific
         }
     }
 
+    var shouldAnimateMap = false
     func drawVehicle(data: PushNotificationTripDetailData) {
         clearExistingVehicleLocations()
         guard let lat = data.latitude, let lon = data.longitude else { return }
@@ -132,7 +133,8 @@ class PushNotificationTripDetailMapViewController: UIViewController, PushNotific
 
 
         let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 1600, 1600)
-        mapView.setRegion(region, animated: true)
+        mapView.setRegion(region, animated: shouldAnimateMap)  // no animation the first time
+        shouldAnimateMap = true
     }
 
 
