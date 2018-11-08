@@ -2654,6 +2654,7 @@
 			isa = PBXGroup;
 			children = (
 				0E2777F6211238EB00507CFE /* Config */,
+				58D9C3F21F3335BB002BE2E8 /* iSEPTA */,
 				58490E361F55F6F9007DBCA1 /* SeptaRest.xcodeproj */,
 				58ACEADD1F3A9A9B00DC2836 /* SeptaSchedule.xcodeproj */,
 				5880C19C1F3B702500337DB2 /* Answers.framework */,
@@ -2668,7 +2669,6 @@
 				0EFEAD062110D86700F3A368 /* Protobuf.framework */,
 				0EFEACFC2110D84500F3A368 /* GoogleToolboxForMac.framework */,
 				0EFEACFD2110D84600F3A368 /* nanopb.framework */,
-				58D9C3F21F3335BB002BE2E8 /* iSEPTA */,
 				58D9C40A1F3335BB002BE2E8 /* iSEPTATests */,
 				58D9C3F11F3335BB002BE2E8 /* Products */,
 				58D9C4161F33362C002BE2E8 /* Frameworks */,
