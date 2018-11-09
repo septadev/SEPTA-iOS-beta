@@ -10,6 +10,7 @@ import Foundation
 
 enum PushNotificationTripDetailMapperError: Error {
     case badJsonFormat
+    case missingDetailsProbablyExpired
 }
 
 class PushNotificationTripDetailMapper {
@@ -34,8 +35,8 @@ class PushNotificationTripDetailMapper {
     }
 
     static func mapData(data: Data) throws -> PushNotificationTripDetailData {
-        guard let jsonObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
-            let detailsDict = jsonObject[Keys.details] as? [String: Any] else { throw PushNotificationTripDetailMapperError.badJsonFormat }
+        guard let jsonObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else { throw PushNotificationTripDetailMapperError.badJsonFormat }
+        guard let detailsDict = jsonObject[Keys.details] as? [String: Any] else { throw PushNotificationTripDetailMapperError.missingDetailsProbablyExpired }
 
         let tripId = jsonObject[Keys.tripid] as? String
         let destination = jsonObject[Keys.destination] as? String

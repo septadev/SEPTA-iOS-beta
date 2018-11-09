@@ -22,7 +22,10 @@ extension NotificationsManager {
         case .delay:
             guard let delayNotification = decodeDelayNotification(info: info) else { return }
             if delayNotification.delayType == .actual {
-                store.dispatch(UpdatePushNotificationTripDetailTripId(tripId: delayNotification.vehicleId))
+
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25 , execute: {
+                    store.dispatch(AddPushNotificationTripDetailDelayNotification(septaDelayNotification: delayNotification))
+                })
             }
         default:
             break

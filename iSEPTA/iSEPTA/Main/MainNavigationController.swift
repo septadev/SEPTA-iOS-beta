@@ -78,6 +78,8 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         }
 
         pushNotificationTripDetailState_ResultsWatcher.delegate = self
+
+
     }
 
     var modalTransitioningDelegate: UIViewControllerTransitioningDelegate!
@@ -104,6 +106,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
     }
 
     func alertState_ModalAlertsDisplayedUpdated(modalAlertsDisplayed: Bool) {
+        return
         let alertState = store.state.alertState
         guard store.state.databaseState == .loaded else { return }
 
@@ -184,7 +187,17 @@ extension MainNavigationController: PushNotificationTripDetailState_ResultsDeleg
             self.dismiss(animated: true, completion: nil)
             currentlyPresentingPushNotificationTripDetail = false
         } else if state.shouldDisplayErrorMessageInsteadOfPresenting && !currentlyPresentingPushNotificationTripDetail {
-            UIAlert.presentOKAlertFrom(viewController: self, withTitle: "Delay Notification Expired", message: "Information about the delay notification is not longer available")
+            guard let message = buildExpiredMessage(delayNotification: state.delayNotification) else { return }
+            UIAlert.presentOKAlertFrom(viewController: self, withTitle: "Push Notification", message: message) {
+                store.dispatch(ClearPushNotificationTripDetailData())
+            }
         }
+    }
+
+    func buildExpiredMessage(delayNotification: SeptaDelayNotification?) -> String? {
+        guard let delayNotification = delayNotification else { return nil }
+
+        return "Train Delay Notification on \(delayNotification.routeId) is now expired."
+
     }
 }

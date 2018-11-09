@@ -11,9 +11,9 @@ import SeptaRest
 
 protocol PushNotificationTripDetailAction: SeptaAction {}
 
-struct UpdatePushNotificationTripDetailTripId: PushNotificationTripDetailAction {
+struct AddPushNotificationTripDetailDelayNotification: PushNotificationTripDetailAction {
     let description: String = "A Push Notification has been received with a specific trip ID"
-    let tripId: String
+    let septaDelayNotification: SeptaDelayNotification
 }
 
 struct UpdatePushNotificationTripDetailStatus: PushNotificationTripDetailAction {

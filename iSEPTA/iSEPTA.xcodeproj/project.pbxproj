@@ -240,6 +240,7 @@
 		587BC0541F6EE86000B92BB6 /* AlertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587BC0531F6EE86000B92BB6 /* AlertsViewController.swift */; };
 		587BC0561F6EE8AF00B92BB6 /* AlertsTransitModeToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587BC0551F6EE8AF00B92BB6 /* AlertsTransitModeToolBar.swift */; };
 		587BC0581F6EEBBD00B92BB6 /* AlertsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587BC0571F6EEBBD00B92BB6 /* AlertsViewModel.swift */; };
+		587CE8992195C5D600AC2865 /* FakeDelayNotification.json in Resources */ = {isa = PBXBuildFile; fileRef = 587CE8982195C5D600AC2865 /* FakeDelayNotification.json */; };
 		5880C19B1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5880C19A1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift */; };
 		588D80591F72AAA800EE1983 /* FavoriteState_ScheduleRequestWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D80581F72AAA800EE1983 /* FavoriteState_ScheduleRequestWatcher.swift */; };
 		588D805B1F72AABF00EE1983 /* ScheduleRequestWatcherDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D805A1F72AABF00EE1983 /* ScheduleRequestWatcherDelegate.swift */; };
@@ -1039,6 +1040,7 @@
 		587BC0531F6EE86000B92BB6 /* AlertsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsViewController.swift; sourceTree = "<group>"; };
 		587BC0551F6EE8AF00B92BB6 /* AlertsTransitModeToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsTransitModeToolBar.swift; sourceTree = "<group>"; };
 		587BC0571F6EEBBD00B92BB6 /* AlertsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsViewModel.swift; sourceTree = "<group>"; };
+		587CE8982195C5D600AC2865 /* FakeDelayNotification.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FakeDelayNotification.json; sourceTree = "<group>"; };
 		5880C19A1F3B4D1C00337DB2 /* ScheduleRequestReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRequestReducer.swift; sourceTree = "<group>"; };
 		5880C19C1F3B702500337DB2 /* Answers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Answers.framework; sourceTree = "<group>"; };
 		588D80581F72AAA800EE1983 /* FavoriteState_ScheduleRequestWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteState_ScheduleRequestWatcher.swift; sourceTree = "<group>"; };
@@ -1693,6 +1695,7 @@
 				5862859D211CCBAF00F4F012 /* NotificationsManager+DeepLinking.swift */,
 				58628599211CC2C700F4F012 /* NotificationManager+Codable.swift */,
 				0EE428D32114D4C500EBF6FE /* SeptaNotification.swift */,
+				587CE8982195C5D600AC2865 /* FakeDelayNotification.json */,
 				58252241211E08D700CAB9E6 /* NextToArriveDetailForDelayNotification.swift */,
 				58628593211C92DA00F4F012 /* TransitMode+Notifications.swift */,
 			);
@@ -3694,6 +3697,7 @@
 				677E04C120727C9D00B16C09 /* 118.kml in Resources */,
 				677E051020727C9D00B16C09 /* 124.kml in Resources */,
 				677E052020727C9D00B16C09 /* 112.kml in Resources */,
+				587CE8992195C5D600AC2865 /* FakeDelayNotification.json in Resources */,
 				0E8E60C820EC0D9A00AB08FE /* TransitView.storyboard in Resources */,
 				58C182041F34C5B6002748E9 /* Localizeable.strings in Resources */,
 				582F4EC11F33B1120062A546 /* contact.storyboard in Resources */,

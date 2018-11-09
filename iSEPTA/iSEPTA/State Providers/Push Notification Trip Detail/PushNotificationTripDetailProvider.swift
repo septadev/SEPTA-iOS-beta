@@ -59,8 +59,12 @@ class PushNotificationTripDetailProvider: PushNotificationTripDetailState_TripId
             do {
                 let tripDetailData = try PushNotificationTripDetailMapper.mapData(data: data)
                 updateState(tripDetailData: tripDetailData)
-            } catch {
+            } catch PushNotificationTripDetailMapperError.badJsonFormat {
                 updateStatus(status: PushNotificationTripDetailStatus.jsonParsingError)
+            } catch PushNotificationTripDetailMapperError.missingDetailsProbablyExpired {
+                updateStatus(status: PushNotificationTripDetailStatus.noResultsReturned)
+            } catch {
+                print ("Unknown Error")
             }
         } else {
             updateStatus(status: PushNotificationTripDetailStatus.networkError(statusCode))

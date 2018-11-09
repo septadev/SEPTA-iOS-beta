@@ -13,23 +13,27 @@ struct PushNotificationTripDetailReducer {
     static func main(action: Action, state: PushNotificationTripDetailState?) -> PushNotificationTripDetailState {
         if let state = state {
             guard let action = action as? PushNotificationTripDetailAction else { return state }
-            return reduceTripDetailAction(action: action, state: state)
+            return reducePushNotificationTripDetailAction(action: action, state: state)
         } else {
             return PushNotificationTripDetailState()
         }
     }
 
-    static func reduceTripDetailAction(action: PushNotificationTripDetailAction, state: PushNotificationTripDetailState) -> PushNotificationTripDetailState {
+    static func reducePushNotificationTripDetailAction(action: PushNotificationTripDetailAction, state: PushNotificationTripDetailState) -> PushNotificationTripDetailState {
         var newState = state
         switch action {
-        case let action as UpdatePushNotificationTripDetailTripId:
-            newState = reduceUpdatePushNotificationTripDetailTripId(action: action, state: state)
+        case let action as AddPushNotificationTripDetailDelayNotification:
+            newState = reduceAddPushNotificationTripDetailDelayNotification(action: action, state: state)
+            assert(false)
         case let action as UpdatePushNotificationTripDetailStatus:
             newState = reduceUpdatePushNotificationTripDetailStatus(action: action, state: state)
+            assert(false)
         case let action as UpdatePushNotificationTripDetailData:
             newState = reduceUpdatePushNotificationTripDetailData(action: action, state: state)
+            assert(false)
         case let action as ClearPushNotificationTripDetailData:
             newState = reduceClearPushNotificationTripDetailData(action: action, state: state)
+            assert(false)
         default:
             break
         }
@@ -37,9 +41,11 @@ struct PushNotificationTripDetailReducer {
         return newState
     }
 
-    static func reduceUpdatePushNotificationTripDetailTripId(action: UpdatePushNotificationTripDetailTripId, state _: PushNotificationTripDetailState) -> PushNotificationTripDetailState {
+    static func reduceAddPushNotificationTripDetailDelayNotification(action: AddPushNotificationTripDetailDelayNotification, state _: PushNotificationTripDetailState) -> PushNotificationTripDetailState {
         var newState = PushNotificationTripDetailState()
-        newState.tripId = action.tripId
+        newState.tripId = action.septaDelayNotification.vehicleId
+        newState.routeId = action.septaDelayNotification.routeId
+        newState.delayNotification = action.septaDelayNotification
         return newState
     }
 

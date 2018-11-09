@@ -12,17 +12,18 @@ import SeptaRest
 struct PushNotificationTripDetailState: Equatable {
     var pushNotificationTripDetailUpdateStatus: PushNotificationTripDetailStatus = .idle
     var pushNotificationTripDetailData: PushNotificationTripDetailData?
+    var delayNotification: SeptaDelayNotification?
     var tripId: String?
+    var routeId: String?
     var results: Int? = nil
 
     var readyToPresent: Bool {
         guard let results = results else { return false }
-        return tripId != nil && results > 0
+        return tripId != nil && results > 0 && pushNotificationTripDetailUpdateStatus == .dataLoadedSuccessfully
     }
 
     var shouldDisplayErrorMessageInsteadOfPresenting: Bool {
-        guard let results = results else { return false }
-        return tripId != nil && results == 0
+        return tripId != nil && pushNotificationTripDetailUpdateStatus == .noResultsReturned
     }
 }
 

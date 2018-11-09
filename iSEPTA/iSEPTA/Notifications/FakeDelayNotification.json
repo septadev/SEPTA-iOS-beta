@@ -1,0 +1,18 @@
+
+{
+  "notificationType" : "DELAY",
+  "routeId" : "PAO",
+  "google.c.a.e" : "1",
+  "aps" : {
+    "alert" : {
+      "title" : "Train Delay on PAO",
+      "body" : "Thorndale: Train #9542 to Temple U estimated to be 13 minutes late, scheduled to depart Thorndale at 8:14AM."
+    }
+  },
+  "destinationStopId" : "90007",
+  "message" : "Thorndale: Train #9542 to Temple U estimated to be 13 minutes late, scheduled to depart Thorndale at 8:14AM.",
+  "vehicleId" : "9542",
+  "delayType" : "ESTIMATED",
+  "gcm.message_id" : "0:1541509929614000%65771b2f65771b2f",
+  "routeType" : "RAIL"
+}

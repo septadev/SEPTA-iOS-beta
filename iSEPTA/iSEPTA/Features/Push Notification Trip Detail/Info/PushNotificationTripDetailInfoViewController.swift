@@ -14,45 +14,10 @@ import UIKit
 class PushNotificationTripDetailInfoViewController: UIViewController, PushNotificationTripDetailState_PushNotificationTripDetailDataWatcherDelegate {
     var tripDetailWatcher: PushNotificationTripDetailState_PushNotificationTripDetailDataWatcher?
 
-    var havePostedTwitterLink = false
-    var routes: [Route]? {
-       didSet {
-            routeId = fetchRouteId(lineName: lineName)
-        }
-    }
-
-
-    var routeId: String? {
-        didSet {
-            guard !havePostedTwitterLink, let routeId = routeId else  { return }
-            configureTwitter(routeId: routeId)
-            havePostedTwitterLink = true
-        }
-    }
-    var lineName: String?  {
-        didSet {
-            routeId = fetchRouteId(lineName: lineName)
-        }
-    }
-
-    func fetchRouteId(lineName: String?) -> String? {
-        guard let routes = routes,  // routes exists
-        let lineName = lineName,  // non nill was passed in
-        let matchingRoute = routes.first(where: {$0.routeShortName == "\(lineName) Line"}) else { return nil }  //matching route id exists
-        return matchingRoute.routeId
-    }
-
+    var routeId: String? = store.state.pushNotificationTripDetailState.routeId
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadRoutes()
-    }
-
-    func loadRoutes() {
-        RoutesCommand.sharedInstance.routes(forTransitMode: .rail) { [weak self] routes, _ in
-            guard let strongSelf = self else { return }
-            strongSelf.routes = routes
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +34,7 @@ class PushNotificationTripDetailInfoViewController: UIViewController, PushNotifi
     func pushNotificationTripDetailState_PushNotificationTripDetailDataUpdated(pushNotificationTripDetailData data: PushNotificationTripDetailData?) {
         guard let data = data else { return }
         configureForTransitMode(transitMode: .rail)
-        lineName = data.line
+
         configureView(data: data)
     }
 
@@ -89,6 +54,7 @@ class PushNotificationTripDetailInfoViewController: UIViewController, PushNotifi
         configureNextStopViewForRail(data: data)
         configureCars(data: data)
         configureService(data: data)
+        configureTwitter()
 
         view.setNeedsLayout()
         view.layoutIfNeeded()
@@ -171,7 +137,8 @@ class PushNotificationTripDetailInfoViewController: UIViewController, PushNotifi
         infoStackView.addArrangedSubview(itemView)
     }
 
-    func configureTwitter(routeId: String) {
+    func configureTwitter() {
+        guard let routeId = routeId else { return }
         twitterHandleLabel.text = Route.twiterHandleForRouteId(routeId: routeId, transitMode: .rail)
     }
 
