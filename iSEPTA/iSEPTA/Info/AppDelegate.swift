@@ -44,8 +44,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func postFakeNotification(){
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4, execute: {
-        store.dispatch(UpdatePushNotificationTripDetailTripId(tripId: "2751"))
+            let delayNotification = self.buildFakeNotification()
+            store.dispatch(AddPushNotificationTripDetailDelayNotification(septaDelayNotification: delayNotification))
         })
+    }
+
+    func buildFakeNotification() -> SeptaDelayNotification {
+        let url = Bundle.main.url(forResource: "FakeDelayNotification", withExtension: "json")!
+        let data = try! Data(contentsOf: url)
+        let jsonDict = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
+
+        return SeptaDelayNotification(info: jsonDict as! Payload)!
+
     }
 
     func applicationWillResignActive(_: UIApplication) {
