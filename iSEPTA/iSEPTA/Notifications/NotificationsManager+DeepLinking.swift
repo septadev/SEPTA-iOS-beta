@@ -22,7 +22,7 @@ extension NotificationsManager {
             guard let delayNotification = decodeDelayNotification(info: info) else { return }
             if delayNotification.delayType == .actual {
                 // TODO: JJ
-                navigateToNextToArrive(notification: delayNotification)
+//                navigateToNextToArrive(notification: delayNotification)
             }
         default:
             break
