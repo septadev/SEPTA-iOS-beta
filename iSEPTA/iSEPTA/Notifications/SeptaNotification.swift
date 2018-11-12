@@ -53,10 +53,11 @@ struct SeptaDelayNotification: Codable, Equatable, SeptaNotification {
         guard let routeId = info[Keys.routeIdKey] as? String,
             let routeType = info[Keys.routeTypeKey] as? String,
             let transitMode = TransitMode.fromNotificationRouteType(routeType: routeType),
-            let destinationStopId = info[Keys.destinationStopIdKey] as? String,
             let vehicleId = info[Keys.vehicleIdKey] as? String,
             let delayTypeString = info[Keys.delayTypeKey] as? String,
             let delayType = DelayType(rawValue: delayTypeString) else { return nil }
+        let destinationStopId = info[Keys.destinationStopIdKey] as? String ?? ""
+        
         self.routeId = routeId
         self.transitMode = transitMode
         self.destinationStopId = destinationStopId
