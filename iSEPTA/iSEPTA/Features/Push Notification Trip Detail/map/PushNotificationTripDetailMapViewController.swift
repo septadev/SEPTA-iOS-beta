@@ -86,8 +86,8 @@ class PushNotificationTripDetailMapViewController: UIViewController, PushNotific
     var shouldAnimateMap = false
     func drawVehicle(data: PushNotificationTripDetailData) {
         clearExistingVehicleLocations()
-        guard let lat = data.latitude, let lon = data.longitude else { return }
-        let vehicleLocationCoordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+
+        let vehicleLocationCoordinate = CLLocationCoordinate2D(latitude: data.latitude, longitude: data.longitude)
 
         let annotation = PushNotificationTripDetailVehicleLocationAnnotation(tripDetailData: data)
         annotation.coordinate = vehicleLocationCoordinate

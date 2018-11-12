@@ -8,13 +8,13 @@
 
 import Foundation
 
-enum PushNotificationTripDetailStatus: Equatable {
+enum PushNotificationTripDetailStatus: String, Equatable, Encodable {
     case idle
     case dataLoadRequested
     case dataLoading
     case dataLoadedSuccessfully
     case dataMappedSuccessfully
-    case networkError(Int)
+    case networkError
     case jsonParsingError
     case noResultsReturned
 }

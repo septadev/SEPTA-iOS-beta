@@ -10,15 +10,15 @@ import Foundation
 import SeptaRest
 import SeptaRest
 
-struct PushNotificationTripDetailData: Equatable {
+struct PushNotificationTripDetailData: Equatable, Encodable {
     let consist: [String]?
     let destination: String?
     let destinationDelay: Int?
     let destinationStation: String?
     let direction: String?
-    let latitude: Double?
+    let latitude: Double
     let line: String?
-    let longitude: Double?
+    let longitude: Double
     let nextstopDelay: Int?
     let nextstopStation: String?
     let results: Int?
@@ -54,9 +54,9 @@ struct PushNotificationTripDetailData: Equatable {
         self.destinationDelay = destinationDelay
         self.destinationStation = destinationStation
         self.direction = direction
-        self.latitude = latitude
+        self.latitude = latitude ?? 0
         self.line = line
-        self.longitude = longitude
+        self.longitude = longitude ?? 0
         self.nextstopDelay = nextstopDelay
         self.nextstopStation = nextstopStation
         self.results = results
@@ -74,9 +74,9 @@ struct PushNotificationTripDetailData: Equatable {
         destinationDelay = details.destinationDelay
         destinationStation = details.destinationStation
         direction = details.direction
-        latitude = details.latitude
+        latitude = details.latitude ?? 0
         line = details.line
-        longitude = details.longitude
+        longitude = details.longitude ?? 0
         nextstopDelay = details.nextstopDelay
         nextstopStation = details.nextstopStation
         results = details.results

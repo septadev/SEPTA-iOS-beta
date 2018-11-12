@@ -196,6 +196,7 @@
 		5840D6E71F37EAEF00C8CB76 /* UserPreferencesKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E61F37EAEF00C8CB76 /* UserPreferencesKeys.swift */; };
 		5840D6E91F37EE6500C8CB76 /* Providers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6E81F37EE6500C8CB76 /* Providers.swift */; };
 		5840D6EE1F37F63800C8CB76 /* TransitModeToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */; };
+		58443D222199D9A900F0899B /* JsonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58443D212199D9A900F0899B /* JsonDetailViewController.swift */; };
 		5844CA1F1F3BD9B700651223 /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5844CA1E1F3BD9B700651223 /* NavigationState.swift */; };
 		584528BB1F7C27C000E68D8F /* CurvedTopInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584528BA1F7C27C000E68D8F /* CurvedTopInfoView.swift */; };
 		58470C091F3F276000F3C9B5 /* NumberFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58470C081F3F276000F3C9B5 /* NumberFormatters.swift */; };
@@ -986,6 +987,7 @@
 		5840D6E61F37EAEF00C8CB76 /* UserPreferencesKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesKeys.swift; sourceTree = "<group>"; };
 		5840D6E81F37EE6500C8CB76 /* Providers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Providers.swift; sourceTree = "<group>"; };
 		5840D6ED1F37F63800C8CB76 /* TransitModeToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitModeToolbarView.swift; sourceTree = "<group>"; };
+		58443D212199D9A900F0899B /* JsonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDetailViewController.swift; sourceTree = "<group>"; };
 		5844CA1E1F3BD9B700651223 /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
 		584528BA1F7C27C000E68D8F /* CurvedTopInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedTopInfoView.swift; sourceTree = "<group>"; };
 		58470C061F3F1EF300F3C9B5 /* StateLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateLogger.swift; sourceTree = "<group>"; };
@@ -3080,6 +3082,7 @@
 				673E10D52193110500EB8689 /* Info */,
 				673E10D72193110500EB8689 /* map */,
 				673E10DA2193110500EB8689 /* pushNotificationTripDetail.storyboard */,
+				58443D212199D9A900F0899B /* JsonDetailViewController.swift */,
 				673E10DB2193110500EB8689 /* PushNotificationTripDetailViewController.swift */,
 			);
 			path = "Push Notification Trip Detail";
@@ -4260,6 +4263,7 @@
 				58DD1A8E1F600715002532DC /* NextToArriveViewModel+StartCell.swift in Sources */,
 				0E8E60E320EFF37D00AB08FE /* TransitViewDataProvider.swift in Sources */,
 				5840D6DC1F37925A00C8CB76 /* SchedulesNavigationViewController.swift in Sources */,
+				58443D222199D9A900F0899B /* JsonDetailViewController.swift in Sources */,
 				673E10E22193110500EB8689 /* PushNotificationTripDetailViewController.swift in Sources */,
 				671A192B1F6639DD00C8EEDA /* NextToArriveInfoViewController.swift in Sources */,
 				67365ACE1F754A3200FC86CB /* SevenEightsPresentationCoordinator.swift in Sources */,

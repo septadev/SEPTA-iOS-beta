@@ -40,10 +40,10 @@ class PushNotificationTripDetailMapper {
 
         let tripId = jsonObject[Keys.tripid] as? String
         let destination = jsonObject[Keys.destination] as? String
-        let results = jsonObject[Keys.results] as? Int
+        let results = jsonObject[Keys.results] as? Int ?? 0
 
-        let latitude = detailsDict[Keys.latitude] as? Double
-        let longitude = detailsDict[Keys.longitude] as? Double
+        let latitude = detailsDict[Keys.latitude] as? Double ?? 0
+        let longitude = detailsDict[Keys.longitude] as? Double ?? 0
         let line = detailsDict[Keys.line] as? String
         let track = detailsDict[Keys.track] as? String
         let trackChange = detailsDict[Keys.trackChange] as? String
@@ -61,8 +61,7 @@ class PushNotificationTripDetailMapper {
         let destinationDelay = destinationDict?[Keys.delay] as? Int
         let consist = detailsDict[Keys.consist] as? [String]
 
-        
-        
+        guard latitude != 0, longitude != 0 else {throw PushNotificationTripDetailMapperError.missingDetailsProbablyExpired}
         
         return PushNotificationTripDetailData(consist: consist, destination: destination, destinationDelay: destinationDelay, destinationStation: destinationStation, direction: direction, latitude: latitude, line: line, longitude: longitude, nextstopDelay: nextstopDelay, nextstopStation: nextstopStation, results: results, service: service, source: source, speed: speed, track: track, trackChange: trackChange, tripId: tripId)
     }

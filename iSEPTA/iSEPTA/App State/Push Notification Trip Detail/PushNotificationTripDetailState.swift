@@ -9,7 +9,7 @@
 import Foundation
 import SeptaRest
 
-struct PushNotificationTripDetailState: Equatable {
+struct PushNotificationTripDetailState: Equatable, Encodable {
     var pushNotificationTripDetailUpdateStatus: PushNotificationTripDetailStatus = .idle
     var pushNotificationTripDetailData: PushNotificationTripDetailData?
     var delayNotification: SeptaDelayNotification?
@@ -17,13 +17,22 @@ struct PushNotificationTripDetailState: Equatable {
     var routeId: String?
     var results: Int? = nil
 
-    var readyToPresent: Bool {
-        guard let results = results else { return false }
-        return tripId != nil && results > 0 && pushNotificationTripDetailUpdateStatus == .dataLoadedSuccessfully
+    var shouldDisplayPushNotificationTripDetail: Bool {
+//        guard let results = results else { return false }
+//        return tripId != nil && results > 0 && pushNotificationTripDetailUpdateStatus == .dataLoadedSuccessfully
+
+        guard let latitude = pushNotificationTripDetailData?.latitude else { return false }
+        return latitude != 0.0
     }
 
-    var shouldDisplayErrorMessageInsteadOfPresenting: Bool {
-        return tripId != nil && pushNotificationTripDetailUpdateStatus == .noResultsReturned
+    var shouldDisplayExpiredNotification: Bool {
+        let errorStatusCodes: [PushNotificationTripDetailStatus] =  [.noResultsReturned]
+        return (errorStatusCodes.contains(pushNotificationTripDetailUpdateStatus))
+    }
+
+     var shouldDisplayNetWorkError: Bool {
+        let errorStatusCodes: [PushNotificationTripDetailStatus] =  [.jsonParsingError, .networkError]
+        return (errorStatusCodes.contains(pushNotificationTripDetailUpdateStatus))
     }
 }
 

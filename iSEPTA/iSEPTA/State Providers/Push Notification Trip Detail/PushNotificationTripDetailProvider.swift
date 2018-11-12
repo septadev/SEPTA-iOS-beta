@@ -67,7 +67,7 @@ class PushNotificationTripDetailProvider: PushNotificationTripDetailState_TripId
                 print ("Unknown Error")
             }
         } else {
-            updateStatus(status: PushNotificationTripDetailStatus.networkError(statusCode))
+            updateStatus(status: PushNotificationTripDetailStatus.noResultsReturned)
         }
     }
 
