@@ -2,6 +2,16 @@ CREATE INDEX stop_srd_index ON stop_route_direction (stop_id);
 CREATE INDEX route_srd_index ON stop_route_direction (route_id);
 CREATE INDEX direction_srd_index ON stop_route_direction (direction_id);
 
+-- stop times bus
+
+CREATE INDEX stop_id__index
+  ON stop_times_bus (stop_id);
+CREATE INDEX stop_times_bus_Reverse_index
+  ON stop_times_bus (stop_id, trip_id);
+CREATE INDEX tripBUSIDX
+  ON stop_times_bus (trip_id, stop_id, stop_sequence);
+
+
 -- index trips by route
 
 CREATE INDEX trips_bus_route_id_index
