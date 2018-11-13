@@ -35,6 +35,7 @@ class PushNotificationTripDetailMapper {
     }
 
     static func mapData(data: Data) throws -> PushNotificationTripDetailData {
+        let data = cleanUpIllegalCharacters(data: data)
         guard let jsonObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else { throw PushNotificationTripDetailMapperError.badJsonFormat }
         guard let detailsDict = jsonObject[Keys.details] as? [String: Any] else { throw PushNotificationTripDetailMapperError.missingDetailsProbablyExpired }
 
@@ -64,5 +65,21 @@ class PushNotificationTripDetailMapper {
         guard latitude != 0, longitude != 0 else {throw PushNotificationTripDetailMapperError.missingDetailsProbablyExpired}
         
         return PushNotificationTripDetailData(consist: consist, destination: destination, destinationDelay: destinationDelay, destinationStation: destinationStation, direction: direction, latitude: latitude, line: line, longitude: longitude, nextstopDelay: nextstopDelay, nextstopStation: nextstopStation, results: results, service: service, source: source, speed: speed, track: track, trackChange: trackChange, tripId: tripId)
+    }
+
+    static func cleanUpIllegalCharacters(data: Data) -> Data {
+        do {
+           let utf8 = String.Encoding.utf8.rawValue
+           let regex = try NSRegularExpression(pattern: "[\\n\\\\]")  // remove return characters and escape sequences
+           guard let string = NSMutableString(data: data, encoding: utf8) else { return data}
+           regex.replaceMatches(in: string, options: [], range: NSMakeRange(0, string.length), withTemplate: "")
+           print (string)
+           guard let newData = string.data(using: utf8) else { return data }
+           return newData
+        } catch {
+            return data
+
+        }
+
     }
 }

@@ -64,7 +64,7 @@ class PushNotificationTripDetailProvider: PushNotificationTripDetailState_TripId
             } catch PushNotificationTripDetailMapperError.missingDetailsProbablyExpired {
                 updateStatus(status: PushNotificationTripDetailStatus.noResultsReturned)
             } catch {
-                print ("Unknown Error")
+                updateStatus(status: PushNotificationTripDetailStatus.jsonParsingError)
             }
         } else {
             updateStatus(status: PushNotificationTripDetailStatus.networkError)
