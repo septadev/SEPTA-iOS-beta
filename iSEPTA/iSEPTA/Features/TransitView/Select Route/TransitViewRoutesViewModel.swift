@@ -76,6 +76,7 @@ class TransitViewRoutesViewModel: NSObject, StoreSubscriber, UITextFieldDelegate
         guard let filteredRoutes = filteredRoutes, row < filteredRoutes.count else { return }
         let route = filteredRoutes[row].route
         cell.setShortName(text: "\(route.routeId): \(route.routeName)")
+        cell.setLongName(text: "")
 
         cell.enabled = !selectedRoutes.contains(route)
 
