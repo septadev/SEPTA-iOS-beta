@@ -18,6 +18,7 @@ class AppStateReducer {
             favoriteState: FavoritesReducer.main(action: action, state: state?.favoritesState),
             nextToArriveState: NextToArriveReducer.main(action: action, state: state?.nextToArriveState),
             tripDetailState: TripDetailReducer.main(action: action, state: state?.tripDetailState),
+            pushNotificationTripDetailState: PushNotificationTripDetailReducer.main(action: action, state: state?.pushNotificationTripDetailState),
             databaseState: DatabaseReducer.main(action: action, state: state?.databaseState),
             moreState: MoreReducer.main(action: action, state: state?.moreState),
             transitViewState: TransitViewReducer.main(action: action, state: state?.transitViewState),

@@ -13,11 +13,25 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
     var modalAlertsDisplayedWatcher: AlertState_ModalAlertsDisplayedWatcher?
     var databaseUpdateWatcher: DatabaseUpdateWatcher?
     var databaseDownloadedWatcher: DatabaseDownloadedWatcher?
+    var pushNotificationTripDetailState_ResultsWatcher = PushNotificationTripDetailState_ResultsWatcher()
+
+    var currentlyPresentingPushNotificationTripDetail = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
         delegate = self
         favoritestoEditWatcher = FavoritesState_FavoriteToEditWatcher(delegate: self)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let app = UIApplication.shared
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationWillResignActive(notification:)), name: NSNotification.Name.UIApplicationWillResignActive, object: app)
+    }
+
+    @objc func applicationWillResignActive(notification _: Any) {
+        dismissPushNotificationTripDetailIfNecessary()
+        currentlyPresentingPushNotificationTripDetail = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -73,6 +87,8 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         if databaseDownloadedWatcher == nil {
             databaseDownloadedWatcher = DatabaseDownloadedWatcher(delegate: self)
         }
+
+        pushNotificationTripDetailState_ResultsWatcher.delegate = self
     }
 
     var modalTransitioningDelegate: UIViewControllerTransitioningDelegate!
@@ -166,5 +182,60 @@ extension MainNavigationController: DatabaseDownloadedWatcherDelegate {
         let dbFileManager = DatabaseFileManager()
         dbFileManager.setDatabaseUpdateInProgress(inProgress: false)
         store.dispatch(DatabaseUpToDate())
+    }
+}
+
+extension MainNavigationController: PushNotificationTripDetailState_ResultsDelegateDelegate {
+    func pushNotificationTripDetailState_Updated(state: PushNotificationTripDetailState) {
+        if state.shouldDisplayPushNotificationTripDetail && !currentlyPresentingPushNotificationTripDetail {
+            let viewController: UIViewController = ViewController.pushNotificationTripDetailNavigationController.instantiateViewController()
+            present(viewController, animated: true, completion: nil)
+            currentlyPresentingPushNotificationTripDetail = true
+        } else if !state.shouldDisplayPushNotificationTripDetail && currentlyPresentingPushNotificationTripDetail {
+            dismiss(animated: true, completion: nil)
+            currentlyPresentingPushNotificationTripDetail = false
+        } else if state.shouldDisplayExpiredNotification {
+            guard let message = buildExpiredMessage(delayNotification: state.delayNotification) else { return }
+            dismissPushNotificationTripDetailIfNecessary()
+            UIAlert.presentOKAlertFrom(viewController: self, withTitle: "Push Notification", message: message) {
+                store.dispatch(ClearPushNotificationTripDetailData())
+            }
+        } else if state.shouldDisplayNetWorkError {
+            guard let message = buildPushNotificationNetworkErrorMessage(delayNotification: state.delayNotification) else { return }
+            dismissPushNotificationTripDetailIfNecessary()
+            UIAlert.presentOKAlertFrom(viewController: self, withTitle: "Push Notification", message: message) {
+                store.dispatch(ClearPushNotificationTripDetailData())
+            }
+        }
+//        guard let tripId = state.tripId else { return }
+//        if !currentlyPresentingPushNotificationTripDetail {
+//                let viewController: JsonDetailViewController = ViewController.jsonDetailViewController.instantiateViewController()!
+//                viewController.displayEncodable(encodable: state)
+//                currentlyPresentingPushNotificationTripDetail = true
+//                present(viewController, animated: true, completion: nil)
+//            } else {
+//                let viewController = self.presentedViewController as! JsonDetailViewController
+//                viewController.displayEncodable(encodable: state)
+//            }
+    }
+
+    func dismissPushNotificationTripDetailIfNecessary() {
+        if currentlyPresentingPushNotificationTripDetail {
+            dismiss(animated: true, completion: nil)
+            currentlyPresentingPushNotificationTripDetail = false
+            store.dispatch(ClearPushNotificationTripDetailData())
+        }
+    }
+
+    func buildExpiredMessage(delayNotification: SeptaDelayNotification?) -> String? {
+        guard let delayNotification = delayNotification else { return nil }
+
+        return "Train Delay Notification on \(delayNotification.routeId) Train #\(delayNotification.vehicleId) is now expired."
+    }
+
+    func buildPushNotificationNetworkErrorMessage(delayNotification: SeptaDelayNotification?) -> String? {
+        guard let delayNotification = delayNotification else { return nil }
+
+        return "We were unable to retrieve the detail on the \(delayNotification.routeId) delay notification."
     }
 }

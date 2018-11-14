@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ReSwift
 import SeptaSchedule
 
 extension NotificationsManager {
@@ -21,8 +22,10 @@ extension NotificationsManager {
         case .delay:
             guard let delayNotification = decodeDelayNotification(info: info) else { return }
             if delayNotification.delayType == .actual {
-                // TODO: JJ
-//                navigateToNextToArrive(notification: delayNotification)
+
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25 , execute: {
+                    store.dispatch(AddPushNotificationTripDetailDelayNotification(septaDelayNotification: delayNotification))
+                })
             }
         default:
             break
@@ -40,10 +43,5 @@ extension NotificationsManager {
 
     static func decodeDelayNotification(info: Payload) -> SeptaDelayNotification? {
         return SeptaDelayNotification(info: info)
-    }
-
-    static func navigateToNextToArrive(notification: SeptaDelayNotification) {
-        let action = NavigateToNextToArriveFromDelayNotification(notification: notification)
-        store.dispatch(action)
     }
 }

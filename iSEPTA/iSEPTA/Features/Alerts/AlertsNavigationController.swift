@@ -24,17 +24,26 @@ class AlertsNavigationController: BaseNavigationController {
     override func resetViewState(resetViewState: ResetViewState?) {
         guard let resetViewState = resetViewState else { return }
 
-        var viewControllers = [UIViewController]()
+        var viewControllers = self.viewControllers
+
+        let identifiableControllers: [ViewController] = self.viewControllers.map {
+            guard let controller = $0 as? IdentifiableController else { return .alertsViewController }
+            return controller.viewController
+        }
 
         switch resetViewState.viewController {
         case .alertDetailViewController:
-            viewControllers = retrieveOrInstantiate(viewControllers: [.alertsViewController, .alertDetailViewController])
+            if identifiableControllers != [.alertsViewController, .alertDetailViewController] {
+                viewControllers = retrieveOrInstantiate(viewControllers: [.alertsViewController, .alertDetailViewController])
+                self.viewControllers = viewControllers
+            }
         case .alertsViewController:
-            viewControllers = retrieveOrInstantiate(viewControllers: [.alertsViewController])
+            if identifiableControllers != [.alertsViewController] {
+                viewControllers = retrieveOrInstantiate(viewControllers: [.alertsViewController])
+                self.viewControllers = viewControllers
+            }
         default: break
         }
-
-        self.viewControllers = viewControllers
 
         store.dispatch(ResetViewStateHandled())
     }

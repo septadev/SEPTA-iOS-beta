@@ -22,11 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let databaseUpdateManager = DatabaseUpdateManager()
 
     var window: UIWindow? {
-        didSet {
-        }
+        didSet {}
     }
 
-    func application(_: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Crashlytics.sharedInstance().delegate = self
         Fabric.with([Crashlytics.self, Answers.self])
 
@@ -39,10 +38,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().delegate = self
         updateCurrentPushNotificationAuthorizationStatus()
 
+        //postFakeNotification()
         return true
     }
+    
+    func postFakeNotification(){
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4, execute: {
+            let delayNotification = self.buildFakeNotification()
+            store.dispatch(AddPushNotificationTripDetailDelayNotification(septaDelayNotification: delayNotification))
+        })
+    }
 
-    let mockNotificationRequest = RealTimeMockRequest()
+    func buildFakeNotification() -> SeptaDelayNotification {
+        let url = Bundle.main.url(forResource: "FakeDelayNotification", withExtension: "json")!
+        let data = try! Data(contentsOf: url)
+        let jsonDict = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
+
+        return SeptaDelayNotification(info: jsonDict as! Payload)!
+
+    }
 
     func applicationWillResignActive(_: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -100,7 +114,14 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
     func userNotificationCenter(_: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
-
+//        // TODO: JJ Temp for debugging - Remove!
+//        let message = String(data: try! JSONSerialization.data(withJSONObject: userInfo, options: .prettyPrinted), encoding: .utf8)!
+//        print(message)
+//        let controller = UIActivityViewController(activityItems: [message], applicationActivities: nil)
+//        controller.excludedActivityTypes = [UIActivityType.postToFacebook, UIActivityType.postToTwitter, UIActivityType.postToWeibo, UIActivityType.print, UIActivityType.copyToPasteboard, UIActivityType.assignToContact, UIActivityType.saveToCameraRoll, UIActivityType.postToFlickr, UIActivityType.postToTencentWeibo, UIActivityType.mail, UIActivityType.addToReadingList, UIActivityType.openInIBooks, UIActivityType.message]
+//
+//        UIApplication.shared.keyWindow?.rootViewController?.present(controller, animated: true, completion: nil)
+//        // TODO: JJ - End remove!
         DispatchQueue.main.async { [weak self] in
             self?.processNotificationTap(userInfo: userInfo)
         }
