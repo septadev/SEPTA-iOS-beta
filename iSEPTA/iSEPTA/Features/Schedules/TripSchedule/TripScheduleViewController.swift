@@ -6,15 +6,18 @@ import UIKit
 
 class TripScheduleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController {
     let viewController: ViewController = .tripScheduleController
+
     func displayErrorMessage(message: String, shouldDismissAfterDisplay: Bool = false) {
-        UIAlert.presentOKAlertFrom(viewController: self,
-                                   withTitle: "View Trips Error",
-                                   message: message) {
-            if shouldDismissAfterDisplay {
-                let action = DismissModal(description: "dismissing trip schedules")
-                store.dispatch(action)
+        MainNavigationControllerAlertManager.sharedInstance.addAlertToDisplay(appAlert: .databaseAlert, block: {
+            UIAlert.presentOKAlertFrom(viewController: self,
+                                       withTitle: "View Trips Error",
+                                       message: message) {
+                if shouldDismissAfterDisplay {
+                    let action = DismissModal(description: "dismissing trip schedules")
+                    store.dispatch(action)
+                }
             }
-        }
+        })
     }
 
     var tripScheduleFavoritesIconController: TripScheduleFavoritesIconController!
@@ -177,8 +180,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         segmentedControl.selectedSegmentIndex = 0
     }
 
-    func showHideAlertViewifNecessary() {
-    }
+    func showHideAlertViewifNecessary() {}
 
     var scheduleTypeSegments: [ScheduleType]!
 

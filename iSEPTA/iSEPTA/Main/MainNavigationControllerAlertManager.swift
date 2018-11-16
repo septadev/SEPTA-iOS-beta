@@ -7,3 +7,40 @@
 //
 
 import Foundation
+import UIKit
+import ReSwift
+
+
+
+class MainNavigationControllerAlertManager: StoreSubscriber {
+    typealias StoreSubscriberStateType = AppAlert?
+
+    static let sharedInstance = MainNavigationControllerAlertManager()
+
+    private var alertsToDisplay = [AppAlert: (()->())]()
+
+    public func addAlertToDisplay(appAlert: AppAlert, block: @escaping (()->())){
+        alertsToDisplay[appAlert] = block
+        store.dispatch(AddAlertToDisplay(appAlert: appAlert))
+
+    }
+
+    private init(){
+        subscribe()
+    }
+    private func subscribe() {
+        store.subscribe(self) {
+            $0.select { $0.navigationState.nextAlertToDisplay }
+        }
+    }
+
+    func newState(state: StoreSubscriberStateType) {
+        guard let appAlert = state, let block = alertsToDisplay[appAlert] else { return }
+        block()
+    }
+
+
+    deinit {
+        store.unsubscribe(self)
+    }
+}

@@ -40,6 +40,10 @@ struct NavigationReducer {
             navigationState = reduceResetViewState(action: action, state: state)
         case let action as ResetViewStateHandled:
             navigationState = reduceResetViewStateHandled(action: action, state: state)
+        case let action as AddAlertToDisplay:
+            navigationState = reduceAddAlertToDisplay(action: action, state: state)
+        case let action as CurrentAppAlertDismissed:
+            navigationState = reduceCurrentAppAlertDismissed(action: action, state: state)
         default:
             navigationState = state
         }
@@ -48,7 +52,7 @@ struct NavigationReducer {
     }
 
     static func reduceSwitchTabsAction(action: SwitchTabs, state: NavigationState) -> NavigationState {
-        return NavigationState(appStackState: state.appStackState, activeNavigationController: action.activeNavigationController)
+        return NavigationState(appStackState: state.appStackState, activeNavigationController: action.activeNavigationController, alertsToDisplay: state.alertsToDisplay)
     }
 
     static func reducePresentModal(action: PresentModal, state: NavigationState) -> NavigationState {
@@ -58,7 +62,7 @@ struct NavigationReducer {
         navigationStackState.presentModal = action
 
         appStackState[navigationController] = navigationStackState
-        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController)
+        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController, alertsToDisplay: state.alertsToDisplay)
     }
 
     static func reduceDismissModal(action: DismissModal, state: NavigationState) -> NavigationState {
@@ -68,7 +72,7 @@ struct NavigationReducer {
         navigationStackState.dismissModal = action
 
         appStackState[navigationController] = navigationStackState
-        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController)
+        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController, alertsToDisplay: state.alertsToDisplay)
     }
 
     static func reducePushViewController(action: PushViewController, state: NavigationState) -> NavigationState {
@@ -78,7 +82,7 @@ struct NavigationReducer {
         navigationStackState.pushViewController = action
 
         appStackState[navigationController] = navigationStackState
-        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController)
+        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController, alertsToDisplay: state.alertsToDisplay)
     }
 
     static func reducePopViewController(action: PopViewController, state: NavigationState) -> NavigationState {
@@ -88,7 +92,7 @@ struct NavigationReducer {
         navigationStackState.popViewController = action
 
         appStackState[navigationController] = navigationStackState
-        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController)
+        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController, alertsToDisplay: state.alertsToDisplay)
     }
 
     static func reducePresentModalHandled(action _: PresentModalHandled, state: NavigationState) -> NavigationState {
@@ -98,7 +102,7 @@ struct NavigationReducer {
         navigationStackState.presentModal = nil
 
         appStackState[navigationController] = navigationStackState
-        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController)
+        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController, alertsToDisplay: state.alertsToDisplay)
     }
 
     static func reduceDismissModalHandled(action _: DismissModalHandled, state: NavigationState) -> NavigationState {
@@ -108,7 +112,7 @@ struct NavigationReducer {
         navigationStackState.dismissModal = nil
 
         appStackState[navigationController] = navigationStackState
-        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController)
+        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController, alertsToDisplay: state.alertsToDisplay)
     }
 
     static func reducePushViewControllerHandled(action _: PushViewControllerHandled, state: NavigationState) -> NavigationState {
@@ -118,7 +122,7 @@ struct NavigationReducer {
         navigationStackState.pushViewController = nil
 
         appStackState[navigationController] = navigationStackState
-        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController)
+        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController, alertsToDisplay: state.alertsToDisplay)
     }
 
     static func reducePopViewControllerHandled(action _: PopViewControllerHandled, state: NavigationState) -> NavigationState {
@@ -128,7 +132,7 @@ struct NavigationReducer {
         navigationStackState.popViewController = nil
 
         appStackState[navigationController] = navigationStackState
-        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController)
+        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController, alertsToDisplay: state.alertsToDisplay)
     }
 
     static func reduceResetViewState(action: ResetViewState, state: NavigationState) -> NavigationState {
@@ -138,7 +142,7 @@ struct NavigationReducer {
         navigationStackState.resetViewState = action
 
         appStackState[navigationController] = navigationStackState
-        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController)
+        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController, alertsToDisplay: state.alertsToDisplay)
     }
 
     static func reduceResetViewStateHandled(action _: ResetViewStateHandled, state: NavigationState) -> NavigationState {
@@ -148,6 +152,23 @@ struct NavigationReducer {
         navigationStackState.resetViewState = nil
 
         appStackState[navigationController] = navigationStackState
-        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController)
+        return NavigationState(appStackState: appStackState, activeNavigationController: state.activeNavigationController, alertsToDisplay: state.alertsToDisplay)
+    }
+
+    static func reduceAddAlertToDisplay(action: AddAlertToDisplay, state: NavigationState) -> NavigationState {
+        var newState = state
+        var newAlerts = state.alertsToDisplay
+        newAlerts.append(action.appAlert)
+        newState.alertsToDisplay = newAlerts
+        return newState
+    }
+
+    static func reduceCurrentAppAlertDismissed(action: CurrentAppAlertDismissed, state: NavigationState) -> NavigationState {
+        guard state.alertsToDisplay.count > 0 else { return state }
+        var newState = state
+        var newAlerts = state.alertsToDisplay
+        newAlerts.removeFirst()
+        newState.alertsToDisplay = newAlerts
+        return newState
     }
 }

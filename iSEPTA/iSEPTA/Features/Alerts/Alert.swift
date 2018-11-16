@@ -11,6 +11,7 @@ class UIAlert {
         // add an action (button)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
             completion?()
+            store.dispatch(CurrentAppAlertDismissed())
         })
 
         // show the alert
@@ -23,8 +24,11 @@ class UIAlert {
 
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { _ in
             completion?()
+            store.dispatch(CurrentAppAlertDismissed())
         })
-        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default))
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default) { _ in
+            store.dispatch(CurrentAppAlertDismissed())
+        })
 
         // show the alert
         viewController.present(alert, animated: true, completion: nil)
@@ -36,8 +40,11 @@ class UIAlert {
 
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.destructive) { _ in
             completion?()
+            store.dispatch(CurrentAppAlertDismissed())
         })
-        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel))
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel) { _ in
+            store.dispatch(CurrentAppAlertDismissed())
+        })
 
         // show the alert
         viewController.present(alert, animated: true, completion: nil)
@@ -50,10 +57,12 @@ class UIAlert {
         alert.addAction(UIAlertAction(title: "Go to Schedules", style: UIAlertActionStyle.default) { _ in
             let action = NavigateToSchedulesFromNextToArriveScheduleRequest(scheduleRequest: store.state.currentTargetForScheduleActionsScheduleRequest())
             store.dispatch(action)
+            store.dispatch(CurrentAppAlertDismissed())
         })
 
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
             completion?()
+            store.dispatch(CurrentAppAlertDismissed())
         })
 
         // show the alert
@@ -74,18 +83,20 @@ class UIAlert {
         alert.addAction(UIAlertAction(title: "Switch to Next To Arrive", style: UIAlertActionStyle.default) { _ in
             let action = SwitchTabs(activeNavigationController: .nextToArrive, description: "Holiday Schedules")
             store.dispatch(action)
-        }
-        )
+            store.dispatch(CurrentAppAlertDismissed())
+        })
         for onlineSchedule in onlineSchedules {
             alert.addAction(UIAlertAction(title: onlineSchedule.label, style: UIAlertActionStyle.default) { _ in
                 let request = URLRequest(url: onlineSchedule.url)
                 onlineScheduleController.uiWebView.loadRequest(request)
                 viewController.present(onlineScheduleController, animated: true, completion: nil)
+                store.dispatch(CurrentAppAlertDismissed())
             })
         }
 
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in }
-        )
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
+            store.dispatch(CurrentAppAlertDismissed())
+        })
 
         viewController.present(alert, animated: true, completion: nil)
     }
@@ -99,9 +110,11 @@ class UIAlert {
         alert.addAction(UIAlertAction(title: "More Details", style: UIAlertActionStyle.default) { _ in
             let action = SwitchTabs(activeNavigationController: .alerts, description: "Jumping to Alerts Screen Generic Alert")
             store.dispatch(action)
+            store.dispatch(CurrentAppAlertDismissed())
         })
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
             completion?()
+            store.dispatch(CurrentAppAlertDismissed())
         })
 
         // show the alert
@@ -120,9 +133,11 @@ class UIAlert {
                 UIApplication.shared.open(settingsUrl, completionHandler: nil)
             }
             completion?()
+            store.dispatch(CurrentAppAlertDismissed())
         })
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
             completion?()
+            store.dispatch(CurrentAppAlertDismissed())
         })
 
         // show the alert
@@ -137,9 +152,11 @@ class UIAlert {
         // add an action (button)
         alert.addAction(UIAlertAction(title: "Enable All Routes", style: UIAlertActionStyle.default) { _ in
             store.dispatch(UserWantsToSubscribeToPushNotifications(viewController: viewController, boolValue: true))
+            store.dispatch(CurrentAppAlertDismissed())
         })
         alert.addAction(UIAlertAction(title: "Just This Route", style: UIAlertActionStyle.default) { _ in
             store.dispatch(UserWantsToSubscribeToPushNotifications(viewController: viewController, boolValue: true, alsoEnableRoutes: false))
+            store.dispatch(CurrentAppAlertDismissed())
         })
         // show the alert
         viewController.present(alert, animated: true, completion: nil)

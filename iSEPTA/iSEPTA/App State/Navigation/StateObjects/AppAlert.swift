@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+enum AppAlert: Equatable {
+    case genericAlert
+    case globalSystemAlert
+    case databaseUpdateNeededAlert
+    case databaseUpdateCompletedAlert
+    case pushNotificationTripDetailAlert
+    case pushNotificationExpiredAlert
+    case databaseAlert
+}

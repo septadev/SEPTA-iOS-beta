@@ -60,3 +60,13 @@ struct ResetViewState: NavigationAction, Equatable {
 struct ResetViewStateHandled: NavigationAction, Equatable {
     let description = "Navigation View State has been reset"
 }
+
+struct AddAlertToDisplay: NavigationAction, Equatable {
+    let description = "Adding a global Alert to Display"
+    let appAlert: AppAlert
+}
+
+struct CurrentAppAlertDismissed: NavigationAction, Equatable {
+    let description = "Just Dismissed an App Alert"
+}
+

@@ -15,8 +15,6 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
     var databaseDownloadedWatcher: DatabaseDownloadedWatcher?
     var pushNotificationTripDetailState_ResultsWatcher = PushNotificationTripDetailState_ResultsWatcher()
 
-    var currentlyPresentingPushNotificationTripDetail = false
-
     override func awakeFromNib() {
         super.awakeFromNib()
         delegate = self
@@ -31,7 +29,6 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
 
     @objc func applicationWillResignActive(notification _: Any) {
         dismissPushNotificationTripDetailIfNecessary()
-        currentlyPresentingPushNotificationTripDetail = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -133,25 +130,31 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
             genericPlusAppAlertsMessage.append(appAlertMessage)
             genericPlusAppAlertsMessage.append(space)
 
-            UIAlert.presentAttributedOKAlertFrom(viewController: self, withTitle: "SEPTA Alert", attributedString: genericPlusAppAlertsMessage) {
-                let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: true)
-                store.dispatch(action)
-            }
-        } else if alertState.hasGenericAlerts && !modalAlertsDisplayed {
-            let message = AlertDetailsViewModel.renderMessage(alertDetails: alertState.genericAlertDetails) { return $0.message }
-            if let message = message {
-                UIAlert.presentAttributedOKAlertFrom(viewController: self, withTitle: "General SEPTA Alert", attributedString: message) {
+            MainNavigationControllerAlertManager.sharedInstance.addAlertToDisplay(appAlert: .globalSystemAlert, block: {
+                UIAlert.presentAttributedOKAlertFrom(viewController: self, withTitle: "SEPTA Alert", attributedString: genericPlusAppAlertsMessage) {
                     let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: true)
                     store.dispatch(action)
                 }
+            })
+        } else if alertState.hasGenericAlerts && !modalAlertsDisplayed {
+            let message = AlertDetailsViewModel.renderMessage(alertDetails: alertState.genericAlertDetails) { return $0.message }
+            if let message = message {
+                MainNavigationControllerAlertManager.sharedInstance.addAlertToDisplay(appAlert: .globalSystemAlert, block: {
+                    UIAlert.presentAttributedOKAlertFrom(viewController: self, withTitle: "General SEPTA Alert", attributedString: message) {
+                        let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: true)
+                        store.dispatch(action)
+                    }
+                })
             }
         } else if alertState.hasAppAlerts && !modalAlertsDisplayed {
             let message = AlertDetailsViewModel.renderMessage(alertDetails: alertState.appAlertDetails) { return $0.message }
             if let message = message {
-                UIAlert.presentAttributedOKAlertFrom(viewController: self, withTitle: "Mobile App Alert", attributedString: message) {
-                    let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: true)
-                    store.dispatch(action)
-                }
+                MainNavigationControllerAlertManager.sharedInstance.addAlertToDisplay(appAlert: .genericAlert, block: {
+                    UIAlert.presentAttributedOKAlertFrom(viewController: self, withTitle: "Mobile App Alert", attributedString: message) {
+                        let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: true)
+                        store.dispatch(action)
+                    }
+                })
             }
         }
     }
@@ -187,25 +190,41 @@ extension MainNavigationController: DatabaseDownloadedWatcherDelegate {
 
 extension MainNavigationController: PushNotificationTripDetailState_ResultsDelegateDelegate {
     func pushNotificationTripDetailState_Updated(state: PushNotificationTripDetailState) {
-        if state.shouldDisplayPushNotificationTripDetail && !currentlyPresentingPushNotificationTripDetail {
+        if state.shouldDisplayPushNotificationTripDetail {
             let viewController: UIViewController = ViewController.pushNotificationTripDetailNavigationController.instantiateViewController()
-            present(viewController, animated: true, completion: nil)
-            currentlyPresentingPushNotificationTripDetail = true
-        } else if !state.shouldDisplayPushNotificationTripDetail && currentlyPresentingPushNotificationTripDetail {
-            dismiss(animated: true, completion: nil)
-            currentlyPresentingPushNotificationTripDetail = false
+
+            MainNavigationControllerAlertManager.sharedInstance.addAlertToDisplay(appAlert: .pushNotificationTripDetailAlert,
+                                                                                  block: { [weak self] in
+                                                                                      guard let strongSelf = self else { return }
+                                                                                      strongSelf.present(viewController, animated: true, completion: nil)
+
+            })
+
+        } else if !state.shouldDisplayPushNotificationTripDetail && store.state.navigationState.nextAlertToDisplay == AppAlert.pushNotificationTripDetailAlert {
+            dismiss(animated: true, completion: { store.dispatch(CurrentAppAlertDismissed()) })
+
         } else if state.shouldDisplayExpiredNotification {
             guard let message = buildExpiredMessage(delayNotification: state.delayNotification) else { return }
             dismissPushNotificationTripDetailIfNecessary()
-            UIAlert.presentOKAlertFrom(viewController: self, withTitle: "Push Notification", message: message) {
-                store.dispatch(ClearPushNotificationTripDetailData())
-            }
+
+            MainNavigationControllerAlertManager.sharedInstance.addAlertToDisplay(appAlert: .pushNotificationExpiredAlert,
+                                                                                  block: {
+                                                                                      UIAlert.presentOKAlertFrom(viewController: self, withTitle: "Push Notification", message: message) {
+                                                                                          store.dispatch(ClearPushNotificationTripDetailData())
+                                                                                      }
+
+            })
         } else if state.shouldDisplayNetWorkError {
             guard let message = buildPushNotificationNetworkErrorMessage(delayNotification: state.delayNotification) else { return }
             dismissPushNotificationTripDetailIfNecessary()
-            UIAlert.presentOKAlertFrom(viewController: self, withTitle: "Push Notification", message: message) {
-                store.dispatch(ClearPushNotificationTripDetailData())
-            }
+
+            MainNavigationControllerAlertManager.sharedInstance.addAlertToDisplay(appAlert: .pushNotificationExpiredAlert,
+                                                                                  block: {
+                                                                                      UIAlert.presentOKAlertFrom(viewController: self, withTitle: "Push Notification", message: message) {
+                                                                                          store.dispatch(ClearPushNotificationTripDetailData())
+                                                                                      }
+
+            })
         }
 //        guard let tripId = state.tripId else { return }
 //        if !currentlyPresentingPushNotificationTripDetail {
@@ -220,9 +239,8 @@ extension MainNavigationController: PushNotificationTripDetailState_ResultsDeleg
     }
 
     func dismissPushNotificationTripDetailIfNecessary() {
-        if currentlyPresentingPushNotificationTripDetail {
-            dismiss(animated: true, completion: nil)
-            currentlyPresentingPushNotificationTripDetail = false
+        if store.state.navigationState.nextAlertToDisplay == .pushNotificationTripDetailAlert {
+         //   dismiss(animated: true, completion: nil)
             store.dispatch(ClearPushNotificationTripDetailData())
         }
     }
