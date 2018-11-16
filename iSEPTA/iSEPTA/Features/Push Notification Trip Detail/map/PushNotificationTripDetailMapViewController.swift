@@ -100,7 +100,7 @@ class PushNotificationTripDetailMapViewController: UIViewController, PushNotific
         mapView.addAnnotation(annotation)
         vehiclesAnnotationsAdded.append(annotation)
 
-        let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 1600, 1600)
+        let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 1600 * 3, 1600 * 3)  // that gives you six miles in view
         mapView.setRegion(region, animated: shouldAnimateMap) // no animation the first time
         shouldAnimateMap = true
     }
