@@ -28,6 +28,7 @@ class MainNavigationControllerAlertManager: StoreSubscriber {
     private init(){
         subscribe()
     }
+    
     private func subscribe() {
         store.subscribe(self) {
             $0.select { $0.navigationState.nextAlertToDisplay }

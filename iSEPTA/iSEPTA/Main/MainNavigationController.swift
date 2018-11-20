@@ -162,18 +162,12 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
 
 extension MainNavigationController: DatabaseUpdateWatcherDelegate {
     func databaseUpdateAvailable() {
-        let alert = UIAlertController(title: "There are new schedules available", message: "Would you like to download them now?", preferredStyle: .alert)
-        let downloadAction = UIAlertAction(title: "Yes", style: .default, handler: { _ in
-            store.dispatch(DownloadDatabaseUpdate())
+        MainNavigationControllerAlertManager.sharedInstance.addAlertToDisplay(appAlert: .databaseUpdateNeededAlert, block: {
+            UIAlert.presentUpdateDatabaseAlertFrom(viewController: self, withTitle: "There are new schedules available", message: "Would you like to download them now?") {
+                let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: true)
+                store.dispatch(action)
+            }
         })
-        let laterAction = UIAlertAction(title: "Remind me later", style: .default, handler: { _ in
-            let dbFileManager = DatabaseFileManager()
-            dbFileManager.setDatabaseUpdateInProgress(inProgress: false)
-            store.dispatch(DatabaseUpToDate())
-        })
-        alert.addAction(downloadAction)
-        alert.addAction(laterAction)
-        alert.show()
     }
 }
 
@@ -197,7 +191,6 @@ extension MainNavigationController: PushNotificationTripDetailState_ResultsDeleg
                                                                                   block: { [weak self] in
                                                                                       guard let strongSelf = self else { return }
                                                                                       strongSelf.present(viewController, animated: true, completion: nil)
-
             })
 
         } else if !state.shouldDisplayPushNotificationTripDetail && store.state.navigationState.nextAlertToDisplay == AppAlert.pushNotificationTripDetailAlert {

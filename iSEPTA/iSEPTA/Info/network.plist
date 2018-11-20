@@ -21,7 +21,7 @@
 	<key>appAlertName</key>
 	<string>APP</string>
 	<key>genericAlertEnvironment</key>
-	<string>prod</string>
+	<string>test</string>
 	<key>genericAlertEnvironment Desc</key>
 	<string>should be either &apos;prod&apos; or &apos;test&apos;</string>
 	<key>genericAlertTestHost</key>

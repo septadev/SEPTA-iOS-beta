@@ -121,6 +121,24 @@ class UIAlert {
         viewController.present(alert, animated: true, completion: nil)
     }
 
+    static func presentUpdateDatabaseAlertFrom(viewController: UIViewController, withTitle title: String, message: String, completion: (() -> Void)? = nil) {
+        // create the alert
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { _ in
+            store.dispatch(DownloadDatabaseUpdate())
+        })
+        alert.addAction(UIAlertAction(title: "Remind me later", style: UIAlertActionStyle.default) { _ in
+            completion?()
+            store.dispatch(ClearPushNotificationTripDetailData())
+            store.dispatch(DatabaseUpToDate())
+        })
+
+        // show the alert
+        viewController.present(alert, animated: true, completion: nil)
+    }
+    
     static func presentNavigationToSettingsNeededAlertFrom(viewController: UIViewController?, completion: (() -> Void)? = nil) {
         // create the alert
         guard let viewController = viewController ?? UIApplication.shared.keyWindow?.rootViewController else { return }
