@@ -92,12 +92,16 @@ class UIAlert {
 
     static func presentAttributedOKAlertFrom(viewController: UIViewController, withTitle title: String, attributedString: NSAttributedString, completion: (() -> Void)? = nil) {
         // create the alert
-
         let alert = UIAlertController(title: title, message: attributedString.string, preferredStyle: UIAlertControllerStyle.alert)
 
-        // add an action (button)
+        // add an action buttons
         alert.addAction(UIAlertAction(title: "More Details", style: UIAlertActionStyle.default) { _ in
             let action = SwitchTabs(activeNavigationController: .alerts, description: "Jumping to Alerts Screen Generic Alert")
+            store.dispatch(action)
+        })
+        alert.addAction(UIAlertAction(title: "Don’t Show Me This Alert Again", style: UIAlertActionStyle.default) { _ in
+            completion?()
+            let action = DoNotShowThisAlertAgain(alertLastDisplayed: "")
             store.dispatch(action)
         })
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in

@@ -122,6 +122,8 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
             guard let genericMessage = AlertDetailsViewModel.renderMessage(alertDetails: alertState.genericAlertDetails, filter: { $0.message }),
                 let appAlertMessage = AlertDetailsViewModel.renderMessage(alertDetails: alertState.appAlertDetails, filter: { $0.message })
             else { return }
+            let genericTimeStamp = AlertDetailsViewModel.renderMessage(alertDetails: alertState.genericAlertDetails, filter: { $0.last_updated })
+            let appAlertTimeStamp = AlertDetailsViewModel.renderMessage(alertDetails: alertState.appAlertDetails, filter: { $0.last_updated })
             let space = NSAttributedString(string: " \n")
             let genericMessageTitle = NSAttributedString(string: "General SEPTA Alert: ")
             let appAlertMessageTitle = NSAttributedString(string: "Mobile App Alert: ")
