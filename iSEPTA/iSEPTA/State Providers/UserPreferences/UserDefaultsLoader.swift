@@ -50,7 +50,7 @@ class UserDefaultsLoader {
         let pushNotificationPreferenceState = retrievePushNotifications() ?? PushNotificationPreferenceState()
 
         let retrievedPreferenceState = UserPreferenceState(defaultsLoaded: defaultsLoaded, startupTransitMode: startupTransitMode, startupNavigationController: startupNavigationController, databaseVersion: databaseVersion, pushNotificationPreferenceState: pushNotificationPreferenceState)
-
+        // TODO: JJ
         DispatchQueue.main.async {
             completion(retrievedPreferenceState, nil)
         }

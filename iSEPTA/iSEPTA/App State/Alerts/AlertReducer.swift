@@ -26,7 +26,7 @@ struct AlertReducer {
             }
 
         } else {
-            return AlertState()
+            return AlertState(doNotShowThisAlertAgain: false)
         }
     }
 
@@ -40,7 +40,8 @@ struct AlertReducer {
                           alertDetails: state.alertDetails,
                           genericAlertDetails: state.genericAlertDetails,
                           appAlertDetails: state.appAlertDetails,
-                          modalAlertsDisplayed: state.modalAlertsDisplayed)
+                          modalAlertsDisplayed: state.modalAlertsDisplayed,
+                          doNotShowThisAlertAgain: state.doNotShowThisAlertAgain)
     }
 
     static func reduceAlertActions(action: AlertAction,
@@ -62,6 +63,9 @@ struct AlertReducer {
         case let action as ResetModalAlertsDisplayed:
             newState = reduceResetModalAlertsDisplayed(action: action,
                                                        state: state)
+        case let action as DoNotShowThisAlertAgain:
+            newState = reduceDoNotShowThisAlertAgain(action: action,
+                                                       state: state)
         default:
             break
         }
@@ -77,7 +81,8 @@ struct AlertReducer {
                           alertDetails: state.alertDetails,
                           genericAlertDetails: state.genericAlertDetails,
                           appAlertDetails: state.appAlertDetails,
-                          modalAlertsDisplayed: state.modalAlertsDisplayed)
+                          modalAlertsDisplayed: state.modalAlertsDisplayed,
+                          doNotShowThisAlertAgain: state.doNotShowThisAlertAgain)
     }
 
     static func reduceAlertDetailsLoaded(action: AlertDetailsLoaded,
@@ -88,7 +93,8 @@ struct AlertReducer {
                           alertDetails: action.alertDetails,
                           genericAlertDetails: state.genericAlertDetails,
                           appAlertDetails: state.appAlertDetails,
-                          modalAlertsDisplayed: state.modalAlertsDisplayed)
+                          modalAlertsDisplayed: state.modalAlertsDisplayed,
+                          doNotShowThisAlertAgain: state.doNotShowThisAlertAgain)
     }
 
     static func reduceGenericAlertDetailsLoaded(action: GenericAlertDetailsLoaded,
@@ -99,7 +105,8 @@ struct AlertReducer {
                           alertDetails: state.alertDetails,
                           genericAlertDetails: action.genericAlertDetails,
                           appAlertDetails: state.appAlertDetails,
-                          modalAlertsDisplayed: state.modalAlertsDisplayed)
+                          modalAlertsDisplayed: state.modalAlertsDisplayed,
+                          doNotShowThisAlertAgain: state.doNotShowThisAlertAgain)
     }
 
     static func reduceAppAlertDetailsLoaded(action: AppAlertDetailsLoaded,
@@ -110,7 +117,8 @@ struct AlertReducer {
                           alertDetails: state.alertDetails,
                           genericAlertDetails: state.genericAlertDetails,
                           appAlertDetails: action.appAlertDetails,
-                          modalAlertsDisplayed: state.modalAlertsDisplayed)
+                          modalAlertsDisplayed: state.modalAlertsDisplayed,
+                          doNotShowThisAlertAgain: state.doNotShowThisAlertAgain)
     }
 
     static func reduceResetModalAlertsDisplayed(action: ResetModalAlertsDisplayed,
@@ -121,6 +129,21 @@ struct AlertReducer {
                           alertDetails: state.alertDetails,
                           genericAlertDetails: state.genericAlertDetails,
                           appAlertDetails: state.appAlertDetails,
-                          modalAlertsDisplayed: action.modalAlertsDisplayed)
+                          modalAlertsDisplayed: action.modalAlertsDisplayed,
+                          doNotShowThisAlertAgain: state.doNotShowThisAlertAgain)
     }
+
+    static func reduceDoNotShowThisAlertAgain(action: DoNotShowThisAlertAgain,
+                                                state: AlertState) -> AlertState {
+
+        return AlertState(alertDict: state.alertDict,
+                          scheduleState: state.scheduleState,
+                          lastUpdated: state.lastUpdated,
+                          alertDetails: state.alertDetails,
+                          genericAlertDetails: state.genericAlertDetails,
+                          appAlertDetails: state.appAlertDetails,
+                          modalAlertsDisplayed: state.modalAlertsDisplayed,
+                          doNotShowThisAlertAgain: action.doNotShowThisAlertAgain)
+    }
+
 }

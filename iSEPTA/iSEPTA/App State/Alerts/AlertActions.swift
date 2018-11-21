@@ -53,5 +53,6 @@ struct ResetModalAlertsDisplayed: AlertAction {
 
 struct DoNotShowThisAlertAgain: AlertAction {
     let alertLastDisplayed: String
+    let doNotShowThisAlertAgain: Bool
     let description = "Don’t Show Me This Alert Again"
 }

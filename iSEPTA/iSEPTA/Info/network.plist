@@ -13,15 +13,15 @@
 	<key>databaseUpdateDate</key>
 	<date>2018-04-27T20:01:54Z</date>
 	<key>url</key>
-	<string>https://prod-mobile.septa.org/prod</string>
+	<string>https://dev-mobile.septa.org/prod</string>
 	<key>apiKey</key>
-	<string>S0XFfcawkb54IMFnAGctQajLNUK7QxNfoi4zgaD4</string>
+	<string>ZYbuUWm9O41RCzK3YQOm795h6L4hAT6yaNrwoBkD</string>
 	<key>genericAlertName</key>
 	<string>generic</string>
 	<key>appAlertName</key>
 	<string>APP</string>
 	<key>genericAlertEnvironment</key>
-	<string>test</string>
+	<string>prod</string>
 	<key>genericAlertEnvironment Desc</key>
 	<string>should be either &apos;prod&apos; or &apos;test&apos;</string>
 	<key>genericAlertTestHost</key>

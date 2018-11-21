@@ -118,12 +118,10 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         let alertState = store.state.alertState
         guard store.state.databaseState == .loaded else { return }
 
-        if alertState.hasGenericAlerts && alertState.hasAppAlerts && !modalAlertsDisplayed {
+        if alertState.hasGenericAlerts && alertState.hasAppAlerts && !modalAlertsDisplayed && !alertState.doNotShowThisAlertAgain {
             guard let genericMessage = AlertDetailsViewModel.renderMessage(alertDetails: alertState.genericAlertDetails, filter: { $0.message }),
                 let appAlertMessage = AlertDetailsViewModel.renderMessage(alertDetails: alertState.appAlertDetails, filter: { $0.message })
             else { return }
-            let genericTimeStamp = AlertDetailsViewModel.renderMessage(alertDetails: alertState.genericAlertDetails, filter: { $0.last_updated })
-            let appAlertTimeStamp = AlertDetailsViewModel.renderMessage(alertDetails: alertState.appAlertDetails, filter: { $0.last_updated })
             let space = NSAttributedString(string: " \n")
             let genericMessageTitle = NSAttributedString(string: "General SEPTA Alert: ")
             let appAlertMessageTitle = NSAttributedString(string: "Mobile App Alert: ")
@@ -139,7 +137,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
                 let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: true)
                 store.dispatch(action)
             }
-        } else if alertState.hasGenericAlerts && !modalAlertsDisplayed {
+        } else if alertState.hasGenericAlerts && !modalAlertsDisplayed && !alertState.doNotShowThisAlertAgain {
             let message = AlertDetailsViewModel.renderMessage(alertDetails: alertState.genericAlertDetails) { return $0.message }
             if let message = message {
                 UIAlert.presentAttributedOKAlertFrom(viewController: self, withTitle: "General SEPTA Alert", attributedString: message) {
@@ -147,7 +145,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
                     store.dispatch(action)
                 }
             }
-        } else if alertState.hasAppAlerts && !modalAlertsDisplayed {
+        } else if alertState.hasAppAlerts && !modalAlertsDisplayed && !alertState.doNotShowThisAlertAgain {
             let message = AlertDetailsViewModel.renderMessage(alertDetails: alertState.appAlertDetails) { return $0.message }
             if let message = message {
                 UIAlert.presentAttributedOKAlertFrom(viewController: self, withTitle: "Mobile App Alert", attributedString: message) {
