@@ -133,3 +133,10 @@ struct PushNotificationPreferenceSynchronizationSuccess: UserPreferencesAction {
 struct PushNotificationPreferenceSynchronizationFail: UserPreferencesAction {
     var description = "Push notification preferences failed to be saved in backend"
 }
+
+// TODO: JJ 3
+struct DoNotShowThisAlertAgain: UserPreferencesAction {
+    var lastSavedDoNotShowThisAlertAgainState: String
+    var doNotShowThisAlertAgain: Bool
+    let description = "Don't Show  Me This Alert Again"
+}

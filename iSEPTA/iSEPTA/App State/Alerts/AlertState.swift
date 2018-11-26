@@ -24,9 +24,8 @@ struct AlertState {
     var hasAppAlerts: Bool { return hasActiveAlerts(alertDetails: appAlertDetails) }
     var hasGenericOrAppAlerts: Bool { return hasGenericAlerts || hasAppAlerts }
     var modalAlertsDisplayed: Bool
-    var doNotShowThisAlertAgain: Bool
 
-    init(alertDict: AlertsByTransitModeThenRoute = [TransitMode: [String: SeptaAlert]](), scheduleState: ScheduleState = ScheduleState(), lastUpdated: Date = Date.distantPast, alertDetails: [AlertDetails_Alert] = [AlertDetails_Alert](), genericAlertDetails: [AlertDetails_Alert] = [AlertDetails_Alert](), appAlertDetails: [AlertDetails_Alert] = [AlertDetails_Alert](), modalAlertsDisplayed: Bool = false, doNotShowThisAlertAgain: Bool) {
+    init(alertDict: AlertsByTransitModeThenRoute = [TransitMode: [String: SeptaAlert]](), scheduleState: ScheduleState = ScheduleState(), lastUpdated: Date = Date.distantPast, alertDetails: [AlertDetails_Alert] = [AlertDetails_Alert](), genericAlertDetails: [AlertDetails_Alert] = [AlertDetails_Alert](), appAlertDetails: [AlertDetails_Alert] = [AlertDetails_Alert](), modalAlertsDisplayed: Bool = false) {
         self.alertDict = alertDict
         self.lastUpdated = lastUpdated
         self.scheduleState = scheduleState
@@ -34,7 +33,6 @@ struct AlertState {
         self.genericAlertDetails = genericAlertDetails
         self.appAlertDetails = appAlertDetails
         self.modalAlertsDisplayed = modalAlertsDisplayed
-        self.doNotShowThisAlertAgain = doNotShowThisAlertAgain
     }
 
     func hasActiveAlerts(alertDetails: [AlertDetails_Alert]) -> Bool {

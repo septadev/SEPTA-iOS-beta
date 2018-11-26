@@ -25,6 +25,8 @@ class UserPreferencesStatePersister {
             strongSelf.setStartupNavigationControllder(state: state)
             strongSelf.setDatabaseVersion(state: state)
             strongSelf.setPushNotificationPreference(state: state)
+            // TODO: JJ 4
+            strongSelf.setDoNotShowThisAlertAgain(state: state)
             strongSelf.defaults.synchronize()
         }
     }
@@ -44,6 +46,11 @@ class UserPreferencesStatePersister {
     func setPushNotificationPreference(state: UserPreferenceState) {
         let data = try? JSONEncoder().encode(state.pushNotificationPreferenceState)
         set(data, forKey: .pushNotificationPreferenceState)
+    }
+
+    func setDoNotShowThisAlertAgain(state: UserPreferenceState) {
+        set(state.lastSavedDoNotShowThisAlertAgainState, forKey: .lastSavedDoNotShowThisAlertAgainState)
+        set(state.doNotShowThisAlertAgain, forKey: .doNotShowThisAlertAgain)
     }
 
     private func set(_ value: Any?, forKey key: UserPreferencesKeys) {

@@ -102,7 +102,8 @@ class UIAlert {
         alert.addAction(UIAlertAction(title: "Don’t Show Me This Alert Again", style: UIAlertActionStyle.default) { _ in
             completion?()
             let lastUpdated = (store.state.alertState.genericAlertDetails.first)?.last_updated ?? ""
-            let action = DoNotShowThisAlertAgain(alertLastDisplayed: lastUpdated, doNotShowThisAlertAgain: true)
+            // TODO: JJ 6
+            let action = DoNotShowThisAlertAgain(lastSavedDoNotShowThisAlertAgainState: lastUpdated, doNotShowThisAlertAgain: true)
             store.dispatch(action)
         })
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in

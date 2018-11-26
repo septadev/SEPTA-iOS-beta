@@ -713,6 +713,7 @@
 		67F757B31F48729C00D3A4EE /* UIView+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F757B21F48729C00D3A4EE /* UIView+Util.swift */; };
 		67F757B51F488A4400D3A4EE /* SeptaDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F757B41F488A4400D3A4EE /* SeptaDraw.swift */; };
 		67F757B71F488A5E00D3A4EE /* BlueGradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F757B61F488A5E00D3A4EE /* BlueGradientBackgroundView.swift */; };
+		8CFF041121AC684F00141126 /* UserPreferenceState_DoNotShowThisAlertAgainWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFF041021AC684F00141126 /* UserPreferenceState_DoNotShowThisAlertAgainWatcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1518,6 +1519,7 @@
 		67F757B21F48729C00D3A4EE /* UIView+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Util.swift"; sourceTree = "<group>"; };
 		67F757B41F488A4400D3A4EE /* SeptaDraw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SeptaDraw.swift; path = iSEPTA/Views/SeptaDraw.swift; sourceTree = SOURCE_ROOT; };
 		67F757B61F488A5E00D3A4EE /* BlueGradientBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueGradientBackgroundView.swift; sourceTree = "<group>"; };
+		8CFF041021AC684F00141126 /* UserPreferenceState_DoNotShowThisAlertAgainWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferenceState_DoNotShowThisAlertAgainWatcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2319,6 +2321,7 @@
 			isa = PBXGroup;
 			children = (
 				588F27EF1F39DD7B00D62425 /* UserPreferenceState.swift */,
+				8CFF041021AC684F00141126 /* UserPreferenceState_DoNotShowThisAlertAgainWatcher.swift */,
 			);
 			path = StateObjects;
 			sourceTree = "<group>";
@@ -3966,6 +3969,7 @@
 				5863DB5A1F6C6B6700FC0F1F /* FavoritesExistWatcher.swift in Sources */,
 				671A19261F662DF000C8EEDA /* DividerViews.swift in Sources */,
 				67F028A51F7FCA050032F99C /* SeptaUrls.swift in Sources */,
+				8CFF041121AC684F00141126 /* UserPreferenceState_DoNotShowThisAlertAgainWatcher.swift in Sources */,
 				582F4ED21F33B1120062A546 /* SelectStopCellType.swift in Sources */,
 				582F4EBD1F33B1120062A546 /* SingleStringCell.swift in Sources */,
 				58EB8D311F5D94640028A487 /* BaseScheduleDataProvider.swift in Sources */,

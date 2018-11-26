@@ -48,8 +48,10 @@ class UserDefaultsLoader {
         let startupNavigationController = retrieveStartupNavigationController() ?? defaultPreferenceState.startupNavigationController
         let databaseVersion = retrieveDatabaseVersion() ?? defaultPreferenceState.databaseVersion
         let pushNotificationPreferenceState = retrievePushNotifications() ?? PushNotificationPreferenceState()
+        let doNotShowThisAlertAgain = retrieveDoNotShowThisAlertAgain()
+        let lastSavedDoNotShowThisAlertAgainState = retrieveLastSavedDoNotShowThisAlertAgainState() ?? ""
 
-        let retrievedPreferenceState = UserPreferenceState(defaultsLoaded: defaultsLoaded, startupTransitMode: startupTransitMode, startupNavigationController: startupNavigationController, databaseVersion: databaseVersion, pushNotificationPreferenceState: pushNotificationPreferenceState)
+        let retrievedPreferenceState = UserPreferenceState(defaultsLoaded: defaultsLoaded, startupTransitMode: startupTransitMode, startupNavigationController: startupNavigationController, databaseVersion: databaseVersion, pushNotificationPreferenceState: pushNotificationPreferenceState, doNotShowThisAlertAgain: doNotShowThisAlertAgain, lastSavedDoNotShowThisAlertAgainState: lastSavedDoNotShowThisAlertAgainState)
         // TODO: JJ
         DispatchQueue.main.async {
             completion(retrievedPreferenceState, nil)
@@ -76,6 +78,14 @@ class UserDefaultsLoader {
         return decodable(forKey: .pushNotificationPreferenceState)
     }
 
+    fileprivate func retrieveDoNotShowThisAlertAgain() -> Bool {
+        return bool(forKey: .doNotShowThisAlertAgain)
+    }
+
+    fileprivate func retrieveLastSavedDoNotShowThisAlertAgainState() -> String? {
+        return string(forKey: .lastSavedDoNotShowThisAlertAgainState)
+    }
+    
     fileprivate func bool(forKey key: UserPreferencesKeys) -> Bool {
         return defaults.bool(forKey: key.rawValue)
     }
