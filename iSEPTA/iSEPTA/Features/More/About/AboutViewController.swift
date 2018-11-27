@@ -16,7 +16,8 @@ class AboutViewController: UIViewController, IdentifiableController, UITextViewD
     @IBOutlet var attributionsLabel: UILabel!
     @IBOutlet var appInformationView: UIView!
     @IBOutlet var appInfoStackView: UIStackView!
-
+    @IBOutlet weak var septaLogoImage: UIImageView!
+    
     @IBOutlet var plusButton: AlertDetailButton!
 
     @IBOutlet var licenseTextViewHeightConstraint: NSLayoutConstraint!
@@ -44,6 +45,7 @@ class AboutViewController: UIViewController, IdentifiableController, UITextViewD
         view.backgroundColor = SeptaColor.navBarBlue
 
         super.viewDidLoad()
+        appBuildConfigInfo()
         viewModel = AboutViewModel()
         buildAppInfo()
         UIView.addSurroundShadow(toView: appInformationView, withCornerRadius: 3)
@@ -67,6 +69,22 @@ class AboutViewController: UIViewController, IdentifiableController, UITextViewD
         }
     }
 
+    // MARK: - Debug Easter Egg - Add touch to Septa Logo
+    func appBuildConfigInfo() {
+        let dictionary = Bundle.main.infoDictionary!
+        let bundleID = dictionary["CFBundleIdentifier"] as! String
+        if bundleID.contains("beta") {
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTouchSeptaLogo(tapGestureRecognizer:)))
+            septaLogoImage.isUserInteractionEnabled = true
+            septaLogoImage.addGestureRecognizer(tapGestureRecognizer)
+        }
+    }
+    // Resets alert don't show flags
+    @objc func didTouchSeptaLogo(tapGestureRecognizer: UITapGestureRecognizer) {
+        let action = DoNotShowThisAlertAgain(lastSavedDoNotShowThisAlertAgainState: "", doNotShowThisAlertAgain: false)
+        store.dispatch(action)
+    }
+    
     @IBAction func openButtonTapped(_: Any) {
         openState = !openState
 

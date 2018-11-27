@@ -15,7 +15,6 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
     var databaseUpdateWatcher: DatabaseUpdateWatcher?
     var databaseDownloadedWatcher: DatabaseDownloadedWatcher?
     var pushNotificationTripDetailState_ResultsWatcher = PushNotificationTripDetailState_ResultsWatcher()
-    var doNotShowThisAlertAgainWatcher: UserPreferenceState_DoNotShowThisAlertAgainWatcher?
 
     var currentlyPresentingPushNotificationTripDetail = false
 
@@ -76,9 +75,6 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
                 self?.performSegue(withIdentifier: "showDatabaseLoadingModal", sender: self)
             }
         }
-        
-        doNotShowThisAlertAgainWatcher = UserPreferenceState_DoNotShowThisAlertAgainWatcher()
-        doNotShowThisAlertAgainWatcher?.delegate = self
 
         genericAlertsWatcher = AlertState_HasGenericOrAppAlertsWatcher()
         genericAlertsWatcher?.delegate = self
@@ -125,10 +121,14 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         let doNotShowThisAlertAgainState = store.state.preferenceState.doNotShowThisAlertAgain
         let lastSavedDoNotShowThisAlertAgainState = store.state.preferenceState.lastSavedDoNotShowThisAlertAgainState
 
-        if alertState.hasGenericAlerts && alertState.hasAppAlerts && !modalAlertsDisplayed && !doNotShowThisAlertAgainState {
+        if alertState.hasGenericAlerts && alertState.hasAppAlerts && !modalAlertsDisplayed {
             guard let genericMessage = AlertDetailsViewModel.renderMessage(alertDetails: alertState.genericAlertDetails, filter: { $0.message }),
-                let appAlertMessage = AlertDetailsViewModel.renderMessage(alertDetails: alertState.appAlertDetails, filter: { $0.message })
+                let appAlertMessage = AlertDetailsViewModel.renderMessage(alertDetails: alertState.appAlertDetails, filter: { $0.message }),
+                let lastSavedGenericAlert = (alertState.genericAlertDetails.first)?.last_updated
             else { return }
+            if doNotShowThisAlertAgainState && lastSavedDoNotShowThisAlertAgainState == lastSavedGenericAlert {
+                return
+            }
             let space = NSAttributedString(string: " \n")
             let genericMessageTitle = NSAttributedString(string: "General SEPTA Alert: ")
             let appAlertMessageTitle = NSAttributedString(string: "Mobile App Alert: ")
@@ -144,7 +144,11 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
                 let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: true)
                 store.dispatch(action)
             }
-        } else if alertState.hasGenericAlerts && !modalAlertsDisplayed && !doNotShowThisAlertAgainState {
+        } else if alertState.hasGenericAlerts && !modalAlertsDisplayed {
+            guard let lastSavedGenericAlert = (alertState.genericAlertDetails.first)?.last_updated else { return }
+            if doNotShowThisAlertAgainState && lastSavedDoNotShowThisAlertAgainState == lastSavedGenericAlert {
+                return
+            }
             let message = AlertDetailsViewModel.renderMessage(alertDetails: alertState.genericAlertDetails) { return $0.message }
             if let message = message {
                 UIAlert.presentAttributedOKAlertFrom(viewController: self, withTitle: "General SEPTA Alert", attributedString: message) {
@@ -152,7 +156,11 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
                     store.dispatch(action)
                 }
             }
-        } else if alertState.hasAppAlerts && !modalAlertsDisplayed && !doNotShowThisAlertAgainState {
+        } else if alertState.hasAppAlerts && !modalAlertsDisplayed {
+            guard let lastSavedAppAlert = (alertState.appAlertDetails.first)?.last_updated else { return }
+            if doNotShowThisAlertAgainState && lastSavedDoNotShowThisAlertAgainState == lastSavedAppAlert {
+                return
+            }
             let message = AlertDetailsViewModel.renderMessage(alertDetails: alertState.appAlertDetails) { return $0.message }
             if let message = message {
                 UIAlert.presentAttributedOKAlertFrom(viewController: self, withTitle: "Mobile App Alert", attributedString: message) {
@@ -245,14 +253,4 @@ extension MainNavigationController: PushNotificationTripDetailState_ResultsDeleg
 
         return "We were unable to retrieve the detail on the \(delayNotification.routeId) delay notification."
     }
-}
-
-extension MainNavigationController: UserPreferenceState_DoNotShowThisAlertAgainWatcherDelegate {
-    
-    func userPreferenceState_DoNotShowThisAlertAgainUpdated(doNotShowThisAlertAgainWatcher: Bool) {
-        // TODO: JJ 8
-        //let action = DoNotShowThisAlertAgain(lastSavedDoNotShowThisAlertAgainState: lastSavedDoNotShowThisAlertAgainState, doNotShowThisAlertAgain: doNotShowThisAlertAgainWatcher)
-        //store.dispatch(action)
-    }
-
 }
