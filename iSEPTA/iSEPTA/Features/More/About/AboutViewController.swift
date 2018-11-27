@@ -81,8 +81,11 @@ class AboutViewController: UIViewController, IdentifiableController, UITextViewD
     }
     // Resets alert don't show flags
     @objc func didTouchSeptaLogo(tapGestureRecognizer: UITapGestureRecognizer) {
-        let action = DoNotShowThisAlertAgain(lastSavedDoNotShowThisAlertAgainState: "", doNotShowThisAlertAgain: false)
+        //TODO: JJ 9
+        let action = DoNotShowGenericAlertAgain(lastSavedDoNotShowGenericAlertAgainState: "", doNotShowGenericAlertAgain: false)
         store.dispatch(action)
+        let action2 = DoNotShowAppAlertAgain(lastSavedDoNotShowAppAlertAgainState: "", doNotShowAppAlertAgain: false)
+        store.dispatch(action2)
     }
     
     @IBAction func openButtonTapped(_: Any) {

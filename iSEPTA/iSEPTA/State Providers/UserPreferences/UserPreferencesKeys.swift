@@ -10,6 +10,8 @@ enum UserPreferencesKeys: String {
     case databaseVersion
     case pushNotificationPreferenceState
     // TODO: JJ 1
-    case doNotShowThisAlertAgain
-    case lastSavedDoNotShowThisAlertAgainState
+    case doNotShowGenericAlertAgain
+    case lastSavedDoNotShowGenericAlertAgainState
+    case doNotShowAppAlertAgain
+    case lastSavedDoNotShowAppAlertAgainState
 }

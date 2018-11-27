@@ -26,7 +26,8 @@ class UserPreferencesStatePersister {
             strongSelf.setDatabaseVersion(state: state)
             strongSelf.setPushNotificationPreference(state: state)
             // TODO: JJ 4
-            strongSelf.setDoNotShowThisAlertAgain(state: state)
+            strongSelf.setDoNotShowGenericAlertAgain(state: state)
+            strongSelf.setDoNotShowAppAlertAgain(state: state)
             strongSelf.defaults.synchronize()
         }
     }
@@ -48,9 +49,14 @@ class UserPreferencesStatePersister {
         set(data, forKey: .pushNotificationPreferenceState)
     }
 
-    func setDoNotShowThisAlertAgain(state: UserPreferenceState) {
-        set(state.lastSavedDoNotShowThisAlertAgainState, forKey: .lastSavedDoNotShowThisAlertAgainState)
-        set(state.doNotShowThisAlertAgain, forKey: .doNotShowThisAlertAgain)
+    func setDoNotShowGenericAlertAgain(state: UserPreferenceState) {
+        set(state.lastSavedDoNotShowGenericAlertAgainState, forKey: .lastSavedDoNotShowGenericAlertAgainState)
+        set(state.doNotShowGenericAlertAgain, forKey: .doNotShowGenericAlertAgain)
+    }
+
+    func setDoNotShowAppAlertAgain(state: UserPreferenceState) {
+        set(state.lastSavedDoNotShowAppAlertAgainState, forKey: .lastSavedDoNotShowAppAlertAgainState)
+        set(state.doNotShowAppAlertAgain, forKey: .doNotShowAppAlertAgain)
     }
 
     private func set(_ value: Any?, forKey key: UserPreferencesKeys) {

@@ -99,7 +99,7 @@ class TestGenericAlertDetailProvider: StateProvider {
     /// helper classes
     fileprivate func extractMessages(jsonArray: [[String: Any]]) -> [String]? {
         guard let messages = jsonArray
-            .map({ $0["description"] }) // TODO: JJ current_message
+            .map({ $0["description"] })
             .flatMap({ $0 })
             .filter({
                 guard let string = $0 as? String else { return false }

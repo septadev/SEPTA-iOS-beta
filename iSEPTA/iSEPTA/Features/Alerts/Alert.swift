@@ -90,7 +90,12 @@ class UIAlert {
         viewController.present(alert, animated: true, completion: nil)
     }
 
-    static func presentAttributedOKAlertFrom(viewController: UIViewController, withTitle title: String, attributedString: NSAttributedString, completion: (() -> Void)? = nil) {
+    static func resetModalAlertsDisplayedFlag(flagMode: Bool) {
+        let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: flagMode)
+        store.dispatch(action)
+    }
+    
+    static func presentAppOrGenericAlertFrom(viewController: UIViewController, withTitle title: String, attributedString: NSAttributedString, isGeneric: Bool, isApp: Bool, completion: (() -> Void)? = nil) {
         // create the alert
         let alert = UIAlertController(title: title, message: attributedString.string, preferredStyle: UIAlertControllerStyle.alert)
 
@@ -98,16 +103,26 @@ class UIAlert {
         alert.addAction(UIAlertAction(title: "More Details", style: UIAlertActionStyle.default) { _ in
             let action = SwitchTabs(activeNavigationController: .alerts, description: "Jumping to Alerts Screen Generic Alert")
             store.dispatch(action)
+            //UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
         })
         alert.addAction(UIAlertAction(title: "Don’t Show Me This Alert Again", style: UIAlertActionStyle.default) { _ in
             completion?()
-            let lastUpdated = (store.state.alertState.genericAlertDetails.first)?.last_updated ?? ""
-            // TODO: JJ 6
-            let action = DoNotShowThisAlertAgain(lastSavedDoNotShowThisAlertAgainState: lastUpdated, doNotShowThisAlertAgain: true)
-            store.dispatch(action)
+            // TODO: JJ 7
+            if isGeneric {
+                let lastGenericUpdated = (store.state.alertState.genericAlertDetails.first)?.last_updated ?? ""
+                let action = DoNotShowGenericAlertAgain(lastSavedDoNotShowGenericAlertAgainState: lastGenericUpdated, doNotShowGenericAlertAgain: true)
+                store.dispatch(action)
+            }
+            if isApp {
+                let lastAppUpdated = (store.state.alertState.appAlertDetails.first)?.last_updated ?? ""
+                let action = DoNotShowAppAlertAgain(lastSavedDoNotShowAppAlertAgainState: lastAppUpdated, doNotShowAppAlertAgain: true)
+                store.dispatch(action)
+            }
+            //UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
         })
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
             completion?()
+            //UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
         })
 
         // show the alert

@@ -135,8 +135,14 @@ struct PushNotificationPreferenceSynchronizationFail: UserPreferencesAction {
 }
 
 // TODO: JJ 3
-struct DoNotShowThisAlertAgain: UserPreferencesAction {
-    var lastSavedDoNotShowThisAlertAgainState: String
-    var doNotShowThisAlertAgain: Bool
-    let description = "Don't Show  Me This Alert Again"
+struct DoNotShowGenericAlertAgain: UserPreferencesAction {
+    var lastSavedDoNotShowGenericAlertAgainState: String
+    var doNotShowGenericAlertAgain: Bool
+    let description = "Don't Show  Me This Generic Alert Again"
+}
+
+struct DoNotShowAppAlertAgain: UserPreferencesAction {
+    var lastSavedDoNotShowAppAlertAgainState: String
+    var doNotShowAppAlertAgain: Bool
+    let description = "Don't Show  Me This App Alert Again"
 }

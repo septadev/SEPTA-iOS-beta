@@ -64,8 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_: UIApplication) {
-        let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: true)
-        store.dispatch(action)
+        UIAlert.resetModalAlertsDisplayedFlag(flagMode: true)
     }
 
     func applicationWillEnterForeground(_: UIApplication) {
@@ -73,8 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let inAppReview = InAppReview()
         inAppReview.appLaunched()
 
-        let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: false)
-        store.dispatch(action)
+        UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
 
         updateCurrentPushNotificationAuthorizationStatus()
     }

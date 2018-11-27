@@ -57,8 +57,10 @@ struct UserPreferencesReducer {
         case let action as ToggleAllPushNotificationRoutes:
             newPref = reduceToggleAllPushNotificationRoutes(action: action, state: state)
         // TODO: JJ 5
-        case let action as DoNotShowThisAlertAgain:
-            newPref = reduceDoNotShowThisAlertAgain(action: action, state: state)
+        case let action as DoNotShowGenericAlertAgain:
+            newPref = reduceDoNotShowGenericAlertAgain(action: action, state: state)
+        case let action as DoNotShowAppAlertAgain:
+            newPref = reduceDoNotShowAppAlertAgain(action: action, state: state)
         default:
             fatalError("You passed in an action for which there is no reducer")
         }
@@ -95,10 +97,17 @@ struct UserPreferencesReducer {
         return userPreferenceState
     }
 
-    static func reduceDoNotShowThisAlertAgain(action: DoNotShowThisAlertAgain, state: UserPreferenceState) -> UserPreferenceState {
+    static func reduceDoNotShowGenericAlertAgain(action: DoNotShowGenericAlertAgain, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
-        userPreferenceState.doNotShowThisAlertAgain = action.doNotShowThisAlertAgain
-        userPreferenceState.lastSavedDoNotShowThisAlertAgainState = action.lastSavedDoNotShowThisAlertAgainState
+        userPreferenceState.doNotShowGenericAlertAgain = action.doNotShowGenericAlertAgain
+        userPreferenceState.lastSavedDoNotShowGenericAlertAgainState = action.lastSavedDoNotShowGenericAlertAgainState
+        return userPreferenceState
+    }
+
+    static func reduceDoNotShowAppAlertAgain(action: DoNotShowAppAlertAgain, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.doNotShowAppAlertAgain = action.doNotShowAppAlertAgain
+        userPreferenceState.lastSavedDoNotShowAppAlertAgainState = action.lastSavedDoNotShowAppAlertAgainState
         return userPreferenceState
     }
 
