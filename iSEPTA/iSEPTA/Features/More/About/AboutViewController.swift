@@ -69,25 +69,65 @@ class AboutViewController: UIViewController, IdentifiableController, UITextViewD
         }
     }
 
+    //TODO: JJ 9
     // MARK: - Debug Easter Egg - Add touch to Septa Logo
     func appBuildConfigInfo() {
         let dictionary = Bundle.main.infoDictionary!
         let bundleID = dictionary["CFBundleIdentifier"] as! String
         if bundleID.contains("beta") {
-            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTouchSeptaLogo(tapGestureRecognizer:)))
+            let tap1GestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didSingleTouchSeptaLogo(tapGestureRecognizer:)))
+            tap1GestureRecognizer.numberOfTapsRequired = 1
+            let tap2GestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didDoubleTouchSeptaLogo(tapGestureRecognizer:)))
+            tap2GestureRecognizer.numberOfTapsRequired = 2
+            let tap3GestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTrippleTouchSeptaLogo(tapGestureRecognizer:)))
+            tap3GestureRecognizer.numberOfTapsRequired = 3
             septaLogoImage.isUserInteractionEnabled = true
-            septaLogoImage.addGestureRecognizer(tapGestureRecognizer)
-        }
+            septaLogoImage.addGestureRecognizer(tap1GestureRecognizer)
+            septaLogoImage.addGestureRecognizer(tap2GestureRecognizer)
+            septaLogoImage.addGestureRecognizer(tap3GestureRecognizer)
+            tap1GestureRecognizer.require(toFail: tap2GestureRecognizer)
+            tap2GestureRecognizer.require(toFail: tap3GestureRecognizer)        }
     }
     // Resets alert don't show flags
-    @objc func didTouchSeptaLogo(tapGestureRecognizer: UITapGestureRecognizer) {
-        //TODO: JJ 9
-        let action = DoNotShowGenericAlertAgain(lastSavedDoNotShowGenericAlertAgainState: "", doNotShowGenericAlertAgain: false)
-        store.dispatch(action)
-        let action2 = DoNotShowAppAlertAgain(lastSavedDoNotShowAppAlertAgainState: "", doNotShowAppAlertAgain: false)
-        store.dispatch(action2)
+    @objc func didSingleTouchSeptaLogo(tapGestureRecognizer: UITapGestureRecognizer) {
+        let alert = UIAlertController(title: "1 - Reset Alerts", message: "Reset both alerts.", preferredStyle: UIAlertControllerStyle.alert)
+        
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default) { _ in
+        })
+        alert.addAction(UIAlertAction(title: "Reset", style: UIAlertActionStyle.default) { _ in
+            let action = DoNotShowGenericAlertAgain(lastSavedDoNotShowGenericAlertAgainState: "", doNotShowGenericAlertAgain: false)
+            store.dispatch(action)
+            let action2 = DoNotShowAppAlertAgain(lastSavedDoNotShowAppAlertAgainState: "", doNotShowAppAlertAgain: false)
+            store.dispatch(action2)
+        })
+        alert.show()
     }
-    
+    @objc func didDoubleTouchSeptaLogo(tapGestureRecognizer: UITapGestureRecognizer) {
+        let alert = UIAlertController(title: "2 - Reset Alert", message: "Reset Generic alert.", preferredStyle: UIAlertControllerStyle.alert)
+        
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default) { _ in
+        })
+        alert.addAction(UIAlertAction(title: "Reset", style: UIAlertActionStyle.default) { _ in
+            let action = DoNotShowGenericAlertAgain(lastSavedDoNotShowGenericAlertAgainState: "", doNotShowGenericAlertAgain: false)
+            store.dispatch(action)
+        })
+        alert.show()
+    }
+    @objc func didTrippleTouchSeptaLogo(tapGestureRecognizer: UITapGestureRecognizer) {
+        let alert = UIAlertController(title: "3 - Reset Alert", message: "Reset App alert.", preferredStyle: UIAlertControllerStyle.alert)
+        
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default) { _ in
+        })
+        alert.addAction(UIAlertAction(title: "Reset", style: UIAlertActionStyle.default) { _ in
+            let action = DoNotShowAppAlertAgain(lastSavedDoNotShowAppAlertAgainState: "", doNotShowAppAlertAgain: false)
+            store.dispatch(action)
+        })
+        alert.show()
+    }
+
     @IBAction func openButtonTapped(_: Any) {
         openState = !openState
 
