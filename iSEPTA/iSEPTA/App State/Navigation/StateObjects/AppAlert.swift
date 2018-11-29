@@ -9,11 +9,10 @@
 import Foundation
 
 enum AppAlert: Equatable {
-    case genericAlert
-    case globalSystemAlert
-    case databaseUpdateNeededAlert
-    case databaseUpdateCompletedAlert
-    case pushNotificationTripDetailAlert
-    case pushNotificationExpiredAlert
-    case databaseAlert
+    case genericAlert                       //
+    case databaseUpdateNeededAlert          // MainNavigationController.swift
+    case databaseUpdateCompletedAlert       // MainNavigationController.swift
+    case pushNotificationTripDetailAlert    // MainNavigationController.swift
+    case pushNotificationExpiredAlert       // MainNavigationController.swift
+    case databaseAlert                      // TripScheduleViewController.swift
 }

@@ -11,7 +11,7 @@ import UIKit
 import ReSwift
 
 
-
+// TODO: JJ Alert Queue
 class MainNavigationControllerAlertManager: StoreSubscriber {
     typealias StoreSubscriberStateType = AppAlert?
 
@@ -36,7 +36,9 @@ class MainNavigationControllerAlertManager: StoreSubscriber {
     }
 
     func newState(state: StoreSubscriberStateType) {
-        guard let appAlert = state, let block = alertsToDisplay[appAlert] else { return }
+        guard let appAlert = state,
+            let block = alertsToDisplay[appAlert]
+        else { return }
         block()
     }
 

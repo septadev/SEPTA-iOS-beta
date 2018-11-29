@@ -124,6 +124,7 @@ class UIAlert {
         alert.addAction(UIAlertAction(title: "More Details", style: UIAlertActionStyle.default) { _ in
             let action = SwitchTabs(activeNavigationController: .alerts, description: "Jumping to Alerts Screen Generic Alert")
             store.dispatch(action)
+            store.dispatch(CurrentAppAlertDismissed())
             UIAlert.resetGenericAlertWasShownFlag(flagMode: true)
             UIAlert.resetAppAlertWasShownFlag(flagMode: true)
             UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
@@ -140,10 +141,12 @@ class UIAlert {
                 let action = DoNotShowAppAlertAgain(lastSavedDoNotShowAppAlertAgainState: lastAppUpdated, doNotShowAppAlertAgain: true)
                 store.dispatch(action)
             }
+            store.dispatch(CurrentAppAlertDismissed())
             UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
         })
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
             completion?()
+            store.dispatch(CurrentAppAlertDismissed())
             UIAlert.resetGenericAlertWasShownFlag(flagMode: true)
             UIAlert.resetAppAlertWasShownFlag(flagMode: true)
             UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
@@ -159,11 +162,12 @@ class UIAlert {
 
         // add an action (button)
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { _ in
+            store.dispatch(CurrentAppAlertDismissed())
             store.dispatch(DownloadDatabaseUpdate())
         })
         alert.addAction(UIAlertAction(title: "Remind me later", style: UIAlertActionStyle.default) { _ in
             completion?()
-            store.dispatch(ClearPushNotificationTripDetailData())
+            store.dispatch(CurrentAppAlertDismissed())
             store.dispatch(DatabaseUpToDate())
         })
 

@@ -159,9 +159,11 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
                 alertsMessageText = AlertDetailsViewModel.renderMessage(alertDetails: alertState.appAlertDetails) { return $0.message } ?? NSAttributedString(string: "")
             }
 
-            UIAlert.presentAppOrGenericAlertFrom(viewController: self, withTitle: alertTitleText, attributedString: alertsMessageText, isGeneric: showGeneric, isApp: showApp) {
-                UIAlert.resetModalAlertsDisplayedFlag(flagMode: true)
-            }
+            MainNavigationControllerAlertManager.sharedInstance.addAlertToDisplay(appAlert: .genericAlert, block: {
+                UIAlert.presentAppOrGenericAlertFrom(viewController: self, withTitle: alertTitleText, attributedString: alertsMessageText, isGeneric: showGeneric, isApp: showApp) {
+                    UIAlert.resetModalAlertsDisplayedFlag(flagMode: true)
+                }
+            })
         }
     }
     
