@@ -50,3 +50,13 @@ struct ResetModalAlertsDisplayed: AlertAction {
     let modalAlertsDisplayed: Bool
     let description = "Setting modal Alerts Displayed"
 }
+
+struct ResetGenericAlertWasShown: AlertAction {
+    let genericAlertWasShown: Bool
+    let description = "Setting generic alert was shown"
+}
+
+struct ResetAppAlertWasShown: AlertAction {
+    let appAlertWasShown: Bool
+    let description = "Setting app alert was shown"
+}

@@ -133,12 +133,12 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
             var showApp = false
             var bothShown = false
 
-            if alertState.hasGenericAlerts && (!doNotShowGenericAgainState && lastSavedDoNotShowGenericAlertAgainState != lastSavedGenericAlert) {
+            if !alertState.genericAlertWasShown && alertState.hasGenericAlerts && (!doNotShowGenericAgainState && lastSavedDoNotShowGenericAlertAgainState != lastSavedGenericAlert) {
                 if (alertState.genericAlertDetails.first)?.message?.count ?? 0 > 0 {
                     showGeneric = true
                 }
             }
-            if alertState.hasAppAlerts && (!doNotShowAppAgainState && lastSavedDoNotShowAppAlertAgainState != lastSavedAppAlert) {
+            if !alertState.appAlertWasShown && alertState.hasAppAlerts && (!doNotShowAppAgainState && lastSavedDoNotShowAppAlertAgainState != lastSavedAppAlert) {
                 if (alertState.appAlertDetails.first)?.message?.count ?? 0 > 0 {
                     showApp = true
                 }
@@ -185,6 +185,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         
         return genericPlusAppAlertsMessage
     }
+    
 }
 
 extension MainNavigationController: DatabaseUpdateWatcherDelegate {
