@@ -119,7 +119,6 @@ class UIAlert {
         })
         alert.addAction(UIAlertAction(title: "Don’t Show Me This Alert Again", style: UIAlertActionStyle.default) { _ in
             completion?()
-            // TODO: JJ 7
             if isGeneric {
                 let lastGenericUpdated = (store.state.alertState.genericAlertDetails.first)?.last_updated ?? ""
                 let action = DoNotShowGenericAlertAgain(lastSavedDoNotShowGenericAlertAgainState: lastGenericUpdated, doNotShowGenericAlertAgain: true)

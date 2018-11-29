@@ -134,7 +134,6 @@ struct PushNotificationPreferenceSynchronizationFail: UserPreferencesAction {
     var description = "Push notification preferences failed to be saved in backend"
 }
 
-// TODO: JJ 3
 struct DoNotShowGenericAlertAgain: UserPreferencesAction {
     var lastSavedDoNotShowGenericAlertAgainState: String
     var doNotShowGenericAlertAgain: Bool

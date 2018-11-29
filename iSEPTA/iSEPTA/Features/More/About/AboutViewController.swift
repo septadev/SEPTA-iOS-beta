@@ -69,7 +69,6 @@ class AboutViewController: UIViewController, IdentifiableController, UITextViewD
         }
     }
 
-    //TODO: JJ 9
     // MARK: - Debug Easter Egg - Add touch to Septa Logo
     func appBuildConfigInfo() {
         let dictionary = Bundle.main.infoDictionary!

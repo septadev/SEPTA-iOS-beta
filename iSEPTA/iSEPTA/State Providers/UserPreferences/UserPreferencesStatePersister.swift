@@ -25,7 +25,6 @@ class UserPreferencesStatePersister {
             strongSelf.setStartupNavigationControllder(state: state)
             strongSelf.setDatabaseVersion(state: state)
             strongSelf.setPushNotificationPreference(state: state)
-            // TODO: JJ 4
             strongSelf.setDoNotShowGenericAlertAgain(state: state)
             strongSelf.setDoNotShowAppAlertAgain(state: state)
             strongSelf.defaults.synchronize()

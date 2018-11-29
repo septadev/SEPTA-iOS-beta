@@ -9,7 +9,6 @@ enum UserPreferencesKeys: String {
     case startupNavigationController
     case databaseVersion
     case pushNotificationPreferenceState
-    // TODO: JJ 1
     case doNotShowGenericAlertAgain
     case lastSavedDoNotShowGenericAlertAgainState
     case doNotShowAppAlertAgain

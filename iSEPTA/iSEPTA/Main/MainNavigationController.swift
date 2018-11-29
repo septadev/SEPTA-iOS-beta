@@ -119,7 +119,6 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         guard store.state.databaseState == .loaded else { return }
         let alertState = store.state.alertState
 
-//TODO: JJ 6
         if !modalAlertsDisplayed && (alertState.hasGenericAlerts || alertState.hasAppAlerts) {
             let doNotShowGenericAgainState = store.state.preferenceState.doNotShowGenericAlertAgain
             let lastSavedDoNotShowGenericAlertAgainState = store.state.preferenceState.lastSavedDoNotShowGenericAlertAgainState

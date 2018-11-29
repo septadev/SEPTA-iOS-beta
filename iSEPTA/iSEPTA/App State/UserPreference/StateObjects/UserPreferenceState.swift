@@ -10,7 +10,6 @@ struct UserPreferenceState: Equatable {
     var databaseVersion: Int
     var pushNotificationPreferenceState: PushNotificationPreferenceState
     var lastSavedPushPreferenceState: PushNotificationPreferenceState?
-    // TODO: JJ 2
     var doNotShowGenericAlertAgain: Bool
     var lastSavedDoNotShowGenericAlertAgainState: String
     var doNotShowAppAlertAgain: Bool

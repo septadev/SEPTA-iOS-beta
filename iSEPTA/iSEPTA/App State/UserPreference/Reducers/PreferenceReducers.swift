@@ -56,7 +56,6 @@ struct UserPreferencesReducer {
             newPref = reducePushNotificationPreferenceSynchronizationFail(action: action, state: state)
         case let action as ToggleAllPushNotificationRoutes:
             newPref = reduceToggleAllPushNotificationRoutes(action: action, state: state)
-        // TODO: JJ 5
         case let action as DoNotShowGenericAlertAgain:
             newPref = reduceDoNotShowGenericAlertAgain(action: action, state: state)
         case let action as DoNotShowAppAlertAgain:

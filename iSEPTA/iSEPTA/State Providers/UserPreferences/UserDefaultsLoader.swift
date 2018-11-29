@@ -52,7 +52,7 @@ class UserDefaultsLoader {
         let lastSavedDoNotShowGenericAlertAgainState = retrieveLastSavedDoNotShowGenericAlertAgainState() ?? ""
         let doNotShowAppAlertAgain = retrieveDoNotShowAppAlertAgain()
         let lastSavedDoNotShowAppAlertAgainState = retrieveLastSavedDoNotShowAppAlertAgainState() ?? ""
-// TODO: JJ 8
+
         let retrievedPreferenceState = UserPreferenceState(defaultsLoaded: defaultsLoaded, startupTransitMode: startupTransitMode, startupNavigationController: startupNavigationController, databaseVersion: databaseVersion, pushNotificationPreferenceState: pushNotificationPreferenceState, doNotShowGenericAlertAgain: doNotShowGenericAlertAgain, lastSavedDoNotShowGenericAlertAgainState: lastSavedDoNotShowGenericAlertAgainState, doNotShowAppAlertAgain: doNotShowAppAlertAgain, lastSavedDoNotShowAppAlertAgainState: lastSavedDoNotShowAppAlertAgainState)
         
         DispatchQueue.main.async {
