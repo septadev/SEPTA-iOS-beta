@@ -15,7 +15,7 @@ public class AlertDetails_Alert: Mappable {
     public var message: String?
     public var advisory_message: String?
     public var detour: Detour?
-    var last_updated: String?
+    public var last_updated: String?
     var snow: Bool?
 
     public required init?(map _: Map) {

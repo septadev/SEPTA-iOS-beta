@@ -7,6 +7,7 @@ import SeptaSchedule
 import UIKit
 
 class MainNavigationController: UITabBarController, UITabBarControllerDelegate, StoreSubscriber, FavoritesState_FavoriteToEditWatcherDelegate, AlertState_HasGenericOrAppAlertsWatcherDelegate, AlertState_ModalAlertsDisplayedWatcherDelegate {
+    
     typealias StoreSubscriberStateType = NavigationController
     var favoritestoEditWatcher: FavoritesState_FavoriteToEditWatcher?
     var genericAlertsWatcher: AlertState_HasGenericOrAppAlertsWatcher?
@@ -112,52 +113,75 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
     }
 
     func alertState_ModalAlertsDisplayedUpdated(modalAlertsDisplayed: Bool) {
-        let alertState = store.state.alertState
         guard store.state.databaseState == .loaded else { return }
+        let alertState = store.state.alertState
 
-        if alertState.hasGenericAlerts && alertState.hasAppAlerts && !modalAlertsDisplayed {
-            guard let genericMessage = AlertDetailsViewModel.renderMessage(alertDetails: alertState.genericAlertDetails, filter: { $0.message }),
-                let appAlertMessage = AlertDetailsViewModel.renderMessage(alertDetails: alertState.appAlertDetails, filter: { $0.message })
-            else { return }
-            let space = NSAttributedString(string: " \n")
-            let genericMessageTitle = NSAttributedString(string: "General SEPTA Alert: ")
-            let appAlertMessageTitle = NSAttributedString(string: "Mobile App Alert: ")
-            let genericPlusAppAlertsMessage = NSMutableAttributedString()
-            genericPlusAppAlertsMessage.append(genericMessageTitle)
-            genericPlusAppAlertsMessage.append(genericMessage)
-            genericPlusAppAlertsMessage.append(space)
-            genericPlusAppAlertsMessage.append(appAlertMessageTitle)
-            genericPlusAppAlertsMessage.append(appAlertMessage)
-            genericPlusAppAlertsMessage.append(space)
+        if !modalAlertsDisplayed && (alertState.hasGenericAlerts || alertState.hasAppAlerts) {
+            let doNotShowGenericAgainState = store.state.preferenceState.doNotShowGenericAlertAgain
+            let lastSavedDoNotShowGenericAlertAgainState = store.state.preferenceState.lastSavedDoNotShowGenericAlertAgainState
+            let lastSavedGenericAlert = (alertState.genericAlertDetails.first)?.last_updated
+            
+            let doNotShowAppAgainState = store.state.preferenceState.doNotShowAppAlertAgain
+            let lastSavedDoNotShowAppAlertAgainState = store.state.preferenceState.lastSavedDoNotShowAppAlertAgainState
+            let lastSavedAppAlert = (alertState.appAlertDetails.first)?.last_updated
+            
+            var showGeneric = false
+            var showApp = false
+            var bothShown = false
 
-            MainNavigationControllerAlertManager.sharedInstance.addAlertToDisplay(appAlert: .globalSystemAlert, block: {
-                UIAlert.presentAttributedOKAlertFrom(viewController: self, withTitle: "SEPTA Alert", attributedString: genericPlusAppAlertsMessage) {
-                    let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: true)
-                    store.dispatch(action)
+            if !alertState.genericAlertWasShown && alertState.hasGenericAlerts && (!doNotShowGenericAgainState && lastSavedDoNotShowGenericAlertAgainState != lastSavedGenericAlert) {
+                if (alertState.genericAlertDetails.first)?.message?.count ?? 0 > 0 {
+                    showGeneric = true
                 }
-            })
-        } else if alertState.hasGenericAlerts && !modalAlertsDisplayed {
-            let message = AlertDetailsViewModel.renderMessage(alertDetails: alertState.genericAlertDetails) { return $0.message }
-            if let message = message {
-                MainNavigationControllerAlertManager.sharedInstance.addAlertToDisplay(appAlert: .globalSystemAlert, block: {
-                    UIAlert.presentAttributedOKAlertFrom(viewController: self, withTitle: "General SEPTA Alert", attributedString: message) {
-                        let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: true)
-                        store.dispatch(action)
-                    }
-                })
             }
-        } else if alertState.hasAppAlerts && !modalAlertsDisplayed {
-            let message = AlertDetailsViewModel.renderMessage(alertDetails: alertState.appAlertDetails) { return $0.message }
-            if let message = message {
-                MainNavigationControllerAlertManager.sharedInstance.addAlertToDisplay(appAlert: .genericAlert, block: {
-                    UIAlert.presentAttributedOKAlertFrom(viewController: self, withTitle: "Mobile App Alert", attributedString: message) {
-                        let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: true)
-                        store.dispatch(action)
-                    }
-                })
+            if !alertState.appAlertWasShown && alertState.hasAppAlerts && (!doNotShowAppAgainState && lastSavedDoNotShowAppAlertAgainState != lastSavedAppAlert) {
+                if (alertState.appAlertDetails.first)?.message?.count ?? 0 > 0 {
+                    showApp = true
+                }
+            }
+            if !showGeneric && !showApp {   // no alerts to show
+                return
+            }
+            
+            var alertTitleText = "Septa Alert"
+            var alertsMessageText = NSAttributedString()
+
+            if showGeneric && showApp {   // both alerts to show
+                alertsMessageText = configureAlertMessage(alertState: alertState)
+                bothShown = true
+            }
+            if showGeneric && !bothShown {  // Generic alert to show
+                alertTitleText = "General SEPTA Alert"
+                alertsMessageText = AlertDetailsViewModel.renderMessage(alertDetails: alertState.genericAlertDetails) { return $0.message } ?? NSAttributedString(string: "")
+            }
+            if showApp && !bothShown {      // App alert to show
+                alertTitleText = "Mobile App Alert"
+                alertsMessageText = AlertDetailsViewModel.renderMessage(alertDetails: alertState.appAlertDetails) { return $0.message } ?? NSAttributedString(string: "")
+            }
+
+            UIAlert.presentAppOrGenericAlertFrom(viewController: self, withTitle: alertTitleText, attributedString: alertsMessageText, isGeneric: showGeneric, isApp: showApp) {
+                UIAlert.resetModalAlertsDisplayedFlag(flagMode: true)
             }
         }
     }
+    
+    func configureAlertMessage(alertState: AlertState) -> NSAttributedString {
+        let space = NSAttributedString(string: " \n")
+        let genericMessageTitle = NSAttributedString(string: "General SEPTA Alert: ")
+        let appAlertMessageTitle = NSAttributedString(string: "Mobile App Alert: ")
+        let genericMessage = AlertDetailsViewModel.renderMessage(alertDetails: alertState.genericAlertDetails, filter: { $0.message }) ?? NSAttributedString(string: "")
+        let appAlertMessage = AlertDetailsViewModel.renderMessage(alertDetails: alertState.appAlertDetails, filter: { $0.message }) ?? NSAttributedString(string: "")
+        let genericPlusAppAlertsMessage = NSMutableAttributedString()
+        genericPlusAppAlertsMessage.append(genericMessageTitle)
+        genericPlusAppAlertsMessage.append(genericMessage)
+        genericPlusAppAlertsMessage.append(space)
+        genericPlusAppAlertsMessage.append(appAlertMessageTitle)
+        genericPlusAppAlertsMessage.append(appAlertMessage)
+        genericPlusAppAlertsMessage.append(space)
+        
+        return genericPlusAppAlertsMessage
+    }
+    
 }
 
 extension MainNavigationController: DatabaseUpdateWatcherDelegate {
