@@ -22,7 +22,10 @@ class MainNavigationControllerAlertManager: StoreSubscriber {
     public func addAlertToDisplay(appAlert: AppAlert, block: @escaping (()->())){
         alertsToDisplay[appAlert] = block
         store.dispatch(AddAlertToDisplay(appAlert: appAlert))
-
+    }
+    
+    public func clearAlertQueue() {
+        alertsToDisplay.removeAll()
     }
 
     private init(){
