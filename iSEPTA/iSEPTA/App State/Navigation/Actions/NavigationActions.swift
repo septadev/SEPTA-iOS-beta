@@ -62,8 +62,8 @@ struct ResetViewStateHandled: NavigationAction, Equatable {
 }
 
 struct AddAlertToDisplay: NavigationAction, Equatable {
-    let description = "Adding a global Alert to Display"
     let appAlert: AppAlert
+    let description = "Adding a global Alert to Display"
 }
 
 struct CurrentAppAlertDismissed: NavigationAction, Equatable {

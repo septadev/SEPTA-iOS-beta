@@ -36,7 +36,7 @@ struct AlertReducer {
                                                  state: state.scheduleState)
         return AlertState(alertDict: state.alertDict,
                           scheduleState: scheduleState,
-                          lastUpdated: state.lastUpdated,
+                          lastUpdated: Date(),
                           alertDetails: state.alertDetails,
                           genericAlertDetails: state.genericAlertDetails,
                           appAlertDetails: state.appAlertDetails,
@@ -71,7 +71,7 @@ struct AlertReducer {
             newState = reduceResetAppAlertWasShown(action: action,
                                                     state: state)
         default:
-            break
+            newState = state
         }
 
         return newState
