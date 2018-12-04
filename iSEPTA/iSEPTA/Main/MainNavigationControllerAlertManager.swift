@@ -24,6 +24,18 @@ class MainNavigationControllerAlertManager: StoreSubscriber {
         store.dispatch(AddAlertToDisplay(appAlert: appAlert))
     }
     
+    public func removeDisplayedAlert(appAlert: AppAlert) {
+        alertsToDisplay.removeValue(forKey: appAlert)
+        store.dispatch(CurrentAppAlertDismissed())
+    }
+    
+    public func hasAlertsInQueue() -> Bool {
+        if alertsToDisplay.count > 0 {
+            return true
+        }
+        return false
+    }
+    
     public func clearAlertQueue() {
         alertsToDisplay.removeAll()
     }
@@ -32,9 +44,9 @@ class MainNavigationControllerAlertManager: StoreSubscriber {
         subscribe()
     }
     
-    private func subscribe() {
+    func subscribe() {
         store.subscribe(self) {
-            $0.select { $0.navigationState.nextAlertToDisplay }
+            $0.select { $0.navigationState.nextAlertToDisplay }.skipRepeats { $0 == $1 }
         }
     }
 
@@ -45,6 +57,9 @@ class MainNavigationControllerAlertManager: StoreSubscriber {
         block()
     }
 
+    func unsubscribe() {
+        store.unsubscribe(self)
+    }
 
     deinit {
         store.unsubscribe(self)

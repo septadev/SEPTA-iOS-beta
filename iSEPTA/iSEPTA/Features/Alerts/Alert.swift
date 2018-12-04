@@ -124,7 +124,7 @@ class UIAlert {
         alert.addAction(UIAlertAction(title: "More Details", style: UIAlertActionStyle.default) { _ in
             let action = SwitchTabs(activeNavigationController: .alerts, description: "Jumping to Alerts Screen Generic Alert")
             store.dispatch(action)
-            store.dispatch(CurrentAppAlertDismissed())
+            MainNavigationControllerAlertManager.sharedInstance.removeDisplayedAlert(appAlert: .genericAlert)
             UIAlert.resetGenericAlertWasShownFlag(flagMode: true)
             UIAlert.resetAppAlertWasShownFlag(flagMode: true)
             UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
@@ -146,7 +146,7 @@ class UIAlert {
         })
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
             completion?()
-            store.dispatch(CurrentAppAlertDismissed())
+            MainNavigationControllerAlertManager.sharedInstance.removeDisplayedAlert(appAlert: .genericAlert)
             UIAlert.resetGenericAlertWasShownFlag(flagMode: true)
             UIAlert.resetAppAlertWasShownFlag(flagMode: true)
             UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
@@ -162,12 +162,12 @@ class UIAlert {
 
         // add an action (button)
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { _ in
-            store.dispatch(CurrentAppAlertDismissed())
+            MainNavigationControllerAlertManager.sharedInstance.removeDisplayedAlert(appAlert: .databaseUpdateNeededAlert)
             store.dispatch(DownloadDatabaseUpdate())
         })
         alert.addAction(UIAlertAction(title: "Remind me later", style: UIAlertActionStyle.default) { _ in
             completion?()
-            store.dispatch(CurrentAppAlertDismissed())
+            MainNavigationControllerAlertManager.sharedInstance.removeDisplayedAlert(appAlert: .databaseUpdateNeededAlert)
             store.dispatch(DatabaseUpToDate())
         })
 

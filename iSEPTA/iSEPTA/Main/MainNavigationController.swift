@@ -220,7 +220,7 @@ extension MainNavigationController: PushNotificationTripDetailState_ResultsDeleg
             })
 
         } else if !state.shouldDisplayPushNotificationTripDetail && store.state.navigationState.nextAlertToDisplay == AppAlert.pushNotificationTripDetailAlert {
-            dismiss(animated: true, completion: { store.dispatch(CurrentAppAlertDismissed()) })
+            dismiss(animated: true, completion: { MainNavigationControllerAlertManager.sharedInstance.removeDisplayedAlert(appAlert: .pushNotificationExpiredAlert) })
 
         } else if state.shouldDisplayExpiredNotification {
             guard let message = buildExpiredMessage(delayNotification: state.delayNotification) else { return }
