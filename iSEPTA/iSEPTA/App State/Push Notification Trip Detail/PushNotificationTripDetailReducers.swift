@@ -24,16 +24,12 @@ struct PushNotificationTripDetailReducer {
         switch action {
         case let action as AddPushNotificationTripDetailDelayNotification:
             newState = reduceAddPushNotificationTripDetailDelayNotification(action: action, state: state)
-            assert(false)
         case let action as UpdatePushNotificationTripDetailStatus:
             newState = reduceUpdatePushNotificationTripDetailStatus(action: action, state: state)
-            assert(false)
         case let action as UpdatePushNotificationTripDetailData:
             newState = reduceUpdatePushNotificationTripDetailData(action: action, state: state)
-            assert(false)
         case let action as ClearPushNotificationTripDetailData:
             newState = reduceClearPushNotificationTripDetailData(action: action, state: state)
-            assert(false)
         default:
             break
         }

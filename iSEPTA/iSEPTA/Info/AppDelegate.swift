@@ -95,6 +95,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func processNotificationTap(userInfo: [AnyHashable: Any]) {
+        // TODO: JJ
+        UIAlert.resetModalAlertsDisplayedFlag(flagMode: true)
         NotificationsManager.handleTap(info: userInfo)
     }
 }
