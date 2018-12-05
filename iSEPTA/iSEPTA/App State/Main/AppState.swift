@@ -5,21 +5,21 @@ import ReSwift
 import SeptaSchedule
 
 struct AppState: StateType {
-    let navigationState: NavigationState
-    let scheduleState: ScheduleState
-    let preferenceState: UserPreferenceState
-    let alertState: AlertState
-    let addressLookupState: AddressLookupState
-    let locationState: LocationState
-    let favoritesState: FavoritesState
-    let nextToArriveState: NextToArriveState
-    let tripDetailState: TripDetailState
-    let pushNotificationTripDetailState: PushNotificationTripDetailState
-    let databaseState: DatabaseState
-    let moreState: MoreState
-    let transitViewState: TransitViewState
-    let databaseUpdateState: DatabaseUpdateState
-    let notificationState: NotificationState
+    var navigationState: NavigationState
+    var scheduleState: ScheduleState
+    var preferenceState: UserPreferenceState
+    var alertState: AlertState
+    var addressLookupState: AddressLookupState
+    var locationState: LocationState
+    var favoritesState: FavoritesState
+    var nextToArriveState: NextToArriveState
+    var tripDetailState: TripDetailState
+    var pushNotificationTripDetailState: PushNotificationTripDetailState
+    var databaseState: DatabaseState
+    var moreState: MoreState
+    var transitViewState: TransitViewState
+    var databaseUpdateState: DatabaseUpdateState
+    var notificationState: NotificationState
 
     init(
         navigationState: NavigationState, scheduleState: ScheduleState, preferenceState: UserPreferenceState, alertState: AlertState,

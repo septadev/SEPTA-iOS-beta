@@ -87,8 +87,12 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         }
 
         pushNotificationTripDetailState_ResultsWatcher.delegate = self
+        MainNavigationControllerAlertManager.sharedInstance.subscribe()
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        MainNavigationControllerAlertManager.sharedInstance.unsubscribe()
+    }
     var modalTransitioningDelegate: UIViewControllerTransitioningDelegate!
     func presentEditFavoritModal() {
         modalTransitioningDelegate = ViewController.editFavoriteViewController.transitioningDelegate()
@@ -160,9 +164,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
             }
 
             MainNavigationControllerAlertManager.sharedInstance.addAlertToDisplay(appAlert: .genericAlert, block: {
-                UIAlert.presentAppOrGenericAlertFrom(viewController: self, withTitle: alertTitleText, attributedString: alertsMessageText, isGeneric: showGeneric, isApp: showApp) {
-                    UIAlert.resetModalAlertsDisplayedFlag(flagMode: true)
-                }
+                UIAlert.presentAppOrGenericAlertFrom(viewController: self, withTitle: alertTitleText, attributedString: alertsMessageText, isGeneric: showGeneric, isApp: showApp)
             })
         }
     }
@@ -189,10 +191,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
 extension MainNavigationController: DatabaseUpdateWatcherDelegate {
     func databaseUpdateAvailable() {
         MainNavigationControllerAlertManager.sharedInstance.addAlertToDisplay(appAlert: .databaseUpdateNeededAlert, block: {
-            UIAlert.presentUpdateDatabaseAlertFrom(viewController: self, withTitle: "There are new schedules available", message: "Would you like to download them now?") {
-                let action = ResetModalAlertsDisplayed(modalAlertsDisplayed: true)
-                store.dispatch(action)
-            }
+            UIAlert.presentUpdateDatabaseAlertFrom(viewController: self, withTitle: "There are new schedules available", message: "Would you like to download them now?")
         })
     }
 }

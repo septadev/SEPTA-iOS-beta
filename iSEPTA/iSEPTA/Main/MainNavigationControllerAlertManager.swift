@@ -41,7 +41,7 @@ class MainNavigationControllerAlertManager: StoreSubscriber {
     }
 
     private init(){
-        subscribe()
+        //subscribe()
     }
     
     func subscribe() {

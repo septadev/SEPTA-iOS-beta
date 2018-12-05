@@ -10,7 +10,6 @@ class UIAlert {
 
         // add an action (button)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
-            completion?()
             store.dispatch(CurrentAppAlertDismissed())
         })
 
@@ -23,7 +22,6 @@ class UIAlert {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
 
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { _ in
-            completion?()
             store.dispatch(CurrentAppAlertDismissed())
         })
         alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default) { _ in
@@ -39,7 +37,6 @@ class UIAlert {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
 
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.destructive) { _ in
-            completion?()
             store.dispatch(CurrentAppAlertDismissed())
         })
         alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel) { _ in
@@ -61,7 +58,6 @@ class UIAlert {
         })
 
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
-            completion?()
             store.dispatch(CurrentAppAlertDismissed())
         })
 
@@ -121,7 +117,7 @@ class UIAlert {
         let alert = UIAlertController(title: title, message: attributedString.string, preferredStyle: UIAlertControllerStyle.alert)
 
         // add an action buttons
-        alert.addAction(UIAlertAction(title: "More Details", style: UIAlertActionStyle.default) { _ in
+        alert.addAction(UIAlertAction(title: "More Details", style: UIAlertActionStyle.default) { (action:UIAlertAction) in
             let action = SwitchTabs(activeNavigationController: .alerts, description: "Jumping to Alerts Screen Generic Alert")
             store.dispatch(action)
             MainNavigationControllerAlertManager.sharedInstance.removeDisplayedAlert(appAlert: .genericAlert)
@@ -130,7 +126,6 @@ class UIAlert {
             UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
         })
         alert.addAction(UIAlertAction(title: "Don’t Show Me This Alert Again", style: UIAlertActionStyle.default) { _ in
-            completion?()
             if isGeneric {
                 let lastGenericUpdated = (store.state.alertState.genericAlertDetails.first)?.last_updated ?? ""
                 let action = DoNotShowGenericAlertAgain(lastSavedDoNotShowGenericAlertAgainState: lastGenericUpdated, doNotShowGenericAlertAgain: true)
@@ -145,7 +140,6 @@ class UIAlert {
             UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
         })
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
-            completion?()
             MainNavigationControllerAlertManager.sharedInstance.removeDisplayedAlert(appAlert: .genericAlert)
             UIAlert.resetGenericAlertWasShownFlag(flagMode: true)
             UIAlert.resetAppAlertWasShownFlag(flagMode: true)
@@ -153,7 +147,10 @@ class UIAlert {
         })
 
         // show the alert
-        viewController.present(alert, animated: true, completion: nil)
+        print("nextAlertToDisplay: \(store.state.navigationState.nextAlertToDisplay)")
+        viewController.present(alert, animated: true, completion: { () in
+            UIAlert.resetModalAlertsDisplayedFlag(flagMode: true)
+        })
     }
 
     static func presentUpdateDatabaseAlertFrom(viewController: UIViewController, withTitle title: String, message: String, completion: (() -> Void)? = nil) {
@@ -166,13 +163,14 @@ class UIAlert {
             store.dispatch(DownloadDatabaseUpdate())
         })
         alert.addAction(UIAlertAction(title: "Remind me later", style: UIAlertActionStyle.default) { _ in
-            completion?()
             MainNavigationControllerAlertManager.sharedInstance.removeDisplayedAlert(appAlert: .databaseUpdateNeededAlert)
             store.dispatch(DatabaseUpToDate())
         })
 
         // show the alert
-        viewController.present(alert, animated: true, completion: nil)
+        viewController.present(alert, animated: true, completion: { () in
+            UIAlert.resetModalAlertsDisplayedFlag(flagMode: true)
+        })
     }
     
     static func presentNavigationToSettingsNeededAlertFrom(viewController: UIViewController?, completion: (() -> Void)? = nil) {
@@ -186,11 +184,9 @@ class UIAlert {
             if UIApplication.shared.canOpenURL(settingsUrl) {
                 UIApplication.shared.open(settingsUrl, completionHandler: nil)
             }
-            completion?()
             store.dispatch(CurrentAppAlertDismissed())
         })
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
-            completion?()
             store.dispatch(CurrentAppAlertDismissed())
         })
 
