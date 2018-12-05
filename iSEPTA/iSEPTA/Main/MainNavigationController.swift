@@ -133,14 +133,22 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
             var showApp = false
             var bothShown = false
 
-            if !alertState.genericAlertWasShown && alertState.hasGenericAlerts && (!doNotShowGenericAgainState && lastSavedDoNotShowGenericAlertAgainState != lastSavedGenericAlert) {
-                if (alertState.genericAlertDetails.first)?.message?.count ?? 0 > 0 {
-                    showGeneric = true
+            if alertState.hasGenericAlerts {
+                if lastSavedDoNotShowGenericAlertAgainState != lastSavedGenericAlert && !doNotShowGenericAgainState {
+                    if !alertState.genericAlertWasShown {
+                        if (alertState.genericAlertDetails.first)?.message?.count ?? 0 > 0 {
+                            showGeneric = true
+                        }
+                    }
                 }
             }
-            if !alertState.appAlertWasShown && alertState.hasAppAlerts && (!doNotShowAppAgainState && lastSavedDoNotShowAppAlertAgainState != lastSavedAppAlert) {
-                if (alertState.appAlertDetails.first)?.message?.count ?? 0 > 0 {
-                    showApp = true
+            if alertState.hasAppAlerts {
+                if lastSavedDoNotShowAppAlertAgainState != lastSavedAppAlert && !doNotShowAppAgainState {
+                    if !alertState.appAlertWasShown {
+                        if (alertState.appAlertDetails.first)?.message?.count ?? 0 > 0 {
+                            showApp = true
+                        }
+                    }
                 }
             }
             if !showGeneric && !showApp {   // no alerts to show
