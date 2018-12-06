@@ -14,12 +14,18 @@ protocol DatabaseUpdateWatcherDelegate: AnyObject {
 }
 
 class DatabaseUpdateWatcher: BaseWatcher {
-    weak var delegate: DatabaseUpdateWatcherDelegate?
+/*    weak var delegate: DatabaseUpdateWatcherDelegate?
 
     init(delegate: DatabaseUpdateWatcherDelegate) {
         super.init()
         self.delegate = delegate
         subscribe()
+    }*/
+
+    weak var delegate: DatabaseUpdateWatcherDelegate? {
+        didSet {
+            subscribe()
+        }
     }
 
     func subscribe() {

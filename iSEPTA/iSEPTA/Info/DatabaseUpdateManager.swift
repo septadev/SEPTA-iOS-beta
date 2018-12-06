@@ -15,6 +15,9 @@ class DatabaseUpdateManager {
     func appLaunched(coldStart: Bool) {
         databaseFileManager.delegate = self
 
+        // Force complete reset of schedule data for nextToArrive
+        stateProviders.nextToArriveScheduleDataProvider.unsubscribe()
+        stateProviders.nextToArriveScheduleDataProvider.subscribe()
         if coldStart {
             // On a cold start, there should never be an update in progress.
             // In case an update was in progress and for whatever reason was interrupted,
@@ -25,9 +28,6 @@ class DatabaseUpdateManager {
         if databaseFileManager.appHasASQLiteFile() {
             store.dispatch(NewDatabaseState(databaseState: .loaded))
             databaseFileManager.removeOldDatabases()
-            // Force complete reset of schedule data for nextToArrive
-            stateProviders.nextToArriveScheduleDataProvider.unsubscribe()
-            stateProviders.nextToArriveScheduleDataProvider.subscribe()
             store.dispatch(CheckForDatabaseUpdate())
         } else {
             databaseFileManager.unzipFileToDocumentsDirectory()

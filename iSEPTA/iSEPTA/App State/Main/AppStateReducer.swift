@@ -13,6 +13,7 @@ class AppStateReducer {
             scheduleState: ScheduleStateReducer.main(action: action, state: state?.scheduleState),
             preferenceState: UserPreferencesReducer.main(action: action, state: state?.preferenceState),
             alertState: AlertReducer.main(action: action, state: state?.alertState),
+            alertQueueState: AlertQueueReducer.main(action: action, state: state?.alertQueueState),
             addressLookupState: AddressLookupReducer.main(action: action, state: state?.addressLookupState),
             locationState: LocationReducer.main(action: action, state: state?.locationState),
             favoriteState: FavoritesReducer.main(action: action, state: state?.favoritesState),

@@ -6,7 +6,7 @@ import SeptaRest
 import SeptaSchedule
 import UIKit
 
-class MainNavigationController: UITabBarController, UITabBarControllerDelegate, StoreSubscriber, FavoritesState_FavoriteToEditWatcherDelegate, AlertState_HasGenericOrAppAlertsWatcherDelegate, AlertState_ModalAlertsDisplayedWatcherDelegate {
+class MainNavigationController: UITabBarController, UITabBarControllerDelegate, StoreSubscriber, FavoritesState_FavoriteToEditWatcherDelegate, AlertState_HasGenericOrAppAlertsWatcherDelegate {
     
     typealias StoreSubscriberStateType = NavigationController
     var favoritestoEditWatcher: FavoritesState_FavoriteToEditWatcher?
@@ -15,8 +15,14 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
     var databaseUpdateWatcher: DatabaseUpdateWatcher?
     var databaseDownloadedWatcher: DatabaseDownloadedWatcher?
     var pushNotificationTripDetailState_ResultsWatcher = PushNotificationTripDetailState_ResultsWatcher()
+    var alertQueueStateWatcher: AlertQueueState_ManageAlertsWatcher?
 
     var currentlyPresentingPushNotificationTripDetail = false
+    
+    // used by AlertQueueState_ManageAlertsWatcherDelegate Extension
+    let alertState = store.state.alertState
+    var alertTitleText = "Septa Alert"
+    var alertsMessageText = NSAttributedString()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -76,18 +82,23 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
             }
         }
 
+        alertQueueStateWatcher = AlertQueueState_ManageAlertsWatcher()
+        alertQueueStateWatcher?.delegate = self
+        
         genericAlertsWatcher = AlertState_HasGenericOrAppAlertsWatcher()
         genericAlertsWatcher?.delegate = self
 
         modalAlertsDisplayedWatcher = AlertState_ModalAlertsDisplayedWatcher()
         modalAlertsDisplayedWatcher?.delegate = self
 
-        if databaseUpdateWatcher == nil {
-            databaseUpdateWatcher = DatabaseUpdateWatcher(delegate: self)
-        }
-        if databaseDownloadedWatcher == nil {
+        databaseUpdateWatcher = DatabaseUpdateWatcher()
+        databaseUpdateWatcher?.delegate = self
+        //if databaseUpdateWatcher == nil {
+            //databaseUpdateWatcher = DatabaseUpdateWatcher(delegate: self)
+        //}
+        //if databaseDownloadedWatcher == nil {
             databaseDownloadedWatcher = DatabaseDownloadedWatcher(delegate: self)
-        }
+        //}
 
         pushNotificationTripDetailState_ResultsWatcher.delegate = self
     }
@@ -114,6 +125,88 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         guard let alertsTabBarItem = self.tabBar.items?[2] else { return }
         alertsTabBarItem.badgeValue = hasAlerts ? "!" : nil
     }
+    
+}
+
+extension MainNavigationController: AlertQueueState_ManageAlertsWatcherDelegate {
+
+    func alertQueueState_AlertsQueueUpdated(alertQueue: AppAlert) {
+        //let alertQueueState = store.state.alertQueueState
+
+        //print("alertQueue: \(alertQueue)")
+        //print("alertQueueState: \(store.state.alertQueueState)")
+        
+        switch alertQueue {
+        case .appAlert:
+            dispalyAppAlert()
+        case .appAndGenericAlert:
+            dispalyAppAndGenericAlert()
+        case .databaseAlert:
+            print("databaseAlert")
+        case .databaseUpdateNeededAlert:
+            UIAlert.presentUpdateDatabaseAlertFrom(viewController: self)
+        case .databaseUpdateCompletedAlert:
+            displayDatabaseDownloadComplete()
+        case .empty:
+            print("No alerts to display")
+        case .genericAlert:
+            dispalyGenericAlert()
+        case .pushNotificationTripDetailAlert:
+            print("pushNotificationTripDetailAlert")
+        case .pushNotificationExpiredAlert:
+            print("pushNotificationExpiredAlert")
+        }
+    }
+
+    func dispalyAppAlert() {
+        alertTitleText = "Mobile App Alert"
+        alertsMessageText = AlertDetailsViewModel.renderMessage(alertDetails: alertState.appAlertDetails) { return $0.message } ?? NSAttributedString(string: "")
+
+        UIAlert.presentAppOrGenericAlertFrom(viewController: self, withTitle: alertTitleText, attributedString: alertsMessageText, isGeneric: true, isApp: true) {
+            //UIAlert.resetModalAlertsDisplayedFlag(flagMode: true)
+        }
+    }
+    
+    func dispalyAppAndGenericAlert() {
+        alertsMessageText = configureAlertMessage(alertState: alertState)
+
+        UIAlert.presentAppOrGenericAlertFrom(viewController: self, withTitle: alertTitleText, attributedString: alertsMessageText, isGeneric: true, isApp: true) {
+            //UIAlert.resetModalAlertsDisplayedFlag(flagMode: true)
+        }
+    }
+    
+    func configureAlertMessage(alertState: AlertState) -> NSAttributedString {
+        let space = NSAttributedString(string: " \n")
+        let genericMessageTitle = NSAttributedString(string: "General SEPTA Alert: ")
+        let appAlertMessageTitle = NSAttributedString(string: "Mobile App Alert: ")
+        let genericMessage = AlertDetailsViewModel.renderMessage(alertDetails: alertState.genericAlertDetails, filter: { $0.message }) ?? NSAttributedString(string: "")
+        let appAlertMessage = AlertDetailsViewModel.renderMessage(alertDetails: alertState.appAlertDetails, filter: { $0.message }) ?? NSAttributedString(string: "")
+        let genericPlusAppAlertsMessage = NSMutableAttributedString()
+        genericPlusAppAlertsMessage.append(genericMessageTitle)
+        genericPlusAppAlertsMessage.append(genericMessage)
+        genericPlusAppAlertsMessage.append(space)
+        genericPlusAppAlertsMessage.append(appAlertMessageTitle)
+        genericPlusAppAlertsMessage.append(appAlertMessage)
+        genericPlusAppAlertsMessage.append(space)
+        
+        return genericPlusAppAlertsMessage
+    }
+
+    func displayDatabaseDownloadComplete() {
+        UIAlert.presentDatabaseDownloadComplete(viewController: self)
+    }
+    
+    func dispalyGenericAlert() {
+        alertsMessageText = configureAlertMessage(alertState: alertState)
+
+        UIAlert.presentAppOrGenericAlertFrom(viewController: self, withTitle: alertTitleText, attributedString: alertsMessageText, isGeneric: true, isApp: true) {
+            //UIAlert.resetModalAlertsDisplayedFlag(flagMode: true)
+        }
+    }
+
+}
+
+extension MainNavigationController: AlertState_ModalAlertsDisplayedWatcherDelegate {
 
     func alertState_ModalAlertsDisplayedUpdated(modalAlertsDisplayed: Bool) {
         guard store.state.databaseState == .loaded else { return }
@@ -131,7 +224,7 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
             var showGeneric = false
             var showApp = false
             var bothShown = false
-
+            
             if alertState.hasGenericAlerts {
                 if lastSavedDoNotShowGenericAlertAgainState != lastSavedGenericAlert && !doNotShowGenericAgainState {
                     if !alertState.genericAlertWasShown {
@@ -153,73 +246,30 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
             if !showGeneric && !showApp {   // no alerts to show
                 return
             }
-            
-            var alertTitleText = "Septa Alert"
-            var alertsMessageText = NSAttributedString()
-
-            if showGeneric && showApp {   // both alerts to show
-                alertsMessageText = configureAlertMessage(alertState: alertState)
+            if showGeneric && showApp {     // both alerts to show
                 bothShown = true
+                store.dispatch(AddAlertToDisplay(appAlert: .appAndGenericAlert))
             }
             if showGeneric && !bothShown {  // Generic alert to show
-                alertTitleText = "General SEPTA Alert"
-                alertsMessageText = AlertDetailsViewModel.renderMessage(alertDetails: alertState.genericAlertDetails) { return $0.message } ?? NSAttributedString(string: "")
+                store.dispatch(AddAlertToDisplay(appAlert: .genericAlert))
             }
             if showApp && !bothShown {      // App alert to show
-                alertTitleText = "Mobile App Alert"
-                alertsMessageText = AlertDetailsViewModel.renderMessage(alertDetails: alertState.appAlertDetails) { return $0.message } ?? NSAttributedString(string: "")
-            }
-
-            UIAlert.presentAppOrGenericAlertFrom(viewController: self, withTitle: alertTitleText, attributedString: alertsMessageText, isGeneric: showGeneric, isApp: showApp) {
-                UIAlert.resetModalAlertsDisplayedFlag(flagMode: true)
+                store.dispatch(AddAlertToDisplay(appAlert: .appAlert))
             }
         }
-    }
-    
-    func configureAlertMessage(alertState: AlertState) -> NSAttributedString {
-        let space = NSAttributedString(string: " \n")
-        let genericMessageTitle = NSAttributedString(string: "General SEPTA Alert: ")
-        let appAlertMessageTitle = NSAttributedString(string: "Mobile App Alert: ")
-        let genericMessage = AlertDetailsViewModel.renderMessage(alertDetails: alertState.genericAlertDetails, filter: { $0.message }) ?? NSAttributedString(string: "")
-        let appAlertMessage = AlertDetailsViewModel.renderMessage(alertDetails: alertState.appAlertDetails, filter: { $0.message }) ?? NSAttributedString(string: "")
-        let genericPlusAppAlertsMessage = NSMutableAttributedString()
-        genericPlusAppAlertsMessage.append(genericMessageTitle)
-        genericPlusAppAlertsMessage.append(genericMessage)
-        genericPlusAppAlertsMessage.append(space)
-        genericPlusAppAlertsMessage.append(appAlertMessageTitle)
-        genericPlusAppAlertsMessage.append(appAlertMessage)
-        genericPlusAppAlertsMessage.append(space)
-        
-        return genericPlusAppAlertsMessage
     }
     
 }
 
 extension MainNavigationController: DatabaseUpdateWatcherDelegate {
     func databaseUpdateAvailable() {
-        let alert = UIAlertController(title: "There are new schedules available", message: "Would you like to download them now?", preferredStyle: .alert)
-        let downloadAction = UIAlertAction(title: "Yes", style: .default, handler: { _ in
-            store.dispatch(DownloadDatabaseUpdate())
-        })
-        let laterAction = UIAlertAction(title: "Remind me later", style: .default, handler: { _ in
-            let dbFileManager = DatabaseFileManager()
-            dbFileManager.setDatabaseUpdateInProgress(inProgress: false)
-            store.dispatch(DatabaseUpToDate())
-        })
-        alert.addAction(downloadAction)
-        alert.addAction(laterAction)
-        alert.show()
+        store.dispatch(AddAlertToDisplay(appAlert: .databaseUpdateNeededAlert))
     }
 }
 
 extension MainNavigationController: DatabaseDownloadedWatcherDelegate {
     func databaseDownloadComplete() {
-        let alert = UIAlertController(title: "Schedule download complete", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        alert.show()
-        let dbFileManager = DatabaseFileManager()
-        dbFileManager.setDatabaseUpdateInProgress(inProgress: false)
-        store.dispatch(DatabaseUpToDate())
+        store.dispatch(AddAlertToDisplay(appAlert: .databaseUpdateCompletedAlert))
     }
 }
 

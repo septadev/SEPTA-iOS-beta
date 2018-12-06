@@ -1,6 +1,7 @@
 // Septa. 2017
 
 import Foundation
+import SeptaSchedule
 import UIKit
 
 class UIAlert {
@@ -113,12 +114,12 @@ class UIAlert {
         alert.addAction(UIAlertAction(title: "More Details", style: UIAlertActionStyle.default) { _ in
             let action = SwitchTabs(activeNavigationController: .alerts, description: "Jumping to Alerts Screen Generic Alert")
             store.dispatch(action)
-            UIAlert.resetGenericAlertWasShownFlag(flagMode: true)
-            UIAlert.resetAppAlertWasShownFlag(flagMode: true)
-            UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
+            //UIAlert.resetGenericAlertWasShownFlag(flagMode: true)
+            //UIAlert.resetAppAlertWasShownFlag(flagMode: true)
+            //UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
+            store.dispatch(CurrentAlertDismissed())
         })
         alert.addAction(UIAlertAction(title: "Don’t Show Me This Alert Again", style: UIAlertActionStyle.default) { _ in
-            completion?()
             if isGeneric {
                 let lastGenericUpdated = (store.state.alertState.genericAlertDetails.first)?.last_updated ?? ""
                 let action = DoNotShowGenericAlertAgain(lastSavedDoNotShowGenericAlertAgainState: lastGenericUpdated, doNotShowGenericAlertAgain: true)
@@ -129,17 +130,54 @@ class UIAlert {
                 let action = DoNotShowAppAlertAgain(lastSavedDoNotShowAppAlertAgainState: lastAppUpdated, doNotShowAppAlertAgain: true)
                 store.dispatch(action)
             }
-            UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
+            //UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
+            store.dispatch(CurrentAlertDismissed())
         })
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
-            completion?()
-            UIAlert.resetGenericAlertWasShownFlag(flagMode: true)
-            UIAlert.resetAppAlertWasShownFlag(flagMode: true)
-            UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
+            //UIAlert.resetGenericAlertWasShownFlag(flagMode: true)
+            //UIAlert.resetAppAlertWasShownFlag(flagMode: true)
+            //UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
+            store.dispatch(CurrentAlertDismissed())
         })
 
         // show the alert
         viewController.present(alert, animated: true, completion: nil)
+    }
+
+    static func presentUpdateDatabaseAlertFrom(viewController: UIViewController, completion: (() -> Void)? = nil) {
+        // create the alert
+        let alert = UIAlertController(title: "There are new schedules available", message: "Would you like to download them now?", preferredStyle: .alert)
+
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default) { _ in
+            store.dispatch(CurrentAlertDismissed())
+            store.dispatch(DownloadDatabaseUpdate())
+        })
+        alert.addAction(UIAlertAction(title: "Remind me later", style: UIAlertActionStyle.default) { _ in
+            completion?()
+            store.dispatch(CurrentAlertDismissed())
+            store.dispatch(DatabaseUpToDate())
+        })
+        
+        // show the alert
+        viewController.present(alert, animated: true, completion: nil)
+    }
+    
+    static func presentDatabaseDownloadComplete(viewController: UIViewController, completion: (() -> Void)? = nil) {
+        // create the alert
+        let alert = UIAlertController(title: "Schedule download complete", message: nil, preferredStyle: .alert)
+        
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            store.dispatch(CurrentAlertDismissed())
+        })
+        
+        // show the alert
+        viewController.present(alert, animated: true, completion: nil)
+        
+        let dbFileManager = DatabaseFileManager()
+        dbFileManager.setDatabaseUpdateInProgress(inProgress: false)
+        store.dispatch(DatabaseUpToDate())
     }
 
     static func presentNavigationToSettingsNeededAlertFrom(viewController: UIViewController?, completion: (() -> Void)? = nil) {

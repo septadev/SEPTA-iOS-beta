@@ -9,6 +9,7 @@ struct AppState: StateType {
     let scheduleState: ScheduleState
     let preferenceState: UserPreferenceState
     let alertState: AlertState
+    let alertQueueState: AlertQueueState
     let addressLookupState: AddressLookupState
     let locationState: LocationState
     let favoritesState: FavoritesState
@@ -22,7 +23,7 @@ struct AppState: StateType {
     let notificationState: NotificationState
 
     init(
-        navigationState: NavigationState, scheduleState: ScheduleState, preferenceState: UserPreferenceState, alertState: AlertState,
+        navigationState: NavigationState, scheduleState: ScheduleState, preferenceState: UserPreferenceState, alertState: AlertState, alertQueueState: AlertQueueState,
         addressLookupState: AddressLookupState, locationState: LocationState, favoriteState: FavoritesState, nextToArriveState: NextToArriveState,
         tripDetailState: TripDetailState, pushNotificationTripDetailState: PushNotificationTripDetailState, databaseState: DatabaseState,
         moreState: MoreState, transitViewState: TransitViewState, databaseUpdateState: DatabaseUpdateState, notificationState: NotificationState
@@ -31,6 +32,7 @@ struct AppState: StateType {
         self.scheduleState = scheduleState
         self.preferenceState = preferenceState
         self.alertState = alertState
+        self.alertQueueState = alertQueueState
         self.addressLookupState = addressLookupState
         self.locationState = locationState
         favoritesState = favoriteState
@@ -59,6 +61,9 @@ func == (lhs: AppState, rhs: AppState) -> Bool {
     guard areEqual else { return false }
 
     areEqual = lhs.alertState == rhs.alertState
+    guard areEqual else { return false }
+
+    areEqual = lhs.alertQueueState == rhs.alertQueueState
     guard areEqual else { return false }
 
     areEqual = lhs.addressLookupState == rhs.addressLookupState

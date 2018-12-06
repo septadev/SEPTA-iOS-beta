@@ -48,26 +48,20 @@ struct AlertReducer {
         var newState = state
         switch action {
         case let action as NewAlertsRetrieved:
-            newState = reduceNewAlertsRetrieved(action: action,
-                                                state: state)
+            newState = reduceNewAlertsRetrieved(action: action, state: state)
         case let action as AlertDetailsLoaded:
-            newState = reduceAlertDetailsLoaded(action: action,
-                                                state: state)
+            newState = reduceAlertDetailsLoaded(action: action, state: state)
         case let action as GenericAlertDetailsLoaded:
-            newState = reduceGenericAlertDetailsLoaded(action: action,
-                                                       state: state)
+            newState = reduceGenericAlertDetailsLoaded(action: action, state: state)
         case let action as AppAlertDetailsLoaded:
-            newState = reduceAppAlertDetailsLoaded(action: action,
-                                                   state: state)
+            newState = reduceAppAlertDetailsLoaded(action: action, state: state)
         case let action as ResetModalAlertsDisplayed:
-            newState = reduceResetModalAlertsDisplayed(action: action,
-                                                       state: state)
+            newState = reduceResetModalAlertsDisplayed(action: action, state: state)
         case let action as ResetGenericAlertWasShown:
-            newState = reduceResetGenericAlertWasShown(action: action,
-                                                        state: state)
+            newState = reduceResetGenericAlertWasShown(action: action, state: state)
         case let action as ResetAppAlertWasShown:
-            newState = reduceResetAppAlertWasShown(action: action,
-                                                    state: state)
+            newState = reduceResetAppAlertWasShown(action: action, state: state)
+
         default:
             break
         }
