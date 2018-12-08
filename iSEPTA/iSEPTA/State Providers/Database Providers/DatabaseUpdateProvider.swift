@@ -34,6 +34,7 @@ extension DatabaseUpdateProvider: StoreSubscriber {
     func newState(state: DatabaseUpdateState) {
         if state.status == .checkForUpdate {
             let dbFileManager = DatabaseFileManager()
+            print("DB Update Status: \(dbFileManager.isDatabaseUpdateInProgress())")
             if !dbFileManager.isDatabaseUpdateInProgress() {
                 dbFileManager.setDatabaseUpdateInProgress(inProgress: true)
                 let updater = DatabaseUpdater()

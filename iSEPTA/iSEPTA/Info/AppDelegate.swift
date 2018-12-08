@@ -72,20 +72,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let inAppReview = InAppReview()
         inAppReview.appLaunched()
 
-        //store.dispatch(NewDatabaseState(databaseState: .loaded))
-        //let databaseFileManager = DatabaseFileManager()
-        //databaseFileManager.removeOldDatabases()
-        //store.dispatch(CheckForDatabaseUpdate())
-
         UIAlert.resetGenericAlertWasShownFlag(flagMode: false)
         UIAlert.resetAppAlertWasShownFlag(flagMode: false)
         UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
 
         updateCurrentPushNotificationAuthorizationStatus()
-        //DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            //store.dispatch(CheckForDatabaseUpdate())
-        //}
-
     }
 
     func updateCurrentPushNotificationAuthorizationStatus() {

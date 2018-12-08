@@ -154,8 +154,9 @@ class UIAlert {
             store.dispatch(DownloadDatabaseUpdate())
         })
         alert.addAction(UIAlertAction(title: "Remind me later", style: UIAlertActionStyle.default) { _ in
-            completion?()
             store.dispatch(CurrentAlertDismissed())
+            let dbFileManager = DatabaseFileManager()
+            dbFileManager.setDatabaseUpdateInProgress(inProgress: false)
             store.dispatch(DatabaseUpToDate())
         })
         
@@ -178,6 +179,19 @@ class UIAlert {
         let dbFileManager = DatabaseFileManager()
         dbFileManager.setDatabaseUpdateInProgress(inProgress: false)
         store.dispatch(DatabaseUpToDate())
+    }
+    
+    static func presentOKQueueAlertFrom(viewController: UIViewController, withTitle title: String, message: String, completion: (() -> Void)? = nil) {
+        // create the alert
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { _ in
+            store.dispatch(CurrentAlertDismissed())
+        })
+        
+        // show the alert
+        viewController.present(alert, animated: true, completion: nil)
     }
 
     static func presentNavigationToSettingsNeededAlertFrom(viewController: UIViewController?, completion: (() -> Void)? = nil) {
