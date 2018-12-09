@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import ReSwift
 
-
 // TODO: JJ Alert Queue
 class MainNavigationControllerAlertManager: StoreSubscriber {
     typealias StoreSubscriberStateType = AppAlert?
@@ -41,7 +40,7 @@ class MainNavigationControllerAlertManager: StoreSubscriber {
     }
 
     private init(){
-        //subscribe()
+        subscribe()
     }
     
     func subscribe() {

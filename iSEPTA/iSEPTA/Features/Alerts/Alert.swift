@@ -2,6 +2,7 @@
 
 import Foundation
 import UIKit
+import SeptaSchedule
 
 class UIAlert {
     static func presentOKAlertFrom(viewController: UIViewController, withTitle title: String, message: String, completion: (() -> Void)? = nil) {
@@ -147,7 +148,7 @@ class UIAlert {
         })
 
         // show the alert
-        print("nextAlertToDisplay: \(store.state.navigationState.nextAlertToDisplay)")
+        //print("nextAlertToDisplay: \(store.state.navigationState.nextAlertToDisplay)")
         viewController.present(alert, animated: true, completion: { () in
             UIAlert.resetModalAlertsDisplayedFlag(flagMode: true)
         })
@@ -165,6 +166,8 @@ class UIAlert {
         alert.addAction(UIAlertAction(title: "Remind me later", style: UIAlertActionStyle.default) { _ in
             MainNavigationControllerAlertManager.sharedInstance.removeDisplayedAlert(appAlert: .databaseUpdateNeededAlert)
             store.dispatch(DatabaseUpToDate())
+            let dbFileManager = DatabaseFileManager()
+            dbFileManager.setDatabaseUpdateInProgress(inProgress: false)
         })
 
         // show the alert
@@ -173,6 +176,23 @@ class UIAlert {
         })
     }
     
+    static func presentDatabaseDownloadComplete(viewController: UIViewController, completion: (() -> Void)? = nil) {
+        // create the alert
+        let alert = UIAlertController(title: "Schedule download complete", message: nil, preferredStyle: .alert)
+        
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            store.dispatch(CurrentAppAlertDismissed())
+        })
+        
+        // show the alert
+        viewController.present(alert, animated: true, completion: nil)
+        
+        let dbFileManager = DatabaseFileManager()
+        dbFileManager.setDatabaseUpdateInProgress(inProgress: false)
+        store.dispatch(DatabaseUpToDate())
+    }
+
     static func presentNavigationToSettingsNeededAlertFrom(viewController: UIViewController?, completion: (() -> Void)? = nil) {
         // create the alert
         guard let viewController = viewController ?? UIApplication.shared.keyWindow?.rootViewController else { return }
