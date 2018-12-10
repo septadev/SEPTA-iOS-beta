@@ -32,7 +32,8 @@ class TransitViewDataProvider: StoreSubscriber {
 
     func retrieveTransitViewRoutes() {
         TransitRoutesCommand.sharedInstance.routes { routes, _ in
-            let routes = routes ?? [TransitRoute]()
+            var routes = routes ?? [TransitRoute]()
+            routes = routes.filter { $0.routeId != "NHSL" } // remove this route
             let action = TransitViewRoutesLoaded(routes: routes, description: "TransitView routes loaded from database")
             store.dispatch(action)
         }
