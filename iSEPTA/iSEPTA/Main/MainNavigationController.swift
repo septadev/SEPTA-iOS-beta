@@ -133,7 +133,13 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
             var bothShown = false
 
             if alertState.hasGenericAlerts {
-                if lastSavedDoNotShowGenericAlertAgainState != lastSavedGenericAlert && !doNotShowGenericAgainState {
+                if lastSavedDoNotShowGenericAlertAgainState != lastSavedGenericAlert {
+                    if !alertState.genericAlertWasShown {
+                        if (alertState.genericAlertDetails.first)?.message?.count ?? 0 > 0 {
+                            showGeneric = true
+                        }
+                    }
+                } else if !doNotShowGenericAgainState {
                     if !alertState.genericAlertWasShown {
                         if (alertState.genericAlertDetails.first)?.message?.count ?? 0 > 0 {
                             showGeneric = true
@@ -142,7 +148,13 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
                 }
             }
             if alertState.hasAppAlerts {
-                if lastSavedDoNotShowAppAlertAgainState != lastSavedAppAlert && !doNotShowAppAgainState {
+                if lastSavedDoNotShowAppAlertAgainState != lastSavedAppAlert {
+                    if !alertState.appAlertWasShown {
+                        if (alertState.appAlertDetails.first)?.message?.count ?? 0 > 0 {
+                            showApp = true
+                        }
+                    }
+                } else if !doNotShowAppAgainState {
                     if !alertState.appAlertWasShown {
                         if (alertState.appAlertDetails.first)?.message?.count ?? 0 > 0 {
                             showApp = true
@@ -204,7 +216,10 @@ extension MainNavigationController: DatabaseUpdateWatcherDelegate {
         let laterAction = UIAlertAction(title: "Remind me later", style: .default, handler: { _ in
             let dbFileManager = DatabaseFileManager()
             dbFileManager.setDatabaseUpdateInProgress(inProgress: false)
-            store.dispatch(DatabaseUpToDate())
+            DispatchQueue.main.async {
+                store.dispatch(DatabaseUpToDate())
+            }
+
         })
         alert.addAction(downloadAction)
         alert.addAction(laterAction)
@@ -219,7 +234,9 @@ extension MainNavigationController: DatabaseDownloadedWatcherDelegate {
         alert.show()
         let dbFileManager = DatabaseFileManager()
         dbFileManager.setDatabaseUpdateInProgress(inProgress: false)
-        store.dispatch(DatabaseUpToDate())
+        DispatchQueue.main.async {
+            store.dispatch(DatabaseUpToDate())
+        }
     }
 }
 

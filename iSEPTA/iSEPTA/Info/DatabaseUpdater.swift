@@ -25,33 +25,36 @@ class DatabaseUpdater {
 
         guard let url = URL(string: "https://s3.amazonaws.com/mobiledb.septa.org/latest/latestDb.json") else { return }
 
-        let checkTask = URLSession.shared.dataTask(with: url) { data, _, error in
+        // TODO: JJ
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            let checkTask = URLSession.shared.dataTask(with: url) { data, _, error in
 
-            DispatchQueue.main.async {
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-
-            guard error == nil else {
-                if let error = error {
-                    print("Error checking for database update: \(error)")
+                DispatchQueue.main.async {
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
-                return
-            }
 
-            guard let data = data else {
-                print("No data returned while checking for database update")
-                return
-            }
+                guard error == nil else {
+                    if let error = error {
+                        print("Error checking for database update: \(error)")
+                    }
+                    return
+                }
 
-            do {
-                let decoder = JSONDecoder()
-                let latestDb = try decoder.decode(DatabaseUpdate.self, from: data)
-                self.compareAgainstLocalDatabase(latestDatabase: latestDb)
-            } catch {
-                print("Error decoding json response")
+                guard let data = data else {
+                    print("No data returned while checking for database update")
+                    return
+                }
+
+                do {
+                    let decoder = JSONDecoder()
+                    let latestDb = try decoder.decode(DatabaseUpdate.self, from: data)
+                    self.compareAgainstLocalDatabase(latestDatabase: latestDb)
+                } catch {
+                    print("Error decoding json response")
+                }
             }
+            checkTask.resume()
         }
-        checkTask.resume()
     }
 
     private func compareAgainstLocalDatabase(latestDatabase: DatabaseUpdate) {

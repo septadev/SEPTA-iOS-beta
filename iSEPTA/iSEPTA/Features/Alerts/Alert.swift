@@ -139,7 +139,8 @@ class UIAlert {
         })
 
         // show the alert
-        viewController.present(alert, animated: true, completion: nil)
+        //viewController.present(alert, animated: true, completion: nil)
+        alert.show()
     }
 
     static func presentNavigationToSettingsNeededAlertFrom(viewController: UIViewController?, completion: (() -> Void)? = nil) {

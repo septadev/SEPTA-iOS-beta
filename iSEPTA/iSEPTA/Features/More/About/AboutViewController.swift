@@ -85,8 +85,10 @@ class AboutViewController: UIViewController, IdentifiableController, UITextViewD
             septaLogoImage.addGestureRecognizer(tap2GestureRecognizer)
             septaLogoImage.addGestureRecognizer(tap3GestureRecognizer)
             tap1GestureRecognizer.require(toFail: tap2GestureRecognizer)
-            tap2GestureRecognizer.require(toFail: tap3GestureRecognizer)        }
+            tap2GestureRecognizer.require(toFail: tap3GestureRecognizer)
+        }
     }
+    
     // Resets alert don't show flags
     @objc func didSingleTouchSeptaLogo(tapGestureRecognizer: UITapGestureRecognizer) {
         let alert = UIAlertController(title: "1 - Reset Alerts", message: "Reset both alerts.", preferredStyle: UIAlertControllerStyle.alert)

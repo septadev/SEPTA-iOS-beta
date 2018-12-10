@@ -77,8 +77,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let inAppReview = InAppReview()
         inAppReview.appLaunched()
         
-        //UIAlert.resetGenericAlertWasShownFlag(flagMode: false)
-        //UIAlert.resetAppAlertWasShownFlag(flagMode: false)
+        UIAlert.resetGenericAlertWasShownFlag(flagMode: false)
+        UIAlert.resetAppAlertWasShownFlag(flagMode: false)
         UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
     }
 
@@ -99,7 +99,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func processNotificationTap(userInfo: [AnyHashable: Any]) {
         // TODO: JJ
-        UIAlert.resetModalAlertsDisplayedFlag(flagMode: true)
         NotificationsManager.handleTap(info: userInfo)
     }
 }
