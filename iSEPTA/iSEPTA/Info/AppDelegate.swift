@@ -68,15 +68,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_: UIApplication) {
+        updateCurrentPushNotificationAuthorizationStatus()
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        // moved from applicationWillEnterForeground so that push notifications are handled first
         databaseUpdateManager.appLaunched(coldStart: false)
         let inAppReview = InAppReview()
         inAppReview.appLaunched()
-
-        UIAlert.resetGenericAlertWasShownFlag(flagMode: false)
-        UIAlert.resetAppAlertWasShownFlag(flagMode: false)
+        
+        //UIAlert.resetGenericAlertWasShownFlag(flagMode: false)
+        //UIAlert.resetAppAlertWasShownFlag(flagMode: false)
         UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
-
-        updateCurrentPushNotificationAuthorizationStatus()
     }
 
     func updateCurrentPushNotificationAuthorizationStatus() {
@@ -121,6 +124,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         }
         completionHandler()
     }
+    
 }
 
 extension AppDelegate: MessagingDelegate {
