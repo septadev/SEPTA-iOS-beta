@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func postFakeNotification(){
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4, execute: {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1, execute: {
             let delayNotification = self.buildFakeNotification()
             store.dispatch(AddPushNotificationTripDetailDelayNotification(septaDelayNotification: delayNotification))
         })
@@ -68,15 +68,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_: UIApplication) {
+        updateCurrentPushNotificationAuthorizationStatus()
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        // moved from applicationWillEnterForeground so that push notifications are handled first
         databaseUpdateManager.appLaunched(coldStart: false)
         let inAppReview = InAppReview()
         inAppReview.appLaunched()
-
-        UIAlert.resetGenericAlertWasShownFlag(flagMode: false)
-        UIAlert.resetAppAlertWasShownFlag(flagMode: false)
+        
+        //UIAlert.resetGenericAlertWasShownFlag(flagMode: false)
+        //UIAlert.resetAppAlertWasShownFlag(flagMode: false)
         UIAlert.resetModalAlertsDisplayedFlag(flagMode: false)
-
-        updateCurrentPushNotificationAuthorizationStatus()
     }
 
     func updateCurrentPushNotificationAuthorizationStatus() {
@@ -96,7 +99,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func processNotificationTap(userInfo: [AnyHashable: Any]) {
         // TODO: JJ
-        UIAlert.resetModalAlertsDisplayedFlag(flagMode: true)
         NotificationsManager.handleTap(info: userInfo)
     }
 }

@@ -153,7 +153,7 @@ extension MainNavigationController: AlertQueueState_ManageAlertsWatcherDelegate 
         case .genericAlert:
             dispalyGenericAlert()
         case .pushNotificationTripDetailAlert:
-            print("pushNotificationTripDetailAlert")
+            displayPushNotificationTripDetailAlert()
         case .pushNotificationExpiredAlert:
             displayPushNotificationExpiredAlert()
         }
@@ -199,6 +199,12 @@ extension MainNavigationController: AlertQueueState_ManageAlertsWatcherDelegate 
         alertsMessageText = configureAlertMessage(alertState: alertState)
 
         UIAlert.presentAppOrGenericAlertFrom(viewController: self, withTitle: alertTitleText, attributedString: alertsMessageText, isGeneric: true, isApp: true)
+    }
+    
+    func displayPushNotificationTripDetailAlert() {
+        let viewController: UIViewController = ViewController.pushNotificationTripDetailNavigationController.instantiateViewController()
+        present(viewController, animated: true, completion: nil)
+        currentlyPresentingPushNotificationTripDetail = true
     }
     
     func displayPushNotificationExpiredAlert() {
