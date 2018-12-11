@@ -120,47 +120,15 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         let alertState = store.state.alertState
 
         if !modalAlertsDisplayed && (alertState.hasGenericAlerts || alertState.hasAppAlerts) {
-            let doNotShowGenericAgainState = store.state.preferenceState.doNotShowGenericAlertAgain
-            let lastSavedDoNotShowGenericAlertAgainState = store.state.preferenceState.lastSavedDoNotShowGenericAlertAgainState
-            let lastSavedGenericAlert = (alertState.genericAlertDetails.first)?.last_updated
-            
-            let doNotShowAppAgainState = store.state.preferenceState.doNotShowAppAlertAgain
-            let lastSavedDoNotShowAppAlertAgainState = store.state.preferenceState.lastSavedDoNotShowAppAlertAgainState
-            let lastSavedAppAlert = (alertState.appAlertDetails.first)?.last_updated
-            
             var showGeneric = false
             var showApp = false
             var bothShown = false
 
             if alertState.hasGenericAlerts {
-                if lastSavedDoNotShowGenericAlertAgainState != lastSavedGenericAlert {
-                    if !alertState.genericAlertWasShown {
-                        if (alertState.genericAlertDetails.first)?.message?.count ?? 0 > 0 {
-                            showGeneric = true
-                        }
-                    }
-                } else if !doNotShowGenericAgainState {
-                    if !alertState.genericAlertWasShown {
-                        if (alertState.genericAlertDetails.first)?.message?.count ?? 0 > 0 {
-                            showGeneric = true
-                        }
-                    }
-                }
+                showGeneric = shouldShowGenericAlert(alertState: alertState)
             }
             if alertState.hasAppAlerts {
-                if lastSavedDoNotShowAppAlertAgainState != lastSavedAppAlert {
-                    if !alertState.appAlertWasShown {
-                        if (alertState.appAlertDetails.first)?.message?.count ?? 0 > 0 {
-                            showApp = true
-                        }
-                    }
-                } else if !doNotShowAppAgainState {
-                    if !alertState.appAlertWasShown {
-                        if (alertState.appAlertDetails.first)?.message?.count ?? 0 > 0 {
-                            showApp = true
-                        }
-                    }
-                }
+                showApp = shouldShowAppAlert(alertState: alertState)
             }
             if !showGeneric && !showApp {   // no alerts to show
                 return
@@ -188,6 +156,50 @@ class MainNavigationController: UITabBarController, UITabBarControllerDelegate, 
         }
     }
     
+    func shouldShowGenericAlert(alertState: AlertState) -> Bool {
+        let doNotShowGenericAgainState = store.state.preferenceState.doNotShowGenericAlertAgain
+        let lastSavedDoNotShowGenericAlertAgainState = store.state.preferenceState.lastSavedDoNotShowGenericAlertAgainState
+        let lastSavedGenericAlert = (alertState.genericAlertDetails.first)?.last_updated
+        var showGeneric = false
+
+        if lastSavedDoNotShowGenericAlertAgainState != lastSavedGenericAlert {
+            if !alertState.genericAlertWasShown {
+                if (alertState.genericAlertDetails.first)?.message?.count ?? 0 > 0 {
+                    showGeneric = true
+                }
+            }
+        } else if !doNotShowGenericAgainState {
+            if !alertState.genericAlertWasShown {
+                if (alertState.genericAlertDetails.first)?.message?.count ?? 0 > 0 {
+                    showGeneric = true
+                }
+            }
+        }
+        return showGeneric
+    }
+    
+    func shouldShowAppAlert(alertState: AlertState) -> Bool {
+        let doNotShowAppAgainState = store.state.preferenceState.doNotShowAppAlertAgain
+        let lastSavedDoNotShowAppAlertAgainState = store.state.preferenceState.lastSavedDoNotShowAppAlertAgainState
+        let lastSavedAppAlert = (alertState.appAlertDetails.first)?.last_updated
+        var showApp = false
+
+        if lastSavedDoNotShowAppAlertAgainState != lastSavedAppAlert {
+            if !alertState.appAlertWasShown {
+                if (alertState.appAlertDetails.first)?.message?.count ?? 0 > 0 {
+                    showApp = true
+                }
+            }
+        } else if !doNotShowAppAgainState {
+            if !alertState.appAlertWasShown {
+                if (alertState.appAlertDetails.first)?.message?.count ?? 0 > 0 {
+                    showApp = true
+                }
+            }
+        }
+        return showApp
+    }
+
     func configureAlertMessage(alertState: AlertState) -> NSAttributedString {
         let space = NSAttributedString(string: " \n")
         let genericMessageTitle = NSAttributedString(string: "General SEPTA Alert: ")

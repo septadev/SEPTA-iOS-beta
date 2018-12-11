@@ -118,6 +118,15 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
     func userNotificationCenter(_: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
+        // TODO: JJ Uses AirDrop for debugging Push Notifications - Can be Removed!
+//        let message = String(data: try! JSONSerialization.data(withJSONObject: userInfo, options: .prettyPrinted), encoding: .utf8)!
+//        print(message)
+//        let controller = UIActivityViewController(activityItems: [message], applicationActivities: nil)
+//        controller.excludedActivityTypes = [UIActivityType.postToFacebook, UIActivityType.postToTwitter, UIActivityType.postToWeibo, UIActivityType.print, UIActivityType.copyToPasteboard, UIActivityType.assignToContact, UIActivityType.saveToCameraRoll, UIActivityType.postToFlickr, UIActivityType.postToTencentWeibo, UIActivityType.mail, UIActivityType.addToReadingList, UIActivityType.openInIBooks, UIActivityType.message]
+
+//        UIApplication.shared.keyWindow?.rootViewController?.present(controller, animated: true, completion: nil)
+        // TODO: JJ - End Can Be removed!
+
         DispatchQueue.main.async { [weak self] in
             self?.processNotificationTap(userInfo: userInfo)
         }
