@@ -31,24 +31,27 @@ struct PushNotificationPreferenceService {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
         }
 
-        session.dataTask(with: request) { _, _, error in
-            DispatchQueue.main.async {
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-            if error != nil {
+        // TODO: JJ
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            session.dataTask(with: request) { _, _, error in
                 DispatchQueue.main.async {
-                    showAlert(title: "There was an error saving push notification preferences.")
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
-            } else {
-                DispatchQueue.main.async {
-                    if showSuccess {
-                        showAlert(title: "Push notification preferences saved.")
+                if error != nil {
+                    DispatchQueue.main.async {
+                        showAlert(title: "There was an error saving push notification preferences.")
                     }
-                    PushNotificationKeepAlive.preferencesSaved()
-                    store.dispatch(PushNotificationPreferenceSynchronizationSuccess())
+                } else {
+                    DispatchQueue.main.async {
+                        if showSuccess {
+                            showAlert(title: "Push notification preferences saved.")
+                        }
+                        PushNotificationKeepAlive.preferencesSaved()
+                        store.dispatch(PushNotificationPreferenceSynchronizationSuccess())
+                    }
                 }
-            }
-        }.resume()
+            }.resume()
+        }
     }
 
     private static func showAlert(title: String) {

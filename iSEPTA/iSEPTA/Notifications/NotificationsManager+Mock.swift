@@ -25,20 +25,23 @@ class RealTimeMockRequest {
         request.addValue("application/json", forHTTPHeaderField: "accept")
         request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
 
-        /* Start a new Task */
-        let task = session.dataTask(with: request, completionHandler: { [weak self] (data: Data?, _: URLResponse?, error: Error?) -> Void in
-            guard let strongSelf = self, error == nil, let data = data else { return }
-            do {
-                let json = try JSONSerialization.jsonObject(with: data)
-                guard let jsonDict = json as? [String: Any],
-                    let details = jsonDict["details"] as? [String: Any] else { return }
-                strongSelf.mapResponse(details: details)
-            } catch {
-                print(error.localizedDescription)
-            }
-        })
-        task.resume()
-        session.finishTasksAndInvalidate()
+        // TODO: JJ
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            /* Start a new Task */
+            let task = session.dataTask(with: request, completionHandler: { [weak self] (data: Data?, _: URLResponse?, error: Error?) -> Void in
+                guard let strongSelf = self, error == nil, let data = data else { return }
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data)
+                    guard let jsonDict = json as? [String: Any],
+                        let details = jsonDict["details"] as? [String: Any] else { return }
+                    strongSelf.mapResponse(details: details)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            })
+            task.resume()
+            session.finishTasksAndInvalidate()
+        }
     }
 
     func sendSimpleNotification() {
@@ -57,7 +60,7 @@ class RealTimeMockRequest {
         ]
 
         DispatchQueue.main.async {
-            guard let delegate = UIApplication.shared.delegate as? AppDelegate else { return }
+//            guard let delegate = UIApplication.shared.delegate as? AppDelegate else { return }
 //            delegate.application(UIApplication.shared, didReceiveRemoteNotification: dict, fetchCompletionHandler: { _ in })
         }
     }
@@ -90,7 +93,7 @@ class RealTimeMockRequest {
             ]
 
             DispatchQueue.main.async {
-                guard let delegate = UIApplication.shared.delegate as? AppDelegate else { return }
+//                guard let delegate = UIApplication.shared.delegate as? AppDelegate else { return }
 //                delegate.application(UIApplication.shared, didReceiveRemoteNotification: dict, fetchCompletionHandler: { _ in })
             }
         }
