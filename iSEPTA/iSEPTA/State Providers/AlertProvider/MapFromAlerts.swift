@@ -55,7 +55,7 @@ class MapFromAlerts {
             let routeId = routeDict[dbRouteIdKey] as? String,
             let transitModeInts = routeDict[transitModesKey] as? [Int] else { return nil }
 
-        let transitModes = transitModeInts.map({ TransitMode(rawValue: $0) }).flatMap { $0 }
+        let transitModes = transitModeInts.map({ TransitMode(rawValue: $0) }).compactMap { $0 }
 
         return transitModes.map {
             QuickMap(transitMode: $0, routeId: routeId)

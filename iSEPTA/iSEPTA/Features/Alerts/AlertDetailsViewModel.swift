@@ -12,7 +12,7 @@ import SeptaRest
 class AlertDetailsViewModel {
     static func hasGenericMessage(alertDetails: [AlertDetails_Alert]) -> Bool {
         let messages = alertDetails.map({ $0.message }) + alertDetails.map({ $0.advisory_message })
-        let nonNilMessages = messages.flatMap({ $0 }).filter { $0.count > 0 }
+        let nonNilMessages = messages.compactMap({ $0 }).filter { $0.count > 0 }
         return nonNilMessages.count > 0
     }
 

@@ -42,7 +42,7 @@ struct SeptaAlert {
         if weather {
             imageArray.append(UIImage(named: "weatherAlert"))
         }
-        return imageArray.flatMap { $0 }
+        return imageArray.compactMap { $0 }
     }
 
     func stringsForAlert() -> [String] {

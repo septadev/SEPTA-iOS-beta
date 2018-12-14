@@ -144,6 +144,6 @@ extension Sequence where Iterator.Element == String {
     func mapValidDates(formatter: DateFormatter) -> [Date] {
         return map({
             formatter.date(from: $0)
-        }).flatMap { $0 }
+        }).compactMap { $0 }
     }
 }
