@@ -25,7 +25,6 @@ class DatabaseUpdater {
 
         guard let url = URL(string: "https://s3.amazonaws.com/mobiledb.septa.org/latest/latestDb.json") else { return }
 
-        // TODO: JJ
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             let checkTask = URLSession.shared.dataTask(with: url) { data, _, error in
 

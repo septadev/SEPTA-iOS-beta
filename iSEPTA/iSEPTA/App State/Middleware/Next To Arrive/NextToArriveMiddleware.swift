@@ -128,7 +128,6 @@ class NextToArriveMiddleware {
                     showExpiredAlert()
                     return
                 }
-                // TODO: JJ
                 guard let destinationStation = details.destinationStation,
                     let nextStopStation = details.nextstopStation else { return }
 

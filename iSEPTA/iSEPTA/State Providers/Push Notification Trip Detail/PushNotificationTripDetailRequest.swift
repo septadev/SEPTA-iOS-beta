@@ -38,7 +38,6 @@ class PushNotificationTripDetailRequest {
         let request = buildRequest(url: url, key: apiKey)
 
         /* Start a new Task */
-        // TODO: JJ
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Swift.Error?) -> Void in
                let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0

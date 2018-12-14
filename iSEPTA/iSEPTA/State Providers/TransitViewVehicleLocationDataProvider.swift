@@ -57,7 +57,6 @@ class TransitViewVehicleLocationDataProvider: StoreSubscriber {
         }
 
         let service = TransitViewService()
-        // TODO: JJ
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             let downloadTask = service.transitViewDataTask(for: routeIds) { data, _, error in
                 DispatchQueue.main.async {

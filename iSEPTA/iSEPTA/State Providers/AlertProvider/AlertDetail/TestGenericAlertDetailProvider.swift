@@ -43,7 +43,7 @@ class TestGenericAlertDetailProvider: StateProvider {
     fileprivate func sendRequest(alertName: String, completionHandler: @escaping NetworkCompletion) {
         guard let request = buildRequest(alertName: alertName) else { return }
         let session = URLSession.shared
-        // TODO: JJ
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             let task = session.dataTask(with: request, completionHandler: completionHandler)
             task.resume()

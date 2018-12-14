@@ -25,7 +25,6 @@ class RealTimeMockRequest {
         request.addValue("application/json", forHTTPHeaderField: "accept")
         request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
 
-        // TODO: JJ
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             /* Start a new Task */
             let task = session.dataTask(with: request, completionHandler: { [weak self] (data: Data?, _: URLResponse?, error: Error?) -> Void in

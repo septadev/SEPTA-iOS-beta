@@ -99,7 +99,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func processNotificationTap(userInfo: [AnyHashable: Any]) {
-        // TODO: JJ
         NotificationsManager.handleTap(info: userInfo)
     }
 }
