@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Crashlytics.sharedInstance().delegate = self
+        FirebaseApp.configure()
         Fabric.with([Crashlytics.self, Answers.self])
 
         stateProviders.preferenceProvider.subscribe()
@@ -35,7 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         databaseUpdateManager.appLaunched(coldStart: true)
 
         Messaging.messaging().delegate = self
-        FirebaseApp.configure()
         UNUserNotificationCenter.current().delegate = self
         updateCurrentPushNotificationAuthorizationStatus()
 
