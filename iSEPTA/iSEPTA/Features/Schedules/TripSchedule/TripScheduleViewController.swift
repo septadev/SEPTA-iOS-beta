@@ -213,7 +213,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         if segue.identifier == "embedTransitAlerts" {
-            septaAlertsViewController = segue.destination as! SeptaAlertsViewController
+            septaAlertsViewController = segue.destination as? SeptaAlertsViewController
         }
     }
 }

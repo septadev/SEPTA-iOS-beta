@@ -55,8 +55,7 @@ class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetail
             configureNextStopViewForNoDetail(nextToArriveStop: nextToArriveStop)
         }
 
-        if nextToArriveStop.transitMode.useRailForDetails() {
-        } else if nextToArriveStop.transitMode.useBusForDetails() {
+        if nextToArriveStop.transitMode.useRailForDetails() {} else if nextToArriveStop.transitMode.useBusForDetails() {
             configureNextStopViewForBus()
         }
         view.setNeedsLayout()
@@ -175,9 +174,9 @@ class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetail
         let twitterUrl = URL(string: "twitter://\(handle)")!
         let webUrl = URL(string: "https://twitter.com/\(handle)")!
         if app.canOpenURL(twitterUrl) {
-            app.openURL(twitterUrl)
+            app.open(twitterUrl, options: [:], completionHandler: nil)
         } else {
-            app.openURL(webUrl)
+            app.open(webUrl, options: [:], completionHandler: nil)
         }
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25, execute: {
             self.twitterView.backgroundColor = SeptaColor.twitterBackground
@@ -209,8 +208,7 @@ class TripDetailInfoViewController: UIViewController, TripDetailState_TripDetail
         super.viewDidLoad()
     }
 
-    func configureIcone() {
-    }
+    func configureIcone() {}
 
     func generateOnTimeColor(delayMinutes: Int?) -> UIColor {
         guard let delayMinutes = delayMinutes else { return SeptaColor.transitIsScheduled }

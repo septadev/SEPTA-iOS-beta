@@ -19,3 +19,4 @@ SEPTA.zip
 /SEPTA.sublime-workspace
 /iSEPTA/DerivedData
 *.sqlite
+/iSEPTA/Index

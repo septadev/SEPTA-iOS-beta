@@ -43,9 +43,12 @@ class TestGenericAlertDetailProvider: StateProvider {
     fileprivate func sendRequest(alertName: String, completionHandler: @escaping NetworkCompletion) {
         guard let request = buildRequest(alertName: alertName) else { return }
         let session = URLSession.shared
-        let task = session.dataTask(with: request, completionHandler: completionHandler)
-        task.resume()
-        session.finishTasksAndInvalidate()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            let task = session.dataTask(with: request, completionHandler: completionHandler)
+            task.resume()
+            session.finishTasksAndInvalidate()
+        }
     }
 
     fileprivate func handleGenericAlertResponse(data: Data?, response _: URLResponse?, error: Swift.Error?) {
@@ -99,13 +102,12 @@ class TestGenericAlertDetailProvider: StateProvider {
     /// helper classes
     fileprivate func extractMessages(jsonArray: [[String: Any]]) -> [String]? {
         guard let messages = jsonArray
-            .map({ $0["current_message"] })
-            .flatMap({ $0 })
+            .map({ $0["description"] })
+            .compactMap({ $0 })
             .filter({
                 guard let string = $0 as? String else { return false }
                 return string.count > 0
-            }
-            ) as? [String] else {
+            }) as? [String] else {
             return nil
         }
         return messages
@@ -118,10 +120,12 @@ class TestGenericAlertDetailProvider: StateProvider {
     }
 
     fileprivate func buildRequest(alertName: String) -> URLRequest? {
-        guard let url = buildURL(alertName: alertName) else { return nil }
+        guard let url = buildURL(alertName: alertName),
+            let apiKey = Bundle.main.object(forInfoDictionaryKey: "septaApiKey") as? String else { return nil }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "accept")
+        request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
         return request
     }
 

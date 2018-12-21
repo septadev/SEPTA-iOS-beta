@@ -14,6 +14,11 @@ class FavoritesNavigationController: BaseNavigationController, FavoritesState_Fa
     typealias StoreSubscriberStateType = Bool
     var favoritesWatcher: FavoritesState_FavoritesExistWatcher!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = SeptaColor.navBarBlue
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         favoritesWatcher = FavoritesState_FavoritesExistWatcher(delegate: self)

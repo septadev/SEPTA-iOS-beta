@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PgU-tC-Xbs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PgU-tC-Xbs">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,8 +15,9 @@
             <objects>
                 <navigationController storyboardIdentifier="favorites" title="Nav Controller" id="PgU-tC-Xbs" customClass="FavoritesNavigationController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favorites" image="favoriteTabbar" landscapeImage="Favorite" selectedImage="favoriteTabbarSelected" id="8AL-ee-M5e"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="3Zz-pW-NUS" customClass="BaseNavigationBar" customModule="Septa" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="3Zz-pW-NUS" customClass="BaseNavigationBar" customModule="Septa" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.13333333333333333" green="0.32549019607843138" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
@@ -121,7 +122,7 @@
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office Commute" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5a-jq-uAA" userLabel="ExistingFavoriteName">
-                                <rect key="frame" x="134" y="40" width="108.5" height="17"/>
+                                <rect key="frame" x="133.5" y="40" width="108.5" height="17"/>
                                 <accessibility key="accessibilityConfiguration" label="Favorite Name"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -218,33 +219,19 @@ TextFieldWrapper</string>
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="t0e-qD-eXK" userLabel="IconStackView">
-                                        <rect key="frame" x="40" y="48" width="200" height="110"/>
+                                        <rect key="frame" x="40" y="88" width="295" height="110"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="200" placeholder="YES" id="ege-aQ-0eB"/>
                                             <constraint firstAttribute="height" constant="110" placeholder="YES" id="niJ-3b-7Qz"/>
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save your SEPTA trips as a favorite to get immediate access to the Next to Arrive transit, and schedules." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjp-LN-3DT" userLabel="InfoLabel">
-                                        <rect key="frame" x="38" y="128" width="299" height="57.5"/>
+                                        <rect key="frame" x="38" y="228" width="299" height="57.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                         <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJk-bn-WxX" customClass="RedButton" customModule="Septa" customModuleProvider="target">
-                                        <rect key="frame" x="38" y="304" width="299" height="40"/>
-                                        <accessibility key="accessibilityConfiguration" hint="Will Navigate to Next To Arrive to select a favorite." label="Add a Favorite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="D2i-IB-KZC"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="buttonTitle" value="Add Favorite"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="goToFavoritesTapped:" destination="vRw-wL-43T" eventType="touchUpInside" id="AEH-uC-5yG"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qyh-wj-euK" userLabel="InstructionsView">
-                                        <rect key="frame" x="38" y="219" width="299" height="38.5"/>
+                                        <rect key="frame" x="38" y="319" width="299" height="38.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" misplaced="YES" image="blueFavoriteIcon" translatesAutoresizingMaskIntoConstraints="NO" id="fxY-4J-40E" userLabel="HeartIcon">
                                                 <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
@@ -255,7 +242,7 @@ TextFieldWrapper</string>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find a trip then use the favorite icon to add it to your Favorites." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMX-YF-FRn" userLabel="Instructions">
-                                                <rect key="frame" x="31" y="0.0" width="261" height="38.5"/>
+                                                <rect key="frame" x="31" y="0.0" width="260.5" height="38.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                 <color key="textColor" red="0.078431372549019607" green="0.29411764705882354" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -271,38 +258,50 @@ TextFieldWrapper</string>
                                             <constraint firstItem="sMX-YF-FRn" firstAttribute="leading" secondItem="fxY-4J-40E" secondAttribute="trailing" constant="9" id="y8I-nz-6hq" userLabel="InstructionsLeft"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJk-bn-WxX" customClass="RedButton" customModule="Septa" customModuleProvider="target">
+                                        <rect key="frame" x="38" y="404" width="299" height="40"/>
+                                        <accessibility key="accessibilityConfiguration" hint="Will Navigate to Next To Arrive to select a favorite." label="Add a Favorite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="D2i-IB-KZC"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="buttonTitle" value="Add Favorite"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="goToFavoritesTapped:" destination="vRw-wL-43T" eventType="touchUpInside" id="AEH-uC-5yG"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="WJk-bn-WxX" firstAttribute="top" secondItem="Pq0-g0-inS" secondAttribute="top" constant="304" id="72c-2I-oN1" userLabel="ButtonTop"/>
                                     <constraint firstItem="qyh-wj-euK" firstAttribute="leading" secondItem="Pq0-g0-inS" secondAttribute="leading" constant="38" id="90m-ab-bYc" userLabel="InstructionsLeft"/>
                                     <constraint firstAttribute="trailing" secondItem="hjp-LN-3DT" secondAttribute="trailing" constant="38" id="KWm-cH-wJZ" userLabel="InfoLabelRight"/>
-                                    <constraint firstItem="hjp-LN-3DT" firstAttribute="top" secondItem="Pq0-g0-inS" secondAttribute="top" constant="128" id="QmO-gh-ynY" userLabel="InfoLabelTop"/>
-                                    <constraint firstItem="t0e-qD-eXK" firstAttribute="top" secondItem="Pq0-g0-inS" secondAttribute="top" constant="48" id="SfF-0i-ue1" userLabel="IconStackViewTop"/>
+                                    <constraint firstItem="WJk-bn-WxX" firstAttribute="top" secondItem="qyh-wj-euK" secondAttribute="bottom" constant="46.5" id="KWu-uY-HEW" userLabel="ButtonTop"/>
+                                    <constraint firstItem="hjp-LN-3DT" firstAttribute="top" secondItem="t0e-qD-eXK" secondAttribute="bottom" constant="30" id="QZD-ne-5Yp" userLabel="InfoLabelTop"/>
+                                    <constraint firstItem="t0e-qD-eXK" firstAttribute="top" secondItem="Pq0-g0-inS" secondAttribute="top" constant="88" id="SfF-0i-ue1" userLabel="IconStackViewTop"/>
+                                    <constraint firstItem="t0e-qD-eXK" firstAttribute="centerX" secondItem="Pq0-g0-inS" secondAttribute="centerX" id="TTc-Mm-hXd"/>
                                     <constraint firstItem="WJk-bn-WxX" firstAttribute="leading" secondItem="Pq0-g0-inS" secondAttribute="leading" constant="38" id="ULQ-va-ZMc" userLabel="ButtonLeft"/>
                                     <constraint firstAttribute="trailing" secondItem="qyh-wj-euK" secondAttribute="trailing" constant="38" id="ULY-jC-Iii" userLabel="InstructionsRight"/>
+                                    <constraint firstItem="t0e-qD-eXK" firstAttribute="leading" secondItem="Pq0-g0-inS" secondAttribute="leading" constant="40" id="WtJ-1G-YMt" userLabel="IconStackViewLeft"/>
+                                    <constraint firstAttribute="trailing" secondItem="t0e-qD-eXK" secondAttribute="trailing" constant="40" id="eWN-C6-DKA" userLabel="IconStackViewRight"/>
+                                    <constraint firstItem="qyh-wj-euK" firstAttribute="top" secondItem="hjp-LN-3DT" secondAttribute="bottom" constant="33.5" id="khq-xN-JBB" userLabel="InstructionsLabelTop"/>
                                     <constraint firstAttribute="trailing" secondItem="WJk-bn-WxX" secondAttribute="trailing" constant="38" id="l3G-Br-2us" userLabel="ButtonRight"/>
-                                    <constraint firstAttribute="trailing" secondItem="t0e-qD-eXK" secondAttribute="trailing" constant="40" id="nFf-bU-5OC" userLabel="StackViewLeft"/>
-                                    <constraint firstItem="t0e-qD-eXK" firstAttribute="leading" secondItem="Pq0-g0-inS" secondAttribute="leading" constant="40" id="pCc-A5-7jW" userLabel="StackViewRight"/>
-                                    <constraint firstItem="qyh-wj-euK" firstAttribute="top" secondItem="Pq0-g0-inS" secondAttribute="top" constant="219" id="qhb-Tr-qVx" userLabel="InstructionsTop"/>
                                     <constraint firstItem="hjp-LN-3DT" firstAttribute="leading" secondItem="Pq0-g0-inS" secondAttribute="leading" constant="38" id="yIF-TE-xbb" userLabel="InfoLabelLeft"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AeA-II-YUx" userLabel="ShadowView" customClass="NavBarShadowView" customModule="Septa" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <color key="backgroundColor" red="0.13333333333333333" green="0.32549019607843138" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="j19-rf-Lg3"/>
-                                </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="AeA-II-YUx" firstAttribute="leading" secondItem="lf9-wP-dyr" secondAttribute="leading" id="3wY-Yz-OLQ" userLabel="ShadowViewLeft"/>
                             <constraint firstItem="Pq0-g0-inS" firstAttribute="leading" secondItem="lf9-wP-dyr" secondAttribute="leading" id="AVN-qu-0nZ" userLabel="GradientViewLeft"/>
                             <constraint firstItem="lf9-wP-dyr" firstAttribute="trailing" secondItem="Pq0-g0-inS" secondAttribute="trailing" id="E67-Mw-5SU" userLabel="GradientViewRight"/>
                             <constraint firstItem="Pq0-g0-inS" firstAttribute="top" secondItem="lf9-wP-dyr" secondAttribute="top" id="EAj-La-KU4" userLabel="GradientViewTop"/>
                             <constraint firstItem="lf9-wP-dyr" firstAttribute="bottom" secondItem="Pq0-g0-inS" secondAttribute="bottom" id="bSw-Df-mgA" userLabel="GradientViewBottom"/>
+                            <constraint firstItem="AeA-II-YUx" firstAttribute="bottom" secondItem="lf9-wP-dyr" secondAttribute="top" constant="20" symbolic="YES" id="ksM-2Y-oi9"/>
                             <constraint firstItem="lf9-wP-dyr" firstAttribute="trailing" secondItem="AeA-II-YUx" secondAttribute="trailing" id="mIe-3z-chz" userLabel="ShadowViewRight"/>
                             <constraint firstItem="AeA-II-YUx" firstAttribute="top" secondItem="Fhk-cl-xWT" secondAttribute="top" id="uun-f8-1lo" userLabel="ShadowViewTop"/>
                         </constraints>

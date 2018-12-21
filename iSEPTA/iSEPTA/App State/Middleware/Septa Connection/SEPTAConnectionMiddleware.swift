@@ -43,7 +43,7 @@ class SeptaConnectionMiddleware {
             let pushAction = PushViewController(viewController: .webViewController, description: "Showing Fares Web View")
             store.dispatch(pushAction)
         } else {
-            UIApplication.shared.openURL(septaConnection.url())
+            UIApplication.shared.open(septaConnection.url(), options: [:], completionHandler: nil)
         }
     }
 }

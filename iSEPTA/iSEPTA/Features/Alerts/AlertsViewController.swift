@@ -202,6 +202,9 @@ extension AlertsViewController: SchedulesViewModelDelegate {
 extension AlertsViewController: AlertState_HasGenericAlertsWatcherDelegate {
     func alertState_HasGenericAlertsUpdated(bool hasAlerts: Bool) {
         genericAlertsTableViewWrapper.isHidden = !hasAlerts
+        if !hasAlerts {
+            genericAlertDetailCellView.pinkViewHeight.constant = 0
+        }
 
         view.setNeedsLayout()
         view.layoutIfNeeded()

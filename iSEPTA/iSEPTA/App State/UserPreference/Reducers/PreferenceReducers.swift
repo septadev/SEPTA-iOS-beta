@@ -56,6 +56,10 @@ struct UserPreferencesReducer {
             newPref = reducePushNotificationPreferenceSynchronizationFail(action: action, state: state)
         case let action as ToggleAllPushNotificationRoutes:
             newPref = reduceToggleAllPushNotificationRoutes(action: action, state: state)
+        case let action as DoNotShowGenericAlertAgain:
+            newPref = reduceDoNotShowGenericAlertAgain(action: action, state: state)
+        case let action as DoNotShowAppAlertAgain:
+            newPref = reduceDoNotShowAppAlertAgain(action: action, state: state)
         default:
             fatalError("You passed in an action for which there is no reducer")
         }
@@ -89,6 +93,20 @@ struct UserPreferencesReducer {
     static func reduceNewStartupController(action: NewStartupController, state: UserPreferenceState) -> UserPreferenceState {
         var userPreferenceState = state
         userPreferenceState.startupNavigationController = action.navigationController
+        return userPreferenceState
+    }
+
+    static func reduceDoNotShowGenericAlertAgain(action: DoNotShowGenericAlertAgain, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.doNotShowGenericAlertAgain = action.doNotShowGenericAlertAgain
+        userPreferenceState.lastSavedDoNotShowGenericAlertAgainState = action.lastSavedDoNotShowGenericAlertAgainState
+        return userPreferenceState
+    }
+
+    static func reduceDoNotShowAppAlertAgain(action: DoNotShowAppAlertAgain, state: UserPreferenceState) -> UserPreferenceState {
+        var userPreferenceState = state
+        userPreferenceState.doNotShowAppAlertAgain = action.doNotShowAppAlertAgain
+        userPreferenceState.lastSavedDoNotShowAppAlertAgainState = action.lastSavedDoNotShowAppAlertAgainState
         return userPreferenceState
     }
 

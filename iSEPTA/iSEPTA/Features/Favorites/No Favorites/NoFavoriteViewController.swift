@@ -13,6 +13,11 @@ import UIKit
 class NoFavoritesViewController: UIViewController, IdentifiableController {
     let viewController: ViewController = .noFavoritesViewController
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = SeptaColor.navBarBlue
+    }
+
     @IBOutlet var infoLabel: UILabel! {
         didSet {
             let attributedString = NSMutableAttributedString(string: SeptaString.NoFavoritesInfo)

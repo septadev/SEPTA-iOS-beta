@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Id-DY-3xE" userLabel="MapView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="327"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="303"/>
                                 <connections>
                                     <segue destination="rLf-ds-PN2" kind="embed" id="R2l-Y3-5ng"/>
                                 </connections>
@@ -37,9 +37,9 @@
                                 </variation>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Os-2x-QGh" userLabel="InfoView">
-                                <rect key="frame" x="0.0" y="391" width="375" height="276"/>
+                                <rect key="frame" x="0.0" y="367" width="375" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="276" id="h6c-wv-KJn"/>
+                                    <constraint firstAttribute="height" constant="300" id="h6c-wv-KJn"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="0Oe-hL-0SR" kind="embed" id="J28-A1-wg8"/>
@@ -74,11 +74,11 @@
             <objects>
                 <viewController id="rLf-ds-PN2" customClass="TripDetailMapViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zM5-X6-HpV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="327"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="303"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="V33-1W-Z10">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="327"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="303"/>
                                 <connections>
                                     <outlet property="delegate" destination="zM5-X6-HpV" id="16j-TT-cPw"/>
                                 </connections>
@@ -107,7 +107,7 @@
             <objects>
                 <viewController id="0Oe-hL-0SR" customClass="TripDetailInfoViewController" customModule="Septa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dWb-ZV-M90">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="276"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kor-ht-1DO" userLabel="SubtleTopBar">
@@ -118,7 +118,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQU-76-V3H">
-                                <rect key="frame" x="0.0" y="3" width="375" height="273"/>
+                                <rect key="frame" x="0.0" y="3" width="375" height="297"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="R0Z-eT-oBg">
                                         <rect key="frame" x="15" y="0.0" width="345" height="212"/>

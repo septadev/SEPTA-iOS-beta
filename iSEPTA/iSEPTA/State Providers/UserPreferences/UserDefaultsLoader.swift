@@ -48,9 +48,13 @@ class UserDefaultsLoader {
         let startupNavigationController = retrieveStartupNavigationController() ?? defaultPreferenceState.startupNavigationController
         let databaseVersion = retrieveDatabaseVersion() ?? defaultPreferenceState.databaseVersion
         let pushNotificationPreferenceState = retrievePushNotifications() ?? PushNotificationPreferenceState()
+        let doNotShowGenericAlertAgain = retrieveDoNotShowGenericAlertAgain()
+        let lastSavedDoNotShowGenericAlertAgainState = retrieveLastSavedDoNotShowGenericAlertAgainState() ?? ""
+        let doNotShowAppAlertAgain = retrieveDoNotShowAppAlertAgain()
+        let lastSavedDoNotShowAppAlertAgainState = retrieveLastSavedDoNotShowAppAlertAgainState() ?? ""
 
-        let retrievedPreferenceState = UserPreferenceState(defaultsLoaded: defaultsLoaded, startupTransitMode: startupTransitMode, startupNavigationController: startupNavigationController, databaseVersion: databaseVersion, pushNotificationPreferenceState: pushNotificationPreferenceState)
-
+        let retrievedPreferenceState = UserPreferenceState(defaultsLoaded: defaultsLoaded, startupTransitMode: startupTransitMode, startupNavigationController: startupNavigationController, databaseVersion: databaseVersion, pushNotificationPreferenceState: pushNotificationPreferenceState, doNotShowGenericAlertAgain: doNotShowGenericAlertAgain, lastSavedDoNotShowGenericAlertAgainState: lastSavedDoNotShowGenericAlertAgainState, doNotShowAppAlertAgain: doNotShowAppAlertAgain, lastSavedDoNotShowAppAlertAgainState: lastSavedDoNotShowAppAlertAgainState)
+        
         DispatchQueue.main.async {
             completion(retrievedPreferenceState, nil)
         }
@@ -74,6 +78,22 @@ class UserDefaultsLoader {
 
     fileprivate func retrievePushNotifications() -> PushNotificationPreferenceState? {
         return decodable(forKey: .pushNotificationPreferenceState)
+    }
+
+    fileprivate func retrieveDoNotShowGenericAlertAgain() -> Bool {
+        return bool(forKey: .doNotShowGenericAlertAgain)
+    }
+
+    fileprivate func retrieveLastSavedDoNotShowGenericAlertAgainState() -> String? {
+        return string(forKey: .lastSavedDoNotShowGenericAlertAgainState)
+    }
+
+    fileprivate func retrieveDoNotShowAppAlertAgain() -> Bool {
+        return bool(forKey: .doNotShowAppAlertAgain)
+    }
+    
+    fileprivate func retrieveLastSavedDoNotShowAppAlertAgainState() -> String? {
+        return string(forKey: .lastSavedDoNotShowAppAlertAgainState)
     }
 
     fileprivate func bool(forKey key: UserPreferencesKeys) -> Bool {

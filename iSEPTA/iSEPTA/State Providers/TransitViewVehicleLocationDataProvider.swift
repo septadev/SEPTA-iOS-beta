@@ -57,27 +57,29 @@ class TransitViewVehicleLocationDataProvider: StoreSubscriber {
         }
 
         let service = TransitViewService()
-        let downloadTask = service.transitViewDataTask(for: routeIds) { data, _, error in
-            DispatchQueue.main.async {
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-
-            guard error == nil else { return }
-            guard let data = data else { return }
-
-            do {
-                let decoder = JSONDecoder()
-                let routeData = try decoder.decode(TransitViewRouteData.self, from: data)
-                let vehicleLocations = self.convertToVehicleLocations(routeData, model: model)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            let downloadTask = service.transitViewDataTask(for: routeIds) { data, _, error in
                 DispatchQueue.main.async {
-                    let action = TransitViewRouteLocationsDownloaded(locations: vehicleLocations, description: "TransitView vehicle locations downloaded")
-                    store.dispatch(action)
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
-            } catch {
-                print("Error: \(error)")
+
+                guard error == nil else { return }
+                guard let data = data else { return }
+
+                do {
+                    let decoder = JSONDecoder()
+                    let routeData = try decoder.decode(TransitViewRouteData.self, from: data)
+                    let vehicleLocations = self.convertToVehicleLocations(routeData, model: model)
+                    DispatchQueue.main.async {
+                        let action = TransitViewRouteLocationsDownloaded(locations: vehicleLocations, description: "TransitView vehicle locations downloaded")
+                        store.dispatch(action)
+                    }
+                } catch {
+                    print("Error: \(error)")
+                }
             }
+            downloadTask.resume()
         }
-        downloadTask.resume()
     }
 
     private func convertToVehicleLocations(_ routeData: TransitViewRouteData, model: TransitViewModel) -> [TransitViewVehicleLocation] {

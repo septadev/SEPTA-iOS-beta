@@ -22,7 +22,7 @@ class FaresViewModel {
             buildCashPaymentMode(),
             buildTransPassPaymentMode(),
             buildTrailPassPaymentMode(),
-            buildCrossCountryPaymentMode(),
+            buildCrossCountyPaymentMode(),
             buildOneDayConveniencePassPaymentMode(),
             buildOneDayIndependencePassPaymentMode(),
         ]
@@ -80,13 +80,13 @@ class FaresViewModel {
             septaConnection: nil)
     }
 
-    func buildCrossCountryPaymentMode() -> FaresPaymentModeViewModel {
-        let attributedString = NSMutableAttributedString(string: "Weekly Cross Country Pass: $30.75\nMonthly Cross Country Pass: $115.00")
-        attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 12.0, weight: UIFont.Weight.bold), range: NSRange(location: 27, length: 6))
-        attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 12.0, weight: UIFont.Weight.bold), range: NSRange(location: 62, length: 7))
+    func buildCrossCountyPaymentMode() -> FaresPaymentModeViewModel {
+        let attributedString = NSMutableAttributedString(string: "Weekly Cross County Pass: $30.75\nMonthly Cross County Pass: $115.00")
+        attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 12.0, weight: UIFont.Weight.bold), range: NSRange(location: 26, length: 6))
+        attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 12.0, weight: UIFont.Weight.bold), range: NSRange(location: 60, length: 7))
 
         return FaresPaymentModeViewModel(
-            imageName: "crossCountryIcon",
+            imageName: "crossCountyIcon",
             title: "Cross County Pass",
             description: attributedString,
             septaConnection: nil)
