@@ -314,7 +314,7 @@ TableViewWrapper</string>
                     <viewLayoutGuide key="safeArea" id="eBi-Cq-E5z"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="-903" y="45"/>
+            <point key="canvasLocation" x="-903" y="53"/>
         </scene>
         <!--Select Routes View Controller-->
         <scene sceneID="uR2-T4-wMD">
@@ -446,7 +446,7 @@ TableViewWrapper</string>
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="244" y="61.619190404797607"/>
+            <point key="canvasLocation" x="670" y="53"/>
         </scene>
         <!--Select Stop Nav Controller-->
         <scene sceneID="F1x-lj-jRM">
@@ -461,7 +461,7 @@ TableViewWrapper</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XtZ-ud-p58" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1230" y="53"/>
+            <point key="canvasLocation" x="-1687" y="-671"/>
         </scene>
         <!--Trip Schedule View Controller-->
         <scene sceneID="Wce-qa-pbU">
@@ -1089,7 +1089,7 @@ TitleViewTop</string>
                     <viewLayoutGuide key="safeArea" id="keP-cg-ooO"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="2636" y="837"/>
+            <point key="canvasLocation" x="671" y="-672"/>
         </scene>
         <!--TransitAlerts-->
         <scene sceneID="4XO-27-F4X">
@@ -1097,7 +1097,7 @@ TitleViewTop</string>
                 <viewControllerPlaceholder storyboardName="TransitAlerts" id="ZBK-ie-Ad1" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eAk-bR-QYc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3407" y="681"/>
+            <point key="canvasLocation" x="1286" y="-672"/>
         </scene>
         <!--Nav Controller Scene-->
         <scene sceneID="83K-FD-2cf">
@@ -1122,7 +1122,7 @@ TitleViewTop</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZi-KV-b8v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1892" y="221"/>
+            <point key="canvasLocation" x="-1686" y="53"/>
         </scene>
         <!--Transit Mode Toolbar-->
         <scene sceneID="6r3-DF-WcU">
@@ -1178,7 +1178,7 @@ TitleViewTop</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-565" y="768"/>
+            <point key="canvasLocation" x="-95" y="52"/>
         </scene>
         <!--Select Stop View Controller-->
         <scene sceneID="cTk-Wb-vFD">
@@ -1405,7 +1405,7 @@ TitleViewTop</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2153" y="37"/>
+            <point key="canvasLocation" x="-903" y="-672"/>
         </scene>
         <!--Search Stops Modal Header View Controller-->
         <scene sceneID="3p5-lM-9EN">
@@ -1629,7 +1629,7 @@ SearchTextBox</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2880.8000000000002" y="-507.79610194902551"/>
+            <point key="canvasLocation" x="-95" y="-673"/>
         </scene>
         <!--Search Routes Modal Header View Controller-->
         <scene sceneID="XXR-LZ-Ggj">
@@ -1752,7 +1752,7 @@ SearchTextBox</string>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="244" y="-508.24587706146929"/>
+            <point key="canvasLocation" x="1497" y="52"/>
         </scene>
     </scenes>
     <resources>
