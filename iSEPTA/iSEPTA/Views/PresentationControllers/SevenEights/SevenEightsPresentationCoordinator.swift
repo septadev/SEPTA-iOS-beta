@@ -20,15 +20,15 @@ class SevenEightsPresentationController: UIPresentationController {
 
         guard let containerView = containerView else { return CGRect(x: 0, y: 0, width: 0, height: 0) }
 
-        let height = (containerView.frame.height) - 35 - safeAreaTop
+        let height = (containerView.frame.height) - 34 - safeAreaTop
         let top = containerView.frame.height - height
-
+        
         var finalFrame = CGRect()
-
+        
         if #available(iOS 11.0, *) {
-            finalFrame = CGRect(x: 0, y: top + presentingViewController.view.safeAreaInsets.bottom, width: containerView.bounds.width, height: height)
+            finalFrame = CGRect(x: 0, y: top, width: containerView.bounds.width, height: height + (presentingViewController.view.safeAreaInsets.bottom * 0.01))
         } else {
-            finalFrame = CGRect(x: 0, y: top + presentingViewController.bottomLayoutGuide.length, width: containerView.bounds.width, height: height)
+            finalFrame = CGRect(x: 0, y: top, width: containerView.bounds.width, height: height + (presentingViewController.bottomLayoutGuide.length * 0.01))
         }
 
         return finalFrame
