@@ -11,7 +11,9 @@ class SchedulesNavigationController: BaseNavigationController {
         view.backgroundColor = SeptaColor.navBarBlue
     }
 
-    override func viewDidAppear(_: Bool) {
+    override func viewDidAppear(_ annimated: Bool) {
+        super.viewDidAppear(annimated)
+        
         let inAppReview = InAppReview()
         inAppReview.promptIfAppropriate()
     }

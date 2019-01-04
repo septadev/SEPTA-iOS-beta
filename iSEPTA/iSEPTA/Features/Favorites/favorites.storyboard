@@ -71,7 +71,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G3q-8u-Zo7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="663" y="4"/>
+            <point key="canvasLocation" x="342" y="72"/>
         </scene>
         <!--Edit Favorite View Controller-->
         <scene sceneID="smF-4U-0Tl">
@@ -205,7 +205,7 @@ TextFieldWrapper</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w7Y-8j-qXW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="821" y="765"/>
+            <point key="canvasLocation" x="342" y="596"/>
         </scene>
         <!--No Favorites-->
         <scene sceneID="ndT-ZA-ZgP">
@@ -290,7 +290,7 @@ TextFieldWrapper</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AeA-II-YUx" userLabel="ShadowView" customClass="NavBarShadowView" customModule="Septa" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="28"/>
                                 <color key="backgroundColor" red="0.13333333333333333" green="0.32549019607843138" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
@@ -315,7 +315,7 @@ TextFieldWrapper</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mqb-ka-ui5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1617" y="-24"/>
+            <point key="canvasLocation" x="1057" y="72"/>
         </scene>
     </scenes>
     <resources>

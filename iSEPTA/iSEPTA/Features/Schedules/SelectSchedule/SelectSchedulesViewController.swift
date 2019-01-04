@@ -44,6 +44,7 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
     var holidaySchedule: HolidaySchedule?
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         viewModel = SelectSchedulesViewModel(delegate: self)
         view.backgroundColor = SeptaColor.navBarBlue
         tableView.tableFooterView = tableViewFooter
@@ -54,7 +55,8 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
         holidaySchedule = HolidaySchedule.buildHolidaySchedule()
     }
 
-    override func viewWillAppear(_: Bool) {
+    override func viewWillAppear(_ annimated: Bool) {
+        super.viewWillAppear(annimated)
         guard let navBar = navigationController?.navigationBar else { return }
 
         navBar.shadowImage = UIImage()
@@ -62,7 +64,8 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
         viewModel.subscribe()
     }
 
-    override func viewDidAppear(_: Bool) {
+    override func viewDidAppear(_ annimated: Bool) {
+        super.viewDidAppear(annimated)
         if let holidaySchedule = holidaySchedule {
             if holidaySchedule.holidayMessage() != nil {
                 UIAlert.presentHolidayAlertFrom(viewController: self, holidaySchedule: holidaySchedule)
