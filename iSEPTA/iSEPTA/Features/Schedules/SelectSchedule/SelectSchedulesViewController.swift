@@ -7,7 +7,6 @@ import UIKit
 class SelectSchedulesViewController: UIViewController, IdentifiableController {
 
     // MARK: - Outlets
-
     @IBOutlet var buttons: [UIButton]!
     @IBOutlet var section0View: UIView!
     @IBOutlet var section1View: UIView!
@@ -22,18 +21,7 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
 
     @IBOutlet var mockDateTextField: UITextField!
 
-    @IBAction func evalMockDateTapped(_: Any) {
-        let formatter = DateFormatters.ymdFormatter
-        if var holidaySchedule = holidaySchedule, let text = mockDateTextField.text, let date = formatter.date(from: text) {
-            holidaySchedule.setReferenceDate(date)
-            if holidaySchedule.holidayMessage() != nil {
-                UIAlert.presentHolidayAlertFrom(viewController: self, holidaySchedule: holidaySchedule)
-            }
-        }
-    }
-
     // MARK: - Properties
-
     let viewController: ViewController = .selectSchedules
     let buttonRow = 3
     var formIsComplete = false
@@ -45,6 +33,7 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureHolidaySchedules()
         viewModel = SelectSchedulesViewModel(delegate: self)
         view.backgroundColor = SeptaColor.navBarBlue
         tableView.tableFooterView = tableViewFooter
@@ -52,7 +41,6 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
         viewModel.schedulesDelegate = self
         buttonView.isHidden = true
         UIView.addSurroundShadow(toView: tableViewWrapper)
-        holidaySchedule = HolidaySchedule.buildHolidaySchedule()
     }
 
     override func viewWillAppear(_ annimated: Bool) {
@@ -71,14 +59,51 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
                 UIAlert.presentHolidayAlertFrom(viewController: self, holidaySchedule: holidaySchedule)
             }
         }
+        checkForHolidayAlert()
     }
 
     override func viewWillDisappear(_: Bool) {
         viewModel.unsubscribe()
     }
 
-    // MARK: - IBActions
+    // MARK: - Holiday Schedule Methods
+    func configureHolidaySchedules() {
+        holidaySchedule = HolidaySchedule.buildHolidaySchedule()
+        configureOtherHolidays()
+        configureRailHolidays()
+    }
+    
+    func configureOtherHolidays() {
+        HolidayForDateCommand.sharedInstance.holidays(forTransitMode: .bus) { [weak self] holidayArray, error in
+            guard let strongSelf = self else { return }
+            if let holidayArray = holidayArray {
+                strongSelf.holidaySchedule?.setOtherHolidays(holidayArray: holidayArray)
+                strongSelf.holidaySchedule?.setReferenceDate(Date())
+                strongSelf.checkForHolidayAlert()
+            }
+        }
+    }
+    
+    func configureRailHolidays() {
+        HolidayForDateCommand.sharedInstance.holidays(forTransitMode: .rail) { [weak self] holidayArray, error in
+            guard let strongSelf = self else { return }
+            if let holidayArray = holidayArray {
+                strongSelf.holidaySchedule?.setRailHolidays(holidayArray: holidayArray)
+                strongSelf.holidaySchedule?.setReferenceDate(Date())
+                strongSelf.checkForHolidayAlert()
+            }
+        }
+    }
+    
+    func checkForHolidayAlert() {
+        if let holidaySchedule = holidaySchedule {
+            if holidaySchedule.holidayMessage() != nil {
+                UIAlert.presentHolidayAlertFrom(viewController: self, holidaySchedule: holidaySchedule)
+            }
+        }
+    }
 
+    // MARK: - IBActions
     @IBAction func resetSearch(_: Any) {
         let action = ResetSchedule(targetForScheduleAction: targetForScheduleAction)
         store.dispatch(action)
@@ -92,6 +117,17 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
     @IBAction func resetButtonTapped(_: Any) {
         store.dispatch(ResetSchedule(targetForScheduleAction: targetForScheduleAction))
     }
+
+    @IBAction func evalMockDateTapped(_: Any) {
+        let formatter = DateFormatters.ymdFormatter
+        if let holidaySchedule = holidaySchedule, let text = mockDateTextField.text, let date = formatter.date(from: text) {
+            holidaySchedule.setReferenceDate(date)
+            if holidaySchedule.holidayMessage() != nil {
+                UIAlert.presentHolidayAlertFrom(viewController: self, holidaySchedule: holidaySchedule)
+            }
+        }
+    }
+    
 }
 
 extension SelectSchedulesViewController: UITableViewDelegate, UITableViewDataSource {

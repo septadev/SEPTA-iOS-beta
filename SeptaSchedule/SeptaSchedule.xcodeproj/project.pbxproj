@@ -97,6 +97,9 @@
 		58FBBFAA1F6585E700B7A4DA /* DatabaseStateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBBFA91F6585E700B7A4DA /* DatabaseStateDelegate.swift */; };
 		6789F0011F44894100BD26B1 /* railTripSchedule.sql in Resources */ = {isa = PBXBuildFile; fileRef = 6789F0001F44894100BD26B1 /* railTripSchedule.sql */; };
 		67C5672D1F596E8500FF6203 /* ErrorObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C5672C1F596E8500FF6203 /* ErrorObjects.swift */; };
+		8CE5F59121E39F860095957F /* confirmholiday.sql in Resources */ = {isa = PBXBuildFile; fileRef = 8CE5F59021E39F850095957F /* confirmholiday.sql */; };
+		8CE5F59321E3A8560095957F /* HolidayForDateCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE5F59221E3A8560095957F /* HolidayForDateCommand.swift */; };
+		8CE5F59521E3A88A0095957F /* HolidayForDateSQLQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE5F59421E3A88A0095957F /* HolidayForDateSQLQuery.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +232,9 @@
 		58FBBFA91F6585E700B7A4DA /* DatabaseStateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseStateDelegate.swift; sourceTree = "<group>"; };
 		6789F0001F44894100BD26B1 /* railTripSchedule.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = railTripSchedule.sql; sourceTree = "<group>"; };
 		67C5672C1F596E8500FF6203 /* ErrorObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorObjects.swift; sourceTree = "<group>"; };
+		8CE5F59021E39F850095957F /* confirmholiday.sql */ = {isa = PBXFileReference; lastKnownFileType = text; path = confirmholiday.sql; sourceTree = "<group>"; };
+		8CE5F59221E3A8560095957F /* HolidayForDateCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayForDateCommand.swift; sourceTree = "<group>"; };
+		8CE5F59421E3A88A0095957F /* HolidayForDateSQLQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayForDateSQLQuery.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -372,6 +378,7 @@
 		582F4EF51F33B1370062A546 /* Commands */ = {
 			isa = PBXGroup;
 			children = (
+				8CE5F58C21E39E810095957F /* Holidays */,
 				58252237211DEE4100CAB9E6 /* Find Stop by Stop Name */,
 				0E71221520DAD5100035F635 /* DatabaseVersion */,
 				58C7E14B1F7A9A5900C133C5 /* FindStop */,
@@ -730,6 +737,24 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		8CE5F58C21E39E810095957F /* Holidays */ = {
+			isa = PBXGroup;
+			children = (
+				8CE5F58D21E39EA20095957F /* sql */,
+				8CE5F59221E3A8560095957F /* HolidayForDateCommand.swift */,
+				8CE5F59421E3A88A0095957F /* HolidayForDateSQLQuery.swift */,
+			);
+			path = Holidays;
+			sourceTree = "<group>";
+		};
+		8CE5F58D21E39EA20095957F /* sql */ = {
+			isa = PBXGroup;
+			children = (
+				8CE5F59021E39F850095957F /* confirmholiday.sql */,
+			);
+			path = sql;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -837,6 +862,7 @@
 				6789F0011F44894100BD26B1 /* railTripSchedule.sql in Resources */,
 				5893BDA21F7A769200300849 /* railRoutesFromStops.sql in Resources */,
 				58DD1A951F6011A3002532DC /* allRailEnds.sql in Resources */,
+				8CE5F59121E39F860095957F /* confirmholiday.sql in Resources */,
 				0E39083E20E2805200E94D53 /* SEPTA.zip in Resources */,
 				5868897F1F42978A00B2920A /* busTripEnd.sql in Resources */,
 				5854E2051F45FDA00030E3E6 /* busTripStopReverse.sql in Resources */,
@@ -887,6 +913,7 @@
 				58C7E14E1F7A9C6500C133C5 /* FindStopSQLQuery.swift in Sources */,
 				584AC8771F4383A90040C1B4 /* TripScheduleCommand.swift in Sources */,
 				58C7E1501F7A9CAC00C133C5 /* FindStopSQLCommand.swift in Sources */,
+				8CE5F59521E3A88A0095957F /* HolidayForDateSQLQuery.swift in Sources */,
 				5854E20A1F4604800030E3E6 /* TripReverseCommand.swift in Sources */,
 				5867AC551F46421800370254 /* StopsByStopIdCommand.swift in Sources */,
 				5854E2111F4612650030E3E6 /* TripStopId.swift in Sources */,
@@ -917,6 +944,7 @@
 				582F4F0E1F33B1370062A546 /* DatabaseFileManager.swift in Sources */,
 				582F4F111F33B1370062A546 /* Stop.swift in Sources */,
 				58DD1A881F5F73FA002532DC /* AllRoutes.swift in Sources */,
+				8CE5F59321E3A8560095957F /* HolidayForDateCommand.swift in Sources */,
 				58FBBFAA1F6585E700B7A4DA /* DatabaseStateDelegate.swift in Sources */,
 				587F927C1F42A17300F3C0C6 /* OptionalCompare.swift in Sources */,
 				5867AC571F46422B00370254 /* StopsByStopIdSQLQuery.swift in Sources */,

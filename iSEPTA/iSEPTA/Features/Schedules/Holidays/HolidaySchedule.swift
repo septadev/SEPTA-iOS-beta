@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import SeptaSchedule
 
 struct OnlineHolidaySchedule {
     let label: String
     let url: URL
 }
 
-struct HolidaySchedule: Decodable {
+class HolidaySchedule: Decodable {
     enum SeptaHolidayDecodingError: Error {
         case badUrl
     }
@@ -31,10 +32,10 @@ struct HolidaySchedule: Decodable {
 
     private let railHolidayMessage: String
     private let otherHolidayMessage: String
-    private let otherHolidays: [Date]
-    private let railHolidays: [Date]
+    private var otherHolidays: [String]
+    private var railHolidays: [String]
 
-    private var referenceDate: Date?
+    private var referenceDate: String?
     private var holidayMode: HolidayMode?
 
     func onlineHolidaySchedules() -> [OnlineHolidaySchedule]? {
@@ -51,11 +52,18 @@ struct HolidaySchedule: Decodable {
         }
     }
 
-    mutating func setReferenceDate(_ date: Date) {
+    func setReferenceDate(_ date: Date) {
         let todayComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
-        referenceDate = Calendar.current.date(from: todayComponents)
-
+        referenceDate = String(format: "%02ld%02ld%02ld", todayComponents.year!, todayComponents.month!, todayComponents.day!)
         holidayMode = determineHolidayMode()
+    }
+    
+    func setOtherHolidays(holidayArray: Array<String>) {
+        otherHolidays = holidayArray
+    }
+    
+    func setRailHolidays(holidayArray: Array<String>) {
+        railHolidays = holidayArray
     }
 
     private func determineHolidayMode() -> HolidayMode {
@@ -94,17 +102,13 @@ struct HolidaySchedule: Decodable {
         case SEPTAUrlLabel
     }
 
-    public init(from decoder: Decoder) throws {
+    required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self) // defining our (keyed) container
         railHolidayMessage = try container.decode(String.self, forKey: .railHolidayMessage) // extracting the data
         otherHolidayMessage = try container.decode(String.self, forKey: .otherHolidayMessage) // extracting the data
-        let formatter = DateFormatters.ymdFormatter
 
-        let otherHolidayStrings = try container.decode([String].self, forKey: .otherHolidays)
-        otherHolidays = otherHolidayStrings.mapValidDates(formatter: formatter)
-
-        let railHolidaysStrings = try container.decode([String].self, forKey: .railHolidays)
-        railHolidays = railHolidaysStrings.mapValidDates(formatter: formatter)
+        otherHolidays = Array<String>()
+        railHolidays = Array<String>()
 
         let otherHolidayUrlString = try container.decode(String.self, forKey: .otherHolidayUrl)
         let railHolidayUrlString = try container.decode(String.self, forKey: .railHolidayUrl)
@@ -112,7 +116,6 @@ struct HolidaySchedule: Decodable {
         let otherHolidayUrlLabel = try container.decode(String.self, forKey: .otherHolidayUrlLabel)
         let railHolidayUrlLabel = try container.decode(String.self, forKey: .railHolidayUrlLabel)
         let SEPTAUrlLabel = try container.decode(String.self, forKey: .SEPTAUrlLabel)
-
         if
             let otherHolidayUrl = URL(string: otherHolidayUrlString),
             let railHolidayUrl = URL(string: railHolidayUrlString),
@@ -123,7 +126,6 @@ struct HolidaySchedule: Decodable {
         } else {
             throw SeptaHolidayDecodingError.badUrl
         }
-
         setReferenceDate(Date())
     }
 
