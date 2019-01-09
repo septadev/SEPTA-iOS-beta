@@ -20,7 +20,8 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
     @IBOutlet var tableViewWrapper: UIView!
 
     @IBOutlet var mockDateTextField: UITextField!
-
+    @IBOutlet weak var mockDateButton: UIButton!
+    
     // MARK: - Properties
     let viewController: ViewController = .selectSchedules
     let buttonRow = 3
@@ -54,6 +55,7 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
 
     override func viewDidAppear(_ annimated: Bool) {
         super.viewDidAppear(annimated)
+        appBuildConfigInfo()
         if let holidaySchedule = holidaySchedule {
             if holidaySchedule.holidayMessage() != nil {
                 UIAlert.presentHolidayAlertFrom(viewController: self, holidaySchedule: holidaySchedule)
@@ -119,12 +121,24 @@ class SelectSchedulesViewController: UIViewController, IdentifiableController {
     }
 
     @IBAction func evalMockDateTapped(_: Any) {
-        let formatter = DateFormatters.ymdFormatter
-        if let holidaySchedule = holidaySchedule, let text = mockDateTextField.text, let date = formatter.date(from: text) {
-            holidaySchedule.setReferenceDate(date)
+        if let holidaySchedule = holidaySchedule {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy'-'MM'-'dd'"
+            let date = dateFormatter.date(from: "2019-01-01")
+            holidaySchedule.setReferenceDate(date!)
             if holidaySchedule.holidayMessage() != nil {
                 UIAlert.presentHolidayAlertFrom(viewController: self, holidaySchedule: holidaySchedule)
+                holidaySchedule.setReferenceDate(Date())
             }
+        }
+    }
+    
+    // MARK: - Debug Easter Egg - Show Date Button
+    func appBuildConfigInfo() {
+        let dictionary = Bundle.main.infoDictionary!
+        let bundleID = dictionary["CFBundleIdentifier"] as! String
+        if bundleID.contains("beta") {
+            mockDateButton.isHidden = false
         }
     }
     

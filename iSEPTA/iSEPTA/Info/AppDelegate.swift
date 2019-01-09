@@ -1,13 +1,13 @@
 // Septa. 2017
 
+import UIKit
+import Fabric
+import Crashlytics
 import Crashlytics
 import Firebase
 import NotificationCenter
 import ReSwift
 import SeptaSchedule
-import UIKit
-import Fabric
-import Crashlytics
 import UserNotifications
 
 let store = Store<AppState>(

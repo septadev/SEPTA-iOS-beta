@@ -214,6 +214,7 @@ TableViewWrapper</string>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="buttonView" destination="cOB-du-LRG" id="bi3-nK-egN"/>
+                        <outlet property="mockDateButton" destination="rVY-wo-j4W" id="cVU-Ke-7x3"/>
                         <outlet property="mockDateTextField" destination="72k-gc-sWi" id="iLJ-tR-9Op"/>
                         <outlet property="scheduleLabel" destination="Pfb-N7-O3a" id="3m5-wi-Gxj"/>
                         <outlet property="section0View" destination="ZJr-qg-6UD" id="2D5-7l-LDn"/>
