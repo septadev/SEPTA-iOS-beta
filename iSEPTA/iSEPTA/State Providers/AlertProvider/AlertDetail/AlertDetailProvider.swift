@@ -8,6 +8,7 @@
 
 import Foundation
 import SeptaRest
+import SeptaSchedule
 
 class AlertDetailProvider {
     static let sharedInstance = AlertDetailProvider()
@@ -34,10 +35,24 @@ class AlertDetailProvider {
     func getSeptaRouteIdentifier() -> String? {
         let scheduleRequest = store.state.alertState.scheduleState.scheduleRequest
         guard let routeId = scheduleRequest.selectedRoute?.routeId else { return nil }
-        let transitMode = scheduleRequest.transitMode
-        let route_id = MapToAlerts.sharedInstance.alertRouteId(forTransitMode: transitMode, dbRouteId: routeId)
+        let transitMode = getTransitModeName(transitMode: scheduleRequest.transitMode)
+        let route_id = "\(transitMode)_route_\(routeId)"
         return route_id
     }
+    
+    func getTransitModeName(transitMode: TransitMode) -> String {
+        switch transitMode.rawValue {
+        case 0:
+            return "bus"
+        case 1,2,3:
+            return "rr"
+        case 4:
+            return "trolley"
+        default:
+            return "bus"
+        }
+    }
+
 }
 
 extension AlertDetailProvider: ScheduleRequestWatcherDelegate {
