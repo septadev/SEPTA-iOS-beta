@@ -633,6 +633,18 @@
       ],
       "dbRouteId": "70"
     },
+    "bus_route_15B": {
+        "dbRouteId": "15B",
+        "transitModes": [
+            0
+        ]
+    },
+    "bus_route_36B": {
+        "dbRouteId": "36B",
+        "transitModes": [
+            0
+        ]
+    },
     "bus_route_47M": {
       "dbRouteId": "47M",
       "transitModes": [
