@@ -177,9 +177,6 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         segmentedControl.selectedSegmentIndex = 0
     }
 
-    func showHideAlertViewifNecessary() {
-    }
-
     var scheduleTypeSegments: [ScheduleType]!
 
     override func viewDidAppear(_ animated: Bool) {

@@ -104,7 +104,7 @@ class SeptaAlertsViewController: UIViewController, StoreSubscriber {
     private func configureAlerts(alert: SeptaAlert?) {
         guard let alert = alert else { return }
         advisoryImageView.isHighlighted = alert.advisory
-        alertImageView.isHighlighted = alert.alert
+        alertImageView.isHighlighted = true//alert.alert
         detourImageView.isHighlighted = alert.detour
         weatherImageView.isHighlighted = alert.weather
     }
