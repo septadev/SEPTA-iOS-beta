@@ -231,7 +231,6 @@
 		586C1CED1F69A7E10023607C /* DatabaseLoadingModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C1CEC1F69A7E10023607C /* DatabaseLoadingModalViewController.swift */; };
 		586DFEC51F505482004BC972 /* CurvedTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586DFEC41F505482004BC972 /* CurvedTopView.swift */; };
 		5876DF771F72F7A3006C61FE /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5876DF761F72F7A3006C61FE /* BackButton.swift */; };
-		587BC0441F6ED63900B92BB6 /* MapToAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587BC0431F6ED63900B92BB6 /* MapToAlerts.swift */; };
 		587BC0481F6ED66700B92BB6 /* MapFromAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587BC0471F6ED66700B92BB6 /* MapFromAlerts.swift */; };
 		587BC04A1F6ED70900B92BB6 /* QuickMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587BC0491F6ED70900B92BB6 /* QuickMap.swift */; };
 		587BC04C1F6EDD6E00B92BB6 /* TransitModeToolbar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 587BC04B1F6EDD6E00B92BB6 /* TransitModeToolbar.storyboard */; };
@@ -359,7 +358,6 @@
 		58F80D431F421C1F0089501A /* SelectStopNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F80D421F421C1F0089501A /* SelectStopNavigationController.swift */; };
 		58F80D451F421C4B0089501A /* SelectStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F80D441F421C4B0089501A /* SelectStopViewController.swift */; };
 		58FB264A1F6EC42F00F17048 /* AlertProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FB26451F6EC42F00F17048 /* AlertProviders.swift */; };
-		58FB264B1F6EC42F00F17048 /* DbAlertsMappedToWebAlerts.json in Resources */ = {isa = PBXBuildFile; fileRef = 58FB26461F6EC42F00F17048 /* DbAlertsMappedToWebAlerts.json */; };
 		58FB264C1F6EC42F00F17048 /* WebAlertsRoutesMappedToDBRoutes.json in Resources */ = {isa = PBXBuildFile; fileRef = 58FB26471F6EC42F00F17048 /* WebAlertsRoutesMappedToDBRoutes.json */; };
 		58FBB6681F58590F00E6532B /* Route+Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBB6671F58590F00E6532B /* Route+Title.swift */; };
 		58FBB66A1F58717500E6532B /* SeptaTabBarImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBB6691F58717500E6532B /* SeptaTabBarImages.swift */; };
@@ -1031,7 +1029,6 @@
 		586DFEC41F505482004BC972 /* CurvedTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedTopView.swift; sourceTree = "<group>"; };
 		5870CCDD1F54C05A004E61A9 /* SeptaSchedule.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SeptaSchedule.framework; path = "Build/Products/Debug-iphonesimulator/SeptaSchedule.framework"; sourceTree = "<group>"; };
 		5876DF761F72F7A3006C61FE /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
-		587BC0431F6ED63900B92BB6 /* MapToAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapToAlerts.swift; sourceTree = "<group>"; };
 		587BC0471F6ED66700B92BB6 /* MapFromAlerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFromAlerts.swift; sourceTree = "<group>"; };
 		587BC0491F6ED70900B92BB6 /* QuickMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickMap.swift; sourceTree = "<group>"; };
 		587BC04B1F6EDD6E00B92BB6 /* TransitModeToolbar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransitModeToolbar.storyboard; sourceTree = "<group>"; };
@@ -1165,7 +1162,6 @@
 		58F80D421F421C1F0089501A /* SelectStopNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopNavigationController.swift; sourceTree = "<group>"; };
 		58F80D441F421C4B0089501A /* SelectStopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStopViewController.swift; sourceTree = "<group>"; };
 		58FB26451F6EC42F00F17048 /* AlertProviders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertProviders.swift; sourceTree = "<group>"; };
-		58FB26461F6EC42F00F17048 /* DbAlertsMappedToWebAlerts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DbAlertsMappedToWebAlerts.json; sourceTree = "<group>"; };
 		58FB26471F6EC42F00F17048 /* WebAlertsRoutesMappedToDBRoutes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WebAlertsRoutesMappedToDBRoutes.json; sourceTree = "<group>"; };
 		58FBB6671F58590F00E6532B /* Route+Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Route+Title.swift"; sourceTree = "<group>"; };
 		58FBB6691F58717500E6532B /* SeptaTabBarImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeptaTabBarImages.swift; sourceTree = "<group>"; };
@@ -2892,10 +2888,8 @@
 				58A26DA01F6F282B005A70D3 /* AlertDetail */,
 				58FB26451F6EC42F00F17048 /* AlertProviders.swift */,
 				67702850201BD633007282EF /* ModalAlertProvider.swift */,
-				587BC0431F6ED63900B92BB6 /* MapToAlerts.swift */,
 				587BC0471F6ED66700B92BB6 /* MapFromAlerts.swift */,
 				587BC0491F6ED70900B92BB6 /* QuickMap.swift */,
-				58FB26461F6EC42F00F17048 /* DbAlertsMappedToWebAlerts.json */,
 				58FB26471F6EC42F00F17048 /* WebAlertsRoutesMappedToDBRoutes.json */,
 			);
 			path = AlertProvider;
@@ -3663,7 +3657,6 @@
 				677E053020727C9D00B16C09 /* 84.kml in Resources */,
 				67A33DE11F8DCA3600D82802 /* MapVehicleCalloutView.xib in Resources */,
 				677E051920727C9D00B16C09 /* WAR.kml in Resources */,
-				58FB264B1F6EC42F00F17048 /* DbAlertsMappedToWebAlerts.json in Resources */,
 				673E10E12193110500EB8689 /* pushNotificationTripDetail.storyboard in Resources */,
 				677E04E320727C9D00B16C09 /* 27.kml in Resources */,
 				677E04D120727C9D00B16C09 /* 60.kml in Resources */,
@@ -4010,7 +4003,6 @@
 				58B2778B1F629FAA00663507 /* DummyData.swift in Sources */,
 				589A91A31F907FEC009B49E0 /* Route+Twitter.swift in Sources */,
 				0E8E60D220EFAF4C00AB08FE /* TransitViewRoutesViewModel.swift in Sources */,
-				587BC0441F6ED63900B92BB6 /* MapToAlerts.swift in Sources */,
 				58FBB66A1F58717500E6532B /* SeptaTabBarImages.swift in Sources */,
 				58126F711F631CB200A6E187 /* NextToArriveEndpointsViewModel.swift in Sources */,
 				58E33F141F61425600C74B7C /* NextToArriveProvider.swift in Sources */,

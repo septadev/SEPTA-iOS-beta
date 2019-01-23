@@ -56,6 +56,22 @@ class AlertProvider {
         }
     }
 
+/*    func mapAlert(mappableAlert: MappableAlert) -> [QuickMap]? {
+        guard let mode = mappableAlert.mode,
+            let route_id = mappableAlert.route_id else { return nil }
+        
+        guard let modeDict = mappingDictionary[mode],
+            let routeDict = modeDict[route_id],
+            let routeId = routeDict[dbRouteIdKey] as? String,
+            let transitModeInts = routeDict[transitModesKey] as? [Int] else { return nil }
+
+        let transitModes = transitModeInts.map({ TransitMode(rawValue: $0) }).compactMap { $0 }
+        
+        return transitModes.map {
+            QuickMap(transitMode: $0, routeId: routeId)
+        }
+    }*/
+
     func makeNewAlertsByTransitModeThenRoute() -> AlertsByTransitModeThenRoute {
         var alertsByTransitModeThenRoute = AlertsByTransitModeThenRoute()
         for transitMode in TransitMode.displayOrder() {
