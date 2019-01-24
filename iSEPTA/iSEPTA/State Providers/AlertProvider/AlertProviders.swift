@@ -69,8 +69,15 @@ class AlertProvider {
             let advisory = alert.advisory,
             let weather = alert.snow,
             let detour = alert.detour,
+            let suspended = alert.suspended,
             let alert = alert.alert else { return nil }
-        return SeptaAlert(advisory: advisory, alert: alert, detour: detour, weather: weather)
+        //if suspended {
+        print("advisory: \(advisory)")
+        print("detour: \(detour)")
+        print("suspended: \(suspended)")
+        print("=================")
+        //}
+        return SeptaAlert(advisory: advisory, alert: alert, detour: detour, weather: weather, suspended: suspended)
     }
 
     func shouldAttemptToUpdateAlerts() -> Bool {

@@ -1,25 +1,6 @@
 
 import Foundation
 import SeptaRest
-/*
- {
- "vehicleId" : "237",
- "delayType" : "ACTUAL",
- "notificationType" : "DELAY",
- "message" : "Norristown: Train #237 going to Marcus Hook is operating 15 minutes late. Last at Main St.",
- "routeType" : "RAIL",
- "routeId" : "NOR",
- "google.c.a.e" : "1",
- "gcm.message_id" : "0:1541444889521948%65771b2f65771b2f",
- "aps" : {
- "alert" : {
- "title" : "Train Delay on NOR",
- "body" : "Norristown: Train #237 going to Marcus Hook is operating 15 minutes late. Last at Main St."
- }
- },
- "destinationStopId" : "90205"
- }
- */
 
 typealias PushNotificationTripDetailRequestCompletion = (Data?, Int) -> Void
 

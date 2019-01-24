@@ -29,9 +29,11 @@ class ScheduleTableViewCell: UITableViewCell, ScheduleDisplayable {
     func setDepartText(text: String) {
         departLabel.text = text
     }
-    func getDepartText(text: String) {
+    func getDepartText() -> String {
         if let departText = departLabel.text {
-        return departLabel.text
+            return departText
+        }
+        return ""
     }
 
     func setArriveText(text: String) {

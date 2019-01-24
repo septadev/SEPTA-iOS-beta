@@ -136,7 +136,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
         print("Local Time")
         print(localDate)
         
-        findCurrentScheduleRow(departureTime: cell.departText.text, at: <#T##IndexPath#>)
+        //findCurrentScheduleRow(departureTime: cell.departText.text, at: <#T##IndexPath#>)
         return cell
     }
     

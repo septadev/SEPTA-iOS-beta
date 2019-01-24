@@ -67,8 +67,9 @@ class ModalAlertProvider {
             let advisory = alert.advisory,
             let weather = alert.snow,
             let detour = alert.detour,
+            let suspended = alert.suspended,
             let alert = alert.alert else { return nil }
-        return SeptaAlert(advisory: advisory, alert: alert, detour: detour, weather: weather)
+        return SeptaAlert(advisory: advisory, alert: alert, detour: detour, weather: weather, suspended: suspended)
     }
 
     func stripTimeComponentFromDate(date: Date) -> Date {
