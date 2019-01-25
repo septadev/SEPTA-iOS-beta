@@ -66,8 +66,8 @@ class SimpleRestClient: NSObject {
                 } else {
                     let mapper = Mapper<T>()
                     // TODO: JJ delete
-                    /*print("URL: \(route.URLString)")
-                    if route.URLString == "https://dev-mobile.septa.org/prod/alerts" {
+                    print("URL: \(route.URLString)")
+                    /*if route.URLString == "https://dev-mobile.septa.org/prod/alerts" {
                         print("Alerts dude!")
                         if let path = Bundle.main.url(forResource: "suspended", withExtension: "json") {
                             do {

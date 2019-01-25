@@ -205,6 +205,10 @@ extension AlertDetailViewController {
     }
 
     func configureForServiceAlerts(cell: AlertDetailCell) {
+        /*if alert.suspended {
+            alertImageView.highlightedImage = UIImage(named: "suspendedAlert")
+            alertImageView.isHighlighted = alert.suspended
+        }*/
         cell.alertImage.image = UIImage(named: "alertAlert")
         cell.advisoryLabel.text = "Service Alerts"
         cell.disabledAdvisoryLabel.text = "No Service Alerts"

@@ -15,7 +15,6 @@ public class AlertDetails_Alert: Mappable {
     public var message: String?
     public var advisory_message: String?
     public var detour: Detour?
-    public var suspended: Bool?
     public var last_updated: String?
     public var snow: Bool?
 
@@ -30,7 +29,6 @@ public class AlertDetails_Alert: Mappable {
         message <- map["message"]
         advisory_message <- map["advisory_message"]
         detour <- map["detour"]
-        suspended <- map["suspended"]
         last_updated <- map["last_updated"]
         snow <- map["snow"]
     }

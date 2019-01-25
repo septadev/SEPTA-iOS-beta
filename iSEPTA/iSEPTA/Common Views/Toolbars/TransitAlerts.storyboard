@@ -30,7 +30,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="advisoryAlert" highlightedImage="advisoryAlert" translatesAutoresizingMaskIntoConstraints="NO" id="dfN-6K-9Wh" userLabel="AdvisoryImageView">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="advisoryAlertGray" highlightedImage="advisoryAlert" translatesAutoresizingMaskIntoConstraints="NO" id="dfN-6K-9Wh" userLabel="AdvisoryImageView">
                                                 <rect key="frame" x="88.5" y="0.0" width="30" height="20"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alertIconGray" highlightedImage="alertAlert" translatesAutoresizingMaskIntoConstraints="NO" id="6gk-Nm-9YL" userLabel="AlertImageView">

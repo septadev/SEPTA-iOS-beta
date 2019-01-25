@@ -34,8 +34,9 @@ class AlertDetailProvider {
 
     func getSeptaRouteIdentifier() -> String? {
         let scheduleRequest = store.state.alertState.scheduleState.scheduleRequest
-        guard let routeId = scheduleRequest.selectedRoute?.routeId else { return nil }
+        guard var routeId = scheduleRequest.selectedRoute?.routeId else { return nil }
         let transitMode = getTransitModeName(transitMode: scheduleRequest.transitMode)
+        routeId = validateROuteId(routeId: routeId.lowercased())
         let route_id = "\(transitMode)_route_\(routeId)"
         return route_id
     }
@@ -51,6 +52,22 @@ class AlertDetailProvider {
         default:
             return "bus"
         }
+    }
+    
+    func validateROuteId(routeId: String) -> String {
+        var validatedId = routeId
+        let routeMapping = ["air":"apt",
+                            "fox":"fxc",
+                            "lan":"landdoy",
+                            "tre":"trent",
+                            "war":"warm",
+                            "wil":"wilm",
+                            "wtr":"wtren"
+        ]
+        if let tempId = routeMapping[routeId] {
+            validatedId = tempId
+        }
+        return validatedId
     }
 
 }

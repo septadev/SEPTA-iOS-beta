@@ -35,17 +35,17 @@ struct SeptaAlert {
         if advisory {
             imageArray.append(UIImage(named: "advisoryAlert"))
         }
-        if alert {
+        if alert && !suspended {
             imageArray.append(UIImage(named: "alertAlert"))
+        }
+        if suspended {
+            imageArray.append(UIImage(named: "suspendedAlert"))
         }
         if detour {
             imageArray.append(UIImage(named: "detourAlert"))
         }
         if weather {
             imageArray.append(UIImage(named: "weatherAlert"))
-        }
-        if suspended {
-            imageArray.append(UIImage(named: "suspendedAlert"))
         }
         return imageArray.compactMap { $0 }
     }
@@ -55,17 +55,17 @@ struct SeptaAlert {
         if advisory {
             stringArray.append("Advisory")
         }
-        if alert {
+        if alert && !suspended {
             stringArray.append("Alert")
+        }
+        if suspended {
+            stringArray.append("Suspended")
         }
         if detour {
             stringArray.append("Detour")
         }
         if weather {
             stringArray.append("Weather")
-        }
-        if suspended {
-            stringArray.append("Suspended")
         }
         return stringArray
     }
