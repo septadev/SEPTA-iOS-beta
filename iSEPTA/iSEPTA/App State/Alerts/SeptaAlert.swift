@@ -64,7 +64,7 @@ struct SeptaAlert {
         if weather {
             stringArray.append("Weather")
         }
-        if weather {
+        if suspended {
             stringArray.append("Suspended")
         }
         return stringArray

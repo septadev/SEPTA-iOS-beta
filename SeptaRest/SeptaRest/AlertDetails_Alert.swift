@@ -10,13 +10,14 @@ import Foundation
 import ObjectMapper
 
 public class AlertDetails_Alert: Mappable {
-    var route_id: String?
-    var route_name: String?
+    public var route_id: String?
+    public var route_name: String?
     public var message: String?
     public var advisory_message: String?
     public var detour: Detour?
+    public var suspended: Bool?
     public var last_updated: String?
-    var snow: Bool?
+    public var snow: Bool?
 
     public required init?(map _: Map) {
     }
@@ -29,6 +30,7 @@ public class AlertDetails_Alert: Mappable {
         message <- map["message"]
         advisory_message <- map["advisory_message"]
         detour <- map["detour"]
+        suspended <- map["suspended"]
         last_updated <- map["last_updated"]
         snow <- map["snow"]
     }

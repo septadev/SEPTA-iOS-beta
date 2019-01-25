@@ -65,6 +65,31 @@ class SimpleRestClient: NSObject {
                     reject(error) // network error
                 } else {
                     let mapper = Mapper<T>()
+                    // TODO: JJ delete
+                    /*print("URL: \(route.URLString)")
+                    if route.URLString == "https://dev-mobile.septa.org/prod/alerts" {
+                        print("Alerts dude!")
+                        if let path = Bundle.main.url(forResource: "suspended", withExtension: "json") {
+                            do {
+                                let data = try Data(contentsOf: path, options: .mappedIfSafe)
+                                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                                if let apiResponse = mapper.map(JSONObject: jsonResult) {
+                                    let status = apiResponse as? RestResponse
+                                    
+                                    if status != nil && status!.success {
+                                        fulfill(apiResponse)
+                                    } else {
+                                        if let logicalerror = status?.error {
+                                            reject(ErrorResult(errorFromAPI: logicalerror))
+                                        } else {
+                                            reject(ErrorResult(errorFromAPI: nil))
+                                        }
+                                    }
+                                }                            } catch {
+                                print("error:\(error)")
+                            }
+                        }
+                    } else*/
                     if let apiResponse = mapper.map(JSONObject: response.result.value) {
                         let status = apiResponse as? RestResponse
 

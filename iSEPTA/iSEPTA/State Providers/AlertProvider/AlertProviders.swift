@@ -72,10 +72,12 @@ class AlertProvider {
             let suspended = alert.suspended,
             let alert = alert.alert else { return nil }
         //if suspended {
-        print("advisory: \(advisory)")
-        print("detour: \(detour)")
+        //print("advisory: \(advisory)")
+        //print("detour: \(detour)")
+        if suspended {
         print("suspended: \(suspended)")
-        print("=================")
+        }
+        //print("=================")
         //}
         return SeptaAlert(advisory: advisory, alert: alert, detour: detour, weather: weather, suspended: suspended)
     }

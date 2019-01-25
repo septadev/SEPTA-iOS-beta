@@ -29,31 +29,6 @@ class ModalAlertProvider {
         let septaAlert: SeptaAlert
     }
 
-    //    func updateAlertsIfNeeded() {
-    //        var alertsByTransitModeThenRoute = makeNewAlertsByTransitModeThenRoute()
-    //
-    //        let mapper = MapFromAlerts.sharedInstance
-    //        if shouldAttemptToUpdateAlerts() {
-    //            client.getAlerts(route: "").then { alerts -> Void in
-    //                if let alerts = alerts?.alerts {
-    //                    for rawAlert in alerts {
-    //                        if let septaAlert = self.mapRestAlert(alert: rawAlert),
-    //                            let quickMaps = mapper.mapAlert(mappableAlert: rawAlert) {
-    //                            for quickMap in quickMaps {
-    //                                alertsByTransitModeThenRoute[quickMap.transitMode]?[quickMap.routeId] = septaAlert
-    //                            }
-    //                        }
-    //                    }
-    //
-    //                    let action = NewAlertsRetrieved(alertsByTransitModeThenRoute: alertsByTransitModeThenRoute)
-    //                    store.dispatch(action)
-    //                }
-    //            }.catch { err in
-    //                print(err)
-    //            }
-    //        }
-    //    }
-
     func makeNewAlertsByTransitModeThenRoute() -> AlertsByTransitModeThenRoute {
         var alertsByTransitModeThenRoute = AlertsByTransitModeThenRoute()
         for transitMode in TransitMode.displayOrder() {
