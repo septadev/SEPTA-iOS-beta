@@ -193,7 +193,9 @@ extension AlertDetailViewController {
         cell.disabledAdvisoryLabel.text = "No Service Advisories"
         let message = AlertDetailsViewModel.renderMessage(alertDetails: alertDetails) { return $0.advisory_message }
         if let message = message {
-            cell.setEnabled(true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                cell.setEnabled(true)
+            }
             cell.textView.attributedText = message
         } else {
             cell.textView.text = nil
@@ -208,7 +210,9 @@ extension AlertDetailViewController {
         cell.disabledAdvisoryLabel.text = "No Service Alerts"
         let message = AlertDetailsViewModel.renderMessage(alertDetails: alertDetails) { return $0.message }
         if let message = message {
-            cell.setEnabled(true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                cell.setEnabled(true)
+            }
             cell.textView.attributedText = message
         } else {
             cell.textView.text = nil
@@ -223,7 +227,9 @@ extension AlertDetailViewController {
         cell.disabledAdvisoryLabel.text = "No Active Detours"
         let message = AlertDetailsViewModel.renderMessage(alertDetails: alertDetails) { return $0.detour?.wrappedMessage }
         if let message = message {
-            cell.setEnabled(true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                cell.setEnabled(true)
+            }
             cell.textView.attributedText = message
         } else {
             cell.textView.text = nil

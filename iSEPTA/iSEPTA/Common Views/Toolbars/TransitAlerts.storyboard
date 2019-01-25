@@ -147,6 +147,7 @@ BottomDividerRight</string>
     </scenes>
     <resources>
         <image name="advisoryAlert" width="30" height="30"/>
+        <image name="advisoryAlertGray" width="30" height="30"/>
         <image name="alertAlert" width="28" height="28"/>
         <image name="alertIconGray" width="18" height="18"/>
         <image name="detourAlert" width="30" height="30"/>
