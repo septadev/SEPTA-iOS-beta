@@ -711,6 +711,7 @@
 		67F757B31F48729C00D3A4EE /* UIView+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F757B21F48729C00D3A4EE /* UIView+Util.swift */; };
 		67F757B51F488A4400D3A4EE /* SeptaDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F757B41F488A4400D3A4EE /* SeptaDraw.swift */; };
 		67F757B71F488A5E00D3A4EE /* BlueGradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F757B61F488A5E00D3A4EE /* BlueGradientBackgroundView.swift */; };
+		8CED9D1A21FB624100C3021F /* suspended.json in Resources */ = {isa = PBXBuildFile; fileRef = 8CED9D1721FB624100C3021F /* suspended.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1512,6 +1513,7 @@
 		67F757B21F48729C00D3A4EE /* UIView+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Util.swift"; sourceTree = "<group>"; };
 		67F757B41F488A4400D3A4EE /* SeptaDraw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SeptaDraw.swift; path = iSEPTA/Views/SeptaDraw.swift; sourceTree = SOURCE_ROOT; };
 		67F757B61F488A5E00D3A4EE /* BlueGradientBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueGradientBackgroundView.swift; sourceTree = "<group>"; };
+		8CED9D1721FB624100C3021F /* suspended.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = suspended.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2891,6 +2893,7 @@
 				587BC0471F6ED66700B92BB6 /* MapFromAlerts.swift */,
 				587BC0491F6ED70900B92BB6 /* QuickMap.swift */,
 				58FB26471F6EC42F00F17048 /* WebAlertsRoutesMappedToDBRoutes.json */,
+				8CED9D1721FB624100C3021F /* suspended.json */,
 			);
 			path = AlertProvider;
 			sourceTree = "<group>";
@@ -3695,6 +3698,7 @@
 				677E052220727C9D00B16C09 /* 97.kml in Resources */,
 				677E055320727C9D00B16C09 /* 205.kml in Resources */,
 				677E053920727C9D00B16C09 /* BSO.kml in Resources */,
+				8CED9D1A21FB624100C3021F /* suspended.json in Resources */,
 				582531951F406E790088D056 /* DefaultPreferences.plist in Resources */,
 				677E04EA20727C9D00B16C09 /* 2.kml in Resources */,
 				677E04E920727C9D00B16C09 /* LucyGold.kml in Resources */,

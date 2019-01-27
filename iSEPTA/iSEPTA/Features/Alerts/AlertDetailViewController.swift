@@ -205,8 +205,9 @@ extension AlertDetailViewController {
     }
 
     func configureForServiceAlerts(cell: AlertDetailCell) {
-        cell.alertImage.image = UIImage(named: "alertAlert")
-        cell.advisoryLabel.text = "Service Alerts"
+        let (imageName, labelName) = getAlertIcon()
+        cell.alertImage.image = UIImage(named: imageName)
+        cell.advisoryLabel.text = labelName
         cell.disabledAdvisoryLabel.text = "No Service Alerts"
         let message = AlertDetailsViewModel.renderMessage(alertDetails: alertDetails) { return $0.message }
         if let message = message {
@@ -219,6 +220,21 @@ extension AlertDetailViewController {
             cell.setEnabled(false)
         }
         alertCell = cell
+    }
+    
+    func getAlertIcon() -> (String, String) {
+        var imageName = "alertAlert"
+        var labelName = "Service Alerts"
+        let scheduleRequest = store.state.alertState.scheduleState.scheduleRequest
+        let transitMode = scheduleRequest.transitMode
+        let alertsDict = store.state.alertState.alertDict
+        guard let selectedRoute = scheduleRequest.selectedRoute,
+            let alert = alertsDict[transitMode]?[selectedRoute.routeId] else { return (imageName, labelName) }
+        if alert.suspended {
+            imageName = "suspendedAlert"
+            labelName = "Suspended Alerts"
+        }
+        return (imageName, labelName)
     }
 
     func configureForDetours(cell: AlertDetailCell) {

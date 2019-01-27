@@ -20,12 +20,14 @@ struct SeptaAlert {
     let alert: Bool
     let detour: Bool
     let weather: Bool
+    let suspended: Bool
 
-    init(advisory: Bool = false, alert: Bool = false, detour: Bool = false, weather: Bool = false) {
+    init(advisory: Bool = false, alert: Bool = false, detour: Bool = false, weather: Bool = false, suspended: Bool = false) {
         self.advisory = advisory
         self.alert = alert
         self.detour = detour
         self.weather = weather
+        self.suspended = suspended
     }
 
     func imagesForAlert() -> [UIImage] {
@@ -33,8 +35,11 @@ struct SeptaAlert {
         if advisory {
             imageArray.append(UIImage(named: "advisoryAlert"))
         }
-        if alert {
+        if alert && !suspended {
             imageArray.append(UIImage(named: "alertAlert"))
+        }
+        if suspended {
+            imageArray.append(UIImage(named: "suspendedAlert"))
         }
         if detour {
             imageArray.append(UIImage(named: "detourAlert"))
@@ -50,8 +55,11 @@ struct SeptaAlert {
         if advisory {
             stringArray.append("Advisory")
         }
-        if alert {
+        if alert && !suspended {
             stringArray.append("Alert")
+        }
+        if suspended {
+            stringArray.append("Suspended")
         }
         if detour {
             stringArray.append("Detour")
@@ -89,6 +97,9 @@ func == (lhs: SeptaAlert, rhs: SeptaAlert) -> Bool {
     guard areEqual else { return false }
 
     areEqual = lhs.weather == rhs.weather
+    guard areEqual else { return false }
+
+    areEqual = lhs.suspended == rhs.suspended
     guard areEqual else { return false }
 
     return areEqual

@@ -5,6 +5,7 @@ import SeptaSchedule
 import UIKit
 
 class TripScheduleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UpdateableFromViewModel, IdentifiableController {
+    var indexPathForFirstRow: IndexPath?
     let viewController: ViewController = .tripScheduleController
     func displayErrorMessage(message: String, shouldDismissAfterDisplay: Bool = false) {
         UIAlert.presentOKAlertFrom(viewController: self,
@@ -117,7 +118,30 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell") as? ScheduleTableViewCell else { return UITableViewCell() }
         viewModel.makeTripDisplayable(displayable: cell, atRow: indexPath.row)
+        let date = Date();
+        let dateFormatter = DateFormatter()
+        //To prevent displaying either date or time, set the desired style to NoStyle.
+        dateFormatter.timeStyle = .medium   //Set time style
+        dateFormatter.dateStyle = .none     //Set date style
+        //dateFormatter.timeZone = NSTimeZone(name: "local") as! TimeZone
+        let localDate = dateFormatter.string(from: date)
+
+        let currentDateTime = Date()
+        let userCalendar = Calendar.current
+        let requestedComponents: Set<Calendar.Component> = [.hour, .minute]
+        let dateTimeComponents = userCalendar.dateComponents(requestedComponents, from: currentDateTime)
+
+        print("UTC Time")
+        print(date)
+        print("Local Time")
+        print(localDate)
+        
+        //findCurrentScheduleRow(departureTime: cell.departText.text, at: <#T##IndexPath#>)
         return cell
+    }
+    
+    func findCurrentScheduleRow(departureTime: String, at indexPath: IndexPath) {
+        
     }
 
     @IBOutlet var scheduleTypeSelector: UIToolbar! {
@@ -164,6 +188,7 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        indexPathForFirstRow = nil
         tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
     }
 
@@ -175,9 +200,6 @@ class TripScheduleViewController: UIViewController, UITableViewDelegate, UITable
             segmentedControl.insertSegment(withTitle: scheduleType.stringForSegments(), at: 0, animated: false)
         }
         segmentedControl.selectedSegmentIndex = 0
-    }
-
-    func showHideAlertViewifNecessary() {
     }
 
     var scheduleTypeSegments: [ScheduleType]!

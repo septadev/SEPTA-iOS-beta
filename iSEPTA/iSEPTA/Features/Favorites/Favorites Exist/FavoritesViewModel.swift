@@ -100,14 +100,16 @@ extension FavoritesViewModel { // table loading
         var alert = false
         var detour = false
         var weather = false
+        var suspended = false
         for transitRoute in viewModel.favorite.transitViewRoutes {
             let routeAlerts = alerts[transitRoute.mode()]?[transitRoute.routeId]
             advisory = routeAlerts?.advisory ?? false
             alert = routeAlerts?.alert ?? false
             detour = routeAlerts?.detour ?? false
             weather = routeAlerts?.weather ?? false
+            suspended = routeAlerts?.suspended ?? false
         }
-        let transitViewAlert = SeptaAlert(advisory: advisory, alert: alert, detour: detour, weather: weather)
+        let transitViewAlert = SeptaAlert(advisory: advisory, alert: alert, detour: detour, weather: weather, suspended: suspended)
         cell.addAlert(transitViewAlert)
     }
 

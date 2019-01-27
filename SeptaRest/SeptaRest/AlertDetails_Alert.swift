@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 public class AlertDetails_Alert: Mappable {
-    var route_id: String?
-    var route_name: String?
+    public var route_id: String?
+    public var route_name: String?
     public var message: String?
     public var advisory_message: String?
     public var detour: Detour?
     public var last_updated: String?
-    var snow: Bool?
+    public var snow: Bool?
 
     public required init?(map _: Map) {
     }

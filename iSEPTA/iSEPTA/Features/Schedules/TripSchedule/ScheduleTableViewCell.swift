@@ -5,6 +5,7 @@ import UIKit
 protocol ScheduleDisplayable {
     func setTripText(text: String)
     func setDepartText(text: String)
+    func getDepartText() -> String
     func setArriveText(text: String)
     func setDurationText(text: String)
     func setVehicleTitle(text: String)
@@ -13,6 +14,7 @@ protocol ScheduleDisplayable {
 }
 
 class ScheduleTableViewCell: UITableViewCell, ScheduleDisplayable {
+    
     @IBOutlet private var tripLabel: UILabel!
     @IBOutlet private var departLabel: UILabel!
     @IBOutlet private var arriveLabel: UILabel!
@@ -26,6 +28,12 @@ class ScheduleTableViewCell: UITableViewCell, ScheduleDisplayable {
 
     func setDepartText(text: String) {
         departLabel.text = text
+    }
+    func getDepartText() -> String {
+        if let departText = departLabel.text {
+            return departText
+        }
+        return ""
     }
 
     func setArriveText(text: String) {
